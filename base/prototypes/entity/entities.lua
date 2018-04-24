@@ -3510,6 +3510,7 @@ data:extend(
         },
         {
           priority = "very-low",
+          slice = 4,
           flags = { "shadow" },
           width = 253,
           height = 212,
@@ -3731,6 +3732,7 @@ data:extend(
         {
           flags = { "shadow" },
           priority = "very-low",
+          slice = 4,
           width = 246,
           height = 201,
           back_equals_front = true,
@@ -3751,6 +3753,7 @@ data:extend(
           {
             flags = { "shadow" },
             priority = "very-low",
+            slice = 4,
             width = 490,
             height = 401,
             back_equals_front = true,
@@ -4096,6 +4099,7 @@ data:extend(
         {
           flags = { "shadow" },
           priority = "very-low",
+          slice = 4,
           width = 251,
           height = 188,
           back_equals_front = true,
@@ -4116,6 +4120,7 @@ data:extend(
           {
             flags = { "shadow" },
             priority = "very-low",
+            slice = 4,
             width = 501,
             height = 375,
             back_equals_front = true,
@@ -4286,6 +4291,7 @@ data:extend(
         },
         {
           priority = "very-low",
+          slice = 4,
           width = 300,
           height = 240,
           direction_count = 256,
@@ -4316,6 +4322,7 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
+            slice = 4,
             width = 598,
             height = 480,
             direction_count = 256,
@@ -6873,6 +6880,7 @@ data:extend(
       width = 447,
       height = 351,
       draw_as_shadow = true,
+      slice = 2,
       shift = {1.5, 0.5}
     },
     satellite_shadow_animation =
@@ -8240,7 +8248,7 @@ data:extend(
         percent = 90
       }
     },
-    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
+    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-1, -3}, {1, 1}},
     maximum_wire_distance = 18,
@@ -9658,7 +9666,7 @@ data:extend(
     max_health = 300,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     module_specification =
     {

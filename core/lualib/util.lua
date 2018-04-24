@@ -203,7 +203,7 @@ function util.merge(tables)
   for i, tab in ipairs(tables) do
     for k, v in pairs(tab) do
       if (type(v) == "table") and (type(ret[k] or false) == "table") then
-        ret[k] = merge{ret[k], v}
+        ret[k] = util.merge{ret[k], v}
       else
         ret[k] = v
       end

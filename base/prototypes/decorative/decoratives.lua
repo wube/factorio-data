@@ -4787,6 +4787,7 @@ data:extend{
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
     {
@@ -5117,6 +5118,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
     {
@@ -6225,6 +6227,7 @@ data:extend{
     order = "b[decorative]-a[grass]-c[small]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     selection_box = {{-1, -1}, {1, 1}},
+    grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
     {
@@ -6435,6 +6438,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
     {
@@ -6656,6 +6660,7 @@ data:extend{
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    grows_through_rail_path = true,
     render_layer = "decorative",
     selectable_in_game = false,
     autoplace =
@@ -11688,6 +11693,7 @@ data:extend{
     order = "d[remnants]-d[ship-wreck-grass]-a[big]",
     collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
     selection_box = {{-2.8, -1.7}, {2.8, 1.7}},
+    grows_through_rail_path = true,
     selectable_in_game = false,
     pictures =
     {
@@ -11707,6 +11713,7 @@ data:extend{
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     selection_box = {{-1.7, -0.6}, {1.7, 0.6}},
+    grows_through_rail_path = true,
     selectable_in_game = false,
     render_layer = "floor",
     pictures =

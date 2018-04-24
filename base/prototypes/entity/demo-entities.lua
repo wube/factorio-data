@@ -1096,8 +1096,7 @@ data:extend(
     max_health = 20,
     subgroup = "creatures",
     order = "b-a",
-    collision_box = {{0,0}, {0,0}},
-    terrain_collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
+    collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
     selection_box = {{-0.5, -0.3}, {0.5, 0.3}},
     pictures =
     {
@@ -3026,7 +3025,7 @@ data:extend(
         percent = 30
       }
     },
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_per_sector = "10MJ",
     max_distance_of_sector_revealed = 14,
@@ -3413,8 +3412,9 @@ data:extend(
           priority="high",
           width = 95,
           height = 83,
-          frame_count = 32,
-          line_length = 8,
+          frame_count = 1,
+          line_length = 1,
+          repeat_count = 32,
           draw_as_shadow = true,
           shift = util.by_pixel(8.5, 5.5),
           hr_version = {
@@ -3422,8 +3422,9 @@ data:extend(
             priority="high",
             width = 190,
             height = 165,
-            frame_count = 32,
-            line_length = 8,
+            frame_count = 1,
+            line_length = 1,
+            repeat_count = 32,
             draw_as_shadow = true,
             shift = util.by_pixel(8.5, 5),
             scale = 0.5

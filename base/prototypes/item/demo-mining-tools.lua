@@ -3,6 +3,7 @@ data:extend(
   {
     type = "mining-tool",
     name = "iron-axe",
+    localised_description = {"item-description.mining-tool"},
     icon = "__base__/graphics/icons/iron-axe.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},

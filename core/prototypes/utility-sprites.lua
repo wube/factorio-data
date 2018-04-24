@@ -133,6 +133,14 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    clone =
+    {
+      filename = "__core__/graphics/clone-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     go_to_arrow =
     {
       filename = "__core__/graphics/goto-icon.png",

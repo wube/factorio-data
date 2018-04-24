@@ -236,6 +236,7 @@ data:extend(
   {
     type = "tool",
     name = "science-pack-1",
+    localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/science-pack-1.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -249,6 +250,7 @@ data:extend(
   {
     type = "tool",
     name = "science-pack-2",
+    localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/science-pack-2.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -262,6 +264,7 @@ data:extend(
   {
     type = "tool",
     name = "science-pack-3",
+    localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/science-pack-3.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -275,6 +278,7 @@ data:extend(
   {
     type = "tool",
     name = "military-science-pack",
+    localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/military-science-pack.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -288,6 +292,7 @@ data:extend(
   {
     type = "tool",
     name = "production-science-pack",
+    localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/production-science-pack.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -301,6 +306,7 @@ data:extend(
   {
     type = "tool",
     name = "high-tech-science-pack",
+    localised_description = {"item-description.science-pack"},
     icon = "__base__/graphics/icons/high-tech-science-pack.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -594,7 +600,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "c[signal]-a[roboport]",
     place_result = "roboport",
-    stack_size = 5
+    stack_size = 10
   },
   {
     type = "item",

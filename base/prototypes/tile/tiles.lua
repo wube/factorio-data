@@ -210,6 +210,19 @@ function water_autoplace_settings(from_depth, rectangles)
 end
 
 water_tile_type_names = { "water", "deepwater", "water-green", "deepwater-green" }
+patch_for_inner_corner_of_transition_between_transition = 
+{
+  filename = "__base__/graphics/terrain/water-transitions/water-patch.png",
+  width = 32,
+  height = 32,
+  hr_version =
+  {
+    filename = "__base__/graphics/terrain/water-transitions/hr-water-patch.png",
+    scale = 0.5,
+    width = 64,
+    height = 64
+  }
+}
 
 local sand_transitions =
 {
@@ -247,6 +260,7 @@ local sand_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
       }
   ),
 }
@@ -284,7 +298,7 @@ local grass_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        --base = { layer = 41 }
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
       }
   ),
 }
@@ -321,6 +335,7 @@ local dry_dirt_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
       }
   ),
 }
@@ -357,6 +372,7 @@ local dark_dirt_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
       }
   ),
 }
@@ -1944,6 +1960,119 @@ data:extend(
       }
     },
     map_color={r=1, g=1, b=1},
+    ageing=0.0006
+  },
+  {
+    type = "tile",
+    name = "tutorial-grid",
+    collision_mask = {"ground-tile"},
+    layer = 75,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid1.png",
+          count = 16,
+          size = 1,
+          hr_version = {
+            picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid1.png",
+            count = 16,
+            scale = 0.5,
+            size = 1
+          }
+        },
+        {
+          picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid2.png",
+          count = 16,
+          size = 2,
+          hr_version = {
+            picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid2.png",
+            count = 16,
+            scale = 0.5,
+            size = 2
+          }
+        }
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-inner-corner.png",
+        count = 1,
+        tall = true,
+        hr_version = {
+          picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-inner-corner.png",
+          count = 1,
+          tall = true,
+          scale = 0.5
+        }
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-outer-corner.png",
+        count = 1,
+        tall = true,
+        hr_version = {
+          picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-outer-corner.png",
+          count = 1,
+          tall = true,
+          scale = 0.5
+        }
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-side.png",
+        count = 1,
+        tall = true,
+        hr_version = {
+          picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-side.png",
+          count = 1,
+          tall = true,
+          scale = 0.5
+        }
+      },
+      u_transition =
+      {
+        picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-u.png",
+        count = 1,
+        tall = true,
+        hr_version = {
+          picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-u.png",
+          count = 1,
+          tall = true,
+          scale = 0.5
+        }
+      },
+      o_transition =
+      {
+        picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-o.png",
+        count = 1,
+        hr_version = {
+          picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-o.png",
+          count = 4,
+          scale = 0.5
+        }
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.2
+      }
+    },
+    map_color={r=0, g=0, b=0},
     ageing=0.0006
   },
 })

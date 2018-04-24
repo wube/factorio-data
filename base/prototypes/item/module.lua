@@ -3,6 +3,7 @@ data:extend(
   {
     type = "module",
     name = "speed-module",
+    localised_description = {"item-description.speed-module"},
     icon = "__base__/graphics/icons/speed-module.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -17,6 +18,7 @@ data:extend(
   {
     type = "module",
     name = "speed-module-2",
+    localised_description = {"item-description.speed-module"},
     icon = "__base__/graphics/icons/speed-module-2.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -31,6 +33,7 @@ data:extend(
   {
     type = "module",
     name = "speed-module-3",
+    localised_description = {"item-description.speed-module"},
     icon = "__base__/graphics/icons/speed-module-3.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -45,6 +48,7 @@ data:extend(
   {
     type = "module",
     name = "effectivity-module",
+    localised_description = {"item-description.effectivity-module"},
     icon = "__base__/graphics/icons/effectivity-module.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -60,6 +64,7 @@ data:extend(
   {
     type = "module",
     name = "effectivity-module-2",
+    localised_description = {"item-description.effectivity-module"},
     icon = "__base__/graphics/icons/effectivity-module-2.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -74,6 +79,7 @@ data:extend(
   {
     type = "module",
     name = "effectivity-module-3",
+    localised_description = {"item-description.effectivity-module"},
     icon = "__base__/graphics/icons/effectivity-module-3.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -139,6 +145,7 @@ data:extend(
   {
     type = "module",
     name = "productivity-module",
+    localised_description = {"item-description.productivity-module"},
     icon = "__base__/graphics/icons/productivity-module.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -161,6 +168,7 @@ data:extend(
   {
     type = "module",
     name = "productivity-module-2",
+    localised_description = {"item-description.productivity-module"},
     icon = "__base__/graphics/icons/productivity-module-2.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},
@@ -183,6 +191,7 @@ data:extend(
   {
     type = "module",
     name = "productivity-module-3",
+    localised_description = {"item-description.productivity-module"},
     icon = "__base__/graphics/icons/productivity-module-3.png",
     icon_size = 32,
     flags = {"goes-to-main-inventory"},

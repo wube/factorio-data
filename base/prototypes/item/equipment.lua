@@ -37,6 +37,7 @@ data:extend(
   {
     type = "item",
     name = "energy-shield-mk2-equipment",
+    localised_description = {"item-description.energy-shield-equipment"},
     icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
     icon_size = 32,
     placed_as_equipment_result = "energy-shield-mk2-equipment",
@@ -61,6 +62,7 @@ data:extend(
   {
     type = "item",
     name = "battery-mk2-equipment",
+    localised_description = {"item-description.battery-equipment"},
     icon = "__base__/graphics/icons/battery-mk2-equipment.png",
     icon_size = 32,
     placed_as_equipment_result = "battery-mk2-equipment",
@@ -117,6 +119,7 @@ data:extend(
   {
     type = "item",
     name = "personal-roboport-mk2-equipment",
+    localised_description = {"item-description.personal-roboport-equipment"},
     icon = "__base__/graphics/icons/personal-roboport-mk2-equipment.png",
     icon_size = 32,
     placed_as_equipment_result = "personal-roboport-mk2-equipment",
