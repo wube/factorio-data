@@ -91,7 +91,7 @@ data:extend(
       }
     },
     map_color={r=0, g=0, b=0},
-    ageing=0
+    ageing=0.0006
   },
   {
     type = "tile",

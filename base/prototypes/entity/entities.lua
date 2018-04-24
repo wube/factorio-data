@@ -4601,7 +4601,7 @@ data:extend(
         {
           name = "smoke",
           frequency = 10,
-          position = {0.92, -1.0},
+          position = {0.7, -1.2},
           starting_vertical_speed = 0.08,
           starting_frame_deviation = 60
         }

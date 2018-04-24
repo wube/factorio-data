@@ -556,7 +556,7 @@ data:extend(
           name = "smoke",
           deviation = {0.1, 0.1},
           frequency = 5,
-          position = {0.2, -0.5},
+          position = {0.0, -0.8},
           starting_vertical_speed = 0.08,
           starting_frame_deviation = 60
         }
@@ -714,7 +714,7 @@ data:extend(
       {
         {
           name = "smoke",
-          position = {0.5, -0.5},
+          position = {0.0, -0.8},
           frequency = 5,
           starting_vertical_speed = 0.0,
           starting_frame_deviation = 60
@@ -1376,8 +1376,8 @@ data:extend(
     {
       {
         name = "light-smoke",
-        north_position = {1.2, 0.0},
-        east_position = {-1.7, -2.0},
+        north_position = {0.9, 0.0},
+        east_position = {-2.0, -2.0},
         frequency = 10 / 32,
         starting_vertical_speed = 0.08,
         slow_down_factor = 1,
@@ -1779,7 +1779,7 @@ data:extend(
         {
           name = "smoke",
           deviation = {0.1, 0.1},
-          frequency = 30
+          frequency = 9
         }
       }
     },
