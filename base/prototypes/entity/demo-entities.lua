@@ -235,7 +235,7 @@ data:extend(
     type = "player",
     name = "player",
     icon = "__base__/graphics/icons/player.png",
-    flags = {"pushable", "placeable-player", "placeable-off-grid", "breaths-air", "not-repairable", "not-on-map"},
+    flags = {"pushable", "placeable-off-grid", "breaths-air", "not-repairable", "not-on-map"},
     max_health = 100,
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},

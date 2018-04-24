@@ -1,3 +1,4 @@
+require ("prototypes.entity.demo-worm-animations")
 require "util"
 
 laser_turret_extension =
@@ -16,93 +17,15 @@ function shift_medium_worm(shiftx, shifty)
   return {shiftx - 0.15, shifty + 0.15}
 end
 
-medium_worm_preparing =
-{
-  filename = "__base__/graphics/entity/medium-worm-turret/preparing.png",
-  priority = "medium",
-  width = 175,
-  height = 125,
-  frame_count = 27,
-  line_length = 7,
-  direction_count = 1,
-  axially_symmetrical = false,
-  shift = shift_medium_worm(0.929688, -0.624219),
-}
+medium_worm_scale = 0.83
+medium_worm_tint = {r=0.9, g=0.15, b=0.3, a=1.0}
 
-medium_worm_starting_attack =
-{
-  priority = "medium",
-  width = 229,
-  height = 175,
-  frame_count = 8,
-  direction_count = 16,
-  line_length = 1,
-  shift = shift_medium_worm(0.677344, -0.6375),
-  axially_symmetrical = false,
-  stripes =
-  {
-    {
-      filename = "__base__/graphics/entity/medium-worm-turret/starting-attack-1.png",
-      width_in_frames = 8,
-      height_in_frames = 8
-    },
-    {
-      filename = "__base__/graphics/entity/medium-worm-turret/starting-attack-2.png",
-      width_in_frames = 8,
-      height_in_frames = 8
-    },
-  }
-}
+big_worm_scale = 1.0
+big_worm_tint = {r=0.34, g=0.68, b=0.90, a=1.0}
 
 function shift_big_worm(shiftx, shifty)
   return {shiftx - 0.2, shifty + 0.2}
 end
-
-big_worm_preparing =
-{
-  filename = "__base__/graphics/entity/big-worm-turret/preparing.png",
-  priority = "medium",
-  line_length = 7,
-  width = 207,
-  height = 148,
-  frame_count = 27,
-  axially_symmetrical = false,
-  direction_count = 1,
-  shift = shift_big_worm(1.09375, -0.734375),
-}
-
-big_worm_starting_attack =
-{
-  width = 270,
-  height = 207,
-  frame_count = 8,
-  axially_symmetrical = false,
-  direction_count = 16,
-  shift = shift_big_worm(0.796875, -0.75),
-  stripes =
-  {
-   {
-    filename = "__base__/graphics/entity/big-worm-turret/starting-attack-1.png",
-    width_in_frames = 4,
-    height_in_frames = 8,
-   },
-   {
-    filename = "__base__/graphics/entity/big-worm-turret/starting-attack-2.png",
-    width_in_frames = 4,
-    height_in_frames = 8,
-   },
-   {
-    filename = "__base__/graphics/entity/big-worm-turret/starting-attack-3.png",
-    width_in_frames = 4,
-    height_in_frames = 8,
-   },
-   {
-    filename = "__base__/graphics/entity/big-worm-turret/starting-attack-4.png",
-    width_in_frames = 4,
-    height_in_frames = 8,
-   }
-  }
-}
 
 data:extend(
 {
@@ -134,36 +57,14 @@ data:extend(
     corpse = "medium-worm-corpse",
     dying_explosion = "blood-explosion-big",
     folded_speed = 0.01,
-    folded_animation =
-    {
-      filename = "__base__/graphics/entity/medium-worm-turret/folded.png",
-      priority = "medium",
-      width = 120,
-      height = 88,
-      frame_count = 15,
-      direction_count = 1,
-      line_length = 5,
-      axially_symmetrical = false,
-      shift = shift_medium_worm(0.0664062, -0.0398437),
-    },
+    folded_animation = worm_folded_animation(medium_worm_scale, medium_worm_tint),
+    prepare_range = 25,
     preparing_speed = 0.025,
-    preparing_animation = medium_worm_preparing,
-    prepared_speed = 0.01,
-    prepared_animation =
-    {
-      filename = "__base__/graphics/entity/medium-worm-turret/prepared.png",
-      run_mode = "forward-then-backward",
-      priority = "medium",
-      line_length = 4,
-      width = 164,
-      height = 133,
-      frame_count = 11,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = shift_medium_worm(0.757031, -0.770312),
-    },
+    preparing_animation = worm_preparing_animation(medium_worm_scale, medium_worm_tint, "forward"),
+    prepared_speed = 0.015,
+    prepared_animation = worm_prepared_animation(medium_worm_scale, medium_worm_tint),
     starting_attack_speed = 0.03,
-    starting_attack_animation = medium_worm_starting_attack,
+    starting_attack_animation = worm_attack_animation(medium_worm_scale, medium_worm_tint, "forward"),
     starting_attack_sound =
     {
       {
@@ -180,17 +81,9 @@ data:extend(
       }
     },
     ending_attack_speed = 0.03,
-    ending_attack_animation = (function()
-                                local res = util.table.deepcopy(medium_worm_starting_attack)
-                                res.run_mode = "backward"
-                                return res
-                              end)(),
+    ending_attack_animation = worm_attack_animation(medium_worm_scale, medium_worm_tint, "backward"),
     folding_speed = 0.015,
-    folding_animation = (function()
-                           local res = util.table.deepcopy(medium_worm_preparing)
-                           res.run_mode = "backward"
-                           return res
-                         end)(),
+    folding_animation =  worm_preparing_animation(medium_worm_scale, medium_worm_tint, "backward"),
     prepare_range = 30,
     attack_parameters =
     {
@@ -276,36 +169,14 @@ data:extend(
     dying_explosion = "blood-explosion-big",
     inventory_size = 2,
     folded_speed = 0.01,
-    folded_animation =
-    {
-      filename = "__base__/graphics/entity/big-worm-turret/folded.png",
-      priority = "medium",
-      width = 142,
-      height = 104,
-      frame_count = 15,
-      axially_symmetrical = false,
-      direction_count = 1,
-      line_length = 5,
-      shift = shift_big_worm(0.078125, -0.046875),
-    },
+    folded_animation = worm_folded_animation(big_worm_scale, big_worm_tint),
+    prepare_range = 25,
     preparing_speed = 0.025,
-    preparing_animation = big_worm_preparing,
-    prepared_speed = 0.01,
-    prepared_animation =
-    {
-      filename = "__base__/graphics/entity/big-worm-turret/prepared.png",
-      run_mode = "forward-then-backward",
-      priority = "medium",
-      line_length = 4,
-      width = 194,
-      height = 157,
-      frame_count = 11,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = shift_big_worm(0.890625, -0.90625),
-    },
+    preparing_animation = worm_preparing_animation(big_worm_scale, big_worm_tint, "forward"),
+    prepared_speed = 0.015,
+    prepared_animation = worm_prepared_animation(big_worm_scale, big_worm_tint),
     starting_attack_speed = 0.03,
-    starting_attack_animation = big_worm_starting_attack,
+    starting_attack_animation = worm_attack_animation(big_worm_scale, big_worm_tint, "forward"),
     starting_attack_sound =
     {
       {
@@ -314,17 +185,9 @@ data:extend(
       }
     },
     ending_attack_speed = 0.03,
-    ending_attack_animation = (function()
-                                local res = util.table.deepcopy(big_worm_starting_attack)
-                                res.run_mode = "backward"
-                                return res
-                              end)(),
+    ending_attack_animation = worm_attack_animation(big_worm_scale, big_worm_tint, "backward"),
     folding_speed = 0.015,
-    folding_animation = (function()
-                           local res = util.table.deepcopy(big_worm_preparing)
-                           res.run_mode = "backward"
-                           return res
-                         end)(),
+    folding_animation =  worm_preparing_animation(big_worm_scale, big_worm_tint, "backward"),
     prepare_range = 30,
     attack_parameters =
     {
@@ -482,17 +345,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
     final_render_layer = "corpse",
-    animation =
-    {
-      width = 274,
-      height = 243,
-      frame_count = 29,
-      direction_count = 1,
-      line_length = 6,
-      axially_symetric = false,
-      shift = shift_medium_worm(0.053125, 0.159375),
-      filename = "__base__/graphics/entity/medium-worm-turret/die.png",
-    }
+    animation = worm_die_animation(medium_worm_scale, medium_worm_tint)
   },
   {
     type = "corpse",
@@ -505,17 +358,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
     final_render_layer = "corpse",
-    animation =
-    {
-      filename = "__base__/graphics/entity/big-worm-turret/die.png",
-      line_length = 6,
-      width = 323,
-      height = 287,
-      frame_count = 29,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = shift_big_worm(0.0625, 0.1875),
-    }
+    animation = worm_die_animation(big_worm_scale, big_worm_tint)
   }
 }
 )

@@ -1,3 +1,4 @@
+require ("prototypes.entity.demo-worm-animations")
 require "util"
 
 gun_turret_extension =
@@ -16,43 +17,8 @@ function shift_small_worm(shiftx, shifty)
   return {shiftx - 0.1, shifty + 0.1}
 end
 
-small_worm_preparing =
-{
-  filename = "__base__/graphics/entity/small-worm-turret/preparing.png",
-  priority = "medium",
-  width = 144,
-  height = 103,
-  frame_count = 27,
-  line_length = 7,
-  direction_count = 1,
-  axially_symmetrical = false,
-  shift = shift_small_worm(0.765625, -0.514062)
-}
-
-small_worm_starting_attack =
-{
-  priority = "medium",
-  width = 189,
-  height = 144,
-  frame_count = 8,
-  direction_count = 16,
-  line_length = 1,
-  shift = shift_small_worm(0.557812, -0.525),
-  axially_symmetrical = false,
-  stripes =
-  {
-    {
-      filename = "__base__/graphics/entity/small-worm-turret/starting-attack-1.png",
-      width_in_frames = 8,
-      height_in_frames = 8
-    },
-    {
-      filename = "__base__/graphics/entity/small-worm-turret/starting-attack-2.png",
-      width_in_frames = 8,
-      height_in_frames = 8
-    },
-  }
-}
+small_worm_scale = 0.65
+small_worm_tint = {r=1, g=0.63, b=0, a=1.0}
 
 data:extend(
 {
@@ -71,37 +37,14 @@ data:extend(
     corpse = "small-worm-corpse",
     dying_explosion = "blood-explosion-big",
     folded_speed = 0.01,
-    folded_animation =
-    {
-      filename = "__base__/graphics/entity/small-worm-turret/folded.png",
-      priority = "medium",
-      width = 99,
-      height = 72,
-      frame_count = 15,
-      direction_count = 1,
-      line_length = 5,
-      axially_symmetrical = false,
-      shift = shift_small_worm(0.0546875, -0.0328125)
-    },
+    folded_animation = worm_folded_animation(small_worm_scale, small_worm_tint),
     prepare_range = 25,
     preparing_speed = 0.025,
-    preparing_animation = small_worm_preparing,
+    preparing_animation = worm_preparing_animation(small_worm_scale, small_worm_tint, "forward"),
     prepared_speed = 0.015,
-    prepared_animation =
-    {
-      filename = "__base__/graphics/entity/small-worm-turret/prepared.png",
-      priority = "medium",
-      run_mode = "forward-then-backward",
-      width = 135,
-      height = 109,
-      frame_count = 11,
-      line_length = 4,
-      direction_count = 1,
-      axially_symmetrical = false,
-      shift = shift_small_worm(0.623437, -0.634375)
-    },
+    prepared_animation = worm_prepared_animation(small_worm_scale, small_worm_tint),
     starting_attack_speed = 0.03,
-    starting_attack_animation = small_worm_starting_attack,
+    starting_attack_animation = worm_attack_animation(small_worm_scale, small_worm_tint, "forward"),
     starting_attack_sound =
     {
       {
@@ -118,17 +61,9 @@ data:extend(
       }
     },
     ending_attack_speed = 0.03,
-    ending_attack_animation = (function()
-                                local res = util.table.deepcopy(small_worm_starting_attack)
-                                res.run_mode = "backward"
-                                return res
-                              end)(),
+    ending_attack_animation = worm_attack_animation(small_worm_scale, small_worm_tint, "backward"),
     folding_speed = 0.015,
-    folding_animation = (function()
-                           local res = util.table.deepcopy(small_worm_preparing)
-                           res.run_mode = "backward"
-                           return res
-                         end)(),
+    folding_animation =  worm_preparing_animation(small_worm_scale, small_worm_tint, "backward"),
     attack_parameters =
     {
       ammo_category = "bullet",
@@ -268,17 +203,7 @@ data:extend(
     order = "c[corpse]-c[worm]-a[small]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     final_render_layer = "corpse",
-    animation =
-    {
-      width = 226,
-      height = 200,
-      frame_count = 29,
-      direction_count = 1,
-      line_length = 6,
-      axially_symetric = false,
-      shift = shift_small_worm(0.04375, 0.13125),
-      filename = "__base__/graphics/entity/small-worm-turret/die.png",
-    },
+    animation = worm_die_animation(small_worm_scale, small_worm_tint),
   }
 }
 )
