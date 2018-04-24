@@ -136,17 +136,16 @@ end
 
 function get_tracked_items()
   if not global.silo_script then return {} end
-  if not global.silo_script.tracked_items then 
-    global.silo_script.tracked_items = silo_script.tracked_items
+  if not global.silo_script.tracked_items then
+    global.silo_script.tracked_items = silo_script.tracked_items()
   end
 
   local list = global.silo_script.tracked_items
-  if not list then return end
   local items = game.item_prototypes
   for k, name in pairs (list) do
     if not items[name] then
       log("Removed \""..name.."\" from tracked items, as it is not a valid item.")
-      table.remove(list, k)
+      list[k] = nil
     end
   end
 
@@ -155,7 +154,7 @@ end
 
 silo_script = {}
 silo_script.version = 2
-silo_script.tracked_items = {"satellite"}
+silo_script.tracked_items = function () return {"satellite"} end
 
 silo_script.on_rocket_launched = function(event)
   local rocket = event.rocket
@@ -228,10 +227,10 @@ silo_script.add_remote_interface = function()
     end,
     remove_tracked_item = function(item_name)
       if type(item_name) ~= "string" then error("Value for 'remove_tracked_item' must be a string") end
-      for k, name in pairs (get_tracked_items()) do
+      local list = get_tracked_items()
+      for k, name in pairs (list) do
         if name == item_name then
-          table.remove(get_tracked_items(), k)
-          break
+          list[k] = nil
         end
       end
       update_players()
@@ -241,7 +240,7 @@ silo_script.add_remote_interface = function()
 end
 
 silo_script.add_commands = function()
-  commands.add_command("toggle-rockets-sent-gui", "toggle-rockets-sent-command-help", function()
+  commands.add_command("toggle-rockets-sent-gui", {"gui-silo-script.toggle-rockets-sent-command-help"}, function()
     local player = game.player
     local button = get_sprite_button(player)
     local set_to = not button.style.visible
@@ -271,7 +270,7 @@ silo_script.on_init = function()
   if global.silo_script ~= nil then return end
   global.silo_script = {}
   global.silo_script.version = silo_script.version
-  global.silo_script.tracked_items = silo_script.tracked_items
+  global.silo_script.tracked_items = silo_script.tracked_items()
   global.silo_script.show_launched_without_satellite = true
   global.silo_script.finish_on_launch = true
 end
