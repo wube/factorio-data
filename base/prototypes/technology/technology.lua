@@ -287,7 +287,7 @@ data:extend(
   },
   {
     type = "technology",
-    name = "grenade-damage-5",
+    name = "grenade-damage-6",
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -297,7 +297,7 @@ data:extend(
         modifier = "0.2"
       }
     },
-    prerequisites = {"grenade-damage-4"},
+    prerequisites = {"grenade-damage-5"},
     unit =
     {
       count = 1000,
@@ -977,6 +977,7 @@ data:extend(
     type = "technology",
     name = "armor-making-2",
     icon = "__base__/graphics/technology/armor-making.png",
+    localised_description = {"technology-description.armor-making-2"},
     effects =
     {
       {
@@ -997,6 +998,8 @@ data:extend(
     type = "technology",
     name = "armor-making-3",
     icon = "__base__/graphics/technology/armor-making.png",
+    localised_name = {"technology-name.armor-making-3"},
+    localised_description = {"technology-description.armor-making-3"},
     effects =
     {
       {
@@ -1037,6 +1040,7 @@ data:extend(
     type = "technology",
     name = "power-armor-2",
     icon = "__base__/graphics/technology/power-armor-mk2.png",
+    localised_description = {"technology-description.power-armor-2"},
     effects =
     {
       {
