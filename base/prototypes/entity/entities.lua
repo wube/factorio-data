@@ -1899,6 +1899,10 @@ data:extend(
           {
             type = "create-entity",
             entity_name = "explosion"
+          },
+          {
+            type = "damage",
+            damage = { amount = 1000, type = "explosion"}
           }
         }
       }
