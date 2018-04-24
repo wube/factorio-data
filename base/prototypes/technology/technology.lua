@@ -246,7 +246,7 @@ data:extend(
         recipe = "assembling-machine-3"
       }
     },
-    prerequisites = {"electronics", "modules"},
+    prerequisites = {"electronics", "modules", "automation-2"},
     unit =
     {
       count = 100,
@@ -554,15 +554,14 @@ data:extend(
         recipe = "car"
       },
     },
-    prerequisites = {"logistics-3"},
+    prerequisites = {"logistics-2"},
     unit =
     {
       count = 100,
       ingredients =
       {
         {"science-pack-1", 2},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
+        {"science-pack-2", 1}
       },
       time = 20
     },
@@ -670,10 +669,9 @@ data:extend(
       ingredients =
       {
         {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
+        {"science-pack-2", 1}
       },
-      time = 45
+      time = 30
     },
     order = "a-h-c",
   },
@@ -993,8 +991,7 @@ data:extend(
       ingredients =
       {
         {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
+        {"science-pack-2", 1}
       },
       time = 30
     },
@@ -1019,8 +1016,7 @@ data:extend(
       ingredients =
       {
         {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
+        {"science-pack-2", 1}
       },
       time = 30
     },
@@ -1295,7 +1291,7 @@ data:extend(
         recipe = "electric-furnace"
       }
     },
-    prerequisites = {"advanced-material-processing"},
+    prerequisites = {"advanced-material-processing", "advanced-electronics"},
     unit =
     {
       count = 100,
@@ -1332,6 +1328,29 @@ data:extend(
       time = 30
     },
     order = "i-i"
+  },
+  {
+    type = "technology",
+    name = "toolbelt",
+    icon = "__base__/graphics/technology/toolbelt.png",
+    effects =
+    {
+      {
+        type = "num-quick-bars",
+        modifier = 2
+      }
+    },
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1}
+      },
+      time = 30
+    },
+    order = "c-k-m"
   }
 }
 )

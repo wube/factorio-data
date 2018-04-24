@@ -44,7 +44,7 @@ data:extend(
     effects = {
       {
         type = "logistic-robot-speed",
-        modifier = "0.3"
+        modifier = "0.35"
       }
     },
     prerequisites = {
@@ -69,7 +69,7 @@ data:extend(
     effects = {
       {
         type = "logistic-robot-speed",
-        modifier = "0.35"
+        modifier = "0.4"
       }
     },
     prerequisites = {
@@ -94,7 +94,7 @@ data:extend(
     effects = {
       {
         type = "logistic-robot-speed",
-        modifier = "0.4"
+        modifier = "0.45"
       }
     },
     prerequisites = {
@@ -120,7 +120,7 @@ data:extend(
     effects = {
       {
         type = "logistic-robot-speed",
-        modifier = "0.5"
+        modifier = "0.55"
       }
     },
     prerequisites = {
@@ -146,7 +146,7 @@ data:extend(
     effects = {
       {
         type = "logistic-robot-speed",
-        modifier = "0.6"
+        modifier = "0.65"
       }
     },
     prerequisites = {

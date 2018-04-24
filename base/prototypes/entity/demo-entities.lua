@@ -593,6 +593,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "stone-furnace"},
     max_health = 150,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -664,6 +665,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "basic-transport-belt"},
     max_health = 50,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -721,6 +723,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
     max_health = 100,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -890,6 +893,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "wooden-chest"},
     max_health = 50,
+    corpse = "small-remnants",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -907,6 +911,7 @@ data:extend(
     type = "corpse",
     name = "small-biter-corpse",
     dying_speed = 0.04,
+    final_render_layer = "corpse",
     animation =
     {
       frame_width = 142,
@@ -935,6 +940,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-electric-pole"},
     max_health = 35,
+    corpse = "small-remnants",
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
     drawing_box = {{-0.5, -2.3}, {0.5, 0.5}},
@@ -1110,8 +1116,8 @@ data:extend(
     icon = "__base__/graphics/icons/biter-spawner.png",
     flags = {"placeable-player", "placeable-enemy"},
     minable = {mining_time = 1, result = "biter-spawner"},
-    max_health = 300,
-    resistances = 
+    max_health = 350,
+    resistances =
     {
       {
         type = "physical",
@@ -1124,11 +1130,11 @@ data:extend(
       }
     },
     healing_per_tick = 0.02,
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
+    selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
     -- in ticks per 1 pu
     pollution_cooldown = 10,
-    dying_explosion = "huge-explosion",
+    corpse = "biter-spawner-corpse",
     loot =
     {
       {
@@ -1141,12 +1147,27 @@ data:extend(
     maximum_count_of_owned_units = 7,
     animations =
     {
-      filename = "__base__/graphics/entity/biter-spawner/biter-spawner.png",
-      priority = "high",
-      frame_width = 87,
-      frame_height = 101,
-      frame_count = 1,
-      direction_count = 1
+      frame_width = 257,
+      frame_height = 188,
+      frame_count = 8,
+      animation_speed = 0.18,
+      run_mode = "forward-then-backward",
+      axially_symmetric = false,
+      direction_count = 4,
+      shift = {0.359375, -0.125},
+      stripes =
+      {
+       {
+        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-1.png",
+        width_in_frames = 4,
+        height_in_frames = 4,
+       },
+       {
+        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-2.png",
+        width_in_frames = 4,
+        height_in_frames = 4,
+       }
+      }
     },
     result_units = (function()
                      local res = {}
@@ -1157,7 +1178,7 @@ data:extend(
                      end
                      return res
                    end)(),
-    spawning_cooldown = 180,
+    spawning_cooldown = {300, 150}, -- With zero evolution the spawn rate is 5 seconds, with max evolution it is 2.5 seconds
     spawning_radius = 10,
     spawning_spacing = 3,
     max_spawn_shift = 0.65,
@@ -1173,38 +1194,70 @@ data:extend(
         {
           influence = 0,
           richness_influence = 100,
-          tier_from_start_optimal = 12,
-          tier_from_start_top_property_limit = 12,
-          tier_from_start_max_range = 24,
+          tier_from_start_optimal = 20,
+          tier_from_start_top_property_limit = 20,
+          tier_from_start_max_range = 40,
         },
         {
-          influence = -7.0,
+          influence = -10.0,
           starting_area_weight_optimal = 1,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.3,
+          influence = 0.425,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -2,
-          noise_persistence = 0.5,
-        },
-        {
-          influence = 0.05,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -3,
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
         },
         -- increase the size when moving further away
         {
           influence = 0.5,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -2,
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
-          tier_from_start_optimal = 15,
-          tier_from_start_top_property_limit = 15,
-          tier_from_start_max_range = 30,
+          tier_from_start_optimal = 20,
+          tier_from_start_top_property_limit = 20,
+          tier_from_start_max_range = 40,
         },
+      }
+    }
+  },
+  {
+    type = "corpse",
+    name = "biter-spawner-corpse",
+    dying_speed = 0.04,
+    final_render_layer = "corpse",
+    animation =
+    {
+      frame_width = 320,
+      frame_height = 320,
+      frame_count = 20,
+      axially_symmetric = false,
+      direction_count = 4,
+      shift = {0, 0},
+      stripes =
+      {
+        {
+          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-1.png",
+          width_in_frames = 5,
+          height_in_frames = 4,
+        },
+        {
+          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-2.png",
+          width_in_frames = 5,
+          height_in_frames = 4,
+        },
+        {
+          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-3.png",
+          width_in_frames = 5,
+          height_in_frames = 4,
+        },
+        {
+          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-4.png",
+          width_in_frames = 5,
+          height_in_frames = 4,
+        }
       }
     }
   },
@@ -1312,6 +1365,7 @@ data:extend(
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "steam-engine"},
     max_health = 300,
+    corpse = "big-remnants",
     resistances = 
     {
       {
@@ -1397,6 +1451,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 1, result = "pump"},
     max_health = 80,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -1453,7 +1508,8 @@ data:extend(
     },
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-inserter"},
     max_health = 40,
-     resistances = 
+    corpse = "small-remnants",
+    resistances = 
     {
       {
         type = "fire",
@@ -1510,7 +1566,8 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "burner-inserter"},
     max_health = 40,
-     resistances = 
+    corpse = "small-remnants",
+    resistances = 
     {
       {
         type = "fire",
@@ -1583,7 +1640,8 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe"},
     max_health = 50,
-     resistances = 
+    corpse = "small-remnants",
+    resistances = 
     {
       {
         type = "fire",
@@ -1603,6 +1661,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "radar"},
     max_health = 150,
+    corpse = "big-remnants",
     resistances = 
     {
       {
@@ -1638,6 +1697,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-lamp"},
     max_health = 55,
+    corpse = "small-remnants",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     energy_source =
@@ -1714,6 +1774,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe-to-ground"},
     max_health = 50,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -1724,6 +1785,13 @@ data:extend(
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     max_liquid_amount = 10,
+    underground_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 32,
+      height = 32
+    },
     pictures =
     {
       up =
@@ -1765,6 +1833,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-1"},
     max_health = 200,
+    corpse = "big-remnants",
     resistances = 
     {
       {
@@ -1807,6 +1876,7 @@ data:extend(
     type = "corpse",
     name = "acid-splash-purple",
     time_before_removed = 60 * 30,
+    final_render_layer = "corpse",
     splash =
     {
       {
@@ -1847,6 +1917,129 @@ data:extend(
       }
     },
     splash_speed = 0.03
+  },
+  {
+    type = "corpse",
+    name = "big-remnants",
+    icon = "__base__/graphics/icons/big-remnants.png",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = 
+    {
+      {
+        frame_width = 109,
+        frame_height = 102,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/remnants/big-remnants.png"
+      },
+      {
+        frame_width = 109,
+        frame_height = 102,
+        frame_count = 1,
+        direction_count = 1,
+        x = 109,
+        filename = "__base__/graphics/entity/remnants/big-remnants.png"
+      },
+      {
+        frame_width = 109,
+        frame_height = 102,
+        frame_count = 1,
+        direction_count = 1,
+        x = 218,
+        filename = "__base__/graphics/entity/remnants/big-remnants.png"
+      },
+      {
+        frame_width = 109,
+        frame_height = 102,
+        frame_count = 1,
+        direction_count = 1,
+        x = 327,
+        filename = "__base__/graphics/entity/remnants/big-remnants.png"
+      }
+    }
+  },
+  {
+    type = "corpse",
+    name = "medium-remnants",
+    icon = "__base__/graphics/icons/big-remnants.png",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = 
+    {
+      {
+        frame_width = 94,
+        frame_height = 82,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
+      },
+      {
+        frame_width = 94,
+        frame_height = 82,
+        frame_count = 1,
+        direction_count = 1,
+        x = 94,
+        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
+      },
+      {
+        frame_width = 94,
+        frame_height = 82,
+        frame_count = 1,
+        direction_count = 1,
+        x = 188,
+        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
+      },
+      {
+        frame_width = 94,
+        frame_height = 82,
+        frame_count = 1,
+        direction_count = 1,
+        x = 282,
+        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
+      }
+    }
+  },
+  {
+    type = "corpse",
+    name = "small-remnants",
+    icon = "__base__/graphics/icons/big-remnants.png",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = 
+    {
+      {
+        frame_width = 56,
+        frame_height = 42,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/remnants/small-remnants.png"
+      },
+      {
+        frame_width = 56,
+        frame_height = 42,
+        frame_count = 1,
+        direction_count = 1,
+        x = 56,
+        filename = "__base__/graphics/entity/remnants/small-remnants.png"
+      },
+      {
+        frame_width = 56,
+        frame_height = 42,
+        frame_count = 1,
+        direction_count = 1,
+        x = 112,
+        filename = "__base__/graphics/entity/remnants/small-remnants.png"
+      },
+      {
+        frame_width = 56,
+        frame_height = 42,
+        frame_count = 1,
+        direction_count = 1,
+        x = 168,
+        filename = "__base__/graphics/entity/remnants/small-remnants.png"
+      }
+    }
   }
 }
 )

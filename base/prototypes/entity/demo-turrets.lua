@@ -131,29 +131,33 @@ data:extend(
         }
       }
     },
-    autoplace = {
-      sharpness = 0.35,
+    autoplace =
+    {
+      sharpness = 0.3,
       control = "enemy-base",
       peaks =
       {
         {
-          influence = -1.0,
+          influence = -10.0,
           starting_area_weight_optimal = 1,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.35,
+          influence = 0.31,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -2,
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
         },
         {
-          influence = 0.05,
+          influence = 0.1,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -3,
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
-        },
+          tier_from_start_optimal = 10,
+          tier_from_start_top_property_limit = 10,
+          tier_from_start_max_range = 20,
+        }
       }
     }
   },
@@ -164,11 +168,12 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "gun-turret"},
     max_health = 200,
+    corpse = "small-remnants",
     collision_box = {{-0.4, -0.9 }, {0.4, 0.9}},
     selection_box = {{-0.5, -1 }, {0.5, 1}},
-    rotation_speed = 0.01,
-    preparing_speed = 0.05,
-    folding_speed = 0.05,
+    rotation_speed = 0.015,
+    preparing_speed = 0.08,
+    folding_speed = 0.08,
     dying_explosion = "huge-explosion",
     inventory_size = 1,
     folded_animation = (function()
@@ -220,7 +225,7 @@ data:extend(
         starting_frame_speed = 0.2,
         starting_frame_speed_deviation = 0.1
       },
-      range = 15,
+      range = 17,
       sound =
       {
         {
@@ -234,6 +239,7 @@ data:extend(
     type = "corpse",
     name = "small-worm-corpse",
     dying_speed = 0.01,
+    final_render_layer = "corpse",
     animation =
     {
       frame_width = 226,

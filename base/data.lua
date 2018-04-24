@@ -56,6 +56,7 @@ if not data.isdemo then
   require("prototypes.technology.technology")
   require("prototypes.technology.bullet-upgrades")
   require("prototypes.technology.shotgun-shell-upgrades")
+  require("prototypes.technology.gun-turret-upgrades")
   require("prototypes.technology.laser-turret-upgrades")
   require("prototypes.technology.rocket-upgrades")
   require("prototypes.equipment.equipment")

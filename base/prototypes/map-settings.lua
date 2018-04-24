@@ -14,7 +14,7 @@ data:extend(
       -- this much PUs must be on the chunk to start diffusing
       min_to_diffuse=15,
       -- constant amount of PUs that are eaten by the chunk
-      ageing=0.6,
+      ageing=0.55,
       -- minimum PUs to generate a new chunk
       min_to_activate_chunk=2,
       -- anything bigger than this is visualised as this value
@@ -24,12 +24,13 @@ data:extend(
     },
     enemy_evolution=
     {
+      enabled=true,
       -- percentual increase in the evolve factor for every second (60 ticks)
-      time_factor = 0.000025,
+      time_factor = 0.000008,
       -- percentual increase in the evolve factor for every destroyed spawner
-      destroy_factor = 0.015,
+      destroy_factor = 0.005,
       -- percentual increase in the evolve factor for 1000 PU
-      pollution_factor = 0.0001
+      pollution_factor = 0.00003
     },
     enemy_expansion=
     {
@@ -40,14 +41,32 @@ data:extend(
       -- player's territory
       max_expansion_distance = 5,
 
-      -- Size of the group that goes to build new base
-      settler_group_min_size = 10,
+      -- Minimal distance of expansion point in chunks from player base
+      min_player_base_distance = 3,
+
+      -- Size of the group that goes to build new base (in game this is multiplied by the
+      -- evolution factor).
+      settler_group_min_size = 5,
       settler_group_max_size = 20,
 
-      -- How many ticks on average does it take, before a single vialble
-      -- position for a base is used. If there are more possible positions,
-      -- expansion is faster.
-      expansion_cooldown = 8000000,
+      -- Ticks to expand to a single
+      -- position for a base is used.
+      --
+      -- cooldown is calculated as linear interpolation between min and max
+      min_expansion_cooldown = 5 * 3600,
+      max_expansion_cooldown = 60 * 3600
+    },
+    unit_group=
+    {
+      -- pollution triggered group waiting time is a random time between min and max gathering time
+      min_group_gathering_time = 3600,
+      max_group_gathering_time = 10 * 3600,
+      -- after the gathering is finished the group can still wait for late members,
+      -- but it doesn't accept new ones anymore
+      max_wait_time_for_late_members = 2 * 3600,
+      -- limits for group radius (calculated by number of numbers)
+      max_group_radius = 30.0,
+      min_group_radius = 5.0
     },
     steering=
     {

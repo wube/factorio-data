@@ -1,19 +1,17 @@
 
-railpictures = function()
-  keys = {{"straight_rail", "horizontal", 64, 64},
-          {"straight_rail", "vertical", 64, 64},
-          {"straight_rail", "diagonal", 64, 64},
-          {"curved_rail", "vertical", 128, 256},
-          {"curved_rail" ,"horizontal", 256, 128}}
-  elems = {"metals", "screws", "ties", "stone_path"}
-  res = {}
+railpicturesinternal = function(elems)
+  local keys = {{"straight_rail", "horizontal", 64, 64},
+                {"straight_rail", "vertical", 64, 64},
+                {"straight_rail", "diagonal", 64, 64},
+                {"curved_rail", "vertical", 128, 256},
+                {"curved_rail" ,"horizontal", 256, 128}}
+  local res = {}
   for _ , key in ipairs(keys) do
     part = {}
     dashkey = key[1]:gsub("_", "-")
     for _ , elem in ipairs(elems) do
-      dashelem = elem:gsub("_", "-")
-      part[elem] = {
-        filename = string.format("__base__/graphics/entity/%s/%s-%s-%s.png", dashkey, dashkey, key[2], dashelem),
+      part[elem[1]] = {
+        filename = string.format("__base__/graphics/entity/%s/%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
         priority = "extra-high",
         width = key[3],
         height = key[4]
@@ -22,6 +20,14 @@ railpictures = function()
     res[key[1] .. "_" .. key[2]] = part
   end
   return res
+end
+
+railpictures = function()
+  return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
+end
+
+destroyedrailpictures = function()
+  return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
 end
 
 data:extend(
@@ -33,7 +39,16 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-rotate-only"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-transport-belt-to-ground"},
     max_health = 70,
-    resistances = 
+    corpse = "small-remnants",
+    underground_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 32,
+      height = 32,
+      x = 32
+    },
+    resistances =
     {
       {
         type = "fire",
@@ -144,6 +159,15 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-transport-belt-to-ground"},
     max_health = 60,
+    corpse = "small-remnants",
+    underground_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 32,
+      height = 32,
+      x = 32
+    },
     resistances = 
     {
       {
@@ -255,6 +279,15 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-transport-belt-to-ground"},
     max_health = 60,
+    corpse = "small-remnants",
+    underground_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 32,
+      height = 32,
+      x = 32
+    },
     resistances = 
     {
       {
@@ -366,6 +399,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-splitter"},
     max_health = 80,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -502,6 +536,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-splitter"},
     max_health = 80,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -638,6 +673,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-splitter"},
     max_health = 80,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -774,6 +810,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "fast-transport-belt"},
     max_health = 50,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -803,6 +840,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "express-transport-belt"},
     max_health = 50,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -832,6 +870,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
     max_health = 250,
+    corpse = "big-remnants",
     resistances = 
     {
       {
@@ -871,6 +910,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
     max_health = 300,
+    corpse = "big-remnants",
     resistances = 
     {
       {
@@ -910,6 +950,7 @@ data:extend(
     flags = {"pushable", "placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "car"},
     max_health = 500,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -965,6 +1006,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "iron-chest"},
     max_health = 100,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -992,6 +1034,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "steel-chest"},
     max_health = 200,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -1024,6 +1067,7 @@ data:extend(
       result = "smart-chest"
     },
     max_health = 150,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -1064,6 +1108,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "long-handed-inserter"},
     max_health = 40,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -1126,6 +1171,7 @@ data:extend(
       result = "fast-inserter"
     },
     max_health = 40,
+    corpse = "small-remnants",
     resistances =
     {
       {
@@ -1170,7 +1216,7 @@ data:extend(
       height = 46,
       sheet = "__base__/graphics/entity/fast-inserter/fast-inserter-platform.png"
     },
-    rotation_speed = 0.03
+    rotation_speed = 0.035
   },
   {
     type = "inserter",
@@ -1179,6 +1225,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "smart-inserter"},
     max_health = 40,
+    corpse = "small-remnants",
     resistances =
     {
       {
@@ -1197,7 +1244,7 @@ data:extend(
       type = "electric",
       input_priority = "secondary"
     },
-    extension_speed = 0.06,
+    extension_speed = 0.07,
     fast_replaceable_group = "inserter",
     filter_count = 5,
     hand_base_picture =
@@ -1239,6 +1286,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "solar-panel"},
     max_health = 100,
+    corpse = "big-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_source =
@@ -1263,6 +1311,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "diesel-locomotive"},
     max_health = 1000,
+    corpse = "medium-remnants",
     collision_box = {{-0.6, -2.6}, {0.9, 2.6}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     drawing_box = {{-1, -4}, {1, 3}},
@@ -1327,6 +1376,7 @@ data:extend(
     inventory_size = 15,
     minable = {mining_time = 1, result = "cargo-wagon"},
     max_health = 600,
+    corpse = "medium-remnants",
     collision_box = {{-0.6, -2.4}, {0.9, 2.4}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     weight = 1000,
@@ -1364,7 +1414,36 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "wall"},
     max_health = 350,
-    resistances = 
+    corpse = "wall-corpse",
+    -- this kind of code can be used for having walls mirror the effect
+    -- there can be multiple reaction items
+    --attack_reaction =
+    --{
+      --{
+        ---- how far the mirroring works
+        --range = 2,
+        ---- what kind of damage triggers the mirroring
+        ---- if not present then anything triggers the mirroring
+        --damage_type = "physical",
+        ---- caused damage will be multiplied by this and added to the subsequent damages
+        --reaction_modifier = 0.1,
+        --action =
+        --{
+          --type = "direct",
+          --action_delivery =
+          --{
+            --type = "instant",
+            --target_effects =
+            --{
+              --type = "damage",
+              ---- always use at least 0.1 damage
+              --damage = {amount = 0.1, type = "physical"}
+            --}
+          --}
+        --},
+      --}
+    --},
+    resistances =
     {
       {
         type = "physical",
@@ -1583,6 +1662,73 @@ data:extend(
     }
   },
   {
+    type = "corpse",
+    name = "wall-corpse",
+    icon = "__base__/graphics/icons/wall.png",
+    flags = {"placeable-neutral", "player-creation"},
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = 
+    {
+      {
+        frame_width = 36,
+        frame_height = 36,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-01.png"
+      },
+      {
+        frame_width = 38,
+        frame_height = 35,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-02.png"
+      },
+      {
+        frame_width = 35,
+        frame_height = 36,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-03.png"
+      },
+      {
+        frame_width = 41,
+        frame_height = 36,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-04.png"
+      },
+      {
+        frame_width = 35,
+        frame_height = 35,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-05.png"
+      },
+      {
+        frame_width = 50,
+        frame_height = 37,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-06.png"
+      },
+      {
+        frame_width = 54,
+        frame_height = 40,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-07.png"
+      },
+      {
+        frame_width = 43,
+        frame_height = 45,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/wall/remains/wall-remain-08.png"
+      }
+    }
+  },
+  {
     type = "player-port",
     name = "player-port",
     icon = "__base__/graphics/icons/player-port.png",
@@ -1607,11 +1753,22 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
     minable = {mining_time = 1, result = "straight-rail"},
     max_health = 100,
+    corpse = "straight-rail-remnants",
     collision_box = {{-0.6, -0.8}, {0.6, 0.8}},
     selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
     bending_type = "straight",
     rail_category = "regular",
     pictures = railpictures()
+  },
+  {
+    type = "rail-remnants",
+    name = "straight-rail-remnants",
+    icon = "__base__/graphics/icons/straight-rail.png",
+    flags = {"placeable-neutral", "building-direction-8-way"},
+    bending_type = "straight",
+    pictures = destroyedrailpictures(),
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
   },
   {
     type = "rail",
@@ -1620,11 +1777,22 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
     minable = {mining_time = 1, result = "curved-rail"},
     max_health = 200,
+    corpse = "curved-rail-remnants",
     collision_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     bending_type = "turn",
     rail_category = "regular",
     pictures = railpictures()
+  },
+  {
+    type = "rail-remnants",
+    name = "curved-rail-remnants",
+    icon = "__base__/graphics/icons/curved-rail.png",
+    flags = {"placeable-neutral", "building-direction-8-way"},
+    bending_type = "turn",
+    pictures = destroyedrailpictures(),
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
   },
   {
     type = "flame-thrower-explosion",
@@ -1661,6 +1829,7 @@ data:extend(
     },
     minable = {mining_time = 1, result = "land-mine"},
     max_health = 15,
+    corpse = "small-remnants",
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     dying_explosion = "explosion-gunshot",
@@ -1721,6 +1890,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 1, result = "train-stop"},
     max_health = 150,
+    corpse = "medium-remnants",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.6, -0.6}, {0.6, 0.6}},
     drawing_box = {{-0.5, -3}, {0.5, 0.5}},
@@ -1772,6 +1942,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions"},
     minable = {mining_time = 1, result = "rail-signal"},
     max_health = 80,
+    corpse = "small-remnants",
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
@@ -1794,6 +1965,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "lab"},
     max_health = 150,
+    corpse = "big-remnants",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     on_animation =
@@ -1865,6 +2037,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-provider"},
     max_health = 150,
+    corpse = "small-remnants",
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -1886,6 +2059,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-storage"},
     max_health = 150,
+    corpse = "small-remnants",
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -1907,6 +2081,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-requester"},
     max_health = 150,
+    corpse = "small-remnants",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -1928,6 +2103,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "rocket-defense"},
     max_health = 5000,
+    corpse = "big-remnants",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     energy_source =
@@ -1990,6 +2166,7 @@ data:extend(
     icon = "__base__/graphics/icons/market.png",
     flags = {"placeable-neutral", "player-creation"},
     max_health = 150,
+    corpse = "big-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     picture =
@@ -2008,6 +2185,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "big-electric-pole"},
     max_health = 150,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -2127,6 +2305,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "medium-electric-pole"},
     max_health = 100,
+    corpse = "small-remnants",
     resistances = 
     {
       {
@@ -2246,6 +2425,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "substation"},
     max_health = 200,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -2364,7 +2544,8 @@ data:extend(
     icon = "__base__/graphics/icons/basic-accumulator.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-accumulator"},
-    max_health = 100,
+    max_health = 150,
+    corpse = "medium-remnants",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
     picture =
@@ -2404,10 +2585,10 @@ data:extend(
     {
       type = "electric",
       output_priority = "terciary",
-      input_flow_limit = 2,
+      input_flow_limit = 5,
       input_priority = "terciary",
-      output_flow_limit = 2,
-      buffer_capacity = 2500
+      output_flow_limit = 5,
+      buffer_capacity = 5000
     }
   },
   {
@@ -2417,6 +2598,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "steel-furnace"},
     max_health = 200,
+    corpse = "medium-remnants",
     resistances = 
     {
       {
@@ -2484,6 +2666,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "electric-furnace"},
     max_health = 150,
+    corpse = "big-remnants",
     resistances = 
     {
       {
@@ -2536,6 +2719,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "basic-beacon"},
     max_health = 200,
+    corpse = "big-remnants",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     animation =
@@ -2616,14 +2800,14 @@ data:extend(
   },
   {
     type = "combat-robot",
-    name = "combat-robot",
+    name = "distractor",
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
-    max_health = 60,
+    max_health = 90,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
     distance_per_frame = 0.13,
-    time_to_live = 1200,
+    time_to_live = 1800,
     speed = 0.01,
     destroy_action =
     {
@@ -2642,7 +2826,7 @@ data:extend(
     {
       ammo_category = "combat-robot-laser",
       cooldown = 20,
-      damage = 5,
+      damage_modifier = 0.5,
       projectile_center = {0, 0},
       projectile_creation_distance = 0.6,
       range = 15,
@@ -2670,7 +2854,163 @@ data:extend(
     },
     picture =
     {
-      filename = "__base__/graphics/entity/combat-robot/combat-robot.png",
+      filename = "__base__/graphics/entity/combat-robot/distractor.png",
+      priority = "high",
+      width = 37,
+      height = 34
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/combat-robot/combat-robot-shadow.png",
+      priority = "high",
+      width = 52,
+      height = 37
+    }
+  },
+  {
+    type = "combat-robot",
+    name = "defender",
+    icon = "__base__/graphics/icons/logistic-robot.png",
+    flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    max_health = 60,
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    distance_per_frame = 0.13,
+    time_to_live = 1800,
+    follows_player = true,
+    friction = 0.01,
+    range_from_player = 6.0,
+    speed = 0.01,
+    destroy_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        source_effects =
+        {
+            type = "create-entity",
+            entity_name = "explosion"
+        }
+      }
+    },
+    attack_parameters =
+    {
+      ammo_category = "bullet",
+      cooldown = 20,
+      projectile_center = {0, 0},
+      projectile_creation_distance = 0.6,
+      range = 15,
+      sound =
+      {
+        {
+          filename = "__base__/sound/gunshot.wav",
+          volume = 0.3
+        }
+      },
+      ammo_type =
+      {
+        category = "bullet",
+        action =
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "instant",
+            source_effects =
+            {
+              type = "create-entity",
+              entity_name = "explosion-gunshot"
+            },
+            target_effects =
+            {
+              {
+                type = "create-entity",
+                entity_name = "explosion-gunshot"
+              },
+              {
+                type = "damage",
+                damage = { amount = 5 , type = "physical"}
+              }
+            }
+          }
+        }
+      }
+    },
+    picture =
+    {
+      filename = "__base__/graphics/entity/combat-robot/defender.png",
+      priority = "high",
+      width = 37,
+      height = 34
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/combat-robot/combat-robot-shadow.png",
+      priority = "high",
+      width = 52,
+      height = 37
+    }
+  },
+  {
+    type = "combat-robot",
+    name = "destroyer",
+    icon = "__base__/graphics/icons/logistic-robot.png",
+    flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    max_health = 60,
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    distance_per_frame = 0.13,
+    time_to_live = 60 * 60 * 2,
+    speed = 0.01,
+    follows_player = true,
+    friction = 0.01,
+    range_from_player = 6.0,
+    destroy_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        source_effects =
+        {
+            type = "create-entity",
+            entity_name = "explosion"
+        }
+      }
+    },
+    attack_parameters =
+    {
+      ammo_category = "combat-robot-laser",
+      cooldown = 20,
+      projectile_center = {0, 0},
+      projectile_creation_distance = 0.6,
+      range = 15,
+      sound =
+      {
+        {
+          filename = "__base__/sound/laser.wav",
+          volume = 0.4
+        }
+      },
+      ammo_type =
+      {
+        category = "combat-robot-laser",
+        action =
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "projectile",
+            projectile = "blue-laser",
+            starting_speed = 0.3
+          }
+        }
+      }
+    },
+    picture =
+    {
+      filename = "__base__/graphics/entity/combat-robot/destroyer.png",
       priority = "high",
       width = 37,
       height = 34
@@ -2692,12 +3032,12 @@ data:extend(
     {
       filename = "__base__/graphics/entity/slowdown-sticker/slowdown-sticker.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 4,
-      animation_speed = 0.1
+      frame_width = 11,
+      frame_height = 11,
+      frame_count = 13,
+      animation_speed = 0.4
     },
-    duration_in_ticks = 20 * 60,
+    duration_in_ticks = 30 * 60,
     magnitude = 0.5
   }
 }

@@ -56,6 +56,14 @@ data:extend(
         make_cursor_box(32, 64, 2.0),
         make_cursor_box(0, 64, 3.0),
       },
+      pair =
+      {
+        make_cursor_box(128, 64, 0.4, {1, 1}),
+        make_cursor_box(96, 64, 0.7),
+        make_cursor_box(64, 64, 1.05),
+        make_cursor_box(32, 64, 2.0),
+        make_cursor_box(0, 64, 3.0),
+      },
       copy =
       {
         make_cursor_box(128, 96, 0.4, {1, 1}),
@@ -63,7 +71,7 @@ data:extend(
         make_cursor_box(64, 96, 1.05),
         make_cursor_box(32, 96, 2.0),
         make_cursor_box(0, 96, 3.0),
-      }
+      },
     },
 
     label_style =
@@ -344,6 +352,59 @@ data:extend(
         }
       },
       pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5}
+    },
+    second_quickbar_slot_button_style =
+    {
+      type = "button_style",
+      parent = "slot_button_style",
+      default_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 221,
+          y = 36,
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 221,
+          y = 36,
+        }
+      },
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 221,
+          y = 36
+        }
+      },
     },
     not_available_slot_button_style =
     {
@@ -948,6 +1009,12 @@ data:extend(
       horizontal_spacing = default_container_padding,
       vertical_spacing = default_container_padding
     },
+    description_flow_style =
+    {
+      type = "flow_style",
+      parent = "flow_style",
+      vertical_spacing = 2
+    },
     mod_info_flow_style =
     {
       type = "listbox_style",
@@ -1297,6 +1364,12 @@ data:extend(
       type = "progressbar_style",
       parent = "health_progressbar_style"
     },
+    statistics_progressbar_style =
+    {
+      type = "progressbar_style",
+      parent = "progressbar_style",
+      smooth_size = 180
+    },
     checkbox_style =
     {
       type = "checkbox_style",
@@ -1393,7 +1466,7 @@ data:extend(
     graph_style =
     {
       type = "graph_style",
-      width = 600,
+      width = 550,
       height = 200,
       background_color = {r=0.1, g=0.1, b=0.1, a=0.9},
       line_colors=

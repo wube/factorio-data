@@ -7,6 +7,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "basic-mining-drill"},
     max_health = 300,
+    corpse = "big-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     animations =
@@ -75,6 +76,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "burner-mining-drill"},
     max_health = 100,
+    corpse = "medium-remnants",
     collision_box = {{ -0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{ -1, -1}, {1, 1}},
     effectivity = 0.3,

@@ -11,13 +11,13 @@ for index, item in pairs(forcelist) do
   local technologies = item.technologies
   local recipes = item.recipes
   if technologies["logistics-2"].researched then
-    recipes["fast-splitter"].enable()
+    recipes["fast-splitter"].enabled = true
   end
   if technologies["logistics-3"].researched then
-    recipes["express-splitter"].enable()
+    recipes["express-splitter"].enabled = true
   end
   if technologies["steel-processing"].researched then
-    recipes["steel-axe"].enable()
-    recipes["steel-chest"].enable()
+    recipes["steel-axe"].enabled = true
+    recipes["steel-chest"].enabled = true
   end
 end

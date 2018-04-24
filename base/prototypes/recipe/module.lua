@@ -6,10 +6,10 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10}
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5}
     },
-    energy_required = 60,
+    energy_required = 30,
     result = "speed-module"
   },
   {
@@ -19,10 +19,10 @@ data:extend(
     ingredients =
     {
       {"speed-module", 5},
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10}
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5}
     },
-    energy_required = 120,
+    energy_required = 60,
     result = "speed-module-2"
   },
   {
@@ -32,11 +32,11 @@ data:extend(
     ingredients =
     {
       {"speed-module-2", 5},
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10},
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5},
       {"alien-artifact", 1}
     },
-    energy_required = 240,
+    energy_required = 120,
     result = "speed-module-3"
   },
   {
@@ -45,10 +45,10 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10}
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5}
     },
-    energy_required = 60,
+    energy_required = 30,
     result = "productivity-module"
   },
   {
@@ -58,10 +58,10 @@ data:extend(
     ingredients =
     {
       {"productivity-module", 5},
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10}
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5}
     },
-    energy_required = 120,
+    energy_required = 60,
     result = "productivity-module-2"
   },
   {
@@ -71,11 +71,11 @@ data:extend(
     ingredients =
     {
       {"productivity-module-2", 5},
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10},
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5},
       {"alien-artifact", 1}
     },
-    energy_required = 240,
+    energy_required = 120,
     result = "productivity-module-3"
   },
   {
@@ -84,10 +84,10 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10}
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5}
     },
-    energy_required = 60,
+    energy_required = 30,
     result = "effectivity-module"
   },
   {
@@ -97,10 +97,10 @@ data:extend(
     ingredients =
     {
       {"effectivity-module", 5},
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10}
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5}
     },
-    energy_required = 120,
+    energy_required = 60,
     result = "effectivity-module-2"
   },
   {
@@ -110,11 +110,11 @@ data:extend(
     ingredients =
     {
       {"effectivity-module-2", 5},
-      {"advanced-circuit", 10},
-      {"electronic-circuit", 10},
+      {"advanced-circuit", 5},
+      {"electronic-circuit", 5},
       {"alien-artifact", 1}
     },
-    energy_required = 240,
+    energy_required = 120,
     result = "effectivity-module-3"
   }
 }

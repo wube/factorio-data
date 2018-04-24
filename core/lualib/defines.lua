@@ -54,7 +54,9 @@ distraction =
   byenemy = 1,
   -- attacks closer entities with force and
   -- entities "built" by player (belts, inserters, chests)
-  byanything = 2
+  byanything = 3,
+  -- attacks when attacked
+  bydamage = 4,
 }
 
 compoundcommandtype =

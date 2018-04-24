@@ -28,7 +28,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"iron-gear-wheel", 15},
+      {"iron-gear-wheel", 10},
       {"fast-transport-belt", 1}
     },
     result = "express-transport-belt"
@@ -170,7 +170,7 @@ data:extend(
     name = "power-armor",
     enabled = "false",
     energy_required = 40,
-    ingredients = {{ "effectivity-module-2", 5}, {"speed-module-2", 5}, {"steel-plate", 50}, {"alien-artifact", 30}},
+    ingredients = {{ "effectivity-module-2", 5}, {"speed-module-2", 5}, {"steel-plate", 50}, {"alien-artifact", 10}},
     result = "power-armor"
   },
   {
@@ -178,7 +178,7 @@ data:extend(
     name = "power-armor-mk2",
     enabled = "false",
     energy_required = 50,
-    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"steel-plate", 50}, {"alien-artifact", 100}},
+    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"steel-plate", 50}, {"alien-artifact", 50}},
     result = "power-armor-mk2"
   },
   {
@@ -381,9 +381,10 @@ data:extend(
     energy_required = 2,
     ingredients =
     {
-      {"iron-plate", 10},
-      {"basic-transport-belt", 3}
+      {"iron-plate", 20},
+      {"basic-transport-belt", 6}
     },
+    result_count = 2,
     result = "basic-transport-belt-to-ground"
   },
   {
@@ -393,9 +394,10 @@ data:extend(
     energy_required = 3,
     ingredients =
     {
-      {"iron-plate", 10},
-      {"fast-transport-belt", 3}
+      {"iron-plate", 20},
+      {"fast-transport-belt", 6}
     },
+    result_count = 2,
     result = "fast-transport-belt-to-ground"
   },
   {
@@ -405,9 +407,10 @@ data:extend(
     energy_required = 4,
     ingredients =
     {
-      {"express-transport-belt", 3},
-      {"iron-plate", 10}
+      {"express-transport-belt", 6},
+      {"iron-plate", 20}
     },
+    result_count = 2,
     result = "express-transport-belt-to-ground"
   },
   {
@@ -456,8 +459,8 @@ data:extend(
     energy_required = 1,
     ingredients =
     {
-      {"electronic-circuit", 5},
-      {"copper-cable", 5}
+      {"electronic-circuit", 4},
+      {"copper-cable", 4}
     },
     result = "advanced-circuit"
   },
@@ -601,7 +604,7 @@ data:extend(
     type = "recipe",
     name = "basic-beacon",
     enabled = "false",
-    energy_required = 100,
+    energy_required = 30,
     ingredients =
     {
       {"electronic-circuit", 20},

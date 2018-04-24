@@ -68,7 +68,7 @@ data:extend(
           },
           {
             type = "damage",
-            damage = {amount = 15, type = "laser"}
+            damage = {amount = 10, type = "laser"}
           }
         }
       }
@@ -102,7 +102,7 @@ data:extend(
           },
           {
             type = "damage",
-            damage = {amount = 40, type = "explosion"}
+            damage = {amount = 60, type = "explosion"}
           }
         }
       }
@@ -168,7 +168,7 @@ data:extend(
                 {
                   {
                     type = "damage",
-                    damage = {amount = 20, type = "explosion"}
+                    damage = {amount = 40, type = "explosion"}
                   },
                   {
                     type = "create-entity",
@@ -298,7 +298,7 @@ data:extend(
                 {
                   {
                     type = "damage",
-                    damage = {amount = 10, type = "explosion"}
+                    damage = {amount = 25, type = "explosion"}
                   },
                   {
                     type = "create-entity",
@@ -331,7 +331,7 @@ data:extend(
   },
   {
     type = "projectile",
-    name = "small-combat-robot-capsule",
+    name = "defender-capsule",
     acceleration = 0.005,
     action =
     {
@@ -343,7 +343,7 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "combat-robot",
+            entity_name = "defender",
           },
         }
       }
@@ -351,7 +351,7 @@ data:extend(
     light = {intensity = 0.5, size = 4},
     animation =
     {
-      filename = "__base__/graphics/entity/combat-robot-capsule/small-combat-robot-capsule.png",
+      filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
       frame_count = 1,
       frame_width = 32,
       frame_height = 32,
@@ -359,7 +359,7 @@ data:extend(
     },
     shadow =
     {
-      filename = "__base__/graphics/entity/combat-robot-capsule/small-combat-robot-capsule-shadow.png",
+      filename = "__base__/graphics/entity/combat-robot-capsule/combat-robot-capsule-shadow.png",
       frame_count = 1,
       frame_width = 32,
       frame_height = 32,
@@ -369,7 +369,7 @@ data:extend(
   },
   {
     type = "projectile",
-    name = "big-combat-robot-capsule",
+    name = "distractor-capsule",
     acceleration = 0.005,
     action =
     {
@@ -381,17 +381,17 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "combat-robot",
+            entity_name = "distractor",
             offset = {0.5, -0.5}
           },
           {
             type = "create-entity",
-            entity_name = "combat-robot",
+            entity_name = "distractor",
             offset = {-0.5, -0.5}
           },
           {
             type = "create-entity",
-            entity_name = "combat-robot",
+            entity_name = "distractor",
             offset = {0, 0.5}
           }
         }
@@ -400,7 +400,7 @@ data:extend(
     light = {intensity = 0.5, size = 4},
     animation =
     {
-      filename = "__base__/graphics/entity/combat-robot-capsule/big-combat-robot-capsule.png",
+      filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule.png",
       frame_count = 1,
       frame_width = 32,
       frame_height = 32,
@@ -408,13 +408,72 @@ data:extend(
     },
     shadow =
     {
-      filename = "__base__/graphics/entity/combat-robot-capsule/big-combat-robot-capsule-shadow.png",
+      filename = "__base__/graphics/entity/combat-robot-capsule/combat-robot-capsule-shadow.png",
       frame_count = 1,
       frame_width = 32,
       frame_height = 32,
       priority = "high"
     },
-    smoke = capsule_smoke,
+    smoke = capsule_smoke
+  },
+  {
+    type = "projectile",
+    name = "destroyer-capsule",
+    acceleration = 0.005,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "destroyer",
+            offset = {-0.7, -0.7}
+          },
+          {
+            type = "create-entity",
+            entity_name = "destroyer",
+            offset = {-0.7, 0.7}
+          },
+          {
+            type = "create-entity",
+            entity_name = "destroyer",
+            offset = {0.7, -0.7}
+          },
+          {
+            type = "create-entity",
+            entity_name = "destroyer",
+            offset = {0.7, 0.7}
+          },
+          {
+            type = "create-entity",
+            entity_name = "destroyer",
+            offset = {0, 0}
+          }
+        }
+      }
+    },
+    light = {intensity = 0.5, size = 4},
+    animation =
+    {
+      filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule.png",
+      frame_count = 1,
+      frame_width = 32,
+      frame_height = 32,
+      priority = "high"
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/combat-robot-capsule/combat-robot-capsule-shadow.png",
+      frame_count = 1,
+      frame_width = 32,
+      frame_height = 32,
+      priority = "high"
+    },
+    smoke = capsule_smoke
   },
   {
     type = "projectile",

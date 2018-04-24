@@ -5,16 +5,21 @@ data:extend(
     name = "heavy-armor",
     icon = "__base__/graphics/icons/heavy-armor.png",
     flags = {"goes-to-main-inventory"},
-    resistances = 
+    resistances =
     {
       {
         type = "physical",
-        decrease = 3,
+        decrease = 6,
         percent = 30
       },
       {
         type = "explosion",
         decrease = 10,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 5,
         percent = 30
       }
     },
@@ -32,8 +37,13 @@ data:extend(
     {
       {
         type = "physical",
-        decrease = 2,
-        percent = 20
+        decrease = 6,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 5,
+        percent = 30
       },
       {
         type = "explosion",
@@ -56,7 +66,12 @@ data:extend(
     {
       {
         type = "physical",
-        decrease = 3,
+        decrease = 8,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 7,
         percent = 30
       },
       {
@@ -80,7 +95,12 @@ data:extend(
     {
       {
         type = "physical",
-        decrease = 4,
+        decrease = 10,
+        percent = 40
+      },
+      {
+        type = "acid",
+        decrease = 10,
         percent = 40
       },
       {

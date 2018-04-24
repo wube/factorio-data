@@ -4,10 +4,10 @@ data:extend(
     type = "recipe",
     name = "piercing-bullet-magazine",
     enabled = "false",
-    energy_required = 10,
+    energy_required = 5,
     ingredients =
     {
-      {"copper-plate", 10},
+      {"copper-plate", 5},
       {"steel-plate", 1}
     },
     result = "piercing-bullet-magazine"

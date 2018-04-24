@@ -8,7 +8,7 @@ data:extend(
     group = "production",
     order = "m-a-a",
     stack_size = 64,
-    effect = { speed = {bonus = 0.2}, consumption = {bonus = 0.5}, pollution = {bonus = 0.2}}
+    effect = { speed = {bonus = 0.2}, consumption = {bonus = 0.5}}
   },
   {
     type = "module",
@@ -18,7 +18,7 @@ data:extend(
     group = "production",
     order = "m-a-b",
     stack_size = 64,
-    effect = { speed = {bonus = 0.3}, consumption = {bonus = 0.6}, pollution = {bonus = 0.3}}
+    effect = { speed = {bonus = 0.3}, consumption = {bonus = 0.6}}
   },
   {
     type = "module",
@@ -28,7 +28,7 @@ data:extend(
     group = "production",
     order = "m-a-c",
     stack_size = 64,
-    effect = { speed = {bonus = 0.5}, consumption = {bonus = 0.7}, pollution = {bonus = 0.4}}
+    effect = { speed = {bonus = 0.5}, consumption = {bonus = 0.7}}
   },
   {
     type = "module",

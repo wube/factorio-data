@@ -82,7 +82,6 @@ data:extend(
     {
       {"speed-module-2", 10},
       {"productivity-module-2", 10},
-      {"science-pack-3", 20},
       {"alien-artifact", 30}
     },
     result = "fusion-reactor-equipment"

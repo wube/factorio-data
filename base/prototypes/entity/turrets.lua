@@ -197,26 +197,26 @@ data:extend(
     },
     autoplace =
     {
-      sharpness = 0.35,
+      sharpness = 0.3,
       control = "enemy-base",
       peaks =
       {
         {
-          influence = -1.0,
+          influence = -10.0,
           starting_area_weight_optimal = 1,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.05,
+          influence = 0.22,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -2,
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
         },
         {
-          influence = 0.5,
+          influence = 0.3,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -2,
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
           tier_from_start_optimal = 10,
           tier_from_start_top_property_limit = 10,
@@ -317,20 +317,26 @@ data:extend(
     },
     autoplace =
     {
-      sharpness = 0.35,
+      sharpness = 0.3,
       control = "enemy-base",
       peaks =
       {
         {
-          influence = -1.0,
+          influence = -10.0,
           starting_area_weight_optimal = 1,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.5,
+          influence = 0.15,
           noise_layer = "enemy-base",
-          noise_octaves_difference = -3,
+          noise_octaves_difference = -1.8,
+          noise_persistence = 0.5,
+        },
+        {
+          influence = 0.3,
+          noise_layer = "enemy-base",
+          noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
           tier_from_start_optimal = 10,
           tier_from_start_top_property_limit = 10,
@@ -346,6 +352,7 @@ data:extend(
     flags = { "placeable-player", "placeable-enemy", "player-creation" },
     minable = { mining_time = 0.5, result = "laser-turret" },
     max_health = 250,
+    corpse = "small-remnants",
     collision_box = {{ -0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{ -0.4, -0.4}, {0.4, 0.4}},
     rotation_speed = 0.01,
@@ -377,6 +384,7 @@ data:extend(
       type = "electric",
       buffer_capacity = 202,
       input_flow_limit = 18,
+      resting_consumption_ratio = 0.01,
       input_priority = "secondary"
     },
     folded_animation = (function()
@@ -432,6 +440,7 @@ data:extend(
     type = "corpse",
     name = "medium-worm-corpse",
     dying_speed = 0.01,
+    final_render_layer = "corpse",
     animation =
     {
       frame_width = 274,
@@ -448,6 +457,7 @@ data:extend(
     type = "corpse",
     name = "big-worm-corpse",
     dying_speed = 0.01,
+    final_render_layer = "corpse",
     animation =
     {
       filename = "__base__/graphics/entity/big-worm-turret/die.png",

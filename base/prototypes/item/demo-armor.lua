@@ -9,8 +9,13 @@ data:extend(
     {
       {
         type = "physical",
-        decrease = 2,
+        decrease = 3,
         percent = 20
+      },
+      {
+        type = "acid",
+        decrease = 3,
+        percent = 30
       },
       {
         type = "explosion",

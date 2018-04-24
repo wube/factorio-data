@@ -21,9 +21,9 @@ data:extend(
     energy_required = 15,
     ingredients =
     {
-      {"steel-plate", 3},
-      {"electronic-circuit", 3},
-      {"coal", 10},
+      {"steel-plate", 2},
+      {"electronic-circuit", 2},
+      {"coal", 5},
     },
     result = "slowdown-capsule"
   },
@@ -41,28 +41,40 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "small-combat-robot-capsule",
+    name = "defender-capsule",
     enabled = "false",
     energy_required = 15,
     ingredients =
     {
-      {"steel-plate", 3},
-      {"advanced-circuit", 2},
-      {"iron-gear-wheel", 5},
+      {"steel-plate", 2},
+      {"advanced-circuit", 1},
+      {"iron-gear-wheel", 3},
     },
-    result = "small-combat-robot-capsule"
+    result = "defender-capsule"
   },
   {
     type = "recipe",
-    name = "big-combat-robot-capsule",
+    name = "distractor-capsule",
     enabled = "false",
     energy_required = 30,
     ingredients =
     {
-      {"small-combat-robot-capsule", 4},
+      {"defender-capsule", 4},
       {"advanced-circuit", 3},
     },
-    result = "big-combat-robot-capsule"
+    result = "distractor-capsule"
+  },
+  {
+    type = "recipe",
+    name = "destroyer-capsule",
+    enabled = "false",
+    energy_required = 30,
+    ingredients =
+    {
+      {"distractor-capsule", 4},
+      {"speed-module", 1}
+    },
+    result = "destroyer-capsule"
   },
   {
     type = "recipe",

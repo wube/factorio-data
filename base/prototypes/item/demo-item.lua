@@ -91,7 +91,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     group = "production",
     order = "c-d",
-    stack_size = 64
+    stack_size = 128
   },
   {
     type = "item",

@@ -72,8 +72,8 @@ data:extend(
   },
   {
     type = "capsule",
-    name = "small-combat-robot-capsule",
-    icon = "__base__/graphics/icons/small-combat-robot-capsule.png",
+    name = "defender-capsule",
+    icon = "__base__/graphics/icons/defender-capsule.png",
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -94,7 +94,7 @@ data:extend(
             action_delivery =
             {
               type = "projectile",
-              projectile = "small-combat-robot-capsule",
+              projectile = "defender-capsule",
               starting_speed = 0.3
             }
           }
@@ -102,13 +102,13 @@ data:extend(
       }
     },
     group = "combat",
-    order = "f-e-e",
+    order = "f-e-c",
     stack_size = 100
   },
   {
     type = "capsule",
-    name = "big-combat-robot-capsule",
-    icon = "__base__/graphics/icons/big-combat-robot-capsule.png",
+    name = "distractor-capsule",
+    icon = "__base__/graphics/icons/distractor-capsule.png",
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -129,7 +129,42 @@ data:extend(
             action_delivery =
             {
               type = "projectile",
-              projectile = "big-combat-robot-capsule",
+              projectile = "distractor-capsule",
+              starting_speed = 0.3
+            }
+          }
+        }
+      }
+    },
+    group = "combat",
+    order = "f-e-d",
+    stack_size = 100
+  },
+  {
+    type = "capsule",
+    name = "destroyer-capsule",
+    icon = "__base__/graphics/icons/destroyer-capsule.png",
+    flags = {"goes-to-quickbar"},
+    capsule_action =
+    {
+      type = "throw",
+      attack_parameters =
+      {
+        ammo_category = "capsule",
+        cooldown = 30,
+        projectile_creation_distance = 0.6,
+        range = 25,
+        ammo_type =
+        {
+          category = "capsule",
+          target_type = "position",
+          action =
+          {
+            type = "direct",
+            action_delivery =
+            {
+              type = "projectile",
+              projectile = "destroyer-capsule",
               starting_speed = 0.3
             }
           }

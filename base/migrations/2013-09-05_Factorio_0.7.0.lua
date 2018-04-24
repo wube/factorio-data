@@ -6,10 +6,10 @@ end
 
 for index, force in pairs(game.forces) do
   if force.technologies["military"].researched then
-    force.recipes["shotgun"].enable()
-    force.recipes["shotgun-shell"].enable()
+    force.recipes["shotgun"].enabled = true
+    force.recipes["shotgun-shell"].enabled = true
   end
   if force.technologies["military-2"].researched then
-    force.recipes["basic-grenade"].enable()
+    force.recipes["basic-grenade"].enabled = true
   end
 end

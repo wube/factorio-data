@@ -91,7 +91,7 @@ data:extend(
       {
         type = "ammo-damage",
         ammo_category = "rocket",
-        modifier = "100"
+        modifier = "0.2"
       }
     },
     prerequisites = {"rocket-damage-3"},

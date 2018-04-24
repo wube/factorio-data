@@ -21,6 +21,7 @@ data:extend(
     healing_per_tick = 0.01,
     collision_box = {{-0.3, -0.4}, {0.3, 0.2}},
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
+    sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
     attack_parameters =
     {
@@ -119,6 +120,7 @@ data:extend(
     healing_per_tick = 0.02,
     collision_box = {{-0.4, -0.5}, {0.4, 0.3}},
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
+    sticker_box = {{-0.6, -0.8}, {0.6, 0}},
     distraction_cooldown = 300,
     attack_parameters =
     {
@@ -213,6 +215,7 @@ data:extend(
     type = "corpse",
     name = "medium-biter-corpse",
     dying_speed = 0.04,
+    final_render_layer = "corpse",
     animation =
     {
       frame_width = 204,
@@ -250,6 +253,7 @@ data:extend(
     type = "corpse",
     name = "big-biter-corpse",
     dying_speed = 0.04,
+    final_render_layer = "corpse",
     animation =
     {
       priority = "high",
