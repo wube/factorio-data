@@ -271,7 +271,7 @@ data:extend(
     flags = { "placeable-player", "placeable-enemy", "player-creation"},
     minable = { mining_time = 0.5, result = "laser-turret" },
     max_health = 1000,
-    corpse = "small-remnants",
+    corpse = "medium-remnants",
     collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{ -1, -1}, {1, 1}},
     rotation_speed = 0.01,
@@ -420,6 +420,7 @@ data:extend(
     order = "c[corpse]-c[worm]-b[medium]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
+    time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
     animation = worm_die_animation(medium_worm_scale, medium_worm_tint)
   },
@@ -433,6 +434,7 @@ data:extend(
     order = "c[corpse]-c[worm]-c[big]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
+    time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
     animation = worm_die_animation(big_worm_scale, big_worm_tint)
   }

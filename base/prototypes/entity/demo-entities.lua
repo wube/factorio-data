@@ -883,7 +883,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
       width = 12,
-      height = 12
+      height = 12,
+      priority = "extra-high-no-scale"
     }
   },
 

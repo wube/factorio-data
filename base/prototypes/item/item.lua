@@ -766,7 +766,7 @@ data:extend(
     place_as_tile =
     {
       result = "concrete",
-      condition_size = 3,
+      condition_size = 4,
       condition = { "water-tile" }
     }
   }

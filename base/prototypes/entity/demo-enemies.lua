@@ -54,6 +54,7 @@ data:extend(
     order = "c[corpse]-a[biter]-a[small]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.04,
+    time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
     animation = biterdieanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
   },
@@ -198,6 +199,7 @@ data:extend(
     selection_box = {{-2, -2}, {2, 2}},
     selectable_in_game = false,
     dying_speed = 0.04,
+    time_before_removed = 15 * 60 * 60,
     subgroup="corpses",
     order = "c[corpse]-b[biter-spawner]",
     final_render_layer = "corpse",

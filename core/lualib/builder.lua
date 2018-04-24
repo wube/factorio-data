@@ -27,7 +27,7 @@ function Builder:update(tick)
   -- perform action
   self.position = action.positionfunction(self.position)
   self.index = self.index + 1
-  game.create_entity{name=action.name, position=self.position, direction=action.direction}
+  game.surfaces["nauvis"].create_entity{name=action.name, position=self.position, direction=action.direction}
   self.last_tick = self.last_tick + action.tick
 end
 

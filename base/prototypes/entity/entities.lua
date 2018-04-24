@@ -3864,13 +3864,15 @@ data:extend(
     {
       filename = "__base__/graphics/entity/roboport/roboport-radius-visualization.png",
       width = 12,
-      height = 12
+      height = 12,
+      priority = "extra-high-no-scale"
     },
     construction_radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/roboport/roboport-construction-radius-visualization.png",
       width = 12,
-      height = 12
+      height = 12,
+      priority = "extra-high-no-scale"
     },
     open_door_trigger_effect =
     {
@@ -4298,7 +4300,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
       width = 12,
-      height = 12
+      height = 12,
+      priority = "extra-high-no-scale"
     },
   },
   {
@@ -4394,7 +4397,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
       width = 12,
-      height = 12
+      height = 12,
+      priority = "extra-high-no-scale"
     },
   },
   {
@@ -4497,7 +4501,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
       width = 12,
-      height = 12
+      height = 12,
+      priority = "extra-high-no-scale"
     },
   },
   {
@@ -4853,7 +4858,7 @@ data:extend(
     type = "combat-robot",
     name = "distractor",
     icon = "__base__/graphics/icons/distractor.png",
-    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
     order="e-a-b",
     subgroup="capsule",
     max_health = 90,
@@ -4983,7 +4988,7 @@ data:extend(
     type = "combat-robot",
     name = "defender",
     icon = "__base__/graphics/icons/defender.png",
-    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
     subgroup="capsule",
     order="e-a-a",
     max_health = 60,
@@ -5130,7 +5135,7 @@ data:extend(
     type = "combat-robot",
     name = "destroyer",
     icon = "__base__/graphics/icons/destroyer.png",
-    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
     subgroup="capsule",
     order="e-a-c",
     max_health = 60,
