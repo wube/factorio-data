@@ -1,6 +1,11 @@
 game.reloadscript()
 game.player.force.resetrecipes()
 game.player.force.resettechnologies()
+
+if game.isdemo() then
+  return
+end
+
 local forcelist = game.forces
 for index, item in pairs(forcelist) do
   local technologies = item.technologies

@@ -126,7 +126,15 @@ data:extend(
         filename = "__core__/graphics/gui.png",
         corner_size = {3, 3},
         position = {0, 16}
-      }
+      },
+      pie_progress_color = {r=1, g=1, b=1}
+    },
+    dialog_button_style =
+    {
+      type = "button_style",
+      parent = "button_style",
+      minimal_width = 100,
+      minimal_height = 30
     },
     menu_button_style =
     {
@@ -457,6 +465,7 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_button_style",
+      pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5},
       scalable = false
     },
     promised_crafting_queue_slot_style=
@@ -775,6 +784,13 @@ data:extend(
       horizontal_spacing = 2,
       vertical_spacing = 2
     },
+    control_settings_table_style =
+    {
+      type = "table_style",
+      horizontal_spacing = 5,
+      top_padding = 20,
+      vertical_spacing = 7
+    },
     textfield_style =
     {
       type = "textfield_style",
@@ -842,7 +858,7 @@ data:extend(
       -- is empty, the area doesn't exist and these values are not used
       title_top_padding = 0,
       title_left_padding = 0,
-      title_bottom_padding = 0,
+      title_bottom_padding = 15,
       title_right_padding = 0,
       -- padding of the content area of the frame
       top_padding  = default_container_padding - 6,
@@ -862,7 +878,7 @@ data:extend(
         vertical_spacing = default_container_padding
       }
     },
-    -- used for frames that contains exclusively othe rinner frames
+    -- used for frames that contains exclusively other inner frames
     outer_frame_style =
     {
       type = "frame_style",
@@ -870,6 +886,7 @@ data:extend(
       right_padding = 0,
       bottom_padding = 0,
       left_padding = 0,
+      title_bottom_padding = 0,
       graphical_set = { type = "none" },
       flow_style=
       {
@@ -879,6 +896,7 @@ data:extend(
     },
     inner_frame_in_outer_frame_style =
     {
+      title_bottom_padding = 5,
       type = "frame_style",
     },
     inner_frame_style =
@@ -888,6 +906,7 @@ data:extend(
       right_padding = 0,
       bottom_padding = 0,
       left_padding = 0,
+      title_bottom_padding = 5,
       graphical_set = { type = "none" }
     },
     tooltip_frame_style =
@@ -945,7 +964,6 @@ data:extend(
     menu_frame_style =
     {
       type = "frame_style",
-      title_bottom_padding = 10,
       flow_style=
       {
         vertical_spacing = 0

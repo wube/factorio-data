@@ -107,8 +107,6 @@ data:extend(
     generator = {
       layer = 3,
       noise_layer = 5,
-      treshold = 0.1,
-      water_bonus = 0.5,
       water_bounus_coefficient = 1
     },
     layer = 20,

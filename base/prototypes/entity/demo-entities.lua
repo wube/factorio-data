@@ -8,6 +8,20 @@ pipepictures = function()
       width = 32,
       height = 32
     },
+    straight_vertical_window =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-straight-vertical-window.png",
+      priority = "extra-high",
+      width = 32,
+      height = 32
+    },
+    straight_horizontal_window =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal-window.png",
+      priority = "extra-high",
+      width = 32,
+      height = 32
+    },
     straight_horizontal =
     {
       filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal.png",
@@ -15,16 +29,30 @@ pipepictures = function()
       width = 32,
       height = 32
     },
-    corner_up =
+    corner_up_right =
     {
-      filename = "__base__/graphics/entity/pipe/pipe-corner-up.png",
+      filename = "__base__/graphics/entity/pipe/pipe-corner-up-right.png",
       priority = "extra-high",
       width = 32,
       height = 32
     },
-    corner_down =
+    corner_up_left =
     {
-      filename = "__base__/graphics/entity/pipe/pipe-corner-down.png",
+      filename = "__base__/graphics/entity/pipe/pipe-corner-up-left.png",
+      priority = "extra-high",
+      width = 32,
+      height = 32
+    },
+    corner_down_right =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-corner-down-right.png",
+      priority = "extra-high",
+      width = 32,
+      height = 32
+    },
+    corner_down_left =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-corner-down-left.png",
       priority = "extra-high",
       width = 32,
       height = 32
@@ -43,9 +71,16 @@ pipepictures = function()
       width = 32,
       height = 32
     },
-    t_side =
+    t_right =
     {
-      filename = "__base__/graphics/entity/pipe/pipe-t-side.png",
+      filename = "__base__/graphics/entity/pipe/pipe-t-right.png",
+      priority = "extra-high",
+      width = 32,
+      height = 32
+    },
+    t_left =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-t-left.png",
       priority = "extra-high",
       width = 32,
       height = 32
@@ -71,9 +106,16 @@ pipepictures = function()
       width = 32,
       height = 32
     },
-    ending_side =
+    ending_right =
     {
-      filename = "__base__/graphics/entity/pipe/pipe-ending-side.png",
+      filename = "__base__/graphics/entity/pipe/pipe-ending-right.png",
+      priority = "extra-high",
+      width = 32,
+      height = 32
+    },
+    ending_left =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-ending-left.png",
       priority = "extra-high",
       width = 32,
       height = 32
@@ -528,6 +570,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
     max_health = 20,
+    fast_replaceable_group = "pipe",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     burner =
@@ -548,13 +591,140 @@ data:extend(
       }
     },
     max_liquid_amount = 10,
-    top_picture =
+    structure =
     {
-      filename = "__base__/graphics/entity/boiler/boiler-top.png",
-      priority = "extra-high",
-      width = 32,
-      height = 32
+      left =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-left.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0.15, 0}
+      },
+      down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-down.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0.05, 0}
+      },
+      left_down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-left-down.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0, -0.02}
+      },
+      right_down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-right-down.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51
+      },
+      left_up =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-left-up.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0.05, 0}
+      },
+      right_up =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-right-up.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0.15, 0}
+      },
+      t_down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-t-down.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0, 0}
+      },
+      t_up =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-t-up.png",
+        priority = "extra-high",
+        width = 51,
+        height = 51,
+        shift = {0, 0}
+      }
     },
+    fire =
+    {
+      left =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
+        priority = "extra-high",
+        frame_width = 16,
+        frame_height = 14,
+        frame_count = 12,
+        shift = {0, 0.23}
+      },
+      down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
+        priority = "extra-high",
+        frame_width = 12,
+        frame_height = 13,
+        frame_count = 12,
+        shift = {-0.42, 0.05}
+      },
+      left_down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-right.png",
+        priority = "extra-high",
+        frame_width = 10,
+        frame_height = 14,
+        frame_count = 12,
+        shift = {0.25, -0.05}
+      },
+      right_down =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
+        priority = "extra-high",
+        frame_width = 12,
+        frame_height = 13,
+        frame_count = 12,
+        shift = {-0.4, 0.15}
+      },
+      left_up =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
+        priority = "extra-high",
+        frame_width = 16,
+        frame_height = 14,
+        frame_count = 12,
+        shift = {0, 0.23}
+      },
+      right_up =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
+        priority = "extra-high",
+        frame_width = 16,
+        frame_height = 14,
+        frame_count = 12,
+        shift = {0, 0.23}
+      },
+      t_up =
+      {
+        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
+        priority = "extra-high",
+        frame_width = 16,
+        frame_height = 14,
+        frame_count = 12,
+        shift = {0, 0.23}
+      }
+    },
+    burning_cooldown = 20,
+    -- these are the pipe pictures - boiler is a pipe as well
     pictures = pipepictures()
   },
   {
@@ -902,20 +1072,37 @@ data:extend(
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-horizontal.png",
       priority = "high",
-      frame_width = 160,
-      frame_height = 160,
-      frame_count = 39,
-      line_length = 6,
-      shift = {0, -1}
+      frame_width = 219,
+      frame_height = 150,
+      frame_count = 32,
+      line_length = 8,
+      shift = {1.1, -0.3}
     },
     vertical_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-vertical.png",
       priority = "high",
-      frame_width = 96,
-      frame_height = 160,
-      frame_count = 39,
-      line_length = 6
+      frame_width = 180,
+      frame_height = 222,
+      frame_count = 32,
+      line_length = 8,
+      shift = {1.2, 1}
+    },
+    pipes_horizontal =
+    {
+      filename = "__base__/graphics/entity/steam-engine/pipes-horizontal.png",
+      priority = "high",
+      width = 160,
+      height = 32,
+      shift = {0, 0}
+    },
+    pipes_vertical =
+    {
+      filename = "__base__/graphics/entity/steam-engine/pipes-vertical.png",
+      priority = "high",
+      width = 36,
+      height = 160,
+      shift = {0.1, 0}
     },
     smoke =
     {
@@ -955,33 +1142,13 @@ data:extend(
     collision_box = {{-0.6, -0.3}, {0.6, 0.3}},
     selection_box = {{-1, -0.49}, {1, 1.49}},
     tile_width = 1,
-    picture_down =
+    picture =
     {
-      filename = "__base__/graphics/entity/pump/pump-down.png",
-      priority = "high",
-      width = 96,
-      height = 64
-    },
-    picture_left =
-    {
-      filename = "__base__/graphics/entity/pump/pump-left.png",
-      priority = "high",
-      width = 64,
-      height = 96
-    },
-    picture_right =
-    {
-      filename = "__base__/graphics/entity/pump/pump-right.png",
-      priority = "high",
-      width = 64,
-      height = 96
-    },
-    picture_up =
-    {
-      filename = "__base__/graphics/entity/pump/pump-up.png",
-      priority = "high",
-      width = 96,
-      height = 96
+      sheet = "__base__/graphics/entity/pump/pump.png",
+      priority = "extra-high",
+      shift = {0.9, 0.05},
+      width = 160,
+      height = 102
     }
   },
   {
@@ -1139,6 +1306,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe"},
     max_health = 10,
+    fast_replaceable_group = "pipe",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     max_liquid_amount = 10,
@@ -1151,8 +1319,8 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "radar"},
     max_health = 60,
-    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_per_sector = 20000,
     energy_source =
     {
@@ -1164,12 +1332,12 @@ data:extend(
     {
       filename = "__base__/graphics/entity/radar/radar.png",
       priority = "low",
-      frame_width = 100,
-      frame_height = 98,
+      frame_width = 169,
+      frame_height = 140,
       axially_symmetrical = false,
-      direction_count = 101,
-      line_length = 10,
-      shift = {0, -0.6}
+      direction_count = 64,
+      line_length = 8,
+      shift = {1.15, 0.75}
     }
   },
   {
@@ -1263,14 +1431,22 @@ data:extend(
         width = 32,
         height = 32
       },
-      side =
+      left =
       {
-        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-side.png",
+        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-left.png",
+        priority = "high",
+        width = 34,
+        height = 38,
+        shift = {0, 0.1}
+      },
+      right =
+      {
+        filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-right.png",
         priority = "high",
         width = 34,
         height = 38,
         shift = {0.1, 0.1}
-      }
+      },
     }
   },
   {

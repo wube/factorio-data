@@ -328,7 +328,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-splitter.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-d",
+    order = "h-d-e",
     place_result = "fast-splitter",
     stack_size = 64
   },
@@ -338,7 +338,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-splitter.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-d",
+    order = "h-d-f",
     place_result = "express-splitter",
     stack_size = 64
   },
