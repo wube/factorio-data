@@ -1718,7 +1718,7 @@ data:extend(
     corpse = "medium-remnants",
     dying_explosion = "huge-explosion",
     collision_box = {{-0.6, -2.6}, {0.6, 2.6}},
-    selection_box = {{-0.7, -2.5}, {1, 2.5}},
+    selection_box = {{-0.85, -2.6}, {0.9, 2.5}},
     drawing_box = {{-1, -4}, {1, 3}},
     weight = 2000,
     max_speed = 1.2,

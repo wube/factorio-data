@@ -1081,7 +1081,8 @@ data:extend(
       horizontal_spacing = default_container_padding,
       vertical_spacing = default_container_padding,
       max_on_row = 0,
-      resize_row_to_width = false
+      resize_row_to_width = false,
+      resize_to_row_height = false
     },
     description_flow_style =
     {
@@ -1275,7 +1276,9 @@ data:extend(
       flow_style=
       {
         horizontal_spacing = 0,
-        vertical_spacing = 0
+        vertical_spacing = 0,
+        resize_row_to_width = true,
+        resize_to_row_height = true
       }
     },
     inner_frame_in_outer_frame_style =
