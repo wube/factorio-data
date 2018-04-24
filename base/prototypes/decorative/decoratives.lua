@@ -1804,6 +1804,7 @@ data:extend(
     {
       {item = "stone", probability = 1, count_min = 5, count_max = 10}
     },
+    count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     render_layer = "object",
     max_health = 200,
@@ -1886,6 +1887,7 @@ data:extend(
     {
       {item = "stone", probability = 1, count_min = 10, count_max = 25}
     },
+    count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     render_layer = "object",
     max_health = 500,
@@ -2201,6 +2203,7 @@ data:extend(
     {
       {item = "stone", probability = 1, count_min = 25, count_max = 50}
     },
+    count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     render_layer = "object",
     max_health = 2000,
@@ -2411,6 +2414,7 @@ data:extend(
     {
       {item = "stone", probability = 1, count_min = 25, count_max = 50}
     },
+    count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     render_layer = "object",
     max_health = 2000,
