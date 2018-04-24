@@ -21,7 +21,8 @@ data:extend(
         shift = {0.2, -0.2},
         filename = "__base__/graphics/entity/basic-mining-drill/north.png",
         frame_count = 64,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       },
       east =
       {
@@ -32,7 +33,8 @@ data:extend(
         shift = {0.45, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/east.png",
         frame_count = 64,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       },
       south =
       {
@@ -43,7 +45,8 @@ data:extend(
         shift = {0.15, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/south.png",
         frame_count = 64,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       },
       west =
       {
@@ -54,7 +57,8 @@ data:extend(
         shift = {0.25, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/west.png",
         frame_count = 64,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       }
     },
     mining_speed = 0.5,
@@ -118,7 +122,8 @@ data:extend(
         shift = {0.7, -0.1},
         filename = "__base__/graphics/entity/burner-mining-drill/north.png",
         frame_count = 32,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       },
       east =
       {
@@ -129,7 +134,8 @@ data:extend(
         shift = {0.45, -0.1},
         filename = "__base__/graphics/entity/burner-mining-drill/east.png",
         frame_count = 32,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       },
       south =
       {
@@ -140,7 +146,8 @@ data:extend(
         shift = {0.4, 0},
         filename = "__base__/graphics/entity/burner-mining-drill/south.png",
         frame_count = 32,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       },
       west =
       {
@@ -151,7 +158,8 @@ data:extend(
         shift = {0.1, -0.05},
         filename = "__base__/graphics/entity/burner-mining-drill/west.png",
         frame_count = 32,
-        animation_speed = 0.5
+        animation_speed = 0.5,
+        run_mode = "forward-then-backward",
       }
     },
     resource_searching_radius = 0.99,

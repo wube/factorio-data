@@ -1,33 +1,7 @@
-
-railpicturesinternal = function(elems)
-  local keys = {{"straight_rail", "horizontal", 64, 64},
-                {"straight_rail", "vertical", 64, 64},
-                {"straight_rail", "diagonal", 64, 64},
-                {"curved_rail", "vertical", 128, 256},
-                {"curved_rail" ,"horizontal", 256, 128}}
-  local res = {}
-  for _ , key in ipairs(keys) do
-    part = {}
-    dashkey = key[1]:gsub("_", "-")
-    for _ , elem in ipairs(elems) do
-      part[elem[1]] = {
-        filename = string.format("__base__/graphics/entity/%s/%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
-        priority = "extra-high",
-        width = key[3],
-        height = key[4]
-      }
-    end
-    res[key[1] .. "_" .. key[2]] = part
-  end
-  return res
-end
+require ("prototypes.entity.demo-railpictures")
 
 railpictures = function()
   return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
-end
-
-destroyedrailpictures = function()
-  return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
 end
 
 data:extend(
@@ -1476,6 +1450,7 @@ data:extend(
     name = "wall",
     icon = "__base__/graphics/icons/wall.png",
     flags = {"placeable-neutral", "player-creation"},
+    collision_box = {{-0.49, -0.49}, {0.49, 0.49}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     minable = {mining_time = 1, result = "wall"},
     max_health = 350,
@@ -1529,8 +1504,6 @@ data:extend(
         percent = 70
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     pictures =
     {
       single =
@@ -1828,21 +1801,6 @@ data:extend(
     pictures = railpictures()
   },
   {
-    type = "rail-remnants",
-    name = "straight-rail-remnants",
-    icon = "__base__/graphics/icons/straight-rail-remnants.png",
-    flags = {"placeable-neutral", "building-direction-8-way"},
-    order="c-d",
-    selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
-    selectable_in_game = false,
-    tile_width = 2,
-    tile_height = 2,
-    bending_type = "straight",
-    pictures = destroyedrailpictures(),
-    time_before_removed = 60 * 60 * 45,
-    time_before_shading_off = 60 * 60 * 1
-  },
-  {
     type = "rail",
     name = "curved-rail",
     icon = "__base__/graphics/icons/curved-rail.png",
@@ -1856,21 +1814,6 @@ data:extend(
     bending_type = "turn",
     rail_category = "regular",
     pictures = railpictures()
-  },
-  {
-    type = "rail-remnants",
-    name = "curved-rail-remnants",
-    icon = "__base__/graphics/icons/curved-rail-remnants.png",
-    flags = {"placeable-neutral", "building-direction-8-way"},
-    order="c-e",
-    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
-    selectable_in_game = false,
-    tile_width = 4,
-    tile_height = 8,
-    bending_type = "turn",
-    pictures = destroyedrailpictures(),
-    time_before_removed = 60 * 60 * 45,
-    time_before_shading_off = 60 * 60 * 1
   },
   {
     type = "flame-thrower-explosion",
@@ -2089,7 +2032,7 @@ data:extend(
     minable = {hardness = 0.1, mining_time = 0.1, result = "logistic-robot"},
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     max_payload_size = 1,
     speed = 0.05,
     transfer_distance = 0.5,
@@ -2122,7 +2065,7 @@ data:extend(
     minable = {hardness = 0.1, mining_time = 0.1, result = "construction-robot"},
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     max_payload_size = 1,
     speed = 0.06,
     transfer_distance = 0.5,
@@ -2392,7 +2335,7 @@ data:extend(
       priority = "high",
       frame_width = 168,
       frame_height = 165,
-      axially_symetric = false,
+      axially_symmetrical = false,
       direction_count = 4,
       shift = {1.6, -1.1}
     },
@@ -2516,7 +2459,7 @@ data:extend(
       priority = "high",
       frame_width = 136,
       frame_height = 122,
-      axially_symetric = false,
+      axially_symmetrical = false,
       direction_count = 4,
       shift = {1.4, -1.0}
     },
@@ -2640,7 +2583,7 @@ data:extend(
       priority = "high",
       frame_width = 132,
       frame_height = 144,
-      axially_symetric = false,
+      axially_symmetrical = false,
       direction_count = 4,
       shift = {0.9, -1}
     },
@@ -3074,7 +3017,7 @@ data:extend(
     order="e-a-a",
     max_health = 60,
     collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     distance_per_frame = 0.13,
     time_to_live = 60 * 45,
     follows_player = true,
@@ -3160,7 +3103,7 @@ data:extend(
     order="e-a-c",
     max_health = 60,
     collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     distance_per_frame = 0.13,
     time_to_live = 60 * 60 * 2,
     speed = 0.01,

@@ -5,7 +5,7 @@ data:extend(
     type = "unit",
     name = "medium-biter",
     icon = "__base__/graphics/icons/creeper.png",
-    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 75,
     order="b-b-b",
     resistances = 
@@ -106,7 +106,7 @@ data:extend(
     name = "big-biter",
     order="b-b-c",
     icon = "__base__/graphics/icons/creeper.png",
-    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 375,
     resistances = 
     {

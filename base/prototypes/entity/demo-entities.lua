@@ -1,3 +1,4 @@
+require ("prototypes.entity.demo-railpictures")
 
 function make_unit_melee_ammo_type(damagevalue)
   return
@@ -20,6 +21,10 @@ function make_unit_melee_ammo_type(damagevalue)
   }
 end
 
+destroyedrailpictures = function()
+  return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
+end
+
 function biterspawneranimation(variation)
 return
   {
@@ -28,7 +33,7 @@ return
     frame_count = 8,
     animation_speed = 0.18,
     run_mode = "forward-then-backward",
-    axially_symmetric = false,
+    axially_symmetrical = false,
     shift = {0.359375, -0.125},
     stripes =
     {
@@ -54,7 +59,7 @@ return
     frame_width = 320,
     frame_height = 320,
     frame_count = 20,
-    axially_symmetric = false,
+    axially_symmetrical = false,
     shift = {0, 0},
     direction_count = 1,
     stripes =
@@ -231,7 +236,7 @@ data:extend(
     type = "player",
     name = "player",
     icon = "__base__/graphics/icons/player.png",
-    flags = {"pushable", "placeable-player", "placeable-off-grid", "breaths-air"},
+    flags = {"pushable", "placeable-player", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 100,
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
@@ -1011,7 +1016,7 @@ data:extend(
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     order = "b-c-a",
-    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable"},
     dying_speed = 0.04,
     final_render_layer = "corpse",
     animation =
@@ -1223,7 +1228,7 @@ data:extend(
     type = "unit-spawner",
     name = "biter-spawner",
     icon = "__base__/graphics/icons/biter-spawner.png",
-    flags = {"placeable-player", "placeable-enemy"},
+    flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     minable = {mining_time = 1, result = "biter-spawner"},
     max_health = 350,
     order="b-b-g",
@@ -2149,7 +2154,36 @@ data:extend(
       }
     }
   },
-
+  {
+    type = "rail-remnants",
+    name = "straight-rail-remnants",
+    icon = "__base__/graphics/icons/straight-rail-remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way"},
+    order="c-d",
+    selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
+    selectable_in_game = false,
+    tile_width = 2,
+    tile_height = 2,
+    bending_type = "straight",
+    pictures = destroyedrailpictures(),
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
+  },
+  {
+    type = "rail-remnants",
+    name = "curved-rail-remnants",
+    icon = "__base__/graphics/icons/curved-rail-remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way"},
+    order="c-e",
+    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
+    selectable_in_game = false,
+    tile_width = 4,
+    tile_height = 8,
+    bending_type = "turn",
+    pictures = destroyedrailpictures(),
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
+  },
   {
     type = "ghost",
     name = "ghost"

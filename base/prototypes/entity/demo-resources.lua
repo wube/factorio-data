@@ -263,7 +263,7 @@ data:extend(
       frame_count = 4,
       direction_count = 8
     },
-    map_color = {r=0.241, g=0.233, b=0.15}
+    map_color = {r=0, g=0, b=0}
   },
 
   {

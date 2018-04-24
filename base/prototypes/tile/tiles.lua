@@ -14,6 +14,7 @@ function water_autoplace_peaks(from_depth, dark)
       -- Water and deep water have absolute priority. We simulate this by giving
       -- them absurdly large influence
       influence = influence,
+      noise_persistence = 0.7,
       elevation_optimal = -5000 - from_depth,
       elevation_range = 5000,
       elevation_max_range = 5000, -- everywhere below elevation 0 and nowhere else
@@ -24,7 +25,7 @@ function water_autoplace_peaks(from_depth, dark)
     {
       influence = dark and influence or -influence,
       noise_layer = "terrain-dark",
-      noise_persistence = 0.5,
+      noise_persistence = 0.7,
       noise_octaves_difference = 2,
     }
   }
@@ -125,8 +126,9 @@ data:extend(
       }
     },
     allowed_neighbors = { "water" },
-    map_color={r=0.149, g=0.250, b=0.211}
+    map_color={r=0.0941, g=0.2823, b=0.345}
   },
+
   {
     type = "tile",
     name = "deepwater-green",
@@ -178,8 +180,9 @@ data:extend(
       }
     },
     allowed_neighbors = { "water-green" },
-    map_color={r=0.149, g=0.250, b=0.211}
+    map_color={r=0.0941, g=0.149, b=0.066}
   },
+
   {
     type = "tile",
     name = "water",
@@ -231,8 +234,9 @@ data:extend(
       }
     },
     allowed_neighbors = { "grass" },
-    map_color={r=0.227, g=0.333, b=0.282}
+    map_color={r=0.0941, g=0.3568, b=0.4196}
   },
+
   {
     type = "tile",
     name = "water-green",
@@ -284,8 +288,9 @@ data:extend(
       }
     },
     allowed_neighbors = { "grass" },
-    map_color={r=0.227, g=0.333, b=0.282}
+    map_color={r=31, g=48, b=18}
   },
+
   {
     type = "tile",
     name = "grass",
@@ -376,7 +381,7 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.392, g=0.266, b=0.141}
+    map_color={r=61, g=51, b=17}
   },
 
   {
@@ -462,7 +467,7 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.392, g=0.266, b=0.141}
+    map_color={r=58, g=47, b=19}
   },
 
   {
@@ -542,8 +547,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.392, g=0.266, b=0.141}
+    map_color={r=53, g=38, b=14}
   },
+
   {
     type = "tile",
     name = "dirt",
@@ -622,7 +628,7 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.243, g=0.184, b=0.117}
+    map_color={r=132, g=91, b=34}
   },
   {
     type = "tile",
@@ -702,8 +708,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.243, g=0.184, b=0.117}
+    map_color={r=115, g=80, b=29}
   },
+
   {
     type = "tile",
     name = "sand",
@@ -785,8 +792,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.113, g=0.105, b=0.105}
+    map_color={r=160, g=126, b=54}
   },
+
   {
     type = "tile",
     name = "sand-dark",
@@ -869,7 +877,7 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=0.113, g=0.105, b=0.105}
+    map_color={r=139, g=104, b=39}
   }
 }
 )

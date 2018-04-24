@@ -170,6 +170,13 @@ data:extend(
       font = "default-frame",
       font_color={r=1, g=1, b=1}
     },
+    mod_list_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font = "default-bold",
+      font_color={r=0.9, g=0.9, b=0.1}
+    },
     button_style =
     {
       type = "button_style",
@@ -227,7 +234,37 @@ data:extend(
       parent = "slot_button_style",
       scalable = false,
       width = 61,
-      height = 61
+      height = 61,
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 111
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 111
+        }
+      },
     },
     image_tab_selected_slot_style =
     {
