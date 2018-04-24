@@ -1793,6 +1793,12 @@ data:extend(
         }
       }
     },
+    map_generation_settings_presets_list_box =
+    {
+      type = "list_box_style",
+      width = 300,
+      minimal_height = 125
+    },
     saves_list_box =
     {
       type = "list_box_style",
@@ -3216,7 +3222,7 @@ data:extend(
       type = "progressbar_style",
       minimal_width = 10,
       natural_width = 200,
-      bar_width = 7,
+      bar_width = 7, -- thickness of the bar, not horizontal size
       color = {g=1},
       other_colors = {},
       bar =
@@ -3241,8 +3247,10 @@ data:extend(
     activity_bar =
     {
       type = "activity_bar_style",
-      speed = 0.01,
-      size = 200,
+      speed = 0.01, -- % of bar length per render frame
+      minimal_width = 10,
+      natural_width = 200,
+      bar_width = 7, -- thickness of the bar, not horizontal size
       color = {g=1},
       bar =
       {
@@ -3252,7 +3260,7 @@ data:extend(
         height = 5,
         x = 221,
       },
-      bar_size_ratio = 0.07,
+      bar_size_ratio = 0.07, -- length of the moving bar as % of total length
       bar_background =
       {
         filename = "__core__/graphics/gui.png",
@@ -3526,14 +3534,52 @@ data:extend(
         y = 34
       }
     },
-    scrollbar =
+    horizontal_scrollbar =
     {
-      type = "scrollbar_style",
+      type = "horizontal_scrollbar_style",
+      height = 16,
       background_color = {r=0.5, g=0.5, b=0.5},
       thumb_button_style =
       {
         type = "button_style",
-        left_click_sound = {}
+        left_click_sound = {},
+        height = 16
+      },
+      top_button_style =
+      {
+        type = "button_style",
+        width = 16,
+        height = 16
+      },
+      bottom_button_style =
+      {
+        type = "button_style",
+        width = 16,
+        height = 16,
+      }
+    },
+    vertical_scrollbar =
+    {
+      type = "vertical_scrollbar_style",
+      width = 16,
+      background_color = {r=0.5, g=0.5, b=0.5},
+      thumb_button_style =
+      {
+        type = "button_style",
+        left_click_sound = {},
+        width = 16
+      },
+      top_button_style =
+      {
+        type = "button_style",
+        width = 16,
+        height = 16
+      },
+      bottom_button_style =
+      {
+        type = "button_style",
+        width = 16,
+        height = 16
       }
     },
     tab =

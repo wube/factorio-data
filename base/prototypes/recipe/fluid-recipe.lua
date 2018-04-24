@@ -168,7 +168,6 @@ data:extend(
     {
       {type="item", name="plastic-bar", amount=2}
     },
-    requester_paste_multiplier = 4,
     crafting_machine_tint =
     {
       primary = {r = 0.498, g = 0.498, b = 0.498, a = 0.000}, -- #7f7f7f00

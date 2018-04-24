@@ -49,7 +49,6 @@ data:extend(
         {type="fluid", name="lubricant", amount=20},
       },
       result = "express-transport-belt",
-      requester_paste_multiplier = 20
     },
   },
   {
@@ -79,7 +78,6 @@ data:extend(
         {"assembling-machine-1", 1}
       },
       result = "assembling-machine-2",
-      requester_paste_multiplier = 4
     },
     expensive =
     {
@@ -92,7 +90,6 @@ data:extend(
         {"assembling-machine-1", 1}
       },
       result = "assembling-machine-2",
-      requester_paste_multiplier = 4
     },
   },
   {
@@ -161,7 +158,6 @@ data:extend(
     },
     result = "rail",
     result_count = 2,
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -240,7 +236,6 @@ data:extend(
       {"iron-plate", 5}
     },
     result = "rail-signal",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -252,7 +247,6 @@ data:extend(
       {"iron-plate", 5}
     },
     result = "rail-chain-signal",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -298,7 +292,6 @@ data:extend(
     enabled = true,
     ingredients = {{"iron-plate", 8}},
     result = "iron-chest",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -306,7 +299,6 @@ data:extend(
     enabled = false,
     ingredients = {{"steel-plate", 8}},
     result = "steel-chest",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -526,7 +518,6 @@ data:extend(
     },
     result_count = 2,
     result = "underground-belt",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -540,7 +531,6 @@ data:extend(
     },
     result_count = 2,
     result = "fast-underground-belt",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -608,7 +598,6 @@ data:extend(
       {"transport-belt", 4}
     },
     result = "splitter",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -622,7 +611,6 @@ data:extend(
       {"electronic-circuit", 10}
     },
     result = "fast-splitter",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -653,7 +641,6 @@ data:extend(
         {"copper-cable", 4}
       },
       result = "advanced-circuit",
-      requester_paste_multiplier = 5
     },
     expensive =
     {
@@ -666,7 +653,6 @@ data:extend(
         {"copper-cable", 8}
       },
       result = "advanced-circuit",
-      requester_paste_multiplier = 5
     }
   },
   {
@@ -731,7 +717,6 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "logistic-chest-passive-provider",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -744,7 +729,6 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "logistic-chest-active-provider",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -757,7 +741,6 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "logistic-chest-storage",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -770,7 +753,6 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "logistic-chest-buffer",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -783,7 +765,6 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "logistic-chest-requester",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -824,7 +805,6 @@ data:extend(
       {"iron-stick", 2}
     },
     result = "steel-axe",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -836,7 +816,6 @@ data:extend(
       {"copper-plate", 5}
     },
     result = "big-electric-pole",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -860,7 +839,6 @@ data:extend(
       {"copper-plate", 2}
     },
     result = "medium-electric-pole",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -1328,7 +1306,7 @@ data:extend(
       {"iron-gear-wheel", 100},
     },
     result = "centrifuge",
-    requester_paste_multiplier= 2
+    requester_paste_multiplier= 10,
   },
   {
     type = "recipe",

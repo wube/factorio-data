@@ -4000,60 +4000,11 @@ data:extend(
     minable = {mining_time = 1, result = "fluid-wagon"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 600,
-    total_capacity = 25000 * 3,
+    capacity = 25000 * 3,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
     selection_box = {{-1, -2.703125}, {1, 3.296875}},
-    gui_front_tank =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/front-tank.png",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
-    },
-    gui_center_tank =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/center-tank.png",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
-    },
-    gui_back_tank =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/back-tank.png",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
-    },
-    gui_connect_front_center_tank =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/connector-front-center.png",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
-    },
-    gui_connect_center_back_tank =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/connector-center-back.png",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
-    },
-    gui_front_center_tank_indiciation =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/1.png",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    gui_center_back_tank_indiciation =
-    {
-      filename = "__base__/graphics/entity/fluid-wagon/gui/2.png",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
     vertical_selection_shift = -0.796875,
     weight = 3000,
     max_speed = 1.5,
@@ -10362,7 +10313,7 @@ data:extend(
 
     wire_max_distance = 10
   },
-    {
+  {
     type = "programmable-speaker",
     name = "programmable-speaker",
     icon = "__base__/graphics/icons/programmable-speaker.png",

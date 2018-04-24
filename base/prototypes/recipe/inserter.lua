@@ -11,7 +11,6 @@ data:extend(
       {"inserter", 1}
     },
     result = "long-handed-inserter",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -24,7 +23,6 @@ data:extend(
       {"inserter", 1}
     },
     result = "fast-inserter",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -36,7 +34,6 @@ data:extend(
       {"electronic-circuit", 4}
     },
     result = "filter-inserter",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -50,7 +47,6 @@ data:extend(
       {"fast-inserter", 1}
     },
     result = "stack-inserter",
-    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -62,7 +58,6 @@ data:extend(
       {"electronic-circuit", 5}
     },
     result = "stack-filter-inserter",
-    requester_paste_multiplier = 4
   }
 }
 )
