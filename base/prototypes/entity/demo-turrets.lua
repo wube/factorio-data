@@ -67,6 +67,7 @@ data:extend(
     healing_per_tick = 0.01,
     collision_box = {{-0.9, -0.8 }, {0.9, 0.8}},
     selection_box = {{-0.9, -0.8 }, {0.9, 0.8}},
+    shooting_cursor_size = 3,
     corpse = "small-worm-corpse",
     folded_speed = 0.01,
     folded_animation =

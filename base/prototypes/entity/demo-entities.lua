@@ -648,6 +648,7 @@ data:extend(
     fluid_box =
     {
       base_area = 1,
+      pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
         { position = {0, -1} },

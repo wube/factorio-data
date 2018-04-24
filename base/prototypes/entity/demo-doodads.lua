@@ -1735,11 +1735,11 @@ data:extend(
           influence = 0.0002
         },
         {
-          influence = 0.1;
+          influence = 0.002;
           min_influence = 0,
-          elevation_optimal = 12000,
-          elevation_range = 5000,
-          elevation_max_range = 12000,
+          elevation_optimal = 30000,
+          elevation_range = 23000,
+          elevation_max_range = 30000,
         }
       }
     },
@@ -1909,11 +1909,11 @@ data:extend(
           influence = 0.0002
         },
         {
-          influence = 0.1;
+          influence = 0.002;
           min_influence = 0,
-          elevation_optimal = 12000,
-          elevation_range = 5000,
-          elevation_max_range = 12000,
+          elevation_optimal = 30000,
+          elevation_range = 23000,
+          elevation_max_range = 30000,
         }
       }
     },
