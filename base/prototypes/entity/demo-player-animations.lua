@@ -113,8 +113,8 @@ playeranimations =
       height = 78,
       frame_count = 22,
       direction_count = 18,
-      shift = {0.140625, -0.4375},
-	  distance_per_frame = 0.35,
+      shift = {0.140625, -0.4375 + 0.109375},
+      distance_per_frame = 0.35,
       animation_speed = 0.60
     },
     runningwithgunmask =
@@ -137,7 +137,7 @@ playeranimations =
       frame_count = 22,
       direction_count = 8,
       shift = {0, -0.484375},
-	    distance_per_frame = 0.35,
+      distance_per_frame = 0.35,
       animation_speed = 0.60,
       axially_symmetrical = false
     },
