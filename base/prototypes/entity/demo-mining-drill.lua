@@ -20,6 +20,8 @@ data:extend(
       pipe_picture = assembler2pipepictures(),
       pipe_covers = pipecoverspictures(),
       base_area = 1,
+      height = 2,
+      base_level = -1,
       pipe_connections =
       {
         { position = {-2, 0} },

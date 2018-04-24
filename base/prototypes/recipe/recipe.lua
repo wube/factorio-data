@@ -1356,7 +1356,8 @@ data:extend(
         name = "uranium-238",
         amount = 3
       }
-    }
+    },
+    allow_decomposition = false
   },
   {
     type = "recipe",

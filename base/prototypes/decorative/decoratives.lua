@@ -3695,7 +3695,7 @@ data:extend(
         height = 112,
       }
     },
-    render_layer = "floor",
+    render_layer = "decals",
   },
   {
     type = "optimized-decorative",
@@ -3706,7 +3706,7 @@ data:extend(
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     selection_box = {{-1.7, -0.6}, {1.7, 0.6}},
     selectable_in_game = false,
-    render_layer = "floor",
+    render_layer = "decals",
     pictures =
     {
       {

@@ -3226,7 +3226,7 @@ data:extend(
     electric_satisfaction_in_description_progressbar_style =
     {
       type = "progressbar_style",
-      parent = "progressbar_style",
+      parent = "electric_satisfaction_progressbar_style",
       top_padding = 4,
       smooth_size = 10, -- minimum
     },

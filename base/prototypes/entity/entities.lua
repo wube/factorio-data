@@ -6026,7 +6026,7 @@ data:extend(
     -- per one charge slot
     charging_energy = "1000kW",
     logistics_radius = 25,
-    construction_radius = 51,
+    construction_radius = 55,
     charge_approach_distance = 5,
     robot_slots_count = 7,
     material_slots_count = 7,
@@ -8019,19 +8019,29 @@ data:extend(
     working_visualisations =
     {
       {
-        north_position = {1.0625, -2.05},
-        east_position = {-1.625, -1.90625},
-        south_position = {-1.84375, -2.5625},
-        west_position = {1.78125, -1.78125},
+        north_position = util.by_pixel(34, -65),
+        east_position = util.by_pixel(-52, -61),
+        south_position = util.by_pixel(-59, -82),
+        west_position = util.by_pixel(57, -58),
         animation =
         {
           filename = "__base__/graphics/entity/oil-refinery/oil-refinery-fire.png",
-          frame_count = 29,
-          width = 16,
-          height = 35,
-          scale = 1.5,
-          shift = {0, -0.5625},
-          run_mode="backward"
+          line_length = 10,
+          width = 20,
+          height = 40,
+          frame_count = 60,
+          animation_speed = 0.75,
+          shift = util.by_pixel(0, -14),
+          hr_version = {
+            filename = "__base__/graphics/entity/oil-refinery/hr-oil-refinery-fire.png",
+            line_length = 10,
+            width = 40,
+            height = 81,
+            frame_count = 60,
+            animation_speed = 0.75,
+            scale = 0.5,
+            shift = util.by_pixel(0, -14.25),
+          },
         },
         light = {intensity = 0.4, size = 6, color = {r = 1.0, g = 1.0, b = 1.0}}
       }
