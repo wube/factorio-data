@@ -34,13 +34,10 @@ require("prototypes.categories.rail-category")
 require("prototypes.categories.recipe-category")
 require("prototypes.categories.resource-category")
 require("prototypes.categories.module-category")
+require("prototypes.equipment-grid")
 require("prototypes.categories.equipment-category")
-require("prototypes.equipment.equipment-grid")
 
-
-if data.is_demo then
-  require("prototypes.item.demo-item-groups")
-else
+if not data.is_demo then
   require("prototypes.achievements")
   require("prototypes.entity.entities")
   require("prototypes.entity.projectiles")
@@ -55,7 +52,6 @@ else
   require("prototypes.item.equipment")
   require("prototypes.item.gun")
   require("prototypes.item.item")
-  require("prototypes.item.item-groups")
   require("prototypes.item.mining-tools")
   require("prototypes.item.module")
   require("prototypes.item.turret")
