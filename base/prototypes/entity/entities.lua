@@ -3029,13 +3029,13 @@ data:extend(
             filename = "__base__/graphics/entity/gate/wall-patch-south.png",
             width = 22,
             height = 40,
-            shift = {0, -0.125 - 1}
+            shift = {0, -0.125}
           },
           {
             filename = "__base__/graphics/entity/gate/wall-patch-south-shadow.png",
             width = 48,
             height = 25,
-            shift = {0.3, 0.95 - 1},
+            shift = {0.3, 0.95},
             draw_as_shadow = true
           }
         }

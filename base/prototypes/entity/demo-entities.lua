@@ -2435,7 +2435,7 @@ data:extend(
     name = "stone-wall",
     icon = "__base__/graphics/icons/stone-wall.png",
     flags = {"placeable-neutral", "player-creation"},
-    collision_box = {{-0.31, -0.31}, {0.31, 0.31}},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     minable = {mining_time = 0.5, result = "stone-wall"},
     fast_replaceable_group = "wall",

@@ -133,7 +133,7 @@ data:extend(
     name = "mass-production-3",
     order = "d[production]-b[electronic-circuit-production]-c",
     item_product = "electronic-circuit",
-    amount = 10000000,
+    amount = 20000000,
     steam_stats_name = "electronic-circuits-production-overall",
     icon = "__base__/graphics/achievement/mass-production-3.png",
     limited_to_one_game = false
