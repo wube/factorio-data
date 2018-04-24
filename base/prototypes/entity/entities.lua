@@ -4610,19 +4610,28 @@ data:extend(
           name = "smoke",
           deviation = {0.1, 0.1},
           frequency = 0.5,
-          position = {0, 0},
+          position = {0.75, -1.09375},
           starting_vertical_speed = 0.05
         }
       }
     },
     animation =
     {
-      filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
+      filename = "__base__/graphics/entity/steel-furnace/steel-furnace-working.png",
       priority = "high",
-      width = 84,
-      height = 66,
+      width = 140,
+      height = 76,
       frame_count = 1,
-      shift = {0.5, 0}
+      shift = {1.21875, -0.125}
+    },
+    idle_animation =
+    {
+      filename = "__base__/graphics/entity/steel-furnace/steel-furnace-idle.png",
+      priority = "high",
+      width = 140,
+      height = 76,
+      frame_count = 1,
+      shift = {1.21875, -0.125}
     },
     working_visualisations =
     {
@@ -4635,13 +4644,31 @@ data:extend(
         {
           filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
           priority = "high",
-          width = 36,
-          height = 19,
-          frame_count = 12,
-          shift = { 0.0625, 0.63125}
+          width = 21,
+          height = 9,
+          frame_count = 28,
+          scale = 1.02,
+          shift = {0.046875, 0.640625}
         },
         light = {intensity = 1, size = 1}
-      }
+      },
+	  {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        effect = "flicker", -- changes alpha based on energy source light intensity
+        animation =
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-glow.png",
+          priority = "high",
+          width = 60,
+          height = 43,
+          frame_count = 1,
+          shift = {0.03125, 0.640625},
+          blend_mode = "additive"
+        }
+      },
     },
     fast_replaceable_group = "furnace"
   },
