@@ -6,7 +6,7 @@ require ("prototypes.entity.demo-enemy-autoplace-utils")
 
 spitter_spawner_tint = {r=0.99, g=0.09, b=0.09, a=1}
 
-function spitterattackparameters(data)
+function spitter_attack_parameters(data)
   return
   {
     type = "projectile",
@@ -27,7 +27,8 @@ function spitterattackparameters(data)
         {
           type = "projectile",
           projectile = "acid-projectile-purple",
-          starting_speed = 0.5
+          starting_speed = 0.5,
+          max_range = data.range*2
         }
       }
     },
@@ -75,21 +76,20 @@ data:extend(
       {
         type = "physical",
         decrease = 4,
+        percent = 10
       },
       {
         type = "explosion",
         percent = 10
       },
-      {
-        type = "fire",
-        percent = -50
-      }
     },
     healing_per_tick = 0.01,
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
     sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
     attack_parameters =
     {
       type = "projectile",
@@ -97,7 +97,7 @@ data:extend(
       ammo_type = make_unit_melee_ammo_type(15),
       range = 1,
       cooldown = 35,
-      sound = make_biter_roars(0.7),
+      sound = make_biter_roars(0.5),
       animation = biterattackanimation(mediumbiterscale, medium_biter_tint1, medium_biter_tint2)
     },
     vision_distance = 30,
@@ -107,8 +107,8 @@ data:extend(
     pollution_to_join_attack = 1000,
     corpse = "medium-biter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_biter_calls(0.8),
-    dying_sound = make_biter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.4),
+    dying_sound = make_biter_dying_sounds(0.5),
     run_animation = biterrunanimation(mediumbiterscale, medium_biter_tint1, medium_biter_tint2)
   },
 
@@ -125,6 +125,7 @@ data:extend(
       {
         type = "physical",
         decrease = 8,
+        percent = 10,
       },
       {
         type = "explosion",
@@ -137,6 +138,8 @@ data:extend(
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
     sticker_box = {{-0.6, -0.8}, {0.6, 0}},
     distraction_cooldown = 300,
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
     attack_parameters =
     {
       type = "projectile",
@@ -154,8 +157,8 @@ data:extend(
     pollution_to_join_attack = 4000,
     corpse = "big-biter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_biter_calls(0.9),
-    dying_sound = make_biter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.5),
+    dying_sound = make_biter_dying_sounds(0.6),
     run_animation = biterrunanimation(bigbiterscale, big_biter_tint1, big_biter_tint2)
   },
 
@@ -165,19 +168,19 @@ data:extend(
     order="b-b-d",
     icon = "__base__/graphics/icons/behemoth-biter.png",
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
-    max_health = 5000,
+    max_health = 3000,
     subgroup="enemies",
     resistances =
     {
       {
         type = "physical",
-        decrease = 8,
-        percent = 20
+        decrease = 12,
+        percent = 10
       },
       {
         type = "explosion",
-        decrease = 10,
-        percent = 20
+        decrease = 12,
+        percent = 10
       }
     },
     spawning_time_modifier = 12,
@@ -186,13 +189,15 @@ data:extend(
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
     sticker_box = {{-0.6, -0.8}, {0.6, 0}},
     distraction_cooldown = 300,
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
     attack_parameters =
     {
       type = "projectile",
       range = 1.5,
       cooldown = 50,
       ammo_category = "melee",
-      ammo_type = make_unit_melee_ammo_type(100),
+      ammo_type = make_unit_melee_ammo_type(90),
       sound =  make_biter_roars(0.8),
       animation = biterattackanimation(behemothbiterscale, behemoth_biter_tint1, behemoth_biter_tint2)
     },
@@ -203,8 +208,8 @@ data:extend(
     pollution_to_join_attack = 20000,
     corpse = "behemoth-biter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_biter_calls(1.2),
-    dying_sound = make_biter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.7),
+    dying_sound = make_biter_dying_sounds(0.8),
     run_animation = biterrunanimation(behemothbiterscale, behemoth_biter_tint1, behemoth_biter_tint2)
   },
 
@@ -221,13 +226,18 @@ data:extend(
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
     sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
-    attack_parameters = spitterattackparameters({range=15,
-                                                 min_attack_distance=10,
-                                                 cooldown=100,
-                                                 damage_modifier=1,
-                                                 scale=smallspitterscale,
-                                                 tint=smallspittertint,
-                                                 roarvolume=0.7}),
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
+    attack_parameters = spitter_attack_parameters(
+    {
+      range=13,
+      min_attack_distance=10,
+      cooldown=100,
+      damage_modifier=1,
+      scale=smallspitterscale,
+      tint=smallspittertint,
+      roarvolume=0.4
+    }),
     vision_distance = 30,
     movement_speed = 0.185,
     distance_per_frame = 0.04,
@@ -235,8 +245,8 @@ data:extend(
     pollution_to_join_attack = 200,
     corpse = "small-spitter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_biter_calls(0.65),
-    dying_sound = make_spitter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.3),
+    dying_sound = make_spitter_dying_sounds(0.4),
     run_animation = spitterrunanimation(smallspitterscale, smallspittertint)
   },
 
@@ -252,7 +262,7 @@ data:extend(
     {
       {
         type = "explosion",
-        percent = 15
+        percent = 10
       }
     },
     healing_per_tick = 0.01,
@@ -260,13 +270,18 @@ data:extend(
     selection_box = {{-0.5, -0.7}, {0.5, 0.7}},
     sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
-    attack_parameters = spitterattackparameters({range=15,
-                                                 min_attack_distance=10,
-                                                 cooldown=100,
-                                                 damage_modifier=2,
-                                                 scale=mediumspitterscale,
-                                                 tint=mediumspittertint,
-                                                 roarvolume=0.85}),
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
+    attack_parameters = spitter_attack_parameters(
+    {
+      range=14,
+      min_attack_distance=10,
+      cooldown=100,
+      damage_modifier=2,
+      scale=mediumspitterscale,
+      tint=mediumspittertint,
+      roarvolume=0.5
+    }),
     vision_distance = 30,
     movement_speed = 0.165,
     distance_per_frame = 0.055,
@@ -274,8 +289,8 @@ data:extend(
     pollution_to_join_attack = 600,
     corpse = "medium-spitter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_biter_calls(0.75),
-    dying_sound = make_spitter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.4),
+    dying_sound = make_spitter_dying_sounds(0.5),
     run_animation = spitterrunanimation(mediumspitterscale, mediumspittertint)
   },
 
@@ -291,7 +306,7 @@ data:extend(
     {
       {
         type = "explosion",
-        percent = 30
+        percent = 15
       }
     },
     spawning_time_modifier = 3,
@@ -300,13 +315,18 @@ data:extend(
     selection_box = {{-0.7, -1.0}, {0.7, 1.0}},
     sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
-    attack_parameters = spitterattackparameters({range=15,
-                                                 min_attack_distance=10,
-                                                 cooldown=100,
-                                                 damage_modifier=3,
-                                                 scale=bigspitterscale,
-                                                 tint=bigspittertint,
-                                                 roarvolume=0.95}),
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
+    attack_parameters = spitter_attack_parameters(
+    {
+      range=15,
+      min_attack_distance=10,
+      cooldown=100,
+      damage_modifier=3,
+      scale=bigspitterscale,
+      tint=bigspittertint,
+      roarvolume=0.6
+    }),
     vision_distance = 30,
     movement_speed = 0.15,
     distance_per_frame = 0.07,
@@ -314,8 +334,8 @@ data:extend(
     pollution_to_join_attack = 1500,
     corpse = "big-spitter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_biter_calls(0.9),
-    dying_sound = make_spitter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.5),
+    dying_sound = make_spitter_dying_sounds(0.6),
     run_animation = spitterrunanimation(bigspitterscale, bigspittertint)
   },
 
@@ -324,14 +344,14 @@ data:extend(
     name = "behemoth-spitter",
     icon = "__base__/graphics/icons/behemoth-spitter.png",
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
-    max_health = 2000,
+    max_health = 1500,
     order="b-b-f",
     subgroup="enemies",
     resistances =
     {
       {
         type = "explosion",
-        percent = 35
+        percent = 30
       }
     },
     spawning_time_modifier = 12,
@@ -340,19 +360,26 @@ data:extend(
     selection_box = {{-0.7, -1.0}, {0.7, 1.0}},
     sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
-    attack_parameters = spitterattackparameters({range=15,
-                                                 min_attack_distance=10,
-                                                 cooldown=100,
-                                                 damage_modifier=5,
-                                                 scale=behemothspitterscale,
-                                                 tint=behemothspittertint}),
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
+    attack_parameters = spitter_attack_parameters(
+    {
+      range=16,
+      min_attack_distance=10,
+      cooldown=100,
+      damage_modifier=5,
+      scale=behemothspitterscale,
+      tint=behemothspittertint,
+      roarvolume=0.8
+    }),
     vision_distance = 30,
     movement_speed = 0.15,
     distance_per_frame = 0.084,
     pollution_to_join_attack = 10000,
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "blood-explosion-big",
-    dying_sound = make_spitter_dying_sounds(1.0),
+    working_sound = make_biter_calls(0.7),
+    dying_sound = make_spitter_dying_sounds(0.8),
     run_animation = spitterrunanimation(behemothspitterscale, behemothspittertint)
   },
 
@@ -497,11 +524,17 @@ data:extend(
       {
         type = "physical",
         decrease = 2,
+        percent = 15
       },
       {
         type = "explosion",
         decrease = 5,
         percent = 15,
+      },
+      {
+        type = "fire",
+        decrease = 3,
+        percent = 60,
       }
     },
     healing_per_tick = 0.02,
@@ -511,15 +544,6 @@ data:extend(
     pollution_absorbtion_proportional = 0.01,
     corpse = "spitter-spawner-corpse",
     dying_explosion = "blood-explosion-huge",
-    loot =
-    {
-      {
-        count_max = 15,
-        count_min = 5,
-        item = "alien-artifact",
-        probability = 1
-      }
-    },
     max_count_of_owned_units = 7,
     max_friends_around_to_spawn = 5,
     animations =
@@ -534,7 +558,7 @@ data:extend(
                      local res = {}
                      res[1] = {"small-biter", {{0.0, 0.3}, {0.35, 0}}}
                      res[2] = {"small-spitter", {{0.25, 0.0}, {0.5, 0.3}, {0.7, 0.0}}}
-                     res[3] = {"medium-spitter", {{0.5, 0.0}, {0.7, 0.3}, {0.9, 0.1}}}
+                     res[3] = {"medium-spitter", {{0.4, 0.0}, {0.7, 0.3}, {0.9, 0.1}}}
                      res[4] = {"big-spitter", {{0.5, 0.0}, {1.0, 0.4}}}
                      res[5] = {"behemoth-spitter", {{0.9, 0.0}, {1.0, 0.3}}}
                      return res
@@ -561,7 +585,7 @@ data:extend(
     time_before_removed = 15 * 60 * 60,
     subgroup="corpses",
     order = "c[corpse]-c[spitter-spawner]",
-    final_render_layer = "corpse",
+    final_render_layer = "remnants",
     animation =
     {
       spawner_die_animation(0, spitter_spawner_tint),

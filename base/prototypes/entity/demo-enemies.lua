@@ -29,8 +29,8 @@ data:extend(
       range = 0.5,
       cooldown = 35,
       ammo_category = "melee",
-      ammo_type = make_unit_melee_ammo_type(6),
-      sound = make_biter_roars(0.5),
+      ammo_type = make_unit_melee_ammo_type(7),
+      sound = make_biter_roars(0.4),
       animation = biterattackanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
     },
     vision_distance = 30,
@@ -38,10 +38,12 @@ data:extend(
     distance_per_frame = 0.1,
     pollution_to_join_attack = 200,
     distraction_cooldown = 300,
+    min_pursue_time = 10 * 60,
+    max_pursue_distance = 50,
     corpse = "small-biter-corpse",
     dying_explosion = "blood-explosion-small",
-    dying_sound =  make_biter_dying_sounds(1.0),
-    working_sound =  make_biter_calls(0.7),
+    dying_sound =  make_biter_dying_sounds(0.4),
+    working_sound =  make_biter_calls(0.3),
     run_animation = biterrunanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
   },
 
@@ -73,11 +75,17 @@ data:extend(
       {
         type = "physical",
         decrease = 2,
+        percent = 15
       },
       {
         type = "explosion",
         decrease = 5,
         percent = 15,
+      },
+      {
+        type = "fire",
+        decrease = 3,
+        percent = 60,
       }
     },
     working_sound = {
@@ -107,18 +115,8 @@ data:extend(
     -- in ticks per 1 pu
     pollution_absorbtion_absolute = 20,
     pollution_absorbtion_proportional = 0.01,
-    pollution_to_enhance_spawning = 30000,
     corpse = "biter-spawner-corpse",
     dying_explosion = "blood-explosion-huge",
-    loot =
-    {
-      {
-        count_max = 10,
-        count_min = 2,
-        item = "alien-artifact",
-        probability = 1
-      }
-    },
     max_count_of_owned_units = 7,
     max_friends_around_to_spawn = 5,
     animations =
@@ -135,8 +133,8 @@ data:extend(
                        -- from evolution_factor 0.3 the weight for medium-biter is linearly rising from 0 to 0.3
                        -- this means for example that when the evolution_factor is 0.45 the probability of spawning
                        -- a small biter is 66% while probability for medium biter is 33%.
-                       res[2] = {"medium-biter", {{0.3, 0.0}, {0.6, 0.3}, {0.7, 0.1}}}
-                       -- for evolution factor of 1 the spawning probabilities are: small-biter 0%, medium-biter 1/7, big-biter 4/7, behemoth biter 3/7
+                       res[2] = {"medium-biter", {{0.2, 0.0}, {0.6, 0.3}, {0.7, 0.1}}}
+                       -- for evolution factor of 1 the spawning probabilities are: small-biter 0%, medium-biter 1/8, big-biter 4/8, behemoth biter 3/8
                        res[3] = {"big-biter", {{0.5, 0.0}, {1.0, 0.4}}}
                        res[4] = {"behemoth-biter", {{0.9, 0.0}, {1.0, 0.3}}}
                      end
@@ -164,7 +162,7 @@ data:extend(
     time_before_removed = 15 * 60 * 60,
     subgroup="corpses",
     order = "c[corpse]-b[biter-spawner]",
-    final_render_layer = "corpse",
+    final_render_layer = "remnants",
     animation =
     {
       spawner_die_animation(0, biter_spawner_tint),

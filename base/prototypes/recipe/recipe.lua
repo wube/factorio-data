@@ -21,22 +21,36 @@ data:extend(
       {"iron-gear-wheel", 5},
       {"transport-belt", 1}
     },
-    result = "fast-transport-belt",
-    requester_paste_multiplier = 4
+    result = "fast-transport-belt"
   },
   {
     type = "recipe",
     name = "express-transport-belt",
     category = "crafting-with-fluid",
-    enabled = false,
-    ingredients =
+    normal =
     {
-      {"iron-gear-wheel", 5},
-      {"fast-transport-belt", 1},
-      {type="fluid", name="lubricant", amount=2},
+      enabled = false,
+
+      ingredients =
+      {
+        {"iron-gear-wheel", 10},
+        {"fast-transport-belt", 1},
+        {type="fluid", name="lubricant", amount=20},
+      },
+      result = "express-transport-belt"
     },
-    result = "express-transport-belt",
-    requester_paste_multiplier = 4
+    expensive =
+    {
+      enabled = false,
+      ingredients =
+      {
+        {"iron-gear-wheel", 20},
+        {"fast-transport-belt", 1},
+        {type="fluid", name="lubricant", amount=20},
+      },
+      result = "express-transport-belt",
+      requester_paste_multiplier = 20
+    },
   },
   {
     type = "recipe",
@@ -54,16 +68,32 @@ data:extend(
   {
     type = "recipe",
     name = "assembling-machine-2",
-    enabled = false,
-    ingredients =
+    normal =
     {
-      {"iron-plate", 9},
-      {"electronic-circuit", 3},
-      {"iron-gear-wheel", 5},
-      {"assembling-machine-1", 1}
+      enabled = false,
+      ingredients =
+      {
+        {"iron-plate", 9},
+        {"electronic-circuit", 3},
+        {"iron-gear-wheel", 5},
+        {"assembling-machine-1", 1}
+      },
+      result = "assembling-machine-2",
+      requester_paste_multiplier = 4
     },
-    result = "assembling-machine-2",
-    requester_paste_multiplier = 4
+    expensive =
+    {
+      enabled = false,
+      ingredients =
+      {
+        {"iron-plate", 20},
+        {"electronic-circuit", 5},
+        {"iron-gear-wheel", 10},
+        {"assembling-machine-1", 1}
+      },
+      result = "assembling-machine-2",
+      requester_paste_multiplier = 4
+    },
   },
   {
     type = "recipe",
@@ -91,15 +121,30 @@ data:extend(
   {
     type = "recipe",
     name = "tank",
-    enabled = false,
-    ingredients =
+    normal =
     {
-      {"engine-unit", 16},
-      {"steel-plate", 50},
-      {"iron-gear-wheel", 15},
-      {"advanced-circuit", 5}
+      enabled = false,
+      ingredients =
+      {
+        {"engine-unit", 32},
+        {"steel-plate", 50},
+        {"iron-gear-wheel", 15},
+        {"advanced-circuit", 10}
+      },
+      result = "tank"
     },
-    result = "tank"
+    expensive =
+    {
+      enabled = false,
+      ingredients =
+      {
+        {"engine-unit", 64},
+        {"steel-plate", 100},
+        {"iron-gear-wheel", 30},
+        {"advanced-circuit", 20}
+      },
+      result = "tank"
+    }
   },
   {
     type = "recipe",
@@ -117,7 +162,7 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "diesel-locomotive",
+    name = "locomotive",
     enabled = false,
     ingredients =
     {
@@ -125,7 +170,7 @@ data:extend(
       {"electronic-circuit", 10},
       {"steel-plate", 30}
     },
-    result = "diesel-locomotive"
+    result = "locomotive"
   },
   {
     type = "recipe",
@@ -138,6 +183,20 @@ data:extend(
       {"steel-plate", 20}
     },
     result = "cargo-wagon"
+  },
+  {
+    type = "recipe",
+    name = "fluid-wagon",
+    enabled = false,
+    energy_required = 1.5,
+    ingredients =
+    {
+      {"iron-gear-wheel", 10},
+      {"steel-plate", 16},
+      {"pipe", 8},
+      {"storage-tank", 3}
+    },
+    result = "fluid-wagon"
   },
   {
     type = "recipe",
@@ -188,7 +247,11 @@ data:extend(
     name = "modular-armor",
     enabled = false,
     energy_required = 15,
-    ingredients = {{ "advanced-circuit", 30}, {"processing-unit", 5}, {"steel-plate", 50}},
+    ingredients =
+    {
+      {"advanced-circuit", 30},
+      {"steel-plate", 50}
+    },
     result = "modular-armor"
   },
   {
@@ -196,7 +259,7 @@ data:extend(
     name = "power-armor",
     enabled = false,
     energy_required = 20,
-    ingredients = {{ "processing-unit", 40}, {"electric-engine-unit", 20}, {"steel-plate", 40}, {"alien-artifact", 10}},
+    ingredients = {{ "processing-unit", 40}, {"electric-engine-unit", 20}, {"steel-plate", 40}},
     result = "power-armor",
     requester_paste_multiplier = 1
   },
@@ -205,7 +268,7 @@ data:extend(
     name = "power-armor-mk2",
     enabled = false,
     energy_required = 25,
-    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 40}, {"steel-plate", 40}, {"alien-artifact", 50}},
+    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 40}, {"steel-plate", 40}},
     result = "power-armor-mk2",
     requester_paste_multiplier = 1
   },
@@ -230,8 +293,7 @@ data:extend(
     name = "stone-wall",
     enabled = false,
     ingredients = {{"stone-brick", 5}},
-    result = "stone-wall",
-    requester_paste_multiplier = 10
+    result = "stone-wall"
   },
   {
     type = "recipe",
@@ -242,7 +304,7 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "flame-thrower",
+    name = "flamethrower",
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -250,7 +312,7 @@ data:extend(
       {"steel-plate", 5},
       {"iron-gear-wheel", 10}
     },
-    result = "flame-thrower"
+    result = "flamethrower"
   },
   {
     type = "recipe",
@@ -269,7 +331,7 @@ data:extend(
     type = "recipe",
     name = "rocket-launcher",
     enabled = false,
-    energy_required = 5,
+    energy_required = 10,
     ingredients =
     {
       {"iron-plate", 5},
@@ -282,7 +344,7 @@ data:extend(
     type = "recipe",
     name = "shotgun",
     enabled = false,
-    energy_required = 4,
+    energy_required = 10,
     ingredients =
     {
       {"iron-plate", 15},
@@ -296,7 +358,7 @@ data:extend(
     type = "recipe",
     name = "combat-shotgun",
     enabled = false,
-    energy_required = 8,
+    energy_required = 10,
     ingredients =
     {
       {"steel-plate", 15},
@@ -349,23 +411,56 @@ data:extend(
     energy_required = 12,
     ingredients =
     {
-      {"battery", 1},
       {"advanced-circuit", 1},
-      {"filter-inserter", 1},
-      {"steel-plate", 1},
+      {"engine-unit", 1},
+      {"assembling-machine-1", 1},
     },
     result = "science-pack-3"
   },
   {
     type = "recipe",
-    name = "alien-science-pack",
+    name = "military-science-pack",
     enabled = false,
-    energy_required = 12,
-    ingredients = {{"alien-artifact", 1}
+    energy_required = 10,
+    ingredients =
+    {
+      {"piercing-rounds-magazine", 1},
+      {"grenade", 1},
+      {"gun-turret", 1}
     },
-    result = "alien-science-pack",
-    result_count = 10
+    result_count = 2,
+    result = "military-science-pack",
   },
+  {
+    type = "recipe",
+    name = "production-science-pack",
+    enabled = false,
+    energy_required = 14,
+    ingredients =
+    {
+     {"pumpjack", 1},
+     {"electric-engine-unit", 1},
+     {"electric-furnace", 1}
+    },
+    result_count = 2,
+    result = "production-science-pack",
+  },
+  {
+    type = "recipe",
+    name = "high-tech-science-pack",
+    enabled = false,
+    energy_required = 14,
+    ingredients =
+    {
+      {"battery", 1},
+      {"processing-unit", 3},
+      {"speed-module", 1},
+      {"copper-cable", 30}
+    },
+    result_count = 2,
+    result = "high-tech-science-pack",
+  },
+
   {
     type = "recipe",
     name = "lab",
@@ -387,8 +482,7 @@ data:extend(
       {"electronic-circuit", 1},
       {"copper-cable", 1}
     },
-    result = "red-wire",
-    requester_paste_multiplier = 10
+    result = "red-wire"
   },
   {
     type = "recipe",
@@ -399,8 +493,7 @@ data:extend(
       {"electronic-circuit", 1},
       {"copper-cable", 1}
     },
-    result = "green-wire",
-    requester_paste_multiplier = 10
+    result = "green-wire"
   },
   {
     type = "recipe",
@@ -438,7 +531,7 @@ data:extend(
     {
       {"iron-gear-wheel", 40},
       {"fast-underground-belt", 2},
-      {type="fluid", name="lubricant", amount=4},
+      {type="fluid", name="lubricant", amount=40},
     },
     result_count = 2,
     result = "express-underground-belt"
@@ -521,37 +614,68 @@ data:extend(
       {"fast-splitter", 1},
       {"iron-gear-wheel", 10},
       {"advanced-circuit", 10},
-      {type="fluid", name="lubricant", amount=8}
+      {type="fluid", name="lubricant", amount=80}
     },
     result = "express-splitter"
   },
   {
     type = "recipe",
     name = "advanced-circuit",
-    enabled = false,
-    energy_required = 8,
-    ingredients =
+    normal =
     {
-      {"electronic-circuit", 2},
-      {"plastic-bar", 2},
-      {"copper-cable", 4}
+      enabled = false,
+      energy_required = 6,
+      ingredients =
+      {
+        {"electronic-circuit", 2},
+        {"plastic-bar", 2},
+        {"copper-cable", 4}
+      },
+      result = "advanced-circuit",
+      requester_paste_multiplier = 5
     },
-    result = "advanced-circuit",
-    requester_paste_multiplier = 5
+    expensive =
+    {
+      enabled = false,
+      energy_required = 6,
+      ingredients =
+      {
+        {"electronic-circuit", 2},
+        {"plastic-bar", 4},
+        {"copper-cable", 8}
+      },
+      result = "advanced-circuit",
+      requester_paste_multiplier = 5
+    }
   },
   {
     type = "recipe",
     name = "processing-unit",
     category = "crafting-with-fluid",
-    enabled = false,
-    energy_required = 15,
-    ingredients =
+    normal =
     {
-      {"electronic-circuit", 20},
-      {"advanced-circuit", 2},
-      {type="fluid", name = "sulfuric-acid", amount = 0.5}
+      enabled = false,
+      energy_required = 10,
+      ingredients =
+      {
+        {"electronic-circuit", 20},
+        {"advanced-circuit", 2},
+        {type = "fluid", name = "sulfuric-acid", amount = 5}
+      },
+      result = "processing-unit"
     },
-    result = "processing-unit"
+    expensive =
+    {
+      enabled = false,
+      energy_required = 10,
+      ingredients =
+      {
+        {"electronic-circuit", 20},
+        {"advanced-circuit", 2},
+        {type = "fluid", name = "sulfuric-acid", amount = 10}
+      },
+      result = "processing-unit"
+    }
   },
   {
     type = "recipe",
@@ -719,7 +843,7 @@ data:extend(
   {
     type = "recipe",
     name = "steel-furnace",
-    ingredients = {{"steel-plate", 8}, {"stone-brick", 10}},
+    ingredients = {{"steel-plate", 6}, {"stone-brick", 10}},
     result = "steel-furnace",
     energy_required = 3,
     enabled = false
@@ -727,7 +851,7 @@ data:extend(
   {
     type = "recipe",
     name = "electric-furnace",
-    ingredients = {{"steel-plate", 15}, {"advanced-circuit", 5}, {"stone-brick", 10}},
+    ingredients = {{"steel-plate", 10}, {"advanced-circuit", 5}, {"stone-brick", 10}},
     result = "electric-furnace",
     energy_required = 5,
     enabled = false
@@ -748,46 +872,13 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "blueprint",
-    energy_required = 1,
-    ingredients =
-    {
-      {"advanced-circuit", 1}
-    },
-    result = "blueprint",
-    enabled = false
-  },
-  {
-    type = "recipe",
-    name = "blueprint-book",
-    energy_required = 5,
-    ingredients =
-    {
-      {"advanced-circuit", 15}
-    },
-    result = "blueprint-book",
-    enabled = false
-  },
-  {
-    type = "recipe",
-    name = "deconstruction-planner",
-    energy_required = 1,
-    ingredients =
-    {
-      {"advanced-circuit", 1}
-    },
-    result = "deconstruction-planner",
-    enabled = false
-  },
-  {
-    type = "recipe",
     name = "pumpjack",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
-      {"steel-plate", 15},
+      {"steel-plate", 5},
       {"iron-gear-wheel", 10},
-      {"electronic-circuit", 10},
+      {"electronic-circuit", 5},
       {"pipe", 10},
     },
     result = "pumpjack",
@@ -811,7 +902,7 @@ data:extend(
   {
     type = "recipe",
     name = "engine-unit",
-    energy_required = 20,
+    energy_required = 10,
     category = "advanced-crafting",
     ingredients =
     {
@@ -826,11 +917,11 @@ data:extend(
     type = "recipe",
     name = "electric-engine-unit",
     category = "crafting-with-fluid",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"engine-unit", 1},
-      {type="fluid", name= "lubricant", amount = 2},
+      {type="fluid", name= "lubricant", amount = 15},
       {"electronic-circuit", 2}
     },
     result = "electric-engine-unit",
@@ -853,30 +944,72 @@ data:extend(
   {
     type = "recipe",
     name = "explosives",
-    energy_required = 5,
-    enabled = false,
     category = "chemistry",
-    ingredients =
+    crafting_machine_tint =
     {
-      {type="item", name="sulfur", amount=1},
-      {type="item", name="coal", amount=1},
-      {type="fluid", name="water", amount=1},
+      primary = {r = 0.955, g = 0.945, b = 0.000, a = 0.000}, -- #f3f10000
+      secondary = {r = 0.000, g = 0.441, b = 0.659, a = 0.898}, -- #0070a8e5
+      tertiary = {r = 0.000, g = 0.288, b = 0.365, a = 0.000}, -- #00495d00
     },
-    result= "explosives"
+    normal =
+    {
+      energy_required = 5,
+      enabled = false,
+      ingredients =
+      {
+        {type="item", name="sulfur", amount=1},
+        {type="item", name="coal", amount=1},
+        {type="fluid", name="water", amount=10},
+      },
+      result= "explosives",
+    },
+    expensive =
+    {
+      energy_required = 5,
+      enabled = false,
+      ingredients =
+      {
+        {type="item", name="sulfur", amount=2},
+        {type="item", name="coal", amount=2},
+        {type="fluid", name="water", amount=10},
+      },
+      result= "explosives",
+    }
   },
   {
     type = "recipe",
     name = "battery",
     category = "chemistry",
-    energy_required = 5,
-    enabled = false,
-    ingredients =
+    normal =
     {
-      {type="fluid", name="sulfuric-acid", amount=2},
-      {"iron-plate", 1},
-      {"copper-plate", 1}
+      energy_required = 5,
+      enabled = false,
+      ingredients =
+      {
+        {type="fluid", name="sulfuric-acid", amount=20},
+        {"iron-plate", 1},
+        {"copper-plate", 1}
+      },
+      result= "battery"
     },
-    result= "battery"
+    expensive =
+    {
+      energy_required = 5,
+      enabled = false,
+      ingredients =
+      {
+        {type="fluid", name="sulfuric-acid", amount=40},
+        {"iron-plate", 1},
+        {"copper-plate", 1}
+      },
+      result= "battery"
+    },
+    crafting_machine_tint =
+    {
+      primary = {r = 0.970, g = 0.611, b = 0.000, a = 0.000}, -- #f79b0000
+      secondary = {r = 0.000, g = 0.680, b = 0.894, a = 0.357}, -- #00ade45b
+      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900
+    }
   },
   {
     type = "recipe",
@@ -892,16 +1025,16 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "small-pump",
+    name = "pump",
     energy_required = 2,
     enabled = false,
     ingredients =
     {
-      {"electric-engine-unit", 1},
+      {"engine-unit", 1},
       {"steel-plate", 1},
       {"pipe", 1}
     },
-    result= "small-pump"
+    result= "pump"
   },
   {
     type = "recipe",
@@ -935,7 +1068,7 @@ data:extend(
   {
     type = "recipe",
     name = "arithmetic-combinator",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"copper-cable", 5},
@@ -946,7 +1079,7 @@ data:extend(
   {
     type = "recipe",
     name = "decider-combinator",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"copper-cable", 5},
@@ -957,7 +1090,7 @@ data:extend(
   {
     type = "recipe",
     name = "constant-combinator",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"copper-cable", 5},
@@ -968,7 +1101,7 @@ data:extend(
   {
     type = "recipe",
     name = "power-switch",
-    enabled = "false",
+    enabled = false,
     energy_required = 2,
     ingredients =
     {
@@ -980,17 +1113,45 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "low-density-structure",
-    energy_required = 30,
+    name = "programmable-speaker",
     enabled = false,
-    category = "crafting",
+    energy_required = 2,
     ingredients =
     {
-      {"steel-plate", 10},
-      {"copper-plate", 5},
-      {"plastic-bar", 5}
+      {"iron-plate", 5},
+      {"copper-cable", 5},
+      {"electronic-circuit", 4},
     },
-    result= "low-density-structure"
+    result = "programmable-speaker"
+  },
+  {
+    type = "recipe",
+    name = "low-density-structure",
+    category = "crafting",
+    normal =
+    {
+      energy_required = 30,
+      enabled = false,
+      ingredients =
+      {
+        {"steel-plate", 10},
+        {"copper-plate", 5},
+        {"plastic-bar", 5}
+      },
+      result= "low-density-structure"
+    },
+    expensive =
+    {
+      energy_required = 30,
+      enabled = false,
+      ingredients =
+      {
+        {"steel-plate", 10},
+        {"copper-plate", 10},
+        {"plastic-bar", 10}
+      },
+      result= "low-density-structure"
+    },
   },
   {
     type = "recipe",
@@ -1059,7 +1220,7 @@ data:extend(
     {
       {"stone-brick", 5},
       {"iron-ore", 1},
-      {type="fluid", name="water", amount=10}
+      {type="fluid", name="water", amount=100}
     },
     result= "concrete",
     result_count = 10
@@ -1101,6 +1262,135 @@ data:extend(
       {"electronic-circuit", 5}
     },
     result = "electric-energy-interface"
+  },
+  {
+    type = "recipe",
+    name = "nuclear-reactor",
+    energy_required = 4,
+    enabled = false,
+    ingredients =
+    {
+      {"concrete", 500},
+      {"steel-plate", 500},
+      {"advanced-circuit", 500},
+      {"copper-plate", 500},
+    },
+    result = "nuclear-reactor"
+  },
+  {
+    type = "recipe",
+    name = "centrifuge",
+    energy_required = 4,
+    enabled = false,
+    ingredients =
+    {
+      {"concrete", 100},
+      {"steel-plate", 50},
+      {"advanced-circuit", 100},
+      {"iron-gear-wheel", 100},
+    },
+    result = "centrifuge"
+  },
+  {
+    type = "recipe",
+    name = "uranium-processing",
+    energy_required = 10,
+    enabled = false,
+    category = "centrifuging",
+    ingredients = {{"uranium-ore", 10}},
+    icon = "__base__/graphics/icons/uranium-processing.png",
+    subgroup = "raw-material",
+    order = "h[uranium-processing]",
+    results =
+    {
+      {
+        name = "uranium-235",
+        probability = 0.007,
+        amount = 1
+      },
+      {
+        name = "uranium-238",
+        probability = 0.993,
+        amount = 1
+      }
+    }
+  },
+  {
+    type = "recipe",
+    name = "kovarex-enrichment-process",
+    energy_required = 50,
+    enabled = false,
+    category = "centrifuging",
+    ingredients = {{"uranium-235", 40}, {"uranium-238", 5}},
+    icon = "__base__/graphics/icons/kovarex-enrichment-process.png",
+    subgroup = "intermediate-product",
+    order = "r[uranium-processing]-c[kovarex-enrichment-process]",
+    main_product = "",
+    results =
+    {
+      {
+        name = "uranium-235",
+        amount = 41
+      },
+      {
+        name = "uranium-238",
+        amount = 2
+      }
+    }
+  },
+   {
+    type = "recipe",
+    name = "nuclear-fuel-reprocessing",
+    energy_required = 50,
+    enabled = false,
+    category = "centrifuging",
+    ingredients = {{"used-up-uranium-fuel-cell", 5}},
+    icon = "__base__/graphics/icons/nuclear-fuel-reprocessing.png",
+    subgroup = "intermediate-product",
+    order = "r[uranium-processing]-b[nuclear-fuel-reprocessing]",
+    main_product = "",
+    results =
+    {
+      {
+        name = "uranium-238",
+        amount = 3
+      }
+    }
+  },
+  {
+    type = "recipe",
+    name = "uranium-fuel-cell",
+    energy_required = 10,
+    enabled = false,
+    ingredients =
+    {
+      {"iron-plate", 10},
+      {"uranium-235", 1},
+      {"uranium-238", 19}
+    },
+    result = "uranium-fuel-cell",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "heat-exchanger",
+    enabled = false,
+    ingredients = {{"steel-plate", 10}, {"copper-plate", 100}, {"pipe", 10}},
+    result = "heat-exchanger"
+  },
+  {
+    type = "recipe",
+    name = "heat-pipe",
+    enabled = false,
+    ingredients = {{"steel-plate", 10}, {"copper-plate", 20}},
+    result = "heat-pipe"
+  },
+  {
+    type = "recipe",
+    name = "steam-turbine",
+    enabled = false,
+    ingredients = {{"iron-gear-wheel", 50}, {"copper-plate", 50}, {"pipe", 20}},
+    result = "steam-turbine"
   }
 }
 )

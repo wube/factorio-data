@@ -15,7 +15,7 @@ return
   frame_count = inputs.frame_count and inputs.frame_count or 5,
   line_length = inputs.line_length and inputs.line_length or 0,
   run_mode = inputs.run_mode and inputs.run_mode or "forward",
-  shift = {0.078125, -0.859375},
+  shift = {0.015625, -0.859375},
   axially_symmetrical = false
 }
 end
@@ -31,7 +31,7 @@ return
   frame_count = inputs.frame_count and inputs.frame_count or 5,
   line_length = inputs.line_length and inputs.line_length or 0,
   run_mode = inputs.run_mode and inputs.run_mode or "forward",
-  shift = {0.0625, -0.890625},
+  shift = {0, -0.890625},
   axially_symmetrical = false,
   apply_runtime_tint = true
 }
@@ -47,7 +47,7 @@ return
   frame_count = inputs.frame_count and inputs.frame_count or 5,
   line_length = inputs.line_length and inputs.line_length or 0,
   run_mode = inputs.run_mode and inputs.run_mode or "forward",
-  shift = {1.26563, 0.015625},
+  shift = {1.20313, 0.015625},
   axially_symmetrical = false,
   draw_as_shadow = true
 }
@@ -64,7 +64,7 @@ return
       frame_count = inputs.frame_count and inputs.frame_count or 2,
       axially_symmetrical = false,
       direction_count = 64,
-      shift = {0.0625, -0.875},
+      shift = {0, -0.875},
       stripes =
       {
         {
@@ -88,7 +88,7 @@ return
       frame_count = inputs.frame_count and inputs.frame_count or 2,
       axially_symmetrical = false,
       direction_count = 64,
-      shift = {0.078125, -1.01563},
+      shift = {0.015625, -1.01563},
       apply_runtime_tint = true
     },
     {
@@ -97,7 +97,7 @@ return
       frame_count = inputs.frame_count and inputs.frame_count or 2,
       axially_symmetrical = false,
       direction_count = 64,
-      shift = {1.29688, 0},
+      shift = {1.23438, 0},
       draw_as_shadow = true,
       stripes =
       {
@@ -143,7 +143,7 @@ data:extend(
     dying_sound = make_worm_dying_sounds(0.8),
     folded_speed = 0.01,
     folded_animation = worm_folded_animation(small_worm_scale, small_worm_tint),
-    prepare_range = 25,
+    prepare_range = 30,
     preparing_speed = 0.025,
     preparing_animation = worm_preparing_animation(small_worm_scale, small_worm_tint, "forward"),
     prepared_speed = 0.015,
@@ -160,8 +160,9 @@ data:extend(
       type = "projectile",
       ammo_category = "bullet",
       cooldown = 15,
-      range = 17,
+      range = 21,
       projectile_creation_distance = 1.8,
+      damage_modifier = 2.5,
       ammo_type =
       {
         category = "biological",
@@ -172,7 +173,8 @@ data:extend(
           {
             type = "projectile",
             projectile = "acid-projectile-purple",
-            starting_speed = 0.5
+            starting_speed = 0.5,
+            max_range = 34
           }
         }
       }
@@ -238,7 +240,7 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 1,
           frame_count = 1,
-          shift = {0.0625, -0.046875},
+          shift = {0, -0.046875},
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-base-mask.png",
@@ -250,7 +252,7 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 1,
           frame_count = 1,
-          shift = {0.0625, -0.234375},
+          shift = {0, -0.234375},
           apply_runtime_tint = true
         }
       }
@@ -263,20 +265,19 @@ data:extend(
       ammo_category = "bullet",
       cooldown = 6,
       projectile_creation_distance = 1.39375,
-      projectile_center = {0.0625, -0.0875}, -- same as gun_turret_attack shift
-      damage_modifier = 2,
+      projectile_center = {0, -0.0875}, -- same as gun_turret_attack shift
       shell_particle =
       {
         name = "shell-particle",
         direction_deviation = 0.1,
         speed = 0.1,
         speed_deviation = 0.03,
-        center = {0, 0},
+        center = {-0.0625, 0},
         creation_distance = -1.925,
         starting_frame_speed = 0.2,
         starting_frame_speed_deviation = 0.1
       },
-      range = 17,
+      range = 18,
       sound = make_heavy_gunshot_sounds(),
     },
 

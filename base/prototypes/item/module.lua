@@ -82,15 +82,19 @@ data:extend(
 })
 
 function productivitymodulelimitation()
-return {"sulfuric-acid",
+return 
+      {
+        "sulfuric-acid",
         "basic-oil-processing",
         "advanced-oil-processing",
+        "coal-liquefaction",
         "heavy-oil-cracking",
         "light-oil-cracking",
         "solid-fuel-from-light-oil",
         "solid-fuel-from-heavy-oil",
         "solid-fuel-from-petroleum-gas",
         "lubricant",
+        "wood",
         "iron-plate",
         "copper-plate",
         "steel-plate",
@@ -98,25 +102,30 @@ return {"sulfuric-acid",
         "sulfur",
         "plastic-bar",
         "empty-barrel",
+        "uranium-processing",
+        "kovarex-enrichment-process",
+        "copper-cable",
         "iron-stick",
         "iron-gear-wheel",
-        "copper-cable",
         "electronic-circuit",
         "advanced-circuit",
+        "processing-unit",
         "engine-unit",
         "electric-engine-unit",
-        "processing-unit",
+        "uranium-fuel-cell",
         "explosives",
         "battery",
         "flying-robot-frame",
-        "science-pack-1",
-        "science-pack-2",
-        "science-pack-3",
-        "alien-science-pack",
         "low-density-structure",
         "rocket-fuel",
         "rocket-control-unit",
-        "rocket-part"
+        "rocket-part",
+        "science-pack-1",
+        "science-pack-2",
+        "science-pack-3",
+        "military-science-pack",
+        "production-science-pack",
+        "high-tech-science-pack"
       }
 end
 
@@ -133,7 +142,13 @@ data:extend(
     order = "c[productivity]-a[productivity-module-1]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { productivity = {bonus = 0.04}, consumption = {bonus = 0.4}, pollution = {bonus = 0.05}, speed = {bonus = -0.15}},
+    effect = 
+    {
+      productivity = {bonus = 0.04},
+      consumption = {bonus = 0.4},
+      pollution = {bonus = 0.05},
+      speed = {bonus = -0.15}
+    },
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   },
@@ -148,7 +163,13 @@ data:extend(
     order = "c[productivity]-b[productivity-module-2]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { productivity = {bonus = 0.06}, consumption = {bonus = 0.6}, pollution = {bonus = 0.075}, speed = {bonus = -0.15}},
+    effect = 
+    {
+      productivity = {bonus = 0.06},
+      consumption = {bonus = 0.6},
+      pollution = {bonus = 0.075}, 
+      speed = {bonus = -0.15}
+    },
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   },
@@ -163,7 +184,13 @@ data:extend(
     order = "c[productivity]-c[productivity-module-3]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = { productivity = {bonus = 0.1}, consumption = {bonus = 0.8}, pollution = {bonus = 0.1}, speed = {bonus = -0.15}},
+    effect = 
+    {
+      productivity = {bonus = 0.1},
+      consumption = {bonus = 0.8},
+      pollution = {bonus = 0.1},
+      speed = {bonus = -0.15}
+    },
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermediates"
   }

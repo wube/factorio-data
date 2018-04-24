@@ -1,9 +1,6 @@
 require "util"
 local math3d = require "math3d"
 
-local fire_damage_per_tick = 45 / 60
-local flamethrower_stream_on_hit_damage = 1
-
 local function make_color(r_,g_,b_,a_)
   return { r = r_ * a_, g = g_ * a_, b = b_ * a_, a = a_ }
 end
@@ -529,40 +526,22 @@ function fireutil.create_small_tree_flame_animations(opts)
   end)
 end
 
+local function set_shift(shift, tab)
+  tab.shift = shift
+  if tab.hr_version then
+    tab.hr_version.shift = shift
+  end
+  return tab
+end
+
 function fireutil.flamethrower_turret_pipepictures()
+  local pipe_sprites = pipepictures()
+  
   return {
-    north =
-    {
-      filename = "__base__/graphics/entity/pipe/pipe-straight-vertical.png",
-      priority = "extra-high",
-      width = 44,
-      height = 42,
-      shift = {0, 1}
-    },
-    south =
-    {
-      filename = "__base__/graphics/entity/pipe/pipe-straight-vertical.png",
-      priority = "extra-high",
-      width = 44,
-      height = 42,
-      shift = {0, -1}
-    },
-    east =
-    {
-      filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal.png",
-      priority = "extra-high",
-      width = 32,
-      height = 42,
-      shift = {-1, 0}
-    }, 
-    west =
-    {
-      filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal.png",
-      priority = "extra-high",
-      width = 32,
-      height = 42,
-      shift = {1, 0}
-    },
+    north = set_shift({0, 1}, util.table.deepcopy(pipe_sprites.straight_vertical)),
+    south = set_shift({0, -1}, util.table.deepcopy(pipe_sprites.straight_vertical)),
+    east = set_shift({-1, 0}, util.table.deepcopy(pipe_sprites.straight_horizontal)),
+    west = set_shift({1, 0}, util.table.deepcopy(pipe_sprites.straight_horizontal))
   }
 end
 
@@ -603,20 +582,16 @@ data:extend({
   type = "fire",
   name = "fire-flame",
   flags = {"placeable-off-grid", "not-on-map"},
-  duration = 600,
-  fade_away_duration = 600,
-  spread_duration = 600,
-  start_scale = 0.20,
-  end_scale = 1.0,
-  color = {r=1, g=0.9, b=0, a=0.5},
-  damage_per_tick = {amount = fire_damage_per_tick, type = "fire"},
+  damage_per_tick = {amount = 13 / 60, type = "fire"},
+  maximum_damage_multiplier = 6,
+  damage_multiplier_increase_per_added_fuel = 1,
+  damage_multiplier_decrease_per_tick = 0.005,
   
   spawn_entity = "fire-flame-on-tree",
   
   spread_delay = 300,
   spread_delay_deviation = 180,
   maximum_spread_count = 100,
-  initial_lifetime = 480,
   
   flame_alpha = 0.35,
   flame_alpha_deviation = 0.05,
@@ -624,14 +599,15 @@ data:extend({
   emissions_per_tick = 0.005,
   
   add_fuel_cooldown = 10,
-  increase_duration_cooldown = 10,
-  increase_duration_by = 20,
   fade_in_duration = 30,
   fade_out_duration = 30,
   
-  lifetime_increase_by = 20,
-  lifetime_increase_cooldown = 10,
+  initial_lifetime = 120,
+  lifetime_increase_by = 150,
+  lifetime_increase_cooldown = 4,
+  maximum_lifetime = 1800,
   delay_between_initial_flames = 10,
+  --initial_flame_count = 1,
   burnt_patch_lifetime = 1800,
   
   on_fuel_added_action =
@@ -729,7 +705,7 @@ data:extend({
   name = "fire-flame-on-tree",
   flags = {"placeable-off-grid", "not-on-map"},
 
-  damage_per_tick = {amount = fire_damage_per_tick, type = "fire"},
+  damage_per_tick = {amount = 35 / 60, type = "fire"},
   
   spawn_entity = "fire-flame-on-tree",
   maximum_spread_count = 100,
@@ -857,7 +833,6 @@ data:extend({
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "flamethrower-turret"},
     max_health = 1400,
-    order="z-z-z",
     corpse = "medium-remnants",
     collision_box = {{-0.7, -1.2 }, {0.7, 1.2}},
     selection_box = {{-1, -1.5 }, {1, 1.5}},
@@ -870,6 +845,7 @@ data:extend({
     inventory_size = 1,
     automated_ammo_count = 10,
     attacking_animation_fade_out = 10,
+    turret_base_has_direction = true,
     
     resistances =
     {
@@ -892,8 +868,8 @@ data:extend({
         { position = {1.5, 1.0} }
       }
     },
-    fluid_buffer_size = 10,
-    fluid_buffer_input_flow = 25 / 60 / 5, -- 5s to fill the buffer
+    fluid_buffer_size = 100,
+    fluid_buffer_input_flow = 250 / 60 / 5, -- 5s to fill the buffer
     activation_buffer_ratio = 0.25,
     
     folded_animation = fireutil.flamethrower_turret_extension({frame_count = 1, line_length = 1}),
@@ -1108,7 +1084,7 @@ data:extend({
     attack_parameters =
     {
       type = "stream",
-      ammo_category = "flame-thrower",
+      ammo_category = "flamethrower",
       cooldown = 4,
       range = 30,
       min_range = 6,
@@ -1121,7 +1097,7 @@ data:extend({
         {type = "heavy-oil", damage_modifier = 1.05}, 
         {type = "light-oil", damage_modifier = 1.1} 
       },
-      fluid_consumption = 0.008,
+      fluid_consumption = 0.2,
       
       gun_center_shift = {
         north = math3d.vector2.add(fireutil.gun_center_base, fireutil.turret_gun_shift.north), 
@@ -1133,7 +1109,7 @@ data:extend({
       
       ammo_type =
       {
-        category = "flame-thrower",
+        category = "flamethrower",
         action =
         {
           type = "direct",
@@ -1342,7 +1318,7 @@ data:extend(
     
     duration_in_ticks = 30 * 60,
     target_movement_modifier = 0.8,
-    damage_per_tick = { amount = 120 / 60, type = "fire" },
+    damage_per_tick = { amount = 100 / 60, type = "fire" },
     spread_fire_entity = "fire-flame-on-tree",  
     fire_spread_cooldown = 30,
     fire_spread_radius = 0.75,
@@ -1414,7 +1390,7 @@ data:extend(
             },
             {
               type = "damage",
-              damage = { amount = flamethrower_stream_on_hit_damage, type = "fire" }
+              damage = { amount = 3, type = "fire" }
             }
           }
         }
@@ -1510,12 +1486,9 @@ data:extend(
           {
             {
               type = "create-fire",
-              entity_name = "fire-flame"
+              entity_name = "fire-flame",
+              initial_ground_flame_count = 2,
             },
-            {
-              type = "damage",
-              damage = { amount = flamethrower_stream_on_hit_damage, type = "fire" }
-            }
           }
         }
       },
@@ -1530,6 +1503,10 @@ data:extend(
             {
               type = "create-sticker",
               sticker = "fire-sticker"
+            },
+            {
+              type = "damage",
+              damage = { amount = 2, type = "fire" }
             }
           }
         }
@@ -1573,6 +1550,101 @@ data:extend(
       frame_count = 32,
       line_length = 8,
       scale = 0.8,
+    },
+  },
+  {
+    type = "stream",
+    name = "tank-flamethrower-fire-stream",
+    flags = {"not-on-map"},
+    working_sound_disabled =
+    {
+      {
+        filename = "__base__/sound/fight/electric-beam.ogg",
+        volume = 0.7
+      }
+    },
+    
+    smoke_sources =
+    {
+      {
+        name = "soft-fire-smoke",
+        frequency = 0.05, --0.25,
+        position = {0.0, 0}, -- -0.8},
+        starting_frame_deviation = 60
+      }
+    },
+  
+    stream_light = {intensity = 1, size = 4 * 0.8},
+    ground_light = {intensity = 0.8, size = 4 * 0.8},
+  
+    particle_buffer_size = 65,
+    particle_spawn_interval = 2,
+    particle_spawn_timeout = 2,
+    particle_vertical_acceleration = 0.005 * 0.3,
+    particle_horizontal_speed = 0.45,
+    particle_horizontal_speed_deviation = 0.0035,
+    particle_start_alpha = 0.5,
+    particle_end_alpha = 1,
+    particle_start_scale = 0.5,
+    particle_loop_frame_count = 3,
+    particle_fade_out_threshold = 0.9,
+    particle_loop_exit_threshold = 0.25,
+    action =
+    {
+      {
+        type = "area",
+        perimeter = 4,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "damage",
+              damage = { amount = 7, type = "fire" }
+            }
+          }
+        }
+      }
+    },
+    
+    spine_animation = 
+    { 
+      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-fire-stream-spine.png",
+      blend_mode = "additive",
+      --tint = {r=1, g=1, b=1, a=0.5},
+      line_length = 4,
+      width = 32,
+      height = 18,
+      frame_count = 32,
+      axially_symmetrical = false,
+      direction_count = 1,
+      animation_speed = 2,
+      scale = 1.40625,
+      shift = {0, 0},
+    },
+    
+    shadow =
+    {
+      filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple-shadow.png",
+      line_length = 5,
+      width = 28,
+      height = 16,
+      frame_count = 33,
+      priority = "high",
+      scale = 0.9375,
+      shift = {-0.09 * 0.5, 0.395 * 0.5}
+    },
+    
+    particle =
+    {
+      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-explosion.png",
+      priority = "extra-high",
+      width = 64,
+      height = 64,
+      frame_count = 32,
+      line_length = 8,
+      scale = 1.5,
     },
   }
 }

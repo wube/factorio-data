@@ -14,8 +14,8 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 3,
-        percent = 30
+        decrease = 0,
+        percent = 10
       },
       {
         type = "explosion",
@@ -24,7 +24,7 @@ data:extend(
       },
       {
         type = "fire",
-        decrease = 2,
+        decrease = 0,
         percent = 10
       }
     },

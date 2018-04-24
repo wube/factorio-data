@@ -1,0 +1,14 @@
+{
+  "recipe":
+  [
+    [ "diesel-locomotive", "locomotive" ]
+  ],
+  "item":
+  [
+    [ "diesel-locomotive", "locomotive" ]
+  ],
+  "entity":
+  [
+    [ "diesel-locomotive", "locomotive" ]
+  ]
+}

@@ -27,5 +27,9 @@ data:extend(
   {
     type = "recipe-category",
     name = "rocket-building"
+  },
+  {
+    type = "recipe-category",
+    name = "centrifuging"
   }
 })

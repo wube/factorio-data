@@ -1,0 +1,17 @@
+{
+  "technology":
+  [
+    [ "flame-thrower", "flamethrower" ]
+  ],
+  "item":
+  [
+    [ "flame-thrower", "flamethrower" ],
+    [ "flame-thrower-ammo", "flamethrower-ammo"]
+  ],
+  "recipe":
+  [
+    [ "flame-thrower", "flamethrower" ],
+    [ "flame-thrower-ammo", "flamethrower-ammo" ]
+  ]
+  
+}

@@ -125,3 +125,39 @@ function multiplystripes(count, stripes)
   end
   return ret
 end
+
+function by_pixel(x,y)
+  return {x/32,y/32}
+end
+
+function format_number(amount, append_suffix)
+  local suffix = ""
+  if append_suffix then
+    local suffix_list = 
+      {
+        ["T"] = 1000000000000,
+        ["B"] = 1000000000,
+        ["M"] = 1000000,
+        ["k"] = 1000
+      }
+    for letter, limit in pairs (suffix_list) do
+      if math.abs(amount) >= limit then
+        amount = math.floor(amount/(limit/10))/10
+        suffix = letter
+        break
+      end
+    end
+  end
+  local formatted = amount
+  while true do  
+    formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
+    if (k==0) then
+      break
+    end
+  end
+  return formatted..suffix
+end
+
+function increment(t, k, v)
+  t[k] = t[k] + (v or 1)
+end

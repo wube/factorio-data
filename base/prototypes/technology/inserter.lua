@@ -132,7 +132,8 @@ data:extend(
       {
         {"science-pack-1", 2},
         {"science-pack-2", 2},
-        {"science-pack-3", 1}
+        {"science-pack-3", 1},
+        {"production-science-pack", 1}
       },
       time = 30
     },
@@ -159,7 +160,7 @@ data:extend(
         {"science-pack-1", 2},
         {"science-pack-2", 2},
         {"science-pack-3", 2},
-        {"alien-science-pack", 1},
+        {"production-science-pack", 1}
       },
       time = 30
     },
@@ -186,7 +187,7 @@ data:extend(
         {"science-pack-1", 2},
         {"science-pack-2", 2},
         {"science-pack-3", 2},
-        {"alien-science-pack", 2},
+        {"production-science-pack", 1}
       },
       time = 30
     },
@@ -217,7 +218,8 @@ data:extend(
         {"science-pack-1", 4},
         {"science-pack-2", 4},
         {"science-pack-3", 3},
-        {"alien-science-pack", 2}
+        {"production-science-pack", 1},
+        {"high-tech-science-pack", 1}
       },
       time = 30
     },

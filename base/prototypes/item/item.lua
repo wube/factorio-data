@@ -28,7 +28,7 @@ data:extend(
     subgroup = "belt",
     order = "a[transport-belt]-b[fast-transport-belt]",
     place_result = "fast-transport-belt",
-    stack_size = 50
+    stack_size = 100
   },
   {
     type = "item",
@@ -38,7 +38,7 @@ data:extend(
     subgroup = "belt",
     order = "a[transport-belt]-c[express-transport-belt]",
     place_result = "express-transport-belt",
-    stack_size = 50
+    stack_size = 100
   },
   {
     type = "item",
@@ -122,12 +122,12 @@ data:extend(
   },
   {
     type = "item-with-entity-data",
-    name = "diesel-locomotive",
+    name = "locomotive",
     icon = "__base__/graphics/icons/diesel-locomotive.png",
     flags = {"goes-to-quickbar"},
     subgroup = "transport",
     order = "a[train-system]-f[diesel-locomotive]",
-    place_result = "diesel-locomotive",
+    place_result = "locomotive",
     stack_size = 5
   },
   {
@@ -138,6 +138,16 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-g[cargo-wagon]",
     place_result = "cargo-wagon",
+    stack_size = 5
+  },
+  {
+    type = "item-with-entity-data",
+    name = "fluid-wagon",
+    icon = "__base__/graphics/icons/fluid-wagon.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "transport",
+    order = "a[train-system]-h[fluid-wagon]",
+    place_result = "fluid-wagon",
     stack_size = 5
   },
   {
@@ -209,7 +219,7 @@ data:extend(
     icon = "__base__/graphics/icons/science-pack-2.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
-    order = "a[science-pack-2]",
+    order = "b[science-pack-2]",
     stack_size = 200,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount"
@@ -220,19 +230,52 @@ data:extend(
     icon = "__base__/graphics/icons/science-pack-3.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
-    order = "a[science-pack-3]",
+    order = "c[science-pack-3]",
     stack_size = 200,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount"
   },
   {
     type = "tool",
-    name = "alien-science-pack",
-    icon = "__base__/graphics/icons/alien-science-pack.png",
+    name = "military-science-pack",
+    icon = "__base__/graphics/icons/military-science-pack.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
-    order = "d[alien-science-pack]",
+    order = "d[military-science-pack]",
     stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
+  },
+  {
+    type = "tool",
+    name = "production-science-pack",
+    icon = "__base__/graphics/icons/production-science-pack.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "science-pack",
+    order = "e[production-science-pack]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
+  },
+  {
+    type = "tool",
+    name = "high-tech-science-pack",
+    icon = "__base__/graphics/icons/high-tech-science-pack.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "science-pack",
+    order = "f[high-tech-science-pack]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
+  },
+  {
+    type = "tool",
+    name = "space-science-pack",
+    icon = "__base__/graphics/icons/space-science-pack.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "science-pack",
+    order = "g[space-science-pack]",
+    stack_size = 2000,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount"
   },
@@ -381,7 +424,7 @@ data:extend(
     icon = "__base__/graphics/icons/advanced-circuit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "e[advanced-circuit]",
+    order = "f[advanced-circuit]",
     stack_size = 200
   },
   {
@@ -390,7 +433,7 @@ data:extend(
     icon = "__base__/graphics/icons/processing-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "f[processing-unit]",
+    order = "g[processing-unit]",
     stack_size = 100
   },
   {
@@ -564,12 +607,12 @@ data:extend(
   },
   {
     type = "item",
-    name = "small-pump",
-    icon = "__base__/graphics/icons/small-pump.png",
+    name = "pump",
+    icon = "__base__/graphics/icons/pump.png",
     flags = {"goes-to-quickbar"},
     subgroup = "energy-pipe-distribution",
-    order = "b[pipe]-c[small-pump]",
-    place_result = "small-pump",
+    order = "b[pipe]-c[pump]",
+    place_result = "pump",
     stack_size = 50
   },
   {
@@ -598,6 +641,8 @@ data:extend(
     subgroup = "tool",
     order = "c[automated-construction]-b[deconstruction-planner]",
     stack_size = 1,
+    entity_filter_count = 30,
+    tile_filter_count = 30,
     selection_color = { r = 1, g = 0, b = 0 },
     alt_selection_color = { r = 0, g = 0, b = 1 },
     selection_mode = {"deconstruct"},
@@ -613,7 +658,7 @@ data:extend(
     subgroup = "tool",
     order = "c[automated-construction]-c[blueprint-book]",
     stack_size = 1,
-    inventory_size = 30
+    inventory_size = 1000
   },
   {
     type = "item",
@@ -657,19 +702,10 @@ data:extend(
   {
     type = "item",
     name = "empty-barrel",
-    icon = "__base__/graphics/icons/fluid/empty-barrel.png",
+    icon = "__base__/graphics/icons/fluid/barreling/empty-barrel.png",
     flags = {"goes-to-main-inventory"},
-    subgroup = "barrel",
-    order = "a[empty-barrel]",
-    stack_size = 10
-  },
-  {
-    type = "item",
-    name = "crude-oil-barrel",
-    icon = "__base__/graphics/icons/fluid/crude-oil-barrel.png",
-    flags = {"goes-to-main-inventory"},
-    subgroup = "barrel",
-    order = "b[crude-oil-barrel]",
+    subgroup = "intermediate-product",
+    order = "d[empty-barrel]",
     stack_size = 10
   },
   {
@@ -677,7 +713,10 @@ data:extend(
     name = "solid-fuel",
     icon = "__base__/graphics/icons/solid-fuel.png",
     flags = {"goes-to-main-inventory"},
+    fuel_category = "chemical",
     fuel_value = "25MJ",
+    fuel_acceleration_multiplier = 1.2,
+    fuel_top_speed_multiplier = 1.05,
     subgroup = "raw-resource",
     order = "c[solid-fuel]",
     stack_size = 50
@@ -697,7 +736,7 @@ data:extend(
     icon = "__base__/graphics/icons/engine-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "g[engine-unit]",
+    order = "h[engine-unit]",
     stack_size = 50
   },
   {
@@ -706,7 +745,7 @@ data:extend(
     icon = "__base__/graphics/icons/electric-engine-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "h[electric-engine-unit]",
+    order = "i[electric-engine-unit]",
     stack_size = 50
   },
   {
@@ -715,7 +754,7 @@ data:extend(
     icon = "__base__/graphics/icons/explosives.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "i[explosives]",
+    order = "j[explosives]",
     stack_size = 50
   },
   {
@@ -733,7 +772,7 @@ data:extend(
     icon = "__base__/graphics/icons/flying-robot-frame.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "k[flying-robot-frame]",
+    order = "l[flying-robot-frame]",
     stack_size = 50
   },
   {
@@ -743,7 +782,7 @@ data:extend(
     flags = { "goes-to-quickbar" },
     subgroup = "circuit-network",
     place_result="arithmetic-combinator",
-    order = "b[combinators]-a[arithmetic-combinator]",
+    order = "c[combinators]-a[arithmetic-combinator]",
     stack_size= 50,
   },
   {
@@ -753,7 +792,7 @@ data:extend(
     flags = { "goes-to-quickbar" },
     subgroup = "circuit-network",
     place_result="decider-combinator",
-    order = "b[combinators]-b[decider-combinator]",
+    order = "c[combinators]-b[decider-combinator]",
     stack_size= 50,
   },
   {
@@ -763,7 +802,7 @@ data:extend(
     flags = { "goes-to-quickbar" },
     subgroup = "circuit-network",
     place_result="constant-combinator",
-    order = "b[combinators]-c[constant-combinator]",
+    order = "c[combinators]-c[constant-combinator]",
     stack_size= 50,
   },
   {
@@ -773,8 +812,18 @@ data:extend(
     flags = { "goes-to-quickbar" },
     subgroup = "circuit-network",
     place_result="power-switch",
-    order = "c[other]-a[power-switch]",
+    order = "d[other]-a[power-switch]",
     stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "programmable-speaker",
+    icon = "__base__/graphics/icons/programmable-speaker.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "circuit-network",
+    order = "d[other]-b[programmable-speaker]",
+    place_result = "programmable-speaker",
+    stack_size = 50
   },
   {
     type = "item",
@@ -782,7 +831,7 @@ data:extend(
     icon = "__base__/graphics/icons/rocket-structure.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "l[rocket-structure]",
+    order = "m[rocket-structure]",
     stack_size = 10
   },
   {
@@ -790,9 +839,12 @@ data:extend(
     name = "rocket-fuel",
     icon = "__base__/graphics/icons/rocket-fuel.png",
     flags = {"goes-to-main-inventory"},
+    fuel_category = "chemical",
     fuel_value = "225MJ",
+    fuel_acceleration_multiplier = 1.8,
+    fuel_top_speed_multiplier = 1.15,
     subgroup = "intermediate-product",
-    order = "m[rocket-fuel]",
+    order = "n[rocket-fuel]",
     stack_size = 10
   },
   {
@@ -801,7 +853,7 @@ data:extend(
     icon = "__base__/graphics/icons/rocket-control-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "n[rocket-control-unit]",
+    order = "o[rocket-control-unit]",
     stack_size = 10
   },
   {
@@ -810,7 +862,7 @@ data:extend(
     icon = "__base__/graphics/icons/rocket-part.png",
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "intermediate-product",
-    order = "o[rocket-part]",
+    order = "p[rocket-part]",
     stack_size = 5
   },
   {
@@ -819,7 +871,7 @@ data:extend(
     icon = "__base__/graphics/icons/satellite.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "p[satellite]",
+    order = "q[satellite]",
     stack_size = 1
   },
   {
@@ -888,12 +940,139 @@ data:extend(
   {
     type = "item",
     name = "electric-energy-interface",
-    icon = "__base__/graphics/icons/accumulator.png",
+    icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
     flags = {"goes-to-quickbar", "hidden"},
     subgroup = "energy",
     order = "e[electric-energy-interface]-b[electric-energy-interface]",
     place_result = "electric-energy-interface",
     stack_size = 50
-  }
+  },
+  {
+    type = "item",
+    name = "uranium-ore",
+    icon = "__base__/graphics/icons/uranium-ore.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "g[uranium-ore]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "nuclear-reactor",
+    icon = "__base__/graphics/icons/nuclear-reactor.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "energy",
+    order = "f[nuclear-energy]-a[reactor]",
+    place_result = "nuclear-reactor",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "uranium-235",
+    icon = "__base__/graphics/icons/uranium-235.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "g[uranium-235]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "uranium-238",
+    icon = "__base__/graphics/icons/uranium-238.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "g[uranium-238]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "centrifuge",
+    icon = "__base__/graphics/icons/centrifuge.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "production-machine",
+    order = "g[centrifuge]",
+    place_result = "centrifuge",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "uranium-fuel-cell",
+    icon = "__base__/graphics/icons/uranium-fuel-cell.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "r[uranium-processing]-a[uranium-fuel-cell]",
+    fuel_category = "nuclear",
+    burnt_result = "used-up-uranium-fuel-cell",
+    fuel_value = "8GJ",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "used-up-uranium-fuel-cell",
+    icon = "__base__/graphics/icons/used-up-uranium-fuel-cell.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "i[used-up-uranium-fuel-cell]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "heat-exchanger",
+    icon = "__base__/graphics/icons/heat-boiler.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "energy",
+    order = "f[nuclear-energy]-b[heat-exchanger]",
+    place_result = "heat-exchanger",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "steam-turbine",
+    icon = "__base__/graphics/icons/steam-turbine.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "energy",
+    order = "b[steam-power]-c[steam-turbine]",
+    place_result = "steam-turbine",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "heat-pipe",
+    icon = "__base__/graphics/icons/heat-pipe.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "energy",
+    order = "f[nuclear-energy]-c[heat-pipe]",
+    place_result = "heat-pipe",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "simple-entity-with-force",
+    icon = "__base__/graphics/icons/steel-chest.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "storage",
+    order = "s[simple-entity-with-force]-f[simple-entity-with-force]",
+    place_result = "simple-entity-with-force",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "simple-entity-with-owner",
+    icon = "__base__/graphics/icons/wooden-chest.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "storage",
+    order = "s[simple-entity-with-owner]-o[simple-entity-with-owner]",
+    place_result = "simple-entity-with-owner",
+    stack_size = 50
+  },
+  {
+    type = "item-with-tags",
+    name = "item-with-tags",
+    icon = "__base__/graphics/icons/wooden-chest.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "storage",
+    order = "s[item-with-tags]-o[item-with-tags]",
+    stack_size = 1
+  },
 }
 )

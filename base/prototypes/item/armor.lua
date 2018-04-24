@@ -14,18 +14,18 @@ data:extend(
       },
       {
         type = "explosion",
-        decrease = 10,
+        decrease = 20,
         percent = 30
       },
       {
         type = "acid",
-        decrease = 5,
+        decrease = 3,
         percent = 30
       },
       {
         type = "fire",
         decrease = 0,
-        percent = 40
+        percent = 30
       }
     },
     durability = 5000,
@@ -52,13 +52,13 @@ data:extend(
       },
       {
         type = "explosion",
-        decrease = 10,
-        percent = 30
+        decrease = 30,
+        percent = 35
       },
       {
         type = "fire",
         decrease = 0,
-        percent = 60
+        percent = 40
       }
     },
     durability = 10000,
@@ -87,13 +87,13 @@ data:extend(
       },
       {
         type = "explosion",
-        decrease = 15,
-        percent = 30
+        decrease = 40,
+        percent = 40
       },
       {
         type = "fire",
         decrease = 0,
-        percent = 75
+        percent = 60
       }
     },
     durability = 15000,
@@ -122,13 +122,13 @@ data:extend(
       },
       {
         type = "explosion",
-        decrease = 20,
+        decrease = 60,
         percent = 50
       },
       {
         type = "fire",
         decrease = 0,
-        percent = 80
+        percent = 70
       }
     },
     durability = 20000,

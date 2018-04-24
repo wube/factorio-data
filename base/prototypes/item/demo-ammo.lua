@@ -31,7 +31,7 @@ data:extend(
                 },
                 {
                   type = "damage",
-                  damage = { amount = 2 , type = "physical"}
+                  damage = { amount = 5 , type = "physical"}
                 }
               }
             }
@@ -42,7 +42,7 @@ data:extend(
     magazine_size = 10,
     subgroup = "ammo",
     order = "a[basic-clips]-a[firearm-magazine]",
-    stack_size = 100
+    stack_size = 200
   }
 }
 )

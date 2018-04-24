@@ -3,6 +3,1022 @@ data:extend(
   {
     type = "utility-sprites",
     name = "default",
+
+    add =
+    {
+      filename = "__core__/graphics/add-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    go_to_arrow =
+    {
+      filename = "__core__/graphics/goto-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    remove =
+    {
+      filename = "__core__/graphics/remove-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    play =
+    {
+      filename = "__core__/graphics/play-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    pause =
+    {
+      filename = "__core__/graphics/pause-icon.png",
+      priority = "medium",
+      width = 128,
+      height = 128,
+      flags = {"icon"}
+    },
+    speed_down =
+    {
+      filename = "__core__/graphics/speed-down.png",
+      priority = "medium",
+      width = 128,
+      height = 128,
+      flags = {"icon"}
+    },
+    speed_up =
+    {
+      filename = "__core__/graphics/speed-up.png",
+      priority = "medium",
+      width = 128,
+      height = 128,
+      flags = {"icon"}
+    },
+    clear =
+    {
+      filename = "__core__/graphics/clear.png",
+      priority = "medium",
+      width = 128,
+      height = 128,
+      flags = {"icon"}
+    },
+    search_icon =
+    {
+      filename = "__core__/graphics/search-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    too_far =
+    {
+      filename = "__core__/graphics/too-far.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    shoot_cursor_green =
+    {
+      filename = "__core__/graphics/shoot-cursor-green.png",
+      priority = "low",
+      width = 258,
+      height = 183,
+      flags = {"icon"}
+    },
+    shoot_cursor_red =
+    {
+      filename = "__core__/graphics/shoot-cursor-red.png",
+      priority = "low",
+      width = 258,
+      height = 183,
+      flags = {"icon"}
+    },
+    electricity_icon =
+    {
+      filename = "__core__/graphics/electricity-icon-red.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    fuel_icon =
+    {
+      filename = "__core__/graphics/fuel-icon-red.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    ammo_icon =
+    {
+      filename = "__core__/graphics/ammo-icon-red.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    fluid_icon =
+    {
+      filename = "__core__/graphics/fluid-icon-red.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    warning_icon =
+    {
+      filename = "__core__/graphics/warning-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    danger_icon =
+    {
+      filename = "__core__/graphics/danger-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    destroyed_icon =
+    {
+      filename = "__core__/graphics/destroyed-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    recharge_icon =
+    {
+      filename = "__core__/graphics/recharge-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    not_enough_repair_packs_icon =
+    {
+      filename = "__core__/graphics/not-enough-repair-packs-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    not_enough_construction_robots_icon =
+    {
+      filename = "__core__/graphics/not-enough-construction-robots-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    no_building_material_icon =
+    {
+      filename = "__core__/graphics/no-building-material-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    no_storage_space_icon =
+    {
+      filename = "__core__/graphics/no-storage-space-icon.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    electricity_icon_unplugged =
+    {
+      filename = "__core__/graphics/electricity-icon-unplugged.png",
+      priority = "extra-high-no-scale",
+      width = 100,
+      height = 89,
+      flags = {"icon"}
+    },
+    game_stopped_visualization =
+    {
+      filename = "__core__/graphics/game-stopped-visualization.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    pollution_visualization =
+    {
+      filename = "__core__/graphics/pollution-visualization.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32
+    },
+    health_bar_green =
+    {
+      filename = "__core__/graphics/health-bar-green.png",
+      priority = "extra-high-no-scale",
+      width = 609,
+      height = 9
+    },
+    health_bar_yellow =
+    {
+      filename = "__core__/graphics/health-bar-yellow.png",
+      priority = "extra-high-no-scale",
+      width = 609,
+      height = 9
+    },
+    health_bar_red =
+    {
+      filename = "__core__/graphics/health-bar-red.png",
+      priority = "extra-high-no-scale",
+      width = 609,
+      height = 9
+    },
+    ghost_bar =
+    {
+      filename = "__core__/graphics/ghost-bar.png",
+      priority = "extra-high-no-scale",
+      width = 609,
+      height = 9
+    },
+    hand =
+    {
+      filename = "__core__/graphics/hand.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    entity_info_dark_background =
+    {
+      filename = "__core__/graphics/entity-info-dark-background.png",
+      priority = "extra-high-no-scale",
+      width = 53,
+      height = 53,
+      flags = {"icon"}
+    },
+    medium_gui_arrow =
+    {
+      filename = "__core__/graphics/arrows/gui-arrow-medium.png",
+      priority = "medium",
+      width = 58,
+      height = 62,
+      flags = {"icon"}
+    },
+    small_gui_arrow =
+    {
+      filename = "__core__/graphics/arrows/gui-arrow-small.png",
+      priority = "medium",
+      width = 42,
+      height = 55,
+      flags = {"icon"}
+    },
+    light_medium =
+    {
+      filename = "__core__/graphics/light-medium.png",
+      priority = "extra-high",
+      flags = {"light"},
+      width = 300,
+      height = 300
+    },
+    light_small =
+    {
+      filename = "__core__/graphics/light-small.png",
+      priority = "extra-high",
+      flags = {"light"},
+      width = 150,
+      height = 150
+    },
+    color_effect =
+    {
+      filename = "__core__/graphics/color-effect-small.png",
+      priority = "medium",
+      width = 150,
+      height = 150,
+      flags = {"icon"}
+    },
+    clock =
+    {
+      filename = "__core__/graphics/clock-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    bonus_icon =
+    {
+      filename = "__core__/graphics/bonus-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    hint_arrow_up =
+    {
+      filename = "__core__/graphics/arrows/hint-orange-arrow-up.png",
+      priority = "extra-high-no-scale",
+      width = 62,
+      height = 37,
+      flags = {"icon"}
+    },
+    hint_arrow_down =
+    {
+      filename = "__core__/graphics/arrows/hint-orange-arrow-down.png",
+      priority = "extra-high-no-scale",
+      width = 71,
+      height = 35,
+      flags = {"icon"}
+    },
+    hint_arrow_right =
+    {
+      filename = "__core__/graphics/arrows/hint-orange-arrow-right.png",
+      priority = "extra-high-no-scale",
+      width = 38,
+      height = 73,
+      flags = {"icon"}
+    },
+    hint_arrow_left =
+    {
+      filename = "__core__/graphics/arrows/hint-orange-arrow-left.png",
+      priority = "extra-high-no-scale",
+      width = 43,
+      height = 73,
+      flags = {"icon"}
+    },
+    rail_path_not_possible =
+    {
+      filename = "__core__/graphics/rail-path-not-possible.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    slot_icon_module =
+    {
+      filename = "__core__/graphics/slot-icon-module.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_armor =
+    {
+      filename = "__core__/graphics/slot-icon-armor.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_blueprint =
+    {
+      filename = "__core__/graphics/slot-icon-blueprint.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_tool =
+    {
+      filename = "__core__/graphics/slot-icon-tool.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_gun =
+    {
+      filename = "__core__/graphics/slot-icon-gun.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_ammo =
+    {
+      filename = "__core__/graphics/slot-icon-ammo.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_resource =
+    {
+      filename = "__core__/graphics/slot-icon-resource.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_fuel =
+    {
+      filename = "__core__/graphics/slot-icon-fuel.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_result =
+    {
+      filename = "__core__/graphics/slot-icon-result.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_robot =
+    {
+      filename = "__core__/graphics/slot-icon-robot.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot_icon_robot_material =
+    {
+      filename = "__core__/graphics/slot-icon-robot-material.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    slot =
+    {
+      filename = "__core__/graphics/slot.png",
+      priority = "medium",
+      width = 36,
+      height = 36,
+      flags = {"icon"}
+    },
+    equipment_slot =
+    {
+      filename = "__core__/graphics/gui.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      x = 43,
+      y = 77,
+      flags = {"icon"}
+    },
+    equipment_collision =
+    {
+      filename = "__core__/graphics/gui.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      x = 43,
+      y = 109,
+      flags = {"icon"}
+    },
+    green_circle =
+    {
+      filename = "__core__/graphics/green-circle.png",
+      priority = "medium",
+      width = 25,
+      height = 25,
+      flags = {"icon"}
+    },
+    green_dot =
+    {
+      filename = "__core__/graphics/green-dot.png",
+      priority = "medium",
+      width = 1,
+      height = 1
+    },
+    robot_slot =
+    {
+      filename = "__core__/graphics/robot-slot.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    set_bar_slot =
+    {
+      filename = "__core__/graphics/cancel.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    confirm_slot =
+    {
+      filename = "__core__/graphics/confirm.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    export_slot =
+    {
+      filename = "__core__/graphics/export.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flag = {"icon"}
+    },
+    import_slot =
+    {
+      filename = "__core__/graphics/import.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flag = {"icon"}
+    },
+    tile_editor_icon =
+    {
+      filename = "__core__/graphics/tile-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    decorative_editor_icon =
+    {
+      filename = "__core__/graphics/decorative-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    resource_editor_icon =
+    {
+      filename = "__core__/graphics/resource-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    entity_editor_icon =
+    {
+      filename = "__core__/graphics/entity-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    item_editor_icon =
+    {
+      filename = "__core__/graphics/item-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    cable_editor_icon =
+    {
+      filename = "__core__/graphics/cable-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    force_editor_icon =
+    {
+      filename = "__core__/graphics/force-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    surface_editor_icon =
+    {
+      filename = "__core__/graphics/surface-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    brush_icon =
+    {
+      filename = "__core__/graphics/brush-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    spray_icon =
+    {
+      filename = "__core__/graphics/spray-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    cursor_icon =
+    {
+      filename = "__core__/graphics/cursor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    editor_selection =
+    {
+      filename = "__core__/graphics/editor-selection.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    brush_square_shape =
+    {
+      filename = "__core__/graphics/brush-square-shape.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    brush_circle_shape =
+    {
+      filename = "__core__/graphics/brush-circle-shape.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    player_force_icon =
+    {
+      filename = "__core__/graphics/player-force-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    neutral_force_icon =
+    {
+      filename = "__core__/graphics/treex64-provisional.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    enemy_force_icon =
+    {
+      filename = "__core__/graphics/enemy-force-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    nature_icon =
+    {
+      filename = "__core__/graphics/treex32-provisional.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    multiplayer_waiting_icon =
+    {
+      filename = "__core__/graphics/multiplayer-waiting-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    spawn_flag =
+    {
+      filename = "__core__/graphics/spawn-flag.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    questionmark =
+    {
+      filename = "__core__/graphics/questionmark.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    copper_wire =
+    {
+      filename = "__core__/graphics/copper-wire.png",
+      priority = "extra-high-no-scale",
+      width = 224,
+      height = 46
+    },
+    green_wire =
+    {
+      filename = "__core__/graphics/green-wire.png",
+      priority = "extra-high-no-scale",
+      width = 224,
+      height = 46
+    },
+    red_wire =
+    {
+      filename = "__core__/graphics/red-wire.png",
+      priority = "extra-high-no-scale",
+      width = 224,
+      height = 46
+    },
+    green_wire_hightlight =
+    {
+      filename = "__core__/graphics/wire-highlight.png",
+      priority = "extra-high-no-scale",
+      width = 224,
+      height = 46
+    },
+    red_wire_hightlight =
+    {
+      filename = "__core__/graphics/wire-highlight.png",
+      priority = "extra-high-no-scale",
+      width = 224,
+      height = 46
+    },
+    wire_shadow =
+    {
+      filename = "__core__/graphics/wire-shadow.png",
+      priority = "extra-high-no-scale",
+      width = 224,
+      height = 46
+    },
+    trash_bin =
+    {
+      filename = "__core__/graphics/trash-bin.png",
+      priority = "high",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    and_or =
+    {
+      filename = "__core__/graphics/and-or-icon.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    left_arrow =
+    {
+      filename = "__core__/graphics/left-arrow.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    right_arrow =
+    {
+      filename = "__core__/graphics/right-arrow.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    enter =
+    {
+      filename = "__core__/graphics/enter-icon.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    side_menu_menu_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    side_menu_production_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 0,
+      y = 64,
+      flags = {"icon"}
+    },
+    side_menu_bonus_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 0,
+      y = 128,
+      flags = {"icon"}
+    },
+    side_menu_map_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 0,
+      y = 192,
+      flags = {"icon"}
+    },
+    side_menu_tutorials_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 0,
+      y = 192,
+      flags = {"icon"}
+    },
+    side_menu_train_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 0,
+      y = 256,
+      flags = {"icon"}
+    },
+    side_menu_achievements_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 0,
+      y = 320,
+      flags = {"icon"}
+    },
+    side_menu_menu_hover_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      y = 0,
+      flags = {"icon"}
+    },
+    side_menu_production_hover_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      y = 64,
+      flags = {"icon"}
+    },
+    side_menu_bonus_hover_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      y = 128,
+      flags = {"icon"}
+    },
+    side_menu_map_hover_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      y = 192,
+      flags = {"icon"}
+    },
+    side_menu_train_hover_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      y = 256,
+      flags = {"icon"}
+    },
+    side_menu_achievements_hover_icon =
+    {
+      filename = "__core__/graphics/side-menu-icons.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      y = 320,
+      flags = {"icon"}
+    },
+    circuit_network_panel =
+    {
+      filename = "__core__/graphics/circuit-network-panel.png",
+      priority = "high",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    logistic_network_panel =
+    {
+      filename = "__core__/graphics/logistic-network-panel.png",
+      priority = "high",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    electric_network_info =
+    {
+      filename = "__core__/graphics/electric-network-info.png",
+      priority = "high",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    rename_icon_small =
+    {
+      filename = "__core__/graphics/rename-small.png",
+      priority = "high",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    rename_icon_normal =
+    {
+      filename = "__core__/graphics/rename-normal.png",
+      priority = "high",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    achievement_label_locked =
+    {
+      filename = "__core__/graphics/achievement-labels.png",
+      priority = "high",
+      width = 33,
+      height = 64,
+      flags = {"icon"}
+    },
+    achievement_label_unlocked_off =
+    {
+      filename = "__core__/graphics/achievement-labels.png",
+      priority = "high",
+      width = 33,
+      height = 64,
+      x = 33,
+      y = 0,
+      flags = {"icon"}
+    },
+    achievement_label_unlocked =
+    {
+      filename = "__core__/graphics/achievement-labels.png",
+      priority = "high",
+      width = 33,
+      height = 64,
+      x = 66,
+      y = 0,
+      flags = {"icon"}
+    },
+    achievement_label_failed =
+    {
+      filename = "__core__/graphics/achievement-labels.png",
+      priority = "high",
+      width = 33,
+      height = 64,
+      x = 99,
+      y = 0,
+      flags = {"icon"}
+    },
+    logistic_radius_visualization =
+    {
+      filename = "__core__/graphics/visualization-logistic-radius.png",
+      priority = "extra-high-no-scale",
+      x = 1,
+      y = 1,
+      width = 10,
+      height = 10
+    },
+    construction_radius_visualization =
+    {
+      filename = "__core__/graphics/visualization-construction-radius.png",
+      priority = "extra-high-no-scale",
+      x = 1,
+      y = 1,
+      width = 10,
+      height = 10
+    },
+    track_button =
+    {
+      filename = "__core__/graphics/track-button.png",
+      priority = "high",
+      width = 16,
+      height = 16
+    },
+    clouds =
+    {
+      filename = "__core__/graphics/clouds.png",
+      priority = "low",
+      width = 256,
+      height = 256,
+      frame_count = 2
+    },
     indication_arrow =
     {
       filename = "__core__/graphics/arrows/indication-arrow.png",
@@ -14,6 +1030,22 @@ data:extend(
     fluid_indication_arrow =
     {
       filename = "__core__/graphics/arrows/fluid-indication-arrow.png",
+      priority = "extra-high-no-scale",
+      width = 48,
+      height = 48,
+      scale = 0.5,
+    },
+    fluid_indication_arrow_both_ways =
+    {
+      filename = "__core__/graphics/arrows/fluid-indication-arrow-both-ways.png",
+      priority = "extra-high-no-scale",
+      width = 48,
+      height = 48,
+      scale = 0.5,
+    },
+    heat_exchange_indication =
+    {
+      filename = "__core__/graphics/arrows/heat-exchange-indication.png",
       priority = "extra-high-no-scale",
       width = 48,
       height = 48,
@@ -100,8 +1132,8 @@ data:extend(
     {
       filename = "__core__/graphics/battery.png",
       priority = "extra-high-no-scale",
-      width = 25,
-      height = 60
+      width = 21,
+      height = 54
     },
     arrow_button =
     {
@@ -147,6 +1179,84 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 128,
       height = 128
+    },
+    show_logistics_network_in_map_view =
+    {
+      filename = "__core__/graphics/show-logistics-network-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    show_electric_network_in_map_view =
+    {
+      filename = "__core__/graphics/show-electric-network-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    show_turret_range_in_map_view =
+    {
+      filename = "__core__/graphics/show-turret-range-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    show_pollution_in_map_view =
+    {
+      filename = "__core__/graphics/show-pollution-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    show_train_station_names_in_map_view =
+    {
+      filename = "__core__/graphics/show-train-station-names-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    show_player_names_in_map_view =
+    {
+      filename = "__core__/graphics/show-player-names-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    train_stop_in_map_view =
+    {
+      filename = "__core__/graphics/train-stop-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    selected_train_stop_in_map_view =
+    {
+      filename = "__core__/graphics/selected-train-stop-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    covered_chunk =
+    {
+      filename = "__core__/graphics/covered-chunk.png",
+      priority = "extra-high-no-scale",
+      width = 10,
+      height = 10
+    },
+    white_square =
+    {
+      filename = "__core__/graphics/white-square.png",
+      priority = "extra-high-no-scale",
+      width = 10,
+      height = 10
     }
   }
 })

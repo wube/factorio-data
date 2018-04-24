@@ -106,6 +106,16 @@ data:extend(
   },
   {
     type = "item",
+    name = "personal-roboport-mk2-equipment",
+    icon = "__base__/graphics/icons/personal-roboport-mk2-equipment.png",
+    placed_as_equipment_result = "personal-roboport-mk2-equipment",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "equipment",
+    order = "e[robotics]-b[personal-roboport-mk2-equipment]",
+    stack_size = 5
+  },
+  {
+    type = "item",
     name = "night-vision-equipment",
     icon = "__base__/graphics/icons/night-vision-equipment.png",
     placed_as_equipment_result = "night-vision-equipment",
@@ -113,6 +123,16 @@ data:extend(
     subgroup = "equipment",
     order = "f[night-vision]-a[night-vision-equipment]",
     stack_size = 20
-  }
+  },
+  {
+    type = "item",
+    name = "belt-immunity-equipment",
+    icon = "__base__/graphics/icons/belt-immunity-equipment.png",
+    placed_as_equipment_result = "belt-immunity-equipment",
+    flags = {"goes-to-main-inventory", "hidden"},
+    subgroup = "equipment",
+    order = "a[belt-immunity]-a[belt-immunity]",
+    stack_size = 1
+  },
 }
 )

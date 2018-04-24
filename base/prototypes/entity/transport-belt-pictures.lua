@@ -7,7 +7,17 @@ fast_belt_horizontal =
     priority = "extra-high",
     width = 40,
     height = 40,
-    frame_count = 32
+    frame_count = 32,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      scale = 0.5
+    }
   }
 fast_belt_vertical =
   {
@@ -16,7 +26,18 @@ fast_belt_vertical =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 40
+    y = 40,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 160,
+      scale = 0.5
+    }
   }
 fast_belt_ending_top =
   {
@@ -25,7 +46,18 @@ fast_belt_ending_top =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 80
+    y = 80,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 320,
+      scale = 0.5
+    }
   }
 fast_belt_ending_bottom =
   {
@@ -34,7 +66,18 @@ fast_belt_ending_bottom =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 120
+    y = 120,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 480,
+      scale = 0.5
+    }
   }
 fast_belt_ending_side =
   {
@@ -43,7 +86,18 @@ fast_belt_ending_side =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 160
+    y = 160,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 640,      
+      scale = 0.5
+    }
   }
 fast_belt_starting_top =
   {
@@ -52,7 +106,18 @@ fast_belt_starting_top =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 200
+    y = 200,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 800,
+      scale = 0.5
+    }
   }
 fast_belt_starting_bottom =
   {
@@ -61,7 +126,18 @@ fast_belt_starting_bottom =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 240
+    y = 240,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 960,
+      scale = 0.5
+    }
   }
 fast_belt_starting_side =
   {
@@ -70,7 +146,18 @@ fast_belt_starting_side =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 280
+    y = 280,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 1120,
+      scale = 0.5
+    }
   }
 
 ---------------------- EXPRESS BELT PICTURES
@@ -80,7 +167,17 @@ express_belt_horizontal =
     priority = "extra-high",
     width = 40,
     height = 40,
-    frame_count = 32
+    frame_count = 32,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      scale = 0.5
+    }
   }
 express_belt_vertical =
   {
@@ -90,6 +187,17 @@ express_belt_vertical =
     height = 40,
     frame_count = 32,
     y = 40,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 160,
+      scale = 0.5
+    }
   }
 express_belt_ending_top =
   {
@@ -98,7 +206,18 @@ express_belt_ending_top =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 80
+    y = 80,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 320,
+      scale = 0.5
+    }
   }
 express_belt_ending_bottom =
   {
@@ -107,7 +226,18 @@ express_belt_ending_bottom =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 120
+    y = 120,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 480,
+      scale = 0.5
+    }
   }
 express_belt_ending_side =
   {
@@ -116,7 +246,18 @@ express_belt_ending_side =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 160
+    y = 160,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 640,
+      scale = 0.5
+    }
   }
 express_belt_starting_top =
   {
@@ -125,7 +266,18 @@ express_belt_starting_top =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 200
+    y = 200,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 800,
+      scale = 0.5
+    }
   }
 express_belt_starting_bottom =
   {
@@ -134,7 +286,18 @@ express_belt_starting_bottom =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 240
+    y = 240,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 960,
+      scale = 0.5
+    }
   }
 express_belt_starting_side =
   {
@@ -143,5 +306,16 @@ express_belt_starting_side =
     width = 40,
     height = 40,
     frame_count = 32,
-    y = 280
+    y = 280,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+      priority = "extra-high",
+      width = 80,
+      height = 80,
+      frame_count = 32,
+      line_length = 16,
+      y = 1120,
+      scale = 0.5
+    }
   }

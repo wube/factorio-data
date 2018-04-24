@@ -4,7 +4,7 @@ data:extend(
     type = "build-entity-achievement",
     name = "getting-on-track",
     order = "a[progress]-a[getting-on-track]",
-    to_build = "diesel-locomotive",
+    to_build = "locomotive",
     icon = "__base__/graphics/achievement/getting-on-track.png"
   },
   {
@@ -104,7 +104,7 @@ data:extend(
     type = "build-entity-achievement",
     name = "getting-on-track-like-a-pro",
     order = "c[teaching]-a[getting-on-track-like-a-pro]",
-    to_build = "diesel-locomotive",
+    to_build = "locomotive",
     icon = "__base__/graphics/achievement/getting-on-track-like-a-pro.png",
     until_second = 90 * 60 -- 90 minutes
   },

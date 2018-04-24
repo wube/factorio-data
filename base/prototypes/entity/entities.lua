@@ -1,5 +1,5 @@
 require ("util")
-require ("prototypes.entity.demo-railpictures")
+require ("prototypes.entity.demo-rail-pictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.transport-belt-pictures")
@@ -9,8 +9,12 @@ require ("prototypes.entity.demo-player-animations")
 require ("prototypes.entity.laser-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
 
-railpictures = function()
-  return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
+rail_pictures = function()
+  return rail_pictures_internal({{"metals", "metals", mipmap = true},
+                                 {"backplates", "backplates", mipmap = true},
+                                 {"ties", "ties", variations = 3},
+                                 {"stone_path", "stone-path", variations = 3},
+                                 {"stone_path_background", "stone-path-background", variations = 3}})
 end
 
 standard_train_wheels =
@@ -25,7 +29,29 @@ standard_train_wheels =
     "__base__/graphics/entity/diesel-locomotive/train-wheels-02.png"
   },
   line_length = 8,
-  lines_per_file = 16
+  lines_per_file = 16,
+  hr_version =
+    {
+    priority = "very-low",
+    width = 229,
+    height = 227,
+    direction_count = 256,
+    filenames =
+    {
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-1.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-2.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-3.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-4.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-5.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-6.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-7.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-8.png",
+    },
+    line_length = 4,
+    lines_per_file = 8,
+    --shift = {0.015625, -0.453125}, original shifting from spritesheeter (likely needs doubling or halving)
+    scale = 0.5
+    }
 }
 
 function drive_over_tie()
@@ -127,7 +153,7 @@ function rolling_stock_stand_by_light()
   }
 end
 
-local function make_train_stop_4way_animation(animation)
+function make_4way_animation_from_spritesheet(animation)
   local function make_animation_layer(idx, anim)
     return {
       filename = anim.filename,
@@ -140,18 +166,27 @@ local function make_train_stop_4way_animation(animation)
       shift = anim.shift,
       draw_as_shadow = anim.draw_as_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
+      scale = anim.scale or 1
     }
+  end
+
+  local function make_animation_layer_with_hr_version(idx, anim)
+    local anim_parameters = make_animation_layer(idx, anim)
+    if anim.hr_version and anim.hr_version.filename then
+      anim_parameters.hr_version = make_animation_layer(idx, anim.hr_version)
+    end
+    return anim_parameters
   end
 
   local function make_animation(idx)
     if animation.layers then
       local tab = { layers = {} }
       for k,v in ipairs(animation.layers) do
-        table.insert(tab.layers, make_animation_layer(idx, v))
+        table.insert(tab.layers, make_animation_layer_with_hr_version(idx, v))
       end
       return tab
     else
-      return make_animation_layer(idx, animation)
+      return make_animation_layer_with_hr_version(idx, animation)
     end
   end
 
@@ -162,6 +197,38 @@ local function make_train_stop_4way_animation(animation)
     south = make_animation(2),
     west = make_animation(3)
   }
+end
+
+function make_heat_pipe_pictures(path, name_prefix, data)
+  local all_pictures = {}
+  for key, t in pairs(data) do
+    if t.empty then
+      all_pictures[key] = { priority = "extra-high", filename = "__core__/graphics/empty.png", width = 1, height = 1 }
+    else
+      local tile_pictures = {}
+      for i = 1, (t.variations or 1) do
+        local sprite = {
+          priority = "extra-high",
+          filename = path .. name_prefix .. "-" .. (t.name or string.gsub(key, "_", "-")) .. (t.ommit_number and ".png" or ("-" .. tostring(i) .. ".png")),
+          width = (t.width or 32),
+          height = (t.height or 32),
+          shift = t.shift,
+          hr_version =
+          {
+            priority = "extra-high",
+            filename = path .. "hr-" .. name_prefix .. "-" .. (t.name or string.gsub(key, "_", "-")) .. (t.ommit_number and ".png" or ("-" .. tostring(i) .. ".png")),
+            width = (t.width or 32) * 2,
+            height = (t.height or 32) * 2,
+            scale = 0.5,
+            shift = t.shift,
+          }
+        }
+        table.insert(tile_pictures, sprite)
+      end
+      all_pictures[key] = tile_pictures
+    end
+  end
+  return all_pictures
 end
 
 -- add heavy armor to the player animations
@@ -184,7 +251,7 @@ data:extend(
     icon = "__base__/graphics/icons/underground-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-belt"},
-    max_health = 60,
+    max_health = 150,
     corpse = "small-remnants",
     max_distance = 5,
     underground_sprite =
@@ -201,6 +268,10 @@ data:extend(
       {
         type = "fire",
         percent = 60
+      },
+      {
+        type = "impact",
+        percent = 30
       }
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -224,10 +295,20 @@ data:extend(
         {
           filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.26, 0},
+          shift = {0.25, 0},
           width = 57,
           height = 43,
-          y = 43
+          y = 43,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            priority = "extra-high",
+            shift = {0.15625, 0.0703125},
+            width = 106,
+            height = 85,
+            y = 85,
+            scale = 0.5
+          }
         }
       },
       direction_out =
@@ -236,10 +317,21 @@ data:extend(
         {
           filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.26, 0},
+          shift = {0.25, 0},
           width = 57,
-          height = 43
+          height = 43,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            priority = "extra-high",
+            shift = {0.15625, 0.0703125},
+            width = 106,
+            height = 85,
+            scale = 0.5
+          }
+
         }
+
       }
     },
     ending_patch = ending_patch_prototype
@@ -250,7 +342,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-underground-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-underground-belt"},
-    max_health = 60,
+    max_health = 160,
     corpse = "small-remnants",
     underground_sprite =
     {
@@ -266,6 +358,10 @@ data:extend(
       {
         type = "fire",
         percent = 60
+      },
+      {
+        type = "impact",
+        percent = 30
       }
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -292,7 +388,17 @@ data:extend(
           shift = {0.26, 0},
           width = 57,
           height = 43,
-          y = 43
+          y = 43,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            shift = {0.15625, 0.0703125},
+            width = 106,
+            height = 85,
+            y = 85,
+            scale = 0.5
+          }
         }
       },
       direction_out =
@@ -303,7 +409,16 @@ data:extend(
           priority = "extra-high",
           shift = {0.26, 0},
           width = 57,
-          height = 43
+          height = 43,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            shift = {0.15625, 0.0703125},
+            width = 106,
+            height = 85,
+            scale = 0.5
+          }
         }
       }
     },
@@ -315,7 +430,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-underground-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-underground-belt"},
-    max_health = 60,
+    max_health = 170,
     corpse = "small-remnants",
     underground_sprite =
     {
@@ -331,6 +446,10 @@ data:extend(
       {
         type = "fire",
         percent = 60
+      },
+      {
+        type = "impact",
+        percent = 30
       }
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -357,7 +476,17 @@ data:extend(
           shift = {0.26, 0},
           width = 57,
           height = 43,
-          y = 43
+          y = 43,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure.png",
+            priority = "extra-high",
+            shift = {0.15625, 0.0703125},
+            width = 106,
+            height = 85,
+            y = 85,
+            scale = 0.5
+          }
         }
       },
       direction_out =
@@ -368,7 +497,16 @@ data:extend(
           priority = "extra-high",
           shift = {0.26, 0},
           width = 57,
-          height = 43
+          height = 43,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure.png",
+            priority = "extra-high",
+            shift = {0.15625, 0.0703125},
+            width = 106,
+            height = 85,
+            scale = 0.5
+          }
         }
       }
     },
@@ -380,7 +518,7 @@ data:extend(
     icon = "__base__/graphics/icons/loader.png",
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "loader"},
-    max_health = 70,
+    max_health = 170,
     filter_count = 5,
     corpse = "small-remnants",
     resistances =
@@ -435,7 +573,7 @@ data:extend(
     icon = "__base__/graphics/icons/loader.png",
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-loader"},
-    max_health = 70,
+    max_health = 170,
     filter_count = 5,
     corpse = "small-remnants",
     resistances =
@@ -490,7 +628,7 @@ data:extend(
     icon = "__base__/graphics/icons/loader.png",
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-loader"},
-    max_health = 70,
+    max_health = 170,
     filter_count = 5,
     corpse = "small-remnants",
     resistances =
@@ -545,7 +683,7 @@ data:extend(
     icon = "__base__/graphics/icons/splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "splitter"},
-    max_health = 80,
+    max_health = 170,
     corpse = "medium-remnants",
     resistances =
     {
@@ -578,9 +716,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 80,
-        height = 35,
-        shift = {0.225, 0}
+        width = 83,
+        height = 36,
+        shift = {0.265625, 0},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/splitter/hr-splitter-north.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 164,
+          height = 70,
+          shift = {0.25, 0.046875},
+          scale = 0.5
+        }
       },
       east =
       {
@@ -588,9 +737,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 46,
-        height = 81,
-        shift = {0.075, 0}
+        width = 51,
+        height = 80,
+        shift = {0.109375, -0.03125},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/splitter/hr-splitter-east.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 93,
+          height = 157,
+          shift = {0.148438, -0.179688},
+          scale = 0.5
+        }
       },
       south =
       {
@@ -598,9 +758,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 82,
-        height = 36,
-        shift = {0.075, 0}
+        width = 85,
+        height = 35,
+        shift = {0.140625, -0.015625},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/splitter/hr-splitter-south.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 168,
+          height = 67,
+          shift = {0.140625, 0.0234375},
+          scale = 0.5
+        }
       },
       west =
       {
@@ -608,9 +779,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 47,
-        height = 79,
-        shift = {0.25, 0.05}
+        width = 51,
+        height = 78,
+        shift = {0.296875, -0.03125},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/splitter/hr-splitter-west.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 94,
+          height = 154,
+          shift = {0.203125, -0.109375},
+          scale = 0.5
+        }
       },
     },
     ending_patch = ending_patch_prototype
@@ -621,7 +803,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-splitter"},
-    max_health = 80,
+    max_health = 180,
     corpse = "medium-remnants",
     resistances =
     {
@@ -653,9 +835,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 80,
-        height = 35,
-        shift = {0.225, 0}
+        width = 83,
+        height = 36,
+        shift = {0.265625, 0},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-north.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 164,
+          height = 70,
+          shift = {0.25, 0.046875},
+          scale = 0.5
+        }
       },
       east =
       {
@@ -663,9 +856,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 46,
-        height = 81,
-        shift = {0.075, 0}
+        width = 51,
+        height = 80,
+        shift = {0.109375, -0.03125},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-east.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 93,
+          height = 157,
+          shift = {0.148438, -0.179688},
+          scale = 0.5
+        }
       },
       south =
       {
@@ -673,9 +877,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 82,
-        height = 36,
-        shift = {0.075, 0}
+        width = 85,
+        height = 35,
+        shift = {0.140625, -0.015625},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-south.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 168,
+          height = 67,
+          shift = {0.140625, 0.0234375},
+          scale = 0.5
+        }
       },
       west =
       {
@@ -683,9 +898,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 47,
-        height = 79,
-        shift = {0.25, 0.05}
+        width = 51,
+        height = 78,
+        shift = {0.296875, -0.03125},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-west.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 94,
+          height = 154,
+          shift = {0.203125, -0.109375},
+          scale = 0.5
+        }
       },
     },
     ending_patch = ending_patch_prototype
@@ -696,7 +922,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-splitter"},
-    max_health = 80,
+    max_health = 190,
     corpse = "medium-remnants",
     resistances =
     {
@@ -729,9 +955,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 80,
-        height = 35,
-        shift = {0.225, 0}
+        width = 83,
+        height = 36,
+        shift = {0.21875, 0},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-north.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 164,
+          height = 70,
+          shift = {0.265625, 0},
+          scale = 0.5
+        }
       },
       east =
       {
@@ -739,9 +976,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 46,
-        height = 81,
-        shift = {0.075, 0}
+        width = 51,
+        height = 80,
+        shift = {0.109375, -0.03125},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-east.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 93,
+          height = 157,
+          shift = {0.148438, -0.179688},
+          scale = 0.5
+        }
       },
       south =
       {
@@ -749,9 +997,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 82,
-        height = 36,
-        shift = {0.075, 0}
+        width = 85,
+        height = 35,
+        shift = {0.140625, -0.015625},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-south.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 168,
+          height = 67,
+          shift = {0.140625, 0.0234375},
+          scale = 0.5
+        }
       },
       west =
       {
@@ -759,9 +1018,20 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        width = 47,
-        height = 79,
-        shift = {0.25, 0.05}
+        width = 51,
+        height = 78,
+        shift = {0.296875, -0.03125},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-west.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 94,
+          height = 154,
+          shift = {0.203125, -0.109375},
+          scale = 0.5
+        }
       },
     }
   },
@@ -771,7 +1041,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "fast-transport-belt"},
-    max_health = 50,
+    max_health = 160,
     corpse = "small-remnants",
     resistances =
     {
@@ -799,7 +1069,18 @@ data:extend(
       width = 40,
       height = 40,
       frame_count = 32,
-      direction_count = 12
+      direction_count = 12,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
+        priority = "extra-high",
+        width = 80,
+        height = 80,
+        frame_count = 32,
+        line_length = 16,
+        direction_count = 12,
+        scale = 0.5
+      }
     },
     belt_horizontal = fast_belt_horizontal, -- specified in transport-belt-pictures.lua
     belt_vertical = fast_belt_vertical,
@@ -823,7 +1104,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "express-transport-belt"},
-    max_health = 50,
+    max_health = 170,
     corpse = "small-remnants",
     resistances =
     {
@@ -851,7 +1132,18 @@ data:extend(
       width = 40,
       height = 40,
       frame_count = 32,
-      direction_count = 12
+      direction_count = 12,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
+        priority = "extra-high",
+        width = 80,
+        height = 80,
+        frame_count = 32,
+        line_length = 16,
+        direction_count = 12,
+        scale = 0.5
+      }
     },
     belt_horizontal = express_belt_horizontal, -- specified in transport-belt-pictures.lua
     belt_vertical = express_belt_vertical,
@@ -876,7 +1168,7 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-2.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
-    max_health = 250,
+    max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
     resistances =
@@ -894,7 +1186,8 @@ data:extend(
         pipe_covers = pipecoverspictures(),
         base_area = 10,
         base_level = -1,
-        pipe_connections = {{ type="input", position = {0, -2} }}
+        pipe_connections = {{ type="input", position = {0, -2} }},
+        secondary_draw_orders = { north = -1 }
       },
       {
         production_type = "output",
@@ -902,7 +1195,8 @@ data:extend(
         pipe_covers = pipecoverspictures(),
         base_area = 10,
         base_level = 1,
-        pipe_connections = {{ type="output", position = {0, 2} }}
+        pipe_connections = {{ type="output", position = {0, 2} }},
+        secondary_draw_orders = { north = -1 }
       },
       off_when_no_fluid_recipe = true
     },
@@ -911,13 +1205,49 @@ data:extend(
     fast_replaceable_group = "assembling-machine",
     animation =
     {
-      filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
-      priority = "high",
-      width = 113,
-      height = 99,
-      frame_count = 32,
-      line_length = 8,
-      shift = {0.4, -0.06}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
+          priority = "high",
+          width = 108,
+          height = 110,
+          frame_count = 32,
+          line_length = 8,
+          shift = util.by_pixel(0, 4),
+          hr_version = {
+            filename = "__base__/graphics/entity/assembling-machine-2/hr-assembling-machine-2.png",
+            priority = "high",
+            width = 214,
+            height = 218,
+            frame_count = 32,
+            line_length = 8,
+            shift = util.by_pixel(0, 4),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2-shadow.png",
+          priority = "high",
+          width = 98,
+          height = 82,
+          frame_count = 32,
+          line_length = 8,
+          draw_as_shadow = true,
+          shift = util.by_pixel(12, 5),
+          hr_version = {
+            filename = "__base__/graphics/entity/assembling-machine-2/hr-assembling-machine-2-shadow.png",
+            priority = "high",
+            width = 196,
+            height = 163,
+            frame_count = 32,
+            line_length = 8,
+            draw_as_shadow = true,
+            shift = util.by_pixel(12, 4.75),
+            scale = 0.5
+          }
+        },
+      },
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
@@ -959,7 +1289,7 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-3.png",
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
-    max_health = 300,
+    max_health = 400,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
     resistances =
@@ -977,7 +1307,8 @@ data:extend(
         pipe_covers = pipecoverspictures(),
         base_area = 10,
         base_level = -1,
-        pipe_connections = {{ type="input", position = {0, -2} }}
+        pipe_connections = {{ type="input", position = {0, -2} }},
+        secondary_draw_orders = { north = -1 }
       },
       {
         production_type = "output",
@@ -985,7 +1316,8 @@ data:extend(
         pipe_covers = pipecoverspictures(),
         base_area = 10,
         base_level = 1,
-        pipe_connections = {{ type="output", position = {0, 2} }}
+        pipe_connections = {{ type="output", position = {0, 2} }},
+        secondary_draw_orders = { north = -1 }
       },
       off_when_no_fluid_recipe = true
     },
@@ -1012,14 +1344,51 @@ data:extend(
     fast_replaceable_group = "assembling-machine",
     animation =
     {
-      filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
-      priority = "high",
-      width = 142,
-      height = 113,
-      frame_count = 32,
-      line_length = 8,
-      shift = {0.84, -0.09}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
+          priority = "high",
+          width = 108,
+          height = 119,
+          frame_count = 32,
+          line_length = 8,
+          shift = util.by_pixel(0, -0.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/assembling-machine-3/hr-assembling-machine-3.png",
+            priority = "high",
+            width = 214,
+            height = 237,
+            frame_count = 32,
+            line_length = 8,
+            shift = util.by_pixel(0, -0.75),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3-shadow.png",
+          priority = "high",
+          width = 130,
+          height = 82,
+          frame_count = 32,
+          line_length = 8,
+          draw_as_shadow = true,
+          shift = util.by_pixel(28, 4),
+          hr_version = {
+            filename = "__base__/graphics/entity/assembling-machine-3/hr-assembling-machine-3-shadow.png",
+            priority = "high",
+            width = 260,
+            height = 162,
+            frame_count = 32,
+            line_length = 8,
+            draw_as_shadow = true,
+            shift = util.by_pixel(28, 4),
+            scale = 0.5
+          }
+        },
+      },
     },
+
     crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 1.25,
     energy_source =
@@ -1042,7 +1411,7 @@ data:extend(
     icon = "__base__/graphics/icons/car.png",
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "car"},
-    max_health = 200,
+    max_health = 450,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     energy_per_hit_point = 1,
@@ -1056,15 +1425,17 @@ data:extend(
       {
         type = "impact",
         percent = 30,
-        decrease = 30
+        decrease = 50
       }
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
     effectivity = 0.5,
     braking_power = "200kW",
+
     burner =
     {
+      fuel_category = "chemical",
       effectivity = 0.6,
       fuel_inventory_size = 1,
       smoke =
@@ -1089,14 +1460,16 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
         },
         shift = {-0.6, -14},
         size = 2,
-        intensity = 0.6
+        intensity = 0.6,
+        color = {r = 0.92, g = 0.77, b = 0.3}
       },
       {
         type = "oriented",
@@ -1104,14 +1477,16 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
         },
         shift = {0.6, -14},
         size = 2,
-        intensity = 0.6
+        intensity = 0.6,
+        color = {r = 0.92, g = 0.77, b = 0.3}
       }
     },
     animation =
@@ -1143,6 +1518,50 @@ data:extend(
              width_in_frames = 2,
              height_in_frames = 20,
             },
+          },
+          hr_version =
+          {
+            width = 202,
+            height = 172,
+            frame_count = 2,
+            scale = 0.5,
+            direction_count = 64,
+            shift = {0, -0.359375},
+            animation_speed = 8,
+            max_advance = 0.2,
+            stripes =
+            {
+              {
+                filename = "__base__/graphics/entity/car/hr-car-1.png",
+                width_in_frames = 2,
+                height_in_frames = 11
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-2.png",
+                width_in_frames = 2,
+                height_in_frames = 11
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-3.png",
+                width_in_frames = 2,
+                height_in_frames = 11
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-4.png",
+                width_in_frames = 2,
+                height_in_frames = 11
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-5.png",
+                width_in_frames = 2,
+                height_in_frames = 11
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-6.png",
+                width_in_frames = 2,
+                height_in_frames = 9
+              }
+            }
           }
         },
         {
@@ -1171,7 +1590,48 @@ data:extend(
               width_in_frames = 1,
               height_in_frames = 20,
             },
-          })
+          }),
+          hr_version =
+          {
+            width = 199,
+            height = 147,
+            frame_count = 2,
+            apply_runtime_tint = true,
+            scale = 0.5,
+            axially_symmetrical = false,
+            direction_count = 64,
+            max_advance = 0.2,
+            shift = {0, -0.34375},
+            line_length = 1,
+            stripes = util.multiplystripes(2,
+            {
+              {
+                filename = "__base__/graphics/entity/car/hr-car-mask-1.png",
+                width_in_frames = 1,
+                height_in_frames = 13
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-mask-2.png",
+                width_in_frames = 1,
+                height_in_frames = 13
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-mask-3.png",
+                width_in_frames = 1,
+                height_in_frames = 13
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-mask-4.png",
+                width_in_frames = 1,
+                height_in_frames = 13
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-mask-5.png",
+                width_in_frames = 1,
+                height_in_frames = 12
+              }
+            })
+          }
         },
         {
           width = 114,
@@ -1197,7 +1657,7 @@ data:extend(
             filename = "__base__/graphics/entity/car/car-shadow-3.png",
             width_in_frames = 1,
             height_in_frames = 20,
-           },
+           }
           })
         }
       }
@@ -1215,6 +1675,30 @@ data:extend(
           direction_count = 64,
           shift = {0.03125, -0.890625},
           animation_speed = 8,
+          hr_version =
+          {
+            width = 71,
+            height = 57,
+            frame_count = 1,
+            axially_symmetrical = false,
+            direction_count = 64,
+            shift = {0, -1.05},
+            animation_speed = 8,
+            scale = 0.5,
+            stripes =
+            {
+              {
+                filename = "__base__/graphics/entity/car/hr-car-turret-1.png",
+                width_in_frames = 1,
+                height_in_frames = 32
+              },
+              {
+                filename = "__base__/graphics/entity/car/hr-car-turret-2.png",
+                width_in_frames = 1,
+                height_in_frames = 32
+              }
+            }
+          }
         },
         {
           filename = "__base__/graphics/entity/car/car-turret-shadow.png",
@@ -1224,7 +1708,7 @@ data:extend(
           frame_count = 1,
           draw_as_shadow = true,
           direction_count = 64,
-          shift = {0.875, 0.359375},
+          shift = {0.875, 0.359375}
         }
       }
     },
@@ -1234,7 +1718,7 @@ data:extend(
       {
         filename = "__base__/sound/fight/car-no-fuel-1.ogg",
         volume = 0.6
-      },
+      }
     },
     stop_trigger_speed = 0.2,
     stop_trigger =
@@ -1246,9 +1730,9 @@ data:extend(
           {
             filename = "__base__/sound/car-breaks.ogg",
             volume = 0.6
-          },
+          }
         }
-      },
+      }
     },
     sound_minimum_speed = 0.2;
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -1284,7 +1768,7 @@ data:extend(
     icon = "__base__/graphics/icons/tank.png",
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "tank"},
-    max_health = 1000,
+    max_health = 2000,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     energy_per_hit_point = 0.5,
@@ -1293,27 +1777,27 @@ data:extend(
       {
         type = "fire",
         decrease = 15,
-        percent = 50
+        percent = 60
       },
       {
         type = "physical",
         decrease = 15,
-        percent = 30
+        percent = 60
       },
       {
         type = "impact",
         decrease = 50,
-        percent = 60
+        percent = 80
       },
       {
         type = "explosion",
         decrease = 15,
-        percent = 30
+        percent = 70
       },
       {
         type = "acid",
-        decrease = 10,
-        percent = 20
+        decrease = 15,
+        percent = 50
       }
     },
     collision_box = {{-0.9, -1.3}, {0.9, 1.3}},
@@ -1322,6 +1806,7 @@ data:extend(
     braking_power = "400kW",
     burner =
     {
+      fuel_category = "chemical",
       effectivity = 0.75,
       fuel_inventory_size = 2,
       smoke =
@@ -1347,14 +1832,16 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
-          height = 200
+          height = 200,
         },
         shift = {-0.6, -14},
         size = 2,
-        intensity = 0.6
+        intensity = 0.6,
+        color = {r = 0.9, g = 1.0, b = 1.0}
       },
       {
         type = "oriented",
@@ -1362,14 +1849,16 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
         },
         shift = {0.6, -14},
         size = 2,
-        intensity = 0.6
+        intensity = 0.6,
+        color = {r = 0.9, g = 1.0, b = 1.0}
       }
     },
     animation =
@@ -1556,7 +2045,7 @@ data:extend(
     tank_driving = true,
     weight = 20000,
     inventory_size = 80,
-    guns = { "tank-cannon", "tank-machine-gun" },
+    guns = { "tank-cannon", "tank-machine-gun", "tank-flamethrower" },
   },
   {
     type = "container",
@@ -1564,7 +2053,7 @@ data:extend(
     icon = "__base__/graphics/icons/iron-chest.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "iron-chest"},
-    max_health = 100,
+    max_health = 200,
     corpse = "small-remnants",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
@@ -1573,6 +2062,10 @@ data:extend(
       {
         type = "fire",
         percent = 80
+      },
+      {
+        type = "impact",
+        percent = 30
       }
     },
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -1610,7 +2103,7 @@ data:extend(
     icon = "__base__/graphics/icons/steel-chest.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "steel-chest"},
-    max_health = 200,
+    max_health = 350,
     corpse = "small-remnants",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
@@ -1619,6 +2112,10 @@ data:extend(
       {
         type = "fire",
         percent = 90
+      },
+      {
+        type = "impact",
+        percent = 60
       }
     },
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -1656,7 +2153,7 @@ data:extend(
     icon = "__base__/graphics/icons/long-handed-inserter.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "long-handed-inserter"},
-    max_health = 40,
+    max_health = 160,
     corpse = "small-remnants",
     resistances =
     {
@@ -1735,7 +2232,7 @@ data:extend(
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 33
     },
     hand_closed_shadow =
     {
@@ -1764,7 +2261,8 @@ data:extend(
     },
     circuit_wire_connection_point = inserter_circuit_wire_connection_point,
     circuit_connector_sprites = inserter_circuit_connector_sprites,
-    circuit_wire_max_distance = inserter_circuit_wire_max_distance
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance,
+    default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
   {
     type = "inserter",
@@ -1777,7 +2275,7 @@ data:extend(
       mining_time = 0.5,
       result = "fast-inserter"
     },
-    max_health = 40,
+    max_health = 150,
     corpse = "small-remnants",
     resistances =
     {
@@ -1855,7 +2353,7 @@ data:extend(
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 33
     },
     hand_closed_shadow =
     {
@@ -1884,7 +2382,8 @@ data:extend(
     },
     circuit_wire_connection_point = inserter_circuit_wire_connection_point,
     circuit_connector_sprites = inserter_circuit_connector_sprites,
-    circuit_wire_max_distance = inserter_circuit_wire_max_distance
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance,
+    default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
 
   {
@@ -1899,7 +2398,7 @@ data:extend(
       mining_time = 0.5,
       result = "stack-inserter"
     },
-    max_health = 40,
+    max_health = 160,
     corpse = "small-remnants",
     resistances =
     {
@@ -1977,7 +2476,7 @@ data:extend(
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 33
     },
     hand_closed_shadow =
     {
@@ -2006,7 +2505,8 @@ data:extend(
     },
     circuit_wire_connection_point = inserter_circuit_wire_connection_point,
     circuit_connector_sprites = inserter_circuit_connector_sprites,
-    circuit_wire_max_distance = inserter_circuit_wire_max_distance
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance,
+    default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
 
   {
@@ -2022,7 +2522,7 @@ data:extend(
       mining_time = 0.5,
       result = "stack-filter-inserter"
     },
-    max_health = 40,
+    max_health = 160,
     corpse = "small-remnants",
     resistances =
     {
@@ -2100,7 +2600,7 @@ data:extend(
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 33
     },
     hand_closed_shadow =
     {
@@ -2129,7 +2629,8 @@ data:extend(
     },
     circuit_wire_connection_point = inserter_circuit_wire_connection_point,
     circuit_connector_sprites = inserter_circuit_connector_sprites,
-    circuit_wire_max_distance = inserter_circuit_wire_max_distance
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance,
+    default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
 
   {
@@ -2138,7 +2639,7 @@ data:extend(
     icon = "__base__/graphics/icons/filter-inserter.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "filter-inserter"},
-    max_health = 40,
+    max_health = 150,
     corpse = "small-remnants",
     resistances =
     {
@@ -2217,7 +2718,7 @@ data:extend(
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 33
     },
     hand_closed_shadow =
     {
@@ -2247,7 +2748,8 @@ data:extend(
 
     circuit_wire_connection_point = inserter_circuit_wire_connection_point,
     circuit_connector_sprites = inserter_circuit_connector_sprites,
-    circuit_wire_max_distance = inserter_circuit_wire_max_distance
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance,
+    default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
   {
     type = "solar-panel",
@@ -2255,7 +2757,7 @@ data:extend(
     icon = "__base__/graphics/icons/solar-panel.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "solar-panel"},
-    max_health = 100,
+    max_health = 200,
     corpse = "big-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -2275,10 +2777,10 @@ data:extend(
   },
   {
     type = "locomotive",
-    name = "diesel-locomotive",
+    name = "locomotive",
     icon = "__base__/graphics/icons/diesel-locomotive.png",
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
-    minable = {mining_time = 1, result = "diesel-locomotive"},
+    minable = {mining_time = 1, result = "locomotive"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 1000,
     corpse = "medium-remnants",
@@ -2325,9 +2827,9 @@ data:extend(
         percent = 20
       }
     },
-    energy_source =
+    burner =
     {
-      type = "burner",
+      fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 3,
       smoke =
@@ -2354,14 +2856,16 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
         },
         shift = {-0.6, -16},
         size = 2,
-        intensity = 0.6
+        intensity = 0.6,
+        color = {r = 1.0, g = 0.9, b = 0.9}
       },
       {
         type = "oriented",
@@ -2369,14 +2873,16 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
         },
         shift = {0.6, -16},
         size = 2,
-        intensity = 0.6
+        intensity = 0.6,
+        color = {r = 1.0, g = 0.9, b = 0.9}
       }
     },
     back_light = rolling_stock_back_light(),
@@ -2404,7 +2910,37 @@ data:extend(
           },
           line_length = 4,
           lines_per_file = 8,
-          shift = {0.0, -0.5}
+          shift = {0.0, -0.5},
+          hr_version =
+            {
+            priority = "very-low",
+            width = 474,
+            height = 458,
+            direction_count = 256,
+            filenames =
+            {
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-1.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-2.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-3.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-4.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-5.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-6.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-7.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-8.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-9.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-10.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-11.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-12.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-13.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-14.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-15.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-16.png"
+            },
+            line_length = 4,
+            lines_per_file = 4,
+            shift = {0.0, -0.5},
+            scale = 0.5
+            }
         },
         {
           priority = "very-low",
@@ -2426,7 +2962,39 @@ data:extend(
           line_length = 4,
           lines_per_file = 8,
           shift = {0.0, -0.5},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version =
+            {
+              priority = "very-low",
+              flags = { "mask" },
+              width = 472,
+              height = 456,
+              direction_count = 256,
+              filenames =
+              {
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-1.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-2.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-3.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-4.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-5.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-6.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-7.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-8.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-9.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-10.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-11.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-12.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-13.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-14.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-15.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-16.png"
+              },
+              line_length = 4,
+              lines_per_file = 4,
+              shift = {0.0, -0.5},
+              apply_runtime_tint = true,
+              scale = 0.5
+            }
         },
         {
           priority = "very-low",
@@ -2579,7 +3147,26 @@ data:extend(
           },
           line_length = 4,
           lines_per_file = 8,
-          shift = {0, -0.796875}
+          shift = {0, -0.796875},
+          hr_version =
+          {
+            priority = "very-low",
+            width = 442,
+            height = 407,
+            back_equals_front = true,
+            direction_count = 128,
+            filenames =
+            {
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-1.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-2.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-3.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-4.png"
+            },
+            line_length = 4,
+            lines_per_file = 8,
+            shift = {0, -0.789062},
+            scale = 0.5
+          }
         },
         {
           flags = { "mask" },
@@ -2597,6 +3184,25 @@ data:extend(
           },
           line_length = 4,
           lines_per_file = 11,
+          hr_version =
+          {
+            flags = { "mask" },
+            width = 406,
+            height = 371,
+            direction_count = 128,
+            back_equals_front = true,
+            apply_runtime_tint = true,
+            shift = {-0.015625, -0.945312},
+            filenames =
+            {
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-1.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-2.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-3.png"
+            },
+            line_length = 4,
+            lines_per_file = 11,
+            scale = 0.5
+          }
         },
         {
           flags = { "compressed" },
@@ -2614,7 +3220,27 @@ data:extend(
           },
           line_length = 4,
           lines_per_file = 8,
-          shift = {0.8, -0.078125}
+          shift = {0.8, -0.078125},
+          hr_version =
+          {
+            flags = { "compressed" },
+            width = 490,
+            height = 401,
+            back_equals_front = true,
+            draw_as_shadow = true,
+            direction_count = 128,
+            filenames =
+            {
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-1.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-2.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-3.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-4.png"
+            },
+            line_length = 4,
+            lines_per_file = 8,
+            shift = {1, -0.0703125},
+            scale = 0.5
+          }
         }
       }
     },
@@ -2628,7 +3254,17 @@ data:extend(
           width = 220,
           height = 33,
           frame_count = 8,
-          shift = {0, -0.921875}
+          shift = {0, -0.921875},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-end.png",
+            line_length = 1,
+            width = 438,
+            height = 63,
+            frame_count = 8,
+            shift = {0, -0.914062},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-side.png",
@@ -2636,7 +3272,17 @@ data:extend(
           width = 186,
           height = 38,
           frame_count = 8,
-          shift = {0, -0.78125}
+          shift = {0, -0.78125},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-side.png",
+            line_length = 1,
+            width = 368,
+            height = 76,
+            frame_count = 8,
+            shift = {0, -0.765625},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-side-mask.png",
@@ -2645,7 +3291,18 @@ data:extend(
           line_length = 1,
           frame_count = 8,
           shift = {0, -0.828125},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-side-mask.png",
+            width = 320,
+            height = 69,
+            line_length = 1,
+            frame_count = 8,
+            shift = {0, -0.820312},
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-top.png",
@@ -2653,7 +3310,17 @@ data:extend(
           width = 184,
           height = 28,
           frame_count = 8,
-          shift = {0.015625, -1.125}
+          shift = {0.015625, -1.125},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-top.png",
+            line_length = 1,
+            width = 369,
+            height = 54,
+            frame_count = 8,
+            shift = {0.0234375, -1.10938},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-top-mask.png",
@@ -2662,7 +3329,18 @@ data:extend(
           frame_count = 8,
           line_length = 1,
           shift = {0.015625, -1.17188},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-top-mask.png",
+            width = 369,
+            height = 45,
+            frame_count = 8,
+            line_length = 1,
+            shift = {0.0234375, -1.17969},
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -2676,7 +3354,17 @@ data:extend(
           width = 30,
           height = 202,
           frame_count = 8,
-          shift = {0, -0.84375}
+          shift = {0, -0.84375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-end.png",
+            line_length = 8,
+            width = 58,
+            height = 401,
+            frame_count = 8,
+            shift = {0, -0.835938},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-side.png",
@@ -2684,7 +3372,17 @@ data:extend(
           width = 67,
           height = 169,
           frame_count = 8,
-          shift = {0.015625, -1.01563}
+          shift = {0.015625, -1.01563},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-side.png",
+            line_length = 8,
+            width = 127,
+            height = 337,
+            frame_count = 8,
+            shift = {0.0078125, -1.02344},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-side-mask.png",
@@ -2693,7 +3391,18 @@ data:extend(
           height = 163,
           frame_count = 8,
           shift = {0, -1.10938},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-side-mask.png",
+            line_length = 8,
+            width = 112,
+            height = 326,
+            frame_count = 8,
+            shift = {0, -1.10938},
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-top.png",
@@ -2701,7 +3410,17 @@ data:extend(
           width = 32,
           height = 168,
           frame_count = 8,
-          shift = {0, -1.125}
+          shift = {0, -1.125},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-top.png",
+            line_length = 8,
+            width = 64,
+            height = 337,
+            frame_count = 8,
+            shift = {0, -1.11719},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-top-mask.png",
@@ -2710,7 +3429,18 @@ data:extend(
           height = 166,
           frame_count = 8,
           shift = {0, -1.15625},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-top-mask.png",
+            line_length = 8,
+            width = 64,
+            height = 332,
+            frame_count = 8,
+            shift = {0, -1.15625},
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -2730,6 +3460,212 @@ data:extend(
     crash_trigger = crash_trigger(),
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    sound_minimum_speed = 0.5;
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+  },
+  {
+    type = "fluid-wagon",
+    name = "fluid-wagon",
+    icon = "__base__/graphics/icons/fluid-wagon.png",
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
+    minable = {mining_time = 1, result = "fluid-wagon"},
+    mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
+    max_health = 600,
+    total_capacity = 25000 * 3,
+    corpse = "medium-remnants",
+    dying_explosion = "medium-explosion",
+    collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
+    selection_box = {{-1, -2.703125}, {1, 3.296875}},
+    gui_front_tank =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/front-tank.png",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    gui_center_tank =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/center-tank.png",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    gui_back_tank =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/back-tank.png",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    gui_connect_front_center_tank =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/connector-front-center.png",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    gui_connect_center_back_tank =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/connector-center-back.png",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    gui_front_center_tank_indiciation =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/1.png",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    gui_center_back_tank_indiciation =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/gui/2.png",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    vertical_selection_shift = -0.796875,
+    weight = 3000,
+    max_speed = 1.5,
+    braking_force = 3,
+    friction_force = 0.50,
+    air_resistance = 0.05,
+    connection_distance = 3,
+    joint_distance = 4,
+    energy_per_hit_point = 6,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 10,
+        percent = 20
+      }
+    },
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
+    color = {r = 0.43, g = 0.23, b = 0, a = 0.5},
+    pictures =
+    {
+      layers =
+      {
+        {
+          priority = "very-low",
+          width = 208,
+          height = 210,
+          back_equals_front = true,
+          direction_count = 128,
+          filenames =
+          {
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-1.png",
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-2.png",
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-3.png",
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-4.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {0 + 0.013, -1 + 0.077},
+          hr_version =
+          {
+            priority = "very-low",
+            width = 416,
+            height = 419,
+            back_equals_front = true,
+            direction_count = 128,
+            filenames =
+            {
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-1.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-2.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-3.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-4.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-5.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-6.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-7.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-8.png"
+            },
+            line_length = 4,
+            lines_per_file = 4,
+            shift = {0 + 0.013, -1 + 0.077},
+            scale = 0.5
+          }
+        },
+        {
+          flags = { "compressed" },
+          width = 251,
+          height = 188,
+          back_equals_front = true,
+          draw_as_shadow = true,
+          direction_count = 128,
+          filenames =
+          {
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-shadow-1.png",
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-shadow-2.png",
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-shadow-3.png",
+            "__base__/graphics/entity/fluid-wagon/fluid-wagon-shadow-4.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {0.875 + 0.013, 0.3125 + 0.077},
+          hr_version =
+          {
+            flags = { "compressed" },
+            width = 501,
+            height = 375,
+            back_equals_front = true,
+            draw_as_shadow = true,
+            direction_count = 128,
+            filenames =
+            {
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-1.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-2.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-3.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-4.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-5.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-6.png",
+              "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-7.png"
+            },
+            line_length = 4,
+            lines_per_file = 5,
+            shift = {0.875 + 0.013, 0.3125 + 0.077},
+            scale = 0.5
+          }
+        }
+      }
+    },
+    wheels = standard_train_wheels,
+    rail_category = "regular",
+    drive_over_tie_trigger = drive_over_tie(),
+    tie_distance = 50,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/train-wheels.ogg",
+        volume = 0.6
+      },
+      match_volume_to_activity = true,
+    },
+    crash_trigger = crash_trigger(),
     sound_minimum_speed = 0.5;
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
   },
@@ -3117,7 +4053,7 @@ data:extend(
     collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
     selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
     rail_category = "regular",
-    pictures = railpictures(),
+    pictures = rail_pictures(),
   },
   {
     type = "curved-rail",
@@ -3138,7 +4074,7 @@ data:extend(
     secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     rail_category = "regular",
-    pictures = railpictures(),
+    pictures = rail_pictures(),
     placeable_by = { item="rail", count = 4}
   },
   {
@@ -3150,7 +4086,8 @@ data:extend(
       "placeable-player",
       "placeable-enemy",
       "player-creation",
-      "placeable-off-grid"
+      "placeable-off-grid",
+      "not-on-map"
     },
     minable = {mining_time = 1, result = "land-mine"},
     max_health = 15,
@@ -3194,8 +4131,14 @@ data:extend(
                 type = "instant",
                 target_effects =
                 {
-                  type = "damage",
-                  damage = { amount = 40, type = "explosion"}
+                  {
+                    type = "damage",
+                    damage = { amount = 300, type = "explosion"}
+                  },
+                  {
+                    type = "create-sticker",
+                    sticker = "stun-sticker"
+                  }
                 }
               }
             },
@@ -3218,7 +4161,7 @@ data:extend(
     icon = "__base__/graphics/icons/train-stop.png",
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 1, result = "train-stop"},
-    max_health = 150,
+    max_health = 250,
     corpse = "medium-remnants",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.9, -0.9}, {0.9, 0.9}},
@@ -3232,134 +4175,379 @@ data:extend(
     tile_width = 2,
     tile_height = 2,
     animation_ticks_per_frame = 20,
-    rail_overlay_animations = make_train_stop_4way_animation(
+    rail_overlay_animations = make_4way_animation_from_spritesheet(
     {
       filename = "__base__/graphics/entity/train-stop/train-stop-ground.png",
       line_length = 4,
-      width = 189,
-      height = 172,
+      width = 194,
+      height = 189,
       direction_count = 4,
-      shift = {0.046875, 0.09375},
+      shift = util.by_pixel(0, -0.5),
+        hr_version = {
+          filename = "__base__/graphics/entity/train-stop/hr-train-stop-ground.png",
+          line_length = 4,
+          width = 386,
+          height = 377,
+          direction_count = 4,
+          shift = util.by_pixel(0, -0.75),
+          scale = 0.5
+      }
     }),
 
-    animations = make_train_stop_4way_animation({ layers =
+    animations = make_4way_animation_from_spritesheet({ layers =
     {
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-bottom.png",
         line_length = 4,
-        width = 72,
-        height = 150,
+        width = 71,
+        height = 146,
         direction_count = 4,
-        shift = {0, -1},
+        shift = util.by_pixel(-0.5, -27),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-bottom.png",
+            line_length = 4,
+            width = 140,
+            height = 291,
+            direction_count = 4,
+            shift = util.by_pixel(-0.5, -26.75),
+            scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-shadow.png",
         line_length = 4,
-        width = 267,
-        height = 186,
+        width = 361,
+        height = 304,
         direction_count = 4,
-        shift = {1.29688, 0.3125},
+        shift = util.by_pixel(-7.5, 18),
         draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-shadow.png",
+            line_length = 4,
+            width = 720,
+            height = 607,
+            direction_count = 4,
+            shift = util.by_pixel(-7.5, 17.75),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
       },
     }}),
 
-    top_animations = make_train_stop_4way_animation({ layers =
+    top_animations = make_4way_animation_from_spritesheet({ layers =
     {
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-top.png",
         line_length = 4,
         width = 156,
-        height = 159,
+        height = 153,
         direction_count = 4,
-        shift = {0, -1.70313},
+        shift = util.by_pixel(0, -50.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-top.png",
+            line_length = 4,
+            width = 311,
+            height = 305,
+            direction_count = 4,
+            shift = util.by_pixel(0, -50.75),
+            scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-top-mask.png",
         line_length = 4,
-        width = 155,
-        height = 153,
+        width = 154,
+        height = 148,
         direction_count = 4,
         apply_runtime_tint = true,
-        shift = {-0.015625, -1.64063},
+        shift = util.by_pixel(0, -49),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-top-mask.png",
+            line_length = 4,
+            width = 306,
+            height = 295,
+            direction_count = 4,
+            apply_runtime_tint = true,
+            shift = util.by_pixel(-0.25, -48.75),
+            scale = 0.5
+          }
       }
     }}),
 
     light1 =
     {
-      light = {intensity = 0.5, size = 3},
+      light = {intensity = 0.5, size = 3, color = {r = 1.0, g = 1.0, b = 1.0}},
       picture =
       {
         north =
         {
           filename = "__base__/graphics/entity/train-stop/train-stop-north-light-1.png",
           width = 9,
-          height = 8,
+          height = 5,
           frame_count = 1,
-          shift = {-2.20312, -1.59375},
+          shift = util.by_pixel(-70.5, -44.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-light-1.png",
+            width = 17,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-70.75, -44.25),
+            scale = 0.5
+            }
         },
-        east =
+        west =
         {
           filename = "__base__/graphics/entity/train-stop/train-stop-east-light-1.png",
-          width = 6,
+          width = 3,
           height = 9,
           frame_count = 1,
-          shift = {-1.0625, -3.71875}, -- {-1.03125, -3.70312},
+          shift = util.by_pixel(34.5, 19.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 19.5),
+            scale = 0.5
+            }
         },
         south =
         {
           filename = "__base__/graphics/entity/train-stop/train-stop-south-light-1.png",
-          width = 9,
-          height = 7,
+          width = 8,
+          height = 2,
           frame_count = 1,
-          shift = {2.20312, -3.10938},
+          shift = util.by_pixel(70, -95),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-light-1.png",
+            width = 16,
+            height = 4,
+            frame_count = 1,
+            shift = util.by_pixel(70, -95),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-light-1.png",
+          width = 3,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-30.5, -112),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(-30.5, -112),
+            scale = 0.5
+            }
+        },
+      },
+      red_picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-north-red-light-1.png",
+          width = 9,
+          height = 5,
+          frame_count = 1,
+          shift = util.by_pixel(-70.5, -44.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-red-light-1.png",
+            width = 17,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-70.75, -44.25),
+            scale = 0.5
+            }
         },
         west =
         {
-          filename = "__base__/graphics/entity/train-stop/train-stop-west-light-1.png",
-          width = 7,
+          filename = "__base__/graphics/entity/train-stop/train-stop-east-red-light-1.png",
+          width = 3,
           height = 9,
           frame_count = 1,
-          shift = {1.01562, 0.578125},
+          shift = util.by_pixel(34.5, 19.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-red-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 19.5),
+            scale = 0.5
+            }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-south-red-light-1.png",
+          width = 8,
+          height = 2,
+          frame_count = 1,
+          shift = util.by_pixel(70, -95),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-red-light-1.png",
+            width = 16,
+            height = 4,
+            frame_count = 1,
+            shift = util.by_pixel(70, -95),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-red-light-1.png",
+          width = 3,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-30.5, -112),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-red-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(-30.5, -112),
+            scale = 0.5
+            }
         },
       }
     },
 
     light2 =
     {
-      light = {intensity = 0.5, size = 3},
+      light = {intensity = 0.5, size = 3, color = {r = 1.0, g = 1.0, b = 1.0}},
       picture =
       {
         north =
         {
           filename = "__base__/graphics/entity/train-stop/train-stop-north-light-2.png",
           width = 9,
-          height = 8,
+          height = 5,
           frame_count = 1,
-          shift = {-1.79688, -1.59375},
+          shift = util.by_pixel(-57.5, -43.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-light-2.png",
+            width = 16,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-57.5, -43.75),
+            scale = 0.5
+            }
         },
-        east =
+        west =
         {
           filename = "__base__/graphics/entity/train-stop/train-stop-east-light-2.png",
-          width = 7,
-          height = 9,
+          width = 3,
+          height = 8,
           frame_count = 1,
-          shift = {-1.0625 + 1/64, -3.40625 + 1/64}, --{-1.01562, -3.39062},
+          shift = util.by_pixel(34.5, 10),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-light-2.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 10),
+            scale = 0.5
+            }
         },
         south =
         {
           filename = "__base__/graphics/entity/train-stop/train-stop-south-light-2.png",
-          width = 9,
-          height = 7,
+          width = 8,
+          height = 3,
           frame_count = 1,
-          shift = {1.79688, -3.10938},
+          shift = util.by_pixel(57, -94.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-light-2.png",
+            width = 16,
+            height = 5,
+            frame_count = 1,
+            shift = util.by_pixel(57, -94.75),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-light-2.png",
+          width = 4,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-31, -103),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-light-2.png",
+            width = 7,
+            height = 15,
+            frame_count = 1,
+            shift = util.by_pixel(-30.75, -102.75),
+            scale = 0.5
+            }
+        },
+      },
+      red_picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-north-red-light-2.png",
+          width = 9,
+          height = 5,
+          frame_count = 1,
+          shift = util.by_pixel(-57.5, -43.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-red-light-2.png",
+            width = 16,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-57.5, -43.75),
+            scale = 0.5
+            }
         },
         west =
         {
-          filename = "__base__/graphics/entity/train-stop/train-stop-west-light-2.png",
-          width = 7,
-          height = 9,
+          filename = "__base__/graphics/entity/train-stop/train-stop-east-red-light-2.png",
+          width = 3,
+          height = 8,
           frame_count = 1,
-          shift = {1.01562, 0.296875},
+          shift = util.by_pixel(34.5, 10),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-red-light-2.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 10),
+            scale = 0.5
+            }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-south-red-light-2.png",
+          width = 8,
+          height = 3,
+          frame_count = 1,
+          shift = util.by_pixel(57, -94.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-red-light-2.png",
+            width = 16,
+            height = 5,
+            frame_count = 1,
+            shift = util.by_pixel(57, -94.75),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-red-light-2.png",
+          width = 4,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-31, -103),
+          hr_version = {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-red-light-2.png",
+            width = 7,
+            height = 15,
+            frame_count = 1,
+            shift = util.by_pixel(-30.75, -102.75),
+            scale = 0.5
+            }
         },
       }
     },
@@ -3438,7 +4626,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
     fast_replaceable_group = "rail-signal",
     minable = {mining_time = 0.5, result = "rail-signal"},
-    max_health = 80,
+    max_health = 100,
     corpse = "small-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3446,10 +4634,37 @@ data:extend(
     {
       filename = "__base__/graphics/entity/rail-signal/rail-signal.png",
       priority = "high",
-      width = 70,
-      height = 46,
+      width = 96,
+      height = 96,
       frame_count = 3,
       direction_count = 8,
+      hr_version = {
+        filename = "__base__/graphics/entity/rail-signal/hr-rail-signal.png",
+        priority = "high",
+        width = 192,
+        height = 192,
+        frame_count = 3,
+        direction_count = 8,
+        scale = 0.5
+      }
+    },
+    rail_piece =
+    {
+      filename = "__base__/graphics/entity/rail-signal/rail-signal-metal.png",
+      line_length = 10,
+      width = 96,
+      height = 96,
+      frame_count = 10,
+      axially_symmetrical = false,
+      hr_version = {
+        filename = "__base__/graphics/entity/rail-signal/hr-rail-signal-metal.png",
+        line_length = 10,
+        width = 192,
+        height = 192,
+        frame_count = 10,
+        axially_symmetrical = false,
+        scale = 0.5
+      }
     },
     green_light = {intensity = 0.2, size = 4, color={g=1}},
     orange_light = {intensity = 0.2, size = 4, color={r=1, g=0.5}},
@@ -3565,9 +4780,9 @@ data:extend(
       get_circuit_connector_sprites({0.03125, -0.375}, {0.03125, -0.375}, 5),
     },
     circuit_wire_max_distance = 7.5,
-    default_red_output_signal = "signal-red",
-    default_orange_output_signal = "signal-yellow",
-    default_green_output_signal = "signal-green"
+    default_red_output_signal = {type = "virtual", name = "signal-red"},
+    default_orange_output_signal = {type = "virtual", name = "signal-yellow"},
+    default_green_output_signal = {type = "virtual", name = "signal-green"}
   },
   {
     type = "rail-chain-signal",
@@ -3576,7 +4791,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
     fast_replaceable_group = "rail-signal",
     minable = {mining_time = 0.5, result = "rail-chain-signal"},
-    max_health = 80,
+    max_health = 100,
     corpse = "small-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3585,33 +4800,51 @@ data:extend(
       filename = "__base__/graphics/entity/rail-chain-signal/rail-chain-signal.png",
       priority = "high",
       line_length = 5,
-      width = 129,
-      height = 113,
+      width = 160,
+      height = 160,
       frame_count = 5,
       axially_symmetrical = false,
       direction_count = 8,
-      shift = {0.421875, 0.515625},
+      hr_version = {
+        filename = "__base__/graphics/entity/rail-chain-signal/hr-rail-chain-signal.png",
+        priority = "high",
+        line_length = 5,
+        width = 320,
+        height = 320,
+        frame_count = 5,
+        axially_symmetrical = false,
+        direction_count = 8,
+        scale = 0.5
+      }
     },
     rail_piece =
     {
       filename = "__base__/graphics/entity/rail-chain-signal/rail-chain-signal-metal.png",
-      line_length = 4,
-      width = 78,
-      height = 74,
-      frame_count = 4,
+      line_length = 10,
+      width = 192,
+      height = 192,
+      frame_count = 10,
       axially_symmetrical = false,
-      shift = {0.15625, 0.25},
+      hr_version = {
+        filename = "__base__/graphics/entity/rail-chain-signal/hr-rail-chain-signal-metal.png",
+        line_length = 10,
+        width = 384,
+        height = 384,
+        frame_count = 10,
+        axially_symmetrical = false,
+        scale = 0.5
+      }
     },
     selection_box_offsets =
     {
-      {0.125, -0.21875},
-      {0.0625, -0.03125},
-      {-0.09375, 0.1875},
-      {-0.15625, -0.03125},
-      {-0.0625, -0.21875},
-      {0.15625, -0.3125},
-      {-0.125, -0.125},
-      {-0.125, -0.3125}
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0}
     },
     green_light = {intensity = 0.3, size = 4, color={r=0.592157, g=1, b=0.117647}},
     orange_light = {intensity = 0.3, size = 4, color={r=0.815686, g=0.670588, b=0.431373}},
@@ -3629,7 +4862,7 @@ data:extend(
     dying_explosion = "medium-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    light = {intensity = 0.75, size = 8},
+    light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
     on_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
@@ -3669,7 +4902,10 @@ data:extend(
       "science-pack-1",
       "science-pack-2",
       "science-pack-3",
-      "alien-science-pack"
+      "military-science-pack",
+      "production-science-pack",
+      "high-tech-science-pack",
+      "space-science-pack"
     },
     module_specification =
     {
@@ -3815,7 +5051,7 @@ data:extend(
     energy_per_move = "5kJ",
     min_to_charge = 0.2,
     max_to_charge = 0.95,
-    working_light = {intensity = 0.8, size = 3},
+    working_light = {intensity = 0.8, size = 3, color = {r = 0.8, g = 0.8, b = 0.8}},
     idle =
     {
       filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
@@ -3973,10 +5209,21 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-passive-provider"},
-    max_health = 150,
+    max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "impact",
+        percent = 60
+      }
+    },
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "passive-provider",
@@ -4013,10 +5260,21 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-active-provider"},
-    max_health = 150,
+    max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "impact",
+        percent = 60
+      }
+    },
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "active-provider",
@@ -4053,10 +5311,21 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-storage.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-storage"},
-    max_health = 150,
+    max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "impact",
+        percent = 60
+      }
+    },
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "storage",
@@ -4093,10 +5362,21 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-requester.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-requester"},
-    max_health = 150,
+    max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "impact",
+        percent = 60
+      }
+    },
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "requester",
@@ -4136,6 +5416,7 @@ data:extend(
     ingredient_count = 3,
     rocket_parts_required = 100,
     crafting_speed = 1,
+    rocket_result_inventory_size = 1,
     module_specification =
     {
       module_slots = 4,
@@ -4149,6 +5430,17 @@ data:extend(
     dying_explosion = "medium-explosion",
     collision_box = {{-4.2, -4.7}, {4.2, 4.7}},
     selection_box = {{-4.5, -5}, {4.5, 5}},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 60
+      },
+      {
+        type = "impact",
+        percent = 60
+      }
+    },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     energy_source =
     {
@@ -4172,7 +5464,8 @@ data:extend(
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
@@ -4180,14 +5473,16 @@ data:extend(
         shift = {0.25, 1.25},
         size = 1,
         intensity = 1,
-        rotation_shift = 0.6
+        rotation_shift = 0.6,
+        color = {r = 0.7, g = 0.9, b = 1.0}
       },
       {
         type = "oriented",
         picture =
         {
           filename = "__core__/graphics/light-cone.png",
-          priority = "medium",
+          priority = "extra-high",
+          flags = { "light" },
           scale = 2,
           width = 200,
           height = 200
@@ -4195,7 +5490,8 @@ data:extend(
         shift = {-0.25, 1},
         size = 1,
         intensity = 1,
-        rotation_shift = 0.5
+        rotation_shift = 0.5,
+        color = {r = 0.7, g = 0.9, b = 1.0}
       }
     },
     base_engine_light =
@@ -4515,12 +5811,17 @@ data:extend(
     engine_starting_speed = 1 / (5.5 * 60),
     flying_speed = 1 / (2000 * 60),
     flying_acceleration = 0.01,
+    result_items =
+    {
+      {"space-science-pack", 1000, "satellite"}
+    },
 
     glow_light =
     {
       intensity = 1,
       size = 30,
-      shift = {0, 1.5}
+      shift = {0, 1.5},
+      color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
     rocket_sprite =
@@ -4701,6 +6002,17 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{-1.7, -1.7}, {1.7, 1.7}},
     selection_box = {{-2, -2}, {2, 2}},
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 60
+      },
+      {
+        type = "impact",
+        percent = 30
+      }
+    },
     dying_explosion = "medium-explosion",
     energy_source =
     {
@@ -4714,7 +6026,7 @@ data:extend(
     -- per one charge slot
     charging_energy = "1000kW",
     logistics_radius = 25,
-    construction_radius = 50,
+    construction_radius = 51,
     charge_approach_distance = 5,
     robot_slots_count = 7,
     material_slots_count = 7,
@@ -4785,7 +6097,7 @@ data:extend(
       audible_distance_modifier = 0.5,
       probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
     },
-    recharging_light = {intensity = 0.4, size = 5},
+    recharging_light = {intensity = 0.4, size = 5, color = {r = 1.0, g = 1.0, b = 1.0}},
     request_to_open_door_timeout = 15,
     spawn_and_station_height = -0.1,
 
@@ -4821,10 +6133,10 @@ data:extend(
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.59375, 1.3125}, nil, 18),
     circuit_wire_max_distance = 7.5,
-    default_available_logistic_output_signal = "signal-X",
-    default_total_logistic_output_signal = "signal-Y",
-    default_available_construction_output_signal = "signal-Z",
-    default_total_construction_output_signal = "signal-T",
+    default_available_logistic_output_signal = {type = "virtual", name = "signal-X"},
+    default_total_logistic_output_signal = {type = "virtual", name = "signal-Y"},
+    default_available_construction_output_signal = {type = "virtual", name = "signal-Z"},
+    default_total_construction_output_signal = {type = "virtual", name = "signal-T"},
   },
 
   {
@@ -4884,6 +6196,30 @@ data:extend(
         priority = "extra-high",
         width = 160,
         height = 20
+      },
+      gas_flow =
+      {
+        filename = "__base__/graphics/entity/pipe/steam.png",
+        priority = "extra-high",
+        line_length = 10,
+        width = 24,
+        height = 15,
+        frame_count = 60,
+        axially_symmetrical = false,
+        direction_count = 1,
+        animation_speed = 0.25,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/pipe/hr-steam.png",
+          priority = "extra-high",
+          line_length = 10,
+          width = 48,
+          height = 30,
+          frame_count = 60,
+          axially_symmetrical = false,
+          animation_speed = 0.25,
+          direction_count = 1
+        }
       }
     },
     flow_length_in_ticks = 360,
@@ -4960,30 +6296,35 @@ data:extend(
 
   {
     type = "pump",
-    name = "small-pump",
-    icon = "__base__/graphics/icons/small-pump.png",
+    name = "pump",
+    icon = "__base__/graphics/icons/pump.png",
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "small-pump"},
-    max_health = 80,
+    minable = {mining_time = 1, result = "pump"},
+    max_health = 180,
     fast_replaceable_group = "pipe",
     corpse = "small-remnants",
+    collision_box = {{-0.29, -0.79}, {0.29, 0.79}},
+    selection_box = {{-0.5, -1}, {0.5, 1}},
     resistances =
     {
       {
         type = "fire",
-        percent = 70
+        percent = 80
+      },
+      {
+        type = "impact",
+        percent = 30
       }
     },
-    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {
       base_area = 1,
+      height = 2,
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
-        { position = {0, -1}, type="output" },
-        { position = {0, 1}, type="input" },
+        { position = {0, -1.5}, type="output" },
+        { position = {0, 1.5}, type="input" },
       },
     },
     energy_source =
@@ -4993,47 +6334,229 @@ data:extend(
       emissions = 0.01 / 2.5
     },
     energy_usage = "30kW",
-    pumping_speed = 0.5,
+    pumping_speed = 200,
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+
     animations =
     {
       north =
       {
-        filename = "__base__/graphics/entity/small-pump/small-pump-up.png",
-        width = 46,
-        height = 56,
-        frame_count = 8,
-        shift = {0.09375, 0.03125},
-        animation_speed = 0.5
+        filename = "__base__/graphics/entity/pump/pump-north.png",
+        width = 53,
+        height = 79,
+        line_length =8,
+        frame_count =32,
+        animation_speed = 0.5,
+        shift = util.by_pixel(8.000, 7.500),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-north.png",
+          width = 103,
+          height = 164,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          animation_speed = 0.5,
+          shift = util.by_pixel(8, 3.5) -- {0.515625, 0.21875}
+        },
       },
       east =
       {
-        filename = "__base__/graphics/entity/small-pump/small-pump-right.png",
-        width = 51,
-        height = 56,
-        frame_count = 8,
-        shift = {0.265625, -0.21875},
-        animation_speed = 0.5
+        filename = "__base__/graphics/entity/pump/pump-east.png",
+        width = 66,
+        height = 60,
+        line_length =8,
+        frame_count =32,
+        animation_speed = 0.5,
+        shift = util.by_pixel(0, 4),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-east.png",
+          width = 130,
+          height = 109,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          animation_speed = 0.5,
+          shift = util.by_pixel(-0.5, 1.75) --{-0.03125, 0.109375}
+        },
       },
+
       south =
       {
-        filename = "__base__/graphics/entity/small-pump/small-pump-down.png",
-        width = 61,
-        height = 58,
-        frame_count = 8,
-        shift = {0.421875, -0.125},
-        animation_speed = 0.5
+        filename = "__base__/graphics/entity/pump/pump-south.png",
+        width = 62,
+        height = 87,
+        line_length =8,
+        frame_count =32,
+        animation_speed = 0.5,
+        shift = util.by_pixel(13.5, 0.5),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-south.png",
+          width = 114,
+          height = 160,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          animation_speed = 0.5,
+          shift = util.by_pixel(12.5, -8) -- {0.75, -0.5}
+        },
       },
       west =
       {
-        filename = "__base__/graphics/entity/small-pump/small-pump-left.png",
-        width = 56,
-        height = 44,
-        frame_count = 8,
-        shift = {0.3125, 0.0625},
-        animation_speed = 0.5
+        filename = "__base__/graphics/entity/pump/pump-west.png",
+        width = 69,
+        height = 51,
+        line_length =8,
+        frame_count =32,
+        animation_speed = 0.5,
+        shift = util.by_pixel(0.5, -0.5),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-west.png",
+          width = 131,
+          height = 111,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          animation_speed = 0.5,
+          shift = util.by_pixel(-0.25, 1.25) -- {-0.015625, 0.078125}
+        },
+      },
+    },
+
+    fluid_wagon_connector_frame_count = 35,
+
+    fluid_wagon_connector_graphics = require("prototypes.entity.pump-connector"),
+
+    fluid_animation =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/pump/pump-north-liquid.png",
+        apply_runtime_tint = true,
+        width = 20,
+        height = 13,
+        line_length =8,
+        frame_count =32,
+        shift = util.by_pixel(-0.500, -14.500),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-north-liquid.png",
+          apply_runtime_tint = true,
+          width = 38,
+          height = 22,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          shift = util.by_pixel(-0.250, -16.750)
+        }
+      },
+
+      east =
+      {
+        filename = "__base__/graphics/entity/pump/pump-east-liquid.png",
+        width = 18,
+        height = 24,
+        line_length =8,
+        frame_count =32,
+        shift = util.by_pixel(6.000, -8.000),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-east-liquid.png",
+          width = 35,
+          height = 46,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          shift = util.by_pixel(6.250, -8.500)
+        },
+      },
+
+      south =
+      {
+        filename = "__base__/graphics/entity/pump/pump-south-liquid.png",
+        width = 26,
+        height = 55,
+        line_length =8,
+        frame_count =32,
+        shift = util.by_pixel(3.500, 6.500),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-south-liquid.png",
+          width = 38,
+          height = 45,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          shift = util.by_pixel(0.500, -9.250)
+        },
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/pump/pump-west-liquid.png",
+        width = 18,
+        height = 24,
+        line_length =8,
+        frame_count =32,
+        shift = util.by_pixel(-6.000, -9.000),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-west-liquid.png",
+          width = 35,
+          height = 47,
+          scale = 0.5,
+          line_length =8,
+          frame_count =32,
+          shift = util.by_pixel(-6.500, -9.500)
+        },
       }
     },
+
+    glass_pictures =
+    {
+      north = {
+        filename = "__base__/graphics/entity/pump/pump-north-glass.png",
+        width = 32,
+        height = 64,
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-north-glass.png",
+          width = 64,
+          height = 128,
+          scale = 0.5,
+        },
+      },
+      east = {
+        filename = "__base__/graphics/entity/pump/pump-east-glass.png",
+        width = 32,
+        height = 32,
+        shift = util.by_pixel(0.000, -16.000),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-east-glass.png",
+          width = 128,
+          height = 192,
+          scale = 0.5,
+        },
+      },
+      south = {
+        filename = "__base__/graphics/entity/pump/pump-south-glass.png",
+        width = 32,
+        height = 64,
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-south-glass.png",
+          width = 64,
+          height = 128,
+          scale = 0.5,
+        },
+      },
+      west = {
+        filename = "__base__/graphics/entity/pump/pump-west-glass.png",
+        width = 32,
+        height = 96,
+        shift = util.by_pixel(0.000, 15.000),
+        hr_version = {
+          filename = "__base__/graphics/entity/pump/hr-pump-west-glass.png",
+          width = 192,
+          height = 192,
+          scale = 0.5,
+          shift = util.by_pixel(-16.000, 0.000)
+        },
+      }
+    },
+
     circuit_wire_connection_points =
     {
       {
@@ -5111,7 +6634,7 @@ data:extend(
         frame_count = 5
       }
     },
-    light = {intensity = 1, size = 10},
+    light = {intensity = 1, size = 10, color = {r = 1.0, g = 1.0, b = 1.0}},
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1
@@ -5133,7 +6656,7 @@ data:extend(
         frame_count = 6,
       }
     },
-    light = {intensity = 1, size = 10},
+    light = {intensity = 1, size = 10, color = {r = 1.0, g = 1.0, b = 1.0}},
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1
@@ -5262,6 +6785,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "medium-electric-pole"},
     max_health = 100,
     corpse = "small-remnants",
+    track_coverage_during_build_by_moving = true,
     resistances =
     {
       {
@@ -5369,8 +6893,8 @@ data:extend(
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-1, -3}, {1, 1}},
-    maximum_wire_distance = 14,
-    supply_area_distance = 7,
+    maximum_wire_distance = 18,
+    supply_area_distance = 9,
     pictures =
     {
       filename = "__base__/graphics/entity/substation/substation.png",
@@ -5492,7 +7016,7 @@ data:extend(
       animation_speed = 0.5
     },
     charge_cooldown = 30,
-    charge_light = {intensity = 0.3, size = 7},
+    charge_light = {intensity = 0.3, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
     discharge_animation =
     {
       filename = "__base__/graphics/entity/accumulator/accumulator-discharge-animation.png",
@@ -5504,7 +7028,7 @@ data:extend(
       animation_speed = 0.5
     },
     discharge_cooldown = 60,
-    discharge_light = {intensity = 0.7, size = 7},
+    discharge_light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
@@ -5534,7 +7058,7 @@ data:extend(
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.46875, 0.5}, {0.46875, 0.8125}, 26),
     circuit_wire_max_distance = 7.5,
-    default_output_signal = "signal-A"
+    default_output_signal = {type = "virtual", name = "signal-A"}
   },
   {
     type = "furnace",
@@ -5542,7 +7066,7 @@ data:extend(
     icon = "__base__/graphics/icons/steel-furnace.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "steel-furnace"},
-    max_health = 200,
+    max_health = 300,
     corpse = "medium-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
@@ -5566,6 +7090,7 @@ data:extend(
     energy_source =
     {
       type = "burner",
+      fuel_category = "chemical",
       effectivity = 1,
       emissions = 0.02,
       fuel_inventory_size = 1,
@@ -5582,12 +7107,44 @@ data:extend(
     },
     animation =
     {
-      filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
-      priority = "high",
-      width = 140,
-      height = 76,
-      frame_count = 1,
-      shift = {1.21875, -0.125}
+      layers = {
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
+          priority = "high",
+          width = 85,
+          height = 87,
+          frame_count = 1,
+          shift = util.by_pixel(-1.5, 1.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace.png",
+            priority = "high",
+            width = 171,
+            height = 174,
+            frame_count = 1,
+            shift = util.by_pixel(-1.25, 2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-shadow.png",
+          priority = "high",
+          width = 139,
+          height = 43,
+          frame_count = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(39.5, 11.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-shadow.png",
+            priority = "high",
+            width = 277,
+            height = 85,
+            frame_count = 1,
+            draw_as_shadow = true,
+            shift = util.by_pixel(39.25, 11.25),
+            scale = 0.5
+          }
+        },
+      },
     },
     working_visualisations =
     {
@@ -5602,13 +7159,25 @@ data:extend(
           priority = "high",
           line_length = 8,
           width = 29,
-          height = 41,
+          height = 40,
           frame_count = 48,
           axially_symmetrical = false,
           direction_count = 1,
-          shift = {-0.01563, 0.171875},
+          shift = util.by_pixel(-0.5, 6),
+          hr_version = {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-fire.png",
+            priority = "high",
+            line_length = 8,
+            width = 57,
+            height = 81,
+            frame_count = 48,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(-0.75, 5.75),
+            scale = 0.5
+          }
         },
-        light = {intensity = 1, size = 1}
+        light = {intensity = 1, size = 1, color = {r = 1.0, g = 1.0, b = 1.0}}
       },
       {
         north_position = {0.0, 0.0},
@@ -5635,16 +7204,29 @@ data:extend(
         effect = "flicker", -- changes alpha based on energy source light intensity
         animation =
         {
-          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-working-lighting.png",
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-working.png",
           priority = "high",
           line_length = 8,
-          width = 58,
-          height = 59,
+          width = 64,
+          height = 75,
           frame_count = 1,
           axially_symmetrical = false,
           direction_count = 1,
-          shift = {0.09375, 0.046875},
-          blend_mode = "additive"
+          shift = util.by_pixel(0, -4.5),
+          blend_mode = "additive",
+          hr_version = {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-working.png",
+            priority = "high",
+            line_length = 8,
+            width = 130,
+            height = 149,
+            frame_count = 1,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(0, -4.25),
+            blend_mode = "additive",
+            scale = 0.5
+          }
         }
       },
     },
@@ -5656,7 +7238,7 @@ data:extend(
     icon = "__base__/graphics/icons/electric-furnace.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "electric-furnace"},
-    max_health = 150,
+    max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
     light = {intensity = 1, size = 10},
@@ -5698,12 +7280,44 @@ data:extend(
     },
     animation =
     {
-      filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
-      priority = "high",
-      width = 129,
-      height = 100,
-      frame_count = 1,
-      shift = {0.421875, 0}
+      layers = {
+      {
+        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
+        priority = "high",
+        width = 129,
+        height = 100,
+        frame_count = 1,
+        shift = {0.421875, 0},
+        hr_version = {
+          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace.png",
+          priority = "high",
+          width = 239,
+          height = 219,
+          frame_count = 1,
+          shift = util.by_pixel(0.75, 5.75),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
+        priority = "high",
+        width = 129,
+        height = 100,
+        frame_count = 1,
+        shift = {0.421875, 0},
+        draw_as_shadow = true,
+        hr_version = {
+          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-shadow.png",
+          priority = "high",
+          width = 227,
+          height = 171,
+          frame_count = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(11.25, 7.75),
+          scale = 0.5
+        }
+      }
+      }
     },
     working_visualisations =
     {
@@ -5716,9 +7330,19 @@ data:extend(
           height = 15,
           frame_count = 12,
           animation_speed = 0.5,
-          shift = {0.015625, 0.890625}
+          shift = {0.015625, 0.890625},
+          hr_version = {
+            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-heater.png",
+            priority = "high",
+            width = 60,
+            height = 56,
+            frame_count = 12,
+            animation_speed = 0.5,
+            shift = util.by_pixel(1.75, 32.75),
+            scale = 0.5
+          }
         },
-        light = {intensity = 0.4, size = 6, shift = {0.0, 1.0}}
+        light = {intensity = 0.4, size = 6, shift = {0.0, 1.0}, color = {r = 1.0, g = 1.0, b = 1.0}}
       },
       {
         animation =
@@ -5729,7 +7353,17 @@ data:extend(
           height = 13,
           frame_count = 4,
           animation_speed = 0.5,
-          shift = {-0.671875, -0.640625}
+          shift = {-0.671875, -0.640625},
+          hr_version = {
+            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-1.png",
+            priority = "high",
+            width = 37,
+            height = 25,
+            frame_count = 4,
+            animation_speed = 0.5,
+            shift = util.by_pixel(-20.5, -18.5),
+            scale = 0.5
+          }
         }
       },
       {
@@ -5741,7 +7375,17 @@ data:extend(
           height = 9,
           frame_count = 4,
           animation_speed = 0.5,
-          shift = {0.0625, -1.234375}
+          shift = {0.0625, -1.234375},
+          hr_version = {
+            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-2.png",
+            priority = "high",
+            width = 23,
+            height = 15,
+            frame_count = 4,
+            animation_speed = 0.5,
+            shift = util.by_pixel(3.5, -38),
+            scale = 0.5
+          }
         }
       }
     },
@@ -5789,8 +7433,8 @@ data:extend(
     radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/beacon/beacon-radius-visualization.png",
-      width = 12,
-      height = 12
+      width = 10,
+      height = 10
     },
     supply_area_distance = 3,
     energy_source =
@@ -5852,14 +7496,14 @@ data:extend(
               target_effects =
               {
                 type = "damage",
-                damage = { amount = 4, type = "poison"}
+                damage = { amount = 8, type = "poison"}
               }
             }
           }
         }
       }
     },
-    action_frequency = 30
+    action_cooldown = 30
   },
   {
     type = "combat-robot",
@@ -5894,7 +7538,7 @@ data:extend(
       type = "projectile",
       ammo_category = "combat-robot-laser",
       cooldown = 20,
-      damage_modifier = 0.7,
+      damage_modifier = 1.5,
       projectile_center = {0, 0},
       projectile_creation_distance = 0.6,
       range = 15,
@@ -6293,6 +7937,13 @@ data:extend(
     duration_in_ticks = 30 * 60,
     target_movement_modifier = 0.5
   },
+  {
+    type = "sticker",
+    name = "stun-sticker",
+    flags = {"not-on-map"},
+    duration_in_ticks = 3*60,
+    target_movement_modifier = 0
+  },
 
   {
     type = "assembling-machine",
@@ -6300,14 +7951,14 @@ data:extend(
     icon = "__base__/graphics/icons/oil-refinery.png",
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "oil-refinery"},
-    max_health = 300,
+    max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     module_specification =
     {
-      module_slots = 2
+      module_slots = 3
     },
     scale_entity_info_icon = true,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
@@ -6322,51 +7973,56 @@ data:extend(
     },
     energy_usage = "420kW",
     ingredient_count = 4,
-    animation =
+
+
+    animation = make_4way_animation_from_spritesheet({ layers =
     {
-      north =
       {
         filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
         width = 337,
         height = 255,
         frame_count = 1,
-        shift = {2.515625, 0.484375}
+        shift = {2.515625, 0.484375},
+        hr_version = {
+          filename = "__base__/graphics/entity/oil-refinery/hr-oil-refinery.png",
+          width = 386,
+          height = 430,
+          frame_count = 1,
+          shift = util.by_pixel(0, -7.5),
+          scale = 0.5
+        }
       },
-      east =
       {
-        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
-        x = 337,
+        filename = "__base__/graphics/entity/oil-refinery/oil-refinery-shadow.png",
         width = 337,
-        height = 255,
+        height = 213,
         frame_count = 1,
-        shift = {2.515625, 0.484375}
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
-        x = 674,
-        width = 337,
-        height = 255,
-        frame_count = 1,
-        shift = {2.515625, 0.484375}
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
-        x = 1011,
-        width = 337,
-        height = 255,
-        frame_count = 1,
-        shift = {2.515625, 0.484375}
+        shift = util.by_pixel(82.5, 26.5),
+        draw_as_shadow = true,
+        hr_version = {
+          filename = "__base__/graphics/entity/oil-refinery/hr-oil-refinery-shadow.png",
+          width = 674,
+          height = 426,
+          frame_count = 1,
+          shift = util.by_pixel(82.5, 26.5),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
       }
-    },
+    }}),
+
+
+
+
+
+
     working_visualisations =
     {
       {
-        north_position = {1.03125, -1.55},
-        east_position = {-1.65625, -1.3},
-        south_position = {-1.875, -2.0},
-        west_position = {1.8437, -1.2},
+        north_position = {1.0625, -2.05},
+        east_position = {-1.625, -1.90625},
+        south_position = {-1.84375, -2.5625},
+        west_position = {1.78125, -1.78125},
         animation =
         {
           filename = "__base__/graphics/entity/oil-refinery/oil-refinery-fire.png",
@@ -6377,7 +8033,7 @@ data:extend(
           shift = {0, -0.5625},
           run_mode="backward"
         },
-        light = {intensity = 0.4, size = 6}
+        light = {intensity = 0.4, size = 6, color = {r = 1.0, g = 1.0, b = 1.0}}
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -6438,90 +8094,154 @@ data:extend(
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     module_specification =
     {
-      module_slots = 2
+      module_slots = 3
     },
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
-    animation =
+
+    animation = make_4way_animation_from_spritesheet({ layers =
     {
-      north =
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        width = 156,
-        height = 141,
+        width = 122,
+        height = 134,
         frame_count = 1,
-        shift = {0.5, -0.078125}
+        shift = util.by_pixel(-5, -4.5),
+        hr_version = {
+          filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant.png",
+          width = 244,
+          height = 268,
+          frame_count = 1,
+          shift = util.by_pixel(-5, -4.5),
+          scale = 0.5
+          }
       },
-      west =
       {
-        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        x = 468,
-        width = 156,
-        height = 141,
+        filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
+        width = 175,
+        height = 110,
         frame_count = 1,
-        shift = {0.5, -0.078125}
+        shift = util.by_pixel(31.5, 11),
+        draw_as_shadow = true,
+        hr_version = {
+          filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-shadow.png",
+          width = 350,
+          height = 219,
+          frame_count = 1,
+          shift = util.by_pixel(31.5, 10.75),
+          draw_as_shadow = true,
+          scale = 0.5
+          }
       },
-      south =
-      {
-        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        x = 312,
-        width = 156,
-        height = 141,
-        frame_count = 1,
-        shift = {0.5, -0.078125}
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        x = 156,
-        width = 156,
-        height = 141,
-        frame_count = 1,
-        shift = {0.5, -0.078125}
-      }
-    },
+    }}),
     working_visualisations =
     {
       {
-        north_position = {0.94, -0.73},
-        west_position = {0.05, -1.46},
-        south_position = {-0.97, -1.47},
-        east_position = {-0.3, 0.02},
+        north_position = util.by_pixel(30, -24),
+        west_position = util.by_pixel(1, -49.5),
+        south_position = util.by_pixel(-30, -48),
+        east_position = util.by_pixel(-11, -1),
+        apply_recipe_tint = "primary",
         animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch.png",
-          frame_count = 35,
-          width = 17,
-          height = 12,
-          animation_speed = 0.15
+          frame_count = 32,
+          width = 15,
+          height = 10,
+          animation_speed = 0.5,
+          hr_version = {
+            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-green-patch.png",
+            frame_count = 32,
+            width = 30,
+            height = 20,
+            animation_speed = 0.5,
+            scale = 0.5
+          }
         }
       },
+
       {
-        north_position = {1.4, -0.23},
-        west_position = {0.05, -0.96},
-        south_position = {-1, -1},
-        east_position = {-0.3, 0.55},
+        north_position = util.by_pixel(30, -24),
+        west_position = util.by_pixel(1, -49.5),
+        south_position = util.by_pixel(-30, -48),
+        east_position = util.by_pixel(-11, -1),
+        apply_recipe_tint = "secondary",
+        animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch-mask.png",
+          frame_count = 32,
+          width = 15,
+          height = 10,
+          animation_speed = 0.5,
+          hr_version = {
+            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-green-patch-mask.png",
+            frame_count = 32,
+            width = 30,
+            height = 20,
+            animation_speed = 0.5,
+            scale = 0.5
+          }
+        }
+      },
+
+
+      {
+        apply_recipe_tint = "tertiary",
+        north_position = {0, 0},
+        west_position = {0, 0},
+        south_position = {0, 0},
+        east_position = {0, 0},
         north_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
           frame_count = 1,
-          width = 21,
-          height = 10
+          width = 87,
+          height = 60,
+          shift = util.by_pixel(0, -5),
+          hr_version = {
+            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
+            x = 0,
+            frame_count = 1,
+            width = 174,
+            height = 119,
+            shift = util.by_pixel(0, -5.25),
+            scale = 0.5
+          }
         },
         east_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
-          x = 21,
+          x = 87,
           frame_count = 1,
-          width = 21,
-          height = 10
+          width = 87,
+          height = 60,
+          shift = util.by_pixel(0, -5),
+          hr_version = {
+            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
+            x = 174,
+            frame_count = 1,
+            width = 174,
+            height = 119,
+            shift = util.by_pixel(0, -5.25),
+            scale = 0.5
+          }
         },
         south_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
-          x = 42,
+          x = 174,
           frame_count = 1,
-          width = 21,
-          height = 10
+          width = 87,
+          height = 60,
+          shift = util.by_pixel(0, -5),
+          hr_version = {
+            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
+            x = 348,
+            frame_count = 1,
+            width = 174,
+            height = 119,
+            shift = util.by_pixel(0, -5.25),
+            scale = 0.5
+          }
         }
       }
     },
@@ -6584,7 +8304,7 @@ data:extend(
     icon = "__base__/graphics/icons/arithmetic-combinator.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "arithmetic-combinator"},
-    max_health = 50,
+    max_health = 150,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -6595,6 +8315,17 @@ data:extend(
       usage_priority = "secondary-input"
     },
     active_energy_usage = "1KW",
+
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/combinator.ogg",
+        volume = 0.35,
+      },
+      max_sounds_per_type = 2,
+      match_speed_to_activity = true,
+    },
 
     sprites =
     {
@@ -6675,6 +8406,7 @@ data:extend(
     {
       intensity = 0.8,
       size = 1,
+      color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
     activity_led_light_offsets =
@@ -6689,6 +8421,7 @@ data:extend(
     {
       intensity = 0.3,
       size = 0.6,
+      color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
     screen_light_offsets =
@@ -6708,7 +8441,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       east =
       {
@@ -6717,7 +8459,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       },
       south =
       {
@@ -6726,7 +8477,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       west =
       {
@@ -6735,7 +8495,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       }
     },
     minus_symbol_sprites =
@@ -6747,7 +8516,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       east =
       {
@@ -6756,7 +8534,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       },
       south =
       {
@@ -6765,7 +8552,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       west =
       {
@@ -6774,7 +8570,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       }
     },
     multiply_symbol_sprites =
@@ -6786,7 +8591,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       east =
       {
@@ -6795,7 +8609,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       },
       south =
       {
@@ -6804,7 +8627,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       west =
       {
@@ -6813,7 +8645,16 @@ data:extend(
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       }
     },
     divide_symbol_sprites =
@@ -6821,38 +8662,647 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
+        x = 60,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       east =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
+        x = 60,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       },
       south =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
+        x = 60,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.234375}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
       },
       west =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    modulo_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    power_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
         y = 11,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.296875}
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    left_shift_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    right_shift_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    and_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 45,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 45,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 45,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 45,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    or_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      }
+    },
+    xor_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.234375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.234375},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 11,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.296875},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 22,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.296875},
+          scale = 0.5
+        }
       }
     },
 
@@ -6969,7 +9419,7 @@ data:extend(
     icon = "__base__/graphics/icons/decider-combinator.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "decider-combinator"},
-    max_health = 50,
+    max_health = 150,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -6980,6 +9430,18 @@ data:extend(
       usage_priority = "secondary-input"
     },
     active_energy_usage = "1KW",
+
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/combinator.ogg",
+        volume = 0.35,
+      },
+      max_sounds_per_type = 2,
+      match_speed_to_activity = true,
+    },
+
 
     sprites =
     {
@@ -7064,6 +9526,7 @@ data:extend(
     {
       intensity = 0.8,
       size = 1,
+      color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
     activity_led_light_offsets =
@@ -7078,6 +9541,7 @@ data:extend(
     {
       intensity = 0.3,
       size = 0.6,
+      color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
     screen_light_offsets =
@@ -7093,42 +9557,82 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
+        x = 30,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.265625}
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
       },
       east =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
+        x = 30,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.359375}
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
       },
       south =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
+        x = 30,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.265625}
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
       },
       west =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
+        x = 30,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.359375}
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 60,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
       }
     },
     greater_symbol_sprites =
@@ -7136,42 +9640,82 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
+        x = 0,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.265625}
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
       },
       east =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
+        x = 0,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.359375}
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
       },
       south =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
+        x = 0,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.265625}
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
       },
       west =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
+        x = 0,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.359375}
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 0,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
       }
     },
     less_symbol_sprites =
@@ -7179,42 +9723,331 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
+        x = 15,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.265625}
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 15,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 30,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
+      }
+    },
+    not_equal_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 45,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
       },
       east =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
-        y = 11,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.359375}
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
       },
       south =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
-        y = 11,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.265625}
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
       },
       west =
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
-        y = 11,
+        y = 22,
         width = 15,
         height = 11,
         frame_count = 1,
-        shift = {0.015625, -0.359375}
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 90,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
+      }
+    },
+    greater_or_equal_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 75,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 150,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
+      }
+    },
+    less_or_equal_symbol_sprites =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.265625},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.265625},
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 22,
+        width = 15,
+        height = 11,
+        frame_count = 1,
+        shift = {0.015625, -0.359375},
+        hr_version = {
+          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
+          x = 120,
+          y = 44,
+          width = 30,
+          height = 22,
+          frame_count = 1,
+          shift = {0.015625, -0.359375},
+          scale = 0.5
+        }
       }
     },
 
@@ -7332,13 +10165,13 @@ data:extend(
     icon = "__base__/graphics/icons/constant-combinator.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "constant-combinator"},
-    max_health = 50,
+    max_health = 120,
     corpse = "small-remnants",
 
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
-    item_slot_count = 15,
+    item_slot_count = 18,
 
     sprites =
     {
@@ -7423,6 +10256,7 @@ data:extend(
     {
       intensity = 0.8,
       size = 1,
+      color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
     activity_led_light_offsets =
@@ -7493,7 +10327,7 @@ data:extend(
     icon = "__base__/graphics/icons/power-switch.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 1, result = "power-switch"},
-    max_health = 150,
+    max_health = 200,
     corpse = "medium-remnants",
 
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
@@ -7593,6 +10427,522 @@ data:extend(
 
     wire_max_distance = 10
   },
+    {
+    type = "programmable-speaker",
+    name = "programmable-speaker",
+    icon = "__base__/graphics/icons/programmable-speaker.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "programmable-speaker"},
+    max_health = 150,
+    corpse = "small-remnants",
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    energy_usage_per_tick = "2KW",
+
+    sprite =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/programmable-speaker/programmable-speaker.png",
+          priority = "extra-high",
+          width = 30,
+          height = 89,
+          shift = util.by_pixel(-2, -39.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/programmable-speaker/hr-programmable-speaker.png",
+            priority = "extra-high",
+            width = 59,
+            height = 178,
+            shift = util.by_pixel(-2.25, -39.5),
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/programmable-speaker/programmable-speaker-shadow.png",
+          priority = "extra-high",
+          width = 119,
+          height = 25,
+          shift = util.by_pixel(52.5, -2.5),
+          draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/programmable-speaker/hr-programmable-speaker-shadow.png",
+            priority = "extra-high",
+            width = 237,
+            height = 50,
+            shift = util.by_pixel(52.75, -3),
+            draw_as_shadow = true,
+            scale = 0.5,
+          }
+        }
+      }
+    },
+
+    audible_distance_modifier = 2, --multiplies the default 40 tiles of audible distance by this number
+    maximum_polyphony = 10, --maximum number of samples that can play at the same time
+
+    instruments =
+    {
+      {
+        name = "alarms",
+        notes =
+        {
+          { name = "achievement-unlocked",  sound = { filename = "__core__/sound/achievement-unlocked.ogg" }},
+          { name = "alert-construction",  sound = { filename = "__core__/sound/alert-construction.ogg" }},
+          { name = "alert-damage",  sound = { filename = "__core__/sound/alert-damage.ogg" }},
+          { name = "armor-insert",  sound = { filename = "__core__/sound/armor-insert.ogg" }},
+          { name = "armor-remove",  sound = { filename = "__core__/sound/armor-remove.ogg" }},
+          { name = "cannot-build",  sound = { filename = "__core__/sound/cannot-build.ogg" }},
+          { name = "console-message",  sound = { filename = "__core__/sound/console-message.ogg" }},
+          { name = "crafting-finished",  sound = { filename = "__core__/sound/crafting-finished.ogg" }},
+          { name = "game-lost",  sound = { filename = "__core__/sound/game-lost.ogg" }},
+          { name = "game-won",  sound = { filename = "__core__/sound/game-won.ogg" }},
+          { name = "gui-click",  sound = { filename = "__core__/sound/gui-click.ogg" }},
+          { name = "gui-click 2",  sound = { filename = "__core__/sound/listbox-click.ogg" }},
+          { name = "inventory-move",  sound = { filename = "__core__/sound/inventory-move.ogg" }},
+          { name = "new-objective",  sound = { filename = "__core__/sound/new-objective.ogg" }},
+          { name = "research-completed",  sound = { filename = "__core__/sound/research-completed.ogg" }},
+          { name = "scenario-message",  sound = { filename = "__core__/sound/scenario-message.ogg" }},
+        }
+      },
+      {
+        name = "drum kit",
+        notes =
+        {
+          { name = "kick 1",  sound = { filename = "__base__/sound/programmable-speaker/kit-01.ogg" }},
+          { name = "kick 2",  sound = { filename = "__base__/sound/programmable-speaker/kit-02.ogg" }},
+          { name = "snare 1", sound = { filename = "__base__/sound/programmable-speaker/kit-03.ogg" }},
+          { name = "snare 2", sound = { filename = "__base__/sound/programmable-speaker/kit-04.ogg" }},
+          { name = "snare 3", sound = { filename = "__base__/sound/programmable-speaker/kit-05.ogg" }},
+          { name = "hat 1",   sound = { filename = "__base__/sound/programmable-speaker/kit-06.ogg" }},
+          { name = "hat 2",   sound = { filename = "__base__/sound/programmable-speaker/kit-07.ogg" }},
+          { name = "fx",  sound = { filename = "__base__/sound/programmable-speaker/kit-08.ogg" }},
+          { name = "high q",  sound = { filename = "__base__/sound/programmable-speaker/kit-09.ogg" }},
+          { name = "perc 1",  sound = { filename = "__base__/sound/programmable-speaker/kit-10.ogg" }},
+          { name = "perc 2",  sound = { filename = "__base__/sound/programmable-speaker/kit-11.ogg" }},
+          { name = "crash",  sound = { filename = "__base__/sound/programmable-speaker/kit-12.ogg" }},
+          { name = "reverse-cymbal",  sound = { filename = "__base__/sound/programmable-speaker/kit-13.ogg" }},
+          { name = "clap",  sound = { filename = "__base__/sound/programmable-speaker/kit-14.ogg" }},
+          { name = "shaker",  sound = { filename = "__base__/sound/programmable-speaker/kit-15.ogg" }},
+          { name = "cowbell",  sound = { filename = "__base__/sound/programmable-speaker/kit-16.ogg" }},
+          { name = "triangle",  sound = { filename = "__base__/sound/programmable-speaker/kit-17.ogg" }},
+        }
+      },
+      {
+        name = "piano",
+        notes =
+        {
+          { name = "F3",  sound = { filename = "__base__/sound/programmable-speaker/piano1-01.ogg" }},
+          { name = "F#3", sound = { filename = "__base__/sound/programmable-speaker/piano1-02.ogg" }},
+          { name = "G3",  sound = { filename = "__base__/sound/programmable-speaker/piano1-03.ogg" }},
+          { name = "G#3", sound = { filename = "__base__/sound/programmable-speaker/piano1-04.ogg" }},
+          { name = "A3",  sound = { filename = "__base__/sound/programmable-speaker/piano1-05.ogg" }},
+          { name = "A#3", sound = { filename = "__base__/sound/programmable-speaker/piano1-06.ogg" }},
+          { name = "B3",  sound = { filename = "__base__/sound/programmable-speaker/piano1-07.ogg" }},
+          { name = "C4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-08.ogg" }},
+          { name = "C#4", sound = { filename = "__base__/sound/programmable-speaker/piano1-09.ogg" }},
+          { name = "D4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-10.ogg" }},
+          { name = "D#4", sound = { filename = "__base__/sound/programmable-speaker/piano1-11.ogg" }},
+          { name = "E4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-12.ogg" }},
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-13.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/piano1-14.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-15.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/piano1-16.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-17.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/piano1-18.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/piano1-19.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-20.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/piano1-21.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-22.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/piano1-23.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-24.ogg" }},
+          { name = "F5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-25.ogg" }},
+          { name = "F#5", sound = { filename = "__base__/sound/programmable-speaker/piano1-26.ogg" }},
+          { name = "G5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-27.ogg" }},
+          { name = "G#5", sound = { filename = "__base__/sound/programmable-speaker/piano1-28.ogg" }},
+          { name = "A5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-29.ogg" }},
+          { name = "A#5", sound = { filename = "__base__/sound/programmable-speaker/piano1-30.ogg" }},
+          { name = "B5",  sound = { filename = "__base__/sound/programmable-speaker/piano1-31.ogg" }},
+          { name = "C6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-32.ogg" }},
+          { name = "C#6", sound = { filename = "__base__/sound/programmable-speaker/piano1-33.ogg" }},
+          { name = "D6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-34.ogg" }},
+          { name = "D#6", sound = { filename = "__base__/sound/programmable-speaker/piano1-35.ogg" }},
+          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-36.ogg" }},
+          { name = "F6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-37.ogg" }},
+          { name = "F#6", sound = { filename = "__base__/sound/programmable-speaker/piano1-38.ogg" }},
+          { name = "G6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-39.ogg" }},
+          { name = "G#6", sound = { filename = "__base__/sound/programmable-speaker/piano1-40.ogg" }},
+          { name = "A6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-41.ogg" }},
+          { name = "A#6", sound = { filename = "__base__/sound/programmable-speaker/piano1-42.ogg" }},
+          { name = "B6",  sound = { filename = "__base__/sound/programmable-speaker/piano1-43.ogg" }},
+          { name = "C7",  sound = { filename = "__base__/sound/programmable-speaker/piano1-44.ogg" }},
+          { name = "C#7", sound = { filename = "__base__/sound/programmable-speaker/piano1-45.ogg" }},
+          { name = "D7",  sound = { filename = "__base__/sound/programmable-speaker/piano1-46.ogg" }},
+          { name = "D#7", sound = { filename = "__base__/sound/programmable-speaker/piano1-47.ogg" }},
+          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/piano1-48.ogg" }},
+        }
+      },
+      {
+        name = "bass",
+        notes =
+        {
+          { name = "F2",  sound = { filename = "__base__/sound/programmable-speaker/bass-01.ogg" }},
+          { name = "F#2", sound = { filename = "__base__/sound/programmable-speaker/bass-02.ogg" }},
+          { name = "G2",  sound = { filename = "__base__/sound/programmable-speaker/bass-03.ogg" }},
+          { name = "G#2", sound = { filename = "__base__/sound/programmable-speaker/bass-04.ogg" }},
+          { name = "A2",  sound = { filename = "__base__/sound/programmable-speaker/bass-05.ogg" }},
+          { name = "A#2", sound = { filename = "__base__/sound/programmable-speaker/bass-06.ogg" }},
+          { name = "B2",  sound = { filename = "__base__/sound/programmable-speaker/bass-07.ogg" }},
+          { name = "C3",  sound = { filename = "__base__/sound/programmable-speaker/bass-08.ogg" }},
+          { name = "C#3", sound = { filename = "__base__/sound/programmable-speaker/bass-09.ogg" }},
+          { name = "D3",  sound = { filename = "__base__/sound/programmable-speaker/bass-10.ogg" }},
+          { name = "D#3", sound = { filename = "__base__/sound/programmable-speaker/bass-11.ogg" }},
+          { name = "E3",  sound = { filename = "__base__/sound/programmable-speaker/bass-12.ogg" }},
+          { name = "F3",  sound = { filename = "__base__/sound/programmable-speaker/bass-13.ogg" }},
+          { name = "F#3", sound = { filename = "__base__/sound/programmable-speaker/bass-14.ogg" }},
+          { name = "G3",  sound = { filename = "__base__/sound/programmable-speaker/bass-15.ogg" }},
+          { name = "G#3", sound = { filename = "__base__/sound/programmable-speaker/bass-16.ogg" }},
+          { name = "A3",  sound = { filename = "__base__/sound/programmable-speaker/bass-17.ogg" }},
+          { name = "A#3", sound = { filename = "__base__/sound/programmable-speaker/bass-18.ogg" }},
+          { name = "B3",  sound = { filename = "__base__/sound/programmable-speaker/bass-19.ogg" }},
+          { name = "C4",  sound = { filename = "__base__/sound/programmable-speaker/bass-20.ogg" }},
+          { name = "C#4", sound = { filename = "__base__/sound/programmable-speaker/bass-21.ogg" }},
+          { name = "D4",  sound = { filename = "__base__/sound/programmable-speaker/bass-22.ogg" }},
+          { name = "D#4", sound = { filename = "__base__/sound/programmable-speaker/bass-23.ogg" }},
+          { name = "E4",  sound = { filename = "__base__/sound/programmable-speaker/bass-24.ogg" }},
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/bass-25.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/bass-26.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/bass-27.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/bass-28.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/bass-29.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/bass-30.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/bass-31.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/bass-32.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/bass-33.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/bass-34.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/bass-35.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/bass-36.ogg" }},
+        }
+      },
+      {
+        name = "lead",
+        notes =
+        {
+          { name = "F2",  sound = { filename = "__base__/sound/programmable-speaker/lead-01.ogg" }},
+          { name = "F#2", sound = { filename = "__base__/sound/programmable-speaker/lead-02.ogg" }},
+          { name = "G2",  sound = { filename = "__base__/sound/programmable-speaker/lead-03.ogg" }},
+          { name = "G#2", sound = { filename = "__base__/sound/programmable-speaker/lead-04.ogg" }},
+          { name = "A2",  sound = { filename = "__base__/sound/programmable-speaker/lead-05.ogg" }},
+          { name = "A#2", sound = { filename = "__base__/sound/programmable-speaker/lead-06.ogg" }},
+          { name = "B2",  sound = { filename = "__base__/sound/programmable-speaker/lead-07.ogg" }},
+          { name = "C3",  sound = { filename = "__base__/sound/programmable-speaker/lead-08.ogg" }},
+          { name = "C#3", sound = { filename = "__base__/sound/programmable-speaker/lead-09.ogg" }},
+          { name = "D3",  sound = { filename = "__base__/sound/programmable-speaker/lead-10.ogg" }},
+          { name = "D#3", sound = { filename = "__base__/sound/programmable-speaker/lead-11.ogg" }},
+          { name = "E3",  sound = { filename = "__base__/sound/programmable-speaker/lead-12.ogg" }},
+          { name = "F3",  sound = { filename = "__base__/sound/programmable-speaker/lead-13.ogg" }},
+          { name = "F#3", sound = { filename = "__base__/sound/programmable-speaker/lead-14.ogg" }},
+          { name = "G3",  sound = { filename = "__base__/sound/programmable-speaker/lead-15.ogg" }},
+          { name = "G#3", sound = { filename = "__base__/sound/programmable-speaker/lead-16.ogg" }},
+          { name = "A3",  sound = { filename = "__base__/sound/programmable-speaker/lead-17.ogg" }},
+          { name = "A#3", sound = { filename = "__base__/sound/programmable-speaker/lead-18.ogg" }},
+          { name = "B3",  sound = { filename = "__base__/sound/programmable-speaker/lead-19.ogg" }},
+          { name = "C4",  sound = { filename = "__base__/sound/programmable-speaker/lead-20.ogg" }},
+          { name = "C#4", sound = { filename = "__base__/sound/programmable-speaker/lead-21.ogg" }},
+          { name = "D4",  sound = { filename = "__base__/sound/programmable-speaker/lead-22.ogg" }},
+          { name = "D#4", sound = { filename = "__base__/sound/programmable-speaker/lead-23.ogg" }},
+          { name = "E4",  sound = { filename = "__base__/sound/programmable-speaker/lead-24.ogg" }},
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/lead-25.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/lead-26.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/lead-27.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/lead-28.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/lead-29.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/lead-30.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/lead-31.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/lead-32.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/lead-33.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/lead-34.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/lead-35.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/lead-36.ogg" }},
+        }
+      },
+      {
+        name = "saw",
+        notes =
+        {
+          { name = "F2",  sound = { filename = "__base__/sound/programmable-speaker/saw-01.ogg" }},
+          { name = "F#2", sound = { filename = "__base__/sound/programmable-speaker/saw-02.ogg" }},
+          { name = "G2",  sound = { filename = "__base__/sound/programmable-speaker/saw-03.ogg" }},
+          { name = "G#2", sound = { filename = "__base__/sound/programmable-speaker/saw-04.ogg" }},
+          { name = "A2",  sound = { filename = "__base__/sound/programmable-speaker/saw-05.ogg" }},
+          { name = "A#2", sound = { filename = "__base__/sound/programmable-speaker/saw-06.ogg" }},
+          { name = "B2",  sound = { filename = "__base__/sound/programmable-speaker/saw-07.ogg" }},
+          { name = "C3",  sound = { filename = "__base__/sound/programmable-speaker/saw-08.ogg" }},
+          { name = "C#3", sound = { filename = "__base__/sound/programmable-speaker/saw-09.ogg" }},
+          { name = "D3",  sound = { filename = "__base__/sound/programmable-speaker/saw-10.ogg" }},
+          { name = "D#3", sound = { filename = "__base__/sound/programmable-speaker/saw-11.ogg" }},
+          { name = "E3",  sound = { filename = "__base__/sound/programmable-speaker/saw-12.ogg" }},
+          { name = "F3",  sound = { filename = "__base__/sound/programmable-speaker/saw-13.ogg" }},
+          { name = "F#3", sound = { filename = "__base__/sound/programmable-speaker/saw-14.ogg" }},
+          { name = "G3",  sound = { filename = "__base__/sound/programmable-speaker/saw-15.ogg" }},
+          { name = "G#3", sound = { filename = "__base__/sound/programmable-speaker/saw-16.ogg" }},
+          { name = "A3",  sound = { filename = "__base__/sound/programmable-speaker/saw-17.ogg" }},
+          { name = "A#3", sound = { filename = "__base__/sound/programmable-speaker/saw-18.ogg" }},
+          { name = "B3",  sound = { filename = "__base__/sound/programmable-speaker/saw-19.ogg" }},
+          { name = "C4",  sound = { filename = "__base__/sound/programmable-speaker/saw-20.ogg" }},
+          { name = "C#4", sound = { filename = "__base__/sound/programmable-speaker/saw-21.ogg" }},
+          { name = "D4",  sound = { filename = "__base__/sound/programmable-speaker/saw-22.ogg" }},
+          { name = "D#4", sound = { filename = "__base__/sound/programmable-speaker/saw-23.ogg" }},
+          { name = "E4",  sound = { filename = "__base__/sound/programmable-speaker/saw-24.ogg" }},
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/saw-25.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/saw-26.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/saw-27.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/saw-28.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/saw-29.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/saw-30.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/saw-31.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/saw-32.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/saw-33.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/saw-34.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/saw-35.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/saw-36.ogg" }},
+        }
+      },
+      {
+        name = "square",
+        notes =
+        {
+          { name = "F2",  sound = { filename = "__base__/sound/programmable-speaker/square-01.ogg" }},
+          { name = "F#2", sound = { filename = "__base__/sound/programmable-speaker/square-02.ogg" }},
+          { name = "G2",  sound = { filename = "__base__/sound/programmable-speaker/square-03.ogg" }},
+          { name = "G#2", sound = { filename = "__base__/sound/programmable-speaker/square-04.ogg" }},
+          { name = "A2",  sound = { filename = "__base__/sound/programmable-speaker/square-05.ogg" }},
+          { name = "A#2", sound = { filename = "__base__/sound/programmable-speaker/square-06.ogg" }},
+          { name = "B2",  sound = { filename = "__base__/sound/programmable-speaker/square-07.ogg" }},
+          { name = "C3",  sound = { filename = "__base__/sound/programmable-speaker/square-08.ogg" }},
+          { name = "C#3", sound = { filename = "__base__/sound/programmable-speaker/square-09.ogg" }},
+          { name = "D3",  sound = { filename = "__base__/sound/programmable-speaker/square-10.ogg" }},
+          { name = "D#3", sound = { filename = "__base__/sound/programmable-speaker/square-11.ogg" }},
+          { name = "E3",  sound = { filename = "__base__/sound/programmable-speaker/square-12.ogg" }},
+          { name = "F3",  sound = { filename = "__base__/sound/programmable-speaker/square-13.ogg" }},
+          { name = "F#3", sound = { filename = "__base__/sound/programmable-speaker/square-14.ogg" }},
+          { name = "G3",  sound = { filename = "__base__/sound/programmable-speaker/square-15.ogg" }},
+          { name = "G#3", sound = { filename = "__base__/sound/programmable-speaker/square-16.ogg" }},
+          { name = "A3",  sound = { filename = "__base__/sound/programmable-speaker/square-17.ogg" }},
+          { name = "A#3", sound = { filename = "__base__/sound/programmable-speaker/square-18.ogg" }},
+          { name = "B3",  sound = { filename = "__base__/sound/programmable-speaker/square-19.ogg" }},
+          { name = "C4",  sound = { filename = "__base__/sound/programmable-speaker/square-20.ogg" }},
+          { name = "C#4", sound = { filename = "__base__/sound/programmable-speaker/square-21.ogg" }},
+          { name = "D4",  sound = { filename = "__base__/sound/programmable-speaker/square-22.ogg" }},
+          { name = "D#4", sound = { filename = "__base__/sound/programmable-speaker/square-23.ogg" }},
+          { name = "E4",  sound = { filename = "__base__/sound/programmable-speaker/square-24.ogg" }},
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/square-25.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/square-26.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/square-27.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/square-28.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/square-29.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/square-30.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/square-31.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/square-32.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/square-33.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/square-34.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/square-35.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/square-36.ogg" }},
+        }
+      },
+      {
+        name = "celesta",
+        notes =
+        {
+          { name = "F5",  sound = { filename = "__base__/sound/programmable-speaker/celesta-01.ogg" }},
+          { name = "F#5", sound = { filename = "__base__/sound/programmable-speaker/celesta-02.ogg" }},
+          { name = "G5",  sound = { filename = "__base__/sound/programmable-speaker/celesta-03.ogg" }},
+          { name = "G#5", sound = { filename = "__base__/sound/programmable-speaker/celesta-04.ogg" }},
+          { name = "A5",  sound = { filename = "__base__/sound/programmable-speaker/celesta-05.ogg" }},
+          { name = "A#5", sound = { filename = "__base__/sound/programmable-speaker/celesta-06.ogg" }},
+          { name = "B5",  sound = { filename = "__base__/sound/programmable-speaker/celesta-07.ogg" }},
+          { name = "C6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-08.ogg" }},
+          { name = "C#6", sound = { filename = "__base__/sound/programmable-speaker/celesta-09.ogg" }},
+          { name = "D6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-10.ogg" }},
+          { name = "D#6", sound = { filename = "__base__/sound/programmable-speaker/celesta-11.ogg" }},
+          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-12.ogg" }},
+          { name = "F6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-13.ogg" }},
+          { name = "F#6", sound = { filename = "__base__/sound/programmable-speaker/celesta-14.ogg" }},
+          { name = "G6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-15.ogg" }},
+          { name = "G#6", sound = { filename = "__base__/sound/programmable-speaker/celesta-16.ogg" }},
+          { name = "A6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-17.ogg" }},
+          { name = "A#6", sound = { filename = "__base__/sound/programmable-speaker/celesta-18.ogg" }},
+          { name = "B6",  sound = { filename = "__base__/sound/programmable-speaker/celesta-19.ogg" }},
+          { name = "C7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-20.ogg" }},
+          { name = "C#7", sound = { filename = "__base__/sound/programmable-speaker/celesta-21.ogg" }},
+          { name = "D7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-22.ogg" }},
+          { name = "D#7", sound = { filename = "__base__/sound/programmable-speaker/celesta-23.ogg" }},
+          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-24.ogg" }},
+          { name = "F7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-25.ogg" }},
+          { name = "F#7", sound = { filename = "__base__/sound/programmable-speaker/celesta-26.ogg" }},
+          { name = "G7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-27.ogg" }},
+          { name = "G#7", sound = { filename = "__base__/sound/programmable-speaker/celesta-28.ogg" }},
+          { name = "A7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-29.ogg" }},
+          { name = "A#7", sound = { filename = "__base__/sound/programmable-speaker/celesta-30.ogg" }},
+          { name = "B7",  sound = { filename = "__base__/sound/programmable-speaker/celesta-31.ogg" }},
+          { name = "C8",  sound = { filename = "__base__/sound/programmable-speaker/celesta-32.ogg" }},
+          { name = "C#8", sound = { filename = "__base__/sound/programmable-speaker/celesta-33.ogg" }},
+          { name = "D8",  sound = { filename = "__base__/sound/programmable-speaker/celesta-34.ogg" }},
+          { name = "D#8", sound = { filename = "__base__/sound/programmable-speaker/celesta-35.ogg" }},
+          { name = "E8",  sound = { filename = "__base__/sound/programmable-speaker/celesta-36.ogg" }},
+        }
+      },
+      {
+        name = "vibraphone",
+        notes =
+        {
+          { name = "F5",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-01.ogg" }},
+          { name = "F#5", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-02.ogg" }},
+          { name = "G5",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-03.ogg" }},
+          { name = "G#5", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-04.ogg" }},
+          { name = "A5",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-05.ogg" }},
+          { name = "A#5", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-06.ogg" }},
+          { name = "B5",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-07.ogg" }},
+          { name = "C6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-08.ogg" }},
+          { name = "C#6", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-09.ogg" }},
+          { name = "D6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-10.ogg" }},
+          { name = "D#6", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-11.ogg" }},
+          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-12.ogg" }},
+          { name = "F6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-13.ogg" }},
+          { name = "F#6", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-14.ogg" }},
+          { name = "G6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-15.ogg" }},
+          { name = "G#6", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-16.ogg" }},
+          { name = "A6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-17.ogg" }},
+          { name = "A#6", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-18.ogg" }},
+          { name = "B6",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-19.ogg" }},
+          { name = "C7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-20.ogg" }},
+          { name = "C#7", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-21.ogg" }},
+          { name = "D7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-22.ogg" }},
+          { name = "D#7", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-23.ogg" }},
+          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-24.ogg" }},
+          { name = "F7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-25.ogg" }},
+          { name = "F#7", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-26.ogg" }},
+          { name = "G7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-27.ogg" }},
+          { name = "G#7", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-28.ogg" }},
+          { name = "A7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-29.ogg" }},
+          { name = "A#7", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-30.ogg" }},
+          { name = "B7",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-31.ogg" }},
+          { name = "C8",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-32.ogg" }},
+          { name = "C#8", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-33.ogg" }},
+          { name = "D8",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-34.ogg" }},
+          { name = "D#8", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-35.ogg" }},
+          { name = "E8",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-36.ogg" }},
+        }
+      },
+      {
+        name = "plucked",
+        notes =
+        {
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/plucked-01.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/plucked-02.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/plucked-03.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/plucked-04.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/plucked-05.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/plucked-06.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/plucked-07.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-08.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/plucked-09.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-10.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/plucked-11.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-12.ogg" }},
+          { name = "F5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-13.ogg" }},
+          { name = "F#5", sound = { filename = "__base__/sound/programmable-speaker/plucked-14.ogg" }},
+          { name = "G5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-15.ogg" }},
+          { name = "G#5", sound = { filename = "__base__/sound/programmable-speaker/plucked-16.ogg" }},
+          { name = "A5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-17.ogg" }},
+          { name = "A#5", sound = { filename = "__base__/sound/programmable-speaker/plucked-18.ogg" }},
+          { name = "B5",  sound = { filename = "__base__/sound/programmable-speaker/plucked-19.ogg" }},
+          { name = "C6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-20.ogg" }},
+          { name = "C#6", sound = { filename = "__base__/sound/programmable-speaker/plucked-21.ogg" }},
+          { name = "D6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-22.ogg" }},
+          { name = "D#6", sound = { filename = "__base__/sound/programmable-speaker/plucked-23.ogg" }},
+          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-24.ogg" }},
+          { name = "F6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-25.ogg" }},
+          { name = "F#6", sound = { filename = "__base__/sound/programmable-speaker/plucked-26.ogg" }},
+          { name = "G6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-27.ogg" }},
+          { name = "G#6", sound = { filename = "__base__/sound/programmable-speaker/plucked-28.ogg" }},
+          { name = "A6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-29.ogg" }},
+          { name = "A#6", sound = { filename = "__base__/sound/programmable-speaker/plucked-30.ogg" }},
+          { name = "B6",  sound = { filename = "__base__/sound/programmable-speaker/plucked-31.ogg" }},
+          { name = "C7",  sound = { filename = "__base__/sound/programmable-speaker/plucked-32.ogg" }},
+          { name = "C#7", sound = { filename = "__base__/sound/programmable-speaker/plucked-33.ogg" }},
+          { name = "D7",  sound = { filename = "__base__/sound/programmable-speaker/plucked-34.ogg" }},
+          { name = "D#7", sound = { filename = "__base__/sound/programmable-speaker/plucked-35.ogg" }},
+          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/plucked-36.ogg" }},
+        }
+      },
+      {
+        name = "steel-drum",
+        notes =
+        {
+          { name = "F3",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-01.ogg" }},
+          { name = "F#3", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-02.ogg" }},
+          { name = "G3",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-03.ogg" }},
+          { name = "G#3", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-04.ogg" }},
+          { name = "A3",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-05.ogg" }},
+          { name = "A#3", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-06.ogg" }},
+          { name = "B3",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-07.ogg" }},
+          { name = "C4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-08.ogg" }},
+          { name = "C#4", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-09.ogg" }},
+          { name = "D4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-10.ogg" }},
+          { name = "D#4", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-11.ogg" }},
+          { name = "E4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-12.ogg" }},
+          { name = "F4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-13.ogg" }},
+          { name = "F#4", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-14.ogg" }},
+          { name = "G4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-15.ogg" }},
+          { name = "G#4", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-16.ogg" }},
+          { name = "A4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-17.ogg" }},
+          { name = "A#4", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-18.ogg" }},
+          { name = "B4",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-19.ogg" }},
+          { name = "C5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-20.ogg" }},
+          { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-21.ogg" }},
+          { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-22.ogg" }},
+          { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-23.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-24.ogg" }},
+          { name = "F5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-25.ogg" }},
+          { name = "F#5", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-26.ogg" }},
+          { name = "G5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-27.ogg" }},
+          { name = "G#5", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-28.ogg" }},
+          { name = "A5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-29.ogg" }},
+          { name = "A#5", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-30.ogg" }},
+          { name = "B5",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-31.ogg" }},
+          { name = "C6",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-32.ogg" }},
+          { name = "C#6", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-33.ogg" }},
+          { name = "D6",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-34.ogg" }},
+          { name = "D#6", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-35.ogg" }},
+          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-36.ogg" }},
+        }
+      },
+
+    },
+
+    circuit_wire_connection_point =
+    {
+      shadow =
+      {
+        red = {-0.1875, 0.40625},
+        green = {-0.34375, 0.40625}
+      },
+      wire =
+      {
+        red = {-0.1875, 0.40625},
+        green = {-0.34375, 0.40625}
+      }
+    },
+    circuit_connector_sprites = get_circuit_connector_sprites({-0.125, 0.34375}, nil, 0),
+    circuit_wire_max_distance = 7.5,
+  },
   {
     type = "electric-energy-interface",
     name = "electric-energy-interface",
@@ -7603,15 +10953,18 @@ data:extend(
     corpse = "medium-remnants",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
+    enable_gui = true,
+    allow_copy_paste = true,
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "10MJ",
+      buffer_capacity = "10GJ",
       usage_priority = "terciary",
-      input_flow_limit = "1000kW",
-      output_flow_limit = "1000kW"
+      input_flow_limit = "0kW",
+      output_flow_limit = "500GW"
     },
-    energy_production = "1000kW",
+
+    energy_production = "500GW",
     energy_usage = "0kW",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
     picture =
@@ -7620,9 +10973,10 @@ data:extend(
       priority = "extra-high",
       width = 124,
       height = 103,
-      shift = {0.6875, -0.203125}
+      shift = {0.6875, -0.203125},
+      tint = {r=1, g=0.8, b=1, a=1}
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
     working_sound =
     {
       sound =
@@ -7630,12 +10984,1173 @@ data:extend(
         filename = "__base__/sound/accumulator-working.ogg",
         volume = 1
       },
-      idle_sound = {
+      idle_sound =
+      {
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.4
       },
       max_sounds_per_type = 5
+    }
+  },
+  {
+    type = "reactor",
+    name = "nuclear-reactor",
+    icon  = "__base__/graphics/icons/nuclear-reactor.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "nuclear-reactor"},
+    max_health = 500,
+    corpse = "big-remnants",
+    consumption = "40MW",
+    burner =
+    {
+      fuel_category = "nuclear",
+      effectivity = 1,
+      fuel_inventory_size = 1,
+      burnt_inventory_size = 1
+    },
+    collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
+    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+
+    lower_layer_picture = {
+      filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes.png",
+      width = 160,
+      height = 160,
+      shift = { -0.03125, -0.1875 },
+      hr_version = 
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-pipes.png",
+        width = 320,
+        height = 320,
+        scale = 0.5,
+        shift = { -0.03125, -0.1875 },
+      }
+    },
+    
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/reactor.png",
+          width = 160,
+          height = 160,
+          shift = { -0.03125, -0.1875 },
+          hr_version = 
+          {
+            filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor.png",
+            width = 320,
+            height = 320,
+            scale = 0.5,
+            shift = { -0.03125, -0.1875 },
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/reactor-shadow.png",
+          width = 263,
+          height = 162,
+          shift = { 1.625 , 0 },
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-shadow.png",
+            width = 525,
+            height = 323,
+            scale = 0.5,
+            shift = { 1.625, 0 },
+            draw_as_shadow = true,
+          }
+        },
+      }
+    },
+
+    working_light_picture =
+    {
+      filename = "__base__/graphics/entity/nuclear-reactor/reactor-lights-color.png",
+      width = 160,
+      height = 160,
+      shift = { -0.03125, -0.1875 },
+      blend_mode = "additive",
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-lights-color.png",
+        width = 320,
+        height = 320,
+        scale = 0.5,
+        shift = { -0.03125, -0.1875 }, 
+        blend_mode = "additive",
+      }
+    },
+
+    light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 0.0, g = 1.0, b = 0.0}},
+
+    heat_buffer =
+    {
+      max_temperature = 1000,
+      specific_heat = "10MJ",
+      max_transfer = "10GW",
+      connections =
+      {
+        {
+          position = {-2, -2},
+          direction = defines.direction.north
+        },
+        {
+          position = {0, -2},
+          direction = defines.direction.north
+        },
+        {
+          position = {2, -2},
+          direction = defines.direction.north
+        },
+        {
+          position = {2, -2},
+          direction = defines.direction.east
+        },
+        {
+          position = {2, 0},
+          direction = defines.direction.east
+        },
+        {
+          position = {2, 2},
+          direction = defines.direction.east
+        },
+        {
+          position = {2, 2},
+          direction = defines.direction.south
+        },
+        {
+          position = {0, 2},
+          direction = defines.direction.south
+        },
+        {
+          position = {-2, 2},
+          direction = defines.direction.south
+        },
+        {
+          position = {-2, 2},
+          direction = defines.direction.west
+        },
+        {
+          position = {-2, 0},
+          direction = defines.direction.west
+        },
+        {
+          position = {-2, -2},
+          direction = defines.direction.west
+        }
+      }
+    },
+
+    connection_patches_connected =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches.png",
+        width = 32,
+        height = 32,
+        variation_count = 12,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-connect-patches.png",
+          width = 64,
+          height = 64,
+          variation_count = 12,
+          scale = 0.5
+        }
+      }
+    },
+
+    connection_patches_disconnected =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches.png",
+        width = 32,
+        height = 32,
+        variation_count = 12,
+        y = 32,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-connect-patches.png",
+          width = 64,
+          height = 64,
+          variation_count = 12,
+          y = 64,
+          scale = 0.5
+        }
+      }
+    },
+
+    connection_patches =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-north.png",
+        width = 160,
+        height = 15,
+        shift = util.by_pixel(0, -72.5)
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-east.png",
+        width = 15,
+        height = 160,
+        shift = util.by_pixel(72.5, 0)
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-south.png",
+        width = 160,
+        height = 15,
+        shift = util.by_pixel(0, 72.5)
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-west.png",
+        width = 15,
+        height = 160,
+        shift = util.by_pixel(-72.5, 0)
+      }
+    },
+
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+  },
+  {
+    type = "assembling-machine",
+    name = "centrifuge",
+    icon = "__base__/graphics/icons/centrifuge.png",
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "centrifuge"},
+    max_health = 350,
+    corpse = "big-remnants",
+    dying_explosion = "medium-explosion",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    drawing_box = {{-1.5, -2}, {1.5, 1.5}},
+
+    always_draw_idle_animation = true,
+    idle_animation =
+    {
+      layers =
+      {
+        -- Centrifuge A
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-C.png",
+          priority = "high",
+          line_length = 8,
+          width = 119,
+          height = 107,
+          frame_count = 64,
+          shift = util.by_pixel(-0.5, -26.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-C.png",
+            priority = "high",
+            scale = 0.5,
+            line_length = 8,
+            width = 237,
+            height = 214,
+            frame_count = 64,
+            shift = util.by_pixel(-0.25, -26.5),
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-C-shadow.png",
+          draw_as_shadow = true,
+          priority = "high",
+          line_length = 8,
+          width = 132,
+          height = 74,
+          frame_count = 64,
+          shift = util.by_pixel(20, -10),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-C-shadow.png",
+            draw_as_shadow = true,
+            priority = "high",
+            scale = 0.5,
+            line_length = 8,
+            width = 279,
+            height = 152,
+            frame_count = 64,
+            shift = util.by_pixel(16.75, -10),
+          }
+        },
+        -- Centrifuge B
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-B.png",
+          priority = "high",
+          line_length = 8,
+          width = 78,
+          height = 117,
+          frame_count = 64,
+          shift = util.by_pixel(23, 6.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-B.png",
+            priority = "high",
+            scale = 0.5,
+            line_length = 8,
+            width = 156,
+            height = 234,
+            frame_count = 64,
+            shift = util.by_pixel(23, 6.5),
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-B-shadow.png",
+          draw_as_shadow = true,
+          priority = "high",
+          line_length = 8,
+          width = 124,
+          height = 74,
+          frame_count = 64,
+          shift = util.by_pixel(63, 16),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-B-shadow.png",
+            draw_as_shadow = true,
+            priority = "high",
+            scale = 0.5,
+            line_length = 8,
+            width = 251,
+            height = 149,
+            frame_count = 64,
+            shift = util.by_pixel(63.25, 15.25),
+          }
+        },
+        -- Centrifuge A
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-A.png",
+          priority = "high",
+          line_length = 8,
+          width = 70,
+          height = 123,
+          frame_count = 64,
+          shift = util.by_pixel(-26, 3.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-A.png",
+            priority = "high",
+            scale = 0.5,
+            line_length = 8,
+            width = 139,
+            height = 246,
+            frame_count = 64,
+            shift = util.by_pixel(-26.25, 3.5),
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-A-shadow.png",
+          priority = "high",
+          draw_as_shadow = true,
+          line_length = 8,
+          width = 108,
+          height = 54,
+          frame_count = 64,
+          shift = util.by_pixel(6, 27),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-A-shadow.png",
+            priority = "high",
+            draw_as_shadow = true,
+            scale = 0.5,
+            line_length = 8,
+            width = 230,
+            height = 124,
+            frame_count = 64,
+            shift = util.by_pixel(8.5, 23.5),
+          }
+        }
+      }
+    },
+
+    animation =
+    {
+      layers =
+      {
+        -- Centrifuge C
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-C-light.png",
+          priority = "high",
+          blend_mode = "additive", -- centrifuge
+          line_length = 8,
+          width = 96,
+          height = 104,
+          frame_count = 64,
+          shift = util.by_pixel(0, -27),
+
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-C-light.png",
+            priority = "high",
+            scale = 0.5,
+            blend_mode = "additive", -- centrifuge
+            line_length = 8,
+            width = 190,
+            height = 207,
+            frame_count = 64,
+            shift = util.by_pixel(0, -27.25),
+          }
+        },
+        -- Centrifuge B
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-B-light.png",
+          priority = "high",
+          blend_mode = "additive", -- centrifuge
+          line_length = 8,
+          width = 65,
+          height = 103,
+          frame_count = 64,
+          shift = util.by_pixel(16.5, 0.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-B-light.png",
+            priority = "high",
+            scale = 0.5,
+            blend_mode = "additive", -- centrifuge
+            line_length = 8,
+            width = 131,
+            height = 206,
+            frame_count = 64,
+            shift = util.by_pixel(16.75, 0.5),
+          }
+        },
+        -- Centrifuge A
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-A-light.png",
+          priority = "high",
+          blend_mode = "additive", -- centrifuge
+          line_length = 8,
+          width = 55,
+          height = 98,
+          frame_count = 64,
+          shift = util.by_pixel(-23.5, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-A-light.png",
+            priority = "high",
+            scale = 0.5,
+            blend_mode = "additive", -- centrifuge
+            line_length = 8,
+            width = 108,
+            height = 197,
+            frame_count = 64,
+            shift = util.by_pixel(-23.5, -1.75),
+          }
+        }
+      }
+    },
+
+    working_visualisations =
+    {
+      {
+        effect = "uranium-glow", -- changes alpha based on energy source light intensity
+        light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 0.0, g = 1.0, b = 0.0}}
+      }
+    },
+
+    working_visualisations_disabled =
+    {
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        animation =
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-C-light.png",
+          priority = "high",
+          blend_mode = "additive", -- centrifuge
+          line_length = 8,
+          width = 96,
+          height = 104,
+          frame_count = 64,
+          shift = util.by_pixel(0, -27),
+
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-C-light.png",
+            priority = "high",
+            scale = 0.5,
+            blend_mode = "additive", -- centrifuge
+            line_length = 8,
+            width = 190,
+            height = 207,
+            frame_count = 64,
+            shift = util.by_pixel(0, -27.25),
+          }
+        },
+        --light = {intensity = 1, size = 1, color = {r = 1.0, g = 1.0, b = 1.0}}
+      },
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        animation =
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-B-light.png",
+          priority = "high",
+          blend_mode = "additive", -- centrifuge
+          line_length = 8,
+          width = 65,
+          height = 103,
+          frame_count = 64,
+          shift = util.by_pixel(16.5, 0.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-B-light.png",
+            priority = "high",
+            scale = 0.5,
+            blend_mode = "additive", -- centrifuge
+            line_length = 8,
+            width = 131,
+            height = 206,
+            frame_count = 64,
+            shift = util.by_pixel(16.75, 0.5),
+          }
+        }
+      },
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        animation =
+        {
+          filename = "__base__/graphics/entity/centrifuge/centrifuge-A-light.png",
+          priority = "high",
+          blend_mode = "additive", -- centrifuge
+          line_length = 8,
+          width = 55,
+          height = 98,
+          frame_count = 64,
+          shift = util.by_pixel(-23.5, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-A-light.png",
+            priority = "high",
+            scale = 0.5,
+            blend_mode = "additive", -- centrifuge
+            line_length = 8,
+            width = 108,
+            height = 197,
+            frame_count = 64,
+            shift = util.by_pixel(-23.5, -1.75),
+          }
+        }
+      }
+    },
+
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/assembling-machine-t2-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/assembling-machine-t2-2.ogg",
+          volume = 0.8
+        },
+      },
+      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+      apparent_volume = 1.5,
+    },
+    crafting_speed = 0.75,
+    crafting_categories = {"centrifuging"},
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions = 0.04 / 2.5
+    },
+    energy_usage = "350kW",
+    ingredient_count = 2,
+    module_specification =
+    {
+      module_slots = 2
+    },
+    allowed_effects = {"consumption", "speed", "productivity", "pollution"}
+  },
+  {
+    type = "boiler",
+    name = "heat-exchanger",
+    icon = "__base__/graphics/icons/heat-boiler.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "heat-exchanger"},
+    max_health = 200,
+    corpse = "small-remnants",
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    mode = "output-to-separate-pipe",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "explosion",
+        percent = 30
+      },
+      {
+        type = "impact",
+        percent = 30
+      }
+    },
+    collision_box = {{-1.29, -0.79}, {1.29, 0.79}},
+    selection_box = {{-1.5, -1}, {1.5, 1}},
+    target_temperature = 500,
+    fluid_box =
+    {
+      base_area = 1,
+      height = 2,
+      base_level = -1,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        {type = "input-output", position = {-2, 0.5}},
+        {type = "input-output", position = {2, 0.5}}
+      },
+      production_type = "input-output"
+    },
+    output_fluid_box =
+    {
+      base_area = 1,
+      height = 2,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        {position = {0, -1.5}}
+      },
+      production_type = "output"
+    },
+    energy_consumption = "10MW",
+    energy_source =
+    {
+      type = "heat",
+      max_temperature = 1000,
+      specific_heat = "1MJ",
+      max_transfer = "2GW",
+      connections =
+      {
+        {
+          position = {0, 0.5},
+          direction = defines.direction.south
+        }
+      },
+      pipe_covers =
+      
+        make_4way_animation_from_spritesheet(
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-endings.png",
+          line_length = 4,
+          width = 32,
+          height = 32,
+          direction_count = 4,
+          hr_version = {
+            filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-endings.png",
+            line_length = 4,
+            width = 64,
+            height = 64,
+            direction_count = 4,
+            scale = 0.5
+          }
+        })
+      
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/boiler.ogg",
+        volume = 0.8
+      },
+      max_sounds_per_type = 3
+    },
+    
+    structure =
+    {
+      north =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/heatex-N-idle.png",
+            priority = "extra-high",
+            width = 131,
+            height = 108,
+            shift = util.by_pixel(-0.5, 4),
+            hr_version = {
+              filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-N-idle.png",
+              priority = "extra-high",
+              width = 269,
+              height = 221,
+              shift = util.by_pixel(-1.25, 5.25),
+              scale = 0.5
+            }
+          },
+          {
+            filename = "__base__/graphics/entity/boiler/boiler-N-shadow.png",
+            priority = "extra-high",
+            width = 137,
+            height = 82,
+            shift = util.by_pixel(20.5, 9),
+            draw_as_shadow = true,
+            hr_version = {
+              filename = "__base__/graphics/entity/boiler/hr-boiler-N-shadow.png",
+              priority = "extra-high",
+              width = 274,
+              height = 164,
+              scale = 0.5,
+              shift = util.by_pixel(20.5, 9),
+              draw_as_shadow = true,
+            }
+          }
+        }
+      },
+      east =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/heatex-E-idle.png",
+            priority = "extra-high",
+            width = 102,
+            height = 147,
+            shift = util.by_pixel(-2, -0.5),
+            hr_version = {
+              filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-E-idle.png",
+              priority = "extra-high",
+              width = 211,
+              height = 301,
+              shift = util.by_pixel(-1.75, 1.25),
+              scale = 0.5
+            }
+          },
+          {
+            filename = "__base__/graphics/entity/boiler/boiler-E-shadow.png",
+            priority = "extra-high",
+            width = 92,
+            height = 97,
+            shift = util.by_pixel(30, 9.5),
+            draw_as_shadow = true,
+            hr_version = {
+              filename = "__base__/graphics/entity/boiler/hr-boiler-E-shadow.png",
+              priority = "extra-high",
+              width = 184,
+              height = 194,
+              scale = 0.5,
+              shift = util.by_pixel(30, 9.5),
+              draw_as_shadow = true,
+            }
+          }
+        }
+      },
+      south =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/heatex-S-idle.png",
+            priority = "extra-high",
+            width = 128,
+            height = 100,
+            shift = util.by_pixel(3, 10),
+            hr_version = {
+              filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-S-idle.png",
+              priority = "extra-high",
+              width = 260,
+              height = 201,
+              shift = util.by_pixel(4, 10.75),
+              scale = 0.5
+            }
+          },
+          {
+            filename = "__base__/graphics/entity/boiler/boiler-S-shadow.png",
+            priority = "extra-high",
+            width = 156,
+            height = 66,
+            shift = util.by_pixel(30, 16),
+            draw_as_shadow = true,
+            hr_version = {
+              filename = "__base__/graphics/entity/boiler/hr-boiler-S-shadow.png",
+              priority = "extra-high",
+              width = 311,
+              height = 131,
+              scale = 0.5,
+              shift = util.by_pixel(29.75, 15.75),
+              draw_as_shadow = true,
+            }
+          }
+        }
+      },
+      west =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/heatex-W-idle.png",
+            priority = "extra-high",
+            width = 96,
+            height = 132,
+            shift = util.by_pixel(1, 5),
+            hr_version = {
+              filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-W-idle.png",
+              priority = "extra-high",
+              width = 196,
+              height = 273,
+              shift = util.by_pixel(1.5, 7.75),
+              scale = 0.5
+            }
+          },
+          {
+            filename = "__base__/graphics/entity/boiler/boiler-W-shadow.png",
+            priority = "extra-high",
+            width = 103,
+            height = 109,
+            shift = util.by_pixel(19.5, 6.5),
+            draw_as_shadow = true,
+            hr_version = {
+              filename = "__base__/graphics/entity/boiler/hr-boiler-W-shadow.png",
+              priority = "extra-high",
+              width = 206,
+              height = 218,
+              scale = 0.5,
+              shift = util.by_pixel(19.5, 6.5),
+              draw_as_shadow = true,
+            }
+          }
+        }
+      }
+    },
+    fire = {},
+    fire_glow = {},
+    burning_cooldown = 20
+  },
+  {
+    type = "generator",
+    name = "steam-turbine",
+    icon = "__base__/graphics/icons/steam-turbine.png",
+    flags = {"placeable-neutral","player-creation"},
+    minable = {mining_time = 1, result = "steam-turbine"},
+    max_health = 300,
+    corpse = "big-remnants",
+    dying_explosion = "medium-explosion",
+    effectivity = 1,
+    fluid_usage_per_tick = 1,
+    maximum_temperature = 500,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
+    fast_replaceable_group = "steam-engine",
+    collision_box = {{-1.35, -2.35}, {1.35, 2.35}},
+    selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
+    fluid_box =
+    {
+      base_area = 1,
+      height = 2,
+      base_level = -1,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        { type = "input-output", position = {0, 3} },
+        { type = "input-output", position = {0, -3} },
+      },
+      production_type = "input-output"
+    },
+    fluid_input =
+    {
+      name = "water",
+      amount = 0.0,
+      minimum_temperature = 100.0
+    },
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-output"
+    },
+    horizontal_animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H.png",
+          width = 160,
+          height = 123,
+          frame_count = 8,
+          line_length = 4,
+          shift = util.by_pixel(0, -2.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H.png",
+            width = 320,
+            height = 245,
+            frame_count = 8,
+            line_length = 4,
+            shift = util.by_pixel(0, -2.75),
+            scale = 0.5
+          },
+        },
+        {
+          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
+          width = 217,
+          height = 74,
+          frame_count = 8,
+          line_length = 4,
+          draw_as_shadow = true,
+          shift = util.by_pixel(28.75, 18),
+          hr_version = {
+            filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H-shadow.png",
+            width = 435,
+            height = 150,
+            frame_count = 8,
+            line_length = 4,
+            draw_as_shadow = true,
+            shift = util.by_pixel(28.5, 18),
+            scale = 0.5
+          },
+        },
+      },
+    },
+    vertical_animation =
+    {
+     layers =
+     {
+        {
+          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V.png",
+          width = 108,
+          height = 173,
+          frame_count = 8,
+          line_length = 4,
+          shift = util.by_pixel(5, 6.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V.png",
+            width = 217,
+            height = 347,
+            frame_count = 8,
+            line_length = 4,
+            shift = util.by_pixel(4.75, 6.75),
+            scale = 0.5
+          },
+        },
+        {
+          filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
+          width = 151,
+          height = 131,
+          frame_count = 8,
+          line_length = 4,
+          draw_as_shadow = true,
+          shift = util.by_pixel(39.5, 24.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V-shadow.png",
+            width = 302,
+            height = 260,
+            frame_count = 8,
+            line_length = 4,
+            draw_as_shadow = true,
+            shift = util.by_pixel(39.5, 24.5),
+            scale = 0.5
+          },
+        },
+      },
+    },
+    smoke =
+    {
+      {
+        name = "turbine-smoke",
+        north_position = {0.0, -1.0},
+        east_position = {0.75, -0.75},
+        frequency = 10 / 32,
+        starting_vertical_speed = 0.08,
+        slow_down_factor = 1,
+        starting_frame_deviation = 60
+      }
+    },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/steam-engine-90bpm.ogg",
+        volume = 0.6
+      },
+      match_speed_to_activity = true,
+    },
+    min_perceived_performance = 0.25,
+    performance_to_sound_speedup = 0.5
+  },
+  {
+    type = "heat-pipe",
+    name = "heat-pipe",
+    icon = "__base__/graphics/icons/heat-pipe.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "heat-pipe"},
+    max_health = 200,
+    corpse = "small-remnants",
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "explosion",
+        percent = 30
+      },
+      {
+        type = "impact",
+        percent = 30
+      }
+    },
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    minimum_glow_temperature = 350,
+    glow_alpha_modifier = 0.6,
+    heat_buffer =
+    {
+      max_temperature = 1000,
+      specific_heat = "1MJ",
+      max_transfer = "1GW",
+      connections =
+      {
+        {
+          position = {0, 0},
+          direction = defines.direction.north
+        },
+        {
+          position = {0, 0},
+          direction = defines.direction.east
+        },
+        {
+          position = {0, 0},
+          direction = defines.direction.south
+        },
+        {
+          position = {0, 0},
+          direction = defines.direction.west
+        }
+      }
+    },
+
+    connection_sprites = make_heat_pipe_pictures("__base__/graphics/entity/heat-pipe/", "heat-pipe",
+      {
+        single = { name = "straight-vertical-single", ommit_number = true },
+        straight_vertical = { variations = 6 },
+        straight_horizontal = { variations = 6 },
+        corner_right_up = { name = "corner-up-right", variations = 6 },
+        corner_left_up = { name = "corner-up-left", variations = 6 },
+        corner_right_down = { name = "corner-down-right", variations = 6 },
+        corner_left_down = { name = "corner-down-left", variations = 6 },
+        t_up = {},
+        t_down = {},
+        t_right = {},
+        t_left = {},
+        cross = { name = "t" },
+        ending_up = {},
+        ending_down = {},
+        ending_right = {},
+        ending_left = {},
+      }),
+
+    heat_glow_sprites = make_heat_pipe_pictures("__base__/graphics/entity/heat-pipe/", "heated",
+      {
+        single = { empty = true },
+        straight_vertical = { variations = 6 },
+        straight_horizontal = { variations = 6 },
+        corner_right_up = { name = "corner-up-right", variations = 6 },
+        corner_left_up = { name = "corner-up-left", variations = 6 },
+        corner_right_down = { name = "corner-down-right", variations = 6 },
+        corner_left_down = { name = "corner-down-left", variations = 6 },
+        t_up = {},
+        t_down = {},
+        t_right = {},
+        t_left = {},
+        cross = { name = "t" },
+        ending_up = {},
+        ending_down = {},
+        ending_right = {},
+        ending_left = {},
+      }),
+
+    heat_glow_light = {
+      --minimum_darkness = 0.3,
+      color = { r = 1, g = 155/255, b = 0.05, a = 0 },
+      --shift = {-0.6, 3.5},
+      size = 2.5,
+      intensity = 0.1,
+      --add_perspective = true
     },
   },
+  {
+    type = "simple-entity-with-force",
+    name = "simple-entity-with-force",
+    render_layer = "object",
+    icon = "__base__/graphics/icons/steel-chest.png",
+    flags = {"placeable-neutral", "player-creation"},
+    order = "s-e-w-f",
+    minable = {mining_time = 1, result = "simple-entity-with-force"},
+    max_health = 100,
+    corpse = "small-remnants",
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    picture =
+    {
+      filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
+      priority = "extra-high",
+      width = 46,
+      height = 33,
+      shift = {0.25, 0.015625}
+    }
+  },
+  {
+    type = "simple-entity-with-owner",
+    name = "simple-entity-with-owner",
+    render_layer = "object",
+    icon = "__base__/graphics/icons/wooden-chest.png",
+    flags = {"placeable-neutral", "player-creation"},
+    order = "s-e-w-o",
+    minable = {mining_time = 1, result = "simple-entity-with-owner"},
+    max_health = 100,
+    corpse = "small-remnants",
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    picture =
+    {
+      filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
+      priority = "extra-high",
+      width = 46,
+      height = 33,
+      shift = {0.25, 0.015625}
+    }
+  }
 }
 )
+
+local uranium_cannon_shell_explosion = util.table.deepcopy(data.raw["explosion"]["big-explosion"])
+uranium_cannon_shell_explosion.name = "uranium-cannon-shell-explosion"
+uranium_cannon_shell_explosion.animations[1].tint = {r = 0.4, g = 1, b = 0.4}
+data:extend({uranium_cannon_shell_explosion})
+
+local uranium_cannon_explosion = util.table.deepcopy(data.raw["explosion"]["explosion"])
+uranium_cannon_explosion.name = "uranium-cannon-explosion"
+for k,v in pairs(uranium_cannon_explosion.animations) do
+  v.tint = {r = 0.4, g = 1, b = 0.4}
+end
+data:extend({uranium_cannon_explosion})

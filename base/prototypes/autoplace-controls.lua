@@ -26,9 +26,15 @@ data:extend(
   },
   {
     type = "autoplace-control",
-    name = "crude-oil",
+    name = "uranium-ore",
     richness = true,
     order = "b-e"
+  },
+  {
+    type = "autoplace-control",
+    name = "crude-oil",
+    richness = true,
+    order = "b-f"
   },
   {
     type = "autoplace-control",

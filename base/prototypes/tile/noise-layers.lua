@@ -30,6 +30,14 @@ data:extend(
   },
   {
     type = "noise-layer",
+    name = "red-desert"
+  },
+  {
+    type = "noise-layer",
+    name = "red-desert-dark"
+  },
+  {
+    type = "noise-layer",
     name = "copper-ore"
   },
   {
@@ -43,6 +51,10 @@ data:extend(
   {
     type = "noise-layer",
     name = "stone"
+  },
+  {
+    type = "noise-layer",
+    name = "uranium-ore"
   },
   {
     type = "noise-layer",

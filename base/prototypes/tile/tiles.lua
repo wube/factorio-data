@@ -326,18 +326,18 @@ data:extend(
         },
         {
           picture = "__base__/graphics/terrain/grass/grass2.png",
-          count = 20,
+          count = 16,
           size = 2,
           probability = 0.91,
-          weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 },
+          weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 },
         },
         {
           picture = "__base__/graphics/terrain/grass/grass4.png",
-          count = 20,
+          count = 16,
           line_length = 10,
           size = 4,
           probability = 1,
-          weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }
+          weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }
         }
       },
       inner_corner =
@@ -398,18 +398,18 @@ data:extend(
         },
         {
           picture = "__base__/graphics/terrain/grass-medium/grass-medium2.png",
-          count = 20,
+          count = 16,
           size = 2,
           probability = 0.91,
-          weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 },
+          weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 },
         },
         {
           picture = "__base__/graphics/terrain/grass-medium/grass-medium4.png",
-          count = 20,
+          count = 16,
           line_length = 10,
           size = 4,
           probability = 1,
-          weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }
+          weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }
         }
       },
       inner_corner =
@@ -476,11 +476,11 @@ data:extend(
         },
         {
           picture = "__base__/graphics/terrain/grass-dry/grass-dry4.png",
-          count = 20,
+          count = 16,
           line_length = 10,
           size = 4,
           probability = 1,
-          weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }
+          weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }
         }
       },
       inner_corner =
@@ -535,24 +535,24 @@ data:extend(
       {
         {
           picture = "__base__/graphics/terrain/dirt/dirt1.png",
-          count = 22,
+          count = 16,
           size = 1,
-          weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045, 0.005, 0.005, 0.005, 0.005, 0.003, 0.005 }
+          weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 }
         },
         {
           picture = "__base__/graphics/terrain/dirt/dirt2.png",
-          count = 30,
+          count = 16,
           size = 2,
           probability = 1,
-          weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027, 0.022, 0.032, 0.020, 0.020, 0.030, 0.005, 0.010, 0.002, 0.013, 0.007, 0.007, 0.010, 0.030, 0.030 }
+          weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }
         },
         {
           picture = "__base__/graphics/terrain/dirt/dirt4.png",
-          count = 21,
+          count = 16,
           line_length = 11,
           size = 4,
           probability = 1,
-          weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070, 0.070, 0.050, 0.050, 0.050, 0.050 }
+          weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }
         }
       },
       inner_corner =
@@ -602,24 +602,24 @@ data:extend(
       {
         {
           picture = "__base__/graphics/terrain/dirt-dark/dirt-dark1.png",
-          count = 22,
+          count = 16,
           size = 1,
-          weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045, 0.005, 0.005, 0.005, 0.005, 0.003, 0.005 }
+          weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 }
         },
         {
           picture = "__base__/graphics/terrain/dirt-dark/dirt-dark2.png",
-          count = 30,
+          count = 16,
           size = 2,
           probability = 0.94,
-          weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027, 0.022, 0.032, 0.020, 0.020, 0.030, 0.005, 0.010, 0.002, 0.013, 0.007, 0.007, 0.010, 0.030, 0.030 }
+          weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }
         },
         {
           picture = "__base__/graphics/terrain/dirt-dark/dirt-dark4.png",
-          count = 21,
+          count = 16,
           line_length = 11,
           size = 4,
           probability = 1,
-          weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070, 0.070, 0.050, 0.050, 0.050, 0.050 }
+          weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }
         }
       },
       inner_corner =
@@ -682,11 +682,11 @@ data:extend(
         },
         {
           picture = "__base__/graphics/terrain/sand/sand4.png",
-          count = 22,
+          count = 16,
           line_length = 11,
           size = 4,
           probability = 1,
-          weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020, 0.010, 0.100, 0.025, 0.100, 0.100, 0.100}
+          weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020 }
         },
       },
       inner_corner =
@@ -753,11 +753,11 @@ data:extend(
         },
         {
           picture = "__base__/graphics/terrain/sand-dark/sand-dark4.png",
-          count = 22,
+          count = 16,
           line_length = 11,
           size = 4,
           probability = 1,
-          weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020, 0.010, 0.100, 0.025, 0.100, 0.100, 0.100}
+          weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020 }
         },
       },
       inner_corner =
@@ -801,6 +801,271 @@ data:extend(
   },
   {
     type = "tile",
+    name = "red-desert",
+    collision_mask = {"ground-tile"},
+    autoplace = autoplace_settings("red-desert", {{{5, 0.2}, {-25, 0}}}),
+    layer = 37,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/red-desert/red-desert1.png",
+          count = 16,
+          size = 1,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert/hr-red-desert1.png",
+            count = 16,
+            size = 1,
+            scale = 0.5
+          }
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert/red-desert2.png",
+          count = 16,
+          size = 2,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert/hr-red-desert2.png",
+            count = 16,
+            size = 2,
+            scale = 0.5
+          },
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert/red-desert4.png",
+          count = 16,
+          size = 4,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert/hr-red-desert4.png",
+            count = 16,
+            size = 4,
+            scale = 0.5
+          },
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert/red-desert8.png",
+          count = 16,
+          line_length = 6,
+          size = 8,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert/hr-red-desert8.png",
+            count = 16,
+            line_length = 4,
+            size = 8,
+            scale = 0.5
+          },
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert/red-desert16.png",
+          count = 12,
+          line_length = 4,
+          size = 16,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert/hr-red-desert16.png",
+            count = 12,
+            line_length = 4,
+            size = 16,
+            scale = 0.5
+          },
+        },
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/red-desert/red-desert-inner-corner.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/red-desert/hr-red-desert-inner-corner.png",
+          count = 8,
+          scale = 0.5,
+        },
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/red-desert/red-desert-outer-corner.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/red-desert/hr-red-desert-outer-corner.png",
+          count = 8,
+          scale = 0.5,
+        },
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/red-desert/red-desert-side.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/red-desert/hr-red-desert-side.png",
+          count = 8,
+          scale = 0.5,
+        },
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/grass-01.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-02.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-03.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-04.ogg",
+        volume = 0.8
+      }
+    },
+    map_color={r=125, g=88, b=67},
+    ageing=0.00045,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier,
+    can_be_part_of_blueprint = false
+  },
+  {
+    type = "tile",
+    name = "red-desert-dark",
+    collision_mask = {"ground-tile"},
+    autoplace = autoplace_settings("red-desert-dark", {{{5, 0.3}, {-25, 0.1}}}),
+    layer = 38,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark1.png",
+          count = 16,
+          size = 1,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark1.png",
+            count = 16,
+            size = 1,
+            scale = 0.5,
+          },
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark2.png",
+          count = 16,
+          size = 2,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark2.png",
+            count = 16,
+            size = 2,
+            scale = 0.5,
+          },
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark4.png",
+          count = 16,
+          size = 4,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark4.png",
+            count = 16,
+            size = 4,
+            scale = 0.5,
+          }
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark8.png",
+          line_length = 4,
+          count = 16,
+          size = 8,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark8.png",
+            line_length = 4,
+            count = 16,
+            size = 8,
+            scale = 0.5,
+          }
+        },
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark16.png",
+          line_length = 4,
+          count = 16,
+          size = 16,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark16.png",
+            line_length = 4,
+            count = 16,
+            size = 16,
+            scale = 0.5,
+          }
+        },
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark-inner-corner.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark-inner-corner.png",
+          count = 8,
+          scale = 0.5,
+        },
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark-outer-corner.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark-outer-corner.png",
+          count = 8,
+          scale = 0.5,
+        },
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/red-desert-dark/red-desert-dark-side.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/red-desert-dark/hr-red-desert-dark-side.png",
+          count = 8,
+          scale = 0.5,
+        },
+      },
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/grass-01.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-02.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-03.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-04.ogg",
+        volume = 0.8
+      }
+    },
+    map_color={r=116, g=74, b=59},
+    ageing=0.0004,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
     name = "stone-path",
     needs_correction = false,
     minable = {hardness = 0.2, mining_time = 0.5, result = "stone-brick"},
@@ -808,7 +1073,7 @@ data:extend(
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.3,
     layer = 60,
-    decorative_removal_probability = 0.6,
+    decorative_removal_probability = 0.15,
     variants =
     {
       main =
@@ -879,6 +1144,112 @@ data:extend(
     map_color={r=50, g=50, b=50},
     ageing=0,
     vehicle_friction_modifier = stone_path_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
+    name = "lab-dark-1",
+    collision_mask = {"ground-tile"},
+    layer = 70,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/lab-tiles/lab-dark-1.png",
+          count = 1,
+          size = 1
+        },
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
+        count = 0
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
+        count = 0
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-side.png",
+        count = 0
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.2
+      }
+    },
+    map_color={r=0, g=0, b=0},
+    ageing=0.0006
+  },
+  {
+    type = "tile",
+    name = "lab-dark-2",
+    collision_mask = {"ground-tile"},
+    layer = 70,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/lab-tiles/lab-dark-2.png",
+          count = 1,
+          size = 1
+        },
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
+        count = 0
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
+        count = 0
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-side.png",
+        count = 0
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.2
+      }
+    },
+    map_color={r=0.2, g=0.2, b=0.2},
+    ageing=0.0006
   }
 })
 
@@ -894,7 +1265,7 @@ if not data.is_demo then
       collision_mask = {"ground-tile"},
       walking_speed_modifier = 1.4,
       layer = 61,
-      decorative_removal_probability = 0.9,
+      decorative_removal_probability = 0.25,
       variants =
       {
         main =
@@ -920,22 +1291,22 @@ if not data.is_demo then
         inner_corner =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
-          count = 8
+          count = 32
         },
         outer_corner =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
-          count = 8
+          count = 16
         },
         side =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-side.png",
-          count = 8
+          count = 16
         },
         u_transition =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-u.png",
-          count = 8
+          count = 16
         },
         o_transition =
         {
@@ -971,29 +1342,30 @@ if not data.is_demo then
       name = "hazard-concrete-left",
       needs_correction = false,
       next_direction = "hazard-concrete-right",
+      transition_merges_with_tile = "concrete",
       minable = {hardness = 0.2, mining_time = 0.5, result = "hazard-concrete"},
       mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
       collision_mask = {"ground-tile"},
       walking_speed_modifier = 1.4,
       layer = 61,
-      decorative_removal_probability = 0.9,
+      decorative_removal_probability = 0.25,
       variants =
       {
         main =
         {
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left1.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete1-left.png",
             count = 16,
             size = 1
           },
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left2.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete2-left.png",
             count = 4,
             size = 2,
             probability = 0.39,
           },
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left4.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete4-left.png",
             count = 4,
             size = 4,
             probability = 1,
@@ -1001,27 +1373,27 @@ if not data.is_demo then
         },
         inner_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-inner-corner.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-inner-corner-left.png",
+          count = 32
         },
         outer_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-outer-corner.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-outer-corner-left.png",
+          count = 16
         },
         side =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-side.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-side-left.png",
+          count = 16
         },
         u_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-u.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-u-left.png",
+          count = 16
         },
         o_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-o.png",
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-o-left.png",
           count = 1
         }
       },
@@ -1053,29 +1425,30 @@ if not data.is_demo then
       name = "hazard-concrete-right",
       needs_correction = false,
       next_direction = "hazard-concrete-left",
+      transition_merges_with_tile = "concrete",
       minable = {hardness = 0.2, mining_time = 0.5, result = "hazard-concrete"},
       mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
       collision_mask = {"ground-tile"},
       walking_speed_modifier = 1.4,
       layer = 61,
-      decorative_removal_probability = 0.9,
+      decorative_removal_probability = 0.25,
       variants =
       {
         main =
         {
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right1.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete1-right.png",
             count = 16,
             size = 1
           },
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right2.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete2-right.png",
             count = 4,
             size = 2,
             probability = 0.39,
           },
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right4.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete4-right.png",
             count = 4,
             size = 4,
             probability = 1,
@@ -1083,47 +1456,28 @@ if not data.is_demo then
         },
         inner_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-inner-corner.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-inner-corner-right.png",
+          count = 32
         },
         outer_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-outer-corner.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-outer-corner-right.png",
+          count = 16
         },
         side =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-side.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-side-right.png",
+          count = 16
         },
         u_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-u.png",
-          count = 8
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-u-right.png",
+          count = 16
         },
         o_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-o.png",
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-o-right.png",
           count = 1
-        }
-      },
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
         }
       },
       map_color={r=0.5, g=0.5, b=0},

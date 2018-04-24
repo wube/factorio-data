@@ -1,0 +1,17 @@
+{
+  "recipe":
+  [
+    [ "small-pump", "pump" ],
+    [ "heat-boiler", "heat-exchanger" ]
+  ],
+  "item":
+  [
+    [ "small-pump", "pump" ],
+    [ "heat-boiler", "heat-exchanger" ]
+  ],
+  "entity":
+  [
+    [ "heat-boiler", "heat-exchanger" ],
+    [ "small-pump", "pump" ]
+  ],
+}

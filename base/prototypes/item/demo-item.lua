@@ -21,6 +21,7 @@ data:extend(
     icon = "__base__/graphics/icons/raw-wood.png",
     flags = {"goes-to-main-inventory"},
     fuel_value = "4MJ",
+    fuel_category = "chemical",
     subgroup = "raw-material",
     order = "a[raw-wood]",
     stack_size = 100
@@ -31,6 +32,7 @@ data:extend(
     icon = "__base__/graphics/icons/coal.png",
     dark_background_icon = "__base__/graphics/icons/coal-dark-background.png",
     flags = {"goes-to-main-inventory"},
+    fuel_category = "chemical",
     fuel_value = "8MJ",
     subgroup = "raw-material",
     order = "b[coal]",
@@ -68,6 +70,7 @@ data:extend(
     name = "wood",
     icon = "__base__/graphics/icons/wood.png",
     flags = {"goes-to-main-inventory"},
+    fuel_category = "chemical",
     fuel_value = "2MJ",
     subgroup = "raw-material",
     order = "a[wood]",
@@ -124,7 +127,7 @@ data:extend(
     icon = "__base__/graphics/icons/electronic-circuit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "d[electronic-circuit]",
+    order = "e[electronic-circuit]",
     stack_size = 200
   },
   {
@@ -132,6 +135,7 @@ data:extend(
     name = "wooden-chest",
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"goes-to-quickbar"},
+    fuel_category = "chemical",
     fuel_value = "4MJ",
     subgroup = "storage",
     order = "a[items]-a[wooden-chest]",
@@ -176,7 +180,7 @@ data:extend(
     subgroup = "belt",
     order = "a[transport-belt]-a[transport-belt]",
     place_result = "transport-belt",
-    stack_size = 50
+    stack_size = 100
   },
   {
     type = "item",
@@ -216,7 +220,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[pipe]-a[pipe]",
     place_result = "pipe",
-    stack_size = 50
+    stack_size = 100
   },
   {
     type = "item",
@@ -246,6 +250,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-a[small-electric-pole]",
     place_result = "small-electric-pole",
+    fuel_category = "chemical",
     fuel_value = "4MJ",
     stack_size = 50
   },
@@ -273,8 +278,8 @@ data:extend(
     name = "small-plane",
     icon = "__base__/graphics/icons/small-plane.png",
     flags = {"goes-to-quickbar", "hidden"},
-    subgroup = "defensive-structure",
-    order = "h[small-plane]",
+    subgroup = "transport",
+    order = "b[personal-transport]-c[small-plane]",
     stack_size = 1
   },
   {
@@ -282,20 +287,10 @@ data:extend(
     name = "small-lamp",
     icon = "__base__/graphics/icons/small-lamp.png",
     flags = {"goes-to-quickbar"},
-    subgroup = "energy",
-    order = "c[light]-a[small-lamp]",
+    subgroup = "circuit-network",
+    order = "a[light]-a[small-lamp]",
     place_result = "small-lamp",
     stack_size = 50
-  },
-  {
-    type = "item",
-    name = "alien-artifact",
-    icon = "__base__/graphics/icons/alien-artifact.png",
-    flags = {"goes-to-main-inventory"},
-    subgroup = "raw-material",
-    order = "g[alien-artifact]",
-    stack_size = 500,
-    default_request_amount = 10
   },
   {
     type = "item",
@@ -323,7 +318,7 @@ data:extend(
     icon = "__base__/graphics/icons/red-wire.png",
     flags = {"goes-to-quickbar"},
     subgroup = "circuit-network",
-    order = "a[wires]-b[red-wire]",
+    order = "b[wires]-a[red-wire]",
     stack_size = 200
   },
   {
@@ -332,7 +327,7 @@ data:extend(
     icon = "__base__/graphics/icons/green-wire.png",
     flags = {"goes-to-quickbar"},
     subgroup = "circuit-network",
-    order = "a[wires]-c[green-wire]",
+    order = "b[wires]-b[green-wire]",
     stack_size = 200
   },
   {
@@ -363,7 +358,7 @@ data:extend(
               target_effects =
               {
                 type = "damage",
-                damage = {type = "physical", amount = -20}
+                damage = {type = "physical", amount = -80}
               }
             }
           }
@@ -380,8 +375,8 @@ data:extend(
     flags = {"goes-to-quickbar"},
     subgroup = "tool",
     order = "b[repair]-a[repair-pack]",
-    speed = 1,
-    durability = 200,
+    speed = 2,
+    durability = 300,
     stack_size = 100
   },
   {
@@ -392,7 +387,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "a[stone-wall]-a[stone-wall]",
     place_result = "stone-wall",
-    stack_size = 50
+    stack_size = 100
   },
 }
 )

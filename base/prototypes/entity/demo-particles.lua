@@ -22,30 +22,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-2.png",
         priority = "extra-high",
-        width = 7,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-3.png",
         priority = "extra-high",
-        width = 6,
-        height = 7,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-4.png",
         priority = "extra-high",
-        width = 9,
-        height = 8,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     },
     shadows =
@@ -53,30 +85,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-shadow-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-2.png",
         priority = "extra-high",
-        width = 7,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-shadow-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-3.png",
         priority = "extra-high",
-        width = 6,
-        height = 7,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-shadow-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-4.png",
         priority = "extra-high",
-        width = 9,
-        height = 8,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/iron-ore-particle/hr-iron-ore-particle-shadow-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     }
   },
@@ -90,30 +154,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-2.png",
         priority = "extra-high",
-        width = 6,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-3.png",
         priority = "extra-high",
-        width = 7,
-        height = 8,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-4.png",
         priority = "extra-high",
-        width = 6,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     },
     shadows =
@@ -121,30 +217,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-shadow-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-2.png",
         priority = "extra-high",
-        width = 6,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-shadow-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-3.png",
         priority = "extra-high",
-        width = 7,
-        height = 8,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-shadow-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-4.png",
         priority = "extra-high",
-        width = 6,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/copper-ore-particle/hr-copper-ore-particle-shadow-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     }
   },
@@ -158,30 +286,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-2.png",
         priority = "extra-high",
-        width = 4,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-3.png",
         priority = "extra-high",
-        width = 5,
-        height = 6,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-4.png",
         priority = "extra-high",
-        width = 7,
-        height = 7,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     },
     shadows =
@@ -189,30 +349,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-shadow-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-2.png",
         priority = "extra-high",
-        width = 4,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-shadow-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-3.png",
         priority = "extra-high",
-        width = 5,
-        height = 6,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-shadow-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-4.png",
         priority = "extra-high",
-        width = 7,
-        height = 7,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/stone-particle/hr-stone-particle-shadow-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     }
   },
@@ -226,30 +418,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-2.png",
         priority = "extra-high",
-        width = 7,
-        height = 6,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-3.png",
         priority = "extra-high",
-        width = 3,
-        height = 6,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-4.png",
         priority = "extra-high",
-        width = 4,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     },
     shadows =
@@ -257,30 +481,62 @@ data:extend(
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-1.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-shadow-1.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-2.png",
         priority = "extra-high",
-        width = 7,
-        height = 6,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-shadow-2.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-3.png",
         priority = "extra-high",
-        width = 3,
-        height = 6,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-shadow-3.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-4.png",
         priority = "extra-high",
-        width = 6,
-        height = 4,
-        frame_count = 1
+        width = 16,
+        height = 16,
+        frame_count = 1,
+        hr_version = {
+          filename = "__base__/graphics/entity/coal-particle/hr-coal-particle-shadow-4.png",
+          priority = "extra-high",
+          width = 32,
+          height = 32,
+          frame_count = 1,
+          scale = 0.5
+          }
       }
     }
   },

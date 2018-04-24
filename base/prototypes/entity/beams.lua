@@ -1,20 +1,12 @@
 local beam_blend_mode = "additive-soft"
 
-data:extend(
-{
+function makeBeam(sound)
+  local result = 
   {
     type = "beam",
-    name = "electric-beam",
     flags = {"not-on-map"},
     width = 0.5,
     damage_interval = 20,
-    working_sound =
-    {
-      {
-        filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 0.7
-      }
-    },
     action =
     {
       type = "direct",
@@ -101,5 +93,25 @@ data:extend(
       },
     }
   }
+  
+  if sound then
+    result.working_sound =
+    {
+      {
+        filename = "__base__/sound/fight/electric-beam.ogg",
+        volume = 0.7
+      }
+    }
+    result.name = "electric-beam"
+  else
+    result.name = "electric-beam-no-sound"
+  end
+  return result;
+end
+
+data:extend(
+{
+  makeBeam(true),
+  makeBeam(false)
 }
 )

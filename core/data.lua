@@ -1,4 +1,6 @@
 require("prototypes.fonts")
-require("prototypes.style")
-require("prototypes.utility-sprites")
 require("prototypes.noise-layers")
+require("prototypes.style")
+require("prototypes.utility-constants")
+require("prototypes.utility-sounds")
+require("prototypes.utility-sprites")

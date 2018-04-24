@@ -4,22 +4,22 @@ data:extend(
 {
   {
     type = "gun",
-    name = "flame-thrower",
-    icon = "__base__/graphics/icons/flame-thrower.png",
+    name = "flamethrower",
+    icon = "__base__/graphics/icons/flamethrower.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "gun",
-    order = "e[flame-thrower]",
+    order = "e[flamethrower]",
     attack_parameters =
     {
       type = "stream",
-      ammo_category = "flame-thrower",
+      ammo_category = "flamethrower",
       cooldown = 1,
-      movement_slow_down_factor = 0.6,
+      movement_slow_down_factor = 0.4,
       projectile_creation_distance = 0.6,
       gun_barrel_length = 0.8,
       gun_center_shift = { 0, -1 },
       range = 15,
-      min_range = 1,
+      min_range = 3,
       cyclic_sound =
       {
         begin_sound =
@@ -90,6 +90,7 @@ data:extend(
       ammo_category = "bullet",
       cooldown = 4,
       movement_slow_down_factor = 0.7,
+      damage_modifier = 2,
       shell_particle =
       {
         name = "shell-particle",
@@ -109,6 +110,50 @@ data:extend(
     stack_size = 1
   },
   {
+    type = "gun",
+    name = "tank-flamethrower",
+    icon = "__base__/graphics/icons/flamethrower.png",
+    flags = {"goes-to-main-inventory", "hidden"},
+    subgroup = "gun",
+    order = "b[flamethrower]-b[tank-flamethrower]",
+    attack_parameters =
+    {
+      type = "stream",
+      ammo_category = "flamethrower",
+      cooldown = 1,
+      projectile_creation_distance = 0.6,
+      gun_barrel_length = 1.4,
+      gun_center_shift = { -0.17, -1.15 },
+      range = 9,
+      min_range = 3,
+      cyclic_sound =
+      {
+        begin_sound =
+        {
+          {
+            filename = "__base__/sound/fight/flamethrower-start.ogg",
+            volume = 1
+          }
+        },
+        middle_sound =
+        {
+          {
+            filename = "__base__/sound/fight/flamethrower-mid.ogg",
+            volume = 1
+          }
+        },
+        end_sound =
+        {
+          {
+            filename = "__base__/sound/fight/flamethrower-end.ogg",
+            volume = 1
+          }
+        }
+      }
+    },
+    stack_size = 1
+  },
+  {
     type = "item",
     name = "land-mine",
     icon = "__base__/graphics/icons/land-mine.png",
@@ -117,7 +162,7 @@ data:extend(
     subgroup = "gun",
     order = "f[land-mine]",
     place_result = "land-mine",
-    stack_size = 20,
+    stack_size = 100,
     trigger_radius = 1
   },
   {

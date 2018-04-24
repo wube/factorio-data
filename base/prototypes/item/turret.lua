@@ -16,7 +16,7 @@ data:extend(
     icon = "__base__/graphics/icons/flamethrower-turret.png",
     flags = {"goes-to-quickbar"},
     subgroup = "defensive-structure",
-    order = "b[turret]-a[flamethrower-turret]",
+    order = "b[turret]-c[flamethrower-turret]",
     place_result = "flamethrower-turret",
     stack_size = 50
   },

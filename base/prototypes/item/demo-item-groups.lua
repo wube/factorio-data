@@ -16,6 +16,7 @@ data:extend(
     type = "item-group",
     name = "other",
     icon = "__core__/graphics/questionmark.png",
+    icon_size = 64,
     order = "z",
   },
   {
@@ -30,10 +31,11 @@ data:extend(
     group = "signals",
     order = "d"
   },
-    {
+  {
     type = "item-group",
     name = "environment",
-    icon = "__core__/graphics/neutral-force-icon.png",
+    icon = "__core__/graphics/treex64-provisional.png",
+    icon_size = 64,
     order = "a"
   },
   {
@@ -77,6 +79,7 @@ data:extend(
     type = "item-group",
     name = "enemies",
     icon = "__core__/graphics/enemy-force-icon.png",
+    icon_size = 64,
     order = "aa"
   },
   {
@@ -250,21 +253,27 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "barrel",
+    name = "fill-barrel",
     group = "intermediate-products",
     order = "d"
   },
   {
     type = "item-subgroup",
-    name = "intermediate-product",
+    name = "empty-barrel",
     group = "intermediate-products",
     order = "e"
   },
   {
     type = "item-subgroup",
-    name = "science-pack",
+    name = "intermediate-product",
     group = "intermediate-products",
     order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "science-pack",
+    group = "intermediate-products",
+    order = "g"
   },
   {
     type = "item-group",

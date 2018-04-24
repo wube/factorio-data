@@ -68,7 +68,7 @@ data:extend(
     ingredients =
     {
       {"solar-panel", 5},
-      {"processing-unit", 1},
+      {"advanced-circuit", 1},
       {"steel-plate", 5}
     },
     result = "solar-panel-equipment"
@@ -80,8 +80,7 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"processing-unit", 100},
-      {"alien-artifact", 30}
+      {"processing-unit", 250}
     },
     result = "fusion-reactor-equipment"
   },
@@ -131,12 +130,24 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"processing-unit", 10},
+      {"advanced-circuit", 10},
       {"iron-gear-wheel", 40},
       {"steel-plate", 20},
       {"battery", 45},
     },
     result = "personal-roboport-equipment"
+  },
+  {
+    type = "recipe",
+    name = "personal-roboport-mk2-equipment",
+    enabled = false,
+    energy_required = 20,
+    ingredients =
+    {
+      {"personal-roboport-equipment", 5},
+      {"processing-unit", 100}
+    },
+    result = "personal-roboport-mk2-equipment"
   }
 }
 )

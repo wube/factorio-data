@@ -17,7 +17,7 @@ return
   run_mode = inputs.run_mode and inputs.run_mode or "forward",
   axially_symmetrical = false,
   direction_count = 4,
-  shift = {0.0625, -0.984375}
+  shift = {-0.03125, -0.984375}
 }
 end
 
@@ -33,7 +33,7 @@ return
   axially_symmetrical = false,
   direction_count = 4,
   draw_as_shadow = true,
-  shift = {1.46875, 0},
+  shift = {1.375, 0},
 }
 end
 
@@ -50,7 +50,7 @@ return
   axially_symmetrical = false,
   apply_runtime_tint = true,
   direction_count = 4,
-  shift = {0.078125, -1.26563},
+  shift = {-0.015625, -1.26563},
 }
 end
 
@@ -77,18 +77,24 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
     order="b-b-e",
     subgroup="enemies",
-    max_health = 350,
+    max_health = 400,
     resistances =
     {
       {
         type = "physical",
-        decrease = 4,
+        decrease = 5,
       },
       {
         type = "explosion",
         decrease = 5,
         percent = 15,
+      },
+      {
+        type = "fire",
+        decrease = 2,
+        percent = 50,
       }
+
     },
     healing_per_tick = 0.015,
     collision_box = {{-1.1, -1.0}, {1.1, 1.0}},
@@ -100,7 +106,6 @@ data:extend(
     dying_sound = make_worm_dying_sounds(0.9),
     folded_speed = 0.01,
     folded_animation = worm_folded_animation(medium_worm_scale, medium_worm_tint),
-    prepare_range = 25,
     preparing_speed = 0.025,
     preparing_animation = worm_preparing_animation(medium_worm_scale, medium_worm_tint, "forward"),
     prepared_speed = 0.015,
@@ -117,10 +122,10 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "rocket",
-      cooldown = 100,
-      range = 20,
+      cooldown = 60,
+      range = 25,
       projectile_creation_distance = 1.9,
-      damage_modifier = 3,
+      damage_modifier = 4,
       ammo_type =
       {
         category = "biological",
@@ -131,7 +136,8 @@ data:extend(
           {
             type = "projectile",
             projectile = "acid-projectile-purple",
-            starting_speed = 0.5
+            starting_speed = 0.5,
+            max_range = 40
           }
         }
       }
@@ -146,20 +152,26 @@ data:extend(
     name = "big-worm-turret",
     icon = "__base__/graphics/icons/big-worm.png",
     flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
-    max_health = 500,
+    max_health = 750,
     order="b-b-f",
     subgroup="enemies",
     resistances =
     {
       {
         type = "physical",
-        decrease = 8,
+        decrease = 10,
       },
       {
         type = "explosion",
         decrease = 10,
         percent = 30,
+      },
+      {
+        type = "fire",
+        decrease = 3,
+        percent = 70,
       }
+
     },
     healing_per_tick = 0.02,
     collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
@@ -172,7 +184,6 @@ data:extend(
     inventory_size = 2,
     folded_speed = 0.01,
     folded_animation = worm_folded_animation(big_worm_scale, big_worm_tint),
-    prepare_range = 25,
     preparing_speed = 0.025,
     preparing_animation = worm_preparing_animation(big_worm_scale, big_worm_tint, "forward"),
     prepared_speed = 0.015,
@@ -189,10 +200,10 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "rocket",
-      cooldown = 100,
-      range = 25,
+      cooldown = 60,
+      range = 26,
       projectile_creation_distance = 2.1,
-      damage_modifier = 6,
+      damage_modifier = 5,
       ammo_type =
       {
         category = "biological",
@@ -203,7 +214,8 @@ data:extend(
           {
             type = "projectile",
             projectile = "acid-projectile-purple",
-            starting_speed = 0.5
+            starting_speed = 0.5,
+            max_range = 50
           }
         }
       }
@@ -264,7 +276,7 @@ data:extend(
           frame_count = 1,
           axially_symmetrical = false,
           direction_count = 64,
-          shift = {0.0625, -1}
+          shift = {-0.03125, -1}
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-mask.png",
@@ -276,7 +288,7 @@ data:extend(
           axially_symmetrical = false,
           apply_runtime_tint = true,
           direction_count = 64,
-          shift = {0.0625, -1.3125},
+          shift = {-0.03125, -1.3125},
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-shadow.png",
@@ -287,7 +299,7 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 64,
           draw_as_shadow = true,
-          shift = {1.59375, 0}
+          shift = {1.5, 0}
         }
       }
     },
@@ -312,7 +324,7 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 1,
           frame_count = 1,
-          shift = { 0.109375, 0.03125 }
+          shift = {0.015625, 0.03125}
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-base-mask.png",
@@ -325,7 +337,7 @@ data:extend(
           apply_runtime_tint = true,
           direction_count = 1,
           frame_count = 1,
-          shift = {0.046875, -0.109375},
+          shift = {-0.046875, -0.109375},
         },
       }
     },
@@ -336,9 +348,9 @@ data:extend(
       type = "projectile",
       ammo_category = "electric",
       cooldown = 20,
-      projectile_center = {0, -0.2},
+      projectile_center = {-0.09375, -0.2},
       projectile_creation_distance = 1.4,
-      range = 25,
+      range = 24,
       damage_modifier = 4,
       ammo_type =
       {
@@ -354,7 +366,7 @@ data:extend(
               {
                 type = "projectile",
                 projectile = "laser",
-                starting_speed = 0.28
+                starting_speed = 0.35
               }
             }
           }

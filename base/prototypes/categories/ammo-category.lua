@@ -22,7 +22,7 @@ data:extend(
   },
   {
     type = "ammo-category",
-    name = "flame-thrower"
+    name = "flamethrower"
   },
   {
     type = "ammo-category",

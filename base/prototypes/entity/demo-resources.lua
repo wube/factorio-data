@@ -3,7 +3,7 @@ local function autoplace_settings(name, coverage)
     control = name,
     sharpness = 1,
     richness_multiplier = 1500,
-    richness_multiplier_distance_bonus = 20,
+    richness_multiplier_distance_bonus = 30,
     richness_base = 500,
     coverage = coverage,
     peaks = {
@@ -42,17 +42,27 @@ local function resource(name, map_color, hardness, coverage)
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
     autoplace = autoplace_settings(name, coverage),
-    stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
+    stage_counts = {5000, 3000, 1500, 800, 400, 100, 50, 10},
     stages =
     {
       sheet =
       {
         filename = "__base__/graphics/entity/" .. name .. "/" .. name .. ".png",
         priority = "extra-high",
-        width = 38,
-        height = 38,
-        frame_count = 4,
-        variation_count = 8
+        width = 64,
+        height = 64,
+        frame_count = 8,
+        variation_count = 8,
+        hr_version =
+          {
+          filename = "__base__/graphics/entity/" .. name .. "/hr-" .. name .. ".png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          frame_count = 8,
+          variation_count = 8,
+          scale = 0.5
+          }
       }
     },
     map_color = map_color

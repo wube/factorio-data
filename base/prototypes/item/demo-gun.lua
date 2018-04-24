@@ -13,8 +13,8 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "bullet",
-      cooldown = 10,
-      movement_slow_down_factor = 0.7,
+      cooldown = 15,
+      movement_slow_down_factor = 0.2,
       shell_particle =
       {
         name = "shell-particle",
@@ -43,7 +43,7 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "bullet",
-      cooldown = 4,
+      cooldown = 6,
       movement_slow_down_factor = 0.7,
       shell_particle =
       {
@@ -57,7 +57,7 @@ data:extend(
         starting_frame_speed_deviation = 0.1
       },
       projectile_creation_distance = 1.125,
-      range = 15,
+      range = 18,
       sound = make_light_gunshot_sounds(),
     },
     stack_size = 1

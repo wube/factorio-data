@@ -1,6 +1,10 @@
 
-destroyedrailpictures = function()
-  return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
+destroyed_rail_pictures = function()
+  return rail_pictures_internal({{"metals", "metals-remnants", mipmap = true, variations = 3},
+                                 {"backplates", "backplates-remnants", mipmap = true, variations = 3},
+                                 {"ties", "ties-remnants", variations = 3},
+                                 {"stone_path", "stone-path-remnants", variations = 3},
+                                 {"stone_path_background", "stone-path-background-remnants", variations = 3}})
 end
 
 data:extend(
@@ -166,7 +170,7 @@ data:extend(
     tile_width = 2,
     tile_height = 2,
     bending_type = "straight",
-    pictures = destroyedrailpictures(),
+    pictures = destroyed_rail_pictures(),
     time_before_removed = 60 * 60 * 45,
     time_before_shading_off = 60 * 60 * 1
   },
@@ -183,7 +187,7 @@ data:extend(
     tile_width = 4,
     tile_height = 8,
     bending_type = "turn",
-    pictures = destroyedrailpictures(),
+    pictures = destroyed_rail_pictures(),
     time_before_removed = 60 * 60 * 45,
     time_before_shading_off = 60 * 60 * 1
   },
@@ -338,58 +342,6 @@ data:extend(
     },
     render_layer = "object",
   },
-
-  {
-    type = "decorative",
-    name = "big-ship-wreck-grass",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
-    icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-grass.png",
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck-grass]-a[big]",
-    collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
-    selection_box = {{-2.8, -1.7}, {2.8, 1.7}},
-    selectable_in_game = false,
-    pictures =
-    {
-      {
-        filename = "__base__/graphics/entity/ship-wreck/big-ship-wreck-grass.png",
-        width = 206,
-        height = 112,
-      }
-    },
-    render_layer = "floor",
-  },
-
-  {
-    type = "decorative",
-    name = "small-ship-wreck-grass",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
-    icon = "__base__/graphics/icons/ship-wreck/small-ship-wreck-grass.png",
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck-grass]-b[small]",
-    collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
-    selection_box = {{-1.7, -0.6}, {1.7, 0.6}},
-    selectable_in_game = false,
-    render_layer = "floor",
-    pictures =
-    {
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-grass-1.png",
-        width = 129,
-        height = 45
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-grass-2.png",
-        width = 121,
-        height = 34
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-grass-3.png",
-        width = 115,
-        height = 37
-      }
-    }
-  },
   {
     type = "corpse",
     name = "small-scorchmark",
@@ -405,15 +357,12 @@ data:extend(
     order="d[remnants]-b[scorchmark]-a[small]",
     animation =
     {
-      sheet=
-      {
-        width = 110,
-        height = 90,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
-        variation_count = 3
-      }
+      width = 110,
+      height = 90,
+      frame_count = 1,
+      direction_count = 1,
+      filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
+      variation_count = 3
     },
     ground_patch =
     {
