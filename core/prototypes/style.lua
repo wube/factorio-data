@@ -206,6 +206,12 @@ data:extend(
       parent = "bold_label_style",
       font_color = default_orange_color
     },
+    invalid_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font_color = warning_red_color
+    },
     scenario_message_dialog_label_style=
     {
       type = "label_style",
@@ -367,6 +373,20 @@ data:extend(
         position = {0, 16}
       },
       pie_progress_color = {r=1, g=1, b=1}
+    },
+
+    horizontal_line_style =
+    {
+      type = "button_style",
+      line_color = default_orange_color,
+      line_width = 1
+    },
+
+    browse_games_gui_line_style =
+    {
+      parent = "horizontal_line_style",
+      top_padding = 10,
+      bottom_padding = 10
     },
 
     achievement_title_label_style =

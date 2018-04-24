@@ -5172,7 +5172,7 @@ data:extend(
         percent = 100
       }
     },
-    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
+    collision_box = {{-0.65, -0.65}, {0.65, 0.65}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-1, -3}, {1, 0.5}},
     maximum_wire_distance = 30,
