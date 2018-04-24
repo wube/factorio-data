@@ -30,7 +30,7 @@ data:extend(
     type = "transport-belt-to-ground",
     name = "basic-transport-belt-to-ground",
     icon = "__base__/graphics/icons/basic-transport-belt-to-ground.png",
-    flags = {"placeable-neutral", "player-creation"},
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-rotate-only"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-transport-belt-to-ground"},
     max_health = 10,
     collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
