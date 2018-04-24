@@ -5370,6 +5370,13 @@ data:extend(
       width = 32,
       height = 32
     },
+    picture_set_enemy =
+    {
+      filename = "__base__/graphics/entity/land-mine/land-mine-set-enemy.png",
+      priority = "medium",
+      width = 32,
+      height = 32
+    },
     trigger_radius = 2.5,
     ammo_category = "landmine",
     action =

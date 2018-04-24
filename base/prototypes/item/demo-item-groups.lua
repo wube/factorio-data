@@ -241,6 +241,7 @@ data:extend(
     type = "item-group",
     name = "intermediate-products",
     order = "c",
+    order_in_recipe = "0",
     icon = "__base__/graphics/item-group/intermediate-products.png",
     icon_size = 64,
   },

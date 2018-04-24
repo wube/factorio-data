@@ -1106,6 +1106,7 @@ data:extend(
     {
       type = "area",
       radius = 9,
+      force = "enemy",
       action_delivery =
       {
         type = "instant",
