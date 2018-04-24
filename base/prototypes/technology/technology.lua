@@ -656,10 +656,6 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "rocket"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "science-pack-3"
       }
     },
     prerequisites = {"electronics", "flammables", "explosives", "steel-processing"},
@@ -1350,10 +1346,6 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "engine-unit"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "lubricant"
       }
     },
     order = "b-a"
@@ -1402,6 +1394,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "battery"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "science-pack-3"
       }
     },
     order = "b-c"

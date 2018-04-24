@@ -112,6 +112,7 @@ data:extend(
     icon = "__base__/graphics/icons/medium-worm.png",
     flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
     order="b-b-e",
+    subgroup="enemies",
     max_health = 350,
     resistances =
     {
@@ -235,6 +236,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
     max_health = 500,
     order="b-b-f",
+    subgroup="enemies",
     resistances =
     {
       {
@@ -444,6 +446,7 @@ data:extend(
   {
     type = "corpse",
     name = "medium-worm-corpse",
+    subgroup="corpses",
     order="b-c-e",
     dying_speed = 0.01,
     final_render_layer = "corpse",
@@ -462,6 +465,7 @@ data:extend(
   {
     type = "corpse",
     name = "big-worm-corpse",
+    subgroup="corpses",
     order="b-c-f",
     dying_speed = 0.01,
     final_render_layer = "corpse",

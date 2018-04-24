@@ -51,6 +51,7 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    subgroup = "trees",
     order = "a[tree]-d[dead-tree]",
     autoplace =
     {
@@ -127,6 +128,7 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.4, -0.7}, {0.4, 0.9}},
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
+    subgroup = "trees",
     order = "a[tree]-a[thin-tree]-d[dark]",
     autoplace = autoplace_settings({{{30, 0.4}, {10, 0.3}}},
                                    {
@@ -207,6 +209,7 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
     selection_box = {{-0.6, -1.5}, {0.6, 0.3}},
+    subgroup = "trees",
     order = "a[tree]-e[dry-tree]",
     autoplace =
     {
@@ -343,6 +346,7 @@ data:extend(
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0005,
+    subgroup = "trees",
     order = "a[tree]-a[thin-tree]-a[green]",
     autoplace = autoplace_settings({{{35, 1}, {0, 0.5}}}),
     pictures =
@@ -414,6 +418,7 @@ data:extend(
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0005,
+    subgroup = "trees",
     order = "a[tree]-a[thin-tree]-b[dark-green]",
     autoplace = autoplace_settings({{{35, 1}, {-5, 0.3}}}),
     pictures =
@@ -485,6 +490,7 @@ data:extend(
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0005,
+    subgroup = "trees",
     order = "a[tree]-a[thin-tree]-c[red]",
     autoplace = autoplace_settings({{{5, 0.5}, {0, 0.2}}}),
     pictures =
@@ -556,6 +562,7 @@ data:extend(
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0005,
+    subgroup = "trees",
     order = "a[tree]-b[normal]-a[green]",
     autoplace = autoplace_settings({{{30, 0.7}, {10, 0.4}}}),
     pictures =
@@ -621,6 +628,7 @@ data:extend(
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0005,
+    subgroup = "trees",
     order = "a[tree]-b[normal]-b[dark]",
     autoplace = autoplace_settings({{{30, 0.8}, {15, 0.5}}}),
     pictures =
@@ -686,6 +694,7 @@ data:extend(
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0005,
+    subgroup = "trees",
     order = "a[tree]-c[red-tree]",
     autoplace = autoplace_settings({{{20, 0.5}, {5, 0.3}}}),
     pictures =
@@ -739,6 +748,7 @@ data:extend(
     selection_box = {{-0.6, -1.5}, {0.6, 0.3}},
     drawing_box = {{-0.7, -2.3}, {2, 0.9}},
     emissions_per_tick = -0.0001,
+    subgroup = "trees",
     order = "a[tree]-e[root-tree]",
     autoplace = autoplace_settings({{{35, 1}, {15, 0.7}}},
                                    {
@@ -838,6 +848,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     drawing_box = {{-0.5, -0.5}, {0.5, 0.5}},
     emissions_per_tick = 0,
+    subgroup = "trees",
     order = "a[tree]-f[coral]",
     autoplace = autoplace_settings({{{35, 0.4}, {20, 0.2}}}),
     pictures =

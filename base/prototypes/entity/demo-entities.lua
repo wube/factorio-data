@@ -22,10 +22,6 @@ function make_unit_melee_ammo_type(damagevalue)
   }
 end
 
-destroyedrailpictures = function()
-  return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
-end
-
 boilerfires =
 {
   down =
@@ -314,6 +310,7 @@ data:extend(
     running_speed = 0.15,
     distance_per_frame = 0.13,
     maximum_corner_sliding_distance = 0.7,
+    subgroup = "creatures",
     order="a",
     eat =
     {
@@ -588,6 +585,7 @@ data:extend(
     flags = {"placeable-neutral", "not-on-map"},
     minable = {mining_time = 1, result = "raw-fish"},
     max_health = 20,
+    subgroup = "creatures",
     order = "b-a",
     collision_box = {{-0.4, -0.2}, {0.4, 0.2}},
     selection_box = {{-0.5, -0.3}, {0.5, 0.3}},
@@ -760,6 +758,7 @@ data:extend(
     icon = "__base__/graphics/icons/small-biter-corpse.png",
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
+    subgroup="corpses",
     order = "c[corpse]-a[biter]-a[small]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.04,
@@ -911,6 +910,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
     max_health = 15,
     order = "b-b-a",
+    subgroup="enemies",
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
@@ -977,6 +977,7 @@ data:extend(
     minable = {mining_time = 1, result = "biter-spawner"},
     max_health = 350,
     order="b-b-g",
+    subgroup="enemies",
     resistances =
     {
       {
@@ -1078,6 +1079,7 @@ data:extend(
     selection_box = {{-2, -2}, {2, 2}},
     selectable_in_game = false,
     dying_speed = 0.04,
+    subgroup="corpses",
     order = "c[corpse]-b[biter-spawner]",
     final_render_layer = "corpse",
     animation =
@@ -1591,6 +1593,7 @@ data:extend(
       frame_width = 169,
       frame_height = 140,
       axially_symmetrical = false,
+      apply_projection = false,
       direction_count = 64,
       line_length = 8,
       shift = {1.15, 0.75}
@@ -1638,6 +1641,7 @@ data:extend(
     name = "space-module-wreck",
     icon = "__base__/graphics/icons/space-module-wreck.png",
     flags = {"placeable-neutral"},
+    subgroup = "wrecks",
     order="c-f",
     max_health = 50,
     collision_box = {{-2.2, -1}, {2.2, 1}},

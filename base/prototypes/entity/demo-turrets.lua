@@ -63,6 +63,7 @@ data:extend(
     flags = {"placeable-enemy", "not-repairable", "breaths-air"},
     order="b-b-d",
     max_health = 200,
+    subgroup="enemies",
     healing_per_tick = 0.01,
     collision_box = {{-0.9, -0.8 }, {0.9, 0.8}},
     selection_box = {{-0.9, -0.8 }, {0.9, 0.8}},
@@ -242,6 +243,7 @@ data:extend(
     type = "corpse",
     name = "small-worm-corpse",
     dying_speed = 0.01,
+    subgroup="corpses",
     final_render_layer = "corpse",
     animation =
     {

@@ -70,6 +70,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "solid-fuel-from-heavy-oil"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "lubricant"
       }
     },
     unit =

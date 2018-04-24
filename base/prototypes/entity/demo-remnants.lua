@@ -1,4 +1,8 @@
 
+destroyedrailpictures = function()
+  return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
+end
+
 data:extend(
 {
   {
@@ -13,6 +17,7 @@ data:extend(
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
+    subgroup = "remnants",
     order="d[remnants]-a[generic]-c[big]",
     animation =
     {
@@ -59,6 +64,7 @@ data:extend(
     tile_width = 2,
     tile_height = 2,
     selectable_in_game = false,
+    subgroup = "remnants",
     order="d[remnants]-a[generic]-b[medium]",
     tile_width = 2,
     tile_height = 2,
@@ -109,6 +115,7 @@ data:extend(
     tile_width = 1,
     tile_height = 1,
     selectable_in_game = false,
+    subgroup = "remnants",
     order="d[remnants]-a[generic]-a[small]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
@@ -152,6 +159,7 @@ data:extend(
     name = "straight-rail-remnants",
     icon = "__base__/graphics/icons/straight-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "remnants",
     order="d[remnants]-b[rail]-a[straight]",
     selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
     selectable_in_game = false,
@@ -167,6 +175,7 @@ data:extend(
     name = "curved-rail-remnants",
     icon = "__base__/graphics/icons/curved-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "remnants",
     order="d[remnants]-b[rail]-b[curved]",
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selectable_in_game = false,
@@ -184,6 +193,7 @@ data:extend(
     enable_inventory_bar = false,
     icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-1.png",
     flags = {"placeable-neutral"},
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-a[big]-a",
     max_health = 50,
     collision_box = {{-2.2, -1.5}, {2.2, 1.5}},
@@ -204,6 +214,7 @@ data:extend(
     enable_inventory_bar = false,
     icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-2.png",
     flags = {"placeable-neutral"},
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-a[big]-b",
     max_health = 50,
     collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
@@ -224,6 +235,7 @@ data:extend(
     enable_inventory_bar = false,
     icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-3.png",
     flags = {"placeable-neutral"},
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-a[big]-c",
     max_health = 50,
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
@@ -243,6 +255,7 @@ data:extend(
     name = "medium-ship-wreck",
     icon = "__base__/graphics/icons/ship-wreck/medium-ship-wreck.png",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-b[medium]-a",
     max_health = 200,
     collision_box = {{-1.2, -0.9}, {1.2, 0.9}},
@@ -269,6 +282,7 @@ data:extend(
     name = "small-ship-wreck",
     icon = "__base__/graphics/icons/ship-wreck/small-ship-wreck.png",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-c[small]-a",
     max_health = 200,
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
@@ -330,6 +344,7 @@ data:extend(
     name = "big-ship-wreck-grass",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-grass.png",
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck-grass]-a[big]",
     collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
     selection_box = {{-2.8, -1.7}, {2.8, 1.7}},
@@ -350,6 +365,7 @@ data:extend(
     name = "small-ship-wreck-grass",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/ship-wreck/small-ship-wreck-grass.png",
+    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     selection_box = {{-1.7, -0.6}, {1.7, 0.6}},

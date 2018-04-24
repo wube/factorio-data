@@ -322,7 +322,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "d[advanced-circuit]",
-    stack_size = 128
+    stack_size = 256
   },
   {
     type = "item",
@@ -355,12 +355,22 @@ data:extend(
   },
   {
     type = "item",
-    name = "logistic-chest-provider",
-    icon = "__base__/graphics/icons/logistic-chest-provider.png",
+    name = "logistic-chest-passive-provider",
+    icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
     flags = {"goes-to-quickbar"},
     subgroup = "logistic-network",
-    order = "b[storage]-c[logistic-chest-provider]",
-    place_result = "logistic-chest-provider",
+    order = "b[storage]-c[logistic-chest-passive-provider]",
+    place_result = "logistic-chest-passive-provider",
+    stack_size = 64
+  },
+  {
+    type = "item",
+    name = "logistic-chest-active-provider",
+    icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "logistic-network",
+    order = "b[storage]-c[logistic-chest-active-provider]",
+    place_result = "logistic-chest-active-provider",
     stack_size = 64
   },
   {
@@ -595,7 +605,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "g[plastic-bar]",
-    stack_size = 64
+    stack_size = 128
   },
   {
     type = "item",
@@ -631,7 +641,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "i[battery]",
-    stack_size = 64
+    stack_size = 256
   },
   {
     type = "item",

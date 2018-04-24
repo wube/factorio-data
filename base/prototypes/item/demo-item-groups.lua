@@ -15,8 +15,65 @@ data:extend(
   },
   {
     type = "item-group",
-    name = "logistics",
+    name = "environment",
+    icon = "__core__/graphics/neutral-force-icon.png",
+    inventory_order = "a",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "creatures",
+    group = "environment",
     order = "a",
+  },
+  {
+    type = "item-subgroup",
+    name = "trees",
+    group = "environment",
+    order = "aa",
+  },
+  {
+    type = "item-subgroup",
+    name = "grass",
+    group = "environment",
+    order = "b",
+  },
+  {
+    type = "item-subgroup",
+    name = "corpses",
+    group = "environment",
+    order = "c",
+  },
+  {
+    type = "item-subgroup",
+    name = "remnants",
+    group = "environment",
+    order = "d",
+  },
+  {
+    type = "item-subgroup",
+    name = "wrecks",
+    group = "environment",
+    order = "e",
+  },
+
+  {
+    type = "item-group",
+    name = "enemies",
+    icon = "__core__/graphics/enemy-force-icon.png",
+    inventory_order = "a",
+    order = "aa"
+  },
+  {
+    type = "item-subgroup",
+    name = "enemies",
+    group = "enemies",
+    order = "a",
+  },
+  {
+    type = "item-group",
+    name = "logistics",
+    order = "aaa",
     inventory_order = "c",
     icon = "__base__/graphics/technology/logistics.png"
   },

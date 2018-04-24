@@ -8,6 +8,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 75,
     order="b-b-b",
+    subgroup="enemies",
     resistances = 
     {
       {
@@ -108,6 +109,7 @@ data:extend(
     icon = "__base__/graphics/icons/creeper.png",
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 375,
+    subgroup="enemies",
     resistances = 
     {
       {
@@ -219,6 +221,7 @@ data:extend(
     selectable_in_game = false,
     selection_box = {{-1, -1}, {1, 1}},
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
+    subgroup="corpses",
     order = "c[corpse]-a[biter]-b[medium]",
     dying_speed = 0.04,
     final_render_layer = "corpse",
@@ -261,6 +264,7 @@ data:extend(
     icon = "__base__/graphics/icons/big-biter-corpse.png",
     selectable_in_game = false,
     selection_box = {{-1, -1}, {1, 1}},
+    subgroup="corpses",
     order = "c[corpse]-a[biter]-c[big]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
     dying_speed = 0.04,

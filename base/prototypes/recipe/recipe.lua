@@ -503,14 +503,25 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "logistic-chest-provider",
+    name = "logistic-chest-passive-provider",
     enabled = "false",
     ingredients =
     {
       {"smart-chest", 1},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-provider"
+    result = "logistic-chest-passive-provider"
+  },
+  {
+    type = "recipe",
+    name = "logistic-chest-active-provider",
+    enabled = "false",
+    ingredients =
+    {
+      {"smart-chest", 1},
+      {"advanced-circuit", 1}
+    },
+    result = "logistic-chest-active-provider"
   },
   {
     type = "recipe",
@@ -812,13 +823,13 @@ data:extend(
     name = "small-plane",
     energy_required = 30,
     enabled = "false",
-    category="advanced-crafting",
+    category="crafting",
     ingredients =
     {
-      {"plastic-bar", 250},
+      {"plastic-bar", 120},
       {"advanced-circuit", 250},
-      {"electric-engine-unit", 10},
-      {"battery", 100}
+      {"electric-engine-unit", 20},
+      {"battery", 150}
     },
     result= "small-plane"
   }

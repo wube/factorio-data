@@ -12,7 +12,11 @@ data:extend(
       },
       {
         type = "unlock-recipe",
-        recipe = "logistic-chest-provider"
+        recipe = "logistic-chest-passive-provider"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "logistic-chest-storage"
       },
       {
         type = "unlock-recipe",
@@ -80,7 +84,7 @@ data:extend(
       },
       {
         type = "unlock-recipe",
-        recipe = "logistic-chest-provider"
+        recipe = "logistic-chest-passive-provider"
       },
       {
         type = "unlock-recipe",
@@ -110,7 +114,7 @@ data:extend(
     {
       {
         type = "unlock-recipe",
-        recipe = "logistic-chest-storage"
+        recipe = "logistic-chest-active-provider"
       },
       {
         type = "unlock-recipe",
