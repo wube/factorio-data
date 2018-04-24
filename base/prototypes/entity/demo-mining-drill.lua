@@ -4,35 +4,11 @@ data:extend(
     type = "mining-drill",
     name = "basic-mining-drill",
     icon = "__base__/graphics/icons/basic-mining-drill.png",
-    flags = {
-      "placeable-neutral",
-      "player-creation"
-    },
-    minable = {
-      mining_time = 1,
-      result = "basic-mining-drill"
-    },
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 1, result = "basic-mining-drill"},
     max_health = 70,
-    collision_box = {
-      {
-        -1.4,
-        -1.4
-      },
-      {
-        1.4,
-        1.4
-      }
-    },
-    selection_box = {
-      {
-        -1.5,
-        -1.5
-      },
-      {
-        1.5,
-        1.5
-      }
-    },
+    collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     animations =
     {
       north =
@@ -77,74 +53,39 @@ data:extend(
       }
     },
     effectivity = 0.5,
-    energy_source = {
-      type = "electric",
-      input_priority = "secondary"
-    },
+    energy_source = {type = "electric", input_priority = "secondary"},
     energy_usage_per_tick = 1.5,
     animation_speed_modifier = 0.5,
     mining_speed = 3,
     pipe_length = 2,
     resource_searching_radius = 2.49,
-    vector_to_place_result = {
-      0,
-      -1.75
-    }
+    vector_to_place_result = {0, -1.75}
   },
   {
     type = "mining-drill",
     name = "burner-mining-drill",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
-    flags = {
-      "placeable-neutral",
-      "player-creation"
-    },
-    minable = {
-      mining_time = 1,
-      result = "burner-mining-drill"
-    },
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 1, result = "burner-mining-drill"},
     max_health = 40,
-    collision_box = {
-      {
-        -0.9,
-        -0.9
-      },
-      {
-        0.9,
-        0.9
-      }
-    },
-    selection_box = {
-      {
-        -1,
-        -1
-      },
-      {
-        1,
-        1
-      }
-    },
-    effectivity = 0.75,
-    energy_source = {
+    collision_box = {{ -0.9, -0.9}, {0.9, 0.9}},
+    selection_box = {{ -1, -1}, {1, 1}},
+    effectivity = 0.15,
+    energy_source =
+    {
       type = "burner",
-      burning_speed = 0.001,
-      effectivity = 1000,
+      effectivity = 1,
       fuel_inventory_size = 1,
-      heat_capacity = 100,
-      heat_loss = 0.01,
-      heat_transport_speed = 0.05,
-      smoke = {
+      smoke =
+      {
         {
           name = "smoke",
-          deviation = {
-            0.1,
-            0.1
-          },
+          deviation = {0.1, 0.1},
           frequency = 1
         }
       }
     },
-    energy_usage_per_tick = 0.75,
+    energy_usage_per_tick = 3,
     animation_speed_modifier = 0.5,
     mining_speed = 2.5,
     pipe_length = 1,
@@ -192,10 +133,7 @@ data:extend(
       }
     },
     resource_searching_radius = 0.99,
-    vector_to_place_result = {
-      -0.5,
-      -1.3
-    }
+    vector_to_place_result = {-0.5, -1.3}
   }
 }
 )

@@ -150,6 +150,25 @@ data:extend(
   },
   {
     type = "technology",
+    name = "automation-3",
+    icon = "__base__/graphics/technology/automation.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "assembling-machine-3"
+      }
+    },
+    prerequisites = {"electronics", "modules"},
+    unit =
+    {
+      count = 100,
+      ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}, {"science-pack-3", 1}},
+      time = 60
+    }
+  },
+  {
+    type = "technology",
     name = "chemistry",
     icon = "__base__/graphics/technology/chemistry.png",
     unit =
@@ -419,14 +438,13 @@ data:extend(
     prerequisites = {"automated-rail-transportation"},
     unit =
     {
-      count = 100,
+      count = 150,
       ingredients =
       {
         {"science-pack-1", 2},
         {"science-pack-2", 1},
-        {"science-pack-3", 1},
       },
-      time = 20
+      time = 30
     }
   },
   {
@@ -1300,6 +1318,76 @@ data:extend(
       time = 30
     },
     upgrade = "true"
+  },
+  {
+    type = "technology",
+    name = "advanced-material-processing",
+    icon = "__base__/graphics/technology/advanced-material-processing.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "steel-furnace"
+      }
+    },
+    prerequisites = {"steel-processing"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 30
+    }
+  },
+  {
+    type = "technology",
+    name = "advanced-material-processing-2",
+    icon = "__base__/graphics/technology/advanced-material-processing.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "electric-furnace"
+      }
+    },
+    prerequisites = {"advanced-material-processing"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 30
+    }
+  },
+  {
+    type = "technology",
+    name = "effect-transmission",
+    icon = "__base__/graphics/technology/effect-transmission.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "basic-beacon"
+      }
+    },
+    prerequisites = {"modules", "advanced-electronics-2"},
+    unit =
+    {
+      count = 75,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+      },
+      time = 100
+    }
   }
 }
 )

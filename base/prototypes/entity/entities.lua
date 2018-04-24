@@ -778,6 +778,7 @@ data:extend(
     max_health = 150,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    fast_replaceable_group = "assembling-machine",
     animation =
     {
       filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
@@ -796,7 +797,39 @@ data:extend(
       input_priority = "secondary"
     },
     energy_usage_per_tick = 2.5,
-    ingredient_count = 4
+    ingredient_count = 4,
+    module_slots = 2
+  },
+  {
+    type = "assembling-machine",
+    name = "assembling-machine-3",
+    icon = "__base__/graphics/icons/assembling-machine-3.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
+    max_health = 250,
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    fast_replaceable_group = "assembling-machine",
+    animation =
+    {
+      filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
+      priority = "medium",
+      frame_width = 141,
+      frame_height = 120,
+      frame_count = 32,
+      line_length = 6,
+      shift = {0.7, 0.12}
+    },
+    crafting_categories = {"crafting"},
+    effectivity = 3,
+    energy_source =
+    {
+      type = "electric",
+      input_priority = "secondary"
+    },
+    energy_usage_per_tick = 3.5,
+    ingredient_count = 4,
+    module_slots = 4
   },
   {
     type = "car",
@@ -805,18 +838,14 @@ data:extend(
     flags = {"pushable", "placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "car"},
     max_health = 2000,
-    collision_box = {{-0.7, -1.2}, {0.7, 1.2}},
-    selection_box = {{-0.7, -1.2}, {0.7, 1.2}},
-    acceleration_per_energy = 0.4,
+    collision_box = {{-0.7, -1}, {0.7, 1}},
+    selection_box = {{-0.7, -1}, {0.7, 1}},
+    acceleration_per_energy = 0.001,
     breaking_speed = 0.01,
     burner =
     {
-      burning_speed = 0.005,
-      effectivity = 5,
+      effectivity = 1,
       fuel_inventory_size = 1,
-      heat_capacity = 0.1,
-      heat_loss = 0,
-      heat_transport_speed = 1,
       smoke =
       {
         {
@@ -832,18 +861,21 @@ data:extend(
         }
       }
     },
-    consumption = 0.1,
+    consumption = 10,
     friction = 0.02,
     light = {intensity = 0.4, size = 25},
     pictures =
     {
       filename = "__base__/graphics/entity/car/car-sheet.png",
       priority = "high",
+      line_length = 8,
       frame_width = 130,
-      frame_height = 130,
-      direction_count = 9
+      frame_height = 93,
+      shift={0.5, 0},
+      axially_symmetrical = false,
+      direction_count = 64
     },
-    rotation_speed = 0.03,
+    rotation_speed = 0.015,
     weight = 50,
     inventory_size = 12
   },
@@ -865,8 +897,9 @@ data:extend(
     {
       filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 48,
+      height = 34,
+      shift = {0.2, 0}
     }
   },
   {
@@ -883,8 +916,9 @@ data:extend(
     picture = {
       filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 48,
+      height = 34,
+      shift = {0.2, 0}
     }
   },
   {
@@ -909,8 +943,22 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smart-chest/smart-chest.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 62,
+      height = 41,
+      shift = {0.4, -0.13}
+    },
+    connection_point =
+    {
+      shadow =
+      {
+        red = {0.7, -0.3},
+        green = {0.7, -0.3}
+      },
+      wire =
+      {
+        red = {0.3, -0.8},
+        green = {0.3, -0.8}
+      }
     }
   },
   {
@@ -1152,6 +1200,7 @@ data:extend(
     max_health = 1000,
     collision_box = {{-0.6, -2.6}, {0.9, 2.6}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
+    drawing_box = {{-1, -4}, {1, 3}},
     weight = 2000,
     max_speed = 1.2,
     max_power = 10,
@@ -1164,12 +1213,8 @@ data:extend(
     energy_source =
     {
       type = "burner",
-      burning_speed = 0.1,
-      effectivity = 1000,
+      effectivity = 1,
       fuel_inventory_size = 3,
-      heat_capacity = 100,
-      heat_loss = 0.01,
-      heat_transport_speed = 0.05,
       smoke =
       {
         {
@@ -1214,7 +1259,7 @@ data:extend(
     name = "cargo-wagon",
     icon = "__base__/graphics/icons/cargo-wagon.png",
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    inventory_size = 10,
+    inventory_size = 15,
     minable = {mining_time = 1, result = "cargo-wagon"},
     max_health = 500,
     collision_box = {{-0.6, -2.4}, {0.9, 2.4}},
@@ -1631,17 +1676,26 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "lab"},
     max_health = 120,
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    animation =
+    on_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
       priority = "high",
-      frame_width = 176,
-      frame_height = 186,
-      frame_count = 32,
-      line_length = 6,
-      shift = {1.2, 0.5}
+      frame_width = 113,
+      frame_height = 91,
+      frame_count = 33,
+      line_length = 11,
+      shift = {0.2, 0.15}
+    },
+    off_animation =
+    {
+      filename = "__base__/graphics/entity/lab/lab.png",
+      priority = "high",
+      frame_width = 113,
+      frame_height = 91,
+      frame_count = 1,
+      shift = {0.2, 0.15}
     },
     energy_source =
     {
@@ -1674,15 +1728,15 @@ data:extend(
     {
       filename = "__base__/graphics/entity/logistic-robot/logistic-robot.png",
       priority = "high",
-      width = 50,
-      height = 24
+      width = 37,
+      height = 34
     },
     shadow =
     {
       filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
       priority = "high",
-      width = 50,
-      height = 24
+      width = 52,
+      height = 37
     }
   },
   {
@@ -1701,8 +1755,9 @@ data:extend(
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-provider.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 38,
+      height = 32,
+      shift = {0.1, 0}
     }
   },
   {
@@ -1721,8 +1776,9 @@ data:extend(
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-storage.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 38,
+      height = 32,
+      shift = {0.1, 0}
     }
   },
   {
@@ -1741,8 +1797,9 @@ data:extend(
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-requester.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 38,
+      height = 32,
+      shift = {0.1, 0}
     }
   },
   {
@@ -2191,6 +2248,142 @@ data:extend(
       output_flow_limit = 2,
       buffer_capacity = 2500
     }
+  },
+  {
+    type = "furnace",
+    name = "steel-furnace",
+    icon = "__base__/graphics/icons/steel-furnace.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 1, result = "steel-furnace"},
+    max_health = 50,
+    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
+    selection_box = {{-0.8, -1}, {0.8, 1}},
+    smelting_categories = {"smelting"},
+    result_inventory_size = 1,
+    smelting_energy_consumption = 3,
+    smelting_speed = 1,
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "burner",
+      effectivity = 1,
+      fuel_inventory_size = 1,
+      smoke =
+      {
+        {
+          name = "smoke",
+          deviation = {0.1, 0.1},
+          frequency = 0.5,
+          position = {0, -2.3}
+        }
+      }
+    },
+    drawing_scale = 1,
+    on_animation =
+    {
+      filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
+      priority = "extra-high",
+      frame_width = 91,
+      frame_height = 69,
+      frame_count = 1,
+      shift = {0.5, 0.05 }
+    },
+    off_animation =
+    {
+      filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
+      priority = "extra-high",
+      frame_width = 91,
+      frame_height = 69,
+      frame_count = 1,
+      shift = {0.5, 0.05 }
+    },
+    fire_animation =
+    {
+      filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
+      priority = "extra-high",
+      frame_width = 36,
+      frame_height = 19,
+      frame_count = 12,
+      shift = { -0.05, 0.65}
+    },
+    fast_replaceable_group = "furnace"
+  },
+  {
+    type = "furnace",
+    name = "electric-furnace",
+    icon = "__base__/graphics/icons/electric-furnace.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 1, result = "electric-furnace"},
+    max_health = 40,
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    module_slots = 2,
+    smelting_categories = {"smelting"},
+    result_inventory_size = 1,
+    smelting_speed = 0.333,
+    smelting_energy_consumption = 3,
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "electric",
+      input_priority = "secondary"
+    },
+    drawing_scale = 1,
+    on_animation =
+    {
+      filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
+      priority = "extra-high",
+      x = 131,
+      frame_width = 131,
+      frame_height = 102,
+      frame_count = 12,
+      shift = {0.5, 0.05 }
+    },
+    off_animation =
+    {
+      filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
+      priority = "extra-high",
+      frame_width = 131,
+      frame_height = 102,
+      frame_count = 1,
+      shift = {0.5, 0.05 }
+    },
+    fast_replaceable_group = "furnace"
+  },
+  {
+    type = "beacon",
+    name = "basic-beacon",
+    icon = "__base__/graphics/icons/basic-beacon.png",
+    flags = {"placeable-player", "player-creation"},
+    minable = {mining_time = 1, result = "basic-beacon"},
+    max_health = 120,
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    animation =
+    {
+      filename = "__base__/graphics/entity/basic-beacon/basic-beacon.png",
+      priority = "high",
+      frame_width = 176,
+      frame_height = 186,
+      frame_count = 32,
+      line_length = 6,
+      shift = {1.2, 0.5}
+    },
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/basic-beacon/beacon-radius-visualization.png",
+      width = 12,
+      height = 12
+    },
+    supply_area_distance = 3,
+    energy_source =
+    {
+      type = "electric",
+      input_priority = "secondary"
+    },
+    energy_usage_per_tick = 8,
+    distribution_effectivity = 0.5,
+    num_module_slots = 2
   }
 }
 )

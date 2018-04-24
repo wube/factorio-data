@@ -60,6 +60,17 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "assembling-machine-3",
+    enabled = "false",
+    ingredients =
+    {
+      {"speed-module", 4},
+      {"assembling-machine-2", 2}
+    },
+    result = "assembling-machine-3"
+  },
+  {
+    type = "recipe",
     name = "car",
     enabled = "false",
     ingredients =
@@ -501,6 +512,34 @@ data:extend(
       {"electronic-circuit", 20}
     },
     result = "basic-accumulator"
-  }
+  },
+  {
+    type = "recipe",
+    name = "steel-furnace",
+    ingredients = {{"steel-plate", 8}, {"stone-brick", 10}},
+    result = "steel-furnace",
+    energy_required = 5
+  },
+  {
+    type = "recipe",
+    name = "electric-furnace",
+    ingredients = {{"steel-plate", 15}, {"advanced-circuit", 5}, {"stone-brick", 10}},
+    result = "electric-furnace",
+    energy_required = 10
+  },
+  {
+    type = "recipe",
+    name = "basic-beacon",
+    enabled = "false",
+    energy_required = 100,
+    ingredients =
+    {
+      {"electronic-circuit", 20},
+      {"advanced-circuit", 20},
+      {"steel-plate", 10},
+      {"copper-cable", 10}
+    },
+    result = "basic-beacon"
+  },
 }
 )

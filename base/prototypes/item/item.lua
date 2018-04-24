@@ -129,6 +129,16 @@ data:extend(
   },
   {
     type = "item",
+    name = "assembling-machine-3",
+    icon = "__base__/graphics/icons/assembling-machine-3.png",
+    flags = {"goes-to-quickbar"},
+    group = "production",
+    order = "h-f-c",
+    place_result = "assembling-machine-3",
+    stack_size = 64
+  },
+  {
+    type = "item",
     name = "solar-panel",
     icon = "__base__/graphics/icons/solar-panel.png",
     flags = {"goes-to-quickbar"},
@@ -449,6 +459,36 @@ data:extend(
     order = "h-h-g",
     place_result = "basic-accumulator",
     stack_size = 32
+  },
+  {
+    type = "item",
+    name = "steel-furnace",
+    icon = "__base__/graphics/icons/steel-furnace.png",
+    flags = {"goes-to-quickbar"},
+    group = "production",
+    order = "h-b-b",
+    place_result = "steel-furnace",
+    stack_size = 64
+  },
+  {
+    type = "item",
+    name = "electric-furnace",
+    icon = "__base__/graphics/icons/electric-furnace.png",
+    flags = {"goes-to-quickbar"},
+    group = "production",
+    order = "h-b-b",
+    place_result = "electric-furnace",
+    stack_size = 64
+  },
+  {
+    type = "item",
+    name = "basic-beacon",
+    icon = "__base__/graphics/icons/basic-beacon.png",
+    flags = {"goes-to-quickbar"},
+    group = "production",
+    order = "l",
+    place_result = "basic-beacon",
+    stack_size = 8
   }
 }
 )

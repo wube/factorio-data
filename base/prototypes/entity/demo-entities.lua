@@ -359,6 +359,49 @@ data:extend(
         height = 94,
         shift = {0.5, -0.8}
       }
+    },
+    autoplace = {
+      -- autoplace controls which entities are generated on a new map
+
+      -- sharpness == 0 means that sum of peak influences is equal to the probability,
+      -- sharpness == 1 means that sum of influences < 0.5 has probability 0, and >0.5 has probability 1
+      sharpness = 0.2,
+
+      -- List of optimal conditions for placing the enitty
+      -- Each peak can specify a number of dimensions and a noise, both are summed together.
+      -- If there is only a single peak, it may be included directly in the autoplace block
+      -- (see dry tree or fish)
+      peaks = {
+        {
+          -- Dry trees at places without water
+
+          noise_layer = "dry-trees", -- Name of the layer, must be defined before use
+          noise_influence = 0.11, -- Scale of the noise outputs.
+          noise_persistence = 0.9,
+
+          influence = 0.11, -- Influence of perfect conditions and penalty for bad conditions
+
+          -- There can be a number of dimensions controling the placement.
+          -- Dimensions each contain a name of a control variable: "starting_area_weight",
+          -- "roughness", "elevation","water", "temperature",
+          -- Unspecified dimensions don't add any influence.
+          water_optimal = 0.05, -- Optimal value of the control variable
+          water_range = 0.0, -- Width of perfect conditions for the control variable
+          water_max_range = 0.2 -- Width of the interpolation range. Values further from the
+                                -- optimum produce maximal negative influence.
+        },
+        {
+          -- Dry trees in between the regular trees
+          noise_layer = "trees",
+          noise_influence = 0.2,
+          noise_persistence = 0.5,
+
+          influence = 0.15,
+          water_optimal = 0.2,
+          water_range = 0.1,
+          water_max_range = 0.2
+        }
+      }
     }
   },
   {
@@ -463,6 +506,19 @@ data:extend(
         height = 164,
         shift = {1.6, -1.2}
       }
+    },
+    autoplace =
+    {
+      sharpness = 0.5,
+
+      noise_layer = "trees",
+      noise_influence = 0.9,
+      noise_persistence = 0.5,
+
+      influence = 0.4,
+      water_optimal = 0.2,
+      water_range = 0.1,
+      water_max_range = 0.2
     }
   },
   {
@@ -476,17 +532,14 @@ data:extend(
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_speed = 1,
+    smelting_energy_consumption = 3,
+    smelting_speed = 0.5,
     source_inventory_size = 1,
     energy_source =
     {
       type = "burner",
-      burning_speed = 0.001,
-      effectivity = 1000,
+      effectivity = 1,
       fuel_inventory_size = 1,
-      heat_capacity = 100,
-      heat_loss = 0.01,
-      heat_transport_speed = 0.005,
       smoke =
       {
         {
@@ -497,24 +550,35 @@ data:extend(
         }
       }
     },
-    drawing_scale = 0.7,
-    picture =
+    drawing_scale = 1,
+    on_animation =
     {
       filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
       priority = "extra-high",
-      width = 96,
-      height = 96,
-      shift = {0.35, -0.1 }
+      frame_width = 81,
+      frame_height = 64,
+      frame_count = 1,
+      shift = {0.5, 0.05 }
+    },
+    off_animation =
+    {
+      filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
+      priority = "extra-high",
+      frame_width = 81,
+      frame_height = 64,
+      frame_count = 1,
+      shift = {0.5, 0.05 }
     },
     fire_animation =
     {
       filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
       priority = "extra-high",
-      frame_width = 18,
-      frame_height = 17,
-      frame_count = 16,
-      shift = { -0.021875, 0.5234375}
-    }
+      frame_width = 23,
+      frame_height = 27,
+      frame_count = 12,
+      shift = { 0.078125, 0.5234375}
+    },
+    fast_replaceable_group = "furnace"
   },
   {
     type = "transport-belt",
@@ -552,8 +616,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/fish/fish-1.png",
         priority = "extra-high",
-        width = 32,
-        height = 32
+        width = 22,
+        height = 36
       },
       {
         filename = "__base__/graphics/entity/fish/fish-2.png",
@@ -561,6 +625,9 @@ data:extend(
         width = 32,
         height = 32
       }
+    },
+    autoplace = {
+      influence = 0.01
     }
   },
   {
@@ -573,14 +640,11 @@ data:extend(
     fast_replaceable_group = "pipe",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    energy_consumption = 6.5,
     burner =
     {
-      burning_speed = 0.003,
-      effectivity = 2000,
+      effectivity = 0.5,
       fuel_inventory_size = 1,
-      heat_capacity = 100,
-      heat_loss = 0.01,
-      heat_transport_speed = 0.5,
       smoke =
       {
         {
@@ -735,15 +799,16 @@ data:extend(
     minable = {mining_time = 1, result = "wooden-chest"},
     max_health = 20,
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     inventory_size = 16,
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 46,
+      height = 33,
+      shift = {0.3, 0}
     }
   },
   {
@@ -1238,17 +1303,13 @@ data:extend(
     max_health = 10,
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    energy_per_movement = 10,
-    energy_per_rotation = 10,
+    energy_per_movement = 100,
+    energy_per_rotation = 100,
     energy_source =
     {
       type = "burner",
-      burning_speed = 0.001,
-      effectivity = 1000,
+      effectivity = 1,
       fuel_inventory_size = 1,
-      heat_capacity = 100,
-      heat_loss = 0.01,
-      heat_transport_speed = 0.005,
       smoke =
       {
         {
@@ -1397,6 +1458,17 @@ data:extend(
       filename = "__core__/graphics/red-arrow/red-arrow-arrow.png",
       width = "1030",
       height = "230"
+    }
+  },
+  {
+    type = "arrow",
+    name = "red-arrow-with-circle",
+    flags = {"placeable-off-grid"},
+    arrow_picture =
+    {
+      filename = "__core__/graphics/red-arrow/red-arrow-arrow.png",
+      width = "1030",
+      height = "230"
     },
     circle_picture =
     {
@@ -1458,6 +1530,7 @@ data:extend(
     max_health = 100,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    fast_replaceable_group = "assembling-machine",
     animation =
     {
       filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",

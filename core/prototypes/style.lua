@@ -73,7 +73,8 @@ data:extend(
     tooltip_title_label_style =
     {
       type = "label_style",
-      parent = "description_label_style"
+      parent = "description_label_style",
+      font = "default-bold"
     },
     recipe_tooltip_cannot_craft_label_style =
     {
@@ -208,6 +209,19 @@ data:extend(
           y = 72
         }
       }
+    },
+    logistic_button_slot_style =
+    {
+      type = "button_style",
+      parent = "slot_button_style"
+    },
+    logistic_button_selected_slot_style =
+    {
+      type = "button_style",
+      parent = "recipe_group_selected_slot_style",
+      scalable = false,
+      width = 32,
+      height = 32,
     },
     slot_button_style =
     {
@@ -746,6 +760,70 @@ data:extend(
       type = "listbox_style",
       parent = "train_station_listbox_style"
     },
+    load_game_mods_listbox_style =
+    {
+      type = "listbox_style",
+      parent = "listbox_style",
+      font = "default",
+      item_style = {
+        parent = "listbox_item_style",
+        default =
+        {
+          font_color = {r=1, g=1, b=1},
+          background_color = {r=0, g=0, b=0, a=0}
+        },
+        hovered =
+        {
+          font_color = {r=1, g=1, b=1},
+          background_color = {r=0, g=0, b=0, a=0}
+        },
+        selected =
+        {
+          font_color = {r=1, g=1, b=1},
+          background_color = {r=0, g=0, b=0, a=0}
+        }
+      }
+    },
+    load_game_mod_invalid_listbox_item_style =
+    {
+      type = "listbox_item_style",
+      parent = "listbox_item_style",
+      default =
+      {
+        font_color = warning_red_color,
+        background_color = {r=0, g=0, b=0, a=0}
+      },
+      hovered =
+      {
+        font_color = warning_red_color,
+        background_color = {r=0, g=0, b=0, a=0}
+      },
+      selected =
+      {
+        font_color = warning_red_color,
+        background_color = {r=0, g=0, b=0, a=0}
+      }
+    },
+    load_game_mod_disabled_listbox_item_style =
+    {
+      type = "listbox_item_style",
+      parent = "listbox_item_style",
+      default =
+      {
+        font_color = {r=0.5, g=0.5, b=0.5},
+        background_color = {r=0, g=0, b=0, a=0}
+      },
+      hovered =
+      {
+        font_color = {r=0.5, g=0.5, b=0.5},
+        background_color = {r=0, g=0, b=0, a=0}
+      },
+      selected =
+      {
+        font_color = {r=0.5, g=0.5, b=0.5},
+        background_color = {r=0, g=0, b=0, a=0}
+      }
+    },
     flow_style =
     {
       type = "flow_style",
@@ -756,6 +834,17 @@ data:extend(
     {
       type = "listbox_style",
       minimal_width = 500
+    },
+    machine_right_part_flow_style =
+    {
+      type = "flow_style",
+      vertical_spacing = 5
+    },
+    table_spacing_flow_style =
+    {
+      type = "flow_style",
+      horizontal_spacing = 5,
+      vertical_spacing = 5
     },
     table_style =
     {
@@ -899,6 +988,15 @@ data:extend(
       title_bottom_padding = 5,
       type = "frame_style",
     },
+    machine_frame_style =
+    {
+      type = "frame_style",
+      parent = "inner_frame_in_outer_frame_style",
+      flow_style =
+      {
+        horizontal_spacing = 5
+      }
+    },
     inner_frame_style =
     {
       type = "frame_style",
@@ -929,6 +1027,12 @@ data:extend(
         }
       }
     },
+    naked_frame_style =
+    {
+      type = "frame_style",
+      parent = "inner_frame_style",
+      title_bottom_padding = 0
+    },
     scenario_message_dialog_frame_style =
     {
       type = "frame_style",
@@ -944,22 +1048,7 @@ data:extend(
     goal_frame_style =
     {
       type = "frame_style",
-      graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 0,
-        right_monolith_border = 0,
-        bottom_monolith_border = 0,
-        left_monolith_border = 0,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 1,
-          height = 1,
-          x = 11,
-          y = 3
-        }
-      }
+      parent = "frame_style"
     },
     menu_frame_style =
     {
@@ -1030,6 +1119,7 @@ data:extend(
     production_progressbar_style =
     {
       type = "progressbar_style",
+      -- exact size is calculated dynamically
     },
     burning_progressbar_style =
     {
@@ -1065,6 +1155,18 @@ data:extend(
       type = "progressbar_style",
       parent = "health_progressbar_style",
       smooth_color = {r=0.8, g=0.8, b=0.8}
+    },
+    mining_progressbar_style =
+    {
+      type = "progressbar_style",
+      parent = "health_progressbar_style",
+      smooth_color = default_orange_color
+    },
+    bonus_progressbar_style =
+    {
+      type = "progressbar_style",
+      parent = "production_progressbar_style",
+      smooth_color = {r = 0.8, b = 0.8}
     },
     checkbox_style =
     {
@@ -1151,6 +1253,7 @@ data:extend(
     {
       type = "tab_style",
       font = "default-bold",
+      border_color = {r = 0.6, g = 0.6, b = 0.6},
       default_font_color = {r = 1, g = 1, b = 1},
       selected_font_color = default_orange_color,
       top_padding = 8,

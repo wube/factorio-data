@@ -5,7 +5,7 @@ data:extend(
     name = "coal",
     icon = "__base__/graphics/icons/coal.png",
     flags = {"goes-to-main-inventory"},
-    fuel_value = 1,
+    fuel_value = "8KJ",
     group = "production",
     order = "a-a",
     stack_size = 64
@@ -15,7 +15,7 @@ data:extend(
     name = "raw-wood",
     icon = "__base__/graphics/icons/raw-wood.png",
     flags = {"goes-to-main-inventory"},
-    fuel_value = 0.5,
+    fuel_value = "4KJ",
     group = "production",
     order = "a-b",
     stack_size = 64
@@ -52,7 +52,7 @@ data:extend(
     name = "wood",
     icon = "__base__/graphics/icons/wood.png",
     flags = {"goes-to-main-inventory"},
-    fuel_value = 0.4,
+    fuel_value = "0.6KJ",
     group = "production",
     order = "b-a",
     stack_size = 64
@@ -116,7 +116,7 @@ data:extend(
     name = "wooden-chest",
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"goes-to-quickbar"},
-    fuel_value = 0.8,
+    fuel_value = "6KJ",
     group = "logistics",
     order = "h-a-a",
     place_result = "wooden-chest",

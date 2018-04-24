@@ -27,10 +27,11 @@ data:extend(
       "flying"
     },
     unit = {
-      count = 250,
+      count = 150,
       ingredients = {
         {"science-pack-1", 1},
-        {"science-pack-2", 1}
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
       },
       time = 30
     }
@@ -73,9 +74,8 @@ data:extend(
       "logistic-robot-speed-1"
     },
     unit = {
-      count = 75,
+      count = 100,
       ingredients = {
-        {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1}
@@ -173,9 +173,8 @@ data:extend(
       "logistic-robotics"
     },
     unit = {
-      count = 150,
+      count = 200,
       ingredients = {
-        {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1}
@@ -231,6 +230,107 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 60
+    },
+    upgrade = "true"
+  },
+  {
+    type = "technology",
+    name = "character-logistic-slots-1",
+    icon = "__base__/graphics/technology/character-logistic-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"logistic-robotics"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 30
+    },
+    upgrade = "true"
+  },
+  {
+    type = "technology",
+    name = "character-logistic-slots-2",
+    icon = "__base__/graphics/technology/character-logistic-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"character-logistic-slots-1"},
+    unit =
+    {
+      count = 150,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 30
+    },
+    upgrade = "true"
+  },
+  {
+    type = "technology",
+    name = "character-logistic-slots-3",
+    icon = "__base__/graphics/technology/character-logistic-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"character-logistic-slots-2"},
+    unit =
+    {
+      count = 200,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 30
+    },
+    upgrade = "true"
+  },
+  {
+    type = "technology",
+    name = "character-logistic-slots-4",
+    icon = "__base__/graphics/technology/character-logistic-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"character-logistic-slots-3"},
+    unit =
+    {
+      count = 250,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"alien-science-pack", 1}
+      },
+      time = 30
     },
     upgrade = "true"
   }
