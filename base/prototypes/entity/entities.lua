@@ -3392,11 +3392,6 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
-    energy_source =
-    {
-      type = "electric",
-      output_priority = "secondary"
-    },
     module_slots = 2,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     crafting_categories = {"oil-processing"},

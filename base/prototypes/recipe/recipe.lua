@@ -485,6 +485,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
+      {"flying-robot-frame", 1},
       {"advanced-circuit", 2}
     },
     result = "logistic-robot"

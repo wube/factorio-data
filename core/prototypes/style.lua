@@ -133,7 +133,7 @@ data:extend(
     {
       type = "label_style",
       parent = "label_style",
-      width = 70
+      width = 60
     },
     mod_dependency_invalid_label_style =
     {
@@ -1245,6 +1245,17 @@ data:extend(
       parent = "inner_frame_style",
       title_bottom_padding = 0
     },
+    technology_preview_frame_style = 
+    {
+      type = "frame_style",
+      parent = "inner_frame_in_outer_frame_style",
+      flow_style =
+      {
+        max_on_row = 1,
+        minimal_width = 450,
+        resize_row_to_width = true
+      }
+    },
     scenario_message_dialog_style =
     {
       type = "frame_style",
@@ -1432,7 +1443,7 @@ data:extend(
     {
       type = "progressbar_style",
       parent = "progressbar_style",
-      smooth_size = 180
+      smooth_size = 160
     },
     checkbox_style =
     {

@@ -627,7 +627,7 @@ data:extend(
       }
     },
     fast_replaceable_group = "pipe",
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {

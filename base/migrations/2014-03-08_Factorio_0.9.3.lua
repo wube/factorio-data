@@ -1,0 +1,1 @@
+game.player.force.resetrecipes()

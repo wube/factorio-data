@@ -44,7 +44,8 @@ data:extend(
     {
       mining_particle = "wooden-particle",
       mining_time = 1,
-      result = "raw-wood"
+      result = "raw-wood",
+      count = 2
     },
     emissions_per_tick = -0.0001,
     max_health = 20,
@@ -197,6 +198,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
     minable =
     {
+      count = 4,
       mining_particle = "wooden-particle",
       mining_time = 1,
       result = "raw-wood"

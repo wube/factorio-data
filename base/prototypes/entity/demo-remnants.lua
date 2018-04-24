@@ -8,6 +8,8 @@ data:extend(
     flags = {"placeable-neutral", "not-on-map"},
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    tile_width = 3,
+    tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
@@ -54,6 +56,8 @@ data:extend(
     icon = "__base__/graphics/icons/remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
     selectable_in_game = false,
     order="d[remnants]-a[generic]-b[medium]",
     tile_width = 2,
@@ -102,6 +106,8 @@ data:extend(
     icon = "__base__/graphics/icons/remnants.png",
     flags = {"placeable-neutral", "not-on-map"},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
     selectable_in_game = false,
     order="d[remnants]-a[generic]-a[small]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
