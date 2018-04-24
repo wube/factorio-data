@@ -1,3 +1,7 @@
+if game.isdemo() then
+  return
+end
+
 game.player.force.resetrecipes()
 game.player.force.resettechnologies()
 

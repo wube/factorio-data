@@ -2312,15 +2312,22 @@ data:extend(
     {
       {-1.5, -0.5}, {1.5, -0.5}, {1.5, 1.5}, {-1.5, 1.5},
     },
+    base =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport-base.png",
+      width = 143,
+      height = 135,
+      shift = {0.5, 0.25}
+    },
     base_animation =
     {
-      filename = "__base__/graphics/entity/roboport/roboport.png",
+      filename = "__base__/graphics/entity/roboport/roboport-base-animation.png",
       priority = "medium",
-      frame_width = 143,
-      frame_height = 151,
+      frame_width = 42,
+      frame_height = 31,
       frame_count = 8,
-      shift = {0.5, 0},
-      animation_speed = 0.5
+      animation_speed = 0.5,
+      shift = {-0.5315, -1.9375}
     },
     door_animation =
     {
@@ -2436,8 +2443,7 @@ data:extend(
         frame_height = 56,
         frame_count = 8,
         shift = {0.09375, 0.03125},
-        animation_speed = 0.5,
-        run_mode = "backward"
+        animation_speed = 0.5
       },
       east =
       {
@@ -2446,8 +2452,7 @@ data:extend(
         frame_height = 56,
         frame_count = 8,
         shift = {0.265625, -0.21875},
-        animation_speed = 0.5,
-        run_mode = "backward"
+        animation_speed = 0.5
       },
       south =
       {
@@ -2456,8 +2461,7 @@ data:extend(
         frame_height = 58,
         frame_count = 8,
         shift = {0.421875, -0.125},
-        animation_speed = 0.5,
-        run_mode = "backward"
+        animation_speed = 0.5
       },
       west =
       {
@@ -2466,8 +2470,7 @@ data:extend(
         frame_height = 44,
         frame_count = 8,
         shift = {0.3125, 0.0625},
-        animation_speed = 0.5,
-        run_mode = "backward"
+        animation_speed = 0.5
       }
     }
   },
@@ -3177,7 +3180,7 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
     distance_per_frame = 0.13,
-    time_to_live = 1800,
+    time_to_live = 60 * 45,
     speed = 0.01,
     destroy_action =
     {
@@ -3196,7 +3199,7 @@ data:extend(
     {
       ammo_category = "combat-robot-laser",
       cooldown = 20,
-      damage_modifier = 0.5,
+      damage_modifier = 0.7,
       projectile_center = {0, 0},
       projectile_creation_distance = 0.6,
       range = 15,

@@ -1483,7 +1483,12 @@ data:extend(
   {
     type = "decorative",
     name = "root-A",
-    flags = {"not-on-map"},
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    icon = "__base__/graphics/icons/root-a.png",
+    subgroup = "grass",
+    order = "b[decorative]-h[root]-a[small]",
+    selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-z[other]",
@@ -1597,7 +1602,12 @@ data:extend(
   {
     type = "decorative",
     name = "root-B",
-    flags = {"not-on-map"},
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    icon = "__base__/graphics/icons/root-b.png",
+    subgroup = "grass",
+    order = "b[decorative]-h[root]-b[big]",
+    selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-z[other]",
