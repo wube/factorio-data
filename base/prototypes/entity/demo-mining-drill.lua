@@ -67,7 +67,13 @@ data:extend(
     pipe_length = 2,
     resource_searching_radius = 2.49,
     vector_to_place_result = {0, -1.75},
-    module_slots = 3
+    module_slots = 3,
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/basic-mining-drill/mining-drill-radius-visualization.png",
+      width = 12,
+      height = 12
+    }
   },
   {
     type = "mining-drill",
@@ -95,7 +101,7 @@ data:extend(
         }
       }
     },
-    energy_usage_per_tick = 3,
+    energy_usage_per_tick = 5,
     animation_speed_modifier = 0.5,
     mining_speed = 2.5,
     pipe_length = 1,

@@ -18,8 +18,8 @@ data:extend(
     {
       control = "copper-ore",
       sharpness = 1,
-      richness_multiplier = 10000,
-      richness_base = 200,
+      richness_multiplier = 12000,
+      richness_base = 350,
         -- Valid only for resources, the resulting influence before sharpening
         -- is multiplied by richness-multiplier and added to
         -- richness_base to determine the final resource richness.
@@ -106,8 +106,8 @@ data:extend(
     {
       control = "iron-ore",
       sharpness = 1,
-      richness_multiplier = 12000,
-      richness_base = 200,
+      richness_multiplier = 15000,
+      richness_base = 350,
       peaks = {
         {
           influence = 0.2,
@@ -194,7 +194,7 @@ data:extend(
       control = "coal",
       sharpness = 1,
       richness_multiplier = 12000,
-      richness_base = 200,
+      richness_base = 350,
       peaks = {
         {
           influence = 0.2,

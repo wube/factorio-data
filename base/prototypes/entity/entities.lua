@@ -901,7 +901,8 @@ data:extend(
     },
     energy_usage_per_tick = 2.5,
     ingredient_count = 4,
-    module_slots = 2
+    module_slots = 2,
+    allowed_effects = {"consumption", "speed", "productivity", "pollution"}
   },
   {
     type = "assembling-machine",
@@ -941,7 +942,8 @@ data:extend(
     },
     energy_usage_per_tick = 3.5,
     ingredient_count = 4,
-    module_slots = 4
+    module_slots = 4,
+    allowed_effects = {"consumption", "speed", "productivity", "pollution"}
   },
   {
     type = "car",
@@ -2735,6 +2737,7 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    allowed_effects = {"consumption", "speed", "pollution"},
     animation =
     {
       filename = "__base__/graphics/entity/basic-beacon/basic-beacon.png",

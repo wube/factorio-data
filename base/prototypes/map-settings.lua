@@ -32,6 +32,7 @@ data:extend(
     },
     enemy_expansion=
     {
+      enabled = true,
       -- Distance in chunks from the nearest base when expanding
       min_base_spacing = 3,
       -- Distance in chunks from the furthest base around.

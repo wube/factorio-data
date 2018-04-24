@@ -269,7 +269,8 @@ data:extend(
     attack_parameters =
     {
       ammo_category = "electric",
-      cooldown = 300,
+      damage_modifier = 3,
+      cooldown = 150,
       projectile_center = {0, 0},
       projectile_creation_distance = 0.6,
       range = 10,
@@ -284,14 +285,14 @@ data:extend(
       {
         type = "projectile",
         category = "electric",
-        energy_consumption = 4000,
-        projectile = "laser",
+        energy_consumption = 2000,
         speed = 1,
         action = 
         {
           {
             type = "area",
             perimeter = 10,
+            force = "enemy",
             action_delivery =
             {
               {
