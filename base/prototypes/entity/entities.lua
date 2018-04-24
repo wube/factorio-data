@@ -2494,7 +2494,7 @@ data:extend(
     }
   },
   {
-    type = "rail",
+    type = "straight-rail",
     name = "straight-rail",
     icon = "__base__/graphics/icons/straight-rail.png",
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
@@ -2503,12 +2503,11 @@ data:extend(
     corpse = "straight-rail-remnants",
     collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
     selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
-    bending_type = "straight",
     rail_category = "regular",
     pictures = railpictures(),
   },
   {
-    type = "rail",
+    type = "curved-rail",
     name = "curved-rail",
     icon = "__base__/graphics/icons/curved-rail.png",
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
@@ -2518,7 +2517,6 @@ data:extend(
     collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
     secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
-    bending_type = "turn",
     rail_category = "regular",
     pictures = railpictures(),
   },
