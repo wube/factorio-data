@@ -57,7 +57,7 @@ data:extend(
     zoom_to_world_draw_map_under_entities = false,
     zoom_to_world_can_use_nightvision = false,
     zoom_to_world_darkness_multiplier = 0.5,
-    zoom_to_world_effect_strength = 0.1,
+    zoom_to_world_effect_strength = 0.05,
 
     enabled_recipe_slot_tint = {r = 1, g = 1, b = 1},
     disabled_recipe_slot_tint = { r = 0.55, g = 0.55, b = 0.55, a = 0.55 }
