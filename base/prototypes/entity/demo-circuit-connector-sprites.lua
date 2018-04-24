@@ -105,6 +105,7 @@ function get_circuit_connector_sprites(mainOffset, shadowOffset, connectorNumber
     {
       filename = "__base__/graphics/entity/circuit-connector/circuit-connector-shadow.png",
       priority = "low",
+      flags = { "shadow" },
       width = 34,
       height = 26,
       x = 34*(connectorNumber%8),
@@ -289,6 +290,7 @@ inserter_circuit_connector_sprites =
     {
       filename = "__base__/graphics/entity/circuit-connector/circuit-connector-inserter-shadow.png",
       priority = "low",
+      flags = { "shadow" },
       width = 18,
       height = 18,
       shift = {-0.03125 + 0, 0.1875 + -0.09375},

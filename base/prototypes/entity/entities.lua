@@ -1496,6 +1496,7 @@ data:extend(
       layers =
       {
         {
+          priority = "low",
           width = 102,
           height = 86,
           frame_count = 2,
@@ -1523,6 +1524,7 @@ data:extend(
           },
           hr_version =
           {
+            priority = "low",
             width = 202,
             height = 172,
             frame_count = 2,
@@ -1567,6 +1569,7 @@ data:extend(
           }
         },
         {
+          priority = "low",
           width = 100,
           height = 75,
           frame_count = 2,
@@ -1595,6 +1598,7 @@ data:extend(
           }),
           hr_version =
           {
+            priority = "low",
             width = 199,
             height = 147,
             frame_count = 2,
@@ -1636,6 +1640,7 @@ data:extend(
           }
         },
         {
+          priority = "low",
           width = 114,
           height = 76,
           frame_count = 2,
@@ -1670,6 +1675,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/car/car-turret.png",
+          priority = "low",
           line_length = 8,
           width = 36,
           height = 29,
@@ -1679,6 +1685,7 @@ data:extend(
           animation_speed = 8,
           hr_version =
           {
+            priority = "low",
             width = 71,
             height = 57,
             frame_count = 1,
@@ -1704,6 +1711,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/car/car-turret-shadow.png",
+          priority = "low",
           line_length = 8,
           width = 46,
           height = 31,
@@ -1868,6 +1876,7 @@ data:extend(
       layers =
       {
         {
+          priority = "low",
           width = 139,
           height = 110,
           frame_count = 2,
@@ -1900,6 +1909,7 @@ data:extend(
           }
         },
         {
+          priority = "low",
           width = 109,
           height = 88,
           frame_count = 2,
@@ -1928,6 +1938,7 @@ data:extend(
           })
         },
         {
+          priority = "low",
           width = 154,
           height = 99,
           frame_count = 2,
@@ -1967,6 +1978,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/tank/turret.png",
+          priority = "low",
           line_length = 8,
           width = 92,
           height = 69,
@@ -1977,6 +1989,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/tank/turret-mask.png",
+          priority = "low",
           line_length = 8,
           width = 38,
           height = 29,
@@ -1987,6 +2000,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/tank/turret-shadow.png",
+          priority = "low",
           line_length = 8,
           width = 95,
           height = 67,
@@ -3172,6 +3186,7 @@ data:extend(
         },
         {
           flags = { "mask" },
+          priority = "very-low",
           width = 196,
           height = 174,
           direction_count = 128,
@@ -3189,6 +3204,7 @@ data:extend(
           hr_version =
           {
             flags = { "mask" },
+            priority = "very-low",
             width = 406,
             height = 371,
             direction_count = 128,
@@ -3208,6 +3224,7 @@ data:extend(
         },
         {
           flags = { "shadow" },
+          priority = "very-low",
           width = 246,
           height = 201,
           back_equals_front = true,
@@ -3226,6 +3243,7 @@ data:extend(
           hr_version =
           {
             flags = { "shadow" },
+            priority = "very-low",
             width = 490,
             height = 401,
             back_equals_front = true,
@@ -3613,6 +3631,7 @@ data:extend(
         },
         {
           flags = { "shadow" },
+          priority = "very-low",
           width = 251,
           height = 188,
           back_equals_front = true,
@@ -3631,6 +3650,7 @@ data:extend(
           hr_version =
           {
             flags = { "shadow" },
+            priority = "very-low",
             width = 501,
             height = 375,
             back_equals_front = true,
@@ -4620,6 +4640,7 @@ data:extend(
       get_circuit_connector_sprites({0.03125, 0.28125+1}, {0.03125, 0.28125+1}, 6), --W
     },
     circuit_wire_max_distance = 9,
+    default_train_stopped_signal = {type = "virtual", name = "signal-T"}
   },
   {
     type = "rail-signal",
