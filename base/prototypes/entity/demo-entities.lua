@@ -1,7 +1,7 @@
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
-require ("prototypes.entity.circuit-connector-sprites")
+require ("prototypes.entity.demo-circuit-connector-sprites")
 require ("prototypes.entity.demo-player-animations")
 
 function make_unit_melee_ammo_type(damagevalue)
@@ -1082,7 +1082,7 @@ data:extend(
     smoke_count = 1,
     smoke_slow_down_factor = 1
   },
-  
+
   {
     type = "explosion",
     name = "explosion-gunshot-small",

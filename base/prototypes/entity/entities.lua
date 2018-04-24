@@ -3,7 +3,7 @@ require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.transport-belt-pictures")
-require ("prototypes.entity.circuit-connector-sprites")
+require ("prototypes.entity.demo-circuit-connector-sprites")
 require ("prototypes.entity.assemblerpipes")
 require ("prototypes.entity.demo-player-animations")
 require ("prototypes.entity.laser-sounds")
@@ -2284,7 +2284,7 @@ data:extend(
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-0.6, -2.6}, {0.6, 2.6}},
-    selection_box = {{-0.85, -2.6}, {0.9, 2.5}},
+    selection_box = {{-1, -3}, {1, 3}},
     drawing_box = {{-1, -4}, {1, 3}},
     weight = 2000,
     max_speed = 1.2,
@@ -2519,7 +2519,7 @@ data:extend(
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
-    selection_box = {{-0.7, -2.5}, {1, 2.5}},
+    selection_box = {{-1, -3}, {1, 3}},
     weight = 1000,
     max_speed = 1.5,
     braking_force = 3,
