@@ -178,6 +178,7 @@ data:extend(
     folding_speed = 0.08,
     dying_explosion = "huge-explosion",
     inventory_size = 1,
+    automated_ammo_count = 10,
     folded_animation = (function()
                           local res = util.table.deepcopy(gun_turret_extension)
                           res.frame_count = 1
