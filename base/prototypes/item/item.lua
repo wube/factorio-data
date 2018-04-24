@@ -866,6 +866,24 @@ data:extend(
       condition_size = 1,
       condition = { "ground-tile" }
     }
+  },
+  {
+    -- This allows loading the selection-tool type item when mods are removed
+    type = "selection-tool",
+    name = "dummy-selection-tool",
+    localised_name = {"item-name.blueprint"},
+    icon = "__base__/graphics/icons/blueprint.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "tool",
+    order = "c[automated-construction]-a[blueprint]",
+    stack_size = 1,
+    stackable = false,
+    selection_color = { r = 0, g = 1, b = 0 },
+    alt_selection_color = { r = 0, g = 1, b = 0 },
+    selection_mode = {"blueprint"},
+    alt_selection_mode = {"blueprint"},
+    selection_cursor_box_type = "copy",
+    alt_selection_cursor_box_type = "copy"
   }
 }
 )

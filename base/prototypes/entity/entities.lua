@@ -3134,7 +3134,7 @@ data:extend(
       }
     },
     collision_box = {{-0.85, -0.75}, {0.85, 1.6}},
-    secondary_collision_box = {{-0.80, -2.38}, {0.80, 2.43}},
+    secondary_collision_box = {{-0.83, -2.38}, {0.80, 2.43}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     rail_category = "regular",
     pictures = railpictures(),
