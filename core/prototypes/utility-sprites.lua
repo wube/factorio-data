@@ -1257,6 +1257,22 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 10,
       height = 10
+    },
+    favourite_server_icon =
+    {
+      filename = "__core__/graphics/favourite.png",
+      priority = "extra-high-no-scale",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    favourite_server_icon_grey =
+    {
+      filename = "__core__/graphics/favourite-grey.png",
+      priority = "extra-high-no-scale",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
     }
   }
 })

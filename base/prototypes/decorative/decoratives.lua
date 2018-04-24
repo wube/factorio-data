@@ -2016,6 +2016,7 @@ data:extend(
     order = "b[decorative]-k[stone-rock]-a[big]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
     minable =
     {
       mining_particle = "stone-particle",

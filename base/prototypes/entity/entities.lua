@@ -2097,7 +2097,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
   {
     type = "container",
@@ -2147,7 +2147,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
   {
     type = "inserter",
@@ -3000,7 +3000,7 @@ data:extend(
         },
         {
           priority = "very-low",
-          flags = { "compressed" },
+          flags = { "shadow" },
           width = 253,
           height = 212,
           direction_count = 256,
@@ -3207,7 +3207,7 @@ data:extend(
           }
         },
         {
-          flags = { "compressed" },
+          flags = { "shadow" },
           width = 246,
           height = 201,
           back_equals_front = true,
@@ -3225,7 +3225,7 @@ data:extend(
           shift = {0.8, -0.078125},
           hr_version =
           {
-            flags = { "compressed" },
+            flags = { "shadow" },
             width = 490,
             height = 401,
             back_equals_front = true,
@@ -3612,7 +3612,7 @@ data:extend(
           }
         },
         {
-          flags = { "compressed" },
+          flags = { "shadow" },
           width = 251,
           height = 188,
           back_equals_front = true,
@@ -3630,7 +3630,7 @@ data:extend(
           shift = {0.875 + 0.013, 0.3125 + 0.077},
           hr_version =
           {
-            flags = { "compressed" },
+            flags = { "shadow" },
             width = 501,
             height = 375,
             back_equals_front = true,
@@ -4619,7 +4619,7 @@ data:extend(
       get_circuit_connector_sprites({-0.28125+1, 0.28125}, {-0.28125+1, 0.28125}, 0), --S
       get_circuit_connector_sprites({0.03125, 0.28125+1}, {0.03125, 0.28125+1}, 6), --W
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
   },
   {
     type = "rail-signal",
@@ -4781,7 +4781,7 @@ data:extend(
       get_circuit_connector_sprites({-0.4375, -0.40625}, {-0.4375, -0.40625}, 6),
       get_circuit_connector_sprites({0.03125, -0.375}, {0.03125, -0.375}, 5),
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     default_red_output_signal = {type = "virtual", name = "signal-red"},
     default_orange_output_signal = {type = "virtual", name = "signal-yellow"},
     default_green_output_signal = {type = "virtual", name = "signal-green"}
@@ -5253,7 +5253,7 @@ data:extend(
         green = {0.40625, 0.375},
       }
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
   },
   {
@@ -5304,7 +5304,7 @@ data:extend(
         green = {0.40625, 0.375},
       }
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
   },
   {
@@ -5355,7 +5355,7 @@ data:extend(
         green = {0.40625, 0.375},
       }
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
   },
   {
@@ -5406,7 +5406,7 @@ data:extend(
         green = {0.40625, 0.375},
       }
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
   },
   {
@@ -6134,7 +6134,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.59375, 1.3125}, nil, 18),
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     default_available_logistic_output_signal = {type = "virtual", name = "signal-X"},
     default_total_logistic_output_signal = {type = "virtual", name = "signal-Y"},
     default_available_construction_output_signal = {type = "virtual", name = "signal-Z"},
@@ -6163,6 +6163,7 @@ data:extend(
         { position = {-2, -1} },
       },
     },
+    two_direction_only = true,
     window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
     pictures =
     {
@@ -6293,7 +6294,7 @@ data:extend(
       get_circuit_connector_sprites({-0.1875, -0.375}, nil, 7),
       get_circuit_connector_sprites({0.375, -0.53125}, nil, 1),
     },
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
 
   {
@@ -6617,7 +6618,7 @@ data:extend(
       get_circuit_connector_sprites({-0.40625, -0.25}, nil, 24),
       get_circuit_connector_sprites({0.203125, 0.203125}, {0.25, 0.40625}, 18),
     },
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
 
   },
 
@@ -7060,7 +7061,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.46875, 0.5}, {0.46875, 0.8125}, 26),
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     default_output_signal = {type = "virtual", name = "signal-A"}
   },
   {
@@ -9423,7 +9424,7 @@ data:extend(
         }
       }
     },
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
   {
     type = "decider-combinator",
@@ -10169,7 +10170,7 @@ data:extend(
         }
       }
     },
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
   {
     type = "constant-combinator",
@@ -10331,7 +10332,7 @@ data:extend(
       }
     },
 
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
   {
     type = "power-switch",
@@ -10953,7 +10954,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({-0.125, 0.34375}, nil, 0),
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
   },
   {
     type = "electric-energy-interface",
@@ -11650,6 +11651,16 @@ data:extend(
       },
       production_type = "output"
     },
+    fluid_input =
+    {
+      name = "water",
+      amount = 0.0
+    },
+    fluid_output =
+    {
+      name = "steam",
+      amount = 0.0
+    },
     energy_consumption = "10MW",
     energy_source =
     {
@@ -11890,7 +11901,7 @@ data:extend(
     },
     fluid_input =
     {
-      name = "water",
+      name = "steam",
       amount = 0.0,
       minimum_temperature = 100.0
     },

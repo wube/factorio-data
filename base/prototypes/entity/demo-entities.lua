@@ -422,7 +422,7 @@ function smoke(opts)
       priority = "high",
       animation_speed = 0.25,
       filename = "__base__/graphics/entity/smoke/smoke.png",
-      flags = { "compressed" }
+      flags = { "smoke" }
     }
   }
 end
@@ -993,6 +993,16 @@ data:extend(
       },
       production_type = "output"
     },
+    fluid_input =
+    {
+      name = "water",
+      amount = 0.0
+    },
+    fluid_output =
+    {
+      name = "steam",
+      amount = 0.0
+    },
     energy_consumption = "1.8MW",
     energy_source =
     {
@@ -1418,7 +1428,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
   },
 
   {
@@ -2025,7 +2035,7 @@ data:extend(
     },
     fluid_input =
     {
-      name = "water",
+      name = "steam",
       amount = 0.0,
       minimum_temperature = 100.0
     },
@@ -2275,7 +2285,7 @@ data:extend(
       get_circuit_connector_sprites({-0.9375, -0.25}, nil, 4),
       get_circuit_connector_sprites({0.125, -1.3125}, nil, 2),
     },
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
 
   },
 
@@ -2820,7 +2830,7 @@ data:extend(
       }
     },
     circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.28125}, {0.1875, 0.28125}, 18),
-    circuit_wire_max_distance = 7.5
+    circuit_wire_max_distance = 9
 
   },
 
@@ -3536,7 +3546,7 @@ data:extend(
         green = {-0.28125, -0.84375}
       }
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
     circuit_connector_sprites = get_circuit_connector_sprites({0, -0.59375}, nil, 6),
     default_output_signal = data.is_demo and {type = "virtual", name = "signal-green"} or {type = "virtual", name = "signal-G"}
   },

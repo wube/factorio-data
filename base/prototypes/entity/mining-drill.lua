@@ -94,7 +94,7 @@ data:extend(
       get_circuit_connector_sprites({0.15625, -1.0625}, {0.15625, -1.0625}, 2),
       get_circuit_connector_sprites({0.15625, -1.0625}, {0.15625, -1.0625}, 2)
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
   }
 }
 )

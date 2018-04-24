@@ -31,7 +31,7 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"speed-module-2", 4},
+      {"speed-module-2", 5},
       {"advanced-circuit", 5},
       {"processing-unit", 5}
     },

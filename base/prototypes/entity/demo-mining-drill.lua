@@ -152,6 +152,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-drill-shadow.png",
+        flags = { "shadow" },
         line_length = 8,
         width = 101,
         height = 111,
@@ -163,6 +164,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-drill-shadow.png",
+          flags = { "shadow" },
           line_length = 8,
           width = 201,
           height = 223,
@@ -178,6 +180,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-drill-shadow.png",
+        flags = { "shadow" },
         line_length = 8,
         width = 110,
         height = 97,
@@ -189,6 +192,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-drill-shadow.png",
+          flags = { "shadow" },
           line_length = 8,
           width = 221,
           height = 195,
@@ -204,6 +208,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-drill-shadow.png",
+        flags = { "shadow" },
         line_length = 8,
         width = 100,
         height = 103,
@@ -215,6 +220,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-drill-shadow.png",
+          flags = { "shadow" },
           line_length = 8,
           width = 200,
           height = 206,
@@ -230,6 +236,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-drill-shadow.png",
+        flags = { "shadow" },
         line_length = 8,
         width = 114,
         height = 97,
@@ -241,6 +248,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-drill-shadow.png",
+          flags = { "shadow" },
           line_length = 8,
           width = 229,
           height = 195,
@@ -350,6 +358,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-patch-shadow.png",
+        flags = { "shadow" },
         line_length = 1,
         width = 110,
         height = 98,
@@ -359,6 +368,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-patch-shadow.png",
+          flags = { "shadow" },
           line_length = 1,
           width = 220,
           height = 197,
@@ -372,6 +382,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-patch-shadow.png",
+        flags = { "shadow" },
         line_length = 1,
         width = 112,
         height = 98,
@@ -381,6 +392,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-patch-shadow.png",
+          flags = { "shadow" },
           line_length = 1,
           width = 224,
           height = 198,
@@ -394,6 +406,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-patch-shadow.png",
+        flags = { "shadow" },
         line_length = 1,
         width = 110,
         height = 98,
@@ -403,6 +416,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-patch-shadow.png",
+          flags = { "shadow" },
           line_length = 1,
           width = 220,
           height = 197,
@@ -416,6 +430,7 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-patch-shadow.png",
+        flags = { "shadow" },
         line_length = 1,
         width = 110,
         height = 98,
@@ -425,6 +440,7 @@ data:extend(
         hr_version = {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-patch-shadow.png",
+          flags = { "shadow" },
           line_length = 1,
           width = 220,
           height = 197,
@@ -867,7 +883,7 @@ data:extend(
       get_circuit_connector_sprites({0.09375, 1},         {0.09375, 1},         0),
       get_circuit_connector_sprites({-1.3125, -0.3125},   {-1.3125, -0.3125},   6)
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
   },
   {
     type = "mining-drill",
@@ -911,52 +927,219 @@ data:extend(
     {
       north =
       {
-        priority = "extra-high",
-        width = 110,
-        height = 76,
-        line_length = 4,
-        shift = util.by_pixel(22, -3),
-        filename = "__base__/graphics/entity/burner-mining-drill/north.png",
-        frame_count = 32,
-        animation_speed = 0.5,
-        run_mode = "forward-then-backward",
+        layers = 
+        {
+          {
+            priority = "extra-high",
+            width = 87,
+            height = 95,
+            line_length = 4,
+            shift = util.by_pixel(2.5, 0.5),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            hr_version = {
+              priority = "extra-high",
+              width = 173,
+              height = 188,
+              line_length = 4,
+              shift = util.by_pixel(2.75, 0.5),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-N.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              scale = 0.5
+            }
+          },
+          {
+            priority = "extra-high",
+            width = 109,
+            height = 76,
+            line_length = 4,
+            shift = util.by_pixel(23.5, -1),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-N-shadow.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            draw_as_shadow = true,
+            hr_version = {
+              priority = "extra-high",
+              width = 217,
+              height = 150,
+              line_length = 4,
+              shift = util.by_pixel(23.75, -1),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-N-shadow.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              draw_as_shadow = true,
+              scale = 0.5
+            },
+          },
+        },
       },
       east =
       {
-        priority = "extra-high",
-        width = 94,
-        height = 74,
-        line_length = 4,
-        shift = util.by_pixel(14, -3),
-        filename = "__base__/graphics/entity/burner-mining-drill/east.png",
-        frame_count = 32,
-        animation_speed = 0.5,
-        run_mode = "forward-then-backward",
+        layers =
+        {
+          {
+            priority = "extra-high",
+            width = 93,
+            height = 84,
+            line_length = 4,
+            shift = util.by_pixel(2.5, 1),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            hr_version = {
+              priority = "extra-high",
+              width = 185,
+              height = 168,
+              line_length = 4,
+              shift = util.by_pixel(2.75, 1),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-E.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              scale = 0.5
+            },
+          },
+          {
+            priority = "extra-high",
+            width = 93,
+            height = 65,
+            line_length = 4,
+            shift = util.by_pixel(13.5, 0.5),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-E-shadow.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            draw_as_shadow = true,
+            hr_version = {
+              width = 185,
+              height = 128,
+              line_length = 4,
+              shift = util.by_pixel(13.75, 0.5),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-E-shadow.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              draw_as_shadow = true,
+              scale = 0.5
+            },
+          },
+        },
       },
       south =
       {
-        priority = "extra-high",
-        width = 89,
-        height = 88,
-        line_length = 4,
-        shift = util.by_pixel(9.5, -3),
-        filename = "__base__/graphics/entity/burner-mining-drill/south.png",
-        frame_count = 32,
-        animation_speed = 0.5,
-        run_mode = "forward-then-backward",
+        layers =
+        {
+          {
+            priority = "extra-high",
+            width = 87,
+            height = 87,
+            line_length = 4,
+            shift = util.by_pixel(0.5, -0.5),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            hr_version = {
+              priority = "extra-high",
+              width = 174,
+              height = 174,
+              line_length = 4,
+              shift = util.by_pixel(0.5, -0.5),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-S.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              scale = 0.5
+            },
+          },
+          {
+            priority = "extra-high",
+            width = 88,
+            height = 69,
+            line_length = 4,
+            shift = util.by_pixel(11, 2.5),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-S-shadow.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            draw_as_shadow = true,
+            hr_version = {
+              priority = "extra-high",
+              width = 174,
+              height = 137,
+              line_length = 4,
+              shift = util.by_pixel(11, 2.75),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-S-shadow.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              draw_as_shadow = true,
+              scale = 0.5
+            },
+          },
+        },
       },
       west =
       {
-        priority = "extra-high",
-        width = 91,
-        height = 78,
-        line_length = 4,
-        shift = util.by_pixel(4.5, -2),
-        filename = "__base__/graphics/entity/burner-mining-drill/west.png",
-        frame_count = 32,
-        animation_speed = 0.5,
-        run_mode = "forward-then-backward",
-      }
+        layers =
+        {
+          {
+            priority = "extra-high",
+            width = 91,
+            height = 88,
+            line_length = 4,
+            shift = util.by_pixel(-1.5, 0),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            hr_version = {
+              priority = "extra-high",
+              width = 180,
+              height = 176,
+              line_length = 4,
+              shift = util.by_pixel(-1.5, 0),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-W.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              scale = 0.5
+            },
+          },
+          {
+            priority = "extra-high",
+            width = 89,
+            height = 66,
+            line_length = 4,
+            shift = util.by_pixel(7.5, 1),
+            filename = "__base__/graphics/entity/burner-mining-drill/burner-mining-drill-W-shadow.png",
+            frame_count = 32,
+            animation_speed = 0.5,
+            run_mode = "forward-then-backward",
+            draw_as_shadow = true,
+            hr_version = {
+              priority = "extra-high",
+              width = 176,
+              height = 130,
+              line_length = 4,
+              shift = util.by_pixel(7.5, 1),
+              filename = "__base__/graphics/entity/burner-mining-drill/hr-burner-mining-drill-W-shadow.png",
+              frame_count = 32,
+              animation_speed = 0.5,
+              run_mode = "forward-then-backward",
+              draw_as_shadow = true,
+              scale = 0.5
+            },
+          },
+        },
+      },
     },
     monitor_visualization_tint = {r=78, g=173, b=255},
     resource_searching_radius = 0.99,
@@ -976,7 +1159,7 @@ data:extend(
       get_circuit_connector_sprites({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
       get_circuit_connector_sprites({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17)
     },
-    circuit_wire_max_distance = 7.5,
+    circuit_wire_max_distance = 9,
   }
 }
 )

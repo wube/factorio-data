@@ -214,6 +214,8 @@ data:extend(
     -- is destroyed.
     -- This solves biters stuck within their own base.
     max_failed_behavior_count = 3,
+
+    -- These can't be changed through game.map_settings - you must use game.difficulty_settings
     difficulty_settings =
     {
        recipe_difficulty = defines.difficulty_settings.recipe_difficulty.normal,

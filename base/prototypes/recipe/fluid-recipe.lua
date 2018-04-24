@@ -55,7 +55,7 @@ data:extend(
     {
       {type="item", name="coal", amount=10},
       {type="fluid", name="heavy-oil", amount=25},
-      {type="fluid", name="water", amount=50}
+      {type="fluid", name="steam", amount=50}
     },
     results=
     {

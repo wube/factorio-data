@@ -354,7 +354,7 @@ inserter_circuit_wire_connection_point =
     green = {-0.375, 0.0625},
   }
 }
-inserter_circuit_wire_max_distance = 7.5
+inserter_circuit_wire_max_distance = 9
 inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-S"}
 
 ------------------- TRANSPORT BELT -------------------
@@ -544,5 +544,5 @@ transport_belt_circuit_wire_connection_point =
     green = {0.4375, -0.46875},
   }
 }
-transport_belt_circuit_wire_max_distance = 7.5
+transport_belt_circuit_wire_max_distance = 9
 transport_belt_circuit_connector_sprites = get_circuit_connector_sprites({0.1875, -0.5}, {0.3125, -0.34375}, 2)
