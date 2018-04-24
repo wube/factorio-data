@@ -2403,6 +2403,17 @@ data:extend(
         position = {0, 32}
       }
     },
+    achievement_notification_frame_style =
+    {
+      type = "frame_style",
+      parent = "frame_style",
+      top_padding = 0,
+      left_padding = 0,
+      right_padding = 0,
+      bottom_padding = 0,
+      minimal_width = 380,
+      graphical_set = { type = "none" }
+    },
     progressbar_style =
     {
       type = "progressbar_style",
@@ -2541,6 +2552,8 @@ data:extend(
     {
       type = "progressbar_style",
       parent = "achievement_progressbar_style",
+      smooth_size = 252,
+      maximal_width = 252,
       smooth_bar =
       {
         filename = "__core__/graphics/scrollbar-mini.png",

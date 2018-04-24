@@ -25,6 +25,14 @@ function make_unit_melee_ammo_type(damagevalue)
   }
 end
 
+function conditional_return(value, data)
+  if not value then
+    return nil
+  else
+    return data
+  end
+end
+
 boilerfires =
 {
   down =
@@ -2763,36 +2771,36 @@ data:extend(
       }
     },
 
-    wall_diode_green =
-    {
-      filename = "__base__/graphics/entity/gate/wall-diode-green.png",
-      width = 21,
-      height = 22,
-      shift = {0, -0.78125}
-    },
-    wall_diode_green_light =
-    {
-      minimum_darkness = 0.3,
-      color = {g=1},
-      shift = {0, -0.78125},
-      size = 1,
-      intensity = 0.3
-    },
-    wall_diode_red =
+    wall_diode_green = conditional_return(not data.is_demo,
+        {
+          filename = "__base__/graphics/entity/gate/wall-diode-green.png",
+          width = 21,
+          height = 22,
+          shift = {0, -0.78125}
+        }),
+    wall_diode_green_light = conditional_return(not data.is_demo,
+        {
+          minimum_darkness = 0.3,
+          color = {g=1},
+          shift = {0, -0.78125},
+          size = 1,
+          intensity = 0.3
+        }),
+    wall_diode_red = conditional_return(not data.is_demo,
     {
       filename = "__base__/graphics/entity/gate/wall-diode-red.png",
       width = 21,
       height = 22,
       shift = {0, -0.78125}
-    },
-    wall_diode_red_light =
+    }),
+    wall_diode_red_light = conditional_return(not data.is_demo,
     {
       minimum_darkness = 0.3,
       color = {r=1},
       shift = {0, -0.78125},
       size = 1,
       intensity = 0.3
-    },
+    }),
 
     circuit_wire_connection_point =
     {
