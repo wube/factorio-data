@@ -29,7 +29,7 @@ data:extend(
     subgroup = "equipment",
     order = "b[shield]-a[energy-shield-equipment]",
     stack_size = 50,
-    default_requiest_amount = 10
+    default_request_amount = 10
   },
   {
     type = "item",
@@ -40,7 +40,7 @@ data:extend(
     subgroup = "equipment",
     order = "b[shield]-b[energy-shield-equipment-mk2]",
     stack_size = 50,
-    default_requiest_amount = 10
+    default_request_amount = 10
   },
   {
     type = "item",
@@ -51,7 +51,7 @@ data:extend(
     subgroup = "equipment",
     order = "c[battery]-a[battery-equipment]",
     stack_size = 50,
-    default_requiest_amount = 10
+    default_request_amount = 10
   },
   {
     type = "item",
@@ -62,7 +62,7 @@ data:extend(
     subgroup = "equipment",
     order = "c[battery]-b[battery-equipment-mk2]",
     stack_size = 50,
-    default_requiest_amount = 10
+    default_request_amount = 10
   },
   {
     type = "item",

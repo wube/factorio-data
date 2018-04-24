@@ -73,37 +73,38 @@ riding =
   }
 }
 
+--? Command given to units describing what they should do.
 command =
 {
-  attack = 1,
-  go_to_location = 2,
-  compound=3,
-  group = 4,
-  attack_area = 5,
-  wander = 6,
-  build_base = 7,
+  attack = 1,         --? Attack another entity
+  go_to_location = 2, --? Go to a specific position
+  compound=3,         --? Chain commands together, see $ref(compoundcommandtype).
+  group = 4,          --? Do what your group wants you to do.
+  attack_area = 5,    --? Go to a place and attack what you see.
+  wander = 6,         --? Chill.
+  build_base = 7,     --? Go to a position and build a spawner there.
 }
 
 distraction =
 {
-  -- perform command even if someone is attacking unit
+  --? Perform command even if someone attacks the unit.
   none = 0,
-  -- attacks closer entities with force without distraction
+  --? Attack closer enemy entities with force.
   by_enemy = 1,
-  -- attacks closer entities with force and
-  -- entities "built" by player (belts, inserters, chests)
+  --? Attack closer enemy entities, including entities "built" by player (belts, inserters, chests).
   by_anything = 3,
-  -- attacks when attacked
+  --? Attacks when attacked.
   by_damage = 4,
 }
 
+--? How are commands compounded in a compounded compound command commanding compound composts.
 compoundcommandtype =
 {
-  -- stop on first command returning failure
+  --? Stop on first command returning failure
   logical_and = 0,
-  -- stop on first command returning success
+  --? Stop on first command returning success
   logical_or = 1,
-  -- perform all the commands and return lasts result
+  --? Perform all the commands and return lasts result
   return_last = 2
 }
 
@@ -147,10 +148,9 @@ events =
 
 controllers =
 {
-  ghost = 0,
-  character = 1,
-  god = 2
-
+  ghost = 0,      --? Can't interact with the world, can only observe. Used in the multiplayer waiting-to-respawn screen.
+  character = 1,  --? The controller controls a character. This is the default controller in freeplay.
+  god = 2         --? The controller isn't tied to a character. This is the default controller in sandbox.
 }
 
 groupstate =
@@ -191,47 +191,51 @@ circuitconditionindex =
 
 trainstate =
 {
-  -- normal state - following the path
+  --? Normal state -- following the path.
   on_the_path = 0,
-  -- had path and lost it - must stop
+  --? Had path and lost it -- must stop.
   path_lost = 1,
-  -- doesn't have anywhere to go
+  --? Doesn't have anywhere to go.
   no_schedule = 2,
-  -- has no path and is stopped
+  --? Has no path and is stopped.
   no_path = 3,
-  -- braking before the railSignal
+  --? Braking before a rail signal.
   arrive_signal = 4,
+  --? Waiting at a signal.
   wait_signal = 5,
-  -- braking before the station
+  --? Braking before a station.
   arrive_station = 6,
+  --? Waiting at a station.
   wait_station = 7,
-  -- switched to the manual control and has to stop
+  --? Switched to manual control and has to stop.
   manual_control_stop = 8,
-  -- can move if user explicitly sits in and rides the train
+  --? Can move if user explicitly sits in and rides the train.
   manual_control = 9,
-  -- train was switched to auto control but it is moving and needs to be stopped
+  --? Train was switched to auto control but it is moving and needs to be stopped.
   stop_for_auto_control = 10
 }
 
+--? State of an ordinary rail signal.
 signal_state =
 {
-  -- green
+  --? Green
   open = 0,
-  -- red
+  --? Red
   closed = 1,
-  -- orange
+  --? Orange
   reserved = 2
 }
 
+--? State of a chain signal.
 chain_signal_state =
 {
-  -- invalid
+  --? Invalid
   none = 0,
-  -- green
+  --? Green
   all_open = 1,
-  -- blue
+  --? Blue
   partially_open = 2,
-  -- red
+  --? Red
   none_open = 3
 }
 

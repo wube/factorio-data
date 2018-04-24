@@ -75,14 +75,16 @@ function rolling_stock_back_light()
       color = {r=1},
       shift = {-0.6, 3.5},
       size = 2,
-      intensity = 0.6
+      intensity = 0.6,
+      add_perspective = true
     },
     {
       minimum_darkness = 0.3,
       color = {r=1},
       shift = {0.6, 3.5},
       size = 2,
-      intensity = 0.6
+      intensity = 0.6,
+      add_perspective = true
     }
   }
 end
@@ -95,14 +97,16 @@ function rolling_stock_stand_by_light()
       color = {b=1},
       shift = {-0.6, -3.5},
       size = 2,
-      intensity = 0.5
+      intensity = 0.5,
+      add_perspective = true
     },
     {
       minimum_darkness = 0.3,
       color = {b=1},
       shift = {0.6, -3.5},
       size = 2,
-      intensity = 0.5
+      intensity = 0.5,
+      add_perspective = true
     }
   }
 end
@@ -1946,7 +1950,7 @@ data:extend(
       },
       line_length = 4,
       lines_per_file = 8,
-      shift = {0.9, -0.45}
+      shift = {1.0, -0.45}
     },
     rail_category = "regular",
 
