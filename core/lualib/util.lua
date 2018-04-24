@@ -76,8 +76,8 @@ end
 
 function util.premul_color(color)
   local a = color.a or 1
-  return 
-  { 
+  return
+  {
     r = color.r and (color.r * a),
     g = color.g and (color.g * a),
     b = color.b and (color.b * a),
@@ -154,7 +154,7 @@ function util.add_shift(a, b)
   if (not a) or (not b) then
     return a or b
   end
-  
+
   return { a[1] + b[1], a[2] + b[2] }
 end
 
@@ -202,8 +202,12 @@ function util.merge(tables)
   local ret = {}
   for i, tab in ipairs(tables) do
     for k, v in pairs(tab) do
-      if (type(v) == "table") and (type(ret[k] or false) == "table") then
-        ret[k] = util.merge{ret[k], v}
+      if (type(v) == "table") then
+        if (type(ret[k] or false) == "table") then
+          ret[k] = util.merge{ret[k], v}
+        else
+          ret[k] = table.deepcopy(v)
+        end
       else
         ret[k] = v
       end

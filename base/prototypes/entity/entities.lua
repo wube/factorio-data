@@ -5370,6 +5370,7 @@ data:extend(
       height = 32
     },
     trigger_radius = 2.5,
+    ammo_category = "landmine",
     action =
     {
       type = "direct",
@@ -8785,6 +8786,7 @@ data:extend(
     radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/beacon/beacon-radius-visualization.png",
+      priority = "extra-high-no-scale",
       width = 10,
       height = 10
     },

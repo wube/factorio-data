@@ -9527,7 +9527,7 @@ data:extend{
     type = "optimized-decorative",
     subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
-    collision_box = {{-4, -4}, {4, 4}},
+    collision_box = {{-4.40625, -5.6875}, {4.375, 5.625}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
     render_layer = "decals",
     tile_layer = 59, -- just under stone-path
@@ -9674,7 +9674,7 @@ data:extend{
     type = "optimized-decorative",
     subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
-    collision_box = {{-4, -4}, {4, 4}},
+    collision_box = {{-4.625, -3.25}, {4.6875, 3.125}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
     render_layer = "decals",
     tile_layer = 59, -- under stone-path
@@ -10079,7 +10079,7 @@ data:extend{
     type = "optimized-decorative",
     subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
-    collision_box = {{-4, -4}, {4, 4}},
+    collision_box = {{-3.75, -2.5625}, {3.75, 2.5625}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
     render_layer = "decals",
     tile_layer = 59, -- under stone-path
@@ -10484,7 +10484,7 @@ data:extend{
     type = "optimized-decorative",
     subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
-    collision_box = {{-4, -4}, {4, 4}},
+    collision_box = {{-3.375, -2.3125}, {3.25, 2.3125}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
     render_layer = "decals",
     tile_layer = 59, -- under stone-path
@@ -10889,7 +10889,7 @@ data:extend{
     type = "optimized-decorative",
     subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
-    collision_box = {{-6, -6}, {6, 6}},
+    collision_box = {{-7.21875, -5.9375}, {7.3125, 5.71875}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
     render_layer = "decals",
     tile_layer = 59, -- despite the name, this is not sand exclusive decal; draw under stone path and concrete
@@ -11265,7 +11265,7 @@ data:extend{
     type = "optimized-decorative",
     subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
-    collision_box = {{-4, -4}, {4, 4}},
+    collision_box = {{-1.78125, -1.34375}, {1.78125, 1.34375}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
     render_layer = "decals",
     tile_layer = 59,

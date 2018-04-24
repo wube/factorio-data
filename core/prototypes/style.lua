@@ -78,6 +78,14 @@ data:extend(
       type = "label_style",
       font = "default-bold",
     },
+    hoverable_bold_label =
+    {
+      type = "label_style",
+      font = "default-bold",
+      hovered_font_color = {r = 0.5 * (1 + default_orange_color.r),
+                            g = 0.5 * (1 + default_orange_color.g),
+                            b = 0.5 * (1 + default_orange_color.b)}
+    },
     bold_red_label =
     {
       type = "label_style",
@@ -579,6 +587,58 @@ data:extend(
           width = 32,
           height = 15,
           x = 32,
+          y = 15
+        }
+      },
+      pie_progress_color = {r=1, g=1, b=1}
+    },
+
+    flip_button_middle =
+    {
+      type = "button_style",
+      font = "default-button",
+      default_font_color = {r=1, g=1, b=1},
+      width = 32,
+      height = 15,
+      padding = 5,
+      default_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/switch-button-gui.png",
+          priority = "extra-high-no-scale",
+          width = 32,
+          height = 15,
+          x = 64
+        }
+      },
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/switch-button-gui.png",
+          priority = "extra-high-no-scale",
+          width = 32,
+          height = 15,
+          x = 64,
+          y = 30
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/switch-button-gui.png",
+          priority = "extra-high-no-scale",
+          width = 32,
+          height = 15,
+          x = 64,
           y = 15
         }
       },
@@ -3751,6 +3811,12 @@ data:extend(
     {
       type = "camera_style",
     },
+    minimap =
+    {
+      type = "minimap_style",
+      minimal_height = 256,
+      minimal_width = 256
+    },
     image =
     {
       type = "image_style",
@@ -3765,6 +3831,12 @@ data:extend(
       type = "empty_widget_style"
     },
     entity_button =
+    {
+      type = "entity_button_style",
+      width = 100,
+      height = 100
+    },
+    entity_button_base =
     {
       type = "empty_widget_style",
       width = 100,

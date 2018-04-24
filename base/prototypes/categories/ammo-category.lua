@@ -62,6 +62,10 @@ data:extend(
     type = "ammo-category",
     name = "combat-robot-beam"
   },
+  {
+    type = "ammo-category",
+    name = "landmine"
+  },
 }
 )
 

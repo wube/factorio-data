@@ -24,5 +24,6 @@ bonus_gui_ordering =
   ["railgun"] = "v",
   ["capsule"] = "w",
   ["melee"] = "x",
-  ["biological"] = "y"
+  ["biological"] = "y",
+  ["landmine"] = "z"
 }
