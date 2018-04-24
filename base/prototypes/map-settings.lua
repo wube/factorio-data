@@ -113,6 +113,13 @@ data:extend(
       -- If a member falls behind more than this time the group radius, it will be removed from the group.
       member_disown_distance = 10,
       tick_tolerance_when_member_arrives = 60,
+
+      -- Maximum number of automatically created unit groups gathering for attack at any time.
+      max_gathering_unit_groups = 30,
+
+      -- Maximum size of an attack unit group. This only affects automatically-created unit groups; manual groups
+      -- created through the API are unaffected.
+      max_unit_group_size = 200
     },
 
     steering=
