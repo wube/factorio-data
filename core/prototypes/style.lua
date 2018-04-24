@@ -216,6 +216,7 @@ data:extend(
     {
       type = "label_style",
       parent = "label_style",
+      width = 400,
       font = "scenario-message-dialog",
       font_color = {r=0, g=0, b=0}
     },
@@ -1883,6 +1884,11 @@ data:extend(
     {
       type = "listbox_style",
       minimal_width = 500
+    },
+    mod_dependency_flow_style =
+    {
+      type = "listbox_style",
+      vertical_spacing = 1
     },
     machine_right_part_flow_style =
     {
