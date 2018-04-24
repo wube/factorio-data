@@ -502,7 +502,7 @@ data:extend(
     {
       count = 80,
       ingredients = {{"science-pack-1", 1}},
-      time = 15
+      time = 5
     },
     order = "a-b-b",
   },

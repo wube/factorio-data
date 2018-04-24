@@ -2414,6 +2414,13 @@ data:extend(
       top_padding = 20,
       vertical_spacing = 7
     },
+    control_settings_mod_table_style =
+    {
+      type = "table_style",
+      parent = "control_settings_table_style",
+      top_padding = 10,
+      bottom_padding = 10
+    },
     browse_games_table_style =
     {
       type = "table_style",

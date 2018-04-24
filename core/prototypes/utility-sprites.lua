@@ -140,6 +140,15 @@ data:extend(
       height = 89,
       flags = {"icon"}
     },
+    too_far_from_roboport_icon =
+    {
+      filename = "__core__/graphics/too-far-from-roboport-icon.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      scale = 0.5,
+      flags = {"icon"}
+    },
     danger_icon =
     {
       filename = "__core__/graphics/danger-icon.png",
@@ -1280,6 +1289,15 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 16,
       height = 16,
+      flags = {"icon"}
+    },
+    crafting_machine_recipe_not_unlocked =
+    {
+      filename = "__core__/graphics/no-recipe.png",
+      priority = "extra-high-no-scale",
+      width = 101,
+      height = 101,
+      scale = 0.6,
       flags = {"icon"}
     }
   }

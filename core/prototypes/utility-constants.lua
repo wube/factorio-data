@@ -5,7 +5,6 @@ data:extend(
     name = "default",
 
     entity_button_background_color = {r = 0.6, g =  0.6, b = 0.6, a = 0.6},
-    building_invalid_recipe_tint = {r = 1, g = 0.33, b = 1, a = 1},
     building_buildable_too_far_tint = {r = 0.6, g = 0.6, b = 0.3, a = 0.1},
     building_buildable_tint = {r = 0.4, g = 1, b = 0.4, a = 1},
     building_not_buildable_tint = {r = 1, g = 0.4, b = 0.4, a = 1},

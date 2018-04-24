@@ -2812,17 +2812,39 @@ data:extend(
       }
     }
   },
-  
+ 
   {
-    type = "optimized-decorative",
+    type = "simple-entity",
     name = "red-desert-rock-medium",
+    localised_name = {"decorative-name.red-desert-rock-medium"},
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/red-desert-rock-medium-icon.png",
     subgroup = "grass",
     order = "b[decorative]-k[red-desert-rock]-bc[medium]",
-    selectable_in_game = false,
-    collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
-    --selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
-    render_layer = "decorative",
+    collision_box = {{-0.41, -0.22}, {0.41, 0.22}},
+    selection_box = {{-0.6, -0.4}, {0.6, 0.4}},
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 2,
+      result = "stone",
+      count = 8
+    },
+    loot =
+    {
+      {item = "stone", probability = 1, count_min = 3, count_max = 10}
+    },
+    count_as_rock_for_filtered_deconstruction = true,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    render_layer = "object",
+    max_health = 100,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
     autoplace =
     {
       order = "a[doodad]-a[rock]-b[red-desert]-c[medium]",
@@ -2994,6 +3016,7 @@ data:extend(
       }
     }
   },
+  
   {
     type = "optimized-decorative",
     name = "red-desert-rock-small",
