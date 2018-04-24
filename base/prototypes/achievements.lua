@@ -331,7 +331,7 @@ data:extend(
     type = "dont-build-entity-achievement",
     name = "logistic-network-embargo",
     order = "f[limitation]-d[logistic-network-embargo]",
-    dont_build = {"logistic-chest-active-provider", "logistic-chest-requester"},
+    dont_build = {"logistic-chest-active-provider", "logistic-chest-requester", "logistic-chest-buffer"},
     icon = "__base__/graphics/achievement/logistic-network-embargo.png",
     icon_size = 128
   },
