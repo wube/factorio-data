@@ -803,6 +803,7 @@ data:extend(
       priority = "high",
       width = 64,
       height = 64,
+      y = data.is_demo and 384 or 0,
       flags = {"icon"}
     },
     side_menu_production_icon =
@@ -832,7 +833,7 @@ data:extend(
       width = 64,
       height = 64,
       x = 0,
-      y = 192,
+      y = data.is_demo and 448 or 192,
       flags = {"icon"}
     },
     side_menu_tutorials_icon =
@@ -872,7 +873,7 @@ data:extend(
       width = 64,
       height = 64,
       x = 64,
-      y = 0,
+      y = data.is_demo and 384 or 0,
       flags = {"icon"}
     },
     side_menu_production_hover_icon =
@@ -902,7 +903,7 @@ data:extend(
       width = 64,
       height = 64,
       x = 64,
-      y = 192,
+      y = data.is_demo and 448 or 192,
       flags = {"icon"}
     },
     side_menu_train_hover_icon =
