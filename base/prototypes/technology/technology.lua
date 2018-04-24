@@ -786,7 +786,7 @@ data:extend(
         recipe = "power-armor-mk2"
       }
     },
-    prerequisites = {"power-armor"},
+    prerequisites = {"power-armor", "alien-technology"},
     unit =
     {
       count = 150,

@@ -1672,7 +1672,7 @@ data:extend(
     type = "locomotive",
     name = "diesel-locomotive",
     icon = "__base__/graphics/icons/diesel-locomotive.png",
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 1, result = "diesel-locomotive"},
     max_health = 1000,
     corpse = "medium-remnants",
@@ -1828,8 +1828,8 @@ data:extend(
     type = "cargo-wagon",
     name = "cargo-wagon",
     icon = "__base__/graphics/icons/cargo-wagon.png",
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    inventory_size = 15,
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
+    inventory_size = 20,
     minable = {mining_time = 1, result = "cargo-wagon"},
     max_health = 600,
     corpse = "medium-remnants",
@@ -2565,6 +2565,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "passive-provider",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     picture =
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-passive-provider.png",
@@ -2587,6 +2589,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "active-provider",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     picture =
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-active-provider.png",
@@ -2609,6 +2613,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "storage",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     picture =
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-storage.png",
@@ -2631,6 +2637,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "requester",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     picture =
     {
       filename = "__base__/graphics/entity/logistic-chest/logistic-chest-requester.png",
@@ -2757,7 +2765,7 @@ data:extend(
     {
       {
         type = "play-sound",
-        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.6 }
+        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 1.2 }
       },
     },
     close_door_trigger_effect =
@@ -3537,15 +3545,32 @@ data:extend(
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     allowed_effects = {"consumption", "speed", "pollution"},
+    base_picture =
+    {
+      filename = "__base__/graphics/entity/basic-beacon/basic-beacon-base.png",
+      width = 116,
+      height = 93,
+      shift = { 0.34, 0.06}
+    },
     animation =
     {
-      filename = "__base__/graphics/entity/basic-beacon/basic-beacon.png",
-      frame_width = 176,
-      frame_height = 186,
+      filename = "__base__/graphics/entity/basic-beacon/basic-beacon-antenna.png",
+      frame_width = 54,
+      frame_height = 50,
+      line_length = 8,
       frame_count = 32,
-      line_length = 6,
-      shift = {1.2, 0.5},
-      animation_speed = 1 / 3
+      shift = { -0.03, -1.72},
+      animation_speed = 0.5
+    },
+    animation_shadow =
+    {
+      filename = "__base__/graphics/entity/basic-beacon/basic-beacon-antenna-shadow.png",
+      frame_width = 63,
+      frame_height = 49,
+      line_length = 8,
+      frame_count = 32,
+      shift = { 3.12, 0.5},
+      animation_speed = 0.5
     },
     radius_visualisation_picture =
     {

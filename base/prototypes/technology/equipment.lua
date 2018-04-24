@@ -144,7 +144,7 @@ data:extend(
     type = "technology",
     name = "basic-electric-discharge-defense-equipment",
     icon = "__base__/graphics/technology/basic-electric-discharge-defense-equipment.png",
-    prerequisites = {"armor-making-3"},
+    prerequisites = {"armor-making-3", "alien-technology"},
     effects =
     {
       {

@@ -9,19 +9,22 @@ module(..., package.seeall)
 -- defines list is in the lua (could be moved to C++ backend later).
 inventory =
 {
+  fuel = 1,
   chest = 1,
   furnacesource = 1,
   furnaceresult = 2,
-  furnacefuel = 3,
   playerquickbar = 1,
   playermain = 2,
   playerguns = 3,
   playertools = 6,
   playerammo = 4,
   playerarmor = 5,
-  miningdrillfuel = 1,
-  inserterfuel = 1,
-  boilerfuel = 1
+  assemblingmachineinput = 2,
+  assemblingmachineoutput = 3,
+  assemblingmachinemodules = 4,
+  labinput = 2,
+  labmodules = 3,
+  miningdrillmodules = 2
 }
 
 direction =

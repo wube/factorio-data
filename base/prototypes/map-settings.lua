@@ -153,13 +153,24 @@ data:extend(
       -- somewhere along the path is stuck enemy we need to avoid
       -- this is mainly to handle situations when units have arrived and are attacking the target
       -- then units further in the back will use this and run around the target
-      stale_enemy_with_same_destination_collision_penalty = 20,
+      stale_enemy_with_same_destination_collision_penalty = 30,
       -- if there is a moving unit further than this we don't really care
       ignore_moving_enemy_collision_distance = 5,
       -- enemy is not moving/or is too close and has different destination
-      enemy_with_different_destination_collision_penalty = 20,
+      enemy_with_different_destination_collision_penalty = 30,
       -- simplification for now - collision with everything else is this
-      general_entity_collision_penalty = 10
+      general_entity_collision_penalty = 10,
+      -- uptil this amount any client will be served by the path finder (no estimate on the path length)
+      max_clients_to_accept_any_new_request = 10,
+      -- from max_clients_to_accept_any_new_request till this one only those that have a short estimate will be served
+      max_clients_to_accept_short_new_request = 10,
+      -- this is the "threshold" to decide what is short and what is not
+      direct_distance_to_consider_short_request = 100
     },
+
+    -- If a behavior fails this many times, the enemy (or enemy group)
+    -- is destroyed.
+    -- This solves biters stuck within their own base.
+    max_failed_behavior_count = 10,
   }
 })

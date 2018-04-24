@@ -1714,7 +1714,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/stone-rock.png",
     subgroup = "grass",
-    order = "b[decorative]-k[stone-rock]",
+    order = "b[decorative]-k[stone-rock]-a[big]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
     render_layer = "object",
@@ -1837,7 +1837,7 @@ data:extend(
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    render_layer = "object",
+    render_layer = "decorative",
     selectable_in_game = false,
     autoplace =
     {
@@ -1895,10 +1895,11 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/small-stone-rock.png",
     subgroup = "grass",
-    order = "b[decorative]-k[stone-rock]",
+    order = "b[decorative]-k[stone-rock]-b[small]",
+    selectable_in_game = false,
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
-    render_layer = "object",
+    render_layer = "decorative",
     autoplace =
     {
       order = "a[doodad]-a[rock]",

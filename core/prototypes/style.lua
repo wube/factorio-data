@@ -464,12 +464,6 @@ data:extend(
       clicked_graphical_set = bluebuttongraphcialset()
     },
 
-    second_quickbar_slot_button_style =
-    {
-      type = "button_style",
-      parent = "slot_button_style",
-    },
-
     not_available_slot_button_style =
     {
       type = "button_style",
@@ -1690,9 +1684,17 @@ data:extend(
             height = 15,
             x = 79
           }
-        },
+        }
       }
     },
+    scroll_pane_style =
+    {
+      type = "scroll_pane_style",
+      flow_style =
+      {
+        parent = "flow_style"
+      }
+    }
   }
 }
 )
