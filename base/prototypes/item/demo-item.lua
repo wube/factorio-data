@@ -2,6 +2,15 @@ data:extend(
 {
   {
     type = "item",
+    name = "stone-brick",
+    icon = "__base__/graphics/icons/stone-brick.png",
+    flags = {"goes-to-main-inventory"},
+    group = "production",
+    order = "b-d",
+    stack_size = 128
+  },
+  {
+    type = "item",
     name = "coal",
     icon = "__base__/graphics/icons/coal.png",
     flags = {"goes-to-main-inventory"},
