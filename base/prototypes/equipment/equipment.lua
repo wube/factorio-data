@@ -24,7 +24,7 @@ data:extend(
       usage_priority = "primary-input"
     },
     energy_input = "10W",
-	tint = {r = 0, g = 0.1, b = 0, a = 0.2}
+    tint = {r = 0, g = 0.1, b = 0, a = 0.2}
   },
   {
     type = "energy-shield-equipment",

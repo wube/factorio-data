@@ -122,7 +122,8 @@ events =
   oncanceleddeconstruction = 19,
   ontriggercreatedentity = 20,
   ontrainchangedstate = 21,
-  onplayercreated = 22
+  onplayercreated = 22,
+  onresourcedepleted = 23
 }
 
 controllers =

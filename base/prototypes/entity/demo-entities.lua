@@ -249,6 +249,7 @@ data:extend(
     reach_resource_distance = 2.7,
     ticks_to_keep_gun = 600,
     ticks_to_keep_aiming_direction = 100,
+    damage_hit_tint = {r = 1, g = 0, b = 0, a = 0},
     running_speed = 0.15,
     distance_per_frame = 0.13,
     maximum_corner_sliding_distance = 0.7,

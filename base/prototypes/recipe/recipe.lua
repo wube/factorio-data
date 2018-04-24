@@ -125,9 +125,9 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"engine-unit", 15},
-      {"electronic-circuit", 5},
-      {"steel-plate", 10},
+      {"engine-unit", 20},
+      {"electronic-circuit", 10},
+      {"steel-plate", 30}
     },
     result = "diesel-locomotive"
   },
@@ -139,7 +139,7 @@ data:extend(
     {
       {"iron-gear-wheel", 10},
       {"iron-plate", 20},
-      {"steel-plate", 5},
+      {"steel-plate", 20}
     },
     result = "cargo-wagon"
   },

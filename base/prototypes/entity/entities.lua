@@ -803,6 +803,7 @@ data:extend(
     max_health = 200,
     corpse = "medium-remnants",
     dying_explosion = "huge-explosion",
+    energy_per_hit_point = 1,
     resistances =
     {
       {
@@ -840,7 +841,6 @@ data:extend(
     },
     consumption = "150kW",
     friction = 2e-3,
-    crash_damage_multiplier = 0.1,
     light =
     {
       {
@@ -1045,6 +1045,7 @@ data:extend(
     max_health = 1000,
     corpse = "medium-remnants",
     dying_explosion = "huge-explosion",
+    energy_per_hit_point = 0.5,
     resistances =
     {
       {
@@ -1978,7 +1979,7 @@ data:extend(
     name = "cargo-wagon",
     icon = "__base__/graphics/icons/cargo-wagon.png",
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
-    inventory_size = 20,
+    inventory_size = 30,
     minable = {mining_time = 1, result = "cargo-wagon"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 600,
@@ -2865,7 +2866,7 @@ data:extend(
     max_health = 200,
     corpse = "curved-rail-remnants",
     collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
-    secondary_collision_box = {{-0.76, -2.23}, {0.76, 2.23}},
+    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     bending_type = "turn",
     rail_category = "regular",
@@ -3031,8 +3032,8 @@ data:extend(
     minable = {mining_time = 1, result = "rail-signal"},
     max_health = 80,
     corpse = "small-remnants",
-    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    building_collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
+    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
+    building_collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
     {
@@ -4336,7 +4337,7 @@ data:extend(
           width = 36,
           height = 19,
           frame_count = 12,
-          shift = { -0.05, 0.65}
+          shift = { 0.0625, 0.375}
         },
         light = {intensity = 1, size = 1}
       }

@@ -521,7 +521,7 @@ data:extend(
   {
     type = "technology",
     name = "tanks",
-    icon = "__base__/graphics/icons/tank.png",
+    icon = "__base__/graphics/technology/tanks.png",
     effects =
     {
       {
