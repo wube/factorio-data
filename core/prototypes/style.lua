@@ -364,8 +364,8 @@ data:extend(
       type = "button_style",
       parent = "slot_button_style",
       scalable = false,
-      width = 61,
-      height = 61,
+      width = 68,
+      height = 68,
       clicked_graphical_set =
       {
         type = "monolith",
@@ -404,8 +404,8 @@ data:extend(
       type = "button_style",
       parent = "image_tab_slot_style",
       scalable = false,
-      width = 61,
-      height = 61,
+      width = 68,
+      height = 68,
       default_graphical_set = orangebuttongraphcialset(),
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
@@ -436,7 +436,7 @@ data:extend(
     green_circuit_network_content_slot_style =
     {
       type = "button_style",
-      parent = "researched_technology_slot_style"
+      parent = "green_slot_style"
     },
     slot_button_style =
     {
@@ -583,11 +583,14 @@ data:extend(
       bottom_padding = 1,
       left_padding = 5
     },
-    available_technology_slot_style=
+
+    available_technology_slot_style =
     {
       type = "button_style",
       parent = "slot_button_style",
       scalable = false,
+      width = 68,
+      height = 68,
       default_graphical_set =
       {
         type = "monolith",
@@ -640,7 +643,8 @@ data:extend(
         }
       }
     },
-    not_available_technology_slot_style=
+
+    red_slot_button_style =
     {
       type = "button_style",
       parent = "slot_button_style",
@@ -697,14 +701,27 @@ data:extend(
         }
       }
     },
-    disabled_technology_slot_style=
+
+    not_available_technology_slot_style =
+    {
+      type = "button_style",
+      parent = "red_slot_button_style",
+      scalable = false,
+      width = 68,
+      height = 68
+    },
+
+    disabled_technology_slot_style =
     {
       type = "button_style",
       parent = "slot_button_style",
       scalable = false,
-      visible = false
+      visible = false,
+      width = 68,
+      height = 68
     },
-    researched_technology_slot_style=
+
+    green_slot_button_style =
     {
       type = "button_style",
       parent = "slot_button_style",
@@ -761,30 +778,55 @@ data:extend(
         }
       }
     },
+
+    working_weapon_button_style =
+    {
+      type = "button_style",
+      parent = "green_slot_button_style"
+    },
+
+    not_working_weapon_button_style =
+    {
+      type = "button_style",
+      parent = "red_slot_button_style"
+    },
+
+    researched_technology_slot_style =
+    {
+      type = "button_style",
+      parent = "green_slot_button_style",
+      scalable = false,
+      width = 68,
+      height = 68
+    },
+
     available_preview_technology_slot_style =
     {
       type = "button_style",
       parent = "available_technology_slot_style",
       scalable = false,
-      width = 68,
-      height = 68
+      width = 132,
+      height = 132
     },
+
     not_available_preview_technology_slot_style =
     {
       type = "button_style",
       parent = "not_available_technology_slot_style",
       scalable = false,
-      width = 68,
-      height = 68
+      width = 132,
+      height = 132
     },
+
     researched_preview_technology_slot_style =
     {
       type = "button_style",
       parent = "researched_technology_slot_style",
       scalable = false,
-      width = 68,
-      height = 68
+      width = 132,
+      height = 132
     },
+
     crafting_queue_slot_style=
     {
       type = "button_style",
@@ -1430,7 +1472,7 @@ data:extend(
       flow_style =
       {
         max_on_row = 1,
-        minimal_width = 450,
+        minimal_width = 520,
         resize_row_to_width = true
       }
     },

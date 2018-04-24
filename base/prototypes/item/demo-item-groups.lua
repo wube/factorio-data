@@ -5,7 +5,7 @@ data:extend(
     name = "signals",
     order = "f",
     inventory_order = "a",
-    icon = data.is_demo and "__core__/graphics/questionmark.png" or "__base__/graphics/technology/circuit-network.png",
+    icon = data.is_demo and "__core__/graphics/questionmark.png" or "__base__/graphics/item-group/signals.png",
   },
   {
     type = "item-subgroup",

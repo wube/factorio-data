@@ -62,7 +62,7 @@ data:extend(
     name = "logistics",
     order = "aaa",
     inventory_order = "c",
-    icon = "__base__/graphics/technology/logistics.png"
+    icon = "__base__/graphics/item-group/logistics.png"
   },
   {
     type = "item-subgroup",
@@ -117,7 +117,7 @@ data:extend(
     name = "production",
     order = "b",
     inventory_order = "d",
-    icon = "__base__/graphics/technology/automation.png"
+    icon = "__base__/graphics/item-group/production.png"
   },
   {
     type = "item-subgroup",
@@ -161,7 +161,7 @@ data:extend(
     name = "combat",
     order = "d",
     inventory_order = "b",
-    icon = "__base__/graphics/technology/military.png"
+    icon = "__base__/graphics/item-group/military.png"
   },
   {
     type = "item-subgroup",
@@ -204,7 +204,7 @@ data:extend(
     name = "intermediate-products",
     order = "c",
     inventory_order = "a",
-    icon = "__base__/graphics/technology/engine.png",
+    icon = "__base__/graphics/item-group/intermediate-products.png",
   },
   {
     type = "item-subgroup",
@@ -247,7 +247,7 @@ data:extend(
     name = "fluids",
     order = "e",
     inventory_order = "a",
-    icon = "__base__/graphics/technology/advanced-chemistry.png",
+    icon = "__base__/graphics/item-group/fluids.png",
   },
   {
     type = "item-subgroup",
