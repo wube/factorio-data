@@ -304,7 +304,7 @@ data:extend(
     type = "item",
     name = "red-wire",
     icon = "__base__/graphics/icons/red-wire.png",
-    flags = {"goes-to-main-inventory"},
+    flags = {"goes-to-quickbar"},
     group = "energy",
     order = "h-a-e",
     stack_size = 256
@@ -313,7 +313,7 @@ data:extend(
     type = "item",
     name = "green-wire",
     icon = "__base__/graphics/icons/green-wire.png",
-    flags = {"goes-to-main-inventory"},
+    flags = {"goes-to-quickbar"},
     group = "energy",
     order = "h-a-f",
     stack_size = 256
