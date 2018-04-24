@@ -170,7 +170,7 @@ data:extend(
       },
       {
         type = "explosion",
-        percent = 10,
+        decrease = 10,
         percent = 20
       }
     },

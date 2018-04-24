@@ -3209,7 +3209,6 @@ data:extend(
     ingredient_count = 3,
     rocket_parts_required = 100,
     crafting_speed = 1,
-    energy_usage = "150kW",
     module_specification =
     {
       module_slots = 4
@@ -3228,9 +3227,10 @@ data:extend(
       type = "electric",
       usage_priority = "primary-input"
     },
+    energy_usage = "250kW", --energy usage used when crafting the rocket
     idle_energy_usage = "10KW",
     lamp_energy_usage = "10KW",
-    active_energy_usage = "400KW",
+    active_energy_usage = "3990KW",
     rocket_entity = "rocket-silo-rocket",
 
     times_to_blink = 3,
@@ -4618,10 +4618,10 @@ data:extend(
     {
       filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
       priority = "high",
-      width = 91,
-      height = 69,
+      width = 84,
+      height = 66,
       frame_count = 1,
-      shift = {0.5, 0.05}
+      shift = {0.5, 0}
     },
     working_visualisations =
     {
@@ -4637,7 +4637,7 @@ data:extend(
           width = 36,
           height = 19,
           frame_count = 12,
-          shift = { 0.0625, 0.375}
+          shift = { 0.0625, 0.63125}
         },
         light = {intensity = 1, size = 1}
       }
@@ -5981,35 +5981,35 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/combinator/decider-led.png",
-        width = 57,
-        height = 58,
+        width = 56,
+        height = 53,
         frame_count = 1,
         shift = {-0.40625, -0.453125}
       },
       east =
       {
         filename = "__base__/graphics/entity/combinator/decider-led.png",
-        x = 57,
-        width = 57,
-        height = 58,
+        x = 56,
+        width = 56,
+        height = 53,
         frame_count = 1,
         shift = {0.09375, 0.046875}
       },
       south =
       {
         filename = "__base__/graphics/entity/combinator/decider-led.png",
-        x = 114,
-        width = 57,
-        height = 58,
+        x = 112,
+        width = 56,
+        height = 53,
         frame_count = 1,
         shift = {-0.40625, -0.453125}
       },
       west =
       {
         filename = "__base__/graphics/entity/combinator/decider-led.png",
-        x = 171,
-        width = 57,
-        height = 58,
+        x = 168,
+        width = 56,
+        height = 53,
         frame_count = 1,
         shift = {0.09375, 0.046875}
       }

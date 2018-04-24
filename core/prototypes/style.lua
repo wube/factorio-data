@@ -1230,6 +1230,7 @@ data:extend(
       left_padding = 3,
       right_padding = 2,
       minimal_width = 150,
+      maximal_width = 150,
       font = "default",
       font_color = {},
       graphical_set =

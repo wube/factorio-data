@@ -1947,7 +1947,7 @@ data:extend(
       frame_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {0.078125, -0.03125},
+      shift = {-0.021875, 0.16875},
     },
     picture_on =
     {
@@ -1958,20 +1958,20 @@ data:extend(
       frame_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {0.0625, -0.21875},
+      shift = {-0.0375, -0.01875},
     },
 
     circuit_wire_connection_point =
     {
       shadow =
       {
-        red = {0.859375, -0.296875},
-        green = {0.859375, -0.296875},
+        red = {0.759375, -0.096875},
+        green = {0.759375, -0.096875},
       },
       wire =
       {
-        red = {0.40625, -0.59375},
-        green = {0.40625, -0.59375},
+        red = {0.30625, -0.39375},
+        green = {0.30625, -0.39375},
       }
     },
 

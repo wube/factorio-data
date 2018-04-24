@@ -244,9 +244,8 @@ data:extend(
     picture =
     {
       filename = "__base__/graphics/entity/ship-wreck/big-ship-wreck-3.png",
-      width = 256,
-      height = 212,
-      shift = {0.5, 0.6}
+      width = 165,
+      height = 131
     }
   },
 
