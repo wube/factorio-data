@@ -967,13 +967,21 @@ data:extend(
     smoke_slow_down_factor = 1,
     sound =
     {
+      aggregation =
       {
-        filename = "__base__/sound/fight/small-explosion-1.ogg",
-        volume = 0.75
+        max_count = 1,
+        remove = true
       },
+      variations =
       {
-        filename = "__base__/sound/fight/small-explosion-2.ogg",
-        volume = 0.75
+        {
+          filename = "__base__/sound/fight/small-explosion-1.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/fight/small-explosion-2.ogg",
+          volume = 0.75
+        }
       }
     }
   },
@@ -1065,13 +1073,21 @@ data:extend(
     light = {intensity = 1, size = 50},
     sound =
     {
+      aggregation =
       {
-        filename = "__base__/sound/fight/large-explosion-1.ogg",
-        volume = 1.0
+        max_count = 1,
+        remove = true
       },
+      variations =
       {
-        filename = "__base__/sound/fight/large-explosion-2.ogg",
-        volume = 1.0
+        {
+          filename = "__base__/sound/fight/large-explosion-1.ogg",
+          volume = 1.0
+        },
+        {
+          filename = "__base__/sound/fight/large-explosion-2.ogg",
+          volume = 1.0
+        }
       }
     },
     created_effect =
@@ -1117,13 +1133,21 @@ data:extend(
     light = {intensity = 1, size = 50},
     sound =
     {
+      aggregation =
       {
-        filename = "__base__/sound/fight/large-explosion-1.ogg",
-        volume = 0.8
+        max_count = 1,
+        remove = true
       },
+      variations =
       {
-        filename = "__base__/sound/fight/large-explosion-2.ogg",
-        volume = 0.8
+        {
+          filename = "__base__/sound/fight/large-explosion-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/fight/large-explosion-2.ogg",
+          volume = 0.8
+        }
       }
     },
     created_effect =
@@ -1170,13 +1194,21 @@ data:extend(
     light = {intensity = 1, size = 50},
     sound =
     {
+      aggregation =
       {
-        filename = "__base__/sound/fight/large-explosion-1.ogg",
-        volume = 1.25
+        max_count = 1,
+        remove = true
       },
+      variations =
       {
-        filename = "__base__/sound/fight/large-explosion-2.ogg",
-        volume = 1.25
+        {
+          filename = "__base__/sound/fight/large-explosion-1.ogg",
+          volume = 1.25
+        },
+        {
+          filename = "__base__/sound/fight/large-explosion-2.ogg",
+          volume = 1.25
+        }
       }
     },
     created_effect =
