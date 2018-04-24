@@ -15,7 +15,7 @@ data:extend(
       projectile_creation_distance = 0.6,
       range = 15
     },
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "item",
@@ -26,7 +26,7 @@ data:extend(
     subgroup = "gun",
     order = "f[land-mine]",
     place_result = "land-mine",
-    stack_size = 16,
+    stack_size = 20,
     trigger_radius = 1
   },
   {
@@ -44,7 +44,7 @@ data:extend(
       projectile_creation_distance = 0.6,
       range = 22
     },
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "gun",
@@ -69,7 +69,7 @@ data:extend(
         }
       }
     },
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "gun",
@@ -95,7 +95,7 @@ data:extend(
         }
       }
     },
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "gun",
@@ -119,7 +119,7 @@ data:extend(
         }
       }
     },
-    stack_size = 4
+    stack_size = 5
   }
 }
 )

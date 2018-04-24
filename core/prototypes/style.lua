@@ -1690,6 +1690,8 @@ data:extend(
     scroll_pane_style =
     {
       type = "scroll_pane_style",
+      vertical_scroll_bar_spacing = 30,
+      horizontal_scroll_bar_spacing = 30,
       flow_style =
       {
         parent = "flow_style"

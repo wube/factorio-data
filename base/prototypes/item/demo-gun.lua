@@ -33,7 +33,7 @@ data:extend(
         }
       }
     },
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "gun",
