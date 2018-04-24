@@ -1774,6 +1774,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "logistic-chest-requester"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "logistic-chest-storage"
       }
     },
     prerequisites = { "logistic-robotics"},
@@ -1801,7 +1805,7 @@ data:extend(
         modifier = "0.35"
       }
     },
-    prerequisites = {"logistic-robotics"},
+    prerequisites = {"robotics"},
     unit =
     {
       count = 50,
@@ -1936,7 +1940,7 @@ data:extend(
         modifier = "1"
       }
     },
-    prerequisites = {"logistic-robotics"},
+    prerequisites = {"robotics"},
     unit =
     {
       count = 200,
@@ -2171,6 +2175,10 @@ data:extend(
       {
         type = "character-logistic-trash-slots",
         modifier = 5
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "logistic-chest-storage"
       }
     },
     prerequisites = {"logistic-robotics"},

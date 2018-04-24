@@ -2292,8 +2292,8 @@ data:extend(
     reversing_power_modifier = 0.6,
     braking_force = 10,
     friction_force = 0.50,
-    -- this is a percentage of current speed that will be subtracted
-    air_resistance = 0.0075,
+    vertical_selection_shift = -0.5,
+    air_resistance = 0.0075, -- this is a percentage of current speed that will be subtracted
     connection_distance = 3,
     joint_distance = 4,
     energy_per_hit_point = 5,
@@ -2520,6 +2520,7 @@ data:extend(
     dying_explosion = "medium-explosion",
     collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
     selection_box = {{-1, -3}, {1, 3}},
+    vertical_selection_shift = -0.796875,
     weight = 1000,
     max_speed = 1.5,
     braking_force = 3,
