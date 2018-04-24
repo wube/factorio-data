@@ -1,5 +1,6 @@
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
+require ("prototypes.entity.demo-transport-belt-pictures")
 
 function make_unit_melee_ammo_type(damagevalue)
   return
@@ -564,16 +565,17 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     animations =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
       direction_count = 12
     },
+    ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
     speed = 0.03125
   },

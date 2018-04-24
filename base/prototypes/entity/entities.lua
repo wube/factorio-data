@@ -1,5 +1,6 @@
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
+require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.assemblerpipes")
 
 railpictures = function()
@@ -35,77 +36,77 @@ data:extend(
     collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
     selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
     distance_to_enter = 0.35,
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     belt_horizontal =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16
     },
     belt_vertical =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 32
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 40
     },
     ending_top =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 64
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 80
     },
     ending_bottom =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 96
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 120
     },
     ending_side =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 128
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 160
     },
     starting_top =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 160
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 200
     },
     starting_bottom =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 192
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 240
     },
     starting_side =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 224
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 280
     },
     fast_replaceable_group = "transport-belt-to-ground",
     speed = 0.03125,
@@ -128,7 +129,8 @@ data:extend(
         height = 43,
         y = 43
       }
-    }
+    },
+    ending_patch = ending_patch_prototype
   },
   {
     type = "transport-belt-to-ground",
@@ -156,77 +158,77 @@ data:extend(
     collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
     selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
     distance_to_enter = 0.35,
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     belt_horizontal =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32
     },
     belt_vertical =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 32
+      y = 40
     },
     ending_top =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 64
+      y = 80
     },
     ending_bottom =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 96
+      y = 120
     },
     ending_side =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 128
+      y = 160
     },
     starting_top =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 160
+      y = 200
     },
     starting_bottom =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 192
+      y = 240
     },
     starting_side =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 224
+      y = 280
     },
     fast_replaceable_group = "transport-belt-to-ground",
     speed = 0.0625,
@@ -249,7 +251,8 @@ data:extend(
         height = 43,
         y = 43
       }
-    }
+    },
+    ending_patch = ending_patch_prototype
   },
   {
     type = "transport-belt-to-ground",
@@ -277,77 +280,77 @@ data:extend(
     collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
     selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
     distance_to_enter = 0.35,
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     belt_horizontal =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32
     },
     belt_vertical =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 32,
+      y = 40,
     },
     ending_top =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 64
+      y = 80
     },
     ending_bottom =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 96
+      y = 120
     },
     ending_side =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 128
+      y = 160
     },
     starting_top =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 160
+      y = 200
     },
     starting_bottom =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 192
+      y = 240
     },
     starting_side =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 224
+      y = 280
     },
     fast_replaceable_group = "transport-belt-to-ground",
     speed = 0.09375,
@@ -370,7 +373,8 @@ data:extend(
         height = 43,
         y = 43
       }
-    }
+    },
+    ending_patch = ending_patch_prototype
   },
   {
     type = "splitter",
@@ -389,79 +393,79 @@ data:extend(
     },
     collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 0.7,
     structure_animation_movement_cooldown = 10,
     belt_horizontal =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16
     },
     belt_vertical =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 32,
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 40,
     },
     ending_top =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 64
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 80
     },
     ending_bottom =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 96
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 120
     },
     ending_side =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 128
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 160
     },
     starting_top =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 160
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 200
     },
     starting_bottom =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 192
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 240
     },
     starting_side =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
-      frame_count = 32,
-      y = 224
+      frame_width = 40,
+      frame_height = 40,
+      frame_count = 16,
+      y = 280
     },
     fast_replaceable_group = "splitter",
     speed = 0.03125,
@@ -507,7 +511,8 @@ data:extend(
         frame_height = 79,
         shift = {0.25, 0.05}
       },
-    }
+    },
+    ending_patch = ending_patch_prototype
   },
   {
     type = "splitter",
@@ -526,79 +531,79 @@ data:extend(
     },
     collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 1.2,
     structure_animation_movement_cooldown = 10,
     belt_horizontal =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32
     },
     belt_vertical =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 32,
+      y = 40,
     },
     ending_top =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 64
+      y = 80
     },
     ending_bottom =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 96
+      y = 120
     },
     ending_side =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 128
+      y = 160
     },
     starting_top =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 160
+      y = 200
     },
     starting_bottom =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 192
+      y = 240
     },
     starting_side =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 224
+      y = 280
     },
     fast_replaceable_group = "splitter",
     speed = 0.0625,
@@ -644,7 +649,8 @@ data:extend(
         frame_height = 79,
         shift = {0.25, 0.05}
       },
-    }
+    },
+    ending_patch = ending_patch_prototype
   },
   {
     type = "splitter",
@@ -663,79 +669,79 @@ data:extend(
     },
     collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 1.2,
     structure_animation_movement_cooldown = 10,
     belt_horizontal =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32
     },
     belt_vertical =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 32,
+      y = 40,
     },
     ending_top =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 64
+      y = 80
     },
     ending_bottom =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 96
+      y = 120
     },
     ending_side =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 128
+      y = 160
     },
     starting_top =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 160
+      y = 200
     },
     starting_bottom =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 192
+      y = 240
     },
     starting_side =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
-      y = 224
+      y = 280
     },
     fast_replaceable_group = "splitter",
     speed = 0.09375,
@@ -781,7 +787,8 @@ data:extend(
         frame_height = 79,
         shift = {0.25, 0.05}
       },
-    }
+    },
+    ending_patch = ending_patch_prototype
   },
   {
     type = "transport-belt",
@@ -800,16 +807,17 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     animations =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
       direction_count = 12
     },
+    ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
     speed = 0.0625
   },
@@ -830,16 +838,17 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    animation_speed_coefficient = 64,
+    animation_speed_coefficient = 32,
     animations =
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 32,
-      frame_height = 32,
+      frame_width = 40,
+      frame_height = 40,
       frame_count = 32,
       direction_count = 12
     },
+    ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375
   },
