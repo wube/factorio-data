@@ -530,7 +530,6 @@ function fireutil.create_small_tree_flame_animations(opts)
 end
 
 function fireutil.flamethrower_turret_pipepictures()
-  local tiling_correction = -0.5 / 32
   return {
     north =
     {
@@ -538,7 +537,7 @@ function fireutil.flamethrower_turret_pipepictures()
       priority = "extra-high",
       width = 44,
       height = 42,
-      shift = {0, 1 + tiling_correction}
+      shift = {0, 1}
     },
     south =
     {
@@ -546,7 +545,7 @@ function fireutil.flamethrower_turret_pipepictures()
       priority = "extra-high",
       width = 44,
       height = 42,
-      shift = {0, -1 - tiling_correction}
+      shift = {0, -1}
     },
     east =
     {
@@ -554,7 +553,7 @@ function fireutil.flamethrower_turret_pipepictures()
       priority = "extra-high",
       width = 32,
       height = 42,
-      shift = {-1 - tiling_correction, 0}
+      shift = {-1, 0}
     }, 
     west =
     {
@@ -562,7 +561,7 @@ function fireutil.flamethrower_turret_pipepictures()
       priority = "extra-high",
       width = 32,
       height = 42,
-      shift = {1 + tiling_correction, 0}
+      shift = {1, 0}
     },
   }
 end
@@ -885,7 +884,7 @@ data:extend({
       --production_type = "input",
       secondary_draw_order = 0,
       render_layer = "lower-object",
-      pipe_picture = fireutil.flamethrower_turret_pipepictures(), -- assembler3pipepictures(),
+      pipe_picture = fireutil.flamethrower_turret_pipepictures(),
       pipe_covers = pipecoverspictures(),
       base_area = 1,
       pipe_connections = {

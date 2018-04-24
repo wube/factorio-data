@@ -88,7 +88,7 @@ function rolling_stock_back_light()
   {
     {
       minimum_darkness = 0.3,
-      color = {r=1},
+      color = { r = 1, g = 0.1, b = 0.05, a = 0 },
       shift = {-0.6, 3.5},
       size = 2,
       intensity = 0.6,
@@ -96,7 +96,7 @@ function rolling_stock_back_light()
     },
     {
       minimum_darkness = 0.3,
-      color = {r=1},
+      color = { r = 1, g = 0.1, b = 0.05, a = 0 },
       shift = {0.6, 3.5},
       size = 2,
       intensity = 0.6,
@@ -110,7 +110,7 @@ function rolling_stock_stand_by_light()
   {
     {
       minimum_darkness = 0.3,
-      color = {b=1},
+      color = { r = 0.05, g = 0.2, b = 1, a = 0 },
       shift = {-0.6, -3.5},
       size = 2,
       intensity = 0.5,
@@ -118,7 +118,7 @@ function rolling_stock_stand_by_light()
     },
     {
       minimum_darkness = 0.3,
-      color = {b=1},
+      color = { r = 0.05, g = 0.2, b = 1, a = 0 },
       shift = {0.6, -3.5},
       size = 2,
       intensity = 0.5,

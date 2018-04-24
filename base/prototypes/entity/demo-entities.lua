@@ -1470,7 +1470,7 @@ data:extend(
       height = 137,
       frame_count = 32,
       line_length = 8,
-      shift = {1.34, -0.06}
+      shift = {1.34375, -0.046875}
     },
     vertical_animation =
     {
@@ -1479,7 +1479,7 @@ data:extend(
       height = 186,
       frame_count = 32,
       line_length = 8,
-      shift = {0.812, 0.03125}
+      shift = {0.796875, 0.03125}
     },
     smoke =
     {
@@ -2406,7 +2406,7 @@ data:extend(
       shift = {0, 0},
       scale = 0.5
     },
-    flags = {"not-on-map"},
+    flags = {"not-on-map", "placeable-off-grid"},
     minable = { mining_time = 0, results={}},
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -0.4}, {0.5, 0.6}}

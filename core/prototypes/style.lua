@@ -269,7 +269,8 @@ data:extend(
     {
       type = "label_style",
       parent = "description_label_style",
-      font = "default-bold"
+      font = "default-bold",
+      minimal_width = 210
     },
     tool_equip_gui_label_style =
     {
@@ -285,7 +286,8 @@ data:extend(
     {
       type = "label_style",
       parent = "description_label_style",
-      font = "default-bold"
+      font = "default-bold",
+      minimal_width = 100
     },
     tooltip_description_label_style=
     {
@@ -394,7 +396,9 @@ data:extend(
       type = "label_style",
       parent = "label_style",
       font = "default-bold",
-      font_color = color "ff"
+      font_color = color "ff",
+      minimal_width = 250,
+      maximal_width = 250
     },
     achievement_percent_label_style =
     {
@@ -1914,7 +1918,7 @@ data:extend(
       type = "table_style",
       cell_padding = 5,
       horizontal_spacing=0,
-      vertial_spacing=0,
+      vertical_spacing=0,
       -- same as frame
       column_graphical_set =
       {
