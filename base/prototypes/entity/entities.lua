@@ -1795,8 +1795,7 @@ data:extend(
         green = {0, 0}
       }
     },
-    circuit_wire_max_distance = 7.5,
-    uses_arm_movement = "basic-inserter"
+    circuit_wire_max_distance = 7.5
   },
   {
     type = "solar-panel",
