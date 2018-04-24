@@ -184,7 +184,9 @@ circuitconditionindex =
   lamp = 1,
   arithmetic_combinator = 1,
   decider_combinator = 1,
-  constant_combinator = 1
+  constant_combinator = 1,
+  offshore_pump = 1,
+  pump = 1
 }
 
 trainstate =

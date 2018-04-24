@@ -234,7 +234,7 @@ data:extend(
     type = "projectile",
     name = "shotgun-pellet",
     flags = {"not-on-map"},
-    collision_box = {{-0.05, -1}, {0.05, 1}},
+    collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
     acceleration = 0,
     direction_only = true,
     action =
@@ -263,7 +263,7 @@ data:extend(
     type = "projectile",
     name = "piercing-shotgun-pellet",
     flags = {"not-on-map"},
-    collision_box = {{-0.05, -1}, {0.05, 1}},
+    collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
     acceleration = 0,
     direction_only = true,
     action =
