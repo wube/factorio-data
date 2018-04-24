@@ -40,6 +40,7 @@ command =
 {
   attack = 1,
   gotolocation = 2,
+  compound = 3,
   group = 4,
   attackarea = 5,
   wander = 6,

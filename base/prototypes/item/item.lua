@@ -177,7 +177,7 @@ data:extend(
     group = "combat",
     order = "h-j-g",
     place_result = "wall",
-    stack_size = 32
+    stack_size = 64
   },
   {
     type = "item",
@@ -341,7 +341,7 @@ data:extend(
     group = "logistics",
     order = "k-a",
     place_result = "logistic-robot",
-    stack_size = 16
+    stack_size = 32
   },
   {
     type = "item",

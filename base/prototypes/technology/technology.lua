@@ -2,25 +2,6 @@ data:extend(
 {
   {
     type = "technology",
-    name = "iron-working",
-    icon = "__base__/graphics/technology/iron-working.png",
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "iron-chest"
-      }
-    },
-    unit =
-    {
-      count = 10,
-      ingredients = {{"science-pack-1", 1}},
-      time = 5
-    },
-    order = "a-a"
-  },
-  {
-    type = "technology",
     name = "steel-processing",
     icon = "__base__/graphics/technology/steel-processing.png",
     effects =
@@ -38,7 +19,6 @@ data:extend(
         recipe = "steel-axe"
       }
     },
-    prerequisites = {"iron-working"},
     unit =
     {
       count = 20,
@@ -66,7 +46,6 @@ data:extend(
         recipe = "shotgun-shell"
       }
     },
-    prerequisites = {"iron-working"},
     unit =
     {
       count = 10,
@@ -90,7 +69,7 @@ data:extend(
         recipe = "basic-grenade"
       }
     },
-    prerequisites = {"military"},
+    prerequisites = {"military", "steel-processing"},
     unit =
     {
       count = 20,
@@ -186,10 +165,9 @@ data:extend(
         recipe = "long-handed-inserter"
       }
     },
-    prerequisites = {"iron-working"},
     unit =
     {
-      count = 15,
+      count = 10,
       ingredients = {{"science-pack-1", 1}},
       time = 10
     },
@@ -394,10 +372,6 @@ data:extend(
       },
       {
         type = "unlock-recipe",
-        recipe = "science-pack-3"
-      },
-      {
-        type = "unlock-recipe",
         recipe = "advanced-circuit"
       }
     },
@@ -450,7 +424,6 @@ data:extend(
         recipe = "basic-splitter"
       }
     },
-    prerequisites = {"iron-working"},
     unit =
     {
       count = 20,
@@ -478,7 +451,7 @@ data:extend(
         recipe = "diesel-locomotive"
       }
     },
-    prerequisites = {"logistics-2"},
+    prerequisites = {"logistics-2", "steel-processing"},
     unit =
     {
       count = 100,
@@ -705,9 +678,13 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "rocket"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "science-pack-3"
       }
     },
-    prerequisites = {"electronics", "flammables", "explosives"},
+    prerequisites = {"electronics", "flammables", "explosives", "steel-processing"},
     unit =
     {
       count = 80,
@@ -756,7 +733,6 @@ data:extend(
         recipe = "basic-armor"
       }
     },
-    prerequisites = {"iron-working"},
     unit =
     {
       count = 10,
@@ -856,7 +832,6 @@ data:extend(
         recipe = "gun-turret"
       }
     },
-    prerequisites = {"iron-working"},
     unit =
     {
       count = 10,
@@ -910,7 +885,7 @@ data:extend(
     type = "technology",
     name = "robotics",
     icon = "__base__/graphics/technology/robotics.png",
-    prerequisites = {"advanced-electronics-2"},
+    prerequisites = {"advanced-electronics-2", "rocketry"},
     unit =
     {
       count = 100,
@@ -1084,9 +1059,13 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "medium-electric-pole"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "big-electric-pole"
       }
     },
-    prerequisites = {"electronics"},
+    prerequisites = {"electronics", "steel-processing"},
     unit =
     {
       count = 50,
@@ -1105,10 +1084,6 @@ data:extend(
     icon = "__base__/graphics/technology/electric-energy-distribution.png",
     effects =
     {
-      {
-        type = "unlock-recipe",
-        recipe = "big-electric-pole"
-      },
       {
         type = "unlock-recipe",
         recipe = "substation"

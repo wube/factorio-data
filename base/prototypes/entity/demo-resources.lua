@@ -18,7 +18,7 @@ data:extend(
     {
       control = "copper-ore",
       sharpness = 1,
-      richness_multiplier = 12000,
+      richness_multiplier = 13000,
       richness_base = 350,
         -- Valid only for resources, the resulting influence before sharpening
         -- is multiplied by richness-multiplier and added to
@@ -34,7 +34,7 @@ data:extend(
           influence = 0.65,
           noise_layer = "copper-ore",
           noise_octaves_difference = -1.9,
-          noise_persistence = 0.4,
+          noise_persistence = 0.3,
           starting_area_weight_optimal = 0,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
@@ -125,7 +125,7 @@ data:extend(
           influence = 0.65,
           noise_layer = "iron-ore",
           noise_octaves_difference = -1.9,
-          noise_persistence = 0.4,
+          noise_persistence = 0.3,
           starting_area_weight_optimal = 0,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
@@ -193,7 +193,7 @@ data:extend(
     {
       control = "coal",
       sharpness = 1,
-      richness_multiplier = 12000,
+      richness_multiplier = 13000,
       richness_base = 350,
       peaks = {
         {
@@ -206,7 +206,7 @@ data:extend(
           influence = 0.65,
           noise_layer = "coal",
           noise_octaves_difference = -1.9,
-          noise_persistence = 0.4,
+          noise_persistence = 0.35,
           starting_area_weight_optimal = 0,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
@@ -280,7 +280,7 @@ data:extend(
     {
       control = "stone",
       sharpness = 1,
-      richness_multiplier = 7000,
+      richness_multiplier = 9000,
       richness_base = 200,
       peaks = {
         {

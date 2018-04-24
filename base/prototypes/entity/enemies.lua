@@ -15,7 +15,7 @@ data:extend(
       },
       {
         type = "explosion",
-        percent = 20
+        percent = 10
       }
     },
     healing_per_tick = 0.01,
@@ -112,7 +112,7 @@ data:extend(
       },
       {
         type = "explosion",
-        percent = 30
+        percent = 10
       }
     },
     healing_per_tick = 0.02,

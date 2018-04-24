@@ -92,14 +92,16 @@ data:extend(
       {"iron-stick", 1},
       {"steel-plate", 1}
     },
-    result = "straight-rail"
+    result = "straight-rail",
+    result_count = 2
   },
   {
     type = "recipe",
     name = "curved-rail",
     enabled = "false",
     ingredients = {{"stone", 4}, {"iron-stick", 4}, {"steel-plate", 4}},
-    result = "curved-rail"
+    result = "curved-rail",
+    result_count = 2
   },
   {
     type = "recipe",
@@ -184,7 +186,7 @@ data:extend(
   {
     type = "recipe",
     name = "iron-chest",
-    enabled = "false",
+    enabled = "true",
     ingredients = {{"iron-plate", 8}},
     result = "iron-chest"
   },
