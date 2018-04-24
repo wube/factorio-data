@@ -338,7 +338,9 @@ function export_entities(param)
       elseif entity.name == "flying-text" then
         info.text = ""
       elseif entity.type == "assembling-machine" then
-        info.recipe = entity.recipe.name
+        if entity.recipe then
+          info.recipe = entity.recipe.name
+        end
       end
       if entity.type == "underground-belt" then
         info.type = entity.belt_to_ground_type

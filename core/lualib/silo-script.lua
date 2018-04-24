@@ -214,7 +214,6 @@ function silo_script.gui_update(player)
   local button = mod_gui.get_button_flow(player).silo_gui_sprite_button
   if not button then error("Silo script button not present during update") end
   button.style.visible = show
-  gui.style.visible = show
 end
 
 function silo_script.on_gui_click(event)

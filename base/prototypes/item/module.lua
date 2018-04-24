@@ -103,7 +103,6 @@ return
         "plastic-bar",
         "empty-barrel",
         "uranium-processing",
-        "kovarex-enrichment-process",
         "copper-cable",
         "iron-stick",
         "iron-gear-wheel",

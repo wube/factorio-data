@@ -100,10 +100,12 @@ data:extend(
             frequency = "low",
             size = "high"
           },
+          ["uranium-ore"] = {
+            frequency = "low",
+            size = "high"
+          },
           ["enemy-base"] = {
-            frequency = "very-low",
-            richness = "normal",
-            size = "low"
+            frequency = "low",
           },
           ["iron-ore"] = {
             frequency = "very-low",

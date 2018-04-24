@@ -16,11 +16,10 @@ data:extend(
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     input_fluid_box =
     {
-      production_type = "input",
+      production_type = "input-output",
       pipe_picture = assembler2pipepictures(),
       pipe_covers = pipecoverspictures(),
       base_area = 1,
-      base_level = -1,
       pipe_connections =
       {
         { position = {-2, 0} },
