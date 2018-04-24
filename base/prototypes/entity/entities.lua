@@ -1,5 +1,6 @@
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
+require ("prototypes.entity.assemblerpipes")
 
 railpictures = function()
   return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
@@ -11,10 +12,11 @@ data:extend(
     type = "transport-belt-to-ground",
     name = "basic-transport-belt-to-ground",
     icon = "__base__/graphics/icons/basic-transport-belt-to-ground.png",
-    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-rotate-only"},
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-transport-belt-to-ground"},
     max_health = 70,
     corpse = "small-remnants",
+    max_distance = 5,
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
@@ -32,6 +34,7 @@ data:extend(
     },
     collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
     selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
+    distance_to_enter = 0.35,
     animation_speed_coefficient = 64,
     belt_horizontal =
     {
@@ -131,7 +134,7 @@ data:extend(
     type = "transport-belt-to-ground",
     name = "fast-transport-belt-to-ground",
     icon = "__base__/graphics/icons/fast-transport-belt-to-ground.png",
-    flags = {"placeable-neutral", "player-creation"},
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-transport-belt-to-ground"},
     max_health = 60,
     corpse = "small-remnants",
@@ -152,6 +155,7 @@ data:extend(
     },
     collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
     selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
+    distance_to_enter = 0.35,
     animation_speed_coefficient = 64,
     belt_horizontal =
     {
@@ -251,7 +255,7 @@ data:extend(
     type = "transport-belt-to-ground",
     name = "express-transport-belt-to-ground",
     icon = "__base__/graphics/icons/express-transport-belt-to-ground.png",
-    flags = {"placeable-neutral", "player-creation"},
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-transport-belt-to-ground"},
     max_health = 60,
     corpse = "small-remnants",
@@ -272,6 +276,7 @@ data:extend(
     },
     collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
     selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
+    distance_to_enter = 0.35,
     animation_speed_coefficient = 64,
     belt_horizontal =
     {
@@ -846,12 +851,32 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
     max_health = 250,
     corpse = "big-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
         percent = 70
       }
+    },
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_picture = assembler2pipepictures(),
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {0, -2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = assembler2pipepictures(),
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = 1,
+        pipe_connections = {{ type="output", position = {0, 2} }}
+      },
+      off_when_no_fluid_recipe = true
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -860,13 +885,13 @@ data:extend(
     {
       filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
       priority = "high",
-      frame_width = 141,
-      frame_height = 120,
+      frame_width = 113,
+      frame_height = 99,
       frame_count = 32,
-      line_length = 6,
-      shift = {0.7, 0.12}
+      line_length = 8,
+      shift = {0.4, -0.06}
     },
-    crafting_categories = {"crafting"},
+    crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 0.75,
     energy_source =
     {
@@ -894,6 +919,26 @@ data:extend(
         percent = 70
       }
     },
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_picture = assembler3pipepictures(),
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {0, -2} }}
+      },
+      {
+        production_type = "output",
+        pipe_picture = assembler3pipepictures(),
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = 1,
+        pipe_connections = {{ type="output", position = {0, 2} }}
+      },
+      off_when_no_fluid_recipe = true
+    },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
@@ -901,13 +946,13 @@ data:extend(
     {
       filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
       priority = "high",
-      frame_width = 141,
-      frame_height = 120,
+      frame_width = 142,
+      frame_height = 113,
       frame_count = 32,
-      line_length = 6,
-      shift = {0.7, 0.12}
+      line_length = 8,
+      shift = {0.84, -0.09}
     },
-    crafting_categories = {"crafting"},
+    crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 1.25,
     energy_source =
     {
@@ -969,8 +1014,9 @@ data:extend(
         {
           filename = "__core__/graphics/light-cone.png",
           priority = "medium",
-          width = 400,
-          height = 400
+          scale = 2,
+          width = 200,
+          height = 200
         },
         shift = {-0.6, -14},
         size = 2,
@@ -983,8 +1029,9 @@ data:extend(
         {
           filename = "__core__/graphics/light-cone.png",
           priority = "medium",
-          width = 400,
-          height = 400
+          scale = 2,
+          width = 200,
+          height = 200
         },
         shift = {0.6, -14},
         size = 2,
@@ -1130,8 +1177,8 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
-    insert_distance = 1.85,
-    pickup_distance = 2,
+    pickup_position = {0, -2},
+    insert_position = {0, 2.35},
     energy_per_movement = 5000,
     energy_per_rotation = 5000,
     rotation_speed = 0.02,
@@ -1154,14 +1201,14 @@ data:extend(
     {
       filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-hand-open.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     platform_picture =
@@ -1194,8 +1241,8 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
-    insert_distance = 0.85,
-    pickup_distance = 1,
+    pickup_position = {0, -1},
+    insert_position = {0, 1.35},
     energy_per_movement = 5000,
     energy_per_rotation = 5000,
     energy_source =
@@ -1215,13 +1262,13 @@ data:extend(
     hand_closed_picture = {
       filename = "__base__/graphics/entity/fast-inserter/fast-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     hand_open_picture = {
       filename = "__base__/graphics/entity/fast-inserter/fast-inserter-hand-open.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     platform_picture =
@@ -1250,8 +1297,8 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
-    insert_distance = 0.85,
-    pickup_distance = 1,
+    pickup_position = {0, -1},
+    insert_position = {0, 1.35},
     energy_per_movement = 7000,
     energy_per_rotation = 7000,
     energy_source =
@@ -1274,14 +1321,14 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smart-inserter/smart-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/smart-inserter/smart-inserter-hand-open.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     platform_picture =
@@ -1370,8 +1417,9 @@ data:extend(
         {
           filename = "__core__/graphics/light-cone.png",
           priority = "medium",
-          width = 400,
-          height = 400
+          scale = 2,
+          width = 200,
+          height = 200
         },
         shift = {-0.6, -16},
         size = 2,
@@ -1384,8 +1432,9 @@ data:extend(
         {
           filename = "__core__/graphics/light-cone.png",
           priority = "medium",
-          width = 400,
-          height = 400
+          scale = 2,
+          width = 200,
+          height = 200
         },
         shift = {0.6, -16},
         size = 2,
@@ -1982,7 +2031,7 @@ data:extend(
     minable = {mining_time = 1, result = "rail-signal"},
     max_health = 80,
     corpse = "small-remnants",
-    collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
+    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
     {
@@ -2590,7 +2639,7 @@ data:extend(
         percent = 100
       }
     },
-    collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
+    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     drawing_box = {{-2.8, -0.5}, {0.5, 0.5}},
     maximum_wire_distance = 9,
@@ -2894,7 +2943,7 @@ data:extend(
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
     smelting_energy_consumption = "180kW",
-    smelting_speed = 1,
+    smelting_speed = 2,
     source_inventory_size = 1,
     energy_source =
     {
@@ -2962,7 +3011,7 @@ data:extend(
     module_slots = 2,
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_speed = 1,
+    smelting_speed = 2,
     smelting_energy_consumption = "180kW",
     source_inventory_size = 1,
     energy_source =
@@ -3551,7 +3600,6 @@ data:extend(
         }
       }
     },
-    crafting_categories = {"crafting"},
     crafting_speed = 1.25,
     energy_source =
     {

@@ -118,8 +118,9 @@ data:extend(
     minable =
     {
       mining_particle = "wooden-particle",
-      mining_time = 1,
-      result = "raw-wood"
+      mining_time = 2,
+      result = "raw-wood",
+      count = 4
     },
     emissions_per_tick = -0.0001,
     max_health = 20,

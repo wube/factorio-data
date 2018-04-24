@@ -26,11 +26,13 @@ data:extend(
   {
     type = "recipe",
     name = "express-transport-belt",
+    category = "crafting-with-fluid",
     enabled = "false",
     ingredients =
     {
-      {"iron-gear-wheel", 10},
-      {"fast-transport-belt", 1}
+      {"iron-gear-wheel", 5},
+      {"fast-transport-belt", 1},
+      {type="fluid", name="lubricant", amount=2},
     },
     result = "express-transport-belt"
   },
@@ -381,8 +383,8 @@ data:extend(
     energy_required = 1,
     ingredients =
     {
-      {"iron-plate", 20},
-      {"basic-transport-belt", 6}
+      {"iron-plate", 10},
+      {"basic-transport-belt", 5}
     },
     result_count = 2,
     result = "basic-transport-belt-to-ground"
@@ -393,7 +395,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"iron-gear-wheel", 30},
+      {"iron-gear-wheel", 20},
       {"basic-transport-belt-to-ground", 2}
     },
     result_count = 2,
@@ -405,7 +407,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"iron-gear-wheel", 60},
+      {"iron-gear-wheel", 40},
       {"fast-transport-belt-to-ground", 2}
     },
     result_count = 2,
@@ -419,7 +421,7 @@ data:extend(
     ingredients =
     {
       {"electronic-circuit", 5},
-      {"iron-plate", 10},
+      {"iron-plate", 5},
       {"basic-transport-belt", 4}
     },
     result = "basic-splitter"
@@ -445,7 +447,7 @@ data:extend(
     ingredients =
     {
       {"advanced-circuit", 10},
-      {"iron-gear-wheel", 20},
+      {"iron-gear-wheel", 10},
       {"express-transport-belt", 4}
     },
     result = "express-splitter"
@@ -466,7 +468,7 @@ data:extend(
   {
     type = "recipe",
     name = "processing-unit",
-    category = "chemistry",
+    category = "crafting-with-fluid",
     enabled = "false",
     energy_required = 15,
     ingredients =
@@ -483,7 +485,6 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"flying-robot-frame", 1},
       {"advanced-circuit", 2}
     },
     result = "logistic-robot"
@@ -700,13 +701,12 @@ data:extend(
     type = "recipe",
     name = "engine-unit",
     energy_required = 20,
-    category = "chemistry", -- until we have assembling machine with pipe
+    category = "advanced-crafting",
     ingredients =
     {
       {"steel-plate", 1},
-      {type="fluid", name= "lubricant", amount = 1},
       {"iron-gear-wheel", 1},
-      {"pipe", 1}
+      {"pipe", 2}
     },
     result = "engine-unit",
     enabled = "false"
@@ -714,12 +714,12 @@ data:extend(
   {
     type = "recipe",
     name = "electric-engine-unit",
-    category = "chemistry", -- until we have assembling machine with pipe
+    category = "crafting-with-fluid",
     energy_required = 20,
     ingredients =
     {
       {"engine-unit", 1},
-      {type="fluid", name= "lubricant", amount = 1},
+      {type="fluid", name= "lubricant", amount = 2},
       {"electronic-circuit", 2}
     },
     result = "electric-engine-unit",
@@ -805,6 +805,21 @@ data:extend(
       {"pipe", 5}
     },
     result= "chemical-plant"
+  },
+  {
+    type = "recipe",
+    name = "small-plane",
+    energy_required = 30,
+    enabled = "false",
+    category="advanced-crafting",
+    ingredients =
+    {
+      {"plastic-bar", 250},
+      {"advanced-circuit", 250},
+      {"electric-engine-unit", 10},
+      {"battery", 100}
+    },
+    result= "small-plane"
   }
 }
 )

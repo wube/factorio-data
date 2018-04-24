@@ -272,6 +272,15 @@ data:extend(
   },
   {
     type = "item",
+    name = "small-plane",
+    icon = "__base__/graphics/icons/small-plane.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "defensive-structure",
+    order = "h[small-plane]",
+    stack_size = 1
+  },
+  {
+    type = "item",
     name = "small-lamp",
     icon = "__base__/graphics/icons/small-lamp.png",
     flags = {"goes-to-quickbar"},

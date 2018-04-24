@@ -60,7 +60,7 @@ data:extend(
     type = "turret",
     name = "small-worm-turret",
     icon = "__base__/graphics/icons/small-worm.png",
-    flags = {"placeable-enemy", "not-repairable"},
+    flags = {"placeable-enemy", "not-repairable", "breaths-air"},
     order="b-b-d",
     max_health = 200,
     healing_per_tick = 0.01,

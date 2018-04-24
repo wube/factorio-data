@@ -43,7 +43,6 @@ if not data.isdemo then
   require("prototypes.item.equipment")
   require("prototypes.item.gun")
   require("prototypes.item.item")
-  require("prototypes.item.item-groups")
   require("prototypes.item.mining-tools")
   require("prototypes.item.module")
   require("prototypes.item.turret")

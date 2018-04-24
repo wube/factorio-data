@@ -233,7 +233,7 @@ data:extend(
   {
     type = "recipe",
     name = "fill-crude-oil-barrel",
-    category = "chemistry",
+    category = "crafting-with-fluid",
     energy_required = 1,
     subgroup = "barrel",
     order = "b[fill-crude-oil-barrel]",
@@ -253,7 +253,7 @@ data:extend(
   {
     type = "recipe",
     name = "empty-crude-oil-barrel",
-    category = "chemistry",
+    category = "crafting-with-fluid",
     energy_required = 1,
     subgroup = "barrel",
     order = "c[empty-crude-oil-barrel]",

@@ -6,6 +6,10 @@ data:extend(
   },
   {
     type = "recipe-category",
+    name = "advanced-crafting"
+  },
+  {
+    type = "recipe-category",
     name = "smelting"
   },
   {
@@ -14,7 +18,7 @@ data:extend(
   },
   {
     type = "recipe-category",
-    name = "filling"
+    name = "crafting-with-fluid"
   },
   {
     type = "recipe-category",

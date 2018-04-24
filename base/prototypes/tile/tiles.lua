@@ -55,7 +55,7 @@ data:extend(
       "item-layer",
       "object-layer",
       "player-layer",
-      "doodat-layer"
+      "doodad-layer"
     },
     layer = 60,
     variants =
@@ -95,7 +95,7 @@ data:extend(
       "resource-layer",
       "item-layer",
       "player-layer",
-      "doodat-layer"
+      "doodad-layer"
     },
     autoplace = water_autoplace_settings(250),
     layer = 45,
@@ -148,7 +148,7 @@ data:extend(
       "resource-layer",
       "item-layer",
       "player-layer",
-      "doodat-layer"
+      "doodad-layer"
     },
     autoplace = water_autoplace_settings(250, {{{35, 1}, {15, 0.7}}}),
     layer = 45,
@@ -201,7 +201,7 @@ data:extend(
       "item-layer",
       "resource-layer",
       "player-layer",
-      "doodat-layer"
+      "doodad-layer"
     },
     autoplace = water_autoplace_settings(0),
     layer = 40,
@@ -254,7 +254,7 @@ data:extend(
       "item-layer",
       "resource-layer",
       "player-layer",
-      "doodat-layer"
+      "doodad-layer"
     },
     autoplace = water_autoplace_settings(0, {{{35, 1}, {15, 0.7}}}),
     layer = 40,

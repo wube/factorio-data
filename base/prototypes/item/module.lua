@@ -64,20 +64,38 @@ data:extend(
 })
 
 function productivitymodulelimitation()
-return {"iron-stick",
+return {"sulfuric-acid",
+        "basic-oil-processing",
+        "advanced-oil-processing",
+        "heavy-oil-cracking",
+        "light-oil-cracking",
+        "solid-fuel-from-light-oil",
+        "solid-fuel-from-heavy-oil",
+        "solid-fuel-from-petroleum-gas",
+        "lubricant",
+        "iron-plate",
+        "copper-plate",
+        "steel-plate",
+        "stone-brick",
+        "sulfur",
+        "plastic-bar",
+        "empty-barrel",
+        "iron-stick",
         "iron-gear-wheel",
         "copper-cable",
         "electronic-circuit",
         "advanced-circuit",
         "engine-unit",
         "electric-engine-unit",
+        "processing-unit",
         "explosives",
         "battery",
         "flying-robot-frame",
         "science-pack-1",
         "science-pack-2",
         "science-pack-3",
-        "alien-science-pack"}
+        "alien-science-pack",
+      }
 end
 
 data:extend(

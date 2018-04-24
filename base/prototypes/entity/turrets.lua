@@ -110,7 +110,7 @@ data:extend(
     type = "turret",
     name = "medium-worm-turret",
     icon = "__base__/graphics/icons/medium-worm.png",
-    flags = {"placeable-player", "placeable-enemy", "not-repairable"},
+    flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
     order="b-b-e",
     max_health = 350,
     resistances =
@@ -232,7 +232,7 @@ data:extend(
     type = "turret",
     name = "big-worm-turret",
     icon = "__base__/graphics/icons/big-worm.png",
-    flags = {"placeable-player", "placeable-enemy", "not-repairable"},
+    flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
     max_health = 500,
     order="b-b-f",
     resistances =

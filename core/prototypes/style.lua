@@ -1026,7 +1026,9 @@ data:extend(
     {
       type = "flow_style",
       horizontal_spacing = default_container_padding,
-      vertical_spacing = default_container_padding
+      vertical_spacing = default_container_padding,
+      max_on_row = 0,
+      resize_row_to_width = false
     },
     description_flow_style =
     {
@@ -1291,6 +1293,12 @@ data:extend(
       type = "frame_style",
       minimal_width = 220
     },
+    minimap_frame_style =
+    {
+      type = "frame_style",
+      parent = "frame_in_right_container_style",
+      minimal_height = 220
+    },
     quick_bar_frame_style =
     {
       type = "frame_style",
@@ -1300,6 +1308,19 @@ data:extend(
     {
       type = "frame_style",
       top_padding = default_container_padding
+    },
+    right_container_frame_style =
+    {
+      type = "frame_style",
+      parent = "outer_frame_style",
+      flow_style=
+      {
+        minimum_width = 275,
+        horizontal_spacing = 0,
+        vertical_spacing = 0,
+        max_on_row = 1,
+        resize_row_to_width = true
+      }
     },
     progressbar_style =
     {

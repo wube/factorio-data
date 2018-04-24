@@ -874,16 +874,16 @@ data:extend(
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.4}},
                                     {
                                       {
-                                        influence = 0.3,
+                                        influence = 0.47,
                                         noise_layer = "garballo",
                                         noise_octaves_difference = -2,
                                         noise_persistence = 0.8
                                       },
                                       {
-                                        influence = 0.5,
+                                        influence = 0.3,
                                         min_influence = 0,
-                                        elevation_optimal = 15,
-                                        elevation_range = 5,
+                                        elevation_optimal = 5,
+                                        elevation_range = 0,
                                         elevation_max_range = 10,
                                       },
                                       {
@@ -974,16 +974,16 @@ data:extend(
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.3}},
                                     {
                                       {
-                                        influence = 0.5,
+                                        influence = 0.57,
                                         noise_layer = "garballo",
                                         noise_octaves_difference = -2,
                                         noise_persistence = 0.8
                                       },
                                       {
-                                        influence = 0.5,
+                                        influence = 0.3,
                                         min_influence = 0,
-                                        elevation_optimal = 15,
-                                        elevation_range = 5,
+                                        elevation_optimal = 10,
+                                        elevation_range = 0,
                                         elevation_max_range = 10,
                                       },
                                       {
@@ -1070,16 +1070,16 @@ data:extend(
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.3}},
                                     {
                                       {
-                                        influence = 0.5,
+                                        influence = 0.57,
                                         noise_layer = "garballo",
                                         noise_octaves_difference = -2,
                                         noise_persistence = 0.8
                                       },
                                       {
-                                        influence = 0.5,
+                                        influence = 0.3,
                                         min_influence = 0,
-                                        elevation_optimal = 15,
-                                        elevation_range = 5,
+                                        elevation_optimal = 5,
+                                        elevation_range = 0,
                                         elevation_max_range = 10,
                                       },
                                       {

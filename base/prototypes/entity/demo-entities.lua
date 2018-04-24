@@ -390,8 +390,9 @@ data:extend(
         {
           filename = "__core__/graphics/light-cone.png",
           priority = "medium",
-          width = 400,
-          height = 400
+          scale = 2,
+          width = 200,
+          height = 200
         },
         shift = {0, -13},
         size = 2,
@@ -500,7 +501,7 @@ data:extend(
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
     smelting_energy_consumption = "180kW",
-    smelting_speed = 0.5,
+    smelting_speed = 1,
     source_inventory_size = 1,
     energy_source =
     {
@@ -626,7 +627,7 @@ data:extend(
       }
     },
     fast_replaceable_group = "pipe",
-    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {
@@ -793,7 +794,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-electric-pole"},
     max_health = 35,
     corpse = "small-remnants",
-    collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
+    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
     drawing_box = {{-0.5, -2.3}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
@@ -1024,7 +1025,7 @@ data:extend(
     spawning_cooldown = {360, 150},
     spawning_radius = 10,
     spawning_spacing = 3,
-    max_spawn_shift = 0.65,
+    max_spawn_shift = 0,
     max_richness_for_spawn_shift = 100,
     autoplace =
     {
@@ -1295,6 +1296,7 @@ data:extend(
     minable = {mining_time = 1, result = "offshore-pump"},
     max_health = 80,
     corpse = "small-remnants",
+    fluid = "water",
     resistances =
     {
       {
@@ -1303,25 +1305,55 @@ data:extend(
       }
     },
     collision_box = {{-0.6, -0.3}, {0.6, 0.3}},
-    selection_box = {{-1, -0.49}, {1, 1.49}},
+    selection_box = {{-1, -1.49}, {1, 0.49}},
     fluid_box =
     {
       base_area = 1,
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
-        { position = {0, -1} },
+        { position = {0, 1} },
       },
     },
     pumping_speed = 1,
     tile_width = 1,
     picture =
     {
-      sheet = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
-      priority = "high",
-      shift = {0.9, 0.05},
-      width = 160,
-      height = 102
+      north =
+      {
+        filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
+        priority = "high",
+        shift = {0.9, 0.05},
+        width = 160,
+        height = 102
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
+        priority = "high",
+        shift = {0.9, 0.05},
+        x = 160,
+        width = 160,
+        height = 102
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
+        priority = "high",
+        shift = {0.9, 0.65},
+        x = 320,
+        width = 160,
+        height = 102
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
+        priority = "high",
+        shift = {1.0, 0.05},
+        x = 480,
+        width = 160,
+        height = 102
+      }
     }
   },
 
@@ -1394,18 +1426,18 @@ data:extend(
     {
       filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-open.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
-    insert_distance = 0.85,
-    pickup_distance = 1,
+    pickup_position = {0, -1},
+    insert_position = {0, 1.35},
     platform_picture =
     {
       priority = "extra-high",
@@ -1462,18 +1494,18 @@ data:extend(
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open.png",
       priority = "extra-high",
-      width = 13,
+      width = 20,
       height = 41
     },
-    insert_distance = 0.85,
-    pickup_distance = 1,
+    pickup_position = {0, -1},
+    insert_position = {0, 1.35},
     platform_picture =
     {
       priority = "extra-high",
@@ -1667,7 +1699,7 @@ data:extend(
         { position = {0, -1} },
         {
           position = {0, 1},
-          max_underground_distance = 5
+          max_underground_distance = 10
         }
       },
     },
@@ -1733,11 +1765,11 @@ data:extend(
     {
       filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
       priority="high",
-      frame_width = 141,
-      frame_height = 120,
+      frame_width = 99,
+      frame_height = 102,
       frame_count = 32,
-      line_length = 6,
-      shift = {0.7, 0.12}
+      line_length = 8,
+      shift = {0.25, -0.1}
     },
     crafting_categories = {"crafting"},
     crafting_speed = 0.5,
