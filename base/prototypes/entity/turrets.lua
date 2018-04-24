@@ -81,6 +81,8 @@ data:extend(
     automated_ammo_count = 5,
     alert_when_attacking = false,
     minable = {mining_time = 1, result = "artillery-turret"},
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
     corpse = "medium-remnants",

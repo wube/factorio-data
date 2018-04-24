@@ -1997,11 +1997,11 @@ data:extend(
       inner_corner =
       {
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-inner-corner.png",
-        count = 1,
+        count = 4,
         tall = true,
         hr_version = {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-inner-corner.png",
-          count = 1,
+          count = 4,
           tall = true,
           scale = 0.5
         }
@@ -2009,11 +2009,11 @@ data:extend(
       outer_corner =
       {
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-outer-corner.png",
-        count = 1,
+        count = 4,
         tall = true,
         hr_version = {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-outer-corner.png",
-          count = 1,
+          count = 4,
           tall = true,
           scale = 0.5
         }
@@ -2021,11 +2021,11 @@ data:extend(
       side =
       {
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-side.png",
-        count = 1,
+        count = 16,
         tall = true,
         hr_version = {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-side.png",
-          count = 1,
+          count = 16,
           tall = true,
           scale = 0.5
         }
@@ -2033,11 +2033,11 @@ data:extend(
       u_transition =
       {
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-u.png",
-        count = 1,
+        count = 2,
         tall = true,
         hr_version = {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-u.png",
-          count = 1,
+          count = 2,
           tall = true,
           scale = 0.5
         }
@@ -2045,10 +2045,10 @@ data:extend(
       o_transition =
       {
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-o.png",
-        count = 1,
+        count = 2,
         hr_version = {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-o.png",
-          count = 4,
+          count = 2,
           scale = 0.5
         }
       }

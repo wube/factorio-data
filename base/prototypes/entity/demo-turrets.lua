@@ -202,6 +202,8 @@ data:extend(
     automated_ammo_count = 10,
     attacking_speed = 0.5,
     alert_when_attacking = true,
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     folded_animation =
     {
       layers =

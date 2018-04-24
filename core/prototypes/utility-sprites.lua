@@ -856,6 +856,14 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    no_nature_icon =
+    {
+      filename = "__core__/graphics/no-nature.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     multiplayer_waiting_icon =
     {
       filename = "__core__/graphics/multiplayer-waiting-icon.png",

@@ -3277,6 +3277,12 @@ data:extend(
       width = 400,
       graphical_set = { type = "none" }
     },
+    blueprint_library_frame =
+    {
+      type = "frame_style",
+      parent = "outer_frame",
+      height = 600
+    },
     progressbar =
     {
       type = "progressbar_style",

@@ -1394,6 +1394,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    drawing_box = {{-1.5, -1.7}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
     animation =
     {
@@ -8349,6 +8350,7 @@ data:extend(
     corpse = "medium-remnants",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
+    drawing_box = {{-1, -1.5}, {1, 1}},
     energy_source =
     {
       type = "electric",
@@ -8755,6 +8757,7 @@ data:extend(
     dying_explosion = "medium-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    drawing_box = {{-1.5, -2.2}, {1.5, 1.3}},
     allowed_effects = {"consumption", "speed", "pollution"},
     base_picture =
     {
@@ -9523,6 +9526,7 @@ data:extend(
     dying_explosion = "medium-explosion",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    drawing_box = {{-2.5, -2.8}, {2.5, 2.5}},
     module_specification =
     {
       module_slots = 3
@@ -9670,6 +9674,7 @@ data:extend(
     dying_explosion = "medium-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    drawing_box = {{-1.5, -1.9}, {1.5, 1.5}},
     module_specification =
     {
       module_slots = 3
@@ -11155,7 +11160,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    drawing_box = {{-1.5, -2}, {1.5, 1.5}},
+    drawing_box = {{-1.5, -2.2}, {1.5, 1.5}},
 
     always_draw_idle_animation = true,
     idle_animation =

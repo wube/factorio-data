@@ -169,7 +169,7 @@ silo_script.on_rocket_launched = function(event)
     end
   end
   if event.rocket.get_item_count("satellite") > 0 then
-    if force.get_item_launched("satellite") == 1 then
+    if force.get_item_launched("satellite") == event.rocket.get_item_count("satellite") then
       for k, player in pairs (force.players) do
         get_sprite_button(player).style.visible = true
         toggle_frame(player)

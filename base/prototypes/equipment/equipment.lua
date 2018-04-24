@@ -41,7 +41,8 @@ data:extend(
       minimum = 0.666,
       maximum = 1.0,
     },
-    categories = {"armor"}
+    categories = {"armor"},
+    darkness_to_turn_on = 0.5
   },
   {
     type = "energy-shield-equipment",

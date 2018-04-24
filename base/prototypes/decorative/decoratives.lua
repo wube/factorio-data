@@ -4653,8 +4653,8 @@ data:extend{
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-03.png",
           priority = base_decorative_sprite_priority,
           width = 61,
-          height = 50,
-          shift = util.by_pixel(0.25, 1),
+          height = 51,
+          shift = util.by_pixel(0.25, 1.25),
           scale = 0.5
         },
       },
@@ -4697,9 +4697,9 @@ data:extend{
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-06.png",
           priority = base_decorative_sprite_priority,
-          width = 63,
+          width = 64,
           height = 43,
-          shift = util.by_pixel(4.25, -1.75),
+          shift = util.by_pixel(4.5, -1.75),
           scale = 0.5
         },
       },
@@ -4757,9 +4757,9 @@ data:extend{
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-10.png",
           priority = base_decorative_sprite_priority,
-          width = 38,
+          width = 39,
           height = 31,
-          shift = util.by_pixel(0, -2.75),
+          shift = util.by_pixel(0.25, -2.75),
           scale = 0.5
         },
       },
@@ -4767,8 +4767,8 @@ data:extend{
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-11.png",
         priority = base_decorative_sprite_priority,
         width = 21,
-        height = 12,
-        shift = util.by_pixel(0.5, -1),
+        height = 13,
+        shift = util.by_pixel(0.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-11.png",
           priority = base_decorative_sprite_priority,
