@@ -1491,6 +1491,7 @@ data:extend(
         color = {r = 0.92, g = 0.77, b = 0.3}
       }
     },
+    render_layer = "object",
     animation =
     {
       layers =
