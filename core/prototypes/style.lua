@@ -1925,7 +1925,8 @@ data:extend(
     {
       type = "list_box_style",
       minimal_height = 130,
-      maximal_height = 400
+      maximal_height = 400,
+      minimal_width = 300
     },
     floating_train_station_list_box =
     {

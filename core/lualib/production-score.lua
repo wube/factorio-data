@@ -22,6 +22,9 @@ local function get_raw_resources()
         end
       end
     end
+    if entity_prototype.fluid then
+      raw_resources[entity_prototype.fluid.name] = true
+    end
   end
   return raw_resources
 end
@@ -163,10 +166,13 @@ function deduce_nil_prices(price_list, param)
             break
           end
         end
+        if not product_value then
+          break
+        end
         local reverse_price = (product_value - energy_addition(recipe, product_value)) / ingredient_multiplier(recipe.ingredients, param) -- Not perfect, but close enough
         local this_cost = (reverse_price - ingredient_value) / ingredient_amount
         if recipe_cost then
-          recipe_cost = math.min(recipe)
+          recipe_cost = math.min(recipe_cost, this_cost)
         else
           recipe_cost = this_cost
         end
@@ -216,20 +222,25 @@ production_score.generate_price_list = function(param)
 
   local product_list = get_product_list()
   local get_price_recursive
-  get_price_recursive = function(name, current_loop)
+  get_price_recursive = function(name, current_loop, loop_force)
     local price = price_list[name]
     if price then return price end
     price = 0
-    if current_loop[name] then return 0 end
+    if current_loop[name] then
+      if loop_force then
+        return param.raw_resource_price
+      end
+      return
+    end
     current_loop[name] = true
     local entry = product_list[name]
-    if not entry then return 0 end
+    if not entry then return end
     local recipe_cost
     for k, recipe in pairs (entry) do
       local this_recipe_cost = 0
       for ingredient_name, cost in pairs (recipe) do
         if ingredient_name ~= "energy" then
-          local addition = get_price_recursive(ingredient_name, current_loop)
+          local addition = get_price_recursive(ingredient_name, current_loop, loop_force)
           if addition and addition > 0 then
             this_recipe_cost = this_recipe_cost + (addition * cost)
           else
@@ -262,6 +273,15 @@ production_score.generate_price_list = function(param)
   for name, fluid in pairs (fluids) do
     local current_loop = {}
     get_price_recursive(name, current_loop)
+  end
+  deduce_nil_prices(price_list, param)
+  for name, item in pairs (items) do
+    local current_loop = {}
+    get_price_recursive(name, current_loop, true)
+  end
+  for name, fluid in pairs (fluids) do
+    local current_loop = {}
+    get_price_recursive(name, current_loop, true)
   end
   deduce_nil_prices(price_list, param)
   return price_list
