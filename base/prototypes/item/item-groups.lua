@@ -262,12 +262,6 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "virtual-signal-color",
-    group = "signals",
-    order = "d"
-  },
-  {
-    type = "item-subgroup",
     name = "virtual-signal",
     group = "signals",
     order = "e"

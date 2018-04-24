@@ -467,6 +467,27 @@ data:extend(
       font_color = color "e2dbdb"
     },
 
+    installed_mod_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font_color = {r=0, g=0.9, b=0}
+    },
+
+    out_of_date_mod_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font_color = {r=0.9, g=0.9, b=0}
+    },
+
+    incompatible_mod_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font_color = warning_red_color
+    },
+
     flip_button_style_left =
     {
       type = "button_style",

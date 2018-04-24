@@ -51,7 +51,7 @@ data:extend(
     type = "gun",
     name = "vehicle-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
-    flags = {"goes-to-main-inventory"},
+    flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[vehicle-machine-gun]",
     attack_parameters =
@@ -81,7 +81,7 @@ data:extend(
     type = "gun",
     name = "tank-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
-    flags = {"goes-to-main-inventory"},
+    flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[tank-machine-gun]",
     attack_parameters =
@@ -103,7 +103,7 @@ data:extend(
       },
       projectile_center = {-0.15625, -0.07812},
       projectile_creation_distance = 1,
-      range = 15,
+      range = 20,
       sound = make_heavy_gunshot_sounds(),
     },
     stack_size = 1

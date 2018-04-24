@@ -23,6 +23,12 @@ data:extend(
     name = "other",
     group = "other",
     order = "z",
-  }
+  },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal-color",
+    group = "signals",
+    order = "d"
+  },
 }
 )

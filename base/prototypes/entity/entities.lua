@@ -184,7 +184,7 @@ data:extend(
     icon = "__base__/graphics/icons/underground-belt.png",
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-belt"},
-    max_health = 70,
+    max_health = 60,
     corpse = "small-remnants",
     max_distance = 5,
     underground_sprite =
