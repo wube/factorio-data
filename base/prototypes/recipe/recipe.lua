@@ -346,7 +346,7 @@ data:extend(
     {
       {"electronic-circuit", 10},
       {"iron-gear-wheel", 10},
-      {"basic-transport-belt", 5}
+      {"basic-transport-belt", 4}
     },
     result = "lab"
   },

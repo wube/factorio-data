@@ -15,8 +15,6 @@ data:extend(
       min_to_diffuse=15,
       -- constant amount of PUs that are eaten by the chunk
       ageing=0.55,
-      -- minimum PUs to generate a new chunk
-      min_to_activate_chunk=2,
       -- anything bigger than this is visualised as this value
       expected_max_per_chunk=7000,
       -- anything lower than this (but > 0) is visualised as this value

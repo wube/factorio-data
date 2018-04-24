@@ -1018,12 +1018,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
@@ -1036,12 +1038,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
+      priority = "high",
       width = 224,
       height = 46
     }
@@ -1053,8 +1057,8 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
     max_health = 15,
     healing_per_tick = 0.01,
-    collision_box = {{-0.2, -0.4}, {0.2, 0}},
-    selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
+    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
+    selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
     attack_parameters =
     {
       range = 0.5,
@@ -1064,7 +1068,6 @@ data:extend(
       animation =
       {
         filename = "__base__/graphics/entity/small-biter/small-biter-attack.png",
-        priority = "high",
         frame_width = 139,
         frame_height = 93,
         frame_count = 11,
@@ -1100,7 +1103,6 @@ data:extend(
     run_animation =
     {
       filename = "__base__/graphics/entity/small-biter/small-biter-run.png",
-      priority = "high",
       still_frame = 4,
       frame_width = 86,
       frame_height = 59,
@@ -1383,7 +1385,6 @@ data:extend(
     horizontal_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-horizontal.png",
-      priority = "high",
       frame_width = 219,
       frame_height = 150,
       frame_count = 32,
@@ -1393,7 +1394,6 @@ data:extend(
     vertical_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-vertical.png",
-      priority = "high",
       frame_width = 180,
       frame_height = 222,
       frame_count = 32,
@@ -1465,7 +1465,7 @@ data:extend(
     picture =
     {
       sheet = "__base__/graphics/entity/pump/pump.png",
-      priority = "extra-high",
+      priority = "high",
       shift = {0.9, 0.05},
       width = 160,
       height = 102
@@ -1477,7 +1477,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/smoke/smoke.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 88,
       frame_height = 78,
       frame_count = 39,
@@ -1491,7 +1491,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 50,
       frame_height = 50,
       frame_count = 16,
@@ -1502,10 +1502,7 @@ data:extend(
     type = "inserter",
     name = "basic-inserter",
     icon = "__base__/graphics/icons/basic-inserter.png",
-    flags = {
-      "placeable-neutral",
-      "player-creation"
-    },
+    flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-inserter"},
     max_health = 40,
     corpse = "small-remnants",
@@ -1710,6 +1707,7 @@ data:extend(
     picture_off =
     {
       filename = "__base__/graphics/entity/small-lamp/small-lamp.png",
+      priority = "high",
       width = 83,
       height = 75,
       shift = {0, -0.1}
@@ -1717,6 +1715,7 @@ data:extend(
     picture_on =
     {
       filename = "__base__/graphics/entity/small-lamp/small-lamp.png",
+      priority = "high",
       width = 83,
       height = 75,
       x = 83,
@@ -1746,6 +1745,7 @@ data:extend(
     arrow_picture =
     {
       filename = "__core__/graphics/red-arrow/red-arrow-arrow.png",
+      priority = "low",
       width = "1030",
       height = "230"
     }
@@ -1757,12 +1757,14 @@ data:extend(
     arrow_picture =
     {
       filename = "__core__/graphics/red-arrow/red-arrow-arrow.png",
+      priority = "low",
       width = "1030",
       height = "230"
     },
     circle_picture =
     {
       filename = "__core__/graphics/red-arrow/red-arrow-circle.png",
+      priority = "low",
       width = "200",
       height = "200"
     }
@@ -1847,7 +1849,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
-      priority = "medium",
+      priority="high",
       frame_width = 141,
       frame_height = 120,
       frame_count = 32,
@@ -1886,7 +1888,6 @@ data:extend(
         frame_height = 159,
         frame_count = 20,
         shift = {0.484375, -0.171875},
-        priority = "extra-high",
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-2.png",
@@ -1895,7 +1896,6 @@ data:extend(
         frame_height = 157,
         frame_count = 20,
         shift = {0.8125, -0.15625},
-        priority = "extra-high",
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-3.png",
@@ -1904,7 +1904,6 @@ data:extend(
         frame_height = 162,
         frame_count = 20,
         shift = {0.71875, -0.09375},
-        priority = "extra-high",
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-4.png",
@@ -1913,7 +1912,6 @@ data:extend(
         frame_height = 146,
         frame_count = 20,
         shift = {0.703125, -0.375},
-        priority = "extra-high",
       }
     },
     splash_speed = 0.03
@@ -1921,7 +1919,10 @@ data:extend(
   {
     type = "corpse",
     name = "big-remnants",
-    icon = "__base__/graphics/icons/big-remnants.png",
+    icon = "__base__/graphics/icons/remnants.png",
+    flags = {"placeable-neutral"},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     animation = 
@@ -1962,7 +1963,12 @@ data:extend(
   {
     type = "corpse",
     name = "medium-remnants",
-    icon = "__base__/graphics/icons/big-remnants.png",
+    icon = "__base__/graphics/icons/remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way"},
+    selection_box = {{-1, -1}, {1, 1}},
+    selectable_in_game = false,
+    tile_width = 2,
+    tile_height = 2,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     animation = 
@@ -2003,7 +2009,10 @@ data:extend(
   {
     type = "corpse",
     name = "small-remnants",
-    icon = "__base__/graphics/icons/big-remnants.png",
+    icon = "__base__/graphics/icons/remnants.png",
+    flags = {"placeable-neutral"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     animation = 

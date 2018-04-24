@@ -19,7 +19,7 @@ data:extend(
       }
     },
     healing_per_tick = 0.01,
-    collision_box = {{-0.3, -0.4}, {0.3, 0.2}},
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
     sticker_box = {{-0.3, -0.5}, {0.3, 0.1}},
     distraction_cooldown = 300,
@@ -31,7 +31,6 @@ data:extend(
       cooldown = 35,
       animation =
       {
-        priority = "high",
         frame_width = 200,
         frame_height = 132,
         frame_count = 11,
@@ -91,7 +90,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/medium-biter/medium-biter-run.png",
       still_frame = 4,
-      priority = "high",
       frame_width = 122,
       frame_height = 84,
       frame_count = 16,
@@ -118,7 +116,7 @@ data:extend(
       }
     },
     healing_per_tick = 0.02,
-    collision_box = {{-0.4, -0.5}, {0.4, 0.3}},
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
     sticker_box = {{-0.6, -0.8}, {0.6, 0}},
     distraction_cooldown = 300,
@@ -130,7 +128,6 @@ data:extend(
       ammo_type = make_unit_melee_ammo_type(30),
       animation =
       {
-        priority = "high",
         frame_width = 279,
         frame_height = 184,
         frame_count = 11,
@@ -188,7 +185,6 @@ data:extend(
     },
     run_animation =
     {
-      priority = "high",
       still_frame = 4,
       frame_width = 169,
       frame_height = 117,
@@ -256,7 +252,6 @@ data:extend(
     final_render_layer = "corpse",
     animation =
     {
-      priority = "high",
       frame_width = 284,
       frame_height = 192,
       frame_count = 17,

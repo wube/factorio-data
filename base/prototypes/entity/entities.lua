@@ -884,7 +884,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
-      priority = "medium",
+      priority = "high",
       frame_width = 141,
       frame_height = 120,
       frame_count = 32,
@@ -924,7 +924,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
-      priority = "medium",
+      priority = "high",
       frame_width = 141,
       frame_height = 120,
       frame_count = 32,
@@ -987,7 +987,6 @@ data:extend(
     pictures =
     {
       filename = "__base__/graphics/entity/car/car-sheet.png",
-      priority = "high",
       line_length = 8,
       frame_width = 130,
       frame_height = 93,
@@ -1346,7 +1345,7 @@ data:extend(
     },
     pictures =
     {
-      priority = "low",
+      priority = "very-low",
       frame_width = 346,
       frame_height = 248,
       axially_symmetrical = false,
@@ -1388,7 +1387,7 @@ data:extend(
     joint_distance = 4,
     pictures =
     {
-      priority = "low",
+      priority = "very-low",
       frame_width = 285,
       frame_height = 218,
       axially_symmetrical = false,
@@ -1412,9 +1411,10 @@ data:extend(
     name = "wall",
     icon = "__base__/graphics/icons/wall.png",
     flags = {"placeable-neutral", "player-creation"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     minable = {mining_time = 1, result = "wall"},
     max_health = 350,
-    corpse = "wall-corpse",
+    corpse = "wall-remnants",
     -- this kind of code can be used for having walls mirror the effect
     -- there can be multiple reaction items
     --attack_reaction =
@@ -1663,9 +1663,11 @@ data:extend(
   },
   {
     type = "corpse",
-    name = "wall-corpse",
-    icon = "__base__/graphics/icons/wall.png",
+    name = "wall-remnants",
+    icon = "__base__/graphics/icons/wall-remnants.png",
     flags = {"placeable-neutral", "player-creation"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     animation = 
@@ -1740,7 +1742,6 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/player-port/player-port-animation.png",
-      priority = "high",
       frame_width = 64,
       frame_height = 64,
       frame_count = 2
@@ -1763,8 +1764,10 @@ data:extend(
   {
     type = "rail-remnants",
     name = "straight-rail-remnants",
-    icon = "__base__/graphics/icons/straight-rail.png",
+    icon = "__base__/graphics/icons/straight-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way"},
+    selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
+    selectable_in_game = false,
     bending_type = "straight",
     pictures = destroyedrailpictures(),
     time_before_removed = 60 * 60 * 45,
@@ -1787,8 +1790,10 @@ data:extend(
   {
     type = "rail-remnants",
     name = "curved-rail-remnants",
-    icon = "__base__/graphics/icons/curved-rail.png",
+    icon = "__base__/graphics/icons/curved-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way"},
+    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
+    selectable_in_game = false,
     bending_type = "turn",
     pictures = destroyedrailpictures(),
     time_before_removed = 60 * 60 * 45,
@@ -1948,6 +1953,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/rail-signal/rail-signal.png",
+      priority = "high",
       frame_width = 70,
       frame_height = 46,
       frame_count = 3,
@@ -1971,7 +1977,6 @@ data:extend(
     on_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
-      priority = "high",
       frame_width = 113,
       frame_height = 91,
       frame_count = 33,
@@ -1981,7 +1986,6 @@ data:extend(
     off_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
-      priority = "high",
       frame_width = 113,
       frame_height = 91,
       frame_count = 1,
@@ -2172,7 +2176,6 @@ data:extend(
     picture =
     {
       filename = "__base__/graphics/entity/market/market.png",
-      priority = "medium",
       width = 156,
       height = 127,
       shift = {0.95, 0.2}
@@ -2193,7 +2196,7 @@ data:extend(
         percent = 100
       }
     },
-    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
+    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-2.8, -0.5}, {0.5, 0.5}},
     maximum_wire_distance = 30,
@@ -2201,7 +2204,7 @@ data:extend(
     pictures =
     {
       filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 168,
       frame_height = 165,
       axially_symetric = false,
@@ -2270,12 +2273,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
@@ -2288,12 +2293,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
+      priority = "high",
       width = 224,
       height = 46
     }
@@ -2321,7 +2328,7 @@ data:extend(
     pictures =
     {
       filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 136,
       frame_height = 122,
       axially_symetric = false,
@@ -2390,12 +2397,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
@@ -2408,12 +2417,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
+      priority = "high",
       width = 224,
       height = 46
     }
@@ -2441,7 +2452,7 @@ data:extend(
     pictures =
     {
       filename = "__base__/graphics/entity/substation/substation.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 132,
       frame_height = 144,
       axially_symetric = false,
@@ -2510,12 +2521,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
@@ -2528,12 +2541,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
+      priority = "high",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
+      priority = "high",
       width = 224,
       height = 46
     }
@@ -2559,7 +2574,6 @@ data:extend(
     charge_animation =
     {
       filename = "__base__/graphics/entity/basic-accumulator/basic-accumulator-charge-animation.png",
-      priority = "high",
       frame_width = 138,
       frame_height = 135,
       line_length = 8,
@@ -2571,7 +2585,6 @@ data:extend(
     discharge_animation =
     {
       filename = "__base__/graphics/entity/basic-accumulator/basic-accumulator-discharge-animation.png",
-      priority = "high",
       frame_width = 147,
       frame_height = 128,
       line_length = 8,
@@ -2633,7 +2646,7 @@ data:extend(
     on_animation =
     {
       filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 91,
       frame_height = 69,
       frame_count = 1,
@@ -2642,7 +2655,7 @@ data:extend(
     off_animation =
     {
       filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 91,
       frame_height = 69,
       frame_count = 1,
@@ -2651,7 +2664,7 @@ data:extend(
     fire_animation =
     {
       filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 36,
       frame_height = 19,
       frame_count = 12,
@@ -2692,7 +2705,7 @@ data:extend(
     on_animation =
     {
       filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
-      priority = "extra-high",
+      priority = "high",
       x = 131,
       frame_width = 131,
       frame_height = 102,
@@ -2703,7 +2716,7 @@ data:extend(
     off_animation =
     {
       filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
-      priority = "extra-high",
+      priority = "high",
       frame_width = 131,
       frame_height = 102,
       frame_count = 1,
@@ -2725,7 +2738,6 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/basic-beacon/basic-beacon.png",
-      priority = "high",
       frame_width = 176,
       frame_height = 186,
       frame_count = 32,
@@ -2754,7 +2766,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
-      priority = "extra-high",
+      priority = "low",
       frame_width = 256,
       frame_height = 256,
       frame_count = 45,
