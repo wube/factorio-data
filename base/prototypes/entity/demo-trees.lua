@@ -656,6 +656,7 @@ for i, tree_data in ipairs(tree_data) do
       trunk =
       {
         filename = "__base__/graphics/entity/tree/" .. variation_path .. "-trunk.png",
+        flags = { "mipmap" },
         width = variation.trunk.width,
         height =  variation.trunk.height,
         frame_count = 4,
@@ -664,6 +665,7 @@ for i, tree_data in ipairs(tree_data) do
       leaves =
       {
         filename = "__base__/graphics/entity/tree/" .. variation_path .. "-leaves.png",
+        flags = { "mipmap" },
         width = variation.leaves.width,
         height = variation.leaves.height,
         frame_count = 3,
@@ -797,39 +799,46 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-01.png",
+        flags = { "mipmap" },
         width = 108,
         height= 114
       },
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-02.png",
+        flags = { "mipmap" },
         width = 155,
         height= 97,
         shift = {0.2, 0.2}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-03.png",
+        flags = { "mipmap" },
         width = 138,
         height= 124,
         shift = {0.4, -0.3}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-04.png",
+        flags = { "mipmap" },
         width = 112,
         height= 123,
         shift = {0, -0.4}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-05.png",
+        flags = { "mipmap" },
         width = 111,
         height= 113,
       },
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-06.png",
+        flags = { "mipmap" },
         width = 78,
         height= 83,
       },
       {
         filename = "__base__/graphics/entity/tree/dead-tree/dead-tree-07.png",
+        flags = { "mipmap" },
         width = 90,
         height= 105,
       }
@@ -860,138 +869,161 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-01-a.png",
+        flags = { "mipmap" },
         width = 194,
         height= 116,
         shift = {2.25, -0.78125}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-01-b.png",
+        flags = { "mipmap" },
         width = 155,
         height= 129,
         shift = {1.42188, -1.32812}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-01-c.png",
+        flags = { "mipmap" },
         width = 113,
         height= 81,
         shift = {1.26562, -0.765625}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-01-d.png",
+        flags = { "mipmap" },
         width = 156,
         height= 120,
         shift = {0.96875, -1.1875}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-01-e.png",
+        flags = { "mipmap" },
         width = 150,
         height= 124,
         shift = {1.53125, -1.25}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-01-f.png",
+        flags = { "mipmap" },
         width = 178,
         height= 116,
         shift = {1.96875, -1.15625}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-02-a.png",
+        flags = { "mipmap" },
         width = 147,
         height= 123,
         shift = {1.8125, -1.48438}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-02-b.png",
+        flags = { "mipmap" },
         width = 168,
         height= 133,
         shift = {1.17188, -1.10938}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-tree/dry-tree-02-c.png",
+        flags = { "mipmap" },
         width = 174,
         height= 134,
         shift = {1.07812, -1.5625}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-02-d.png",
+        flags = { "mipmap" },
         width = 215,
         height= 136,
         shift = {2.875, -0.96875}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-02-e.png",
+        flags = { "mipmap" },
         width = 158,
         height= 115,
         shift = {2.14062, -1.07812}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-02-f.png",
+        flags = { "mipmap" },
         width = 180,
         height= 105,
         shift = {2.23438, -0.734375}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-03-a.png",
+        flags = { "mipmap" },
         width = 168,
         height= 111,
         shift = {0.78125, -1.14062}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-03-b.png",
+        flags = { "mipmap" },
         width = 145,
         height= 118,
         shift = {0.921875, -1.1875}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-03-c.png",
+        flags = { "mipmap" },
         width = 161,
         height= 115,
         shift = {1.57812, -1.29688}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-03-d.png",
+        flags = { "mipmap" },
         width = 183,
         height= 122,
         shift = {2.20312, -1.21875}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-03-e.png",
+        flags = { "mipmap" },
         width = 166,
         height= 122,
         shift = {2.0625, -0.90625}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-03-f.png",
+        flags = { "mipmap" },
         width = 160,
         height= 104,
         shift = {1.5625, -0.625}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-04-a.png",
+        flags = { "mipmap" },
         width = 195,
         height= 139,
         shift = {1.67188, -1.23438}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-04-b.png",
+        flags = { "mipmap" },
         width = 173,
         height= 138,
         shift = {1.29688, -0.875}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-04-c.png",
+        flags = { "mipmap" },
         width = 210,
         height= 135,
         shift = {1.5, -1.64062}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-04-d.png",
+        flags = { "mipmap" },
         width = 149,
         height= 119,
         shift = {1.57812, -1.32812}
       },
       {
         filename = "__base__/graphics/entity/tree//dry-tree/dry-tree-04-e.png",
+        flags = { "mipmap" },
         width = 173,
         height= 143,
         shift = {1.39062, -1.73438}
@@ -1023,41 +1055,48 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-01.png",
+        flags = { "mipmap" },
         width = 58,
         height = 69,
         shift = {0.4, -0.4}
       },
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-02.png",
+        flags = { "mipmap" },
         width = 77,
         height = 97,
         shift = {0.7, -0.05}
       },
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-03.png",
+        flags = { "mipmap" },
         width = 41,
         height = 54,
         shift = {0.2, 0}
       },
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-04.png",
+        flags = { "mipmap" },
         width = 63,
         height = 61,
         shift = {0.7, 0.3}
       },
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-05.png",
+        flags = { "mipmap" },
         width = 63,
         height = 85,
         shift = {-0.1, 0.5}
       },
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-06.png",
+        flags = { "mipmap" },
         width = 67,
         height = 71
       },
       {
         filename = "__base__/graphics/entity/tree/green-coral/green-coral-07.png",
+        flags = { "mipmap" },
         width = 89,
         height = 77,
         shift = {-0.2, -0.4}
@@ -1088,42 +1127,49 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-01.png",
+        flags = { "mipmap" },
         width = 105,
         height= 96,
         shift = {0.75, -0.46}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-02.png",
+        flags = { "mipmap" },
         width = 67,
         height= 87,
         shift = {0.4, 0.43}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-03.png",
+        flags = { "mipmap" },
         width = 114,
         height= 67,
         shift = {0.56, -0.25}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-04.png",
+        flags = { "mipmap" },
         width = 95,
         height= 85,
         shift = {0.62, 0.21}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-05.png",
+        flags = { "mipmap" },
         width = 100,
         height= 112,
         shift = {0.84, -0.84}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-06.png",
+        flags = { "mipmap" },
         width = 96,
         height= 82,
         shift = {0.0, -0.5}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-07.png",
+        flags = { "mipmap" },
         width = 143,
         height= 55,
         shift = {-0.46, 0.0}
@@ -1154,48 +1200,56 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-01.png",
+        flags = { "mipmap" },
         width = 201,
         height= 242,
         shift = {1.9, -0.68}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-02.png",
+        flags = { "mipmap" },
         width = 307,
         height= 256,
         shift = {2.62, -0.68}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-03.png",
+        flags = { "mipmap" },
         width = 286,
         height= 240,
         shift = {0.56, -1.5}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-04.png",
+        flags = { "mipmap" },
         width = 291,
         height= 229,
         shift = {3.5, -2.0}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-05.png",
+        flags = { "mipmap" },
         width = 265,
         height= 264,
         shift = {3.2, -0.46}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-06.png",
+        flags = { "mipmap" },
         width = 312,
         height= 267,
         shift = {2.59, -1.34}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-07.png",
+        flags = { "mipmap" },
         width = 294,
         height= 213,
         shift = {3.37, -0.25}
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-08.png",
+        flags = { "mipmap" },
         width = 284,
         height= 217,
         shift = {2.28, -1.25}
@@ -1226,72 +1280,84 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-a.png",
+        flags = { "mipmap" },
         width = 194,
         height= 94,
         shift = {0.28125, -0.0625}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-b.png",
+        flags = { "mipmap" },
         width = 186,
         height= 151,
         shift = {0.15625, -0.171875}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-c.png",
+        flags = { "mipmap" },
         width = 163,
         height= 118,
         shift = {0.171875, -0.3125}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-d.png",
+        flags = { "mipmap" },
         width = 178,
         height= 153,
         shift = {1.09375, -0.234375}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-e.png",
+        flags = { "mipmap" },
         width = 195,
         height= 158,
         shift = {0.859375, -0.15625}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-f.png",
+        flags = { "mipmap" },
         width = 206,
         height= 141,
         shift = {0.4375, -0.328125}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-g.png",
+        flags = { "mipmap" },
         width = 209,
         height= 147,
         shift = {0.421875, -0.328125}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-h.png",
+        flags = { "mipmap" },
         width = 175,
         height= 106,
         shift = {0.109375, -0.5625}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-i.png",
+        flags = { "mipmap" },
         width = 155,
         height= 86,
         shift = {-0.046875, 0.125}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-j.png",
+        flags = { "mipmap" },
         width = 150,
         height= 135,
         shift = {0.59375, -0.171875}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-k.png",
+        flags = { "mipmap" },
         width = 159,
         height= 122,
         shift = {0.171875, -0.15625}
       },
       {
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-tree-02-l.png",
+        flags = { "mipmap" },
         width = 169,
         height= 121,
         shift = {0.234375, -0.109375}

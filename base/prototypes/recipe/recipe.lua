@@ -1089,6 +1089,18 @@ data:extend(
     },
     result= "landfill",
     result_count = 1
+  },
+  {
+    type = "recipe",
+    name = "electric-energy-interface",
+    energy_required = 0.5,
+    enabled = false,
+    ingredients =
+    {
+      {"iron-plate", 2},
+      {"electronic-circuit", 5}
+    },
+    result = "electric-energy-interface"
   }
 }
 )

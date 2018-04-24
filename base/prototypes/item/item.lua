@@ -884,6 +884,16 @@ data:extend(
     alt_selection_mode = {"blueprint"},
     selection_cursor_box_type = "copy",
     alt_selection_cursor_box_type = "copy"
+  },
+  {
+    type = "item",
+    name = "electric-energy-interface",
+    icon = "__base__/graphics/icons/accumulator.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "energy",
+    order = "e[electric-energy-interface]-b[electric-energy-interface]",
+    place_result = "electric-energy-interface",
+    stack_size = 50
   }
 }
 )
