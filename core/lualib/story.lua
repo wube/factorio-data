@@ -1,100 +1,97 @@
-module(..., package.seeall)
 require "defines"
 
--- The utility for managing state-based campaign levels
-Story =
-{
-}
+function story_init_helpers(story)
+  story_points_by_name = {}
+  story_branches = {}
+  for story_index, data in pairs(story) do
+    if (story_index ~= "update-functions") then
+      story_branches[story_index] = data
+      for index, item in pairs(data) do
+        if item.name ~= nil then
+          story_points_by_name[item.name] = {}
+          story_points_by_name[item.name].story_index = story_index
+          story_points_by_name[item.name].position = index
+        end
+      end
+    else
+      story_update_table = data
+    end
+  end
+end
 
-function Story:new(story)
-  obj = {}
-  setmetatable(obj, self)
-  self.__index = self
-  -- indexed table of the story, is created when scenario is started or loaded
-  obj.storyhelper = {}
-  obj.storytable = {}
-  -- Part of the story that needs to be serialised to preserve game state
-  obj.context = {}
+function story_init()
+  local result = {}
   -- List of names of currently active update functions
-  obj.context.updates = {}
+  result.updates = {}
   -- Tick, when the current state started
-  obj.context.currentstorystartedat = 0
+  result.current_story_started_at = 0
   -- There can be different stories (sequencies), this specifie which one is active
-  obj.context.storyindex = 1
+  result.story_index = 1
   -- Position in the current story
-  obj.context.storyposition = 1
+  result.story_position = 1
   -- Utility variables used to ensure that the init of the story item is called just once
-  obj.context.initcalledlastonstoryindex = 0
-  obj.context.initcalledlastonposition = 0
-  obj:generatestoryhelper(story)
-  return obj
+  result.init_called_last_on_story_index = 0
+  result.init_called_last_on_position = 0
+  return result
 end
 
-function Story:import(context)
-  self.context = context
-end
-
-function Story:export()
-  return self.context
-end
-
-function Story:update(event, next_level, onwin)
-  local story = self.storytable[self.context.storyindex]
-  local startingstoryindex = self.context.storyindex;
-  local startingstoryposition = self.context.storyposition;
-  if self.context.storyposition > #story then
+function story_update(story, event, next_level, onwin)
+  local branch = story_branches[story.story_index]
+  local starting_story_index = story.story_index;
+  local starting_story_position = story.story_position;
+  if story.story_position > #branch then
     return
   end
-  if story[self.context.storyposition].init ~= nil then
-    if obj.context.initcalledlastonstoryindex ~= self.context.storyindex or
-        obj.context.initcalledlastonposition ~= self.context.storyposition then
-      obj.context.initcalledlastonstoryindex = self.context.storyindex
-      obj.context.initcalledlastonposition = self.context.storyposition
-      if story[self.context.storyposition].init(event) then
+  if branch[story.story_position].init ~= nil then
+    if story.init_called_last_on_story_index ~= story.story_index or
+        story.init_called_last_on_position ~= story.story_position then
+      story.init_called_last_on_story_index = story.story_index
+      story.init_called_last_on_position = story.story_position
+      if branch[story.story_position].init(event, story) then
         return
       end
-      if self.context.storyindex ~= startingstoryindex or self.context.storyposition ~= startingstoryposition then
+      if story.story_index ~= starting_story_index or story.story_position ~= starting_story_position then
         return
       end
     end
   else
-    obj.context.initcalledlastonstoryindex = 0
-    obj.context.initcalledlastonposition = 0
+    story.init_called_last_on_story_index = 0
+    story.init_called_last_on_position = 0
   end
-  for index, item in pairs(self.context.updates) do
-    if self.updatetable[index](event) then
+  for index, item in pairs(story.updates) do
+    if story_update_table[index](event, story) then
       return
     end
   end
-  if self.context.storyindex ~= startingstoryindex or self.context.storyposition ~= startingstoryposition then
+  if story.story_index ~= starting_story_index or story.story_position ~= starting_story_position then
     return
   end
-  if story[self.context.storyposition].update ~= nil then
-     story[self.context.storyposition].update(event)
+  if branch[story.story_position].update ~= nil then
+     branch[story.story_position].update(event, story)
   end
-  if self.context.storyindex ~= startingstoryindex or self.context.storyposition ~= startingstoryposition then
+  if story.story_index ~= starting_story_index or story.story_position ~= starting_story_position then
     return
   end
   if (
-        story[self.context.storyposition].condition == nil  and
+        branch[story.story_position].condition == nil  and
         event.name == defines.events.on_tick
       ) or
       (
-        story[self.context.storyposition].condition ~= nil and
-        story[self.context.storyposition].condition(event, self)
+        branch[story.story_position].condition ~= nil and
+        branch[story.story_position].condition(event, story)
       ) then
-    if self.context.storyindex ~= startingstoryindex or self.context.storyposition ~= startingstoryposition then
+    if story.story_index ~= starting_story_index or story.story_position ~= starting_story_position then
       return
     end
-    if story[self.context.storyposition].action ~= nil then
-      story[self.context.storyposition].action(event, self)
+    if branch[story.story_position].action ~= nil then
+      branch[story.story_position].action(event, story)
     end
-    if self.context.storyindex ~= startingstoryindex or self.context.storyposition ~= startingstoryposition then
+    if story.story_index ~= starting_story_index or story.story_position ~= starting_story_position then
       return
     end
-    self.context.storyposition = self.context.storyposition + 1
-    self.context.currentstorystartedat = event.tick
-    if self.context.storyposition > #story then
+    story.story_position = story.story_position + 1
+    story.current_story_started_at = event.tick
+    if story.story_position > #branch then
       if onwin ~= nil then
         onwin()
       end
@@ -105,46 +102,31 @@ function Story:update(event, next_level, onwin)
   end
 end
 
-function Story:generatestoryhelper(story)
-  for storyindex, data in pairs(story) do
-    if (storyindex ~= "update-functions") then
-      self.storytable[storyindex] = data
-      for index, item in pairs(data) do
-        if item.name ~= nil then
-          self.storyhelper[item.name] = {}
-          self.storyhelper[item.name].storyindex = storyindex
-          self.storyhelper[item.name].position = index
-        end
-      end
-    else
-      self.updatetable = data
+function story_add_update(story, name)
+  story.updates[name] = true
+end
+
+function story_remove_update(story, name)
+  story.updates[name] = nil
+end
+
+function story_jump_to(story, name)
+  local story_point = story_points_by_name[name];
+  story.story_index = story_point.story_index
+  story.story_position = story_point.position
+  if story.story_position ~= 1 then
+    local test = story.story_index + 1
+    local branch = story_branches[story.story_index]
+    if branch[story.story_position - 1].action ~= nil then
+      branch[story.story_position - 1].action()
     end
   end
 end
 
-function Story:addupdate(name)
-  self.context.updates[name] = true
+function story_elapsed(story, event, seconds)
+  return event.tick - story.current_story_started_at > seconds * 60
 end
 
-function Story:removeupdate(name)
-  self.context.updates[name] = nil
-end
-
-function Story:jumpto(name)
-  self.context.storyindex = self.storyhelper[name].storyindex
-  self.context.storyposition = self.storyhelper[name].position
-  if self.context.storyposition ~= 1 then
-    local story = self.storytable[self.context.storyindex]
-    if story[self.context.storyposition - 1].action ~= nil then
-      story[self.context.storyposition - 1].action()
-    end
-  end
-end
-
-function Story:elapsed(event, seconds)
-  return event.tick - self.context.currentstorystartedat > seconds * 60
-end
-
-function Story:elapsedcheck(seconds)
-  return function(event, currentstory) return currentstory:elapsed(event, seconds) end
+function story_elapsed_check(seconds)
+  return function(event, current_story) return story_elapsed(current_story, event, seconds) end
 end

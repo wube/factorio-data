@@ -1897,7 +1897,7 @@ data:extend(
     selectable_in_game = false,
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
-    render_layer = "object",
+    render_layer = "decorative",
     autoplace =
     {
       order = "a[doodad]-a[rock]",
