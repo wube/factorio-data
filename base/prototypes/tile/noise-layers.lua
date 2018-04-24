@@ -23,6 +23,26 @@ data:extend(
   {
     type = "noise-layer",
     name = "dry-trees"
+  },
+  {
+    type = "noise-layer",
+    name = "copper-ore"
+  },
+  {
+    type = "noise-layer",
+    name = "iron-ore"
+  },
+  {
+    type = "noise-layer",
+    name = "coal"
+  },
+  {
+    type = "noise-layer",
+    name = "stone"
+  },
+  {
+    type = "noise-layer",
+    name = "enemy-base"
   }
 }
 )

@@ -26,22 +26,11 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "filter-inserter",
-    enabled = "false",
-    ingredients =
-    {
-      {"fast-inserter", 1},
-      {"electronic-circuit", 2}
-    },
-    result = "filter-inserter"
-  },
-  {
-    type = "recipe",
     name = "smart-inserter",
     enabled = "false",
     ingredients =
     {
-      {"filter-inserter", 1},
+      {"fast-inserter", 1},
       {"electronic-circuit", 4}
     },
     result = "smart-inserter"

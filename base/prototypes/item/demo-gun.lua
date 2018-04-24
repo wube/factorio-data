@@ -7,11 +7,11 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     group = "combat",
     order = "e-a",
-    shooting_parameters =
+    attack_parameters =
     {
       ammo_category = "bullet",
       cooldown = 10,
-      explosion = "explosion-gunshot",
+      movement_slow_down_factor = 0.7,
       shell_particle =
       {
         name = "shell-particle",
@@ -42,11 +42,11 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     group = "combat",
     order = "e-b",
-    shooting_parameters =
+    attack_parameters =
     {
       ammo_category = "bullet",
       cooldown = 4,
-      explosion = "explosion-gunshot",
+      movement_slow_down_factor = 0.7,
       shell_particle =
       {
         name = "shell-particle",

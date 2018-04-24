@@ -2,12 +2,71 @@ default_container_padding = 8
 default_orange_color = { r=0.98, g=0.66, b=0.22}
 warning_red_color = {r=1, g=0.2, b=0.3}
 
+function make_cursor_box(x, y, side_length, shift)
+  return
+  {
+   sprite =
+   {
+     filename = "__core__/graphics/cursor-boxes.png",
+     width = 32,
+     height = 32,
+     x = x,
+     y = y,
+     shift = (function()
+              if shift then
+                return {0.5 - shift[1] / 32.0, 0.5 - shift[2] / 32.0}
+              else
+                return {0.5, 0.5}
+              end
+            end)()
+   },
+   max_side_length = side_length,
+  }
+end
+
+
 data:extend(
 {
   {
     type = "gui-style",
     name = "default",
-    label_style = 
+    cursor_box =
+    {
+      regular =
+      {
+        make_cursor_box(128, 0, 0.4, {1, 1}),
+        make_cursor_box(96, 0, 0.7),
+        make_cursor_box(64, 0, 1.05),
+        make_cursor_box(32, 0, 2),
+        make_cursor_box(0, 0, 2.5),
+      },
+      not_allowed =
+      {
+        make_cursor_box(128, 32, 0.4, {1, 1}),
+        make_cursor_box(96, 32, 0.7),
+        make_cursor_box(64, 32, 1.05),
+        make_cursor_box(32, 32, 2.0),
+        make_cursor_box(0, 32, 3.0),
+      },
+      electricity =
+      {
+        make_cursor_box(128, 64, 0.4, {1, 1}),
+        make_cursor_box(96, 64, 0.7),
+        make_cursor_box(64, 64, 1.05),
+        make_cursor_box(32, 64, 2.0),
+        make_cursor_box(0, 64, 3.0),
+      },
+      copy =
+      {
+        make_cursor_box(128, 96, 0.4, {1, 1}),
+        make_cursor_box(96, 96, 0.7),
+        make_cursor_box(64, 96, 1.05),
+        make_cursor_box(32, 96, 2.0),
+        make_cursor_box(0, 96, 3.0),
+      }
+    },
+
+    label_style =
     {
       type = "label_style",
       font = "default",
@@ -40,7 +99,7 @@ data:extend(
     {
       type = "label_style",
       parent = "label_style",
-      width = 50
+      width = 70
     },
     mod_dependency_invalid_label_style =
     {
@@ -223,6 +282,11 @@ data:extend(
       width = 32,
       height = 32,
     },
+    ability_slot_style =
+    {
+      type = "button_style",
+      parent = "slot_button_style"
+    },
     slot_button_style =
     {
       type = "button_style",
@@ -277,6 +341,60 @@ data:extend(
           width = 36,
           height = 36,
           x = 185
+        }
+      },
+      pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5}
+    },
+    not_available_slot_button_style =
+    {
+      type = "button_style",
+      parent = "slot_button_style",
+      default_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 111,
+          y = 36
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 148,
+          y = 36
+        }
+      },
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 185,
+          y = 36
         }
       }
     },
@@ -1162,11 +1280,22 @@ data:extend(
       parent = "health_progressbar_style",
       smooth_color = default_orange_color
     },
+    shield_progressbar_style =
+    {
+      type = "progressbar_style",
+      parent = "health_progressbar_style",
+      smooth_color = {r = 0.8, g = 0.2, b = 0.8}
+    },
     bonus_progressbar_style =
     {
       type = "progressbar_style",
       parent = "production_progressbar_style",
       smooth_color = {r = 0.8, b = 0.8}
+    },
+    battery_progressbar_style =
+    {
+      type = "progressbar_style",
+      parent = "health_progressbar_style"
     },
     checkbox_style =
     {

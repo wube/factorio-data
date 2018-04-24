@@ -39,7 +39,11 @@ direction =
 command =
 {
   attack = 1,
-  gotolocation = 2
+  gotolocation = 2,
+  group = 4,
+  attackarea = 5,
+  wander = 6,
+  buildbase = 7,
 }
 
 distraction =
@@ -91,4 +95,11 @@ controllers =
   character = 1,
   god = 2
 
+}
+
+groupstate =
+{
+  gathering = 0,
+  moving = 1,
+  attacking = 2
 }

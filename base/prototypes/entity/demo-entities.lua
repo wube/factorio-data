@@ -1,4 +1,25 @@
 
+function make_unit_melee_ammo_type(damagevalue)
+  return
+  {
+    category = "melee",
+    target_type = "entity",
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          type = "damage",
+          damage = { amount = damagevalue , type = "physical"}
+        }
+      }
+    }
+  }
+end
+
 pipepictures = function()
   return {
     straight_vertical =
@@ -143,8 +164,9 @@ data:extend(
     type = "player",
     name = "player",
     icon = "__base__/graphics/icons/player.png",
-    flags = {"pushable", "placeable-player", "placeable-off-grid"},
+    flags = {"pushable", "placeable-player", "placeable-off-grid", "breaths-air"},
     max_health = 100,
+    healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.2, -0.2}, {0.2, 0.2}},
     crafting_categories = {"crafting"},
@@ -171,19 +193,20 @@ data:extend(
       frame_width = 48,
       frame_height = 66,
       direction_count = 5,
+      frame_count = 120,
       stripes =
       {
         {
           filename = "__base__/graphics/entity/player/character-idle-1.png",
-          frame_count = 40
+          width_in_frames = 40
         },
         {
           filename = "__base__/graphics/entity/player/character-idle-2.png",
-          frame_count = 40
+          width_in_frames = 40
         },
         {
           filename = "__base__/graphics/entity/player/character-idle-3.png",
-          frame_count = 40
+          width_in_frames = 40
         }
       },
       shift = {0, -0.6}
@@ -195,19 +218,20 @@ data:extend(
       frame_width = 48,
       frame_height = 66,
       direction_count = 5,
+      frame_count = 120,
       stripes =
       {
         {
           filename = "__base__/graphics/entity/player/character-idle-with-gun-1.png",
-          frame_count = 40
+          width_in_frames = 40
         },
         {
           filename = "__base__/graphics/entity/player/character-idle-with-gun-2.png",
-          frame_count = 40
+          width_in_frames = 40
         },
         {
           filename = "__base__/graphics/entity/player/character-idle-with-gun-3.png",
-          frame_count = 40
+          width_in_frames = 40
         }
       },
       shift = {0, -0.6}
@@ -223,15 +247,16 @@ data:extend(
       frame_width = 48,
       frame_height = 66,
       direction_count = 5,
+      frame_count = 80,
       stripes =
       {
         {
           filename = "__base__/graphics/entity/player/character-mine-with-hands-1.png",
-          frame_count = 40
+          width_in_frames = 40
         },
         {
           filename = "__base__/graphics/entity/player/character-mine-with-hands-2.png",
-          frame_count = 40
+          width_in_frames = 40
         }
       },
       shift = {0, -0.6}
@@ -243,15 +268,16 @@ data:extend(
       frame_width = 64,
       frame_height = 88,
       direction_count = 5,
+      frame_count = 48,
       stripes =
       {
         {
           filename = "__base__/graphics/entity/player/character-mine-with-tool-1.png",
-          frame_count = 24
+          width_in_frames = 24
         },
         {
           filename = "__base__/graphics/entity/player/character-mine-with-tool-2.png",
-          frame_count = 24
+          width_in_frames = 24
         }
       },
       shift = {0, -0.6}
@@ -278,7 +304,7 @@ data:extend(
       shift = {0, -0.6}
     },
     running_mask_animation =
-   {
+    {
       filename = "__base__/graphics/entity/player/character-clothes-run-mask.png",
       priority = "medium",
       frame_width = 48,
@@ -286,19 +312,21 @@ data:extend(
       frame_count = 30,
       direction_count = 5,
       shift = {0, -0.6}
-    }
+    },
   },
   {
     type = "tree",
     name = "dry-tree",
     icon = "__base__/graphics/icons/dry-tree.png",
-    flags = {"placeable-neutral", "placeable-off-grid"},
-    minable = {
+    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    minable =
+    {
       mining_particle = "wooden-particle",
       mining_time = 1,
       result = "raw-wood"
     },
-    max_health = 10,
+    emissions_per_tick = -0.0001,
+    max_health = 20,
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.6, -1.5}, {0.5, 0.4}},
     pictures =
@@ -367,39 +395,69 @@ data:extend(
       -- sharpness == 1 means that sum of influences < 0.5 has probability 0, and >0.5 has probability 1
       sharpness = 0.2,
 
+      control = "forest", -- GUI control for this autoplacer. Must be defined before use (see mapgen-controls.lua)
+
       -- List of optimal conditions for placing the enitty
-      -- Each peak can specify a number of dimensions and a noise, both are summed together.
+      -- Each peak can specify a number of dimensions and possibly a noise.
       -- If there is only a single peak, it may be included directly in the autoplace block
-      -- (see dry tree or fish)
-      peaks = {
+      -- (see fish)
+      --
+      -- If a noise spec is present in the peak, peak's influence is multiplied by this noise.
+      -- The dimensions of optimal positions specify where the influence is maximal (multiplied by 1),
+      -- outside the ranges influence is multiplied by -1.
+      peaks =
+      {
         {
-          -- Dry trees at places without water
-
-          noise_layer = "dry-trees", -- Name of the layer, must be defined before use
-          noise_influence = 0.11, -- Scale of the noise outputs.
-          noise_persistence = 0.9,
-
-          influence = 0.11, -- Influence of perfect conditions and penalty for bad conditions
+          influence = 0.05, -- Influence of perfect conditions and penalty for bad conditions
 
           -- There can be a number of dimensions controling the placement.
           -- Dimensions each contain a name of a control variable: "starting_area_weight",
           -- "roughness", "elevation","water", "temperature",
           -- Unspecified dimensions don't add any influence.
-          water_optimal = 0.05, -- Optimal value of the control variable
+          water_optimal = 0.00, -- Optimal value of the control variable
           water_range = 0.0, -- Width of perfect conditions for the control variable
-          water_max_range = 0.2 -- Width of the interpolation range. Values further from the
+          water_max_range = 0.5 -- Width of the interpolation range. Values further from the
                                 -- optimum produce maximal negative influence.
         },
         {
-          -- Dry trees in between the regular trees
-          noise_layer = "trees",
-          noise_influence = 0.2,
-          noise_persistence = 0.5,
+          influence = 0.2, -- Influence of perfect conditions and penalty for bad conditions
 
-          influence = 0.15,
+          noise_layer = "dry-trees", -- Name of the layer, must be defined before use (see noise-layers.lua)
+          noise_persistence = 0.9,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = -0.05,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.05,
+
           water_optimal = 0.2,
           water_range = 0.1,
-          water_max_range = 0.2
+          water_max_range = 0.5
+        },
+        {
+          influence = 0.09,
+
+          noise_layer = "trees",
+          noise_persistence = 0.5,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.02,
+
+          noise_layer = "trees",
+          noise_persistence = 0.5,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
         }
       }
     }
@@ -408,7 +466,8 @@ data:extend(
     type = "tree",
     name = "big-tree",
     icon = "__base__/graphics/icons/big-tree.png",
-    flags = {"placeable-neutral", "placeable-off-grid"},
+    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    emissions_per_tick = -0.0005,
     minable =
     {
       count = 5,
@@ -416,7 +475,7 @@ data:extend(
       mining_time = 2,
       result = "raw-wood"
     },
-    max_health = 10,
+    max_health = 50,
     collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
     selection_box = {{-0.8, -2.2}, {0.8, 0.8}},
     drawing_box = {{-0.8, -2.8}, {0.8, 0.8}},
@@ -510,15 +569,21 @@ data:extend(
     autoplace =
     {
       sharpness = 0.5,
-
-      noise_layer = "trees",
-      noise_influence = 0.9,
-      noise_persistence = 0.5,
-
-      influence = 0.4,
-      water_optimal = 0.2,
-      water_range = 0.1,
-      water_max_range = 0.2
+      control = "forest",
+      peaks =
+      {
+        {
+          influence = 0.2,
+          water_optimal = 0.3,
+          water_range = 0.2,
+          water_max_range = 0.4
+        },
+        {
+          influence = 0.9,
+          noise_layer = "trees",
+          noise_persistence = 0.5,
+        }
+      }
     }
   },
   {
@@ -527,7 +592,18 @@ data:extend(
     icon = "__base__/graphics/icons/stone-furnace.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "stone-furnace"},
-    max_health = 20,
+    max_health = 150,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 80
+      },
+      {
+        type = "explosion",
+        percent = 30
+      }
+    },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
@@ -540,6 +616,7 @@ data:extend(
       type = "burner",
       effectivity = 1,
       fuel_inventory_size = 1,
+      emissions = 0.01,
       smoke =
       {
         {
@@ -586,7 +663,14 @@ data:extend(
     icon = "__base__/graphics/icons/basic-transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "basic-transport-belt"},
-    max_health = 10,
+    max_health = 50,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 64,
@@ -607,8 +691,8 @@ data:extend(
     name = "fish",
     icon = "__base__/graphics/icons/fish.png",
     flags = {"placeable-neutral"},
-    minable = {mining_time = 1, result = "fish"},
-    max_health = 5,
+    minable = {mining_time = 1, result = "raw-fish"},
+    max_health = 20,
     collision_box = {{-0.4, -0.2}, {0.4, 0.2}},
     selection_box = {{-0.5, -0.3}, {0.5, 0.3}},
     pictures =
@@ -636,7 +720,14 @@ data:extend(
     icon = "__base__/graphics/icons/boiler.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
-    max_health = 20,
+    max_health = 100,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
     fast_replaceable_group = "pipe",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -645,6 +736,7 @@ data:extend(
     {
       effectivity = 0.5,
       fuel_inventory_size = 1,
+      emissions = 0.1 / 6.5,
       smoke =
       {
         {
@@ -797,7 +889,7 @@ data:extend(
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "wooden-chest"},
-    max_health = 20,
+    max_health = 50,
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -813,15 +905,27 @@ data:extend(
   },
   {
     type = "corpse",
-    name = "creeper-corpse",
+    name = "small-biter-corpse",
+    dying_speed = 0.04,
     animation =
     {
-      filename = "__base__/graphics/entity/creeper-corpse/creeper-corpse.png",
-      frame_width = 87,
-      frame_height = 96,
-      frame_count = 15,
-      direction_count = 9,
-      shift = {0.140625, -0.734375}
+      frame_width = 142,
+      frame_height = 97,
+      frame_count = 17,
+      direction_count = 16,
+      axially_symetric = false,
+      shift = {0.328125, -0.09375},
+      stripes =
+      {
+        {
+          filename = "__base__/graphics/entity/small-biter/small-biter-die-1.png",
+          width_in_frames = 9
+        },
+        {
+          filename = "__base__/graphics/entity/small-biter/small-biter-die-2.png",
+          width_in_frames = 8
+        }
+      },
     },
   },
   {
@@ -832,7 +936,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-electric-pole"},
     max_health = 35,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
     drawing_box = {{-0.5, -2.3}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
     supply_area_distance = 2.5,
@@ -938,28 +1042,36 @@ data:extend(
   },
   {
     type = "unit",
-    name = "creeper",
+    name = "small-biter",
     icon = "__base__/graphics/icons/creeper.png",
-    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid"},
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
     max_health = 15,
+    healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.4}, {0.2, 0}},
     selection_box = {{-0.7, -1.5}, {0.7, 0.3}},
-    damage = 6,
-    attack_cooldown = 0.35,
-    movement_speed = 0.15,
-    distance_per_frame = 0.1,
-    regenerate_rate = 0.01,
-    attack_animation =
+    attack_parameters =
     {
-      filename = "__base__/graphics/entity/creeper/creeper-attack.png",
-      priority = "high",
-      frame_width = 63,
-      frame_height = 96,
-      frame_count = 15,
-      direction_count = 9,
-      shift = {0.421875, -0.53125}
+      range = 0.5,
+      cooldown = 35,
+      ammo_category = "melee",
+      ammo_type = make_unit_melee_ammo_type(6),
+      animation =
+      {
+        filename = "__base__/graphics/entity/small-biter/small-biter-attack.png",
+        priority = "high",
+        frame_width = 139,
+        frame_height = 93,
+        frame_count = 11,
+        direction_count = 16,
+        axially_symmetrical = false,
+        shift = {0.84375, -0.3125}
+      }
     },
-    corpse = "creeper-corpse",
+    movement_speed = 0.2,
+    distance_per_frame = 0.1,
+    pollution_to_join_attack = 200,
+    distraction_cooldown = 300,
+    corpse = "small-biter-corpse",
     dying_sound =
     {
       {
@@ -981,25 +1093,41 @@ data:extend(
     },
     run_animation =
     {
-      filename = "__base__/graphics/entity/creeper/creeper-run.png",
+      filename = "__base__/graphics/entity/small-biter/small-biter-run.png",
       priority = "high",
-      frame_width = 48,
-      frame_height = 68,
-      frame_count = 30,
-      direction_count = 9,
-      shift = {0, -0.75}
+      still_frame = 4,
+      frame_width = 86,
+      frame_height = 59,
+      frame_count = 16,
+      direction_count = 16,
+      shift = {0.359375, -0.15625},
+      axially_symmetrical = false
     }
   },
   {
     type = "unit-spawner",
-    name = "creeper-spawner",
-    icon = "__base__/graphics/icons/creeper-spawner.png",
+    name = "biter-spawner",
+    icon = "__base__/graphics/icons/biter-spawner.png",
     flags = {"placeable-player", "placeable-enemy"},
-    minable = {mining_time = 1, result = "creeper-spawner"},
-    max_health = 150,
+    minable = {mining_time = 1, result = "biter-spawner"},
+    max_health = 300,
+    resistances = 
+    {
+      {
+        type = "physical",
+        decrease = 2,
+      },
+      {
+        type = "explosion",
+        decrease = 5,
+        percent = 15,
+      }
+    },
+    healing_per_tick = 0.02,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    count_of_units_around = 7,
+    -- in ticks per 1 pu
+    pollution_cooldown = 10,
     dying_explosion = "huge-explosion",
     loot =
     {
@@ -1010,17 +1138,75 @@ data:extend(
         probability = 1
       }
     },
-    maximum_count_of_owned_units = 15,
-    picture = {
-      filename = "__base__/graphics/entity/creeper-spawner/creeper-spawner.png",
+    maximum_count_of_owned_units = 7,
+    animations =
+    {
+      filename = "__base__/graphics/entity/biter-spawner/biter-spawner.png",
       priority = "high",
-      width = 87,
-      height = 101
+      frame_width = 87,
+      frame_height = 101,
+      frame_count = 1,
+      direction_count = 1
     },
-    result_unit = "creeper",
+    result_units = (function()
+                     local res = {}
+                     res[1] = {"small-biter", 0.3}
+                     if not data.isdemo then
+                       res[2] = {"medium-biter", 0.3}
+                       res[3] = {"big-biter", 0.4}
+                     end
+                     return res
+                   end)(),
     spawning_cooldown = 180,
     spawning_radius = 10,
-    spawning_spacing = 3
+    spawning_spacing = 3,
+    max_spawn_shift = 0.65,
+    max_richness_for_spawn_shift = 100,
+    autoplace =
+    {
+      sharpness = 0.4,
+      control = "enemy-base",
+      richness_multiplier = 1,
+      richness_base = 0,
+      peaks =
+      {
+        {
+          influence = 0,
+          richness_influence = 100,
+          tier_from_start_optimal = 12,
+          tier_from_start_top_property_limit = 12,
+          tier_from_start_max_range = 24,
+        },
+        {
+          influence = -7.0,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.3,
+          noise_layer = "enemy-base",
+          noise_octaves_difference = -2,
+          noise_persistence = 0.5,
+        },
+        {
+          influence = 0.05,
+          noise_layer = "enemy-base",
+          noise_octaves_difference = -3,
+          noise_persistence = 0.5,
+        },
+        -- increase the size when moving further away
+        {
+          influence = 0.5,
+          noise_layer = "enemy-base",
+          noise_octaves_difference = -2,
+          noise_persistence = 0.5,
+          tier_from_start_optimal = 15,
+          tier_from_start_top_property_limit = 15,
+          tier_from_start_max_range = 30,
+        },
+      }
+    }
   },
   {
     type = "explosion",
@@ -1125,7 +1311,14 @@ data:extend(
     icon = "__base__/graphics/icons/steam-engine.png",
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "steam-engine"},
-    max_health = 150,
+    max_health = 300,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-1.4, -2.4}, {1.4, 2.4}},
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
     energy_source =
@@ -1203,7 +1396,14 @@ data:extend(
     icon = "__base__/graphics/icons/pump.png",
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 1, result = "pump"},
-    max_health = 20,
+    max_health = 80,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-0.6, -0.3}, {0.6, 0.3}},
     selection_box = {{-1, -0.49}, {1, 1.49}},
     tile_width = 1,
@@ -1219,7 +1419,8 @@ data:extend(
   {
     type = "smoke",
     name = "smoke",
-    animation = {
+    animation =
+    {
       filename = "__base__/graphics/entity/smoke/smoke.png",
       priority = "extra-high",
       frame_width = 88,
@@ -1232,7 +1433,8 @@ data:extend(
   {
     type = "smoke",
     name = "smoke-fast",
-    animation = {
+    animation =
+    {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
       priority = "extra-high",
       frame_width = 50,
@@ -1250,9 +1452,16 @@ data:extend(
       "player-creation"
     },
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-inserter"},
-    max_health = 10,
+    max_health = 40,
+     resistances = 
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     energy_per_movement = 5,
     energy_per_rotation = 5,
     energy_source =
@@ -1300,9 +1509,16 @@ data:extend(
     icon = "__base__/graphics/icons/burner-inserter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "burner-inserter"},
-    max_health = 10,
+    max_health = 40,
+     resistances = 
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     energy_per_movement = 100,
     energy_per_rotation = 100,
     energy_source =
@@ -1366,7 +1582,14 @@ data:extend(
     icon = "__base__/graphics/icons/pipe.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe"},
-    max_health = 10,
+    max_health = 50,
+     resistances = 
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     fast_replaceable_group = "pipe",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -1379,7 +1602,14 @@ data:extend(
     icon = "__base__/graphics/icons/radar.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "radar"},
-    max_health = 60,
+    max_health = 150,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_per_sector = 20000,
@@ -1407,7 +1637,7 @@ data:extend(
     icon = "__base__/graphics/icons/small-lamp.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-lamp"},
-    max_health = 35,
+    max_health = 55,
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     energy_source =
@@ -1438,7 +1668,7 @@ data:extend(
     name = "space-module-wreck",
     icon = "__base__/graphics/icons/space-module-wreck.png",
     flags = {"placeable-neutral", "player-creation"},
-    max_health = 20,
+    max_health = 50,
     collision_box = {{-2.2, -1}, {2.2, 1}},
     selection_box = {{-2.7, -1.5}, {2.7, 1.5}},
     inventory_size = 4,
@@ -1484,6 +1714,13 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe-to-ground"},
     max_health = 50,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     max_liquid_amount = 10,
@@ -1527,7 +1764,14 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-1.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-1"},
-    max_health = 100,
+    max_health = 200,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
@@ -1546,7 +1790,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      input_priority = "secondary",
+      emissions = 0.05 / 1.5
     },
     energy_usage_per_tick = 1.5,
     ingredient_count = 2
@@ -1557,6 +1802,51 @@ data:extend(
     flags = {},
     time_to_live = 150,
     speed = 0.05
+  },
+  {
+    type = "corpse",
+    name = "acid-splash-purple",
+    time_before_removed = 60 * 30,
+    splash =
+    {
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-1.png",
+        line_length = 5,
+        frame_width = 199,
+        frame_height = 159,
+        frame_count = 20,
+        shift = {0.484375, -0.171875},
+        priority = "extra-high",
+      },
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-2.png",
+        line_length = 5,
+        frame_width = 238,
+        frame_height = 157,
+        frame_count = 20,
+        shift = {0.8125, -0.15625},
+        priority = "extra-high",
+      },
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-3.png",
+        line_length = 5,
+        frame_width = 240,
+        frame_height = 162,
+        frame_count = 20,
+        shift = {0.71875, -0.09375},
+        priority = "extra-high",
+      },
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-4.png",
+        line_length = 5,
+        frame_width = 241,
+        frame_height = 146,
+        frame_count = 20,
+        shift = {0.703125, -0.375},
+        priority = "extra-high",
+      }
+    },
+    splash_speed = 0.03
   }
 }
 )

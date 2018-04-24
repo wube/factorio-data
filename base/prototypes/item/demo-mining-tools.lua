@@ -5,7 +5,19 @@ data:extend(
     name = "iron-axe",
     icon = "__base__/graphics/icons/iron-axe.png",
     flags = {"goes-to-main-inventory"},
-    damage = 5,
+    action =
+    {
+      type="direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+            type = "damage",
+            damage = { amount = 5 , type = "physical"}
+        }
+      }
+    },
     durability = 4000,
     group = "production",
     order = "d-b",

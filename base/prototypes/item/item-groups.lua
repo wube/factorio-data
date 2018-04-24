@@ -23,12 +23,6 @@ data:extend(
     name = "combat",
     order = "e",
     icon = "__base__/graphics/technology/military.png",
-  },
-  {
-    type = "item-group",
-    name = "other",
-    order = "f",
-    icon = "__core__/graphics/questionmark.png",
   }
 }
 )

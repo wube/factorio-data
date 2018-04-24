@@ -32,7 +32,14 @@ data:extend(
     icon = "__base__/graphics/icons/basic-transport-belt-to-ground.png",
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-rotate-only"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-transport-belt-to-ground"},
-    max_health = 10,
+    max_health = 70,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 64,
@@ -136,7 +143,14 @@ data:extend(
     icon = "__base__/graphics/icons/fast-transport-belt-to-ground.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-transport-belt-to-ground"},
-    max_health = 10,
+    max_health = 60,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 64,
@@ -240,7 +254,14 @@ data:extend(
     icon = "__base__/graphics/icons/express-transport-belt-to-ground.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-transport-belt-to-ground"},
-    max_health = 10,
+    max_health = 60,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 64,
@@ -344,7 +365,14 @@ data:extend(
     icon = "__base__/graphics/icons/basic-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-splitter"},
-    max_health = 50,
+    max_health = 80,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
     animation_speed_coefficient = 64,
@@ -473,7 +501,14 @@ data:extend(
     icon = "__base__/graphics/icons/fast-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-splitter"},
-    max_health = 50,
+    max_health = 80,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
     animation_speed_coefficient = 64,
@@ -602,7 +637,14 @@ data:extend(
     icon = "__base__/graphics/icons/express-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-splitter"},
-    max_health = 50,
+    max_health = 80,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
     collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
     animation_speed_coefficient = 64,
@@ -731,7 +773,14 @@ data:extend(
     icon = "__base__/graphics/icons/fast-transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "fast-transport-belt"},
-    max_health = 10,
+    max_health = 50,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 50
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 64,
@@ -753,7 +802,14 @@ data:extend(
     icon = "__base__/graphics/icons/express-transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "express-transport-belt"},
-    max_health = 10,
+    max_health = 50,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 50
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 64,
@@ -775,7 +831,14 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-2.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
-    max_health = 150,
+    max_health = 250,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
@@ -794,7 +857,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      input_priority = "secondary",
+      emissions = 0.04 / 2.5
     },
     energy_usage_per_tick = 2.5,
     ingredient_count = 4,
@@ -806,7 +870,14 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-3.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
-    max_health = 250,
+    max_health = 300,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
@@ -825,7 +896,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      input_priority = "secondary",
+      emissions = 0.03 / 3.5
     },
     energy_usage_per_tick = 3.5,
     ingredient_count = 4,
@@ -837,7 +909,14 @@ data:extend(
     icon = "__base__/graphics/icons/car.png",
     flags = {"pushable", "placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "car"},
-    max_health = 2000,
+    max_health = 500,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 50
+      }
+    },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
     acceleration_per_energy = 0.001,
@@ -883,12 +962,16 @@ data:extend(
     type = "container",
     name = "iron-chest",
     icon = "__base__/graphics/icons/iron-chest.png",
-    flags = {
-      "placeable-neutral",
-      "player-creation"
-    },
+    flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "iron-chest"},
     max_health = 100,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -909,11 +992,19 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "steel-chest"},
     max_health = 200,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
-    picture = {
+    picture =
+    {
       filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
       priority = "extra-high",
       width = 48,
@@ -925,16 +1016,21 @@ data:extend(
     type = "smart-container",
     name = "smart-chest",
     icon = "__base__/graphics/icons/smart-chest.png",
-    flags = {
-      "placeable-neutral",
-      "player-creation"
-    },
-    minable = {
+    flags = {"placeable-neutral", "player-creation"},
+    minable =
+    {
       hardness = 0.2,
       mining_time = 0.5,
       result = "smart-chest"
     },
-    max_health = 40,
+    max_health = 150,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -967,10 +1063,17 @@ data:extend(
     icon = "__base__/graphics/icons/long-handed-inserter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "long-handed-inserter"},
-    max_health = 20,
+    max_health = 40,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    insert_distance = 0.85,
+    selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
+    insert_distance = 1.85,
     pickup_distance = 2,
     energy_per_movement = 5,
     energy_per_rotation = 5,
@@ -1022,9 +1125,16 @@ data:extend(
       mining_time = 0.5,
       result = "fast-inserter"
     },
-    max_health = 20,
+    max_health = 40,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     insert_distance = 0.85,
     pickup_distance = 1,
     energy_per_movement = 5,
@@ -1068,9 +1178,16 @@ data:extend(
     icon = "__base__/graphics/icons/smart-inserter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "smart-inserter"},
-    max_health = 20,
+    max_health = 40,
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     insert_distance = 0.85,
     pickup_distance = 1,
     energy_per_movement = 7,
@@ -1116,64 +1233,12 @@ data:extend(
     uses_arm_movement = "basic-inserter"
   },
   {
-    type = "inserter",
-    name = "filter-inserter",
-    icon = "__base__/graphics/icons/filter-inserter.png",
-    flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "filter-inserter"},
-    max_health = 20,
-    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    insert_distance = 0.85,
-    pickup_distance = 1,
-    energy_per_movement = 7,
-    energy_per_rotation = 7,
-    energy_source =
-    {
-      type = "electric",
-      input_priority = "secondary"
-    },
-    extension_speed = 0.06,
-    fast_replaceable_group = "inserter",
-    filter_count = 5,
-    hand_base_picture =
-    {
-      filename = "__base__/graphics/entity/filter-inserter/filter-inserter-hand-base.png",
-      priority = "extra-high",
-      width = 8,
-      height = 34
-    },
-    hand_closed_picture =
-    {
-      filename = "__base__/graphics/entity/filter-inserter/filter-inserter-hand-closed.png",
-      priority = "extra-high",
-      width = 13,
-      height = 41
-    },
-    hand_open_picture =
-    {
-      filename = "__base__/graphics/entity/filter-inserter/filter-inserter-hand-open.png",
-      priority = "extra-high",
-      width = 13,
-      height = 41
-    },
-    platform_picture =
-    {
-      priority = "extra-high",
-      width = 46,
-      height = 46,
-      sheet = "__base__/graphics/entity/filter-inserter/filter-inserter-platform.png"
-    },
-    rotation_speed = 0.035,
-    uses_arm_movement = "basic-inserter"
-  },
-  {
     type = "solar-panel",
     name = "solar-panel",
     icon = "__base__/graphics/icons/solar-panel.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "solar-panel"},
-    max_health = 50,
+    max_health = 100,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_source =
@@ -1261,7 +1326,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 15,
     minable = {mining_time = 1, result = "cargo-wagon"},
-    max_health = 500,
+    max_health = 600,
     collision_box = {{-0.6, -2.4}, {0.9, 2.4}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     weight = 1000,
@@ -1298,7 +1363,28 @@ data:extend(
     icon = "__base__/graphics/icons/wall.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "wall"},
-    max_health = 200,
+    max_health = 350,
+    resistances = 
+    {
+      {
+        type = "physical",
+        decrease = 3,
+        percent = 20
+      },
+      {
+        type = "explosion",
+        decrease = 10,
+        percent = 30
+      },
+      {
+        type = "fire",
+        percent = 100
+      },
+      {
+        type = "laser",
+        percent = 70
+      }
+    },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     pictures =
@@ -1520,7 +1606,7 @@ data:extend(
     icon = "__base__/graphics/icons/straight-rail.png",
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
     minable = {mining_time = 1, result = "straight-rail"},
-    max_health = 50,
+    max_health = 100,
     collision_box = {{-0.6, -0.8}, {0.6, 0.8}},
     selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
     bending_type = "straight",
@@ -1533,7 +1619,7 @@ data:extend(
     icon = "__base__/graphics/icons/curved-rail.png",
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
     minable = {mining_time = 1, result = "curved-rail"},
-    max_health = 50,
+    max_health = 200,
     collision_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     bending_type = "turn",
@@ -1559,7 +1645,8 @@ data:extend(
     slow_down_factor = 0.98,
     smoke = "smoke-fast",
     smoke_count = 1,
-    smoke_slow_down_factor = 0.95
+    smoke_slow_down_factor = 0.95,
+    damage = {amount = 0.25, type = "fire"}
   },
   {
     type = "land-mine",
@@ -1573,12 +1660,9 @@ data:extend(
       "placeable-off-grid"
     },
     minable = {mining_time = 1, result = "land-mine"},
-    max_health = 5,
+    max_health = 15,
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    blow_off_explosion = "explosion",
-    damage = 30,
-    damage_radius = 5,
     dying_explosion = "explosion-gunshot",
     picture_safe =
     {
@@ -1594,7 +1678,41 @@ data:extend(
       width = 32,
       height = 32
     },
-    trigger_radius = 1.4
+    trigger_radius = 2.5,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        source_effects =
+        {
+          {
+            type = "nested-result",
+            affects_target = true,
+            action =
+            {
+              type = "area",
+              perimeter = 6,
+              collision_mask = { "player-layer" },
+              action_delivery =
+              {
+                type = "instant",
+                target_effects = 
+                {
+                  type = "damage",
+                  damage = { amount = 40, type = "explosion"}
+                }
+              }
+            },
+          },
+          {
+            type = "create-entity",
+            entity_name = "explosion"
+          }
+        }
+      }
+    },
   },
   {
     type = "train-stop",
@@ -1602,9 +1720,9 @@ data:extend(
     icon = "__base__/graphics/icons/train-stop.png",
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 1, result = "train-stop"},
-    max_health = 20,
+    max_health = 150,
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -2}, {0.5, 0.5}},
+    selection_box = {{-0.6, -0.6}, {0.6, 0.6}},
     drawing_box = {{-0.5, -3}, {0.5, 0.5}},
     animation_ticks_per_frame = 20,
     animations =
@@ -1653,7 +1771,7 @@ data:extend(
     icon = "__base__/graphics/icons/rail-signal.png",
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions"},
     minable = {mining_time = 1, result = "rail-signal"},
-    max_health = 20,
+    max_health = 80,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
@@ -1675,7 +1793,7 @@ data:extend(
     icon = "__base__/graphics/icons/lab.png",
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "lab"},
-    max_health = 120,
+    max_health = 150,
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     on_animation =
@@ -1709,7 +1827,8 @@ data:extend(
       "science-pack-2",
       "science-pack-3",
       "alien-science-pack"
-    }
+    },
+    module_slots = 2
   },
   {
     type = "logistic-robot",
@@ -1745,7 +1864,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-provider.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-provider"},
-    max_health = 40,
+    max_health = 150,
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -1766,7 +1885,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-storage.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-storage"},
-    max_health = 40,
+    max_health = 150,
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -1787,7 +1906,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-requester.png",
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-requester"},
-    max_health = 40,
+    max_health = 150,
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
@@ -1845,6 +1964,27 @@ data:extend(
     smoke_slow_down_factor = 1
   },
   {
+    type = "explosion",
+    name = "railgun-beam",
+    animation_speed = 3,
+    rotate = true,
+    beam = true,
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/blue-beam/blue-beam.png",
+        priority = "extra-high",
+        frame_width = 187,
+        frame_height = 1,
+        frame_count = 6,
+      }
+    },
+    light = {intensity = 1, size = 10},
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1
+  },
+  {
     type = "market",
     name = "market",
     icon = "__base__/graphics/icons/market.png",
@@ -1868,6 +2008,13 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "big-electric-pole"},
     max_health = 150,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-2.8, -0.5}, {0.5, 0.5}},
@@ -1979,7 +2126,14 @@ data:extend(
     icon = "__base__/graphics/icons/medium-electric-pole.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "medium-electric-pole"},
-    max_health = 75,
+    max_health = 100,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     drawing_box = {{-2.8, -0.5}, {0.5, 0.5}},
@@ -2091,7 +2245,14 @@ data:extend(
     icon = "__base__/graphics/icons/substation.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "substation"},
-    max_health = 100,
+    max_health = 200,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-1, -1.5}, {1, 1}},
@@ -2203,7 +2364,7 @@ data:extend(
     icon = "__base__/graphics/icons/basic-accumulator.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-accumulator"},
-    max_health = 75,
+    max_health = 100,
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
     picture =
@@ -2255,7 +2416,14 @@ data:extend(
     icon = "__base__/graphics/icons/steel-furnace.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "steel-furnace"},
-    max_health = 50,
+    max_health = 200,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
@@ -2267,6 +2435,7 @@ data:extend(
     {
       type = "burner",
       effectivity = 1,
+      emissions = 0.02,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -2314,7 +2483,14 @@ data:extend(
     icon = "__base__/graphics/icons/electric-furnace.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "electric-furnace"},
-    max_health = 40,
+    max_health = 150,
+    resistances = 
+    {
+      {
+        type = "fire",
+        percent = 80
+      }
+    },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     module_slots = 2,
@@ -2326,7 +2502,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      input_priority = "secondary",
+      emissions = 0.005
     },
     drawing_scale = 1,
     on_animation =
@@ -2337,6 +2514,7 @@ data:extend(
       frame_width = 131,
       frame_height = 102,
       frame_count = 12,
+      animation_speed = 0.5,
       shift = {0.5, 0.05 }
     },
     off_animation =
@@ -2346,6 +2524,7 @@ data:extend(
       frame_width = 131,
       frame_height = 102,
       frame_count = 1,
+      animation_speed = 0.5,
       shift = {0.5, 0.05 }
     },
     fast_replaceable_group = "furnace"
@@ -2356,7 +2535,7 @@ data:extend(
     icon = "__base__/graphics/icons/basic-beacon.png",
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "basic-beacon"},
-    max_health = 120,
+    max_health = 200,
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     animation =
@@ -2384,6 +2563,142 @@ data:extend(
     energy_usage_per_tick = 8,
     distribution_effectivity = 0.5,
     num_module_slots = 2
+  },
+  {
+    type = "smoke",
+    name = "poison-cloud",
+    animation =
+    {
+      filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
+      priority = "extra-high",
+      frame_width = 256,
+      frame_height = 256,
+      frame_count = 45,
+      animation_speed = 3,
+      line_length = 7,
+      scale = 3,
+    },
+    slow_down_factor = 0,
+    wind_speed_factor = 0,
+    cyclic = true,
+    duration = 60 * 20,
+    fade_away_duration = 2 * 60,
+    spread_duration = 10,
+    color = { r = 0.2, g = 0.9, b = 0.2 },
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          type = "nested-result",
+          action =
+          {
+            type = "area",
+            perimeter = 11,
+            entity_flags = {"breaths-air"},
+            action_delivery =
+            {
+              type = "instant",
+              target_effects =
+              {
+                type = "damage",
+                damage = { amount = 4, type = "poison"}
+              }
+            }
+          }
+        }
+      }
+    },
+    action_frequency = 30
+  },
+  {
+    type = "combat-robot",
+    name = "combat-robot",
+    icon = "__base__/graphics/icons/logistic-robot.png",
+    flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    max_health = 60,
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    distance_per_frame = 0.13,
+    time_to_live = 1200,
+    speed = 0.01,
+    destroy_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        source_effects =
+        {
+            type = "create-entity",
+            entity_name = "explosion"
+        }
+      }
+    },
+    attack_parameters =
+    {
+      ammo_category = "combat-robot-laser",
+      cooldown = 20,
+      damage = 5,
+      projectile_center = {0, 0},
+      projectile_creation_distance = 0.6,
+      range = 15,
+      sound =
+      {
+        {
+          filename = "__base__/sound/laser.wav",
+          volume = 0.4
+        }
+      },
+      ammo_type =
+      {
+        category = "combat-robot-laser",
+        action =
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "projectile",
+            projectile = "laser",
+            starting_speed = 0.3
+          }
+        }
+      }
+    },
+    picture =
+    {
+      filename = "__base__/graphics/entity/combat-robot/combat-robot.png",
+      priority = "high",
+      width = 37,
+      height = 34
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/combat-robot/combat-robot-shadow.png",
+      priority = "high",
+      width = 52,
+      height = 37
+    }
+  },
+  {
+    type = "sticker",
+    name = "slowdown-sticker",
+    --icon = "__base__/graphics/icons/slowdown-sticker.png",
+    flags = {},
+    animation =
+    {
+      filename = "__base__/graphics/entity/slowdown-sticker/slowdown-sticker.png",
+      priority = "extra-high",
+      frame_width = 32,
+      frame_height = 32,
+      frame_count = 4,
+      animation_speed = 0.1
+    },
+    duration_in_ticks = 20 * 60,
+    magnitude = 0.5
   }
 }
 )

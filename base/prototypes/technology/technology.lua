@@ -16,7 +16,8 @@ data:extend(
       count = 10,
       ingredients = {{"science-pack-1", 1}},
       time = 5
-    }
+    },
+    order = "a-a"
   },
   {
     type = "technology",
@@ -43,7 +44,8 @@ data:extend(
       count = 20,
       ingredients = {{"science-pack-1", 1}},
       time = 5
-    }
+    },
+    order = "c-a"
   },
   {
     type = "technology",
@@ -54,6 +56,14 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "submachine-gun"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "shotgun"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "shotgun-shell"
       }
     },
     prerequisites = {"iron-working"},
@@ -62,7 +72,8 @@ data:extend(
       count = 10,
       ingredients = {{"science-pack-1", 1}},
       time = 15
-    }
+    },
+    order = "e-a-a"
   },
   {
     type = "technology",
@@ -73,6 +84,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "piercing-bullet-magazine"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "basic-grenade"
       }
     },
     prerequisites = {"military"},
@@ -85,7 +100,76 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "e-a-b"
+  },
+  {
+    type = "technology",
+    name = "military-3",
+    icon = "__base__/graphics/technology/military.png",
+    effects =
+    {
+    --[[
+      {
+        type = "unlock-recipe",
+        recipe = "railgun"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "railgun-dart"
+      },]]--
+      {
+        type = "unlock-recipe",
+        recipe = "poison-capsule"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "slowdown-capsule"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "combat-shotgun"
+      }
+    },
+    prerequisites = {"military-2", "laser", "rocketry"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 2},
+        {"science-pack-3", 1}
+      },
+      time = 30
+    },
+    order = "e-a-c"
+  },
+  {
+    type = "technology",
+    name = "military-4",
+    icon = "__base__/graphics/technology/military.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "piercing-shotgun-shell"
+      },
+    },
+    prerequisites = {"military-3"},
+    unit =
+    {
+      count = 150,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 2},
+        {"science-pack-3", 1},
+        {"alien-science-pack", 1},
+      },
+      time = 45
+    },
+    order = "e-a-d"
   },
   {
     type = "technology",
@@ -108,7 +192,8 @@ data:extend(
       count = 15,
       ingredients = {{"science-pack-1", 1}},
       time = 10
-    }
+    },
+    order = "a-b-a",
   },
   {
     type = "technology",
@@ -118,7 +203,7 @@ data:extend(
     {
       {
         type = "unlock-recipe",
-        recipe = "filter-inserter"
+        recipe = "smart-inserter"
       }
     },
     prerequisites = {"automation"},
@@ -127,7 +212,8 @@ data:extend(
       count = 30,
       ingredients = {{"science-pack-1", 1}},
       time = 15
-    }
+    },
+    order = "a-d-a",
   },
   {
     type = "technology",
@@ -146,7 +232,8 @@ data:extend(
       count = 40,
       ingredients = {{"science-pack-1", 2}},
       time = 15
-    }
+    },
+    order = "a-b-b",
   },
   {
     type = "technology",
@@ -165,7 +252,8 @@ data:extend(
       count = 100,
       ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}, {"science-pack-3", 1}},
       time = 60
-    }
+    },
+    order = "a-b-c"
   },
   {
     type = "technology",
@@ -180,7 +268,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "a-e-a",
   },
   {
     type = "technology",
@@ -196,7 +285,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 25
-    }
+    },
+    order = "a-e-b",
   },
   {
     type = "technology",
@@ -212,7 +302,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "a-e-c",
   },
   {
     type = "technology",
@@ -228,7 +319,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "e-c-a"
   },
   {
     type = "technology",
@@ -251,7 +343,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "e-e"
   },
   {
     type = "technology",
@@ -278,7 +371,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "e-c-b"
   },
   {
     type = "technology",
@@ -286,10 +380,6 @@ data:extend(
     icon = "__base__/graphics/technology/advanced-electronics.png",
     effects =
     {
-      {
-        type = "unlock-recipe",
-        recipe = "smart-inserter"
-      },
       {
         type = "unlock-recipe",
         recipe = "smart-chest"
@@ -321,7 +411,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "a-d-b",
   },
   {
     type = "technology",
@@ -337,7 +428,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "a-d-c",
   },
   {
     type = "technology",
@@ -364,7 +456,8 @@ data:extend(
       count = 20,
       ingredients = {{"science-pack-1", 1}},
       time = 15
-    }
+    },
+    order = "a-f-a",
   },
   {
     type = "technology",
@@ -395,7 +488,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 20
-    }
+    },
+    order = "c-g-a",
   },
   {
     type = "technology",
@@ -422,7 +516,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 20
-    }
+    },
+    order = "c-g-b",
   },
   {
     type = "technology",
@@ -445,7 +540,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 30
-    }
+    },
+    order = "c-g-c",
   },
   {
     type = "technology",
@@ -456,7 +552,7 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "car"
-      }
+      },
     },
     prerequisites = {"logistics-3"},
     unit =
@@ -469,7 +565,8 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 20
-    }
+    },
+    order = "e-b"
   },
   {
     type = "technology",
@@ -500,7 +597,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "a-f-b",
   },
   {
     type = "technology",
@@ -532,7 +630,8 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 15
-    }
+    },
+    order = "a-f-c",
   },
   {
     type = "technology",
@@ -550,7 +649,8 @@ data:extend(
       count = 10,
       ingredients = {{"science-pack-1", 1}},
       time = 15
-    }
+    },
+    order = "a-h-a",
   },
   {
     type = "technology",
@@ -574,7 +674,8 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 45
-    }
+    },
+    order = "a-h-c",
   },
   {
     type = "technology",
@@ -590,7 +691,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "a-h-b",
   },
   {
     type = "technology",
@@ -617,7 +719,33 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 15
-    }
+    },
+    order = "e-g"
+  },
+  {
+    type = "technology",
+    name = "explosive-rocketry",
+    icon = "__base__/graphics/technology/explosive-rocketry.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "explosive-rocket"
+      }
+    },
+    prerequisites = {"rocketry"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 20
+    },
+    order = "e-h"
   },
   {
     type = "technology",
@@ -636,7 +764,8 @@ data:extend(
       count = 10,
       ingredients = {{"science-pack-1", 1}},
       time = 5
-    }
+    },
+    order = "g-a-a"
   },
   {
     type = "technology",
@@ -655,7 +784,68 @@ data:extend(
       count = 30,
       ingredients = {{"science-pack-1", 1}},
       time = 30
-    }
+    },
+    order = "g-a-b"
+  },
+  {
+    type = "technology",
+    name = "armor-making-3",
+    icon = "__base__/graphics/technology/armor-making.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "basic-modular-armor"
+      }
+    },
+    prerequisites = {"armor-making-2", "speed-module"},
+    unit =
+    {
+      count = 100,
+      ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}},
+      time = 30
+    },
+    order = "g-a-c"
+  },
+  {
+    type = "technology",
+    name = "power-armor",
+    icon = "__base__/graphics/technology/power-armor.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "power-armor"
+      }
+    },
+    prerequisites = {"armor-making-3"},
+    unit =
+    {
+      count = 100,
+      ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}, {"science-pack-3", 1}},
+      time = 30
+    },
+    order = "g-c-a"
+  },
+  {
+    type = "technology",
+    name = "power-armor-2",
+    icon = "__base__/graphics/technology/power-armor-mk2.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "power-armor-mk2"
+      }
+    },
+    prerequisites = {"power-armor"},
+    unit =
+    {
+      count = 150,
+      ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}, {"science-pack-3", 1}, {"alien-science-pack", 3}},
+      time = 30
+    },
+    order = "g-c-b"
   },
   {
     type = "technology",
@@ -674,7 +864,8 @@ data:extend(
       count = 10,
       ingredients = {{"science-pack-1", 1}},
       time = 10
-    }
+    },
+    order = "a-j-a"
   },
   {
     type = "technology",
@@ -697,7 +888,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "a-j-b"
   },
   {
     type = "technology",
@@ -713,7 +905,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "c-h"
   },
   {
     type = "technology",
@@ -729,7 +922,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "c-i",
   },
   {
     type = "technology",
@@ -752,273 +946,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
-  },
-  {
-    type = "technology",
-    name = "rocket-damage-1",
-    icon = "__base__/graphics/technology/rocket-damage.png",
-    effects =
-    {
-      {
-        type = "ammo-damage",
-        ammo_category = "rocket",
-        modifier = "0.1"
-      }
     },
-    prerequisites = {"rocketry", "alien-technology"},
-    unit =
-    {
-      count = 200,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
-      },
-      time = 30
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-damage-2",
-    icon = "__base__/graphics/technology/rocket-damage.png",
-    effects =
-    {
-      {
-        type = "ammo-damage",
-        ammo_category = "rocket",
-        modifier = "0.1"
-      }
-    },
-    prerequisites = {"rocket-damage-1"},
-    unit =
-    {
-      count = 250,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
-      },
-      time = 30
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-damage-3",
-    icon = "__base__/graphics/technology/rocket-damage.png",
-    effects =
-    {
-      {
-        type = "ammo-damage",
-        ammo_category = "rocket",
-        modifier = "0.2"
-      }
-    },
-    prerequisites = {"rocket-damage-2"},
-    unit =
-    {
-      count = 100,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 60
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-damage-4",
-    icon = "__base__/graphics/technology/rocket-damage.png",
-    effects =
-    {
-      {
-        type = "ammo-damage",
-        ammo_category = "rocket",
-        modifier = "0.2"
-      }
-    },
-    prerequisites = {"rocket-damage-3"},
-    unit =
-    {
-      count = 150,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 60
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-damage-5",
-    icon = "__base__/graphics/technology/rocket-damage.png",
-    effects =
-    {
-      {
-        type = "ammo-damage",
-        ammo_category = "rocket",
-        modifier = "0.2"
-      }
-    },
-    prerequisites = {"rocket-damage-4"},
-    unit =
-    {
-      count = 300,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 60
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-speed-1",
-    icon = "__base__/graphics/technology/rocket-speed.png",
-    effects =
-    {
-      {
-        type = "gun-speed",
-        ammo_category = "rocket",
-        modifier = "0.2"
-      }
-    },
-    prerequisites = {"rocketry", "alien-technology"},
-    unit =
-    {
-      count = 200,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
-      },
-      time = 30
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-speed-2",
-    icon = "__base__/graphics/technology/rocket-speed.png",
-    effects =
-    {
-      {
-        type = "gun-speed",
-        ammo_category = "rocket",
-        modifier = "0.2"
-      }
-    },
-    prerequisites = {"rocket-speed-1"},
-    unit =
-    {
-      count = 250,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
-      },
-      time = 30
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-speed-3",
-    icon = "__base__/graphics/technology/rocket-speed.png",
-    effects =
-    {
-      {
-        type = "gun-speed",
-        ammo_category = "rocket",
-        modifier = "0.3"
-      }
-    },
-    prerequisites = {"rocket-speed-2"},
-    unit =
-    {
-      count = 100,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 60
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-speed-4",
-    icon = "__base__/graphics/technology/rocket-speed.png",
-    effects =
-    {
-      {
-        type = "gun-speed",
-        ammo_category = "rocket",
-        modifier = "0.3"
-      }
-    },
-    prerequisites = {"rocket-speed-3"},
-    unit =
-    {
-      count = 150,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 60
-    },
-    upgrade = "true"
-  },
-  {
-    type = "technology",
-    name = "rocket-speed-5",
-    icon = "__base__/graphics/technology/rocket-speed.png",
-    effects =
-    {
-      {
-        type = "gun-speed",
-        ammo_category = "rocket",
-        modifier = "0.3"
-      }
-    },
-    prerequisites = {"rocket-speed-4"},
-    unit =
-    {
-      count = 300,
-      ingredients =
-      {
-        {"alien-science-pack", 1},
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
-      },
-      time = 60
-    },
-    upgrade = "true"
+    order = "e-f"
   },
   {
     type = "technology",
@@ -1043,7 +972,8 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 60
-    }
+    },
+    order = "k-a"
   },
   {
     type = "technology",
@@ -1068,7 +998,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-m-a"
   },
   {
     type = "technology",
@@ -1093,7 +1024,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-m-b"
   },
   {
     type = "technology",
@@ -1118,7 +1050,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-m-c"
   },
   {
     type = "technology",
@@ -1143,7 +1076,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-m-d"
   },
   {
     type = "technology",
@@ -1166,7 +1100,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "c-e-b",
   },
   {
     type = "technology",
@@ -1194,7 +1129,8 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 45
-    }
+    },
+    order = "c-e-c",
   },
   {
     type = "technology",
@@ -1217,7 +1153,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "c-e-a",
   },
   {
     type = "technology",
@@ -1241,7 +1178,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-o-a",
   },
   {
     type = "technology",
@@ -1266,7 +1204,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-o-b",
   },
   {
     type = "technology",
@@ -1291,7 +1230,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-o-c"
   },
   {
     type = "technology",
@@ -1317,7 +1257,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-o-d"
   },
   {
     type = "technology",
@@ -1340,7 +1281,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 30
-    }
+    },
+    order = "c-c-a"
   },
   {
     type = "technology",
@@ -1363,7 +1305,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 30
-    }
+    },
+    order = "c-c-b"
   },
   {
     type = "technology",
@@ -1386,8 +1329,9 @@ data:extend(
         {"science-pack-2", 1},
         {"science-pack-3", 1},
       },
-      time = 100
-    }
+      time = 30
+    },
+    order = "i-i"
   }
 }
 )

@@ -244,12 +244,12 @@ data:extend(
   },
   {
     type = "item",
-    name = "creeper-spawner",
-    icon = "__base__/graphics/icons/creeper-spawner.png",
+    name = "biter-spawner",
+    icon = "__base__/graphics/icons/biter-spawner.png",
     flags = {"goes-to-quickbar"},
     group = "combat",
     order = "h-j-f",
-    place_result = "creeper-spawner",
+    place_result = "biter-spawner",
     stack_size = 32
   },
   {
@@ -260,16 +260,6 @@ data:extend(
     group = "combat",
     order = "i",
     stack_size = 1
-  },
-  {
-    type = "item",
-    name = "fish",
-    icon = "__base__/graphics/icons/fish.png",
-    flags = {"goes-to-main-inventory"},
-    healing_value = 20,
-    group = "other",
-    order = "h",
-    stack_size = 64
   },
   {
     type = "item",
@@ -309,6 +299,64 @@ data:extend(
     order = "h-f-a",
     place_result = "assembling-machine-1",
     stack_size = 64
+  },
+  {
+    type = "item",
+    name = "red-wire",
+    icon = "__base__/graphics/icons/red-wire.png",
+    flags = {"goes-to-main-inventory"},
+    group = "energy",
+    order = "h-a-e",
+    stack_size = 256
+  },
+  {
+    type = "item",
+    name = "green-wire",
+    icon = "__base__/graphics/icons/green-wire.png",
+    flags = {"goes-to-main-inventory"},
+    group = "energy",
+    order = "h-a-f",
+    stack_size = 256
+  },
+  {
+    type = "capsule",
+    name = "raw-fish",
+    icon = "__base__/graphics/icons/fish.png",
+    flags = {"goes-to-quickbar"},
+    group = "other",
+    order = "h",
+    stack_size = 64,
+    capsule_action =
+    {
+      type = "use-on-self",
+      attack_parameters =
+      {
+        ammo_category = "capsule",
+        cooldown = 30,
+        range = 0,
+        ammo_type =
+        {
+          category = "capsule",
+          target_type = "position",
+          action =
+          {
+            type = "direct",
+            action_delivery =
+            {
+              type = "instant",
+              target_effects = 
+              {
+                type = "damage",
+                damage = {type = "physical", amount = -20}
+              }
+            }
+          }
+        }
+      }
+    },
+    group = "combat",
+    order = "f-e-a",
+    stack_size = 100
   }
 }
 )

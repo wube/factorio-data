@@ -5,8 +5,19 @@ data:extend(
     name = "basic-armor",
     icon = "__base__/graphics/icons/basic-armor.png",
     flags = {"goes-to-main-inventory"},
-    damage_decrease = 1.5,
-    damage_decrease_percent = 20,
+    resistances = 
+    {
+      {
+        type = "physical",
+        decrease = 2,
+        percent = 20
+      },
+      {
+        type = "explosion",
+        decrease = 2,
+        percent = 20
+      }
+    },
     durability = 1000,
     group = "combat",
     order = "g-a",

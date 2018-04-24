@@ -41,24 +41,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "red-wire",
-    icon = "__base__/graphics/icons/red-wire.png",
-    flags = {"goes-to-main-inventory"},
-    group = "energy",
-    order = "h-a-e",
-    stack_size = 256
-  },
-  {
-    type = "item",
-    name = "green-wire",
-    icon = "__base__/graphics/icons/green-wire.png",
-    flags = {"goes-to-main-inventory"},
-    group = "energy",
-    order = "h-a-f",
-    stack_size = 256
-  },
-  {
-    type = "item",
     name = "fast-transport-belt",
     icon = "__base__/graphics/icons/fast-transport-belt.png",
     flags = {"goes-to-quickbar"},
@@ -105,16 +87,6 @@ data:extend(
     group = "logistics",
     order = "h-e-e",
     place_result = "smart-inserter",
-    stack_size = 64
-  },
-  {
-    type = "item",
-    name = "filter-inserter",
-    icon = "__base__/graphics/icons/filter-inserter.png",
-    flags = {"goes-to-quickbar"},
-    group = "logistics",
-    order = "h-e-e",
-    place_result = "filter-inserter",
     stack_size = 64
   },
   {

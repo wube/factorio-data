@@ -14,7 +14,8 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
-    }
+    },
+    order = "i-a"
   },
   {
     type = "technology",
@@ -36,7 +37,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 30
-    }
+    },
+    order = "i-c-a"
   },
   {
     type = "technology",
@@ -60,7 +62,8 @@ data:extend(
         {"science-pack-3", 1},
       },
       time = 30
-    }
+    },
+    order = "i-c-b"
   },
   {
     type = "technology",
@@ -85,7 +88,8 @@ data:extend(
         {"alien-science-pack", 1}
       },
       time = 60
-    }
+    },
+    order = "i-c-c"
   },
   {
     type = "technology",
@@ -107,7 +111,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 30
-    }
+    },
+    order = "i-e-a"
   },
   {
     type = "technology",
@@ -131,7 +136,8 @@ data:extend(
         {"science-pack-3", 1},
       },
       time = 30
-    }
+    },
+    order = "i-e-b"
   },
   {
     type = "technology",
@@ -156,9 +162,10 @@ data:extend(
         {"alien-science-pack", 1}
       },
       time = 60
-    }
+    },
+    order = "i-e-c"
   },
-    {
+  {
     type = "technology",
     name = "effectivity-module",
     icon = "__base__/graphics/technology/effectivity-module.png",
@@ -178,7 +185,8 @@ data:extend(
         {"science-pack-2", 1},
       },
       time = 30
-    }
+    },
+    order = "i-g-a"
   },
   {
     type = "technology",
@@ -202,7 +210,8 @@ data:extend(
         {"science-pack-3", 1},
       },
       time = 30
-    }
+    },
+    order = "i-g-b"
   },
   {
     type = "technology",
@@ -227,7 +236,8 @@ data:extend(
         {"alien-science-pack", 1}
       },
       time = 60
-    }
+    },
+    order = "i-g-c"
   }
 }
 )

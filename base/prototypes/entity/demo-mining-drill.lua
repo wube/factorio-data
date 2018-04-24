@@ -6,7 +6,7 @@ data:extend(
     icon = "__base__/graphics/icons/basic-mining-drill.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "basic-mining-drill"},
-    max_health = 70,
+    max_health = 300,
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     animations =
@@ -52,14 +52,21 @@ data:extend(
         frame_count = 64
       }
     },
-    effectivity = 0.5,
-    energy_source = {type = "electric", input_priority = "secondary"},
+    effectivity = 0.8,
+    energy_source =
+    {
+      type = "electric",
+      -- will produce this much * energy pollution units per tick
+      emissions = 0.15 / 1.5,
+      input_priority = "secondary"
+    },
     energy_usage_per_tick = 1.5,
     animation_speed_modifier = 0.5,
     mining_speed = 3,
     pipe_length = 2,
     resource_searching_radius = 2.49,
-    vector_to_place_result = {0, -1.75}
+    vector_to_place_result = {0, -1.75},
+    module_slots = 3
   },
   {
     type = "mining-drill",
@@ -67,15 +74,16 @@ data:extend(
     icon = "__base__/graphics/icons/burner-mining-drill.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "burner-mining-drill"},
-    max_health = 40,
+    max_health = 100,
     collision_box = {{ -0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{ -1, -1}, {1, 1}},
-    effectivity = 0.15,
+    effectivity = 0.3,
     energy_source =
     {
       type = "burner",
       effectivity = 1,
       fuel_inventory_size = 1,
+      emissions = 0.1 / 3,
       smoke =
       {
         {

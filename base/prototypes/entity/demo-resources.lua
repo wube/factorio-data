@@ -14,24 +14,80 @@ data:extend(
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    default_generator_settings =
+    autoplace =
     {
-      frequency = "frequent",
-      richness = "good",
-      size = "medium"
+      control = "copper-ore",
+      sharpness = 1,
+      richness_multiplier = 10000,
+      richness_base = 200,
+        -- Valid only for resources, the resulting influence before sharpening
+        -- is multiplied by richness-multiplier and added to
+        -- richness_base to determine the final resource richness.
+      peaks = {
+        {
+          influence = 0.2,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.65,
+          noise_layer = "copper-ore",
+          noise_octaves_difference = -1.9,
+          noise_persistence = 0.4,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.3,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.53,
+          noise_layer = "copper-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.4,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "iron-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "coal",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "stone",
+          noise_octaves_difference = -3,
+          noise_persistence = 0.45,
+        },
+      },
     },
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
-    stages =
-    {
-      filename = "__base__/graphics/entity/copper-ore/copper-ore.png",
+    stages = { filename = "__base__/graphics/entity/copper-ore/copper-ore.png",
       priority = "extra-high",
       frame_width = 38,
       frame_height = 38,
       frame_count = 4,
       direction_count = 8
     },
-    map_color={r=0.803, g=0.388, b=0.215}
+    map_color = {r=0.803, g=0.388, b=0.215}
   },
+
   {
     type = "resource",
     name = "iron-ore",
@@ -46,11 +102,65 @@ data:extend(
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    default_generator_settings =
+    autoplace =
     {
-      frequency = "frequent",
-      richness = "good",
-      size = "medium"
+      control = "iron-ore",
+      sharpness = 1,
+      richness_multiplier = 12000,
+      richness_base = 200,
+      peaks = {
+        {
+          influence = 0.2,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.3,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.65,
+          noise_layer = "iron-ore",
+          noise_octaves_difference = -1.9,
+          noise_persistence = 0.4,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.55,
+          noise_layer = "iron-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.4,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "copper-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "coal",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "stone",
+          noise_octaves_difference = -3,
+          noise_persistence = 0.45,
+        },
+      },
     },
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
@@ -62,8 +172,9 @@ data:extend(
       frame_count = 4,
       direction_count = 8
     },
-    map_color={r=0.337, g=0.419, b=0.427}
+    map_color = {r=0.337, g=0.419, b=0.427}
   },
+
   {
     type = "resource",
     name = "coal",
@@ -78,11 +189,65 @@ data:extend(
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    default_generator_settings =
+    autoplace =
     {
-      frequency = "frequent",
-      richness = "very-good",
-      size = "medium"
+      control = "coal",
+      sharpness = 1,
+      richness_multiplier = 12000,
+      richness_base = 200,
+      peaks = {
+        {
+          influence = 0.2,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.65,
+          noise_layer = "coal",
+          noise_octaves_difference = -1.9,
+          noise_persistence = 0.4,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.3,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.5,
+          noise_layer = "coal",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.4,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "copper-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "iron-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "stone",
+          noise_octaves_difference = -3,
+          noise_persistence = 0.45,
+        }
+      },
     },
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
@@ -94,8 +259,9 @@ data:extend(
       frame_count = 4,
       direction_count = 8
     },
-    map_color={r=0.241, g=0.233, b=0.15}
+    map_color = {r=0.241, g=0.233, b=0.15}
   },
+
   {
     type = "resource",
     name = "stone",
@@ -110,11 +276,65 @@ data:extend(
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    default_generator_settings =
+    autoplace =
     {
-      frequency = "rare",
-      richness = "regular",
-      size = "small"
+      control = "stone",
+      sharpness = 1,
+      richness_multiplier = 7000,
+      richness_base = 200,
+      peaks = {
+        {
+          influence = 0.20,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.55,
+          noise_layer = "stone",
+          noise_octaves_difference = -3,
+          noise_persistence = 0.45,
+          starting_area_weight_optimal = 0,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.25,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.6,
+          noise_layer = "stone",
+          noise_octaves_difference = -4,
+          noise_persistence = 0.45,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "copper-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "iron-ore",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        },
+        {
+          influence = -0.2,
+          max_influence = 0,
+          noise_layer = "coal",
+          noise_octaves_difference = -2.3,
+          noise_persistence = 0.45,
+        }
+      },
     },
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
@@ -126,7 +346,7 @@ data:extend(
       frame_count = 4,
       direction_count = 8
     },
-    map_color={r=0.478, g=0.450, b=0.317}
+    map_color = {r=0.478, g=0.450, b=0.317}
   }
 }
 )

@@ -159,6 +159,30 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "basic-modular-armor",
+    enabled = "false",
+    energy_required = 30,
+    ingredients = {{ "advanced-circuit", 30}, {"speed-module", 5}, {"steel-plate", 50}},
+    result = "basic-modular-armor"
+  },
+  {
+    type = "recipe",
+    name = "power-armor",
+    enabled = "false",
+    energy_required = 40,
+    ingredients = {{ "effectivity-module-2", 5}, {"speed-module-2", 5}, {"steel-plate", 50}, {"alien-artifact", 30}},
+    result = "power-armor"
+  },
+  {
+    type = "recipe",
+    name = "power-armor-mk2",
+    enabled = "false",
+    energy_required = 50,
+    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"steel-plate", 50}, {"alien-artifact", 100}},
+    result = "power-armor-mk2"
+  },
+  {
+    type = "recipe",
     name = "iron-chest",
     enabled = "false",
     ingredients = {{"iron-plate", 8}},
@@ -225,6 +249,48 @@ data:extend(
       {"iron-gear-wheel", 5}
     },
     result = "rocket-launcher"
+  },
+  {
+    type = "recipe",
+    name = "shotgun",
+    enabled = "false",
+    energy_required = 7,
+    ingredients =
+    {
+      {"iron-plate", 15},
+      {"iron-gear-wheel", 5},
+      {"copper-plate", 10},
+      {"wood", 5}
+    },
+    result = "shotgun"
+  },
+  {
+    type = "recipe",
+    name = "combat-shotgun",
+    enabled = "false",
+    energy_required = 15,
+    ingredients =
+    {
+      {"steel-plate", 15},
+      {"iron-gear-wheel", 5},
+      {"copper-plate", 10},
+      {"wood", 10}
+    },
+    result = "combat-shotgun"
+  },
+  {
+    type = "recipe",
+    name = "railgun",
+    enabled = "false",
+    energy_required = 15,
+    ingredients =
+    {
+      {"steel-plate", 15},
+      {"copper-plate", 15},
+      {"electronic-circuit", 10},
+      {"advanced-circuit", 5},
+    },
+    result = "railgun"
   },
   {
     type = "recipe",
@@ -451,8 +517,10 @@ data:extend(
     energy_required = 1,
     ingredients =
     {
-      {"steel-plate", 5000},
-      {"advanced-circuit", 1000}
+      {"rocket", 100},
+      {"advanced-circuit", 256},
+      {"speed-module-3", 50},
+      {"productivity-module-3", 50}
     },
     result = "rocket-defense"
   },

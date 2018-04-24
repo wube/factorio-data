@@ -27,6 +27,18 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "explosive-rocket",
+    enabled = "false",
+    energy_required = 15,
+    ingredients =
+    {
+      {"rocket", 1},
+      {"coal", 5}
+    },
+    result = "explosive-rocket"
+  },
+  {
+    type = "recipe",
     name = "flame-thrower-ammo",
     enabled = "false",
     energy_required = 20,
@@ -36,6 +48,42 @@ data:extend(
       {"steel-plate", 5}
     },
     result = "flame-thrower-ammo"
+  },
+  {
+    type = "recipe",
+    name = "shotgun-shell",
+    enabled = "false",
+    energy_required = 7,
+    ingredients =
+    {
+      {"copper-plate", 2},
+      {"iron-plate", 2}
+    },
+    result = "shotgun-shell"
+  },
+  {
+    type = "recipe",
+    name = "piercing-shotgun-shell",
+    enabled = "false",
+    energy_required = 15,
+    ingredients =
+    {
+      {"copper-plate", 2},
+      {"steel-plate", 2}
+    },
+    result = "piercing-shotgun-shell"
+  },
+  {
+    type = "recipe",
+    name = "railgun-dart",
+    enabled = "false",
+    energy_required = 15,
+    ingredients =
+    {
+      {"steel-plate", 5},
+      {"electronic-circuit", 5}
+    },
+    result = "railgun-dart"
   }
 }
 )

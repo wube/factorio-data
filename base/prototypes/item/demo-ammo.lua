@@ -7,10 +7,37 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
-      type = "instant",
       category = "bullet",
-      damage = 2,
-      target_explosion = "explosion-gunshot"
+      action =
+      {
+        {
+          type = "direct",
+          action_delivery =
+          {
+            {
+              type = "instant",
+              source_effects =
+              {
+                {
+                  type = "create-entity",
+                  entity_name = "explosion-gunshot"
+                }
+              },
+              target_effects =
+              {
+                {
+                  type = "create-entity",
+                  entity_name = "explosion-gunshot"
+                },
+                {
+                  type = "damage",
+                  damage = { amount = 2 , type = "physical"}
+                }
+              }
+            }
+          }
+        }
+      }
     },
     magazine_size = 10,
     group = "combat",

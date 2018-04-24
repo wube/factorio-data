@@ -1,37 +1,159 @@
+require "util"
+
+gun_turret_extension =
+{
+  filename = "__base__/graphics/entity/gun-turret/gun-turret-extension.png",
+  priority = "medium",
+  frame_width = 171,
+  frame_height = 102,
+  direction_count = 4,
+  frame_count = 5,
+  axially_symmetrical = false,
+  shift = {1.34375, -0.5 + 0.6}
+}
+
+function shift_small_worm(shiftx, shifty)
+  return {shiftx - 0.1, shifty + 0.1}
+end
+
+small_worm_preparing =
+{
+  filename = "__base__/graphics/entity/small-worm-turret/preparing.png",
+  priority = "medium",
+  frame_width = 144,
+  frame_height = 103,
+  frame_count = 27,
+  line_length = 7,
+  direction_count = 1,
+  axially_symmetrical = false,
+  shift = shift_small_worm(0.765625, -0.514062)
+}
+
+small_worm_starting_attack =
+{
+  priority = "medium",
+  frame_width = 189,
+  frame_height = 144,
+  frame_count = 8,
+  direction_count = 16,
+  line_length = 1,
+  shift = shift_small_worm(0.557812, -0.525),
+  axially_symmetrical = false,
+  stripes =
+  {
+    {
+      filename = "__base__/graphics/entity/small-worm-turret/starting-attack-1.png",
+      width_in_frames = 8,
+      height_in_frames = 8
+    },
+    {
+      filename = "__base__/graphics/entity/small-worm-turret/starting-attack-2.png",
+      width_in_frames = 8,
+      height_in_frames = 8
+    },
+  }
+}
+
 data:extend(
 {
   {
-    type = "ammo-turret",
-    name = "basic-turret",
+    type = "turret",
+    name = "small-worm-turret",
     icon = "__base__/graphics/icons/basic-turret.png",
     flags = {"placeable-enemy", "player-creation"},
     max_health = 200,
-    collision_box = {{-0.4, -0.4 }, {0.4, 0.4}},
-    selection_box = {{-0.6, -0.9 }, {0.6, 0.6}},
-    dying_explosion = "huge-explosion",
-    inventory_size = 1,
-    pictures =
+    healing_per_tick = 0.01,
+    collision_box = {{-0.9, -0.8 }, {0.9, 0.8}},
+    selection_box = {{-0.9, -0.8 }, {0.9, 0.8}},
+    corpse = "small-worm-corpse",
+    folded_speed = 0.01,
+    folded_animation =
     {
-      filename = "__base__/graphics/entity/basic-turret/basic-turret.png",
+      filename = "__base__/graphics/entity/small-worm-turret/folded.png",
       priority = "medium",
-      frame_width = 108,
-      frame_height = 82,
-      direction_count = 5,
-      shift = { 0, -0.5 }
+      frame_width = 99,
+      frame_height = 72,
+      frame_count = 15,
+      direction_count = 1,
+      line_length = 5,
+      axially_symmetrical = false,
+      shift = shift_small_worm(0.0546875, -0.0328125)
     },
-    shooting_parameters =
+    prepare_range = 25,
+    preparing_speed = 0.025,
+    preparing_animation = small_worm_preparing,
+    prepared_speed = 0.015,
+    prepared_animation =
+    {
+      filename = "__base__/graphics/entity/small-worm-turret/prepared.png",
+      priority = "medium",
+      run_mode = "forward-then-backward",
+      frame_width = 135,
+      frame_height = 109,
+      frame_count = 11,
+      line_length = 4,
+      direction_count = 1,
+      axially_symmetrical = false,
+      shift = shift_small_worm(0.623437, -0.634375)
+    },
+    starting_attack_speed = 0.03,
+    starting_attack_animation = small_worm_starting_attack,
+    ending_attack_speed = 0.03,
+    ending_attack_animation = (function()
+                                local res = util.table.deepcopy(small_worm_starting_attack)
+                                res.run_mode = "backward"
+                                return res
+                              end)(),
+    folding_speed = 0.015,
+    folding_animation = (function()
+                           local res = util.table.deepcopy(small_worm_preparing)
+                           res.run_mode = "backward"
+                           return res
+                         end)(),
+    attack_parameters =
     {
       ammo_category = "bullet",
-      cooldown = 6,
-      damage_modifier = 2.5,
-      explosion = "explosion-gunshot",
-      range = 15,
-      sound =
+      cooldown = 15,
+      range = 17,
+      projectile_creation_distance = 1.8,
+      ammo_type =
+      {
+        category = "biological",
+        action =
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "projectile",
+            projectile = "acid-projectile-purple",
+            starting_speed = 0.5
+          }
+        }
+      }
+    },
+    autoplace = {
+      sharpness = 0.35,
+      control = "enemy-base",
+      peaks =
       {
         {
-          filename = "__base__/sound/gunshot.wav",
-          volume = 0.3
-        }
+          influence = -1.0,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+        {
+          influence = 0.35,
+          noise_layer = "enemy-base",
+          noise_octaves_difference = -2,
+          noise_persistence = 0.5,
+        },
+        {
+          influence = 0.05,
+          noise_layer = "enemy-base",
+          noise_octaves_difference = -3,
+          noise_persistence = 0.5,
+        },
       }
     }
   },
@@ -45,31 +167,34 @@ data:extend(
     collision_box = {{-0.4, -0.9 }, {0.4, 0.9}},
     selection_box = {{-0.5, -1 }, {0.5, 1}},
     rotation_speed = 0.01,
-    extension_speed = 0.05,
+    preparing_speed = 0.05,
+    folding_speed = 0.05,
     dying_explosion = "huge-explosion",
     inventory_size = 1,
-    pictures =
+    folded_animation = (function()
+                          local res = util.table.deepcopy(gun_turret_extension)
+                          res.frame_count = 1
+                          res.line_length = 1
+                          return res
+                       end)(),
+    preparing_animation = gun_turret_extension,
+    prepared_animation =
     {
       filename = "__base__/graphics/entity/gun-turret/gun-turret.png",
       priority = "medium",
       frame_width = 178,
       frame_height = 107,
       direction_count = 64,
+      frame_count = 1,
       line_length = 8,
       axially_symmetrical = false,
       shift = {1.34375, -0.46875 + 0.6}
     },
-    extension_animation =
-    {
-      filename = "__base__/graphics/entity/gun-turret/gun-turret-extension.png",
-      priority = "medium",
-      frame_width = 171,
-      frame_height = 102,
-      direction_count = 4,
-      frame_count = 5,
-      axially_symmetrical = false,
-      shift = {1.34375, -0.5 + 0.6}
-    },
+    folding_animation = (function()
+                          local res = util.table.deepcopy(gun_turret_extension)
+                          res.run_mode = "backward"
+                          return res
+                       end)(),
     base_picture =
     {
       filename = "__base__/graphics/entity/gun-turret/gun-turret-base.png",
@@ -78,14 +203,12 @@ data:extend(
       height = 28,
       shift = { 0, -0.125 + 0.6 }
     },
-    shooting_parameters =
+    attack_parameters =
     {
       ammo_category = "bullet",
       cooldown = 6,
-      damage_modifier = 1,
       projectile_center = {0, 0.6},
       projectile_creation_distance = 1.2,
-      explosion = "explosion-gunshot",
       shell_particle = 
       {
         name = "shell-particle",
@@ -106,6 +229,22 @@ data:extend(
         }
       }
     }
+  },
+  {
+    type = "corpse",
+    name = "small-worm-corpse",
+    dying_speed = 0.01,
+    animation =
+    {
+      frame_width = 226,
+      frame_height = 200,
+      frame_count = 29,
+      direction_count = 1,
+      line_length = 6,
+      axially_symetric = false,
+      shift = shift_small_worm(0.04375, 0.13125),
+      filename = "__base__/graphics/entity/small-worm-turret/die.png",
+    },
   }
 }
 )

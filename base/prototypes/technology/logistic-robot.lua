@@ -34,7 +34,8 @@ data:extend(
         {"science-pack-3", 1}
       },
       time = 30
-    }
+    },
+    order = "c-k-a",
   },
   {
     type = "technology",
@@ -58,7 +59,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-b",
   },
   {
     type = "technology",
@@ -82,7 +84,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-c"
   },
   {
     type = "technology",
@@ -107,7 +110,8 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-d"
   },
   {
     type = "technology",
@@ -132,7 +136,8 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-e"
   },
   {
     type = "technology",
@@ -157,7 +162,8 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-f"
   },
   {
     type = "technology",
@@ -181,7 +187,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-g"
   },
   {
     type = "technology",
@@ -206,7 +213,8 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-h"
   },
   {
     type = "technology",
@@ -231,7 +239,8 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-i"
   },
   {
     type = "technology",
@@ -256,7 +265,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-j"
   },
   {
     type = "technology",
@@ -281,7 +291,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-k"
   },
   {
     type = "technology",
@@ -306,7 +317,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-l"
   },
   {
     type = "technology",
@@ -332,7 +344,8 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true"
+    upgrade = "true",
+    order = "c-k-m"
   }
 }
 )

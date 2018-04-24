@@ -5,6 +5,7 @@ require("prototypes.entity.demo-entities")
 require("prototypes.ammo-category.categories")
 require("prototypes.entity.demo-mining-drill")
 require("prototypes.entity.demo-particles")
+require("prototypes.entity.demo-projectiles")
 require("prototypes.entity.demo-resources")
 require("prototypes.entity.demo-turrets")
 require("prototypes.item.demo-ammo")
@@ -13,32 +14,49 @@ require("prototypes.item.demo-gun")
 require("prototypes.item.demo-item")
 require("prototypes.item.demo-mining-tools")
 require("prototypes.item.demo-turret")
-require("prototypes.item.item-groups")
+require("prototypes.item.demo-item-groups")
 require("prototypes.rail-category.categories")
 require("prototypes.recipe.demo-furnace-recipe")
 require("prototypes.recipe.demo-recipe")
 require("prototypes.recipe.demo-turret")
 require("prototypes.recipe-category.categories")
 require("prototypes.tile.noise-layers")
+require("prototypes.autoplace-controls")
+require("prototypes.map-settings")
 require("prototypes.tile.tiles")
--- this is alpha only
--- therefore we use pcall and ignore errors when the files are missing
-if util.ismoduleavailable("prototypes.entity.entities") then require("prototypes.entity.entities") end
-if util.ismoduleavailable("prototypes.entity.projectiles") then require("prototypes.entity.projectiles") end
-if util.ismoduleavailable("prototypes.entity.turrets") then require("prototypes.entity.turrets") end
-if util.ismoduleavailable("prototypes.item.ammo") then require("prototypes.item.ammo") end
-if util.ismoduleavailable("prototypes.item.armor") then require("prototypes.item.armor") end
-if util.ismoduleavailable("prototypes.item.gun") then require("prototypes.item.gun") end
-if util.ismoduleavailable("prototypes.item.item") then require("prototypes.item.item") end
-if util.ismoduleavailable("prototypes.item.mining-tools") then require("prototypes.item.mining-tools") end
-if util.ismoduleavailable("prototypes.item.module") then require("prototypes.item.module") end
-if util.ismoduleavailable("prototypes.item.turret") then require("prototypes.item.turret") end
-if util.ismoduleavailable("prototypes.recipe.ammo") then require("prototypes.recipe.ammo") end
-if util.ismoduleavailable("prototypes.recipe.furnace-recipe") then require("prototypes.recipe.furnace-recipe") end
-if util.ismoduleavailable("prototypes.recipe.inserter") then require("prototypes.recipe.inserter") end
-if util.ismoduleavailable("prototypes.recipe.module") then require("prototypes.recipe.module") end
-if util.ismoduleavailable("prototypes.recipe.recipe") then require("prototypes.recipe.recipe") end
-if util.ismoduleavailable("prototypes.recipe.turret") then require("prototypes.recipe.turret") end
-if util.ismoduleavailable("prototypes.technology.logistic-robot") then require("prototypes.technology.logistic-robot") end
-if util.ismoduleavailable("prototypes.technology.module") then require("prototypes.technology.module") end
-if util.ismoduleavailable("prototypes.technology.technology") then require("prototypes.technology.technology") end
+require("prototypes.damage-type")
+
+if not data.isdemo then
+  require("prototypes.entity.entities")
+  require("prototypes.entity.projectiles")
+  require("prototypes.entity.turrets")
+  require("prototypes.entity.enemies")
+  require("prototypes.item.capsule")
+  require("prototypes.item.ammo")
+  require("prototypes.item.armor")
+  require("prototypes.item.equipment")
+  require("prototypes.item.gun")
+  require("prototypes.item.item")
+  require("prototypes.item.item-groups")
+  require("prototypes.item.mining-tools")
+  require("prototypes.item.module")
+  require("prototypes.item.turret")
+  require("prototypes.recipe.ammo")
+  require("prototypes.recipe.capsule")
+  require("prototypes.recipe.equipment")
+  require("prototypes.recipe.furnace-recipe")
+  require("prototypes.recipe.inserter")
+  require("prototypes.recipe.module")
+  require("prototypes.recipe.recipe")
+  require("prototypes.recipe.turret")
+  require("prototypes.technology.equipment")
+  require("prototypes.technology.logistic-robot")
+  require("prototypes.technology.combat-robots")
+  require("prototypes.technology.module")
+  require("prototypes.technology.technology")
+  require("prototypes.technology.bullet-upgrades")
+  require("prototypes.technology.shotgun-shell-upgrades")
+  require("prototypes.technology.laser-turret-upgrades")
+  require("prototypes.technology.rocket-upgrades")
+  require("prototypes.equipment.equipment")
+end
