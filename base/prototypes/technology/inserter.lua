@@ -2,19 +2,27 @@ data:extend(
 {
   {
     type = "technology",
-    name = "inserter-capacity-bonus-1",
-    icon = "__base__/graphics/technology/inserter-capacity.png",
+    name = "stack-inserter",
+    icon = "__base__/graphics/technology/stack-inserter.png",
     effects =
     {
       {
+        type = "unlock-recipe",
+        recipe = "stack-inserter"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "stack-filter-inserter"
+      },
+      {
         type = "stack-inserter-capacity-bonus",
-        modifier = 1 -- result of 3
+        modifier = 1
       }
     },
-    prerequisites = {"logistics-2"},
+    prerequisites = {"logistics-2", "advanced-electronics"},
     unit =
     {
-      count = 100,
+      count = 150,
       ingredients =
       {
         {"science-pack-1", 1},
@@ -24,6 +32,31 @@ data:extend(
     },
     upgrade = true,
     order = "c-o-a",
+  },
+  {
+    type = "technology",
+    name = "inserter-capacity-bonus-1",
+    icon = "__base__/graphics/technology/inserter-capacity.png",
+    effects =
+    {
+      {
+        type = "stack-inserter-capacity-bonus",
+        modifier = 1 -- result of 3
+      }
+    },
+    prerequisites = {"stack-inserter"},
+    unit =
+    {
+      count = 200,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "c-o-b",
   },
   {
     type = "technology",
@@ -43,7 +76,7 @@ data:extend(
     prerequisites = {"inserter-capacity-bonus-1"},
     unit =
     {
-      count = 150,
+      count = 250,
       ingredients =
       {
         {"science-pack-1", 1},
@@ -52,7 +85,7 @@ data:extend(
       time = 30
     },
     upgrade = true,
-    order = "c-o-b",
+    order = "c-o-c",
   },
   {
     type = "technology",
@@ -68,7 +101,7 @@ data:extend(
     prerequisites = {"inserter-capacity-bonus-2"},
     unit =
     {
-      count = 200,
+      count = 250,
       ingredients =
       {
         {"science-pack-1", 1},
@@ -78,7 +111,7 @@ data:extend(
       time = 30
     },
     upgrade = true,
-    order = "c-o-c"
+    order = "c-o-d"
   },
   {
     type = "technology",
@@ -94,7 +127,7 @@ data:extend(
     prerequisites = {"inserter-capacity-bonus-3"},
     unit =
     {
-      count = 200,
+      count = 250,
       ingredients =
       {
         {"science-pack-1", 2},
@@ -104,7 +137,7 @@ data:extend(
       time = 30
     },
     upgrade = true,
-    order = "c-o-d"
+    order = "c-o-e"
   },
   {
     type = "technology",
@@ -120,7 +153,7 @@ data:extend(
     prerequisites = {"inserter-capacity-bonus-4"},
     unit =
     {
-      count = 200,
+      count = 300,
       ingredients =
       {
         {"science-pack-1", 2},
@@ -131,7 +164,7 @@ data:extend(
       time = 30
     },
     upgrade = true,
-    order = "c-o-e"
+    order = "c-o-f"
   },
   {
     type = "technology",
@@ -158,7 +191,7 @@ data:extend(
       time = 30
     },
     upgrade = true,
-    order = "c-o-f"
+    order = "c-o-g"
   },
   {
     type = "technology",
@@ -189,6 +222,6 @@ data:extend(
       time = 30
     },
     upgrade = true,
-    order = "c-o-g"
+    order = "c-o-h"
   }
 })

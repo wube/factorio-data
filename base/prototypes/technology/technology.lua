@@ -793,19 +793,7 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "fast-splitter"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "stack-inserter"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "stack-filter-inserter"
-      },
-      {
-        type = "stack-inserter-capacity-bonus",
-        modifier = 1
-      },
+      }
     },
     prerequisites = {"logistics"},
     unit =

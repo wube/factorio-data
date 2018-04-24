@@ -234,6 +234,7 @@ data:extend(
     name = "steamrolled",
     order = "e[kill]-a[steamrolled]",
     type_to_kill = "unit-spawner",
+    damage_type = "impact",
     in_vehicle = true,
     personally = true,
     amount = 10,
