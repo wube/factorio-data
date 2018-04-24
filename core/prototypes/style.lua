@@ -1272,20 +1272,6 @@ data:extend(
       bottom_padding = 10,
       left_padding = 5
     },
-    scenario_message_dialog_dual_style =
-    {
-      type = "frame_style",
-      parent = "scenario_message_dialog_style",
-      graphical_set =
-      {
-        type = "composition",
-        filename = "__core__/graphics/arrows/hint-orange-box.png",
-        corner_size = {13, 13},
-        position = {0, 0},
-        bottom_padding = 10,
-        left_padding = 5
-      }
-    },
     goal_frame_style =
     {
       type = "frame_style",
