@@ -1083,5 +1083,15 @@ data:extend(
     order = "s[item-with-label]-o[item-with-label]",
     stack_size = 1
   },
+  {
+    type = "item-with-inventory",
+    name = "item-with-inventory",
+    icon = "__base__/graphics/icons/wooden-chest.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "other",
+    order = "s[item-with-inventory]-o[item-with-inventory]",
+    stack_size = 1,
+    inventory_size = 1
+  },
 }
 )

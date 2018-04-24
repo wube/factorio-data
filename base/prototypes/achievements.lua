@@ -224,7 +224,7 @@ data:extend(
     name = "solaris",
     order = "d[production]-e[solaris]",
     last_hour_only = true,
-    excluded = "steam-engine",
+    excluded = {"steam-engine", "steam-turbine"},
     included = "solar-panel",
     minimum_energy_produced = "10GJ",
     icon = "__base__/graphics/achievement/solaris.png"
