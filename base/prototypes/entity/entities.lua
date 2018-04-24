@@ -4867,7 +4867,7 @@ data:extend(
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
     distance_per_frame = 0.13,
     time_to_live = 60 * 45,
-    speed = 0.01,
+    speed = 0,
     destroy_action =
     {
       type = "direct",

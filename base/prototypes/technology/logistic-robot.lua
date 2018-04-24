@@ -444,6 +444,33 @@ data:extend(
   },
   {
     type = "technology",
+    name = "character-logistic-slots-5",
+    icon = "__base__/graphics/technology/character-logistic-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"character-logistic-slots-4"},
+    unit =
+    {
+      count = 500,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"alien-science-pack", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "c-k-e-e"
+  },
+  {
+    type = "technology",
     name = "character-logistic-trash-slots-1",
     icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
     effects =

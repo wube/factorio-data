@@ -807,6 +807,7 @@ data:extend(
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.3,
     layer = 60,
+    decorative_removal_probability = 0.6,
     variants =
     {
       main =
@@ -892,6 +893,7 @@ if not data.is_demo then
       collision_mask = {"ground-tile"},
       walking_speed_modifier = 1.4,
       layer = 61,
+      decorative_removal_probability = 0.9,
       variants =
       {
         main =

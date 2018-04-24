@@ -57,194 +57,194 @@ local tree_types =
 {
   { -- tree-01
     { -- a
-      trunk = { width = 215, height = 146, shift = {1.5, -0.7}},
-      leaves = { width = 102, height = 115, shift = {-0.15, -1.75}}
+      trunk = { width = 215, height = 146, shift = {1.5, -1.2}},
+      leaves = { width = 102, height = 115, shift = {-0.15, -2.25}}
     },
     { -- b
-      trunk = { width = 221, height = 147, shift = {2.0625, -0.7125}},
-      leaves = { width = 89, height = 108, shift = {-0.03125, -1.60312}}
+      trunk = { width = 221, height = 147, shift = {2.0625, -1.2125}},
+      leaves = { width = 89, height = 108, shift = {-0.03125, -2.10312}}
     },
     { -- c
-      trunk = { width = 191, height = 141, shift = {2.03125, -0.55625}},
-      leaves = { width = 95, height = 105, shift = {0.03125, -1.43125}}
+      trunk = { width = 191, height = 141, shift = {2.03125, -1.05625}},
+      leaves = { width = 95, height = 105, shift = {0.03125, -1.93125}}
     },
     { -- d
-      trunk = { width = 208, height = 149, shift = {2.078125, -0.65625}},
-      leaves = { width = 103, height = 106, shift = {0.21875, -1.48438}}
+      trunk = { width = 208, height = 149, shift = {2.078125, -1.15625}},
+      leaves = { width = 103, height = 106, shift = {0.21875, -1.98438}}
     },
     { -- e
-      trunk = { width = 215, height = 140, shift = {2.25, -0.64062}},
-      leaves = { width = 106, height = 110, shift = {0.35938, -2.23438}}
+      trunk = { width = 215, height = 140, shift = {2.25, -1.14062}},
+      leaves = { width = 106, height = 110, shift = {0.35938, -2.73438}}
     },
     { -- f
-      trunk = { width = 216, height = 139, shift = {1.796875, -0.25}},
-      leaves = { width = 96, height = 101, shift = {-0.14062, -0.96875}}
+      trunk = { width = 216, height = 139, shift = {1.796875, -0.75}},
+      leaves = { width = 96, height = 101, shift = {-0.14062, -1.46875}}
     },
     { -- g
-      trunk = { width = 213, height = 148, shift = {1.21875, -0.32812}},
-      leaves = { width = 97, height = 119, shift = {-0.71875, -1.09375}}
+      trunk = { width = 213, height = 148, shift = {1.21875, -0.82812}},
+      leaves = { width = 97, height = 119, shift = {-0.71875, -1.59375}}
     },
     { -- h
-      trunk = { width = 220, height = 142, shift = {1.296875, -0.57812}},
-      leaves = { width = 109, height = 108, shift = {-0.78125, -1.39062}}
+      trunk = { width = 220, height = 142, shift = {1.296875, -1.07812}},
+      leaves = { width = 109, height = 108, shift = {-0.78125, -1.89062}}
     },
     { -- i
-      trunk = { width = 205, height = 160, shift = {1.78125, -0.23438}},
-      leaves = { width = 88, height = 122, shift = {-0.14062, -1.01562}}
+      trunk = { width = 205, height = 160, shift = {1.78125, -0.73438}},
+      leaves = { width = 88, height = 122, shift = {-0.14062, -1.51562}}
     },
     { -- j
-      trunk = { width = 163, height = 115, shift = {1.5625, -0.46875}},
-      leaves = { width = 88, height = 122, shift = {-0.01562, -1.17188}}
+      trunk = { width = 163, height = 115, shift = {1.5625, -0.96875}},
+      leaves = { width = 88, height = 122, shift = {-0.01562, -1.67188}}
     }
   },
   { -- tree-02
     { -- a
-      trunk = { width = 227, height = 171, shift = {1.95313, -0.62188}},
-      leaves = { width = 95, height = 130, shift = {-0.109375, -1.325}}
+      trunk = { width = 227, height = 171, shift = {1.95313, -1.34063}},
+      leaves = { width = 95, height = 130, shift = {-0.109375, -2.04375}}
     },
     { -- b
-      trunk = { width = 227, height = 193, shift = {1.665625, -0.95312}},
-      leaves = { width = 97, height = 143, shift = {-0.36563, -1.796875}}
+      trunk = { width = 227, height = 193, shift = {1.665625, -1.37187}},
+      leaves = { width = 97, height = 143, shift = {-0.36563, -2.215625}}
     },
     { -- c
-      trunk = { width = 251, height = 202, shift = {2.309375, -1.19375}},
-      leaves = { width = 106, height = 154, shift = {0.04375, -2.00625}}
+      trunk = { width = 251, height = 202, shift = {2.309375, -1.7125}},
+      leaves = { width = 106, height = 154, shift = {0.04375, -2.525}}
     },
     { -- d
-      trunk = { width = 271, height = 187, shift = {2.83438, -0.953125}},
-      leaves = { width = 119, height = 154, shift = {0.49062, -1.5}}
+      trunk = { width = 271, height = 187, shift = {2.83438, -1.471875}},
+      leaves = { width = 119, height = 154, shift = {0.49062, -2.01875}}
     },
     { -- e
-      trunk = { width = 258, height = 192, shift = {2.25, -0.78125}},
-      leaves = { width = 104, height = 144, shift = {-0.125, -1.59375}}
+      trunk = { width = 258, height = 192, shift = {2.25, -1.3}},
+      leaves = { width = 104, height = 144, shift = {-0.125, -2.1125}}
     }
   },
   { -- tree-03
     { -- a
-      trunk = { width = 246, height = 157, shift = {2.48438, -1.375}},
-      leaves = { width = 119, height = 98, shift = {0.40625, -2.35938}}
+      trunk = { width = 246, height = 157, shift = {2.28438, -1.5}},
+      leaves = { width = 119, height = 98, shift = {0.20625, -2.48438}}
     },
     { -- b
-      trunk = { width = 164, height = 123, shift = {1.79688, -1.1875}},
-      leaves = { width = 79, height = 73, shift = {0.40625, -2.03125}}
+      trunk = { width = 164, height = 123, shift = {1.59688, -1.1125}},
+      leaves = { width = 79, height = 73, shift = {0.20625, -1.95625}}
     },
     { -- c
-      trunk = { width = 195, height = 169, shift = {2.09375, -1.5625}},
-      leaves = { width = 94, height = 90, shift = {0.421875, -2.85938}}
+      trunk = { width = 195, height = 169, shift = {1.89375, -1.4875}},
+      leaves = { width = 94, height = 90, shift = {0.221875, -2.78438}}
     },
     { -- d
-      trunk = { width = 239, height = 169, shift = {2.25, -1.625}},
-      leaves = { width = 102, height = 84, shift = {0.015625, -3.04688}}
+      trunk = { width = 239, height = 169, shift = {2.05, -1.55}},
+      leaves = { width = 102, height = 84, shift = {-0.184375, -2.97188}}
     },
     { -- e
-      trunk = { width = 260, height = 143, shift = {2.07813, -1.5}},
-      leaves = { width = 118, height = 83, shift = {-0.203125, -2.5}}
+      trunk = { width = 260, height = 143, shift = {2.07813, -1.425}},
+      leaves = { width = 118, height = 83, shift = {-0.203125, -2.425}}
     },
     { -- f
-      trunk = { width = 214, height = 151, shift = {1.73438, -1.21875}},
-      leaves = { width = 94, height = 100, shift = {-0.265625, -2.07813}}
+      trunk = { width = 214, height = 151, shift = {1.73438, -1.34375}},
+      leaves = { width = 94, height = 100, shift = {-0.265625, -2.20313}}
     },
     { -- g
-      trunk = { width = 177, height = 151,shift = {1.46875, -1.09375}},
-      leaves = { width = 78, height = 106, shift = {-0.171875, -1.85938}}
+      trunk = { width = 177, height = 151,shift = {1.46875, -1.21875}},
+      leaves = { width = 78, height = 106, shift = {-0.171875, -1.98438}}
     }
   },
   { -- tree-04
     { -- a
-      trunk = { width = 255, height = 170, shift = {2.45313, -1.03125}},
-      leaves = { width = 99, height = 127,  shift = {0.015625, -1.85938}}
+      trunk = { width = 255, height = 170, shift = {2.45313, -1.53125}},
+      leaves = { width = 99, height = 127,  shift = {0.015625, -2.35938}}
     },
     { -- b
-      trunk = { width = 232, height = 168, shift = {2.1875, -0.90625}},
-      leaves = { width = 106, height = 140, shift = {0.125, -1.59375}}
+      trunk = { width = 232, height = 168, shift = {2.4875, -1.40625}},
+      leaves = { width = 106, height = 140, shift = {0.425, -2.09375}}
     },
     { -- c
-      trunk = { width = 265, height = 176, shift = {2.89063, -0.9375}},
-      leaves = { width = 99, height = 125, shift = {0.078125, -1.82813}}
+      trunk = { width = 265, height = 176, shift = {2.99063, -1.4375}},
+      leaves = { width = 99, height = 125, shift = {0.178125, -2.32813}}
     },
     { -- d
-      trunk = { width = 273, height = 173, shift = {2.76563, -0.92188}},
-      leaves = { width = 100, height = 125, shift = {-0.1875, -1.82813}}
+      trunk = { width = 273, height = 173, shift = {2.76563, -1.42188}},
+      leaves = { width = 100, height = 125, shift = {-0.1875, -2.32813}}
     },
     { -- e
-      trunk = { width = 246, height = 183, shift = {2, -1.07813}},
-      leaves = { width = 109, height = 136, shift = {-0.234375, -1.875}}
+      trunk = { width = 246, height = 183, shift = {2, -1.57813}},
+      leaves = { width = 109, height = 136, shift = {-0.234375, -2.375}}
     },
     { -- f
-      trunk = { width = 260, height = 189, shift = {2.71875, -1.07813}},
-      leaves = { width = 101, height = 123, shift = {0.140625, -2.20313}}
+      trunk = { width = 260, height = 189, shift = {2.71875, -1.57813}},
+      leaves = { width = 101, height = 123, shift = {0.140625, -2.70313}}
     },
     { -- g
-      trunk = { width = 261, height = 177, shift = {2.57813, -0.64063}},
-      leaves = { width = 99, height = 116, shift = {-0.015625, -1.65625}}
+      trunk = { width = 261, height = 177, shift = {2.57813, -1.14063}},
+      leaves = { width = 99, height = 116, shift = {-0.015625, -2.15625}}
     },
     { -- h
-      trunk = { width = 253, height = 170,  shift = {2.42188, -0.59375}},
-      leaves = { width = 103, height = 123, shift = {0.015625, -1.42188}}
+      trunk = { width = 253, height = 170,  shift = {2.42188, -1.09375}},
+      leaves = { width = 103, height = 123, shift = {0.015625, -1.92188}}
     }
   },
   { -- tree-05
     { -- a
-      trunk = { width = 198, height = 145, shift = {2.0625, -0.71563}},
-      leaves = { width = 80, height = 104, shift = {0.15625, -1.41875}}
+      trunk = { width = 198, height = 145, shift = {2.0625, -1.21563}},
+      leaves = { width = 80, height = 104, shift = {0.15625, -1.91875}}
     },
     { -- b
-      trunk = { width = 214, height = 132, shift = {1.75, -0.6375}},
-      leaves = { width = 95, height = 95, shift = {-0.171875, -1.27813}}
+      trunk = { width = 214, height = 132, shift = {1.75, -1.1375}},
+      leaves = { width = 95, height = 95, shift = {-0.171875, -1.77813}}
     },
     { -- c
-      trunk = { width = 220, height = 134, shift = {1.96875, -0.5125}},
-      leaves = { width = 95, height = 102, shift = {-0.046875, -1.075}}
+      trunk = { width = 220, height = 134, shift = {1.96875, -1.0125}},
+      leaves = { width = 95, height = 102, shift = {-0.046875, -1.575}}
     },
     { -- d
-      trunk = { width = 222, height = 157, shift = {2.25, -0.59063}},
-      leaves = { width = 80, height = 116, shift = {-0.0625, -1.325}}
+      trunk = { width = 222, height = 157, shift = {2.25, -1.09063}},
+      leaves = { width = 80, height = 116, shift = {-0.0625, -1.825}}
     },
     { -- e
-      trunk = { width = 202, height = 155, shift = {2.03125, -0.59063}},
-      leaves = { width = 85, height = 109, shift = {0.140625, -1.37188}}
+      trunk = { width = 202, height = 155, shift = {2.03125, -1.09063}},
+      leaves = { width = 85, height = 109, shift = {0.140625, -1.87188}}
     },
     { -- f
-      trunk = { width = 197, height = 132, shift = {1.98438, -0.66875}},
-      leaves = { width = 86, height = 104, shift = {0.1875, -1.16875}}
+      trunk = { width = 197, height = 132, shift = {1.98438, -1.16875}},
+      leaves = { width = 86, height = 104, shift = {0.1875, -1.66875}}
     },
     { -- g
-      trunk = { width = 185, height = 140, shift = {2.14063, -0.7}},
-      leaves = { width = 69, height = 108, shift = {0.265625, -1.2625}}
+      trunk = { width = 185, height = 140, shift = {2.14063, -1.2}},
+      leaves = { width = 69, height = 108, shift = {0.265625, -1.7625}}
     },
   },
   { -- tree-06
     { -- a
-      trunk = { width = 232, height = 188, shift = {2.0625, -0.78125}},
-      leaves = { width = 88, height = 145, shift = {-0.0625, -1.29688}}
+      trunk = { width = 232, height = 188, shift = {2.5625, -1.48125}},
+      leaves = { width = 88, height = 145, shift = {0.4375, -1.99688}}
     },
     { -- b
-      trunk = { width = 212, height = 162, shift = {1.9375, -1.15625}},
-      leaves = { width = 85, height = 135, shift = {-0.046875, -1.48438}}
+      trunk = { width = 212, height = 162, shift = {2.4375, -1.85625}},
+      leaves = { width = 85, height = 135, shift = {0.453125, -2.18438}}
     },
     { -- c
-      trunk = { width = 195, height = 168, shift = {0.984375, -0.6875}},
-      leaves = { width = 86, height = 124, shift = {-0.78125, -1.4375}}
+      trunk = { width = 195, height = 168, shift = {1.484375, -1.3875}},
+      leaves = { width = 86, height = 124, shift = {-0.28125, -2.1375}}
     },
     { -- d
-      trunk = { width = 249, height = 178, shift = {2.23438, -0.9375}},
-      leaves = { width = 105, height = 156, shift = {-0.109375, -1.25}}
+      trunk = { width = 249, height = 178, shift = {2.73438, -1.6375}},
+      leaves = { width = 105, height = 156, shift = {0.390625, -1.95}}
     },
     { -- e
-      trunk = { width = 181, height = 150, shift = {1.42188, -0.8125}},
-      leaves = { width = 69, height = 121, shift = {-0.390625, -1.14062}}
+      trunk = { width = 181, height = 150, shift = {1.92188, -1.5125}},
+      leaves = { width = 69, height = 121, shift = {0.109375, -1.84062}}
     },
     { -- f
-      trunk = { width = 188, height = 149, shift = {0.71875, -0.828125}},
-      leaves = { width = 98, height = 129, shift = {-0.78125, -1.10938}}
+      trunk = { width = 188, height = 149, shift = {1.21875, -1.528125}},
+      leaves = { width = 98, height = 129, shift = {-0.28125, -1.80938}}
     },
     { -- g
-      trunk = { width = 198, height = 147, shift = {1.1875, -1.07812}},
-      leaves = { width = 103, height = 131, shift = {-0.296875, -1.42188}}
+      trunk = { width = 198, height = 147, shift = {1.6875, -1.77812}},
+      leaves = { width = 103, height = 131, shift = {0.203125, -2.12188}}
     },
     { -- h
-      trunk = { width = 189, height = 146, shift = {1.29688, -0.875}},
-      leaves = { width = 88, height = 115, shift = {-0.40625, -1.23438}}
+      trunk = { width = 189, height = 146, shift = {1.79688, -1.575}},
+      leaves = { width = 88, height = 115, shift = {0.09375, -1.93438}}
     },
   },
   { -- tree-07
@@ -691,7 +691,7 @@ for i, tree_data in ipairs(tree_data) do
       emissions_per_tick = -0.0005,
       max_health = 50,
       collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-      selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
+      selection_box = {{-0.9, -2.2}, {0.9, 0.6}},
       subgroup = "trees",
       order = "a[tree]-a[regular]-" .. order,
       vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },

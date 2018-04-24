@@ -223,7 +223,7 @@ data:extend(
                                                  roarvolume=0.7}),
     vision_distance = 30,
     movement_speed = 0.185,
-    distance_per_frame = 0.05,
+    distance_per_frame = 0.04,
     -- in pu
     pollution_to_join_attack = 200,
     corpse = "small-spitter-corpse",
@@ -261,7 +261,7 @@ data:extend(
                                                  roarvolume=0.85}),
     vision_distance = 30,
     movement_speed = 0.165,
-    distance_per_frame = 0.05,
+    distance_per_frame = 0.055,
     -- in pu
     pollution_to_join_attack = 600,
     corpse = "medium-spitter-corpse",
@@ -300,7 +300,7 @@ data:extend(
                                                  roarvolume=0.95}),
     vision_distance = 30,
     movement_speed = 0.15,
-    distance_per_frame = 0.05,
+    distance_per_frame = 0.07,
     -- in pu
     pollution_to_join_attack = 1500,
     corpse = "big-spitter-corpse",
@@ -338,7 +338,7 @@ data:extend(
                                                  tint=behemothspittertint}),
     vision_distance = 30,
     movement_speed = 0.15,
-    distance_per_frame = 0.05,
+    distance_per_frame = 0.084,
     pollution_to_join_attack = 10000,
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "blood-explosion-big",

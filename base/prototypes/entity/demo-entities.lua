@@ -1906,7 +1906,7 @@ data:extend(
       apply_projection = false,
       direction_count = 64,
       line_length = 8,
-      shift = {0.875, -0.35}
+      shift = {0.875, -0.34375}
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
