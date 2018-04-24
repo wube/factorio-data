@@ -2320,7 +2320,7 @@ data:extend(
     module_slots = 2,
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_speed = 0.333,
+    smelting_speed = 1,
     smelting_energy_consumption = 3,
     source_inventory_size = 1,
     energy_source =

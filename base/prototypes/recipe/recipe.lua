@@ -379,7 +379,7 @@ data:extend(
     {
       {"advanced-circuit", 10},
       {"iron-gear-wheel", 20},
-      {"basic-transport-belt", 4}
+      {"express-transport-belt", 4}
     },
     result = "express-splitter"
   },
@@ -518,14 +518,16 @@ data:extend(
     name = "steel-furnace",
     ingredients = {{"steel-plate", 8}, {"stone-brick", 10}},
     result = "steel-furnace",
-    energy_required = 5
+    energy_required = 5,
+    enabled = "false"
   },
   {
     type = "recipe",
     name = "electric-furnace",
     ingredients = {{"steel-plate", 15}, {"advanced-circuit", 5}, {"stone-brick", 10}},
     result = "electric-furnace",
-    energy_required = 10
+    energy_required = 10,
+    enabled = "false"
   },
   {
     type = "recipe",

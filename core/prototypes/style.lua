@@ -1058,7 +1058,7 @@ data:extend(
         vertical_spacing = 0
       }
     },
-    entity_info_frame_style =
+    frame_in_right_container_style =
     {
       type = "frame_style",
       minimal_width = 220
