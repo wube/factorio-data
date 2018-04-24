@@ -1596,7 +1596,7 @@ data:extend(
     name = "small-electric-pole",
     icon = "__base__/graphics/icons/small-electric-pole.png",
     icon_size = 32,
-    flags = {"placeable-neutral", "player-creation"},
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-electric-pole"},
     max_health = 100,
     corpse = "small-remnants",
