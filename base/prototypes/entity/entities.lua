@@ -3485,7 +3485,8 @@ data:extend(
           scale = 1.5,
           shift = {0, -0.5625},
           run_mode="backward"
-        }
+        },
+        light = {intensity = 0.4, size = 6}
       }
     },
     fluid_boxes =

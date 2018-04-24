@@ -23,6 +23,9 @@ function table.deepcopy(object)
     local function _copy(object)
         if type(object) ~= "table" then
             return object
+        -- don't copy factorio rich objects
+        elseif object.__self then
+          return object
         elseif lookup_table[object] then
             return lookup_table[object]
         end
