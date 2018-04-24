@@ -1480,6 +1480,25 @@ if not data.is_demo then
           count = 1
         }
       },
+      walking_sound =
+      {
+        {
+          filename = "__base__/sound/walking/concrete-01.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-02.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-03.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-04.ogg",
+          volume = 1.2
+        }
+      },
       map_color={r=0.5, g=0.5, b=0},
       ageing=0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier

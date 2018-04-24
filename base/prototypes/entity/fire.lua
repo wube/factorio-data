@@ -1097,7 +1097,7 @@ data:extend({
         {type = "heavy-oil", damage_modifier = 1.05}, 
         {type = "light-oil", damage_modifier = 1.1} 
       },
-      fluid_consumption = 0.2,
+      fluid_consumption = 2.0,
       
       gun_center_shift = {
         north = math3d.vector2.add(fireutil.gun_center_base, fireutil.turret_gun_shift.north), 

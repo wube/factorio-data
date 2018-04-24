@@ -6883,6 +6883,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "substation"},
     max_health = 200,
     corpse = "medium-remnants",
+    track_coverage_during_build_by_moving = true,
     resistances =
     {
       {
