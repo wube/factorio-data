@@ -5,28 +5,28 @@ data:extend(
     name = "stone-brick",
     icon = "__base__/graphics/icons/stone-brick.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "b-d",
+    subgroup = "raw-material",
+    order = "e[stone-brick]",
     stack_size = 128
-  },
-  {
-    type = "item",
-    name = "coal",
-    icon = "__base__/graphics/icons/coal.png",
-    flags = {"goes-to-main-inventory"},
-    fuel_value = "8KJ",
-    group = "production",
-    order = "a-a",
-    stack_size = 64
   },
   {
     type = "item",
     name = "raw-wood",
     icon = "__base__/graphics/icons/raw-wood.png",
     flags = {"goes-to-main-inventory"},
-    fuel_value = "4KJ",
-    group = "production",
-    order = "a-b",
+    fuel_value = "4MJ",
+    subgroup = "raw-material",
+    order = "a[raw-wood]",
+    stack_size = 64
+  },
+  {
+    type = "item",
+    name = "coal",
+    icon = "__base__/graphics/icons/coal.png",
+    flags = {"goes-to-main-inventory"},
+    fuel_value = "8MJ",
+    subgroup = "raw-material",
+    order = "b[coal]",
     stack_size = 64
   },
   {
@@ -34,17 +34,8 @@ data:extend(
     name = "stone",
     icon = "__base__/graphics/icons/stone.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "a-c",
-    stack_size = 64
-  },
-  {
-    type = "item",
-    name = "copper-ore",
-    icon = "__base__/graphics/icons/copper-ore.png",
-    flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "a-d",
+    subgroup = "raw-resource",
+    order = "d[stone]",
     stack_size = 64
   },
   {
@@ -52,8 +43,17 @@ data:extend(
     name = "iron-ore",
     icon = "__base__/graphics/icons/iron-ore.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "a-e",
+    subgroup = "raw-resource",
+    order = "e[iron-ore]",
+    stack_size = 64
+  },
+  {
+    type = "item",
+    name = "copper-ore",
+    icon = "__base__/graphics/icons/copper-ore.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-resource",
+    order = "f[copper-ore]",
     stack_size = 64
   },
   {
@@ -61,27 +61,27 @@ data:extend(
     name = "wood",
     icon = "__base__/graphics/icons/wood.png",
     flags = {"goes-to-main-inventory"},
-    fuel_value = "0.6KJ",
-    group = "production",
-    order = "b-a",
+    fuel_value = "0.6MJ",
+    subgroup = "raw-material",
+    order = "a[wood]",
     stack_size = 64
-  },
-  {
-    type = "item",
-    name = "copper-plate",
-    icon = "__base__/graphics/icons/copper-plate.png",
-    flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "b-b",
-    stack_size = 128
   },
   {
     type = "item",
     name = "iron-plate",
     icon = "__base__/graphics/icons/iron-plate.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "b-c",
+    subgroup = "raw-material",
+    order = "b[iron-plate]",
+    stack_size = 128
+  },
+  {
+    type = "item",
+    name = "copper-plate",
+    icon = "__base__/graphics/icons/copper-plate.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "raw-material",
+    order = "c[copper-plate]",
     stack_size = 128
   },
   {
@@ -89,8 +89,8 @@ data:extend(
     name = "iron-stick",
     icon = "__base__/graphics/icons/iron-stick.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "c-c",
+    subgroup = "intermediate-product",
+    order = "a[iron-stick]",
     stack_size = 128
   },
   {
@@ -98,8 +98,8 @@ data:extend(
     name = "iron-gear-wheel",
     icon = "__base__/graphics/icons/iron-gear-wheel.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "c-d",
+    subgroup = "intermediate-product",
+    order = "b[iron-gear-wheel]",
     stack_size = 128
   },
   {
@@ -107,8 +107,8 @@ data:extend(
     name = "copper-cable",
     icon = "__base__/graphics/icons/copper-cable.png",
     flags = {"goes-to-main-inventory"},
-    group = "energy",
-    order = "c-f",
+    subgroup = "circuit-network",
+    order = "0[copper-cable]",
     stack_size = 256
   },
   {
@@ -116,8 +116,8 @@ data:extend(
     name = "electronic-circuit",
     icon = "__base__/graphics/icons/electronic-circuit.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "c-g",
+    subgroup = "intermediate-product",
+    order = "c[electronic-circuit]",
     stack_size = 256
   },
   {
@@ -125,9 +125,9 @@ data:extend(
     name = "wooden-chest",
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"goes-to-quickbar"},
-    fuel_value = "6KJ",
-    group = "logistics",
-    order = "h-a-a",
+    fuel_value = "6MJ",
+    subgroup = "storage",
+    order = "a[items]-a[wooden-chest]",
     place_result = "wooden-chest",
     stack_size = 64
   },
@@ -136,8 +136,8 @@ data:extend(
     name = "stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
     flags = {"goes-to-quickbar"},
-    group = "production",
-    order = "h-b-a",
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
     place_result = "stone-furnace",
     stack_size = 64
   },
@@ -146,8 +146,8 @@ data:extend(
     name = "burner-mining-drill",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
     flags = {"goes-to-quickbar"},
-    group = "production",
-    order = "h-c-a",
+    subgroup = "extraction-machine",
+    order = "a[items]-a[burner-mining-drill]",
     place_result = "burner-mining-drill",
     stack_size = 64
   },
@@ -156,8 +156,8 @@ data:extend(
     name = "basic-mining-drill",
     icon = "__base__/graphics/icons/basic-mining-drill.png",
     flags = {"goes-to-quickbar"},
-    group = "production",
-    order = "h-c-b",
+    subgroup = "extraction-machine",
+    order = "a[items]-b[basic-mining-drill]",
     place_result = "basic-mining-drill",
     stack_size = 64
   },
@@ -166,8 +166,8 @@ data:extend(
     name = "basic-transport-belt",
     icon = "__base__/graphics/icons/basic-transport-belt.png",
     flags = {"goes-to-quickbar"},
-    group = "logistics",
-    order = "h-d-a",
+    subgroup = "belt",
+    order = "a[transport-belt]-a[basic-transport-belt]",
     place_result = "basic-transport-belt",
     stack_size = 64
   },
@@ -176,8 +176,8 @@ data:extend(
     name = "burner-inserter",
     icon = "__base__/graphics/icons/burner-inserter.png",
     flags = {"goes-to-quickbar"},
-    group = "logistics",
-    order = "h-e-a",
+    subgroup = "inserter",
+    order = "a[burner-inserter]",
     place_result = "burner-inserter",
     stack_size = 64
   },
@@ -186,19 +186,19 @@ data:extend(
     name = "basic-inserter",
     icon = "__base__/graphics/icons/basic-inserter.png",
     flags = {"goes-to-quickbar"},
-    group = "logistics",
-    order = "h-e-b",
+    subgroup = "inserter",
+    order = "b[basic-inserter]",
     place_result = "basic-inserter",
     stack_size = 64
   },
   {
     type = "item",
-    name = "pump",
-    icon = "__base__/graphics/icons/pump.png",
+    name = "offshore-pump",
+    icon = "__base__/graphics/icons/offshore-pump.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-g-a",
-    place_result = "pump",
+    subgroup = "extraction-machine",
+    order = "b[fluids]-a[offshore-pump]",
+    place_result = "offshore-pump",
     stack_size = 32
   },
   {
@@ -206,8 +206,8 @@ data:extend(
     name = "pipe",
     icon = "__base__/graphics/icons/pipe.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-g-b",
+    subgroup = "energy-pipe-distribution",
+    order = "a[pipe]-a[pipe]",
     place_result = "pipe",
     stack_size = 32
   },
@@ -216,8 +216,8 @@ data:extend(
     name = "boiler",
     icon = "__base__/graphics/icons/boiler.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-g-d",
+    subgroup = "energy",
+    order = "b[steam-power]-a[boiler]",
     place_result = "boiler",
     stack_size = 32
   },
@@ -226,8 +226,8 @@ data:extend(
     name = "steam-engine",
     icon = "__base__/graphics/icons/steam-engine.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-h-a",
+    subgroup = "energy",
+    order = "b[steam-power]-b[steam-engine]",
     place_result = "steam-engine",
     stack_size = 8
   },
@@ -236,8 +236,8 @@ data:extend(
     name = "small-electric-pole",
     icon = "__base__/graphics/icons/small-electric-pole.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-h-c",
+    subgroup = "energy-pipe-distribution",
+    order = "a[energy]-a[small-electric-pole]",
     place_result = "small-electric-pole",
     stack_size = 32
   },
@@ -246,8 +246,8 @@ data:extend(
     name = "radar",
     icon = "__base__/graphics/icons/radar.png",
     flags = {"goes-to-quickbar"},
-    group = "combat",
-    order = "h-j-b",
+    subgroup = "defensive-structure",
+    order = "d[radar]-a[radar]",
     place_result = "radar",
     stack_size = 64
   },
@@ -256,8 +256,8 @@ data:extend(
     name = "biter-spawner",
     icon = "__base__/graphics/icons/biter-spawner.png",
     flags = {"goes-to-quickbar"},
-    group = "combat",
-    order = "h-j-f",
+    subgroup = "defensive-structure",
+    order = "f[spawner]-a[biter-spawner]",
     place_result = "biter-spawner",
     stack_size = 32
   },
@@ -266,8 +266,8 @@ data:extend(
     name = "computer",
     icon = "__base__/graphics/icons/computer.png",
     flags = {"goes-to-quickbar"},
-    group = "combat",
-    order = "i",
+    subgroup = "defensive-structure",
+    order = "g[computer]",
     stack_size = 1
   },
   {
@@ -275,8 +275,8 @@ data:extend(
     name = "small-lamp",
     icon = "__base__/graphics/icons/small-lamp.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-e-f",
+    subgroup = "energy",
+    order = "c[light]-a[small-lamp]",
     place_result = "small-lamp",
     stack_size = 64
   },
@@ -285,8 +285,8 @@ data:extend(
     name = "alien-artifact",
     icon = "__base__/graphics/icons/alien-artifact.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "l",
+    subgroup = "raw-material",
+    order = "g[alien-artifact]",
     stack_size = 500
   },
   {
@@ -294,8 +294,8 @@ data:extend(
     name = "pipe-to-ground",
     icon = "__base__/graphics/icons/pipe-to-ground.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-g-c",
+    subgroup = "energy-pipe-distribution",
+    order = "a[pipe]-b[pipe-to-ground]",
     place_result = "pipe-to-ground",
     stack_size = 64
   },
@@ -304,8 +304,8 @@ data:extend(
     name = "assembling-machine-1",
     icon = "__base__/graphics/icons/assembling-machine-1.png",
     flags = {"goes-to-quickbar"},
-    group = "production",
-    order = "h-f-a",
+    subgroup = "production-machine",
+    order = "a[assembling-machine-1]",
     place_result = "assembling-machine-1",
     stack_size = 64
   },
@@ -314,8 +314,8 @@ data:extend(
     name = "red-wire",
     icon = "__base__/graphics/icons/red-wire.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-a-e",
+    subgroup = "circuit-network",
+    order = "a[wires]-a[red-wire]",
     stack_size = 256
   },
   {
@@ -323,8 +323,8 @@ data:extend(
     name = "green-wire",
     icon = "__base__/graphics/icons/green-wire.png",
     flags = {"goes-to-quickbar"},
-    group = "energy",
-    order = "h-a-f",
+    subgroup = "circuit-network",
+    order = "a[wires]-b[green-wire]",
     stack_size = 256
   },
   {
@@ -332,7 +332,7 @@ data:extend(
     name = "raw-fish",
     icon = "__base__/graphics/icons/fish.png",
     flags = {"goes-to-quickbar"},
-    group = "other",
+    subgroup = "raw-resource",
     order = "h",
     stack_size = 64,
     capsule_action =
@@ -363,7 +363,6 @@ data:extend(
         }
       }
     },
-    group = "combat",
     order = "f-e-a",
     stack_size = 100
   },
@@ -372,8 +371,8 @@ data:extend(
     name = "repair-pack",
     icon = "__base__/graphics/icons/repair-pack.png",
     flags = {"goes-to-quickbar"},
-    group = "production",
-    order = "d-e",
+    subgroup = "tool",
+    order = "b[repair]-a[repair-pack]",
     speed = 1,
     durability = 100,
     stack_size = 64

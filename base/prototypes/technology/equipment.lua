@@ -64,7 +64,7 @@ data:extend(
     type = "technology",
     name = "battery-equipment",
     icon = "__base__/graphics/technology/battery-equipment.png",
-    prerequisites = {"armor-making-3"},
+    prerequisites = {"armor-making-3", "battery"},
     effects =
     {
       {

@@ -85,7 +85,7 @@ data:extend(
         recipe = "defender-capsule"
       }
     },
-    prerequisites = {"robotics", "military",},
+    prerequisites = {"military-2"},
     unit =
     {
       count = 150,

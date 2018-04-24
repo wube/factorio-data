@@ -38,6 +38,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "i-c-a"
   },
   {
@@ -63,6 +64,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "i-c-b"
   },
   {
@@ -89,6 +91,7 @@ data:extend(
       },
       time = 60
     },
+    upgrade = true,
     order = "i-c-c"
   },
   {
@@ -112,6 +115,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "i-e-a"
   },
   {
@@ -137,6 +141,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "i-e-b"
   },
   {
@@ -163,6 +168,7 @@ data:extend(
       },
       time = 60
     },
+    upgrade = true,
     order = "i-e-c"
   },
   {
@@ -186,6 +192,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "i-g-a"
   },
   {
@@ -211,6 +218,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "i-g-b"
   },
   {
@@ -237,6 +245,7 @@ data:extend(
       },
       time = 60
     },
+    upgrade = true,
     order = "i-g-c"
   }
 }

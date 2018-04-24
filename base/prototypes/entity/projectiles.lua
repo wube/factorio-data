@@ -19,6 +19,7 @@ data:extend(
   {
     type = "projectile",
     name = "laser",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -53,6 +54,7 @@ data:extend(
   {
     type = "projectile",
     name = "blue-laser",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -87,6 +89,7 @@ data:extend(
   {
     type = "projectile",
     name = "rocket",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -142,6 +145,7 @@ data:extend(
   {
     type = "projectile",
     name = "explosive-rocket",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -216,6 +220,7 @@ data:extend(
   {
     type = "projectile",
     name = "shotgun-pellet",
+    flags = {"not-on-map"},
     collision_box = {{-0.05, -1}, {0.05, 1}},
     acceleration = 0,
     direction_only = true,
@@ -244,6 +249,7 @@ data:extend(
   {
     type = "projectile",
     name = "piercing-shotgun-pellet",
+    flags = {"not-on-map"},
     collision_box = {{-0.05, -1}, {0.05, 1}},
     acceleration = 0,
     direction_only = true,
@@ -272,6 +278,7 @@ data:extend(
   {
     type = "projectile",
     name = "basic-grenade",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -332,6 +339,7 @@ data:extend(
   {
     type = "projectile",
     name = "defender-capsule",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -370,6 +378,7 @@ data:extend(
   {
     type = "projectile",
     name = "distractor-capsule",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -419,6 +428,7 @@ data:extend(
   {
     type = "projectile",
     name = "destroyer-capsule",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -478,6 +488,7 @@ data:extend(
   {
     type = "projectile",
     name = "poison-capsule",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {
@@ -514,6 +525,7 @@ data:extend(
   {
     type = "projectile",
     name = "slowdown-capsule",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {

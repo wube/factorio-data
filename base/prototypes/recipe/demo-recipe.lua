@@ -129,14 +129,14 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "pump",
+    name = "offshore-pump",
     ingredients =
     {
       {"electronic-circuit", 2},
       {"pipe", 1},
       {"iron-gear-wheel", 1}
     },
-    result = "pump"
+    result = "offshore-pump"
   },
   {
     type = "recipe",
@@ -224,9 +224,10 @@ data:extend(
     name = "pipe-to-ground",
     ingredients =
     {
-      {"pipe", 1},
-      {"iron-plate", 1}
+      {"pipe", 5},
+      {"iron-plate", 5}
     },
+    result_count = 2,
     result = "pipe-to-ground"
   },
   {

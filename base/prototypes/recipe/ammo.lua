@@ -19,9 +19,9 @@ data:extend(
     energy_required = 8,
     ingredients =
     {
-      {"electronic-circuit", 2},
-      {"iron-gear-wheel", 3},
-      {"iron-plate", 5}
+      {"electronic-circuit", 1},
+      {"explosives", 2},
+      {"iron-plate", 2}
     },
     result = "rocket"
   },
@@ -33,21 +33,9 @@ data:extend(
     ingredients =
     {
       {"rocket", 1},
-      {"coal", 5}
+      {"explosives", 5}
     },
     result = "explosive-rocket"
-  },
-  {
-    type = "recipe",
-    name = "flame-thrower-ammo",
-    enabled = "false",
-    energy_required = 10,
-    ingredients =
-    {
-      {"coal", 10},
-      {"steel-plate", 5}
-    },
-    result = "flame-thrower-ammo"
   },
   {
     type = "recipe",

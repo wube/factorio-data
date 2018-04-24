@@ -3,7 +3,7 @@ data:extend(
   {
     type = "particle",
     name = "iron-ore-particle",
-    flags = {},
+    flags = {"not-on-map"},
     life_time = 180,
     pictures = {
       {
@@ -69,7 +69,7 @@ data:extend(
   {
     type = "particle",
     name = "copper-ore-particle",
-    flags = {},
+    flags = {"not-on-map"},
     life_time = 180,
     pictures = {
       {
@@ -135,7 +135,7 @@ data:extend(
   {
     type = "particle",
     name = "stone-particle",
-    flags = {},
+    flags = {"not-on-map"},
     life_time = 180,
     pictures = {
       {
@@ -201,7 +201,7 @@ data:extend(
   {
     type = "particle",
     name = "coal-particle",
-    flags = {},
+    flags = {"not-on-map"},
     life_time = 180,
     pictures = {
       {
@@ -267,7 +267,7 @@ data:extend(
   {
     type = "particle",
     name = "wooden-particle",
-    flags = {},
+    flags = {"not-on-map"},
     life_time = 180,
     pictures = {
       {
@@ -333,7 +333,7 @@ data:extend(
   {
     type = "particle",
     name = "shell-particle",
-    flags = {},
+    flags = {"not-on-map"},
     life_time = 600,
     pictures =
     {

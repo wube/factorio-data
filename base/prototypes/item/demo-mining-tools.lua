@@ -19,8 +19,8 @@ data:extend(
       }
     },
     durability = 4000,
-    group = "production",
-    order = "d-b",
+    subgroup = "tool",
+    order = "a[mining]-a[iron-axe]",
     speed = 2.5,
     stack_size = 32
   }

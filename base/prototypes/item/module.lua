@@ -5,8 +5,8 @@ data:extend(
     name = "speed-module",
     icon = "__base__/graphics/icons/speed-module.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-a-a",
+    subgroup = "module",
+    order = "a[speed]-a[speed-module-1]",
     stack_size = 64,
     effect = { speed = {bonus = 0.2}, consumption = {bonus = 0.5}}
   },
@@ -15,8 +15,8 @@ data:extend(
     name = "speed-module-2",
     icon = "__base__/graphics/icons/speed-module-2.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-a-b",
+    subgroup = "module",
+    order = "a[speed]-b[speed-module-2]",
     stack_size = 64,
     effect = { speed = {bonus = 0.3}, consumption = {bonus = 0.6}}
   },
@@ -25,70 +25,98 @@ data:extend(
     name = "speed-module-3",
     icon = "__base__/graphics/icons/speed-module-3.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-a-c",
+    subgroup = "module",
+    order = "a[speed]-c[speed-module-3]",
     stack_size = 64,
     effect = { speed = {bonus = 0.5}, consumption = {bonus = 0.7}}
-  },
-  {
-    type = "module",
-    name = "productivity-module",
-    icon = "__base__/graphics/icons/productivity-module.png",
-    flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-b-a",
-    stack_size = 64,
-    effect = { productivity = {bonus = 0.05}, consumption = {bonus = 0.5}, pollution = {bonus = 0.3}}
-  },
-  {
-    type = "module",
-    name = "productivity-module-2",
-    icon = "__base__/graphics/icons/productivity-module-2.png",
-    flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-b-b",
-    stack_size = 64,
-    effect = { productivity = {bonus = 0.1}, consumption = {bonus = 0.7}, pollution = {bonus = 0.4}}
-  },
-  {
-    type = "module",
-    name = "productivity-module-3",
-    icon = "__base__/graphics/icons/productivity-module-3.png",
-    flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-b-c",
-    stack_size = 64,
-    effect = { productivity = {bonus = 0.15}, consumption = {bonus = 0.9}, pollution = {bonus = 0.5}}
   },
   {
     type = "module",
     name = "effectivity-module",
     icon = "__base__/graphics/icons/effectivity-module.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-c-a",
+    subgroup = "module",
+    order = "c[effectivity]-a[effectivity-module-1]",
     stack_size = 64,
-    effect = { consumption = {bonus = -0.4}}
+    effect = { consumption = {bonus = -0.3}},
+    limitation = production
   },
   {
     type = "module",
     name = "effectivity-module-2",
     icon = "__base__/graphics/icons/effectivity-module-2.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-c-b",
+    subgroup = "module",
+    order = "c[effectivity]-b[effectivity-module-2]",
     stack_size = 64,
-    effect = { consumption = {bonus = -0.6}}
+    effect = { consumption = {bonus = -0.4}}
   },
   {
     type = "module",
     name = "effectivity-module-3",
     icon = "__base__/graphics/icons/effectivity-module-3.png",
     flags = {"goes-to-main-inventory"},
-    group = "production",
-    order = "m-c-c",
+    subgroup = "module",
+    order = "c[effectivity]-c[effectivity-module-3]",
     stack_size = 64,
-    effect = { consumption = {bonus = -0.8}}
+    effect = { consumption = {bonus = -0.5}}
+  }
+})
+
+function productivitymodulelimitation()
+return {"iron-stick",
+        "iron-gear-wheel",
+        "copper-cable",
+        "electronic-circuit",
+        "advanced-circuit",
+        "engine-unit",
+        "electric-engine-unit",
+        "explosives",
+        "battery",
+        "flying-robot-frame",
+        "science-pack-1",
+        "science-pack-2",
+        "science-pack-3",
+        "alien-science-pack"}
+end
+
+data:extend(
+{
+  {
+    type = "module",
+    name = "productivity-module",
+    icon = "__base__/graphics/icons/productivity-module.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "module",
+    order = "c[productivity]-a[productivity-module-1]",
+    stack_size = 64,
+    effect = { productivity = {bonus = 0.04}, consumption = {bonus = 0.5}, pollution = {bonus = 0.3}, speed = {bonus = -0.2}},
+    limitation = productivitymodulelimitation(),
+    limitation_message_key = "production-module-usable-only-on-intermeidates"
+  },
+  {
+    type = "module",
+    name = "productivity-module-2",
+    icon = "__base__/graphics/icons/productivity-module-2.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "module",
+    order = "c[productivity]-b[productivity-module-2]",
+    stack_size = 64,
+    effect = { productivity = {bonus = 0.06}, consumption = {bonus = 0.7}, pollution = {bonus = 0.4}, speed = {bonus = -0.2}},
+    limitation = productivitymodulelimitation(),
+    limitation_message_key = "production-module-usable-only-on-intermeidates"
+  },
+  {
+    type = "module",
+    name = "productivity-module-3",
+    icon = "__base__/graphics/icons/productivity-module-3.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "module",
+    order = "c[productivity]-c[productivity-module-3]",
+    stack_size = 64,
+    effect = { productivity = {bonus = 0.1}, consumption = {bonus = 0.9}, pollution = {bonus = 0.5}, speed = {bonus = -0.2}},
+    limitation = productivitymodulelimitation(),
+    limitation_message_key = "production-module-usable-only-on-intermeidates"
   }
 }
 )

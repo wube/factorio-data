@@ -21,7 +21,7 @@ data:extend(
       type = "electric",
       buffer_capacity = "120J",
       input_flow_limit = "120W",
-      input_priority = "primary"
+      usage_priority = "primary-input"
     },
     energy_input = "10W"
   },
@@ -47,7 +47,7 @@ data:extend(
       type = "electric",
       buffer_capacity = "120J",
       input_flow_limit = "120W",
-      input_priority = "primary"
+      usage_priority = "primary-input"
     },
     energy_per_shield = "20J"
   },
@@ -73,7 +73,7 @@ data:extend(
       type = "electric",
       buffer_capacity = "180J",
       input_flow_limit = "180W",
-      input_priority = "primary"
+      usage_priority = "primary-input"
     },
     energy_per_shield = "30J"
   },
@@ -99,8 +99,7 @@ data:extend(
       buffer_capacity = "1KJ",
       input_flow_limit = "10KW",
       output_flow_limit = "10KW",
-      input_priority = "terciary",
-      output_priority = "terciary"
+      usage_priority = "terciary"
     }
   },
   {
@@ -125,8 +124,7 @@ data:extend(
       buffer_capacity = "5KJ",
       input_flow_limit = "50KW",
       output_flow_limit = "50KW",
-      input_priority = "terciary",
-      output_priority = "terciary"
+      usage_priority = "terciary"
     }
   },
   {
@@ -148,7 +146,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      output_priority = "primary"
+      usage_priority = "primary-output"
     },
     power = "10W"
   },
@@ -171,7 +169,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      output_priority = "primary"
+      usage_priority = "primary-output"
     },
     power = "750W"
   },
@@ -194,7 +192,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary",
+      usage_priority = "secondary-input",
       buffer_capacity = "101J"
     },
     attack_parameters =
@@ -263,7 +261,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary",
+      usage_priority = "secondary-input",
       buffer_capacity = "4040J"
     },
     attack_parameters =
@@ -326,7 +324,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input"
     },
     energy_consumption = "200W",
     movement_bonus = 0.3

@@ -24,8 +24,8 @@ data:extend(
       }
     },
     durability = 5000,
-    group = "combat",
-    order = "g-b",
+    subgroup = "armor",
+    order = "b[heavy-armor]",
     stack_size = 10
   },
   {
@@ -52,8 +52,8 @@ data:extend(
       }
     },
     durability = 10000,
-    group = "combat",
-    order = "g-c",
+    subgroup = "armor",
+    order = "c[basic-modular-armor]",
     stack_size = 1,
     equipment_grid = {width = 5, height = 5}
   },
@@ -81,8 +81,8 @@ data:extend(
       }
     },
     durability = 15000,
-    group = "combat",
-    order = "g-d",
+    subgroup = "armor",
+    order = "d[power-armor]",
     stack_size = 1,
     equipment_grid = {width = 7, height = 7}
   },
@@ -110,8 +110,8 @@ data:extend(
       }
     },
     durability = 20000,
-    group = "combat",
-    order = "g-e",
+    subgroup = "armor",
+    order = "e[power-armor-mk2]",
     stack_size = 1,
     equipment_grid = {width = 10, height = 10}
   }

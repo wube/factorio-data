@@ -235,42 +235,9 @@ data:extend(
   },
   {
     type = "technology",
-    name = "chemistry",
-    icon = "__base__/graphics/technology/chemistry.png",
-    unit =
-    {
-      count = 40,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
-      },
-      time = 15
-    },
-    order = "a-e-a",
-  },
-  {
-    type = "technology",
-    name = "advanced-chemistry",
-    icon = "__base__/graphics/technology/advanced-chemistry.png",
-    prerequisites = {"chemistry"},
-    unit =
-    {
-      count = 75,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1}
-      },
-      time = 25
-    },
-    order = "a-e-b",
-  },
-  {
-    type = "technology",
     name = "explosives",
     icon = "__base__/graphics/technology/explosives.png",
-    prerequisites = {"chemistry"},
+    prerequisites = {"sulfur-processing"},
     unit =
     {
       count = 60,
@@ -281,13 +248,20 @@ data:extend(
       },
       time = 15
     },
-    order = "a-e-c",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "explosives"
+      }
+    },
+    order = "a-e-d"
   },
   {
     type = "technology",
     name = "flammables",
     icon = "__base__/graphics/technology/flammables.png",
-    prerequisites = {"chemistry"},
+    prerequisites = {"oil-processing-1"},
     unit =
     {
       count = 60,
@@ -373,6 +347,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "advanced-circuit"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "processing-unit"
       }
     },
     prerequisites = {"electronics"},
@@ -527,7 +505,7 @@ data:extend(
         recipe = "car"
       },
     },
-    prerequisites = {"logistics-2"},
+    prerequisites = {"logistics-2", "engine"},
     unit =
     {
       count = 100,
@@ -851,7 +829,7 @@ data:extend(
         recipe = "laser-turret"
       }
     },
-    prerequisites = {"turrets", "laser"},
+    prerequisites = {"turrets", "laser", "battery"},
     unit =
     {
       count = 50,
@@ -868,7 +846,7 @@ data:extend(
     type = "technology",
     name = "flying",
     icon = "__base__/graphics/technology/flying.png",
-    prerequisites = {"rocketry", "advanced-electronics"},
+    prerequisites = {"electric-engine", "advanced-electronics"},
     unit =
     {
       count = 200,
@@ -885,7 +863,7 @@ data:extend(
     type = "technology",
     name = "robotics",
     icon = "__base__/graphics/technology/robotics.png",
-    prerequisites = {"advanced-electronics-2", "rocketry"},
+    prerequisites = {"advanced-electronics-2", "electric-engine", "battery"},
     unit =
     {
       count = 100,
@@ -895,6 +873,13 @@ data:extend(
         {"science-pack-2", 1}
       },
       time = 30
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "flying-robot-frame"
+      }
     },
     order = "c-i",
   },
@@ -909,7 +894,7 @@ data:extend(
         recipe = "alien-science-pack"
       }
     },
-    prerequisites = {"advanced-chemistry"},
+    prerequisites = {"rocketry"},
     unit =
     {
       count = 300,
@@ -1114,7 +1099,7 @@ data:extend(
         recipe = "basic-accumulator"
       }
     },
-    prerequisites = {"electric-energy-distribution-1"},
+    prerequisites = {"electric-energy-distribution-1", "battery"},
     unit =
     {
       count = 60,
@@ -1345,5 +1330,81 @@ data:extend(
     },
     order = "e-h"
   },
+  {
+    type = "technology",
+    name = "engine",
+    icon = "__base__/graphics/technology/engine.png",
+    prerequisites = {"steel-processing"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 15
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "engine-unit"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "lubricant"
+      }
+    },
+    order = "b-a"
+  },
+  {
+    type = "technology",
+    name = "electric-engine",
+    icon = "__base__/graphics/technology/electric-engine.png",
+    prerequisites = {"engine", "advanced-electronics"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 25
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "electric-engine-unit"
+      }
+    },
+    order = "b-b"
+  },
+  {
+    type = "technology",
+    name = "battery",
+    icon = "__base__/graphics/technology/battery.png",
+    prerequisites = {"sulfur-processing"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 25
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "battery"
+      }
+    },
+    order = "b-c"
+  }
 }
 )

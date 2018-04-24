@@ -24,6 +24,24 @@ function make_cursor_box(x, y, side_length, shift)
   }
 end
 
+function orangebuttongraphcialset()
+  return
+  {
+    type = "monolith",
+    top_monolith_border = 1,
+    right_monolith_border = 1,
+    bottom_monolith_border = 1,
+    left_monolith_border = 1,
+    monolith_image =
+    {
+      filename = "__core__/graphics/gui.png",
+      width = 36,
+      height = 36,
+      x = 75,
+      y = 72
+    }
+  }
+end
 
 data:extend(
 {
@@ -217,7 +235,14 @@ data:extend(
       type = "button_style",
       parent = "button_style",
       minimal_width = 100,
-      minimal_height = 30
+      minimal_height = 30,
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.wav",
+          volume = 1
+        }
+      }
     },
     menu_button_style =
     {
@@ -226,7 +251,14 @@ data:extend(
       font = "default-button",
       hovered_font_color = {r=0, g=0, b=0},
       minimal_width = 300,
-      minimal_height = 50
+      minimal_height = 50,
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.wav",
+          volume = 1
+        }
+      }
     },
     image_tab_slot_style =
     {
@@ -273,54 +305,9 @@ data:extend(
       scalable = false,
       width = 61,
       height = 61,
-      default_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 75,
-          y = 72
-        }
-      },
-      hovered_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 75,
-          y = 72
-        }
-      },
-      clicked_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 75,
-          y = 72
-        }
-      }
+      default_graphical_set = orangebuttongraphcialset(),
+      hovered_graphical_set =  orangebuttongraphcialset(),
+      clicked_graphical_set = orangebuttongraphcialset()
     },
     logistic_button_slot_style =
     {
@@ -413,54 +400,9 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_button_style",
-      default_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 75,
-          y = 72
-        }
-      },
-      hovered_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 75,
-          y = 72
-        }
-      },
-      clicked_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 75,
-          y = 72
-        }
-      }
+      default_graphical_set =  orangebuttongraphcialset(),
+      hovered_graphical_set =  orangebuttongraphcialset(),
+      clicked_graphical_set = orangebuttongraphcialset()
     },
 
     second_quickbar_slot_button_style =
@@ -1013,6 +955,13 @@ data:extend(
       font = "default-listbox",
       item_style = {
         parent = "listbox_item_style"
+      },
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/listbox-click.wav",
+          volume = 1
+        }
       }
     },
     saves_listbox_style =
@@ -1147,6 +1096,12 @@ data:extend(
       type = "flow_style",
       horizontal_spacing = 5,
       vertical_spacing = 5
+    },
+    slot_table_spacing_flow_style =
+    {
+      type = "flow_style",
+      horizontal_spacing = 2,
+      vertical_spacing = 2
     },
     table_style =
     {
@@ -1335,16 +1290,34 @@ data:extend(
       parent = "inner_frame_style",
       title_bottom_padding = 0
     },
-    scenario_message_dialog_frame_style =
+    scenario_message_dialog_style =
     {
       type = "frame_style",
       top_padding  = default_container_padding,
       graphical_set =
       {
         type = "composition",
-        filename = "__core__/graphics/gui.png",
-        corner_size = {3, 3},
-        position = {16, 0}
+        filename = "__core__/graphics/arrows/hint-orange-box.png",
+        corner_size = {13, 13},
+        position = {0, 0}
+      },
+      top_padding = 0,
+      right_padding = 0,
+      bottom_padding = 10,
+      left_padding = 5
+    },
+    scenario_message_dialog_dual_style =
+    {
+      type = "frame_style",
+      parent = "scenario_message_dialog_style",
+      graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/arrows/hint-orange-box.png",
+        corner_size = {13, 13},
+        position = {0, 0},
+        bottom_padding = 10,
+        left_padding = 5
       }
     },
     goal_frame_style =

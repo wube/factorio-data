@@ -47,7 +47,7 @@ data:extend(
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.53,
+          influence = 0.55,
           noise_layer = "copper-ore",
           noise_octaves_difference = -2.3,
           noise_persistence = 0.4,
@@ -88,7 +88,6 @@ data:extend(
     },
     map_color = {r=0.803, g=0.388, b=0.215}
   },
-
 
   {
     type = "resource",
@@ -134,7 +133,7 @@ data:extend(
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.55,
+          influence = 0.57,
           noise_layer = "iron-ore",
           noise_octaves_difference = -2.3,
           noise_persistence = 0.4,
@@ -285,8 +284,8 @@ data:extend(
     {
       control = "stone",
       sharpness = 1,
-      richness_multiplier = 9000,
-      richness_base = 200,
+      richness_multiplier = 11000,
+      richness_base = 250,
       peaks = {
         {
           influence = 0.20,
@@ -295,7 +294,7 @@ data:extend(
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.55,
+          influence = 0.6,
           noise_layer = "stone",
           noise_octaves_difference = -3,
           noise_persistence = 0.45,

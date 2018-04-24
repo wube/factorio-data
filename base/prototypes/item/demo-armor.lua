@@ -24,8 +24,8 @@ data:extend(
       }
     },
     durability = 1000,
-    group = "combat",
-    order = "g-a",
+    subgroup = "armor",
+    order = "a[basic-armor]",
     stack_size = 10
   }
 }

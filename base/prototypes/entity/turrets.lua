@@ -109,7 +109,7 @@ data:extend(
   {
     type = "turret",
     name = "medium-worm-turret",
-    icon = "__base__/graphics/icons/rocket-turret.png",
+    icon = "__base__/graphics/icons/medium-worm.png",
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     order="b-b-e",
     max_health = 350,
@@ -231,7 +231,7 @@ data:extend(
   {
     type = "turret",
     name = "big-worm-turret",
-    icon = "__base__/graphics/icons/rocket-turret.png",
+    icon = "__base__/graphics/icons/big-worm.png",
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     max_health = 500,
     order="b-b-f",
@@ -368,7 +368,7 @@ data:extend(
     {
       type = "projectile",
       category = "laser-turret",
-      energy_consumption = "200J",
+      energy_consumption = "200kJ",
       action =
       {
         {
@@ -387,10 +387,10 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "201J",
-      input_flow_limit = "1200W",
-      resting_consumption_ratio = 0.01,
-      input_priority = "secondary"
+      buffer_capacity = "201kJ",
+      input_flow_limit = "1200kW",
+      drain = "6kW",
+      usage_priority = "primary-input"
     },
     folded_animation = (function()
                           local res = util.table.deepcopy(laser_turret_extension)

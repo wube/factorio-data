@@ -3,20 +3,20 @@ data:extend(
   {
     type = "item",
     name = "small-worm-turret",
-    icon = "__base__/graphics/icons/basic-turret.png",
+    icon = "__base__/graphics/icons/small-worm.png",
     flags = {"goes-to-quickbar"},
-    group = "combat",
-    order = "h-j-c",
+    subgroup = "defensive-structure",
+    order = "c[worm]-a[small-worm-turret]",
     place_result = "small-worm-turret",
     stack_size = 64
   },
   {
     type = "item",
     name = "medium-worm-turret",
-    icon = "__base__/graphics/icons/rocket-turret.png",
+    icon = "__base__/graphics/icons/medium-worm.png",
     flags = {"goes-to-quickbar"},
-    group = "combat",
-    order = "h-j-d",
+    subgroup = "defensive-structure",
+    order = "c[worm]-b[medium-worm-turret]",
     place_result = "medium-worm-turret",
     stack_size = 64
   },
@@ -25,8 +25,8 @@ data:extend(
     name = "laser-turret",
     icon = "__base__/graphics/icons/laser-turret.png",
     flags = {"goes-to-quickbar"},
-    group = "combat",
-    order = "h-j-e",
+    subgroup = "defensive-structure",
+    order = "b[turret]-b[laser-turret]",
     place_result = "laser-turret",
     stack_size = 32
   }

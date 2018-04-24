@@ -1,4 +1,5 @@
 require ("prototypes.entity.demo-railpictures")
+require ("prototypes.entity.pipecovers")
 
 function make_unit_melee_ammo_type(damagevalue)
   return
@@ -24,6 +25,37 @@ end
 destroyedrailpictures = function()
   return railpicturesinternal({{"metals", "metals-remnants"}, {"backplates", "metals-remnants"}, {"ties", "ties-remnants"}, {"stone_path", "stone-path"}})
 end
+
+boilerfires =
+{
+  down =
+  {
+    filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
+    priority = "extra-high",
+    frame_width = 9,
+    frame_height = 8,
+    frame_count = 14,
+    shift = {0.03125, 0.28125}
+  },
+  left =
+  {
+    filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
+    priority = "extra-high",
+    frame_width = 5,
+    frame_height = 7,
+    frame_count = 14,
+    shift = {-0.4375, -0.09375}
+  },
+  right =
+  {
+    filename = "__base__/graphics/entity/boiler/boiler-fire-right.png",
+    priority = "extra-high",
+    frame_width = 6,
+    frame_height = 9,
+    frame_count = 14,
+    shift = {0.46875, -0.0625}
+  }
+}
 
 function biterspawneranimation(variation)
 return
@@ -94,18 +126,25 @@ end
 
 pipepictures = function()
   return {
+    straight_vertical_single =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-straight-vertical-single.png",
+      priority = "extra-high",
+      width = 44,
+      height = 58
+    },
     straight_vertical =
     {
       filename = "__base__/graphics/entity/pipe/pipe-straight-vertical.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 44,
+      height = 42
     },
     straight_vertical_window =
     {
       filename = "__base__/graphics/entity/pipe/pipe-straight-vertical-window.png",
       priority = "extra-high",
-      width = 32,
+      width = 44,
       height = 32
     },
     straight_horizontal_window =
@@ -113,28 +152,28 @@ pipepictures = function()
       filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal-window.png",
       priority = "extra-high",
       width = 32,
-      height = 32
+      height = 42
     },
     straight_horizontal =
     {
       filename = "__base__/graphics/entity/pipe/pipe-straight-horizontal.png",
       priority = "extra-high",
       width = 32,
-      height = 32
+      height = 42
     },
     corner_up_right =
     {
       filename = "__base__/graphics/entity/pipe/pipe-corner-up-right.png",
       priority = "extra-high",
       width = 32,
-      height = 32
+      height = 40
     },
     corner_up_left =
     {
       filename = "__base__/graphics/entity/pipe/pipe-corner-up-left.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 44,
+      height = 44
     },
     corner_down_right =
     {
@@ -147,7 +186,7 @@ pipepictures = function()
     {
       filename = "__base__/graphics/entity/pipe/pipe-corner-down-left.png",
       priority = "extra-high",
-      width = 32,
+      width = 36,
       height = 32
     },
     t_up =
@@ -155,48 +194,48 @@ pipepictures = function()
       filename = "__base__/graphics/entity/pipe/pipe-t-up.png",
       priority = "extra-high",
       width = 32,
-      height = 32
+      height = 42
     },
     t_down =
     {
       filename = "__base__/graphics/entity/pipe/pipe-t-down.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 40,
+      height = 44
     },
     t_right =
     {
       filename = "__base__/graphics/entity/pipe/pipe-t-right.png",
       priority = "extra-high",
-      width = 32,
+      width = 40,
       height = 32
     },
     t_left =
     {
       filename = "__base__/graphics/entity/pipe/pipe-t-left.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 44,
+      height = 42
     },
     cross =
     {
       filename = "__base__/graphics/entity/pipe/pipe-cross.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 40,
+      height = 40
     },
     ending_up =
     {
       filename = "__base__/graphics/entity/pipe/pipe-ending-up.png",
       priority = "extra-high",
-      width = 32,
-      height = 32
+      width = 44,
+      height = 42
       },
     ending_down =
     {
       filename = "__base__/graphics/entity/pipe/pipe-ending-down.png",
       priority = "extra-high",
-      width = 32,
+      width = 44,
       height = 32
     },
     ending_right =
@@ -204,28 +243,56 @@ pipepictures = function()
       filename = "__base__/graphics/entity/pipe/pipe-ending-right.png",
       priority = "extra-high",
       width = 32,
-      height = 32
+      height = 44
     },
     ending_left =
     {
       filename = "__base__/graphics/entity/pipe/pipe-ending-left.png",
       priority = "extra-high",
+      width = 58,
+      height = 44
+    },
+    horizontal_window_background =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-horizontal-window-background.png",
+      priority = "extra-high",
       width = 32,
+      height = 42
+    },
+    vertical_window_background =
+    {
+      filename = "__base__/graphics/entity/pipe/pipe-vertical-window-background.png",
+      priority = "extra-high",
+      width = 44,
       height = 32
     },
-    water_flow =
+    fluid_background =
     {
-      filename = "__base__/graphics/entity/pipe/water-flow.png",
-      priority = "extra-high",
-      width = 128,
-      height = 20
-    },
-    water_flow_background =
-    {
-      filename = "__base__/graphics/entity/pipe/water-flow-background.png",
+      filename = "__base__/graphics/entity/pipe/fluid-background.png",
       priority = "extra-high",
       width = 32,
       height = 20
+    },
+    low_temperature_flow =
+    {
+      filename = "__base__/graphics/entity/pipe/fluid-flow.png",
+      priority = "extra-high",
+      width = 128,
+      height = 18
+    },
+    middle_temperature_flow =
+    {
+      filename = "__base__/graphics/entity/pipe/fluid-flow.png",
+      priority = "extra-high",
+      width = 128,
+      height = 18
+    },
+    high_temperature_flow =
+    {
+      filename = "__base__/graphics/entity/pipe/fluid-flow.png",
+      priority = "extra-high",
+      width = 128,
+      height = 18
     }
   }
 end
@@ -240,8 +307,9 @@ data:extend(
     max_health = 100,
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
-    selection_box = {{-0.2, -0.2}, {0.2, 0.2}},
+    selection_box = {{-0.4, -1.4}, {0.4, 0.2}},
     crafting_categories = {"crafting"},
+    mining_categories = {"basic-solid"},
     inventory_size = 60,
     running_speed = 0.15,
     distance_per_frame = 0.13,
@@ -257,8 +325,7 @@ data:extend(
     heartbeat =
     {
       {
-        filename = "__base__/sound/heartbeat.ogg",
-        volume = 1.5
+        filename = "__base__/sound/heartbeat.wav"
       }
     },
     idle_animation =
@@ -408,282 +475,6 @@ data:extend(
   },
 
   {
-    type = "tree",
-    name = "dry-tree",
-    icon = "__base__/graphics/icons/dry-tree.png",
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
-    minable =
-    {
-      mining_particle = "wooden-particle",
-      mining_time = 1,
-      result = "raw-wood"
-    },
-    emissions_per_tick = -0.0001,
-    max_health = 20,
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.6, -1.5}, {0.5, 0.4}},
-    order="a-a",
-    pictures =
-    {
-      {
-        filename = "__base__/graphics/entity/tree/tree-a01.png",
-        priority = "extra-high",
-        width = 84,
-        height = 64,
-        shift = {0.7, -0.7}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a02.png",
-        priority = "extra-high",
-        width = 96,
-        height = 85,
-        shift = {0.9, -0.6}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a03.png",
-        priority = "extra-high",
-        width = 88,
-        height = 84,
-        shift = {0, -0.7}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a04.png",
-        priority = "extra-high",
-        width = 85,
-        height = 82,
-        shift = {0.7, -0.6}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a05.png",
-        priority = "extra-high",
-        width = 95,
-        height = 81,
-        shift = {0.2, -0.8}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a06.png",
-        priority = "extra-high",
-        width = 91,
-        height = 68,
-        shift = {0, -0.6}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a07.png",
-        priority = "extra-high",
-        width = 92,
-        height = 78,
-        shift = {0.5, -0.8}
-      },
-      {
-        filename = "__base__/graphics/entity/tree/tree-a08.png",
-        priority = "extra-high",
-        width = 105,
-        height = 94,
-        shift = {0.5, -0.8}
-      }
-    },
-    autoplace = {
-      -- autoplace controls which entities are generated on a new map
-
-      -- sharpness == 0 means that sum of peak influences is equal to the probability,
-      -- sharpness == 1 means that sum of influences < 0.5 has probability 0, and >0.5 has probability 1
-      sharpness = 0.2,
-
-      control = "forest", -- GUI control for this autoplacer. Must be defined before use (see mapgen-controls.lua)
-
-      -- List of optimal conditions for placing the enitty
-      -- Each peak can specify a number of dimensions and possibly a noise.
-      -- If there is only a single peak, it may be included directly in the autoplace block
-      -- (see fish)
-      --
-      -- If a noise spec is present in the peak, peak's influence is multiplied by this noise.
-      -- The dimensions of optimal positions specify where the influence is maximal (multiplied by 1),
-      -- outside the ranges influence is multiplied by -1.
-      peaks =
-      {
-        {
-          influence = 0.05, -- Influence of perfect conditions and penalty for bad conditions
-
-          -- There can be a number of dimensions controling the placement.
-          -- Dimensions each contain a name of a control variable: "starting_area_weight",
-          -- "roughness", "elevation","water", "temperature",
-          -- Unspecified dimensions don't add any influence.
-          water_optimal = 0.00, -- Optimal value of the control variable
-          water_range = 0.0, -- Width of perfect conditions for the control variable
-          water_max_range = 0.5 -- Width of the interpolation range. Values further from the
-                                -- optimum produce maximal negative influence.
-        },
-        {
-          influence = 0.2, -- Influence of perfect conditions and penalty for bad conditions
-
-          noise_layer = "dry-trees", -- Name of the layer, must be defined before use (see noise-layers.lua)
-          noise_persistence = 0.9,
-          starting_area_weight_optimal = 0,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = -0.05,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.05,
-
-          water_optimal = 0.2,
-          water_range = 0.1,
-          water_max_range = 0.5
-        },
-        {
-          influence = 0.09,
-
-          noise_layer = "trees",
-          noise_persistence = 0.5,
-          starting_area_weight_optimal = 0,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.02,
-
-          noise_layer = "trees",
-          noise_persistence = 0.5,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        }
-      }
-    }
-  },
-
-  {
-    type = "tree",
-    name = "big-tree",
-    icon = "__base__/graphics/icons/big-tree.png",
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
-    emissions_per_tick = -0.0005,
-    order = "a-b",
-    minable =
-    {
-      count = 5,
-      mining_particle = "wooden-particle",
-      mining_time = 2,
-      result = "raw-wood"
-    },
-    max_health = 50,
-    collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
-    selection_box = {{-0.8, -2.2}, {0.8, 0.8}},
-    drawing_box = {{-0.8, -2.8}, {0.8, 0.8}},
-    pictures =
-    {
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-01.png",
-        priority = "extra-high",
-        width = 155,
-        height = 118,
-        shift = {1.1, -1}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-02.png",
-        priority = "extra-high",
-        width = 144,
-        height = 169,
-        shift = {1.2, -0.8}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-03.png",
-        priority = "extra-high",
-        width = 151,
-        height = 131,
-        shift = {0.8, -0.7}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-04.png",
-        priority = "extra-high",
-        width = 167,
-        height = 131,
-        shift = {2, -1}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-05.png",
-        priority = "extra-high",
-        width = 156,
-        height = 154,
-        shift = {1.5, -1.7}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-06.png",
-        priority = "extra-high",
-        width = 113,
-        height = 111,
-        shift = {0.7, -0.9}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-07.png",
-        priority = "extra-high",
-        width = 116,
-        height = 125,
-        shift = {1, -0.7}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-08.png",
-        priority = "extra-high",
-        width = 162,
-        height = 129,
-        shift = {1.4, -1.3}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-09.png",
-        priority = "extra-high",
-        width = 156,
-        height = 164,
-        shift = {1.7, -1.1}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-10.png",
-        priority = "extra-high",
-        width = 196,
-        height = 129,
-        shift = {1.1, -1.1}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-11.png",
-        priority = "extra-high",
-        width = 196,
-        height = 129,
-        shift = {1.3, -1.4}
-      },
-      {
-        filename = "__base__/graphics/entity/big-tree/big-tree-12.png",
-        priority = "extra-high",
-        width = 175,
-        height = 164,
-        shift = {1.6, -1.2}
-      }
-    },
-    autoplace =
-    {
-      sharpness = 0.5,
-      control = "forest",
-      peaks =
-      {
-        {
-          influence = 0.2,
-          water_optimal = 0.3,
-          water_range = 0.2,
-          water_max_range = 0.4
-        },
-        {
-          influence = 0.9,
-          noise_layer = "trees",
-          noise_persistence = 0.5,
-        }
-      }
-    }
-  },
-
-  {
     type = "furnace",
     name = "stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
@@ -691,7 +482,9 @@ data:extend(
     minable = {mining_time = 1, result = "stone-furnace"},
     max_health = 150,
     corpse = "medium-remnants",
-    resistances = 
+    repair_sound = { filename = "__base__/sound/manual-repair-simple.wav" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.wav" },
+    resistances =
     {
       {
         type = "fire",
@@ -706,7 +499,7 @@ data:extend(
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_energy_consumption = "180W",
+    smelting_energy_consumption = "180kW",
     smelting_speed = 0.5,
     source_inventory_size = 1,
     energy_source =
@@ -721,7 +514,8 @@ data:extend(
           name = "smoke",
           deviation = {0.1, 0.1},
           frequency = 0.5,
-          position = {0, -2.3}
+          position = {0, 0},
+          starting_vertical_speed = 0.05
         }
       }
     },
@@ -790,7 +584,7 @@ data:extend(
     type = "fish",
     name = "fish",
     icon = "__base__/graphics/icons/fish.png",
-    flags = {"placeable-neutral"},
+    flags = {"placeable-neutral", "not-on-map"},
     minable = {mining_time = 1, result = "raw-fish"},
     max_health = 20,
     order = "b-a",
@@ -824,7 +618,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
     max_health = 100,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -832,9 +626,20 @@ data:extend(
       }
     },
     fast_replaceable_group = "pipe",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    energy_consumption = "390W",
+    fluid_box =
+    {
+      base_area = 1,
+      pipe_connections =
+      {
+        { position = {0, -1} },
+        { position = {1, 0} },
+        { position = {0, 1} },
+        { position = {-1, 0} }
+      },
+    },
+    energy_consumption = "390kW",
     burner =
     {
       effectivity = 0.5,
@@ -849,138 +654,75 @@ data:extend(
         }
       }
     },
-    max_liquid_amount = 10,
     structure =
     {
       left =
       {
         filename = "__base__/graphics/entity/boiler/boiler-left.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0.15, 0}
+        width = 46,
+        height = 46,
+        shift = {0.03125, 0}
       },
       down =
       {
         filename = "__base__/graphics/entity/boiler/boiler-down.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0.05, 0}
+        width = 66,
+        height = 72 --, shift = {0.05, 0}
       },
       left_down =
       {
         filename = "__base__/graphics/entity/boiler/boiler-left-down.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0, -0.02}
+        width = 60,
+        height = 50 --, shift = {0, -0.02}
       },
       right_down =
       {
         filename = "__base__/graphics/entity/boiler/boiler-right-down.png",
         priority = "extra-high",
-        width = 51,
-        height = 51
+        width = 44,
+        height = 50
       },
       left_up =
       {
         filename = "__base__/graphics/entity/boiler/boiler-left-up.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0.05, 0}
+        width = 66,
+        height = 74 --, shift = {0.05, 0}
       },
       right_up =
       {
         filename = "__base__/graphics/entity/boiler/boiler-right-up.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0.15, 0}
+        width = 46,
+        height = 72 --, shift = {0.15, 0}
       },
       t_down =
       {
         filename = "__base__/graphics/entity/boiler/boiler-t-down.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0, 0}
+        width = 44,
+        height = 50 --, shift = {0, 0}
       },
       t_up =
       {
         filename = "__base__/graphics/entity/boiler/boiler-t-up.png",
         priority = "extra-high",
-        width = 51,
-        height = 51,
-        shift = {0, 0}
+        width = 46,
+        height = 70 --, shift = {0, 0}
       }
     },
     fire =
     {
-      left =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
-        priority = "extra-high",
-        frame_width = 16,
-        frame_height = 14,
-        frame_count = 12,
-        shift = {0, 0.23}
-      },
-      down =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
-        priority = "extra-high",
-        frame_width = 12,
-        frame_height = 13,
-        frame_count = 12,
-        shift = {-0.42, 0.05}
-      },
-      left_down =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-right.png",
-        priority = "extra-high",
-        frame_width = 10,
-        frame_height = 14,
-        frame_count = 12,
-        shift = {0.25, -0.05}
-      },
-      right_down =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
-        priority = "extra-high",
-        frame_width = 12,
-        frame_height = 13,
-        frame_count = 12,
-        shift = {-0.4, 0.15}
-      },
-      left_up =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
-        priority = "extra-high",
-        frame_width = 16,
-        frame_height = 14,
-        frame_count = 12,
-        shift = {0, 0.23}
-      },
-      right_up =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
-        priority = "extra-high",
-        frame_width = 16,
-        frame_height = 14,
-        frame_count = 12,
-        shift = {0, 0.23}
-      },
-      t_up =
-      {
-        filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
-        priority = "extra-high",
-        frame_width = 16,
-        frame_height = 14,
-        frame_count = 12,
-        shift = {0, 0.23}
-      }
+      left = boilerfires.down,
+      down = boilerfires.left,
+      left_down = boilerfires.right,
+      right_down = boilerfires.left,
+      left_up = boilerfires.down,
+      right_up = boilerfires.down,
+      t_up = boilerfires.down
     },
     burning_cooldown = 20,
     -- these are the pipe pictures - boiler is a pipe as well
@@ -995,10 +737,12 @@ data:extend(
     minable = {mining_time = 1, result = "wooden-chest"},
     max_health = 50,
     corpse = "small-remnants",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     inventory_size = 16,
+    open_sound = { filename = "__base__/sound/wooden-chest-open.wav" },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.wav" },
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
@@ -1015,8 +759,8 @@ data:extend(
     icon = "__base__/graphics/icons/small-biter-corpse.png",
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
-    order = "b-c-a",
-    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable"},
+    order = "c[corpse]-a[biter]-a[small]",
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.04,
     final_render_layer = "corpse",
     animation =
@@ -1327,8 +1071,13 @@ data:extend(
   {
     type = "corpse",
     name = "biter-spawner-corpse",
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    icon = "__base__/graphics/icons/biter-spawner-corpse.png",
+    collision_box = {{-2, -2}, {2, 2}},
+    selection_box = {{-2, -2}, {2, 2}},
+    selectable_in_game = false,
     dying_speed = 0.04,
-    order="b-c-g",
+    order = "c[corpse]-b[biter-spawner]",
     final_render_layer = "corpse",
     animation =
     {
@@ -1342,6 +1091,7 @@ data:extend(
   {
     type = "explosion",
     name = "explosion",
+    flags = {"not-on-map"},
     animation_speed = 3,
     animations =
     {
@@ -1394,6 +1144,7 @@ data:extend(
   {
     type = "explosion",
     name = "explosion-gunshot",
+    flags = {"not-on-map"},
     animation_speed = 3,
     animations =
     {
@@ -1414,6 +1165,7 @@ data:extend(
   {
     type = "explosion",
     name = "huge-explosion",
+    flags = {"not-on-map"},
     animation_speed = 5,
     animations =
     {
@@ -1447,7 +1199,9 @@ data:extend(
     minable = {mining_time = 1, result = "steam-engine"},
     max_health = 300,
     corpse = "big-remnants",
-    resistances = 
+    effectivity = 1,
+    fluid_usage_per_tick = 0.1,
+    resistances =
     {
       {
         type = "fire",
@@ -1456,10 +1210,20 @@ data:extend(
     },
     collision_box = {{-1.4, -2.4}, {1.4, 2.4}},
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
+    fluid_box =
+    {
+      base_area = 1,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        { position = {0, 3} },
+        { position = {0, -3} },
+      },
+    },
     energy_source =
     {
       type = "electric",
-      output_priority = "secondary"
+      usage_priority = "secondary-output"
     },
     horizontal_animation =
     {
@@ -1484,16 +1248,15 @@ data:extend(
       filename = "__base__/graphics/entity/steam-engine/pipes-horizontal.png",
       priority = "high",
       width = 160,
-      height = 32,
+      height = 42,
       shift = {0, 0}
     },
     pipes_vertical =
     {
       filename = "__base__/graphics/entity/steam-engine/pipes-vertical.png",
       priority = "high",
-      width = 36,
-      height = 160,
-      shift = {0.1, 0}
+      width = 44,
+      height = 160
     },
     smoke =
     {
@@ -1525,14 +1288,14 @@ data:extend(
   },
 
   {
-    type = "pump",
-    name = "pump",
-    icon = "__base__/graphics/icons/pump.png",
+    type = "offshore-pump",
+    name = "offshore-pump",
+    icon = "__base__/graphics/icons/offshore-pump.png",
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
-    minable = {mining_time = 1, result = "pump"},
+    minable = {mining_time = 1, result = "offshore-pump"},
     max_health = 80,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -1541,10 +1304,20 @@ data:extend(
     },
     collision_box = {{-0.6, -0.3}, {0.6, 0.3}},
     selection_box = {{-1, -0.49}, {1, 1.49}},
+    fluid_box =
+    {
+      base_area = 1,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        { position = {0, -1} },
+      },
+    },
+    pumping_speed = 1,
     tile_width = 1,
     picture =
     {
-      sheet = "__base__/graphics/entity/pump/pump.png",
+      sheet = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
       priority = "high",
       shift = {0.9, 0.05},
       width = 160,
@@ -1555,6 +1328,7 @@ data:extend(
   {
     type = "smoke",
     name = "smoke",
+    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke/smoke.png",
@@ -1570,6 +1344,7 @@ data:extend(
   {
     type = "smoke",
     name = "smoke-fast",
+    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
@@ -1598,12 +1373,13 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
-    energy_per_movement = 5,
-    energy_per_rotation = 5,
+    energy_per_movement = 5000,
+    energy_per_rotation = 5000,
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input",
+      drain = "0.4kW"
     },
     extension_speed = 0.028,
     fast_replaceable_group = "inserter",
@@ -1711,7 +1487,7 @@ data:extend(
   {
     type = "item-entity",
     name = "item-on-ground",
-    flags = {"placeable-off-grid"},
+    flags = {"placeable-off-grid", "not-on-map"},
     collision_box = {{-0.14, -0.14}, {0.14, 0.14}},
     selection_box = {{-0.17, -0.17}, {0.17, 0.17}}
   },
@@ -1724,7 +1500,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe"},
     max_health = 50,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -1732,10 +1508,22 @@ data:extend(
       }
     },
     fast_replaceable_group = "pipe",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    max_liquid_amount = 10,
-    pictures = pipepictures()
+    fluid_box =
+    {
+      base_area = 1,
+      pipe_connections =
+      {
+        { position = {0, -1} },
+        { position = {1, 0} },
+        { position = {0, 1} },
+        { position = {-1, 0} }
+      },
+    },
+    pictures = pipepictures(),
+    horizontal_window_bounding_box = {{-0.25, -0.25}, {0.25, 0.15625}},
+    vertical_window_bounding_box = {{-0.28125, -0.40625}, {0.03125, 0.125}}
   },
 
   {
@@ -1746,7 +1534,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "radar"},
     max_health = 150,
     corpse = "big-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -1755,15 +1543,15 @@ data:extend(
     },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    energy_per_sector = "20KJ",
+    energy_per_sector = "10MJ",
     max_distance_of_sector_revealed = 14,
-    energy_per_nearby_scan = "500J",
+    energy_per_nearby_scan = "250kJ",
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input"
     },
-    energy_usage = "600W",
+    energy_usage = "300kW",
     pictures =
     {
       filename = "__base__/graphics/entity/radar/radar.png",
@@ -1790,9 +1578,9 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input"
     },
-    energy_usage_per_tick = 0.2,
+    energy_usage_per_tick = "5KW",
     light = {intensity = 0.9, size = 40},
     picture_off =
     {
@@ -1823,6 +1611,7 @@ data:extend(
     collision_box = {{-2.2, -1}, {2.2, 1}},
     selection_box = {{-2.7, -1.5}, {2.7, 1.5}},
     inventory_size = 4,
+    enable_inventory_bar = false,
     picture =
     {
       filename = "__base__/graphics/entity/space-module-wreck/wreck.png",
@@ -1833,34 +1622,22 @@ data:extend(
 
   {
     type = "arrow",
-    name = "red-arrow",
-    flags = {"placeable-off-grid"},
+    name = "orange-arrow-with-circle",
+    flags = {"placeable-off-grid", "not-on-map"},
+    blinking = true,
     arrow_picture =
     {
-      filename = "__core__/graphics/red-arrow/red-arrow-arrow.png",
+      filename = "__core__/graphics/arrows/gui-arrow-medium.png",
       priority = "low",
-      width = "1030",
-      height = "230"
-    }
-  },
-
-  {
-    type = "arrow",
-    name = "red-arrow-with-circle",
-    flags = {"placeable-off-grid"},
-    arrow_picture =
-    {
-      filename = "__core__/graphics/red-arrow/red-arrow-arrow.png",
-      priority = "low",
-      width = "1030",
-      height = "230"
+      width = "58",
+      height = "62"
     },
     circle_picture =
     {
-      filename = "__core__/graphics/red-arrow/red-arrow-circle.png",
+      filename = "__core__/graphics/arrows/gui-arrow-circle.png",
       priority = "low",
-      width = "200",
-      height = "200"
+      width = "50",
+      height = "50"
     }
   },
 
@@ -1872,16 +1649,28 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe-to-ground"},
     max_health = 50,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
         percent = 80
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.3, -0.3}, {0.3, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    max_liquid_amount = 10,
+    fluid_box =
+    {
+      base_area = 1,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        { position = {0, -1} },
+        {
+          position = {0, 1},
+          max_underground_distance = 5
+        }
+      },
+    },
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
@@ -1895,31 +1684,29 @@ data:extend(
       {
         filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-up.png",
         priority = "high",
-        width = 32,
-        height = 32
+        width = 44,
+        height = 32 --, shift = {0.10, -0.04}
       },
       down =
       {
         filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-down.png",
         priority = "high",
-        width = 32,
-        height = 32
+        width = 40,
+        height = 32 --, shift = {0.05, 0}
       },
       left =
       {
         filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-left.png",
         priority = "high",
-        width = 34,
-        height = 38,
-        shift = {0, 0.1}
+        width = 32,
+        height = 42 --, shift = {-0.12, 0.1}
       },
       right =
       {
         filename = "__base__/graphics/entity/pipe-to-ground/pipe-to-ground-right.png",
         priority = "high",
-        width = 34,
-        height = 38,
-        shift = {0.1, 0.1}
+        width = 32,
+        height = 40 --, shift = {0.1, 0.1}
       },
     }
   },
@@ -1932,14 +1719,14 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-1"},
     max_health = 200,
     corpse = "big-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
         percent = 70
       }
     },
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
     animation =
@@ -1957,17 +1744,17 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary",
+      usage_priority = "secondary-input",
       emissions = 0.05 / 1.5
     },
-    energy_usage = "90W",
+    energy_usage = "90kW",
     ingredient_count = 2
   },
 
   {
     type = "flying-text",
     name = "flying-text",
-    flags = {},
+    flags = {"not-on-map"},
     time_to_live = 150,
     speed = 0.05
   },
@@ -1975,6 +1762,7 @@ data:extend(
   {
     type = "corpse",
     name = "acid-splash-purple",
+    flags = {"not-on-map"},
     time_before_removed = 60 * 30,
     final_render_layer = "corpse",
     splash =
@@ -2016,177 +1804,10 @@ data:extend(
   },
 
   {
-    type = "corpse",
-    name = "big-remnants",
-    icon = "__base__/graphics/icons/remnants.png",
-    flags = {"placeable-neutral"},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    selectable_in_game = false,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    order="c-c",
-    animation = 
-    {
-      {
-        frame_width = 109,
-        frame_height = 102,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/remnants/big-remnants.png"
-      },
-      {
-        frame_width = 109,
-        frame_height = 102,
-        frame_count = 1,
-        direction_count = 1,
-        x = 109,
-        filename = "__base__/graphics/entity/remnants/big-remnants.png"
-      },
-      {
-        frame_width = 109,
-        frame_height = 102,
-        frame_count = 1,
-        direction_count = 1,
-        x = 218,
-        filename = "__base__/graphics/entity/remnants/big-remnants.png"
-      },
-      {
-        frame_width = 109,
-        frame_height = 102,
-        frame_count = 1,
-        direction_count = 1,
-        x = 327,
-        filename = "__base__/graphics/entity/remnants/big-remnants.png"
-      }
-    }
-  },
-
-  {
-    type = "corpse",
-    name = "medium-remnants",
-    icon = "__base__/graphics/icons/remnants.png",
-    flags = {"placeable-neutral", "building-direction-8-way"},
-    selection_box = {{-1, -1}, {1, 1}},
-    selectable_in_game = false,
-    order="c-b",
-    tile_width = 2,
-    tile_height = 2,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    animation = 
-    {
-      {
-        frame_width = 94,
-        frame_height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
-      },
-      {
-        frame_width = 94,
-        frame_height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        x = 94,
-        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
-      },
-      {
-        frame_width = 94,
-        frame_height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        x = 188,
-        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
-      },
-      {
-        frame_width = 94,
-        frame_height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        x = 282,
-        filename = "__base__/graphics/entity/remnants/medium-remnants.png"
-      }
-    }
-  },
-
-  {
-    type = "corpse",
-    name = "small-remnants",
-    icon = "__base__/graphics/icons/remnants.png",
-    flags = {"placeable-neutral"},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
-    order="c-a",
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    animation = 
-    {
-      {
-        frame_width = 56,
-        frame_height = 42,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/remnants/small-remnants.png"
-      },
-      {
-        frame_width = 56,
-        frame_height = 42,
-        frame_count = 1,
-        direction_count = 1,
-        x = 56,
-        filename = "__base__/graphics/entity/remnants/small-remnants.png"
-      },
-      {
-        frame_width = 56,
-        frame_height = 42,
-        frame_count = 1,
-        direction_count = 1,
-        x = 112,
-        filename = "__base__/graphics/entity/remnants/small-remnants.png"
-      },
-      {
-        frame_width = 56,
-        frame_height = 42,
-        frame_count = 1,
-        direction_count = 1,
-        x = 168,
-        filename = "__base__/graphics/entity/remnants/small-remnants.png"
-      }
-    }
-  },
-  {
-    type = "rail-remnants",
-    name = "straight-rail-remnants",
-    icon = "__base__/graphics/icons/straight-rail-remnants.png",
-    flags = {"placeable-neutral", "building-direction-8-way"},
-    order="c-d",
-    selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
-    selectable_in_game = false,
-    tile_width = 2,
-    tile_height = 2,
-    bending_type = "straight",
-    pictures = destroyedrailpictures(),
-    time_before_removed = 60 * 60 * 45,
-    time_before_shading_off = 60 * 60 * 1
-  },
-  {
-    type = "rail-remnants",
-    name = "curved-rail-remnants",
-    icon = "__base__/graphics/icons/curved-rail-remnants.png",
-    flags = {"placeable-neutral", "building-direction-8-way"},
-    order="c-e",
-    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
-    selectable_in_game = false,
-    tile_width = 4,
-    tile_height = 8,
-    bending_type = "turn",
-    pictures = destroyedrailpictures(),
-    time_before_removed = 60 * 60 * 45,
-    time_before_shading_off = 60 * 60 * 1
-  },
-  {
     type = "ghost",
-    name = "ghost"
+    name = "ghost",
+    flags = {"not-on-map"},
+    minable = { mining_time = 0, results={}},
   }
 }
 )

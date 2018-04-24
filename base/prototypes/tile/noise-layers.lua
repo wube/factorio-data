@@ -2,11 +2,11 @@ data:extend(
 {
   {
     type = "noise-layer",
-    name = "terrain-dark"
+    name = "grass"
   },
   {
     type = "noise-layer",
-    name = "grass"
+    name = "grass-medium"
   },
   {
     type = "noise-layer",
@@ -18,15 +18,15 @@ data:extend(
   },
   {
     type = "noise-layer",
+    name = "dirt-dark"
+  },
+  {
+    type = "noise-layer",
     name = "sand"
   },
   {
     type = "noise-layer",
-    name = "trees"
-  },
-  {
-    type = "noise-layer",
-    name = "dry-trees"
+    name = "sand-dark"
   },
   {
     type = "noise-layer",
@@ -46,7 +46,11 @@ data:extend(
   },
   {
     type = "noise-layer",
+    name = "crude-oil"
+  },
+  {
+    type = "noise-layer",
     name = "enemy-base"
-  }
+  },
 }
 )

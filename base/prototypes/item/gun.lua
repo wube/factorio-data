@@ -5,8 +5,8 @@ data:extend(
     name = "flame-thrower",
     icon = "__base__/graphics/icons/flame-thrower.png",
     flags = {"goes-to-main-inventory"},
-    group = "combat",
-    order = "e-d",
+    subgroup = "gun",
+    order = "e[flame-thrower]",
     attack_parameters =
     {
       ammo_category = "flame-thrower",
@@ -23,8 +23,8 @@ data:extend(
     icon = "__base__/graphics/icons/land-mine.png",
     flags = {"goes-to-quickbar"},
     damage_radius = 5,
-    group = "combat",
-    order = "e-e",
+    subgroup = "gun",
+    order = "f[land-mine]",
     place_result = "land-mine",
     stack_size = 16,
     trigger_radius = 1
@@ -34,8 +34,8 @@ data:extend(
     name = "rocket-launcher",
     icon = "__base__/graphics/icons/rocket-launcher.png",
     flags = {"goes-to-main-inventory"},
-    group = "combat",
-    order = "e-c-a",
+    subgroup = "gun",
+    order = "d[rocket-launcher]",
     attack_parameters =
     {
       ammo_category = "rocket",
@@ -51,8 +51,8 @@ data:extend(
     name = "shotgun",
     icon = "__base__/graphics/icons/shotgun.png",
     flags = {"goes-to-main-inventory"},
-    group = "combat",
-    order = "e-b-a",
+    subgroup = "gun",
+    order = "b[shotgun]-a[basic]",
     attack_parameters =
     {
       ammo_category = "shotgun-shell",
@@ -76,8 +76,8 @@ data:extend(
     name = "combat-shotgun",
     icon = "__base__/graphics/icons/combat-shotgun.png",
     flags = {"goes-to-main-inventory"},
-    group = "combat",
-    order = "e-b-b",
+    subgroup = "gun",
+    order = "b[shotgun]-a[combat]",
     attack_parameters =
     {
       ammo_category = "shotgun-shell",
@@ -102,8 +102,8 @@ data:extend(
     name = "railgun",
     icon = "__base__/graphics/icons/railgun.png",
     flags = {"goes-to-main-inventory"},
-    group = "combat",
-    order = "e-c-b",
+    subgroup = "gun",
+    order = "c[railgun]",
     attack_parameters =
     {
       ammo_category = "railgun",

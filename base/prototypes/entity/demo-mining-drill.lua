@@ -7,6 +7,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "basic-mining-drill"},
     max_health = 300,
+    resource_categories = {"basic-solid"},
     corpse = "big-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
@@ -67,11 +68,10 @@ data:extend(
       type = "electric",
       -- will produce this much * energy pollution units per tick
       emissions = 0.15 / 1.5,
-      input_priority = "secondary"
+      usage_priority = "secondary-input"
     },
-    energy_usage = "90W",
+    energy_usage = "90kW",
     mining_power = 3,
-    pipe_length = 2,
     resource_searching_radius = 2.49,
     vector_to_place_result = {0, -1.85},
     module_slots = 3,
@@ -87,6 +87,7 @@ data:extend(
     name = "burner-mining-drill",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
     flags = {"placeable-neutral", "player-creation"},
+    resource_categories = {"basic-solid"},
     minable = {mining_time = 1, result = "burner-mining-drill"},
     max_health = 100,
     corpse = "medium-remnants",
@@ -108,9 +109,8 @@ data:extend(
         }
       }
     },
-    energy_usage = "300W",
+    energy_usage = "300kW",
     mining_power = 2.5,
-    pipe_length = 1,
     animations =
     {
       north =

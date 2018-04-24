@@ -41,6 +41,12 @@ data:extend(
   },
   {
     type = "autoplace-control",
+    name = "crude-oil",
+    richness = true,
+    order = "b-e"
+  },
+  {
+    type = "autoplace-control",
     name = "forest",
     order = "c-a"
   },

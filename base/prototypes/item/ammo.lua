@@ -45,8 +45,8 @@ data:extend(
       }
     },
     magazine_size = 10,
-    group = "combat",
-    order = "f-a-c",
+    subgroup = "ammo",
+    order = "a[basic-clips]-b[piercing-bullet-magazine]",
     stack_size = 100
   },
   {
@@ -69,7 +69,7 @@ data:extend(
             direction_deviation = 0.07,
             speed_deviation = 0.1,
             starting_frame_deviation = 0.07,
-            damage = { amount = 15, type = "fire"},
+            damage = { amount = 20, type = "fire"},
             projectile_starting_speed = 0.2,
             starting_distance = 0.6,
           }
@@ -77,8 +77,8 @@ data:extend(
       }
     },
     magazine_size = 100,
-    group = "combat",
-    order = "f-c-a",
+    subgroup = "ammo",
+    order = "e[flame-thrower]",
     stack_size = 50
   },
   {
@@ -105,8 +105,8 @@ data:extend(
         }
       }
     },
-    group = "combat",
-    order = "f-b-a",
+    subgroup = "ammo",
+    order = "d[rocket-launcher]-a[basic]",
     stack_size = 100
   },
   {
@@ -133,8 +133,8 @@ data:extend(
         }
       }
     },
-    group = "combat",
-    order = "f-b-b",
+    subgroup = "ammo",
+    order = "d[rocket-launcher]-b[explosive]",
     stack_size = 100
   },
   {
@@ -166,8 +166,8 @@ data:extend(
         })
     },
     magazine_size = 10,
-    group = "combat",
-    order = "f-d-a",
+    subgroup = "ammo",
+    order = "b[shotgun]-a[basic]",
     stack_size = 100
   },
   {
@@ -199,8 +199,8 @@ data:extend(
         })
     },
     magazine_size = 10,
-    group = "combat",
-    order = "f-d-a",
+    subgroup = "ammo",
+    order = "b[shotgun]-b[piercing]",
     stack_size = 100
   },
   {
@@ -235,9 +235,9 @@ data:extend(
       }
     },
     magazine_size = 4,
-    group = "combat",
-    order = "f-d-a",
+    subgroup = "ammo",
+    order = "c[railgun]",
     stack_size = 100
-  },
+  }
 }
 )

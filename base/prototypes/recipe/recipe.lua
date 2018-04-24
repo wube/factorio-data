@@ -6,7 +6,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      { "electronic-circuit", 10},
+      {"electronic-circuit", 10},
       {"iron-gear-wheel", 5},
       {"iron-plate", 1 }
     },
@@ -76,10 +76,9 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"iron-stick", 5},
-      {"electronic-circuit", 5},
-      {"iron-gear-wheel", 10},
-      {"iron-plate", 20}
+      {"engine-unit", 8},
+      {"iron-plate", 20},
+      {"steel-plate", 5}
     },
     result = "car"
   },
@@ -110,10 +109,9 @@ data:extend(
     enabled = "false",
     ingredients =
     {
+      {"engine-unit", 15},
       {"electronic-circuit", 5},
-      {"iron-gear-wheel", 20},
-      {"iron-plate", 20},
-      {"steel-plate", 15},
+      {"steel-plate", 10},
     },
     result = "diesel-locomotive"
   },
@@ -147,7 +145,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"advanced-circuit", 1},
+      {"electronic-circuit", 1},
       {"iron-plate", 5}
     },
     result = "rail-signal"
@@ -165,7 +163,7 @@ data:extend(
     name = "basic-modular-armor",
     enabled = "false",
     energy_required = 15,
-    ingredients = {{ "advanced-circuit", 30}, {"speed-module", 5}, {"steel-plate", 50}},
+    ingredients = {{ "advanced-circuit", 30}, {"processing-unit", 5}, {"steel-plate", 50}},
     result = "basic-modular-armor"
   },
   {
@@ -173,7 +171,7 @@ data:extend(
     name = "power-armor",
     enabled = "false",
     energy_required = 20,
-    ingredients = {{ "effectivity-module-2", 5}, {"speed-module-2", 5}, {"steel-plate", 50}, {"alien-artifact", 10}},
+    ingredients = {{ "processing-unit", 100}, {"electric-engine-unit", 30}, {"steel-plate", 100}, {"alien-artifact", 10}},
     result = "power-armor"
   },
   {
@@ -181,7 +179,7 @@ data:extend(
     name = "power-armor-mk2",
     enabled = "false",
     energy_required = 25,
-    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"steel-plate", 50}, {"alien-artifact", 50}},
+    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 200}, {"steel-plate", 50}, {"alien-artifact", 50}},
     result = "power-armor-mk2"
   },
   {
@@ -223,8 +221,8 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"steel-plate", 40},
-      {"iron-gear-wheel", 20}
+      {"steel-plate", 5},
+      {"iron-gear-wheel", 10}
     },
     result = "flame-thrower"
   },
@@ -236,7 +234,7 @@ data:extend(
     ingredients =
     {
       {"steel-plate", 1},
-      {"flame-thrower-ammo", 1}
+      {"explosives", 2}
     },
     result = "land-mine",
     result_count = 4
@@ -249,7 +247,8 @@ data:extend(
     ingredients =
     {
       {"iron-plate", 5},
-      {"iron-gear-wheel", 5}
+      {"iron-gear-wheel", 5},
+      {"electronic-circuit", 5}
     },
     result = "rocket-launcher"
   },
@@ -312,7 +311,7 @@ data:extend(
     energy_required = 6,
     ingredients =
     {
-      {"electronic-circuit", 1},
+      {"basic-inserter", 1},
       {"basic-transport-belt", 1}
     },
     result = "science-pack-2"
@@ -324,10 +323,10 @@ data:extend(
     energy_required = 12,
     ingredients =
     {
-      {"rocket", 1},
-      {"steel-plate", 1},
+      {"battery", 1},
+      {"advanced-circuit", 1},
       {"smart-inserter", 1},
-      {"advanced-circuit", 1}
+      {"steel-plate", 1},
     },
     result = "science-pack-3"
   },
@@ -394,8 +393,8 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"iron-plate", 20},
-      {"fast-transport-belt", 6}
+      {"iron-gear-wheel", 30},
+      {"basic-transport-belt-to-ground", 2}
     },
     result_count = 2,
     result = "fast-transport-belt-to-ground"
@@ -406,8 +405,8 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"express-transport-belt", 6},
-      {"iron-plate", 20}
+      {"iron-gear-wheel", 60},
+      {"fast-transport-belt-to-ground", 2}
     },
     result_count = 2,
     result = "express-transport-belt-to-ground"
@@ -455,13 +454,28 @@ data:extend(
     type = "recipe",
     name = "advanced-circuit",
     enabled = "false",
-    energy_required = 3,
+    energy_required = 8,
     ingredients =
     {
-      {"electronic-circuit", 4},
+      {"electronic-circuit", 2},
+      {"plastic-bar", 2},
       {"copper-cable", 4}
     },
     result = "advanced-circuit"
+  },
+  {
+    type = "recipe",
+    name = "processing-unit",
+    category = "chemistry",
+    enabled = "false",
+    energy_required = 15,
+    ingredients =
+    {
+      {"electronic-circuit", 20},
+      {"advanced-circuit", 2},
+      {type="fluid", name = "sulfuric-acid", amount = 0.5}
+    },
+    result = "processing-unit"
   },
   {
     type = "recipe",
@@ -469,8 +483,7 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"steel-plate", 4},
-      {"iron-gear-wheel", 5},
+      {"flying-robot-frame", 1},
       {"advanced-circuit", 2}
     },
     result = "logistic-robot"
@@ -481,9 +494,8 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {"steel-plate", 4},
-      {"iron-gear-wheel", 5},
-      {"advanced-circuit", 2}
+      {"flying-robot-frame", 1},
+      {"electronic-circuit", 2}
     },
     result = "construction-robot"
   },
@@ -527,7 +539,8 @@ data:extend(
     ingredients =
     {
       {"rocket", 100},
-      {"advanced-circuit", 256},
+      {"advanced-circuit", 128},
+      {"processing-unit", 128},
       {"speed-module-3", 50},
       {"productivity-module-3", 50}
     },
@@ -598,8 +611,7 @@ data:extend(
     ingredients =
     {
       {"iron-plate", 2},
-      {"copper-plate", 5},
-      {"electronic-circuit", 20}
+      {"battery", 5}
     },
     result = "basic-accumulator"
   },
@@ -632,6 +644,167 @@ data:extend(
       {"copper-cable", 10}
     },
     result = "basic-beacon"
+  },
+  {
+    type = "recipe",
+    name = "blueprint",
+    energy_required = 1,
+    ingredients =
+    {
+      {"advanced-circuit", 1}
+    },
+    result = "blueprint",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "deconstruction-planner",
+    energy_required = 1,
+    ingredients =
+    {
+      {"advanced-circuit", 1}
+    },
+    result = "deconstruction-planner",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "pumpjack",
+    energy_required = 20,
+    ingredients =
+    {
+      {"steel-plate", 15},
+      {"iron-gear-wheel", 10},
+      {"electronic-circuit", 10},
+      {"pipe", 10},
+    },
+    result = "pumpjack",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "oil-refinery",
+    energy_required = 20,
+    ingredients =
+    {
+      {"steel-plate", 15},
+      {"iron-gear-wheel", 10},
+      {"stone-brick", 10},
+      {"electronic-circuit", 10},
+      {"pipe", 10}
+    },
+    result = "oil-refinery",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "engine-unit",
+    energy_required = 20,
+    category = "chemistry", -- until we have assembling machine with pipe
+    ingredients =
+    {
+      {"steel-plate", 1},
+      {type="fluid", name= "lubricant", amount = 1},
+      {"iron-gear-wheel", 1},
+      {"pipe", 1}
+    },
+    result = "engine-unit",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "electric-engine-unit",
+    category = "chemistry", -- until we have assembling machine with pipe
+    energy_required = 20,
+    ingredients =
+    {
+      {"engine-unit", 1},
+      {type="fluid", name= "lubricant", amount = 1},
+      {"electronic-circuit", 2}
+    },
+    result = "electric-engine-unit",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "flying-robot-frame",
+    energy_required = 20,
+    ingredients =
+    {
+      {"electric-engine-unit", 1},
+      {"battery", 2},
+      {"steel-plate", 1},
+      {"electronic-circuit", 3}
+    },
+    result = "flying-robot-frame",
+    enabled = "false"
+  },
+  {
+    type = "recipe",
+    name = "explosives",
+    energy_required = 5,
+    enabled = "false",
+    category = "chemistry",
+    ingredients =
+    {
+      {type="item", name="sulfur", amount=1},
+      {type="item", name="coal", amount=1},
+      {type="fluid", name="water", amount=1},
+    },
+    result= "explosives"
+  },
+  {
+    type = "recipe",
+    name = "battery",
+    category = "chemistry", -- until we have assembling machine with pipe
+    energy_required = 5,
+    enabled = "false",
+    ingredients =
+    {
+      {type="fluid", name="sulfuric-acid", amount=2},
+      {"iron-plate", 1},
+      {"copper-plate", 1}
+    },
+    result= "battery"
+  },
+  {
+    type = "recipe",
+    name = "storage-tank",
+    energy_required = 3,
+    enabled = "false",
+    ingredients =
+    {
+      {"iron-plate", 20},
+      {"steel-plate", 5}
+    },
+    result= "storage-tank"
+  },
+  {
+    type = "recipe",
+    name = "small-pump",
+    energy_required = 2,
+    enabled = "false",
+    ingredients =
+    {
+      {"electric-engine-unit", 1},
+      {"steel-plate", 1},
+      {"pipe", 1}
+    },
+    result= "small-pump"
+  },
+  {
+    type = "recipe",
+    name = "chemical-plant",
+    energy_required = 10,
+    enabled = "false",
+    ingredients =
+    {
+      {"steel-plate", 5},
+      {"iron-gear-wheel", 5},
+      {"electronic-circuit", 5},
+      {"pipe", 5}
+    },
+    result= "chemical-plant"
   }
 }
 )

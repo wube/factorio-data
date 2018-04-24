@@ -59,7 +59,7 @@ data:extend(
   {
     type = "turret",
     name = "small-worm-turret",
-    icon = "__base__/graphics/icons/basic-turret.png",
+    icon = "__base__/graphics/icons/small-worm.png",
     flags = {"placeable-enemy", "not-repairable"},
     order="b-b-d",
     max_health = 200,

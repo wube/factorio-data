@@ -3,6 +3,7 @@ data:extend(
   {
     type = "projectile",
     name = "acid-projectile-purple",
+    flags = {"not-on-map"},
     acceleration = 0.005,
     action =
     {

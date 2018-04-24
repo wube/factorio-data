@@ -1,34 +1,44 @@
-function water_autoplace_peaks(from_depth, dark)
-  local influence = 1e6
+local autoplace_utils = require("autoplace_utils")
 
-  local add
-  if from_depth > 0 then
-    add = -1.05 * influence
-  else
-    add = -1.05 * influence - 10000
+local function autoplace_peaks(noise_layer, rectangles)
+  local ret = {}
+
+  if noise_layer then
+    ret = {
+      {
+        influence = 0.1,
+        noise_layer = noise_layer,
+        noise_persistence = 0.7,
+        octaves_difference = -1
+      }
+    }
   end
 
-  return
+  autoplace_utils.peaks(rectangles, ret)
+
+  return ret
+end
+
+function water_autoplace_peaks(from_depth, rectangles)
+  local ret =
   {
     {
       -- Water and deep water have absolute priority. We simulate this by giving
       -- them absurdly large influence
-      influence = influence,
-      noise_persistence = 0.7,
+      influence = 1e3 + from_depth,
       elevation_optimal = -5000 - from_depth,
       elevation_range = 5000,
       elevation_max_range = 5000, -- everywhere below elevation 0 and nowhere else
-    },
-    {
-      influence = add,
-    },
-    {
-      influence = dark and influence or -influence,
-      noise_layer = "terrain-dark",
-      noise_persistence = 0.7,
-      noise_octaves_difference = 2,
     }
   }
+
+  if rectangles == nil then
+    ret[2] = { influence = 1 }
+  end
+
+  autoplace_utils.peaks(rectangles, ret)
+
+  return ret
 end
 
 data:extend(
@@ -44,7 +54,8 @@ data:extend(
       "floor-layer",
       "item-layer",
       "object-layer",
-      "player-layer"
+      "player-layer",
+      "doodat-layer"
     },
     layer = 60,
     variants =
@@ -83,10 +94,11 @@ data:extend(
       "water-tile",
       "resource-layer",
       "item-layer",
-      "player-layer"
+      "player-layer",
+      "doodat-layer"
     },
     autoplace = {
-      peaks = water_autoplace_peaks(250, false)
+      peaks = water_autoplace_peaks(250)
     },
     layer = 45,
     variants =
@@ -137,10 +149,11 @@ data:extend(
       "water-tile",
       "resource-layer",
       "item-layer",
-      "player-layer"
+      "player-layer",
+      "doodat-layer"
     },
     autoplace = {
-      peaks = water_autoplace_peaks(250, true)
+      peaks = water_autoplace_peaks(250, {{{35, 1}, {15, 0.7}}})
     },
     layer = 45,
     variants =
@@ -191,10 +204,11 @@ data:extend(
       "water-tile",
       "item-layer",
       "resource-layer",
-      "player-layer"
+      "player-layer",
+      "doodat-layer"
     },
     autoplace = {
-      peaks = water_autoplace_peaks(0, false);
+      peaks = water_autoplace_peaks(0)
     },
     layer = 40,
     variants =
@@ -245,10 +259,11 @@ data:extend(
       "water-tile",
       "item-layer",
       "resource-layer",
-      "player-layer"
+      "player-layer",
+      "doodat-layer"
     },
     autoplace = {
-      peaks = water_autoplace_peaks(0, true)
+      peaks = water_autoplace_peaks(0, {{{35, 1}, {15, 0.7}}});
     },
     layer = 40,
     variants =
@@ -298,27 +313,7 @@ data:extend(
     autoplace =
     {
       control = "grass",
-      peaks =
-      {
-        {
-          influence = 1,
-          noise_layer = "grass",
-          noise_persistence = 0.6,
-        },
-        {
-          influence = -1,
-          noise_layer = "terrain-dark",
-          noise_persistence = 0.5,
-          noise_octaves_difference = -1,
-        },
-        {
-          influence = 0.3,
-          min_influence = 0,
-          available_water_optimal = 1,
-          available_water_range = 0,
-          available_water_max_range = 0.5,
-        }
-      }
+      peaks = autoplace_peaks("grass", {{{35, 0.8}, {0, 0.4}}})
     },
     layer = 20,
     variants =
@@ -391,20 +386,7 @@ data:extend(
     autoplace =
     {
       control = "grass",
-      peaks =
-      {
-        {
-          influence = 1,
-          noise_layer = "grass",
-          noise_persistence = 0.6,
-        },
-        {
-          influence = 1,
-          noise_layer = "terrain-dark",
-          noise_persistence = 0.5,
-          noise_octaves_difference = -1,
-        },
-      }
+      peaks = autoplace_peaks("grass-medium", {{{35, 1}, {10, 0.7}}})
     },
     layer = 5,
     variants =
@@ -477,14 +459,7 @@ data:extend(
     autoplace =
     {
       control = "grass",
-      peaks =
-      {
-        {
-          influence = 1,
-          noise_layer = "grass-dry",
-          noise_persistence = 0.6,
-        },
-      }
+      peaks = autoplace_peaks("grass-dry", {{{35, 0.5}, {10, 0.3}}, {{5, 0.6}, {-10, 0.1}}})
     },
     layer = 4,
     variants =
@@ -557,18 +532,7 @@ data:extend(
     autoplace =
     {
       control = "dirt",
-      peaks =
-      {
-        {
-          noise_layer = "dirt",
-        },
-        {
-          influence = -1,
-          noise_layer = "terrain-dark",
-          noise_persistence = 0.5,
-          noise_octaves_difference = -1,
-        },
-      }
+      peaks = autoplace_peaks("dirt", {{{35, 0.4}, {-10, 0}, 0.95}})
     },
     layer = 25,
     variants =
@@ -637,18 +601,7 @@ data:extend(
     autoplace =
     {
       control = "dirt",
-      peaks =
-      {
-        {
-          noise_layer = "dirt",
-        },
-        {
-          influence = 1,
-          noise_layer = "terrain-dark",
-          noise_persistence = 0.5,
-          noise_octaves_difference = -1,
-        },
-      }
+      peaks = autoplace_peaks("dirt-dark", {{{35, 0.4}, {-10, 0}, 0.5}})
     },
     layer = 26,
     variants =
@@ -718,18 +671,7 @@ data:extend(
     autoplace =
     {
       control = "sand",
-      peaks =
-      {
-        {
-          noise_layer = "sand",
-        },
-        {
-          influence = -1,
-          noise_layer = "terrain-dark",
-          noise_persistence = 0.5,
-          noise_octaves_difference = -1,
-        },
-      }
+      peaks = autoplace_peaks("sand", {{{35, 0.2}, {0, 0}}})
     },
     layer = 35,
     variants =
@@ -802,19 +744,7 @@ data:extend(
     autoplace =
     {
       control = "sand",
-      peaks =
-      {
-        {
-          influence = 1,
-          noise_layer = "sand",
-        },
-        {
-          influence = 1,
-          noise_layer = "terrain-dark",
-          noise_persistence = 0.5,
-          noise_octaves_difference = -1,
-        },
-      }
+      peaks = autoplace_peaks("sand-dark", {{{35, 0.3}, {-5, 0.1}}})
     },
     layer = 36,
     variants =

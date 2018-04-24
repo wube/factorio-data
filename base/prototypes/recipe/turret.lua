@@ -9,7 +9,7 @@ data:extend(
     {
       {"steel-plate", 5},
       {"electronic-circuit", 5},
-      {"iron-gear-wheel", 5}
+      {"battery", 3}
     },
     result = "laser-turret"
   }

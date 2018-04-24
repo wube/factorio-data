@@ -40,8 +40,8 @@ data:extend(
       }
     },
     magazine_size = 10,
-    group = "combat",
-    order = "f-a-a",
+    subgroup = "ammo",
+    order = "a[basic-clips]-a[basic-bullet-magazine]",
     stack_size = 100
   }
 }

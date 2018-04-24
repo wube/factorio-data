@@ -19,7 +19,7 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module", 5},
+      {"advanced-circuit", 5},
       {"steel-plate", 10}
     },
     result = "energy-shield-equipment"
@@ -32,7 +32,7 @@ data:extend(
     ingredients =
     {
       {"energy-shield-equipment", 10},
-      {"effectivity-module", 10}
+      {"processing-unit", 10}
     },
     result = "energy-shield-mk2-equipment"
   },
@@ -43,7 +43,7 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module", 5},
+      {"battery", 5},
       {"steel-plate", 10}
     },
     result = "battery-equipment"
@@ -56,7 +56,7 @@ data:extend(
     ingredients =
     {
       {"battery-equipment", 10},
-      {"speed-module-2", 5}
+      {"processing-unit", 20}
     },
     result = "battery-mk2-equipment"
   },
@@ -67,9 +67,9 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module", 1},
-      {"steel-plate", 5},
-      {"solar-panel", 5}
+      {"solar-panel", 5},
+      {"processing-unit", 1},
+      {"steel-plate", 5}
     },
     result = "solar-panel-equipment"
   },
@@ -80,8 +80,7 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module-2", 10},
-      {"productivity-module-2", 10},
+      {"processing-unit", 100},
       {"alien-artifact", 30}
     },
     result = "fusion-reactor-equipment"
@@ -93,7 +92,7 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module", 1},
+      {"processing-unit", 1},
       {"steel-plate", 5},
       {"laser-turret", 5}
     },
@@ -106,7 +105,7 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module", 5},
+      {"processing-unit", 5},
       {"steel-plate", 20},
       {"laser-turret", 10}
     },
@@ -119,9 +118,9 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"speed-module", 10},
+      {"processing-unit", 10},
+      {"electric-engine-unit", 30},
       {"steel-plate", 20},
-      {"iron-gear-wheel", 30}
     },
     result = "basic-exoskeleton-equipment"
   }

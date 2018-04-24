@@ -1,4 +1,5 @@
 require ("prototypes.entity.demo-railpictures")
+require ("prototypes.entity.pipecovers")
 
 railpictures = function()
   return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
@@ -852,7 +853,7 @@ data:extend(
         percent = 70
       }
     },
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
     animation =
@@ -870,10 +871,10 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary",
+      usage_priority = "secondary-input",
       emissions = 0.04 / 2.5
     },
-    energy_usage = "150W",
+    energy_usage = "150kW",
     ingredient_count = 4,
     module_slots = 2,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}
@@ -893,7 +894,7 @@ data:extend(
         percent = 70
       }
     },
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
     animation =
@@ -911,10 +912,10 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary",
+      usage_priority = "secondary-input",
       emissions = 0.03 / 3.5
     },
-    energy_usage = "210W",
+    energy_usage = "210kW",
     ingredient_count = 4,
     module_slots = 4,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}
@@ -936,7 +937,7 @@ data:extend(
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
-    acceleration_per_energy = 0.001,
+    acceleration_per_energy = 0.000001,
     breaking_speed = 0.01,
     burner =
     {
@@ -957,7 +958,7 @@ data:extend(
         }
       }
     },
-    consumption = "600W",
+    consumption = "600kW",
     friction = 0.02,
     light =
     {
@@ -1012,14 +1013,16 @@ data:extend(
     minable = {mining_time = 1, result = "iron-chest"},
     max_health = 100,
     corpse = "small-remnants",
-    resistances = 
+    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.6 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.8 },
+    resistances =
     {
       {
         type = "fire",
         percent = 80
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 32,
@@ -1040,14 +1043,16 @@ data:extend(
     minable = {mining_time = 1, result = "steel-chest"},
     max_health = 200,
     corpse = "small-remnants",
-    resistances = 
+    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.6 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.8 },
+    resistances =
     {
       {
         type = "fire",
         percent = 90
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
@@ -1065,6 +1070,8 @@ data:extend(
     name = "smart-chest",
     icon = "__base__/graphics/icons/smart-chest.png",
     flags = {"placeable-neutral", "player-creation"},
+    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.6 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.8 },
     minable =
     {
       hardness = 0.2,
@@ -1080,7 +1087,7 @@ data:extend(
         percent = 70
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
@@ -1125,13 +1132,14 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     insert_distance = 1.85,
     pickup_distance = 2,
-    energy_per_movement = 5,
-    energy_per_rotation = 5,
+    energy_per_movement = 5000,
+    energy_per_rotation = 5000,
     rotation_speed = 0.02,
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input",
+      drain = "0.4kW"
     },
     extension_speed = 0.04,
     fast_replaceable_group = "inserter",
@@ -1188,11 +1196,13 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     insert_distance = 0.85,
     pickup_distance = 1,
-    energy_per_movement = 5,
-    energy_per_rotation = 5,
-    energy_source = {
+    energy_per_movement = 5000,
+    energy_per_rotation = 5000,
+    energy_source =
+    {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input",
+      drain = "0.4kW"
     },
     extension_speed = 0.07,
     fast_replaceable_group = "inserter",
@@ -1242,12 +1252,13 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     insert_distance = 0.85,
     pickup_distance = 1,
-    energy_per_movement = 7,
-    energy_per_rotation = 7,
+    energy_per_movement = 7000,
+    energy_per_rotation = 7000,
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input",
+      drain = "0.4kW"
     },
     extension_speed = 0.07,
     fast_replaceable_group = "inserter",
@@ -1297,8 +1308,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "none",
-      output_priority = "primary"
+      usage_priority = "primary-output"
     },
     picture =
     {
@@ -1307,7 +1317,7 @@ data:extend(
       width = 104,
       height = 96
     },
-    production = "60W"
+    production = "60kW"
   },
   {
     type = "locomotive",
@@ -1317,7 +1327,7 @@ data:extend(
     minable = {mining_time = 1, result = "diesel-locomotive"},
     max_health = 1000,
     corpse = "medium-remnants",
-    collision_box = {{-0.6, -2.6}, {0.9, 2.6}},
+    collision_box = {{-0.6, -2.6}, {0.6, 2.6}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     drawing_box = {{-1, -4}, {1, 3}},
     weight = 2000,
@@ -1340,13 +1350,14 @@ data:extend(
         {
           name = "smoke",
           deviation = {0.1, 0.1},
-          frequency = 20,
+          frequency = 1000,
           position = {0, 0},
           slow_down_factor = 0.9,
           starting_frame = 3,
           starting_frame_deviation = 5,
           starting_frame_speed = 0,
-          starting_frame_speed_deviation = 5
+          starting_frame_speed_deviation = 5,
+          starting_vertical_speed = 0.15,
         }
       }
     },
@@ -1414,7 +1425,7 @@ data:extend(
     minable = {mining_time = 1, result = "cargo-wagon"},
     max_health = 600,
     corpse = "medium-remnants",
-    collision_box = {{-0.6, -2.4}, {0.9, 2.4}},
+    collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     weight = 1000,
     max_speed = 1.5,
@@ -1455,6 +1466,8 @@ data:extend(
     minable = {mining_time = 1, result = "wall"},
     max_health = 350,
     corpse = "wall-remnants",
+    repair_sound = { filename = "__base__/sound/manual-repair-simple.wav" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.wav" },
     -- this kind of code can be used for having walls mirror the effect
     -- there can be multiple reaction items
     --attack_reaction =
@@ -1703,8 +1716,8 @@ data:extend(
     type = "corpse",
     name = "wall-remnants",
     icon = "__base__/graphics/icons/wall-remnants.png",
-    flags = {"placeable-neutral"},
-    order="c-g",
+    flags = {"placeable-neutral", "not-on-map"},
+    order="d[remnants]-c[wall]",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
@@ -1818,6 +1831,7 @@ data:extend(
   {
     type = "flame-thrower-explosion",
     name = "flame-thrower-explosion",
+    flags = {"not-on-map"},
     animation_speed = 1,
     animations =
     {
@@ -2002,6 +2016,7 @@ data:extend(
       frame_height = 91,
       frame_count = 33,
       line_length = 11,
+      animation_speed = 1 / 3,
       shift = {0.2, 0.15}
     },
     off_animation =
@@ -2015,9 +2030,9 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input"
     },
-    energy_usage = "60W",
+    energy_usage = "60kW",
     inputs =
     {
       "science-pack-1",
@@ -2032,7 +2047,7 @@ data:extend(
     type = "logistic-robot",
     name = "logistic-robot",
     icon = "__base__/graphics/icons/logistic-robot.png",
-    flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {hardness = 0.1, mining_time = 0.1, result = "logistic-robot"},
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
@@ -2040,9 +2055,9 @@ data:extend(
     max_payload_size = 1,
     speed = 0.05,
     transfer_distance = 0.5,
-    max_energy = "300J",
-    energy_per_tick = "0.01J",
-    energy_per_move = "1J",
+    max_energy = "300kJ",
+    energy_per_tick = "0.01kJ",
+    energy_per_move = "1kJ",
     min_to_charge = 0.2,
     max_to_charge = 0.95,
     picture =
@@ -2065,7 +2080,7 @@ data:extend(
     type = "construction-robot",
     name = "construction-robot",
     icon = "__base__/graphics/icons/construction-robot.png",
-    flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {hardness = 0.1, mining_time = 0.1, result = "construction-robot"},
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
@@ -2073,9 +2088,9 @@ data:extend(
     max_payload_size = 1,
     speed = 0.06,
     transfer_distance = 0.5,
-    max_energy = "300J",
-    energy_per_tick = "0.01J",
-    energy_per_move = "1J",
+    max_energy = "300kJ",
+    energy_per_tick = "0.01kJ",
+    energy_per_move = "1kJ",
     min_to_charge = 0.2,
     max_to_charge = 0.95,
     picture =
@@ -2102,7 +2117,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-provider"},
     max_health = 150,
     corpse = "small-remnants",
-    collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
@@ -2124,7 +2139,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-storage"},
     max_health = 150,
     corpse = "small-remnants",
-    collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
@@ -2146,7 +2161,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-requester"},
     max_health = 150,
     corpse = "small-remnants",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
@@ -2173,8 +2188,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "100KJ",
-      input_priority = "primary"
+      buffer_capacity = "100MJ",
+      usage_priority = "primary-input"
     },
     picture =
     {
@@ -2198,15 +2213,16 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "primary",
-      input_flow_limit = "2KW",
-      buffer_capacity = "48KJ"
+      usage_priority = "secondary-input",
+      input_flow_limit = "2MW",
+      buffer_capacity = "48MJ"
     },
-    recharge_minimum = "20KJ",
-    energy_usage = "200W",
+    recharge_minimum = "20MJ",
+    energy_usage = "200kW",
     -- per one charge slot
-    charging_energy = "200W",
-    radius = 25,
+    charging_energy = "200kW",
+    logistics_radius = 25,
+    construction_radius = 50,
     charge_approach_distance = 5,
     robot_slots_count = 7,
     material_slots_count = 7,
@@ -2252,12 +2268,135 @@ data:extend(
       filename = "__base__/graphics/entity/roboport/roboport-radius-visualization.png",
       width = 12,
       height = 12
+    },
+    construction_radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport-construction-radius-visualization.png",
+      width = 12,
+      height = 12
+    }
+  },
+
+  {
+    type = "storage-tank",
+    name = "storage-tank",
+    icon = "__base__/graphics/icons/storage-tank.png",
+    flags = {"placeable-player", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "storage-tank"},
+    max_health = 500,
+    corpse = "medium-remnants",
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    -- in liters
+    volume = 10000,
+    fluid_box =
+    {
+      base_area = 100,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        { position = {-1, -2} },
+        { position = {2, 1} },
+        { position = {1, 2} },
+        { position = {-2, -1} },
+      },
+    },
+    picture =
+    {
+      sheet = "__base__/graphics/entity/storage-tank/storage-tank.png",
+      priority = "extra-high",
+      frames = 2,
+      width = 140,
+      height = 115,
+      shift = {0.6875, 0.109375}
+    },
+  },
+
+  {
+    type = "pump",
+    name = "small-pump",
+    icon = "__base__/graphics/icons/small-pump.png",
+    flags = {"placeable-neutral", "player-creation", "filter-directions"},
+    minable = {mining_time = 1, result = "small-pump"},
+    max_health = 80,
+    fast_replaceable_group = "pipe",
+    corpse = "small-remnants",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 70
+      }
+    },
+    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    fluid_box =
+    {
+      base_area = 1,
+      pipe_covers = pipecoverspictures(),
+      pipe_connections =
+      {
+        { position = {0, -1}, type="output" },
+        { position = {0, 1}, type="input" },
+      },
+    },
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions = 0.01 / 2.5
+    },
+    energy_usage = "30kW",
+    pumping_speed = 0.5,
+    animations =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/small-pump/small-pump-up.png",
+        frame_width = 46,
+        frame_height = 56,
+        frame_count = 8,
+        shift = {0.09375, 0.03125},
+        animation_speed = 0.5,
+        run_mode = "backward"
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/small-pump/small-pump-right.png",
+        frame_width = 51,
+        frame_height = 56,
+        frame_count = 8,
+        shift = {0.265625, -0.21875},
+        animation_speed = 0.5,
+        run_mode = "backward"
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/small-pump/small-pump-down.png",
+        frame_width = 61,
+        frame_height = 58,
+        frame_count = 8,
+        shift = {0.421875, -0.125},
+        animation_speed = 0.5,
+        run_mode = "backward"
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/small-pump/small-pump-left.png",
+        frame_width = 56,
+        frame_height = 44,
+        frame_count = 8,
+        shift = {0.3125, 0.0625},
+        animation_speed = 0.5,
+        run_mode = "backward"
+      }
     }
   },
 
   {
     type = "explosion",
     name = "laser-bubble",
+    flags = {"not-on-map"},
     animation_speed = 1,
     animations =
     {
@@ -2277,6 +2416,7 @@ data:extend(
   {
     type = "explosion",
     name = "railgun-beam",
+    flags = {"not-on-map"},
     animation_speed = 3,
     rotate = true,
     beam = true,
@@ -2698,11 +2838,10 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "5KJ",
-      input_priority = "terciary",
-      input_flow_limit = "300W",
-      output_priority = "terciary",
-      output_flow_limit = "300W"
+      buffer_capacity = "5MJ",
+      usage_priority = "terciary",
+      input_flow_limit = "300kW",
+      output_flow_limit = "300kW"
     },
     picture =
     {
@@ -2756,7 +2895,7 @@ data:extend(
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_energy_consumption = "180W",
+    smelting_energy_consumption = "180kW",
     smelting_speed = 1,
     source_inventory_size = 1,
     energy_source =
@@ -2771,7 +2910,8 @@ data:extend(
           name = "smoke",
           deviation = {0.1, 0.1},
           frequency = 0.5,
-          position = {0, -2.3}
+          position = {0, 0},
+          starting_vertical_speed = 0.05
         }
       }
     },
@@ -2825,12 +2965,12 @@ data:extend(
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
     smelting_speed = 1,
-    smelting_energy_consumption = "180W",
+    smelting_energy_consumption = "180kW",
     source_inventory_size = 1,
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary",
+      usage_priority = "secondary-input",
       emissions = 0.005
     },
     on_animation =
@@ -2887,15 +3027,16 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      input_priority = "secondary"
+      usage_priority = "secondary-input"
     },
-    energy_usage = "480W",
+    energy_usage = "480kW",
     distribution_effectivity = 0.5,
     num_module_slots = 2
   },
   {
     type = "smoke",
     name = "poison-cloud",
+    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
@@ -2946,6 +3087,7 @@ data:extend(
   {
     type = "combat-robot",
     name = "distractor",
+    flags = {"not-on-map"},
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
     order="e-a-b",
@@ -3016,6 +3158,7 @@ data:extend(
   {
     type = "combat-robot",
     name = "defender",
+    flags = {"not-on-map"},
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
     order="e-a-a",
@@ -3102,6 +3245,7 @@ data:extend(
   {
     type = "combat-robot",
     name = "destroyer",
+    flags = {"not-on-map"},
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
     order="e-a-c",
@@ -3174,6 +3318,7 @@ data:extend(
   {
     type = "sticker",
     name = "slowdown-sticker",
+    flags = {"not-on-map"},
     --icon = "__base__/graphics/icons/slowdown-sticker.png",
     flags = {},
     animation =
@@ -3187,6 +3332,267 @@ data:extend(
     },
     duration_in_ticks = 30 * 60,
     magnitude = 0.5
-  }
+  },
+
+  {
+    type = "assembling-machine",
+    name = "oil-refinery",
+    icon = "__base__/graphics/icons/steam-engine.png",
+    flags = {"placeable-neutral","player-creation"},
+    minable = {mining_time = 1, result = "oil-refinery"},
+    max_health = 300,
+    corpse = "big-remnants",
+    collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
+    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    energy_source =
+    {
+      type = "electric",
+      output_priority = "secondary"
+    },
+    module_slots = 1,
+    crafting_categories = {"oil-processing"},
+    crafting_speed = 1,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions = 0.03 / 3.5
+    },
+    energy_usage = "420kW",
+    ingredient_count = 4,
+    --module_slots = 4,
+    --allowed_effects = {"consumption", "speed", "productivity", "pollution"},
+    animation =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
+        frame_width = 337,
+        frame_height = 255,
+        frame_count = 1,
+        shift = {2.515625, 0.484375}
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
+        x = 337,
+        frame_width = 337,
+        frame_height = 255,
+        frame_count = 1,
+        shift = {2.515625, 0.484375}
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
+        x = 674,
+        frame_width = 337,
+        frame_height = 255,
+        frame_count = 1,
+        shift = {2.515625, 0.484375}
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
+        x = 1011,
+        frame_width = 337,
+        frame_height = 255,
+        frame_count = 1,
+        shift = {2.515625, 0.484375}
+      }
+    },
+    working_visualisations =
+    {
+      {
+        north_position = {1.03125, -1.55},
+        east_position = {-1.65625, -1.3},
+        south_position = {-1.875, -2.0},
+        west_position = {1.8437, -1.2},
+        animation =
+        {
+          filename = "__base__/graphics/entity/oil-refinery/oil-refinery-fire.png",
+          frame_count = 29,
+          frame_width = 16,
+          frame_height = 35,
+          scale = 1.5,
+          shift = {0, -0.5625},
+          run_mode="backward"
+        }
+      }
+    },
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {-1, 3} }}
+      },
+      {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {1, 3} }}
+      },
+      {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        base_level = 1,
+        pipe_connections = {{ position = {-2, -3} }}
+      },
+      {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        base_level = 1,
+        pipe_connections = {{ position = {0, -3} }}
+      },
+      {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        base_level = 1,
+        pipe_connections = {{ position = {2, -3} }}
+      }
+    },
+    pipe_covers = pipecoverspictures()
+  },
+
+  {
+    type = "assembling-machine",
+    name = "chemical-plant",
+    icon = "__base__/graphics/icons/chemical-plant.png",
+    flags = {"placeable-neutral","placeable-player", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "chemical-plant"},
+    max_health = 300,
+    corpse = "big-remnants",
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    module_slots = 2,
+    animation =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
+        frame_width = 156,
+        frame_height = 141,
+        frame_count = 1,
+        shift = {0.5, -0.078125}
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
+        x = 156,
+        frame_width = 156,
+        frame_height = 141,
+        frame_count = 1,
+        shift = {0.5, -0.078125}
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
+        x = 312,
+        frame_width = 156,
+        frame_height = 141,
+        frame_count = 1,
+        shift = {0.5, -0.078125}
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
+        x = 468,
+        frame_width = 156,
+        frame_height = 141,
+        frame_count = 1,
+        shift = {0.5, -0.078125}
+      }
+    },
+    working_visualisations =
+    {
+      {
+        north_position = {0.94, -0.73},
+        west_position = {-0.3, 0.02},
+        south_position = {-0.97, -1.47},
+        east_position = {0.05, -1.46},
+        animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch.png",
+          frame_count = 35,
+          frame_width = 17,
+          frame_height = 12,
+          animation_speed = 0.15
+        }
+      },
+      {
+        north_position = {1.4, -0.23},
+        west_position = {-0.3, 0.55},
+        south_position = {-1, -1},
+        east_position = {0.05, -0.96},
+        north_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
+          frame_count = 1,
+          frame_width = 21,
+          frame_height = 10
+        },
+        west_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
+          x = 21,
+          frame_count = 1,
+          frame_width = 21,
+          frame_height = 10
+        },
+        south_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
+          x = 42,
+          frame_count = 1,
+          frame_width = 21,
+          frame_height = 10
+        }
+      }
+    },
+    crafting_categories = {"crafting"},
+    crafting_speed = 1.25,
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions = 0.03 / 3.5
+    },
+    energy_usage = "210kW",
+    ingredient_count = 4,
+    crafting_categories = {"chemistry"},
+    fluid_boxes =
+    {
+      {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {-1, -2} }}
+      },
+      {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {1, -2} }}
+      },
+      {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        base_level = 1,
+        pipe_connections = {{ position = {-1, 2} }}
+      },
+      {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        base_level = 1,
+        pipe_connections = {{ position = {1, 2} }}
+      }
+    }
+  },
+
 }
 )

@@ -219,7 +219,7 @@ data:extend(
     selectable_in_game = false,
     selection_box = {{-1, -1}, {1, 1}},
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
-    order="b-c-b",
+    order = "c[corpse]-a[biter]-b[medium]",
     dying_speed = 0.04,
     final_render_layer = "corpse",
     animation =
@@ -261,7 +261,7 @@ data:extend(
     icon = "__base__/graphics/icons/big-biter-corpse.png",
     selectable_in_game = false,
     selection_box = {{-1, -1}, {1, 1}},
-    order="b-c-c",
+    order = "c[corpse]-a[biter]-c[big]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
     dying_speed = 0.04,
     final_render_layer = "corpse",
