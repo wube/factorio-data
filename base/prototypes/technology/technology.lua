@@ -883,7 +883,7 @@ data:extend(
         recipe = "solar-panel"
       }
     },
-    prerequisites = {"optics", "advanced-electronics", "steel-processing"},
+    prerequisites = {"optics", "electronics", "steel-processing"},
     unit =
     {
       count = 250,

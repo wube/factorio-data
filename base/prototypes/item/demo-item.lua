@@ -93,11 +93,20 @@ data:extend(
   },
   {
     type = "item",
+    name = "copper-cable",
+    icon = "__base__/graphics/icons/copper-cable.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "a[copper-cable]",
+    stack_size = 200
+  },
+  {
+    type = "item",
     name = "iron-stick",
     icon = "__base__/graphics/icons/iron-stick.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "a[iron-stick]",
+    order = "b[iron-stick]",
     stack_size = 100
   },
   {
@@ -106,17 +115,8 @@ data:extend(
     icon = "__base__/graphics/icons/iron-gear-wheel.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "b[iron-gear-wheel]",
+    order = "c[iron-gear-wheel]",
     stack_size = 100
-  },
-  {
-    type = "item",
-    name = "copper-cable",
-    icon = "__base__/graphics/icons/copper-cable.png",
-    flags = {"goes-to-main-inventory"},
-    subgroup = "circuit-network",
-    order = "a[wires]-a[copper-cable]",
-    stack_size = 200
   },
   {
     type = "item",
@@ -124,7 +124,7 @@ data:extend(
     icon = "__base__/graphics/icons/electronic-circuit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "c[electronic-circuit]",
+    order = "d[electronic-circuit]",
     stack_size = 200
   },
   {

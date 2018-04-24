@@ -136,6 +136,7 @@ data:extend(
         }
       }
     },
+    build_base_evolution_requirement = 0.3,
     autoplace = enemy_worm_autoplace(1),
     call_for_help_radius = 40
   },
@@ -207,6 +208,7 @@ data:extend(
         }
       }
     },
+    build_base_evolution_requirement = 0.5,
     autoplace = enemy_worm_autoplace(3),
     call_for_help_radius = 40
   },

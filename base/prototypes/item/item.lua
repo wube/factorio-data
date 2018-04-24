@@ -381,7 +381,7 @@ data:extend(
     icon = "__base__/graphics/icons/advanced-circuit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "d[advanced-circuit]",
+    order = "e[advanced-circuit]",
     stack_size = 200
   },
   {
@@ -390,7 +390,7 @@ data:extend(
     icon = "__base__/graphics/icons/processing-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "e[processing-unit]",
+    order = "f[processing-unit]",
     stack_size = 100
   },
   {
@@ -696,7 +696,7 @@ data:extend(
     icon = "__base__/graphics/icons/engine-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "f[engine-unit]",
+    order = "g[engine-unit]",
     stack_size = 50
   },
   {
@@ -705,7 +705,7 @@ data:extend(
     icon = "__base__/graphics/icons/electric-engine-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "g[electric-engine-unit]",
+    order = "h[electric-engine-unit]",
     stack_size = 50
   },
   {
@@ -714,7 +714,7 @@ data:extend(
     icon = "__base__/graphics/icons/explosives.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "h[explosives]",
+    order = "i[explosives]",
     stack_size = 50
   },
   {
@@ -723,7 +723,7 @@ data:extend(
     icon = "__base__/graphics/icons/battery.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "i[battery]",
+    order = "j[battery]",
     stack_size = 200
   },
   {
@@ -732,7 +732,7 @@ data:extend(
     icon = "__base__/graphics/icons/flying-robot-frame.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "j[flying-robot-frame]",
+    order = "k[flying-robot-frame]",
     stack_size = 50
   },
   {
@@ -781,7 +781,7 @@ data:extend(
     icon = "__base__/graphics/icons/rocket-structure.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "k[rocket-structure]",
+    order = "l[rocket-structure]",
     stack_size = 10
   },
   {
@@ -791,7 +791,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     fuel_value = "225MJ",
     subgroup = "intermediate-product",
-    order = "l[rocket-fuel]",
+    order = "m[rocket-fuel]",
     stack_size = 10
   },
   {
@@ -800,7 +800,7 @@ data:extend(
     icon = "__base__/graphics/icons/rocket-control-unit.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "m[rocket-control-unit]",
+    order = "n[rocket-control-unit]",
     stack_size = 10
   },
   {
@@ -809,7 +809,7 @@ data:extend(
     icon = "__base__/graphics/icons/rocket-part.png",
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "intermediate-product",
-    order = "n[rocket-part]",
+    order = "o[rocket-part]",
     stack_size = 5
   },
   {
@@ -818,7 +818,7 @@ data:extend(
     icon = "__base__/graphics/icons/satellite.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "o[satellite]",
+    order = "p[satellite]",
     stack_size = 1
   },
   {
