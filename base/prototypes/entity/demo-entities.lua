@@ -2415,6 +2415,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "inserter"},
     max_health = 150,
     corpse = "small-remnants",
+    allow_custom_vectors = false,
     resistances =
     {
       {
@@ -2582,6 +2583,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "burner-inserter"},
     max_health = 100,
     corpse = "small-remnants",
+    allow_custom_vectors = false,
     resistances =
     {
       {

@@ -2171,6 +2171,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "long-handed-inserter"},
     max_health = 160,
     corpse = "small-remnants",
+    allow_custom_vectors = false,
     resistances =
     {
       {
@@ -2335,6 +2336,7 @@ data:extend(
     name = "fast-inserter",
     icon = "__base__/graphics/icons/fast-inserter.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    allow_custom_vectors = false,
     minable =
     {
       hardness = 0.2,
@@ -2508,6 +2510,7 @@ data:extend(
     icon = "__base__/graphics/icons/stack-inserter.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     stack = true,
+    allow_custom_vectors = false,
     minable =
     {
       hardness = 0.2,
@@ -2681,6 +2684,7 @@ data:extend(
     icon = "__base__/graphics/icons/stack-filter-inserter.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     stack = true,
+    allow_custom_vectors = false,
     filter_count = 1,
     minable =
     {
@@ -2856,6 +2860,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "filter-inserter"},
     max_health = 150,
+    allow_custom_vectors = false,
     corpse = "small-remnants",
     resistances =
     {

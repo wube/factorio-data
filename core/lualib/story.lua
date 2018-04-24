@@ -291,6 +291,7 @@ function export_entities(param)
     return inventory
   end
   local exported = {}
+  local index_map = {}
   local count = 1
   for k, entity in pairs (entities) do
     if entity.valid then
@@ -312,6 +313,11 @@ function export_entities(param)
         end
         if entity.direction then
           info.direction = entity.direction
+        end
+        info.index = count
+        local unit_number = entity.unit_number
+        if unit_number then
+          index_map[unit_number] = count
         end
         info.name = entity.name
         if entity.type == "resource" then
@@ -360,7 +366,23 @@ function export_entities(param)
         info.destructible = entity.destructible
         exported[count] = info
         count = count + 1
-        entity.destroy()
+      end
+    end
+  end
+  for k, entity in pairs (entities) do
+    if entity.valid and entity.circuit_connected_entities and entity.unit_number then
+      local entity_index = index_map[entity.unit_number]
+      if entity_index then
+        exported[entity_index].circuit_connection_definitions = {}
+        for j, definition in pairs (entity.circuit_connection_definitions) do
+          local unit_number = definition.target_entity.unit_number
+          if unit_number then
+            local index = index_map[unit_number]
+            if index then
+              exported[entity_index].circuit_connection_definitions[index] = {wire = definition.wire, source_circuit_id = definition.source_circuit_id, target_circuit_id = definition.target_circuit_id}
+            end
+          end
+        end
       end
     end
   end
@@ -386,6 +408,7 @@ function recreate_entities(array, param, bool)
   local created_count = 1
   local remaining = {}
   local remaining_count = 1
+  local index_map = {}
   for k, entity in pairs (array) do
     local save_position = {x = entity.position.x, y = entity.position.y}
     entity.position.x = entity.position.x + offset[1]
@@ -394,9 +417,11 @@ function recreate_entities(array, param, bool)
     local created = false
     if bool or (entity.name ~= "locomotive" and entity.name ~= "rail-signal") then
       created = surface.create_entity(entity)
+      index_map[entity.index] = created
     end
     entity.position = save_position
     if created then
+      index_map[entity.index] = created
       if entity.filters then
         for k, filter in pairs (entity.filters) do
           created.set_filter(filter.index, filter.name)
@@ -454,6 +479,19 @@ function recreate_entities(array, param, bool)
     for k, entity in pairs (recreate_entities(remaining, param, true)) do
       created_entities[created_count] = entity
       created_count = created_count + 1
+    end
+  end
+  for k, entity in pairs (array) do
+    local created = index_map[entity.index]
+    if created and created.valid then
+      if entity.circuit_connection_definitions then
+        for index, definition in pairs (entity.circuit_connection_definitions) do
+          entity_to_connect = index_map[index]
+          if entity_to_connect.valid then
+            created.connect_neighbour({wire = definition.wire, target_entity = entity_to_connect, source_circuit_id = definition.source_circuit_id, target_circuit_id = definition.target_circuit_id})
+          end
+        end
+      end
     end
   end
   return created_entities
