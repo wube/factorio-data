@@ -267,6 +267,7 @@ data:extend(
     icon = "__base__/graphics/icons/player.png",
     flags = {"pushable", "placeable-off-grid", "breaths-air", "not-repairable", "not-on-map"},
     max_health = 100,
+    alert_when_damaged = false,
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -1.4}, {0.4, 0.2}},
@@ -1370,7 +1371,7 @@ data:extend(
       height = 186,
       frame_count = 32,
       line_length = 8,
-      shift = {0.812, 0.031}
+      shift = {0.812, 0.03125}
     },
     smoke =
     {

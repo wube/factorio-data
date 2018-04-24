@@ -47,6 +47,42 @@ data:extend(
   },
   {
     type = "ambient-sound",
+    name = "censeqs-discrepancy",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/censeqs-discrepancy.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "efficiency-program",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/efficiency-program.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "expansion",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/expansion.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "the-search-for-iron",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/the-search-for-iron.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
     name = "gathering-horizon",
     track_type = "main-track",
     sound =
@@ -99,7 +135,24 @@ data:extend(
       filename = "__base__/sound/ambient/pollution.ogg"
     }
   },
-
+  {
+    type = "ambient-sound",
+    name = "turbine-dynamics",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/turbine-dynamics.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "sentient",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/sentient.ogg"
+    }
+  },
 
   {
     type = "ambient-sound",

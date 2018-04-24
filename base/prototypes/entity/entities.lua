@@ -1781,8 +1781,6 @@ data:extend(
       }
     },
     programmable = true,
-    rotation_speed = 0.035,
-    uses_arm_movement = "basic-inserter",
 
     circuit_wire_connection_point =
     {
@@ -4886,6 +4884,7 @@ data:extend(
     order="e-a-b",
     subgroup="capsule",
     max_health = 90,
+    alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
     distance_per_frame = 0.13,
@@ -5016,6 +5015,7 @@ data:extend(
     subgroup="capsule",
     order="e-a-a",
     max_health = 60,
+    alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     distance_per_frame = 0.13,
@@ -5163,6 +5163,7 @@ data:extend(
     subgroup="capsule",
     order="e-a-c",
     max_health = 60,
+    alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     distance_per_frame = 0.13,
