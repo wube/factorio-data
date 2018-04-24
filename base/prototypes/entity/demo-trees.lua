@@ -844,7 +844,7 @@ data:extend(
   {
     type = "tree",
     name = "green-coral",
-    flags = {"placeable-neutral", "placeable-off-grid"},
+    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
     icon = "__base__/graphics/icons/green-coral.png",
     minable =
     {

@@ -396,7 +396,7 @@ data:extend(
     icon = "__base__/graphics/icons/small-scorchmark.png",
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    collision_mask = {"water-tile", "not-colliding-with-itself"},
+    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
     selection_box = {{-1, -1}, {1, 1}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes

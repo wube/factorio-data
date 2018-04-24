@@ -429,7 +429,7 @@ data:extend(
         recipe = "diesel-locomotive"
       }
     },
-    prerequisites = {"logistics-2", "steel-processing"},
+    prerequisites = {"logistics-2", "steel-processing", "engine"},
     unit =
     {
       count = 70,
@@ -795,7 +795,7 @@ data:extend(
         recipe = "power-armor"
       }
     },
-    prerequisites = {"armor-making-3"},
+    prerequisites = {"armor-making-3", "electric-engine"},
     unit =
     {
       count = 100,
@@ -815,7 +815,7 @@ data:extend(
         recipe = "power-armor-mk2"
       }
     },
-    prerequisites = {"power-armor", "alien-technology"},
+    prerequisites = {"power-armor", "alien-technology", "speed-module-3", "effectivity-module-3"},
     unit =
     {
       count = 150,

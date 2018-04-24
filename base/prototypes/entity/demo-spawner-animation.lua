@@ -14,7 +14,7 @@ return
         axially_symmetrical = false,
         direction_count = 1,
         run_mode = "forward-then-backward",
-        shift = {0.140625, -0.234375},
+        shift = {0.140625 - 0.65, -0.234375},
         y = variation * 181
       },
       {
@@ -25,7 +25,7 @@ return
         animation_speed = 0.18,
         run_mode = "forward-then-backward",
         axially_symmetrical = false,
-        shift = {-0.34375, -0.375},
+        shift = {-0.34375 - 0.65, -0.375},
         line_length = 8,
         tint = tint,
         y = variation * 148
@@ -45,7 +45,7 @@ return
         frame_count = 20,
         axially_symmetrical = false,
         direction_count = 1,
-        shift = {-0.015625, -0.28125},
+        shift = {-0.015625 - 0.65, -0.28125},
         stripes =
         {
          {
@@ -74,7 +74,7 @@ return
         frame_count = 20,
         axially_symmetrical = false,
         direction_count = 1,
-        shift = {-0.34375, -0.375},
+        shift = {-0.34375 - 0.65, -0.375},
         tint = tint,
         stripes =
         {
