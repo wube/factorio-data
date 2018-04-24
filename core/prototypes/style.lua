@@ -252,6 +252,12 @@ data:extend(
       parent = "label_style",
       font_color = warning_red_color
     },
+    mod_optional_dependency_invalid_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font_color = default_orange_color
+    },
     description_label_style =
     {
       type = "label_style",

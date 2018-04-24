@@ -4371,6 +4371,7 @@ data:extend(
       "not-on-map"
     },
     minable = {mining_time = 1, result = "land-mine"},
+    mined_sound = { filename = "__core__/sound/deconstruct-small.ogg" },
     max_health = 15,
     corpse = "small-remnants",
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
@@ -12455,11 +12456,25 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     picture =
     {
-      filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
-      priority = "extra-high",
-      width = 46,
-      height = 33,
-      shift = {0.25, 0.015625}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
+          priority = "extra-high",
+          width = 46,
+          height = 33,
+          shift = {0.25, 0.015625},
+        },
+        {
+          filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
+          priority = "extra-high",
+          width = 10,
+          height = 33,
+          x = 18,
+          shift = {0.25, 0.015625},
+          apply_runtime_tint = true
+        }
+      }
     }
   },
   {
