@@ -1694,7 +1694,7 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/explosion/explosion-1.png",
-        priority = "extra-high",
+        priority = "high",
         width = 64,
         height = 59,
         frame_count = 16,
@@ -1702,7 +1702,7 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-2.png",
-        priority = "extra-high",
+        priority = "high",
         width = 64,
         height = 57,
         frame_count = 16,
@@ -1710,7 +1710,7 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-3.png",
-        priority = "extra-high",
+        priority = "high",
         width = 64,
         height = 49,
         frame_count = 16,
@@ -1718,7 +1718,7 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-4.png",
-        priority = "extra-high",
+        priority = "high",
         width = 64,
         height = 51,
         frame_count = 16,
@@ -1926,7 +1926,7 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
-        priority = "extra-high",
+        priority = "high",
         width = 112,
         height = 94,
         frame_count = 54,
@@ -1986,7 +1986,7 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
-        priority = "extra-high",
+        priority = "high",
         width = 112,
         height = 94,
         scale = 0.8,
@@ -2047,7 +2047,7 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
-        priority = "extra-high",
+        priority = "high",
         width = 112,
         height = 94,
         scale = 0.8,
@@ -2119,7 +2119,7 @@ data:extend(
     {
       {
         filename = "__core__/graphics/empty.png",
-        priority = "extra-high",
+        priority = "high",
         width = 1,
         height = 1,
         frame_count = 1
@@ -2149,7 +2149,7 @@ data:extend(
     {
       {
         filename = "__core__/graphics/empty.png",
-        priority = "extra-high",
+        priority = "high",
         width = 1,
         height = 1,
         frame_count = 1
@@ -2193,7 +2193,7 @@ data:extend(
     {
       {
         filename = "__core__/graphics/empty.png",
-        priority = "extra-high",
+        priority = "high",
         width = 1,
         height = 1,
         frame_count = 1

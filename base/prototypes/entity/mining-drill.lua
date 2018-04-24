@@ -96,7 +96,7 @@ data:extend(
         layers = 
         {
           {
-            priority = "extra-high",
+            priority = "high",
             filename = "__base__/graphics/entity/pumpjack/pumpjack-horsehead.png",
             line_length = 8,
             width = 104,
@@ -106,7 +106,7 @@ data:extend(
             animation_speed = 0.5,
             hr_version = 
             {
-              priority = "extra-high",
+              priority = "high",
               filename = "__base__/graphics/entity/pumpjack/hr-pumpjack-horsehead.png",
               animation_speed = 0.5,
               scale = 0.5,
@@ -118,7 +118,7 @@ data:extend(
             }
           },
           {
-            priority = "extra-high",
+            priority = "high",
             filename = "__base__/graphics/entity/pumpjack/pumpjack-horsehead-shadow.png",
             animation_speed = 0.5,
             draw_as_shadow = true,
@@ -129,7 +129,7 @@ data:extend(
             shift = util.by_pixel(17.5, 14.5),
             hr_version = 
             {
-              priority = "extra-high",
+              priority = "high",
               filename = "__base__/graphics/entity/pumpjack/hr-pumpjack-horsehead-shadow.png",
               animation_speed = 0.5,
               draw_as_shadow = true,

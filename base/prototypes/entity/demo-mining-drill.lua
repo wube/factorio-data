@@ -47,7 +47,7 @@ data:extend(
     {
       north =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N.png",
         line_length = 8,
         width = 98,
@@ -58,7 +58,7 @@ data:extend(
         shift = util.by_pixel(0, -8.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N.png",
           line_length = 8,
           width = 196,
@@ -73,7 +73,7 @@ data:extend(
       },
       east =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E.png",
         line_length = 8,
         width = 105,
@@ -84,7 +84,7 @@ data:extend(
         shift = util.by_pixel(3.5, -1),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E.png",
           line_length = 8,
           width = 211,
@@ -99,7 +99,7 @@ data:extend(
       },
       south =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S.png",
         line_length = 8,
         width = 98,
@@ -110,7 +110,7 @@ data:extend(
         shift = util.by_pixel(0, -1.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S.png",
           line_length = 8,
           width = 196,
@@ -125,7 +125,7 @@ data:extend(
       },
       west =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W.png",
         line_length = 8,
         width = 105,
@@ -136,7 +136,7 @@ data:extend(
         shift = util.by_pixel(-3.5, -1),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W.png",
           line_length = 8,
           width = 211,
@@ -154,7 +154,7 @@ data:extend(
     {
       north =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-drill-shadow.png",
         flags = { "shadow" },
         line_length = 8,
@@ -166,7 +166,7 @@ data:extend(
         shift = util.by_pixel(1.5, -7.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-drill-shadow.png",
           flags = { "shadow" },
           line_length = 8,
@@ -182,7 +182,7 @@ data:extend(
       },
       east =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-drill-shadow.png",
         flags = { "shadow" },
         line_length = 8,
@@ -194,7 +194,7 @@ data:extend(
         shift = util.by_pixel(6, -0.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-drill-shadow.png",
           flags = { "shadow" },
           line_length = 8,
@@ -210,7 +210,7 @@ data:extend(
       },
       south =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-drill-shadow.png",
         flags = { "shadow" },
         line_length = 8,
@@ -222,7 +222,7 @@ data:extend(
         shift = util.by_pixel(1, 2.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-drill-shadow.png",
           flags = { "shadow" },
           line_length = 8,
@@ -238,7 +238,7 @@ data:extend(
       },
       west =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-drill-shadow.png",
         flags = { "shadow" },
         line_length = 8,
@@ -250,7 +250,7 @@ data:extend(
         shift = util.by_pixel(1, -0.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-drill-shadow.png",
           flags = { "shadow" },
           line_length = 8,
@@ -459,7 +459,7 @@ data:extend(
     {
       north =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-drill-received-shadow.png",
         tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
         line_length = 8,
@@ -471,7 +471,7 @@ data:extend(
         shift = util.by_pixel(-1, -3),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-drill-received-shadow.png",
           tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
           line_length = 8,
@@ -487,7 +487,7 @@ data:extend(
       },
       east =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-drill-received-shadow.png",
         tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
         line_length = 8,
@@ -499,7 +499,7 @@ data:extend(
         shift = util.by_pixel(0, -2),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-drill-received-shadow.png",
           tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
           line_length = 8,
@@ -515,7 +515,7 @@ data:extend(
       },
       south =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-drill-received-shadow.png",
         tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
         line_length = 8,
@@ -527,7 +527,7 @@ data:extend(
         shift = util.by_pixel(-1, -1),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-drill-received-shadow.png",
           tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
           line_length = 8,
@@ -543,7 +543,7 @@ data:extend(
       },
       west =
       {
-        priority = "extra-high",
+        priority = "high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-drill-received-shadow.png",
         tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
         line_length = 8,
@@ -555,7 +555,7 @@ data:extend(
         shift = util.by_pixel(0, -1.5),
         run_mode = "forward-then-backward",
         hr_version = {
-          priority = "extra-high",
+          priority = "high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-drill-received-shadow.png",
           tint = { r=0.5, g=0.5, b=0.5, a=0.5 },
           line_length = 8,
@@ -925,7 +925,7 @@ data:extend(
         layers =
         {
           {
-            priority = "extra-high",
+            priority = "high",
             width = 87,
             height = 95,
             line_length = 4,
@@ -935,7 +935,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 173,
               height = 188,
               line_length = 4,
@@ -948,7 +948,7 @@ data:extend(
             }
           },
           {
-            priority = "extra-high",
+            priority = "high",
             width = 109,
             height = 76,
             line_length = 4,
@@ -959,7 +959,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 217,
               height = 150,
               line_length = 4,
@@ -979,7 +979,7 @@ data:extend(
         layers =
         {
           {
-            priority = "extra-high",
+            priority = "high",
             width = 93,
             height = 84,
             line_length = 4,
@@ -989,7 +989,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 185,
               height = 168,
               line_length = 4,
@@ -1002,7 +1002,7 @@ data:extend(
             },
           },
           {
-            priority = "extra-high",
+            priority = "high",
             width = 93,
             height = 65,
             line_length = 4,
@@ -1013,6 +1013,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version = {
+              priority = "high",
               width = 185,
               height = 128,
               line_length = 4,
@@ -1032,7 +1033,7 @@ data:extend(
         layers =
         {
           {
-            priority = "extra-high",
+            priority = "high",
             width = 87,
             height = 87,
             line_length = 4,
@@ -1042,7 +1043,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 174,
               height = 174,
               line_length = 4,
@@ -1055,7 +1056,7 @@ data:extend(
             },
           },
           {
-            priority = "extra-high",
+            priority = "high",
             width = 88,
             height = 69,
             line_length = 4,
@@ -1066,7 +1067,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 174,
               height = 137,
               line_length = 4,
@@ -1086,7 +1087,7 @@ data:extend(
         layers =
         {
           {
-            priority = "extra-high",
+            priority = "high",
             width = 91,
             height = 88,
             line_length = 4,
@@ -1096,7 +1097,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 180,
               height = 176,
               line_length = 4,
@@ -1109,7 +1110,7 @@ data:extend(
             },
           },
           {
-            priority = "extra-high",
+            priority = "high",
             width = 89,
             height = 66,
             line_length = 4,
@@ -1120,7 +1121,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version = {
-              priority = "extra-high",
+              priority = "high",
               width = 176,
               height = 130,
               line_length = 4,

@@ -23,7 +23,7 @@ rail_pictures_internal = function(elems)
       part[elem[1]] =
       {
         filename = string.format("__base__/graphics/entity/%s/%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
-        priority = "extra-high",
+        priority = elem.priority or "extra-high",
         flags = elem.mipmap and { "icon" } or { "low-object" },
         width = key[3],
         height = key[4],
@@ -32,7 +32,7 @@ rail_pictures_internal = function(elems)
         hr_version =
         {
           filename = string.format("__base__/graphics/entity/%s/hr-%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
-          priority = "extra-high",
+          priority = elem.priority or "extra-high",
           flags = elem.mipmap and { "icon" } or { "low-object" },
           width = key[3]*2,
           height = key[4]*2,

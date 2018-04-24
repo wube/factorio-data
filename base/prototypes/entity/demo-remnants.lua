@@ -1,10 +1,10 @@
 
 destroyed_rail_pictures = function()
-  return rail_pictures_internal({{"metals", "metals-remnants", mipmap = true, variations = 3},
-                                 {"backplates", "backplates-remnants", mipmap = true, variations = 3},
-                                 {"ties", "ties-remnants", variations = 3},
-                                 {"stone_path", "stone-path-remnants", variations = 3},
-                                 {"stone_path_background", "stone-path-background-remnants", variations = 3}})
+  return rail_pictures_internal({{"metals", "metals-remnants", mipmap = true, variations = 3, priority = "high"},
+                                 {"backplates", "backplates-remnants", mipmap = true, variations = 3, priority = "high"},
+                                 {"ties", "ties-remnants", variations = 3, priority = "high"},
+                                 {"stone_path", "stone-path-remnants", variations = 3, priority = "high"},
+                                 {"stone_path_background", "stone-path-background-remnants", variations = 3, priority = "high"}})
 end
 
 data:extend(
