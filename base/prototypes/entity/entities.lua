@@ -789,7 +789,7 @@ data:extend(
       shift = {0.7, 0.12}
     },
     crafting_categories = {"crafting"},
-    effectivity = 1.5,
+    effectivity = 2,
     energy_source =
     {
       type = "electric",
