@@ -2692,6 +2692,14 @@ data:extend(
         corner_size = {3, 3},
         position = {16, 0}
       },
+      disabled_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        corner_size = {3, 3},
+        position = {16, 24}
+      },
       selection_background_color= {r=0.66, g=0.7, b=0.83}
     },
     info_box_textbox =
@@ -3472,6 +3480,15 @@ data:extend(
         width = 16,
         height = 16,
         x = 77,
+        y = 17
+      },
+      disabled_background =
+      {
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        width = 16,
+        height = 16,
+        x = 26,
         y = 17
       },
       checked =

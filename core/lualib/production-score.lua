@@ -122,6 +122,13 @@ production_score.generate_price_list = function(param, seed_prices)
   end
   local product_list = get_product_list()
   local ln = math.log
+  local count_table = function(table)
+    local count = 0
+    for k, v in pairs (table) do
+      count = count + 1
+    end
+    return count
+  end
   get_price_recursive = function(name, current_loop)
     local price = price_list[name]
     if price then return price else price = 0 end
@@ -144,7 +151,7 @@ production_score.generate_price_list = function(param, seed_prices)
         end
       end
       if this_recipe_cost > 0 then
-        this_recipe_cost = (this_recipe_cost * (param.ingredient_exponent ^ (#recipe-1))) + ((ln(recipe.energy + 1) * (this_recipe_cost ^ 0.5)))
+        this_recipe_cost = (this_recipe_cost * (param.ingredient_exponent ^ (count_table(recipe)-2))) + ((ln(recipe.energy + 1) * (this_recipe_cost ^ 0.5)))
         if recipe_cost then
           recipe_cost = math.min(recipe_cost, this_recipe_cost)
         else

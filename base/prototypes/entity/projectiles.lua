@@ -1231,7 +1231,7 @@ data:extend(
     light = {intensity = 0.5, size = 4},
     animation =
     {
-      filename = "__base__/graphics/icons/explosives.png", -- todo: icon for cliff buster
+      filename = "__base__/graphics/icons/cliff-explosives.png",
       frame_count = 1,
       width = 24,
       height = 24,
@@ -1239,7 +1239,7 @@ data:extend(
     },
     shadow =
     {
-      filename = "__base__/graphics/entity/grenade/grenade-shadow.png", -- todo: icon for cliff buster
+      filename = "__base__/graphics/entity/grenade/grenade-shadow.png",
       frame_count = 1,
       width = 24,
       height = 24,
