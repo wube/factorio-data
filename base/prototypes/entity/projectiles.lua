@@ -45,8 +45,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/laser/laser.png",
       frame_count = 1,
-      frame_width = 7,
-      frame_height = 14,
+      width = 7,
+      height = 14,
       priority = "high"
     },
     speed = 0.15
@@ -80,8 +80,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/blue-laser/blue-laser.png",
       frame_count = 1,
-      frame_width = 7,
-      frame_height = 14,
+      width = 7,
+      height = 14,
       priority = "high"
     },
     speed = 0.15
@@ -115,16 +115,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
       frame_count = 1,
-      frame_width = 10,
-      frame_height = 30,
+      width = 10,
+      height = 30,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
       frame_count = 1,
-      frame_width = 10,
-      frame_height = 30,
+      width = 10,
+      height = 30,
       priority = "high"
     },
     smoke =
@@ -190,16 +190,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
       frame_count = 1,
-      frame_width = 10,
-      frame_height = 30,
+      width = 10,
+      height = 30,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
       frame_count = 1,
-      frame_width = 10,
-      frame_height = 30,
+      width = 10,
+      height = 30,
       priority = "high"
     },
     smoke =
@@ -241,8 +241,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
       frame_count = 1,
-      frame_width = 3,
-      frame_height = 50,
+      width = 3,
+      height = 50,
       priority = "high"
     },
   },
@@ -270,8 +270,48 @@ data:extend(
     {
       filename = "__base__/graphics/entity/piercing-bullet/piercing-bullet.png",
       frame_count = 1,
-      frame_width = 3,
-      frame_height = 50,
+      width = 3,
+      height = 50,
+      priority = "high"
+    },
+  },
+  {
+    type = "projectile",
+    name = "cannon-projectile",
+    flags = {"not-on-map"},
+    collision_box = {{-0.05, -1.1}, {0.05, 1.1}},
+    acceleration = 0,
+    direction_only = true,
+    piercing_damage = 300,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "explosion-gunshot"
+          },
+          {
+            type = "damage",
+            damage = { amount = 150 , type = "physical"}
+          },
+          {
+            type = "damage",
+            damage = { amount = 50 , type = "explosion"}
+          }
+        }
+      }
+    },
+    animation =
+    {
+      filename = "__base__/graphics/entity/bullet/bullet.png",
+      frame_count = 1,
+      width = 3,
+      height = 50,
       priority = "high"
     },
   },
@@ -323,16 +363,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/basic-grenade/basic-grenade.png",
       frame_count = 1,
-      frame_width = 24,
-      frame_height = 24,
+      width = 24,
+      height = 24,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/basic-grenade/basic-grenade-shadow.png",
       frame_count = 1,
-      frame_width = 24,
-      frame_height = 32,
+      width = 24,
+      height = 32,
       priority = "high"
     }
   },
@@ -361,16 +401,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/combat-robot-capsule-shadow.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     smoke = capsule_smoke,
@@ -411,16 +451,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/combat-robot-capsule-shadow.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     smoke = capsule_smoke
@@ -471,16 +511,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/combat-robot-capsule-shadow.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     smoke = capsule_smoke
@@ -508,16 +548,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/poison-capsule/poison-capsule.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/poison-capsule/poison-capsule-shadow.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     smoke = capsule_smoke,
@@ -546,16 +586,16 @@ data:extend(
     {
       filename = "__base__/graphics/entity/slowdown-capsule/slowdown-capsule.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/slowdown-capsule/slowdown-capsule-shadow.png",
       frame_count = 1,
-      frame_width = 32,
-      frame_height = 32,
+      width = 32,
+      height = 32,
       priority = "high"
     },
     smoke = capsule_smoke,

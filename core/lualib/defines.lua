@@ -111,7 +111,17 @@ events =
   onshiplandingstart = 8,
   onpreplayermineditem = 9,
   onchunkgenerated = 10,
-  onplayercrafteditem = 11
+  onplayercrafteditem = 11,
+  onrobotbuiltentity = 12,
+  onrobotpremined = 13,
+  onrobotmined = 14,
+  onresearchstarted = 15,
+  onresearchfinished = 16,
+  onplayerrotatedentity = 17,
+  onmarkedfordeconstruction = 18,
+  oncanceleddeconstruction = 19,
+  ontriggercreatedentity = 20,
+  ontrainchangedstate = 21
 }
 
 controllers =
@@ -134,4 +144,28 @@ circuitconnector =
   red = 0,
   green = 1,
   logistic = 2
+}
+
+trainstate =
+{
+  -- normal state - following the path
+  onthepath = 0,
+  -- had path and lost it - must stop
+  pathlost = 1,
+  -- doesn't have anywhere to go
+  noschedule = 2,
+  -- has no path and is stopped
+  nopath = 3,
+  -- braking before the railSignal
+  arrivesignal = 4,
+  waitsignal = 5,
+  -- braking before the station
+  arrivestation = 6,
+  waitstation = 7,
+  -- switched to the manual control and has to stop
+  manualcontrolstop = 8,
+  -- can move if user explicitly sits in and rides the train
+  manualcontrol = 9,
+  -- train was switched to auto control but it is moving and needs to be stopped
+  stopforautocontrol = 10
 }

@@ -85,7 +85,7 @@ function moveposition(position, direction, distance)
 end
 
 function oppositedirection(direction)
-if direction == defines.direction.north then
+  if direction == defines.direction.north then
     return defines.direction.south
   end
 
@@ -114,4 +114,14 @@ function ismoduleavailable(name)
     end
     return false
   end
+end
+
+function multiplystripes(count, stripes)
+  ret = {}
+  for k, stripe in ipairs(stripes) do
+    for i = 1, count do
+      ret[#ret + 1] = stripe
+    end
+  end
+  return ret
 end

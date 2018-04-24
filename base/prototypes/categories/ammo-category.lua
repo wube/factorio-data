@@ -43,6 +43,10 @@ data:extend(
   {
     type = "ammo-category",
     name = "biological"
+  },
+  {
+    type = "ammo-category",
+    name = "cannon-shell"
   }
 }
 )

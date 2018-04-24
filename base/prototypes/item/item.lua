@@ -162,12 +162,22 @@ data:extend(
   },
   {
     type = "item",
-    name = "wall",
-    icon = "__base__/graphics/icons/wall.png",
+    name = "stone-wall",
+    icon = "__base__/graphics/icons/stone-wall.png",
     flags = {"goes-to-quickbar"},
     subgroup = "defensive-structure",
-    order = "a[wall]-a[wall]",
-    place_result = "wall",
+    order = "a[stone-wall]-a[stone-wall]",
+    place_result = "stone-wall",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "gate",
+    icon = "__base__/graphics/icons/gate.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "defensive-structure",
+    order = "a[wall]-b[gate]",
+    place_result = "gate",
     stack_size = 50
   },
   {
@@ -178,6 +188,16 @@ data:extend(
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     place_result = "car",
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "tank",
+    icon = "__base__/graphics/icons/tank.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "transport",
+    order = "b[personal-transport]-b[tank]",
+    place_result = "tank",
     stack_size = 1
   },
   {

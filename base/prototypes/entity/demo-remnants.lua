@@ -22,31 +22,31 @@ data:extend(
     animation =
     {
       {
-        frame_width = 109,
-        frame_height = 102,
+        width = 109,
+        height = 102,
         frame_count = 1,
         direction_count = 1,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
       },
       {
-        frame_width = 109,
-        frame_height = 102,
+        width = 109,
+        height = 102,
         frame_count = 1,
         direction_count = 1,
         x = 109,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
       },
       {
-        frame_width = 109,
-        frame_height = 102,
+        width = 109,
+        height = 102,
         frame_count = 1,
         direction_count = 1,
         x = 218,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
       },
       {
-        frame_width = 109,
-        frame_height = 102,
+        width = 109,
+        height = 102,
         frame_count = 1,
         direction_count = 1,
         x = 327,
@@ -73,31 +73,31 @@ data:extend(
     animation = 
     {
       {
-        frame_width = 94,
-        frame_height = 82,
+        width = 94,
+        height = 82,
         frame_count = 1,
         direction_count = 1,
         filename = "__base__/graphics/entity/remnants/medium-remnants.png"
       },
       {
-        frame_width = 94,
-        frame_height = 82,
+        width = 94,
+        height = 82,
         frame_count = 1,
         direction_count = 1,
         x = 94,
         filename = "__base__/graphics/entity/remnants/medium-remnants.png"
       },
       {
-        frame_width = 94,
-        frame_height = 82,
+        width = 94,
+        height = 82,
         frame_count = 1,
         direction_count = 1,
         x = 188,
         filename = "__base__/graphics/entity/remnants/medium-remnants.png"
       },
       {
-        frame_width = 94,
-        frame_height = 82,
+        width = 94,
+        height = 82,
         frame_count = 1,
         direction_count = 1,
         x = 282,
@@ -122,31 +122,31 @@ data:extend(
     animation = 
     {
       {
-        frame_width = 56,
-        frame_height = 42,
+        width = 56,
+        height = 42,
         frame_count = 1,
         direction_count = 1,
         filename = "__base__/graphics/entity/remnants/small-remnants.png"
       },
       {
-        frame_width = 56,
-        frame_height = 42,
+        width = 56,
+        height = 42,
         frame_count = 1,
         direction_count = 1,
         x = 56,
         filename = "__base__/graphics/entity/remnants/small-remnants.png"
       },
       {
-        frame_width = 56,
-        frame_height = 42,
+        width = 56,
+        height = 42,
         frame_count = 1,
         direction_count = 1,
         x = 112,
         filename = "__base__/graphics/entity/remnants/small-remnants.png"
       },
       {
-        frame_width = 56,
-        frame_height = 42,
+        width = 56,
+        height = 42,
         frame_count = 1,
         direction_count = 1,
         x = 168,

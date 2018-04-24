@@ -98,7 +98,7 @@ data:extend(
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
-    render_layer = "object",
+    render_layer = "decorative",
     autoplace = autoplace_settings(nil, 0.02, {{{35, 0.5}, {-15, 0.1}}}),
     pictures =
     {
@@ -224,7 +224,7 @@ data:extend(
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
-    render_layer = "object",
+    render_layer = "decorative",
     autoplace = autoplace_settings(nil, 0.05, {{{35, 1}, {0, 0.7}}}),
     pictures =
     {
@@ -300,7 +300,7 @@ data:extend(
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
-    render_layer = "object",
+    render_layer = "decorative",
     autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     pictures =
     {
@@ -428,7 +428,7 @@ data:extend(
     order = "b[decorative]-d[pita-mini]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    render_layer = "object",
+    render_layer = "decorative",
     selectable_in_game = false,
     autoplace =
     {
@@ -665,8 +665,7 @@ data:extend(
         width = 18,
         height = 23
       }
-    },
-    render_layer = "object",
+    }
   },
   {
     type = "decorative",
@@ -1164,7 +1163,6 @@ data:extend(
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    render_layer = "object",
     selectable_in_game = false,
     autoplace =
     {

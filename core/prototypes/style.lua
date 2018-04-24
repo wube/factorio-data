@@ -8,6 +8,7 @@ function make_cursor_box(x, y, side_length, shift)
    sprite =
    {
      filename = "__core__/graphics/cursor-boxes.png",
+     priority = "extra-high-no-scale",
      width = 32,
      height = 32,
      x = x,
@@ -35,6 +36,7 @@ function orangebuttongraphcialset()
     monolith_image =
     {
       filename = "__core__/graphics/gui.png",
+      priority = "extra-high-no-scale",
       width = 36,
       height = 36,
       x = 75,
@@ -54,6 +56,7 @@ function bluebuttongraphcialset()
     monolith_image =
     {
       filename = "__core__/graphics/gui.png",
+      priority = "extra-high-no-scale",
       width = 36,
       height = 36,
       x = 221,
@@ -228,6 +231,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 0}
       },
@@ -236,6 +240,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 8}
       },
@@ -244,6 +249,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 16}
       },
@@ -252,6 +258,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 0}
       },
@@ -268,6 +275,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 0}
       },
@@ -276,6 +284,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 0}
       },
@@ -327,6 +336,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111
@@ -342,6 +352,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111
@@ -408,6 +419,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111
@@ -423,6 +435,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 148
@@ -438,6 +451,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 185
@@ -478,6 +492,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111,
@@ -494,6 +509,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 148,
@@ -510,6 +526,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 185,
@@ -541,6 +558,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111,
@@ -557,6 +575,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 148,
@@ -573,6 +592,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 185,
@@ -595,6 +615,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111,
@@ -611,6 +632,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 148,
@@ -627,6 +649,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 185,
@@ -656,6 +679,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 111,
@@ -672,6 +696,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 148,
@@ -688,6 +713,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 185,
@@ -741,6 +767,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 221,
@@ -757,6 +784,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 221,
@@ -773,6 +801,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 221,
@@ -795,6 +824,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 257,
@@ -811,6 +841,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 257,
@@ -827,6 +858,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 36,
           height = 36,
           x = 257,
@@ -850,6 +882,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {8, 8}
       }
@@ -865,6 +898,7 @@ data:extend(
       triangle_image =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 10,
         height = 5,
         x = 36,
@@ -874,6 +908,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 0}
       },
@@ -881,6 +916,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 8}
       },
@@ -888,6 +924,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 16}
       },
@@ -1129,6 +1166,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {8, 0}
       }
@@ -1158,6 +1196,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {16, 0}
       },
@@ -1178,6 +1217,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 1,
           height = 1,
           x = 8,
@@ -1194,6 +1234,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {16, 0}
       },
@@ -1213,6 +1254,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 1,
           height = 1,
           x = 0,
@@ -1254,6 +1296,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {8, 0}
       },
@@ -1318,6 +1361,7 @@ data:extend(
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
+          priority = "extra-high-no-scale",
           width = 1,
           height = 1,
           x = 11,
@@ -1350,6 +1394,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/arrows/hint-orange-box.png",
+        priority = "extra-high-no-scale",
         corner_size = {13, 13},
         position = {0, 0}
       },
@@ -1417,18 +1462,18 @@ data:extend(
       smooth_bar =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 1,
         height = 5,
         x = 221,
-        priority = "extra-high"
       },
       smooth_bar_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 1,
         height = 7,
         x = 222,
-        priority = "extra-high"
       },
       -- diode specifications are not used when type is smooth, but
       -- are defined here, so the derived (or this style) can just
@@ -1437,17 +1482,46 @@ data:extend(
       diode_full =
       {
         filename = "__core__/graphics/diode-green.png",
+        priority = "extra-high-no-scale",
         width = 20,
         height = 20,
-        priority = "extra-high"
       },
       diode_empty =
       {
         filename = "__core__/graphics/diode-grey.png",
+        priority = "extra-high-no-scale",
         width = 20,
         height = 20,
-        priority = "extra-high"
       }
+    },
+    activity_bar_style =
+    {
+      type = "activity_bar_style",
+      speed = 0.01,
+      size = 200,
+      color = {g=1},
+      bar =
+      {
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        width = 1,
+        height = 5,
+        x = 221,
+      },
+      bar_size_ratio = 0.07,
+      bar_background =
+      {
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        width = 1,
+        height = 7,
+        x = 222,
+      },
+    },
+    multiplayer_activity_bar_style =
+    {
+      type = "activity_bar_style",
+      -- exact size is calculated dynamically
     },
     production_progressbar_style =
     {
@@ -1469,18 +1543,18 @@ data:extend(
       smooth_bar =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 1,
         height = 11,
         x = 223,
-        priority = "extra-high"
       },
       smooth_bar_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 1,
         height = 13,
-        x = 224,
-        priority = "extra-high"
+        x = 224
       }
     },
     vehicle_health_progressbar_style =
@@ -1542,6 +1616,7 @@ data:extend(
       default_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 16,
         height = 16,
         x = 43,
@@ -1550,6 +1625,7 @@ data:extend(
       hovered_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 16,
         height = 16,
         x = 60,
@@ -1558,6 +1634,7 @@ data:extend(
       clicked_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 16,
         height = 16,
         x = 77,
@@ -1566,6 +1643,7 @@ data:extend(
       checked =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 16,
         height = 16,
         x = 94,
@@ -1580,6 +1658,7 @@ data:extend(
       default_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 10,
         height = 10,
         x = 43,
@@ -1588,6 +1667,7 @@ data:extend(
       hovered_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 10,
         height = 10,
         x = 54,
@@ -1596,6 +1676,7 @@ data:extend(
       clicked_background =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 10,
         height = 10,
         x = 65,
@@ -1604,6 +1685,7 @@ data:extend(
       selected =
       {
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         width = 10,
         height = 10,
         x = 75,
@@ -1654,6 +1736,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {0, 8}
       },
@@ -1661,6 +1744,7 @@ data:extend(
       {
         type = "composition",
         filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
         corner_size = {3, 3},
         position = {16, 0}
       },
@@ -1678,6 +1762,7 @@ data:extend(
           monolith_image =
           {
             filename = "__core__/graphics/gui.png",
+            priority = "extra-high-no-scale",
             width = 15,
             height = 15,
             x = 47
@@ -1689,6 +1774,7 @@ data:extend(
           monolith_image =
           {
             filename = "__core__/graphics/gui.png",
+            priority = "extra-high-no-scale",
             width = 15,
             height = 15,
             x = 63
@@ -1700,6 +1786,7 @@ data:extend(
           monolith_image =
           {
             filename = "__core__/graphics/gui.png",
+            priority = "extra-high-no-scale",
             width = 15,
             height = 15,
             x = 79

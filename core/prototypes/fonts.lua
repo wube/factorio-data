@@ -41,14 +41,14 @@ data:extend(
     name = "default-game",
     from = "default",
     size = 18,
-    border = 1,
+    border = true,
     border_color = {}
   },
   {
     type = "font",
     name = "scenario-message-dialog",
     from = "default",
-    size = 18,
+    size = 18
   }
 }
 )

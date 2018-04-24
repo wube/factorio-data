@@ -72,6 +72,19 @@ data:extend(
       {"electronic-circuit", 5}
     },
     result = "railgun-dart"
+  },
+  {
+    type = "recipe",
+    name = "cannon-shell",
+    enabled = "false",
+    energy_required = 8,
+    ingredients =
+    {
+      {"steel-plate", 4},
+      {"plastic-bar", 2},
+      {"explosives", 1},
+    },
+    result = "cannon-shell"
   }
 }
 )

@@ -18,5 +18,14 @@ railpicturesinternal = function(elems)
     end
     res[key[1] .. "_" .. key[2]] = part
   end
+  res["rail_endings"] = {
+    sheet =
+    {
+      filename = "__base__/graphics/entity/rail-endings/rail-endings.png",
+      priority = "high",
+      width = 88,
+      height = 82
+    }
+  }
   return res
 end

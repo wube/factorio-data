@@ -25,8 +25,8 @@ data:extend(
       north =
       {
         priority = "extra-high",
-        frame_width = 110,
-        frame_height = 114,
+        width = 110,
+        height = 114,
         line_length = 8,
         shift = {0.2, -0.2},
         filename = "__base__/graphics/entity/basic-mining-drill/north.png",
@@ -37,8 +37,8 @@ data:extend(
       east =
       {
         priority = "extra-high",
-        frame_width = 129,
-        frame_height = 100,
+        width = 129,
+        height = 100,
         line_length = 8,
         shift = {0.45, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/east.png",
@@ -49,8 +49,8 @@ data:extend(
       south =
       {
         priority = "extra-high",
-        frame_width = 109,
-        frame_height = 111,
+        width = 109,
+        height = 111,
         line_length = 8,
         shift = {0.15, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/south.png",
@@ -61,8 +61,8 @@ data:extend(
       west =
       {
         priority = "extra-high",
-        frame_width = 128,
-        frame_height = 100,
+        width = 128,
+        height = 100,
         line_length = 8,
         shift = {0.25, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/west.png",
@@ -133,8 +133,8 @@ data:extend(
       north =
       {
         priority = "extra-high",
-        frame_width = 110,
-        frame_height = 76,
+        width = 110,
+        height = 76,
         line_length = 4,
         shift = {0.7, -0.1},
         filename = "__base__/graphics/entity/burner-mining-drill/north.png",
@@ -145,8 +145,8 @@ data:extend(
       east =
       {
         priority = "extra-high",
-        frame_width = 94,
-        frame_height = 74,
+        width = 94,
+        height = 74,
         line_length = 4,
         shift = {0.45, -0.1},
         filename = "__base__/graphics/entity/burner-mining-drill/east.png",
@@ -157,8 +157,8 @@ data:extend(
       south =
       {
         priority = "extra-high",
-        frame_width = 89,
-        frame_height = 88,
+        width = 89,
+        height = 88,
         line_length = 4,
         shift = {0.4, 0},
         filename = "__base__/graphics/entity/burner-mining-drill/south.png",
@@ -169,8 +169,8 @@ data:extend(
       west =
       {
         priority = "extra-high",
-        frame_width = 91,
-        frame_height = 78,
+        width = 91,
+        height = 78,
         line_length = 4,
         shift = {0.1, -0.05},
         filename = "__base__/graphics/entity/burner-mining-drill/west.png",

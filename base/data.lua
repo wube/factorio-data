@@ -1,5 +1,4 @@
 require "util"
-require "base-edits"
 
 -- this is both in demo and alpha
 require("prototypes.entity.demo-entities")
@@ -9,6 +8,7 @@ require("prototypes.entity.demo-projectiles")
 require("prototypes.entity.demo-resources")
 require("prototypes.entity.demo-turrets")
 require("prototypes.entity.demo-doodads")
+require("prototypes.entity.demo-enemies")
 require("prototypes.entity.demo-remnants")
 require("prototypes.entity.demo-trees")
 require("prototypes.item.demo-ammo")
@@ -75,5 +75,3 @@ else
   require("prototypes.technology.rocket-upgrades")
   require("prototypes.equipment.equipment")
 end
-
-addbuildeffects()

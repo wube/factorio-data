@@ -1,8 +1,10 @@
+require ("util")
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.transport-belt-pictures")
 require ("prototypes.entity.assemblerpipes")
+require ("prototypes.entity.demo-player-animations")
 
 railpictures = function()
   return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
@@ -101,6 +103,18 @@ function rolling_stock_stand_by_light()
   }
 end
 
+-- add heavy armor to the player animations
+for _, animation in ipairs(data.raw["player"]["player"]["animations"]) do
+  if animation.armors then
+    for _, armor in ipairs(animation.armors) do
+      if armor == "basic-armor" then
+        animation.armors[#animation.armors + 1] = "heavy-armor"
+        break
+      end
+    end
+  end
+end
+
 data:extend(
 {
   {
@@ -145,20 +159,26 @@ data:extend(
     {
       direction_in =
       {
-        sheet = "__base__/graphics/entity/basic-transport-belt-to-ground/basic-transport-belt-to-ground-structure.png",
-        priority = "extra-high",
-        shift = {0.26, 0},
-        width = 57,
-        height = 43,
-        y = 43
+        sheet =
+        {
+          filename = "__base__/graphics/entity/basic-transport-belt-to-ground/basic-transport-belt-to-ground-structure.png",
+          priority = "extra-high",
+          shift = {0.26, 0},
+          width = 57,
+          height = 43,
+          y = 43
+        }
       },
       direction_out =
       {
-        sheet = "__base__/graphics/entity/basic-transport-belt-to-ground/basic-transport-belt-to-ground-structure.png",
-        priority = "extra-high",
-        shift = {0.26, 0},
-        width = 57,
-        height = 43
+        sheet =
+        {
+          filename = "__base__/graphics/entity/basic-transport-belt-to-ground/basic-transport-belt-to-ground-structure.png",
+          priority = "extra-high",
+          shift = {0.26, 0},
+          width = 57,
+          height = 43
+        }
       }
     },
     ending_patch = ending_patch_prototype
@@ -204,20 +224,26 @@ data:extend(
     {
       direction_in =
       {
-        sheet = "__base__/graphics/entity/fast-transport-belt-to-ground/fast-transport-belt-to-ground-structure.png",
-        priority = "extra-high",
-        shift = {0.26, 0},
-        width = 57,
-        height = 43,
-        y = 43
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-transport-belt-to-ground/fast-transport-belt-to-ground-structure.png",
+          priority = "extra-high",
+          shift = {0.26, 0},
+          width = 57,
+          height = 43,
+          y = 43
+        }
       },
       direction_out =
       {
-        sheet = "__base__/graphics/entity/fast-transport-belt-to-ground/fast-transport-belt-to-ground-structure.png",
-        priority = "extra-high",
-        shift = {0.26, 0},
-        width = 57,
-        height = 43
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-transport-belt-to-ground/fast-transport-belt-to-ground-structure.png",
+          priority = "extra-high",
+          shift = {0.26, 0},
+          width = 57,
+          height = 43
+        }
       }
     },
     ending_patch = ending_patch_prototype
@@ -263,20 +289,26 @@ data:extend(
     {
       direction_in =
       {
-        sheet = "__base__/graphics/entity/express-transport-belt-to-ground/express-transport-belt-to-ground-structure.png",
-        priority = "extra-high",
-        shift = {0.26, 0},
-        width = 57,
-        height = 43,
-        y = 43
+        sheet =
+        {
+          filename = "__base__/graphics/entity/express-transport-belt-to-ground/express-transport-belt-to-ground-structure.png",
+          priority = "extra-high",
+          shift = {0.26, 0},
+          width = 57,
+          height = 43,
+          y = 43
+        }
       },
       direction_out =
       {
-        sheet = "__base__/graphics/entity/express-transport-belt-to-ground/express-transport-belt-to-ground-structure.png",
-        priority = "extra-high",
-        shift = {0.26, 0},
-        width = 57,
-        height = 43
+        sheet =
+        {
+          filename = "__base__/graphics/entity/express-transport-belt-to-ground/express-transport-belt-to-ground-structure.png",
+          priority = "extra-high",
+          shift = {0.26, 0},
+          width = 57,
+          height = 43
+        }
       }
     },
     ending_patch = ending_patch_prototype
@@ -320,8 +352,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 80,
-        frame_height = 35,
+        width = 80,
+        height = 35,
         shift = {0.225, 0}
       },
       east =
@@ -330,8 +362,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 46,
-        frame_height = 81,
+        width = 46,
+        height = 81,
         shift = {0.075, 0}
       },
       south =
@@ -340,8 +372,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 82,
-        frame_height = 36,
+        width = 82,
+        height = 36,
         shift = {0.075, 0}
       },
       west =
@@ -350,8 +382,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 47,
-        frame_height = 79,
+        width = 47,
+        height = 79,
         shift = {0.25, 0.05}
       },
     },
@@ -395,8 +427,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 80,
-        frame_height = 35,
+        width = 80,
+        height = 35,
         shift = {0.225, 0}
       },
       east =
@@ -405,8 +437,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 46,
-        frame_height = 81,
+        width = 46,
+        height = 81,
         shift = {0.075, 0}
       },
       south =
@@ -415,8 +447,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 82,
-        frame_height = 36,
+        width = 82,
+        height = 36,
         shift = {0.075, 0}
       },
       west =
@@ -425,8 +457,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 47,
-        frame_height = 79,
+        width = 47,
+        height = 79,
         shift = {0.25, 0.05}
       },
     },
@@ -471,8 +503,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 80,
-        frame_height = 35,
+        width = 80,
+        height = 35,
         shift = {0.225, 0}
       },
       east =
@@ -481,8 +513,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 46,
-        frame_height = 81,
+        width = 46,
+        height = 81,
         shift = {0.075, 0}
       },
       south =
@@ -491,8 +523,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 82,
-        frame_height = 36,
+        width = 82,
+        height = 36,
         shift = {0.075, 0}
       },
       west =
@@ -501,8 +533,8 @@ data:extend(
         frame_count = 32,
         line_length = 16,
         priority = "extra-high",
-        frame_width = 47,
-        frame_height = 79,
+        width = 47,
+        height = 79,
         shift = {0.25, 0.05}
       },
     }
@@ -538,8 +570,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      frame_width = 40,
-      frame_height = 40,
+      width = 40,
+      height = 40,
       frame_count = 32,
       direction_count = 12
     },
@@ -586,8 +618,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
       priority = "extra-high",
-      frame_width = 40,
-      frame_height = 40,
+      width = 40,
+      height = 40,
       frame_count = 32,
       direction_count = 12
     },
@@ -647,8 +679,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2.png",
       priority = "high",
-      frame_width = 113,
-      frame_height = 99,
+      width = 113,
+      height = 99,
       frame_count = 32,
       line_length = 8,
       shift = {0.4, -0.06}
@@ -743,8 +775,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/assembling-machine-3/assembling-machine-3.png",
       priority = "high",
-      frame_width = 142,
-      frame_height = 113,
+      width = 142,
+      height = 113,
       frame_count = 32,
       line_length = 8,
       shift = {0.84, -0.09}
@@ -766,9 +798,9 @@ data:extend(
     type = "car",
     name = "car",
     icon = "__base__/graphics/icons/car.png",
-    flags = {"pushable", "placeable-neutral", "player-creation"},
+    flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "car"},
-    max_health = 500,
+    max_health = 200,
     corpse = "medium-remnants",
     dying_explosion = "huge-explosion",
     resistances =
@@ -776,15 +808,20 @@ data:extend(
       {
         type = "fire",
         percent = 50
+      },
+      {
+        type = "impact",
+        percent = 30,
+        decrease = 30
       }
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
-    acceleration_per_energy = 20e-8,
-    breaking_speed = 2e-3,
+    effectivity = 0.5,
+    braking_power = "200kW",
     burner =
     {
-      effectivity = 1,
+      effectivity = 0.6,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -801,8 +838,9 @@ data:extend(
         }
       }
     },
-    consumption = "600kW",
-    friction = 5e-3,
+    consumption = "150kW",
+    friction = 2e-3,
+    crash_damage_multiplier = 0.1,
     light =
     {
       {
@@ -836,12 +874,13 @@ data:extend(
         intensity = 0.6
       }
     },
-    pictures =
+    animation =
     {
       filename = "__base__/graphics/entity/car/car-sheet.png",
       line_length = 8,
-      frame_width = 130,
-      frame_height = 93,
+      width = 130,
+      height = 93,
+      frame_count = 1,
       shift={0.5, 0},
       axially_symmetrical = false,
       direction_count = 64
@@ -884,8 +923,287 @@ data:extend(
     open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
     rotation_speed = 0.015,
-    weight = 50,
+    weight = 700,
     inventory_size = 80
+  },
+  {
+    type = "car",
+    name = "tank",
+    icon = "__base__/graphics/icons/tank.png",
+    flags = {"pushable", "placeable-neutral", "player-creation"},
+    minable = {mining_time = 1, result = "tank"},
+    max_health = 1000,
+    corpse = "medium-remnants",
+    dying_explosion = "huge-explosion",
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 10,
+        percent = 20
+      }
+    },
+    collision_box = {{-0.9, -1.3}, {0.9, 1.3}},
+    selection_box = {{-0.9, -1.3}, {0.9, 1.3}},
+    effectivity = 0.5,
+    braking_power = "300kW",
+    burner =
+    {
+      effectivity = 0.65,
+      fuel_inventory_size = 2,
+      smoke =
+      {
+        {
+          name = "smoke",
+          deviation = {0.25, 0.25},
+          frequency = 50,
+          position = {0, 1.5},
+          slow_down_factor = 0.9,
+          starting_frame = 3,
+          starting_frame_deviation = 5,
+          starting_frame_speed = 0,
+          starting_frame_speed_deviation = 5
+        }
+      }
+    },
+    consumption = "600kW",
+    friction = 2e-3,
+    light =
+    {
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          scale = 2,
+          width = 200,
+          height = 200
+        },
+        shift = {-0.6, -14},
+        size = 2,
+        intensity = 0.6
+      },
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          scale = 2,
+          width = 200,
+          height = 200
+        },
+        shift = {0.6, -14},
+        size = 2,
+        intensity = 0.6
+      }
+    },
+    animation =
+    {
+      layers =
+      {
+        {
+          width = 139,
+          height = 110,
+          frame_count = 2,
+          axially_symmetrical = false,
+          direction_count = 64,
+          shift = {-0.140625, -0.28125},
+          animation_speed = 8,
+          max_advance = 1,
+          stripes =
+          {
+            {
+             filename = "__base__/graphics/entity/tank/base-1.png",
+             width_in_frames = 2,
+             height_in_frames = 16,
+            },
+            {
+             filename = "__base__/graphics/entity/tank/base-2.png",
+             width_in_frames = 2,
+             height_in_frames = 16,
+            },
+            {
+             filename = "__base__/graphics/entity/tank/base-3.png",
+             width_in_frames = 2,
+             height_in_frames = 16,
+            },
+            {
+             filename = "__base__/graphics/entity/tank/base-4.png",
+             width_in_frames = 2,
+             height_in_frames = 16,
+            }
+          }
+        },
+        {
+          width = 109,
+          height = 88,
+          frame_count = 2,
+          apply_runtime_tint = true,
+          axially_symmetrical = false,
+          direction_count = 64,
+          shift = {-0.140625, -0.65625},
+          max_advance = 1,
+          line_length = 2,
+          stripes = util.multiplystripes(2,
+          {
+            {
+              filename = "__base__/graphics/entity/tank/base-mask-1.png",
+              width_in_frames = 1,
+              height_in_frames = 22,
+            },
+            {
+              filename = "__base__/graphics/entity/tank/base-mask-2.png",
+              width_in_frames = 1,
+              height_in_frames = 22,
+            },
+            {
+              filename = "__base__/graphics/entity/tank/base-mask-3.png",
+              width_in_frames = 1,
+              height_in_frames = 20,
+            },
+          })
+        },
+        {
+          width = 154,
+          height = 99,
+          frame_count = 2,
+          draw_as_shadow = true,
+          axially_symmetrical = false,
+          direction_count = 64,
+          shift = {0.59375, 0.328125},
+          max_advance = 1,
+          stripes = util.multiplystripes(2,
+          {
+           {
+            filename = "__base__/graphics/entity/tank/base-shadow-1.png",
+            width_in_frames = 1,
+            height_in_frames = 16,
+           },
+           {
+            filename = "__base__/graphics/entity/tank/base-shadow-2.png",
+            width_in_frames = 1,
+            height_in_frames = 16,
+           },
+           {
+            filename = "__base__/graphics/entity/tank/base-shadow-3.png",
+            width_in_frames = 1,
+            height_in_frames = 16,
+           },
+           {
+            filename = "__base__/graphics/entity/tank/base-shadow-4.png",
+            width_in_frames = 1,
+            height_in_frames = 16,
+           }
+          })
+        }
+      }
+    },
+    turret_animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/tank/turret.png",
+          line_length = 8,
+          width = 92,
+          height = 69,
+          frame_count = 1,
+          axially_symmetrical = false,
+          direction_count = 64,
+          shift = {-0.15625, -1.07812},
+          animation_speed = 8,
+        },
+        {
+          filename = "__base__/graphics/entity/tank/turret-mask.png",
+          line_length = 8,
+          width = 38,
+          height = 29,
+          frame_count = 1,
+          axially_symmetrical = false,
+          apply_runtime_tint = true,
+          direction_count = 64,
+          shift = {-0.15625, -1.23438},
+        },
+        {
+          filename = "__base__/graphics/entity/tank/turret-shadow.png",
+          line_length = 8,
+          width = 95,
+          height = 67,
+          frame_count = 1,
+          axially_symmetrical = false,
+          draw_as_shadow = true,
+          direction_count = 64,
+          shift = {1.70312, 0.640625},
+        }
+      }
+    },
+    turret_rotation_speed = 0.35 / 60,
+    stop_trigger_speed = 0.2,
+    stop_trigger =
+    {
+      {
+        type = "play-sound",
+        sound =
+        {
+          {
+            filename = "__base__/sound/car-breaks.ogg",
+            volume = 0.6
+          },
+        }
+      },
+    },
+    crash_trigger = crash_trigger(),
+    sound_minimum_speed = 0.15;
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/car-engine.ogg",
+        volume = 0.6
+      },
+      activate_sound =
+      {
+        filename = "__base__/sound/car-engine-start.ogg",
+        volume = 0.6
+      },
+      deactivate_sound =
+      {
+        filename = "__base__/sound/car-engine-stop.ogg",
+        volume = 0.6
+      },
+      match_speed_to_activity = true,
+    },
+    open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
+    close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
+    rotation_speed = 0.0035,
+    tank_driving = true,
+    weight = 20000,
+    inventory_size = 80,
+    guns = { "tank-cannon", "submachine-gun" },
   },
   {
     type = "container",
@@ -1097,10 +1415,13 @@ data:extend(
     },
     platform_picture =
     {
-      priority = "extra-high",
-      width = 46,
-      height = 46,
-      sheet = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-platform.png"
+      sheet =
+      {
+        filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-platform.png",
+        priority = "extra-high",
+        width = 46,
+        height = 46
+      }
     }
   },
   {
@@ -1208,10 +1529,13 @@ data:extend(
     },
     platform_picture =
     {
-      priority = "extra-high",
-      width = 46,
-      height = 46,
-      sheet = "__base__/graphics/entity/fast-inserter/fast-inserter-platform.png"
+      sheet =
+      {
+        filename = "__base__/graphics/entity/fast-inserter/fast-inserter-platform.png",
+        priority = "extra-high",
+        width = 46,
+        height = 46
+      }
     },
     rotation_speed = 0.035
   },
@@ -1316,10 +1640,13 @@ data:extend(
     },
     platform_picture =
     {
-      priority = "extra-high",
-      width = 46,
-      height = 46,
-      sheet = "__base__/graphics/entity/smart-inserter/smart-inserter-platform.png"
+      sheet=
+      {
+        filename = "__base__/graphics/entity/smart-inserter/smart-inserter-platform.png",
+        priority = "extra-high",
+        width = 46,
+        height = 46
+      }
     },
     programmable = true,
     rotation_speed = 0.035,
@@ -1371,6 +1698,34 @@ data:extend(
     connection_distance = 3.3,
     joint_distance = 4.6,
     energy_per_hit_point = 5,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 10,
+        percent = 20
+      }
+    },
     energy_source =
     {
       type = "burner",
@@ -1430,11 +1785,39 @@ data:extend(
     },
     back_light = rolling_stock_back_light(),
     stand_by_light = rolling_stock_stand_by_light(),
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 10,
+        percent = 20
+      }
+    },
     pictures =
     {
       priority = "very-low",
-      frame_width = 346,
-      frame_height = 248,
+      width = 346,
+      height = 248,
       axially_symmetrical = false,
       direction_count = 256,
       filenames =
@@ -1532,8 +1915,8 @@ data:extend(
     pictures =
     {
       priority = "very-low",
-      frame_width = 285,
-      frame_height = 218,
+      width = 285,
+      height = 218,
       axially_symmetrical = false,
       back_equals_front = true,
       direction_count = 128,
@@ -1546,7 +1929,7 @@ data:extend(
       },
       line_length = 4,
       lines_per_file = 8,
-      shift={0.7, -0.45}
+      shift = {0.7, -0.45}
     },
     rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
@@ -1567,12 +1950,12 @@ data:extend(
   },
   {
     type = "wall",
-    name = "wall",
-    icon = "__base__/graphics/icons/wall.png",
+    name = "stone-wall",
+    icon = "__base__/graphics/icons/stone-wall.png",
     flags = {"placeable-neutral", "player-creation"},
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    minable = {mining_time = 1, result = "wall"},
+    minable = {mining_time = 1, result = "stone-wall"},
     max_health = 350,
     repair_speed_modifier = 2,
     corpse = "wall-remnants",
@@ -1614,6 +1997,11 @@ data:extend(
         percent = 20
       },
       {
+        type = "impact",
+        decrease = 45,
+        percent = 60
+      },
+      {
         type = "explosion",
         decrease = 10,
         percent = 30
@@ -1631,197 +2019,627 @@ data:extend(
     {
       single =
       {
+        layers = 
         {
-          filename = "__base__/graphics/entity/wall/wall-single.png",
-          priority = "extra-high",
-          width = 33,
-          height = 58,
-          shift = {0.1, 0.1}
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-single.png",
+            priority = "extra-high",
+            width = 22,
+            height = 42,
+            shift = {0, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-single-shadow.png",
+            priority = "extra-high",
+            width = 47,
+            height = 32,
+            shift = {0.359375, 0.5},
+            draw_as_shadow = true
+          }
         }
       },
       straight_vertical =
       {
         {
-          filename = "__base__/graphics/entity/wall/wall-straight-vertical-1.png",
-          priority = "extra-high",
-          width = 51,
-          height = 32,
-          shift = {0.296875, 0}
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-1.png",
+              priority = "extra-high",
+              width = 22,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-shadow.png",
+              priority = "extra-high",
+              width = 47,
+              height = 60,
+              shift = {0.390625, 0.625},
+              draw_as_shadow = true
+            }
+          }
         },
         {
-          filename = "__base__/graphics/entity/wall/wall-straight-vertical-2.png",
-          priority = "extra-high",
-          width = 51,
-          height = 32,
-          shift = {0.296875, 0}
-        }
-      },
-      straight_vertical_under_ending =
-      {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-2.png",
+              priority = "extra-high",
+              width = 22,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-shadow.png",
+              priority = "extra-high",
+              width = 47,
+              height = 60,
+              shift = {0.390625, 0.625},
+              draw_as_shadow = true
+            }
+          }
+        },
         {
-          filename = "__base__/graphics/entity/wall/wall-straight-vertical-under-ending.png",
-          priority = "extra-high",
-          width = 51,
-          height = 32,
-          shift = {0.296875, 0}
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-3.png",
+              priority = "extra-high",
+              width = 22,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-shadow.png",
+              priority = "extra-high",
+              width = 47,
+              height = 60,
+              shift = {0.390625, 0.625},
+              draw_as_shadow = true
+            }
+          }
         }
       },
       straight_horizontal =
       {
         {
-          filename = "__base__/graphics/entity/wall/wall-straight-horizontal-1.png",
-          priority = "extra-high",
-          width = 32,
-          height = 57,
-          shift = {0, 0.078125}
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-1.png",
+              priority = "extra-high",
+              width = 32,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-shadow.png",
+              priority = "extra-high",
+              width = 59,
+              height = 32,
+              shift = {0.421875, 0.5},
+              draw_as_shadow = true
+            }
+          }
         },
         {
-          filename = "__base__/graphics/entity/wall/wall-straight-horizontal-2.png",
-          priority = "extra-high",
-          width = 32,
-          height = 57,
-          shift = {0, 0.078125}
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-2.png",
+              priority = "extra-high",
+              width = 32,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-shadow.png",
+              priority = "extra-high",
+              width = 59,
+              height = 32,
+              shift = {0.421875, 0.5},
+              draw_as_shadow = true
+            }
+          }
         },
         {
-          filename = "__base__/graphics/entity/wall/wall-straight-horizontal-3.png",
-          priority = "extra-high",
-          width = 32,
-          height = 55,
-          shift = {0, 0.078125}
-        }
-      },
-      corner_right_up =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-corner-right-up.png",
-          priority = "extra-high",
-          width = 32,
-          height = 53,
-          shift = {0, 0.171875}
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-3.png",
+              priority = "extra-high",
+              width = 32,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-shadow.png",
+              priority = "extra-high",
+              width = 59,
+              height = 32,
+              shift = {0.421875, 0.5},
+              draw_as_shadow = true
+            }
+          }
         }
       },
       corner_right_down =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/wall/wall-corner-right-down.png",
-          priority = "extra-high",
-          width = 32,
-          height = 42,
-          shift = {0, -0.15625}
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-right-down.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-right-down-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 61,
+            shift = {0.484375, 0.640625},
+            draw_as_shadow = true
+          }
         }
       },
       corner_left_down =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/wall/wall-corner-left-down.png",
-          priority = "extra-high",
-          width = 46,
-          height = 42,
-          shift = {0.21875, -0.15625}
-        }
-      },
-      corner_left_up =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-corner-left-up.png",
-          priority = "extra-high",
-          width = 51,
-          height = 58,
-          shift = {0.296875, 0.03125}
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-left-down.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {-0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-left-down-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 60,
+            shift = {0.328125, 0.640625},
+            draw_as_shadow = true
+          }
         }
       },
       t_up =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/wall/wall-t-up.png",
-          priority = "extra-high",
-          width = 32,
-          height = 44,
-          shift = {0, -0.1875}
-        }
-      },
-      t_down =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-t-down.png",
-          priority = "extra-high",
-          width = 32,
-          height = 53,
-          shift = {0, 0.140625}
-       }
-      },
-      t_right =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-t-right.png",
-          priority = "extra-high",
-          width = 51,
-          height = 38,
-          shift = {0.296875, -0.09375}
-        }
-      },
-      t_left =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-t-left.png",
-          priority = "extra-high",
-          width = 32,
-          height = 38,
-          shift = {0, -0.09375}
-        }
-      },
-      cross =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-cross.png",
-          priority = "extra-high",
-          width = 32,
-          height = 38,
-          shift = {0, -0.09375}
-        }
-      },
-      ending_up =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-ending-up.png",
-          priority = "extra-high",
-          width = 64,
-          height = 47,
-          shift = {0.5, 0.234375}
-        }
-      },
-      ending_down =
-      {
-        {
-          filename = "__base__/graphics/entity/wall/wall-ending-down.png",
-          priority = "extra-high",
-          width = 51,
-          height = 36,
-          shift = {0.296875, -0.0625}
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-t-down.png",
+            priority = "extra-high",
+            width = 32,
+            height = 42,
+            shift = {0, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-t-down-shadow.png",
+            priority = "extra-high",
+            width = 71,
+            height = 61,
+            shift = {0.546875, 0.640625},
+            draw_as_shadow = true
+          }
         }
       },
       ending_right =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/wall/wall-ending-right.png",
-          priority = "extra-high",
-          width = 32,
-          height = 58,
-          shift = {0, 0.0625}
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-right.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-right-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 32,
+            shift = {0.484375, 0.5},
+            draw_as_shadow = true
+          }
         }
       },
       ending_left =
       {
+        layers =
         {
-          filename = "__base__/graphics/entity/wall/wall-ending-left.png",
-          priority = "extra-high",
-          width = 44,
-          height = 57,
-          shift = {0.1875, 0.078125}
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-left.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {-0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-left-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 32,
+            shift = {0.328125, 0.5},
+            draw_as_shadow = true
+          }
         }
       }
     }
   },
+
+  {
+    type = "gate",
+    name = "gate",
+    icon = "__base__/graphics/icons/gate.png",
+    flags = {"placeable-neutral","placeable-player", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "gate"},
+    max_health = 350,
+    corpse = "small-remnants",
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    opening_speed = 0.0666666,
+    activation_distance = 3,
+    timeout_to_close = 5,
+    resistances =
+    {
+      {
+        type = "physical",
+        decrease = 3,
+        percent = 20
+      },
+      {
+        type = "impact",
+        decrease = 45,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 10,
+        percent = 30
+      },
+      {
+        type = "fire",
+        percent = 100
+      },
+      {
+        type = "laser",
+        percent = 70
+      }
+    },
+    vertical_animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-vertical.png",
+          line_length = 8,
+          width = 21,
+          height = 60,
+          frame_count = 16,
+          shift = {0.015625, -0.40625}
+        },
+        { 
+          filename = "__base__/graphics/entity/gate/gate-vertical-shadow.png",
+          line_length = 8,
+          width = 41,
+          height = 50,
+          frame_count = 16,
+          shift = {0.328125, 0.3},
+          draw_as_shadow = true
+        }
+      }
+    },
+    horizontal_animation =
+    {
+      layers =
+      {
+        { 
+          filename = "__base__/graphics/entity/gate/gate-horizontal.png",
+          line_length = 8,
+          width = 32,
+          height = 36,
+          frame_count = 16,
+          shift = {0, -0.21875}
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-horizontal-shadow.png",
+          line_length = 8,
+          width = 62,
+          height = 28,
+          frame_count = 16,
+          shift = {0.4375, 0.46875},
+          draw_as_shadow = true
+        }
+      }
+    },
+    vertical_base =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-base-vertical.png",
+          width = 32,
+          height = 32
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-base-vertical-mask.png",
+          width = 32,
+          height = 32,
+          apply_runtime_tint = true
+        }
+      }
+    },
+    horizontal_rail_animation_left =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-left.png",
+          line_length = 8,
+          width = 32,
+          height = 47,
+          frame_count = 16,
+          shift = {0, -0.140625 + 0.125}
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-shadow-left.png",
+          line_length = 8,
+          width = 73,
+          height = 27,
+          frame_count = 16,
+          shift = {0.078125, 0.171875 + 0.125},
+          draw_as_shadow = true
+        }
+      }
+    },
+    horizontal_rail_animation_right =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-right.png",
+          line_length = 8,
+          width = 32,
+          height = 43,
+          frame_count = 16,
+          shift = {0, -0.203125 + 0.125}
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-shadow-right.png",
+          line_length = 8,
+          width = 73,
+          height = 28,
+          frame_count = 16,
+          shift = {0.60938, 0.2875 + 0.125},
+          draw_as_shadow = true
+        }
+      }
+    },
+    vertical_rail_animation_left =
+    {
+      layers =
+      {
+        { 
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-left.png",
+          line_length = 8,
+          width = 22,
+          height = 54,
+          frame_count = 16,
+          shift = {0, -0.46875}
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-shadow-left.png",
+          line_length = 8,
+          width = 47,
+          height = 48,
+          frame_count = 16,
+          shift = {0.27, -0.16125 + 0.5},
+          draw_as_shadow = true
+        }
+      }
+    },
+    vertical_rail_animation_right =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-right.png",
+          line_length = 8,
+          width = 22,
+          height = 55,
+          frame_count = 16,
+          shift = {0, -0.453125}
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-shadow-right.png",
+          line_length = 8,
+          width = 47,
+          height = 47,
+          frame_count = 16,
+          shift = {0.27, 0.803125 - 0.5},
+          draw_as_shadow = true
+        }
+      }
+    },
+    vertical_rail_base =
+    {
+      filename = "__base__/graphics/entity/gate/gate-rail-base-vertical.png",
+      line_length = 8,
+      width = 64,
+      height = 64,
+      frame_count = 16,
+      shift = {0, 0},
+    },
+    horizontal_rail_base =
+    {
+      filename = "__base__/graphics/entity/gate/gate-rail-base-horizontal.png",
+      line_length = 8,
+      width = 64,
+      height = 45,
+      frame_count = 16,
+      shift = {0, -0.015625 + 0.125},
+    },
+    vertical_rail_base_mask =
+    {
+      filename = "__base__/graphics/entity/gate/gate-rail-base-mask-vertical.png",
+      width = 63,
+      height = 39,
+      shift = {0.015625, -0.015625},
+      apply_runtime_tint = true
+    },
+    horizontal_rail_base_mask =
+    {
+      filename = "__base__/graphics/entity/gate/gate-rail-base-mask-horizontal.png",
+      width = 53,
+      height = 45,
+      shift = {0.015625, -0.015625 + 0.125},
+      apply_runtime_tint = true
+    },
+    horizontal_base =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-base-horizontal.png",
+          width = 32,
+          height = 23,
+          shift = {0, 0.125}
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-base-horizontal-mask.png",
+          width = 32,
+          height = 23,
+          apply_runtime_tint = true,
+          shift = {0, 0.125}
+        }
+      }
+    },
+    wall_patch =
+    {
+      north =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-north.png",
+            width = 22,
+            height = 35,
+            shift = {0, -0.62}
+          },
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-north-shadow.png",
+            width = 46,
+            height = 31,
+            shift = {0.3, 0.20},
+            draw_as_shadow = true
+          }
+        }
+      },
+      east =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-east.png",
+            width = 11,
+            height = 40,
+            shift = {0.328125, -0.109375}
+          },
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-east-shadow.png",
+            width = 38,
+            height = 32,
+            shift = {0.8125, 0.46875},
+            draw_as_shadow = true
+          }
+        }
+      },
+      south =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-south.png",
+            width = 22,
+            height = 40,
+            shift = {0, -0.125}
+          },
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-south-shadow.png",
+            width = 48,
+            height = 25,
+            shift = {0.3, 0.95},
+            draw_as_shadow = true
+          }
+        }
+      },
+      west =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-west.png",
+            width = 11,
+            height = 40,
+            shift = {-0.328125, -0.109375}
+          },
+          {
+            filename = "__base__/graphics/entity/gate/wall-patch-west-shadow.png",
+            width = 46,
+            height = 32,
+            shift = {0.1875, 0.46875},
+            draw_as_shadow = true
+          }
+        }
+      }
+    },
+    wall_diode_green =
+    {
+      filename = "__base__/graphics/entity/gate/wall-diode-green.png",
+      width = 21,
+      height = 22,
+      shift = {0, -0.78125}
+    },
+    wall_diode_green_light =
+    {
+      minimum_darkness = 0.3,
+      color = {g=1},
+      shift = {0, -0.78125},
+      size = 1,
+      intensity = 0.3
+    },
+    wall_diode_red =
+    {
+      filename = "__base__/graphics/entity/gate/wall-diode-red.png",
+      width = 21,
+      height = 22,
+      shift = {0, -0.78125}
+    },
+    wall_diode_red_light =
+    {
+      minimum_darkness = 0.3,
+      color = {r=1},
+      shift = {0, -0.78125},
+      size = 1,
+      intensity = 0.3
+    },
+    open_trigger_effect =
+    {
+      type = "play-sound",
+      sound = { filename = "__base__/sound/gate1.ogg", volume = 0.5 }
+    },
+    close_trigger_effect =
+    {
+      type = "play-sound",
+      sound = { filename = "__base__/sound/gate1.ogg", volume = 0.5 }
+    }
+  },
+    
   {
     type = "corpse",
     name = "wall-remnants",
@@ -1836,60 +2654,60 @@ data:extend(
     animation = 
     {
       {
-        frame_width = 36,
-        frame_height = 36,
+        width = 36,
+        height = 36,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-01.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-01.png"
       },
       {
-        frame_width = 38,
-        frame_height = 35,
+        width = 38,
+        height = 35,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-02.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-02.png"
       },
       {
-        frame_width = 35,
-        frame_height = 36,
+        width = 35,
+        height = 36,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-03.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-03.png"
       },
       {
-        frame_width = 41,
-        frame_height = 36,
+        width = 41,
+        height = 36,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-04.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-04.png"
       },
       {
-        frame_width = 35,
-        frame_height = 35,
+        width = 35,
+        height = 35,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-05.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-05.png"
       },
       {
-        frame_width = 50,
-        frame_height = 37,
+        width = 50,
+        height = 37,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-06.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-06.png"
       },
       {
-        frame_width = 54,
-        frame_height = 40,
+        width = 54,
+        height = 40,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-07.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-07.png"
       },
       {
-        frame_width = 43,
-        frame_height = 45,
+        width = 43,
+        height = 45,
         frame_count = 1,
         direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-08.png"
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-08.png"
       }
     }
   },
@@ -1905,8 +2723,8 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/player-port/player-port-animation.png",
-      frame_width = 64,
-      frame_height = 64,
+      width = 64,
+      height = 64,
       frame_count = 2
     }
   },
@@ -1949,8 +2767,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/flame-thrower-explosion/flame-thrower-explosion.png",
         priority = "extra-high",
-        frame_width = 64,
-        frame_height = 64,
+        width = 64,
+        height = 64,
         frame_count = 64,
         line_length = 8
       }
@@ -2051,8 +2869,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-north.png",
         priority = "high",
-        frame_width = 180,
-        frame_height = 136,
+        width = 180,
+        height = 136,
         frame_count = 2,
         shift = {1.65, -0.9}
       },
@@ -2060,8 +2878,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-east.png",
         priority = "high",
-        frame_width = 173,
-        frame_height = 128,
+        width = 173,
+        height = 128,
         frame_count = 2,
         shift = {1.7, -1.5}
       },
@@ -2069,8 +2887,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-south.png",
         priority = "high",
-        frame_width = 155,
-        frame_height = 132,
+        width = 155,
+        height = 132,
         frame_count = 2,
         shift = {1.7, -1.4}
       },
@@ -2078,8 +2896,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-west.png",
         priority = "high",
-        frame_width = 173,
-        frame_height = 126,
+        width = 173,
+        height = 126,
         frame_count = 2,
         shift = {2, -0.8}
       }
@@ -2103,8 +2921,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/rail-signal/rail-signal.png",
       priority = "high",
-      frame_width = 70,
-      frame_height = 46,
+      width = 70,
+      height = 46,
       frame_count = 3,
       direction_count = 8,
       axially_symmetrical = false
@@ -2128,8 +2946,8 @@ data:extend(
     on_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
-      frame_width = 113,
-      frame_height = 91,
+      width = 113,
+      height = 91,
       frame_count = 33,
       line_length = 11,
       animation_speed = 1 / 3,
@@ -2138,8 +2956,8 @@ data:extend(
     off_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
-      frame_width = 113,
-      frame_height = 91,
+      width = 113,
+      height = 91,
       frame_count = 1,
       shift = {0.2, 0.15}
     },
@@ -2402,8 +3220,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/roboport/roboport-base-animation.png",
       priority = "medium",
-      frame_width = 42,
-      frame_height = 31,
+      width = 42,
+      height = 31,
       frame_count = 8,
       animation_speed = 0.5,
       shift = {-0.5315, -1.9375}
@@ -2412,8 +3230,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/roboport/roboport-door.png",
       priority = "medium",
-      frame_width = 52,
-      frame_height = 39,
+      width = 52,
+      height = 39,
       frame_count = 16,
       shift = {0, -0.6}
     },
@@ -2421,8 +3239,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/roboport/roboport-recharging.png",
       priority = "high",
-      frame_width = 37,
-      frame_height = 35,
+      width = 37,
+      height = 35,
       frame_count = 16,
       scale = 1.5,
       animation_speed = 0.5
@@ -2487,12 +3305,15 @@ data:extend(
     },
     picture =
     {
-      sheet = "__base__/graphics/entity/storage-tank/storage-tank.png",
-      priority = "extra-high",
-      frames = 2,
-      width = 140,
-      height = 115,
-      shift = {0.6875, 0.109375}
+      sheet =
+      {
+        filename = "__base__/graphics/entity/storage-tank/storage-tank.png",
+        priority = "extra-high",
+        frames = 2,
+        width = 140,
+        height = 115,
+        shift = {0.6875, 0.109375}
+      }
     },
     working_sound =
     {
@@ -2546,8 +3367,8 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/small-pump/small-pump-up.png",
-        frame_width = 46,
-        frame_height = 56,
+        width = 46,
+        height = 56,
         frame_count = 8,
         shift = {0.09375, 0.03125},
         animation_speed = 0.5
@@ -2555,8 +3376,8 @@ data:extend(
       east =
       {
         filename = "__base__/graphics/entity/small-pump/small-pump-right.png",
-        frame_width = 51,
-        frame_height = 56,
+        width = 51,
+        height = 56,
         frame_count = 8,
         shift = {0.265625, -0.21875},
         animation_speed = 0.5
@@ -2564,8 +3385,8 @@ data:extend(
       south =
       {
         filename = "__base__/graphics/entity/small-pump/small-pump-down.png",
-        frame_width = 61,
-        frame_height = 58,
+        width = 61,
+        height = 58,
         frame_count = 8,
         shift = {0.421875, -0.125},
         animation_speed = 0.5
@@ -2573,8 +3394,8 @@ data:extend(
       west =
       {
         filename = "__base__/graphics/entity/small-pump/small-pump-left.png",
-        frame_width = 56,
-        frame_height = 44,
+        width = 56,
+        height = 44,
         frame_count = 8,
         shift = {0.3125, 0.0625},
         animation_speed = 0.5
@@ -2592,8 +3413,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/laser-bubble/laser-bubble.png",
         priority = "extra-high",
-        frame_width = 8,
-        frame_height = 8,
+        width = 8,
+        height = 8,
         frame_count = 5
       }
     },
@@ -2614,8 +3435,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/blue-beam/blue-beam.png",
         priority = "extra-high",
-        frame_width = 187,
-        frame_height = 1,
+        width = 187,
+        height = 1,
         frame_count = 6,
       }
     },
@@ -2667,8 +3488,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole.png",
       priority = "high",
-      frame_width = 168,
-      frame_height = 165,
+      width = 168,
+      height = 165,
       axially_symmetrical = false,
       direction_count = 4,
       shift = {1.6, -1.1}
@@ -2735,14 +3556,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
@@ -2755,14 +3576,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     }
@@ -2791,8 +3612,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole.png",
       priority = "high",
-      frame_width = 136,
-      frame_height = 122,
+      width = 136,
+      height = 122,
       axially_symmetrical = false,
       direction_count = 4,
       shift = {1.4, -1.0}
@@ -2859,14 +3680,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
@@ -2879,14 +3700,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     }
@@ -2915,8 +3736,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/substation/substation.png",
       priority = "high",
-      frame_width = 132,
-      frame_height = 144,
+      width = 132,
+      height = 144,
       axially_symmetrical = false,
       direction_count = 4,
       shift = {0.9, -1}
@@ -2988,14 +3809,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
@@ -3008,14 +3829,14 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     }
@@ -3049,8 +3870,8 @@ data:extend(
     charge_animation =
     {
       filename = "__base__/graphics/entity/basic-accumulator/basic-accumulator-charge-animation.png",
-      frame_width = 138,
-      frame_height = 135,
+      width = 138,
+      height = 135,
       line_length = 8,
       frame_count = 24,
       shift = {0.482, -0.638},
@@ -3061,8 +3882,8 @@ data:extend(
     discharge_animation =
     {
       filename = "__base__/graphics/entity/basic-accumulator/basic-accumulator-discharge-animation.png",
-      frame_width = 147,
-      frame_height = 128,
+      width = 147,
+      height = 128,
       line_length = 8,
       frame_count = 24,
       shift = {0.395, -0.525},
@@ -3105,10 +3926,10 @@ data:extend(
     },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
-    smelting_categories = {"smelting"},
+    crafting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_energy_consumption = "180kW",
-    smelting_speed = 2,
+    energy_usage = "180kW",
+    crafting_speed = 2,
     source_inventory_size = 1,
     energy_source =
     {
@@ -3127,32 +3948,33 @@ data:extend(
         }
       }
     },
-    on_animation =
+    animation =
     {
       filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
       priority = "high",
-      frame_width = 91,
-      frame_height = 69,
+      width = 91,
+      height = 69,
       frame_count = 1,
-      shift = {0.5, 0.05 }
+      shift = {0.5, 0.05}
     },
-    off_animation =
+    working_visualisations =
     {
-      filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
-      priority = "high",
-      frame_width = 91,
-      frame_height = 69,
-      frame_count = 1,
-      shift = {0.5, 0.05 }
-    },
-    fire_animation =
-    {
-      filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
-      priority = "high",
-      frame_width = 36,
-      frame_height = 19,
-      frame_count = 12,
-      shift = { -0.05, 0.65}
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        animation =
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
+          priority = "high",
+          width = 36,
+          height = 19,
+          frame_count = 12,
+          shift = { -0.05, 0.65}
+        },
+        light = {intensity = 1, size = 1}
+      }
     },
     fast_replaceable_group = "furnace"
   },
@@ -3176,10 +3998,10 @@ data:extend(
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     module_slots = 2,
-    smelting_categories = {"smelting"},
+    crafting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_speed = 2,
-    smelting_energy_consumption = "180kW",
+    crafting_speed = 2,
+    energy_usage = "180kW",
     source_inventory_size = 1,
     energy_source =
     {
@@ -3196,26 +4018,54 @@ data:extend(
       },
       apparent_volume = 1.5
     },
-    on_animation =
+    animation =
     {
-      filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
+      filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
       priority = "high",
-      x = 131,
-      frame_width = 131,
-      frame_height = 102,
-      frame_count = 12,
-      animation_speed = 0.5,
-      shift = {0.5, 0.05 }
-    },
-    off_animation =
-    {
-      filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
-      priority = "high",
-      frame_width = 131,
-      frame_height = 102,
+      width = 129,
+      height = 100,
       frame_count = 1,
-      animation_speed = 0.5,
-      shift = {0.5, 0.05 }
+      shift = {0.421875, 0}
+    },
+    working_visualisations =
+    {
+      {
+        animation =
+        {
+          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-heater.png",
+          priority = "high",
+          width = 25,
+          height = 15,
+          frame_count = 12,
+          animation_speed = 0.5,
+          shift = {0.015625, 0.890625}
+        },
+        light = {intensity = 0.4, size = 6, shift = {0.0, 1.0}}
+      },
+      {
+        animation =
+        {
+          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
+          priority = "high",
+          width = 19,
+          height = 13,
+          frame_count = 4,
+          animation_speed = 0.5,
+          shift = {-0.671875, -0.640625}
+        }
+      },
+      {
+        animation =
+        {
+          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
+          priority = "high",
+          width = 12,
+          height = 9,
+          frame_count = 4,
+          animation_speed = 0.5,
+          shift = {0.0625, -1.234375}
+        }
+      }
     },
     fast_replaceable_group = "furnace"
   },
@@ -3241,8 +4091,8 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/basic-beacon/basic-beacon-antenna.png",
-      frame_width = 54,
-      frame_height = 50,
+      width = 54,
+      height = 50,
       line_length = 8,
       frame_count = 32,
       shift = { -0.03, -1.72},
@@ -3251,8 +4101,8 @@ data:extend(
     animation_shadow =
     {
       filename = "__base__/graphics/entity/basic-beacon/basic-beacon-antenna-shadow.png",
-      frame_width = 63,
-      frame_height = 49,
+      width = 63,
+      height = 49,
       line_length = 8,
       frame_count = 32,
       shift = { 3.12, 0.5},
@@ -3283,8 +4133,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
       priority = "low",
-      frame_width = 256,
-      frame_height = 256,
+      width = 256,
+      height = 256,
       frame_count = 45,
       animation_speed = 3,
       line_length = 7,
@@ -3567,8 +4417,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/slowdown-sticker/slowdown-sticker.png",
       priority = "extra-high",
-      frame_width = 11,
-      frame_height = 11,
+      width = 11,
+      height = 11,
       frame_count = 13,
       animation_speed = 0.4
     },
@@ -3605,8 +4455,8 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
-        frame_width = 337,
-        frame_height = 255,
+        width = 337,
+        height = 255,
         frame_count = 1,
         shift = {2.515625, 0.484375}
       },
@@ -3614,8 +4464,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
         x = 337,
-        frame_width = 337,
-        frame_height = 255,
+        width = 337,
+        height = 255,
         frame_count = 1,
         shift = {2.515625, 0.484375}
       },
@@ -3623,8 +4473,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
         x = 674,
-        frame_width = 337,
-        frame_height = 255,
+        width = 337,
+        height = 255,
         frame_count = 1,
         shift = {2.515625, 0.484375}
       },
@@ -3632,8 +4482,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/oil-refinery/oil-refinery.png",
         x = 1011,
-        frame_width = 337,
-        frame_height = 255,
+        width = 337,
+        height = 255,
         frame_count = 1,
         shift = {2.515625, 0.484375}
       }
@@ -3649,8 +4499,8 @@ data:extend(
         {
           filename = "__base__/graphics/entity/oil-refinery/oil-refinery-fire.png",
           frame_count = 29,
-          frame_width = 16,
-          frame_height = 35,
+          width = 16,
+          height = 35,
           scale = 1.5,
           shift = {0, -0.5625},
           run_mode="backward"
@@ -3720,8 +4570,8 @@ data:extend(
       north =
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        frame_width = 156,
-        frame_height = 141,
+        width = 156,
+        height = 141,
         frame_count = 1,
         shift = {0.5, -0.078125}
       },
@@ -3729,8 +4579,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
         x = 156,
-        frame_width = 156,
-        frame_height = 141,
+        width = 156,
+        height = 141,
         frame_count = 1,
         shift = {0.5, -0.078125}
       },
@@ -3738,8 +4588,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
         x = 312,
-        frame_width = 156,
-        frame_height = 141,
+        width = 156,
+        height = 141,
         frame_count = 1,
         shift = {0.5, -0.078125}
       },
@@ -3747,8 +4597,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
         x = 468,
-        frame_width = 156,
-        frame_height = 141,
+        width = 156,
+        height = 141,
         frame_count = 1,
         shift = {0.5, -0.078125}
       }
@@ -3764,8 +4614,8 @@ data:extend(
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch.png",
           frame_count = 35,
-          frame_width = 17,
-          frame_height = 12,
+          width = 17,
+          height = 12,
           animation_speed = 0.15
         }
       },
@@ -3778,24 +4628,24 @@ data:extend(
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
           frame_count = 1,
-          frame_width = 21,
-          frame_height = 10
+          width = 21,
+          height = 10
         },
         west_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
           x = 21,
           frame_count = 1,
-          frame_width = 21,
-          frame_height = 10
+          width = 21,
+          height = 10
         },
         south_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
           x = 42,
           frame_count = 1,
-          frame_width = 21,
-          frame_height = 10
+          width = 21,
+          height = 10
         }
       }
     },

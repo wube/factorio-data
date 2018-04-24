@@ -1,0 +1,10 @@
+{
+  "entity":
+  [
+    ["wall", "stone-wall"]
+  ],
+  "item":
+  [
+    ["wall", "stone-wall"]
+  ]
+}

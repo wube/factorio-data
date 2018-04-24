@@ -120,6 +120,30 @@ data:extend(
       }
     },
     stack_size = 5
-  }
+  },
+  {
+    type = "gun",
+    name = "tank-cannon",
+    icon = "__base__/graphics/icons/tank-cannon.png",
+    flags = {"goes-to-main-inventory", "hidden"},
+    subgroup = "gun",
+    order = "z[tank]-a[cannon]",
+    attack_parameters =
+    {
+      ammo_category = "cannon-shell",
+      cooldown = 90,
+      movement_slow_down_factor = 0,
+      projectile_creation_distance = 0.6,
+      range = 25,
+      sound =
+      {
+        {
+          filename = "__base__/sound/cannon.ogg",
+          volume = 0.3
+        }
+      }
+    },
+    stack_size = 5
+  },
 }
 )

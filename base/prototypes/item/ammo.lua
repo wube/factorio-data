@@ -229,6 +229,38 @@ data:extend(
     subgroup = "ammo",
     order = "c[railgun]",
     stack_size = 100
-  }
+  },
+  {
+    type = "ammo",
+    name = "cannon-shell",
+    icon = "__base__/graphics/icons/cannon-shell.png",
+    flags = {"goes-to-main-inventory"},
+    ammo_type =
+    {
+      category = "cannon-shell",
+      target_type = "direction",
+      source_effects =
+      {
+        type = "create-entity",
+        entity_name = "explosion-gunshot"
+      },
+      action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "projectile",
+          projectile = "cannon-projectile",
+          starting_speed = 1,
+          direction_deviation = 0.1,
+          range_deviation = 0.1,
+          max_range = 30
+        }
+      },
+    },
+    subgroup = "ammo",
+    order = "d[rocket-launcher]-a[basic]",
+    stack_size = 100
+  },
 }
 )

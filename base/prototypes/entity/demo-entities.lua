@@ -1,6 +1,7 @@
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
+require ("prototypes.entity.demo-player-animations")
 
 function make_unit_melee_ammo_type(damagevalue)
   return
@@ -29,8 +30,8 @@ boilerfires =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
     priority = "extra-high",
-    frame_width = 11,
-    frame_height = 11,
+    width = 11,
+    height = 11,
     frame_count = 32,
     line_length = 8,
     shift = {0.03125, 0.28125}
@@ -39,8 +40,8 @@ boilerfires =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
     priority = "extra-high",
-    frame_width = 5,
-    frame_height = 7,
+    width = 5,
+    height = 7,
     frame_count = 14,
     shift = {-0.4375, -0.09375}
   },
@@ -48,79 +49,12 @@ boilerfires =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-right.png",
     priority = "extra-high",
-    frame_width = 6,
-    frame_height = 9,
+    width = 6,
+    height = 9,
     frame_count = 14,
     shift = {0.46875, -0.0625}
   }
 }
-
-function biterspawneranimation(variation)
-return
-  {
-    frame_width = 257,
-    frame_height = 188,
-    frame_count = 8,
-    animation_speed = 0.18,
-    run_mode = "forward-then-backward",
-    axially_symmetrical = false,
-    shift = {0.359375, -0.125},
-    stripes =
-    {
-     {
-      filename = "__base__/graphics/entity/biter-spawner/biter-spawner-1.png",
-      width_in_frames = 4,
-      height_in_frames = 4,
-      y = variation * 188
-     },
-     {
-      filename = "__base__/graphics/entity/biter-spawner/biter-spawner-2.png",
-      width_in_frames = 4,
-      height_in_frames = 4,
-      y = variation * 188
-     }
-    }
-  }
-end
-
-function biterspawnercorpse(variation)
-return
-  {
-    frame_width = 320,
-    frame_height = 320,
-    frame_count = 20,
-    axially_symmetrical = false,
-    shift = {0, 0},
-    direction_count = 1,
-    stripes =
-    {
-      {
-        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-1.png",
-        width_in_frames = 5,
-        height_in_frames = 4,
-        y = variation * 320,
-      },
-      {
-        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-2.png",
-        width_in_frames = 5,
-        height_in_frames = 4,
-        y = variation * 320,
-      },
-      {
-        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-3.png",
-        width_in_frames = 5,
-        height_in_frames = 4,
-        y = variation * 320,
-      },
-      {
-        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-4.png",
-        width_in_frames = 5,
-        height_in_frames = 4,
-        y = variation * 320,
-      }
-    }
-  }
-end
 
 pipepictures = function()
   return {
@@ -327,53 +261,187 @@ data:extend(
         filename = "__base__/sound/heartbeat.ogg"
       }
     },
-    idle_animation =
+
+    animations =
     {
-      priority = "medium",
-      frame_width = 48,
-      frame_height = 66,
-      direction_count = 5,
-      frame_count = 120,
-      stripes =
       {
+        idle =
         {
-          filename = "__base__/graphics/entity/player/character-idle-1.png",
-          width_in_frames = 40
+          layers =
+          {
+            playeranimations.level1.idle,
+            playeranimations.level1.idlemask,
+          }
         },
+        idle_with_gun =
         {
-          filename = "__base__/graphics/entity/player/character-idle-2.png",
-          width_in_frames = 40
+          layers =
+          {
+            playeranimations.level1.idlewithgun,
+            playeranimations.level1.idlewithgunmask,
+          }
         },
+        mining_with_hands =
         {
-          filename = "__base__/graphics/entity/player/character-idle-3.png",
-          width_in_frames = 40
+          layers =
+          {
+            playeranimations.level1.miningwithhands,
+            playeranimations.level1.miningwithhandsmask,
+          }
+        },
+        mining_with_tool =
+        {
+          layers =
+          {
+            playeranimations.level1.miningwithtool,
+            playeranimations.level1.miningwithtoolmask,
+          }
+        },
+        running_with_gun =
+        {
+          layers =
+          {
+            playeranimations.level1.runningwithgun,
+            playeranimations.level1.runningwithgunmask,
+          }
+        },
+        running =
+        {
+          layers =
+          {
+            playeranimations.level1.running,
+            playeranimations.level1.runningmask,
+          }
         }
       },
-      shift = {0, -0.6}
-    },
-    idle_with_gun_animation =
-    {
-      priority = "medium",
-      frame_width = 48,
-      frame_height = 66,
-      direction_count = 5,
-      frame_count = 120,
-      stripes =
       {
+        -- heavy-armor is not in the demo
+        armors = data.isdemo and {"basic-armor"} or {"basic-armor", "heavy-armor"},
+        idle =
         {
-          filename = "__base__/graphics/entity/player/character-idle-with-gun-1.png",
-          width_in_frames = 40
+          layers =
+          {
+            playeranimations.level1.idle,
+            playeranimations.level1.idlemask,
+            playeranimations.level2addon.idle,
+            playeranimations.level2addon.idlemask
+          }
         },
+        idle_with_gun =
         {
-          filename = "__base__/graphics/entity/player/character-idle-with-gun-2.png",
-          width_in_frames = 40
+          layers =
+          {
+            playeranimations.level1.idlewithgun,
+            playeranimations.level1.idlewithgunmask,
+            playeranimations.level2addon.idlewithgun,
+            playeranimations.level2addon.idlewithgunmask,
+          }
         },
+        mining_with_hands =
         {
-          filename = "__base__/graphics/entity/player/character-idle-with-gun-3.png",
-          width_in_frames = 40
+          layers =
+          {
+            playeranimations.level1.miningwithhands,
+            playeranimations.level1.miningwithhandsmask,
+            playeranimations.level2addon.miningwithhands,
+            playeranimations.level2addon.miningwithhandsmask,
+          }
+        },
+        mining_with_tool =
+        {
+          layers =
+          {
+            playeranimations.level1.miningwithtool,
+            playeranimations.level1.miningwithtoolmask,
+            playeranimations.level2addon.miningwithtool,
+            playeranimations.level2addon.miningwithtoolmask,
+          }
+        },
+        running_with_gun =
+        {
+          layers =
+          {
+            playeranimations.level1.runningwithgun,
+            playeranimations.level1.runningwithgunmask,
+            playeranimations.level2addon.runningwithgun,
+            playeranimations.level2addon.runningwithgunmask,
+          }
+        },
+        running =
+        {
+          layers =
+          {
+            playeranimations.level1.running,
+            playeranimations.level1.runningmask,
+            playeranimations.level2addon.running,
+            playeranimations.level2addon.runningmask,
+          }
         }
       },
-      shift = {0, -0.6}
+      {
+        -- modular armors are not in the demo
+        armors = data.isdemo and {} or {"basic-modular-armor", "power-armor", "power-armor-mk2"},
+        idle =
+        {
+          layers =
+          {
+            playeranimations.level1.idle,
+            playeranimations.level1.idlemask,
+            playeranimations.level3addon.idle,
+            playeranimations.level3addon.idlemask
+          }
+        },
+        idle_with_gun =
+        {
+          layers =
+          {
+            playeranimations.level1.idlewithgun,
+            playeranimations.level1.idlewithgunmask,
+            playeranimations.level3addon.idlewithgun,
+            playeranimations.level3addon.idlewithgunmask,
+          }
+        },
+        mining_with_hands =
+        {
+          layers =
+          {
+            playeranimations.level1.miningwithhands,
+            playeranimations.level1.miningwithhandsmask,
+            playeranimations.level3addon.miningwithhands,
+            playeranimations.level3addon.miningwithhandsmask,
+          }
+        },
+        mining_with_tool =
+        {
+          layers =
+          {
+            playeranimations.level1.miningwithtool,
+            playeranimations.level1.miningwithtoolmask,
+            playeranimations.level3addon.miningwithtool,
+            playeranimations.level3addon.miningwithtoolmask,
+          }
+        },
+        running_with_gun =
+        {
+          layers =
+          {
+            playeranimations.level1.runningwithgun,
+            playeranimations.level1.runningwithgunmask,
+            playeranimations.level3addon.runningwithgun,
+            playeranimations.level3addon.runningwithgunmask,
+          }
+        },
+        running =
+        {
+          layers =
+          {
+            playeranimations.level1.running,
+            playeranimations.level1.runningmask,
+            playeranimations.level3addon.running,
+            playeranimations.level3addon.runningmask,
+          }
+        }
+      }
     },
     light =
     {
@@ -399,78 +467,8 @@ data:extend(
       },
     },
     mining_speed = 0.01,
-    mining_with_hands_animation =
-    {
-      priority = "medium",
-      frame_width = 48,
-      frame_height = 66,
-      direction_count = 5,
-      frame_count = 80,
-      stripes =
-      {
-        {
-          filename = "__base__/graphics/entity/player/character-mine-with-hands-1.png",
-          width_in_frames = 40
-        },
-        {
-          filename = "__base__/graphics/entity/player/character-mine-with-hands-2.png",
-          width_in_frames = 40
-        }
-      },
-      shift = {0, -0.6}
-    },
     mining_with_hands_particles_animation_positions = {29, 63},
-    mining_with_tool_animation =
-    {
-      priority = "medium",
-      frame_width = 64,
-      frame_height = 88,
-      direction_count = 5,
-      frame_count = 48,
-      stripes =
-      {
-        {
-          filename = "__base__/graphics/entity/player/character-mine-with-tool-1.png",
-          width_in_frames = 24
-        },
-        {
-          filename = "__base__/graphics/entity/player/character-mine-with-tool-2.png",
-          width_in_frames = 24
-        }
-      },
-      shift = {0, -0.6}
-    },
     mining_with_tool_particles_animation_positions = {28},
-    running_aim =
-    {
-      filename = "__base__/graphics/entity/player/character-clothes-run-aim.png",
-      priority = "medium",
-      frame_width = 58,
-      frame_height = 72,
-      frame_count = 30,
-      direction_count = 18,
-      shift = {0, -0.6}
-    },
-    running_animation =
-    {
-      filename = "__base__/graphics/entity/player/character-clothes-run.png",
-      priority = "medium",
-      frame_width = 48,
-      frame_height = 66,
-      frame_count = 30,
-      direction_count = 5,
-      shift = {0, -0.6}
-    },
-    running_mask_animation =
-    {
-      filename = "__base__/graphics/entity/player/character-clothes-run-mask.png",
-      priority = "medium",
-      frame_width = 48,
-      frame_height = 66,
-      frame_count = 30,
-      direction_count = 5,
-      shift = {0, -0.6}
-    },
     running_sound_animation_positions = {14, 29}
   },
 
@@ -503,10 +501,10 @@ data:extend(
     },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
-    smelting_categories = {"smelting"},
+    crafting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_energy_consumption = "180kW",
-    smelting_speed = 1,
+    energy_usage = "180kW",
+    crafting_speed = 1,
     source_inventory_size = 1,
     energy_source =
     {
@@ -525,32 +523,33 @@ data:extend(
         }
       }
     },
-    on_animation =
+    animation =
     {
       filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
       priority = "extra-high",
-      frame_width = 81,
-      frame_height = 64,
+      width = 81,
+      height = 64,
       frame_count = 1,
       shift = {0.5, 0.05 }
     },
-    off_animation =
+    working_visualisations =
     {
-      filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
-      priority = "extra-high",
-      frame_width = 81,
-      frame_height = 64,
-      frame_count = 1,
-      shift = {0.5, 0.05 }
-    },
-    fire_animation =
-    {
-      filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
-      priority = "extra-high",
-      frame_width = 23,
-      frame_height = 27,
-      frame_count = 12,
-      shift = { 0.078125, 0.5234375}
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        animation =
+        {
+          filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
+          priority = "extra-high",
+          width = 23,
+          height = 27,
+          frame_count = 12,
+          shift = { 0.078125, 0.5234375}
+        },
+        light = {intensity = 1, size = 1}
+      }
     },
     fast_replaceable_group = "furnace"
   },
@@ -586,8 +585,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
       priority = "extra-high",
-      frame_width = 40,
-      frame_height = 40,
+      width = 40,
+      height = 40,
       frame_count = 16,
       direction_count = 12
     },
@@ -789,39 +788,6 @@ data:extend(
   },
 
   {
-    type = "corpse",
-    name = "small-biter-corpse",
-    icon = "__base__/graphics/icons/small-biter-corpse.png",
-    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
-    selectable_in_game = false,
-    subgroup="corpses",
-    order = "c[corpse]-a[biter]-a[small]",
-    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
-    dying_speed = 0.04,
-    final_render_layer = "corpse",
-    animation =
-    {
-      frame_width = 142,
-      frame_height = 97,
-      frame_count = 17,
-      direction_count = 16,
-      axially_symetric = false,
-      shift = {0.328125, -0.09375},
-      stripes =
-      {
-        {
-          filename = "__base__/graphics/entity/small-biter/small-biter-die-1.png",
-          width_in_frames = 9
-        },
-        {
-          filename = "__base__/graphics/entity/small-biter/small-biter-die-2.png",
-          width_in_frames = 8
-        }
-      },
-    },
-  },
-
-  {
     type = "electric-pole",
     name = "small-electric-pole",
     icon = "__base__/graphics/icons/small-electric-pole.png",
@@ -838,8 +804,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/small-electric-pole/small-electric-pole.png",
       priority = "extra-high",
-      frame_width = 123,
-      frame_height = 124,
+      width = 123,
+      height = 124,
       axially_symetric = false,
       direction_count = 4,
       shift = {1.4, -1.1}
@@ -906,14 +872,14 @@ data:extend(
     copper_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     green_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
@@ -926,220 +892,16 @@ data:extend(
     red_wire_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
     },
     wire_shadow_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
-      priority = "high",
+      priority = "extra-high-no-scale",
       width = 224,
       height = 46
-    }
-  },
-
-  {
-    type = "unit",
-    name = "small-biter",
-    icon = "__base__/graphics/icons/creeper.png",
-    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
-    max_health = 15,
-    order = "b-b-a",
-    subgroup="enemies",
-    healing_per_tick = 0.01,
-    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
-    selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
-    attack_parameters =
-    {
-      range = 0.5,
-      cooldown = 35,
-      ammo_category = "melee",
-      ammo_type = make_unit_melee_ammo_type(6),
-      sound =
-      {
-        {
-          filename = "__base__/sound/creatures/biter-roar-short-1.ogg",
-          volume = 0.8
-        },
-        {
-          filename = "__base__/sound/creatures/biter-roar-short-2.ogg",
-          volume = 0.8
-        },
-        {
-          filename = "__base__/sound/creatures/biter-roar-short-3.ogg",
-          volume = 0.8
-        }
-      },
-      animation =
-      {
-        filename = "__base__/graphics/entity/small-biter/small-biter-attack.png",
-        frame_width = 139,
-        frame_height = 93,
-        frame_count = 11,
-        direction_count = 16,
-        axially_symmetrical = false,
-        shift = {0.84375, -0.3125}
-      }
-    },
-    vision_distance = 30,
-    movement_speed = 0.2,
-    distance_per_frame = 0.1,
-    pollution_to_join_attack = 200,
-    distraction_cooldown = 300,
-    corpse = "small-biter-corpse",
-    dying_sound =
-    {
-      {
-        filename = "__base__/sound/creatures/creeper-death-1.ogg",
-        volume = 0.7
-      },
-      {
-        filename = "__base__/sound/creatures/creeper-death-2.ogg",
-        volume = 0.7
-      },
-      {
-        filename = "__base__/sound/creatures/creeper-death-3.ogg",
-        volume = 0.7
-      },
-      {
-        filename = "__base__/sound/creatures/creeper-death-4.ogg",
-        volume = 0.7
-      }
-    },
-    run_animation =
-    {
-      filename = "__base__/graphics/entity/small-biter/small-biter-run.png",
-      still_frame = 4,
-      frame_width = 86,
-      frame_height = 59,
-      frame_count = 16,
-      direction_count = 16,
-      shift = {0.359375, -0.15625},
-      axially_symmetrical = false
-    }
-  },
-
-  {
-    type = "unit-spawner",
-    name = "biter-spawner",
-    icon = "__base__/graphics/icons/biter-spawner.png",
-    flags = {"placeable-player", "placeable-enemy", "not-repairable"},
-    max_health = 350,
-    order="b-b-g",
-    subgroup="enemies",
-    resistances =
-    {
-      {
-        type = "physical",
-        decrease = 2,
-      },
-      {
-        type = "explosion",
-        decrease = 5,
-        percent = 15,
-      }
-    },
-    healing_per_tick = 0.02,
-    collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
-    selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
-    -- in ticks per 1 pu
-    pollution_cooldown = 10,
-    corpse = "biter-spawner-corpse",
-    loot =
-    {
-      {
-        count_max = 10,
-        count_min = 2,
-        item = "alien-artifact",
-        probability = 1
-      }
-    },
-    max_count_of_owned_units = 7,
-    max_friends_around_to_spawn = 5,
-    animations =
-    {
-      biterspawneranimation(0),
-      biterspawneranimation(1),
-      biterspawneranimation(2),
-      biterspawneranimation(3)
-    },
-    result_units = (function()
-                     local res = {}
-                     res[1] = {"small-biter", 0.3}
-                     if not data.isdemo then
-                       res[2] = {"medium-biter", 0.3}
-                       res[3] = {"big-biter", 0.4}
-                     end
-                     return res
-                   end)(),
-    -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
-    spawning_cooldown = {360, 150},
-    spawning_radius = 10,
-    spawning_spacing = 3,
-    max_spawn_shift = 0,
-    max_richness_for_spawn_shift = 100,
-    autoplace =
-    {
-      sharpness = 0.4,
-      control = "enemy-base",
-      order = "b[enemy]-a[base]",
-      richness_multiplier = 1,
-      richness_base = 0,
-      force = "enemy",
-      peaks =
-      {
-        {
-          influence = 0,
-          richness_influence = 100,
-          tier_from_start_optimal = 20,
-          tier_from_start_top_property_limit = 20,
-          tier_from_start_max_range = 40,
-        },
-        {
-          influence = -10.0,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.425,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-        },
-        -- increase the size when moving further away
-        {
-          influence = 0.5,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-          tier_from_start_optimal = 20,
-          tier_from_start_top_property_limit = 20,
-          tier_from_start_max_range = 40,
-        },
-      }
-    }
-  },
-
-  {
-    type = "corpse",
-    name = "biter-spawner-corpse",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
-    icon = "__base__/graphics/icons/biter-spawner-corpse.png",
-    collision_box = {{-2, -2}, {2, 2}},
-    selection_box = {{-2, -2}, {2, 2}},
-    selectable_in_game = false,
-    dying_speed = 0.04,
-    subgroup="corpses",
-    order = "c[corpse]-b[biter-spawner]",
-    final_render_layer = "corpse",
-    animation =
-    {
-      biterspawnercorpse(0),
-      biterspawnercorpse(1),
-      biterspawnercorpse(2),
-      biterspawnercorpse(3)
     }
   },
 
@@ -1152,32 +914,32 @@ data:extend(
       {
         filename = "__base__/graphics/entity/explosion/explosion-1.png",
         priority = "extra-high",
-        frame_width = 64,
-        frame_height = 59,
+        width = 64,
+        height = 59,
         frame_count = 16,
         animation_speed = 0.5
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-2.png",
         priority = "extra-high",
-        frame_width = 64,
-        frame_height = 57,
+        width = 64,
+        height = 57,
         frame_count = 16,
         animation_speed = 0.5
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-3.png",
         priority = "extra-high",
-        frame_width = 64,
-        frame_height = 49,
+        width = 64,
+        height = 49,
         frame_count = 16,
         animation_speed = 0.5
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-4.png",
         priority = "extra-high",
-        frame_width = 64,
-        frame_height = 51,
+        width = 64,
+        height = 51,
         frame_count = 16,
         animation_speed = 0.5
       }
@@ -1208,15 +970,16 @@ data:extend(
       {
         filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
         priority = "extra-high",
-        frame_width = 30,
-        frame_height = 30,
-        frame_count = 5,
-        animation_speed = 0.5
+        width = 34,
+        height = 38,
+        frame_count = 13,
+        animation_speed = 1.5,
+        shift = {0, -0.3125}
       }
     },
     light = {intensity = 1, size = 10},
     smoke = "smoke-fast",
-    smoke_count = 2,
+    smoke_count = 1,
     smoke_slow_down_factor = 1
   },
 
@@ -1229,8 +992,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/huge-explosion/huge-explosion.png",
         priority = "extra-high",
-        frame_width = 112,
-        frame_height = 94,
+        width = 112,
+        height = 94,
         frame_count = 54,
         line_length = 6,
         shift = {-0.56, -0.96},
@@ -1263,6 +1026,124 @@ data:extend(
             initial_vertical_speed = 0.08,
             initial_vertical_speed_deviation = 0.15,
             offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
+      }
+    }
+  },
+  
+  {
+    type = "explosion",
+    name = "blood-explosion-small",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__core__/graphics/empty.png",
+        priority = "extra-high",
+        width = 1,
+        height = 1,
+        frame_count = 1
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          type = "create-entity",
+          entity_name = "blood-fountain",
+          repeat_count = 20,
+          offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "blood-explosion-big",
+    flags = {"not-on-map"},
+     animations =
+    {
+      {
+        filename = "__core__/graphics/empty.png",
+        priority = "extra-high",
+        width = 1,
+        height = 1,
+        frame_count = 1
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 150,
+            entity_name = "blood-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.05,
+            initial_vertical_speed = -0.01,
+            initial_vertical_speed_deviation = 0.02,
+            offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
+          },
+          {
+            type = "create-entity",
+            entity_name = "blood-fountain",
+            repeat_count = 35,
+            offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
+          }
+        }
+      }
+    }
+  },
+  
+  {
+    type = "explosion",
+    name = "blood-explosion-huge",
+    flags = {"not-on-map"},
+     animations =
+    {
+      {
+        filename = "__core__/graphics/empty.png",
+        priority = "extra-high",
+        width = 1,
+        height = 1,
+        frame_count = 1
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 150,
+            entity_name = "blood-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.05,
+            initial_vertical_speed = -0.01,
+            initial_vertical_speed_deviation = 0.02,
+            offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
+          },
+          {
+            type = "create-entity",
+            entity_name = "blood-fountain-big",
+            repeat_count = 35,
+            offset_deviation = {{-1.6, -1.6}, {1.6, 1.6}}
           }
         }
       }
@@ -1307,8 +1188,8 @@ data:extend(
     horizontal_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-horizontal.png",
-      frame_width = 246,
-      frame_height = 137,
+      width = 246,
+      height = 137,
       frame_count = 32,
       line_length = 8,
       shift = {1.34, -0.06}
@@ -1316,8 +1197,8 @@ data:extend(
     vertical_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-vertical.png",
-      frame_width = 155,
-      frame_height = 186,
+      width = 155,
+      height = 186,
       frame_count = 32,
       line_length = 8,
       shift = {0.812, 0.031}
@@ -1423,8 +1304,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smoke/smoke.png",
       priority = "high",
-      frame_width = 88,
-      frame_height = 78,
+      width = 88,
+      height = 78,
       frame_count = 39,
       animation_speed = 12,
       line_length = 7
@@ -1439,8 +1320,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
       priority = "high",
-      frame_width = 50,
-      frame_height = 50,
+      width = 50,
+      height = 50,
       frame_count = 16,
       animation_speed = 1
     }
@@ -1454,8 +1335,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
       priority = "high",
-      frame_width = 50,
-      frame_height = 50,
+      width = 50,
+      height = 50,
       animation_speed = 2,
       frame_count = 16,
       scale = 0.5
@@ -1476,8 +1357,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
       priority = "high",
-      frame_width = 50,
-      frame_height = 50,
+      width = 50,
+      height = 50,
       animation_speed = 2,
       frame_count = 16,
       scale = 0.5
@@ -1498,8 +1379,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
       priority = "high",
-      frame_width = 50,
-      frame_height = 50,
+      width = 50,
+      height = 50,
       animation_speed = 2,
       frame_count = 16,
       scale = 0.5
@@ -1612,10 +1493,13 @@ data:extend(
     insert_position = {0, 1.35},
     platform_picture =
     {
-      priority = "extra-high",
-      width = 46,
-      height = 46,
-      sheet = "__base__/graphics/entity/basic-inserter/basic-inserter-platform.png"
+      sheet =
+      {
+        filename = "__base__/graphics/entity/basic-inserter/basic-inserter-platform.png",
+        priority = "extra-high",
+        width = 46,
+        height = 46,
+      }
     },
     rotation_speed = 0.014
   },
@@ -1728,10 +1612,13 @@ data:extend(
     insert_position = {0, 1.35},
     platform_picture =
     {
-      priority = "extra-high",
-      width = 46,
-      height = 46,
-      sheet = "__base__/graphics/entity/burner-inserter/burner-inserter-platform.png"
+      sheet =
+      {
+        filename = "__base__/graphics/entity/burner-inserter/burner-inserter-platform.png",
+        priority = "extra-high",
+        width = 46,
+        height = 46
+      }
     },
     rotation_speed = 0.01
   },
@@ -1819,8 +1706,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/radar/radar.png",
       priority = "low",
-      frame_width = 153,
-      frame_height = 131,
+      width = 153,
+      height = 131,
       axially_symmetrical = false,
       apply_projection = false,
       direction_count = 64,
@@ -2008,8 +1895,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
       priority="high",
-      frame_width = 99,
-      frame_height = 102,
+      width = 99,
+      height = 102,
       frame_count = 32,
       line_length = 8,
       shift = {0.25, -0.1}
@@ -2062,32 +1949,32 @@ data:extend(
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-1.png",
         line_length = 5,
-        frame_width = 199,
-        frame_height = 159,
+        width = 199,
+        height = 159,
         frame_count = 20,
         shift = {0.484375, -0.171875},
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-2.png",
         line_length = 5,
-        frame_width = 238,
-        frame_height = 157,
+        width = 238,
+        height = 157,
         frame_count = 20,
         shift = {0.8125, -0.15625},
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-3.png",
         line_length = 5,
-        frame_width = 240,
-        frame_height = 162,
+        width = 240,
+        height = 162,
         frame_count = 20,
         shift = {0.71875, -0.09375},
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-4.png",
         line_length = 5,
-        frame_width = 241,
-        frame_height = 146,
+        width = 241,
+        height = 146,
         frame_count = 20,
         shift = {0.703125, -0.375},
       }
@@ -2111,8 +1998,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/water-splash/water-splash.png",
         priority = "extra-high",
-        frame_width = 92,
-        frame_height = 66,
+        width = 92,
+        height = 66,
         frame_count = 15,
         line_length = 5,
         shift = {-0.437, 0.5},

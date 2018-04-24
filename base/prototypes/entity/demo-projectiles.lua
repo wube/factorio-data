@@ -28,8 +28,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple.png",
       line_length = 5,
-      frame_width = 16,
-      frame_height = 18,
+      width = 16,
+      height = 18,
       frame_count = 33,
       priority = "high"
     },
@@ -37,8 +37,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple-shadow.png",
       line_length = 5,
-      frame_width = 28,
-      frame_height = 16,
+      width = 28,
+      height = 16,
       frame_count = 33,
       priority = "high",
       shift = {-0.09, 0.395}

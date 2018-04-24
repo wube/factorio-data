@@ -60,8 +60,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/crude-oil/crude-oil.png",
       priority = "extra-high",
-      frame_width = 75,
-      frame_height = 61,
+      width = 75,
+      height = 61,
       frame_count = 4,
       direction_count = 1
     },

@@ -4,8 +4,8 @@ laser_turret_extension =
 {
   filename = "__base__/graphics/entity/laser-turret/laser-turret-extension.png",
   priority = "medium",
-  frame_width = 131,
-  frame_height = 74,
+  width = 131,
+  height = 74,
   direction_count = 4,
   frame_count = 5,
   axially_symmetrical = false,
@@ -20,8 +20,8 @@ medium_worm_preparing =
 {
   filename = "__base__/graphics/entity/medium-worm-turret/preparing.png",
   priority = "medium",
-  frame_width = 175,
-  frame_height = 125,
+  width = 175,
+  height = 125,
   frame_count = 27,
   line_length = 7,
   direction_count = 1,
@@ -32,8 +32,8 @@ medium_worm_preparing =
 medium_worm_starting_attack =
 {
   priority = "medium",
-  frame_width = 229,
-  frame_height = 175,
+  width = 229,
+  height = 175,
   frame_count = 8,
   direction_count = 16,
   line_length = 1,
@@ -63,8 +63,8 @@ big_worm_preparing =
   filename = "__base__/graphics/entity/big-worm-turret/preparing.png",
   priority = "medium",
   line_length = 7,
-  frame_width = 207,
-  frame_height = 148,
+  width = 207,
+  height = 148,
   frame_count = 27,
   axially_symmetrical = false,
   direction_count = 1,
@@ -73,8 +73,8 @@ big_worm_preparing =
 
 big_worm_starting_attack =
 {
-  frame_width = 270,
-  frame_height = 207,
+  width = 270,
+  height = 207,
   frame_count = 8,
   axially_symmetrical = false,
   direction_count = 16,
@@ -132,13 +132,14 @@ data:extend(
     shooting_cursor_size = 3.5,
     rotation_speed = 1,
     corpse = "medium-worm-corpse",
+    dying_explosion = "blood-explosion-big",
     folded_speed = 0.01,
     folded_animation =
     {
       filename = "__base__/graphics/entity/medium-worm-turret/folded.png",
       priority = "medium",
-      frame_width = 120,
-      frame_height = 88,
+      width = 120,
+      height = 88,
       frame_count = 15,
       direction_count = 1,
       line_length = 5,
@@ -154,8 +155,8 @@ data:extend(
       run_mode = "forward-then-backward",
       priority = "medium",
       line_length = 4,
-      frame_width = 164,
-      frame_height = 133,
+      width = 164,
+      height = 133,
       frame_count = 11,
       axially_symmetrical = false,
       direction_count = 1,
@@ -272,14 +273,15 @@ data:extend(
     shooting_cursor_size = 4,
     rotation_speed = 1,
     corpse = "big-worm-corpse",
+    dying_explosion = "blood-explosion-big",
     inventory_size = 2,
     folded_speed = 0.01,
     folded_animation =
     {
       filename = "__base__/graphics/entity/big-worm-turret/folded.png",
       priority = "medium",
-      frame_width = 142,
-      frame_height = 104,
+      width = 142,
+      height = 104,
       frame_count = 15,
       axially_symmetrical = false,
       direction_count = 1,
@@ -295,8 +297,8 @@ data:extend(
       run_mode = "forward-then-backward",
       priority = "medium",
       line_length = 4,
-      frame_width = 194,
-      frame_height = 157,
+      width = 194,
+      height = 157,
       frame_count = 11,
       axially_symmetrical = false,
       direction_count = 1,
@@ -392,26 +394,6 @@ data:extend(
     preparing_speed = 0.05,
     dying_explosion = "huge-explosion",
     folding_speed = 0.05,
-    ammo_type =
-    {
-      type = "projectile",
-      category = "laser-turret",
-      energy_consumption = "200kJ",
-      action =
-      {
-        {
-          type = "direct",
-          action_delivery =
-          {
-            {
-              type = "projectile",
-              projectile = "laser",
-              starting_speed = 0.28
-            }
-          }
-        }
-      }
-    },
     energy_source =
     {
       type = "electric",
@@ -431,8 +413,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/laser-turret/laser-turret.png",
       priority = "medium",
-      frame_width = 131,
-      frame_height = 72,
+      width = 131,
+      height = 72,
       direction_count = 64,
       frame_count = 1,
       line_length = 8,
@@ -460,6 +442,26 @@ data:extend(
       projectile_center = {0, 0},
       projectile_creation_distance = 0.6,
       range = 25,
+      ammo_type =
+      {
+        type = "projectile",
+        category = "laser-turret",
+        energy_consumption = "200kJ",
+        action =
+        {
+          {
+            type = "direct",
+            action_delivery =
+            {
+              {
+                type = "projectile",
+                projectile = "laser",
+                starting_speed = 0.28
+              }
+            }
+          }
+        }
+      },
       sound =
       {
         {
@@ -472,35 +474,43 @@ data:extend(
   {
     type = "corpse",
     name = "medium-worm-corpse",
+    icon = "__base__/graphics/icons/medium-worm-corpse.png",
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selectable_in_game = false,
     subgroup="corpses",
-    order="b-c-e",
+    order = "c[corpse]-c[worm]-b[medium]",
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
     final_render_layer = "corpse",
     animation =
     {
-      frame_width = 274,
-      frame_height = 243,
+      width = 274,
+      height = 243,
       frame_count = 29,
       direction_count = 1,
       line_length = 6,
       axially_symetric = false,
       shift = shift_medium_worm(0.053125, 0.159375),
       filename = "__base__/graphics/entity/medium-worm-turret/die.png",
-    },
+    }
   },
   {
     type = "corpse",
     name = "big-worm-corpse",
+    icon = "__base__/graphics/icons/big-worm-corpse.png",
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selectable_in_game = false,
     subgroup="corpses",
-    order="b-c-f",
+    order = "c[corpse]-c[worm]-c[big]",
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
     final_render_layer = "corpse",
     animation =
     {
       filename = "__base__/graphics/entity/big-worm-turret/die.png",
       line_length = 6,
-      frame_width = 323,
-      frame_height = 287,
+      width = 323,
+      height = 287,
       frame_count = 29,
       axially_symmetrical = false,
       direction_count = 1,

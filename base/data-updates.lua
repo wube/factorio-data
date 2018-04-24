@@ -51,3 +51,5 @@ function addbuildeffects()
     end
   end
 end
+
+addbuildeffects()

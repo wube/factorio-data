@@ -62,7 +62,7 @@ data:extend(
     name = "wood",
     icon = "__base__/graphics/icons/wood.png",
     flags = {"goes-to-main-inventory"},
-    fuel_value = "0.6MJ",
+    fuel_value = "2MJ",
     subgroup = "raw-material",
     order = "a[wood]",
     stack_size = 50
@@ -126,7 +126,7 @@ data:extend(
     name = "wooden-chest",
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"goes-to-quickbar"},
-    fuel_value = "6MJ",
+    fuel_value = "4MJ",
     subgroup = "storage",
     order = "a[items]-a[wooden-chest]",
     place_result = "wooden-chest",
@@ -240,6 +240,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-a[small-electric-pole]",
     place_result = "small-electric-pole",
+    fuel_value = "4MJ",
     stack_size = 50
   },
   {
@@ -265,7 +266,7 @@ data:extend(
     type = "item",
     name = "small-plane",
     icon = "__base__/graphics/icons/small-plane.png",
-    flags = {"goes-to-quickbar"},
+    flags = {"goes-to-quickbar", "hidden"},
     subgroup = "defensive-structure",
     order = "h[small-plane]",
     stack_size = 1

@@ -79,8 +79,8 @@ data:extend(
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages = { filename = "__base__/graphics/entity/copper-ore/copper-ore.png",
       priority = "extra-high",
-      frame_width = 38,
-      frame_height = 38,
+      width = 38,
+      height = 38,
       frame_count = 4,
       direction_count = 8
     },
@@ -168,8 +168,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/iron-ore/iron-ore.png",
       priority = "extra-high",
-      frame_width = 38,
-      frame_height = 38,
+      width = 38,
+      height = 38,
       frame_count = 4,
       direction_count = 8
     },
@@ -257,8 +257,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/coal/coal.png",
       priority = "extra-high",
-      frame_width = 38,
-      frame_height = 38,
+      width = 38,
+      height = 38,
       frame_count = 4,
       direction_count = 8
     },
@@ -346,8 +346,8 @@ data:extend(
     {
       filename = "__base__/graphics/entity/stone/stone.png",
       priority = "extra-high",
-      frame_width = 38,
-      frame_height = 38,
+      width = 38,
+      height = 38,
       frame_count = 4,
       direction_count = 8
     },

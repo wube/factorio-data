@@ -39,6 +39,7 @@ data:extend(
   {
     type = "recipe",
     name = "solar-panel",
+    energy_required = 10,
     enabled = "false",
     ingredients =
     {
@@ -83,6 +84,19 @@ data:extend(
       {"steel-plate", 5}
     },
     result = "car"
+  },
+  {
+    type = "recipe",
+    name = "tank",
+    enabled = "false",
+    ingredients =
+    {
+      {"engine-unit", 16},
+      {"steel-plate", 50},
+      {"iron-gear-wheel", 15},
+      {"advanced-circuit", 5}
+    },
+    result = "tank"
   },
   {
     type = "recipe",
@@ -211,10 +225,17 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "wall",
-    enabled = "true",
+    name = "stone-wall",
+    enabled = "false",
     ingredients = {{"stone-brick", 5}},
-    result = "wall"
+    result = "stone-wall"
+  },
+  {
+    type = "recipe",
+    name = "gate",
+    enabled = "false",
+    ingredients = {{"stone-wall", 1}, {"steel-plate", 2}, {"electronic-circuit", 2}},
+    result = "gate"
   },
   {
     type = "recipe",
@@ -433,22 +454,24 @@ data:extend(
     energy_required = 2,
     ingredients =
     {
-      {"electronic-circuit", 10},
+      {"basic-splitter", 1},
       {"iron-gear-wheel", 10},
-      {"fast-transport-belt", 4}
+      {"electronic-circuit", 10}
     },
     result = "fast-splitter"
   },
   {
     type = "recipe",
     name = "express-splitter",
+    category = "crafting-with-fluid",
     enabled = "false",
     energy_required = 2,
     ingredients =
     {
-      {"advanced-circuit", 10},
+      {"fast-splitter", 1},
       {"iron-gear-wheel", 10},
-      {"express-transport-belt", 4}
+      {"advanced-circuit", 10},
+      {type="fluid", name="lubricant", amount=8}
     },
     result = "express-splitter"
   },
@@ -620,6 +643,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-accumulator",
+    energy_required = 10,
     enabled = "false",
     ingredients =
     {

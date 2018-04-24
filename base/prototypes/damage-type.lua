@@ -6,6 +6,10 @@ data:extend(
   },
   {
     type = "damage-type",
+    name = "impact"
+  },
+  {
+    type = "damage-type",
     name = "poison"
   },
   {
