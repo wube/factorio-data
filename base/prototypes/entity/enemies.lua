@@ -493,7 +493,6 @@ data:extend(
     selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
     pollution_absorbtion_absolute = 20,
     pollution_absorbtion_proportional = 0.01,
-    pollution_to_enhance_spawning = 30000,
     corpse = "spitter-spawner-corpse",
     dying_explosion = "blood-explosion-huge",
     loot =

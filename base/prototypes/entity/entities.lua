@@ -1051,7 +1051,7 @@ data:extend(
     type = "car",
     name = "tank",
     icon = "__base__/graphics/icons/tank.png",
-    flags = {"pushable", "placeable-neutral", "player-creation"},
+    flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "tank"},
     max_health = 1000,
     corpse = "medium-remnants",

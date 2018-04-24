@@ -242,6 +242,14 @@ data:extend(
       font = "default-bold",
       font_color={r=0.9, g=0.9, b=0.1}
     },
+    menu_message_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font = "default-bold",
+      font_color = default_orange_color,
+      minimal_width = 300
+    },
     button_style =
     {
       type = "button_style",

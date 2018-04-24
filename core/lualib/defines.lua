@@ -179,7 +179,7 @@ circuitconnectorid =
 
 circuitconditionindex =
 {
-  inserter_circuit = 0,
+  inserter_circuit = 1,
   inserter_logistic = 1,
   lamp = 1,
   arithmetic_combinator = 1,

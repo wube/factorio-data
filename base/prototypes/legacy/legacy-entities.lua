@@ -9,7 +9,8 @@ data:extend(
     max_health = 5000,
     --corpse = "big-remnants",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
-    selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    -- avoid running some internal tests over this entity
+    selection_box = {{0, 0}, {0, 0}},
     energy_source =
     {
       type = "electric",

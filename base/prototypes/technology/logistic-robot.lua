@@ -478,7 +478,7 @@ data:extend(
         modifier = 5
       }
     },
-    prerequisites = {"logistic-robotics"},
+    prerequisites = {"character-logistic-trash-slots-1"},
     unit =
     {
       count = 100,
