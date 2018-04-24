@@ -113,7 +113,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     order="b-b-e",
     max_health = 350,
-    resistances = 
+    resistances =
     {
       {
         type = "physical",
@@ -235,7 +235,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     max_health = 500,
     order="b-b-f",
-    resistances = 
+    resistances =
     {
       {
         type = "physical",
@@ -333,13 +333,13 @@ data:extend(
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.15,
+          influence = 0.07,
           noise_layer = "enemy-base",
           noise_octaves_difference = -1.8,
           noise_persistence = 0.5,
         },
         {
-          influence = 0.3,
+          influence = 0.38,
           noise_layer = "enemy-base",
           noise_octaves_difference = -1.8,
           noise_persistence = 0.5,

@@ -261,7 +261,7 @@ data:extend(
     type = "technology",
     name = "flammables",
     icon = "__base__/graphics/technology/flammables.png",
-    prerequisites = {"oil-processing-1"},
+    prerequisites = {"oil-processing"},
     unit =
     {
       count = 60,
@@ -1296,7 +1296,7 @@ data:extend(
     {
       {
         type = "num-quick-bars",
-        modifier = 2
+        modifier = 1
       }
     },
     unit =

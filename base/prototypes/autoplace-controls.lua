@@ -2,21 +2,6 @@ data:extend(
 {
   {
     type = "autoplace-control",
-    name = "grass",
-    order = "a-a",
-  },
-  {
-    type = "autoplace-control",
-    name = "dirt",
-    order = "a-b",
-  },
-  {
-    type = "autoplace-control",
-    name = "sand",
-    order = "a-c",
-  },
-  {
-    type = "autoplace-control",
     name = "iron-ore",
     richness = true,
     order = "b-a"
@@ -44,11 +29,6 @@ data:extend(
     name = "crude-oil",
     richness = true,
     order = "b-e"
-  },
-  {
-    type = "autoplace-control",
-    name = "forest",
-    order = "c-a"
   },
   {
     type = "autoplace-control",

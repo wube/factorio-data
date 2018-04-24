@@ -4,8 +4,7 @@ local function autoplace_settings(rectangles, more)
   local ret =
   {
     sharpness = 0.4,
-    control = "forest",
-    order = "a[tree]-b[forest]",
+    order = "b[tree]-b[forest]",
     peaks =
     {
       {
@@ -54,8 +53,7 @@ data:extend(
     order = "a[tree]-d[dead-tree]",
     autoplace =
     {
-      control = "forest",
-      order = "a[tree]-a[random]",
+      order = "b[tree]-a[random]",
       peaks =
       {
         {
@@ -64,7 +62,7 @@ data:extend(
         {
           influence = 0.004,
           min_influence = 0, -- get forrest bonus, but have no penalty for being outside.
-          max_influence = 0.002,
+          max_influence = 0.003,
           noise_layer = "trees",
           noise_persistence = 0.5,
         }
@@ -128,7 +126,16 @@ data:extend(
     collision_box = {{-0.4, -0.7}, {0.4, 0.9}},
     selection_box = {{-0.9, -2.2}, {0.9, 0.9}},
     order = "a[tree]-a[thin-tree]-d[dark]",
-    autoplace = autoplace_settings({{{30, 0.8}, {15, 0.5}}}),
+    autoplace = autoplace_settings({{{30, 0.4}, {10, 0.3}}},
+                                   {
+                                    tile_restriction =
+                                    {
+                                      "dirt",
+                                      "dirt-dark",
+                                      "sand",
+                                      "sand-dark"
+                                    }
+                                   }),
     pictures =
     {
       {
@@ -200,8 +207,7 @@ data:extend(
     order = "a[tree]-e[dry-tree]",
     autoplace =
     {
-      control = "forest",
-      order = "a[tree]-a[random]",
+      order = "b[tree]-a[random]",
       peaks = autoplace_utils.peaks({{{35, 0.3}, {5, 0}, 0.001}},
                                     {
                                       {
@@ -830,7 +836,7 @@ data:extend(
     drawing_box = {{-0.5, -0.5}, {0.5, 0.5}},
     emissions_per_tick = 0,
     order = "a[tree]-f[coral]",
-    autoplace = autoplace_settings({{{25, 0.2}, {10, 0.1}}}),
+    autoplace = autoplace_settings({{{35, 0.4}, {20, 0.2}}}),
     pictures =
     {
       {

@@ -1,5 +1,5 @@
 require ("prototypes.entity.demo-railpictures")
-require ("prototypes.entity.pipecovers")
+require ("prototypes.entity.demo-pipecovers")
 
 function make_unit_melee_ammo_type(damagevalue)
   return
@@ -1020,8 +1020,8 @@ data:extend(
                      end
                      return res
                    end)(),
-    -- With zero evolution the spawn rate is 5 seconds, with max evolution it is 2.5 seconds
-    spawning_cooldown = {300, 150},
+    -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
+    spawning_cooldown = {360, 150},
     spawning_radius = 10,
     spawning_spacing = 3,
     max_spawn_shift = 0.65,
@@ -1433,8 +1433,8 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
-    energy_per_movement = 100,
-    energy_per_rotation = 100,
+    energy_per_movement = 100000,
+    energy_per_rotation = 100000,
     energy_source =
     {
       type = "burner",

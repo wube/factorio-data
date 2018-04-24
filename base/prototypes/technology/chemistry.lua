@@ -2,41 +2,9 @@ data:extend(
 {
   {
     type = "technology",
-    name = "oil-gathering",
-    icon = "__base__/graphics/technology/oil-gathering.png",
-    prerequisites = {"steel-processing"},
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "solid-fuel-from-light-oil"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "solid-fuel-from-petroleum-gas"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "solid-fuel-from-heavy-oil"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "pumpjack"
-      }
-    },
-    unit =
-    {
-      count = 50,
-      ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}},
-      time = 30
-    },
-    order = "d-a"
-  },
-  {
-    type = "technology",
     name = "fluid-handling",
     icon = "__base__/graphics/technology/fluid-handling.png",
-    prerequisites = {"oil-gathering"},
+    prerequisites = {"oil-processing"},
     effects =
     {
       {
@@ -70,14 +38,14 @@ data:extend(
   },
   {
     type = "technology",
-    name = "oil-processing-1",
-    icon = "__base__/graphics/technology/oil-processing.png",
-    prerequisites = {"oil-gathering"},
+    name = "oil-processing",
+    icon = "__base__/graphics/technology/oil-gathering.png",
+    prerequisites = {"steel-processing"},
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "basic-oil-processing"
+        recipe = "pumpjack"
       },
       {
         type = "unlock-recipe",
@@ -86,6 +54,22 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "chemical-plant"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "basic-oil-processing"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "solid-fuel-from-light-oil"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "solid-fuel-from-petroleum-gas"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "solid-fuel-from-heavy-oil"
       }
     },
     unit =
@@ -94,18 +78,26 @@ data:extend(
       ingredients = {{"science-pack-1", 1}, {"science-pack-2", 1}},
       time = 30
     },
-    order = "d-b"
+    order = "d-a"
   },
   {
     type = "technology",
-    name = "oil-processing-2",
+    name = "advanced-oil-processing",
     icon = "__base__/graphics/technology/oil-processing.png",
-    prerequisites = {"oil-processing-1"},
+    prerequisites = {"oil-processing"},
     effects =
     {
       {
         type = "unlock-recipe",
         recipe = "advanced-oil-processing"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "heavy-oil-cracking"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "light-oil-cracking"
       }
     },
     unit =
@@ -122,7 +114,7 @@ data:extend(
     type = "technology",
     name = "sulfur-processing",
     icon = "__base__/graphics/technology/sulfur-processing.png",
-    prerequisites = {"oil-processing-1"},
+    prerequisites = {"oil-processing"},
     effects =
     {
       {
@@ -146,7 +138,7 @@ data:extend(
     type = "technology",
     name = "plastics",
     icon = "__base__/graphics/technology/plastics.png",
-    prerequisites = {"oil-processing-1"},
+    prerequisites = {"oil-processing"},
     effects =
     {
       {

@@ -200,7 +200,7 @@ data:extend(
       richness_base = 350,
       peaks = {
         {
-          influence = 0.2,
+          influence = 0.21,
           starting_area_weight_optimal = 0,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,
@@ -215,7 +215,7 @@ data:extend(
           starting_area_weight_max_range = 2,
         },
         {
-          influence = 0.3,
+          influence = 0.32,
           starting_area_weight_optimal = 1,
           starting_area_weight_range = 0,
           starting_area_weight_max_range = 2,

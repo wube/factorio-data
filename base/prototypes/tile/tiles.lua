@@ -1,6 +1,6 @@
 local autoplace_utils = require("autoplace_utils")
 
-local function autoplace_peaks(noise_layer, rectangles)
+local function autoplace_settings(noise_layer, rectangles)
   local ret = {}
 
   if noise_layer then
@@ -16,10 +16,10 @@ local function autoplace_peaks(noise_layer, rectangles)
 
   autoplace_utils.peaks(rectangles, ret)
 
-  return ret
+  return { peaks = ret }
 end
 
-function water_autoplace_peaks(from_depth, rectangles)
+function water_autoplace_settings(from_depth, rectangles)
   local ret =
   {
     {
@@ -38,7 +38,7 @@ function water_autoplace_peaks(from_depth, rectangles)
 
   autoplace_utils.peaks(rectangles, ret)
 
-  return ret
+  return { peaks = ret }
 end
 
 data:extend(
@@ -97,9 +97,7 @@ data:extend(
       "player-layer",
       "doodat-layer"
     },
-    autoplace = {
-      peaks = water_autoplace_peaks(250)
-    },
+    autoplace = water_autoplace_settings(250),
     layer = 45,
     variants =
     {
@@ -152,9 +150,7 @@ data:extend(
       "player-layer",
       "doodat-layer"
     },
-    autoplace = {
-      peaks = water_autoplace_peaks(250, {{{35, 1}, {15, 0.7}}})
-    },
+    autoplace = water_autoplace_settings(250, {{{35, 1}, {15, 0.7}}}),
     layer = 45,
     variants =
     {
@@ -207,9 +203,7 @@ data:extend(
       "player-layer",
       "doodat-layer"
     },
-    autoplace = {
-      peaks = water_autoplace_peaks(0)
-    },
+    autoplace = water_autoplace_settings(0),
     layer = 40,
     variants =
     {
@@ -262,9 +256,7 @@ data:extend(
       "player-layer",
       "doodat-layer"
     },
-    autoplace = {
-      peaks = water_autoplace_peaks(0, {{{35, 1}, {15, 0.7}}});
-    },
+    autoplace = water_autoplace_settings(0, {{{35, 1}, {15, 0.7}}}),
     layer = 40,
     variants =
     {
@@ -310,11 +302,7 @@ data:extend(
     type = "tile",
     name = "grass",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "grass",
-      peaks = autoplace_peaks("grass", {{{35, 0.8}, {0, 0.4}}})
-    },
+    autoplace = autoplace_settings("grass", {{{35, 0.8}, {0, 0.4}}}),
     layer = 20,
     variants =
     {
@@ -383,11 +371,7 @@ data:extend(
     type = "tile",
     name = "grass-medium",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "grass",
-      peaks = autoplace_peaks("grass-medium", {{{35, 1}, {10, 0.7}}})
-    },
+    autoplace = autoplace_settings("grass-medium", {{{35, 1}, {10, 0.7}}}),
     layer = 5,
     variants =
     {
@@ -456,11 +440,7 @@ data:extend(
     type = "tile",
     name = "grass-dry",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "grass",
-      peaks = autoplace_peaks("grass-dry", {{{35, 0.5}, {10, 0.3}}, {{5, 0.6}, {-10, 0.1}}})
-    },
+    autoplace = autoplace_settings("grass-dry", {{{35, 0.5}, {10, 0.3}}, {{5, 0.6}, {-10, 0.1}}}),
     layer = 4,
     variants =
     {
@@ -529,11 +509,7 @@ data:extend(
     type = "tile",
     name = "dirt",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "dirt",
-      peaks = autoplace_peaks("dirt", {{{35, 0.4}, {-10, 0}, 0.95}})
-    },
+    autoplace = autoplace_settings("dirt", {{{35, 0.4}, {-10, 0}, 0.95}}),
     layer = 25,
     variants =
     {
@@ -598,11 +574,7 @@ data:extend(
     type = "tile",
     name = "dirt-dark",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "dirt",
-      peaks = autoplace_peaks("dirt-dark", {{{35, 0.4}, {-10, 0}, 0.5}})
-    },
+    autoplace = autoplace_settings("dirt-dark", {{{35, 0.4}, {-10, 0}, 0.5}}),
     layer = 26,
     variants =
     {
@@ -668,11 +640,7 @@ data:extend(
     type = "tile",
     name = "sand",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "sand",
-      peaks = autoplace_peaks("sand", {{{35, 0.2}, {0, 0}}})
-    },
+    autoplace = autoplace_settings("sand", {{{35, 0.2}, {0, 0}}}),
     layer = 35,
     variants =
     {
@@ -741,11 +709,7 @@ data:extend(
     type = "tile",
     name = "sand-dark",
     collision_mask = {"ground-tile"},
-    autoplace =
-    {
-      control = "sand",
-      peaks = autoplace_peaks("sand-dark", {{{35, 0.3}, {-5, 0.1}}})
-    },
+    autoplace = autoplace_settings("sand-dark", {{{35, 0.3}, {-5, 0.1}}}),
     layer = 36,
     variants =
     {

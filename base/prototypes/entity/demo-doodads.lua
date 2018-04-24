@@ -2,7 +2,7 @@ local autoplace_utils = require("autoplace_utils")
 local function autoplace_settings(noise_layer, max_probability, rectangles, more)
   local ret =
   {
-    order = "b[doodad]-c[other]",
+    order = "a[doodad]-z[other]",
     max_probability = max_probability,
     peaks = {}
   }
@@ -35,10 +35,15 @@ local function autoplace_settings(noise_layer, max_probability, rectangles, more
     for k,v in pairs(more) do ret[k] = v end
   end
 
-  --print(require("serpent").block(ret))
-
   return ret
 end
+
+local grass_peaks =
+{
+  {{30, 0.9}, {20, 0.8}, 0.6},
+  {{15, 0.5}, {10, 0.4}, 0.6},
+  {{20, 0.2}, {15, 0.1}, 0.6}
+}
 
 data:extend(
 {
@@ -57,6 +62,30 @@ data:extend(
   {
     type = "noise-layer",
     name = "coral"
+  },
+  {
+    type = "noise-layer",
+    name = "fluff"
+  },
+  {
+    type = "noise-layer",
+    name = "garballo"
+  },
+  {
+    type = "noise-layer",
+    name = "garballo-mini"
+  },
+  {
+    type = "noise-layer",
+    name = "garballo-mini"
+  },
+  {
+    type = "noise-layer",
+    name = "grass1"
+  },
+  {
+    type = "noise-layer",
+    name = "grass2"
   },
 
   {
@@ -322,7 +351,7 @@ data:extend(
     autoplace =
     {
       sharpness = 0.9,
-      order = "b[doodad]-b[pita]",
+      order = "a[doodad]-b[pita]",
       peaks = autoplace_utils.peaks({{{20, 0.3}, {0, 0.1}, 0.5}},
                                     {
                                       {
@@ -399,7 +428,7 @@ data:extend(
     autoplace =
     {
       sharpness = 0.9,
-      order = "b[doodad]-b[pita]",
+      order = "a[doodad]-b[pita]",
       peaks = autoplace_utils.peaks({{{20, 0.3}, {0, 0}, 0.5}},
                                     {
                                       {
@@ -455,9 +484,9 @@ data:extend(
     selectable_in_game = false,
     autoplace =
     {
-      order = "b[doodad]-c[other-specialized]",
-      max_probability = 0.2,
-      sharpness = 0.25,
+      order = "a[doodad]-c[cane]",
+      max_probability = 0.1,
+      sharpness = 1,
       peaks = autoplace_utils.peaks({{{35, 0.7}, {10, 0.7}}},
                                     {
                                       {
@@ -564,7 +593,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
-    autoplace = autoplace_settings("coral", 0.15, {{{20, 0.3}, {10, 0.2}}}),
+    autoplace = autoplace_settings("coral", 0.15, {{{35, 0.4}, {30, 0.2}}}),
     pictures =
     {
       {
@@ -640,7 +669,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
-    autoplace = autoplace_settings("coral", 0.15, {{{35, 0.3}, {20, 0.2}}}),
+    autoplace = autoplace_settings("coral", 0.15, {{{35, 0.4}, {20, 0.2}}}),
     pictures =
     {
       {
@@ -689,6 +718,24 @@ data:extend(
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-d[fluff]",
+      sharpness = 1,
+      placement_density = 3,
+      peaks = autoplace_utils.peaks({{{35, 0.7}, {-5, 0.4}, 0.5}},
+      {
+        {
+          influence = 0.7,
+          noise_layer = "fluff",
+          noise_octaves_difference = -2,
+          noise_persistence = 0.9
+        },
+        {
+          influence = -0.25
+        },
+      }),
+    },
     pictures =
     {
       {
@@ -752,6 +799,24 @@ data:extend(
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-d[fluff]",
+      sharpness = 1,
+      placement_density = 3,
+      peaks = autoplace_utils.peaks({{{35, 0.5}, {-15, 0.1}, 0.5}},
+      {
+        {
+          influence = 0.7,
+          noise_layer = "fluff",
+          noise_octaves_difference = -2,
+          noise_persistence = 0.9
+        },
+        {
+          influence = -0.3
+        },
+      }),
+    },
     pictures =
     {
       {
@@ -801,6 +866,34 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-e[garballo]",
+      sharpness = 1,
+      max_probability = 0.8,
+      peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.4}},
+                                    {
+                                      {
+                                        influence = 0.3,
+                                        noise_layer = "garballo",
+                                        noise_octaves_difference = -2,
+                                        noise_persistence = 0.8
+                                      },
+                                      {
+                                        influence = 0.5,
+                                        min_influence = 0,
+                                        elevation_optimal = 15,
+                                        elevation_range = 5,
+                                        elevation_max_range = 10,
+                                      },
+                                      {
+                                        influence = -0.01,
+                                        noise_layer = "garballo-mini",
+                                        noise_persistence = 0.9,
+                                        noise_octaves_difference = -3
+                                      },
+                                    }),
+    },
     pictures =
     {
       {
@@ -873,6 +966,34 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-e[garballo]",
+      sharpness = 1,
+      max_probability = 0.8,
+      peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.3}},
+                                    {
+                                      {
+                                        influence = 0.5,
+                                        noise_layer = "garballo",
+                                        noise_octaves_difference = -2,
+                                        noise_persistence = 0.8
+                                      },
+                                      {
+                                        influence = 0.5,
+                                        min_influence = 0,
+                                        elevation_optimal = 15,
+                                        elevation_range = 5,
+                                        elevation_max_range = 10,
+                                      },
+                                      {
+                                        influence = 0.01,
+                                        noise_layer = "garballo-mini",
+                                        noise_persistence = 0.9,
+                                        noise_octaves_difference = -3
+                                      },
+                                    }),
+    },
     pictures =
     {
       {
@@ -941,6 +1062,45 @@ data:extend(
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-e[garballo]",
+      sharpness = 1,
+      max_probability = 0.8,
+      peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.3}},
+                                    {
+                                      {
+                                        influence = 0.5,
+                                        noise_layer = "garballo",
+                                        noise_octaves_difference = -2,
+                                        noise_persistence = 0.8
+                                      },
+                                      {
+                                        influence = 0.5,
+                                        min_influence = 0,
+                                        elevation_optimal = 15,
+                                        elevation_range = 5,
+                                        elevation_max_range = 10,
+                                      },
+                                      {
+                                        influence = 0.01
+                                      },
+                                      {
+                                        influence = 0.005,
+                                        max_influence = 0,
+                                        noise_layer = "garballo-mini",
+                                        noise_persistence = 0.9,
+                                        noise_octaves_difference = -3
+                                      },
+                                      {
+                                        influence = -0.005,
+                                        max_influence = 0,
+                                        noise_layer = "garballo-mini",
+                                        noise_persistence = 0.9,
+                                        noise_octaves_difference = -3
+                                      },
+                                    }),
+    },
     pictures =
     {
       {
@@ -990,6 +1150,21 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-f[grass]-b",
+      sharpness = 0.2,
+      max_probability = 0.01,
+      peaks = autoplace_utils.peaks(grass_peaks,
+                                    {
+                                      {
+                                        influence = 0.3,
+                                        noise_layer = "grass2",
+                                        noise_octaves_difference = -2.8,
+                                        noise_persistence = 0.5
+                                      },
+                                    }),
+    },
     pictures =
     {
       {
@@ -1163,6 +1338,21 @@ data:extend(
     collision_box = {{-2, -2}, {2, 2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-f[grass]-c",
+      sharpness = 0.7,
+      max_probability = 0.01,
+      peaks = autoplace_utils.peaks(grass_peaks,
+                                    {
+                                      {
+                                        influence = 0.3,
+                                        noise_layer = "grass1",
+                                        noise_octaves_difference = -2.8,
+                                        noise_persistence = 0.5
+                                      },
+                                    }),
+    },
     pictures =
     {
       {
@@ -1212,7 +1402,21 @@ data:extend(
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     selection_box = {{-1, -1}, {1, 1}},
     selectable_in_game = false,
-    render_layer = "object",
+    autoplace =
+    {
+      order = "a[doodad]-f[grass]-d",
+      sharpness = 0.2,
+      max_probability = 0.01,
+      peaks = autoplace_utils.peaks(grass_peaks,
+                                    {
+                                      {
+                                        influence = 0.35,
+                                        noise_layer = "grass1",
+                                        noise_octaves_difference = -2.8,
+                                        noise_persistence = 0.5
+                                      },
+                                    }),
+    },
     pictures =
     {
       {
@@ -1262,6 +1466,11 @@ data:extend(
     type = "decorative",
     name = "root-A",
     flags = {"not-on-map"},
+    autoplace =
+    {
+      order = "a[doodad]-z[other]",
+      influence = 0.01
+    },
     pictures =
     {
       {
@@ -1371,6 +1580,11 @@ data:extend(
     type = "decorative",
     name = "root-B",
     flags = {"not-on-map"},
+    autoplace =
+    {
+      order = "a[doodad]-z[other]",
+      influence = 0.01
+    },
     pictures =
     {
       {
@@ -1481,6 +1695,23 @@ data:extend(
       {
         type = "fire",
         percent = 100
+      }
+    },
+    autoplace =
+    {
+      order = "a[doodad]-a[rock]",
+      peaks =
+      {
+        {
+          influence = 0.0002
+        },
+        {
+          influence = 0.1;
+          min_influence = 0,
+          elevation_optimal = 12000,
+          elevation_range = 5000,
+          elevation_max_range = 12000,
+        }
       }
     },
     pictures =

@@ -1,5 +1,5 @@
 require ("prototypes.entity.demo-railpictures")
-require ("prototypes.entity.pipecovers")
+require ("prototypes.entity.demo-pipecovers")
 
 railpictures = function()
   return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
@@ -30,8 +30,8 @@ data:extend(
         percent = 60
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
+    selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
     animation_speed_coefficient = 64,
     belt_horizontal =
     {
@@ -150,8 +150,8 @@ data:extend(
         percent = 60
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
+    selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
     animation_speed_coefficient = 64,
     belt_horizontal =
     {
@@ -270,8 +270,8 @@ data:extend(
         percent = 60
       }
     },
-    collision_box = {{-0.4, -0.4}, {0.4, 0.05}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_box = {{-0.4, -0.15}, {0.4, 0.1}},
+    selection_box = {{-0.5, -0.25}, {0.5, 0.75}},
     animation_speed_coefficient = 64,
     belt_horizontal =
     {
@@ -1013,8 +1013,8 @@ data:extend(
     minable = {mining_time = 1, result = "iron-chest"},
     max_health = 100,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.6 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.8 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.7 },
     resistances =
     {
       {
@@ -1043,8 +1043,8 @@ data:extend(
     minable = {mining_time = 1, result = "steel-chest"},
     max_health = 200,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.6 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.8 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.7 },
     resistances =
     {
       {
@@ -1070,8 +1070,8 @@ data:extend(
     name = "smart-chest",
     icon = "__base__/graphics/icons/smart-chest.png",
     flags = {"placeable-neutral", "player-creation"},
-    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.6 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.8 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.7 },
     minable =
     {
       hardness = 0.2,
@@ -1332,7 +1332,7 @@ data:extend(
     drawing_box = {{-1, -4}, {1, 3}},
     weight = 2000,
     max_speed = 1.2,
-    max_power = 10,
+    max_power = "600kW",
     braking_force = 10,
     friction_force = 0.0015,
     -- this is a percentage of current speed that will be substracted
@@ -2282,16 +2282,14 @@ data:extend(
     name = "storage-tank",
     icon = "__base__/graphics/icons/storage-tank.png",
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "storage-tank"},
+    minable = {hardness = 0.2, mining_time = 3, result = "storage-tank"},
     max_health = 500,
     corpse = "medium-remnants",
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    -- in liters
-    volume = 10000,
     fluid_box =
     {
-      base_area = 100,
+      base_area = 250,
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
@@ -3037,6 +3035,7 @@ data:extend(
     type = "smoke",
     name = "poison-cloud",
     flags = {"not-on-map"},
+    show_when_smoke_off = true,
     animation =
     {
       filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
@@ -3337,7 +3336,7 @@ data:extend(
   {
     type = "assembling-machine",
     name = "oil-refinery",
-    icon = "__base__/graphics/icons/steam-engine.png",
+    icon = "__base__/graphics/icons/oil-refinery.png",
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "oil-refinery"},
     max_health = 300,
@@ -3349,7 +3348,8 @@ data:extend(
       type = "electric",
       output_priority = "secondary"
     },
-    module_slots = 1,
+    module_slots = 2,
+    allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     crafting_categories = {"oil-processing"},
     crafting_speed = 1,
     energy_source =
@@ -3360,8 +3360,6 @@ data:extend(
     },
     energy_usage = "420kW",
     ingredient_count = 4,
-    --module_slots = 4,
-    --allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     animation =
     {
       north =
@@ -3468,6 +3466,7 @@ data:extend(
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     module_slots = 2,
+    allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     animation =
     {
       north =

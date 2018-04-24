@@ -409,55 +409,8 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_button_style",
-      default_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 221,
-          y = 36,
-        }
-      },
-      hovered_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 221,
-          y = 36,
-        }
-      },
-      clicked_graphical_set =
-      {
-        type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
-        monolith_image =
-        {
-          filename = "__core__/graphics/gui.png",
-          width = 36,
-          height = 36,
-          x = 221,
-          y = 36
-        }
-      },
     },
+
     not_available_slot_button_style =
     {
       type = "button_style",
