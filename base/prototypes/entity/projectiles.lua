@@ -109,7 +109,8 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "small-scorchmark"
+            entity_name = "small-scorchmark",
+            check_buildability = true
           }
         }
       }
@@ -320,7 +321,8 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "small-scorchmark"
+            entity_name = "small-scorchmark",
+            check_buildability = true
           }
         }
       }
@@ -376,7 +378,8 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "small-scorchmark"
+            entity_name = "small-scorchmark",
+            check_buildability = true
           }
         }
       }

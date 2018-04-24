@@ -2974,6 +2974,8 @@ data:extend(
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.6, -0.6}, {0.6, 0.6}},
     drawing_box = {{-0.5, -3}, {0.5, 0.5}},
+    tile_width = 2,
+    tile_height = 2,
     animation_ticks_per_frame = 20,
     animations =
     {
