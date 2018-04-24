@@ -75,9 +75,9 @@ data:extend(
   --trees are "a", so resources can delete trees when placed
   --oil is "b"
   --uranium is "c"
-  resource("iron-ore",   "d", {r=0.337, g=0.419, b=0.427}, nil, (0.006 / 3) / 1.1 * 1.49  ), -- 1.1 compensates for overlapping. 1.49 is the expected ratio of iron to copper
+  resource("iron-ore",   "d", {r=0.415, g=0.525, b=0.580}, nil, (0.006 / 3) / 1.1 * 1.49  ), -- 1.1 compensates for overlapping. 1.49 is the expected ratio of iron to copper
   resource("copper-ore", "e", {r=0.803, g=0.388, b=0.215}, nil, 0.006 / 3),
   resource("coal",       "f", {r=0, g=0, b=0},             nil, 0.0045 / 3),
-  resource("stone",      "g", {r=0.478, g=0.450, b=0.317}, 0.4, 0.0023 / 3)
+  resource("stone",      "g", {r=0.690, g=0.611, b=0.427}, 0.4, 0.0023 / 3)
 }
 )
