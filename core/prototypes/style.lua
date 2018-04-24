@@ -474,6 +474,20 @@ data:extend(
       font_color = {r=0, g=0.9, b=0}
     },
 
+    downloading_mod_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font_color = {r=255, g=255, b=50}
+    },
+
+    to_be_downloaded_mod_label_style =
+    {
+      type = "label_style",
+      parnet = "label_style",
+      font_color = {r=50, g=255, b=255}
+    },
+
     out_of_date_mod_label_style =
     {
       type = "label_style",
@@ -1560,6 +1574,7 @@ data:extend(
     listbox_item_style =
     {
       type = "listbox_item_style",
+      strikethrough_color = {r=0.5, g=0.5, b=0.5},
       default =
       {
         font_color = {r=1, g=1, b=1},
