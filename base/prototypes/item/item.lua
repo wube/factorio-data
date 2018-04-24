@@ -121,7 +121,7 @@ data:extend(
     stack_size = 50
   },
   {
-    type = "item",
+    type = "item-with-entity-data",
     name = "diesel-locomotive",
     icon = "__base__/graphics/icons/diesel-locomotive.png",
     flags = {"goes-to-quickbar"},
@@ -131,7 +131,7 @@ data:extend(
     stack_size = 5
   },
   {
-    type = "item",
+    type = "item-with-entity-data",
     name = "cargo-wagon",
     icon = "__base__/graphics/icons/cargo-wagon.png",
     flags = {"goes-to-quickbar"},
@@ -173,7 +173,7 @@ data:extend(
     stack_size = 50
   },
   {
-    type = "item",
+    type = "item-with-entity-data",
     name = "car",
     icon = "__base__/graphics/icons/car.png",
     flags = {"goes-to-quickbar"},
@@ -183,7 +183,7 @@ data:extend(
     stack_size = 1
   },
   {
-    type = "item",
+    type = "item-with-entity-data",
     name = "tank",
     icon = "__base__/graphics/icons/tank.png",
     flags = {"goes-to-quickbar"},

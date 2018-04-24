@@ -26,7 +26,8 @@ data:extend(
       usage_priority = "primary-input"
     },
     energy_input = "10kW",
-    tint = {r = 0, g = 0.1, b = 0, a = 0.2}
+    tint = {r = 0, g = 0.1, b = 0, a = 0.2},
+    categories = {"armor"}
   },
   {
     type = "energy-shield-equipment",
@@ -52,7 +53,8 @@ data:extend(
       input_flow_limit = "240kW",
       usage_priority = "primary-input"
     },
-    energy_per_shield = "20kJ"
+    energy_per_shield = "20kJ",
+    categories = {"armor"}
   },
   {
     type = "energy-shield-equipment",
@@ -78,7 +80,8 @@ data:extend(
       input_flow_limit = "360kW",
       usage_priority = "primary-input"
     },
-    energy_per_shield = "30kJ"
+    energy_per_shield = "30kJ",
+    categories = {"armor"}
   },
   {
     type = "battery-equipment",
@@ -103,7 +106,8 @@ data:extend(
       input_flow_limit = "200MW",
       output_flow_limit = "200MW",
       usage_priority = "terciary"
-    }
+    },
+    categories = {"armor"}
   },
   {
     type = "battery-equipment",
@@ -128,7 +132,8 @@ data:extend(
       input_flow_limit = "1GW",
       output_flow_limit = "1GW",
       usage_priority = "terciary"
-    }
+    },
+    categories = {"armor"}
   },
   {
     type = "solar-panel-equipment",
@@ -151,7 +156,8 @@ data:extend(
       type = "electric",
       usage_priority = "primary-output"
     },
-    power = "10kW"
+    power = "10kW",
+    categories = {"armor"}
   },
   {
     type = "generator-equipment",
@@ -174,7 +180,8 @@ data:extend(
       type = "electric",
       usage_priority = "primary-output"
     },
-    power = "750kW"
+    power = "750kW",
+    categories = {"armor"}
   },
   {
     type = "active-defense-equipment",
@@ -231,7 +238,8 @@ data:extend(
         }
       }
     },
-    automatic = true
+    automatic = true,
+    categories = {"armor"}
   },
   {
     type = "active-defense-equipment",
@@ -296,7 +304,8 @@ data:extend(
         }
       },
     },
-    automatic = false
+    automatic = false,
+    categories = {"armor"}
   },
   {
     type = "movement-bonus-equipment",
@@ -320,7 +329,8 @@ data:extend(
       usage_priority = "secondary-input"
     },
     energy_consumption = "200kW",
-    movement_bonus = 0.3
+    movement_bonus = 0.3,
+    categories = {"armor"}
   },
   {
     type = "roboport-equipment",
@@ -369,7 +379,8 @@ data:extend(
     charging_station_shift = {0, 0.5},
     charging_station_count = 2,
     charging_distance = 1.6,
-    charging_threshold_distance = 5
+    charging_threshold_distance = 5,
+    categories = {"armor"}
   }
 }
 )

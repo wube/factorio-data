@@ -128,8 +128,8 @@ data:extend(
         make_cursor_box(256, 0, 0.4, {1, 1}),
         make_cursor_box(192, 0, 0.7),
         make_cursor_box(128, 0, 1.05),
-        make_cursor_box(64, 0, 3.5),
-        make_cursor_box(0, 0, 4.0)
+        make_cursor_box(64, 0, 2),
+        make_cursor_box(0, 0, 2.5)
       },
       not_allowed =
       {
@@ -137,8 +137,8 @@ data:extend(
         make_cursor_box(256, 64, 0.4, {1, 1}),
         make_cursor_box(192, 64, 0.7),
         make_cursor_box(128, 64, 1.05),
-        make_cursor_box(64, 64, 3.5),
-        make_cursor_box(0, 64, 4.0)
+        make_cursor_box(64, 64, 2.0),
+        make_cursor_box(0, 64, 3.0)
       },
       electricity =
       {
@@ -146,8 +146,8 @@ data:extend(
         make_cursor_box(256, 128, 0.4, {1, 1}),
         make_cursor_box(192, 128, 0.7),
         make_cursor_box(128, 128, 1.05),
-        make_cursor_box(64, 128, 3.5),
-        make_cursor_box(0, 128, 4.0)
+        make_cursor_box(64, 128, 2.0),
+        make_cursor_box(0, 128, 3.0)
       },
       pair =
       {
@@ -155,8 +155,8 @@ data:extend(
         make_cursor_box(256, 128, 0.4, {1, 1}),
         make_cursor_box(192, 128, 0.7),
         make_cursor_box(128, 128, 1.05),
-        make_cursor_box(64, 128, 3.5),
-        make_cursor_box(0, 128, 4.0)
+        make_cursor_box(64, 128, 2.0),
+        make_cursor_box(0, 128, 3.0)
       },
       copy =
       {
@@ -164,8 +164,8 @@ data:extend(
         make_cursor_box(256, 192, 0.4, {1, 1}),
         make_cursor_box(192, 192, 0.7),
         make_cursor_box(128, 192, 1.05),
-        make_cursor_box(64, 192, 3.5),
-        make_cursor_box(0, 192, 4.0)
+        make_cursor_box(64, 192, 2.0),
+        make_cursor_box(0, 192, 3.0)
       },
       train_visualization =
       {
@@ -173,8 +173,8 @@ data:extend(
         make_cursor_box(256, 256, 0.4, {1, 1}),
         make_cursor_box(192, 256, 0.7),
         make_cursor_box(128, 256, 1.05),
-        make_cursor_box(64, 256, 3.5),
-        make_cursor_box(0, 256, 4.0)
+        make_cursor_box(64, 256, 2.0),
+        make_cursor_box(0, 256, 3.0)
       },
       logistics =
       {
@@ -182,8 +182,8 @@ data:extend(
         make_cursor_box(256, 128, 0.4, {1, 1}),
         make_cursor_box(192, 128, 0.7),
         make_cursor_box(128, 128, 1.05),
-        make_cursor_box(64, 128, 3.5),
-        make_cursor_box(0, 128, 4.0)
+        make_cursor_box(64, 128, 2.0),
+        make_cursor_box(0, 128, 3.0)
       }
     },
 

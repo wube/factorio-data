@@ -34,6 +34,8 @@ require("prototypes.categories.rail-category")
 require("prototypes.categories.recipe-category")
 require("prototypes.categories.resource-category")
 require("prototypes.categories.module-category")
+require("prototypes.categories.equipment-category")
+require("prototypes.equipment.equipment-grid")
 
 
 if data.is_demo then

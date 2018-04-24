@@ -65,7 +65,7 @@ data:extend(
     subgroup = "armor",
     order = "c[modular-armor]",
     stack_size = 1,
-    equipment_grid = {width = 5, height = 5},
+    equipment_grid = "small-equipment-grid",
     inventory_size_bonus = 10
   },
   {
@@ -100,7 +100,7 @@ data:extend(
     subgroup = "armor",
     order = "d[power-armor]",
     stack_size = 1,
-    equipment_grid = {width = 7, height = 7},
+    equipment_grid = "medium-equipment-grid",
     inventory_size_bonus = 20
   },
   {
@@ -135,7 +135,7 @@ data:extend(
     subgroup = "armor",
     order = "e[power-armor-mk2]",
     stack_size = 1,
-    equipment_grid = {width = 10, height = 10},
+    equipment_grid = "large-equipment-grid",
     inventory_size_bonus = 30
   }
 }
