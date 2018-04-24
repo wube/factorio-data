@@ -515,7 +515,7 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"iron-gear-wheel", 20},
+      {"iron-gear-wheel", 40},
       {"underground-belt", 2}
     },
     result_count = 2,
@@ -529,7 +529,7 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"iron-gear-wheel", 40},
+      {"iron-gear-wheel", 80},
       {"fast-underground-belt", 2},
       {type="fluid", name="lubricant", amount=40},
     },
