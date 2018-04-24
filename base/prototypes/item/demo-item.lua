@@ -5,9 +5,15 @@ data:extend(
     name = "stone-brick",
     icon = "__base__/graphics/icons/stone-brick.png",
     flags = {"goes-to-main-inventory"},
-    subgroup = "raw-material",
-    order = "e[stone-brick]",
-    stack_size = 100
+    subgroup = "terrain",
+    order = "a[stone-brick]",
+    stack_size = 100,
+    place_as_tile =
+    {
+      result = "stone-path",
+      condition_size = 3,
+      condition = { "water-tile" }
+    }
   },
   {
     type = "item",
@@ -109,7 +115,7 @@ data:extend(
     icon = "__base__/graphics/icons/copper-cable.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "circuit-network",
-    order = "0[copper-cable]",
+    order = "a[wires]-a[copper-cable]",
     stack_size = 200
   },
   {
@@ -257,7 +263,7 @@ data:extend(
     type = "item",
     name = "computer",
     icon = "__base__/graphics/icons/computer.png",
-    flags = {"goes-to-quickbar"},
+    flags = {"goes-to-quickbar", "hidden"},
     subgroup = "defensive-structure",
     order = "g[computer]",
     stack_size = 1
@@ -317,7 +323,7 @@ data:extend(
     icon = "__base__/graphics/icons/red-wire.png",
     flags = {"goes-to-quickbar"},
     subgroup = "circuit-network",
-    order = "a[wires]-a[red-wire]",
+    order = "a[wires]-b[red-wire]",
     stack_size = 200
   },
   {
@@ -326,7 +332,7 @@ data:extend(
     icon = "__base__/graphics/icons/green-wire.png",
     flags = {"goes-to-quickbar"},
     subgroup = "circuit-network",
-    order = "a[wires]-b[green-wire]",
+    order = "a[wires]-c[green-wire]",
     stack_size = 200
   },
   {
@@ -340,6 +346,7 @@ data:extend(
       type = "use-on-self",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 30,
         range = 0,
@@ -353,7 +360,7 @@ data:extend(
             action_delivery =
             {
               type = "instant",
-              target_effects = 
+              target_effects =
               {
                 type = "damage",
                 damage = {type = "physical", amount = -20}
@@ -376,6 +383,16 @@ data:extend(
     speed = 1,
     durability = 100,
     stack_size = 50
-  }
+  },
+  {
+    type = "item",
+    name = "stone-wall",
+    icon = "__base__/graphics/icons/stone-wall.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "defensive-structure",
+    order = "a[stone-wall]-a[stone-wall]",
+    place_result = "stone-wall",
+    stack_size = 50
+  },
 }
 )

@@ -3,7 +3,7 @@ data:extend(
   {
     type = "recipe",
     name = "speed-module",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"advanced-circuit", 5},
@@ -15,7 +15,7 @@ data:extend(
   {
     type = "recipe",
     name = "speed-module-2",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"speed-module", 4},
@@ -28,7 +28,7 @@ data:extend(
   {
     type = "recipe",
     name = "speed-module-3",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"speed-module-2", 4},
@@ -42,7 +42,7 @@ data:extend(
   {
     type = "recipe",
     name = "productivity-module",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"advanced-circuit", 5},
@@ -54,7 +54,7 @@ data:extend(
   {
     type = "recipe",
     name = "productivity-module-2",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"productivity-module", 4},
@@ -67,7 +67,7 @@ data:extend(
   {
     type = "recipe",
     name = "productivity-module-3",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"productivity-module-2", 5},
@@ -81,7 +81,7 @@ data:extend(
   {
     type = "recipe",
     name = "effectivity-module",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"advanced-circuit", 5},
@@ -93,7 +93,7 @@ data:extend(
   {
     type = "recipe",
     name = "effectivity-module-2",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"effectivity-module", 4},
@@ -106,7 +106,7 @@ data:extend(
   {
     type = "recipe",
     name = "effectivity-module-3",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"effectivity-module-2", 5},

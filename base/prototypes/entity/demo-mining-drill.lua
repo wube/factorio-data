@@ -11,6 +11,7 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       sound =
@@ -83,13 +84,17 @@ data:extend(
     mining_power = 3,
     resource_searching_radius = 2.49,
     vector_to_place_result = {0, -1.85},
-    module_slots = 3,
+    module_specification =
+    {
+      module_slots = 3
+    },
     radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/basic-mining-drill/mining-drill-radius-visualization.png",
       width = 12,
       height = 12
-    }
+    },
+    fast_replaceable_group = "mining-drill"
   },
   {
     type = "mining-drill",
@@ -180,7 +185,8 @@ data:extend(
       }
     },
     resource_searching_radius = 0.99,
-    vector_to_place_result = {-0.5, -1.3}
+    vector_to_place_result = {-0.5, -1.3},
+    fast_replaceable_group = "mining-drill"
   }
 }
 )

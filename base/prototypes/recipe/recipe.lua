@@ -3,7 +3,7 @@ data:extend(
   {
     type = "recipe",
     name = "player-port",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 10},
@@ -15,7 +15,7 @@ data:extend(
   {
     type = "recipe",
     name = "fast-transport-belt",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 5},
@@ -27,7 +27,7 @@ data:extend(
     type = "recipe",
     name = "express-transport-belt",
     category = "crafting-with-fluid",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 5},
@@ -40,7 +40,7 @@ data:extend(
     type = "recipe",
     name = "solar-panel",
     energy_required = 10,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 5},
@@ -52,7 +52,7 @@ data:extend(
   {
     type = "recipe",
     name = "assembling-machine-2",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-plate", 9},
@@ -65,7 +65,7 @@ data:extend(
   {
     type = "recipe",
     name = "assembling-machine-3",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"speed-module", 4},
@@ -76,7 +76,7 @@ data:extend(
   {
     type = "recipe",
     name = "car",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"engine-unit", 8},
@@ -88,7 +88,7 @@ data:extend(
   {
     type = "recipe",
     name = "tank",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"engine-unit", 16},
@@ -101,7 +101,7 @@ data:extend(
   {
     type = "recipe",
     name = "straight-rail",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"stone", 1},
@@ -114,7 +114,7 @@ data:extend(
   {
     type = "recipe",
     name = "curved-rail",
-    enabled = "false",
+    enabled = false,
     ingredients = {{"stone", 4}, {"iron-stick", 4}, {"steel-plate", 4}},
     result = "curved-rail",
     result_count = 2
@@ -122,7 +122,7 @@ data:extend(
   {
     type = "recipe",
     name = "diesel-locomotive",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"engine-unit", 20},
@@ -134,7 +134,7 @@ data:extend(
   {
     type = "recipe",
     name = "cargo-wagon",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 10},
@@ -146,7 +146,7 @@ data:extend(
   {
     type = "recipe",
     name = "train-stop",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 5},
@@ -158,7 +158,7 @@ data:extend(
   {
     type = "recipe",
     name = "rail-signal",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -168,8 +168,19 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "rail-chain-signal",
+    enabled = false,
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"iron-plate", 5}
+    },
+    result = "rail-chain-signal"
+  },
+  {
+    type = "recipe",
     name = "heavy-armor",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients = {{ "copper-plate", 100}, {"steel-plate", 50}},
     result = "heavy-armor"
@@ -177,7 +188,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-modular-armor",
-    enabled = "false",
+    enabled = false,
     energy_required = 15,
     ingredients = {{ "advanced-circuit", 30}, {"processing-unit", 5}, {"steel-plate", 50}},
     result = "basic-modular-armor"
@@ -185,7 +196,7 @@ data:extend(
   {
     type = "recipe",
     name = "power-armor",
-    enabled = "false",
+    enabled = false,
     energy_required = 20,
     ingredients = {{ "processing-unit", 40}, {"electric-engine-unit", 20}, {"steel-plate", 40}, {"alien-artifact", 10}},
     result = "power-armor"
@@ -193,7 +204,7 @@ data:extend(
   {
     type = "recipe",
     name = "power-armor-mk2",
-    enabled = "false",
+    enabled = false,
     energy_required = 25,
     ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 40}, {"steel-plate", 40}, {"alien-artifact", 50}},
     result = "power-armor-mk2"
@@ -201,21 +212,21 @@ data:extend(
   {
     type = "recipe",
     name = "iron-chest",
-    enabled = "true",
+    enabled = true,
     ingredients = {{"iron-plate", 8}},
     result = "iron-chest"
   },
   {
     type = "recipe",
     name = "steel-chest",
-    enabled = "false",
+    enabled = false,
     ingredients = {{"steel-plate", 8}},
     result = "steel-chest"
   },
   {
     type = "recipe",
     name = "smart-chest",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-chest", 1},
@@ -226,21 +237,21 @@ data:extend(
   {
     type = "recipe",
     name = "stone-wall",
-    enabled = "false",
+    enabled = false,
     ingredients = {{"stone-brick", 5}},
     result = "stone-wall"
   },
   {
     type = "recipe",
     name = "gate",
-    enabled = "false",
+    enabled = false,
     ingredients = {{"stone-wall", 1}, {"steel-plate", 2}, {"electronic-circuit", 2}},
     result = "gate"
   },
   {
     type = "recipe",
     name = "flame-thrower",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -252,7 +263,7 @@ data:extend(
   {
     type = "recipe",
     name = "land-mine",
-    enabled = "false",
+    enabled = false,
     energy_required = 5,
     ingredients =
     {
@@ -265,7 +276,7 @@ data:extend(
   {
     type = "recipe",
     name = "rocket-launcher",
-    enabled = "false",
+    enabled = false,
     energy_required = 5,
     ingredients =
     {
@@ -278,7 +289,7 @@ data:extend(
   {
     type = "recipe",
     name = "shotgun",
-    enabled = "false",
+    enabled = false,
     energy_required = 4,
     ingredients =
     {
@@ -292,7 +303,7 @@ data:extend(
   {
     type = "recipe",
     name = "combat-shotgun",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -306,7 +317,7 @@ data:extend(
   {
     type = "recipe",
     name = "railgun",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -342,7 +353,7 @@ data:extend(
   {
     type = "recipe",
     name = "science-pack-3",
-    enabled = "false",
+    enabled = false,
     energy_required = 12,
     ingredients =
     {
@@ -356,7 +367,7 @@ data:extend(
   {
     type = "recipe",
     name = "alien-science-pack",
-    enabled = "false",
+    enabled = false,
     energy_required = 12,
     ingredients = {{"alien-artifact", 1}
     },
@@ -378,7 +389,7 @@ data:extend(
   {
     type = "recipe",
     name = "red-wire",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -389,7 +400,7 @@ data:extend(
   {
     type = "recipe",
     name = "green-wire",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -400,7 +411,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-transport-belt-to-ground",
-    enabled = "false",
+    enabled = false,
     energy_required = 1,
     ingredients =
     {
@@ -413,7 +424,7 @@ data:extend(
   {
     type = "recipe",
     name = "fast-transport-belt-to-ground",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 20},
@@ -425,7 +436,7 @@ data:extend(
   {
     type = "recipe",
     name = "express-transport-belt-to-ground",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 40},
@@ -437,7 +448,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-splitter",
-    enabled = "false",
+    enabled = false,
     energy_required = 1,
     ingredients =
     {
@@ -450,7 +461,7 @@ data:extend(
   {
     type = "recipe",
     name = "fast-splitter",
-    enabled = "false",
+    enabled = false,
     energy_required = 2,
     ingredients =
     {
@@ -464,7 +475,7 @@ data:extend(
     type = "recipe",
     name = "express-splitter",
     category = "crafting-with-fluid",
-    enabled = "false",
+    enabled = false,
     energy_required = 2,
     ingredients =
     {
@@ -478,7 +489,7 @@ data:extend(
   {
     type = "recipe",
     name = "advanced-circuit",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -492,7 +503,7 @@ data:extend(
     type = "recipe",
     name = "processing-unit",
     category = "crafting-with-fluid",
-    enabled = "false",
+    enabled = false,
     energy_required = 15,
     ingredients =
     {
@@ -505,7 +516,7 @@ data:extend(
   {
     type = "recipe",
     name = "logistic-robot",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"flying-robot-frame", 1},
@@ -516,7 +527,7 @@ data:extend(
   {
     type = "recipe",
     name = "construction-robot",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"flying-robot-frame", 1},
@@ -527,7 +538,7 @@ data:extend(
   {
     type = "recipe",
     name = "logistic-chest-passive-provider",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"smart-chest", 1},
@@ -538,7 +549,7 @@ data:extend(
   {
     type = "recipe",
     name = "logistic-chest-active-provider",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"smart-chest", 1},
@@ -549,7 +560,7 @@ data:extend(
   {
     type = "recipe",
     name = "logistic-chest-storage",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"smart-chest", 1},
@@ -560,7 +571,7 @@ data:extend(
   {
     type = "recipe",
     name = "logistic-chest-requester",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"smart-chest", 1},
@@ -570,22 +581,23 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "rocket-defense",
-    enabled = "false",
+    name = "rocket-silo",
+    enabled = false,
     ingredients =
     {
-      {"rocket", 100},
-      {"advanced-circuit", 150},
-      {"processing-unit", 100},
-      {"speed-module-3", 50},
-      {"productivity-module-3", 50}
+      {"steel-plate", 1000},
+      {"concrete", 1000},
+      {"pipe", 100},
+      {"processing-unit", 200},
+      {"electric-engine-unit", 200}
     },
-    result = "rocket-defense"
+    energy_required = 30,
+    result = "rocket-silo"
   },
   {
     type = "recipe",
     name = "roboport",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 45},
@@ -598,7 +610,7 @@ data:extend(
   {
     type = "recipe",
     name = "steel-axe",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 5},
@@ -609,7 +621,7 @@ data:extend(
   {
     type = "recipe",
     name = "big-electric-pole",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 5},
@@ -620,7 +632,7 @@ data:extend(
   {
     type = "recipe",
     name = "substation",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 10},
@@ -632,7 +644,7 @@ data:extend(
   {
     type = "recipe",
     name = "medium-electric-pole",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 2},
@@ -644,7 +656,7 @@ data:extend(
     type = "recipe",
     name = "basic-accumulator",
     energy_required = 10,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-plate", 2},
@@ -658,7 +670,7 @@ data:extend(
     ingredients = {{"steel-plate", 8}, {"stone-brick", 10}},
     result = "steel-furnace",
     energy_required = 3,
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -666,12 +678,12 @@ data:extend(
     ingredients = {{"steel-plate", 15}, {"advanced-circuit", 5}, {"stone-brick", 10}},
     result = "electric-furnace",
     energy_required = 5,
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
     name = "basic-beacon",
-    enabled = "false",
+    enabled = false,
     energy_required = 15,
     ingredients =
     {
@@ -691,7 +703,7 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "blueprint",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -702,7 +714,7 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "deconstruction-planner",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -716,7 +728,7 @@ data:extend(
       {"pipe", 10},
     },
     result = "pumpjack",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -731,7 +743,7 @@ data:extend(
       {"pipe", 10}
     },
     result = "oil-refinery",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -745,7 +757,7 @@ data:extend(
       {"pipe", 2}
     },
     result = "engine-unit",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -759,7 +771,7 @@ data:extend(
       {"electronic-circuit", 2}
     },
     result = "electric-engine-unit",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
@@ -773,13 +785,13 @@ data:extend(
       {"electronic-circuit", 3}
     },
     result = "flying-robot-frame",
-    enabled = "false"
+    enabled = false
   },
   {
     type = "recipe",
     name = "explosives",
     energy_required = 5,
-    enabled = "false",
+    enabled = false,
     category = "chemistry",
     ingredients =
     {
@@ -794,7 +806,7 @@ data:extend(
     name = "battery",
     category = "chemistry",
     energy_required = 5,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {type="fluid", name="sulfuric-acid", amount=2},
@@ -807,7 +819,7 @@ data:extend(
     type = "recipe",
     name = "storage-tank",
     energy_required = 3,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-plate", 20},
@@ -819,7 +831,7 @@ data:extend(
     type = "recipe",
     name = "small-pump",
     energy_required = 2,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electric-engine-unit", 1},
@@ -832,7 +844,7 @@ data:extend(
     type = "recipe",
     name = "chemical-plant",
     energy_required = 10,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"steel-plate", 5},
@@ -846,8 +858,8 @@ data:extend(
     type = "recipe",
     name = "small-plane",
     energy_required = 30,
-    enabled = "false",
-    category="crafting",
+    enabled = false,
+    category = "crafting",
     ingredients =
     {
       {"plastic-bar", 100},
@@ -856,6 +868,125 @@ data:extend(
       {"battery", 100}
     },
     result= "small-plane"
+  },
+  {
+    type = "recipe",
+    name = "arithmetic-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"copper-cable", 5},
+      {"electronic-circuit", 5},
+    },
+    result = "arithmetic-combinator"
+  },
+  {
+    type = "recipe",
+    name = "decider-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"copper-cable", 5},
+      {"electronic-circuit", 5},
+    },
+    result = "decider-combinator"
+  },
+  {
+    type = "recipe",
+    name = "constant-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"copper-cable", 5},
+      {"electronic-circuit", 2},
+    },
+    result = "constant-combinator"
+  },
+  {
+    type = "recipe",
+    name = "low-density-structure",
+    energy_required = 30,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"steel-plate", 10},
+      {"copper-plate", 5},
+      {"plastic-bar", 5}
+    },
+    result= "low-density-structure"
+  },
+  {
+    type = "recipe",
+    name = "rocket-fuel",
+    energy_required = 30,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"solid-fuel", 10}
+    },
+    result= "rocket-fuel"
+  },
+  {
+    type = "recipe",
+    name = "rocket-control-unit",
+    energy_required = 30,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"processing-unit", 1},
+      {"speed-module", 1}
+    },
+    result= "rocket-control-unit"
+  },
+  {
+    type = "recipe",
+    name = "rocket-part",
+    energy_required = 3,
+    enabled = false,
+    hidden = true,
+    category = "rocket-building",
+    ingredients =
+    {
+      {"low-density-structure", 10},
+      {"rocket-fuel", 10},
+      {"rocket-control-unit", 10}
+    },
+    result= "rocket-part"
+  },
+  {
+    type = "recipe",
+    name = "satellite",
+    energy_required = 3,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"low-density-structure", 100},
+      {"solar-panel", 100},
+      {"basic-accumulator", 100},
+      {"radar", 5},
+      {"processing-unit", 100},
+      {"rocket-fuel", 50}
+    },
+    result= "satellite"
+  },
+  {
+    type = "recipe",
+    name = "concrete",
+    energy_required = 10,
+    enabled = false,
+    category = "crafting-with-fluid",
+    ingredients =
+    {
+      {"stone-brick", 5},
+      {"iron-ore", 1},
+      {type="fluid", name="water", amount=10}
+    },
+    result= "concrete",
+    result_count = 10
   }
 }
 )

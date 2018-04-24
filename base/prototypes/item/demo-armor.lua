@@ -5,7 +5,7 @@ data:extend(
     name = "basic-armor",
     icon = "__base__/graphics/icons/basic-armor.png",
     flags = {"goes-to-main-inventory"},
-    resistances = 
+    resistances =
     {
       {
         type = "physical",

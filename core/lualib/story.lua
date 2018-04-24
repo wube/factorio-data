@@ -38,7 +38,7 @@ function Story:export()
   return self.context
 end
 
-function Story:update(event, nextlevel, onwin)
+function Story:update(event, next_level, onwin)
   local story = self.storytable[self.context.storyindex]
   local startingstoryindex = self.context.storyindex;
   local startingstoryposition = self.context.storyposition;
@@ -77,7 +77,7 @@ function Story:update(event, nextlevel, onwin)
   end
   if (
         story[self.context.storyposition].condition == nil  and
-        event.name == defines.events.ontick
+        event.name == defines.events.on_tick
       ) or
       (
         story[self.context.storyposition].condition ~= nil and
@@ -99,7 +99,7 @@ function Story:update(event, nextlevel, onwin)
         onwin()
       end
       if not game.finished then
-        game.setgamestate{gamefinished=true, playerwon=true, nextlevel=nextlevel}
+        game.set_game_state{game_finished=true, player_won=true, next_level=next_level}
       end
     end
   end

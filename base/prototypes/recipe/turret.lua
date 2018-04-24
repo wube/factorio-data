@@ -3,13 +3,13 @@ data:extend(
   {
     type = "recipe",
     name = "laser-turret",
-    enabled = "false",
-    energy_required = 5,
+    enabled = false,
+    energy_required = 20,
     ingredients =
     {
-      {"steel-plate", 5},
-      {"electronic-circuit", 5},
-      {"battery", 3}
+      {"steel-plate", 20},
+      {"electronic-circuit", 20},
+      {"battery", 12}
     },
     result = "laser-turret"
   }

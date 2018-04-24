@@ -9,7 +9,6 @@ function spitterattackanimation(scale, tint)
         height = 164,
         frame_count = 22,
         direction_count = 16,
-        axially_symmetrical = false,
         scale=scale,
         shift = {scale * 0.765625, scale * 0.0625},
         animation_speed = 0.4,
@@ -52,7 +51,6 @@ function spitterattackanimation(scale, tint)
         height = 90,
         frame_count = 22,
         direction_count = 16,
-        axially_symmetrical = false,
         shift = {scale * 0, scale * -0.625},
         scale = scale,
         tint = tint,
@@ -70,7 +68,7 @@ function spitterattackanimation(scale, tint)
             height_in_frames = 16
           }
         }
-      },
+      }
     }
   }
 end
@@ -86,7 +84,6 @@ function spitterrunanimation(scale, tint)
         priority="very-low",
         frame_count = 24,
         direction_count = 16,
-        axially_symmetrical = false,
         shift = {scale * 1.01562, 0},
         scale = scale,
         still_frame = 4,
@@ -122,18 +119,17 @@ function spitterrunanimation(scale, tint)
             width_in_frames = 8,
             height_in_frames = 8
           }
-        },
+        }
       },
       {
         width = 81,
         height = 90,
         frame_count = 24,
-        axially_symmetrical = false,
         direction_count = 16,
         shift = {scale * 0.015625, scale * -0.6875},
         scale = scale,
         filename = "__base__/graphics/entity/spitter/spitter-run-mask.png",
-        tint = tint,
+        tint = tint
       },
     }
   }
@@ -149,7 +145,6 @@ function spitterdyinganimation(scale, tint)
         height = 174,
         frame_count = 16,
         direction_count = 16,
-        axially_symmetrical = false,
         shift = {scale * 0.546875, scale * 0.21875},
         priority = "very-low",
         scale = scale,
@@ -175,14 +170,13 @@ function spitterdyinganimation(scale, tint)
             width_in_frames = 8,
             height_in_frames = 8
           }
-        },
+        }
       },
       {
         width = 166,
         height = 144,
         frame_count = 16,
         direction_count = 16,
-        axially_symmetrical = false,
         shift = {scale * 0, scale * -0.0625},
         priority = "very-low",
         tint = tint,
@@ -209,8 +203,8 @@ function spitterdyinganimation(scale, tint)
             width_in_frames = 8,
             height_in_frames = 8
           }
-        },
-      },
+        }
+      }
     }
   }
 end

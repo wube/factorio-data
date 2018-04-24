@@ -14,6 +14,28 @@ data:extend(
         target_effects =
         {
           {
+            type = "play-sound",
+            sound =
+            {
+              {
+                filename = "__base__/sound/creatures/projectile-acid-burn-1.ogg",
+                volume = 0.8
+              },
+              {
+                filename = "__base__/sound/creatures/projectile-acid-burn-2.ogg",
+                volume = 0.8
+              },
+              {
+                filename = "__base__/sound/creatures/projectile-acid-burn-long-1.ogg",
+                volume = 0.8
+              },
+              {
+                filename = "__base__/sound/creatures/projectile-acid-burn-long-2.ogg",
+                volume = 0.8
+              }
+            }
+          },
+          {
             type = "create-entity",
             entity_name = "acid-splash-purple"
           },

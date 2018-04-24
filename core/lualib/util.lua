@@ -6,7 +6,7 @@ function distance(position1, position2)
 end
 
 function findfirstentity(boundingbox, name)
-  for _, entity in ipairs(game.findentities(boundingbox)) do
+  for _, entity in ipairs(game.find_entities(boundingbox)) do
     if entity.name == name then
       return entity
     end

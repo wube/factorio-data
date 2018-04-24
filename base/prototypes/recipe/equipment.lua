@@ -3,7 +3,7 @@ data:extend(
   {
     type = "recipe",
     name = "night-vision-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -15,7 +15,7 @@ data:extend(
   {
     type = "recipe",
     name = "energy-shield-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -27,7 +27,7 @@ data:extend(
   {
     type = "recipe",
     name = "energy-shield-mk2-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -39,7 +39,7 @@ data:extend(
   {
     type = "recipe",
     name = "battery-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -51,7 +51,7 @@ data:extend(
   {
     type = "recipe",
     name = "battery-mk2-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -63,7 +63,7 @@ data:extend(
   {
     type = "recipe",
     name = "solar-panel-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -76,7 +76,7 @@ data:extend(
   {
     type = "recipe",
     name = "fusion-reactor-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -88,7 +88,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-laser-defense-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -101,7 +101,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-electric-discharge-defense-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -114,7 +114,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-exoskeleton-equipment",
-    enabled = "false",
+    enabled = false,
     energy_required = 10,
     ingredients =
     {
@@ -123,6 +123,20 @@ data:extend(
       {"steel-plate", 20},
     },
     result = "basic-exoskeleton-equipment"
+  },
+  {
+    type = "recipe",
+    name = "personal-roboport-equipment",
+    enabled = false,
+    energy_required = 10,
+    ingredients =
+    {
+      {"processing-unit", 10},
+      {"iron-gear-wheel", 40},
+      {"steel-plate", 20},
+      {"battery", 45},
+    },
+    result = "personal-roboport-equipment"
   }
 }
 )

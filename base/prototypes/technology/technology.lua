@@ -326,10 +326,10 @@ data:extend(
     },
     order = "e-c-b"
   },
-  {
+    {
     type = "technology",
-    name = "advanced-electronics",
-    icon = "__base__/graphics/technology/advanced-electronics.png",
+    name = "circuit-network",
+    icon = "__base__/graphics/technology/circuit-network.png",
     effects =
     {
       {
@@ -344,6 +344,38 @@ data:extend(
         type = "unlock-recipe",
         recipe = "green-wire"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "arithmetic-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "decider-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "constant-combinator"
+      }
+    },
+    prerequisites = {"electronics"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1}
+      },
+      time = 15
+    },
+    order = "a-d-d",
+  },
+  {
+    type = "technology",
+    name = "advanced-electronics",
+    icon = "__base__/graphics/technology/advanced-electronics.png",
+    effects =
+    {
       {
         type = "unlock-recipe",
         recipe = "advanced-circuit"
@@ -369,7 +401,7 @@ data:extend(
   {
     type = "technology",
     name = "advanced-electronics-2",
-    icon = "__base__/graphics/technology/advanced-electronics.png",
+    icon = "__base__/graphics/technology/advanced-electronics-2.png",
     prerequisites = {"advanced-electronics"},
     unit =
     {
@@ -479,6 +511,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "rail-signal"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "rail-chain-signal"
       }
     },
     prerequisites = {"automated-rail-transportation"},
@@ -531,6 +567,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "cannon-shell"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "explosive-cannon-shell"
       },
     },
     prerequisites = {"automobilism", "military-3"},
@@ -977,13 +1017,33 @@ data:extend(
   },
   {
     type = "technology",
-    name = "rocket-defense",
-    icon = "__base__/graphics/technology/rocket-defense.png",
+    name = "rocket-silo",
+    icon = "__base__/graphics/technology/rocket-silo.png",
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "rocket-defense"
+        recipe = "rocket-silo"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "low-density-structure"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "rocket-fuel"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "rocket-control-unit"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "rocket-part"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "satellite"
       }
     },
     prerequisites = {"rocketry", "advanced-electronics-2", "rocket-speed-5", "speed-module-3", "productivity-module-3"},
@@ -1023,7 +1083,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-m-a"
   },
   {
@@ -1048,7 +1108,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-m-b"
   },
   {
@@ -1074,7 +1134,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-m-c"
   },
   {
@@ -1100,7 +1160,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-m-d"
   },
   {
@@ -1202,7 +1262,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-o-a",
   },
   {
@@ -1227,7 +1287,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-o-b",
   },
   {
@@ -1253,7 +1313,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-o-c"
   },
   {
@@ -1280,7 +1340,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-o-d"
   },
   {
@@ -1330,6 +1390,30 @@ data:extend(
       time = 30
     },
     order = "c-c-b"
+  },
+  {
+    type = "technology",
+    name = "concrete",
+    icon = "__base__/graphics/technology/concrete.png",
+    prerequisites = {"advanced-material-processing-2"},
+    unit =
+    {
+      count = 250,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 30
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "concrete"
+      }
+    },
+    order = "c-c-c"
   },
   {
     type = "technology",

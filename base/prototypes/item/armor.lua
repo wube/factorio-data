@@ -33,7 +33,7 @@ data:extend(
     name = "basic-modular-armor",
     icon = "__base__/graphics/icons/basic-modular-armor.png",
     flags = {"goes-to-main-inventory"},
-    resistances = 
+    resistances =
     {
       {
         type = "physical",
@@ -62,7 +62,7 @@ data:extend(
     name = "power-armor",
     icon = "__base__/graphics/icons/power-armor.png",
     flags = {"goes-to-main-inventory"},
-    resistances = 
+    resistances =
     {
       {
         type = "physical",
@@ -91,7 +91,7 @@ data:extend(
     name = "power-armor-mk2",
     icon = "__base__/graphics/icons/power-armor-mk2.png",
     flags = {"goes-to-main-inventory"},
-    resistances = 
+    resistances =
     {
       {
         type = "physical",

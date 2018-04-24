@@ -1,6 +1,7 @@
 require "util"
 
 -- this is both in demo and alpha
+require("prototypes.ambient-sounds")
 require("prototypes.entity.demo-entities")
 require("prototypes.entity.demo-mining-drill")
 require("prototypes.entity.demo-particles")
@@ -22,6 +23,7 @@ require("prototypes.recipe.demo-furnace-recipe")
 require("prototypes.recipe.demo-recipe")
 require("prototypes.recipe.demo-turret")
 require("prototypes.fluid.demo-fluid")
+require("prototypes.signal.demo-signal")
 require("prototypes.tile.noise-layers")
 require("prototypes.autoplace-controls")
 require("prototypes.map-settings")
@@ -33,11 +35,12 @@ require("prototypes.categories.recipe-category")
 require("prototypes.categories.resource-category")
 
 
-if data.isdemo then
+if data.is_demo then
   require("prototypes.item.demo-item-groups")
 else
   require("prototypes.entity.entities")
   require("prototypes.entity.projectiles")
+  require("prototypes.entity.beams")
   require("prototypes.entity.turrets")
   require("prototypes.entity.enemies")
   require("prototypes.entity.mining-drill")
@@ -61,6 +64,7 @@ else
   require("prototypes.recipe.recipe")
   require("prototypes.recipe.turret")
   require("prototypes.fluid.fluid")
+  require("prototypes.signal.signal")
   require("prototypes.entity.resources")
   require("prototypes.technology.equipment")
   require("prototypes.technology.logistic-robot")
@@ -74,4 +78,5 @@ else
   require("prototypes.technology.laser-turret-upgrades")
   require("prototypes.technology.rocket-upgrades")
   require("prototypes.equipment.equipment")
+  require("prototypes.legacy.legacy-entities")
 end

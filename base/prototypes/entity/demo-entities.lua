@@ -323,7 +323,7 @@ data:extend(
       },
       {
         -- heavy-armor is not in the demo
-        armors = data.isdemo and {"basic-armor"} or {"basic-armor", "heavy-armor"},
+        armors = data.is_demo and {"basic-armor"} or {"basic-armor", "heavy-armor"},
         idle =
         {
           layers =
@@ -387,7 +387,7 @@ data:extend(
       },
       {
         -- modular armors are not in the demo
-        armors = data.isdemo and {} or {"basic-modular-armor", "power-armor", "power-armor-mk2"},
+        armors = data.is_demo and {} or {"basic-modular-armor", "power-armor", "power-armor-mk2"},
         idle =
         {
           layers =
@@ -476,7 +476,7 @@ data:extend(
     mining_speed = 0.01,
     mining_with_hands_particles_animation_positions = {29, 63},
     mining_with_tool_particles_animation_positions = {28},
-    running_sound_animation_positions = {14, 29}
+    running_sound_animation_positions = {5, 16}
   },
 
   {
@@ -491,6 +491,7 @@ data:extend(
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
     working_sound =
     {
       sound = { filename = "__base__/sound/furnace.ogg", }
@@ -649,6 +650,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
     max_health = 100,
     corpse = "small-remnants",
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     resistances =
     {
       {
@@ -784,6 +786,7 @@ data:extend(
     inventory_size = 16,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
@@ -807,13 +810,13 @@ data:extend(
     drawing_box = {{-0.5, -2.3}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
     supply_area_distance = 2.5,
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
     pictures =
     {
       filename = "__base__/graphics/entity/small-electric-pole/small-electric-pole.png",
       priority = "extra-high",
       width = 123,
       height = 124,
-      axially_symetric = false,
       direction_count = 4,
       shift = {1.4, -1.1}
     },
@@ -876,39 +879,11 @@ data:extend(
         }
       }
     },
-    copper_wire_picture =
-    {
-      filename = "__base__/graphics/entity/small-electric-pole/copper-wire.png",
-      priority = "extra-high-no-scale",
-      width = 224,
-      height = 46
-    },
-    green_wire_picture =
-    {
-      filename = "__base__/graphics/entity/small-electric-pole/green-wire.png",
-      priority = "extra-high-no-scale",
-      width = 224,
-      height = 46
-    },
     radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
       width = 12,
       height = 12
-    },
-    red_wire_picture =
-    {
-      filename = "__base__/graphics/entity/small-electric-pole/red-wire.png",
-      priority = "extra-high-no-scale",
-      width = 224,
-      height = 46
-    },
-    wire_shadow_picture =
-    {
-      filename = "__base__/graphics/entity/small-electric-pole/wire-shadow.png",
-      priority = "extra-high-no-scale",
-      width = 224,
-      height = 46
     }
   },
 
@@ -958,12 +933,12 @@ data:extend(
     sound =
     {
       {
-        filename = "__base__/sound/explosion1.ogg",
-        volume = 0.8
+        filename = "__base__/sound/fight/small-explosion-1.ogg",
+        volume = 0.75
       },
       {
-        filename = "__base__/sound/explosion2.ogg",
-        volume = 0.8
+        filename = "__base__/sound/fight/small-explosion-2.ogg",
+        volume = 0.75
       }
     }
   },
@@ -981,6 +956,50 @@ data:extend(
         height = 38,
         frame_count = 13,
         animation_speed = 1.5,
+        shift = {0, 0}
+      }
+    },
+    rotate = true,
+    light = {intensity = 1, size = 10},
+    smoke = "smoke-fast",
+    smoke_count = 1,
+    smoke_slow_down_factor = 1
+  },
+  {
+    type = "explosion",
+    name = "explosion-gunshot-small",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/explosion-hit/explosion-hit.png",
+        priority = "extra-high",
+        width = 34,
+        height = 38,
+        frame_count = 13,
+        animation_speed = 1.5,
+        shift = {0, 0}
+      }
+    },
+    rotate = true,
+    light = {intensity = 1, size = 10},
+    smoke = "smoke-fast",
+    smoke_count = 1,
+    smoke_slow_down_factor = 1
+  },
+  {
+    type = "explosion",
+    name = "explosion-hit",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/explosion-hit/explosion-hit.png",
+        priority = "extra-high",
+        width = 34,
+        height = 38,
+        frame_count = 13,
+        animation_speed = 1.5,
         shift = {0, -0.3125}
       }
     },
@@ -989,21 +1008,22 @@ data:extend(
     smoke_count = 1,
     smoke_slow_down_factor = 1
   },
-
   {
     type = "explosion",
-    name = "huge-explosion",
+    name = "big-explosion",
     flags = {"not-on-map"},
     animations =
     {
       {
-        filename = "__base__/graphics/entity/huge-explosion/huge-explosion.png",
+        filename = "__base__/graphics/entity/big-explosion/big-explosion.png",
         priority = "extra-high",
-        width = 112,
-        height = 94,
-        frame_count = 54,
+        width = 197,
+        height = 245,
+        frame_count = 47,
         line_length = 6,
-        shift = {-0.56, -0.96},
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = {0.1875, -0.75},
         animation_speed = 0.5
       }
     },
@@ -1011,8 +1031,12 @@ data:extend(
     sound =
     {
       {
-        filename = "__base__/sound/huge-explosion.ogg",
-        volume = 1.25
+        filename = "__base__/sound/fight/large-explosion-1.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/fight/large-explosion-2.ogg",
+        volume = 1.0
       }
     },
     created_effect =
@@ -1038,7 +1062,111 @@ data:extend(
       }
     }
   },
-  
+  {
+    type = "explosion",
+    name = "medium-explosion",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
+        priority = "extra-high",
+        width = 112,
+        height = 94,
+        frame_count = 54,
+        line_length = 6,
+        shift = {-0.56, -0.96},
+        animation_speed = 0.5
+      }
+    },
+    light = {intensity = 1, size = 50},
+    sound =
+    {
+      {
+        filename = "__base__/sound/fight/large-explosion-1.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/fight/large-explosion-2.ogg",
+        volume = 0.8
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            entity_name = "explosion-remnants-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "massive-explosion",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
+        priority = "extra-high",
+        width = 112,
+        height = 94,
+        scale = 0.8,
+        frame_count = 54,
+        line_length = 6,
+        shift = {-0.56, -0.96},
+        animation_speed = 0.5
+      }
+    },
+    light = {intensity = 1, size = 50},
+    sound =
+    {
+      {
+        filename = "__base__/sound/fight/large-explosion-1.ogg",
+        volume = 1.25
+      },
+      {
+        filename = "__base__/sound/fight/large-explosion-2.ogg",
+        volume = 1.25
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 60,
+            entity_name = "explosion-remnants-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
+      }
+    }
+  },
   {
     type = "explosion",
     name = "blood-explosion-small",
@@ -1112,7 +1240,7 @@ data:extend(
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "blood-explosion-huge",
@@ -1165,7 +1293,7 @@ data:extend(
     minable = {mining_time = 1, result = "steam-engine"},
     max_health = 300,
     corpse = "big-remnants",
-    dying_explosion = "huge-explosion",
+    dying_explosion = "medium-explosion",
     effectivity = 1,
     fluid_usage_per_tick = 0.1,
     resistances =
@@ -1221,6 +1349,7 @@ data:extend(
         starting_vertical_speed = 0.05
       }
     },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       sound =
@@ -1263,6 +1392,7 @@ data:extend(
     },
     pumping_speed = 1,
     tile_width = 1,
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     picture =
     {
       north =
@@ -1300,7 +1430,60 @@ data:extend(
         width = 160,
         height = 102
       }
-    }
+    },
+    circuit_wire_connection_points =
+    {
+      {
+        shadow =
+        {
+          red = {2.7125, 0.20625},
+          green = {2.7125, 0.20625},
+        },
+        wire =
+        {
+          red = {0.4, -0.41875},
+          green = {0.4, -0.41875},
+        }
+      },
+      {
+        shadow =
+        {
+          red = {2.025, 0.83125},
+          green = {2.025, 0.83125},
+        },
+        wire =
+        {
+          red = {0.36875, -0.1375},
+          green = {0.36875, -0.1375},
+        }
+      },
+      {
+        shadow =
+        {
+          red = {1.09, 1.025},
+          green = {1.09, 1.025},
+        },
+        wire =
+        {
+          red = {-0.50625, 0.2125},
+          green = {-0.50625, 0.2125},
+        }
+      },
+      {
+        shadow =
+        {
+          red = {1.6875, -0.10625},
+          green = {1.6875, -0.10625},
+        },
+        wire =
+        {
+          red = {-0.34375, -0.73125},
+          green = {-0.34375, -0.73125},
+        }
+      }
+    },
+    circuit_wire_max_distance = 7.5
+
   },
 
   {
@@ -1349,7 +1532,7 @@ data:extend(
       scale = 0.5
     },
     render_layer = "lower-object",
-    wind_speed_factor = 0,
+    affected_by_wind = false,
     movement_slow_down_factor = 0.95,
     duration = 40,
     fade_away_duration = 30,
@@ -1371,7 +1554,7 @@ data:extend(
       scale = 0.5
     },
     render_layer = "building-smoke",
-    wind_speed_factor = 0,
+    affected_by_wind = false,
     movement_slow_down_factor = 0.96,
     duration = 45,
     fade_away_duration = 30,
@@ -1394,7 +1577,7 @@ data:extend(
       tint = {r = 0.1, g = 0.1, b = 0.1, a = 0.7}
     },
     render_layer = "smoke",
-    wind_speed_factor = 0.02,
+    affected_by_wind = false,
     movement_slow_down_factor = 0.96,
     duration = 150,
     fade_away_duration = 60,
@@ -1409,7 +1592,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "basic-inserter"},
     max_health = 40,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -1426,8 +1609,10 @@ data:extend(
       usage_priority = "secondary-input",
       drain = "0.4kW"
     },
-    extension_speed = 0.028,
+    extension_speed = 0.03,
+    rotation_speed = 0.014,
     fast_replaceable_group = "inserter",
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       match_progress_to_activity = true,
@@ -1508,8 +1693,7 @@ data:extend(
         width = 46,
         height = 46,
       }
-    },
-    rotation_speed = 0.014
+    }
   },
 
   {
@@ -1520,7 +1704,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "burner-inserter"},
     max_health = 40,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -1545,8 +1729,9 @@ data:extend(
         }
       }
     },
-    extension_speed = 0.02,
+    extension_speed = 0.0214,
     fast_replaceable_group = "inserter",
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       match_progress_to_activity = true,
@@ -1717,12 +1902,12 @@ data:extend(
       priority = "low",
       width = 153,
       height = 131,
-      axially_symmetrical = false,
       apply_projection = false,
       direction_count = 64,
       line_length = 8,
       shift = {0.875, -0.35}
     },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       sound = {
@@ -1744,6 +1929,7 @@ data:extend(
     corpse = "small-remnants",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     energy_source =
     {
       type = "electric",
@@ -1753,41 +1939,42 @@ data:extend(
     light = {intensity = 0.9, size = 40},
     picture_off =
     {
-      filename = "__base__/graphics/entity/small-lamp/small-lamp.png",
+      filename = "__base__/graphics/entity/small-lamp/light-off.png",
       priority = "high",
-      width = 83,
-      height = 75,
-      shift = {0, -0.1}
+      width = 67,
+      height = 58,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {0.078125, -0.03125},
     },
     picture_on =
     {
-      filename = "__base__/graphics/entity/small-lamp/small-lamp.png",
+      filename = "__base__/graphics/entity/small-lamp/light-on-patch.png",
       priority = "high",
-      width = 83,
-      height = 75,
-      x = 83,
-      shift = {0, -0.1}
-    }
-  },
+      width = 62,
+      height = 62,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {0.0625, -0.21875},
+    },
 
-  {
-    type = "container",
-    name = "space-module-wreck",
-    icon = "__base__/graphics/icons/space-module-wreck.png",
-    flags = {"placeable-neutral"},
-    subgroup = "wrecks",
-    order="c-f",
-    max_health = 50,
-    collision_box = {{-2.2, -1}, {2.2, 1}},
-    selection_box = {{-2.7, -1.5}, {2.7, 1.5}},
-    inventory_size = 4,
-    enable_inventory_bar = false,
-    picture =
+    circuit_wire_connection_point =
     {
-      filename = "__base__/graphics/entity/space-module-wreck/wreck.png",
-      width = 168,
-      height = 96
-    }
+      shadow =
+      {
+        red = {0.859375, -0.296875},
+        green = {0.859375, -0.296875},
+      },
+      wire =
+      {
+        red = {0.40625, -0.59375},
+        green = {0.40625, -0.59375},
+      }
+    },
+
+    circuit_wire_max_distance = 7.5
   },
 
   {
@@ -1848,6 +2035,7 @@ data:extend(
       width = 32,
       height = 32
     },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures =
     {
       up =
@@ -1889,7 +2077,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-1"},
     max_health = 200,
     corpse = "big-remnants",
-    dying_explosion = "huge-explosion",
+    dying_explosion = "medium-explosion",
     resistances =
     {
       {
@@ -1922,6 +2110,7 @@ data:extend(
     ingredient_count = 2,
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       sound = {
@@ -1992,12 +2181,28 @@ data:extend(
   },
 
   {
-    type = "ghost",
-    name = "ghost",
+    type = "entity-ghost",
+    name = "entity-ghost",
     flags = {"not-on-map"},
     minable = { mining_time = 0, results={}},
   },
-  
+
+  {
+    type = "tile-ghost",
+    name = "tile-ghost",
+    flags = {"not-on-map"},
+    minable = { mining_time = 0, results={}},
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}}
+  },
+
+  {
+    type = "deconstructible-tile-proxy",
+    name = "deconstructible-tile-proxy",
+    flags = {"not-on-map"},
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}}
+  },
+
   {
     type = "explosion",
     name = "water-splash",
@@ -2013,6 +2218,404 @@ data:extend(
         line_length = 5,
         shift = {-0.437, 0.5},
         animation_speed = 0.35
+      }
+    }
+  },
+
+  {
+    type = "wall",
+    name = "stone-wall",
+    icon = "__base__/graphics/icons/stone-wall.png",
+    flags = {"placeable-neutral", "player-creation"},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    minable = {mining_time = 1, result = "stone-wall"},
+    fast_replaceable_group = "wall",
+    max_health = 350,
+    repair_speed_modifier = 2,
+    corpse = "wall-remnants",
+    repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    -- this kind of code can be used for having walls mirror the effect
+    -- there can be multiple reaction items
+    --attack_reaction =
+    --{
+      --{
+        ---- how far the mirroring works
+        --range = 2,
+        ---- what kind of damage triggers the mirroring
+        ---- if not present then anything triggers the mirroring
+        --damage_type = "physical",
+        ---- caused damage will be multiplied by this and added to the subsequent damages
+        --reaction_modifier = 0.1,
+        --action =
+        --{
+          --type = "direct",
+          --action_delivery =
+          --{
+            --type = "instant",
+            --target_effects =
+            --{
+              --type = "damage",
+              ---- always use at least 0.1 damage
+              --damage = {amount = 0.1, type = "physical"}
+            --}
+          --}
+        --},
+      --}
+    --},
+    resistances =
+    {
+      {
+        type = "physical",
+        decrease = 3,
+        percent = 20
+      },
+      {
+        type = "impact",
+        decrease = 45,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 10,
+        percent = 30
+      },
+      {
+        type = "fire",
+        percent = 100
+      },
+      {
+        type = "laser",
+        percent = 70
+      }
+    },
+    pictures =
+    {
+      single =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-single.png",
+            priority = "extra-high",
+            width = 22,
+            height = 42,
+            shift = {0, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-single-shadow.png",
+            priority = "extra-high",
+            width = 47,
+            height = 32,
+            shift = {0.359375, 0.5},
+            draw_as_shadow = true
+          }
+        }
+      },
+      straight_vertical =
+      {
+        {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-1.png",
+              priority = "extra-high",
+              width = 22,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-shadow.png",
+              priority = "extra-high",
+              width = 47,
+              height = 60,
+              shift = {0.390625, 0.625},
+              draw_as_shadow = true
+            }
+          }
+        },
+        {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-2.png",
+              priority = "extra-high",
+              width = 22,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-shadow.png",
+              priority = "extra-high",
+              width = 47,
+              height = 60,
+              shift = {0.390625, 0.625},
+              draw_as_shadow = true
+            }
+          }
+        },
+        {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-3.png",
+              priority = "extra-high",
+              width = 22,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-vertical-shadow.png",
+              priority = "extra-high",
+              width = 47,
+              height = 60,
+              shift = {0.390625, 0.625},
+              draw_as_shadow = true
+            }
+          }
+        }
+      },
+      straight_horizontal =
+      {
+        {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-1.png",
+              priority = "extra-high",
+              width = 32,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-shadow.png",
+              priority = "extra-high",
+              width = 59,
+              height = 32,
+              shift = {0.421875, 0.5},
+              draw_as_shadow = true
+            }
+          }
+        },
+        {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-2.png",
+              priority = "extra-high",
+              width = 32,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-shadow.png",
+              priority = "extra-high",
+              width = 59,
+              height = 32,
+              shift = {0.421875, 0.5},
+              draw_as_shadow = true
+            }
+          }
+        },
+        {
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-3.png",
+              priority = "extra-high",
+              width = 32,
+              height = 42,
+              shift = {0, -0.15625}
+            },
+            {
+              filename = "__base__/graphics/entity/stone-wall/wall-straight-horizontal-shadow.png",
+              priority = "extra-high",
+              width = 59,
+              height = 32,
+              shift = {0.421875, 0.5},
+              draw_as_shadow = true
+            }
+          }
+        }
+      },
+      corner_right_down =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-right-down.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-right-down-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 61,
+            shift = {0.484375, 0.640625},
+            draw_as_shadow = true
+          }
+        }
+      },
+      corner_left_down =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-left-down.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {-0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-corner-left-down-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 60,
+            shift = {0.328125, 0.640625},
+            draw_as_shadow = true
+          }
+        }
+      },
+      t_up =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-t-down.png",
+            priority = "extra-high",
+            width = 32,
+            height = 42,
+            shift = {0, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-t-down-shadow.png",
+            priority = "extra-high",
+            width = 71,
+            height = 61,
+            shift = {0.546875, 0.640625},
+            draw_as_shadow = true
+          }
+        }
+      },
+      ending_right =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-right.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-right-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 32,
+            shift = {0.484375, 0.5},
+            draw_as_shadow = true
+          }
+        }
+      },
+      ending_left =
+      {
+        layers =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-left.png",
+            priority = "extra-high",
+            width = 27,
+            height = 42,
+            shift = {-0.078125, -0.15625}
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-ending-left-shadow.png",
+            priority = "extra-high",
+            width = 53,
+            height = 32,
+            shift = {0.328125, 0.5},
+            draw_as_shadow = true
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "corpse",
+    name = "wall-remnants",
+    icon = "__base__/graphics/icons/wall-remnants.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order="d[remnants]-c[wall]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation =
+    {
+      {
+        width = 36,
+        height = 36,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-01.png"
+      },
+      {
+        width = 38,
+        height = 35,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-02.png"
+      },
+      {
+        width = 35,
+        height = 36,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-03.png"
+      },
+      {
+        width = 41,
+        height = 36,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-04.png"
+      },
+      {
+        width = 35,
+        height = 35,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-05.png"
+      },
+      {
+        width = 50,
+        height = 37,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-06.png"
+      },
+      {
+        width = 54,
+        height = 40,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-07.png"
+      },
+      {
+        width = 43,
+        height = 45,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/stone-wall/remains/wall-remain-08.png"
       }
     }
   }

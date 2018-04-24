@@ -77,12 +77,17 @@ data:extend(
       },
     },
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
-    stages = { filename = "__base__/graphics/entity/copper-ore/copper-ore.png",
-      priority = "extra-high",
-      width = 38,
-      height = 38,
-      frame_count = 4,
-      direction_count = 8
+    stages =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/copper-ore/copper-ore.png",
+        priority = "extra-high",
+        width = 38,
+        height = 38,
+        frame_count = 4,
+        variation_count = 8
+      }
     },
     map_color = {r=0.803, g=0.388, b=0.215}
   },
@@ -166,12 +171,15 @@ data:extend(
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
     {
-      filename = "__base__/graphics/entity/iron-ore/iron-ore.png",
-      priority = "extra-high",
-      width = 38,
-      height = 38,
-      frame_count = 4,
-      direction_count = 8
+      sheet =
+      {
+        filename = "__base__/graphics/entity/iron-ore/iron-ore.png",
+        priority = "extra-high",
+        width = 38,
+        height = 38,
+        frame_count = 4,
+        variation_count = 8
+      }
     },
     map_color = {r=0.337, g=0.419, b=0.427}
   },
@@ -255,12 +263,15 @@ data:extend(
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
     {
-      filename = "__base__/graphics/entity/coal/coal.png",
-      priority = "extra-high",
-      width = 38,
-      height = 38,
-      frame_count = 4,
-      direction_count = 8
+      sheet =
+      {
+        filename = "__base__/graphics/entity/coal/coal.png",
+        priority = "extra-high",
+        width = 38,
+        height = 38,
+        frame_count = 4,
+        variation_count = 8
+      }
     },
     map_color = {r=0, g=0, b=0}
   },
@@ -344,12 +355,15 @@ data:extend(
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
     {
-      filename = "__base__/graphics/entity/stone/stone.png",
-      priority = "extra-high",
-      width = 38,
-      height = 38,
-      frame_count = 4,
-      direction_count = 8
+      sheet =
+      {
+        filename = "__base__/graphics/entity/stone/stone.png",
+        priority = "extra-high",
+        width = 38,
+        height = 38,
+        frame_count = 4,
+        variation_count = 8
+      }
     },
     map_color = {r=0.478, g=0.450, b=0.317}
   }

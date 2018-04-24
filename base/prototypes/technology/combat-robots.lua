@@ -17,7 +17,7 @@ function createfollowerupgrade(level, pack1, pack2, pack3, alienpack, count, add
       ingredients = {},
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-p-b-c"
   }
   result.name = "follower-robot-count-" .. level
@@ -155,6 +155,11 @@ data:extend(
         type = "ammo-damage",
         ammo_category = "combat-robot-laser",
         modifier = "0.1"
+      },
+      {
+        type = "ammo-damage",
+        ammo_category = "combat-robot-beam",
+        modifier = "0.1"
       }
     },
     prerequisites = {"combat-robotics"},
@@ -168,7 +173,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-p-c"
   },
   {
@@ -180,6 +185,11 @@ data:extend(
       {
         type = "ammo-damage",
         ammo_category = "combat-robot-laser",
+        modifier = "0.15"
+      },
+      {
+        type = "ammo-damage",
+        ammo_category = "combat-robot-beam",
         modifier = "0.15"
       }
     },
@@ -194,7 +204,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-p-d"
   },
   {
@@ -206,6 +216,11 @@ data:extend(
       {
         type = "ammo-damage",
         ammo_category = "combat-robot-laser",
+        modifier = "0.2"
+      },
+      {
+        type = "ammo-damage",
+        ammo_category = "combat-robot-beam",
         modifier = "0.2"
       }
     },
@@ -221,7 +236,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-p-e"
   },
   {
@@ -233,6 +248,11 @@ data:extend(
       {
         type = "ammo-damage",
         ammo_category = "combat-robot-laser",
+        modifier = "0.25"
+      },
+      {
+        type = "ammo-damage",
+        ammo_category = "combat-robot-beam",
         modifier = "0.25"
       }
     },
@@ -249,7 +269,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-p-f"
   },
   {
@@ -261,6 +281,11 @@ data:extend(
       {
         type = "ammo-damage",
         ammo_category = "combat-robot-laser",
+        modifier = "0.3"
+      },
+      {
+        type = "ammo-damage",
+        ammo_category = "combat-robot-beam",
         modifier = "0.3"
       }
     },
@@ -277,7 +302,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-p-g"
   }
 })

@@ -1,0 +1,14 @@
+{
+  "entity":
+  [
+    ["dark-thin-tree", "tree-01"],
+    ["green-thin-tree", "tree-02"],
+    ["dark-green-thin-tree", "tree-03"],
+    ["dark-green-tree", "tree-04"],
+    ["green-tree", "tree-04"],
+    ["red-tree", "tree-05"],
+    ["red-thin-tree", "tree-06"],
+    ["root-tree", "tree-07"],
+    ["ghost", "entity-ghost"]
+  ]
+}

@@ -2050,7 +2050,7 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-23.png",
-        width 	= 21,
+        width   = 21,
         height = 20,
         shift = {-0.1, -0.18}
       },

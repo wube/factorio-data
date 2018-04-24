@@ -1,5 +1,6 @@
 require ("prototypes.entity.demo-spawner-animation")
 require ("prototypes.entity.demo-biter-animations")
+require ("prototypes.entity.demo-enemy-sounds")
 
 smallbiterscale = 0.5
 small_biter_tint1 = {r=0.56, g=0.46, b=0.42, a=0.65}
@@ -23,25 +24,12 @@ data:extend(
     selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
     attack_parameters =
     {
+      type = "projectile",
       range = 0.5,
       cooldown = 35,
       ammo_category = "melee",
       ammo_type = make_unit_melee_ammo_type(6),
-      sound =
-      {
-        {
-          filename = "__base__/sound/creatures/biter-roar-short-1.ogg",
-          volume = 0.8
-        },
-        {
-          filename = "__base__/sound/creatures/biter-roar-short-2.ogg",
-          volume = 0.8
-        },
-        {
-          filename = "__base__/sound/creatures/biter-roar-short-3.ogg",
-          volume = 0.8
-        }
-      },
+      sound = make_biter_roars(0.5),
       animation = biterattackanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
     },
     vision_distance = 30,
@@ -51,25 +39,8 @@ data:extend(
     distraction_cooldown = 300,
     corpse = "small-biter-corpse",
     dying_explosion = "blood-explosion-small",
-    dying_sound =
-    {
-      {
-        filename = "__base__/sound/creatures/creeper-death-1.ogg",
-        volume = 0.7
-      },
-      {
-        filename = "__base__/sound/creatures/creeper-death-2.ogg",
-        volume = 0.7
-      },
-      {
-        filename = "__base__/sound/creatures/creeper-death-3.ogg",
-        volume = 0.7
-      },
-      {
-        filename = "__base__/sound/creatures/creeper-death-4.ogg",
-        volume = 0.7
-      }
-    },
+    dying_sound =  make_biter_dying_sounds(1.0),
+    working_sound =  make_biter_calls(0.7),
     run_animation = biterrunanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
   },
 
@@ -107,11 +78,34 @@ data:extend(
         percent = 15,
       }
     },
+    working_sound = {
+      sound =
+      {
+        {
+          filename = "__base__/sound/creatures/spawner.ogg",
+          volume = 1.0
+        }
+      },
+      apparent_volume = 2
+    },
+    dying_sound =
+    {
+      {
+        filename = "__base__/sound/creatures/spawner-death-1.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/creatures/spawner-death-2.ogg",
+        volume = 1.0
+      }
+    },
     healing_per_tick = 0.02,
     collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
     selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
     -- in ticks per 1 pu
-    pollution_cooldown = 10,
+    pollution_absorbtion_absolute = 20,
+    pollution_absorbtion_proportional = 0.01,
+    pollution_to_enhance_spawning = 30000,
     corpse = "biter-spawner-corpse",
     dying_explosion = "blood-explosion-huge",
     loot =
@@ -134,16 +128,15 @@ data:extend(
     },
     result_units = (function()
                      local res = {}
-                     -- small biter has a constant weight of 0.3 independent of the evolution factor
-                     -- as a result this spawner will spawn only small-biters for evolution_factor in [0.0, 0.3]
-                     res[1] = {unit = "small-biter", spawn_points = {{evolution_factor=0, spawn_weight=0.3}}}
-                     if not data.isdemo then
+                     res[1] = {"small-biter", {{0.0, 0.3}, {0.7, 0.0}}}
+                     if not data.is_demo then
                        -- from evolution_factor 0.3 the weight for medium-biter is linearly rising from 0 to 0.3
                        -- this means for example that when the evolution_factor is 0.45 the probability of spawning
                        -- a small biter is 66% while probability for medium biter is 33%.
-                       res[2] = {"medium-biter", {{0.3, 0.0}, {0.6, 0.3}}}
-                       -- for evolution factor of 1 the spawning probabilities are: small-biter 30%, medium-biter 30%, big-biter 40%
+                       res[2] = {"medium-biter", {{0.3, 0.0}, {0.6, 0.3}, {0.8, 0.1}}}
+                       -- for evolution factor of 1 the spawning probabilities are: small-biter 0%, medium-biter 1/7, big-biter 4/7, behemoth biter 3/7
                        res[3] = {"big-biter", {{0.6, 0.0}, {1.0, 0.4}}}
+                       res[4] = {"behemoth-biter", {{0.99, 0.0}, {1.0, 0.3}}}
                      end
                      return res
                    end)(),

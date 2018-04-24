@@ -96,6 +96,16 @@ data:extend(
   },
   {
     type = "item",
+    name = "personal-roboport-equipment",
+    icon = "__base__/graphics/icons/personal-roboport-equipment.png",
+    placed_as_equipment_result = "personal-roboport-equipment",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "equipment",
+    order = "e[robotics]-a[personal-roboport-equipment]",
+    stack_size = 5
+  },
+  {
+    type = "item",
     name = "night-vision-equipment",
     icon = "__base__/graphics/icons/night-vision-equipment.png",
     placed_as_equipment_result = "night-vision-equipment",

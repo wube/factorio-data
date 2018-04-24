@@ -170,7 +170,7 @@ data:extend(
   {
     type = "recipe",
     name = "submachine-gun",
-    enabled = "false",
+    enabled = false,
     energy_required = 3,
     ingredients =
     {
@@ -191,7 +191,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-armor",
-    enabled = "false",
+    enabled = false,
     energy_required = 3,
     ingredients = {{"iron-plate", 40}},
     result = "basic-armor"
@@ -210,7 +210,7 @@ data:extend(
   {
     type = "recipe",
     name = "small-lamp",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -233,7 +233,7 @@ data:extend(
   {
     type = "recipe",
     name = "assembling-machine-1",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 3},

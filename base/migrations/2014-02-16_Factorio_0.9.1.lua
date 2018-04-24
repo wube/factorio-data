@@ -1,10 +1,10 @@
-if game.isdemo() then
+if game.is_demo() then
   return
 end
 
 for index, force in pairs(game.forces) do
-  force.resettechnologies()
-  force.resetrecipes()
+  force.reset_technologies()
+  force.reset_recipes()
   if force.technologies["explosives"].researched then
     force.recipes["explosives"].enabled = true
   end
@@ -18,7 +18,7 @@ for index, force in pairs(game.forces) do
   end
 end
 
-game.regenerateentity({
+game.regenerate_entity({
                         "brown-fluff",
                         "brown-fluff-dry",
                         "garballo",

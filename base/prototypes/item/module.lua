@@ -101,6 +101,10 @@ return {"sulfuric-acid",
         "science-pack-2",
         "science-pack-3",
         "alien-science-pack",
+        "low-density-structure",
+        "rocket-fuel",
+        "rocket-control-unit",
+        "rocket-part"
       }
 end
 

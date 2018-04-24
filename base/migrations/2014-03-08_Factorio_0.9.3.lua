@@ -1,1 +1,1 @@
-game.player.force.resetrecipes()
+game.player.force.reset_recipes()

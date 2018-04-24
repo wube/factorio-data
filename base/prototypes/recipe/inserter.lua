@@ -3,7 +3,7 @@ data:extend(
   {
     type = "recipe",
     name = "long-handed-inserter",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 1},
@@ -15,7 +15,7 @@ data:extend(
   {
     type = "recipe",
     name = "fast-inserter",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"electronic-circuit", 2},
@@ -27,7 +27,7 @@ data:extend(
   {
     type = "recipe",
     name = "smart-inserter",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {"fast-inserter", 1},

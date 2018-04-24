@@ -4,7 +4,7 @@
 
 ending_patch_prototype =
   {
-    sheet = 
+    sheet =
     {
       filename = "__base__/graphics/entity/basic-transport-belt/start-end-integration-patches.png",
       width = 40,

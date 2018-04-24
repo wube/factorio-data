@@ -4,7 +4,7 @@ data:extend(
   {
     type = "recipe",
     name = "poison-capsule",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -17,7 +17,7 @@ data:extend(
   {
     type = "recipe",
     name = "slowdown-capsule",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -30,7 +30,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-grenade",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -42,7 +42,7 @@ data:extend(
   {
     type = "recipe",
     name = "defender-capsule",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -55,7 +55,7 @@ data:extend(
   {
     type = "recipe",
     name = "distractor-capsule",
-    enabled = "false",
+    enabled = false,
     energy_required = 15,
     ingredients =
     {
@@ -67,7 +67,7 @@ data:extend(
   {
     type = "recipe",
     name = "destroyer-capsule",
-    enabled = "false",
+    enabled = false,
     energy_required = 15,
     ingredients =
     {
@@ -79,7 +79,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-electric-discharge-defense-remote",
-    enabled = "false",
+    enabled = false,
     ingredients = {{"electronic-circuit", 1}},
     result = "basic-electric-discharge-defense-remote"
   }

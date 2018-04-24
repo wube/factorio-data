@@ -1,17 +1,54 @@
 require ("prototypes.entity.demo-worm-animations")
+require ("prototypes.entity.demo-enemy-sounds")
 require "util"
 
-laser_turret_extension =
+function laser_turret_extension(inputs)
+return
 {
-  filename = "__base__/graphics/entity/laser-turret/laser-turret-extension.png",
+  filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start.png",
   priority = "medium",
-  width = 131,
-  height = 74,
-  direction_count = 4,
-  frame_count = 5,
+  width = 66,
+  height = 67,
+  frame_count = inputs.frame_count and inputs.frame_count or 15,
+  line_length = inputs.line_length and inputs.line_length or 0,
+  run_mode = inputs.run_mode and inputs.run_mode or "forward",
   axially_symmetrical = false,
-  shift = {1.171875, -0.34375}
+  direction_count = 4,
+  shift = {0.0625, -0.984375}
 }
+end
+
+function laser_turret_extension_shadow(inputs)
+return
+{
+  filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start-shadow.png",
+  width = 92,
+  height = 50,
+  frame_count = inputs.frame_count and inputs.frame_count or 15,
+  line_length = inputs.line_length and inputs.line_length or 0,
+  run_mode = inputs.run_mode and inputs.run_mode or "forward",
+  axially_symmetrical = false,
+  direction_count = 4,
+  draw_as_shadow = true,
+  shift = {1.46875, 0},
+}
+end
+
+function laser_turret_extension_mask(inputs)
+return
+{
+  filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start-mask.png",
+  width = 51,
+  height = 47,
+  frame_count = inputs.frame_count and inputs.frame_count or 15,
+  line_length = inputs.line_length and inputs.line_length or 0,
+  run_mode = inputs.run_mode and inputs.run_mode or "forward",
+  axially_symmetrical = false,
+  apply_runtime_tint = true,
+  direction_count = 4,
+  shift = {0.078125, -1.26563},
+}
+end
 
 function shift_medium_worm(shiftx, shifty)
   return {shiftx - 0.15, shifty + 0.15}
@@ -56,6 +93,7 @@ data:extend(
     rotation_speed = 1,
     corpse = "medium-worm-corpse",
     dying_explosion = "blood-explosion-big",
+    dying_sound = make_worm_dying_sounds(0.9),
     folded_speed = 0.01,
     folded_animation = worm_folded_animation(medium_worm_scale, medium_worm_tint),
     prepare_range = 25,
@@ -65,21 +103,7 @@ data:extend(
     prepared_animation = worm_prepared_animation(medium_worm_scale, medium_worm_tint),
     starting_attack_speed = 0.03,
     starting_attack_animation = worm_attack_animation(medium_worm_scale, medium_worm_tint, "forward"),
-    starting_attack_sound =
-    {
-      {
-        filename = "__base__/sound/creatures/worm-roar-short-1.ogg",
-        volume = 0.85
-      },
-      {
-        filename = "__base__/sound/creatures/worm-roar-short-2.ogg",
-        volume = 0.85
-      },
-      {
-        filename = "__base__/sound/creatures/worm-roar-short-3.ogg",
-        volume = 0.85
-      }
-    },
+    starting_attack_sound = make_worm_roars(0.8),
     ending_attack_speed = 0.03,
     ending_attack_animation = worm_attack_animation(medium_worm_scale, medium_worm_tint, "backward"),
     folding_speed = 0.015,
@@ -87,6 +111,7 @@ data:extend(
     prepare_range = 30,
     attack_parameters =
     {
+      type = "projectile",
       ammo_category = "rocket",
       cooldown = 100,
       range = 20,
@@ -167,6 +192,7 @@ data:extend(
     rotation_speed = 1,
     corpse = "big-worm-corpse",
     dying_explosion = "blood-explosion-big",
+    dying_sound = make_worm_dying_sounds(1.0),
     inventory_size = 2,
     folded_speed = 0.01,
     folded_animation = worm_folded_animation(big_worm_scale, big_worm_tint),
@@ -177,13 +203,7 @@ data:extend(
     prepared_animation = worm_prepared_animation(big_worm_scale, big_worm_tint),
     starting_attack_speed = 0.03,
     starting_attack_animation = worm_attack_animation(big_worm_scale, big_worm_tint, "forward"),
-    starting_attack_sound =
-    {
-      {
-        filename = "__base__/sound/creatures/worm-roar-long-1.ogg",
-        volume = 0.9
-      }
-    },
+    starting_attack_sound = make_worm_roars(0.95),
     ending_attack_speed = 0.03,
     ending_attack_animation = worm_attack_animation(big_worm_scale, big_worm_tint, "backward"),
     folding_speed = 0.015,
@@ -191,6 +211,7 @@ data:extend(
     prepare_range = 30,
     attack_parameters =
     {
+      type = "projectile",
       ammo_category = "rocket",
       cooldown = 100,
       range = 25,
@@ -239,7 +260,7 @@ data:extend(
           tier_from_start_optimal = 10,
           tier_from_start_top_property_limit = 10,
           tier_from_start_max_range = 20,
-        },
+        }
       }
     }
   },
@@ -249,66 +270,128 @@ data:extend(
     icon = "__base__/graphics/icons/laser-turret.png",
     flags = { "placeable-player", "placeable-enemy", "player-creation"},
     minable = { mining_time = 0.5, result = "laser-turret" },
-    max_health = 250,
+    max_health = 1000,
     corpse = "small-remnants",
-    collision_box = {{ -0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{ -0.4, -0.4}, {0.4, 0.4}},
+    collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
+    selection_box = {{ -1, -1}, {1, 1}},
     rotation_speed = 0.01,
     preparing_speed = 0.05,
-    dying_explosion = "huge-explosion",
+    dying_explosion = "medium-explosion",
     folding_speed = 0.05,
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "201kJ",
-      input_flow_limit = "1200kW",
-      drain = "6kW",
+      buffer_capacity = "801kJ",
+      input_flow_limit = "4800kW",
+      drain = "24kW",
       usage_priority = "primary-input"
     },
-    folded_animation = (function()
-                          local res = util.table.deepcopy(laser_turret_extension)
-                          res.frame_count = 1
-                          res.line_length = 1
-                          return res
-                       end)(),
-    preparing_animation = laser_turret_extension,
+    folded_animation =
+    {
+      layers =
+      {
+        laser_turret_extension{frame_count=1, line_length = 1},
+        laser_turret_extension_shadow{frame_count=1, line_length=1},
+        laser_turret_extension_mask{frame_count=1, line_length=1}
+      }
+    },
+    preparing_animation =
+    {
+      layers =
+      {
+        laser_turret_extension{},
+        laser_turret_extension_shadow{},
+        laser_turret_extension_mask{}
+      }
+    },
     prepared_animation =
     {
-      filename = "__base__/graphics/entity/laser-turret/laser-turret.png",
-      priority = "medium",
-      width = 131,
-      height = 72,
-      direction_count = 64,
-      frame_count = 1,
-      line_length = 8,
-      axially_symmetrical = false,
-      shift = {1.328125, -0.375}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/laser-turret/laser-turret-gun.png",
+          line_length = 8,
+          width = 68,
+          height = 68,
+          frame_count = 1,
+          axially_symmetrical = false,
+          direction_count = 64,
+          shift = {0.0625, -1}
+        },
+        {
+          filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-mask.png",
+          line_length = 8,
+          width = 54,
+          height = 44,
+          frame_count = 1,
+          axially_symmetrical = false,
+          apply_runtime_tint = true,
+          direction_count = 64,
+          shift = {0.0625, -1.3125},
+        },
+        {
+          filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-shadow.png",
+          line_length = 8,
+          width = 88,
+          height = 52,
+          frame_count = 1,
+          axially_symmetrical = false,
+          direction_count = 64,
+          draw_as_shadow = true,
+          shift = {1.59375, 0}
+        }
+      }
     },
-    folding_animation = (function()
-                          local res = util.table.deepcopy(laser_turret_extension)
-                          res.run_mode = "backward"
-                          return res
-                       end)(),
+    folding_animation = 
+    {
+      layers =
+      {
+        laser_turret_extension{run_mode = "backward"},
+        laser_turret_extension_shadow{run_mode = "backward"},
+        laser_turret_extension_mask{run_mode = "backward"}
+      }
+    },
     base_picture =
     {
-      filename = "__base__/graphics/entity/laser-turret/laser-turret-base.png",
-      priority = "high",
-      width = 43,
-      height = 28,
-      shift = { 0.109375, 0.03125 }
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/laser-turret/laser-turret-base.png",
+          priority = "high",
+          width = 98,
+          height = 82,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = { 0.109375, 0.03125 }
+        },
+        {
+          filename = "__base__/graphics/entity/laser-turret/laser-turret-base-mask.png",
+          line_length = 1,
+          width = 54,
+          height = 46,
+          frame_count = 1,
+          axially_symmetrical = false,
+          apply_runtime_tint = true,
+          direction_count = 1,
+          shift = {0.046875, -0.109375},
+        },
+      }
     },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     attack_parameters =
     {
+      type = "projectile",
       ammo_category = "electric",
       cooldown = 20,
-      projectile_center = {0, 0},
-      projectile_creation_distance = 0.6,
+      projectile_center = {0, -0.2},
+      projectile_creation_distance = 1.4,
       range = 25,
+      damage_modifier = 4,
       ammo_type =
       {
         type = "projectile",
         category = "laser-turret",
-        energy_consumption = "200kJ",
+        energy_consumption = "800kJ",
         action =
         {
           {
@@ -324,13 +407,7 @@ data:extend(
           }
         }
       },
-      sound =
-      {
-        {
-          filename = "__base__/sound/laser.ogg",
-          volume = 0.4
-        }
-      }
+      sound = make_laser_sounds()
     }
   },
   {

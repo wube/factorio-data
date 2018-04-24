@@ -43,11 +43,13 @@ data:extend(
     light = {intensity = 0.5, size = 10},
     animation =
     {
-      filename = "__base__/graphics/entity/laser/laser.png",
+      filename = "__base__/graphics/entity/laser/laser-to-tint-medium.png",
+      tint = {r=1.0, g=0.0, b=0.0},
       frame_count = 1,
-      width = 7,
-      height = 14,
-      priority = "high"
+      width = 12,
+      height = 33,
+      priority = "high",
+      blend_mode = "additive"
     },
     speed = 0.15
   },
@@ -119,18 +121,21 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
-      frame_count = 1,
-      width = 10,
-      height = 30,
+      frame_count = 8,
+      line_length = 8,
+      width = 9,
+      height = 35,
+      shift = {0, 0},
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
       frame_count = 1,
-      width = 10,
-      height = 30,
-      priority = "high"
+      width = 7,
+      height = 24,
+      priority = "high",
+      shift = {0, 0}
     },
     smoke =
     {
@@ -138,7 +143,7 @@ data:extend(
         name = "smoke-fast",
         deviation = {0.15, 0.15},
         frequency = 1,
-        position = {0, 0},
+        position = {0, -1},
         slow_down_factor = 1,
         starting_frame = 3,
         starting_frame_deviation = 5,
@@ -194,18 +199,21 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
-      frame_count = 1,
-      width = 10,
-      height = 30,
+      frame_count = 8,
+      line_length = 8,
+      width = 9,
+      height = 35,
+      shift = {0, 0},
       priority = "high"
     },
     shadow =
     {
       filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
       frame_count = 1,
-      width = 10,
-      height = 30,
-      priority = "high"
+      width = 7,
+      height = 24,
+      priority = "high",
+      shift = {0, 0}
     },
     smoke =
     {
@@ -213,7 +221,7 @@ data:extend(
         name = "smoke-fast",
         deviation = {0.15, 0.15},
         frequency = 1,
-        position = {0, 0},
+        position = {0, -1},
         slow_down_factor = 1,
         starting_frame = 3,
         starting_frame_deviation = 5,
@@ -297,10 +305,6 @@ data:extend(
         target_effects =
         {
           {
-            type = "create-entity",
-            entity_name = "explosion-gunshot"
-          },
-          {
             type = "damage",
             damage = { amount = 150 , type = "physical"}
           },
@@ -338,6 +342,77 @@ data:extend(
   },
   {
     type = "projectile",
+    name = "explosive-cannon-projectile",
+    flags = {"not-on-map"},
+    collision_box = {{-0.05, -1.1}, {0.05, 1.1}},
+    acceleration = 0,
+    direction_only = true,
+    piercing_damage = 30,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "damage",
+            damage = { amount = 30, type = "physical"}
+          }
+        }
+      }
+    },
+    final_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "big-explosion",
+            check_buildability = true
+          },
+          {
+            type = "nested-result",
+            action =
+            {
+              type = "area",
+              perimeter = 4,
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "damage",
+                    damage = {amount = 80, type = "explosion"}
+                  },
+                  {
+                    type = "create-entity",
+                    entity_name = "explosion"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    animation =
+    {
+      filename = "__base__/graphics/entity/bullet/bullet.png",
+      frame_count = 1,
+      width = 3,
+      height = 50,
+      priority = "high"
+    },
+  },
+  {
+    type = "projectile",
     name = "basic-grenade",
     flags = {"not-on-map"},
     acceleration = 0.005,
@@ -352,7 +427,7 @@ data:extend(
           {
             {
             type = "create-entity",
-            entity_name = "huge-explosion"
+            entity_name = "medium-explosion"
             },
             {
             type = "create-entity",
@@ -494,12 +569,10 @@ data:extend(
         type = "instant",
         target_effects =
         {
-          {
-            type = "create-entity",
-            show_in_tooltip = true,
-            entity_name = "destroyer",
-            offsets = {{-0.7, -0.7},{-0.7, 0.7},{0.7, -0.7},{0.7, 0.7},{0, 0}}
-          }
+          type = "create-entity",
+          show_in_tooltip = true,
+          entity_name = "destroyer",
+          offsets = {{-0.7, -0.7},{-0.7, 0.7},{0.7, -0.7},{0.7, 0.7},{0, 0}}
         }
       }
     },

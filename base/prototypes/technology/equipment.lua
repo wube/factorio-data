@@ -203,6 +203,29 @@ data:extend(
       time = 30
     },
     order = "g-h"
+  },
+  {
+    type = "technology",
+    name = "personal-roboport-equipment",
+    icon = "__base__/graphics/technology/personal-roboport-equipment.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "personal-roboport-equipment"
+      },
+    },
+    prerequisites = { "construction-robotics", "solar-panel-equipment" },
+    unit = {
+      count = 50,
+      ingredients = {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+      },
+      time = 30
+    },
+    order = "c-k-d-zz",
   }
 }
 )

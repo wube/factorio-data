@@ -27,6 +27,10 @@ data:extend(
   {
     type = "damage-type",
     name = "acid"
+  },
+  {
+    type = "damage-type",
+    name = "electric"
   }
 }
 )

@@ -3,7 +3,7 @@ data:extend(
   {
     type = "recipe",
     name = "piercing-bullet-magazine",
-    enabled = "false",
+    enabled = false,
     energy_required = 3,
     ingredients =
     {
@@ -15,7 +15,7 @@ data:extend(
   {
     type = "recipe",
     name = "rocket",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -28,7 +28,7 @@ data:extend(
   {
     type = "recipe",
     name = "explosive-rocket",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -40,7 +40,7 @@ data:extend(
   {
     type = "recipe",
     name = "shotgun-shell",
-    enabled = "false",
+    enabled = false,
     energy_required = 3,
     ingredients =
     {
@@ -52,7 +52,7 @@ data:extend(
   {
     type = "recipe",
     name = "piercing-shotgun-shell",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -64,7 +64,7 @@ data:extend(
   {
     type = "recipe",
     name = "railgun-dart",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -76,7 +76,7 @@ data:extend(
   {
     type = "recipe",
     name = "cannon-shell",
-    enabled = "false",
+    enabled = false,
     energy_required = 8,
     ingredients =
     {
@@ -85,6 +85,19 @@ data:extend(
       {"explosives", 1},
     },
     result = "cannon-shell"
+  },
+  {
+    type = "recipe",
+    name = "explosive-cannon-shell",
+    enabled = false,
+    energy_required = 8,
+    ingredients =
+    {
+      {"steel-plate", 4},
+      {"plastic-bar", 2},
+      {"explosives", 4},
+    },
+    result = "explosive-cannon-shell"
   }
 }
 )

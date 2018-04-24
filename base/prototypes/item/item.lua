@@ -116,7 +116,7 @@ data:extend(
     icon = "__base__/graphics/icons/diesel-locomotive.png",
     flags = {"goes-to-quickbar"},
     subgroup = "transport",
-    order = "a[train-system]-e[diesel-locomotive]",
+    order = "a[train-system]-f[diesel-locomotive]",
     place_result = "diesel-locomotive",
     stack_size = 5
   },
@@ -126,7 +126,7 @@ data:extend(
     icon = "__base__/graphics/icons/cargo-wagon.png",
     flags = {"goes-to-quickbar"},
     subgroup = "transport",
-    order = "a[train-system]-f[cargo-wagon]",
+    order = "a[train-system]-g[cargo-wagon]",
     place_result = "cargo-wagon",
     stack_size = 5
   },
@@ -154,20 +154,10 @@ data:extend(
     type = "item",
     name = "player-port",
     icon = "__base__/graphics/icons/player-port.png",
-    flags = {"goes-to-quickbar"},
+    flags = {"goes-to-quickbar", "hidden"},
     subgroup = "defensive-structure",
     order = "z[not-used]",
     place_result = "player-port",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "stone-wall",
-    icon = "__base__/graphics/icons/stone-wall.png",
-    flags = {"goes-to-quickbar"},
-    subgroup = "defensive-structure",
-    order = "a[stone-wall]-a[stone-wall]",
-    place_result = "stone-wall",
     stack_size = 50
   },
   {
@@ -201,40 +191,48 @@ data:extend(
     stack_size = 1
   },
   {
-    type = "item",
+    type = "tool",
     name = "science-pack-1",
     icon = "__base__/graphics/icons/science-pack-1.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "a[science-pack-1]",
-    stack_size = 200
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
   },
   {
-    type = "item",
+    type = "tool",
     name = "science-pack-2",
     icon = "__base__/graphics/icons/science-pack-2.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "a[science-pack-2]",
-    stack_size = 200
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
   },
   {
-    type = "item",
+    type = "tool",
     name = "science-pack-3",
     icon = "__base__/graphics/icons/science-pack-3.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "a[science-pack-3]",
-    stack_size = 200
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
   },
   {
-    type = "item",
+    type = "tool",
     name = "alien-science-pack",
     icon = "__base__/graphics/icons/alien-science-pack.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "d[alien-science-pack]",
-    stack_size = 200
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount"
   },
   {
     type = "item",
@@ -264,6 +262,16 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-d[rail-signal]",
     place_result = "rail-signal",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "rail-chain-signal",
+    icon = "__base__/graphics/icons/rail-chain-signal.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "transport",
+    order = "a[train-system]-e[rail-signal-chain]",
+    place_result = "rail-chain-signal",
     stack_size = 50
   },
   {
@@ -415,13 +423,13 @@ data:extend(
   },
   {
     type = "item",
-    name = "rocket-defense",
-    icon = "__base__/graphics/icons/rocket-defense.png",
+    name = "rocket-silo",
+    icon = "__base__/graphics/icons/rocket-silo.png",
     flags = {"goes-to-quickbar"},
     subgroup = "defensive-structure",
-    order = "e[rocket-defense]",
-    place_result = "rocket-defense",
-    stack_size = 5
+    order = "e[rocket-silo]",
+    place_result = "rocket-silo",
+    stack_size = 1
   },
   {
     type = "item",
@@ -437,7 +445,7 @@ data:extend(
     type = "item",
     name = "coin",
     icon = "__base__/graphics/icons/coin.png",
-    flags = {"goes-to-quickbar"},
+    flags = {"goes-to-quickbar", "hidden"},
     subgroup = "science-pack",
     order = "y",
     stack_size = 100000
@@ -671,6 +679,96 @@ data:extend(
     subgroup = "intermediate-product",
     order = "j[flying-robot-frame]",
     stack_size = 50
+  },
+  {
+    type = "item",
+    name = "arithmetic-combinator",
+    icon = "__base__/graphics/icons/arithmetic-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="arithmetic-combinator",
+    order = "b[combinators]-a[arithmetic-combinator]",
+    stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "decider-combinator",
+    icon = "__base__/graphics/icons/decider-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="decider-combinator",
+    order = "b[combinators]-b[decider-combinator]",
+    stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "constant-combinator",
+    icon = "__base__/graphics/icons/constant-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="constant-combinator",
+    order = "b[combinators]-c[constant-combinator]",
+    stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "low-density-structure",
+    icon = "__base__/graphics/icons/rocket-structure.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "k[rocket-structure]",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "rocket-fuel",
+    icon = "__base__/graphics/icons/rocket-fuel.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "l[rocket-fuel]",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "rocket-control-unit",
+    icon = "__base__/graphics/icons/rocket-control-unit.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "m[rocket-control-unit]",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "rocket-part",
+    icon = "__base__/graphics/icons/rocket-part.png",
+    flags = {"goes-to-main-inventory", "hidden"},
+    subgroup = "intermediate-product",
+    order = "n[rocket-part]",
+    stack_size = 5
+  },
+  {
+    type = "item",
+    name = "satellite",
+    icon = "__base__/graphics/icons/satellite.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "intermediate-product",
+    order = "o[satellite]",
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "concrete",
+    icon = "__base__/graphics/icons/concrete.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "terrain",
+    order = "b[concrete]",
+    stack_size = 100,
+    place_as_tile =
+    {
+      result = "concrete",
+      condition_size = 3,
+      condition = { "water-tile" }
+    }
   }
 }
 )

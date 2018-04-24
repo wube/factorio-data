@@ -13,23 +13,28 @@ data:extend(
       diffusion_ratio=0.02,
       -- this much PUs must be on the chunk to start diffusing
       min_to_diffuse=15,
-      -- constant amount of PUs that are eaten by the chunk
-      ageing=0.55,
+      -- constant modifier a percentage of 1 - the pollution eaten by a chunks tiles
+      ageing=1,
       -- anything bigger than this is visualised as this value
       expected_max_per_chunk=7000,
       -- anything lower than this (but > 0) is visualised as this value
       min_to_show_per_chunk=700,
+      min_pollution_to_damage_trees = 3500,
+      pollution_with_max_forest_damage = 10000,
+      pollution_per_tree_damage = 2000,
+      pollution_restored_per_tree_damage = 500,
+      max_pollution_to_restore_trees = 1000
     },
 
     enemy_evolution=
     {
       enabled=true,
       -- percentual increase in the evolve factor for every second (60 ticks)
-      time_factor = 0.000008,
+      time_factor = 0.000004,
       -- percentual increase in the evolve factor for every destroyed spawner
-      destroy_factor = 0.005,
+      destroy_factor = 0.002,
       -- percentual increase in the evolve factor for 1000 PU
-      pollution_factor = 0.00003
+      pollution_factor = 0.000015
     },
 
     enemy_expansion=
@@ -165,12 +170,16 @@ data:extend(
       -- from max_clients_to_accept_any_new_request till this one only those that have a short estimate will be served
       max_clients_to_accept_short_new_request = 10,
       -- this is the "threshold" to decide what is short and what is not
-      direct_distance_to_consider_short_request = 100
+      direct_distance_to_consider_short_request = 100,
+      -- absolute minimum of steps that will be performed for every path find request no matter what
+      min_steps_to_check_path_find_termination = 2000,
+      -- if the amount of steps is higher than this times estimate of start to goal then path finding is terminated
+      start_to_goal_cost_multiplier_to_terminate_path_find = 100.0
     },
 
     -- If a behavior fails this many times, the enemy (or enemy group)
     -- is destroyed.
     -- This solves biters stuck within their own base.
-    max_failed_behavior_count = 10,
+    max_failed_behavior_count = 3,
   }
 })

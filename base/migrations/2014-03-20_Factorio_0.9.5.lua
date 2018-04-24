@@ -1,9 +1,9 @@
-if game.isdemo() then
+if game.is_demo() then
   return
 end
 
-game.player.force.resettechnologies()
-game.player.force.resetrecipes()
+game.player.force.reset_technologies()
+game.player.force.reset_recipes()
 
 for index, force in pairs(game.forces) do
   if force.technologies["oil-processing"].researched then

@@ -23,7 +23,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-o-a"
   },
   {
@@ -49,7 +49,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-o-b"
   },
   {
@@ -75,7 +75,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-o-c"
   },
   {
@@ -102,7 +102,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-o-d"
   },
   {
@@ -130,7 +130,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-o-e"
   },
   {
@@ -158,7 +158,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "e-o-f"
   }
 }

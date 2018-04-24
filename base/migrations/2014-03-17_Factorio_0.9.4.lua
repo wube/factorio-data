@@ -1,8 +1,8 @@
-if game.isdemo() then
+if game.is_demo() then
   return
 end
 
-game.player.force.resetrecipes()
+game.player.force.reset_recipes()
 
 for index, force in pairs(game.forces) do
   if force.technologies["construction-robotics"].researched then

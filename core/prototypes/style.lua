@@ -25,6 +25,25 @@ function make_cursor_box(x, y, side_length, shift)
   }
 end
 
+function make_full_cursor_box(x, y, side_length, side_height)
+  return
+  {
+    sprite =
+    {
+      filename = "__core__/graphics/cursor-boxes-32x32.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      x = x,
+      y = y,
+      shift = {0, 0}
+    },
+    is_whole_box = true,
+    side_length = side_length,
+    side_height = side_height
+  }
+end
+
 function orangebuttongraphcialset()
   return
   {
@@ -74,6 +93,7 @@ data:extend(
     {
       regular =
       {
+        make_full_cursor_box(0, 0, 1, 1),
         make_cursor_box(128, 0, 0.4, {1, 1}),
         make_cursor_box(96, 0, 0.7),
         make_cursor_box(64, 0, 1.05),
@@ -82,6 +102,7 @@ data:extend(
       },
       not_allowed =
       {
+        make_full_cursor_box(32, 0, 1, 1),
         make_cursor_box(128, 32, 0.4, {1, 1}),
         make_cursor_box(96, 32, 0.7),
         make_cursor_box(64, 32, 1.05),
@@ -90,6 +111,7 @@ data:extend(
       },
       electricity =
       {
+        make_full_cursor_box(64, 0, 1, 1),
         make_cursor_box(128, 64, 0.4, {1, 1}),
         make_cursor_box(96, 64, 0.7),
         make_cursor_box(64, 64, 1.05),
@@ -98,6 +120,7 @@ data:extend(
       },
       pair =
       {
+        make_full_cursor_box(96, 0, 1, 1),
         make_cursor_box(128, 64, 0.4, {1, 1}),
         make_cursor_box(96, 64, 0.7),
         make_cursor_box(64, 64, 1.05),
@@ -106,6 +129,7 @@ data:extend(
       },
       copy =
       {
+        make_full_cursor_box(96, 0, 1, 1),
         make_cursor_box(128, 96, 0.4, {1, 1}),
         make_cursor_box(96, 96, 0.7),
         make_cursor_box(64, 96, 1.05),
@@ -114,6 +138,7 @@ data:extend(
       },
       logistics =
       {
+        make_full_cursor_box(64, 0, 1, 1),
         make_cursor_box(128, 64, 0.4, {1, 1}),
         make_cursor_box(96, 64, 0.7),
         make_cursor_box(64, 64, 1.05),
@@ -1149,6 +1174,13 @@ data:extend(
       horizontal_spacing = 2,
       vertical_spacing = 2
     },
+    tooltip_flow_style =
+    {
+      type = "flow_style",
+      parent = "flow_style",
+      max_on_row = 1,
+      resize_row_to_width = true
+    },
     table_style =
     {
       type = "table_style",
@@ -1373,7 +1405,7 @@ data:extend(
     {
       type = "frame_style",
       parent = "inner_frame_style",
-      title_bottom_padding = 0
+      title_bottom_padding = 5,
     },
     technology_preview_frame_style = 
     {

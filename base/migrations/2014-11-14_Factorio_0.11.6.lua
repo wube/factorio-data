@@ -1,1 +1,1 @@
-game.reloadscript()
+game.reload_script()

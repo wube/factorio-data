@@ -56,7 +56,7 @@ data:extend(
     flow_to_energy_ratio = 0.59,
     order = "a[fluid]-e[petroleum-gas]"
   },
-  
+
   {
     type = "fluid",
     name = "lubricant",

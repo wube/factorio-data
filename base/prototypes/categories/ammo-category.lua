@@ -47,6 +47,10 @@ data:extend(
   {
     type = "ammo-category",
     name = "cannon-shell"
+  },
+  {
+    type = "ammo-category",
+    name = "combat-robot-beam"
   }
 }
 )

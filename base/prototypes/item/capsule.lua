@@ -10,6 +10,7 @@ data:extend(
       type = "throw",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 30,
         projectile_creation_distance = 0.6,
@@ -45,6 +46,7 @@ data:extend(
       type = "throw",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 30,
         projectile_creation_distance = 0.6,
@@ -80,6 +82,7 @@ data:extend(
       type = "throw",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 30,
         projectile_creation_distance = 0.6,
@@ -115,6 +118,7 @@ data:extend(
       type = "throw",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 15,
         projectile_creation_distance = 0.6,
@@ -150,6 +154,7 @@ data:extend(
       type = "throw",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 30,
         projectile_creation_distance = 0.6,
@@ -185,6 +190,7 @@ data:extend(
       type = "throw",
       attack_parameters =
       {
+        type = "projectile",
         ammo_category = "capsule",
         cooldown = 30,
         projectile_creation_distance = 0.6,

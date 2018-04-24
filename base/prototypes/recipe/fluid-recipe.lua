@@ -6,7 +6,7 @@ data:extend(
     type = "recipe",
     name = "basic-oil-processing",
     category = "oil-processing",
-    enabled = "false",
+    enabled = false,
     energy_required = 5,
     ingredients =
     {
@@ -19,7 +19,7 @@ data:extend(
       {type="fluid", name="petroleum-gas", amount=4}
     },
     icon = "__base__/graphics/icons/fluid/basic-oil-processing.png",
-    subgroup = "fluid",
+    subgroup = "fluid-recipes",
     order = "a[oil-processing]-a[basic-oil-processing]"
   },
 
@@ -27,7 +27,7 @@ data:extend(
     type = "recipe",
     name = "advanced-oil-processing",
     category = "oil-processing",
-    enabled = "false",
+    enabled = false,
     energy_required = 5,
     ingredients =
     {
@@ -41,7 +41,7 @@ data:extend(
       {type="fluid", name="petroleum-gas", amount=5.5}
     },
     icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
-    subgroup = "fluid",
+    subgroup = "fluid-recipes",
     order = "a[oil-processing]-b[advanced-oil-processing]"
   },
 
@@ -49,7 +49,7 @@ data:extend(
     type = "recipe",
     name = "heavy-oil-cracking",
     category = "chemistry",
-    enabled = "false",
+    enabled = false,
     energy_required = 5,
     ingredients =
     {
@@ -62,7 +62,7 @@ data:extend(
     },
     main_product= "",
     icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
-    subgroup = "fluid",
+    subgroup = "fluid-recipes",
     order = "b[fluid-chemistry]-a[heavy-oil-cracking]"
   },
 
@@ -70,7 +70,7 @@ data:extend(
     type = "recipe",
     name = "light-oil-cracking",
     category = "chemistry",
-    enabled = "false",
+    enabled = false,
     energy_required = 5,
     ingredients =
     {
@@ -83,7 +83,7 @@ data:extend(
     },
     main_product= "",
     icon = "__base__/graphics/icons/fluid/light-oil-cracking.png",
-    subgroup = "fluid",
+    subgroup = "fluid-recipes",
     order = "b[fluid-chemistry]-b[light-oil-cracking]"
   },
 
@@ -92,7 +92,7 @@ data:extend(
     name = "sulfuric-acid",
     category = "chemistry",
     energy_required = 1,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {type="item", name="sulfur", amount=5},
@@ -102,7 +102,8 @@ data:extend(
     results=
     {
       {type="fluid", name="sulfuric-acid", amount=5}
-    }
+    },
+    subgroup = "fluid-recipes"
   },
 
   {
@@ -110,7 +111,7 @@ data:extend(
     name = "plastic-bar",
     category = "chemistry",
     energy_required = 1,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {type="fluid", name="petroleum-gas", amount=3},
@@ -136,8 +137,8 @@ data:extend(
       {type="item", name="solid-fuel", amount=1}
     },
     icon = "__base__/graphics/icons/solid-fuel-from-light-oil.png",
-    subgroup = "fluid",
-    enabled = "false",
+    subgroup = "fluid-recipes",
+    enabled = false,
     order = "b[fluid-chemistry]-c[solid-fuel-from-light-oil]"
   },
 
@@ -155,8 +156,8 @@ data:extend(
       {type="item", name="solid-fuel", amount=1}
     },
     icon = "__base__/graphics/icons/solid-fuel-from-petroleum-gas.png",
-    subgroup = "fluid",
-    enabled = "false",
+    subgroup = "fluid-recipes",
+    enabled = false,
     order = "b[fluid-chemistry]-d[solid-fuel-from-petroleum-gas]"
   },
 
@@ -174,8 +175,8 @@ data:extend(
       {type="item", name="solid-fuel", amount=1}
     },
     icon = "__base__/graphics/icons/solid-fuel-from-heavy-oil.png",
-    subgroup = "fluid",
-    enabled = "false",
+    subgroup = "fluid-recipes",
+    enabled = false,
     order = "b[fluid-chemistry]-e[solid-fuel-from-heavy-oil]"
   },
 
@@ -185,7 +186,7 @@ data:extend(
     name = "sulfur",
     category = "chemistry",
     energy_required = 1,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {type="fluid", name="water", amount=3},
@@ -201,7 +202,7 @@ data:extend(
     type = "recipe",
     name = "lubricant",
     category = "chemistry",
-    enabled = "false",
+    enabled = false,
     energy_required = 1,
     ingredients =
     {
@@ -210,7 +211,8 @@ data:extend(
     results=
     {
       {type="fluid", name="lubricant", amount=1}
-    }
+    },
+    subgroup = "fluid-recipes"
   },
 
   {
@@ -219,7 +221,7 @@ data:extend(
     category = "crafting",
     energy_required = 1,
     subgroup = "barrel",
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
       {type="item", name="steel-plate", amount=1},
@@ -237,7 +239,7 @@ data:extend(
     energy_required = 1,
     subgroup = "barrel",
     order = "b[fill-crude-oil-barrel]",
-    enabled = "false",
+    enabled = false,
     icon = "__base__/graphics/icons/fluid/fill-crude-oil-barrel.png",
     ingredients =
     {
@@ -257,7 +259,7 @@ data:extend(
     energy_required = 1,
     subgroup = "barrel",
     order = "c[empty-crude-oil-barrel]",
-    enabled = "false",
+    enabled = false,
     icon = "__base__/graphics/icons/fluid/empty-crude-oil-barrel.png",
     ingredients =
     {
@@ -274,7 +276,7 @@ data:extend(
     type = "recipe",
     name = "flame-thrower-ammo",
     category = "chemistry",
-    enabled = "false",
+    enabled = false,
     energy_required = 3,
     ingredients =
     {

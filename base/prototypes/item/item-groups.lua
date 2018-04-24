@@ -101,6 +101,18 @@ data:extend(
     order = "f",
   },
   {
+    type = "item-subgroup",
+    name = "circuit-network",
+    group = "logistics",
+    order = "g"
+  },
+  {
+    type = "item-subgroup",
+    name = "terrain",
+    group = "logistics",
+    order = "h",
+  },
+  {
     type = "item-group",
     name = "production",
     order = "b",
@@ -196,7 +208,7 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "fluid",
+    name = "fluid-recipes",
     group = "intermediate-products",
     order = "a"
   },
@@ -220,12 +232,6 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "circuit-network",
-    group = "intermediate-products",
-    order = "f"
-  },
-  {
-    type = "item-subgroup",
     name = "intermediate-product",
     group = "intermediate-products",
     order = "e"
@@ -234,7 +240,45 @@ data:extend(
     type = "item-subgroup",
     name = "science-pack",
     group = "intermediate-products",
-    order = "g"
-  }
+    order = "f"
+  },
+  {
+    type = "item-group",
+    name = "fluids",
+    order = "e",
+    inventory_order = "a",
+    icon = "__base__/graphics/technology/advanced-chemistry.png",
+  },
+  {
+    type = "item-subgroup",
+    name = "fluid",
+    group = "fluids",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal-number",
+    group = "signals",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal-letter",
+    group = "signals",
+    order = "c"
+  },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal-color",
+    group = "signals",
+    order = "d"
+  },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal",
+    group = "signals",
+    order = "e"
+  },
+  
 }
 )

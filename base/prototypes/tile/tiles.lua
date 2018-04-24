@@ -19,6 +19,12 @@ local function autoplace_settings(noise_layer, rectangles)
   return { peaks = ret }
 end
 
+local grass_vehicle_speed_modifier = 1.6
+local dirt_vehicle_speed_modifer = 1.4
+local sand_vehicle_speed_modifier = 1.8
+local stone_path_vehicle_speed_modifier = 1.1
+local concrete_vehicle_speed_modifier = 0.8
+
 function water_autoplace_settings(from_depth, rectangles)
   local ret =
   {
@@ -57,7 +63,7 @@ data:extend(
       "player-layer",
       "doodad-layer"
     },
-    layer = 60,
+    layer = 70,
     variants =
     {
       main =
@@ -84,7 +90,8 @@ data:extend(
         count = 0
       }
     },
-    map_color={r=0, g=0, b=0}
+    map_color={r=0, g=0, b=0},
+    ageing=0
   },
   {
     type = "tile",
@@ -136,7 +143,8 @@ data:extend(
       }
     },
     allowed_neighbors = { "water" },
-    map_color={r=0.0941, g=0.2823, b=0.345}
+    map_color={r=0.0941, g=0.2823, b=0.345},
+    ageing=0.0006
   },
 
   {
@@ -189,7 +197,8 @@ data:extend(
       }
     },
     allowed_neighbors = { "water-green" },
-    map_color={r=0.0941, g=0.149, b=0.066}
+    map_color={r=0.0941, g=0.149, b=0.066},
+    ageing=0.0005
   },
 
   {
@@ -242,7 +251,8 @@ data:extend(
       }
     },
     allowed_neighbors = { "grass" },
-    map_color={r=0.0941, g=0.3568, b=0.4196}
+    map_color={r=0.0941, g=0.3568, b=0.4196},
+    ageing=0.0006
   },
 
   {
@@ -295,7 +305,8 @@ data:extend(
       }
     },
     allowed_neighbors = { "grass" },
-    map_color={r=31, g=48, b=18}
+    map_color={r=31, g=48, b=18},
+    ageing=0.0005
   },
 
   {
@@ -364,7 +375,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=61, g=51, b=17}
+    map_color={r=61, g=51, b=17},
+    ageing=0.00045,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
 
   {
@@ -433,7 +446,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=58, g=47, b=19}
+    map_color={r=58, g=47, b=19},
+    ageing=0.00045,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
 
   {
@@ -502,7 +517,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=53, g=38, b=14}
+    map_color={r=53, g=38, b=14},
+    ageing=0.0004,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
 
   {
@@ -568,7 +585,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=132, g=91, b=34}
+    map_color={r=132, g=91, b=34},
+    ageing=0.00045,
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
   {
     type = "tile",
@@ -633,7 +652,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=115, g=80, b=29}
+    map_color={r=115, g=80, b=29},
+    ageing=0.00045,
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 
   {
@@ -702,7 +723,9 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=160, g=126, b=54}
+    map_color={r=160, g=126, b=54},
+    ageing=0.00025,
+    vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
 
   {
@@ -771,7 +794,174 @@ data:extend(
         volume = 0.8
       }
     },
-    map_color={r=139, g=104, b=39}
+    map_color={r=139, g=104, b=39},
+    ageing=0.0002,
+    vehicle_friction_modifier = sand_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
+    name = "stone-path",
+    needs_correction = false,
+    minable = {hardness = 0.2, mining_time = 0.5, result = "stone-brick"},
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.3,
+    layer = 60,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/stone-path/stone-path-1.png",
+          count = 16,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/stone-path/stone-path-2.png",
+          count = 4,
+          size = 2,
+          probability = 0.39,
+        },
+        {
+          picture = "__base__/graphics/terrain/stone-path/stone-path-4.png",
+          count = 4,
+          size = 4,
+          probability = 1,
+        },
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/stone-path/stone-path-inner-corner.png",
+        count = 8
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/stone-path/stone-path-outer-corner.png",
+        count = 1
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/stone-path/stone-path-side.png",
+        count = 10
+      },
+      u_transition =
+      {
+        picture = "__base__/graphics/terrain/stone-path/stone-path-u.png",
+        count = 10
+      },
+      o_transition =
+      {
+        picture = "__base__/graphics/terrain/stone-path/stone-path-o.png",
+        count = 10
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.2
+      }
+    },
+    map_color={r=50, g=50, b=50},
+    ageing=0,
+    vehicle_friction_modifier = stone_path_vehicle_speed_modifier
   }
-}
-)
+})
+
+if not data.is_demo then
+  data:extend(
+  {
+    {
+      type = "tile",
+      name = "concrete",
+      needs_correction = false,
+      minable = {hardness = 0.2, mining_time = 0.5, result = "concrete"},
+      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+      collision_mask = {"ground-tile"},
+      walking_speed_modifier = 1.4,
+      layer = 61,
+      variants =
+      {
+        main =
+        {
+          {
+            picture = "__base__/graphics/terrain/concrete/concrete1.png",
+            count = 16,
+            size = 1
+          },
+          {
+            picture = "__base__/graphics/terrain/concrete/concrete2.png",
+            count = 4,
+            size = 2,
+            probability = 0.39,
+          },
+          {
+            picture = "__base__/graphics/terrain/concrete/concrete4.png",
+            count = 4,
+            size = 4,
+            probability = 1,
+          },
+        },
+        inner_corner =
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
+          count = 8
+        },
+        outer_corner =
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
+          count = 8
+        },
+        side =
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-side.png",
+          count = 8
+        },
+        u_transition =
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-u.png",
+          count = 8
+        },
+        o_transition =
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-o.png",
+          count = 1
+        }
+      },
+      walking_sound =
+      {
+        {
+          filename = "__base__/sound/walking/concrete-01.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-02.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-03.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-04.ogg",
+          volume = 1.2
+        }
+      },
+      map_color={r=100, g=100, b=100},
+      ageing=0,
+      vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    }
+  })
+end

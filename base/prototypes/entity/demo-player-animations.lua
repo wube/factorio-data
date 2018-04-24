@@ -11,8 +11,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift = {0, -0.5},
-      axially_symmetrical = false
+      shift = {0, -0.5}
     },
     idlemask =
     {
@@ -24,8 +23,7 @@ playeranimations =
       frame_count = 22,
       apply_runtime_tint = true,
       animation_speed = 0.15,
-      shift = {-0.015625, -0.8125},
-      axially_symmetrical = false
+      shift = {-0.015625, -0.8125}
     },
     idlewithgun =
     {
@@ -36,8 +34,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift = {-0.28125, -0.53125},
-      axially_symmetrical = false
+      shift = {-0.015625, -0.53125}
     },
     idlewithgunmask =
     {
@@ -49,9 +46,8 @@ playeranimations =
       frame_count = 22,
       apply_runtime_tint = true,
       animation_speed = 0.15,
-      shift = {-0.3125, -0.703125},
-      apply_runtime_tint = true,
-      axially_symmetrical = false
+      shift = {-0.046875, -0.703125},
+      apply_runtime_tint = true
     },
     miningwithhands =
     {
@@ -62,8 +58,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 14,
       animation_speed = 0.6,
-      shift = {-0.15625, -0.21875},
-      axially_symmetrical = false
+      shift = {-0.15625, -0.21875}
     },
     miningwithhandsmask =
     {
@@ -75,8 +70,7 @@ playeranimations =
       frame_count = 14,
       animation_speed = 0.6,
       apply_runtime_tint = true,
-      shift = {-0.15625, -0.390625},
-      axially_symmetrical = false
+      shift = {-0.15625, -0.390625}
     },
     miningwithtool =
     {
@@ -88,8 +82,7 @@ playeranimations =
       line_length = 13,
       animation_speed = 0.9,
       filename = "__base__/graphics/entity/player/player-basic-mine-tool.png",
-      shift = {-0.0625, -0.21875},
-      axially_symmetrical = false
+      shift = {-0.0625, -0.21875}
     },
     miningwithtoolmask =
     {
@@ -102,8 +95,7 @@ playeranimations =
       line_length = 13,
       animation_speed = 0.9,
       apply_runtime_tint = true,
-      shift = {-0.046875, -0.390625},
-      axially_symmetrical = false
+      shift = {-0.046875, -0.390625}
     },
     runningwithgun =
     {
@@ -138,8 +130,7 @@ playeranimations =
       direction_count = 8,
       shift = {0, -0.484375},
       distance_per_frame = 0.35,
-      animation_speed = 0.60,
-      axially_symmetrical = false
+      animation_speed = 0.60
     },
     runningmask =
     {
@@ -150,9 +141,8 @@ playeranimations =
       frame_count = 22,
       direction_count = 8,
       apply_runtime_tint = true,
-      shift = {0, -0.703125},
-      axially_symmetrical = false
-    },
+      shift = {0, -0.703125}
+    }
   },
 
   level2addon =
@@ -166,8 +156,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift= {-0.03125, -0.84375},
-      axially_symmetrical = false
+      shift = {-0.03125, -0.84375}
     },
     idlemask =
     {
@@ -179,8 +168,7 @@ playeranimations =
       frame_count = 22,
       apply_runtime_tint = true,
       animation_speed = 0.15,
-      shift= {-0.03125, -0.796875},
-      axially_symmetrical = false
+      shift = {-0.03125, -0.796875}
     },
     idlewithgun =
     {
@@ -191,8 +179,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift = {-0.296875, -0.734375},
-      axially_symmetrical = false
+      shift = {-0.03125, -0.734375}
     },
     idlewithgunmask =
     {
@@ -203,9 +190,8 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift =  {-0.296875, -0.734375},
-      apply_runtime_tint = true,
-      axially_symmetrical = false
+      shift =  {-0.03125, -0.734375},
+      apply_runtime_tint = true
     },
     miningwithhands =
     {
@@ -216,8 +202,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 14,
       animation_speed = 0.6,
-      shift = {-0.15625, -0.40625},
-      axially_symmetrical = false
+      shift = {-0.15625, -0.40625}
     },
     miningwithhandsmask =
     {
@@ -229,8 +214,7 @@ playeranimations =
       frame_count = 14,
       animation_speed = 0.6,
       apply_runtime_tint = true,
-      shift = {-0.15625, -0.40625},
-      axially_symmetrical = false
+      shift = {-0.15625, -0.40625}
     },
     miningwithtool =
     {
@@ -242,8 +226,7 @@ playeranimations =
       frame_count = 26,
       line_length = 26,
       animation_speed = 0.9,
-      shift = {-0.0625, -0.390625},
-      axially_symmetrical = false
+      shift = {-0.0625, -0.390625}
     },
     miningwithtoolmask =
     {
@@ -256,8 +239,7 @@ playeranimations =
       line_length = 26,
       animation_speed = 0.9,
       apply_runtime_tint = true,
-      shift = {-0.0625, -0.390625},
-      axially_symmetrical = false
+      shift = {-0.0625, -0.390625}
     },
     runningwithgun =
     {
@@ -288,8 +270,7 @@ playeranimations =
       height = 53,
       frame_count = 22,
       direction_count = 8,
-      shift = {0, -0.796875},
-      axially_symmetrical = false
+      shift = {0, -0.796875}
     },
     runningmask =
     {
@@ -300,9 +281,8 @@ playeranimations =
       frame_count = 22,
       direction_count = 8,
       apply_runtime_tint = true,
-      shift = {0, -0.796875},
-      axially_symmetrical = false
-    },
+      shift = {0, -0.796875}
+    }
   },
 
   level3addon =
@@ -316,8 +296,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift = {-0.015625, -0.83125},
-      axially_symmetrical = false
+      shift = {-0.015625, -0.83125}
     },
     idlemask =
     {
@@ -329,8 +308,7 @@ playeranimations =
       frame_count = 22,
       apply_runtime_tint = true,
       animation_speed = 0.15,
-      shift = {-0.015625, -0.796875},
-      axially_symmetrical = false
+      shift = {-0.015625, -0.796875}
     },
     idlewithgun =
     {
@@ -341,8 +319,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 22,
       animation_speed = 0.15,
-      shift = {-0.296875, -0.78125},
-      axially_symmetrical = false
+      shift = {-0.03125, -0.78125}
     },
     idlewithgunmask =
     {
@@ -354,8 +331,7 @@ playeranimations =
       frame_count = 22,
       apply_runtime_tint = true,
       animation_speed = 0.15,
-      shift = {-0.296875, -0.703125},
-      axially_symmetrical = false
+      shift = {-0.03125, -0.703125}
     },
     miningwithhands =
     {
@@ -366,8 +342,7 @@ playeranimations =
       direction_count = 8,
       frame_count = 14,
       animation_speed = 0.6,
-      shift = {-0.15625, -0.421875},
-      axially_symmetrical = false
+      shift = {-0.15625, -0.421875}
     },
     miningwithhandsmask =
     {
@@ -379,8 +354,7 @@ playeranimations =
       frame_count = 14,
       animation_speed = 0.6,
       apply_runtime_tint = true,
-      shift = {-0.15625, -0.40625},
-      axially_symmetrical = false
+      shift = {-0.15625, -0.40625}
     },
     miningwithtool =
     {
@@ -392,8 +366,7 @@ playeranimations =
       frame_count = 26,
       line_length = 26,
       animation_speed = 0.9,
-      shift = {-0.0625, -0.4375},
-      axially_symmetrical = false
+      shift = {-0.0625, -0.4375}
     },
     miningwithtoolmask =
     {
@@ -406,8 +379,7 @@ playeranimations =
       line_length = 26,
       animation_speed = 0.9,
       apply_runtime_tint = true,
-      shift = {-0.046875, -0.359375},
-      axially_symmetrical = false
+      shift = {-0.046875, -0.359375}
     },
     runningwithgun =
     {
@@ -438,8 +410,7 @@ playeranimations =
       height = 54,
       frame_count = 22,
       direction_count = 8,
-      shift = {0, -0.78125},
-      axially_symmetrical = false
+      shift = {0, -0.78125}
     },
     runningmask =
     {
@@ -450,8 +421,7 @@ playeranimations =
       frame_count = 22,
       direction_count = 8,
       apply_runtime_tint = true,
-      shift = {0, -0.890625},
-      axially_symmetrical = false
-    },
+      shift = {0, -0.890625}
+    }
   }
 }

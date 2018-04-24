@@ -19,7 +19,7 @@ data:extend(
               source_effects =
               {
                 {
-                  type = "create-entity",
+                  type = "create-explosion",
                   entity_name = "explosion-gunshot"
                 }
               },
@@ -27,7 +27,7 @@ data:extend(
               {
                 {
                   type = "create-entity",
-                  entity_name = "explosion-gunshot"
+                  entity_name = "explosion-hit"
                 },
                 {
                   type = "damage",

@@ -16,14 +16,14 @@ data:extend(
           type = "instant",
           source_effects =
           {
-              type = "create-entity",
+              type = "create-explosion",
               entity_name = "explosion-gunshot"
           },
           target_effects =
           {
             {
               type = "create-entity",
-              entity_name = "explosion-gunshot"
+              entity_name = "explosion-hit"
             },
             {
               type = "damage",
@@ -88,7 +88,7 @@ data:extend(
           source_effects =
           {
             type = "create-entity",
-            entity_name = "explosion-gunshot"
+            entity_name = "explosion-hit"
           }
         }
       }
@@ -116,7 +116,7 @@ data:extend(
           source_effects =
           {
             type = "create-entity",
-            entity_name = "explosion-gunshot"
+            entity_name = "explosion-hit"
           }
         }
       }
@@ -136,7 +136,7 @@ data:extend(
       target_type = "direction",
       source_effects =
       {
-        type = "create-entity",
+        type = "create-explosion",
         entity_name = "explosion-gunshot"
       },
       action =
@@ -170,7 +170,7 @@ data:extend(
       target_type = "direction",
       source_effects =
       {
-        type = "create-entity",
+        type = "create-explosion",
         entity_name = "explosion-gunshot"
       },
       action =
@@ -197,7 +197,7 @@ data:extend(
     type = "ammo",
     name = "railgun-dart",
     icon = "__base__/graphics/icons/railgun-ammo.png",
-    flags = {"goes-to-main-inventory"},
+    flags = {"goes-to-main-inventory", "hidden"},
     ammo_type =
     {
       category = "railgun",
@@ -238,11 +238,6 @@ data:extend(
     {
       category = "cannon-shell",
       target_type = "direction",
-      source_effects =
-      {
-        type = "create-entity",
-        entity_name = "explosion-gunshot"
-      },
       action =
       {
         type = "direct",
@@ -253,12 +248,49 @@ data:extend(
           starting_speed = 1,
           direction_deviation = 0.1,
           range_deviation = 0.1,
-          max_range = 30
+          max_range = 30,
+          source_effects =
+          {
+            type = "create-explosion",
+            entity_name = "explosion-gunshot"
+          },
         }
       },
     },
     subgroup = "ammo",
-    order = "d[rocket-launcher]-a[basic]",
+    order = "d[cannon-shell]-a[basic]",
+    stack_size = 100
+  },
+  {
+    type = "ammo",
+    name = "explosive-cannon-shell",
+    icon = "__base__/graphics/icons/explosive-cannon-shell.png",
+    flags = {"goes-to-main-inventory"},
+    ammo_type =
+    {
+      category = "cannon-shell",
+      target_type = "direction",
+      action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "projectile",
+          projectile = "explosive-cannon-projectile",
+          starting_speed = 1,
+          direction_deviation = 0.1,
+          range_deviation = 0.1,
+          max_range = 30,
+          source_effects =
+          {
+            type = "create-explosion",
+            entity_name = "explosion-gunshot"
+          },
+        }
+      },
+    },
+    subgroup = "ammo",
+    order = "d[cannon-shell]-b[explosive]",
     stack_size = 100
   },
 }

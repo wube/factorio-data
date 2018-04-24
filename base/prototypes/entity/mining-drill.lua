@@ -9,7 +9,7 @@ data:extend(
     resource_categories = {"basic-fluid"},
     max_health = 100,
     corpse = "big-remnants",
-    dying_explosion = "huge-explosion",
+    dying_explosion = "medium-explosion",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     drawing_box = {{-1.6, -2.5}, {1.5, 1.6}},
@@ -37,7 +37,10 @@ data:extend(
     mining_power = 2,
     resource_searching_radius = 0.49,
     vector_to_place_result = {0, 0},
-    module_slots = 2,
+    module_specification =
+    {
+      module_slots = 2
+    },
     radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/pumpjack/pumpjack-radius-visualization.png",
@@ -69,11 +72,13 @@ data:extend(
         animation_speed = 0.5
       }
     },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
       sound = { filename = "__base__/sound/pumpjack.ogg" },
       apparent_volume = 1.5,
     },
+    fast_replaceable_group = "pumpjack"
   }
 }
 )

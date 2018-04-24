@@ -1,3 +1,5 @@
+require ("prototypes.entity.demo-gunshot-sounds")
+
 data:extend(
 {
   {
@@ -9,6 +11,7 @@ data:extend(
     order = "a[basic-clips]-a[pistol]",
     attack_parameters =
     {
+      type = "projectile",
       ammo_category = "bullet",
       cooldown = 10,
       movement_slow_down_factor = 0.7,
@@ -18,20 +21,14 @@ data:extend(
         direction_deviation = 0.1,
         speed = 0.1,
         speed_deviation = 0.03,
-        center = {0, 0.6},
-        creation_distance = 0.6,
+        center = {0, 0.1},
+        creation_distance = -0.5,
         starting_frame_speed = 0.4,
         starting_frame_speed_deviation = 0.1
       },
-      projectile_creation_distance = 0.6,
+      projectile_creation_distance = 1.125,
       range = 15,
-      sound =
-      {
-        {
-          filename = "__base__/sound/gunshot.ogg",
-          volume = 0.3
-        }
-      }
+      sound = make_light_gunshot_sounds(),
     },
     stack_size = 5
   },
@@ -44,6 +41,7 @@ data:extend(
     order = "a[basic-clips]-b[submachine-gun]",
     attack_parameters =
     {
+      type = "projectile",
       ammo_category = "bullet",
       cooldown = 4,
       movement_slow_down_factor = 0.7,
@@ -53,20 +51,14 @@ data:extend(
         direction_deviation = 0.1,
         speed = 0.1,
         speed_deviation = 0.03,
-        center = {0, 0.6},
-        creation_distance = 0.6,
+        center = {0, 0.1},
+        creation_distance = -0.5,
         starting_frame_speed = 0.4,
         starting_frame_speed_deviation = 0.1
       },
-      projectile_creation_distance = 0.6,
+      projectile_creation_distance = 1.125,
       range = 15,
-      sound =
-      {
-        {
-          filename = "__base__/sound/gunshot.ogg",
-          volume = 0.2
-        }
-      }
+      sound = make_light_gunshot_sounds(),
     },
     stack_size = 1
   }

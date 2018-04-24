@@ -11,20 +11,36 @@ inventory =
 {
   fuel = 1,
   chest = 1,
-  furnacesource = 1,
-  furnaceresult = 2,
-  playerquickbar = 1,
-  playermain = 2,
-  playerguns = 3,
-  playertools = 6,
-  playerammo = 4,
-  playerarmor = 5,
-  assemblingmachineinput = 2,
-  assemblingmachineoutput = 3,
-  assemblingmachinemodules = 4,
-  labinput = 2,
-  labmodules = 3,
-  miningdrillmodules = 2
+  furnace_source = 1,
+  furnace_result = 2,
+  player_quickbar = 1,
+  player_main = 2,
+  player_guns = 3,
+  player_ammo = 4,
+  player_armor = 5,
+  player_tools = 6,
+  player_vehicle = 7,
+  player_trash = 8,
+  assembling_machine_input = 2,
+  assembling_machine_output = 3,
+  assembling_machine_modules = 4,
+  lab_input = 2,
+  lab_modules = 3,
+  mining_drill_modules = 2
+}
+
+transport_line =
+{
+  left_line = 1,
+  right_line = 2,
+  left_underground_line = 3,
+  right_underground_line = 4,
+  secondary_left_line = 3,
+  secondary_right_line = 4,
+  left_split_line = 5,
+  right_split_line = 6,
+  secondary_left_split_line = 7,
+  secondary_right_split_line = 8
 }
 
 direction =
@@ -60,12 +76,12 @@ riding =
 command =
 {
   attack = 1,
-  gotolocation = 2,
+  go_to_location = 2,
   compound=3,
   group = 4,
-  attackarea = 5,
+  attack_area = 5,
   wander = 6,
-  buildbase = 7,
+  build_base = 7,
 }
 
 distraction =
@@ -73,22 +89,22 @@ distraction =
   -- perform command even if someone is attacking unit
   none = 0,
   -- attacks closer entities with force without distraction
-  byenemy = 1,
+  by_enemy = 1,
   -- attacks closer entities with force and
   -- entities "built" by player (belts, inserters, chests)
-  byanything = 3,
+  by_anything = 3,
   -- attacks when attacked
-  bydamage = 4,
+  by_damage = 4,
 }
 
 compoundcommandtype =
 {
   -- stop on first command returning failure
-  logicaland = 0,
+  logical_and = 0,
   -- stop on first command returning success
-  logicalor = 1,
+  logical_or = 1,
   -- perform all the commands and return lasts result
-  returnlast = 2
+  return_last = 2
 }
 
 difficulty =
@@ -100,30 +116,33 @@ difficulty =
 
 events =
 {
-  ontick = 0,
-  onguiclick = 1,
-  onentitydied = 2,
-  onpickedupitem = 3,
-  onbuiltentity = 4,
-  onsectorscanned = 5,
-  onplayermineditem = 6,
-  onputitem = 7,
-  onshiplandingstart = 8,
-  onpreplayermineditem = 9,
-  onchunkgenerated = 10,
-  onplayercrafteditem = 11,
-  onrobotbuiltentity = 12,
-  onrobotpremined = 13,
-  onrobotmined = 14,
-  onresearchstarted = 15,
-  onresearchfinished = 16,
-  onplayerrotatedentity = 17,
-  onmarkedfordeconstruction = 18,
-  oncanceleddeconstruction = 19,
-  ontriggercreatedentity = 20,
-  ontrainchangedstate = 21,
-  onplayercreated = 22,
-  onresourcedepleted = 23
+  on_tick = 0,
+  on_gui_click = 1,
+  on_entity_died = 2,
+  on_picked_up_item = 3,
+  on_built_entity = 4,
+  on_sector_scanned = 5,
+  on_player_mined_item = 6,
+  on_put_item = 7,
+  on_rocket_launched = 8,
+  on_preplayer_mined_item = 9,
+  on_chunk_generated = 10,
+  on_player_crafted_item = 11,
+  on_robot_built_entity = 12,
+  on_robot_pre_mined = 13,
+  on_robot_mined = 14,
+  on_research_started = 15,
+  on_research_finished = 16,
+  on_player_rotated_entity = 17,
+  on_marked_for_deconstruction = 18,
+  on_canceled_deconstruction = 19,
+  on_trigger_created_entity = 20,
+  on_train_changed_state = 21,
+  on_player_created = 22,
+  on_resource_depleted = 23,
+  on_player_driving_changed_state = 24,
+  on_force_created = 25,
+  on_forces_merging = 26
 }
 
 controllers =
@@ -148,31 +167,51 @@ circuitconnector =
   logistic = 2
 }
 
+circuitconnectorid =
+{
+  electric_pole = 1,
+  inserter = 1,
+  container = 1,
+  lamp = 1,
+  combinator_input = 1,
+  combinator_output = 2
+}
+
+circuitconditionindex =
+{
+  inserter_circuit = 0,
+  inserter_logistic = 1,
+  lamp = 1,
+  arithmetic_combinator = 1,
+  decider_combinator = 1,
+  constant_combinator = 1
+}
+
 trainstate =
 {
   -- normal state - following the path
-  onthepath = 0,
+  on_the_path = 0,
   -- had path and lost it - must stop
-  pathlost = 1,
+  path_lost = 1,
   -- doesn't have anywhere to go
-  noschedule = 2,
+  no_schedule = 2,
   -- has no path and is stopped
-  nopath = 3,
+  no_path = 3,
   -- braking before the railSignal
-  arrivesignal = 4,
-  waitsignal = 5,
+  arrive_signal = 4,
+  wait_signal = 5,
   -- braking before the station
-  arrivestation = 6,
-  waitstation = 7,
+  arrive_station = 6,
+  wait_station = 7,
   -- switched to the manual control and has to stop
-  manualcontrolstop = 8,
+  manual_control_stop = 8,
   -- can move if user explicitly sits in and rides the train
-  manualcontrol = 9,
+  manual_control = 9,
   -- train was switched to auto control but it is moving and needs to be stopped
-  stopforautocontrol = 10
+  stop_for_auto_control = 10
 }
 
-signalstate =
+signal_state =
 {
   -- green
   open = 0,
@@ -180,13 +219,4 @@ signalstate =
   closed = 1,
   -- orange
   reserved = 2
-}
-
-recipe =
-{
-  materialtype =
-  {
-    item = 0,
-    fluid = 1
-  }
 }

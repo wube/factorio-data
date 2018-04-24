@@ -156,7 +156,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-f-a",
   },
   {
@@ -181,7 +181,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-f-b"
   },
   {
@@ -207,7 +207,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-f-c"
   },
   {
@@ -233,7 +233,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-f-d"
   },
   {
@@ -259,7 +259,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-f-e"
   },
   {
@@ -284,7 +284,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-g-a"
   },
   {
@@ -310,7 +310,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-g-b"
   },
   {
@@ -336,7 +336,7 @@ data:extend(
       },
       time = 60
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-g-c"
   },
   {
@@ -361,7 +361,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-e-a"
   },
   {
@@ -386,7 +386,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-e-b"
   },
   {
@@ -412,7 +412,7 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-e-c"
   },
   {
@@ -439,8 +439,59 @@ data:extend(
       },
       time = 30
     },
-    upgrade = "true",
+    upgrade = true,
     order = "c-k-e-d"
-  }
+  },
+  {
+    type = "technology",
+    name = "character-logistic-trash-slots-1",
+    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-trash-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"logistic-robotics"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "c-k-f-a"
+  },
+  {
+    type = "technology",
+    name = "character-logistic-trash-slots-2",
+    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
+    effects =
+    {
+      {
+        type = "character-logistic-trash-slots",
+        modifier = 5
+      }
+    },
+    prerequisites = {"logistic-robotics"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "c-k-f-b"
+  },
 }
 )

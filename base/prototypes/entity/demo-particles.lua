@@ -715,6 +715,476 @@ data:extend(
     vertical_speed_deviation = 0.05,
     horizontal_speed = 0.04,
     horizontal_speed_deviation = 0.04
+  },
+
+  {
+    type = "leaf-particle",
+    name = "leaf-particle",
+    flags = {"not-on-map"},
+    life_time = 180,
+    movement_modifier = 0.9,
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-01.png",
+        width = 6,
+        height = 6,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-02.png",
+        width = 6,
+        height = 4,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-03.png",
+        width = 8,
+        height = 5,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-04.png",
+        width = 6,
+        height = 6,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-05.png",
+        width = 6,
+        height = 5,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-06.png",
+        width = 6,
+        height = 4,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-07.png",
+        width = 6,
+        height = 6,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-08.png",
+        width = 4,
+        height = 7,
+        frame_count = 8
+      }
+    },
+    shadows =
+    {
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-01-shadow.png",
+        width = 6,
+        height = 6,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-02-shadow.png",
+        width = 6,
+        height = 4,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-03-shadow.png",
+        width = 8,
+        height = 5,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-04-shadow.png",
+        width = 6,
+        height = 6,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-05-shadow.png",
+        width = 6,
+        height = 5,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-06-shadow.png",
+        width = 6,
+        height = 4,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-07-shadow.png",
+        width = 6,
+        height = 6,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/leaf-particle/leaf-particle-08-shadow.png",
+        width = 4,
+        height = 7,
+        frame_count = 8
+      }
+    }
+  },
+  {
+    type = "particle",
+    name = "branch-particle",
+    flags = {"not-on-map"},
+    life_time = 1200,
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-01.png",
+        width = 32,
+        height = 31,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-02.png",
+        width = 42,
+        height = 49,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-03.png",
+        width = 41,
+        height = 48,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-04.png",
+        width = 13,
+        height = 28,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-05.png",
+        width = 28,
+        height = 21,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-06.png",
+        width = 31,
+        height = 24,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-07.png",
+        width = 33,
+        height = 35,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-08.png",
+        width = 14,
+        height = 28,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-09.png",
+        width = 27,
+        height = 32,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-10.png",
+        width = 27,
+        height = 27,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-11.png",
+        width = 25,
+        height = 33,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-12.png",
+        width = 32,
+        height = 28,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-13.png",
+        width = 25,
+        height = 18,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-14.png",
+        width = 27,
+        height = 18,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-15.png",
+        width = 12,
+        height = 14,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-16.png",
+        width = 13,
+        height = 13,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-17.png",
+        width = 32,
+        height = 29,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-18.png",
+        width = 29,
+        height = 33,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-19.png",
+        width = 37,
+        height = 39,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-20.png",
+        width = 28,
+        height = 23,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-21.png",
+        width = 23,
+        height = 24,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-22.png",
+        width = 14,
+        height = 19,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-23.png",
+        width = 36,
+        height = 13,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-24.png",
+        width = 15,
+        height = 19,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-25.png",
+        width = 22,
+        height = 20,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-26.png",
+        width = 13,
+        height = 22,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-27.png",
+        width = 35,
+        height = 18,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-28.png",
+        width = 17,
+        height = 15,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-29.png",
+        width = 26,
+        height = 26,
+        frame_count = 8
+      }
+    },
+    shadows =
+    {
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-01-shadow.png",
+        width = 32,
+        height = 31,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-02-shadow.png",
+        width = 42,
+        height = 49,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-03-shadow.png",
+        width = 41,
+        height = 48,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-04-shadow.png",
+        width = 13,
+        height = 28,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-05-shadow.png",
+        width = 28,
+        height = 21,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-06-shadow.png",
+        width = 31,
+        height = 24,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-07-shadow.png",
+        width = 33,
+        height = 35,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-08-shadow.png",
+        width = 14,
+        height = 28,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-09-shadow.png",
+        width = 27,
+        height = 32,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-10-shadow.png",
+        width = 27,
+        height = 27,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-11-shadow.png",
+        width = 25,
+        height = 33,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-12-shadow.png",
+        width = 32,
+        height = 28,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-13-shadow.png",
+        width = 25,
+        height = 18,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-14-shadow.png",
+        width = 27,
+        height = 18,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-15-shadow.png",
+        width = 12,
+        height = 14,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-16-shadow.png",
+        width = 13,
+        height = 13,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-17-shadow.png",
+        width = 32,
+        height = 29,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-18-shadow.png",
+        width = 29,
+        height = 33,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-19-shadow.png",
+        width = 37,
+        height = 39,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-20-shadow.png",
+        width = 28,
+        height = 23,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-21-shadow.png",
+        width = 23,
+        height = 24,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-22-shadow.png",
+        width = 14,
+        height = 19,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-23-shadow.png",
+        width = 36,
+        height = 13,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-24-shadow.png",
+        width = 15,
+        height = 19,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-25-shadow.png",
+        width = 22,
+        height = 20,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-26-shadow.png",
+        width = 13,
+        height = 22,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-27-shadow.png",
+        width = 35,
+        height = 18,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-28-shadow.png",
+        width = 17,
+        height = 15,
+        frame_count = 8
+      },
+      {
+        filename = "__base__/graphics/entity/branch-particle/branch-particle-29-shadow.png",
+        width = 26,
+        height = 26,
+        frame_count = 8
+      }
+    }
   }
 }
 )

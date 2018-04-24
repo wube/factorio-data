@@ -22,7 +22,10 @@ data:extend(
   },
   {
     type = "recipe-category",
-    name="oil-processing",
+    name = "oil-processing"
+  },
+  {
+    type = "recipe-category",
+    name = "rocket-building"
   }
-
 })
