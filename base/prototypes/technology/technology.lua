@@ -1809,16 +1809,16 @@ data:extend(
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects = {
       {
-        type = "logistic-robot-speed",
+        type = "worker-robot-speed",
         modifier = "0.35"
       }
     },
-    prerequisites = {
-      "logistic-robotics"
-    },
-    unit = {
+    prerequisites = {"logistic-robotics"},
+    unit =
+    {
       count = 50,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1}
@@ -1832,18 +1832,21 @@ data:extend(
     type = "technology",
     name = "worker-robots-speed-2",
     icon = "__base__/graphics/technology/worker-robots-speed.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-speed",
+        type = "worker-robot-speed",
         modifier = "0.4"
       }
     },
     prerequisites = {
       "worker-robots-speed-1"
     },
-    unit = {
+    unit =
+    {
       count = 100,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1}
@@ -1857,18 +1860,19 @@ data:extend(
     type = "technology",
     name = "worker-robots-speed-3",
     icon = "__base__/graphics/technology/worker-robots-speed.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-speed",
+        type = "worker-robot-speed",
         modifier = "0.45"
       }
     },
-    prerequisites = {
-      "worker-robots-speed-2"
-    },
-    unit = {
+    prerequisites = {"worker-robots-speed-2"},
+    unit =
+    {
       count = 150,
-      ingredients = {
+      ingredients =
+      {
         {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
@@ -1883,18 +1887,19 @@ data:extend(
     type = "technology",
     name = "worker-robots-speed-4",
     icon = "__base__/graphics/technology/worker-robots-speed.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-speed",
+        type = "worker-robot-speed",
         modifier = "0.55"
       }
     },
-    prerequisites = {
-      "worker-robots-speed-3"
-    },
-    unit = {
+    prerequisites = {"worker-robots-speed-3"},
+    unit =
+    {
       count = 250,
-      ingredients = {
+      ingredients =
+      {
         {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
@@ -1909,18 +1914,19 @@ data:extend(
     type = "technology",
     name = "worker-robots-speed-5",
     icon = "__base__/graphics/technology/worker-robots-speed.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-speed",
+        type = "worker-robot-speed",
         modifier = "0.65"
       }
     },
-    prerequisites = {
-      "worker-robots-speed-4"
-    },
-    unit = {
+    prerequisites = {"worker-robots-speed-4"},
+    unit =
+    {
       count = 500,
-      ingredients = {
+      ingredients =
+      {
         {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
@@ -1935,18 +1941,19 @@ data:extend(
     type = "technology",
     name = "worker-robots-storage-1",
     icon = "__base__/graphics/technology/worker-robots-storage.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-storage",
+        type = "worker-robot-storage",
         modifier = "1"
       }
     },
-    prerequisites = {
-      "logistic-robotics"
-    },
-    unit = {
+    prerequisites = {"logistic-robotics"},
+    unit =
+    {
       count = 200,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1}
@@ -1960,18 +1967,19 @@ data:extend(
     type = "technology",
     name = "worker-robots-storage-2",
     icon = "__base__/graphics/technology/worker-robots-storage.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-storage",
+        type = "worker-robot-storage",
         modifier = "1"
       }
     },
-    prerequisites = {
-      "worker-robots-storage-1"
-    },
-    unit = {
+    prerequisites = {"worker-robots-storage-1"},
+    unit =
+    {
       count = 300,
-      ingredients = {
+      ingredients =
+      {
         {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
@@ -1986,18 +1994,19 @@ data:extend(
     type = "technology",
     name = "worker-robots-storage-3",
     icon = "__base__/graphics/technology/worker-robots-storage.png",
-    effects = {
+    effects =
+    {
       {
-        type = "logistic-robot-storage",
+        type = "worker-robot-storage",
         modifier = "1"
       }
     },
-    prerequisites = {
-      "worker-robots-storage-2"
-    },
-    unit = {
+    prerequisites = {"worker-robots-storage-2"},
+    unit =
+    {
       count = 450,
-      ingredients = {
+      ingredients =
+      {
         {"alien-science-pack", 1},
         {"science-pack-1", 1},
         {"science-pack-2", 1},
@@ -3428,9 +3437,11 @@ data:extend(
       },
     },
     prerequisites = { "construction-robotics", "solar-panel-equipment" },
-    unit = {
+    unit =
+    {
       count = 50,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1},
@@ -3948,7 +3959,8 @@ data:extend(
     unit =
     {
       count = 50,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
       },
@@ -4025,7 +4037,8 @@ data:extend(
     unit =
     {
       count = 50,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
       },
@@ -4102,7 +4115,8 @@ data:extend(
     unit =
     {
       count = 50,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
       },
@@ -4179,7 +4193,8 @@ data:extend(
     unit =
     {
       count = 150,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1}
       },
@@ -4191,16 +4206,19 @@ data:extend(
     type = "technology",
     name = "combat-robotics-2",
     icon = "__base__/graphics/technology/combat-robotics.png",
-    effects = {
+    effects =
+    {
       {
         type = "unlock-recipe",
         recipe = "distractor-capsule"
       }
     },
     prerequisites = {"combat-robotics", "military-3"},
-    unit = {
+    unit =
+    {
       count = 200,
-      ingredients = {
+      ingredients =
+      {
         {"science-pack-1", 1},
         {"science-pack-2", 1},
         {"science-pack-3", 1}

@@ -135,14 +135,14 @@ local function make_train_stop_4way_animation(animation)
       x = idx * anim.width,
       width = anim.width,
       height = anim.height,
-      frame_count = anim.frame_count or 1, 
+      frame_count = anim.frame_count or 1,
       line_length = anim.line_length,
       shift = anim.shift,
       draw_as_shadow = anim.draw_as_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
     }
   end
-  
+
   local function make_animation(idx)
     if animation.layers then
       local tab = { layers = {} }
@@ -150,12 +150,12 @@ local function make_train_stop_4way_animation(animation)
         table.insert(tab.layers, make_animation_layer(idx, v))
       end
       return tab
-    else 
+    else
       return make_animation_layer(idx, animation)
     end
   end
-   
-  return 
+
+  return
   {
     north = make_animation(0),
     east = make_animation(1),
@@ -2289,6 +2289,7 @@ data:extend(
     weight = 2000,
     max_speed = 1.2,
     max_power = "600kW",
+    reversing_power_modifier = 0.6,
     braking_force = 10,
     friction_force = 0.50,
     -- this is a percentage of current speed that will be subtracted
@@ -3220,7 +3221,7 @@ data:extend(
     corpse = "medium-remnants",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.9, -0.9}, {0.9, 0.9}},
-    drawing_boxes = 
+    drawing_boxes =
     {
       north = {{-3,-2.5}, {0.8, 1.25}},
       east = {{-1.75, -4.25},{1.625, 0.5}},
@@ -3231,7 +3232,7 @@ data:extend(
     tile_height = 2,
     animation_ticks_per_frame = 20,
     rail_overlay_animations = make_train_stop_4way_animation(
-    { 
+    {
       filename = "__base__/graphics/entity/train-stop/train-stop-ground.png",
       line_length = 4,
       width = 189,
@@ -3239,10 +3240,10 @@ data:extend(
       direction_count = 4,
       shift = {0.046875, 0.09375},
     }),
-    
-    animations = make_train_stop_4way_animation({ layers = 
+
+    animations = make_train_stop_4way_animation({ layers =
     {
-      { 
+      {
         filename = "__base__/graphics/entity/train-stop/train-stop-bottom.png",
         line_length = 4,
         width = 72,
@@ -3260,10 +3261,10 @@ data:extend(
         draw_as_shadow = true,
       },
     }}),
-    
-    top_animations = make_train_stop_4way_animation({ layers = 
+
+    top_animations = make_train_stop_4way_animation({ layers =
     {
-      {  
+      {
         filename = "__base__/graphics/entity/train-stop/train-stop-top.png",
         line_length = 4,
         width = 156,
@@ -3271,7 +3272,7 @@ data:extend(
         direction_count = 4,
         shift = {0, -1.70313},
       },
-      { 
+      {
         filename = "__base__/graphics/entity/train-stop/train-stop-top-mask.png",
         line_length = 4,
         width = 155,
@@ -3281,38 +3282,38 @@ data:extend(
         shift = {-0.015625, -1.64063},
       }
     }}),
-    
-    light1 = 
+
+    light1 =
     {
       light = {intensity = 0.5, size = 3},
-      picture = 
+      picture =
       {
-        north = 
-        { 
+        north =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-north-light-1.png",
           width = 9,
           height = 8,
           frame_count = 1,
           shift = {-2.20312, -1.59375},
         },
-        east = 
-        { 
+        east =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-east-light-1.png",
           width = 6,
           height = 9,
           frame_count = 1,
           shift = {-1.0625, -3.71875}, -- {-1.03125, -3.70312},
         },
-        south = 
-        { 
+        south =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-south-light-1.png",
           width = 9,
           height = 7,
           frame_count = 1,
           shift = {2.20312, -3.10938},
         },
-        west = 
-        { 
+        west =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-west-light-1.png",
           width = 7,
           height = 9,
@@ -3321,38 +3322,38 @@ data:extend(
         },
       }
     },
-    
-    light2 = 
+
+    light2 =
     {
       light = {intensity = 0.5, size = 3},
-      picture = 
+      picture =
       {
-        north = 
-        { 
+        north =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-north-light-2.png",
           width = 9,
           height = 8,
           frame_count = 1,
           shift = {-1.79688, -1.59375},
         },
-        east = 
-        { 
+        east =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-east-light-2.png",
           width = 7,
           height = 9,
           frame_count = 1,
           shift = {-1.0625 + 1/64, -3.40625 + 1/64}, --{-1.01562, -3.39062},
         },
-        south = 
-        { 
+        south =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-south-light-2.png",
           width = 9,
           height = 7,
           frame_count = 1,
           shift = {1.79688, -3.10938},
         },
-        west = 
-        { 
+        west =
+        {
           filename = "__base__/graphics/entity/train-stop/train-stop-west-light-2.png",
           width = 7,
           height = 9,
@@ -3361,9 +3362,9 @@ data:extend(
         },
       }
     },
-    
+
     color={r=0.95,  g=0, b=0, a=0.5},
-    
+
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
@@ -4787,7 +4788,7 @@ data:extend(
     recharging_light = {intensity = 0.4, size = 5},
     request_to_open_door_timeout = 15,
     spawn_and_station_height = -0.1,
-    
+
     draw_logistic_radius_visualization = true,
     draw_construction_radius_visualization = true,
 

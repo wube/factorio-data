@@ -887,7 +887,7 @@ data:extend({
       render_layer = "lower-object",
       pipe_picture = fireutil.flamethrower_turret_pipepictures(), -- assembler3pipepictures(),
       pipe_covers = pipecoverspictures(),
-      base_area = 10,
+      base_area = 1,
       pipe_connections = {
         { position = {-1.5, 1.0} },
         { position = {1.5, 1.0} }
