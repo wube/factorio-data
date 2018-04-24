@@ -347,19 +347,19 @@ data:extend(
         type = "direct",
         action_delivery =
         {
-        type = "instant",
-        target_effects =
-        {
+          type = "instant",
+          target_effects =
           {
-          type = "create-entity",
-          entity_name = "huge-explosion"
-          },
-          {
-          type = "create-entity",
-          entity_name = "small-scorchmark",
-          check_buildability = true
+            {
+            type = "create-entity",
+            entity_name = "huge-explosion"
+            },
+            {
+            type = "create-entity",
+            entity_name = "small-scorchmark",
+            check_buildability = true
+            }
           }
-        }
         }
       },
       {
@@ -415,6 +415,7 @@ data:extend(
         {
           {
             type = "create-entity",
+            show_in_tooltip = true,
             entity_name = "defender",
           },
         }
@@ -454,6 +455,7 @@ data:extend(
         {
           {
             type = "create-entity",
+            show_in_tooltip = true,
             entity_name = "distractor",
             offsets = {{0.5, -0.5},{-0.5, -0.5},{0, 0.5}}
           }
@@ -494,6 +496,7 @@ data:extend(
         {
           {
             type = "create-entity",
+            show_in_tooltip = true,
             entity_name = "destroyer",
             offsets = {{-0.7, -0.7},{-0.7, 0.7},{0.7, -0.7},{0.7, 0.7},{0, 0}}
           }

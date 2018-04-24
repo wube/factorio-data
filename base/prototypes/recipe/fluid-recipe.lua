@@ -279,8 +279,8 @@ data:extend(
     ingredients =
     {
       {type="item", name="iron-plate", amount=5},
+      {type="fluid", name="heavy-oil", amount=2.5},
       {type="fluid", name="light-oil", amount=2.5},
-      {type="fluid", name="heavy-oil", amount=2.5}
     },
     result = "flame-thrower-ammo"
   }

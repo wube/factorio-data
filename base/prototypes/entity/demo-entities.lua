@@ -1702,6 +1702,7 @@ data:extend(
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_per_sector = "10MJ",
     max_distance_of_sector_revealed = 14,
+    max_distance_of_nearby_sector_revealed = 3,
     energy_per_nearby_scan = "250kJ",
     energy_source =
     {

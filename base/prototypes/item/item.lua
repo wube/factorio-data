@@ -138,7 +138,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-a[straight-rail]",
     place_result = "straight-rail",
-    stack_size = 50
+    stack_size = 100
   },
   {
     type = "item",
