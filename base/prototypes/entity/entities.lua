@@ -1441,7 +1441,7 @@ data:extend(
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -2},
-    insert_position = {0, 2.35},
+    insert_position = {0, 2.2},
     energy_per_movement = 5000,
     energy_per_rotation = 5000,
     rotation_speed = 0.02,
@@ -1557,7 +1557,7 @@ data:extend(
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -1},
-    insert_position = {0, 1.35},
+    insert_position = {0, 1.2},
     energy_per_movement = 5000,
     energy_per_rotation = 5000,
     energy_source =
@@ -1694,7 +1694,7 @@ data:extend(
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -1},
-    insert_position = {0, 1.35},
+    insert_position = {0, 1.2},
     energy_per_movement = 7000,
     energy_per_rotation = 7000,
     energy_source =

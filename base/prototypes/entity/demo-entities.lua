@@ -1491,7 +1491,7 @@ data:extend(
       height = 41
     },
     pickup_position = {0, -1},
-    insert_position = {0, 1.35},
+    insert_position = {0, 1.2},
     platform_picture =
     {
       sheet =
@@ -1610,7 +1610,7 @@ data:extend(
       height = 41
     },
     pickup_position = {0, -1},
-    insert_position = {0, 1.35},
+    insert_position = {0, 1.2},
     platform_picture =
     {
       sheet =
