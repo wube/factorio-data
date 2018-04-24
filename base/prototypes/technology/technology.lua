@@ -1413,6 +1413,7 @@ data:extend(
     type = "technology",
     name = "electric-energy-accumulators-1",
     icon = "__base__/graphics/technology/electric-energy-acumulators.png",
+    localised_name = {"technology-name.electric-energy-accumulators-1"},
     effects =
     {
       {

@@ -552,7 +552,7 @@ data:extend(
   {
     type = "corpse",
     name = "spitter-spawner-corpse",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map", "not-on-map"},
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/biter-spawner-corpse.png",
     collision_box = {{-2, -2}, {2, 2}},
     selection_box = {{-2, -2}, {2, 2}},
