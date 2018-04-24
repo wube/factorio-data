@@ -31,8 +31,7 @@ data:extend(
         { position = {2, 0} },
         { position = {0, 2} },
       }
-    } or nil,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    } or nil,    
     working_sound =
     {
       sound =
@@ -42,6 +41,7 @@ data:extend(
       },
       apparent_volume = 1.5,
     },
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     animations =
     {
       north =
@@ -908,6 +908,7 @@ data:extend(
         volume = 0.8
       },
     },
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     energy_source =
     {
       type = "burner",

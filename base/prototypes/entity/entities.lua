@@ -103,7 +103,7 @@ function crash_trigger()
     {
       {
         filename = "__base__/sound/car-crash.ogg",
-        volume = 0.25
+        volume = 0.4
       },
     }
   }
@@ -3044,7 +3044,8 @@ data:extend(
       width = 104,
       height = 96
     },
-    production = "60kW"
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    production = "60kW"	
   },
   {
     type = "locomotive",
@@ -3736,7 +3737,7 @@ data:extend(
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     sound_minimum_speed = 0.5;
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
   },
   {
     type = "fluid-wagon",
@@ -3944,7 +3945,7 @@ data:extend(
     },
     crash_trigger = crash_trigger(),
     sound_minimum_speed = 0.5;
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
   },
 
   {
@@ -4402,7 +4403,7 @@ data:extend(
             {
               type = "area",
               perimeter = 6,
-              collision_mask = { "player-layer" },
+              force = "enemy",
               action_delivery =
               {
                 type = "instant",
@@ -5168,6 +5169,7 @@ data:extend(
       },
       apparent_volume = 1
     },
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     energy_source =
     {
       type = "electric",
@@ -8615,6 +8617,7 @@ data:extend(
       max_sounds_per_type = 2,
       match_speed_to_activity = true,
     },
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
 
     sprites =
     {
@@ -9730,7 +9733,7 @@ data:extend(
       max_sounds_per_type = 2,
       match_speed_to_activity = true,
     },
-
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
 
     sprites =
     {
@@ -10462,6 +10465,7 @@ data:extend(
 
     item_slot_count = 18,
 
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     sprites =
     {
       north =
@@ -10634,6 +10638,7 @@ data:extend(
       direction_count = 1,
       shift = {0.453125, 0.1875},
     },
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
     overlay_start =
     {

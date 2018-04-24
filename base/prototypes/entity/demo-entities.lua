@@ -2793,6 +2793,7 @@ data:extend(
         { position = {-1, 0} }
       },
     },
+	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures = pipepictures(),
     working_sound =
     {
@@ -3225,7 +3226,8 @@ data:extend(
     name = "tile-ghost",
     flags = {"not-on-map"},
     minable = { mining_time = 0, results={}},
-    collision_box = {{-0.5, -0.5}, {0.5, 0.5}}
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_priority = 45,
   },
 
   {

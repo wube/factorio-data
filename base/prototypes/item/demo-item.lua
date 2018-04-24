@@ -22,7 +22,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     fuel_value = "4MJ",
     fuel_category = "chemical",
-    subgroup = "raw-material",
+    subgroup = "raw-resource",
     order = "a[raw-wood]",
     stack_size = 100
   },
@@ -34,7 +34,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     fuel_category = "chemical",
     fuel_value = "8MJ",
-    subgroup = "raw-material",
+    subgroup = "raw-resource",
     order = "b[coal]",
     stack_size = 50
   },
@@ -365,7 +365,7 @@ data:extend(
         }
       }
     },
-    order = "f-e-a",
+    order = "h[raw-fish]",
     stack_size = 100
   },
   {

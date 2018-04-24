@@ -17,19 +17,24 @@ data:extend(
       variations =
       {
         {
-          filename = "__core__/sound/axe-mining-ore-1.ogg"
+          filename = "__core__/sound/axe-mining-ore-1.ogg",
+          volume = 0.75
         },
         {
-          filename = "__core__/sound/axe-mining-ore-2.ogg"
+          filename = "__core__/sound/axe-mining-ore-2.ogg",
+          volume = 0.75
         },
         {
-          filename = "__core__/sound/axe-mining-ore-3.ogg"
+          filename = "__core__/sound/axe-mining-ore-3.ogg",
+          volume = 0.75
         },
         {
-          filename = "__core__/sound/axe-mining-ore-4.ogg"
+          filename = "__core__/sound/axe-mining-ore-4.ogg",
+          volume = 0.75
         },
         {
-          filename = "__core__/sound/axe-mining-ore-5.ogg"
+          filename = "__core__/sound/axe-mining-ore-5.ogg",
+          volume = 0.75
         }
       }
     },
@@ -38,10 +43,12 @@ data:extend(
       variations =
       {
         {
-          filename = "__core__/sound/mining-wood-1.ogg"
+          filename = "__core__/sound/mining-wood-1.ogg",
+          volume = 0.75
         },
         {
-          filename = "__core__/sound/mining-wood-2.ogg"
+          filename = "__core__/sound/mining-wood-2.ogg",
+          volume = 0.75
         }
       }
     },

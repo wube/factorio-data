@@ -1,11 +1,10 @@
 
 {
   "name": "base",
-  "version": "0.15.21",
+  "version": "0.15.22",
   "title": "Base Mod",
   "author": "Factorio team",
   "contact": "dev@factorio.com",
   "homepage": "http://www.factorio.com",
-  "description": "Basic mod with all the default game data and standard campaign.",
   "dependencies": []
 }

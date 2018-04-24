@@ -717,7 +717,7 @@ data:extend(
     fuel_value = "25MJ",
     fuel_acceleration_multiplier = 1.2,
     fuel_top_speed_multiplier = 1.05,
-    subgroup = "raw-resource",
+    subgroup = "raw-material",
     order = "c[solid-fuel]",
     stack_size = 50
   },
@@ -972,7 +972,7 @@ data:extend(
     icon = "__base__/graphics/icons/uranium-235.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "g[uranium-235]",
+    order = "r[uranium-235]",
     stack_size = 100
   },
   {
@@ -981,7 +981,7 @@ data:extend(
     icon = "__base__/graphics/icons/uranium-238.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "g[uranium-238]",
+    order = "r[uranium-238]",
     stack_size = 100
   },
   {
@@ -1012,7 +1012,7 @@ data:extend(
     icon = "__base__/graphics/icons/used-up-uranium-fuel-cell.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
-    order = "i[used-up-uranium-fuel-cell]",
+    order = "r[used-up-uranium-fuel-cell]",
     stack_size = 50
   },
   {
