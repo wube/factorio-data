@@ -1413,6 +1413,7 @@ data:extend(
       font_color = {r=1, g=1, b=1},
       smooth_size = 200,
       smooth_color = {g=1},
+      other_smooth_colors = {},
       smooth_bar =
       {
         filename = "__core__/graphics/gui.png",
@@ -1516,6 +1517,22 @@ data:extend(
       type = "progressbar_style",
       parent = "progressbar_style",
       smooth_size = 160
+    },
+    electric_satisfaction_progressbar_style =
+    {
+      type = "progressbar_style",
+      parent = "progressbar_style",
+      other_smooth_colors =
+      {
+       {
+          less_then = 0.5,
+          color = {r = 1, g = 0, b = 0}
+        },
+        {
+          less_then = 1,
+          color = {r = 1, g = 1, b = 0}
+        }
+      }
     },
     checkbox_style =
     {
