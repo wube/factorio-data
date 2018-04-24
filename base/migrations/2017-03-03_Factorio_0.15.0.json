@@ -13,5 +13,5 @@
   [
     [ "heat-boiler", "heat-exchanger" ],
     [ "small-pump", "pump" ]
-  ],
+  ]
 }

@@ -1,6 +1,8 @@
 local inspect = require('inspect')
 local autoplace_utils = require("autoplace_utils")
 
+local base_decorative_sprite_priority = "extra-high"
+
 local function add_dim_to_peak(peak, dim_name, values)
   if values[1] and values[2] then
     peak[dim_name.."_optimal"] = values[1]
@@ -36,7 +38,7 @@ local function tog_autoplace(stuff)
       ret[k] = v
     end
   end
-  
+
   return ret
 end
 
@@ -230,11 +232,13 @@ data:extend{
       --bAst
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-00.png",
+        priority = base_decorative_sprite_priority,
         width = 59,
         height = 37,
         shift = util.by_pixel(9.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-00.png",
+          priority = base_decorative_sprite_priority,
           width = 119,
           height = 74,
           shift = util.by_pixel(9.75, -6.5),
@@ -243,11 +247,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-01.png",
+        priority = base_decorative_sprite_priority,
         width = 56,
         height = 47,
         shift = util.by_pixel(6, -8.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-01.png",
+          priority = base_decorative_sprite_priority,
           width = 113,
           height = 94,
           shift = util.by_pixel(5.75, -8.5),
@@ -256,11 +262,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-02.png",
+        priority = base_decorative_sprite_priority,
         width = 47,
         height = 34,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-02.png",
+          priority = base_decorative_sprite_priority,
           width = 94,
           height = 69,
           shift = util.by_pixel(4.5, -2.75),
@@ -269,11 +277,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-03.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 41,
         shift = util.by_pixel(9.5, -8.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-03.png",
+          priority = base_decorative_sprite_priority,
           width = 106,
           height = 81,
           shift = util.by_pixel(9.5, -8.25),
@@ -282,11 +292,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-04.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 39,
         shift = util.by_pixel(4, -8.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-04.png",
+          priority = base_decorative_sprite_priority,
           width = 94,
           height = 77,
           shift = util.by_pixel(4, -8.25),
@@ -295,11 +307,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-05.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 32,
         shift = util.by_pixel(1, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-05.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 63,
           shift = util.by_pixel(1.25, -5.75),
@@ -308,11 +322,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-06.png",
+        priority = base_decorative_sprite_priority,
         width = 56,
         height = 32,
         shift = util.by_pixel(9, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-06.png",
+          priority = base_decorative_sprite_priority,
           width = 112,
           height = 64,
           shift = util.by_pixel(9.5, -1.5),
@@ -321,11 +337,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-07.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 47,
         shift = util.by_pixel(8.5, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-07.png",
+          priority = base_decorative_sprite_priority,
           width = 97,
           height = 94,
           shift = util.by_pixel(8.25, -8),
@@ -334,11 +352,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-08.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 29,
         shift = util.by_pixel(4.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-08.png",
+          priority = base_decorative_sprite_priority,
           width = 107,
           height = 57,
           shift = util.by_pixel(4.25, -3.25),
@@ -347,11 +367,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-09.png",
+        priority = base_decorative_sprite_priority,
         width = 57,
         height = 46,
         shift = util.by_pixel(10.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-09.png",
+          priority = base_decorative_sprite_priority,
           width = 115,
           height = 90,
           shift = util.by_pixel(10.75, -3),
@@ -360,11 +382,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-10.png",
+        priority = base_decorative_sprite_priority,
         width = 56,
         height = 30,
         shift = util.by_pixel(-4, 2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-10.png",
+          priority = base_decorative_sprite_priority,
           width = 110,
           height = 59,
           shift = util.by_pixel(-4, 2.25),
@@ -373,11 +397,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-11.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 38,
         shift = util.by_pixel(11.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-11.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 74,
           shift = util.by_pixel(11.75, -2),
@@ -386,11 +412,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-12.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 31,
         shift = util.by_pixel(8, -9.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-12.png",
+          priority = base_decorative_sprite_priority,
           width = 95,
           height = 62,
           shift = util.by_pixel(8.25, -9.5),
@@ -399,11 +427,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-13.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 40,
         shift = util.by_pixel(7, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-13.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 80,
           shift = util.by_pixel(6.75, -4),
@@ -412,11 +442,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-14.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 25,
         shift = util.by_pixel(5.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-14.png",
+          priority = base_decorative_sprite_priority,
           width = 87,
           height = 49,
           shift = util.by_pixel(5.25, -5.25),
@@ -425,11 +457,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-15.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 30,
         shift = util.by_pixel(3.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-15.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 61,
           shift = util.by_pixel(3.25, -4.25),
@@ -438,11 +472,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-16.png",
+        priority = base_decorative_sprite_priority,
         width = 54,
         height = 33,
         shift = util.by_pixel(7, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-16.png",
+          priority = base_decorative_sprite_priority,
           width = 107,
           height = 66,
           shift = util.by_pixel(7.25, -7),
@@ -451,11 +487,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-17.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 30,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-17.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 60,
           shift = util.by_pixel(4.75, -3.5),
@@ -464,11 +502,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-18.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 29,
         shift = util.by_pixel(7.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-18.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 59,
           shift = util.by_pixel(7.25, -4.25),
@@ -477,11 +517,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk/brown-asterisk-19.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 26,
         shift = util.by_pixel(4.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk/hr-brown-asterisk-19.png",
+          priority = base_decorative_sprite_priority,
           width = 65,
           height = 52,
           shift = util.by_pixel(4.75, -5),
@@ -518,11 +560,13 @@ data:extend{
       --gAst
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-00.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 40,
         shift = util.by_pixel(5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-00.png",
+          priority = base_decorative_sprite_priority,
           width = 120,
           height = 80,
           shift = util.by_pixel(5, -4),
@@ -531,11 +575,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-01.png",
+        priority = base_decorative_sprite_priority,
         width = 65,
         height = 47,
         shift = util.by_pixel(0.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-01.png",
+          priority = base_decorative_sprite_priority,
           width = 130,
           height = 95,
           shift = util.by_pixel(1, -5.75),
@@ -544,11 +590,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-02.png",
+        priority = base_decorative_sprite_priority,
         width = 61,
         height = 38,
         shift = util.by_pixel(-0.5, 1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-02.png",
+          priority = base_decorative_sprite_priority,
           width = 122,
           height = 76,
           shift = util.by_pixel(0, 1),
@@ -557,11 +605,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-03.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 38,
         shift = util.by_pixel(6, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-03.png",
+          priority = base_decorative_sprite_priority,
           width = 121,
           height = 75,
           shift = util.by_pixel(5.75, -0.75),
@@ -570,11 +620,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-04.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 38,
         shift = util.by_pixel(4, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-04.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 77,
           shift = util.by_pixel(3.75, -3.25),
@@ -583,11 +635,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-05.png",
+        priority = base_decorative_sprite_priority,
         width = 67,
         height = 39,
         shift = util.by_pixel(-0.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-05.png",
+          priority = base_decorative_sprite_priority,
           width = 132,
           height = 77,
           shift = util.by_pixel(-0.5, -1.25),
@@ -596,11 +650,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-06.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 46,
         shift = util.by_pixel(3, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-06.png",
+          priority = base_decorative_sprite_priority,
           width = 84,
           height = 92,
           shift = util.by_pixel(3, -4),
@@ -609,11 +665,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-07.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 40,
         shift = util.by_pixel(6, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-07.png",
+          priority = base_decorative_sprite_priority,
           width = 118,
           height = 79,
           shift = util.by_pixel(6, -2.75),
@@ -622,11 +680,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-08.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 39,
         shift = util.by_pixel(3.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-08.png",
+          priority = base_decorative_sprite_priority,
           width = 104,
           height = 78,
           shift = util.by_pixel(3.5, 0.5),
@@ -635,11 +695,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-09.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 30,
         shift = util.by_pixel(-1, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-09.png",
+          priority = base_decorative_sprite_priority,
           width = 88,
           height = 61,
           shift = util.by_pixel(-1, -2.75),
@@ -648,11 +710,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-10.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 31,
         shift = util.by_pixel(3, -9.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-10.png",
+          priority = base_decorative_sprite_priority,
           width = 89,
           height = 63,
           shift = util.by_pixel(2.75, -9.75),
@@ -661,11 +725,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-11.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 28,
         shift = util.by_pixel(13.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-11.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 58,
           shift = util.by_pixel(13.75, -1),
@@ -674,11 +740,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-12.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 32,
         shift = util.by_pixel(-7.5, 2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-12.png",
+          priority = base_decorative_sprite_priority,
           width = 90,
           height = 64,
           shift = util.by_pixel(-7.5, 2),
@@ -687,11 +755,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-13.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 36,
         shift = util.by_pixel(4, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-13.png",
+          priority = base_decorative_sprite_priority,
           width = 89,
           height = 73,
           shift = util.by_pixel(4.25, -4.75),
@@ -700,11 +770,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-14.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 28,
         shift = util.by_pixel(1, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-14.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 56,
           shift = util.by_pixel(1, -3),
@@ -713,11 +785,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-15.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 25,
         shift = util.by_pixel(3.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-15.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 51,
           shift = util.by_pixel(3.25, -0.75),
@@ -726,11 +800,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-16.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 36,
         shift = util.by_pixel(8, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-16.png",
+          priority = base_decorative_sprite_priority,
           width = 92,
           height = 71,
           shift = util.by_pixel(8, -1.75),
@@ -739,11 +815,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-17.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 33,
         shift = util.by_pixel(3, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-17.png",
+          priority = base_decorative_sprite_priority,
           width = 90,
           height = 65,
           shift = util.by_pixel(3, -0.25),
@@ -752,11 +830,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-18.png",
+        priority = base_decorative_sprite_priority,
         width = 58,
         height = 34,
         shift = util.by_pixel(4, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-18.png",
+          priority = base_decorative_sprite_priority,
           width = 117,
           height = 69,
           shift = util.by_pixel(4.25, -4.75),
@@ -765,11 +845,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk/green-asterisk-19.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 32,
         shift = util.by_pixel(0.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk/hr-green-asterisk-19.png",
+          priority = base_decorative_sprite_priority,
           width = 82,
           height = 64,
           shift = util.by_pixel(0.5, -2),
@@ -806,11 +888,13 @@ data:extend{
       --miniAstG
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-00.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 20,
         shift = util.by_pixel(8.5, 1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-00.png",
+          priority = base_decorative_sprite_priority,
           width = 42,
           height = 41,
           shift = util.by_pixel(8.5, 1.25),
@@ -819,11 +903,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-01.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 20,
         shift = util.by_pixel(3.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-01.png",
+          priority = base_decorative_sprite_priority,
           width = 31,
           height = 40,
           shift = util.by_pixel(3.25, -1),
@@ -832,11 +918,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-02.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 20,
         shift = util.by_pixel(-1, 2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-02.png",
+          priority = base_decorative_sprite_priority,
           width = 49,
           height = 39,
           shift = util.by_pixel(-1.25, 2.25),
@@ -845,11 +933,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-03.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 16,
         shift = util.by_pixel(-1.5, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-03.png",
+          priority = base_decorative_sprite_priority,
           width = 54,
           height = 32,
           shift = util.by_pixel(-1.5, 0),
@@ -858,11 +948,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-04.png",
+        priority = base_decorative_sprite_priority,
         width = 20,
         height = 21,
         shift = util.by_pixel(-7, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-04.png",
+          priority = base_decorative_sprite_priority,
           width = 41,
           height = 43,
           shift = util.by_pixel(-6.75, -1.75),
@@ -871,11 +963,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-05.png",
+        priority = base_decorative_sprite_priority,
         width = 20,
         height = 20,
         shift = util.by_pixel(-4, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-05.png",
+          priority = base_decorative_sprite_priority,
           width = 39,
           height = 39,
           shift = util.by_pixel(-4.25, -1.75),
@@ -884,11 +978,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-06.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 9,
         shift = util.by_pixel(-0.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-06.png",
+          priority = base_decorative_sprite_priority,
           width = 31,
           height = 19,
           shift = util.by_pixel(-0.25, 0.25),
@@ -897,11 +993,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-07.png",
+        priority = base_decorative_sprite_priority,
         width = 14,
         height = 10,
         shift = util.by_pixel(0, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-07.png",
+          priority = base_decorative_sprite_priority,
           width = 27,
           height = 20,
           shift = util.by_pixel(0.25, 0.5),
@@ -910,11 +1008,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-08.png",
+        priority = base_decorative_sprite_priority,
         width = 17,
         height = 10,
         shift = util.by_pixel(-1.5, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-08.png",
+          priority = base_decorative_sprite_priority,
           width = 32,
           height = 20,
           shift = util.by_pixel(-1.5, 0.5),
@@ -923,11 +1023,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-09.png",
+        priority = base_decorative_sprite_priority,
         width = 13,
         height = 13,
         shift = util.by_pixel(0.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-09.png",
+          priority = base_decorative_sprite_priority,
           width = 26,
           height = 27,
           shift = util.by_pixel(1, -1.25),
@@ -936,11 +1038,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-10.png",
+        priority = base_decorative_sprite_priority,
         width = 18,
         height = 12,
         shift = util.by_pixel(0, 1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-10.png",
+          priority = base_decorative_sprite_priority,
           width = 37,
           height = 23,
           shift = util.by_pixel(-0.25, 0.75),
@@ -949,11 +1053,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-asterisk-mini/green-asterisk-mini-11.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 16,
         shift = util.by_pixel(-3.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-asterisk-mini/hr-green-asterisk-mini-11.png",
+          priority = base_decorative_sprite_priority,
           width = 46,
           height = 33,
           shift = util.by_pixel(-3.5, -2.75),
@@ -992,11 +1098,13 @@ data:extend{
       --miniAstB
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-00.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 17,
         shift = util.by_pixel(6.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-00.png",
+          priority = base_decorative_sprite_priority,
           width = 39,
           height = 35,
           shift = util.by_pixel(6.25, 0.25),
@@ -1005,11 +1113,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-01.png",
+        priority = base_decorative_sprite_priority,
         width = 12,
         height = 12,
         shift = util.by_pixel(3, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-01.png",
+          priority = base_decorative_sprite_priority,
           width = 24,
           height = 24,
           shift = util.by_pixel(3, -1),
@@ -1018,11 +1128,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-02.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 23,
         shift = util.by_pixel(-0.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-02.png",
+          priority = base_decorative_sprite_priority,
           width = 39,
           height = 46,
           shift = util.by_pixel(-0.25, 0),
@@ -1031,11 +1143,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-03.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 13,
         shift = util.by_pixel(-1, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-03.png",
+          priority = base_decorative_sprite_priority,
           width = 44,
           height = 25,
           shift = util.by_pixel(-1.5, -4.75),
@@ -1044,11 +1158,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-04.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 15,
         shift = util.by_pixel(-3.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-04.png",
+          priority = base_decorative_sprite_priority,
           width = 31,
           height = 30,
           shift = util.by_pixel(-3.75, -1),
@@ -1057,11 +1173,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-05.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 22,
         shift = util.by_pixel(-3, 1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-05.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 43,
           shift = util.by_pixel(-2.75, 0.75),
@@ -1070,11 +1188,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-06.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 15,
         shift = util.by_pixel(-3, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-06.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 28,
           shift = util.by_pixel(-3.25, -5.5),
@@ -1083,11 +1203,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-07.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 20,
         shift = util.by_pixel(0.5, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-07.png",
+          priority = base_decorative_sprite_priority,
           width = 53,
           height = 40,
           shift = util.by_pixel(0.25, 0.5),
@@ -1096,11 +1218,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-08.png",
+        priority = base_decorative_sprite_priority,
         width = 17,
         height = 11,
         shift = util.by_pixel(-0.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-08.png",
+          priority = base_decorative_sprite_priority,
           width = 32,
           height = 21,
           shift = util.by_pixel(-0.5, -0.25),
@@ -1109,11 +1233,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-09.png",
+        priority = base_decorative_sprite_priority,
         width = 12,
         height = 13,
         shift = util.by_pixel(0, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-09.png",
+          priority = base_decorative_sprite_priority,
           width = 25,
           height = 24,
           shift = util.by_pixel(-0.25, -0.5),
@@ -1122,11 +1248,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-10.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 12,
         shift = util.by_pixel(0.5, 1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-10.png",
+          priority = base_decorative_sprite_priority,
           width = 39,
           height = 24,
           shift = util.by_pixel(0.75, 0.5),
@@ -1135,11 +1263,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-asterisk-mini/brown-asterisk-mini-11.png",
+        priority = base_decorative_sprite_priority,
         width = 20,
         height = 8,
         shift = util.by_pixel(1, 2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-asterisk-mini/hr-brown-asterisk-mini-11.png",
+          priority = base_decorative_sprite_priority,
           width = 38,
           height = 16,
           shift = util.by_pixel(1, 2),
@@ -1177,11 +1307,13 @@ data:extend{
       --rAst
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-00.png",
+        priority = base_decorative_sprite_priority,
         width = 56,
         height = 41,
         shift = util.by_pixel(10, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-00.png",
+          priority = base_decorative_sprite_priority,
           width = 111,
           height = 82,
           shift = util.by_pixel(9.75, -6),
@@ -1190,11 +1322,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-01.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 35,
         shift = util.by_pixel(7, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-01.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 71,
           shift = util.by_pixel(7.25, -1.75),
@@ -1203,11 +1337,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-02.png",
+        priority = base_decorative_sprite_priority,
         width = 63,
         height = 38,
         shift = util.by_pixel(3.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-02.png",
+          priority = base_decorative_sprite_priority,
           width = 126,
           height = 75,
           shift = util.by_pixel(3.5, -0.75),
@@ -1216,11 +1352,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-03.png",
+        priority = base_decorative_sprite_priority,
         width = 57,
         height = 37,
         shift = util.by_pixel(1.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-03.png",
+          priority = base_decorative_sprite_priority,
           width = 114,
           height = 73,
           shift = util.by_pixel(1.5, -4.75),
@@ -1229,11 +1367,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-04.png",
+        priority = base_decorative_sprite_priority,
         width = 65,
         height = 45,
         shift = util.by_pixel(6.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-04.png",
+          priority = base_decorative_sprite_priority,
           width = 130,
           height = 90,
           shift = util.by_pixel(6.5, -3),
@@ -1242,11 +1382,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-05.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 38,
         shift = util.by_pixel(3.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-05.png",
+          priority = base_decorative_sprite_priority,
           width = 104,
           height = 75,
           shift = util.by_pixel(3.5, -1.75),
@@ -1255,11 +1397,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-06.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 38,
         shift = util.by_pixel(5.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-06.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 77,
           shift = util.by_pixel(5.5, -1.75),
@@ -1268,11 +1412,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-07.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 23,
         shift = util.by_pixel(2.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-07.png",
+          priority = base_decorative_sprite_priority,
           width = 101,
           height = 45,
           shift = util.by_pixel(2.25, 0.25),
@@ -1281,11 +1427,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-08.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 28,
         shift = util.by_pixel(-1.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-08.png",
+          priority = base_decorative_sprite_priority,
           width = 60,
           height = 57,
           shift = util.by_pixel(-1.5, -1.75),
@@ -1294,11 +1442,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-09.png",
+        priority = base_decorative_sprite_priority,
         width = 54,
         height = 32,
         shift = util.by_pixel(8, -8),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-09.png",
+          priority = base_decorative_sprite_priority,
           width = 107,
           height = 63,
           shift = util.by_pixel(8.25, -8.25),
@@ -1307,11 +1457,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-10.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 30,
         shift = util.by_pixel(11.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-10.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 59,
           shift = util.by_pixel(11.75, -1.25),
@@ -1320,11 +1472,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-11.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 23,
         shift = util.by_pixel(1.5, 5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-11.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 47,
           shift = util.by_pixel(1.5, 5.75),
@@ -1333,11 +1487,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-12.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 43,
         shift = util.by_pixel(-9, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-12.png",
+          priority = base_decorative_sprite_priority,
           width = 72,
           height = 86,
           shift = util.by_pixel(-8.5, -3),
@@ -1346,11 +1502,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-13.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 25,
         shift = util.by_pixel(3, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-13.png",
+          priority = base_decorative_sprite_priority,
           width = 95,
           height = 51,
           shift = util.by_pixel(2.75, -3.25),
@@ -1359,11 +1517,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-14.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 27,
         shift = util.by_pixel(5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-14.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 54,
           shift = util.by_pixel(5.25, -3.5),
@@ -1372,11 +1532,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-15.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 36,
         shift = util.by_pixel(7.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-15.png",
+          priority = base_decorative_sprite_priority,
           width = 70,
           height = 72,
           shift = util.by_pixel(7.5, -2),
@@ -1385,11 +1547,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-16.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 33,
         shift = util.by_pixel(4, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-16.png",
+          priority = base_decorative_sprite_priority,
           width = 84,
           height = 65,
           shift = util.by_pixel(4, -2.75),
@@ -1398,11 +1562,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-17.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 27,
         shift = util.by_pixel(3.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-17.png",
+          priority = base_decorative_sprite_priority,
           width = 53,
           height = 52,
           shift = util.by_pixel(3.75, -0.5),
@@ -1411,11 +1577,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-18.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 23,
         shift = util.by_pixel(0.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-18.png",
+          priority = base_decorative_sprite_priority,
           width = 68,
           height = 45,
           shift = util.by_pixel(0.5, -0.75),
@@ -1424,11 +1592,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-asterisk/red-asterisk-19.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 32,
         shift = util.by_pixel(9, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-asterisk/hr-red-asterisk-19.png",
+          priority = base_decorative_sprite_priority,
           width = 88,
           height = 63,
           shift = util.by_pixel(9, -3.25),
@@ -1477,11 +1647,13 @@ data:extend{
       --gpita
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-00.png",
+        priority = base_decorative_sprite_priority,
         width = 77,
         height = 53,
         shift = util.by_pixel(11.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-00.png",
+          priority = base_decorative_sprite_priority,
           width = 153,
           height = 104,
           shift = util.by_pixel(11.25, -5.5),
@@ -1490,11 +1662,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-01.png",
+        priority = base_decorative_sprite_priority,
         width = 73,
         height = 53,
         shift = util.by_pixel(11.5, -9.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-01.png",
+          priority = base_decorative_sprite_priority,
           width = 146,
           height = 104,
           shift = util.by_pixel(11.5, -9.5),
@@ -1503,11 +1677,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-02.png",
+        priority = base_decorative_sprite_priority,
         width = 59,
         height = 41,
         shift = util.by_pixel(9.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-02.png",
+          priority = base_decorative_sprite_priority,
           width = 120,
           height = 83,
           shift = util.by_pixel(9.5, -6.25),
@@ -1516,11 +1692,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-03.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 42,
         shift = util.by_pixel(10, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-03.png",
+          priority = base_decorative_sprite_priority,
           width = 121,
           height = 84,
           shift = util.by_pixel(10.25, -6),
@@ -1529,11 +1707,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-04.png",
+        priority = base_decorative_sprite_priority,
         width = 73,
         height = 47,
         shift = util.by_pixel(12.5, -9.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-04.png",
+          priority = base_decorative_sprite_priority,
           width = 144,
           height = 95,
           shift = util.by_pixel(12.5, -9.25),
@@ -1542,11 +1722,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-05.png",
+        priority = base_decorative_sprite_priority,
         width = 70,
         height = 46,
         shift = util.by_pixel(9, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-05.png",
+          priority = base_decorative_sprite_priority,
           width = 140,
           height = 92,
           shift = util.by_pixel(8.5, -7.5),
@@ -1555,11 +1737,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-06.png",
+        priority = base_decorative_sprite_priority,
         width = 78,
         height = 60,
         shift = util.by_pixel(7, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-06.png",
+          priority = base_decorative_sprite_priority,
           width = 156,
           height = 120,
           shift = util.by_pixel(7, -7),
@@ -1568,11 +1752,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-07.png",
+        priority = base_decorative_sprite_priority,
         width = 78,
         height = 62,
         shift = util.by_pixel(10, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-07.png",
+          priority = base_decorative_sprite_priority,
           width = 155,
           height = 123,
           shift = util.by_pixel(10.25, -5.25),
@@ -1581,11 +1767,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-08.png",
+        priority = base_decorative_sprite_priority,
         width = 81,
         height = 59,
         shift = util.by_pixel(11.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-08.png",
+          priority = base_decorative_sprite_priority,
           width = 162,
           height = 116,
           shift = util.by_pixel(11.5, -6.5),
@@ -1594,11 +1782,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-09.png",
+        priority = base_decorative_sprite_priority,
         width = 62,
         height = 39,
         shift = util.by_pixel(6, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-09.png",
+          priority = base_decorative_sprite_priority,
           width = 123,
           height = 78,
           shift = util.by_pixel(6.25, -4.5),
@@ -1607,11 +1797,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-10.png",
+        priority = base_decorative_sprite_priority,
         width = 50,
         height = 35,
         shift = util.by_pixel(4, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-10.png",
+          priority = base_decorative_sprite_priority,
           width = 99,
           height = 70,
           shift = util.by_pixel(4.25, -4),
@@ -1620,11 +1812,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-11.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 33,
         shift = util.by_pixel(6.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-11.png",
+          priority = base_decorative_sprite_priority,
           width = 98,
           height = 64,
           shift = util.by_pixel(6.5, -2.5),
@@ -1633,11 +1827,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-12.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 39,
         shift = util.by_pixel(6.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-12.png",
+          priority = base_decorative_sprite_priority,
           width = 99,
           height = 77,
           shift = util.by_pixel(6.25, -5.25),
@@ -1646,11 +1842,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-13.png",
+        priority = base_decorative_sprite_priority,
         width = 55,
         height = 36,
         shift = util.by_pixel(8.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-13.png",
+          priority = base_decorative_sprite_priority,
           width = 109,
           height = 71,
           shift = util.by_pixel(8.25, -4.25),
@@ -1659,11 +1857,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita/green-pita-14.png",
+        priority = base_decorative_sprite_priority,
         width = 50,
         height = 34,
         shift = util.by_pixel(7, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita/hr-green-pita-14.png",
+          priority = base_decorative_sprite_priority,
           width = 100,
           height = 68,
           shift = util.by_pixel(6.5, -5),
@@ -1714,11 +1914,13 @@ data:extend{
       --rpita
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-00.png",
+        priority = base_decorative_sprite_priority,
         width = 76,
         height = 49,
         shift = util.by_pixel(10, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-00.png",
+          priority = base_decorative_sprite_priority,
           width = 152,
           height = 98,
           shift = util.by_pixel(10.5, -7.5),
@@ -1727,11 +1929,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-01.png",
+        priority = base_decorative_sprite_priority,
         width = 72,
         height = 55,
         shift = util.by_pixel(13, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-01.png",
+          priority = base_decorative_sprite_priority,
           width = 146,
           height = 109,
           shift = util.by_pixel(13, -6.75),
@@ -1740,11 +1944,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-02.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 41,
         shift = util.by_pixel(11, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-02.png",
+          priority = base_decorative_sprite_priority,
           width = 119,
           height = 82,
           shift = util.by_pixel(10.75, -7.5),
@@ -1753,11 +1959,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-03.png",
+        priority = base_decorative_sprite_priority,
         width = 59,
         height = 42,
         shift = util.by_pixel(9.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-03.png",
+          priority = base_decorative_sprite_priority,
           width = 118,
           height = 84,
           shift = util.by_pixel(9.5, -5),
@@ -1766,11 +1974,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-04.png",
+        priority = base_decorative_sprite_priority,
         width = 74,
         height = 49,
         shift = util.by_pixel(14, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-04.png",
+          priority = base_decorative_sprite_priority,
           width = 149,
           height = 99,
           shift = util.by_pixel(13.75, -7.75),
@@ -1779,11 +1989,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-05.png",
+        priority = base_decorative_sprite_priority,
         width = 72,
         height = 47,
         shift = util.by_pixel(13, -8.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-05.png",
+          priority = base_decorative_sprite_priority,
           width = 142,
           height = 93,
           shift = util.by_pixel(13, -8.25),
@@ -1792,11 +2004,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-06.png",
+        priority = base_decorative_sprite_priority,
         width = 89,
         height = 53,
         shift = util.by_pixel(8.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-06.png",
+          priority = base_decorative_sprite_priority,
           width = 177,
           height = 106,
           shift = util.by_pixel(8.25, -5),
@@ -1805,11 +2019,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-07.png",
+        priority = base_decorative_sprite_priority,
         width = 84,
         height = 60,
         shift = util.by_pixel(10, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-07.png",
+          priority = base_decorative_sprite_priority,
           width = 167,
           height = 120,
           shift = util.by_pixel(10.25, -6.5),
@@ -1818,11 +2034,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-08.png",
+        priority = base_decorative_sprite_priority,
         width = 84,
         height = 64,
         shift = util.by_pixel(10, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-08.png",
+          priority = base_decorative_sprite_priority,
           width = 168,
           height = 128,
           shift = util.by_pixel(10.5, -6),
@@ -1831,11 +2049,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-09.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 42,
         shift = util.by_pixel(4, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-09.png",
+          priority = base_decorative_sprite_priority,
           width = 119,
           height = 85,
           shift = util.by_pixel(4.25, -7.25),
@@ -1844,11 +2064,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-10.png",
+        priority = base_decorative_sprite_priority,
         width = 55,
         height = 34,
         shift = util.by_pixel(7.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-10.png",
+          priority = base_decorative_sprite_priority,
           width = 109,
           height = 69,
           shift = util.by_pixel(7.25, -3.25),
@@ -1857,11 +2079,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-11.png",
+        priority = base_decorative_sprite_priority,
         width = 47,
         height = 35,
         shift = util.by_pixel(5.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-11.png",
+          priority = base_decorative_sprite_priority,
           width = 93,
           height = 70,
           shift = util.by_pixel(5.75, -4.5),
@@ -1870,11 +2094,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-12.png",
+        priority = base_decorative_sprite_priority,
         width = 54,
         height = 38,
         shift = util.by_pixel(8, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-12.png",
+          priority = base_decorative_sprite_priority,
           width = 107,
           height = 74,
           shift = util.by_pixel(7.75, -5),
@@ -1883,11 +2109,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-13.png",
+        priority = base_decorative_sprite_priority,
         width = 57,
         height = 35,
         shift = util.by_pixel(11.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-13.png",
+          priority = base_decorative_sprite_priority,
           width = 114,
           height = 70,
           shift = util.by_pixel(12, -4.5),
@@ -1896,11 +2124,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-pita/red-pita-14.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 36,
         shift = util.by_pixel(3.5, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/red-pita/hr-red-pita-14.png",
+          priority = base_decorative_sprite_priority,
           width = 89,
           height = 71,
           shift = util.by_pixel(3.75, -7.25),
@@ -1951,11 +2181,13 @@ data:extend{
       --crotonG
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-00.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 28,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-00.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 54,
           shift = util.by_pixel(4.25, -3),
@@ -1964,11 +2196,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-01.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 25,
         shift = util.by_pixel(5.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-01.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 52,
           shift = util.by_pixel(6, -3.5),
@@ -1977,11 +2211,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-02.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 27,
         shift = util.by_pixel(7, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-02.png",
+          priority = base_decorative_sprite_priority,
           width = 71,
           height = 54,
           shift = util.by_pixel(6.75, -4.5),
@@ -1990,11 +2226,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-03.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 28,
         shift = util.by_pixel(3.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-03.png",
+          priority = base_decorative_sprite_priority,
           width = 70,
           height = 56,
           shift = util.by_pixel(4, -4),
@@ -2003,11 +2241,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-04.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 27,
         shift = util.by_pixel(5.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-04.png",
+          priority = base_decorative_sprite_priority,
           width = 74,
           height = 54,
           shift = util.by_pixel(5.5, -5),
@@ -2016,11 +2256,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-05.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 26,
         shift = util.by_pixel(7.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-05.png",
+          priority = base_decorative_sprite_priority,
           width = 71,
           height = 53,
           shift = util.by_pixel(7.75, -4.75),
@@ -2029,11 +2271,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-06.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 24,
         shift = util.by_pixel(4.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-06.png",
+          priority = base_decorative_sprite_priority,
           width = 71,
           height = 49,
           shift = util.by_pixel(4.25, -3.75),
@@ -2042,11 +2286,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-07.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 21,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-07.png",
+          priority = base_decorative_sprite_priority,
           width = 65,
           height = 42,
           shift = util.by_pixel(4.75, -2.5),
@@ -2055,11 +2301,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-08.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 27,
         shift = util.by_pixel(6, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-08.png",
+          priority = base_decorative_sprite_priority,
           width = 70,
           height = 56,
           shift = util.by_pixel(6, -3.5),
@@ -2068,11 +2316,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-09.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 24,
         shift = util.by_pixel(4.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-09.png",
+          priority = base_decorative_sprite_priority,
           width = 65,
           height = 48,
           shift = util.by_pixel(4.25, -3.5),
@@ -2081,11 +2331,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-10.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 21,
         shift = util.by_pixel(4.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-10.png",
+          priority = base_decorative_sprite_priority,
           width = 53,
           height = 42,
           shift = util.by_pixel(4.25, -3.5),
@@ -2094,11 +2346,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-11.png",
+        priority = base_decorative_sprite_priority,
         width = 25,
         height = 16,
         shift = util.by_pixel(3.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-11.png",
+          priority = base_decorative_sprite_priority,
           width = 49,
           height = 33,
           shift = util.by_pixel(3.75, -2.25),
@@ -2107,11 +2361,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-12.png",
+        priority = base_decorative_sprite_priority,
         width = 30,
         height = 24,
         shift = util.by_pixel(7, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-12.png",
+          priority = base_decorative_sprite_priority,
           width = 59,
           height = 48,
           shift = util.by_pixel(6.75, -4.5),
@@ -2120,11 +2376,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-13.png",
+        priority = base_decorative_sprite_priority,
         width = 25,
         height = 18,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-13.png",
+          priority = base_decorative_sprite_priority,
           width = 49,
           height = 35,
           shift = util.by_pixel(4.75, -3.25),
@@ -2133,11 +2391,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-14.png",
+        priority = base_decorative_sprite_priority,
         width = 30,
         height = 21,
         shift = util.by_pixel(4, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-14.png",
+          priority = base_decorative_sprite_priority,
           width = 59,
           height = 41,
           shift = util.by_pixel(3.75, -4.25),
@@ -2146,11 +2406,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-15.png",
+        priority = base_decorative_sprite_priority,
         width = 25,
         height = 18,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-15.png",
+          priority = base_decorative_sprite_priority,
           width = 50,
           height = 35,
           shift = util.by_pixel(4.5, -2.75),
@@ -2159,11 +2421,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-16.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 21,
         shift = util.by_pixel(5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-16.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 42,
           shift = util.by_pixel(5, -2.5),
@@ -2172,11 +2436,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-17.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 16,
         shift = util.by_pixel(3.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-17.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 31,
           shift = util.by_pixel(3.75, -2.25),
@@ -2185,11 +2451,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-18.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 16,
         shift = util.by_pixel(5.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-18.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 32,
           shift = util.by_pixel(5.25, -3.5),
@@ -2198,11 +2466,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-croton/green-croton-19.png",
+        priority = base_decorative_sprite_priority,
         width = 18,
         height = 14,
         shift = util.by_pixel(3, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-croton/hr-green-croton-19.png",
+          priority = base_decorative_sprite_priority,
           width = 36,
           height = 30,
           shift = util.by_pixel(3, -2),
@@ -2250,11 +2520,13 @@ data:extend{
       --crotonR
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-00.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 28,
         shift = util.by_pixel(7, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-00.png",
+          priority = base_decorative_sprite_priority,
           width = 76,
           height = 55,
           shift = util.by_pixel(7, -5.25),
@@ -2263,11 +2535,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-01.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 28,
         shift = util.by_pixel(7, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-01.png",
+          priority = base_decorative_sprite_priority,
           width = 76,
           height = 57,
           shift = util.by_pixel(7, -5.25),
@@ -2276,11 +2550,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-02.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 27,
         shift = util.by_pixel(7.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-02.png",
+          priority = base_decorative_sprite_priority,
           width = 81,
           height = 55,
           shift = util.by_pixel(7.75, -5.25),
@@ -2289,11 +2565,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-03.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 29,
         shift = util.by_pixel(7.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-03.png",
+          priority = base_decorative_sprite_priority,
           width = 75,
           height = 59,
           shift = util.by_pixel(7.75, -6.75),
@@ -2302,11 +2580,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-04.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 28,
         shift = util.by_pixel(5.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-04.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 56,
           shift = util.by_pixel(5.75, -5),
@@ -2315,11 +2595,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-05.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 25,
         shift = util.by_pixel(5.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-05.png",
+          priority = base_decorative_sprite_priority,
           width = 66,
           height = 49,
           shift = util.by_pixel(6, -4.25),
@@ -2328,11 +2610,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-06.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 27,
         shift = util.by_pixel(7, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-06.png",
+          priority = base_decorative_sprite_priority,
           width = 80,
           height = 54,
           shift = util.by_pixel(7, -5),
@@ -2341,11 +2625,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-07.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 25,
         shift = util.by_pixel(6, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-07.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 48,
           shift = util.by_pixel(6.25, -5.5),
@@ -2354,11 +2640,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-08.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 28,
         shift = util.by_pixel(9.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-08.png",
+          priority = base_decorative_sprite_priority,
           width = 82,
           height = 57,
           shift = util.by_pixel(10, -6.25),
@@ -2367,11 +2655,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-09.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 28,
         shift = util.by_pixel(8.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-09.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 55,
           shift = util.by_pixel(8.25, -6.25),
@@ -2380,11 +2670,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-10.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 25,
         shift = util.by_pixel(9, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-10.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 52,
           shift = util.by_pixel(8.75, -6.5),
@@ -2393,11 +2685,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-11.png",
+        priority = base_decorative_sprite_priority,
         width = 30,
         height = 21,
         shift = util.by_pixel(8, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-11.png",
+          priority = base_decorative_sprite_priority,
           width = 60,
           height = 41,
           shift = util.by_pixel(7.5, -4.75),
@@ -2406,11 +2700,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-12.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 27,
         shift = util.by_pixel(7, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-12.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 53,
           shift = util.by_pixel(6.75, -5.75),
@@ -2419,11 +2715,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-13.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 18,
         shift = util.by_pixel(6.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-13.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 37,
           shift = util.by_pixel(6.25, -4.25),
@@ -2432,11 +2730,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-14.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 26,
         shift = util.by_pixel(6.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-14.png",
+          priority = base_decorative_sprite_priority,
           width = 70,
           height = 50,
           shift = util.by_pixel(6.5, -5),
@@ -2445,11 +2745,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-15.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 19,
         shift = util.by_pixel(6, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-15.png",
+          priority = base_decorative_sprite_priority,
           width = 56,
           height = 38,
           shift = util.by_pixel(5.5, -4),
@@ -2458,11 +2760,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-16.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 24,
         shift = util.by_pixel(9, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-16.png",
+          priority = base_decorative_sprite_priority,
           width = 80,
           height = 48,
           shift = util.by_pixel(9, -4.5),
@@ -2471,11 +2775,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-17.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 22,
         shift = util.by_pixel(5.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-17.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 43,
           shift = util.by_pixel(5.75, -4.75),
@@ -2484,11 +2790,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-18.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 19,
         shift = util.by_pixel(6, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-18.png",
+          priority = base_decorative_sprite_priority,
           width = 56,
           height = 38,
           shift = util.by_pixel(6, -3.5),
@@ -2497,11 +2805,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-croton/red-croton-19.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 17,
         shift = util.by_pixel(4, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-croton/hr-red-croton-19.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 33,
           shift = util.by_pixel(4.25, -3.75),
@@ -2549,11 +2859,13 @@ data:extend{
       --pitaMini
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-00.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 26,
         shift = util.by_pixel(4, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-00.png",
+          priority = base_decorative_sprite_priority,
           width = 83,
           height = 52,
           shift = util.by_pixel(4.25, -2),
@@ -2562,11 +2874,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-01.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 28,
         shift = util.by_pixel(4.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-01.png",
+          priority = base_decorative_sprite_priority,
           width = 75,
           height = 57,
           shift = util.by_pixel(4.75, -3.75),
@@ -2575,11 +2889,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-02.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 29,
         shift = util.by_pixel(5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-02.png",
+          priority = base_decorative_sprite_priority,
           width = 87,
           height = 57,
           shift = util.by_pixel(4.75, -3.75),
@@ -2588,11 +2904,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-03.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 31,
         shift = util.by_pixel(6, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-03.png",
+          priority = base_decorative_sprite_priority,
           width = 96,
           height = 62,
           shift = util.by_pixel(6, -3.5),
@@ -2601,11 +2919,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-04.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 35,
         shift = util.by_pixel(4, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-04.png",
+          priority = base_decorative_sprite_priority,
           width = 87,
           height = 68,
           shift = util.by_pixel(3.75, -4.5),
@@ -2614,11 +2934,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-05.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 33,
         shift = util.by_pixel(5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-05.png",
+          priority = base_decorative_sprite_priority,
           width = 92,
           height = 65,
           shift = util.by_pixel(5.5, -3.25),
@@ -2627,11 +2949,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-06.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 22,
         shift = util.by_pixel(3.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-06.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 45,
           shift = util.by_pixel(3.5, -0.75),
@@ -2640,11 +2964,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-07.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 20,
         shift = util.by_pixel(4, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-07.png",
+          priority = base_decorative_sprite_priority,
           width = 73,
           height = 39,
           shift = util.by_pixel(3.75, -3.75),
@@ -2653,11 +2979,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-08.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 23,
         shift = util.by_pixel(5.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-08.png",
+          priority = base_decorative_sprite_priority,
           width = 66,
           height = 46,
           shift = util.by_pixel(5.5, -3.5),
@@ -2666,11 +2994,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-09.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 37,
         shift = util.by_pixel(5.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-09.png",
+          priority = base_decorative_sprite_priority,
           width = 97,
           height = 72,
           shift = util.by_pixel(5.75, -3.5),
@@ -2679,11 +3009,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-10.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 35,
         shift = util.by_pixel(4.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-10.png",
+          priority = base_decorative_sprite_priority,
           width = 101,
           height = 71,
           shift = util.by_pixel(4.75, -4.25),
@@ -2692,11 +3024,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-11.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 36,
         shift = util.by_pixel(5.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-11.png",
+          priority = base_decorative_sprite_priority,
           width = 98,
           height = 71,
           shift = util.by_pixel(5.5, -3.75),
@@ -2705,11 +3039,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-12.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 31,
         shift = util.by_pixel(6.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-12.png",
+          priority = base_decorative_sprite_priority,
           width = 90,
           height = 63,
           shift = util.by_pixel(6.5, -3.75),
@@ -2718,11 +3054,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-13.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 31,
         shift = util.by_pixel(4, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-13.png",
+          priority = base_decorative_sprite_priority,
           width = 84,
           height = 64,
           shift = util.by_pixel(4.5, -4.5),
@@ -2731,11 +3069,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-pita-mini/green-pita-mini-14.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 29,
         shift = util.by_pixel(2.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-pita-mini/hr-green-pita-mini-14.png",
+          priority = base_decorative_sprite_priority,
           width = 79,
           height = 58,
           shift = util.by_pixel(2.75, -3),
@@ -2775,6 +3115,7 @@ data:extend{
       --fluff
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-00.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 19,
@@ -2782,6 +3123,7 @@ data:extend{
         shift = util.by_pixel(3, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-00.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 56,
           height = 39,
@@ -2792,6 +3134,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-01.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 29,
         height = 25,
@@ -2799,6 +3142,7 @@ data:extend{
         shift = util.by_pixel(2.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-01.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 59,
           height = 50,
@@ -2809,6 +3153,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-02.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 32,
         height = 21,
@@ -2816,6 +3161,7 @@ data:extend{
         shift = util.by_pixel(0, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-02.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 65,
           height = 41,
@@ -2826,6 +3172,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-03.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 31,
         height = 24,
@@ -2833,6 +3180,7 @@ data:extend{
         shift = util.by_pixel(2.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-03.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 63,
           height = 47,
@@ -2843,6 +3191,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-04.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 36,
         height = 21,
@@ -2850,6 +3199,7 @@ data:extend{
         shift = util.by_pixel(3, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-04.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 70,
           height = 43,
@@ -2860,6 +3210,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-05.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 23,
@@ -2867,6 +3218,7 @@ data:extend{
         shift = util.by_pixel(2, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-05.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 57,
           height = 47,
@@ -2877,6 +3229,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-06.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 31,
         height = 23,
@@ -2884,6 +3237,7 @@ data:extend{
         shift = util.by_pixel(2.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-06.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 62,
           height = 47,
@@ -2894,6 +3248,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-07.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 40,
         height = 23,
@@ -2901,6 +3256,7 @@ data:extend{
         shift = util.by_pixel(0, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-07.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 81,
           height = 45,
@@ -2911,6 +3267,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-08.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 29,
         height = 24,
@@ -2918,6 +3275,7 @@ data:extend{
         shift = util.by_pixel(3.5, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-08.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 58,
           height = 49,
@@ -2928,6 +3286,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-09.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 36,
         height = 24,
@@ -2935,6 +3294,7 @@ data:extend{
         shift = util.by_pixel(0, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-09.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 71,
           height = 48,
@@ -2945,6 +3305,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-10.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 33,
         height = 28,
@@ -2952,6 +3313,7 @@ data:extend{
         shift = util.by_pixel(0.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-10.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 67,
           height = 57,
@@ -2962,6 +3324,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-11.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 29,
         height = 19,
@@ -2969,6 +3332,7 @@ data:extend{
         shift = util.by_pixel(2.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-11.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 59,
           height = 39,
@@ -2979,6 +3343,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-12.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 34,
         height = 25,
@@ -2986,6 +3351,7 @@ data:extend{
         shift = util.by_pixel(3, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-12.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 66,
           height = 51,
@@ -2996,6 +3362,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-13.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 26,
         height = 20,
@@ -3003,6 +3370,7 @@ data:extend{
         shift = util.by_pixel(2, 0),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-13.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 53,
           height = 40,
@@ -3013,6 +3381,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-14.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 16,
@@ -3020,6 +3389,7 @@ data:extend{
         shift = util.by_pixel(0, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-14.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 56,
           height = 32,
@@ -3030,6 +3400,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-15.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 26,
         height = 19,
@@ -3037,6 +3408,7 @@ data:extend{
         shift = util.by_pixel(2, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-15.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 52,
           height = 39,
@@ -3047,6 +3419,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-16.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 19,
@@ -3054,6 +3427,7 @@ data:extend{
         shift = util.by_pixel(3, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-16.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 56,
           height = 39,
@@ -3064,6 +3438,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-17.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 19,
@@ -3071,6 +3446,7 @@ data:extend{
         shift = util.by_pixel(3, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-17.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 56,
           height = 39,
@@ -3081,6 +3457,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-18.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 19,
@@ -3088,6 +3465,7 @@ data:extend{
         shift = util.by_pixel(3, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-18.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 56,
           height = 39,
@@ -3098,6 +3476,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-19.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 28,
         height = 19,
@@ -3105,6 +3484,7 @@ data:extend{
         shift = util.by_pixel(3, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-19.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 56,
           height = 39,
@@ -3148,6 +3528,7 @@ data:extend{
       --dryFluff
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-00.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 34,
         height = 22,
@@ -3155,6 +3536,7 @@ data:extend{
         shift = util.by_pixel(3, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-00.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 67,
           height = 44,
@@ -3165,6 +3547,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-01.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 38,
         height = 29,
@@ -3172,6 +3555,7 @@ data:extend{
         shift = util.by_pixel(3, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-01.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 76,
           height = 58,
@@ -3182,6 +3566,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-02.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 37,
         height = 22,
@@ -3189,6 +3574,7 @@ data:extend{
         shift = util.by_pixel(1.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-02.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 75,
           height = 44,
@@ -3199,6 +3585,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-03.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 33,
         height = 27,
@@ -3206,6 +3593,7 @@ data:extend{
         shift = util.by_pixel(2.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-03.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 65,
           height = 54,
@@ -3216,6 +3604,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-04.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 44,
         height = 27,
@@ -3223,6 +3612,7 @@ data:extend{
         shift = util.by_pixel(4, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-04.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 88,
           height = 55,
@@ -3233,6 +3623,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-05.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 31,
         height = 24,
@@ -3240,6 +3631,7 @@ data:extend{
         shift = util.by_pixel(2.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-05.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 63,
           height = 49,
@@ -3250,6 +3642,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-06.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 37,
         height = 25,
@@ -3257,6 +3650,7 @@ data:extend{
         shift = util.by_pixel(3.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-06.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 74,
           height = 50,
@@ -3267,6 +3661,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-07.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 45,
         height = 27,
@@ -3274,6 +3669,7 @@ data:extend{
         shift = util.by_pixel(-1.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-07.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 89,
           height = 53,
@@ -3284,6 +3680,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-08.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 35,
         height = 29,
@@ -3291,6 +3688,7 @@ data:extend{
         shift = util.by_pixel(1.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-08.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 70,
           height = 58,
@@ -3301,6 +3699,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-09.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 42,
         height = 27,
@@ -3308,6 +3707,7 @@ data:extend{
         shift = util.by_pixel(1, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-09.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 83,
           height = 53,
@@ -3318,6 +3718,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-10.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 38,
         height = 30,
@@ -3325,6 +3726,7 @@ data:extend{
         shift = util.by_pixel(3, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-10.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 76,
           height = 61,
@@ -3335,6 +3737,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-11.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 35,
         height = 25,
@@ -3342,6 +3745,7 @@ data:extend{
         shift = util.by_pixel(1.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-11.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 71,
           height = 50,
@@ -3352,6 +3756,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-12.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 40,
         height = 29,
@@ -3359,6 +3764,7 @@ data:extend{
         shift = util.by_pixel(4, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-12.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 79,
           height = 57,
@@ -3369,6 +3775,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-13.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 30,
         height = 25,
@@ -3376,6 +3783,7 @@ data:extend{
         shift = util.by_pixel(1, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-13.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 60,
           height = 50,
@@ -3386,6 +3794,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-14.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 33,
         height = 19,
@@ -3393,6 +3802,7 @@ data:extend{
         shift = util.by_pixel(0.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-14.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 65,
           height = 38,
@@ -3403,6 +3813,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-15.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 33,
         height = 26,
@@ -3410,6 +3821,7 @@ data:extend{
         shift = util.by_pixel(1.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-15.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 65,
           height = 51,
@@ -3420,6 +3832,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-16.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 26,
         height = 20,
@@ -3427,6 +3840,7 @@ data:extend{
         shift = util.by_pixel(1, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-16.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 51,
           height = 39,
@@ -3437,6 +3851,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-17.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 24,
         height = 19,
@@ -3444,6 +3859,7 @@ data:extend{
         shift = util.by_pixel(2, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-17.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 49,
           height = 38,
@@ -3454,6 +3870,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-18.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 26,
         height = 17,
@@ -3461,6 +3878,7 @@ data:extend{
         shift = util.by_pixel(1, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-18.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 53,
           height = 35,
@@ -3471,6 +3889,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-19.png",
+        priority = base_decorative_sprite_priority,
         line_length = 1,
         width = 23,
         height = 17,
@@ -3478,6 +3897,7 @@ data:extend{
         shift = util.by_pixel(0.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-19.png",
+          priority = base_decorative_sprite_priority,
           line_length = 1,
           width = 46,
           height = 33,
@@ -3519,11 +3939,13 @@ data:extend{
       --garballo
       {
         filename = "__base__/graphics/decorative/garballo/garballo-00.png",
+        priority = base_decorative_sprite_priority,
         width = 30,
         height = 23,
         shift = util.by_pixel(10, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-00.png",
+          priority = base_decorative_sprite_priority,
           width = 59,
           height = 45,
           shift = util.by_pixel(10.25, -6.75),
@@ -3532,11 +3954,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-01.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 24,
         shift = util.by_pixel(-1.5, -8),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-01.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 49,
           shift = util.by_pixel(-1.25, -8.25),
@@ -3545,11 +3969,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-02.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 24,
         shift = util.by_pixel(7, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-02.png",
+          priority = base_decorative_sprite_priority,
           width = 54,
           height = 48,
           shift = util.by_pixel(7, -4),
@@ -3558,11 +3984,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-03.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 24,
         shift = util.by_pixel(3, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-03.png",
+          priority = base_decorative_sprite_priority,
           width = 76,
           height = 49,
           shift = util.by_pixel(2.5, -5.75),
@@ -3571,11 +3999,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-04.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 24,
         shift = util.by_pixel(3, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-04.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 47,
           shift = util.by_pixel(3, -4.25),
@@ -3584,11 +4014,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-05.png",
+        priority = base_decorative_sprite_priority,
         width = 30,
         height = 26,
         shift = util.by_pixel(0, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-05.png",
+          priority = base_decorative_sprite_priority,
           width = 61,
           height = 52,
           shift = util.by_pixel(0.25, -4),
@@ -3597,11 +4029,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-06.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 31,
         shift = util.by_pixel(2.5, -9.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-06.png",
+          priority = base_decorative_sprite_priority,
           width = 60,
           height = 63,
           shift = util.by_pixel(2.5, -9.75),
@@ -3610,11 +4044,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-07.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 27,
         shift = util.by_pixel(11, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-07.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 54,
           shift = util.by_pixel(10.75, -6.5),
@@ -3623,11 +4059,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-08.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 30,
         shift = util.by_pixel(1.5, -10),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-08.png",
+          priority = base_decorative_sprite_priority,
           width = 61,
           height = 60,
           shift = util.by_pixel(1.75, -10),
@@ -3636,11 +4074,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-09.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 28,
         shift = util.by_pixel(3, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-09.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 57,
           shift = util.by_pixel(3, -5.75),
@@ -3649,11 +4089,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-10.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 33,
         shift = util.by_pixel(6.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-10.png",
+          priority = base_decorative_sprite_priority,
           width = 87,
           height = 65,
           shift = util.by_pixel(6.25, -6.75),
@@ -3662,11 +4104,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-11.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 29,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-11.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 58,
           shift = util.by_pixel(4.75, -3),
@@ -3675,11 +4119,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-12.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 33,
         shift = util.by_pixel(2, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-12.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 65,
           shift = util.by_pixel(1.75, -4.25),
@@ -3688,11 +4134,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-13.png",
+        priority = base_decorative_sprite_priority,
         width = 25,
         height = 22,
         shift = util.by_pixel(8.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-13.png",
+          priority = base_decorative_sprite_priority,
           width = 49,
           height = 45,
           shift = util.by_pixel(8.75, -3.75),
@@ -3701,11 +4149,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-14.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 24,
         shift = util.by_pixel(0, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-14.png",
+          priority = base_decorative_sprite_priority,
           width = 48,
           height = 48,
           shift = util.by_pixel(0, -6),
@@ -3714,11 +4164,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-15.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 26,
         shift = util.by_pixel(10, -8),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-15.png",
+          priority = base_decorative_sprite_priority,
           width = 72,
           height = 54,
           shift = util.by_pixel(10, -8),
@@ -3727,11 +4179,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-16.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 28,
         shift = util.by_pixel(0.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-16.png",
+          priority = base_decorative_sprite_priority,
           width = 79,
           height = 56,
           shift = util.by_pixel(0.25, -5),
@@ -3740,11 +4194,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-17.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 30,
         shift = util.by_pixel(9.5, -10),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-17.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 58,
           shift = util.by_pixel(9.75, -10),
@@ -3753,11 +4209,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-18.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 17,
         shift = util.by_pixel(1.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-18.png",
+          priority = base_decorative_sprite_priority,
           width = 39,
           height = 33,
           shift = util.by_pixel(1.25, -3.75),
@@ -3766,11 +4224,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo/garballo-19.png",
+        priority = base_decorative_sprite_priority,
         width = 16,
         height = 18,
         shift = util.by_pixel(1, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo/hr-garballo-19.png",
+          priority = base_decorative_sprite_priority,
           width = 33,
           height = 35,
           shift = util.by_pixel(1.25, -4.25),
@@ -3810,11 +4270,13 @@ data:extend{
       --garballodry
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-00.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 20,
         shift = util.by_pixel(11, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-00.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 38,
           shift = util.by_pixel(10.75, -5),
@@ -3823,11 +4285,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-01.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 19,
         shift = util.by_pixel(1.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-01.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 39,
           shift = util.by_pixel(1.75, -5.75),
@@ -3836,11 +4300,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-02.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 22,
         shift = util.by_pixel(5.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-02.png",
+          priority = base_decorative_sprite_priority,
           width = 59,
           height = 45,
           shift = util.by_pixel(5.75, -3.25),
@@ -3849,11 +4315,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-03.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 22,
         shift = util.by_pixel(5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-03.png",
+          priority = base_decorative_sprite_priority,
           width = 68,
           height = 44,
           shift = util.by_pixel(4.5, -4.5),
@@ -3862,11 +4330,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-04.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 20,
         shift = util.by_pixel(5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-04.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 38,
           shift = util.by_pixel(5.25, -2),
@@ -3875,11 +4345,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-05.png",
+        priority = base_decorative_sprite_priority,
         width = 25,
         height = 26,
         shift = util.by_pixel(2.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-05.png",
+          priority = base_decorative_sprite_priority,
           width = 51,
           height = 51,
           shift = util.by_pixel(2.75, -3.75),
@@ -3888,11 +4360,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-06.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 20,
         shift = util.by_pixel(4, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-06.png",
+          priority = base_decorative_sprite_priority,
           width = 56,
           height = 41,
           shift = util.by_pixel(3.5, -4.25),
@@ -3901,11 +4375,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-07.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 23,
         shift = util.by_pixel(8, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-07.png",
+          priority = base_decorative_sprite_priority,
           width = 81,
           height = 45,
           shift = util.by_pixel(7.75, -4.25),
@@ -3914,11 +4390,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-08.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 22,
         shift = util.by_pixel(2.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-08.png",
+          priority = base_decorative_sprite_priority,
           width = 59,
           height = 45,
           shift = util.by_pixel(2.25, -6.25),
@@ -3927,11 +4405,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-09.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 25,
         shift = util.by_pixel(2, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-09.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 50,
           shift = util.by_pixel(1.75, -4),
@@ -3940,11 +4420,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-10.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 27,
         shift = util.by_pixel(6.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-10.png",
+          priority = base_decorative_sprite_priority,
           width = 85,
           height = 53,
           shift = util.by_pixel(6.75, -3.75),
@@ -3953,11 +4435,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-11.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 28,
         shift = util.by_pixel(7.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-11.png",
+          priority = base_decorative_sprite_priority,
           width = 74,
           height = 56,
           shift = util.by_pixel(7.5, -2.5),
@@ -3966,11 +4450,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-12.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 28,
         shift = util.by_pixel(3.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-12.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 56,
           shift = util.by_pixel(3.25, -2),
@@ -3979,11 +4465,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-13.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 26,
         shift = util.by_pixel(7.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-13.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 53,
           shift = util.by_pixel(7.25, -5.75),
@@ -3992,11 +4480,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-14.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 22,
         shift = util.by_pixel(0.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-14.png",
+          priority = base_decorative_sprite_priority,
           width = 47,
           height = 43,
           shift = util.by_pixel(0.25, -4.75),
@@ -4005,11 +4495,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-15.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 14,
         shift = util.by_pixel(9, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-15.png",
+          priority = base_decorative_sprite_priority,
           width = 75,
           height = 30,
           shift = util.by_pixel(9.25, -2),
@@ -4018,11 +4510,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-16.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 22,
         shift = util.by_pixel(4, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-16.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 44,
           shift = util.by_pixel(4, -2),
@@ -4031,11 +4525,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-17.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 17,
         shift = util.by_pixel(9, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-17.png",
+          priority = base_decorative_sprite_priority,
           width = 72,
           height = 33,
           shift = util.by_pixel(9, -3.75),
@@ -4044,11 +4540,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-18.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 15,
         shift = util.by_pixel(1.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-18.png",
+          priority = base_decorative_sprite_priority,
           width = 38,
           height = 30,
           shift = util.by_pixel(1.5, -3),
@@ -4057,11 +4555,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/garballo-mini-dry/garballo-mini-dry-19.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 14,
         shift = util.by_pixel(1.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/garballo-mini-dry/hr-garballo-mini-dry-19.png",
+          priority = base_decorative_sprite_priority,
           width = 31,
           height = 26,
           shift = util.by_pixel(1.75, -2),
@@ -4100,11 +4600,13 @@ data:extend{
       --gBushMini
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-00.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 22,
         shift = util.by_pixel(2.5, 1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-00.png",
+          priority = base_decorative_sprite_priority,
           width = 62,
           height = 45,
           shift = util.by_pixel(3.5, 1.25),
@@ -4113,11 +4615,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-01.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 23,
         shift = util.by_pixel(3.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-01.png",
+          priority = base_decorative_sprite_priority,
           width = 73,
           height = 46,
           shift = util.by_pixel(4.25, -1),
@@ -4126,11 +4630,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-02.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 18,
         shift = util.by_pixel(2.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-02.png",
+          priority = base_decorative_sprite_priority,
           width = 58,
           height = 38,
           shift = util.by_pixel(3, -1.5),
@@ -4139,11 +4645,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-03.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 25,
         shift = util.by_pixel(-0.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-03.png",
+          priority = base_decorative_sprite_priority,
           width = 61,
           height = 50,
           shift = util.by_pixel(0.25, 1),
@@ -4152,11 +4660,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-04.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 22,
         shift = util.by_pixel(2, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-04.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 44,
           shift = util.by_pixel(2.75, -3),
@@ -4165,11 +4675,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-05.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 21,
         shift = util.by_pixel(-1.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-05.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 42,
           shift = util.by_pixel(-0.75, -1.5),
@@ -4178,11 +4690,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-06.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 21,
         shift = util.by_pixel(4, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-06.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 43,
           shift = util.by_pixel(4.25, -1.75),
@@ -4191,11 +4705,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-07.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 24,
         shift = util.by_pixel(1, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-07.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 49,
           shift = util.by_pixel(1.5, -3.75),
@@ -4204,11 +4720,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-08.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 18,
         shift = util.by_pixel(-1.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-08.png",
+          priority = base_decorative_sprite_priority,
           width = 53,
           height = 36,
           shift = util.by_pixel(-0.75, -0.5),
@@ -4217,11 +4735,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-09.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 16,
         shift = util.by_pixel(3, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-09.png",
+          priority = base_decorative_sprite_priority,
           width = 47,
           height = 33,
           shift = util.by_pixel(3.75, -2.25),
@@ -4230,11 +4750,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-10.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 16,
         shift = util.by_pixel(-0.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-10.png",
+          priority = base_decorative_sprite_priority,
           width = 38,
           height = 31,
           shift = util.by_pixel(0, -2.75),
@@ -4243,11 +4765,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-bush-mini/green-bush-mini-11.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 12,
         shift = util.by_pixel(0.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-bush-mini/hr-green-bush-mini-11.png",
+          priority = base_decorative_sprite_priority,
           width = 41,
           height = 25,
           shift = util.by_pixel(0.75, -0.25),
@@ -4285,11 +4809,13 @@ data:extend{
       --hairyGreen
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-13.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 26,
         shift = util.by_pixel(4, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-13.png",
+          priority = base_decorative_sprite_priority,
           width = 79,
           height = 52,
           shift = util.by_pixel(4.25, -4),
@@ -4298,11 +4824,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-14.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 21,
         shift = util.by_pixel(6, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-14.png",
+          priority = base_decorative_sprite_priority,
           width = 80,
           height = 41,
           shift = util.by_pixel(6.5, -3.75),
@@ -4311,11 +4839,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-15.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 34,
         shift = util.by_pixel(3.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-15.png",
+          priority = base_decorative_sprite_priority,
           width = 72,
           height = 68,
           shift = util.by_pixel(3.5, -4.5),
@@ -4324,11 +4854,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-16.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 19,
         shift = util.by_pixel(2, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-16.png",
+          priority = base_decorative_sprite_priority,
           width = 73,
           height = 39,
           shift = util.by_pixel(1.75, -3.25),
@@ -4337,11 +4869,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-17.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 23,
         shift = util.by_pixel(4.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-17.png",
+          priority = base_decorative_sprite_priority,
           width = 59,
           height = 47,
           shift = util.by_pixel(4.25, -3.25),
@@ -4350,11 +4884,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-18.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 14,
         shift = util.by_pixel(6, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-18.png",
+          priority = base_decorative_sprite_priority,
           width = 49,
           height = 29,
           shift = util.by_pixel(5.75, -3.75),
@@ -4363,11 +4899,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-19.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 24,
         shift = util.by_pixel(6.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-19.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 48,
           shift = util.by_pixel(6.75, -2),
@@ -4376,11 +4914,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-06.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 45,
         shift = util.by_pixel(8.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-06.png",
+          priority = base_decorative_sprite_priority,
           width = 102,
           height = 90,
           shift = util.by_pixel(9, -3.5),
@@ -4389,11 +4929,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-07.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 33,
         shift = util.by_pixel(9, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-07.png",
+          priority = base_decorative_sprite_priority,
           width = 122,
           height = 67,
           shift = util.by_pixel(9, -3.75),
@@ -4402,11 +4944,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-08.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 31,
         shift = util.by_pixel(0.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-08.png",
+          priority = base_decorative_sprite_priority,
           width = 101,
           height = 63,
           shift = util.by_pixel(0.75, -4.25),
@@ -4415,11 +4959,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-09.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 39,
         shift = util.by_pixel(6.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-09.png",
+          priority = base_decorative_sprite_priority,
           width = 82,
           height = 77,
           shift = util.by_pixel(6.5, -6.75),
@@ -4428,11 +4974,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-10.png",
+        priority = base_decorative_sprite_priority,
         width = 55,
         height = 38,
         shift = util.by_pixel(5.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-10.png",
+          priority = base_decorative_sprite_priority,
           width = 109,
           height = 76,
           shift = util.by_pixel(5.75, -4.5),
@@ -4441,11 +4989,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-11.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 27,
         shift = util.by_pixel(4.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-11.png",
+          priority = base_decorative_sprite_priority,
           width = 84,
           height = 52,
           shift = util.by_pixel(4.5, -5.5),
@@ -4454,11 +5004,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-12.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 30,
         shift = util.by_pixel(6.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-12.png",
+          priority = base_decorative_sprite_priority,
           width = 66,
           height = 60,
           shift = util.by_pixel(7, -6),
@@ -4467,11 +5019,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-00.png",
+        priority = base_decorative_sprite_priority,
         width = 73,
         height = 60,
         shift = util.by_pixel(8.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-00.png",
+          priority = base_decorative_sprite_priority,
           width = 147,
           height = 118,
           shift = util.by_pixel(8.75, -4),
@@ -4480,11 +5034,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-01.png",
+        priority = base_decorative_sprite_priority,
         width = 77,
         height = 46,
         shift = util.by_pixel(9.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-01.png",
+          priority = base_decorative_sprite_priority,
           width = 153,
           height = 91,
           shift = util.by_pixel(9.75, -3.75),
@@ -4493,11 +5049,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-02.png",
+        priority = base_decorative_sprite_priority,
         width = 79,
         height = 48,
         shift = util.by_pixel(5.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-02.png",
+          priority = base_decorative_sprite_priority,
           width = 158,
           height = 96,
           shift = util.by_pixel(5, -1),
@@ -4506,11 +5064,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-03.png",
+        priority = base_decorative_sprite_priority,
         width = 86,
         height = 72,
         shift = util.by_pixel(3, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-03.png",
+          priority = base_decorative_sprite_priority,
           width = 172,
           height = 144,
           shift = util.by_pixel(3, -2),
@@ -4519,11 +5079,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-04.png",
+        priority = base_decorative_sprite_priority,
         width = 81,
         height = 36,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-04.png",
+          priority = base_decorative_sprite_priority,
           width = 161,
           height = 73,
           shift = util.by_pixel(4.75, -3.25),
@@ -4532,11 +5094,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-hairy-grass/green-hairy-grass-05.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 36,
         shift = util.by_pixel(4, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-hairy-grass/hr-green-hairy-grass-05.png",
+          priority = base_decorative_sprite_priority,
           width = 119,
           height = 72,
           shift = util.by_pixel(3.75, -4),
@@ -4579,11 +5143,13 @@ data:extend{
       --greenCarpet
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-08.png",
+        priority = base_decorative_sprite_priority,
         width = 126,
         height = 121,
         shift = util.by_pixel(-4, 12.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-08.png",
+          priority = base_decorative_sprite_priority,
           width = 252,
           height = 241,
           shift = util.by_pixel(-4, 12.75),
@@ -4592,11 +5158,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-09.png",
+        priority = base_decorative_sprite_priority,
         width = 130,
         height = 68,
         shift = util.by_pixel(0, 9),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-09.png",
+          priority = base_decorative_sprite_priority,
           width = 260,
           height = 135,
           shift = util.by_pixel(0, 9.25),
@@ -4605,11 +5173,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-10.png",
+        priority = base_decorative_sprite_priority,
         width = 136,
         height = 145,
         shift = util.by_pixel(5, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-10.png",
+          priority = base_decorative_sprite_priority,
           width = 272,
           height = 290,
           shift = util.by_pixel(5, -7.5),
@@ -4618,11 +5188,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-11.png",
+        priority = base_decorative_sprite_priority,
         width = 134,
         height = 127,
         shift = util.by_pixel(1, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-11.png",
+          priority = base_decorative_sprite_priority,
           width = 267,
           height = 253,
           shift = util.by_pixel(0.75, -1.75),
@@ -4631,11 +5203,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-03.png",
+        priority = base_decorative_sprite_priority,
         width = 142,
         height = 108,
         shift = util.by_pixel(2, -15),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-03.png",
+          priority = base_decorative_sprite_priority,
           width = 282,
           height = 220,
           shift = util.by_pixel(2, -15.5),
@@ -4644,11 +5218,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-04.png",
+        priority = base_decorative_sprite_priority,
         width = 129,
         height = 73,
         shift = util.by_pixel(3.5, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-04.png",
+          priority = base_decorative_sprite_priority,
           width = 264,
           height = 146,
           shift = util.by_pixel(2, -7.5),
@@ -4657,11 +5233,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-05.png",
+        priority = base_decorative_sprite_priority,
         width = 118,
         height = 131,
         shift = util.by_pixel(4, 1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-05.png",
+          priority = base_decorative_sprite_priority,
           width = 235,
           height = 262,
           shift = util.by_pixel(4.25, 2),
@@ -4670,11 +5248,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-06.png",
+        priority = base_decorative_sprite_priority,
         width = 126,
         height = 129,
         shift = util.by_pixel(2, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-06.png",
+          priority = base_decorative_sprite_priority,
           width = 260,
           height = 257,
           shift = util.by_pixel(-0.5, -6.25),
@@ -4683,11 +5263,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-07.png",
+        priority = base_decorative_sprite_priority,
         width = 122,
         height = 126,
         shift = util.by_pixel(6, 2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-07.png",
+          priority = base_decorative_sprite_priority,
           width = 244,
           height = 255,
           shift = util.by_pixel(5.5, 2.75),
@@ -4696,11 +5278,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-00.png",
+        priority = base_decorative_sprite_priority,
         width = 144,
         height = 146,
         shift = util.by_pixel(2, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-00.png",
+          priority = base_decorative_sprite_priority,
           width = 289,
           height = 292,
           shift = util.by_pixel(1.75, -3),
@@ -4709,11 +5293,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-01.png",
+        priority = base_decorative_sprite_priority,
         width = 137,
         height = 132,
         shift = util.by_pixel(0.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-01.png",
+          priority = base_decorative_sprite_priority,
           width = 273,
           height = 264,
           shift = util.by_pixel(0.25, -0.5),
@@ -4722,11 +5308,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-carpet-grass/green-carpet-grass-02.png",
+        priority = base_decorative_sprite_priority,
         width = 123,
         height = 93,
         shift = util.by_pixel(-4.5, 14.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-carpet-grass/hr-green-carpet-grass-02.png",
+          priority = base_decorative_sprite_priority,
           width = 246,
           height = 185,
           shift = util.by_pixel(-4.5, 14.25),
@@ -4773,11 +5361,13 @@ data:extend{
       --wdbush
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-00.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 21,
         shift = util.by_pixel(5.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-00.png",
+          priority = base_decorative_sprite_priority,
           width = 62,
           height = 40,
           shift = util.by_pixel(5.5, -3.5),
@@ -4786,11 +5376,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-01.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 25,
         shift = util.by_pixel(5.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-01.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 49,
           shift = util.by_pixel(5.75, -3.75),
@@ -4799,11 +5391,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-02.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 19,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-02.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 39,
           shift = util.by_pixel(4.25, -2.75),
@@ -4812,11 +5406,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-03.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 23,
         shift = util.by_pixel(4.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-03.png",
+          priority = base_decorative_sprite_priority,
           width = 71,
           height = 46,
           shift = util.by_pixel(4.75, -3.5),
@@ -4825,11 +5421,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-04.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 22,
         shift = util.by_pixel(4, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-04.png",
+          priority = base_decorative_sprite_priority,
           width = 68,
           height = 45,
           shift = util.by_pixel(4, -4.25),
@@ -4838,11 +5436,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-05.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 21,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-05.png",
+          priority = base_decorative_sprite_priority,
           width = 52,
           height = 42,
           shift = util.by_pixel(4.5, -2.5),
@@ -4851,11 +5451,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-06.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 27,
         shift = util.by_pixel(5.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-06.png",
+          priority = base_decorative_sprite_priority,
           width = 83,
           height = 54,
           shift = util.by_pixel(5.75, -4.5),
@@ -4864,11 +5466,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-07.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 31,
         shift = util.by_pixel(7, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-07.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 62,
           shift = util.by_pixel(7, -3),
@@ -4877,11 +5481,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-08.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 31,
         shift = util.by_pixel(6.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-08.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 60,
           shift = util.by_pixel(6.25, -2.5),
@@ -4890,11 +5496,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-09.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 24,
         shift = util.by_pixel(2.5, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-09.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 49,
           shift = util.by_pixel(3, -4.75),
@@ -4903,11 +5511,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-10.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 30,
         shift = util.by_pixel(6, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-10.png",
+          priority = base_decorative_sprite_priority,
           width = 72,
           height = 59,
           shift = util.by_pixel(6, -1.75),
@@ -4916,11 +5526,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-11.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 26,
         shift = util.by_pixel(4, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-11.png",
+          priority = base_decorative_sprite_priority,
           width = 93,
           height = 51,
           shift = util.by_pixel(4.25, -2.25),
@@ -4929,11 +5541,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-12.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 24,
         shift = util.by_pixel(4.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-12.png",
+          priority = base_decorative_sprite_priority,
           width = 58,
           height = 47,
           shift = util.by_pixel(4, -6.25),
@@ -4942,11 +5556,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-13.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 27,
         shift = util.by_pixel(9, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-13.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 54,
           shift = util.by_pixel(9.25, -4),
@@ -4955,11 +5571,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-14.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 21,
         shift = util.by_pixel(5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-14.png",
+          priority = base_decorative_sprite_priority,
           width = 69,
           height = 43,
           shift = util.by_pixel(5.25, -3.25),
@@ -4968,11 +5586,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-15.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 19,
         shift = util.by_pixel(9, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-15.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 38,
           shift = util.by_pixel(8.75, -3.5),
@@ -4981,11 +5601,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-16.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 19,
         shift = util.by_pixel(0, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-16.png",
+          priority = base_decorative_sprite_priority,
           width = 48,
           height = 38,
           shift = util.by_pixel(-0.5, -2),
@@ -4994,11 +5616,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-17.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 17,
         shift = util.by_pixel(2, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-17.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 33,
           shift = util.by_pixel(2.25, -5.25),
@@ -5007,11 +5631,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-18.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 17,
         shift = util.by_pixel(3.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-18.png",
+          priority = base_decorative_sprite_priority,
           width = 46,
           height = 35,
           shift = util.by_pixel(3.5, -1.75),
@@ -5020,11 +5646,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/white-desert-bush/white-desert-bush-19.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 13,
         shift = util.by_pixel(3.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/white-desert-bush/hr-white-desert-bush-19.png",
+          priority = base_decorative_sprite_priority,
           width = 45,
           height = 27,
           shift = util.by_pixel(3.75, -2.75),
@@ -5071,11 +5699,13 @@ data:extend{
       --gdbush
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-00.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 24,
         shift = util.by_pixel(10, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-00.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 48,
           shift = util.by_pixel(9.75, -4.5),
@@ -5084,11 +5714,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-01.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 24,
         shift = util.by_pixel(4.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-01.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 48,
           shift = util.by_pixel(4.75, -3.5),
@@ -5097,11 +5729,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-02.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 26,
         shift = util.by_pixel(6.5, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-02.png",
+          priority = base_decorative_sprite_priority,
           width = 67,
           height = 53,
           shift = util.by_pixel(6.25, -7.25),
@@ -5110,11 +5744,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-03.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 24,
         shift = util.by_pixel(3, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-03.png",
+          priority = base_decorative_sprite_priority,
           width = 65,
           height = 49,
           shift = util.by_pixel(3.25, -2.75),
@@ -5123,11 +5759,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-04.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 26,
         shift = util.by_pixel(4.5, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-04.png",
+          priority = base_decorative_sprite_priority,
           width = 65,
           height = 51,
           shift = util.by_pixel(4.75, -7.25),
@@ -5136,11 +5774,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-05.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 24,
         shift = util.by_pixel(11, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-05.png",
+          priority = base_decorative_sprite_priority,
           width = 76,
           height = 49,
           shift = util.by_pixel(11, -4.75),
@@ -5149,11 +5789,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-06.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 25,
         shift = util.by_pixel(8, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-06.png",
+          priority = base_decorative_sprite_priority,
           width = 75,
           height = 50,
           shift = util.by_pixel(8.25, -4.5),
@@ -5162,11 +5804,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-07.png",
+        priority = base_decorative_sprite_priority,
         width = 38,
         height = 23,
         shift = util.by_pixel(5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-07.png",
+          priority = base_decorative_sprite_priority,
           width = 76,
           height = 46,
           shift = util.by_pixel(5, -3.5),
@@ -5175,11 +5819,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-08.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 22,
         shift = util.by_pixel(4.5, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-08.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 44,
           shift = util.by_pixel(4.25, -7),
@@ -5188,11 +5834,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-09.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 18,
         shift = util.by_pixel(7.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-09.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 36,
           shift = util.by_pixel(7.75, -1),
@@ -5201,11 +5849,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-10.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 19,
         shift = util.by_pixel(2, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-10.png",
+          priority = base_decorative_sprite_priority,
           width = 52,
           height = 37,
           shift = util.by_pixel(2.5, -4.75),
@@ -5214,11 +5864,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-desert-bush/green-desert-bush-11.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 20,
         shift = util.by_pixel(9, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/green-desert-bush/hr-green-desert-bush-11.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 39,
           shift = util.by_pixel(8.75, -5.75),
@@ -5265,11 +5917,13 @@ data:extend{
       --rdbush
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-00.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 30,
         shift = util.by_pixel(5.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-00.png",
+          priority = base_decorative_sprite_priority,
           width = 82,
           height = 60,
           shift = util.by_pixel(5.5, -4),
@@ -5278,11 +5932,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-01.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 27,
         shift = util.by_pixel(6, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-01.png",
+          priority = base_decorative_sprite_priority,
           width = 84,
           height = 55,
           shift = util.by_pixel(6.5, -6.75),
@@ -5291,11 +5947,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-02.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 28,
         shift = util.by_pixel(10.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-02.png",
+          priority = base_decorative_sprite_priority,
           width = 83,
           height = 55,
           shift = util.by_pixel(10.25, -6.25),
@@ -5304,11 +5962,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-03.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 27,
         shift = util.by_pixel(5.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-03.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 53,
           shift = util.by_pixel(5.5, -6.25),
@@ -5317,11 +5977,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-04.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 23,
         shift = util.by_pixel(7, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-04.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 48,
           shift = util.by_pixel(7.25, -3.5),
@@ -5330,11 +5992,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-05.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 19,
         shift = util.by_pixel(4.5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-05.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 38,
           shift = util.by_pixel(4.25, -5),
@@ -5343,11 +6007,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-06.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 21,
         shift = util.by_pixel(5, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-06.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 42,
           shift = util.by_pixel(5.25, -5.5),
@@ -5356,11 +6022,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-07.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 18,
         shift = util.by_pixel(7, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-07.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 36,
           shift = util.by_pixel(7.25, -3),
@@ -5369,11 +6037,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-08.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 17,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-08.png",
+          priority = base_decorative_sprite_priority,
           width = 54,
           height = 34,
           shift = util.by_pixel(5, -3),
@@ -5382,11 +6052,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-09.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 25,
         shift = util.by_pixel(2.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-09.png",
+          priority = base_decorative_sprite_priority,
           width = 70,
           height = 50,
           shift = util.by_pixel(3, -3),
@@ -5395,11 +6067,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-10.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 21,
         shift = util.by_pixel(3.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-10.png",
+          priority = base_decorative_sprite_priority,
           width = 58,
           height = 41,
           shift = util.by_pixel(3.5, -3.75),
@@ -5408,11 +6082,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-11.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 21,
         shift = util.by_pixel(4, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-11.png",
+          priority = base_decorative_sprite_priority,
           width = 51,
           height = 41,
           shift = util.by_pixel(4.25, -1.75),
@@ -5421,11 +6097,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-12.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 22,
         shift = util.by_pixel(1, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-12.png",
+          priority = base_decorative_sprite_priority,
           width = 67,
           height = 45,
           shift = util.by_pixel(1.25, -2.75),
@@ -5434,11 +6112,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-13.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 16,
         shift = util.by_pixel(4, -5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-13.png",
+          priority = base_decorative_sprite_priority,
           width = 49,
           height = 32,
           shift = util.by_pixel(4.25, -4.5),
@@ -5447,11 +6127,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-14.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 18,
         shift = util.by_pixel(6, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-14.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 35,
           shift = util.by_pixel(6.25, -3.25),
@@ -5460,11 +6142,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-15.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 18,
         shift = util.by_pixel(4, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-15.png",
+          priority = base_decorative_sprite_priority,
           width = 52,
           height = 36,
           shift = util.by_pixel(4, -3),
@@ -5473,11 +6157,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-16.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 13,
         shift = util.by_pixel(3.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-16.png",
+          priority = base_decorative_sprite_priority,
           width = 38,
           height = 28,
           shift = util.by_pixel(3.5, -2.5),
@@ -5486,11 +6172,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-17.png",
+        priority = base_decorative_sprite_priority,
         width = 19,
         height = 14,
         shift = util.by_pixel(3.5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-17.png",
+          priority = base_decorative_sprite_priority,
           width = 38,
           height = 28,
           shift = util.by_pixel(3.5, -3),
@@ -5499,11 +6187,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-18.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 28,
         shift = util.by_pixel(5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-18.png",
+          priority = base_decorative_sprite_priority,
           width = 86,
           height = 58,
           shift = util.by_pixel(5, -6),
@@ -5512,11 +6202,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/red-desert-bush/red-desert-bush-19.png",
+        priority = base_decorative_sprite_priority,
         width = 47,
         height = 30,
         shift = util.by_pixel(10.5, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/red-desert-bush/hr-red-desert-bush-19.png",
+          priority = base_decorative_sprite_priority,
           width = 93,
           height = 59,
           shift = util.by_pixel(10.75, -6.25),
@@ -5555,11 +6247,13 @@ data:extend{
       --greenSmall
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-00.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 42,
         shift = util.by_pixel(6, -6),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-00.png",
+          priority = base_decorative_sprite_priority,
           width = 122,
           height = 84,
           shift = util.by_pixel(6, -6),
@@ -5568,11 +6262,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-01.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 33,
         shift = util.by_pixel(1.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-01.png",
+          priority = base_decorative_sprite_priority,
           width = 101,
           height = 65,
           shift = util.by_pixel(1.25, 0.75),
@@ -5581,11 +6277,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-02.png",
+        priority = base_decorative_sprite_priority,
         width = 43,
         height = 37,
         shift = util.by_pixel(2.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-02.png",
+          priority = base_decorative_sprite_priority,
           width = 86,
           height = 74,
           shift = util.by_pixel(3, -2.5),
@@ -5594,11 +6292,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-03.png",
+        priority = base_decorative_sprite_priority,
         width = 54,
         height = 38,
         shift = util.by_pixel(-3, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-03.png",
+          priority = base_decorative_sprite_priority,
           width = 106,
           height = 74,
           shift = util.by_pixel(-3, -4),
@@ -5607,11 +6307,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-04.png",
+        priority = base_decorative_sprite_priority,
         width = 50,
         height = 34,
         shift = util.by_pixel(-2, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-04.png",
+          priority = base_decorative_sprite_priority,
           width = 100,
           height = 67,
           shift = util.by_pixel(-2.5, -2.25),
@@ -5620,11 +6322,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-05.png",
+        priority = base_decorative_sprite_priority,
         width = 58,
         height = 33,
         shift = util.by_pixel(-2, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-05.png",
+          priority = base_decorative_sprite_priority,
           width = 116,
           height = 65,
           shift = util.by_pixel(-2, -3.75),
@@ -5633,11 +6337,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-06.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 35,
         shift = util.by_pixel(2.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-06.png",
+          priority = base_decorative_sprite_priority,
           width = 81,
           height = 70,
           shift = util.by_pixel(2.75, -3),
@@ -5646,11 +6352,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-07.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 27,
         shift = util.by_pixel(-3, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-07.png",
+          priority = base_decorative_sprite_priority,
           width = 95,
           height = 54,
           shift = util.by_pixel(-3.25, -1.5),
@@ -5659,11 +6367,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-08.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 28,
         shift = util.by_pixel(-2.5, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-08.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 56,
           shift = util.by_pixel(-2.75, -2.5),
@@ -5672,11 +6382,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-09.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 27,
         shift = util.by_pixel(0.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-09.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 54,
           shift = util.by_pixel(0.25, -1.5),
@@ -5685,11 +6397,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-10.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 17,
         shift = util.by_pixel(6.5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-10.png",
+          priority = base_decorative_sprite_priority,
           width = 46,
           height = 33,
           shift = util.by_pixel(6, -1.75),
@@ -5698,11 +6412,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/green-small-grass/green-small-grass-11.png",
+        priority = base_decorative_sprite_priority,
         width = 20,
         height = 13,
         shift = util.by_pixel(3, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/green-small-grass/hr-green-small-grass-11.png",
+          priority = base_decorative_sprite_priority,
           width = 39,
           height = 26,
           shift = util.by_pixel(3.25, 0),
@@ -5753,11 +6469,13 @@ data:extend{
       --brownCarpet
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-06.png",
+        priority = base_decorative_sprite_priority,
         width = 120,
         height = 111,
         shift = util.by_pixel(-1, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-06.png",
+          priority = base_decorative_sprite_priority,
           width = 239,
           height = 220,
           shift = util.by_pixel(-1.25, -3.5),
@@ -5766,11 +6484,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-07.png",
+        priority = base_decorative_sprite_priority,
         width = 121,
         height = 138,
         shift = util.by_pixel(6.5, -7),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-07.png",
+          priority = base_decorative_sprite_priority,
           width = 241,
           height = 274,
           shift = util.by_pixel(6.25, -7),
@@ -5779,11 +6499,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-08.png",
+        priority = base_decorative_sprite_priority,
         width = 133,
         height = 131,
         shift = util.by_pixel(3.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-08.png",
+          priority = base_decorative_sprite_priority,
           width = 266,
           height = 261,
           shift = util.by_pixel(3.5, 0.25),
@@ -5792,11 +6514,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-09.png",
+        priority = base_decorative_sprite_priority,
         width = 133,
         height = 114,
         shift = util.by_pixel(10.5, -12),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-09.png",
+          priority = base_decorative_sprite_priority,
           width = 265,
           height = 228,
           shift = util.by_pixel(10.25, -11.5),
@@ -5805,11 +6529,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-10.png",
+        priority = base_decorative_sprite_priority,
         width = 144,
         height = 146,
         shift = util.by_pixel(4, 3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-10.png",
+          priority = base_decorative_sprite_priority,
           width = 288,
           height = 293,
           shift = util.by_pixel(4, 3.25),
@@ -5818,11 +6544,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-11.png",
+        priority = base_decorative_sprite_priority,
         width = 135,
         height = 133,
         shift = util.by_pixel(4.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-11.png",
+          priority = base_decorative_sprite_priority,
           width = 269,
           height = 265,
           shift = util.by_pixel(4.25, -4.25),
@@ -5831,11 +6559,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-00.png",
+        priority = base_decorative_sprite_priority,
         width = 105,
         height = 97,
         shift = util.by_pixel(2.5, 8.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-00.png",
+          priority = base_decorative_sprite_priority,
           width = 211,
           height = 195,
           shift = util.by_pixel(2.25, 8.25),
@@ -5844,11 +6574,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-01.png",
+        priority = base_decorative_sprite_priority,
         width = 124,
         height = 129,
         shift = util.by_pixel(0, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-01.png",
+          priority = base_decorative_sprite_priority,
           width = 248,
           height = 259,
           shift = util.by_pixel(0, -2.75),
@@ -5857,11 +6589,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-02.png",
+        priority = base_decorative_sprite_priority,
         width = 129,
         height = 131,
         shift = util.by_pixel(1.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-02.png",
+          priority = base_decorative_sprite_priority,
           width = 258,
           height = 263,
           shift = util.by_pixel(1.5, -2.75),
@@ -5870,11 +6604,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-03.png",
+        priority = base_decorative_sprite_priority,
         width = 141,
         height = 63,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-03.png",
+          priority = base_decorative_sprite_priority,
           width = 283,
           height = 126,
           shift = util.by_pixel(5.25, -2.5),
@@ -5883,11 +6619,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-04.png",
+        priority = base_decorative_sprite_priority,
         width = 76,
         height = 133,
         shift = util.by_pixel(0, -7.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-04.png",
+          priority = base_decorative_sprite_priority,
           width = 152,
           height = 265,
           shift = util.by_pixel(0, -7.25),
@@ -5896,11 +6634,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-05.png",
+        priority = base_decorative_sprite_priority,
         width = 123,
         height = 108,
         shift = util.by_pixel(3.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-05.png",
+          priority = base_decorative_sprite_priority,
           width = 247,
           height = 216,
           shift = util.by_pixel(3.25, -1),
@@ -5942,11 +6682,13 @@ data:extend{
       --hairyBrown
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-00.png",
+        priority = base_decorative_sprite_priority,
         width = 76,
         height = 65,
         shift = util.by_pixel(3, -5.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-00.png",
+          priority = base_decorative_sprite_priority,
           width = 151,
           height = 129,
           shift = util.by_pixel(3.25, -5.25),
@@ -5955,11 +6697,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-01.png",
+        priority = base_decorative_sprite_priority,
         width = 84,
         height = 61,
         shift = util.by_pixel(5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-01.png",
+          priority = base_decorative_sprite_priority,
           width = 167,
           height = 122,
           shift = util.by_pixel(4.75, -2),
@@ -5968,11 +6712,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-02.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 48,
         shift = util.by_pixel(5.5, -1),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-02.png",
+          priority = base_decorative_sprite_priority,
           width = 107,
           height = 95,
           shift = util.by_pixel(5.75, -0.75),
@@ -5981,11 +6727,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-03.png",
+        priority = base_decorative_sprite_priority,
         width = 60,
         height = 37,
         shift = util.by_pixel(5, -1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-03.png",
+          priority = base_decorative_sprite_priority,
           width = 121,
           height = 74,
           shift = util.by_pixel(4.75, -1),
@@ -5994,11 +6742,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-04.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 51,
         shift = util.by_pixel(4, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-04.png",
+          priority = base_decorative_sprite_priority,
           width = 98,
           height = 102,
           shift = util.by_pixel(4, -3),
@@ -6007,11 +6757,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-05.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 33,
         shift = util.by_pixel(4.5, -2.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-05.png",
+          priority = base_decorative_sprite_priority,
           width = 83,
           height = 67,
           shift = util.by_pixel(4.75, -2.25),
@@ -6020,11 +6772,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-06.png",
+        priority = base_decorative_sprite_priority,
         width = 51,
         height = 34,
         shift = util.by_pixel(2.5, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-06.png",
+          priority = base_decorative_sprite_priority,
           width = 103,
           height = 70,
           shift = util.by_pixel(2.25, -4),
@@ -6033,11 +6787,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-07.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 30,
         shift = util.by_pixel(4, -2),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-07.png",
+          priority = base_decorative_sprite_priority,
           width = 89,
           height = 59,
           shift = util.by_pixel(4.25, -1.75),
@@ -6046,11 +6802,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-08.png",
+        priority = base_decorative_sprite_priority,
         width = 48,
         height = 51,
         shift = util.by_pixel(-2, 1.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-08.png",
+          priority = base_decorative_sprite_priority,
           width = 97,
           height = 102,
           shift = util.by_pixel(-2.25, 1.5),
@@ -6059,11 +6817,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-09.png",
+        priority = base_decorative_sprite_priority,
         width = 64,
         height = 38,
         shift = util.by_pixel(14, -4),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-09.png",
+          priority = base_decorative_sprite_priority,
           width = 128,
           height = 77,
           shift = util.by_pixel(14, -4.25),
@@ -6072,11 +6832,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-10.png",
+        priority = base_decorative_sprite_priority,
         width = 71,
         height = 37,
         shift = util.by_pixel(-4.5, -6.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-10.png",
+          priority = base_decorative_sprite_priority,
           width = 141,
           height = 74,
           shift = util.by_pixel(-4.25, -7),
@@ -6085,11 +6847,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-11.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 43,
         shift = util.by_pixel(1, 3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-11.png",
+          priority = base_decorative_sprite_priority,
           width = 55,
           height = 87,
           shift = util.by_pixel(1.25, 3.25),
@@ -6098,11 +6862,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-12.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 27,
         shift = util.by_pixel(0.5, -4.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-12.png",
+          priority = base_decorative_sprite_priority,
           width = 107,
           height = 53,
           shift = util.by_pixel(0.75, -4.25),
@@ -6111,11 +6877,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-13.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 24,
         shift = util.by_pixel(1, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-13.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 48,
           shift = util.by_pixel(1, -3),
@@ -6124,11 +6892,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-14.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 24,
         shift = util.by_pixel(5, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-14.png",
+          priority = base_decorative_sprite_priority,
           width = 71,
           height = 47,
           shift = util.by_pixel(5.25, -3.25),
@@ -6137,11 +6907,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-15.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 25,
         shift = util.by_pixel(1.5, -0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-15.png",
+          priority = base_decorative_sprite_priority,
           width = 66,
           height = 50,
           shift = util.by_pixel(1.5, -0.5),
@@ -6150,11 +6922,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-16.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 25,
         shift = util.by_pixel(3.5, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-16.png",
+          priority = base_decorative_sprite_priority,
           width = 61,
           height = 48,
           shift = util.by_pixel(3.75, -3.5),
@@ -6163,11 +6937,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-17.png",
+        priority = base_decorative_sprite_priority,
         width = 14,
         height = 19,
         shift = util.by_pixel(-2, -3.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-17.png",
+          priority = base_decorative_sprite_priority,
           width = 28,
           height = 37,
           shift = util.by_pixel(-1.5, -3.25),
@@ -6176,11 +6952,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-18.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 14,
         shift = util.by_pixel(6, -3),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-18.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 29,
           shift = util.by_pixel(5.75, -3.25),
@@ -6189,11 +6967,13 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/brown-hairy-grass/brown-hairy-grass-19.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 17,
         shift = util.by_pixel(1.5, 0.5),
         hr_version = {
           filename = "__base__/graphics/decorative/brown-hairy-grass/hr-brown-hairy-grass-19.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 34,
           shift = util.by_pixel(1.75, 0),
@@ -6216,7 +6996,7 @@ data:extend{
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 5,
+      mining_time = 8,
       results = {{name = "stone", amount_min = 25, amount_max = 50}, {name = "coal", amount_min = 25, amount_max = 50}},
       --count = 200
     },
@@ -6478,7 +7258,7 @@ data:extend{
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 8,
+      mining_time = 5,
       result = "stone",
       count = 20
     },
@@ -6797,12 +7577,14 @@ data:extend{
     {
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-01.png",
+        priority = base_decorative_sprite_priority,
         width = 45,
         height = 32,
         shift = {0.078125, 0.109375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-01.png",
+          priority = base_decorative_sprite_priority,
           width = 89,
           height = 63,
           scale = 0.5,
@@ -6811,12 +7593,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-02.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 33,
         shift = {0.015625, 0.125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-02.png",
+          priority = base_decorative_sprite_priority,
           width = 77,
           height = 66,
           scale = 0.5,
@@ -6825,12 +7609,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-03.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 32,
         shift = {0.140625, 0.171875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-03.png",
+          priority = base_decorative_sprite_priority,
           width = 92,
           height = 63,
           scale = 0.5,
@@ -6839,12 +7625,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-04.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 30,
         shift = {0, 0.1875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-04.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 59,
           scale = 0.5,
@@ -6853,12 +7641,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-05.png",
+        priority = base_decorative_sprite_priority,
         width = 52,
         height = 36,
         shift = {0.203125, 0.171875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-05.png",
+          priority = base_decorative_sprite_priority,
           width = 104,
           height = 72,
           scale = 0.5,
@@ -6867,12 +7657,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-06.png",
+        priority = base_decorative_sprite_priority,
         width = 42,
         height = 41,
         shift = {0.015625, 0.21875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-06.png",
+          priority = base_decorative_sprite_priority,
           width = 83,
           height = 82,
           scale = 0.5,
@@ -6881,12 +7673,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-07.png",
+        priority = base_decorative_sprite_priority,
         width = 56,
         height = 33,
         shift = {0.0625, 0.3125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-07.png",
+          priority = base_decorative_sprite_priority,
           width = 111,
           height = 65,
           scale = 0.5,
@@ -6895,12 +7689,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-08.png",
+        priority = base_decorative_sprite_priority,
         width = 40,
         height = 41,
         shift = {0.109375, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-08.png",
+          priority = base_decorative_sprite_priority,
           width = 79,
           height = 81,
           scale = 0.5,
@@ -6909,12 +7705,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-09.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 28,
         shift = {0.015625, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-09.png",
+          priority = base_decorative_sprite_priority,
           width = 98,
           height = 56,
           scale = 0.5,
@@ -6923,12 +7721,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-10.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 34,
         shift = {0, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-10.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 68,
           scale = 0.5,
@@ -6937,12 +7737,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-11.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 36,
         shift = {-0.03125, 0.125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-11.png",
+          priority = base_decorative_sprite_priority,
           width = 105,
           height = 71,
           scale = 0.5,
@@ -6951,12 +7753,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-medium/rock-medium-12.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 40,
         shift = {0.078125, -0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-medium/hr-rock-medium-12.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 80,
           scale = 0.5,
@@ -6978,12 +7782,14 @@ data:extend{
     {
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-01.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 19,
         shift = {0.0625, 0.125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-01.png",
+          priority = base_decorative_sprite_priority,
           width = 51,
           height = 37,
           scale = 0.5,
@@ -6992,12 +7798,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-02.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 18,
         shift = {0.046875, 0.078125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-02.png",
+          priority = base_decorative_sprite_priority,
           width = 52,
           height = 35,
           scale = 0.5,
@@ -7006,12 +7814,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-03.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 21,
         shift = {-0.015625, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-03.png",
+          priority = base_decorative_sprite_priority,
           width = 46,
           height = 42,
           scale = 0.5,
@@ -7020,12 +7830,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-04.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 17,
         shift = {0.015625, 0.15625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-04.png",
+          priority = base_decorative_sprite_priority,
           width = 53,
           height = 33,
           scale = 0.5,
@@ -7034,12 +7846,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-05.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 23,
         shift = {0.046875, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-05.png",
+          priority = base_decorative_sprite_priority,
           width = 47,
           height = 46,
           scale = 0.5,
@@ -7048,12 +7862,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-06.png",
+        priority = base_decorative_sprite_priority,
         width = 31,
         height = 21,
         shift = {-0.03125, 0.09375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-06.png",
+          priority = base_decorative_sprite_priority,
           width = 62,
           height = 41,
           scale = 0.5,
@@ -7062,12 +7878,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-07.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 18,
         shift = {-0.015625, 0.078125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-07.png",
+          priority = base_decorative_sprite_priority,
           width = 64,
           height = 36,
           scale = 0.5,
@@ -7076,12 +7894,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-08.png",
+        priority = base_decorative_sprite_priority,
         width = 33,
         height = 16,
         shift = {-0.71875, -0.171875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-08.png",
+          priority = base_decorative_sprite_priority,
           width = 65,
           height = 31,
           scale = 0.5,
@@ -7090,12 +7910,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-09.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 17,
         shift = {-0.09375, 0.109375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-09.png",
+          priority = base_decorative_sprite_priority,
           width = 46,
           height = 34,
           scale = 0.5,
@@ -7104,12 +7926,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-10.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 17,
         shift = {0, 0.125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-10.png",
+          priority = base_decorative_sprite_priority,
           width = 48,
           height = 34,
           scale = 0.5,
@@ -7118,12 +7942,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-11.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 17,
         shift = {-0.09375, 0.078125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-11.png",
+          priority = base_decorative_sprite_priority,
           width = 51,
           height = 33,
           scale = 0.5,
@@ -7132,12 +7958,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-12.png",
+        priority = base_decorative_sprite_priority,
         width = 24,
         height = 20,
         shift = {0.078125, 0.109375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-12.png",
+          priority = base_decorative_sprite_priority,
           width = 47,
           height = 39,
           scale = 0.5,
@@ -7146,12 +7974,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-13.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 17,
         shift = {0, 0.09375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-13.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 33,
           scale = 0.5,
@@ -7160,12 +7990,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-14.png",
+        priority = base_decorative_sprite_priority,
         width = 22,
         height = 15,
         shift = {0.046875, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-14.png",
+          priority = base_decorative_sprite_priority,
           width = 43,
           height = 30,
           scale = 0.5,
@@ -7174,12 +8006,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-15.png",
+        priority = base_decorative_sprite_priority,
         width = 21,
         height = 19,
         shift = {0, 0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-15.png",
+          priority = base_decorative_sprite_priority,
           width = 41,
           height = 37,
           scale = 0.5,
@@ -7188,12 +8022,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-small/rock-small-16.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 17,
         shift = {0.015625, 0.125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-small/hr-rock-small-16.png",
+          priority = base_decorative_sprite_priority,
           width = 46,
           height = 33,
           scale = 0.5,
@@ -7215,12 +8051,14 @@ data:extend{
     {
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-01.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 11,
         shift = {0.03125, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-01.png",
+          priority = base_decorative_sprite_priority,
           width = 29,
           height = 21,
           scale = 0.5,
@@ -7229,12 +8067,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-02.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 10,
         shift = {0, 0.03125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-02.png",
+          priority = base_decorative_sprite_priority,
           width = 30,
           height = 19,
           scale = 0.5,
@@ -7243,12 +8083,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-03.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 12,
         shift = {0.015625, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-03.png",
+          priority = base_decorative_sprite_priority,
           width = 29,
           height = 24,
           scale = 0.5,
@@ -7257,12 +8099,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-04.png",
+        priority = base_decorative_sprite_priority,
         width = 16,
         height = 10,
         shift = {0.03125, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-04.png",
+          priority = base_decorative_sprite_priority,
           width = 32,
           height = 20,
           scale = 0.5,
@@ -7271,12 +8115,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-05.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 13,
         shift = {0, -0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-05.png",
+          priority = base_decorative_sprite_priority,
           width = 29,
           height = 25,
           scale = 0.5,
@@ -7285,12 +8131,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-06.png",
+        priority = base_decorative_sprite_priority,
         width = 18,
         height = 12,
         shift = {0, -0.03125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-06.png",
+          priority = base_decorative_sprite_priority,
           width = 36,
           height = 24,
           scale = 0.5,
@@ -7299,12 +8147,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-07.png",
+        priority = base_decorative_sprite_priority,
         width = 39,
         height = 17,
         shift = {-0.34375, -0.140625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-07.png",
+          priority = base_decorative_sprite_priority,
           width = 78,
           height = 34,
           scale = 0.5,
@@ -7313,12 +8163,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-08.png",
+        priority = base_decorative_sprite_priority,
         width = 18,
         height = 10,
         shift = {-0.03125, 0},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-08.png",
+          priority = base_decorative_sprite_priority,
           width = 35,
           height = 19,
           scale = 0.5,
@@ -7327,12 +8179,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-09.png",
+        priority = base_decorative_sprite_priority,
         width = 14,
         height = 10,
         shift = {0.015625, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-09.png",
+          priority = base_decorative_sprite_priority,
           width = 28,
           height = 20,
           scale = 0.5,
@@ -7341,12 +8195,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-10.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 10,
         shift = {0.015625, -0.03125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-10.png",
+          priority = base_decorative_sprite_priority,
           width = 29,
           height = 20,
           scale = 0.5,
@@ -7355,12 +8211,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-11.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 10,
         shift = {0.046875, 0},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-11.png",
+          priority = base_decorative_sprite_priority,
           width = 29,
           height = 20,
           scale = 0.5,
@@ -7369,12 +8227,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-12.png",
+        priority = base_decorative_sprite_priority,
         width = 15,
         height = 11,
         shift = {0.015625, 0},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-12.png",
+          priority = base_decorative_sprite_priority,
           width = 29,
           height = 22,
           scale = 0.5,
@@ -7383,12 +8243,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-13.png",
+        priority = base_decorative_sprite_priority,
         width = 14,
         height = 10,
         shift = {0.03125, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-13.png",
+          priority = base_decorative_sprite_priority,
           width = 27,
           height = 19,
           scale = 0.5,
@@ -7397,12 +8259,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-14.png",
+        priority = base_decorative_sprite_priority,
         width = 14,
         height = 10,
         shift = {0.015625, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-14.png",
+          priority = base_decorative_sprite_priority,
           width = 27,
           height = 19,
           scale = 0.5,
@@ -7411,12 +8275,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-15.png",
+        priority = base_decorative_sprite_priority,
         width = 13,
         height = 11,
         shift = {0, 0.015625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-15.png",
+          priority = base_decorative_sprite_priority,
           width = 26,
           height = 22,
           scale = 0.5,
@@ -7425,12 +8291,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/rock-tiny/rock-tiny-16.png",
+        priority = base_decorative_sprite_priority,
         width = 14,
         height = 10,
         shift = {0.03125, 0},
         hr_version =
         {
           filename = "__base__/graphics/decorative/rock-tiny/hr-rock-tiny-16.png",
+          priority = base_decorative_sprite_priority,
           width = 27,
           height = 20,
           scale = 0.5,
@@ -7462,6 +8330,13 @@ data:extend{
     loot =
     {
       {item = "stone", probability = 1, count_min = 10, count_max = 15}
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
@@ -7708,12 +8583,14 @@ data:extend{
     {
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-01.png",
+        priority = base_decorative_sprite_priority,
         width = 67,
         height = 41,
         shift = {0.328125, 0.515625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-01.png",
+          priority = base_decorative_sprite_priority,
           width = 134,
           height = 82,
           shift = {0.328125, 0.515625},
@@ -7722,12 +8599,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-02.png",
+        priority = base_decorative_sprite_priority,
         width = 55,
         height = 40,
         shift = {0.15625, 0.5625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-02.png",
+          priority = base_decorative_sprite_priority,
           width = 110,
           height = 79,
           shift = {0.15625, 0.570312},
@@ -7736,12 +8615,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-03.png",
+        priority = base_decorative_sprite_priority,
         width = 44,
         height = 31,
         shift = {0.34375, 0.484375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-03.png",
+          priority = base_decorative_sprite_priority,
           width = 90,
           height = 60,
           shift = {0.34375, 0.484375},
@@ -7750,12 +8631,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-04.png",
+        priority = base_decorative_sprite_priority,
         width = 55,
         height = 45,
         shift = {0.296875, 0.484375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-04.png",
+          priority = base_decorative_sprite_priority,
           width = 110,
           height = 89,
           shift = {0.296875, 0.476562},
@@ -7764,12 +8647,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-05.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 38,
         shift = {0.359375, 0.25},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-05.png",
+          priority = base_decorative_sprite_priority,
           width = 106,
           height = 76,
           shift = {0.359375, 0.25},
@@ -7778,12 +8663,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-06.png",
+        priority = base_decorative_sprite_priority,
         width = 50,
         height = 46,
         shift = {0.4375, 0.296875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-06.png",
+          priority = base_decorative_sprite_priority,
           width = 100,
           height = 92,
           shift = {0.4375, 0.296875},
@@ -7792,12 +8679,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-07.png",
+        priority = base_decorative_sprite_priority,
         width = 41,
         height = 41,
         shift = {0.59375, 0.40625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-07.png",
+          priority = base_decorative_sprite_priority,
           width = 82,
           height = 83,
           shift = {0.59375, 0.398438},
@@ -7806,12 +8695,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-08.png",
+        priority = base_decorative_sprite_priority,
         width = 62,
         height = 47,
         shift = {0.59375, 0.328125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-08.png",
+          priority = base_decorative_sprite_priority,
           width = 123,
           height = 92,
           shift = {0.601562, 0.328125},
@@ -7820,12 +8711,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-09.png",
+        priority = base_decorative_sprite_priority,
         width = 74,
         height = 38,
         shift = {0.5625, 0.3125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-09.png",
+          priority = base_decorative_sprite_priority,
           width = 146,
           height = 76,
           shift = {0.5625, 0.3125},
@@ -7834,12 +8727,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-10.png",
+        priority = base_decorative_sprite_priority,
         width = 56,
         height = 39,
         shift = {0.46875, 0.453125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-10.png",
+          priority = base_decorative_sprite_priority,
           width = 112,
           height = 77,
           shift = {0.46875, 0.460938},
@@ -7848,12 +8743,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-11.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 30,
         shift = {0.4375, 0.515625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-11.png",
+          priority = base_decorative_sprite_priority,
           width = 91,
           height = 61,
           shift = {0.445312, 0.507812},
@@ -7862,12 +8759,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-12.png",
+        priority = base_decorative_sprite_priority,
         width = 53,
         height = 43,
         shift = {0.390625, 0.453125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-12.png",
+          priority = base_decorative_sprite_priority,
           width = 105,
           height = 84,
           shift = {0.398438, 0.453125},
@@ -7876,12 +8775,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-13.png",
+        priority = base_decorative_sprite_priority,
         width = 46,
         height = 36,
         shift = {0.375, 0.640625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-13.png",
+          priority = base_decorative_sprite_priority,
           width = 94,
           height = 73,
           shift = {0.375, 0.632812},
@@ -7890,12 +8791,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-14.png",
+        priority = base_decorative_sprite_priority,
         width = 61,
         height = 45,
         shift = {0.359375, 0.578125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-14.png",
+          priority = base_decorative_sprite_priority,
           width = 122,
           height = 89,
           shift = {0.359375, 0.570312},
@@ -7904,12 +8807,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-15.png",
+        priority = base_decorative_sprite_priority,
         width = 49,
         height = 33,
         shift = {0.1875, 0.765625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-15.png",
+          priority = base_decorative_sprite_priority,
           width = 98,
           height = 65,
           shift = {0.1875, 0.773438},
@@ -7918,12 +8823,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-16.png",
+        priority = base_decorative_sprite_priority,
         width = 73,
         height = 38,
         shift = {0.109375, 0.71875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-medium-16.png",
+          priority = base_decorative_sprite_priority,
           width = 144,
           height = 76,
           shift = {0.109375, 0.71875},
@@ -7947,12 +8854,14 @@ data:extend{
     {
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-01.png",
+        priority = base_decorative_sprite_priority,
         width = 28,
         height = 23,
         shift = {0.40625, 0.484375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-01.png",
+          priority = base_decorative_sprite_priority,
           width = 56,
           height = 45,
           shift = {0.40625, 0.476562},
@@ -7961,12 +8870,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-02.png",
+        priority = base_decorative_sprite_priority,
         width = 27,
         height = 22,
         shift = {0.296875, 0.484375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-02.png",
+          priority = base_decorative_sprite_priority,
           width = 54,
           height = 45,
           shift = {0.296875, 0.476562},
@@ -7975,12 +8886,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-03.png",
+        priority = base_decorative_sprite_priority,
         width = 23,
         height = 20,
         shift = {0.328125, 0.53125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-03.png",
+          priority = base_decorative_sprite_priority,
           width = 44,
           height = 40,
           shift = {0.328125, 0.53125},
@@ -7989,12 +8902,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-04.png",
+        priority = base_decorative_sprite_priority,
         width = 30,
         height = 22,
         shift = {0.265625, 0.59375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-04.png",
+          priority = base_decorative_sprite_priority,
           width = 60,
           height = 43,
           shift = {0.265625, 0.601562},
@@ -8003,12 +8918,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-05.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 24,
         shift = {0.296875, 0.46875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-05.png",
+          priority = base_decorative_sprite_priority,
           width = 52,
           height = 48,
           shift = {0.296875, 0.46875},
@@ -8017,12 +8934,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-06.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 20,
         shift = {0.546875, 0.53125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-06.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 39,
           shift = {0.554688, 0.523438},
@@ -8031,12 +8950,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-07.png",
+        priority = base_decorative_sprite_priority,
         width = 36,
         height = 21,
         shift = {0.578125, 0.546875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-07.png",
+          priority = base_decorative_sprite_priority,
           width = 73,
           height = 41,
           shift = {0.570312, 0.539062},
@@ -8045,12 +8966,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-08.png",
+        priority = base_decorative_sprite_priority,
         width = 25,
         height = 23,
         shift = {0.640625, 0.390625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-08.png",
+          priority = base_decorative_sprite_priority,
           width = 50,
           height = 46,
           shift = {0.640625, 0.390625},
@@ -8059,12 +8982,14 @@ data:extend{
        },
        {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-09.png",
+        priority = base_decorative_sprite_priority,
         width = 26,
         height = 22,
         shift = {0.671875, 0.34375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-09.png",
+          priority = base_decorative_sprite_priority,
           width = 52,
           height = 43,
           shift = {0.671875, 0.335938},
@@ -8073,12 +8998,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-10.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 20,
         shift = {0.625, 0.40625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-10.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 39,
           shift = {0.632812, 0.398438},
@@ -8087,12 +9014,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-11.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 21,
         shift = {0.453125, 0.609375},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-11.png",
+          priority = base_decorative_sprite_priority,
           width = 57,
           height = 41,
           shift = {0.460938, 0.617188},
@@ -8101,12 +9030,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-12.png",
+        priority = base_decorative_sprite_priority,
         width = 34,
         height = 26,
         shift = {0.46875, 0.5625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-12.png",
+          priority = base_decorative_sprite_priority,
           width = 67,
           height = 51,
           shift = {0.460938, 0.570312},
@@ -8115,12 +9046,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-13.png",
+        priority = base_decorative_sprite_priority,
         width = 35,
         height = 19,
         shift = {0.484375, 0.796875},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-13.png",
+          priority = base_decorative_sprite_priority,
           width = 70,
           height = 37,
           shift = {0.484375, 0.789062},
@@ -8129,12 +9062,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-14.png",
+        priority = base_decorative_sprite_priority,
         width = 32,
         height = 24,
         shift = {0.1875, 0.90625},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-14.png",
+          priority = base_decorative_sprite_priority,
           width = 63,
           height = 48,
           shift = {0.179688, 0.90625},
@@ -8143,12 +9078,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-15.png",
+        priority = base_decorative_sprite_priority,
         width = 29,
         height = 24,
         shift = {0.140625, 0.78125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-15.png",
+          priority = base_decorative_sprite_priority,
           width = 56,
           height = 48,
           shift = {0.140625, 0.78125},
@@ -8157,12 +9094,14 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-16.png",
+        priority = base_decorative_sprite_priority,
         width = 37,
         height = 23,
         shift = {-0.03125, 0.78125},
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-rock/hr-sand-rock-small-16.png",
+          priority = base_decorative_sprite_priority,
           width = 74,
           height = 46,
           shift = {-0.03125, 0.78125},
@@ -10754,6 +11693,7 @@ data:extend{
     {
       {
         filename = "__base__/graphics/entity/ship-wreck/big-ship-wreck-grass.png",
+        priority = base_decorative_sprite_priority,
         width = 206,
         height = 112,
       }
@@ -10773,16 +11713,19 @@ data:extend{
     {
       {
         filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-grass-1.png",
+        priority = base_decorative_sprite_priority,
         width = 129,
         height = 45
       },
       {
         filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-grass-2.png",
+        priority = base_decorative_sprite_priority,
         width = 121,
         height = 34
       },
       {
         filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-grass-3.png",
+        priority = base_decorative_sprite_priority,
         width = 115,
         height = 37
       }

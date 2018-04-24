@@ -1864,7 +1864,6 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/big-explosion/big-explosion.png",
-        priority = "extra-high",
         flags = { "compressed" },
         width = 197,
         height = 245,

@@ -295,9 +295,7 @@ data:extend(
       type = "label_style",
       parent = "label",
       font = "default-bold",
-      font_color = color "ff",
-      minimal_width = 250,
-      maximal_width = 250
+      font_color = color "ff"
     },
     achievement_percent_label =
     {
@@ -2794,7 +2792,8 @@ data:extend(
       type = "textbox_style",
       parent = "textbox",
       minimal_width = 850,
-      height = 500
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on"
     },
     reader_textbox =
     {
@@ -3217,7 +3216,7 @@ data:extend(
       type = "progressbar_style",
       minimal_width = 10,
       natural_width = 200,
-      height = 7,
+      bar_width = 7,
       color = {g=1},
       other_colors = {},
       bar =
@@ -3291,7 +3290,8 @@ data:extend(
     {
       type = "progressbar_style",
       horizontally_stretchable = "on",
-      height = 13,
+      horizontally_stretchable = "on",
+      bar_width = 13,
       color = {g=1},
       bar =
       {
@@ -3314,7 +3314,7 @@ data:extend(
     {
       type = "progressbar_style",
       minimal_width = 300,
-      height = 7,
+      bar_width = 7,
       color = color "fff",
       other_colors = {},
       bar_background =
@@ -3342,7 +3342,7 @@ data:extend(
     {
       type = "progressbar_style",
       parent = "achievement_progressbar",
-      width = 252,
+      right_padding = 10,
       bar =
       {
         filename = "__core__/graphics/scrollbar-mini.png",
@@ -3360,7 +3360,7 @@ data:extend(
       type = "progressbar_style",
       parent = "achievement_card_progressbar",
       font = "default-small-semibold",
-      minimal_width = 100,
+      right_padding = 3,
     },
     vehicle_health_progressbar =
     {
@@ -3389,7 +3389,7 @@ data:extend(
     battery_progressbar =
     {
       type = "progressbar_style",
-      width = 13,
+      bar_width = 13,
       height = 33,
       color = {g=1},
       bar =
@@ -3648,8 +3648,8 @@ data:extend(
       type = "scroll_pane_style",
       vertical_scroll_bar_spacing = default_container_padding,
       horizontal_scroll_bar_spacing = default_container_padding,
-      vertically_squashable = true,
-      horizontally_squashable = true,
+      vertically_squashable = "on",
+      horizontally_squashable = "on",
     },
 
     browse_games_scroll_pane =
@@ -3665,25 +3665,25 @@ data:extend(
     machine_ingredients_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertically_squashable = false,
+      vertically_squashable = "off",
       maximal_height = 100,
     },
     machine_outputs_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertically_squashable = false,
+      vertically_squashable = "off",
       maximal_height = 100,
     },
     module_inventory_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertically_squashable = false,
+      vertically_squashable = "off",
       maximal_height = 100
     },
     trash_slots_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertically_squashable = false,
+      vertically_squashable = "off",
       maximal_height = 100
     },
     logistic_gui_scroll_pane =

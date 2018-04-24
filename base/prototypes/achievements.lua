@@ -312,7 +312,7 @@ data:extend(
   {
     type = "dont-use-entity-in-energy-production-achievement",
     name = "steam-all-the-way",
-    allowed_in_peaceful_mode = false,
+    allowed_without_fight = false,
     excluded = "solar-panel",
     order = "f[limitation]-b[steam-all-the-way]",
     icon = "__base__/graphics/achievement/steam-all-the-way.png",
@@ -323,7 +323,7 @@ data:extend(
     name = "raining-bullets",
     order = "f[limitation]-c[raining-bullets]",
     dont_build = "laser-turret",
-    allowed_in_peaceful_mode = false,
+    allowed_without_fight = false,
     icon = "__base__/graphics/achievement/raining-bullets.png",
     icon_size = 128
   },
@@ -339,7 +339,7 @@ data:extend(
     type = "finish-the-game-achievement",
     name = "no-time-for-chitchat",
     until_second = 60 * 60 * 15, -- 15 hours
-    allowed_in_peaceful_mode = false,
+    allowed_without_fight = false,
     order = "f[limitation]-e[no-time-for-chitchat]",
     icon = "__base__/graphics/achievement/no-time-for-chitchat.png",
     icon_size = 128
@@ -348,7 +348,7 @@ data:extend(
     type = "finish-the-game-achievement",
     name = "there-is-no-spoon",
     until_second = 60 * 60 * 8, -- 8 hours
-    allowed_in_peaceful_mode = false,
+    allowed_without_fight = false,
     order = "f[limitation]-f[there-is-no-spoon]",
     icon = "__base__/graphics/achievement/there-is-no-spoon.png",
     icon_size = 128

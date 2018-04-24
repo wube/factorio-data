@@ -12297,7 +12297,6 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/bigass-explosion/hr-bigass-explosion-36f.png",
-        priority = "extra-high",
         flags = { "compressed" },
         animation_speed = 0.5,
         width = 324,

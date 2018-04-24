@@ -32,7 +32,7 @@ local function autoplace_settings(noise_name, control, rectangle, rectangle2)
   -- fadeout too small and you'll get gaps between biomes.
   -- too large and placement get unpredictable
   local fadeout = 0.15
-  
+
   peaks[#peaks + 1] = {
     aux_optimal = aux_center,
     aux_range = aux_range,
@@ -262,7 +262,7 @@ local grass_transitions =
         o_transition_tall = false,
         u_transition_count = 4,
         o_transition_count = 8,
-        base = 
+        base =
         {
           side_weights = { 1, 1, 1, 1,  0.25, 0.25, 1, 1,  1, 1, 0.125, 0.25,  1, 1, 1, 1 }
         }
@@ -1763,7 +1763,7 @@ data:extend(
     },
     transitions = stone_path_transitions,
     transitions_between_transitions = stone_path_transitions_between_transitions,
-    
+
     walking_sound =
     {
       {
@@ -2273,6 +2273,25 @@ if not data.is_demo then
             count = 8,
             scale = 0.5
           }
+        }
+      },
+      walking_sound =
+      {
+        {
+          filename = "__base__/sound/walking/concrete-01.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-02.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-03.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-04.ogg",
+          volume = 1.2
         }
       },
       map_color={r=0.5, g=0.5, b=0},
