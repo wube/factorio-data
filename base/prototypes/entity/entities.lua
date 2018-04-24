@@ -554,7 +554,7 @@ data:extend(
         percent = 60
       }
     },
-    collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
+    collision_box = {{-0.9, -0.4}, {0.9, 0.4}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 0.7,
@@ -630,7 +630,7 @@ data:extend(
         percent = 60
       }
     },
-    collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
+    collision_box = {{-0.9, -0.4}, {0.9, 0.4}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 1.2,
@@ -705,7 +705,7 @@ data:extend(
         percent = 60
       }
     },
-    collision_box = {{-0.9, -0.1}, {0.9, 0.1}},
+    collision_box = {{-0.9, -0.4}, {0.9, 0.4}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 1.2,
@@ -3133,8 +3133,8 @@ data:extend(
         percent = 100
       }
     },
-    collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
-    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
+    collision_box = {{-0.85, -0.75}, {0.85, 1.6}},
+    secondary_collision_box = {{-0.84, -2.50}, {0.84, 2.43}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     rail_category = "regular",
     pictures = railpictures(),
@@ -3440,7 +3440,6 @@ data:extend(
     max_health = 80,
     corpse = "small-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
-    building_collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
     {
@@ -3579,7 +3578,6 @@ data:extend(
     max_health = 80,
     corpse = "small-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
-    building_collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
     {

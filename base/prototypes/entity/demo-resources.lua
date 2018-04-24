@@ -1,4 +1,4 @@
-local function autoplace_settings(name, coverage, starting_area_bonus)
+local function autoplace_settings(name, coverage)
   local ret = {
     control = name,
     sharpness = 1,
@@ -11,49 +11,21 @@ local function autoplace_settings(name, coverage, starting_area_bonus)
         noise_layer = name,
         noise_octaves_difference = -1.5,
         noise_persistence = 0.3,
-        starting_area_weight_optimal = 0,
-        starting_area_weight_range = 0,
-        starting_area_weight_max_range = 2,
       },
-      {
-        noise_layer = name,
-        noise_octaves_difference = -2,
-        noise_persistence = 0.3,
-        starting_area_weight_optimal = 1,
-        starting_area_weight_range = 0,
-        starting_area_weight_max_range = 2,
-      },
-      {
-        influence = 0.15 + starting_area_bonus,
-        starting_area_weight_optimal = 1,
-        starting_area_weight_range = 0,
-        starting_area_weight_max_range = 2,
-      }
     }
   }
   for i, resource in ipairs({ "copper-ore", "iron-ore", "coal", "stone" }) do
     if resource ~= name then
-      ret.peaks[#ret.peaks + 1] = {
-        {
-          influence = -0.3;
-          max_influence = 0;
-          noise_layer = resource,
-          noise_octaves_difference = -2,
-          noise_persistence = 0.3,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-      }
+      ret.starting_area_size = 600 * coverage
+      ret.starting_area_amount = 1500
     end
   end
   return ret
 end
 
-local function resource(name, map_color, hardness, coverage, starting_area_bonus)
+local function resource(name, map_color, hardness, coverage)
   if hardness == nil then hardness = 0.9 end
   if coverage == nil then coverage = 0.02 end
-  if starting_area_bonus == nil then starting_area_bonus = 0 end
   return {
     type = "resource",
     name = name,
@@ -69,7 +41,7 @@ local function resource(name, map_color, hardness, coverage, starting_area_bonus
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    autoplace = autoplace_settings(name, coverage, starting_area_bonus),
+    autoplace = autoplace_settings(name, coverage),
     stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
     stages =
     {
@@ -94,8 +66,7 @@ data:extend(
   resource("coal", {r=0, g=0, b=0}),
   resource("stone", {r=0.478, g=0.450, b=0.317},
     0.4, --hardness
-    0.01, --coverage
-    0.1 -- starting area bonus
+    0.015 --coverage
   )
 }
 )

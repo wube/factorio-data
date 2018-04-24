@@ -203,6 +203,12 @@ data:extend(
       start_to_goal_cost_multiplier_to_terminate_path_find = 500.0
     },
 
+    attack =
+    {
+      min_pursue_time = 2 * 60 * 60,
+      max_pursue_distance = 500
+    },
+
     -- If a behavior fails this many times, the enemy (or enemy group)
     -- is destroyed.
     -- This solves biters stuck within their own base.

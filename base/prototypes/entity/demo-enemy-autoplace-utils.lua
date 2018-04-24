@@ -1,5 +1,5 @@
 function enemy_autoplace(distance, order, is_turret)
-  local optimal_tier = 20 + 4 * distance
+  local optimal_tier = 13 + 2.6 * distance
   local ret = {
     sharpness = 0.4,
     control = "enemy-base",

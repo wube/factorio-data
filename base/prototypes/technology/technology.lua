@@ -2215,6 +2215,31 @@ data:extend(
   },
   {
     type = "technology",
+    name = "auto-character-logistic-trash-slots",
+    icon = "__base__/graphics/technology/character-auto-logistic-trash-slots.png",
+    effects =
+    {
+      {
+        type = "auto-character-logistic-trash-slots",
+        modifier = true
+      }
+    },
+    prerequisites = {"character-logistic-trash-slots-2"},
+    unit =
+    {
+      count = 150,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1}
+      },
+      time = 30
+    },
+    order = "c-k-f-c"
+  },
+  {
+    type = "technology",
     name = "shotgun-shell-damage-1",
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =

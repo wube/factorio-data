@@ -456,7 +456,7 @@ data:extend(
     type = "tile",
     name = "grass-dry",
     collision_mask = {"ground-tile"},
-    autoplace = autoplace_settings("grass-dry", {{{35, 0.5}, {10, 0.3}}, {{5, 0.6}, {-10, 0.1}}}),
+    autoplace = autoplace_settings("grass-dry", {{{35, 0.5}, {10, 0.3}}, {{5, 0.6}, {-10, 0.2}}}),
     layer = 4,
     variants =
     {
@@ -527,7 +527,7 @@ data:extend(
     type = "tile",
     name = "dirt",
     collision_mask = {"ground-tile"},
-    autoplace = autoplace_settings("dirt", {{{35, 0.4}, {-10, 0}, 0.95}}),
+    autoplace = autoplace_settings("dirt", {{{10, 0.4}, {-10, 0}, 0.95}}),
     layer = 25,
     variants =
     {
@@ -594,7 +594,7 @@ data:extend(
     type = "tile",
     name = "dirt-dark",
     collision_mask = {"ground-tile"},
-    autoplace = autoplace_settings("dirt-dark", {{{35, 0.4}, {-10, 0}, 0.5}}),
+    autoplace = autoplace_settings("dirt-dark", {{{10, 0.4}, {-10, 0}, 0.5}}),
     layer = 26,
     variants =
     {
@@ -662,7 +662,7 @@ data:extend(
     type = "tile",
     name = "sand",
     collision_mask = {"ground-tile"},
-    autoplace = autoplace_settings("sand", {{{35, 0.2}, {0, 0}}}),
+    autoplace = autoplace_settings("sand", {{{35, 0.2}, {5, 0}}}),
     layer = 35,
     variants =
     {
