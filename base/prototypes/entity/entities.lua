@@ -2202,7 +2202,7 @@ data:extend(
     energy_usage = "200W",
     -- per one charge slot
     charging_energy = "200W",
-    radius = 20,
+    radius = 25,
     charge_approach_distance = 5,
     robot_slots_count = 7,
     material_slots_count = 7,
