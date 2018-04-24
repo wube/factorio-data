@@ -253,14 +253,14 @@ data:extend(
   },
   {
     type = "kill-achievement",
-    name = "run-forest-run",
-    order = "e[kill]-c[run-forest-run]",
+    name = "run-forrest-run",
+    order = "e[kill]-c[run-forrest-run]",
     type_to_kill = "tree",
     in_vehicle = true,
     personally = true,
     amount = 100,
     steam_stats_name = "trees-destroyed-by-impact",
-    icon = "__base__/graphics/achievement/run-forest-run.png"
+    icon = "__base__/graphics/achievement/run-forrest-run.png"
   },
   {
     type = "combat-robot-count",
