@@ -344,6 +344,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-underground-belt"},
     max_health = 160,
     corpse = "small-remnants",
+    max_distance = 7,
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
@@ -432,6 +433,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-underground-belt"},
     max_health = 170,
     corpse = "small-remnants",
+    max_distance = 9,
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
@@ -3164,7 +3166,7 @@ data:extend(
             },
             line_length = 4,
             lines_per_file = 8,
-            shift = {0, -0.789062},
+            shift = util.by_pixel(0, -25.25),
             scale = 0.5
           }
         },
@@ -3192,7 +3194,7 @@ data:extend(
             direction_count = 128,
             back_equals_front = true,
             apply_runtime_tint = true,
-            shift = {-0.015625, -0.945312},
+            shift = util.by_pixel(-0.5, -30.25),
             filenames =
             {
               "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-1.png",
@@ -3238,7 +3240,7 @@ data:extend(
             },
             line_length = 4,
             lines_per_file = 8,
-            shift = {1, -0.0703125},
+            shift = util.by_pixel(32, -2.25),
             scale = 0.5
           }
         }
@@ -3262,7 +3264,7 @@ data:extend(
             width = 438,
             height = 63,
             frame_count = 8,
-            shift = {0, -0.914062},
+            shift = util.by_pixel(0, -29.25),
             scale = 0.5
           }
         },
@@ -3280,7 +3282,7 @@ data:extend(
             width = 368,
             height = 76,
             frame_count = 8,
-            shift = {0, -0.765625},
+            shift = util.by_pixel(0, -24.5),
             scale = 0.5
           }
         },
@@ -3299,7 +3301,7 @@ data:extend(
             height = 69,
             line_length = 1,
             frame_count = 8,
-            shift = {0, -0.820312},
+            shift = util.by_pixel(0, -26.25),
             apply_runtime_tint = true,
             scale = 0.5
           }
@@ -3318,7 +3320,7 @@ data:extend(
             width = 369,
             height = 54,
             frame_count = 8,
-            shift = {0.0234375, -1.10938},
+            shift = util.by_pixel(0.75, -35.5),
             scale = 0.5
           }
         },
@@ -3337,7 +3339,7 @@ data:extend(
             height = 45,
             frame_count = 8,
             line_length = 1,
-            shift = {0.0234375, -1.17969},
+            shift = util.by_pixel(0.75, -37.75),
             apply_runtime_tint = true,
             scale = 0.5
           }
@@ -3352,17 +3354,17 @@ data:extend(
           filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-end.png",
           line_length = 8,
           width = 30,
-          height = 202,
+          height = 23,
           frame_count = 8,
-          shift = {0, -0.84375},
+          shift = util.by_pixel(0, 62.5),
           hr_version =
           {
             filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-end.png",
             line_length = 8,
             width = 58,
-            height = 401,
+            height = 44,
             frame_count = 8,
-            shift = {0, -0.835938},
+            shift = util.by_pixel(0, 62.5),-- 241),--62.5+178.5),
             scale = 0.5
           }
         },
@@ -3380,7 +3382,7 @@ data:extend(
             width = 127,
             height = 337,
             frame_count = 8,
-            shift = {0.0078125, -1.02344},
+            shift = util.by_pixel(0.25, -32.75),
             scale = 0.5
           }
         },
@@ -3399,7 +3401,7 @@ data:extend(
             width = 112,
             height = 326,
             frame_count = 8,
-            shift = {0, -1.10938},
+            shift = util.by_pixel(0, -35.5),
             apply_runtime_tint = true,
             scale = 0.5
           }
@@ -3418,7 +3420,7 @@ data:extend(
             width = 64,
             height = 337,
             frame_count = 8,
-            shift = {0, -1.11719},
+            shift = util.by_pixel(0, -35.75),
             scale = 0.5
           }
         },
@@ -3437,7 +3439,7 @@ data:extend(
             width = 64,
             height = 332,
             frame_count = 8,
-            shift = {0, -1.15625},
+            shift = util.by_pixel(0, -37),
             apply_runtime_tint = true,
             scale = 0.5
           }
@@ -6144,7 +6146,7 @@ data:extend(
     name = "storage-tank",
     icon = "__base__/graphics/icons/storage-tank.png",
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 3, result = "storage-tank"},
+    minable = {mining_time = 1.5, result = "storage-tank"},
     max_health = 500,
     corpse = "medium-remnants",
     collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
@@ -11007,7 +11009,7 @@ data:extend(
     name = "nuclear-reactor",
     icon  = "__base__/graphics/icons/nuclear-reactor.png",
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "nuclear-reactor"},
+    minable = {mining_time = 1.5, result = "nuclear-reactor"},
     max_health = 500,
     corpse = "big-remnants",
     consumption = "40MW",
@@ -11026,7 +11028,7 @@ data:extend(
       width = 160,
       height = 160,
       shift = { -0.03125, -0.1875 },
-      hr_version = 
+      hr_version =
       {
         filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-pipes.png",
         width = 320,
@@ -11035,7 +11037,7 @@ data:extend(
         shift = { -0.03125, -0.1875 },
       }
     },
-    
+
     picture =
     {
       layers =
@@ -11045,7 +11047,7 @@ data:extend(
           width = 160,
           height = 160,
           shift = { -0.03125, -0.1875 },
-          hr_version = 
+          hr_version =
           {
             filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor.png",
             width = 320,
@@ -11086,7 +11088,7 @@ data:extend(
         width = 320,
         height = 320,
         scale = 0.5,
-        shift = { -0.03125, -0.1875 }, 
+        shift = { -0.03125, -0.1875 },
         blend_mode = "additive",
       }
     },
@@ -11640,6 +11642,7 @@ data:extend(
     {
       base_area = 1,
       height = 2,
+      base_level = 1,
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
@@ -11662,7 +11665,7 @@ data:extend(
         }
       },
       pipe_covers =
-      
+
         make_4way_animation_from_spritesheet(
         {
           filename = "__base__/graphics/entity/heat-exchanger/heatex-endings.png",
@@ -11679,7 +11682,7 @@ data:extend(
             scale = 0.5
           }
         })
-      
+
     },
     working_sound =
     {
@@ -11690,7 +11693,7 @@ data:extend(
       },
       max_sounds_per_type = 3
     },
-    
+
     structure =
     {
       north =

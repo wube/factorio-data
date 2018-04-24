@@ -413,7 +413,7 @@ data:extend(
     {
       {"advanced-circuit", 1},
       {"engine-unit", 1},
-      {"assembling-machine-1", 1},
+      {"electric-mining-drill", 1},
     },
     result = "science-pack-3"
   },
@@ -438,8 +438,8 @@ data:extend(
     energy_required = 14,
     ingredients =
     {
-     {"pumpjack", 1},
      {"electric-engine-unit", 1},
+     {"assembling-machine-1", 1},
      {"electric-furnace", 1}
     },
     result_count = 2,
@@ -464,7 +464,7 @@ data:extend(
   {
     type = "recipe",
     name = "lab",
-    energy_required = 5,
+    energy_required = 3,
     ingredients =
     {
       {"electronic-circuit", 10},
@@ -778,7 +778,7 @@ data:extend(
       {"advanced-circuit", 45}
     },
     result = "roboport",
-    energy_required = 15
+    energy_required = 10
   },
   {
     type = "recipe",
@@ -873,7 +873,7 @@ data:extend(
   {
     type = "recipe",
     name = "pumpjack",
-    energy_required = 10,
+    energy_required = 5,
     ingredients =
     {
       {"steel-plate", 5},
@@ -887,7 +887,7 @@ data:extend(
   {
     type = "recipe",
     name = "oil-refinery",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"steel-plate", 15},
@@ -1039,7 +1039,7 @@ data:extend(
   {
     type = "recipe",
     name = "chemical-plant",
-    energy_required = 10,
+    energy_required = 5,
     enabled = false,
     ingredients =
     {
@@ -1275,7 +1275,8 @@ data:extend(
       {"advanced-circuit", 500},
       {"copper-plate", 500},
     },
-    result = "nuclear-reactor"
+    result = "nuclear-reactor",
+    requester_paste_multiplier = 1
   },
   {
     type = "recipe",
@@ -1289,7 +1290,8 @@ data:extend(
       {"advanced-circuit", 100},
       {"iron-gear-wheel", 100},
     },
-    result = "centrifuge"
+    result = "centrifuge",
+    requester_paste_multiplier= 2
   },
   {
     type = "recipe",

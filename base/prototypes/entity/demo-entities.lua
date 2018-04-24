@@ -437,6 +437,7 @@ data:extend(
     minable = {mining_time = 5},
     time_to_live = 15 * 60 * 60, -- 15 minutes
     selection_box = {{-0.7, -0.7}, {0.7, 0.7}},
+    selection_priority = 100, -- 0-255 value with 255 being on-top of everything else
     pictures =
     {
       {
@@ -984,6 +985,7 @@ data:extend(
     {
       base_area = 1,
       height = 2,
+      base_level = 1,
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {

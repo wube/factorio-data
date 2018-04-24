@@ -13,7 +13,7 @@ data:extend(
     minimum = 60000,
     normal = 300000,
     infinite_depletion_amount = 10,
-    resource_patch_search_radius = 8,
+    resource_patch_search_radius = 12,
     minable =
     {
       hardness = 1,
