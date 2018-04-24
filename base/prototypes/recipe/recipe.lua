@@ -552,8 +552,8 @@ data:extend(
     ingredients =
     {
       {"rocket", 100},
-      {"advanced-circuit", 128},
-      {"processing-unit", 128},
+      {"advanced-circuit", 150},
+      {"processing-unit", 100},
       {"speed-module-3", 50},
       {"productivity-module-3", 50}
     },

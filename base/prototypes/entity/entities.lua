@@ -333,7 +333,8 @@ data:extend(
         priority = "extra-high",
         shift = {0.26, 0},
         width = 57,
-        height = 43
+        height = 43,
+        y = 43
       },
       direction_out =
       {
@@ -341,8 +342,7 @@ data:extend(
         priority = "extra-high",
         shift = {0.26, 0},
         width = 57,
-        height = 43,
-        y = 43
+        height = 43
       }
     },
     ending_patch = ending_patch_prototype
@@ -455,7 +455,8 @@ data:extend(
         priority = "extra-high",
         shift = {0.26, 0},
         width = 57,
-        height = 43
+        height = 43,
+        y = 43
       },
       direction_out =
       {
@@ -463,8 +464,7 @@ data:extend(
         priority = "extra-high",
         shift = {0.26, 0},
         width = 57,
-        height = 43,
-        y = 43
+        height = 43
       }
     },
     ending_patch = ending_patch_prototype
