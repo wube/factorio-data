@@ -650,7 +650,7 @@ data:extend(
         recipe = "diesel-locomotive"
       }
     },
-    prerequisites = {"logistics-2", "steel-processing", "engine"},
+    prerequisites = {"logistics-2", "engine"},
     unit =
     {
       count = 70,
@@ -1126,7 +1126,7 @@ data:extend(
         recipe = "gate"
       }
     },
-    prerequisites = {"stone-walls", "military-2", "steel-processing"},
+    prerequisites = {"stone-walls", "military-2"},
     unit =
     {
       count = 100,
@@ -1235,7 +1235,7 @@ data:extend(
         recipe = "satellite"
       }
     },
-    prerequisites = {"rocketry", "advanced-electronics-2", "rocket-speed-5", "speed-module-3", "productivity-module-3"},
+    prerequisites = {"advanced-electronics-2", "rocket-speed-5", "speed-module-3", "productivity-module-3"},
     unit =
     {
       count = 1000,
@@ -1581,7 +1581,7 @@ data:extend(
     type = "technology",
     name = "electric-engine",
     icon = "__base__/graphics/technology/electric-engine.png",
-    prerequisites = {"engine", "advanced-electronics", "oil-processing"},
+    prerequisites = {"engine", "advanced-electronics"},
     unit =
     {
       count = 100,
@@ -4446,7 +4446,7 @@ data:extend(
         modifier = "0.1"
       }
     },
-    prerequisites = {"rocketry", "alien-technology"},
+    prerequisites = {"alien-technology"},
     unit =
     {
       count = 200,
@@ -4584,7 +4584,7 @@ data:extend(
         modifier = "0.2"
       }
     },
-    prerequisites = {"rocketry", "alien-technology"},
+    prerequisites = {"alien-technology"},
     unit =
     {
       count = 200,

@@ -3,7 +3,7 @@ local function autoplace_settings(noise_layer, max_probability, rectangles, more
   local ret =
   {
     order = "a[doodad]-z[other]",
-    max_probability = max_probability,
+    max_probability = max_probability * 0.25,
     peaks = {}
   }
 
@@ -356,6 +356,7 @@ data:extend(
     {
       sharpness = 0.9,
       order = "a[doodad]-b[pita]",
+      max_probability = 0.25,
       peaks = autoplace_utils.peaks({{{20, 0.3}, {0, 0.1}, 0.5}},
                                     {
                                       {
@@ -434,6 +435,7 @@ data:extend(
     {
       sharpness = 0.9,
       order = "a[doodad]-b[pita]",
+      max_probability = 0.25,
       peaks = autoplace_utils.peaks({{{20, 0.3}, {0, 0}, 0.5}},
                                     {
                                       {
@@ -733,6 +735,7 @@ data:extend(
       order = "a[doodad]-d[fluff]",
       sharpness = 1,
       placement_density = 3,
+      max_probability = 0.25,
       peaks = autoplace_utils.peaks({{{35, 0.7}, {-5, 0.4}, 0.5}},
       {
         {
@@ -812,6 +815,7 @@ data:extend(
     selectable_in_game = false,
     autoplace =
     {
+      max_probability = 0.25,
       order = "a[doodad]-d[fluff]",
       sharpness = 1,
       placement_density = 3,
@@ -882,7 +886,7 @@ data:extend(
     {
       order = "a[doodad]-e[garballo]",
       sharpness = 1,
-      max_probability = 0.8,
+      max_probability = 0.8 * 0.25,
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.4}},
                                     {
                                       {
@@ -983,7 +987,7 @@ data:extend(
     {
       order = "a[doodad]-e[garballo]",
       sharpness = 1,
-      max_probability = 0.8,
+      max_probability = 0.8 * 0.25,
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.3}},
                                     {
                                       {
@@ -1080,7 +1084,7 @@ data:extend(
     {
       order = "a[doodad]-e[garballo]",
       sharpness = 1,
-      max_probability = 0.8,
+      max_probability = 0.8 * 0.25,
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}, 0.3}},
                                     {
                                       {
@@ -1490,6 +1494,7 @@ data:extend(
     autoplace =
     {
       order = "a[doodad]-z[other]",
+      max_probability = 0.25,
       influence = 0.01
     },
     pictures =
@@ -1609,6 +1614,7 @@ data:extend(
     autoplace =
     {
       order = "a[doodad]-z[other]",
+      max_probability = 0.25,
       influence = 0.01
     },
     pictures =
@@ -1739,6 +1745,7 @@ data:extend(
     autoplace =
     {
       order = "a[doodad]-a[rock]",
+      max_probability = 0.25,
       peaks =
       {
         {
@@ -1913,6 +1920,7 @@ data:extend(
     autoplace =
     {
       order = "a[doodad]-a[rock]",
+      max_probability = 0.25,
       peaks =
       {
         {
