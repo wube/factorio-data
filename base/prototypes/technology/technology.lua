@@ -2580,10 +2580,6 @@ data:extend(
       {
         type = "character-logistic-trash-slots",
         modifier = 6
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "logistic-chest-storage"
       }
     },
     prerequisites = {"logistic-robotics"},

@@ -248,7 +248,6 @@ data:extend(
           line_length = 1,
           width = 52,
           height = 47,
-          frame_count = 1,
           axially_symmetrical = false,
           direction_count = 1,
           frame_count = 1,

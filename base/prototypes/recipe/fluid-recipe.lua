@@ -65,7 +65,8 @@ data:extend(
     },
     icon = "__base__/graphics/icons/fluid/coal-liquefaction.png",
     subgroup = "fluid-recipes",
-    order = "a[oil-processing]-c[coal-liquefaction]"
+    order = "a[oil-processing]-c[coal-liquefaction]",
+    allow_decomposition = false
   },
 
   {

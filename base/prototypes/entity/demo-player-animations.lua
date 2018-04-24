@@ -44,7 +44,6 @@ playeranimations =
       height = 43,
       direction_count = 8,
       frame_count = 22,
-      apply_runtime_tint = true,
       animation_speed = 0.15,
       shift = {-0.046875, -0.703125},
       apply_runtime_tint = true

@@ -987,7 +987,7 @@ data:extend(
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
-        { type = "output", position = {0, -1.5}}
+        {type = "output", position = {0, -1.5}}
       },
       production_type = "output"
     },

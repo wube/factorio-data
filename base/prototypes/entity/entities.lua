@@ -7922,7 +7922,6 @@ data:extend(
   {
     type = "sticker",
     name = "slowdown-sticker",
-    flags = {"not-on-map"},
     --icon = "__base__/graphics/icons/slowdown-sticker.png",
     flags = {},
     animation =
@@ -11633,7 +11632,7 @@ data:extend(
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
-        {position = {0, -1.5}}
+        {type = "output", position = {0, -1.5}}
       },
       production_type = "output"
     },

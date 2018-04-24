@@ -70,8 +70,6 @@ data:extend(
     selectable_in_game = false,
     subgroup = "remnants",
     order="d[remnants]-a[generic]-b[medium]",
-    tile_width = 2,
-    tile_height = 2,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     animation =

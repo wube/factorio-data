@@ -32,6 +32,8 @@ local energy_per_fill = 1
 local energy_per_empty = 1
 -- If the fill/empty recipes effect production statistics
 local hide_barreling_from_production_stats = true
+-- If the fill/empty recipes should be included in the list of valid recipes things can use when calculating raw materials
+local allow_barreling_decomposition = false
 
 
 local function get_technology(name)
@@ -186,7 +188,8 @@ local function create_fill_barrel_recipe(item, fluid)
     {
       {type = "item", name = item.name, amount = 1}
     },
-    hide_from_stats = hide_barreling_from_production_stats
+    hide_from_stats = hide_barreling_from_production_stats,
+    allow_decomposition = allow_barreling_decomposition
   }
 
   data:extend({recipe})
@@ -215,7 +218,8 @@ local function create_empty_barrel_recipe(item, fluid)
       {type = "fluid", name = fluid.name, amount = fluid_per_barrel},
       {type = "item", name = empty_barrel_name, amount = 1}
     },
-    hide_from_stats = hide_barreling_from_production_stats
+    hide_from_stats = hide_barreling_from_production_stats,
+    allow_decomposition = allow_barreling_decomposition
   }
 
   data:extend({recipe})

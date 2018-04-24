@@ -60,7 +60,7 @@ data:extend(
       range = 18,
       sound = make_light_gunshot_sounds(),
     },
-    stack_size = 1
+    stack_size = 5
   }
 }
 )

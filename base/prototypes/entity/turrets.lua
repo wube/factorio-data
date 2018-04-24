@@ -332,7 +332,6 @@ data:extend(
           line_length = 1,
           width = 54,
           height = 46,
-          frame_count = 1,
           axially_symmetrical = false,
           apply_runtime_tint = true,
           direction_count = 1,
