@@ -104,7 +104,7 @@ circuit_connector_definitions["programmable-speaker"] = circuit_connector_defini
   }
 )
 
-------------------- INSRTER -------------------
+------------------- INSERTER -------------------
 
 inserter_circuit_wire_max_distance = 9
 

@@ -3,7 +3,7 @@ require ("prototypes.entity.demo-rail-pictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.transport-belt-pictures")
-require ("prototypes.entity.demo-circuit-connector-sprites")
+require ("circuit-connector-sprites")
 require ("prototypes.entity.assemblerpipes")
 require ("prototypes.entity.demo-player-animations")
 require ("prototypes.entity.laser-sounds")
@@ -12191,7 +12191,7 @@ data:extend(
     }
 --[[  or instead of picture it is possible to define animations with variations
    random_animation_offset = false,
-   animations = 
+   animations =
    {
      {
        width = 152,
@@ -12368,7 +12368,7 @@ data:extend(
     flags = {"not-on-map"},
     animations =
     {
-      { 
+      {
         filename = "__base__/graphics/entity/artillery-cannon-muzzle-flash/muzzle-flash.png",
         line_length = 7,
         width = 138,
@@ -12376,8 +12376,8 @@ data:extend(
         frame_count = 21,
         shift = util.by_pixel(1, -82),
         animation_speed = 0.75,
-        hr_version = 
-        { 
+        hr_version =
+        {
           filename = "__base__/graphics/entity/artillery-cannon-muzzle-flash/hr-muzzle-flash.png",
           line_length = 7,
           width = 276,
@@ -12396,8 +12396,8 @@ data:extend(
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1
-  }, 
-  
+  },
+
   {
     type = "trivial-smoke",
     name = "artillery-smoke",

@@ -1,7 +1,7 @@
 require ("prototypes.entity.demo-rail-pictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
-require ("prototypes.entity.demo-circuit-connector-sprites")
+require ("circuit-connector-sprites")
 require ("prototypes.entity.demo-player-animations")
 
 local function scale_bounding_box(bb, scale)

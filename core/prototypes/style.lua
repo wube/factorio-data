@@ -223,10 +223,8 @@ data:extend(
     menu_message =
     {
       type = "label_style",
-      parent = "label",
       font = "default-bold",
-      font_color = default_orange_color,
-      minimal_width = 300
+      font_color = default_orange_color
     },
     button =
     {
@@ -3650,8 +3648,10 @@ data:extend(
       type = "scroll_pane_style",
       vertical_scroll_bar_spacing = default_container_padding,
       horizontal_scroll_bar_spacing = default_container_padding,
-      vertically_squashable = true
+      vertically_squashable = true,
+      horizontally_squashable = true,
     },
+
     browse_games_scroll_pane =
     {
       type = "scroll_pane_style",
