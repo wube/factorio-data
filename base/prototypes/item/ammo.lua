@@ -229,6 +229,7 @@ data:extend(
     {
       category = "shotgun-shell",
       target_type = "direction",
+      clamp_position = true,
       action =
       {
         {
@@ -275,6 +276,7 @@ data:extend(
     {
       category = "shotgun-shell",
       target_type = "direction",
+      clamp_position = true,
       action =
       {
         {
@@ -321,6 +323,7 @@ data:extend(
     {
       category = "railgun",
       target_type = "direction",
+      clamp_position = true,
       action =
       {
         type = "line",

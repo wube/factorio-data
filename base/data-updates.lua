@@ -28,11 +28,11 @@ local barrel_fill_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-fil
 local side_alpha = 0.75
 local top_hoop_alpha = 0.75
 -- Fluid required per barrel recipe
-local fluid_per_barrel = 250
+local fluid_per_barrel = 50
 -- Crafting energy per barrel fill recipe
-local energy_per_fill = 1
+local energy_per_fill = 0.2
 -- Crafting energy per barrel empty recipe
-local energy_per_empty = 1
+local energy_per_empty = 0.2
 -- If the fill/empty recipes effect production statistics
 local hide_barreling_from_production_stats = true
 -- If the fill/empty recipes should be included in the list of valid recipes things can use when calculating raw materials

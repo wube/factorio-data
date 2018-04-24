@@ -195,7 +195,7 @@ data:extend(
       {"iron-gear-wheel", 10},
       {"steel-plate", 16},
       {"pipe", 8},
-      {"storage-tank", 3}
+      {"storage-tank", 1}
     },
     result = "fluid-wagon"
   },

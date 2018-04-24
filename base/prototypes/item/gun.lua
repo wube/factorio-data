@@ -213,6 +213,7 @@ data:extend(
       movement_slow_down_factor = 0.6,
       projectile_creation_distance = 1.125,
       range = 20,
+      min_range = 1,
       sound =
       {
         {

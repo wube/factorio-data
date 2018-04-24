@@ -624,7 +624,7 @@ data:extend(
     slot =
     {
       filename = "__core__/graphics/slot.png",
-      priority = "medium",
+      priority = "extra-high-no-scale",
       width = 36,
       height = 36,
       flags = {"icon"}

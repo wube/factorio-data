@@ -1779,7 +1779,7 @@ data:extend(
     list_box =
     {
       type = "list_box_style",
-      font = "default-list_box",
+      font = "default-listbox",
       item_style =
       {
         type = "list_box_item_style",
@@ -2440,15 +2440,7 @@ data:extend(
     {
       type = "table_style",
       horizontal_spacing = 5,
-      top_padding = 20,
       vertical_spacing = 7
-    },
-    control_settings_mod_table =
-    {
-      type = "table_style",
-      parent = "control_settings_table",
-      top_padding = 10,
-      bottom_padding = 10
     },
     browse_games_table =
     {
@@ -3748,7 +3740,8 @@ data:extend(
     },
     tabbed_pane =
     {
-      type = "tabbed_pane_style"
+      type = "tabbed_pane_style",
+      vertical_spacing = default_container_padding
     },
     empty_widget =
     {
