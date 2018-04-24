@@ -6,7 +6,6 @@ data.raw = {}
 -- this will be overwritten in the c++ based on whether we are in demo or not
 data.is_demo = false
 local table_string = "table"
-local name_string = "name"
 
 function data.extend(self, otherdata)
   if type(otherdata) ~= table_string or #otherdata == 0 then
@@ -47,8 +46,8 @@ function compare()
         entries_index = entries[entrytype]
       end
       
-      for name in pairs(entrynames) do
-        entries_index[name] = {[name_string] = name}
+      for name, value in pairs(entrynames) do
+        entries_index[name] = {name = value.name, type = value.type}
       end
     end
   end

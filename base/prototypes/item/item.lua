@@ -1050,7 +1050,7 @@ data:extend(
     name = "simple-entity-with-force",
     icon = "__base__/graphics/icons/steel-chest.png",
     flags = {"goes-to-quickbar", "hidden"},
-    subgroup = "storage",
+    subgroup = "other",
     order = "s[simple-entity-with-force]-f[simple-entity-with-force]",
     place_result = "simple-entity-with-force",
     stack_size = 50
@@ -1060,7 +1060,7 @@ data:extend(
     name = "simple-entity-with-owner",
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"goes-to-quickbar", "hidden"},
-    subgroup = "storage",
+    subgroup = "other",
     order = "s[simple-entity-with-owner]-o[simple-entity-with-owner]",
     place_result = "simple-entity-with-owner",
     stack_size = 50
@@ -1070,8 +1070,17 @@ data:extend(
     name = "item-with-tags",
     icon = "__base__/graphics/icons/wooden-chest.png",
     flags = {"goes-to-quickbar", "hidden"},
-    subgroup = "storage",
+    subgroup = "other",
     order = "s[item-with-tags]-o[item-with-tags]",
+    stack_size = 1
+  },
+  {
+    type = "item-with-label",
+    name = "item-with-label",
+    icon = "__base__/graphics/icons/wooden-chest.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "other",
+    order = "s[item-with-label]-o[item-with-label]",
     stack_size = 1
   },
 }

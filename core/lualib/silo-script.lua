@@ -59,6 +59,9 @@ function silo_script.add_remote_interface()
         end
       end
     end,
+    reset_tracked_items = function()
+      global.silo_script.tracked_items = silo_script.tracked_items
+    end,
     update_gui = function(player)
       if player then
         silo_script.gui_update(player)
@@ -110,6 +113,7 @@ function silo_script.on_configuration_changed(event)
   if global.silo_script.version ~= silo_script.version then
     silo_script.migrate(global.silo_script.version, silo_script.version)
   end
+  silo_script.validate_tracked_items()
 end
 
 function silo_script.init()
@@ -137,7 +141,6 @@ function silo_script.migrate_from_scenario()
     silo_script.gui_init(player)
   end
 end
-
 
 function silo_script.gui_init(player)
   local button_flow = mod_gui.get_button_flow(player)
@@ -186,7 +189,7 @@ function silo_script.gui_update(player)
   local gui = mod_gui.get_frame_flow(player).silo_gui_frame
   if not gui then 
     silo_script.gui_init(player)
-    gui = mod_gui.get_frame_flow(player).silo_gui_frame
+    return
   end
   local item_table = gui.silo_gui_frame_sent_table
   if not item_table then error("Silo sent item table not present - Some other script may have deleted it") end
@@ -194,22 +197,27 @@ function silo_script.gui_update(player)
   local items = game.item_prototypes
   for k, tracked in pairs (global.silo_script.tracked_items) do
     local item_show = false
-    if not items[tracked] then error("Silo script tracked item \""..tracked.."\" is not a valid item") return end
-    local count = player.force.get_item_launched(tracked)
     local label = item_table["silo_script_label_"..tracked]
-    if not label then 
-      label = item_table.add
-      {
-        type = "label",
-        name = "silo_script_label_"..tracked
-      }
+    if not items[tracked] then
+      if label then
+        label.destroy()
+      end
+    else
+      local count = player.force.get_item_launched(tracked)
+      if not label then
+        label = item_table.add
+        {
+          type = "label",
+          name = "silo_script_label_"..tracked
+        }
+      end
+      label.caption = {"gui-silo-script.sent-item", items[tracked].localised_name, count}
+      if count > 0 then
+        item_show = true
+        show = true
+      end
+      label.style.visible = item_show
     end
-    label.caption = {"gui-silo-script.sent-item", items[tracked].localised_name, count}
-    if count > 0 then
-      item_show = true
-      show = true
-    end
-    label.style.visible = item_show
   end
   local button = mod_gui.get_button_flow(player).silo_gui_sprite_button
   if not button then error("Silo script button not present during update") end
@@ -226,3 +234,22 @@ function silo_script.on_gui_click(event)
   end
 end
 
+function silo_script.validate_tracked_items()
+  if not global.silo_script then return end
+  local list = global.silo_script.tracked_items
+  if not list then return end
+  local items = game.item_prototypes
+  local update_needed = false
+  for k, name in pairs (list) do
+    if not items[name] then
+      log("Removed \""..name.."\" from tracked items, as it is not a valid item.")
+      table.remove(list, k)
+      update_needed = true
+    end
+  end
+  if update_needed then
+    for k, player in pairs (game.players) do
+      silo_script.gui_update(player)
+    end
+  end
+end

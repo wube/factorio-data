@@ -10538,7 +10538,7 @@ data:extend(
           { name = "game-lost",  sound = { filename = "__core__/sound/game-lost.ogg" }},
           { name = "game-won",  sound = { filename = "__core__/sound/game-won.ogg" }},
           { name = "gui-click",  sound = { filename = "__core__/sound/gui-click.ogg" }},
-          { name = "gui-click 2",  sound = { filename = "__core__/sound/listbox-click.ogg" }},
+          { name = "gui-click-2",  sound = { filename = "__core__/sound/listbox-click.ogg" }},
           { name = "inventory-move",  sound = { filename = "__core__/sound/inventory-move.ogg" }},
           { name = "new-objective",  sound = { filename = "__core__/sound/new-objective.ogg" }},
           { name = "research-completed",  sound = { filename = "__core__/sound/research-completed.ogg" }},
@@ -10546,20 +10546,20 @@ data:extend(
         }
       },
       {
-        name = "drum kit",
+        name = "drum-kit",
         notes =
         {
-          { name = "kick 1",  sound = { filename = "__base__/sound/programmable-speaker/kit-01.ogg" }},
-          { name = "kick 2",  sound = { filename = "__base__/sound/programmable-speaker/kit-02.ogg" }},
-          { name = "snare 1", sound = { filename = "__base__/sound/programmable-speaker/kit-03.ogg" }},
-          { name = "snare 2", sound = { filename = "__base__/sound/programmable-speaker/kit-04.ogg" }},
-          { name = "snare 3", sound = { filename = "__base__/sound/programmable-speaker/kit-05.ogg" }},
-          { name = "hat 1",   sound = { filename = "__base__/sound/programmable-speaker/kit-06.ogg" }},
-          { name = "hat 2",   sound = { filename = "__base__/sound/programmable-speaker/kit-07.ogg" }},
+          { name = "kick-1",  sound = { filename = "__base__/sound/programmable-speaker/kit-01.ogg" }},
+          { name = "kick-2",  sound = { filename = "__base__/sound/programmable-speaker/kit-02.ogg" }},
+          { name = "snare-1", sound = { filename = "__base__/sound/programmable-speaker/kit-03.ogg" }},
+          { name = "snare-2", sound = { filename = "__base__/sound/programmable-speaker/kit-04.ogg" }},
+          { name = "snare-3", sound = { filename = "__base__/sound/programmable-speaker/kit-05.ogg" }},
+          { name = "hat-1",   sound = { filename = "__base__/sound/programmable-speaker/kit-06.ogg" }},
+          { name = "hat-2",   sound = { filename = "__base__/sound/programmable-speaker/kit-07.ogg" }},
           { name = "fx",  sound = { filename = "__base__/sound/programmable-speaker/kit-08.ogg" }},
-          { name = "high q",  sound = { filename = "__base__/sound/programmable-speaker/kit-09.ogg" }},
-          { name = "perc 1",  sound = { filename = "__base__/sound/programmable-speaker/kit-10.ogg" }},
-          { name = "perc 2",  sound = { filename = "__base__/sound/programmable-speaker/kit-11.ogg" }},
+          { name = "high-q",  sound = { filename = "__base__/sound/programmable-speaker/kit-09.ogg" }},
+          { name = "perc-1",  sound = { filename = "__base__/sound/programmable-speaker/kit-10.ogg" }},
+          { name = "perc-2",  sound = { filename = "__base__/sound/programmable-speaker/kit-11.ogg" }},
           { name = "crash",  sound = { filename = "__base__/sound/programmable-speaker/kit-12.ogg" }},
           { name = "reverse-cymbal",  sound = { filename = "__base__/sound/programmable-speaker/kit-13.ogg" }},
           { name = "clap",  sound = { filename = "__base__/sound/programmable-speaker/kit-14.ogg" }},
@@ -12184,6 +12184,29 @@ data:extend(
       height = 33,
       shift = {0.25, 0.015625}
     }
+  },
+  {
+    type = "flame-thrower-explosion",
+    name = "dummy-flame-thrower-explosion",
+    flags = {"not-on-map"},
+    animation_speed = 1,
+    -- It needs some animation
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/blue-beam/blue-beam.png",
+        priority = "extra-high",
+        width = 187,
+        height = 1,
+        frame_count = 6,
+      }
+    },
+    light = {intensity = 0.2, size = 20},
+    slow_down_factor = 1,
+    smoke = "smoke-fast",
+    smoke_count = 1,
+    smoke_slow_down_factor = 0.95,
+    damage = {amount = 0.25, type = "fire"}
   }
 }
 )
