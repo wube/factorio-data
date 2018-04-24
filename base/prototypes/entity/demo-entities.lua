@@ -854,7 +854,7 @@ data:extend(
       priority = "extra-high",
       width = 46,
       height = 33,
-      shift = {0.3125, 0.015625}
+      shift = {0.25, 0.015625}
     },
     circuit_wire_connection_point =
     {
