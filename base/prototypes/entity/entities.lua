@@ -1792,6 +1792,7 @@ data:extend(
     icon = "__base__/graphics/icons/diesel-locomotive.png",
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 1, result = "diesel-locomotive"},
+    mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 1000,
     corpse = "medium-remnants",
     dying_explosion = "huge-explosion",
@@ -1979,6 +1980,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
     inventory_size = 20,
     minable = {mining_time = 1, result = "cargo-wagon"},
+    mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 600,
     corpse = "medium-remnants",
     dying_explosion = "huge-explosion",
@@ -3030,6 +3032,7 @@ data:extend(
     max_health = 80,
     corpse = "small-remnants",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
+    building_collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
     {
