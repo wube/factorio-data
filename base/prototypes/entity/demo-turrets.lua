@@ -130,6 +130,7 @@ data:extend(
     type = "turret",
     name = "small-worm-turret",
     icon = "__base__/graphics/icons/small-worm.png",
+    icon_size = 32,
     flags = {"placeable-enemy", "not-repairable", "breaths-air"},
     order="b-b-d",
     max_health = 200,
@@ -186,6 +187,7 @@ data:extend(
     type = "ammo-turret",
     name = "gun-turret",
     icon = "__base__/graphics/icons/gun-turret.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "gun-turret"},
     max_health = 400,
@@ -199,7 +201,8 @@ data:extend(
     inventory_size = 1,
     automated_ammo_count = 10,
     attacking_speed = 0.5,
-    folded_animation = 
+    alert_when_attacking = true,
+    folded_animation =
     {
       layers =
       {
@@ -208,7 +211,7 @@ data:extend(
         gun_turret_extension_shadow{frame_count=1, line_length = 1}
       }
     },
-    preparing_animation = 
+    preparing_animation =
     {
       layers =
       {
@@ -219,10 +222,10 @@ data:extend(
     },
     prepared_animation = gun_turret_attack{frame_count=1},
     attacking_animation = gun_turret_attack{},
-    folding_animation = 
-    { 
-      layers = 
-      { 
+    folding_animation =
+    {
+      layers =
+      {
         gun_turret_extension{run_mode = "backward"},
         gun_turret_extension_mask{run_mode = "backward"},
         gun_turret_extension_shadow{run_mode = "backward"}
@@ -257,7 +260,7 @@ data:extend(
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    
+
     attack_parameters =
     {
       type = "projectile",
@@ -286,6 +289,7 @@ data:extend(
     type = "corpse",
     name = "small-worm-corpse",
     icon = "__base__/graphics/icons/small-worm-corpse.png",
+    icon_size = 32,
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     dying_speed = 0.01,

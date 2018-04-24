@@ -4,6 +4,141 @@ require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.demo-circuit-connector-sprites")
 require ("prototypes.entity.demo-player-animations")
 
+local function scale_bounding_box(bb, scale)
+  local orientation = bb[3] or 0
+  return {
+    {scale*bb[1][1], scale*bb[1][2]},
+    {scale*bb[2][1], scale*bb[2][2]},
+    orientation
+  }
+end
+
+local function cliff_sprite_variations(name, column_offset, row_offset, variation_count, scale)
+  local frame_width = 128
+  local shadow_frame_width = name == "entrance" and 128 or 160
+  local shadow_shift = name == "entrance" and {0, 0} or {0.5, 0}
+  local frame_height = 128
+  pictures = {}
+  for i=0,(variation_count-1) do
+    table.insert(pictures, {
+      layers = {
+        {
+          filename = "__base__/graphics/terrain/cliffs/cliff-" .. name .. ".png",
+          width = frame_width,
+          height = frame_height,
+          x = (column_offset + i) * frame_width,
+          y = row_offset * frame_height,
+          scale = scale,
+          hr_version =
+          {
+            filename = "__base__/graphics/terrain/cliffs/hr-cliff-" .. name .. ".png",
+            width = frame_width * 2,
+            height = frame_height * 2,
+            x = (column_offset + i) * frame_width * 2,
+            y = row_offset * frame_height * 2,
+            scale = scale * 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/terrain/cliffs/cliff-" .. name .. "-shadow.png",
+          width = shadow_frame_width,
+          height = frame_height,
+          x = (column_offset + i) * shadow_frame_width,
+          y = row_offset * frame_height,
+          draw_as_shadow = true,
+          scale = scale,
+          shift = shadow_shift,
+          hr_version =
+          {
+            filename = "__base__/graphics/terrain/cliffs/hr-cliff-" .. name .. "-shadow.png",
+            width = shadow_frame_width * 2,
+            height = frame_height * 2,
+            x = (column_offset + i) * shadow_frame_width * 2,
+            y = row_offset * frame_height * 2,
+            draw_as_shadow = true,
+            scale = scale * 0.5,
+            shift = shadow_shift,
+          }
+        },
+      }
+    })
+  end
+  return pictures
+end
+
+local function cliff_orientation(name, column_offset, row_offset, variation_count, collision_bounding_box, scale, fill_volume)
+  return {
+    pictures = cliff_sprite_variations(name, column_offset, row_offset, variation_count, scale),
+    collision_bounding_box = scale_bounding_box(collision_bounding_box, scale),
+    fill_volume = fill_volume
+  }
+end
+
+local sqrt2 = 1.4142135623730951
+local function dq(n) -- 'diagonal quarter' i.e. 1/4 of the way across 1x1 cell diagonally
+  return sqrt2 * n / 4
+end
+
+local function rotbb(cx, cy, halfwidth, halfheight, angle)
+  return {{cx-halfwidth, cy-halfheight}, {cx+halfwidth, cy+halfheight}, angle}
+end
+
+-- @param fill_volume m3 of rock that must be added (or removed) in order to change a section of cliff into a ramp
+local function scaled_cliff(name, scale, fill_volume)
+  local grid_offset
+  if scale == 1 then
+    grid_offset = {0, 0.5}
+  else
+    grid_offset = {0.5, 0.5} -- Works well for the 2x2 cliffs
+  end
+  return {
+    type = "cliff",
+    name = name,
+    icon = "__base__/graphics/icons/cliff-icon.png",
+    icon_size = 32,
+    subgroup = "cliffs",
+    flags = {"placeable-neutral"},
+    -- generic collision box is intentionally small so you can place trees nearby in map editor
+    -- cliffs are auto-placed with centers at (0, 0.5) offset from the grid;
+    -- using a collision box with even width and odd height makes them place properly in the editor.
+    collision_box = scale_bounding_box({{-1.0, -0.5}, {1.0, 0.5}}, scale),
+    selection_box = scale_bounding_box({{-1.5, -1.5}, {1.5, 1.5}}, scale),
+    order = "b[decorative]-l[rock]-b[big]",
+    selectable_in_game = false,
+    map_color = {r=0.4, g=0.3, b=0.2, a=0.75},
+    grid_size = {4 * scale, 4 * scale},
+    grid_offset = grid_offset,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    orientations =
+    {
+      -- Since removing a cliff also causes neighboring cliffs to be removed,
+      -- we'll think of it (for purposes of fill volume) as filling two sections centered on the ends of this segment.
+      -- That way you can't "cheat" by filling every other cliff segment -- the numbers should work out the same.
+      west_to_east   = cliff_orientation("sides"   , 0, 2, 8, {{-2.0, -1.5}, {2.0,  1.5}}, scale, fill_volume*2),
+      north_to_south = cliff_orientation("sides"   , 0, 3, 8, {{-1.0, -2.0}, {1.0,  2.0}}, scale, fill_volume*2),
+      east_to_west   = cliff_orientation("sides"   , 0, 0, 8, {{-2.0, -0.5}, {2.0,  0.5}}, scale, fill_volume*2),
+      south_to_north = cliff_orientation("sides"   , 0, 1, 8, {{-1.0, -2.0}, {1.0,  2.0}}, scale, fill_volume*2),
+      west_to_north  = cliff_orientation("outer"   , 0, 3, 8, rotbb(-5/4, -3/4, dq(6), dq(3), 7/8), scale, fill_volume*2),
+      north_to_east  = cliff_orientation("outer"   , 0, 0, 8, rotbb( 5/4, -3/4, dq(6), dq(3), 1/8), scale, fill_volume*2),
+      east_to_south  = cliff_orientation("outer"   , 0, 1, 8, rotbb( 3/4,  5/4, dq(5), dq(2), 7/8), scale, fill_volume*2),
+      south_to_west  = cliff_orientation("outer"   , 0, 2, 8, rotbb(-3/4,  5/4, dq(5), dq(2), 1/8), scale, fill_volume*2),
+      west_to_south  = cliff_orientation("inner"   , 0, 0, 8, rotbb(-5/4,  3/4, dq(6), dq(3), 1/8), scale, fill_volume*2),
+      north_to_west  = cliff_orientation("inner"   , 0, 1, 8, rotbb(-3/4, -5/4, dq(5), dq(2), 7/8), scale, fill_volume*2),
+      east_to_north  = cliff_orientation("inner"   , 0, 2, 8, rotbb( 3/4, -5/4, dq(5), dq(2), 1/8), scale, fill_volume*2),
+      south_to_east  = cliff_orientation("inner"   , 0, 3, 8, rotbb( 5/4,  3/4, dq(6), dq(3), 7/8), scale, fill_volume*2),
+      west_to_none   = cliff_orientation("entrance", 2, 0, 2, {{-2.0, -1.5}, {0.0,  1.5}}, scale, fill_volume),
+      none_to_east   = cliff_orientation("entrance", 0, 0, 2, {{ 0.0, -1.5}, {2.0,  1.5}}, scale, fill_volume),
+      north_to_none  = cliff_orientation("entrance", 2, 3, 2, {{-1.0, -2.0}, {1.0, -0.5}}, scale, fill_volume),
+      none_to_south  = cliff_orientation("entrance", 0, 3, 2, {{-1.0,  0.5}, {1.0,  2.0}}, scale, fill_volume),
+      east_to_none   = cliff_orientation("entrance", 2, 2, 2, {{ 0.0, -0.5}, {2.0,  0.5}}, scale, fill_volume),
+      none_to_west   = cliff_orientation("entrance", 0, 2, 2, {{-2.0, -0.5}, {0.0,  0.5}}, scale, fill_volume),
+      south_to_none  = cliff_orientation("entrance", 2, 1, 2, {{-1.0,  0.5}, {1.0,  2.0}}, scale, fill_volume),
+      none_to_north  = cliff_orientation("entrance", 0, 1, 2, {{-1.0, -2.0}, {1.0, -0.5}}, scale, fill_volume),
+    }
+  }
+end
+
 function make_unit_melee_ammo_type(damagevalue)
   return
   {
@@ -23,14 +158,6 @@ function make_unit_melee_ammo_type(damagevalue)
       }
     }
   }
-end
-
-function conditional_return(value, data)
-  if not value then
-    return nil
-  else
-    return data
-  end
 end
 
 pipepictures = function()
@@ -396,9 +523,9 @@ pipepictures = function()
   }
 end
 
-function smoke(opts)
+function trivial_smoke(opts)
   return {
-    type = "smoke",
+    type = "trivial-smoke",
     name = opts.name,
     flags = {"not-on-map"},
     duration = opts.duration or 600,
@@ -434,6 +561,7 @@ data:extend(
     type = "character-corpse",
     name = "character-corpse",
     icon = "__base__/graphics/icons/player.png",
+    icon_size = 32,
     minable = {mining_time = 5},
     time_to_live = 15 * 60 * 60, -- 15 minutes
     selection_box = {{-0.7, -0.7}, {0.7, 0.7}},
@@ -441,21 +569,50 @@ data:extend(
     pictures =
     {
       {
-        filename = "__base__/graphics/entity/character-corpse/dead-player-01.png",
-        width = 53,
-        height = 42
+        layers =
+        {
+          playeranimations.level1.dead,
+          playeranimations.level1.dead_mask,
+          playeranimations.level1.dead_shadow,
+        }
       },
       {
-        filename = "__base__/graphics/entity/character-corpse/dead-player-02.png",
-        width = 47,
-        height = 46
+        layers =
+        {
+          playeranimations.level1.dead,
+          playeranimations.level1.dead_mask,
+          playeranimations.level2addon.dead,
+          playeranimations.level2addon.dead_mask,
+          playeranimations.level1.dead_shadow,
+        }
+      },
+      {
+        layers =
+        {
+          playeranimations.level1.dead,
+          playeranimations.level1.dead_mask,
+          playeranimations.level3addon.dead,
+          playeranimations.level3addon.dead_mask,
+          playeranimations.level1.dead_shadow,
+        }
       }
+    },
+    -- The highest index found in the corpse is the graphics variation used
+    armor_picture_mapping =
+    {
+      --nil = 1,
+      ["light-armor"] = 2,
+      ["heavy-armor"] = not data.is_demo and 2 or nil,
+      ["modular-armor"] = not data.is_demo and 3 or nil,
+      ["power-armor"] = not data.is_demo and 3 or nil,
+      ["power-armor-mk2"] = not data.is_demo and 3 or nil
     }
   },
   {
     type = "player",
     name = "player",
     icon = "__base__/graphics/icons/player.png",
+    icon_size = 32,
     flags = {"pushable", "placeable-off-grid", "breaths-air", "not-repairable", "not-on-map"},
     max_health = 250,
     alert_when_damaged = false,
@@ -504,39 +661,44 @@ data:extend(
           layers =
           {
             playeranimations.level1.idle,
-            playeranimations.level1.idlemask,
+            playeranimations.level1.idle_mask,
+            playeranimations.level1.idle_shadow,
           }
         },
         idle_with_gun =
         {
           layers =
           {
-            playeranimations.level1.idlewithgun,
-            playeranimations.level1.idlewithgunmask,
+            playeranimations.level1.idle_gun,
+            playeranimations.level1.idle_gun_mask,
+            playeranimations.level1.idle_gun_shadow,
           }
         },
         mining_with_hands =
         {
           layers =
           {
-            playeranimations.level1.miningwithhands,
-            playeranimations.level1.miningwithhandsmask,
+            playeranimations.level1.mining_hands,
+            playeranimations.level1.mining_hands_mask,
+            playeranimations.level1.mining_hands_shadow,
           }
         },
         mining_with_tool =
         {
           layers =
           {
-            playeranimations.level1.miningwithtool,
-            playeranimations.level1.miningwithtoolmask,
+            playeranimations.level1.mining_tool,
+            playeranimations.level1.mining_tool_mask,
+            playeranimations.level1.mining_tool_shadow,
           }
         },
         running_with_gun =
         {
           layers =
           {
-            playeranimations.level1.runningwithgun,
-            playeranimations.level1.runningwithgunmask,
+            playeranimations.level1.running_gun,
+            playeranimations.level1.running_gun_mask,
+            playeranimations.level1.running_gun_shadow,
           }
         },
         running =
@@ -544,7 +706,8 @@ data:extend(
           layers =
           {
             playeranimations.level1.running,
-            playeranimations.level1.runningmask,
+            playeranimations.level1.running_mask,
+            playeranimations.level1.running_shadow,
           }
         }
       },
@@ -556,49 +719,54 @@ data:extend(
           layers =
           {
             playeranimations.level1.idle,
-            playeranimations.level1.idlemask,
+            playeranimations.level1.idle_mask,
             playeranimations.level2addon.idle,
-            playeranimations.level2addon.idlemask
+            playeranimations.level2addon.idle_mask,
+            playeranimations.level1.idle_shadow,
           }
         },
         idle_with_gun =
         {
           layers =
           {
-            playeranimations.level1.idlewithgun,
-            playeranimations.level1.idlewithgunmask,
-            playeranimations.level2addon.idlewithgun,
-            playeranimations.level2addon.idlewithgunmask,
+            playeranimations.level1.idle_gun,
+            playeranimations.level1.idle_gun_mask,
+            playeranimations.level2addon.idle_gun,
+            playeranimations.level2addon.idle_gun_mask,
+            playeranimations.level1.idle_gun_shadow,
           }
         },
         mining_with_hands =
         {
           layers =
           {
-            playeranimations.level1.miningwithhands,
-            playeranimations.level1.miningwithhandsmask,
-            playeranimations.level2addon.miningwithhands,
-            playeranimations.level2addon.miningwithhandsmask,
+            playeranimations.level1.mining_hands,
+            playeranimations.level1.mining_hands_mask,
+            playeranimations.level2addon.mining_hands,
+            playeranimations.level2addon.mining_hands_mask,
+            playeranimations.level1.mining_hands_shadow,
           }
         },
         mining_with_tool =
         {
           layers =
           {
-            playeranimations.level1.miningwithtool,
-            playeranimations.level1.miningwithtoolmask,
-            playeranimations.level2addon.miningwithtool,
-            playeranimations.level2addon.miningwithtoolmask,
+            playeranimations.level1.mining_tool,
+            playeranimations.level1.mining_tool_mask,
+            playeranimations.level2addon.mining_tool,
+            playeranimations.level2addon.mining_tool_mask,
+            playeranimations.level1.mining_tool_shadow,
           }
         },
         running_with_gun =
         {
           layers =
           {
-            playeranimations.level1.runningwithgun,
-            playeranimations.level1.runningwithgunmask,
-            playeranimations.level2addon.runningwithgun,
-            playeranimations.level2addon.runningwithgunmask,
+            playeranimations.level1.running_gun,
+            playeranimations.level1.running_gun_mask,
+            playeranimations.level2addon.running_gun,
+            playeranimations.level2addon.running_gun_mask,
+            playeranimations.level1.running_gun_shadow,
           }
         },
         running =
@@ -606,9 +774,10 @@ data:extend(
           layers =
           {
             playeranimations.level1.running,
-            playeranimations.level1.runningmask,
+            playeranimations.level1.running_mask,
             playeranimations.level2addon.running,
-            playeranimations.level2addon.runningmask,
+            playeranimations.level2addon.running_mask,
+            playeranimations.level1.running_shadow,
           }
         }
       },
@@ -620,49 +789,54 @@ data:extend(
           layers =
           {
             playeranimations.level1.idle,
-            playeranimations.level1.idlemask,
+            playeranimations.level1.idle_mask,
             playeranimations.level3addon.idle,
-            playeranimations.level3addon.idlemask
+            playeranimations.level3addon.idle_mask,
+            playeranimations.level1.idle_shadow,
           }
         },
         idle_with_gun =
         {
           layers =
           {
-            playeranimations.level1.idlewithgun,
-            playeranimations.level1.idlewithgunmask,
-            playeranimations.level3addon.idlewithgun,
-            playeranimations.level3addon.idlewithgunmask,
+            playeranimations.level1.idle_gun,
+            playeranimations.level1.idle_gun_mask,
+            playeranimations.level3addon.idle_gun,
+            playeranimations.level3addon.idle_gun_mask,
+            playeranimations.level1.idle_gun_shadow,
           }
         },
         mining_with_hands =
         {
           layers =
           {
-            playeranimations.level1.miningwithhands,
-            playeranimations.level1.miningwithhandsmask,
-            playeranimations.level3addon.miningwithhands,
-            playeranimations.level3addon.miningwithhandsmask,
+            playeranimations.level1.mining_hands,
+            playeranimations.level1.mining_hands_mask,
+            playeranimations.level3addon.mining_hands,
+            playeranimations.level3addon.mining_hands_mask,
+            playeranimations.level1.mining_hands_shadow,
           }
         },
         mining_with_tool =
         {
           layers =
           {
-            playeranimations.level1.miningwithtool,
-            playeranimations.level1.miningwithtoolmask,
-            playeranimations.level3addon.miningwithtool,
-            playeranimations.level3addon.miningwithtoolmask,
+            playeranimations.level1.mining_tool,
+            playeranimations.level1.mining_tool_mask,
+            playeranimations.level3addon.mining_tool,
+            playeranimations.level3addon.mining_tool_mask,
+            playeranimations.level1.mining_tool_shadow,
           }
         },
         running_with_gun =
         {
           layers =
           {
-            playeranimations.level1.runningwithgun,
-            playeranimations.level1.runningwithgunmask,
-            playeranimations.level3addon.runningwithgun,
-            playeranimations.level3addon.runningwithgunmask,
+            playeranimations.level1.running_gun,
+            playeranimations.level1.running_gun_mask,
+            playeranimations.level3addon.running_gun,
+            playeranimations.level3addon.running_gun_mask,
+            playeranimations.level1.running_gun_shadow,
           }
         },
         running =
@@ -670,9 +844,10 @@ data:extend(
           layers =
           {
             playeranimations.level1.running,
-            playeranimations.level1.runningmask,
+            playeranimations.level1.running_mask,
             playeranimations.level3addon.running,
-            playeranimations.level3addon.runningmask,
+            playeranimations.level3addon.running_mask,
+            playeranimations.level1.running_shadow,
           }
         }
       }
@@ -713,6 +888,7 @@ data:extend(
     type = "furnace",
     name = "stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "stone-furnace"},
     max_health = 200,
@@ -850,6 +1026,7 @@ data:extend(
     type = "transport-belt",
     name = "transport-belt",
     icon = "__base__/graphics/icons/transport-belt.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "transport-belt"},
     max_health = 150,
@@ -904,8 +1081,8 @@ data:extend(
     fast_replaceable_group = "transport-belt",
     speed = 0.03125,
     connector_frame_sprites = transport_belt_connector_frame_sprites,
-    circuit_connector_sprites = transport_belt_circuit_connector_sprites,
-    circuit_wire_connection_point = transport_belt_circuit_wire_connection_point,
+    circuit_wire_connection_points = circuit_connector_definitions["belt"].points,
+    circuit_connector_sprites = circuit_connector_definitions["belt"].sprites,
     circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
   },
 
@@ -913,12 +1090,14 @@ data:extend(
     type = "fish",
     name = "fish",
     icon = "__base__/graphics/icons/fish.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "not-on-map"},
     minable = {mining_time = 1, result = "raw-fish", count = 5},
     max_health = 20,
     subgroup = "creatures",
     order = "b-a",
-    collision_box = {{-0.4, -0.2}, {0.4, 0.2}},
+    collision_box = {{0,0}, {0,0}},
+    terrain_collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
     selection_box = {{-0.5, -0.3}, {0.5, 0.3}},
     pictures =
     {
@@ -944,6 +1123,7 @@ data:extend(
     type = "boiler",
     name = "boiler",
     icon = "__base__/graphics/icons/boiler.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
     max_health = 200,
@@ -979,7 +1159,8 @@ data:extend(
         {type = "input-output", position = {-2, 0.5}},
         {type = "input-output", position = {2, 0.5}}
       },
-      production_type = "input-output"
+      production_type = "input-output",
+      filter = "water"
     },
     output_fluid_box =
     {
@@ -991,17 +1172,8 @@ data:extend(
       {
         {type = "output", position = {0, -1.5}}
       },
-      production_type = "output"
-    },
-    fluid_input =
-    {
-      name = "water",
-      amount = 0.0
-    },
-    fluid_output =
-    {
-      name = "steam",
-      amount = 0.0
+      production_type = "output",
+      filter = "steam"
     },
     energy_consumption = "1.8MW",
     energy_source =
@@ -1034,13 +1206,13 @@ data:extend(
       },
       max_sounds_per_type = 3
     },
-    
+
     structure =
     {
       north =
-      { 
-        layers = 
-        { 
+      {
+        layers =
+        {
           {
             filename = "__base__/graphics/entity/boiler/boiler-N-idle.png",
             priority = "extra-high",
@@ -1077,8 +1249,8 @@ data:extend(
       },
       east =
       {
-        layers = 
-        { 
+        layers =
+        {
           {
             filename = "__base__/graphics/entity/boiler/boiler-E-idle.png",
             priority = "extra-high",
@@ -1115,8 +1287,8 @@ data:extend(
       },
       south =
       {
-        layers = 
-        { 
+        layers =
+        {
           {
             filename = "__base__/graphics/entity/boiler/boiler-S-idle.png",
             priority = "extra-high",
@@ -1153,8 +1325,8 @@ data:extend(
       },
       west =
       {
-        layers = 
-        { 
+        layers =
+        {
           {
             filename = "__base__/graphics/entity/boiler/boiler-W-idle.png",
             priority = "extra-high",
@@ -1190,8 +1362,8 @@ data:extend(
         }
       }
     },
-   
-    patch = 
+
+    patch =
     {
       east =
       {
@@ -1209,7 +1381,7 @@ data:extend(
         }
       },
     },
-    
+
     fire_flicker_enabled = true,
     fire =
     {
@@ -1302,9 +1474,9 @@ data:extend(
         }
       }
     },
-   
+
     fire_glow_flicker_enabled = true,
-    
+
     fire_glow =
     {
       north =
@@ -1395,6 +1567,7 @@ data:extend(
     type = "container",
     name = "wooden-chest",
     icon = "__base__/graphics/icons/wooden-chest.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "wooden-chest"},
     max_health = 100,
@@ -1414,27 +1587,16 @@ data:extend(
       height = 33,
       shift = {0.25, 0.015625}
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
-    circuit_wire_max_distance = 9
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
 
   {
     type = "electric-pole",
     name = "small-electric-pole",
     icon = "__base__/graphics/icons/small-electric-pole.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-electric-pole"},
     max_health = 100,
@@ -1446,6 +1608,7 @@ data:extend(
     supply_area_distance = 2.5,
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
     track_coverage_during_build_by_moving = true,
+    fast_replaceable_group = "electric-pole",
     pictures =
     {
       filename = "__base__/graphics/entity/small-electric-pole/small-electric-pole.png",
@@ -1879,6 +2042,78 @@ data:extend(
   },
   {
     type = "explosion",
+    name = "ground-explosion",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
+        priority = "extra-high",
+        width = 112,
+        height = 94,
+        scale = 0.8,
+        frame_count = 54,
+        line_length = 6,
+        shift = {-0.56, -0.96},
+        animation_speed = 0.5
+      }
+    },
+    light = {intensity = 1, size = 10, color = {r=1.0, g=0.8, b=0.6}},
+    sound =
+    {
+      aggregation =
+      {
+        max_count = 1,
+        remove = true
+      },
+      variations =
+      {
+        {
+          filename = "__base__/sound/fight/large-explosion-1.ogg",
+          volume = 1.0
+        },
+        {
+          filename = "__base__/sound/fight/large-explosion-2.ogg",
+          volume = 1.0
+        }
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 10,
+            entity_name = "explosion-remnants-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.20,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          },
+          {
+            type = "create-particle",
+            repeat_count = 100,
+            entity_name = "stone-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.20,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
     name = "blood-explosion-small",
     flags = {"not-on-map"},
     animations =
@@ -1998,11 +2233,13 @@ data:extend(
     type = "generator",
     name = "steam-engine",
     icon = "__base__/graphics/icons/steam-engine.png",
+    icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "steam-engine"},
     max_health = 400,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    alert_icon_shift = util.by_pixel(3, -34),
     effectivity = 1,
     fluid_usage_per_tick = 0.5,
     maximum_temperature = 165,
@@ -2031,12 +2268,8 @@ data:extend(
         { type = "input-output", position = {0, 3} },
         { type = "input-output", position = {0, -3} },
       },
-      production_type = "input-output"
-    },
-    fluid_input =
-    {
-      name = "steam",
-      amount = 0.0,
+      production_type = "input-output",
+      filter = "steam",
       minimum_temperature = 100.0
     },
     energy_source =
@@ -2088,7 +2321,7 @@ data:extend(
     },
     vertical_animation =
     {
-      layers = 
+      layers =
       {
         {
           filename = "__base__/graphics/entity/steam-engine/steam-engine-V.png",
@@ -2103,7 +2336,7 @@ data:extend(
             height = 391,
             frame_count = 32,
             line_length = 8,
-            shift = util.by_pixel(4.75, -6.25),        
+            shift = util.by_pixel(4.75, -6.25),
             scale = 0.5
           },
         },
@@ -2122,7 +2355,7 @@ data:extend(
             frame_count = 32,
             line_length = 8,
             draw_as_shadow = true,
-            shift = util.by_pixel(40.5, 9.25),        
+            shift = util.by_pixel(40.5, 9.25),
             scale = 0.5
           },
         },
@@ -2158,7 +2391,11 @@ data:extend(
     type = "offshore-pump",
     name = "offshore-pump",
     icon = "__base__/graphics/icons/offshore-pump.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
+    collision_mask = { "ground-tile", "object-layer" },
+    fluid_box_tile_collision_test = { "ground-tile" },
+    adjacent_tile_collision_test = { "water-tile" },
     minable = {mining_time = 1, result = "offshore-pump"},
     max_health = 150,
     corpse = "small-remnants",
@@ -2181,9 +2418,13 @@ data:extend(
       base_area = 1,
       base_level = 1,
       pipe_covers = pipecoverspictures(),
+      production_type = "output",
       pipe_connections =
       {
-        { position = {0, 1} },
+        {
+          position = {0, 1},
+          type = "output"
+        },
       },
     },
     pumping_speed = 20,
@@ -2227,72 +2468,25 @@ data:extend(
         height = 102
       }
     },
-    circuit_wire_connection_points =
+    placeable_position_visualization =
     {
-      {
-        shadow =
-        {
-          red = {2.71875, 0.375},
-          green = {2.5, 0.375},
-        },
-        wire =
-        {
-          red = {0.84375, -0.09375},
-          green = {0.6875, -0.09375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.765625, 0.546875},
-          green = {0.765625, 0.421875},
-        },
-        wire =
-        {
-          red = {-0.28125, -0.09375},
-          green = {-0.28125, -0.21875},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.09375, 0.5625},
-          green = {0.0625, 0.5625},
-        },
-        wire =
-        {
-          red = {-0.90625, -0.53125},
-          green = {-0.75, -0.53125},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {1.78125, -0.46875},
-          green = {1.78125, -0.3125},
-        },
-        wire =
-        {
-          red = {0.34375, -1.40625},
-          green = {0.34375, -1.25},
-        }
-      }
+      filename = "__core__/graphics/cursor-boxes-32x32.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      scale = 0.5,
+      x = 3*64
     },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({0.90625, -0.15625}, nil, 0),
-      get_circuit_connector_sprites({0, 0.03125}, nil, 6),
-      get_circuit_connector_sprites({-0.9375, -0.25}, nil, 4),
-      get_circuit_connector_sprites({0.125, -1.3125}, nil, 2),
-    },
-    circuit_wire_max_distance = 9
+    circuit_wire_connection_points = circuit_connector_definitions["offshore-pump"].points,
+    circuit_connector_sprites = circuit_connector_definitions["offshore-pump"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
 
   },
 
-  smoke{name = "smoke", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}},
-  smoke{name = "light-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}},
-  smoke{name = "turbine-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}, start_scale = 0.8, fade_in_duration = 30 },
-  smoke
+  trivial_smoke{name = "smoke", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}},
+  trivial_smoke{name = "light-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}},
+  trivial_smoke{name = "turbine-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}, start_scale = 0.8, fade_in_duration = 30 },
+  trivial_smoke
   {
     name = "train-smoke",
     color = {r = 0.3, g = 0.3, b = 0.3, a = 0.3},
@@ -2303,7 +2497,7 @@ data:extend(
     end_scale = 1.5,
     affected_by_wind = true
   },
-  smoke
+  trivial_smoke
   {
     name = "car-smoke",
     color = {r = 0.5, g = 0.5, b = 0.5, a = 0.5},
@@ -2313,7 +2507,7 @@ data:extend(
     start_scale = 0.1,
     end_scale = 0.5
   },
-  smoke
+  trivial_smoke
   {
     name = "tank-smoke",
     color = {r = 0.6, g = 0.6, b = 0.6, a = 0.6},
@@ -2324,9 +2518,8 @@ data:extend(
     end_scale = 1.0
   },
   {
-    type = "smoke",
+    type = "trivial-smoke",
     name = "smoke-fast",
-    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
@@ -2341,7 +2534,7 @@ data:extend(
   },
 
   {
-    type = "smoke",
+    type = "trivial-smoke",
     name = "smoke-train-stop",
     flags = {"not-on-map"},
     animation =
@@ -2363,7 +2556,7 @@ data:extend(
   },
 
   {
-    type = "smoke",
+    type = "trivial-smoke",
     name = "smoke-building",
     flags = {"not-on-map"},
     animation =
@@ -2385,7 +2578,7 @@ data:extend(
   },
 
   {
-    type = "smoke",
+    type = "trivial-smoke",
     name = "smoke-explosion-particle",
     flags = {"not-on-map"},
     animation =
@@ -2411,11 +2604,11 @@ data:extend(
     type = "inserter",
     name = "inserter",
     icon = "__base__/graphics/icons/inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "inserter"},
     max_health = 150,
     corpse = "small-remnants",
-    allow_custom_vectors = false,
     resistances =
     {
       {
@@ -2569,8 +2762,8 @@ data:extend(
         }
       }
     },
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -2579,11 +2772,11 @@ data:extend(
     type = "inserter",
     name = "burner-inserter",
     icon = "__base__/graphics/icons/burner-inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "burner-inserter"},
     max_health = 100,
     corpse = "small-remnants",
-    allow_custom_vectors = false,
     resistances =
     {
       {
@@ -2746,8 +2939,8 @@ data:extend(
       }
     },
     rotation_speed = 0.01,
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -2764,6 +2957,7 @@ data:extend(
     type = "pipe",
     name = "pipe",
     icon = "__base__/graphics/icons/pipe.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe"},
     max_health = 100,
@@ -2793,7 +2987,7 @@ data:extend(
         { position = {-1, 0} }
       },
     },
-	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures = pipepictures(),
     working_sound =
     {
@@ -2815,6 +3009,7 @@ data:extend(
     type = "radar",
     name = "radar",
     icon = "__base__/graphics/icons/radar.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "radar"},
     max_health = 250,
@@ -2842,16 +3037,80 @@ data:extend(
       usage_priority = "secondary-input"
     },
     energy_usage = "300kW",
+    integration_patch =
+    {
+      filename = "__base__/graphics/entity/radar/radar-integration.png",
+      priority = "low",
+      width = 119,
+      height = 108,
+      apply_projection = false,
+      direction_count = 1,
+      repeat_count = 64,
+      line_length = 1,
+      shift = util.by_pixel(1.5, 4),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/radar/hr-radar-integration.png",
+        priority = "low",
+        width = 238,
+        height = 216,
+        apply_projection = false,
+        direction_count = 1,
+        repeat_count = 64,
+        line_length = 1,
+        shift = util.by_pixel(1.5, 4),
+        scale = 0.5
+      }
+    },
     pictures =
     {
-      filename = "__base__/graphics/entity/radar/radar.png",
-      priority = "low",
-      width = 153,
-      height = 131,
-      apply_projection = false,
-      direction_count = 64,
-      line_length = 8,
-      shift = util.by_pixel(27.5,-12.5)
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/radar/radar.png",
+          priority = "low",
+          width = 98,
+          height = 128,
+          apply_projection = false,
+          direction_count = 64,
+          line_length = 8,
+          shift = util.by_pixel(1, -16),
+          hr_version = {
+            filename = "__base__/graphics/entity/radar/hr-radar.png",
+            priority = "low",
+            width = 196,
+            height = 254,
+            apply_projection = false,
+            direction_count = 64,
+            line_length = 8,
+            shift = util.by_pixel(1, -16),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/radar/radar-shadow.png",
+          priority = "low",
+          width = 172,
+          height = 94,
+          apply_projection = false,
+          direction_count = 64,
+          line_length = 8,
+          shift = util.by_pixel(39,3),
+          draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/radar/hr-radar-shadow.png",
+            priority = "low",
+            width = 343,
+            height = 186,
+            apply_projection = false,
+            direction_count = 64,
+            line_length = 8,
+            shift = util.by_pixel(39.25,3),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
@@ -2870,6 +3129,7 @@ data:extend(
     type = "lamp",
     name = "small-lamp",
     icon = "__base__/graphics/icons/small-lamp.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "small-lamp"},
     max_health = 100,
@@ -2880,34 +3140,82 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      usage_priority = "secondary-input"
+      usage_priority = "lamp"
     },
     energy_usage_per_tick = "5KW",
     light = {intensity = 0.9, size = 40, color = {r=1.0, g=1.0, b=1.0}},
     light_when_colored = {intensity = 1, size = 6, color = {r=1.0, g=1.0, b=1.0}},
     glow_size = 6,
     glow_color_intensity = 0.135,
-    picture_off =
-    {
-      filename = "__base__/graphics/entity/small-lamp/light-off.png",
-      priority = "high",
-      width = 67,
-      height = 58,
-      frame_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = {-0.015625, 0.15625},
+    picture_off = {
+    layers = {
+        {
+          filename = "__base__/graphics/entity/small-lamp/lamp.png",
+          priority = "high",
+          width = 42,
+          height = 36,
+          frame_count = 1,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = util.by_pixel(0,3),
+          hr_version = {
+            filename = "__base__/graphics/entity/small-lamp/hr-lamp.png",
+            priority = "high",
+            width = 83,
+            height = 70,
+            frame_count = 1,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(0.25,3),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/small-lamp/lamp-shadow.png",
+          priority = "high",
+          width = 38,
+          height = 24,
+          frame_count = 1,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = util.by_pixel(4,5),
+          draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/small-lamp/hr-lamp-shadow.png",
+            priority = "high",
+            width = 76,
+            height = 47,
+            frame_count = 1,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(4, 4.75),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     picture_on =
     {
-      filename = "__base__/graphics/entity/small-lamp/light-on-patch.png",
+      filename = "__base__/graphics/entity/small-lamp/lamp-light.png",
       priority = "high",
-      width = 62,
-      height = 62,
+      width = 46,
+      height = 40,
       frame_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {-0.03125, -0.03125},
+      shift = util.by_pixel(0, -7),
+      hr_version = {
+        filename = "__base__/graphics/entity/small-lamp/hr-lamp-light.png",
+        priority = "high",
+        width = 90,
+        height = 78,
+        frame_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(0, -7),
+        scale = 0.5
+      }
     },
     signal_to_color_mapping =
     {
@@ -2919,22 +3227,9 @@ data:extend(
       {type="virtual", name="signal-cyan", color={r=0,g=1,b=1}},
     },
 
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.578125},
-        green = {0.609375, 0.640625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.34375},
-        green = {0.40625, 0.5},
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.28125}, {0.1875, 0.28125}, 18),
-    circuit_wire_max_distance = 9
-
+    circuit_wire_connection_point = circuit_connector_definitions["lamp"].points,
+    circuit_connector_sprites = circuit_connector_definitions["lamp"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
 
   {
@@ -2962,6 +3257,7 @@ data:extend(
     type = "pipe-to-ground",
     name = "pipe-to-ground",
     icon = "__base__/graphics/icons/pipe-to-ground.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "pipe-to-ground"},
     max_health = 150,
@@ -3071,6 +3367,7 @@ data:extend(
     type = "assembling-machine",
     name = "assembling-machine-1",
     icon = "__base__/graphics/icons/assembling-machine-1.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-1"},
     max_health = 300,
@@ -3086,6 +3383,7 @@ data:extend(
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
+    alert_icon_shift = util.by_pixel(-3, -12),
     animation =
     {
       layers =
@@ -3165,9 +3463,17 @@ data:extend(
   {
     type = "flying-text",
     name = "flying-text",
-    flags = {"not-on-map"},
+    flags = {"not-on-map", "placeable-off-grid"},
     time_to_live = 150,
     speed = 0.05
+  },
+  {
+    type = "flying-text",
+    name = "tutorial-flying-text",
+    flags = {"not-on-map"},
+    time_to_live = 120,
+    speed = 0.02,
+    text_alignment = "center"
   },
 
   {
@@ -3243,12 +3549,14 @@ data:extend(
     picture =
     {
       filename = "__core__/graphics/logistic-delivery.png",
+      flags = { "icon" },
       priority = "extra-high",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       shift = {0, 0},
       scale = 0.5
     },
+    use_target_entity_alert_icon_shift = true,
     flags = {"not-on-map", "placeable-off-grid"},
     minable = { mining_time = 0, results={}},
     collision_box = {{0, 0}, {0, 0}},
@@ -3273,10 +3581,14 @@ data:extend(
     }
   },
 
+  scaled_cliff("cliff", 1.0, 16),
+  scaled_cliff("small-cliff", 0.5, 8),
+
   {
     type = "wall",
     name = "stone-wall",
     icon = "__base__/graphics/icons/stone-wall.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3603,17 +3915,38 @@ data:extend(
             draw_as_shadow = true
           }
         }
+      },
+      water_connection_patch =
+      {
+        sheets =
+        {
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-patch.png",
+            priority = "extra-high",
+            width = 52,
+            height = 68,
+            shift = util.by_pixel(0, -2),
+          },
+          {
+            filename = "__base__/graphics/entity/stone-wall/wall-patch-shadow.png",
+            priority = "extra-high",
+            draw_as_shadow = true,
+            width = 74,
+            height = 96,
+            shift = util.by_pixel(6, 13),
+          }
+        }
       }
     },
 
-    wall_diode_green = conditional_return(not data.is_demo,
+    wall_diode_green = util.conditional_return(not data.is_demo,
         {
           filename = "__base__/graphics/entity/gate/wall-diode-green.png",
           width = 21,
           height = 22,
           shift = {0, -0.78125}
         }),
-    wall_diode_green_light = conditional_return(not data.is_demo,
+    wall_diode_green_light = util.conditional_return(not data.is_demo,
         {
           minimum_darkness = 0.3,
           color = {g=1},
@@ -3621,14 +3954,14 @@ data:extend(
           size = 1,
           intensity = 0.3
         }),
-    wall_diode_red = conditional_return(not data.is_demo,
+    wall_diode_red = util.conditional_return(not data.is_demo,
     {
       filename = "__base__/graphics/entity/gate/wall-diode-red.png",
       width = 21,
       height = 22,
       shift = {0, -0.78125}
     }),
-    wall_diode_red_light = conditional_return(not data.is_demo,
+    wall_diode_red_light = util.conditional_return(not data.is_demo,
     {
       minimum_darkness = 0.3,
       color = {r=1},
@@ -3637,27 +3970,16 @@ data:extend(
       intensity = 0.3
     }),
 
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.890625, 0.828125},
-        green = {0.890625, 0.703125}
-      },
-      wire =
-      {
-        red = {-0.28125, -0.71875},
-        green = {-0.28125, -0.84375}
-      }
-    },
-    circuit_wire_max_distance = 9,
-    circuit_connector_sprites = get_circuit_connector_sprites({0, -0.59375}, nil, 6),
+    circuit_wire_connection_point = circuit_connector_definitions["gate"].points,
+    circuit_connector_sprites = circuit_connector_definitions["gate"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
     default_output_signal = data.is_demo and {type = "virtual", name = "signal-green"} or {type = "virtual", name = "signal-G"}
   },
   {
     type = "corpse",
     name = "wall-remnants",
     icon = "__base__/graphics/icons/wall-remnants.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup="remnants",
     order="d[remnants]-c[wall]",

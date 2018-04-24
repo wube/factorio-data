@@ -8,13 +8,21 @@ require ("prototypes.entity.assemblerpipes")
 require ("prototypes.entity.demo-player-animations")
 require ("prototypes.entity.laser-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
+require ("prototypes.entity.combinator-pictures")
 
 rail_pictures = function()
-  return rail_pictures_internal({{"metals", "metals", mipmap = true},
+  return rail_pictures_internal({
+                                 {"metals", "metals", mipmap = true},
                                  {"backplates", "backplates", mipmap = true},
                                  {"ties", "ties", variations = 3},
                                  {"stone_path", "stone-path", variations = 3},
-                                 {"stone_path_background", "stone-path-background", variations = 3}})
+                                 {"stone_path_background", "stone-path-background", variations = 3},
+                                 {"segment_visualisation_middle", "segment-visualisation-middle"},
+                                 {"segment_visualisation_ending_front", "segment-visualisation-ending-1"},
+                                 {"segment_visualisation_ending_back", "segment-visualisation-ending-2"},
+                                 {"segment_visualisation_continuing_front", "segment-visualisation-continuing-1"},
+                                 {"segment_visualisation_continuing_back", "segment-visualisation-continuing-2"}
+                                })
 end
 
 standard_train_wheels =
@@ -249,6 +257,7 @@ data:extend(
     type = "underground-belt",
     name = "underground-belt",
     icon = "__base__/graphics/icons/underground-belt.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "underground-belt"},
     max_health = 150,
@@ -257,6 +266,15 @@ data:extend(
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      scale = 0.5
+    },
+    underground_remove_belts_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines-remove.png",
       priority = "high",
       width = 64,
       height = 64,
@@ -285,7 +303,7 @@ data:extend(
     starting_top = basic_belt_starting_top,
     starting_bottom = basic_belt_starting_bottom,
     starting_side = basic_belt_starting_side,
-    fast_replaceable_group = "underground-belt",
+    fast_replaceable_group = "transport-belt",
     speed = 0.03125,
     structure =
     {
@@ -340,6 +358,7 @@ data:extend(
     type = "underground-belt",
     name = "fast-underground-belt",
     icon = "__base__/graphics/icons/fast-underground-belt.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-underground-belt"},
     max_health = 160,
@@ -348,6 +367,15 @@ data:extend(
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      scale = 0.5
+    },
+    underground_remove_belts_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines-remove.png",
       priority = "high",
       width = 64,
       height = 64,
@@ -376,7 +404,7 @@ data:extend(
     starting_top = fast_belt_starting_top,
     starting_bottom = fast_belt_starting_bottom,
     starting_side = fast_belt_starting_side,
-    fast_replaceable_group = "underground-belt",
+    fast_replaceable_group = "transport-belt",
     speed = 0.0625,
     structure =
     {
@@ -429,6 +457,7 @@ data:extend(
     type = "underground-belt",
     name = "express-underground-belt",
     icon = "__base__/graphics/icons/express-underground-belt.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-underground-belt"},
     max_health = 170,
@@ -437,6 +466,15 @@ data:extend(
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      scale = 0.5
+    },
+    underground_remove_belts_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines-remove.png",
       priority = "high",
       width = 64,
       height = 64,
@@ -465,7 +503,7 @@ data:extend(
     starting_top = express_belt_starting_top,
     starting_bottom = express_belt_starting_bottom,
     starting_side = express_belt_starting_side,
-    fast_replaceable_group = "underground-belt",
+    fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     structure =
     {
@@ -518,6 +556,7 @@ data:extend(
     type = "loader",
     name = "loader",
     icon = "__base__/graphics/icons/loader.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "loader"},
     max_health = 170,
@@ -573,6 +612,7 @@ data:extend(
     type = "loader",
     name = "fast-loader",
     icon = "__base__/graphics/icons/loader.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-loader"},
     max_health = 170,
@@ -628,6 +668,7 @@ data:extend(
     type = "loader",
     name = "express-loader",
     icon = "__base__/graphics/icons/loader.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-loader"},
     max_health = 170,
@@ -683,6 +724,7 @@ data:extend(
     type = "splitter",
     name = "splitter",
     icon = "__base__/graphics/icons/splitter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "splitter"},
     max_health = 170,
@@ -708,7 +750,7 @@ data:extend(
     starting_bottom = basic_belt_starting_bottom,
     starting_side = basic_belt_starting_side,
     ending_patch = ending_patch_prototype,
-    fast_replaceable_group = "splitter",
+    fast_replaceable_group = "transport-belt",
     speed = 0.03125,
     structure =
     {
@@ -797,12 +839,12 @@ data:extend(
         }
       },
     },
-    ending_patch = ending_patch_prototype
   },
   {
     type = "splitter",
     name = "fast-splitter",
     icon = "__base__/graphics/icons/fast-splitter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "fast-splitter"},
     max_health = 180,
@@ -827,7 +869,7 @@ data:extend(
     starting_top = fast_belt_starting_top,
     starting_bottom = fast_belt_starting_bottom,
     starting_side = fast_belt_starting_side,
-    fast_replaceable_group = "splitter",
+    fast_replaceable_group = "transport-belt",
     speed = 0.0625,
     structure =
     {
@@ -922,6 +964,7 @@ data:extend(
     type = "splitter",
     name = "express-splitter",
     icon = "__base__/graphics/icons/express-splitter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "express-splitter"},
     max_health = 190,
@@ -947,7 +990,7 @@ data:extend(
     starting_bottom = express_belt_starting_bottom,
     starting_side = express_belt_starting_side,
     ending_patch = ending_patch_prototype,
-    fast_replaceable_group = "splitter",
+    fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     structure =
     {
@@ -1041,6 +1084,7 @@ data:extend(
     type = "transport-belt",
     name = "fast-transport-belt",
     icon = "__base__/graphics/icons/fast-transport-belt.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "fast-transport-belt"},
     max_health = 160,
@@ -1096,14 +1140,15 @@ data:extend(
     fast_replaceable_group = "transport-belt",
     speed = 0.0625,
     connector_frame_sprites = transport_belt_connector_frame_sprites,
-    circuit_connector_sprites = transport_belt_circuit_connector_sprites,
-    circuit_wire_connection_point = transport_belt_circuit_wire_connection_point,
+    circuit_wire_connection_points = circuit_connector_definitions["belt"].points,
+    circuit_connector_sprites = circuit_connector_definitions["belt"].sprites,
     circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
   },
   {
     type = "transport-belt",
     name = "express-transport-belt",
     icon = "__base__/graphics/icons/express-transport-belt.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.3, result = "express-transport-belt"},
     max_health = 170,
@@ -1156,23 +1201,24 @@ data:extend(
     starting_bottom = express_belt_starting_bottom,
     starting_side = express_belt_starting_side,
     ending_patch = ending_patch_prototype,
-    ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     connector_frame_sprites = transport_belt_connector_frame_sprites,
-    circuit_connector_sprites = transport_belt_circuit_connector_sprites,
-    circuit_wire_connection_point = transport_belt_circuit_wire_connection_point,
+    circuit_wire_connection_points = circuit_connector_definitions["belt"].points,
+    circuit_connector_sprites = circuit_connector_definitions["belt"].sprites,
     circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
   },
   {
     type = "assembling-machine",
     name = "assembling-machine-2",
     icon = "__base__/graphics/icons/assembling-machine-2.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
     max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
     {
       {
@@ -1217,7 +1263,8 @@ data:extend(
           frame_count = 32,
           line_length = 8,
           shift = util.by_pixel(0, 4),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/assembling-machine-2/hr-assembling-machine-2.png",
             priority = "high",
             width = 214,
@@ -1237,7 +1284,8 @@ data:extend(
           line_length = 8,
           draw_as_shadow = true,
           shift = util.by_pixel(12, 5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/assembling-machine-2/hr-assembling-machine-2-shadow.png",
             priority = "high",
             width = 196,
@@ -1256,7 +1304,8 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
-      sound = {
+      sound =
+      {
         {
           filename = "__base__/sound/assembling-machine-t2-1.ogg",
           volume = 0.8
@@ -1289,11 +1338,13 @@ data:extend(
     type = "assembling-machine",
     name = "assembling-machine-3",
     icon = "__base__/graphics/icons/assembling-machine-3.png",
+    icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
     max_health = 400,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
     {
       {
@@ -1411,12 +1462,14 @@ data:extend(
     type = "car",
     name = "car",
     icon = "__base__/graphics/icons/car.png",
+    icon_size = 32,
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "car"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 450,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
+    alert_icon_shift = util.by_pixel(0, -13),
     energy_per_hit_point = 1,
     crash_trigger = crash_trigger(),
     resistances =
@@ -1532,7 +1585,7 @@ data:extend(
             frame_count = 2,
             scale = 0.5,
             direction_count = 64,
-            shift = {0, -0.359375},
+            shift = util.by_pixel(0+2, -11.5+8.5),
             animation_speed = 8,
             max_advance = 0.2,
             stripes =
@@ -1609,7 +1662,7 @@ data:extend(
             axially_symmetrical = false,
             direction_count = 64,
             max_advance = 0.2,
-            shift = {0, -0.34375},
+            shift = util.by_pixel(0+2, -11+8.5),
             line_length = 1,
             stripes = util.multiplystripes(2,
             {
@@ -1693,7 +1746,7 @@ data:extend(
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 64,
-            shift = {0, -1.05},
+            shift = util.by_pixel(0+2, -33.5+8.5),
             animation_speed = 8,
             scale = 0.5,
             stripes =
@@ -1778,12 +1831,15 @@ data:extend(
     type = "car",
     name = "tank",
     icon = "__base__/graphics/icons/tank.png",
+    icon_size = 32,
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "tank"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
+    alert_icon_shift = util.by_pixel(-4, -13),
+    immune_to_tree_impacts = true,
     energy_per_hit_point = 0.5,
     resistances =
     {
@@ -1815,6 +1871,7 @@ data:extend(
     },
     collision_box = {{-0.9, -1.3}, {0.9, 1.3}},
     selection_box = {{-0.9, -1.3}, {0.9, 1.3}},
+    drawing_box = {{-1.8, -1.8}, {1.8, 1.5}},
     effectivity = 0.6,
     braking_power = "400kW",
     burner =
@@ -1880,98 +1937,198 @@ data:extend(
       {
         {
           priority = "low",
-          width = 139,
-          height = 110,
+          width = 135,
+          height = 106,
           frame_count = 2,
           direction_count = 64,
-          shift = {-0.140625, -0.28125},
+          shift = util.by_pixel(-4.5, -10),
           animation_speed = 8,
           max_advance = 1,
           stripes =
           {
             {
-             filename = "__base__/graphics/entity/tank/base-1.png",
+             filename = "__base__/graphics/entity/tank/tank-base-1.png",
              width_in_frames = 2,
              height_in_frames = 16,
             },
             {
-             filename = "__base__/graphics/entity/tank/base-2.png",
+             filename = "__base__/graphics/entity/tank/tank-base-2.png",
              width_in_frames = 2,
              height_in_frames = 16,
             },
             {
-             filename = "__base__/graphics/entity/tank/base-3.png",
+             filename = "__base__/graphics/entity/tank/tank-base-3.png",
              width_in_frames = 2,
              height_in_frames = 16,
             },
             {
-             filename = "__base__/graphics/entity/tank/base-4.png",
+             filename = "__base__/graphics/entity/tank/tank-base-4.png",
              width_in_frames = 2,
              height_in_frames = 16,
             }
+          },
+          hr_version = {
+            priority = "low",
+            width = 269,
+            height = 212,
+            frame_count = 2,
+            direction_count = 64,
+            shift = util.by_pixel(-4.75, -10),
+            animation_speed = 8,
+            max_advance = 1,
+            stripes =
+            {
+              {
+               filename = "__base__/graphics/entity/tank/hr-tank-base-1.png",
+               width_in_frames = 2,
+               height_in_frames = 16,
+              },
+              {
+               filename = "__base__/graphics/entity/tank/hr-tank-base-2.png",
+               width_in_frames = 2,
+               height_in_frames = 16,
+              },
+              {
+               filename = "__base__/graphics/entity/tank/hr-tank-base-3.png",
+               width_in_frames = 2,
+               height_in_frames = 16,
+              },
+              {
+               filename = "__base__/graphics/entity/tank/hr-tank-base-4.png",
+               width_in_frames = 2,
+               height_in_frames = 16,
+              }
+            },
+            scale = 0.5
           }
         },
         {
           priority = "low",
-          width = 109,
-          height = 88,
+          width = 104,
+          height = 84,
           frame_count = 2,
           apply_runtime_tint = true,
           direction_count = 64,
-          shift = {-0.140625, -0.65625},
+          shift = util.by_pixel(-5, -21),
           max_advance = 1,
           line_length = 2,
           stripes = util.multiplystripes(2,
           {
             {
-              filename = "__base__/graphics/entity/tank/base-mask-1.png",
+              filename = "__base__/graphics/entity/tank/tank-base-mask-1.png",
               width_in_frames = 1,
               height_in_frames = 22,
             },
             {
-              filename = "__base__/graphics/entity/tank/base-mask-2.png",
+              filename = "__base__/graphics/entity/tank/tank-base-mask-2.png",
               width_in_frames = 1,
               height_in_frames = 22,
             },
             {
-              filename = "__base__/graphics/entity/tank/base-mask-3.png",
+              filename = "__base__/graphics/entity/tank/tank-base-mask-3.png",
               width_in_frames = 1,
               height_in_frames = 20,
             },
-          })
+          }),
+          hr_version =
+          {
+            priority = "low",
+            width = 207,
+            height = 166,
+            frame_count = 2,
+            apply_runtime_tint = true,
+            direction_count = 64,
+            shift = util.by_pixel(-4.75, -21),
+            max_advance = 1,
+            line_length = 2,
+            stripes = util.multiplystripes(2,
+            {
+              {
+                filename = "__base__/graphics/entity/tank/hr-tank-base-mask-1.png",
+                width_in_frames = 1,
+                height_in_frames = 22,
+              },
+              {
+                filename = "__base__/graphics/entity/tank/hr-tank-base-mask-2.png",
+                width_in_frames = 1,
+                height_in_frames = 22,
+              },
+              {
+                filename = "__base__/graphics/entity/tank/hr-tank-base-mask-3.png",
+                width_in_frames = 1,
+                height_in_frames = 20,
+              },
+            }),
+            scale = 0.5
+          }
         },
         {
           priority = "low",
-          width = 154,
-          height = 99,
+          width = 151,
+          height = 98,
           frame_count = 2,
           draw_as_shadow = true,
           direction_count = 64,
-          shift = {0.59375, 0.328125},
+          shift = util.by_pixel(17.5, 7),
           max_advance = 1,
           stripes = util.multiplystripes(2,
           {
            {
-            filename = "__base__/graphics/entity/tank/base-shadow-1.png",
+            filename = "__base__/graphics/entity/tank/tank-base-shadow-1.png",
             width_in_frames = 1,
             height_in_frames = 16,
            },
            {
-            filename = "__base__/graphics/entity/tank/base-shadow-2.png",
+            filename = "__base__/graphics/entity/tank/tank-base-shadow-2.png",
             width_in_frames = 1,
             height_in_frames = 16,
            },
            {
-            filename = "__base__/graphics/entity/tank/base-shadow-3.png",
+            filename = "__base__/graphics/entity/tank/tank-base-shadow-3.png",
             width_in_frames = 1,
             height_in_frames = 16,
            },
            {
-            filename = "__base__/graphics/entity/tank/base-shadow-4.png",
+            filename = "__base__/graphics/entity/tank/tank-base-shadow-4.png",
             width_in_frames = 1,
             height_in_frames = 16,
            }
-          })
+          }),
+          hr_version =
+          {
+            priority = "low",
+            width = 301,
+            height = 194,
+            frame_count = 2,
+            draw_as_shadow = true,
+            direction_count = 64,
+            shift = util.by_pixel(17.75, 7),
+            max_advance = 1,
+            stripes = util.multiplystripes(2,
+            {
+             {
+              filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-1.png",
+              width_in_frames = 1,
+              height_in_frames = 16,
+             },
+             {
+              filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-2.png",
+              width_in_frames = 1,
+              height_in_frames = 16,
+             },
+             {
+              filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-3.png",
+              width_in_frames = 1,
+              height_in_frames = 16,
+             },
+             {
+              filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-4.png",
+              width_in_frames = 1,
+              height_in_frames = 16,
+             }
+            }),
+            scale = 0.5
+          }
         }
       }
     },
@@ -1980,37 +2137,76 @@ data:extend(
       layers =
       {
         {
-          filename = "__base__/graphics/entity/tank/turret.png",
+          filename = "__base__/graphics/entity/tank/tank-turret.png",
           priority = "low",
           line_length = 8,
-          width = 92,
-          height = 69,
+          width = 90,
+          height = 67,
           frame_count = 1,
           direction_count = 64,
-          shift = {-0.15625, -1.07812},
+          shift = util.by_pixel(-5, -34.5),
           animation_speed = 8,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/tank/hr-tank-turret.png",
+            priority = "low",
+            line_length = 8,
+            width = 179,
+            height = 132,
+            frame_count = 1,
+            direction_count = 64,
+            shift = util.by_pixel(-4.75, -34.5),
+            animation_speed = 8,
+            scale = 0.5
+          }
         },
         {
-          filename = "__base__/graphics/entity/tank/turret-mask.png",
+          filename = "__base__/graphics/entity/tank/tank-turret-mask.png",
           priority = "low",
           line_length = 8,
-          width = 38,
-          height = 29,
+          width = 36,
+          height = 33,
           frame_count = 1,
           apply_runtime_tint = true,
           direction_count = 64,
-          shift = {-0.15625, -1.23438},
+          shift = util.by_pixel(-5, -35.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/tank/hr-tank-turret-mask.png",
+            priority = "low",
+            line_length = 8,
+            width = 72,
+            height = 66,
+            frame_count = 1,
+            apply_runtime_tint = true,
+            direction_count = 64,
+            shift = util.by_pixel(-5, -35.5),
+            scale = 0.5
+          }
         },
         {
-          filename = "__base__/graphics/entity/tank/turret-shadow.png",
+          filename = "__base__/graphics/entity/tank/tank-turret-shadow.png",
           priority = "low",
           line_length = 8,
-          width = 95,
+          width = 97,
           height = 67,
           frame_count = 1,
           draw_as_shadow = true,
           direction_count = 64,
-          shift = {1.70312, 0.640625},
+          shift = util.by_pixel(51.5, 6.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/tank/hr-tank-turret-shadow.png",
+            priority = "low",
+            line_length = 8,
+            width = 193,
+            height = 134,
+            frame_count = 1,
+            draw_as_shadow = true,
+            direction_count = 64,
+            shift = util.by_pixel(51.25, 6.5),
+            scale = 0.5
+          }
         }
       }
     },
@@ -2070,6 +2266,7 @@ data:extend(
     type = "container",
     name = "iron-chest",
     icon = "__base__/graphics/icons/iron-chest.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "iron-chest"},
     max_health = 200,
@@ -2100,26 +2297,15 @@ data:extend(
       height = 34,
       shift = {0.1875, 0}
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
-    circuit_wire_max_distance = 9
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "container",
     name = "steel-chest",
     icon = "__base__/graphics/icons/steel-chest.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "steel-chest"},
     max_health = 350,
@@ -2150,31 +2336,19 @@ data:extend(
       height = 34,
       shift = {0.1875, 0}
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
-    circuit_wire_max_distance = 9
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "inserter",
     name = "long-handed-inserter",
     icon = "__base__/graphics/icons/long-handed-inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "long-handed-inserter"},
     max_health = 160,
     corpse = "small-remnants",
-    allow_custom_vectors = false,
     resistances =
     {
       {
@@ -2329,8 +2503,8 @@ data:extend(
         }
       }
     },
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -2338,8 +2512,8 @@ data:extend(
     type = "inserter",
     name = "fast-inserter",
     icon = "__base__/graphics/icons/fast-inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    allow_custom_vectors = false,
     minable =
     {
       hardness = 0.2,
@@ -2501,8 +2675,8 @@ data:extend(
         }
       }
     },
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -2511,9 +2685,9 @@ data:extend(
     type = "inserter",
     name = "stack-inserter",
     icon = "__base__/graphics/icons/stack-inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     stack = true,
-    allow_custom_vectors = false,
     minable =
     {
       hardness = 0.2,
@@ -2675,8 +2849,8 @@ data:extend(
         }
       }
     },
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -2685,9 +2859,9 @@ data:extend(
     type = "inserter",
     name = "stack-filter-inserter",
     icon = "__base__/graphics/icons/stack-filter-inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     stack = true,
-    allow_custom_vectors = false,
     filter_count = 1,
     minable =
     {
@@ -2758,7 +2932,7 @@ data:extend(
         priority = "extra-high",
         width = 32,
         height = 136,
-        scale = 0.25      
+        scale = 0.25
       }
     },
     hand_closed_picture =
@@ -2772,7 +2946,7 @@ data:extend(
         priority = "extra-high",
         width = 100,
         height = 164,
-        scale = 0.25      
+        scale = 0.25
       }
     },
     hand_open_picture =
@@ -2850,8 +3024,8 @@ data:extend(
         }
       }
     },
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -2860,10 +3034,10 @@ data:extend(
     type = "inserter",
     name = "filter-inserter",
     icon = "__base__/graphics/icons/filter-inserter.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "filter-inserter"},
     max_health = 150,
-    allow_custom_vectors = false,
     corpse = "small-remnants",
     resistances =
     {
@@ -3020,8 +3194,8 @@ data:extend(
       }
     },
 
-    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
-    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
     default_stack_control_input_signal = inserter_default_stack_control_input_signal
   },
@@ -3029,6 +3203,7 @@ data:extend(
     type = "solar-panel",
     name = "solar-panel",
     icon = "__base__/graphics/icons/solar-panel.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "solar-panel"},
     max_health = 200,
@@ -3042,18 +3217,71 @@ data:extend(
     },
     picture =
     {
-      filename = "__base__/graphics/entity/solar-panel/solar-panel.png",
-      priority = "high",
-      width = 104,
-      height = 96
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel.png",
+          priority = "high",
+          width = 116,
+          height = 112,
+          shift = util.by_pixel(-3, 3),
+          hr_version = {
+            filename = "__base__/graphics/entity/solar-panel/hr-solar-panel.png",
+            priority = "high",
+            width = 230,
+            height = 224,
+            shift = util.by_pixel(-3, 3.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel-shadow.png",
+          priority = "high",
+          width = 112,
+          height = 90,
+          shift = util.by_pixel(10, 6),
+          draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/solar-panel/hr-solar-panel-shadow.png",
+            priority = "high",
+            width = 220,
+            height = 180,
+            shift = util.by_pixel(9.5, 6),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    overlay =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel-shadow-overlay.png",
+          priority = "high",
+          width = 108,
+          height = 90,
+          shift = util.by_pixel(11, 6),
+          hr_version = {
+            filename = "__base__/graphics/entity/solar-panel/hr-solar-panel-shadow-overlay.png",
+            priority = "high",
+            width = 214,
+            height = 180,
+            shift = util.by_pixel(10.5, 6),
+            scale = 0.5
+          }
+        }
+      }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    production = "60kW"  
+    production = "60kW"
   },
   {
     type = "locomotive",
     name = "locomotive",
     icon = "__base__/graphics/icons/diesel-locomotive.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 1, result = "locomotive"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
@@ -3063,6 +3291,7 @@ data:extend(
     collision_box = {{-0.6, -2.6}, {0.6, 2.6}},
     selection_box = {{-1, -3}, {1, 3}},
     drawing_box = {{-1, -4}, {1, 3}},
+    alert_icon_shift = util.by_pixel(0, -24),
     weight = 2000,
     max_speed = 1.2,
     max_power = "600kW",
@@ -3168,10 +3397,12 @@ data:extend(
       layers =
       {
         {
+          slice = 4,
           priority = "very-low",
           width = 238,
           height = 230,
           direction_count = 256,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-01.png",
@@ -3187,11 +3418,13 @@ data:extend(
           lines_per_file = 8,
           shift = {0.0, -0.5},
           hr_version =
-            {
+          {
             priority = "very-low",
+            slice = 4,
             width = 474,
             height = 458,
             direction_count = 256,
+            allow_low_quality_rotation = true,
             filenames =
             {
               "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-1.png",
@@ -3220,9 +3453,11 @@ data:extend(
         {
           priority = "very-low",
           flags = { "mask" },
+          slice = 4,
           width = 236,
           height = 228,
           direction_count = 256,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-01.png",
@@ -3242,9 +3477,11 @@ data:extend(
             {
               priority = "very-low",
               flags = { "mask" },
+              slice = 4,
               width = 472,
               height = 456,
               direction_count = 256,
+              allow_low_quality_rotation = true,
               filenames =
               {
                 "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-1.png",
@@ -3278,6 +3515,7 @@ data:extend(
           height = 212,
           direction_count = 256,
           draw_as_shadow = true,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-01.png",
@@ -3301,9 +3539,9 @@ data:extend(
     {
       -- left side
       {
-        type = "create-smoke",
+        type = "create-trivial-smoke",
         repeat_count = 125,
-        entity_name = "smoke-train-stop",
+        smoke_name = "smoke-train-stop",
         initial_height = 0,
         -- smoke goes to the left
         speed = {-0.03, 0},
@@ -3313,9 +3551,9 @@ data:extend(
       },
       -- right side
       {
-        type = "create-smoke",
+        type = "create-trivial-smoke",
         repeat_count = 125,
-        entity_name = "smoke-train-stop",
+        smoke_name = "smoke-train-stop",
         initial_height = 0,
         -- smoke goes to the right
         speed = {0.03, 0},
@@ -3354,6 +3592,7 @@ data:extend(
     type = "cargo-wagon",
     name = "cargo-wagon",
     icon = "__base__/graphics/icons/cargo-wagon.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
     inventory_size = 40,
     minable = {mining_time = 1, result = "cargo-wagon"},
@@ -3409,10 +3648,12 @@ data:extend(
       {
         {
           priority = "very-low",
+          slice = 4,
           width = 222,
           height = 205,
           back_equals_front = true,
           direction_count = 128,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/cargo-wagon/cargo-wagon-1.png",
@@ -3426,10 +3667,12 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
+            slice = 4,
             width = 442,
             height = 407,
             back_equals_front = true,
             direction_count = 128,
+            allow_low_quality_rotation = true,
             filenames =
             {
               "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-1.png",
@@ -3446,9 +3689,11 @@ data:extend(
         {
           flags = { "mask" },
           priority = "very-low",
+          slice = 4,
           width = 196,
           height = 174,
           direction_count = 128,
+          allow_low_quality_rotation = true,
           back_equals_front = true,
           apply_runtime_tint = true,
           shift = {0, -1.125},
@@ -3464,9 +3709,11 @@ data:extend(
           {
             flags = { "mask" },
             priority = "very-low",
+            slice = 4,
             width = 406,
             height = 371,
             direction_count = 128,
+            allow_low_quality_rotation = true,
             back_equals_front = true,
             apply_runtime_tint = true,
             shift = util.by_pixel(-0.5, -30.25),
@@ -3489,6 +3736,7 @@ data:extend(
           back_equals_front = true,
           draw_as_shadow = true,
           direction_count = 128,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/cargo-wagon/cargo-wagon-shadow-1.png",
@@ -3508,6 +3756,7 @@ data:extend(
             back_equals_front = true,
             draw_as_shadow = true,
             direction_count = 128,
+            allow_low_quality_rotation = true,
             filenames =
             {
               "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-1.png",
@@ -3746,6 +3995,7 @@ data:extend(
     type = "fluid-wagon",
     name = "fluid-wagon",
     icon = "__base__/graphics/icons/fluid-wagon.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 1, result = "fluid-wagon"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
@@ -3850,10 +4100,12 @@ data:extend(
       {
         {
           priority = "very-low",
+          slice = 4,
           width = 208,
           height = 210,
           back_equals_front = true,
           direction_count = 128,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/fluid-wagon/fluid-wagon-1.png",
@@ -3867,10 +4119,12 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
+            slice = 4,
             width = 416,
             height = 419,
             back_equals_front = true,
             direction_count = 128,
+            allow_low_quality_rotation = true,
             filenames =
             {
               "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-1.png",
@@ -3896,6 +4150,7 @@ data:extend(
           back_equals_front = true,
           draw_as_shadow = true,
           direction_count = 128,
+          allow_low_quality_rotation = true,
           filenames =
           {
             "__base__/graphics/entity/fluid-wagon/fluid-wagon-shadow-1.png",
@@ -3915,6 +4170,7 @@ data:extend(
             back_equals_front = true,
             draw_as_shadow = true,
             direction_count = 128,
+            allow_low_quality_rotation = true,
             filenames =
             {
               "__base__/graphics/entity/fluid-wagon/hr-fluid-wagon-shadow-1.png",
@@ -3950,11 +4206,771 @@ data:extend(
     sound_minimum_speed = 0.5;
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
   },
+  {
+    type = "artillery-wagon",
+    name = "artillery-wagon",
+    icon = "__base__/graphics/icons/artillery-wagon.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-on-map"},
+    inventory_size = 1,
+    ammo_stack_limit = 100,
+    minable = {mining_time = 1, result = "artillery-wagon"},
+    mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
+    max_health = 600,
+    corpse = "medium-remnants",
+    dying_explosion = "medium-explosion",
+    collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
+    selection_box = {{-1, -2.703125}, {1, 3.296875}},
+    vertical_selection_shift = -0.796875,
+    weight = 4000,
+    max_speed = 1.5,
+    braking_force = 3,
+    friction_force = 0.50,
+    air_resistance = 0.015,
+    connection_distance = 3,
+    joint_distance = 4,
+    energy_per_hit_point = 2,
+    gun = "artillery-wagon-cannon",
+    turret_rotation_speed = 0.001,
+    turn_after_shooting_cooldown = 60,
+    cannon_parking_frame_count = 8,
+    cannon_parking_speed = 0.25,
+    manual_range_modifier = 2.5,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 50
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 10,
+        percent = 20
+      }
+    },
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
+    color = {r = 0.43, g = 0.23, b = 0, a = 0.5},
+    pictures =
+    {
+      layers =
+      {
+        {
+          priority = "very-low",
+          width = 238,
+          height = 206,
+          direction_count = 256,
+          allow_low_quality_rotation = true,
+          line_length = 4,
+          lines_per_file = 4,
+          shift = util.by_pixel(0, -27),
+          slice = 4,
+          filenames =
+          {
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-1.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-2.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-3.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-4.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-5.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-6.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-7.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-8.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-9.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-10.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-11.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-12.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-13.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-14.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-15.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-16.png",
+          },
+          hr_version =
+          {
+            priority = "very-low",
+            width = 476,
+            height = 410,
+            direction_count = 256,
+            allow_low_quality_rotation = true,
+            line_length = 4,
+            lines_per_file = 4,
+            shift = util.by_pixel(0.5, -27.5),
+            scale = 0.5,
+            slice = 4,
+            filenames =
+            {
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-1.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-2.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-3.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-4.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-5.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-6.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-7.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-8.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-9.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-10.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-11.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-12.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-13.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-14.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-15.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-16.png",
+            }
+          }
+        },
+        {
+          priority = "very-low",
+          width = 300,
+          height = 240,
+          direction_count = 256,
+          allow_low_quality_rotation = true,
+          line_length = 4,
+          lines_per_file = 4,
+          shift = util.by_pixel(37, 6),
+          draw_as_shadow = true,
+          filenames =
+          {
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-1.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-2.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-3.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-4.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-5.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-6.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-7.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-8.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-9.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-10.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-11.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-12.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-13.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-14.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-15.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-16.png",
+          },
+          hr_version =
+          {
+            priority = "very-low",
+            width = 598,
+            height = 480,
+            direction_count = 256,
+            allow_low_quality_rotation = true,
+            line_length = 4,
+            lines_per_file = 4,
+            shift = util.by_pixel(36.5, 6.5),--v
+            scale = 0.5,
+            draw_as_shadow = true,
+            filenames =
+            {
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-1.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-2.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-3.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-4.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-5.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-6.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-7.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-8.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-9.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-10.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-11.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-12.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-13.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-14.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-15.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-16.png",
+            }
+          }
+        }
+      }
+    },
+    cannon_barrel_pictures =
+    {
+      layers =
+      {
+        {
+          priority = "very-low",
+          width = 266,
+          height = 192,
+          direction_count = 256,
+          line_length = 4,
+          lines_per_file = 4,
+          shift = util.by_pixel(0, -56),
+          filenames =
+          {
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-1.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-2.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-3.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-4.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-5.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-6.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-7.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-8.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-9.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-10.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-11.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-12.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-13.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-14.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-15.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-16.png",
+          },
+          hr_version =
+          {
+            priority = "very-low",
+            width = 530,
+            height = 384,
+            direction_count = 256,
+            line_length = 4,
+            lines_per_file = 4,
+            shift = util.by_pixel(0, -56),
+            scale = 0.5,
+            filenames =
+            {
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-1.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-2.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-3.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-4.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-5.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-6.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-7.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-8.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-9.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-10.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-11.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-12.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-13.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-14.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-15.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-16.png",
+            }
+          }
+        },
+        {
+          priority = "very-low",
+          width = 454,
+          height = 314,
+          direction_count = 256,
+          line_length = 4,
+          lines_per_file = 4,
+          shift = util.by_pixel(-3+58, 8+46),
+          draw_as_shadow = true,
+          filenames =
+          {
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-1.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-2.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-3.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-4.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-5.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-6.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-7.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-8.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-9.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-10.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-11.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-12.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-13.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-14.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-15.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-16.png",
+          },
+          hr_version =
+          {
+            priority = "very-low",
+            width = 906,
+            height = 626,
+            direction_count = 256,
+            line_length = 4,
+            lines_per_file = 4,
+            shift = util.by_pixel(-3.5+58, 7.5+46),
+            scale = 0.5,
+            draw_as_shadow = true,
+            filenames =
+            {
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-1.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-2.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-3.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-4.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-5.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-6.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-7.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-8.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-9.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-10.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-11.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-12.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-13.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-14.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-15.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-16.png",
+            }
+          }
+        },
+      }
+    },
+    cannon_base_pictures =
+    {
+      layers =
+      {
+        {
+          priority = "very-low",
+          width = 180,
+          height = 136,
+          direction_count = 256,
+          line_length = 4,
+          lines_per_file = 4,
+          shift = util.by_pixel(0, -40),
+          filenames =
+          {
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-1.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-2.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-3.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-4.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-5.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-6.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-7.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-8.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-9.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-10.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-11.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-12.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-13.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-14.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-15.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-16.png",
+          },
+          hr_version =
+          {
+            priority = "very-low",
+            width = 358,
+            height = 270,
+            direction_count = 256,
+            line_length = 4,
+            lines_per_file = 4,
+            shift = util.by_pixel(0, -40.5),
+            scale = 0.5,
+            filenames =
+            {
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-1.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-2.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-3.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-4.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-5.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-6.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-7.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-8.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-9.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-10.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-11.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-12.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-13.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-14.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-15.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-16.png",
+            }
+          }
+        },
+        {
+          priority = "very-low",
+          width = 238,
+          height = 170,
+          direction_count = 256,
+          line_length = 4,
+          lines_per_file = 4,
+          shift = util.by_pixel(54+58, -1+46),
+          draw_as_shadow = true,
+          filenames =
+          {
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-1.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-2.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-3.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-4.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-5.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-6.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-7.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-8.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-9.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-10.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-11.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-12.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-13.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-14.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-15.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-16.png",
+          },
+          hr_version =
+          {
+            priority = "very-low",
+            width = 476,
+            height = 340,
+            direction_count = 256,
+            line_length = 4,
+            lines_per_file = 4,
+            shift = util.by_pixel(54.5+58, -1+46),
+            scale = 0.5,
+            draw_as_shadow = true,
+            filenames =
+            {
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-1.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-2.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-3.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-4.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-5.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-6.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-7.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-8.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-9.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-10.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-11.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-12.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-13.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-14.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-15.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-16.png",
+            }
+          }
+        },
+      }
+    },
+    cannon_base_shiftings =
+    {
+      util.by_pixel(0.0, 19.5),
+      util.by_pixel(-1.5, 19.0),
+      util.by_pixel(-3.5, 19.0),
+      util.by_pixel(-5.5, 18.5),
+      util.by_pixel(-7.5, 18.5),
+      util.by_pixel(-9.0, 18.0),
+      util.by_pixel(-11.0, 17.5),
+      util.by_pixel(-13.0, 17.5),
+      util.by_pixel(-15.0, 17.0),
+      util.by_pixel(-16.5, 16.5),
+      util.by_pixel(-18.5, 16.0),
+      util.by_pixel(-20.5, 15.5),
+      util.by_pixel(-22.0, 15.0),
+      util.by_pixel(-24.0, 14.5),
+      util.by_pixel(-25.5, 14.0),
+      util.by_pixel(-27.5, 13.0),
+      util.by_pixel(-29.0, 12.5),
+      util.by_pixel(-30.5, 12.0),
+      util.by_pixel(-32.0, 11.0),
+      util.by_pixel(-34.0, 10.5),
+      util.by_pixel(-35.5, 9.5),
+      util.by_pixel(-37.0, 9.0),
+      util.by_pixel(-38.5, 8.0),
+      util.by_pixel(-40.0, 7.5),
+      util.by_pixel(-41.5, 6.5),
+      util.by_pixel(-42.5, 5.5),
+      util.by_pixel(-44.0, 4.5),
+      util.by_pixel(-45.5, 4.0),
+      util.by_pixel(-46.5, 3.0),
+      util.by_pixel(-48.0, 2.0),
+      util.by_pixel(-49.0, 1.0),
+      util.by_pixel(-50.5, 0.0),
+      util.by_pixel(-51.5, -0.5),
+      util.by_pixel(-52.5, -1.5),
+      util.by_pixel(-53.5, -2.5),
+      util.by_pixel(-54.5, -3.5),
+      util.by_pixel(-55.5, -5.0),
+      util.by_pixel(-56.5, -6.0),
+      util.by_pixel(-57.5, -7.0),
+      util.by_pixel(-58.0, -8.0),
+      util.by_pixel(-59.0, -9.0),
+      util.by_pixel(-60.0, -10.5),
+      util.by_pixel(-60.5, -11.5),
+      util.by_pixel(-61.0, -12.5),
+      util.by_pixel(-62.0, -13.5),
+      util.by_pixel(-62.5, -15.0),
+      util.by_pixel(-63.0, -16.0),
+      util.by_pixel(-63.5, -17.0),
+      util.by_pixel(-64.0, -18.5),
+      util.by_pixel(-64.5, -19.5),
+      util.by_pixel(-65.0, -21.0),
+      util.by_pixel(-65.0, -22.0),
+      util.by_pixel(-65.5, -23.0),
+      util.by_pixel(-65.5, -24.5),
+      util.by_pixel(-66.0, -25.5),
+      util.by_pixel(-66.0, -26.5),
+      util.by_pixel(-66.0, -28.0),
+      util.by_pixel(-66.5, -29.0),
+      util.by_pixel(-66.5, -30.0),
+      util.by_pixel(-66.5, -31.5),
+      util.by_pixel(-66.5, -32.5),
+      util.by_pixel(-66.0, -34.0),
+      util.by_pixel(-66.0, -35.0),
+      util.by_pixel(-66.0, -36.0),
+      util.by_pixel(-65.5, -37.0),
+      util.by_pixel(-66.0, -38.5),
+      util.by_pixel(-66.0, -39.5),
+      util.by_pixel(-66.5, -40.5),
+      util.by_pixel(-66.5, -42.0),
+      util.by_pixel(-66.5, -43.0),
+      util.by_pixel(-66.5, -44.0),
+      util.by_pixel(-66.5, -45.5),
+      util.by_pixel(-66.5, -46.5),
+      util.by_pixel(-66.5, -48.0),
+      util.by_pixel(-66.0, -49.0),
+      util.by_pixel(-66.0, -50.0),
+      util.by_pixel(-65.5, -51.5),
+      util.by_pixel(-65.5, -52.5),
+      util.by_pixel(-65.0, -53.5),
+      util.by_pixel(-64.5, -55.0),
+      util.by_pixel(-64.5, -56.0),
+      util.by_pixel(-64.0, -57.5),
+      util.by_pixel(-63.5, -58.5),
+      util.by_pixel(-63.0, -59.5),
+      util.by_pixel(-62.5, -61.0),
+      util.by_pixel(-61.5, -62.0),
+      util.by_pixel(-61.0, -63.0),
+      util.by_pixel(-60.5, -64.0),
+      util.by_pixel(-59.5, -65.5),
+      util.by_pixel(-59.0, -66.5),
+      util.by_pixel(-58.0, -67.5),
+      util.by_pixel(-57.0, -68.5),
+      util.by_pixel(-56.0, -70.0),
+      util.by_pixel(-55.0, -71.0),
+      util.by_pixel(-54.0, -72.0),
+      util.by_pixel(-53.0, -73.0),
+      util.by_pixel(-52.0, -74.0),
+      util.by_pixel(-51.0, -75.0),
+      util.by_pixel(-50.0, -76.0),
+      util.by_pixel(-48.5, -77.0),
+      util.by_pixel(-47.5, -78.0),
+      util.by_pixel(-46.0, -79.0),
+      util.by_pixel(-45.0, -80.0),
+      util.by_pixel(-43.5, -81.0),
+      util.by_pixel(-42.0, -81.5),
+      util.by_pixel(-40.5, -82.5),
+      util.by_pixel(-39.5, -83.5),
+      util.by_pixel(-38.0, -84.0),
+      util.by_pixel(-36.5, -85.0),
+      util.by_pixel(-34.5, -85.5),
+      util.by_pixel(-33.0, -86.5),
+      util.by_pixel(-31.5, -87.0),
+      util.by_pixel(-30.0, -88.0),
+      util.by_pixel(-28.5, -88.5),
+      util.by_pixel(-26.5, -89.0),
+      util.by_pixel(-25.0, -90.0),
+      util.by_pixel(-23.0, -90.5),
+      util.by_pixel(-21.5, -91.0),
+      util.by_pixel(-19.5, -91.5),
+      util.by_pixel(-17.5, -92.0),
+      util.by_pixel(-16.0, -92.5),
+      util.by_pixel(-14.0, -93.0),
+      util.by_pixel(-12.0, -93.0),
+      util.by_pixel(-10.5, -93.5),
+      util.by_pixel(-8.5, -94.0),
+      util.by_pixel(-6.5, -94.0),
+      util.by_pixel(-4.5, -94.5),
+      util.by_pixel(-2.5, -94.5),
+      util.by_pixel(-0.5, -95.0),
+      util.by_pixel(1.0, -95.0),
+      util.by_pixel(3.0, -94.5),
+      util.by_pixel(5.0, -94.5),
+      util.by_pixel(7.0, -94.0),
+      util.by_pixel(8.5, -94.0),
+      util.by_pixel(10.5, -93.5),
+      util.by_pixel(12.5, -93.0),
+      util.by_pixel(14.5, -92.5),
+      util.by_pixel(16.5, -92.5),
+      util.by_pixel(18.0, -92.0),
+      util.by_pixel(20.0, -91.5),
+      util.by_pixel(21.5, -91.0),
+      util.by_pixel(23.5, -90.5),
+      util.by_pixel(25.0, -89.5),
+      util.by_pixel(27.0, -89.0),
+      util.by_pixel(28.5, -88.5),
+      util.by_pixel(30.5, -88.0),
+      util.by_pixel(32.0, -87.0),
+      util.by_pixel(33.5, -86.5),
+      util.by_pixel(35.0, -85.5),
+      util.by_pixel(36.5, -85.0),
+      util.by_pixel(38.0, -84.0),
+      util.by_pixel(39.5, -83.5),
+      util.by_pixel(41.0, -82.5),
+      util.by_pixel(42.5, -81.5),
+      util.by_pixel(44.0, -80.5),
+      util.by_pixel(45.0, -80.0),
+      util.by_pixel(46.5, -79.0),
+      util.by_pixel(47.5, -78.0),
+      util.by_pixel(49.0, -77.0),
+      util.by_pixel(50.0, -76.0),
+      util.by_pixel(51.5, -75.0),
+      util.by_pixel(52.5, -74.0),
+      util.by_pixel(53.5, -73.0),
+      util.by_pixel(54.5, -72.0),
+      util.by_pixel(55.5, -71.0),
+      util.by_pixel(56.5, -70.0),
+      util.by_pixel(57.5, -68.5),
+      util.by_pixel(58.5, -67.5),
+      util.by_pixel(59.0, -66.5),
+      util.by_pixel(60.0, -65.5),
+      util.by_pixel(60.5, -64.0),
+      util.by_pixel(61.5, -63.0),
+      util.by_pixel(62.0, -62.0),
+      util.by_pixel(62.5, -61.0),
+      util.by_pixel(63.0, -59.5),
+      util.by_pixel(63.5, -58.5),
+      util.by_pixel(64.0, -57.5),
+      util.by_pixel(64.5, -56.0),
+      util.by_pixel(65.0, -55.0),
+      util.by_pixel(65.5, -53.5),
+      util.by_pixel(65.5, -52.5),
+      util.by_pixel(66.0, -51.5),
+      util.by_pixel(66.5, -50.0),
+      util.by_pixel(66.5, -49.0),
+      util.by_pixel(66.5, -48.0),
+      util.by_pixel(66.5, -46.5),
+      util.by_pixel(67.0, -45.5),
+      util.by_pixel(67.0, -44.0),
+      util.by_pixel(67.0, -43.0),
+      util.by_pixel(66.5, -42.0),
+      util.by_pixel(66.5, -40.5),
+      util.by_pixel(66.5, -39.5),
+      util.by_pixel(66.5, -38.5),
+      util.by_pixel(66.5, -37.5),
+      util.by_pixel(66.5, -36.0),
+      util.by_pixel(67.0, -35.0),
+      util.by_pixel(67.0, -34.0),
+      util.by_pixel(67.0, -32.5),
+      util.by_pixel(67.0, -31.5),
+      util.by_pixel(67.0, -30.5),
+      util.by_pixel(67.0, -29.0),
+      util.by_pixel(67.0, -28.0),
+      util.by_pixel(67.0, -26.5),
+      util.by_pixel(66.5, -25.5),
+      util.by_pixel(66.5, -24.5),
+      util.by_pixel(66.0, -23.0),
+      util.by_pixel(66.0, -22.0),
+      util.by_pixel(65.5, -20.5),
+      util.by_pixel(65.0, -19.5),
+      util.by_pixel(65.0, -18.5),
+      util.by_pixel(64.5, -17.0),
+      util.by_pixel(64.0, -16.0),
+      util.by_pixel(63.0, -15.0),
+      util.by_pixel(62.5, -13.5),
+      util.by_pixel(62.0, -12.5),
+      util.by_pixel(61.5, -11.5),
+      util.by_pixel(60.5, -10.0),
+      util.by_pixel(60.0, -9.0),
+      util.by_pixel(59.0, -8.0),
+      util.by_pixel(58.0, -7.0),
+      util.by_pixel(57.5, -6.0),
+      util.by_pixel(56.5, -4.5),
+      util.by_pixel(55.5, -3.5),
+      util.by_pixel(54.5, -2.5),
+      util.by_pixel(53.5, -1.5),
+      util.by_pixel(52.0, -0.5),
+      util.by_pixel(51.0, 0.0),
+      util.by_pixel(50.0, 1.0),
+      util.by_pixel(48.5, 2.0),
+      util.by_pixel(47.5, 3.0),
+      util.by_pixel(46.0, 4.0),
+      util.by_pixel(45.0, 5.0),
+      util.by_pixel(43.5, 5.5),
+      util.by_pixel(42.0, 6.5),
+      util.by_pixel(40.5, 7.5),
+      util.by_pixel(39.0, 8.0),
+      util.by_pixel(37.5, 9.0),
+      util.by_pixel(36.0, 10.0),
+      util.by_pixel(34.5, 10.5),
+      util.by_pixel(33.0, 11.5),
+      util.by_pixel(31.5, 12.0),
+      util.by_pixel(29.5, 12.5),
+      util.by_pixel(28.0, 13.5),
+      util.by_pixel(26.5, 14.0),
+      util.by_pixel(24.5, 14.5),
+      util.by_pixel(23.0, 15.0),
+      util.by_pixel(21.0, 15.5),
+      util.by_pixel(19.0, 16.0),
+      util.by_pixel(17.5, 16.5),
+      util.by_pixel(15.5, 17.0),
+      util.by_pixel(13.5, 17.5),
+      util.by_pixel(11.5, 18.0),
+      util.by_pixel(10.0, 18.0),
+      util.by_pixel(8.0, 18.5),
+      util.by_pixel(6.0, 19.0),
+      util.by_pixel(4.0, 19.0),
+    },
+    cannon_barrel_recoil_shiftings =
+    {
+      {x =-0.000, y =0.040, z =-0.000},
+      {x =-0.789, y =0.037, z =-0.351},
+      {x =-1.578, y =0.035, z =-0.702},
+      {x =-2.367, y =0.033, z =-1.054},
+      {x =-3.155, y =0.031, z =-1.405},
+      {x =-3.944, y =0.028, z =-1.756},
+      {x =-3.931, y =0.028, z =-1.750},
+      {x =-3.901, y =0.028, z =-1.737},
+      {x =-3.854, y =0.029, z =-1.716},
+      {x =-3.790, y =0.029, z =-1.688},
+      {x =-3.711, y =0.029, z =-1.652},
+      {x =-3.617, y =0.029, z =-1.610},
+      {x =-3.508, y =0.030, z =-1.562},
+      {x =-3.385, y =0.030, z =-1.507},
+      {x =-3.249, y =0.030, z =-1.447},
+      {x =-3.102, y =0.031, z =-1.381},
+      {x =-2.944, y =0.031, z =-1.311},
+      {x =-2.776, y =0.032, z =-1.236},
+      {x =-2.599, y =0.032, z =-1.157},
+      {x =-2.416, y =0.033, z =-1.076},
+      {x =-2.226, y =0.033, z =-0.991},
+      {x =-2.032, y =0.034, z =-0.905},
+      {x =-1.835, y =0.034, z =-0.817},
+      {x =-1.635, y =0.035, z =-0.728},
+      {x =-1.436, y =0.035, z =-0.639},
+      {x =-1.238, y =0.036, z =-0.551},
+      {x =-1.042, y =0.037, z =-0.464},
+      {x =-0.851, y =0.037, z =-0.379},
+      {x =-0.665, y =0.038, z =-0.296},
+      {x =-0.485, y =0.038, z =-0.216},
+      {x =-0.314, y =0.039, z =-0.140},
+      {x =-0.152, y =0.039, z =-0.068}
+    },
+    cannon_barrel_light_direction = {0.5976251, 0.0242053, -0.8014102},
+    cannon_barrel_recoil_shiftings_load_correction_matrix =
+    {
+      { 0,    0.25,   0 },
+      {-0.25,    0,   0 },
+      { 0,       0,   0.25 },
+    },
+    wheels = standard_train_wheels,
+    rail_category = "regular",
+    drive_over_tie_trigger = drive_over_tie(),
+    tie_distance = 50,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/train-wheels.ogg",
+        volume = 0.6
+      },
+      match_volume_to_activity = true,
+    },
+    crash_trigger = crash_trigger(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    sound_minimum_speed = 0.5;
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
+  },
 
   {
     type = "gate",
     name = "gate",
     icon = "__base__/graphics/icons/gate.png",
+    icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     fast_replaceable_group = "wall",
     minable = {hardness = 0.2, mining_time = 0.5, result = "gate"},
@@ -4303,6 +5319,7 @@ data:extend(
     type = "player-port",
     name = "player-port",
     icon = "__base__/graphics/icons/player-port.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "player-port"},
     max_health = 50,
@@ -4320,6 +5337,7 @@ data:extend(
     type = "straight-rail",
     name = "straight-rail",
     icon = "__base__/graphics/icons/rail.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
     minable = {mining_time = 0.5, result = "rail"},
     max_health = 100,
@@ -4340,6 +5358,7 @@ data:extend(
     type = "curved-rail",
     name = "curved-rail",
     icon = "__base__/graphics/icons/curved-rail.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
     minable = {mining_time = 0.5, result = "rail", count = 4},
     max_health = 200,
@@ -4362,6 +5381,7 @@ data:extend(
     type = "land-mine",
     name = "land-mine",
     icon = "__base__/graphics/icons/land-mine.png",
+    icon_size = 32,
     flags =
     {
       "placeable-player",
@@ -4406,7 +5426,7 @@ data:extend(
             action =
             {
               type = "area",
-              perimeter = 6,
+              radius = 6,
               force = "enemy",
               action_delivery =
               {
@@ -4441,6 +5461,7 @@ data:extend(
     type = "train-stop",
     name = "train-stop",
     icon = "__base__/graphics/icons/train-stop.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 1, result = "train-stop"},
     max_health = 250,
@@ -4841,71 +5862,18 @@ data:extend(
     {
       sound = { filename = "__base__/sound/train-stop.ogg", volume = 0.8 }
     },
-    circuit_wire_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {-0.375, 1.21875},
-          green = {-0.53125, 1.21875}
-        },
-        wire =
-        {
-          red = {-0.5, 1.09375},
-          green = {-0.65625, 1.09375}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.875, -0.71875},
-          green = {-0.875, -0.84375},
-        },
-        wire =
-        {
-          red = {-1.0625, -0.84375},
-          green = {-1.0625, -0.96875},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.78125, 0.46875},
-          green = {0.59375, 0.46875},
-        },
-        wire =
-        {
-          red = {0.65625, 0.34375},
-          green = {0.5, 0.34375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.0625, 1.28125},
-          green = {-0.0625, 1.15625},
-        },
-        wire =
-        {
-          red = {-0.25, 1.15625},
-          green = {-0.25, 1.03125},
-        }
-      },
-    },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({0.5625-1, 1.03125}, {0.5625-1, 1.03125}, 0), --N
-      get_circuit_connector_sprites({-0.78125, 0.28125-1}, {-0.78125, 0.28125-1}, 6), --E
-      get_circuit_connector_sprites({-0.28125+1, 0.28125}, {-0.28125+1, 0.28125}, 0), --S
-      get_circuit_connector_sprites({0.03125, 0.28125+1}, {0.03125, 0.28125+1}, 6), --W
-    },
-    circuit_wire_max_distance = 9,
+
+    circuit_wire_connection_points = circuit_connector_definitions["train-station"].points,
+    circuit_connector_sprites = circuit_connector_definitions["train-station"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
     default_train_stopped_signal = {type = "virtual", name = "signal-T"}
   },
   {
     type = "rail-signal",
     name = "rail-signal",
     icon = "__base__/graphics/icons/rail-signal.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
     fast_replaceable_group = "rail-signal",
     minable = {mining_time = 0.5, result = "rail-signal"},
@@ -4952,117 +5920,11 @@ data:extend(
     green_light = {intensity = 0.2, size = 4, color={g=1}},
     orange_light = {intensity = 0.2, size = 4, color={r=1, g=0.5}},
     red_light = {intensity = 0.2, size = 4, color={r=1}},
-    circuit_wire_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.609375, -0.359375},
-          green = {0.765625, -0.359375},
-        },
-        wire =
-        {
-          red = {0.5, -0.46875},
-          green = {0.65625, -0.46875},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.8125, -0.03125},
-          green = {0.9375, 0.0625},
-        },
-        wire =
-        {
-          red = {0.65625, -0.125},
-          green = {0.75, -0.0625},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.734375, 0.453125},
-          green = {0.734375, 0.578125},
-        },
-        wire =
-        {
-          red = {0.5625, 0.34375},
-          green = {0.5625, 0.5},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.234375, 0.484375},
-          green = {0.109375, 0.578125},
-        },
-        wire =
-        {
-          red = {0.09375, 0.34375},
-          green = {-0.03125, 0.4375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.421875, 0.484375},
-          green = {-0.578125, 0.484375},
-        },
-        wire =
-        {
-          red = {-0.5625, 0.34375},
-          green = {-0.71875, 0.34375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.796875, 0.140625},
-          green = {-0.921875, 0.046875},
-        },
-        wire =
-        {
-          red = {-1, 0.0625},
-          green = {-1.125, -0.03125},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.578125, -0.453125},
-          green = {-0.578125, -0.578125},
-        },
-        wire =
-        {
-          red = {-0.71875, -0.53125},
-          green = {-0.71875, -0.65625},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.046875, -0.484375},
-          green = {0.078125, -0.578125},
-        },
-        wire =
-        {
-          red = {-0.125, -0.625},
-          green = {0, -0.71875},
-        }
-      }
-    },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({0.46875, -0.15625}, {0.46875, -0.15625}, 4),
-      get_circuit_connector_sprites({0.46875, 0.09375}, {0.46875, 0.09375}, 3),
-      get_circuit_connector_sprites({0.34375, 0.4375}, {0.34375, 0.4375}, 2),
-      get_circuit_connector_sprites({-0.03125, 0.34375}, {-0.03125, 0.34375}, 1),
-      get_circuit_connector_sprites({-0.5, 0.28125}, {-0.5, 0.28125}, 0),
-      get_circuit_connector_sprites({-0.78125, 0.0625}, {-0.78125, 0.0625}, 7),
-      get_circuit_connector_sprites({-0.4375, -0.40625}, {-0.4375, -0.40625}, 6),
-      get_circuit_connector_sprites({0.03125, -0.375}, {0.03125, -0.375}, 5),
-    },
-    circuit_wire_max_distance = 9,
+
+    circuit_wire_connection_points = circuit_connector_definitions["rail-signal"].points,
+    circuit_connector_sprites = circuit_connector_definitions["rail-signal"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
     default_red_output_signal = {type = "virtual", name = "signal-red"},
     default_orange_output_signal = {type = "virtual", name = "signal-yellow"},
     default_green_output_signal = {type = "virtual", name = "signal-green"}
@@ -5071,6 +5933,7 @@ data:extend(
     type = "rail-chain-signal",
     name = "rail-chain-signal",
     icon = "__base__/graphics/icons/rail-chain-signal.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
     fast_replaceable_group = "rail-signal",
     minable = {mining_time = 0.5, result = "rail-chain-signal"},
@@ -5133,11 +5996,21 @@ data:extend(
     orange_light = {intensity = 0.3, size = 4, color={r=0.815686, g=0.670588, b=0.431373}},
     red_light = {intensity = 0.3, size = 4, color={r=0.784314, g=0.431373, b=0.431373}},
     blue_light = {intensity = 0.3, size = 4, color={r=0.431373, g=0.694118, b=0.623529}},
+
+    circuit_wire_connection_points = circuit_connector_definitions["rail-chain-signal"].points,
+    circuit_connector_sprites = circuit_connector_definitions["rail-chain-signal"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
+    default_red_output_signal = {type = "virtual", name = "signal-red"},
+    default_orange_output_signal = {type = "virtual", name = "signal-yellow"},
+    default_green_output_signal = {type = "virtual", name = "signal-green"},
+    default_blue_output_signal = {type = "virtual", name = "signal-blue"}
   },
   {
     type = "lab",
     name = "lab",
     icon = "__base__/graphics/icons/lab.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "lab"},
     max_health = 150,
@@ -5148,21 +6021,125 @@ data:extend(
     light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
     on_animation =
     {
-      filename = "__base__/graphics/entity/lab/lab.png",
-      width = 113,
-      height = 91,
-      frame_count = 33,
-      line_length = 11,
-      animation_speed = 1 / 3,
-      shift = {0.2, 0.15}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/lab/lab.png",
+          width = 98,
+          height = 87,
+          frame_count = 33,
+          line_length = 11,
+          animation_speed = 1 / 3,
+          shift = util.by_pixel(0, 1.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/lab/hr-lab.png",
+            width = 194,
+            height = 174,
+            frame_count = 33,
+            line_length = 11,
+            animation_speed = 1 / 3,
+            shift = util.by_pixel(0, 1.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/lab/lab-integration.png",
+          width = 122,
+          height = 81,
+          frame_count = 1,
+          line_length = 1,
+          repeat_count = 33,
+          animation_speed = 1 / 3,
+          shift = util.by_pixel(0, 15.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
+            width = 242,
+            height = 162,
+            frame_count = 1,
+            line_length = 1,
+            repeat_count = 33,
+            animation_speed = 1 / 3,
+            shift = util.by_pixel(0, 15.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/lab/lab-shadow.png",
+          width = 122,
+          height = 68,
+          frame_count = 1,
+          line_length = 1,
+          repeat_count = 33,
+          animation_speed = 1 / 3,
+          shift = util.by_pixel(13, 11),
+          draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
+            width = 242,
+            height = 136,
+            frame_count = 1,
+            line_length = 1,
+            repeat_count = 33,
+            animation_speed = 1 / 3,
+            shift = util.by_pixel(13, 11),
+            scale = 0.5,
+            draw_as_shadow = true
+          }
+        }
+      }
     },
     off_animation =
     {
-      filename = "__base__/graphics/entity/lab/lab.png",
-      width = 113,
-      height = 91,
-      frame_count = 1,
-      shift = {0.2, 0.15}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/lab/lab.png",
+          width = 98,
+          height = 87,
+          frame_count = 1,
+          shift = util.by_pixel(0, 1.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/lab/hr-lab.png",
+            width = 194,
+            height = 174,
+            frame_count = 1,
+            shift = util.by_pixel(0, 1.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/lab/lab-integration.png",
+          width = 122,
+          height = 81,
+          frame_count = 1,
+          shift = util.by_pixel(0, 15.5),
+          hr_version = {
+            filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
+            width = 242,
+            height = 162,
+            frame_count = 1,
+            shift = util.by_pixel(0, 15.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/lab/lab-shadow.png",
+          width = 122,
+          height = 68,
+          frame_count = 1,
+          shift = util.by_pixel(13, 11),
+          draw_as_shadow = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
+            width = 242,
+            height = 136,
+            frame_count = 1,
+            shift = util.by_pixel(13, 11),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     working_sound =
     {
@@ -5204,6 +6181,7 @@ data:extend(
     type = "logistic-robot",
     name = "logistic-robot",
     icon = "__base__/graphics/icons/logistic-robot.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {hardness = 0.1, mining_time = 0.1, result = "logistic-robot"},
     resistances = { { type = "fire", percent = 85 } },
@@ -5229,7 +6207,19 @@ data:extend(
       frame_count = 1,
       shift = {0.015625, -0.09375},
       direction_count = 16,
-      y = 42
+      y = 42,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 80,
+        height = 84,
+        frame_count = 1,
+        shift = util.by_pixel(0, -3),
+        direction_count = 16,
+        y = 84,
+        scale = 0.5
+      }
     },
     idle_with_cargo =
     {
@@ -5240,7 +6230,18 @@ data:extend(
       height = 42,
       frame_count = 1,
       shift = {0.015625, -0.09375},
-      direction_count = 16
+      direction_count = 16,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 80,
+        height = 84,
+        frame_count = 1,
+        shift = util.by_pixel(0, -3),
+        direction_count = 16,
+        scale = 0.5
+      }
     },
     in_motion =
     {
@@ -5252,7 +6253,19 @@ data:extend(
       frame_count = 1,
       shift = {0.015625, -0.09375},
       direction_count = 16,
-      y = 126
+      y = 126,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 80,
+        height = 84,
+        frame_count = 1,
+        shift = util.by_pixel(0, -3),
+        direction_count = 16,
+        y = 252,
+        scale = 0.5
+      }
     },
     in_motion_with_cargo =
     {
@@ -5264,7 +6277,19 @@ data:extend(
       frame_count = 1,
       shift = {0.015625, -0.09375},
       direction_count = 16,
-      y = 84
+      y = 84,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 80,
+        height = 84,
+        frame_count = 1,
+        shift = util.by_pixel(0, -3),
+        direction_count = 16,
+        y = 168,
+        scale = 0.5
+      }
     },
     shadow_idle =
     {
@@ -5276,7 +6301,19 @@ data:extend(
       frame_count = 1,
       shift = {0.96875, 0.609375},
       direction_count = 16,
-      y = 23
+      y = 23,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 115,
+        height = 57,
+        frame_count = 1,
+        shift = util.by_pixel(31.75, 19.75),
+        direction_count = 16,
+        y = 57,
+        scale = 0.5
+      }
     },
     shadow_idle_with_cargo =
     {
@@ -5287,7 +6324,18 @@ data:extend(
       height = 23,
       frame_count = 1,
       shift = {0.96875, 0.609375},
-      direction_count = 16
+      direction_count = 16,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 115,
+        height = 57,
+        frame_count = 1,
+        shift = util.by_pixel(31.75, 19.75),
+        direction_count = 16,
+        scale = 0.5
+      }
     },
     shadow_in_motion =
     {
@@ -5299,7 +6347,19 @@ data:extend(
       frame_count = 1,
       shift = {0.96875, 0.609375},
       direction_count = 16,
-      y = 23
+      y = 23,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 115,
+        height = 57,
+        frame_count = 1,
+        shift = util.by_pixel(31.75, 19.75),
+        direction_count = 16,
+        y = 171,
+        scale = 0.5
+      }
     },
     shadow_in_motion_with_cargo =
     {
@@ -5310,7 +6370,19 @@ data:extend(
       height = 23,
       frame_count = 1,
       shift = {0.96875, 0.609375},
-      direction_count = 16
+      direction_count = 16,
+      hr_version = {
+        filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 115,
+        height = 57,
+        frame_count = 1,
+        shift = util.by_pixel(31.75, 19.75),
+        direction_count = 16,
+        y = 114,
+        scale = 0.5
+      }
     },
     working_sound = flying_robot_sounds(),
     cargo_centered = {0.0, 0.2},
@@ -5320,6 +6392,7 @@ data:extend(
     type = "construction-robot",
     name = "construction-robot",
     icon = "__base__/graphics/icons/construction-robot.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {hardness = 0.1, mining_time = 0.1, result = "construction-robot"},
     resistances = { { type = "fire", percent = 85 } },
@@ -5345,7 +6418,18 @@ data:extend(
       height = 36,
       frame_count = 1,
       shift = {0, -0.15625},
-      direction_count = 16
+      direction_count = 16,
+      hr_version = {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 66,
+        height = 76,
+        frame_count = 1,
+        shift = util.by_pixel(0,-4.5),
+        direction_count = 16,
+        scale = 0.5
+      }
     },
     in_motion =
     {
@@ -5357,7 +6441,19 @@ data:extend(
       frame_count = 1,
       shift = {0, -0.15625},
       direction_count = 16,
-      y = 36
+      y = 36,
+      hr_version = {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 66,
+        height = 76,
+        frame_count = 1,
+        shift = util.by_pixel(0, -4.5),
+        direction_count = 16,
+        y = 76,
+        scale = 0.5
+      }
     },
     shadow_idle =
     {
@@ -5368,7 +6464,18 @@ data:extend(
       height = 24,
       frame_count = 1,
       shift = {1.09375, 0.59375},
-      direction_count = 16
+      direction_count = 16,
+      hr_version = {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 104,
+        height = 49,
+        frame_count = 1,
+        shift = util.by_pixel(33.5, 18.75),
+        direction_count = 16,
+        scale = 0.5
+      }
     },
     shadow_in_motion =
     {
@@ -5379,7 +6486,18 @@ data:extend(
       height = 24,
       frame_count = 1,
       shift = {1.09375, 0.59375},
-      direction_count = 16
+      direction_count = 16,
+      hr_version = {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 104,
+        height = 49,
+        frame_count = 1,
+        shift = util.by_pixel(33.5, 18.75),
+        direction_count = 16,
+        scale = 0.5
+      }
     },
     working =
     {
@@ -5392,6 +6510,18 @@ data:extend(
       shift = {0, -0.15625},
       direction_count = 16,
       animation_speed = 0.3,
+      hr_version = {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-working.png",
+        priority = "high",
+        line_length = 2,
+        width = 57,
+        height = 74,
+        frame_count = 2,
+        shift = util.by_pixel(-0.25, -5),
+        direction_count = 16,
+        animation_speed = 0.3,
+        scale = 0.5
+      }
     },
     shadow_working =
     {
@@ -5491,6 +6621,7 @@ data:extend(
     type = "logistic-container",
     name = "logistic-chest-passive-provider",
     icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-passive-provider"},
     max_health = 350,
@@ -5522,26 +6653,15 @@ data:extend(
       height = 32,
       shift = {0.09375, 0}
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
-      }
-    },
-    circuit_wire_max_distance = 9,
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "logistic-container",
     name = "logistic-chest-active-provider",
     icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-active-provider"},
     max_health = 350,
@@ -5573,26 +6693,15 @@ data:extend(
       height = 32,
       shift = {0.09375, 0}
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
-      }
-    },
-    circuit_wire_max_distance = 9,
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "logistic-container",
     name = "logistic-chest-storage",
     icon = "__base__/graphics/icons/logistic-chest-storage.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-storage"},
     max_health = 350,
@@ -5624,26 +6733,56 @@ data:extend(
       height = 32,
       shift = {0.09375, 0}
     },
-    circuit_wire_connection_point =
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
+  },
+  {
+    type = "logistic-container",
+    name = "logistic-chest-buffer",
+    icon = "__base__/graphics/icons/logistic-chest-buffer.png",
+    icon_size = 32,
+    flags = {"placeable-player", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-buffer"},
+    max_health = 350,
+    corpse = "small-remnants",
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    resistances =
     {
-      shadow =
       {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
+        type = "fire",
+        percent = 90
       },
-      wire =
       {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
+        type = "impact",
+        percent = 60
       }
     },
-    circuit_wire_max_distance = 9,
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
+    fast_replaceable_group = "container",
+    inventory_size = 48,
+    logistic_mode = "buffer",
+    logistic_slots_count = 12,
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    picture =
+    {
+      filename = "__base__/graphics/entity/logistic-chest/logistic-chest-buffer.png",
+      priority = "extra-high",
+      width = 38,
+      height = 32,
+      shift = {0.09375, 0}
+    },
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "logistic-container",
     name = "logistic-chest-requester",
     icon = "__base__/graphics/icons/logistic-chest-requester.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-requester"},
     max_health = 350,
@@ -5664,6 +6803,7 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "requester",
+    logistic_slots_count = 12,
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -5675,26 +6815,15 @@ data:extend(
       height = 32,
       shift = {0.09375, 0}
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.734375, 0.453125},
-        green = {0.609375, 0.515625},
-      },
-      wire =
-      {
-        red = {0.40625, 0.21875},
-        green = {0.40625, 0.375},
-      }
-    },
-    circuit_wire_max_distance = 9,
-    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "rocket-silo",
     name = "rocket-silo",
     icon = "__base__/graphics/icons/rocket-silo.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     crafting_categories = {"rocket-building"},
     ingredient_count = 3,
@@ -6095,10 +7224,6 @@ data:extend(
     engine_starting_speed = 1 / (5.5 * 60),
     flying_speed = 1 / (2000 * 60),
     flying_acceleration = 0.01,
-    result_items =
-    {
-      {"space-science-pack", 1000, "satellite"}
-    },
 
     glow_light =
     {
@@ -6280,6 +7405,7 @@ data:extend(
     type = "roboport",
     name = "roboport",
     icon = "__base__/graphics/icons/roboport.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "roboport"},
     max_health = 500,
@@ -6321,10 +7447,37 @@ data:extend(
     },
     base =
     {
-      filename = "__base__/graphics/entity/roboport/roboport-base.png",
-      width = 143,
-      height = 135,
-      shift = {0.5, 0.25}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/roboport/roboport-base.png",
+          width = 143,
+          height = 135,
+          shift = {0.5, 0.25},
+          hr_version = {
+            filename = "__base__/graphics/entity/roboport/hr-roboport-base.png",
+            width = 228,
+            height = 277,
+            shift = util.by_pixel(2, 7.75),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/roboport/roboport-shadow.png",
+          width = 147,
+          height = 102,
+          draw_as_shadow = true,
+          shift = util.by_pixel(28.5, 19.25),
+          hr_version = {
+            filename = "__base__/graphics/entity/roboport/hr-roboport-shadow.png",
+            width = 294,
+            height = 201,
+            draw_as_shadow = true,
+            shift = util.by_pixel(28.5, 19.25),
+            scale = 0.5
+          }
+        }
+      }
     },
     base_patch =
     {
@@ -6333,7 +7486,16 @@ data:extend(
       width = 69,
       height = 50,
       frame_count = 1,
-      shift = {0.03125, 0.203125}
+      shift = {0.03125, 0.203125},
+      hr_version = {
+        filename = "__base__/graphics/entity/roboport/hr-roboport-base-patch.png",
+        priority = "medium",
+        width = 138,
+        height = 100,
+        frame_count = 1,
+        shift = util.by_pixel(1.5, 5),
+        scale = 0.5
+      }
     },
     base_animation =
     {
@@ -6343,7 +7505,17 @@ data:extend(
       height = 31,
       frame_count = 8,
       animation_speed = 0.5,
-      shift = {-0.5315, -1.9375}
+      shift = {-0.5315, -1.9375},
+      hr_version = {
+        filename = "__base__/graphics/entity/roboport/hr-roboport-base-animation.png",
+        priority = "medium",
+        width = 83,
+        height = 59,
+        frame_count = 8,
+        animation_speed = 0.5,
+        shift = util.by_pixel(-17.75, -61.25),
+        scale = 0.5
+      }
     },
     door_animation_up =
     {
@@ -6352,7 +7524,16 @@ data:extend(
       width = 52,
       height = 20,
       frame_count = 16,
-      shift = {0.015625, -0.890625}
+      shift = {0.015625, -0.890625},
+      hr_version = {
+        filename = "__base__/graphics/entity/roboport/hr-roboport-door-up.png",
+        priority = "medium",
+        width = 97,
+        height = 38,
+        frame_count = 16,
+        shift = util.by_pixel(-0.25, -29.5),
+        scale = 0.5
+      }
     },
     door_animation_down =
     {
@@ -6361,7 +7542,16 @@ data:extend(
       width = 52,
       height = 22,
       frame_count = 16,
-      shift = {0.015625, -0.234375}
+      shift = {0.015625, -0.234375},
+      hr_version = {
+        filename = "__base__/graphics/entity/roboport/hr-roboport-door-down.png",
+        priority = "medium",
+        width = 97,
+        height = 41,
+        frame_count = 16,
+        shift = util.by_pixel(-0.25,-9.75),
+        scale = 0.5
+      }
     },
     recharging_animation =
     {
@@ -6402,21 +7592,11 @@ data:extend(
         sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.75 }
       },
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {1.17188, 1.98438},
-        green = {1.04688, 2.04688}
-      },
-      wire =
-      {
-        red = {0.78125, 1.375},
-        green = {0.78125, 1.53125}
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({0.59375, 1.3125}, nil, 18),
-    circuit_wire_max_distance = 9,
+
+    circuit_wire_connection_point = circuit_connector_definitions["roboport"].points,
+    circuit_connector_sprites = circuit_connector_definitions["roboport"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
     default_available_logistic_output_signal = {type = "virtual", name = "signal-X"},
     default_total_logistic_output_signal = {type = "virtual", name = "signal-Y"},
     default_available_construction_output_signal = {type = "virtual", name = "signal-Z"},
@@ -6427,6 +7607,7 @@ data:extend(
     type = "storage-tank",
     name = "storage-tank",
     icon = "__base__/graphics/icons/storage-tank.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1.5, result = "storage-tank"},
     max_health = 500,
@@ -6451,14 +7632,44 @@ data:extend(
     {
       picture =
       {
-        sheet =
+        sheets =
         {
-          filename = "__base__/graphics/entity/storage-tank/storage-tank.png",
-          priority = "extra-high",
-          frames = 2,
-          width = 140,
-          height = 115,
-          shift = {0.6875, 0.109375}
+          {
+            filename = "__base__/graphics/entity/storage-tank/storage-tank.png",
+            priority = "extra-high",
+            frames = 2,
+            width = 110,
+            height = 108,
+            shift = util.by_pixel(0, 4),
+            hr_version = {
+              filename = "__base__/graphics/entity/storage-tank/hr-storage-tank.png",
+              priority = "extra-high",
+              frames = 2,
+              width = 219,
+              height = 215,
+              shift = util.by_pixel(-0.25, 3.75),
+              scale = 0.5
+            }
+          },
+          {
+            filename = "__base__/graphics/entity/storage-tank/storage-tank-shadow.png",
+            priority = "extra-high",
+            frames = 2,
+            width = 146,
+            height = 77,
+            shift = util.by_pixel(30, 22.5),
+            draw_as_shadow = true,
+            hr_version = {
+              filename = "__base__/graphics/entity/storage-tank/hr-storage-tank-shadow.png",
+              priority = "extra-high",
+              frames = 2,
+              width = 291,
+              height = 153,
+              shift = util.by_pixel(29.75, 22.25),
+              scale = 0.5,
+              draw_as_shadow = true
+            }
+          }
         }
       },
       fluid_background =
@@ -6473,7 +7684,14 @@ data:extend(
         filename = "__base__/graphics/entity/storage-tank/window-background.png",
         priority = "extra-high",
         width = 17,
-        height = 24
+        height = 24,
+        hr_version = {
+          filename = "__base__/graphics/entity/storage-tank/hr-window-background.png",
+          priority = "extra-high",
+          width = 34,
+          height = 48,
+          scale = 0.5
+        }
       },
       flow_sprite =
       {
@@ -6518,71 +7736,17 @@ data:extend(
       apparent_volume = 1.5,
       max_sounds_per_type = 3
     },
-    circuit_wire_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {2.35938, 0.890625},
-          green = {2.29688, 0.953125},
-        },
-        wire =
-        {
-          red = {-0.40625, -0.375},
-          green = {-0.53125, -0.46875},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {2.35938, 0.890625},
-          green = {2.29688, 0.953125},
-        },
-        wire =
-        {
-          red = {0.46875, -0.53125},
-          green = {0.375, -0.4375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {2.35938, 0.890625},
-          green = {2.29688, 0.953125},
-        },
-        wire =
-        {
-          red = {-0.40625, -0.375},
-          green = {-0.53125, -0.46875},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {2.35938, 0.890625},
-          green = {2.29688, 0.953125},
-        },
-        wire =
-        {
-          red = {0.46875, -0.53125},
-          green = {0.375, -0.4375},
-        }
-      },
-    },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({-0.1875, -0.375}, nil, 7),
-      get_circuit_connector_sprites({0.375, -0.53125}, nil, 1),
-      get_circuit_connector_sprites({-0.1875, -0.375}, nil, 7),
-      get_circuit_connector_sprites({0.375, -0.53125}, nil, 1),
-    },
-    circuit_wire_max_distance = 9
+
+    circuit_wire_connection_points = circuit_connector_definitions["storage-tank"].points,
+    circuit_connector_sprites = circuit_connector_definitions["storage-tank"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
 
   {
     type = "pump",
     name = "pump",
     icon = "__base__/graphics/icons/pump.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "pump"},
     max_health = 180,
@@ -6842,66 +8006,9 @@ data:extend(
       }
     },
 
-    circuit_wire_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.171875, 0.140625},
-          green = {0.171875, 0.265625},
-        },
-        wire =
-        {
-          red = {-0.53125, -0.15625},
-          green = {-0.53125, 0},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.890625, 0.703125},
-          green = {0.75, 0.75},
-        },
-        wire =
-        {
-          red = {0.34375, 0.28125},
-          green = {0.34375, 0.4375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.15625, 0.0625},
-          green = {0.09375, 0.125},
-        },
-        wire =
-        {
-          red = {-0.53125, -0.09375},
-          green = {-0.53125, 0.03125},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.796875, 0.703125},
-          green = {0.625, 0.75},
-        },
-        wire =
-        {
-          red = {0.40625, 0.28125},
-          green = {0.40625, 0.4375},
-        }
-      }
-    },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({-0.40625, -0.3125}, nil, 24),
-      get_circuit_connector_sprites({0.125, 0.21875}, {0.34375, 0.40625}, 18),
-      get_circuit_connector_sprites({-0.40625, -0.25}, nil, 24),
-      get_circuit_connector_sprites({0.203125, 0.203125}, {0.25, 0.40625}, 18),
-    },
-    circuit_wire_max_distance = 9
-
+    circuit_wire_connection_points = circuit_connector_definitions["pump"].points,
+    circuit_connector_sprites = circuit_connector_definitions["pump"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
 
   {
@@ -6950,6 +8057,7 @@ data:extend(
     type = "market",
     name = "market",
     icon = "__base__/graphics/icons/market.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     subgroup="production-machine",
     order="d-a-a",
@@ -6969,6 +8077,7 @@ data:extend(
     type = "electric-pole",
     name = "big-electric-pole",
     icon = "__base__/graphics/icons/big-electric-pole.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "big-electric-pole"},
     max_health = 150,
@@ -7066,11 +8175,13 @@ data:extend(
     type = "electric-pole",
     name = "medium-electric-pole",
     icon = "__base__/graphics/icons/medium-electric-pole.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "medium-electric-pole"},
     max_health = 100,
     corpse = "small-remnants",
     track_coverage_during_build_by_moving = true,
+    fast_replaceable_group = "electric-pole",
     resistances =
     {
       {
@@ -7164,6 +8275,7 @@ data:extend(
     type = "electric-pole",
     name = "substation",
     icon = "__base__/graphics/icons/substation.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "substation"},
     max_health = 200,
@@ -7269,6 +8381,7 @@ data:extend(
     type = "accumulator",
     name = "accumulator",
     icon = "__base__/graphics/icons/accumulator.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "accumulator"},
     max_health = 150,
@@ -7301,6 +8414,73 @@ data:extend(
       shift = {0.46875, -0.640625},
       animation_speed = 0.5
     },
+
+    universal_base =
+    {
+      filename = "__base__/graphics/entity/__temp/hr-ccm-universal-04a-base-sequence.png",
+      line_length = 8,
+      width = 52,
+      height = 50,
+      frame_count = 32,
+      scale = 0.5,
+      shift = util.by_pixel(0, 1),
+    },
+
+    universal_wire =
+    {
+      filename = "__base__/graphics/entity/__temp/hr-ccm-universal-04c-wire-sequence.png",
+      line_length = 8,
+      width = 62,
+      height = 58,
+      frame_count = 32,
+      scale = 0.5,
+      shift = util.by_pixel(0.5, 0),
+    },
+
+    universal_red_led =
+    {
+      filename = "__base__/graphics/entity/__temp/hr-ccm-universal-04i-red-LED-sequence.png",
+      line_length = 8,
+      width = 48,
+      height = 46,
+      frame_count = 32,
+      scale = 0.5,
+      shift = util.by_pixel(0, 0),
+    },
+
+    universal_green_led =
+    {
+      filename = "__base__/graphics/entity/__temp/hr-ccm-universal-04h-green-LED-sequence.png",
+      line_length = 8,
+      width = 48,
+      height = 46,
+      frame_count = 32,
+      scale = 0.5,
+      shift = util.by_pixel(0, 0),
+    },
+
+    universal_blue_led =
+    {
+      filename = "__base__/graphics/entity/__temp/hr-ccm-universal-04f-blue-LED-off-sequence.png",
+      line_length = 8,
+      width = 46,
+      height = 46,
+      frame_count = 32,
+      scale = 0.5,
+      shift = util.by_pixel(0, 0),
+    },
+
+    universal_base_shadow =
+    {
+      filename = "__base__/graphics/entity/__temp/hr-ccm-universal-04b-base-shadow-sequence.png",
+      line_length = 8,
+      width = 62,
+      height = 46,
+      frame_count = 32,
+      scale = 0.5,
+      shift = util.by_pixel(3, 2.5),
+    },
+
     charge_cooldown = 30,
     charge_light = {intensity = 0.3, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
     discharge_animation =
@@ -7329,27 +8509,18 @@ data:extend(
       },
       max_sounds_per_type = 5
     },
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {0.984375, 1.10938},
-        green = {0.890625, 1.10938}
-      },
-      wire =
-      {
-        red = {0.6875, 0.59375},
-        green = {0.6875, 0.71875}
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({0.46875, 0.5}, {0.46875, 0.8125}, 26),
-    circuit_wire_max_distance = 9,
+
+    circuit_wire_connection_point = circuit_connector_definitions["accumulator"].points,
+    circuit_connector_sprites = circuit_connector_definitions["accumulator"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
     default_output_signal = {type = "virtual", name = "signal-A"}
   },
   {
     type = "furnace",
     name = "steel-furnace",
     icon = "__base__/graphics/icons/steel-furnace.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "steel-furnace"},
     max_health = 300,
@@ -7522,12 +8693,12 @@ data:extend(
     type = "furnace",
     name = "electric-furnace",
     icon = "__base__/graphics/icons/electric-furnace.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "electric-furnace"},
     max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
-    light = {intensity = 1, size = 10},
     resistances =
     {
       {
@@ -7681,6 +8852,7 @@ data:extend(
     type = "beacon",
     name = "beacon",
     icon = "__base__/graphics/icons/beacon.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "beacon"},
     max_health = 200,
@@ -7774,7 +8946,7 @@ data:extend(
           action =
           {
             type = "area",
-            perimeter = 11,
+            radius = 11,
             entity_flags = {"breaths-air"},
             action_delivery =
             {
@@ -7795,6 +8967,7 @@ data:extend(
     type = "combat-robot",
     name = "distractor",
     icon = "__base__/graphics/icons/distractor.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
     resistances = { { type = "fire", percent = 95 } },
     order="e-a-b",
@@ -7856,7 +9029,18 @@ data:extend(
           height = 33,
           frame_count = 1,
           direction_count = 16,
-          shift = {0, -0.078125}
+          shift = {0, -0.078125},
+          hr_version = {
+            filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot.png",
+            priority = "high",
+            line_length = 16,
+            width = 72,
+            height = 62,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, -2.5),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/distractor-robot/distractor-robot-mask.png",
@@ -7867,7 +9051,19 @@ data:extend(
           frame_count = 1,
           direction_count = 16,
           shift = {0, -0.203125},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-mask.png",
+            priority = "high",
+            line_length = 16,
+            width = 42,
+            height = 37,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, -6.25),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -7880,7 +9076,18 @@ data:extend(
       height = 25,
       frame_count = 1,
       direction_count = 16,
-      shift = {0.9375, 0.609375}
+      shift = {0.9375, 0.609375},
+      hr_version = {
+        filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 97,
+        height = 59,
+        frame_count = 1,
+        direction_count = 16,
+        shift = util.by_pixel(32.5, 19.25),
+        scale = 0.5
+      }
     },
     in_motion =
     {
@@ -7895,7 +9102,19 @@ data:extend(
           frame_count = 1,
           direction_count = 16,
           shift = {0, -0.078125},
-          y = 33
+          y = 33,
+          hr_version = {
+            filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot.png",
+            priority = "high",
+            line_length = 16,
+            width = 72,
+            height = 62,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, -2.5),
+            y = 62,
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/distractor-robot/distractor-robot-mask.png",
@@ -7907,7 +9126,20 @@ data:extend(
           direction_count = 16,
           shift = {0, -0.203125},
           apply_runtime_tint = true,
-          y = 21
+          y = 21,
+          hr_version = {
+            filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-mask.png",
+            priority = "high",
+            line_length = 16,
+            width = 42,
+            height = 37,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, -6.25),
+            apply_runtime_tint = true,
+            y = 37,
+            scale = 0.5
+          }
         }
       }
     },
@@ -7920,13 +9152,25 @@ data:extend(
       height = 25,
       frame_count = 1,
       direction_count = 16,
-      shift = {0.9375, 0.609375}
+      shift = {0.9375, 0.609375},
+      hr_version = {
+        filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 97,
+        height = 59,
+        frame_count = 1,
+        direction_count = 16,
+        shift = util.by_pixel(32.5, 19.25),
+        scale = 0.5
+      }
     }
   },
   {
     type = "combat-robot",
     name = "defender",
     icon = "__base__/graphics/icons/defender.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
     resistances = { { type = "fire", percent = 95 } },
     subgroup="capsule",
@@ -8004,7 +9248,18 @@ data:extend(
           height = 33,
           frame_count = 1,
           direction_count = 16,
-          shift = {0, 0.015625}
+          shift = {0, 0.015625},
+          hr_version = {
+            filename = "__base__/graphics/entity/defender-robot/hr-defender-robot.png",
+            priority = "high",
+            line_length = 16,
+            width = 56,
+            height = 59,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, 0.25),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/defender-robot/defender-robot-mask.png",
@@ -8015,7 +9270,19 @@ data:extend(
           frame_count = 1,
           direction_count = 16,
           shift = {0, -0.125},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-mask.png",
+            priority = "high",
+            line_length = 16,
+            width = 28,
+            height = 21,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, -4.75),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         },
       }
     },
@@ -8028,7 +9295,18 @@ data:extend(
       height = 23,
       frame_count = 1,
       direction_count = 16,
-      shift = {0.859375, 0.609375}
+      shift = {0.859375, 0.609375},
+      hr_version = {
+        filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 88,
+        height = 50,
+        frame_count = 1,
+        direction_count = 16,
+        shift = util.by_pixel(25.5, 19),
+        scale = 0.5
+      }
     },
     in_motion =
     {
@@ -8043,7 +9321,19 @@ data:extend(
           frame_count = 1,
           direction_count = 16,
           shift = {0, 0.015625},
-          y = 33
+          y = 33,
+          hr_version = {
+            filename = "__base__/graphics/entity/defender-robot/hr-defender-robot.png",
+            priority = "high",
+            line_length = 16,
+            width = 56,
+            height = 59,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, 0.25),
+            y = 59,
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/defender-robot/defender-robot-mask.png",
@@ -8055,7 +9345,20 @@ data:extend(
           direction_count = 16,
           shift = {0, -0.125},
           apply_runtime_tint = true,
-          y = 16
+          y = 16,
+          hr_version = {
+            filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-mask.png",
+            priority = "high",
+            line_length = 16,
+            width = 28,
+            height = 21,
+            frame_count = 1,
+            direction_count = 16,
+            shift = util.by_pixel(0, -4.75),
+            apply_runtime_tint = true,
+            y = 21,
+            scale = 0.5
+          }
         },
       }
     },
@@ -8068,7 +9371,18 @@ data:extend(
       height = 23,
       frame_count = 1,
       direction_count = 16,
-      shift = {0.859375, 0.609375}
+      shift = {0.859375, 0.609375},
+      hr_version = {
+        filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 88,
+        height = 50,
+        frame_count = 1,
+        direction_count = 16,
+        shift = util.by_pixel(25.5, 19),
+        scale = 0.5
+      }
     }
   },
 
@@ -8076,6 +9390,7 @@ data:extend(
     type = "combat-robot",
     name = "destroyer",
     icon = "__base__/graphics/icons/destroyer.png",
+    icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
     resistances = { { type = "fire", percent = 95 } },
     subgroup="capsule",
@@ -8140,6 +9455,18 @@ data:extend(
           frame_count = 1,
           direction_count = 32,
           shift = {0.078125, -0.546875},
+          hr_version = {
+            filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot.png",
+            priority = "high",
+            line_length = 32,
+            width = 88,
+            height = 77,
+            y = 77,
+            frame_count = 1,
+            direction_count = 32,
+            shift = util.by_pixel(2.5, -17.25),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/destroyer-robot/destroyer-robot-mask.png",
@@ -8151,7 +9478,20 @@ data:extend(
           frame_count = 1,
           direction_count = 32,
           shift = {0.078125, -0.734375},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-mask.png",
+            priority = "high",
+            line_length = 32,
+            width = 52,
+            height = 42,
+            y = 42,
+            frame_count = 1,
+            direction_count = 32,
+            shift = util.by_pixel(2.5, -23),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         },
       }
     },
@@ -8164,7 +9504,18 @@ data:extend(
       height = 32,
       frame_count = 1,
       direction_count = 32,
-      shift = {0.78125, 0}
+      shift = {0.78125, 0},
+      hr_version = {
+        filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-shadow.png",
+        priority = "high",
+        line_length = 32,
+        width = 108,
+        height = 66,
+        frame_count = 1,
+        direction_count = 32,
+        shift = util.by_pixel(23.5, 1),
+        scale = 0.5
+      }
     },
     in_motion =
     {
@@ -8178,7 +9529,18 @@ data:extend(
           height = 39,
           frame_count = 1,
           direction_count = 32,
-          shift = {0.078125, -0.546875}
+          shift = {0.078125, -0.546875},
+          hr_version = {
+            filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot.png",
+            priority = "high",
+            line_length = 32,
+            width = 88,
+            height = 77,
+            frame_count = 1,
+            direction_count = 32,
+            shift = util.by_pixel(2.5, -17.25),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/destroyer-robot/destroyer-robot-mask.png",
@@ -8189,7 +9551,19 @@ data:extend(
           frame_count = 1,
           direction_count = 32,
           shift = {0.078125, -0.734375},
-          apply_runtime_tint = true
+          apply_runtime_tint = true,
+          hr_version = {
+            filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-mask.png",
+            priority = "high",
+            line_length = 32,
+            width = 52,
+            height = 42,
+            frame_count = 1,
+            direction_count = 32,
+            shift = util.by_pixel(2.5, -23),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -8202,7 +9576,18 @@ data:extend(
       height = 32,
       frame_count = 1,
       direction_count = 32,
-      shift = {0.78125, 0}
+      shift = {0.78125, 0},
+      hr_version = {
+        filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-shadow.png",
+        priority = "high",
+        line_length = 32,
+        width = 108,
+        height = 66,
+        frame_count = 1,
+        direction_count = 32,
+        shift = util.by_pixel(23.5, 1),
+        scale = 0.5
+      }
     }
   },
   {
@@ -8234,6 +9619,7 @@ data:extend(
     type = "assembling-machine",
     name = "oil-refinery",
     icon = "__base__/graphics/icons/oil-refinery.png",
+    icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "oil-refinery"},
     max_health = 350,
@@ -8380,6 +9766,7 @@ data:extend(
     type = "assembling-machine",
     name = "chemical-plant",
     icon = "__base__/graphics/icons/chemical-plant.png",
+    icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "chemical-plant"},
     max_health = 300,
@@ -8593,10 +9980,13 @@ data:extend(
       }
     }
   },
+
+  generate_arithmetic_combinator
   {
     type = "arithmetic-combinator",
     name = "arithmetic-combinator",
     icon = "__base__/graphics/icons/arithmetic-combinator.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "arithmetic-combinator"},
     max_health = 150,
@@ -8622,81 +10012,6 @@ data:extend(
       match_speed_to_activity = true,
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-
-    sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 158,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 237,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 79,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      }
-    },
-
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-arithmetic-north.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {0.234375, -0.484375},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-arithmetic-east.png",
-        width = 10,
-        height = 10,
-        frame_count = 1,
-        shift = {0.5, 0},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-arithmetic-south.png",
-        width = 13,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.265625, 0.140625},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-arithmetic-west.png",
-        width = 13,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.453125, -0.359375},
-      }
-    },
 
     activity_led_light =
     {
@@ -8728,991 +10043,18 @@ data:extend(
       {0.015625, -0.296875}
     },
 
-    plus_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    minus_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    multiply_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    divide_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    modulo_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    power_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    left_shift_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    right_shift_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    and_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    or_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-    xor_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.234375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.234375},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.296875},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.296875},
-          scale = 0.5
-        }
-      }
-    },
-
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
-    input_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.171875, 0.703125},
-          green = {0.765625, 0.703125}
-        },
-        wire =
-        {
-          red = {-0.28125, 0.34375},
-          green = {0.28125, 0.34375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.328125, -0.078125},
-          green = {-0.328125, 0.328125},
-        },
-        wire =
-        {
-          red = {-0.78125, -0.4375},
-          green = {-0.78125, -0.03125},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.734375, -0.453125},
-          green = {0.171875, -0.453125}
-        },
-        wire =
-        {
-          red = {0.25, -0.78125},
-          green = {-0.3125, -0.78125}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {1.20313, 0.359375},
-          green = {1.20313, -0.046875},
-        },
-        wire =
-        {
-          red = {0.78125, 0},
-          green = {0.78125, -0.4375},
-        }
-      }
-    },
 
-    output_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.140625, -0.453125},
-          green = {0.734375, -0.453125},
-        },
-        wire =
-        {
-          red = {-0.3125, -0.78125},
-          green = {0.28125, -0.78125}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {1.17188, -0.078125},
-          green = {1.17188, 0.328125},
-        },
-        wire =
-        {
-          red = {0.6875, -0.375},
-          green = {0.6875, 0.0625},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.703125, 0.671875},
-          green = {0.109375, 0.671875},
-        },
-        wire =
-        {
-          red = {0.28125, 0.375},
-          green = {-0.3125, 0.375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.265625, 0.328125},
-          green = {-0.265625, -0.078125},
-        },
-        wire =
-        {
-          red = {-0.71875, 0.03125},
-          green = {-0.71875, -0.34375},
-        }
-      }
-    },
     circuit_wire_max_distance = 9
   },
+
+  generate_decider_combinator
   {
     type = "decider-combinator",
     name = "decider-combinator",
     icon = "__base__/graphics/icons/decider-combinator.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "decider-combinator"},
     max_health = 150,
@@ -9736,86 +10078,6 @@ data:extend(
       },
       max_sounds_per_type = 2,
       match_speed_to_activity = true,
-    },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-
-    sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 158,
-        y = 63,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        y = 63,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 237,
-        y = 63,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 79,
-        y = 63,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      }
-    },
-
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-decider-north.png",
-        width = 11,
-        height = 12,
-        frame_count = 1,
-        shift = {0.265625, -0.53125},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-decider-east.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {0.515625, -0.078125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-decider-south.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.25, 0.03125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-decider-west.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.46875, -0.5},
-      }
     },
 
     activity_led_light =
@@ -9846,505 +10108,6 @@ data:extend(
       {0.015625, -0.359375},
       {0.015625, -0.265625},
       {0.015625, -0.359375}
-    },
-
-    equal_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      }
-    },
-    greater_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 0,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 0,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      }
-    },
-    less_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      }
-    },
-    not_equal_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      }
-    },
-    greater_or_equal_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      }
-    },
-    less_or_equal_symbol_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.265625},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.265625},
-          scale = 0.5
-        }
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 22,
-        width = 15,
-        height = 11,
-        frame_count = 1,
-        shift = {0.015625, -0.359375},
-        hr_version = {
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          frame_count = 1,
-          shift = {0.015625, -0.359375},
-          scale = 0.5
-        }
-      }
     },
 
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
@@ -10455,10 +10218,13 @@ data:extend(
     },
     circuit_wire_max_distance = 9
   },
+
+  generate_constant_combinator
   {
     type = "constant-combinator",
     name = "constant-combinator",
     icon = "__base__/graphics/icons/constant-combinator.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "constant-combinator"},
     max_health = 120,
@@ -10470,84 +10236,6 @@ data:extend(
     item_slot_count = 18,
 
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 158,
-        y = 126,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        y = 126,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 237,
-        y = 126,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/combinator-entities.png",
-        x = 79,
-        y = 126,
-        width = 79,
-        height = 63,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      }
-    },
-
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-north.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-east.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-south.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/combinator-led-constant-west.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
 
     activity_led_light =
     {
@@ -10564,64 +10252,13 @@ data:extend(
       {-0.21875, -0.46875}
     },
 
-    circuit_wire_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.15625, -0.28125},
-          green = {0.65625, -0.25}
-        },
-        wire =
-        {
-          red = {-0.28125, -0.5625},
-          green = {0.21875, -0.5625},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.75, -0.15625},
-          green = {0.75, 0.25},
-        },
-        wire =
-        {
-          red = {0.46875, -0.5},
-          green = {0.46875, -0.09375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.75, 0.5625},
-          green = {0.21875, 0.5625}
-        },
-        wire =
-        {
-          red = {0.28125, 0.15625},
-          green = {-0.21875, 0.15625}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.03125, 0.28125},
-          green = {-0.03125, -0.125},
-        },
-        wire =
-        {
-          red = {-0.46875, 0},
-          green = {-0.46875, -0.40625},
-        }
-      }
-    },
-
     circuit_wire_max_distance = 9
   },
   {
     type = "power-switch",
     name = "power-switch",
     icon = "__base__/graphics/icons/power-switch.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 1, result = "power-switch"},
     max_health = 200,
@@ -10729,6 +10366,7 @@ data:extend(
     type = "programmable-speaker",
     name = "programmable-speaker",
     icon = "__base__/graphics/icons/programmable-speaker.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "programmable-speaker"},
     max_health = 150,
@@ -10798,7 +10436,7 @@ data:extend(
          { name="buzzer-2",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-2.ogg" }},
          { name="buzzer-3",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-3.ogg" }},
          { name="ring",  sound = { filename = "__base__/sound/programmable-speaker/ring.ogg", preload = false }},
-         { name="siren",  sound = { filename = "__base__/sound/programmable-speaker/siren.ogg", preload = false }},         
+         { name="siren",  sound = { filename = "__base__/sound/programmable-speaker/siren.ogg", preload = false }},
         }
       },
       {
@@ -10816,7 +10454,7 @@ data:extend(
           { name = "game-lost",  sound = { filename = "__core__/sound/game-lost.ogg" }},
           { name = "game-won",  sound = { filename = "__core__/sound/game-won.ogg" }},
           { name = "gui-click",  sound = { filename = "__core__/sound/gui-click.ogg" }},
-          { name = "gui-click-2",  sound = { filename = "__core__/sound/listbox-click.ogg" }},
+          { name = "gui-click-2",  sound = { filename = "__core__/sound/list-box-click.ogg" }},
           { name = "inventory-move",  sound = { filename = "__core__/sound/inventory-move.ogg" }},
           { name = "new-objective",  sound = { filename = "__core__/sound/new-objective.ogg" }},
           { name = "research-completed",  sound = { filename = "__core__/sound/research-completed.ogg" }},
@@ -11239,26 +10877,15 @@ data:extend(
 
     },
 
-    circuit_wire_connection_point =
-    {
-      shadow =
-      {
-        red = {-0.1875, 0.40625},
-        green = {-0.34375, 0.40625}
-      },
-      wire =
-      {
-        red = {-0.1875, 0.40625},
-        green = {-0.34375, 0.40625}
-      }
-    },
-    circuit_connector_sprites = get_circuit_connector_sprites({-0.125, 0.34375}, nil, 0),
-    circuit_wire_max_distance = 9,
+    circuit_wire_connection_point = circuit_connector_definitions["programmable-speaker"].points,
+    circuit_connector_sprites = circuit_connector_definitions["programmable-speaker"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "electric-energy-interface",
     name = "electric-energy-interface",
     icon = "__base__/graphics/icons/accumulator.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "electric-energy-interface"},
     max_health = 150,
@@ -11305,14 +10932,46 @@ data:extend(
     }
   },
   {
+    type = "electric-energy-interface",
+    name = "hidden-electric-energy-interface",
+    icon = "__base__/graphics/icons/solar-panel.png",
+    icon_size = 32,
+    localised_name = {"item-name.solar-panel"},
+    flags = {},
+    max_health = 150,
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0, -0}, {0, 0}},
+    selectable_in_game = false,
+    energy_source =
+    {
+      type = "electric",
+      buffer_capacity = "10GJ",
+      usage_priority = "terciary",
+      input_flow_limit = "0kW",
+      output_flow_limit = "500GW"
+    },
+    energy_production = "500GW",
+    energy_usage = "0kW",
+    picture =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "extra-high",
+      width = 1,
+      height = 1
+    },
+    order = "h-e-e-i"
+  },
+  {
     type = "reactor",
     name = "nuclear-reactor",
     icon  = "__base__/graphics/icons/nuclear-reactor.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1.5, result = "nuclear-reactor"},
     max_health = 500,
     corpse = "big-remnants",
     consumption = "40MW",
+    neighbour_bonus = 1,
     burner =
     {
       fuel_category = "nuclear",
@@ -11526,11 +11185,66 @@ data:extend(
     },
 
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+
+    meltdown_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+              repeat_count = 100,
+              type = "create-trivial-smoke",
+              smoke_name = "nuclear-smoke",
+              offset_deviation = {{-1, -1}, {1, 1}},
+              slow_down_factor = 1,
+              starting_frame = 3,
+              starting_frame_deviation = 5,
+              starting_frame_speed = 0,
+              starting_frame_speed_deviation = 5,
+              speed_from_center = 0.5,
+              speed_deviation = 0.2
+          },
+          {
+            type = "create-entity",
+            entity_name = "explosion"
+          },
+          {
+            type = "damage",
+            damage = {amount = 400, type = "explosion"}
+          },
+          {
+            type = "create-entity",
+            entity_name = "small-scorchmark",
+            check_buildability = true
+          },
+          {
+            type = "nested-result",
+            action =
+            {
+              type = "area",
+              target_entities = false,
+              repeat_count = 2000,
+              radius = 35,
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "atomic-bomb-wave",
+                starting_speed = 0.5
+              }
+            }
+          }
+        }
+      }
+    },
   },
   {
     type = "assembling-machine",
     name = "centrifuge",
     icon = "__base__/graphics/icons/centrifuge.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "centrifuge"},
     max_health = 350,
@@ -11901,6 +11615,7 @@ data:extend(
     type = "boiler",
     name = "heat-exchanger",
     icon = "__base__/graphics/icons/heat-boiler.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "heat-exchanger"},
     max_health = 200,
@@ -11936,7 +11651,8 @@ data:extend(
         {type = "input-output", position = {-2, 0.5}},
         {type = "input-output", position = {2, 0.5}}
       },
-      production_type = "input-output"
+      production_type = "input-output",
+      filter = "water"
     },
     output_fluid_box =
     {
@@ -11948,17 +11664,8 @@ data:extend(
       {
         {type = "output", position = {0, -1.5}}
       },
-      production_type = "output"
-    },
-    fluid_input =
-    {
-      name = "water",
-      amount = 0.0
-    },
-    fluid_output =
-    {
-      name = "steam",
-      amount = 0.0
+      production_type = "output",
+      filter = "steam"
     },
     energy_consumption = "10MW",
     energy_source =
@@ -12167,14 +11874,17 @@ data:extend(
     type = "generator",
     name = "steam-turbine",
     icon = "__base__/graphics/icons/steam-turbine.png",
+    icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "steam-turbine"},
     max_health = 300,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    alert_icon_shift = util.by_pixel(0, -12),
     effectivity = 1,
     fluid_usage_per_tick = 1,
     maximum_temperature = 500,
+    burns_fluid = false,
     resistances =
     {
       {
@@ -12196,12 +11906,8 @@ data:extend(
         { type = "input-output", position = {0, 3} },
         { type = "input-output", position = {0, -3} },
       },
-      production_type = "input-output"
-    },
-    fluid_input =
-    {
-      name = "steam",
-      amount = 0.0,
+      production_type = "input-output",
+      filter = "steam",
       minimum_temperature = 100.0
     },
     energy_source =
@@ -12234,16 +11940,18 @@ data:extend(
           filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
           width = 217,
           height = 74,
-          frame_count = 8,
-          line_length = 4,
+          repeat_count = 8,
+          frame_count = 1,
+          line_length = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(28.75, 18),
           hr_version = {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H-shadow.png",
             width = 435,
             height = 150,
-            frame_count = 8,
-            line_length = 4,
+            repeat_count = 8,
+            frame_count = 1,
+            line_length = 1,
             draw_as_shadow = true,
             shift = util.by_pixel(28.5, 18),
             scale = 0.5
@@ -12276,16 +11984,18 @@ data:extend(
           filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
           width = 151,
           height = 131,
-          frame_count = 8,
-          line_length = 4,
+          repeat_count = 8,
+          frame_count = 1,
+          line_length = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(39.5, 24.5),
           hr_version = {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V-shadow.png",
             width = 302,
             height = 260,
-            frame_count = 8,
-            line_length = 4,
+            repeat_count = 8,
+            frame_count = 1,
+            line_length = 1,
             draw_as_shadow = true,
             shift = util.by_pixel(39.5, 24.5),
             scale = 0.5
@@ -12322,6 +12032,7 @@ data:extend(
     type = "heat-pipe",
     name = "heat-pipe",
     icon = "__base__/graphics/icons/heat-pipe.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "heat-pipe"},
     max_health = 200,
@@ -12426,6 +12137,7 @@ data:extend(
     name = "simple-entity-with-force",
     render_layer = "object",
     icon = "__base__/graphics/icons/steel-chest.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     order = "s-e-w-f",
     minable = {mining_time = 1, result = "simple-entity-with-force"},
@@ -12447,6 +12159,7 @@ data:extend(
     name = "simple-entity-with-owner",
     render_layer = "object",
     icon = "__base__/graphics/icons/wooden-chest.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     order = "s-e-w-o",
     minable = {mining_time = 1, result = "simple-entity-with-owner"},
@@ -12476,6 +12189,28 @@ data:extend(
         }
       }
     }
+--[[  or instead of picture it is possible to define animations with variations
+   random_animation_offset = false,
+   animations = 
+   {
+     {
+       width = 152,
+       height = 120,
+       line_length = 5,
+       frame_count = 60,
+       animation_speed = 0.25,
+       filename = "__base__/graphics/entity/smoke/smoke.png",
+     },
+     {
+       width = 152,
+       height = 120,
+       line_length = 5,
+       frame_count = 60,
+       animation_speed = 0.875,
+       filename = "__base__/graphics/entity/smoke/smoke.png",
+     }
+   }
+]]--
   },
   {
     type = "flame-thrower-explosion",
@@ -12499,7 +12234,191 @@ data:extend(
     smoke_count = 1,
     smoke_slow_down_factor = 0.95,
     damage = {amount = 0.25, type = "fire"}
-  }
+  },
+  {
+    type = "arrow",
+    name = "fake-selection-box-2x2",
+    flags = {"placeable-off-grid", "not-on-map"},
+    circle_picture =
+    {
+      filename = "__core__/graphics/arrows/fake-selection-box-2x2.png",
+      priority = "low",
+      width = 128,
+      height = 128,
+      scale = 0.5
+    },
+    arrow_picture =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "low",
+      width = 1,
+      height = 1
+    }
+  },
+  {
+    type = "artillery-flare",
+    name = "artillery-flare",
+    flags = {"placeable-off-grid", "not-on-map"},
+    map_color = {r=1, g=0.5, b=0},
+    life_time = 60 * 60,
+    initial_height = 0,
+    initial_vertical_speed = 0,
+    initial_frame_speed = 1,
+    shots_per_flare = 1,
+    early_death_ticks = 3 * 60,
+    pictures =
+    {
+      {
+        filename = "__core__/graphics/shoot-cursor-red.png",
+        priority = "low",
+        width = 258,
+        height = 183,
+        frame_count = 1,
+        scale = 1,
+        flags = {"icon"}
+      },
+      --{
+      --  filename = "__base__/graphics/entity/sparks/sparks-02.png",
+      --  width = 36,
+      --  height = 32,
+      --  frame_count = 19,
+      --  line_length = 19,
+      --  shift = {0.03125, 0.125},
+      --  tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+      --  animation_speed = 0.3,
+      --},
+    },
+  },
+  {
+    type = "explosion",
+    name = "big-artillery-explosion",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/bigass-explosion/hr-bigass-explosion-36f.png",
+        priority = "extra-high",
+        flags = { "compressed" },
+        animation_speed = 0.5,
+        width = 324,
+        height = 416,
+        frame_count = 36,
+        shift = util.by_pixel(0, -48),
+        stripes =
+        {
+          {
+            filename = "__base__/graphics/entity/bigass-explosion/hr-bigass-explosion-36f-1.png",
+            width_in_frames = 6,
+            height_in_frames = 3,
+          },
+          {
+            filename = "__base__/graphics/entity/bigass-explosion/hr-bigass-explosion-36f-2.png",
+            width_in_frames = 6,
+            height_in_frames = 3,
+          }
+        }
+      }
+    },
+    light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
+    sound =
+    {
+      aggregation =
+      {
+        max_count = 2,
+        remove = true
+      },
+      variations =
+      {
+        {
+          filename = "__base__/sound/fight/large-explosion-1.ogg",
+          volume = 1.1
+        },
+        {
+          filename = "__base__/sound/fight/large-explosion-2.ogg",
+          volume = 1.1
+        }
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 5,
+            entity_name = "explosion-remnants-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "artillery-cannon-muzzle-flash",
+    flags = {"not-on-map"},
+    animations =
+    {
+      { 
+        filename = "__base__/graphics/entity/artillery-cannon-muzzle-flash/muzzle-flash.png",
+        line_length = 7,
+        width = 138,
+        height = 192,
+        frame_count = 21,
+        shift = util.by_pixel(1, -82),
+        animation_speed = 0.75,
+        hr_version = 
+        { 
+          filename = "__base__/graphics/entity/artillery-cannon-muzzle-flash/hr-muzzle-flash.png",
+          line_length = 7,
+          width = 276,
+          height = 382,
+          frame_count = 21,
+          scale = 0.5,
+          shift = util.by_pixel(1, -82),
+          animation_speed = 0.75,
+        }
+      }
+    },
+    rotate = true,
+    shift_by_projectile_height = false,
+    correct_rotation = true,
+    light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
+    smoke = "smoke-fast",
+    smoke_count = 1,
+    smoke_slow_down_factor = 1
+  }, 
+  
+  {
+    type = "trivial-smoke",
+    name = "artillery-smoke",
+    flags = {"not-on-map"},
+    animation =
+    {
+      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
+      priority = "high",
+      width = 50,
+      height = 50,
+      animation_speed = 1 / 6,
+      frame_count = 16,
+      scale = 0.5
+    },
+    render_layer = "building-smoke",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 60 * 1.75,
+    fade_away_duration = 20,
+    show_when_smoke_off = true
+  },
 }
 )
 
@@ -12510,7 +12429,58 @@ data:extend({uranium_cannon_shell_explosion})
 
 local uranium_cannon_explosion = util.table.deepcopy(data.raw["explosion"]["explosion"])
 uranium_cannon_explosion.name = "uranium-cannon-explosion"
-for k,v in pairs(uranium_cannon_explosion.animations) do
+for k, v in pairs(uranium_cannon_explosion.animations) do
   v.tint = {r = 0.4, g = 1, b = 0.4}
 end
 data:extend({uranium_cannon_explosion})
+
+local red_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-passive-provider"])
+red_chest.minable = nil
+red_chest.type = "container"
+red_chest.name = "red-chest"
+red_chest.order = "r-e-d"
+data:extend({red_chest})
+
+local blue_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-requester"])
+blue_chest.minable = nil
+blue_chest.type = "container"
+blue_chest.name = "blue-chest"
+blue_chest.order = "b-l-u-e"
+data:extend({blue_chest})
+
+local infinity_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-storage"])
+infinity_chest.type = "infinity-container"
+infinity_chest.name = "infinity-chest"
+infinity_chest.order = "infinity-chest"
+infinity_chest.icon = "__base__/graphics/icons/infinity-chest.png"
+infinity_chest.gui_mode = "admins" -- all, none, admins
+infinity_chest.erase_contents_when_mined = true
+infinity_chest.picture =
+{
+  filename = "__base__/graphics/entity/infinity-chest/infinity-chest.png",
+  width = 32,
+  height = 32
+}
+infinity_chest.logistic_mode = nil
+infinity_chest.logistic_slots_count = 12
+infinity_chest.minable = {mining_time = 1, result = "infinity-chest"}
+infinity_chest.resistances =
+{
+  {
+    type = "fire",
+    percent = 100
+  },
+  {
+    type = "impact",
+    percent = 100
+  },
+  {
+    type = "physical",
+    percent = 100,
+  },
+  {
+    type = "explosion",
+    percent = 100,
+  }
+}
+data:extend({infinity_chest})

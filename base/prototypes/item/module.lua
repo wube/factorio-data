@@ -4,6 +4,7 @@ data:extend(
     type = "module",
     name = "speed-module",
     icon = "__base__/graphics/icons/speed-module.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "speed",
@@ -17,6 +18,7 @@ data:extend(
     type = "module",
     name = "speed-module-2",
     icon = "__base__/graphics/icons/speed-module-2.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "speed",
@@ -30,6 +32,7 @@ data:extend(
     type = "module",
     name = "speed-module-3",
     icon = "__base__/graphics/icons/speed-module-3.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "speed",
@@ -43,6 +46,7 @@ data:extend(
     type = "module",
     name = "effectivity-module",
     icon = "__base__/graphics/icons/effectivity-module.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "effectivity",
@@ -57,6 +61,7 @@ data:extend(
     type = "module",
     name = "effectivity-module-2",
     icon = "__base__/graphics/icons/effectivity-module-2.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "effectivity",
@@ -70,6 +75,7 @@ data:extend(
     type = "module",
     name = "effectivity-module-3",
     icon = "__base__/graphics/icons/effectivity-module-3.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "effectivity",
@@ -82,7 +88,7 @@ data:extend(
 })
 
 function productivitymodulelimitation()
-return 
+return
       {
         "sulfuric-acid",
         "basic-oil-processing",
@@ -134,6 +140,7 @@ data:extend(
     type = "module",
     name = "productivity-module",
     icon = "__base__/graphics/icons/productivity-module.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "productivity",
@@ -141,7 +148,7 @@ data:extend(
     order = "c[productivity]-a[productivity-module-1]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = 
+    effect =
     {
       productivity = {bonus = 0.04},
       consumption = {bonus = 0.4},
@@ -155,6 +162,7 @@ data:extend(
     type = "module",
     name = "productivity-module-2",
     icon = "__base__/graphics/icons/productivity-module-2.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "productivity",
@@ -162,11 +170,11 @@ data:extend(
     order = "c[productivity]-b[productivity-module-2]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = 
+    effect =
     {
       productivity = {bonus = 0.06},
       consumption = {bonus = 0.6},
-      pollution = {bonus = 0.075}, 
+      pollution = {bonus = 0.075},
       speed = {bonus = -0.15}
     },
     limitation = productivitymodulelimitation(),
@@ -176,6 +184,7 @@ data:extend(
     type = "module",
     name = "productivity-module-3",
     icon = "__base__/graphics/icons/productivity-module-3.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "module",
     category = "productivity",
@@ -183,7 +192,7 @@ data:extend(
     order = "c[productivity]-c[productivity-module-3]",
     stack_size = 50,
     default_request_amount = 10,
-    effect = 
+    effect =
     {
       productivity = {bonus = 0.1},
       consumption = {bonus = 0.8},

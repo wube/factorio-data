@@ -27,15 +27,15 @@ data:extend(
     },
     energy_input = "10kW",
     tint = {r = 0.1, g = 0.5, b = 0.2, a = 0},
-    desaturation_params = 
-    { 
+    desaturation_params =
+    {
       smoothstep_min = 0.1,
       smoothstep_max = 0.7,
       minimum = 0.3,
       maximum = 1.0
     },
-    light_params = 
-    { 
+    light_params =
+    {
       smoothstep_min = 0.1,
       smoothstep_max = 0.7,
       minimum = 0.666,
@@ -309,7 +309,7 @@ data:extend(
         {
           {
             type = "area",
-            perimeter = 8,
+            radius = 8,
             force = "enemy",
             action_delivery =
             {
@@ -340,7 +340,7 @@ data:extend(
         }
       },
     },
-    
+
 
     automatic = false,
     categories = {"armor"}

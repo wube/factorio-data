@@ -1,7 +1,7 @@
 local beam_blend_mode = "additive-soft"
 
-function makeBeam(sound)
-  local result = 
+function make_beam(sound)
+  local result =
   {
     type = "beam",
     flags = {"not-on-map"},
@@ -21,6 +21,50 @@ function makeBeam(sound)
           }
         }
       }
+    },
+    start = 
+    { 
+      filename = "__base__/graphics/entity/beam/tileable-beam-START.png",
+      line_length = 4,
+      width = 52,
+      height = 40,
+      frame_count = 16,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.03125, 0},
+      hr_version = {
+        filename = "__base__/graphics/entity/beam/hr-tileable-beam-START.png",
+        line_length = 4,
+        width = 94,
+        height = 66,
+        frame_count = 16,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = {0.53125, 0},
+        scale = 0.5,
+      }
+    },
+    ending = 
+    { 
+      filename = "__base__/graphics/entity/beam/tileable-beam-END.png",
+      line_length = 4,
+      width = 49,
+      height = 54,
+      frame_count = 16,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.046875, 0},
+      hr_version = { 
+        filename = "__base__/graphics/entity/beam/hr-tileable-beam-END.png",
+        line_length = 4,
+        width = 91,
+        height = 93,
+        frame_count = 16,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = {-0.078125, -0.046875},
+        scale = 0.5,
+      } 
     },
     head =
     {
@@ -93,7 +137,7 @@ function makeBeam(sound)
       },
     }
   }
-  
+
   if sound then
     result.working_sound =
     {
@@ -111,7 +155,7 @@ end
 
 data:extend(
 {
-  makeBeam(true),
-  makeBeam(false)
+  make_beam(true),
+  make_beam(false)
 }
 )

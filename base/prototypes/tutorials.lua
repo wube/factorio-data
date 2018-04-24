@@ -6,7 +6,7 @@ data:extend(
     type = "tutorial",
     name = "trains-basics",
     scenario = "trains-basics",
-    order = "a[trains]-a[basic-train]",
+    order = "d[trains]-a[basic-train]",
     technology = "railway",
     icon = "__base__/graphics/technology/railway.png",
     icon_size = 128,
@@ -16,40 +16,87 @@ data:extend(
     type = "tutorial",
     name = "trains-ghost-rail-planner",
     scenario = "trains-ghost-rail-planner",
-    order = "a[trains]-b[ghost-rail-planner]",
+    order = "d[trains]-b[ghost-rail-planner]",
     technology = "construction-robotics",
     icon = "__base__/graphics/technology/railway.png",
     icon_size = 128,
-    related_items = {"rail", "construction-robot"}
+    related_items = {"rail", "construction-robot"},
+    dependencies = {"trains-basics", "construction-robots"}
   },
   {
     type = "tutorial",
     name = "trains-stations",
     scenario = "trains-stations",
-    order = "a[trains]-c[stations]",
+    order = "d[trains]-c[stations]",
     technology = "automated-rail-transportation",
     icon = "__base__/graphics/technology/automated-rail-transportation.png",
     icon_size = 128,
-    related_items = {"train-stop", "locomotive", "cargo-wagon"}
+    related_items = {"train-stop", "locomotive", "cargo-wagon"},
+    dependencies = {"trains-basics"}
   },
   {
     type = "tutorial",
     name = "trains-basic-signals",
     scenario = "trains-basic-signals",
-    order = "a[trains]-d[basic-signal]",
+    order = "d[trains]-d[basic-signal]",
     technology = "rail-signals",
     icon = "__base__/graphics/technology/rail-signals.png",
     icon_size = 128,
-    related_items = {"rail-signal", "locomotive"}
+    related_items = {"rail-signal", "locomotive"},
+    dependencies = {"trains-stations"}
   },
   {
     type = "tutorial",
     name = "trains-advanced-signals",
     scenario = "trains-advanced-signals",
-    order = "a[trains]-e[advanced-signal]",
+    order = "d[trains]-e[advanced-signal]",
     technology = "rail-signals",
     icon = "__base__/graphics/technology/rail-signals.png",
     icon_size = 128,
-    related_items = {"rail-signal", "rail-chain-signal", "locomotive"}
+    related_items = {"rail-signal", "rail-chain-signal", "locomotive"},
+    dependencies = {"trains-basic-signals"}
+  },
+  {
+    type = "tutorial",
+    name = "logistic-system-basic",
+    scenario = "logistic-system-basic",
+    order = "b[worker-robots]-a[basic]",
+    technology = "character-logistic-slots-1",
+    icon = "__base__/graphics/technology/logistic-robotics.png",
+    icon_size = 128,
+    related_items = {"roboport", "logistic-robot", "logistic-chest-storage", "logistic-chest-passive-provider"}
+  },
+  {
+    type = "tutorial",
+    name = "construction-robots",
+    scenario = "construction-robots",
+    order = "b[worker-robots]-b[construction-robots]",
+    technology = "construction-robotics",
+    icon = "__base__/graphics/technology/construction-robotics.png",
+    icon_size = 128,
+    related_items = {"roboport", "construction-robot", "blueprint"},
+    dependencies = {"logistic-system-basic"}
+  },
+  --[[
+  {
+    type = "tutorial",
+    name = "logistic-robots",
+    scenario = "logistic-robots",
+    order = "b[worker-robots]-c[logistic-robots]",
+    technology = "logistic-system",
+    icon = "__base__/graphics/technology/logistic-system.png",
+    icon_size = 128,
+    related_items = {"roboport", "logistic-robot", "logistic-chest-passive-provider", "logistic-chest-requester"}
+  },
+  ]]
+  {
+    type = "tutorial",
+    name = "stack-transfers",
+    scenario = "stack-transfers",
+    order = "a[interface]-a[stack-transfers]",
+    build_entity = "iron-chest",
+    icon = "__base__/graphics/technology/toolbelt.png",
+    icon_size = 128,
+    related_items = {"iron-chest"}
   }
 })

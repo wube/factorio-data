@@ -4,6 +4,7 @@ data:extend(
     type = "armor",
     name = "heavy-armor",
     icon = "__base__/graphics/icons/heavy-armor.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     resistances =
     {
@@ -37,6 +38,7 @@ data:extend(
     type = "armor",
     name = "modular-armor",
     icon = "__base__/graphics/icons/modular-armor.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     resistances =
     {
@@ -72,6 +74,7 @@ data:extend(
     type = "armor",
     name = "power-armor",
     icon = "__base__/graphics/icons/power-armor.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     resistances =
     {
@@ -107,6 +110,7 @@ data:extend(
     type = "armor",
     name = "power-armor-mk2",
     icon = "__base__/graphics/icons/power-armor-mk2.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     resistances =
     {

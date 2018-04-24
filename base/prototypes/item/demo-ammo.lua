@@ -4,6 +4,7 @@ data:extend(
     type = "ammo",
     name = "firearm-magazine",
     icon = "__base__/graphics/icons/firearm-magazine.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {

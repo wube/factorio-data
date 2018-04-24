@@ -4,6 +4,7 @@ data:extend(
     type = "armor",
     name = "light-armor",
     icon = "__base__/graphics/icons/light-armor.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     resistances =
     {

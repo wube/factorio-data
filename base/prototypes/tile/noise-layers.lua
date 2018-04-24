@@ -2,67 +2,79 @@ data:extend(
 {
   {
     type = "noise-layer",
-    name = "grass"
+    name = "grass-1"
   },
   {
     type = "noise-layer",
-    name = "grass-medium"
+    name = "grass-2"
   },
   {
     type = "noise-layer",
-    name = "grass-dry"
+    name = "grass-3"
   },
   {
     type = "noise-layer",
-    name = "dirt"
+    name = "grass-4"
   },
   {
     type = "noise-layer",
-    name = "dirt-dark"
+    name = "red-desert-0"
   },
   {
     type = "noise-layer",
-    name = "sand"
+    name = "red-desert-1"
   },
   {
     type = "noise-layer",
-    name = "sand-dark"
+    name = "red-desert-2"
   },
   {
     type = "noise-layer",
-    name = "red-desert"
+    name = "red-desert-3"
   },
   {
     type = "noise-layer",
-    name = "red-desert-dark"
+    name = "dirt-1"
   },
   {
     type = "noise-layer",
-    name = "copper-ore"
+    name = "dirt-2"
   },
   {
     type = "noise-layer",
-    name = "iron-ore"
+    name = "dirt-3"
   },
   {
     type = "noise-layer",
-    name = "coal"
+    name = "dirt-4"
   },
   {
     type = "noise-layer",
-    name = "stone"
+    name = "dirt-5"
   },
   {
     type = "noise-layer",
-    name = "uranium-ore"
+    name = "dirt-6"
   },
   {
     type = "noise-layer",
-    name = "crude-oil"
+    name = "dirt-7"
   },
   {
     type = "noise-layer",
-    name = "enemy-base"
+    name = "sand-1"
+  },
+  {
+    type = "noise-layer",
+    name = "sand-2"
+  },
+  {
+    type = "noise-layer",
+    name = "sand-3"
+  },
+  {
+    type = "noise-layer",
+    name = "dry-dirt"
   },
 }
 )

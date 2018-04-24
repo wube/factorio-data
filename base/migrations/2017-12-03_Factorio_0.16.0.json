@@ -1,0 +1,12 @@
+{
+  "tile":
+  [
+    [ "grass", "grass-1" ],
+    [ "grass-medium", "grass-3" ],
+    [ "grass-dry", "grass-2" ],
+    [ "dirt", "dirt-3" ],
+    [ "dirt-dark", "dirt-6" ],
+    [ "sand", "sand-1" ],
+    [ "sand-dark", "sand-3" ]
+  ]
+}

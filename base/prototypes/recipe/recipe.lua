@@ -110,6 +110,7 @@ data:extend(
     type = "recipe",
     name = "car",
     enabled = false,
+    energy_required = 2,
     ingredients =
     {
       {"engine-unit", 8},
@@ -124,6 +125,7 @@ data:extend(
     normal =
     {
       enabled = false,
+      energy_required = 5,
       ingredients =
       {
         {"engine-unit", 32},
@@ -136,6 +138,7 @@ data:extend(
     expensive =
     {
       enabled = false,
+      energy_required = 8,
       ingredients =
       {
         {"engine-unit", 64},
@@ -163,6 +166,7 @@ data:extend(
   {
     type = "recipe",
     name = "locomotive",
+    energy_required = 4,
     enabled = false,
     ingredients =
     {
@@ -175,6 +179,7 @@ data:extend(
   {
     type = "recipe",
     name = "cargo-wagon",
+    energy_required = 1,
     enabled = false,
     ingredients =
     {
@@ -197,6 +202,21 @@ data:extend(
       {"storage-tank", 3}
     },
     result = "fluid-wagon"
+  },
+  {
+    type = "recipe",
+    name = "artillery-wagon",
+    energy_required = 4,
+    enabled = false,
+    ingredients =
+    {
+      {"engine-unit", 64},
+      {"iron-gear-wheel", 10},
+      {"steel-plate", 40},
+      {"pipe", 16},
+      {"advanced-circuit", 20}
+    },
+    result = "artillery-wagon"
   },
   {
     type = "recipe",
@@ -439,7 +459,6 @@ data:extend(
     ingredients =
     {
      {"electric-engine-unit", 1},
-     {"assembling-machine-1", 1},
      {"electric-furnace", 1}
     },
     result_count = 2,
@@ -464,7 +483,7 @@ data:extend(
   {
     type = "recipe",
     name = "lab",
-    energy_required = 3,
+    energy_required = 2,
     ingredients =
     {
       {"electronic-circuit", 10},
@@ -512,6 +531,7 @@ data:extend(
   {
     type = "recipe",
     name = "fast-underground-belt",
+    energy_required = 2,
     enabled = false,
     ingredients =
     {
@@ -525,6 +545,7 @@ data:extend(
   {
     type = "recipe",
     name = "express-underground-belt",
+    energy_required = 2,
     category = "crafting-with-fluid",
     enabled = false,
     ingredients =
@@ -740,6 +761,19 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "logistic-chest-buffer",
+    enabled = false,
+    ingredients =
+    {
+      {"steel-chest", 1},
+      {"electronic-circuit", 3},
+      {"advanced-circuit", 1}
+    },
+    result = "logistic-chest-buffer",
+    requester_paste_multiplier = 4
+  },
+  {
+    type = "recipe",
     name = "logistic-chest-requester",
     enabled = false,
     ingredients =
@@ -771,6 +805,7 @@ data:extend(
     type = "recipe",
     name = "roboport",
     enabled = false,
+    energy_required = 5,
     ingredients =
     {
       {"steel-plate", 45},
@@ -778,7 +813,6 @@ data:extend(
       {"advanced-circuit", 45}
     },
     result = "roboport",
-    energy_required = 10
   },
   {
     type = "recipe",
@@ -887,7 +921,7 @@ data:extend(
   {
     type = "recipe",
     name = "oil-refinery",
-    energy_required = 10,
+    energy_required = 8,
     ingredients =
     {
       {"steel-plate", 15},
@@ -962,6 +996,7 @@ data:extend(
         {type="fluid", name="water", amount=10},
       },
       result= "explosives",
+      result_count = 2,
     },
     expensive =
     {
@@ -974,6 +1009,7 @@ data:extend(
         {type="fluid", name="water", amount=10},
       },
       result= "explosives",
+      result_count = 2,
     }
   },
   {
@@ -1187,16 +1223,16 @@ data:extend(
     category = "rocket-building",
     ingredients =
     {
+      {"rocket-control-unit", 10},
       {"low-density-structure", 10},
       {"rocket-fuel", 10},
-      {"rocket-control-unit", 10}
     },
     result= "rocket-part"
   },
   {
     type = "recipe",
     name = "satellite",
-    energy_required = 3,
+    energy_required = 5,
     enabled = false,
     category = "crafting",
     ingredients =
@@ -1208,7 +1244,8 @@ data:extend(
       {"processing-unit", 100},
       {"rocket-fuel", 50}
     },
-    result= "satellite"
+    result= "satellite",
+    requester_paste_multiplier = 1
   },
   {
     type = "recipe",
@@ -1266,7 +1303,7 @@ data:extend(
   {
     type = "recipe",
     name = "nuclear-reactor",
-    energy_required = 4,
+    energy_required = 8,
     enabled = false,
     ingredients =
     {
@@ -1301,8 +1338,9 @@ data:extend(
     category = "centrifuging",
     ingredients = {{"uranium-ore", 10}},
     icon = "__base__/graphics/icons/uranium-processing.png",
+    icon_size = 32,
     subgroup = "raw-material",
-    order = "h[uranium-processing]",
+    order = "k[uranium-processing]", -- k ordering so it shows up after explosives which is j ordering
     results =
     {
       {
@@ -1325,6 +1363,7 @@ data:extend(
     category = "centrifuging",
     ingredients = {{"uranium-235", 40}, {"uranium-238", 5}},
     icon = "__base__/graphics/icons/kovarex-enrichment-process.png",
+    icon_size = 32,
     subgroup = "intermediate-product",
     order = "r[uranium-processing]-c[kovarex-enrichment-process]",
     main_product = "",
@@ -1341,7 +1380,18 @@ data:extend(
     },
     allow_decomposition = false
   },
-   {
+  {
+    type = "recipe",
+    name = "nuclear-fuel",
+    energy_required = 60,
+    enabled = false,
+    category = "centrifuging",
+    ingredients = {{"uranium-235", 1}, {"rocket-fuel", 1}},
+    icon = "__base__/graphics/icons/nuclear-fuel.png",
+    icon_size = 32,
+    result = "nuclear-fuel",
+  },
+  {
     type = "recipe",
     name = "nuclear-fuel-reprocessing",
     energy_required = 50,
@@ -1349,6 +1399,7 @@ data:extend(
     category = "centrifuging",
     ingredients = {{"used-up-uranium-fuel-cell", 5}},
     icon = "__base__/graphics/icons/nuclear-fuel-reprocessing.png",
+    icon_size = 32,
     subgroup = "intermediate-product",
     order = "r[uranium-processing]-b[nuclear-fuel-reprocessing]",
     main_product = "",
@@ -1378,6 +1429,7 @@ data:extend(
   {
     type = "recipe",
     name = "heat-exchanger",
+    energy_required = 3,
     enabled = false,
     ingredients = {{"steel-plate", 10}, {"copper-plate", 100}, {"pipe", 10}},
     result = "heat-exchanger"
@@ -1385,6 +1437,7 @@ data:extend(
   {
     type = "recipe",
     name = "heat-pipe",
+    energy_required = 1,
     enabled = false,
     ingredients = {{"steel-plate", 10}, {"copper-plate", 20}},
     result = "heat-pipe"
@@ -1393,6 +1446,7 @@ data:extend(
     type = "recipe",
     name = "steam-turbine",
     enabled = false,
+    energy_required = 3,
     ingredients = {{"iron-gear-wheel", 50}, {"copper-plate", 50}, {"pipe", 20}},
     result = "steam-turbine"
   }

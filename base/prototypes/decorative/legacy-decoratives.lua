@@ -81,20 +81,12 @@ data:extend(
     name = "root-B"
   },
   {
-    type = "simple-entity",
-    name = "stone-rock"
-  },
-  {
     type = "decorative",
     name = "brown-carpet-grass"
   },
   {
     type = "decorative",
     name = "brown-hairy-grass"
-  },
-  {
-    type = "decorative",
-    name = "small-rock"
   },
   {
   type = "decorative",

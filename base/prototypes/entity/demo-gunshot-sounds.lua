@@ -1,5 +1,5 @@
 
-function make_heavy_gunshot_sounds(volume)
+function make_heavy_gunshot_sounds()
     return
     {
       {
@@ -21,7 +21,7 @@ function make_heavy_gunshot_sounds(volume)
     }
 end
 
-function make_light_gunshot_sounds(volume)
+function make_light_gunshot_sounds()
     return
     {
       {
@@ -38,4 +38,3 @@ function make_light_gunshot_sounds(volume)
       }
     }
 end
-

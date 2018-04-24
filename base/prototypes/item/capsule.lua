@@ -4,6 +4,7 @@ data:extend(
     type = "capsule",
     name = "grenade",
     icon = "__base__/graphics/icons/grenade.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -40,6 +41,7 @@ data:extend(
     type = "capsule",
     name = "cluster-grenade",
     icon = "__base__/graphics/icons/cluster-grenade.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -76,6 +78,7 @@ data:extend(
     type = "capsule",
     name = "poison-capsule",
     icon = "__base__/graphics/icons/poison-capsule.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -112,6 +115,7 @@ data:extend(
     type = "capsule",
     name = "slowdown-capsule",
     icon = "__base__/graphics/icons/slowdown-capsule.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -147,7 +151,8 @@ data:extend(
   {
     type = "capsule",
     name = "defender-capsule",
-    icon = "__base__/graphics/icons/defender-capsule.png",
+    icon = "__base__/graphics/icons/defender.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -183,7 +188,8 @@ data:extend(
   {
     type = "capsule",
     name = "distractor-capsule",
-    icon = "__base__/graphics/icons/distractor-capsule.png",
+    icon = "__base__/graphics/icons/distractor.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -219,7 +225,8 @@ data:extend(
   {
     type = "capsule",
     name = "destroyer-capsule",
-    icon = "__base__/graphics/icons/destroyer-capsule.png",
+    icon = "__base__/graphics/icons/destroyer.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -256,6 +263,7 @@ data:extend(
     type = "capsule",
     name = "discharge-defense-remote",
     icon = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -264,6 +272,59 @@ data:extend(
     },
     subgroup = "capsule",
     order = "z",
+    stack_size = 1
+  },
+  {
+    type = "capsule",
+    name = "cliff-explosives",
+    icon = "__base__/graphics/icons/cliff-explosives.png",
+    icon_size = 32,
+    flags = {"goes-to-quickbar"},
+    capsule_action =
+    {
+      type = "destroy-cliffs",
+      radius = 1.5,
+      attack_parameters =
+      {
+        type = "projectile",
+        ammo_category = "grenade",
+        cooldown = 30,
+        projectile_creation_distance = 0.6,
+        range = 10,
+        ammo_type =
+        {
+          category = "grenade",
+          target_type = "position",
+          action =
+          {
+            type = "direct",
+            action_delivery =
+            {
+              type = "projectile",
+              projectile = "cliff-explosives",
+              starting_speed = 0.3
+            }
+          }
+        }
+      }
+    },
+    subgroup = "terrain",
+    order = "d[cliff-explosives]",
+    stack_size = 20
+  },
+  {
+    type = "capsule",
+    name = "artillery-targeting-remote",
+    icon = "__base__/graphics/icons/artillery-targeting-remote.png",
+    icon_size = 32,
+    flags = {"goes-to-quickbar"},
+    capsule_action =
+    {
+      type = "artillery-remote",
+      flare = "artillery-flare"
+    },
+    subgroup = "capsule",
+    order = "zz",
     stack_size = 1
   },
 })

@@ -5,6 +5,7 @@ data:extend(
     name = "signals",
     order = "f",
     icon = "__base__/graphics/item-group/signals.png",
+    icon_size = 64,
   },
   {
     type = "item-subgroup",
@@ -41,6 +42,12 @@ data:extend(
   {
     type = "item-subgroup",
     name = "creatures",
+    group = "environment",
+    order = "a",
+  },
+  {
+    type = "item-subgroup",
+    name = "cliffs",
     group = "environment",
     order = "a",
   },
@@ -92,7 +99,8 @@ data:extend(
     type = "item-group",
     name = "logistics",
     order = "aaa",
-    icon = "__base__/graphics/item-group/logistics.png"
+    icon = "__base__/graphics/item-group/logistics.png",
+    icon_size = 64,
   },
   {
     type = "item-subgroup",
@@ -146,7 +154,8 @@ data:extend(
     type = "item-group",
     name = "production",
     order = "b",
-    icon = "__base__/graphics/item-group/production.png"
+    icon = "__base__/graphics/item-group/production.png",
+    icon_size = 64,
   },
   {
     type = "item-subgroup",
@@ -189,7 +198,8 @@ data:extend(
     type = "item-group",
     name = "combat",
     order = "d",
-    icon = "__base__/graphics/item-group/military.png"
+    icon = "__base__/graphics/item-group/military.png",
+    icon_size = 64,
   },
   {
     type = "item-subgroup",
@@ -232,6 +242,7 @@ data:extend(
     name = "intermediate-products",
     order = "c",
     icon = "__base__/graphics/item-group/intermediate-products.png",
+    icon_size = 64,
   },
   {
     type = "item-subgroup",
@@ -280,6 +291,7 @@ data:extend(
     name = "fluids",
     order = "e",
     icon = "__base__/graphics/item-group/fluids.png",
+    icon_size = 64,
   },
   {
     type = "item-subgroup",

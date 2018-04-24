@@ -10,6 +10,7 @@ data:extend(
     type = "mining-drill",
     name = "electric-mining-drill",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "electric-mining-drill"},
     max_health = 300,
@@ -31,7 +32,7 @@ data:extend(
         { position = {2, 0} },
         { position = {0, 2} },
       }
-    } or nil,    
+    } or nil,
     working_sound =
     {
       sound =
@@ -41,7 +42,7 @@ data:extend(
       },
       apparent_volume = 1.5,
     },
-	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     animations =
     {
       north =
@@ -92,7 +93,7 @@ data:extend(
           animation_speed = 0.5,
           direction_count = 1,
           shift = util.by_pixel(3.75, -1.25),
-          run_mode = "forward-then-backward",      
+          run_mode = "forward-then-backward",
           scale = 0.5
         }
       },
@@ -660,7 +661,7 @@ data:extend(
         }
       }
     },
-    
+
     input_fluid_patch_window_flow_sprites =
     {
       {
@@ -847,7 +848,7 @@ data:extend(
         }
       },
     },
-    
+
     mining_speed = 0.5,
     energy_source =
     {
@@ -872,26 +873,16 @@ data:extend(
     },
     monitor_visualization_tint = {r=78, g=173, b=255},
     fast_replaceable_group = "mining-drill",
-    circuit_wire_connection_points =
-    {
-      get_circuit_connector_wire_shifting_for_connector({-0.09375, -1.65625}, {-0.09375, -1.65625}, 4),
-      get_circuit_connector_wire_shifting_for_connector({1.28125, -0.40625},  {1.28125, -0.40625},  2),
-      get_circuit_connector_wire_shifting_for_connector({0.09375, 1},         {0.09375, 1},         0),
-      get_circuit_connector_wire_shifting_for_connector({-1.3125, -0.3125},   {-1.3125, -0.3125},   6)
-    },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({-0.09375, -1.65625}, {-0.09375, -1.65625}, 4),
-      get_circuit_connector_sprites({1.28125, -0.40625},  {1.28125, -0.40625},  2),
-      get_circuit_connector_sprites({0.09375, 1},         {0.09375, 1},         0),
-      get_circuit_connector_sprites({-1.3125, -0.3125},   {-1.3125, -0.3125},   6)
-    },
-    circuit_wire_max_distance = 9,
+    
+    circuit_wire_connection_points = circuit_connector_definitions["electric-mining-drill"].points,
+    circuit_connector_sprites = circuit_connector_definitions["electric-mining-drill"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "mining-drill",
     name = "burner-mining-drill",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     resource_categories = {"basic-solid"},
     minable = {mining_time = 1, result = "burner-mining-drill"},
@@ -908,7 +899,7 @@ data:extend(
         volume = 0.8
       },
     },
-	vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     energy_source =
     {
       type = "burner",
@@ -931,7 +922,7 @@ data:extend(
     {
       north =
       {
-        layers = 
+        layers =
         {
           {
             priority = "extra-high",
@@ -1149,21 +1140,10 @@ data:extend(
     resource_searching_radius = 0.99,
     vector_to_place_result = {-0.5, -1.3},
     fast_replaceable_group = "mining-drill",
-    circuit_wire_connection_points =
-    {
-      get_circuit_connector_wire_shifting_for_connector({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
-      get_circuit_connector_wire_shifting_for_connector({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
-      get_circuit_connector_wire_shifting_for_connector({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
-      get_circuit_connector_wire_shifting_for_connector({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17)
-    },
-    circuit_connector_sprites =
-    {
-      get_circuit_connector_sprites({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
-      get_circuit_connector_sprites({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
-      get_circuit_connector_sprites({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17),
-      get_circuit_connector_sprites({-0.46875, 0.09375}, {-0.46875, 0.09375}, 17)
-    },
-    circuit_wire_max_distance = 9,
+    
+    circuit_wire_connection_points = circuit_connector_definitions["burner-mining-drill"].points,
+    circuit_connector_sprites = circuit_connector_definitions["burner-mining-drill"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
   }
 }
 )

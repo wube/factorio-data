@@ -4,6 +4,7 @@ data:extend(
     type = "ammo",
     name = "piercing-rounds-magazine",
     icon = "__base__/graphics/icons/piercing-rounds-magazine.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -42,6 +43,7 @@ data:extend(
     type = "ammo",
     name = "uranium-rounds-magazine",
     icon = "__base__/graphics/icons/uranium-rounds-magazine.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -80,6 +82,7 @@ data:extend(
     type = "ammo",
     name = "flamethrower-ammo",
     icon = "__base__/graphics/icons/flamethrower-ammo.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -130,6 +133,7 @@ data:extend(
     type = "ammo",
     name = "rocket",
     icon = "__base__/graphics/icons/rocket.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -158,6 +162,7 @@ data:extend(
     type = "ammo",
     name = "explosive-rocket",
     icon = "__base__/graphics/icons/explosive-rocket.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -186,6 +191,7 @@ data:extend(
     type = "ammo",
     name = "atomic-bomb",
     icon = "__base__/graphics/icons/atomic-bomb.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -217,6 +223,7 @@ data:extend(
     type = "ammo",
     name = "shotgun-shell",
     icon = "__base__/graphics/icons/shotgun-shell.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -262,6 +269,7 @@ data:extend(
     type = "ammo",
     name = "piercing-shotgun-shell",
     icon = "__base__/graphics/icons/piercing-shotgun-shell.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -307,6 +315,7 @@ data:extend(
     type = "ammo",
     name = "railgun-dart",
     icon = "__base__/graphics/icons/railgun-ammo.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory", "hidden"},
     ammo_type =
     {
@@ -343,6 +352,7 @@ data:extend(
     type = "ammo",
     name = "cannon-shell",
     icon = "__base__/graphics/icons/cannon-shell.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -359,6 +369,7 @@ data:extend(
           direction_deviation = 0.1,
           range_deviation = 0.1,
           max_range = 30,
+          min_range = 5,
           source_effects =
           {
             type = "create-explosion",
@@ -375,6 +386,7 @@ data:extend(
     type = "ammo",
     name = "explosive-cannon-shell",
     icon = "__base__/graphics/icons/explosive-cannon-shell.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -391,6 +403,7 @@ data:extend(
           direction_deviation = 0.1,
           range_deviation = 0.1,
           max_range = 30,
+          min_range = 5,
           source_effects =
           {
             type = "create-explosion",
@@ -407,6 +420,7 @@ data:extend(
     type = "ammo",
     name = "uranium-cannon-shell",
     icon = "__base__/graphics/icons/uranium-cannon-shell.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -439,6 +453,7 @@ data:extend(
     type = "ammo",
     name = "explosive-uranium-cannon-shell",
     icon = "__base__/graphics/icons/explosive-uranium-cannon-shell.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -466,6 +481,38 @@ data:extend(
     subgroup = "ammo",
     order = "d[explosive-cannon-shell]-c[uranium]",
     stack_size = 200
-  }
+  },
+  {
+    type = "ammo",
+    name = "artillery-shell",
+    icon = "__base__/graphics/icons/artillery-shell.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    ammo_type =
+    {
+      category = "artillery-shell",
+      target_type = "position",
+      action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "artillery",
+          projectile = "artillery-projectile",
+          starting_speed = 1,
+          direction_deviation = 0,
+          range_deviation = 0,
+          source_effects =
+          {
+            type = "create-explosion",
+            entity_name = "artillery-cannon-muzzle-flash"
+          },
+        }
+      },
+    },
+    subgroup = "ammo",
+    order = "d[explosive-cannon-shell]-d[artillery]",
+    stack_size = 1
+  },
 }
 )

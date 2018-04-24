@@ -1,37 +1,211 @@
 require("mod-gui")
-silo_script = {}
-silo_script.version = 1
-silo_script.tracked_items = {"satellite"}
+require("util")
 
-function silo_script.migrate(old_version, new_version)
-  if not silo_script.migrations then return end
-  repeat
-    if silo_script.migrations[old_version] then
-      silo_script.migrations[old_version]()
+function migrate_from_scenario()
+  if not global.satellite_sent then return end
+  for k, force in pairs (game.forces) do
+    local count = global.satellite_sent[force.name]
+    if count then
+      force.set_item_launched("satellite", count)
+      force.rockets_launched = count
     end
-    old_version = old_version + 0.1
+  end
+  for k, player in pairs (game.players) do
+    if player.gui.left.rocket_score then
+      player.gui.left.rocket_score.destroy()
+    end
+    get_sprite_button(player)
+  end
+end
+
+function migrate(old_version, new_version)
+  if not migrations then return end
+  log("Running silo script migration: "..old_version.." -> "..new_version)
+  repeat
+    if migrations[old_version] then
+      migrations[old_version]()
+    end
+    old_version = old_version + 1
   until old_version >= new_version
 end
 
-function silo_script.on_rocket_launched(event)
-  local force = event.rocket.force
-  if event.rocket.get_item_count("satellite") > 0 then
-    if global.silo_script.finish_on_launch and force.get_item_launched("satellite") == 1 then
-      game.set_game_state{game_finished=true, player_won=true, can_continue=true}
+function gui_update(player)
+  local gui = mod_gui.get_frame_flow(player).silo_gui_frame
+  if not gui then return end
+  gui.clear()
+  local items = game.item_prototypes
+  local launched = player.force.items_launched
+  local any = false
+  for k, v in pairs (launched) do
+    any = true
+    break
+  end
+  if any then
+    local item_table = gui.add{
+      type = "table",
+      name = "silo_gui_table",
+      column_count = 2
+    }
+    item_table.style.left_padding = 12
+    item_table.style.horizontal_spacing = 8
+    item_table.style.vertical_spacing = 0
+    item_table.style.column_alignments[2] = "right"
+    local label = item_table.add{type = "label", caption = {"gui-silo-script.sent-label"}, style = "caption_label"}
+    label.style.font = "default-bold"
+    label.style.bottom_padding = 4
+    item_table.add{type = "label"}
+    for k, tracked in pairs (global.silo_script.tracked_items) do
+      local item = items[tracked]
+      local count = launched[tracked]
+      if item and count then
+        local label = item_table.add{type = "label", caption = {"", item.localised_name, {"colon"}}}
+        label.style.font = "default-semibold"
+        item_table.add{type = "label", caption = util.format_number(count)}
+      end
     end
-  elseif global.silo_script.show_launched_without_satellite then
+  else
+    gui.add{type = "label", caption = {"gui-silo-script.no-sent-items"}}
+  end
+end
+
+function update_players(players)
+  local players = players or game.players
+  for k, player in pairs (players) do
+    gui_update(player)
+  end
+end
+
+function toggle_frame(player)
+  local gui = mod_gui.get_frame_flow(player)
+  local frame = gui.silo_gui_frame
+
+  if frame then
+    frame.destroy()
+    return
+  end
+
+  frame = gui.add{
+    type = "frame",
+    name = "silo_gui_frame",
+    direction = "vertical",
+    caption = {"gui-silo-script.frame-caption"},
+    style = mod_gui.frame_style
+  }
+  frame.style.title_bottom_padding = 0
+  gui_update(player)
+end
+
+function validate_tracked_items()
+  if not global.silo_script then return end
+  local list = global.silo_script.tracked_items
+  if not list then return end
+  local items = game.item_prototypes
+  local update_needed = false
+  for k, name in pairs (list) do
+    if not items[name] then
+      log("Removed \""..name.."\" from tracked items, as it is not a valid item.")
+      table.remove(list, k)
+      update_needed = true
+    end
+  end
+  if update_needed then
+    update_players()
+  end
+end
+
+migrations = {
+  [1] = function ()
+    log("Executing silo script migration - Mod gui from left to top")
+    for k, player in pairs (game.players) do
+      local gui = player.gui.left
+      if gui.mod_gui_flow then
+        gui.mod_gui_flow.destroy()
+      end
+      get_sprite_button(player)
+      gui_update(player)
+    end
+  end
+}
+
+silo_script = {}
+silo_script.version = 2
+silo_script.tracked_items = {"satellite"}
+
+silo_script.on_rocket_launched = function(event)
+  local rocket = event.rocket
+  if not rocket then return end
+  local force = rocket.force
+  local any_tracked = false
+  for k, tracked_item in pairs (global.silo_script.tracked_items) do
+    if rocket.get_item_count(tracked_item) > 0 then
+      any_tracked = true
+      break
+    end
+  end
+  if event.rocket.get_item_count("satellite") > 0 then
+    if force.get_item_launched("satellite") == 1 then
+      for k, player in pairs (force.players) do
+        get_sprite_button(player).style.visible = true
+        toggle_frame(player)
+      end
+      if global.silo_script.finish_on_launch then
+        game.set_game_state{game_finished = true, player_won = true, can_continue = true}
+      end
+    end
+  elseif global.silo_script.show_launched_without_satellite and not any_tracked then
     if (#game.players <= 1) then
       game.show_message_dialog{text = {"gui-silo-script.rocket-launched-without-satellite"}}
     else
       force.print({"gui-silo-script.rocket-launched-without-satellite"})
     end
   end
-  for k, player in pairs (force.players) do
-    silo_script.gui_update(player)
+  if any_tracked then
+    update_players(force.players)
   end
 end
 
-function silo_script.add_remote_interface()
+get_sprite_button = function(player)
+  local button_flow = mod_gui.get_button_flow(player)
+  local button = button_flow.silo_gui_sprite_button
+  if not button then
+    button = button_flow.add
+    {
+      type = "sprite-button",
+      name = "silo_gui_sprite_button",
+      sprite = "item/rocket-silo",
+      style = mod_gui.button_style,
+      tooltip = {"gui-silo-script.button-tooltip"}
+    }
+    local any = false
+    local sent = player.force.items_launched
+    for k, tracked_item in pairs (global.silo_script.tracked_items) do
+      if sent[tracked_item] then
+        any = true
+        break
+      end
+    end
+    button.style.visible = any
+  end
+  return button
+end
+
+silo_script.on_player_created = function(event)
+  local player = game.players[event.player_index]
+  if not (player and player.valid) then return end
+  get_sprite_button(player)
+end
+
+silo_script.on_gui_click = function(event)
+  local gui = event.element
+  local player = game.players[event.player_index]
+  if not (player and player.valid and gui and gui.valid) then return end
+  if gui.name == "silo_gui_sprite_button" then
+    toggle_frame(player)
+    return
+  end
+end
+
+silo_script.add_remote_interface = function()
   remote.add_interface("silo_script",
   {
     set_show_launched_without_satellite = function(value)
@@ -47,8 +221,9 @@ function silo_script.add_remote_interface()
     end,
     add_tracked_item = function(item_name)
       if type(item_name) ~= "string" then error("Value for 'add_tracked_item' must be a string") end
-      if not game.item_prototypes[item_name] then error("Item to add is not a valid item") end
+      if not game.item_prototypes[item_name] then error("Item to add is not a valid item: "..item_name) end
       table.insert(global.silo_script.tracked_items, item_name)
+      update_players()
     end,
     remove_tracked_item = function(item_name)
       if type(item_name) ~= "string" then error("Value for 'remove_tracked_item' must be a string") end
@@ -58,198 +233,47 @@ function silo_script.add_remote_interface()
           break
         end
       end
-    end,
-    reset_tracked_items = function()
-      global.silo_script.tracked_items = silo_script.tracked_items
-    end,
-    update_gui = function(player)
-      if player then
-        silo_script.gui_update(player)
-      else
-        for k, player in pairs (game.players) do
-          silo_script.gui_update(player)
-        end
-      end
-    end,
-    get_silo_gui_frame = function(player)
-      if player then
-        local gui = mod_gui.get_frame_flow(player)
-        return gui.silo_gui_frame
-      else
-        local array = {}
-        local count = 1
-        for k, player in pairs (game.players) do
-          local gui = mod_gui.get_frame_flow(player)
-          array[count] = gui.silo_gui_frame
-          count = count + 1
-        end
-        return array
-      end
-    end,
-    reset_silo_gui_frame = function(player)
-      local reset = function(player)
-        local gui = mod_gui.get_frame_flow(player)
-        if gui.silo_gui_frame then
-          gui.silo_gui_frame.destroy()
-        end
-        silo_script.gui_init(player)
-      end
-      if player then
-        reset(player)
-      else
-        for k, player in pairs (game.players) do
-          reset(player)
-        end
-      end
+      update_players()
     end
   })
+
 end
 
-function silo_script.on_configuration_changed(event)
+silo_script.add_commands = function()
+  commands.add_command("toggle-rockets-sent-gui", "toggle-rockets-sent-command-help", function()
+    local player = game.player
+    local button = get_sprite_button(player)
+    local set_to = not button.style.visible
+    button.style.visible = set_to
+    local frame = mod_gui.get_frame_flow(player).silo_gui_frame
+    if frame and set_to == false then
+      frame.destroy()
+    end
+    if not frame and set_to then
+      toggle_frame(player)
+    end
+  end)
+end
+
+silo_script.on_configuration_changed = function(event)
   if not global.silo_script then
-    silo_script.init() 
-    silo_script.migrate_from_scenario()
+    silo_script.on_init()
+    migrate_from_scenario()
   end
   if global.silo_script.version ~= silo_script.version then
-    silo_script.migrate(global.silo_script.version, silo_script.version)
+    migrate(global.silo_script.version, silo_script.version)
   end
-  silo_script.validate_tracked_items()
+  validate_tracked_items()
 end
 
-function silo_script.init()
+silo_script.on_init = function()
   if global.silo_script ~= nil then return end
   global.silo_script = {}
   global.silo_script.version = silo_script.version
   global.silo_script.tracked_items = silo_script.tracked_items
   global.silo_script.show_launched_without_satellite = true
   global.silo_script.finish_on_launch = true
+  validate_tracked_items()
 end
 
-function silo_script.migrate_from_scenario()
-  if not global.satellite_sent then return end
-  for k, force in pairs (game.forces) do
-    local count = global.satellite_sent[force.name]
-    if count then
-      force.set_item_launched("satellite", count)
-      force.rockets_launched = count
-    end
-  end
-  for k, player in pairs (game.players) do
-    if player.gui.left.rocket_score then
-      player.gui.left.rocket_score.destroy()
-    end
-    silo_script.gui_init(player)
-  end
-end
-
-function silo_script.gui_init(player)
-  local button_flow = mod_gui.get_button_flow(player)
-  if not button_flow.silo_gui_sprite_button then
-    local button = button_flow.add
-    {
-      type = "sprite-button",
-      name = "silo_gui_sprite_button",
-      sprite = "item/rocket-silo",
-      style = mod_gui.button_style,
-      tooltip = {"gui-silo-script.button-tooltip"}
-    }
-  end
-  local frame_flow = mod_gui.get_frame_flow(player)
-  if not frame_flow.silo_gui_frame then
-    local frame = frame_flow.add
-    {
-      type = "frame",
-      name = "silo_gui_frame",
-      direction = "vertical",
-      caption = {"gui-silo-script.frame-caption"},
-      style = mod_gui.frame_style
-    }
-    frame.style.visible = false
-    frame.add
-    {
-      type = "label",
-      name = "silo_gui_frame_sent_label",
-      caption = {"gui-silo-script.sent-label"},
-      style = "caption_label_style"
-    }
-    local item_table = frame.add
-    {
-      type = "table",
-      name = "silo_gui_frame_sent_table",
-      colspan = 1
-    }
-    item_table.style.left_padding = 12
-  end
-  silo_script.gui_update(player)
-end
-
-function silo_script.gui_update(player)
-  if not player then error("Silo script gui update must have a argument") end
-  if not player.valid then error("Silo script gui update player not valid") end
-  local gui = mod_gui.get_frame_flow(player).silo_gui_frame
-  if not gui then 
-    silo_script.gui_init(player)
-    return
-  end
-  local item_table = gui.silo_gui_frame_sent_table
-  if not item_table then error("Silo sent item table not present - Some other script may have deleted it") end
-  local show = false
-  local items = game.item_prototypes
-  for k, tracked in pairs (global.silo_script.tracked_items) do
-    local item_show = false
-    local label = item_table["silo_script_label_"..tracked]
-    if not items[tracked] then
-      if label then
-        label.destroy()
-      end
-    else
-      local count = player.force.get_item_launched(tracked)
-      if not label then
-        label = item_table.add
-        {
-          type = "label",
-          name = "silo_script_label_"..tracked
-        }
-      end
-      label.caption = {"gui-silo-script.sent-item", items[tracked].localised_name, count}
-      if count > 0 then
-        item_show = true
-        show = true
-      end
-      label.style.visible = item_show
-    end
-  end
-  local button = mod_gui.get_button_flow(player).silo_gui_sprite_button
-  if not button then error("Silo script button not present during update") end
-  button.style.visible = show
-end
-
-function silo_script.on_gui_click(event)
-  local gui = event.element
-  local player = game.players[event.player_index]
-  if not gui.valid then return end
-  if gui.name == "silo_gui_sprite_button" then
-    mod_gui.get_frame_flow(player).silo_gui_frame.style.visible = not mod_gui.get_frame_flow(player).silo_gui_frame.style.visible
-    return
-  end
-end
-
-function silo_script.validate_tracked_items()
-  if not global.silo_script then return end
-  local list = global.silo_script.tracked_items
-  if not list then return end
-  local items = game.item_prototypes
-  local update_needed = false
-  for k, name in pairs (list) do
-    if not items[name] then
-      log("Removed \""..name.."\" from tracked items, as it is not a valid item.")
-      table.remove(list, k)
-      update_needed = true
-    end
-  end
-  if update_needed then
-    for k, player in pairs (game.players) do
-      silo_script.gui_update(player)
-    end
-  end
-end
+return silo_script

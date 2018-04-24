@@ -97,7 +97,7 @@ data:extend(
 })
 
 add_utility_sound("gui_click", "__core__/sound/gui-click.ogg")
-add_utility_sound("list_box_click", "__core__/sound/listbox-click.ogg")
+add_utility_sound("list_box_click", "__core__/sound/list-box-click.ogg")
 add_utility_sound("build_small", "__core__/sound/build-small.ogg")
 add_utility_sound("build_medium", "__core__/sound/build-medium.ogg")
 add_utility_sound("build_big", "__core__/sound/build-large.ogg")

@@ -1,79 +1,21 @@
+local util = require("util")
+local color = util.color
+
 default_container_padding = 8
-default_orange_color = { r=0.98, g=0.66, b=0.22}
-default_light_orange_color = { r=1, g=0.74, b=0.40 }
-warning_red_color = {r=1, g=0.2, b=0.3}
-
-function color(hex)  -- supports 'rrggbb', 'rgb', 'rrggbbaa', 'rgba', 'ww', 'w'
-  function h(i,j)
-    return j and tonumber("0x"..hex:sub(i,j)) / 255 or tonumber("0x"..hex:sub(i,i)) / 15
-  end
-
-  hex = hex:gsub("#","")
-  return #hex == 6 and { r = h(1,2), g = h(3,4), b = h(5,6) }
-      or #hex == 3 and { r = h(1), g = h(2), b = h(3) }
-      or #hex == 8 and { r = h(1,2), g = h(3,4), b = h(5,6), a = h(7,8) }
-      or #hex == 4 and { r = h(1), g = h(2), b = h(3), a = h(4) }
-      or #hex == 2 and { r = h(1,2), g = h(1,2), b = h(1,2) }
-      or #hex == 1 and { r = h(1), g = h(1), b = h(1) }
-      or { r=1, g=1, b=1 }
-end
-
+-- As the frame font is too high, this value is used to decrease the frame font top padding so the title top marging looks proper
+default_frame_font_vertical_compensation = -6
+default_orange_color = {r = 0.98, g = 0.66, b = 0.22}
+default_light_orange_color = {r = 1, g = 0.74, b = 0.40}
+warning_red_color = {r = 1, g = 0.2, b = 0.3}
 
 achievement_green_color = color "96ce82"
 achievement_tan_color = color "d1c58e"
-
-function make_cursor_box(x, y, side_length, shift)
-  return
-  {
-   sprite =
-   {
-     filename = "__core__/graphics/cursor-boxes.png",
-     priority = "extra-high-no-scale",
-     width = 64,
-     height = 64,
-     scale = 0.5,
-     x = x,
-     y = y,
-     shift = (function()
-              if shift then
-                return {0.5 - shift[1] / 32.0, 0.5 - shift[2] / 32.0}
-              else
-                return {0.5, 0.5}
-              end
-            end)()
-   },
-   max_side_length = side_length,
-  }
-end
-
-function make_full_cursor_box(x, y, side_length, side_height)
-  return
-  {
-    sprite =
-    {
-      filename = "__core__/graphics/cursor-boxes-32x32.png",
-      priority = "extra-high-no-scale",
-      width = 64,
-      height = 64,
-      scale = 0.5,
-      x = x,
-      y = y,
-      shift = {0, 0}
-    },
-    is_whole_box = true,
-    side_length = side_length,
-    side_height = side_height
-  }
-end
 
 function orangebuttongraphcialset()
   return
   {
     type = "monolith",
-    top_monolith_border = 1,
-    right_monolith_border = 1,
-    bottom_monolith_border = 1,
-    left_monolith_border = 1,
+    monolith_border = 1,
     monolith_image =
     {
       filename = "__core__/graphics/gui.png",
@@ -99,10 +41,7 @@ function bluebuttongraphcialset(state)
   return
   {
     type = "monolith",
-    top_monolith_border = 1,
-    right_monolith_border = 1,
-    bottom_monolith_border = 1,
-    left_monolith_border = 1,
+    monolith_border = 1,
     monolith_image =
     {
       filename = "__core__/graphics/gui.png",
@@ -120,239 +59,182 @@ data:extend(
   {
     type = "gui-style",
     name = "default",
-    cursor_box =
-    {
-      regular =
-      {
-        make_full_cursor_box(0, 0, 1, 1),
-        make_cursor_box(256, 0, 0.4, {1, 1}),
-        make_cursor_box(192, 0, 0.7),
-        make_cursor_box(128, 0, 1.05),
-        make_cursor_box(64, 0, 3.5),
-        make_cursor_box(0, 0, 4.0)
-      },
-      not_allowed =
-      {
-        make_full_cursor_box(64, 0, 1, 1),
-        make_cursor_box(256, 64, 0.4, {1, 1}),
-        make_cursor_box(192, 64, 0.7),
-        make_cursor_box(128, 64, 1.05),
-        make_cursor_box(64, 64, 3.5),
-        make_cursor_box(0, 64, 4.0)
-      },
-      electricity =
-      {
-        make_full_cursor_box(128, 0, 1, 1),
-        make_cursor_box(256, 128, 0.4, {1, 1}),
-        make_cursor_box(192, 128, 0.7),
-        make_cursor_box(128, 128, 1.05),
-        make_cursor_box(64, 128, 3.5),
-        make_cursor_box(0, 128, 4.0)
-      },
-      pair =
-      {
-        make_full_cursor_box(192, 0, 1, 1),
-        make_cursor_box(256, 128, 0.4, {1, 1}),
-        make_cursor_box(192, 128, 0.7),
-        make_cursor_box(128, 128, 1.05),
-        make_cursor_box(64, 128, 3.5),
-        make_cursor_box(0, 128, 4.0)
-      },
-      copy =
-      {
-        make_full_cursor_box(192, 0, 1, 1),
-        make_cursor_box(256, 192, 0.4, {1, 1}),
-        make_cursor_box(192, 192, 0.7),
-        make_cursor_box(128, 192, 1.05),
-        make_cursor_box(64, 192, 3.5),
-        make_cursor_box(0, 192, 4.0)
-      },
-      train_visualization =
-      {
-        make_full_cursor_box(256, 0, 1, 1),
-        make_cursor_box(256, 256, 0.4, {1, 1}),
-        make_cursor_box(192, 256, 0.7),
-        make_cursor_box(128, 256, 1.05),
-        make_cursor_box(64, 256, 3.5),
-        make_cursor_box(0, 256, 4.0)
-      },
-      logistics =
-      {
-        make_full_cursor_box(128, 0, 1, 1),
-        make_cursor_box(256, 128, 0.4, {1, 1}),
-        make_cursor_box(192, 128, 0.7),
-        make_cursor_box(128, 128, 1.05),
-        make_cursor_box(64, 128, 3.5),
-        make_cursor_box(0, 128, 4.0)
-      }
-    },
 
-    label_style =
+    label =
     {
       type = "label_style",
       font = "default",
-      font_color = {r=1, g=1, b=1}
+      font_color = {r=1, g=1, b=1},
+      single_line = true,
+      want_ellipsis = false
     },
-    bold_label_style =
+    fake_disabled_label =
     {
       type = "label_style",
-      parent = "label_style",
+      font_color = {r=0.5, g=0.5, b=0.5}
+    },
+    bold_label =
+    {
+      type = "label_style",
       font = "default-bold",
     },
-    bold_red_label_style =
+    bold_red_label =
     {
       type = "label_style",
-      parent = "bold_label_style",
+      parent = "bold_label",
       font_color = {r=1, g=0, b=0}
     },
-    bold_green_label_style =
+    bold_green_label =
     {
       type = "label_style",
-      parent = "bold_label_style",
+      parent = "bold_label",
       font_color = {r=0, g=1, b=0}
     },
     -- Used as table caption, or in "Caption: value"
-    caption_label_style =
+    caption_label =
     {
       type = "label_style",
-      parent = "bold_label_style",
+      parent = "bold_label",
       font_color = default_orange_color
     },
-    invalid_label_style =
+    large_caption_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "caption_label",
+      font = "default-large-bold"
+    },
+    invalid_label =
+    {
+      type = "label_style",
+      parent = "label",
       font_color = warning_red_color
     },
-    scenario_message_dialog_label_style=
+    scenario_message_dialog_label=
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       width = 400,
       font = "scenario-message-dialog",
       font_color = {r=0, g=0, b=0}
     },
-    goal_label_style=
+    goal_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "scenario-message-dialog",
       width = 364,
       font_color = {r=1, g=1, b=1}
     },
-    electric_usage_label_style=
+    electric_usage_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       width = 60
     },
-    mod_dependency_invalid_label_style =
+    mod_dependency_invalid_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font_color = warning_red_color
     },
-    mod_optional_dependency_invalid_label_style =
+    mod_optional_dependency_invalid_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font_color = default_orange_color
     },
-    description_label_style =
+    mod_manager_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
+      maximal_width = 350,
+      single_line = false
+    },
+    description_label =
+    {
+      type = "label_style",
+      parent = "label",
       font = "default-semibold"
     },
-    description_value_label_style =
+    description_value_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default",
       font_color = default_light_orange_color
     },
-    description_remark_label_style =
+    description_remark_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-semibold",
     },
-    description_title_label_style =
+    description_title_label =
     {
       type = "label_style",
-      parent = "description_label_style",
-      font = "default-bold",
-      minimal_width = 210
+      parent = "description_label",
+      font = "default-bold"
     },
-    tool_equip_gui_label_style =
+    tool_equip_gui_label =
     {
       type = "label_style",
-      parent = "description_label_style"
+      parent = "description_label"
     },
-    tooltip_label_style =
+    tooltip_label =
     {
       type = "label_style",
-      parent = "description_label_style"
+      parent = "description_label"
     },
-    tooltip_title_label_style =
+    tooltip_title_label =
     {
       type = "label_style",
-      parent = "description_label_style",
+      parent = "description_label",
       font = "default-bold",
       minimal_width = 100,
       maximal_width = 350,
     },
-    tooltip_description_label_style=
+    recipe_tooltip_cannot_craft_label =
     {
       type = "label_style",
-      parent = "description_label_style",
-      minimal_width = 210
-    },
-    recipe_tooltip_cannot_craft_label_style =
-    {
-      type = "label_style",
-      parent = "tooltip_label_style",
+      parent = "tooltip_label",
       font_color = warning_red_color,
     },
-    recipe_tooltip_transitive_craft_label_style =
+    recipe_tooltip_transitive_craft_label =
     {
       type = "label_style",
-      parent = "tooltip_label_style",
+      parent = "tooltip_label",
       font_color = default_orange_color,
     },
-    frame_caption_label_style =
+    frame_caption_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-frame",
-      font_color={r=1, g=1, b=1}
+      font_color = {r=1, g=1, b=1}
     },
-    mod_list_label_style =
+    mod_list_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-bold",
-      font_color={r=0.9, g=0.9, b=0.1},
+      font_color = {r=0.9, g=0.9, b=0.1},
       minimal_width = 210
-   },
-    menu_message_style =
+    },
+    menu_message =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-bold",
       font_color = default_orange_color,
       minimal_width = 300
     },
-    button_style =
+    button =
     {
       type = "button_style",
       font = "default-button",
-      default_font_color={r=1, g=1, b=1},
-      align = "center",
-      top_padding = 5,
-      right_padding = 5,
-      bottom_padding = 5,
-      left_padding = 5,
+      default_font_color = {r=1, g=1, b=1},
+      align = "middle-center",
+      padding = 5,
       default_graphical_set =
       {
         type = "composition",
@@ -372,7 +254,7 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 8}
       },
-      clicked_font_color={r=1, g=1, b=1},
+      clicked_font_color = {r=1, g=1, b=1},
       clicked_graphical_set =
       {
         type = "composition",
@@ -382,7 +264,7 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 40}
       },
-      disabled_font_color={r=0.5, g=0.5, b=0.5},
+      disabled_font_color = {r=0.5, g=0.5, b=0.5},
       disabled_graphical_set =
       {
         type = "composition",
@@ -392,216 +274,229 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 16}
       },
-      pie_progress_color = {r=1, g=1, b=1}
+      pie_progress_color = {r=1, g=1, b=1},
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      }
     },
 
-    horizontal_line_style =
+    horizontal_line =
     {
-      type = "button_style",
-      line_color = default_orange_color,
-      line_width = 1
+      type = "horizontal_line_style",
+      line_color = {r=1, g=1, b=1},
+      line_width = 1,
+      height = 3
     },
 
-    browse_games_gui_line_style =
-    {
-      parent = "horizontal_line_style",
-      top_padding = 10,
-      bottom_padding = 10
-    },
-
-    achievement_title_label_style =
+    achievement_title_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-bold",
       font_color = color "ff",
       minimal_width = 250,
       maximal_width = 250
     },
-    achievement_percent_label_style =
+    achievement_percent_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-large-semibold",
       font_color = achievement_green_color
     },
-    achievement_unlocked_title_label_style =
+    achievement_unlocked_title_label =
     {
       type = "label_style",
-      parent = "achievement_title_label_style",
+      parent = "achievement_title_label",
       font_color = achievement_green_color
     },
-    achievement_locked_title_label_style =
+    achievement_locked_title_label =
     {
       type = "label_style",
-      parent = "achievement_title_label_style",
+      parent = "achievement_title_label",
       font_color = achievement_tan_color
     },
-    achievement_failed_title_label_style =
+    achievement_failed_title_label =
     {
       type = "label_style",
-      parent = "achievement_title_label_style",
+      parent = "achievement_title_label",
       font_color = color "8f7676"
     },
 
-    achievement_description_label_style =
+    achievement_description_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default",
       font_color = color "ff"
     },
-    achievement_unlocked_description_label_style =
+    achievement_unlocked_description_label =
     {
       type = "label_style",
-      parent = "achievement_description_label_style",
+      parent = "achievement_description_label",
     },
-    achievement_locked_description_label_style =
+    achievement_locked_description_label =
     {
       type = "label_style",
-      parent = "achievement_description_label_style",
+      parent = "achievement_description_label",
     },
-    achievement_failed_description_label_style =
+    achievement_failed_description_label =
     {
       type = "label_style",
-      parent = "achievement_description_label_style",
+      parent = "achievement_description_label",
       font_color = color "8f7676"
     },
 
-    achievement_locked_progress_label_style =
+    achievement_locked_progress_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-semibold",
       font_color = achievement_tan_color
     },
-    achievement_failed_reason_label_style =
+    achievement_failed_reason_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-small",
       font_color = color "e2dbdb"
     },
 
-    tutorial_list_description_label_style =
+    tutorial_list_description_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       --font = "scenario-message-dialog",
       font = "default",
       --width = 364,
       font_color = {r=1, g=1, b=1}
     },
-    
-    tutorial_title_label_style =
+
+    tutorial_title_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-large-bold",
       font_color = achievement_tan_color,
       minimal_width = 250,
       maximal_width = 250
     },
-    tutorial_locked_title_label_style =
+    tutorial_locked_title_label =
     {
       type = "label_style",
-      parent = "tutorial_title_label_style"
+      parent = "tutorial_title_label"
     },
-    tutorial_completed_title_label_style =
+    tutorial_completed_title_label =
     {
       type = "label_style",
-      parent = "tutorial_title_label_style",
+      parent = "tutorial_title_label",
       font_color = achievement_green_color,
     },
 
-    tutorial_description_label_style =
+    tutorial_description_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       --font = "scenario-message-dialog",
       font = "default",
       width = 364,
       font_color = {r=1, g=1, b=1}
     },
 
-    tutorial_notice_title_label_style =
+    tutorial_notice_title_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       --font = "default",
       font = "default-large-bold",
       font_color = color "ff",
       minimal_width = 250,
       maximal_width = 250
     },
-    tutorial_notice_name_label_style =
+    tutorial_notice_name_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font = "default-large",
       font_color = color "ff",
     },
-    tutorial_notice_label_style =
+    tutorial_notice_label =
     {
       type = "label_style",
-      parent = "label_style",
+      parent = "label",
       font_color = color "ff",
     },
+    tutorial_icon_image =
+    {
+      type = "image_style",
+      width = 96,
+      height = 96
+    },
+    achievement_image =
+    {
+      type = "image_style",
+      width = 100,
+      height = 100
+    },
 
-    installed_mod_label_style =
+    installed_mod_label =
     {
       type = "label_style",
-      parent = "label_style",
       font_color = {r=0, g=0.9, b=0}
     },
 
-    downloading_mod_label_style =
+    downloading_mod_label =
     {
       type = "label_style",
-      parent = "label_style",
       font_color = {r=255, g=255, b=50}
     },
 
-    to_be_downloaded_mod_label_style =
+    to_be_downloaded_mod_label =
     {
       type = "label_style",
-      parnet = "label_style",
       font_color = {r=50, g=255, b=255}
     },
 
-    out_of_date_mod_label_style =
+    out_of_date_mod_label =
     {
       type = "label_style",
-      parent = "label_style",
       font_color = {r=0.9, g=0.9, b=0}
     },
 
-    incompatible_mod_label_style =
+    incompatible_mod_label =
     {
       type = "label_style",
-      parent = "label_style",
       font_color = warning_red_color
     },
 
-    flip_button_style_left =
+    invalid_mod_label =
+    {
+      type = "label_style",
+      font_color = warning_red_color
+    },
+
+    disabled_mod_label =
+    {
+      type = "label_style",
+      font_color = {r=0.5, g=0.5, b=0.5}
+    },
+
+    flip_button_left =
     {
       type = "button_style",
       font = "default-button",
-      default_font_color={r=1, g=1, b=1},
-      align = "center",
+      default_font_color = {r=1, g=1, b=1},
       width = 32,
       height = 15,
-      top_padding = 5,
-      right_padding = 5,
-      bottom_padding = 5,
-      left_padding = 5,
+      padding = 5,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-button-gui.png",
@@ -614,10 +509,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-button-gui.png",
@@ -631,10 +523,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-button-gui.png",
@@ -648,25 +537,18 @@ data:extend(
       pie_progress_color = {r=1, g=1, b=1}
     },
 
-    flip_button_style_right =
+    flip_button_right =
     {
       type = "button_style",
       font = "default-button",
-      default_font_color={r=1, g=1, b=1},
-      align = "center",
+      default_font_color = {r=1, g=1, b=1},
       width = 32,
       height = 15,
-      top_padding = 5,
-      right_padding = 5,
-      bottom_padding = 5,
-      left_padding = 5,
+      padding = 5,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-button-gui.png",
@@ -679,10 +561,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-button-gui.png",
@@ -696,10 +575,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-button-gui.png",
@@ -713,13 +589,13 @@ data:extend(
       pie_progress_color = {r=1, g=1, b=1}
     },
 
-    fake_disabled_button_style =
+    fake_disabled_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
 
-      default_font_color={r=0.5, g=0.5, b=0.5},
-      hovered_font_color={r=0.5, g=0.5, b=0.5},
+      default_font_color = {r=0.5, g=0.5, b=0.5},
+      hovered_font_color = {r=0.5, g=0.5, b=0.5},
       hovered_graphical_set =
       {
         type = "composition",
@@ -728,7 +604,7 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 0}
       },
-      clicked_font_color={r=0.5, g=0.5, b=0.5},
+      clicked_font_color = {r=0.5, g=0.5, b=0.5},
       clicked_graphical_set =
       {
         type = "composition",
@@ -738,38 +614,24 @@ data:extend(
         position = {0, 0}
       }
     },
-    dialog_button_style =
+    dialog_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       minimal_width = 100,
       minimal_height = 30,
-      left_click_sound =
-      {
-        {
-          filename = "__core__/sound/gui-click.ogg",
-          volume = 1
-        }
-      }
     },
 
-    play_tutorial_button_style =
+    play_tutorial_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       font = "default",
-      left_click_sound =
-      {
-        {
-          filename = "__core__/sound/gui-click.ogg",
-          volume = 1
-        }
-      }
     },
-    play_completed_tutorial_button_style =
+    play_completed_tutorial_button =
     {
       type = "button_style",
-      parent = "play_tutorial_button_style",
+      parent = "play_tutorial_button",
       default_graphical_set =
       {
         type = "composition",
@@ -779,10 +641,10 @@ data:extend(
         position = {0, 24}
       }
     },
-    play_locked_tutorial_button_style =
+    play_locked_tutorial_button =
     {
       type = "button_style",
-      parent = "play_tutorial_button_style",
+      parent = "play_tutorial_button",
       default_graphical_set =
       {
         type = "composition",
@@ -792,45 +654,35 @@ data:extend(
         position = {0, 32}
       }
     },
-    play_tutorial_disabled_button_style =
+    play_tutorial_disabled_button =
     {
       type = "button_style",
-      parent = "fake_disabled_button_style",
+      parent = "fake_disabled_button",
       font = "default"
     },
 
-    menu_button_style =
+    menu_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       font = "default-button",
       minimal_width = 300,
       minimal_height = 50,
-      left_click_sound =
-      {
-        {
-          filename = "__core__/sound/gui-click.ogg",
-          volume = 1
-        }
-      }
     },
 
-    search_mods_button_style =
+    search_mods_button =
     {
       type = "button_style",
-      parent = "button_style",
-      top_padding = 2,
-      right_padding = 2,
-      bottom_padding = 2,
-      left_padding = 2,
+      parent = "button",
+      padding = 2
     },
 
-    icon_button_style =
+    icon_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       scalable = true,
-      default_font_color={r=0, g=0, b=0},
+      default_font_color = {r=0, g=0, b=0},
       width = 38,
       height = 38,
       top_padding = 1,
@@ -847,35 +699,37 @@ data:extend(
       }
     },
 
-    side_menu_button_style =
+    side_menu_button =
     {
       type = "button_style",
-      parent = "icon_button_style"
+      parent = "icon_button"
     },
-    map_view_options_button_style =
+    side_menu_button_hovered =
     {
       type = "button_style",
-      parent = "icon_button_style"
+      parent = "icon_button",
+      default_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        corner_size = {3, 3},
+        position = {0, 8}
+      },
+    },
+    map_view_options_button =
+    {
+      type = "button_style",
+      parent = "icon_button"
     },
 
-    mod_gui_button_style =
+    mod_gui_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       scalable = true,
       minimal_width = 36,
       height = 36,
-      top_padding = 1,
-      right_padding = 1,
-      bottom_padding = 1,
-      left_padding = 1,
-      left_click_sound =
-      {
-        {
-          filename = "__core__/sound/gui-click.ogg",
-          volume = 1
-        }
-      },
+      padding = 1,
       default_graphical_set =
       {
         type = "composition",
@@ -886,20 +740,17 @@ data:extend(
       }
     },
 
-    image_tab_slot_style =
+    image_tab_slot =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       width = 68,
       height = 68,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -913,10 +764,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -929,10 +777,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -944,10 +789,10 @@ data:extend(
         }
       }
     },
-    image_tab_selected_slot_style =
+    image_tab_selected_slot =
     {
       type = "button_style",
-      parent = "image_tab_slot_style",
+      parent = "image_tab_slot",
       scalable = false,
       width = 68,
       height = 68,
@@ -955,36 +800,27 @@ data:extend(
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
     },
-    logistic_button_slot_style =
+    logistic_button_slot =
     {
       type = "button_style",
-      parent = "slot_button_style"
+      parent = "slot_button"
     },
-    logistic_button_selected_slot_style =
+    logistic_button_selected_slot =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       default_graphical_set = orangebuttongraphcialset(),
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
     },
-    ability_slot_style =
+    red_circuit_network_content_slot =
     {
       type = "button_style",
-      parent = "slot_button_style"
-    },
-
-    red_circuit_network_content_slot_style =
-    {
-      type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -997,18 +833,15 @@ data:extend(
       }
     },
 
-    green_circuit_network_content_slot_style =
+    green_circuit_network_content_slot =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1021,24 +854,18 @@ data:extend(
       }
     },
 
-    slot_button_style =
+    slot_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       scalable = false,
       width = 36,
       height = 36,
-      top_padding = 1,
-      right_padding = 1,
-      bottom_padding = 1,
-      left_padding = 1,
+      padding = 1,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1051,10 +878,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1067,10 +891,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1080,27 +901,22 @@ data:extend(
           x = 185
         }
       },
-      pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5}
+      pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5},
+      left_click_sound = {}
     },
 
-    recipe_slot_button_style =
+    recipe_slot_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       width = 36,
       height = 36,
-      top_padding = 1,
-      right_padding = 1,
-      bottom_padding = 1,
-      left_padding = 1,
+      padding = 1,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1114,10 +930,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1131,10 +944,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1148,24 +958,18 @@ data:extend(
       pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5}
     },
 
-    switch_quickbar_button_style =
+    switch_quickbar_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       scalable = false,
       width = 22,
       height = 22,
-      top_padding = 1,
-      right_padding = 1,
-      bottom_padding = 1,
-      left_padding = 1,
+      padding = 1,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-quickbar.png",
@@ -1178,10 +982,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-quickbar.png",
@@ -1194,11 +995,8 @@ data:extend(
       },
       clicked_graphical_set =
       {
-       type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        type = "monolith",
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/switch-quickbar.png",
@@ -1211,32 +1009,29 @@ data:extend(
       }
     },
 
-    small_slot_button_style =
+    small_slot_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       width = 20,
       height = 20,
       scalable = false
     },
 
-    tracking_off_button_style =
+    tracking_off_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       scalable = false,
-      top_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      left_padding = 0,
+      padding = 0,
       width = 3+16+3,
       height = 3+16+3,
     },
 
-    tracking_on_button_style =
+    tracking_on_button =
     {
       type = "button_style",
-      parent = "tracking_off_button_style",
+      parent = "tracking_off_button",
       default_graphical_set =
       {
         type = "composition",
@@ -1256,78 +1051,75 @@ data:extend(
       -- pressed is the same as default
     },
 
-    technology_slot_button_style =
+    technology_slot_button =
     {
       type = "button_style",
-      parent = "crafting_queue_slot_style",
+      parent = "crafting_queue_slot",
       scalable = false,
       width = 68,
       height = 68
     },
 
-    blueprint_record_slot_button_style =
+    blueprint_record_slot_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       width = 76,
       height = 76,
       scalable = false
     },
 
-    blueprint_drop_slot_button_style =
+    blueprint_drop_slot_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       width = 76,
       height = 76,
       scalable = false
     },
 
-    search_button_style =
+    search_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       width = 28,
       height = 28
     },
 
-    edit_label_button_style =
+    edit_label_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       width = 28,
       height = 28
     },
 
-    selected_slot_button_style =
+    selected_slot_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       default_graphical_set =  orangebuttongraphcialset(),
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
     },
 
-    slot_with_filter_button_style =
+    slot_with_filter_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       default_graphical_set =  bluebuttongraphcialset("default"),
       hovered_graphical_set =  bluebuttongraphcialset("hovered"),
       clicked_graphical_set = bluebuttongraphcialset("clicked")
     },
 
-    not_available_slot_button_style =
+    not_available_slot_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1341,10 +1133,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1358,10 +1147,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1373,30 +1159,27 @@ data:extend(
         }
       }
     },
-    circuit_condition_sign_button_style =
+    circuit_condition_sign_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       top_padding = 0,
       right_padding = 5,
       bottom_padding = 1,
       left_padding = 5
     },
 
-    available_technology_slot_style =
+    available_technology_slot =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       width = 68,
       height = 68 + 16,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1410,10 +1193,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1427,10 +1207,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1443,18 +1220,15 @@ data:extend(
       }
     },
 
-    red_slot_button_style =
+    red_slot_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1468,10 +1242,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1485,10 +1256,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1501,20 +1269,17 @@ data:extend(
       }
     },
 
-    not_available_technology_slot_style =
+    not_available_technology_slot =
     {
       type = "button_style",
-      parent = "red_slot_button_style",
+      parent = "red_slot_button",
       scalable = false,
       width = 68,
       height = 68 + 16,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1528,10 +1293,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1545,10 +1307,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1561,28 +1320,25 @@ data:extend(
       }
     },
 
-    disabled_technology_slot_style =
+    disabled_technology_slot =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       visible = false,
       width = 68,
       height = 68
     },
 
-    green_slot_button_style =
+    green_slot_button =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       scalable = false,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1596,10 +1352,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1613,10 +1366,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1629,32 +1379,29 @@ data:extend(
       }
     },
 
-    working_weapon_button_style =
+    working_weapon_button =
     {
       type = "button_style",
-      parent = "green_slot_button_style"
+      parent = "green_slot_button"
     },
 
-    not_working_weapon_button_style =
+    not_working_weapon_button =
     {
       type = "button_style",
-      parent = "red_slot_button_style"
+      parent = "red_slot_button"
     },
 
-    researched_technology_slot_style =
+    researched_technology_slot =
     {
       type = "button_style",
-      parent = "green_slot_button_style",
+      parent = "green_slot_button",
       scalable = false,
       width = 68,
       height = 68 + 16,
-       default_graphical_set =
+      default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1668,10 +1415,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1685,10 +1429,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1701,72 +1442,66 @@ data:extend(
       }
     },
 
-    available_preview_technology_slot_style =
+    available_preview_technology_slot =
     {
       type = "button_style",
-      parent = "available_technology_slot_style",
+      parent = "available_technology_slot",
       scalable = false,
       width = 132,
       height = 132
     },
 
-    not_available_preview_technology_slot_style =
+    not_available_preview_technology_slot =
     {
       type = "button_style",
-      parent = "not_available_technology_slot_style",
+      parent = "not_available_technology_slot",
       scalable = false,
       width = 132,
       height = 132
     },
 
-    omitted_technology_slot_style =
+    omitted_technology_slot =
     {
       type = "button_style",
       scalable = false,
       width = 10,
       height = 8,
-      top_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      left_padding = 0,
+      padding = 0,
       default_graphical_set =
       {
-         type = "none"
+        type = "none"
       },
       hovered_graphical_set =
       {
-         type = "none"
+        type = "none"
       }
     },
 
-    researched_preview_technology_slot_style =
+    researched_preview_technology_slot =
     {
       type = "button_style",
-      parent = "researched_technology_slot_style",
+      parent = "researched_technology_slot",
       scalable = false,
       width = 132,
       height = 132
     },
 
-    crafting_queue_slot_style=
+    crafting_queue_slot =
     {
       type = "button_style",
-      parent = "slot_button_style",
+      parent = "slot_button",
       pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5},
       scalable = false
     },
-    promised_crafting_queue_slot_style=
+    promised_crafting_queue_slot =
     {
       type = "button_style",
-      parent = "crafting_queue_slot_style",
+      parent = "crafting_queue_slot",
       scalable = false,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1780,10 +1515,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1797,10 +1529,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1812,18 +1541,15 @@ data:extend(
         }
       }
     },
-    partially_promised_crafting_queue_slot_style =
+    partially_promised_crafting_queue_slot =
     {
       type = "button_style",
-      parent = "crafting_queue_slot_style",
+      parent = "crafting_queue_slot",
       scalable = false,
       default_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1837,10 +1563,7 @@ data:extend(
       hovered_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1854,10 +1577,7 @@ data:extend(
       clicked_graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 1,
-        right_monolith_border = 1,
-        bottom_monolith_border = 1,
-        left_monolith_border = 1,
+        monolith_border = 1,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -1869,10 +1589,10 @@ data:extend(
         }
       }
     },
-    controls_settings_button_style =
+    controls_settings_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "button",
       font = "default-bold",
       align = "left",
       minimal_width = 225,
@@ -1881,7 +1601,7 @@ data:extend(
       right_padding = 2,
       bottom_padding = 0,
       left_padding = 2,
-      default_font_color={},
+      default_font_color = {},
       default_graphical_set =
       {
         type = "composition",
@@ -1891,10 +1611,25 @@ data:extend(
         position = {8, 8}
       }
     },
-    auth_actions_button_style =
+    controls_settings_disabled_button =
     {
       type = "button_style",
-      parent = "button_style",
+      parent = "controls_settings_button",
+      default_font_color = {r=0.5, g=0.5, b=0.5},
+      default_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        load_in_minimal_mode = true,
+        corner_size = {3, 3},
+        position = {0, 16}
+      },
+    },
+    auth_actions_button =
+    {
+      type = "button_style",
+      parent = "button",
       font = "default-bold",
       align = "left",
       top_padding = 0,
@@ -1902,7 +1637,18 @@ data:extend(
       bottom_padding = 0,
       left_padding = 2
     },
-    dropdown_style =
+    delete_achievements_button =
+    {
+      type = "button_style",
+      parent = "button",
+      font = "default-bold",
+      align = "left",
+      top_padding = 0,
+      right_padding = 2,
+      bottom_padding = 0,
+      left_padding = 2
+    },
+    dropdown =
     {
       type = "dropdown_style",
       font = "default",
@@ -1945,20 +1691,27 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 16}
       },
-      listbox_style=
+      list_box_style =
       {
+        type = "list_box_style",
         font = "default"
       }
     },
-    map_settings_dropdown_style =
+    map_settings_dropdown =
     {
       type = "dropdown_style",
-      parent = "dropdown_style",
+      parent = "dropdown",
       minimal_width = 200
     },
-    listbox_item_style =
+    logistic_networks_dropdown =
     {
-      type = "listbox_item_style",
+      type = "dropdown_style",
+      parent = "dropdown",
+      minimal_width = 200
+    },
+    list_box_item =
+    {
+      type = "list_box_item_style",
       strikethrough_color = {r=0.5, g=0.5, b=0.5},
       default =
       {
@@ -1976,10 +1729,10 @@ data:extend(
         background_color = { r=0.98, g=0.66, b=0.22}
       }
     },
-    mod_invalid_listbox_item_style =
+    mod_invalid_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style",
+      type = "list_box_item_style",
+      parent = "list_box_item",
       default =
       {
         font_color = warning_red_color,
@@ -1993,10 +1746,10 @@ data:extend(
         font_color = warning_red_color,
       }
     },
-    mod_disabled_listbox_item_style =
+    mod_disabled_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style",
+      type = "list_box_item_style",
+      parent = "list_box_item",
       default =
       {
         font_color = {r=0.5, g=0.5, b=0.5}
@@ -2010,10 +1763,10 @@ data:extend(
         font_color = {r=0.5, g=0.5, b=0.5}
       }
     },
-    mod_updates_available_listbox_item_style =
+    mod_updates_available_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style",
+      type = "list_box_item_style",
+      parent = "list_box_item",
       default =
       {
         font_color = {r=0.9, g=0.9, b=0}
@@ -2027,34 +1780,37 @@ data:extend(
         font_color = {r=1.0, g=1.0, b=0}
       }
     },
-    listbox_style =
+    list_box =
     {
-      type = "listbox_style",
-      font = "default-listbox",
-      item_style = {
-        parent = "listbox_item_style"
+      type = "list_box_style",
+      font = "default-list_box",
+      item_style =
+      {
+        type = "list_box_item_style",
+        parent = "list_box_item"
       },
       left_click_sound =
       {
         {
-          filename = "__core__/sound/listbox-click.ogg",
+          filename = "__core__/sound/list-box-click.ogg",
           volume = 1
         }
       }
     },
-    saves_listbox_style =
+    saves_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       width = 300,
       minimal_height = 100
     },
-    mods_listbox_style =
+    mods_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       width = 300,
       height = 350,
-      item_style = {
-        parent = "listbox_item_style",
+      item_style =
+      {
+        type = "list_box_item_style",
         default =
         {
           font_color = {r=1, g=1, b=1},
@@ -2069,67 +1825,66 @@ data:extend(
         }
       }
     },
-    campaigns_listbox_style =
+    campaigns_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       width = 300,
       height = 450
     },
-    campaign_levels_listbox_style =
+    campaign_levels_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       width = 300,
       height = 350
     },
-    custom_games_listbox_style =
+    custom_games_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       width = 300,
       height = 250
     },
-    permissions_groups_listbox_style =
+    permissions_groups_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       minimal_width = 250,
       maximal_width = 250,
       minimal_height = 400,
       maximal_height = 400
     },
-    permissions_players_listbox_style =
+    permissions_players_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       minimal_width = 250,
       maximal_width = 250,
       minimal_height = 400,
       maximal_height = 400
     },
-    train_station_listbox_style =
+    train_station_list_box =
     {
-      type = "listbox_style",
+      type = "list_box_style",
       minimal_height = 130,
       maximal_height = 400
     },
-    floating_train_station_listbox_style =
+    floating_train_station_list_box =
     {
-      type = "listbox_style",
-      parent = "train_station_listbox_style",
+      type = "list_box_style",
+      parent = "train_station_list_box",
       maximal_height = 800,
       minimal_width = 300
     },
-    train_station_schedule_listbox_style =
+    train_station_schedule_list_box =
     {
-      type = "listbox_style",
-      parent = "train_station_listbox_style",
+      type = "list_box_style",
+      parent = "train_station_list_box",
       minimal_height = 50
     },
-    load_game_mods_listbox_style =
+    load_game_mods_list_box =
     {
-      type = "listbox_style",
-      parent = "listbox_style",
+      type = "list_box_style",
       font = "default",
       item_style =
       {
-        parent = "listbox_item_style",
+        type = "list_box_item_style",
         default =
         {
           font_color = {r=1, g=1, b=1},
@@ -2148,13 +1903,13 @@ data:extend(
       }
     },
 
-    schedule_in_train_view_list_box_style =
+    schedule_in_train_view_list_box =
     {
-      type = "listbox_style",
-      parent = "load_game_mods_listbox_style",
+      type = "list_box_style",
+      parent = "load_game_mods_list_box",
       item_style =
       {
-        parent = "listbox_item_style",
+        type = "list_box_item_style",
         default =
         {
           font_color = {r=1, g=1, b=1},
@@ -2170,12 +1925,21 @@ data:extend(
           font_color = { r=0.99, g=0.83, b=0.61},
           background_color = {r=0, g=0, b=0, a=0}
         }
-      }
+      },
+      width = 200,
+      height = 80
     },
 
-    target_station_in_schedule_in_train_view_listbox_item_style =
+    locomotive_minimap_button =
     {
-      type = "listbox_item_style",
+      type = "button_style",
+      parent = "button",
+      width = 200,
+      height = 150
+    },
+    target_station_in_schedule_in_train_view_list_box_item =
+    {
+      type = "list_box_item_style",
       default =
       {
         font_color = default_orange_color,
@@ -2193,9 +1957,9 @@ data:extend(
       }
     },
 
-    no_path_station_in_schedule_in_train_view_listbox_item_style =
+    no_path_station_in_schedule_in_train_view_list_box_item =
     {
-      type = "listbox_item_style",
+      type = "list_box_item_style",
       default =
       {
         font_color = {r=1, g=0.2, b=0.3},
@@ -2212,10 +1976,10 @@ data:extend(
         background_color = {r=0, g=0, b=0, a=0}
       }
     },
-    default_permission_group_listbox_item_style =
+    default_permission_group_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style",
+      type = "list_box_item_style",
+      parent = "list_box_item",
       default =
       {
         font_color = {r=0.55, g=0.55, b=1}
@@ -2230,15 +1994,15 @@ data:extend(
       }
     },
 
-    player_listbox_item_style =
+    player_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style"
+      type = "list_box_item_style",
+      parent = "list_box_item"
     },
-    steam_friend_listbox_item_style =
+    steam_friend_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "player_listbox_item_style",
+      type = "list_box_item_style",
+      parent = "player_list_box_item",
       default =
       {
         font_color = {r=0.28, g=0.58, b=0.7},
@@ -2256,10 +2020,10 @@ data:extend(
       }
     },
 
-    load_game_mod_invalid_listbox_item_style =
+    load_game_mod_invalid_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style",
+      type = "list_box_item_style",
+      parent = "list_box_item",
       default =
       {
         font_color = warning_red_color,
@@ -2276,10 +2040,10 @@ data:extend(
         background_color = {r=0, g=0, b=0, a=0}
       }
     },
-    load_game_mod_disabled_listbox_item_style =
+    load_game_mod_disabled_list_box_item =
     {
-      type = "listbox_item_style",
-      parent = "listbox_item_style",
+      type = "list_box_item_style",
+      parent = "list_box_item",
       default =
       {
         font_color = {r=0.5, g=0.5, b=0.5},
@@ -2296,102 +2060,359 @@ data:extend(
         background_color = {r=0, g=0, b=0, a=0}
       }
     },
-    flow_style =
+    flow =
     {
       type = "flow_style",
       horizontal_spacing = default_container_padding,
       vertical_spacing = default_container_padding,
-      max_on_row = 0,
-      resize_row_to_width = false,
-      resize_to_row_height = false
+      max_on_row = 0
     },
-    tracked_achievements_flow_style =
+
+    horizontal_flow =
+    {
+      type = "horizontal_flow_style",
+      horizontal_spacing = default_container_padding,
+    },
+
+    vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = default_container_padding,
+    },
+
+    tips_inner_flow =
     {
       type = "flow_style",
-      parent = "flow_style",
-      vertical_spacing = 0
-    },
-    achievements_flow_style =
-    {
-      type = "flow_style",
-      parent = "flow_style",
-      horizontal_spacing = 0,
-      vertical_spacing = 0,
-      top_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      left_padding = 0,
-    },
-    search_flow_style =
-    {
-      type = "flow_style",
-      parent = "flow_style",
-      top_padding = 5
-    },
-    description_flow_style =
-    {
-      type = "flow_style",
-      parent = "flow_style",
+      left_padding = 25,
+      right_padding = 25,
       vertical_spacing = 2
     },
-    mod_info_flow_style =
+    goal_holder_vertical_flow =
     {
-      type = "listbox_style",
-      minimal_width = 500
+      type = "vertical_flow_style",
+      vertical_spacing = 0
     },
-    mod_dependency_flow_style =
+    browse_games_right_part_vertical_flow =
     {
-      type = "listbox_style",
+      type = "vertical_flow_style",
+      width = 400
+    },
+    tracked_achievements_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = 0
+    },
+    achievements_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = 0
+    },
+    description_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = 2
+    },
+    mod_info_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      width = 500
+    },
+    mod_dependency_vertical_flow =
+    {
+      type = "vertical_flow_style",
       vertical_spacing = 1
     },
-    machine_right_part_flow_style =
+    machine_right_part_flow =
     {
       type = "flow_style",
       vertical_spacing = 5
     },
-    table_spacing_flow_style =
+    machine_right_part_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = 5
+    },
+    table_spacing_flow =
     {
       type = "flow_style",
       horizontal_spacing = 5,
       vertical_spacing = 5
     },
-    slot_table_spacing_flow_style =
+    table_spacing_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = 5
+    },
+    slot_table_spacing_flow =
     {
       type = "flow_style",
       horizontal_spacing = 2,
       vertical_spacing = 2
     },
-    tooltip_flow_style =
+    slot_table_spacing_vertical_flow =
     {
-      type = "flow_style",
-      parent = "flow_style",
-      max_on_row = 1,
-      resize_row_to_width = true
+      type = "vertical_flow_style",
+      vertical_spacing = 2
     },
-    blueprint_shelf_flow_style =
+    slot_table_spacing_horizontal_flow =
     {
-      type = "flow_style",
-      parent = "flow_style",
-      top_padding = 5,
-      right_padding = 5,
-      bottom_padding = 5,
-      left_padding = 5
+      type = "horizontal_flow_style",
+      horizontal_spacing = 2
     },
-    technology_effects_flow_style =
+    blueprint_shelf_flow =
     {
-      type = "flow_style",
-      parent = "flow_style",
-      horizontal_spacing = 2,
-      vertical_spacing = 2,
-      max_on_row = 12
+      type = "vertical_flow_style",
+      padding = 5
     },
-    table_style =
+    circuit_buttons_in_frame_title_flow =
+    {
+      type = "horizontal_flow_style",
+      top_padding = -default_frame_font_vertical_compensation
+    },
+    table =
     {
       type = "table_style",
       horizontal_spacing = 5,
       vertical_spacing = 5
     },
-    electric_network_sections_table_style =
+    table_with_selection =
+    {
+      type = "table_style",
+      hovered_row_color = {r=0.98, g=0.66, b=0.22, a=0.7},
+      selected_row_color = default_orange_color,
+      cell_padding = 1,
+      horizontal_spacing = 20,
+      top_padding = 5,
+      vertical_spacing = 5,
+      odd_row_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        corner_size = {0, 0},
+        position = {78, 18},
+        opacity = 0.7
+      },
+      column_ordering_ascending_button_style =
+      {
+        type = "button_style",
+        width = 22,
+        height = 12,
+        padding = 0,
+        default_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-ascending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        hovered_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-ascending-hovered.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        clicked_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-ascending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        disabled_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-ascending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        }
+      },
+
+      column_ordering_descending_button_style =
+      {
+        type = "button_style",
+        width = 22,
+        height = 12,
+        default_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-descending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        hovered_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-descending-hovered.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        clicked_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-descending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        disabled_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/indication-arrow-gui-descending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        }
+      },
+      inactive_column_ordering_ascending_button_style =
+      {
+        type = "button_style",
+        width = 22,
+        height = 12,
+        default_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-ascending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        hovered_graphical_set =
+        {
+          type = "monolith",
+          onolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-ascending-hovered.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        clicked_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-ascending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        disabled_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-ascending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        }
+      },
+      inactive_column_ordering_descending_button_style =
+      {
+        type = "button_style",
+        width = 22,
+        height = 12,
+        default_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-descending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        hovered_graphical_set =
+        {
+          type = "monolith",
+          onolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-descending-hovered.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        clicked_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-descending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        },
+        disabled_graphical_set =
+        {
+          type = "monolith",
+          monolith_border = 0,
+          monolith_image =
+          {
+            filename = "__core__/graphics/arrows/inactive-arrow-gui-descending.png",
+            priority = "extra-high-no-scale",
+            width = 44,
+            height = 24
+          }
+        }
+      }
+    },
+    electric_network_sections_table =
     {
       type = "table_style",
       cell_padding = 5,
@@ -2407,138 +2428,266 @@ data:extend(
         position = {8, 0}
       }
     },
-    slot_table_style=
+    slot_table=
     {
       type = "table_style",
       horizontal_spacing = 2,
       vertical_spacing = 2
     },
-    control_settings_table_style =
+    control_settings_table =
     {
       type = "table_style",
       horizontal_spacing = 5,
       top_padding = 20,
       vertical_spacing = 7
     },
-    control_settings_mod_table_style =
+    control_settings_mod_table =
     {
       type = "table_style",
-      parent = "control_settings_table_style",
+      parent = "control_settings_table",
       top_padding = 10,
       bottom_padding = 10
     },
-    browse_games_table_style =
+    browse_games_table =
     {
       type = "table_style",
+      parent = "table_with_selection",
       -- default orange with alfa
       hovered_row_color = {r=0.98, g=0.66, b=0.22, a=0.7},
       selected_row_color = default_orange_color,
       cell_padding = 1,
       horizontal_spacing = 20,
       top_padding = 5,
+      left_padding = 10,
       vertical_spacing = 5,
-      odd_row_graphical_set =
+      column_widths =
       {
-        type = "composition",
-        filename = "__core__/graphics/gui.png",
-        priority = "extra-high-no-scale",
-        corner_size = {0, 0},
-        position = {78, 18},
-        opacity = 0.7
-      },
-      column_ordering_ascending_indicator =
-      {
-        type = "monolith",
-        top_monolith_border = 0,
-        right_monolith_border = 0,
-        bottom_monolith_border = 0,
-        left_monolith_border = 0,
-        monolith_image =
-        {
-          filename = "__core__/graphics/arrows/indication-arrow-gui-ascending.png",
-          priority = "extra-high-no-scale",
-          width = 44,
-          height = 24,
-          scale = 0.5
-        }
-      },
-      column_ordering_descending_indicator =
-      {
-        type = "monolith",
-        top_monolith_border = 0,
-        right_monolith_border = 0,
-        bottom_monolith_border = 0,
-        left_monolith_border = 0,
-        monolith_image =
-        {
-          filename = "__core__/graphics/arrows/indication-arrow-gui-descending.png",
-          priority = "extra-high-no-scale",
-          width = 44,
-          height = 24,
-          scale = 0.5
+        { -- favorite
+          column = 1,
+          width = 20
+        },
+        { -- game name
+          column = 2,
+          width = 310
+        },
+        { -- players
+          column = 3,
+          width = 100
+        },
+        { -- playtime
+          column = 4,
+          width = 100
         }
       }
     },
-    browse_mods_table_style =
+    browse_games_on_lan_table =
     {
       type = "table_style",
-      -- default orange with alfa
-      hovered_row_color = {r=0.98, g=0.66, b=0.22, a=0.7},
-      selected_row_color = default_orange_color,
-      cell_padding = 1,
-      horizontal_spacing = 20,
-      top_padding = 5,
-      vertical_spacing = 5,
-      odd_row_graphical_set =
+      parent = "browse_games_table",
+      column_widths =
       {
-        type = "composition",
-        filename = "__core__/graphics/gui.png",
-        priority = "extra-high-no-scale",
-        corner_size = {0, 0},
-        position = {78, 18},
-        opacity = 0.7
-      },
-      column_ordering_ascending_indicator =
-      {
-        type = "monolith",
-        top_monolith_border = 0,
-        right_monolith_border = 0,
-        bottom_monolith_border = 0,
-        left_monolith_border = 0,
-        monolith_image =
-        {
-          filename = "__core__/graphics/arrows/indication-arrow-gui-ascending.png",
-          priority = "extra-high-no-scale",
-          width = 44,
-          height = 24,
-          scale = 0.5
-        }
-      },
-      column_ordering_descending_indicator =
-      {
-        type = "monolith",
-        top_monolith_border = 0,
-        right_monolith_border = 0,
-        bottom_monolith_border = 0,
-        left_monolith_border = 0,
-        monolith_image =
-        {
-          filename = "__core__/graphics/arrows/indication-arrow-gui-descending.png",
-          priority = "extra-high-no-scale",
-          width = 44,
-          height = 24,
-          scale = 0.5
+        { -- game name
+          column = 1,
+          width = 310
+        },
+        { -- players
+          column = 2,
+          width = 100
+        },
+        { -- playtime
+          column = 3,
+          width = 100
         }
       }
+    },
+    browse_games_gui_favorites_header_image =
+    {
+      type = "image_style",
+      width = 16,
+      height = 16
+    },
+    browse_games_gui_toggle_favorite_on_button =
+    {
+      type = "button_style",
+      width = 16,
+      height = 16,
+      default_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite-hovered.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      },
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite-hovered.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      },
+      disabled_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      }
+    },
 
+    browse_games_gui_toggle_favorite_off_button =
+    {
+      type = "button_style",
+      width = 16,
+      height = 16,
+      default_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite-grey.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite-grey-hovered.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      },
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite-grey-hovered.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      },
+      disabled_graphical_set =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/favourite-grey.png",
+          priority = "extra-high-no-scale",
+          width = 64,
+          height = 64
+        }
+      }
     },
-    textfield_style =
+
+    browse_mods_table =
+    {
+      type = "table_style",
+      parent = "table_with_selection",
+      -- default orange with alfa
+      hovered_row_color = {r=0.98, g=0.66, b=0.22, a=0.7},
+      selected_row_color = default_orange_color,
+      cell_padding = 1,
+      horizontal_spacing = 20,
+      top_padding = 5,
+      vertical_spacing = 5,
+      odd_row_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        corner_size = {0, 0},
+        position = {78, 18},
+        opacity = 0.7
+      },
+      column_ordering_ascending_indicator =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/arrows/indication-arrow-gui-ascending.png",
+          priority = "extra-high-no-scale",
+          width = 44,
+          height = 24,
+          scale = 0.5
+        }
+      },
+      column_ordering_descending_indicator =
+      {
+        type = "monolith",
+        monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/arrows/indication-arrow-gui-descending.png",
+          priority = "extra-high-no-scale",
+          width = 44,
+          height = 24,
+          scale = 0.5
+        }
+      },
+      column_widths =
+      {
+        { -- mod name
+          column = 1,
+          width = 300
+        },
+        { -- version
+          column = 2,
+          minimal_width = 50
+        },
+        { -- downloads
+          column = 3,
+          minimal_width = 95
+        },
+        { -- last updated
+          column = 4,
+          minimal_width = 110
+        }
+      }
+    },
+    textfield =
     {
       type = "textfield_style",
       left_padding = 3,
       right_padding = 2,
-      minimal_width = 150,
-      maximal_width = 150,
+      width = 150,
       font = "default",
       font_color = {},
       graphical_set =
@@ -2551,7 +2700,13 @@ data:extend(
       },
       selection_background_color= {r=0.66, g=0.7, b=0.83}
     },
-    search_textfield_style =
+    info_box_textbox =
+    {
+      type = "textbox_style",
+      parent = "notice_textbox",
+      width = 300
+    },
+    search_textfield =
     {
       type = "textfield_style",
       maximal_height = 26,
@@ -2564,7 +2719,7 @@ data:extend(
         position = {16, 0}
       },
     },
-    console_input_textfield_style =
+    console_input_textfield =
     {
       type = "textfield_style",
       font = "default-game",
@@ -2587,10 +2742,10 @@ data:extend(
         }
       }
     },
-    invalid_value_textfield_style =
+    invalid_value_textfield =
     {
       type = "textfield_style",
-      parent = "textfield_style",
+      parent = "textfield",
       graphical_set =
       {
         type = "composition",
@@ -2600,7 +2755,7 @@ data:extend(
         position = {16, 16},
       },
     },
-    textbox_style =
+    textbox =
     {
       type = "textbox_style",
       font = "default",
@@ -2615,10 +2770,10 @@ data:extend(
       },
       selection_background_color= {r=0.66, g=0.7, b=0.83}
     },
-    notice_textbox_style=
+    notice_textbox =
     {
       type = "textbox_style",
-      parent = "textbox_style",
+      parent = "textbox",
       graphical_set =
       {
         type = "none",
@@ -2628,18 +2783,34 @@ data:extend(
       font = "default",
       font_color = {r=1, g=1, b=1},
       selection_background_color = {r=0.66, g=0.7, b=0.83},
-
-      top_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      left_padding = 0,
+      padding = 0
     },
-    number_textfield_style =
+    mod_startup_settings_mismatch_notice_box =
+    {
+      type = "textbox_style",
+      parent = "notice_textbox",
+      width = 400
+    },
+    changelog_textbox =
+    {
+      type = "textbox_style",
+      parent = "textbox",
+      minimal_width = 850,
+      height = 500
+    },
+    reader_textbox =
+    {
+      type = "textbox_style",
+      parent = "textbox",
+      minimal_width = 600,
+      height = 500
+    },
+    number_textfield =
     {
       type = "textfield_style",
       minimal_width = 50
     },
-    frame_style =
+    frame =
     {
       type = "frame_style",
       font = "default-frame",
@@ -2651,7 +2822,7 @@ data:extend(
       title_bottom_padding = 15,
       title_right_padding = 0,
       -- padding of the content area of the frame
-      top_padding  = default_container_padding - 6,
+      top_padding  = default_container_padding + default_frame_font_vertical_compensation,
       right_padding = default_container_padding,
       bottom_padding = default_container_padding,
       left_padding = default_container_padding,
@@ -2664,40 +2835,55 @@ data:extend(
         corner_size = {3, 3},
         position = {8, 0}
       },
-      flow_style=
+      flow_style =
       {
+        type = "flow_style",
         horizontal_spacing = default_container_padding,
         vertical_spacing = default_container_padding
+      },
+
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        horizontal_spacing = default_container_padding,
+      },
+
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = default_container_padding
+      },
+
+      header_flow_style =
+      {
+        type = "horizontal_flow_style",
+        top_padding = 5
       }
     },
     -- used for frames that contains exclusively other inner frames
-    outer_frame_style =
+    outer_frame =
     {
       type = "frame_style",
-      top_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      left_padding = 0,
+      padding = 0,
       title_bottom_padding = 0,
       graphical_set = { type = "none" },
-      flow_style=
+      horizontal_flow_style =
       {
+        type = "horizontal_flow_style",
         horizontal_spacing = 0,
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
         vertical_spacing = 0,
-        resize_row_to_width = true,
-        resize_to_row_height = true
       }
     },
-    drop_target_button_style =
+    drop_target_button =
     {
       type = "button_style",
       font = "default",
       default_font_color={r=1, g=1, b=1},
-      align = "center",
-      top_padding = 5,
-      right_padding = 5,
-      bottom_padding = 5,
-      left_padding = 5,
+      padding = 5,
       default_graphical_set =
       {
         type = "tiled_composition",
@@ -2759,40 +2945,35 @@ data:extend(
       },
       pie_progress_color = {r=1, g=1, b=1}
     },
-    inner_frame_in_outer_frame_style =
+    inner_frame_in_outer_frame =
     {
       title_bottom_padding = 10,
       type = "frame_style",
     },
-    machine_frame_style =
+    machine_frame =
     {
       type = "frame_style",
-      parent = "inner_frame_in_outer_frame_style",
-      flow_style =
+      parent = "inner_frame_in_outer_frame",
+      horizontal_flow_style =
       {
+        type = "horizontal_flow_style",
         horizontal_spacing = 5
       }
     },
-    inner_frame_style =
+    inner_frame =
     {
       type = "frame_style",
-      top_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      left_padding = 0,
+      padding = 0,
       title_bottom_padding = 5,
       graphical_set = { type = "none" }
     },
-    tooltip_frame_style =
+    tooltip_frame =
     {
       type = "frame_style",
       graphical_set =
       {
         type = "monolith",
-        top_monolith_border = 0,
-        right_monolith_border = 0,
-        bottom_monolith_border = 0,
-        left_monolith_border = 0,
+        monolith_border = 0,
         monolith_image =
         {
           filename = "__core__/graphics/gui.png",
@@ -2803,29 +2984,33 @@ data:extend(
           x = 11,
           y = 3
         }
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 2
       }
     },
-    naked_frame_style =
+    tooltip_generated_from_description_frame =
     {
       type = "frame_style",
-      parent = "inner_frame_style",
+      parent = "tooltip_frame",
+      maximal_width = 350
+    },
+    naked_frame =
+    {
+      type = "frame_style",
+      parent = "inner_frame",
       title_bottom_padding = 5,
     },
-    technology_preview_frame_style =
+    technology_preview_frame =
     {
       type = "frame_style",
-      parent = "inner_frame_in_outer_frame_style",
-      flow_style =
-      {
-        max_on_row = 1,
-        minimal_width = 520,
-        resize_row_to_width = true
-      }
+      parent = "inner_frame_in_outer_frame",
     },
-    scenario_message_dialog_style =
+    scenario_message_dialog =
     {
       type = "frame_style",
-      top_padding  = default_container_padding,
       graphical_set =
       {
         type = "composition",
@@ -2839,129 +3024,151 @@ data:extend(
       bottom_padding = 10,
       left_padding = 5
     },
-    goal_frame_style =
+    goal_frame =
     {
       type = "frame_style",
-      parent = "frame_style"
+      parent = "frame",
+      top_padding = 2,
+      left_padding = 2
     },
-    unlocked_tutorial_card_frame_style =
+    image_frame =
     {
       type = "frame_style",
-      parent = "locked_achievement_frame_style",
+      parent = "frame",
+      graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        priority = "extra-high-no-scale",
+        load_in_minimal_mode = true,
+        corner_size = {3, 3},
+        position = {0, 40}
+      },
+      padding = 0
+    },
+    tips_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      left_padding = 30,
+      right_padding = 30,
+      width = 704,
+      minimal_height = 576,
+      scalable = false,
+    },
+    unlocked_tutorial_card_frame =
+    {
+      type = "frame_style",
+      parent = "locked_achievement_in_sidebar_frame",
       bottom_padding = 4,
     },
-    completed_tutorial_card_frame_style =
+    completed_tutorial_card_frame =
     {
       type = "frame_style",
-      parent = "unlocked_achievement_frame_style"
+      parent = "unlocked_achievement_in_sidebar_frame"
     },
-    locked_tutorial_card_frame_style =
+    locked_tutorial_card_frame =
     {
       type = "frame_style",
-      parent = "failed_achievement_frame_style"
+      parent = "failed_achievement_in_sidebar_frame"
     },
-    menu_frame_style =
+    menu_frame =
     {
       type = "frame_style",
-      flow_style=
+      vertical_flow_style =
       {
+        type = "vertical_flow_style",
         vertical_spacing = 0
       }
     },
-    frame_in_right_container_style =
+    frame_in_right_container =
     {
       type = "frame_style",
     },
-    minimap_frame_style =
+    minimap_frame =
     {
       type = "frame_style",
-      parent = "frame_in_right_container_style",
+      parent = "frame_in_right_container",
       minimal_height = 256
     },
-    quick_bar_frame_style =
+    quick_bar_frame =
     {
       type = "frame_style",
       top_padding = default_container_padding
     },
-    tool_bar_frame_style =
+    tool_bar_frame =
     {
       type = "frame_style",
       top_padding = default_container_padding
     },
-    right_container_frame_style =
+    right_container_frame =
     {
       type = "frame_style",
-      parent = "outer_frame_style",
-      flow_style =
+      parent = "outer_frame",
+      vertical_flow_style =
       {
+        type = "vertical_flow_style",
         minimum_width = 10,
-        horizontal_spacing = 0,
         vertical_spacing = 0,
-        max_on_row = 1,
-        resize_row_to_width = true
       }
     },
-    right_bottom_container_frame_style =
+    right_bottom_container_frame =
     {
       type = "frame_style",
-      parent = "outer_frame_style",
-      flow_style =
+      parent = "outer_frame",
+      vertical_flow_style =
       {
-        horizontal_spacing = 0,
-        vertical_spacing = 0,
-        resize_row_to_width = true
+        type = "vertical_flow_style",
+        vertical_spacing = 0
       }
     },
-    captionless_frame_style =
+    captionless_frame =
     {
       type = "frame_style",
-      parent = "frame_style",
-      top_padding = 3,
-      left_padding = 3,
-      right_padding = 3,
-      bottom_padding = 3,
-      flow_style =
+      parent = "frame",
+      padding = 3
+    },
+    side_menu_frame =
+    {
+      type = "frame_style",
+      parent = "captionless_frame",
+      right_padding = default_container_padding,
+      left_padding = default_container_padding,
+      horizontal_flow_style =
       {
-        horizontal_spacing = 2,
-        vertical_spacing = 2,
-        max_on_row = 1,
-        resize_row_to_width = true
+        type = "horizontal_flow_style",
+        horizontal_spacing = 2
       }
     },
-    side_menu_frame_style =
+    map_view_options_frame =
     {
       type = "frame_style",
-      parent = "captionless_frame_style",
-      flow_style =
+      parent = "captionless_frame",
+      right_padding = default_container_padding,
+      left_padding = default_container_padding,
+      horizontal_flow_style =
       {
-        horizontal_spacing = 2,
-        vertical_spacing = 2,
-        max_on_row = 1,
-        resize_row_to_width = true
+        type = "horizontal_flow_style",
+        horizontal_spacing = 2
       }
     },
-    map_view_options_frame_style =
+    locked_achievement_in_sidebar_frame =
     {
       type = "frame_style",
-      parent = "captionless_frame_style",
-      flow_style =
-      {
-        horizontal_spacing = 2,
-        vertical_spacing = 2,
-        max_on_row = 1,
-        resize_row_to_width = true
-      }
-    },
-    locked_achievement_frame_style =
-    {
-      type = "frame_style",
-      parent = "frame_style",
+      parent = "frame",
       top_padding = default_container_padding
     },
-    unlocked_achievement_frame_style =
+    locked_achievement_frame =
     {
       type = "frame_style",
-      parent = "frame_style",
+      parent = "locked_achievement_in_sidebar_frame",
+      width = 400,
+    },
+
+    unlocked_achievement_in_sidebar_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
       top_padding = default_container_padding,
       graphical_set =
       {
@@ -2972,10 +3179,17 @@ data:extend(
         position = {0, 24}
       }
     },
-    failed_achievement_frame_style =
+    unlocked_achievement_frame =
     {
       type = "frame_style",
-      parent = "frame_style",
+      parent = "unlocked_achievement_in_sidebar_frame",
+      width = 400,
+    },
+
+    failed_achievement_in_sidebar_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
       top_padding = default_container_padding,
       graphical_set =
       {
@@ -2986,25 +3200,29 @@ data:extend(
         position = {0, 32}
       }
     },
-    achievement_notification_frame_style =
+    failed_achievement_frame =
     {
       type = "frame_style",
-      parent = "frame_style",
-      top_padding = 0,
-      left_padding = 0,
-      right_padding = 0,
-      bottom_padding = 0,
-      minimal_width = 380,
+      parent = "failed_achievement_in_sidebar_frame",
+      width = 400
+    },
+    achievement_notification_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      padding = 0,
+      width = 400,
       graphical_set = { type = "none" }
     },
-    progressbar_style =
+    progressbar =
     {
       type = "progressbar_style",
-      progressbar_type = "smooth",
-      smooth_size = 200,
-      smooth_color = {g=1},
-      other_smooth_colors = {},
-      smooth_bar =
+      minimal_width = 10,
+      natural_width = 200,
+      height = 7,
+      color = {g=1},
+      other_colors = {},
+      bar =
       {
         filename = "__core__/graphics/gui.png",
         priority = "extra-high-no-scale",
@@ -3012,7 +3230,7 @@ data:extend(
         height = 5,
         x = 221,
       },
-      smooth_bar_background =
+      bar_background =
       {
         filename = "__core__/graphics/gui.png",
         priority = "extra-high-no-scale",
@@ -3020,28 +3238,10 @@ data:extend(
         height = 7,
         x = 222,
       },
-      -- diode specifications are not used when type is smooth, but
-      -- are defined here, so the derived (or this style) can just
-      -- switch to diode style without specifying them
-      diode_count = 10,
-      diode_full =
-      {
-        filename = "__core__/graphics/diode-green.png",
-        priority = "extra-high-no-scale",
-        width = 20,
-        height = 20,
-      },
-      diode_empty =
-      {
-        filename = "__core__/graphics/diode-grey.png",
-        priority = "extra-high-no-scale",
-        width = 20,
-        height = 20,
-      },
       font = "default",
       font_color = {r=1, g=1, b=1}
     },
-    activity_bar_style =
+    activity_bar =
     {
       type = "activity_bar_style",
       speed = 0.01,
@@ -3065,28 +3265,37 @@ data:extend(
         x = 222,
       },
     },
-    multiplayer_activity_bar_style =
+    multiplayer_activity_bar =
     {
       type = "activity_bar_style",
       -- exact size is calculated dynamically
     },
-    production_progressbar_style =
+    info_box_activity_bar =
     {
-      type = "progressbar_style",
-      smooth_size = 10 -- minimum
+      type = "activity_bar_style",
+      width = 300
     },
-    burning_progressbar_style =
+    info_box_progressbar =
     {
       type = "progressbar_style",
-      smooth_color = {r=1},
-      smooth_size = 10 -- minimum
+      width = 300
     },
-    health_progressbar_style =
+    production_progressbar =
+    {
+      type = "progressbar_style"
+    },
+    burning_progressbar =
     {
       type = "progressbar_style",
-      smooth_size = 500,
-      smooth_color = {g=1},
-      smooth_bar =
+      color = {r=1}
+    },
+    health_progressbar =
+    {
+      type = "progressbar_style",
+      horizontally_stretchable = "on",
+      height = 13,
+      color = {g=1},
+      bar =
       {
         filename = "__core__/graphics/gui.png",
         priority = "extra-high-no-scale",
@@ -3094,7 +3303,7 @@ data:extend(
         height = 11,
         x = 223,
       },
-      smooth_bar_background =
+      bar_background =
       {
         filename = "__core__/graphics/gui.png",
         priority = "extra-high-no-scale",
@@ -3103,14 +3312,14 @@ data:extend(
         x = 224
       }
     },
-    achievement_progressbar_style =
+    achievement_progressbar =
     {
       type = "progressbar_style",
-      progressbar_type = "smooth",
-      smooth_size = 300,
-      smooth_color = color "fff",
-      other_smooth_colors = {},
-      smooth_bar_background =
+      minimal_width = 300,
+      height = 7,
+      color = color "fff",
+      other_colors = {},
+      bar_background =
       {
         filename = "__core__/graphics/scrollbar-mini.png",
         priority = "extra-high-no-scale",
@@ -3119,7 +3328,7 @@ data:extend(
         x = 1,
         y = 0,
       },
-      smooth_bar =
+      bar =
       {
         filename = "__core__/graphics/scrollbar-mini.png",
         priority = "extra-high-no-scale",
@@ -3131,13 +3340,12 @@ data:extend(
       font = "default-large-semibold",
       font_color = achievement_green_color
     },
-    achievement_card_progressbar_style =
+    achievement_card_progressbar =
     {
       type = "progressbar_style",
-      parent = "achievement_progressbar_style",
-      smooth_size = 252,
-      maximal_width = 252,
-      smooth_bar =
+      parent = "achievement_progressbar",
+      width = 252,
+      bar =
       {
         filename = "__core__/graphics/scrollbar-mini.png",
         priority = "extra-high-no-scale",
@@ -3149,43 +3357,44 @@ data:extend(
       font = "default-semibold",
       font_color = achievement_tan_color,
     },
-    achievement_pinned_card_progressbar_style =
+    achievement_pinned_card_progressbar =
     {
       type = "progressbar_style",
-      parent = "achievement_card_progressbar_style",
+      parent = "achievement_card_progressbar",
       font = "default-small-semibold",
-      smooth_size = 100,
+      minimal_width = 100,
     },
-    vehicle_health_progressbar_style =
+    vehicle_health_progressbar =
     {
       type = "progressbar_style",
-      parent = "health_progressbar_style",
-      smooth_color = {r=0.8, g=0.8, b=0.8}
+      parent = "health_progressbar",
+      color = {r=0.8, g=0.8, b=0.8}
     },
-    mining_progressbar_style =
+    mining_progressbar =
     {
       type = "progressbar_style",
-      parent = "health_progressbar_style",
-      smooth_color = default_orange_color
+      parent = "health_progressbar",
+      color = default_orange_color
     },
-    shield_progressbar_style =
+    shield_progressbar =
     {
       type = "progressbar_style",
-      parent = "health_progressbar_style",
-      smooth_color = {r = 0.8, g = 0.2, b = 0.8}
+      parent = "health_progressbar",
+      color = {r = 0.8, g = 0.2, b = 0.8}
     },
-    bonus_progressbar_style =
+    bonus_progressbar =
     {
       type = "progressbar_style",
-      parent = "production_progressbar_style",
-      smooth_color = {r = 0.8, b = 0.8}
+      parent = "production_progressbar",
+      color = {r = 0.8, b = 0.8}
     },
-    battery_progressbar_style =
+    battery_progressbar =
     {
       type = "progressbar_style",
-      smooth_size = 500,
-      smooth_color = {g=1},
-      smooth_bar =
+      width = 13,
+      height = 33,
+      color = {g=1},
+      bar =
       {
         filename = "__core__/graphics/gui.png",
         priority = "extra-high-no-scale",
@@ -3193,7 +3402,7 @@ data:extend(
         height = 11,
         x = 223,
       },
-      other_smooth_colors =
+      other_colors =
       {
         {
           less_than = 0.33,
@@ -3209,16 +3418,14 @@ data:extend(
         }
       }
     },
-    statistics_progressbar_style =
+    statistics_progressbar =
     {
-      type = "progressbar_style",
-      parent = "progressbar_style"
+      type = "progressbar_style"
     },
-    electric_satisfaction_progressbar_style =
+    electric_satisfaction_progressbar =
     {
       type = "progressbar_style",
-      parent = "progressbar_style",
-      other_smooth_colors =
+      other_colors =
       {
        {
           less_than = 0.5,
@@ -3230,14 +3437,14 @@ data:extend(
         }
       }
     },
-    electric_satisfaction_in_description_progressbar_style =
+    electric_satisfaction_in_description_progressbar =
     {
       type = "progressbar_style",
-      parent = "electric_satisfaction_progressbar_style",
-      top_padding = 4,
-      smooth_size = 10, -- minimum
+      parent = "electric_satisfaction_progressbar",
+      top_padding = 2, -- to compensate the text not looking centered
+      height = 9
     },
-    checkbox_style =
+    checkbox =
     {
       type = "checkbox_style",
       font = "default",
@@ -3279,7 +3486,7 @@ data:extend(
         y = 17
       }
     },
-    radiobutton_style =
+    radiobutton =
     {
       type = "radiobutton_style",
       font = "default",
@@ -3321,27 +3528,29 @@ data:extend(
         y = 34
       }
     },
-    scrollbar_style =
+    scrollbar =
     {
       type = "scrollbar_style",
-      background_color = {r=0.5, g=0.5, b=0.5}
+      background_color = {r=0.5, g=0.5, b=0.5},
+      thumb_button_style =
+      {
+        type = "button_style",
+        left_click_sound = {}
+      }
     },
-    tab_style =
+    tab =
     {
       type = "tab_style",
       font = "default-bold",
       border_color = {r = 0.6, g = 0.6, b = 0.6},
       default_font_color = {r = 1, g = 1, b = 1},
       selected_font_color = default_orange_color,
-      top_padding = 8,
-      right_padding = 8,
-      bottom_padding = 8,
-      left_padding = 8
+      padding = 8
     },
-    graph_style =
+    graph =
     {
       type = "graph_style",
-      width = 550,
+      natural_width = 550, -- it resizes to 550 by default, but it can be squashed to be smaller
       height = 200,
       background_color = {r=0.1, g=0.1, b=0.1, a=0.9},
       line_colors=
@@ -3370,10 +3579,10 @@ data:extend(
         {r=0.72, g=0.604, b=0.553}
       }
     },
-    slider_style=
+    slider =
     {
       type = "slider_style",
-      width = 300,
+      minimal_width = 200,
       height = 15,
       left_side_graphical_set =
       {
@@ -3391,14 +3600,12 @@ data:extend(
         corner_size = {3, 3},
         position = {16, 0}
       },
-      button_style=
+      button_style =
       {
+        type = "button_style",
         width = 15,
         height = 15,
-        top_padding = 0,
-        right_padding = 0,
-        bottom_padding = 0,
-        left_padding = 0,
+        padding = 0,
         default_graphical_set =
         {
           type = "monolith",
@@ -3434,30 +3641,90 @@ data:extend(
             height = 15,
             x = 79
           }
-        }
+        },
+        left_click_sound = {}
       }
     },
-    scroll_pane_style =
+    scroll_pane =
     {
       type = "scroll_pane_style",
       vertical_scroll_bar_spacing = default_container_padding,
       horizontal_scroll_bar_spacing = default_container_padding,
-      flow_style =
-      {
-        parent = "flow_style"
-      }
+      vertically_squashable = true
     },
-    browse_games_scroll_pane_style =
+    browse_games_scroll_pane =
     {
       type = "scroll_pane_style",
-      parent = "scroll_pane_style",
       vertical_scroll_bar_spacing = 5
     },
-    browse_mods_scroll_pane_style =
+    browse_mods_scroll_pane =
     {
       type = "scroll_pane_style",
-      parent = "scroll_pane_style",
       vertical_scroll_bar_spacing = 5
+    },
+    machine_ingredients_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      vertically_squashable = false,
+      maximal_height = 100,
+    },
+    machine_outputs_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      vertically_squashable = false,
+      maximal_height = 100,
+    },
+    module_inventory_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      vertically_squashable = false,
+      maximal_height = 100
+    },
+    trash_slots_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      vertically_squashable = false,
+      maximal_height = 100
+    },
+    logistic_gui_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      height = 400,
+      width = 570
+    },
+    camera =
+    {
+      type = "camera_style",
+    },
+    image =
+    {
+      type = "image_style",
+    },
+    tabbed_pane =
+    {
+      type = "tabbed_pane_style"
+    },
+    empty_widget =
+    {
+      type = "empty_widget_style"
+    },
+    entity_button =
+    {
+      type = "empty_widget_style",
+      width = 100,
+      height = 100
+    },
+    fluid_wagon_entity_button =
+    {
+      type = "empty_widget_style",
+      width = 150,
+      height = 150
+    },
+    battery_widget =
+    {
+      type = "empty_widget_style",
+      width = 21,
+      height = 54
     }
   }
 }

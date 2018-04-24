@@ -182,6 +182,19 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "artillery-shell",
+    enabled = false,
+    energy_required = 15,
+    ingredients =
+    {
+      {"explosive-cannon-shell", 4},
+      {"radar", 1},
+      {"explosives", 8},
+    },
+    result = "artillery-shell"
+  },
+  {
+    type = "recipe",
     name = "flamethrower-ammo",
     category = "chemistry",
     enabled = false,

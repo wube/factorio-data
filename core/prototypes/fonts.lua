@@ -26,7 +26,7 @@ data:extend(
   },
   {
     type = "font",
-    name = "default-listbox",
+    name = "default-list_box",
     from = "default-bold",
     size = 16
   },

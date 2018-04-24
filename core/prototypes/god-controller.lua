@@ -3,7 +3,7 @@ data:extend(
   {
     type = "god-controller",
     name = "default",
-    
+
     crafting_categories = {"crafting"},
     mining_categories = {"basic-solid"},
     inventory_size = 60,

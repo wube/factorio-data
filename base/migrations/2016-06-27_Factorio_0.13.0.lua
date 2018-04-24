@@ -5,7 +5,7 @@ end
 for index, force in pairs(game.forces) do
   local technologies = force.technologies;
   local recipes = force.recipes;
-  
+
   if technologies["inserter-capacity-bonus-4"].researched then
     if force.inserter_stack_size_bonus <= 4 then
       force.inserter_stack_size_bonus = 1
@@ -27,6 +27,6 @@ for index, force in pairs(game.forces) do
     end
     force.stack_inserter_capacity_bonus = 2
   end
-  
+
   recipes["stack-inserter"].reload()
 end

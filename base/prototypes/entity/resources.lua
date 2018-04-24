@@ -5,6 +5,7 @@ data:extend(
     type = "resource",
     name = "crude-oil",
     icon = "__base__/graphics/icons/crude-oil.png",
+    icon_size = 32,
     flags = {"placeable-neutral"},
     category = "basic-fluid",
     order="a-b-a",
@@ -14,6 +15,8 @@ data:extend(
     normal = 300000,
     infinite_depletion_amount = 10,
     resource_patch_search_radius = 12,
+    tree_removal_probability = 0.7,
+    tree_removal_max_distance = 32 * 32,
     minable =
     {
       hardness = 1,
@@ -33,18 +36,19 @@ data:extend(
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
     autoplace =
     {
+      order = "b",
       control = "crude-oil",
       sharpness = 0.99,
       max_probability = 0.02,
       richness_base = 240000,
       richness_multiplier = 300000,
-      richness_multiplier_distance_bonus = 3000,
-      coverage = 0.02, -- Cover on average 2% of surface area.
+      richness_multiplier_distance_bonus = 1500,
+      coverage = 0.001 / 3,
       peaks =
       {
         {
           noise_layer = "crude-oil",
-          noise_octaves_difference = -1,
+          noise_octaves_difference = -0.5,
           noise_persistence = 0.4,
         }
       }
@@ -69,8 +73,11 @@ data:extend(
     type = "resource",
     name = "uranium-ore",
     icon = "__base__/graphics/icons/uranium-ore.png",
+    icon_size = 32,
     flags = {"placeable-neutral"},
     order="a-b-e",
+    tree_removal_probability = 0.7,
+    tree_removal_max_distance = 32 * 32,
     minable =
     {
       hardness = 0.9,
@@ -84,24 +91,33 @@ data:extend(
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
     autoplace =
     {
+      order = "c",
       control = "uranium-ore",
       sharpness = 1,
       richness_multiplier = 3000,
-      richness_multiplier_distance_bonus = 40,
+      richness_multiplier_distance_bonus = 30,
       richness_base = 500,
-      coverage = 0.01,
+      coverage = 0.0003 / 2,
       peaks =
       {
         {
           noise_layer = "uranium-ore",
-          noise_octaves_difference = -1.5,
-          noise_persistence = 0.3,
+          noise_octaves_difference = -0.85,
+          noise_persistence = 0.4,
         },
+        --no uranium in the starting area
+        {
+          influence = -1.0,
+          starting_area_weight_optimal = 1,
+          starting_area_weight_range = 0,
+          starting_area_weight_max_range = 2,
+        },
+
       },
-      starting_area_size = 600 * 0.005,
-      starting_area_amount = 600
+      --starting_area_size = 600 * 0.005,
+      --starting_area_amount = 600
     },
-    stage_counts = {1000, 600, 400, 200, 100, 50, 20, 1},
+    stage_counts = {10000, 5200, 2600, 1800, 1200, 800, 400, 80},
     stages =
     {
       sheet =

@@ -1,22 +1,6 @@
-
-module(..., package.seeall)
-
-function distance(position1, position2)
-  return ((position1.x - position2.x)^2 + (position1.y - position2.y)^2)^0.5
-end
-
-function findfirstentity(boundingbox, name)
-  for _, entity in ipairs(game.find_entities(boundingbox)) do
-    if entity.name == name then
-      return entity
-    end
-  end
-  return nil
-end
-
-function positiontostr(pos)
-  return string.format("[%g, %g]", pos.x, pos.y)
-end
+util = {
+  table = {}
+}
 
 function table.deepcopy(object)
     local lookup_table = {}
@@ -50,22 +34,58 @@ function table.compare( tbl1, tbl2 )
     for k, v in pairs( tbl2 ) do
         if type(v) == "table" and type(tbl1[k]) == "table" then
             if not table.compare( v, tbl1[k] ) then return false end
-        else 
+        else
             if v ~= tbl1[k] then return false end
         end
     end
     return true
 end
 
-function formattime(ticks)
+util.table.deepcopy = table.deepcopy
+util.table.compare = table.compare
+
+function util.distance(position1, position2)
+  return ((position1.x - position2.x)^2 + (position1.y - position2.y)^2)^0.5
+end
+
+function util.positiontostr(pos)
+  return string.format("[%g, %g]", pos.x, pos.y)
+end
+
+function util.formattime(ticks)
   local seconds = ticks / 60
   local minutes = math.floor((seconds)/60)
   local seconds = math.floor(seconds - 60*minutes)
   return string.format("%d:%02d", minutes, seconds)
 end
 
+function util.color(hex)  -- supports 'rrggbb', 'rgb', 'rrggbbaa', 'rgba', 'ww', 'w'
+  local function h(i,j)
+    return j and tonumber("0x"..hex:sub(i,j)) / 255 or tonumber("0x"..hex:sub(i,i)) / 15
+  end
 
-function moveposition(position, direction, distance)
+  hex = hex:gsub("#","")
+  return #hex == 6 and {r = h(1,2), g = h(3,4), b = h(5,6)}
+    or #hex == 3 and {r = h(1), g = h(2), b = h(3)}
+    or #hex == 8 and {r = h(1,2), g = h(3,4), b = h(5,6), a = h(7,8)}
+    or #hex == 4 and {r = h(1), g = h(2), b = h(3), a = h(4)}
+    or #hex == 2 and {r = h(1,2), g = h(1,2), b = h(1,2)}
+    or #hex == 1 and {r = h(1), g = h(1), b = h(1)}
+    or {r=1, g=1, b=1}
+end
+
+function util.premul_color(color)
+  local a = color.a or 1
+  return 
+  { 
+    r = color.r and (color.r * a),
+    g = color.g and (color.g * a),
+    b = color.b and (color.b * a),
+    a = color.a
+  }
+end
+
+function util.moveposition(position, direction, distance)
 
   if direction == defines.direction.north then
     return {position[1], position[2] - distance}
@@ -84,7 +104,7 @@ function moveposition(position, direction, distance)
   end
 end
 
-function oppositedirection(direction)
+function util.oppositedirection(direction)
   if direction == defines.direction.north then
     return defines.direction.south
   end
@@ -102,7 +122,7 @@ function oppositedirection(direction)
   end
 end
 
-function ismoduleavailable(name)
+function util.ismoduleavailable(name)
   if package.loaded[name] then
     return true
   else
@@ -116,24 +136,32 @@ function ismoduleavailable(name)
   end
 end
 
-function multiplystripes(count, stripes)
-  ret = {}
-  for k, stripe in ipairs(stripes) do
-    for i = 1, count do
+function util.multiplystripes(count, stripes)
+  local ret = {}
+  for _, stripe in ipairs(stripes) do
+    for _ = 1, count do
       ret[#ret + 1] = stripe
     end
   end
   return ret
 end
 
-function by_pixel(x,y)
+function util.by_pixel(x,y)
   return {x/32,y/32}
 end
 
-function format_number(amount, append_suffix)
+function util.add_shift(a, b)
+  if (not a) or (not b) then
+    return a or b
+  end
+  
+  return { a[1] + b[1], a[2] + b[2] }
+end
+
+function util.format_number(amount, append_suffix)
   local suffix = ""
   if append_suffix then
-    local suffix_list = 
+    local suffix_list =
       {
         ["T"] = 1000000000000,
         ["B"] = 1000000000,
@@ -148,8 +176,8 @@ function format_number(amount, append_suffix)
       end
     end
   end
-  local formatted = amount
-  while true do  
+  local formatted, k = amount
+  while true do
     formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
     if (k==0) then
       break
@@ -158,6 +186,30 @@ function format_number(amount, append_suffix)
   return formatted..suffix
 end
 
-function increment(t, k, v)
+function util.increment(t, k, v)
   t[k] = t[k] + (v or 1)
 end
+
+function util.conditional_return(value, data)
+  if not value then
+    return nil
+  else
+    return data
+  end
+end
+
+function util.merge(tables)
+  local ret = {}
+  for i, tab in ipairs(tables) do
+    for k, v in pairs(tab) do
+      if (type(v) == "table") and (type(ret[k] or false) == "table") then
+        ret[k] = merge{ret[k], v}
+      else
+        ret[k] = v
+      end
+    end
+  end
+  return ret
+end
+
+return util

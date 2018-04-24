@@ -4,7 +4,7 @@ local M = {}
 -- Rectangles is a table of rectangle specifications:
 --  {{max_temp, max_water}, {min_temp, min_water}, influence}
 -- temperatures range from 35 to -25 (°C), water from 0 to 1.
--- the peak resulting from each rectangle has a preset influence 
+-- the peak resulting from each rectangle has a preset influence
 -- within the rectangle and goes to zero after 5°C or 0.1 water level outside
 -- of the rectangle.
 -- Influence is optional and has default value of default_influence or 1.
@@ -16,11 +16,16 @@ function M.peaks(rectangles, ret, default_influence)
   for i, rect in ipairs(rectangles) do
     local temp_center = (rect[2][1] + rect[1][1]) / 2
     local temp_range = math.abs(rect[2][1] - rect[1][1]) / 2
+    local water_top = math.max(rect[1][2], rect[2][2])
     local water_center = (rect[2][2] + rect[1][2]) / 2
     local water_range = math.abs(rect[2][2] - rect[1][2]) / 2
+
+    local influence = rect[3] or default_influence or 1
+
     ret[#ret + 1] =
     {
-      influence = rect[3] or default_influence or 1,
+      influence = influence,
+      richness_influence = 0,
       min_influence = 0,
       temperature_optimal = temp_center,
       temperature_range = temp_range,

@@ -150,7 +150,7 @@ data:extend(
       }
     }
   },
-  smoke
+  trivial_smoke
   {
     name = "nuclear-smoke",
     spread_duration = 0,
@@ -175,8 +175,8 @@ data:extend(
         {
           {
               repeat_count = 100,
-              type = "create-smoke",
-              entity_name = "nuclear-smoke",
+              type = "create-trivial-smoke",
+              smoke_name = "nuclear-smoke",
               offset_deviation = {{-1, -1}, {1, 1}},
               slow_down_factor = 1,
               starting_frame = 3,
@@ -206,7 +206,7 @@ data:extend(
               type = "area",
               target_entities = false,
               repeat_count = 2000,
-              perimeter = 35,
+              radius = 35,
               action_delivery =
               {
                 type = "projectile",
@@ -284,7 +284,7 @@ data:extend(
             action =
             {
               type = "area",
-              perimeter = 6.5,
+              radius = 6.5,
               action_delivery =
               {
                 type = "instant",
@@ -356,7 +356,7 @@ data:extend(
         target_effects =
         {
           type = "damage",
-          damage = {amount = 5, type = "physical"}
+          damage = {amount = 5, type = "physical"},
         }
       }
     },
@@ -455,6 +455,115 @@ data:extend(
     },
   },
   {
+    type = "artillery-projectile",
+    name = "artillery-projectile",
+    flags = {"not-on-map"},
+    acceleration = 0,
+    direction_only = true,
+    reveal_map = true,
+    map_color = {r=1, g=1, b=0},
+    picture =
+    {
+      filename = "__base__/graphics/entity/artillery-projectile/hr-shell.png",
+      width = 64,
+      height = 64,
+      scale = 0.5,
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/artillery-projectile/hr-shell-shadow.png",
+      width = 64,
+      height = 64,
+      scale = 0.5,
+    },
+    chart_picture =
+    {
+      filename = "__base__/graphics/entity/artillery-projectile/artillery-shoot-map-visualization.png",
+      flags = { "icon" },
+      frame_count = 1,
+      width = 64,
+      height = 64,
+      priority = "high",
+      scale = 0.25,
+    },
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "nested-result",
+            action =
+            {
+              type = "area",
+              radius = 4.0,
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "damage",
+                    damage = {amount = 500 , type = "physical"}
+                  },
+                  {
+                    type = "damage",
+                    damage = {amount = 500 , type = "explosion"}
+                  },
+                }
+              }
+            }
+          },
+          {
+            type = "create-trivial-smoke",
+            smoke_name = "artillery-smoke",
+            initial_height = 0,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.005,
+            offset_deviation = {{-4, -4}, {4, 4}},
+            max_radius = 3.5,
+            repeat_count = 4 * 4 * 15
+          },
+          {
+            type = "create-entity",
+            entity_name = "big-artillery-explosion"
+          },
+          {
+            type = "show-explosion-on-chart",
+            scale = 8/32,
+          }
+        }
+      }
+    },
+    final_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "small-scorchmark",
+            check_buildability = true
+          }
+        }
+      }
+    },
+    animation =
+    {
+      filename = "__base__/graphics/entity/bullet/bullet.png",
+      frame_count = 1,
+      width = 3,
+      height = 50,
+      priority = "high"
+    },
+  },
+  {
     type = "projectile",
     name = "uranium-cannon-projectile",
     flags = {"not-on-map"},
@@ -516,7 +625,6 @@ data:extend(
     flags = {"not-on-map"},
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
-    direction_only = true,
     piercing_damage = 150,
     action =
     {
@@ -554,7 +662,7 @@ data:extend(
             action =
             {
               type = "area",
-              perimeter = 4.25,
+              radius = 4.25,
               action_delivery =
               {
                 type = "instant",
@@ -595,7 +703,6 @@ data:extend(
     flags = {"not-on-map"},
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
-    direction_only = true,
     piercing_damage = 100,
     action =
     {
@@ -633,7 +740,7 @@ data:extend(
             action =
             {
               type = "area",
-              perimeter = 4,
+              radius = 4,
               action_delivery =
               {
                 type = "instant",
@@ -691,7 +798,7 @@ data:extend(
       },
       {
         type = "area",
-        perimeter = 6.5,
+        radius = 6.5,
         action_delivery =
         {
           type = "instant",
@@ -997,7 +1104,7 @@ data:extend(
     action =
     {
       type = "area",
-      perimeter = 9,
+      radius = 9,
       action_delivery =
       {
         type = "instant",
@@ -1050,7 +1157,7 @@ data:extend(
       },
       {
         type = "area",
-        perimeter = 3,
+        radius = 3,
         action_delivery =
         {
           type = "instant",
@@ -1078,6 +1185,66 @@ data:extend(
       height = 1,
       priority = "high"
     }
-  }
+  },
+  {
+    type = "projectile",
+    name = "cliff-explosives",
+    flags = {"not-on-map"},
+    acceleration = 0.005,
+    action =
+    {
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-entity",
+              entity_name = "ground-explosion"
+            },
+            {
+              type = "create-entity",
+              entity_name = "small-scorchmark",
+              check_buildability = true
+            }
+          }
+        }
+      },
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "destroy-cliffs",
+              radius = 1.5,
+              explosion = "explosion"
+            },
+          }
+        }
+      }
+    },
+    light = {intensity = 0.5, size = 4},
+    animation =
+    {
+      filename = "__base__/graphics/icons/explosives.png", -- todo: icon for cliff buster
+      frame_count = 1,
+      width = 24,
+      height = 24,
+      priority = "high"
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/grenade/grenade-shadow.png", -- todo: icon for cliff buster
+      frame_count = 1,
+      width = 24,
+      height = 24,
+      priority = "high"
+    }
+  },
 }
 )

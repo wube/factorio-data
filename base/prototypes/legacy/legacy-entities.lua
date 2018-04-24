@@ -1,40 +1,36 @@
+function smoke(opts)
+  return {
+    type = "smoke",
+    name = opts.name,
+    flags = {"not-on-map"},
+    duration = opts.duration or 600,
+    fade_in_duration = opts.fade_in_duration or 0,
+    fade_away_duration = opts.fade_away_duration or ((opts.duration or 600) - (opts.fade_in_duration or 0)),
+    spread_duration = opts.spread_duration or 600,
+    start_scale = opts.start_scale or 0.20,
+    end_scale = opts.end_scale or 1.0,
+    color = opts.color,
+    cyclic = true,
+    affected_by_wind = opts.affected_by_wind or true,
+    animation =
+    {
+      width = 152,
+      height = 120,
+      line_length = 5,
+      frame_count = 60,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.53125, -0.4375},
+      priority = "high",
+      animation_speed = 0.25,
+      filename = "__base__/graphics/entity/smoke/smoke.png",
+      flags = { "smoke" }
+    }
+  }
+end
+
 data:extend(
 {
-  {
-    type = "rocket-defense",
-    name = "rocket-defense-dummy",
-    --icon = "__base__/graphics/icons/rocket-defense.png",
-    --flags = {"placeable-player", "player-creation"},
-    --minable = {hardness = 0.2, mining_time = 0.5, result = "rocket-defense"},
-    max_health = 5000,
-    --corpse = "big-remnants",
-    collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
-    -- avoid running some internal tests over this entity
-    selection_box = {{0, 0}, {0, 0}},
-    energy_source =
-    {
-      type = "electric",
-      buffer_capacity = "100MJ",
-      usage_priority = "primary-input"
-    }
-  },
-  {
-    type = "smart-container",
-    name = "smart-chest-dummy",
-    fast_replaceable_group = "container",
-    max_health = 150,
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
-    selection_box = {{0, 0}, {0, 0}},
-    inventory_size = 48,
-    picture =
-    {
-      filename = "__core__/graphics/cancel.png",
-      priority = "extra-high",
-      width = 64,
-      height = 64,
-      shift = {0, 0}
-    },
-
-  }
+  smoke{name = "smoke-for-migration", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}}
 }
 )

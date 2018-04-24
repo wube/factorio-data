@@ -95,7 +95,7 @@ fast_belt_ending_side =
       height = 80,
       frame_count = 32,
       line_length = 16,
-      y = 640,      
+      y = 640,
       scale = 0.5
     }
   }

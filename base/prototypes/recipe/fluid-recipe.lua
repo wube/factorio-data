@@ -19,6 +19,7 @@ data:extend(
       {type="fluid", name="petroleum-gas", amount=40}
     },
     icon = "__base__/graphics/icons/fluid/basic-oil-processing.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-a[basic-oil-processing]"
   },
@@ -41,6 +42,7 @@ data:extend(
       {type="fluid", name="petroleum-gas", amount=55}
     },
     icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-b[advanced-oil-processing]"
   },
@@ -64,6 +66,7 @@ data:extend(
       {type="fluid", name="petroleum-gas", amount=20}
     },
     icon = "__base__/graphics/icons/fluid/coal-liquefaction.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-c[coal-liquefaction]",
     allow_decomposition = false
@@ -86,6 +89,7 @@ data:extend(
     },
     main_product= "",
     icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     order = "b[fluid-chemistry]-a[heavy-oil-cracking]",
     crafting_machine_tint =
@@ -113,6 +117,7 @@ data:extend(
     },
     main_product= "",
     icon = "__base__/graphics/icons/fluid/light-oil-cracking.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     order = "b[fluid-chemistry]-b[light-oil-cracking]",
     crafting_machine_tint =
@@ -186,6 +191,7 @@ data:extend(
       {type="item", name="solid-fuel", amount=1}
     },
     icon = "__base__/graphics/icons/solid-fuel-from-light-oil.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     enabled = false,
     order = "b[fluid-chemistry]-c[solid-fuel-from-light-oil]",
@@ -211,6 +217,7 @@ data:extend(
       {type="item", name="solid-fuel", amount=1}
     },
     icon = "__base__/graphics/icons/solid-fuel-from-petroleum-gas.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     enabled = false,
     order = "b[fluid-chemistry]-d[solid-fuel-from-petroleum-gas]",
@@ -236,6 +243,7 @@ data:extend(
       {type="item", name="solid-fuel", amount=1}
     },
     icon = "__base__/graphics/icons/solid-fuel-from-heavy-oil.png",
+    icon_size = 32,
     subgroup = "fluid-recipes",
     enabled = false,
     order = "b[fluid-chemistry]-e[solid-fuel-from-heavy-oil]",

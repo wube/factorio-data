@@ -1,8 +1,129 @@
+local function make_cursor_box(x, y, side_length, shift)
+  return
+  {
+   sprite =
+   {
+     filename = "__core__/graphics/cursor-boxes.png",
+     priority = "extra-high-no-scale",
+     width = 64,
+     height = 64,
+     scale = 0.5,
+     x = x,
+     y = y,
+     shift = (function()
+              if shift then
+                return {0.5 - shift[1] / 32.0, 0.5 - shift[2] / 32.0}
+              else
+                return {0.5, 0.5}
+              end
+            end)()
+   },
+   max_side_length = side_length,
+  }
+end
+
+local function make_full_cursor_box(x, y, side_length, side_height)
+  return
+  {
+    sprite =
+    {
+      filename = "__core__/graphics/cursor-boxes-32x32.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      scale = 0.5,
+      x = x,
+      y = y,
+      shift = {0, 0}
+    },
+    is_whole_box = true,
+    side_length = side_length,
+    side_height = side_height
+  }
+end
+
+local function make_default_modifier_icon()
+  return
+  {
+    filename = "__core__/graphics/bonus-icon.png",
+    priority = "medium",
+    width = 32,
+    height = 32,
+    flags = {"icon"}
+  }
+end
+
 data:extend(
 {
   {
     type = "utility-sprites",
     name = "default",
+    cursor_box =
+    {
+      regular =
+      {
+        make_full_cursor_box(0, 0, 1, 1),
+        make_cursor_box(256, 0, 0.4, {1, 1}),
+        make_cursor_box(192, 0, 0.7),
+        make_cursor_box(128, 0, 1.05),
+        make_cursor_box(64, 0, 3.5),
+        make_cursor_box(0, 0, 4.0)
+      },
+      not_allowed =
+      {
+        make_full_cursor_box(64, 0, 1, 1),
+        make_cursor_box(256, 64, 0.4, {1, 1}),
+        make_cursor_box(192, 64, 0.7),
+        make_cursor_box(128, 64, 1.05),
+        make_cursor_box(64, 64, 3.5),
+        make_cursor_box(0, 64, 4.0)
+      },
+      electricity =
+      {
+        make_full_cursor_box(128, 0, 1, 1),
+        make_cursor_box(256, 128, 0.4, {1, 1}),
+        make_cursor_box(192, 128, 0.7),
+        make_cursor_box(128, 128, 1.05),
+        make_cursor_box(64, 128, 3.5),
+        make_cursor_box(0, 128, 4.0)
+      },
+      pair =
+      {
+        make_full_cursor_box(192, 0, 1, 1),
+        make_cursor_box(256, 128, 0.4, {1, 1}),
+        make_cursor_box(192, 128, 0.7),
+        make_cursor_box(128, 128, 1.05),
+        make_cursor_box(64, 128, 3.5),
+        make_cursor_box(0, 128, 4.0)
+      },
+      copy =
+      {
+        make_full_cursor_box(192, 0, 1, 1),
+        make_cursor_box(256, 192, 0.4, {1, 1}),
+        make_cursor_box(192, 192, 0.7),
+        make_cursor_box(128, 192, 1.05),
+        make_cursor_box(64, 192, 3.5),
+        make_cursor_box(0, 192, 4.0)
+      },
+      train_visualization =
+      {
+        make_full_cursor_box(256, 0, 1, 1),
+        make_cursor_box(256, 256, 0.4, {1, 1}),
+        make_cursor_box(192, 256, 0.7),
+        make_cursor_box(128, 256, 1.05),
+        make_cursor_box(64, 256, 3.5),
+        make_cursor_box(0, 256, 4.0)
+      },
+      logistics =
+      {
+        make_full_cursor_box(128, 0, 1, 1),
+        make_cursor_box(256, 128, 0.4, {1, 1}),
+        make_cursor_box(192, 128, 0.7),
+        make_cursor_box(128, 128, 1.05),
+        make_cursor_box(64, 128, 3.5),
+        make_cursor_box(0, 128, 4.0)
+      }
+    },
 
     add =
     {
@@ -104,40 +225,40 @@ data:extend(
     {
       filename = "__core__/graphics/electricity-icon-red.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     fuel_icon =
     {
       filename = "__core__/graphics/fuel-icon-red.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     ammo_icon =
     {
       filename = "__core__/graphics/ammo-icon-red.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     fluid_icon =
     {
       filename = "__core__/graphics/fluid-icon-red.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     warning_icon =
     {
       filename = "__core__/graphics/warning-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     too_far_from_roboport_icon =
@@ -146,31 +267,30 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
-      scale = 0.5,
       flags = {"icon"}
     },
     danger_icon =
     {
       filename = "__core__/graphics/danger-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     destroyed_icon =
     {
       filename = "__core__/graphics/destroyed-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     recharge_icon =
     {
       filename = "__core__/graphics/recharge-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     pump_cannot_connect_icon =
@@ -185,40 +305,40 @@ data:extend(
     {
       filename = "__core__/graphics/not-enough-repair-packs-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     not_enough_construction_robots_icon =
     {
       filename = "__core__/graphics/not-enough-construction-robots-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     no_building_material_icon =
     {
       filename = "__core__/graphics/no-building-material-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     no_storage_space_icon =
     {
       filename = "__core__/graphics/no-storage-space-icon.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     electricity_icon_unplugged =
     {
       filename = "__core__/graphics/electricity-icon-unplugged.png",
       priority = "extra-high-no-scale",
-      width = 100,
-      height = 89,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     game_stopped_visualization =
@@ -328,14 +448,51 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
-    bonus_icon =
-    {
-      filename = "__core__/graphics/bonus-icon.png",
-      priority = "medium",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
+    default_ammo_damage_modifier_icon = make_default_modifier_icon(),
+    default_gun_speed_modifier_icon = make_default_modifier_icon(),
+    default_turret_attack_modifier_icon = make_default_modifier_icon(),
+    inserter_stack_size_bonus_modifier_icon = make_default_modifier_icon(),
+    stack_inserter_capacity_bonus_modifier_icon = make_default_modifier_icon(),
+    laboratory_speed_modifier_icon = make_default_modifier_icon(),
+    character_logistic_slots_modifier_icon = make_default_modifier_icon(),
+    character_logistic_trash_slots_modifier_icon = make_default_modifier_icon(),
+    quick_bar_count_modifier_icon = make_default_modifier_icon(),
+    maximum_following_robots_count_modifier_icon = make_default_modifier_icon(),
+    worker_robot_speed_modifier_icon = make_default_modifier_icon(),
+    worker_robot_storage_modifier_icon = make_default_modifier_icon(),
+    ghost_time_to_live_modifier_icon = make_default_modifier_icon(),
+    turret_attack_modifier_icon = make_default_modifier_icon(),
+    ammo_damage_modifier_icon = make_default_modifier_icon(),
+    give_item_modifier_icon = make_default_modifier_icon(),
+    gun_speed_modifier_icon = make_default_modifier_icon(),
+    unlock_recipe_modifier_icon = make_default_modifier_icon(),
+    character_crafting_speed_modifier_icon = make_default_modifier_icon(),
+    character_mining_speed_modifier_icon = make_default_modifier_icon(),
+    character_running_speed_modifier_icon = make_default_modifier_icon(),
+    character_build_distance_modifier_icon = make_default_modifier_icon(),
+    character_item_drop_distance_modifier_icon = make_default_modifier_icon(),
+    character_reach_distance_modifier_icon = make_default_modifier_icon(),
+    character_resource_reach_distance_modifier_icon = make_default_modifier_icon(),
+    character_item_pickup_distance_modifier_icon = make_default_modifier_icon(),
+    character_loot_pickup_distance_modifier_icon = make_default_modifier_icon(),
+    character_inventory_slots_bonus_modifier_icon = make_default_modifier_icon(),
+    deconstruction_time_to_live_modifier_icon = make_default_modifier_icon(),
+    character_health_bonus_modifier_icon = make_default_modifier_icon(),
+    auto_character_logistic_trash_slots_modifier_icon = make_default_modifier_icon(),
+    mining_drill_productivity_bonus_modifier_icon = make_default_modifier_icon(),
+    train_braking_force_bonus_modifier_icon = make_default_modifier_icon(),
+    zoom_to_world_enabled_modifier_icon = make_default_modifier_icon(),
+    zoom_to_world_ghost_building_enabled_modifier_icon = make_default_modifier_icon(),
+    zoom_to_world_blueprint_enabled_modifier_icon = make_default_modifier_icon(),
+    zoom_to_world_deconstruction_planner_enabled_modifier_icon = make_default_modifier_icon(),
+    zoom_to_world_selection_tool_enabled_modifier_icon = make_default_modifier_icon(),
+    worker_robot_battery_modifier_icon = make_default_modifier_icon(),
+    laboratory_productivity_modifier_icon = make_default_modifier_icon(),
+    follower_robot_lifetime_modifier_icon = make_default_modifier_icon(),
+    nothing_modifier_icon = make_default_modifier_icon(),
+    max_failed_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
+    max_successful_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
+    artillery_range_modifier_icon = make_default_modifier_icon(),
     hint_arrow_up =
     {
       filename = "__core__/graphics/arrows/hint-orange-arrow-up.png",
@@ -720,42 +877,89 @@ data:extend(
       filename = "__core__/graphics/copper-wire.png",
       priority = "extra-high-no-scale",
       width = 224,
-      height = 46
+      height = 46,
+      hr_version = {
+        filename = "__core__/graphics/hr-copper-wire.png",
+        priority = "extra-high-no-scale",
+        flags = { "no-crop" },
+        width = 448,
+        height = 92,
+        scale = 0.5
+      }
     },
     green_wire =
     {
       filename = "__core__/graphics/green-wire.png",
       priority = "extra-high-no-scale",
       width = 224,
-      height = 46
+      height = 46,
+      hr_version = {
+        filename = "__core__/graphics/hr-green-wire.png",
+        priority = "extra-high-no-scale",
+        flags = { "no-crop" },
+        width = 448,
+        height = 92,
+        scale = 0.5
+      }
     },
     red_wire =
     {
       filename = "__core__/graphics/red-wire.png",
       priority = "extra-high-no-scale",
       width = 224,
-      height = 46
+      height = 46,
+      hr_version = {
+        filename = "__core__/graphics/hr-red-wire.png",
+        priority = "extra-high-no-scale",
+        flags = { "no-crop" },
+        width = 448,
+        height = 92,
+        scale = 0.5
+      }
     },
     green_wire_hightlight =
     {
       filename = "__core__/graphics/wire-highlight.png",
       priority = "extra-high-no-scale",
       width = 224,
-      height = 46
+      height = 46,
+      hr_version = {
+        filename = "__core__/graphics/hr-wire-highlight.png",
+        priority = "extra-high-no-scale",
+        flags = { "no-crop" },
+        width = 448,
+        height = 92,
+        scale = 0.5
+      }
     },
     red_wire_hightlight =
     {
       filename = "__core__/graphics/wire-highlight.png",
       priority = "extra-high-no-scale",
       width = 224,
-      height = 46
+      height = 46,
+      hr_version = {
+        filename = "__core__/graphics/hr-wire-highlight.png",
+        priority = "extra-high-no-scale",
+        flags = { "no-crop" },
+        width = 448,
+        height = 92,
+        scale = 0.5
+      }
     },
     wire_shadow =
     {
       filename = "__core__/graphics/wire-shadow.png",
       priority = "extra-high-no-scale",
       width = 224,
-      height = 46
+      height = 46,
+      hr_version = {
+        filename = "__core__/graphics/hr-wire-shadow.png",
+        priority = "extra-high-no-scale",
+        width = 448,
+        height = 92,
+        scale = 0.5
+      }
     },
     trash_bin =
     {
@@ -1276,20 +1480,20 @@ data:extend(
       width = 10,
       height = 10
     },
+    white_mask =
+    {
+      filename = "__core__/graphics/white-square.png",
+      priority = "extra-high-no-scale",
+      flags = { "alpha-mask" },
+      width = 1,
+      height = 1
+    },
     favourite_server_icon =
     {
       filename = "__core__/graphics/favourite.png",
       priority = "extra-high-no-scale",
-      width = 16,
-      height = 16,
-      flags = {"icon"}
-    },
-    favourite_server_icon_grey =
-    {
-      filename = "__core__/graphics/favourite-grey.png",
-      priority = "extra-high-no-scale",
-      width = 16,
-      height = 16,
+      width = 64,
+      height = 64,
       flags = {"icon"}
     },
     crafting_machine_recipe_not_unlocked =
@@ -1300,6 +1504,19 @@ data:extend(
       height = 101,
       scale = 0.6,
       flags = {"icon"}
-    }
+    },
+
+    explosion_chart_visualization =
+    {
+      filename = "__core__/graphics/artillery-impact-map-visualization.png",
+      priority = "extra-high-no-scale",
+      scale = 0.5,
+      flags = {"icon"},
+      width = 64,
+      height = 64,
+      line_length = 8,
+      frame_count = 24,
+      blend_mode = "additive"
+    },
   }
 })

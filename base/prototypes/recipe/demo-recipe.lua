@@ -11,8 +11,7 @@ data:extend(
     type = "recipe",
     name = "wooden-chest",
     ingredients = {{"wood", 4}},
-    result = "wooden-chest",
-    requester_paste_multiplier = 4
+    result = "wooden-chest"
   },
   {
     type = "recipe",
@@ -88,7 +87,6 @@ data:extend(
         {"copper-cable", 3}
       },
       result = "electronic-circuit",
-      requester_paste_multiplier = 50
     },
     expensive =
     {
@@ -98,8 +96,7 @@ data:extend(
         {"copper-cable", 10}
       },
       result = "electronic-circuit",
-      requester_paste_multiplier = 50
-    },
+    }
   },
   {
     type = "recipe",
@@ -110,8 +107,7 @@ data:extend(
       {"iron-gear-wheel", 1}
     },
     result = "transport-belt",
-    result_count = 2,
-    requester_paste_multiplier = 20
+    result_count = 2
   },
   {
     type = "recipe",
@@ -174,8 +170,7 @@ data:extend(
       {"iron-gear-wheel", 1},
       {"iron-plate", 1}
     },
-    result = "inserter",
-    requester_paste_multiplier = 15
+    result = "inserter"
   },
   {
     type = "recipe",
@@ -185,8 +180,7 @@ data:extend(
       {"iron-plate", 1},
       {"iron-gear-wheel", 1}
     },
-    result = "burner-inserter",
-    requester_paste_multiplier = 15
+    result = "burner-inserter"
   },
   {
     type = "recipe",
@@ -195,13 +189,11 @@ data:extend(
     {
       ingredients = {{"iron-plate", 1}},
       result = "pipe",
-      requester_paste_multiplier = 15
     },
     expensive =
     {
       ingredients = {{"iron-plate", 2}},
       result = "pipe",
-      requester_paste_multiplier = 15
     }
   },
   {
@@ -231,8 +223,7 @@ data:extend(
       {"copper-cable", 2}
     },
     result = "small-electric-pole",
-    result_count = 2,
-    requester_paste_multiplier = 4
+    result_count = 2
   },
   {
     type = "recipe",
@@ -298,8 +289,7 @@ data:extend(
       {"iron-gear-wheel", 5},
       {"iron-plate", 10}
     },
-    result = "radar",
-    requester_paste_multiplier = 4
+    result = "radar"
   },
   {
     type = "recipe",

@@ -3,6 +3,7 @@ data:extend(
   {
     type = "technology",
     name = "steel-processing",
+    icon_size = 128,
     icon = "__base__/graphics/technology/steel-processing.png",
     effects =
     {
@@ -30,6 +31,7 @@ data:extend(
   {
     type = "technology",
     name = "military",
+    icon_size = 128,
     icon = "__base__/graphics/technology/military.png",
     effects =
     {
@@ -57,6 +59,7 @@ data:extend(
   {
     type = "technology",
     name = "military-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/military.png",
     effects =
     {
@@ -88,7 +91,84 @@ data:extend(
   },
   {
     type = "technology",
+    name = "military-3",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/military.png",
+    effects =
+    {
+    --[[
+      {
+        type = "unlock-recipe",
+        recipe = "railgun"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "railgun-dart"
+      },]]--
+      {
+        type = "unlock-recipe",
+        recipe = "poison-capsule"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "slowdown-capsule"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "combat-shotgun"
+      },
+    },
+    prerequisites = {"laser", "military-2"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"military-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "e-a-c"
+  },
+  {
+    type = "technology",
+    name = "military-4",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/military.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "piercing-shotgun-shell"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "cluster-grenade"
+      },
+    },
+    prerequisites = {"military-3"},
+    unit =
+    {
+      count = 150,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"military-science-pack", 1},
+        {"high-tech-science-pack", 1}
+      },
+      time = 45
+    },
+    order = "e-a-e"
+  },
+  {
+    type = "technology",
     name = "uranium-ammo",
+    icon_size = 128,
     icon = "__base__/graphics/technology/uranium-ammo.png",
     effects =
     {
@@ -105,7 +185,7 @@ data:extend(
         recipe = "explosive-uranium-cannon-shell"
       }
     },
-    prerequisites = {"nuclear-power", "military-3"},
+    prerequisites = {"nuclear-power", "military-4"},
     unit =
     {
       count = 1000,
@@ -124,6 +204,7 @@ data:extend(
   {
     type = "technology",
     name = "atomic-bomb",
+    icon_size = 128,
     icon = "__base__/graphics/technology/atomic-bomb.png",
     effects =
     {
@@ -151,77 +232,8 @@ data:extend(
   },
   {
     type = "technology",
-    name = "military-3",
-    icon = "__base__/graphics/technology/military.png",
-    effects =
-    {
-    --[[
-      {
-        type = "unlock-recipe",
-        recipe = "railgun"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "railgun-dart"
-      },]]--
-      {
-        type = "unlock-recipe",
-        recipe = "poison-capsule"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "slowdown-capsule"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "combat-shotgun"
-      }
-    },
-    prerequisites = {"laser", "military-2"},
-    unit =
-    {
-      count = 100,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1},
-        {"military-science-pack", 1}
-      },
-      time = 30
-    },
-    order = "e-a-c"
-  },
-  {
-    type = "technology",
-    name = "cluster-grenade",
-    icon = "__base__/graphics/technology/cluster-grenade.png",
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "cluster-grenade"
-      },
-    },
-    prerequisites = {"military-4"},
-    unit =
-    {
-      count = 200,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"military-science-pack", 1},
-        {"science-pack-3", 1},
-        {"high-tech-science-pack", 1},
-      },
-      time = 45
-    },
-    order = "e-a-d"
-  },
-  {
-    type = "technology",
     name = "grenade-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -249,6 +261,7 @@ data:extend(
   {
     type = "technology",
     name = "grenade-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -276,6 +289,7 @@ data:extend(
   {
     type = "technology",
     name = "grenade-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -303,6 +317,7 @@ data:extend(
   {
     type = "technology",
     name = "grenade-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -331,6 +346,7 @@ data:extend(
   {
     type = "technology",
     name = "grenade-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -359,6 +375,7 @@ data:extend(
   {
     type = "technology",
     name = "grenade-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -388,6 +405,7 @@ data:extend(
   {
     type = "technology",
     name = "grenade-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/grenade-damage.png",
     effects =
     {
@@ -418,34 +436,8 @@ data:extend(
   },
   {
     type = "technology",
-    name = "military-4",
-    icon = "__base__/graphics/technology/military.png",
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "piercing-shotgun-shell"
-      },
-    },
-    prerequisites = {"military-3"},
-    unit =
-    {
-      count = 150,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1},
-        {"high-tech-science-pack", 1},
-        {"military-science-pack", 1},
-      },
-      time = 45
-    },
-    order = "e-a-e"
-  },
-  {
-    type = "technology",
     name = "automation",
+    icon_size = 128,
     icon = "__base__/graphics/technology/automation.png",
     effects =
     {
@@ -469,6 +461,7 @@ data:extend(
   {
     type = "technology",
     name = "electronics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/electronics.png",
     effects =
     {
@@ -489,6 +482,7 @@ data:extend(
   {
     type = "technology",
     name = "automation-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/automation.png",
     effects =
     {
@@ -509,6 +503,7 @@ data:extend(
   {
     type = "technology",
     name = "automation-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/automation.png",
     effects =
     {
@@ -535,6 +530,7 @@ data:extend(
   {
     type = "technology",
     name = "explosives",
+    icon_size = 128,
     icon = "__base__/graphics/technology/explosives.png",
     prerequisites = {"sulfur-processing"},
     unit =
@@ -553,13 +549,39 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "explosives"
-      }
+      },
     },
     order = "a-e-d"
   },
   {
     type = "technology",
+    name = "cliff-explosives",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/cliff-explosives.png",
+    prerequisites = {"explosives"},
+    unit =
+    {
+      count = 200,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+      },
+      time = 15
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "cliff-explosives"
+      },
+    },
+    order = "z-c-d"
+  },
+  {
+    type = "technology",
     name = "flammables",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flammables.png",
     prerequisites = {"oil-processing"},
     unit =
@@ -577,6 +599,7 @@ data:extend(
   {
     type = "technology",
     name = "land-mine",
+    icon_size = 128,
     icon = "__base__/graphics/technology/land-mine.png",
     effects =
     {
@@ -602,6 +625,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower.png",
     effects =
     {
@@ -635,6 +659,7 @@ data:extend(
     {
     type = "technology",
     name = "circuit-network",
+    icon_size = 128,
     icon = "__base__/graphics/technology/circuit-network.png",
     effects =
     {
@@ -683,6 +708,7 @@ data:extend(
   {
     type = "technology",
     name = "advanced-electronics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/advanced-electronics.png",
     effects =
     {
@@ -711,6 +737,7 @@ data:extend(
   {
     type = "technology",
     name = "advanced-electronics-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/advanced-electronics-2.png",
     prerequisites = {"advanced-electronics"},
     effects =
@@ -740,6 +767,7 @@ data:extend(
   {
     type = "technology",
     name = "logistics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/logistics.png",
     effects =
     {
@@ -767,6 +795,7 @@ data:extend(
   {
     type = "technology",
     name = "railway",
+    icon_size = 128,
     icon = "__base__/graphics/technology/railway.png",
     effects =
     {
@@ -799,6 +828,7 @@ data:extend(
   {
     type = "technology",
     name = "fluid-wagon",
+    icon_size = 128,
     icon = "__base__/graphics/technology/fluid-wagon.png",
     effects =
     {
@@ -823,6 +853,7 @@ data:extend(
   {
     type = "technology",
     name = "automated-rail-transportation",
+    icon_size = 128,
     icon = "__base__/graphics/technology/automated-rail-transportation.png",
     effects =
     {
@@ -847,6 +878,7 @@ data:extend(
   {
     type = "technology",
     name = "rail-signals",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rail-signals.png",
     effects =
     {
@@ -875,6 +907,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -901,6 +934,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -927,6 +961,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -954,6 +989,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -981,6 +1017,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -1008,6 +1045,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -1036,6 +1074,7 @@ data:extend(
   {
     type = "technology",
     name = "braking-force-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/braking-force.png",
     effects =
     {
@@ -1064,6 +1103,7 @@ data:extend(
   {
     type = "technology",
     name = "automobilism",
+    icon_size = 128,
     icon = "__base__/graphics/technology/automobilism.png",
     effects =
     {
@@ -1088,6 +1128,7 @@ data:extend(
   {
     type = "technology",
     name = "tanks",
+    icon_size = 128,
     icon = "__base__/graphics/technology/tanks.png",
     effects =
     {
@@ -1122,6 +1163,7 @@ data:extend(
   {
     type = "technology",
     name = "logistics-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/logistics.png",
     effects =
     {
@@ -1154,6 +1196,7 @@ data:extend(
   {
     type = "technology",
     name = "logistics-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/logistics.png",
     effects =
     {
@@ -1188,6 +1231,7 @@ data:extend(
   {
     type = "technology",
     name = "optics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/optics.png",
     effects =
     {
@@ -1207,6 +1251,7 @@ data:extend(
   {
     type = "technology",
     name = "solar-energy",
+    icon_size = 128,
     icon = "__base__/graphics/technology/solar-energy.png",
     effects =
     {
@@ -1231,6 +1276,7 @@ data:extend(
   {
     type = "technology",
     name = "laser",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser.png",
     prerequisites = {"optics", "advanced-electronics"},
     unit =
@@ -1248,6 +1294,7 @@ data:extend(
   {
     type = "technology",
     name = "rocketry",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocketry.png",
     effects =
     {
@@ -1277,6 +1324,7 @@ data:extend(
   {
     type = "technology",
     name = "explosive-rocketry",
+    icon_size = 128,
     icon = "__base__/graphics/technology/explosive-rocketry.png",
     effects =
     {
@@ -1303,6 +1351,7 @@ data:extend(
   {
     type = "technology",
     name = "heavy-armor",
+    icon_size = 128,
     icon = "__base__/graphics/technology/armor-making.png",
     effects =
     {
@@ -1323,6 +1372,7 @@ data:extend(
   {
     type = "technology",
     name = "modular-armor",
+    icon_size = 128,
     icon = "__base__/graphics/technology/armor-making.png",
     effects =
     {
@@ -1343,6 +1393,7 @@ data:extend(
   {
     type = "technology",
     name = "power-armor",
+    icon_size = 128,
     icon = "__base__/graphics/technology/power-armor.png",
     effects =
     {
@@ -1368,6 +1419,7 @@ data:extend(
   {
     type = "technology",
     name = "power-armor-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/power-armor-mk2.png",
     localised_description = {"technology-description.power-armor-2"},
     effects =
@@ -1396,6 +1448,7 @@ data:extend(
   {
     type = "technology",
     name = "turrets",
+    icon_size = 128,
     icon = "__base__/graphics/technology/turrets.png",
     effects =
     {
@@ -1415,6 +1468,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turrets",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turrets.png",
     effects =
     {
@@ -1440,6 +1494,7 @@ data:extend(
   {
     type = "technology",
     name = "stone-walls",
+    icon_size = 128,
     icon = "__base__/graphics/technology/stone-walls.png",
     effects =
     {
@@ -1459,6 +1514,7 @@ data:extend(
   {
     type = "technology",
     name = "gates",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gates.png",
     effects =
     {
@@ -1483,6 +1539,7 @@ data:extend(
   {
     type = "technology",
     name = "flying",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flying.png",
     prerequisites = {"electric-engine"},
     unit =
@@ -1500,6 +1557,7 @@ data:extend(
   {
     type = "technology",
     name = "robotics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/robotics.png",
     prerequisites = {"electric-engine", "battery"},
     unit =
@@ -1525,6 +1583,7 @@ data:extend(
   {
     type = "technology",
     name = "alien-technology",
+    icon_size = 128,
     icon = "__base__/graphics/technology/alien-technology.png",
     effects =
     {
@@ -1549,6 +1608,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-silo",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-silo.png",
     effects =
     {
@@ -1597,6 +1657,7 @@ data:extend(
   {
     type = "technology",
     name = "research-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/research-speed.png",
     effects =
     {
@@ -1622,6 +1683,7 @@ data:extend(
   {
     type = "technology",
     name = "research-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/research-speed.png",
     effects =
     {
@@ -1647,6 +1709,7 @@ data:extend(
   {
     type = "technology",
     name = "research-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/research-speed.png",
     effects =
     {
@@ -1673,6 +1736,7 @@ data:extend(
   {
     type = "technology",
     name = "research-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/research-speed.png",
     effects =
     {
@@ -1699,6 +1763,7 @@ data:extend(
   {
     type = "technology",
     name = "research-speed-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/research-speed.png",
     effects =
     {
@@ -1726,6 +1791,7 @@ data:extend(
   {
     type = "technology",
     name = "research-speed-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/research-speed.png",
     effects =
     {
@@ -1754,6 +1820,7 @@ data:extend(
   {
     type = "technology",
     name = "electric-energy-distribution-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/electric-energy-distribution.png",
     effects =
     {
@@ -1782,6 +1849,7 @@ data:extend(
   {
     type = "technology",
     name = "electric-energy-distribution-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/electric-energy-distribution.png",
     effects =
     {
@@ -1807,6 +1875,7 @@ data:extend(
   {
     type = "technology",
     name = "electric-energy-accumulators-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/electric-energy-acumulators.png",
     localised_name = {"technology-name.electric-energy-accumulators-1"},
     effects =
@@ -1832,6 +1901,7 @@ data:extend(
   {
     type = "technology",
     name = "advanced-material-processing",
+    icon_size = 128,
     icon = "__base__/graphics/technology/advanced-material-processing.png",
     effects =
     {
@@ -1856,6 +1926,7 @@ data:extend(
   {
     type = "technology",
     name = "advanced-material-processing-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/advanced-material-processing.png",
     effects =
     {
@@ -1885,6 +1956,7 @@ data:extend(
   {
     type = "technology",
     name = "concrete",
+    icon_size = 128,
     icon = "__base__/graphics/technology/concrete.png",
     prerequisites = {"advanced-material-processing"},
     unit =
@@ -1913,6 +1985,7 @@ data:extend(
   {
     type = "technology",
     name = "effect-transmission",
+    icon_size = 128,
     icon = "__base__/graphics/technology/effect-transmission.png",
     effects =
     {
@@ -1939,11 +2012,12 @@ data:extend(
   {
     type = "technology",
     name = "toolbelt",
+    icon_size = 128,
     icon = "__base__/graphics/technology/toolbelt.png",
     effects =
     {
       {
-        type = "num-quick-bars",
+        type = "quick-bar-count",
         modifier = 1
       }
     },
@@ -1962,6 +2036,7 @@ data:extend(
   {
     type = "technology",
     name = "engine",
+    icon_size = 128,
     icon = "__base__/graphics/technology/engine.png",
     prerequisites = {"steel-processing", "automation-2"},
     unit =
@@ -1990,6 +2065,7 @@ data:extend(
   {
     type = "technology",
     name = "electric-engine",
+    icon_size = 128,
     icon = "__base__/graphics/technology/electric-engine.png",
     prerequisites = {"engine", "advanced-electronics"},
     unit =
@@ -2014,6 +2090,7 @@ data:extend(
   {
     type = "technology",
     name = "battery",
+    icon_size = 128,
     icon = "__base__/graphics/technology/battery.png",
     prerequisites = {"sulfur-processing"},
     unit =
@@ -2038,6 +2115,7 @@ data:extend(
   {
     type = "technology",
     name = "landfill",
+    icon_size = 128,
     icon = "__base__/graphics/technology/landfill.png",
     unit =
     {
@@ -2061,6 +2139,7 @@ data:extend(
   {
     type = "technology",
     name = "construction-robotics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/construction-robotics.png",
     effects =
     {
@@ -2101,6 +2180,7 @@ data:extend(
   {
     type = "technology",
     name = "logistic-robotics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/logistic-robotics.png",
     effects =
     {
@@ -2138,6 +2218,7 @@ data:extend(
   {
     type = "technology",
     name = "logistic-system",
+    icon_size = 128,
     icon = "__base__/graphics/technology/logistic-system.png",
     effects =
     {
@@ -2148,6 +2229,10 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "logistic-chest-requester"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "logistic-chest-buffer"
       }
     },
     prerequisites = { "logistic-robotics"},
@@ -2170,6 +2255,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects = {
       {
@@ -2195,6 +2281,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects =
     {
@@ -2223,6 +2310,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects =
     {
@@ -2250,6 +2338,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects =
     {
@@ -2277,6 +2366,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-speed-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects =
     {
@@ -2305,6 +2395,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-speed-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-speed.png",
     effects =
     {
@@ -2335,6 +2426,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-storage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-storage.png",
     effects =
     {
@@ -2361,6 +2453,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-storage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-storage.png",
     effects =
     {
@@ -2388,6 +2481,7 @@ data:extend(
   {
     type = "technology",
     name = "worker-robots-storage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/worker-robots-storage.png",
     effects =
     {
@@ -2416,6 +2510,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-slots-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-slots.png",
     effects =
     {
@@ -2441,6 +2536,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-slots-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-slots.png",
     effects =
     {
@@ -2466,6 +2562,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-slots-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-slots.png",
     effects =
     {
@@ -2492,6 +2589,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-slots-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-slots.png",
     effects =
     {
@@ -2519,6 +2617,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-slots-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-slots.png",
     effects =
     {
@@ -2546,6 +2645,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-slots-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-slots.png",
     effects =
     {
@@ -2574,6 +2674,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-trash-slots-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
     effects =
     {
@@ -2599,6 +2700,7 @@ data:extend(
   {
     type = "technology",
     name = "character-logistic-trash-slots-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
     effects =
     {
@@ -2625,6 +2727,7 @@ data:extend(
   {
     type = "technology",
     name = "auto-character-logistic-trash-slots",
+    icon_size = 128,
     icon = "__base__/graphics/technology/character-auto-logistic-trash-slots.png",
     effects =
     {
@@ -2650,6 +2753,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2675,6 +2779,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2701,6 +2806,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2728,6 +2834,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2755,6 +2862,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2783,6 +2891,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2812,6 +2921,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-damage.png",
     effects =
     {
@@ -2843,6 +2953,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-speed.png",
     effects =
     {
@@ -2868,6 +2979,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-speed.png",
     effects =
     {
@@ -2894,6 +3006,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-speed.png",
     effects =
     {
@@ -2920,6 +3033,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-speed.png",
     effects =
     {
@@ -2947,6 +3061,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-speed-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-speed.png",
     effects =
     {
@@ -2975,6 +3090,7 @@ data:extend(
   {
     type = "technology",
     name = "shotgun-shell-speed-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/shotgun-shell-speed.png",
     effects =
     {
@@ -3004,6 +3120,7 @@ data:extend(
     {
     type = "technology",
     name = "laser-turret-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3031,6 +3148,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3058,6 +3176,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3086,6 +3205,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3114,6 +3234,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3143,6 +3264,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3172,6 +3294,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3201,6 +3324,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-damage-8",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-damage.png",
     effects =
     {
@@ -3233,6 +3357,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3260,6 +3385,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3287,6 +3413,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3315,6 +3442,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3343,6 +3471,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3372,6 +3501,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3401,6 +3531,7 @@ data:extend(
   {
     type = "technology",
     name = "laser-turret-speed-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/laser-turret-speed.png",
     effects =
     {
@@ -3431,6 +3562,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3457,6 +3589,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3483,6 +3616,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3510,6 +3644,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3537,6 +3672,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3565,6 +3701,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3594,6 +3731,7 @@ data:extend(
   {
     type = "technology",
     name = "gun-turret-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/gun-turret-damage.png",
     effects =
     {
@@ -3625,6 +3763,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3657,6 +3796,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3689,6 +3829,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3722,6 +3863,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3755,6 +3897,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3789,6 +3932,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3823,6 +3967,7 @@ data:extend(
   {
     type = "technology",
     name = "flamethrower-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/flamethrower-turret-damage.png",
     effects =
     {
@@ -3859,6 +4004,7 @@ data:extend(
   {
     type = "technology",
     name = "energy-shield-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/energy-shield-equipment.png",
     prerequisites = {"modular-armor"},
     effects =
@@ -3884,6 +4030,7 @@ data:extend(
   {
     type = "technology",
     name = "night-vision-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/night-vision-equipment.png",
     prerequisites = {"modular-armor"},
     effects =
@@ -3904,6 +4051,7 @@ data:extend(
   {
     type = "technology",
     name = "energy-shield-mk2-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/energy-shield-mk2-equipment.png",
     prerequisites = {"energy-shield-equipment"},
     effects =
@@ -3930,6 +4078,7 @@ data:extend(
   {
     type = "technology",
     name = "battery-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/battery-equipment.png",
     prerequisites = {"modular-armor", "battery"},
     effects =
@@ -3950,6 +4099,7 @@ data:extend(
   {
     type = "technology",
     name = "battery-mk2-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/battery-mk2-equipment.png",
     prerequisites = {"battery-equipment"},
     effects =
@@ -3970,6 +4120,7 @@ data:extend(
   {
     type = "technology",
     name = "solar-panel-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/solar-panel-equipment.png",
     prerequisites = {"modular-armor"},
     effects =
@@ -3990,6 +4141,7 @@ data:extend(
   {
     type = "technology",
     name = "personal-laser-defense-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/personal-laser-defense-equipment.png",
     prerequisites = {"modular-armor", "laser-turrets"},
     effects =
@@ -4016,6 +4168,7 @@ data:extend(
   {
     type = "technology",
     name = "discharge-defense-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/discharge-defense-equipment.png",
     prerequisites = {"modular-armor", "laser-turrets"},
     effects =
@@ -4046,6 +4199,7 @@ data:extend(
   {
     type = "technology",
     name = "fusion-reactor-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/fusion-reactor-equipment.png",
     prerequisites = {"solar-panel-equipment"},
     effects =
@@ -4073,6 +4227,7 @@ data:extend(
   {
     type = "technology",
     name = "exoskeleton-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/exoskeleton-equipment.png",
     prerequisites = {"solar-panel-equipment", "electric-engine"},
     effects =
@@ -4093,6 +4248,7 @@ data:extend(
   {
     type = "technology",
     name = "personal-roboport-equipment",
+    icon_size = 128,
     icon = "__base__/graphics/technology/personal-roboport-equipment.png",
     effects =
     {
@@ -4118,6 +4274,7 @@ data:extend(
   {
     type = "technology",
     name = "personal-roboport-equipment-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/personal-roboport-equipment.png",
     effects =
     {
@@ -4144,6 +4301,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4169,6 +4327,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4195,6 +4354,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4222,6 +4382,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4249,6 +4410,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4277,6 +4439,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4306,6 +4469,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-damage.png",
     effects =
     {
@@ -4337,6 +4501,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-speed.png",
     effects =
     {
@@ -4362,6 +4527,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-speed.png",
     effects =
     {
@@ -4388,6 +4554,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-speed.png",
     effects =
     {
@@ -4414,6 +4581,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-speed.png",
     effects =
     {
@@ -4441,6 +4609,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-speed-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-speed.png",
     effects =
     {
@@ -4469,6 +4638,7 @@ data:extend(
   {
     type = "technology",
     name = "bullet-speed-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/bullet-speed.png",
     effects =
     {
@@ -4498,6 +4668,7 @@ data:extend(
   {
     type = "technology",
     name = "fluid-handling",
+    icon_size = 128,
     icon = "__base__/graphics/technology/fluid-handling.png",
     prerequisites = {"steel-processing", "automation-2"},
     effects =
@@ -4522,6 +4693,7 @@ data:extend(
   {
     type = "technology",
     name = "oil-processing",
+    icon_size = 128,
     icon = "__base__/graphics/technology/oil-gathering.png",
     prerequisites = {"steel-processing"},
     effects =
@@ -4570,6 +4742,7 @@ data:extend(
   {
     type = "technology",
     name = "advanced-oil-processing",
+    icon_size = 128,
     icon = "__base__/graphics/technology/oil-processing.png",
     prerequisites = {"oil-processing"},
     effects =
@@ -4603,6 +4776,7 @@ data:extend(
   {
     type = "technology",
     name = "coal-liquefaction",
+    icon_size = 128,
     icon = "__base__/graphics/technology/coal-liquefaction.png",
     prerequisites = {"advanced-oil-processing"},
     effects =
@@ -4629,6 +4803,7 @@ data:extend(
   {
     type = "technology",
     name = "sulfur-processing",
+    icon_size = 128,
     icon = "__base__/graphics/technology/sulfur-processing.png",
     prerequisites = {"oil-processing"},
     effects =
@@ -4653,6 +4828,7 @@ data:extend(
   {
     type = "technology",
     name = "plastics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/plastics.png",
     prerequisites = {"oil-processing"},
     effects =
@@ -4674,6 +4850,7 @@ data:extend(
     {
     type = "technology",
     name = "modules",
+    icon_size = 128,
     icon = "__base__/graphics/technology/module.png",
     prerequisites = {"advanced-electronics"},
     unit =
@@ -4691,6 +4868,7 @@ data:extend(
   {
     type = "technology",
     name = "speed-module",
+    icon_size = 128,
     icon = "__base__/graphics/technology/speed-module.png",
     effects =
     {
@@ -4716,6 +4894,7 @@ data:extend(
   {
     type = "technology",
     name = "speed-module-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/speed-module.png",
     effects =
     {
@@ -4742,6 +4921,7 @@ data:extend(
   {
     type = "technology",
     name = "speed-module-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/speed-module.png",
     effects =
     {
@@ -4769,6 +4949,7 @@ data:extend(
   {
     type = "technology",
     name = "productivity-module",
+    icon_size = 128,
     icon = "__base__/graphics/technology/productivity-module.png",
     effects =
     {
@@ -4794,6 +4975,7 @@ data:extend(
   {
     type = "technology",
     name = "productivity-module-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/productivity-module.png",
     effects =
     {
@@ -4820,6 +5002,7 @@ data:extend(
   {
     type = "technology",
     name = "productivity-module-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/productivity-module.png",
     effects =
     {
@@ -4847,6 +5030,7 @@ data:extend(
   {
     type = "technology",
     name = "effectivity-module",
+    icon_size = 128,
     icon = "__base__/graphics/technology/effectivity-module.png",
     effects =
     {
@@ -4872,6 +5056,7 @@ data:extend(
   {
     type = "technology",
     name = "effectivity-module-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/effectivity-module.png",
     effects =
     {
@@ -4898,6 +5083,7 @@ data:extend(
   {
     type = "technology",
     name = "effectivity-module-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/effectivity-module.png",
     effects =
     {
@@ -4925,6 +5111,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robotics",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robotics.png",
     effects =
     {
@@ -4950,6 +5137,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robotics-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robotics.png",
     effects =
     {
@@ -4976,6 +5164,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robotics-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robotics.png",
     effects =
     {
@@ -5003,6 +5192,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robot-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robot-damage.png",
     effects =
     {
@@ -5035,6 +5225,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robot-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robot-damage.png",
     effects =
     {
@@ -5067,6 +5258,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robot-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robot-damage.png",
     effects =
     {
@@ -5100,6 +5292,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robot-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robot-damage.png",
     effects =
     {
@@ -5133,6 +5326,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robot-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robot-damage.png",
     effects =
     {
@@ -5167,6 +5361,7 @@ data:extend(
   {
     type = "technology",
     name = "combat-robot-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/combat-robot-damage.png",
     effects =
     {
@@ -5203,6 +5398,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5230,6 +5426,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5257,6 +5454,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5285,6 +5483,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5313,6 +5512,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5341,6 +5541,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5370,6 +5571,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-damage-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-damage.png",
     effects =
     {
@@ -5401,6 +5603,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5428,6 +5631,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5455,6 +5659,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5483,6 +5688,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5511,6 +5717,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5539,6 +5746,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5568,6 +5776,7 @@ data:extend(
   {
     type = "technology",
     name = "rocket-speed-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/rocket-speed.png",
     effects =
     {
@@ -5598,6 +5807,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-damage-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-damage.png",
     effects =
     {
@@ -5626,6 +5836,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-damage-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-damage.png",
     effects =
     {
@@ -5654,6 +5865,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-damage-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-damage.png",
     effects =
     {
@@ -5682,6 +5894,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-damage-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-damage.png",
     effects =
     {
@@ -5711,6 +5924,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-damage-5",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-damage.png",
     effects =
     {
@@ -5740,6 +5954,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-damage-6",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-damage.png",
     effects =
     {
@@ -5771,6 +5986,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-speed-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-speed.png",
     effects =
     {
@@ -5799,6 +6015,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-speed-2",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-speed.png",
     effects =
     {
@@ -5827,6 +6044,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-speed-3",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-speed.png",
     effects =
     {
@@ -5855,6 +6073,7 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-speed-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/cannon-speed.png",
     effects =
     {
@@ -5884,7 +6103,8 @@ data:extend(
   {
     type = "technology",
     name = "cannon-shell-speed-5",
-   icon = "__base__/graphics/technology/cannon-speed.png",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/cannon-speed.png",
     effects =
     {
       {
@@ -5909,6 +6129,67 @@ data:extend(
     },
     upgrade = true,
     order = "e-k-k"
+  },
+  {
+    type = "technology",
+    name = "artillery-shell-range-1",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/artillery-range.png",
+    effects =
+    {
+      {
+        type = "artillery-range",
+        modifier = 0.3
+      }
+    },
+    prerequisites = {"artillery"},
+    unit =
+    {
+      count_formula = "2^L*1000",
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"military-science-pack", 1},
+        {"high-tech-science-pack", 1},
+        {"space-science-pack", 1},
+      },
+      time = 60
+    },
+    max_level = "infinite",
+    order = "e-k-d"
+  },
+  {
+    type = "technology",
+    name = "artillery-shell-speed-1",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/artillery-speed.png",
+    effects =
+    {
+      {
+        type = "gun-speed",
+        ammo_category = "artillery-shell",
+        modifier = 1
+      }
+    },
+    prerequisites = {"artillery"},
+    unit =
+    {
+      count_formula = "1000+3^(L-1)*1000",
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"military-science-pack", 1},
+        {"high-tech-science-pack", 1},
+        {"space-science-pack", 1},
+      },
+      time = 60
+    },
+    max_level = "infinite",
+    order = "e-k-k"
   }
 }
 )
@@ -5918,6 +6199,7 @@ function create_follower_upgrade(level, pack1, pack2, pack3, military_pack, high
   {
     type = "technology",
     name = "follower-robot-count-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/follower-robots.png",
     effects =
     {
@@ -5983,6 +6265,7 @@ data:extend(
   {
     type = "technology",
     name = "follower-robot-count-7",
+    icon_size = 128,
     icon = "__base__/graphics/technology/follower-robots.png",
     effects =
     {
@@ -6015,6 +6298,7 @@ data:extend(
   {
     type = "technology",
     name = "nuclear-power",
+    icon_size = 128,
     icon = "__base__/graphics/technology/nuclear-power.png",
     effects =
     {
@@ -6064,12 +6348,17 @@ data:extend(
   {
     type = "technology",
     name = "kovarex-enrichment-process",
+    icon_size = 128,
     icon = "__base__/graphics/technology/kovarex-enrichment-process.png",
     effects =
     {
       {
         type = "unlock-recipe",
         recipe = "kovarex-enrichment-process"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "nuclear-fuel"
       }
     },
     prerequisites = {"nuclear-power"},
@@ -6091,6 +6380,7 @@ data:extend(
   {
     type = "technology",
     name = "nuclear-fuel-reprocessing",
+    icon_size = 128,
     icon = "__base__/graphics/technology/nuclear-fuel-reprocessing.png",
     effects =
     {
@@ -6122,6 +6412,7 @@ data:extend(
   {
     type = "technology",
     name = "mining-productivity-1",
+    icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
@@ -6148,6 +6439,7 @@ data:extend(
   {
     type = "technology",
     name = "mining-productivity-4",
+    icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
@@ -6175,6 +6467,7 @@ data:extend(
   {
     type = "technology",
     name = "mining-productivity-8",
+    icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
@@ -6203,6 +6496,7 @@ data:extend(
   {
     type = "technology",
     name = "mining-productivity-12",
+    icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
@@ -6232,6 +6526,7 @@ data:extend(
   {
     type = "technology",
     name = "mining-productivity-16",
+    icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
@@ -6258,6 +6553,46 @@ data:extend(
     max_level = "infinite",
     upgrade = true,
     order = "c-k-f-e"
+  },
+  {
+    type = "technology",
+    name = "artillery",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/artillery.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "artillery-wagon"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "artillery-turret"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "artillery-shell"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "artillery-targeting-remote"
+      },
+    },
+    prerequisites = {"military-4"},
+    unit =
+    {
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 1},
+        {"military-science-pack", 1},
+        {"high-tech-science-pack", 1},
+      },
+      time = 30,
+      count = 2000
+    },
+    order = "d-e-f"
   }
 }
 )

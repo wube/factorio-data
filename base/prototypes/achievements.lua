@@ -5,34 +5,39 @@ data:extend(
     name = "getting-on-track",
     order = "a[progress]-a[getting-on-track]",
     to_build = "locomotive",
-    icon = "__base__/graphics/achievement/getting-on-track.png"
+    icon = "__base__/graphics/achievement/getting-on-track.png",
+    icon_size = 128
   },
   {
     type = "research-achievement",
     name = "eco-unfriendly",
     order = "a[progress]-b[eco-unfriendly]",
     technology = "oil-processing",
-    icon = "__base__/graphics/achievement/eco-unfriendly.png"
+    icon = "__base__/graphics/achievement/eco-unfriendly.png",
+    icon_size = 128
   },
   {
     type = "research-achievement",
     name = "tech-maniac",
     order = "a[progress]-c[tech-maniac]",
     research_all = true,
-    icon = "__base__/graphics/achievement/tech-maniac.png"
+    icon = "__base__/graphics/achievement/tech-maniac.png",
+    icon_size = 128
   },
   {
     type = "finish-the-game-achievement",
     name = "smoke-me-a-kipper-i-will-be-back-for-breakfast",
     order = "a[progress]-d[smoke-me-a-kipper-i-will-be-back-for-breakfast]",
-    icon = "__base__/graphics/achievement/smoke-me-a-kipper-i-will-be-back-for-breakfast.png"
+    icon = "__base__/graphics/achievement/smoke-me-a-kipper-i-will-be-back-for-breakfast.png",
+    icon_size = 128
   },
   {
     type = "group-attack-achievement",
     name = "it-stinks-and-they-dont-like-it",
     order = "b[exploration]-a[it-stinks-and-they-dont-like-it]",
     amount = 1,
-    icon = "__base__/graphics/achievement/it-stinks-and-they-dont-like-it.png"
+    icon = "__base__/graphics/achievement/it-stinks-and-they-dont-like-it.png",
+    icon_size = 128
   },
   {
     type = "construct-with-robots-achievement",
@@ -41,6 +46,7 @@ data:extend(
     amount = 100,
     steam_stats_name = "constructed-by-robots",
     icon = "__base__/graphics/achievement/automated-construction.png",
+    icon_size = 128,
     limited_to_one_game = false
   },
   {
@@ -49,6 +55,7 @@ data:extend(
     order = "b[exploration]-b[construct-with-robots]-b[more-than-manually]",
     more_than_manually = true,
     icon = "__base__/graphics/achievement/you-are-doing-it-right.png",
+    icon_size = 128,
     limited_to_one_game = true
   },
   {
@@ -58,6 +65,7 @@ data:extend(
     amount = 100,
     steam_stats_name = "deconstructed-by-robots",
     icon = "__base__/graphics/achievement/automated-cleanup.png",
+    icon_size = 128
   },
   {
     type = "deliver-by-robots-achievement",
@@ -65,6 +73,7 @@ data:extend(
     order = "b[exploration]-d[deliver-by-robots]-a",
     amount = 1,
     icon = "__base__/graphics/achievement/you-have-got-a-package.png",
+    icon_size = 128
   },
   {
     type = "deliver-by-robots-achievement",
@@ -73,6 +82,7 @@ data:extend(
     amount = 10000,
     steam_stats_name = "delivered-by-robots",
     icon = "__base__/graphics/achievement/delivery-service.png",
+    icon_size = 128
   },
   {
     type = "train-path-achievement",
@@ -81,6 +91,7 @@ data:extend(
     minimum_distance = 1000,
     steam_stats_name = "longest-train-path",
     icon = "__base__/graphics/achievement/trans-factorio-express.png",
+    icon_size = 128
   },
   {
     type = "player-damaged-achievement",
@@ -90,6 +101,7 @@ data:extend(
     minimum_damage = 0,
     should_survive = false,
     icon = "__base__/graphics/achievement/watch-your-step.png",
+    icon_size = 128
   },
   {
     type = "player-damaged-achievement",
@@ -99,6 +111,7 @@ data:extend(
     minimum_damage = 500,
     steam_stats_name = "surived-damage-in-one-hit",
     icon = "__base__/graphics/achievement/golem.png",
+    icon_size = 128
   },
   {
     type = "build-entity-achievement",
@@ -106,6 +119,7 @@ data:extend(
     order = "c[teaching]-a[getting-on-track-like-a-pro]",
     to_build = "locomotive",
     icon = "__base__/graphics/achievement/getting-on-track-like-a-pro.png",
+    icon_size = 128,
     until_second = 90 * 60 -- 90 minutes
   },
   {
@@ -116,6 +130,7 @@ data:extend(
     amount = 10000,
     steam_stats_name = "electronic-circuits-production-overall",
     icon = "__base__/graphics/achievement/mass-production-1.png",
+    icon_size = 128,
     limited_to_one_game = false
   },
   {
@@ -126,6 +141,7 @@ data:extend(
     amount = 1000000,
     steam_stats_name = "electronic-circuits-production-overall",
     icon = "__base__/graphics/achievement/mass-production-2.png",
+    icon_size = 128,
     limited_to_one_game = false
   },
   {
@@ -136,6 +152,7 @@ data:extend(
     amount = 20000000,
     steam_stats_name = "electronic-circuits-production-overall",
     icon = "__base__/graphics/achievement/mass-production-3.png",
+    icon_size = 128,
     limited_to_one_game = false
   },
   {
@@ -145,7 +162,8 @@ data:extend(
     item_product = "advanced-circuit",
     amount = 1000,
     steam_stats_name = "advanced-circuits-per-hour",
-    icon = "__base__/graphics/achievement/circuit-veteran-1.png"
+    icon = "__base__/graphics/achievement/circuit-veteran-1.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -154,7 +172,8 @@ data:extend(
     item_product = "advanced-circuit",
     amount = 10000,
     steam_stats_name = "advanced-circuits-per-hour",
-    icon = "__base__/graphics/achievement/circuit-veteran-2.png"
+    icon = "__base__/graphics/achievement/circuit-veteran-2.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -163,7 +182,8 @@ data:extend(
     item_product = "advanced-circuit",
     amount = 25000,
     steam_stats_name = "advanced-circuits-per-hour",
-    icon = "__base__/graphics/achievement/circuit-veteran-3.png"
+    icon = "__base__/graphics/achievement/circuit-veteran-3.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -172,7 +192,8 @@ data:extend(
     item_product = "processing-unit",
     amount = 500,
     steam_stats_name = "processing-units-per-hour",
-    icon = "__base__/graphics/achievement/computer-age-1.png"
+    icon = "__base__/graphics/achievement/computer-age-1.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -181,7 +202,8 @@ data:extend(
     item_product = "processing-unit",
     amount = 1000,
     steam_stats_name = "processing-units-per-hour",
-    icon = "__base__/graphics/achievement/computer-age-2.png"
+    icon = "__base__/graphics/achievement/computer-age-2.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -190,7 +212,8 @@ data:extend(
     item_product = "processing-unit",
     amount = 5000,
     steam_stats_name = "processing-units-per-hour",
-    icon = "__base__/graphics/achievement/computer-age-3.png"
+    icon = "__base__/graphics/achievement/computer-age-3.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -199,7 +222,8 @@ data:extend(
     item_product = "iron-plate",
     amount = 20000,
     steam_stats_name = "iron-plates-per-hour",
-    icon = "__base__/graphics/achievement/iron-throne-1.png"
+    icon = "__base__/graphics/achievement/iron-throne-1.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -208,7 +232,8 @@ data:extend(
     item_product = "iron-plate",
     amount = 200000,
     steam_stats_name = "iron-plates-per-hour",
-    icon = "__base__/graphics/achievement/iron-throne-2.png"
+    icon = "__base__/graphics/achievement/iron-throne-2.png",
+    icon_size = 128
   },
   {
     type = "produce-per-hour-achievement",
@@ -217,7 +242,8 @@ data:extend(
     item_product = "iron-plate",
     amount = 400000,
     steam_stats_name = "iron-plates-per-hour",
-    icon = "__base__/graphics/achievement/iron-throne-3.png"
+    icon = "__base__/graphics/achievement/iron-throne-3.png",
+    icon_size = 128
   },
   {
     type = "dont-use-entity-in-energy-production-achievement",
@@ -227,7 +253,8 @@ data:extend(
     excluded = {"steam-engine", "steam-turbine"},
     included = "solar-panel",
     minimum_energy_produced = "10GJ",
-    icon = "__base__/graphics/achievement/solaris.png"
+    icon = "__base__/graphics/achievement/solaris.png",
+    icon_size = 128
   },
   {
     type = "kill-achievement",
@@ -239,7 +266,8 @@ data:extend(
     personally = true,
     amount = 10,
     steam_stats_name = "spawners-killed-by-impact",
-    icon = "__base__/graphics/achievement/steamrolled.png"
+    icon = "__base__/graphics/achievement/steamrolled.png",
+    icon_size = 128
   },
   {
     type = "kill-achievement",
@@ -249,7 +277,8 @@ data:extend(
     amount = 10000,
     damage_type = "fire",
     steam_stats_name = "trees-destroyed-by-fire",
-    icon = "__base__/graphics/achievement/pyromaniac.png"
+    icon = "__base__/graphics/achievement/pyromaniac.png",
+    icon_size = 128
   },
   {
     type = "kill-achievement",
@@ -260,7 +289,8 @@ data:extend(
     personally = true,
     amount = 100,
     steam_stats_name = "trees-destroyed-by-impact",
-    icon = "__base__/graphics/achievement/run-forrest-run.png"
+    icon = "__base__/graphics/achievement/run-forrest-run.png",
+    icon_size = 128
   },
   {
     type = "combat-robot-count",
@@ -268,14 +298,16 @@ data:extend(
     order = "e[kill]-d[minions]",
     count = 100,
     steam_stats_name = "combat-robots",
-    icon = "__base__/graphics/achievement/minions.png"
+    icon = "__base__/graphics/achievement/minions.png",
+    icon_size = 128
   },
   {
     type = "dont-craft-manually-achievement",
     name = "lazy-bastard",
     order = "f[limitation]-a[lazy-bastard]",
     amount = 111,
-    icon = "__base__/graphics/achievement/lazy-bastard.png"
+    icon = "__base__/graphics/achievement/lazy-bastard.png",
+    icon_size = 128
   },
   {
     type = "dont-use-entity-in-energy-production-achievement",
@@ -283,7 +315,8 @@ data:extend(
     allowed_in_peaceful_mode = false,
     excluded = "solar-panel",
     order = "f[limitation]-b[steam-all-the-way]",
-    icon = "__base__/graphics/achievement/steam-all-the-way.png"
+    icon = "__base__/graphics/achievement/steam-all-the-way.png",
+    icon_size = 128
   },
   {
     type = "dont-build-entity-achievement",
@@ -291,14 +324,16 @@ data:extend(
     order = "f[limitation]-c[raining-bullets]",
     dont_build = "laser-turret",
     allowed_in_peaceful_mode = false,
-    icon = "__base__/graphics/achievement/raining-bullets.png"
+    icon = "__base__/graphics/achievement/raining-bullets.png",
+    icon_size = 128
   },
   {
     type = "dont-build-entity-achievement",
     name = "logistic-network-embargo",
     order = "f[limitation]-d[logistic-network-embargo]",
     dont_build = {"logistic-chest-active-provider", "logistic-chest-requester"},
-    icon = "__base__/graphics/achievement/logistic-network-embargo.png"
+    icon = "__base__/graphics/achievement/logistic-network-embargo.png",
+    icon_size = 128
   },
   {
     type = "finish-the-game-achievement",
@@ -306,7 +341,8 @@ data:extend(
     until_second = 60 * 60 * 15, -- 15 hours
     allowed_in_peaceful_mode = false,
     order = "f[limitation]-e[no-time-for-chitchat]",
-    icon = "__base__/graphics/achievement/no-time-for-chitchat.png"
+    icon = "__base__/graphics/achievement/no-time-for-chitchat.png",
+    icon_size = 128
   },
   {
     type = "finish-the-game-achievement",
@@ -314,12 +350,14 @@ data:extend(
     until_second = 60 * 60 * 8, -- 8 hours
     allowed_in_peaceful_mode = false,
     order = "f[limitation]-f[there-is-no-spoon]",
-    icon = "__base__/graphics/achievement/there-is-no-spoon.png"
+    icon = "__base__/graphics/achievement/there-is-no-spoon.png",
+    icon_size = 128
   },
   {
     type = "achievement",
     name = "so-long-and-thanks-for-all-the-fish",
     order = "g[secret]-a[so-long-and-thanks-for-all-the-fish]",
-    icon = "__base__/graphics/achievement/so-long-and-thanks-for-all-the-fish.png"
+    icon = "__base__/graphics/achievement/so-long-and-thanks-for-all-the-fish.png",
+    icon_size = 128
   }
 })

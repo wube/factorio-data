@@ -4,6 +4,7 @@ data:extend(
     type = "technology",
     name = "stack-inserter",
     icon = "__base__/graphics/technology/stack-inserter.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -37,6 +38,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-1",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -62,6 +64,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-2",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -91,6 +94,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-3",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -117,6 +121,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-4",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -144,6 +149,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-5",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -171,6 +177,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-6",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {
@@ -198,6 +205,7 @@ data:extend(
     type = "technology",
     name = "inserter-capacity-bonus-7",
     icon = "__base__/graphics/technology/inserter-capacity.png",
+    icon_size = 128,
     effects =
     {
       {

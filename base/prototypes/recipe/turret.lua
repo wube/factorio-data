@@ -27,5 +27,19 @@ data:extend(
     },
     result = "flamethrower-turret"
   },
+  {
+    type = "recipe",
+    name = "artillery-turret",
+    enabled = false,
+    energy_required = 40,
+    ingredients =
+    {
+      {"steel-plate", 60},
+      {"concrete", 60},
+      {"iron-gear-wheel", 40},
+      {"advanced-circuit", 20}
+    },
+    result = "artillery-turret"
+  },
 }
 )

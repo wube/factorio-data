@@ -6,6 +6,7 @@ data:extend(
     type = "gun",
     name = "flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "e[flamethrower]",
@@ -51,6 +52,7 @@ data:extend(
     type = "gun",
     name = "vehicle-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[vehicle-machine-gun]",
@@ -81,6 +83,7 @@ data:extend(
     type = "gun",
     name = "tank-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[tank-machine-gun]",
@@ -113,6 +116,7 @@ data:extend(
     type = "gun",
     name = "tank-flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "b[flamethrower]-b[tank-flamethrower]",
@@ -157,6 +161,7 @@ data:extend(
     type = "item",
     name = "land-mine",
     icon = "__base__/graphics/icons/land-mine.png",
+    icon_size = 32,
     flags = {"goes-to-quickbar"},
     damage_radius = 5,
     subgroup = "gun",
@@ -169,6 +174,7 @@ data:extend(
     type = "gun",
     name = "rocket-launcher",
     icon = "__base__/graphics/icons/rocket-launcher.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "d[rocket-launcher]",
@@ -195,6 +201,7 @@ data:extend(
     type = "gun",
     name = "shotgun",
     icon = "__base__/graphics/icons/shotgun.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "b[shotgun]-a[basic]",
@@ -220,6 +227,7 @@ data:extend(
     type = "gun",
     name = "combat-shotgun",
     icon = "__base__/graphics/icons/combat-shotgun.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "b[shotgun]-a[combat]",
@@ -246,6 +254,7 @@ data:extend(
     type = "gun",
     name = "railgun",
     icon = "__base__/graphics/icons/railgun.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "c[railgun]",
@@ -271,6 +280,7 @@ data:extend(
     type = "gun",
     name = "tank-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory", "hidden"},
     subgroup = "gun",
     order = "z[tank]-a[cannon]",
@@ -292,6 +302,35 @@ data:extend(
       },
     },
     stack_size = 5
+  },
+  {
+    type = "gun",
+    name = "artillery-wagon-cannon",
+    icon = "__base__/graphics/icons/tank-cannon.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory", "hidden"},
+    subgroup = "gun",
+    order = "z[artillery]-a[cannon]",
+    attack_parameters =
+    {
+      type = "projectile",
+      ammo_category = "artillery-shell",
+      cooldown = 200,
+      movement_slow_down_factor = 0,
+      projectile_creation_distance = 1.6,
+      projectile_center = {-0.15625, -0.07812},
+      range = 7 * 32,
+      min_range = 1 * 32,
+      projectile_creation_parameters = require("prototypes.entity.artillery-cannon-muzzle-flash-shifting"),
+      sound =
+      {
+        {
+          filename = "__base__/sound/fight/tank-cannon.ogg",
+          volume = 1.0
+        }
+      },
+    },
+    stack_size = 1
   },
 }
 )

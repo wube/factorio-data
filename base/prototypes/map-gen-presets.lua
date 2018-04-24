@@ -38,15 +38,16 @@ data:extend(
         }
       }
     },
-    ["dangerous"] =
+    ["death-world"] =
     {
       order = "d",
       basic_settings =
       {
         autoplace_controls =
         {
-          ["enemy-base"] = { frequency = "very-high"}
-        }
+          ["enemy-base"] = { frequency = "very-high", size = "very-big"}
+        },
+        starting_area = "small",
       },
       advanced_settings =
       {
@@ -57,15 +58,16 @@ data:extend(
         }
       }
     },
-    ["death-world"] =
+    ["death-world-marathon"] =
     {
       order = "d",
       basic_settings =
       {
         autoplace_controls =
         {
-          ["enemy-base"] = { frequency = "very-high"}
-        }
+          ["enemy-base"] = { frequency = "very-high", size = "very-big"}
+        },
+        starting_area = "small",
       },
       advanced_settings =
       {

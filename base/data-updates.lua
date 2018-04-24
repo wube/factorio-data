@@ -19,10 +19,8 @@ local barrel_side_mask = "__base__/graphics/icons/fluid/barreling/barrel-side-ma
 local barrel_hoop_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-hoop-top-mask.png"
 
 -- Recipe icon masks
-local barrel_empty = "__base__/graphics/icons/fluid/barreling/barrel-empty.png"
 local barrel_empty_side_mask = "__base__/graphics/icons/fluid/barreling/barrel-empty-side-mask.png"
 local barrel_empty_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-empty-top-mask.png"
-local barrel_fill = "__base__/graphics/icons/fluid/barreling/barrel-fill.png"
 local barrel_fill_side_mask = "__base__/graphics/icons/fluid/barreling/barrel-fill-side-mask.png"
 local barrel_fill_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-fill-top-mask.png"
 
@@ -66,7 +64,7 @@ local function get_recipes_for_barrel(name)
 end
 
 -- Generates the icons definition for a barrel item with the provided name and fluid definition using the provided empty barrel base icon
-local function generate_barrel_item_icons(name, fluid, empty_barrel_item)
+local function generate_barrel_item_icons(fluid, empty_barrel_item)
   local side_tint = util.table.deepcopy(fluid.base_color)
   side_tint.a = side_alpha
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
@@ -95,7 +93,8 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
     type = "item",
     name = name,
     localised_name = {"item-name.filled-barrel", {"fluid-name." .. fluid.name}},
-    icons = generate_barrel_item_icons(name, fluid, empty_barrel_item),
+    icons = generate_barrel_item_icons(fluid, empty_barrel_item),
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
     subgroup = "fill-barrel",
     order = "b[" .. name .. "]",
@@ -116,7 +115,7 @@ local function get_or_create_barrel_item(name, fluid, empty_barrel_item)
 end
 
 -- Generates the icons definition for a fill-barrel recipe with the provided barrel name and fluid definition
-local function generate_fill_barrel_icons(name, fluid)
+local function generate_fill_barrel_icons(fluid)
   local side_tint = util.table.deepcopy(fluid.base_color)
   side_tint.a = side_alpha
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
@@ -144,7 +143,7 @@ local function generate_fill_barrel_icons(name, fluid)
 end
 
 -- Generates the icons definition for a empty-barrel recipe with the provided barrel name and fluid definition
-local function generate_empty_barrel_icons(name, fluid)
+local function generate_empty_barrel_icons(fluid)
   local side_tint = util.table.deepcopy(fluid.base_color)
   side_tint.a = side_alpha
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
@@ -183,7 +182,8 @@ local function create_fill_barrel_recipe(item, fluid)
     subgroup = "fill-barrel",
     order = "b[fill-" .. item.name .. "]",
     enabled = false,
-    icons = generate_fill_barrel_icons(item, fluid),
+    icons = generate_fill_barrel_icons(fluid),
+    icon_size = 32,
     ingredients =
     {
       {type = "fluid", name = fluid.name, amount = fluid_per_barrel},
@@ -213,7 +213,8 @@ local function create_empty_barrel_recipe(item, fluid)
     subgroup = "empty-barrel",
     order = "c[empty-" .. item.name .. "]",
     enabled = false,
-    icons = generate_empty_barrel_icons(item, fluid),
+    icons = generate_empty_barrel_icons(fluid),
+    icon_size = 32,
     ingredients =
     {
       {type = "item", name = item.name, amount = 1}
@@ -245,7 +246,7 @@ local function get_or_create_barrel_recipes(item, fluid)
 end
 
 -- Adds the provided barrel recipe and fill/empty recipes to the technology as recipe unlocks if they don't already exist
-local function add_barrel_to_technology(item, fill_recipe, empty_recipe, technology)
+local function add_barrel_to_technology(fill_recipe, empty_recipe, technology)
   local unlock_key = "unlock-recipe"
   local effects = technology.effects
 
@@ -254,16 +255,13 @@ local function add_barrel_to_technology(item, fill_recipe, empty_recipe, technol
     effects = technology.effects
   end
 
-  local add_item = true
   local add_fill_recipe = true
   local add_empty_recipe = true
 
   for k,v in pairs(effects) do
     if k == unlock_key then
       local recipe = v.recipe
-      if recipe == item.name then
-        add_item = false
-      elseif recipe == fill_recipe.name then
+      if recipe == fill_recipe.name then
         add_fill_recipe = false
       elseif recipe == empty_recipe.name then
         add_empty_recipe = false
@@ -315,7 +313,7 @@ local function process_fluids(fluids, technology, empty_barrel_item)
       local barrel_fill_recipe, barrel_empty_recipe = get_or_create_barrel_recipes(barrel_item, fluid)
 
       -- check if the barrel recipe exists in the unlock list of the technology if not - add it
-      add_barrel_to_technology(barrel_item, barrel_fill_recipe, barrel_empty_recipe, technology)
+      add_barrel_to_technology(barrel_fill_recipe, barrel_empty_recipe, technology)
     end
   end
 end

@@ -5,7 +5,7 @@ end
 for index, force in pairs(game.forces) do
   local technologies = force.technologies;
   local recipes = force.recipes;
-  
+
   if technologies["military-2"].researched then
     recipes["military-science-pack"].enabled = true
     recipes["piercing-rounds-magazine"].enabled = true
@@ -19,4 +19,4 @@ for index, force in pairs(game.forces) do
     recipes["processing-unit"].enabled = true
     recipes["high-tech-science-pack"].enabled = true
   end
-end 
+end
