@@ -170,3 +170,22 @@ trainstate =
   -- train was switched to auto control but it is moving and needs to be stopped
   stopforautocontrol = 10
 }
+
+signalstate =
+{
+  -- green
+  open = 0,
+  -- red
+  closed = 1,
+  -- orange
+  reserved = 2
+}
+
+recipe =
+{
+  materialtype =
+  {
+    item = 0,
+    fluid = 1
+  }
+}

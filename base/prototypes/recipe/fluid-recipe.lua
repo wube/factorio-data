@@ -31,8 +31,8 @@ data:extend(
     energy_required = 5,
     ingredients =
     {
-      {type="fluid", name="crude-oil", amount=10},
-      {type="fluid", name="water", amount=5}
+      {type="fluid", name="water", amount=5},
+      {type="fluid", name="crude-oil", amount=10}
     },
     results=
     {
@@ -53,8 +53,8 @@ data:extend(
     energy_required = 5,
     ingredients =
     {
-      {type="fluid", name="heavy-oil", amount=4},
-      {type="fluid", name="water", amount=3}
+      {type="fluid", name="water", amount=3},
+      {type="fluid", name="heavy-oil", amount=4}
     },
     results=
     {
@@ -74,8 +74,8 @@ data:extend(
     energy_required = 5,
     ingredients =
     {
-      {type="fluid", name="light-oil", amount=3},
-      {type="fluid", name="water", amount=3}
+      {type="fluid", name="water", amount=3},
+      {type="fluid", name="light-oil", amount=3}
     },
     results=
     {
@@ -188,8 +188,8 @@ data:extend(
     enabled = "false",
     ingredients =
     {
-      {type="fluid", name="petroleum-gas", amount=3},
-      {type="fluid", name="water", amount=3}
+      {type="fluid", name="water", amount=3},
+      {type="fluid", name="petroleum-gas", amount=3}
     },
     results=
     {

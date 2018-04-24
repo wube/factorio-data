@@ -343,43 +343,41 @@ data:extend(
     acceleration = 0.005,
     action =
     {
-      type = "direct",
-      action_delivery =
       {
+        type = "direct",
+        action_delivery =
+        {
         type = "instant",
         target_effects =
         {
           {
-            type = "create-entity",
-            entity_name = "huge-explosion"
+          type = "create-entity",
+          entity_name = "huge-explosion"
           },
           {
-            type = "nested-result",
-            action =
+          type = "create-entity",
+          entity_name = "small-scorchmark",
+          check_buildability = true
+          }
+        }
+        }
+      },
+      {
+        type = "area",
+        perimeter = 6.5,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
             {
-              type = "area",
-              perimeter = 6.5,
-              action_delivery =
-              {
-                type = "instant",
-                target_effects =
-                {
-                  {
-                    type = "damage",
-                    damage = {amount = 25, type = "explosion"}
-                  },
-                  {
-                    type = "create-entity",
-                    entity_name = "explosion"
-                  }
-                }
-              }
-            }
-          },
-          {
+            type = "damage",
+            damage = {amount = 25, type = "explosion"}
+            },
+            {
             type = "create-entity",
-            entity_name = "small-scorchmark",
-            check_buildability = true
+            entity_name = "explosion"
+            }
           }
         }
       }
@@ -457,17 +455,7 @@ data:extend(
           {
             type = "create-entity",
             entity_name = "distractor",
-            offset = {0.5, -0.5}
-          },
-          {
-            type = "create-entity",
-            entity_name = "distractor",
-            offset = {-0.5, -0.5}
-          },
-          {
-            type = "create-entity",
-            entity_name = "distractor",
-            offset = {0, 0.5}
+            offsets = {{0.5, -0.5},{-0.5, -0.5},{0, 0.5}}
           }
         }
       }
@@ -507,27 +495,7 @@ data:extend(
           {
             type = "create-entity",
             entity_name = "destroyer",
-            offset = {-0.7, -0.7}
-          },
-          {
-            type = "create-entity",
-            entity_name = "destroyer",
-            offset = {-0.7, 0.7}
-          },
-          {
-            type = "create-entity",
-            entity_name = "destroyer",
-            offset = {0.7, -0.7}
-          },
-          {
-            type = "create-entity",
-            entity_name = "destroyer",
-            offset = {0.7, 0.7}
-          },
-          {
-            type = "create-entity",
-            entity_name = "destroyer",
-            offset = {0, 0}
+            offsets = {{-0.7, -0.7},{-0.7, 0.7},{0.7, -0.7},{0.7, 0.7},{0, 0}}
           }
         }
       }
