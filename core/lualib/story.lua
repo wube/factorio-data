@@ -293,70 +293,75 @@ function export_entities(param)
   local exported = {}
   local count = 1
   for k, entity in pairs (entities) do
-    if entity ~= item and not (ignore[entity.type]) then
-      local info = {}
-      blueprint.create_blueprint{surface = surface, force = "player", area = entity.bounding_box}
-      list = blueprint.get_blueprint_entities()
-      if list then
-        local this = false
-        for i, listed in pairs (list) do
-          if listed.name == entity.name and listed.direction == entity.direction then
-            this = list[i]
-            break
+    if entity.valid then
+      if entity ~= item and not (ignore[entity.type]) then
+        local info = {}
+        blueprint.create_blueprint{surface = surface, force = "player", area = entity.bounding_box}
+        list = blueprint.get_blueprint_entities()
+        if list then
+          local this = false
+          for i, listed in pairs (list) do
+            if listed.name == entity.name and entity.type ~= "curved-rail" and entity.type ~= "straight-rail" then
+              this = list[i]
+              break
+            end
+          end  
+          if this then
+            info = this
           end
-        end  
-        if this then
-          info = this
         end
+        if entity.direction then
+          info.direction = entity.direction
+        end
+        info.name = entity.name
+        if entity.type == "resource" then
+          info.amount = entity.amount
+        elseif entity.type == "entity-ghost" then
+          info.inner_name = entity.ghost_name
+        elseif entity.type == "item-entity" then
+          info.stack = {name = entity.stack.name, count = entity.stack.count}
+        elseif entity.type == "transport-belt" or entity.type == "underground-belt" then
+          info.line_contents = {}
+          for k = 1, 2 do
+            local line = entity.get_transport_line(k)
+            info.line_contents[k] = line.get_contents()
+            line.clear()
+          end
+        elseif entity.type == "splitter" then
+          info.line_contents = {}
+          for k = 1, 8 do
+            local line = entity.get_transport_line(k)
+            info.line_contents[k] = line.get_contents()
+            line.clear()
+          end
+        elseif entity.type == "locomotive" then
+          info.schedule = entity.train.schedule
+          info.speed = entity.train.speed
+          info.manual_mode = entity.train.manual_mode
+          info.direction = math.floor(0.5+entity.orientation*8)%8
+        elseif entity.name == "flying-text" then
+          info.text = ""
+        elseif entity.type == "assembling-machine" then
+          if entity.recipe then
+            info.recipe = entity.recipe.name
+          end
+        end
+        if entity.type == "underground-belt" then
+          info.type = entity.belt_to_ground_type
+        end
+        info.color = entity.color
+        info.force = entity.force.name
+        info.position = entity.position
+        info.inventory = get_inventory(entity)
+        info.backer_name = entity.backer_name
+        info.minable = entity.minable
+        info.rotatable = entity.rotatable
+        info.operable = entity.operable
+        info.destructible = entity.destructible
+        exported[count] = info
+        count = count + 1
+        entity.destroy()
       end
-      info.name = entity.name
-      if entity.type == "resource" then
-        info.amount = entity.amount
-      elseif entity.type == "entity-ghost" then
-        info.inner_name = entity.ghost_name
-      elseif entity.type == "item-entity" then
-        info.stack = {name = entity.stack.name, count = entity.stack.count}
-      elseif entity.type == "transport-belt" or entity.type == "underground-belt" then
-        info.line_contents = {}
-        for k = 1, 2 do
-          local line = entity.get_transport_line(k)
-          info.line_contents[k] = line.get_contents()
-          line.clear()
-        end
-      elseif entity.type == "splitter" then
-        info.line_contents = {}
-        for k = 1, 8 do
-          local line = entity.get_transport_line(k)
-          info.line_contents[k] = line.get_contents()
-          line.clear()
-        end
-      elseif entity.type == "locomotive" then
-        info.schedule = entity.train.schedule
-        info.speed = entity.train.speed
-        info.manual_mode = entity.train.manual_mode
-        info.direction = math.floor(0.5+entity.orientation*8)%8
-      elseif entity.name == "flying-text" then
-        info.text = ""
-      elseif entity.type == "assembling-machine" then
-        if entity.recipe then
-          info.recipe = entity.recipe.name
-        end
-      end
-      if entity.type == "underground-belt" then
-        info.type = entity.belt_to_ground_type
-      end
-      info.color = entity.color
-      info.force = entity.force.name
-      info.position = entity.position
-      info.inventory = get_inventory(entity)
-      info.backer_name = entity.backer_name
-      info.minable = entity.minable
-      info.rotatable = entity.rotatable
-      info.operable = entity.operable
-      info.destructible = entity.destructible
-      exported[count] = info
-      count = count + 1
-      entity.destroy()
     end
   end
   for k, entity in pairs (entities) do
@@ -392,6 +397,11 @@ function recreate_entities(array, param, bool)
     end
     entity.position = save_position
     if created then
+      if entity.filters then
+        for k, filter in pairs (entity.filters) do
+          created.set_filter(filter.index, filter.name)
+        end
+      end
       if entity.amount then
         created.amount = entity.amount
       end

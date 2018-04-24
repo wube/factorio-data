@@ -2468,42 +2468,84 @@ data:extend(
       filename = "__base__/graphics/entity/inserter/inserter-hand-base.png",
       priority = "extra-high",
       width = 8,
-      height = 33
+      height = 33,
+      hr_version = {
+        filename = "__base__/graphics/entity/inserter/hr-inserter-hand-base.png",
+        priority = "extra-high",
+        width = 32,
+        height = 136,
+        scale = 0.25
+      }
     },
     hand_closed_picture =
     {
       filename = "__base__/graphics/entity/inserter/inserter-hand-closed.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/inserter/hr-inserter-hand-closed.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/inserter/inserter-hand-open.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/inserter/hr-inserter-hand-open.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     hand_base_shadow =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 33
+      height = 33,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
+        priority = "extra-high",
+        width = 32,
+        height = 132,
+        scale = 0.25
+      }
     },
     hand_closed_shadow =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     hand_open_shadow =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
@@ -2515,7 +2557,15 @@ data:extend(
         priority = "extra-high",
         width = 46,
         height = 46,
-        shift = {0.09375, 0}
+        shift = {0.09375, 0},
+        hr_version = {
+          filename = "__base__/graphics/entity/inserter/hr-inserter-platform.png",
+          priority = "extra-high",
+          width = 105,
+          height = 79,
+          shift = util.by_pixel(1.5, 7.5-1),
+          scale = 0.5
+        }
       }
     },
     circuit_wire_connection_point = inserter_circuit_wire_connection_point,
@@ -2593,42 +2643,84 @@ data:extend(
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 34,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base.png",
+        priority = "extra-high",
+        width = 32,
+        height = 136,
+        scale = 0.25
+      }
     },
     hand_closed_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     hand_base_shadow =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
       priority = "extra-high",
       width = 8,
-      height = 33
+      height = 33,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
+        priority = "extra-high",
+        width = 32,
+        height = 132,
+        scale = 0.25
+      }
     },
     hand_closed_shadow =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     hand_open_shadow =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
       priority = "extra-high",
       width = 18,
-      height = 41
+      height = 41,
+      hr_version = {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
     },
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
@@ -2640,7 +2732,15 @@ data:extend(
         priority = "extra-high",
         width = 46,
         height = 46,
-        shift = {0.09375, 0}
+        shift = {0.09375, 0},
+        hr_version = {
+          filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-platform.png",
+          priority = "extra-high",
+          width = 105,
+          height = 79,
+          shift = util.by_pixel(1.5, 7.5-1),
+          scale = 0.5
+        }
       }
     },
     rotation_speed = 0.01,
