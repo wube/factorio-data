@@ -1784,19 +1784,19 @@ data:extend(
     {
       {
         filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.2
+        volume = 1.0
       }
     },
     map_color={r=50, g=50, b=50},
@@ -1838,19 +1838,19 @@ data:extend(
     {
       {
         filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.2
+        volume = 1.0
       }
     },
     map_color={r=0, g=0, b=0},
@@ -1891,19 +1891,19 @@ data:extend(
     {
       {
         filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.2
+        volume = 1.0
       }
     },
     map_color={r=0.2, g=0.2, b=0.2},
@@ -1944,19 +1944,19 @@ data:extend(
     {
       {
         filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.2
+        volume = 1.0
       }
     },
     map_color={r=1, g=1, b=1},
@@ -2057,19 +2057,19 @@ data:extend(
     {
       {
         filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.2
+        volume = 1.0
       },
       {
         filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.2
+        volume = 1.0
       }
     },
     map_color={r=0, g=0, b=0},
@@ -2239,19 +2239,19 @@ if not data.is_demo then
       {
         {
           filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
+          volume = 1.0
         }
       },
       map_color={r=100, g=100, b=100},
@@ -2363,19 +2363,19 @@ if not data.is_demo then
       {
         {
           filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
+          volume = 1.0
         }
       },
       map_color={r=0.5, g=0.5, b=0},
@@ -2461,19 +2461,19 @@ if not data.is_demo then
       {
         {
           filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
+          volume = 1.0
         }
       },
       map_color={r=0.5, g=0.5, b=0},
@@ -2640,19 +2640,19 @@ if not data.is_demo then
       {
         {
           filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
+          volume = 1.0
         }
       },
       map_color={r=100, g=100, b=100},
@@ -2764,19 +2764,19 @@ if not data.is_demo then
       {
         {
           filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
+          volume = 1.0
         }
       },
       map_color={r=0.5, g=0.5, b=0},
@@ -2862,19 +2862,19 @@ if not data.is_demo then
       {
         {
           filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.2
+          volume = 1.0
         },
         {
           filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.2
+          volume = 1.0
         }
       },
       map_color={r=0.5, g=0.5, b=0},

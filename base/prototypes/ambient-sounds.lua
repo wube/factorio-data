@@ -198,7 +198,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-1.ogg",
-      volume = 1.2
+      volume = 1.0
     }
   },
   {
@@ -208,7 +208,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-2.ogg",
-      volume = 1.2
+      volume = 1.0
     }
   },
   {
@@ -218,7 +218,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-3.ogg",
-      volume = 1.2
+      volume = 1.0
     }
   },
   {
@@ -228,7 +228,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-4.ogg",
-      volume = 1.2
+      volume = 1.0
     }
   },
   {
@@ -238,7 +238,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-5.ogg",
-      volume = 1.2
+      volume = 1.0
     }
   },
   {
@@ -248,7 +248,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-6.ogg",
-      volume = 1.2
+      volume = 1.0
     }
   }
 })

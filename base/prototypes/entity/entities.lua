@@ -7121,7 +7121,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/silo-alarm.ogg",
-            volume = 1.5
+            volume = 1.0
           }
         }
       }
@@ -7134,7 +7134,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/silo-clamps-on.ogg",
-            volume = 1.5
+            volume = 1.0
           }
         }
       }
@@ -7147,7 +7147,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/silo-clamps-off.ogg",
-            volume = 1.5
+            volume = 1.0
           }
         }
       }
@@ -7160,7 +7160,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/silo-doors.ogg",
-            volume = 1.5
+            volume = 1.0
           }
         }
       }
@@ -7173,7 +7173,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/silo-raise-rocket.ogg",
-            volume = 1.5
+            volume = 1.0
           }
         }
       }
@@ -7356,7 +7356,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/silo-rocket.ogg",
-            volume = 1.8
+            volume = 1.0
           },
         }
       },
@@ -7551,7 +7551,7 @@ data:extend(
     {
       {
         type = "play-sound",
-        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 1.2 }
+        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 1.0 }
       },
     },
     close_door_trigger_effect =
@@ -11527,7 +11527,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "heat-exchanger"},
     max_health = 200,
-    corpse = "small-remnants",
+    corpse = "medium-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     mode = "output-to-separate-pipe",
     resistances =
@@ -12238,11 +12238,11 @@ data:extend(
       {
         {
           filename = "__base__/sound/fight/large-explosion-1.ogg",
-          volume = 1.1
+          volume = 1.0
         },
         {
           filename = "__base__/sound/fight/large-explosion-2.ogg",
-          volume = 1.1
+          volume = 1.0
         }
       }
     },

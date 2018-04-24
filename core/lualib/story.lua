@@ -156,7 +156,7 @@ function story_elapsed_check(seconds)
 end
 
 function story_show_message_dialog(param, player)
-  if #game.players > 1 then
+  if game.is_multiplayer() then
     if player then
       player.print(param.text)
     else

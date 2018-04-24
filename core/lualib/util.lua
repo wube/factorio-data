@@ -105,21 +105,19 @@ function util.moveposition(position, direction, distance)
 end
 
 function util.oppositedirection(direction)
-  if direction == defines.direction.north then
-    return defines.direction.south
-  end
-
-  if direction == defines.direction.south then
-    return defines.direction.north
-  end
-
-  if direction == defines.direction.east then
-    return defines.direction.west
-  end
-
-  if direction == defines.direction.west then
-    return defines.direction.east
-  end
+  local d = defines.direction
+  local opposites = {
+    [d.north] = d.south,
+    [d.northeast] = d.southwest,
+    [d.east] = d.west,
+    [d.southeast] = d.northwest,
+    [d.south] = d.north,
+    [d.southwest] = d.northeast,
+    [d.west] = d.east,
+    [d.northwest] = d.southeast
+  }
+  if opposites[direction] then return opposites[direction] end
+  error(direction .. " is not a valid direction")
 end
 
 function util.ismoduleavailable(name)
