@@ -340,6 +340,16 @@ data:extend(
       type = "button_style",
       parent = "slot_button_style"
     },
+    red_circuit_network_content_slot_style =
+    {
+      type = "button_style",
+      parent = "not_available_slot_button_style"
+    },
+    green_circuit_network_content_slot_style =
+    {
+      type = "button_style",
+      parent = "researched_technology_slot_style"
+    },
     slot_button_style =
     {
       type = "button_style",
