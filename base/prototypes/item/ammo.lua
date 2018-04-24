@@ -210,7 +210,7 @@ data:extend(
 
         source_effects =
         {
-          type = "create-entity",
+          type = "create-explosion",
           entity_name = "railgun-beam"
         },
         action_delivery =

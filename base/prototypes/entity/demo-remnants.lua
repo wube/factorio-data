@@ -177,6 +177,7 @@ data:extend(
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "remnants",
     order="d[remnants]-b[rail]-b[curved]",
+    collision_box = {{-1, -1}, {1, 1}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selectable_in_game = false,
     tile_width = 4,

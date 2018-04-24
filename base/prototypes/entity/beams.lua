@@ -1,3 +1,5 @@
+local beam_blend_mode = "additive-soft"
+
 data:extend(
 {
   {
@@ -36,6 +38,7 @@ data:extend(
       height = 39,
       frame_count = 16,
       animation_speed = 0.5,
+      blend_mode = beam_blend_mode,
     },
     tail =
     {
@@ -44,6 +47,7 @@ data:extend(
       width = 45,
       height = 39,
       frame_count = 16,
+      blend_mode = beam_blend_mode,
     },
     body =
     {
@@ -53,6 +57,7 @@ data:extend(
         width = 45,
         height = 39,
         frame_count = 16,
+        blend_mode = beam_blend_mode,
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-2.png",
@@ -60,6 +65,7 @@ data:extend(
         width = 45,
         height = 39,
         frame_count = 16,
+        blend_mode = beam_blend_mode,
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-3.png",
@@ -67,6 +73,7 @@ data:extend(
         width = 45,
         height = 39,
         frame_count = 16,
+        blend_mode = beam_blend_mode,
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-4.png",
@@ -74,6 +81,7 @@ data:extend(
         width = 45,
         height = 39,
         frame_count = 16,
+        blend_mode = beam_blend_mode,
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-5.png",
@@ -81,6 +89,7 @@ data:extend(
         width = 45,
         height = 39,
         frame_count = 16,
+        blend_mode = beam_blend_mode,
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-6.png",
@@ -88,6 +97,7 @@ data:extend(
         width = 45,
         height = 39,
         frame_count = 16,
+        blend_mode = beam_blend_mode,
       },
     }
   }

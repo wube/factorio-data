@@ -234,3 +234,16 @@ chain_signal_state =
   -- red
   none_open = 3
 }
+
+rail_direction =
+{
+  front = 0,
+  back = 1
+}
+
+rail_connection_direction =
+{
+  left = 0,
+  straight = 1,
+  right = 2
+}

@@ -2087,7 +2087,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/train-wheels.ogg",
-        volume = 0.5
+        volume = 0.6
       },
       match_volume_to_activity = true,
     },
@@ -3212,7 +3212,8 @@ data:extend(
     crafting_speed = 1,
     module_specification =
     {
-      module_slots = 4
+      module_slots = 4,
+      module_info_icon_shift = {0, 4.3}
     },
     fixed_recipe = "rocket-part",
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},

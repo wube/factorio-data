@@ -1860,7 +1860,7 @@ data:extend(
       sound = {
         {
           filename = "__base__/sound/pipe.ogg",
-          volume = 0.65
+          volume = 0.85
         },
       },
       match_volume_to_activity = true,
