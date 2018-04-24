@@ -9,6 +9,7 @@ data:extend(
     resource_categories = {"basic-fluid"},
     max_health = 100,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     drawing_box = {{-1.6, -2.5}, {1.5, 1.6}},
@@ -63,7 +64,12 @@ data:extend(
         frame_count = 40,
         animation_speed = 0.5
       }
-    }
+    },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/pumpjack.ogg" },
+      apparent_volume = 1.5,
+    },
   }
 }
 )

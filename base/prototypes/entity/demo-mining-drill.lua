@@ -11,6 +11,15 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/electric-mining-drill.ogg",
+        volume = 0.75
+      },
+      apparent_volume = 1.5,
+    },
     animations =
     {
       north =
@@ -94,6 +103,14 @@ data:extend(
     collision_box = {{ -0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{ -1, -1}, {1, 1}},
     mining_speed = 0.35,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/burner-mining-drill.ogg",
+        volume = 0.8
+      },
+    },
     energy_source =
     {
       type = "burner",

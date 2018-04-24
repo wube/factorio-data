@@ -1,4 +1,5 @@
 require "util"
+require "base-edits"
 
 -- this is both in demo and alpha
 require("prototypes.entity.demo-entities")
@@ -31,7 +32,10 @@ require("prototypes.categories.rail-category")
 require("prototypes.categories.recipe-category")
 require("prototypes.categories.resource-category")
 
-if not data.isdemo then
+
+if data.isdemo then
+  require("prototypes.item.demo-item-groups")
+else
   require("prototypes.entity.entities")
   require("prototypes.entity.projectiles")
   require("prototypes.entity.turrets")
@@ -43,6 +47,7 @@ if not data.isdemo then
   require("prototypes.item.equipment")
   require("prototypes.item.gun")
   require("prototypes.item.item")
+  require("prototypes.item.item-groups")
   require("prototypes.item.mining-tools")
   require("prototypes.item.module")
   require("prototypes.item.turret")
@@ -70,3 +75,5 @@ if not data.isdemo then
   require("prototypes.technology.rocket-upgrades")
   require("prototypes.equipment.equipment")
 end
+
+addbuildeffects()

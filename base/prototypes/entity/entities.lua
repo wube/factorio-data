@@ -7,6 +7,59 @@ railpictures = function()
   return railpicturesinternal({{"metals", "metals"}, {"backplates", "backplates"}, {"ties", "ties"}, {"stone_path", "stone-path"}})
 end
 
+function drive_over_tie()
+  return {
+    type = "play-sound",
+    sound =
+    {
+      {
+        filename = "__base__/sound/train-tie-1.ogg",
+        volume = 0.6
+      },
+      {
+        filename = "__base__/sound/train-tie-2.ogg",
+        volume = 0.6
+      },
+      {
+        filename = "__base__/sound/train-tie-3.ogg",
+        volume = 0.6
+      },
+      {
+        filename = "__base__/sound/train-tie-4.ogg",
+        volume = 0.6
+      },
+    }
+  }
+end
+
+function flying_robot_sounds()
+  return
+  {
+    sound =
+    {
+      { filename = "__base__/sound/flying-robot-1.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-2.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-3.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.6 }
+    },
+    max_sounds_per_type = 3
+  }
+end
+
+function crash_trigger()
+  return {
+    type = "play-sound",
+    sound =
+    {
+      {
+        filename = "__base__/sound/car-crash.ogg",
+        volume = 0.8
+      },
+    }
+  }
+end
+
 data:extend(
 {
   {
@@ -807,6 +860,15 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/basic-transport-belt.ogg",
+        volume = 0.4
+      },
+      max_sounds_per_type = 3
+    },
     animation_speed_coefficient = 32,
     animations =
     {
@@ -829,7 +891,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.3, result = "express-transport-belt"},
     max_health = 50,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -838,6 +900,15 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/express-transport-belt.ogg",
+        volume = 0.4
+      },
+      max_sounds_per_type = 3
+    },
     animation_speed_coefficient = 32,
     animations =
     {
@@ -860,6 +931,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
     max_health = 250,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     resistances =
     {
       {
@@ -900,6 +972,23 @@ data:extend(
       line_length = 8,
       shift = {0.4, -0.06}
     },
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    working_sound =
+    {
+      sound = {
+        {
+          filename = "__base__/sound/assembling-machine-t2-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/assembling-machine-t2-2.ogg",
+          volume = 0.8
+        },
+      },
+      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+      apparent_volume = 1.5,
+    },
     crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 0.75,
     energy_source =
@@ -921,6 +1010,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
     max_health = 300,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     resistances = 
     {
       {
@@ -947,6 +1037,23 @@ data:extend(
         pipe_connections = {{ type="output", position = {0, 2} }}
       },
       off_when_no_fluid_recipe = true
+    },
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    working_sound =
+    {
+      sound = {
+        {
+          filename = "__base__/sound/assembling-machine-t3-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/assembling-machine-t3-2.ogg",
+          volume = 0.8
+        },
+      },
+      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+      apparent_volume = 1.5,
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -982,7 +1089,8 @@ data:extend(
     minable = {mining_time = 1, result = "car"},
     max_health = 500,
     corpse = "medium-remnants",
-    resistances = 
+    dying_explosion = "huge-explosion",
+    resistances =
     {
       {
         type = "fire",
@@ -991,8 +1099,8 @@ data:extend(
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
-    acceleration_per_energy = 0.000001,
-    breaking_speed = 0.01,
+    acceleration_per_energy = 20e-8,
+    breaking_speed = 2e-3,
     burner =
     {
       effectivity = 1,
@@ -1013,7 +1121,7 @@ data:extend(
       }
     },
     consumption = "600kW",
-    friction = 0.02,
+    friction = 5e-3,
     light =
     {
       {
@@ -1057,6 +1165,43 @@ data:extend(
       axially_symmetrical = false,
       direction_count = 64
     },
+    stop_trigger_speed = 0.2,
+    stop_trigger =
+    {
+      {
+        type = "play-sound",
+        sound =
+        {
+          {
+            filename = "__base__/sound/car-breaks.ogg",
+            volume = 0.6
+          },
+        }
+      },
+    },
+    crash_trigger = crash_trigger(),
+    sound_minimum_speed = 0.2;
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/car-engine.ogg",
+        volume = 0.6
+      },
+      activate_sound =
+      {
+        filename = "__base__/sound/car-engine-start.ogg",
+        volume = 0.6
+      },
+      deactivate_sound =
+      {
+        filename = "__base__/sound/car-engine-stop.ogg",
+        volume = 0.6
+      },
+      match_speed_to_activity = true,
+    },
+    open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
+    close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
     rotation_speed = 0.015,
     weight = 50,
     inventory_size = 80
@@ -1069,8 +1214,8 @@ data:extend(
     minable = {mining_time = 1, result = "iron-chest"},
     max_health = 100,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.7 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     resistances =
     {
       {
@@ -1099,8 +1244,8 @@ data:extend(
     minable = {mining_time = 1, result = "steel-chest"},
     max_health = 200,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.7 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     resistances =
     {
       {
@@ -1126,8 +1271,8 @@ data:extend(
     name = "smart-chest",
     icon = "__base__/graphics/icons/smart-chest.png",
     flags = {"placeable-neutral", "player-creation"},
-    open_sound = { filename = "__base__/sound/metallic-chest-open.wav", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.wav", volume = 0.7 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     minable =
     {
       hardness = 0.2,
@@ -1191,6 +1336,7 @@ data:extend(
     energy_per_movement = 5000,
     energy_per_rotation = 5000,
     rotation_speed = 0.02,
+    hand_size = 1.5,
     energy_source =
     {
       type = "electric",
@@ -1199,6 +1345,33 @@ data:extend(
     },
     extension_speed = 0.04,
     fast_replaceable_group = "inserter",
+    working_sound =
+    {
+      match_progress_to_activity = true,
+      sound =
+      {
+        {
+          filename = "__base__/sound/inserter-long-handed-1.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-long-handed-2.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-long-handed-3.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-long-handed-4.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-long-handed-5.ogg",
+          volume = 0.75
+        }
+      }
+    },
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-hand-base.png",
@@ -1210,14 +1383,35 @@ data:extend(
     {
       filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-hand-open.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
+      height = 41
+    },
+    hand_base_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
+      priority = "extra-high",
+      width = 8,
+      height = 34
+    },
+    hand_closed_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41
+    },
+    hand_open_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
+      priority = "extra-high",
+      width = 18,
       height = 41
     },
     platform_picture =
@@ -1262,22 +1456,73 @@ data:extend(
     },
     extension_speed = 0.07,
     fast_replaceable_group = "inserter",
-    hand_base_picture = {
+    working_sound =
+    {
+      match_progress_to_activity = true,
+      sound =
+      {
+        {
+          filename = "__base__/sound/inserter-fast-1.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-2.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-3.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-4.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-5.ogg",
+          volume = 0.75
+        }
+      }
+    },
+    hand_base_picture =
+    {
       filename = "__base__/graphics/entity/fast-inserter/fast-inserter-hand-base.png",
       priority = "extra-high",
       width = 8,
       height = 34
     },
-    hand_closed_picture = {
+    hand_closed_picture =
+    {
       filename = "__base__/graphics/entity/fast-inserter/fast-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
       height = 41
     },
-    hand_open_picture = {
+    hand_open_picture =
+    {
       filename = "__base__/graphics/entity/fast-inserter/fast-inserter-hand-open.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
+      height = 41
+    },
+    hand_base_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
+      priority = "extra-high",
+      width = 8,
+      height = 34
+    },
+    hand_closed_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41
+    },
+    hand_open_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
+      priority = "extra-high",
+      width = 18,
       height = 41
     },
     platform_picture =
@@ -1302,6 +1547,33 @@ data:extend(
       {
         type = "fire",
         percent = 90
+      }
+    },
+    working_sound =
+    {
+      match_progress_to_activity = true,
+      sound =
+      {
+        {
+          filename = "__base__/sound/inserter-fast-1.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-2.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-3.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-4.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-fast-5.ogg",
+          volume = 0.75
+        }
       }
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
@@ -1330,14 +1602,35 @@ data:extend(
     {
       filename = "__base__/graphics/entity/smart-inserter/smart-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/smart-inserter/smart-inserter-hand-open.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
+      height = 41
+    },
+    hand_base_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
+      priority = "extra-high",
+      width = 8,
+      height = 34
+    },
+    hand_closed_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41
+    },
+    hand_open_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
+      priority = "extra-high",
+      width = 18,
       height = 41
     },
     platform_picture =
@@ -1383,6 +1676,7 @@ data:extend(
     minable = {mining_time = 1, result = "diesel-locomotive"},
     max_health = 1000,
     corpse = "medium-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{-0.6, -2.6}, {0.6, 2.6}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     drawing_box = {{-1, -4}, {1, 3}},
@@ -1391,7 +1685,7 @@ data:extend(
     max_power = "600kW",
     braking_force = 10,
     friction_force = 0.0015,
-    -- this is a percentage of current speed that will be substracted
+    -- this is a percentage of current speed that will be subtracted
     air_resistance = 0.002,
     connection_distance = 3.3,
     joint_distance = 4.6,
@@ -1406,14 +1700,17 @@ data:extend(
         {
           name = "smoke",
           deviation = {0.1, 0.1},
-          frequency = 1000,
+          frequency = 300,
           position = {0, 0},
           slow_down_factor = 0.9,
-          starting_frame = 3,
+          starting_frame = 1,
           starting_frame_deviation = 5,
           starting_frame_speed = 0,
           starting_frame_speed_deviation = 5,
-          starting_vertical_speed = 0.15,
+          height = 2,
+          height_deviation = 0.2,
+          starting_vertical_speed = 0.2,
+          starting_vertical_speed_deviation = 0.06,
         }
       }
     },
@@ -1472,7 +1769,60 @@ data:extend(
       lines_per_file = 8,
       shift = {0.9, -0.45}
     },
-    rail_category = "regular"
+    rail_category = "regular",
+
+    stop_trigger =
+    {
+      -- left side
+      {
+        type = "create-smoke",
+        repeat_count = 125,
+        entity_name = "smoke-train-stop",
+        initial_height = 0,
+        -- smoke goes to the left
+        speed = {-0.03, 0},
+        speed_multiplier = 0.75,
+        speed_multiplier_deviation = 1.1,
+        offset_deviation = {{-0.75, -2.7}, {-0.3, 2.7}}
+      },
+      -- right side
+      {
+        type = "create-smoke",
+        repeat_count = 125,
+        entity_name = "smoke-train-stop",
+        initial_height = 0,
+        -- smoke goes to the right
+        speed = {0.03, 0},
+        speed_multiplier = 0.75,
+        speed_multiplier_deviation = 1.1,
+        offset_deviation = {{0.3, -2.7}, {0.75, 2.7}}
+      },
+      {
+        type = "play-sound",
+        sound =
+        {
+          {
+            filename = "__base__/sound/train-breaks.ogg",
+            volume = 0.6
+          },
+        }
+      },
+    },
+    drive_over_tie_trigger = drive_over_tie(),
+    tie_distance = 50,
+    crash_trigger = crash_trigger(),
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/train-engine.ogg",
+        volume = 0.4
+      },
+      match_speed_to_activity = true,
+    },
+    open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
+    close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
+    sound_minimum_speed = 0.5;
   },
   {
     type = "cargo-wagon",
@@ -1483,6 +1833,7 @@ data:extend(
     minable = {mining_time = 1, result = "cargo-wagon"},
     max_health = 600,
     corpse = "medium-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
     selection_box = {{-0.7, -2.5}, {1, 2.5}},
     weight = 1000,
@@ -1512,20 +1863,35 @@ data:extend(
       lines_per_file = 8,
       shift={0.7, -0.45}
     },
-    rail_category = "regular"
+    rail_category = "regular",
+    drive_over_tie_trigger = drive_over_tie(),
+    tie_distance = 50,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/train-wheels.ogg",
+        volume = 0.5
+      },
+      match_volume_to_activity = true,
+    },
+    crash_trigger = crash_trigger(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    sound_minimum_speed = 0.5;
   },
   {
     type = "wall",
     name = "wall",
     icon = "__base__/graphics/icons/wall.png",
     flags = {"placeable-neutral", "player-creation"},
-    collision_box = {{-0.49, -0.49}, {0.49, 0.49}},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     minable = {mining_time = 1, result = "wall"},
     max_health = 350,
     corpse = "wall-remnants",
-    repair_sound = { filename = "__base__/sound/manual-repair-simple.wav" },
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.wav" },
+    repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     -- this kind of code can be used for having walls mirror the effect
     -- there can be multiple reaction items
     --attack_reaction =
@@ -2031,7 +2397,11 @@ data:extend(
         frame_count = 2,
         shift = {2, -0.8}
       }
-    }
+    },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/train-stop.ogg", volume = 0.8 }
+    },
   },
   {
     type = "rail-signal",
@@ -2065,6 +2435,7 @@ data:extend(
     minable = {mining_time = 1, result = "lab"},
     max_health = 150,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     light = {intensity = 0.75, size = 8},
@@ -2085,6 +2456,15 @@ data:extend(
       frame_height = 91,
       frame_count = 1,
       shift = {0.2, 0.15}
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/lab.ogg",
+        volume = 0.7
+      },
+      apparent_volume = 1.5
     },
     energy_source =
     {
@@ -2116,6 +2496,7 @@ data:extend(
     transfer_distance = 0.5,
     max_energy = "300kJ",
     energy_per_tick = "0.01kJ",
+    speed_multiplier_when_out_of_energy = 0.2,
     energy_per_move = "1kJ",
     min_to_charge = 0.2,
     max_to_charge = 0.95,
@@ -2126,6 +2507,7 @@ data:extend(
       width = 37,
       height = 34
     },
+    working_sound = flying_robot_sounds(),
     shadow =
     {
       filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
@@ -2149,6 +2531,7 @@ data:extend(
     transfer_distance = 0.5,
     max_energy = "300kJ",
     energy_per_tick = "0.01kJ",
+    speed_multiplier_when_out_of_energy = 0.2,
     energy_per_move = "1kJ",
     min_to_charge = 0.2,
     max_to_charge = 0.95,
@@ -2159,6 +2542,7 @@ data:extend(
       width = 37,
       height = 34
     },
+    working_sound = flying_robot_sounds(),
     shadow =
     {
       filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
@@ -2291,6 +2675,7 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{-1.7, -1.7}, {1.7, 1.7}},
     selection_box = {{-2, -2}, {2, 2}},
+    dying_explosion = "huge-explosion",
     energy_source =
     {
       type = "electric",
@@ -2348,6 +2733,11 @@ data:extend(
       scale = 1.5,
       animation_speed = 0.5
     },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.6 },
+      max_sounds_per_type = 3
+    },
     recharging_light = {intensity = 0.4, size = 5},
     request_to_open_door_timeout = 15,
     spawn_and_station_height = 0.33,
@@ -2362,7 +2752,21 @@ data:extend(
       filename = "__base__/graphics/entity/roboport/roboport-construction-radius-visualization.png",
       width = 12,
       height = 12
-    }
+    },
+    open_door_trigger_effect =
+    {
+      {
+        type = "play-sound",
+        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.6 }
+      },
+    },
+    close_door_trigger_effect =
+    {
+      {
+        type = "play-sound",
+        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.75 }
+      },
+    },
   },
 
   {
@@ -2396,13 +2800,22 @@ data:extend(
       height = 115,
       shift = {0.6875, 0.109375}
     },
+    working_sound =
+    {
+      sound = {
+          filename = "__base__/sound/storage-tank.ogg",
+          volume = 0.8
+      },
+      apparent_volume = 1.5,
+      max_sounds_per_type = 3
+    },
   },
 
   {
     type = "pump",
     name = "small-pump",
     icon = "__base__/graphics/icons/small-pump.png",
-    flags = {"placeable-neutral", "player-creation", "filter-directions"},
+    flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 1, result = "small-pump"},
     max_health = 80,
     fast_replaceable_group = "pipe",
@@ -2677,7 +3090,7 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    drawing_box = {{-2.8, -0.5}, {0.5, 0.5}},
+    drawing_box = {{-0.5, -2.8}, {0.5, 0.5}},
     maximum_wire_distance = 9,
     supply_area_distance = 3.5,
     pictures =
@@ -2813,6 +3226,11 @@ data:extend(
       axially_symmetrical = false,
       direction_count = 4,
       shift = {0.9, -1}
+    },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/substation.ogg" },
+      apparent_volume = 1.5,
     },
     connection_points =
     {
@@ -2957,7 +3375,20 @@ data:extend(
       animation_speed = 0.5
     },
     discharge_cooldown = 60,
-    discharge_light = {intensity = 0.7, size = 7}
+    discharge_light = {intensity = 0.7, size = 7},
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/accumulator-working.ogg",
+        volume = 1
+      },
+      idle_sound = {
+        filename = "__base__/sound/accumulator-idle.ogg",
+        volume = 0.4
+      },
+      max_sounds_per_type = 5
+    },
   },
   {
     type = "furnace",
@@ -2967,7 +3398,11 @@ data:extend(
     minable = {mining_time = 1, result = "steel-furnace"},
     max_health = 200,
     corpse = "medium-remnants",
-    resistances = 
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/furnace.ogg" }
+    },
+    resistances =
     {
       {
         type = "fire",
@@ -3035,6 +3470,8 @@ data:extend(
     minable = {mining_time = 1, result = "electric-furnace"},
     max_health = 150,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
+    light = {intensity = 1, size = 10},
     resistances = 
     {
       {
@@ -3055,6 +3492,15 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input",
       emissions = 0.005
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/electric-furnace.ogg",
+        volume = 0.7
+      },
+      apparent_volume = 1.5
     },
     on_animation =
     {
@@ -3087,6 +3533,7 @@ data:extend(
     minable = {mining_time = 1, result = "basic-beacon"},
     max_health = 200,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     allowed_effects = {"consumption", "speed", "pollution"},
@@ -3206,7 +3653,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/laser.wav",
+          filename = "__base__/sound/laser.ogg",
           volume = 0.4
         }
       },
@@ -3280,7 +3727,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/gunshot.wav",
+          filename = "__base__/sound/gunshot.ogg",
           volume = 0.3
         }
       },
@@ -3368,7 +3815,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/laser.wav",
+          filename = "__base__/sound/laser.ogg",
           volume = 0.4
         }
       },
@@ -3429,12 +3876,14 @@ data:extend(
     minable = {mining_time = 1, result = "oil-refinery"},
     max_health = 300,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     module_slots = 2,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     crafting_categories = {"oil-processing"},
     crafting_speed = 1,
+    has_backer_name = true,
     energy_source =
     {
       type = "electric",
@@ -3501,6 +3950,12 @@ data:extend(
         light = {intensity = 0.4, size = 6}
       }
     },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/oil-refinery.ogg" },
+      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+      apparent_volume = 2.5,
+    },
     fluid_boxes =
     {
       {
@@ -3547,6 +4002,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "chemical-plant"},
     max_health = 300,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     module_slots = 2,
@@ -3634,6 +4090,17 @@ data:extend(
           frame_height = 10
         }
       }
+    },
+    working_sound =
+    {
+      sound = {
+        {
+          filename = "__base__/sound/chemical-plant.ogg",
+          volume = 0.8
+        }
+      },
+      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+      apparent_volume = 1.5,
     },
     crafting_speed = 1.25,
     energy_source =

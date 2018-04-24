@@ -8,7 +8,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "c[worm]-a[small-worm-turret]",
     place_result = "small-worm-turret",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -18,7 +18,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "c[worm]-b[medium-worm-turret]",
     place_result = "medium-worm-turret",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -28,7 +28,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "b[turret]-b[laser-turret]",
     place_result = "laser-turret",
-    stack_size = 32
+    stack_size = 50
   }
 }
 )

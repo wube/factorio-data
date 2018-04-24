@@ -28,7 +28,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/gunshot.wav",
+          filename = "__base__/sound/gunshot.ogg",
           volume = 0.3
         }
       }
@@ -63,7 +63,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/gunshot.wav",
+          filename = "__base__/sound/gunshot.ogg",
           volume = 0.2
         }
       }

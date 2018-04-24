@@ -100,6 +100,21 @@ data:extend(
     },
     starting_attack_speed = 0.03,
     starting_attack_animation = small_worm_starting_attack,
+    starting_attack_sound =
+    {
+      {
+        filename = "__base__/sound/creatures/worm-roar-short-1.ogg",
+        volume = 0.7
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-short-2.ogg",
+        volume = 0.7
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-short-3.ogg",
+        volume = 0.7
+      }
+    },
     ending_attack_speed = 0.03,
     ending_attack_animation = (function()
                                 local res = util.table.deepcopy(small_worm_starting_attack)
@@ -233,7 +248,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/gunshot.wav",
+          filename = "__base__/sound/gunshot.ogg",
           volume = 0.3
         }
       }

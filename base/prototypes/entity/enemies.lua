@@ -31,6 +31,17 @@ data:extend(
       ammo_type = make_unit_melee_ammo_type(15),
       range = 1,
       cooldown = 35,
+      sound =
+      {
+        {
+          filename = "__base__/sound/creatures/biter-roar-medium-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/creatures/biter-roar-medium-2.ogg",
+          volume = 0.8
+        }
+      },
       animation =
       {
         frame_width = 200,
@@ -73,19 +84,19 @@ data:extend(
     dying_sound =
     {
       {
-        filename = "__base__/sound/creeper-death-1.wav",
+        filename = "__base__/sound/creatures/creeper-death-1.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-2.wav",
+        filename = "__base__/sound/creatures/creeper-death-2.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-3.wav",
+        filename = "__base__/sound/creatures/creeper-death-3.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-4.wav",
+        filename = "__base__/sound/creatures/creeper-death-4.ogg",
         volume = 0.7
       }
     },
@@ -132,6 +143,17 @@ data:extend(
       cooldown = 35,
       ammo_category = "melee",
       ammo_type = make_unit_melee_ammo_type(30),
+      sound =
+      {
+        {
+          filename = "__base__/sound/creatures/biter-roar-long-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/creatures/biter-roar-long-2.ogg",
+          volume = 0.8
+        }
+      },
       animation =
       {
         frame_width = 279,
@@ -174,19 +196,19 @@ data:extend(
     dying_sound =
     {
       {
-        filename = "__base__/sound/creeper-death-1.wav",
+        filename = "__base__/sound/creatures/creeper-death-1.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-2.wav",
+        filename = "__base__/sound/creatures/creeper-death-2.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-3.wav",
+        filename = "__base__/sound/creatures/creeper-death-3.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-4.wav",
+        filename = "__base__/sound/creatures/creeper-death-4.ogg",
         volume = 0.7
       }
     },

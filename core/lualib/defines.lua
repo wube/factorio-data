@@ -125,3 +125,10 @@ groupstate =
   moving = 1,
   attacking = 2
 }
+
+circuitconnector = 
+{
+  red = 0,
+  green = 1,
+  logistic = 2
+}

@@ -8,7 +8,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "b[turret]-a[gun-turret]",
     place_result = "gun-turret",
-    stack_size = 64
+    stack_size = 50
   }
 }
 )

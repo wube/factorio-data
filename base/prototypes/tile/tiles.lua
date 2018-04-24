@@ -348,19 +348,19 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/grass-01.wav",
+        filename = "__base__/sound/walking/grass-01.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-02.wav",
+        filename = "__base__/sound/walking/grass-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-03.wav",
+        filename = "__base__/sound/walking/grass-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-04.wav",
+        filename = "__base__/sound/walking/grass-04.ogg",
         volume = 0.8
       }
     },
@@ -417,19 +417,19 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/grass-01.wav",
+        filename = "__base__/sound/walking/grass-01.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-02.wav",
+        filename = "__base__/sound/walking/grass-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-03.wav",
+        filename = "__base__/sound/walking/grass-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-04.wav",
+        filename = "__base__/sound/walking/grass-04.ogg",
         volume = 0.8
       }
     },
@@ -486,19 +486,19 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/grass-01.wav",
+        filename = "__base__/sound/walking/grass-01.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-02.wav",
+        filename = "__base__/sound/walking/grass-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-03.wav",
+        filename = "__base__/sound/walking/grass-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/grass-04.wav",
+        filename = "__base__/sound/walking/grass-04.ogg",
         volume = 0.8
       }
     },
@@ -556,15 +556,15 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/dirt-02.wav",
+        filename = "__base__/sound/walking/dirt-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/dirt-03.wav",
+        filename = "__base__/sound/walking/dirt-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/dirt-04.wav",
+        filename = "__base__/sound/walking/dirt-04.ogg",
         volume = 0.8
       }
     },
@@ -621,15 +621,15 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/dirt-02.wav",
+        filename = "__base__/sound/walking/dirt-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/dirt-03.wav",
+        filename = "__base__/sound/walking/dirt-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/dirt-04.wav",
+        filename = "__base__/sound/walking/dirt-04.ogg",
         volume = 0.8
       }
     },
@@ -686,19 +686,19 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/sand-01.wav",
+        filename = "__base__/sound/walking/sand-01.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/sand-02.wav",
+        filename = "__base__/sound/walking/sand-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/sand-03.wav",
+        filename = "__base__/sound/walking/sand-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/sand-04.wav",
+        filename = "__base__/sound/walking/sand-04.ogg",
         volume = 0.8
       }
     },
@@ -755,19 +755,19 @@ data:extend(
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/sand-01.wav",
+        filename = "__base__/sound/walking/sand-01.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/sand-02.wav",
+        filename = "__base__/sound/walking/sand-02.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/sand-03.wav",
+        filename = "__base__/sound/walking/sand-03.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/walking/sand-04.wav",
+        filename = "__base__/sound/walking/sand-04.ogg",
         volume = 0.8
       }
     },

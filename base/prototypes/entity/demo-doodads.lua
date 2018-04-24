@@ -1497,102 +1497,102 @@ data:extend(
     pictures =
     {
       {
-        filename = "__base__/graphics/doodads/desert/root-A-01.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-01.png",
         width = 22,
         height = 10,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-02.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-02.png",
         width = 9,
         height = 11,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-03.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-03.png",
         width = 11,
         height = 10,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-04.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-04.png",
         width = 13,
         height = 17,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-05.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-05.png",
         width = 15,
         height = 11,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-06.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-06.png",
         width = 14,
         height = 13,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-07.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-07.png",
         width = 15,
         height = 13,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-08.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-08.png",
         width = 12,
         height = 15,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-09.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-09.png",
         width = 22,
         height = 16,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-10.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-10.png",
         width = 11,
         height = 10,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-11.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-11.png",
         width = 22,
         height = 18,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-12.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-12.png",
         width = 26,
         height = 17,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-13.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-13.png",
         width = 15,
         height = 13,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-14.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-14.png",
         width = 13,
         height = 13,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-15.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-15.png",
         width = 22,
         height = 17,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-16.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-16.png",
         width = 22,
         height = 16,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-17.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-17.png",
         width = 13,
         height = 15,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-18.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-18.png",
         width = 14,
         height = 17,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-19.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-19.png",
         width = 12,
         height = 10,
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-A-20.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-A-20.png",
         width = 13,
         height = 14,
       },
@@ -1616,92 +1616,92 @@ data:extend(
     pictures =
     {
       {
-        filename = "__base__/graphics/doodads/desert/root-B-01.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-01.png",
         width = 38,
         height = 20
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-02.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-02.png",
         width = 32,
         height = 25
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-03.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-03.png",
         width = 36,
         height = 34
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-04.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-04.png",
         width = 40,
         height = 32
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-05.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-05.png",
         width = 29,
         height = 24
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-06.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-06.png",
         width = 38,
         height = 32
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-07.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-07.png",
         width = 19,
         height = 28
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-08.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-08.png",
         width = 46,
         height = 29
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-09.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-09.png",
         width = 34,
         height = 23
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-10.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-10.png",
         width = 21,
         height = 27
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-11.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-11.png",
         width = 29,
         height = 24
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-12.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-12.png",
         width = 28,
         height = 14
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-13.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-13.png",
         width = 34,
         height = 25
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-14.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-14.png",
         width = 33,
         height = 25
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-15.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-15.png",
         width = 21,
         height = 16
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-16.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-16.png",
         width = 35,
         height = 22
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-17.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-17.png",
         width = 35,
         height = 13
       },
       {
-        filename = "__base__/graphics/doodads/desert/root-B-18.png",
+        filename = "__base__/graphics/entity/decorative/roots/root-B-18.png",
         width = 33,
         height = 25
       },
@@ -1777,5 +1777,320 @@ data:extend(
       }
     }
   },
-}
-)
+
+  {
+    type = "decorative",
+    name = "brown-carpet-grass",
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    icon = "__base__/graphics/icons/brown-carpet-grass.png",
+    subgroup = "grass",
+    order = "b[decorative]-a[grass]-b[carpet]",
+    collision_box = {{-2, -2}, {2, 2}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-f[grass]-c",
+      sharpness = 0.7,
+      max_probability = 0.01,
+      peaks = autoplace_utils.peaks(grass_peaks,
+                                    {
+                                      {
+                                        influence = 0.3,
+                                        noise_layer = "grass1",
+                                        noise_octaves_difference = -2.8,
+                                        noise_persistence = 0.5
+                                      },
+                                    }),
+    },
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/decorative/brown-carpet-grass/brown-carpet-grass-01.png",
+        width = 103,
+        height = 70,
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-carpet-grass/brown-carpet-grass-02.png",
+        width = 185,
+        height = 164,
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-carpet-grass/brown-carpet-grass-03.png",
+        width = 96,
+        height = 176,
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-carpet-grass/brown-carpet-grass-04.png",
+        width = 200,
+        height = 179,
+      },
+    }
+  },
+
+  {
+    type = "decorative",
+    name = "brown-hairy-grass",
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    icon = "__base__/graphics/icons/brown-hairy-grass.png",
+    subgroup = "grass",
+    order = "b[decorative]-a[grass]-a[hairy]",
+    collision_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    render_layer = "object",
+    selectable_in_game = false,
+    autoplace =
+    {
+      order = "a[doodad]-f[grass]-b",
+      sharpness = 0.2,
+      max_probability = 0.01,
+      peaks = autoplace_utils.peaks(grass_peaks,
+                                    {
+                                      {
+                                        influence = 0.3,
+                                        noise_layer = "grass2",
+                                        noise_octaves_difference = -2.8,
+                                        noise_persistence = 0.5
+                                      },
+                                    }),
+    },
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/decorative/brown-hairy-grass/brown-hairy-grass-01.png",
+        width = 88,
+        height = 31
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-hairy-grass/brown-hairy-grass-02.png",
+        width = 39,
+        height = 34
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-hairy-grass/brown-hairy-grass-03.png",
+        width = 53,
+        height = 29
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-hairy-grass/brown-hairy-grass-04.png",
+        width = 47,
+        height = 31
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-hairy-grass/brown-hairy-grass-05.png",
+        width = 56,
+        height = 38
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/brown-hairy-grass/brown-hairy-grass-06.png",
+        width = 59,
+        height = 28
+      },
+    }
+  },
+
+  {
+    type = "decorative",
+    name = "small-rock",
+    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    icon = "__base__/graphics/icons/small-stone-rock.png",
+    subgroup = "grass",
+    order = "b[decorative]-k[stone-rock]",
+    collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
+    selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
+    render_layer = "object",
+    autoplace =
+    {
+      order = "a[doodad]-a[rock]",
+      peaks =
+      {
+        {
+          influence = 0.0002
+        },
+        {
+          influence = 0.1;
+          min_influence = 0,
+          elevation_optimal = 12000,
+          elevation_range = 5000,
+          elevation_max_range = 12000,
+        }
+      }
+    },
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-01.png",
+        width = 47,
+        height = 37,
+        shift = {0.21, -0.18}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-02.png",
+        width = 46,
+        height = 38,
+        shift = {0.25, -0.1}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-03.png",
+        width = 48,
+        height = 42,
+        shift = {0.28, -0.21}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-04.png",
+        width = 56,
+        height = 39,
+        shift = {0.28, -0.12}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-05.png",
+        width = 54,
+        height = 36,
+        shift = {0.34, -0.125}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-06.png",
+        width = 32,
+        height = 26,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-07.png",
+        width = 33,
+        height = 28,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-08.png",
+        width = 35,
+        height = 26,
+        shift = {0.15, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-09.png",
+        width = 35,
+        height = 23,
+        shift = {0.125, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-10.png",
+        width = 21,
+        height = 21,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-11.png",
+        width = 24,
+        height = 16,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-12.png",
+        width = 19,
+        height = 17,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-13.png",
+        width = 23,
+        height = 15,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-14.png",
+        width = 44,
+        height = 42,
+        shift = {0.28, -0.18}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-15.png",
+        width = 51,
+        height = 41,
+        shift = {0.31, -0.18}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-16.png",
+        width = 55,
+        height = 40,
+        shift = {0.25, -0.18}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-17.png",
+        width = 52,
+        height = 44,
+        shift = {0.37, -0.21}
+      },      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-18.png",
+        width = 57,
+        height = 39,
+        shift = {0.46, -0.15}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-19.png",
+        width = 20,
+        height = 23,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-20.png",
+        width = 25,
+        height = 22,
+        shift = {0.0, -0.37}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-21.png",
+        width = 31,
+        height = 16,
+        shift = {0.0, 0.25}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-22.png",
+        width = 29,
+        height = 16,
+        shift = {0.25, -0.25}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-23.png",
+        width 	= 21,
+        height = 20,
+        shift = {-0.1, -0.18}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-24.png",
+        width = 47,
+        height = 29,
+        shift = {0.25, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-25.png",
+        width = 34,
+        height = 33,
+        shift = {0.0, -0.12}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-26.png",
+        width = 38,
+        height = 28,
+        shift = {0.06, -0.25}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-27.png",
+        width = 31,
+        height = 26,
+        shift = {0.0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-28.png",
+        width = 45,
+        height = 24,
+        shift = {0.18, -0.09}
+      },
+      {
+        filename = "__base__/graphics/entity/decorative/small-stone-rock/small-stone-rock-29.png",
+        width = 48,
+        height = 26,
+        shift = {0.21, -0.09}
+      }
+    }
+  }
+})

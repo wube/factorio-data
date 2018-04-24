@@ -8,7 +8,7 @@ data:extend(
     subgroup = "storage",
     order = "a[items]-b[iron-chest]",
     place_result = "iron-chest",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -18,7 +18,7 @@ data:extend(
     subgroup = "storage",
     order = "a[items]-c[steel-chest]",
     place_result = "steel-chest",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -28,7 +28,7 @@ data:extend(
     subgroup = "storage",
     order = "a[items]-d[smart-chest]",
     place_result = "smart-chest",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -38,7 +38,7 @@ data:extend(
     subgroup = "belt",
     order = "a[transport-belt]-b[fast-transport-belt]",
     place_result = "fast-transport-belt",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -48,7 +48,7 @@ data:extend(
     subgroup = "belt",
     order = "a[transport-belt]-c[express-transport-belt]",
     place_result = "express-transport-belt",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -58,7 +58,7 @@ data:extend(
     subgroup = "inserter",
     order = "c[long-handed-inserter]",
     place_result = "long-handed-inserter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -68,7 +68,7 @@ data:extend(
     subgroup = "inserter",
     order = "d[fast-inserter]",
     place_result = "fast-inserter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -78,7 +78,7 @@ data:extend(
     subgroup = "inserter",
     order = "f[inserter]-e[smart-inserter]",
     place_result = "smart-inserter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -88,7 +88,7 @@ data:extend(
     subgroup = "production-machine",
     order = "b[assembling-machine-2]",
     place_result = "assembling-machine-2",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -98,7 +98,7 @@ data:extend(
     subgroup = "production-machine",
     order = "c[assembling-machine-3]",
     place_result = "assembling-machine-3",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -108,7 +108,7 @@ data:extend(
     subgroup = "energy",
     order = "d[solar-panel]-a[solar-panel]",
     place_result = "solar-panel",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -118,7 +118,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-e[diesel-locomotive]",
     place_result = "diesel-locomotive",
-    stack_size = 8
+    stack_size = 5
   },
   {
     type = "item",
@@ -128,7 +128,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-f[cargo-wagon]",
     place_result = "cargo-wagon",
-    stack_size = 8
+    stack_size = 5
   },
   {
     type = "item",
@@ -138,7 +138,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-a[straight-rail]",
     place_result = "straight-rail",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -148,7 +148,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-b[curved-rail]",
     place_result = "curved-rail",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -158,7 +158,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "z[not-used]",
     place_result = "player-port",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -168,7 +168,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "a[wall]-a[wall]",
     place_result = "wall",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -187,7 +187,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "a[science-pack-1]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -196,7 +196,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "a[science-pack-2]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -205,7 +205,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "a[science-pack-3]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -214,7 +214,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "science-pack",
     order = "d[alien-science-pack]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -224,7 +224,7 @@ data:extend(
     subgroup = "production-machine",
     order = "g[lab]",
     place_result = "lab",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -234,7 +234,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-c[train-stop]",
     place_result = "train-stop",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -244,7 +244,7 @@ data:extend(
     subgroup = "transport",
     order = "a[train-system]-d[rail-signal]",
     place_result = "rail-signal",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -253,7 +253,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "d[steel-plate]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -263,7 +263,7 @@ data:extend(
     subgroup = "belt",
     order = "b[transport-belt-to-ground]-a[basic-transport-belt-to-ground]",
     place_result = "basic-transport-belt-to-ground",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -273,7 +273,7 @@ data:extend(
     subgroup = "belt",
     order = "b[transport-belt-to-ground]-b[fast-transport-belt-to-ground]",
     place_result = "fast-transport-belt-to-ground",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -283,7 +283,7 @@ data:extend(
     subgroup = "belt",
     order = "b[transport-belt-to-ground]-c[express-transport-belt-to-ground]",
     place_result = "express-transport-belt-to-ground",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -293,7 +293,7 @@ data:extend(
     subgroup = "belt",
     order = "c[splitter]-a[basic-splitter]",
     place_result = "basic-splitter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -303,7 +303,7 @@ data:extend(
     subgroup = "belt",
     order = "c[splitter]-b[fast-splitter]",
     place_result = "fast-splitter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -313,7 +313,7 @@ data:extend(
     subgroup = "belt",
     order = "c[splitter]-c[express-splitter]",
     place_result = "express-splitter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -322,7 +322,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "d[advanced-circuit]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -331,7 +331,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "e[processing-unit]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -341,7 +341,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "a[robot]-a[logistic-robot]",
     place_result = "logistic-robot",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -351,7 +351,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "a[robot]-b[construction-robot]",
     place_result = "construction-robot",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -361,7 +361,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "b[storage]-c[logistic-chest-passive-provider]",
     place_result = "logistic-chest-passive-provider",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -371,7 +371,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "b[storage]-c[logistic-chest-active-provider]",
     place_result = "logistic-chest-active-provider",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -381,7 +381,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "b[storage]-c[logistic-chest-storage]",
     place_result = "logistic-chest-storage",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -391,7 +391,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "b[storage]-c[logistic-chest-requester]",
     place_result = "logistic-chest-requester",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -401,7 +401,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "e[rocket-defense]",
     place_result = "rocket-defense",
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "item",
@@ -411,7 +411,7 @@ data:extend(
     subgroup = "logistic-network",
     order = "c[signal]-a[roboport]",
     place_result = "roboport",
-    stack_size = 4
+    stack_size = 5
   },
   {
     type = "item",
@@ -430,7 +430,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-c[big-electric-pole]",
     place_result = "big-electric-pole",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -440,7 +440,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-b[medium-electric-pole]",
     place_result = "medium-electric-pole",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -450,7 +450,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-d[substation]",
     place_result = "substation",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -460,7 +460,7 @@ data:extend(
     subgroup = "energy",
     order = "e[accumulator]-a[basic-accumulator]",
     place_result = "basic-accumulator",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -470,7 +470,7 @@ data:extend(
     subgroup = "smelting-machine",
     order = "b[steel-furnace]",
     place_result = "steel-furnace",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -480,7 +480,7 @@ data:extend(
     subgroup = "smelting-machine",
     order = "c[electric-furnace]",
     place_result = "electric-furnace",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -490,7 +490,7 @@ data:extend(
     subgroup = "module",
     order = "a[beacon]",
     place_result = "basic-beacon",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -500,7 +500,7 @@ data:extend(
     subgroup = "storage",
     order = "b[fluid]-a[storage-tank]",
     place_result = "storage-tank",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -510,7 +510,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "b[pipe]-c[small-pump]",
     place_result = "small-pump",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "blueprint",
@@ -539,7 +539,7 @@ data:extend(
     subgroup = "extraction-machine",
     order = "b[fluids]-b[pumpjack]",
     place_result = "pumpjack",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -549,7 +549,7 @@ data:extend(
     subgroup = "production-machine",
     order = "d[refinery]",
     place_result = "oil-refinery",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -559,7 +559,7 @@ data:extend(
     subgroup = "production-machine",
     order = "e[chemical-plant]",
     place_result = "chemical-plant",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -568,7 +568,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "f[sulfur]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -577,7 +577,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "barrel",
     order = "a[empty-barrel]",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -586,7 +586,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "barrel",
     order = "b[crude-oil-barrel]",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -596,7 +596,7 @@ data:extend(
     fuel_value = "25MJ",
     subgroup = "raw-resource",
     order = "c[solid-fuel]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -605,7 +605,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "g[plastic-bar]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -614,7 +614,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "f[engine-unit]",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -623,7 +623,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "g[electric-engine-unit]",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -632,7 +632,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "h[explosives]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -641,7 +641,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "i[battery]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -650,7 +650,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "j[flying-robot-frame]",
-    stack_size = 32
+    stack_size = 50
   }
 }
 )

@@ -8,7 +8,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "a[energy-source]-a[solar-panel]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -18,7 +18,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "a[energy-source]-b[fusion-reactor]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -28,7 +28,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "b[shield]-a[energy-shield-equipment]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -38,7 +38,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "b[shield]-b[energy-shield-equipment-mk2]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -48,7 +48,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "c[battery]-a[battery-equipment]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -58,7 +58,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "c[battery]-b[battery-equipment-mk2]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -68,7 +68,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "d[active-defense]-a[basic-laser-defense-equipment]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -78,7 +78,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "d[active-defense]-b[basic-electric-discharge-defense-equipment]",
-    stack_size = 16
+    stack_size = 20
   },
   {
     type = "item",
@@ -88,7 +88,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "e[exoskeleton]-a[basic-exoskeleton-equipment]",
-    stack_size = 4
+    stack_size = 10
   },
   {
     type = "item",
@@ -98,7 +98,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "equipment",
     order = "f[night-vision]-a[night-vision-equipment]",
-    stack_size = 16
+    stack_size = 20
   }
 }
 )

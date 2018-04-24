@@ -768,7 +768,7 @@ data:extend(
   {
     type = "recipe",
     name = "battery",
-    category = "chemistry", -- until we have assembling machine with pipe
+    category = "chemistry",
     energy_required = 5,
     enabled = "false",
     ingredients =

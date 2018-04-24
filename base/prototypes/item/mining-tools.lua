@@ -22,7 +22,7 @@ data:extend(
     subgroup = "tool",
     order = "a[mining]-b[steel-axe]",
     speed = 4,
-    stack_size = 32
+    stack_size = 20
   }
 }
 )

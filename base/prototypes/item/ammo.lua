@@ -1,14 +1,3 @@
-function ntimes(n, table)
-  local i
-  local ret = {}
-
-  for i = 1, n do
-    ret[#ret + 1] = table
-  end
-
-  return ret
-end
-
 data:extend(
 {
   {
@@ -151,9 +140,10 @@ data:extend(
         type = "create-entity",
         entity_name = "explosion-gunshot"
       },
-      action = ntimes(12,
+      action =
         {
           type = "direct",
+          repeat_count = 12,
           action_delivery =
           {
             type = "projectile",
@@ -161,9 +151,9 @@ data:extend(
             starting_speed = 1,
             direction_deviation = 0.3,
             range_deviation = 0.3,
-            max_range = 15,
+            max_range = 15
           }
-        })
+        }
     },
     magazine_size = 10,
     subgroup = "ammo",
@@ -184,19 +174,20 @@ data:extend(
         type = "create-entity",
         entity_name = "explosion-gunshot"
       },
-      action = ntimes(16,
+      action =
+      {
+        type = "direct",
+        repeat_count = 16,
+        action_delivery =
         {
-          type = "direct",
-          action_delivery =
-          {
-            type = "projectile",
-            projectile = "piercing-shotgun-pellet",
-            starting_speed = 1,
-            direction_deviation = 0.3,
-            range_deviation = 0.3,
-            max_range = 15,
-          }
-        })
+          type = "projectile",
+          projectile = "piercing-shotgun-pellet",
+          starting_speed = 1,
+          direction_deviation = 0.3,
+          range_deviation = 0.3,
+          max_range = 15,
+        }
+      }
     },
     magazine_size = 10,
     subgroup = "ammo",

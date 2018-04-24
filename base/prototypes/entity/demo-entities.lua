@@ -29,9 +29,10 @@ boilerfires =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
     priority = "extra-high",
-    frame_width = 9,
-    frame_height = 8,
-    frame_count = 14,
+    frame_width = 11,
+    frame_height = 11,
+    frame_count = 32,
+    line_length = 8,
     shift = {0.03125, 0.28125}
   },
   left =
@@ -272,23 +273,23 @@ pipepictures = function()
     },
     low_temperature_flow =
     {
-      filename = "__base__/graphics/entity/pipe/fluid-flow.png",
+      filename = "__base__/graphics/entity/pipe/fluid-flow-low-temperature.png",
       priority = "extra-high",
-      width = 128,
+      width = 160,
       height = 18
     },
     middle_temperature_flow =
     {
-      filename = "__base__/graphics/entity/pipe/fluid-flow.png",
+      filename = "__base__/graphics/entity/pipe/fluid-flow-medium-temperature.png",
       priority = "extra-high",
-      width = 128,
+      width = 160,
       height = 18
     },
     high_temperature_flow =
     {
-      filename = "__base__/graphics/entity/pipe/fluid-flow.png",
+      filename = "__base__/graphics/entity/pipe/fluid-flow-high-temperature.png",
       priority = "extra-high",
-      width = 128,
+      width = 160,
       height = 18
     }
   }
@@ -316,14 +317,14 @@ data:extend(
     eat =
     {
       {
-        filename = "__base__/sound/eat.wav",
+        filename = "__base__/sound/eat.ogg",
         volume = 1
       }
     },
     heartbeat =
     {
       {
-        filename = "__base__/sound/heartbeat.wav"
+        filename = "__base__/sound/heartbeat.ogg"
       }
     },
     idle_animation =
@@ -481,8 +482,14 @@ data:extend(
     minable = {mining_time = 1, result = "stone-furnace"},
     max_health = 150,
     corpse = "medium-remnants",
-    repair_sound = { filename = "__base__/sound/manual-repair-simple.wav" },
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.wav" },
+    repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/furnace.ogg", }
+    },
     resistances =
     {
       {
@@ -556,7 +563,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.3, result = "basic-transport-belt"},
     max_health = 50,
     corpse = "small-remnants",
-    resistances = 
+    resistances =
     {
       {
         type = "fire",
@@ -565,6 +572,15 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/basic-transport-belt.ogg",
+        volume = 0.4
+      },
+      max_sounds_per_type = 3
+    },
     animation_speed_coefficient = 32,
     animations =
     {
@@ -627,7 +643,7 @@ data:extend(
       }
     },
     fast_replaceable_group = "pipe",
-    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {
@@ -654,6 +670,15 @@ data:extend(
           frequency = 1
         }
       }
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/boiler.ogg",
+        volume = 0.8
+      },
+      max_sounds_per_type = 3
     },
     structure =
     {
@@ -742,8 +767,8 @@ data:extend(
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     inventory_size = 16,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.wav" },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.wav" },
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
@@ -922,6 +947,21 @@ data:extend(
       cooldown = 35,
       ammo_category = "melee",
       ammo_type = make_unit_melee_ammo_type(6),
+      sound =
+      {
+        {
+          filename = "__base__/sound/creatures/biter-roar-short-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/creatures/biter-roar-short-2.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/creatures/biter-roar-short-3.ogg",
+          volume = 0.8
+        }
+      },
       animation =
       {
         filename = "__base__/graphics/entity/small-biter/small-biter-attack.png",
@@ -942,19 +982,19 @@ data:extend(
     dying_sound =
     {
       {
-        filename = "__base__/sound/creeper-death-1.wav",
+        filename = "__base__/sound/creatures/creeper-death-1.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-2.wav",
+        filename = "__base__/sound/creatures/creeper-death-2.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-3.wav",
+        filename = "__base__/sound/creatures/creeper-death-3.ogg",
         volume = 0.7
       },
       {
-        filename = "__base__/sound/creeper-death-4.wav",
+        filename = "__base__/sound/creatures/creeper-death-4.ogg",
         volume = 0.7
       }
     },
@@ -976,7 +1016,6 @@ data:extend(
     name = "biter-spawner",
     icon = "__base__/graphics/icons/biter-spawner.png",
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
-    minable = {mining_time = 1, result = "biter-spawner"},
     max_health = 350,
     order="b-b-g",
     subgroup="enemies",
@@ -1097,7 +1136,6 @@ data:extend(
     type = "explosion",
     name = "explosion",
     flags = {"not-on-map"},
-    animation_speed = 3,
     animations =
     {
       {
@@ -1105,28 +1143,32 @@ data:extend(
         priority = "extra-high",
         frame_width = 64,
         frame_height = 59,
-        frame_count = 16
+        frame_count = 16,
+        animation_speed = 0.5
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-2.png",
         priority = "extra-high",
         frame_width = 64,
         frame_height = 57,
-        frame_count = 16
+        frame_count = 16,
+        animation_speed = 0.5
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-3.png",
         priority = "extra-high",
         frame_width = 64,
         frame_height = 49,
-        frame_count = 16
+        frame_count = 16,
+        animation_speed = 0.5
       },
       {
         filename = "__base__/graphics/entity/explosion/explosion-4.png",
         priority = "extra-high",
         frame_width = 64,
         frame_height = 51,
-        frame_count = 16
+        frame_count = 16,
+        animation_speed = 0.5
       }
     },
     light = {intensity = 1, size = 20},
@@ -1136,11 +1178,11 @@ data:extend(
     sound =
     {
       {
-        filename = "__base__/sound/explosion1.wav",
+        filename = "__base__/sound/explosion1.ogg",
         volume = 0.8
       },
       {
-        filename = "__base__/sound/explosion2.wav",
+        filename = "__base__/sound/explosion2.ogg",
         volume = 0.8
       }
     }
@@ -1150,7 +1192,6 @@ data:extend(
     type = "explosion",
     name = "explosion-gunshot",
     flags = {"not-on-map"},
-    animation_speed = 3,
     animations =
     {
       {
@@ -1158,7 +1199,8 @@ data:extend(
         priority = "extra-high",
         frame_width = 30,
         frame_height = 30,
-        frame_count = 5
+        frame_count = 5,
+        animation_speed = 0.5
       }
     },
     light = {intensity = 1, size = 10},
@@ -1171,27 +1213,47 @@ data:extend(
     type = "explosion",
     name = "huge-explosion",
     flags = {"not-on-map"},
-    animation_speed = 5,
     animations =
     {
       {
         filename = "__base__/graphics/entity/huge-explosion/huge-explosion.png",
         priority = "extra-high",
-        frame_width = 111,
-        frame_height = 131,
-        frame_count = 24,
-        line_length = 5
+        frame_width = 112,
+        frame_height = 94,
+        frame_count = 54,
+        line_length = 6,
+        shift = {-0.56, -0.96},
+        animation_speed = 0.5
       }
     },
     light = {intensity = 1, size = 50},
-    smoke = "smoke",
-    smoke_count = 20,
-    smoke_slow_down_factor = 1,
     sound =
     {
       {
-        filename = "__base__/sound/huge-explosion.wav",
+        filename = "__base__/sound/huge-explosion.ogg",
         volume = 1.25
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            entity_name = "explosion-remnants-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
       }
     }
   },
@@ -1204,6 +1266,7 @@ data:extend(
     minable = {mining_time = 1, result = "steam-engine"},
     max_health = 300,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     effectivity = 1,
     fluid_usage_per_tick = 0.1,
     resistances =
@@ -1233,63 +1296,43 @@ data:extend(
     horizontal_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-horizontal.png",
-      frame_width = 219,
-      frame_height = 150,
+      frame_width = 246,
+      frame_height = 137,
       frame_count = 32,
       line_length = 8,
-      shift = {1.1, -0.3}
+      shift = {1.34, -0.06}
     },
     vertical_animation =
     {
       filename = "__base__/graphics/entity/steam-engine/steam-engine-vertical.png",
-      frame_width = 180,
-      frame_height = 222,
+      frame_width = 155,
+      frame_height = 186,
       frame_count = 32,
       line_length = 8,
-      shift = {1.2, 1}
-    },
-    pipes_horizontal =
-    {
-      filename = "__base__/graphics/entity/steam-engine/pipes-horizontal.png",
-      priority = "high",
-      width = 160,
-      height = 42,
-      shift = {0, 0}
-    },
-    pipes_vertical =
-    {
-      filename = "__base__/graphics/entity/steam-engine/pipes-vertical.png",
-      priority = "high",
-      width = 44,
-      height = 160
+      shift = {0.812, 0.031}
     },
     smoke =
     {
       {
         name = "smoke",
         north_position = {0, -2.2},
-        east_position = {-1.1, -2.6},
+        east_position = {-1.9, -1.6},
         deviation = {0.2, 0.2},
-        frequency = 1,
-        offset = 0.33
-      },
-      {
-        name = "smoke",
-        north_position = {0, -1.1},
-        east_position = {0, -2.6},
-        deviation = {0.2, 0.2},
-        frequency = 1,
-        offset = 0.66
-      },
-      {
-        name = "smoke",
-        north_position = {0, 0},
-        east_position = {1.1, -2.6},
-        deviation = {0.2, 0.2},
-        frequency = 1,
-        offset = 0.99
+        frequency = 2 / 31,
+        starting_vertical_speed = 0.05
       }
-    }
+    },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/steam-engine-90bpm.ogg",
+        volume = 0.6
+      },
+      match_speed_to_activity = true,
+    },
+    min_perceived_performance = 0.25,
+    performance_to_sound_speedup = 0.5
   },
 
   {
@@ -1393,6 +1436,72 @@ data:extend(
   },
 
   {
+    type = "smoke",
+    name = "smoke-train-stop",
+    flags = {"not-on-map"},
+    animation =
+    {
+      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
+      priority = "high",
+      frame_width = 50,
+      frame_height = 50,
+      animation_speed = 2,
+      frame_count = 16,
+      scale = 0.5
+    },
+    render_layer = "lower-object",
+    wind_speed_factor = 0,
+    movement_slow_down_factor = 0.95,
+    duration = 40,
+    fade_away_duration = 30,
+    show_when_smoke_off = true
+  },
+
+  {
+    type = "smoke",
+    name = "smoke-building",
+    flags = {"not-on-map"},
+    animation =
+    {
+      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
+      priority = "high",
+      frame_width = 50,
+      frame_height = 50,
+      animation_speed = 2,
+      frame_count = 16,
+      scale = 0.5
+    },
+    render_layer = "building-smoke",
+    wind_speed_factor = 0,
+    movement_slow_down_factor = 0.96,
+    duration = 45,
+    fade_away_duration = 30,
+    show_when_smoke_off = true
+  },
+
+  {
+    type = "smoke",
+    name = "smoke-explosion-particle",
+    flags = {"not-on-map"},
+    animation =
+    {
+      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
+      priority = "high",
+      frame_width = 50,
+      frame_height = 50,
+      animation_speed = 2,
+      frame_count = 16,
+      scale = 0.5
+    },
+    render_layer = "smoke",
+    wind_speed_factor = 0.02,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true
+  },
+
+  {
     type = "inserter",
     name = "basic-inserter",
     icon = "__base__/graphics/icons/basic-inserter.png",
@@ -1419,25 +1528,73 @@ data:extend(
     },
     extension_speed = 0.028,
     fast_replaceable_group = "inserter",
+    working_sound =
+    {
+      match_progress_to_activity = true,
+      sound =
+      {
+        {
+          filename = "__base__/sound/inserter-basic-1.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-2.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-3.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-4.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-5.ogg",
+          volume = 0.75
+        }
+      }
+    },
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-base.png",
       priority = "extra-high",
       width = 8,
-      height = 34
+      height = 33
     },
     hand_closed_picture =
     {
       filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-open.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
+      height = 41
+    },
+    hand_base_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
+      priority = "extra-high",
+      width = 8,
+      height = 34
+    },
+    hand_closed_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41
+    },
+    hand_open_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
+      priority = "extra-high",
+      width = 18,
       height = 41
     },
     pickup_position = {0, -1},
@@ -1487,6 +1644,33 @@ data:extend(
     },
     extension_speed = 0.02,
     fast_replaceable_group = "inserter",
+    working_sound =
+    {
+      match_progress_to_activity = true,
+      sound =
+      {
+        {
+          filename = "__base__/sound/inserter-basic-1.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-2.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-3.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-4.ogg",
+          volume = 0.75
+        },
+        {
+          filename = "__base__/sound/inserter-basic-5.ogg",
+          volume = 0.75
+        }
+      }
+    },
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base.png",
@@ -1498,14 +1682,35 @@ data:extend(
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
       height = 41
     },
     hand_open_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open.png",
       priority = "extra-high",
-      width = 20,
+      width = 18,
+      height = 41
+    },
+    hand_base_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
+      priority = "extra-high",
+      width = 8,
+      height = 34
+    },
+    hand_closed_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41
+    },
+    hand_open_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
+      priority = "extra-high",
+      width = 18,
       height = 41
     },
     pickup_position = {0, -1},
@@ -1544,7 +1749,7 @@ data:extend(
       }
     },
     fast_replaceable_group = "pipe",
-    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {
@@ -1558,6 +1763,17 @@ data:extend(
       },
     },
     pictures = pipepictures(),
+    working_sound =
+    {
+      sound = {
+        {
+          filename = "__base__/sound/pipe.ogg",
+          volume = 0.65
+        },
+      },
+      match_volume_to_activity = true,
+      max_sounds_per_type = 3
+    },
     horizontal_window_bounding_box = {{-0.25, -0.25}, {0.25, 0.15625}},
     vertical_window_bounding_box = {{-0.28125, -0.40625}, {0.03125, 0.125}}
   },
@@ -1592,13 +1808,22 @@ data:extend(
     {
       filename = "__base__/graphics/entity/radar/radar.png",
       priority = "low",
-      frame_width = 169,
-      frame_height = 140,
+      frame_width = 153,
+      frame_height = 131,
       axially_symmetrical = false,
       apply_projection = false,
       direction_count = 64,
       line_length = 8,
-      shift = {1.15, 0.75}
+      shift = {0.875, -0.35}
+    },
+    working_sound =
+    {
+      sound = {
+        {
+          filename = "__base__/sound/radar.ogg"
+        }
+      },
+      apparent_volume = 2,
     }
   },
 
@@ -1694,7 +1919,7 @@ data:extend(
         percent = 80
       }
     },
-    collision_box = {{-0.3, -0.3}, {0.3, 0.2}},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {
@@ -1757,6 +1982,7 @@ data:extend(
     minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-1"},
     max_health = 200,
     corpse = "big-remnants",
+    dying_explosion = "huge-explosion",
     resistances =
     {
       {
@@ -1786,7 +2012,24 @@ data:extend(
       emissions = 0.05 / 1.5
     },
     energy_usage = "90kW",
-    ingredient_count = 2
+    ingredient_count = 2,
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    working_sound =
+    {
+      sound = {
+        {
+          filename = "__base__/sound/assembling-machine-t1-1.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__base__/sound/assembling-machine-t1-2.ogg",
+          volume = 0.8
+        },
+      },
+      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
+      apparent_volume = 1.5,
+    }
   },
 
   {
@@ -1846,6 +2089,25 @@ data:extend(
     name = "ghost",
     flags = {"not-on-map"},
     minable = { mining_time = 0, results={}},
+  },
+  
+  {
+    type = "explosion",
+    name = "water-splash",
+    flags = {"not-on-map"},
+    animations =
+    {
+      {
+        filename = "__base__/graphics/entity/water-splash/water-splash.png",
+        priority = "extra-high",
+        frame_width = 92,
+        frame_height = 66,
+        frame_count = 15,
+        line_length = 5,
+        shift = {-0.437, 0.5},
+        animation_speed = 0.35
+      }
+    }
   }
 }
 )

@@ -112,6 +112,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "tree",
     name = "dark-thin-tree",
@@ -193,6 +194,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "tree",
     name = "dry-tree",
@@ -329,6 +331,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "tree",
     name = "green-thin-tree",
@@ -401,6 +404,7 @@ data:extend(
       }
     },
   },
+
   {
     type = "tree",
     name = "dark-green-thin-tree",
@@ -473,6 +477,7 @@ data:extend(
       }
     },
   },
+
   {
     type = "tree",
     name = "red-thin-tree",
@@ -545,6 +550,7 @@ data:extend(
       }
     },
   },
+
   {
     type = "tree",
     name = "green-tree",
@@ -611,6 +617,7 @@ data:extend(
       }
     },
   },
+
   {
     type = "tree",
     name = "dark-green-tree",
@@ -677,6 +684,7 @@ data:extend(
       }
     },
   },
+
   {
     type = "tree",
     name = "red-tree",
@@ -731,6 +739,7 @@ data:extend(
       },
     },
   },
+
   {
     type = "tree",
     name = "root-tree",
@@ -831,6 +840,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "tree",
     name = "green-coral",
@@ -896,5 +906,258 @@ data:extend(
       }
     }
   },
-}
-)
+
+  {
+    type = "tree",
+    name = "dead-grey-trunk",
+    icon = "__base__/graphics/icons/dead-grey-trunk.png",
+    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    minable =
+    {
+      mining_particle = "wooden-particle",
+      mining_time = 1,
+      result = "raw-wood",
+      count = 2
+    },
+    emissions_per_tick = -0.0001,
+    max_health = 20,
+    collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    subgroup = "trees",
+    order = "wwwwwwwa[tree]-d[dead-tree]",
+    autoplace =
+    {
+      order = "b[tree]-a[random]",
+      peaks =
+      {
+        {
+          influence = 0.0005
+        },
+        {
+          influence = 0.004,
+          min_influence = 0, -- get forrest bonus, but have no penalty for being outside.
+          max_influence = 0.003,
+          noise_layer = "trees",
+          noise_persistence = 0.5,
+        }
+      }
+    },
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-01.png",
+        width = 105,
+        height= 96,
+    shift = {0.75, -0.46}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-02.png",
+        width = 67,
+        height= 87,
+    shift = {0.4, 0.43}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-03.png",
+        width = 114,
+        height= 67,
+    shift = {0.56, -0.25}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-04.png",
+        width = 95,
+        height= 85,
+        shift = {0.62, 0.21}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-05.png",
+        width = 100,
+        height= 112,
+    shift = {0.84, -0.84}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-06.png",
+        width = 96,
+        height= 82,
+    shift = {0.0, -0.5}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-grey-trunk/dead-grey-trunk-07.png",
+        width = 143,
+        height= 55,
+    shift = {-0.46, 0.0}
+      },
+    }
+  },
+
+  {
+    type = "tree",
+    name = "dry-hairy-tree",
+    icon = "__base__/graphics/icons/dry-hairy-tree.png",
+    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    minable =
+    {
+      mining_particle = "wooden-particle",
+      mining_time = 1,
+      result = "raw-wood",
+      count = 2
+    },
+    emissions_per_tick = -0.0001,
+    max_health = 20,
+    collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    subgroup = "trees",
+    order = "a[tree]-d[dead-tree]",
+    autoplace =
+    {
+      order = "b[tree]-a[random]",
+      peaks =
+      {
+        {
+          influence = 0.0005
+        },
+        {
+          influence = 0.004,
+          min_influence = 0, -- get forrest bonus, but have no penalty for being outside.
+          max_influence = 0.003,
+          noise_layer = "trees",
+          noise_persistence = 0.5,
+        }
+      }
+    },
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-01.png",
+        width = 201,
+        height= 242,
+        shift = {1.9, -0.68}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-02.png",
+        width = 307,
+        height= 256,
+        shift = {2.62, -0.68}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-03.png",
+        width = 286,
+        height= 240,
+        shift = {0.56, -1.5}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-04.png",
+        width = 291,
+        height= 229,
+        shift = {3.5, -2.0}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-05.png",
+        width = 265,
+        height= 264,
+        shift = {3.2, -0.46}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-06.png",
+        width = 312,
+        height= 267,
+        shift = {2.59, -1.34}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-07.png",
+        width = 294,
+        height= 213,
+        shift = {3.37, -0.25}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-08.png",
+        width = 284,
+        height= 217,
+        shift = {2.28, -1.25}
+      }
+    }
+  },
+
+  {
+    type = "tree",
+    name = "dead-dry-hairy-tree",
+    icon = "__base__/graphics/icons/dead-dry-hairy-tree.png",
+    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    minable =
+    {
+      mining_particle = "wooden-particle",
+      mining_time = 1,
+      result = "raw-wood",
+      count = 2
+    },
+    emissions_per_tick = -0.0001,
+    max_health = 20,
+    collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    subgroup = "trees",
+    order = "a[tree]-d[dead-tree]",
+    autoplace =
+    {
+      order = "b[tree]-a[random]",
+      peaks =
+      {
+        {
+          influence = 0.0005
+        },
+        {
+          influence = 0.004,
+          min_influence = 0, -- get forrest bonus, but have no penalty for being outside.
+          max_influence = 0.003,
+          noise_layer = "trees",
+          noise_persistence = 0.5,
+        }
+      }
+    },
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-01.png",
+        width = 220,
+        height= 126,
+        shift = {-1.78, 0.93}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-02.png",
+        width = 214,
+        height= 144,
+        shift = {-0.93, -1.25}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-03.png",
+        width = 195,
+        height= 173,
+        shift = {1.78, -1.56}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-04.png",
+        width = 241,
+        height= 114,
+        shift = {2.81, 0.25}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-05.png",
+        width = 188,
+        height= 147,
+        shift = {2.06, 2.09}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-06.png",
+        width = 166,
+        height= 150,
+        shift = {-1.56, 1.25}
+      },
+      {
+        filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-07.png",
+        width = 227,
+        height= 99,
+        shift = {-2.18, -0.87}
+      },
+    }
+  },
+
+
+})

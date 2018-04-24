@@ -64,7 +64,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/pump-shotgun.wav",
+          filename = "__base__/sound/pump-shotgun.ogg",
           volume = 0.5
         }
       }
@@ -90,7 +90,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/pump-shotgun.wav",
+          filename = "__base__/sound/pump-shotgun.ogg",
           volume = 0.5
         }
       }
@@ -114,7 +114,7 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/railgun.wav",
+          filename = "__base__/sound/railgun.ogg",
           volume = 0.8
         }
       }

@@ -38,7 +38,26 @@ function orangebuttongraphcialset()
       width = 36,
       height = 36,
       x = 75,
-      y = 72
+      y = 108
+    }
+  }
+end
+
+function bluebuttongraphcialset()
+  return
+  {
+    type = "monolith",
+    top_monolith_border = 1,
+    right_monolith_border = 1,
+    bottom_monolith_border = 1,
+    left_monolith_border = 1,
+    monolith_image =
+    {
+      filename = "__core__/graphics/gui.png",
+      width = 36,
+      height = 36,
+      x = 221,
+      y = 36
     }
   }
 end
@@ -228,7 +247,38 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 16}
       },
+      disabled_font_color={r=0.5, g=0.5, b=0.5},
+      disabled_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        corner_size = {3, 3},
+        position = {0, 0}
+      },
       pie_progress_color = {r=1, g=1, b=1}
+    },
+    fake_disabled_button_style =
+    {
+      type = "button_style",
+      parent = "button_style",
+
+      default_font_color={r=0.5, g=0.5, b=0.5},
+      hovered_font_color={r=0.5, g=0.5, b=0.5},
+      hovered_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        corner_size = {3, 3},
+        position = {0, 0}
+      },
+      clicked_font_color={r=0.5, g=0.5, b=0.5},
+      clicked_graphical_set =
+      {
+        type = "composition",
+        filename = "__core__/graphics/gui.png",
+        corner_size = {3, 3},
+        position = {0, 0}
+      },
     },
     dialog_button_style =
     {
@@ -239,7 +289,7 @@ data:extend(
       left_click_sound =
       {
         {
-          filename = "__core__/sound/gui-click.wav",
+          filename = "__core__/sound/gui-click.ogg",
           volume = 1
         }
       }
@@ -255,7 +305,7 @@ data:extend(
       left_click_sound =
       {
         {
-          filename = "__core__/sound/gui-click.wav",
+          filename = "__core__/sound/gui-click.ogg",
           volume = 1
         }
       }
@@ -403,6 +453,15 @@ data:extend(
       default_graphical_set =  orangebuttongraphcialset(),
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
+    },
+
+    slot_with_filter_button_style =
+    {
+      type = "button_style",
+      parent = "slot_button_style",
+      default_graphical_set =  bluebuttongraphcialset(),
+      hovered_graphical_set =  bluebuttongraphcialset(),
+      clicked_graphical_set = bluebuttongraphcialset()
     },
 
     second_quickbar_slot_button_style =
@@ -912,7 +971,7 @@ data:extend(
       left_click_sound =
       {
         {
-          filename = "__core__/sound/listbox-click.wav",
+          filename = "__core__/sound/listbox-click.ogg",
           volume = 1
         }
       }
@@ -1144,6 +1203,36 @@ data:extend(
         position = {16, 0}
       },
       selection_background_color= {r=0.66, g=0.7, b=0.83}
+    },
+    notice_textbox_style=
+    {
+      type = "textbox_style",
+      parent = "textbox_style",
+      graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 0,
+        right_monolith_border = 0,
+        bottom_monolith_border = 0,
+        left_monolith_border = 0,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 1,
+          height = 1,
+          x = 0,
+          y = 50
+        }
+      },
+
+      font = "default",
+      font_color = {r=1, g=1, b=1},
+      selection_background_color = {r=0.66, g=0.7, b=0.83},
+
+      top_padding = 0,
+      right_padding = 0,
+      bottom_padding = 0,
+      left_padding = 0,
     },
     number_textfield_style =
     {

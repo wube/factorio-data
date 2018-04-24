@@ -7,7 +7,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "e[stone-brick]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -17,7 +17,7 @@ data:extend(
     fuel_value = "4MJ",
     subgroup = "raw-material",
     order = "a[raw-wood]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -27,7 +27,7 @@ data:extend(
     fuel_value = "8MJ",
     subgroup = "raw-material",
     order = "b[coal]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -36,7 +36,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
     order = "d[stone]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -45,7 +45,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
     order = "e[iron-ore]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -54,7 +54,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-resource",
     order = "f[copper-ore]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -64,7 +64,7 @@ data:extend(
     fuel_value = "0.6MJ",
     subgroup = "raw-material",
     order = "a[wood]",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -73,7 +73,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "b[iron-plate]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -82,7 +82,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "c[copper-plate]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -91,7 +91,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "a[iron-stick]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -100,7 +100,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "b[iron-gear-wheel]",
-    stack_size = 128
+    stack_size = 100
   },
   {
     type = "item",
@@ -109,7 +109,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "circuit-network",
     order = "0[copper-cable]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -118,7 +118,7 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "intermediate-product",
     order = "c[electronic-circuit]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -129,7 +129,7 @@ data:extend(
     subgroup = "storage",
     order = "a[items]-a[wooden-chest]",
     place_result = "wooden-chest",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -139,7 +139,7 @@ data:extend(
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     place_result = "stone-furnace",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -149,7 +149,7 @@ data:extend(
     subgroup = "extraction-machine",
     order = "a[items]-a[burner-mining-drill]",
     place_result = "burner-mining-drill",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -159,7 +159,7 @@ data:extend(
     subgroup = "extraction-machine",
     order = "a[items]-b[basic-mining-drill]",
     place_result = "basic-mining-drill",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -169,7 +169,7 @@ data:extend(
     subgroup = "belt",
     order = "a[transport-belt]-a[basic-transport-belt]",
     place_result = "basic-transport-belt",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -179,7 +179,7 @@ data:extend(
     subgroup = "inserter",
     order = "a[burner-inserter]",
     place_result = "burner-inserter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -189,7 +189,7 @@ data:extend(
     subgroup = "inserter",
     order = "b[basic-inserter]",
     place_result = "basic-inserter",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -199,7 +199,7 @@ data:extend(
     subgroup = "extraction-machine",
     order = "b[fluids]-a[offshore-pump]",
     place_result = "offshore-pump",
-    stack_size = 32
+    stack_size = 20
   },
   {
     type = "item",
@@ -209,7 +209,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[pipe]-a[pipe]",
     place_result = "pipe",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -219,7 +219,7 @@ data:extend(
     subgroup = "energy",
     order = "b[steam-power]-a[boiler]",
     place_result = "boiler",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -229,7 +229,7 @@ data:extend(
     subgroup = "energy",
     order = "b[steam-power]-b[steam-engine]",
     place_result = "steam-engine",
-    stack_size = 8
+    stack_size = 10
   },
   {
     type = "item",
@@ -239,7 +239,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-a[small-electric-pole]",
     place_result = "small-electric-pole",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -249,17 +249,7 @@ data:extend(
     subgroup = "defensive-structure",
     order = "d[radar]-a[radar]",
     place_result = "radar",
-    stack_size = 64
-  },
-  {
-    type = "item",
-    name = "biter-spawner",
-    icon = "__base__/graphics/icons/biter-spawner.png",
-    flags = {"goes-to-quickbar"},
-    subgroup = "defensive-structure",
-    order = "f[spawner]-a[biter-spawner]",
-    place_result = "biter-spawner",
-    stack_size = 32
+    stack_size = 50
   },
   {
     type = "item",
@@ -287,7 +277,7 @@ data:extend(
     subgroup = "energy",
     order = "c[light]-a[small-lamp]",
     place_result = "small-lamp",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -306,7 +296,7 @@ data:extend(
     subgroup = "energy-pipe-distribution",
     order = "a[pipe]-b[pipe-to-ground]",
     place_result = "pipe-to-ground",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -316,7 +306,7 @@ data:extend(
     subgroup = "production-machine",
     order = "a[assembling-machine-1]",
     place_result = "assembling-machine-1",
-    stack_size = 64
+    stack_size = 50
   },
   {
     type = "item",
@@ -325,7 +315,7 @@ data:extend(
     flags = {"goes-to-quickbar"},
     subgroup = "circuit-network",
     order = "a[wires]-a[red-wire]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "item",
@@ -334,7 +324,7 @@ data:extend(
     flags = {"goes-to-quickbar"},
     subgroup = "circuit-network",
     order = "a[wires]-b[green-wire]",
-    stack_size = 256
+    stack_size = 200
   },
   {
     type = "capsule",
@@ -342,8 +332,6 @@ data:extend(
     icon = "__base__/graphics/icons/fish.png",
     flags = {"goes-to-quickbar"},
     subgroup = "raw-resource",
-    order = "h",
-    stack_size = 64,
     capsule_action =
     {
       type = "use-on-self",
@@ -384,7 +372,7 @@ data:extend(
     order = "b[repair]-a[repair-pack]",
     speed = 1,
     durability = 100,
-    stack_size = 64
+    stack_size = 50
   }
 }
 )
