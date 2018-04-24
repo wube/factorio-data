@@ -1371,29 +1371,29 @@ if not data.is_demo then
             probability = 1,
           },
         },
-        inner_corner =
+         inner_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-inner-corner-left.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
           count = 32
         },
         outer_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-outer-corner-left.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
           count = 16
         },
         side =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-side-left.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-side.png",
           count = 16
         },
         u_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-u-left.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-u.png",
           count = 16
         },
         o_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-o-left.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-o.png",
           count = 1
         }
       },
@@ -1454,29 +1454,29 @@ if not data.is_demo then
             probability = 1,
           },
         },
-        inner_corner =
+         inner_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-inner-corner-right.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
           count = 32
         },
         outer_corner =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-outer-corner-right.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
           count = 16
         },
         side =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-side-right.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-side.png",
           count = 16
         },
         u_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-u-right.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-u.png",
           count = 16
         },
         o_transition =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-o-right.png",
+          picture = "__base__/graphics/terrain/concrete/concrete-o.png",
           count = 1
         }
       },

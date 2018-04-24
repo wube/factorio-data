@@ -1,5 +1,5 @@
 
-function make_laser_sounds(volume)
+function make_laser_sounds()
     return
     {
       {
