@@ -591,6 +591,14 @@ data:extend(
       frame_count = 16,
       direction_count = 12
     },
+    belt_horizontal = basic_belt_horizontal,
+    belt_vertical = basic_belt_vertical,
+    ending_top = basic_belt_ending_top,
+    ending_bottom = basic_belt_ending_bottom,
+    ending_side = basic_belt_ending_side,
+    starting_top = basic_belt_starting_top,
+    starting_bottom = basic_belt_starting_bottom,
+    starting_side = basic_belt_starting_side,
     ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
     speed = 0.03125
@@ -1278,7 +1286,7 @@ data:extend(
         percent = 70
       }
     },
-    collision_box = {{-1.4, -2.4}, {1.4, 2.4}},
+    collision_box = {{-1.35, -2.35}, {1.35, 2.35}},
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
     fluid_box =
     {
