@@ -2795,6 +2795,7 @@ data:extend(
       usage_priority = "secondary-input"
     },
     energy_usage = "60kW",
+    researching_speed = 1,
     inputs =
     {
       "science-pack-1",

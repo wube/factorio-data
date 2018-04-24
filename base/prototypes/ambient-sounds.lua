@@ -2,29 +2,11 @@ data:extend(
 {
   {
     type = "ambient-sound",
-    name = "swell-pad",
-    track_type = "early-game",
-    sound =
-    {
-      filename = "__base__/sound/ambient/swell-pad.ogg"
-    }
-  },
-  {
-    type = "ambient-sound",
     name = "after-the-crash",
     track_type = "early-game",
     sound =
     {
       filename = "__base__/sound/ambient/after-the-crash.ogg"
-    }
-  },
-  {
-    type = "ambient-sound",
-    name = "anomaly",
-    track_type = "early-game",
-    sound =
-    {
-      filename = "__base__/sound/ambient/anomaly.ogg"
     }
   },
   {
@@ -38,29 +20,11 @@ data:extend(
   },
   {
     type = "ambient-sound",
-    name = "first-light",
-    track_type = "early-game",
-    sound =
-    {
-      filename = "__base__/sound/ambient/first-light.ogg"
-    }
-  },
-  {
-    type = "ambient-sound",
     name = "resource-deficiency",
     track_type = "early-game",
     sound =
     {
       filename = "__base__/sound/ambient/resource-deficiency.ogg"
-    }
-  },
-  {
-    type = "ambient-sound",
-    name = "transmit",
-    track_type = "early-game",
-    sound =
-    {
-      filename = "__base__/sound/ambient/transmit.ogg"
     }
   },
   {
@@ -135,6 +99,45 @@ data:extend(
       filename = "__base__/sound/ambient/pollution.ogg"
     }
   },
+
+
+  {
+    type = "ambient-sound",
+    name = "anomaly",
+    track_type = "interlude",
+    sound =
+    {
+      filename = "__base__/sound/ambient/anomaly.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "first-light",
+    track_type = "interlude",
+    sound =
+    {
+      filename = "__base__/sound/ambient/first-light.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "transmit",
+    track_type = "interlude",
+    sound =
+    {
+      filename = "__base__/sound/ambient/transmit.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "swell-pad",
+    track_type = "interlude",
+    sound =
+    {
+      filename = "__base__/sound/ambient/swell-pad.ogg"
+    }
+  },
+
   {
     type = "ambient-sound",
     name = "world-ambience-1",
@@ -142,7 +145,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-1.ogg",
-      volume = 1.0
+      volume = 1.2
     }
   },
   {
@@ -152,7 +155,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-2.ogg",
-      volume = 1.0
+      volume = 1.2
     }
   },
   {
@@ -162,7 +165,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-3.ogg",
-      volume = 1.0
+      volume = 1.2
     }
   },
   {
@@ -172,7 +175,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-4.ogg",
-      volume = 1.0
+      volume = 1.2
     }
   },
   {
@@ -182,7 +185,17 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/world-ambience-5.ogg",
-      volume = 1.0
+      volume = 1.2
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "world-ambience-6",
+    track_type = "interlude",
+    sound =
+    {
+      filename = "__base__/sound/ambient/world-ambience-6.ogg",
+      volume = 1.2
     }
   }
 })
