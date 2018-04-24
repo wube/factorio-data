@@ -130,7 +130,7 @@ data:extend(
         recipe = "destroyer-capsule"
       }
     },
-    prerequisites = {"combat-robotics-2"},
+    prerequisites = {"combat-robotics-2", "speed-module"},
     unit =
     {
       count = 300,

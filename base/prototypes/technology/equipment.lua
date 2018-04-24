@@ -124,7 +124,7 @@ data:extend(
     type = "technology",
     name = "basic-laser-defense-equipment",
     icon = "__base__/graphics/technology/basic-laser-defense-equipment.png",
-    prerequisites = {"armor-making-3"},
+    prerequisites = {"armor-making-3", "laser-turrets"},
     effects =
     {
       {
@@ -144,7 +144,7 @@ data:extend(
     type = "technology",
     name = "basic-electric-discharge-defense-equipment",
     icon = "__base__/graphics/technology/basic-electric-discharge-defense-equipment.png",
-    prerequisites = {"armor-making-3", "alien-technology"},
+    prerequisites = {"armor-making-3", "alien-technology", "laser-turrets"},
     effects =
     {
       {
@@ -188,7 +188,7 @@ data:extend(
     type = "technology",
     name = "basic-exoskeleton-equipment",
     icon = "__base__/graphics/technology/basic-exoskeleton-equipment.png",
-    prerequisites = {"solar-panel-equipment"},
+    prerequisites = {"solar-panel-equipment", "electric-engine"},
     effects =
     {
       {

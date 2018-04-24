@@ -20,7 +20,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "120J",
-      input_flow_limit = "120W",
+      input_flow_limit = "240W",
       usage_priority = "primary-input"
     },
     energy_input = "10W"
@@ -46,7 +46,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "120J",
-      input_flow_limit = "120W",
+      input_flow_limit = "240W",
       usage_priority = "primary-input"
     },
     energy_per_shield = "20J"
@@ -72,7 +72,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "180J",
-      input_flow_limit = "180W",
+      input_flow_limit = "360W",
       usage_priority = "primary-input"
     },
     energy_per_shield = "30J"

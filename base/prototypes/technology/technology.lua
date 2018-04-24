@@ -224,7 +224,7 @@ data:extend(
         recipe = "assembling-machine-3"
       }
     },
-    prerequisites = {"electronics", "modules", "automation-2"},
+    prerequisites = {"speed-module", "automation-2"},
     unit =
     {
       count = 100,
@@ -598,7 +598,7 @@ data:extend(
         recipe = "express-splitter"
       }
     },
-    prerequisites = {"logistics-2"},
+    prerequisites = {"logistics-2", "automation-3"},
     unit =
     {
       count = 100,
@@ -642,7 +642,7 @@ data:extend(
         recipe = "solar-panel"
       }
     },
-    prerequisites = {"optics", "advanced-electronics"},
+    prerequisites = {"optics", "advanced-electronics", "steel-processing"},
     unit =
     {
       count = 100,
@@ -687,7 +687,7 @@ data:extend(
         recipe = "rocket"
       }
     },
-    prerequisites = {"electronics", "flammables", "explosives", "steel-processing"},
+    prerequisites = {"electronics", "flammables", "explosives"},
     unit =
     {
       count = 80,
@@ -986,7 +986,7 @@ data:extend(
         recipe = "rocket-defense"
       }
     },
-    prerequisites = {"rocketry", "advanced-electronics-2", "rocket-speed-5"},
+    prerequisites = {"rocketry", "advanced-electronics-2", "rocket-speed-5", "speed-module-3", "productivity-module-3"},
     unit =
     {
       count = 1000,
@@ -1402,7 +1402,7 @@ data:extend(
     type = "technology",
     name = "engine",
     icon = "__base__/graphics/technology/engine.png",
-    prerequisites = {"steel-processing"},
+    prerequisites = {"steel-processing", "automation-2"},
     unit =
     {
       count = 50,
@@ -1426,7 +1426,7 @@ data:extend(
     type = "technology",
     name = "electric-engine",
     icon = "__base__/graphics/technology/electric-engine.png",
-    prerequisites = {"engine", "advanced-electronics"},
+    prerequisites = {"engine", "advanced-electronics", "oil-processing"},
     unit =
     {
       count = 50,
