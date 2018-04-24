@@ -850,10 +850,10 @@ data:extend(
     category="crafting",
     ingredients =
     {
-      {"plastic-bar", 120},
-      {"advanced-circuit", 250},
+      {"plastic-bar", 100},
+      {"advanced-circuit", 200},
       {"electric-engine-unit", 20},
-      {"battery", 150}
+      {"battery", 100}
     },
     result= "small-plane"
   }

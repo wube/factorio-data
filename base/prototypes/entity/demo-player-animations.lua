@@ -113,7 +113,9 @@ playeranimations =
       height = 78,
       frame_count = 22,
       direction_count = 18,
-      shift = {0.125, -0.34375}
+      shift = {0.140625, -0.4375},
+	  distance_per_frame = 0.35,
+      animation_speed = 0.60
     },
     runningwithgunmask =
     {
@@ -130,24 +132,25 @@ playeranimations =
     {
       filename = "__base__/graphics/entity/player/player-basic-run.png",
       priority = "very-low",
-      width = 49,
-      height = 70,
+      width = 48,
+      height = 71,
       frame_count = 22,
       direction_count = 8,
-      shift = {0 , -0.3125},
-      animation_speed = 0.79,
+      shift = {0, -0.484375},
+	    distance_per_frame = 0.35,
+      animation_speed = 0.60,
       axially_symmetrical = false
     },
     runningmask =
     {
       filename = "__base__/graphics/entity/player/player-basic-run-color.png",
       priority = "very-low",
-      width = 36,
-      height = 48,
+      width = 40,
+      height = 55,
       frame_count = 22,
       direction_count = 8,
       apply_runtime_tint = true,
-      shift = {-0.015625, -0.625},
+      shift = {0, -0.703125},
       axially_symmetrical = false
     },
   },
@@ -282,10 +285,10 @@ playeranimations =
       filename = "__base__/graphics/entity/player/player-armor1-run.png",
       priority = "very-low",
       width = 36,
-      height = 50,
+      height = 53,
       frame_count = 22,
       direction_count = 8,
-      shift = {-0.015625, -0.703125},
+      shift = {0, -0.796875},
       axially_symmetrical = false
     },
     runningmask =
@@ -293,11 +296,11 @@ playeranimations =
       filename = "__base__/graphics/entity/player/player-armor1-run-color.png",
       priority = "very-low",
       width = 36,
-      height = 50,
+      height = 53,
       frame_count = 22,
       direction_count = 8,
       apply_runtime_tint = true,
-      shift = {-0.015625, -0.703125},
+      shift = {0, -0.796875},
       axially_symmetrical = false
     },
   },
@@ -431,23 +434,23 @@ playeranimations =
     {
       filename = "__base__/graphics/entity/player/player-armor2-run.png",
       priority = "very-low",
-      width = 38,
-      height = 49,
+      width = 40,
+      height = 54,
       frame_count = 22,
       direction_count = 8,
-      shift = {-0.03125, -0.6875},
+      shift = {0, -0.78125},
       axially_symmetrical = false
     },
     runningmask =
     {
       filename = "__base__/graphics/entity/player/player-armor2-run-color.png",
       priority = "very-low",
-      width = 38,
-      height = 49,
+      width = 40,
+      height = 43,
       frame_count = 22,
       direction_count = 8,
       apply_runtime_tint = true,
-      shift = {-0.03125, -0.625},
+      shift = {0, -0.890625},
       axially_symmetrical = false
     },
   }

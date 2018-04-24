@@ -790,7 +790,7 @@ data:extend(
       emissions = 0.03 / 3.5
     },
     energy_usage = "210kW",
-    ingredient_count = 4,
+    ingredient_count = 6,
     module_slots = 4,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}
   },
@@ -1785,34 +1785,6 @@ data:extend(
     },
     back_light = rolling_stock_back_light(),
     stand_by_light = rolling_stock_stand_by_light(),
-    resistances =
-    {
-      {
-        type = "fire",
-        decrease = 15,
-        percent = 50
-      },
-      {
-        type = "physical",
-        decrease = 15,
-        percent = 30
-      },
-      {
-        type = "impact",
-        decrease = 50,
-        percent = 60
-      },
-      {
-        type = "explosion",
-        decrease = 15,
-        percent = 30
-      },
-      {
-        type = "acid",
-        decrease = 10,
-        percent = 20
-      }
-    },
     pictures =
     {
       priority = "very-low",
@@ -1910,6 +1882,34 @@ data:extend(
     connection_distance = 3.3,
     joint_distance = 4,
     energy_per_hit_point = 5,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 10,
+        percent = 20
+      }
+    },
     back_light = rolling_stock_back_light(),
     stand_by_light = rolling_stock_stand_by_light(),
     pictures =
@@ -1956,7 +1956,7 @@ data:extend(
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     minable = {mining_time = 1, result = "stone-wall"},
-	fast_replaceable_group = "wall",
+    fast_replaceable_group = "wall",
     max_health = 350,
     repair_speed_modifier = 2,
     corpse = "wall-remnants",
@@ -2278,7 +2278,7 @@ data:extend(
     name = "gate",
     icon = "__base__/graphics/icons/gate.png",
     flags = {"placeable-neutral","placeable-player", "player-creation"},
-	fast_replaceable_group = "wall",
+    fast_replaceable_group = "wall",
     minable = {hardness = 0.2, mining_time = 0.5, result = "gate"},
     max_health = 350,
     corpse = "small-remnants",
@@ -3284,6 +3284,7 @@ data:extend(
       },
     },
     repair_pack = "repair-pack",
+    working_sound = flying_robot_sounds(),
     cargo_centered = {0.0, 0.2},
     construction_vector = {0.30, 0.22},
   },

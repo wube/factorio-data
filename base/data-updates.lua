@@ -46,7 +46,20 @@ function addbuildeffects()
   for _,entitytype in pairs(data.raw) do
     for _,entity in pairs(entitytype) do
       if shouldhavebuildeffect(entity) then
-        entity.created_effect = getbuildeffect(entity)
+        if entity.created_effect == nil then
+        -- when there is no created effect specified, I just specify mine
+          entity.created_effect = getbuildeffect(entity)
+        elseif entity.created_effect.type ~= nil then
+        -- when there is already created effect, but the effects
+        -- are not specified in a list, I move the single effect into the
+        -- list and add the effect
+          local previouseffect = entity.created_effect
+          entity.created_effect = {}
+          table.insert(entity.created_effect, previouseffect)
+          table.insert(entity.created_effect, getbuildeffect(entity))
+        else -- when the effects are already specified as list, I just add my effect to it
+          table.insert(entity.created_effect, getbuildeffect(entity))
+        end
       end
     end
   end
