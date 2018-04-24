@@ -112,6 +112,87 @@ local default_param = function()
   }
 end
 
+function deduce_nil_prices(price_list, param)
+  local nil_prices = {}
+  for name, item in pairs (game.item_prototypes) do
+    if not price_list[name] then
+      nil_prices[name] = {}
+    end
+  end
+  for name, item in pairs (game.fluid_prototypes) do
+    if not price_list[name] then
+      nil_prices[name] = {}
+    end
+  end
+  local recipes = game.recipe_prototypes
+  for name, recipe in pairs (recipes) do
+    for k, ingredient in pairs (recipe.ingredients) do
+      if nil_prices[ingredient.name] then
+        table.insert(nil_prices[ingredient.name], recipe)
+      end
+    end
+  end
+  for name, recipes in pairs (nil_prices) do
+    if #recipes > 0 then
+      local recipe_cost
+      local ingredient_amount
+      for k, recipe in pairs (recipes) do
+        local ingredient_value = 0
+        for k, ingredient in pairs (recipe.ingredients) do
+          if ingredient.name == name then
+            ingredient_amount = ingredient.amount
+          else
+            local ingredient_price = price_list[ingredient.name]
+            if ingredient_price then
+              ingredient_value = ingredient_value + (ingredient_price * ingredient.amount)
+            else
+              ingredient_value = nil
+              break
+            end
+          end
+        end
+        if not ingredient_value then break end
+        local product_value = 0
+        for k, product in pairs (recipe.products) do
+          local amount = product.amount or (product.amount_max + product.amount_min) * 0.5 * product.probability
+          local product_price = price_list[product.name]
+          if product_price then
+            product_value = product_value + product_price * amount
+          else
+            product_value = nil
+            break
+          end
+        end
+        local reverse_price = (product_value - energy_addition(recipe, product_value)) / ingredient_multiplier(recipe.ingredients, param) -- Not perfect, but close enough
+        local this_cost = (reverse_price - ingredient_value) / ingredient_amount
+        if recipe_cost then
+          recipe_cost = math.min(recipe)
+        else
+          recipe_cost = this_cost
+        end
+      end
+      price_list[name] = recipe_cost
+    end
+  end
+end
+
+local count_table = function(table)
+  local count = 0
+  for k, v in pairs (table) do
+    count = count + 1
+  end
+  return count
+end
+
+function ingredient_multiplier(recipe, param)
+  return (param.ingredient_exponent or 1) ^ (count_table(recipe)-2)
+end
+
+local ln = math.log
+function energy_addition(recipe, cost)
+  return ((ln(recipe.energy + 1) * (cost ^ 0.5)))
+end
+
 production_score = {}
 
 production_score.get_default_param = function()
@@ -134,14 +215,6 @@ production_score.generate_price_list = function(param)
   end
 
   local product_list = get_product_list()
-  local ln = math.log
-  local count_table = function(table)
-    local count = 0
-    for k, v in pairs (table) do
-      count = count + 1
-    end
-    return count
-  end
   local get_price_recursive
   get_price_recursive = function(name, current_loop)
     local price = price_list[name]
@@ -166,7 +239,7 @@ production_score.generate_price_list = function(param)
         end
       end
       if this_recipe_cost > 0 then
-        this_recipe_cost = (this_recipe_cost * ((param.ingredient_exponent or 1) ^ (count_table(recipe)-2))) + ((ln(recipe.energy + 1) * (this_recipe_cost ^ 0.5)))
+        this_recipe_cost = (this_recipe_cost * ingredient_multiplier(recipe, param)) + energy_addition(recipe, this_recipe_cost)
         if recipe_cost then
           recipe_cost = math.min(recipe_cost, this_recipe_cost)
         else
@@ -190,6 +263,7 @@ production_score.generate_price_list = function(param)
     local current_loop = {}
     get_price_recursive(name, current_loop)
   end
+  deduce_nil_prices(price_list, param)
   return price_list
 end
 

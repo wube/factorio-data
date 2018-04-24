@@ -59,47 +59,24 @@ local function make_multioctave_modulated_noise_function(params)
   end
   -- input scale of modulation relative to each octave's base input scale
   local mris = params.modulation_relative_input_scale or 1/17
-  
+
   return function(x,y)
     local outscale = octave0_output_scale
     local inscale = octave0_input_scale
     local result = 0
-    
+
     for i=1,octave_count do
       local noise = basis_noise_function(x*inscale, y*inscale)
       local modulation = modulation_noise_function(x*(inscale*mris), y*(inscale*mris))
       result = result + (outscale * noise * modulation)
-      
+
       outscale = outscale * octave_output_scale_multiplier
       inscale = inscale * octave_input_scale_multiplier
     end
-    
+
     return result
   end
 end
-
-local function make_multioctave_noise_function(seed0,seed1,octaves,octave_output_scale_multiplier,octave_input_scale_multiplier,output_scale0,input_scale0)
-  octave_output_scale_multiplier = octave_output_scale_multiplier or 2
-  octave_input_scale_multiplier = octave_input_scale_multiplier or 1 / octave_output_scale_multiplier
-  return function(x,y,inscale,outscale)
-    return tne{
-      type = "function-application",
-      function_name = "factorio-multioctave-noise",
-      arguments = {
-        x = tne(x),
-        y = tne(y),
-        seed0 = tne(seed0),
-        seed1 = tne(seed1),
-        input_scale = tne((inscale or 1) * (input_scale0 or 1)),
-        output_scale = tne((outscale or 1) * (output_scale0 or 1)),
-        octaves = tne(octaves),
-        octave_output_scale_multiplier = tne(octave_output_scale_multiplier),
-        octave_input_scale_multiplier = tne(octave_input_scale_multiplier),
-      }
-    }
-  end
-end
-
 
 local function make_split_multioctave_noise_function(seed0,seed1,octaveses,octave_output_scale_multiplier,octave_input_scale_multiplier,output_scale0,input_scale0)
   output_scale0 = output_scale0 or 1
@@ -203,7 +180,7 @@ data:extend{
       local low_freq_noise = make_multioctave_noise_function(map.seed, 8, 8, 1.5, 1/2, 2, 1/128)
       local basis = low_freq_noise(x,y) -- * noise.clamp(tile.tier / 16, 0, 1)
       local ridged1 = noise.ridge(basis, low_ridge, high_ridge)
-      
+
       local normal = noise.max(ridged1 + high_freq_noise(x,y), plateaus + plateau_noise(x,y))
       -- local normal = ridged1
       local terraced = noise.terrace_for_cliffs(normal, terrace_strength, map)
@@ -250,9 +227,9 @@ data:extend{
       local very_low_freq_noise = make_basis_noise_function(map.seed, 9, 20, 1/1024)
       local basis = low_freq_noise(x,y) + very_low_freq_noise(x,y)
       local ridged1 = noise.ridge(basis, low_ridge, high_ridge)
-      
+
       local normal = noise.max(ridged1 + high_freq_noise(x,y), plateaus + plateau_noise(x,y)) + global_bias
-      
+
       -- Multily elevation by low-frequency noise to make hilly and non-hilly areas
       local hill_modulation = noise.clamp(make_multioctave_noise_function(map.seed, 12, 4, 2, 1/3)(x,y,1/256,3/4) - 2, 0.1, 1.0)
 
@@ -260,7 +237,7 @@ data:extend{
       -- Set to slightly above the water level so that flat plains don't all become a giant beach/sandbar thing.
       -- To do its job it just has to be lower than the first row of cliffs.
       local hill_modulation_identity = map.finite_water_level + 3
-      
+
       return noise.min(normal, hill_modulation * (normal - hill_modulation_identity) + hill_modulation_identity)
     end),
   },

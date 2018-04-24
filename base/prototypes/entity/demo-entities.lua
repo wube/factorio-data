@@ -613,7 +613,7 @@ data:extend(
     name = "player",
     icon = "__base__/graphics/icons/player.png",
     icon_size = 32,
-    flags = {"pushable", "placeable-off-grid", "breaths-air", "not-repairable", "not-on-map"},
+    flags = {"placeable-off-grid", "breaths-air", "not-repairable", "not-on-map"},
     max_health = 250,
     alert_when_damaged = false,
     healing_per_tick = 0.15,

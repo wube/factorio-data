@@ -64,6 +64,10 @@ data:extend(
       yellow_signal_color = { r = 1, g = 1, b = 0 },
       explosion_visualization_duration = 48,
     },
+    default_player_force_color = { r = 0,  g = 0, b = 1 },
+    default_enemy_force_color = { r = 1, g = 0, b = 0 },
+    default_other_force_color = { r = 0.2, g = 0.2, b = 0.2 },
+    deconstruct_mark_tint = { r = 0.65, g = 0.65, b = 0.65, a = 0.65 },
 
     zoom_to_world_can_use_nightvision = false,
     zoom_to_world_darkness_multiplier = 0.5,
