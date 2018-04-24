@@ -427,10 +427,10 @@ data:extend(
     logistic_button_selected_slot_style =
     {
       type = "button_style",
-      parent = "image_tab_selected_slot_style",
-      scalable = false,
-      width = 32,
-      height = 32,
+      parent = "slot_button_style",
+      default_graphical_set = orangebuttongraphcialset(),
+      hovered_graphical_set =  orangebuttongraphcialset(),
+      clicked_graphical_set = orangebuttongraphcialset()
     },
     ability_slot_style =
     {
@@ -964,6 +964,7 @@ data:extend(
       font = "default-bold",
       align = "left",
       minimal_width = 225,
+      maximal_width = 225,
       top_padding = 0,
       right_padding = 2,
       bottom_padding = 0,
