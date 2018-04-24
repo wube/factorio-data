@@ -89,31 +89,35 @@ data:extend(
       order = "e",
       basic_settings =
       {
-        autoplace_controls = {
-          coal = {
+        autoplace_controls =
+        {
+          coal =
+          {
             frequency = "very-low",
             size = "high"
           },
-          ["copper-ore"] = {
+          ["copper-ore"] =
+          {
             frequency = "very-low",
             size = "high"
           },
-          ["crude-oil"] = {
+          ["crude-oil"] =
+          {
             frequency = "low",
             size = "high"
           },
-          ["uranium-ore"] = {
+          ["uranium-ore"] =
+          {
             frequency = "low",
             size = "high"
           },
-          ["enemy-base"] = {
-            frequency = "low",
-          },
-          ["iron-ore"] = {
+          ["iron-ore"] =
+          {
             frequency = "very-low",
             size = "high"
           },
-          stone = {
+          stone =
+          {
             frequency = "very-low",
             size = "high"
           }
