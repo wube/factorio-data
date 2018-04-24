@@ -11,8 +11,9 @@ inventory =
 {
   fuel = 1,
   chest = 1,
-  furnace_source = 1,
-  furnace_result = 2,
+  furnace_source = 2,
+  furnace_result = 3,
+  furnace_modules = 4,
   player_main = 1,
   player_quickbar = 2,
   player_guns = 3,
@@ -157,7 +158,9 @@ groupstate =
 {
   gathering = 0,
   moving = 1,
-  attacking = 2
+  attacking_distraction = 2,
+  attacking_target = 3,
+  finished = 4
 }
 
 circuitconnector =

@@ -1465,25 +1465,6 @@ data:extend(
   },
   {
     type = "technology",
-    name = "rocket-travel",
-    icon = "__base__/graphics/technology/rocket-travel.png",
-    prerequisites = {"rocket-speed-2", "logistics-3"},
-    enabled = false,
-    unit =
-    {
-      count = 100,
-      ingredients =
-      {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 2}
-      },
-      time = 15
-    },
-    order = "e-h"
-  },
-  {
-    type = "technology",
     name = "engine",
     icon = "__base__/graphics/technology/engine.png",
     prerequisites = {"steel-processing", "automation-2"},
