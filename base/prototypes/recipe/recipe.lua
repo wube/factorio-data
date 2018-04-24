@@ -19,9 +19,10 @@ data:extend(
     ingredients =
     {
       {"iron-gear-wheel", 5},
-      {"basic-transport-belt", 1}
+      {"transport-belt", 1}
     },
-    result = "fast-transport-belt"
+    result = "fast-transport-belt",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -34,7 +35,8 @@ data:extend(
       {"fast-transport-belt", 1},
       {type="fluid", name="lubricant", amount=2},
     },
-    result = "express-transport-belt"
+    result = "express-transport-belt",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -60,7 +62,8 @@ data:extend(
       {"iron-gear-wheel", 5},
       {"assembling-machine-1", 1}
     },
-    result = "assembling-machine-2"
+    result = "assembling-machine-2",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -100,7 +103,7 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "straight-rail",
+    name = "rail",
     enabled = false,
     ingredients =
     {
@@ -108,16 +111,9 @@ data:extend(
       {"iron-stick", 1},
       {"steel-plate", 1}
     },
-    result = "straight-rail",
-    result_count = 2
-  },
-  {
-    type = "recipe",
-    name = "curved-rail",
-    enabled = false,
-    ingredients = {{"stone", 4}, {"iron-stick", 4}, {"steel-plate", 4}},
-    result = "curved-rail",
-    result_count = 2
+    result = "rail",
+    result_count = 2,
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -164,7 +160,8 @@ data:extend(
       {"electronic-circuit", 1},
       {"iron-plate", 5}
     },
-    result = "rail-signal"
+    result = "rail-signal",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -175,7 +172,8 @@ data:extend(
       {"electronic-circuit", 1},
       {"iron-plate", 5}
     },
-    result = "rail-chain-signal"
+    result = "rail-chain-signal",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -187,11 +185,11 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-modular-armor",
+    name = "modular-armor",
     enabled = false,
     energy_required = 15,
     ingredients = {{ "advanced-circuit", 30}, {"processing-unit", 5}, {"steel-plate", 50}},
-    result = "basic-modular-armor"
+    result = "modular-armor"
   },
   {
     type = "recipe",
@@ -199,7 +197,8 @@ data:extend(
     enabled = false,
     energy_required = 20,
     ingredients = {{ "processing-unit", 40}, {"electric-engine-unit", 20}, {"steel-plate", 40}, {"alien-artifact", 10}},
-    result = "power-armor"
+    result = "power-armor",
+    requester_paste_multiplier = 1
   },
   {
     type = "recipe",
@@ -207,39 +206,32 @@ data:extend(
     enabled = false,
     energy_required = 25,
     ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 40}, {"steel-plate", 40}, {"alien-artifact", 50}},
-    result = "power-armor-mk2"
+    result = "power-armor-mk2",
+    requester_paste_multiplier = 1
   },
   {
     type = "recipe",
     name = "iron-chest",
     enabled = true,
     ingredients = {{"iron-plate", 8}},
-    result = "iron-chest"
+    result = "iron-chest",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
     name = "steel-chest",
     enabled = false,
     ingredients = {{"steel-plate", 8}},
-    result = "steel-chest"
-  },
-  {
-    type = "recipe",
-    name = "smart-chest",
-    enabled = false,
-    ingredients =
-    {
-      {"steel-chest", 1},
-      {"electronic-circuit", 3}
-    },
-    result = "smart-chest"
+    result = "steel-chest",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
     name = "stone-wall",
     enabled = false,
     ingredients = {{"stone-brick", 5}},
-    result = "stone-wall"
+    result = "stone-wall",
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
@@ -345,8 +337,8 @@ data:extend(
     energy_required = 6,
     ingredients =
     {
-      {"basic-inserter", 1},
-      {"basic-transport-belt", 1}
+      {"inserter", 1},
+      {"transport-belt", 1}
     },
     result = "science-pack-2"
   },
@@ -359,7 +351,7 @@ data:extend(
     {
       {"battery", 1},
       {"advanced-circuit", 1},
-      {"smart-inserter", 1},
+      {"filter-inserter", 1},
       {"steel-plate", 1},
     },
     result = "science-pack-3"
@@ -382,7 +374,7 @@ data:extend(
     {
       {"electronic-circuit", 10},
       {"iron-gear-wheel", 10},
-      {"basic-transport-belt", 4}
+      {"transport-belt", 4}
     },
     result = "lab"
   },
@@ -395,7 +387,8 @@ data:extend(
       {"electronic-circuit", 1},
       {"copper-cable", 1}
     },
-    result = "red-wire"
+    result = "red-wire",
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
@@ -406,57 +399,102 @@ data:extend(
       {"electronic-circuit", 1},
       {"copper-cable", 1}
     },
-    result = "green-wire"
+    result = "green-wire",
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
-    name = "basic-transport-belt-to-ground",
+    name = "underground-belt",
     enabled = false,
     energy_required = 1,
     ingredients =
     {
       {"iron-plate", 10},
-      {"basic-transport-belt", 5}
+      {"transport-belt", 5}
     },
     result_count = 2,
-    result = "basic-transport-belt-to-ground"
+    result = "underground-belt",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
-    name = "fast-transport-belt-to-ground",
+    name = "fast-underground-belt",
     enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 20},
-      {"basic-transport-belt-to-ground", 2}
+      {"underground-belt", 2}
     },
     result_count = 2,
-    result = "fast-transport-belt-to-ground"
+    result = "fast-underground-belt",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
-    name = "express-transport-belt-to-ground",
+    name = "express-underground-belt",
+    category = "crafting-with-fluid",
     enabled = false,
     ingredients =
     {
       {"iron-gear-wheel", 40},
-      {"fast-transport-belt-to-ground", 2}
+      {"fast-underground-belt", 2},
+      {type="fluid", name="lubricant", amount=4},
     },
     result_count = 2,
-    result = "express-transport-belt-to-ground"
+    result = "express-underground-belt"
   },
   {
     type = "recipe",
-    name = "basic-splitter",
+    name = "loader",
+    enabled = false,
+    energy_required = 1,
+    ingredients =
+    {
+      {"inserter", 5},
+      {"electronic-circuit", 5},
+      {"iron-gear-wheel", 5},
+      {"iron-plate", 5},
+      {"transport-belt", 5}
+    },
+    result = "loader"
+  },
+  {
+    type = "recipe",
+    name = "fast-loader",
+    enabled = false,
+    energy_required = 3,
+    ingredients =
+    {
+      {"fast-transport-belt", 5},
+      {"loader", 1}
+    },
+    result = "fast-loader"
+  },
+  {
+    type = "recipe",
+    name = "express-loader",
+    enabled = false,
+    energy_required = 10,
+    ingredients =
+    {
+      {"express-transport-belt", 5},
+      {"fast-loader", 1}
+    },
+    result = "express-loader"
+  },
+  {
+    type = "recipe",
+    name = "splitter",
     enabled = false,
     energy_required = 1,
     ingredients =
     {
       {"electronic-circuit", 5},
       {"iron-plate", 5},
-      {"basic-transport-belt", 4}
+      {"transport-belt", 4}
     },
-    result = "basic-splitter"
+    result = "splitter",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -465,11 +503,12 @@ data:extend(
     energy_required = 2,
     ingredients =
     {
-      {"basic-splitter", 1},
+      {"splitter", 1},
       {"iron-gear-wheel", 10},
       {"electronic-circuit", 10}
     },
-    result = "fast-splitter"
+    result = "fast-splitter",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -497,7 +536,8 @@ data:extend(
       {"plastic-bar", 2},
       {"copper-cable", 4}
     },
-    result = "advanced-circuit"
+    result = "advanced-circuit",
+    requester_paste_multiplier = 5
   },
   {
     type = "recipe",
@@ -541,10 +581,12 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"smart-chest", 1},
+      {"steel-chest", 1},
+      {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-passive-provider"
+    result = "logistic-chest-passive-provider",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -552,10 +594,12 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"smart-chest", 1},
+      {"steel-chest", 1},
+      {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-active-provider"
+    result = "logistic-chest-active-provider",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -563,10 +607,12 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"smart-chest", 1},
+      {"steel-chest", 1},
+      {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-storage"
+    result = "logistic-chest-storage",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -574,10 +620,12 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {"smart-chest", 1},
+      {"steel-chest", 1},
+      {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-requester"
+    result = "logistic-chest-requester",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -592,7 +640,8 @@ data:extend(
       {"electric-engine-unit", 200}
     },
     energy_required = 30,
-    result = "rocket-silo"
+    result = "rocket-silo",
+    requester_paste_multiplier = 1
   },
   {
     type = "recipe",
@@ -616,7 +665,8 @@ data:extend(
       {"steel-plate", 5},
       {"iron-stick", 2}
     },
-    result = "steel-axe"
+    result = "steel-axe",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -627,7 +677,8 @@ data:extend(
       {"steel-plate", 5},
       {"copper-plate", 5}
     },
-    result = "big-electric-pole"
+    result = "big-electric-pole",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -650,11 +701,12 @@ data:extend(
       {"steel-plate", 2},
       {"copper-plate", 2}
     },
-    result = "medium-electric-pole"
+    result = "medium-electric-pole",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
-    name = "basic-accumulator",
+    name = "accumulator",
     energy_required = 10,
     enabled = false,
     ingredients =
@@ -662,7 +714,7 @@ data:extend(
       {"iron-plate", 2},
       {"battery", 5}
     },
-    result = "basic-accumulator"
+    result = "accumulator"
   },
   {
     type = "recipe",
@@ -682,7 +734,7 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-beacon",
+    name = "beacon",
     enabled = false,
     energy_required = 15,
     ingredients =
@@ -692,7 +744,7 @@ data:extend(
       {"steel-plate", 10},
       {"copper-cable", 10}
     },
-    result = "basic-beacon"
+    result = "beacon"
   },
   {
     type = "recipe",
@@ -703,6 +755,17 @@ data:extend(
       {"advanced-circuit", 1}
     },
     result = "blueprint",
+    enabled = false
+  },
+  {
+    type = "recipe",
+    name = "blueprint-book",
+    energy_required = 5,
+    ingredients =
+    {
+      {"advanced-circuit", 15}
+    },
+    result = "blueprint-book",
     enabled = false
   },
   {
@@ -904,6 +967,19 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "power-switch",
+    enabled = "false",
+    energy_required = 2,
+    ingredients =
+    {
+      {"iron-plate", 5},
+      {"copper-cable", 5},
+      {"electronic-circuit", 2},
+    },
+    result = "power-switch"
+  },
+  {
+    type = "recipe",
     name = "low-density-structure",
     energy_required = 30,
     enabled = false,
@@ -966,7 +1042,7 @@ data:extend(
     {
       {"low-density-structure", 100},
       {"solar-panel", 100},
-      {"basic-accumulator", 100},
+      {"accumulator", 100},
       {"radar", 5},
       {"processing-unit", 100},
       {"rocket-fuel", 50}
@@ -987,6 +1063,32 @@ data:extend(
     },
     result= "concrete",
     result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "hazard-concrete",
+    energy_required = 0.25,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"concrete", 10}
+    },
+    result= "hazard-concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "landfill",
+    energy_required = 0.5,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"stone", 20}
+    },
+    result= "landfill",
+    result_count = 1
   }
 }
 )

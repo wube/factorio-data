@@ -1,4 +1,3 @@
-require "defines"
 
 function story_init_helpers(story)
   story_points_by_name = {}

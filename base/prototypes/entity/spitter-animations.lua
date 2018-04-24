@@ -47,6 +47,7 @@ function spitterattackanimation(scale, tint)
         }
       },
       {
+        flags = { "mask" },
         width = 108,
         height = 90,
         frame_count = 22,
@@ -129,6 +130,7 @@ function spitterrunanimation(scale, tint)
         shift = {scale * 0.015625, scale * -0.6875},
         scale = scale,
         filename = "__base__/graphics/entity/spitter/spitter-run-mask.png",
+        flags = { "mask" },
         tint = tint
       },
     }
@@ -173,6 +175,7 @@ function spitterdyinganimation(scale, tint)
         }
       },
       {
+        flags = { "mask" },
         width = 166,
         height = 144,
         frame_count = 16,

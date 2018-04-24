@@ -1,0 +1,15 @@
+{
+  "item":
+  [
+    [ "basic-grenade", "grenade" ]
+  ],
+  "recipe":
+  [
+    [ "smart-chest", "steel-chest" ],
+    [ "straight-rail", "rail" ],
+    [ "curved-rail", "rail" ],
+    [ "basic-grenade", "grenade" ],
+    [ "basic-laser-defense-equipment", "personal-laser-defense-equipment" ],
+    [ "basic-exoskeleton-equipment", "exoskeleton-equipment" ]
+  ]
+}

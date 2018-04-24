@@ -5,20 +5,23 @@ data:extend(
     name = "wood",
     ingredients = {{"raw-wood", 1}},
     result = "wood",
-    result_count = 2
+    result_count = 2,
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
     name = "wooden-chest",
     ingredients = {{"wood", 4}},
-    result = "wooden-chest"
+    result = "wooden-chest",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
     name = "iron-stick",
     ingredients = {{"iron-plate", 1}},
     result = "iron-stick",
-    result_count = 2
+    result_count = 2,
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
@@ -30,7 +33,8 @@ data:extend(
     type = "recipe",
     name = "stone-furnace",
     ingredients = {{"stone", 5}},
-    result = "stone-furnace"
+    result = "stone-furnace",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -53,7 +57,8 @@ data:extend(
     type = "recipe",
     name = "iron-gear-wheel",
     ingredients = {{"iron-plate", 2}},
-    result = "iron-gear-wheel"
+    result = "iron-gear-wheel",
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
@@ -63,22 +68,24 @@ data:extend(
       {"iron-plate", 1},
       {"copper-cable", 3}
     },
-    result = "electronic-circuit"
+    result = "electronic-circuit",
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
-    name = "basic-transport-belt",
+    name = "transport-belt",
     ingredients =
     {
       {"iron-plate", 1},
       {"iron-gear-wheel", 1}
     },
-    result = "basic-transport-belt",
-    result_count = 2
+    result = "transport-belt",
+    result_count = 2,
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
-    name = "basic-mining-drill",
+    name = "electric-mining-drill",
     energy_required = 2,
     ingredients =
     {
@@ -86,7 +93,7 @@ data:extend(
       {"iron-gear-wheel", 5},
       {"iron-plate", 10}
     },
-    result = "basic-mining-drill"
+    result = "electric-mining-drill"
   },
   {
     type = "recipe",
@@ -102,14 +109,15 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-inserter",
+    name = "inserter",
     ingredients =
     {
       {"electronic-circuit", 1},
       {"iron-gear-wheel", 1},
       {"iron-plate", 1}
     },
-    result = "basic-inserter"
+    result = "inserter",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -119,13 +127,15 @@ data:extend(
       {"iron-plate", 1},
       {"iron-gear-wheel", 1}
     },
-    result = "burner-inserter"
+    result = "burner-inserter",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
     name = "pipe",
     ingredients = {{"iron-plate", 1}},
-    result = "pipe"
+    result = "pipe",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -143,7 +153,8 @@ data:extend(
     name = "copper-cable",
     ingredients = {{"copper-plate", 1}},
     result = "copper-cable",
-    result_count = 2
+    result_count = 2,
+    requester_paste_multiplier = 10
   },
   {
     type = "recipe",
@@ -154,7 +165,8 @@ data:extend(
       {"copper-cable", 2}
     },
     result = "small-electric-pole",
-    result_count = 2
+    result_count = 2,
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -182,19 +194,19 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-bullet-magazine",
+    name = "firearm-magazine",
     energy_required = 2,
     ingredients = {{"iron-plate", 2}},
-    result = "basic-bullet-magazine",
+    result = "firearm-magazine",
     result_count = 1
   },
   {
     type = "recipe",
-    name = "basic-armor",
+    name = "light-armor",
     enabled = false,
     energy_required = 3,
     ingredients = {{"iron-plate", 40}},
-    result = "basic-armor"
+    result = "light-armor"
   },
   {
     type = "recipe",
@@ -205,7 +217,8 @@ data:extend(
       {"iron-gear-wheel", 5},
       {"iron-plate", 10}
     },
-    result = "radar"
+    result = "radar",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -228,7 +241,8 @@ data:extend(
       {"iron-plate", 5}
     },
     result_count = 2,
-    result = "pipe-to-ground"
+    result = "pipe-to-ground",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -240,7 +254,8 @@ data:extend(
       {"iron-gear-wheel", 5},
       {"iron-plate", 9}
     },
-    result = "assembling-machine-1"
+    result = "assembling-machine-1",
+    requester_paste_multiplier = 4
   },
   {
     type = "recipe",
@@ -250,7 +265,8 @@ data:extend(
       {"electronic-circuit", 1},
       {"iron-gear-wheel", 1}
     },
-    result = "repair-pack"
+    result = "repair-pack",
+    requester_paste_multiplier = 10
   }
 }
 )

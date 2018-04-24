@@ -120,7 +120,8 @@ data:extend(
     results=
     {
       {type="item", name="plastic-bar", amount=2}
-    }
+    },
+    requester_paste_multiplier = 4
   },
 
   {
@@ -229,7 +230,8 @@ data:extend(
     results=
     {
       {type="item", name="empty-barrel", amount=1}
-    }
+    },
+    requester_paste_multiplier = 10
   },
 
   {

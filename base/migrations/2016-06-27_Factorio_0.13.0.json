@@ -1,0 +1,9 @@
+{
+  "technology":
+  [
+    [ "inserter-stack-size-bonus-1", "inserter-capacity-bonus-1" ],
+    [ "inserter-stack-size-bonus-2", "inserter-capacity-bonus-2" ],
+    [ "inserter-stack-size-bonus-3", "inserter-capacity-bonus-3" ],
+    [ "inserter-stack-size-bonus-4", "inserter-capacity-bonus-4" ]
+  ]
+}

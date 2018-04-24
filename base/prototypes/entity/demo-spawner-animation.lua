@@ -18,6 +18,7 @@ return
       },
       {
         filename = "__base__/graphics/entity/spawner/spawner-idle-mask.png",
+        flags = { "mask" },
         width = 166,
         height = 148,
         frame_count = 8,
@@ -66,6 +67,7 @@ return
         }
       },
       {
+        flags = { "mask" },
         width = 166,
         height = 148,
         frame_count = 20,

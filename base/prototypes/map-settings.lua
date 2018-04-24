@@ -47,8 +47,34 @@ data:extend(
       -- player's territory
       max_expansion_distance = 7,
 
-      -- Minimal distance of expansion point in chunks from player base
-      min_player_base_distance = 3,
+      friendly_base_influence_radius = 2,
+      enemy_building_influence_radius = 2,
+
+      -- A candidate chunk's score is given as follows:
+      --   player = 0
+      --   for neighbour in all chunks within enemy_building_influence_radius from chunk:
+      --     player += number of player buildings on neighbour
+      --             * building_coefficient
+      --             * neighbouring_chunk_coefficient^distance(chunk, neighbour)
+      --
+      --   base = 0
+      --   for neighbour in all chunk within friendly_base_influence_radius from chunk:
+      --     base += num of enemy bases on neighbour
+      --           * other_base_coefficient
+      --           * neighbouring_base_chunk_coefficient^distance(chunk, neighbour)
+      --
+      --   score(chunk) = 1 / (1 + player + base)
+      --
+      -- The iteration is over a square region centered around the chunk for which the calculation is done,
+      -- and includes the central chunk as well. distance is the Manhattan distance, and ^ signifies exponentiation.
+      building_coefficient = 0.1,
+      other_base_coefficient = 2.0,
+      neighbouring_chunk_coefficient = 0.5,
+      neighbouring_base_chunk_coefficient = 0.4;
+
+      -- A chunk has to have at most this much percent unbuildable tiles for it to be considered a candidate.
+      -- This is to avoid chunks full of water to be marked as candidates.
+      max_colliding_tiles_coefficient = 0.9,
 
       -- Size of the group that goes to build new base (in game this is multiplied by the
       -- evolution factor).
@@ -58,8 +84,10 @@ data:extend(
       -- Ticks to expand to a single
       -- position for a base is used.
       --
-      -- cooldown is calculated as linear interpolation between min and max
-      min_expansion_cooldown = 5 * 3600,
+      -- cooldown is calculated as follows:
+      --   cooldown = lerp(max_expansion_cooldown, min_expansion_cooldown, -e^2 + 2 * e),
+      -- where lerp is the linear interpolation function, and e is the current evolution factor.
+      min_expansion_cooldown = 4 * 3600,
       max_expansion_cooldown = 60 * 3600
     },
 
@@ -76,6 +104,14 @@ data:extend(
       min_group_radius = 5.0,
       -- when a member falls behind the group he can speedup up till this much of his regular speed
       max_member_speedup_when_behind = 1.4,
+      -- When a member gets ahead of its group, it will slow down to at most this factor of its speed
+      max_member_slowdown_when_ahead = 0.6,
+      -- When members of a group are behind, the entire group will slow down to at most this factor of its max speed
+      max_group_slowdown_factor = 0.3,
+      -- If a member falls behind more than this times the group radius, the group will slow down to max_group_slowdown_factor
+      max_group_member_fallback_factor = 3,
+      -- If a member falls behind more than this time the group radius, it will be removed from the group.
+      member_disown_distance = 10,
       tick_tolerance_when_member_arrives = 60,
     },
 
@@ -122,38 +158,22 @@ data:extend(
       short_cache_min_algo_steps_to_cache = 50,
       -- minimal distance to goal for path to be searched in long path cache
       long_cache_min_cacheable_distance = 30,
-      -- when searching for connection to path cache path what is the step limit
-      cache_max_connect_to_cache_steps = 100,
-      -- index of last waypoint to which connection path will try to connect
-      cache_last_connection_point = 50,
-      -- ratio where is the last connection point compared to the length of the path
-      cache_last_connection_point_ratio = 0.2,
-      -- number of connection waypoints - results in indices 20, 15, 10, 5, 0
-      cache_num_connection_points = 5,
-      -- absolute ageing for every path (value per second)
-      cache_ageing = 0.05,
-      -- this much the path needs to stay in the cache
-      cache_keep_path_threshold = 0.5,
-      -- when path from the cache is used this is the fitness it gets (no matter whether the unit suceeded to use it)
-      cache_absolute_path_credit = 1.0,
-      -- extra credit is given for every waypoint in the path this is to promote longer paths in the cache
-      cache_per_node_path_credit = 0.001,
+      -- when searching for connection to path cache path, search at most for this number of steps times the initial estimate
+      cache_max_connect_to_cache_steps_multiplier = 100,
       -- when looking for path from cache make sure it doesn't start too far from requested start in relative distance terms
       cache_accept_path_start_distance_ratio = 0.2,
       -- when looking for path from cache make sure it doesn't end too far from requested end
       -- this is typically higher than accept value for the start because the end target can be moving
       cache_accept_path_end_distance_ratio = 0.15,
+      -- Same as cache_accept_path_start_distance_ratio, but used for negative cache queries
+      negative_cache_accept_path_start_distance_ratio = 0.3,
+      -- Same as cache_accept_path_end_distance_ratio, but used for negative cache queries
+      negative_cache_accept_path_end_distance_ratio = 0.3,
       -- when assigning rating to the best path this * start distances is considered
       cache_path_start_distance_rating_multiplier = 10,
       -- when assigning rating to the best path this * end distances is considered
       -- this is typically higher than value for the start to achieve better path end quality
       cache_path_end_distance_rating_multiplier = 20,
-      -- every path in cache will be deleted after this number of ticks
-      -- this is to prevent outdated paths staying in cache too long
-      short_cache_path_max_age = 10 * 60,
-      long_cache_path_max_age = 30 * 3600,
-      -- minimal spacing in ticks between max age path removals
-      cache_max_age_spacing = 600,
 
       -- somewhere along the path is stuck enemy we need to avoid
       -- this is mainly to handle situations when units have arrived and are attacking the target
@@ -168,13 +188,17 @@ data:extend(
       -- uptil this amount any client will be served by the path finder (no estimate on the path length)
       max_clients_to_accept_any_new_request = 10,
       -- from max_clients_to_accept_any_new_request till this one only those that have a short estimate will be served
-      max_clients_to_accept_short_new_request = 10,
+      max_clients_to_accept_short_new_request = 100,
       -- this is the "threshold" to decide what is short and what is not
       direct_distance_to_consider_short_request = 100,
+      -- if a short request takes more than this many steps, it will be rescheduled as a long request
+      short_request_max_steps = 1000,
+      -- How many steps will be allocated to short requests each tick, as a ratio of all available steps per tick
+      short_request_ratio = 0.5,
       -- absolute minimum of steps that will be performed for every path find request no matter what
       min_steps_to_check_path_find_termination = 2000,
       -- if the amount of steps is higher than this times estimate of start to goal then path finding is terminated
-      start_to_goal_cost_multiplier_to_terminate_path_find = 100.0
+      start_to_goal_cost_multiplier_to_terminate_path_find = 500.0
     },
 
     -- If a behavior fails this many times, the enemy (or enemy group)

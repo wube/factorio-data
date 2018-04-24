@@ -1,6 +1,7 @@
 require ("prototypes.entity.demo-railpictures")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
+require ("prototypes.entity.circuit-connector-sprites")
 require ("prototypes.entity.demo-player-animations")
 
 function make_unit_melee_ammo_type(damagevalue)
@@ -30,29 +31,37 @@ boilerfires =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-down.png",
     priority = "extra-high",
-    width = 11,
-    height = 11,
-    frame_count = 32,
     line_length = 8,
-    shift = {0.03125, 0.28125}
+    width = 21,
+    height = 34,
+    frame_count = 48,
+    axially_symmetrical = false,
+    direction_count = 1,
+    shift = {0.140625, -0.09375},
   },
   left =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-left.png",
     priority = "extra-high",
-    width = 5,
-    height = 7,
-    frame_count = 14,
-    shift = {-0.4375, -0.09375}
+    line_length = 8,
+    width = 9,
+    height = 33,
+    frame_count = 48,
+    axially_symmetrical = false,
+    direction_count = 1,
+    shift = {-0.453125, -0.484375}
   },
   right =
   {
     filename = "__base__/graphics/entity/boiler/boiler-fire-right.png",
     priority = "extra-high",
-    width = 6,
-    height = 9,
-    frame_count = 14,
-    shift = {0.46875, -0.0625}
+    line_length = 8,
+    width = 9,
+    height = 27,
+    frame_count = 48,
+    axially_symmetrical = false,
+    direction_count = 1,
+    shift = {0.484375, -0.359375}
   }
 }
 
@@ -253,7 +262,8 @@ function smoke(opts)
       shift = {-0.53125, -0.4375},
       priority = "high",
       animation_speed = 0.25,
-      filename = "__base__/graphics/entity/smoke/smoke.png"
+      filename = "__base__/graphics/entity/smoke/smoke.png",
+      flags = { "compressed" }
     }
   }
 end
@@ -277,6 +287,8 @@ data:extend(
     build_distance = 6,
     drop_item_distance = 6,
     reach_distance = 6,
+    item_pickup_distance = 1,
+    loot_pickup_distance = 2,
     reach_resource_distance = 2.7,
     ticks_to_keep_gun = 600,
     ticks_to_keep_aiming_direction = 100,
@@ -354,7 +366,7 @@ data:extend(
       },
       {
         -- heavy-armor is not in the demo
-        armors = data.is_demo and {"basic-armor"} or {"basic-armor", "heavy-armor"},
+        armors = data.is_demo and {"light-armor"} or {"light-armor", "heavy-armor"},
         idle =
         {
           layers =
@@ -418,7 +430,7 @@ data:extend(
       },
       {
         -- modular armors are not in the demo
-        armors = data.is_demo and {} or {"basic-modular-armor", "power-armor", "power-armor-mk2"},
+        armors = data.is_demo and {} or {"modular-armor", "power-armor", "power-armor-mk2"},
         idle =
         {
           layers =
@@ -570,7 +582,7 @@ data:extend(
       width = 81,
       height = 64,
       frame_count = 1,
-      shift = {0.5, 0.05 }
+      shift = {0.515625, 0.0625}
     },
     working_visualisations =
     {
@@ -583,10 +595,13 @@ data:extend(
         {
           filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
           priority = "extra-high",
-          width = 23,
-          height = 27,
-          frame_count = 12,
-          shift = { 0.078125, 0.5234375}
+          line_length = 8,
+          width = 22,
+          height = 87,
+          frame_count = 48,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = {0.0625, -0.453125},
         },
         light = {intensity = 1, size = 1}
       }
@@ -596,10 +611,10 @@ data:extend(
 
   {
     type = "transport-belt",
-    name = "basic-transport-belt",
-    icon = "__base__/graphics/icons/basic-transport-belt.png",
+    name = "transport-belt",
+    icon = "__base__/graphics/icons/transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.3, result = "basic-transport-belt"},
+    minable = {hardness = 0.2, mining_time = 0.3, result = "transport-belt"},
     max_health = 50,
     corpse = "small-remnants",
     resistances =
@@ -615,7 +630,7 @@ data:extend(
     {
       sound =
       {
-        filename = "__base__/sound/basic-transport-belt.ogg",
+        filename = "__base__/sound/transport-belt.ogg",
         volume = 0.4
       },
       max_sounds_per_type = 3
@@ -623,7 +638,7 @@ data:extend(
     animation_speed_coefficient = 32,
     animations =
     {
-      filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+      filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
       priority = "extra-high",
       width = 40,
       height = 40,
@@ -640,7 +655,11 @@ data:extend(
     starting_side = basic_belt_starting_side,
     ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
-    speed = 0.03125
+    speed = 0.03125,
+    connector_frame_sprites = transport_belt_connector_frame_sprites,
+    circuit_connector_sprites = transport_belt_circuit_connector_sprites,
+    circuit_wire_connection_point = transport_belt_circuit_wire_connection_point,
+    circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
   },
 
   {
@@ -827,8 +846,23 @@ data:extend(
       priority = "extra-high",
       width = 46,
       height = 33,
-      shift = {0.3, 0}
-    }
+      shift = {0.3125, 0.015625}
+    },
+    circuit_wire_connection_point =
+    {
+      shadow =
+      {
+        red = {0.734375, 0.453125},
+        green = {0.609375, 0.515625},
+      },
+      wire =
+      {
+        red = {0.40625, 0.21875},
+        green = {0.40625, 0.375},
+      }
+    },
+    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.15625}, nil, 18),
+    circuit_wire_max_distance = 7.5
   },
 
   {
@@ -866,8 +900,8 @@ data:extend(
         wire =
         {
           copper = {0, -2.7},
-          red = {-0.4,-2.7},
-          green = {0.4,-2.7}
+          red = {-0.375, -2.625},
+          green = {0.40625, -2.625}
         }
       },
       {
@@ -880,8 +914,8 @@ data:extend(
         wire =
         {
           copper = {-0.04, -2.8},
-          red = {-0.3, -2.9},
-          green = {0.2, -2.6}
+          red = {-0.375, -2.9375},
+          green = {0.1875, -2.5625}
         }
       },
       {
@@ -893,9 +927,9 @@ data:extend(
         },
         wire =
         {
-          copper = {-0.2, -2.7},
-          red = {-0.05, -2.95},
-          green = {0, -2.4}
+          copper = {-0.15625, -2.6875},
+          red = {-0.0625, -2.96875},
+          green = {-0.03125, -2.40625}
         }
       },
       {
@@ -907,9 +941,9 @@ data:extend(
         },
         wire =
         {
-          copper = {0, -2.7},
-          red = {0.3, -2.85},
-          green = {-0.3, -2.5}
+          copper = {-0.03125, -2.71875},
+          red = {0.3125, -2.875},
+          green = {-0.25, -2.5}
         }
       }
     },
@@ -997,7 +1031,47 @@ data:extend(
         priority = "extra-high",
         width = 34,
         height = 38,
-        frame_count = 13,
+        frame_count = 2,
+        animation_speed = 1.5,
+        shift = {0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
+        priority = "extra-high",
+        width = 34,
+        height = 38,
+        x = 34 * 2,
+        frame_count = 2,
+        animation_speed = 1.5,
+        shift = {0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
+        priority = "extra-high",
+        width = 34,
+        height = 38,
+        x = 34 * 4,
+        frame_count = 3,
+        animation_speed = 1.5,
+        shift = {0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
+        priority = "extra-high",
+        width = 34,
+        height = 38,
+        x = 34 * 7,
+        frame_count = 3,
+        animation_speed = 1.5,
+        shift = {0, 0}
+      },
+      {
+        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
+        priority = "extra-high",
+        width = 34,
+        height = 38,
+        x = 34 * 10,
+        frame_count = 3,
         animation_speed = 1.5,
         shift = {0, 0}
       }
@@ -1008,6 +1082,7 @@ data:extend(
     smoke_count = 1,
     smoke_slow_down_factor = 1
   },
+  
   {
     type = "explosion",
     name = "explosion-gunshot-small",
@@ -1060,6 +1135,7 @@ data:extend(
       {
         filename = "__base__/graphics/entity/big-explosion/big-explosion.png",
         priority = "extra-high",
+        flags = { "compressed" },
         width = 197,
         height = 245,
         frame_count = 47,
@@ -1467,7 +1543,7 @@ data:extend(
       {
         filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
         priority = "high",
-        shift = {0.9, 0.05},
+        shift = {0.90625, 0.0625},
         width = 160,
         height = 102
       },
@@ -1475,7 +1551,7 @@ data:extend(
       {
         filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
         priority = "high",
-        shift = {0.9, 0.05},
+        shift = {0.90625, 0.0625},
         x = 160,
         width = 160,
         height = 102
@@ -1484,7 +1560,7 @@ data:extend(
       {
         filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
         priority = "high",
-        shift = {0.9, 0.65},
+        shift = {0.90625, 0.65625},
         x = 320,
         width = 160,
         height = 102
@@ -1493,7 +1569,7 @@ data:extend(
       {
         filename = "__base__/graphics/entity/offshore-pump/offshore-pump.png",
         priority = "high",
-        shift = {1.0, 0.05},
+        shift = {1.0, 0.0625},
         x = 480,
         width = 160,
         height = 102
@@ -1504,51 +1580,58 @@ data:extend(
       {
         shadow =
         {
-          red = {2.7125, 0.20625},
-          green = {2.7125, 0.20625},
+          red = {2.71875, 0.375},
+          green = {2.5, 0.375},
         },
         wire =
         {
-          red = {0.4, -0.41875},
-          green = {0.4, -0.41875},
+          red = {0.84375, -0.09375},
+          green = {0.6875, -0.09375},
         }
       },
       {
         shadow =
         {
-          red = {2.025, 0.83125},
-          green = {2.025, 0.83125},
+          red = {0.765625, 0.546875},
+          green = {0.765625, 0.421875},
         },
         wire =
         {
-          red = {0.36875, -0.1375},
-          green = {0.36875, -0.1375},
+          red = {-0.28125, -0.09375},
+          green = {-0.28125, -0.21875},
         }
       },
       {
         shadow =
         {
-          red = {1.09, 1.025},
-          green = {1.09, 1.025},
+          red = {-0.09375, 0.5625},
+          green = {0.0625, 0.5625},
         },
         wire =
         {
-          red = {-0.50625, 0.2125},
-          green = {-0.50625, 0.2125},
+          red = {-0.90625, -0.53125},
+          green = {-0.75, -0.53125},
         }
       },
       {
         shadow =
         {
-          red = {1.6875, -0.10625},
-          green = {1.6875, -0.10625},
+          red = {1.78125, -0.46875},
+          green = {1.78125, -0.3125},
         },
         wire =
         {
-          red = {-0.34375, -0.73125},
-          green = {-0.34375, -0.73125},
+          red = {0.34375, -1.40625},
+          green = {0.34375, -1.25},
         }
       }
+    },
+    circuit_connector_sprites =
+    {
+      get_circuit_connector_sprites({0.90625, -0.15625}, nil, 0),
+      get_circuit_connector_sprites({0, 0.03125}, nil, 6),
+      get_circuit_connector_sprites({-0.9375, -0.25}, nil, 4),
+      get_circuit_connector_sprites({0.125, -1.3125}, nil, 2),
     },
     circuit_wire_max_distance = 7.5
 
@@ -1673,10 +1756,10 @@ data:extend(
 
   {
     type = "inserter",
-    name = "basic-inserter",
-    icon = "__base__/graphics/icons/basic-inserter.png",
+    name = "inserter",
+    icon = "__base__/graphics/icons/inserter.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "basic-inserter"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "inserter"},
     max_health = 40,
     corpse = "small-remnants",
     resistances =
@@ -1729,21 +1812,21 @@ data:extend(
     },
     hand_base_picture =
     {
-      filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-base.png",
+      filename = "__base__/graphics/entity/inserter/inserter-hand-base.png",
       priority = "extra-high",
       width = 8,
       height = 33
     },
     hand_closed_picture =
     {
-      filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-closed.png",
+      filename = "__base__/graphics/entity/inserter/inserter-hand-closed.png",
       priority = "extra-high",
       width = 18,
       height = 41
     },
     hand_open_picture =
     {
-      filename = "__base__/graphics/entity/basic-inserter/basic-inserter-hand-open.png",
+      filename = "__base__/graphics/entity/inserter/inserter-hand-open.png",
       priority = "extra-high",
       width = 18,
       height = 41
@@ -1775,12 +1858,16 @@ data:extend(
     {
       sheet =
       {
-        filename = "__base__/graphics/entity/basic-inserter/basic-inserter-platform.png",
+        filename = "__base__/graphics/entity/inserter/inserter-platform.png",
         priority = "extra-high",
         width = 46,
         height = 46,
+        shift = {0.09375, 0}
       }
-    }
+    },
+    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
+    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance
   },
 
   {
@@ -1897,10 +1984,14 @@ data:extend(
         filename = "__base__/graphics/entity/burner-inserter/burner-inserter-platform.png",
         priority = "extra-high",
         width = 46,
-        height = 46
+        height = 46,
+        shift = {0.09375, 0}
       }
     },
-    rotation_speed = 0.01
+    rotation_speed = 0.01,
+    circuit_wire_connection_point = inserter_circuit_wire_connection_point,
+    circuit_connector_sprites = inserter_circuit_connector_sprites,
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance
   },
 
   {
@@ -2024,6 +2115,9 @@ data:extend(
     },
     energy_usage_per_tick = "5KW",
     light = {intensity = 0.9, size = 40},
+    light_when_colored = {intensity = 1, size = 6},
+    glow_size = 6,
+    glow_color_intensity = 0.135,
     picture_off =
     {
       filename = "__base__/graphics/entity/small-lamp/light-off.png",
@@ -2033,7 +2127,7 @@ data:extend(
       frame_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {-0.021875, 0.16875},
+      shift = {-0.015625, 0.15625},
     },
     picture_on =
     {
@@ -2044,24 +2138,34 @@ data:extend(
       frame_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {-0.0375, -0.01875},
+      shift = {-0.03125, -0.03125},
+    },
+    signal_to_color_mapping =
+    {
+      {signal="signal-red", color={r=1,g=0,b=0}},
+      {signal="signal-green", color={r=0,g=1,b=0}},
+      {signal="signal-blue", color={r=0,g=0,b=1}},
+      {signal="signal-yellow", color={r=1,g=1,b=0}},
+      {signal="signal-pink", color={r=1,g=0,b=1}},
+      {signal="signal-cyan", color={r=0,g=1,b=1}},
     },
 
     circuit_wire_connection_point =
     {
       shadow =
       {
-        red = {0.759375, -0.096875},
-        green = {0.759375, -0.096875},
+        red = {0.734375, 0.578125},
+        green = {0.609375, 0.640625},
       },
       wire =
       {
-        red = {0.30625, -0.39375},
-        green = {0.30625, -0.39375},
+        red = {0.40625, 0.34375},
+        green = {0.40625, 0.5},
       }
     },
-
+    circuit_connector_sprites = get_circuit_connector_sprites({0.1875, 0.28125}, {0.1875, 0.28125}, 18),
     circuit_wire_max_distance = 7.5
+
   },
 
   {
@@ -2118,9 +2222,10 @@ data:extend(
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
-      priority = "high",
-      width = 32,
-      height = 32
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      scale = 0.5
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures =
@@ -2289,7 +2394,23 @@ data:extend(
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}}
   },
-
+  {
+    type = "item-request-proxy",
+    name = "item-request-proxy",
+    picture =
+    {
+      filename = "__core__/graphics/logistic-delivery.png",
+      priority = "extra-high",
+      width = 100,
+      height = 89,
+      shift = {0, 0},
+      scale = 0.5
+    },
+    flags = {"not-on-map"},
+    minable = { mining_time = 0, results={}},
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0.5, -0.4}, {0.5, 0.6}}
+  },
   {
     type = "explosion",
     name = "water-splash",
@@ -2316,7 +2437,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    minable = {mining_time = 1, result = "stone-wall"},
+    minable = {mining_time = 0.5, result = "stone-wall"},
     fast_replaceable_group = "wall",
     max_health = 350,
     repair_speed_modifier = 2,
@@ -2352,6 +2473,14 @@ data:extend(
         --},
       --}
     --},
+    connected_gate_visualization =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      scale = 0.5
+    },
     resistances =
     {
       {
@@ -2632,7 +2761,55 @@ data:extend(
           }
         }
       }
-    }
+    },
+
+    wall_diode_green =
+    {
+      filename = "__base__/graphics/entity/gate/wall-diode-green.png",
+      width = 21,
+      height = 22,
+      shift = {0, -0.78125}
+    },
+    wall_diode_green_light =
+    {
+      minimum_darkness = 0.3,
+      color = {g=1},
+      shift = {0, -0.78125},
+      size = 1,
+      intensity = 0.3
+    },
+    wall_diode_red =
+    {
+      filename = "__base__/graphics/entity/gate/wall-diode-red.png",
+      width = 21,
+      height = 22,
+      shift = {0, -0.78125}
+    },
+    wall_diode_red_light =
+    {
+      minimum_darkness = 0.3,
+      color = {r=1},
+      shift = {0, -0.78125},
+      size = 1,
+      intensity = 0.3
+    },
+
+    circuit_wire_connection_point =
+    {
+      shadow =
+      {
+        red = {0.890625, 0.828125},
+        green = {0.890625, 0.703125}
+      },
+      wire =
+      {
+        red = {-0.28125, -0.71875},
+        green = {-0.28125, -0.84375}
+      }
+    },
+    circuit_wire_max_distance = 7.5,
+    circuit_connector_sprites = get_circuit_connector_sprites({0, -0.59375}, nil, 6),
+    default_output_signal = "signal-G"
   },
   {
     type = "corpse",

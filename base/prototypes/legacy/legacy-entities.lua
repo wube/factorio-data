@@ -17,6 +17,24 @@ data:extend(
       buffer_capacity = "100MJ",
       usage_priority = "primary-input"
     }
+  },
+  {
+    type = "smart-container",
+    name = "smart-chest-dummy",
+    fast_replaceable_group = "container",
+    max_health = 150,
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{0, 0}, {0, 0}},
+    inventory_size = 48,
+    picture =
+    {
+      filename = "__core__/graphics/cancel.png",
+      priority = "extra-high",
+      width = 64,
+      height = 64,
+      shift = {0, 0}
+    },
+
   }
 }
 )

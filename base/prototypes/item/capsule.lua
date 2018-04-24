@@ -2,8 +2,8 @@ data:extend(
 {
   {
     type = "capsule",
-    name = "basic-grenade",
-    icon = "__base__/graphics/icons/basic-grenade.png",
+    name = "grenade",
+    icon = "__base__/graphics/icons/grenade.png",
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
@@ -11,13 +11,13 @@ data:extend(
       attack_parameters =
       {
         type = "projectile",
-        ammo_category = "capsule",
+        ammo_category = "grenade",
         cooldown = 30,
         projectile_creation_distance = 0.6,
         range = 15,
         ammo_type =
         {
-          category = "capsule",
+          category = "grenade",
           target_type = "position",
           action =
           {
@@ -25,7 +25,7 @@ data:extend(
             action_delivery =
             {
               type = "projectile",
-              projectile = "basic-grenade",
+              projectile = "grenade",
               starting_speed = 0.3
             }
           }
@@ -33,7 +33,43 @@ data:extend(
       }
     },
     subgroup = "capsule",
-    order = "a[basic-grenade]",
+    order = "a[grenade]-a[normal]",
+    stack_size = 100
+  },
+  {
+    type = "capsule",
+    name = "cluster-grenade",
+    icon = "__base__/graphics/icons/cluster-grenade.png",
+    flags = {"goes-to-quickbar"},
+    capsule_action =
+    {
+      type = "throw",
+      attack_parameters =
+      {
+        type = "projectile",
+        ammo_category = "grenade",
+        cooldown = 30,
+        projectile_creation_distance = 0.6,
+        range = 20,
+        ammo_type =
+        {
+          category = "grenade",
+          target_type = "position",
+          action =
+          {
+            type = "direct",
+            action_delivery =
+            {
+              type = "projectile",
+              projectile = "cluster-grenade",
+              starting_speed = 0.3
+            }
+          }
+        }
+      }
+    },
+    subgroup = "capsule",
+    order = "a[grenade]-b[cluster]",
     stack_size = 100
   },
   {
@@ -218,13 +254,13 @@ data:extend(
   },
   {
     type = "capsule",
-    name = "basic-electric-discharge-defense-remote",
-    icon = "__base__/graphics/equipment/basic-electric-discharge-defense-equipment-ability.png",
+    name = "discharge-defense-remote",
+    icon = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
     flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "equipment-remote",
-      equipment = "basic-electric-discharge-defense-equipment"
+      equipment = "discharge-defense-equipment"
     },
     subgroup = "capsule",
     order = "z",

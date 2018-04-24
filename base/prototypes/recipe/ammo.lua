@@ -2,7 +2,7 @@ data:extend(
 {
   {
     type = "recipe",
-    name = "piercing-bullet-magazine",
+    name = "piercing-rounds-magazine",
     enabled = false,
     energy_required = 3,
     ingredients =
@@ -10,7 +10,7 @@ data:extend(
       {"copper-plate", 5},
       {"steel-plate", 1}
     },
-    result = "piercing-bullet-magazine"
+    result = "piercing-rounds-magazine"
   },
   {
     type = "recipe",

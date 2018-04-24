@@ -29,7 +29,7 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-grenade",
+    name = "grenade",
     enabled = false,
     energy_required = 8,
     ingredients =
@@ -37,7 +37,20 @@ data:extend(
       {"iron-plate", 5},
       {"coal", 10},
     },
-    result = "basic-grenade"
+    result = "grenade"
+  },
+  {
+    type = "recipe",
+    name = "cluster-grenade",
+    enabled = false,
+    energy_required = 8,
+    ingredients =
+    {
+      {"grenade", 7},
+      {"explosives", 5},
+      {"steel-plate", 5},
+    },
+    result = "cluster-grenade"
   },
   {
     type = "recipe",
@@ -46,7 +59,7 @@ data:extend(
     energy_required = 8,
     ingredients =
     {
-      {"piercing-bullet-magazine", 1},
+      {"piercing-rounds-magazine", 1},
       {"electronic-circuit", 2},
       {"iron-gear-wheel", 3},
     },
@@ -78,9 +91,9 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-electric-discharge-defense-remote",
+    name = "discharge-defense-remote",
     enabled = false,
     ingredients = {{"electronic-circuit", 1}},
-    result = "basic-electric-discharge-defense-remote"
+    result = "discharge-defense-remote"
   }
 })

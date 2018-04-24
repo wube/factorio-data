@@ -1,6 +1,7 @@
 require ("prototypes.entity.demo-spawner-animation")
 require ("prototypes.entity.demo-biter-animations")
 require ("prototypes.entity.demo-enemy-sounds")
+require ("prototypes.entity.demo-enemy-autoplace-utils")
 
 smallbiterscale = 0.5
 small_biter_tint1 = {r=0.56, g=0.46, b=0.42, a=0.65}
@@ -129,15 +130,15 @@ data:extend(
     },
     result_units = (function()
                      local res = {}
-                     res[1] = {"small-biter", {{0.0, 0.3}, {0.7, 0.0}}}
+                     res[1] = {"small-biter", {{0.0, 0.3}, {0.6, 0.0}}}
                      if not data.is_demo then
                        -- from evolution_factor 0.3 the weight for medium-biter is linearly rising from 0 to 0.3
                        -- this means for example that when the evolution_factor is 0.45 the probability of spawning
                        -- a small biter is 66% while probability for medium biter is 33%.
-                       res[2] = {"medium-biter", {{0.3, 0.0}, {0.6, 0.3}, {0.8, 0.1}}}
+                       res[2] = {"medium-biter", {{0.3, 0.0}, {0.6, 0.3}, {0.7, 0.1}}}
                        -- for evolution factor of 1 the spawning probabilities are: small-biter 0%, medium-biter 1/7, big-biter 4/7, behemoth biter 3/7
-                       res[3] = {"big-biter", {{0.6, 0.0}, {1.0, 0.4}}}
-                       res[4] = {"behemoth-biter", {{0.99, 0.0}, {1.0, 0.3}}}
+                       res[3] = {"big-biter", {{0.5, 0.0}, {1.0, 0.4}}}
+                       res[4] = {"behemoth-biter", {{0.9, 0.0}, {1.0, 0.3}}}
                      end
                      return res
                    end)(),
@@ -147,47 +148,8 @@ data:extend(
     spawning_spacing = 3,
     max_spawn_shift = 0,
     max_richness_for_spawn_shift = 100,
-    autoplace =
-    {
-      sharpness = 0.4,
-      control = "enemy-base",
-      order = "b[enemy]-b[biter-spawner]",
-      richness_multiplier = 1,
-      richness_base = 0,
-      force = "enemy",
-      peaks =
-      {
-        {
-          influence = 0,
-          richness_influence = 100,
-          tier_from_start_optimal = 20,
-          tier_from_start_top_property_limit = 20,
-          tier_from_start_max_range = 40,
-        },
-        {
-          influence = -10.0,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.425,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-        },
-        -- increase the size when moving further away
-        {
-          influence = 0.5,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-          tier_from_start_optimal = 20,
-          tier_from_start_top_property_limit = 20,
-          tier_from_start_max_range = 40,
-        },
-      }
-    }
+    autoplace = enemy_spawner_autoplace(0),
+    call_for_help_radius = 50
   },
 
   {

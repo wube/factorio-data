@@ -377,7 +377,8 @@ data:extend(
     },
     map_color={r=61, g=51, b=17},
     ageing=0.00045,
-    vehicle_friction_modifier = grass_vehicle_speed_modifier
+    vehicle_friction_modifier = grass_vehicle_speed_modifier,
+    can_be_part_of_blueprint = false
   },
 
   {
@@ -962,6 +963,170 @@ if not data.is_demo then
         }
       },
       map_color={r=100, g=100, b=100},
+      ageing=0,
+      vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    },
+    {
+      type = "tile",
+      name = "hazard-concrete-left",
+      needs_correction = false,
+      next_direction = "hazard-concrete-right",
+      minable = {hardness = 0.2, mining_time = 0.5, result = "hazard-concrete"},
+      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+      collision_mask = {"ground-tile"},
+      walking_speed_modifier = 1.4,
+      layer = 61,
+      decorative_removal_probability = 0.9,
+      variants =
+      {
+        main =
+        {
+          {
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left1.png",
+            count = 16,
+            size = 1
+          },
+          {
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left2.png",
+            count = 4,
+            size = 2,
+            probability = 0.39,
+          },
+          {
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left4.png",
+            count = 4,
+            size = 4,
+            probability = 1,
+          },
+        },
+        inner_corner =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-inner-corner.png",
+          count = 8
+        },
+        outer_corner =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-outer-corner.png",
+          count = 8
+        },
+        side =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-side.png",
+          count = 8
+        },
+        u_transition =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-u.png",
+          count = 8
+        },
+        o_transition =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left-o.png",
+          count = 1
+        }
+      },
+      walking_sound =
+      {
+        {
+          filename = "__base__/sound/walking/concrete-01.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-02.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-03.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-04.ogg",
+          volume = 1.2
+        }
+      },
+      map_color={r=0.5, g=0.5, b=0},
+      ageing=0,
+      vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    },
+    {
+      type = "tile",
+      name = "hazard-concrete-right",
+      needs_correction = false,
+      next_direction = "hazard-concrete-left",
+      minable = {hardness = 0.2, mining_time = 0.5, result = "hazard-concrete"},
+      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+      collision_mask = {"ground-tile"},
+      walking_speed_modifier = 1.4,
+      layer = 61,
+      decorative_removal_probability = 0.9,
+      variants =
+      {
+        main =
+        {
+          {
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right1.png",
+            count = 16,
+            size = 1
+          },
+          {
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right2.png",
+            count = 4,
+            size = 2,
+            probability = 0.39,
+          },
+          {
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right4.png",
+            count = 4,
+            size = 4,
+            probability = 1,
+          },
+        },
+        inner_corner =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-inner-corner.png",
+          count = 8
+        },
+        outer_corner =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-outer-corner.png",
+          count = 8
+        },
+        side =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-side.png",
+          count = 8
+        },
+        u_transition =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-u.png",
+          count = 8
+        },
+        o_transition =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right-o.png",
+          count = 1
+        }
+      },
+      walking_sound =
+      {
+        {
+          filename = "__base__/sound/walking/concrete-01.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-02.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-03.ogg",
+          volume = 1.2
+        },
+        {
+          filename = "__base__/sound/walking/concrete-04.ogg",
+          volume = 1.2
+        }
+      },
+      map_color={r=0.5, g=0.5, b=0},
       ageing=0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     }

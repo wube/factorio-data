@@ -1,6 +1,9 @@
 require ("prototypes.entity.demo-worm-animations")
 require ("prototypes.entity.demo-enemy-sounds")
+require ("prototypes.entity.demo-pipecovers")
+require ("prototypes.entity.assemblerpipes")
 require "util"
+require ("prototypes.entity.demo-enemy-autoplace-utils")
 
 function laser_turret_extension(inputs)
 return
@@ -38,6 +41,7 @@ function laser_turret_extension_mask(inputs)
 return
 {
   filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start-mask.png",
+  flags = { "mask" },
   width = 51,
   height = 47,
   frame_count = inputs.frame_count and inputs.frame_count or 15,
@@ -132,37 +136,8 @@ data:extend(
         }
       }
     },
-    autoplace =
-    {
-      sharpness = 0.3,
-      control = "enemy-base",
-      order = "b[enemy]-a[base]",
-      force = "enemy",
-      peaks =
-      {
-        {
-          influence = -10.0,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.22,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-        },
-        {
-          influence = 0.3,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-          tier_from_start_optimal = 10,
-          tier_from_start_top_property_limit = 10,
-          tier_from_start_max_range = 20,
-        },
-      }
-    }
+    autoplace = enemy_worm_autoplace(1),
+    call_for_help_radius = 40
   },
 
   {
@@ -232,37 +207,8 @@ data:extend(
         }
       }
     },
-    autoplace =
-    {
-      sharpness = 0.3,
-      control = "enemy-base",
-      order = "b[enemy]-a[base]",
-      force = "enemy",
-      peaks =
-      {
-        {
-          influence = -10.0,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.07,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-        },
-        {
-          influence = 0.38,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-          tier_from_start_optimal = 10,
-          tier_from_start_top_property_limit = 10,
-          tier_from_start_max_range = 20,
-        }
-      }
-    }
+    autoplace = enemy_worm_autoplace(3),
+    call_for_help_radius = 40
   },
   {
     type = "electric-turret",
@@ -282,7 +228,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "801kJ",
-      input_flow_limit = "4800kW",
+      input_flow_limit = "9600kW",
       drain = "24kW",
       usage_priority = "primary-input"
     },
@@ -320,6 +266,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-mask.png",
+          flags = { "mask" },
           line_length = 8,
           width = 54,
           height = 44,
@@ -362,10 +309,12 @@ data:extend(
           height = 82,
           axially_symmetrical = false,
           direction_count = 1,
+          frame_count = 1,
           shift = { 0.109375, 0.03125 }
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-base-mask.png",
+          flags = { "mask" },
           line_length = 1,
           width = 54,
           height = 46,
@@ -373,11 +322,13 @@ data:extend(
           axially_symmetrical = false,
           apply_runtime_tint = true,
           direction_count = 1,
+          frame_count = 1,
           shift = {0.046875, -0.109375},
         },
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+
     attack_parameters =
     {
       type = "projectile",
@@ -408,7 +359,8 @@ data:extend(
         }
       },
       sound = make_laser_sounds()
-    }
+    },
+    call_for_help_radius = 40
   },
   {
     type = "corpse",

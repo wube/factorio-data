@@ -1,5 +1,4 @@
 module(..., package.seeall)
-require "defines"
 
 
 Builder = {}
@@ -36,10 +35,10 @@ function right(position) return {x=position.x + 1, y=position.y} end
 
 builder = Builder:new({position={x=-12, y=30}, tick=game.tick})
 for i = 1, 10 do
-  builder:addbuild{tick=5, name="basic-transport-belt", positionfunction=right, direction=defines.direction.east}
+  builder:addbuild{tick=5, name="transport-belt", positionfunction=right, direction=defines.direction.east}
 end
-  builder:addbuild{tick=5, name="basic-transport-belt", positionfunction=right, direction=defines.direction.south}
+  builder:addbuild{tick=5, name="transport-belt", positionfunction=right, direction=defines.direction.south}
 for i = 1, 10 do
-  builder:addbuild{tick=5, name="basic-transport-belt", positionfunction=down, direction=defines.direction.south}
+  builder:addbuild{tick=5, name="transport-belt", positionfunction=down, direction=defines.direction.south}
 end
 

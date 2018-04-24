@@ -4,7 +4,6 @@ data:extend(
     type = "item-group",
     name = "environment",
     icon = "__core__/graphics/neutral-force-icon.png",
-    inventory_order = "a",
     order = "a"
   },
   {
@@ -48,7 +47,6 @@ data:extend(
     type = "item-group",
     name = "enemies",
     icon = "__core__/graphics/enemy-force-icon.png",
-    inventory_order = "a",
     order = "aa"
   },
   {
@@ -61,7 +59,6 @@ data:extend(
     type = "item-group",
     name = "logistics",
     order = "aaa",
-    inventory_order = "c",
     icon = "__base__/graphics/item-group/logistics.png"
   },
   {
@@ -116,7 +113,6 @@ data:extend(
     type = "item-group",
     name = "production",
     order = "b",
-    inventory_order = "d",
     icon = "__base__/graphics/item-group/production.png"
   },
   {
@@ -160,7 +156,6 @@ data:extend(
     type = "item-group",
     name = "combat",
     order = "d",
-    inventory_order = "b",
     icon = "__base__/graphics/item-group/military.png"
   },
   {
@@ -203,7 +198,6 @@ data:extend(
     type = "item-group",
     name = "intermediate-products",
     order = "c",
-    inventory_order = "a",
     icon = "__base__/graphics/item-group/intermediate-products.png",
   },
   {
@@ -246,7 +240,6 @@ data:extend(
     type = "item-group",
     name = "fluids",
     order = "e",
-    inventory_order = "a",
     icon = "__base__/graphics/item-group/fluids.png",
   },
   {

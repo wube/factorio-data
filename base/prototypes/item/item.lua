@@ -22,16 +22,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "smart-chest",
-    icon = "__base__/graphics/icons/smart-chest.png",
-    flags = {"goes-to-quickbar"},
-    subgroup = "storage",
-    order = "a[items]-d[smart-chest]",
-    place_result = "smart-chest",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "fast-transport-belt",
     icon = "__base__/graphics/icons/fast-transport-belt.png",
     flags = {"goes-to-quickbar"},
@@ -72,12 +62,32 @@ data:extend(
   },
   {
     type = "item",
-    name = "smart-inserter",
-    icon = "__base__/graphics/icons/smart-inserter.png",
+    name = "filter-inserter",
+    icon = "__base__/graphics/icons/filter-inserter.png",
     flags = {"goes-to-quickbar"},
     subgroup = "inserter",
-    order = "f[inserter]-e[smart-inserter]",
-    place_result = "smart-inserter",
+    order = "e[filter-inserter]",
+    place_result = "filter-inserter",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "stack-inserter",
+    icon = "__base__/graphics/icons/stack-inserter.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "inserter",
+    order = "f[stack-inserter]",
+    place_result = "stack-inserter",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "stack-filter-inserter",
+    icon = "__base__/graphics/icons/stack-filter-inserter.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "inserter",
+    order = "g[stack-filter-inserter]",
+    place_result = "stack-filter-inserter",
     stack_size = 50
   },
   {
@@ -131,24 +141,16 @@ data:extend(
     stack_size = 5
   },
   {
-    type = "item",
-    name = "straight-rail",
-    icon = "__base__/graphics/icons/straight-rail.png",
+    type = "rail-planner",
+    name = "rail",
+    icon = "__base__/graphics/icons/rail.png",
     flags = {"goes-to-quickbar"},
     subgroup = "transport",
-    order = "a[train-system]-a[straight-rail]",
+    order = "a[train-system]-a[rail]",
     place_result = "straight-rail",
-    stack_size = 100
-  },
-  {
-    type = "item",
-    name = "curved-rail",
-    icon = "__base__/graphics/icons/curved-rail.png",
-    flags = {"goes-to-quickbar"},
-    subgroup = "transport",
-    order = "a[train-system]-b[curved-rail]",
-    place_result = "curved-rail",
-    stack_size = 50
+    stack_size = 100,
+    straight_rail = "straight-rail",
+    curved_rail = "curved-rail"
   },
   {
     type = "item",
@@ -285,42 +287,42 @@ data:extend(
   },
   {
     type = "item",
-    name = "basic-transport-belt-to-ground",
-    icon = "__base__/graphics/icons/basic-transport-belt-to-ground.png",
+    name = "underground-belt",
+    icon = "__base__/graphics/icons/underground-belt.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
-    order = "b[transport-belt-to-ground]-a[basic-transport-belt-to-ground]",
-    place_result = "basic-transport-belt-to-ground",
+    order = "b[underground-belt]-a[underground-belt]",
+    place_result = "underground-belt",
     stack_size = 50
   },
   {
     type = "item",
-    name = "fast-transport-belt-to-ground",
-    icon = "__base__/graphics/icons/fast-transport-belt-to-ground.png",
+    name = "fast-underground-belt",
+    icon = "__base__/graphics/icons/fast-underground-belt.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
-    order = "b[transport-belt-to-ground]-b[fast-transport-belt-to-ground]",
-    place_result = "fast-transport-belt-to-ground",
+    order = "b[underground-belt]-b[fast-underground-belt]",
+    place_result = "fast-underground-belt",
     stack_size = 50
   },
   {
     type = "item",
-    name = "express-transport-belt-to-ground",
-    icon = "__base__/graphics/icons/express-transport-belt-to-ground.png",
+    name = "express-underground-belt",
+    icon = "__base__/graphics/icons/express-underground-belt.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
-    order = "b[transport-belt-to-ground]-c[express-transport-belt-to-ground]",
-    place_result = "express-transport-belt-to-ground",
+    order = "b[underground-belt]-c[express-underground-belt]",
+    place_result = "express-underground-belt",
     stack_size = 50
   },
   {
     type = "item",
-    name = "basic-splitter",
-    icon = "__base__/graphics/icons/basic-splitter.png",
+    name = "splitter",
+    icon = "__base__/graphics/icons/splitter.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
-    order = "c[splitter]-a[basic-splitter]",
-    place_result = "basic-splitter",
+    order = "c[splitter]-a[splitter]",
+    place_result = "splitter",
     stack_size = 50
   },
   {
@@ -341,6 +343,36 @@ data:extend(
     subgroup = "belt",
     order = "c[splitter]-c[express-splitter]",
     place_result = "express-splitter",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "loader",
+    icon = "__base__/graphics/icons/loader.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "belt",
+    order = "d[loader]-a[basic-loader]",
+    place_result = "loader",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "fast-loader",
+    icon = "__base__/graphics/icons/fast-loader.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "belt",
+    order = "d[loader]-b[fast-loader]",
+    place_result = "fast-loader",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "express-loader",
+    icon = "__base__/graphics/icons/express-loader.png",
+    flags = {"goes-to-quickbar", "hidden"},
+    subgroup = "belt",
+    order = "d[loader]-c[express-loader]",
+    place_result = "express-loader",
     stack_size = 50
   },
   {
@@ -375,7 +407,7 @@ data:extend(
     type = "item",
     name = "construction-robot",
     icon = "__base__/graphics/icons/construction-robot.png",
-    flags = {"goes-to-quickbar"},
+    flags = {"goes-to-main-inventory"},
     subgroup = "logistic-network",
     order = "a[robot]-b[construction-robot]",
     place_result = "construction-robot",
@@ -482,12 +514,12 @@ data:extend(
   },
   {
     type = "item",
-    name = "basic-accumulator",
-    icon = "__base__/graphics/icons/basic-accumulator.png",
+    name = "accumulator",
+    icon = "__base__/graphics/icons/accumulator.png",
     flags = {"goes-to-quickbar"},
     subgroup = "energy",
-    order = "e[accumulator]-a[basic-accumulator]",
-    place_result = "basic-accumulator",
+    order = "e[accumulator]-a[accumulator]",
+    place_result = "accumulator",
     stack_size = 50
   },
   {
@@ -512,12 +544,12 @@ data:extend(
   },
   {
     type = "item",
-    name = "basic-beacon",
-    icon = "__base__/graphics/icons/basic-beacon.png",
+    name = "beacon",
+    icon = "__base__/graphics/icons/beacon.png",
     flags = {"goes-to-quickbar"},
     subgroup = "module",
     order = "a[beacon]",
-    place_result = "basic-beacon",
+    place_result = "beacon",
     stack_size = 10
   },
   {
@@ -549,7 +581,13 @@ data:extend(
     order = "c[automated-construction]-a[blueprint]",
     stack_size = 1,
     stackable = false,
-    item_to_clear = "electronic-circuit"
+    item_to_clear = "electronic-circuit",
+    selection_color = { r = 0, g = 1, b = 0 },
+    alt_selection_color = { r = 0, g = 1, b = 0 },
+    selection_mode = {"blueprint"},
+    alt_selection_mode = {"blueprint"},
+    selection_cursor_box_type = "copy",
+    alt_selection_cursor_box_type = "copy"
   },
   {
     type = "deconstruction-item",
@@ -558,7 +596,23 @@ data:extend(
     flags = {"goes-to-quickbar"},
     subgroup = "tool",
     order = "c[automated-construction]-b[deconstruction-planner]",
-    stack_size = 1
+    stack_size = 1,
+    selection_color = { r = 1, g = 0, b = 0 },
+    alt_selection_color = { r = 0, g = 0, b = 1 },
+    selection_mode = {"deconstruct"},
+    alt_selection_mode = {"cancel-deconstruct"},
+    selection_cursor_box_type = "not-allowed",
+    alt_selection_cursor_box_type = "not-allowed"
+  },
+  {
+    type = "blueprint-book",
+    name = "blueprint-book",
+    icon = "__base__/graphics/icons/blueprint-book.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "tool",
+    order = "c[automated-construction]-c[blueprint-book]",
+    stack_size = 1,
+    inventory_size = 30
   },
   {
     type = "item",
@@ -713,6 +767,16 @@ data:extend(
   },
   {
     type = "item",
+    name = "power-switch",
+    icon = "__base__/graphics/icons/power-switch.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="power-switch",
+    order = "c[other]-a[power-switch]",
+    stack_size= 50,
+  },
+  {
+    type = "item",
     name = "low-density-structure",
     icon = "__base__/graphics/icons/rocket-structure.png",
     flags = {"goes-to-main-inventory"},
@@ -725,6 +789,7 @@ data:extend(
     name = "rocket-fuel",
     icon = "__base__/graphics/icons/rocket-fuel.png",
     flags = {"goes-to-main-inventory"},
+    fuel_value = "225MJ",
     subgroup = "intermediate-product",
     order = "l[rocket-fuel]",
     stack_size = 10
@@ -762,13 +827,43 @@ data:extend(
     icon = "__base__/graphics/icons/concrete.png",
     flags = {"goes-to-main-inventory"},
     subgroup = "terrain",
-    order = "b[concrete]",
+    order = "b[concrete]-a[plain]",
     stack_size = 100,
     place_as_tile =
     {
       result = "concrete",
       condition_size = 4,
       condition = { "water-tile" }
+    }
+  },
+  {
+    type = "item",
+    name = "hazard-concrete",
+    icon = "__base__/graphics/icons/hazard-concrete.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "terrain",
+    order = "b[concrete]-b[hazard]",
+    stack_size = 100,
+    place_as_tile =
+    {
+      result = "hazard-concrete-left",
+      condition_size = 4,
+      condition = { "water-tile" }
+    }
+  },
+  {
+    type = "item",
+    name = "landfill",
+    icon = "__base__/graphics/icons/landfill.png",
+    flags = {"goes-to-main-inventory"},
+    subgroup = "terrain",
+    order = "c[landfill]-a[dirt]",
+    stack_size = 100,
+    place_as_tile =
+    {
+      result = "grass",
+      condition_size = 1,
+      condition = { "ground-tile" }
     }
   }
 }

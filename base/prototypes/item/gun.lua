@@ -11,12 +11,15 @@ data:extend(
     order = "e[flame-thrower]",
     attack_parameters =
     {
-      type = "projectile",
+      type = "stream",
       ammo_category = "flame-thrower",
-      cooldown = 2,
+      cooldown = 1,
       movement_slow_down_factor = 0.6,
       projectile_creation_distance = 0.6,
+      gun_barrel_length = 0.8,
+      gun_center_shift = { 0, -1 },
       range = 15,
+      min_range = 1,
       cyclic_sound =
       {
         begin_sound =
@@ -69,7 +72,7 @@ data:extend(
         starting_frame_speed_deviation = 0.1
       },
       projectile_creation_distance = 0.65,
-      range = 15,
+      range = 20,
       sound = make_heavy_gunshot_sounds(),
     },
     stack_size = 1
@@ -154,10 +157,9 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "shotgun-shell",
-      explosion = "explosion-gunshot",
       cooldown = 60,
       movement_slow_down_factor = 0.6,
-      projectile_creation_distance = 0.6,
+      projectile_creation_distance = 1.125,
       range = 20,
       sound =
       {
@@ -180,11 +182,10 @@ data:extend(
     {
       type = "projectile",
       ammo_category = "shotgun-shell",
-      explosion = "explosion-gunshot",
       cooldown = 30,
       movement_slow_down_factor = 0.5,
       damage_modifier = 1.2,
-      projectile_creation_distance = 0.6,
+      projectile_creation_distance = 1.125,
       range = 20,
       sound =
       {

@@ -2,8 +2,8 @@ data:extend(
 {
   {
     type = "ammo",
-    name = "piercing-bullet-magazine",
-    icon = "__base__/graphics/icons/piercing-bullet-magazine.png",
+    name = "piercing-rounds-magazine",
+    icon = "__base__/graphics/icons/piercing-rounds-magazine.png",
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -35,7 +35,7 @@ data:extend(
     },
     magazine_size = 10,
     subgroup = "ammo",
-    order = "a[basic-clips]-b[piercing-bullet-magazine]",
+    order = "a[basic-clips]-b[piercing-rounds-magazine]",
     stack_size = 100
   },
   {
@@ -46,21 +46,18 @@ data:extend(
     ammo_type =
     {
       category = "flame-thrower",
-      target_type = "direction",
+      target_type = "position",
+      clamp_position = true,
+      
       action =
       {
         type = "direct",
         action_delivery =
         {
-          {
-            type = "flame-thrower",
-            explosion = "flame-thrower-explosion",
-            direction_deviation = 0.07,
-            speed_deviation = 0.1,
-            starting_frame_deviation = 0.07,
-            projectile_starting_speed = 0.2,
-            starting_distance = 0.6,
-          }
+          type = "stream",
+          stream = "handheld-flamethrower-fire-stream",
+          max_length = 15,
+          duration = 160,
         }
       }
     },
@@ -134,12 +131,22 @@ data:extend(
     {
       category = "shotgun-shell",
       target_type = "direction",
-      source_effects =
-      {
-        type = "create-explosion",
-        entity_name = "explosion-gunshot"
-      },
       action =
+      {
+        {
+          type = "direct",
+          action_delivery = 
+          {
+            type = "instant",
+            source_effects = 
+            {
+              {
+                type = "create-explosion",
+                entity_name = "explosion-gunshot"
+              }
+            }
+          }
+        },
         {
           type = "direct",
           repeat_count = 12,
@@ -153,6 +160,7 @@ data:extend(
             max_range = 15
           }
         }
+      }
     },
     magazine_size = 10,
     subgroup = "ammo",
@@ -168,23 +176,34 @@ data:extend(
     {
       category = "shotgun-shell",
       target_type = "direction",
-      source_effects =
-      {
-        type = "create-explosion",
-        entity_name = "explosion-gunshot"
-      },
       action =
       {
-        type = "direct",
-        repeat_count = 16,
-        action_delivery =
         {
-          type = "projectile",
-          projectile = "piercing-shotgun-pellet",
-          starting_speed = 1,
-          direction_deviation = 0.3,
-          range_deviation = 0.3,
-          max_range = 15,
+          type = "direct",
+          action_delivery = 
+          {
+            type = "instant",
+            source_effects = 
+            {
+              {
+                type = "create-explosion",
+                entity_name = "explosion-gunshot"
+              }
+            }
+          }
+        },
+        {
+          type = "direct",
+          repeat_count = 16,
+          action_delivery =
+          {
+            type = "projectile",
+            projectile = "piercing-shotgun-pellet",
+            starting_speed = 1,
+            direction_deviation = 0.3,
+            range_deviation = 0.3,
+            max_range = 15,
+          }
         }
       }
     },

@@ -38,6 +38,10 @@ data:extend(
   },
   {
     type = "ammo-category",
+    name = "grenade"
+  },
+  {
+    type = "ammo-category",
     name = "melee"
   },
   {
@@ -51,6 +55,6 @@ data:extend(
   {
     type = "ammo-category",
     name = "combat-robot-beam"
-  }
+  },
 }
 )

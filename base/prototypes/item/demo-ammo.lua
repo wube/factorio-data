@@ -2,8 +2,8 @@ data:extend(
 {
   {
     type = "ammo",
-    name = "basic-bullet-magazine",
-    icon = "__base__/graphics/icons/basic-bullet-magazine.png",
+    name = "firearm-magazine",
+    icon = "__base__/graphics/icons/firearm-magazine.png",
     flags = {"goes-to-main-inventory"},
     ammo_type =
     {
@@ -41,7 +41,7 @@ data:extend(
     },
     magazine_size = 10,
     subgroup = "ammo",
-    order = "a[basic-clips]-a[basic-bullet-magazine]",
+    order = "a[basic-clips]-a[firearm-magazine]",
     stack_size = 100
   }
 }

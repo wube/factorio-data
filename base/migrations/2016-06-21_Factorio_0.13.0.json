@@ -1,0 +1,13 @@
+{
+  "technology":
+  [
+    [ "logistic-robot-speed-1", "worker-robots-speed-1" ],
+    [ "logistic-robot-speed-2", "worker-robots-speed-2" ],
+    [ "logistic-robot-speed-3", "worker-robots-speed-3" ],
+    [ "logistic-robot-speed-4", "worker-robots-speed-4" ],
+    [ "logistic-robot-speed-5", "worker-robots-speed-5" ],
+    [ "logistic-robot-storage-1", "worker-robots-storage-1" ],
+    [ "logistic-robot-storage-2", "worker-robots-storage-2" ],
+    [ "logistic-robot-storage-3", "worker-robots-storage-3" ]
+  ]
+}

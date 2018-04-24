@@ -1,0 +1,69 @@
+{
+  "item":
+  [
+    ["basic-transport-belt", "transport-belt"],
+    ["basic-splitter", "splitter"],
+    ["basic-transport-belt-to-ground", "underground-belt"],
+    ["fast-transport-belt-to-ground", "fast-underground-belt"],
+    ["express-transport-belt-to-ground", "express-underground-belt"],
+    ["basic-inserter", "inserter"],
+    ["basic-mining-drill", "electric-mining-drill"],
+    ["basic-beacon", "beacon"],
+    ["basic-bullet-magazine", "firearm-magazine"],
+    ["piercing-bullet-magazine", "piercing-rounds-magazine"],
+    ["basic-accumulator", "accumulator"],
+    ["basic-electric-discharge-defense-equipment", "discharge-defense-equipment"],
+    ["basic-electric-discharge-defense-remote", "discharge-defense-remote"],
+    ["basic-armor", "light-armor"],
+    ["basic-modular-armor", "modular-armor"],
+    ["basic-laser-defense-equipment", "personal-laser-defense-equipment"],
+    ["basic-exoskeleton-equipment", "exoskeleton-equipment"],
+    ["smart-chest", "steel-chest"],
+    ["smart-inserter", "filter-inserter"]
+  ],
+  "entity":
+  [
+    ["basic-transport-belt", "transport-belt"],
+    ["basic-splitter", "splitter"],
+    ["basic-transport-belt-to-ground", "underground-belt"],
+    ["fast-transport-belt-to-ground", "fast-underground-belt"],
+    ["express-transport-belt-to-ground", "express-underground-belt"],
+    ["basic-inserter", "inserter"],
+    ["basic-mining-drill", "electric-mining-drill"],
+    ["basic-beacon", "beacon"],
+    ["basic-accumulator", "accumulator"],
+    ["smart-chest", "steel-chest"],
+    ["smart-inserter", "filter-inserter"]
+  ],
+  "equipment":
+  [
+    ["basic-electric-discharge-defense-equipment", "discharge-defense-equipment"],
+    ["basic-laser-defense-equipment", "personal-laser-defense-equipment"],
+    ["basic-exoskeleton-equipment", "exoskeleton-equipment"]
+  ],
+  "recipe":
+  [
+    ["basic-transport-belt", "transport-belt"],
+    ["basic-splitter", "splitter"],
+    ["basic-transport-belt-to-ground", "underground-belt"],
+    ["fast-transport-belt-to-ground", "fast-underground-belt"],
+    ["express-transport-belt-to-ground", "express-underground-belt"],
+    ["basic-inserter", "inserter"],
+    ["basic-mining-drill", "electric-mining-drill"],
+    ["basic-beacon", "beacon"],
+    ["basic-bullet-magazine", "firearm-magazine"],
+    ["piercing-bullet-magazine", "piercing-rounds-magazine"],
+    ["basic-accumulator", "accumulator"],
+    ["basic-electric-discharge-defense-equipment", "discharge-defense-equipment"],
+    ["basic-electric-discharge-defense-remote", "discharge-defense-remote"],
+    ["basic-armor", "light-armor"],
+    ["basic-modular-armor", "modular-armor"],
+    ["smart-inserter", "filter-inserter"]
+  ],
+  "technology":
+  [
+    ["basic-electric-discharge-defense-equipment", "discharge-defense-equipment"],
+    ["basic-laser-defense-equipment", "personal-laser-defense-equipment"],
+    ["basic-exoskeleton-equipment", "exoskeleton-equipment"]
+  ]
+}

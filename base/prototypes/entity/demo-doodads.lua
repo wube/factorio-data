@@ -1715,6 +1715,18 @@ data:extend(
     order = "b[decorative]-k[stone-rock]-a[big]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 8,
+      result = "stone",
+      count = 20
+    },
+    loot =
+    {
+      {item = "stone", probability = 1, count_min = 5, count_max = 10}
+    },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     render_layer = "object",
     max_health = 200,
     resistances =

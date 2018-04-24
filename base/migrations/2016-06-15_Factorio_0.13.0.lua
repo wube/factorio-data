@@ -3,5 +3,5 @@ if game.is_demo() then
 end
 
 for index, force in pairs(game.forces) do
-  force.reset_recipes()
+  force.recipes["express-underground-belt"].reload()
 end

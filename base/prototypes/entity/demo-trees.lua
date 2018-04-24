@@ -378,7 +378,7 @@ local tree_data =
     colors =
     {
       --tutti-colori
-      --yels      
+      --yels
       {r = 239, g = 218, b = 43},
       {r = 232, g = 216, b = 85},
       {r = 242, g = 224, b = 28},
@@ -511,7 +511,7 @@ local tree_data =
     colors =
     {
       --yellow/brownish-almost-green
-      {r = 203, g = 140, b = 51}, 
+      {r = 203, g = 140, b = 51},
       {r = 208, g = 155, b = 79},
       {r = 189, g = 175, b = 53},
       {r = 217, g = 206, b = 109},
@@ -522,7 +522,7 @@ local tree_data =
       {r = 206, g = 157, b = 40},
       {r = 230, g = 173, b = 37},
       {r = 247, g = 223, b = 88},
-      {r = 205, g = 186, b = 81},   
+      {r = 205, g = 186, b = 81},
     }
   },
   {
@@ -532,7 +532,7 @@ local tree_data =
     colors =
     {
       --green-yellow-for-desert
-    {r = 216, g = 234, b = 153}, 
+    {r = 216, g = 234, b = 153},
     {r = 203, g = 229, b = 113},
     {r = 195, g = 228, b = 82},
     {r = 241, g = 247, b = 150},
@@ -548,7 +548,7 @@ local tree_data =
     {r = 205, g = 89, b = 12},
     {r = 251, g = 120, b = 120},
     {r = 250, g = 115, b = 115},
-    {r = 213, g = 116, b = 121},    
+    {r = 213, g = 116, b = 121},
     }
   },
   {
@@ -708,7 +708,7 @@ for i, tree_data in ipairs(tree_data) do
       },
       corpse = type_name .. "-stump",
       remains_when_mined = type_name .. "-stump",
-      emissions_per_tick = -0.0005,
+      emissions_per_tick = -0.001,
       max_health = 50,
       collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
       selection_box = {{-0.9, -2.2}, {0.9, 0.6}},
@@ -718,7 +718,8 @@ for i, tree_data in ipairs(tree_data) do
       vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
       autoplace = autoplace_settings(tree_data.autoplace_peaks, tree_data.autoplace_extra),
       variations = tree_variations,
-      colors = tree_data.colors
+      colors = tree_data.colors,
+      darkness_of_burnt_tree = 0.5,
     }
   })
 end

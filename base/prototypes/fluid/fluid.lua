@@ -20,7 +20,7 @@ data:extend(
     name = "heavy-oil",
     default_temperature = 25,
     heat_capacity = "1KJ",
-    base_color = {r=0, g=0.7, b=0.7},
+    base_color = {r=0.65, g=0.16, b=0.05},
     flow_color = {r=0.5, g=0.5, b=0.5},
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/heavy-oil.png",

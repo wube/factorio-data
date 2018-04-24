@@ -17,6 +17,7 @@ function worm_folded_animation(scale, tint)
       },
       {
         filename = "__base__/graphics/entity/worm/worm-folded-mask.png",
+        flags = { "mask" },
         run_mode = "forward-then-backward",
         line_length = 5,
         width = 60,
@@ -61,6 +62,7 @@ function worm_preparing_animation(scale, tint, run_mode)
       },
       {
         filename = "__base__/graphics/entity/worm/worm-preparing-mask.png",
+        flags = { "mask" },
         line_length = 13,
         width = 98,
         height = 121,
@@ -93,6 +95,7 @@ function worm_prepared_animation(scale, tint)
       },
       {
         filename = "__base__/graphics/entity/worm/worm-prepared-mask.png",
+        flags = { "mask" },
         run_mode = "forward-then-backward",
         line_length = 10,
         width = 80,
@@ -135,6 +138,7 @@ function worm_attack_animation(scale, tint, run_mode)
         }
       },
       {
+        flags = { "mask" },
         width = 168,
         height = 153,
         frame_count = 8,
@@ -178,6 +182,7 @@ function worm_die_animation(scale, tint)
       },
       {
         filename = "__base__/graphics/entity/worm/worm-die-mask.png",
+        flags = { "mask" },
         line_length = 6,
         width = 143,
         height = 133,

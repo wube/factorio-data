@@ -23,7 +23,7 @@ data:extend(
     fuel_value = "4MJ",
     subgroup = "raw-material",
     order = "a[raw-wood]",
-    stack_size = 50
+    stack_size = 100
   },
   {
     type = "item",
@@ -160,22 +160,22 @@ data:extend(
   },
   {
     type = "item",
-    name = "basic-mining-drill",
-    icon = "__base__/graphics/icons/basic-mining-drill.png",
+    name = "electric-mining-drill",
+    icon = "__base__/graphics/icons/electric-mining-drill.png",
     flags = {"goes-to-quickbar"},
     subgroup = "extraction-machine",
-    order = "a[items]-b[basic-mining-drill]",
-    place_result = "basic-mining-drill",
+    order = "a[items]-b[electric-mining-drill]",
+    place_result = "electric-mining-drill",
     stack_size = 50
   },
   {
     type = "item",
-    name = "basic-transport-belt",
-    icon = "__base__/graphics/icons/basic-transport-belt.png",
+    name = "transport-belt",
+    icon = "__base__/graphics/icons/transport-belt.png",
     flags = {"goes-to-quickbar"},
     subgroup = "belt",
-    order = "a[transport-belt]-a[basic-transport-belt]",
-    place_result = "basic-transport-belt",
+    order = "a[transport-belt]-a[transport-belt]",
+    place_result = "transport-belt",
     stack_size = 50
   },
   {
@@ -190,12 +190,12 @@ data:extend(
   },
   {
     type = "item",
-    name = "basic-inserter",
-    icon = "__base__/graphics/icons/basic-inserter.png",
+    name = "inserter",
+    icon = "__base__/graphics/icons/inserter.png",
     flags = {"goes-to-quickbar"},
     subgroup = "inserter",
-    order = "b[basic-inserter]",
-    place_result = "basic-inserter",
+    order = "b[inserter]",
+    place_result = "inserter",
     stack_size = 50
   },
   {
@@ -381,8 +381,8 @@ data:extend(
     subgroup = "tool",
     order = "b[repair]-a[repair-pack]",
     speed = 1,
-    durability = 100,
-    stack_size = 50
+    durability = 200,
+    stack_size = 100
   },
   {
     type = "item",

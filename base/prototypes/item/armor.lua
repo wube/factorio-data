@@ -21,6 +21,11 @@ data:extend(
         type = "acid",
         decrease = 5,
         percent = 30
+      },
+      {
+        type = "fire",
+        decrease = 0,
+        percent = 40
       }
     },
     durability = 5000,
@@ -30,8 +35,8 @@ data:extend(
   },
   {
     type = "armor",
-    name = "basic-modular-armor",
-    icon = "__base__/graphics/icons/basic-modular-armor.png",
+    name = "modular-armor",
+    icon = "__base__/graphics/icons/modular-armor.png",
     flags = {"goes-to-main-inventory"},
     resistances =
     {
@@ -49,13 +54,19 @@ data:extend(
         type = "explosion",
         decrease = 10,
         percent = 30
+      },
+      {
+        type = "fire",
+        decrease = 0,
+        percent = 60
       }
     },
     durability = 10000,
     subgroup = "armor",
-    order = "c[basic-modular-armor]",
+    order = "c[modular-armor]",
     stack_size = 1,
-    equipment_grid = {width = 5, height = 5}
+    equipment_grid = {width = 5, height = 5},
+    inventory_size_bonus = 10
   },
   {
     type = "armor",
@@ -78,13 +89,19 @@ data:extend(
         type = "explosion",
         decrease = 15,
         percent = 30
+      },
+      {
+        type = "fire",
+        decrease = 0,
+        percent = 75
       }
     },
     durability = 15000,
     subgroup = "armor",
     order = "d[power-armor]",
     stack_size = 1,
-    equipment_grid = {width = 7, height = 7}
+    equipment_grid = {width = 7, height = 7},
+    inventory_size_bonus = 20
   },
   {
     type = "armor",
@@ -107,13 +124,19 @@ data:extend(
         type = "explosion",
         decrease = 20,
         percent = 50
+      },
+      {
+        type = "fire",
+        decrease = 0,
+        percent = 80
       }
     },
     durability = 20000,
     subgroup = "armor",
     order = "e[power-armor-mk2]",
     stack_size = 1,
-    equipment_grid = {width = 10, height = 10}
+    equipment_grid = {width = 10, height = 10},
+    inventory_size_bonus = 30
   }
 }
 )

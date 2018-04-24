@@ -113,14 +113,154 @@ data:extend(
     subgroup = "virtual-signal-letter",
     order = "c[letters]-[F]"
   },
+  {
+    type = "virtual-signal",
+    name = "signal-G",
+    icon = "__base__/graphics/icons/signal/signal_G.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[G]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-H",
+    icon = "__base__/graphics/icons/signal/signal_H.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[H]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-I",
+    icon = "__base__/graphics/icons/signal/signal_I.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[I]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-J",
+    icon = "__base__/graphics/icons/signal/signal_J.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[J]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-K",
+    icon = "__base__/graphics/icons/signal/signal_K.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[K]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-L",
+    icon = "__base__/graphics/icons/signal/signal_L.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[L]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-M",
+    icon = "__base__/graphics/icons/signal/signal_M.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[M]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-N",
+    icon = "__base__/graphics/icons/signal/signal_N.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[N]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-O",
+    icon = "__base__/graphics/icons/signal/signal_O.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[O]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-P",
+    icon = "__base__/graphics/icons/signal/signal_P.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[P]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-Q",
+    icon = "__base__/graphics/icons/signal/signal_Q.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[Q]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-R",
+    icon = "__base__/graphics/icons/signal/signal_R.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[R]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-S",
+    icon = "__base__/graphics/icons/signal/signal_S.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[S]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-T",
+    icon = "__base__/graphics/icons/signal/signal_T.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[T]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-U",
+    icon = "__base__/graphics/icons/signal/signal_U.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[U]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-V",
+    icon = "__base__/graphics/icons/signal/signal_V.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[V]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-W",
+    icon = "__base__/graphics/icons/signal/signal_W.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[W]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-X",
+    icon = "__base__/graphics/icons/signal/signal_X.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[X]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-Y",
+    icon = "__base__/graphics/icons/signal/signal_Y.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[Y]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-Z",
+    icon = "__base__/graphics/icons/signal/signal_Z.png",
+    subgroup = "virtual-signal-letter",
+    order = "c[letters]-[Z]"
+  },
 
 
   {
     type = "virtual-signal",
-    name = "signal-blue",
-    icon = "__base__/graphics/icons/signal/signal_blue.png",
+    name = "signal-red",
+    icon = "__base__/graphics/icons/signal/signal_red.png",
     subgroup = "virtual-signal-color",
-    order = "d[colors]-[1blue]"
+    order = "d[colors]-[1red]"
   },
   {
     type = "virtual-signal",
@@ -131,10 +271,10 @@ data:extend(
   },
   {
     type = "virtual-signal",
-    name = "signal-red",
-    icon = "__base__/graphics/icons/signal/signal_red.png",
+    name = "signal-blue",
+    icon = "__base__/graphics/icons/signal/signal_blue.png",
     subgroup = "virtual-signal-color",
-    order = "d[colors]-[3red]"
+    order = "d[colors]-[3blue]"
   },
   {
     type = "virtual-signal",
@@ -142,5 +282,41 @@ data:extend(
     icon = "__base__/graphics/icons/signal/signal_yellow.png",
     subgroup = "virtual-signal-color",
     order = "d[colors]-[4yellow]"
-  }
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-pink",
+    icon = "__base__/graphics/icons/signal/signal_pink.png",
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[5pink]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-cyan",
+    icon = "__base__/graphics/icons/signal/signal_cyan.png",
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[6cyan]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-white",
+    icon = "__base__/graphics/icons/signal/signal_white.png",
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[7white]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-grey",
+    icon = "__base__/graphics/icons/signal/signal_grey.png",
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[8grey]"
+  },
+  {
+    type = "virtual-signal",
+    name = "signal-black",
+    icon = "__base__/graphics/icons/signal/signal_black.png",
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[9black]"
+  },
+
 })

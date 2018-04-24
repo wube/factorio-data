@@ -49,6 +49,42 @@ data:extend(
     name = "scenario-message-dialog",
     from = "default",
     size = 18
-  }
+  },
+  {
+    type = "font",
+    name = "default-large",
+    from = "default",
+    size = 18,
+  },
+  {
+    type = "font",
+    name = "default-large-semibold",
+    from = "default-semibold",
+    size = 18,
+  },
+  {
+    type = "font",
+    name = "default-large-bold",
+    from = "default-bold",
+    size = 18,
+  },
+  {
+    type = "font",
+    name = "default-small",
+    from = "default",
+    size = 12,
+  },
+  {
+    type = "font",
+    name = "default-small-semibold",
+    from = "default-semibold",
+    size = 12,
+  },
+  {
+    type = "font",
+    name = "default-small-bold",
+    from = "default-bold",
+    size = 12,
+  },
 }
 )

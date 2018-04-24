@@ -2,8 +2,8 @@ data:extend(
 {
   {
     type = "armor",
-    name = "basic-armor",
-    icon = "__base__/graphics/icons/basic-armor.png",
+    name = "light-armor",
+    icon = "__base__/graphics/icons/light-armor.png",
     flags = {"goes-to-main-inventory"},
     resistances =
     {
@@ -21,11 +21,16 @@ data:extend(
         type = "explosion",
         decrease = 2,
         percent = 20
+      },
+      {
+        type = "fire",
+        decrease = 2,
+        percent = 10
       }
     },
     durability = 1000,
     subgroup = "armor",
-    order = "a[basic-armor]",
+    order = "a[light-armor]",
     stack_size = 10
   }
 }

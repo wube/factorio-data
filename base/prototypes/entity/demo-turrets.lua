@@ -2,6 +2,7 @@ require ("prototypes.entity.demo-worm-animations")
 require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
 require "util"
+require ("prototypes.entity.demo-enemy-autoplace-utils")
 
 function gun_turret_extension(inputs)
 return
@@ -23,6 +24,7 @@ function gun_turret_extension_mask(inputs)
 return
 {
   filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-extension-mask.png",
+  flags = { "mask" },
   width = 24,
   height = 31,
   direction_count = 4,
@@ -79,6 +81,7 @@ return
     },
     {
       filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-mask.png",
+      flags = { "mask" },
       line_length = inputs.frame_count and inputs.frame_count or 2,
       width = 29,
       height = 27,
@@ -174,37 +177,8 @@ data:extend(
         }
       }
     },
-    autoplace =
-    {
-      sharpness = 0.3,
-      control = "enemy-base",
-      order = "b[enemy]-a[base]",
-      force = "enemy",
-      peaks =
-      {
-        {
-          influence = -10.0,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.31,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-        },
-        {
-          influence = 0.1,
-          noise_layer = "enemy-base",
-          noise_octaves_difference = -1.8,
-          noise_persistence = 0.5,
-          tier_from_start_optimal = 10,
-          tier_from_start_top_property_limit = 10,
-          tier_from_start_max_range = 20,
-        }
-      }
-    }
+    autoplace = enemy_worm_autoplace(0),
+    call_for_help_radius = 40
   },
   {
     type = "ammo-turret",
@@ -263,22 +237,26 @@ data:extend(
           height = 75,
           axially_symmetrical = false,
           direction_count = 1,
+          frame_count = 1,
           shift = {0.0625, -0.046875},
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-base-mask.png",
+          flags = { "mask" },
           line_length = 1,
           width = 52,
           height = 47,
           frame_count = 1,
           axially_symmetrical = false,
           direction_count = 1,
+          frame_count = 1,
           shift = {0.0625, -0.234375},
           apply_runtime_tint = true
         }
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    
     attack_parameters =
     {
       type = "projectile",
@@ -300,7 +278,9 @@ data:extend(
       },
       range = 17,
       sound = make_heavy_gunshot_sounds(),
-    }
+    },
+
+    call_for_help_radius = 40
   },
   {
     type = "corpse",

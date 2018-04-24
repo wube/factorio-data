@@ -21,11 +21,11 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "12kJ",
-      input_flow_limit = "24kW",
+      buffer_capacity = "120kJ",
+      input_flow_limit = "240kW",
       usage_priority = "primary-input"
     },
-    energy_input = "1kW",
+    energy_input = "10kW",
     tint = {r = 0, g = 0.1, b = 0, a = 0.2}
   },
   {
@@ -48,11 +48,11 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "12kJ",
-      input_flow_limit = "24kW",
+      buffer_capacity = "120kJ",
+      input_flow_limit = "240kW",
       usage_priority = "primary-input"
     },
-    energy_per_shield = "2kJ"
+    energy_per_shield = "20kJ"
   },
   {
     type = "energy-shield-equipment",
@@ -74,11 +74,11 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "18kJ",
-      input_flow_limit = "36kW",
+      buffer_capacity = "180kJ",
+      input_flow_limit = "360kW",
       usage_priority = "primary-input"
     },
-    energy_per_shield = "3kJ"
+    energy_per_shield = "30kJ"
   },
   {
     type = "battery-equipment",
@@ -99,9 +99,9 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "100kJ",
-      input_flow_limit = "1MW",
-      output_flow_limit = "1MW",
+      buffer_capacity = "20MJ",
+      input_flow_limit = "200MW",
+      output_flow_limit = "200MW",
       usage_priority = "terciary"
     }
   },
@@ -124,9 +124,9 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "500kJ",
-      input_flow_limit = "5MW",
-      output_flow_limit = "5MW",
+      buffer_capacity = "100MJ",
+      input_flow_limit = "1GW",
+      output_flow_limit = "1GW",
       usage_priority = "terciary"
     }
   },
@@ -151,7 +151,7 @@ data:extend(
       type = "electric",
       usage_priority = "primary-output"
     },
-    power = "1kW"
+    power = "10kW"
   },
   {
     type = "generator-equipment",
@@ -174,14 +174,14 @@ data:extend(
       type = "electric",
       usage_priority = "primary-output"
     },
-    power = "75kW"
+    power = "750kW"
   },
   {
     type = "active-defense-equipment",
-    name = "basic-laser-defense-equipment",
+    name = "personal-laser-defense-equipment",
     sprite =
     {
-      filename = "__base__/graphics/equipment/basic-laser-defense-equipment.png",
+      filename = "__base__/graphics/equipment/personal-laser-defense-equipment.png",
       width = 64,
       height = 96,
       priority = "medium"
@@ -196,7 +196,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      buffer_capacity = "11kJ"
+      buffer_capacity = "110kJ"
     },
     attack_parameters =
     {
@@ -212,7 +212,7 @@ data:extend(
       {
         type = "projectile",
         category = "electric",
-        energy_consumption = "10kJ",
+        energy_consumption = "100kJ",
         projectile = "laser",
         speed = 1,
         action =
@@ -235,17 +235,17 @@ data:extend(
   },
   {
     type = "active-defense-equipment",
-    name = "basic-electric-discharge-defense-equipment",
+    name = "discharge-defense-equipment",
     ability_icon =
     {
-      filename = "__base__/graphics/equipment/basic-electric-discharge-defense-equipment-ability.png",
+      filename = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
       width = 32,
       height = 32,
       priority = "medium"
     },
     sprite =
     {
-      filename = "__base__/graphics/equipment/basic-electric-discharge-defense-equipment.png",
+      filename = "__base__/graphics/equipment/discharge-defense-equipment.png",
       width = 96,
       height = 96,
       priority = "medium"
@@ -260,7 +260,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      buffer_capacity = "404kJ"
+      buffer_capacity = "4040kJ"
     },
     attack_parameters =
     {
@@ -276,7 +276,7 @@ data:extend(
       {
         type = "projectile",
         category = "electric",
-        energy_consumption = "200kJ",
+        energy_consumption = "2MJ",
         speed = 1,
         action =
         {
@@ -300,10 +300,10 @@ data:extend(
   },
   {
     type = "movement-bonus-equipment",
-    name = "basic-exoskeleton-equipment",
+    name = "exoskeleton-equipment",
     sprite =
     {
-      filename = "__base__/graphics/equipment/basic-exoskeleton-equipment.png",
+      filename = "__base__/graphics/equipment/exoskeleton-equipment.png",
       width = 64,
       height = 128,
       priority = "medium"
@@ -319,7 +319,7 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input"
     },
-    energy_consumption = "20kW",
+    energy_consumption = "200kW",
     movement_bonus = 0.3
   },
   {
@@ -342,30 +342,17 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "7MJ",
-      input_flow_limit = "700KW",
+      buffer_capacity = "35MJ",
+      input_flow_limit = "3500KW",
       usage_priority = "secondary-input"
     },
-    charging_energy = "200kW",
-    energy_consumption = "4kW",
+    charging_energy = "1000kW",
+    energy_consumption = "20kW",
 
     robot_limit = 10,
     construction_radius = 15,
     spawn_and_station_height = 0.4,
     charge_approach_distance = 2.6,
-
-    radius_visualisation_picture =
-    {
-      filename = "__base__/graphics/entity/roboport/roboport-radius-visualization.png",
-      width = 12,
-      height = 12
-    },
-    construction_radius_visualisation_picture =
-    {
-      filename = "__base__/graphics/entity/roboport/roboport-construction-radius-visualization.png",
-      width = 12,
-      height = 12
-    },
 
     recharging_animation =
     {

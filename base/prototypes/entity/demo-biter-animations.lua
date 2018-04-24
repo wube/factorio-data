@@ -28,6 +28,7 @@ function biterrunanimation(scale, tint1, tint2)
 
       {
         filename = "__base__/graphics/entity/biter/biter-run-mask1.png",
+        flags = { "mask" },
         width = 105,
         height = 81,
         frame_count = 16,
@@ -39,6 +40,7 @@ function biterrunanimation(scale, tint1, tint2)
 
       {
         filename = "__base__/graphics/entity/biter/biter-run-mask2.png",
+        flags = { "mask" },
         line_length = 16,
         width = 95,
         height = 81,
@@ -92,6 +94,7 @@ function biterattackanimation(scale, tint1, tint2)
 
       {
         filename = "__base__/graphics/entity/biter/biter-attack-mask1.png",
+        flags = { "mask" },
         width = 125,
         height = 108,
         frame_count = 11,
@@ -103,6 +106,7 @@ function biterattackanimation(scale, tint1, tint2)
 
       {
         filename = "__base__/graphics/entity/biter/biter-attack-mask2.png",
+        flags = { "mask" },
         width = 114,
         height = 100,
         frame_count = 11,
@@ -154,6 +158,7 @@ function biterdieanimation(scale, tint1, tint2)
 
       {
         filename = "__base__/graphics/entity/biter/biter-die-mask1.png",
+        flags = { "mask" },
         width = 120,
         height = 109,
         frame_count = 17,
@@ -165,6 +170,7 @@ function biterdieanimation(scale, tint1, tint2)
 
       {
         filename = "__base__/graphics/entity/biter/biter-die-mask2.png",
+        flags = { "mask" },
         width = 115,
         height = 108,
         frame_count = 17,

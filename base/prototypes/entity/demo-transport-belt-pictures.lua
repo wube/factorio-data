@@ -6,7 +6,7 @@ ending_patch_prototype =
   {
     sheet =
     {
-      filename = "__base__/graphics/entity/basic-transport-belt/start-end-integration-patches.png",
+      filename = "__base__/graphics/entity/transport-belt/start-end-integration-patches.png",
       width = 40,
       height = 40,
       priority = "extra-high"
@@ -16,7 +16,7 @@ ending_patch_prototype =
 ---------------------- BASIC BELT PICTURES
 basic_belt_horizontal =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -24,7 +24,7 @@ basic_belt_horizontal =
   }
 basic_belt_vertical =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -33,7 +33,7 @@ basic_belt_vertical =
   }
 basic_belt_ending_top =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -42,7 +42,7 @@ basic_belt_ending_top =
   }
 basic_belt_ending_bottom =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -51,7 +51,7 @@ basic_belt_ending_bottom =
   }
 basic_belt_ending_side =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -60,7 +60,7 @@ basic_belt_ending_side =
   }
 basic_belt_starting_top =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -69,7 +69,7 @@ basic_belt_starting_top =
   }
 basic_belt_starting_bottom =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,
@@ -78,7 +78,7 @@ basic_belt_starting_bottom =
   }
 basic_belt_starting_side =
   {
-    filename = "__base__/graphics/entity/basic-transport-belt/basic-transport-belt.png",
+    filename = "__base__/graphics/entity/transport-belt/transport-belt.png",
     priority = "extra-high",
     width = 40,
     height = 40,

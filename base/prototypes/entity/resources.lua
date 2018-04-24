@@ -9,8 +9,8 @@ data:extend(
     category = "basic-fluid",
     order="a-b-a",
     infinite = true,
-    minimum = 750,
-    normal = 7500,
+    minimum = 1500,
+    normal = 15000,
     minable =
     {
       hardness = 1,
@@ -31,27 +31,18 @@ data:extend(
     autoplace =
     {
       control = "crude-oil",
-      sharpness = 1,
-      max_probability = 0.04,
-      richness_multiplier = 150000,
-      richness_base = 5000,
-      size_control_multiplier = 0.06,
+      sharpness = 0.99,
+      max_probability = 0.035,
+      richness_base = 6000,
+      richness_multiplier = 30000,
+      richness_multiplier_distance_bonus = 10,
+      coverage = 0.02, -- Cover on average 2% of surface area.
       peaks =
       {
         {
-          influence = 0.1
-        },
-        {
-          influence = 0.105,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
-        },
-        {
-          influence = 0.67,
           noise_layer = "crude-oil",
-          noise_octaves_difference = -2.7,
-          noise_persistence = 0.3
+          noise_octaves_difference = -1,
+          noise_persistence = 0.4,
         }
       }
     },

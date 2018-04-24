@@ -87,7 +87,7 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "basic-laser-defense-equipment",
+    name = "personal-laser-defense-equipment",
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -96,11 +96,11 @@ data:extend(
       {"steel-plate", 5},
       {"laser-turret", 5}
     },
-    result = "basic-laser-defense-equipment"
+    result = "personal-laser-defense-equipment"
   },
   {
     type = "recipe",
-    name = "basic-electric-discharge-defense-equipment",
+    name = "discharge-defense-equipment",
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -109,11 +109,11 @@ data:extend(
       {"steel-plate", 20},
       {"laser-turret", 10}
     },
-    result = "basic-electric-discharge-defense-equipment"
+    result = "discharge-defense-equipment"
   },
   {
     type = "recipe",
-    name = "basic-exoskeleton-equipment",
+    name = "exoskeleton-equipment",
     enabled = false,
     energy_required = 10,
     ingredients =
@@ -122,7 +122,7 @@ data:extend(
       {"electric-engine-unit", 30},
       {"steel-plate", 20},
     },
-    result = "basic-exoskeleton-equipment"
+    result = "exoskeleton-equipment"
   },
   {
     type = "recipe",

@@ -1,5 +1,3 @@
-game.reload_script()
-
 if game.is_demo() then
   return
 end
