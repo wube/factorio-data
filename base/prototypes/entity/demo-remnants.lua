@@ -361,7 +361,7 @@ data:extend(
     selection_box = {{-1, -1}, {1, 1}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
-    final_render_layer = "ground_patch_higher2",
+    final_render_layer = "ground-patch-higher2",
     subgroup = "remnants",
     order="d[remnants]-b[scorchmark]-a[small]",
     animation =

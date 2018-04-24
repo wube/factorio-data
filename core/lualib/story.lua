@@ -157,7 +157,11 @@ end
 
 function story_show_message_dialog(param, player)
   if #game.players > 1 then
-    player.print(param.text)
+    if player then
+      player.print(param.text)
+    else
+      game.print(param.text)
+    end
   else
     game.show_message_dialog(param)
   end
