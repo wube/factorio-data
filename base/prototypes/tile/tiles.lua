@@ -1892,7 +1892,60 @@ data:extend(
     },
     map_color={r=0.2, g=0.2, b=0.2},
     ageing=0.0006
-  }
+  },
+  {
+    type = "tile",
+    name = "lab-white",
+    collision_mask = {"ground-tile"},
+    layer = 70,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/lab-tiles/lab-white.png",
+          count = 1,
+          size = 1
+        },
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
+        count = 0
+      },
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
+        count = 0
+      },
+      side =
+      {
+        picture = "__base__/graphics/terrain/out-of-map-side.png",
+        count = 0
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.2
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.2
+      }
+    },
+    map_color={r=1, g=1, b=1},
+    ageing=0.0006
+  },
 })
 
 if not data.is_demo then

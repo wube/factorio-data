@@ -279,7 +279,7 @@ data:extend(
     name = "cliff-explosives",
     icon = "__base__/graphics/icons/cliff-explosives.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
+    flags = {"goes-to-quickbar", "hide-from-bonus-gui"},
     capsule_action =
     {
       type = "destroy-cliffs",

@@ -54,7 +54,7 @@ function gui_update(player)
     label.style.font = "default-bold"
     label.style.bottom_padding = 4
     item_table.add{type = "label"}
-    for k, tracked in pairs (global.silo_script.tracked_items) do
+    for k, tracked in pairs (get_tracked_items()) do
       local item = items[tracked]
       local count = launched[tracked]
       if item and count then
@@ -95,24 +95,6 @@ function toggle_frame(player)
   gui_update(player)
 end
 
-function validate_tracked_items()
-  if not global.silo_script then return end
-  local list = global.silo_script.tracked_items
-  if not list then return end
-  local items = game.item_prototypes
-  local update_needed = false
-  for k, name in pairs (list) do
-    if not items[name] then
-      log("Removed \""..name.."\" from tracked items, as it is not a valid item.")
-      table.remove(list, k)
-      update_needed = true
-    end
-  end
-  if update_needed then
-    update_players()
-  end
-end
-
 migrations = {
   [1] = function ()
     log("Executing silo script migration - Mod gui from left to top")
@@ -127,6 +109,50 @@ migrations = {
   end
 }
 
+get_sprite_button = function(player)
+  local button_flow = mod_gui.get_button_flow(player)
+  local button = button_flow.silo_gui_sprite_button
+  if not button then
+    button = button_flow.add
+    {
+      type = "sprite-button",
+      name = "silo_gui_sprite_button",
+      sprite = "item/rocket-silo",
+      style = mod_gui.button_style,
+      tooltip = {"gui-silo-script.button-tooltip"}
+    }
+    local any = false
+    local sent = player.force.items_launched
+    for k, tracked_item in pairs (get_tracked_items()) do
+      if sent[tracked_item] then
+        any = true
+        break
+      end
+    end
+    button.style.visible = any
+  end
+  return button
+end
+
+function get_tracked_items()
+  if not global.silo_script then return {} end
+  if not global.silo_script.tracked_items then 
+    global.silo_script.tracked_items = silo_script.tracked_items
+  end
+
+  local list = global.silo_script.tracked_items
+  if not list then return end
+  local items = game.item_prototypes
+  for k, name in pairs (list) do
+    if not items[name] then
+      log("Removed \""..name.."\" from tracked items, as it is not a valid item.")
+      table.remove(list, k)
+    end
+  end
+
+  return list
+end
+
 silo_script = {}
 silo_script.version = 2
 silo_script.tracked_items = {"satellite"}
@@ -136,7 +162,7 @@ silo_script.on_rocket_launched = function(event)
   if not rocket then return end
   local force = rocket.force
   local any_tracked = false
-  for k, tracked_item in pairs (global.silo_script.tracked_items) do
+  for k, tracked_item in pairs (get_tracked_items()) do
     if rocket.get_item_count(tracked_item) > 0 then
       any_tracked = true
       break
@@ -162,31 +188,6 @@ silo_script.on_rocket_launched = function(event)
   if any_tracked then
     update_players(force.players)
   end
-end
-
-get_sprite_button = function(player)
-  local button_flow = mod_gui.get_button_flow(player)
-  local button = button_flow.silo_gui_sprite_button
-  if not button then
-    button = button_flow.add
-    {
-      type = "sprite-button",
-      name = "silo_gui_sprite_button",
-      sprite = "item/rocket-silo",
-      style = mod_gui.button_style,
-      tooltip = {"gui-silo-script.button-tooltip"}
-    }
-    local any = false
-    local sent = player.force.items_launched
-    for k, tracked_item in pairs (global.silo_script.tracked_items) do
-      if sent[tracked_item] then
-        any = true
-        break
-      end
-    end
-    button.style.visible = any
-  end
-  return button
 end
 
 silo_script.on_player_created = function(event)
@@ -217,19 +218,19 @@ silo_script.add_remote_interface = function()
       global.silo_script.finish_on_launch = value
     end,
     get_tracked_items = function()
-      return global.silo_script.tracked_items
+      return get_tracked_items()
     end,
     add_tracked_item = function(item_name)
       if type(item_name) ~= "string" then error("Value for 'add_tracked_item' must be a string") end
       if not game.item_prototypes[item_name] then error("Item to add is not a valid item: "..item_name) end
-      table.insert(global.silo_script.tracked_items, item_name)
+      table.insert(get_tracked_items(), item_name)
       update_players()
     end,
     remove_tracked_item = function(item_name)
       if type(item_name) ~= "string" then error("Value for 'remove_tracked_item' must be a string") end
-      for k, name in pairs (global.silo_script.tracked_items) do
+      for k, name in pairs (get_tracked_items()) do
         if name == item_name then
-          table.remove(global.silo_script.tracked_items, k)
+          table.remove(get_tracked_items(), k)
           break
         end
       end
@@ -263,7 +264,7 @@ silo_script.on_configuration_changed = function(event)
   if global.silo_script.version ~= silo_script.version then
     migrate(global.silo_script.version, silo_script.version)
   end
-  validate_tracked_items()
+  update_players()
 end
 
 silo_script.on_init = function()
@@ -273,7 +274,6 @@ silo_script.on_init = function()
   global.silo_script.tracked_items = silo_script.tracked_items
   global.silo_script.show_launched_without_satellite = true
   global.silo_script.finish_on_launch = true
-  validate_tracked_items()
 end
 
 return silo_script

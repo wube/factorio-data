@@ -93,22 +93,22 @@ local function get_product_list()
 end
 
 local default_param = {
-  ingredient_exponent = 1.05, --[[The exponent for increase in value for each additional ingredient forumula exponent^#ingredients-1]]
+  ingredient_exponent = 1.025, --[[The exponent for increase in value for each additional ingredient formula exponent^#ingredients-2]]
   raw_resource_price = 2.5 --[[If a raw resource isn't given a price, it uses this price]]
 }
 
 local default_seed_prices = {
   ["iron-ore"] = 3.1,
   ["copper-ore"] = 3.6,
-  ["coal"] = 2.1,
-  ["stone"] = 4.1,
-  ["crude-oil"] = 1.5,
+  ["coal"] = 3,
+  ["stone"] = 2.4,
+  ["crude-oil"] = 0.2,
   ["water"] = 1/1000,
   ["steam"] = 1/1000,
   ["raw-wood"] = 3.2,
   ["raw-fish"] = 100,
   ["energy"] = 1,
-  ["uranium-ore"] = 6.2
+  ["uranium-ore"] = 8.2
 }
 
 production_score.generate_price_list = function(param, seed_prices)
