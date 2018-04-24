@@ -164,6 +164,14 @@ data:extend(
       height = 89,
       flags = {"icon"}
     },
+    pump_cannot_connect_icon =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "extra-high-no-scale",
+      width = 1,
+      height = 1,
+      flags = {"icon"}
+    },
     not_enough_repair_packs_icon =
     {
       filename = "__core__/graphics/not-enough-repair-packs-icon.png",

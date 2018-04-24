@@ -16,7 +16,7 @@ data:extend(
     type = "unit",
     name = "small-biter",
     icon = "__base__/graphics/icons/small-biter.png",
-    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 15,
     order = "b-b-a",
     subgroup="enemies",

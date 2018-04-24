@@ -270,14 +270,6 @@ data:extend(
       type = "label_style",
       parent = "label_style",
       font = "default-semibold",
-      maximal_width = 150
-    },
-    entity_info_label_style =
-    {
-      type = "label_style",
-      parent = "label_style",
-      font = "default-semibold",
-      maximal_width = 256 - default_container_padding*2
     },
     description_title_label_style =
     {
