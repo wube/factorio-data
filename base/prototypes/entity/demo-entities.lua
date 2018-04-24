@@ -840,7 +840,7 @@ data:extend(
     corpse = "small-remnants",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    drawing_box = {{-0.5, -2.3}, {0.5, 0.5}},
+    drawing_box = {{-0.5, -2.6}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
     supply_area_distance = 2.5,
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },

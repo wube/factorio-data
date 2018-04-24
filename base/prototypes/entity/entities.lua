@@ -4221,7 +4221,7 @@ data:extend(
     },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1, -1}, {1, 1}},
-    drawing_box = {{-2.8, -0.5}, {0.5, 0.5}},
+    drawing_box = {{-1, -3}, {1, 0.5}},
     maximum_wire_distance = 30,
     supply_area_distance = 2,
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -4415,7 +4415,7 @@ data:extend(
     },
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
-    drawing_box = {{-1, -1.5}, {1, 1}},
+    drawing_box = {{-1, -3}, {1, 1}},
     maximum_wire_distance = 14,
     supply_area_distance = 7,
     pictures =
@@ -5464,7 +5464,7 @@ data:extend(
       west =
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        x = 156,
+        x = 468,
         width = 156,
         height = 141,
         frame_count = 1,
@@ -5482,7 +5482,7 @@ data:extend(
       east =
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        x = 468,
+        x = 156,
         width = 156,
         height = 141,
         frame_count = 1,
@@ -5493,9 +5493,9 @@ data:extend(
     {
       {
         north_position = {0.94, -0.73},
-        west_position = {-0.3, 0.02},
+        west_position = {0.05, -1.46},
         south_position = {-0.97, -1.47},
-        east_position = {0.05, -1.46},
+        east_position = {-0.3, 0.02},
         animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch.png",
@@ -5507,9 +5507,9 @@ data:extend(
       },
       {
         north_position = {1.4, -0.23},
-        west_position = {-0.3, 0.55},
+        west_position = {0.05, -0.96},
         south_position = {-1, -1},
-        east_position = {0.05, -0.96},
+        east_position = {-0.3, 0.55},
         north_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
@@ -5517,7 +5517,7 @@ data:extend(
           width = 21,
           height = 10
         },
-        west_animation =
+        east_animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
           x = 21,
@@ -5538,7 +5538,8 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
-      sound = {
+      sound =
+      {
         {
           filename = "__base__/sound/chemical-plant.ogg",
           volume = 0.8

@@ -64,7 +64,16 @@ function orangebuttongraphcialset()
   }
 end
 
-function bluebuttongraphcialset()
+function bluebuttongraphcialset(state)
+  local offset = nil
+  if state == "default" then 
+    offset = { x = 221, y = 36 }
+  elseif state == "hovered" then
+    offset = { x = 221, y = 72 }
+  elseif state == "clicked" then
+    offset = { x = 221, y = 108 }
+  end
+
   return
   {
     type = "monolith",
@@ -78,8 +87,8 @@ function bluebuttongraphcialset()
       priority = "extra-high-no-scale",
       width = 36,
       height = 36,
-      x = 221,
-      y = 36
+      x = offset.x,
+      y = offset.y
     }
   }
 end
@@ -513,9 +522,9 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_button_style",
-      default_graphical_set =  bluebuttongraphcialset(),
-      hovered_graphical_set =  bluebuttongraphcialset(),
-      clicked_graphical_set = bluebuttongraphcialset()
+      default_graphical_set =  bluebuttongraphcialset("default"),
+      hovered_graphical_set =  bluebuttongraphcialset("hovered"),
+      clicked_graphical_set = bluebuttongraphcialset("clicked")
     },
 
     not_available_slot_button_style =

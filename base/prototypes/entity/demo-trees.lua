@@ -335,9 +335,10 @@ local tree_data =
 {
   {
     type = 1,
+    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     autoplace_peaks = {{{35, 1}, {25, 0.35}}},
     colors =
-     {
+    {
       -- olive green, yellowish
       {r = 219, g = 200, b = 96},
       {r = 199, g = 184, b = 100},
@@ -347,41 +348,11 @@ local tree_data =
       {r = 209, g = 185, b = 91},
       {r = 197, g = 201, b = 80},
       {r = 214, g = 202, b = 100}
-      -- dark-green
-      -- {r = 76, g = 93, b = 67},
-      -- {r = 80, g = 112, b = 66},
-      -- {r = 87, g = 124, b = 71},
-      -- {r = 87, g = 100, b = 56},
-      -- {r = 109, g = 127, b = 67},
-      -- {r = 96, g = 113, b = 54},
-      -- {r = 100, g = 115, b = 13},
-      --brown compatible with dry grass
-      --{r = 162, g = 100, b = 46}, 
-      --{r = 176, g = 106, b = 46},
-      --{r = 178, g = 114, b = 58},
-      --{r = 156, g = 100, b = 52}
-      --{r = 121, g = 101, b = 22}--brown 1,
-      --{r = 123, g = 89, b = 17} --brown 2,
-      
     }
   },
-  --[[
-    type = 1,
-    identifier = "brown",
-    autoplace_peaks = {},
-    colors =
-    {
-      ----brown compatible with dry grass
-      {r = 162, g = 100, b = 46},
-      {r = 176, g = 106, b = 46},
-      {r = 178, g = 114, b = 58},
-      {r = 156, g = 100, b = 52}
-      {r = 121, g = 101, b = 22}--brown 1,
-      {r = 123, g = 89, b = 17} --brown 2,
-    }
-  },]]--
   {
     type = 2,
+    drawing_box = {{-0.9, -3.9}, {0.9, 0.6}},
     autoplace_peaks = {{{25, 0.7}, {10, 0.5}}},
     colors =
     {
@@ -401,6 +372,7 @@ local tree_data =
   {
     type = 2,
     identifier = "red",
+    drawing_box = {{-0.9, -3.9}, {0.9, 0.6}},
     autoplace_peaks = {{{25, 0.5}, {10, 0.4}}},
     autoplace_extra = { random_probability_penalty = 3e-3 },
     colors =
@@ -411,10 +383,6 @@ local tree_data =
       {r = 232, g = 216, b = 85},
       {r = 242, g = 224, b = 28},
       {r = 217, g = 210, b = 29},
-      --browns
-      -- {r = 244, g = 168, b = 48},
-      -- {r = 232, g = 171, b = 76},
-      -- {r = 236, g = 158, b = 23},
       {r = 252, g = 182, b = 72},
       {r = 196, g = 113, b = 76},
       {r = 213, g = 111, b = 66},
@@ -429,28 +397,11 @@ local tree_data =
       {r = 182, g = 219, b = 119},
       {r = 152, g = 192, b = 81},
       {r = 173, g = 211, b = 113}
-      --green
-      -- {r = 81, g = 126, b = 85},
-      -- {r = 81, g = 166, b = 89},
-      -- {r = 101, g = 191, b = 110},
-      -- {r = 147, g = 192, b = 39},
-      -- {r = 162, g = 222, b = 19},
-      -- {r = 201, g = 236, b = 116},
-      -- {r = 179, g = 199, b = 12},
-      -- {r = 181, g = 189, b = 114},
-      -- {r = 179, g = 199, b = 12},
-      -- {r = 200, g = 214, b = 83},
-      --red
-      -- {r = 187, g = 76, b = 78},
-      -- {r = 179, g = 70, b = 73},
-      -- {r = 211, g = 84, b = 71},
-      -- {r = 208, g = 62, b = 46},
-      -- {r = 228, g = 86, b = 67},
-      -- {r = 222, g = 76, b = 30},
     }
   },
   {
     type = 3,
+    drawing_box = {{-0.9, -3.7}, {0.9, 0.6}},
     autoplace_peaks = {{{30, 1}, {20, 0.7}}},
     colors =
     {
@@ -472,6 +423,7 @@ local tree_data =
   },
   {
     type = 4,
+    drawing_box = {{-0.9, -3.9}, {0.9, 0.6}},
     autoplace_peaks = {{{20, 0.8}, {5, 0.4}}},
     colors =
     {
@@ -492,6 +444,7 @@ local tree_data =
   },
   {
     type = 5,
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace_peaks = {{{20, 0.8}, {5, 0.4}}},
     colors =
     {
@@ -513,6 +466,7 @@ local tree_data =
   },
   {
     type = 6,
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace_peaks = {{{35, 0.15}, {10, 0.05}, 0.19}},
     autoplace_extra = { max_probability = 0.3 },
     colors =
@@ -534,6 +488,7 @@ local tree_data =
   {
     type = 6,
     identifier = "brown",
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace_peaks = {{{35, 0.2}, {10, 0.05}, 0.2}},
     autoplace_extra = { max_probability = 0.3 },
     colors =
@@ -546,21 +501,11 @@ local tree_data =
       {r = 207, g = 145, b = 58},
       {r = 249, g = 177, b = 92},
       {r = 253, g = 155, b = 0},
-      --{r = 213, g = 145, b = 41},
-      --{r = 255, g = 163, b = 17},
-      --{r = 220, g = 185, b = 116},
-      --{r = 220, g = 160, b = 116},
-      --{r = 208, g = 131, b = 74},
-      --{r = 199, g = 102, b = 30},
-      --{r = 233, g = 130, b = 55},
-      --{r = 179, g = 88, b = 48},
-      --{r = 198, g = 142, b = 77},
-      --{r = 156, g = 100, b = 52},
-      --{r = 207, g = 169, b = 123},
     }
   },
   {
     type = 7,
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace_peaks = {{{35, 0.25}, {5, 0.15}, 0.21}},
     autoplace_extra = { max_probability = 0.3495 },
     colors =
@@ -582,6 +527,7 @@ local tree_data =
   },
   {
     type = 8,
+    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     autoplace_peaks = {{{0.3, 10}, {0, 0}}},
     colors =
     {
@@ -608,6 +554,7 @@ local tree_data =
   {
     type = 8,
     identifier = "brown",
+    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     autoplace_peaks = {{{0.1, 0}, {-10, 0}}},
     colors =
     {
@@ -621,6 +568,7 @@ local tree_data =
   {
     type = 8,
     identifier = "red",
+    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     autoplace_peaks = {{{0.3, 0}, {-10, 0.1}}},
     colors =
     {
@@ -633,6 +581,7 @@ local tree_data =
   },
   {
     type = 9,
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace_peaks = {{{35, 0.4}, {25, 0.3}, 0.21}},
     autoplace_extra = { max_probability = 0.5 },
     colors =
@@ -649,6 +598,7 @@ local tree_data =
   {
     type = 9,
     identifier = "brown",
+    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     autoplace_peaks = {{{35, 0.25}, {15, 0.15}, 0.21}},
     autoplace_extra = { max_probability = 0.35 },
     colors =
@@ -666,6 +616,7 @@ local tree_data =
   {
     type = 9,
     identifier = "red",
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace_peaks = {{{25, 0.25}, {5, 0.15}, 0.21}},
     autoplace_extra = { max_probability = 0.3495 },
     colors =
@@ -761,6 +712,7 @@ for i, tree_data in ipairs(tree_data) do
       max_health = 50,
       collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
       selection_box = {{-0.9, -2.2}, {0.9, 0.6}},
+      drawing_box = tree_data.drawing_box,
       subgroup = "trees",
       order = "a[tree]-a[regular]-" .. order,
       vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
@@ -898,6 +850,7 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
     selection_box = {{-0.6, -1.5}, {0.6, 0.3}},
+    drawing_box = {{-0.6, -1.8}, {0.6, 0.3}},
     subgroup = "trees",
     order = "a[tree]-c[dry-tree]",
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
