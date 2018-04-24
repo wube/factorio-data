@@ -40,7 +40,7 @@ data:extend(
       -- Distance in chunks from the furthest base around.
       -- This prevents expansions from reaching too far into the
       -- player's territory
-      max_expansion_distance = 5,
+      max_expansion_distance = 7,
 
       -- Minimal distance of expansion point in chunks from player base
       min_player_base_distance = 3,

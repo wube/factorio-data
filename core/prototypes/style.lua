@@ -1374,13 +1374,13 @@ data:extend(
     frame_in_right_container_style =
     {
       type = "frame_style",
-      minimal_width = 230
+      minimal_width = 250
     },
     minimap_frame_style =
     {
       type = "frame_style",
       parent = "frame_in_right_container_style",
-      minimal_height = 230
+      minimal_height = 250
     },
     quick_bar_frame_style =
     {
