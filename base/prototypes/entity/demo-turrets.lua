@@ -153,6 +153,7 @@ data:extend(
     {
       sharpness = 0.3,
       control = "enemy-base",
+      order = "b[enemy]-a[base]",
       force = "enemy",
       peaks =
       {

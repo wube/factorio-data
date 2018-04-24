@@ -1083,6 +1083,7 @@ data:extend(
     {
       sharpness = 0.4,
       control = "enemy-base",
+      order = "b[enemy]-a[base]",
       richness_multiplier = 1,
       richness_base = 0,
       force = "enemy",

@@ -4,7 +4,7 @@ local function autoplace_settings(rectangles, more)
   local ret =
   {
     sharpness = 0.4,
-    order = "b[tree]-b[forest]",
+    order = "a[tree]-b[forest]",
     peaks =
     {
       {
