@@ -6,10 +6,8 @@ capsule_smoke =
     deviation = {0.15, 0.15},
     frequency = 1,
     position = {0, 0},
-    slow_down_factor = 1,
     starting_frame = 3,
     starting_frame_deviation = 5,
-    starting_frame_speed = 0,
     starting_frame_speed_deviation = 5
   }
 }

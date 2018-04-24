@@ -229,6 +229,36 @@ pipepictures = function()
   }
 end
 
+function smoke(opts)
+  return {
+    type = "smoke",
+    name = opts.name,
+    flags = {"not-on-map"},
+    duration = opts.duration or 600,
+    fade_away_duration = opts.fade_away_duration or 600,
+    spread_duration = opts.spread_duration or 600,
+    start_scale = opts.start_scale or 0.20,
+    end_scale = opts.end_scale or 1.0,
+    color = opts.color,
+    cyclic = true,
+    affected_by_wind = opts.affected_by_wind or true,
+    animation =
+    {
+      width = 152,
+      height = 120,
+      line_length = 5,
+      frame_count = 60,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.53125, -0.4375},
+      priority = "high",
+      animation_speed = 0.25,
+      filename = "__base__/graphics/entity/smoke/smoke.png"
+    }
+  }
+end
+
+
 data:extend(
 {
   {
@@ -525,9 +555,10 @@ data:extend(
         {
           name = "smoke",
           deviation = {0.1, 0.1},
-          frequency = 0.5,
-          position = {0, 0},
-          starting_vertical_speed = 0.05
+          frequency = 5,
+          position = {0.2, -0.5},
+          starting_vertical_speed = 0.08,
+          starting_frame_deviation = 60
         }
       }
     },
@@ -683,8 +714,10 @@ data:extend(
       {
         {
           name = "smoke",
-          deviation = {0.1, 0.1},
-          frequency = 1
+          position = {0.5, -0.5},
+          frequency = 5,
+          starting_vertical_speed = 0.0,
+          starting_frame_deviation = 60
         }
       }
     },
@@ -1342,12 +1375,13 @@ data:extend(
     smoke =
     {
       {
-        name = "smoke",
-        north_position = {0, -2.2},
-        east_position = {-1.9, -1.6},
-        deviation = {0.2, 0.2},
-        frequency = 2 / 31,
-        starting_vertical_speed = 0.05
+        name = "light-smoke",
+        north_position = {1.2, 0.0},
+        east_position = {-1.7, -2.0},
+        frequency = 10 / 32,
+        starting_vertical_speed = 0.08,
+        slow_down_factor = 1,
+        starting_frame_deviation = 60
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -1487,22 +1521,39 @@ data:extend(
 
   },
 
+  smoke{name = "smoke", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}},
+  smoke{name = "light-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}},
+  smoke
   {
-    type = "smoke",
-    name = "smoke",
-    flags = {"not-on-map"},
-    animation =
-    {
-      filename = "__base__/graphics/entity/smoke/smoke.png",
-      priority = "high",
-      width = 88,
-      height = 78,
-      frame_count = 39,
-      animation_speed = 12,
-      line_length = 7
-    }
+    name = "train-smoke",
+    color = {r = 0.3, g = 0.3, b = 0.3, a = 0.3},
+    duration = 150,
+    spread_duration = 100,
+    fade_away_duration = 100,
+    start_scale = 0.4,
+    end_scale = 1.5,
+    affected_by_wind = true
   },
-
+  smoke
+  {
+    name = "car-smoke",
+    color = {r = 0.5, g = 0.5, b = 0.5, a = 0.5},
+    duration = 12,
+    spread_duration = 12,
+    fade_away_duration = 12,
+    start_scale = 0.1,
+    end_scale = 0.5
+  },
+  smoke
+  {
+    name = "tank-smoke",
+    color = {r = 0.6, g = 0.6, b = 0.6, a = 0.6},
+    duration = 100,
+    spread_duration = 100,
+    fade_away_duration = 100,
+    start_scale = 0.3,
+    end_scale = 1.0
+  },
   {
     type = "smoke",
     name = "smoke-fast",
@@ -1514,7 +1565,9 @@ data:extend(
       width = 50,
       height = 50,
       frame_count = 16,
-      animation_speed = 1
+      animation_speed = 16 / 60,
+      duration = 60,
+      fade_away_duration = 60
     }
   },
 
@@ -1528,7 +1581,7 @@ data:extend(
       priority = "high",
       width = 50,
       height = 50,
-      animation_speed = 2,
+      animation_speed = 16 / 60,
       frame_count = 16,
       scale = 0.5
     },
@@ -1550,7 +1603,7 @@ data:extend(
       priority = "high",
       width = 50,
       height = 50,
-      animation_speed = 2,
+      animation_speed = 1 / 2,
       frame_count = 16,
       scale = 0.5
     },
@@ -1558,7 +1611,7 @@ data:extend(
     affected_by_wind = false,
     movement_slow_down_factor = 0.96,
     duration = 45,
-    fade_away_duration = 30,
+    fade_away_duration = 20,
     show_when_smoke_off = true
   },
 
@@ -1572,7 +1625,7 @@ data:extend(
       priority = "high",
       width = 50,
       height = 50,
-      animation_speed = 2,
+      animation_speed = 1 / 2,
       frame_count = 16,
       scale = 0.5,
       tint = {r = 0.1, g = 0.1, b = 0.1, a = 0.7}
@@ -1726,7 +1779,7 @@ data:extend(
         {
           name = "smoke",
           deviation = {0.1, 0.1},
-          frequency = 0.3
+          frequency = 30
         }
       }
     },

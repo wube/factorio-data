@@ -127,7 +127,7 @@ data:extend(
         {
           name = "smoke",
           deviation = {0.1, 0.1},
-          frequency = 1
+          frequency = 3
         }
       }
     },

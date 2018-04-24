@@ -837,14 +837,12 @@ data:extend(
       smoke =
       {
         {
-          name = "smoke",
+          name = "car-smoke",
           deviation = {0.25, 0.25},
-          frequency = 50,
+          frequency = 200,
           position = {0, 1.5},
-          starting_frame = 3,
-          starting_frame_deviation = 5,
-          starting_frame_speed = 0,
-          starting_frame_speed_deviation = 5
+          starting_frame = 0,
+          starting_frame_deviation = 60
         }
       }
     },
@@ -1096,14 +1094,12 @@ data:extend(
       smoke =
       {
         {
-          name = "smoke",
+          name = "tank-smoke",
           deviation = {0.25, 0.25},
           frequency = 50,
           position = {0, 1.5},
-          starting_frame = 3,
-          starting_frame_deviation = 5,
-          starting_frame_speed = 0,
-          starting_frame_speed_deviation = 5
+          starting_frame = 0,
+          starting_frame_deviation = 60
         }
       }
     },
@@ -1883,19 +1879,16 @@ data:extend(
       smoke =
       {
         {
-          name = "smoke",
-          deviation = {0.1, 0.1},
-          frequency = 210,
+          name = "train-smoke",
+          deviation = {0.3, 0.3},
+          frequency = 100,
           position = {0, 0},
-          slow_down_factor = 15,
-          starting_frame = 1,
-          starting_frame_deviation = 5,
-          starting_frame_speed = 0,
-          starting_frame_speed_deviation = 1,
+          starting_frame = 0,
+          starting_frame_deviation = 60,
           height = 2,
-          height_deviation = 0.2,
+          height_deviation = 0.5,
           starting_vertical_speed = 0.2,
-          starting_vertical_speed_deviation = 0.06,
+          starting_vertical_speed_deviation = 0.1,
         }
       }
     },
@@ -4607,10 +4600,10 @@ data:extend(
       {
         {
           name = "smoke",
-          deviation = {0.1, 0.1},
-          frequency = 0.5,
-          position = {0.75, -1.09375},
-          starting_vertical_speed = 0.05
+          frequency = 10,
+          position = {0.92, -1.0},
+          starting_vertical_speed = 0.08,
+          starting_frame_deviation = 60
         }
       }
     },
@@ -4841,7 +4834,7 @@ data:extend(
       width = 256,
       height = 256,
       frame_count = 45,
-      animation_speed = 3,
+      animation_speed = 0.5,
       line_length = 7,
       scale = 3,
     },
