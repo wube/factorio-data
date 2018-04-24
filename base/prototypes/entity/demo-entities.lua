@@ -628,6 +628,7 @@ data:extend(
     reach_distance = 6,
     item_pickup_distance = 1,
     loot_pickup_distance = 2,
+    enter_vehicle_distance = 3,
     reach_resource_distance = 2.7,
     ticks_to_keep_gun = 600,
     ticks_to_keep_aiming_direction = 100,
