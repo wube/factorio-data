@@ -1,5 +1,8 @@
 require ("prototypes.entity.demo-pipecovers")
-require ("prototypes.entity.assemblerpipes")
+
+if not data.is_demo then
+  require ("prototypes.entity.assemblerpipes")
+end
 
 data:extend(
 {
@@ -14,7 +17,7 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
-    input_fluid_box =
+    input_fluid_box = (not data.is_demo) and
     {
       production_type = "input-output",
       pipe_picture = assembler2pipepictures(),
@@ -28,7 +31,7 @@ data:extend(
         { position = {2, 0} },
         { position = {0, 2} },
       }
-    },
+    } or nil,
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {

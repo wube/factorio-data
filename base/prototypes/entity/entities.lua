@@ -3805,7 +3805,7 @@ data:extend(
     max_speed = 1.5,
     braking_force = 3,
     friction_force = 0.50,
-    air_resistance = 0.05,
+    air_resistance = 0.01,
     connection_distance = 3,
     joint_distance = 4,
     energy_per_hit_point = 6,

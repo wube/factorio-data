@@ -395,7 +395,6 @@ data:extend(
       usage_priority = "secondary-input"
     },
     charging_energy = "1000kW",
-    energy_consumption = "20kW",
 
     robot_limit = 10,
     construction_radius = 15,
@@ -445,7 +444,6 @@ data:extend(
       usage_priority = "secondary-input"
     },
     charging_energy = "1000kW",
-    energy_consumption = "20kW",
 
     robot_limit = 25,
     construction_radius = 20,

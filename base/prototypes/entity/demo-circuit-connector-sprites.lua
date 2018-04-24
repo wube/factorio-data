@@ -356,8 +356,14 @@ inserter_circuit_wire_connection_point =
     green = {-0.375, 0.0625},
   }
 }
+
 inserter_circuit_wire_max_distance = 9
-inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-S"}
+
+if not data.is_demo then
+  inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-S"}
+else
+  inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-black"}
+end
 
 ------------------- TRANSPORT BELT -------------------
 transport_belt_connector_frame_sprites =
