@@ -185,6 +185,8 @@ data:extend(
       enemy_with_different_destination_collision_penalty = 30,
       -- simplification for now - collision with everything else is this
       general_entity_collision_penalty = 10,
+      -- collision penalty for successors of positions that require destroy to reach
+      general_entity_subsequent_collision_penalty = 3,
       -- uptil this amount any client will be served by the path finder (no estimate on the path length)
       max_clients_to_accept_any_new_request = 10,
       -- from max_clients_to_accept_any_new_request till this one only those that have a short estimate will be served
