@@ -60,3 +60,4 @@ function mod_gui.get_frame_flow(player)
   return gui.mod_gui_flow.mod_gui_frame_flow
 end
 
+return mod_gui

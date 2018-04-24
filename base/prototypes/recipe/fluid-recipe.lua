@@ -133,7 +133,7 @@ data:extend(
     {
       {type="item", name="sulfur", amount=5},
       {type="item", name="iron-plate", amount=1},
-      {type="fluid", name="water", amount=10}
+      {type="fluid", name="water", amount=100}
     },
     results=
     {
