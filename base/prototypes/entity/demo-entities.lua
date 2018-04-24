@@ -1383,7 +1383,8 @@ data:extend(
       height = 50,
       animation_speed = 2,
       frame_count = 16,
-      scale = 0.5
+      scale = 0.5,
+      tint = {r = 0.1, g = 0.1, b = 0.1, a = 0.7}
     },
     render_layer = "smoke",
     wind_speed_factor = 0.02,

@@ -106,6 +106,10 @@ data:extend(
           {
             type = "damage",
             damage = {amount = 60, type = "explosion"}
+          },
+          {
+            type = "create-entity",
+            entity_name = "small-scorchmark"
           }
         }
       }
@@ -306,6 +310,21 @@ data:extend(
         }
       }
     },
+    final_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "small-scorchmark"
+          }
+        }
+      }
+    },
     animation =
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
@@ -353,7 +372,11 @@ data:extend(
                   }
                 }
               }
-            },
+            }
+          },
+          {
+            type = "create-entity",
+            entity_name = "small-scorchmark"
           }
         }
       }

@@ -389,7 +389,57 @@ data:extend(
         height = 37
       }
     }
+  },
+  {
+    type = "corpse",
+    name = "small-scorchmark",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    collision_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -1}, {1, 1}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 10, -- 10 minutes
+    final_render_layer = "ground_patch_higher2",
+    subgroup = "remnants",
+    order="d[remnants]-b[scorchmark]-a[small]",
+    animation =
+    {
+      sheet=
+      {
+        width = 110,
+        height = 90,
+        frame_count = 1,
+        direction_count = 1,
+        filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
+        variation_count = 3
+      }
+    },
+    ground_patch =
+    {
+      sheet =
+      {
+        width = 110,
+        height = 90,
+        frame_count = 1,
+        direction_count = 1,
+        x = 110 * 2,
+        filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
+        variation_count = 3
+      }
+    },
+    ground_patch_higher =
+    {
+      sheet =
+      {
+        width = 110,
+        height = 90,
+        frame_count = 1,
+        direction_count = 1,
+        x = 110,
+        filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
+        variation_count = 3
+      }
+    }
   }
-
 }
 )

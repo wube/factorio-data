@@ -398,120 +398,29 @@ data:extend(
     life_time = 60 * 15,
     pictures =
     {
+      sheet =
       {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-01.png",
+        filename = "__base__/graphics/entity/explosion-particle/explosion-particle.png",
         priority = "extra-high",
-        width = 22,
-        height = 20,
-        frame_count = 16,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-02.png",
-        priority = "extra-high",
-        width = 21,
-        height = 20,
-        frame_count = 12,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-03.png",
-        priority = "extra-high",
-        width = 15,
-        height = 15,
+        width = 38,
+        height = 38,
         frame_count = 10,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-04.png",
-        priority = "extra-high",
-        width = 28,
-        height = 27,
-        frame_count = 11,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-05.png",
-        priority = "extra-high",
-        width = 24,
-        height = 26,
-        frame_count = 8,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-15.png",
-        priority = "extra-high",
-        width = 27,
-        height = 28,
-        frame_count = 11,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-19.png",
-        priority = "extra-high",
-        width = 12,
-        height = 12,
-        frame_count = 12,
-        animation_speed = 0.25
+        animation_speed = 0.5,
+        variation_count = 40
       }
     },
     shadows =
     {
+      sheet =
       {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-01-shadow.png",
+        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-shadow.png",
         priority = "extra-high",
-        width = 27,
-        height = 18,
-        frame_count = 16,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-02-shadow.png",
-        priority = "extra-high",
-        width = 26,
-        height = 18,
-        frame_count = 12,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-03-shadow.png",
-        priority = "extra-high",
-        width = 18,
-        height = 12,
+        width = 48,
+        height = 38,
         frame_count = 10,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-04-shadow.png",
-        priority = "extra-high",
-        width = 36,
-        height = 23,
-        frame_count = 11,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-05-shadow.png",
-        priority = "extra-high",
-        width = 33,
-        height = 23,
-        frame_count = 8,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-15-shadow.png",
-        priority = "extra-high",
-        width = 34,
-        height = 23,
-        frame_count = 11,
-        animation_speed = 0.25
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-particle/explosion-particle-19-shadow.png",
-        priority = "extra-high",
-        width = 15,
-        height = 10,
-        frame_count = 12,
-        animation_speed = 0.25
+        animation_speed = 0.5,
+        variation_count = 40,
+        shift = {0.0625, 0}
       }
     },
     regular_trigger_effect =
