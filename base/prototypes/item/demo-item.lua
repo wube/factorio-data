@@ -288,7 +288,8 @@ data:extend(
     flags = {"goes-to-main-inventory"},
     subgroup = "raw-material",
     order = "g[alien-artifact]",
-    stack_size = 500
+    stack_size = 500,
+    default_request_amount = 10
   },
   {
     type = "item",

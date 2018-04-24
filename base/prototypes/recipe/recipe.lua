@@ -187,7 +187,7 @@ data:extend(
     name = "power-armor",
     enabled = "false",
     energy_required = 20,
-    ingredients = {{ "processing-unit", 100}, {"electric-engine-unit", 30}, {"steel-plate", 100}, {"alien-artifact", 10}},
+    ingredients = {{ "processing-unit", 40}, {"electric-engine-unit", 20}, {"steel-plate", 40}, {"alien-artifact", 10}},
     result = "power-armor"
   },
   {
@@ -195,7 +195,7 @@ data:extend(
     name = "power-armor-mk2",
     enabled = "false",
     energy_required = 25,
-    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 200}, {"steel-plate", 50}, {"alien-artifact", 50}},
+    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 40}, {"steel-plate", 40}, {"alien-artifact", 50}},
     result = "power-armor-mk2"
   },
   {

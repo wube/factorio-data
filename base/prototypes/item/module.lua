@@ -8,6 +8,7 @@ data:extend(
     subgroup = "module",
     order = "a[speed]-a[speed-module-1]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { speed = {bonus = 0.2}, consumption = {bonus = 0.5}}
   },
   {
@@ -18,6 +19,7 @@ data:extend(
     subgroup = "module",
     order = "a[speed]-b[speed-module-2]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { speed = {bonus = 0.3}, consumption = {bonus = 0.6}}
   },
   {
@@ -28,6 +30,7 @@ data:extend(
     subgroup = "module",
     order = "a[speed]-c[speed-module-3]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { speed = {bonus = 0.5}, consumption = {bonus = 0.7}}
   },
   {
@@ -38,6 +41,7 @@ data:extend(
     subgroup = "module",
     order = "c[effectivity]-a[effectivity-module-1]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { consumption = {bonus = -0.3}},
     limitation = production
   },
@@ -49,6 +53,7 @@ data:extend(
     subgroup = "module",
     order = "c[effectivity]-b[effectivity-module-2]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { consumption = {bonus = -0.4}}
   },
   {
@@ -59,6 +64,7 @@ data:extend(
     subgroup = "module",
     order = "c[effectivity]-c[effectivity-module-3]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { consumption = {bonus = -0.5}}
   }
 })
@@ -108,6 +114,7 @@ data:extend(
     subgroup = "module",
     order = "c[productivity]-a[productivity-module-1]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { productivity = {bonus = 0.04}, consumption = {bonus = 0.4}, pollution = {bonus = 0.3}, speed = {bonus = -0.15}},
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermeidates"
@@ -120,6 +127,7 @@ data:extend(
     subgroup = "module",
     order = "c[productivity]-b[productivity-module-2]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { productivity = {bonus = 0.06}, consumption = {bonus = 0.6}, pollution = {bonus = 0.4}, speed = {bonus = -0.15}},
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermeidates"
@@ -132,6 +140,7 @@ data:extend(
     subgroup = "module",
     order = "c[productivity]-c[productivity-module-3]",
     stack_size = 50,
+    default_request_amount = 10,
     effect = { productivity = {bonus = 0.1}, consumption = {bonus = 0.8}, pollution = {bonus = 0.5}, speed = {bonus = -0.15}},
     limitation = productivitymodulelimitation(),
     limitation_message_key = "production-module-usable-only-on-intermeidates"

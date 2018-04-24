@@ -2863,7 +2863,7 @@ data:extend(
     max_health = 200,
     corpse = "curved-rail-remnants",
     collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
-    secondary_collision_box = {{-0.76, -2.6}, {0.76, 2.6}},
+    secondary_collision_box = {{-0.76, -2.26}, {0.76, 2.6}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     bending_type = "turn",
     rail_category = "regular",
