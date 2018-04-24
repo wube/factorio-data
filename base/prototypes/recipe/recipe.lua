@@ -1255,6 +1255,35 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "refined-concrete",
+    energy_required = 15,
+    enabled = false,
+    category = "crafting-with-fluid",
+    ingredients =
+    {
+      {"concrete", 20},
+      {"iron-stick", 8},
+      {"steel-plate", 1},
+      {type="fluid", name="water", amount=100}
+    },
+    result= "refined-concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "refined-hazard-concrete",
+    energy_required = 0.25,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"refined-concrete", 10}
+    },
+    result= "refined-hazard-concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
     name = "landfill",
     energy_required = 0.5,
     enabled = false,

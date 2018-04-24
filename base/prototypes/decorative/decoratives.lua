@@ -7002,7 +7002,7 @@ data:extend{
     {
       mining_particle = "stone-particle",
       mining_time = 8,
-      results = {{name = "stone", amount_min = 25, amount_max = 50}, {name = "coal", amount_min = 25, amount_max = 50}},
+      results = {{name = "stone", amount_min = 24, amount_max = 50}, {name = "coal", amount_min = 24, amount_max = 50}},
       --count = 200
     },
     loot =
@@ -7269,7 +7269,7 @@ data:extend{
     },
     loot =
     {
-      {item = "stone", probability = 1, count_min = 10, count_max = 25}
+      {item = "stone", probability = 1, count_min = 9, count_max = 25}
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
@@ -8330,7 +8330,7 @@ data:extend{
     {
       mining_particle = "stone-particle",
       mining_time = 5,
-      results = {{name = "stone", amount_min = 20, amount_max = 25}},
+      results = {{name = "stone", amount_min = 19, amount_max = 25}},
     },
     loot =
     {

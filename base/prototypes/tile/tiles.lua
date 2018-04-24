@@ -2483,12 +2483,12 @@ if not data.is_demo then
     
     {
       type = "tile",
-      name = "modern-concrete",
+      name = "refined-concrete",
       needs_correction = false,
-      minable = {hardness = 0.2, mining_time = 0.5, result = "concrete"},
+      minable = {hardness = 0.2, mining_time = 0.5, result = "refined-concrete"},
       mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
       collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.4,
+      walking_speed_modifier = 1.5,
       layer = 64,
       transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete
       decorative_removal_probability = 0.25,
@@ -2622,11 +2622,11 @@ if not data.is_demo then
 
         material_background =
         {
-          picture = "__base__/graphics/terrain/concrete/modern-concrete.png",
+          picture = "__base__/graphics/terrain/concrete/refined-concrete.png",
           count = 8,
           hr_version =
           {
-            picture = "__base__/graphics/terrain/concrete/hr-modern-concrete.png",
+            picture = "__base__/graphics/terrain/concrete/hr-refined-concrete.png",
             count = 8,
             scale = 0.5
           }
@@ -2661,14 +2661,14 @@ if not data.is_demo then
     },
     {
       type = "tile",
-      name = "modern-hazard-concrete-left",
+      name = "refined-hazard-concrete-left",
       needs_correction = false,
-      next_direction = "hazard-concrete-right",
-      transition_merges_with_tile = "modern-concrete",
-      minable = {hardness = 0.2, mining_time = 0.5, result = "hazard-concrete"},
+      next_direction = "refined-hazard-concrete-right",
+      transition_merges_with_tile = "refined-concrete",
+      minable = {hardness = 0.2, mining_time = 0.5, result = "refined-hazard-concrete"},
       mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
       collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.4,
+      walking_speed_modifier = 1.5,
       layer = 65,
       decorative_removal_probability = 0.25,
       variants =
@@ -2750,11 +2750,11 @@ if not data.is_demo then
 
         material_background =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/modern-hazard-concrete-left.png",
+          picture = "__base__/graphics/terrain/hazard-concrete-left/refined-hazard-concrete-left.png",
           count = 8,
           hr_version =
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-left/hr-modern-hazard-concrete-left.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-left/hr-refined-hazard-concrete-left.png",
             count = 8,
             scale = 0.5
           }
@@ -2785,14 +2785,14 @@ if not data.is_demo then
     },
     {
       type = "tile",
-      name = "modern-hazard-concrete-right",
+      name = "refined-hazard-concrete-right",
       needs_correction = false,
-      next_direction = "hazard-concrete-left",
-      transition_merges_with_tile = "modern-concrete",
-      minable = {hardness = 0.2, mining_time = 0.5, result = "hazard-concrete"},
+      next_direction = "refined-hazard-concrete-left",
+      transition_merges_with_tile = "refined-concrete",
+      minable = {hardness = 0.2, mining_time = 0.5, result = "refined-hazard-concrete"},
       mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
       collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.4,
+      walking_speed_modifier = 1.5,
       layer = 65,
       decorative_removal_probability = 0.25,
       variants =
@@ -2848,11 +2848,11 @@ if not data.is_demo then
 
         material_background =
         {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/modern-hazard-concrete-right.png",
+          picture = "__base__/graphics/terrain/hazard-concrete-right/refined-hazard-concrete-right.png",
           count = 8,
           hr_version =
           {
-            picture = "__base__/graphics/terrain/hazard-concrete-right/hr-modern-hazard-concrete-right.png",
+            picture = "__base__/graphics/terrain/hazard-concrete-right/hr-refined-hazard-concrete-right.png",
             count = 8,
             scale = 0.5
           }

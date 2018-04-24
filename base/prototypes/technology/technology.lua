@@ -1978,6 +1978,14 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "hazard-concrete"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "refined-concrete"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "refined-hazard-concrete"
       }
     },
     order = "c-c-c"

@@ -1028,6 +1028,22 @@ data:extend(
   },
   {
     type = "item",
+    name = "refined-concrete",
+    icon = "__base__/graphics/icons/refined-concrete.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "terrain",
+    order = "b[concrete]-c[refined]",
+    stack_size = 100,
+    place_as_tile =
+    {
+      result = "refined-concrete",
+      condition_size = 1,
+      condition = { "water-tile" }
+    }
+  },
+  {
+    type = "item",
     name = "hazard-concrete",
     icon = "__base__/graphics/icons/hazard-concrete.png",
     icon_size = 32,
@@ -1038,6 +1054,22 @@ data:extend(
     place_as_tile =
     {
       result = "hazard-concrete-left",
+      condition_size = 1,
+      condition = { "water-tile" }
+    }
+  },
+  {
+    type = "item",
+    name = "refined-hazard-concrete",
+    icon = "__base__/graphics/icons/refined-hazard-concrete.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "terrain",
+    order = "b[concrete]-d[refined-hazard]",
+    stack_size = 100,
+    place_as_tile =
+    {
+      result = "refined-hazard-concrete-left",
       condition_size = 1,
       condition = { "water-tile" }
     }
