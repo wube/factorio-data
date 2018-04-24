@@ -2,6 +2,15 @@ data:extend(
 {
   {
     type = "ambient-sound",
+    name = "swell-pad",
+    track_type = "early-game",
+    sound =
+    {
+      filename = "__base__/sound/ambient/swell-pad.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
     name = "after-the-crash",
     track_type = "early-game",
     sound =
@@ -16,6 +25,15 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/ambient/anomaly.ogg"
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "automation",
+    track_type = "main-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/automation.ogg"
     }
   },
   {
@@ -119,41 +137,52 @@ data:extend(
   },
   {
     type = "ambient-sound",
-    name = "wind1",
+    name = "world-ambience-1",
     track_type = "interlude",
     sound =
     {
-      filename = "__base__/sound/ambient/wind.ogg",
-      volume = 0.4
+      filename = "__base__/sound/ambient/world-ambience-1.ogg",
+      volume = 1.0
     }
   },
   {
     type = "ambient-sound",
-    name = "wind2",
+    name = "world-ambience-2",
     track_type = "interlude",
     sound =
     {
-      filename = "__base__/sound/ambient/wind.ogg",
-      volume = 0.4
+      filename = "__base__/sound/ambient/world-ambience-2.ogg",
+      volume = 1.0
     }
   },
   {
     type = "ambient-sound",
-    name = "wind3",
+    name = "world-ambience-3",
     track_type = "interlude",
     sound =
     {
-      filename = "__base__/sound/ambient/wind.ogg",
-      volume = 0.4
+      filename = "__base__/sound/ambient/world-ambience-3.ogg",
+      volume = 1.0
     }
   },
   {
     type = "ambient-sound",
-    name = "swell-pad",
-    track_type = "early-game",
+    name = "world-ambience-4",
+    track_type = "interlude",
     sound =
     {
-      filename = "__base__/sound/ambient/swell-pad.ogg"
+      filename = "__base__/sound/ambient/world-ambience-4.ogg",
+      volume = 1.0
+    }
+  },
+  {
+    type = "ambient-sound",
+    name = "world-ambience-5",
+    track_type = "interlude",
+    sound =
+    {
+      filename = "__base__/sound/ambient/world-ambience-5.ogg",
+      volume = 1.0
     }
   }
 })

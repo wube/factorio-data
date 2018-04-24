@@ -160,7 +160,7 @@ groupstate =
   attacking = 2
 }
 
-circuitconnector = 
+circuitconnector =
 {
   red = 0,
   green = 1,
@@ -221,4 +221,16 @@ signal_state =
   closed = 1,
   -- orange
   reserved = 2
+}
+
+chain_signal_state =
+{
+  -- invalid
+  none = 0,
+  -- green
+  all_open = 1,
+  -- blue
+  partially_open = 2,
+  -- red
+  none_open = 3
 }

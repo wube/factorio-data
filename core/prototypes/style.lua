@@ -194,6 +194,13 @@ data:extend(
       parent = "label_style",
       font = "default-semibold"
     },
+    entity_info_label_style =
+    {
+      type = "label_style",
+      parent = "label_style",
+      font = "default-semibold",
+      maximal_width = 256 - default_container_padding*2
+    },
     description_title_label_style =
     {
       type = "label_style",
@@ -1460,13 +1467,14 @@ data:extend(
     frame_in_right_container_style =
     {
       type = "frame_style",
-      minimal_width = 250
+      minimal_width = 256,
+      maximal_width = 256
     },
     minimap_frame_style =
     {
       type = "frame_style",
       parent = "frame_in_right_container_style",
-      minimal_height = 250
+      minimal_height = 256
     },
     quick_bar_frame_style =
     {

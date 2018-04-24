@@ -548,6 +548,7 @@ data:extend(
     subgroup = "tool",
     order = "c[automated-construction]-a[blueprint]",
     stack_size = 1,
+    stackable = false,
     item_to_clear = "electronic-circuit"
   },
   {

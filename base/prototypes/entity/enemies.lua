@@ -339,7 +339,6 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.15,
     distance_per_frame = 0.05,
-    -- in pu
     pollution_to_join_attack = 10000,
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "blood-explosion-big",

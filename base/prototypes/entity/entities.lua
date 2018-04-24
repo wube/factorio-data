@@ -5658,6 +5658,20 @@ data:extend(
         shift = {-0.046875, 0.28125},
       }
     },
+    
+    activity_led_light =
+    {
+      intensity = 0.7,
+      size = 1.2,
+    },
+    
+    activity_led_light_offsets =
+    {
+      {0.3, -0.6},
+      {0.7, 0},
+      {-0.2, 0.5},
+      {-0.6, -0.5}
+    },
 
     plus_symbol_sprites =
     {
@@ -6014,7 +6028,20 @@ data:extend(
         shift = {0.09375, 0.046875}
       }
     },
-
+    
+    activity_led_light =
+    {
+      intensity = 0.7,
+      size = 1.2,
+    },
+    
+    activity_led_light_offsets =
+    {
+      {0.3, -0.6},
+      {0.7, 0},
+      {-0.2, 0.3},
+      {-0.6, -0.5}
+    },
 
     equal_symbol_sprites =
     {
