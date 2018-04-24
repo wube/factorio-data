@@ -357,6 +357,17 @@ data:extend(
     group = "combat",
     order = "f-e-a",
     stack_size = 100
+  },
+  {
+    type = "repair-tool",
+    name = "repair-pack",
+    icon = "__base__/graphics/icons/repair-pack.png",
+    flags = {"goes-to-quickbar"},
+    group = "production",
+    order = "d-e",
+    speed = 1,
+    durability = 100,
+    stack_size = 64
   }
 }
 )

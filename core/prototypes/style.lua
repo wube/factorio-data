@@ -72,6 +72,14 @@ data:extend(
         make_cursor_box(32, 96, 2.0),
         make_cursor_box(0, 96, 3.0),
       },
+      logistics =
+      {
+        make_cursor_box(128, 64, 0.4, {1, 1}),
+        make_cursor_box(96, 64, 0.7),
+        make_cursor_box(64, 64, 1.05),
+        make_cursor_box(32, 64, 2.0),
+        make_cursor_box(0, 64, 3.0),
+      },
     },
 
     label_style =
@@ -213,7 +221,7 @@ data:extend(
       minimal_width = 300,
       minimal_height = 50
     },
-    recipe_group_slot_style =
+    image_tab_slot_style =
     {
       type = "button_style",
       parent = "slot_button_style",
@@ -221,10 +229,10 @@ data:extend(
       width = 61,
       height = 61
     },
-    recipe_group_selected_slot_style =
+    image_tab_selected_slot_style =
     {
       type = "button_style",
-      parent = "recipe_group_slot_style",
+      parent = "image_tab_slot_style",
       scalable = false,
       width = 61,
       height = 61,
@@ -285,7 +293,7 @@ data:extend(
     logistic_button_selected_slot_style =
     {
       type = "button_style",
-      parent = "recipe_group_selected_slot_style",
+      parent = "image_tab_selected_slot_style",
       scalable = false,
       width = 32,
       height = 32,
@@ -353,6 +361,61 @@ data:extend(
       },
       pie_progress_color = {r=0.98, g=0.66, b=0.22, a = 0.5}
     },
+
+    selected_slot_button_style =
+    {
+      type = "button_style",
+      parent = "slot_button_style",
+      default_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 75,
+          y = 72
+        }
+      },
+      hovered_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 75,
+          y = 72
+        }
+      },
+      clicked_graphical_set =
+      {
+        type = "monolith",
+        top_monolith_border = 1,
+        right_monolith_border = 1,
+        bottom_monolith_border = 1,
+        left_monolith_border = 1,
+        monolith_image =
+        {
+          filename = "__core__/graphics/gui.png",
+          width = 36,
+          height = 36,
+          x = 75,
+          y = 72
+        }
+      }
+    },
+
     second_quickbar_slot_button_style =
     {
       type = "button_style",
@@ -575,6 +638,13 @@ data:extend(
           y = 36
         }
       }
+    },
+    disabled_technology_slot_style=
+    {
+      type = "button_style",
+      parent = "slot_button_style",
+      scalable = false,
+      visible = false
     },
     researched_technology_slot_style=
     {
@@ -1282,7 +1352,7 @@ data:extend(
         x = 222,
         priority = "extra-high"
       },
-      -- Diode specifications are not used when type is smooth, but
+      -- diode specifications are not used when type is smooth, but
       -- are defined here, so the derived (or this style) can just
       -- switch to diode style without specifying them
       diode_count = 10,

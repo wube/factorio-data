@@ -110,7 +110,8 @@ data:extend(
     type = "turret",
     name = "medium-worm-turret",
     icon = "__base__/graphics/icons/rocket-turret.png",
-    flags = {"placeable-player", "placeable-enemy", "player-creation"},
+    flags = {"placeable-player", "placeable-enemy"},
+    order="b-b-e",
     max_health = 350,
     resistances = 
     {
@@ -177,7 +178,7 @@ data:extend(
     {
       ammo_category = "rocket",
       cooldown = 100,
-      range = 25,
+      range = 20,
       projectile_creation_distance = 1.9,
       damage_modifier = 3,
       ammo_type =
@@ -199,6 +200,7 @@ data:extend(
     {
       sharpness = 0.3,
       control = "enemy-base",
+      force = "enemy",
       peaks =
       {
         {
@@ -225,12 +227,14 @@ data:extend(
       }
     }
   },
+
   {
     type = "turret",
     name = "big-worm-turret",
     icon = "__base__/graphics/icons/rocket-turret.png",
-    flags = {"placeable-player", "placeable-enemy", "player-creation"},
+    flags = {"placeable-player", "placeable-enemy"},
     max_health = 500,
+    order="b-b-f",
     resistances = 
     {
       {
@@ -319,6 +323,7 @@ data:extend(
     {
       sharpness = 0.3,
       control = "enemy-base",
+      force = "enemy",
       peaks =
       {
         {
@@ -363,7 +368,7 @@ data:extend(
     {
       type = "projectile",
       category = "laser-turret",
-      energy_consumption = 200,
+      energy_consumption = "200J",
       action =
       {
         {
@@ -382,8 +387,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 202,
-      input_flow_limit = 18,
+      buffer_capacity = "201J",
+      input_flow_limit = "1200W",
       resting_consumption_ratio = 0.01,
       input_priority = "secondary"
     },
@@ -439,6 +444,7 @@ data:extend(
   {
     type = "corpse",
     name = "medium-worm-corpse",
+    order="b-c-e",
     dying_speed = 0.01,
     final_render_layer = "corpse",
     animation =
@@ -456,6 +462,7 @@ data:extend(
   {
     type = "corpse",
     name = "big-worm-corpse",
+    order="b-c-f",
     dying_speed = 0.01,
     final_render_layer = "corpse",
     animation =

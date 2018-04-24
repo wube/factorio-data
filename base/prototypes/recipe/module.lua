@@ -9,7 +9,7 @@ data:extend(
       {"advanced-circuit", 5},
       {"electronic-circuit", 5}
     },
-    energy_required = 30,
+    energy_required = 15,
     result = "speed-module"
   },
   {
@@ -22,7 +22,7 @@ data:extend(
       {"advanced-circuit", 5},
       {"electronic-circuit", 5}
     },
-    energy_required = 60,
+    energy_required = 30,
     result = "speed-module-2"
   },
   {
@@ -36,7 +36,7 @@ data:extend(
       {"electronic-circuit", 5},
       {"alien-artifact", 1}
     },
-    energy_required = 120,
+    energy_required = 60,
     result = "speed-module-3"
   },
   {
@@ -48,7 +48,7 @@ data:extend(
       {"advanced-circuit", 5},
       {"electronic-circuit", 5}
     },
-    energy_required = 30,
+    energy_required = 15,
     result = "productivity-module"
   },
   {
@@ -61,7 +61,7 @@ data:extend(
       {"advanced-circuit", 5},
       {"electronic-circuit", 5}
     },
-    energy_required = 60,
+    energy_required = 30,
     result = "productivity-module-2"
   },
   {
@@ -75,7 +75,7 @@ data:extend(
       {"electronic-circuit", 5},
       {"alien-artifact", 1}
     },
-    energy_required = 120,
+    energy_required = 60,
     result = "productivity-module-3"
   },
   {
@@ -87,7 +87,7 @@ data:extend(
       {"advanced-circuit", 5},
       {"electronic-circuit", 5}
     },
-    energy_required = 30,
+    energy_required = 15,
     result = "effectivity-module"
   },
   {
@@ -100,7 +100,7 @@ data:extend(
       {"advanced-circuit", 5},
       {"electronic-circuit", 5}
     },
-    energy_required = 60,
+    energy_required = 30,
     result = "effectivity-module-2"
   },
   {
@@ -114,7 +114,7 @@ data:extend(
       {"electronic-circuit", 5},
       {"alien-artifact", 1}
     },
-    energy_required = 120,
+    energy_required = 60,
     result = "effectivity-module-3"
   }
 }

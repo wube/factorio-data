@@ -4,7 +4,7 @@ data:extend(
     type = "recipe",
     name = "piercing-bullet-magazine",
     enabled = "false",
-    energy_required = 5,
+    energy_required = 3,
     ingredients =
     {
       {"copper-plate", 5},
@@ -16,7 +16,7 @@ data:extend(
     type = "recipe",
     name = "rocket",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"electronic-circuit", 2},
@@ -29,7 +29,7 @@ data:extend(
     type = "recipe",
     name = "explosive-rocket",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"rocket", 1},
@@ -41,7 +41,7 @@ data:extend(
     type = "recipe",
     name = "flame-thrower-ammo",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"coal", 10},
@@ -53,7 +53,7 @@ data:extend(
     type = "recipe",
     name = "shotgun-shell",
     enabled = "false",
-    energy_required = 7,
+    energy_required = 3,
     ingredients =
     {
       {"copper-plate", 2},
@@ -65,7 +65,7 @@ data:extend(
     type = "recipe",
     name = "piercing-shotgun-shell",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"copper-plate", 2},
@@ -77,7 +77,7 @@ data:extend(
     type = "recipe",
     name = "railgun-dart",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"steel-plate", 5},

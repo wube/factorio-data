@@ -270,7 +270,7 @@ data:extend(
     icon = "__base__/graphics/icons/basic-transport-belt-to-ground.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-a-b",
+    order = "h-d-d",
     place_result = "basic-transport-belt-to-ground",
     stack_size = 64
   },
@@ -280,7 +280,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-transport-belt-to-ground.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-b-b",
+    order = "h-d-e",
     place_result = "fast-transport-belt-to-ground",
     stack_size = 64
   },
@@ -290,7 +290,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-transport-belt-to-ground.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-c-b",
+    order = "h-d-f",
     place_result = "express-transport-belt-to-ground",
     stack_size = 64
   },
@@ -300,7 +300,7 @@ data:extend(
     icon = "__base__/graphics/icons/basic-splitter.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-d",
+    order = "h-d-g",
     place_result = "basic-splitter",
     stack_size = 64
   },
@@ -310,7 +310,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-splitter.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-e",
+    order = "h-d-h",
     place_result = "fast-splitter",
     stack_size = 64
   },
@@ -320,7 +320,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-splitter.png",
     flags = {"goes-to-quickbar"},
     group = "logistics",
-    order = "h-d-f",
+    order = "h-d-i",
     place_result = "express-splitter",
     stack_size = 64
   },
@@ -341,6 +341,16 @@ data:extend(
     group = "logistics",
     order = "k-a",
     place_result = "logistic-robot",
+    stack_size = 32
+  },
+  {
+    type = "item",
+    name = "construction-robot",
+    icon = "__base__/graphics/icons/construction-robot.png",
+    flags = {"goes-to-quickbar"},
+    group = "logistics",
+    order = "k-b",
+    place_result = "construction-robot",
     stack_size = 32
   },
   {
@@ -381,7 +391,17 @@ data:extend(
     group = "combat",
     order = "x",
     place_result = "rocket-defense",
-    stack_size = 64
+    stack_size = 4
+  },
+  {
+    type = "item",
+    name = "roboport",
+    icon = "__base__/graphics/icons/roboport.png",
+    flags = {"goes-to-quickbar"},
+    group = "logistics",
+    order = "x-a",
+    place_result = "roboport",
+    stack_size = 4
   },
   {
     type = "item",

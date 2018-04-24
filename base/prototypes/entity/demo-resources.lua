@@ -5,6 +5,7 @@ data:extend(
     name = "copper-ore",
     icon = "__base__/graphics/icons/copper-ore.png",
     flags = {"placeable-neutral"},
+    order="a-b-a",
     minable =
     {
       hardness = 0.9,
@@ -88,11 +89,13 @@ data:extend(
     map_color = {r=0.803, g=0.388, b=0.215}
   },
 
+
   {
     type = "resource",
     name = "iron-ore",
     icon = "__base__/graphics/icons/iron-ore.png",
     flags = {"placeable-neutral"},
+    order="a-b-b",
     minable =
     {
       hardness = 0.9,
@@ -180,6 +183,7 @@ data:extend(
     name = "coal",
     icon = "__base__/graphics/icons/coal.png",
     flags = {"placeable-neutral"},
+    order="a-b-c",
     minable =
     {
       hardness = 0.9,
@@ -267,6 +271,7 @@ data:extend(
     name = "stone",
     icon = "__base__/graphics/icons/stone.png",
     flags = {"placeable-neutral"},
+    order="a-b-d",
     minable =
     {
       hardness = 0.4,

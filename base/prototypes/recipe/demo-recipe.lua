@@ -79,7 +79,7 @@ data:extend(
   {
     type = "recipe",
     name = "basic-mining-drill",
-    energy_required = 5,
+    energy_required = 2,
     ingredients =
     {
       {"electronic-circuit", 3},
@@ -91,7 +91,7 @@ data:extend(
   {
     type = "recipe",
     name = "burner-mining-drill",
-    energy_required = 4,
+    energy_required = 2,
     ingredients =
     {
       {"iron-gear-wheel", 3},
@@ -159,7 +159,7 @@ data:extend(
   {
     type = "recipe",
     name = "pistol",
-    energy_required = 2,
+    energy_required = 1,
     ingredients =
     {
       {"copper-plate", 5},
@@ -171,7 +171,7 @@ data:extend(
     type = "recipe",
     name = "submachine-gun",
     enabled = "false",
-    energy_required = 5,
+    energy_required = 3,
     ingredients =
     {
       {"iron-gear-wheel", 10},
@@ -192,7 +192,7 @@ data:extend(
     type = "recipe",
     name = "basic-armor",
     enabled = "false",
-    energy_required = 5,
+    energy_required = 3,
     ingredients = {{"iron-plate", 40}},
     result = "basic-armor"
   },
@@ -240,6 +240,16 @@ data:extend(
       {"iron-plate", 9}
     },
     result = "assembling-machine-1"
+  },
+  {
+    type = "recipe",
+    name = "repair-pack",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"iron-gear-wheel", 1}
+    },
+    result = "repair-pack"
   }
 }
 )

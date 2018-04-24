@@ -20,7 +20,8 @@ data:extend(
         line_length = 8,
         shift = {0.2, -0.2},
         filename = "__base__/graphics/entity/basic-mining-drill/north.png",
-        frame_count = 64
+        frame_count = 64,
+        animation_speed = 0.5
       },
       east =
       {
@@ -30,7 +31,8 @@ data:extend(
         line_length = 8,
         shift = {0.45, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/east.png",
-        frame_count = 64
+        frame_count = 64,
+        animation_speed = 0.5
       },
       south =
       {
@@ -40,7 +42,8 @@ data:extend(
         line_length = 8,
         shift = {0.15, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/south.png",
-        frame_count = 64
+        frame_count = 64,
+        animation_speed = 0.5
       },
       west =
       {
@@ -50,10 +53,11 @@ data:extend(
         line_length = 8,
         shift = {0.25, 0},
         filename = "__base__/graphics/entity/basic-mining-drill/west.png",
-        frame_count = 64
+        frame_count = 64,
+        animation_speed = 0.5
       }
     },
-    effectivity = 0.8,
+    mining_speed = 0.5,
     energy_source =
     {
       type = "electric",
@@ -61,12 +65,11 @@ data:extend(
       emissions = 0.15 / 1.5,
       input_priority = "secondary"
     },
-    energy_usage_per_tick = 1.5,
-    animation_speed_modifier = 0.5,
-    mining_speed = 3,
+    energy_usage = "90W",
+    mining_power = 3,
     pipe_length = 2,
     resource_searching_radius = 2.49,
-    vector_to_place_result = {0, -1.75},
+    vector_to_place_result = {0, -1.85},
     module_slots = 3,
     radius_visualisation_picture =
     {
@@ -85,7 +88,7 @@ data:extend(
     corpse = "medium-remnants",
     collision_box = {{ -0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{ -1, -1}, {1, 1}},
-    effectivity = 0.3,
+    mining_speed = 0.35,
     energy_source =
     {
       type = "burner",
@@ -101,9 +104,8 @@ data:extend(
         }
       }
     },
-    energy_usage_per_tick = 5,
-    animation_speed_modifier = 0.5,
-    mining_speed = 2.5,
+    energy_usage = "300W",
+    mining_power = 2.5,
     pipe_length = 1,
     animations =
     {
@@ -115,7 +117,8 @@ data:extend(
         line_length = 4,
         shift = {0.7, -0.1},
         filename = "__base__/graphics/entity/burner-mining-drill/north.png",
-        frame_count = 32
+        frame_count = 32,
+        animation_speed = 0.5
       },
       east =
       {
@@ -125,7 +128,8 @@ data:extend(
         line_length = 4,
         shift = {0.45, -0.1},
         filename = "__base__/graphics/entity/burner-mining-drill/east.png",
-        frame_count = 32
+        frame_count = 32,
+        animation_speed = 0.5
       },
       south =
       {
@@ -135,7 +139,8 @@ data:extend(
         line_length = 4,
         shift = {0.4, 0},
         filename = "__base__/graphics/entity/burner-mining-drill/south.png",
-        frame_count = 32
+        frame_count = 32,
+        animation_speed = 0.5
       },
       west =
       {
@@ -145,7 +150,8 @@ data:extend(
         line_length = 4,
         shift = {0.1, -0.05},
         filename = "__base__/graphics/entity/burner-mining-drill/west.png",
-        frame_count = 32
+        frame_count = 32,
+        animation_speed = 0.5
       }
     },
     resource_searching_radius = 0.99,

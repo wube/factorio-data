@@ -4,7 +4,8 @@ data:extend(
     type = "recipe",
     name = "player-port",
     enabled = "false",
-    ingredients = {
+    ingredients =
+    {
       { "electronic-circuit", 10},
       {"iron-gear-wheel", 5},
       {"iron-plate", 1 }
@@ -155,7 +156,7 @@ data:extend(
     type = "recipe",
     name = "heavy-armor",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients = {{ "copper-plate", 100}, {"steel-plate", 50}},
     result = "heavy-armor"
   },
@@ -163,7 +164,7 @@ data:extend(
     type = "recipe",
     name = "basic-modular-armor",
     enabled = "false",
-    energy_required = 30,
+    energy_required = 15,
     ingredients = {{ "advanced-circuit", 30}, {"speed-module", 5}, {"steel-plate", 50}},
     result = "basic-modular-armor"
   },
@@ -171,7 +172,7 @@ data:extend(
     type = "recipe",
     name = "power-armor",
     enabled = "false",
-    energy_required = 40,
+    energy_required = 20,
     ingredients = {{ "effectivity-module-2", 5}, {"speed-module-2", 5}, {"steel-plate", 50}, {"alien-artifact", 10}},
     result = "power-armor"
   },
@@ -179,7 +180,7 @@ data:extend(
     type = "recipe",
     name = "power-armor-mk2",
     enabled = "false",
-    energy_required = 50,
+    energy_required = 25,
     ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"steel-plate", 50}, {"alien-artifact", 50}},
     result = "power-armor-mk2"
   },
@@ -219,7 +220,7 @@ data:extend(
     type = "recipe",
     name = "flame-thrower",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"steel-plate", 40},
@@ -231,7 +232,7 @@ data:extend(
     type = "recipe",
     name = "land-mine",
     enabled = "false",
-    energy_required = 10,
+    energy_required = 5,
     ingredients =
     {
       {"steel-plate", 1},
@@ -244,7 +245,7 @@ data:extend(
     type = "recipe",
     name = "rocket-launcher",
     enabled = "false",
-    energy_required = 10,
+    energy_required = 5,
     ingredients =
     {
       {"iron-plate", 5},
@@ -256,7 +257,7 @@ data:extend(
     type = "recipe",
     name = "shotgun",
     enabled = "false",
-    energy_required = 7,
+    energy_required = 4,
     ingredients =
     {
       {"iron-plate", 15},
@@ -270,7 +271,7 @@ data:extend(
     type = "recipe",
     name = "combat-shotgun",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"steel-plate", 15},
@@ -284,7 +285,7 @@ data:extend(
     type = "recipe",
     name = "railgun",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"steel-plate", 15},
@@ -308,7 +309,7 @@ data:extend(
   {
     type = "recipe",
     name = "science-pack-2",
-    energy_required = 10,
+    energy_required = 6,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -320,7 +321,7 @@ data:extend(
     type = "recipe",
     name = "science-pack-3",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 12,
     ingredients =
     {
       {"rocket", 1},
@@ -334,7 +335,7 @@ data:extend(
     type = "recipe",
     name = "alien-science-pack",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 12,
     ingredients = {{"alien-artifact", 1}
     },
     result = "alien-science-pack",
@@ -343,7 +344,7 @@ data:extend(
   {
     type = "recipe",
     name = "lab",
-    energy_required = 10,
+    energy_required = 5,
     ingredients =
     {
       {"electronic-circuit", 10},
@@ -356,7 +357,6 @@ data:extend(
     type = "recipe",
     name = "red-wire",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -368,7 +368,6 @@ data:extend(
     type = "recipe",
     name = "green-wire",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"electronic-circuit", 1},
@@ -380,7 +379,7 @@ data:extend(
     type = "recipe",
     name = "basic-transport-belt-to-ground",
     enabled = "false",
-    energy_required = 2,
+    energy_required = 1,
     ingredients =
     {
       {"iron-plate", 20},
@@ -393,7 +392,6 @@ data:extend(
     type = "recipe",
     name = "fast-transport-belt-to-ground",
     enabled = "false",
-    energy_required = 3,
     ingredients =
     {
       {"iron-plate", 20},
@@ -406,7 +404,6 @@ data:extend(
     type = "recipe",
     name = "express-transport-belt-to-ground",
     enabled = "false",
-    energy_required = 4,
     ingredients =
     {
       {"express-transport-belt", 6},
@@ -419,7 +416,7 @@ data:extend(
     type = "recipe",
     name = "basic-splitter",
     enabled = "false",
-    energy_required = 2,
+    energy_required = 1,
     ingredients =
     {
       {"electronic-circuit", 5},
@@ -432,7 +429,7 @@ data:extend(
     type = "recipe",
     name = "fast-splitter",
     enabled = "false",
-    energy_required = 4,
+    energy_required = 2,
     ingredients =
     {
       {"electronic-circuit", 10},
@@ -445,7 +442,7 @@ data:extend(
     type = "recipe",
     name = "express-splitter",
     enabled = "false",
-    energy_required = 4,
+    energy_required = 2,
     ingredients =
     {
       {"advanced-circuit", 10},
@@ -458,7 +455,7 @@ data:extend(
     type = "recipe",
     name = "advanced-circuit",
     enabled = "false",
-    energy_required = 1,
+    energy_required = 3,
     ingredients =
     {
       {"electronic-circuit", 4},
@@ -470,7 +467,6 @@ data:extend(
     type = "recipe",
     name = "logistic-robot",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"steel-plate", 4},
@@ -481,9 +477,20 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "construction-robot",
+    enabled = "false",
+    ingredients =
+    {
+      {"steel-plate", 4},
+      {"iron-gear-wheel", 5},
+      {"advanced-circuit", 2}
+    },
+    result = "construction-robot"
+  },
+  {
+    type = "recipe",
     name = "logistic-chest-provider",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"smart-chest", 1},
@@ -495,7 +502,6 @@ data:extend(
     type = "recipe",
     name = "logistic-chest-storage",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"smart-chest", 1},
@@ -507,7 +513,6 @@ data:extend(
     type = "recipe",
     name = "logistic-chest-requester",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"smart-chest", 1},
@@ -519,7 +524,6 @@ data:extend(
     type = "recipe",
     name = "rocket-defense",
     enabled = "false",
-    energy_required = 1,
     ingredients =
     {
       {"rocket", 100},
@@ -528,6 +532,19 @@ data:extend(
       {"productivity-module-3", 50}
     },
     result = "rocket-defense"
+  },
+  {
+    type = "recipe",
+    name = "roboport",
+    enabled = "false",
+    ingredients =
+    {
+      {"steel-plate", 45},
+      {"iron-gear-wheel", 45},
+      {"advanced-circuit", 45}
+    },
+    result = "roboport",
+    energy_required = 15
   },
   {
     type = "recipe",
@@ -591,7 +608,7 @@ data:extend(
     name = "steel-furnace",
     ingredients = {{"steel-plate", 8}, {"stone-brick", 10}},
     result = "steel-furnace",
-    energy_required = 5,
+    energy_required = 3,
     enabled = "false"
   },
   {
@@ -599,14 +616,14 @@ data:extend(
     name = "electric-furnace",
     ingredients = {{"steel-plate", 15}, {"advanced-circuit", 5}, {"stone-brick", 10}},
     result = "electric-furnace",
-    energy_required = 10,
+    energy_required = 5,
     enabled = "false"
   },
   {
     type = "recipe",
     name = "basic-beacon",
     enabled = "false",
-    energy_required = 30,
+    energy_required = 15,
     ingredients =
     {
       {"electronic-circuit", 20},
@@ -615,6 +632,6 @@ data:extend(
       {"copper-cable", 10}
     },
     result = "basic-beacon"
-  },
+  }
 }
 )

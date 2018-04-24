@@ -42,7 +42,6 @@ data:extend(
       priority = "high",
       shift = {-0.09, 0.395}
     },
-    animation_speed = 1,
     rotatable = false
   }
 })

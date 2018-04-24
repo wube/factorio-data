@@ -19,8 +19,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 2,
-      input_flow_limit = 2,
+      buffer_capacity = "120J",
+      input_flow_limit = "120W",
       input_priority = "primary"
     },
     energy_input = "10W"
@@ -45,8 +45,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 2,
-      input_flow_limit = 2,
+      buffer_capacity = "120J",
+      input_flow_limit = "120W",
       input_priority = "primary"
     },
     energy_per_shield = "20J"
@@ -71,8 +71,8 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 3,
-      input_flow_limit = 3,
+      buffer_capacity = "180J",
+      input_flow_limit = "180W",
       input_priority = "primary"
     },
     energy_per_shield = "30J"
@@ -96,9 +96,9 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 1000,
-      input_flow_limit = 1000,
-      output_flow_limit = 1000,
+      buffer_capacity = "1KJ",
+      input_flow_limit = "10KW",
+      output_flow_limit = "10KW",
       input_priority = "terciary",
       output_priority = "terciary"
     }
@@ -122,9 +122,9 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 5000,
-      input_flow_limit = 5000,
-      output_flow_limit = 5000,
+      buffer_capacity = "5KJ",
+      input_flow_limit = "50KW",
+      output_flow_limit = "50KW",
       input_priority = "terciary",
       output_priority = "terciary"
     }
@@ -195,7 +195,7 @@ data:extend(
     {
       type = "electric",
       input_priority = "secondary",
-      buffer_capacity = 102
+      buffer_capacity = "101J"
     },
     attack_parameters =
     {
@@ -216,7 +216,7 @@ data:extend(
       {
         type = "projectile",
         category = "electric",
-        energy_consumption = 100,
+        energy_consumption = "100J",
         projectile = "laser",
         speed = 1,
         action = 
@@ -264,7 +264,7 @@ data:extend(
     {
       type = "electric",
       input_priority = "secondary",
-      buffer_capacity = 4040
+      buffer_capacity = "4040J"
     },
     attack_parameters =
     {
@@ -285,7 +285,7 @@ data:extend(
       {
         type = "projectile",
         category = "electric",
-        energy_consumption = 2000,
+        energy_consumption = "2KJ",
         speed = 1,
         action = 
         {

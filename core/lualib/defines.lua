@@ -36,11 +36,29 @@ direction =
   northwest = 7
 }
 
+riding =
+{
+  acceleration =
+  {
+    nothing = 0,
+    accelerating = 1,
+    braking = 2,
+    reversing = 3
+  },
+
+  direction =
+  {
+    left = 0,
+    straight = 1,
+    right = 2
+  }
+}
+
 command =
 {
   attack = 1,
   gotolocation = 2,
-  compound = 3,
+  compound=3,
   group = 4,
   attackarea = 5,
   wander = 6,
@@ -89,7 +107,8 @@ events =
   onputitem = 7,
   onshiplandingstart = 8,
   onpreplayermineditem = 9,
-  onchunkgenerated = 10
+  onchunkgenerated = 10,
+  onplayercrafteditem = 11
 }
 
 controllers =

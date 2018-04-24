@@ -60,7 +60,8 @@ data:extend(
     type = "turret",
     name = "small-worm-turret",
     icon = "__base__/graphics/icons/basic-turret.png",
-    flags = {"placeable-enemy", "player-creation"},
+    flags = {"placeable-enemy"},
+    order="b-b-d",
     max_health = 200,
     healing_per_tick = 0.01,
     collision_box = {{-0.9, -0.8 }, {0.9, 0.8}},
@@ -135,6 +136,7 @@ data:extend(
     {
       sharpness = 0.3,
       control = "enemy-base",
+      force = "enemy",
       peaks =
       {
         {

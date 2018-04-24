@@ -454,7 +454,7 @@ data:extend(
     prerequisites = {"logistics-2", "steel-processing"},
     unit =
     {
-      count = 100,
+      count = 70,
       ingredients =
       {
         {"science-pack-1", 2},
@@ -482,7 +482,7 @@ data:extend(
     prerequisites = {"railway"},
     unit =
     {
-      count = 100,
+      count = 70,
       ingredients =
       {
         {"science-pack-1", 2},
@@ -1141,7 +1141,7 @@ data:extend(
     prerequisites = {"logistics"},
     unit =
     {
-      count = 60,
+      count = 50,
       ingredients =
       {
         {"science-pack-1", 1},
@@ -1170,8 +1170,7 @@ data:extend(
       ingredients =
       {
         {"science-pack-1", 1},
-        {"science-pack-2", 1},
-        {"science-pack-3", 1}
+        {"science-pack-2", 1}
       },
       time = 30
     },
@@ -1326,6 +1325,25 @@ data:extend(
       time = 30
     },
     order = "c-k-m"
-  }
+  },
+  {
+    type = "technology",
+    name = "rocket-travel",
+    icon = "__base__/graphics/technology/rocket-travel.png",
+    prerequisites = {"rocket-speed-2", "logistics-3"},
+    enabled = false,
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
+        {"science-pack-3", 2}
+      },
+      time = 15
+    },
+    order = "e-h"
+  },
 }
 )

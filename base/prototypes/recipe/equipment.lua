@@ -4,7 +4,7 @@ data:extend(
     type = "recipe",
     name = "night-vision-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"advanced-circuit", 5},
@@ -16,7 +16,7 @@ data:extend(
     type = "recipe",
     name = "energy-shield-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module", 5},
@@ -28,7 +28,7 @@ data:extend(
     type = "recipe",
     name = "energy-shield-mk2-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"energy-shield-equipment", 10},
@@ -40,7 +40,7 @@ data:extend(
     type = "recipe",
     name = "battery-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module", 5},
@@ -52,7 +52,7 @@ data:extend(
     type = "recipe",
     name = "battery-mk2-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"battery-equipment", 10},
@@ -64,7 +64,7 @@ data:extend(
     type = "recipe",
     name = "solar-panel-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module", 1},
@@ -77,7 +77,7 @@ data:extend(
     type = "recipe",
     name = "fusion-reactor-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module-2", 10},
@@ -90,7 +90,7 @@ data:extend(
     type = "recipe",
     name = "basic-laser-defense-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module", 1},
@@ -103,7 +103,7 @@ data:extend(
     type = "recipe",
     name = "basic-electric-discharge-defense-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module", 5},
@@ -116,7 +116,7 @@ data:extend(
     type = "recipe",
     name = "basic-exoskeleton-equipment",
     enabled = "false",
-    energy_required = 20,
+    energy_required = 10,
     ingredients =
     {
       {"speed-module", 10},

@@ -4,7 +4,7 @@ data:extend(
     type = "recipe",
     name = "laser-turret",
     enabled = "false",
-    energy_required = 10,
+    energy_required = 5,
     ingredients =
     {
       {"steel-plate", 5},

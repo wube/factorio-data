@@ -42,7 +42,7 @@ data:extend(
       movement_slow_down_factor = 0.8,
       cooldown = 60,
       projectile_creation_distance = 0.6,
-      range = 20
+      range = 22
     },
     stack_size = 4
   },

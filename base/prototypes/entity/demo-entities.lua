@@ -20,6 +20,73 @@ function make_unit_melee_ammo_type(damagevalue)
   }
 end
 
+function biterspawneranimation(variation)
+return
+  {
+    frame_width = 257,
+    frame_height = 188,
+    frame_count = 8,
+    animation_speed = 0.18,
+    run_mode = "forward-then-backward",
+    axially_symmetric = false,
+    shift = {0.359375, -0.125},
+    stripes =
+    {
+     {
+      filename = "__base__/graphics/entity/biter-spawner/biter-spawner-1.png",
+      width_in_frames = 4,
+      height_in_frames = 4,
+      y = variation * 188
+     },
+     {
+      filename = "__base__/graphics/entity/biter-spawner/biter-spawner-2.png",
+      width_in_frames = 4,
+      height_in_frames = 4,
+      y = variation * 188
+     }
+    }
+  }
+end
+
+function biterspawnercorpse(variation)
+return
+  {
+    frame_width = 320,
+    frame_height = 320,
+    frame_count = 20,
+    axially_symmetric = false,
+    shift = {0, 0},
+    direction_count = 1,
+    stripes =
+    {
+      {
+        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-1.png",
+        width_in_frames = 5,
+        height_in_frames = 4,
+        y = variation * 320,
+      },
+      {
+        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-2.png",
+        width_in_frames = 5,
+        height_in_frames = 4,
+        y = variation * 320,
+      },
+      {
+        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-3.png",
+        width_in_frames = 5,
+        height_in_frames = 4,
+        y = variation * 320,
+      },
+      {
+        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-4.png",
+        width_in_frames = 5,
+        height_in_frames = 4,
+        y = variation * 320,
+      }
+    }
+  }
+end
+
 pipepictures = function()
   return {
     straight_vertical =
@@ -174,6 +241,7 @@ data:extend(
     running_speed = 0.15,
     distance_per_frame = 0.13,
     maximum_corner_sliding_distance = 0.7,
+    order="a",
     eat =
     {
       {
@@ -212,7 +280,6 @@ data:extend(
       },
       shift = {0, -0.6}
     },
-    idle_frames_per_tick = 1,
     idle_with_gun_animation =
     {
       priority = "medium",
@@ -237,10 +304,28 @@ data:extend(
       },
       shift = {0, -0.6}
     },
-    idle_with_gun_frames_per_tick = 1,
-    light = {intensity = 0.4, size = 25},
-    mine_with_hands_frames_per_tick = 1,
-    mine_with_tool_frames_per_tick = 1,
+    light =
+    {
+      {
+        minimum_darkness = 0.3,
+        intensity = 0.4,
+        size = 25,
+      },
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          width = 400,
+          height = 400
+        },
+        shift = {0, -13},
+        size = 2,
+        intensity = 0.6
+      },
+    },
     mining_speed = 0.01,
     mining_with_hands_animation =
     {
@@ -314,7 +399,9 @@ data:extend(
       direction_count = 5,
       shift = {0, -0.6}
     },
+    running_sound_animation_positions = {14, 29}
   },
+
   {
     type = "tree",
     name = "dry-tree",
@@ -330,6 +417,7 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.6, -1.5}, {0.5, 0.4}},
+    order="a-a",
     pictures =
     {
       {
@@ -463,12 +551,14 @@ data:extend(
       }
     }
   },
+
   {
     type = "tree",
     name = "big-tree",
     icon = "__base__/graphics/icons/big-tree.png",
     flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
     emissions_per_tick = -0.0005,
+    order = "a-b",
     minable =
     {
       count = 5,
@@ -587,6 +677,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "furnace",
     name = "stone-furnace",
@@ -610,7 +701,7 @@ data:extend(
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_energy_consumption = 3,
+    smelting_energy_consumption = "180W",
     smelting_speed = 0.5,
     source_inventory_size = 1,
     energy_source =
@@ -629,7 +720,6 @@ data:extend(
         }
       }
     },
-    drawing_scale = 1,
     on_animation =
     {
       filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
@@ -659,6 +749,7 @@ data:extend(
     },
     fast_replaceable_group = "furnace"
   },
+
   {
     type = "transport-belt",
     name = "basic-transport-belt",
@@ -689,6 +780,7 @@ data:extend(
     fast_replaceable_group = "transport-belt",
     speed = 0.03125
   },
+
   {
     type = "fish",
     name = "fish",
@@ -696,6 +788,7 @@ data:extend(
     flags = {"placeable-neutral"},
     minable = {mining_time = 1, result = "raw-fish"},
     max_health = 20,
+    order = "b-a",
     collision_box = {{-0.4, -0.2}, {0.4, 0.2}},
     selection_box = {{-0.5, -0.3}, {0.5, 0.3}},
     pictures =
@@ -717,11 +810,12 @@ data:extend(
       influence = 0.01
     }
   },
+
   {
     type = "boiler",
     name = "boiler",
     icon = "__base__/graphics/icons/boiler.png",
-    flags = {"placeable-player", "player-creation"},
+    flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "boiler"},
     max_health = 100,
     corpse = "small-remnants",
@@ -735,7 +829,7 @@ data:extend(
     fast_replaceable_group = "pipe",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    energy_consumption = 6.5,
+    energy_consumption = "390W",
     burner =
     {
       effectivity = 0.5,
@@ -887,6 +981,7 @@ data:extend(
     -- these are the pipe pictures - boiler is a pipe as well
     pictures = pipepictures()
   },
+
   {
     type = "container",
     name = "wooden-chest",
@@ -908,9 +1003,15 @@ data:extend(
       shift = {0.3, 0}
     }
   },
+
   {
     type = "corpse",
     name = "small-biter-corpse",
+    icon = "__base__/graphics/icons/small-biter-corpse.png",
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selectable_in_game = false,
+    order = "b-c-a",
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
     dying_speed = 0.04,
     final_render_layer = "corpse",
     animation =
@@ -934,6 +1035,7 @@ data:extend(
       },
     },
   },
+
   {
     type = "electric-pole",
     name = "small-electric-pole",
@@ -1051,12 +1153,14 @@ data:extend(
       height = 46
     }
   },
+
   {
     type = "unit",
     name = "small-biter",
     icon = "__base__/graphics/icons/creeper.png",
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
     max_health = 15,
+    order = "b-b-a",
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
@@ -1077,6 +1181,7 @@ data:extend(
         shift = {0.84375, -0.3125}
       }
     },
+    vision_distance = 30,
     movement_speed = 0.2,
     distance_per_frame = 0.1,
     pollution_to_join_attack = 200,
@@ -1113,6 +1218,7 @@ data:extend(
       axially_symmetrical = false
     }
   },
+
   {
     type = "unit-spawner",
     name = "biter-spawner",
@@ -1120,6 +1226,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy"},
     minable = {mining_time = 1, result = "biter-spawner"},
     max_health = 350,
+    order="b-b-g",
     resistances =
     {
       {
@@ -1150,27 +1257,10 @@ data:extend(
     maximum_count_of_owned_units = 7,
     animations =
     {
-      frame_width = 257,
-      frame_height = 188,
-      frame_count = 8,
-      animation_speed = 0.18,
-      run_mode = "forward-then-backward",
-      axially_symmetric = false,
-      direction_count = 4,
-      shift = {0.359375, -0.125},
-      stripes =
-      {
-       {
-        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-1.png",
-        width_in_frames = 4,
-        height_in_frames = 4,
-       },
-       {
-        filename = "__base__/graphics/entity/biter-spawner/biter-spawner-2.png",
-        width_in_frames = 4,
-        height_in_frames = 4,
-       }
-      }
+      biterspawneranimation(0),
+      biterspawneranimation(1),
+      biterspawneranimation(2),
+      biterspawneranimation(3)
     },
     result_units = (function()
                      local res = {}
@@ -1181,7 +1271,8 @@ data:extend(
                      end
                      return res
                    end)(),
-    spawning_cooldown = {300, 150}, -- With zero evolution the spawn rate is 5 seconds, with max evolution it is 2.5 seconds
+    -- With zero evolution the spawn rate is 5 seconds, with max evolution it is 2.5 seconds
+    spawning_cooldown = {300, 150},
     spawning_radius = 10,
     spawning_spacing = 3,
     max_spawn_shift = 0.65,
@@ -1192,6 +1283,7 @@ data:extend(
       control = "enemy-base",
       richness_multiplier = 1,
       richness_base = 0,
+      force = "enemy",
       peaks =
       {
         {
@@ -1226,44 +1318,22 @@ data:extend(
       }
     }
   },
+
   {
     type = "corpse",
     name = "biter-spawner-corpse",
     dying_speed = 0.04,
+    order="b-c-g",
     final_render_layer = "corpse",
     animation =
     {
-      frame_width = 320,
-      frame_height = 320,
-      frame_count = 20,
-      axially_symmetric = false,
-      direction_count = 4,
-      shift = {0, 0},
-      stripes =
-      {
-        {
-          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-1.png",
-          width_in_frames = 5,
-          height_in_frames = 4,
-        },
-        {
-          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-2.png",
-          width_in_frames = 5,
-          height_in_frames = 4,
-        },
-        {
-          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-3.png",
-          width_in_frames = 5,
-          height_in_frames = 4,
-        },
-        {
-          filename = "__base__/graphics/entity/biter-spawner/biter-spawner-corpse-4.png",
-          width_in_frames = 5,
-          height_in_frames = 4,
-        }
-      }
+      biterspawnercorpse(0),
+      biterspawnercorpse(1),
+      biterspawnercorpse(2),
+      biterspawnercorpse(3)
     }
   },
+
   {
     type = "explosion",
     name = "explosion",
@@ -1315,6 +1385,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "explosion",
     name = "explosion-gunshot",
@@ -1334,6 +1405,7 @@ data:extend(
     smoke_count = 2,
     smoke_slow_down_factor = 1
   },
+
   {
     type = "explosion",
     name = "huge-explosion",
@@ -1361,6 +1433,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "generator",
     name = "steam-engine",
@@ -1445,6 +1518,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "pump",
     name = "pump",
@@ -1472,6 +1546,7 @@ data:extend(
       height = 102
     }
   },
+
   {
     type = "smoke",
     name = "smoke",
@@ -1486,6 +1561,7 @@ data:extend(
       line_length = 7
     }
   },
+
   {
     type = "smoke",
     name = "smoke-fast",
@@ -1499,6 +1575,7 @@ data:extend(
       animation_speed = 1
     }
   },
+
   {
     type = "inserter",
     name = "basic-inserter",
@@ -1557,6 +1634,7 @@ data:extend(
     },
     rotation_speed = 0.014
   },
+
   {
     type = "inserter",
     name = "burner-inserter",
@@ -1624,6 +1702,7 @@ data:extend(
     },
     rotation_speed = 0.01
   },
+
   {
     type = "item-entity",
     name = "item-on-ground",
@@ -1631,6 +1710,7 @@ data:extend(
     collision_box = {{-0.14, -0.14}, {0.14, 0.14}},
     selection_box = {{-0.17, -0.17}, {0.17, 0.17}}
   },
+
   {
     type = "pipe",
     name = "pipe",
@@ -1652,6 +1732,7 @@ data:extend(
     max_liquid_amount = 10,
     pictures = pipepictures()
   },
+
   {
     type = "radar",
     name = "radar",
@@ -1669,15 +1750,15 @@ data:extend(
     },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    energy_per_sector = 20000,
+    energy_per_sector = "20KJ",
     max_distance_of_sector_revealed = 14,
-    energy_per_nearby_scan = 500,
+    energy_per_nearby_scan = "500J",
     energy_source =
     {
       type = "electric",
       input_priority = "secondary"
     },
-    energy_usage_per_tick = 10,
+    energy_usage = "600W",
     pictures =
     {
       filename = "__base__/graphics/entity/radar/radar.png",
@@ -1690,6 +1771,7 @@ data:extend(
       shift = {1.15, 0.75}
     }
   },
+
   {
     type = "lamp",
     name = "small-lamp",
@@ -1725,11 +1807,13 @@ data:extend(
       shift = {0, -0.1}
     }
   },
+
   {
     type = "container",
     name = "space-module-wreck",
     icon = "__base__/graphics/icons/space-module-wreck.png",
-    flags = {"placeable-neutral", "player-creation"},
+    flags = {"placeable-neutral"},
+    order="c-f",
     max_health = 50,
     collision_box = {{-2.2, -1}, {2.2, 1}},
     selection_box = {{-2.7, -1.5}, {2.7, 1.5}},
@@ -1741,6 +1825,7 @@ data:extend(
       height = 96
     }
   },
+
   {
     type = "arrow",
     name = "red-arrow",
@@ -1753,6 +1838,7 @@ data:extend(
       height = "230"
     }
   },
+
   {
     type = "arrow",
     name = "red-arrow-with-circle",
@@ -1772,6 +1858,7 @@ data:extend(
       height = "200"
     }
   },
+
   {
     type = "pipe-to-ground",
     name = "pipe-to-ground",
@@ -1831,6 +1918,7 @@ data:extend(
       },
     }
   },
+
   {
     type = "assembling-machine",
     name = "assembling-machine-1",
@@ -1860,16 +1948,17 @@ data:extend(
       shift = {0.7, 0.12}
     },
     crafting_categories = {"crafting"},
-    effectivity = 1.5,
+    crafting_speed = 0.5,
     energy_source =
     {
       type = "electric",
       input_priority = "secondary",
       emissions = 0.05 / 1.5
     },
-    energy_usage_per_tick = 1.5,
+    energy_usage = "90W",
     ingredient_count = 2
   },
+
   {
     type = "flying-text",
     name = "flying-text",
@@ -1877,6 +1966,7 @@ data:extend(
     time_to_live = 150,
     speed = 0.05
   },
+
   {
     type = "corpse",
     name = "acid-splash-purple",
@@ -1919,6 +2009,7 @@ data:extend(
     },
     splash_speed = 0.03
   },
+
   {
     type = "corpse",
     name = "big-remnants",
@@ -1928,6 +2019,7 @@ data:extend(
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
+    order="c-c",
     animation = 
     {
       {
@@ -1963,6 +2055,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "corpse",
     name = "medium-remnants",
@@ -1970,6 +2063,7 @@ data:extend(
     flags = {"placeable-neutral", "building-direction-8-way"},
     selection_box = {{-1, -1}, {1, 1}},
     selectable_in_game = false,
+    order="c-b",
     tile_width = 2,
     tile_height = 2,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
@@ -2009,6 +2103,7 @@ data:extend(
       }
     }
   },
+
   {
     type = "corpse",
     name = "small-remnants",
@@ -2016,6 +2111,7 @@ data:extend(
     flags = {"placeable-neutral"},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
+    order="c-a",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     animation = 
@@ -2052,6 +2148,11 @@ data:extend(
         filename = "__base__/graphics/entity/remnants/small-remnants.png"
       }
     }
+  },
+
+  {
+    type = "ghost",
+    name = "ghost"
   }
 }
 )

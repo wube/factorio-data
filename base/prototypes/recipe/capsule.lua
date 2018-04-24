@@ -5,7 +5,7 @@ data:extend(
     type = "recipe",
     name = "poison-capsule",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"steel-plate", 3},
@@ -18,7 +18,7 @@ data:extend(
     type = "recipe",
     name = "slowdown-capsule",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"steel-plate", 2},
@@ -31,7 +31,7 @@ data:extend(
     type = "recipe",
     name = "basic-grenade",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
       {"iron-plate", 5},
@@ -43,10 +43,10 @@ data:extend(
     type = "recipe",
     name = "defender-capsule",
     enabled = "false",
-    energy_required = 15,
+    energy_required = 8,
     ingredients =
     {
-      {"steel-plate", 2},
+      {"piercing-bullet-magazine", 1},
       {"advanced-circuit", 1},
       {"iron-gear-wheel", 3},
     },
@@ -56,7 +56,7 @@ data:extend(
     type = "recipe",
     name = "distractor-capsule",
     enabled = "false",
-    energy_required = 30,
+    energy_required = 15,
     ingredients =
     {
       {"defender-capsule", 4},
@@ -68,7 +68,7 @@ data:extend(
     type = "recipe",
     name = "destroyer-capsule",
     enabled = "false",
-    energy_required = 30,
+    energy_required = 15,
     ingredients =
     {
       {"distractor-capsule", 4},
@@ -80,11 +80,7 @@ data:extend(
     type = "recipe",
     name = "basic-electric-discharge-defense-remote",
     enabled = "false",
-    energy_required = 1,
-    ingredients =
-    {
-      {"electronic-circuit", 1}
-    },
+    ingredients = {{"electronic-circuit", 1}},
     result = "basic-electric-discharge-defense-remote"
   }
 })

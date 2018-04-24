@@ -7,6 +7,7 @@ data:extend(
     icon = "__base__/graphics/icons/creeper.png",
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
     max_health = 75,
+    order="b-b-b",
     resistances = 
     {
       {
@@ -62,6 +63,7 @@ data:extend(
         }
       }
     },
+    vision_distance = 30,
     movement_speed = 0.185,
     distance_per_frame = 0.15,
     -- in pu
@@ -98,9 +100,11 @@ data:extend(
       shift = {0.514688, -0.219375},
     }
   },
+
   {
     type = "unit",
     name = "big-biter",
+    order="b-b-c",
     icon = "__base__/graphics/icons/creeper.png",
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air"},
     max_health = 375,
@@ -159,6 +163,7 @@ data:extend(
         },
       },
     },
+    vision_distance = 30,
     movement_speed = 0.17,
     distance_per_frame = 0.2,
     -- in pu
@@ -210,6 +215,11 @@ data:extend(
   {
     type = "corpse",
     name = "medium-biter-corpse",
+    icon = "__base__/graphics/icons/medium-biter-corpse.png",
+    selectable_in_game = false,
+    selection_box = {{-1, -1}, {1, 1}},
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
+    order="b-c-b",
     dying_speed = 0.04,
     final_render_layer = "corpse",
     animation =
@@ -248,6 +258,11 @@ data:extend(
   {
     type = "corpse",
     name = "big-biter-corpse",
+    icon = "__base__/graphics/icons/big-biter-corpse.png",
+    selectable_in_game = false,
+    selection_box = {{-1, -1}, {1, 1}},
+    order="b-c-c",
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way"},
     dying_speed = 0.04,
     final_render_layer = "corpse",
     animation =

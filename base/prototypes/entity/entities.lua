@@ -892,14 +892,14 @@ data:extend(
       shift = {0.7, 0.12}
     },
     crafting_categories = {"crafting"},
-    effectivity = 2,
+    crafting_speed = 0.75,
     energy_source =
     {
       type = "electric",
       input_priority = "secondary",
       emissions = 0.04 / 2.5
     },
-    energy_usage_per_tick = 2.5,
+    energy_usage = "150W",
     ingredient_count = 4,
     module_slots = 2,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}
@@ -933,14 +933,14 @@ data:extend(
       shift = {0.7, 0.12}
     },
     crafting_categories = {"crafting"},
-    effectivity = 3,
+    crafting_speed = 1.25,
     energy_source =
     {
       type = "electric",
       input_priority = "secondary",
       emissions = 0.03 / 3.5
     },
-    energy_usage_per_tick = 3.5,
+    energy_usage = "210W",
     ingredient_count = 4,
     module_slots = 4,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}
@@ -983,9 +983,39 @@ data:extend(
         }
       }
     },
-    consumption = 10,
+    consumption = "600W",
     friction = 0.02,
-    light = {intensity = 0.4, size = 25},
+    light =
+    {
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          width = 400,
+          height = 400
+        },
+        shift = {-0.6, -14},
+        size = 2,
+        intensity = 0.6
+      },
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          width = 400,
+          height = 400
+        },
+        shift = {0.6, -14},
+        size = 2,
+        intensity = 0.6
+      }
+    },
     pictures =
     {
       filename = "__base__/graphics/entity/car/car-sheet.png",
@@ -998,7 +1028,7 @@ data:extend(
     },
     rotation_speed = 0.015,
     weight = 50,
-    inventory_size = 12
+    inventory_size = 80
   },
   {
     type = "container",
@@ -1303,7 +1333,7 @@ data:extend(
       width = 104,
       height = 96
     },
-    production = 1
+    production = "60W"
   },
   {
     type = "locomotive",
@@ -1325,6 +1355,7 @@ data:extend(
     air_resistance = 0.002,
     connection_distance = 3.3,
     joint_distance = 4.6,
+    energy_per_hit_point = 5,
     energy_source =
     {
       type = "burner",
@@ -1343,6 +1374,37 @@ data:extend(
           starting_frame_speed = 0,
           starting_frame_speed_deviation = 5
         }
+      }
+    },
+    light =
+    {
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          width = 400,
+          height = 400
+        },
+        shift = {-0.6, -16},
+        size = 2,
+        intensity = 0.6
+      },
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "medium",
+          width = 400,
+          height = 400
+        },
+        shift = {0.6, -16},
+        size = 2,
+        intensity = 0.6
       }
     },
     pictures =
@@ -1387,6 +1449,7 @@ data:extend(
     air_resistance = 0.002,
     connection_distance = 3.3,
     joint_distance = 4,
+    energy_per_hit_point = 5,
     pictures =
     {
       priority = "very-low",
@@ -1667,7 +1730,8 @@ data:extend(
     type = "corpse",
     name = "wall-remnants",
     icon = "__base__/graphics/icons/wall-remnants.png",
-    flags = {"placeable-neutral", "player-creation"},
+    flags = {"placeable-neutral"},
+    order="c-g",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
@@ -1768,8 +1832,11 @@ data:extend(
     name = "straight-rail-remnants",
     icon = "__base__/graphics/icons/straight-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way"},
+    order="c-d",
     selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
     selectable_in_game = false,
+    tile_width = 2,
+    tile_height = 2,
     bending_type = "straight",
     pictures = destroyedrailpictures(),
     time_before_removed = 60 * 60 * 45,
@@ -1795,8 +1862,11 @@ data:extend(
     name = "curved-rail-remnants",
     icon = "__base__/graphics/icons/curved-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way"},
+    order="c-e",
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selectable_in_game = false,
+    tile_width = 4,
+    tile_height = 8,
     bending_type = "turn",
     pictures = destroyedrailpictures(),
     time_before_removed = 60 * 60 * 45,
@@ -1977,6 +2047,7 @@ data:extend(
     corpse = "big-remnants",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    light = {intensity = 0.75, size = 8},
     on_animation =
     {
       filename = "__base__/graphics/entity/lab/lab.png",
@@ -1999,7 +2070,7 @@ data:extend(
       type = "electric",
       input_priority = "secondary"
     },
-    energy_usage_per_tick = 1,
+    energy_usage = "60W",
     inputs =
     {
       "science-pack-1",
@@ -2009,6 +2080,7 @@ data:extend(
     },
     module_slots = 2
   },
+
   {
     type = "logistic-robot",
     name = "logistic-robot",
@@ -2018,10 +2090,14 @@ data:extend(
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
-    distance_per_frame = 0.13,
     max_payload_size = 1,
     speed = 0.05,
     transfer_distance = 0.5,
+    max_energy = "300J",
+    energy_per_tick = "0.01J",
+    energy_per_move = "1J",
+    min_to_charge = 0.2,
+    max_to_charge = 0.95,
     picture =
     {
       filename = "__base__/graphics/entity/logistic-robot/logistic-robot.png",
@@ -2036,6 +2112,40 @@ data:extend(
       width = 52,
       height = 37
     }
+  },
+
+  {
+    type = "construction-robot",
+    name = "construction-robot",
+    icon = "__base__/graphics/icons/construction-robot.png",
+    flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    minable = {hardness = 0.1, mining_time = 0.1, result = "construction-robot"},
+    max_health = 100,
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
+    max_payload_size = 1,
+    speed = 0.06,
+    transfer_distance = 0.5,
+    max_energy = "300J",
+    energy_per_tick = "0.01J",
+    energy_per_move = "1J",
+    min_to_charge = 0.2,
+    max_to_charge = 0.95,
+    picture =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
+      priority = "high",
+      width = 37,
+      height = 34
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
+      priority = "high",
+      width = 52,
+      height = 37
+    },
+    repair_pack = "repair-pack"
   },
   {
     type = "logistic-container",
@@ -2116,7 +2226,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      buffer_capacity = 100000,
+      buffer_capacity = "100KJ",
       input_priority = "primary"
     },
     picture =
@@ -2127,6 +2237,77 @@ data:extend(
       height = 160
     }
   },
+
+  {
+    type = "roboport",
+    name = "roboport",
+    icon = "__base__/graphics/icons/roboport.png",
+    flags = {"placeable-player", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "roboport"},
+    max_health = 500,
+    corpse = "big-remnants",
+    collision_box = {{-1.7, -1.7}, {1.7, 1.7}},
+    selection_box = {{-2, -2}, {2, 2}},
+    energy_source =
+    {
+      type = "electric",
+      input_priority = "primary",
+      input_flow_limit = "2KW",
+      buffer_capacity = "48KJ"
+    },
+    recharge_minimum = "20KJ",
+    energy_usage = "200W",
+    -- per one charge slot
+    charging_energy = "200W",
+    radius = 20,
+    charge_approach_distance = 5,
+    robot_slots_count = 7,
+    material_slots_count = 7,
+    stationing_offset = {0, 0},
+    charging_offsets =
+    {
+      {-1.5, -0.5}, {1.5, -0.5}, {1.5, 1.5}, {-1.5, 1.5},
+    },
+    base_animation =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport.png",
+      priority = "medium",
+      frame_width = 143,
+      frame_height = 151,
+      frame_count = 8,
+      shift = {0.5, 0},
+      animation_speed = 0.5
+    },
+    door_animation =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport-door.png",
+      priority = "medium",
+      frame_width = 52,
+      frame_height = 39,
+      frame_count = 16,
+      shift = {0, -0.6}
+    },
+    recharging_animation =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport-recharging.png",
+      priority = "high",
+      frame_width = 37,
+      frame_height = 35,
+      frame_count = 16,
+      scale = 1.5,
+      animation_speed = 0.5
+    },
+    recharging_light = {intensity = 0.4, size = 5},
+    request_to_open_door_timeout = 15,
+    spawn_and_station_height = 0.33,
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport-radius-visualization.png",
+      width = 12,
+      height = 12
+    }
+  },
+
   {
     type = "explosion",
     name = "laser-bubble",
@@ -2172,6 +2353,7 @@ data:extend(
     name = "market",
     icon = "__base__/graphics/icons/market.png",
     flags = {"placeable-neutral", "player-creation"},
+    order="d-a-a",
     max_health = 150,
     corpse = "big-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
@@ -2566,6 +2748,15 @@ data:extend(
     corpse = "medium-remnants",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
+    energy_source =
+    {
+      type = "electric",
+      buffer_capacity = "5KJ",
+      input_priority = "terciary",
+      input_flow_limit = "300W",
+      output_priority = "terciary",
+      output_flow_limit = "300W"
+    },
     picture =
     {
       filename = "__base__/graphics/entity/basic-accumulator/basic-accumulator.png",
@@ -2581,10 +2772,11 @@ data:extend(
       frame_height = 135,
       line_length = 8,
       frame_count = 24,
-      shift = {0.482, -0.638}
+      shift = {0.482, -0.638},
+      animation_speed = 0.5
     },
-    charge_frame_rate = 2,
     charge_cooldown = 30,
+    charge_light = {intensity = 0.3, size = 7},
     discharge_animation =
     {
       filename = "__base__/graphics/entity/basic-accumulator/basic-accumulator-discharge-animation.png",
@@ -2592,20 +2784,11 @@ data:extend(
       frame_height = 128,
       line_length = 8,
       frame_count = 24,
-      shift = {0.395, -0.525}
+      shift = {0.395, -0.525},
+      animation_speed = 0.5
     },
-    discharge_frame_rate = 2,
     discharge_cooldown = 60,
-    discharge_light = {intensity = 0.7, size = 7},
-    energy_source =
-    {
-      type = "electric",
-      output_priority = "terciary",
-      input_flow_limit = 5,
-      input_priority = "terciary",
-      output_flow_limit = 5,
-      buffer_capacity = 5000
-    }
+    discharge_light = {intensity = 0.7, size = 7}
   },
   {
     type = "furnace",
@@ -2626,7 +2809,7 @@ data:extend(
     selection_box = {{-0.8, -1}, {0.8, 1}},
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
-    smelting_energy_consumption = 3,
+    smelting_energy_consumption = "180W",
     smelting_speed = 1,
     source_inventory_size = 1,
     energy_source =
@@ -2645,7 +2828,6 @@ data:extend(
         }
       }
     },
-    drawing_scale = 1,
     on_animation =
     {
       filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
@@ -2696,7 +2878,7 @@ data:extend(
     smelting_categories = {"smelting"},
     result_inventory_size = 1,
     smelting_speed = 1,
-    smelting_energy_consumption = 3,
+    smelting_energy_consumption = "180W",
     source_inventory_size = 1,
     energy_source =
     {
@@ -2704,7 +2886,6 @@ data:extend(
       input_priority = "secondary",
       emissions = 0.005
     },
-    drawing_scale = 1,
     on_animation =
     {
       filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
@@ -2746,7 +2927,8 @@ data:extend(
       frame_height = 186,
       frame_count = 32,
       line_length = 6,
-      shift = {1.2, 0.5}
+      shift = {1.2, 0.5},
+      animation_speed = 1 / 3
     },
     radius_visualisation_picture =
     {
@@ -2760,7 +2942,7 @@ data:extend(
       type = "electric",
       input_priority = "secondary"
     },
-    energy_usage_per_tick = 8,
+    energy_usage = "480W",
     distribution_effectivity = 0.5,
     num_module_slots = 2
   },
@@ -2819,6 +3001,7 @@ data:extend(
     name = "distractor",
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    order="e-a-b",
     max_health = 90,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
@@ -2888,11 +3071,12 @@ data:extend(
     name = "defender",
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    order="e-a-a",
     max_health = 60,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
     distance_per_frame = 0.13,
-    time_to_live = 1800,
+    time_to_live = 60 * 45,
     follows_player = true,
     friction = 0.01,
     range_from_player = 6.0,
@@ -2973,6 +3157,7 @@ data:extend(
     name = "destroyer",
     icon = "__base__/graphics/icons/logistic-robot.png",
     flags = {"placeable-player", "player-creation", "placeable-off-grid"},
+    order="e-a-c",
     max_health = 60,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},

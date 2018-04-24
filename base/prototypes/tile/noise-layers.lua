@@ -2,15 +2,19 @@ data:extend(
 {
   {
     type = "noise-layer",
+    name = "terrain-dark"
+  },
+  {
+    type = "noise-layer",
     name = "grass"
   },
   {
     type = "noise-layer",
-    name = "dirt"
+    name = "grass-dry"
   },
   {
     type = "noise-layer",
-    name = "hills"
+    name = "dirt"
   },
   {
     type = "noise-layer",

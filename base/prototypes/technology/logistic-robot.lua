@@ -2,9 +2,50 @@ data:extend(
 {
   {
     type = "technology",
+    name = "construction-robotics",
+    icon = "__base__/graphics/technology/construction-robotics.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "roboport"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "logistic-chest-provider"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "construction-robot"
+      },
+      {
+        type = "ghost-time-to-live",
+        modifier = 60 * 60 * 5
+      }
+    },
+    prerequisites = {"robotics", "flying"},
+    unit =
+    {
+      count = 50,
+      ingredients =
+      {
+        {"science-pack-1", 1},
+        {"science-pack-2", 1}
+      },
+      time = 30
+    },
+    order = "c-k-a",
+  },
+  {
+    type = "technology",
     name = "logistic-robotics",
     icon = "__base__/graphics/technology/logistic-robotics.png",
-    effects = {
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "roboport"
+      },
       {
         type = "unlock-recipe",
         recipe = "logistic-chest-provider"
@@ -35,7 +76,7 @@ data:extend(
       },
       time = 30
     },
-    order = "c-k-a",
+    order = "c-k-b",
   },
   {
     type = "technology",
@@ -60,7 +101,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-b",
+    order = "c-k-c",
   },
   {
     type = "technology",
@@ -85,7 +126,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-c"
+    order = "c-k-d"
   },
   {
     type = "technology",
@@ -111,7 +152,7 @@ data:extend(
       time = 60
     },
     upgrade = "true",
-    order = "c-k-d"
+    order = "c-k-e"
   },
   {
     type = "technology",
@@ -137,7 +178,7 @@ data:extend(
       time = 60
     },
     upgrade = "true",
-    order = "c-k-e"
+    order = "c-k-f"
   },
   {
     type = "technology",
@@ -163,7 +204,7 @@ data:extend(
       time = 60
     },
     upgrade = "true",
-    order = "c-k-f"
+    order = "c-k-g"
   },
   {
     type = "technology",
@@ -188,7 +229,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-g"
+    order = "c-k-h"
   },
   {
     type = "technology",
@@ -214,7 +255,7 @@ data:extend(
       time = 60
     },
     upgrade = "true",
-    order = "c-k-h"
+    order = "c-k-i"
   },
   {
     type = "technology",
@@ -240,7 +281,7 @@ data:extend(
       time = 60
     },
     upgrade = "true",
-    order = "c-k-i"
+    order = "c-k-j"
   },
   {
     type = "technology",
@@ -266,7 +307,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-j"
+    order = "c-k-k"
   },
   {
     type = "technology",
@@ -292,7 +333,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-k"
+    order = "c-k-l"
   },
   {
     type = "technology",
@@ -318,7 +359,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-l"
+    order = "c-k-m"
   },
   {
     type = "technology",
@@ -345,7 +386,7 @@ data:extend(
       time = 30
     },
     upgrade = "true",
-    order = "c-k-m"
+    order = "c-k-n"
   }
 }
 )
