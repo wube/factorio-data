@@ -813,6 +813,7 @@ data:extend(
       layers = {
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
+          flags = { "no-crop" },
           frame_count = 1,
           width = 28,
           height = 20,
@@ -820,6 +821,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-mask.png",
+          flags = { "no-crop" },
           frame_count = 1,
           width = 28,
           height = 20,
@@ -831,6 +833,7 @@ data:extend(
     shadow =
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-shadow.png",
+      flags = { "no-crop" },
       frame_count = 1,
       width = 26,
       height = 20,
@@ -866,6 +869,7 @@ data:extend(
       layers = {
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule.png",
+          flags = { "no-crop" },
           frame_count = 1,
           width = 36,
           height = 30,
@@ -873,6 +877,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule-mask.png",
+          flags = { "no-crop" },
           frame_count = 1,
           width = 36,
           height = 30,
@@ -884,6 +889,7 @@ data:extend(
     shadow =
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule-shadow.png",
+      flags = { "no-crop" },
       frame_count = 1,
       width = 40,
       height = 26,
@@ -917,6 +923,7 @@ data:extend(
       layers = {
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule.png",
+          flags = { "no-crop" },
           frame_count = 1,
           width = 42,
           height = 34,
@@ -924,6 +931,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule-mask.png",
+          flags = { "no-crop" },
           frame_count = 1,
           width = 42,
           height = 34,
@@ -935,6 +943,7 @@ data:extend(
     shadow =
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule-shadow.png",
+      flags = { "no-crop" },
       frame_count = 1,
       width = 48,
       height = 32,

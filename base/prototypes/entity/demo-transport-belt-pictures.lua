@@ -1,5 +1,5 @@
 -- Specifies set of pictures and animations used by more entities, to avoid duplication.
--- The standard set of transport belt pictures (vertical/horizontal + endigns + startings)
+-- The standard set of transport belt pictures (vertical/horizontal + endings + startings)
 -- are used in transport belt, transport belt to ground and splitter.
 
 ending_patch_prototype =

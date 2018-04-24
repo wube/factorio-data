@@ -10782,6 +10782,19 @@ data:extend(
         name = "alarms",
         notes =
         {
+         { name="alarm-1",  sound = { filename = "__base__/sound/programmable-speaker/alarm-1.ogg" }},
+         { name="alarm-2",  sound = { filename = "__base__/sound/programmable-speaker/alarm-2.ogg" }},
+         { name="buzzer-1",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-1.ogg" }},
+         { name="buzzer-2",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-2.ogg" }},
+         { name="buzzer-3",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-3.ogg" }},
+         { name="ring",  sound = { filename = "__base__/sound/programmable-speaker/ring.ogg", preload = false }},
+         { name="siren",  sound = { filename = "__base__/sound/programmable-speaker/siren.ogg", preload = false }},         
+        }
+      },
+      {
+        name = "miscellaneous",
+        notes =
+        {
           { name = "achievement-unlocked",  sound = { filename = "__core__/sound/achievement-unlocked.ogg" }},
           { name = "alert-construction",  sound = { filename = "__core__/sound/alert-construction.ogg" }},
           { name = "alert-damage",  sound = { filename = "__core__/sound/alert-damage.ogg" }},

@@ -1390,7 +1390,8 @@ data:extend(
             },
             {
               type = "damage",
-              damage = { amount = 3, type = "fire" }
+              damage = { amount = 3, type = "fire" },
+              apply_damage_to_trees = false
             }
           }
         }
@@ -1506,7 +1507,8 @@ data:extend(
             },
             {
               type = "damage",
-              damage = { amount = 2, type = "fire" }
+              damage = { amount = 2, type = "fire" },
+              apply_damage_to_trees = false
             }
           }
         }
@@ -1601,7 +1603,8 @@ data:extend(
           {
             {
               type = "damage",
-              damage = { amount = 7, type = "fire" }
+              damage = { amount = 7, type = "fire" },
+              apply_damage_to_trees = true
             }
           }
         }

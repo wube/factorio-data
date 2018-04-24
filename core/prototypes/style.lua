@@ -363,7 +363,7 @@ data:extend(
         corner_size = {3, 3},
         position = {0, 0}
       },
-      hovered_font_color={r=1, g=1, b=1},
+      hovered_font_color = {r=0, g=0, b=0},
       hovered_graphical_set =
       {
         type = "composition",
@@ -805,7 +805,6 @@ data:extend(
       type = "button_style",
       parent = "button_style",
       font = "default-button",
-      hovered_font_color = {r=0, g=0, b=0},
       minimal_width = 300,
       minimal_height = 50,
       left_click_sound =
@@ -1908,6 +1907,8 @@ data:extend(
     {
       type = "dropdown_style",
       font = "default",
+      default_font_color = {r=1, g=1, b=1},
+      hovered_font_color = {r=0, g=0, b=0},
       top_padding = 3,
       right_padding = 6,
       left_padding = 6,
@@ -1972,7 +1973,7 @@ data:extend(
       },
       selected =
       {
-        font_color = {},
+        font_color = {r=0, g=0, b=0},
         background_color = { r=0.98, g=0.66, b=0.22}
       }
     },

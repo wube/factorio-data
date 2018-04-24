@@ -500,8 +500,8 @@ data:extend(
     prerequisites = {"electronics"},
     unit =
     {
-      count = 40,
-      ingredients = {{"science-pack-1", 2}},
+      count = 80,
+      ingredients = {{"science-pack-1", 1}},
       time = 15
     },
     order = "a-b-b",
@@ -810,11 +810,11 @@ data:extend(
     prerequisites = {"railway", "fluid-handling"},
     unit =
     {
-      count = 100,
+      count = 200,
       ingredients =
       {
-        {"science-pack-1", 2},
-        {"science-pack-2", 2},
+        {"science-pack-1", 1},
+        {"science-pack-2", 1},
       },
       time = 30
     },
