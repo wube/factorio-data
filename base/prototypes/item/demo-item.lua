@@ -23,6 +23,7 @@ data:extend(
     type = "item",
     name = "coal",
     icon = "__base__/graphics/icons/coal.png",
+    dark_background_icon = "__base__/graphics/icons/coal-dark-background.png",
     flags = {"goes-to-main-inventory"},
     fuel_value = "8MJ",
     subgroup = "raw-material",

@@ -60,6 +60,46 @@ function crash_trigger()
   }
 end
 
+function rolling_stock_back_light()
+  return
+  {
+    {
+      minimum_darkness = 0.3,
+      color = {r=1},
+      shift = {-0.6, 3.5},
+      size = 2,
+      intensity = 0.6
+    },
+    {
+      minimum_darkness = 0.3,
+      color = {r=1},
+      shift = {0.6, 3.5},
+      size = 2,
+      intensity = 0.6
+    }
+  }
+end
+
+function rolling_stock_stand_by_light()
+  return
+  {
+    {
+      minimum_darkness = 0.3,
+      color = {b=1},
+      shift = {-0.6, -3.5},
+      size = 2,
+      intensity = 0.5
+    },
+    {
+      minimum_darkness = 0.3,
+      color = {b=1},
+      shift = {0.6, -3.5},
+      size = 2,
+      intensity = 0.5
+    }
+  }
+end
+
 data:extend(
 {
   {
@@ -171,7 +211,8 @@ data:extend(
         priority = "extra-high",
         shift = {0.26, 0},
         width = 57,
-        height = 43
+        height = 43,
+        y = 43
       },
       direction_out =
       {
@@ -179,8 +220,7 @@ data:extend(
         priority = "extra-high",
         shift = {0.26, 0},
         width = 57,
-        height = 43,
-        y = 43
+        height = 43
       }
     },
     ending_patch = ending_patch_prototype
@@ -1714,7 +1754,7 @@ data:extend(
         }
       }
     },
-    light =
+    front_light =
     {
       {
         type = "oriented",
@@ -1747,6 +1787,8 @@ data:extend(
         intensity = 0.6
       }
     },
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
     pictures =
     {
       priority = "very-low",
@@ -1844,6 +1886,8 @@ data:extend(
     connection_distance = 3.3,
     joint_distance = 4,
     energy_per_hit_point = 5,
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
     pictures =
     {
       priority = "very-low",
@@ -1889,6 +1933,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     minable = {mining_time = 1, result = "wall"},
     max_health = 350,
+    repair_speed_modifier = 2,
     corpse = "wall-remnants",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
@@ -2835,7 +2880,7 @@ data:extend(
         percent = 70
       }
     },
-    collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fluid_box =
     {
