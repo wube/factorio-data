@@ -1143,7 +1143,7 @@ data:extend(
     type = "technology",
     name = "flying",
     icon = "__base__/graphics/technology/flying.png",
-    prerequisites = {"electric-engine", "advanced-electronics"},
+    prerequisites = {"electric-engine"},
     unit =
     {
       count = 200,
