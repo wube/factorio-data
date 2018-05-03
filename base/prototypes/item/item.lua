@@ -975,6 +975,7 @@ data:extend(
     fuel_value = "1.21GJ",
     fuel_acceleration_multiplier = 2.5,
     fuel_top_speed_multiplier = 1.15,
+    -- fuel_glow_color = {r = 0.1, g = 1, b = 0.1},
     subgroup = "intermediate-product",
     order = "q[uranium-rocket-fuel]",
     stack_size = 1
