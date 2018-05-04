@@ -2,7 +2,7 @@
 Tracks changes of the lua prototype definitions in factorio in between releases.
 
 This repo has been made publicly available to help mod authors.
-It's purpose is to allow the public to track changes to the Factorio **LUA prototype definitions**.
+Its purpose is to allow the public to track changes to the Factorio **LUA prototype definitions**.
 
 See https://github.com/wube/factorio-data/releases for past versions.
 Compare versions using git on the command line, or by using magic github comparison urls, 
