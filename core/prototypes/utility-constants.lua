@@ -111,7 +111,8 @@ data:extend(
       train_arriving_to_station_penalty = 100,
       train_arriving_to_signal_penalty = 100,
       train_waiting_at_signal_penalty = 100,
-      train_waiting_at_signal_tick_multiplier_penalty = 0.1
+      train_waiting_at_signal_tick_multiplier_penalty = 0.1,
+      train_with_no_path_penalty = 1000
     },
     server_command_console_chat_color = { r = 0.75, g = 0.75, b = 0.75, a = 0.5 },
     script_command_console_chat_color = { r = 0.75, g = 0.75, b = 0.75, a = 0.5 },
