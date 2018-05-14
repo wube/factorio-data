@@ -1,7 +1,6 @@
 require ("prototypes.entity.demo-worm-animations")
 require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
-require "util"
 require ("prototypes.entity.demo-enemy-autoplace-utils")
 
 function gun_turret_extension(inputs)
@@ -12,9 +11,9 @@ return
   width = 65,
   height = 63,
   direction_count = 4,
-  frame_count = inputs.frame_count and inputs.frame_count or 5,
-  line_length = inputs.line_length and inputs.line_length or 0,
-  run_mode = inputs.run_mode and inputs.run_mode or "forward",
+  frame_count = inputs.frame_count or 5,
+  line_length = inputs.line_length or 0,
+  run_mode = inputs.run_mode or "forward",
   shift = {0.015625, -0.859375},
   axially_symmetrical = false
 }
@@ -28,9 +27,9 @@ return
   width = 24,
   height = 31,
   direction_count = 4,
-  frame_count = inputs.frame_count and inputs.frame_count or 5,
-  line_length = inputs.line_length and inputs.line_length or 0,
-  run_mode = inputs.run_mode and inputs.run_mode or "forward",
+  frame_count = inputs.frame_count or 5,
+  line_length = inputs.line_length or 0,
+  run_mode = inputs.run_mode or "forward",
   shift = {0, -0.890625},
   axially_symmetrical = false,
   apply_runtime_tint = true
@@ -44,9 +43,9 @@ return
   width = 89,
   height = 49,
   direction_count = 4,
-  frame_count = inputs.frame_count and inputs.frame_count or 5,
-  line_length = inputs.line_length and inputs.line_length or 0,
-  run_mode = inputs.run_mode and inputs.run_mode or "forward",
+  frame_count = inputs.frame_count or 5,
+  line_length = inputs.line_length or 0,
+  run_mode = inputs.run_mode or "forward",
   shift = {1.20313, 0.015625},
   axially_symmetrical = false,
   draw_as_shadow = true
@@ -61,7 +60,7 @@ return
     {
       width = 66,
       height = 64,
-      frame_count = inputs.frame_count and inputs.frame_count or 2,
+      frame_count = inputs.frame_count or 2,
       axially_symmetrical = false,
       direction_count = 64,
       shift = {0, -0.875},
@@ -69,12 +68,12 @@ return
       {
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-1.png",
-          width_in_frames = inputs.frame_count and inputs.frame_count or 2,
+          width_in_frames = inputs.frame_count or 2,
           height_in_frames = 32,
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-2.png",
-          width_in_frames = inputs.frame_count and inputs.frame_count or 2,
+          width_in_frames = inputs.frame_count or 2,
           height_in_frames = 32,
         }
       }
@@ -82,10 +81,10 @@ return
     {
       filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-mask.png",
       flags = { "mask" },
-      line_length = inputs.frame_count and inputs.frame_count or 2,
+      line_length = inputs.frame_count or 2,
       width = 29,
       height = 27,
-      frame_count = inputs.frame_count and inputs.frame_count or 2,
+      frame_count = inputs.frame_count or 2,
       axially_symmetrical = false,
       direction_count = 64,
       shift = {0.015625, -1.01563},
@@ -94,7 +93,7 @@ return
     {
       width = 91,
       height = 50,
-      frame_count = inputs.frame_count and inputs.frame_count or 2,
+      frame_count = inputs.frame_count or 2,
       axially_symmetrical = false,
       direction_count = 64,
       shift = {1.23438, 0},
@@ -103,12 +102,12 @@ return
       {
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-shadow-1.png",
-          width_in_frames = inputs.frame_count and inputs.frame_count or 2,
+          width_in_frames = inputs.frame_count or 2,
           height_in_frames = 32,
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-shadow-2.png",
-          width_in_frames = inputs.frame_count and inputs.frame_count or 2,
+          width_in_frames = inputs.frame_count or 2,
           height_in_frames = 32,
         }
       }
