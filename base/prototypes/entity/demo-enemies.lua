@@ -83,15 +83,16 @@ data:extend(
       {
         type = "explosion",
         decrease = 5,
-        percent = 15,
+        percent = 15
       },
       {
         type = "fire",
         decrease = 3,
-        percent = 60,
+        percent = 60
       }
     },
-    working_sound = {
+    working_sound =
+    {
       sound =
       {
         {
@@ -174,5 +175,5 @@ data:extend(
       spawner_die_animation(2, biter_spawner_tint),
       spawner_die_animation(3, biter_spawner_tint)
     }
-  },
+  }
 })

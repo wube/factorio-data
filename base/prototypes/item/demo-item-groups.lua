@@ -5,7 +5,7 @@ data:extend(
     name = "signals",
     order = "f",
     icon = "__base__/graphics/item-group/signals.png",
-    icon_size = 64,
+    icon_size = 64
   },
   {
     type = "item-subgroup",
@@ -18,13 +18,13 @@ data:extend(
     name = "other",
     icon = "__core__/graphics/questionmark.png",
     icon_size = 64,
-    order = "z",
+    order = "z"
   },
   {
     type = "item-subgroup",
     name = "other",
     group = "other",
-    order = "z",
+    order = "z"
   },
   {
     type = "item-subgroup",
@@ -43,43 +43,43 @@ data:extend(
     type = "item-subgroup",
     name = "creatures",
     group = "environment",
-    order = "a",
+    order = "a"
   },
   {
     type = "item-subgroup",
     name = "cliffs",
     group = "environment",
-    order = "a",
+    order = "a"
   },
   {
     type = "item-subgroup",
     name = "trees",
     group = "environment",
-    order = "aa",
+    order = "aa"
   },
   {
     type = "item-subgroup",
     name = "grass",
     group = "environment",
-    order = "b",
+    order = "b"
   },
   {
     type = "item-subgroup",
     name = "corpses",
     group = "environment",
-    order = "c",
+    order = "c"
   },
   {
     type = "item-subgroup",
     name = "remnants",
     group = "environment",
-    order = "d",
+    order = "d"
   },
   {
     type = "item-subgroup",
     name = "wrecks",
     group = "environment",
-    order = "e",
+    order = "e"
   },
 
   {
@@ -93,32 +93,32 @@ data:extend(
     type = "item-subgroup",
     name = "enemies",
     group = "enemies",
-    order = "a",
+    order = "a"
   },
   {
     type = "item-group",
     name = "logistics",
     order = "aaa",
     icon = "__base__/graphics/item-group/logistics.png",
-    icon_size = 64,
+    icon_size = 64
   },
   {
     type = "item-subgroup",
     name = "storage",
     group = "logistics",
-    order = "a",
+    order = "a"
   },
   {
     type = "item-subgroup",
     name = "belt",
     group = "logistics",
-    order = "b",
+    order = "b"
   },
   {
     type = "item-subgroup",
     name = "inserter",
     group = "logistics",
-    order = "c",
+    order = "c"
   },
   {
     type = "item-subgroup",
@@ -130,13 +130,13 @@ data:extend(
     type = "item-subgroup",
     name = "transport",
     group = "logistics",
-    order = "e",
+    order = "e"
   },
   {
     type = "item-subgroup",
     name = "logistic-network",
     group = "logistics",
-    order = "f",
+    order = "f"
   },
   {
     type = "item-subgroup",
@@ -148,20 +148,20 @@ data:extend(
     type = "item-subgroup",
     name = "terrain",
     group = "logistics",
-    order = "h",
+    order = "h"
   },
   {
     type = "item-group",
     name = "production",
     order = "b",
     icon = "__base__/graphics/item-group/production.png",
-    icon_size = 64,
+    icon_size = 64
   },
   {
     type = "item-subgroup",
     name = "tool",
     group = "production",
-    order = "a",
+    order = "a"
   },
   {
     type = "item-subgroup",
@@ -173,25 +173,25 @@ data:extend(
     type = "item-subgroup",
     name = "extraction-machine",
     group = "production",
-    order = "c",
+    order = "c"
   },
   {
     type = "item-subgroup",
     name = "smelting-machine",
     group = "production",
-    order = "d",
+    order = "d"
   },
   {
     type = "item-subgroup",
     name = "production-machine",
     group = "production",
-    order = "e",
+    order = "e"
   },
   {
     type = "item-subgroup",
     name = "module",
     group = "production",
-    order = "f",
+    order = "f"
   },
 
   {
@@ -199,7 +199,7 @@ data:extend(
     name = "combat",
     order = "d",
     icon = "__base__/graphics/item-group/military.png",
-    icon_size = 64,
+    icon_size = 64
   },
   {
     type = "item-subgroup",
@@ -243,7 +243,7 @@ data:extend(
     order = "c",
     order_in_recipe = "0",
     icon = "__base__/graphics/item-group/intermediate-products.png",
-    icon_size = 64,
+    icon_size = 64
   },
   {
     type = "item-subgroup",
@@ -292,7 +292,7 @@ data:extend(
     name = "fluids",
     order = "e",
     icon = "__base__/graphics/item-group/fluids.png",
-    icon_size = 64,
+    icon_size = 64
   },
   {
     type = "item-subgroup",

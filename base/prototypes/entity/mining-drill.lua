@@ -31,7 +31,7 @@ data:extend(
         {
           positions = { {1, -2}, {2, -1}, {-1, 2}, {-2, 1} }
         }
-      },
+      }
     },
     energy_usage = "90kW",
     mining_speed = 1,
@@ -148,7 +148,7 @@ data:extend(
     working_sound =
     {
       sound = { filename = "__base__/sound/pumpjack.ogg" },
-      apparent_volume = 1.5,
+      apparent_volume = 1.5
     },
     fast_replaceable_group = "pumpjack",
     

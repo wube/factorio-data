@@ -32,6 +32,6 @@ data:extend(
     order = "b[turret]-d[artillery-turret]",
     place_result = "artillery-turret",
     stack_size = 10
-  },
+  }
 }
 )

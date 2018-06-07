@@ -47,7 +47,7 @@ data:extend(
         {
           ["enemy-base"] = { frequency = "very-high", size = "very-big"}
         },
-        starting_area = "small",
+        starting_area = "small"
       },
       advanced_settings =
       {
@@ -67,7 +67,7 @@ data:extend(
         {
           ["enemy-base"] = { frequency = "very-high", size = "very-big"}
         },
-        starting_area = "small",
+        starting_area = "small"
       },
       advanced_settings =
       {
@@ -123,7 +123,7 @@ data:extend(
           }
         },
         terrain_segmentation = "very-low",
-        water = "high",
+        water = "high"
       },
       advanced_settings =
       {

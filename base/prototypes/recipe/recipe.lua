@@ -35,7 +35,7 @@ data:extend(
       {
         {"iron-gear-wheel", 10},
         {"fast-transport-belt", 1},
-        {type="fluid", name="lubricant", amount=20},
+        {type="fluid", name="lubricant", amount=20}
       },
       result = "express-transport-belt"
     },
@@ -46,10 +46,10 @@ data:extend(
       {
         {"iron-gear-wheel", 20},
         {"fast-transport-belt", 1},
-        {type="fluid", name="lubricant", amount=20},
+        {type="fluid", name="lubricant", amount=20}
       },
-      result = "express-transport-belt",
-    },
+      result = "express-transport-belt"
+    }
   },
   {
     type = "recipe",
@@ -77,7 +77,7 @@ data:extend(
         {"iron-gear-wheel", 5},
         {"assembling-machine-1", 1}
       },
-      result = "assembling-machine-2",
+      result = "assembling-machine-2"
     },
     expensive =
     {
@@ -89,8 +89,8 @@ data:extend(
         {"iron-gear-wheel", 10},
         {"assembling-machine-1", 1}
       },
-      result = "assembling-machine-2",
-    },
+      result = "assembling-machine-2"
+    }
   },
   {
     type = "recipe",
@@ -157,7 +157,7 @@ data:extend(
       {"steel-plate", 1}
     },
     result = "rail",
-    result_count = 2,
+    result_count = 2
   },
   {
     type = "recipe",
@@ -235,7 +235,7 @@ data:extend(
       {"electronic-circuit", 1},
       {"iron-plate", 5}
     },
-    result = "rail-signal",
+    result = "rail-signal"
   },
   {
     type = "recipe",
@@ -246,7 +246,7 @@ data:extend(
       {"electronic-circuit", 1},
       {"iron-plate", 5}
     },
-    result = "rail-chain-signal",
+    result = "rail-chain-signal"
   },
   {
     type = "recipe",
@@ -291,14 +291,14 @@ data:extend(
     name = "iron-chest",
     enabled = true,
     ingredients = {{"iron-plate", 8}},
-    result = "iron-chest",
+    result = "iron-chest"
   },
   {
     type = "recipe",
     name = "steel-chest",
     enabled = false,
     ingredients = {{"steel-plate", 8}},
-    result = "steel-chest",
+    result = "steel-chest"
   },
   {
     type = "recipe",
@@ -390,7 +390,7 @@ data:extend(
       {"steel-plate", 15},
       {"copper-plate", 15},
       {"electronic-circuit", 10},
-      {"advanced-circuit", 5},
+      {"advanced-circuit", 5}
     },
     result = "railgun"
   },
@@ -425,7 +425,7 @@ data:extend(
     {
       {"advanced-circuit", 1},
       {"engine-unit", 1},
-      {"electric-mining-drill", 1},
+      {"electric-mining-drill", 1}
     },
     result = "science-pack-3"
   },
@@ -441,7 +441,7 @@ data:extend(
       {"gun-turret", 1}
     },
     result_count = 2,
-    result = "military-science-pack",
+    result = "military-science-pack"
   },
   {
     type = "recipe",
@@ -454,7 +454,7 @@ data:extend(
      {"electric-furnace", 1}
     },
     result_count = 2,
-    result = "production-science-pack",
+    result = "production-science-pack"
   },
   {
     type = "recipe",
@@ -469,7 +469,7 @@ data:extend(
       {"copper-cable", 30}
     },
     result_count = 2,
-    result = "high-tech-science-pack",
+    result = "high-tech-science-pack"
   },
 
   {
@@ -517,7 +517,7 @@ data:extend(
       {"transport-belt", 5}
     },
     result_count = 2,
-    result = "underground-belt",
+    result = "underground-belt"
   },
   {
     type = "recipe",
@@ -530,7 +530,7 @@ data:extend(
       {"underground-belt", 2}
     },
     result_count = 2,
-    result = "fast-underground-belt",
+    result = "fast-underground-belt"
   },
   {
     type = "recipe",
@@ -542,7 +542,7 @@ data:extend(
     {
       {"iron-gear-wheel", 80},
       {"fast-underground-belt", 2},
-      {type="fluid", name="lubricant", amount=40},
+      {type="fluid", name="lubricant", amount=40}
     },
     result_count = 2,
     result = "express-underground-belt"
@@ -597,7 +597,7 @@ data:extend(
       {"iron-plate", 5},
       {"transport-belt", 4}
     },
-    result = "splitter",
+    result = "splitter"
   },
   {
     type = "recipe",
@@ -610,7 +610,7 @@ data:extend(
       {"iron-gear-wheel", 10},
       {"electronic-circuit", 10}
     },
-    result = "fast-splitter",
+    result = "fast-splitter"
   },
   {
     type = "recipe",
@@ -640,7 +640,7 @@ data:extend(
         {"plastic-bar", 2},
         {"copper-cable", 4}
       },
-      result = "advanced-circuit",
+      result = "advanced-circuit"
     },
     expensive =
     {
@@ -652,7 +652,7 @@ data:extend(
         {"plastic-bar", 4},
         {"copper-cable", 8}
       },
-      result = "advanced-circuit",
+      result = "advanced-circuit"
     }
   },
   {
@@ -716,7 +716,7 @@ data:extend(
       {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-passive-provider",
+    result = "logistic-chest-passive-provider"
   },
   {
     type = "recipe",
@@ -728,7 +728,7 @@ data:extend(
       {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-active-provider",
+    result = "logistic-chest-active-provider"
   },
   {
     type = "recipe",
@@ -740,7 +740,7 @@ data:extend(
       {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-storage",
+    result = "logistic-chest-storage"
   },
   {
     type = "recipe",
@@ -752,7 +752,7 @@ data:extend(
       {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-buffer",
+    result = "logistic-chest-buffer"
   },
   {
     type = "recipe",
@@ -764,7 +764,7 @@ data:extend(
       {"electronic-circuit", 3},
       {"advanced-circuit", 1}
     },
-    result = "logistic-chest-requester",
+    result = "logistic-chest-requester"
   },
   {
     type = "recipe",
@@ -793,7 +793,7 @@ data:extend(
       {"iron-gear-wheel", 45},
       {"advanced-circuit", 45}
     },
-    result = "roboport",
+    result = "roboport"
   },
   {
     type = "recipe",
@@ -804,7 +804,7 @@ data:extend(
       {"steel-plate", 5},
       {"iron-stick", 2}
     },
-    result = "steel-axe",
+    result = "steel-axe"
   },
   {
     type = "recipe",
@@ -815,7 +815,7 @@ data:extend(
       {"steel-plate", 5},
       {"copper-plate", 5}
     },
-    result = "big-electric-pole",
+    result = "big-electric-pole"
   },
   {
     type = "recipe",
@@ -838,7 +838,7 @@ data:extend(
       {"steel-plate", 2},
       {"copper-plate", 2}
     },
-    result = "medium-electric-pole",
+    result = "medium-electric-pole"
   },
   {
     type = "recipe",
@@ -891,7 +891,7 @@ data:extend(
       {"steel-plate", 5},
       {"iron-gear-wheel", 10},
       {"electronic-circuit", 5},
-      {"pipe", 10},
+      {"pipe", 10}
     },
     result = "pumpjack",
     enabled = false
@@ -971,10 +971,10 @@ data:extend(
       {
         {type="item", name="sulfur", amount=1},
         {type="item", name="coal", amount=1},
-        {type="fluid", name="water", amount=10},
+        {type="fluid", name="water", amount=10}
       },
       result= "explosives",
-      result_count = 2,
+      result_count = 2
     },
     expensive =
     {
@@ -984,10 +984,10 @@ data:extend(
       {
         {type="item", name="sulfur", amount=2},
         {type="item", name="coal", amount=2},
-        {type="fluid", name="water", amount=10},
+        {type="fluid", name="water", amount=10}
       },
       result= "explosives",
-      result_count = 2,
+      result_count = 2
     }
   },
   {
@@ -1086,7 +1086,7 @@ data:extend(
     ingredients =
     {
       {"copper-cable", 5},
-      {"electronic-circuit", 5},
+      {"electronic-circuit", 5}
     },
     result = "arithmetic-combinator"
   },
@@ -1097,7 +1097,7 @@ data:extend(
     ingredients =
     {
       {"copper-cable", 5},
-      {"electronic-circuit", 5},
+      {"electronic-circuit", 5}
     },
     result = "decider-combinator"
   },
@@ -1108,7 +1108,7 @@ data:extend(
     ingredients =
     {
       {"copper-cable", 5},
-      {"electronic-circuit", 2},
+      {"electronic-circuit", 2}
     },
     result = "constant-combinator"
   },
@@ -1121,7 +1121,7 @@ data:extend(
     {
       {"iron-plate", 5},
       {"copper-cable", 5},
-      {"electronic-circuit", 2},
+      {"electronic-circuit", 2}
     },
     result = "power-switch"
   },
@@ -1134,7 +1134,7 @@ data:extend(
     {
       {"iron-plate", 5},
       {"copper-cable", 5},
-      {"electronic-circuit", 4},
+      {"electronic-circuit", 4}
     },
     result = "programmable-speaker"
   },
@@ -1165,7 +1165,7 @@ data:extend(
         {"plastic-bar", 10}
       },
       result= "low-density-structure"
-    },
+    }
   },
   {
     type = "recipe",
@@ -1203,7 +1203,7 @@ data:extend(
     {
       {"rocket-control-unit", 10},
       {"low-density-structure", 10},
-      {"rocket-fuel", 10},
+      {"rocket-fuel", 10}
     },
     result= "rocket-part"
   },
@@ -1317,7 +1317,7 @@ data:extend(
       {"concrete", 500},
       {"steel-plate", 500},
       {"advanced-circuit", 500},
-      {"copper-plate", 500},
+      {"copper-plate", 500}
     },
     result = "nuclear-reactor",
     requester_paste_multiplier = 1
@@ -1332,10 +1332,10 @@ data:extend(
       {"concrete", 100},
       {"steel-plate", 50},
       {"advanced-circuit", 100},
-      {"iron-gear-wheel", 100},
+      {"iron-gear-wheel", 100}
     },
     result = "centrifuge",
-    requester_paste_multiplier= 10,
+    requester_paste_multiplier= 10
   },
   {
     type = "recipe",
@@ -1396,7 +1396,7 @@ data:extend(
     ingredients = {{"uranium-235", 1}, {"rocket-fuel", 1}},
     icon = "__base__/graphics/icons/nuclear-fuel.png",
     icon_size = 32,
-    result = "nuclear-fuel",
+    result = "nuclear-fuel"
   },
   {
     type = "recipe",

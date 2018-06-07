@@ -33,7 +33,7 @@ return
   axially_symmetrical = false,
   direction_count = 4,
   draw_as_shadow = true,
-  shift = {1.375, 0},
+  shift = {1.375, 0}
 }
 end
 
@@ -50,7 +50,7 @@ return
   axially_symmetrical = false,
   apply_runtime_tint = true,
   direction_count = 4,
-  shift = {-0.015625, -1.26563},
+  shift = {-0.015625, -1.26563}
 }
 end
 
@@ -208,7 +208,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-16.png"
           },
           hr_version =
           {
@@ -237,7 +237,7 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-16.png"
             }
           }
         },
@@ -267,7 +267,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-16.png"
           },
           hr_version =
           {
@@ -297,10 +297,10 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-16.png"
             }
           }
-        },
+        }
       }
     },
     cannon_base_pictures =
@@ -332,7 +332,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-16.png"
           },
           hr_version =
           {
@@ -361,7 +361,7 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-16.png"
             }
           }
         },
@@ -391,7 +391,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-16.png"
           },
           hr_version =
           {
@@ -421,10 +421,10 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-16.png"
             }
           }
-        },
+        }
       }
     },
     cannon_base_shiftings =
@@ -684,7 +684,7 @@ data:extend(
       util.by_pixel(10.0, 18.0),
       util.by_pixel(8.0, 18.5),
       util.by_pixel(6.0, 19.0),
-      util.by_pixel(4.0, 19.0),
+      util.by_pixel(4.0, 19.0)
     },
     cannon_barrel_recoil_shiftings =
     {
@@ -726,11 +726,11 @@ data:extend(
     {
       { 0,    0.25,   0 },
       {-0.25,    0,   0 },
-      { 0,       0,   0.25 },
+      { 0,       0,   0.25 }
     },
 
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-  },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
+  }
 })
 
 
@@ -750,17 +750,17 @@ data:extend(
     {
       {
         type = "physical",
-        decrease = 5,
+        decrease = 5
       },
       {
         type = "explosion",
         decrease = 5,
-        percent = 15,
+        percent = 15
       },
       {
         type = "fire",
         decrease = 2,
-        percent = 50,
+        percent = 50
       }
 
     },
@@ -828,17 +828,17 @@ data:extend(
     {
       {
         type = "physical",
-        decrease = 10,
+        decrease = 10
       },
       {
         type = "explosion",
         decrease = 10,
-        percent = 30,
+        percent = 30
       },
       {
         type = "fire",
         decrease = 3,
-        percent = 70,
+        percent = 70
       }
 
     },
@@ -958,7 +958,7 @@ data:extend(
           axially_symmetrical = false,
           apply_runtime_tint = true,
           direction_count = 64,
-          shift = {-0.03125, -1.3125},
+          shift = {-0.03125, -1.3125}
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-shadow.png",
@@ -1006,8 +1006,8 @@ data:extend(
           apply_runtime_tint = true,
           direction_count = 1,
           frame_count = 1,
-          shift = {-0.046875, -0.109375},
-        },
+          shift = {-0.046875, -0.109375}
+        }
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },

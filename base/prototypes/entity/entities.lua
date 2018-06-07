@@ -39,7 +39,7 @@ standard_train_wheels =
   line_length = 8,
   lines_per_file = 16,
   hr_version =
-    {
+  {
     priority = "very-low",
     width = 229,
     height = 227,
@@ -53,17 +53,18 @@ standard_train_wheels =
       "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-5.png",
       "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-6.png",
       "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-7.png",
-      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-8.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-8.png"
     },
     line_length = 4,
     lines_per_file = 8,
     --shift = {0.015625, -0.453125}, original shifting from spritesheeter (likely needs doubling or halving)
     scale = 0.5
-    }
+  }
 }
 
 function drive_over_tie()
-  return {
+  return
+  {
     type = "play-sound",
     sound =
     {
@@ -82,7 +83,7 @@ function drive_over_tie()
       {
         filename = "__base__/sound/train-tie-4.ogg",
         volume = 0.6
-      },
+      }
     }
   }
 end
@@ -112,7 +113,7 @@ function crash_trigger()
       {
         filename = "__base__/sound/car-crash.ogg",
         volume = 0.4
-      },
+      }
     }
   }
 end
@@ -215,7 +216,8 @@ function make_heat_pipe_pictures(path, name_prefix, data)
     else
       local tile_pictures = {}
       for i = 1, (t.variations or 1) do
-        local sprite = {
+        local sprite =
+        {
           priority = "extra-high",
           filename = path .. name_prefix .. "-" .. (t.name or string.gsub(key, "_", "-")) .. (t.ommit_number and ".png" or ("-" .. tostring(i) .. ".png")),
           width = (t.width or 32),
@@ -228,7 +230,7 @@ function make_heat_pipe_pictures(path, name_prefix, data)
             width = (t.width or 32) * 2,
             height = (t.height or 32) * 2,
             scale = 0.5,
-            shift = t.shift,
+            shift = t.shift
           }
         }
         table.insert(tile_pictures, sprite)
@@ -837,8 +839,8 @@ data:extend(
           shift = {0.203125, -0.109375},
           scale = 0.5
         }
-      },
-    },
+      }
+    }
   },
   {
     type = "splitter",
@@ -956,7 +958,7 @@ data:extend(
           shift = {0.203125, -0.109375},
           scale = 0.5
         }
-      },
+      }
     },
     ending_patch = ending_patch_prototype
   },
@@ -1077,7 +1079,7 @@ data:extend(
           shift = {0.203125, -0.109375},
           scale = 0.5
         }
-      },
+      }
     }
   },
   {
@@ -1296,8 +1298,8 @@ data:extend(
             shift = util.by_pixel(12, 4.75),
             scale = 0.5
           }
-        },
-      },
+        }
+      }
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
@@ -1313,10 +1315,10 @@ data:extend(
         {
           filename = "__base__/sound/assembling-machine-t2-2.ogg",
           volume = 0.8
-        },
+        }
       },
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5,
+      apparent_volume = 1.5
     },
     crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 0.75,
@@ -1379,7 +1381,8 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
-      sound = {
+      sound =
+      {
         {
           filename = "__base__/sound/assembling-machine-t3-1.ogg",
           volume = 0.8
@@ -1387,10 +1390,10 @@ data:extend(
         {
           filename = "__base__/sound/assembling-machine-t3-2.ogg",
           volume = 0.8
-        },
+        }
       },
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5,
+      apparent_volume = 1.5
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1408,7 +1411,8 @@ data:extend(
           frame_count = 32,
           line_length = 8,
           shift = util.by_pixel(0, -0.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/assembling-machine-3/hr-assembling-machine-3.png",
             priority = "high",
             width = 214,
@@ -1428,7 +1432,8 @@ data:extend(
           line_length = 8,
           draw_as_shadow = true,
           shift = util.by_pixel(28, 4),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/assembling-machine-3/hr-assembling-machine-3-shadow.png",
             priority = "high",
             width = 260,
@@ -1439,8 +1444,8 @@ data:extend(
             shift = util.by_pixel(28, 4),
             scale = 0.5
           }
-        },
-      },
+        }
+      }
     },
 
     crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
@@ -1565,18 +1570,18 @@ data:extend(
             {
              filename = "__base__/graphics/entity/car/car-1.png",
              width_in_frames = 2,
-             height_in_frames = 22,
+             height_in_frames = 22
             },
             {
              filename = "__base__/graphics/entity/car/car-2.png",
              width_in_frames = 2,
-             height_in_frames = 22,
+             height_in_frames = 22
             },
             {
              filename = "__base__/graphics/entity/car/car-3.png",
              width_in_frames = 2,
-             height_in_frames = 20,
-            },
+             height_in_frames = 20
+            }
           },
           hr_version =
           {
@@ -1639,18 +1644,18 @@ data:extend(
             {
               filename = "__base__/graphics/entity/car/car-mask-1.png",
               width_in_frames = 1,
-              height_in_frames = 22,
+              height_in_frames = 22
             },
             {
               filename = "__base__/graphics/entity/car/car-mask-2.png",
               width_in_frames = 1,
-              height_in_frames = 22,
+              height_in_frames = 22
             },
             {
               filename = "__base__/graphics/entity/car/car-mask-3.png",
               width_in_frames = 1,
-              height_in_frames = 20,
-            },
+              height_in_frames = 20
+            }
           }),
           hr_version =
           {
@@ -1709,17 +1714,17 @@ data:extend(
            {
             filename = "__base__/graphics/entity/car/car-shadow-1.png",
             width_in_frames = 1,
-            height_in_frames = 22,
+            height_in_frames = 22
            },
            {
             filename = "__base__/graphics/entity/car/car-shadow-2.png",
             width_in_frames = 1,
-            height_in_frames = 22,
+            height_in_frames = 22
            },
            {
             filename = "__base__/graphics/entity/car/car-shadow-3.png",
             width_in_frames = 1,
-            height_in_frames = 20,
+            height_in_frames = 20
            }
           })
         }
@@ -1819,7 +1824,7 @@ data:extend(
         filename = "__base__/sound/car-engine-stop.ogg",
         volume = 0.6
       },
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
     open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
@@ -1907,7 +1912,7 @@ data:extend(
           flags = { "light" },
           scale = 2,
           width = 200,
-          height = 200,
+          height = 200
         },
         shift = {-0.6, -14},
         size = 2,
@@ -1950,25 +1955,26 @@ data:extend(
             {
              filename = "__base__/graphics/entity/tank/tank-base-1.png",
              width_in_frames = 2,
-             height_in_frames = 16,
+             height_in_frames = 16
             },
             {
              filename = "__base__/graphics/entity/tank/tank-base-2.png",
              width_in_frames = 2,
-             height_in_frames = 16,
+             height_in_frames = 16
             },
             {
              filename = "__base__/graphics/entity/tank/tank-base-3.png",
              width_in_frames = 2,
-             height_in_frames = 16,
+             height_in_frames = 16
             },
             {
              filename = "__base__/graphics/entity/tank/tank-base-4.png",
              width_in_frames = 2,
-             height_in_frames = 16,
+             height_in_frames = 16
             }
           },
-          hr_version = {
+          hr_version =
+          {
             priority = "low",
             width = 269,
             height = 212,
@@ -1982,22 +1988,22 @@ data:extend(
               {
                filename = "__base__/graphics/entity/tank/hr-tank-base-1.png",
                width_in_frames = 2,
-               height_in_frames = 16,
+               height_in_frames = 16
               },
               {
                filename = "__base__/graphics/entity/tank/hr-tank-base-2.png",
                width_in_frames = 2,
-               height_in_frames = 16,
+               height_in_frames = 16
               },
               {
                filename = "__base__/graphics/entity/tank/hr-tank-base-3.png",
                width_in_frames = 2,
-               height_in_frames = 16,
+               height_in_frames = 16
               },
               {
                filename = "__base__/graphics/entity/tank/hr-tank-base-4.png",
                width_in_frames = 2,
-               height_in_frames = 16,
+               height_in_frames = 16
               }
             },
             scale = 0.5
@@ -2018,18 +2024,18 @@ data:extend(
             {
               filename = "__base__/graphics/entity/tank/tank-base-mask-1.png",
               width_in_frames = 1,
-              height_in_frames = 22,
+              height_in_frames = 22
             },
             {
               filename = "__base__/graphics/entity/tank/tank-base-mask-2.png",
               width_in_frames = 1,
-              height_in_frames = 22,
+              height_in_frames = 22
             },
             {
               filename = "__base__/graphics/entity/tank/tank-base-mask-3.png",
               width_in_frames = 1,
-              height_in_frames = 20,
-            },
+              height_in_frames = 20
+            }
           }),
           hr_version =
           {
@@ -2047,18 +2053,18 @@ data:extend(
               {
                 filename = "__base__/graphics/entity/tank/hr-tank-base-mask-1.png",
                 width_in_frames = 1,
-                height_in_frames = 22,
+                height_in_frames = 22
               },
               {
                 filename = "__base__/graphics/entity/tank/hr-tank-base-mask-2.png",
                 width_in_frames = 1,
-                height_in_frames = 22,
+                height_in_frames = 22
               },
               {
                 filename = "__base__/graphics/entity/tank/hr-tank-base-mask-3.png",
                 width_in_frames = 1,
-                height_in_frames = 20,
-              },
+                height_in_frames = 20
+              }
             }),
             scale = 0.5
           }
@@ -2077,22 +2083,22 @@ data:extend(
            {
             filename = "__base__/graphics/entity/tank/tank-base-shadow-1.png",
             width_in_frames = 1,
-            height_in_frames = 16,
+            height_in_frames = 16
            },
            {
             filename = "__base__/graphics/entity/tank/tank-base-shadow-2.png",
             width_in_frames = 1,
-            height_in_frames = 16,
+            height_in_frames = 16
            },
            {
             filename = "__base__/graphics/entity/tank/tank-base-shadow-3.png",
             width_in_frames = 1,
-            height_in_frames = 16,
+            height_in_frames = 16
            },
            {
             filename = "__base__/graphics/entity/tank/tank-base-shadow-4.png",
             width_in_frames = 1,
-            height_in_frames = 16,
+            height_in_frames = 16
            }
           }),
           hr_version =
@@ -2110,22 +2116,22 @@ data:extend(
              {
               filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-1.png",
               width_in_frames = 1,
-              height_in_frames = 16,
+              height_in_frames = 16
              },
              {
               filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-2.png",
               width_in_frames = 1,
-              height_in_frames = 16,
+              height_in_frames = 16
              },
              {
               filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-3.png",
               width_in_frames = 1,
-              height_in_frames = 16,
+              height_in_frames = 16
              },
              {
               filename = "__base__/graphics/entity/tank/hr-tank-base-shadow-4.png",
               width_in_frames = 1,
-              height_in_frames = 16,
+              height_in_frames = 16
              }
             }),
             scale = 0.5
@@ -2219,7 +2225,7 @@ data:extend(
       {
         filename = "__base__/sound/fight/tank-no-fuel-1.ogg",
         volume = 0.6
-      },
+      }
     },
     stop_trigger =
     {
@@ -2230,9 +2236,9 @@ data:extend(
           {
             filename = "__base__/sound/car-breaks.ogg",
             volume = 0.6
-          },
+          }
         }
-      },
+      }
     },
     sound_minimum_speed = 0.15;
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -2253,7 +2259,7 @@ data:extend(
         filename = "__base__/sound/fight/tank-engine-stop.ogg",
         volume = 0.6
       },
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
     open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
@@ -2261,7 +2267,7 @@ data:extend(
     tank_driving = true,
     weight = 20000,
     inventory_size = 80,
-    guns = { "tank-cannon", "tank-machine-gun", "tank-flamethrower" },
+    guns = { "tank-cannon", "tank-machine-gun", "tank-flamethrower" }
   },
   {
     type = "container",
@@ -2407,7 +2413,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 34,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/long-handed-inserter/hr-long-handed-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -2421,7 +2428,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/long-handed-inserter/hr-long-handed-inserter-hand-closed.png",
         priority = "extra-high",
         width = 72,
@@ -2435,7 +2443,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/long-handed-inserter/hr-long-handed-inserter-hand-open.png",
         priority = "extra-high",
         width = 72,
@@ -2449,7 +2458,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -2463,7 +2473,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2477,7 +2488,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2494,7 +2506,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/long-handed-inserter/hr-long-handed-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -2579,7 +2592,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 34,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/fast-inserter/hr-fast-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -2593,7 +2607,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/fast-inserter/hr-fast-inserter-hand-closed.png",
         priority = "extra-high",
         width = 72,
@@ -2607,7 +2622,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/fast-inserter/hr-fast-inserter-hand-open.png",
         priority = "extra-high",
         width = 72,
@@ -2621,7 +2637,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -2635,7 +2652,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2649,7 +2667,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2666,7 +2685,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/fast-inserter/hr-fast-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -2753,7 +2773,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 34,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -2767,7 +2788,8 @@ data:extend(
       priority = "extra-high",
       width = 24,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-closed.png",
         priority = "extra-high",
         width = 100,
@@ -2781,7 +2803,8 @@ data:extend(
       priority = "extra-high",
       width = 32,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-open.png",
         priority = "extra-high",
         width = 130,
@@ -2795,7 +2818,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -2809,7 +2833,8 @@ data:extend(
       priority = "extra-high",
       width = 24,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 100,
@@ -2823,7 +2848,8 @@ data:extend(
       priority = "extra-high",
       width = 32,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 130,
@@ -2840,7 +2866,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -2928,7 +2955,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 34,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-filter-inserter/hr-stack-filter-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -2942,7 +2970,8 @@ data:extend(
       priority = "extra-high",
       width = 24,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-filter-inserter/hr-stack-filter-inserter-hand-closed.png",
         priority = "extra-high",
         width = 100,
@@ -2956,7 +2985,8 @@ data:extend(
       priority = "extra-high",
       width = 32,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-filter-inserter/hr-stack-filter-inserter-hand-open.png",
         priority = "extra-high",
         width = 130,
@@ -2970,7 +3000,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -2984,7 +3015,8 @@ data:extend(
       priority = "extra-high",
       width = 24,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 100,
@@ -2998,7 +3030,8 @@ data:extend(
       priority = "extra-high",
       width = 32,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/stack-inserter/hr-stack-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 130,
@@ -3015,7 +3048,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/stack-filter-inserter/hr-stack-filter-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -3097,7 +3131,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 34,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -3111,7 +3146,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-hand-closed.png",
         priority = "extra-high",
         width = 72,
@@ -3125,7 +3161,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-hand-open.png",
         priority = "extra-high",
         width = 72,
@@ -3139,7 +3176,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -3153,7 +3191,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -3167,7 +3206,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -3184,7 +3224,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -3226,7 +3267,8 @@ data:extend(
           width = 116,
           height = 112,
           shift = util.by_pixel(-3, 3),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/solar-panel/hr-solar-panel.png",
             priority = "high",
             width = 230,
@@ -3242,7 +3284,8 @@ data:extend(
           height = 90,
           shift = util.by_pixel(10, 6),
           draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/solar-panel/hr-solar-panel-shadow.png",
             priority = "high",
             width = 220,
@@ -3264,7 +3307,8 @@ data:extend(
           width = 108,
           height = 90,
           shift = util.by_pixel(11, 6),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/solar-panel/hr-solar-panel-shadow-overlay.png",
             priority = "high",
             width = 214,
@@ -3349,7 +3393,7 @@ data:extend(
           height = 2,
           height_deviation = 0.5,
           starting_vertical_speed = 0.2,
-          starting_vertical_speed_deviation = 0.1,
+          starting_vertical_speed_deviation = 0.1
         }
       }
     },
@@ -3570,9 +3614,9 @@ data:extend(
           {
             filename = "__base__/sound/train-breaks.ogg",
             volume = 0.6
-          },
+          }
         }
-      },
+      }
     },
     drive_over_tie_trigger = drive_over_tie(),
     tie_distance = 50,
@@ -3584,7 +3628,7 @@ data:extend(
         filename = "__base__/sound/train-engine.ogg",
         volume = 0.4
       },
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
     open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
@@ -3987,7 +4031,7 @@ data:extend(
         filename = "__base__/sound/train-wheels.ogg",
         volume = 0.6
       },
-      match_volume_to_activity = true,
+      match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
@@ -4157,7 +4201,7 @@ data:extend(
         filename = "__base__/sound/train-wheels.ogg",
         volume = 0.6
       },
-      match_volume_to_activity = true,
+      match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
     sound_minimum_speed = 0.5;
@@ -4255,7 +4299,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-16.png"
           },
           hr_version =
           {
@@ -4286,7 +4330,7 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-16.png"
             }
           }
         },
@@ -4318,7 +4362,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-shadow-16.png"
           },
           hr_version =
           {
@@ -4350,7 +4394,7 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-shadow-16.png"
             }
           }
         }
@@ -4385,7 +4429,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-16.png"
           },
           hr_version =
           {
@@ -4414,7 +4458,7 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-16.png"
             }
           }
         },
@@ -4444,7 +4488,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-barrel-shadow-16.png"
           },
           hr_version =
           {
@@ -4474,10 +4518,10 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-barrel-shadow-16.png"
             }
           }
-        },
+        }
       }
     },
     cannon_base_pictures =
@@ -4509,7 +4553,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-16.png"
           },
           hr_version =
           {
@@ -4538,7 +4582,7 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-16.png"
             }
           }
         },
@@ -4568,7 +4612,7 @@ data:extend(
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-13.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-14.png",
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-15.png",
-            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-16.png",
+            "__base__/graphics/entity/artillery-wagon/artillery-wagon-cannon-base-shadow-16.png"
           },
           hr_version =
           {
@@ -4598,10 +4642,10 @@ data:extend(
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-13.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-14.png",
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-15.png",
-              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-16.png",
+              "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-cannon-base-shadow-16.png"
             }
           }
-        },
+        }
       }
     },
     cannon_base_shiftings =
@@ -4861,7 +4905,7 @@ data:extend(
       util.by_pixel(10.0, 18.0),
       util.by_pixel(8.0, 18.5),
       util.by_pixel(6.0, 19.0),
-      util.by_pixel(4.0, 19.0),
+      util.by_pixel(4.0, 19.0)
     },
     cannon_barrel_recoil_shiftings =
     {
@@ -4903,7 +4947,7 @@ data:extend(
     {
       { 0,    0.25,   0 },
       {-0.25,    0,   0 },
-      { 0,       0,   0.25 },
+      { 0,       0,   0.25 }
     },
     wheels = standard_train_wheels,
     rail_category = "regular",
@@ -4916,7 +4960,7 @@ data:extend(
         filename = "__base__/sound/train-wheels.ogg",
         volume = 0.6
       },
-      match_volume_to_activity = true,
+      match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
@@ -5128,7 +5172,7 @@ data:extend(
       width = 64,
       height = 64,
       frame_count = 16,
-      shift = {0, 0},
+      shift = {0, 0}
     },
     horizontal_rail_base =
     {
@@ -5137,7 +5181,7 @@ data:extend(
       width = 64,
       height = 45,
       frame_count = 16,
-      shift = {0, -0.015625 + 0.125},
+      shift = {0, -0.015625 + 0.125}
     },
     vertical_rail_base_mask =
     {
@@ -5311,7 +5355,7 @@ data:extend(
     collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
     selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
     rail_category = "regular",
-    pictures = rail_pictures(),
+    pictures = rail_pictures()
   },
   {
     type = "curved-rail",
@@ -5410,7 +5454,7 @@ data:extend(
                   }
                 }
               }
-            },
+            }
           },
           {
             type = "create-entity",
@@ -5422,7 +5466,7 @@ data:extend(
           }
         }
       }
-    },
+    }
   },
   {
     type = "train-stop",
@@ -5440,7 +5484,7 @@ data:extend(
       north = {{-3,-2.5}, {0.8, 1.25}},
       east = {{-1.75, -4.25},{1.625, 0.5}},
       south = {{-0.8125, -3.625},{2.75, 0.4375}},
-      west = {{-1.75, -1.6875},{2.0625, 2.75}},
+      west = {{-1.75, -1.6875},{2.0625, 2.75}}
     },
     tile_width = 2,
     tile_height = 2,
@@ -5453,7 +5497,8 @@ data:extend(
       height = 189,
       direction_count = 4,
       shift = util.by_pixel(0, -0.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/train-stop/hr-train-stop-ground.png",
           line_length = 4,
           width = 386,
@@ -5473,7 +5518,8 @@ data:extend(
         height = 146,
         direction_count = 4,
         shift = util.by_pixel(-0.5, -27),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-bottom.png",
             line_length = 4,
             width = 140,
@@ -5491,7 +5537,8 @@ data:extend(
         direction_count = 4,
         shift = util.by_pixel(-7.5, 18),
         draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-shadow.png",
             line_length = 4,
             width = 720,
@@ -5501,7 +5548,7 @@ data:extend(
             draw_as_shadow = true,
             scale = 0.5
           }
-      },
+      }
     }}),
 
     top_animations = make_4way_animation_from_spritesheet({ layers =
@@ -5513,7 +5560,8 @@ data:extend(
         height = 153,
         direction_count = 4,
         shift = util.by_pixel(0, -50.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-top.png",
             line_length = 4,
             width = 311,
@@ -5531,7 +5579,8 @@ data:extend(
         direction_count = 4,
         apply_runtime_tint = true,
         shift = util.by_pixel(0, -49),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-top-mask.png",
             line_length = 4,
             width = 306,
@@ -5556,7 +5605,8 @@ data:extend(
           height = 5,
           frame_count = 1,
           shift = util.by_pixel(-70.5, -44.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-light-1.png",
             width = 17,
             height = 9,
@@ -5572,7 +5622,8 @@ data:extend(
           height = 9,
           frame_count = 1,
           shift = util.by_pixel(34.5, 19.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-light-1.png",
             width = 6,
             height = 16,
@@ -5588,7 +5639,8 @@ data:extend(
           height = 2,
           frame_count = 1,
           shift = util.by_pixel(70, -95),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-light-1.png",
             width = 16,
             height = 4,
@@ -5604,7 +5656,8 @@ data:extend(
           height = 8,
           frame_count = 1,
           shift = util.by_pixel(-30.5, -112),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-light-1.png",
             width = 6,
             height = 16,
@@ -5612,7 +5665,7 @@ data:extend(
             shift = util.by_pixel(-30.5, -112),
             scale = 0.5
             }
-        },
+        }
       },
       red_picture =
       {
@@ -5623,7 +5676,8 @@ data:extend(
           height = 5,
           frame_count = 1,
           shift = util.by_pixel(-70.5, -44.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-red-light-1.png",
             width = 17,
             height = 9,
@@ -5639,7 +5693,8 @@ data:extend(
           height = 9,
           frame_count = 1,
           shift = util.by_pixel(34.5, 19.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-red-light-1.png",
             width = 6,
             height = 16,
@@ -5655,7 +5710,8 @@ data:extend(
           height = 2,
           frame_count = 1,
           shift = util.by_pixel(70, -95),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-red-light-1.png",
             width = 16,
             height = 4,
@@ -5671,7 +5727,8 @@ data:extend(
           height = 8,
           frame_count = 1,
           shift = util.by_pixel(-30.5, -112),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-red-light-1.png",
             width = 6,
             height = 16,
@@ -5679,7 +5736,7 @@ data:extend(
             shift = util.by_pixel(-30.5, -112),
             scale = 0.5
             }
-        },
+        }
       }
     },
 
@@ -5695,7 +5752,8 @@ data:extend(
           height = 5,
           frame_count = 1,
           shift = util.by_pixel(-57.5, -43.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-light-2.png",
             width = 16,
             height = 9,
@@ -5711,7 +5769,8 @@ data:extend(
           height = 8,
           frame_count = 1,
           shift = util.by_pixel(34.5, 10),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-light-2.png",
             width = 6,
             height = 16,
@@ -5727,7 +5786,8 @@ data:extend(
           height = 3,
           frame_count = 1,
           shift = util.by_pixel(57, -94.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-light-2.png",
             width = 16,
             height = 5,
@@ -5743,7 +5803,8 @@ data:extend(
           height = 8,
           frame_count = 1,
           shift = util.by_pixel(-31, -103),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-light-2.png",
             width = 7,
             height = 15,
@@ -5751,7 +5812,7 @@ data:extend(
             shift = util.by_pixel(-30.75, -102.75),
             scale = 0.5
             }
-        },
+        }
       },
       red_picture =
       {
@@ -5762,7 +5823,8 @@ data:extend(
           height = 5,
           frame_count = 1,
           shift = util.by_pixel(-57.5, -43.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-red-light-2.png",
             width = 16,
             height = 9,
@@ -5778,7 +5840,8 @@ data:extend(
           height = 8,
           frame_count = 1,
           shift = util.by_pixel(34.5, 10),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-red-light-2.png",
             width = 6,
             height = 16,
@@ -5794,7 +5857,8 @@ data:extend(
           height = 3,
           frame_count = 1,
           shift = util.by_pixel(57, -94.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-red-light-2.png",
             width = 16,
             height = 5,
@@ -5810,7 +5874,8 @@ data:extend(
           height = 8,
           frame_count = 1,
           shift = util.by_pixel(-31, -103),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-red-light-2.png",
             width = 7,
             height = 15,
@@ -5818,7 +5883,7 @@ data:extend(
             shift = util.by_pixel(-30.75, -102.75),
             scale = 0.5
             }
-        },
+        }
       }
     },
 
@@ -5856,7 +5921,8 @@ data:extend(
       height = 96,
       frame_count = 3,
       direction_count = 8,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/rail-signal/hr-rail-signal.png",
         priority = "high",
         width = 192,
@@ -5874,7 +5940,8 @@ data:extend(
       height = 96,
       frame_count = 10,
       axially_symmetrical = false,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/rail-signal/hr-rail-signal-metal.png",
         line_length = 10,
         width = 192,
@@ -5918,7 +5985,8 @@ data:extend(
       frame_count = 5,
       axially_symmetrical = false,
       direction_count = 8,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/rail-chain-signal/hr-rail-chain-signal.png",
         priority = "high",
         line_length = 5,
@@ -5938,7 +6006,8 @@ data:extend(
       height = 192,
       frame_count = 10,
       axially_symmetrical = false,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/rail-chain-signal/hr-rail-chain-signal-metal.png",
         line_length = 10,
         width = 384,
@@ -5998,7 +6067,8 @@ data:extend(
           line_length = 11,
           animation_speed = 1 / 3,
           shift = util.by_pixel(0, 1.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/lab/hr-lab.png",
             width = 194,
             height = 174,
@@ -6018,7 +6088,8 @@ data:extend(
           repeat_count = 33,
           animation_speed = 1 / 3,
           shift = util.by_pixel(0, 15.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
             width = 242,
             height = 162,
@@ -6040,7 +6111,8 @@ data:extend(
           animation_speed = 1 / 3,
           shift = util.by_pixel(13, 11),
           draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
             width = 242,
             height = 136,
@@ -6065,7 +6137,8 @@ data:extend(
           height = 87,
           frame_count = 1,
           shift = util.by_pixel(0, 1.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/lab/hr-lab.png",
             width = 194,
             height = 174,
@@ -6080,7 +6153,8 @@ data:extend(
           height = 81,
           frame_count = 1,
           shift = util.by_pixel(0, 15.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
             width = 242,
             height = 162,
@@ -6096,7 +6170,8 @@ data:extend(
           frame_count = 1,
           shift = util.by_pixel(13, 11),
           draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
             width = 242,
             height = 136,
@@ -6175,7 +6250,8 @@ data:extend(
       shift = {0.015625, -0.09375},
       direction_count = 16,
       y = 42,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
         priority = "high",
         line_length = 16,
@@ -6198,7 +6274,8 @@ data:extend(
       frame_count = 1,
       shift = {0.015625, -0.09375},
       direction_count = 16,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
         priority = "high",
         line_length = 16,
@@ -6221,7 +6298,8 @@ data:extend(
       shift = {0.015625, -0.09375},
       direction_count = 16,
       y = 126,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
         priority = "high",
         line_length = 16,
@@ -6245,7 +6323,8 @@ data:extend(
       shift = {0.015625, -0.09375},
       direction_count = 16,
       y = 84,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot.png",
         priority = "high",
         line_length = 16,
@@ -6269,7 +6348,8 @@ data:extend(
       shift = {0.96875, 0.609375},
       direction_count = 16,
       y = 23,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -6292,7 +6372,8 @@ data:extend(
       frame_count = 1,
       shift = {0.96875, 0.609375},
       direction_count = 16,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -6315,7 +6396,8 @@ data:extend(
       shift = {0.96875, 0.609375},
       direction_count = 16,
       y = 23,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -6338,7 +6420,8 @@ data:extend(
       frame_count = 1,
       shift = {0.96875, 0.609375},
       direction_count = 16,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -6352,7 +6435,7 @@ data:extend(
       }
     },
     working_sound = flying_robot_sounds(),
-    cargo_centered = {0.0, 0.2},
+    cargo_centered = {0.0, 0.2}
   },
 
   {
@@ -6386,7 +6469,8 @@ data:extend(
       frame_count = 1,
       shift = {0, -0.15625},
       direction_count = 16,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
         priority = "high",
         line_length = 16,
@@ -6409,7 +6493,8 @@ data:extend(
       shift = {0, -0.15625},
       direction_count = 16,
       y = 36,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
         priority = "high",
         line_length = 16,
@@ -6432,7 +6517,8 @@ data:extend(
       frame_count = 1,
       shift = {1.09375, 0.59375},
       direction_count = 16,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -6454,7 +6540,8 @@ data:extend(
       frame_count = 1,
       shift = {1.09375, 0.59375},
       direction_count = 16,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -6477,7 +6564,8 @@ data:extend(
       shift = {0, -0.15625},
       direction_count = 16,
       animation_speed = 0.3,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-working.png",
         priority = "high",
         line_length = 2,
@@ -6497,7 +6585,7 @@ data:extend(
         {
           filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
           width_in_frames = 16,
-          height_in_frames = 1,
+          height_in_frames = 1
         }
       }),
       priority = "high",
@@ -6515,7 +6603,7 @@ data:extend(
       frame_count = 19,
       line_length = 19,
       shift = {0.078125, -0.15625},
-      animation_speed = 0.3,
+      animation_speed = 0.3
     },
     sparks =
     {
@@ -6527,7 +6615,7 @@ data:extend(
         line_length = 19,
         shift = {-0.109375, 0.3125},
         tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3,
+        animation_speed = 0.3
       },
       {
         filename = "__base__/graphics/entity/sparks/sparks-02.png",
@@ -6537,7 +6625,7 @@ data:extend(
         line_length = 19,
         shift = {0.03125, 0.125},
         tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3,
+        animation_speed = 0.3
       },
       {
         filename = "__base__/graphics/entity/sparks/sparks-03.png",
@@ -6547,7 +6635,7 @@ data:extend(
         line_length = 19,
         shift = {-0.0625, 0.203125},
         tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3,
+        animation_speed = 0.3
       },
       {
         filename = "__base__/graphics/entity/sparks/sparks-04.png",
@@ -6557,7 +6645,7 @@ data:extend(
         line_length = 19,
         shift = {-0.0625, 0.234375},
         tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3,
+        animation_speed = 0.3
       },
       {
         filename = "__base__/graphics/entity/sparks/sparks-05.png",
@@ -6567,7 +6655,7 @@ data:extend(
         line_length = 19,
         shift = {-0.109375, 0.171875},
         tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3,
+        animation_speed = 0.3
       },
       {
         filename = "__base__/graphics/entity/sparks/sparks-06.png",
@@ -6577,12 +6665,12 @@ data:extend(
         line_length = 19,
         shift = {0.03125, 0.3125},
         tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3,
-      },
+        animation_speed = 0.3
+      }
     },
     working_sound = flying_robot_sounds(),
     cargo_centered = {0.0, 0.2},
-    construction_vector = {0.30, 0.22},
+    construction_vector = {0.30, 0.22}
   },
   {
     type = "logistic-container",
@@ -7265,7 +7353,7 @@ data:extend(
       line_length = 8,
       animation_speed = 0.5,
       scale = 1.5,
-      shift = {1.28125, 7.90625},
+      shift = {1.28125, 7.90625}
     },
 
     rocket_smoke_bottom1_animation =
@@ -7357,9 +7445,9 @@ data:extend(
           {
             filename = "__base__/sound/silo-rocket.ogg",
             volume = 1.0
-          },
+          }
         }
-      },
+      }
     }
   },
   {
@@ -7368,7 +7456,7 @@ data:extend(
     flags = {"not-on-map"},
     collision_mask = {"not-colliding-with-itself"},
     collision_box = {{0, 0}, {10, 3.5}},
-    selection_box = {{0, 0}, {0, 0}},
+    selection_box = {{0, 0}, {0, 0}}
   },
   {
     type = "roboport",
@@ -7412,7 +7500,7 @@ data:extend(
     stationing_offset = {0, 0},
     charging_offsets =
     {
-      {-1.5, -0.5}, {1.5, -0.5}, {1.5, 1.5}, {-1.5, 1.5},
+      {-1.5, -0.5}, {1.5, -0.5}, {1.5, 1.5}, {-1.5, 1.5}
     },
     base =
     {
@@ -7423,7 +7511,8 @@ data:extend(
           width = 143,
           height = 135,
           shift = {0.5, 0.25},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/roboport/hr-roboport-base.png",
             width = 228,
             height = 277,
@@ -7437,7 +7526,8 @@ data:extend(
           height = 102,
           draw_as_shadow = true,
           shift = util.by_pixel(28.5, 19.25),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/roboport/hr-roboport-shadow.png",
             width = 294,
             height = 201,
@@ -7456,7 +7546,8 @@ data:extend(
       height = 50,
       frame_count = 1,
       shift = {0.03125, 0.203125},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/roboport/hr-roboport-base-patch.png",
         priority = "medium",
         width = 138,
@@ -7475,7 +7566,8 @@ data:extend(
       frame_count = 8,
       animation_speed = 0.5,
       shift = {-0.5315, -1.9375},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/roboport/hr-roboport-base-animation.png",
         priority = "medium",
         width = 83,
@@ -7494,7 +7586,8 @@ data:extend(
       height = 20,
       frame_count = 16,
       shift = {0.015625, -0.890625},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/roboport/hr-roboport-door-up.png",
         priority = "medium",
         width = 97,
@@ -7512,7 +7605,8 @@ data:extend(
       height = 22,
       frame_count = 16,
       shift = {0.015625, -0.234375},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/roboport/hr-roboport-door-down.png",
         priority = "medium",
         width = 97,
@@ -7552,14 +7646,14 @@ data:extend(
       {
         type = "play-sound",
         sound = { filename = "__base__/sound/roboport-door.ogg", volume = 1.0 }
-      },
+      }
     },
     close_door_trigger_effect =
     {
       {
         type = "play-sound",
         sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.75 }
-      },
+      }
     },
 
     circuit_wire_connection_point = circuit_connector_definitions["roboport"].points,
@@ -7569,7 +7663,7 @@ data:extend(
     default_available_logistic_output_signal = {type = "virtual", name = "signal-X"},
     default_total_logistic_output_signal = {type = "virtual", name = "signal-Y"},
     default_available_construction_output_signal = {type = "virtual", name = "signal-Z"},
-    default_total_construction_output_signal = {type = "virtual", name = "signal-T"},
+    default_total_construction_output_signal = {type = "virtual", name = "signal-T"}
   },
 
   {
@@ -7592,8 +7686,8 @@ data:extend(
         { position = {-1, -2} },
         { position = {2, 1} },
         { position = {1, 2} },
-        { position = {-2, -1} },
-      },
+        { position = {-2, -1} }
+      }
     },
     two_direction_only = true,
     window_bounding_box = {{-0.125, 0.6875}, {0.1875, 1.1875}},
@@ -7610,7 +7704,8 @@ data:extend(
             width = 110,
             height = 108,
             shift = util.by_pixel(0, 4),
-            hr_version = {
+            hr_version =
+            {
               filename = "__base__/graphics/entity/storage-tank/hr-storage-tank.png",
               priority = "extra-high",
               frames = 2,
@@ -7628,7 +7723,8 @@ data:extend(
             height = 77,
             shift = util.by_pixel(30, 22.5),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+            {
               filename = "__base__/graphics/entity/storage-tank/hr-storage-tank-shadow.png",
               priority = "extra-high",
               frames = 2,
@@ -7654,7 +7750,8 @@ data:extend(
         priority = "extra-high",
         width = 17,
         height = 24,
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/storage-tank/hr-window-background.png",
           priority = "extra-high",
           width = 34,
@@ -7698,10 +7795,12 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
-      sound = {
+      sound =
+      {
           filename = "__base__/sound/storage-tank.ogg",
           volume = 0.8
       },
+      match_volume_to_activity = true,
       apparent_volume = 1.5,
       max_sounds_per_type = 3
     },
@@ -7742,8 +7841,8 @@ data:extend(
       pipe_connections =
       {
         { position = {0, -1.5}, type="output" },
-        { position = {0, 1.5}, type="input" },
-      },
+        { position = {0, 1.5}, type="input" }
+      }
     },
     energy_source =
     {
@@ -7766,7 +7865,8 @@ data:extend(
         frame_count =32,
         animation_speed = 0.5,
         shift = util.by_pixel(8.000, 7.500),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-north.png",
           width = 103,
           height = 164,
@@ -7775,7 +7875,7 @@ data:extend(
           frame_count =32,
           animation_speed = 0.5,
           shift = util.by_pixel(8, 3.5) -- {0.515625, 0.21875}
-        },
+        }
       },
       east =
       {
@@ -7786,7 +7886,8 @@ data:extend(
         frame_count =32,
         animation_speed = 0.5,
         shift = util.by_pixel(0, 4),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-east.png",
           width = 130,
           height = 109,
@@ -7795,7 +7896,7 @@ data:extend(
           frame_count =32,
           animation_speed = 0.5,
           shift = util.by_pixel(-0.5, 1.75) --{-0.03125, 0.109375}
-        },
+        }
       },
 
       south =
@@ -7807,7 +7908,8 @@ data:extend(
         frame_count =32,
         animation_speed = 0.5,
         shift = util.by_pixel(13.5, 0.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-south.png",
           width = 114,
           height = 160,
@@ -7816,7 +7918,7 @@ data:extend(
           frame_count =32,
           animation_speed = 0.5,
           shift = util.by_pixel(12.5, -8) -- {0.75, -0.5}
-        },
+        }
       },
       west =
       {
@@ -7827,7 +7929,8 @@ data:extend(
         frame_count =32,
         animation_speed = 0.5,
         shift = util.by_pixel(0.5, -0.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-west.png",
           width = 131,
           height = 111,
@@ -7836,8 +7939,8 @@ data:extend(
           frame_count =32,
           animation_speed = 0.5,
           shift = util.by_pixel(-0.25, 1.25) -- {-0.015625, 0.078125}
-        },
-      },
+        }
+      }
     },
 
     fluid_wagon_connector_frame_count = 35,
@@ -7855,7 +7958,8 @@ data:extend(
         line_length =8,
         frame_count =32,
         shift = util.by_pixel(-0.500, -14.500),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-north-liquid.png",
           apply_runtime_tint = true,
           width = 38,
@@ -7875,7 +7979,8 @@ data:extend(
         line_length =8,
         frame_count =32,
         shift = util.by_pixel(6.000, -8.000),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-east-liquid.png",
           width = 35,
           height = 46,
@@ -7883,7 +7988,7 @@ data:extend(
           line_length =8,
           frame_count =32,
           shift = util.by_pixel(6.250, -8.500)
-        },
+        }
       },
 
       south =
@@ -7894,7 +7999,8 @@ data:extend(
         line_length =8,
         frame_count =32,
         shift = util.by_pixel(3.500, 6.500),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-south-liquid.png",
           width = 38,
           height = 45,
@@ -7902,7 +8008,7 @@ data:extend(
           line_length =8,
           frame_count =32,
           shift = util.by_pixel(0.500, -9.250)
-        },
+        }
       },
       west =
       {
@@ -7912,7 +8018,8 @@ data:extend(
         line_length =8,
         frame_count =32,
         shift = util.by_pixel(-6.000, -9.000),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-west-liquid.png",
           width = 35,
           height = 47,
@@ -7920,58 +8027,66 @@ data:extend(
           line_length =8,
           frame_count =32,
           shift = util.by_pixel(-6.500, -9.500)
-        },
+        }
       }
     },
 
     glass_pictures =
     {
-      north = {
+      north =
+      {
         filename = "__base__/graphics/entity/pump/pump-north-glass.png",
         width = 32,
         height = 64,
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-north-glass.png",
           width = 64,
           height = 128,
-          scale = 0.5,
-        },
+          scale = 0.5
+        }
       },
-      east = {
+      east =
+      {
         filename = "__base__/graphics/entity/pump/pump-east-glass.png",
         width = 32,
         height = 32,
         shift = util.by_pixel(0.000, -16.000),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-east-glass.png",
           width = 128,
           height = 192,
-          scale = 0.5,
-        },
+          scale = 0.5
+        }
       },
-      south = {
+      south =
+      {
         filename = "__base__/graphics/entity/pump/pump-south-glass.png",
         width = 32,
         height = 64,
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-south-glass.png",
           width = 64,
           height = 128,
-          scale = 0.5,
-        },
+          scale = 0.5
+        }
       },
-      west = {
+      west =
+      {
         filename = "__base__/graphics/entity/pump/pump-west-glass.png",
         width = 32,
         height = 96,
         shift = util.by_pixel(0.000, 15.000),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/pump/hr-pump-west-glass.png",
           width = 192,
           height = 192,
           scale = 0.5,
           shift = util.by_pixel(-16.000, 0.000)
-        },
+        }
       }
     },
 
@@ -8014,7 +8129,7 @@ data:extend(
         priority = "extra-high",
         width = 187,
         height = 1,
-        frame_count = 6,
+        frame_count = 6
       }
     },
     light = {intensity = 1, size = 10, color = {r = 1.0, g = 1.0, b = 1.0}},
@@ -8138,7 +8253,7 @@ data:extend(
       width = 12,
       height = 12,
       priority = "extra-high-no-scale"
-    },
+    }
   },
   {
     type = "electric-pole",
@@ -8238,7 +8353,7 @@ data:extend(
       width = 12,
       height = 12,
       priority = "extra-high-no-scale"
-    },
+    }
   },
   {
     type = "electric-pole",
@@ -8344,7 +8459,7 @@ data:extend(
       width = 12,
       height = 12,
       priority = "extra-high-no-scale"
-    },
+    }
   },
   {
     type = "accumulator",
@@ -8407,7 +8522,8 @@ data:extend(
         filename = "__base__/sound/accumulator-working.ogg",
         volume = 1
       },
-      idle_sound = {
+      idle_sound =
+      {
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.4
       },
@@ -8468,7 +8584,8 @@ data:extend(
     },
     animation =
     {
-      layers = {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
           priority = "high",
@@ -8476,7 +8593,8 @@ data:extend(
           height = 87,
           frame_count = 1,
           shift = util.by_pixel(-1.5, 1.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace.png",
             priority = "high",
             width = 171,
@@ -8494,7 +8612,8 @@ data:extend(
           frame_count = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(39.5, 11.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-shadow.png",
             priority = "high",
             width = 277,
@@ -8504,8 +8623,8 @@ data:extend(
             shift = util.by_pixel(39.25, 11.25),
             scale = 0.5
           }
-        },
-      },
+        }
+      }
     },
     working_visualisations =
     {
@@ -8525,7 +8644,8 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 1,
           shift = util.by_pixel(-0.5, 6),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-fire.png",
             priority = "high",
             line_length = 8,
@@ -8575,7 +8695,8 @@ data:extend(
           direction_count = 1,
           shift = util.by_pixel(0, -4.5),
           blend_mode = "additive",
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-working.png",
             priority = "high",
             line_length = 8,
@@ -8589,7 +8710,7 @@ data:extend(
             scale = 0.5
           }
         }
-      },
+      }
     },
     fast_replaceable_group = "furnace"
   },
@@ -8641,43 +8762,46 @@ data:extend(
     },
     animation =
     {
-      layers = {
+      layers =
       {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace.png",
+        {
+          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
           priority = "high",
-          width = 239,
-          height = 219,
+          width = 129,
+          height = 100,
           frame_count = 1,
-          shift = util.by_pixel(0.75, 5.75),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        draw_as_shadow = true,
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-shadow.png",
+          shift = {0.421875, 0},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace.png",
+            priority = "high",
+            width = 239,
+            height = 219,
+            frame_count = 1,
+            shift = util.by_pixel(0.75, 5.75),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
           priority = "high",
-          width = 227,
-          height = 171,
+          width = 129,
+          height = 100,
           frame_count = 1,
+          shift = {0.421875, 0},
           draw_as_shadow = true,
-          shift = util.by_pixel(11.25, 7.75),
-          scale = 0.5
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-shadow.png",
+            priority = "high",
+            width = 227,
+            height = 171,
+            frame_count = 1,
+            draw_as_shadow = true,
+            shift = util.by_pixel(11.25, 7.75),
+            scale = 0.5
+          }
         }
-      }
       }
     },
     working_visualisations =
@@ -8692,7 +8816,8 @@ data:extend(
           frame_count = 12,
           animation_speed = 0.5,
           shift = {0.015625, 0.890625},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-heater.png",
             priority = "high",
             width = 60,
@@ -8715,7 +8840,8 @@ data:extend(
           frame_count = 4,
           animation_speed = 0.5,
           shift = {-0.671875, -0.640625},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-1.png",
             priority = "high",
             width = 37,
@@ -8737,7 +8863,8 @@ data:extend(
           frame_count = 4,
           animation_speed = 0.5,
           shift = {0.0625, -1.234375},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-2.png",
             priority = "high",
             width = 23,
@@ -8831,7 +8958,7 @@ data:extend(
       frame_count = 45,
       animation_speed = 0.5,
       line_length = 7,
-      scale = 3,
+      scale = 3
     },
     slow_down_factor = 0,
     affected_by_wind = false,
@@ -8936,7 +9063,8 @@ data:extend(
           frame_count = 1,
           direction_count = 16,
           shift = {0, -0.078125},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot.png",
             priority = "high",
             line_length = 16,
@@ -8958,7 +9086,8 @@ data:extend(
           direction_count = 16,
           shift = {0, -0.203125},
           apply_runtime_tint = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-mask.png",
             priority = "high",
             line_length = 16,
@@ -8983,7 +9112,8 @@ data:extend(
       frame_count = 1,
       direction_count = 16,
       shift = {0.9375, 0.609375},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -9009,7 +9139,8 @@ data:extend(
           direction_count = 16,
           shift = {0, -0.078125},
           y = 33,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot.png",
             priority = "high",
             line_length = 16,
@@ -9033,7 +9164,8 @@ data:extend(
           shift = {0, -0.203125},
           apply_runtime_tint = true,
           y = 21,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-mask.png",
             priority = "high",
             line_length = 16,
@@ -9059,7 +9191,8 @@ data:extend(
       frame_count = 1,
       direction_count = 16,
       shift = {0.9375, 0.609375},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -9155,7 +9288,8 @@ data:extend(
           frame_count = 1,
           direction_count = 16,
           shift = {0, 0.015625},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/defender-robot/hr-defender-robot.png",
             priority = "high",
             line_length = 16,
@@ -9177,7 +9311,8 @@ data:extend(
           direction_count = 16,
           shift = {0, -0.125},
           apply_runtime_tint = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-mask.png",
             priority = "high",
             line_length = 16,
@@ -9189,7 +9324,7 @@ data:extend(
             apply_runtime_tint = true,
             scale = 0.5
           }
-        },
+        }
       }
     },
     shadow_idle =
@@ -9202,7 +9337,8 @@ data:extend(
       frame_count = 1,
       direction_count = 16,
       shift = {0.859375, 0.609375},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -9228,7 +9364,8 @@ data:extend(
           direction_count = 16,
           shift = {0, 0.015625},
           y = 33,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/defender-robot/hr-defender-robot.png",
             priority = "high",
             line_length = 16,
@@ -9252,7 +9389,8 @@ data:extend(
           shift = {0, -0.125},
           apply_runtime_tint = true,
           y = 16,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-mask.png",
             priority = "high",
             line_length = 16,
@@ -9265,7 +9403,7 @@ data:extend(
             y = 21,
             scale = 0.5
           }
-        },
+        }
       }
     },
     shadow_in_motion =
@@ -9278,7 +9416,8 @@ data:extend(
       frame_count = 1,
       direction_count = 16,
       shift = {0.859375, 0.609375},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-shadow.png",
         priority = "high",
         line_length = 16,
@@ -9342,7 +9481,7 @@ data:extend(
             beam = "electric-beam",
             max_length = 15,
             duration = 20,
-            source_offset = {0.15, -0.5},
+            source_offset = {0.15, -0.5}
           }
         }
       }
@@ -9361,7 +9500,8 @@ data:extend(
           frame_count = 1,
           direction_count = 32,
           shift = {0.078125, -0.546875},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot.png",
             priority = "high",
             line_length = 32,
@@ -9385,7 +9525,8 @@ data:extend(
           direction_count = 32,
           shift = {0.078125, -0.734375},
           apply_runtime_tint = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-mask.png",
             priority = "high",
             line_length = 32,
@@ -9398,7 +9539,7 @@ data:extend(
             apply_runtime_tint = true,
             scale = 0.5
           }
-        },
+        }
       }
     },
     shadow_idle =
@@ -9411,7 +9552,8 @@ data:extend(
       frame_count = 1,
       direction_count = 32,
       shift = {0.78125, 0},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-shadow.png",
         priority = "high",
         line_length = 32,
@@ -9436,7 +9578,8 @@ data:extend(
           frame_count = 1,
           direction_count = 32,
           shift = {0.078125, -0.546875},
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot.png",
             priority = "high",
             line_length = 32,
@@ -9458,7 +9601,8 @@ data:extend(
           direction_count = 32,
           shift = {0.078125, -0.734375},
           apply_runtime_tint = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-mask.png",
             priority = "high",
             line_length = 32,
@@ -9483,7 +9627,8 @@ data:extend(
       frame_count = 1,
       direction_count = 32,
       shift = {0.78125, 0},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-shadow.png",
         priority = "high",
         line_length = 32,
@@ -9561,7 +9706,8 @@ data:extend(
         height = 255,
         frame_count = 1,
         shift = {2.515625, 0.484375},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/oil-refinery/hr-oil-refinery.png",
           width = 386,
           height = 430,
@@ -9577,7 +9723,8 @@ data:extend(
         frame_count = 1,
         shift = util.by_pixel(82.5, 26.5),
         draw_as_shadow = true,
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/oil-refinery/hr-oil-refinery-shadow.png",
           width = 674,
           height = 426,
@@ -9610,7 +9757,8 @@ data:extend(
           frame_count = 60,
           animation_speed = 0.75,
           shift = util.by_pixel(0, -14),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/oil-refinery/hr-oil-refinery-fire.png",
             line_length = 10,
             width = 40,
@@ -9618,8 +9766,8 @@ data:extend(
             frame_count = 60,
             animation_speed = 0.75,
             scale = 0.5,
-            shift = util.by_pixel(0, -14.25),
-          },
+            shift = util.by_pixel(0, -14.25)
+          }
         },
         light = {intensity = 0.4, size = 6, color = {r = 1.0, g = 1.0, b = 1.0}}
       }
@@ -9629,7 +9777,7 @@ data:extend(
     {
       sound = { filename = "__base__/sound/oil-refinery.ogg" },
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 2.5,
+      apparent_volume = 2.5
     },
     fluid_boxes =
     {
@@ -9696,7 +9844,8 @@ data:extend(
         height = 134,
         frame_count = 1,
         shift = util.by_pixel(-5, -4.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant.png",
           width = 244,
           height = 268,
@@ -9712,7 +9861,8 @@ data:extend(
         frame_count = 1,
         shift = util.by_pixel(31.5, 11),
         draw_as_shadow = true,
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-shadow.png",
           width = 350,
           height = 219,
@@ -9721,7 +9871,7 @@ data:extend(
           draw_as_shadow = true,
           scale = 0.5
           }
-      },
+      }
     }}),
     working_visualisations =
     {
@@ -9738,7 +9888,8 @@ data:extend(
           width = 15,
           height = 10,
           animation_speed = 0.5,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/chemical-plant/hr-boiling-green-patch.png",
             frame_count = 32,
             width = 30,
@@ -9762,7 +9913,8 @@ data:extend(
           width = 15,
           height = 10,
           animation_speed = 0.5,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/chemical-plant/hr-boiling-green-patch-mask.png",
             frame_count = 32,
             width = 30,
@@ -9787,7 +9939,8 @@ data:extend(
           width = 87,
           height = 60,
           shift = util.by_pixel(0, -5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
             x = 0,
             frame_count = 1,
@@ -9805,7 +9958,8 @@ data:extend(
           width = 87,
           height = 60,
           shift = util.by_pixel(0, -5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
             x = 174,
             frame_count = 1,
@@ -9823,7 +9977,8 @@ data:extend(
           width = 87,
           height = 60,
           shift = util.by_pixel(0, -5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
             x = 348,
             frame_count = 1,
@@ -9846,7 +10001,7 @@ data:extend(
         }
       },
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5,
+      apparent_volume = 1.5
     },
     crafting_speed = 1.25,
     energy_source =
@@ -9914,10 +10069,10 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/combinator.ogg",
-        volume = 0.35,
+        volume = 0.35
       },
       max_sounds_per_type = 2,
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
 
@@ -9982,10 +10137,10 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/combinator.ogg",
-        volume = 0.35,
+        volume = 0.35
       },
       max_sounds_per_type = 2,
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
 
     activity_led_light =
@@ -10032,19 +10187,19 @@ data:extend(
         wire =
         {
           red = {-0.28125, 0.34375},
-          green = {0.25, 0.34375},
+          green = {0.25, 0.34375}
         }
       },
       {
         shadow =
         {
           red = {-0.265625, -0.171875},
-          green = {-0.296875, 0.296875},
+          green = {-0.296875, 0.296875}
         },
         wire =
         {
           red = {-0.75, -0.5},
-          green = {-0.75, -0.0625},
+          green = {-0.75, -0.0625}
         }
       },
       {
@@ -10063,12 +10218,12 @@ data:extend(
         shadow =
         {
           red = {1.29688, 0.328125},
-          green = {1.29688, -0.140625},
+          green = {1.29688, -0.140625}
         },
         wire =
         {
           red = {0.75, -0.0625},
-          green = {0.75, -0.53125},
+          green = {0.75, -0.53125}
         }
       }
     },
@@ -10084,19 +10239,19 @@ data:extend(
         wire =
         {
           red = {-0.3125, -0.78125},
-          green = {0.28125, -0.78125},
+          green = {0.28125, -0.78125}
         }
       },
       {
         shadow =
         {
           red = {1.17188, -0.109375},
-          green = {1.17188, 0.296875},
+          green = {1.17188, 0.296875}
         },
         wire =
         {
           red = {0.65625, -0.4375},
-          green = {0.65625, -0.03125},
+          green = {0.65625, -0.03125}
         }
       },
       {
@@ -10115,12 +10270,12 @@ data:extend(
         shadow =
         {
           red = {-0.140625, 0.328125},
-          green = {-0.140625, -0.078125},
+          green = {-0.140625, -0.078125}
         },
         wire =
         {
           red = {-0.6875, -0.03125},
-          green = {-0.6875, -0.4375},
+          green = {-0.6875, -0.4375}
         }
       }
     },
@@ -10185,7 +10340,7 @@ data:extend(
       frame_count = 6,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {0.453125, 0.1875},
+      shift = {0.453125, 0.1875}
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
@@ -10200,7 +10355,7 @@ data:extend(
       frame_count = 2,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {0.15625, 0.046875},
+      shift = {0.15625, 0.046875}
     },
     overlay_loop =
     {
@@ -10213,7 +10368,7 @@ data:extend(
       frame_count = 16,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = {0.046875, -0.0625},
+      shift = {0.046875, -0.0625}
     },
     led_on =
     {
@@ -10222,7 +10377,7 @@ data:extend(
       width = 6,
       height = 9,
       frame_count = 1,
-      shift = {0.71875, 0.140625},
+      shift = {0.71875, 0.140625}
     },
     led_off =
     {
@@ -10230,41 +10385,41 @@ data:extend(
       width = 6,
       height = 9,
       frame_count = 1,
-      shift = {0.71875, 0.140625},
+      shift = {0.71875, 0.140625}
     },
     circuit_wire_connection_point =
     {
       shadow =
       {
         red = {-0.328125, 1.01563},
-        green = {-0.328125, 1.01563},
+        green = {-0.328125, 1.01563}
       },
       wire =
       {
         red = {-0.609375, 0.828125},
-        green = {-0.609375, 0.828125},
+        green = {-0.609375, 0.828125}
       }
     },
     left_wire_connection_point =
     {
       shadow =
       {
-        copper = {0.296875, -0.171875},
+        copper = {0.296875, -0.171875}
       },
       wire =
       {
-        copper = {-0.765625, -0.890625},
+        copper = {-0.765625, -0.890625}
       }
     },
     right_wire_connection_point =
     {
       shadow =
       {
-        copper = {2.14063, 0.015625},
+        copper = {2.14063, 0.015625}
       },
       wire =
       {
-        copper = {0.859375, -0.890625},
+        copper = {0.859375, -0.890625}
       }
     },
 
@@ -10300,13 +10455,14 @@ data:extend(
           width = 30,
           height = 89,
           shift = util.by_pixel(-2, -39.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/programmable-speaker/hr-programmable-speaker.png",
             priority = "extra-high",
             width = 59,
             height = 178,
             shift = util.by_pixel(-2.25, -39.5),
-            scale = 0.5,
+            scale = 0.5
           }
         },
         {
@@ -10316,14 +10472,15 @@ data:extend(
           height = 25,
           shift = util.by_pixel(52.5, -2.5),
           draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/programmable-speaker/hr-programmable-speaker-shadow.png",
             priority = "extra-high",
             width = 237,
             height = 50,
             shift = util.by_pixel(52.75, -3),
             draw_as_shadow = true,
-            scale = 0.5,
+            scale = 0.5
           }
         }
       }
@@ -10344,7 +10501,7 @@ data:extend(
          { name="buzzer-2",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-2.ogg" }},
          { name="buzzer-3",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-3.ogg" }},
          { name="ring",  sound = { filename = "__base__/sound/programmable-speaker/ring.ogg", preload = false }},
-         { name="siren",  sound = { filename = "__base__/sound/programmable-speaker/siren.ogg", preload = false }},
+         { name="siren",  sound = { filename = "__base__/sound/programmable-speaker/siren.ogg", preload = false }}
         }
       },
       {
@@ -10366,7 +10523,7 @@ data:extend(
           { name = "inventory-move",  sound = { filename = "__core__/sound/inventory-move.ogg" }},
           { name = "new-objective",  sound = { filename = "__core__/sound/new-objective.ogg" }},
           { name = "research-completed",  sound = { filename = "__core__/sound/research-completed.ogg" }},
-          { name = "scenario-message",  sound = { filename = "__core__/sound/scenario-message.ogg" }},
+          { name = "scenario-message",  sound = { filename = "__core__/sound/scenario-message.ogg" }}
         }
       },
       {
@@ -10389,7 +10546,7 @@ data:extend(
           { name = "clap",  sound = { filename = "__base__/sound/programmable-speaker/kit-14.ogg" }},
           { name = "shaker",  sound = { filename = "__base__/sound/programmable-speaker/kit-15.ogg" }},
           { name = "cowbell",  sound = { filename = "__base__/sound/programmable-speaker/kit-16.ogg" }},
-          { name = "triangle",  sound = { filename = "__base__/sound/programmable-speaker/kit-17.ogg" }},
+          { name = "triangle",  sound = { filename = "__base__/sound/programmable-speaker/kit-17.ogg" }}
         }
       },
       {
@@ -10443,7 +10600,7 @@ data:extend(
           { name = "C#7", sound = { filename = "__base__/sound/programmable-speaker/piano1-45.ogg" }},
           { name = "D7",  sound = { filename = "__base__/sound/programmable-speaker/piano1-46.ogg" }},
           { name = "D#7", sound = { filename = "__base__/sound/programmable-speaker/piano1-47.ogg" }},
-          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/piano1-48.ogg" }},
+          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/piano1-48.ogg" }}
         }
       },
       {
@@ -10485,7 +10642,7 @@ data:extend(
           { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/bass-33.ogg" }},
           { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/bass-34.ogg" }},
           { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/bass-35.ogg" }},
-          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/bass-36.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/bass-36.ogg" }}
         }
       },
       {
@@ -10527,7 +10684,7 @@ data:extend(
           { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/lead-33.ogg" }},
           { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/lead-34.ogg" }},
           { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/lead-35.ogg" }},
-          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/lead-36.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/lead-36.ogg" }}
         }
       },
       {
@@ -10569,7 +10726,7 @@ data:extend(
           { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/saw-33.ogg" }},
           { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/saw-34.ogg" }},
           { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/saw-35.ogg" }},
-          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/saw-36.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/saw-36.ogg" }}
         }
       },
       {
@@ -10611,7 +10768,7 @@ data:extend(
           { name = "C#5", sound = { filename = "__base__/sound/programmable-speaker/square-33.ogg" }},
           { name = "D5",  sound = { filename = "__base__/sound/programmable-speaker/square-34.ogg" }},
           { name = "D#5", sound = { filename = "__base__/sound/programmable-speaker/square-35.ogg" }},
-          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/square-36.ogg" }},
+          { name = "E5",  sound = { filename = "__base__/sound/programmable-speaker/square-36.ogg" }}
         }
       },
       {
@@ -10653,7 +10810,7 @@ data:extend(
           { name = "C#8", sound = { filename = "__base__/sound/programmable-speaker/celesta-33.ogg" }},
           { name = "D8",  sound = { filename = "__base__/sound/programmable-speaker/celesta-34.ogg" }},
           { name = "D#8", sound = { filename = "__base__/sound/programmable-speaker/celesta-35.ogg" }},
-          { name = "E8",  sound = { filename = "__base__/sound/programmable-speaker/celesta-36.ogg" }},
+          { name = "E8",  sound = { filename = "__base__/sound/programmable-speaker/celesta-36.ogg" }}
         }
       },
       {
@@ -10695,7 +10852,7 @@ data:extend(
           { name = "C#8", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-33.ogg" }},
           { name = "D8",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-34.ogg" }},
           { name = "D#8", sound = { filename = "__base__/sound/programmable-speaker/vibraphone-35.ogg" }},
-          { name = "E8",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-36.ogg" }},
+          { name = "E8",  sound = { filename = "__base__/sound/programmable-speaker/vibraphone-36.ogg" }}
         }
       },
       {
@@ -10737,7 +10894,7 @@ data:extend(
           { name = "C#7", sound = { filename = "__base__/sound/programmable-speaker/plucked-33.ogg" }},
           { name = "D7",  sound = { filename = "__base__/sound/programmable-speaker/plucked-34.ogg" }},
           { name = "D#7", sound = { filename = "__base__/sound/programmable-speaker/plucked-35.ogg" }},
-          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/plucked-36.ogg" }},
+          { name = "E7",  sound = { filename = "__base__/sound/programmable-speaker/plucked-36.ogg" }}
         }
       },
       {
@@ -10779,7 +10936,7 @@ data:extend(
           { name = "C#6", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-33.ogg" }},
           { name = "D6",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-34.ogg" }},
           { name = "D#6", sound = { filename = "__base__/sound/programmable-speaker/steel-drum-35.ogg" }},
-          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-36.ogg" }},
+          { name = "E6",  sound = { filename = "__base__/sound/programmable-speaker/steel-drum-36.ogg" }}
         }
       },
 
@@ -10891,7 +11048,8 @@ data:extend(
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     --the collision box of a reactor is increased by this on the sides where it connects to another reactor:
     --neighbour_collision_increase = 0.25,
-    lower_layer_picture = {
+    lower_layer_picture =
+    {
       filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes.png",
       width = 160,
       height = 160,
@@ -10902,7 +11060,7 @@ data:extend(
         width = 320,
         height = 320,
         scale = 0.5,
-        shift = { -0.03125, -0.1875 },
+        shift = { -0.03125, -0.1875 }
       }
     },
 
@@ -10921,7 +11079,7 @@ data:extend(
             width = 320,
             height = 320,
             scale = 0.5,
-            shift = { -0.03125, -0.1875 },
+            shift = { -0.03125, -0.1875 }
           }
         },
         {
@@ -10937,9 +11095,9 @@ data:extend(
             height = 323,
             scale = 0.5,
             shift = { 1.625, 0 },
-            draw_as_shadow = true,
+            draw_as_shadow = true
           }
-        },
+        }
       }
     },
 
@@ -10957,7 +11115,7 @@ data:extend(
         height = 320,
         scale = 0.5,
         shift = { -0.03125, -0.1875 },
-        blend_mode = "additive",
+        blend_mode = "additive"
       }
     },
 
@@ -11147,7 +11305,7 @@ data:extend(
           }
         }
       }
-    },
+    }
   },
   {
     type = "assembling-machine",
@@ -11193,7 +11351,7 @@ data:extend(
             width = 237,
             height = 214,
             frame_count = 64,
-            shift = util.by_pixel(-0.25, -26.5),
+            shift = util.by_pixel(-0.25, -26.5)
           }
         },
         {
@@ -11215,7 +11373,7 @@ data:extend(
             width = 279,
             height = 152,
             frame_count = 64,
-            shift = util.by_pixel(16.75, -10),
+            shift = util.by_pixel(16.75, -10)
           }
         },
         -- Centrifuge B
@@ -11236,7 +11394,7 @@ data:extend(
             width = 156,
             height = 234,
             frame_count = 64,
-            shift = util.by_pixel(23, 6.5),
+            shift = util.by_pixel(23, 6.5)
           }
         },
         {
@@ -11258,7 +11416,7 @@ data:extend(
             width = 251,
             height = 149,
             frame_count = 64,
-            shift = util.by_pixel(63.25, 15.25),
+            shift = util.by_pixel(63.25, 15.25)
           }
         },
         -- Centrifuge A
@@ -11279,7 +11437,7 @@ data:extend(
             width = 139,
             height = 246,
             frame_count = 64,
-            shift = util.by_pixel(-26.25, 3.5),
+            shift = util.by_pixel(-26.25, 3.5)
           }
         },
         {
@@ -11301,7 +11459,7 @@ data:extend(
             width = 230,
             height = 124,
             frame_count = 64,
-            shift = util.by_pixel(8.5, 23.5),
+            shift = util.by_pixel(8.5, 23.5)
           }
         }
       }
@@ -11332,7 +11490,7 @@ data:extend(
             width = 190,
             height = 207,
             frame_count = 64,
-            shift = util.by_pixel(0, -27.25),
+            shift = util.by_pixel(0, -27.25)
           }
         },
         -- Centrifuge B
@@ -11355,7 +11513,7 @@ data:extend(
             width = 131,
             height = 206,
             frame_count = 64,
-            shift = util.by_pixel(16.75, 0.5),
+            shift = util.by_pixel(16.75, 0.5)
           }
         },
         -- Centrifuge A
@@ -11378,7 +11536,7 @@ data:extend(
             width = 108,
             height = 197,
             frame_count = 64,
-            shift = util.by_pixel(-23.5, -1.75),
+            shift = util.by_pixel(-23.5, -1.75)
           }
         }
       }
@@ -11420,7 +11578,7 @@ data:extend(
             width = 190,
             height = 207,
             frame_count = 64,
-            shift = util.by_pixel(0, -27.25),
+            shift = util.by_pixel(0, -27.25)
           }
         },
         --light = {intensity = 1, size = 1, color = {r = 1.0, g = 1.0, b = 1.0}}
@@ -11450,7 +11608,7 @@ data:extend(
             width = 131,
             height = 206,
             frame_count = 64,
-            shift = util.by_pixel(16.75, 0.5),
+            shift = util.by_pixel(16.75, 0.5)
           }
         }
       },
@@ -11479,7 +11637,7 @@ data:extend(
             width = 108,
             height = 197,
             frame_count = 64,
-            shift = util.by_pixel(-23.5, -1.75),
+            shift = util.by_pixel(-23.5, -1.75)
           }
         }
       }
@@ -11499,10 +11657,10 @@ data:extend(
         {
           filename = "__base__/sound/assembling-machine-t2-2.ogg",
           volume = 0.8
-        },
+        }
       },
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5,
+      apparent_volume = 1.5
     },
     crafting_speed = 0.75,
     crafting_categories = {"centrifuging"},
@@ -11599,7 +11757,8 @@ data:extend(
           width = 32,
           height = 32,
           direction_count = 4,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-endings.png",
             line_length = 4,
             width = 64,
@@ -11632,7 +11791,8 @@ data:extend(
             width = 131,
             height = 108,
             shift = util.by_pixel(-0.5, 4),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-N-idle.png",
               priority = "extra-high",
               width = 269,
@@ -11648,14 +11808,15 @@ data:extend(
             height = 82,
             shift = util.by_pixel(20.5, 9),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-N-shadow.png",
               priority = "extra-high",
               width = 274,
               height = 164,
               scale = 0.5,
               shift = util.by_pixel(20.5, 9),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -11670,7 +11831,8 @@ data:extend(
             width = 102,
             height = 147,
             shift = util.by_pixel(-2, -0.5),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-E-idle.png",
               priority = "extra-high",
               width = 211,
@@ -11686,14 +11848,15 @@ data:extend(
             height = 97,
             shift = util.by_pixel(30, 9.5),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-E-shadow.png",
               priority = "extra-high",
               width = 184,
               height = 194,
               scale = 0.5,
               shift = util.by_pixel(30, 9.5),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -11708,7 +11871,8 @@ data:extend(
             width = 128,
             height = 100,
             shift = util.by_pixel(3, 10),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-S-idle.png",
               priority = "extra-high",
               width = 260,
@@ -11724,14 +11888,15 @@ data:extend(
             height = 66,
             shift = util.by_pixel(30, 16),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-S-shadow.png",
               priority = "extra-high",
               width = 311,
               height = 131,
               scale = 0.5,
               shift = util.by_pixel(29.75, 15.75),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -11746,7 +11911,8 @@ data:extend(
             width = 96,
             height = 132,
             shift = util.by_pixel(1, 5),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-W-idle.png",
               priority = "extra-high",
               width = 196,
@@ -11762,14 +11928,15 @@ data:extend(
             height = 109,
             shift = util.by_pixel(19.5, 6.5),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-W-shadow.png",
               priority = "extra-high",
               width = 206,
               height = 218,
               scale = 0.5,
               shift = util.by_pixel(19.5, 6.5),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -11813,7 +11980,7 @@ data:extend(
       pipe_connections =
       {
         { type = "input-output", position = {0, 3} },
-        { type = "input-output", position = {0, -3} },
+        { type = "input-output", position = {0, -3} }
       },
       production_type = "input-output",
       filter = "steam",
@@ -11835,7 +12002,8 @@ data:extend(
           frame_count = 8,
           line_length = 4,
           shift = util.by_pixel(0, -2.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H.png",
             width = 320,
             height = 245,
@@ -11843,7 +12011,7 @@ data:extend(
             line_length = 4,
             shift = util.by_pixel(0, -2.75),
             scale = 0.5
-          },
+          }
         },
         {
           filename = "__base__/graphics/entity/steam-turbine/steam-turbine-H-shadow.png",
@@ -11854,7 +12022,8 @@ data:extend(
           line_length = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(28.75, 18),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H-shadow.png",
             width = 435,
             height = 150,
@@ -11864,9 +12033,9 @@ data:extend(
             draw_as_shadow = true,
             shift = util.by_pixel(28.5, 18),
             scale = 0.5
-          },
-        },
-      },
+          }
+        }
+      }
     },
     vertical_animation =
     {
@@ -11879,7 +12048,8 @@ data:extend(
           frame_count = 8,
           line_length = 4,
           shift = util.by_pixel(5, 6.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V.png",
             width = 217,
             height = 347,
@@ -11887,7 +12057,7 @@ data:extend(
             line_length = 4,
             shift = util.by_pixel(4.75, 6.75),
             scale = 0.5
-          },
+          }
         },
         {
           filename = "__base__/graphics/entity/steam-turbine/steam-turbine-V-shadow.png",
@@ -11898,7 +12068,8 @@ data:extend(
           line_length = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(39.5, 24.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V-shadow.png",
             width = 302,
             height = 260,
@@ -11908,9 +12079,9 @@ data:extend(
             draw_as_shadow = true,
             shift = util.by_pixel(39.5, 24.5),
             scale = 0.5
-          },
-        },
-      },
+          }
+        }
+      }
     },
     smoke =
     {
@@ -11932,7 +12103,7 @@ data:extend(
         filename = "__base__/sound/steam-engine-90bpm.ogg",
         volume = 0.6
       },
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
     min_perceived_performance = 0.25,
     performance_to_sound_speedup = 0.5
@@ -12009,7 +12180,7 @@ data:extend(
         ending_up = {},
         ending_down = {},
         ending_right = {},
-        ending_left = {},
+        ending_left = {}
       }),
 
     heat_glow_sprites = make_heat_pipe_pictures("__base__/graphics/entity/heat-pipe/", "heated",
@@ -12029,17 +12200,18 @@ data:extend(
         ending_up = {},
         ending_down = {},
         ending_right = {},
-        ending_left = {},
+        ending_left = {}
       }),
 
-    heat_glow_light = {
+    heat_glow_light =
+    {
       --minimum_darkness = 0.3,
       color = { r = 1, g = 155/255, b = 0.05, a = 0 },
       --shift = {-0.6, 3.5},
       size = 2.5,
       intensity = 0.1,
       --add_perspective = true
-    },
+    }
   },
   {
     type = "simple-entity-with-force",
@@ -12085,7 +12257,7 @@ data:extend(
           priority = "extra-high",
           width = 46,
           height = 33,
-          shift = {0.25, 0.015625},
+          shift = {0.25, 0.015625}
         },
         {
           filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
@@ -12108,7 +12280,7 @@ data:extend(
        line_length = 5,
        frame_count = 60,
        animation_speed = 0.25,
-       filename = "__base__/graphics/entity/smoke/smoke.png",
+       filename = "__base__/graphics/entity/smoke/smoke.png"
      },
      {
        width = 152,
@@ -12116,7 +12288,7 @@ data:extend(
        line_length = 5,
        frame_count = 60,
        animation_speed = 0.875,
-       filename = "__base__/graphics/entity/smoke/smoke.png",
+       filename = "__base__/graphics/entity/smoke/smoke.png"
      }
    }
 ]]--
@@ -12134,7 +12306,7 @@ data:extend(
         priority = "extra-high",
         width = 187,
         height = 1,
-        frame_count = 6,
+        frame_count = 6
       }
     },
     light = {intensity = 0.2, size = 20},
@@ -12195,8 +12367,8 @@ data:extend(
       --  shift = {0.03125, 0.125},
       --  tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
       --  animation_speed = 0.3,
-      --},
-    },
+      --}
+    }
   },
   {
     type = "explosion",
@@ -12217,12 +12389,12 @@ data:extend(
           {
             filename = "__base__/graphics/entity/bigass-explosion/hr-bigass-explosion-36f-1.png",
             width_in_frames = 6,
-            height_in_frames = 3,
+            height_in_frames = 3
           },
           {
             filename = "__base__/graphics/entity/bigass-explosion/hr-bigass-explosion-36f-2.png",
             width_in_frames = 6,
-            height_in_frames = 3,
+            height_in_frames = 3
           }
         }
       }
@@ -12293,7 +12465,7 @@ data:extend(
           frame_count = 21,
           scale = 0.5,
           shift = util.by_pixel(1, -82),
-          animation_speed = 0.75,
+          animation_speed = 0.75
         }
       }
     },
@@ -12326,7 +12498,7 @@ data:extend(
     duration = 60 * 1.75,
     fade_away_duration = 20,
     show_when_smoke_off = true
-  },
+  }
 }
 )
 
@@ -12384,11 +12556,11 @@ infinity_chest.resistances =
   },
   {
     type = "physical",
-    percent = 100,
+    percent = 100
   },
   {
     type = "explosion",
-    percent = 100,
+    percent = 100
   }
 }
 data:extend({infinity_chest})

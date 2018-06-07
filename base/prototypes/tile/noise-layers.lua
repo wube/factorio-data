@@ -75,6 +75,6 @@ data:extend(
   {
     type = "noise-layer",
     name = "dry-dirt"
-  },
+  }
 }
 )

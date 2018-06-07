@@ -16,12 +16,12 @@ function biterrunanimation(scale, tint1, tint2)
          {
           filename = "__base__/graphics/entity/biter/biter-run-1.png",
           width_in_frames = 8,
-          height_in_frames = 16,
+          height_in_frames = 16
          },
          {
           filename = "__base__/graphics/entity/biter/biter-run-2.png",
           width_in_frames = 8,
-          height_in_frames = 16,
+          height_in_frames = 16
          }
         }
       },
@@ -72,22 +72,22 @@ function biterattackanimation(scale, tint1, tint2)
          {
           filename = "__base__/graphics/entity/biter/biter-attack-1.png",
           width_in_frames = 6,
-          height_in_frames = 8,
+          height_in_frames = 8
          },
          {
           filename = "__base__/graphics/entity/biter/biter-attack-2.png",
           width_in_frames = 5,
-          height_in_frames = 8,
+          height_in_frames = 8
          },
          {
           filename = "__base__/graphics/entity/biter/biter-attack-3.png",
           width_in_frames = 6,
-          height_in_frames = 8,
+          height_in_frames = 8
          },
          {
           filename = "__base__/graphics/entity/biter/biter-attack-4.png",
           width_in_frames = 5,
-          height_in_frames = 8,
+          height_in_frames = 8
          }
         }
       },
@@ -101,7 +101,7 @@ function biterattackanimation(scale, tint1, tint2)
         direction_count = 16,
         shift = {scale * 0.117188, scale * -1.11328},
         scale = scale,
-        tint = tint1,
+        tint = tint1
       },
 
       {
@@ -136,22 +136,22 @@ function biterdieanimation(scale, tint1, tint2)
           {
             filename = "__base__/graphics/entity/biter/biter-die-1.png",
             width_in_frames = 9,
-            height_in_frames = 8,
+            height_in_frames = 8
           },
           {
             filename = "__base__/graphics/entity/biter/biter-die-2.png",
             width_in_frames = 8,
-            height_in_frames = 8,
+            height_in_frames = 8
           },
           {
             filename = "__base__/graphics/entity/biter/biter-die-3.png",
             width_in_frames = 9,
-            height_in_frames = 8,
+            height_in_frames = 8
           },
           {
             filename = "__base__/graphics/entity/biter/biter-die-4.png",
             width_in_frames = 8,
-            height_in_frames = 8,
+            height_in_frames = 8
           }
         }
       },

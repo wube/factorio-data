@@ -111,9 +111,9 @@ data:extend(
       {
         {"steel-plate", 2},
         {"plastic-bar", 2},
-        {"explosives", 1},
+        {"explosives", 1}
       },
-      result = "cannon-shell",
+      result = "cannon-shell"
     },
     expensive =
     {
@@ -123,9 +123,9 @@ data:extend(
       {
         {"steel-plate", 4},
         {"plastic-bar", 4},
-        {"explosives", 1},
+        {"explosives", 1}
       },
-      result = "cannon-shell",
+      result = "cannon-shell"
     }
   },
   {
@@ -139,7 +139,7 @@ data:extend(
       {
         {"steel-plate", 2},
         {"plastic-bar", 2},
-        {"explosives", 2},
+        {"explosives", 2}
       },
       result = "explosive-cannon-shell"
     },
@@ -151,10 +151,10 @@ data:extend(
       {
         {"steel-plate", 4},
         {"plastic-bar", 4},
-        {"explosives", 2},
+        {"explosives", 2}
       },
       result = "explosive-cannon-shell"
-    },
+    }
   },
   {
     type = "recipe",
@@ -189,7 +189,7 @@ data:extend(
     {
       {"explosive-cannon-shell", 4},
       {"radar", 1},
-      {"explosives", 8},
+      {"explosives", 8}
     },
     result = "artillery-shell"
   },

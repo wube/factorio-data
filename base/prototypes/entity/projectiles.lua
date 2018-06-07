@@ -300,7 +300,7 @@ data:extend(
                   }
                 }
               }
-            },
+            }
           }
         }
       }
@@ -356,7 +356,7 @@ data:extend(
         target_effects =
         {
           type = "damage",
-          damage = {amount = 5, type = "physical"},
+          damage = {amount = 5, type = "physical"}
         }
       }
     },
@@ -367,7 +367,7 @@ data:extend(
       width = 3,
       height = 50,
       priority = "high"
-    },
+    }
   },
   {
     type = "projectile",
@@ -396,7 +396,7 @@ data:extend(
       width = 3,
       height = 50,
       priority = "high"
-    },
+    }
   },
   {
     type = "projectile",
@@ -452,7 +452,7 @@ data:extend(
       width = 3,
       height = 50,
       priority = "high"
-    },
+    }
   },
   {
     type = "artillery-projectile",
@@ -467,14 +467,14 @@ data:extend(
       filename = "__base__/graphics/entity/artillery-projectile/hr-shell.png",
       width = 64,
       height = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     shadow =
     {
       filename = "__base__/graphics/entity/artillery-projectile/hr-shell-shadow.png",
       width = 64,
       height = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     chart_picture =
     {
@@ -484,7 +484,7 @@ data:extend(
       width = 64,
       height = 64,
       priority = "high",
-      scale = 0.25,
+      scale = 0.25
     },
     action =
     {
@@ -512,7 +512,7 @@ data:extend(
                   {
                     type = "damage",
                     damage = {amount = 500 , type = "explosion"}
-                  },
+                  }
                 }
               }
             }
@@ -533,7 +533,7 @@ data:extend(
           },
           {
             type = "show-explosion-on-chart",
-            scale = 8/32,
+            scale = 8/32
           }
         }
       }
@@ -618,7 +618,7 @@ data:extend(
       width = 3,
       height = 50,
       priority = "high"
-    },
+    }
   },
   {
     type = "projectile",
@@ -642,7 +642,7 @@ data:extend(
           {
             type = "create-entity",
             entity_name = "uranium-cannon-explosion"
-          },
+          }
         }
       }
     },
@@ -696,7 +696,7 @@ data:extend(
       width = 3,
       height = 50,
       priority = "high"
-    },
+    }
   },
   {
     type = "projectile",
@@ -769,7 +769,7 @@ data:extend(
       width = 3,
       height = 50,
       priority = "high"
-    },
+    }
   },
   {
     type = "projectile",
@@ -910,15 +910,17 @@ data:extend(
           {
             type = "create-entity",
             show_in_tooltip = true,
-            entity_name = "defender",
-          },
+            entity_name = "defender"
+          }
         }
       }
     },
     light = {intensity = 0.5, size = 4},
     enable_drawing_with_mask = true,
-    animation = {
-      layers = {
+    animation =
+    {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
           flags = { "no-crop" },
@@ -934,9 +936,9 @@ data:extend(
           width = 28,
           height = 20,
           priority = "high",
-          apply_runtime_tint = true,
-        },
-      },
+          apply_runtime_tint = true
+        }
+      }
     },
     shadow =
     {
@@ -947,7 +949,7 @@ data:extend(
       height = 20,
       priority = "high"
     },
-    smoke = capsule_smoke,
+    smoke = capsule_smoke
   },
   {
     type = "projectile",
@@ -973,8 +975,10 @@ data:extend(
     },
     light = {intensity = 0.5, size = 4},
     enable_drawing_with_mask = true,
-    animation = {
-      layers = {
+    animation =
+    {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule.png",
           flags = { "no-crop" },
@@ -990,9 +994,9 @@ data:extend(
           width = 36,
           height = 30,
           priority = "high",
-          apply_runtime_tint = true,
-        },
-      },
+          apply_runtime_tint = true
+        }
+      }
     },
     shadow =
     {
@@ -1027,8 +1031,10 @@ data:extend(
     },
     light = {intensity = 0.5, size = 4},
     enable_drawing_with_mask = true,
-    animation = {
-      layers = {
+    animation =
+    {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule.png",
           flags = { "no-crop" },
@@ -1044,9 +1050,9 @@ data:extend(
           width = 42,
           height = 34,
           priority = "high",
-          apply_runtime_tint = true,
-        },
-      },
+          apply_runtime_tint = true
+        }
+      }
     },
     shadow =
     {
@@ -1095,7 +1101,7 @@ data:extend(
       height = 32,
       priority = "high"
     },
-    smoke = capsule_smoke,
+    smoke = capsule_smoke
   },
   {
     type = "projectile",
@@ -1134,7 +1140,7 @@ data:extend(
       height = 32,
       priority = "high"
     },
-    smoke = capsule_smoke,
+    smoke = capsule_smoke
   },
   {
     type = "projectile",
@@ -1237,6 +1243,6 @@ data:extend(
       height = 24,
       priority = "high"
     }
-  },
+  }
 }
 )

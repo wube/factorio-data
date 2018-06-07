@@ -1,5 +1,6 @@
 local function autoplace_settings(name, order, coverage)
-  local ret = {
+  return
+  {
     order = order,
     control = name,
     sharpness = 15/16,
@@ -7,24 +8,24 @@ local function autoplace_settings(name, order, coverage)
     richness_multiplier_distance_bonus = 20,
     richness_base = 10,
     coverage = coverage,
-    peaks = {
+    peaks =
+    {
       {
         noise_layer = name,
         noise_octaves_difference = -0.85,
-        noise_persistence = 0.4,
-      },
+        noise_persistence = 0.4
+      }
     },
     starting_area_size = 5500 * coverage,
     starting_area_amount = 1600
   }
-  
-  return ret
 end
 
 local function resource(name, order, map_color, hardness, coverage)
   if hardness == nil then hardness = 0.9 end
   if coverage == nil then coverage = 0.02 end
-  return {
+  return
+  {
     type = "resource",
     name = name,
     icon = "__base__/graphics/icons/" .. name .. ".png",

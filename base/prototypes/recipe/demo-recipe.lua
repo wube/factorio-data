@@ -86,7 +86,7 @@ data:extend(
         {"iron-plate", 1},
         {"copper-cable", 3}
       },
-      result = "electronic-circuit",
+      result = "electronic-circuit"
     },
     expensive =
     {
@@ -95,7 +95,7 @@ data:extend(
         {"iron-plate", 2},
         {"copper-cable", 10}
       },
-      result = "electronic-circuit",
+      result = "electronic-circuit"
     }
   },
   {
@@ -188,12 +188,12 @@ data:extend(
     normal =
     {
       ingredients = {{"iron-plate", 1}},
-      result = "pipe",
+      result = "pipe"
     },
     expensive =
     {
       ingredients = {{"iron-plate", 2}},
-      result = "pipe",
+      result = "pipe"
     }
   },
   {

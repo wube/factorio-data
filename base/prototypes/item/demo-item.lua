@@ -424,6 +424,6 @@ data:extend(
     order = "a[stone-wall]-a[stone-wall]",
     place_result = "stone-wall",
     stack_size = 100
-  },
+  }
 }
 )

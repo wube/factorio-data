@@ -32,7 +32,8 @@ function make_beam(sound)
       axially_symmetrical = false,
       direction_count = 1,
       shift = {-0.03125, 0},
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/beam/hr-tileable-beam-START.png",
         line_length = 4,
         width = 94,
@@ -41,7 +42,7 @@ function make_beam(sound)
         axially_symmetrical = false,
         direction_count = 1,
         shift = {0.53125, 0},
-        scale = 0.5,
+        scale = 0.5
       }
     },
     ending = 
@@ -54,7 +55,8 @@ function make_beam(sound)
       axially_symmetrical = false,
       direction_count = 1,
       shift = {-0.046875, 0},
-      hr_version = { 
+      hr_version =
+      {
         filename = "__base__/graphics/entity/beam/hr-tileable-beam-END.png",
         line_length = 4,
         width = 91,
@@ -63,7 +65,7 @@ function make_beam(sound)
         axially_symmetrical = false,
         direction_count = 1,
         shift = {-0.078125, -0.046875},
-        scale = 0.5,
+        scale = 0.5
       } 
     },
     head =
@@ -74,7 +76,7 @@ function make_beam(sound)
       height = 39,
       frame_count = 16,
       animation_speed = 0.5,
-      blend_mode = beam_blend_mode,
+      blend_mode = beam_blend_mode
     },
     tail =
     {
@@ -83,7 +85,7 @@ function make_beam(sound)
       width = 45,
       height = 39,
       frame_count = 16,
-      blend_mode = beam_blend_mode,
+      blend_mode = beam_blend_mode
     },
     body =
     {
@@ -93,7 +95,7 @@ function make_beam(sound)
         width = 45,
         height = 39,
         frame_count = 16,
-        blend_mode = beam_blend_mode,
+        blend_mode = beam_blend_mode
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-2.png",
@@ -101,7 +103,7 @@ function make_beam(sound)
         width = 45,
         height = 39,
         frame_count = 16,
-        blend_mode = beam_blend_mode,
+        blend_mode = beam_blend_mode
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-3.png",
@@ -109,7 +111,7 @@ function make_beam(sound)
         width = 45,
         height = 39,
         frame_count = 16,
-        blend_mode = beam_blend_mode,
+        blend_mode = beam_blend_mode
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-4.png",
@@ -117,7 +119,7 @@ function make_beam(sound)
         width = 45,
         height = 39,
         frame_count = 16,
-        blend_mode = beam_blend_mode,
+        blend_mode = beam_blend_mode
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-5.png",
@@ -125,7 +127,7 @@ function make_beam(sound)
         width = 45,
         height = 39,
         frame_count = 16,
-        blend_mode = beam_blend_mode,
+        blend_mode = beam_blend_mode
       },
       {
         filename = "__base__/graphics/entity/beam/beam-body-6.png",
@@ -133,8 +135,8 @@ function make_beam(sound)
         width = 45,
         height = 39,
         frame_count = 16,
-        blend_mode = beam_blend_mode,
-      },
+        blend_mode = beam_blend_mode
+      }
     }
   }
 

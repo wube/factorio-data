@@ -5,80 +5,80 @@ data:extend(
     name = "iron-ore",
     richness = true,
     order = "b-a",
-    category = "resource",
+    category = "resource"
   },
   {
     type = "autoplace-control",
     name = "copper-ore",
     richness = true,
     order = "b-b",
-    category = "resource",
+    category = "resource"
   },
   {
     type = "autoplace-control",
     name = "stone",
     richness = true,
     order = "b-c",
-    category = "resource",
+    category = "resource"
   },
   {
     type = "autoplace-control",
     name = "coal",
     richness = true,
     order = "b-d",
-    category = "resource",
+    category = "resource"
   },
   {
     type = "autoplace-control",
     name = "uranium-ore",
     richness = true,
     order = "b-e",
-    category = "resource",
+    category = "resource"
   },
   {
     type = "autoplace-control",
     name = "crude-oil",
     richness = true,
     order = "b-f",
-    category = "resource",
+    category = "resource"
   },
   {
     type = "autoplace-control",
     name = "grass",
     order = "c-a",
-    category = "terrain",
+    category = "terrain"
   },
   {
     type = "autoplace-control",
     name = "dirt",
     order = "c-b",
-    category = "terrain",
+    category = "terrain"
   },
   {
     type = "autoplace-control",
     name = "sand",
     order = "c-c",
-    category = "terrain",
+    category = "terrain"
   },
   {
     type = "autoplace-control",
     name = "desert",
     order = "c-d",
-    category = "terrain",
+    category = "terrain"
   },
   {
     type = "autoplace-control",
     name = "trees",
     richness = true,
     order = "c-y",
-    category = "terrain",
+    category = "terrain"
   },
   {
     type = "autoplace-control",
     name = "enemy-base",
     richness = true,
     order = "c-z",
-    category = "terrain",
-  },
+    category = "terrain"
+  }
 }
 )

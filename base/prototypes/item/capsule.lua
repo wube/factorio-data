@@ -326,5 +326,5 @@ data:extend(
     subgroup = "capsule",
     order = "zz",
     stack_size = 1
-  },
+  }
 })

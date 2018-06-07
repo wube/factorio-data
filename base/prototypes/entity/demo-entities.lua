@@ -21,7 +21,8 @@ local function cliff_sprite_variations(name, column_offset, row_offset, variatio
   pictures = {}
   for i=0,(variation_count-1) do
     table.insert(pictures, {
-      layers = {
+      layers =
+      {
         {
           filename = "__base__/graphics/terrain/cliffs/cliff-" .. name .. ".png",
           width = frame_width,
@@ -36,7 +37,7 @@ local function cliff_sprite_variations(name, column_offset, row_offset, variatio
             height = frame_height * 2,
             x = (column_offset + i) * frame_width * 2,
             y = row_offset * frame_height * 2,
-            scale = scale * 0.5,
+            scale = scale * 0.5
           }
         },
         {
@@ -57,9 +58,9 @@ local function cliff_sprite_variations(name, column_offset, row_offset, variatio
             y = row_offset * frame_height * 2,
             draw_as_shadow = true,
             scale = scale * 0.5,
-            shift = shadow_shift,
+            shift = shadow_shift
           }
-        },
+        }
       }
     })
   end
@@ -134,7 +135,7 @@ local function scaled_cliff(name, scale, fill_volume)
       east_to_none   = cliff_orientation("entrance", 2, 2, 2, {{ 0.0, -0.5}, {2.0,  0.5}}, scale, fill_volume),
       none_to_west   = cliff_orientation("entrance", 0, 2, 2, {{-2.0, -0.5}, {0.0,  0.5}}, scale, fill_volume),
       south_to_none  = cliff_orientation("entrance", 2, 1, 2, {{-1.0,  0.5}, {1.0,  2.0}}, scale, fill_volume),
-      none_to_north  = cliff_orientation("entrance", 0, 1, 2, {{-1.0, -2.0}, {1.0, -0.5}}, scale, fill_volume),
+      none_to_north  = cliff_orientation("entrance", 0, 1, 2, {{-1.0, -2.0}, {1.0, -0.5}}, scale, fill_volume)
     }
   }
 end
@@ -573,7 +574,7 @@ data:extend(
         {
           playeranimations.level1.dead,
           playeranimations.level1.dead_mask,
-          playeranimations.level1.dead_shadow,
+          playeranimations.level1.dead_shadow
         }
       },
       {
@@ -583,7 +584,7 @@ data:extend(
           playeranimations.level1.dead_mask,
           playeranimations.level2addon.dead,
           playeranimations.level2addon.dead_mask,
-          playeranimations.level1.dead_shadow,
+          playeranimations.level1.dead_shadow
         }
       },
       {
@@ -593,7 +594,7 @@ data:extend(
           playeranimations.level1.dead_mask,
           playeranimations.level3addon.dead,
           playeranimations.level3addon.dead_mask,
-          playeranimations.level1.dead_shadow,
+          playeranimations.level1.dead_shadow
         }
       }
     },
@@ -664,7 +665,7 @@ data:extend(
           {
             playeranimations.level1.idle,
             playeranimations.level1.idle_mask,
-            playeranimations.level1.idle_shadow,
+            playeranimations.level1.idle_shadow
           }
         },
         idle_with_gun =
@@ -673,7 +674,7 @@ data:extend(
           {
             playeranimations.level1.idle_gun,
             playeranimations.level1.idle_gun_mask,
-            playeranimations.level1.idle_gun_shadow,
+            playeranimations.level1.idle_gun_shadow
           }
         },
         mining_with_hands =
@@ -682,7 +683,7 @@ data:extend(
           {
             playeranimations.level1.mining_hands,
             playeranimations.level1.mining_hands_mask,
-            playeranimations.level1.mining_hands_shadow,
+            playeranimations.level1.mining_hands_shadow
           }
         },
         mining_with_tool =
@@ -691,7 +692,7 @@ data:extend(
           {
             playeranimations.level1.mining_tool,
             playeranimations.level1.mining_tool_mask,
-            playeranimations.level1.mining_tool_shadow,
+            playeranimations.level1.mining_tool_shadow
           }
         },
         running_with_gun =
@@ -700,7 +701,7 @@ data:extend(
           {
             playeranimations.level1.running_gun,
             playeranimations.level1.running_gun_mask,
-            playeranimations.level1.running_gun_shadow,
+            playeranimations.level1.running_gun_shadow
           }
         },
         running =
@@ -709,7 +710,7 @@ data:extend(
           {
             playeranimations.level1.running,
             playeranimations.level1.running_mask,
-            playeranimations.level1.running_shadow,
+            playeranimations.level1.running_shadow
           }
         }
       },
@@ -724,7 +725,7 @@ data:extend(
             playeranimations.level1.idle_mask,
             playeranimations.level2addon.idle,
             playeranimations.level2addon.idle_mask,
-            playeranimations.level1.idle_shadow,
+            playeranimations.level1.idle_shadow
           }
         },
         idle_with_gun =
@@ -735,7 +736,7 @@ data:extend(
             playeranimations.level1.idle_gun_mask,
             playeranimations.level2addon.idle_gun,
             playeranimations.level2addon.idle_gun_mask,
-            playeranimations.level1.idle_gun_shadow,
+            playeranimations.level1.idle_gun_shadow
           }
         },
         mining_with_hands =
@@ -746,7 +747,7 @@ data:extend(
             playeranimations.level1.mining_hands_mask,
             playeranimations.level2addon.mining_hands,
             playeranimations.level2addon.mining_hands_mask,
-            playeranimations.level1.mining_hands_shadow,
+            playeranimations.level1.mining_hands_shadow
           }
         },
         mining_with_tool =
@@ -757,7 +758,7 @@ data:extend(
             playeranimations.level1.mining_tool_mask,
             playeranimations.level2addon.mining_tool,
             playeranimations.level2addon.mining_tool_mask,
-            playeranimations.level1.mining_tool_shadow,
+            playeranimations.level1.mining_tool_shadow
           }
         },
         running_with_gun =
@@ -768,7 +769,7 @@ data:extend(
             playeranimations.level1.running_gun_mask,
             playeranimations.level2addon.running_gun,
             playeranimations.level2addon.running_gun_mask,
-            playeranimations.level1.running_gun_shadow,
+            playeranimations.level1.running_gun_shadow
           }
         },
         running =
@@ -779,7 +780,7 @@ data:extend(
             playeranimations.level1.running_mask,
             playeranimations.level2addon.running,
             playeranimations.level2addon.running_mask,
-            playeranimations.level1.running_shadow,
+            playeranimations.level1.running_shadow
           }
         }
       },
@@ -794,7 +795,7 @@ data:extend(
             playeranimations.level1.idle_mask,
             playeranimations.level3addon.idle,
             playeranimations.level3addon.idle_mask,
-            playeranimations.level1.idle_shadow,
+            playeranimations.level1.idle_shadow
           }
         },
         idle_with_gun =
@@ -805,7 +806,7 @@ data:extend(
             playeranimations.level1.idle_gun_mask,
             playeranimations.level3addon.idle_gun,
             playeranimations.level3addon.idle_gun_mask,
-            playeranimations.level1.idle_gun_shadow,
+            playeranimations.level1.idle_gun_shadow
           }
         },
         mining_with_hands =
@@ -816,7 +817,7 @@ data:extend(
             playeranimations.level1.mining_hands_mask,
             playeranimations.level3addon.mining_hands,
             playeranimations.level3addon.mining_hands_mask,
-            playeranimations.level1.mining_hands_shadow,
+            playeranimations.level1.mining_hands_shadow
           }
         },
         mining_with_tool =
@@ -827,7 +828,7 @@ data:extend(
             playeranimations.level1.mining_tool_mask,
             playeranimations.level3addon.mining_tool,
             playeranimations.level3addon.mining_tool_mask,
-            playeranimations.level1.mining_tool_shadow,
+            playeranimations.level1.mining_tool_shadow
           }
         },
         running_with_gun =
@@ -838,7 +839,7 @@ data:extend(
             playeranimations.level1.running_gun_mask,
             playeranimations.level3addon.running_gun,
             playeranimations.level3addon.running_gun_mask,
-            playeranimations.level1.running_gun_shadow,
+            playeranimations.level1.running_gun_shadow
           }
         },
         running =
@@ -849,7 +850,7 @@ data:extend(
             playeranimations.level1.running_mask,
             playeranimations.level3addon.running,
             playeranimations.level3addon.running_mask,
-            playeranimations.level1.running_shadow,
+            playeranimations.level1.running_shadow
           }
         }
       }
@@ -878,7 +879,7 @@ data:extend(
         size = 2,
         intensity = 0.6,
         color = {r=1.0, g=1.0, b=1.0}
-      },
+      }
     },
     mining_speed = 0.01,
     mining_with_hands_particles_animation_positions = {29, 63},
@@ -956,7 +957,8 @@ data:extend(
         height = 64,
         frame_count = 1,
         shift = {0.515625, 0.0625},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace.png",
           priority = "extra-high",
           width = 151,
@@ -974,7 +976,8 @@ data:extend(
         frame_count = 1,
         draw_as_shadow = true,
         shift = {0.515625, 0.0625},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-shadow.png",
           priority = "extra-high",
           width = 164,
@@ -1005,7 +1008,8 @@ data:extend(
             axially_symmetrical = false,
             direction_count = 1,
             shift = util.by_pixel(2, 5.5),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-fire.png",
               priority = "extra-high",
               line_length = 8,
@@ -1115,9 +1119,7 @@ data:extend(
         height = 32
       }
     },
-    autoplace = {
-      influence = 0.01
-    }
+    autoplace = { influence = 0.01 }
   },
 
   {
@@ -1220,7 +1222,8 @@ data:extend(
             width = 131,
             height = 108,
             shift = util.by_pixel(-0.5, 4),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-N-idle.png",
               priority = "extra-high",
               width = 269,
@@ -1236,14 +1239,15 @@ data:extend(
             height = 82,
             shift = util.by_pixel(20.5, 9),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-N-shadow.png",
               priority = "extra-high",
               width = 274,
               height = 164,
               scale = 0.5,
               shift = util.by_pixel(20.5, 9),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -1258,7 +1262,8 @@ data:extend(
             width = 105,
             height = 147,
             shift = util.by_pixel(-3.5, -0.5),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-E-idle.png",
               priority = "extra-high",
               width = 216,
@@ -1274,14 +1279,15 @@ data:extend(
             height = 97,
             shift = util.by_pixel(30, 9.5),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-E-shadow.png",
               priority = "extra-high",
               width = 184,
               height = 194,
               scale = 0.5,
               shift = util.by_pixel(30, 9.5),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -1296,7 +1302,8 @@ data:extend(
             width = 128,
             height = 95,
             shift = util.by_pixel(3, 12.5),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-S-idle.png",
               priority = "extra-high",
               width = 260,
@@ -1312,14 +1319,15 @@ data:extend(
             height = 66,
             shift = util.by_pixel(30, 16),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-S-shadow.png",
               priority = "extra-high",
               width = 311,
               height = 131,
               scale = 0.5,
               shift = util.by_pixel(29.75, 15.75),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -1334,7 +1342,8 @@ data:extend(
             width = 96,
             height = 132,
             shift = util.by_pixel(1, 5),
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-W-idle.png",
               priority = "extra-high",
               width = 196,
@@ -1350,14 +1359,15 @@ data:extend(
             height = 109,
             shift = util.by_pixel(19.5, 6.5),
             draw_as_shadow = true,
-            hr_version = {
+            hr_version =
+        {
               filename = "__base__/graphics/entity/boiler/hr-boiler-W-shadow.png",
               priority = "extra-high",
               width = 206,
               height = 218,
               scale = 0.5,
               shift = util.by_pixel(19.5, 6.5),
-              draw_as_shadow = true,
+              draw_as_shadow = true
             }
           }
         }
@@ -1373,14 +1383,15 @@ data:extend(
         width = 3,
         height = 17,
         shift = util.by_pixel(33.5, -13.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-E-patch.png",
           width = 6,
           height = 36,
           shift = util.by_pixel(33.5, -13.5),
           scale = 0.5
         }
-      },
+      }
     },
 
     fire_flicker_enabled = true,
@@ -1396,7 +1407,8 @@ data:extend(
         height = 13,
         animation_speed = 0.5,
         shift = util.by_pixel(0, -8.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-N-fire.png",
           priority = "extra-high",
           frame_count = 64,
@@ -1418,7 +1430,8 @@ data:extend(
         height = 14,
         animation_speed = 0.5,
         shift = util.by_pixel(-10, -22),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-E-fire.png",
           priority = "extra-high",
           frame_count = 64,
@@ -1440,7 +1453,8 @@ data:extend(
         height = 9,
         animation_speed = 0.5,
         shift = util.by_pixel(-1, -26.5),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-S-fire.png",
           priority = "extra-high",
           frame_count = 64,
@@ -1462,7 +1476,8 @@ data:extend(
         height = 14,
         animation_speed = 0.5,
         shift = util.by_pixel(13, -23),
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-W-fire.png",
           priority = "extra-high",
           frame_count = 64,
@@ -1489,7 +1504,8 @@ data:extend(
         height = 87,
         shift = util.by_pixel(-1, -6.5),
         blend_mode = "additive",
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-N-light.png",
           priority = "extra-high",
           frame_count = 1,
@@ -1509,7 +1525,8 @@ data:extend(
         height = 122,
         shift = util.by_pixel(0, -13),
         blend_mode = "additive",
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-E-light.png",
           priority = "extra-high",
           frame_count = 1,
@@ -1529,7 +1546,8 @@ data:extend(
         height = 81,
         shift = util.by_pixel(1, 5.5),
         blend_mode = "additive",
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-S-light.png",
           priority = "extra-high",
           frame_count = 1,
@@ -1549,7 +1567,8 @@ data:extend(
         height = 109,
         shift = util.by_pixel(2, -6.5),
         blend_mode = "additive",
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/boiler/hr-boiler-W-light.png",
           priority = "extra-high",
           frame_count = 1,
@@ -2266,7 +2285,7 @@ data:extend(
       pipe_connections =
       {
         { type = "input-output", position = {0, 3} },
-        { type = "input-output", position = {0, -3} },
+        { type = "input-output", position = {0, -3} }
       },
       production_type = "input-output",
       filter = "steam",
@@ -2288,7 +2307,8 @@ data:extend(
           frame_count = 32,
           line_length = 8,
           shift = util.by_pixel(1, -5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-engine/hr-steam-engine-H.png",
             width = 352,
             height = 257,
@@ -2296,7 +2316,7 @@ data:extend(
             line_length = 8,
             shift = util.by_pixel(1, -4.75),
             scale = 0.5
-          },
+          }
         },
         {
           filename = "__base__/graphics/entity/steam-engine/steam-engine-H-shadow.png",
@@ -2306,7 +2326,8 @@ data:extend(
           line_length = 8,
           draw_as_shadow = true,
           shift = util.by_pixel(48, 24),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-engine/hr-steam-engine-H-shadow.png",
             width = 508,
             height = 160,
@@ -2315,9 +2336,9 @@ data:extend(
             draw_as_shadow = true,
             shift = util.by_pixel(48, 24),
             scale = 0.5
-          },
-        },
-      },
+          }
+        }
+      }
     },
     vertical_animation =
     {
@@ -2330,7 +2351,8 @@ data:extend(
           frame_count = 32,
           line_length = 8,
           shift = util.by_pixel(5, -6.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-engine/hr-steam-engine-V.png",
             width = 225,
             height = 391,
@@ -2338,7 +2360,7 @@ data:extend(
             line_length = 8,
             shift = util.by_pixel(4.75, -6.25),
             scale = 0.5
-          },
+          }
         },
         {
           filename = "__base__/graphics/entity/steam-engine/steam-engine-V-shadow.png",
@@ -2348,7 +2370,8 @@ data:extend(
           line_length = 8,
           draw_as_shadow = true,
           shift = util.by_pixel(40.5, 9.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/steam-engine/hr-steam-engine-V-shadow.png",
             width = 330,
             height = 307,
@@ -2357,9 +2380,9 @@ data:extend(
             draw_as_shadow = true,
             shift = util.by_pixel(40.5, 9.25),
             scale = 0.5
-          },
-        },
-      },
+          }
+        }
+      }
     },
     smoke =
     {
@@ -2381,7 +2404,7 @@ data:extend(
         filename = "__base__/sound/steam-engine-90bpm.ogg",
         volume = 0.6
       },
-      match_speed_to_activity = true,
+      match_speed_to_activity = true
     },
     min_perceived_performance = 0.25,
     performance_to_sound_speedup = 0.5
@@ -2424,8 +2447,8 @@ data:extend(
         {
           position = {0, 1},
           type = "output"
-        },
-      },
+        }
+      }
     },
     pumping_speed = 20,
     tile_width = 1,
@@ -2664,7 +2687,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/inserter/hr-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -2678,7 +2702,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/inserter/hr-inserter-hand-closed.png",
         priority = "extra-high",
         width = 72,
@@ -2692,7 +2717,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/inserter/hr-inserter-hand-open.png",
         priority = "extra-high",
         width = 72,
@@ -2706,7 +2732,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -2720,7 +2747,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2734,7 +2762,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2753,7 +2782,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/inserter/hr-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -2783,7 +2813,7 @@ data:extend(
       {
         type = "fire",
         percent = 90
-      },
+      }
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
@@ -2840,7 +2870,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 34,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base.png",
         priority = "extra-high",
         width = 32,
@@ -2854,7 +2885,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed.png",
         priority = "extra-high",
         width = 72,
@@ -2868,7 +2900,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open.png",
         priority = "extra-high",
         width = 72,
@@ -2882,7 +2915,8 @@ data:extend(
       priority = "extra-high",
       width = 8,
       height = 33,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
         priority = "extra-high",
         width = 32,
@@ -2896,7 +2930,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2910,7 +2945,8 @@ data:extend(
       priority = "extra-high",
       width = 18,
       height = 41,
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
         priority = "extra-high",
         width = 72,
@@ -2929,7 +2965,8 @@ data:extend(
         width = 46,
         height = 46,
         shift = {0.09375, 0},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-platform.png",
           priority = "extra-high",
           width = 105,
@@ -2952,7 +2989,7 @@ data:extend(
     flags = {"placeable-off-grid", "not-on-map"},
     collision_box = {{-0.14, -0.14}, {0.14, 0.14}},
     selection_box = {{-0.17, -0.17}, {0.17, 0.17}},
-    minable = {hardness = 0.1, mining_time = 0.05},
+    minable = {hardness = 0.1, mining_time = 0.05}
   },
 
   {
@@ -2987,17 +3024,18 @@ data:extend(
         { position = {1, 0} },
         { position = {0, 1} },
         { position = {-1, 0} }
-      },
+      }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures = pipepictures(),
     working_sound =
     {
-      sound = {
+      sound =
+      {
         {
           filename = "__base__/sound/pipe.ogg",
           volume = 0.85
-        },
+        }
       },
       match_volume_to_activity = true,
       max_sounds_per_type = 3
@@ -3077,7 +3115,8 @@ data:extend(
           direction_count = 64,
           line_length = 8,
           shift = util.by_pixel(1, -16),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/radar/hr-radar.png",
             priority = "low",
             width = 196,
@@ -3099,7 +3138,8 @@ data:extend(
           line_length = 8,
           shift = util.by_pixel(39,3),
           draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/radar/hr-radar-shadow.png",
             priority = "low",
             width = 343,
@@ -3117,14 +3157,15 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
-      sound = {
+      sound =
+      {
         {
           filename = "__base__/sound/radar.ogg"
         }
       },
-      apparent_volume = 2,
+      apparent_volume = 2
     },
-    radius_minimap_visualisation_color = { r = 0.059, g = 0.092, b = 0.235, a = 0.275 },
+    radius_minimap_visualisation_color = { r = 0.059, g = 0.092, b = 0.235, a = 0.275 }
   },
 
   {
@@ -3151,8 +3192,10 @@ data:extend(
     light_when_colored = {intensity = 1, size = 6, color = {r=1.0, g=1.0, b=1.0}},
     glow_size = 6,
     glow_color_intensity = 0.135,
-    picture_off = {
-    layers = {
+    picture_off =
+    {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/small-lamp/lamp.png",
           priority = "high",
@@ -3162,7 +3205,8 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 1,
           shift = util.by_pixel(0,3),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/small-lamp/hr-lamp.png",
             priority = "high",
             width = 83,
@@ -3184,7 +3228,8 @@ data:extend(
           direction_count = 1,
           shift = util.by_pixel(4,5),
           draw_as_shadow = true,
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/small-lamp/hr-lamp-shadow.png",
             priority = "high",
             width = 76,
@@ -3209,7 +3254,8 @@ data:extend(
       axially_symmetrical = false,
       direction_count = 1,
       shift = util.by_pixel(0, -7),
-      hr_version = {
+      hr_version =
+      {
         filename = "__base__/graphics/entity/small-lamp/hr-lamp-light.png",
         priority = "high",
         width = 90,
@@ -3228,7 +3274,7 @@ data:extend(
       {type="virtual", name="signal-blue", color={r=0,g=0,b=1}},
       {type="virtual", name="signal-yellow", color={r=1,g=1,b=0}},
       {type="virtual", name="signal-pink", color={r=1,g=0,b=1}},
-      {type="virtual", name="signal-cyan", color={r=0,g=1,b=1}},
+      {type="virtual", name="signal-cyan", color={r=0,g=1,b=1}}
     },
 
     circuit_wire_connection_point = circuit_connector_definitions["lamp"].points,
@@ -3291,7 +3337,7 @@ data:extend(
           position = {0, 1},
           max_underground_distance = 10
         }
-      },
+      }
     },
     underground_sprite =
     {
@@ -3363,7 +3409,7 @@ data:extend(
            height = 128,
            scale = 0.5
         }
-      },
+      }
     }
   },
 
@@ -3400,7 +3446,8 @@ data:extend(
           frame_count = 32,
           line_length = 8,
           shift = util.by_pixel(0, 2),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
             priority="high",
             width = 214,
@@ -3421,7 +3468,8 @@ data:extend(
           repeat_count = 32,
           draw_as_shadow = true,
           shift = util.by_pixel(8.5, 5.5),
-          hr_version = {
+          hr_version =
+          {
             filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
             priority="high",
             width = 190,
@@ -3433,8 +3481,8 @@ data:extend(
             shift = util.by_pixel(8.5, 5),
             scale = 0.5
           }
-        },
-      },
+        }
+      }
     },
     crafting_categories = {"crafting"},
     crafting_speed = 0.5,
@@ -3451,7 +3499,8 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
-      sound = {
+      sound =
+      {
         {
           filename = "__base__/sound/assembling-machine-t1-1.ogg",
           volume = 0.8
@@ -3459,10 +3508,10 @@ data:extend(
         {
           filename = "__base__/sound/assembling-machine-t1-2.ogg",
           volume = 0.8
-        },
+        }
       },
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5,
+      apparent_volume = 1.5
     }
   },
 
@@ -3496,7 +3545,7 @@ data:extend(
         width = 199,
         height = 159,
         frame_count = 20,
-        shift = {0.484375, -0.171875},
+        shift = {0.484375, -0.171875}
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-2.png",
@@ -3504,7 +3553,7 @@ data:extend(
         width = 238,
         height = 157,
         frame_count = 20,
-        shift = {0.8125, -0.15625},
+        shift = {0.8125, -0.15625}
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-3.png",
@@ -3512,7 +3561,7 @@ data:extend(
         width = 240,
         height = 162,
         frame_count = 20,
-        shift = {0.71875, -0.09375},
+        shift = {0.71875, -0.09375}
       },
       {
         filename = "__base__/graphics/entity/acid-splash-purple/splash-4.png",
@@ -3520,7 +3569,7 @@ data:extend(
         width = 241,
         height = 146,
         frame_count = 20,
-        shift = {0.703125, -0.375},
+        shift = {0.703125, -0.375}
       }
     },
     splash_speed = 0.03
@@ -3530,7 +3579,7 @@ data:extend(
     type = "entity-ghost",
     name = "entity-ghost",
     flags = {"not-on-map"},
-    minable = { mining_time = 0, results={}},
+    minable = { mining_time = 0, results={}}
   },
 
   {
@@ -3539,7 +3588,7 @@ data:extend(
     flags = {"not-on-map"},
     minable = { mining_time = 0, results={}},
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_priority = 45,
+    selection_priority = 45
   },
 
   {
@@ -3931,7 +3980,7 @@ data:extend(
             priority = "extra-high",
             width = 52,
             height = 68,
-            shift = util.by_pixel(0, -2),
+            shift = util.by_pixel(0, -2)
           },
           {
             filename = "__base__/graphics/entity/stone-wall/wall-patch-shadow.png",
@@ -3939,7 +3988,7 @@ data:extend(
             draw_as_shadow = true,
             width = 74,
             height = 96,
-            shift = util.by_pixel(6, 13),
+            shift = util.by_pixel(6, 13)
           }
         }
       }

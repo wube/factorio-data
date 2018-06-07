@@ -100,7 +100,7 @@ data:extend(
             type = "stream",
             stream = "handheld-flamethrower-fire-stream",
             max_length = 15,
-            duration = 160,
+            duration = 160
           }
         }
       },
@@ -119,7 +119,7 @@ data:extend(
             type = "stream",
             stream = "tank-flamethrower-fire-stream",
             max_length = 9,
-            duration = 160,
+            duration = 160
           }
         }
       }
@@ -303,7 +303,7 @@ data:extend(
             starting_speed = 1,
             direction_deviation = 0.3,
             range_deviation = 0.3,
-            max_range = 15,
+            max_range = 15
           }
         }
       }
@@ -377,9 +377,9 @@ data:extend(
           {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
-          },
+          }
         }
-      },
+      }
     },
     subgroup = "ammo",
     order = "d[cannon-shell]-a[basic]",
@@ -411,9 +411,9 @@ data:extend(
           {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
-          },
+          }
         }
-      },
+      }
     },
     subgroup = "ammo",
     order = "d[cannon-shell]-c[explosive]",
@@ -444,9 +444,9 @@ data:extend(
           {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
-          },
+          }
         }
-      },
+      }
     },
     subgroup = "ammo",
     order = "d[cannon-shell]-c[uranium]",
@@ -477,9 +477,9 @@ data:extend(
           {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
-          },
+          }
         }
-      },
+      }
     },
     subgroup = "ammo",
     order = "d[explosive-cannon-shell]-c[uranium]",
@@ -509,13 +509,13 @@ data:extend(
           {
             type = "create-explosion",
             entity_name = "artillery-cannon-muzzle-flash"
-          },
+          }
         }
-      },
+      }
     },
     subgroup = "ammo",
     order = "d[explosive-cannon-shell]-d[artillery]",
     stack_size = 1
-  },
+  }
 }
 )

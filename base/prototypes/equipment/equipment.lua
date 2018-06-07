@@ -39,7 +39,7 @@ data:extend(
       smoothstep_min = 0.1,
       smoothstep_max = 0.7,
       minimum = 0.666,
-      maximum = 1.0,
+      maximum = 1.0
     },
     categories = {"armor"},
     darkness_to_turn_on = 0.5
@@ -324,7 +324,7 @@ data:extend(
                 },
                 {
                   type = "push-back",
-                  distance = 4,
+                  distance = 4
                 }
                }
              },
@@ -339,7 +339,7 @@ data:extend(
             }
           }
         }
-      },
+      }
     },
 
 
@@ -495,6 +495,6 @@ data:extend(
     },
     categories = {"armor"},
     order = "b-i-c"
-  },
+  }
 }
 )

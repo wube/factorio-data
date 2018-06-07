@@ -119,7 +119,7 @@ data:extend(
     {
       {"processing-unit", 10},
       {"electric-engine-unit", 30},
-      {"steel-plate", 20},
+      {"steel-plate", 20}
     },
     result = "exoskeleton-equipment"
   },
@@ -133,7 +133,7 @@ data:extend(
       {"advanced-circuit", 10},
       {"iron-gear-wheel", 40},
       {"steel-plate", 20},
-      {"battery", 45},
+      {"battery", 45}
     },
     result = "personal-roboport-equipment"
   },

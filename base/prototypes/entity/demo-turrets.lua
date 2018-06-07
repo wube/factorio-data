@@ -69,12 +69,12 @@ return
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-1.png",
           width_in_frames = inputs.frame_count or 2,
-          height_in_frames = 32,
+          height_in_frames = 32
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-2.png",
           width_in_frames = inputs.frame_count or 2,
-          height_in_frames = 32,
+          height_in_frames = 32
         }
       }
     },
@@ -103,12 +103,12 @@ return
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-shadow-1.png",
           width_in_frames = inputs.frame_count or 2,
-          height_in_frames = 32,
+          height_in_frames = 32
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-gun-shadow-2.png",
           width_in_frames = inputs.frame_count or 2,
-          height_in_frames = 32,
+          height_in_frames = 32
         }
       }
     }
@@ -244,7 +244,7 @@ data:extend(
           axially_symmetrical = false,
           direction_count = 1,
           frame_count = 1,
-          shift = {0, -0.046875},
+          shift = {0, -0.046875}
         },
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-base-mask.png",
@@ -281,7 +281,7 @@ data:extend(
         starting_frame_speed_deviation = 0.1
       },
       range = 18,
-      sound = make_heavy_gunshot_sounds(),
+      sound = make_heavy_gunshot_sounds()
     },
 
     call_for_help_radius = 40
@@ -299,7 +299,7 @@ data:extend(
     order = "c[corpse]-c[worm]-a[small]",
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     final_render_layer = "corpse",
-    animation = worm_die_animation(small_worm_scale, small_worm_tint),
+    animation = worm_die_animation(small_worm_scale, small_worm_tint)
   }
 }
 )

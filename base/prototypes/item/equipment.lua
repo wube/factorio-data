@@ -149,6 +149,6 @@ data:extend(
     subgroup = "equipment",
     order = "a[belt-immunity]-a[belt-immunity]",
     stack_size = 1
-  },
+  }
 }
 )

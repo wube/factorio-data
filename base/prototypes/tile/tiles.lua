@@ -20,9 +20,7 @@ end
 -- 'rectangles' indicate
 -- {{aux0, water0}, {aux1, water1}}
 local function autoplace_settings(noise_name, control, rectangle, rectangle2)
-  local peaks = {
-    noise_layer_peak(noise_name)
-  }
+  local peaks = { noise_layer_peak(noise_name) }
 
   local aux_center = (rectangle[2][1] + rectangle[1][1]) / 2
   local aux_range = math.abs(rectangle[2][1] - rectangle[1][1]) / 2
@@ -33,14 +31,15 @@ local function autoplace_settings(noise_name, control, rectangle, rectangle2)
   -- too large and placement get unpredictable
   local fadeout = 0.15
 
-  peaks[#peaks + 1] = {
+  peaks[#peaks + 1] =
+  {
     aux_optimal = aux_center,
     aux_range = aux_range,
     aux_max_range = aux_range + fadeout,
 
     water_optimal = water_center,
     water_range = water_range,
-    water_max_range = water_range + fadeout,
+    water_max_range = water_range + fadeout
   }
 
   if rectangle2 ~= nil then
@@ -49,14 +48,15 @@ local function autoplace_settings(noise_name, control, rectangle, rectangle2)
     water_center = (rectangle[2][2] + rectangle2[1][2]) / 2
     water_range = math.abs(rectangle2[2][2] - rectangle2[1][2]) / 2
 
-    peaks[#peaks + 1] = {
+    peaks[#peaks + 1] =
+    {
       aux_optimal = aux_center,
       aux_range = aux_range,
       aux_max_range = aux_range + fadeout,
 
       water_optimal = water_center,
       water_range = water_range,
-      water_max_range = water_range + fadeout,
+      water_max_range = water_range + fadeout
     }
   end
 
@@ -66,7 +66,8 @@ end
 function tile_variations_template(normal_res_picture, normal_res_transition, high_res_picture, high_res_transition, options)
   local function main_variation(size_)
     local y_ = ((size_ == 1) and 0) or ((size_ == 2) and 64) or ((size_ == 4) and 160) or 320
-    local ret = {
+    local ret =
+    {
       picture = normal_res_picture,
       count = 16,
       size = size_,
@@ -106,7 +107,7 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
         count = cnt_ or 8,
         line_length = line_len_ or 8,
         x = 2 * x_,
-        scale = 0.5,
+        scale = 0.5
       }
     }
   end
@@ -115,7 +116,7 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
   {
     main_variation(1),
     main_variation(2),
-    main_variation(4),
+    main_variation(4)
   }
   if (options.max_size == 8) then
     table.insert(main_, main_variation(8))
@@ -128,7 +129,7 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
     outer_corner_mask = make_transition_variation(288),
     side_mask         = make_transition_variation(576),
     u_transition_mask = make_transition_variation(864, 1, 1),
-    o_transition_mask = make_transition_variation(1152, 2, 1),
+    o_transition_mask = make_transition_variation(1152, 2, 1)
   }
 end
 
@@ -151,7 +152,7 @@ function water_transition_template(to_tiles, normal_res_transition, high_res_tra
         x = 2 * src_x,
         y = 2 * (src_y or 0),
         tall = is_tall,
-        scale = 0.5,
+        scale = 0.5
       }
     }
   end
@@ -241,7 +242,7 @@ local sand_transitions =
         o_transition_count = 8,
         base = { background_layer_offset = -1 }
       }
-  ),
+  )
 }
 
 local sand_transitions_between_transitions =
@@ -260,9 +261,9 @@ local sand_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
       }
-  ),
+  )
 }
 
 local grass_transitions =
@@ -281,7 +282,7 @@ local grass_transitions =
           side_weights = { 1, 1, 1, 1,  0.25, 0.25, 1, 1,  1, 1, 0.125, 0.25,  1, 1, 1, 1 }
         }
       }
-  ),
+  )
 }
 
 local grass_transitions_between_transitions =
@@ -298,9 +299,9 @@ local grass_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
       }
-  ),
+  )
 }
 
 local dry_dirt_transitions =
@@ -316,9 +317,9 @@ local dry_dirt_transitions =
         o_transition_count = 4,
         side_count = 8,
         outer_corner_count = 8,
-        inner_corner_count = 8,
+        inner_corner_count = 8
       }
-  ),
+  )
 }
 
 local dry_dirt_transitions_between_transitions =
@@ -335,9 +336,9 @@ local dry_dirt_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
       }
-  ),
+  )
 }
 
 local dark_dirt_transitions =
@@ -353,9 +354,9 @@ local dark_dirt_transitions =
         o_transition_count = 4,
         side_count = 8,
         outer_corner_count = 8,
-        inner_corner_count = 8,
+        inner_corner_count = 8
       }
-  ),
+  )
 }
 
 local dark_dirt_transitions_between_transitions =
@@ -372,9 +373,9 @@ local dark_dirt_transitions_between_transitions =
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, },
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
       }
-  ),
+  )
 }
 
 local concrete_transitions =
@@ -393,7 +394,7 @@ local concrete_transitions =
         inner_corner_count = 8,
         --base = { layer = 40 }
       }
-  ),
+  )
 }
 
 local concrete_transitions_between_transitions =
@@ -409,9 +410,9 @@ local concrete_transitions_between_transitions =
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
-        o_transition_count = 0,
+        o_transition_count = 0
       }
-  ),
+  )
 }
 
 local stone_path_transitions =
@@ -430,7 +431,7 @@ local stone_path_transitions =
         inner_corner_count = 8,
         --base = { layer = 40 }
       }
-  ),
+  )
 }
 
 local stone_path_transitions_between_transitions =
@@ -446,9 +447,9 @@ local stone_path_transitions_between_transitions =
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
-        o_transition_count = 0,
+        o_transition_count = 0
       }
-  ),
+  )
 }
 
 data:extend(
@@ -476,7 +477,7 @@ data:extend(
           picture = "__base__/graphics/terrain/out-of-map.png",
           count = 1,
           size = 1
-        },
+        }
       },
       inner_corner =
       {
@@ -519,7 +520,8 @@ data:extend(
           picture = "__base__/graphics/terrain/deepwater/deepwater1.png",
           count = 8,
           size = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/deepwater/hr-deepwater1.png",
             count = 8,
             scale = 0.5,
@@ -530,7 +532,8 @@ data:extend(
           picture = "__base__/graphics/terrain/deepwater/deepwater2.png",
           count = 8,
           size = 2,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/deepwater/hr-deepwater2.png",
             count = 8,
             scale = 0.5,
@@ -541,7 +544,8 @@ data:extend(
           picture = "__base__/graphics/terrain/deepwater/deepwater4.png",
           count = 6,
           size = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/deepwater/hr-deepwater4.png",
             count = 8,
             scale = 0.5,
@@ -553,7 +557,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/deepwater/deepwater-inner-corner.png",
         count = 6,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/deepwater/hr-deepwater-inner-corner.png",
           count = 6,
           scale = 0.5
@@ -563,7 +568,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/deepwater/deepwater-outer-corner.png",
         count = 6,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/deepwater/hr-deepwater-outer-corner.png",
           count = 6,
           scale = 0.5
@@ -573,7 +579,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/deepwater/deepwater-side.png",
         count = 8,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/deepwater/hr-deepwater-side.png",
           count = 8,
           scale = 0.5
@@ -607,7 +614,8 @@ data:extend(
           picture = "__base__/graphics/terrain/deepwater-green/deepwater-green1.png",
           count = 8,
           size = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green1.png",
             count = 8,
             scale = 0.5,
@@ -618,7 +626,8 @@ data:extend(
           picture = "__base__/graphics/terrain/deepwater-green/deepwater-green2.png",
           count = 8,
           size = 2,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green2.png",
             count = 8,
             scale = 0.5,
@@ -629,7 +638,8 @@ data:extend(
           picture = "__base__/graphics/terrain/deepwater-green/deepwater-green4.png",
           count = 6,
           size = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green4.png",
             count = 8,
             scale = 0.5,
@@ -641,7 +651,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-inner-corner.png",
         count = 6,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-inner-corner.png",
           count = 6,
           scale = 0.5
@@ -651,7 +662,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-outer-corner.png",
         count = 6,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-outer-corner.png",
           count = 6,
           scale = 0.5
@@ -661,7 +673,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-side.png",
         count = 8,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-side.png",
           count = 8,
           scale = 0.5
@@ -701,7 +714,7 @@ data:extend(
             count = 8,
             scale = 0.5,
             size = 1
-          },
+          }
         },
         {
           picture = "__base__/graphics/terrain/water/water2.png",
@@ -713,7 +726,7 @@ data:extend(
             count = 8,
             scale = 0.5,
             size = 2
-          },
+          }
         },
         {
           picture = "__base__/graphics/terrain/water/water4.png",
@@ -725,7 +738,7 @@ data:extend(
             count = 8,
             scale = 0.5,
             size = 4
-          },
+          }
         }
       },
       inner_corner =
@@ -771,7 +784,8 @@ data:extend(
           picture = "__base__/graphics/terrain/water-green/water-green1.png",
           count = 8,
           size = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/water-green/hr-water-green1.png",
             count = 8,
             scale = 0.5,
@@ -782,7 +796,8 @@ data:extend(
           picture = "__base__/graphics/terrain/water-green/water-green2.png",
           count = 8,
           size = 2,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/water-green/hr-water-green2.png",
             count = 8,
             scale = 0.5,
@@ -793,7 +808,8 @@ data:extend(
           picture = "__base__/graphics/terrain/water-green/water-green4.png",
           count = 6,
           size = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/water-green/hr-water-green4.png",
             count = 8,
             scale = 0.5,
@@ -836,7 +852,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 0.91, weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 }, },
         [4] = { probability = 0.91, weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -882,7 +898,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 0.91, weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 }, },
         [4] = { probability = 0.75, weights = {0.085, 0.085, 0.085, 0.075, 0.057, 0.055, 0.085, 0.075, 0.035, 0.015, 0.001, 0.025, 0.005, 0.025, 0.045, 0.045 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -928,7 +944,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -973,7 +989,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
         [4] = { probability = 0.5, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1019,7 +1035,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }, },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1060,7 +1076,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1101,7 +1117,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1142,7 +1158,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1183,7 +1199,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1224,7 +1240,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1265,7 +1281,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1306,7 +1322,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 } },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1362,7 +1378,7 @@ data:extend(
         max_size = 8,
         [2] = { probability = 0.39, weights = {0.025, 0.010, 0.013, 0.025, 0.025, 0.100, 0.100, 0.005, 0.010, 0.010, 0.005, 0.005, 0.001, 0.015, 0.020, 0.020} },
         [4] = { probability = 0.20, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
-        [8] = { probability = 0.10, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        [8] = { probability = 0.10, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1407,7 +1423,7 @@ data:extend(
         max_size = 8,
         [2] = { probability = 0.39, weights = {0.025, 0.010, 0.013, 0.025, 0.025, 0.100, 0.100, 0.005, 0.010, 0.010, 0.005, 0.005, 0.001, 0.015, 0.020, 0.020} },
         [4] = { probability = 0.20, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
-        [8] = { probability = 0.10, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        [8] = { probability = 0.10, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1452,7 +1468,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 0.39, weights = {0.025, 0.010, 0.013, 0.025, 0.025, 0.100, 0.100, 0.005, 0.010, 0.010, 0.005, 0.005, 0.001, 0.015, 0.020, 0.020}, },
         [4] = { probability = 0.39, weights = {0.025, 0.010, 0.013, 0.025, 0.025, 0.100, 0.100, 0.005, 0.010, 0.010, 0.005, 0.005, 0.001, 0.015, 0.020, 0.020}, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1497,7 +1513,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }, },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        -- [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        -- [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1543,7 +1559,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }, },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        -- [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        -- [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1589,7 +1605,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }, },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1635,7 +1651,7 @@ data:extend(
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 1, weights = {0.070, 0.070, 0.025, 0.070, 0.070, 0.070, 0.007, 0.025, 0.070, 0.050, 0.015, 0.026, 0.030, 0.005, 0.070, 0.027 }, },
         [4] = { probability = 1.00, weights = {0.070, 0.070, 0.070, 0.070, 0.070, 0.070, 0.015, 0.070, 0.070, 0.070, 0.015, 0.050, 0.070, 0.070, 0.065, 0.070 }, },
-        [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} },
+        [8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
       }
     ),
 
@@ -1684,7 +1700,8 @@ data:extend(
           picture = "__base__/graphics/terrain/stone-path/stone-path-1.png",
           count = 16,
           size = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/stone-path/hr-stone-path-1.png",
             count = 16,
             size = 1,
@@ -1696,7 +1713,8 @@ data:extend(
           count = 4,
           size = 2,
           probability = 0.39,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/stone-path/hr-stone-path-2.png",
             count = 16,
             size = 2,
@@ -1709,21 +1727,23 @@ data:extend(
           count = 4,
           size = 4,
           probability = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/stone-path/hr-stone-path-4.png",
             count = 16,
             size = 4,
             probability = 1,
             scale = 0.5
           }
-        },
+        }
       },
       inner_corner =
       {
         picture = "__base__/graphics/terrain/stone-path/stone-path-inner-corner.png",
         count = 16,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/stone-path/hr-stone-path-inner-corner.png",
           count = 16,
           tall = true,
@@ -1735,7 +1755,8 @@ data:extend(
         picture = "__base__/graphics/terrain/stone-path/stone-path-outer-corner.png",
         count = 8,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/stone-path/hr-stone-path-outer-corner.png",
           count = 8,
           tall = true,
@@ -1747,7 +1768,8 @@ data:extend(
         picture = "__base__/graphics/terrain/stone-path/stone-path-side.png",
         count = 16,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/stone-path/hr-stone-path-side.png",
           count = 16,
           tall = true,
@@ -1759,7 +1781,8 @@ data:extend(
         picture = "__base__/graphics/terrain/stone-path/stone-path-u.png",
         count = 8,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/stone-path/hr-stone-path-u.png",
           count = 8,
           tall = true,
@@ -1770,7 +1793,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/stone-path/stone-path-o.png",
         count = 4,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/stone-path/hr-stone-path-o.png",
           count = 4,
           scale = 0.5
@@ -1816,7 +1840,7 @@ data:extend(
           picture = "__base__/graphics/terrain/lab-tiles/lab-dark-1.png",
           count = 1,
           size = 1
-        },
+        }
       },
       inner_corner =
       {
@@ -1869,7 +1893,7 @@ data:extend(
           picture = "__base__/graphics/terrain/lab-tiles/lab-dark-2.png",
           count = 1,
           size = 1
-        },
+        }
       },
       inner_corner =
       {
@@ -1922,7 +1946,7 @@ data:extend(
           picture = "__base__/graphics/terrain/lab-tiles/lab-white.png",
           count = 1,
           size = 1
-        },
+        }
       },
       inner_corner =
       {
@@ -1975,7 +1999,8 @@ data:extend(
           picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid1.png",
           count = 16,
           size = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid1.png",
             count = 16,
             scale = 0.5,
@@ -1986,7 +2011,8 @@ data:extend(
           picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid2.png",
           count = 16,
           size = 2,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid2.png",
             count = 16,
             scale = 0.5,
@@ -1999,7 +2025,8 @@ data:extend(
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-inner-corner.png",
         count = 4,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-inner-corner.png",
           count = 4,
           tall = true,
@@ -2011,7 +2038,8 @@ data:extend(
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-outer-corner.png",
         count = 4,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-outer-corner.png",
           count = 4,
           tall = true,
@@ -2023,7 +2051,8 @@ data:extend(
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-side.png",
         count = 16,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-side.png",
           count = 16,
           tall = true,
@@ -2035,7 +2064,8 @@ data:extend(
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-u.png",
         count = 2,
         tall = true,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-u.png",
           count = 2,
           tall = true,
@@ -2046,7 +2076,8 @@ data:extend(
       {
         picture = "__base__/graphics/terrain/tutorial-grid/tutorial-grid-o.png",
         count = 2,
-        hr_version = {
+        hr_version =
+        {
           picture = "__base__/graphics/terrain/tutorial-grid/hr-tutorial-grid-o.png",
           count = 2,
           scale = 0.5
@@ -2074,7 +2105,7 @@ data:extend(
     },
     map_color={r=0, g=0, b=0},
     ageing=0.0006
-  },
+  }
 })
 
 if not data.is_demo then
@@ -2111,111 +2142,121 @@ if not data.is_demo then
             count = 1,
             size = 4,
             probability = 1
-          },
+          }
         },
         inner_corner =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
         inner_corner_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner-mask.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
 
         outer_corner =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
         outer_corner_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner-mask.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
 
         side =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-side.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-side.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
         side_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-side-mask.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
 
         u_transition =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-u.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-u.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
         u_transition_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-u-mask.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
 
         o_transition =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-o.png",
           count = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-o.png",
             count = 4,
             scale = 0.5
-          },
+          }
         },
         o_transition_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
           count = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-o-mask.png",
             count = 4,
             scale = 0.5
-          },
+          }
         },
 
 
@@ -2290,14 +2331,15 @@ if not data.is_demo then
             count = 1,
             size = 4,
             probability = 1
-          },
+          }
         },
 
         inner_corner_mask =
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-inner-corner-mask.png",
             count = 1,
             scale = 0.5
@@ -2307,7 +2349,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-outer-corner-mask.png",
             count = 1,
             scale = 0.5
@@ -2318,7 +2361,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-side-mask.png",
             count = 1,
             scale = 0.5
@@ -2329,7 +2373,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-u-mask.png",
             count = 1,
             scale = 0.5
@@ -2340,7 +2385,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-o-mask.png",
             count = 1,
             scale = 0.5
@@ -2414,7 +2460,7 @@ if not data.is_demo then
             count = 1,
             size = 4,
             probability = 1
-          },
+          }
         },
         inner_corner_mask =
         {
@@ -2512,111 +2558,121 @@ if not data.is_demo then
             count = 1,
             size = 4,
             probability = 1
-          },
+          }
         },
         inner_corner =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
         inner_corner_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner-mask.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
 
         outer_corner =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
         outer_corner_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner-mask.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
 
         side =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-side.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-side.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
         side_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
           count = 16,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-side-mask.png",
             count = 16,
             scale = 0.5
-          },
+          }
         },
 
         u_transition =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-u.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-u.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
         u_transition_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
           count = 8,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-u-mask.png",
             count = 8,
             scale = 0.5
-          },
+          }
         },
 
         o_transition =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-o.png",
           count = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-o.png",
             count = 4,
             scale = 0.5
-          },
+          }
         },
         o_transition_mask =
         {
           picture = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
           count = 4,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-concrete-o-mask.png",
             count = 4,
             scale = 0.5
-          },
+          }
         },
 
 
@@ -2691,14 +2747,15 @@ if not data.is_demo then
             count = 1,
             size = 4,
             probability = 1
-          },
+          }
         },
 
         inner_corner_mask =
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-inner-corner-mask.png",
             count = 1,
             scale = 0.5
@@ -2708,7 +2765,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-outer-corner-mask.png",
             count = 1,
             scale = 0.5
@@ -2719,7 +2777,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-side-mask.png",
             count = 1,
             scale = 0.5
@@ -2730,7 +2789,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-u-mask.png",
             count = 1,
             scale = 0.5
@@ -2741,7 +2801,8 @@ if not data.is_demo then
         {
           picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
           count = 1,
-          hr_version = {
+          hr_version =
+          {
             picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-o-mask.png",
             count = 1,
             scale = 0.5
@@ -2815,7 +2876,7 @@ if not data.is_demo then
             count = 1,
             size = 4,
             probability = 1
-          },
+          }
         },
         inner_corner_mask =
         {

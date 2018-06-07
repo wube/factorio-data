@@ -33,7 +33,7 @@ function spitter_attack_parameters(data)
       }
     },
     sound = make_spitter_roars(data.roarvolume),
-    animation = spitterattackanimation(data.scale, data.tint),
+    animation = spitterattackanimation(data.scale, data.tint)
   }
 end
 
@@ -82,7 +82,7 @@ data:extend(
       {
         type = "explosion",
         percent = 10
-      },
+      }
     },
     healing_per_tick = 0.01,
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
@@ -127,7 +127,7 @@ data:extend(
       {
         type = "physical",
         decrease = 8,
-        percent = 10,
+        percent = 10
       },
       {
         type = "explosion",
@@ -451,7 +451,7 @@ data:extend(
     dying_speed = 0.04,
     time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
-    animation = spitterdyinganimation(smallspitterscale, smallspittertint),
+    animation = spitterdyinganimation(smallspitterscale, smallspittertint)
   },
 
   {
@@ -467,7 +467,7 @@ data:extend(
     dying_speed = 0.04,
     time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
-    animation = spitterdyinganimation(mediumspitterscale, mediumspittertint),
+    animation = spitterdyinganimation(mediumspitterscale, mediumspittertint)
   },
 
   {
@@ -484,7 +484,7 @@ data:extend(
     dying_speed = 0.04,
     time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
-    animation = spitterdyinganimation(bigspitterscale, bigspittertint),
+    animation = spitterdyinganimation(bigspitterscale, bigspittertint)
   },
 
   {
@@ -501,7 +501,7 @@ data:extend(
     dying_speed = 0.04,
     time_before_removed = 15 * 60 * 60,
     final_render_layer = "corpse",
-    animation = spitterdyinganimation(behemothspitterscale, behemothspittertint),
+    animation = spitterdyinganimation(behemothspitterscale, behemothspittertint)
   },
 
   {
@@ -513,7 +513,8 @@ data:extend(
     max_health = 350,
     order="b-b-h",
     subgroup="enemies",
-    working_sound = {
+    working_sound =
+    {
       sound =
       {
         {
@@ -544,12 +545,12 @@ data:extend(
       {
         type = "explosion",
         decrease = 5,
-        percent = 15,
+        percent = 15
       },
       {
         type = "fire",
         decrease = 3,
-        percent = 60,
+        percent = 60
       }
     },
     healing_per_tick = 0.02,
@@ -609,5 +610,5 @@ data:extend(
       spawner_die_animation(2, spitter_spawner_tint),
       spawner_die_animation(3, spitter_spawner_tint)
     }
-  },
+  }
 })

@@ -728,7 +728,7 @@ data:extend(
     selection_mode = {"blueprint"},
     alt_selection_mode = {"blueprint"},
     selection_cursor_box_type = "copy",
-    alt_selection_cursor_box_type = "copy",
+    alt_selection_cursor_box_type = "copy"
   },
   {
     type = "deconstruction-item",
@@ -746,7 +746,7 @@ data:extend(
     selection_mode = {"deconstruct"},
     alt_selection_mode = {"cancel-deconstruct"},
     selection_cursor_box_type = "not-allowed",
-    alt_selection_cursor_box_type = "not-allowed",
+    alt_selection_cursor_box_type = "not-allowed"
   },
   {
     type = "blueprint-book",
@@ -757,7 +757,7 @@ data:extend(
     subgroup = "tool",
     order = "c[automated-construction]-c[blueprint-book]",
     stack_size = 1,
-    inventory_size = 1000,
+    inventory_size = 1000
   },
   {
     type = "item",
@@ -895,7 +895,7 @@ data:extend(
     subgroup = "circuit-network",
     place_result="arithmetic-combinator",
     order = "c[combinators]-a[arithmetic-combinator]",
-    stack_size= 50,
+    stack_size= 50
   },
   {
     type = "item",
@@ -906,7 +906,7 @@ data:extend(
     subgroup = "circuit-network",
     place_result="decider-combinator",
     order = "c[combinators]-b[decider-combinator]",
-    stack_size= 50,
+    stack_size= 50
   },
   {
     type = "item",
@@ -917,7 +917,7 @@ data:extend(
     subgroup = "circuit-network",
     place_result="constant-combinator",
     order = "c[combinators]-c[constant-combinator]",
-    stack_size= 50,
+    stack_size= 50
   },
   {
     type = "item",
@@ -928,7 +928,7 @@ data:extend(
     subgroup = "circuit-network",
     place_result="power-switch",
     order = "d[other]-a[power-switch]",
-    stack_size= 50,
+    stack_size= 50
   },
   {
     type = "item",
@@ -1292,7 +1292,7 @@ data:extend(
     subgroup = "other",
     order = "t[item]-o[infinity-chest]",
     stack_size = 10,
-    place_result = "infinity-chest",
+    place_result = "infinity-chest"
   }
 }
 )

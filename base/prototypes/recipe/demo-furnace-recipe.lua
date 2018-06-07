@@ -24,6 +24,6 @@ data:extend(
     enabled = true,
     ingredients = {{"stone", 2}},
     result = "stone-brick"
-  },
+  }
 }
 )

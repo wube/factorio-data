@@ -310,11 +310,11 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {type="item", name="steel-plate", amount=1},
+      {type="item", name="steel-plate", amount=1}
     },
     results=
     {
       {type="item", name="empty-barrel", amount=1}
-    },
+    }
   }
 })

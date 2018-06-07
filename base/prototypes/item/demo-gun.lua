@@ -29,7 +29,7 @@ data:extend(
       },
       projectile_creation_distance = 1.125,
       range = 15,
-      sound = make_light_gunshot_sounds(),
+      sound = make_light_gunshot_sounds()
     },
     stack_size = 5
   },
@@ -60,7 +60,7 @@ data:extend(
       },
       projectile_creation_distance = 1.125,
       range = 18,
-      sound = make_light_gunshot_sounds(),
+      sound = make_light_gunshot_sounds()
     },
     stack_size = 5
   }

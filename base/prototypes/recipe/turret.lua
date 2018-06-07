@@ -40,6 +40,6 @@ data:extend(
       {"advanced-circuit", 20}
     },
     result = "artillery-turret"
-  },
+  }
 }
 )

@@ -15,7 +15,8 @@ end
 function fireutil.flamethrower_turret_extension_animation(shft, opts)
   local m_line_length = 5
   local m_frame_count = 15
-  local ret_layers = {
+  local ret_layers =
+  {
     -- diffuse
     {
       filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-gun-extension.png",
@@ -27,7 +28,7 @@ function fireutil.flamethrower_turret_extension_animation(shft, opts)
       height = 65,
       direction_count = 1,
       axially_symmetrical = false,
-      shift = {0, -0.796875},
+      shift = {0, -0.796875}
     },
     -- mask
     {
@@ -54,7 +55,7 @@ function fireutil.flamethrower_turret_extension_animation(shft, opts)
       direction_count = 1,
       axially_symmetrical = false,
       shift = {1.04688, 0},
-      draw_as_shadow = true,
+      draw_as_shadow = true
     }
   }
 
@@ -67,18 +68,20 @@ function fireutil.flamethrower_turret_extension_animation(shft, opts)
   end) }
 end
 
-fireutil.turret_gun_shift = {
+fireutil.turret_gun_shift =
+{
   north = {0, -0.3125},
   east = {0.625, 0.3125},
   south = {0,  0.625},
-  west = { -0.46875, 0.3125},
+  west = { -0.46875, 0.3125}
 }
 
-fireutil.turret_model_info = {
+fireutil.turret_model_info =
+{
   tilt_pivot = { -1.68551, 0, 2.35439 },
   gun_tip_lowered = { 4.27735, 0, 3.97644 },
   gun_tip_raised = { 2.2515, 0, 7.10942 },
-  units_per_tile = 4,
+  units_per_tile = 4
 }
 
 fireutil.gun_center_base = math3d.vector2.sub({0,  -0.725}, fireutil.turret_gun_shift.south)
@@ -123,7 +126,7 @@ function fireutil.flamethrower_turret_preparing_muzzle_animation(opts)
   return
   {
     rotations = generated_orientations,
-    direction_shift = fireutil.turret_gun_shift,
+    direction_shift = fireutil.turret_gun_shift
   }
 end
 
@@ -137,7 +140,7 @@ function fireutil.flamethrower_turret_extension(opts)
     north = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.north, set_direction(opts, "north")),
     east = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.east, set_direction(opts, "east")),
     south = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.south, set_direction(opts, "south")),
-    west = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.west, set_direction(opts, "west")),
+    west = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.west, set_direction(opts, "west"))
   }
 end
 
@@ -153,7 +156,7 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     frame_count = 1,
     axially_symmetrical = false,
     direction_count = 64,
-    shift = {0, -0.75},
+    shift = {0, -0.75}
   }
   local glow_layer =
   {
@@ -167,7 +170,7 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     direction_count = 64,
     shift = {0, -0.765625},
     tint = make_color(1, 1, 1, 0.5),
-    blend_mode = "additive",
+    blend_mode = "additive"
   }
   local mask_layer =
   {
@@ -181,7 +184,7 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     axially_symmetrical = false,
     direction_count = 64,
     shift = {0, -0.859375},
-    apply_runtime_tint = true,
+    apply_runtime_tint = true
   }
   local shadow_layer =
   {
@@ -194,7 +197,7 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     axially_symmetrical = false,
     direction_count = 64,
     shift = {0.984375, 0.015625},
-    draw_as_shadow = true,
+    draw_as_shadow = true
   }
 
   local ret_layers = opts and opts.attacking and { diffuse_layer, glow_layer, mask_layer, shadow_layer }
@@ -210,7 +213,7 @@ function fireutil.flamethrower_prepared_animation(opts)
     north = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.north, opts),
     east = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.east, opts),
     south = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.south, opts),
-    west = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.west, opts),
+    west = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.west, opts)
   }
 end
 
@@ -220,7 +223,8 @@ function fireutil.create_fire_pictures(opts)
   local fire_scale =  opts.scale or 1
   local fire_tint = {r=1,g=1,b=1,a=1}
   local fire_flags = { "compressed" }
-  local retval = {
+  local retval =
+  {
     {
       filename = "__base__/graphics/entity/fire-flame/fire-flame-13.png",
       line_length = 8,
@@ -415,7 +419,7 @@ function fireutil.create_fire_pictures(opts)
       tint = fire_tint,
       flags = fire_flags,
       shift = { -0.0703125, -1.039065 }
-    },
+    }
   }
   return fireutil.foreach(retval, function(tab)
     if tab.shift and tab.scale then tab.shift = { tab.shift[1] * tab.scale, tab.shift[2] * tab.scale } end
@@ -428,7 +432,8 @@ function fireutil.create_small_tree_flame_animations(opts)
   local fire_scale =  opts.scale or 1
   local fire_tint = {r=1,g=1,b=1,a=1}
   local fire_flags = { "compressed" }
-  local retval = {
+  local retval =
+  {
     {
       filename = "__base__/graphics/entity/fire-flame/tree-fire-flame-01-a.png",
       line_length = 8,
@@ -546,7 +551,8 @@ function fireutil.flamethrower_turret_pipepictures()
 end
 
 function fireutil.create_burnt_patch_pictures()
-  local base = {
+  local base =
+  {
     filename = "__base__/graphics/entity/fire-flame/burnt-patch.png",
     line_length = 3,
     width = 115,
@@ -554,7 +560,7 @@ function fireutil.create_burnt_patch_pictures()
     frame_count = 9,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {-0.09375, 0.125},
+    shift = {-0.09375, 0.125}
   }
 
   local variations = {}
@@ -569,7 +575,7 @@ function fireutil.create_burnt_patch_pictures()
         tint = base.tint,
         shift = base.shift,
         x = (x-1) * base.width,
-        y = (y-1) * base.height,
+        y = (y-1) * base.height
       })
     end
   end
@@ -644,7 +650,7 @@ data:extend({
       axially_symmetrical = false,
       direction_count = 1,
       shift = {-0.109375, -1.1875},
-      animation_speed = 0.5,
+      animation_speed = 0.5
     },
     {
       filename = "__base__/graphics/entity/fire-flame/fire-smoke-source-2.png",
@@ -655,13 +661,14 @@ data:extend({
       axially_symmetrical = false,
       direction_count = 1,
       shift = {-0.203125, -1.21875},
-      animation_speed = 0.5,
-    },
+      animation_speed = 0.5
+    }
   },
 
   burnt_patch_pictures = fireutil.create_burnt_patch_pictures(),
   burnt_patch_alpha_default = 0.4,
-  burnt_patch_alpha_variations = {
+  burnt_patch_alpha_variations =
+  {
     -- { tile = "grass-1", alpha = 0.45 },
     -- { tile = "grass-2", alpha = 0.45 },
     -- { tile = "grass-3", alpha = 0.45 },
@@ -682,7 +689,7 @@ data:extend({
     -- { tile = "red-desert-2", alpha = 0.28 },
     -- { tile = "red-desert-3", alpha = 0.28 },
     { tile = "stone-path", alpha = 0.26 },
-    { tile = "concrete", alpha = 0.24 },
+    { tile = "concrete", alpha = 0.24 }
   },
 
   smoke =
@@ -696,7 +703,7 @@ data:extend({
       starting_vertical_speed_deviation = 0.005,
       vertical_speed_slowdown = 0.99,
       starting_frame_deviation = 60,
-      height = -0.5,
+      height = -0.5
     }
   },
 
@@ -753,7 +760,7 @@ data:extend({
       scale = 0.6,
       shift = {-0.109375 * 0.6, -1.1875 * 0.6},
       animation_speed = 0.5,
-      tint = make_color(1,1,1, 0.75),
+      tint = make_color(1,1,1, 0.75)
     },
     {
       filename = "__base__/graphics/entity/fire-flame/fire-smoke-source-2.png",
@@ -766,8 +773,8 @@ data:extend({
       scale = 0.6,
       shift = {-0.203125 * 0.6, -1.21875 * 0.6},
       animation_speed = 0.5,
-      tint = make_color(1,1,1, 0.75),
-    },
+      tint = make_color(1,1,1, 0.75)
+    }
   },
 
   trivial_smoke =
@@ -780,7 +787,7 @@ data:extend({
       starting_vertical_speed = 0.008,
       starting_vertical_speed_deviation = 0.05,
       starting_frame_deviation = 60,
-      height = -0.5,
+      height = -0.5
     }
   },
 
@@ -790,12 +797,13 @@ data:extend({
   {
     sound = { filename = "__base__/sound/furnace.ogg" },
     max_sounds_per_type = 3
-  },
+  }
 }})
 
 local indicator_pictures =
 {
-  north = {
+  north =
+  {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-north.png",
     line_length = 2,
     width = 5,
@@ -803,9 +811,10 @@ local indicator_pictures =
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {0.234375, 0.640625},
+    shift = {0.234375, 0.640625}
   },
-  east = {
+  east =
+  {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-east.png",
     line_length = 2,
     width = 10,
@@ -813,9 +822,10 @@ local indicator_pictures =
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {-1.03125, -0.15625},
+    shift = {-1.03125, -0.15625}
   },
-  south = {
+  south =
+  {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-south.png",
     line_length = 2,
     width = 5,
@@ -823,9 +833,10 @@ local indicator_pictures =
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {-0.234375, -1.375},
+    shift = {-0.234375, -1.375}
   },
-  west = {
+  west =
+  {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-west.png",
     line_length = 2,
     width = 10,
@@ -833,8 +844,8 @@ local indicator_pictures =
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {1.03125, -0.46875},
-  },
+    shift = {1.03125, -0.46875}
+  }
 }
 
 data:extend({
@@ -864,8 +875,8 @@ data:extend({
     {
       {
         type = "fire",
-        percent = 100,
-      },
+        percent = 100
+      }
     },
 
     fluid_box =
@@ -876,7 +887,8 @@ data:extend({
       pipe_picture = fireutil.flamethrower_turret_pipepictures(),
       pipe_covers = pipecoverspictures(),
       base_area = 1,
-      pipe_connections = {
+      pipe_connections =
+      {
         { position = {-1.5, 1.0} },
         { position = {1.5, 1.0} }
       }
@@ -904,8 +916,10 @@ data:extend({
     base_picture_secondary_draw_order = 1,
     base_picture =
     {
-      north = {
-        layers = {
+      north =
+      {
+        layers =
+        {
           -- diffuse
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-north.png",
@@ -915,7 +929,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-0.015625, 0.34375},
+            shift = {-0.015625, 0.34375}
           },
           -- mask
           {
@@ -928,7 +942,7 @@ data:extend({
             axially_symmetrical = false,
             direction_count = 1,
             shift = {-0.015625, 1.04688},
-            apply_runtime_tint = true,
+            apply_runtime_tint = true
           },
           -- shadow
           {
@@ -940,12 +954,14 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.140625, 0.46875},
-          },
+            shift = {0.140625, 0.46875}
+          }
         }
       },
-      east = {
-        layers = {
+      east =
+      {
+        layers =
+        {
           -- diffuse
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-east.png",
@@ -955,7 +971,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-0.140625, 0.125},
+            shift = {-0.140625, 0.125}
           },
           -- mask
           {
@@ -968,7 +984,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-1.01563, 0.03125},
+            shift = {-1.01563, 0.03125}
           },
           -- shadow
           {
@@ -980,12 +996,14 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.03125, 0.28125},
-          },
+            shift = {0.03125, 0.28125}
+          }
         }
       },
-      south = {
-        layers = {
+      south =
+      {
+        layers =
+        {
           -- diffuse
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-south.png",
@@ -995,7 +1013,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0, -0.15625},
+            shift = {0, -0.15625}
           },
           -- mask
           {
@@ -1008,7 +1026,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.015625, -0.953125},
+            shift = {0.015625, -0.953125}
           },
           -- shadow
           {
@@ -1020,13 +1038,15 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.140625, -0.0625},
-          },
+            shift = {0.140625, -0.0625}
+          }
         }
 
       },
-      west = {
-        layers = {
+      west =
+      {
+        layers =
+        {
           -- diffuse
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-west.png",
@@ -1036,7 +1056,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.140625, 0.203125},
+            shift = {0.140625, 0.203125}
           },
           -- mask
           {
@@ -1049,7 +1069,7 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {1.01563, 0.09375},
+            shift = {1.01563, 0.09375}
           },
           -- shadow
           {
@@ -1061,10 +1081,10 @@ data:extend({
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.484375, 0.296875},
-          },
+            shift = {0.484375, 0.296875}
+          }
         }
-      },
+      }
     },
 
     muzzle_animation =
@@ -1078,7 +1098,7 @@ data:extend({
       direction_count = 1,
       blend_mode = "additive",
       scale = 0.5,
-      shift = {0.015625 * 0.5, -0.546875 * 0.5 + 0.05},
+      shift = {0.015625 * 0.5, -0.546875 * 0.5 + 0.05}
     },
     muzzle_light = {intensity = 0.7, size = 3},
 
@@ -1102,17 +1122,19 @@ data:extend({
       range = 30,
       min_range = 6,
 
-      turn_range = 1.0/3.0,
+      turn_range = 1.0 / 3.0,
       fire_penalty = 15,
 
-      fluids = {
+      fluids =
+      {
         {type = "crude-oil"},
         {type = "heavy-oil", damage_modifier = 1.05},
         {type = "light-oil", damage_modifier = 1.1}
       },
       fluid_consumption = 0.2,
 
-      gun_center_shift = {
+      gun_center_shift =
+      {
         north = math3d.vector2.add(fireutil.gun_center_base, fireutil.turret_gun_shift.north),
         east = math3d.vector2.add(fireutil.gun_center_base, fireutil.turret_gun_shift.east),
         south = math3d.vector2.add(fireutil.gun_center_base, fireutil.turret_gun_shift.south),
@@ -1131,7 +1153,7 @@ data:extend({
             type = "stream",
             stream = "flamethrower-fire-stream",
             duration = 160,
-            source_offset = {0.15, -0.5},
+            source_offset = {0.15, -0.5}
           }
         }
       },
@@ -1162,7 +1184,7 @@ data:extend({
       }
     }, -- {0,  0.625}
     call_for_help_radius = 40
-  },
+  }
 })
 
 local function trivial_firesmoke(opts)
@@ -1223,7 +1245,7 @@ data:extend(
       direction_count = 1,
       shift = {-0.265625, -0.09375},
       priority = "high",
-      animation_speed = 0.25,
+      animation_speed = 0.25
     },
     glow_animation =
     {
@@ -1238,7 +1260,7 @@ data:extend(
       direction_count = 1,
       shift = {-0.265625, 0.8125},
       priority = "high",
-      animation_speed = 0.25,
+      animation_speed = 0.25
     },
     glow_fade_away_duration = 70
   },
@@ -1265,8 +1287,8 @@ data:extend(
       direction_count = 1,
       shift = {-0.265625, -0.09375},
       priority = "high",
-      animation_speed = 0.25,
-    },
+      animation_speed = 0.25
+    }
   },
 
   trivial_firesmoke
@@ -1277,7 +1299,7 @@ data:extend(
     end_scale = 1.2,
     duration = 300,
     spread_delay = 120,
-    fade_away_duration = 60,
+    fade_away_duration = 60
   },
   trivial_firesmoke
   {
@@ -1300,9 +1322,9 @@ data:extend(
        direction_count = 1,
        shift = {-0.265625, -0.09375},
        priority = "high",
-       animation_speed = 0.25,
+       animation_speed = 0.25
     }
-  },
+  }
 }
 )
 
@@ -1326,7 +1348,7 @@ data:extend(
       animation_speed = 1,
       scale = 0.2,
       tint = { r = 0.5, g = 0.5, b = 0.5, a = 0.18 }, --{ r = 1, g = 1, b = 1, a = 0.35 },
-      shift = math3d.vector2.mul({-0.078125, -1.8125}, 0.1),
+      shift = math3d.vector2.mul({-0.078125, -1.8125}, 0.1)
     },
 
     duration_in_ticks = 30 * 60,
@@ -1334,8 +1356,8 @@ data:extend(
     damage_per_tick = { amount = 100 / 60, type = "fire" },
     spread_fire_entity = "fire-flame-on-tree",
     fire_spread_cooldown = 30,
-    fire_spread_radius = 0.75,
-  },
+    fire_spread_radius = 0.75
+  }
 })
 
 --- ******************************************************************
@@ -1423,7 +1445,7 @@ data:extend(
       axially_symmetrical = false,
       direction_count = 1,
       animation_speed = 2,
-      shift = {0, 0},
+      shift = {0, 0}
     },
 
     shadow =
@@ -1445,7 +1467,7 @@ data:extend(
       height = 64,
       frame_count = 32,
       line_length = 8
-    },
+    }
   }
 }
 )
@@ -1501,8 +1523,8 @@ data:extend(
             {
               type = "create-fire",
               entity_name = "fire-flame",
-              initial_ground_flame_count = 2,
-            },
+              initial_ground_flame_count = 2
+            }
           }
         }
       },
@@ -1541,7 +1563,7 @@ data:extend(
       direction_count = 1,
       animation_speed = 2,
       scale = 0.75,
-      shift = {0, 0},
+      shift = {0, 0}
     },
 
     shadow =
@@ -1564,8 +1586,8 @@ data:extend(
       height = 64,
       frame_count = 32,
       line_length = 8,
-      scale = 0.8,
-    },
+      scale = 0.8
+    }
   },
   {
     type = "stream",
@@ -1637,7 +1659,7 @@ data:extend(
       direction_count = 1,
       animation_speed = 2,
       scale = 1.40625,
-      shift = {0, 0},
+      shift = {0, 0}
     },
 
     shadow =
@@ -1660,8 +1682,8 @@ data:extend(
       height = 64,
       frame_count = 32,
       line_length = 8,
-      scale = 1.5,
-    },
+      scale = 1.5
+    }
   }
 }
 )

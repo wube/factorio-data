@@ -4,7 +4,7 @@ data:extend(
 {
   {
     type = "ammo-category",
-    name = "bullet",
+    name = "bullet"
   },
   {
     type = "ammo-category",
@@ -65,7 +65,7 @@ data:extend(
   {
     type = "ammo-category",
     name = "landmine"
-  },
+  }
 }
 )
 

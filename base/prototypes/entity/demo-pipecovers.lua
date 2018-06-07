@@ -2,7 +2,8 @@ pipecoverspictures = function()
   return {
     north =
     {
-      layers = {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/pipe-covers/pipe-cover-north.png",
           priority = "extra-high",
@@ -32,8 +33,8 @@ pipecoverspictures = function()
             scale = 0.5,
             draw_as_shadow = true
           }
-        },
-      },
+        }
+      }
     },
     east =
     {
@@ -68,8 +69,8 @@ pipecoverspictures = function()
             scale = 0.5,
             draw_as_shadow = true
           }
-        },
-      },
+        }
+      }
     },
     south =
     {
@@ -104,8 +105,8 @@ pipecoverspictures = function()
             scale = 0.5,
             draw_as_shadow = true
           }
-        },
-      },
+        }
+      }
     },
     west =
     {
@@ -140,8 +141,8 @@ pipecoverspictures = function()
             scale = 0.5,
             draw_as_shadow = true
           }
-        },
-      },
+        }
+      }
     }
   }
 end

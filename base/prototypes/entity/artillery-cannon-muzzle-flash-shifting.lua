@@ -254,5 +254,5 @@ return {
   {0.985,util.by_pixel(-11.5,-144.5)},
   {0.989,util.by_pixel(-8.5,-144.5)},
   {0.993,util.by_pixel(-5.5,-144.5)},
-  {0.997,util.by_pixel(-2.5,-145.0)},
+  {0.997,util.by_pixel(-2.5,-145.0)}
 }

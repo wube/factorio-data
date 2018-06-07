@@ -51,12 +51,12 @@ function worm_preparing_animation(scale, tint, run_mode)
          {
           filename = "__base__/graphics/entity/worm/worm-preparing-01.png",
           width_in_frames = 7,
-          height_in_frames = 2,
+          height_in_frames = 2
          },
          {
           filename = "__base__/graphics/entity/worm/worm-preparing-02.png",
           width_in_frames = 6,
-          height_in_frames = 2,
+          height_in_frames = 2
          }
         }
       },
@@ -91,7 +91,7 @@ function worm_prepared_animation(scale, tint)
         frame_count = 10,
         scale = scale,
         direction_count = 1,
-        shift = {scale * 0.828125, scale * -0.890625},
+        shift = {scale * 0.828125, scale * -0.890625}
       },
       {
         filename = "__base__/graphics/entity/worm/worm-prepared-mask.png",
@@ -105,7 +105,7 @@ function worm_prepared_animation(scale, tint)
         scale = scale,
         direction_count = 1,
         tint = tint
-      },
+      }
     }
   }
 end
@@ -128,12 +128,12 @@ function worm_attack_animation(scale, tint, run_mode)
          {
           filename = "__base__/graphics/entity/worm/worm-attack-01.png",
           width_in_frames = 8,
-          height_in_frames = 8,
+          height_in_frames = 8
          },
          {
           filename = "__base__/graphics/entity/worm/worm-attack-02.png",
           width_in_frames = 8,
-          height_in_frames = 8,
+          height_in_frames = 8
          }
         }
       },
@@ -152,12 +152,12 @@ function worm_attack_animation(scale, tint, run_mode)
          {
           filename = "__base__/graphics/entity/worm/worm-attack-mask-01.png",
           width_in_frames = 8,
-          height_in_frames = 8,
+          height_in_frames = 8
          },
          {
           filename = "__base__/graphics/entity//worm/worm-attack-mask-02.png",
           width_in_frames = 8,
-          height_in_frames = 8,
+          height_in_frames = 8
          }
         }
       }

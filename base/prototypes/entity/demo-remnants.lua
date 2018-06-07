@@ -285,7 +285,7 @@ data:extend(
         height= 107,
         shift = {0.3, 0.1}
       }
-    },
+    }
   },
 
   {
@@ -348,7 +348,7 @@ data:extend(
         height= 55
       }
     },
-    render_layer = "object",
+    render_layer = "object"
   },
   {
     type = "corpse",

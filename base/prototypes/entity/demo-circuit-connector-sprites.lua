@@ -35,7 +35,7 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
   result.led_light =
   {
     intensity = 0.8,
-    size = 0.9,
+    size = 0.9
   }
 
   local light_offset = util.add_shift(main_offset, template.light_offset_hotfix)
@@ -54,7 +54,7 @@ local function make_circuit_connector_points(template, index, main_offset, shado
   result.wire =
   {
     red = util.add_shift(offset, template.wire_offsets[index].red),
-    green = util.add_shift(offset, template.wire_offsets[index].green),
+    green = util.add_shift(offset, template.wire_offsets[index].green)
   }
 
   if shadow_offset then
@@ -62,7 +62,7 @@ local function make_circuit_connector_points(template, index, main_offset, shado
     result.shadow =
     {
       red = util.add_shift(offset, template.wire_shadow_offsets[index].red),
-      green = util.add_shift(offset, template.wire_shadow_offsets[index].green),
+      green = util.add_shift(offset, template.wire_shadow_offsets[index].green)
     }
   end
 
@@ -91,7 +91,7 @@ default_circuit_wire_max_distance = 9
 
 circuit_connector_definitions =
 {
-  create = make_circuit_connector_definitions,
+  create = make_circuit_connector_definitions
 }
 
 require ("circuit-connector-generated-definitions")
@@ -100,7 +100,7 @@ circuit_connector_definitions["programmable-speaker"] = circuit_connector_defini
 (
   universal_connector_template,
   {
-    { variation = 18, main_offset = util.by_pixel(6, 5.5), shadow_offset = util.by_pixel(10.5, 7.5), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(6, 5.5), shadow_offset = util.by_pixel(10.5, 7.5), show_shadow = true }
   }
 )
 
@@ -138,7 +138,7 @@ transport_belt_connector_frame_sprites =
 {
   frame_main = belt_frame_connector_template.frame_main,
   frame_shadow = belt_frame_connector_template.frame_shadow,
-  frame_main_scanner = belt_frame_connector_template.frame_main_scanner,
+  frame_main_scanner = belt_frame_connector_template.frame_main_scanner
 }
 
 local belt_ccm = transport_belt_connector_frame_sprites
@@ -175,7 +175,7 @@ belt_ccm.frame_main_scanner_nw_ne =
   width = 28,
   height = 24,
   frame_count = 32,
-  shift = {-0.03125, -0.0625},
+  shift = {-0.03125, -0.0625}
 }
 
 belt_ccm.frame_main_scanner_sw_se =
@@ -187,7 +187,7 @@ belt_ccm.frame_main_scanner_sw_se =
   width = 29,
   height = 28,
   frame_count = 32,
-  shift = {0.015625, -0.09375},
+  shift = {0.015625, -0.09375}
 }
 
 transport_belt_circuit_wire_max_distance = 9

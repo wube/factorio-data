@@ -17,7 +17,7 @@ playeranimations =
         shift = util.by_pixel(-7.0,-5.5),
         frame_count = 2,
         scale = 0.5
-      },
+      }
     },
     dead_mask =
     {
@@ -36,7 +36,7 @@ playeranimations =
         frame_count = 2,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     dead_shadow =
     {
@@ -55,7 +55,7 @@ playeranimations =
         frame_count = 2,
         draw_as_shadow = true,
         scale = 0.5
-      },
+      }
     },
     idle =
     {
@@ -76,7 +76,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      },
+      }
     },
     idle_mask =
     {
@@ -99,7 +99,7 @@ playeranimations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     idle_shadow =
     {
@@ -122,7 +122,7 @@ playeranimations =
         animation_speed = 0.15,
         draw_as_shadow = true,
         scale = 0.5
-      },
+      }
     },
     idle_gun =
     {
@@ -143,7 +143,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      },
+      }
     },
     idle_gun_mask =
     {
@@ -166,7 +166,7 @@ playeranimations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     idle_gun_shadow =
     {
@@ -189,7 +189,7 @@ playeranimations =
         animation_speed = 0.15,
         draw_as_shadow = true,
         scale = 0.5
-      },
+      }
     },
     mining_hands =
     {
@@ -210,7 +210,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     mining_hands_mask =
     {
@@ -233,7 +233,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     mining_hands_shadow =
     {
@@ -256,7 +256,7 @@ playeranimations =
         animation_speed = 0.6,
         draw_as_shadow = true,
         scale = 0.5
-      },
+      }
     },
     mining_tool =
     {
@@ -265,13 +265,13 @@ playeranimations =
         {
         filename = "__base__/graphics/entity/player/level1_mining_tool-1.png",
         width_in_frames = 13,
-        height_in_frames = 8,
+        height_in_frames = 8
         },
         {
         filename = "__base__/graphics/entity/player/level1_mining_tool-2.png",
         width_in_frames = 13,
-        height_in_frames = 8,
-        },
+        height_in_frames = 8
+        }
       },
       width = 98,
       height = 98,
@@ -286,13 +286,13 @@ playeranimations =
           {
           filename = "__base__/graphics/entity/player/hr-level1_mining_tool-1.png",
           width_in_frames = 13,
-          height_in_frames = 8,
+          height_in_frames = 8
           },
           {
           filename = "__base__/graphics/entity/player/hr-level1_mining_tool-2.png",
           width_in_frames = 13,
-          height_in_frames = 8,
-          },
+          height_in_frames = 8
+          }
         },
         width = 196,
         height = 194,
@@ -301,7 +301,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.9,
         scale = 0.5
-      },
+      }
     },
     mining_tool_mask =
     {
@@ -324,7 +324,7 @@ playeranimations =
         animation_speed = 0.9,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     mining_tool_shadow =
     {
@@ -333,13 +333,13 @@ playeranimations =
         {
         filename = "__base__/graphics/entity/player/level1_mining_tool_shadow-1.png",
         width_in_frames = 13,
-        height_in_frames = 8,
+        height_in_frames = 8
         },
         {
         filename = "__base__/graphics/entity/player/level1_mining_tool_shadow-2.png",
         width_in_frames = 13,
-        height_in_frames = 8,
-        },
+        height_in_frames = 8
+        }
       },
       width = 100,
       height = 72,
@@ -355,13 +355,13 @@ playeranimations =
           {
           filename = "__base__/graphics/entity/player/hr-level1_mining_tool_shadow-1.png",
           width_in_frames = 13,
-          height_in_frames = 8,
+          height_in_frames = 8
           },
           {
           filename = "__base__/graphics/entity/player/hr-level1_mining_tool_shadow-2.png",
           width_in_frames = 13,
-          height_in_frames = 8,
-          },
+          height_in_frames = 8
+          }
         },
         width = 200,
         height = 142,
@@ -371,7 +371,7 @@ playeranimations =
         animation_speed = 0.9,
         draw_as_shadow = true,
         scale = 0.5
-      },
+      }
     },
     running =
     {
@@ -392,7 +392,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     running_mask =
     {
@@ -415,7 +415,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     running_shadow =
     {
@@ -438,7 +438,7 @@ playeranimations =
         animation_speed = 0.6,
         draw_as_shadow = true,
         scale = 0.5
-      },
+      }
     },
     running_gun =
     {
@@ -459,7 +459,7 @@ playeranimations =
         direction_count = 18,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     running_gun_mask =
     {
@@ -482,7 +482,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     running_gun_shadow =
     {
@@ -505,8 +505,8 @@ playeranimations =
         animation_speed = 0.6,
         draw_as_shadow = true,
         scale = 0.5
-      },
-    },
+      }
+    }
   },
   level2addon =
   {
@@ -525,7 +525,7 @@ playeranimations =
         shift = util.by_pixel(-1.0,-5.0),
         frame_count = 2,
         scale = 0.5
-      },
+      }
     },
     dead_mask =
     {
@@ -544,7 +544,7 @@ playeranimations =
         frame_count = 2,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     idle =
     {
@@ -565,7 +565,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      },
+      }
     },
     idle_mask =
     {
@@ -588,7 +588,7 @@ playeranimations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     idle_gun =
     {
@@ -609,7 +609,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      },
+      }
     },
     idle_gun_mask =
     {
@@ -632,7 +632,7 @@ playeranimations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     mining_hands =
     {
@@ -653,7 +653,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     mining_hands_mask =
     {
@@ -676,7 +676,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     mining_tool =
     {
@@ -697,7 +697,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.9,
         scale = 0.5
-      },
+      }
     },
     mining_tool_mask =
     {
@@ -720,7 +720,7 @@ playeranimations =
         animation_speed = 0.9,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     running =
     {
@@ -741,7 +741,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     running_mask =
     {
@@ -764,7 +764,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     running_gun =
     {
@@ -785,7 +785,7 @@ playeranimations =
         direction_count = 18,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     running_gun_mask =
     {
@@ -808,8 +808,8 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
-    },
+      }
+    }
   },
   level3addon =
   {
@@ -828,7 +828,7 @@ playeranimations =
         shift = util.by_pixel(-0.5,-5.0),
         frame_count = 2,
         scale = 0.5
-      },
+      }
     },
     dead_mask =
     {
@@ -847,7 +847,7 @@ playeranimations =
         frame_count = 2,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     idle =
     {
@@ -868,7 +868,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      },
+      }
     },
     idle_mask =
     {
@@ -891,7 +891,7 @@ playeranimations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     idle_gun =
     {
@@ -912,7 +912,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      },
+      }
     },
     idle_gun_mask =
     {
@@ -935,7 +935,7 @@ playeranimations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     mining_hands =
     {
@@ -956,7 +956,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     mining_hands_mask =
     {
@@ -979,7 +979,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     mining_tool =
     {
@@ -1000,7 +1000,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.9,
         scale = 0.5
-      },
+      }
     },
     mining_tool_mask =
     {
@@ -1023,7 +1023,7 @@ playeranimations =
         animation_speed = 0.9,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     running =
     {
@@ -1044,7 +1044,7 @@ playeranimations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     running_mask =
     {
@@ -1067,7 +1067,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
+      }
     },
     running_gun =
     {
@@ -1088,7 +1088,7 @@ playeranimations =
         direction_count = 18,
         animation_speed = 0.6,
         scale = 0.5
-      },
+      }
     },
     running_gun_mask =
     {
@@ -1111,7 +1111,7 @@ playeranimations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      },
-    },
-  },
+      }
+    }
+  }
 }

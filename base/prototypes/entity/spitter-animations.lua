@@ -132,7 +132,7 @@ function spitterrunanimation(scale, tint)
         filename = "__base__/graphics/entity/spitter/spitter-run-mask.png",
         flags = { "mask" },
         tint = tint
-      },
+      }
     }
   }
 end

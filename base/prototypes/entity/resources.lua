@@ -49,7 +49,7 @@ data:extend(
         {
           noise_layer = "crude-oil",
           noise_octaves_difference = -0.5,
-          noise_persistence = 0.4,
+          noise_persistence = 0.4
         }
       }
     },
@@ -103,14 +103,14 @@ data:extend(
         {
           noise_layer = "uranium-ore",
           noise_octaves_difference = -0.85,
-          noise_persistence = 0.4,
+          noise_persistence = 0.4
         },
         --no uranium in the starting area
         {
           influence = -1.0,
           starting_area_weight_optimal = 1,
           starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2,
+          starting_area_weight_max_range = 2
         },
 
       },
@@ -128,7 +128,8 @@ data:extend(
         height = 64,
         frame_count = 8,
         variation_count = 8,
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/uranium-ore/hr-uranium-ore.png",
           priority = "extra-high",
           width = 128,
@@ -151,7 +152,8 @@ data:extend(
         variation_count = 8,
         blend_mode = "additive",
         flags = {"light"},
-        hr_version = {
+        hr_version =
+        {
           filename = "__base__/graphics/entity/uranium-ore/hr-uranium-ore-glow.png",
           priority = "extra-high",
           width = 128,
@@ -160,7 +162,7 @@ data:extend(
           variation_count = 8,
           scale = 0.5,
           blend_mode = "additive",
-          flags = {"light"},
+          flags = {"light"}
         }
       }
     },
