@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.16.49
+Version: 0.16.50
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.16.49
+Date: 08. 06. 2018
+  Bugfixes:
+    - Fixed belts in blueprints weren't selectable in the blueprint GUI.
+    - Fixed bad mouse-point when holding blueprints with belts.
+    - Fixed wrong connectivity in underground belt fast replace. (https://forums.factorio.com/60589)
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.48
 Date: 07. 06. 2018

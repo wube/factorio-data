@@ -27,6 +27,7 @@ function migrate(old_version, new_version)
     end
     old_version = old_version + 1
   until old_version >= new_version
+  global.silo_script.version = new_version
 end
 
 function gui_update(player)
