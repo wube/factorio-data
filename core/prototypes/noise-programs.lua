@@ -209,20 +209,20 @@ data:extend{
       local plateaus = noise.max(make_basis_noise_function(map.seed, 10, 8, 1/1024)(x,y) - 8, 3 - tile.tier)
 
       local high_freq_noise = make_multioctave_modulated_noise_function{
-	seed0 = map.seed,
-	seed1 = 11,
-	octave_count = 6,
-	octave0_output_scale = 1/8,
-	octave0_input_scale = 1/4,
-	octave_output_scale_multiplier = 2,
-	octave_input_scale_multiplier = 1/3,
+        seed0 = map.seed,
+        seed1 = 11,
+        octave_count = 6,
+        octave0_output_scale = 1/8,
+        octave0_input_scale = 1/4,
+        octave_output_scale_multiplier = 2,
+        octave_input_scale_multiplier = 1/3,
       }
       local low_freq_noise = make_multioctave_modulated_noise_function{
         seed0 = map.seed,
-	seed1 = 8,
-	octave_count = lf_octaves,
-	octave0_output_scale = 1,
-	octave0_input_scale = 1/8,
+        seed1 = 8,
+        octave_count = lf_octaves,
+        octave0_output_scale = 1,
+        octave0_input_scale = 1/8,
       }
       local very_low_freq_noise = make_basis_noise_function(map.seed, 9, 20, 1/1024)
       local basis = low_freq_noise(x,y) + very_low_freq_noise(x,y)

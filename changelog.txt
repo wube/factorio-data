@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.16.50
+Version: 0.16.51
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.16.50
+Date: 11. 06. 2018
+  Bugfixes:
+    - Fixed loading script data when a mod is disabled. (https://forums.factorio.com/60874)
+    - Fixed that 0 time interval was shown as an empty string. (https://forums.factorio.com/60875)
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.49
 Date: 08. 06. 2018
