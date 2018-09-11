@@ -1,4 +1,4 @@
-# factorio-data
+# Factorio Data
 Tracks changes of the lua prototype definitions in factorio in between releases.
 
 This repo has been made publicly available to help mod authors.
