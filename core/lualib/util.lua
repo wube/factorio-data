@@ -32,11 +32,7 @@ function table.compare( tbl1, tbl2 )
         end
     end
     for k, v in pairs( tbl2 ) do
-        if type(v) == "table" and type(tbl1[k]) == "table" then
-            if not table.compare( v, tbl1[k] ) then return false end
-        else
-            if v ~= tbl1[k] then return false end
-        end
+        if tbl1[k] == nil then return false end
     end
     return true
 end
