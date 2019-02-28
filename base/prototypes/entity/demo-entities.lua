@@ -4657,7 +4657,7 @@ data:extend(
     name = "escape-pod-assembler",
     icon = "__base__/graphics/icons/assembling-machine-0.png",
     icon_size = 32,
-    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    flags = {"placeable-neutral", "placeable-player", "player-creation", "hidden"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "escape-pod-assembler"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 300,

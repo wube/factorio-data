@@ -266,7 +266,7 @@ data:extend(
         modifier = 1
       }
     },
-    prerequisites = {"physical-projectile-damage-6"},
+    prerequisites = {"physical-projectile-damage-6", "space-science-pack"},
     unit =
     {
       count_formula = "2^(L-7)*1000",
@@ -531,7 +531,7 @@ data:extend(
         modifier = 0.2
       }
     },
-    prerequisites = {"stronger-explosives-6"},
+    prerequisites = {"stronger-explosives-6", "space-science-pack"},
     unit =
     {
       count_formula = "2^(L-7)*1000",
@@ -779,7 +779,7 @@ data:extend(
         modifier = 0.2
       }
     },
-    prerequisites = {"refined-flammables-6"},
+    prerequisites = {"refined-flammables-6", "space-science-pack"},
     unit =
     {
       count_formula = "2^(L-7)*1000",
@@ -817,7 +817,7 @@ data:extend(
         modifier = 0.2
       }
     },
-    prerequisites = {"laser"},
+    prerequisites = {"laser", "military-science-pack"},
     unit =
     {
       count = 100*1,
@@ -1025,7 +1025,7 @@ data:extend(
         modifier = 0.3
       }
     },
-    prerequisites = {"energy-weapons-damage-6"},
+    prerequisites = {"energy-weapons-damage-6", "space-science-pack"},
     unit =
     {
       count_formula = "2^(L-7)*1000",
@@ -1504,7 +1504,7 @@ data:extend(
         modifier = 0.3
       }
     },
-    prerequisites = {"artillery"},
+    prerequisites = {"artillery", "space-science-pack"},
     unit =
     {
       count_formula = "2^L*1000",
@@ -1535,7 +1535,7 @@ data:extend(
         modifier = 1
       }
     },
-    prerequisites = {"artillery"},
+    prerequisites = {"artillery", "space-science-pack"},
     unit =
     {
       count_formula = "1000+3^(L-1)*1000",
@@ -1636,7 +1636,7 @@ data:extend(
         modifier = 10
       }
     },
-    prerequisites = {"follower-robot-count-6"},
+    prerequisites = {"follower-robot-count-6", "space-science-pack"},
     unit =
     {
       ingredients =

@@ -898,7 +898,7 @@ data:extend(
         modifier = 0.1
       }
     },
-    prerequisites = {"railway"},
+    prerequisites = {"railway", "chemical-science-pack"},
     unit =
     {
       count = 100,
@@ -1708,7 +1708,7 @@ data:extend(
         modifier = 0.2
       }
     },
-    prerequisites = {"electronics"},
+    prerequisites = {"automation-2"},
     unit =
     {
       count = 100,
@@ -2332,7 +2332,7 @@ data:extend(
         modifier = 0.35
       }
     },
-    prerequisites = {"robotics"},
+    prerequisites = {"robotics", "chemical-science-pack"},
     unit =
     {
       count = 50,
@@ -2471,7 +2471,7 @@ data:extend(
         modifier = 0.65
       }
     },
-    prerequisites = {"worker-robots-speed-5"},
+    prerequisites = {"worker-robots-speed-5", "space-science-pack"},
     unit =
     {
       count_formula = "2^(L-6)*1000",
@@ -2502,7 +2502,7 @@ data:extend(
         modifier = 1
       }
     },
-    prerequisites = {"robotics"},
+    prerequisites = {"robotics", "chemical-science-pack"},
     unit =
     {
       count = 200,
@@ -2888,7 +2888,7 @@ data:extend(
         modifier = true
       }
     },
-    prerequisites = {"character-logistic-trash-slots-2"},
+    prerequisites = {"character-logistic-trash-slots-2", "chemical-science-pack"},
     unit =
     {
       count = 150,
@@ -4014,7 +4014,7 @@ data:extend(
         modifier = 0.02
       }
     },
-    prerequisites = {"mining-productivity-12"},
+    prerequisites = {"mining-productivity-12", "space-science-pack"},
     unit =
     {
       count_formula = "100(L-1)",

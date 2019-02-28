@@ -1131,6 +1131,7 @@ data:extend(
     {
       filename = "__core__/graphics/copper-wire.png",
       priority = "extra-high-no-scale",
+      flags = { "no-crop" },
       width = 224,
       height = 46,
       hr_version =
@@ -1147,6 +1148,7 @@ data:extend(
     {
       filename = "__core__/graphics/green-wire.png",
       priority = "extra-high-no-scale",
+      flags = { "no-crop" },
       width = 224,
       height = 46,
       hr_version =
@@ -1163,6 +1165,7 @@ data:extend(
     {
       filename = "__core__/graphics/red-wire.png",
       priority = "extra-high-no-scale",
+      flags = { "no-crop" },
       width = 224,
       height = 46,
       hr_version =
@@ -1179,6 +1182,7 @@ data:extend(
     {
       filename = "__core__/graphics/wire-highlight.png",
       priority = "extra-high-no-scale",
+      flags = { "no-crop" },
       width = 224,
       height = 46,
       hr_version =
@@ -1195,6 +1199,7 @@ data:extend(
     {
       filename = "__core__/graphics/wire-highlight.png",
       priority = "extra-high-no-scale",
+      flags = { "no-crop" },
       width = 224,
       height = 46,
       hr_version =
@@ -1211,12 +1216,14 @@ data:extend(
     {
       filename = "__core__/graphics/wire-shadow.png",
       priority = "extra-high-no-scale",
+      flags = { "no-crop" },
       width = 224,
       height = 46,
       hr_version =
       {
         filename = "__core__/graphics/hr-wire-shadow.png",
         priority = "extra-high-no-scale",
+        flags = { "no-crop" },
         width = 448,
         height = 92,
         scale = 0.5

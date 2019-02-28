@@ -1,4 +1,51 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.2
+Date: 27. 02. 2019
+  Changes:
+    - Reverted default renderer on Windows to Direct3D on all configurations.
+    - All infinite technologies have Space science pack as a pre-requisite.
+    - Added textual error message when player tries to clean cursor but it isn't possible as inventory is full.
+    - Added /unlock-shortcut-bar console command to unlock all shortcuts at once. This command does not disable achievements.
+    - Keyboard shortcut for in-game undo feature will default to Ctrl+W on AZERTY keyboard layouts. (https://forums.factorio.com/65083)
+    - Control settings will revert to defaults when starting the game with pre-0.17.2 config with AZERTY keyboard layout.
+  Bugfixes:
+    - Fixed Join Game through Steam Friend would fail to connect to a game with an error saying Steam Networking is disabled.
+    - Fixed LuaGameScript::take_technology_screenshot() would crash the game.
+    - Fixed a crash when trying to use async-saving when hosting multiplayer games on Windows. (https://forums.factorio.com/65146)
+    - Fixed electric mining drill coverage area visualization was not drawn correctly. (https://forums.factorio.com/65249)
+    - Fixed missing sprites on DirectX on GPUs supporting only feature level 10.0. (https://forums.factorio.com/65263)
+    - Fixed that the GUI would be hidden if the game was saved and loaded while the technology GUI was open. (https://forums.factorio.com/65274)
+    - Fixed a crash related to non gun/weapon items getting into the gun/weapon inventories. (https://forums.factorio.com/65339)
+    - Fixed a crash when bringing up the escape menu in multiplayer while in the middle of using blueprints/deconstruction. (https://forums.factorio.com/65256)
+    - Fixed a crash when mining ghosts built in the latency state. (https://forums.factorio.com/65361)
+    - Fixed every incremental change of sound volume would save the full config file. (https://forums.factorio.com/65318)
+    - Fixed that the category dropdown in the install mods GUI would only work the first time it was used. (https://forums.factorio.com/65398)
+    - Fixed that mod thumbnails in zipped mods wouldn't show in the mods GUI. (https://forums.factorio.com/65419)
+    - Fixed pre-requisites for the first tier of all upgrade technologies so that the required science packs are unlocked first. (https://forums.factorio.com/viewtopic.php?p=401129)
+    - Fixed electric inserter technology description in the tutorial. (https://forums.factorio.com/viewtopic.php?f=7&t=65229)
+    - Fixed that the undo shortcut tooltip didn't reflect latency hiding values and invalid entries filtering.
+    - Fixed a desync when deconstructing item request proxies in the latency state. (https://forums.factorio.com/65420)
+    - Fixed crash related to the hand logic and switching controllers. (https://forums.factorio.com/65330)
+    - Fixed a crash when lamp with non-electrical energy source (modded) is viewed in the blueprint preview/tooltip.
+    - Fixed that read-only multi-line text boxes wouldn't wrap text. (https://forums.factorio.com/65413)
+    - Fixed that the fast and express loader entity icons had the wrong colors. (https://forums.factorio.com/65347)
+    - Fixed that the autosave interval setting was off by one. (https://forums.factorio.com/65373)
+    - Fixed map preview would not be cleared to black before preview is generated on some PCs. (https://forums.factorio.com/65423)
+    - Fixed that active blueprint in a book was not preserved when using the book directly from the blueprint library. (https://forums.factorio.com/65258)
+    - Fixed that the tutorial specific assembler was shown in the "made in in" row in the crafting queue tooltip. (https://forums.factorio.com/65447)
+    - Fixed that the map type selection changed done by reset or changing the preset didn't update the sliders properly. (https://forums.factorio.com/65077)
+    - Fixed a rare issue with migration of fluid mixing in a modded save. (https://forums.factorio.com/65137)
+    - Fixed that the provided map-gen-settings.example.json contained invalid settings. (https://forums.factorio.com/65311)
+    - Fixed that checking for updates could crash the game. (https://forums.factorio.com/65264)
+    - Solved, that blueprint library link from quickbar appeared as an empty slot when the target blueprint wasn't available anymore and it wasn't possible to assign a new item to it.
+    - Fixed PvP scenario error when updating space race frame with no silos present. (https://forums.factorio.com/65492)
+    - Fixed drawing of some wires and wire shadows (https://forums.factorio.com/65469)
+    - Fixed a possibility to mix fluid through fast replacing / upgrading a pipe with underground pipe. (https://forums.factorio.com/65298)
+    - Fixed drawing of some wires and wire shadows. (https://forums.factorio.com/65469)
+    - Fixed crash when opening the map generator preview for the first time with invalid settings. (https://forums.factorio.com/65434)
+  Modding:
+    - Renamed EntityPrototypeFlag "hide-from-bonus-gui" to "hidden" and made it also hide entities from the made in property of recipe tooltips.
+---------------------------------------------------------------------------------------------------
 Version: 0.17.1
 Date: 26. 02. 2019
   Modding:

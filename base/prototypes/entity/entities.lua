@@ -919,7 +919,7 @@ data:extend(
   {
     type = "loader",
     name = "fast-loader",
-    icon = "__base__/graphics/icons/loader.png",
+    icon = "__base__/graphics/icons/fast-loader.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "fast-loader"},
@@ -967,7 +967,7 @@ data:extend(
   {
     type = "loader",
     name = "express-loader",
-    icon = "__base__/graphics/icons/loader.png",
+    icon = "__base__/graphics/icons/express-loader.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "express-loader"},

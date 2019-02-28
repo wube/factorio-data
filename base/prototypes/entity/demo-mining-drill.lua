@@ -867,8 +867,8 @@ data:extend(
     radius_visualisation_picture =
     {
       filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-radius-visualization.png",
-      width = 12,
-      height = 12
+      width = 10,
+      height = 10
     },
     monitor_visualization_tint = {r=78, g=173, b=255},
     fast_replaceable_group = "mining-drill",

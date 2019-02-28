@@ -17,11 +17,7 @@
     "uranium-ore": {"frequency": "normal", "size": "normal", "richness": "normal"},
     "crude-oil": {"frequency": "normal", "size": "normal", "richness": "normal"},
     "trees": {"frequency": "normal", "size": "normal", "richness": "normal"},
-    "enemy-base": {"frequency": "normal", "size": "normal", "richness": "normal"},
-    "grass": {"frequency": "normal", "size": "normal", "richness": "normal"},
-    "desert": {"frequency": "normal", "size": "normal", "richness": "normal"},
-    "dirt": {"frequency": "normal", "size": "normal", "richness": "normal"},
-    "sand": {"frequency": "normal", "size": "normal", "richness": "normal"}
+    "enemy-base": {"frequency": "normal", "size": "normal", "richness": "normal"}
   },
   "cliff_settings":
   {
