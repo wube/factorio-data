@@ -6,7 +6,7 @@ data:extend(
     icon = "__base__/graphics/icons/pumpjack.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "pumpjack"},
+    minable = {mining_time = 0.5, result = "pumpjack"},
     resource_categories = {"basic-fluid"},
     max_health = 200,
     corpse = "big-remnants",
@@ -35,7 +35,6 @@ data:extend(
     },
     energy_usage = "90kW",
     mining_speed = 1,
-    mining_power = 2,
     resource_searching_radius = 0.49,
     vector_to_place_result = {0, 0},
     module_specification =
@@ -60,7 +59,7 @@ data:extend(
           width = 131,
           height = 137,
           shift = util.by_pixel(-2.5, -4.5),
-          hr_version = 
+          hr_version =
           {
             filename = "__base__/graphics/entity/pumpjack/hr-pumpjack-base.png",
             priority = "extra-high",
@@ -93,7 +92,7 @@ data:extend(
     {
       north =
       {
-        layers = 
+        layers =
         {
           {
             priority = "high",
@@ -104,7 +103,7 @@ data:extend(
             frame_count = 40,
             shift = util.by_pixel(-4, -24),
             animation_speed = 0.5,
-            hr_version = 
+            hr_version =
             {
               priority = "high",
               filename = "__base__/graphics/entity/pumpjack/hr-pumpjack-horsehead.png",
@@ -127,7 +126,7 @@ data:extend(
             height = 41,
             frame_count = 40,
             shift = util.by_pixel(17.5, 14.5),
-            hr_version = 
+            hr_version =
             {
               priority = "high",
               filename = "__base__/graphics/entity/pumpjack/hr-pumpjack-horsehead-shadow.png",
@@ -151,7 +150,7 @@ data:extend(
       apparent_volume = 1.5
     },
     fast_replaceable_group = "pumpjack",
-    
+
     circuit_wire_connection_points = circuit_connector_definitions["pumpjack"].points,
     circuit_connector_sprites = circuit_connector_definitions["pumpjack"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance

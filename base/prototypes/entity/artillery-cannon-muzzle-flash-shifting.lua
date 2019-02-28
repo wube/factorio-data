@@ -1,4 +1,5 @@
-return {
+return
+{
   {0.0,util.by_pixel(-0.0,-145.0)},
   {0.004,util.by_pixel(3.5,-144.5)},
   {0.008,util.by_pixel(6.5,-144.5)},

@@ -84,37 +84,54 @@ end
 function make_spitter_roars(volume)
   return
   {
+    layers =
     {
-      filename = "__base__/sound/creatures/spitter-1.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-2.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-3.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-4.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-5.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-6.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-7.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/spitter-8.ogg",
-      volume = volume
+      [0] =
+      {
+        {
+          filename = "__base__/sound/creatures/Spiters_1_1.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_2_1.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_3_1.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_4_1.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_5_1.ogg",
+          volume = volume
+        }
+      },
+      [1] =
+      {
+        {
+          filename = "__base__/sound/creatures/Spiters_1_2.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_2_2.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_3_2.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_4_2.ogg",
+          volume = volume
+        },
+        {
+          filename = "__base__/sound/creatures/Spiters_5_2.ogg",
+          volume = volume
+        }
+      }
     }
   }
 end
@@ -149,22 +166,82 @@ end
 function make_worm_roars(volume)
   return
   {
+    variations =
     {
-      filename = "__base__/sound/creatures/worm-roar-1.ogg",
-      volume = volume
+      {
+        filename = "__base__/sound/creatures/worm-roar-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-4.ogg",
+        volume = volume
+      }
     },
+    audible_distance_modifier = 2.0
+  }
+end
+
+function make_worm_roar_alternative(volume)
+  return
+  {
+    variations =
     {
-      filename = "__base__/sound/creatures/worm-roar-2.ogg",
-      volume = volume
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-5.ogg",
+        volume = volume
+      }
     },
+    audible_distance_modifier = 2.0
+  }
+end
+
+function make_worm_breath(volume)
+  return
+  {
+    variations =
     {
-      filename = "__base__/sound/creatures/worm-roar-3.ogg",
-      volume = volume
+      {
+        filename = "__base__/sound/creatures/worm-breathe-01.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-02.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-03.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-04.ogg",
+        volume = volume
+      }
     },
-    {
-      filename = "__base__/sound/creatures/worm-roar-4.ogg",
-      volume = volume
-    }
+    audible_distance_modifier = 2.0
   }
 end
 
@@ -189,6 +266,98 @@ function make_worm_dying_sounds(volume)
     },
     {
       filename = "__base__/sound/creatures/worm-death-5.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-death-6.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-death-7.ogg",
+      volume = volume
+    }
+  }
+end
+
+function make_worm_dying_small_sounds(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/worm-death-small-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-death-small-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-death-small-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-death-small-4.ogg",
+      volume = volume
+    }
+  }
+end
+
+function make_worm_fold_sounds(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/worm-folding-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-folding-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-folding-3.ogg",
+      volume = volume
+    }
+  }
+end
+
+function make_worm_standup_sounds(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/worm-standup-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-standup-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-standup-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-standup-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-standup-5.ogg",
+      volume = volume
+    }
+  }
+end
+
+function make_worm_standup_small_sounds(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/worm-standup-small-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-standup-small-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/worm-standup-small-3.ogg",
       volume = volume
     }
   }

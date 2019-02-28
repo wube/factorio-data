@@ -1,5 +1,6 @@
 pipecoverspictures = function()
-  return {
+  return
+  {
     north =
     {
       layers =

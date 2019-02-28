@@ -2,15 +2,8 @@ data:extend(
 {
   {
     type = "recipe",
-    name = "wood",
-    ingredients = {{"raw-wood", 1}},
-    result = "wood",
-    result_count = 2
-  },
-  {
-    type = "recipe",
     name = "wooden-chest",
-    ingredients = {{"wood", 4}},
+    ingredients = {{"wood", 2}},
     result = "wooden-chest"
   },
   {
@@ -19,12 +12,6 @@ data:extend(
     ingredients = {{"iron-plate", 1}},
     result = "iron-stick",
     result_count = 2
-  },
-  {
-    type = "recipe",
-    name = "iron-axe",
-    ingredients = {{"iron-stick", 2}, {"iron-plate", 3}},
-    result = "iron-axe"
   },
   {
     type = "recipe",
@@ -219,7 +206,7 @@ data:extend(
     name = "small-electric-pole",
     ingredients =
     {
-      {"wood", 2},
+      {"wood", 1},
       {"copper-cable", 2}
     },
     result = "small-electric-pole",
@@ -298,7 +285,7 @@ data:extend(
     ingredients =
     {
       {"electronic-circuit", 1},
-      {"iron-stick", 3},
+      {"copper-cable", 3},
       {"iron-plate", 1}
     },
     result = "small-lamp"
@@ -335,6 +322,6 @@ data:extend(
       {"iron-gear-wheel", 2}
     },
     result = "repair-pack"
-  }
+  },
 }
 )

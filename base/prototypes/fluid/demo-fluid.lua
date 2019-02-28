@@ -11,9 +11,7 @@ data:extend(
     flow_color = {r=0.7, g=0.7, b=0.7},
     icon = "__base__/graphics/icons/fluid/water.png",
     icon_size = 32,
-    order = "a[fluid]-a[water]",
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59
+    order = "a[fluid]-a[water]"
   },
   {
     type = "fluid",
@@ -26,9 +24,7 @@ data:extend(
     base_color = {r=0.5, g=0.5, b=0.5},
     flow_color = {r=1.0, g=1.0, b=1.0},
     order = "a[fluid]-b[steam]",
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
     gas_temperature = 15,
     auto_barrel = false
-  }
+  },
 })

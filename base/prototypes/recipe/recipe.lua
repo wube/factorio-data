@@ -72,7 +72,7 @@ data:extend(
       enabled = false,
       ingredients =
       {
-        {"iron-plate", 9},
+        {"steel-plate", 2},
         {"electronic-circuit", 3},
         {"iron-gear-wheel", 5},
         {"assembling-machine-1", 1}
@@ -221,7 +221,8 @@ data:extend(
     ingredients =
     {
       {"electronic-circuit", 5},
-      {"iron-plate", 10},
+      {"iron-plate", 6},
+      {"iron-stick", 6},
       {"steel-plate", 3}
     },
     result = "train-stop"
@@ -282,7 +283,7 @@ data:extend(
     name = "power-armor-mk2",
     enabled = false,
     energy_required = 25,
-    ingredients = {{ "effectivity-module-3", 5}, {"speed-module-3", 5}, {"processing-unit", 40}, {"steel-plate", 40}},
+    ingredients = {{ "effectivity-module-2", 25}, {"speed-module-2", 25}, {"processing-unit", 60}, {"electric-engine-unit", 40}, {"low-density-structure", 30}},
     result = "power-armor-mk2",
     requester_paste_multiplier = 1
   },
@@ -396,38 +397,40 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "science-pack-1",
+    name = "automation-science-pack",
     energy_required = 5,
     ingredients =
     {
       {"copper-plate", 1},
       {"iron-gear-wheel", 1}
     },
-    result = "science-pack-1"
+    result = "automation-science-pack"
   },
   {
     type = "recipe",
-    name = "science-pack-2",
+    name = "logistic-science-pack",
+    enabled = false,
     energy_required = 6,
     ingredients =
     {
       {"inserter", 1},
       {"transport-belt", 1}
     },
-    result = "science-pack-2"
+    result = "logistic-science-pack"
   },
   {
     type = "recipe",
-    name = "science-pack-3",
+    name = "chemical-science-pack",
     enabled = false,
-    energy_required = 12,
+    energy_required = 24,
     ingredients =
     {
-      {"advanced-circuit", 1},
-      {"engine-unit", 1},
-      {"electric-mining-drill", 1}
+      {"engine-unit", 2},
+      {"advanced-circuit", 3},
+      {"solid-fuel", 1}
     },
-    result = "science-pack-3"
+    result_count = 2,
+    result = "chemical-science-pack"
   },
   {
     type = "recipe",
@@ -438,7 +441,7 @@ data:extend(
     {
       {"piercing-rounds-magazine", 1},
       {"grenade", 1},
-      {"gun-turret", 1}
+      {"stone-wall", 2}
     },
     result_count = 2,
     result = "military-science-pack"
@@ -447,29 +450,29 @@ data:extend(
     type = "recipe",
     name = "production-science-pack",
     enabled = false,
-    energy_required = 14,
+    energy_required = 21,
     ingredients =
     {
-     {"electric-engine-unit", 1},
-     {"electric-furnace", 1}
+     {"electric-furnace", 1},
+     {"productivity-module", 1},
+     {"rail", 30}
     },
-    result_count = 2,
+    result_count = 3,
     result = "production-science-pack"
   },
   {
     type = "recipe",
-    name = "high-tech-science-pack",
+    name = "utility-science-pack",
     enabled = false,
-    energy_required = 14,
+    energy_required = 21,
     ingredients =
     {
-      {"battery", 1},
-      {"processing-unit", 3},
-      {"speed-module", 1},
-      {"copper-cable", 30}
+      {"low-density-structure", 3},
+      {"processing-unit", 2},
+      {"flying-robot-frame", 1}
     },
-    result_count = 2,
-    result = "high-tech-science-pack"
+    result_count = 3,
+    result = "utility-science-pack"
   },
 
   {
@@ -797,21 +800,11 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "steel-axe",
-    enabled = false,
-    ingredients =
-    {
-      {"steel-plate", 5},
-      {"iron-stick", 2}
-    },
-    result = "steel-axe"
-  },
-  {
-    type = "recipe",
     name = "big-electric-pole",
     enabled = false,
     ingredients =
     {
+      {"iron-stick", 8},
       {"steel-plate", 5},
       {"copper-plate", 5}
     },
@@ -835,6 +828,7 @@ data:extend(
     enabled = false,
     ingredients =
     {
+      {"iron-stick", 4},
       {"steel-plate", 2},
       {"copper-plate", 2}
     },
@@ -965,7 +959,7 @@ data:extend(
     },
     normal =
     {
-      energy_required = 5,
+      energy_required = 4,
       enabled = false,
       ingredients =
       {
@@ -996,7 +990,7 @@ data:extend(
     category = "chemistry",
     normal =
     {
-      energy_required = 5,
+      energy_required = 4,
       enabled = false,
       ingredients =
       {
@@ -1004,7 +998,7 @@ data:extend(
         {"iron-plate", 1},
         {"copper-plate", 1}
       },
-      result= "battery"
+      result = "battery"
     },
     expensive =
     {
@@ -1132,7 +1126,8 @@ data:extend(
     energy_required = 2,
     ingredients =
     {
-      {"iron-plate", 5},
+      {"iron-plate", 3},
+      {"iron-stick", 4},
       {"copper-cable", 5},
       {"electronic-circuit", 4}
     },
@@ -1144,25 +1139,25 @@ data:extend(
     category = "crafting",
     normal =
     {
-      energy_required = 30,
+      energy_required = 20,
       enabled = false,
       ingredients =
       {
-        {"steel-plate", 10},
-        {"copper-plate", 5},
+        {"steel-plate", 2},
+        {"copper-plate", 20},
         {"plastic-bar", 5}
       },
       result= "low-density-structure"
     },
     expensive =
     {
-      energy_required = 30,
+      energy_required = 20,
       enabled = false,
       ingredients =
       {
-        {"steel-plate", 10},
-        {"copper-plate", 10},
-        {"plastic-bar", 10}
+        {"steel-plate", 2},
+        {"copper-plate", 20},
+        {"plastic-bar", 30}
       },
       result= "low-density-structure"
     }
@@ -1340,7 +1335,7 @@ data:extend(
   {
     type = "recipe",
     name = "uranium-processing",
-    energy_required = 10,
+    energy_required = 12,
     enabled = false,
     category = "centrifuging",
     ingredients = {{"uranium-ore", 10}},
@@ -1365,7 +1360,7 @@ data:extend(
   {
     type = "recipe",
     name = "kovarex-enrichment-process",
-    energy_required = 50,
+    energy_required = 60,
     enabled = false,
     category = "centrifuging",
     ingredients = {{"uranium-235", 40}, {"uranium-238", 5}},
@@ -1374,23 +1369,13 @@ data:extend(
     subgroup = "intermediate-product",
     order = "r[uranium-processing]-c[kovarex-enrichment-process]",
     main_product = "",
-    results =
-    {
-      {
-        name = "uranium-235",
-        amount = 41
-      },
-      {
-        name = "uranium-238",
-        amount = 2
-      }
-    },
+    results = {{"uranium-235", 41}, {"uranium-238", 2}},
     allow_decomposition = false
   },
   {
     type = "recipe",
     name = "nuclear-fuel",
-    energy_required = 60,
+    energy_required = 90,
     enabled = false,
     category = "centrifuging",
     ingredients = {{"uranium-235", 1}, {"rocket-fuel", 1}},
@@ -1401,7 +1386,7 @@ data:extend(
   {
     type = "recipe",
     name = "nuclear-fuel-reprocessing",
-    energy_required = 50,
+    energy_required = 60,
     enabled = false,
     category = "centrifuging",
     ingredients = {{"used-up-uranium-fuel-cell", 5}},
@@ -1410,13 +1395,7 @@ data:extend(
     subgroup = "intermediate-product",
     order = "r[uranium-processing]-b[nuclear-fuel-reprocessing]",
     main_product = "",
-    results =
-    {
-      {
-        name = "uranium-238",
-        amount = 3
-      }
-    },
+    results = {{"uranium-238", 3}},
     allow_decomposition = false
   },
   {

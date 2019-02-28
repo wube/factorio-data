@@ -32,7 +32,7 @@ function M.peaks(rectangles, ret, default_influence)
       temperature_max_range = temp_range + 5,
       water_optimal = water_center,
       water_range = water_range,
-      water_max_range = water_range + 0.1,
+      water_max_range = water_range + 0.1
     }
   end
 

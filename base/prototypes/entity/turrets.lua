@@ -1,30 +1,45 @@
+require ("prototypes.entity.demo-spitter-projectiles")
 require ("prototypes.entity.demo-worm-animations")
 require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.assemblerpipes")
 require "util"
-require ("prototypes.entity.demo-enemy-autoplace-utils")
+enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 
 function laser_turret_extension(inputs)
 return
 {
-  filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start.png",
+  filename = "__base__/graphics/entity/laser-turret/laser-turret-raising.png",
   priority = "medium",
   width = 66,
-  height = 67,
+  height = 64,
   frame_count = inputs.frame_count and inputs.frame_count or 15,
   line_length = inputs.line_length and inputs.line_length or 0,
   run_mode = inputs.run_mode and inputs.run_mode or "forward",
   axially_symmetrical = false,
   direction_count = 4,
-  shift = {-0.03125, -0.984375}
+  shift = util.by_pixel(0, -32),
+  hr_version =
+  {
+    filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-raising.png",
+    priority = "medium",
+    width = 130,
+    height = 126,
+    frame_count = inputs.frame_count and inputs.frame_count or 15,
+    line_length = inputs.line_length and inputs.line_length or 0,
+    run_mode = inputs.run_mode and inputs.run_mode or "forward",
+    axially_symmetrical = false,
+    direction_count = 4,
+    shift = util.by_pixel(0, -32.5),
+    scale = 0.5
+  }
 }
 end
 
 function laser_turret_extension_shadow(inputs)
 return
 {
-  filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start-shadow.png",
+  filename = "__base__/graphics/entity/laser-turret/laser-turret-raising-shadow.png",
   width = 92,
   height = 50,
   frame_count = inputs.frame_count and inputs.frame_count or 15,
@@ -33,36 +48,163 @@ return
   axially_symmetrical = false,
   direction_count = 4,
   draw_as_shadow = true,
-  shift = {1.375, 0}
+  shift = util.by_pixel(47, 3),
+  hr_version =
+  {
+    filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-raising-shadow.png",
+    width = 182,
+    height = 96,
+    frame_count = inputs.frame_count and inputs.frame_count or 15,
+    line_length = inputs.line_length and inputs.line_length or 0,
+    run_mode = inputs.run_mode and inputs.run_mode or "forward",
+    axially_symmetrical = false,
+    direction_count = 4,
+    draw_as_shadow = true,
+    shift = util.by_pixel(47, 2.5),
+    scale = 0.5
+  }
 }
 end
 
 function laser_turret_extension_mask(inputs)
 return
 {
-  filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-start-mask.png",
+  filename = "__base__/graphics/entity/laser-turret/laser-turret-raising-mask.png",
   flags = { "mask" },
-  width = 51,
-  height = 47,
+  width = 44,
+  height = 40,
   frame_count = inputs.frame_count and inputs.frame_count or 15,
   line_length = inputs.line_length and inputs.line_length or 0,
   run_mode = inputs.run_mode and inputs.run_mode or "forward",
   axially_symmetrical = false,
   apply_runtime_tint = true,
   direction_count = 4,
-  shift = {-0.015625, -1.26563}
+  shift = util.by_pixel(0, -43),
+  hr_version =
+  {
+    filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-raising-mask.png",
+    flags = { "mask" },
+    width = 86,
+    height = 80,
+    frame_count = inputs.frame_count and inputs.frame_count or 15,
+    line_length = inputs.line_length and inputs.line_length or 0,
+    run_mode = inputs.run_mode and inputs.run_mode or "forward",
+    axially_symmetrical = false,
+    apply_runtime_tint = true,
+    direction_count = 4,
+    shift = util.by_pixel(0, -43),
+    scale = 0.5
+  }
 }
+end
+
+function laser_turret_shooting()
+  return
+  {
+    filename = "__base__/graphics/entity/laser-turret/laser-turret-shooting.png",
+    line_length = 8,
+    width = 64,
+    height = 60,
+    frame_count = 1,
+    direction_count = 64,
+    shift = util.by_pixel(0, -35),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-shooting.png",
+      line_length = 8,
+      width = 126,
+      height = 120,
+      frame_count = 1,
+      direction_count = 64,
+      shift = util.by_pixel(0, -35),
+      scale = 0.5
+    }
+  }
+end
+
+function laser_turret_shooting_glow()
+  return
+  {
+    filename = "__base__/graphics/entity/laser-turret/laser-turret-shooting-light.png",
+    line_length = 8,
+    width = 62,
+    height = 58,
+    frame_count = 1,
+    direction_count = 64,
+    blend_mode = "additive",
+    shift = util.by_pixel(0, -35),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-shooting-light.png",
+      line_length = 8,
+      width = 122,
+      height = 116,
+      frame_count = 1,
+      direction_count = 64,
+      shift = util.by_pixel(-0.5, -35),
+      blend_mode = "additive",
+      scale = 0.5
+    }
+  }
+end
+
+function laser_turret_shooting_mask()
+  return
+  {
+    filename = "__base__/graphics/entity/laser-turret/laser-turret-shooting-mask.png",
+    flags = { "mask" },
+    line_length = 8,
+    width = 46,
+    height = 42,
+    frame_count = 1,
+    apply_runtime_tint = true,
+    direction_count = 64,
+    shift = util.by_pixel(0, -43),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-shooting-mask.png",
+      flags = { "mask" },
+      line_length = 8,
+      width = 92,
+      height = 80,
+      frame_count = 1,
+      apply_runtime_tint = true,
+      direction_count = 64,
+      shift = util.by_pixel(0, -43.5),
+      scale = 0.5
+    }
+  }
+end
+
+function laser_turret_shooting_shadow()
+  return
+  {
+    filename = "__base__/graphics/entity/laser-turret/laser-turret-shooting-shadow.png",
+    line_length = 8,
+    width = 86,
+    height = 46,
+    frame_count = 1,
+    direction_count = 64,
+    draw_as_shadow = true,
+    shift = util.by_pixel(51, 2),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-shooting-shadow.png",
+      line_length = 8,
+      width = 170,
+      height = 92,
+      frame_count = 1,
+      direction_count = 64,
+      draw_as_shadow = true,
+      shift = util.by_pixel(50.5, 2.5),
+      scale = 0.5
+    }
+  }
 end
 
 function shift_medium_worm(shiftx, shifty)
   return {shiftx - 0.15, shifty + 0.15}
 end
-
-medium_worm_scale = 0.83
-medium_worm_tint = {r=0.9, g=0.15, b=0.3, a=1.0}
-
-big_worm_scale = 1.0
-big_worm_tint = {r=0.34, g=0.68, b=0.90, a=1.0}
 
 function shift_big_worm(shiftx, shifty)
   return {shiftx - 0.2, shifty + 0.2}
@@ -80,7 +222,7 @@ data:extend(
     ammo_stack_limit = 15,
     automated_ammo_count = 5,
     alert_when_attacking = false,
-    minable = {mining_time = 1, result = "artillery-turret"},
+    minable = {mining_time = 0.5, result = "artillery-turret"},
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
@@ -119,7 +261,7 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 10,
+        decrease = 3,
         percent = 20
       }
     },
@@ -427,265 +569,6 @@ data:extend(
         }
       }
     },
-    cannon_base_shiftings =
-    {
-      util.by_pixel(0.0, 19.5),
-      util.by_pixel(-1.5, 19.0),
-      util.by_pixel(-3.5, 19.0),
-      util.by_pixel(-5.5, 18.5),
-      util.by_pixel(-7.5, 18.5),
-      util.by_pixel(-9.0, 18.0),
-      util.by_pixel(-11.0, 17.5),
-      util.by_pixel(-13.0, 17.5),
-      util.by_pixel(-15.0, 17.0),
-      util.by_pixel(-16.5, 16.5),
-      util.by_pixel(-18.5, 16.0),
-      util.by_pixel(-20.5, 15.5),
-      util.by_pixel(-22.0, 15.0),
-      util.by_pixel(-24.0, 14.5),
-      util.by_pixel(-25.5, 14.0),
-      util.by_pixel(-27.5, 13.0),
-      util.by_pixel(-29.0, 12.5),
-      util.by_pixel(-30.5, 12.0),
-      util.by_pixel(-32.0, 11.0),
-      util.by_pixel(-34.0, 10.5),
-      util.by_pixel(-35.5, 9.5),
-      util.by_pixel(-37.0, 9.0),
-      util.by_pixel(-38.5, 8.0),
-      util.by_pixel(-40.0, 7.5),
-      util.by_pixel(-41.5, 6.5),
-      util.by_pixel(-42.5, 5.5),
-      util.by_pixel(-44.0, 4.5),
-      util.by_pixel(-45.5, 4.0),
-      util.by_pixel(-46.5, 3.0),
-      util.by_pixel(-48.0, 2.0),
-      util.by_pixel(-49.0, 1.0),
-      util.by_pixel(-50.5, 0.0),
-      util.by_pixel(-51.5, -0.5),
-      util.by_pixel(-52.5, -1.5),
-      util.by_pixel(-53.5, -2.5),
-      util.by_pixel(-54.5, -3.5),
-      util.by_pixel(-55.5, -5.0),
-      util.by_pixel(-56.5, -6.0),
-      util.by_pixel(-57.5, -7.0),
-      util.by_pixel(-58.0, -8.0),
-      util.by_pixel(-59.0, -9.0),
-      util.by_pixel(-60.0, -10.5),
-      util.by_pixel(-60.5, -11.5),
-      util.by_pixel(-61.0, -12.5),
-      util.by_pixel(-62.0, -13.5),
-      util.by_pixel(-62.5, -15.0),
-      util.by_pixel(-63.0, -16.0),
-      util.by_pixel(-63.5, -17.0),
-      util.by_pixel(-64.0, -18.5),
-      util.by_pixel(-64.5, -19.5),
-      util.by_pixel(-65.0, -21.0),
-      util.by_pixel(-65.0, -22.0),
-      util.by_pixel(-65.5, -23.0),
-      util.by_pixel(-65.5, -24.5),
-      util.by_pixel(-66.0, -25.5),
-      util.by_pixel(-66.0, -26.5),
-      util.by_pixel(-66.0, -28.0),
-      util.by_pixel(-66.5, -29.0),
-      util.by_pixel(-66.5, -30.0),
-      util.by_pixel(-66.5, -31.5),
-      util.by_pixel(-66.5, -32.5),
-      util.by_pixel(-66.0, -34.0),
-      util.by_pixel(-66.0, -35.0),
-      util.by_pixel(-66.0, -36.0),
-      util.by_pixel(-65.5, -37.0),
-      util.by_pixel(-66.0, -38.5),
-      util.by_pixel(-66.0, -39.5),
-      util.by_pixel(-66.5, -40.5),
-      util.by_pixel(-66.5, -42.0),
-      util.by_pixel(-66.5, -43.0),
-      util.by_pixel(-66.5, -44.0),
-      util.by_pixel(-66.5, -45.5),
-      util.by_pixel(-66.5, -46.5),
-      util.by_pixel(-66.5, -48.0),
-      util.by_pixel(-66.0, -49.0),
-      util.by_pixel(-66.0, -50.0),
-      util.by_pixel(-65.5, -51.5),
-      util.by_pixel(-65.5, -52.5),
-      util.by_pixel(-65.0, -53.5),
-      util.by_pixel(-64.5, -55.0),
-      util.by_pixel(-64.5, -56.0),
-      util.by_pixel(-64.0, -57.5),
-      util.by_pixel(-63.5, -58.5),
-      util.by_pixel(-63.0, -59.5),
-      util.by_pixel(-62.5, -61.0),
-      util.by_pixel(-61.5, -62.0),
-      util.by_pixel(-61.0, -63.0),
-      util.by_pixel(-60.5, -64.0),
-      util.by_pixel(-59.5, -65.5),
-      util.by_pixel(-59.0, -66.5),
-      util.by_pixel(-58.0, -67.5),
-      util.by_pixel(-57.0, -68.5),
-      util.by_pixel(-56.0, -70.0),
-      util.by_pixel(-55.0, -71.0),
-      util.by_pixel(-54.0, -72.0),
-      util.by_pixel(-53.0, -73.0),
-      util.by_pixel(-52.0, -74.0),
-      util.by_pixel(-51.0, -75.0),
-      util.by_pixel(-50.0, -76.0),
-      util.by_pixel(-48.5, -77.0),
-      util.by_pixel(-47.5, -78.0),
-      util.by_pixel(-46.0, -79.0),
-      util.by_pixel(-45.0, -80.0),
-      util.by_pixel(-43.5, -81.0),
-      util.by_pixel(-42.0, -81.5),
-      util.by_pixel(-40.5, -82.5),
-      util.by_pixel(-39.5, -83.5),
-      util.by_pixel(-38.0, -84.0),
-      util.by_pixel(-36.5, -85.0),
-      util.by_pixel(-34.5, -85.5),
-      util.by_pixel(-33.0, -86.5),
-      util.by_pixel(-31.5, -87.0),
-      util.by_pixel(-30.0, -88.0),
-      util.by_pixel(-28.5, -88.5),
-      util.by_pixel(-26.5, -89.0),
-      util.by_pixel(-25.0, -90.0),
-      util.by_pixel(-23.0, -90.5),
-      util.by_pixel(-21.5, -91.0),
-      util.by_pixel(-19.5, -91.5),
-      util.by_pixel(-17.5, -92.0),
-      util.by_pixel(-16.0, -92.5),
-      util.by_pixel(-14.0, -93.0),
-      util.by_pixel(-12.0, -93.0),
-      util.by_pixel(-10.5, -93.5),
-      util.by_pixel(-8.5, -94.0),
-      util.by_pixel(-6.5, -94.0),
-      util.by_pixel(-4.5, -94.5),
-      util.by_pixel(-2.5, -94.5),
-      util.by_pixel(-0.5, -95.0),
-      util.by_pixel(1.0, -95.0),
-      util.by_pixel(3.0, -94.5),
-      util.by_pixel(5.0, -94.5),
-      util.by_pixel(7.0, -94.0),
-      util.by_pixel(8.5, -94.0),
-      util.by_pixel(10.5, -93.5),
-      util.by_pixel(12.5, -93.0),
-      util.by_pixel(14.5, -92.5),
-      util.by_pixel(16.5, -92.5),
-      util.by_pixel(18.0, -92.0),
-      util.by_pixel(20.0, -91.5),
-      util.by_pixel(21.5, -91.0),
-      util.by_pixel(23.5, -90.5),
-      util.by_pixel(25.0, -89.5),
-      util.by_pixel(27.0, -89.0),
-      util.by_pixel(28.5, -88.5),
-      util.by_pixel(30.5, -88.0),
-      util.by_pixel(32.0, -87.0),
-      util.by_pixel(33.5, -86.5),
-      util.by_pixel(35.0, -85.5),
-      util.by_pixel(36.5, -85.0),
-      util.by_pixel(38.0, -84.0),
-      util.by_pixel(39.5, -83.5),
-      util.by_pixel(41.0, -82.5),
-      util.by_pixel(42.5, -81.5),
-      util.by_pixel(44.0, -80.5),
-      util.by_pixel(45.0, -80.0),
-      util.by_pixel(46.5, -79.0),
-      util.by_pixel(47.5, -78.0),
-      util.by_pixel(49.0, -77.0),
-      util.by_pixel(50.0, -76.0),
-      util.by_pixel(51.5, -75.0),
-      util.by_pixel(52.5, -74.0),
-      util.by_pixel(53.5, -73.0),
-      util.by_pixel(54.5, -72.0),
-      util.by_pixel(55.5, -71.0),
-      util.by_pixel(56.5, -70.0),
-      util.by_pixel(57.5, -68.5),
-      util.by_pixel(58.5, -67.5),
-      util.by_pixel(59.0, -66.5),
-      util.by_pixel(60.0, -65.5),
-      util.by_pixel(60.5, -64.0),
-      util.by_pixel(61.5, -63.0),
-      util.by_pixel(62.0, -62.0),
-      util.by_pixel(62.5, -61.0),
-      util.by_pixel(63.0, -59.5),
-      util.by_pixel(63.5, -58.5),
-      util.by_pixel(64.0, -57.5),
-      util.by_pixel(64.5, -56.0),
-      util.by_pixel(65.0, -55.0),
-      util.by_pixel(65.5, -53.5),
-      util.by_pixel(65.5, -52.5),
-      util.by_pixel(66.0, -51.5),
-      util.by_pixel(66.5, -50.0),
-      util.by_pixel(66.5, -49.0),
-      util.by_pixel(66.5, -48.0),
-      util.by_pixel(66.5, -46.5),
-      util.by_pixel(67.0, -45.5),
-      util.by_pixel(67.0, -44.0),
-      util.by_pixel(67.0, -43.0),
-      util.by_pixel(66.5, -42.0),
-      util.by_pixel(66.5, -40.5),
-      util.by_pixel(66.5, -39.5),
-      util.by_pixel(66.5, -38.5),
-      util.by_pixel(66.5, -37.5),
-      util.by_pixel(66.5, -36.0),
-      util.by_pixel(67.0, -35.0),
-      util.by_pixel(67.0, -34.0),
-      util.by_pixel(67.0, -32.5),
-      util.by_pixel(67.0, -31.5),
-      util.by_pixel(67.0, -30.5),
-      util.by_pixel(67.0, -29.0),
-      util.by_pixel(67.0, -28.0),
-      util.by_pixel(67.0, -26.5),
-      util.by_pixel(66.5, -25.5),
-      util.by_pixel(66.5, -24.5),
-      util.by_pixel(66.0, -23.0),
-      util.by_pixel(66.0, -22.0),
-      util.by_pixel(65.5, -20.5),
-      util.by_pixel(65.0, -19.5),
-      util.by_pixel(65.0, -18.5),
-      util.by_pixel(64.5, -17.0),
-      util.by_pixel(64.0, -16.0),
-      util.by_pixel(63.0, -15.0),
-      util.by_pixel(62.5, -13.5),
-      util.by_pixel(62.0, -12.5),
-      util.by_pixel(61.5, -11.5),
-      util.by_pixel(60.5, -10.0),
-      util.by_pixel(60.0, -9.0),
-      util.by_pixel(59.0, -8.0),
-      util.by_pixel(58.0, -7.0),
-      util.by_pixel(57.5, -6.0),
-      util.by_pixel(56.5, -4.5),
-      util.by_pixel(55.5, -3.5),
-      util.by_pixel(54.5, -2.5),
-      util.by_pixel(53.5, -1.5),
-      util.by_pixel(52.0, -0.5),
-      util.by_pixel(51.0, 0.0),
-      util.by_pixel(50.0, 1.0),
-      util.by_pixel(48.5, 2.0),
-      util.by_pixel(47.5, 3.0),
-      util.by_pixel(46.0, 4.0),
-      util.by_pixel(45.0, 5.0),
-      util.by_pixel(43.5, 5.5),
-      util.by_pixel(42.0, 6.5),
-      util.by_pixel(40.5, 7.5),
-      util.by_pixel(39.0, 8.0),
-      util.by_pixel(37.5, 9.0),
-      util.by_pixel(36.0, 10.0),
-      util.by_pixel(34.5, 10.5),
-      util.by_pixel(33.0, 11.5),
-      util.by_pixel(31.5, 12.0),
-      util.by_pixel(29.5, 12.5),
-      util.by_pixel(28.0, 13.5),
-      util.by_pixel(26.5, 14.0),
-      util.by_pixel(24.5, 14.5),
-      util.by_pixel(23.0, 15.0),
-      util.by_pixel(21.0, 15.5),
-      util.by_pixel(19.0, 16.0),
-      util.by_pixel(17.5, 16.5),
-      util.by_pixel(15.5, 17.0),
-      util.by_pixel(13.5, 17.5),
-      util.by_pixel(11.5, 18.0),
-      util.by_pixel(10.0, 18.0),
-      util.by_pixel(8.0, 18.5),
-      util.by_pixel(6.0, 19.0),
-      util.by_pixel(4.0, 19.0)
-    },
     cannon_barrel_recoil_shiftings =
     {
       {x =-0.000, y =0.040, z =-0.000},
@@ -733,8 +616,6 @@ data:extend(
   }
 })
 
-
-
 data:extend(
 {
   {
@@ -742,7 +623,7 @@ data:extend(
     name = "medium-worm-turret",
     icon = "__base__/graphics/icons/medium-worm.png",
     icon_size = 32,
-    flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     order="b-b-e",
     subgroup="enemies",
     max_health = 400,
@@ -761,39 +642,66 @@ data:extend(
         type = "fire",
         decrease = 2,
         percent = 50
+      },
+      {
+        type = "acid",
+        percent = 100
       }
-
     },
     healing_per_tick = 0.015,
     collision_box = {{-1.1, -1.0}, {1.1, 1.0}},
+    map_generator_bounding_box = {{-2.1, -2.0}, {2.1, 2.0}},
     selection_box = {{-1.1, -1.0}, {1.1, 1.0}},
     shooting_cursor_size = 3.5,
     rotation_speed = 1,
     corpse = "medium-worm-corpse",
     dying_explosion = "blood-explosion-big",
-    dying_sound = make_worm_dying_sounds(0.9),
+    dying_sound = make_worm_dying_sounds(1),
+
     folded_speed = 0.01,
-    folded_animation = worm_folded_animation(medium_worm_scale, medium_worm_tint),
-    preparing_speed = 0.025,
-    preparing_animation = worm_preparing_animation(medium_worm_scale, medium_worm_tint, "forward"),
-    prepared_speed = 0.015,
-    prepared_animation = worm_prepared_animation(medium_worm_scale, medium_worm_tint),
-    starting_attack_speed = 0.03,
-    starting_attack_animation = worm_attack_animation(medium_worm_scale, medium_worm_tint, "forward"),
+    folded_speed_secondary = 0.024,
+    folded_animation = worm_folded_animation(scale_worm_medium, tint_worm_medium),
+    preparing_speed = 0.024,
+    prepared_speed = 0.024,
+    prepared_speed_secondary = 0.012,
+    preparing_animation = worm_preparing_animation(scale_worm_medium, tint_worm_medium, "forward"),
+    preparing_sound = make_worm_standup_sounds(1),
+    prepared_sound = make_worm_breath(0.8),
+    prepared_alternative_speed = 0.014,
+    prepared_alternative_speed_secondary = 0.010,
+    prepared_alternative_chance = 0.2,
+    prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_medium, tint_worm_medium),
+    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    prepared_animation = worm_prepared_animation(scale_worm_medium, tint_worm_medium),
+    starting_attack_speed = 0.034,
+    starting_attack_animation = worm_start_attack_animation(scale_worm_medium, tint_worm_medium),
     starting_attack_sound = make_worm_roars(0.8),
-    ending_attack_speed = 0.03,
-    ending_attack_animation = worm_attack_animation(medium_worm_scale, medium_worm_tint, "backward"),
+    ending_attack_speed = 0.016,
+    ending_attack_animation = worm_end_attack_animation(scale_worm_medium, tint_worm_medium),
     folding_speed = 0.015,
-    folding_animation =  worm_preparing_animation(medium_worm_scale, medium_worm_tint, "backward"),
-    prepare_range = 30,
+    folding_animation =  worm_preparing_animation(scale_worm_medium, tint_worm_medium, "backward"),
+    folding_sound = make_worm_fold_sounds(1),
+    secondary_animation = true,
+    random_animation_offset = true,
+    attack_from_start_frame = true,
+
+    integration = worm_integration(scale_worm_medium),
+    prepare_range = range_worm_medium + prepare_range_worm_medium,
+    allow_turning_when_starting_attack = true,
+
     attack_parameters =
     {
-      type = "projectile",
-      ammo_category = "rocket",
-      cooldown = 60,
-      range = 25,
-      projectile_creation_distance = 1.9,
-      damage_modifier = 4,
+      type = "stream",
+      cooldown = 4,
+      range = range_worm_medium,--defined in demo-spitter-projectiles.lua
+      damage_modifier = damage_modifier_worm_medium,--defined in demo-spitter-projectiles.lua
+      min_range = 0,
+      projectile_creation_parameters = worm_shoot_shiftings(scale_worm_medium, scale_worm_medium * scale_worm_stream),
+
+      use_shooter_direction = true,
+
+      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+
       ammo_type =
       {
         category = "biological",
@@ -802,25 +710,26 @@ data:extend(
           type = "direct",
           action_delivery =
           {
-            type = "projectile",
-            projectile = "acid-projectile-purple",
-            starting_speed = 0.5,
-            max_range = 40
+            type = "stream",
+            stream = "acid-stream-worm-medium",
+            duration = 160,
+            source_offset = {0.15, -0.5}
           }
         }
-      }
+      },
     },
     build_base_evolution_requirement = 0.3,
-    autoplace = enemy_worm_autoplace(2),
+    autoplace = enemy_autoplace.enemy_worm_autoplace(2),
     call_for_help_radius = 40
   },
+
 
   {
     type = "turret",
     name = "big-worm-turret",
     icon = "__base__/graphics/icons/big-worm.png",
     icon_size = 32,
-    flags = {"placeable-player", "placeable-enemy", "not-repairable", "breaths-air"},
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 750,
     order="b-b-f",
     subgroup="enemies",
@@ -839,40 +748,65 @@ data:extend(
         type = "fire",
         decrease = 3,
         percent = 70
+      },
+      {
+        type = "acid",
+        percent = 100
       }
-
     },
     healing_per_tick = 0.02,
     collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
+    map_generator_bounding_box = {{-2.4, -2.2}, {2.4, 2.2}},
     selection_box = {{-1.4, -1.2}, {1.4, 1.2}},
     shooting_cursor_size = 4,
     rotation_speed = 1,
     corpse = "big-worm-corpse",
     dying_explosion = "blood-explosion-big",
     dying_sound = make_worm_dying_sounds(1.0),
-    inventory_size = 2,
+
     folded_speed = 0.01,
-    folded_animation = worm_folded_animation(big_worm_scale, big_worm_tint),
-    preparing_speed = 0.025,
-    preparing_animation = worm_preparing_animation(big_worm_scale, big_worm_tint, "forward"),
-    prepared_speed = 0.015,
-    prepared_animation = worm_prepared_animation(big_worm_scale, big_worm_tint),
-    starting_attack_speed = 0.03,
-    starting_attack_animation = worm_attack_animation(big_worm_scale, big_worm_tint, "forward"),
+    folded_speed_secondary = 0.024,
+    folded_animation = worm_folded_animation(scale_worm_big, tint_worm_big),
+    preparing_speed = 0.024,
+    preparing_animation = worm_preparing_animation(scale_worm_big, tint_worm_big, "forward"),
+    preparing_sound = make_worm_standup_sounds(1),
+    prepared_speed = 0.024,
+    prepared_speed_secondary = 0.012,
+    prepared_animation = worm_prepared_animation(scale_worm_big, tint_worm_big),
+    prepared_sound = make_worm_breath(0.8),
+    prepared_alternative_speed = 0.014,
+    prepared_alternative_speed_secondary = 0.010,
+    prepared_alternative_chance = 0.2,
+    prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_big, tint_worm_big),
+    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    starting_attack_speed = 0.034,
+    starting_attack_animation = worm_start_attack_animation(scale_worm_big, tint_worm_big),
     starting_attack_sound = make_worm_roars(0.95),
-    ending_attack_speed = 0.03,
-    ending_attack_animation = worm_attack_animation(big_worm_scale, big_worm_tint, "backward"),
+    ending_attack_speed = 0.016,
+    ending_attack_animation = worm_end_attack_animation(scale_worm_big, tint_worm_big),
     folding_speed = 0.015,
-    folding_animation =  worm_preparing_animation(big_worm_scale, big_worm_tint, "backward"),
-    prepare_range = 30,
+    folding_animation =  worm_preparing_animation(scale_worm_big, tint_worm_big, "backward"),
+    folding_sound = make_worm_fold_sounds(1),
+    integration = worm_integration(scale_worm_big),
+    secondary_animation = true,
+    random_animation_offset = true,
+    attack_from_start_frame = true,
+
+    prepare_range = range_worm_big + prepare_range_worm_big,
+    allow_turning_when_starting_attack = true,
     attack_parameters =
     {
-      type = "projectile",
-      ammo_category = "rocket",
-      cooldown = 60,
-      range = 26,
-      projectile_creation_distance = 2.1,
-      damage_modifier = 5,
+      type = "stream",
+      damage_modifier = damage_modifier_worm_big,--defined in demo-spitter-projectiles.lua
+      cooldown = 4,
+      range = range_worm_big,--defined in demo-spitter-projectiles.lua
+      min_range = 0,
+      projectile_creation_parameters = worm_shoot_shiftings(scale_worm_big, scale_worm_big * scale_worm_stream),
+
+      use_shooter_direction = true,
+
+      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+
       ammo_type =
       {
         category = "biological",
@@ -881,17 +815,121 @@ data:extend(
           type = "direct",
           action_delivery =
           {
-            type = "projectile",
-            projectile = "acid-projectile-purple",
-            starting_speed = 0.5,
-            max_range = 50
+            type = "stream",
+            stream = "acid-stream-worm-big",
+            duration = 160,
+            source_offset = {0.15, -0.5}
           }
         }
-      }
+      },
     },
     build_base_evolution_requirement = 0.5,
-    autoplace = enemy_worm_autoplace(5),
+    autoplace = enemy_autoplace.enemy_worm_autoplace(5),
     call_for_help_radius = 40
+  },
+  {
+    type = "turret",
+    name = "behemoth-worm-turret",
+    icon = "__base__/graphics/icons/behemoth-worm.png",
+    icon_size = 32,
+    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
+    max_health = 750,
+    order="b-b-g",
+    subgroup="enemies",
+    resistances =
+    {
+      {
+        type = "physical",
+        decrease = 10
+      },
+      {
+        type = "explosion",
+        decrease = 10,
+        percent = 30
+      },
+      {
+        type = "fire",
+        decrease = 3,
+        percent = 70
+      },
+      {
+        type = "acid",
+        percent = 100
+      }
+    },
+    healing_per_tick = 0.02,
+    collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
+    map_generator_bounding_box = {{-2.4, -2.2}, {2.4, 2.2}},
+    selection_box = {{-1.4, -1.2}, {1.4, 1.2}},
+    shooting_cursor_size = 4,
+    rotation_speed = 1,
+    corpse = "behemoth-worm-corpse",
+    dying_explosion = "blood-explosion-big",
+    dying_sound = make_worm_dying_sounds(1.0),
+    inventory_size = 2,
+
+    folded_speed = 0.01,
+    folded_speed_secondary = 0.024,
+    folded_animation = worm_folded_animation(scale_worm_behemoth, tint_worm_behemoth),
+    preparing_speed = 0.024,
+    preparing_animation = worm_preparing_animation(scale_worm_behemoth, tint_worm_behemoth, "forward"),
+    preparing_sound = make_worm_standup_sounds(1),
+    prepared_speed = 0.024,
+    prepared_speed_secondary = 0.012,
+    prepared_animation = worm_prepared_animation(scale_worm_behemoth, tint_worm_behemoth),
+    prepared_sound = make_worm_breath(0.8),
+    prepared_alternative_speed = 0.014,
+    prepared_alternative_speed_secondary = 0.010,
+    prepared_alternative_chance = 0.2,
+    prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_behemoth, tint_worm_behemoth),
+    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    starting_attack_speed = 0.034,
+    starting_attack_animation = worm_start_attack_animation(scale_worm_behemoth, tint_worm_behemoth),
+    starting_attack_sound = make_worm_roars(0.95),
+    ending_attack_speed = 0.016,
+    ending_attack_animation = worm_end_attack_animation(scale_worm_behemoth, tint_worm_behemoth),
+    folding_speed = 0.015,
+    folding_animation =  worm_preparing_animation(scale_worm_behemoth, tint_worm_behemoth, "backward"),
+    folding_sound = make_worm_fold_sounds(1),
+    integration = worm_integration(scale_worm_behemoth),
+    secondary_animation = true,
+    random_animation_offset = true,
+    attack_from_start_frame = true,
+
+    prepare_range = range_worm_behemoth + prepare_range_worm_behemoth,
+    allow_turning_when_starting_attack = true,
+    attack_parameters =
+    {
+      type = "stream",
+      ammo_category = "biological",
+      damage_modifier = damage_modifier_worm_behemoth,--defined in demo-spitter-projectiles.lua
+      cooldown = 4,
+      range = range_worm_behemoth,--defined in demo-spitter-projectiles.lua
+      min_range = 0,
+      projectile_creation_parameters = worm_shoot_shiftings(scale_worm_behemoth, scale_worm_behemoth * scale_worm_stream),
+      use_shooter_direction = true,
+
+      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+
+      ammo_type =
+      {
+        category = "biological",
+        action =
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "stream",
+            stream = "acid-stream-worm-behemoth",
+            duration = 160,
+            source_offset = {0.15, -0.5}
+          }
+        }
+      },
+    },
+    build_base_evolution_requirement = 0.9,
+    autoplace = enemy_autoplace.enemy_worm_autoplace(8),
+    call_for_help_radius = 80
   },
   {
     type = "electric-turret",
@@ -938,41 +976,13 @@ data:extend(
     {
       layers =
       {
-        {
-          filename = "__base__/graphics/entity/laser-turret/laser-turret-gun.png",
-          line_length = 8,
-          width = 68,
-          height = 68,
-          frame_count = 1,
-          axially_symmetrical = false,
-          direction_count = 64,
-          shift = {-0.03125, -1}
-        },
-        {
-          filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-mask.png",
-          flags = { "mask" },
-          line_length = 8,
-          width = 54,
-          height = 44,
-          frame_count = 1,
-          axially_symmetrical = false,
-          apply_runtime_tint = true,
-          direction_count = 64,
-          shift = {-0.03125, -1.3125}
-        },
-        {
-          filename = "__base__/graphics/entity/laser-turret/laser-turret-gun-shadow.png",
-          line_length = 8,
-          width = 88,
-          height = 52,
-          frame_count = 1,
-          axially_symmetrical = false,
-          direction_count = 64,
-          draw_as_shadow = true,
-          shift = {1.5, 0}
-        }
+        laser_turret_shooting(),
+        laser_turret_shooting_shadow(),
+        laser_turret_shooting_mask()
       }
     },
+    --attacking_speed = 0.1,
+    energy_glow_animation = laser_turret_shooting_glow(),
     folding_animation =
     {
       layers =
@@ -989,24 +999,46 @@ data:extend(
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-base.png",
           priority = "high",
-          width = 98,
-          height = 82,
-          axially_symmetrical = false,
+          width = 70,
+          height = 52,
           direction_count = 1,
           frame_count = 1,
-          shift = {0.015625, 0.03125}
+          shift = util.by_pixel(0, 2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-base.png",
+            priority = "high",
+            width = 138,
+            height = 104,
+            direction_count = 1,
+            frame_count = 1,
+            shift = util.by_pixel(-0.5, 2),
+            scale = 0.5
+          }
         },
         {
-          filename = "__base__/graphics/entity/laser-turret/laser-turret-base-mask.png",
+          filename = "__base__/graphics/entity/laser-turret/laser-turret-base-shadow.png",
           flags = { "mask" },
           line_length = 1,
-          width = 54,
-          height = 46,
-          axially_symmetrical = false,
-          apply_runtime_tint = true,
+          width = 66,
+          height = 42,
+          draw_as_shadow = true,
           direction_count = 1,
           frame_count = 1,
-          shift = {-0.046875, -0.109375}
+          shift = util.by_pixel(6, 3),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-base-shadow.png",
+            flags = { "mask" },
+            line_length = 1,
+            width = 132,
+            height = 82,
+            draw_as_shadow = true,
+            direction_count = 1,
+            frame_count = 1,
+            shift = util.by_pixel(6, 3),
+            scale = 0.5
+          }
         }
       }
     },
@@ -1014,35 +1046,31 @@ data:extend(
 
     attack_parameters =
     {
-      type = "projectile",
-      ammo_category = "electric",
+      type = "beam",
       cooldown = 20,
-      projectile_center = {-0.09375, -0.2},
-      projectile_creation_distance = 1.4,
       range = 24,
-      damage_modifier = 4,
+      source_direction_count = 64,
+      source_offset = {0, -3.423489 / 4},
+      damage_modifier = 2,
       ammo_type =
       {
-        type = "projectile",
         category = "laser-turret",
         energy_consumption = "800kJ",
         action =
         {
+          type = "direct",
+          action_delivery =
           {
-            type = "direct",
-            action_delivery =
-            {
-              {
-                type = "projectile",
-                projectile = "laser",
-                starting_speed = 0.35
-              }
-            }
+            type = "beam",
+            beam = "laser-beam",
+            max_length = 24,
+            duration = 20,
+            source_offset = {0, -1.31439 }
           }
         }
-      },
-      sound = make_laser_sounds()
+      }
     },
+
     call_for_help_radius = 40
   },
   {
@@ -1057,8 +1085,12 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
     time_before_removed = 15 * 60 * 60,
-    final_render_layer = "corpse",
-    animation = worm_die_animation(medium_worm_scale, medium_worm_tint)
+    final_render_layer = "lower-object-above-shadow",
+    animation = worm_die_animation(scale_worm_medium, tint_worm_medium),
+    ground_patch =
+    {
+      sheet = worm_integration(scale_worm_medium)
+    }
   },
   {
     type = "corpse",
@@ -1072,8 +1104,31 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
     dying_speed = 0.01,
     time_before_removed = 15 * 60 * 60,
-    final_render_layer = "corpse",
-    animation = worm_die_animation(big_worm_scale, big_worm_tint)
+    final_render_layer = "lower-object-above-shadow",
+    animation = worm_die_animation(scale_worm_big, tint_worm_big),
+    ground_patch =
+    {
+      sheet = worm_integration(scale_worm_big)
+    }
+  },
+  {
+    type = "corpse",
+    name = "behemoth-worm-corpse",
+    icon = "__base__/graphics/icons/behemoth-worm-corpse.png",
+    icon_size = 32,
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selectable_in_game = false,
+    subgroup="corpses",
+    order = "c[corpse]-c[worm]-d[big]",
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
+    dying_speed = 0.01,
+    time_before_removed = 15 * 60 * 60,
+    final_render_layer = "lower-object-above-shadow",
+    animation = worm_die_animation(scale_worm_behemoth, tint_worm_behemoth),
+    ground_patch =
+    {
+      sheet = worm_integration(scale_worm_behemoth)
+    }
   }
 }
 )

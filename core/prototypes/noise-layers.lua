@@ -51,6 +51,6 @@ data:extend(
   {
     type = "noise-layer",
     name = "enemy-base"
-  },
+  }
 }
 )

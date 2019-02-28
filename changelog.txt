@@ -1,6 +1,578 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.16.52
-Date: ????
+Version: 0.17.0
+Date: 26. 02. 2019
+  Major Features:
+    - New quickbar (more in Gui section)
+    - Added shortcut bar that allows quick access to certain game features, such as toggling alt mode, creating blueprints, or turning off personal roboport
+    - New gui style with final version of some parts of the GUI (More in Gui section)
+    - Added clipboard functionality. (Control + C, Control + X, Control + V activate appropriate tools) Shift + mouse wheel allows to cycle the clipboard history.
+    - Added undo functionality (Control + Z). Supports manual entity building and by blueprints and manual mining and usage of deconstruction planner.
+    - Reworked the Map Editor so it's now part of the standard game and can be toggled at will using the '/editor' command.
+    - Support for mod synchronisation when joining multiplayer game. Works as long as the used mods are on the mod portal.
+    - Fight changes. Enemy projectiles are dodgeable and slowdown/damage the target over time. They also leave splashes on ground that have the same effect.
+    - Rich text tags. These tags can be used almost anywhere: Chat, station names, save names, custom ui and probably a few places we didn't think of.
+      They allow changing color, font, images and location/blueprint/armor/station/locomotive linking through chat. (More in features)
+    - Fluid mixing prevention. Actions that fail as they would lead to fluid mixing (like building a pipe, changing recipe, rotating etc.) produce an error message as flying text.
+    - Replaced First steps campaign with Introduction campaign, available from the Start campaign menu.
+  Features:
+    - Trains can be blueprinted and deconstructed.
+    - Trains can be given temporary stations (by Control+clicking the map). Temporary station is automatically removed once the train departures from it.
+    - Train stops without conditions work as waypoints. (the train doesn't stop at those)
+    - Added Passenger present and Passenger not present wait condition to the train conditions.
+    - If building of entity/blueprint fails, the reason of it is pinged as flying text.
+    - Map pings. Ctrl+Alt+click on the map to show a ping in all players maps at that location.
+    - Basic image tags format is [img=<image path>] where image path can use item, entity, technology, recipe, item-group, fluid tile, virtual signal achievement or utility icon.
+      For example [img=item/iron-plate] or [img=item.iron-plate]. The "." instead of "/" usage is to make it usable in save names.
+      Additionally, items/entities/technologies/recipe/item-group/fluid/tile/virtual signal or achievement can be linked directly by [item=iron-plate], [recipe=iron-plate], or [entity=small-biter] to provide tooltip for the appropriate object.
+    - Blueprint/special item tags.
+      Shift clicking the icon in chat will create an item and place it in the cursor.
+      Format is [special-item=blueprint string], eg:
+      [special-item=0eNp1jtEKwjAMRX9l5rnCxkShvyIi3YxboU1Lm4lj9N9N54sv5iFwL/eeZIPBLRiTJQa9gR0DZdDXDbKdyLjq8RoRNFhGDwrI+Ko4GcoxJD4O6BiKAksPfIPuyk0BElu2+CXtYr3T4gdMEvjHUBBDllqgelVQrYJVdqnE/br+eVaBM1ITb0bnQvNMwTc8YzPOhiZ0YTpI5oUp78BL33YnmbY/l/IBb4pSQQ==].
+      These tags also work with deconstruction and upgrade planners.
+    - Map ping tags: Created by shift-clicking the ground/map when the chat is open. Format is [gps=x,y], eg [gps=10,30] will show a map ping in all players maps at location 10,30.
+      Clicking the icon in chat will open the map on the specified location.
+    - Font tags: Format is [font=debug-mono]mono text[/font].
+    - Color tags: Format is [color=1,0,0]red text[/font]
+    - Fast replacing pipes by pipes to ground similar to underground belts.
+    - When multiple versions of the same mod are installed you can select which version you want to use.
+    - The sync mods with save/multiplayer game feature can now sync mod startup settings as well as mods.
+    - Added support to import and export permissions.
+    - Closing opened items (blueprint books/armor) now remembers what GUI you previously had open.
+    - Filter inserters can be set to whitelist or blacklist filters.
+    - Added belt immunity equipment.
+    - Added upgrade planner.
+    - Added steam networking support for steam users.
+    - Added RGB support for Logitech hardware.
+    - Robots can blow up cliffs.
+    - Wave defense scenario has been reworked to support multiple rounds and a procedurally generated map.
+    - Added a research queue that becomes available after the player has finished the game by launching a rocket with satellite.
+  Minor Features:
+    - Warning icon for automated trains that are out of fuel.
+    - Added 250 and 1000 hours precision intervals into statistics.
+    - Using deconstruction planner is incorporated in the latency hiding.
+    - Changed personal roboports so they won't send construction robots if you're driving in a vehicle that they can't keep up with or if in a train in automatic mode.
+    - Added an option to ignore mouse events when using accessibility zoom feature on macOS.
+    - Added support to change multiplayer config settings runtime.
+    - Added support to edit the whitelist, banlist, and admin list when hosting a multiplayer game.
+    - Added the Admin GUI (openable through /admin in the console) to manage multiplayer players.
+    - Landfill can be built by robots and be included in blueprints.
+    - Blueprint items taken from blueprint library will not move to player inventory when Q is pressed, but can be moved to any slot explicitly. (Same as with clipboard items)
+    - When selecting any item to the cursor from some of the player inventories. As long as the item is being held, hand icon is shown on the slot it was taken from. The hand
+      prevents any other item to be inserted into the slot as long as the player cursor isn't cleared.
+    - When holding radar in cursor, area covered by existing radars is also highlighted on minimap.
+    - Configurable (in gui), the count of rolling stocks shown in the train visualization.
+    - Added two levels of shallow water tiles (only placed by map editor, not generated). Enemies and vehicles can travel over shallow water.
+  Graphics:
+    - New graphics for:
+      - accumulator
+      - biters, spitters, worms, spawners
+      - chests
+      - electric poles and substation
+      - map edge transitions
+      - rocket silo
+      - transport belts, underground belts, splitters and transport belt circuit connector
+      - trees
+      - turrets (gun, flamethrower and laser)
+      - walls and gates
+    - laser turrets, personal laser defense and distractor robots now use new laser beams.
+    - Highlighting inserters that would interact with selected/previewed entity.
+    - Showing shield bars above health bar for relevant entities.
+    - Single vertical pipe is shorter.
+  Gui:
+    - New final versions of several important GUI screens (Quick bar, Train Schedule, Load/Save Game, Settings, Map Generator, Research, Mods)
+      Other screens than the mentioned ones (more than 100) have inconsistencies and will be updated in future minor updates.
+    - The quickbar is no longer an inventory, instead it can only hold shortcuts it items in inventory or blueprint library.
+      The quickbar now has 10 pages of shortcuts.
+      Player inventory increased by 20 slots to compensate. Toolbelt research further increases the player inventory.
+    - In the map, station and tag selection is now visualized by the standard Factorio selection box graphics instead of highlighting.
+    - Added interface option: When selecting a buildable item from the quickbar or when using the pipette tool, if you have no items of that type, a ghost will be placed in the cursor instead.
+    - When something is not buildable (manual or blueprint building), the reason of why it isn't buildable is shown as flying text over the cursor when the build is attempted.
+    - Only compatible results of a furnace are manually placeable in the result slot. (Mainly to avoid confusion of new players)
+  Optimisations:
+    - Modernized and optimized rendering backend. The game now uses DirectX 11 or OpenGL 3.3 Core and requires DirectX 10 class graphics card.
+    - DirectX backend doesn't keep backup of all sprites in RAM anymore.
+    - Added high quality texture compression to reduce amount of video memory consumed by the game and increase overall rendering performance.
+    - Added texture streaming so that adding more sprites does not necessarily increase GPU requirements.
+    - Improved game startup performance when using a large amount of technologies with deep dependency trees (it's now 67,000 times faster).
+    - Optimized rendering of logistic overlay when zoomed in to map. (https://forums.factorio.com/60659)
+    - Optimized rendering of turret ranges when zoomed in to map. (https://forums.factorio.com/58991)
+  Changes:
+    - Resource generation changed significantly:
+      The starting area contains only iron, copper, coal and stone, in very predictable amounts. Uranium and oil are excluded from the starting area.
+      Resource generation settings now have a much more dramatic effect. Increased the number of steps for each setting.
+      Ore patches are slightly less frequent but richer.
+      There will be a more balanced amount of resources within a large enough region.
+      Many other small tweaks.
+    - Biter generation changed significantly:
+      Biter richness slider removed, biter placement is only configured by size and frequency settings.
+      Biter generation settings now have a much more dramatic effect. Increased the number of steps for each setting.
+      Biter bases will increase in size, frequency and number of worms depending on the distance from player spawn.
+      Worm size increases depending on the distance from player spawn.
+      Small biter bases are now closer to the player spawn.
+      At large distances from player spawn, biter base frequency is lower than before but biter bases are larger.
+      Other small tweaks.
+    - Terrain generation changed significantly:
+      Water is generated as large lakes instead of swamps.
+      Tile generation improved. Tile placement respects biomes better.
+      More predictable cliff placement.
+      Better controls in the map generator GUI for water, tiles and cliffs.
+    - New map terrain type selectable: Island. Launch the rocket with only a limited amount of resources available on the map.
+    - Default resolution of the game is now 1920x1080.
+    - Increased player reach from 6 to 10.
+    - Inserters are putting science packs to the lab even when there is no research in progress or when the research doesn't need that particular pack.
+    - Default_request_amount removed in all places where it was used. Default logistic request is 1 stack, unless changed by the setting "Default request is 1".
+    - All personal equipment stack sizes changed to 20.
+    - Placing a tile will now clear any tile ghosts at that position. (https://forums.factorio.com/59721)
+    - It is allowed to use unicode characters in save names.
+    - Recipes that have more ingredients than the assembling machine allows are now shown as red instead of not present when selecting the recipe.
+    - When the "Made in" row is shown in the recipe tooltip, player icon is added to the list when it is craftable by player.
+    - Increased ghost time to live of ghosts from 1 hour to 1 week.
+    - Since the catalysts have been tweaked, the kovarex enrichment process can now be used together with productivity module.
+    - Tile construction jobs are being handled by robots separately from entity building jobs, to prevent entity ghosts not being built due to large number of tile ghosts.
+    - Switched key bindings from key codes to scan codes. This solves an issue with bad default key bindings on layouts that are not similar to US QWERTY (ie. AZERTY).
+    - Armor no longer uses durability and all armor now has a stack size of 1.
+    - Manually putting modules into machines that are requesting modules from the logistic network will reduce the modules requested.
+    - Increased maximum train stop length from 50 to 100 characters so it can fit at least 3 tags in most cases.
+    - Items consumed by hand crafting are counted in item production statistics.
+    - Added --disable-migration-window command-line option to disable the "migrated content" gui.
+    - Removed tile properties debug overlay.
+    - Command-line map preview generator now shows biter nests.
+    - Items sent in a rocket are counted in item production statistics. (https://forums.factorio.com/62606)
+    - Removed pickaxes and replaced them with research effects.
+    - Removed Wood from the game (And raw wood renamed to Wood).
+    - Added rotation smoothing to biters.
+    - Chests and wooden power poles are no longer usable as fuel.
+    - Burner efficiency is set to 100% for all entities and fuel value is halved to simplify calculations. This should not change game balance.
+    - Removed the hardness/mining power mechanics, we just have a mining speed and mining time now.
+    - Manual mining speed times of various entities will differ a bit, but probably not in a noticeable way.
+    - Stone and other ore mining speed has been unified to be 1 (apart uranium ore, which is 2 and shown as 200% mining time)
+    - Mining drill speed is now shown in the form of <x>/s (0.25/s for burner mining drill, 0.5/s for electric mining drill), the relative mining
+      speeds of the mining machines have been decreased a little so the numbers are rounded nicely (0.28 -> 0.25 and 0.525 -> 0.5).
+    - Renamed the whitelist and banlist to server-whitelist and server-banlist.
+    - Added server-adminlist that's used to determine which people are admins when hosting any multiplayer game. This is synced both ways when hosting any game.
+    - Removed "admins" from the multiplayer server-settings file - they're now handled through server-adminlist.
+    - "Z" (drop item) will drop single items into what ever entity is selected instead of only dropping on the ground.
+    - Stickers can by applied onto cars and tanks now.
+    - Changed the chat gray-out mechanism. It always greyed-out after 5 seconds to 70% alpha, and then stayed depending on the setting. Now it stays 100% and only greys out away in the last 2 seconds.
+    - Placing entities or paths removes tree stumps and biter corpses.
+    - Removed New Hope campaign.
+  Balancing:
+    - Technology pre-requisites tweaked so the unlocked item(s) always have all the ingredients already unlocked as well. This means many small changes.
+    - Science pack names changed:
+      - Science pack -> Automation science pack
+      - Science pack 2 -> Logistic science pack
+      - Science pack 3 -> Chemical science pack
+      - High-tech science pack -> Utility science pack
+      - Military, Production and Space science pack names remain the same.
+    - Science pack recipes changed:
+      - Military science pack now requires 1x Piercing rounds magazine, 1x Grenade, 2x Wall.
+      - Chemical science pack now requires 3x Advanced circuit, 2x Engine unit, 1x Solid fuel.
+      - Chemical science pack now crafts in pairs.
+      - Production science pack now requires 1x Electric furnace, 1x Productivity module, 30x Rail.
+      - Production science pack now produces in groups of 3. Crafting time rescaled to match.
+      - Utility science pack now requires 2x Processing unit, 1x Flying robot frame, 3x Low density structure.
+      - Utility science pack now produces in groups of 3. Crafting time rescaled to match.
+    - Some technologies more clearly split between Production and Utility science packs:
+      - Production science pack:
+        - Effect transmission
+        - All level 3 modules
+        - Kovarex enrichment process & Nuclear fuel reprocessing
+        - Worker robot capacity 2
+      - Utility science pack:
+        - Logistic system
+        - Worker robot speed 3
+        - Military 4 and weapon unlocks/upgrades
+        - Power armor mk2 and Portable fusion reactor
+      - Both Production and Utility science packs are required only for Rocket silo, Atomic bomb and some high-tier upgrades.
+    - Every science pack now has a technology to unlock it. Some technology prerequisites changed slightly. Space science pack technology unlocks the Satellite.
+    - Rocket fuel, Low density structure and Rocket control unit are unlocked by their own technologies.
+    - The game is won by launching a rocket, the Satellite is only for getting Space science packs.
+    - Swapped sorting order of Military science pack and Chemical science packs because Military science pack does not need oil.
+    - Nuclear power technology split to Uranium processing and Nuclear power.
+    - Nuclear fuel reprocessing technology cost reduced from 1500 to 50.
+    - Lubricant technology added (pre-requisite for Electric engine and Logistics 3)
+    - Fast and Filter inserters are unlocked by their own technology with a pre-requisite of Electronics.
+    - Automation 2 is a pre-requisite for Fluid handling. (Assembling machine 1 can't handle fluids)
+    - Engine is a pre-requisite for Fluid handling. (Pump needs Engines to craft it)
+    - Pump is now unlocked by Fluid handling. (was Engine)
+    - Fluid handling is a pre-requisite for Oil processing.
+    - Item spacing on transport belts changed from 0.28 tiles to 0.25 tiles, giving a transport belts throughput of 15/30/45 (basic/fast/express) items per second.
+    - Iron plate, copper plate and stone brick crafting time reduced from 3.5 to 3.2, steel plate crafting time reduced from 17.5 to 16.
+    - Coal liquefaction now produces 90 Heavy oil, 20 Light oil and 10 Petroleum gas, consuming 25 Heavy oil, 10 Coal and 50 Steam. (Gaining much more Heavy oil, less Light oil and Petroleum gas)
+    - Low density structure now requires 2x Steel plate, 20x Copper plate, 5x Plastic bar.
+    - Low density structure crafting time reduced from 30 to 20.
+    - Medium and Big power pole recipes now use iron sticks.
+    - Train stop recipe now uses iron sticks.
+    - Programmable speaker recipe now uses iron sticks.
+    - Lamp recipe iron sticks ingredient changed to copper cables.
+    - Defender capsule recipe now requires flying robot frames.
+    - Rebalanced assembling machine 1,2 and 3 power consumption and pollution - higher tiers eat more power, but produce less pollution.
+    - Assembling machine 2 recipe changed to require 2x Steel plate instead of 9x Iron plate.
+    - Automation 2 now requires Automation and Logistic science packs.
+    - Chemical plant crafting speed has been changed to 1. Some chemical plant recipes now take less time.
+    - Centrifuge crafting speed changed to 1.
+    - Portable solar panels have Modular armor as pre-requisite.
+    - Portable solar panel power output changed from 10kW to 30kW, recipe tweaked to require less Solar panels but more Advanced circuits.
+    - Low-tier personal equipment has Portable solar panels as a pre-requisite so you could possibly utilize the equipment when it is unlocked.
+    - Some high tier personal equipment (Energy shield mk2, Battery mk2, Personal laser defense and Discharge defense) have Power armor technology as pre-requisite.
+    - Some high tier equipment recipes now require Low Density Structures. (Energy shield mk2, Battery mk2, Roboport mk2, Portable fusion reactor, Power armor mk2, Personal laser defense)
+    - Locomotive fuel consumption doubled.
+    - Relative fuel value of nuclear fuel doubled.
+    - Relative fuel value of rocket fuel decreased by 10.6%, relative value of solid fuel decreased by 4%.
+  Combat Balancing:
+    - All military damage/shooting speed upgrade technologies merged into 7 technologies:
+      - Physical projectile damage 1-6 + infinite
+        - level 1-4: bullets, gun turrets, shotgun shells
+        - level 5+: previous levels and cannon shells
+      - Refined flammables 1-6 + infinite
+        - flamethrower turret, handheld flamethrower
+      - Stronger explosives 1-6 + infinite
+        - level 1: grenades
+        - level 2: previous level and land mines
+        - level 3: previous levels and rockets
+      - Energy weapons damage 1-6 + infinite
+        - level 1-3: laser turrets, personal laser defense
+        - level 4: previous level and distractor robots
+        - level 5+: previous levels and destroyer robots
+      - Weapon shooting speed 1-7
+        - affecting: bullets, gun turrets, shotgun shells, tank cannon shells, rockets
+      - Laser turret shooting speed
+      - Artillery shell shooting speed
+      - Artillery shell range
+    - Personal laser defense damage reduced, power consumption reduced and it is now influenced by Laser and electric beam intensity upgrades.
+    - Modular Armor technology pre-requisite changed from Modules to Advanced Electronics.
+    - Power Armor Mk2 technology pre-requisite changed from modules to Military 4.
+    - Power Armor Mk2 recipe changed from 5x level 3 to 25x level 2 modules (to avoid requiring Production science pack) and added electric engine units.
+    - From the start maximum follower count is 5 instead of 1. Level 3 of maximum follower count gives +5 instead of +10 to compensate.
+    - Atomic bomb recipe now requires Rocket control units instead of Processing units.
+    - Behemoth worm added.
+    - Worms and spitters use new "stream" attack now.
+      - Attacks predict target position and shoot there.
+      - Flamethrower turret now predicts target position as well.
+      - Acid splashes are created on the ground, dealing damage and slowing.
+      - Slow effect received from different spitter/worm tiers stacks.
+      - Worm shooting range is generally longer.
+      - Rocket launcher range increased from 22 to 36 to outrange medium worms.
+      - Worm and behemoth spitter attacks are large enough to damage neighbouring buildings.
+      - All enemies have 100% acid resistance.
+    - Changed spawner pollution absorption logic so that all the pollution on a chunk doesn't build up un-spent in a single spawner.
+    - Removed damage bonus of tank machine gun.
+  Bugfixes:
+    - Fixed that canceling production in assembling machine did return the products in progress.
+    - Fixed biters were unable to run against movement of belts.
+    - Tutorial GUI updates correctly after finishing a tutorial. (https://forums.factorio.com/55010)
+    - Chest GUI updates correctly when changed indirectly. (https://forums.factorio.com/55194)
+    - Changing train mode by a script updates the train GUI. (https://forums.factorio.com/20316)
+    - Fixed that tertiary was spelled "terciary" in the usage_priority. (https://forums.factorio.com/58317)
+    - Fixed construction robots would not give up module delivery when they didn't manage to get any modules. (https://forums.factorio.com/59483)
+    - Fixed issues with syncing mods to saves, when you don't already have the mod downloaded. (https://forums.factorio.com/59271)
+    - Entities affected by beacons now only show effect sources/receivers that have an effect. (https://forums.factorio.com/60064)
+    - Fixed furnaces wouldn't respect recipe module limitations correctly. (https://forums.factorio.com/60975)
+    - Fixed a crash when migrating blueprint book inventory sizes while they're in assembling machines that are being removed due to migration. (https://forums.factorio.com/61001)
+    - Fixed character.direction read didn't work correctly. (https://forums.factorio.com/61039)
+    - Fixed a crash when removing mods that add/change rolling stock entities. (https://forums.factorio.com/61048)
+    - Fixed script error in construction bot tutorial when deconstructing area. (https://forums.factorio.com/61045)
+    - Fixed Lua API methods to insert items didn't work correctly for entities that can hold items above the stack limit. (https://forums.factorio.com/59872)
+    - Fixed that the closing sound of other GUIs was too loud when the technology GUI popped up when a research finished. (https://forums.factorio.com/61049)
+    - Fixed that layered icons using shift wouldn't render correctly. (https://forums.factorio.com/60327)
+    - Fixed that running out of disk space could crash the game in some cases. (https://forums.factorio.com/61161)
+    - Fixed burner energy sources wouldn't always be able to output the full energy amount. (https://forums.factorio.com/61174)
+    - Fixed that transport belt circuit conditions wouldn't copy correctly in blueprints sometimes. (https://forums.factorio.com/61218)
+    - Fixed that limited/limiting upload speed could lead to an exponential soft lock in the upload process. (https://forums.factorio.com/61281)
+    - Fixed a desync related to cars on belts. (https://forums.factorio.com/61304)
+    - Fixed that crafting machines could be rotated diagonally using scripts. (https://forums.factorio.com/61717)
+    - Fixed that tooltips of unlocked recipes in technology preview didn't have the "made in" info even if it is not craftable by the player.
+    - Fixed recipes that consumed or produced > stack size of some item didn't work correctly.
+    - Fixed that game.reload_script() could cause desyncs when used in multiplayer.
+    - Fixed LuaScript::get_event_handler() didn't handle large numbers correctly. (https://forums.factorio.com/61752)
+    - Fixed AutoplaceSettings map_gen_settings didn't always work when defined through script. (https://forums.factorio.com/61754)
+    - Fixed a crash when using LuaEntity::get_train_stop_trains(). (https://forums.factorio.com/61743)
+    - Fixed a crash when using LuaGameScript::create_entity() related to making ghosts of ghosts. (https://forums.factorio.com/61605)
+    - Fixed setting entity healing_per_tick negative resulted in invincible entities. (https://forums.factorio.com/61492)
+    - Fixed that shadows wouldn't always render in the train camera. (https://forums.factorio.com/61286)
+    - Fixed health bars on large entities wouldn't render correctly. (https://forums.factorio.com/61495)
+    - Fixed trains would collide with item-requester-proxy. (https://forums.factorio.com/61842)
+    - Fixed train GUI buttons would lose too much quality graphics quality was set to Extra low. (https://forums.factorio.com/61618)
+    - Fixed a bug related to mining drills with > 100% productivity. (https://forums.factorio.com/61440)
+    - Fixed invalid optional dependencies wouldn't be highlighted correctly. (https://forums.factorio.com/61951)
+    - Fixed a crash when reading player.vehicle during the driving driving changed state event when triggered by the vehicle dying. (https://forums.factorio.com/61942)
+    - Fixed that beams would render 1 tile above their location when using a position source. (https://forums.factorio.com/62471)
+    - Fixed furnaces with input items and output fluids could get deadlocked. (https://forums.factorio.com/62434)
+    - Fixed when player teleported, renderer would draw all tiles between old and new position. (https://forums.factorio.com/62635)
+    - Fixed that frame count limits weren't enforced and would lead to a crash in several places. (https://forums.factorio.com/62648)
+    - Fixed a crash when the player port respawned a character without a connected player (https://forums.factorio.com/62707)
+    - Fixed that the market did not show the prices for some offers (https://forums.factorio.com/62682)
+    - Fixed that the "save replay" button would always show on the game finished screen even when it wouldn't work. (https://forums.factorio.com/62733)
+    - Fixed that filters would get copied between storage chests and requester chests. (https://forums.factorio.com/61219)
+    - Fixed error message given when loader entity prototype was defined with too many filters. (https://forums.factorio.com/62839)
+    - Fixed that fast replacing a train stop did not copy the name or color. (https://forums.factorio.com/62966)
+    - Ghost rails are now also considered when auto-selecting rail signal direction. (https://forums.factorio.com/58655)
+    - Fixed that the high-resolution car animation would shake. (https://forums.factorio.com/62454)
+    - Fixed errors in the mod settings stage wouldn't prompt to disable the erroring mod(s). (https://forums.factorio.com/62447)
+    - Fixed that crafting machines didn't work correctly with non-square bounding boxes. (https://forums.factorio.com/63027)
+    - Fixed that pasting train schedules did not dispatch trains waiting at a station that is not part of the new schedule. (https://forums.factorio.com/61143)
+    - Fixed possible crash when rendering a fish due to bad migration on fish prototype change. (https://forums.factorio.com/63515)
+    - Fixed that LuaGuiElement::zoom on minimaps would be rendered as zoom * 32.
+    - Fixed crash when detecting VRAM size on macOS. (https://forums.factorio.com/63770)
+    - Fixed LuaEntity::infinity_filters write didn't work. (https://forums.factorio.com/63954)
+    - Fixed that setting active on combinators would lead to desyncs. (https://forums.factorio.com/63335)
+    - Fixed that shift+click building blueprints didn't work correctly regarding tiles. (https://forums.factorio.com/63849)
+    - Fixed that construction robots could get stuck trying to repair things. (https://forums.factorio.com/63800)
+    - Fixed inventory highlights didn't work correctly when the game was paused while active. (https://forums.factorio.com/64047)
+    - Fixed a crash related to trains being forced to re-path when a stop is disabled. (https://forums.factorio.com/63900)
+    - Fixed that wire distance was ignored in some cases when connecting non-electric-pole entities. (https://forums.factorio.com/62146)
+    - Fixed that equipment grids wouldn't fit on screen if too large. (https://forums.factorio.com/61662)
+    - Fixed that the SelectSignal GUI wouldn't sort mixed-type signals correctly. (https://forums.factorio.com/62463)
+    - Fixed map generator would align entities to grid differently than manual building. (https://forums.factorio.com/63408)
+    - Fixed sprites in 16-bit depth per channel PNG would load as empty images on macOS. (https://forums.factorio.com/64105)
+    - Fixed that furnaces with mixed input could get stuck. (https://forums.factorio.com/61406)
+    - Fixed text duplication on research completion in the bonus GUI. (https://forums.factorio.com/64608)
+    - Fixed that LuaSurface::find_entities_filtered{position} wouldn't find entities with zero-sized bounding boxes. (https://forums.factorio.com/63270)
+    - Fixed that mod console commands would treat every command with the same help key as aliasing each other. (https://forums.factorio.com/64581)
+    - Fixed LuaGameScript::remove_path would log an error if path didn't exist. (https://forums.factorio.com/64873)
+    - Fixed cars and tanks had a slightly smaller collision box when not facing north. (https://forums.factorio.com/63842)
+    - Fixed inserter interaction with cars depended on rotation and on distance from map origin. (https://forums.factorio.com/62854)
+    - Fixed "InRangePredicate only accepts direction without diagonals" error. (https://forums.factorio.com/62375)
+    - Fixed when teleporting all tiles between old and new position would be rendered, causing performance problems. (https://forums.factorio.com/62635)
+    - Force space between spawners and worms in biter bases so they don't get stuck so much.
+    - Fixed trivial-smoke would be rendered for some time after its lifetime ended.
+  Modding:
+    - Added a new entity type "infinity-pipe" that automatically adds/removes fluid from itself; similar to the infinity-chest.
+    - Added a new entity type "heat-interface" that automatically sets its own temperature.
+    - Added "void" energy_source type which makes any entity using the type not require power.
+    - Added CraftingMachinePrototype::show_recipe_icon which changes if the recipe icon is shown in alt-mode.
+    - Added "stop" AI command, which tells the unit to just stop moving where it is. Takes a "ticks_to_wait" parameter, after which it returns to normal.
+    - Added LuaGuiElement type "list-box".
+    - Added Entity prototype flags "no-automated-item-removal" and "no-automated-item-insertion".
+    - Added support for hidden optional dependencies via '(?) mod-name'.
+    - Added SelectionToolPrototype flags "not-same-force", "friend", and "enemy".
+    - Added SelectionToolPrototype optional filters: entity_filters, entity_type_filters, tile_filters, entity_filter_mode, and tile_filter_mode.
+    - Added SelectionToolPrototype optional filters: alt_entity_filters, alt_entity_type_filters, alt_tile_filters, alt_entity_filter_mode, and alt_tile_filter_mode.
+    - Added support to set wire_count on wires to define how many items are needed to connect 2 entities.
+    - Added UnitPrototype::ai_settings, which allows overriding default biter behavior.
+    - Added a spectator controller type that can view anything but can't change anything.
+    - Added GeneratorPrototype::burner to allow making an entity that burns fuel and produces power.
+    - Added ticks_to_wait parameter to wander ai command.
+    - Added Entity prototype property "next_upgrade".
+    - Added support to set draw_copper_wires and draw_circuit_wires for any entity that uses wires.
+    - Added optional "min_working_temperature" and "default_temperature" to heat buffer prototype.
+    - Added optional technology prototype property "hidden".
+    - Added optional fluid prototype property "hidden".
+    - Added "fluid" energy_source type can be used for both fuel-value based fluids, and heat capacity based fluids configured the same was as the generator entity.
+    - Added ReactorPrototype::scale_energy_usage to allow making a heat source that stops consuming fuel when max temperature is reached.
+    - Added EnemySpawnerPrototype::min_darkness_to_spawn and max_darkness_to_spawn.
+    - Added optional beam prototype properties random_end_animation_rotation and transparent_start_end_animations.
+    - Added rotation_speed value to Unit prototype.
+    - Added support for arbitrary non-circular references to named noise expressions.
+    - Added "spot-noise" noise function.
+    - Added "if-else-chain" and "literal-boolean" noise expression types.
+    - Added "cutscene" controller.
+    - Added "speech-bubble" entity.
+    - Added ResourceEntityPrototype::randomize_visual_position.
+    - Added EquipmentGridPrototype::locked.
+    - Added DamageType::hidden.
+    - Added optional draw_cargo property to construction robot and logistic robot prototypes.
+    - Added optional fluid_product to production achievement prototypes.
+    - Added UnitPrototype::affected_by_tiles.
+    - Added LuaStyle::stretch_image_to_widget_size, only applies to "sprite" widget styles.
+    - Added optional EntityPrototype::map_generator_bounding_box.
+    - Added EntityPrototypeFlag "not-upgradable".
+    - Added EntityPrototypeFlags "no-copy-paste" and "not-selectable-in-game".
+    - Added ItemPrototypeFlags "only-in-cursor", "not-stackable", "can-extend-inventory", "primary-place-result" and "mod-openable".
+    - Added BeamPrototype::target_offset and random_target_offset.
+    - Added TilePrototype::tint. Tile tint is packed to RGB 565 without alpha.
+    - Added "mouse-cursor" definitions for overriding system mouse cursor in selection tools.
+    - Changed radars so they support dynamic energy source types.
+    - Changed ItemWithInventoryPrototype flag "when_manually_filtered" to "when-manually-filtered".
+    - Changed SelectionToolPrototype flag "matches-force" to "same-force".
+    - Changed the maximum number of surfaces from 255 to 4,294,967,295.
+    - Changed migration scripts so they run in the context of the mod that created them.
+    - Changed TilePrototype::decorative_removal_probability default value to 0 (it was 1).
+    - Changed ReactorPrototype::burner to ReactorPrototype::energy_source to allow heat sources with alternate energy types.
+    - Changed ElectricEnergyInterfacePrototype::enable_gui to gui_mode.
+    - Changed EnemySpawnerPrototype::result_units to support any type of entity.
+    - Changed recipes to support having no results by setting results = {}.
+    - Lua scripts can now use require("__mod-name__.file") syntax.
+    - AutoplaceSpecifications can now be defined in terms of probability_expression and richness_expression as an alternative to peaks.
+    - property_expression_name values can be numeric constants.
+    - All autoplace controls are now available as noise expression variables.
+    - energy_per_movement and energy_per_rotation of inserter is now specified in energy format (aka "5KJ") instead of just a number.
+    - Increased limit for size of spritesheet to 8196px (regardless of sprite resolution settings).
+      Maximal size of single sprite is 2048px in normal resolution and 4096px in high resolution. Smaller spritesheets can utilize parallel decompression better.
+    - Removed the "default-" prefix from core NamedNoiseExpressions; property_expression_names in MapGenSettings simply override the expression named by the key.
+    - Removed ItemPrototypeFlags "goes-to-main-inventory" and "goes-to-quickbar".
+  Scripting:
+    - Added LuaRendering accessed via the lua global "rendering".
+    - Added LuaEntity::get_infinity_pipe_filter() and set_infinity_pipe_filter().
+    - Added LuaEntity::recipe_locked read/write for assembling machines.
+    - Added LuaRailPath.
+    - Added LuaTrain::path read.
+    - Added LuaEntity::connected_rail read.
+    - Added previous_direction to the on_player_rotated_entity event.
+    - Added LuaItemStack::deconstruct_area() and cancel_deconstruct_area().
+    - Added LuaSurface::deconstruct/cancel_deconstruct optional parameters skip_fog_of_war and item.
+    - Added LuaEntity::clone().
+    - Added LuaSurface::clone_area().
+    - Added LuaSurface::clone_entities().
+    - Added LuaGameScript::auto_save().
+    - Added LuaEntity::neighbours support for power switches, wall-connectable entities, and reactors.
+    - Added LuaFluidBoxPrototype.
+    - Added LuaEntityPrototype::fluidbox_prototypes read.
+    - Added LuaGameScript::take_technology_screenshot().
+    - Added LuaSurface::clear().
+    - Added LuaSurface::solar_power_multiplier read/write.
+    - Added on_pre_surface_cleared and on_surface_cleared events.
+    - Added on_pre_chunk_deleted and on_chunk_deleted events.
+    - Added on_chart_tag_added, on_chart_tag_modified, and on_chart_tag_removed events.
+    - Added LuaGameScript::styles read.
+    - Added LuaEntity::crafting_speed read.
+    - Added LuaTrain::max_forward_speed and max_backward_speed read.
+    - Added on_train_schedule_changed event.
+    - Added LuaForce::previous_research read/write.
+    - Added LuaSurface::find_decoratives_filtered().
+    - Added LuaEntity::inserter_filter_mode read/write.
+    - Added LuaEntity::neighbour_bonus read.
+    - Added LuaEntityPrototype::neighbour_bonus and neighbour_collision_increase read.
+    - Added LuaEntityPrototype::container_distance, belt_distance and belt_length read.
+    - Added LuaGameScript::table_to_json() and LuaGameScript::json_to_table().
+    - Added events on_player_banned, on_player_kicked, and on_player_unbanned.
+    - Added event on_rocket_launch_ordered.
+    - Added LuaItemPrototype::wire_count read.
+    - Added LuaRecipePrototype::main_product read.
+    - Added LuaEntity::get_fluid_count(), get_fluid_contents(), remove_fluid(), insert_fluid(), and clear_fluid_inside().
+    - Added LuaEntity::silent_revive().
+    - Added LuaFluidBox::get_prototype().
+    - Added LuaSurface::request_path().
+    - Added LuaGameScript::reload_mods().
+    - Added on_player_toggled_alt_mode, on_player_repaired_entity, and on_player_fast_transferred events.
+    - Added on_game_created_from_scenario event.
+    - Added on_surface_renamed event.
+    - Added on_ai_command_completed event, which can be used to detect command completion and failure/success.
+    - Added "pathfind_flags" parameter to "go_to_location" AI command.
+    - Added "radius" and "wander_in_group" parameters to "wander" AI command.
+    - Added "radius" parameter to "go_to_location" AI command.
+    - Added support for mods to change their own mod settings runtime.
+    - Added LuaEntityPrototype::next_upgrade read.
+    - Added optional parameters to LuaSurface::create_entity, LuaEntity::destroy and LuaEntity::revive to raise the associated script events.
+    - Added support to run console commands in a specific mod context via: /c __mod-name__ *command*.
+    - Added LuaTechnologyPrototype::hidden read.
+    - Added LuaFluidPrototype::hidden read.
+    - Added LuaSurface::get_map_exchange_string().
+    - Added LuaGameScript::get_map_exchange_string().
+    - Added LuaFlowStatistics::get_flow_count().
+    - Added LuaEntity::trains_in_block read.
+    - Added LuaGameScript::get_player().
+    - Added LuaGameScript::get_surface().
+    - Added LuaGameScript::set_wait_for_screenshots_to_finish().
+    - Added LuaGuiElement::resize_to_sprite (read/write).
+    - Added LuaGroup::localised_name read.
+    - Added SpritePath::equipment.
+    - Added LuaEquipmentGridPrototype::background_color read.
+    - Added LuaItemPrototype::reload_time read.
+    - Added highlight-box entity that can be passed a "bounding_box" or "source" entity parameter to display a highlight box around an area or entity.
+    - Added LuaEntityPrototype::is_building read.
+    - Added LuaEntityPrototype::automated_ammo_count read.
+    - Added LuaEntity::get_beam_source(), set_beam_source(), get_beam_target() and set_beam_target().
+    - Added LuaSurface::get_closest().
+    - Added LuaSurface::get_total_pollution().
+    - Added LuaPlayer::create_local_flying_text().
+    - Added LuaEntityPrototype::darkness_for_all_lamps_on and darkness_for_all_lamps_off read.
+    - Added LuaEntity::status read.
+    - Added LuaLogisticNetwork::robots, construction_robots, logistic_robots read.
+    - Added LuaGameScript::get_train_stops(), LuaSurface::get_train_stops(), and LuaForce::get_train_stops().
+    - Added LuaEntityPrototype::min_darkness_to_spawn and max_darkness_to_spawn read.
+    - Added "loot" to the on_entity_died event.
+    - Added LuaTrain::go_to_station().
+    - Added support to set quality when using LuaGameScript::take_screenshot.
+    - Added LuaForce::evolution_factor_by_pollution, evolution_factor_by_time, and evolution_factor_by_killing_spawners read/write.
+    - Added optional create_build_effect_smoke parameter to LuaSurface::create_entity.
+    - Added LuaEntity::drop_target/pickup_target write.
+    - Added LuaEntity::ghost_has_flag().
+    - Added runtime editable speed attribute to Unit.
+    - Added LuaSurface::get_starting_area_radius().
+    - Added LuaItemPrototype::robot_action read.
+    - Added LuaEntity::enable_logistics_while_moving read/write.
+    - Added optional render_player_index parameter for flying-text and simple-entities to LuaSurface::create_entity.
+    - Added LuaEntity::render_player read/write.
+    - Added LuaEntity::render_to_forces read/write.
+    - Added LuaGameScript::disable_tutorial_triggers().
+    - Added LuaEntity::get_radius() and LuaEntityPrototype::radius read.
+    - Added LuaEntity::get_health_ratio().
+    - Added LuaSurface::find_units().
+    - Added LuaTransportLine::output_lines read.
+    - Added LuaEntity::pump_rail_target read.
+    - Added LuaTrain::get_rails().
+    - Added LuaEquipmentGridPrototype::locked read.
+    - Added LuaForce::index read.
+    - Added direction to LuaSurface::count/find_entities_filtered.
+    - Added collision_mask to LuaSurface::count/find_entities_filtered.
+    - Added LuaEntity::clear_market_items().
+    - Added LuaEntityPrototype::cliff_explosive_prototype read.
+    - Added LuaDamagePrototype::hidden read.
+    - Added LuaControl::character_running_speed read.
+    - Added LuaEntityPrototype::draw_cargo read.
+    - Added LuaPlayer::use_from_cursor().
+    - Added LuaGameScript::autosave_enabled variable, that can be used to disable autosaving.
+    - Added LuaEntity::ai_settings read.
+    - Added LuaAISettings::destroy_when_commands_fail. When true, units will be destroyed when repeatedly failing to execute commands.
+    - Added LuaAISettings::allow_try_return_to_spawner. When true, units will try to return to a spawner when they are idle.
+    - Added LuaAISettings::do_separation. When true, units will try to separate themselves from nearby friendly units.
+    - Added LuaEntity::moving. Returns true if the unit is moving.
+    - Added on_unit_group_created, on_unit_added_to_group, and on_unit_removed_from_group events.
+    - Added LuaEntity::create_build_effect_smoke.
+    - Added LuaEntityPrototype::vision_distance read.
+    - Added LuaPlayer::open_map(), zoom_to_world() and close_map().
+    - Added LuaPlayer::render_mode read.
+    - Added LuaPlayer::map_view_settings write.
+    - Added LuaStyle::top_margin, right_margin, bottom_margin and left_margin read/write.
+    - Added LuaStyle::use_header_filler, natural_width and natural_height read/write.
+    - Added LuaStyle::extra_padding_when_activated read/write.
+    - Added LuaStyle::extra_top_margin_when_activated, extra_bottom_margin_when_activated, extra_left_margin_when_activated and extra_right_margin_when_activated read/write.
+    - Added LuaEntity::electric_network_id read.
+    - Added LuaControl::character_additional_mining_categories read/write.
+    - Added LuaGameScript::draw_resource_selection read/write.
+    - Added LuaForce::get_hand_crafting_disabled_for_recipe() and set_hand_crafting_disabled_for_recipe().
+    - Added LuaEntityPrototype::map_generator_bounding_box read.
+    - Added LuaEntity::release_from_spawner().
+    - Added on_cutscene_waypoint_reached, on_entity_cloned, on_area_cloned, on_marked_for_upgrade, on_cancelled_upgrade,
+      on_post_entity_died, on_pre_player_removed, on_pre_robot_exploded_cliff, on_robot_exploded_cliff,
+      on_script_path_request_finished, on_surface_imported, on_player_toggled_map_editor events.
+    - Added LuaEntity::timeout read/write.
+    - Added LuaEntity::highlight_box_type and highlight_box_blink_interval read/write.
+    - Added LuaEntity::order_upgrade(), cancel_upgrade() and to_be_upgraded().
+    - Added LuaEntity::research_queue_enabled read/write.
+    - Added LuaGameScript::get_active_entities_count().
+    - Added LuaGameScript::ticks_played read.
+    - Added LuaGameScript::tick_paused and ticks_to_run read/write.
+    - Added LuaItemPrototype::infinite read.
+    - Added LuaItemStack::clear_upgrade_item(), get_mapper(), set_mapper().
+    - Added LuaItemStack::is_upgrade_item read.
+    - Added LuaLogisticCell::logistics_connection_distance read.
+    - Added LuaLogisticNetwork::select_pickup_point() and select_drop_point().
+    - Added LuaPlayer::jump_to_cutscene_waypoint().
+    - Added LuaUnitGroup::group_number read.
+    - Changed LuaEntity::destroy() to accept a table of arguments.
+    - Changed LuaEntity::revive() to accept a table of arguments.
+    - Changed the player_used_capsule event so it's fired after the capsule item is consumed from the cursor.
+    - Changed LuaEntity::splitter_filter, splitter_input_priority, and splitter_output_priority so they also work on ghosts.
+    - Changed LuaSurface::destroy_decoratives() to take filters similar to find_entities_filtered.
+    - Changed LuaEntityPrototype::items_to_place_this and LuaTilePrototype::items_to_place_this to return an array of SimpleItemStack.
+    - Changed most LuaEntity properties/functions to also work on ghosts.
+    - Changed on_player_crafted_item item_stack to allow editing the stack before it's put into the player inventory.
+    - Changed LuaSurface::regenerate_entity()/regenerate_decorative() to treat "nil" as "all" for the autoplace list.
+    - Changed LuaEquipmentPrototype::energy_source to return a LuaElectricEnergySourcePrototype.
+    - Changed sound definition, so it can contain "aggregation" even when it doesn't contain "variations".
+    - Renamed LuaEntity::get_infinity_filter(), set_infinity_filter(), and infinity_filters to get_infinity_container_filter(),
+      set_infinity_container_filter(), and infinity_container_filters.
+    - Renamed on_canceled_deconstruction event to on_cancelled_deconstruction.
+    - Fixed the spelling of LuaForce::max_successful_attempts_per_tick_per_construction_queue.
+    - LuaSurface::find_entities/filtered now accepts a zero sized bounding box as "find everything that collides with this point".
+    - CustomSprite now scales to the size of the sprite if a manual size isn't defined.
+    - It's possible to specify "frame_sequence" in animation definition as array of frame numbers that should be played in given order.
+    - Removed LuaStyle::visible, LuaGuiElement::visible is used instead.
+    - Removed LuaSurface::get_tile_properties().
+    - Removed LuaCustomChartTag::orientation and target.
+    - Removed LuaFluidPrototype::pressure_to_speed_ratio and flow_to_energy_ratio.
 ---------------------------------------------------------------------------------------------------
 Version: 0.16.51
 Date: 15. 06. 2018
@@ -183,6 +755,7 @@ Date: 23. 04. 2018
     - Fixed gates sometimes not detecting car being driven by god controller. (https://forums.factorio.com/59472)
     - Fixed that some of the achievements were obtainable even when player didn't spend more than 50% of time in the game. (https://forums.factorio.com/59467)
     - Fixed that character window was closed when doing fast transfer between armor slot and inventory. (https://forums.factorio.com/59486)
+    - Fixed inconsistent ctrl-clicking of ammo in when in a vehicle. (https://forums.factorio.com/59520)
     - Fixed that modded inserters would some times get stuck. (https://forums.factorio.com/59316)
     - Fixed that Wave defense would error when played on a headless server. (https://forums.factorio.com/59420)
     - Improved system of key blocking now allows more key bindings to work correctly. (https://forums.factorio.com/59415)
@@ -3699,7 +4272,7 @@ Date: 30. 07. 2016
     - Fixed that technology name and description locales didn't work correctly for tiered technologies.
     - Fixed using flamethrower and slowdown capsule at the same time could ignite biter more than once and corrupt save.
     - Fixed modules could end up in the input slot on furnaces. (https://forums.factorio.com/29992)
-    - Fixed unsightly message when changing player colour in singleplayer. (https://forums.factorio.com/29914)
+    - Fixed unsightly message when changing player color in singleplayer. (https://forums.factorio.com/29914)
     - Fixed inserter circuit "hold" read mode sending the signal 1 tick too late. (https://forums.factorio.com/29483)
     - Fixed transport belt circuit condition ignoring 1 tick duration signals. (https://forums.factorio.com/29347)
     - Fixed crash when saving the game fails due to the disk being full. (https://forums.factorio.com/29915)
@@ -6114,7 +6687,7 @@ Date: 11.12. 2014
   Graphics:
     - Added ground patch to remnants.
     - Better integration of the explosion particles.
-    - New graphics of car. Overall enhancement, added player colour mask, turret and wheel animation.
+    - New graphics of car. Overall enhancement, added player color mask, turret and wheel animation.
     - Added small scorch mark as a result of heavy weapons (grenades, rockets, tank cannon).
   Balancing:
     - The range of all spitters have been set to 15, so they don't outrange the gun turrets.

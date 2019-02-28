@@ -1,5 +1,6 @@
 function smoke(opts)
-  return {
+  return
+  {
     type = "smoke",
     name = opts.name,
     flags = {"not-on-map"},

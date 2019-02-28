@@ -1,3 +1,7 @@
+local noise = require("noise");
+local tne = noise.to_noise_expression;
+local resource_autoplace = require("prototypes.entity.demo-resource-autoplace");
+
 local function autoplace_settings(name, order, coverage)
   return
   {
@@ -21,64 +25,122 @@ local function autoplace_settings(name, order, coverage)
   }
 end
 
-local function resource(name, order, map_color, hardness, coverage)
-  if hardness == nil then hardness = 0.9 end
+local function resource(resource_parameters, autoplace_parameters)
   if coverage == nil then coverage = 0.02 end
+
   return
   {
     type = "resource",
-    name = name,
-    icon = "__base__/graphics/icons/" .. name .. ".png",
+    name = resource_parameters.name,
+    icon = "__base__/graphics/icons/" .. resource_parameters.name .. ".png",
     icon_size = 32,
     flags = {"placeable-neutral"},
-    order="a-b-"..order,
+    order="a-b-"..resource_parameters.order,
     tree_removal_probability = 0.8,
     tree_removal_max_distance = 32 * 32,
     minable =
     {
-      hardness = hardness,
-      mining_particle = name .. "-particle",
-      mining_time = 2,
-      result = name
+      mining_particle = resource_parameters.name .. "-particle",
+      mining_time = resource_parameters.mining_time,
+      result = resource_parameters.name
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    autoplace = autoplace_settings(name, order, coverage),
-    stage_counts = {15000, 8000, 4000, 2000, 1000, 500, 200, 80},
+    -- autoplace = autoplace_settings(name, order, coverage),
+    autoplace = resource_autoplace.resource_autoplace_settings{
+      name = resource_parameters.name,
+      order = resource_parameters.order,
+      base_density = autoplace_parameters.base_density,
+      has_starting_area_placement = true,
+      resource_index = resource_autoplace.get_next_resource_index(),
+      regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier;
+      starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier;
+    },
+    stage_counts = {15000, 9500, 5500, 2900, 1300, 400, 150, 80},
     stages =
     {
       sheet =
       {
-        filename = "__base__/graphics/entity/" .. name .. "/" .. name .. ".png",
+        filename = "__base__/graphics/entity/" .. resource_parameters.name .. "/" .. resource_parameters.name .. ".png",
         priority = "extra-high",
-        width = 64,
-        height = 64,
+        size = 64,
         frame_count = 8,
         variation_count = 8,
         hr_version =
-          {
-          filename = "__base__/graphics/entity/" .. name .. "/hr-" .. name .. ".png",
+        {
+          filename = "__base__/graphics/entity/" .. resource_parameters.name .. "/hr-" .. resource_parameters.name .. ".png",
           priority = "extra-high",
-          width = 128,
-          height = 128,
+          size = 128,
           frame_count = 8,
           variation_count = 8,
           scale = 0.5
-          }
+        }
       }
     },
-    map_color = map_color
+    map_color = resource_parameters.map_color
   }
 end
 
 data:extend(
 {
-  --trees are "a", so resources can delete trees when placed
-  --oil is "b"
-  --uranium is "c"
-  resource("iron-ore",   "d", {r=0.415, g=0.525, b=0.580}, nil, (0.006 / 3) / 1.1 * 1.49  ), -- 1.1 compensates for overlapping. 1.49 is the expected ratio of iron to copper
-  resource("copper-ore", "e", {r=0.803, g=0.388, b=0.215}, nil, 0.006 / 3),
-  resource("coal",       "f", {r=0, g=0, b=0},             nil, 0.0045 / 3),
-  resource("stone",      "g", {r=0.690, g=0.611, b=0.427}, 0.4, 0.0023 / 3)
+  -- Usually earlier order takes priority, but there's some special
+  -- case buried in the code about resources removing other things
+  -- (though maybe there shouldn't be, and we should just place things in a different order).
+  -- Trees are "a", and resources will delete trees when placed.
+  -- Oil is "c" so won't be placed if another resource is already there.
+  -- "d" is available for another resource, but isn't used for now.
+
+  resource(
+    { 
+      name = "iron-ore",
+      order = "b",
+      map_color = {r=0.415, g=0.525, b=0.580},
+      mining_time = 1
+    },
+    {
+      base_density = 10,
+      regular_rq_factor_multiplier = 1.10,
+      starting_rq_factor_multiplier = 1.5
+    }
+  ),
+  resource(
+    { 
+      name = "copper-ore",
+      order = "b",
+      map_color = {r=0.803, g=0.388, b=0.215},
+      mining_time = 1
+    },
+    {
+      base_density = 8,
+      regular_rq_factor_multiplier = 1.10,
+      starting_rq_factor_multiplier = 1.2
+    }
+  ),
+  resource(
+    { 
+      name = "coal",
+      order = "b",
+      map_color = {r=0, g=0, b=0},
+      mining_time = 1
+    },
+    {
+      base_density = 8,
+      regular_rq_factor_multiplier = 1.0,
+      starting_rq_factor_multiplier = 1.1
+    }
+  ),
+  resource(
+    { 
+      name = "stone",
+      order = "b",
+      map_color = {r=0.690, g=0.611, b=0.427},
+      mining_time = 1
+    },
+    {
+      base_density = 4,
+      regular_rq_factor_multiplier = 1.0,
+      starting_rq_factor_multiplier = 1.1
+    }
+  )
 }
 )

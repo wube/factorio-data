@@ -7,7 +7,11 @@ data:extend(
     name = "trains-basics",
     scenario = "trains-basics",
     order = "d[trains]-a[basic-train]",
-    technology = "railway",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "railway"
+    },
     icon = "__base__/graphics/technology/railway.png",
     icon_size = 128,
     related_items = {"rail", "locomotive"}
@@ -17,7 +21,11 @@ data:extend(
     name = "trains-ghost-rail-planner",
     scenario = "trains-ghost-rail-planner",
     order = "d[trains]-b[ghost-rail-planner]",
-    technology = "construction-robotics",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "construction-robotics"
+    },
     icon = "__base__/graphics/technology/railway.png",
     icon_size = 128,
     related_items = {"rail", "construction-robot"},
@@ -28,7 +36,11 @@ data:extend(
     name = "trains-stations",
     scenario = "trains-stations",
     order = "d[trains]-c[stations]",
-    technology = "automated-rail-transportation",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "automated-rail-transportation"
+    },
     icon = "__base__/graphics/technology/automated-rail-transportation.png",
     icon_size = 128,
     related_items = {"train-stop", "locomotive", "cargo-wagon"},
@@ -39,7 +51,11 @@ data:extend(
     name = "trains-basic-signals",
     scenario = "trains-basic-signals",
     order = "d[trains]-d[basic-signal]",
-    technology = "rail-signals",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "rail-signals"
+    },
     icon = "__base__/graphics/technology/rail-signals.png",
     icon_size = 128,
     related_items = {"rail-signal", "locomotive"},
@@ -50,7 +66,11 @@ data:extend(
     name = "trains-advanced-signals",
     scenario = "trains-advanced-signals",
     order = "d[trains]-e[advanced-signal]",
-    technology = "rail-signals",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "rail-signals"
+    },
     icon = "__base__/graphics/technology/rail-signals.png",
     icon_size = 128,
     related_items = {"rail-signal", "rail-chain-signal", "locomotive"},
@@ -61,7 +81,11 @@ data:extend(
     name = "logistic-system-basic",
     scenario = "logistic-system-basic",
     order = "b[worker-robots]-a[basic]",
-    technology = "character-logistic-slots-1",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "character-logistic-slots-1"
+    },
     icon = "__base__/graphics/technology/logistic-robotics.png",
     icon_size = 128,
     related_items = {"roboport", "logistic-robot", "logistic-chest-storage", "logistic-chest-passive-provider"}
@@ -71,7 +95,11 @@ data:extend(
     name = "construction-robots",
     scenario = "construction-robots",
     order = "b[worker-robots]-b[construction-robots]",
-    technology = "construction-robotics",
+    trigger =
+    {
+      type = "research-technology",
+      technology = "construction-robotics"
+    },
     icon = "__base__/graphics/technology/construction-robotics.png",
     icon_size = 128,
     related_items = {"roboport", "construction-robot", "blueprint"},
@@ -94,7 +122,11 @@ data:extend(
     name = "stack-transfers",
     scenario = "stack-transfers",
     order = "a[interface]-a[stack-transfers]",
-    build_entity = "iron-chest",
+    trigger =
+    {
+      type = "manual-transfer",
+      count = 20
+    },
     icon = "__base__/graphics/technology/toolbelt.png",
     icon_size = 128,
     related_items = {"iron-chest"}

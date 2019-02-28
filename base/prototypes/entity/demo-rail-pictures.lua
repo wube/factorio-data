@@ -25,7 +25,7 @@ rail_pictures_internal = function(elems)
       {
         filename = string.format("__base__/graphics/entity/%s/%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
         priority = elem.priority or "extra-high",
-        flags = elem.mipmap and { "icon" } or { "low-object" },
+        flags = elem.mipmap and { "trilinear-filtering" } or { "low-object" },
         width = key[3],
         height = key[4],
         shift = {key[5], key[6]},
@@ -34,7 +34,7 @@ rail_pictures_internal = function(elems)
         {
           filename = string.format("__base__/graphics/entity/%s/hr-%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
           priority = elem.priority or "extra-high",
-          flags = elem.mipmap and { "icon" } or { "low-object" },
+          flags = elem.mipmap and { "trilinear-filtering" } or { "low-object" },
           width = key[3]*2,
           height = key[4]*2,
           shift = {key[5], key[6]},
@@ -66,17 +66,17 @@ rail_pictures_internal = function(elems)
              scale = 0.5
            }
          },
-         {
+         {         
            filename = "__base__/graphics/entity/rail-endings/rail-endings-metals.png",
            priority = "high",
-           flags = { "icon" },
+           flags = { "trilinear-filtering" },
            width = 128,
            height = 128,
            hr_version =
             {
              filename = "__base__/graphics/entity/rail-endings/hr-rail-endings-metals.png",
              priority = "high",
-             flags = { "icon" },
+             flags = { "trilinear-filtering" },
              width = 256,
              height = 256,
              scale = 0.5

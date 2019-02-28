@@ -5,7 +5,6 @@ data:extend(
     name = "heavy-armor",
     icon = "__base__/graphics/icons/heavy-armor.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     resistances =
     {
       {
@@ -20,8 +19,8 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 3,
-        percent = 30
+        decrease = 0,
+        percent = 40
       },
       {
         type = "fire",
@@ -29,17 +28,16 @@ data:extend(
         percent = 30
       }
     },
-    durability = 5000,
     subgroup = "armor",
     order = "b[heavy-armor]",
-    stack_size = 10
+    stack_size = 1,
+    infinite = true
   },
   {
     type = "armor",
     name = "modular-armor",
     icon = "__base__/graphics/icons/modular-armor.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     resistances =
     {
       {
@@ -49,8 +47,8 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 5,
-        percent = 30
+        decrease = 0,
+        percent = 50
       },
       {
         type = "explosion",
@@ -63,10 +61,10 @@ data:extend(
         percent = 40
       }
     },
-    durability = 10000,
     subgroup = "armor",
     order = "c[modular-armor]",
     stack_size = 1,
+    infinite = true,
     equipment_grid = "small-equipment-grid",
     inventory_size_bonus = 10
   },
@@ -75,7 +73,6 @@ data:extend(
     name = "power-armor",
     icon = "__base__/graphics/icons/power-armor.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     resistances =
     {
       {
@@ -85,8 +82,8 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 7,
-        percent = 30
+        decrease = 0,
+        percent = 60
       },
       {
         type = "explosion",
@@ -99,10 +96,10 @@ data:extend(
         percent = 60
       }
     },
-    durability = 15000,
     subgroup = "armor",
     order = "d[power-armor]",
     stack_size = 1,
+    infinite = true,
     equipment_grid = "medium-equipment-grid",
     inventory_size_bonus = 20
   },
@@ -111,7 +108,6 @@ data:extend(
     name = "power-armor-mk2",
     icon = "__base__/graphics/icons/power-armor-mk2.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     resistances =
     {
       {
@@ -121,8 +117,8 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 10,
-        percent = 40
+        decrease = 0,
+        percent = 70
       },
       {
         type = "explosion",
@@ -135,10 +131,10 @@ data:extend(
         percent = 70
       }
     },
-    durability = 20000,
     subgroup = "armor",
     order = "e[power-armor-mk2]",
     stack_size = 1,
+    infinite = true,
     equipment_grid = "large-equipment-grid",
     inventory_size_bonus = 30
   }

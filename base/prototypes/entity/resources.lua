@@ -1,3 +1,30 @@
+local noise = require("noise");
+local tne = noise.to_noise_expression;
+local resource_autoplace = require("prototypes.entity.demo-resource-autoplace");
+
+-- Pre-spot noise
+local oil_old_autoplace =
+{
+  order = "b",
+  control = "crude-oil",
+  -- probability_expression = oil_probability,
+  -- richness_expression = (oil_probability + 240000) * 300000,
+  -- richness_expression should be probability_expression + some amount probably
+  sharpness = 0.99,
+  max_probability = 0.02,
+  richness_base = 240000,
+  richness_multiplier = 300000,
+  richness_multiplier_distance_bonus = 1500,
+  coverage = 0.001 / 3,
+  peaks =
+  {
+    {
+      noise_layer = "crude-oil",
+      noise_octaves_difference = -0.5,
+      noise_persistence = 0.4
+    }
+  }
+};
 
 data:extend(
 {
@@ -19,7 +46,6 @@ data:extend(
     tree_removal_max_distance = 32 * 32,
     minable =
     {
-      hardness = 1,
       mining_time = 1,
       results =
       {
@@ -34,24 +60,19 @@ data:extend(
     },
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    autoplace =
-    {
-      order = "b",
-      control = "crude-oil",
-      sharpness = 0.99,
-      max_probability = 0.02,
-      richness_base = 240000,
-      richness_multiplier = 300000,
-      richness_multiplier_distance_bonus = 1500,
-      coverage = 0.001 / 3,
-      peaks =
-      {
-        {
-          noise_layer = "crude-oil",
-          noise_octaves_difference = -0.5,
-          noise_persistence = 0.4
-        }
-      }
+    -- autoplace = oil_old_autoplace,
+    autoplace = resource_autoplace.resource_autoplace_settings{
+      name = "crude-oil",
+      order = "c", -- Other resources are "b"; oil won't get placed if something else is already there.
+      base_density = 8.2,
+      base_spots_per_km2 = 1.8,
+      random_probability = 1/48,
+      random_spot_size_minimum = 1,
+      random_spot_size_maximum = 1, -- don't randomize spot size
+      additional_richness = 220000, -- this increases the total everywhere, so base_density needs to be decreased to compensate
+      has_starting_area_placement = false,
+      resource_index = resource_autoplace.get_next_resource_index(),
+      regular_rq_factor_multiplier = 1
     },
     stage_counts = {0},
     stages =
@@ -80,44 +101,26 @@ data:extend(
     tree_removal_max_distance = 32 * 32,
     minable =
     {
-      hardness = 0.9,
       mining_particle = "stone-particle",
-      mining_time = 4,
+      mining_time = 2,
       result = "uranium-ore",
       fluid_amount = 10,
       required_fluid = "sulfuric-acid"
     },
     collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    autoplace =
-    {
+    autoplace = resource_autoplace.resource_autoplace_settings{
+      name = "uranium-ore",
       order = "c",
-      control = "uranium-ore",
-      sharpness = 1,
-      richness_multiplier = 3000,
-      richness_multiplier_distance_bonus = 30,
-      richness_base = 500,
-      coverage = 0.0003 / 2,
-      peaks =
-      {
-        {
-          noise_layer = "uranium-ore",
-          noise_octaves_difference = -0.85,
-          noise_persistence = 0.4
-        },
-        --no uranium in the starting area
-        {
-          influence = -1.0,
-          starting_area_weight_optimal = 1,
-          starting_area_weight_range = 0,
-          starting_area_weight_max_range = 2
-        },
-
-      },
-      --starting_area_size = 600 * 0.005,
-      --starting_area_amount = 600
+      base_density = 0.9,
+      base_spots_per_km2 = 1.25,
+      has_starting_area_placement = false,
+      random_spot_size_minimum = 2,
+      random_spot_size_maximum = 4,
+      resource_index = resource_autoplace.get_next_resource_index(),
+      regular_rq_factor_multiplier = 1
     },
-    stage_counts = {10000, 5200, 2600, 1800, 1200, 800, 400, 80},
+    stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50},
     stages =
     {
       sheet =

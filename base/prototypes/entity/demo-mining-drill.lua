@@ -12,7 +12,7 @@ data:extend(
     icon = "__base__/graphics/icons/electric-mining-drill.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "electric-mining-drill"},
+    minable = {mining_time = 0.3, result = "electric-mining-drill"},
     max_health = 300,
     resource_categories = {"basic-solid"},
     corpse = "big-remnants",
@@ -168,6 +168,7 @@ data:extend(
         animation_speed = 0.5,
         direction_count = 1,
         shift = util.by_pixel(1.5, -7.5),
+        draw_as_shadow = true,
         run_mode = "forward-then-backward",
         hr_version =
         {
@@ -181,6 +182,7 @@ data:extend(
           animation_speed = 0.5,
           direction_count = 1,
           shift = util.by_pixel(1.25, -7.25),
+          draw_as_shadow = true,
           run_mode = "forward-then-backward",
           scale = 0.5
         }
@@ -197,6 +199,7 @@ data:extend(
         animation_speed = 0.5,
         direction_count = 1,
         shift = util.by_pixel(6, -0.5),
+        draw_as_shadow = true,
         run_mode = "forward-then-backward",
         hr_version =
         {
@@ -210,6 +213,7 @@ data:extend(
           animation_speed = 0.5,
           direction_count = 1,
           shift = util.by_pixel(6.25, -0.25),
+          draw_as_shadow = true,
           run_mode = "forward-then-backward",
           scale = 0.5
         }
@@ -226,6 +230,7 @@ data:extend(
         animation_speed = 0.5,
         direction_count = 1,
         shift = util.by_pixel(1, 2.5),
+        draw_as_shadow = true,
         run_mode = "forward-then-backward",
         hr_version =
         {
@@ -239,6 +244,7 @@ data:extend(
           animation_speed = 0.5,
           direction_count = 1,
           shift = util.by_pixel(1, 2.5),
+          draw_as_shadow = true,
           run_mode = "forward-then-backward",
           scale = 0.5
         }
@@ -255,6 +261,7 @@ data:extend(
         animation_speed = 0.5,
         direction_count = 1,
         shift = util.by_pixel(1, -0.5),
+        draw_as_shadow = true,
         run_mode = "forward-then-backward",
         hr_version =
         {
@@ -268,6 +275,7 @@ data:extend(
           animation_speed = 0.5,
           direction_count = 1,
           shift = util.by_pixel(1.25, -0.25),
+          draw_as_shadow = true,
           run_mode = "forward-then-backward",
           scale = 0.5
         }
@@ -279,7 +287,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-patch.png",
-        line_length = 1,
         width = 100,
         height = 111,
         frame_count = 1,
@@ -289,7 +296,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-patch.png",
-          line_length = 1,
           width = 200,
           height = 222,
           frame_count = 1,
@@ -302,7 +308,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-patch.png",
-        line_length = 1,
         width = 100,
         height = 110,
         frame_count = 1,
@@ -312,7 +317,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-patch.png",
-          line_length = 1,
           width = 200,
           height = 219,
           frame_count = 1,
@@ -325,7 +329,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-patch.png",
-        line_length = 1,
         width = 100,
         height = 113,
         frame_count = 1,
@@ -335,7 +338,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-patch.png",
-          line_length = 1,
           width = 200,
           height = 226,
           frame_count = 1,
@@ -348,7 +350,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-patch.png",
-        line_length = 1,
         width = 100,
         height = 108,
         frame_count = 1,
@@ -358,7 +359,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-patch.png",
-          line_length = 1,
           width = 200,
           height = 220,
           frame_count = 1,
@@ -375,7 +375,6 @@ data:extend(
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-patch-shadow.png",
         flags = { "shadow" },
-        line_length = 1,
         width = 110,
         height = 98,
         frame_count = 1,
@@ -386,7 +385,6 @@ data:extend(
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-patch-shadow.png",
           flags = { "shadow" },
-          line_length = 1,
           width = 220,
           height = 197,
           frame_count = 1,
@@ -400,7 +398,6 @@ data:extend(
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-patch-shadow.png",
         flags = { "shadow" },
-        line_length = 1,
         width = 112,
         height = 98,
         frame_count = 1,
@@ -411,7 +408,6 @@ data:extend(
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-patch-shadow.png",
           flags = { "shadow" },
-          line_length = 1,
           width = 224,
           height = 198,
           frame_count = 1,
@@ -425,7 +421,6 @@ data:extend(
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-patch-shadow.png",
         flags = { "shadow" },
-        line_length = 1,
         width = 110,
         height = 98,
         frame_count = 1,
@@ -436,7 +431,6 @@ data:extend(
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-patch-shadow.png",
           flags = { "shadow" },
-          line_length = 1,
           width = 220,
           height = 197,
           frame_count = 1,
@@ -450,7 +444,6 @@ data:extend(
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-patch-shadow.png",
         flags = { "shadow" },
-        line_length = 1,
         width = 110,
         height = 98,
         frame_count = 1,
@@ -461,7 +454,6 @@ data:extend(
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-patch-shadow.png",
           flags = { "shadow" },
-          line_length = 1,
           width = 220,
           height = 197,
           frame_count = 1,
@@ -596,7 +588,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-window-background.png",
-        line_length = 1,
         width = 72,
         height = 54,
         frame_count = 1,
@@ -606,7 +597,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-window-background.png",
-          line_length = 1,
           width = 142,
           height = 107,
           frame_count = 1,
@@ -619,7 +609,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-window-background.png",
-        line_length = 1,
         width = 51,
         height = 74,
         frame_count = 1,
@@ -629,7 +618,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-window-background.png",
-          line_length = 1,
           width = 104,
           height = 147,
           frame_count = 1,
@@ -642,7 +630,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-window-background.png",
-        line_length = 1,
         width = 71,
         height = 44,
         frame_count = 1,
@@ -652,7 +639,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-window-background.png",
-          line_length = 1,
           width = 141,
           height = 86,
           frame_count = 1,
@@ -665,7 +651,6 @@ data:extend(
       {
         priority = "extra-high",
         filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-window-background.png",
-        line_length = 1,
         width = 41,
         height = 69,
         frame_count = 1,
@@ -675,7 +660,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-window-background.png",
-          line_length = 1,
           width = 80,
           height = 137,
           frame_count = 1,
@@ -693,7 +677,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-fluid-flow.png",
-          line_length = 1,
           width = 68,
           height = 50,
           frame_count = 1,
@@ -703,7 +686,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-fluid-flow.png",
-            line_length = 1,
             width = 136,
             height = 99,
             frame_count = 1,
@@ -716,7 +698,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-fluid-flow.png",
-          line_length = 1,
           width = 41,
           height = 70,
           frame_count = 1,
@@ -726,7 +707,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-fluid-flow.png",
-            line_length = 1,
             width = 82,
             height = 139,
             frame_count = 1,
@@ -739,7 +719,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-fluid-flow.png",
-          line_length = 1,
           width = 68,
           height = 40,
           frame_count = 1,
@@ -749,7 +728,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-fluid-flow.png",
-            line_length = 1,
             width = 136,
             height = 80,
             frame_count = 1,
@@ -762,7 +740,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-fluid-flow.png",
-          line_length = 1,
           width = 42,
           height = 70,
           frame_count = 1,
@@ -772,7 +749,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-fluid-flow.png",
-            line_length = 1,
             width = 83,
             height = 140,
             frame_count = 1,
@@ -790,7 +766,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-fluid-background.png",
-          line_length = 1,
           width = 70,
           height = 48,
           frame_count = 1,
@@ -800,7 +775,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-N-fluid-background.png",
-            line_length = 1,
             width = 138,
             height = 94,
             frame_count = 1,
@@ -813,7 +787,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-E-fluid-background.png",
-          line_length = 1,
           width = 42,
           height = 70,
           frame_count = 1,
@@ -823,7 +796,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-E-fluid-background.png",
-            line_length = 1,
             width = 84,
             height = 138,
             frame_count = 1,
@@ -836,7 +808,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-S-fluid-background.png",
-          line_length = 1,
           width = 70,
           height = 40,
           frame_count = 1,
@@ -846,7 +817,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-S-fluid-background.png",
-            line_length = 1,
             width = 138,
             height = 80,
             frame_count = 1,
@@ -859,7 +829,6 @@ data:extend(
         {
           priority = "extra-high",
           filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-W-fluid-background.png",
-          line_length = 1,
           width = 42,
           height = 69,
           frame_count = 1,
@@ -869,7 +838,6 @@ data:extend(
           {
             priority = "extra-high",
             filename = "__base__/graphics/entity/electric-mining-drill/hr-electric-mining-drill-W-fluid-background.png",
-            line_length = 1,
             width = 83,
             height = 137,
             frame_count = 1,
@@ -890,7 +858,6 @@ data:extend(
       usage_priority = "secondary-input"
     },
     energy_usage = "90kW",
-    mining_power = 3,
     resource_searching_radius = 2.49,
     vector_to_place_result = {0, -1.85},
     module_specification =
@@ -905,7 +872,7 @@ data:extend(
     },
     monitor_visualization_tint = {r=78, g=173, b=255},
     fast_replaceable_group = "mining-drill",
-    
+
     circuit_wire_connection_points = circuit_connector_definitions["electric-mining-drill"].points,
     circuit_connector_sprites = circuit_connector_definitions["electric-mining-drill"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance
@@ -917,12 +884,12 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     resource_categories = {"basic-solid"},
-    minable = {mining_time = 1, result = "burner-mining-drill"},
+    minable = {mining_time = 0.3, result = "burner-mining-drill"},
     max_health = 150,
     corpse = "medium-remnants",
     collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{ -1, -1}, {1, 1}},
-    mining_speed = 0.35,
+    mining_speed = 0.25,
     working_sound =
     {
       sound =
@@ -932,6 +899,7 @@ data:extend(
       }
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    allowed_effects = {}, -- no beacon effects on the burner drill
     energy_source =
     {
       type = "burner",
@@ -948,8 +916,7 @@ data:extend(
         }
       }
     },
-    energy_usage = "300kW",
-    mining_power = 2.5,
+    energy_usage = "150kW",
     animations =
     {
       north =
@@ -967,7 +934,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version =
-        {
+            {
               priority = "high",
               width = 173,
               height = 188,
@@ -992,7 +959,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               priority = "high",
               width = 217,
               height = 150,
@@ -1023,7 +990,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version =
-        {
+            {
               priority = "high",
               width = 185,
               height = 168,
@@ -1048,7 +1015,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               priority = "high",
               width = 185,
               height = 128,
@@ -1079,7 +1046,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version =
-        {
+            {
               priority = "high",
               width = 174,
               height = 174,
@@ -1104,7 +1071,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               priority = "high",
               width = 174,
               height = 137,
@@ -1135,7 +1102,7 @@ data:extend(
             animation_speed = 0.5,
             run_mode = "forward-then-backward",
             hr_version =
-        {
+            {
               priority = "high",
               width = 180,
               height = 176,
@@ -1160,7 +1127,7 @@ data:extend(
             run_mode = "forward-then-backward",
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               priority = "high",
               width = 176,
               height = 130,
@@ -1181,7 +1148,7 @@ data:extend(
     resource_searching_radius = 0.99,
     vector_to_place_result = {-0.5, -1.3},
     fast_replaceable_group = "mining-drill",
-    
+
     circuit_wire_connection_points = circuit_connector_definitions["burner-mining-drill"].points,
     circuit_connector_sprites = circuit_connector_definitions["burner-mining-drill"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance

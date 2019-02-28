@@ -1,0 +1,35 @@
+{
+  "_comment": "Sizes can be specified as none, very-low, low, normal, high, very-high",
+
+  "terrain_segmentation": "normal",
+  "water": "normal",
+  "width": 0,
+  "height": 0,
+  "starting_area": "normal",
+  "peaceful_mode": false,
+
+  "autoplace_controls":
+  {
+    "coal": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "stone": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "copper-ore": {"frequency": "normal", "size": "normal","richness": "normal"},
+    "iron-ore": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "uranium-ore": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "crude-oil": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "trees": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "enemy-base": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "grass": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "desert": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "dirt": {"frequency": "normal", "size": "normal", "richness": "normal"},
+    "sand": {"frequency": "normal", "size": "normal", "richness": "normal"}
+  },
+  "cliff_settings":
+  {
+    "name": "cliff",
+    "cliff_elevation_0": 10,
+    "cliff_elevation_interval": 10
+  },
+
+  "_comment_seed": "Use null for a random seed, number for a specific seed.",
+  "seed": null
+}

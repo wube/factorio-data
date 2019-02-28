@@ -60,7 +60,7 @@ data:extend(
     ingredients =
     {
       {"piercing-rounds-magazine", 1},
-      {"electronic-circuit", 2},
+      {"flying-robot-frame", 1},
       {"iron-gear-wheel", 3}
     },
     result = "defender-capsule"

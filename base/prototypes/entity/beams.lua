@@ -1,4 +1,5 @@
 local beam_blend_mode = "additive-soft"
+local laser_beam_blend_mode = "additive"
 
 function make_beam(sound)
   local result =
@@ -7,6 +8,8 @@ function make_beam(sound)
     flags = {"not-on-map"},
     width = 0.5,
     damage_interval = 20,
+    random_target_offset = true,
+    target_offset_y = -0.3,
     action =
     {
       type = "direct",
@@ -22,14 +25,13 @@ function make_beam(sound)
         }
       }
     },
-    start = 
-    { 
+    start =
+    {
       filename = "__base__/graphics/entity/beam/tileable-beam-START.png",
       line_length = 4,
       width = 52,
       height = 40,
       frame_count = 16,
-      axially_symmetrical = false,
       direction_count = 1,
       shift = {-0.03125, 0},
       hr_version =
@@ -39,20 +41,18 @@ function make_beam(sound)
         width = 94,
         height = 66,
         frame_count = 16,
-        axially_symmetrical = false,
         direction_count = 1,
         shift = {0.53125, 0},
         scale = 0.5
       }
     },
-    ending = 
-    { 
+    ending =
+    {
       filename = "__base__/graphics/entity/beam/tileable-beam-END.png",
       line_length = 4,
       width = 49,
       height = 54,
       frame_count = 16,
-      axially_symmetrical = false,
       direction_count = 1,
       shift = {-0.046875, 0},
       hr_version =
@@ -62,11 +62,10 @@ function make_beam(sound)
         width = 91,
         height = 93,
         frame_count = 16,
-        axially_symmetrical = false,
         direction_count = 1,
         shift = {-0.078125, -0.046875},
         scale = 0.5
-      } 
+      }
     },
     head =
     {
@@ -155,9 +154,89 @@ function make_beam(sound)
   return result;
 end
 
+
+function make_laser_beam(sound)
+  local result =
+  {
+    type = "beam",
+    flags = {"not-on-map"},
+    width = 0.5,
+    damage_interval = 20,
+    random_target_offset = true,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "damage",
+            damage = { amount = 10, type = "laser"}
+          }
+        }
+      }
+    },
+    head =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-body.png",
+      flags = {"mipmap"},
+      line_length = 8,
+      width = 64,
+      height = 12,
+      frame_count = 8,
+      scale = 0.5,
+      animation_speed = 0.5,
+      blend_mode = laser_beam_blend_mode
+    },
+    tail =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-end.png",
+      flags = { "no-crop", "mipmap" },
+      width = 110,
+      height = 62,
+      frame_count = 8,
+      shift = util.by_pixel(11.5, 1),
+      scale = 0.5,
+      animation_speed = 0.5,
+      blend_mode = laser_beam_blend_mode
+    },
+    body =
+    {
+      {
+        filename = "__base__/graphics/entity/laser-turret/hr-laser-body.png",
+        flags = {"mipmap"},
+        line_length = 8,
+        width = 64,
+        height = 12,
+        frame_count = 8,
+        scale = 0.5,
+        animation_speed = 0.5,
+        blend_mode = laser_beam_blend_mode
+      }
+    }
+  }
+
+  if sound then
+    result.working_sound =
+    {
+      {
+        filename = "__base__/sound/fight/electric-beam.ogg",
+        volume = 0.7
+      }
+    }
+    result.name = "laser-beam"
+  else
+    result.name = "laser-beam-no-sound"
+  end
+  return result;
+end
+
 data:extend(
 {
   make_beam(true),
-  make_beam(false)
+  make_beam(false),
+  make_laser_beam(true)
 }
 )

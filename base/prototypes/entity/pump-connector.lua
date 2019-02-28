@@ -1,4 +1,5 @@
-return {
+return
+{
 load_animations =
 {
   west =

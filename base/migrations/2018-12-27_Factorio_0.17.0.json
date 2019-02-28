@@ -1,0 +1,23 @@
+{
+  "item":
+  [
+    [ "science-pack-1", "automation-science-pack" ],
+    [ "science-pack-2", "logistic-science-pack" ],
+    [ "science-pack-3", "chemical-science-pack" ],
+    [ "high-tech-science-pack", "utility-science-pack" ]
+  ],
+  "recipe":
+  [
+    [ "science-pack-1", "automation-science-pack" ],
+    [ "science-pack-2", "logistic-science-pack" ],
+    [ "science-pack-3", "chemical-science-pack" ],
+    [ "high-tech-science-pack", "utility-science-pack" ]
+  ],
+  "technology":
+  [
+    [ "science-pack-1", "automation-science-pack" ],
+    [ "science-pack-2", "logistic-science-pack" ],
+    [ "science-pack-3", "chemical-science-pack" ],
+    [ "high-tech-science-pack", "utility-science-pack" ]
+  ]
+}

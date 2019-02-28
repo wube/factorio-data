@@ -10,6 +10,8 @@ require ("prototypes.entity.laser-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
 require ("prototypes.entity.combinator-pictures")
 
+logistic_chest_opened_duration = 7
+
 rail_pictures = function()
   return rail_pictures_internal({
                                  {"metals", "metals", mipmap = true},
@@ -62,6 +64,117 @@ standard_train_wheels =
   }
 }
 
+function accumulator_picture(tint, repeat_count)
+  return
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator.png",
+        priority = "extra-high",
+        width = 66,
+        height = 94,
+        repeat_count = repeat_count,
+        shift = util.by_pixel(0, -10),
+        tint = tint,
+        animation_speed = 0.5,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator.png",
+          priority = "extra-high",
+          width = 130,
+          height = 189,
+          repeat_count = repeat_count,
+          shift = util.by_pixel(0, -11),
+          tint = tint,
+          animation_speed = 0.5,
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-shadow.png",
+        priority = "extra-high",
+        width = 120,
+        height = 54,
+        repeat_count = repeat_count,
+        shift = util.by_pixel(28, 6),
+        draw_as_shadow = true,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator-shadow.png",
+          priority = "extra-high",
+          width = 234,
+          height = 106,
+          repeat_count = repeat_count,
+          shift = util.by_pixel(29, 6),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
+function accumulator_charge()
+  return
+  {
+    layers =
+    {
+      accumulator_picture({ r=1, g=1, b=1, a=1 } , 24),
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-charge.png",
+        width = 90,
+        height = 100,
+        line_length = 6,
+        frame_count = 24,
+        blend_mode = "additive",
+        shift = util.by_pixel(0, -22),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator-charge.png",
+          width = 178,
+          height = 206,
+          line_length = 6,
+          frame_count = 24,
+          blend_mode = "additive",
+          shift = util.by_pixel(0, -22),
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
+function accumulator_discharge()
+  return
+  {
+    layers =
+    {
+      accumulator_picture({ r=1, g=1, b=1, a=1 } , 24),
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-discharge.png",
+        width = 88,
+        height = 104,
+        line_length = 6,
+        frame_count = 24,
+        blend_mode = "additive",
+        shift = util.by_pixel(-2, -22),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator-discharge.png",
+          width = 170,
+          height = 210,
+          line_length = 6,
+          frame_count = 24,
+          blend_mode = "additive",
+          shift = util.by_pixel(-1, -23),
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
 function drive_over_tie()
   return
   {
@@ -106,7 +219,8 @@ function flying_robot_sounds()
 end
 
 function crash_trigger()
-  return {
+  return
+  {
     type = "play-sound",
     sound =
     {
@@ -164,7 +278,8 @@ end
 
 function make_4way_animation_from_spritesheet(animation)
   local function make_animation_layer(idx, anim)
-    return {
+    return
+    {
       filename = anim.filename,
       priority = anim.priority or "high",
       x = idx * anim.width,
@@ -175,7 +290,8 @@ function make_4way_animation_from_spritesheet(animation)
       shift = anim.shift,
       draw_as_shadow = anim.draw_as_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
-      scale = anim.scale or 1
+      scale = anim.scale or 1,
+      tint = anim.tint
     }
   end
 
@@ -261,7 +377,7 @@ data:extend(
     icon = "__base__/graphics/icons/underground-belt.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "underground-belt"},
+    minable = {mining_time = 0.1, result = "underground-belt"},
     max_health = 150,
     corpse = "small-remnants",
     max_distance = 5,
@@ -297,15 +413,9 @@ data:extend(
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 32,
-    belt_horizontal = basic_belt_horizontal,
-    belt_vertical = basic_belt_vertical,
-    ending_top = basic_belt_ending_top,
-    ending_bottom = basic_belt_ending_bottom,
-    ending_side = basic_belt_ending_side,
-    starting_top = basic_belt_starting_top,
-    starting_bottom = basic_belt_starting_bottom,
-    starting_side = basic_belt_starting_side,
+    belt_animation_set = basic_belt_animation_set,
     fast_replaceable_group = "transport-belt",
+    next_upgrade = "fast-underground-belt",
     speed = 0.03125,
     structure =
     {
@@ -315,18 +425,16 @@ data:extend(
         {
           filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.25, 0},
-          width = 57,
-          height = 43,
-          y = 43,
+          width = 96,
+          height = 96,
+          y = 96,
           hr_version =
           {
             filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
             priority = "extra-high",
-            shift = {0.15625, 0.0703125},
-            width = 106,
-            height = 85,
-            y = 85,
+            width = 192,
+            height =192,
+            y = 192,
             scale = 0.5
           }
         }
@@ -337,24 +445,101 @@ data:extend(
         {
           filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.25, 0},
-          width = 57,
-          height = 43,
+          width = 96,
+          height = 96,
           hr_version =
           {
             filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
             priority = "extra-high",
-            shift = {0.15625, 0.0703125},
-            width = 106,
-            height = 85,
+            width = 192,
+            height = 192,
             scale = 0.5
           }
 
         }
 
+      },
+      direction_in_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*3,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*3,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/underground-belt/underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y= 192*2,
+            scale = 0.5
+          },
+
+        }
+
+      },
+      back_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/underground-belt/underground-belt-structure-back-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure-back-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+
+        }
+      },
+      front_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/underground-belt/underground-belt-structure-front-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/underground-belt/hr-underground-belt-structure-front-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+
+        }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "underground-belt",
@@ -362,7 +547,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-underground-belt.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "fast-underground-belt"},
+    minable = {mining_time = 0.1, result = "fast-underground-belt"},
     max_health = 160,
     corpse = "small-remnants",
     max_distance = 7,
@@ -398,15 +583,9 @@ data:extend(
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 32,
-    belt_horizontal = fast_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = fast_belt_vertical,
-    ending_top = fast_belt_ending_top,
-    ending_bottom = fast_belt_ending_bottom,
-    ending_side = fast_belt_ending_side,
-    starting_top = fast_belt_starting_top,
-    starting_bottom = fast_belt_starting_bottom,
-    starting_side = fast_belt_starting_side,
+    belt_animation_set = fast_belt_animation_set,
     fast_replaceable_group = "transport-belt",
+    next_upgrade = "express-underground-belt",
     speed = 0.0625,
     structure =
     {
@@ -416,18 +595,16 @@ data:extend(
         {
           filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.26, 0},
-          width = 57,
-          height = 43,
-          y = 43,
+          width = 96,
+          height = 96,
+          y = 96,
           hr_version =
           {
             filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
             priority = "extra-high",
-            shift = {0.15625, 0.0703125},
-            width = 106,
-            height = 85,
-            y = 85,
+            width = 192,
+            height = 192,
+            y = 192,
             scale = 0.5
           }
         }
@@ -438,22 +615,95 @@ data:extend(
         {
           filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.26, 0},
-          width = 57,
-          height = 43,
+          width = 96,
+          height = 96,
           hr_version =
           {
             filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
             priority = "extra-high",
-            shift = {0.15625, 0.0703125},
-            width = 106,
-            height = 85,
+            width = 192,
+            height =192,
+            scale = 0.5
+          }
+        }
+      },
+      direction_in_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*3,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*3,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*2,
+            scale = 0.5
+          }
+        }
+      },
+      back_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure-back-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure-back-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+        }
+      },
+      front_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure-front-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure-front-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
             scale = 0.5
           }
         }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "underground-belt",
@@ -461,7 +711,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-underground-belt.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "express-underground-belt"},
+    minable = {mining_time = 0.1, result = "express-underground-belt"},
     max_health = 170,
     corpse = "small-remnants",
     max_distance = 9,
@@ -497,14 +747,7 @@ data:extend(
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation_speed_coefficient = 32,
-    belt_horizontal = express_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = express_belt_vertical,
-    ending_top = express_belt_ending_top,
-    ending_bottom = express_belt_ending_bottom,
-    ending_side = express_belt_ending_side,
-    starting_top = express_belt_starting_top,
-    starting_bottom = express_belt_starting_bottom,
-    starting_side = express_belt_starting_side,
+    belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     structure =
@@ -515,18 +758,16 @@ data:extend(
         {
           filename = "__base__/graphics/entity/express-underground-belt/express-underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.26, 0},
-          width = 57,
-          height = 43,
-          y = 43,
+          width = 96,
+          height = 96,
+          y = 96,
           hr_version =
           {
             filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure.png",
             priority = "extra-high",
-            shift = {0.15625, 0.0703125},
-            width = 106,
-            height = 85,
-            y = 85,
+            width = 192,
+            height = 192,
+            y = 192,
             scale = 0.5
           }
         }
@@ -537,22 +778,95 @@ data:extend(
         {
           filename = "__base__/graphics/entity/express-underground-belt/express-underground-belt-structure.png",
           priority = "extra-high",
-          shift = {0.26, 0},
-          width = 57,
-          height = 43,
+          width = 96,
+          height = 96,
           hr_version =
           {
             filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure.png",
             priority = "extra-high",
-            shift = {0.15625, 0.0703125},
-            width = 106,
-            height = 85,
+            width = 192,
+            height =192,
+            scale = 0.5
+          }
+        }
+      },
+      direction_in_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/express-underground-belt/express-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*3,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*3,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/express-underground-belt/express-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*2,
+            scale = 0.5
+          }
+        }
+      },
+      back_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/express-underground-belt/express-underground-belt-structure-back-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure-back-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+        }
+      },
+      front_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/express-underground-belt/express-underground-belt-structure-front-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/express-underground-belt/hr-express-underground-belt-structure-front-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
             scale = 0.5
           }
         }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "loader",
@@ -560,7 +874,7 @@ data:extend(
     icon = "__base__/graphics/icons/loader.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "loader"},
+    minable = {mining_time = 0.1, result = "loader"},
     max_health = 170,
     filter_count = 5,
     corpse = "small-remnants",
@@ -574,14 +888,7 @@ data:extend(
     collision_box = {{-0.4, -0.9}, {0.4, 0.9}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     animation_speed_coefficient = 32,
-    belt_horizontal = basic_belt_horizontal,
-    belt_vertical = basic_belt_vertical,
-    ending_top = basic_belt_ending_top,
-    ending_bottom = basic_belt_ending_bottom,
-    ending_side = basic_belt_ending_side,
-    starting_top = basic_belt_starting_top,
-    starting_bottom = basic_belt_starting_bottom,
-    starting_side = basic_belt_starting_side,
+    belt_animation_set = basic_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.03125,
     structure =
@@ -607,8 +914,7 @@ data:extend(
           y = 64
         }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "loader",
@@ -616,7 +922,7 @@ data:extend(
     icon = "__base__/graphics/icons/loader.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "fast-loader"},
+    minable = {mining_time = 0.1, result = "fast-loader"},
     max_health = 170,
     filter_count = 5,
     corpse = "small-remnants",
@@ -630,14 +936,7 @@ data:extend(
     collision_box = {{-0.4, -0.9}, {0.4, 0.9}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     animation_speed_coefficient = 32,
-    belt_horizontal = fast_belt_horizontal,
-    belt_vertical = fast_belt_vertical,
-    ending_top = fast_belt_ending_top,
-    ending_bottom = fast_belt_ending_bottom,
-    ending_side = fast_belt_ending_side,
-    starting_top = fast_belt_starting_top,
-    starting_bottom = fast_belt_starting_bottom,
-    starting_side = fast_belt_starting_side,
+    belt_animation_set = fast_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.0625,
     structure =
@@ -663,8 +962,7 @@ data:extend(
           y = 64
         }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "loader",
@@ -672,7 +970,7 @@ data:extend(
     icon = "__base__/graphics/icons/loader.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "express-loader"},
+    minable = {mining_time = 0.1, result = "express-loader"},
     max_health = 170,
     filter_count = 5,
     corpse = "small-remnants",
@@ -686,14 +984,7 @@ data:extend(
     collision_box = {{-0.4, -0.9}, {0.4, 0.9}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     animation_speed_coefficient = 32,
-    belt_horizontal = express_belt_horizontal,
-    belt_vertical = express_belt_vertical,
-    ending_top = express_belt_ending_top,
-    ending_bottom = express_belt_ending_bottom,
-    ending_side = express_belt_ending_side,
-    starting_top = express_belt_starting_top,
-    starting_bottom = express_belt_starting_bottom,
-    starting_side = express_belt_starting_side,
+    belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.09375,
     structure =
@@ -719,8 +1010,7 @@ data:extend(
           y = 64
         }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "splitter",
@@ -728,7 +1018,7 @@ data:extend(
     icon = "__base__/graphics/icons/splitter.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "splitter"},
+    minable = {mining_time = 0.1, result = "splitter"},
     max_health = 170,
     corpse = "medium-remnants",
     resistances =
@@ -743,37 +1033,30 @@ data:extend(
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 0.7,
     structure_animation_movement_cooldown = 10,
-    belt_horizontal = basic_belt_horizontal,
-    belt_vertical = basic_belt_vertical,
-    ending_top = basic_belt_ending_top,
-    ending_bottom = basic_belt_ending_bottom,
-    ending_side = basic_belt_ending_side,
-    starting_top = basic_belt_starting_top,
-    starting_bottom = basic_belt_starting_bottom,
-    starting_side = basic_belt_starting_side,
-    ending_patch = ending_patch_prototype,
     fast_replaceable_group = "transport-belt",
+    next_upgrade = "fast-splitter",
     speed = 0.03125,
+    belt_animation_set = basic_belt_animation_set,
     structure =
     {
       north =
       {
         filename = "__base__/graphics/entity/splitter/splitter-north.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 83,
+        width = 82,
         height = 36,
-        shift = {0.265625, 0},
+        shift = util.by_pixel(6, 0),
         hr_version =
         {
           filename = "__base__/graphics/entity/splitter/hr-splitter-north.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 164,
+          width = 160,
           height = 70,
-          shift = {0.25, 0.046875},
+          shift = util.by_pixel(7, 0),
           scale = 0.5
         }
       },
@@ -781,20 +1064,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/splitter/splitter-east.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 51,
+        width = 46,
         height = 80,
-        shift = {0.109375, -0.03125},
+        shift = util.by_pixel(4, -6),
         hr_version =
         {
           filename = "__base__/graphics/entity/splitter/hr-splitter-east.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 93,
-          height = 157,
-          shift = {0.148438, -0.179688},
+          width = 90,
+          height = 160,
+          shift = util.by_pixel(4, -6),
           scale = 0.5
         }
       },
@@ -802,20 +1085,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/splitter/splitter-south.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 85,
-        height = 35,
-        shift = {0.140625, -0.015625},
+        width = 82,
+        height = 32,
+        shift = util.by_pixel(4, 0),
         hr_version =
         {
           filename = "__base__/graphics/entity/splitter/hr-splitter-south.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 168,
-          height = 67,
-          shift = {0.140625, 0.0234375},
+          width = 164,
+          height = 64,
+          shift = util.by_pixel(4, 0),
           scale = 0.5
         }
       },
@@ -823,20 +1106,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/splitter/splitter-west.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 51,
-        height = 78,
-        shift = {0.296875, -0.03125},
+        width = 46,
+        height = 76,
+        shift = util.by_pixel(6, -4),
         hr_version =
         {
           filename = "__base__/graphics/entity/splitter/hr-splitter-west.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 94,
-          height = 154,
-          shift = {0.203125, -0.109375},
+          width = 90,
+          height = 150,
+          shift = util.by_pixel(6, -4),
           scale = 0.5
         }
       }
@@ -848,7 +1131,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-splitter.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "fast-splitter"},
+    minable = {mining_time = 0.1, result = "fast-splitter"},
     max_health = 180,
     corpse = "medium-remnants",
     resistances =
@@ -863,15 +1146,9 @@ data:extend(
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 1.2,
     structure_animation_movement_cooldown = 10,
-    belt_horizontal = fast_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = fast_belt_vertical,
-    ending_top = fast_belt_ending_top,
-    ending_bottom = fast_belt_ending_bottom,
-    ending_side = fast_belt_ending_side,
-    starting_top = fast_belt_starting_top,
-    starting_bottom = fast_belt_starting_bottom,
-    starting_side = fast_belt_starting_side,
+    belt_animation_set = fast_belt_animation_set,
     fast_replaceable_group = "transport-belt",
+    next_upgrade = "express-splitter",
     speed = 0.0625,
     structure =
     {
@@ -879,20 +1156,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/fast-splitter/fast-splitter-north.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 83,
+        width = 82,
         height = 36,
-        shift = {0.265625, 0},
+        shift = util.by_pixel(6, 0),
         hr_version =
         {
           filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-north.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 164,
+          width = 160,
           height = 70,
-          shift = {0.25, 0.046875},
+          shift = util.by_pixel(7, 0),
           scale = 0.5
         }
       },
@@ -900,20 +1177,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/fast-splitter/fast-splitter-east.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 51,
+        width = 46,
         height = 80,
-        shift = {0.109375, -0.03125},
+        shift = util.by_pixel(4, -6),
         hr_version =
         {
           filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-east.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 93,
-          height = 157,
-          shift = {0.148438, -0.179688},
+          width = 90,
+          height = 160,
+          shift = util.by_pixel(4, -6),
           scale = 0.5
         }
       },
@@ -921,20 +1198,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/fast-splitter/fast-splitter-south.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 85,
-        height = 35,
-        shift = {0.140625, -0.015625},
+        width = 82,
+        height = 32,
+        shift = util.by_pixel(4, 0),
         hr_version =
         {
           filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-south.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 168,
-          height = 67,
-          shift = {0.140625, 0.0234375},
+          width = 164,
+          height = 64,
+          shift = util.by_pixel(4, 0),
           scale = 0.5
         }
       },
@@ -942,25 +1219,24 @@ data:extend(
       {
         filename = "__base__/graphics/entity/fast-splitter/fast-splitter-west.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 51,
-        height = 78,
-        shift = {0.296875, -0.03125},
+        width = 46,
+        height = 76,
+        shift = util.by_pixel(6, -4),
         hr_version =
         {
           filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-west.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 94,
-          height = 154,
-          shift = {0.203125, -0.109375},
+          width = 90,
+          height = 150,
+          shift = util.by_pixel(6, -4),
           scale = 0.5
         }
       }
-    },
-    ending_patch = ending_patch_prototype
+    }
   },
   {
     type = "splitter",
@@ -968,7 +1244,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-splitter.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "express-splitter"},
+    minable = {mining_time = 0.1, result = "express-splitter"},
     max_health = 190,
     corpse = "medium-remnants",
     resistances =
@@ -983,15 +1259,7 @@ data:extend(
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 1.2,
     structure_animation_movement_cooldown = 10,
-    belt_horizontal = express_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = express_belt_vertical,
-    ending_top = express_belt_ending_top,
-    ending_bottom = express_belt_ending_bottom,
-    ending_side = express_belt_ending_side,
-    starting_top = express_belt_starting_top,
-    starting_bottom = express_belt_starting_bottom,
-    starting_side = express_belt_starting_side,
-    ending_patch = ending_patch_prototype,
+    belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     structure =
@@ -1000,20 +1268,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/express-splitter/express-splitter-north.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 83,
+        width = 82,
         height = 36,
-        shift = {0.21875, 0},
+        shift = util.by_pixel(6, 0),
         hr_version =
         {
           filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-north.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 164,
+          width = 160,
           height = 70,
-          shift = {0.265625, 0},
+          shift = util.by_pixel(7, 0),
           scale = 0.5
         }
       },
@@ -1021,20 +1289,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/express-splitter/express-splitter-east.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 51,
+        width = 46,
         height = 80,
-        shift = {0.109375, -0.03125},
+        shift = util.by_pixel(4, -6),
         hr_version =
         {
           filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-east.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 93,
-          height = 157,
-          shift = {0.148438, -0.179688},
+          width = 90,
+          height = 160,
+          shift = util.by_pixel(4, -6),
           scale = 0.5
         }
       },
@@ -1042,20 +1310,20 @@ data:extend(
       {
         filename = "__base__/graphics/entity/express-splitter/express-splitter-south.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 85,
-        height = 35,
-        shift = {0.140625, -0.015625},
+        width = 82,
+        height = 32,
+        shift = util.by_pixel(4, 0),
         hr_version =
         {
           filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-south.png",
           frame_count = 32,
           line_length = 8,
           priority = "extra-high",
-          width = 168,
-          height = 67,
-          shift = {0.140625, 0.0234375},
+          width = 164,
+          height = 64,
+          shift = util.by_pixel(4, 0),
           scale = 0.5
         }
       },
@@ -1063,11 +1331,11 @@ data:extend(
       {
         filename = "__base__/graphics/entity/express-splitter/express-splitter-west.png",
         frame_count = 32,
-        line_length = 16,
+        line_length = 8,
         priority = "extra-high",
-        width = 51,
-        height = 78,
-        shift = {0.296875, -0.03125},
+        width = 46,
+        height = 76,
+        shift = util.by_pixel(6, -4),
         hr_version =
         {
           filename = "__base__/graphics/entity/express-splitter/hr-express-splitter-west.png",
@@ -1075,8 +1343,8 @@ data:extend(
           line_length = 8,
           priority = "extra-high",
           width = 94,
-          height = 154,
-          shift = {0.203125, -0.109375},
+          height = 150,
+          shift = util.by_pixel(5, -4),
           scale = 0.5
         }
       }
@@ -1088,7 +1356,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-transport-belt.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.3, result = "fast-transport-belt"},
+    minable = {mining_time = 0.1, result = "fast-transport-belt"},
     max_health = 160,
     corpse = "small-remnants",
     resistances =
@@ -1104,42 +1372,35 @@ data:extend(
     {
       sound =
       {
-        filename = "__base__/sound/fast-transport-belt.ogg",
+        filename = "__base__/sound/transport-belt.ogg",
         volume = 0.4
       },
-      max_sounds_per_type = 3
+      persistent = true
     },
     animation_speed_coefficient = 32,
     animations =
     {
       filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
       priority = "extra-high",
-      width = 40,
-      height = 40,
+      width = 64,
+      height = 64,
       frame_count = 32,
       direction_count = 12,
       hr_version =
       {
         filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
         priority = "extra-high",
-        width = 80,
-        height = 80,
+        width = 128,
+        height = 128,
         frame_count = 32,
-        line_length = 16,
+        line_length = 32,
         direction_count = 12,
         scale = 0.5
       }
     },
-    belt_horizontal = fast_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = fast_belt_vertical,
-    ending_top = fast_belt_ending_top,
-    ending_bottom = fast_belt_ending_bottom,
-    ending_side = fast_belt_ending_side,
-    starting_top = fast_belt_starting_top,
-    starting_bottom = fast_belt_starting_bottom,
-    starting_side = fast_belt_starting_side,
-    ending_patch = ending_patch_prototype,
+    belt_animation_set = fast_belt_animation_set,
     fast_replaceable_group = "transport-belt",
+    next_upgrade = "express-transport-belt",
     speed = 0.0625,
     connector_frame_sprites = transport_belt_connector_frame_sprites,
     circuit_wire_connection_points = circuit_connector_definitions["belt"].points,
@@ -1152,7 +1413,7 @@ data:extend(
     icon = "__base__/graphics/icons/express-transport-belt.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.3, result = "express-transport-belt"},
+    minable = {mining_time = 0.1, result = "express-transport-belt"},
     max_health = 170,
     corpse = "small-remnants",
     resistances =
@@ -1168,10 +1429,10 @@ data:extend(
     {
       sound =
       {
-        filename = "__base__/sound/express-transport-belt.ogg",
+        filename = "__base__/sound/transport-belt.ogg",
         volume = 0.4
       },
-      max_sounds_per_type = 3
+      persistent = true
     },
     animation_speed_coefficient = 32,
     animations =
@@ -1186,23 +1447,14 @@ data:extend(
       {
         filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
         priority = "extra-high",
-        width = 80,
-        height = 80,
+        width = 128,
+        height = 128,
         frame_count = 32,
-        line_length = 16,
         direction_count = 12,
         scale = 0.5
       }
     },
-    belt_horizontal = express_belt_horizontal, -- specified in transport-belt-pictures.lua
-    belt_vertical = express_belt_vertical,
-    ending_top = express_belt_ending_top,
-    ending_bottom = express_belt_ending_bottom,
-    ending_side = express_belt_ending_side,
-    starting_top = express_belt_starting_top,
-    starting_bottom = express_belt_starting_bottom,
-    starting_side = express_belt_starting_side,
-    ending_patch = ending_patch_prototype,
+    belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     connector_frame_sprites = transport_belt_connector_frame_sprites,
@@ -1216,7 +1468,7 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-2.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-2"},
+    minable = {mining_time = 0.2, result = "assembling-machine-2"},
     max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -1253,6 +1505,7 @@ data:extend(
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "assembling-machine",
+    next_upgrade = "assembling-machine-3",
     animation =
     {
       layers =
@@ -1320,16 +1573,16 @@ data:extend(
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
       apparent_volume = 1.5
     },
-    crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
+    crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
+
     crafting_speed = 0.75,
     energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.04 / 2.5
+      emissions = 0.015
     },
     energy_usage = "150kW",
-    ingredient_count = 4,
     module_specification =
     {
       module_slots = 2
@@ -1342,7 +1595,7 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-3.png",
     icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "assembling-machine-3"},
+    minable = {mining_time = 0.2, result = "assembling-machine-3"},
     max_health = 400,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -1448,16 +1701,15 @@ data:extend(
       }
     },
 
-    crafting_categories = {"crafting", "advanced-crafting", "crafting-with-fluid"},
+    crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
     crafting_speed = 1.25,
     energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.03 / 3.5
+      emissions = 0.005
     },
-    energy_usage = "210kW",
-    ingredient_count = 6,
+    energy_usage = "375kW",
     module_specification =
     {
       module_slots = 4
@@ -1469,8 +1721,8 @@ data:extend(
     name = "car",
     icon = "__base__/graphics/icons/car.png",
     icon_size = 32,
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "car"},
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-flammable"},
+    minable = {mining_time = 0.4, result = "car"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 450,
     corpse = "medium-remnants",
@@ -1488,17 +1740,21 @@ data:extend(
         type = "impact",
         percent = 30,
         decrease = 50
-      }
+      },
+      {
+        type = "acid",
+        percent = 20
+      },
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
-    effectivity = 0.5,
+    effectivity = 0.6,
     braking_power = "200kW",
 
     burner =
     {
       fuel_category = "chemical",
-      effectivity = 0.6,
+      effectivity = 1,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -1586,7 +1842,7 @@ data:extend(
           hr_version =
           {
             priority = "low",
-            width = 202,
+            width = 201,
             height = 172,
             frame_count = 2,
             scale = 0.5,
@@ -1838,8 +2094,8 @@ data:extend(
     name = "tank",
     icon = "__base__/graphics/icons/tank.png",
     icon_size = 32,
-    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "tank"},
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-flammable"},
+    minable = {mining_time = 0.5, result = "tank"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
     corpse = "medium-remnants",
@@ -1871,19 +2127,19 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 15,
+        decrease = 0,
         percent = 50
       }
     },
     collision_box = {{-0.9, -1.3}, {0.9, 1.3}},
     selection_box = {{-0.9, -1.3}, {0.9, 1.3}},
     drawing_box = {{-1.8, -1.8}, {1.8, 1.5}},
-    effectivity = 0.6,
+    effectivity = 0.9,
     braking_power = "400kW",
     burner =
     {
       fuel_category = "chemical",
-      effectivity = 0.75,
+      effectivity = 1,
       fuel_inventory_size = 2,
       smoke =
       {
@@ -2275,7 +2531,7 @@ data:extend(
     icon = "__base__/graphics/icons/iron-chest.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "iron-chest"},
+    minable = {mining_time = 0.2, result = "iron-chest"},
     max_health = 200,
     corpse = "small-remnants",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
@@ -2298,11 +2554,43 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     picture =
     {
-      filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
-      priority = "extra-high",
-      width = 48,
-      height = 34,
-      shift = {0.1875, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          shift = util.by_pixel(0, -0.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/iron-chest/hr-iron-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 76,
+            shift = util.by_pixel(-0.5, -0.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/iron-chest/iron-chest-shadow.png",
+          priority = "extra-high",
+          width = 56,
+          height = 26,
+          shift = util.by_pixel(10, 6.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/iron-chest/hr-iron-chest-shadow.png",
+            priority = "extra-high",
+            width = 110,
+            height = 50,
+            shift = util.by_pixel(10.5, 6),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -2314,7 +2602,7 @@ data:extend(
     icon = "__base__/graphics/icons/steel-chest.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "steel-chest"},
+    minable = {mining_time = 0.2, result = "steel-chest"},
     max_health = 350,
     corpse = "small-remnants",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
@@ -2337,11 +2625,43 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     picture =
     {
-      filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
-      priority = "extra-high",
-      width = 48,
-      height = 34,
-      shift = {0.1875, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
+          priority = "extra-high",
+          width = 32,
+          height = 40,
+          shift = util.by_pixel(0, -0.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-chest/hr-steel-chest.png",
+            priority = "extra-high",
+            width = 64,
+            height = 80,
+            shift = util.by_pixel(-0.25, -0.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/steel-chest/steel-chest-shadow.png",
+          priority = "extra-high",
+          width = 56,
+          height = 22,
+          shift = util.by_pixel(12, 7.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-chest/hr-steel-chest-shadow.png",
+            priority = "extra-high",
+            width = 110,
+            height = 46,
+            shift = util.by_pixel(12.25, 8),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -2353,7 +2673,7 @@ data:extend(
     icon = "__base__/graphics/icons/long-handed-inserter.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "long-handed-inserter"},
+    minable = {mining_time = 0.1, result = "long-handed-inserter"},
     max_health = 160,
     corpse = "small-remnants",
     resistances =
@@ -2367,8 +2687,8 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -2},
     insert_position = {0, 2.2},
-    energy_per_movement = 5000,
-    energy_per_rotation = 5000,
+    energy_per_movement = "5KJ",
+    energy_per_rotation = "5KJ",
     rotation_speed = 0.02,
     extension_speed = 0.0457,
     hand_size = 1.5,
@@ -2528,12 +2848,7 @@ data:extend(
     icon = "__base__/graphics/icons/fast-inserter.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable =
-    {
-      hardness = 0.2,
-      mining_time = 0.5,
-      result = "fast-inserter"
-    },
+    minable = { mining_time = 0.1, result = "fast-inserter" },
     max_health = 150,
     corpse = "small-remnants",
     resistances =
@@ -2547,8 +2862,8 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
-    energy_per_movement = 7000,
-    energy_per_rotation = 7000,
+    energy_per_movement = "7KJ",
+    energy_per_rotation = "7KJ",
     energy_source =
     {
       type = "electric",
@@ -2558,6 +2873,7 @@ data:extend(
     extension_speed = 0.07,
     rotation_speed = 0.04,
     fast_replaceable_group = "inserter",
+    next_upgrade = "stack-inserter",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
@@ -2709,12 +3025,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     stack = true,
-    minable =
-    {
-      hardness = 0.2,
-      mining_time = 0.5,
-      result = "stack-inserter"
-    },
+    minable = { mining_time = 0.1, result = "stack-inserter" },
     max_health = 160,
     corpse = "small-remnants",
     resistances =
@@ -2728,8 +3039,8 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
-    energy_per_movement = 20000,
-    energy_per_rotation = 20000,
+    energy_per_movement = "20KJ",
+    energy_per_rotation = "20KJ",
     energy_source =
     {
       type = "electric",
@@ -2891,12 +3202,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     stack = true,
     filter_count = 1,
-    minable =
-    {
-      hardness = 0.2,
-      mining_time = 0.5,
-      result = "stack-filter-inserter"
-    },
+    minable = { mining_time = 0.1, result = "stack-filter-inserter" },
     max_health = 160,
     corpse = "small-remnants",
     resistances =
@@ -2910,8 +3216,8 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
-    energy_per_movement = 20000,
-    energy_per_rotation = 20000,
+    energy_per_movement = "20KJ",
+    energy_per_rotation = "20KJ",
     energy_source =
     {
       type = "electric",
@@ -3071,7 +3377,7 @@ data:extend(
     icon = "__base__/graphics/icons/filter-inserter.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "filter-inserter"},
+    minable = {mining_time = 0.1, result = "filter-inserter"},
     max_health = 150,
     corpse = "small-remnants",
     resistances =
@@ -3113,8 +3419,8 @@ data:extend(
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
-    energy_per_movement = 8000,
-    energy_per_rotation = 8000,
+    energy_per_movement = "8KJ",
+    energy_per_rotation = "8KJ",
     energy_source =
     {
       type = "electric",
@@ -3247,7 +3553,7 @@ data:extend(
     icon = "__base__/graphics/icons/solar-panel.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "solar-panel"},
+    minable = {mining_time = 0.1, result = "solar-panel"},
     max_health = 200,
     corpse = "big-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
@@ -3328,7 +3634,7 @@ data:extend(
     icon = "__base__/graphics/icons/diesel-locomotive.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "locomotive"},
+    minable = {mining_time = 0.5, result = "locomotive"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 1000,
     corpse = "medium-remnants",
@@ -3372,7 +3678,7 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 10,
+        decrease = 3,
         percent = 20
       }
     },
@@ -3579,6 +3885,20 @@ data:extend(
         }
       }
     },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    selected_minimap_representation =
+    {
+      filename = "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-selected-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
     wheels = standard_train_wheels,
     rail_category = "regular",
     stop_trigger =
@@ -3641,7 +3961,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 40,
-    minable = {mining_time = 1, result = "cargo-wagon"},
+    minable = {mining_time = 0.5, result = "cargo-wagon"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 600,
     corpse = "medium-remnants",
@@ -3681,7 +4001,7 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 10,
+        decrease = 3,
         percent = 20
       }
     },
@@ -4020,6 +4340,20 @@ data:extend(
         }
       }
     },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    selected_minimap_representation =
+    {
+      filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-selected-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
     wheels = standard_train_wheels,
     rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
@@ -4045,7 +4379,7 @@ data:extend(
     icon = "__base__/graphics/icons/fluid-wagon.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
-    minable = {mining_time = 1, result = "fluid-wagon"},
+    minable = {mining_time = 0.5, result = "fluid-wagon"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 600,
     capacity = 25000,
@@ -4086,7 +4420,7 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 10,
+        decrease = 3,
         percent = 20
       }
     },
@@ -4190,6 +4524,20 @@ data:extend(
         }
       }
     },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/fluid-wagon-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    selected_minimap_representation =
+    {
+      filename = "__base__/graphics/entity/fluid-wagon/fluid-wagon-selected-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
     wheels = standard_train_wheels,
     rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
@@ -4215,7 +4563,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     inventory_size = 1,
     ammo_stack_limit = 100,
-    minable = {mining_time = 1, result = "artillery-wagon"},
+    minable = {mining_time = 0.5, result = "artillery-wagon"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 600,
     corpse = "medium-remnants",
@@ -4261,7 +4609,7 @@ data:extend(
       },
       {
         type = "acid",
-        decrease = 10,
+        decrease = 3,
         percent = 20
       }
     },
@@ -4949,6 +5297,20 @@ data:extend(
       {-0.25,    0,   0 },
       { 0,       0,   0.25 }
     },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/artillery-wagon/artillery-wagon-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    selected_minimap_representation =
+    {
+      filename = "__base__/graphics/entity/artillery-wagon/artillery-wagon-selected-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
     wheels = standard_train_wheels,
     rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
@@ -4976,7 +5338,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     fast_replaceable_group = "wall",
-    minable = {hardness = 0.2, mining_time = 0.5, result = "gate"},
+    minable = {mining_time = 0.1, result = "gate"},
     max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
@@ -4984,6 +5346,7 @@ data:extend(
     opening_speed = 0.0666666,
     activation_distance = 3,
     timeout_to_close = 5,
+    fadeout_interval = 15,
     resistances =
     {
       {
@@ -5017,19 +5380,40 @@ data:extend(
         {
           filename = "__base__/graphics/entity/gate/gate-vertical.png",
           line_length = 8,
-          width = 21,
-          height = 60,
+          width = 38,
+          height = 62,
           frame_count = 16,
-          shift = {0.015625, -0.40625}
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-vertical.png",
+            line_length = 8,
+            width = 78,
+            height = 120,
+            frame_count = 16,
+            shift = util.by_pixel(-1, -13),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/gate/gate-vertical-shadow.png",
           line_length = 8,
-          width = 41,
-          height = 50,
+          width = 40,
+          height = 54,
           frame_count = 16,
-          shift = {0.328125, 0.3},
-          draw_as_shadow = true
+          shift = util.by_pixel(10, 8),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-vertical-shadow.png",
+            line_length = 8,
+            width = 82,
+            height = 104,
+            frame_count = 16,
+            shift = util.by_pixel(9, 9),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -5040,36 +5424,40 @@ data:extend(
         {
           filename = "__base__/graphics/entity/gate/gate-horizontal.png",
           line_length = 8,
-          width = 32,
-          height = 36,
+          width = 34,
+          height = 48,
           frame_count = 16,
-          shift = {0, -0.21875}
+          shift = util.by_pixel(0, -4),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-horizontal.png",
+            line_length = 8,
+            width = 66,
+            height = 90,
+            frame_count = 16,
+            shift = util.by_pixel(0, -3),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/gate/gate-horizontal-shadow.png",
           line_length = 8,
           width = 62,
-          height = 28,
+          height = 30,
           frame_count = 16,
-          shift = {0.4375, 0.46875},
-          draw_as_shadow = true
-        }
-      }
-    },
-    vertical_base =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/gate/gate-base-vertical.png",
-          width = 32,
-          height = 32
-        },
-        {
-          filename = "__base__/graphics/entity/gate/gate-base-vertical-mask.png",
-          width = 32,
-          height = 32,
-          apply_runtime_tint = true
+          shift = util.by_pixel(12, 10),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-horizontal-shadow.png",
+            line_length = 8,
+            width = 122,
+            height = 60,
+            frame_count = 16,
+            shift = util.by_pixel(12, 10),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -5080,19 +5468,40 @@ data:extend(
         {
           filename = "__base__/graphics/entity/gate/gate-rail-horizontal-left.png",
           line_length = 8,
-          width = 32,
-          height = 47,
+          width = 34,
+          height = 40,
           frame_count = 16,
-          shift = {0, -0.140625 + 0.125}
+          shift = util.by_pixel(0, -8),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-left.png",
+            line_length = 8,
+            width = 66,
+            height = 74,
+            frame_count = 16,
+            shift = util.by_pixel(0, -7),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/gate/gate-rail-horizontal-shadow-left.png",
           line_length = 8,
-          width = 73,
-          height = 27,
+          width = 62,
+          height = 30,
           frame_count = 16,
-          shift = {0.078125, 0.171875 + 0.125},
-          draw_as_shadow = true
+          shift = util.by_pixel(12, 10),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-shadow-left.png",
+            line_length = 8,
+            width = 122,
+            height = 60,
+            frame_count = 16,
+            shift = util.by_pixel(12, 10),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -5103,19 +5512,40 @@ data:extend(
         {
           filename = "__base__/graphics/entity/gate/gate-rail-horizontal-right.png",
           line_length = 8,
-          width = 32,
-          height = 43,
+          width = 34,
+          height = 40,
           frame_count = 16,
-          shift = {0, -0.203125 + 0.125}
+          shift = util.by_pixel(0, -8),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-right.png",
+            line_length = 8,
+            width = 66,
+            height = 74,
+            frame_count = 16,
+            shift = util.by_pixel(0, -7),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/gate/gate-rail-horizontal-shadow-right.png",
           line_length = 8,
-          width = 73,
-          height = 28,
+          width = 62,
+          height = 30,
           frame_count = 16,
-          shift = {0.60938, 0.2875 + 0.125},
-          draw_as_shadow = true
+          shift = util.by_pixel(12, 10),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-shadow-right.png",
+            line_length = 8,
+            width = 122,
+            height = 58,
+            frame_count = 16,
+            shift = util.by_pixel(12, 11),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -5127,18 +5557,39 @@ data:extend(
           filename = "__base__/graphics/entity/gate/gate-rail-vertical-left.png",
           line_length = 8,
           width = 22,
-          height = 54,
+          height = 62,
           frame_count = 16,
-          shift = {0, -0.46875}
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-left.png",
+            line_length = 8,
+            width = 42,
+            height = 118,
+            frame_count = 16,
+            shift = util.by_pixel(0, -13),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/gate/gate-rail-vertical-shadow-left.png",
           line_length = 8,
-          width = 47,
-          height = 48,
+          width = 44,
+          height = 54,
           frame_count = 16,
-          shift = {0.27, -0.16125 + 0.5},
-          draw_as_shadow = true
+          shift = util.by_pixel(8, 8),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-shadow-left.png",
+            line_length = 8,
+            width = 82,
+            height = 104,
+            frame_count = 16,
+            shift = util.by_pixel(9, 9),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -5150,18 +5601,39 @@ data:extend(
           filename = "__base__/graphics/entity/gate/gate-rail-vertical-right.png",
           line_length = 8,
           width = 22,
-          height = 55,
+          height = 62,
           frame_count = 16,
-          shift = {0, -0.453125}
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-right.png",
+            line_length = 8,
+            width = 42,
+            height = 118,
+            frame_count = 16,
+            shift = util.by_pixel(0, -13),
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/gate/gate-rail-vertical-shadow-right.png",
           line_length = 8,
-          width = 47,
-          height = 47,
+          width = 44,
+          height = 54,
           frame_count = 16,
-          shift = {0.27, 0.803125 - 0.5},
-          draw_as_shadow = true
+          shift = util.by_pixel(8, 8),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-shadow-right.png",
+            line_length = 8,
+            width = 82,
+            height = 104,
+            frame_count = 16,
+            shift = util.by_pixel(9, 9),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
         }
       }
     },
@@ -5169,134 +5641,85 @@ data:extend(
     {
       filename = "__base__/graphics/entity/gate/gate-rail-base-vertical.png",
       line_length = 8,
-      width = 64,
-      height = 64,
+      width = 68,
+      height = 66,
       frame_count = 16,
-      shift = {0, 0}
+      shift = util.by_pixel(0, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/gate/hr-gate-rail-base-vertical.png",
+        line_length = 8,
+        width = 138,
+        height = 130,
+        frame_count = 16,
+        shift = util.by_pixel(-1, 0),
+        scale = 0.5
+      }
     },
     horizontal_rail_base =
     {
       filename = "__base__/graphics/entity/gate/gate-rail-base-horizontal.png",
       line_length = 8,
-      width = 64,
-      height = 45,
+      width = 66,
+      height = 54,
       frame_count = 16,
-      shift = {0, -0.015625 + 0.125}
-    },
-    vertical_rail_base_mask =
-    {
-      filename = "__base__/graphics/entity/gate/gate-rail-base-mask-vertical.png",
-      width = 63,
-      height = 39,
-      shift = {0.015625, -0.015625},
-      apply_runtime_tint = true
-    },
-    horizontal_rail_base_mask =
-    {
-      filename = "__base__/graphics/entity/gate/gate-rail-base-mask-horizontal.png",
-      width = 53,
-      height = 45,
-      shift = {0.015625, -0.015625 + 0.125},
-      apply_runtime_tint = true
-    },
-    horizontal_base =
-    {
-      layers =
+      shift = util.by_pixel(0, 2),
+      hr_version =
       {
-        {
-          filename = "__base__/graphics/entity/gate/gate-base-horizontal.png",
-          width = 32,
-          height = 23,
-          shift = {0, 0.125}
-        },
-        {
-          filename = "__base__/graphics/entity/gate/gate-base-horizontal-mask.png",
-          width = 32,
-          height = 23,
-          apply_runtime_tint = true,
-          shift = {0, 0.125}
-        }
+        filename = "__base__/graphics/entity/gate/hr-gate-rail-base-horizontal.png",
+        line_length = 8,
+        width = 130,
+        height = 104,
+        frame_count = 16,
+        shift = util.by_pixel(0, 3),
+        scale = 0.5
       }
     },
     wall_patch =
     {
-      north =
+      layers =
       {
-        layers =
         {
+          filename = "__base__/graphics/entity/gate/gate-wall-patch.png",
+          line_length = 8,
+          width = 34,
+          height = 48,
+          frame_count = 16,
+          shift = util.by_pixel(0, 12),
+          hr_version =
           {
-            filename = "__base__/graphics/entity/gate/wall-patch-north.png",
-            width = 22,
-            height = 35,
-            shift = {0, -0.62 + 1}
-          },
-          {
-            filename = "__base__/graphics/entity/gate/wall-patch-north-shadow.png",
-            width = 46,
-            height = 31,
-            shift = {0.3, 0.20 + 1},
-            draw_as_shadow = true
+            filename = "__base__/graphics/entity/gate/hr-gate-wall-patch.png",
+            line_length = 8,
+            width = 70,
+            height = 94,
+            frame_count = 16,
+            shift = util.by_pixel(-1, 13),
+            scale = 0.5
           }
-        }
-      },
-      east =
-      {
-        layers =
+        },
         {
+          filename = "__base__/graphics/entity/gate/gate-wall-patch-shadow.png",
+          line_length = 8,
+          width = 44,
+          height = 38,
+          frame_count = 16,
+          shift = util.by_pixel(8, 32),
+          draw_as_shadow = true,
+          hr_version =
           {
-            filename = "__base__/graphics/entity/gate/wall-patch-east.png",
-            width = 11,
-            height = 40,
-            shift = {0.328125 - 1, -0.109375}
-          },
-          {
-            filename = "__base__/graphics/entity/gate/wall-patch-east-shadow.png",
-            width = 38,
-            height = 32,
-            shift = {0.8125 - 1, 0.46875},
-            draw_as_shadow = true
-          }
-        }
-      },
-      south =
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/gate/wall-patch-south.png",
-            width = 22,
-            height = 40,
-            shift = {0, -0.125}
-          },
-          {
-            filename = "__base__/graphics/entity/gate/wall-patch-south-shadow.png",
-            width = 48,
-            height = 25,
-            shift = {0.3, 0.95},
-            draw_as_shadow = true
-          }
-        }
-      },
-      west =
-      {
-        layers =
-        {
-          {
-            filename = "__base__/graphics/entity/gate/wall-patch-west.png",
-            width = 11,
-            height = 40,
-            shift = {-0.328125 + 1, -0.109375}
-          },
-          {
-            filename = "__base__/graphics/entity/gate/wall-patch-west-shadow.png",
-            width = 46,
-            height = 32,
-            shift = {0.1875 + 1, 0.46875},
-            draw_as_shadow = true
+            filename = "__base__/graphics/entity/gate/hr-gate-wall-patch-shadow.png",
+            line_length = 8,
+            width = 82,
+            height = 72,
+            frame_count = 16,
+            shift = util.by_pixel(9, 33),
+            draw_as_shadow = true,
+            scale = 0.5
           }
         }
       }
     },
+
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     open_sound =
     {
@@ -5324,7 +5747,8 @@ data:extend(
     icon = "__base__/graphics/icons/player-port.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "player-port"},
+    subgroup = "other",
+    minable = {mining_time = 0.5, result = "player-port"},
     max_health = 50,
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
@@ -5342,7 +5766,7 @@ data:extend(
     icon = "__base__/graphics/icons/rail.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.5, result = "rail"},
+    minable = {mining_time = 0.2, result = "rail"},
     max_health = 100,
     corpse = "straight-rail-remnants",
     resistances =
@@ -5350,6 +5774,10 @@ data:extend(
       {
         type = "fire",
         percent = 100
+      },
+      {
+        type = "acid",
+        percent = 80
       }
     },
     collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
@@ -5363,7 +5791,7 @@ data:extend(
     icon = "__base__/graphics/icons/curved-rail.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.5, result = "rail", count = 4},
+    minable = {mining_time = 0.2, result = "rail", count = 4},
     max_health = 200,
     corpse = "curved-rail-remnants",
     resistances =
@@ -5371,7 +5799,11 @@ data:extend(
       {
         type = "fire",
         percent = 100
-      }
+      },
+      {
+        type = "acid",
+        percent = 80
+      },
     },
     collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
     secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
@@ -5393,7 +5825,7 @@ data:extend(
       "placeable-off-grid",
       "not-on-map"
     },
-    minable = {mining_time = 1, result = "land-mine"},
+    minable = {mining_time = 0.5, result = "land-mine"},
     mined_sound = { filename = "__core__/sound/deconstruct-small.ogg" },
     max_health = 15,
     corpse = "small-remnants",
@@ -5446,7 +5878,7 @@ data:extend(
                 {
                   {
                     type = "damage",
-                    damage = { amount = 300, type = "explosion"}
+                    damage = { amount = 250, type = "explosion"}
                   },
                   {
                     type = "create-sticker",
@@ -5474,7 +5906,7 @@ data:extend(
     icon = "__base__/graphics/icons/train-stop.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
-    minable = {mining_time = 1, result = "train-stop"},
+    minable = {mining_time = 0.2, result = "train-stop"},
     max_health = 250,
     corpse = "medium-remnants",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -5908,7 +6340,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
     fast_replaceable_group = "rail-signal",
-    minable = {mining_time = 0.5, result = "rail-signal"},
+    minable = {mining_time = 0.1, result = "rail-signal"},
     max_health = 100,
     corpse = "small-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
@@ -5970,7 +6402,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
     fast_replaceable_group = "rail-signal",
-    minable = {mining_time = 0.5, result = "rail-chain-signal"},
+    minable = {mining_time = 0.1, result = "rail-chain-signal"},
     max_health = 100,
     corpse = "small-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
@@ -6043,189 +6475,12 @@ data:extend(
     default_blue_output_signal = {type = "virtual", name = "signal-blue"}
   },
   {
-    type = "lab",
-    name = "lab",
-    icon = "__base__/graphics/icons/lab.png",
-    icon_size = 32,
-    flags = {"placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "lab"},
-    max_health = 150,
-    corpse = "big-remnants",
-    dying_explosion = "medium-explosion",
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
-    on_animation =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/lab/lab.png",
-          width = 98,
-          height = 87,
-          frame_count = 33,
-          line_length = 11,
-          animation_speed = 1 / 3,
-          shift = util.by_pixel(0, 1.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab.png",
-            width = 194,
-            height = 174,
-            frame_count = 33,
-            line_length = 11,
-            animation_speed = 1 / 3,
-            shift = util.by_pixel(0, 1.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-integration.png",
-          width = 122,
-          height = 81,
-          frame_count = 1,
-          line_length = 1,
-          repeat_count = 33,
-          animation_speed = 1 / 3,
-          shift = util.by_pixel(0, 15.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
-            width = 242,
-            height = 162,
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = 33,
-            animation_speed = 1 / 3,
-            shift = util.by_pixel(0, 15.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-shadow.png",
-          width = 122,
-          height = 68,
-          frame_count = 1,
-          line_length = 1,
-          repeat_count = 33,
-          animation_speed = 1 / 3,
-          shift = util.by_pixel(13, 11),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
-            width = 242,
-            height = 136,
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = 33,
-            animation_speed = 1 / 3,
-            shift = util.by_pixel(13, 11),
-            scale = 0.5,
-            draw_as_shadow = true
-          }
-        }
-      }
-    },
-    off_animation =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/lab/lab.png",
-          width = 98,
-          height = 87,
-          frame_count = 1,
-          shift = util.by_pixel(0, 1.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab.png",
-            width = 194,
-            height = 174,
-            frame_count = 1,
-            shift = util.by_pixel(0, 1.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-integration.png",
-          width = 122,
-          height = 81,
-          frame_count = 1,
-          shift = util.by_pixel(0, 15.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
-            width = 242,
-            height = 162,
-            frame_count = 1,
-            shift = util.by_pixel(0, 15.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-shadow.png",
-          width = 122,
-          height = 68,
-          frame_count = 1,
-          shift = util.by_pixel(13, 11),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
-            width = 242,
-            height = 136,
-            frame_count = 1,
-            shift = util.by_pixel(13, 11),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
-        }
-      }
-    },
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/lab.ogg",
-        volume = 0.7
-      },
-      apparent_volume = 1
-    },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input"
-    },
-    energy_usage = "60kW",
-    researching_speed = 1,
-    inputs =
-    {
-      "science-pack-1",
-      "science-pack-2",
-      "science-pack-3",
-      "military-science-pack",
-      "production-science-pack",
-      "high-tech-science-pack",
-      "space-science-pack"
-    },
-    module_specification =
-    {
-      module_slots = 2,
-      max_entity_info_module_icons_per_row = 3,
-      max_entity_info_module_icon_rows = 1,
-      module_info_icon_shift = {0, 0.9}
-    }
-  },
-
-  {
     type = "logistic-robot",
     name = "logistic-robot",
     icon = "__base__/graphics/icons/logistic-robot.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
-    minable = {hardness = 0.1, mining_time = 0.1, result = "logistic-robot"},
+    minable = {mining_time = 0.1, result = "logistic-robot"},
     resistances = { { type = "fire", percent = 85 } },
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
@@ -6444,7 +6699,7 @@ data:extend(
     icon = "__base__/graphics/icons/construction-robot.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
-    minable = {hardness = 0.1, mining_time = 0.1, result = "construction-robot"},
+    minable = {mining_time = 0.1, result = "construction-robot"},
     resistances = { { type = "fire", percent = 85 } },
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
@@ -6678,7 +6933,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-passive-provider"},
+    minable = {mining_time = 0.1, result = "logistic-chest-passive-provider"},
     max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -6700,13 +6955,50 @@ data:extend(
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    picture =
+    opened_duration = logistic_chest_opened_duration,
+    animation =
     {
-      filename = "__base__/graphics/entity/logistic-chest/logistic-chest-passive-provider.png",
-      priority = "extra-high",
-      width = 38,
-      height = 32,
-      shift = {0.09375, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-passive-provider.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          frame_count = 7,
+          shift = util.by_pixel(0, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-passive-provider.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+          priority = "extra-high",
+          width = 48,
+          height = 24,
+          repeat_count = 7,
+          shift = util.by_pixel(8.5, 5.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 96,
+            height = 44,
+            repeat_count = 7,
+            shift = util.by_pixel(8.5, 5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -6718,7 +7010,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-active-provider"},
+    minable = {mining_time = 0.1, result = "logistic-chest-active-provider"},
     max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -6740,13 +7032,50 @@ data:extend(
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    picture =
+    opened_duration = logistic_chest_opened_duration,
+    animation =
     {
-      filename = "__base__/graphics/entity/logistic-chest/logistic-chest-active-provider.png",
-      priority = "extra-high",
-      width = 38,
-      height = 32,
-      shift = {0.09375, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-active-provider.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          frame_count = 7,
+          shift = util.by_pixel(0, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-active-provider.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+          priority = "extra-high",
+          width = 48,
+          height = 24,
+          repeat_count = 7,
+          shift = util.by_pixel(8.5, 5.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 96,
+            height = 44,
+            repeat_count = 7,
+            shift = util.by_pixel(8.5, 5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -6758,7 +7087,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-storage.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-storage"},
+    minable = {mining_time = 0.1, result = "logistic-chest-storage"},
     max_health = 350,
     logistic_slots_count = 1,
     corpse = "small-remnants",
@@ -6781,13 +7110,50 @@ data:extend(
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    picture =
+    opened_duration = logistic_chest_opened_duration,
+    animation =
     {
-      filename = "__base__/graphics/entity/logistic-chest/logistic-chest-storage.png",
-      priority = "extra-high",
-      width = 38,
-      height = 32,
-      shift = {0.09375, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-storage.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          frame_count = 7,
+          shift = util.by_pixel(0, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-storage.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+          priority = "extra-high",
+          width = 48,
+          height = 24,
+          repeat_count = 7,
+          shift = util.by_pixel(8.5, 5.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 96,
+            height = 44,
+            repeat_count = 7,
+            shift = util.by_pixel(8.5, 5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -6799,7 +7165,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-buffer.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-buffer"},
+    minable = {mining_time = 0.1, result = "logistic-chest-buffer"},
     max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -6822,13 +7188,50 @@ data:extend(
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    picture =
+    opened_duration = logistic_chest_opened_duration,
+    animation =
     {
-      filename = "__base__/graphics/entity/logistic-chest/logistic-chest-buffer.png",
-      priority = "extra-high",
-      width = 38,
-      height = 32,
-      shift = {0.09375, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-buffer.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          frame_count = 7,
+          shift = util.by_pixel(0, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-buffer.png",
+            priority = "extra-high",
+            width = 66,
+            height = 72,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+          priority = "extra-high",
+          width = 48,
+          height = 24,
+          repeat_count = 7,
+          shift = util.by_pixel(8.5, 5.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 96,
+            height = 44,
+            repeat_count = 7,
+            shift = util.by_pixel(8.5, 5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -6840,7 +7243,7 @@ data:extend(
     icon = "__base__/graphics/icons/logistic-chest-requester.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "logistic-chest-requester"},
+    minable = {mining_time = 0.1, result = "logistic-chest-requester"},
     max_health = 350,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -6863,13 +7266,50 @@ data:extend(
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    picture =
+    opened_duration = logistic_chest_opened_duration,
+    animation =
     {
-      filename = "__base__/graphics/entity/logistic-chest/logistic-chest-requester.png",
-      priority = "extra-high",
-      width = 38,
-      height = 32,
-      shift = {0.09375, 0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-requester.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          frame_count = 7,
+          shift = util.by_pixel(0, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-requester.png",
+            priority = "extra-high",
+            width = 66,
+            height = 74,
+            frame_count = 7,
+            shift = util.by_pixel(0, -2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
+          priority = "extra-high",
+          width = 48,
+          height = 24,
+          repeat_count = 7,
+          shift = util.by_pixel(8.5, 5.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
+            priority = "extra-high",
+            width = 96,
+            height = 44,
+            repeat_count = 7,
+            shift = util.by_pixel(8.5, 5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
@@ -6882,7 +7322,6 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     crafting_categories = {"rocket-building"},
-    ingredient_count = 3,
     rocket_parts_required = 100,
     crafting_speed = 1,
     rocket_result_inventory_size = 1,
@@ -6892,13 +7331,15 @@ data:extend(
       module_info_icon_shift = {0, 4.3}
     },
     fixed_recipe = "rocket-part",
+    show_recipe_icon = false,
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
-    minable = {hardness = 0.2, mining_time = 5, result = "rocket-silo"},
+    minable = {mining_time = 1, result = "rocket-silo"},
     max_health = 5000,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
-    collision_box = {{-4.2, -4.7}, {4.2, 4.7}},
-    selection_box = {{-4.5, -5}, {4.5, 5}},
+    collision_box = {{-4.40, -4.40}, {4.40, 4.40}},
+    selection_box = {{-4.5, -4.5}, {4.5, 4.5}},
+    hole_clipping_box = { {-2.75, -1.15}, {2.75, 2.25} },
     resistances =
     {
       {
@@ -6926,43 +7367,43 @@ data:extend(
     light_blinking_speed = 1 / (3 * 60),
     door_opening_speed = 1 / (4.25 * 60),
 
-    base_light =
-    {
-      {
-        type = "oriented",
-        picture =
-        {
-          filename = "__core__/graphics/light-cone.png",
-          priority = "extra-high",
-          flags = { "light" },
-          scale = 2,
-          width = 200,
-          height = 200
-        },
-        shift = {0.25, 1.25},
-        size = 1,
-        intensity = 1,
-        rotation_shift = 0.6,
-        color = {r = 0.7, g = 0.9, b = 1.0}
-      },
-      {
-        type = "oriented",
-        picture =
-        {
-          filename = "__core__/graphics/light-cone.png",
-          priority = "extra-high",
-          flags = { "light" },
-          scale = 2,
-          width = 200,
-          height = 200
-        },
-        shift = {-0.25, 1},
-        size = 1,
-        intensity = 1,
-        rotation_shift = 0.5,
-        color = {r = 0.7, g = 0.9, b = 1.0}
-      }
-    },
+    --base_light =
+    --{
+    --  {
+    --    type = "oriented",
+    --    picture =
+    --    {
+    --      filename = "__core__/graphics/light-cone.png",
+    --      priority = "extra-high",
+    --      flags = { "light" },
+    --      scale = 2,
+    --      width = 200,
+    --      height = 200
+    --    },
+    --    shift = {0.25, 1.25},
+    --    size = 1,
+    --    intensity = 1,
+    --    rotation_shift = 0.6,
+    --    color = {r = 0.7, g = 0.9, b = 1.0}
+    --  },
+    --  {
+    --    type = "oriented",
+    --    picture =
+    --    {
+    --      filename = "__core__/graphics/light-cone.png",
+    --      priority = "extra-high",
+    --      flags = { "light" },
+    --      scale = 2,
+    --      width = 200,
+    --      height = 200
+    --    },
+    --    shift = {-0.25, 1},
+    --    size = 1,
+    --    intensity = 1,
+    --    rotation_shift = 0.5,
+    --    color = {r = 0.7, g = 0.9, b = 1.0}
+    --  }
+    --},
     base_engine_light =
     {
       intensity = 1,
@@ -6972,90 +7413,178 @@ data:extend(
 
     shadow_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/00-shadow/00-silo-shadow.png",
+      filename = "__base__/graphics/entity/rocket-silo/00-rocket-silo-shadow.png",
       priority = "medium",
-      width = 447,
-      height = 351,
+      width = 304,
+      height = 290,
       draw_as_shadow = true,
       slice = 2,
-      shift = {1.5, 0.5}
+      shift = util.by_pixel(8, 2),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-00-rocket-silo-shadow.png",
+        priority = "medium",
+        width = 612,
+        height = 578,
+        draw_as_shadow = true,
+        slice = 2,
+        shift = util.by_pixel(7, 2),
+        scale = 0.5
+      },
     },
-    satellite_shadow_animation =
-    {
-      filename = "__base__/graphics/entity/rocket-silo/00-shadow/00-satellite-shadow.png",
-      priority = "medium",
-      width = 44,
-      height = 22,
-      frame_count = 12,
-      line_length = 4,
-      animation_speed = 0.25,
-      draw_as_shadow = true,
-      shift = {7.875, -2.1875}
-    },
+    --satellite_shadow_animation =
+    --{
+    --  filename = "__base__/graphics/entity/rocket-silo/00-shadow/00-satellite-shadow.png",
+    --  priority = "medium",
+    --  width = 44,
+    --  height = 22,
+    --  frame_count = 12,
+    --  line_length = 4,
+    --  animation_speed = 0.25,
+    --  draw_as_shadow = true,
+    --  shift = {7.875, -2.1875},
+    --  hr_version =
+    --  {
+    --    filename = "__base__/graphics/entity/rocket-silo/00-shadow/hr-00-satellite-shadow.png",
+    --    priority = "medium",
+    --    width = 44,
+    --    height = 22,
+    --    frame_count = 12,
+    --    line_length = 4,
+    --    animation_speed = 0.25,
+    --    draw_as_shadow = true,
+    --    shift = {7.875, -2.1875},
+    --    scale = 0.5
+    --  }
+    --},
 
     hole_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/01-hole/01-hole.png",
-      width = 224,
-      height = 128,
-      shift = {0, 2}
+      filename = "__base__/graphics/entity/rocket-silo/01-rocket-silo-hole.png",
+      width = 202,
+      height = 136,
+      shift = util.by_pixel(-6, 16),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-01-rocket-silo-hole.png",
+        width = 400,
+        height = 270,
+        shift = util.by_pixel(-5, 16),
+        scale = 0.5
+      }
     },
     hole_light_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/01-hole/01-hole-light.png",
-      width = 224,
-      height = 128,
-      shift = {0, 2}
+      filename = "__base__/graphics/entity/rocket-silo/01-rocket-silo-hole-light.png",
+      width = 202,
+      height = 136,
+      shift = util.by_pixel(-6, 16),
+      tint = {1,1,1,0},
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-01-rocket-silo-hole-light.png",
+        width = 400,
+        height = 270,
+        shift = util.by_pixel(-5, 16),
+        tint = {1,1,1,0},
+        scale = 0.5
+      }
     },
 
     rocket_shadow_overlay_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/03-rocket-over-shadow-over-rocket.png",
-      width = 224,
-      height = 128,
-      shift = {0, 2}
+      filename = "__base__/graphics/entity/rocket-silo/03-rocket-over-shadow-over-rocket.png",
+      width = 212,
+      height = 142,
+      shift = util.by_pixel(-2, 22),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-03-rocket-over-shadow-over-rocket.png",
+        width = 426,
+        height = 288,
+        shift = util.by_pixel(-2, 21),
+        scale = 0.5
+      }
     },
     rocket_glow_overlay_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/03-rocket-over-glow.png",
+      filename = "__base__/graphics/entity/rocket-silo/03-rocket-over-glow.png",
       blend_mode = "additive",
-      width = 224,
-      height = 128,
-      shift = {0, 2}
+      width = 218,
+      height = 222,
+      shift = util.by_pixel(-4, 36),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-03-rocket-over-glow.png",
+        blend_mode = "additive",
+        width = 434,
+        height = 446,
+        shift = util.by_pixel(-3, 36),
+        scale = 0.5
+      }
     },
 
 
     door_back_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/04-05-doors/04-door-back.png",
-      width = 192,
-      height = 108,
-      shift = {0, 1.53125}
+      filename = "__base__/graphics/entity/rocket-silo/04-door-back.png",
+      width = 158,
+      height = 144,
+      shift = util.by_pixel(36, 12),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-04-door-back.png",
+        width = 312,
+        height = 286,
+        shift = util.by_pixel(37, 12),
+        scale = 0.5
+      }
     },
-    door_back_open_offset = {1.75, -1.75},
+    door_back_open_offset = {1.8, -1.8 * 0.43299225},
     door_front_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/04-05-doors/05-door-front.png",
-      width = 192,
-      height = 112,
-      shift = {0, 2.0625}
+      filename = "__base__/graphics/entity/rocket-silo/05-door-front.png",
+      width = 166,
+      height = 152,
+      shift = util.by_pixel(-28, 32),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-05-door-front.png",
+        width = 332,
+        height = 300,
+        shift = util.by_pixel(-28, 33),
+        scale = 0.5
+      }
     },
-    door_front_open_offset = {-1.75, 1.75},
+    door_front_open_offset = {-1.8, 1.8 * 0.43299225},
 
     base_day_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/06-silo-base/06-silo-base-day.png",
-      width = 352,
-      height = 384,
-      shift = {0, 0}
+      filename = "__base__/graphics/entity/rocket-silo/06-rocket-silo.png",
+      width = 300,
+      height = 300,
+      shift = util.by_pixel(2, -2),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-06-rocket-silo.png",
+        width = 608,
+        height = 596,
+        shift = util.by_pixel(3, -1),
+        scale = 0.5
+      }
     },
-    base_night_sprite =
-    {
-      filename = "__base__/graphics/entity/rocket-silo/06-silo-base/06-silo-base-night.png",
-      width = 352,
-      height = 384,
-      shift = {0, 0}
-    },
+    --base_night_sprite =
+    --{
+    --  filename = "__base__/graphics/entity/rocket-silo/06-silo-base/06-silo-base-night.png",
+    --  width = 352,
+    --  height = 384,
+    --  shift = {0, 0},
+    --  hr_version = {
+    --    filename = "__base__/graphics/entity/rocket-silo/06-silo-base/hr-06-silo-base-night.png",
+    --    width = 352,
+    --    height = 384,
+    --    shift = {0, 0},
+    --    scale = 0.5
+    --  }
+    --},
 
 
     red_lights_back_sprites =
@@ -7066,43 +7595,99 @@ data:extend(
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {1.34375, 0.28125}
+          shift = {1.34375, 0.28125-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {1.34375, 0.28125-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {2.3125, 0.9375}
+          shift = {2.3125, 0.9375-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {2.3125, 0.9375-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {2.65625, 1.90625}
+          shift = {2.65625, 1.90625-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {2.65625, 1.90625-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {-2.65625, 1.90625}
+          shift = {-2.65625, 1.90625-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {-2.65625, 1.90625-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {-2.3125, 0.9375}
+          shift = {-2.3125, 0.9375-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {-2.3125, 0.9375-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {-1.34375, 0.28125}
+          shift = {-1.34375, 0.28125-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {-1.34375, 0.28125-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {0, 0}
+          shift = {0, 0-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {0, 0-1.375},
+            scale = 0.5
+          }
         }
       }
     },
@@ -7115,88 +7700,182 @@ data:extend(
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {2.3125, 2.8125}
+          shift = {2.3125, 2.8125-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {2.3125, 2.8125-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {1.34375, 3.40625}
+          shift = {1.34375, 3.40625-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {1.34375, 3.40625-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {0, 3.75}
+          shift = {0, 3.75-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {0, 3.75-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {-1.34375, 3.40625}
+          shift = {-1.34375, 3.40625-1.375},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {0, 3.75-1.375},
+            scale = 0.5
+          }
         },
         {
           filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/red-light.png",
           width = 32,
           height = 32,
-          shift = {-2.3125, 2.8125}
+          shift = {-2.3125, 2.8125-1.375},
+          hr_version = {
+            filename = "__base__/graphics/entity/rocket-silo/07-red-lights-back/hr-red-light.png",
+            width = 32,
+            height = 32,
+            shift = {-2.3125, 2.8125-1.375},
+            scale = 0.5
+          }
         }
       }
     },
     satellite_animation =
     {
-      filename = "__base__/graphics/entity/rocket-silo/08-arms-back-satellite-animation/satellite.png",
+      filename = "__base__/graphics/entity/rocket-silo/15-rocket-silo-turbine.png",
       priority = "medium",
-      width = 27,
-      height = 28,
-      frame_count = 12,
-      line_length = 4,
-      animation_speed = 0.25,
-      shift = {3.3125, -4.82813}
+      width = 28,
+      height = 46,
+      frame_count = 32,
+      line_length = 8,
+      animation_speed = 0.4,
+      shift = util.by_pixel(-100, 110),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-15-rocket-silo-turbine.png",
+        priority = "medium",
+        width = 54,
+        height = 88,
+        frame_count = 32,
+        line_length = 8,
+        animation_speed = 0.4,
+        shift = util.by_pixel(-100, 111),
+        scale = 0.5
+      }
     },
 
     arm_01_back_animation =
     {
-      filename = "__base__/graphics/entity/rocket-silo/08-arms-back-satellite-animation/arm-01-back.png",
+      filename = "__base__/graphics/entity/rocket-silo/08-rocket-silo-arms-back.png",
       priority = "medium",
-      width = 54,
-      height = 50,
-      frame_count = 12,
-      line_length = 4,
-      animation_speed = 0.2,
-      shift = {-1.34375, -0.875}
+      width = 66,
+      height = 76,
+      frame_count = 32,
+      line_length = 32,
+      animation_speed = 0.3,
+      shift = util.by_pixel(-54, -84),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-08-rocket-silo-arms-back.png",
+        priority = "medium",
+        width = 128,
+        height = 150,
+        frame_count = 32,
+        line_length = 32,
+        animation_speed = 0.3,
+        shift = util.by_pixel(-53, -84),
+        scale = 0.5
+      }
     },
 
     arm_02_right_animation =
     {
-      filename = "__base__/graphics/entity/rocket-silo/08-arms-back-satellite-animation/arm-02-right.png",
+      filename = "__base__/graphics/entity/rocket-silo/08-rocket-silo-arms-right.png",
       priority = "medium",
-      width = 81,
-      height = 43,
-      frame_count = 12,
-      line_length = 4,
-      animation_speed = 0.2,
-      shift = {2.71875, 0.96875}
+      width = 94,
+      height = 94,
+      frame_count = 32,
+      line_length = 32,
+      animation_speed = 0.3,
+      shift = util.by_pixel(100, -38),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-08-rocket-silo-arms-right.png",
+        priority = "medium",
+        width = 182,
+        height = 188,
+        frame_count = 32,
+        line_length = 32,
+        animation_speed = 0.3,
+        shift = util.by_pixel(101, -38),
+        scale = 0.5
+      }
     },
 
     arm_03_front_animation =
     {
-      filename = "__base__/graphics/entity/rocket-silo/13-arm-front-red-lights-front/arm-03-front.png",
+      filename = "__base__/graphics/entity/rocket-silo/13-rocket-silo-arms-front.png",
       priority = "medium",
-      width = 54,
-      height = 70,
-      frame_count = 12,
-      line_length = 4,
-      animation_speed = 0.2,
-      shift = {-1.34375, 2.4375}
+      width = 66,
+      height = 114,
+      frame_count = 32,
+      line_length = 32,
+      animation_speed = 0.3,
+      shift = util.by_pixel(-52, 16),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-13-rocket-silo-arms-front.png",
+        priority = "medium",
+        width = 126,
+        height = 228,
+        frame_count = 32,
+        line_length = 32,
+        animation_speed = 0.3,
+        shift = util.by_pixel(-51, 16),
+        scale = 0.5
+      }
     },
 
     base_front_sprite =
     {
-      filename = "__base__/graphics/entity/rocket-silo/14-silo-front/14-silo-front.png",
-      width = 352,
-      height = 96,
-      shift = {0, 3.5}
+      filename = "__base__/graphics/entity/rocket-silo/14-rocket-silo-front.png",
+      width = 292,
+      height = 132,
+      shift = util.by_pixel(-2, 78),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rocket-silo/hr-14-rocket-silo-front.png",
+        width = 580,
+        height = 262,
+        shift = util.by_pixel(-1, 78),
+        scale = 0.5
+      }
     },
     silo_fade_out_start_distance = 8,
     silo_fade_out_end_distance = 15,
@@ -7290,151 +7969,281 @@ data:extend(
       color = {r = 1.0, g = 1.0, b = 1.0}
     },
 
-    rocket_sprite =
+    rocket_sprite = util.add_shift_offset(util.by_pixel(0, 32*3.5), --util.mul_shift(rocket_rise_offset, -1),
     {
-      filename = "__base__/graphics/entity/rocket-silo/02-11-rocket/02-rocket.png",
-      width = 192,
-      height = 288,
-      shift = {0, 5.5}
-    },
+      filename = "__base__/graphics/entity/rocket-silo/02-rocket.png",
+      width = 154,
+      height = 300,
+      shift = util.by_pixel(-4, -28),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-02-rocket.png",
+        width = 310,
+        height = 596,
+        shift = util.by_pixel(-5, -27),
+        scale = 0.5
+      }
+    }),
 
-    rocket_shadow_sprite =
+    rocket_shadow_sprite = util.add_shift_offset(util.by_pixel(-146, -120),
     {
-      filename = "__base__/graphics/entity/rocket-silo/09-rocket-shadow/09-rocket-shadow.png",
+      filename = "__base__/graphics/entity/rocket-silo/09-rocket-shadow.png",
       priority = "medium",
-      width = 384,
-      height = 128,
+      width = 336,
+      height = 110,
       draw_as_shadow = true,
-      shift = {-2.5, 2}
-    },
+      shift = util.by_pixel(146, 120),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-09-rocket-shadow.png",
+        priority = "medium",
+        width = 672,
+        height = 216,
+        draw_as_shadow = true,
+        shift = util.by_pixel(146, 121),
+        scale = 0.5
+      }
+    }),
 
-    rocket_glare_overlay_sprite =
+    rocket_glare_overlay_sprite = util.add_shift_offset(util.by_pixel(0, 112+112),
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/03-rocket-over-glare.png",
+      filename = "__base__/graphics/entity/rocket-silo/03-rocket-over-glare.png",
       blend_mode = "additive",
-      width = 509,
-      height = 509,
-      shift = {0, 9}
-    },
-    rocket_smoke_top1_animation =
+      width = 481,
+      height = 481,
+      shift = util.by_pixel(-2, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-03-rocket-over-glare.png",
+        blend_mode = "additive",
+        width = 954,
+        height = 954,
+        shift = util.by_pixel(0, 0),
+        scale = 0.5
+      }
+    }),
+    rocket_smoke_top1_animation = util.add_shift_offset(util.by_pixel(0-66, -112+28+232+32),
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/rocket-top-smoke.png",
+      filename = "__base__/graphics/entity/rocket-silo/12-rocket-smoke.png",
       priority = "medium",
       tint = { r = 0.8, g = 0.8, b = 1, a = 0.8 },
-      width = 47,
-      height = 149,
+      --tint = { r = 1, g = 0, b = 0, a = 0.8 },
+      width = 41,
+      height = 145,
       frame_count = 24,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 1.5,
-      shift = {-1.59375, 7.34375}
-    },
-    rocket_smoke_top2_animation =
+      scale = 1.5*1.3,
+      shift = util.by_pixel(-2, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-12-rocket-smoke.png",
+        priority = "medium",
+        tint = { r = 0.8, g = 0.8, b = 1, a = 0.8 },
+        --tint = { r = 1, g = 0, b = 0, a = 0.8 },
+        width = 80,
+        height = 286,
+        frame_count = 24,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 1.5/2*1.3,
+        shift = util.by_pixel(-1, -3),
+      }
+    }),
+    rocket_smoke_top2_animation = util.add_shift_offset(util.by_pixel(0+17, -112+28+265+32),
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/rocket-top-smoke.png",
+      filename = "__base__/graphics/entity/rocket-silo/12-rocket-smoke.png",
       priority = "medium",
       tint = { r = 0.8, g = 0.8, b = 1, a = 0.8 },
-      width = 47,
-      height = 149,
+      --tint = { r = 0, g = 1, b = 0, a = 0.8 },
+      width = 41,
+      height = 145,
       frame_count = 24,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 1.5,
-      shift = {0.46875, 8.28125}
-    },
-    rocket_smoke_top3_animation =
+      scale = 1.5*1.3,
+      shift = util.by_pixel(-2, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-12-rocket-smoke.png",
+        priority = "medium",
+        tint = { r = 0.8, g = 0.8, b = 1, a = 0.8 },
+        --tint = { r = 0, g = 1, b = 0, a = 0.8 },
+        width = 80,
+        height = 286,
+        frame_count = 24,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 1.5/2*1.3,
+        shift = util.by_pixel(-1, -3),
+      }
+    }),
+    rocket_smoke_top3_animation = util.add_shift_offset(util.by_pixel(0+48, -112+28+252+32),
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/rocket-top-smoke.png",
+      filename = "__base__/graphics/entity/rocket-silo/12-rocket-smoke.png",
       priority = "medium",
       tint = { r = 0.8, g = 0.8, b = 1, a = 0.8 },
-      width = 47,
-      height = 149,
+      --tint = { r = 0, g = 0, b = 1, a = 0.8 },
+      width = 41,
+      height = 145,
       frame_count = 24,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 1.5,
-      shift = {1.28125, 7.90625}
-    },
+      scale = 1.5*1.3,
+      shift = util.by_pixel(-2, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-12-rocket-smoke.png",
+        priority = "medium",
+        tint = { r = 0.8, g = 0.8, b = 1, a = 0.8 },
+        --tint = { r = 0, g = 0, b = 1, a = 0.8 },
+        width = 80,
+        height = 286,
+        frame_count = 24,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 1.5/2*1.3,
+        shift = util.by_pixel(-1, -3),
+      }
+    }),
 
-    rocket_smoke_bottom1_animation =
+    rocket_smoke_bottom1_animation = util.add_shift_offset(util.by_pixel(0-69, -112+28+205+32),
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/rocket-top-smoke.png",
+      filename = "__base__/graphics/entity/rocket-silo/12-rocket-smoke.png",
       priority = "medium",
       tint = { r = 0.8, g = 0.8, b = 1, a = 0.7 },
-      width = 47,
-      height = 149,
+      --tint = { r = 1, g = 1, b = 0, a = 0.8 },
+      width = 41,
+      height = 145,
       frame_count = 24,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 1.5,
-      shift = {-1.65625, 6.71875}
-    },
-    rocket_smoke_bottom2_animation =
+      scale = 1.5*1.3,
+      shift = util.by_pixel(-2, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-12-rocket-smoke.png",
+        priority = "medium",
+        tint = { r = 0.8, g = 0.8, b = 1, a = 0.7 },
+        --tint = { r = 1, g = 1, b = 0, a = 0.8 },
+        width = 80,
+        height = 286,
+        frame_count = 24,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 1.5/2*1.3,
+        shift = util.by_pixel(-1, -3),
+      }
+    }),
+    rocket_smoke_bottom2_animation = util.add_shift_offset(util.by_pixel(0+62, -112+28+207+32),
     {
-      filename = "__base__/graphics/entity/rocket-silo/03-12-rocket-over/rocket-top-smoke.png",
+      filename = "__base__/graphics/entity/rocket-silo/12-rocket-smoke.png",
       priority = "medium",
       tint = { r = 0.8, g = 0.8, b = 1, a = 0.7 },
-      width = 47,
-      height = 149,
+      --tint = { r = 0, g = 1, b = 1, a = 0.8 },
+      width = 41,
+      height = 145,
       frame_count = 24,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 1.5,
-      shift = {1.65625, 6.71875}
-    },
-    rocket_flame_animation =
+      scale = 1.5*1.3,
+      shift = util.by_pixel(-2, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-12-rocket-smoke.png",
+        priority = "medium",
+        tint = { r = 0.8, g = 0.8, b = 1, a = 0.7 },
+        --tint = { r = 0, g = 1, b = 1, a = 0.8 },
+        width = 80,
+        height = 286,
+        frame_count = 24,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 1.5/2*1.3,
+        shift = util.by_pixel(-1, -3),
+      }
+    }),
+    rocket_flame_animation = util.add_shift_offset(util.by_pixel(-1, 280-16),
     {
-      filename = "__base__/graphics/entity/rocket-silo/10-rocket-under/jet-flame.png",
+      filename = "__base__/graphics/entity/rocket-silo/10-jet-flame.png",
       priority = "medium",
       blend_mode = "additive",
-      width = 88,
-      height = 132,
+      width = 87,
+      height = 128,
       frame_count = 8,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 0.93,
-      shift = {0.04, 10}
-    },
-    rocket_flame_left_animation =
+      scale = 1.13,
+      shift = util.by_pixel(-0.5, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-10-jet-flame.png",
+        priority = "medium",
+        blend_mode = "additive",
+        width = 172,
+        height = 256,
+        frame_count = 8,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 1.13/2,
+        shift = util.by_pixel(-1, -2),
+      }
+    }),
+    rocket_flame_left_animation = util.add_shift_offset(util.by_pixel(-32-28+3, 280-68+1),
     {
-      filename = "__base__/graphics/entity/rocket-silo/10-rocket-under/jet-flame.png",
+      filename = "__base__/graphics/entity/rocket-silo/10-jet-flame.png",
       priority = "medium",
       blend_mode = "additive",
-      width = 88,
-      height = 132,
+      width = 87,
+      height = 128,
       frame_count = 8,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 0.345,
-      shift = {-1.275, 8.6}
-    },
+      scale = 0.345*1.15,
+      shift = util.by_pixel(-0.5, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-10-jet-flame.png",
+        priority = "medium",
+        blend_mode = "additive",
+        width = 172,
+        height = 256,
+        frame_count = 8,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 0.345/2*1.15,
+        shift = util.by_pixel(-1, -2),
+      }
+    }),
     rocket_flame_left_rotation = 0.0611,
 
-    rocket_flame_right_animation =
+    rocket_flame_right_animation = util.add_shift_offset(util.by_pixel(32+16, 280-50),
     {
-      filename = "__base__/graphics/entity/rocket-silo/10-rocket-under/jet-flame.png",
+      filename = "__base__/graphics/entity/rocket-silo/10-jet-flame.png",
       priority = "medium",
       blend_mode = "additive",
-      width = 88,
-      height = 132,
+      width = 87,
+      height = 128,
       frame_count = 8,
       line_length = 8,
       animation_speed = 0.5,
-      scale = 0.368,
-      shift = {1.25, 8.875}
-    },
+      scale = 0.368*1.15,
+      shift = util.by_pixel(-0.5, -2),
+      hr_version = {
+        filename = "__base__/graphics/entity/rocket-silo/hr-10-jet-flame.png",
+        priority = "medium",
+        blend_mode = "additive",
+        width = 172,
+        height = 256,
+        frame_count = 8,
+        line_length = 8,
+        animation_speed = 0.5,
+        scale = 0.368/2*1.15,
+        shift = util.by_pixel(-1, -2),
+      }
+    }),
     rocket_flame_right_rotation = 0.952,
 
-
+    rocket_initial_offset = {0, 1.5},
     rocket_rise_offset = {0, -3.5},
     rocket_launch_offset = {0, -256},
-    rocket_render_layer_switch_distance = 6.5,
-    full_render_layer_switch_distance = 8,
+    rocket_render_layer_switch_distance = 7.5,
+    full_render_layer_switch_distance = 9,
     effects_fade_in_start_distance = 4.5,
-    effects_fade_in_end_distance = 8,
+    effects_fade_in_end_distance = 7.5,
     shadow_fade_out_start_ratio = 0.25,
     shadow_fade_out_end_ratio = 0.75,
-    rocket_visible_distance_from_center = 3.75,
+    rocket_visible_distance_from_center = 2.75,
 
     flying_trigger =
     {
@@ -7464,7 +8273,7 @@ data:extend(
     icon = "__base__/graphics/icons/roboport.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "roboport"},
+    minable = {mining_time = 0.1, result = "roboport"},
     max_health = 500,
     corpse = "big-remnants",
     collision_box = {{-1.7, -1.7}, {1.7, 1.7}},
@@ -7523,7 +8332,7 @@ data:extend(
         {
           filename = "__base__/graphics/entity/roboport/roboport-shadow.png",
           width = 147,
-          height = 102,
+          height = 101,
           draw_as_shadow = true,
           shift = util.by_pixel(28.5, 19.25),
           hr_version =
@@ -7672,7 +8481,7 @@ data:extend(
     icon = "__base__/graphics/icons/storage-tank.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {mining_time = 1.5, result = "storage-tank"},
+    minable = {mining_time = 0.5, result = "storage-tank"},
     max_health = 500,
     corpse = "medium-remnants",
     collision_box = {{-1.3, -1.3}, {1.3, 1.3}},
@@ -7816,7 +8625,7 @@ data:extend(
     icon = "__base__/graphics/icons/pump.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1, result = "pump"},
+    minable = {mining_time = 0.2, result = "pump"},
     max_health = 180,
     fast_replaceable_group = "pipe",
     corpse = "small-remnants",
@@ -8099,7 +8908,6 @@ data:extend(
     type = "explosion",
     name = "laser-bubble",
     flags = {"not-on-map"},
-    animation_speed = 1,
     animations =
     {
       {
@@ -8119,7 +8927,6 @@ data:extend(
     type = "explosion",
     name = "railgun-beam",
     flags = {"not-on-map"},
-    animation_speed = 3,
     rotate = true,
     beam = true,
     animations =
@@ -8143,8 +8950,8 @@ data:extend(
     icon = "__base__/graphics/icons/market.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    subgroup="production-machine",
     order="d-a-a",
+    subgroup = "other",
     max_health = 150,
     corpse = "big-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
@@ -8163,7 +8970,7 @@ data:extend(
     icon = "__base__/graphics/icons/big-electric-pole.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "big-electric-pole"},
+    minable = {mining_time = 0.1, result = "big-electric-pole"},
     max_health = 150,
     corpse = "medium-remnants",
     resistances =
@@ -8181,69 +8988,104 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures =
     {
-      filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole.png",
-      priority = "high",
-      width = 168,
-      height = 165,
-      direction_count = 4,
-      shift = {1.6, -1.1}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole.png",
+          priority = "extra-high",
+          width = 74,
+          height = 158,
+          direction_count = 4,
+          shift = util.by_pixel(0, -52),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/big-electric-pole/hr-big-electric-pole.png",
+            priority = "extra-high",
+            width = 148,
+            height = 314,
+            direction_count = 4,
+            shift = util.by_pixel(0, -52),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole-shadow.png",
+          priority = "extra-high",
+          width = 188,
+          height = 48,
+          direction_count = 4,
+          shift = util.by_pixel(60, 0),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/big-electric-pole/hr-big-electric-pole-shadow.png",
+            priority = "extra-high",
+            width = 374,
+            height = 94,
+            direction_count = 4,
+            shift = util.by_pixel(60, 0),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     connection_points =
     {
       {
         shadow =
         {
-          copper = {2.7, 0},
-          green = {1.8, 0},
-          red = {3.6, 0}
+          copper = util.by_pixel_hr(245.0, -34.0),
+          red = util.by_pixel_hr(301.0, -0.0),
+          green = util.by_pixel_hr(206.0, -0.0)
         },
         wire =
         {
-          copper = {0, -3.125},
-          green = {-0.59375, -3.125},
-          red = {0.625, -3.125}
+          copper = util.by_pixel_hr(0, -246.0),
+          red = util.by_pixel_hr(58.0, -211.0),
+          green = util.by_pixel_hr(-58.0, -211.0)
         }
       },
       {
         shadow =
         {
-          copper = {3.1, 0.2},
-          green = {2.3, -0.3},
-          red = {3.8, 0.6}
+          copper = util.by_pixel_hr(279.0, -24.0),
+          red = util.by_pixel_hr(284.0, 28.0),
+          green = util.by_pixel_hr(204.0, -31.0)
         },
         wire =
         {
-          copper = {-0.0625, -3.125},
-          green = {-0.5, -3.4375},
-          red = {0.34375, -2.8125}
+          copper = util.by_pixel_hr(34.0, -235.0),
+          red = util.by_pixel_hr(41.0, -183.0),
+          green = util.by_pixel_hr(-40.0, -240.0)
         }
       },
       {
         shadow =
         {
-          copper = {2.9, 0.06},
-          green = {3.0, -0.6},
-          red = {3.0, 0.8}
+          copper = util.by_pixel_hr(292.0, 0.0),
+          red = util.by_pixel_hr(244.0, 41.0),
+          green = util.by_pixel_hr(244.0, -41.0)
         },
         wire =
         {
-          copper = {-0.09375, -3.09375},
-          green = {-0.09375, -3.53125},
-          red = {-0.09375, -2.65625}
+          copper = util.by_pixel_hr(47.0, -212.0),
+          red = util.by_pixel_hr(1.0, -170.0),
+          green = util.by_pixel_hr(1.0, -251.0)
         }
       },
       {
         shadow =
         {
-          copper = {3.1, 0.2},
-          green = {3.8, -0.3},
-          red = {2.35, 0.6}
+          copper = util.by_pixel_hr(277.0, 23.0),
+          red = util.by_pixel_hr(204.0, 30.0),
+          green = util.by_pixel_hr(286.0, -29.0)
         },
         wire =
         {
-          copper = {-0.0625, -3.1875},
-          green = {0.375, -3.5},
-          red = {-0.46875, -2.90625}
+          copper = util.by_pixel_hr(33.0, -188.0),
+          red = util.by_pixel_hr(-41.0, -182.5),
+          green = util.by_pixel_hr(41.0, -239.0)
         }
       }
     },
@@ -8261,7 +9103,7 @@ data:extend(
     icon = "__base__/graphics/icons/medium-electric-pole.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "medium-electric-pole"},
+    minable = {mining_time = 0.1, result = "medium-electric-pole"},
     max_health = 100,
     corpse = "small-remnants",
     track_coverage_during_build_by_moving = true,
@@ -8281,69 +9123,104 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures =
     {
-      filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole.png",
-      priority = "high",
-      width = 136,
-      height = 122,
-      direction_count = 4,
-      shift = {1.4, -1.0}
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole.png",
+          priority = "extra-high",
+          width = 48,
+          height = 120,
+          direction_count = 4,
+          shift = util.by_pixel(0, -42),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/medium-electric-pole/hr-medium-electric-pole.png",
+            priority = "extra-high",
+            width = 92,
+            height = 244,
+            direction_count = 4,
+            shift = util.by_pixel(1, -43),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole-shadow.png",
+          priority = "extra-high",
+          width = 140,
+          height = 32,
+          direction_count = 4,
+          shift = util.by_pixel(56, 4),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/medium-electric-pole/hr-medium-electric-pole-shadow.png",
+            priority = "extra-high",
+            width = 280,
+            height = 60,
+            direction_count = 4,
+            shift = util.by_pixel(56, 5),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     connection_points =
     {
       {
         shadow =
         {
-          copper = {2.55, 0.4},
-          green = {2.0, 0.4},
-          red = {3.05, 0.4}
+          copper = util.by_pixel(114.0, -7.0),
+          red = util.by_pixel(123.0, -1.5),
+          green = util.by_pixel(102.5, -6.5)
         },
         wire =
         {
-          copper = {-0.03125, -2.46875},
-          green = {-0.34375, -2.46875},
-          red = {0.25, -2.46875}
+          copper = util.by_pixel(7.0, -100.0),
+          red = util.by_pixel(21.0, -90.0),
+          green = util.by_pixel(-7.5, -93.5)
         }
       },
       {
         shadow =
         {
-          copper = {2.9, 0.1},
-          green = {2.6, -0.15},
-          red = {3.25, 0.35}
+          copper = util.by_pixel(95.5, 12.5),
+          red = util.by_pixel(103.0, 18.0),
+          green = util.by_pixel(85.5, 1.5)
         },
         wire =
         {
-          copper = {0.0625, -2.65625},
-          green = {-0.15625, -2.84375},
-          red = {0.28125, -2.5}
+          copper = util.by_pixel(-11.0, -80.5),
+          red = util.by_pixel(1.5, -70.0),
+          green = util.by_pixel(-16.5, -87.0)
         }
       },
       {
         shadow =
         {
-          copper = {1.5, -0.2},
-          green = {1.5, -0.55},
-          red = {1.5, 0.1}
+          copper = util.by_pixel(93.5, 2.5),
+          red = util.by_pixel(90.5, 12.5),
+          green = util.by_pixel(94.0, -7.5)
         },
         wire =
         {
-          copper = {-0.4375, -2.28125},
-          green = {-0.4375, -2.5625},
-          red = {-0.4375, -2.0625}
+          copper = util.by_pixel(-14.0, -90.5),
+          red = util.by_pixel(-11.0, -75.5),
+          green = util.by_pixel(-7.0, -96.0)
         }
       },
       {
         shadow =
         {
-          copper = {2.88, 0.2},
-          green = {3.2, -0.1},
-          red = {2.45, 0.4}
+          copper = util.by_pixel(90.5, -1.5),
+          red = util.by_pixel(82.0, 4.0),
+          green = util.by_pixel(105.0, -8.5)
         },
         wire =
         {
-          copper = {-0.0625, -2.5625},
-          green = {0.15625, -2.75},
-          red = {-0.28125, -2.4375}
+          copper = util.by_pixel(-11.5, -97.5),
+          red = util.by_pixel(-19.5, -84.0),
+          green = util.by_pixel(4.0, -96.5)
         }
       }
     },
@@ -8361,7 +9238,7 @@ data:extend(
     icon = "__base__/graphics/icons/substation.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "substation"},
+    minable = {mining_time = 0.1, result = "substation"},
     max_health = 200,
     corpse = "medium-remnants",
     track_coverage_during_build_by_moving = true,
@@ -8379,13 +9256,73 @@ data:extend(
     supply_area_distance = 9,
     pictures =
     {
-      filename = "__base__/graphics/entity/substation/substation.png",
-      priority = "high",
-      width = 132,
-      height = 144,
-      direction_count = 4,
-      shift = {0.9, -1}
+      layers =
+      {
+
+        {
+          filename = "__base__/graphics/entity/substation/substation.png",
+          priority = "high",
+          width = 70,
+          height = 136,
+          direction_count = 4,
+          shift = util.by_pixel(0, 1-32),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/substation/hr-substation.png",
+            priority = "high",
+            width = 138,
+            height = 270,
+            direction_count = 4,
+            shift = util.by_pixel(0, 1-32),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/substation/substation-shadow.png",
+          priority = "high",
+          width = 186,
+          height = 52,
+          direction_count = 4,
+          shift = util.by_pixel(62, 42-32),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/substation/hr-substation-shadow.png",
+            priority = "high",
+            width = 370,
+            height = 104,
+            direction_count = 4,
+            shift = util.by_pixel(62, 42-32),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
+
+    --active_picture =
+    --{
+    --  filename = "__base__/graphics/entity/substation/substation-light.png",
+    --  priority = "high",
+    --  width = 46,
+    --  height = 78,
+    --  --direction_count = 4,
+    --  shift = util.by_pixel(0, 16-32),
+    --  blend_mode = "additive",
+    --  hr_version =
+    --  {
+    --    filename = "__base__/graphics/entity/substation/hr-substation-light.png",
+    --    priority = "high",
+    --    width = 92,
+    --    height = 156,
+    --    --direction_count = 4,
+    --    shift = util.by_pixel(0.5, 16.5-32),
+    --    blend_mode = "additive",
+    --    scale = 0.5
+    --  }
+    --},
+    --light = {intensity = 0.75, size = 3, color = {r = 1.0, g = 1.0, b = 1.0}},
+
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
@@ -8399,57 +9336,57 @@ data:extend(
       {
         shadow =
         {
-          copper = {1.9, -0.6},
-          green = {1.3, -0.6},
-          red = {2.65, -0.6}
+          copper = util.by_pixel(136, 8),
+          green = util.by_pixel(124, 8),
+          red = util.by_pixel(151, 9)
         },
         wire =
         {
-          copper = {-0.25, -2.71875},
-          green = {-0.84375, -2.71875},
-          red = {0.34375, -2.71875}
+          copper = util.by_pixel(0, -86),
+          green = util.by_pixel(-21, -82),
+          red = util.by_pixel(22, -81)
         }
       },
       {
         shadow =
         {
-          copper = {1.9, -0.6},
-          green = {1.2, -0.8},
-          red = {2.5, -0.35}
+          copper = util.by_pixel(133, 9),
+          green = util.by_pixel(144, 21),
+          red = util.by_pixel(110, -3)
         },
         wire =
         {
-          copper = {-0.21875, -2.71875},
-          green = {-0.65625, -3.03125},
-          red = {0.1875, -2.4375}
+          copper = util.by_pixel(0, -85),
+          green = util.by_pixel(15, -70),
+          red = util.by_pixel(-15, -92)
         }
       },
       {
         shadow =
         {
-          copper = {1.9, -0.6},
-          green = {1.9, -0.9},
-          red = {1.9, -0.3}
+          copper = util.by_pixel(133, 9),
+          green = util.by_pixel(127, 26),
+          red = util.by_pixel(127, -8)
         },
         wire =
         {
-          copper = {-0.21875, -2.71875},
-          green = {-0.21875, -3.15625},
-          red = {-0.21875, -2.34375}
+          copper = util.by_pixel(0, -85),
+          green = util.by_pixel(0, -66),
+          red = util.by_pixel(0, -97)
         }
       },
       {
         shadow =
         {
-          copper = {1.8, -0.7},
-          green = {1.3, -0.6},
-          red = {2.4, -1.15}
+          copper = util.by_pixel(133, 9),
+          green = util.by_pixel(111, 20),
+          red = util.by_pixel(144, -3)
         },
         wire =
         {
-          copper = {-0.21875, -2.75},
-          green = {-0.65625, -2.4375},
-          red = {0.1875, -3.03125}
+          copper = util.by_pixel(0, -86),
+          green = util.by_pixel(-15, -71),
+          red = util.by_pixel(15, -92)
         }
       }
     },
@@ -8467,7 +9404,7 @@ data:extend(
     icon = "__base__/graphics/icons/accumulator.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "accumulator"},
+    minable = {mining_time = 0.1, result = "accumulator"},
     max_health = 150,
     corpse = "medium-remnants",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
@@ -8477,41 +9414,16 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "5MJ",
-      usage_priority = "terciary",
+      usage_priority = "tertiary",
       input_flow_limit = "300kW",
       output_flow_limit = "300kW"
     },
-    picture =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator.png",
-      priority = "extra-high",
-      width = 124,
-      height = 103,
-      shift = {0.6875, -0.203125}
-    },
-    charge_animation =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator-charge-animation.png",
-      width = 138,
-      height = 135,
-      line_length = 8,
-      frame_count = 24,
-      shift = {0.46875, -0.640625},
-      animation_speed = 0.5
-    },
+    picture = accumulator_picture(),
+    charge_animation = accumulator_charge(),
 
     charge_cooldown = 30,
     charge_light = {intensity = 0.3, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
-    discharge_animation =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator-discharge-animation.png",
-      width = 147,
-      height = 128,
-      line_length = 8,
-      frame_count = 24,
-      shift = {0.390625, -0.53125},
-      animation_speed = 0.5
-    },
+    discharge_animation = accumulator_discharge(),
     discharge_cooldown = 60,
     discharge_light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -8542,7 +9454,7 @@ data:extend(
     icon = "__base__/graphics/icons/steel-furnace.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "steel-furnace"},
+    minable = {mining_time = 0.2, result = "steel-furnace"},
     max_health = 300,
     corpse = "medium-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -8561,7 +9473,7 @@ data:extend(
     selection_box = {{-0.8, -1}, {0.8, 1}},
     crafting_categories = {"smelting"},
     result_inventory_size = 1,
-    energy_usage = "180kW",
+    energy_usage = "90kW",
     crafting_speed = 2,
     source_inventory_size = 1,
     energy_source =
@@ -8641,7 +9553,6 @@ data:extend(
           width = 29,
           height = 40,
           frame_count = 48,
-          axially_symmetrical = false,
           direction_count = 1,
           shift = util.by_pixel(-0.5, 6),
           hr_version =
@@ -8652,7 +9563,6 @@ data:extend(
             width = 57,
             height = 81,
             frame_count = 48,
-            axially_symmetrical = false,
             direction_count = 1,
             shift = util.by_pixel(-0.75, 5.75),
             scale = 0.5
@@ -8691,7 +9601,6 @@ data:extend(
           width = 64,
           height = 75,
           frame_count = 1,
-          axially_symmetrical = false,
           direction_count = 1,
           shift = util.by_pixel(0, -4.5),
           blend_mode = "additive",
@@ -8703,7 +9612,6 @@ data:extend(
             width = 130,
             height = 149,
             frame_count = 1,
-            axially_symmetrical = false,
             direction_count = 1,
             shift = util.by_pixel(0, -4.25),
             blend_mode = "additive",
@@ -8720,7 +9628,7 @@ data:extend(
     icon = "__base__/graphics/icons/electric-furnace.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "electric-furnace"},
+    minable = {mining_time = 0.2, result = "electric-furnace"},
     max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -8885,7 +9793,7 @@ data:extend(
     icon = "__base__/graphics/icons/beacon.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "beacon"},
+    minable = {mining_time = 0.2, result = "beacon"},
     max_health = 200,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -8960,7 +9868,6 @@ data:extend(
       line_length = 7,
       scale = 3
     },
-    slow_down_factor = 0,
     affected_by_wind = false,
     cyclic = true,
     duration = 60 * 20,
@@ -9012,6 +9919,14 @@ data:extend(
     distance_per_frame = 0.13,
     time_to_live = 60 * 45,
     speed = 0,
+    resistances =
+    {
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 85
+      },
+    },
     destroy_action =
     {
       type = "direct",
@@ -9027,10 +9942,10 @@ data:extend(
     },
     attack_parameters =
     {
-      type = "projectile",
+      type = "beam",
       ammo_category = "combat-robot-laser",
       cooldown = 20,
-      damage_modifier = 1.5,
+      damage_modifier = 1,
       projectile_center = {0, 0},
       projectile_creation_distance = 0.6,
       range = 15,
@@ -9043,9 +9958,11 @@ data:extend(
           type = "direct",
           action_delivery =
           {
-            type = "projectile",
-            projectile = "laser",
-            starting_speed = 0.3
+            type = "beam",
+            beam = "laser-beam",
+            max_length = 15,
+            duration = 20,
+            --starting_speed = 0.3
           }
         }
       }
@@ -9117,7 +10034,7 @@ data:extend(
         filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
         priority = "high",
         line_length = 16,
-        width = 97,
+        width = 96,
         height = 59,
         frame_count = 1,
         direction_count = 16,
@@ -9196,7 +10113,7 @@ data:extend(
         filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
         priority = "high",
         line_length = 16,
-        width = 97,
+        width = 96,
         height = 59,
         frame_count = 1,
         direction_count = 16,
@@ -9218,12 +10135,19 @@ data:extend(
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    distance_per_frame = 0.13,
     time_to_live = 60 * 45,
     follows_player = true,
     friction = 0.01,
     range_from_player = 6.0,
     speed = 0.01,
+    resistances =
+    {
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 80
+      },
+    },
     destroy_action =
     {
       type = "direct",
@@ -9240,7 +10164,6 @@ data:extend(
     attack_parameters =
     {
       type = "projectile",
-      ammo_category = "bullet",
       cooldown = 20,
       projectile_center = {0, 1},
       projectile_creation_distance = 0.6,
@@ -9450,6 +10373,14 @@ data:extend(
     follows_player = true,
     friction = 0.01,
     range_from_player = 6.0,
+    resistances =
+    {
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 90
+      },
+    },
     destroy_action =
     {
       type = "direct",
@@ -9672,7 +10603,7 @@ data:extend(
     icon = "__base__/graphics/icons/oil-refinery.png",
     icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
-    minable = {mining_time = 1, result = "oil-refinery"},
+    minable = {mining_time = 0.2, result = "oil-refinery"},
     max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -9695,7 +10626,6 @@ data:extend(
       emissions = 0.03 / 3.5
     },
     energy_usage = "420kW",
-    ingredient_count = 4,
 
 
     animation = make_4way_animation_from_spritesheet({ layers =
@@ -9813,8 +10743,7 @@ data:extend(
         base_level = 1,
         pipe_connections = {{ position = {2, -3} }}
       }
-    },
-    pipe_covers = pipecoverspictures()
+    }
   },
 
   {
@@ -9823,7 +10752,7 @@ data:extend(
     icon = "__base__/graphics/icons/chemical-plant.png",
     icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "chemical-plant"},
+    minable = {mining_time = 0.1, result = "chemical-plant"},
     max_health = 300,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -9857,7 +10786,7 @@ data:extend(
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
         width = 175,
-        height = 110,
+        height = 141,
         frame_count = 1,
         shift = util.by_pixel(31.5, 11),
         draw_as_shadow = true,
@@ -10003,7 +10932,7 @@ data:extend(
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
       apparent_volume = 1.5
     },
-    crafting_speed = 1.25,
+    crafting_speed = 1,
     energy_source =
     {
       type = "electric",
@@ -10011,7 +10940,6 @@ data:extend(
       emissions = 0.03 / 3.5
     },
     energy_usage = "210kW",
-    ingredient_count = 4,
     crafting_categories = {"chemistry"},
     fluid_boxes =
     {
@@ -10051,7 +10979,7 @@ data:extend(
     icon = "__base__/graphics/icons/arithmetic-combinator.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "arithmetic-combinator"},
+    minable = {mining_time = 0.1, result = "arithmetic-combinator"},
     max_health = 150,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
@@ -10069,7 +10997,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/combinator.ogg",
-        volume = 0.35
+        volume = 0.45
       },
       max_sounds_per_type = 2,
       match_speed_to_activity = true
@@ -10119,7 +11047,7 @@ data:extend(
     icon = "__base__/graphics/icons/decider-combinator.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "decider-combinator"},
+    minable = {mining_time = 0.1, result = "decider-combinator"},
     max_health = 150,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
@@ -10137,7 +11065,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/combinator.ogg",
-        volume = 0.35
+        volume = 0.45
       },
       max_sounds_per_type = 2,
       match_speed_to_activity = true
@@ -10289,7 +11217,7 @@ data:extend(
     icon = "__base__/graphics/icons/constant-combinator.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "constant-combinator"},
+    minable = {mining_time = 0.1, result = "constant-combinator"},
     max_health = 120,
     corpse = "small-remnants",
 
@@ -10323,7 +11251,7 @@ data:extend(
     icon = "__base__/graphics/icons/power-switch.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 1, result = "power-switch"},
+    minable = {mining_time = 0.2, result = "power-switch"},
     max_health = 200,
     corpse = "medium-remnants",
 
@@ -10338,8 +11266,6 @@ data:extend(
       width = 117,
       height = 74,
       frame_count = 6,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {0.453125, 0.1875}
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -10353,8 +11279,6 @@ data:extend(
       width = 38,
       height = 49,
       frame_count = 2,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {0.15625, 0.046875}
     },
     overlay_loop =
@@ -10366,8 +11290,6 @@ data:extend(
       width = 53,
       height = 56,
       frame_count = 16,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {0.046875, -0.0625}
     },
     led_on =
@@ -10376,7 +11298,6 @@ data:extend(
       x = 6,
       width = 6,
       height = 9,
-      frame_count = 1,
       shift = {0.71875, 0.140625}
     },
     led_off =
@@ -10384,7 +11305,6 @@ data:extend(
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
       width = 6,
       height = 9,
-      frame_count = 1,
       shift = {0.71875, 0.140625}
     },
     circuit_wire_connection_point =
@@ -10431,7 +11351,7 @@ data:extend(
     icon = "__base__/graphics/icons/programmable-speaker.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "programmable-speaker"},
+    minable = {mining_time = 0.1, result = "programmable-speaker"},
     max_health = 150,
     corpse = "small-remnants",
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
@@ -10509,8 +11429,7 @@ data:extend(
         notes =
         {
           { name = "achievement-unlocked",  sound = { filename = "__core__/sound/achievement-unlocked.ogg" }},
-          { name = "alert-construction",  sound = { filename = "__core__/sound/alert-construction.ogg" }},
-          { name = "alert-damage",  sound = { filename = "__core__/sound/alert-damage.ogg" }},
+          { name = "alert-destroyed",  sound = { filename = "__core__/sound/alert-destroyed.ogg" }},
           { name = "armor-insert",  sound = { filename = "__core__/sound/armor-insert.ogg" }},
           { name = "armor-remove",  sound = { filename = "__core__/sound/armor-remove.ogg" }},
           { name = "cannot-build",  sound = { filename = "__core__/sound/cannot-build.ogg" }},
@@ -10952,18 +11871,20 @@ data:extend(
     icon = "__base__/graphics/icons/accumulator.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "electric-energy-interface"},
+    minable = {mining_time = 0.1, result = "electric-energy-interface"},
     max_health = 150,
     corpse = "medium-remnants",
+    subgroup = "other",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
-    enable_gui = true,
+    drawing_box = {{-1, -1.5}, {1, 1}},
+    gui_mode = "all",
     allow_copy_paste = true,
     energy_source =
     {
       type = "electric",
       buffer_capacity = "10GJ",
-      usage_priority = "terciary",
+      usage_priority = "tertiary",
       input_flow_limit = "0kW",
       output_flow_limit = "500GW"
     },
@@ -10971,15 +11892,7 @@ data:extend(
     energy_production = "500GW",
     energy_usage = "0kW",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
-    picture =
-    {
-      filename = "__base__/graphics/entity/accumulator/accumulator.png",
-      priority = "extra-high",
-      width = 124,
-      height = 103,
-      shift = {0.6875, -0.203125},
-      tint = {r=1, g=0.8, b=1, a=1}
-    },
+    picture = accumulator_picture( {r=1, g=0.8, b=1, a=1} ),
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
     working_sound =
     {
@@ -11011,7 +11924,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "10GJ",
-      usage_priority = "terciary",
+      usage_priority = "tertiary",
       input_flow_limit = "0kW",
       output_flow_limit = "500GW"
     },
@@ -11032,13 +11945,14 @@ data:extend(
     icon  = "__base__/graphics/icons/nuclear-reactor.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 1.5, result = "nuclear-reactor"},
+    minable = {mining_time = 0.5, result = "nuclear-reactor"},
     max_health = 500,
     corpse = "big-remnants",
     consumption = "40MW",
     neighbour_bonus = 1,
-    burner =
+    energy_source =
     {
+      type = "burner",
       fuel_category = "nuclear",
       effectivity = 1,
       fuel_inventory_size = 1,
@@ -11266,13 +12180,11 @@ data:extend(
               type = "create-trivial-smoke",
               smoke_name = "nuclear-smoke",
               offset_deviation = {{-1, -1}, {1, 1}},
-              slow_down_factor = 1,
               starting_frame = 3,
               starting_frame_deviation = 5,
               starting_frame_speed = 0,
               starting_frame_speed_deviation = 5,
-              speed_from_center = 0.5,
-              speed_deviation = 0.2
+              speed_from_center = 0.5
           },
           {
             type = "create-entity",
@@ -11293,6 +12205,7 @@ data:extend(
             {
               type = "area",
               target_entities = false,
+              trigger_from_target = true,
               repeat_count = 2000,
               radius = 35,
               action_delivery =
@@ -11313,7 +12226,7 @@ data:extend(
     icon = "__base__/graphics/icons/centrifuge.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "centrifuge"},
+    minable = {mining_time = 0.1, result = "centrifuge"},
     max_health = 350,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -11549,100 +12462,6 @@ data:extend(
         light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 0.0, g = 1.0, b = 0.0}}
       }
     },
-
-    working_visualisations_disabled =
-    {
-      {
-        north_position = {0.0, 0.0},
-        east_position = {0.0, 0.0},
-        south_position = {0.0, 0.0},
-        west_position = {0.0, 0.0},
-        animation =
-        {
-          filename = "__base__/graphics/entity/centrifuge/centrifuge-C-light.png",
-          priority = "high",
-          blend_mode = "additive", -- centrifuge
-          line_length = 8,
-          width = 96,
-          height = 104,
-          frame_count = 64,
-          shift = util.by_pixel(0, -27),
-
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-C-light.png",
-            priority = "high",
-            scale = 0.5,
-            blend_mode = "additive", -- centrifuge
-            line_length = 8,
-            width = 190,
-            height = 207,
-            frame_count = 64,
-            shift = util.by_pixel(0, -27.25)
-          }
-        },
-        --light = {intensity = 1, size = 1, color = {r = 1.0, g = 1.0, b = 1.0}}
-      },
-      {
-        north_position = {0.0, 0.0},
-        east_position = {0.0, 0.0},
-        south_position = {0.0, 0.0},
-        west_position = {0.0, 0.0},
-        animation =
-        {
-          filename = "__base__/graphics/entity/centrifuge/centrifuge-B-light.png",
-          priority = "high",
-          blend_mode = "additive", -- centrifuge
-          line_length = 8,
-          width = 65,
-          height = 103,
-          frame_count = 64,
-          shift = util.by_pixel(16.5, 0.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-B-light.png",
-            priority = "high",
-            scale = 0.5,
-            blend_mode = "additive", -- centrifuge
-            line_length = 8,
-            width = 131,
-            height = 206,
-            frame_count = 64,
-            shift = util.by_pixel(16.75, 0.5)
-          }
-        }
-      },
-      {
-        north_position = {0.0, 0.0},
-        east_position = {0.0, 0.0},
-        south_position = {0.0, 0.0},
-        west_position = {0.0, 0.0},
-        animation =
-        {
-          filename = "__base__/graphics/entity/centrifuge/centrifuge-A-light.png",
-          priority = "high",
-          blend_mode = "additive", -- centrifuge
-          line_length = 8,
-          width = 55,
-          height = 98,
-          frame_count = 64,
-          shift = util.by_pixel(-23.5, -2),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/centrifuge/hr-centrifuge-A-light.png",
-            priority = "high",
-            scale = 0.5,
-            blend_mode = "additive", -- centrifuge
-            line_length = 8,
-            width = 108,
-            height = 197,
-            frame_count = 64,
-            shift = util.by_pixel(-23.5, -1.75)
-          }
-        }
-      }
-    },
-
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -11662,7 +12481,7 @@ data:extend(
       idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
       apparent_volume = 1.5
     },
-    crafting_speed = 0.75,
+    crafting_speed = 1,
     crafting_categories = {"centrifuging"},
     energy_source =
     {
@@ -11671,7 +12490,6 @@ data:extend(
       emissions = 0.04 / 2.5
     },
     energy_usage = "350kW",
-    ingredient_count = 2,
     module_specification =
     {
       module_slots = 2
@@ -11684,7 +12502,7 @@ data:extend(
     icon = "__base__/graphics/icons/heat-boiler.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "heat-exchanger"},
+    minable = {mining_time = 0.1, result = "heat-exchanger"},
     max_health = 200,
     corpse = "medium-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -11741,6 +12559,7 @@ data:extend(
       max_temperature = 1000,
       specific_heat = "1MJ",
       max_transfer = "2GW",
+      min_working_temperature = 500,
       connections =
       {
         {
@@ -11952,7 +12771,7 @@ data:extend(
     icon = "__base__/graphics/icons/steam-turbine.png",
     icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
-    minable = {mining_time = 1, result = "steam-turbine"},
+    minable = {mining_time = 0.3, result = "steam-turbine"},
     max_health = 300,
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
@@ -12114,7 +12933,7 @@ data:extend(
     icon = "__base__/graphics/icons/heat-pipe.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "heat-pipe"},
+    minable = {mining_time = 0.1, result = "heat-pipe"},
     max_health = 200,
     corpse = "small-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -12221,7 +13040,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     order = "s-e-w-f",
-    minable = {mining_time = 1, result = "simple-entity-with-force"},
+    minable = {mining_time = 0.1, result = "simple-entity-with-force"},
     max_health = 100,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -12230,9 +13049,9 @@ data:extend(
     {
       filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
       priority = "extra-high",
-      width = 46,
-      height = 33,
-      shift = {0.25, 0.015625}
+      width = 32,
+      height = 40,
+      shift = util.by_pixel(-11, 4.5),
     }
   },
   {
@@ -12243,7 +13062,7 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     order = "s-e-w-o",
-    minable = {mining_time = 1, result = "simple-entity-with-owner"},
+    minable = {mining_time = 0.1, result = "simple-entity-with-owner"},
     max_health = 100,
     corpse = "small-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
@@ -12255,9 +13074,9 @@ data:extend(
         {
           filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
           priority = "extra-high",
-          width = 46,
-          height = 33,
-          shift = {0.25, 0.015625}
+          width = 34,
+          height = 38,
+          shift = util.by_pixel(0, -0.5),
         },
         {
           filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
@@ -12265,7 +13084,7 @@ data:extend(
           width = 10,
           height = 33,
           x = 18,
-          shift = {0.25, 0.015625},
+          shift = util.by_pixel(0, -0.5),
           apply_runtime_tint = true
         }
       }
@@ -12297,7 +13116,6 @@ data:extend(
     type = "flame-thrower-explosion",
     name = "dummy-flame-thrower-explosion",
     flags = {"not-on-map"},
-    animation_speed = 1,
     -- It needs some animation
     animations =
     {
@@ -12470,7 +13288,7 @@ data:extend(
       }
     },
     rotate = true,
-    shift_by_projectile_height = false,
+    height = 0,
     correct_rotation = true,
     light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
     smoke = "smoke-fast",
@@ -12518,6 +13336,7 @@ local red_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-c
 red_chest.minable = nil
 red_chest.type = "container"
 red_chest.name = "red-chest"
+red_chest.picture = red_chest.animation
 red_chest.order = "r-e-d"
 data:extend({red_chest})
 
@@ -12525,26 +13344,11 @@ local blue_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-
 blue_chest.minable = nil
 blue_chest.type = "container"
 blue_chest.name = "blue-chest"
+blue_chest.picture = blue_chest.animation
 blue_chest.order = "b-l-u-e"
 data:extend({blue_chest})
 
-local infinity_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-storage"])
-infinity_chest.type = "infinity-container"
-infinity_chest.name = "infinity-chest"
-infinity_chest.order = "infinity-chest"
-infinity_chest.icon = "__base__/graphics/icons/infinity-chest.png"
-infinity_chest.gui_mode = "admins" -- all, none, admins
-infinity_chest.erase_contents_when_mined = true
-infinity_chest.picture =
-{
-  filename = "__base__/graphics/entity/infinity-chest/infinity-chest.png",
-  width = 32,
-  height = 32
-}
-infinity_chest.logistic_mode = nil
-infinity_chest.logistic_slots_count = 12
-infinity_chest.minable = {mining_time = 1, result = "infinity-chest"}
-infinity_chest.resistances =
+local full_resistances =
 {
   {
     type = "fire",
@@ -12563,4 +13367,96 @@ infinity_chest.resistances =
     percent = 100
   }
 }
+
+local infinity_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-storage"])
+infinity_chest.type = "infinity-container"
+infinity_chest.name = "infinity-chest"
+infinity_chest.order = "infinity-chest"
+infinity_chest.icon = "__base__/graphics/icons/infinity-chest.png"
+infinity_chest.gui_mode = "admins" -- all, none, admins
+infinity_chest.erase_contents_when_mined = true
+infinity_chest.picture =
+{
+  filename = "__base__/graphics/entity/infinity-chest/infinity-chest.png",
+  width = 34,
+  height = 42
+}
+infinity_chest.logistic_mode = nil
+infinity_chest.logistic_slots_count = 12
+infinity_chest.minable = {mining_time = 0.1, result = "infinity-chest"}
+infinity_chest.resistances = full_resistances
 data:extend({infinity_chest})
+
+local infinity_pipe = util.table.deepcopy(data.raw["pipe"]["pipe"])
+infinity_pipe.type = "infinity-pipe"
+infinity_pipe.name = "infinity-pipe"
+infinity_pipe.icon = nil
+infinity_pipe.icons =
+{{
+  icon = "__base__/graphics/icons/pipe.png",
+  tint = {r = 0.5, g = 0.5, b = 1}
+}}
+infinity_pipe.gui_mode = "admins" -- all, none, admins
+infinity_pipe.minable = {mining_time = 0.1, result = "infinity-pipe"}
+infinity_pipe.resistances = full_resistances
+for name, picture in pairs(infinity_pipe.pictures) do
+  if name ~= "high_temperature_flow" and name ~= "middle_temperature_flow" and name ~= "low_temperature_flow" and name ~= "gas_flow" then
+    picture.tint = {r = 0.5, g = 0.5, b = 1}
+    if picture.hr_version then
+      picture.hr_version.tint = {r = 0.5, g = 0.5, b = 1}
+    end
+  end
+end
+data:extend({infinity_pipe})
+
+data:extend(
+{
+  {
+    type = "heat-interface",
+    name = "heat-interface",
+    icon = "__base__/graphics/entity/heat-interface/heat-interface.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "heat-interface"},
+    max_health = 150,
+    corpse = "small-remnants",
+    subgroup = "other",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    gui_mode = "admins", -- all, none, admins
+    resistances = full_resistances,
+    heat_buffer =
+    {
+      max_temperature = 1000,
+      specific_heat = "10MJ",
+      max_transfer = "10GW",
+      connections =
+      {
+        {
+          position = {0, 0},
+          direction = defines.direction.north
+        },
+        {
+          position = {0, 0},
+          direction = defines.direction.east
+        },
+        {
+          position = {0, 0},
+          direction = defines.direction.south
+        },
+        {
+          position = {0, 0},
+          direction = defines.direction.west
+        }
+      }
+    },
+    picture =
+    {
+      filename = "__base__/graphics/entity/heat-interface/heat-interface.png",
+      height = 32,
+      width = 32,
+      flags = {"no-crop"}
+    }
+  }
+}
+)

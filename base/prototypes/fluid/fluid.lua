@@ -11,9 +11,6 @@ data:extend(
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/crude-oil.png",
     icon_size = 32,
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
-    -- fuel_value = "8MJ",
     order = "a[fluid]-b[crude-oil]"
   },
 
@@ -27,8 +24,6 @@ data:extend(
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/heavy-oil.png",
     icon_size = 32,
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
     order = "a[fluid]-c[heavy-oil]"
   },
 
@@ -42,8 +37,6 @@ data:extend(
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/light-oil.png",
     icon_size = 32,
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
     order = "a[fluid]-d[light-oil]"
   },
 
@@ -57,8 +50,6 @@ data:extend(
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/petroleum-gas.png",
     icon_size = 32,
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
     order = "a[fluid]-e[petroleum-gas]"
   },
 
@@ -72,8 +63,6 @@ data:extend(
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/lubricant.png",
     icon_size = 32,
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
     order = "e[lubricant]"
   },
 
@@ -87,8 +76,6 @@ data:extend(
     max_temperature = 100,
     icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
     icon_size = 32,
-    pressure_to_speed_ratio = 0.4,
-    flow_to_energy_ratio = 0.59,
     order = "a[fluid]-f[sulfuric-acid]"
   }
 })

@@ -99,5 +99,29 @@ data:extend(
     icon_size = 32,
     subgroup = "virtual-signal-color",
     order = "d[colors]-[9black]"
-  }
+  },  
+  {
+    type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
+    name = "signal-check",
+    icon = "__base__/graphics/icons/checked-green.png",
+    icon_size = 32,
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[9checked]"
+  },  
+  {
+    type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
+    name = "signal-info",
+    icon = "__base__/graphics/icons/info.png",
+    icon_size = 32,
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[9info]"
+  },  
+  {
+    type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
+    name = "signal-dot",
+    icon = "__base__/graphics/icons/list-dot.png",
+    icon_size = 32,
+    subgroup = "virtual-signal-color",
+    order = "d[colors]-[9dot]"
+  },
 })

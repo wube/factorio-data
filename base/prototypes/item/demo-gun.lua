@@ -7,7 +7,6 @@ data:extend(
     name = "pistol",
     icon = "__base__/graphics/icons/pistol.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "a[basic-clips]-a[pistol]",
     attack_parameters =
@@ -38,7 +37,6 @@ data:extend(
     name = "submachine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "a[basic-clips]-b[submachine-gun]",
     attack_parameters =

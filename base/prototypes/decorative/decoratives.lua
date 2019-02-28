@@ -1,4 +1,3 @@
-local inspect = require('inspect')
 local autoplace_utils = require("autoplace_utils")
 
 local base_decorative_sprite_priority = "extra-high"
@@ -103,7 +102,8 @@ local function rock_autoplace_settgins(multiplier, order_suffix, rectangle)
     peak["water_max_range"] = water_range + 0.05
   end
 
-  return {
+  return
+  {
     order = "a[doodad]-a[rock]-" .. order_suffix,
     coverage = multiplier * 0.01,
     sharpness = 0.7,
@@ -130,7 +130,8 @@ local function decal_autoplace_settgins(noise_layer, rectangle)
     peak["water_max_range"] = water_range + 0.05
   end
 
-  return {
+  return
+  {
     order = "a[doodad]-b[decal]",
     sharpness = 0.3,
     max_probability = 0.01,
@@ -207,10 +208,8 @@ data:extend{
   {
     name = "brown-asterisk",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[asterisk]-a[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings("brown-fluff", 1, {{{35, 0.5}, {-15, 0.1}}}),
@@ -558,10 +557,8 @@ data:extend{
   {
     name = "green-asterisk",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[asterisk-mini]-b[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 1}, {0, 0.7}}}),
@@ -909,10 +906,8 @@ data:extend{
   {
     name = "green-asterisk-mini",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[asterisk-mini]-c[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
@@ -1133,10 +1128,8 @@ data:extend{
     -- it's actually green
     name = "brown-asterisk-mini",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[asterisk-mini]-c[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
@@ -1357,10 +1350,8 @@ data:extend{
   {
     name = "red-asterisk",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[asterisk]-c[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
@@ -1709,10 +1700,8 @@ data:extend{
   {
     name = "green-pita",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-c[pita]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
     autoplace =
@@ -1991,10 +1980,8 @@ data:extend{
   {
     name = "red-pita",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-c[pita]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
     autoplace =
@@ -2273,10 +2260,8 @@ data:extend{
   {
     name = "green-croton",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-d[croton]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "decorative",
     selectable_in_game = false,
     autoplace =
@@ -2635,10 +2620,8 @@ data:extend{
   {
     name = "red-croton",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-d[croton]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "decorative",
     selectable_in_game = false,
     autoplace =
@@ -2994,10 +2977,8 @@ data:extend{
   {
     name = "green-pita-mini",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-d[pita-mini]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "decorative",
     selectable_in_game = false,
     autoplace =
@@ -3273,10 +3254,8 @@ data:extend{
   {
     name = "brown-fluff",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-g[fluff]-a[normal]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     autoplace =
     {
@@ -3301,7 +3280,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-00.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 19,
         frame_count = 1,
@@ -3310,7 +3288,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-00.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 56,
           height = 39,
           frame_count = 1,
@@ -3321,7 +3298,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-01.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 29,
         height = 25,
         frame_count = 1,
@@ -3330,7 +3306,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-01.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 59,
           height = 50,
           frame_count = 1,
@@ -3341,7 +3316,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-02.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 32,
         height = 21,
         frame_count = 1,
@@ -3350,7 +3324,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-02.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 65,
           height = 41,
           frame_count = 1,
@@ -3361,7 +3334,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-03.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 31,
         height = 24,
         frame_count = 1,
@@ -3370,7 +3342,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-03.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 63,
           height = 47,
           frame_count = 1,
@@ -3381,7 +3352,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-04.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 36,
         height = 21,
         frame_count = 1,
@@ -3390,7 +3360,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-04.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 70,
           height = 43,
           frame_count = 1,
@@ -3401,7 +3370,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-05.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 23,
         frame_count = 1,
@@ -3410,7 +3378,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-05.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 57,
           height = 47,
           frame_count = 1,
@@ -3421,7 +3388,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-06.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 31,
         height = 23,
         frame_count = 1,
@@ -3430,7 +3396,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-06.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 62,
           height = 47,
           frame_count = 1,
@@ -3441,7 +3406,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-07.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 40,
         height = 23,
         frame_count = 1,
@@ -3450,7 +3414,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-07.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 81,
           height = 45,
           frame_count = 1,
@@ -3461,7 +3424,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-08.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 29,
         height = 24,
         frame_count = 1,
@@ -3470,7 +3432,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-08.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 58,
           height = 49,
           frame_count = 1,
@@ -3481,7 +3442,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-09.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 36,
         height = 24,
         frame_count = 1,
@@ -3490,7 +3450,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-09.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 71,
           height = 48,
           frame_count = 1,
@@ -3501,7 +3460,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-10.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 33,
         height = 28,
         frame_count = 1,
@@ -3510,7 +3468,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-10.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 67,
           height = 57,
           frame_count = 1,
@@ -3521,7 +3478,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-11.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 29,
         height = 19,
         frame_count = 1,
@@ -3530,7 +3486,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-11.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 59,
           height = 39,
           frame_count = 1,
@@ -3541,7 +3496,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-12.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 34,
         height = 25,
         frame_count = 1,
@@ -3550,7 +3504,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-12.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 66,
           height = 51,
           frame_count = 1,
@@ -3561,7 +3514,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-13.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 26,
         height = 20,
         frame_count = 1,
@@ -3570,7 +3522,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-13.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 53,
           height = 40,
           frame_count = 1,
@@ -3581,7 +3532,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-14.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 16,
         frame_count = 1,
@@ -3590,7 +3540,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-14.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 56,
           height = 32,
           frame_count = 1,
@@ -3601,7 +3550,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-15.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 26,
         height = 19,
         frame_count = 1,
@@ -3610,7 +3558,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-15.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 52,
           height = 39,
           frame_count = 1,
@@ -3621,7 +3568,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-16.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 19,
         frame_count = 1,
@@ -3630,7 +3576,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-16.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 56,
           height = 39,
           frame_count = 1,
@@ -3641,7 +3586,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-17.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 19,
         frame_count = 1,
@@ -3650,7 +3594,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-17.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 56,
           height = 39,
           frame_count = 1,
@@ -3661,7 +3604,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-18.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 19,
         frame_count = 1,
@@ -3670,7 +3612,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-18.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 56,
           height = 39,
           frame_count = 1,
@@ -3681,7 +3622,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff/brown-fluff-19.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 28,
         height = 19,
         frame_count = 1,
@@ -3690,7 +3630,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff/hr-brown-fluff-19.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 56,
           height = 39,
           frame_count = 1,
@@ -3703,10 +3642,8 @@ data:extend{
   {
     name = "brown-fluff-dry",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-g[fluff]-b[dry]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     autoplace =
     {
@@ -3734,7 +3671,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-00.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 34,
         height = 22,
         frame_count = 1,
@@ -3743,7 +3679,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-00.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 67,
           height = 44,
           frame_count = 1,
@@ -3754,7 +3689,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-01.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 38,
         height = 29,
         frame_count = 1,
@@ -3763,7 +3697,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-01.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 76,
           height = 58,
           frame_count = 1,
@@ -3774,7 +3707,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-02.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 37,
         height = 22,
         frame_count = 1,
@@ -3783,7 +3715,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-02.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 75,
           height = 44,
           frame_count = 1,
@@ -3794,7 +3725,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-03.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 33,
         height = 27,
         frame_count = 1,
@@ -3803,7 +3733,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-03.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 65,
           height = 54,
           frame_count = 1,
@@ -3814,7 +3743,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-04.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 44,
         height = 27,
         frame_count = 1,
@@ -3823,7 +3751,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-04.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 88,
           height = 55,
           frame_count = 1,
@@ -3834,7 +3761,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-05.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 31,
         height = 24,
         frame_count = 1,
@@ -3843,7 +3769,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-05.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 63,
           height = 49,
           frame_count = 1,
@@ -3854,7 +3779,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-06.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 37,
         height = 25,
         frame_count = 1,
@@ -3863,7 +3787,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-06.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 74,
           height = 50,
           frame_count = 1,
@@ -3874,7 +3797,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-07.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 45,
         height = 27,
         frame_count = 1,
@@ -3883,7 +3805,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-07.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 89,
           height = 53,
           frame_count = 1,
@@ -3894,7 +3815,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-08.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 35,
         height = 29,
         frame_count = 1,
@@ -3903,7 +3823,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-08.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 70,
           height = 58,
           frame_count = 1,
@@ -3914,7 +3833,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-09.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 42,
         height = 27,
         frame_count = 1,
@@ -3923,7 +3841,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-09.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 83,
           height = 53,
           frame_count = 1,
@@ -3934,7 +3851,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-10.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 38,
         height = 30,
         frame_count = 1,
@@ -3943,7 +3859,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-10.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 76,
           height = 61,
           frame_count = 1,
@@ -3954,7 +3869,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-11.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 35,
         height = 25,
         frame_count = 1,
@@ -3963,7 +3877,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-11.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 71,
           height = 50,
           frame_count = 1,
@@ -3974,7 +3887,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-12.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 40,
         height = 29,
         frame_count = 1,
@@ -3983,7 +3895,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-12.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 79,
           height = 57,
           frame_count = 1,
@@ -3994,7 +3905,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-13.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 30,
         height = 25,
         frame_count = 1,
@@ -4003,7 +3913,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-13.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 60,
           height = 50,
           frame_count = 1,
@@ -4014,7 +3923,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-14.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 33,
         height = 19,
         frame_count = 1,
@@ -4023,7 +3931,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-14.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 65,
           height = 38,
           frame_count = 1,
@@ -4034,7 +3941,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-15.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 33,
         height = 26,
         frame_count = 1,
@@ -4043,7 +3949,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-15.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 65,
           height = 51,
           frame_count = 1,
@@ -4054,7 +3959,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-16.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 26,
         height = 20,
         frame_count = 1,
@@ -4063,7 +3967,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-16.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 51,
           height = 39,
           frame_count = 1,
@@ -4074,7 +3977,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-17.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 24,
         height = 19,
         frame_count = 1,
@@ -4083,7 +3985,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-17.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 49,
           height = 38,
           frame_count = 1,
@@ -4094,7 +3995,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-18.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 26,
         height = 17,
         frame_count = 1,
@@ -4103,7 +4003,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-18.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 53,
           height = 35,
           frame_count = 1,
@@ -4114,7 +4013,6 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/brown-fluff-dry/brown-fluff-dry-19.png",
         priority = base_decorative_sprite_priority,
-        line_length = 1,
         width = 23,
         height = 17,
         frame_count = 1,
@@ -4123,7 +4021,6 @@ data:extend{
         {
           filename = "__base__/graphics/decorative/brown-fluff-dry/hr-brown-fluff-dry-19.png",
           priority = base_decorative_sprite_priority,
-          line_length = 1,
           width = 46,
           height = 33,
           frame_count = 1,
@@ -4136,10 +4033,8 @@ data:extend{
   {
     name = "garballo",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-i[garballo]-a[normal]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
     autoplace =
@@ -4487,10 +4382,8 @@ data:extend{
   {
     name = "garballo-mini-dry",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-i[garballo]-a[mini-dry]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     selectable_in_game = false,
     autoplace =
@@ -4836,12 +4729,293 @@ data:extend{
     }
   },
   {
-    name = "green-bush-mini",
+    name = "lichen",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selectable_in_game = false,
+    --autoplace =
+    --{
+    --  order = "a[doodad]-e[garballo]",
+    --  sharpness = 1,
+    --  max_probability = 1,
+    --  random_probability_penalty = 0.4,
+    --  coverage = 0.01;
+    --  peaks = autoplace_utils.peaks({{{35, 1}, {20, 0.4}}},
+    --  {
+    --    {
+    --      influence = 0.5,
+    --      noise_layer = "garballo",
+    --      noise_octaves_difference = -2,
+    --      noise_persistence = 0.7
+    --    }
+    --  })
+    --},
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-00.png",
+        priority = base_decorative_sprite_priority,
+        width = 164,
+        height = 112,
+        shift = util.by_pixel(-8, -6),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-00.png",
+          priority = base_decorative_sprite_priority,
+          width = 324,
+          height = 224,
+          shift = util.by_pixel(-7, -6),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-01.png",
+        priority = base_decorative_sprite_priority,
+        width = 160,
+        height = 116,
+        shift = util.by_pixel(4, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-01.png",
+          priority = base_decorative_sprite_priority,
+          width = 320,
+          height = 234,
+          shift = util.by_pixel(4, -1),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-02.png",
+        priority = base_decorative_sprite_priority,
+        width = 180,
+        height = 126,
+        shift = util.by_pixel(0, 2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-02.png",
+          priority = base_decorative_sprite_priority,
+          width = 372,
+          height = 252,
+          shift = util.by_pixel(2, 2),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-03.png",
+        priority = base_decorative_sprite_priority,
+        width = 170,
+        height = 108,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-03.png",
+          priority = base_decorative_sprite_priority,
+          width = 340,
+          height = 212,
+          shift = util.by_pixel(0, 1),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-04.png",
+        priority = base_decorative_sprite_priority,
+        width = 178,
+        height = 134,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-04.png",
+          priority = base_decorative_sprite_priority,
+          width = 350,
+          height = 278,
+          shift = util.by_pixel(1, 2),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-05.png",
+        priority = base_decorative_sprite_priority,
+        width = 132,
+        height = 108,
+        shift = util.by_pixel(-4, 2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-05.png",
+          priority = base_decorative_sprite_priority,
+          width = 278,
+          height = 218,
+          shift = util.by_pixel(-8, 2),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-06.png",
+        priority = base_decorative_sprite_priority,
+        width = 122,
+        height = 102,
+        shift = util.by_pixel(8, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-06.png",
+          priority = base_decorative_sprite_priority,
+          width = 242,
+          height = 202,
+          shift = util.by_pixel(8, 0),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-07.png",
+        priority = base_decorative_sprite_priority,
+        width = 142,
+        height = 106,
+        shift = util.by_pixel(-2, 6),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-07.png",
+          priority = base_decorative_sprite_priority,
+          width = 286,
+          height = 212,
+          shift = util.by_pixel(0, 6),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-08.png",
+        priority = base_decorative_sprite_priority,
+        width = 136,
+        height = 94,
+        shift = util.by_pixel(-14, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-08.png",
+          priority = base_decorative_sprite_priority,
+          width = 268,
+          height = 186,
+          shift = util.by_pixel(-13, -2),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-09.png",
+        priority = base_decorative_sprite_priority,
+        width = 138,
+        height = 78,
+        shift = util.by_pixel(-16, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-09.png",
+          priority = base_decorative_sprite_priority,
+          width = 270,
+          height = 152,
+          shift = util.by_pixel(-15, 1),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-10.png",
+        priority = base_decorative_sprite_priority,
+        width = 106,
+        height = 80,
+        shift = util.by_pixel(2, -10),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-10.png",
+          priority = base_decorative_sprite_priority,
+          width = 206,
+          height = 158,
+          shift = util.by_pixel(3, -10),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-11.png",
+        priority = base_decorative_sprite_priority,
+        width = 150,
+        height = 116,
+        shift = util.by_pixel(8, -6),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-11.png",
+          priority = base_decorative_sprite_priority,
+          width = 298,
+          height = 226,
+          shift = util.by_pixel(8, -5),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-12.png",
+        priority = base_decorative_sprite_priority,
+        width = 128,
+        height = 98,
+        shift = util.by_pixel(2, -10),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-12.png",
+          priority = base_decorative_sprite_priority,
+          width = 256,
+          height = 192,
+          shift = util.by_pixel(2, -9),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-13.png",
+        priority = base_decorative_sprite_priority,
+        width = 162,
+        height = 100,
+        shift = util.by_pixel(-2, -8),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-13.png",
+          priority = base_decorative_sprite_priority,
+          width = 324,
+          height = 196,
+          shift = util.by_pixel(-2, -7),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-14.png",
+        priority = base_decorative_sprite_priority,
+        width = 60,
+        height = 56,
+        shift = util.by_pixel(-2, 6),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-14.png",
+          priority = base_decorative_sprite_priority,
+          width = 120,
+          height = 110,
+          shift = util.by_pixel(-2, 6),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen/lichen-15.png",
+        priority = base_decorative_sprite_priority,
+        width = 70,
+        height = 60,
+        shift = util.by_pixel(12, 4),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen/hr-lichen-15.png",
+          priority = base_decorative_sprite_priority,
+          width = 146,
+          height = 116,
+          shift = util.by_pixel(10, 5),
+          scale = 0.5
+        }
+      }
+    }
+  },
+  {
+    name = "green-bush-mini",
+    type = "optimized-decorative",
+    order = "b[decorative]-j[bush]-a[mini]-a[green]",
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     autoplace =
     {
@@ -5060,10 +5234,8 @@ data:extend{
   {
     name = "green-hairy-grass",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
@@ -5411,10 +5583,8 @@ data:extend{
   {
     name = "green-carpet-grass",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
@@ -5638,10 +5808,8 @@ data:extend{
   {
     name = "white-desert-bush",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     autoplace =
     {
@@ -5996,10 +6164,8 @@ data:extend{
   {
     name = "green-desert-bush",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     autoplace =
     {
@@ -6226,10 +6392,8 @@ data:extend{
   {
     name = "red-desert-bush",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     autoplace =
     {
@@ -6584,10 +6748,8 @@ data:extend{
   {
     name = "green-small-grass",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-a[grass]-c[small]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    selection_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
@@ -6807,10 +6969,8 @@ data:extend{
   {
     name = "brown-carpet-grass",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     grows_through_rail_path = true,
     selectable_in_game = false,
     autoplace =
@@ -7042,10 +7202,8 @@ data:extend{
   {
     name = "brown-hairy-grass",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     grows_through_rail_path = true,
     render_layer = "decorative",
     selectable_in_game = false,
@@ -7407,7 +7565,7 @@ data:extend{
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 8,
+      mining_time = 3,
       results = {{name = "stone", amount_min = 24, amount_max = 50}, {name = "coal", amount_min = 24, amount_max = 50}},
       --count = 200
     },
@@ -7669,7 +7827,7 @@ data:extend{
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 5,
+      mining_time = 2,
       result = "stone",
       count = 20
     },
@@ -7977,11 +8135,9 @@ data:extend{
   {
     name = "rock-medium",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-l[rock]-c[medium]",
     selectable_in_game = false,
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
-    --selection_box = {{-1.3, -1.3}, {1.3, 1.3}},
     render_layer = "decorative",
     autoplace = rock_autoplace_settgins(0.5, "c[medium]", {{0, 0.3}, {1, 1}}),
     pictures =
@@ -8735,7 +8891,7 @@ data:extend{
     minable =
     {
       mining_particle = "stone-particle",
-      mining_time = 5,
+      mining_time = 2,
       results = {{name = "stone", amount_min = 19, amount_max = 25}}
     },
     loot =
@@ -8826,7 +8982,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-big-06.png",
-        width = 78,
+        width = 77,
         height = 66,
         shift = {0.16875, -0.1},
         hr_version =
@@ -8882,7 +9038,7 @@ data:extend{
       },
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-big-10.png",
-        width = 100,
+        width = 99,
         height = 77,
         shift = {0.325, -0.1},
         hr_version =
@@ -8983,10 +9139,8 @@ data:extend{
   {
     name = "sand-rock-medium",
     type = "optimized-decorative",
-    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
-    selection_box = {{-1.7, -0.6}, {1.7, 0.6}},
     selectable_in_game = false,
     render_layer = "floor",
     autoplace = rock_autoplace_settgins(0.4, "c[medium]", {{0, 0}, {0.4, 0.2}}),
@@ -9027,8 +9181,8 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-03.png",
         priority = base_decorative_sprite_priority,
-        width = 44,
-        height = 31,
+        width = 45,
+        height = 30,
         shift = {0.34375, 0.484375},
         hr_version =
         {
@@ -9108,7 +9262,7 @@ data:extend{
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-08.png",
         priority = base_decorative_sprite_priority,
         width = 62,
-        height = 47,
+        height = 46,
         shift = {0.59375, 0.328125},
         hr_version =
         {
@@ -9123,7 +9277,7 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-09.png",
         priority = base_decorative_sprite_priority,
-        width = 74,
+        width = 73,
         height = 38,
         shift = {0.5625, 0.3125},
         hr_version =
@@ -9172,7 +9326,7 @@ data:extend{
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-12.png",
         priority = base_decorative_sprite_priority,
         width = 53,
-        height = 43,
+        height = 42,
         shift = {0.390625, 0.453125},
         hr_version =
         {
@@ -9235,7 +9389,7 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-medium-16.png",
         priority = base_decorative_sprite_priority,
-        width = 73,
+        width = 72,
         height = 38,
         shift = {0.109375, 0.71875},
         hr_version =
@@ -9254,10 +9408,8 @@ data:extend{
   {
     name = "sand-rock-small",
     type = "optimized-decorative",
-    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
-    selection_box = {{-1.7, -0.6}, {1.7, 0.6}},
     selectable_in_game = false,
     render_layer = "floor",
     autoplace = rock_autoplace_settgins(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
@@ -9298,7 +9450,7 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-03.png",
         priority = base_decorative_sprite_priority,
-        width = 23,
+        width = 22,
         height = 20,
         shift = {0.328125, 0.53125},
         hr_version =
@@ -9490,7 +9642,7 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/sand-rock/sand-rock-small-15.png",
         priority = base_decorative_sprite_priority,
-        width = 29,
+        width = 28,
         height = 24,
         shift = {0.140625, 0.78125},
         hr_version =
@@ -12257,10 +12409,8 @@ data:extend{
   {
     name = "big-ship-wreck-grass",
     type = "optimized-decorative",
-    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck-grass]-a[big]",
     collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
-    selection_box = {{-2.8, -1.7}, {2.8, 1.7}},
     grows_through_rail_path = true,
     selectable_in_game = false,
     pictures =
@@ -12277,10 +12427,8 @@ data:extend{
   {
     name = "small-ship-wreck-grass",
     type = "optimized-decorative",
-    subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
-    selection_box = {{-1.7, -0.6}, {1.7, 0.6}},
     grows_through_rail_path = true,
     selectable_in_game = false,
     render_layer = "floor",

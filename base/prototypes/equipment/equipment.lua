@@ -120,7 +120,7 @@ data:extend(
       buffer_capacity = "20MJ",
       input_flow_limit = "200MW",
       output_flow_limit = "200MW",
-      usage_priority = "terciary"
+      usage_priority = "tertiary"
     },
     categories = {"armor"}
   },
@@ -146,7 +146,7 @@ data:extend(
       buffer_capacity = "100MJ",
       input_flow_limit = "1GW",
       output_flow_limit = "1GW",
-      usage_priority = "terciary"
+      usage_priority = "tertiary"
     },
     categories = {"armor"}
   },
@@ -171,7 +171,7 @@ data:extend(
       type = "electric",
       usage_priority = "primary-output"
     },
-    power = "10kW",
+    power = "30kW",
     categories = {"armor"}
   },
   {
@@ -220,39 +220,34 @@ data:extend(
       usage_priority = "secondary-input",
       buffer_capacity = "220kJ"
     },
+
     attack_parameters =
     {
-      type = "projectile",
-      ammo_category = "electric",
+      type = "beam",
       cooldown = 20,
-      damage_modifier = 15,
-      projectile_center = {0, 0},
-      projectile_creation_distance = 0.6,
       range = 15,
-      sound = make_laser_sounds(),
+      --source_direction_count = 64,
+      --source_offset = {0, -3.423489 / 4},
+      damage_modifier = 4,
       ammo_type =
       {
-        type = "projectile",
-        category = "electric",
-        energy_consumption = "200kJ",
-        projectile = "laser",
-        speed = 1,
+        category = "laser-turret",
+        energy_consumption = "50kJ",
         action =
         {
+          type = "direct",
+          action_delivery =
           {
-            type = "direct",
-            action_delivery =
-            {
-              {
-                type = "projectile",
-                projectile = "laser",
-                starting_speed = 0.28
-              }
-            }
+            type = "beam",
+            beam = "laser-beam",
+            max_length = 15,
+            duration = 20,
+            source_offset = {0, -1.31439 }
           }
         }
       }
     },
+
     automatic = true,
     categories = {"armor"}
   },

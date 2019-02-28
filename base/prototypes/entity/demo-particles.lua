@@ -10,6 +10,14 @@ function bloodparticlescale()
   return 1
 end
 
+function watertint()
+  return {r = 0.1, g = 0.6, b = 0.85}
+end
+
+function waterparticlescale()
+  return 1
+end
+
 data:extend(
 {
   {
@@ -33,7 +41,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-2.png",
@@ -49,7 +57,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-3.png",
@@ -65,7 +73,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-4.png",
@@ -81,7 +89,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     },
     shadows =
@@ -100,7 +108,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-2.png",
@@ -116,7 +124,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-3.png",
@@ -132,7 +140,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/iron-ore-particle/iron-ore-particle-shadow-4.png",
@@ -148,7 +156,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     }
   },
@@ -173,7 +181,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-2.png",
@@ -189,7 +197,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-3.png",
@@ -205,7 +213,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-4.png",
@@ -221,7 +229,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     },
     shadows =
@@ -240,7 +248,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-2.png",
@@ -256,7 +264,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-3.png",
@@ -272,7 +280,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/copper-ore-particle/copper-ore-particle-shadow-4.png",
@@ -288,7 +296,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     }
   },
@@ -313,7 +321,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-2.png",
@@ -329,7 +337,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-3.png",
@@ -345,7 +353,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-4.png",
@@ -361,7 +369,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     },
     shadows =
@@ -380,7 +388,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-2.png",
@@ -396,7 +404,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-3.png",
@@ -412,7 +420,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/stone-particle/stone-particle-shadow-4.png",
@@ -428,7 +436,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     }
   },
@@ -453,7 +461,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-2.png",
@@ -469,7 +477,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-3.png",
@@ -485,7 +493,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-4.png",
@@ -501,7 +509,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     },
     shadows =
@@ -520,7 +528,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-2.png",
@@ -536,7 +544,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-3.png",
@@ -552,7 +560,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       },
       {
         filename = "__base__/graphics/entity/coal-particle/coal-particle-shadow-4.png",
@@ -568,7 +576,7 @@ data:extend(
           height = 32,
           frame_count = 1,
           scale = 0.5
-          }
+        }
       }
     }
   },
@@ -1486,119 +1494,274 @@ data:extend(
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-01.png",
         priority = "extra-high",
-        width = 5,
-        height = 6,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(0,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-01.png",
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-02.png",
         priority = "extra-high",
-        width = 4,
-        height = 3,
-        frame_count = 6,
+        width = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-02.png",
+          line_length = 6,
+          width = 8,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-03.png",
         priority = "extra-high",
         width = 4,
-        height = 7,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-03.png",
+          line_length = 6,
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-04.png",
         priority = "extra-high",
-        width = 3,
-        height = 3,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-04.png",
+          line_length = 6,
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,-0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-05.png",
         priority = "extra-high",
         width = 4,
-        height = 5,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-05.png",
+          line_length = 6,
+          width = 6,
+          height = 4,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-06.png",
         priority = "extra-high",
-        width = 7,
-        height = 3,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-06.png",
+          line_length = 6,
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-07.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-07.png",
+          line_length = 6,
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-08.png",
         priority = "extra-high",
-        width = 9,
-        height = 10,
-        frame_count = 6,
+        width = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(2,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-08.png",
+          line_length = 6,
+          width = 10,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(1.5,0)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-09.png",
         priority = "extra-high",
-        width = 7,
-        height = 4,
-        frame_count = 6,
+        width = 6,
+        height = 6,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(2,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-09.png",
+          width = 10,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(1.5,-0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-10.png",
         priority = "extra-high",
-        width = 4,
-        height = 5,
-        frame_count = 6,
+        width = 6,
+        height = 6,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-10.png",
+          width = 10,
+          height = 10,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0.5,0)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-11.png",
         priority = "extra-high",
         width = 4,
-        height = 5,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(1,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-11.png",
+          width = 8,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(1,0)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-12.png",
         priority = "extra-high",
         width = 4,
-        height = 5,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = bloodtint()
-      },
-      {
-        filename = "__base__/graphics/entity/blood-particle/blood-particle-13.png",
-        priority = "extra-high",
-        width = 4,
-        height = 5,
-        frame_count = 6,
-        scale = bloodparticlescale(),
-        tint = bloodtint()
+        tint = bloodtint(),
+        shift = util.by_pixel(0,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-12.png",
+          line_length = 6,
+          width = 8,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = bloodtint(),
+          shift = util.by_pixel(0,0)
+        }
       }
     },
     shadows =
@@ -1606,119 +1769,272 @@ data:extend(
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-01.png",
         priority = "extra-high",
-        width = 5,
-        height = 6,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(0,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-01.png",
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-02.png",
         priority = "extra-high",
-        width = 4,
-        height = 3,
-        frame_count = 6,
+        width = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-02.png",
+          line_length = 6,
+          width = 8,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-03.png",
         priority = "extra-high",
         width = 4,
-        height = 7,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-03.png",
+          line_length = 6,
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-04.png",
         priority = "extra-high",
-        width = 3,
-        height = 3,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-04.png",
+          line_length = 6,
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,-0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-05.png",
         priority = "extra-high",
         width = 4,
-        height = 5,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-05.png",
+          line_length = 6,
+          width = 6,
+          height = 4,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-06.png",
         priority = "extra-high",
-        width = 7,
-        height = 3,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-06.png",
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-07.png",
         priority = "extra-high",
-        width = 5,
-        height = 5,
-        frame_count = 6,
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-07.png",
+          width = 6,
+          height = 6,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-08.png",
         priority = "extra-high",
-        width = 9,
-        height = 10,
-        frame_count = 6,
+        width = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(2,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-08.png",
+          line_length = 6,
+          width = 10,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(1.5,0)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-09.png",
         priority = "extra-high",
-        width = 7,
+        width = 6,
         height = 4,
-        frame_count = 6,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(2,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-09.png",
+          width = 10,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(1.5,-0.5)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-10.png",
         priority = "extra-high",
-        width = 4,
-        height = 5,
-        frame_count = 6,
+        width = 6,
+        height = 6,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-10.png",
+          width = 10,
+          height = 10,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0.5,0)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-11.png",
         priority = "extra-high",
         width = 4,
-        height = 5,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(1,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-11.png",
+          width = 8,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(1,0)
+        }
       },
       {
         filename = "__base__/graphics/entity/blood-particle/blood-particle-12.png",
         priority = "extra-high",
         width = 4,
-        height = 5,
-        frame_count = 6,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
         scale = bloodparticlescale(),
-        tint = shadowtint()
-      },
-      {
-        filename = "__base__/graphics/entity/blood-particle/blood-particle-13.png",
-        priority = "extra-high",
-        width = 4,
-        height = 5,
-        frame_count = 6,
-        scale = bloodparticlescale(),
-        tint = shadowtint()
+        tint = shadowtint(),
+        shift = util.by_pixel(0,0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/blood-particle/hr-blood-particle-12.png",
+          line_length = 6,
+          width = 8,
+          height = 8,
+          line_length = 6,
+          frame_count = 12,
+          scale = bloodparticlescale(),
+          tint = shadowtint(),
+          shift = util.by_pixel(0,0)
+        }
       }
     }
   },
@@ -2803,6 +3119,45 @@ data:extend(
         }
       }
     }
+  },
+  {
+    type = "particle",
+    name = "shallow-water-droplet-particle",
+    flags = {"not-on-map"},
+    life_time = 60,
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/entity/blood-particle/blood-particle-01.png",
+        priority = "extra-high",
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
+        scale = waterparticlescale(),
+        tint = watertint(),
+        shift = util.by_pixel(0,1)
+      }
+    },
+    shadows =
+    {
+      {
+        filename = "__base__/graphics/entity/blood-particle/blood-particle-01.png",
+        priority = "extra-high",
+        width = 4,
+        height = 4,
+        line_length = 6,
+        frame_count = 12,
+        scale = waterparticlescale(),
+        tint = shadowtint(),
+        shift = util.by_pixel(0,1)
+      }
+    },
+--  ended_in_water_trigger_effect =
+--  {
+--    type = "create-entity",
+--    entity_name = "water-splash"
+--  }
   }
 }
 )

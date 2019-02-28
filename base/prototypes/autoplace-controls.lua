@@ -42,7 +42,8 @@ data:extend(
     order = "b-f",
     category = "resource"
   },
-  {
+  
+--[[  {
     type = "autoplace-control",
     name = "grass",
     order = "c-a",
@@ -66,6 +67,7 @@ data:extend(
     order = "c-d",
     category = "terrain"
   },
+]]--
   {
     type = "autoplace-control",
     name = "trees",
@@ -76,9 +78,9 @@ data:extend(
   {
     type = "autoplace-control",
     name = "enemy-base",
-    richness = true,
+    richness = false,
     order = "c-z",
-    category = "terrain"
+    category = "enemy"
   }
 }
 )

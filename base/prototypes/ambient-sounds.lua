@@ -250,5 +250,14 @@ data:extend(
       filename = "__base__/sound/ambient/world-ambience-6.ogg",
       volume = 1.0
     }
+  },
+  {
+    type = "wind-sound",
+    name = "wind-1",
+    sound =
+    {
+      filename = "__base__/sound/wind/wind.ogg",
+      volume = 1.0
+    }
   }
 })

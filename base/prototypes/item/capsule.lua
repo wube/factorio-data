@@ -5,7 +5,6 @@ data:extend(
     name = "grenade",
     icon = "__base__/graphics/icons/grenade.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -42,7 +41,6 @@ data:extend(
     name = "cluster-grenade",
     icon = "__base__/graphics/icons/cluster-grenade.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -79,7 +77,6 @@ data:extend(
     name = "poison-capsule",
     icon = "__base__/graphics/icons/poison-capsule.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -116,7 +113,6 @@ data:extend(
     name = "slowdown-capsule",
     icon = "__base__/graphics/icons/slowdown-capsule.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -153,7 +149,6 @@ data:extend(
     name = "defender-capsule",
     icon = "__base__/graphics/icons/defender.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -190,7 +185,6 @@ data:extend(
     name = "distractor-capsule",
     icon = "__base__/graphics/icons/distractor.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -227,7 +221,6 @@ data:extend(
     name = "destroyer-capsule",
     icon = "__base__/graphics/icons/destroyer.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "throw",
@@ -264,7 +257,6 @@ data:extend(
     name = "discharge-defense-remote",
     icon = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "equipment-remote",
@@ -279,7 +271,7 @@ data:extend(
     name = "cliff-explosives",
     icon = "__base__/graphics/icons/cliff-explosives.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar", "hide-from-bonus-gui"},
+    flags = {"hide-from-bonus-gui"},
     capsule_action =
     {
       type = "destroy-cliffs",
@@ -308,6 +300,32 @@ data:extend(
         }
       }
     },
+    robot_action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            entity_name = "ground-explosion"
+          },
+          {
+            type = "create-entity",
+            entity_name = "small-scorchmark",
+            check_buildability = true
+          },
+          {
+            type = "destroy-cliffs",
+            radius = 1.5,
+            explosion = "explosion"
+          }
+        }
+      }
+    },
+
     subgroup = "terrain",
     order = "d[cliff-explosives]",
     stack_size = 20
@@ -317,7 +335,6 @@ data:extend(
     name = "artillery-targeting-remote",
     icon = "__base__/graphics/icons/artillery-targeting-remote.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     capsule_action =
     {
       type = "artillery-remote",

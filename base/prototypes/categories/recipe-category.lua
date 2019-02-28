@@ -31,5 +31,9 @@ data:extend(
   {
     type = "recipe-category",
     name = "centrifuging"
+  },
+  {
+    type = "recipe-category",
+    name = "basic-crafting"
   }
 })

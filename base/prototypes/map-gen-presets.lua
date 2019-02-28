@@ -14,6 +14,7 @@ data:extend(
       order = "b",
       basic_settings =
       {
+        property_expression_names = {},
         autoplace_controls =
         {
           ["iron-ore"] = { richness = "very-good"},
@@ -28,6 +29,10 @@ data:extend(
     ["marathon"] =
     {
       order = "c",
+      basic_settings =
+      {
+        property_expression_names = {},
+      },
       advanced_settings =
       {
         difficulty_settings =
@@ -43,6 +48,7 @@ data:extend(
       order = "d",
       basic_settings =
       {
+        property_expression_names = {},
         autoplace_controls =
         {
           ["enemy-base"] = { frequency = "very-high", size = "very-big"}
@@ -55,7 +61,11 @@ data:extend(
         {
           time_factor = 0.00002,
           pollution_factor = 0.00002
-        }
+        },
+        pollution =
+        {
+          ageing = 0.5
+        },
       }
     },
     ["death-world-marathon"] =
@@ -63,6 +73,7 @@ data:extend(
       order = "d",
       basic_settings =
       {
+        property_expression_names = {},
         autoplace_controls =
         {
           ["enemy-base"] = { frequency = "very-high", size = "very-big"}
@@ -75,6 +86,10 @@ data:extend(
         {
           time_factor = 0.00002,
           pollution_factor = 0.00002
+        },
+        pollution =
+        {
+          ageing = 0.5
         },
         difficulty_settings =
         {
@@ -89,37 +104,42 @@ data:extend(
       order = "e",
       basic_settings =
       {
+        property_expression_names = {},
         autoplace_controls =
         {
           coal =
           {
-            frequency = "very-low",
-            size = "high"
+            frequency = 0.33333333333,
+            size = 3
           },
           ["copper-ore"] =
           {
-            frequency = "very-low",
-            size = "high"
+            frequency = 0.33333333333,
+            size = 3
           },
           ["crude-oil"] =
           {
-            frequency = "low",
-            size = "high"
+            frequency = 0.33333333333,
+            size = 3
           },
           ["uranium-ore"] =
           {
-            frequency = "low",
-            size = "high"
+            frequency = 0.33333333333,
+            size = 3
           },
           ["iron-ore"] =
           {
-            frequency = "very-low",
-            size = "high"
+            frequency = 0.33333333333,
+            size = 3
           },
           stone =
           {
-            frequency = "very-low",
-            size = "high"
+            frequency = 0.33333333333,
+            size = 3
+          },
+          ["enemy-base"] =
+          {
+            size = 0.5
           }
         },
         terrain_segmentation = "very-low",
@@ -136,6 +156,69 @@ data:extend(
          enabled = false
         }
       }
-    }
+    },
+    ["ribbon-world"] =
+    {
+      order = "f",
+      basic_settings =
+      {
+        autoplace_controls =
+        {
+          coal =
+          {
+            frequency = 3,
+            size = 0.5,
+            richness = 2
+          },
+          ["copper-ore"] =
+          {
+            frequency = 3,
+            size = 0.5,
+            richness = 2
+          },
+          ["crude-oil"] =
+          {
+            frequency = 3,
+            size = 0.5,
+            richness = 2
+          },
+          ["uranium-ore"] =
+          {
+            frequency = 3,
+            size = 0.5,
+            richness = 2
+          },
+          ["iron-ore"] =
+          {
+            frequency = 3,
+            size = 0.5,
+            richness = 2
+          },
+          stone =
+          {
+            frequency = 3,
+            size = 0.5,
+            richness = 2
+          }
+        },
+        terrain_segmentation = 4,
+        water = 0.25,
+        starting_area = 3,
+        height = 128 --4 chunks, about 1 screen of height.
+      }
+    },
+    ["island"] =
+    {
+      order = "g",
+      basic_settings =
+      {
+        property_expression_names =
+        {
+          elevation = "0_17-island",
+        },
+        autoplace_controls = {},
+        terrain_segmentation = 1,
+      }
+    },
   }
 })

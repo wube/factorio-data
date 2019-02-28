@@ -18,7 +18,7 @@ local function make_cursor_box(x, y, side_length, shift)
               end
             end)()
    },
-   max_side_length = side_length,
+   max_side_length = side_length
   }
 end
 
@@ -55,6 +55,66 @@ end
 
 data:extend(
 {
+  {
+    type = "sprite",
+    name = "info",
+    filename = "__core__/graphics/icons/info-blue.png",
+    priority = "extra-high-no-scale",
+    width = 16,
+    height = 40,
+    flags = {"no-crop"},
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "restart_required",
+    filename = "__core__/graphics/icons/needs-restart.png",
+    priority = "extra-high-no-scale",
+    width = 16,
+    height = 40,
+    flags = {"no-crop"},
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "developer",
+    filename = "__core__/graphics/icons/developer.png",
+    priority = "extra-high-no-scale",
+    width = 16,
+    height = 40,
+    flags = {"no-crop"},
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "quantity-time",
+    filename = "__core__/graphics/icons/quantity-time.png",
+    priority = "extra-high-no-scale",
+    width = 28,
+    height = 40,
+    flags = {"no-crop"},
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "quantity-multiplier",
+    filename = "__core__/graphics/icons/quantity-multiplier.png",
+    priority = "extra-high-no-scale",
+    width = 20,
+    height = 40,
+    flags = {"no-crop"},
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "infinity",
+    filename = "__core__/graphics/icons/infinity.png",
+    priority = "extra-high-no-scale",
+    width = 24,
+    height = 32,
+    flags = {"no-crop", "icon"},
+    scale = 0.5
+  },
   {
     type = "utility-sprites",
     name = "default",
@@ -159,7 +219,7 @@ data:extend(
     },
     play =
     {
-      filename = "__core__/graphics/play-icon.png",
+      filename = "__core__/graphics/icons/play.png",
       priority = "medium",
       width = 32,
       height = 32,
@@ -167,10 +227,18 @@ data:extend(
     },
     pause =
     {
-      filename = "__core__/graphics/pause-icon.png",
+      filename = "__core__/graphics/icons/pause.png",
       priority = "medium",
       width = 128,
       height = 128,
+      flags = {"icon"}
+    },
+    stop =
+    {
+      filename = "__core__/graphics/icons/stop.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
       flags = {"icon"}
     },
     speed_down =
@@ -189,6 +257,62 @@ data:extend(
       height = 128,
       flags = {"icon"}
     },
+    editor_speed_down =
+    {
+      filename = "__core__/graphics/editor-speed-down-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    editor_pause =
+    {
+      filename = "__core__/graphics/editor-pause-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    editor_play =
+    {
+      filename = "__core__/graphics/editor-play-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    editor_speed_up =
+    {
+      filename = "__core__/graphics/editor-speed-up-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    tick_once =
+    {
+      filename = "__core__/graphics/editor-tick-once-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    tick_sixty =
+    {
+      filename = "__core__/graphics/editor-tick-sixty-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    tick_custom =
+    {
+      filename = "__core__/graphics/editor-tick-custom-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
     clear =
     {
       filename = "__core__/graphics/clear.png",
@@ -199,7 +323,7 @@ data:extend(
     },
     search_icon =
     {
-      filename = "__core__/graphics/search-icon.png",
+      filename = "__core__/graphics/icons/search.png",
       priority = "medium",
       width = 32,
       height = 32,
@@ -364,33 +488,52 @@ data:extend(
       width = 32,
       height = 32
     },
-    health_bar_green =
+    health_bar_green_pip =
     {
-      filename = "__core__/graphics/health-bar-green.png",
+      filename = "__core__/graphics/health-bar-pips.png",
       priority = "extra-high-no-scale",
-      width = 609,
-      height = 9
+      width = 7,
+      height = 7
     },
-    health_bar_yellow =
+    health_bar_yellow_pip =
     {
-      filename = "__core__/graphics/health-bar-yellow.png",
+      filename = "__core__/graphics/health-bar-pips.png",
       priority = "extra-high-no-scale",
-      width = 609,
-      height = 9
+      width = 7,
+      height = 7,
+      x = 7
     },
-    health_bar_red =
+    health_bar_red_pip =
     {
-      filename = "__core__/graphics/health-bar-red.png",
+      filename = "__core__/graphics/health-bar-pips.png",
       priority = "extra-high-no-scale",
-      width = 609,
-      height = 9
+      width = 7,
+      height = 7,
+      x = 14
     },
-    ghost_bar =
+    ghost_bar_pip =
     {
-      filename = "__core__/graphics/ghost-bar.png",
+      filename = "__core__/graphics/health-bar-pips.png",
       priority = "extra-high-no-scale",
-      width = 609,
-      height = 9
+      width = 7,
+      height = 7,
+      x = 21
+    },
+    bar_gray_pip =
+    {
+      filename = "__core__/graphics/health-bar-pips.png",
+      priority = "extra-high-no-scale",
+      width = 7,
+      height = 7,
+      x = 28
+    },
+    shield_bar_pip =
+    {
+      filename = "__core__/graphics/health-bar-pips.png",
+      priority = "extra-high-no-scale",
+      width = 7,
+      height = 7,
+      x = 35
     },
     hand =
     {
@@ -439,6 +582,14 @@ data:extend(
       flags = {"light"},
       width = 150,
       height = 150
+    },
+    light_cone =
+    {
+      filename = "__core__/graphics/light-cone.png",
+      priority = "extra-high",
+      flags = {"light"},
+      width = 200,
+      height = 200
     },
     color_effect =
     {
@@ -493,6 +644,7 @@ data:extend(
     zoom_to_world_ghost_building_enabled_modifier_icon = make_default_modifier_icon(),
     zoom_to_world_blueprint_enabled_modifier_icon = make_default_modifier_icon(),
     zoom_to_world_deconstruction_planner_enabled_modifier_icon = make_default_modifier_icon(),
+    zoom_to_world_upgrade_planner_enabled_modifier_icon = make_default_modifier_icon(),
     zoom_to_world_selection_tool_enabled_modifier_icon = make_default_modifier_icon(),
     worker_robot_battery_modifier_icon = make_default_modifier_icon(),
     laboratory_productivity_modifier_icon = make_default_modifier_icon(),
@@ -501,36 +653,49 @@ data:extend(
     max_failed_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
     max_successful_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
     artillery_range_modifier_icon = make_default_modifier_icon(),
+    character_additional_mining_categories_modifier_icon = make_default_modifier_icon(),
     hint_arrow_up =
     {
-      filename = "__core__/graphics/arrows/hint-orange-arrow-up.png",
+      filename = "__core__/graphics/gui-new.png",
       priority = "extra-high-no-scale",
-      width = 62,
-      height = 37,
+      x = 433,
+      y = 473,
+      width = 32,
+      height = 24,
+      scale = 0.5,
       flags = {"icon"}
     },
     hint_arrow_down =
     {
-      filename = "__core__/graphics/arrows/hint-orange-arrow-down.png",
+      filename = "__core__/graphics/gui-new.png",
       priority = "extra-high-no-scale",
-      width = 71,
-      height = 35,
+      x = 465,
+      y = 473,
+      width = 32,
+      height = 24,
+      scale = 0.5,
       flags = {"icon"}
     },
     hint_arrow_right =
     {
-      filename = "__core__/graphics/arrows/hint-orange-arrow-right.png",
+      filename = "__core__/graphics/gui-new.png",
       priority = "extra-high-no-scale",
-      width = 38,
-      height = 73,
+      x = 458,
+      y = 441,
+      width = 24,
+      height = 32,
+      scale = 0.5,
       flags = {"icon"}
     },
     hint_arrow_left =
     {
-      filename = "__core__/graphics/arrows/hint-orange-arrow-left.png",
+      filename = "__core__/graphics/gui-new.png",
       priority = "extra-high-no-scale",
-      width = 43,
-      height = 73,
+      x = 433,
+      y = 441,
+      width = 24,
+      height = 32,
+      scale = 0.5,
       flags = {"icon"}
     },
     rail_path_not_possible =
@@ -560,14 +725,6 @@ data:extend(
     slot_icon_blueprint =
     {
       filename = "__core__/graphics/slot-icon-blueprint.png",
-      priority = "medium",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    slot_icon_tool =
-    {
-      filename = "__core__/graphics/slot-icon-tool.png",
       priority = "medium",
       width = 32,
       height = 32,
@@ -629,6 +786,14 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    slot_icon_upgrade =
+    {
+      filename = "__core__/graphics/slot-icon-upgrade.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     slot =
     {
       filename = "__core__/graphics/slot.png",
@@ -645,7 +810,8 @@ data:extend(
       height = 32,
       x = 43,
       y = 77,
-      flags = {"icon"}
+      flags = {"icon"},
+      scale = 1
     },
     equipment_collision =
     {
@@ -655,7 +821,8 @@ data:extend(
       height = 32,
       x = 43,
       y = 109,
-      flags = {"icon"}
+      flags = {"icon"},
+      scale = 1
     },
     green_circle =
     {
@@ -688,6 +855,14 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
+    upgrade_mark =
+    {
+      filename = "__core__/graphics/upgrade.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
     confirm_slot =
     {
       filename = "__core__/graphics/confirm.png",
@@ -715,6 +890,22 @@ data:extend(
     tile_editor_icon =
     {
       filename = "__core__/graphics/tile-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    clone_editor_icon =
+    {
+      filename = "__core__/graphics/clone-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    scripting_editor_icon=
+    {
+      filename = "__core__/graphics/scripting-editor-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
@@ -760,6 +951,14 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
+    none_editor_icon =
+    {
+      filename = "__core__/graphics/none-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
     force_editor_icon =
     {
       filename = "__core__/graphics/force-editor-icon.png",
@@ -771,6 +970,30 @@ data:extend(
     surface_editor_icon =
     {
       filename = "__core__/graphics/surface-editor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    time_editor_icon =
+    {
+      filename = "__core__/graphics/time-editor-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    cliff_editor_icon =
+    {
+      filename = "__core__/graphics/cliff-editor-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    paint_bucket_icon =
+    {
+      filename = "__core__/graphics/paint-bucket-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
@@ -795,6 +1018,22 @@ data:extend(
     cursor_icon =
     {
       filename = "__core__/graphics/cursor-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    area_icon =
+    {
+      filename = "__core__/graphics/area-icon.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    line_icon =
+    {
+      filename = "__core__/graphics/line-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
@@ -894,7 +1133,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 224,
       height = 46,
-      hr_version = {
+      hr_version =
+      {
         filename = "__core__/graphics/hr-copper-wire.png",
         priority = "extra-high-no-scale",
         flags = { "no-crop" },
@@ -909,7 +1149,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 224,
       height = 46,
-      hr_version = {
+      hr_version =
+      {
         filename = "__core__/graphics/hr-green-wire.png",
         priority = "extra-high-no-scale",
         flags = { "no-crop" },
@@ -924,7 +1165,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 224,
       height = 46,
-      hr_version = {
+      hr_version =
+      {
         filename = "__core__/graphics/hr-red-wire.png",
         priority = "extra-high-no-scale",
         flags = { "no-crop" },
@@ -939,7 +1181,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 224,
       height = 46,
-      hr_version = {
+      hr_version =
+      {
         filename = "__core__/graphics/hr-wire-highlight.png",
         priority = "extra-high-no-scale",
         flags = { "no-crop" },
@@ -954,7 +1197,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 224,
       height = 46,
-      hr_version = {
+      hr_version =
+      {
         filename = "__core__/graphics/hr-wire-highlight.png",
         priority = "extra-high-no-scale",
         flags = { "no-crop" },
@@ -969,7 +1213,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 224,
       height = 46,
-      hr_version = {
+      hr_version =
+      {
         filename = "__core__/graphics/hr-wire-shadow.png",
         priority = "extra-high-no-scale",
         width = 448,
@@ -1007,6 +1252,14 @@ data:extend(
       priority = "high",
       width = 64,
       height = 64,
+      flags = {"icon"}
+    },
+    down_arrow =
+    {
+      filename = "__core__/graphics/down-arrow.png",
+      priority = "high",
+      width = 32,
+      height = 16,
       flags = {"icon"}
     },
     enter =
@@ -1253,9 +1506,20 @@ data:extend(
     {
       filename = "__core__/graphics/clouds.png",
       priority = "low",
+      flags = { "linear-minification", "linear-magnification" },
       width = 256,
       height = 256,
       frame_count = 2
+    },
+    refresh_white =
+    {
+      filename = "__core__/graphics/refresh-white-animation.png",
+      flags = {"icon"},
+      width = 32,
+      height = 32,
+      scale = 0.5,
+      frame_count = 16,
+      animation_speed = 16
     },
     indication_arrow =
     {
@@ -1263,7 +1527,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     fluid_indication_arrow =
     {
@@ -1271,7 +1535,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 48,
       height = 48,
-      scale = 0.5,
+      scale = 0.5
     },
     fluid_indication_arrow_both_ways =
     {
@@ -1279,7 +1543,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 48,
       height = 48,
-      scale = 0.5,
+      scale = 0.5
     },
     heat_exchange_indication =
     {
@@ -1287,7 +1551,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 48,
       height = 48,
-      scale = 0.5,
+      scale = 0.5
     },
     rail_planner_indication_arrow =
     {
@@ -1295,7 +1559,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 82,
       height = 44,
-      scale = 0.5,
+      scale = 0.5
     },
     rail_planner_indication_arrow_too_far =
     {
@@ -1303,7 +1567,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 82,
       height = 44,
-      scale = 0.5,
+      scale = 0.5
     },
     indication_line =
     {
@@ -1311,7 +1575,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     short_indication_line =
     {
@@ -1319,7 +1583,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     rail_signal_placement_indicator =
     {
@@ -1327,7 +1591,7 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     train_stop_placement_indicator =
     {
@@ -1336,7 +1600,7 @@ data:extend(
       width = 64,
       height = 64,
       x = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     placement_indicator_leg =
     {
@@ -1345,7 +1609,7 @@ data:extend(
       width = 64,
       height = 64,
       x = 128,
-      scale = 0.5,
+      scale = 0.5
     },
     grey_rail_signal_placement_indicator =
     {
@@ -1354,7 +1618,7 @@ data:extend(
       width = 64,
       height = 64,
       y = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     grey_placement_indicator_leg =
     {
@@ -1364,7 +1628,7 @@ data:extend(
       height = 64,
       x = 128,
       y = 64,
-      scale = 0.5,
+      scale = 0.5
     },
     battery_indicator =
     {
@@ -1410,13 +1674,6 @@ data:extend(
           y = 20
         }
       }
-    },
-    reset =
-    {
-      filename = "__core__/graphics/reset.png",
-      priority = "extra-high-no-scale",
-      width = 128,
-      height = 128
     },
     show_logistics_network_in_map_view =
     {
@@ -1474,9 +1731,9 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
-    selected_train_stop_in_map_view =
+    custom_tag_in_map_view =
     {
-      filename = "__core__/graphics/selected-train-stop-in-map-view.png",
+      filename = "__core__/graphics/custom-tag-in-map-view.png",
       priority = "extra-high-no-scale",
       width = 32,
       height = 32,
@@ -1500,7 +1757,7 @@ data:extend(
     {
       filename = "__core__/graphics/white-square.png",
       priority = "extra-high-no-scale",
-      flags = { "alpha-mask" },
+      flags = { "alpha-mask", "always-compressed" },
       width = 1,
       height = 1
     },
@@ -1521,7 +1778,6 @@ data:extend(
       scale = 0.6,
       flags = {"icon"}
     },
-
     explosion_chart_visualization =
     {
       filename = "__core__/graphics/artillery-impact-map-visualization.png",
@@ -1534,5 +1790,319 @@ data:extend(
       frame_count = 24,
       blend_mode = "additive"
     },
+    gps_map_icon =
+    {
+      filename = "__core__/graphics/gps-map-placeholder.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
+    underground_remove_belts =
+    {
+      filename = "__core__/graphics/arrows/underground-lines-remove.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      scale = 0.5
+    },
+    underground_remove_pipes =
+    {
+      filename = "__core__/graphics/arrows/underground-lines-remove.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      scale = 0.5
+    },
+    ghost_cursor =
+    {
+      filename = "__core__/graphics/ghost-cursor.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+
+    expand =
+    {
+      filename = "__core__/graphics/icons/expand.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+
+    expand_dark =
+    {
+      filename = "__core__/graphics/icons/expand-dark.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+
+    collapse =
+    {
+      filename = "__core__/graphics/icons/collapse.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+
+    collapse_dark =
+    {
+      filename = "__core__/graphics/icons/collapse-dark.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+
+    ----- new icons
+
+    close_white =
+    {
+      filename = "__core__/graphics/icons/close-white.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    close_black =
+    {
+      filename = "__core__/graphics/icons/close-black.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    close_fat =
+    {
+      filename = "__core__/graphics/icons/close-fat.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    dropdown =
+    {
+      filename = "__core__/graphics/icons/dropdown.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    expand_dots =
+    {
+      filename = "__core__/graphics/icons/open-panel-options-8x16.png",
+      priority = "extra-high-no-scale",
+      width = 8,
+      height = 16,
+      scale = 1,
+      flags = {"icon"}
+    },
+    expand_dots_white =
+    {
+      filename = "__core__/graphics/icons/open-panel-options-8x16-white.png",
+      priority = "extra-high-no-scale",
+      width = 8,
+      height = 16,
+      scale = 1,
+      flags = {"icon"}
+    },
+    export =
+    {
+      filename = "__core__/graphics/icons/export.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    import =
+    {
+      filename = "__core__/graphics/icons/import.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    map_exchange_string =
+    {
+      filename = "__core__/graphics/icons/map-exchange-string.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    preset =
+    {
+      filename = "__core__/graphics/icons/preset.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    refresh =
+    {
+      filename = "__core__/graphics/icons/refresh.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    reset =
+    {
+      filename = "__core__/graphics/icons/reset.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    reset_white =
+    {
+      filename = "__core__/graphics/icons/reset-white.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    shuffle =
+    {
+      filename = "__core__/graphics/icons/shuffle.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    sync_mods =
+    {
+      filename = "__core__/graphics/icons/sync-mods.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    trash =
+    {
+      filename = "__core__/graphics/icons/trash.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    trash_white =
+    {
+      filename = "__core__/graphics/icons/trash-white.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    warning =
+    {
+      filename = "__core__/graphics/icons/warning.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    color_picker =
+    {
+      filename = "__core__/graphics/icons/color-picker.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    map =
+    {
+      filename = "__core__/graphics/icons/map.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    center =
+    {
+      filename = "__core__/graphics/icons/center.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    station_name =
+    {
+      filename = "__core__/graphics/icons/station-name.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    not_available =
+    {
+      filename = "__core__/graphics/icons/not-available.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
+    mod_dependency_arrow =
+    {
+      filename = "__core__/graphics/icons/go-to-minibutton-arrow.png",
+      priority = "extra-high-no-scale",
+      size = 16,
+      flags = {"icon"}
+    },
+    missing_mod_icon =
+    {
+      filename = "__core__/graphics/missing-thumbnail.png",
+      size = 144,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    warning_white =
+    {
+      filename = "__core__/graphics/icons/warning-white.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    check_mark_white =
+    {
+      filename = "__core__/graphics/icons/check-mark-white.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    downloading =
+    {
+      filename = "__core__/graphics/icons/downloading.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    downloading_white =
+    {
+      filename = "__core__/graphics/icons/downloading-white.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    downloaded =
+    {
+      filename = "__core__/graphics/icons/downloaded.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    downloaded_white =
+    {
+      filename = "__core__/graphics/icons/downloaded-white.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    }
   }
 })

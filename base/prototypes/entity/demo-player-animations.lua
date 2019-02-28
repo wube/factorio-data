@@ -1,4 +1,4 @@
-playeranimations = 
+playeranimations =
 {
   level1 =
   {
@@ -187,73 +187,6 @@ playeranimations =
         frame_count = 22,
         direction_count = 8,
         animation_speed = 0.15,
-        draw_as_shadow = true,
-        scale = 0.5
-      }
-    },
-    mining_hands =
-    {
-      filename = "__base__/graphics/entity/player/level1_mining_hands.png",
-      width = 48,
-      height = 54,
-      shift = util.by_pixel(0.0,-12.0),
-      frame_count = 14,
-      direction_count = 8,
-      animation_speed = 0.6,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/player/hr-level1_mining_hands.png",
-        width = 94,
-        height = 106,
-        shift = util.by_pixel(0.0,-12.5),
-        frame_count = 14,
-        direction_count = 8,
-        animation_speed = 0.6,
-        scale = 0.5
-      }
-    },
-    mining_hands_mask =
-    {
-      filename = "__base__/graphics/entity/player/level1_mining_hands_mask.png",
-      width = 38,
-      height = 46,
-      shift = util.by_pixel(0.0,-16.0),
-      frame_count = 14,
-      direction_count = 8,
-      animation_speed = 0.6,
-      apply_runtime_tint = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/player/hr-level1_mining_hands_mask.png",
-        width = 76,
-        height = 90,
-        shift = util.by_pixel(0.0,-16.0),
-        frame_count = 14,
-        direction_count = 8,
-        animation_speed = 0.6,
-        apply_runtime_tint = true,
-        scale = 0.5
-      }
-    },
-    mining_hands_shadow =
-    {
-      filename = "__base__/graphics/entity/player/level1_mining_hands_shadow.png",
-      width = 48,
-      height = 34,
-      shift = util.by_pixel(0.0,1.0),
-      frame_count = 14,
-      direction_count = 8,
-      animation_speed = 0.6,
-      draw_as_shadow = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/player/hr-level1_mining_hands_shadow.png",
-        width = 94,
-        height = 66,
-        shift = util.by_pixel(0.0,1.0),
-        frame_count = 14,
-        direction_count = 8,
-        animation_speed = 0.6,
         draw_as_shadow = true,
         scale = 0.5
       }

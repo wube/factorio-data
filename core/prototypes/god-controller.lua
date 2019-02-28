@@ -10,6 +10,6 @@ data:extend(
     item_pickup_distance = 1,
     loot_pickup_distance = 2,
     movement_speed = 0.5,
-    mining_speed = 0.1
+    mining_speed = 1
   }
 })

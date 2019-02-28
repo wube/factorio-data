@@ -105,7 +105,7 @@ function math3d.matrix4x4.rotation_x(phi)
      {       1,        0,        0,     0 },
      {       0,  cos_phi, -sin_phi,     0 },
      {       0,  sin_phi,  cos_phi,     0 },
-     {       0,        0,        0,     1 },
+     {       0,        0,        0,     1 }
   }
 end
 
@@ -117,7 +117,7 @@ function math3d.matrix4x4.rotation_y(phi)
      { cos_phi,        0,  sin_phi,     0 },
      {       0,        1,        0,     0 },
      {-sin_phi,        0,  cos_phi,     0 },
-     {       0,        0,        0,     1 },
+     {       0,        0,        0,     1 }
   }
 end
 
@@ -129,7 +129,7 @@ function math3d.matrix4x4.rotation_z(phi)
      { cos_phi, -sin_phi,        0,     0 },
      { sin_phi,  cos_phi,        0,     0 },
      {       0,        0,        1,     0 },
-     {       0,        0,        0,     1 },
+     {       0,        0,        0,     1 }
   }
 end
 
@@ -139,7 +139,7 @@ function math3d.matrix4x4.translation(x, y, z)
      {       1,        0,        0,     x },
      {       0,        1,        0,     y },
      {       0,        0,        1,     z },
-     {       0,        0,        0,     1 },
+     {       0,        0,        0,     1 }
   }
 end
 
@@ -153,7 +153,7 @@ function math3d.matrix4x4.scale(x, y, z)
      {       x,        0,        0,     0 },
      {       0,        y,        0,     0 },
      {       0,        0,        z,     0 },
-     {       0,        0,        0,     1 },
+     {       0,        0,        0,     1 }
   }
 end
 
@@ -167,7 +167,7 @@ function math3d.matrix4x4.transpose(mat)
      math3d.matrix4x4.column(mat, 1),
      math3d.matrix4x4.column(mat, 2),
      math3d.matrix4x4.column(mat, 3),
-     math3d.matrix4x4.column(mat, 4),
+     math3d.matrix4x4.column(mat, 4)
    }
 end
 
@@ -179,7 +179,7 @@ function math3d.matrix4x4.mul_mat(m1, m2)
      { dot(m1[1], t[1]), dot(m1[1], t[2]), dot(m1[1], t[3]), dot(m1[1], t[4]) },
      { dot(m1[2], t[1]), dot(m1[2], t[2]), dot(m1[2], t[3]), dot(m1[2], t[4]) },
      { dot(m1[3], t[1]), dot(m1[3], t[2]), dot(m1[3], t[3]), dot(m1[3], t[4]) },
-     { dot(m1[4], t[1]), dot(m1[4], t[2]), dot(m1[4], t[3]), dot(m1[4], t[4]) },
+     { dot(m1[4], t[1]), dot(m1[4], t[2]), dot(m1[4], t[3]), dot(m1[4], t[4]) }
   }
 end
 
@@ -188,7 +188,7 @@ function math3d.matrix4x4.mul_vec3(mat, vec3)
   {
     math3d.vector3.dot_product(vec3, mat[1]) + mat[1][4],
     math3d.vector3.dot_product(vec3, mat[2]) + mat[2][4],
-    math3d.vector3.dot_product(vec3, mat[3]) + mat[3][4],
+    math3d.vector3.dot_product(vec3, mat[3]) + mat[3][4]
   }
 end
 

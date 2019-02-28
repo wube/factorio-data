@@ -61,9 +61,9 @@ data:extend(
     },
     results=
     {
-      {type="fluid", name="heavy-oil", amount=35},
-      {type="fluid", name="light-oil", amount=15},
-      {type="fluid", name="petroleum-gas", amount=20}
+      {type="fluid", name="heavy-oil", amount=90},
+      {type="fluid", name="light-oil", amount=20},
+      {type="fluid", name="petroleum-gas", amount=10}
     },
     icon = "__base__/graphics/icons/fluid/coal-liquefaction.png",
     icon_size = 32,
@@ -77,7 +77,7 @@ data:extend(
     name = "heavy-oil-cracking",
     category = "chemistry",
     enabled = false,
-    energy_required = 3,
+    energy_required = 2,
     ingredients =
     {
       {type="fluid", name="water", amount=30},
@@ -105,7 +105,7 @@ data:extend(
     name = "light-oil-cracking",
     category = "chemistry",
     enabled = false,
-    energy_required = 3,
+    energy_required = 2,
     ingredients =
     {
       {type="fluid", name="water", amount=30},
@@ -180,7 +180,7 @@ data:extend(
     type = "recipe",
     name = "solid-fuel-from-light-oil",
     category = "chemistry",
-    energy_required = 3,
+    energy_required = 2,
     ingredients =
     {
       {type="fluid", name="light-oil", amount=10}
@@ -206,7 +206,7 @@ data:extend(
     type = "recipe",
     name = "solid-fuel-from-petroleum-gas",
     category = "chemistry",
-    energy_required = 3,
+    energy_required = 2,
     ingredients =
     {
       {type="fluid", name="petroleum-gas", amount=20}
@@ -232,7 +232,7 @@ data:extend(
     type = "recipe",
     name = "solid-fuel-from-heavy-oil",
     category = "chemistry",
-    energy_required = 3,
+    energy_required = 2,
     ingredients =
     {
       {type="fluid", name="heavy-oil", amount=20}

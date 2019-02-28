@@ -33,11 +33,6 @@ local fluid_per_barrel = 50
 local energy_per_fill = 0.2
 -- Crafting energy per barrel empty recipe
 local energy_per_empty = 0.2
--- If the fill/empty recipes effect production statistics
-local hide_barreling_from_production_stats = true
--- If the fill/empty recipes should be included in the list of valid recipes things can use when calculating raw materials
-local allow_barreling_decomposition = false
-
 
 local function get_technology(name)
   local technologies = data.raw["technology"]
@@ -95,7 +90,6 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
     localised_name = {"item-name.filled-barrel", {"fluid-name." .. fluid.name}},
     icons = generate_barrel_item_icons(fluid, empty_barrel_item),
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "fill-barrel",
     order = "b[" .. name .. "]",
     stack_size = empty_barrel_item.stack_size
@@ -186,15 +180,14 @@ local function create_fill_barrel_recipe(item, fluid)
     icon_size = 32,
     ingredients =
     {
-      {type = "fluid", name = fluid.name, amount = fluid_per_barrel},
-      {type = "item", name = empty_barrel_name, amount = 1},
+      {type = "fluid", name = fluid.name, amount = fluid_per_barrel, catalyst_amount = fluid_per_barrel},
+      {type = "item", name = empty_barrel_name, amount = 1, catalyst_amount = 1}
     },
     results=
     {
-      {type = "item", name = item.name, amount = 1}
+      {type = "item", name = item.name, amount = 1, catalyst_amount = 1}
     },
-    hide_from_stats = hide_barreling_from_production_stats,
-    allow_decomposition = allow_barreling_decomposition
+    allow_decomposition = false
   }
 
   data:extend({recipe})
@@ -217,15 +210,14 @@ local function create_empty_barrel_recipe(item, fluid)
     icon_size = 32,
     ingredients =
     {
-      {type = "item", name = item.name, amount = 1}
+      {type = "item", name = item.name, amount = 1, catalyst_amount = 1}
     },
     results=
     {
-      {type = "fluid", name = fluid.name, amount = fluid_per_barrel},
-      {type = "item", name = empty_barrel_name, amount = 1}
+      {type = "fluid", name = fluid.name, amount = fluid_per_barrel, catalyst_amount = fluid_per_barrel},
+      {type = "item", name = empty_barrel_name, amount = 1, catalyst_amount = 1}
     },
-    hide_from_stats = hide_barreling_from_production_stats,
-    allow_decomposition = allow_barreling_decomposition
+    allow_decomposition = false
   }
 
   data:extend({recipe})
@@ -298,6 +290,7 @@ end
 local function process_fluids(fluids, technology, empty_barrel_item)
   if not fluids or not technology or not empty_barrel_item or not empty_barrel_item.icon then
     log("Auto barrel generation is disabled: " .. get_disabled_reason(fluids, technology, empty_barrel_item) .. ".")
+    return
   end
 
   for name,fluid in pairs(fluids) do

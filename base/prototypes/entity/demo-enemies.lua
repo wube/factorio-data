@@ -1,14 +1,14 @@
 require ("prototypes.entity.demo-spawner-animation")
 require ("prototypes.entity.demo-biter-animations")
 require ("prototypes.entity.demo-enemy-sounds")
-require ("prototypes.entity.demo-enemy-autoplace-utils")
+local enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
+require ("prototypes.entity.demo-biter-ai-settings")
 
-smallbiterscale = 0.5
-small_biter_tint1 = {r=0.56, g=0.46, b=0.42, a=0.65}
-small_biter_tint2 = {r=1, g=0.63, b=0, a=0.4}
+small_biter_scale = 0.5
+small_biter_tint1 = {r=0.60, g=0.58, b=0.51, a=1}
+small_biter_tint2 = {r=0.9 , g=0.83, b=0.54, a=1}
 
---biter_spawner_tint = {r=0.92, g=0.54, b=0, a=0.5}
-biter_spawner_tint = {r=1.0, g=1.0, b=1.0, a=1.0}
+biter_spawner_tint = {r=0.92, g=0.54, b=0, a=0.5}
 
 data:extend(
 {
@@ -21,6 +21,13 @@ data:extend(
     max_health = 15,
     order = "b-b-a",
     subgroup="enemies",
+    resistances =
+    {
+      {
+        type = "acid",
+        percent = 100
+      }
+    },
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
@@ -29,14 +36,13 @@ data:extend(
       type = "projectile",
       range = 0.5,
       cooldown = 35,
-      ammo_category = "melee",
       ammo_type = make_unit_melee_ammo_type(7),
       sound = make_biter_roars(0.4),
-      animation = biterattackanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
+      animation = biterattackanimation(small_biter_scale, small_biter_tint1, small_biter_tint2)
     },
     vision_distance = 30,
     movement_speed = 0.2,
-    distance_per_frame = 0.1,
+    distance_per_frame = 0.125,
     pollution_to_join_attack = 200,
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
@@ -45,9 +51,12 @@ data:extend(
     dying_explosion = "blood-explosion-small",
     dying_sound =  make_biter_dying_sounds(0.4),
     working_sound =  make_biter_calls(0.3),
-    run_animation = biterrunanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
+    run_animation = biterrunanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
+    --idle_animation = biteridleanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
+    ai_settings = biter_ai_settings
   },
 
+  add_biter_die_animation(small_biter_scale, small_biter_tint1, small_biter_tint2,
   {
     type = "corpse",
     name = "small-biter-corpse",
@@ -57,12 +66,9 @@ data:extend(
     selectable_in_game = false,
     subgroup="corpses",
     order = "c[corpse]-a[biter]-a[small]",
-    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"},
-    dying_speed = 0.04,
-    time_before_removed = 15 * 60 * 60,
-    final_render_layer = "corpse",
-    animation = biterdieanimation(smallbiterscale, small_biter_tint1, small_biter_tint2)
-  },
+    flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"}
+  }),
+
 
   {
     type = "unit-spawner",
@@ -115,6 +121,7 @@ data:extend(
     },
     healing_per_tick = 0.02,
     collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
+    map_generator_bounding_box = {{-4.2, -3.2}, {3.2, 3.2}},
     selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
     -- in ticks per 1 pu
     pollution_absorbtion_absolute = 20,
@@ -129,6 +136,10 @@ data:extend(
       spawner_idle_animation(1, biter_spawner_tint),
       spawner_idle_animation(2, biter_spawner_tint),
       spawner_idle_animation(3, biter_spawner_tint)
+    },
+    integration =
+    {
+      sheet = spawner_integration()
     },
     result_units = (function()
                      local res = {}
@@ -150,7 +161,7 @@ data:extend(
     spawning_spacing = 3,
     max_spawn_shift = 0,
     max_richness_for_spawn_shift = 100,
-    autoplace = enemy_spawner_autoplace(0),
+    autoplace = enemy_autoplace.enemy_spawner_autoplace(0),
     call_for_help_radius = 50
   },
 
@@ -174,6 +185,10 @@ data:extend(
       spawner_die_animation(1, biter_spawner_tint),
       spawner_die_animation(2, biter_spawner_tint),
       spawner_die_animation(3, biter_spawner_tint)
+    },
+    ground_patch =
+    {
+      sheet = spawner_integration()
     }
   }
 })

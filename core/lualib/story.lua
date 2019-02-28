@@ -1,25 +1,31 @@
 require("mod-gui")
 
 function story_init_helpers(story)
-  story_points_by_name = {}
-  story_branches = {}
+  story.helpers = make_helpers(story)
+end
+
+function make_helpers(story)
+  local helpers = {} 
+  helpers.story_points_by_name = {}
+  helpers.story_branches = {}
   for story_index, data in pairs(story) do
     if (story_index ~= "update-functions") then
-      story_branches[story_index] = data
+      helpers.story_branches[story_index] = data
       for index, item in pairs(data) do
         if item.name ~= nil then
-          story_points_by_name[item.name] = {}
-          story_points_by_name[item.name].story_index = story_index
-          story_points_by_name[item.name].position = index
+          helpers.story_points_by_name[item.name] = {}
+          helpers.story_points_by_name[item.name].story_index = story_index
+          helpers.story_points_by_name[item.name].position = index
         end
       end
     else
       story_update_table = data
     end
   end
+  return helpers
 end
 
-function story_init(player)
+function story_init(story_table,player)
   local result = {}
   -- List of names of currently active update functions
   result.updates = {}
@@ -35,6 +41,7 @@ function story_init(player)
   if player then
     result.player = player
   end
+  result.helpers = make_helpers(story_table)
   return result
 end
 
@@ -44,7 +51,7 @@ function story_update(story, event, next_level, onwin)
     global.last_built_position = event.created_entity.position
   end
   on_gui_click(event)
-  local branches = story_branches[story.story_index]
+  local branches = story.helpers.story_branches[story.story_index]
   local starting_story_index = story.story_index
   local starting_story_position = story.story_position
   local branch = branches[story.story_position]
@@ -105,7 +112,7 @@ function story_update(story, event, next_level, onwin)
       return
     end
     story.story_position = story.story_position + 1
-    story.current_story_started_at = event.tick
+    story.current_story_started_at = game.ticks_played
     if story.story_position > #branches then
       if onwin ~= nil then
         onwin()
@@ -135,14 +142,15 @@ function story_remove_update(story, name)
 end
 
 function story_jump_to(story, name)
-  local story_point = story_points_by_name[name]
+  local story_point = story.helpers.story_points_by_name[name]
   story.story_index = story_point.story_index
   story.story_position = story_point.position
+  --story.current_story_started_at = game.ticks_played
   if story.story_position ~= 1 then
     local test = story.story_index + 1
-    local branch = story_branches[story.story_index]
+    local branch = story.helpers.story_branches[story.story_index]
     if branch[story.story_position - 1].action ~= nil then
-      branch[story.story_position - 1].action()
+      branch[story.story_position - 1].action(nil, story)
     end
   end
 end
@@ -151,7 +159,11 @@ function story_elapsed(story, event, seconds)
   return event.tick - story.current_story_started_at > seconds * 60
 end
 
-function story_elapsed_check(seconds)
+function story_check_passed(story, seconds)
+  return story.current_story_started_at + (seconds*60) < game.ticks_played
+end
+
+function story_elapsed_check(seconds,story_optional)
   return function(event, current_story) return story_elapsed(current_story, event, seconds) end
 end
 
@@ -448,7 +460,8 @@ function export_entities(param)
           if unit_number then
             local index = index_map[unit_number]
             if index then
-              connection_definitions[index] = {
+              connection_definitions[index] =
+              {
                 wire = definition.wire,
                 source_circuit_id = definition.source_circuit_id,
                 target_circuit_id = definition.target_circuit_id
@@ -615,7 +628,6 @@ end
 
 function add_button(gui)
   local button = gui.add{type = "button", name = "story_continue_button", caption = {"continue"}}
-  button.style.font = "default"
   global.continue = false
   return button
 end
@@ -627,26 +639,24 @@ function on_gui_click(event)
   local name = element.name
   local player = game.players[event.player_index]
   if name == "story_continue_button" then
-    if element.style.name == "fake_disabled_button" then return end
+    if not element.enabled then return end
     global.continue = true
     set_continue_button_style(function (button)
       if button.valid then
-        button.style = "fake_disabled_button"
-        button.style.font = "default"
+        button.enabled = false
       end
     end)
-    element.style = "fake_disabled_button"
-    element.style.font = "default"
+    element.enabled = false
     return
   end
   if name == "message_log_close_button" then
-    element.parent.style.visible = not element.parent.style.visible
+    element.parent.visible = not element.parent.visible
     return
   end
   if name == "toggle_message_log_button" then
     local gui = player.gui.center
     if gui.message_log_frame then
-      gui.message_log_frame.style.visible = not gui.message_log_frame.style.visible
+      gui.message_log_frame.visible = not gui.message_log_frame.visible
     end
     element.sprite = "message_log_icon"
     return
@@ -654,7 +664,7 @@ function on_gui_click(event)
   if name == "toggle_objective_button" then
     local gui = player.gui.goal
     if gui then
-      gui.style.visible = not gui.style.visible
+      gui.visible = not gui.visible
     end
     return
   end
@@ -689,7 +699,7 @@ function deconstruct_on_tick(entities, seconds)
   if entities then
     seconds = seconds or 1
     local duration = seconds*60
-    
+
     --Shuffle the table
     local rand = math.random
     local size = #entities
@@ -697,12 +707,12 @@ function deconstruct_on_tick(entities, seconds)
       local index = rand(size)
       entities[k], entities[index] = entities[index], entities[k]
     end
-    
+
     local new_table = {}
     for k = 1, duration do
       new_table[tick+k] = {}
     end
-    
+
     local insert = table.insert
     for k, entity in pairs (entities) do
       local tick_to_deconstruct = 1 + tick + (k % duration)
@@ -712,14 +722,14 @@ function deconstruct_on_tick(entities, seconds)
     global.entities_to_deconstruct_on_tick.end_tick = tick + duration
     return
   end
-  
+
   if tick > global.entities_to_deconstruct_on_tick.end_tick then
     global.entities_to_deconstruct_on_tick = nil
     return true
   end
-  
+
   local entities = global.entities_to_deconstruct_on_tick[tick]
-  
+
   if entities then
     for k, entity in pairs (entities) do
       if entity.valid then
@@ -729,7 +739,7 @@ function deconstruct_on_tick(entities, seconds)
     end
     global.entities_to_deconstruct_on_tick[tick] = nil
   end
-  
+
 end
 
 function recreate_entities_on_tick(entities, param, seconds)
@@ -759,14 +769,14 @@ function recreate_entities_on_tick(entities, param, seconds)
     global.entities_to_build_on_tick = nil
     return true
   end
-  
+
   local entities = global.entities_to_build_on_tick[tick]
-  
+
   if entities then
     recreate_entities(entities, global.entities_to_build_on_tick.param)
     global.entities_to_build_on_tick[tick] = nil
   end
-  
+
 end
 
 function flying_congrats(position)

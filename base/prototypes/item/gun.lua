@@ -7,7 +7,6 @@ data:extend(
     name = "flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "e[flamethrower]",
     attack_parameters =
@@ -53,7 +52,7 @@ data:extend(
     name = "vehicle-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory", "hidden"},
+    flags = {"hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[vehicle-machine-gun]",
     attack_parameters =
@@ -84,7 +83,7 @@ data:extend(
     name = "tank-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory", "hidden"},
+    flags = {"hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[tank-machine-gun]",
     attack_parameters =
@@ -93,7 +92,6 @@ data:extend(
       ammo_category = "bullet",
       cooldown = 4,
       movement_slow_down_factor = 0.7,
-      damage_modifier = 2,
       shell_particle =
       {
         name = "shell-particle",
@@ -117,7 +115,7 @@ data:extend(
     name = "tank-flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory", "hidden"},
+    flags = {"hidden"},
     subgroup = "gun",
     order = "b[flamethrower]-b[tank-flamethrower]",
     attack_parameters =
@@ -162,7 +160,6 @@ data:extend(
     name = "land-mine",
     icon = "__base__/graphics/icons/land-mine.png",
     icon_size = 32,
-    flags = {"goes-to-quickbar"},
     damage_radius = 5,
     subgroup = "gun",
     order = "f[land-mine]",
@@ -175,7 +172,6 @@ data:extend(
     name = "rocket-launcher",
     icon = "__base__/graphics/icons/rocket-launcher.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "d[rocket-launcher]",
     attack_parameters =
@@ -185,7 +181,7 @@ data:extend(
       movement_slow_down_factor = 0.8,
       cooldown = 60,
       projectile_creation_distance = 0.6,
-      range = 22,
+      range = 36,
       projectile_center = {-0.17, 0},
       sound =
       {
@@ -202,7 +198,6 @@ data:extend(
     name = "shotgun",
     icon = "__base__/graphics/icons/shotgun.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "b[shotgun]-a[basic]",
     attack_parameters =
@@ -229,7 +224,6 @@ data:extend(
     name = "combat-shotgun",
     icon = "__base__/graphics/icons/combat-shotgun.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     subgroup = "gun",
     order = "b[shotgun]-a[combat]",
     attack_parameters =
@@ -256,7 +250,7 @@ data:extend(
     name = "railgun",
     icon = "__base__/graphics/icons/railgun.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory", "hidden"},
+    flags = {"hidden"},
     subgroup = "gun",
     order = "c[railgun]",
     attack_parameters =
@@ -282,7 +276,7 @@ data:extend(
     name = "tank-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory", "hidden"},
+    flags = {"hidden"},
     subgroup = "gun",
     order = "z[tank]-a[cannon]",
     attack_parameters =
@@ -309,7 +303,7 @@ data:extend(
     name = "artillery-wagon-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory", "hidden"},
+    flags = {"hidden"},
     subgroup = "gun",
     order = "z[artillery]-a[cannon]",
     attack_parameters =

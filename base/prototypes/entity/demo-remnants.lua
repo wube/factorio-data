@@ -24,6 +24,8 @@ data:extend(
     final_render_layer = "remnants",
     subgroup = "remnants",
     order="d[remnants]-a[generic]-c[big]",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = false,
     animation =
     {
       {
@@ -74,6 +76,8 @@ data:extend(
     order="d[remnants]-a[generic]-b[medium]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = false,
     animation =
     {
       {
@@ -124,6 +128,8 @@ data:extend(
     order="d[remnants]-a[generic]-a[small]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = false,
     animation =
     {
       {
@@ -167,7 +173,8 @@ data:extend(
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "remnants",
     order="d[remnants]-b[rail]-a[straight]",
-    selection_box = {{-0.6, -0.8}, {0.6, 0.8}},
+    collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
+    selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
     selectable_in_game = false,
     tile_width = 2,
     tile_height = 2,
@@ -184,7 +191,8 @@ data:extend(
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "remnants",
     order="d[remnants]-b[rail]-b[curved]",
-    collision_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
+    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selectable_in_game = false,
     tile_width = 4,
@@ -204,6 +212,7 @@ data:extend(
     flags = {"placeable-neutral"},
     subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-a[big]-a",
+    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 50,
     collision_box = {{-2.2, -1.5}, {2.2, 1.5}},
     selection_box = {{-2.7, -1.5}, {2.7, 1.5}},
@@ -226,6 +235,7 @@ data:extend(
     flags = {"placeable-neutral"},
     subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-a[big]-b",
+    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 50,
     collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
     selection_box = {{-2, -1.5}, {2, 1.5}},
@@ -248,6 +258,7 @@ data:extend(
     flags = {"placeable-neutral"},
     subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-a[big]-c",
+    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 50,
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-2, -1.5}, {2, 1.5}},
@@ -364,14 +375,15 @@ data:extend(
     final_render_layer = "ground-patch-higher2",
     subgroup = "remnants",
     order="d[remnants]-b[scorchmark]-a[small]",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = true,
     animation =
     {
       width = 110,
       height = 90,
       frame_count = 1,
       direction_count = 1,
-      filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
-      variation_count = 3
+      filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png"
     },
     ground_patch =
     {
@@ -380,7 +392,6 @@ data:extend(
         width = 110,
         height = 90,
         frame_count = 1,
-        direction_count = 1,
         x = 110 * 2,
         filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
         variation_count = 3
@@ -393,7 +404,6 @@ data:extend(
         width = 110,
         height = 90,
         frame_count = 1,
-        direction_count = 1,
         x = 110,
         filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
         variation_count = 3

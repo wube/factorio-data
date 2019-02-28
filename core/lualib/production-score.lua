@@ -76,7 +76,7 @@ local function get_product_list()
     if launch_products then
       for k, launch_product in pairs (launch_products) do
         product_list[launch_product.name] = product_list[launch_product.name] or {}
-        launch_product_amount = launch_product.amount or launch_product.probability * ((launch_product.amount_min + launch_product.amount_max) / 2) or 1
+        local launch_product_amount = launch_product.amount or launch_product.probability * ((launch_product.amount_min + launch_product.amount_max) / 2) or 1
         if launch_product_amount > 0 then
           for k, silo_products in pairs (rocket_silos) do
             local this_silo = {}
@@ -98,7 +98,8 @@ local default_param = function()
   {
     ingredient_exponent = 1.025, --[[The exponent for increase in value for each additional ingredient formula exponent^#ingredients-2]]
     raw_resource_price = 2.5, --[[If a raw resource isn't given a price, it uses this price]]
-    seed_prices = {
+    seed_prices =
+    {
       ["iron-ore"] = 3.1,
       ["copper-ore"] = 3.6,
       ["coal"] = 3,
@@ -202,7 +203,7 @@ end
 production_score = {}
 
 production_score.get_default_param = function()
-  return default_param()
+return default_param()
 end
 
 production_score.generate_price_list = function(param)
@@ -307,47 +308,6 @@ production_score.get_production_scores = function(price_list)
     scores[force.name] = math.floor(score)
   end
   return scores
-end
-
-production_score.on_rocket_launched = function(event)
-  --In current base game (0.16.17), when a rocket is launched, the rocket parts + satellite are not added to consumed statistics, so this event handler will add them to the statistics.
-  local silo = event.rocket_silo
-  if not (silo and silo.valid) then return end
-  local item_stats = silo.force.item_production_statistics
-  local fluid_stats = silo.force.fluid_production_statistics
-  local recipe = silo.get_recipe()
-  local required_parts = silo.prototype.rocket_parts_required
-  for k, product in pairs (recipe.products) do
-    local amount = (product.amount or ((product.amount_min + product.amount_max) / 2) * product.probability) * required_parts
-    if product.type == "item" then
-      item_stats.on_flow(product.name, - amount)
-    elseif product.type == "fluid" then
-      fluid_stats.on_flow(product.name, - amount)
-    end
-  end
-  local rocket = event.rocket
-  if not (rocket and rocket.valid) then return end
-  for k = 1, 10 do
-    local inventory = rocket.get_inventory(k)
-    if not inventory then break end
-    for name, count in pairs (inventory.get_contents()) do
-      item_stats.on_flow(name, - count)
-    end
-  end
-end
-
-production_score.on_player_crafted_item = function(event)
-  --In current base game (0.16.17), when a player crafts and item, the recipes ingredients are not added to the consmed statistics, so this event handler will add them to the statistics.
-  local player = game.players[event.player_index]
-  if not (player and player.valid) then return end
-  local recipe = event.recipe
-  if not (recipe and recipe.valid) then return end
-  local item_stats = player.force.item_production_statistics
-  for k, ingredient in pairs (recipe.ingredients) do
-    if ingredient.type == "item" then
-      item_stats.on_flow(ingredient.name, - ingredient.amount)
-    end
-  end
 end
 
 return production_score

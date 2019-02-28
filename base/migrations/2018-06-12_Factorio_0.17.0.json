@@ -1,0 +1,14 @@
+{
+  "recipe":
+  [
+    [ "wall", "stone-wall" ]
+  ],
+  "item":
+  [
+    [ "wall", "stone-wall" ]
+  ],
+  "entity":
+  [
+    [ "wall", "stone-wall" ]
+  ]
+}

@@ -5,7 +5,6 @@ data:extend(
     name = "light-armor",
     icon = "__base__/graphics/icons/light-armor.png",
     icon_size = 32,
-    flags = {"goes-to-main-inventory"},
     resistances =
     {
       {
@@ -16,7 +15,7 @@ data:extend(
       {
         type = "acid",
         decrease = 0,
-        percent = 10
+        percent = 20
       },
       {
         type = "explosion",
@@ -29,10 +28,10 @@ data:extend(
         percent = 10
       }
     },
-    durability = 1000,
     subgroup = "armor",
     order = "a[light-armor]",
-    stack_size = 10
+    stack_size = 1,
+    infinite = true
   }
 }
 )

@@ -1,3 +1,5 @@
+acid_tint_medium = {r = 0.35, g = 0.56, b = 0.04, a = 1}
+acid_tint_big = {r = 0.35, g = 0.56, b = 0.04, a = 1}
 
 capsule_smoke =
 {
@@ -48,8 +50,7 @@ data:extend(
       height = 33,
       priority = "high",
       blend_mode = "additive"
-    },
-    speed = 0.15
+    }
   },
   {
     type = "projectile",
@@ -83,8 +84,7 @@ data:extend(
       width = 7,
       height = 14,
       priority = "high"
-    },
-    speed = 0.15
+    }
   },
   {
     type = "projectile",
@@ -178,13 +178,11 @@ data:extend(
               type = "create-trivial-smoke",
               smoke_name = "nuclear-smoke",
               offset_deviation = {{-1, -1}, {1, 1}},
-              slow_down_factor = 1,
               starting_frame = 3,
               starting_frame_deviation = 5,
               starting_frame_speed = 0,
               starting_frame_speed_deviation = 5,
-              speed_from_center = 0.5,
-              speed_deviation = 0.2
+              speed_from_center = 0.5
           },
           {
             type = "create-entity",
@@ -205,6 +203,7 @@ data:extend(
             {
               type = "area",
               target_entities = false,
+              trigger_from_target = true,
               repeat_count = 2000,
               radius = 35,
               action_delivery =

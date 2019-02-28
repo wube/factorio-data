@@ -57,7 +57,7 @@ data:extend(
     energy_required = 50,
     ingredients =
     {
-      {"processing-unit", 20},
+      {"rocket-control-unit", 10},
       {"explosives", 10},
       {"uranium-235", 30}
     },

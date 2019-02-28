@@ -8,7 +8,12 @@ end
 local fireutil = {}
 
 function fireutil.foreach(table_, fun_)
-  for k, tab in pairs(table_) do fun_(tab) end
+  for k, tab in pairs(table_) do
+    fun_(tab)
+    if tab.hr_version then
+      fun_(tab.hr_version)
+    end
+  end
   return table_
 end
 
@@ -24,11 +29,25 @@ function fireutil.flamethrower_turret_extension_animation(shft, opts)
       frame_count = opts and opts.frame_count or m_frame_count,
       line_length = opts and opts.line_length or m_line_length,
       run_mode = opts and opts.run_mode or "forward",
-      width = 78,
-      height = 65,
+      width = 80,
+      height = 64,
       direction_count = 1,
       axially_symmetrical = false,
-      shift = {0, -0.796875}
+      shift = util.by_pixel(-2, -26),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-extension.png",
+        priority = "medium",
+        frame_count = opts and opts.frame_count or m_frame_count,
+        line_length = opts and opts.line_length or m_line_length,
+        run_mode = opts and opts.run_mode or "forward",
+        width = 152,
+        height = 128,
+        direction_count = 1,
+        axially_symmetrical = false,
+        shift = util.by_pixel(0, -26),
+        scale = 0.5
+      }
     },
     -- mask
     {
@@ -37,12 +56,27 @@ function fireutil.flamethrower_turret_extension_animation(shft, opts)
       frame_count = opts and opts.frame_count or m_frame_count,
       line_length = opts and opts.line_length or m_line_length,
       run_mode = opts and opts.run_mode or "forward",
-      width = 74,
-      height = 61,
+      width = 76,
+      height = 60,
       direction_count = 1,
       axially_symmetrical = false,
-      shift = {0, -0.796875},
-      apply_runtime_tint = true
+      shift = util.by_pixel(-2, -26),
+      apply_runtime_tint = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-extension-mask.png",
+        flags = { "mask" },
+        frame_count = opts and opts.frame_count or m_frame_count,
+        line_length = opts and opts.line_length or m_line_length,
+        run_mode = opts and opts.run_mode or "forward",
+        width = 144,
+        height = 120,
+        direction_count = 1,
+        axially_symmetrical = false,
+        shift = util.by_pixel(0, -26),
+        apply_runtime_tint = true,
+        scale = 0.5
+      }
     },
     -- shadow
     {
@@ -50,12 +84,26 @@ function fireutil.flamethrower_turret_extension_animation(shft, opts)
       frame_count = opts and opts.frame_count or m_frame_count,
       line_length = opts and opts.line_length or m_line_length,
       run_mode = opts and opts.run_mode or "forward",
-      width = 91,
-      height = 56,
+      width = 92,
+      height = 60,
       direction_count = 1,
       axially_symmetrical = false,
-      shift = {1.04688, 0},
-      draw_as_shadow = true
+      shift = util.by_pixel(32, -2),
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-extension-shadow.png",
+        frame_count = opts and opts.frame_count or m_frame_count,
+        line_length = opts and opts.line_length or m_line_length,
+        run_mode = opts and opts.run_mode or "forward",
+        width = 180,
+        height = 114,
+        direction_count = 1,
+        axially_symmetrical = false,
+        shift = util.by_pixel(33, -1),
+        draw_as_shadow = true,
+        scale = 0.5
+      }
     }
   }
 
@@ -70,10 +118,10 @@ end
 
 fireutil.turret_gun_shift =
 {
-  north = {0, -0.3125},
-  east = {0.625, 0.3125},
-  south = {0,  0.625},
-  west = { -0.46875, 0.3125}
+  north = util.by_pixel(0.0, -6.0),
+  east = util.by_pixel(18.5, 9.5),
+  south = util.by_pixel(0.0, 19.0),
+  west = util.by_pixel(-12.0, 5.5)
 }
 
 fireutil.turret_model_info =
@@ -136,7 +184,8 @@ function fireutil.flamethrower_turret_extension(opts)
     return opts
   end
 
-  return {
+  return
+  {
     north = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.north, set_direction(opts, "north")),
     east = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.east, set_direction(opts, "east")),
     south = fireutil.flamethrower_turret_extension_animation(fireutil.turret_gun_shift.south, set_direction(opts, "south")),
@@ -151,26 +200,55 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     priority = "medium",
     counterclockwise = true,
     line_length = 8,
-    width = 78,
-    height = 64,
+    width = 82,
+    height = 66,
     frame_count = 1,
     axially_symmetrical = false,
     direction_count = 64,
-    shift = {0, -0.75}
+    shift = util.by_pixel(-2, -26),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun.png",
+      priority = "medium",
+      counterclockwise = true,
+      line_length = 8,
+      width = 158,
+      height = 128,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 64,
+      shift = util.by_pixel(-1, -25),
+      scale = 0.5
+    }
   }
   local glow_layer =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-gun-active.png",
     counterclockwise = true,
     line_length = 8,
-    width = 78,
-    height = 63,
+    width = 82,
+    height = 66,
     frame_count = 1,
     axially_symmetrical = false,
     direction_count = 64,
-    shift = {0, -0.765625},
+    shift = util.by_pixel(-2, -26),
     tint = make_color(1, 1, 1, 0.5),
-    blend_mode = "additive"
+    blend_mode = "additive",
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-active.png",
+      counterclockwise = true,
+      line_length = 8,
+      width = 158,
+      height = 126,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 64,
+      shift = util.by_pixel(-1, -25),
+      tint = make_color(1, 1, 1, 0.5),
+      blend_mode = "additive",
+      scale = 0.5
+    }
   }
   local mask_layer =
   {
@@ -178,26 +256,55 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     flags = { "mask" },
     counterclockwise = true,
     line_length = 8,
-    width = 72,
-    height = 57,
+    width = 74,
+    height = 56,
     frame_count = 1,
     axially_symmetrical = false,
     direction_count = 64,
-    shift = {0, -0.859375},
-    apply_runtime_tint = true
+    shift = util.by_pixel(-2, -28),
+    apply_runtime_tint = true,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-mask.png",
+      flags = { "mask" },
+      counterclockwise = true,
+      line_length = 8,
+      width = 144,
+      height = 112,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 64,
+      shift = util.by_pixel(-1, -28),
+      apply_runtime_tint = true,
+      scale = 0.5
+    }
   }
   local shadow_layer =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-gun-shadow.png",
     counterclockwise = true,
     line_length = 8,
-    width = 91,
-    height = 57,
+    width = 90,
+    height = 56,
     frame_count = 1,
     axially_symmetrical = false,
     direction_count = 64,
-    shift = {0.984375, 0.015625},
-    draw_as_shadow = true
+    shift = util.by_pixel(32, 0),
+    draw_as_shadow = true,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-shadow.png",
+      counterclockwise = true,
+      line_length = 8,
+      width = 182,
+      height = 116,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 64,
+      shift = util.by_pixel(31, -1),
+      draw_as_shadow = true,
+      scale = 0.5
+    }
   }
 
   local ret_layers = opts and opts.attacking and { diffuse_layer, glow_layer, mask_layer, shadow_layer }
@@ -209,7 +316,8 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
 end
 
 function fireutil.flamethrower_prepared_animation(opts)
-  return {
+  return
+  {
     north = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.north, opts),
     east = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.east, opts),
     south = fireutil.flamethrower_turret_prepared_animation(fireutil.turret_gun_shift.south, opts),
@@ -542,7 +650,8 @@ end
 function fireutil.flamethrower_turret_pipepictures()
   local pipe_sprites = pipepictures()
 
-  return {
+  return
+  {
     north = set_shift({0, 1}, util.table.deepcopy(pipe_sprites.straight_vertical)),
     south = set_shift({0, -1}, util.table.deepcopy(pipe_sprites.straight_vertical)),
     east = set_shift({-1, 0}, util.table.deepcopy(pipe_sprites.straight_horizontal)),
@@ -647,8 +756,6 @@ data:extend({
       width = 101,
       height = 138,
       frame_count = 31,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {-0.109375, -1.1875},
       animation_speed = 0.5
     },
@@ -658,8 +765,6 @@ data:extend({
       width = 99,
       height = 138,
       frame_count = 31,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {-0.203125, -1.21875},
       animation_speed = 0.5
     }
@@ -755,8 +860,6 @@ data:extend({
       width = 101,
       height = 138,
       frame_count = 31,
-      axially_symmetrical = false,
-      direction_count = 1,
       scale = 0.6,
       shift = {-0.109375 * 0.6, -1.1875 * 0.6},
       animation_speed = 0.5,
@@ -768,8 +871,6 @@ data:extend({
       width = 99,
       height = 138,
       frame_count = 31,
-      axially_symmetrical = false,
-      direction_count = 1,
       scale = 0.6,
       shift = {-0.203125 * 0.6, -1.21875 * 0.6},
       animation_speed = 0.5,
@@ -777,7 +878,7 @@ data:extend({
     }
   },
 
-  trivial_smoke =
+  smoke =
   {
     {
       name = "fire-smoke-without-glow",
@@ -806,45 +907,93 @@ local indicator_pictures =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-north.png",
     line_length = 2,
-    width = 5,
-    height = 9,
+    width = 4,
+    height = 10,
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {0.234375, 0.640625}
+    shift = util.by_pixel(8, 20),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-led-indicator-north.png",
+      line_length = 2,
+      width = 10,
+      height = 18,
+      frame_count = 2,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(7, 20),
+      scale = 0.5
+    }
   },
   east =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-east.png",
     line_length = 2,
-    width = 10,
+    width = 12,
     height = 6,
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {-1.03125, -0.15625}
+    shift = util.by_pixel(-34, -6),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-led-indicator-east.png",
+      line_length = 2,
+      width = 18,
+      height = 8,
+      frame_count = 2,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(-33, -5),
+      scale = 0.5
+    }
   },
   south =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-south.png",
     line_length = 2,
-    width = 5,
-    height = 8,
+    width = 4,
+    height = 12,
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {-0.234375, -1.375}
+    shift = util.by_pixel(-8, -46),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-led-indicator-south.png",
+      line_length = 2,
+      width = 8,
+      height = 18,
+      frame_count = 2,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(-8, -45),
+      scale = 0.5
+    }
   },
   west =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-west.png",
     line_length = 2,
     width = 10,
-    height = 6,
+    height = 10,
     frame_count = 2,
     axially_symmetrical = false,
     direction_count = 1,
-    shift = {1.03125, -0.46875}
+    shift = util.by_pixel(32, -22),
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-led-indicator-west.png",
+      line_length = 2,
+      width = 20,
+      height = 10,
+      frame_count = 2,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(32, -20),
+      scale = 0.5
+    }
   }
 }
 
@@ -866,9 +1015,6 @@ data:extend({
     attacking_speed = 1,
     ending_attack_speed = 0.2,
     dying_explosion = "medium-explosion",
-    inventory_size = 1,
-    automated_ammo_count = 10,
-    attacking_animation_fade_out = 10,
     turret_base_has_direction = true,
 
     resistances =
@@ -884,7 +1030,7 @@ data:extend({
       --production_type = "input",
       secondary_draw_order = 0,
       render_layer = "lower-object",
-      pipe_picture = fireutil.flamethrower_turret_pipepictures(),
+      --pipe_picture = fireutil.flamethrower_turret_pipepictures(),
       pipe_covers = pipecoverspictures(),
       base_area = 1,
       pipe_connections =
@@ -912,7 +1058,7 @@ data:extend({
 
     gun_animation_render_layer = "object",
     gun_animation_secondary_draw_order = 1,
-    base_picture_render_layer = "lower-object",
+    base_picture_render_layer = "lower-object-above-shadow",
     base_picture_secondary_draw_order = 1,
     base_picture =
     {
@@ -924,37 +1070,76 @@ data:extend({
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-north.png",
             line_length = 1,
-            width = 69,
-            height = 86,
+            width = 80,
+            height = 96,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-0.015625, 0.34375}
+            shift = util.by_pixel(-2, 14),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-north.png",
+              line_length = 1,
+              width = 158,
+              height = 196,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(-1, 13),
+              scale = 0.5
+            }
           },
           -- mask
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-north-mask.png",
             flags = { "mask" },
             line_length = 1,
-            width = 37,
-            height = 37,
+            width = 36,
+            height = 38,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-0.015625, 1.04688},
-            apply_runtime_tint = true
+            shift = util.by_pixel(0, 32),
+            apply_runtime_tint = true,
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-north-mask.png",
+              flags = { "mask" },
+              line_length = 1,
+              width = 74,
+              height = 70,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(-1, 33),
+              apply_runtime_tint = true,
+              scale = 0.5
+            }
           },
           -- shadow
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-north-shadow.png",
             draw_as_shadow = true,
             line_length = 1,
-            width = 71,
+            width = 70,
             height = 78,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.140625, 0.46875}
+            shift = util.by_pixel(2, 14),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-north-shadow.png",
+              draw_as_shadow = true,
+              line_length = 1,
+              width = 134,
+              height = 152,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(3, 15),
+              scale = 0.5
+            }
           }
         }
       },
@@ -966,12 +1151,24 @@ data:extend({
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-east.png",
             line_length = 1,
-            width = 95,
-            height = 60,
+            width = 106,
+            height = 72,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-0.140625, 0.125}
+            shift = util.by_pixel(-6, 2),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-east.png",
+              line_length = 1,
+              width = 216,
+              height = 146,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(-6, 3),
+              scale = 0.5
+            }
           },
           -- mask
           {
@@ -979,24 +1176,51 @@ data:extend({
             flags = { "mask" },
             apply_runtime_tint = true,
             line_length = 1,
-            width = 33,
+            width = 32,
             height = 42,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {-1.01563, 0.03125}
+            shift = util.by_pixel(-32, 0),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-east-mask.png",
+              flags = { "mask" },
+              apply_runtime_tint = true,
+              line_length = 1,
+              width = 66,
+              height = 82,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(-33, 1),
+              scale = 0.5
+            }
           },
           -- shadow
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-east-shadow.png",
             draw_as_shadow = true,
             line_length = 1,
-            width = 100,
-            height = 44,
+            width = 72,
+            height = 46,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.03125, 0.28125}
+            shift = util.by_pixel(14, 8),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-east-shadow.png",
+              draw_as_shadow = true,
+              line_length = 1,
+              width = 144,
+              height = 86,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(14, 9),
+              scale = 0.5
+            }
           }
         }
       },
@@ -1008,12 +1232,24 @@ data:extend({
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-south.png",
             line_length = 1,
-            width = 70,
-            height = 90,
+            width = 64,
+            height = 84,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0, -0.15625}
+            shift = util.by_pixel(0, -8),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-south.png",
+              line_length = 1,
+              width = 128,
+              height = 166,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(0, -8),
+              scale = 0.5
+            }
           },
           -- mask
           {
@@ -1021,24 +1257,51 @@ data:extend({
             flags = { "mask" },
             apply_runtime_tint = true,
             line_length = 1,
-            width = 37,
-            height = 37,
+            width = 36,
+            height = 38,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.015625, -0.953125}
+            shift = util.by_pixel(0, -32),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-south-mask.png",
+              flags = { "mask" },
+              apply_runtime_tint = true,
+              line_length = 1,
+              width = 72,
+              height = 72,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(0, -31),
+              scale = 0.5
+            }
           },
           -- shadow
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-south-shadow.png",
             draw_as_shadow = true,
             line_length = 1,
-            width = 67,
-            height = 70,
+            width = 70,
+            height = 52,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.140625, -0.0625}
+            shift = util.by_pixel(2, 8),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-south-shadow.png",
+              draw_as_shadow = true,
+              line_length = 1,
+              width = 134,
+              height = 98,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(3, 9),
+              scale = 0.5
+            }
           }
         }
 
@@ -1051,12 +1314,24 @@ data:extend({
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-west.png",
             line_length = 1,
-            width = 93,
-            height = 59,
+            width = 100,
+            height = 74,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.140625, 0.203125}
+            shift = util.by_pixel(8, -2),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-west.png",
+              line_length = 1,
+              width = 208,
+              height = 144,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(7, -1),
+              scale = 0.5
+            }
           },
           -- mask
           {
@@ -1064,24 +1339,51 @@ data:extend({
             flags = { "mask" },
             apply_runtime_tint = true,
             line_length = 1,
-            width = 33,
+            width = 32,
             height = 40,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {1.01563, 0.09375}
+            shift = util.by_pixel(32, -2),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-west-mask.png",
+              flags = { "mask" },
+              apply_runtime_tint = true,
+              line_length = 1,
+              width = 64,
+              height = 74,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(32, -1),
+              scale = 0.5
+            }
           },
           -- shadow
           {
             filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-base-west-shadow.png",
             draw_as_shadow = true,
             line_length = 1,
-            width = 103,
-            height = 45,
+            width = 104,
+            height = 44,
             frame_count = 1,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = {0.484375, 0.296875}
+            shift = util.by_pixel(14, 4),
+            hr_version =
+            {
+              filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-base-west-shadow.png",
+              draw_as_shadow = true,
+              line_length = 1,
+              width = 206,
+              height = 88,
+              frame_count = 1,
+              axially_symmetrical = false,
+              direction_count = 1,
+              shift = util.by_pixel(15, 4),
+              scale = 0.5
+            }
           }
         }
       }
@@ -1117,13 +1419,14 @@ data:extend({
     attack_parameters =
     {
       type = "stream",
-      ammo_category = "flamethrower",
       cooldown = 4,
       range = 30,
       min_range = 6,
 
       turn_range = 1.0 / 3.0,
       fire_penalty = 15,
+
+      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
 
       fluids =
       {
@@ -1152,7 +1455,6 @@ data:extend({
           {
             type = "stream",
             stream = "flamethrower-fire-stream",
-            duration = 160,
             source_offset = {0.15, -0.5}
           }
         }
@@ -1188,7 +1490,8 @@ data:extend({
 })
 
 local function trivial_firesmoke(opts)
-  return {
+  return
+  {
     type = "trivial-smoke",
     name = opts.name,
     flags = {"not-on-map"},
@@ -1342,8 +1645,6 @@ data:extend(
       width = 60,
       height = 118,
       frame_count = 25,
-      axially_symmetrical = false,
-      direction_count = 1,
       blend_mode = "normal",
       animation_speed = 1,
       scale = 0.2,
@@ -1450,7 +1751,7 @@ data:extend(
 
     shadow =
     {
-      filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple-shadow.png",
+      filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
       line_length = 5,
       width = 28,
       height = 16,
@@ -1478,13 +1779,6 @@ data:extend(
     type = "stream",
     name = "handheld-flamethrower-fire-stream",
     flags = {"not-on-map"},
-    working_sound_disabled =
-    {
-      {
-        filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 0.7
-      }
-    },
 
     smoke_sources =
     {
@@ -1568,7 +1862,7 @@ data:extend(
 
     shadow =
     {
-      filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple-shadow.png",
+      filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
       line_length = 5,
       width = 28,
       height = 16,
@@ -1593,13 +1887,6 @@ data:extend(
     type = "stream",
     name = "tank-flamethrower-fire-stream",
     flags = {"not-on-map"},
-    working_sound_disabled =
-    {
-      {
-        filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 0.7
-      }
-    },
 
     smoke_sources =
     {
@@ -1664,7 +1951,7 @@ data:extend(
 
     shadow =
     {
-      filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple-shadow.png",
+      filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
       line_length = 5,
       width = 28,
       height = 16,
