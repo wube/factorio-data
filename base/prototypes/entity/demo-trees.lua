@@ -6481,7 +6481,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-00.png",
         width = 195,
         height = 95,
-        shift = util.by_pixel(-15, 45),
+        shift = util.by_pixel(-20, 2),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-00.png",
@@ -6495,7 +6495,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-01.png",
         width = 186,
         height = 151,
-        shift = util.by_pixel(10, -30),
+        shift = util.by_pixel(-15, -19.75),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-01.png",
@@ -6509,7 +6509,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-02.png",
         width = 163,
         height = 125,
-        shift = util.by_pixel(25, 0),
+        shift = util.by_pixel(-8.5, -14.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-02.png",
@@ -6523,7 +6523,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-03.png",
         width = 179,
         height = 155,
-        shift = util.by_pixel(80, -25),
+        shift = util.by_pixel(42, -15),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-03.png",
@@ -6537,7 +6537,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-04.png",
         width = 193,
         height = 158,
-        shift = util.by_pixel(62.5, -32.5),
+        shift = util.by_pixel(40, -15),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-04.png",
@@ -6551,7 +6551,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-05.png",
         width = 212,
         height = 143,
-        shift = util.by_pixel(55, 0),
+        shift = util.by_pixel(35, -18),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-05.png",
@@ -6565,7 +6565,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-06.png",
         width = 212,
         height = 147,
-        shift = util.by_pixel(46.5, -25),
+        shift = util.by_pixel(42, -24.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-06.png",
@@ -6579,7 +6579,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-07.png",
         width = 193,
         height = 111,
-        shift = util.by_pixel(35, 0),
+        shift = util.by_pixel(25, -19.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-07.png",
@@ -6593,7 +6593,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-08.png",
         width = 171,
         height = 83,
-        shift = util.by_pixel(50, 40),
+        shift = util.by_pixel(20, 10),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-08.png",
@@ -6607,7 +6607,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-09.png",
         width = 154,
         height = 137,
-        shift = util.by_pixel(30, 20),
+        shift = util.by_pixel(28.75, 13),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-09.png",
@@ -6621,7 +6621,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-10.png",
         width = 159,
         height = 123,
-        shift = util.by_pixel(-10, 15),
+        shift = util.by_pixel(-7, 11),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-10.png",
@@ -6635,7 +6635,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/dead-dry-hairy-tree-11.png",
         width = 167,
         height = 120,
-        shift = util.by_pixel(-20, 15),
+        shift = util.by_pixel(-9, 10),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dead-dry-hairy-tree/hr-dead-dry-hairy-tree-11.png",
@@ -6675,7 +6675,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-00.png",
         width = 222,
         height = 178,
-        shift = util.by_pixel(61, -35),
+        shift = util.by_pixel(45.5, -28.75),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-00.png",
@@ -6687,9 +6687,9 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-01.png",
-        width = 153,
+        width = 253,
         height = 147,
-        shift = util.by_pixel(40, -32),
+        shift = util.by_pixel(45, -42.75),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-01.png",
@@ -6703,7 +6703,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-02.png",
         width = 247,
         height = 155,
-        shift = util.by_pixel(45, -17),
+        shift = util.by_pixel(56.25, -31.75),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-02.png",
@@ -6717,7 +6717,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-03.png",
         width = 242,
         height = 152,
-        shift = util.by_pixel(59, -49),
+        shift = util.by_pixel(68.5, -41.75),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-03.png",
@@ -6731,7 +6731,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-04.png",
         width = 229,
         height = 143,
-        shift = util.by_pixel(62, -3),
+        shift = util.by_pixel(62.75, -32.75),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-04.png",
@@ -6745,7 +6745,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-05.png",
         width = 229,
         height = 195,
-        shift = util.by_pixel(44, -49),
+        shift = util.by_pixel(22.25, -33.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-05.png",
@@ -6759,7 +6759,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-06.png",
         width = 215,
         height = 136,
-        shift = util.by_pixel(27, -5),
+        shift = util.by_pixel(46, -19),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-06.png",
@@ -6773,7 +6773,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-07.png",
         width = 184,
         height = 154,
-        shift = util.by_pixel(44, -33),
+        shift = util.by_pixel(28, -27.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-07.png",
@@ -6787,7 +6787,7 @@ data:extend(
         filename = "__base__/graphics/entity/tree/dry-hairy-tree/dry-hairy-tree-08.png",
         width = 215,
         height = 136,
-        shift = util.by_pixel(56, -54),
+        shift = util.by_pixel(46.75, -52.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/tree/dry-hairy-tree/hr-dry-hairy-tree-08.png",

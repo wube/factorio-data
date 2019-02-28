@@ -1426,7 +1426,7 @@ data:extend({
       turn_range = 1.0 / 3.0,
       fire_penalty = 15,
 
-      lead_target_for_projectile_speed = 0.2* 0.75 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
+      -- lead_target_for_projectile_speed = 0.2* 0.75 * 1.5, -- this is same as particle horizontal speed of flamethrower fire stream
 
       fluids =
       {

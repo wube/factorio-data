@@ -1,4 +1,40 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.4
+Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.3
+Date: 28. 02. 2019
+  Changes:
+    - Disabled target leading for flamethrower turrets until it can be made better. (https://forums.factorio.com/65152)
+    - Changed train pathfinding in a way, that it can find path that ends in the same segment where it started.
+      This worked only for the trivial case of all path of one segment before.
+  Bugfixes:
+    - Fixed possible crash related to browsing in the mods gui.
+    - Fixed that turning off exoskeletons didn't work correctly in multiplayer.
+    - Fixed shaking of blueprint preview in blueprint book tooltip. (https://forums.factorio.com/65594)
+    - Fixed the wrong detection of changed autosave interval in other settings. (https://forums.factorio.com/65626)
+    - Fixed /help *command* would print a number instead of the help message. (https://forums.factorio.com/65695)
+    - Fixed a crash when dying with the locomotive GUI open. (https://forums.factorio.com/65705)
+    - Fixed a crash when using sprite variation sheets with mismatched frame counts. (https://forums.factorio.com/65634)
+    - Fixed that the admin-only portions of the whitelist command where not localised correctly. (https://forums.factorio.com/65792)
+    - Fixed building underground pipe between pipes with different fluids. (https://forums.factorio.com/65607)
+    - Fixed visual direction of fluid flow. (https://forums.factorio.com/65486)
+    - Fixed dead-dry-hairy-tree and dry-hairy sprite shifting in normal resolution.  (https://forums.factorio.com/65593)
+    - Fixed PvP error when changing enabled mods. (https://forums.factorio.com/65652)
+    - Fixed number pad Enter key-bindings would be converted to normal Enter when restarting the game. (https://forums.factorio.com/65568)
+    - Fixed small worms having fluid consumption. (https://forums.factorio.com/65870)
+    - Fixed that copy-paste of fluid recipes would sometimes not reset fluid box contents. (https://forums.factorio.com/65609)
+    - Fixed that double-clicking a technology in the tree view wouldn't start research. (https://forums.factorio.com/65335)
+    - Fixed pipes that would sometimes be too noisy. (https://forums.factorio.com/65670)
+    - Fixed that you could build multiple underground belts on top of each-other.  (https://forums.factorio.com/65828)
+    - Fixed tightspot level 5 was unbeatable. (https://forums.factorio.com/65629)
+    - Added workaround for GPU accelerated texture compression producing corrupted textures. (https://forums.factorio.com/65336)
+    - Fixed that the technology window scroll position would keep getting reset. (https://forums.factorio.com/65160)
+    - Fixed that the current research panel would not update in multiplayer if some other player changed the research. (https://forums.factorio.com/65185)
+    - Fixed terrain not being rendered when using OpenGL and any game overlay was enabled. (https://forums.factorio.com/65096)
+  Modding:
+    - Added LoaderPrototype::structure_render_layer with default value "lower-object". (https://forums.factorio.com/65627)
+---------------------------------------------------------------------------------------------------
 Version: 0.17.2
 Date: 27. 02. 2019
   Changes:
@@ -39,9 +75,8 @@ Date: 27. 02. 2019
     - Fixed that checking for updates could crash the game. (https://forums.factorio.com/65264)
     - Solved, that blueprint library link from quickbar appeared as an empty slot when the target blueprint wasn't available anymore and it wasn't possible to assign a new item to it.
     - Fixed PvP scenario error when updating space race frame with no silos present. (https://forums.factorio.com/65492)
-    - Fixed drawing of some wires and wire shadows (https://forums.factorio.com/65469)
-    - Fixed a possibility to mix fluid through fast replacing / upgrading a pipe with underground pipe. (https://forums.factorio.com/65298)
     - Fixed drawing of some wires and wire shadows. (https://forums.factorio.com/65469)
+    - Fixed a possibility to mix fluid through fast replacing / upgrading a pipe with underground pipe. (https://forums.factorio.com/65298)
     - Fixed crash when opening the map generator preview for the first time with invalid settings. (https://forums.factorio.com/65434)
   Modding:
     - Renamed EntityPrototypeFlag "hide-from-bonus-gui" to "hidden" and made it also hide entities from the made in property of recipe tooltips.

@@ -376,18 +376,7 @@ data:extend(
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_small, scale_worm_small * scale_worm_stream),
       use_shooter_direction = true,
 
-      --turn_range = 1.0 / 3.0,
-      --fire_penalty = 15,
-
       lead_target_for_projectile_speed = 0.2* 0.75 * 1.5 *1.5, -- this is same as particle horizontal speed of flamethrower fire stream
-
-      fluids =
-      {
-        {type = "crude-oil"},
-        {type = "heavy-oil", damage_modifier = 1.05},
-        {type = "light-oil", damage_modifier = 1.1}
-      },
-      fluid_consumption = 0.2,
 
       ammo_type =
       {
