@@ -1,4 +1,22 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.1
+Date: 26. 02. 2019
+  Modding:
+    - Added shortcut bar shortcut type that fires Lua events, for use in mods
+  Scripting:
+    - Added LuaPlayer::is_shortcut_toggled, LuaPlayer::is_shortcut_available, LuaPlayer::set_shortcut_toggled, LuaPlayer::set_shortcut_available
+    - Added on_lua_shortcut event.
+  Bugfixes:
+    - Missing description.json in the campaign folder results into the folder being ignored instead of a crash.
+    - Fixed crash when trying to rotate quickbars with a controller that doesn't have it.
+    - Fixed crash when trying to open surface map generation settings.
+    - Fixed possible crash related to copy paste and multiplayer.
+    - Fixed it wasn't possible to use capital 'Z' in save name. (https://forums.factorio.com/65075)
+    - Fixed the infinity chest graphics.
+    - Fixed that the boiler didn't rotate in blueprints.
+    - Fixed that the bait chest showed in the upgrade planner.
+    - Fixed high CPU usage when using steam networking.
+---------------------------------------------------------------------------------------------------
 Version: 0.17.0
 Date: 26. 02. 2019
   Major Features:

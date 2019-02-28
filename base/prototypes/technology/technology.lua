@@ -484,7 +484,7 @@ data:extend(
         recipe = "assembling-machine-2"
       }
     },
-    prerequisites = {"electronics", "steel-processing"},
+    prerequisites = {"electronics", "steel-processing", "logistic-science-pack"},
     unit =
     {
       count = 40,

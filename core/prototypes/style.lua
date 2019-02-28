@@ -4717,6 +4717,18 @@ data:extend(
       type = "frame_style",
       maximal_width = 400
     },
+    
+    entity_info_frame_on_cursor =
+    {
+      type = "frame_style",
+      maximal_width = 400,
+      graphical_set =
+      {
+        base =  { position = {403, 0}, corner_size = 8, opacity = 0.88, background_blur_sigma = 4},
+        shadow = default_shadow 
+      },
+    },
+    
     minimap_frame =
     {
       type = "frame_style",

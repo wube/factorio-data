@@ -13375,6 +13375,7 @@ infinity_chest.order = "infinity-chest"
 infinity_chest.icon = "__base__/graphics/icons/infinity-chest.png"
 infinity_chest.gui_mode = "admins" -- all, none, admins
 infinity_chest.erase_contents_when_mined = true
+infinity_chest.animation = nil
 infinity_chest.picture =
 {
   filename = "__base__/graphics/entity/infinity-chest/infinity-chest.png",
