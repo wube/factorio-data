@@ -1289,7 +1289,7 @@ data:extend(
         recipe = "rocket"
       }
     },
-    prerequisites = {"explosives", "rocket-fuel"},
+    prerequisites = {"explosives", "rocket-fuel", "military-science-pack"},
     unit =
     {
       count = 120,
@@ -3123,7 +3123,7 @@ data:extend(
     name = "fusion-reactor-equipment",
     icon_size = 128,
     icon = "__base__/graphics/technology/fusion-reactor-equipment.png",
-    prerequisites = {"utility-science-pack", "power-armor"},
+    prerequisites = {"utility-science-pack", "power-armor", "military-science-pack"},
     effects =
     {
       {
@@ -3773,7 +3773,7 @@ data:extend(
         recipe = "uranium-fuel-cell"
       }
     },
-    prerequisites = {"chemical-science-pack", "concrete"},
+    prerequisites = {"chemical-science-pack", "concrete", "sulfur-processing"},
     unit =
     {
       ingredients =

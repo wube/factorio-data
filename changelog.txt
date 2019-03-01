@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.4
+Version: 0.17.5
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.4
+Date: 01. 03. 2019
+  Bugfixes:
+    - Fixed crashes related to Lua errors. (https://forums.factorio.com/66007)
+    - Fixed a crash when opening the fluid wagon GUI in the map editor. (https://forums.factorio.com/66067)
+    - Fixed that pressing "back" on the login prompt in the other settings GUI would exit the other settings GUI. (https://forums.factorio.com/65643)
+    - Fixed that robots could get stuck when trying to upgrade in some cases. (https://forums.factorio.com/65816)
+    - Fixed that the tooltips for tooltip times where backwards. (https://forums.factorio.com/65085)
+    - Fixed Lua commands wouldn't work show help correctly. (https://forums.factorio.com/66022)
+    - Fixed portable fusion reactor and rocketry tech pre-requisites - added military science pack. (https://forums.factorio.com/66080)
+    - Fixed uranium processing tech pre-requisites - added sulfur processing. (https://forums.factorio.com/66060)
+    - Removed ghost buildability consistency check until we properly integrate building of ghosts into the fluid mixing prevention logic.
+    - Fixed crash related to train pathfinding. (https://forums.factorio.com/65950)
+    - Fixed layouting of Map Generator gui when the preview is shown. (https://forums.factorio.com/65959)
+    - Fixed issues with rich text tags referencing entities that have no icon.
+    - Fixed crash related to moving blueprints from game blueprints to player blueprints. (https://forums.factorio.com/66091)
+    - Fixed crash related listing all players while while processing event of player being removed.
+    - Fixed a crash related to research that would continue even though the research queue is empty. (https://forums.factorio.com/66057)
+    - Fixed Compilatron placing a chest on top of things. (https://forums.factorio.com/65924)
+    - Fixed crash during quest to reactivate assembler in NPE. (https://forums.factorio.com/66122)
+    - Fixed that script render text would scale with GUI scale. (https://forums.factorio.com/65982)
+  Modding:
+    - Made MiningDrillPrototype::radius_visualisation_picture tintable.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.3
 Date: 28. 02. 2019
