@@ -3897,13 +3897,13 @@ data:extend(
     {
       {
         type = "mining-drill-productivity-bonus",
-        modifier = 0.02
+        modifier = 0.1
       }
     },
     prerequisites = {"advanced-electronics"},
     unit =
     {
-      count_formula = "100*L",
+      count_formula = "500*L",
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -3912,25 +3912,24 @@ data:extend(
       time = 60
     },
     upgrade = true,
-    max_level = "3",
     order = "c-k-f-e"
   },
   {
     type = "technology",
-    name = "mining-productivity-4",
+    name = "mining-productivity-2",
     icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
       {
         type = "mining-drill-productivity-bonus",
-        modifier = 0.02
+        modifier = 0.1
       }
     },
     prerequisites = {"mining-productivity-1"},
     unit =
     {
-      count_formula = "100*L",
+      count_formula = "500*L",
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -3940,54 +3939,24 @@ data:extend(
       time = 60
     },
     upgrade = true,
-    max_level = "7",
     order = "c-k-f-e"
   },
   {
     type = "technology",
-    name = "mining-productivity-8",
+    name = "mining-productivity-3",
     icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
       {
         type = "mining-drill-productivity-bonus",
-        modifier = 0.02
+        modifier = 0.1
       }
     },
-    prerequisites = {"mining-productivity-4"},
+    prerequisites = {"mining-productivity-2"},
     unit =
     {
-      count_formula = "100*L",
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1}
-      },
-      time = 60
-    },
-    upgrade = true,
-    max_level = "11",
-    order = "c-k-f-e"
-  },
-  {
-    type = "technology",
-    name = "mining-productivity-12",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/mining-productivity.png",
-    effects =
-    {
-      {
-        type = "mining-drill-productivity-bonus",
-        modifier = 0.02
-      }
-    },
-    prerequisites = {"mining-productivity-8"},
-    unit =
-    {
-      count_formula = "100*L",
+      count_formula = "500*L",
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -3999,25 +3968,24 @@ data:extend(
       time = 60
     },
     upgrade = true,
-    max_level = "15",
     order = "c-k-f-e"
   },
   {
     type = "technology",
-    name = "mining-productivity-16",
+    name = "mining-productivity-4",
     icon_size = 128,
     icon = "__base__/graphics/technology/mining-productivity.png",
     effects =
     {
       {
         type = "mining-drill-productivity-bonus",
-        modifier = 0.02
+        modifier = 0.1
       }
     },
-    prerequisites = {"mining-productivity-12", "space-science-pack"},
+    prerequisites = {"mining-productivity-3", "space-science-pack"},
     unit =
     {
-      count_formula = "100(L-1)",
+      count_formula = "500*L",
       ingredients =
       {
         {"automation-science-pack", 1},

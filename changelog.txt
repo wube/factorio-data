@@ -1,6 +1,49 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.5
+Version: 0.17.6
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.5
+Date: 04. 03. 2019
+  Bugfixes:
+    - Fixed crash related to train waypoints and very short train paths. (https://forums.factorio.com/66095)
+    - Fixed wrong entity info positioning when all other things in the right container are disabled. (https://forums.factorio.com/65088)
+    - Fixed Wave defense victory not being triggered in some cases.
+    - Fixed Wave defense victory message being printed on every rocket launch.
+    - Fixed restarting the game after sync-mods-with-save would fail to auto-load some saves on Windows. (https://forums.factorio.com/66338)
+    - Fixed PvP error when loading 0.16 versions of the scenario. (https://forums.factorio.com/66108)
+    - Fixed selection in blueprint preview would have an offset if UI scale was not 100%. (https://forums.factorio.com/65557)
+    - Fixed pie slice used as progress indicator in crafting queue wasn't rendering for small angles. (https://forums.factorio.com/66079)
+    - Fixed that the /time command would give back the wrong time played.
+    - Fixed rendered terrain would increasingly get corrupted during movement when using 16bit rendering mode on some OpenGL drivers. (https://forums.factorio.com/65691)
+    - Fixed player.get_quick_bar_slot causing a crash for some values. (https://forums.factorio.com/65917)
+    - Fixed controls were lagging when application window was receiving lot of events it didn't recognize on macOS or Linux. (https://forums.factorio.com/65179)
+    - Fixed "Wait for V-Sync" graphics option was not working on macOS 10.14 Mojave.
+    - Fixed crash logs were missing stack traces on macOS.
+    - Adjusted the Supply Challenge requirements to make sense. (https://forums.factorio.com/66291)
+    - Fixed a crash when reviving entities through the Lua API.
+    - Fixed NPE crash on biter commands during rebuild quest. (https://forums.factorio.com/66586)
+    - Fixed NPE crash during cutscene if player left entity ghosts in the starting area. (https://forums.factorio.com/66424)
+    - Fixed NPE crash on sending biters if you plaster half the map with furnaces (yes, seriously). (https://forums.factorio.com/66369)
+    - Fixed NPE bug where Compilatron would sometimes not continue after players put the required items in his chest. (https://forums.factorio.com/66528)
+    - Fixed that technology slot tooltip didn't reflect the cost of the selected technology in the queue.
+    - Fixed NPE confusing flying text at startup. (https://forums.factorio.com/66317)
+    - Fixed that the train passed wait condition time was limited to 120 seconds. (https://forums.factorio.com/66043)
+    - Fixed hand not disappearing from the quickbar in some situations. (https://forums.factorio.com/66019)
+    - Fixed a crash related to the research queue. (https://forums.factorio.com/66172)
+    - Fixed that the research queue could show incorrect research levels. (https://forums.factorio.com/66144)
+    - Horizontal layouting fix of the mods gui. (https://forums.factorio.com/66217)
+    - Fixed that the island related changes in the terrain settings in map generator gui weren't updated if the island preset was preselected. (https://forums.factorio.com/65722)
+    - Fixed that custom Lua-defined shortcuts would desync the game. (https://forums.factorio.com/66556)
+    - Fixed a crash when player is not given when using surface.deconstruct_area(). (https://forums.factorio.com/66426)
+    - Fixed loading of blueprints containing rail temporary stations.
+  Modding:
+    - Added SelectionToolPrototype flag "nothing".
+    - Made resource autoplace helper functions usable from mods. (https://forums.factorio.com/66584)
+    - Added LogisticContainerPrototype::landing_location_offset.
+  Balancing:
+    - Changed mining productivity technology to add 10% in one level instead of 2%, increased the formula from 100 * level to 500 * level and removed some of the low level intermediate levels.
+  Changes:
+    - Blueprinting tools are no longer shown in the quickbar filter selection. (https://forums.factorio.com/66088)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.4
 Date: 01. 03. 2019

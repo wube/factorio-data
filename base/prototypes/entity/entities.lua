@@ -8993,18 +8993,18 @@ data:extend(
         {
           filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole.png",
           priority = "extra-high",
-          width = 74,
-          height = 158,
+          width = 76,
+          height = 156,
           direction_count = 4,
-          shift = util.by_pixel(0, -52),
+          shift = util.by_pixel(1, -51),
           hr_version =
           {
             filename = "__base__/graphics/entity/big-electric-pole/hr-big-electric-pole.png",
             priority = "extra-high",
             width = 148,
-            height = 314,
+            height = 312,
             direction_count = 4,
-            shift = util.by_pixel(0, -52),
+            shift = util.by_pixel(0, -51),
             scale = 0.5
           }
         },
@@ -9128,18 +9128,18 @@ data:extend(
         {
           filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole.png",
           priority = "extra-high",
-          width = 48,
-          height = 120,
+          width = 40,
+          height = 124,
           direction_count = 4,
-          shift = util.by_pixel(0, -42),
+          shift = util.by_pixel(4, -44),
           hr_version =
           {
             filename = "__base__/graphics/entity/medium-electric-pole/hr-medium-electric-pole.png",
             priority = "extra-high",
-            width = 92,
-            height = 244,
+            width = 84,
+            height = 252,
             direction_count = 4,
-            shift = util.by_pixel(1, -43),
+            shift = util.by_pixel(3.5, -44),
             scale = 0.5
           }
         },
@@ -9149,16 +9149,16 @@ data:extend(
           width = 140,
           height = 32,
           direction_count = 4,
-          shift = util.by_pixel(56, 4),
+          shift = util.by_pixel(56, -1),
           draw_as_shadow = true,
           hr_version =
           {
             filename = "__base__/graphics/entity/medium-electric-pole/hr-medium-electric-pole-shadow.png",
             priority = "extra-high",
             width = 280,
-            height = 60,
+            height = 64,
             direction_count = 4,
-            shift = util.by_pixel(56, 5),
+            shift = util.by_pixel(56.5, -1),
             draw_as_shadow = true,
             scale = 0.5
           }
@@ -9170,57 +9170,57 @@ data:extend(
       {
         shadow =
         {
-          copper = util.by_pixel(114.0, -7.0),
-          red = util.by_pixel(123.0, -1.5),
-          green = util.by_pixel(102.5, -6.5)
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(246, -2),
+          green = util.by_pixel_hr(201, -2)
         },
         wire =
         {
-          copper = util.by_pixel(7.0, -100.0),
-          red = util.by_pixel(21.0, -90.0),
-          green = util.by_pixel(-7.5, -93.5)
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(43, -179),
+          green = util.by_pixel_hr(-15, -185)
         }
       },
       {
         shadow =
         {
-          copper = util.by_pixel(95.5, 12.5),
-          red = util.by_pixel(103.0, 18.0),
-          green = util.by_pixel(85.5, 1.5)
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(230, 10),
+          green = util.by_pixel_hr(196, -23)
         },
         wire =
         {
-          copper = util.by_pixel(-11.0, -80.5),
-          red = util.by_pixel(1.5, -70.0),
-          green = util.by_pixel(-16.5, -87.0)
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(27, -167),
+          green = util.by_pixel_hr(-9, -200)
         }
       },
       {
         shadow =
         {
-          copper = util.by_pixel(93.5, 2.5),
-          red = util.by_pixel(90.5, 12.5),
-          green = util.by_pixel(94.0, -7.5)
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(208, 12),
+          green = util.by_pixel_hr(217, -30)
         },
         wire =
         {
-          copper = util.by_pixel(-14.0, -90.5),
-          red = util.by_pixel(-11.0, -75.5),
-          green = util.by_pixel(-7.0, -96.0)
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(5, -166),
+          green = util.by_pixel_hr(13, -206)
         }
       },
       {
         shadow =
         {
-          copper = util.by_pixel(90.5, -1.5),
-          red = util.by_pixel(82.0, 4.0),
-          green = util.by_pixel(105.0, -8.5)
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(195, 1),
+          green = util.by_pixel_hr(238, -23)
         },
         wire =
         {
-          copper = util.by_pixel(-11.5, -97.5),
-          red = util.by_pixel(-19.5, -84.0),
-          green = util.by_pixel(4.0, -96.5)
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(-12, -175),
+          green = util.by_pixel_hr(36, -199)
         }
       }
     },

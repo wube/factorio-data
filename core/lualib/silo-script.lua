@@ -109,6 +109,8 @@ function toggle_frame(player)
     style = mod_gui.frame_style
   }
   frame.style.title_bottom_padding = 0
+  frame.style.horizontally_stretchable = false
+  frame.style.vertically_stretchable = false
   gui_update(player)
 end
 

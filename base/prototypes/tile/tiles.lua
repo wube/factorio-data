@@ -619,7 +619,7 @@ local sand_transitions_between_transitions =
       base = init_transition_between_transition_common_options()
     },
     false,
-    false,
+    true,
     true
   ),
   generic_transition_between_transitions_template
@@ -695,7 +695,7 @@ local grass_transitions_between_transitions =
       base = init_transition_between_transition_common_options()
     },
     false,
-    false,
+    true,
     true
   ),
   
@@ -735,7 +735,7 @@ local dirt_out_of_map_transition =
       base = init_transition_between_transition_common_options()
     },
     false,
-    false,
+    true,
     true
   )
 
@@ -905,8 +905,24 @@ local concrete_transitions_between_transitions =
       base = init_transition_between_transition_common_options()
     },
     true,
-    false,
+    true,
     true
+  ),
+  generic_transition_between_transitions_template
+  (
+      water_transition_group_id,
+      out_of_map_transition_group_id, 
+      "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
+      "__base__/graphics/terrain/out-of-map-transition/hr-concrete-shore-out-of-map-transition.png",
+      {
+        o_transition_tall = false,
+        inner_corner_count = 3,
+        outer_corner_count = 3,
+        side_count = 3,
+        u_transition_count = 1,
+        o_transition_count = 0,
+        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+      }
   ),
 }
 
@@ -964,8 +980,28 @@ local stone_path_transitions_between_transitions =
       base = init_transition_between_transition_common_options()
     },
     true,
-    false,
+    true,
     false
+  ),
+  
+  generic_transition_between_transitions_template
+  (
+      water_transition_group_id,
+      out_of_map_transition_group_id, 
+      "__base__/graphics/terrain/out-of-map-transition/stone-path-shore-out-of-map-transition.png",
+      "__base__/graphics/terrain/out-of-map-transition/hr-stone-path-shore-out-of-map-transition.png",
+      {
+        o_transition_tall = false,
+        inner_corner_count = 3,
+        outer_corner_count = 3,
+        side_count = 3,
+        u_transition_count = 1,
+        o_transition_count = 0,
+        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+      },
+      true,
+      true,
+      false
   ),
 }
 

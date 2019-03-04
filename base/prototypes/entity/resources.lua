@@ -1,6 +1,6 @@
 local noise = require("noise");
 local tne = noise.to_noise_expression;
-local resource_autoplace = require("prototypes.entity.demo-resource-autoplace");
+resource_autoplace = require("prototypes.entity.demo-resource-autoplace");
 
 -- Pre-spot noise
 local oil_old_autoplace =

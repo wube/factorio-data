@@ -6,7 +6,7 @@ local litexp = noise.literal_expression
 local starting_resource_count = 4
 local regular_resource_count = 6 -- add oil and uranium
 
-local next_resource_index = 0
+next_resource_index = 0
 function get_next_resource_index()
   local resource_index = next_resource_index
   next_resource_index = next_resource_index + 1

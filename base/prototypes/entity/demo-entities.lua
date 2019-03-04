@@ -1768,18 +1768,18 @@ data:extend(
         {
           filename = "__base__/graphics/entity/small-electric-pole/small-electric-pole.png",
           priority = "extra-high",
-          width = 38,
+          width = 36,
           height = 108,
           direction_count = 4,
-          shift = util.by_pixel(0, -42),
+          shift = util.by_pixel(2, -42),
           hr_version =
           {
             filename = "__base__/graphics/entity/small-electric-pole/hr-small-electric-pole.png",
             priority = "extra-high",
-            width = 70,
+            width = 72,
             height = 220,
             direction_count = 4,
-            shift = util.by_pixel(1, -43),
+            shift = util.by_pixel(1.5, -42.5),
             scale = 0.5
           }
         },
