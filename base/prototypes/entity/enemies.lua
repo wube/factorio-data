@@ -154,6 +154,10 @@ data:extend(
         type = "explosion",
         decrease = 12,
         percent = 10
+      },
+      {
+        type = "acid",
+        percent = 100
       }
     },
     spawning_time_modifier = 12,

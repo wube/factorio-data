@@ -3903,7 +3903,7 @@ data:extend(
     prerequisites = {"advanced-electronics"},
     unit =
     {
-      count_formula = "500*L",
+      count = "250",
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -3929,7 +3929,7 @@ data:extend(
     prerequisites = {"mining-productivity-1"},
     unit =
     {
-      count_formula = "500*L",
+      count = "500",
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -3956,7 +3956,7 @@ data:extend(
     prerequisites = {"mining-productivity-2"},
     unit =
     {
-      count_formula = "500*L",
+      count = "1000",
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -3985,7 +3985,7 @@ data:extend(
     prerequisites = {"mining-productivity-3", "space-science-pack"},
     unit =
     {
-      count_formula = "500*L",
+      count_formula = "2500*(L - 3)",
       ingredients =
       {
         {"automation-science-pack", 1},

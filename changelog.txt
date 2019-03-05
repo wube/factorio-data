@@ -1,6 +1,46 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.6
+Version: 0.17.7
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.6
+Date: 05. 03. 2019
+  Changes:
+    - Updated map-gen-settings.example.json to use numeric multipliers, include cliff richness, and demonstrate expression overrides. (https://forums.factorio.com/66694)
+    - It is not possible to fast-replace pipe to ground by another that is in an orthogonal direction.
+    - Changed mining productivity cost to 2500 increase per level to fix that the last change was actually making it 5 times less expensive towards infinity. Lower levels are cheaper on the other hand.
+  Bugfixes:
+    - Fixed of loading of saves before 0.17.
+    - Fixed crash related to conflicting undo in multiplayer. (https://forums.factorio.com/65656)
+    - Fixed crash related to temporary stops and destroyed rails on the path that were already passed by the train. (https://forums.factorio.com/65540)
+    - Fixed yet another train pathing crash. (https://forums.factorio.com/65545)
+    - Fixed the hand logic for god-mode controller. (https://forums.factorio.com/66619)
+    - Fixed, that the hand logic could force an item to filtered slot that doesn't match it. (https://forums.factorio.com/66610)
+    - Fixed, that filtered inventory could ignore the hand when sorting or transferring in some cases. (https://forums.factorio.com/65612)
+    - Fixed overly generous migration of mining productivity research. (https://forums.factorio.com/66708)
+    - Right panel sizing fixes.
+    - starting_area (size multiplier) in map gen settings JSON can be represented by a number.
+    - Fixed crash related to removing technology from the research queue. (https://forums.factorio.com/66790)
+    - Fixed that driving backwards in vehicles wouldn't trigger the prevent-robots-from-working-because-i-am-driving-too-fast logic. (https://forums.factorio.com/66777)
+    - Fixed crash during startup on macOS 10.12 or older with GeForce GPU. (https://forums.factorio.com/65145)
+    - Attempt to fix tile transition rendering on Sandy Bridge iGPUs. (https://forums.factorio.com/66035)
+    - Fixed a performance problem related to undo in multiplayer. (https://forums.factorio.com/66235)
+    - Fixed upgrading ghost splitters wouldn't copy the splitter settings. (https://forums.factorio.com/65346)
+    - Fixed a couple of situations where fast replacing underground pipe could cause fluid mixing. (https://forums.factorio.com/66085)
+    - Fixed align in the blueprint library. (https://forums.factorio.com/66789)
+    - Fixed a crash when loading modded saves related to fluidbox removal in assembling machines.
+    - Fixed blueprint preview would be drawn out of its bounds. (https://forums.factorio.com/66050)
+    - Fixed the featured technology cost for upgrade technologies when the research queue is not enabled. (https://forums.factorio.com/66713).
+    - Fixed that search in the technology GUI would be cancelled by selecting a new research. (https://forums.factorio.com/66775)
+    - Fixed a crash on destroying an entity with fluid energy source. (https://forums.factorio.com/66517)
+    - Fixed a crash when deconstructing trains with inserters trying to put into them. (https://forums.factorio.com/66614)
+    - Fixed layout of circuit and logistic control windows. (https://forums.factorio.com/66531)
+    - Fixed that trying to join a multiplayer game too quickly would lead to a mods-mismatch error. (https://forums.factorio.com/66834)
+    - Fixed that behemoth biters didn't have resistance to acid (as all other biters have).
+    - Fixed NPE saves technologies were messed up by a migration in 0.17.5. (https://forums.factorio.com/66714)
+    - Fixed NPE issue where Compilatron smashing a building would lead to a crash in migrated saves. (https://forums.factorio.com/66767)
+    - Fixed that it wasn't possible to access the game menu when the game was paused in multiplayer with the technology screen open. (https://forums.factorio.com/65223)
+  Scripting:
+    - Added LuaItemPrototype::mapper_count read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.5
 Date: 04. 03. 2019

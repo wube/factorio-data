@@ -4446,6 +4446,15 @@ data:extend(
         vertical_spacing = 0
       }
     },
+
+    -- used for frames that contains windows or frames that have shadows
+    outer_frame_without_shadow =
+    {
+      type = "frame_style",
+      parent = "outer_frame",
+      graphical_set = {}
+    },
+    
     inner_frame_in_outer_frame =
     {
       title_bottom_padding = 10,
