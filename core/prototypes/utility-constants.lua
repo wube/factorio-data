@@ -150,6 +150,8 @@ data:extend(
       tile_editor_selection_preview_radius = 6,
       decorative_editor_selection_preview_tint = { r = 0.25, g = 0.25, b = 0.25, a = 0.25 },
       decorative_editor_selection_preview_radius = 10
-    }
+    },
+
+    recipe_step_limit = 50000 -- number of steps before calculating total-raw/times-can-be-crafted is aborted for a given recipe
   }
 })

@@ -582,10 +582,20 @@ data:extend{
 
   {
     type = "noise-expression",
+    name = "distance",
+    expression = noise.distance_from(noise.var("x"), noise.var("y"), noise.var("starting_positions"))
+  },
+  {
+    type = "noise-expression",
     name = "tier_from_start",
     expression = noise.define_noise_function( function(x,y,tile,map)
       return noise.max(0.0, tile.distance - map.starting_area_radius) / map.starting_area_radius;
     end)
+  },
+  {
+    type = "noise-expression",
+    name = "tier",
+    expression = noise.var("tier_from_start")
   },
   {
     type = "noise-expression",

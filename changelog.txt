@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.7
+Version: 0.17.8
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.7
+Date: 06. 03. 2019
+  Bugfixes:
+    - Fixed game.players[#] would be treated as game.players[tostring(#)].
+    - Fixed inserter/mining drill interaction indications would still render for mined-in-latency-state entities.
+    - Fixed inserter/mining drill interaction indications wouldn't render in some cases and would ignore ghosts in some but not all cases.
+    - Fixed that the game would incorrectly think some mods wouldn't be required when joining multiplayer games even though they are.
+    - Fixed some key bindings not working correctly until game restart. (https://forums.factorio.com/66631)
+    - Fixed a crash when changing entity ghosts with wire connections through the upgrade planner. (https://forums.factorio.com/66861)
+    - Fixed that the prevent-robots-from-working-because-i-am-driving-too-fast logic still wouldn't work in some cases. (https://forums.factorio.com/66190)
+    - Fixed that highly nested recipes would freeze the game. (https://forums.factorio.com/66626)
+    - Fixed a crash when loading saves that contain connected cliffs that will be removed due to mod migrations/removals. (https://forums.factorio.com/66637)
+    - Fixed statistics graphs crashing when releasing shift with a tooltip active. (https://forums.factorio.com/66910)
+    - Fixed rendering of tile transitions on Sandy Bridge iGPUs for real this time. (https://forums.factorio.com/65628)
+    - Fixed that it was possible to add a blueprint to other player's shared blueprints. (https://forums.factorio.com/66438)
+    - Fixed that undo was not preserving ghost entity module requests. (https://forums.factorio.com/66638)
+    - Fixed that undo was not preserving circuit connections. (https://forums.factorio.com/66419)
+    - Fixed that un-researching technology wouldn't update GUIs correctly. (https://forums.factorio.com/66522)
+    - Fixed PvP scenarios created in 0.16 and loaded in 0.17. (https://forums.factorio.com/66420)
+    - Fixed PvP script error from bad migration data checking. (https://forums.factorio.com/66876)
+    - Fixed that blueprint that was meant to disappear on Q did not after selecting and cancelling selection. (https://forums.factorio.com/66004)
+    - Fixed persisting tooltips in the technology gui. (https://forums.factorio.com/66176)
+    - Fixed set_quick_bar_slot not refreshing item counts in the quickbar. (https://forums.factorio.com/66150)
+    - Fixed layouting in train configure gui with very long station names. (https://forums.factorio.com/66841)
+    - Fixed layouting in train configure gui with too long condition translations. (https://forums.factorio.com/66654)
+    - Squashed labels get a tooltip with the full text in a similar fashion as buttons.
+    - Fixed that research queue setting wouldn't export to map exchange string properly. (https://forums.factorio.com/65417)
+    - Fixed incorrect primary screen index in graphics options GUI.
+    - Fixed some cases of fluid mixing related to underground pipes.
+    - Fixed crash related to productivity bonus and a catalyst. (When the catalyst count covers all the ingredient count). (https://forums.factorio.com/66882)
+    - Fixed that the reset button wouldn't update after importing a map exchange string. (https://forums.factorio.com/66608)
+    - Fixed messed up research in the NPE (https://forums.factorio.com/66871)
+  Scripting:
+    - Added LuaControl::ghost_cursor read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.6
 Date: 05. 03. 2019

@@ -484,12 +484,28 @@ data:extend(
       clicked_font_color = default_orange_color
     },
 
+    clickable_squashable_label =
+    {
+      type = "label_style",
+      parent = "clickable_label",
+      horizontally_squashable = "on",
+      want_ellipsis = true
+    },
+
     black_clickable_label =
     {
       type = "label_style",
       parent = "black_label",
       hovered_font_color = default_light_orange_color,
       clicked_font_color = default_orange_color
+    },
+
+    black_clickable_squashable_label =
+    {
+      type = "label_style",
+      parent = "black_clickable_label",
+      horizontally_squashable = "on",
+      want_ellipsis = true
     },
 
     label_in_table = -- pushed up a little for centering
@@ -3027,14 +3043,18 @@ data:extend(
     {
       type = "label_style",
       font_color = {255, 138, 138},
-      hovered_font_color = default_orange_color
+      hovered_font_color = default_orange_color,
+      horizontally_squashable = "on",
+      want_ellipsis = true
     },
 
     train_schedule_non_existent_stop_label =
     {
       type = "label_style",
       font_color = {255, 138, 138},
-      hovered_font_color = {255, 138, 138}
+      hovered_font_color = {255, 138, 138},
+      horizontally_squashable = "on",
+      want_ellipsis = true
     },
 
     hyperlink_label =
@@ -4454,7 +4474,7 @@ data:extend(
       parent = "outer_frame",
       graphical_set = {}
     },
-    
+
     inner_frame_in_outer_frame =
     {
       title_bottom_padding = 10,
@@ -4726,7 +4746,7 @@ data:extend(
       type = "frame_style",
       maximal_width = 400
     },
-    
+
     entity_info_frame_on_cursor =
     {
       type = "frame_style",
@@ -4734,10 +4754,10 @@ data:extend(
       graphical_set =
       {
         base =  { position = {403, 0}, corner_size = 8, opacity = 0.88, background_blur_sigma = 4},
-        shadow = default_shadow 
+        shadow = default_shadow
       },
     },
-    
+
     minimap_frame =
     {
       type = "frame_style",
@@ -6528,10 +6548,25 @@ data:extend(
       }
     },
 
+    squashable_label =
+    {
+      type = "label_style",
+      horizontally_squashable = "on",
+      want_ellipsis = true
+    },
+
     black_label =
     {
       type = "label_style",
       font_color = {0, 0, 0}
+    },
+
+    black_squashable_label =
+    {
+      type = "label_style",
+      parent = "black_label",
+      horizontally_squashable = "on",
+      want_ellipsis = true
     },
 
     black_label_with_left_padding =
@@ -6541,10 +6576,26 @@ data:extend(
       left_padding = 4
     },
 
+    black_squashable_label_with_left_padding =
+    {
+      type = "label_style",
+      parent = "black_label_with_left_padding",
+      horizontally_squashable = "on",
+      want_ellipsis = true
+    },
+
     label_with_left_padding =
     {
       type = "label_style",
       left_padding = 4
+    },
+
+    squashable_label_with_left_padding =
+    {
+      type = "label_style",
+      parent = "label_with_left_padding",
+      horizontally_squashable = "on",
+      want_ellipsis = true
     },
 
     train_schedule_delete_button =
