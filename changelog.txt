@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.8
+Version: 0.17.9
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.8
+Date: 07. 03. 2019
+  Bugfixes:
+    - Fixed modded multiplayer games would incorrectly show a mod-mismatch error (again). (https://forums.factorio.com/66957)
+    - Fixed queued GUIs didn't work correctly. (https://forums.factorio.com/66963)
+    - Fixed that terrain selectors other than 'elevation' messed with the water/island controls (https://forums.factorio.com/66932)
+    - Fixed PvP running on_init when it was already initialised. (https://forums.factorio.com/66970)
+    - Fixed that replacing an underground pipe by a pipe could cause fluid mixing in a special situation. (https://forums.factorio.com/66888)
+    - Fixed that upgrading entities with the upgrade planner would erase the last-user. (https://forums.factorio.com/67019)
+    - Fixed a crash in the update mods GUI.
+    - Fixed incorrect styling in the update mods GUI in some cases.
+    - Fixed crash when loading a save during a cutscene when following a unit. (https://forums.factorio.com/67022)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.7
 Date: 06. 03. 2019
