@@ -312,10 +312,10 @@ local function resource_autoplace_settings(params)
       function_name = "random-penalty",
       arguments =
       {
-	   source = tne(1),
-	   x = noise.var("x"),
-	   y = noise.var("y"),
-	   amplitude = tne(1/random_probability) -- put random_probability points with probability < 0
+       source = tne(1),
+       x = noise.var("x"),
+       y = noise.var("y"),
+       amplitude = tne(1/random_probability) -- put random_probability points with probability < 0
       }
     }
   end

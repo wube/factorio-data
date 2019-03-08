@@ -1,13 +1,56 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.9
+Version: 0.17.10
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.9
+Date: 08. 03. 2019
+  Changes:
+    - Disabling station with train waiting in it doesn't force the train to departure anymore so it works as it worked in 0.16.
+      It looked like a useful change for 0.17, but we can control train conditions by circuit network and there are some
+      nice and simple use cases were ruined by trains being forced to departure when the stop is disabled. (https://forums.factorio.com/65109)
+    - Changed expensive version of assembling machine 2 recipe to match the normal version better. (https://forums.factorio.com/65570)
+  Minor Features:
+    - Added map editor support to delete items.
+  Bugfixes:
+    - Fixed pipette making error sound in latency state even though you have enough items. (https://forums.factorio.com/67002)
+    - Fixed that technologies would sometimes disappear from the technology list when added to the research queue. (https://forums.factorio.com/65879)
+    - Fixed problems related to circuit network connection inconsistency related to undo. (https://forums.factorio.com/67071)
+    - Fixed NPE issue where Compilatron could destroy essential buildings. (https://forums.factorio.com/67031)
+    - Fixed NPE crash when Compilatron tells you to pick up scrap. (https://forums.factorio.com/66241)
+    - Fixed that he bonus GUI wouldn't show personal equipment. (https://forums.factorio.com/65618)
+    - Fixed using special-item tags would cause desyncs. (https://forums.factorio.com/66311)
+    - Fixed NPE crash when Compilatron tries to point at an object that doesn't exist any more. (https://forums.factorio.com/65162)
+    - Fixed Local errors in scenarios would crash the game when viewing scenarios in the GUI. (https://forums.factorio.com/66716)
+    - Fixed that reviving and underground belt could sometimes change it's direction. (https://forums.factorio.com/67026)
+    - Fixed a crash when using modded recipes in furnaces with fluids. (https://forums.factorio.com/66271)
+    - Fixed that the active-version selector in the mods GUI didn't work. (https://forums.factorio.com/66941)
+    - Fixed that randomizing map seed didn't have any effect after an exchange string was loaded. (https://forums.factorio.com/65555)
+    - Fixed that resources wouldn't be rendered correctly in the map preview. (https://forums.factorio.com/66525)
+    - Fixed miscalculation of peak influence in autoplace specifications with more than 2 peaks. (https://forums.factorio.com/67040)
+    - Layouting fix related to technology gui. (https://forums.factorio.com/66868)
+    - Fixed crash when running out of space in physical texture used for streaming. High detail textures will be evicted instead. (https://forums.factorio.com/66563)
+    - Fixed that mod settings could get scrambled/reset when adding removing or changing mods. (https://forums.factorio.com/66669)
+    - Fixed that you could open blueprint books/armor multiple times. (https://forums.factorio.com/67096)
+    - Fixed that the train inactivity wait condition time was limited to 120 seconds. (https://forums.factorio.com/66974)
+    - Fixed a crash when exiting the game through the "X" button from a tutorial. (https://forums.factorio.com/65270)
+    - Fixed the shadows of some GUIs when circuit network window is shown. (https://forums.factorio.com/67119)
+    - Fixed menu background image would be scaled with poor quality. (https://forums.factorio.com/67109)
+    - Fixed crash related to beam creation when the source or target is removed in the process. (https://forums.factorio.com/67110)
+    - Fixed a hand logic related to loading a save with different mod settings which results in to the cursor being item removed.
+    - Fixed being unable to clear "X"(missing blueprint) icon from the quickbar. (https://forums.factorio.com/67114)
+    - Fixed that train two stations of the same name in the train schedule could crash the game. (https://forums.factorio.com/67066)
+    - Fixed consistency check for signal state of train on the way. (https://forums.factorio.com/67052)
+    - Fixed issues with pipes disconnected w/o reason. Added stricter checks for new occurrences. (https://forums.factorio.com/67057)
+  Scripting:
+    - Added LuaSurface::min_brightness read/write.
+    - Added LuaEntity::get_connected_rails(), get_rail_segment_entity(), get_rail_segment_end(), get_rail_segment_length(), and get_rail_segment_overlaps().
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.8
 Date: 07. 03. 2019
   Bugfixes:
     - Fixed modded multiplayer games would incorrectly show a mod-mismatch error (again). (https://forums.factorio.com/66957)
     - Fixed queued GUIs didn't work correctly. (https://forums.factorio.com/66963)
-    - Fixed that terrain selectors other than 'elevation' messed with the water/island controls (https://forums.factorio.com/66932)
+    - Fixed that terrain selectors other than 'elevation' messed with the water/island controls. (https://forums.factorio.com/66932)
     - Fixed PvP running on_init when it was already initialised. (https://forums.factorio.com/66970)
     - Fixed that replacing an underground pipe by a pipe could cause fluid mixing in a special situation. (https://forums.factorio.com/66888)
     - Fixed that upgrading entities with the upgrade planner would erase the last-user. (https://forums.factorio.com/67019)

@@ -84,7 +84,7 @@ data:extend(
       enabled = false,
       ingredients =
       {
-        {"iron-plate", 20},
+        {"steel-plate", 5},
         {"electronic-circuit", 5},
         {"iron-gear-wheel", 10},
         {"assembling-machine-1", 1}

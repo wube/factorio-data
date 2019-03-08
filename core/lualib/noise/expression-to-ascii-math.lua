@@ -13,7 +13,7 @@ local function ca2d_blit(ca2d, x0, y0, text)
       y = y + 1
     else
       if x <= width and y <= height then
-	chardata[(y-1) * width + x] = char
+        chardata[(y-1) * width + x] = char
       end
       x = x + 1
     end
@@ -28,10 +28,10 @@ local function ca2d_tolines(ca2d, opts)
     local linelength = 0
     if opts.trimlines then
       for x=1,linelength do
-	local char = ca2d.chardata[(y-1)*ca2d.width + x]
-	if char ~= " " then
-	  linelength = x
-	end
+  local char = ca2d.chardata[(y-1)*ca2d.width + x]
+  if char ~= " " then
+    linelength = x
+  end
       end
     else
       linelength = ca2d.width
@@ -106,8 +106,8 @@ local function char_block(text)
       cl_len = 0
     else
       if cl_height == 0 then
-	cl_height = 1
-	height = height + 1
+  cl_height = 1
+  height = height + 1
       end
       cl_len = cl_len + 1
       width = math.max(width, cl_len)
@@ -309,16 +309,16 @@ local function expression_to_ascii_math(expr, precedence)
       infix_padding = ""
     elseif expr.function_name == "divide" then
       if args_are_small then
-	infix_padding = ""
+        infix_padding = ""
       else
-	infix = nil
+        infix = nil
       end
     end
 
     for i=1,#expr.arguments do
       local argprec = argblocks[i].infix_precedence or 0
       if infix and infix.precedence < argprec then
-	argblocks[i] = parenthesize_block(argblocks[i])
+        argblocks[i] = parenthesize_block(argblocks[i])
       end
     end
 
