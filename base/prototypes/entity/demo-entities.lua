@@ -4932,7 +4932,7 @@ data:extend(
     name = "escape-pod-lab",
     icon = "__base__/graphics/icons/lab.png",
     icon_size = 32,
-    flags = {"placeable-player", "player-creation"},
+    flags = {"placeable-player", "player-creation", "hidden"},
     minable = {mining_time = 1, result = "lab"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 150,

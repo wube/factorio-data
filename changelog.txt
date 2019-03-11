@@ -1,6 +1,33 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.10
+Version: 0.17.11
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.10
+Date: 11. 03. 2019
+  Changes:
+    - Terrain generator options are preserved by the map generator GUI unless explicitly changed.
+    - Changed landfilling result to be tile called "landfill" instead of tile called "grass-1".
+      It looks the same for now, but it solves some unexpected behaviour. We might give it a custom graphics later on. (https://forums.factorio.com/67282)
+      Existing blueprints containing "grass-1" will be migrated to the "landfill" tile.
+    - The game will load without an error when non-essential shaders fail to compile. (https://forums.factorio.com/65107)
+    - When a player dies in the Wave defense, the free equipment will be removed from the corpse.
+  Minor Features:
+    - "Make Blueprint", "Make Blueprint Book", "Make Deconstruction Planner", "Make Upgrade Planner", "Toggle Personal Roboport", and "Toggle Exoskeleton" functions are now accessible via keyboard shortcuts.
+  Bugfixes:
+    - Fixed references to nonexistent noise expressions in map gen settings would crash the game.
+    - Fixed a crash when trying to read Lua drop-down font style names. (https://forums.factorio.com/67379)
+    - Fixed a crash when trying to join a Steam game fails in some cases. (https://forums.factorio.com/67366)
+    - Fixed crash related to latency hiding and undo.
+    - Fixed that map generation wouldn't always update to reflect modded noise expressions.
+    - Fixed a crash when the open GUI target would become invalidated during the same tick as autosave starting.
+    - Fixed that the repaired lab showed in the bonus GUI. (https://forums.factorio.com/67320)
+    - Fixed NPE crash when Compilatron tried to place his chest. (https://forums.factorio.com/67153)
+    - Fixed that Control+F didn't work in the trains GUI. (https://forums.factorio.com/66253)
+    - Probably fixed GUI not responding to user input in some situations. (https://forums.factorio.com/66210)
+    - Fixed scaling of some of the debug info text overlay. (https://forums.factorio.com/67172)
+    - Fixed headless server would be stuck in reset loop when trying to apply an update. (https://forums.factorio.com/67231)
+  Scripting:
+    - Added LuaGuiElement::select_all and select methods that work for textfield and textbox.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.9
 Date: 08. 03. 2019
@@ -27,7 +54,7 @@ Date: 08. 03. 2019
     - Fixed that randomizing map seed didn't have any effect after an exchange string was loaded. (https://forums.factorio.com/65555)
     - Fixed that resources wouldn't be rendered correctly in the map preview. (https://forums.factorio.com/66525)
     - Fixed miscalculation of peak influence in autoplace specifications with more than 2 peaks. (https://forums.factorio.com/67040)
-    - Layouting fix related to technology gui. (https://forums.factorio.com/66868)
+    - Layouting fix related to technology GUI. (https://forums.factorio.com/66868)
     - Fixed crash when running out of space in physical texture used for streaming. High detail textures will be evicted instead. (https://forums.factorio.com/66563)
     - Fixed that mod settings could get scrambled/reset when adding removing or changing mods. (https://forums.factorio.com/66669)
     - Fixed that you could open blueprint books/armor multiple times. (https://forums.factorio.com/67096)
@@ -79,10 +106,10 @@ Date: 06. 03. 2019
     - Fixed PvP scenarios created in 0.16 and loaded in 0.17. (https://forums.factorio.com/66420)
     - Fixed PvP script error from bad migration data checking. (https://forums.factorio.com/66876)
     - Fixed that blueprint that was meant to disappear on Q did not after selecting and cancelling selection. (https://forums.factorio.com/66004)
-    - Fixed persisting tooltips in the technology gui. (https://forums.factorio.com/66176)
+    - Fixed persisting tooltips in the technology GUI. (https://forums.factorio.com/66176)
     - Fixed set_quick_bar_slot not refreshing item counts in the quickbar. (https://forums.factorio.com/66150)
-    - Fixed layouting in train configure gui with very long station names. (https://forums.factorio.com/66841)
-    - Fixed layouting in train configure gui with too long condition translations. (https://forums.factorio.com/66654)
+    - Fixed layouting in train configure GUI with very long station names. (https://forums.factorio.com/66841)
+    - Fixed layouting in train configure GUI with too long condition translations. (https://forums.factorio.com/66654)
     - Squashed labels get a tooltip with the full text in a similar fashion as buttons.
     - Fixed that research queue setting wouldn't export to map exchange string properly. (https://forums.factorio.com/65417)
     - Fixed incorrect primary screen index in graphics options GUI.
@@ -162,8 +189,8 @@ Date: 04. 03. 2019
     - Fixed hand not disappearing from the quickbar in some situations. (https://forums.factorio.com/66019)
     - Fixed a crash related to the research queue. (https://forums.factorio.com/66172)
     - Fixed that the research queue could show incorrect research levels. (https://forums.factorio.com/66144)
-    - Horizontal layouting fix of the mods gui. (https://forums.factorio.com/66217)
-    - Fixed that the island related changes in the terrain settings in map generator gui weren't updated if the island preset was preselected. (https://forums.factorio.com/65722)
+    - Horizontal layouting fix of the mods GUI. (https://forums.factorio.com/66217)
+    - Fixed that the island related changes in the terrain settings in map generator GUI weren't updated if the island preset was preselected. (https://forums.factorio.com/65722)
     - Fixed that custom Lua-defined shortcuts would desync the game. (https://forums.factorio.com/66556)
     - Fixed a crash when player is not given when using surface.deconstruct_area(). (https://forums.factorio.com/66426)
     - Fixed loading of blueprints containing rail temporary stations.
@@ -189,7 +216,7 @@ Date: 01. 03. 2019
     - Fixed uranium processing tech pre-requisites - added sulfur processing. (https://forums.factorio.com/66060)
     - Removed ghost buildability consistency check until we properly integrate building of ghosts into the fluid mixing prevention logic.
     - Fixed crash related to train pathfinding. (https://forums.factorio.com/65950)
-    - Fixed layouting of Map Generator gui when the preview is shown. (https://forums.factorio.com/65959)
+    - Fixed layouting of Map Generator GUI when the preview is shown. (https://forums.factorio.com/65959)
     - Fixed issues with rich text tags referencing entities that have no icon.
     - Fixed crash related to moving blueprints from game blueprints to player blueprints. (https://forums.factorio.com/66091)
     - Fixed crash related listing all players while while processing event of player being removed.
@@ -207,7 +234,7 @@ Date: 28. 02. 2019
     - Changed train pathfinding in a way, that it can find path that ends in the same segment where it started.
       This worked only for the trivial case of all path of one segment before.
   Bugfixes:
-    - Fixed possible crash related to browsing in the mods gui.
+    - Fixed possible crash related to browsing in the mods GUI.
     - Fixed that turning off exoskeletons didn't work correctly in multiplayer.
     - Fixed shaking of blueprint preview in blueprint book tooltip. (https://forums.factorio.com/65594)
     - Fixed the wrong detection of changed autosave interval in other settings. (https://forums.factorio.com/65626)
@@ -300,9 +327,9 @@ Date: 26. 02. 2019
 Version: 0.17.0
 Date: 26. 02. 2019
   Major Features:
-    - New quickbar (more in Gui section)
+    - New quickbar (more in GUI section)
     - Added shortcut bar that allows quick access to certain game features, such as toggling alt mode, creating blueprints, or turning off personal roboport
-    - New gui style with final version of some parts of the GUI (More in Gui section)
+    - New GUI style with final version of some parts of the GUI (More in GUI section)
     - Added clipboard functionality. (Control + C, Control + X, Control + V activate appropriate tools) Shift + mouse wheel allows to cycle the clipboard history.
     - Added undo functionality (Control + Z). Supports manual entity building and by blueprints and manual mining and usage of deconstruction planner.
     - Reworked the Map Editor so it's now part of the standard game and can be toggled at will using the '/editor' command.
@@ -358,7 +385,7 @@ Date: 26. 02. 2019
     - When selecting any item to the cursor from some of the player inventories. As long as the item is being held, hand icon is shown on the slot it was taken from. The hand
       prevents any other item to be inserted into the slot as long as the player cursor isn't cleared.
     - When holding radar in cursor, area covered by existing radars is also highlighted on minimap.
-    - Configurable (in gui), the count of rolling stocks shown in the train visualization.
+    - Configurable (in GUI), the count of rolling stocks shown in the train visualization.
     - Added two levels of shallow water tiles (only placed by map editor, not generated). Enemies and vehicles can travel over shallow water.
   Graphics:
     - New graphics for:
@@ -432,7 +459,7 @@ Date: 26. 02. 2019
     - Manually putting modules into machines that are requesting modules from the logistic network will reduce the modules requested.
     - Increased maximum train stop length from 50 to 100 characters so it can fit at least 3 tags in most cases.
     - Items consumed by hand crafting are counted in item production statistics.
-    - Added --disable-migration-window command-line option to disable the "migrated content" gui.
+    - Added --disable-migration-window command-line option to disable the "migrated content" GUI.
     - Removed tile properties debug overlay.
     - Command-line map preview generator now shows biter nests.
     - Items sent in a rocket are counted in item production statistics. (https://forums.factorio.com/62606)

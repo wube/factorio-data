@@ -42,6 +42,7 @@ require("prototypes.technology.demo-technology")
 require("prototypes.shortcuts")
 require("prototypes.campaign_sprites")
 require("prototypes.campaign_gui")
+require("prototypes.custom-inputs")
 
 if not data.is_demo then
   require("prototypes.achievements")

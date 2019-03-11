@@ -489,12 +489,6 @@ data:extend{
   },
   {
     type = "noise-expression",
-    name = "starting-noise-amplitude-16-4",
-    intended_property = debug_property("starting-noise-amplitude"),
-    expression = noise.fraction(16,4),
-  },
-  {
-    type = "noise-expression",
     name = "0_16-elevation",
     intended_property = debug_property("elevation"),
     description = "Elevation function often described as 'swampy' from 0.16",

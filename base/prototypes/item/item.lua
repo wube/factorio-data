@@ -988,7 +988,7 @@ data:extend(
     stack_size = 100,
     place_as_tile =
     {
-      result = "grass-1",
+      result = "landfill",
       condition_size = 1,
       condition = { "ground-tile" }
     }

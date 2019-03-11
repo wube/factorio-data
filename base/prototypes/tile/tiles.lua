@@ -289,7 +289,7 @@ patch_for_inner_corner_of_transition_between_transition =
 --{
 --  generic_transition_between_transitions_template
 --  (
---      default_transition_group_id, 
+--      default_transition_group_id,
 --      out_of_map_transition_group_id,
 --      "__base__/graphics/terrain/water-transitions/grass-transition.png",
 --      "__base__/graphics/terrain/water-transitions/hr-grass-transition.png",
@@ -307,13 +307,13 @@ patch_for_inner_corner_of_transition_between_transition =
 
 function init_transition_between_transition_common_options(base)
   local t = base or {}
-  
+
   t.background_layer_offset = t.background_layer_offset or 1
   t.background_layer_group = t.background_layer_group or "zero"
   if (t.offset_background_layer_by_tile_layer == nil) then
     t.offset_background_layer_by_tile_layer = true
   end
-  
+
   return t
 end
 
@@ -321,7 +321,7 @@ function create_water_transitions_between_transitions(normal_res_transition, hig
   return make_generic_transition_template
   (
       nil,
-      default_transition_group_id, 
+      default_transition_group_id,
       out_of_map_transition_group_id,
       normal_res_transition,
       high_res_transition,
@@ -345,7 +345,7 @@ local water_transitions_between_transitions =
   make_generic_transition_template
   (
       nil,
-      default_transition_group_id, 
+      default_transition_group_id,
       out_of_map_transition_group_id,
       "__base__/graphics/terrain/water-transitions/grass-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-grass-transition.png",
@@ -423,7 +423,7 @@ local water_out_of_map_transition =
     true,
     true
   )
-  
+
 local deepwater_out_of_map_transition =
   make_out_of_map_transition_template
   (
@@ -443,7 +443,7 @@ local deepwater_out_of_map_transition =
     true,
     true
   )
-  
+
 local deepwater_green_out_of_map_transition =
   make_out_of_map_transition_template
   (
@@ -463,7 +463,7 @@ local deepwater_green_out_of_map_transition =
     true,
     true
   )
-  
+
 local water_green_out_of_map_transition =
   make_out_of_map_transition_template
   (
@@ -483,7 +483,7 @@ local water_green_out_of_map_transition =
     true,
     true
   )
-  
+
 local water_shallow_out_of_map_transition =
   make_out_of_map_transition_template
   (
@@ -586,7 +586,7 @@ local sand_transitions_between_transitions =
 {
   generic_transition_between_transitions_template
   (
-    default_transition_group_id, 
+    default_transition_group_id,
     water_transition_group_id,
     "__base__/graphics/terrain/water-transitions/sand-transition.png",
     "__base__/graphics/terrain/water-transitions/hr-sand-transition.png",
@@ -605,7 +605,7 @@ local sand_transitions_between_transitions =
   make_generic_transition_template
   (
     nil,
-    default_transition_group_id, 
+    default_transition_group_id,
     out_of_map_transition_group_id,
     "__base__/graphics/terrain/out-of-map-transition/sand-out-of-map-transition.png",
     "__base__/graphics/terrain/out-of-map-transition/hr-sand-out-of-map-transition.png",
@@ -625,7 +625,7 @@ local sand_transitions_between_transitions =
   generic_transition_between_transitions_template
   (
       water_transition_group_id,
-      out_of_map_transition_group_id, 
+      out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/sand-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-sand-shore-out-of-map-transition.png",
       {
@@ -664,7 +664,7 @@ local grass_transitions_between_transitions =
 {
   generic_transition_between_transitions_template
   (
-      default_transition_group_id, 
+      default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/grass-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-grass-transition.png",
@@ -681,7 +681,7 @@ local grass_transitions_between_transitions =
   make_generic_transition_template
   (
     nil,
-    default_transition_group_id, 
+    default_transition_group_id,
     out_of_map_transition_group_id,
     "__base__/graphics/terrain/out-of-map-transition/grass-out-of-map-transition.png",
     "__base__/graphics/terrain/out-of-map-transition/hr-grass-out-of-map-transition.png",
@@ -698,11 +698,11 @@ local grass_transitions_between_transitions =
     true,
     true
   ),
-  
+
   generic_transition_between_transitions_template
   (
       water_transition_group_id,
-      out_of_map_transition_group_id, 
+      out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/grass-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-grass-shore-out-of-map-transition.png",
       {
@@ -721,7 +721,7 @@ local dirt_out_of_map_transition =
   make_generic_transition_template
   (
     nil,
-    default_transition_group_id, 
+    default_transition_group_id,
     out_of_map_transition_group_id,
     "__base__/graphics/terrain/out-of-map-transition/dirt-out-of-map-transition.png",
     "__base__/graphics/terrain/out-of-map-transition/hr-dirt-out-of-map-transition.png",
@@ -762,7 +762,7 @@ local dry_dirt_transitions_between_transitions =
 {
   generic_transition_between_transitions_template
   (
-      default_transition_group_id, 
+      default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/dry-dirt-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-dry-dirt-transition.png",
@@ -780,7 +780,7 @@ local dry_dirt_transitions_between_transitions =
   generic_transition_between_transitions_template
   (
       water_transition_group_id,
-      out_of_map_transition_group_id, 
+      out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/dry-dirt-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-dry-dirt-shore-out-of-map-transition.png",
       {
@@ -818,7 +818,7 @@ local dark_dirt_transitions_between_transitions =
 {
   generic_transition_between_transitions_template
   (
-      default_transition_group_id, 
+      default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/dark-dirt-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-dark-dirt-transition.png",
@@ -836,7 +836,7 @@ local dark_dirt_transitions_between_transitions =
   generic_transition_between_transitions_template
   (
       water_transition_group_id,
-      out_of_map_transition_group_id, 
+      out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/dark-dirt-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-dark-dirt-shore-out-of-map-transition.png",
       {
@@ -875,7 +875,7 @@ local concrete_transitions_between_transitions =
 {
   generic_transition_between_transitions_template
   (
-      default_transition_group_id, 
+      default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/concrete-transitions.png",
       "__base__/graphics/terrain/water-transitions/hr-concrete-transitions.png",
@@ -891,7 +891,7 @@ local concrete_transitions_between_transitions =
   make_generic_transition_template
   (
     nil,
-    default_transition_group_id, 
+    default_transition_group_id,
     out_of_map_transition_group_id,
     "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition-b.png",
     "__base__/graphics/terrain/out-of-map-transition/hr-concrete-out-of-map-transition-b.png",
@@ -911,7 +911,7 @@ local concrete_transitions_between_transitions =
   generic_transition_between_transitions_template
   (
       water_transition_group_id,
-      out_of_map_transition_group_id, 
+      out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-concrete-shore-out-of-map-transition.png",
       {
@@ -950,7 +950,7 @@ local stone_path_transitions_between_transitions =
 {
   generic_transition_between_transitions_template
   (
-      default_transition_group_id, 
+      default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/stone-path-transitions.png",
       "__base__/graphics/terrain/water-transitions/hr-stone-path-transitions.png",
@@ -966,7 +966,7 @@ local stone_path_transitions_between_transitions =
   make_generic_transition_template
   (
     nil,
-    default_transition_group_id, 
+    default_transition_group_id,
     out_of_map_transition_group_id,
     "__base__/graphics/terrain/out-of-map-transition/stone-path-out-of-map-transition-b.png",
     "__base__/graphics/terrain/out-of-map-transition/hr-stone-path-out-of-map-transition-b.png",
@@ -983,11 +983,11 @@ local stone_path_transitions_between_transitions =
     true,
     false
   ),
-  
+
   generic_transition_between_transitions_template
   (
       water_transition_group_id,
-      out_of_map_transition_group_id, 
+      out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/stone-path-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-stone-path-shore-out-of-map-transition.png",
       {
@@ -1180,7 +1180,49 @@ define_tiles
     map_color={r=38, g=64, b=73},
     ageing=0.0003
   },
+  {
+    name = "landfill",
+    type = "tile",
+    collision_mask = {"ground-tile"},
+    layer = 26,
+    variants = tile_variations_template(
+      "__base__/graphics/terrain/grass-1.png", "__base__/graphics/terrain/masks/transition-3.png",
+      "__base__/graphics/terrain/hr-grass-1.png", "__base__/graphics/terrain/masks/hr-transition-3.png",
+      {
+        max_size = 4,
+        [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
+        [2] = { probability = 0.91, weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 }, },
+        [4] = { probability = 0.91, weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }, },
+        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
+      }
+    ),
 
+    transitions = grass_transitions,
+    transitions_between_transitions = grass_transitions_between_transitions,
+
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/grass-01.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-02.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-03.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/grass-04.ogg",
+        volume = 0.8
+      }
+    },
+    map_color={r=53, g=52, b=27},
+    ageing=0.00045,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier
+  },
   {
     name = "deepwater-green",
     type = "tile",
