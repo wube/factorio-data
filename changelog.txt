@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.11
+Version: 0.17.12
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.11
+Date: 11. 03. 2019
+  Bugfixes:
+    - Fixed that the process name was set to "Main" on Linux. (https://forums.factorio.com/67355)
+    - Fixed a crash when closing GUIs with escape in some cases. (https://forums.factorio.com/67428)
+    - Fixed a crash when mods set repair pack speeds or entity repair speed modifiers to negative values.
+    - Fixed that focus-search wouldn't work in the Recipe GUI or Map Editor. (https://forums.factorio.com/67437)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.10
 Date: 11. 03. 2019
