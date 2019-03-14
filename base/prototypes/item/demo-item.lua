@@ -427,8 +427,7 @@ data:extend(
     icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
     icon_size = 32,
     flags = {"hidden"},
-    subgroup = "energy",
-    order = "e[electric-energy-interface]-b[electric-energy-interface]",
+    order = "zzz[infinite-power]",
     place_result = "escape-pod-power",
     stack_size = 50
   },

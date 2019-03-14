@@ -6,6 +6,7 @@ data:extend(
     order = "a[alt-mode]",
     action = "toggle-alt-mode",
     localised_name = {"shortcut.alt-mode"},
+    associated_control_input = "show-info",
     icon =
     {
       filename = "__base__/graphics/icons/shortcut-toolbar/alt-mode-x32.png",
@@ -37,6 +38,7 @@ data:extend(
     order = "b[blueprints]-a[undo]",
     action = "undo",
     localised_name = {"shortcut.undo"},
+    associated_control_input = "undo",
     technology_to_unlock = "construction-robotics",
     icon =
     {
@@ -77,6 +79,7 @@ data:extend(
     order = "b[blueprints]-b[copy]",
     action = "copy",
     localised_name = {"shortcut.copy"},
+    associated_control_input = "copy",
     technology_to_unlock = "construction-robotics",
     icon =
     {
@@ -109,6 +112,7 @@ data:extend(
     order = "b[blueprints]-c[cut]",
     action = "cut",
     localised_name = {"shortcut.cut"},
+    associated_control_input = "cut",
     technology_to_unlock = "construction-robotics",
     icon =
     {
@@ -141,6 +145,7 @@ data:extend(
     order = "b[blueprints]-c[paste]",
     action = "paste",
     localised_name = {"shortcut.paste"},
+    associated_control_input = "paste",
     technology_to_unlock = "construction-robotics",
     icon =
     {
@@ -205,6 +210,7 @@ data:extend(
     order = "b[blueprints]-e[blueprint]",
     action = "create-blueprint-item",
     localised_name = {"shortcut.make-blueprint"},
+    associated_control_input = "give-blueprint",
     technology_to_unlock = "construction-robotics",
     item_to_create = "blueprint",
     style = "blue",
@@ -239,6 +245,7 @@ data:extend(
     order = "b[blueprints]-f[book]",
     action = "create-blueprint-item",
     localised_name = {"shortcut.make-blueprint-book"},
+    associated_control_input = "give-blueprint-book",
     technology_to_unlock = "construction-robotics",
     item_to_create = "blueprint-book",
     style = "blue",
@@ -273,6 +280,7 @@ data:extend(
     order = "b[blueprints]-g[deconstruction-planner]",
     action = "create-blueprint-item",
     localised_name = {"shortcut.make-deconstruction-planner"},
+    associated_control_input = "give-deconstruction-planner",
     technology_to_unlock = "construction-robotics",
     item_to_create = "deconstruction-planner",
     style = "red",
@@ -307,6 +315,7 @@ data:extend(
     order = "b[blueprints]-h[upgrade-planner]",
     action = "create-blueprint-item",
     localised_name = {"shortcut.make-upgrade-planner"},
+    associated_control_input = "give-upgrade-planner",
     technology_to_unlock = "construction-robotics",
     item_to_create = "upgrade-planner",
     style = "green",
@@ -341,6 +350,7 @@ data:extend(
     order = "c[toggles]-a[roboport]",
     action = "toggle-personal-roboport",
     localised_name = {"shortcut.toggle-personal-roboport"},
+    associated_control_input = "toggle-personal-roboport",
     technology_to_unlock = "personal-roboport-equipment",
     icon =
     {
@@ -381,6 +391,7 @@ data:extend(
     order = "c[toggles]-b[exoskeleton]",
     action = "toggle-equipment-movement-bonus",
     localised_name = {"shortcut.toggle-equipment-movement-bonus"},
+    associated_control_input = "toggle-equipment-movement-bonus",
     technology_to_unlock = "exoskeleton-equipment",
     icon =
     {

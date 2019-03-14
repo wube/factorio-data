@@ -1034,7 +1034,7 @@ data:extend(
       fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 1,
-      emissions = 0.01,
+      emissions_per_second_per_watt = 2 / 90000,
       smoke =
       {
         {
@@ -1261,7 +1261,7 @@ data:extend(
       fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 1,
-      emissions = 0.1 / 6.5,
+      emissions_per_second_per_watt = 30 / 1800000,
       smoke =
       {
         {
@@ -3685,7 +3685,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.04
+      emissions_per_second_per_watt = 4 / 75000
     },
     energy_usage = "75kW",
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
@@ -4573,7 +4573,8 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
     pictures =
     {
-      layers = {
+      layers =
+      {
         {
           filename = "__base__/graphics/entity/escape-pod-power/wreck-pole.png",
           width = 4,
@@ -4636,7 +4637,7 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.2,
     distance_per_frame = 0.1,
-    pollution_to_join_attack = 200,
+    pollution_to_join_attack = 4,
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
@@ -5093,7 +5094,7 @@ data:extend(
   {
     type = "electric-energy-interface",
     name = "escape-pod-power",
-    icon = "__base__/graphics/icons/accumulator.png",
+    icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "escape-pod-power"},
@@ -5332,5 +5333,42 @@ data:extend(
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance
   },
+  {
+    type = "flying-text",
+    name = "tree-proxy",
+    icon = "__base__/graphics/icons/tree-01.png",
+    icon_size = 32,
+    flags = {"hidden"},
+    time_to_live = 150,
+    speed = 0.05
+  },
+  {
+    type = "flying-text",
+    name = "tree-dying-proxy",
+    icons =
+    {
+      {
+       icon = "__base__/graphics/icons/tree-01.png",
+       icon_size = 32
+      },
+      {
+        icon = "__core__/graphics/cancel.png",
+        icon_size = 64
+      }
+    },
+    icon_size = 32,
+    flags = {"hidden"},
+    time_to_live = 150,
+    speed = 0.05
+  },
+  {
+    type = "flying-text",
+    name = "tile-proxy",
+    icon = "__base__/graphics/icons/landfill.png",
+    icon_size = 32,
+    flags = {"hidden"},
+    time_to_live = 150,
+    speed = 0.05
+  }
 }
 )

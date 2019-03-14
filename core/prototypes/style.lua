@@ -3824,6 +3824,13 @@ data:extend(
       horizontal_align = "center"
     },
 
+    wide_slider_value_textfield =
+    {
+      type =  "textbox_style",
+      parent = "slider_value_textfield",
+      width = 100
+    },
+
     stretchable_textfield =
     {
       type = "textbox_style",

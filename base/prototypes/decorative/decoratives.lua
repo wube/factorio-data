@@ -79,7 +79,7 @@ local function autoplace_settings(noise_layer, max_probability, rectangles, more
   return ret
 end
 
-local function rock_autoplace_settgins(multiplier, order_suffix, rectangle)
+local function rock_autoplace_settings(multiplier, order_suffix, rectangle)
   local peak =
   {
     noise_layer = "rocks",
@@ -7585,7 +7585,7 @@ data:extend{
         percent = 100
       }
     },
-    autoplace = rock_autoplace_settgins(0.125, "a[huge]", {{0, 0.65}, {1, 1}}),
+    autoplace = rock_autoplace_settings(0.125, "a[huge]", {{0, 0.65}, {1, 1}}),
     pictures =
     {
       {
@@ -7847,7 +7847,7 @@ data:extend{
         percent = 100
       }
     },
-    autoplace = rock_autoplace_settgins(0.25, "b[big]", {{0, 0.65}, {1, 1}}),
+    autoplace = rock_autoplace_settings(0.25, "b[big]", {{0, 0.65}, {1, 1}}),
     pictures =
     {
       {
@@ -8139,7 +8139,7 @@ data:extend{
     selectable_in_game = false,
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     render_layer = "decorative",
-    autoplace = rock_autoplace_settgins(0.5, "c[medium]", {{0, 0.3}, {1, 1}}),
+    autoplace = rock_autoplace_settings(0.5, "c[medium]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
       {
@@ -8344,7 +8344,7 @@ data:extend{
     selectable_in_game = false,
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
-    autoplace = rock_autoplace_settgins(1, "d[small]", {{0, 0.3}, {1, 1}}),
+    autoplace = rock_autoplace_settings(1, "d[small]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
       {
@@ -8613,7 +8613,7 @@ data:extend{
     selectable_in_game = false,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     render_layer = "decorative",
-    autoplace = rock_autoplace_settgins(1.1, "e[tiny]", {{0, 0.3}, {1, 1}}),
+    autoplace = rock_autoplace_settings(1.1, "e[tiny]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
       {
@@ -8887,7 +8887,7 @@ data:extend{
     selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
     render_layer = "object",
     max_health = 500,
-    autoplace = rock_autoplace_settgins(0.25, "b[big]", {{0, 0}, {0.4, 0.2}}),
+    autoplace = rock_autoplace_settings(0.25, "b[big]", {{0, 0}, {0.4, 0.2}}),
     minable =
     {
       mining_particle = "stone-particle",
@@ -9143,7 +9143,7 @@ data:extend{
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     selectable_in_game = false,
     render_layer = "floor",
-    autoplace = rock_autoplace_settgins(0.4, "c[medium]", {{0, 0}, {0.4, 0.2}}),
+    autoplace = rock_autoplace_settings(0.4, "c[medium]", {{0, 0}, {0.4, 0.2}}),
     pictures =
     {
       {
@@ -9412,7 +9412,7 @@ data:extend{
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     selectable_in_game = false,
     render_layer = "floor",
-    autoplace = rock_autoplace_settgins(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
+    autoplace = rock_autoplace_settings(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
     pictures =
     {
       {

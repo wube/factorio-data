@@ -64,7 +64,8 @@ data:extend(
         },
         pollution =
         {
-          ageing = 0.5
+          ageing = 0.5,
+          enemy_attack_pollution_consumption_modifier = 0.5
         },
       }
     },
@@ -89,7 +90,8 @@ data:extend(
         },
         pollution =
         {
-          ageing = 0.5
+          ageing = 0.5,
+          enemy_attack_pollution_consumption_modifier = 0.5
         },
         difficulty_settings =
         {

@@ -1,6 +1,9 @@
 local util = require('util')
 local merge = util.merge
 
+local tree_emissions_per_second = -0.001
+local dead_tree_emissions_per_second = -0.0001
+
 local starting_area_clearing_radius = 128
 local starting_area_clearing_border_width = 64
 
@@ -5869,7 +5872,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
       },
       corpse = type_name .. "-stump",
       remains_when_mined = type_name .. "-stump",
-      emissions_per_tick = -0.001,
+      emissions_per_second = tree_emissions_per_second,
       max_health = 50,
       collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
       selection_box = {{-0.9, -2.2}, {0.9, 0.6}},
@@ -5978,7 +5981,7 @@ data:extend(
       mining_time = 0.5,
       result = "wood"
     },
-    emissions_per_tick = -0.0001,
+    emissions_per_second = dead_tree_emissions_per_second,
     max_health = 20,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
     selection_box = {{-0.6, -1.5}, {0.6, 0.3}},
@@ -6132,7 +6135,7 @@ data:extend(
       result = "wood",
       count = 2
     },
-    emissions_per_tick = -0.0001,
+    emissions_per_second = dead_tree_emissions_per_second,
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
@@ -6299,7 +6302,7 @@ data:extend(
       result = "wood",
       count = 2
     },
-    emissions_per_tick = -0.0001,
+    emissions_per_second = dead_tree_emissions_per_second,
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
@@ -6466,7 +6469,7 @@ data:extend(
       result = "wood",
       count = 2
     },
-    emissions_per_tick = -0.0001,
+    emissions_per_second = dead_tree_emissions_per_second,
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
@@ -6660,7 +6663,7 @@ data:extend(
       result = "wood",
       count = 2
     },
-    emissions_per_tick = -0.0001,
+    emissions_per_second = dead_tree_emissions_per_second,
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},

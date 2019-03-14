@@ -17,8 +17,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      -- will produce this much * energy pollution units per tick
-      emissions = 0.15 / 1.5,
+      emissions_per_second_per_watt = 10 / 90000,
       usage_priority = "secondary-input"
     },
     output_fluid_box =

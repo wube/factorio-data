@@ -68,7 +68,7 @@ data:extend(
     movement_speed = 0.24,
     distance_per_frame = 0.188,
     -- in pu
-    pollution_to_join_attack = 1000,
+    pollution_to_join_attack = 20,
     corpse = "medium-biter-corpse",
     dying_explosion = "blood-explosion-small",
     working_sound = make_biter_calls(0.4),
@@ -124,7 +124,7 @@ data:extend(
     movement_speed = 0.23,
     distance_per_frame = 0.30,
     -- in pu
-    pollution_to_join_attack = 4000,
+    pollution_to_join_attack = 80,
     corpse = "big-biter-corpse",
     dying_explosion = "blood-explosion-big",
     working_sound = make_biter_calls(0.5),
@@ -181,7 +181,7 @@ data:extend(
     movement_speed = 0.3,
     distance_per_frame = 0.32,
     -- in pu
-    pollution_to_join_attack = 20000,
+    pollution_to_join_attack = 400,
     corpse = "behemoth-biter-corpse",
     dying_explosion = "blood-explosion-big",
     working_sound = make_biter_calls(0.7),
@@ -233,7 +233,7 @@ data:extend(
 
     distance_per_frame = 0.04,
     -- in pu
-    pollution_to_join_attack = 200,
+    pollution_to_join_attack = 4,
     corpse = "small-spitter-corpse",
     dying_explosion = "blood-explosion-small",
     working_sound = make_biter_calls(0.3),
@@ -286,7 +286,7 @@ data:extend(
     movement_speed = 0.165,
     distance_per_frame = 0.055,
     -- in pu
-    pollution_to_join_attack = 600,
+    pollution_to_join_attack = 12,
     corpse = "medium-spitter-corpse",
     dying_explosion = "blood-explosion-small",
     working_sound = make_biter_calls(0.4),
@@ -340,7 +340,7 @@ data:extend(
     movement_speed = 0.15,
     distance_per_frame = 0.07,
     -- in pu
-    pollution_to_join_attack = 1500,
+    pollution_to_join_attack = 30,
     corpse = "big-spitter-corpse",
     dying_explosion = "blood-explosion-big",
     working_sound = make_biter_calls(0.5),
@@ -396,7 +396,7 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.15,
     distance_per_frame = 0.084,
-    pollution_to_join_attack = 10000,
+    pollution_to_join_attack = 200,
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "blood-explosion-big",
     working_sound = make_biter_calls(0.7),
@@ -549,8 +549,8 @@ data:extend(
     collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
     map_generator_bounding_box = {{-4.2, -3.2}, {3.2, 3.2}},
     selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
-    pollution_absorbtion_absolute = 20,
-    pollution_absorbtion_proportional = 0.01,
+    pollution_absorption_absolute = 20,
+    pollution_absorption_proportional = 0.01,
     corpse = "spitter-spawner-corpse",
     dying_explosion = "blood-explosion-huge",
     max_count_of_owned_units = 7,

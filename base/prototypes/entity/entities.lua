@@ -1580,7 +1580,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.015
+      emissions_per_second_per_watt = 3 / 150000
     },
     energy_usage = "150kW",
     module_specification =
@@ -1707,7 +1707,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.005
+      emissions_per_second_per_watt = 2 / 375000
     },
     energy_usage = "375kW",
     module_specification =
@@ -8656,8 +8656,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      usage_priority = "secondary-input",
-      emissions = 0.01 / 2.5
+      usage_priority = "secondary-input"
     },
     energy_usage = "30kW",
     pumping_speed = 200,
@@ -9481,7 +9480,7 @@ data:extend(
       type = "burner",
       fuel_category = "chemical",
       effectivity = 1,
-      emissions = 0.02,
+      emissions_per_second_per_watt = 1 / 90000,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -9656,7 +9655,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.005
+      emissions_per_second_per_watt = 1 / 180000
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
@@ -10623,7 +10622,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.03 / 3.5
+      emissions_per_second_per_watt = 6 / 420000
     },
     energy_usage = "420kW",
 
@@ -10854,7 +10853,6 @@ data:extend(
         }
       },
 
-
       {
         apply_recipe_tint = "tertiary",
         north_position = {0, 0},
@@ -10937,7 +10935,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.03 / 3.5
+      emissions_per_second_per_watt = 4 / 210000
     },
     energy_usage = "210kW",
     crafting_categories = {"chemistry"},
@@ -11868,7 +11866,7 @@ data:extend(
   {
     type = "electric-energy-interface",
     name = "electric-energy-interface",
-    icon = "__base__/graphics/icons/accumulator.png",
+    icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "electric-energy-interface"},
@@ -12487,7 +12485,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions = 0.04 / 2.5
+      emissions_per_second_per_watt = 4 / 350000
     },
     energy_usage = "350kW",
     module_specification =

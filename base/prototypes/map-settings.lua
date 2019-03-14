@@ -16,14 +16,15 @@ data:extend(
       -- constant modifier a percentage of 1 - the pollution eaten by a chunks tiles
       ageing=1,
       -- anything bigger than this is visualised as this value
-      expected_max_per_chunk=7000,
+      expected_max_per_chunk=150,
       -- anything lower than this (but > 0) is visualised as this value
-      min_to_show_per_chunk=700,
-      min_pollution_to_damage_trees = 3500,
-      pollution_with_max_forest_damage = 10000,
-      pollution_per_tree_damage = 2000,
-      pollution_restored_per_tree_damage = 500,
-      max_pollution_to_restore_trees = 1000
+      min_to_show_per_chunk=50,
+      min_pollution_to_damage_trees = 60,
+      pollution_with_max_forest_damage = 150,
+      pollution_per_tree_damage = 50,
+      pollution_restored_per_tree_damage = 10,
+      max_pollution_to_restore_trees = 20,
+      enemy_attack_pollution_consumption_modifier = 1
     },
 
     enemy_evolution=
@@ -33,8 +34,8 @@ data:extend(
       time_factor = 0.000004,
       -- percentual increase in the evolve factor for every destroyed spawner
       destroy_factor = 0.002,
-      -- percentual increase in the evolve factor for 1000 PU
-      pollution_factor = 0.000015
+      -- percentual increase in the evolve factor for 1 pollution unit
+      pollution_factor = 0.0000009
     },
 
     enemy_expansion=

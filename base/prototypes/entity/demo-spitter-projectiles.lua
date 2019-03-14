@@ -58,7 +58,7 @@ function acid_stream(data)
     particle_scale_per_part = 0.8,
     particle_loop_frame_count = 15,
     --particle_fade_out_threshold = 0.95,
-    particle_fade_out_duration = 2, 
+    particle_fade_out_duration = 2,
     particle_loop_exit_threshold = 0.25,
     special_neutral_target_damage = {amount = 1, type = "acid"},
     initial_action =
@@ -230,7 +230,7 @@ function acid_splash_fire(data)
     --flame_alpha = 0.35,
     --flame_alpha_deviation = 0.05,
 
-    emissions_per_tick = 0,
+    emissions_per_second = 0,
 
     add_fuel_cooldown = 10,
     fade_in_duration = 1,

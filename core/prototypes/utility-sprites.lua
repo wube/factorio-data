@@ -1822,6 +1822,14 @@ data:extend(
       height = 64,
       scale = 0.5
     },
+    underground_pipe_connection =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      scale = 0.5
+    },
     ghost_cursor =
     {
       filename = "__core__/graphics/ghost-cursor.png",

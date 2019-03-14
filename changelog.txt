@@ -1,6 +1,48 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.12
+Version: 0.17.13
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.12
+Date: 14. 03. 2019
+  Features:
+    - Added pollution tab to the production statistics.
+  Minor Features:
+    - Spawner tooltip (including the pollution statistics), shows distribution of biters spawn for the current evolution factor with the pollution costs.
+    - Added attack modifier setting into the pollution section in the map generator. This modifies how much pollution is consumed by biters attacking. (default is 50% for deathworld presets)
+  Changes:
+    - Pollution generation is now shown in the x/s format both on the entity and in the item/crafting slot.
+    - All statistics graphs apart from electricity use smoothing now.
+    - The Install Mods GUI will now automatically install required dependencies.
+    - Added graphics option "Render in native screen resolution" on macOS to workaround performance issues due to rendering on Retina displays. (https://forums.factorio.com/66870)
+  Bugfixes:
+    - Added another fixing migration of consistency related to undo.
+    - Fixed that inserters wouldn't copy the white list/black list setting during fast-replace. (https://forums.factorio.com/67501)
+    - Fixed that building/removing signals forced train in disabled station to move from it. (https://forums.factorio.com/67365)
+    - Fixed that the name of the "Undo" shortcut wouldn't show up in the shortcut selection list. (https://forums.factorio.com/67464)
+    - Fixed that the blueprint book shortcut's tooltip wouldn't show the assigned key combination. (https://forums.factorio.com/67447)
+    - Fixed search bar focus being lost when binding it to extra mouse buttons. (https://forums.factorio.com/67517)
+    - Fixed that shortcut bar keyboard shortcuts would appear twice in the control settings if certain mods were installed. (https://forums.factorio.com/67433)
+    - Fixed that backspacing text covered by unclosed rich text tags could leave them at the end of the string. (https://forums.factorio.com/67376)
+    - Fixed that technology tooltip would show "unknown key" for technologies with no description. (https://forums.factorio.com/67489)
+    - Fixed unable to close the menu when rebinding toggle menu from ESC. (https://forums.factorio.com/67535)
+    - Fixed that modded GUI window frames always contained header filler. (https://forums.factorio.com/66295)
+    - Fixed save file would contain two preview screenshots. (https://forums.factorio.com/67543)
+    - Fixed typo in decoratives.lua. (https://forums.factorio.com/67594)
+    - Fixed that cloning assembling machines wouldn't preserve the direction for some recipes. (https://forums.factorio.com/67583)
+    - Fixed bug with typing certain characters on alternative keyboard layouts on windows. (https://forums.factorio.com/67552)
+    - Fixed a crash of generators whose prototype changes to not use fluid anymore. (https://forums.factorio.com/66595)
+    - Fixed some crashes related to changes of modded fluid recipes. (https://forums.factorio.com/67277)
+    - Fixed NPE bug when Compilatron walks over the iron patch when he's about to build miners. (https://forums.factorio.com/67553)
+    - Fixed switching to map view when holding placeable item in cursor would make the item icon invisible. (https://forums.factorio.com/66180)
+    - Fixed cloning rocket silos with rockets wouldn't work correctly. (https://forums.factorio.com/67635)
+    - Fixed broken and missing support of modded underground pipe connections. (https://forums.factorio.com/65824)
+    - Fixed not being able to use the same key for some actions. (https://forums.factorio.com/65128)
+    - Fixed that releasing Alt before D when pressing Alt+D would cause the character to walk.
+    - Fixed that order of items in the circuit network did not respect group and subgroups. (https://forums.factorio.com/67548)
+  Modding:
+    - Internal pollution values have been normalized, and they are now roughly 60 times less compared to what they were.
+  Scripting:
+    - LuaPlayer::get_active_quick_bar_page now returns 1 based index.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.11
 Date: 11. 03. 2019

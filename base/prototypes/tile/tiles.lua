@@ -10,6 +10,13 @@ local size_control_influence = 1
 local rectangle_influence = 1
 local beach_influence = 5
 
+local out_of_map_pollution_absorption = 0.00001
+local water_pollution_absorption = 0.000005
+local grass_pollution_absorption = 0.0000075
+local dirt_pollution_absorption = 0.0000066
+local sand_pollution_absorption = 0.0000058
+local red_desert_pollution_absorption = 0.0000066
+
 local function noise_layer_expression(noise_name)
   if tile_noise_enabled == false then return noise.to_noise_expression(0) end
   return noise.function_application("factorio-multioctave-noise",
@@ -1060,8 +1067,8 @@ define_tiles
         count = 0
       }
     },
-    map_color={r=0, g=0, b=0},
-    ageing=0.0006
+    map_color = {r=0, g=0, b=0},
+    pollution_absorption_per_second = out_of_map_pollution_absorption
   },
   {
     name = "deepwater",
@@ -1178,7 +1185,7 @@ define_tiles
     transitions_between_transitions = deepwater_transitions_between_transitions,
     allowed_neighbors = { "water" },
     map_color={r=38, g=64, b=73},
-    ageing=0.0003
+    pollution_absorption_per_second = water_pollution_absorption
   },
   {
     name = "landfill",
@@ -1220,7 +1227,7 @@ define_tiles
       }
     },
     map_color={r=53, g=52, b=27},
-    ageing=0.00045,
+    pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
   {
@@ -1337,7 +1344,7 @@ define_tiles
     transitions_between_transitions = deepwater_green_transitions_between_transitions,
     allowed_neighbors = { "water-green" },
     map_color={r=0.0941, g=0.149, b=0.066},
-    ageing=0.0003
+    pollution_absorption_per_second = water_pollution_absorption
   },
 
   {
@@ -1455,7 +1462,7 @@ define_tiles
     --transitions_between_transitions = water_transitions_between_transitions,
     --allowed_neighbors = { "deepwater" },
     map_color={r=51, g=83, b=95},
-    ageing=0.0003
+    pollution_absorption_per_second = water_pollution_absorption
   },
 
   {
@@ -1572,7 +1579,7 @@ define_tiles
     transitions_between_transitions = water_green_transitions_between_transitions,
     allowed_neighbors = { "water" },
     map_color={r=31, g=48, b=18},
-    ageing=0.0003
+    pollution_absorption_per_second = water_pollution_absorption
   },
 
   {
@@ -1695,7 +1702,7 @@ define_tiles
     transitions_between_transitions = water_shallow_transitions_between_transitions,
     allowed_neighbors = { "water-mud" },
     map_color={r=31, g=48, b=18},
-    ageing=0.0003
+    pollution_absorption_per_second = water_pollution_absorption
   },
   {
     name = "water-mud",
@@ -1817,7 +1824,7 @@ define_tiles
     transitions_between_transitions = water_mud_transitions_between_transitions,
     allowed_neighbors = { "water", "water-shallow" },
     map_color={r=31, g=48, b=18},
-    ageing=0.0003
+    pollution_absorption_per_second = water_pollution_absorption
   },
   -----------//////////////////////////////////////////////////////////////GRASS-1
   {
@@ -1861,7 +1868,7 @@ define_tiles
       }
     },
     map_color={r=53, g=52, b=27},
-    ageing=0.00045,
+    pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
    -----------//////////////////////////////////////////////////////////////GRASS-2 - potato
@@ -1906,7 +1913,7 @@ define_tiles
       }
     },
     map_color={r=57, g=54, b=35},
-    ageing=0.00045,
+    pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
   },
@@ -1952,7 +1959,7 @@ define_tiles
       }
     },
     map_color={r=59, g=56, b=41},
-    ageing=0.00045,
+    pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////GRASS-4
@@ -1997,7 +2004,7 @@ define_tiles
       }
     },
     map_color={r=54, g=47, b=35},
-    ageing=0.00045,
+    pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
 
@@ -2039,7 +2046,7 @@ define_tiles
       }
     },
     map_color={r=108, g=92, b=71},
-    ageing=0.00039,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT
@@ -2080,7 +2087,7 @@ define_tiles
       }
     },
     map_color={r=119, g=104, b=85},
-    ageing=0.0004,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT-2
@@ -2121,7 +2128,7 @@ define_tiles
       }
     },
     map_color={r=109, g=94, b=75},
-    ageing=0.00045,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT-3
@@ -2162,7 +2169,7 @@ define_tiles
       }
     },
     map_color={r=99, g=85, b=65},
-    ageing=0.00045,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT-4
@@ -2203,7 +2210,7 @@ define_tiles
       }
     },
     map_color={r=89, g=74, b=57},
-    ageing=0.00045,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT-5
@@ -2244,7 +2251,7 @@ define_tiles
       }
     },
     map_color={r=97, g=83, b=67},
-    ageing=0.00045,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT-6
@@ -2285,7 +2292,7 @@ define_tiles
       }
     },
     map_color={r=77, g=65, b=53},
-    ageing=0.00045,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////DIRT-7
@@ -2326,7 +2333,7 @@ define_tiles
       }
     },
     map_color={r=60, g=51, b=41},
-    ageing=0.00045,
+    pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////SAND-1
@@ -2377,7 +2384,7 @@ define_tiles
       }
     },
     map_color={r=145, g=129, b=104},
-    ageing=0.00039,
+    pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////SAND-2
@@ -2422,7 +2429,7 @@ define_tiles
       }
     },
     map_color={r=130, g=114, b=90},
-    ageing=0.00039,
+    pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////SAND-3
@@ -2467,7 +2474,7 @@ define_tiles
       }
     },
     map_color={r=124, g=108, b=86},
-    ageing=0.00039,
+    pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-0 //potato-gate//
@@ -2514,7 +2521,7 @@ define_tiles
       }
     },
     map_color={r=91, g=74, b=56},
-    ageing=0.00045,
+    pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
   },
@@ -2560,7 +2567,7 @@ define_tiles
       }
     },
     map_color={r=107, g=87, b=71},
-    ageing=0.0004,
+    pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
   },
@@ -2606,7 +2613,7 @@ define_tiles
       }
     },
     map_color={r=120, g=94, b=78},
-    ageing=0.0004,
+    pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
   },
@@ -2652,7 +2659,7 @@ define_tiles
       }
     },
     map_color={r=114, g=86, b=75},
-    ageing=0.0004,
+    pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
   -----------//////////////////////////////////////////////////////////////STONE-PATH
@@ -2798,7 +2805,7 @@ define_tiles
       }
     },
     map_color={r=50, g=50, b=50},
-    ageing=0,
+    pollution_absorption_per_second = 0,
     vehicle_friction_modifier = stone_path_vehicle_speed_modifier
   },
   {
@@ -2852,7 +2859,7 @@ define_tiles
       }
     },
     map_color={r=0, g=0, b=0},
-    ageing=0.0006
+    pollution_absorption_per_second = 0
   },
   {
     type = "tile",
@@ -2905,7 +2912,7 @@ define_tiles
       }
     },
     map_color={r=0.2, g=0.2, b=0.2},
-    ageing=0.0006
+    pollution_absorption_per_second = 0
   },
   {
     type = "tile",
@@ -2958,7 +2965,7 @@ define_tiles
       }
     },
     map_color={r=1, g=1, b=1},
-    ageing=0.0006
+    pollution_absorption_per_second = 0
   },
   {
     type = "tile",
@@ -3078,7 +3085,7 @@ define_tiles
       }
     },
     map_color={r=0, g=0, b=0},
-    ageing=0.0006
+    pollution_absorption_per_second = 0
   }
 }
 
@@ -3270,7 +3277,7 @@ if not data.is_demo then
         }
       },
       map_color={r=100, g=100, b=100},
-      ageing=0,
+      pollution_absorption_per_second = 0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     },
     {
@@ -3399,7 +3406,7 @@ if not data.is_demo then
         }
       },
       map_color={r=0.5, g=0.5, b=0},
-      ageing=0,
+      pollution_absorption_per_second = 0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     },
     {
@@ -3497,7 +3504,7 @@ if not data.is_demo then
         }
       },
       map_color={r=0.5, g=0.5, b=0},
-      ageing=0,
+      pollution_absorption_per_second = 0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     },
 
@@ -3686,7 +3693,7 @@ if not data.is_demo then
         }
       },
       map_color={r=100, g=100, b=100},
-      ageing=0,
+      pollution_absorption_per_second = 0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     },
     {
@@ -3815,7 +3822,7 @@ if not data.is_demo then
         }
       },
       map_color={r=0.5, g=0.5, b=0},
-      ageing=0,
+      pollution_absorption_per_second = 0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     },
     {
@@ -3913,7 +3920,7 @@ if not data.is_demo then
         }
       },
       map_color={r=0.5, g=0.5, b=0},
-      ageing=0,
+      pollution_absorption_per_second = 0,
       vehicle_friction_modifier = concrete_vehicle_speed_modifier
     }
   }

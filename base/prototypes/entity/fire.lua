@@ -711,7 +711,7 @@ data:extend({
   flame_alpha = 0.35,
   flame_alpha_deviation = 0.05,
 
-  emissions_per_tick = 0.005,
+  emissions_per_second = 0.005,
 
   add_fuel_cooldown = 10,
   fade_in_duration = 30,
@@ -840,7 +840,7 @@ data:extend({
   flame_alpha_deviation = 0.05,
 
   tree_dying_factor = 0.8,
-  emissions_per_tick = 0.005,
+  emissions_per_second = 0.005,
 
   fade_in_duration = 120,
   fade_out_duration = 100,

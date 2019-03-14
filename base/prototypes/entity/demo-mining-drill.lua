@@ -853,8 +853,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      -- will produce this much * energy pollution units per tick
-      emissions = 0.15 / 1.5,
+      emissions_per_second_per_watt = 10 / 90000,
       usage_priority = "secondary-input"
     },
     energy_usage = "90kW",
@@ -906,7 +905,7 @@ data:extend(
       fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 1,
-      emissions = 0.1 / 3,
+      emissions_per_second_per_watt = 12 / 150000,
       smoke =
       {
         {
