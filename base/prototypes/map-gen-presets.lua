@@ -60,7 +60,7 @@ data:extend(
         enemy_evolution =
         {
           time_factor = 0.00002,
-          pollution_factor = 0.00002
+          pollution_factor = 0.0000012
         },
         pollution =
         {
@@ -86,7 +86,7 @@ data:extend(
         enemy_evolution =
         {
           time_factor = 0.00002,
-          pollution_factor = 0.00002
+          pollution_factor = 0.0000012
         },
         pollution =
         {

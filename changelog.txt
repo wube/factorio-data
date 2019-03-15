@@ -1,6 +1,53 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.13
+Version: 0.17.14
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.13
+Date: 15. 03. 2019
+  Changes:
+    - Modified NPE quest structure to give the player more notice of impending attacks
+    - Added missing Steel plate recipe to NPE tech tree (https://forums.factorio.com/67504)
+    - Removed unneeded Iron stick recipe from NPE
+    - Fast replacing between rail signal and rail chain signal will preserve circuit wire connection and relevant settings. (https://forums.factorio.com/67682)
+  Bugfixes:
+    - Fixed that the evolution pollution factor wasn't migrated properly. (pollution was increasing evolution 16.6 times faster than it should for existing saves).
+    - Fixed a crash when trying to assign invalid things to LuaPlayer::game_view_settings. (https://forums.factorio.com/67682)
+    - Fixed that replays could trigger autosaves and take screenshots. (https://forums.factorio.com/65901)
+    - Fixed that changing mod settings through Lua commands wouldn't trigger the settings-changed event. (https://forums.factorio.com/66395)
+    - Fixed that /config didn't support name, description, or tags. (https://forums.factorio.com/67463)
+    - Fixed a crash when using temporary stations. (https://forums.factorio.com/67700)
+    - Fixed that drop-item into vehicles didn't work. (https://forums.factorio.com/65948)
+    - Fixed that resizing the window while loading on 4k screens would cause the progress bar to not render. (https://forums.factorio.com/65987)
+    - Fixed that the crafting queue GUI wouldn't show correctly when loading a save with crafting in progress. (https://forums.factorio.com/66220)
+    - Fixed text box line wrapping didn't work correctly in most cases. (https://forums.factorio.com/65437)
+    - Fixed a crash when re-joining a multiplayer game while the tips-and-tricks window is visible.
+    - Fixed a crash when opening the set-filter GUI on the ammo inventory of other player using the /open command.
+    - Fixed that the pollution generation of steel furnace wasn't what it was supposed compared to 0.16.
+    - Fixed that you could die during a cutscene and become a ghost when it ended. (https://forums.factorio.com/67651)
+    - Fixed that you could die with required items in your inventory and make the NPE unwinnable. (https://forums.factorio.com/65829)
+    - Fixed that some turrets wouldn't be detected by the quest objectives in the NPE. (https://forums.factorio.com/66013)
+    - Fixed issue with detecting Steam engine on network in NPE (https://forums.factorio.com/66717)
+    - Fixed biters getting stuck in massive clumps in NPE (https://forums.factorio.com/66226)
+    - Fixed biters becoming frozen after arriving at target destination in NPE (https://forums.factorio.com/66494)
+    - Fixed crash when mining scrap metal in NPE (https://forums.factorio.com/65512)
+    - Fixed biters losing aggression after save/load during NPE (https://forums.factorio.com/66410)
+    - Fixed some windows in the NPE having inconsistent header draggable textures (https://forums.factorio.com/66295)
+    - Fixed build order for Compilatron in NPE so it is more successful (https://forums.factorio.com/66703)
+    - Fixed set_active_quick_bar_page not updating the GUI. (https://forums.factorio.com/66142)
+    - Fixed that waiting on temporary stop was reset every time other station was added. (https://forums.factorio.com/6034)
+    - Fixed that blueprints with trains and rails still could snap the trains to different rails. (https://forums.factorio.com/67384)
+    - Fixed LuaGameScript::take_screenshot with anti_alias = true would produce bad screenshots (https://forums.factorio.com/67685)
+    - Fixed that snapping to position while building ghost didn't update the ghost position properly, leading to invisible entities in rare cases. (https://forums.factorio.com/66908)
+    - Fixed a crash when destroying trains while in the paused map editor state. (https://forums.factorio.com/67734)
+    - Fixed that recipes could be setup to produce > 1 count of items that are never meant to be stacked. (https://forums.factorio.com/67736)
+    - Fixed that creating a new blueprint and pressing Q after it was setup removes it instead of putting it into inventory. (https://forums.factorio.com/67737)
+    - Fixed LuaGameScript::take_screenshot with anti_alias = true would produce bad screenshots. (https://forums.factorio.com/67685)
+    - Fixed Artillery targeting remote not showing the correct ability count in the quickbar. (https://forums.factorio.com/65310)
+    - Fixed scrolling through blueprint book with Shift+mouse wheel on macOS. (https://forums.factorio.com/67225)
+    - Fixed Artillery targeting remote not showing the correct ability count in the quickbar. (https://forums.factorio.com/65310)
+    - Fixed that blueprint shortcuts in quickbar linked to the library wouldn't remember their orientation. (https://forums.factorio.com/65716)
+    - Fixed a crash when hand replacing an assembler ghost with fluid mixing. (https://forums.factorio.com/67732)
+    - Fixed migration of fluid-using modded mining drill.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.12
 Date: 14. 03. 2019

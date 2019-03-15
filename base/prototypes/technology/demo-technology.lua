@@ -385,6 +385,10 @@ data:extend(
         type = "unlock-recipe",
         recipe = "assembling-machine-2"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "steel-plate"
+      },
     },
     unit =
     {

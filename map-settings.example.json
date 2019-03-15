@@ -10,23 +10,24 @@
     "enabled": true,
     "_comment_min_to_diffuse_1": "these are values for 60 ticks (1 simulated second)",
     "_comment_min_to_diffuse_2": "amount that is diffused to neighboring chunk",
-    "diffusion_ratio":0.02,
-    "min_to_diffuse":15,
-    "ageing":1,
-    "expected_max_per_chunk":7000,
-    "min_to_show_per_chunk":700,
-    "min_pollution_to_damage_trees": 3500,
-    "pollution_with_max_forest_damage": 10000,
-    "pollution_per_tree_damage": 2000,
-    "pollution_restored_per_tree_damage": 500,
-    "max_pollution_to_restore_trees": 1000
+    "diffusion_ratio": 0.02,
+    "min_to_diffuse": 15,
+    "ageing": 1,
+    "expected_max_per_chunk": 150,
+    "min_to_show_per_chunk": 50,
+    "min_pollution_to_damage_trees": 60,
+    "pollution_with_max_forest_damage": 150,
+    "pollution_per_tree_damage": 50,
+    "pollution_restored_per_tree_damage": 10,
+    "max_pollution_to_restore_trees": 20,
+    "enemy_attack_pollution_consumption_modifier": 1
   },
   "enemy_evolution":
   {
     "enabled": true,
     "time_factor": 0.000004,
     "destroy_factor": 0.002,
-    "pollution_factor": 0.000015
+    "pollution_factor": 0.0000009
   },
   "enemy_expansion":
   {

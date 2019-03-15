@@ -9480,7 +9480,7 @@ data:extend(
       type = "burner",
       fuel_category = "chemical",
       effectivity = 1,
-      emissions_per_second_per_watt = 1 / 90000,
+      emissions_per_second_per_watt = 4 / 90000,
       fuel_inventory_size = 1,
       smoke =
       {
