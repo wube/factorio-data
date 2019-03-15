@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.14
+Version: 0.17.15
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.14
+Date: 15. 03. 2019
+  Bugfixes:
+    - Fixed that research queue setting in the New Map GUI wouldn't remember its value. (https://forums.factorio.com/67370)
+    - Fixed a crash when hand replacing an assembler ghost with fluid mixing. (https://forums.factorio.com/67732)
+    - Fixed migration of fluid-using modded mining drill.
+    - Fixed ten_minutes modifier bug in NPE.
+    - Fixed broken resetting of scenario context.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.13
 Date: 15. 03. 2019
@@ -36,7 +45,6 @@ Date: 15. 03. 2019
     - Fixed set_active_quick_bar_page not updating the GUI. (https://forums.factorio.com/66142)
     - Fixed that waiting on temporary stop was reset every time other station was added. (https://forums.factorio.com/6034)
     - Fixed that blueprints with trains and rails still could snap the trains to different rails. (https://forums.factorio.com/67384)
-    - Fixed LuaGameScript::take_screenshot with anti_alias = true would produce bad screenshots (https://forums.factorio.com/67685)
     - Fixed that snapping to position while building ghost didn't update the ghost position properly, leading to invisible entities in rare cases. (https://forums.factorio.com/66908)
     - Fixed a crash when destroying trains while in the paused map editor state. (https://forums.factorio.com/67734)
     - Fixed that recipes could be setup to produce > 1 count of items that are never meant to be stacked. (https://forums.factorio.com/67736)
@@ -44,10 +52,7 @@ Date: 15. 03. 2019
     - Fixed LuaGameScript::take_screenshot with anti_alias = true would produce bad screenshots. (https://forums.factorio.com/67685)
     - Fixed Artillery targeting remote not showing the correct ability count in the quickbar. (https://forums.factorio.com/65310)
     - Fixed scrolling through blueprint book with Shift+mouse wheel on macOS. (https://forums.factorio.com/67225)
-    - Fixed Artillery targeting remote not showing the correct ability count in the quickbar. (https://forums.factorio.com/65310)
     - Fixed that blueprint shortcuts in quickbar linked to the library wouldn't remember their orientation. (https://forums.factorio.com/65716)
-    - Fixed a crash when hand replacing an assembler ghost with fluid mixing. (https://forums.factorio.com/67732)
-    - Fixed migration of fluid-using modded mining drill.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.12
 Date: 14. 03. 2019

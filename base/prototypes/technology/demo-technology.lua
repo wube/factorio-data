@@ -280,7 +280,7 @@ data:extend(
     },
     unit =
     {
-      count = 100,
+      count = 80,
       ingredients = {{"automation-science-pack", 1}},
       time = 15
     },

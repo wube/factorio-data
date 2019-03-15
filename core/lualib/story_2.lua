@@ -246,7 +246,7 @@ end
 -- Returns the number of seconds elapsed since the current node was started
 story.get_seconds_passed_since_current_node_started = function(story_table_name)
   local this_story_data = story_data[story_table_name]
-  return this_story_data.current_node_started_tick / 60
+  return (game.ticks_played - this_story_data.current_node_started_tick) / 60
 end
 
 story.get_current_node_name = function(story_table_name)
