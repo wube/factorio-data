@@ -2718,9 +2718,9 @@ data:extend(
       height = 50,
       frame_count = 16,
       animation_speed = 16 / 60,
-      duration = 60,
-      fade_away_duration = 60
-    }
+    },
+    duration = 60,
+    fade_away_duration = 60
   },
 
   {
@@ -4604,7 +4604,7 @@ data:extend(
   {
     type = "unit",
     name = "compilatron",
-    icon = "__base__/graphics/icons/small-biter.png",
+    icon = "__base__/graphics/icons/compilatron.png",
     icon_size = 32,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},

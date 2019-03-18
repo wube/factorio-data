@@ -166,7 +166,7 @@ data:extend(
     {
       productivity = {bonus = 0.06},
       consumption = {bonus = 0.6},
-      pollution = {bonus = 0.075},
+      pollution = {bonus = 0.07},
       speed = {bonus = -0.15}
     },
     limitation = productivity_module_limitation(),

@@ -1,6 +1,43 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.15
+Version: 0.17.16
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.15
+Date: 18. 03. 2019
+  Changes:
+    - Fixed that trains wouldn't depart for temporary stops when waiting at a station. (https://forums.factorio.com/67811)
+    - Fixed that two headed train running out of fuel didn't trigger the out of fuel alert in one of the directions. (https://forums.factorio.com/67820)
+    - Improved Compilatron's ability to select a free space when indicating structures by a factor of 16.6.
+    - The player must now wait for Compilatron to follow before being allowed to evacuate the first area of the NPE.
+    - The player must collect at least some of their structures before evacuating the first area of the NPE.
+    - Updated the player spawn after big biter attack in case the player wants to check how aggressive the biters are.
+    - Compilatron now has its own icon.
+    - Biters and worms in the NPE will now be aggressive except in special situations.
+  Gui:
+    - It is now possible to scroll horizontally with a touch pad in the tech tree view. (https://forums.factorio.com/66874)
+  Bugfixes:
+    - Fixed bugged Compilatron speech in NPE when showing blocked miner.
+    - Turrets placed in the starting area will now be detected during the entrench step of the NPE. (https://forums.factorio.com/67772)
+    - Fixed flamethrower turret range visualization was rendered in wrong layer. (https://forums.factorio.com/67903)
+    - Fixed editing map gen settings in the map editor would crash the game. (https://forums.factorio.com/67839)
+    - Fixed that robots would still try to deconstruct trains that left their network. (https://forums.factorio.com/67916)
+    - Reduced screen tearing on Windows 7 when Aero is disabled. (https://forums.factorio.com/67158)
+    - Fixed that converting games to scenarios and back could corrupt script global data. (https://forums.factorio.com/66812)
+    - Fixed that disabling friendly fire prevented fish from healing. (https://forums.factorio.com/67953)
+    - Fixed that LuaEntity::destroy({do_cliff_correction=true}) was ignored. (https://forums.factorio.com/67837)
+    - Fixed toggle state of item selection buttons when clicked with item to fast-select. (https://forums.factorio.com/67465)
+    - Fixed that the Q that cancels wire dragging also removed the hand from the quickbar. (https://forums.factorio.com/67192)
+    - Fixed that selecting quickbar slot while dragging wire only cancelled the dragging, but had to be pressed again to select the slot. (https://forums.factorio.com/67192)
+    - Fixed that modded fluid streams could crash the game in some situations. (https://forums.factorio.com/67999)
+    - Fixed that keys blocked by textfield didn't include CONTROL + A (to select all), the same way as it is doing for (CONTROL + C/V/X). (https://forums.factorio.com/67047)
+    - Fixed the double-click to clear functionality of number text field. (https://forums.factorio.com/67949)
+    - Fixed a crash when migrating mods related to assembling machines and fluids. (https://forums.factorio.com/67118)
+    - Fixed that exporting a blueprint to the library could crash the game. (https://forums.factorio.com/67987)
+    - Fixed a crash when a modded assembler is built over a ghost of assembler with different rotation. (https://forums.factorio.com/67732)
+    - Fixed damage technology migrations not migrating infinite technologies properly. (https://forums.factorio.com/67731)
+    - Potentially fixed a Linux-specific bug where the game would react to key presses not intended for it. (https://forums.factorio.com/66402)
+  Scripting:
+    - Added LuaGameScript::create_profiler() which can be used to measure script performance.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.14
 Date: 15. 03. 2019

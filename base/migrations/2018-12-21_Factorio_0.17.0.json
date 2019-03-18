@@ -7,14 +7,13 @@
     [ "laser-turret-damage-4", "energy-weapons-damage-4" ],
     [ "laser-turret-damage-5", "energy-weapons-damage-5" ],
     [ "laser-turret-damage-6", "energy-weapons-damage-6" ],
-    [ "laser-turret-damage-7", "energy-weapons-damage-7" ],
-    [ "laser-turret-damage-8", "energy-weapons-damage-8" ],
+    [ "laser-turret-damage-8", "energy-weapons-damage-7" ],
     [ "cannon-shell-damage-1", "stronger-explosives-1" ],
     [ "cannon-shell-damage-2", "stronger-explosives-2" ],
     [ "cannon-shell-damage-3", "stronger-explosives-3" ],
     [ "cannon-shell-damage-4", "stronger-explosives-4" ],
     [ "cannon-shell-damage-5", "stronger-explosives-5" ],
-    [ "cannon-shell-damage-6", "stronger-explosives-9" ],
+    [ "cannon-shell-damage-6", "stronger-explosives-7" ],
     [ "bullet-damage-1", "physical-projectile-damage-1" ],
     [ "bullet-damage-2", "physical-projectile-damage-2" ],
     [ "bullet-damage-3", "physical-projectile-damage-3" ],
@@ -33,6 +32,7 @@
     [ "flamethrower-damage-3", "refined-flammables-3" ],
     [ "flamethrower-damage-4", "refined-flammables-4" ],
     [ "flamethrower-damage-5", "refined-flammables-5" ],
-    [ "flamethrower-damage-6", "refined-flammables-6" ]
+    [ "flamethrower-damage-6", "refined-flammables-6" ],
+    [ "flamethrower-damage-7", "refined-flammables-7" ]
   ]
 }
