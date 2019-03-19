@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.16
+Version: 0.17.17
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.16
+Date: 19. 03. 2019
+  Changes:
+    - Disabled vanilla pollution attacks in the NPE until after the final wave.
+    - Changing teams in PvP will try to preserve the current character. (https://forums.factorio.com/68018)
+  Bugfixes:
+    - Fixed alerts showing for trees and rocks in the NPE (https://forums.factorio.com/65370)
+    - Fixed solid fuel not triggering "fuel furnace" quest item (https://forums.factorio.com/67941)
+    - Potentially fixed scrap metal crash bug again (https://forums.factorio.com/67821)
+    - Fixed that a fluid furnace revived from a ghost would not work. (https://forums.factorio.com/67372)
+    - Fixed that launching tutorials could leave the running game in a broken state. (https://forums.factorio.com/68046)
+    - Fixed that clearing the ghost cursor did not clear the hand in the quickbar. (https://forums.factorio.com/68062)
+    - Fixed Compilatron blocking placement of burner inserter in NPE (https://forums.factorio.com/68063)
+    - Fixing a bug from last version that allowed fluid mixing by setting a recipe in assembler. (https://forums.factorio.com/68074)
+    - Different alert when unable to revive ghost due to fluid mixing by hand vs. by robot. (https://forums.factorio.com/68074)
+    - Fixed spitters would not properly target construction robots that are blocked from fulfilling their task. (https://forums.factorio.com/67886)
+    - Fixed a crash when joining Steam game invites while a multiplayer connection is in progress.
+    - Fixed that the "research finished" indicator would display the wrong technology level. (https://forums.factorio.com/67864)
+    - Fixed a crash when removing the end rail of a temporary train order. (https://forums.factorio.com/67926)
+    - Fixed that cargo wagon filters wouldn't get preserved in blueprint strings. (https://forums.factorio.com/67641)
+  Scripting:
+    - Fixed that printing the output of LuaProfiler anywhere except log(...) would cause a desync.
+      Note: this means if the results are shown in things like player.print() they won't persist through save/load (but won't cause desyncs).
+    - Fixed Electric Pole smart coverage placement not building over other pole ghosts. (https://forums.factorio.com/68083)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.15
 Date: 18. 03. 2019
