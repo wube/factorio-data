@@ -1,6 +1,32 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.17
+Version: 0.17.18
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.17
+Date: 21. 03. 2019
+  Changes:
+    - Fast replacing power poles will keep existing connections but also try to connect to further away power poles if possible. (https://forums.factorio.com/67967)
+    - 0-255 numbers are now allowed in [color] tags. The game will detect if you want to use floats or 0-255, just like the /color command. (https://forums.factorio.com/67726)
+  Bugfixes:
+    - Solved transport line compression related to splitters for various corner cases. (https://forums.factorio.com/67815)
+    - Fixed texture-compression config values that were valid in 0.17.15 but are not valid since 0.17.16 would cause error on startup. (https://forums.factorio.com/68133)
+    - Fixed that reverse/forward speed limits of the train movements were mixed up. (https://forums.factorio.com/68047)
+    - Fixed that reverse locomotive power was the same as forward.
+    - Fixed item transfers tutorial giving combinators instead of wood. (https://forums.factorio.com/68046)
+    - Fixed tutorials showing migrations dialog.
+    - Fixed slow inserters on transport belt madness level 3. (https://forums.factorio.com/68149)
+    - Fixed massive biter clumps in Wave defense. (https://forums.factorio.com/66136)
+    - Fixed a crash when importing save files into saves with different technology levels researched.
+    - Fixed that swapping Command and Option keys on macOS caused neither one to work in Factorio. (https://forums.factorio.com/65671)
+    - Fixed that the technology GUI would list all technology levels if the technology was fully researched. (https://forums.factorio.com/68037)
+    - Fixed a crash when using /swap-players. (https://forums.factorio.com/66381)
+    - Fixed a crash when rotating some modded underground pipes. (https://forums.factorio.com/67710)
+    - Fixed poor performance when large chat messages are rendered. (https://forums.factorio.com/68040)
+    - Fixed a crash when a train traveling to a temporary stop has its schedule copy-pasted. (https://forums.factorio.com/68130)
+    - Fixed a crash when using "Join server after sync" for server hosted over Steam Networking. (https://forums.factorio.com/67963)
+    - Fixed hand missing from quickbar when selecting shortcuts to the blueprint library. (https://forums.factorio.com/68141)
+  Scripting:
+    - Added LuaControl::open_technology_gui(technology) which will open the technology GUI and select the given technology.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.16
 Date: 19. 03. 2019
@@ -22,10 +48,10 @@ Date: 19. 03. 2019
     - Fixed that the "research finished" indicator would display the wrong technology level. (https://forums.factorio.com/67864)
     - Fixed a crash when removing the end rail of a temporary train order. (https://forums.factorio.com/67926)
     - Fixed that cargo wagon filters wouldn't get preserved in blueprint strings. (https://forums.factorio.com/67641)
+    - Fixed Electric Pole smart coverage placement not building over other pole ghosts. (https://forums.factorio.com/68083)
   Scripting:
     - Fixed that printing the output of LuaProfiler anywhere except log(...) would cause a desync.
       Note: this means if the results are shown in things like player.print() they won't persist through save/load (but won't cause desyncs).
-    - Fixed Electric Pole smart coverage placement not building over other pole ghosts. (https://forums.factorio.com/68083)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.15
 Date: 18. 03. 2019
