@@ -1,6 +1,36 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.18
+Version: 0.17.19
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.18
+Date: 25. 03. 2019
+  Changes:
+    - Dragging power poles over ghosts of the same type will revive them. (https://forums.factorio.com/68244)
+    - Replaced the hand graphic in the quickbar with a selected graphic, so blueprint books are visible.
+  Bugfixes:
+    - Solved train positioning when being built by robots. (https://forums.factorio.com/68147)
+    - Fixed that playing Factorio in full-screen mode on macOS would hide all notifications. (https://forums.factorio.com/66415)
+    - Allow commas with spaces after in color tags. (https://forums.factorio.com/68261)
+    - Fixed the mechanic of saving a scenario locally when joining a multiplayer game that uses a scenario you don't have didn't work correctly. (https://forums.factorio.com/68181)
+    - Fixed that the burner light would still glow even when the entity is sleeping. (https://forums.factorio.com/65712)
+    - Assembler copy/paste now works correctly when pasting both recipe and direction with fluid mixing around. (https://forums.factorio.com/68174)
+    - Tool shortcut bar selection list can be closed with ESC. (https://forums.factorio.com/65621)
+    - Fixed that some technologies wouldn't show in the technology list if they were fully researched. (https://forums.factorio.com/68239)
+    - Fixed incorrect zooming speeds when using keyboard to zoom. (https://forums.factorio.com/65679)
+    - Blank property expression names in map gen settings JSON are ignored. (https://forums.factorio.com/68125)
+    - Seed1 arguments above 255 to noise functions no longer crash the game, warning about the upper bits being ignored, instead. (https://forums.factorio.com/67497)
+    - Fixed broken supply challenge. (https://forums.factorio.com/68242)
+    - Fixed slow horizontal trackpad scrolling in the tech tree view. (https://forums.factorio.com/66874)
+    - Fixing one situation of underground pipe connection over a ghost. (https://forums.factorio.com/68265)
+    - Fixed blueprint icons not disappearing when using set_quick_bar_slot (https://forums.factorio.com/68374)
+    - Fixed PvP force modifiers were being overwritten. (https://forums.factorio.com/68397)
+    - Fixed "graphics_variation" was read-only on entities of type "corpse". (https://forums.factorio.com/68391)
+    - Fixed buildability check of some fluid entities in blueprints. (https://forums.factorio.com/65389)
+    - Fixed gui layouting related to having more squashable elements with different minimal sizes in one row/column.
+    - Fixed possible crash when hovering the statistics graphs.
+    - Fixed a crash when using LuaGameScript::show_message_dialog during on_init.
+    - Fixed headless server would hang when shutting down on Windows. (https://forums.factorio.com/68422)
+    - Fixed interaction of pipe underground connections of different reach. (https://forums.factorio.com/68258)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.17
 Date: 21. 03. 2019

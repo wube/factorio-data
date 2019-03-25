@@ -45,7 +45,7 @@ local function get_product_list()
         for j, ingredient in pairs (ingredients) do
           recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
         end
-        recipe_ingredients.energy = recipe_prototype.energy
+        recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
         table.insert(product_list[product.name], recipe_ingredients)
       end
     end
@@ -107,7 +107,7 @@ local default_param = function()
       ["crude-oil"] = 0.2,
       ["water"] = 1/1000,
       ["steam"] = 1/1000,
-      ["raw-wood"] = 3.2,
+      ["wood"] = 3.2,
       ["raw-fish"] = 100,
       ["energy"] = 1,
       ["uranium-ore"] = 8.2
@@ -183,16 +183,8 @@ function deduce_nil_prices(price_list, param)
   end
 end
 
-local count_table = function(table)
-  local count = 0
-  for k, v in pairs (table) do
-    count = count + 1
-  end
-  return count
-end
-
 function ingredient_multiplier(recipe, param)
-  return (param.ingredient_exponent or 1) ^ (count_table(recipe)-2)
+  return (param.ingredient_exponent or 1) ^ (table_size(recipe) - 2)
 end
 
 local ln = math.log

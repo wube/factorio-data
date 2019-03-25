@@ -5089,6 +5089,22 @@ data:extend(
         base = {border = 4, position = {160, 736}, size = 80},
         shadow = offset_by_2_rounded_corners_glow(default_dirt_color)
       },
+      selected_graphical_set =
+      {
+        base = {border = 4, position = {80, 736}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
+      },
+      selected_hovered_graphical_set =
+      {
+        base = {border = 4, position = {80, 736}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
+        glow = offset_by_2_rounded_corners_glow(default_glow_color)      
+      },
+      selected_clicked_graphical_set =
+      {
+        base = {border = 4, position = {160, 736}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
+      },
       pie_progress_color = {0.98, 0.66, 0.22, 0.5},
       left_click_sound = {}
     },
