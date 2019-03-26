@@ -4849,7 +4849,7 @@ data:extend(
     {
       type = "frame_style",
       parent = "quick_bar_inner_panel",
-      padding = 1,
+      padding = 0,
       background_graphical_set =
       {
         position = {282, 17},
@@ -4864,14 +4864,14 @@ data:extend(
       horizontal_flow_style =
       {
         type = "horizontal_flow_style",
-        horizontal_spacing = 2
+        horizontal_spacing = 0
       },
     },
 
     shortcut_bar_column =
     {
       type = "vertical_flow_style",
-      vertical_spacing = 2
+      vertical_spacing = 0
     },
 
     --this will keep the health/shield/mining bars in the correct place
@@ -5113,8 +5113,29 @@ data:extend(
     {
       type = "button_style",
       parent = "button",
-      size = 38,
-      padding = 7
+      default_graphical_set =
+      {
+        base = {position = {312, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {329, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {346, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5),
+        glow = offset_by_2_default_glow(default_glow_color, 0.5)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {363, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
+      },
+      size = 40,
+      padding = 8
     },
 
     shortcut_bar_button_blue =
@@ -5123,19 +5144,19 @@ data:extend(
       parent = "shortcut_bar_button",
       default_graphical_set =
       {
-        base = {position = {329, 48}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {312, 760}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       hovered_graphical_set =
       {
-        base = {position = {346, 48}, corner_size = 8},
-        shadow = default_dirt,
-        glow = default_glow({132, 177, 198, 127}, 0.5)
+        base = {position = {346, 760}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5),
+        glow = offset_by_2_default_glow({132, 177, 198, 127}, 0.5)
       },
       clicked_graphical_set =
       {
-        base = {position = {363, 48}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {363, 760}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       }
     },
 
@@ -5145,19 +5166,19 @@ data:extend(
       parent = "shortcut_bar_button",
       default_graphical_set =
       {
-        base = {position = {380, 48}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {312, 776}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       hovered_graphical_set =
       {
-        base = {position = {397, 48}, corner_size = 8},
-        shadow = default_dirt,
-        glow = default_glow({236, 130, 130, 127}, 0.5)
+        base = {position = {346, 776}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5),
+        glow = offset_by_2_default_glow({236, 130, 130, 127}, 0.5)
       },
       clicked_graphical_set =
       {
-        base = {position = {414, 48}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {363, 776}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       }
     },
 
@@ -5167,19 +5188,19 @@ data:extend(
       parent = "shortcut_bar_button",
       default_graphical_set =
       {
-        base = {position = {431, 48}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {312, 792}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       hovered_graphical_set =
       {
-        base = {position = {448, 48}, corner_size = 8},
-        shadow = default_dirt,
-        glow = default_glow({110, 164, 104, 127}, 0.5)
+        base = {position = {346, 792}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5),
+        glow = offset_by_2_default_glow({110, 164, 104, 127}, 0.5)
       },
       clicked_graphical_set =
       {
-        base = {position = {465, 48}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {363, 792}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       }
     },
 

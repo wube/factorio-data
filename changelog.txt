@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.19
+Version: 0.17.20
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.19
+Date: 26. 03. 2019
+  Bugfixes:
+    - Fixed blueprint loading related to trains and temporary stations. (https://forums.factorio.com/67998)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.19
+Date: 26. 03. 2019
+  Bugfixes:
+    - Fixed various layouting problems related to tables.
+    - Fixed upgrading underground belt ghosts would not recalculate underground connections resulting in desyncs. (https://forums.factorio.com/67510)
+    - Fixed construction robot tutorial when spamming ghost radars. (https://forums.factorio.com/68436)
+    - Fixed that some entities didn't show the not enough power icon. (https://forums.factorio.com/68470)
+    - Fixed possible crash when editing font names in rich text. (https://forums.factorio.com/68390)
+    - Fix of previous fix of certain situations of assembler settings copy/paste. (https://forums.factorio.com/68487)
+    - Fixed that toolbar buttons stayed pressed down. (https://forums.factorio.com/68459)
+    - Fixed crash when an inventory gui was shown with 0 slots. (https://forums.factorio.com/68467)
+  Scripting:
+    - Added LuaGuiElement::scroll_to_top(), scroll_to_bottom(), scroll_to_left() and scroll_to_right().
+    - Added LuaGuiElement::scroll_to_element().
+    - Added LuaEntityPrototype::has_belt_immunity, pollution_to_join_attack, min_pursue_time, max_pursue_distance, radar_range,
+      move_while_shooting, can_open_gates, affected_by_tiles, distraction_cooldown and spawning_time_modifier read.
+    - Added LuaEntityPrototype::inserter_extension_speed and inserter_rotation_speed read.
+    - Added LuaTransportLine::input_lines read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.18
 Date: 25. 03. 2019
