@@ -1,6 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.21
+Version: 0.17.22
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.21
+Date: 26. 03. 2019
+  Bugfixes:
+    - Fixed vertical squashing of listbox. (https://forums.factorio.com/68520)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.21
+Date: 26. 03. 2019
+  Bugfixes:
+    - Fixed gates sometimes not closing when next to cliffs. (https://forums.factorio.com/68365)
+    - Fixed crashes related to GUI tables. (https://forums.factorio.com/68526)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.20
 Date: 26. 03. 2019
@@ -11,7 +22,6 @@ Date: 26. 03. 2019
     - Fixed blueprint loading related to trains and temporary stations. (https://forums.factorio.com/67998)
     - Fixed that the quick bar and shortcut bar weren't aligned on UI scales other than 100% and 200%, making the game literally unplayable. (https://forums.factorio.com/66827)
     - Fixed fuzzy search in the select-a-filter GUI could show empty groups. (https://forums.factorio.com/63241)
-    - Fixed gates sometimes not closing when next to cliffs. (https://forums.factorio.com/68365)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.19
 Date: 26. 03. 2019
