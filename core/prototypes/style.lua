@@ -918,7 +918,8 @@ data:extend(
     {
       type = "button_style",
       parent = "forward_button",
-      width = 136,
+      natural_width = 136,
+      maximal_width = 250,
       icon_horizontal_align = "left"
     },
 
@@ -4014,7 +4015,7 @@ data:extend(
       parent = "textbox",
       font_color = default_font_color,
       width = 0,
-      height = 64,
+      height = 56,
       horizontally_stretchable = "on",
       default_background =
       {
@@ -4022,12 +4023,13 @@ data:extend(
         {
           position = {51, 0},
           corner_size = 8,
-          center = {position = {76, 8}, size = 1}
+          center = {position = {76, 8}, size = 1},
+          draw_type = "outer"
         },
         shadow = default_inner_shadow
       },
       padding = 8,
-      margin = 12
+      margin = 16
     },
     info_box_textbox =
     {
@@ -5098,7 +5100,7 @@ data:extend(
       {
         base = {border = 4, position = {80, 736}, size = 80},
         shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
-        glow = offset_by_2_rounded_corners_glow(default_glow_color)      
+        glow = offset_by_2_rounded_corners_glow(default_glow_color)
       },
       selected_clicked_graphical_set =
       {

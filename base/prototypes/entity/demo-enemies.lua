@@ -21,13 +21,7 @@ data:extend(
     max_health = 15,
     order = "b-b-a",
     subgroup="enemies",
-    resistances =
-    {
-      {
-        type = "acid",
-        percent = 100
-      }
-    },
+    resistances = {},
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -0.7}, {0.7, 0.4}},

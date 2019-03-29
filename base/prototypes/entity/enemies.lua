@@ -42,10 +42,6 @@ data:extend(
       {
         type = "explosion",
         percent = 10
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     healing_per_tick = 0.01,
@@ -97,10 +93,6 @@ data:extend(
       {
         type = "explosion",
         percent = 10
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     spawning_time_modifier = 3,
@@ -154,10 +146,6 @@ data:extend(
         type = "explosion",
         decrease = 12,
         percent = 10
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     spawning_time_modifier = 12,
@@ -198,15 +186,9 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 10,
-    order="b-b-d",
+    order="b-b-e",
     subgroup="enemies",
-    resistances =
-    {
-      {
-        type = "acid",
-        percent = 100
-      }
-    },
+    resistances = {},
     healing_per_tick = 0.01,
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -249,17 +231,13 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 50,
-    order="b-b-e",
+    order="b-b-f",
     subgroup="enemies",
     resistances =
     {
       {
         type = "explosion",
         percent = 10
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     healing_per_tick = 0.01,
@@ -302,17 +280,13 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 200,
-    order="b-b-f",
+    order="b-b-g",
     subgroup="enemies",
     resistances =
     {
       {
         type = "explosion",
         percent = 15
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     spawning_time_modifier = 3,
@@ -359,17 +333,13 @@ data:extend(
     icon_size = 32,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 1500,
-    order="b-b-f",
+    order="b-b-h",
     subgroup="enemies",
     resistances =
     {
       {
         type = "explosion",
         percent = 30
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     spawning_time_modifier = 12,

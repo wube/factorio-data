@@ -1,11 +1,45 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.22
+Version: 0.17.23
 Date: ????
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.21
-Date: 26. 03. 2019
+Version: 0.17.22
+Date: 29. 03. 2019
   Bugfixes:
     - Fixed vertical squashing of listbox. (https://forums.factorio.com/68520)
+    - Fixed in-game updater would not work on Windows if Factorio path or write data path would contain non-ASCII characters. (https://forums.factorio.com/68516)
+    - Undoing action of building entity that removed ghosts also restores the ghosts. The same with removal of ghosts by cancelling deconstruction. (https://forums.factorio.com/67827)
+    - Fixed that building power poles when moving very fast did not have consistent spacing. (https://forums.factorio.com/67383)
+    - Fixed undo of train deconstruction. (https://forums.factorio.com/68102)
+    - Fixed undo of circuit conditions of entities in the ghost state. (https://forums.factorio.com/68191)
+    - Fixed train pathing inconsistency between normal station departure and waypoint. (https://forums.factorio.com/68111)
+    - Fixed problems related to rail path waypoints and station removal.
+    - Fixed logarithmic sliders not showing value of 1. (https://forums.factorio.com/68392)
+    - Fixed logarithmic sliders showing the same value for some positions.
+    - Fixed logarithmic sliders not showing correct initial position.
+    - Fixed Rich text icons not working in rotated text. (https://forums.factorio.com/65780)
+    - Fixed a crash when loading saves converted to scenarios in the map editor after changing mods. (https://forums.factorio.com/68420)
+    - Fixed that the inventory hand was not activated when the cursor was auto-refilled when entity building, tile building, fast transferring, repairing, using capsules or dropping items. (https://forums.factorio.com/67584)
+    - Fixed that fast-replacing ghosts would not transfer settings.
+    - Fixed that double clicking on a list box scroll bar would trigger the confirm action. (https://forums.factorio.com/66224)
+    - Fixed train GUI preview not centering on locomotive when opening the color picker. (https://forums.factorio.com/66115)
+    - Fixed gui clipping for scrollpane inside a scrollpane. (https://forums.factorio.com/66925)
+    - Fixed biters ignoring the player when building a new base. (https://forums.factorio.com/68492)
+    - Fixed that copying settings with a blueprint would not show returned materials. (https://forums.factorio.com/67227)
+    - Fixed turret ranges with huge radius would not render correctly when zooming into a map. (https://forums.factorio.com/68461)
+    - Fixed that the reset queue would reset if the the game window is resized whilst the technology GUI is open. (https://forums.factorio.com/68607)
+    - Fixed that resizing the game window would clear the search filter in the technology GUI. (https://forums.factorio.com/66685)
+    - Fixed that crafting machines with an empty fluid_boxes key could be rotated. (https://forums.factorio.com/68642)
+    - Fixed train state not updating properly in some specific cases. (https://forums.factorio.com/68145)
+    - Fixed mining drill showing misleading message when building on top of invalid resources. (https://forums.factorio.com/65814)
+    - Fixed a crash related to assemblers that sometimes occurred during loading 0.16 modded games.
+    - Fixed a crash when opening map too fast after creating a new game or new surface. (https://forums.factorio.com/65827)
+    - Fixed LuaPlayer::open_map, close_map, zoom_to_world would mutate rendering state while render thread was possibly using it causing crash. (https://forums.factorio.com/68327)
+    - Changed the custom scale slider in interface settings to be disabled when automatic scale is selected.
+    - Fixed train path finding in a special case of a loop with no signals and exactly one intersection. (https://forums.factorio.com/67357)
+    - Fixed clipping when the preset description in the map generator is scrollable. (https://forums.factorio.com/67216)
+    - Better path selection within one segment that is in a loop. (https://forums.factorio.com/68225)
+  Scripting:
+    - Added LuaEntityPrototype::secondary_collision_box read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.21
 Date: 26. 03. 2019

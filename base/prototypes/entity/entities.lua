@@ -13376,9 +13376,43 @@ infinity_chest.erase_contents_when_mined = true
 infinity_chest.animation = nil
 infinity_chest.picture =
 {
-  filename = "__base__/graphics/entity/infinity-chest/infinity-chest.png",
-  width = 34,
-  height = 42
+  layers =
+  {
+    {
+      filename = "__base__/graphics/entity/infinity-chest/infinity-chest.png",
+      priority = "extra-high",
+      width = 34,
+      height = 42,
+      shift = util.by_pixel(0, -3),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/infinity-chest/hr-infinity-chest.png",
+        priority = "extra-high",
+        width = 68,
+        height = 84,
+        shift = util.by_pixel(0, -3),
+        scale = 0.5,
+      }
+    },
+    {
+      filename = "__base__/graphics/entity/infinity-chest/infinity-chest-shadow.png",
+      priority = "extra-high",
+      width = 58,
+      height = 24,
+      shift = util.by_pixel(12, 6),
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/infinity-chest/hr-infinity-chest-shadow.png",
+        priority = "extra-high",
+        width = 116,
+        height = 48,
+        shift = util.by_pixel(12, 6),
+        draw_as_shadow = true,
+        scale = 0.5,
+      }
+    }
+  }
 }
 infinity_chest.logistic_mode = nil
 infinity_chest.logistic_slots_count = 12
