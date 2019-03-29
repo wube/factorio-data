@@ -1,6 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.23
+Version: 0.17.24
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.23
+Date: 29. 03. 2019
+  Bugfixes:
+    - Fixed that merging two electric networks didn't merge the statistics which was introduced by the power switch addition in 0.13. (https://forums.factorio.com/68246)
+    - Fixed light not turning off properly when using fluid energy source on an entity. (https://forums.factorio.com/67674)
+    - Fixed a crash when building large electric poles. (https://forums.factorio.com/68695)
+  Modding:
+    - The game now checks that technology levels are contiguous.
+    - Non-upgrade technologies are now considered to be level 1; previously they were level 0.
+    - Renamed "electric-energy-accumulators-1" to "electric-energy-accumulators".
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.22
 Date: 29. 03. 2019

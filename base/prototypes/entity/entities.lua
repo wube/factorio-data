@@ -2475,25 +2475,11 @@ data:extend(
     },
     turret_rotation_speed = 0.35 / 60,
     turret_return_timeout = 300,
-    stop_trigger_speed = 0.2,
     sound_no_fuel =
     {
       {
         filename = "__base__/sound/fight/tank-no-fuel-1.ogg",
         volume = 0.6
-      }
-    },
-    stop_trigger =
-    {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/car-breaks.ogg",
-            volume = 0.6
-          }
-        }
       }
     },
     sound_minimum_speed = 0.15;

@@ -491,6 +491,7 @@ data:extend(
       ingredients = {{"automation-science-pack", 1},{"logistic-science-pack", 1}},
       time = 15
     },
+    upgrade = true,
     order = "a-b-b"
   },
   {
@@ -1886,6 +1887,7 @@ data:extend(
       },
       time = 30
     },
+    upgrade = true,
     order = "c-e-b"
   },
   {
@@ -1912,11 +1914,12 @@ data:extend(
       },
       time = 45
     },
+    upgrade = true,
     order = "c-e-c"
   },
   {
     type = "technology",
-    name = "electric-energy-accumulators-1",
+    name = "electric-energy-accumulators",
     icon_size = 128,
     icon = "__base__/graphics/technology/electric-energy-acumulators.png",
     localised_name = {"technology-name.electric-energy-accumulators-1"},
