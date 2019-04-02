@@ -491,7 +491,6 @@ data:extend(
       ingredients = {{"automation-science-pack", 1},{"logistic-science-pack", 1}},
       time = 15
     },
-    upgrade = true,
     order = "a-b-b"
   },
   {
@@ -1887,7 +1886,6 @@ data:extend(
       },
       time = 30
     },
-    upgrade = true,
     order = "c-e-b"
   },
   {
@@ -1914,7 +1912,6 @@ data:extend(
       },
       time = 45
     },
-    upgrade = true,
     order = "c-e-c"
   },
   {

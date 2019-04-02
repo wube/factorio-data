@@ -2759,6 +2759,30 @@ data:extend(
         }
       }
     },
+    locale_dropdown =
+    {
+      type = "dropdown_style",
+      parent = "dropdown",
+      list_box_style =
+      {
+        type = "list_box_style",
+        font = "default",
+        maximal_height = 400,
+        item_style =
+        {
+          type = "button_style",
+          parent = "button",
+          font = "locale-pick"
+        },
+        scroll_pane_style =
+        {
+          type = "scroll_pane_style",
+          padding = 0,
+          extra_padding_when_activated = 0,
+          graphical_set = {shadow = default_shadow}
+        }
+      }
+    },
     big_dropdown = -- used in generate map gui
     {
       type = "dropdown_style",

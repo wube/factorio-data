@@ -8,6 +8,12 @@ data:extend(
   },
   {
     type = "font",
+    name = "locale-pick",
+    from = "locale-pick",
+    size = 14
+  },
+  {
+    type = "font",
     name = "default-semibold",
     from = "default-semibold",
     size = 14

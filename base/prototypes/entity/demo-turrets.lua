@@ -320,13 +320,7 @@ data:extend(
     order="b-b-d",
     max_health = 200,
     subgroup="enemies",
-    resistances =
-    {
-      {
-        type = "acid",
-        percent = 100
-      }
-    },
+    resistances = {},
     healing_per_tick = 0.01,
     collision_box = {{-0.9, -0.8 }, {0.9, 0.8}},
     map_generator_bounding_box = {{-1.9, -1.8}, {1.9, 1.8}},
@@ -350,10 +344,10 @@ data:extend(
     prepared_alternative_speed_secondary = 0.018,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_small, tint_worm_small),
-    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    prepared_alternative_sound = make_worm_roar_alternative(0.7),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_small, tint_worm_small),
-    starting_attack_sound = make_worm_roars(0.75),
+    starting_attack_sound = make_worm_roars(0.7),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_small, tint_worm_small),
     folding_speed = 0.015,

@@ -1,6 +1,43 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.24
+Version: 0.17.25
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.24
+Date: 02. 04. 2019
+  Balancing:
+    - Changed god controller inventory size to be the same as the character inventory size.
+  Bugfixes:
+    - Fixed rendering of targeting range visualization for turrets with limited turn range. (https://forums.factorio.com/68707)
+    - Fixed parameters passed to LuaPlayer::zoom_to_world didn't have any effect. (https://forums.factorio.com/68730)
+    - Fixed that power poles would sometimes build automatically when they shouldn't. (https://forums.factorio.com/68725)
+    - Fixed that editing map gen settings for the non-default surface using the map editor didn't work. (https://forums.factorio.com/68793)
+    - Fixed that LuaSurface::spill_item_stack would ignore belts by default. (https://forums.factorio.com/68796)
+    - Fixed that LuaEntity::set_request_slot() wouldn't allow filters with a count of 0. (https://forums.factorio.com/68731)
+    - Fixed that copying assembler settings would copy direction as well. (https://forums.factorio.com/68771)
+    - Fixed that automation and logistics technologies were marked as upgrades.
+    - Fixed that non-upgrade technologies didn't show the level properly. (https://forums.factorio.com/68755)
+    - Fixed default key bindings for in-game copy, paste and undo shortcuts on Russian keyboard layout. (https://forums.factorio.com/68809)
+    - Fixed that remote.call() with small strings didn't work correctly. (https://forums.factorio.com/68801)
+    - Fixed lamp lighting up for 1 tick without any electricity. (https://forums.factorio.com/68826)
+    - Fixed that the next infinite research level wouldn't appear in the technology list after the previous level was queued. (https://forums.factorio.com/68578)
+    - Fixed a crash when changing modded recipes that used fluid inputs or outputs. (https://forums.factorio.com/68830)
+    - Fixed lamp showing full electricity bar without any electricity. (https://forums.factorio.com/67527)
+    - Fixed that large sequential lua tables wouldn't be saved and loaded correctly. (https://forums.factorio.com/68657)
+    - Fixed poor performance when rendering logistic network overlays. (https://forums.factorio.com/68873)
+    - Fixed that the shortcut for opening the console could be also entered into it (does not fix dead keys).
+    - Fixed Scroll Lock would trigger an event on both key down and key up. (https://forums.factorio.com/65180)
+    - Fixed trains stop names with icons in them would look wrong when pinging a train station in chat. (https://forums.factorio.com/65876)
+    - Fixed that crafting machines could not be rotated if they used a heat energy source and didn't have fluid boxes. (https://forums.factorio.com/67803)
+    - Fixed inventory hand sometimes pushing items out of the inventory and spilling them on the ground. (https://forums.factorio.com/66392)
+    - Fixed that some languages had no name, and that some used their English name, and some the name in the language itself. (https://forums.factorio.com/68696)
+    - Fixed incorrect scaling of cyrillic characters when viewing them with your language set to English.
+    - Fixed two crashes from migration of modded fluid using entities. (https://forums.factorio.com/68823)
+    - Fixed that clicking a technology in the research queue would select the next available level instead of the queued level. (https://forums.factorio.com/68491)
+  Scripting:
+    - Added LuaEntity::get_max_transport_line_index().
+    - Added LuaPlayer::last_online read.
+    - Added allow_belt parameter to LuaSurface::spill_item_stack.
+    - Added corpses parameter to on_post_entity_died.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.23
 Date: 29. 03. 2019

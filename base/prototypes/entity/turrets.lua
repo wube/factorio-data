@@ -642,10 +642,6 @@ data:extend(
         type = "fire",
         decrease = 2,
         percent = 50
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     healing_per_tick = 0.015,
@@ -671,11 +667,11 @@ data:extend(
     prepared_alternative_speed_secondary = 0.010,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_medium, tint_worm_medium),
-    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    prepared_alternative_sound = make_worm_roar_alternative(0.7),
     prepared_animation = worm_prepared_animation(scale_worm_medium, tint_worm_medium),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_medium, tint_worm_medium),
-    starting_attack_sound = make_worm_roars(0.8),
+    starting_attack_sound = make_worm_roars(0.7),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_medium, tint_worm_medium),
     folding_speed = 0.015,
@@ -748,10 +744,6 @@ data:extend(
         type = "fire",
         decrease = 3,
         percent = 70
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     healing_per_tick = 0.02,
@@ -778,10 +770,10 @@ data:extend(
     prepared_alternative_speed_secondary = 0.010,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_big, tint_worm_big),
-    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    prepared_alternative_sound = make_worm_roar_alternative(0.7),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_big, tint_worm_big),
-    starting_attack_sound = make_worm_roars(0.95),
+    starting_attack_sound = make_worm_roars(0.85),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_big, tint_worm_big),
     folding_speed = 0.015,
@@ -851,10 +843,6 @@ data:extend(
         type = "fire",
         decrease = 3,
         percent = 70
-      },
-      {
-        type = "acid",
-        percent = 100
       }
     },
     healing_per_tick = 0.02,
@@ -882,10 +870,10 @@ data:extend(
     prepared_alternative_speed_secondary = 0.010,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_behemoth, tint_worm_behemoth),
-    prepared_alternative_sound = make_worm_roar_alternative(0.8),
+    prepared_alternative_sound = make_worm_roar_alternative(0.7),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_behemoth, tint_worm_behemoth),
-    starting_attack_sound = make_worm_roars(0.95),
+    starting_attack_sound = make_worm_roars(0.85),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_behemoth, tint_worm_behemoth),
     folding_speed = 0.015,
