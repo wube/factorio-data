@@ -1,6 +1,36 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.25
+Version: 0.17.26
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.25
+Date: 04. 04. 2019
+  Changes:
+    - The Mods GUI will now always include a link to the mod portal for the selected mod.
+  Bugfixes:
+    - Fixed roboport area rendering for players. (https://forums.factorio.com/68925)
+    - Fixed a crash when trying to print invalid values through the Lua API. (https://forums.factorio.com/68924)
+    - Fixed that the rail world preset didn't allow to get some achievements due to smaller base size. (https://forums.factorio.com/65215)
+    - Fixed that the technology GUI technology cost wouldn't show numbers > 2^32 correctly. (https://forums.factorio.com/68937)
+    - Fixed that custom checkboxes didn't render correctly in some cases. (https://forums.factorio.com/67986)
+    - Fixed opening nested items in items so the same item isn't opened multiple times. (https://forums.factorio.com/68005)
+    - Fixed a crash when trying to filter standalone character ammo slots. (https://forums.factorio.com/68933)
+    - Disallowed building train stops in intersections.
+    - Fixed that cloning fluid turrets with fluid would crash the game.
+    - Fixed that cloning transport belts could crash when cloning fails.
+    - Fixed personal roboport would render its construction area even when toggled off. (https://forums.factorio.com/68911)
+    - Fixed train stop names were rendered without rotation. (https://forums.factorio.com/68922)
+    - Fixed Russian and several other localizations would not show symbols ≠, ≤, ≥ in train conditions and decider combinators. (https://forums.factorio.com/68921)
+    - Fixed Chinese and Japanese text was too small to read. (https://forums.factorio.com/68919)
+    - Fixed that deleting mods would follow symlinks instead of just removing the symlink. (https://forums.factorio.com/68975)
+    - Fixed that mining drill can't-build messages would be wrong in some cases. (https://forums.factorio.com/69014)
+    - Fixed that the game finished GUI would not show the time played if there were no kills.
+    - Fixed building underground pipes over ghosts could crash/corrupt the game. (https://forums.factorio.com/68907)
+    - Fixed that the shortcut selection list wouldn't use a scroll bar if the shortcuts didn't fit on the screen. (https://forums.factorio.com/68350)
+  Modding:
+    - Recipes with duplicate ingredients or products will now error at startup instead breaking crafting runtime. (https://forums.factorio.com/67857)
+  Scripting:
+    - Added surface_index to the on_robot_built_tile event.
+    - Added LuaAutoplaceControlPrototype::category read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.24
 Date: 02. 04. 2019

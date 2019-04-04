@@ -141,7 +141,7 @@ data:extend(
           },
           ["enemy-base"] =
           {
-            size = 0.5
+            size = 1
           }
         },
         terrain_segmentation = "very-low",

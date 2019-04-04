@@ -4894,6 +4894,18 @@ data:extend(
       },
     },
 
+    shortcut_bar_selection_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane",
+      extra_padding_when_activated = 0,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0,
+      }
+    },
+
     shortcut_bar_column =
     {
       type = "vertical_flow_style",
