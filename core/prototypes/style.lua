@@ -717,8 +717,7 @@ data:extend(
     heading_3_label_yellow =
     {
       type = "label_style",
-      parent = "label",
-      font = "heading-3",
+      parent = "heading_3_label",
       font_color = heading_font_color
     },
     mod_list_label =
@@ -1275,14 +1274,18 @@ data:extend(
     {
       type = "label_style",
       font = "heading-1",
-      font_color = heading_font_color
+      font_color = heading_font_color,
+      single_line = true,
+      want_ellipsis = true
     },
 
     tooltip_heading_label =
     {
       type = "label_style",
       font = "default-bold",
-      font_color = {0.0, 0.0, 0.0}
+      font_color = {0.0, 0.0, 0.0},
+      horizontally_squashable = "on",
+      single_line = false
     },
 
     switch =

@@ -7314,7 +7314,7 @@ data:extend(
     module_specification =
     {
       module_slots = 4,
-      module_info_icon_shift = {0, 4.3}
+      module_info_icon_shift = {0, 3.3}
     },
     fixed_recipe = "rocket-part",
     show_recipe_icon = false,

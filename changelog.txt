@@ -1,6 +1,38 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.26
+Version: 0.17.27
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.26
+Date: 08. 04. 2019
+  Changes:
+    - Reverted fonts used for Chinese, Japanese, Korean and Russian localizations to pre-0.17.24 versions.
+  Bugfixes:
+    - Fixed that circuit connection from ghost to entity wasn't preserved when it was upgraded or undone. (https://forums.factorio.com/67692)
+    - Fixed that it was possible to rotate entities whilst the technology GUI was open. (https://forums.factorio.com/66320)
+    - Fixed that the updates-available counter in the update-mods tab didn't update as mods would be updated. (https://forums.factorio.com/69050)
+    - Fixed that LuaSurface::get_closest() did not check the type of the second parameter. (https://forums.factorio.com/69105)
+    - Fixed that LuaEntity::revive() raise_revive parameter sometimes did not work. (https://forums.factorio.com/69166)
+    - Fixed that script render objects sometimes did not render in screenshots.
+    - Fixed a crash when rendering inserter interactions for modded furnace recipes without item ingredients.
+    - Fixed research queue and technology tooltip for long technology names. (https://forums.factorio.com/68862)
+    - Fixed sprites would render as corrupted on some GPUs with texture streaming enabled. (https://forums.factorio.com/65466)
+    - Fixed layouting of filters of deconstruction planner in a tooltip. (https://forums.factorio.com/69107)
+    - Fixed that the rocket silo alt-info module icons didn't render in the correct location due to the size changes. (https://forums.factorio.com/69041)
+    - Fixed several inconsistencies with the map editor paused state in multiplayer. (https://forums.factorio.com/66189)
+    - Fixed schedule merging when more than one step of connecting train is done and part with the empty schedule is connected first. (https://forums.factorio.com/69043)
+    - Fixed pollution reporting of machines with negative pollution when there is not enough pollution to absorb. (https://forums.factorio.com/69164)
+    - Fixed that building a new rail through robots changed all rail-bound train stops to that station. (https://forums.factorio.com/69170)
+    - Fixed a crash when departing from temporary stations while all other stations in the schedule are invalid. (https://forums.factorio.com/69114)
+    - Fixed that setting a character controller for an offline player would crash the game. (https://forums.factorio.com/69106)
+    - Fixed trains overview GUI updating and performance problems. (https://forums.factorio.com/68953)
+    - Fixed that long server names were overflowing in the Browse games GUI. (https://forums.factorio.com/66113)
+  Scripting:
+    - Added LuaAutoplaceControlPrototype::category read.
+    - Added LuaEntityPrototype::alert_icon_shift read.
+    - Added LuaForce::research_queue read/write.
+    - Added LuaForce::add_research() and cancel_current_research().
+    - Removed LuaForce::current_research write.
+    - Changed cutscene waypoints to allow all entities as targets.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.25
 Date: 04. 04. 2019
@@ -30,7 +62,6 @@ Date: 04. 04. 2019
     - Recipes with duplicate ingredients or products will now error at startup instead breaking crafting runtime. (https://forums.factorio.com/67857)
   Scripting:
     - Added surface_index to the on_robot_built_tile event.
-    - Added LuaAutoplaceControlPrototype::category read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.24
 Date: 02. 04. 2019
