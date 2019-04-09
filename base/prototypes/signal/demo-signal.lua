@@ -3,7 +3,6 @@ data:extend(
   {
     type = "virtual-signal",
     name = "signal-everything",
-    special_signal = true,
     icon = "__base__/graphics/icons/signal/signal_everything.png",
     icon_size = 32,
     subgroup = "virtual-signal-special",
@@ -12,7 +11,6 @@ data:extend(
   {
     type = "virtual-signal",
     name = "signal-anything",
-    special_signal = true,
     icon = "__base__/graphics/icons/signal/signal_anything.png",
     icon_size = 32,
     subgroup = "virtual-signal-special",
@@ -21,7 +19,6 @@ data:extend(
   {
     type = "virtual-signal",
     name = "signal-each",
-    special_signal = true,
     icon = "__base__/graphics/icons/signal/signal_each.png",
     icon_size = 32,
     subgroup = "virtual-signal-special",
@@ -99,7 +96,7 @@ data:extend(
     icon_size = 32,
     subgroup = "virtual-signal-color",
     order = "d[colors]-[9black]"
-  },  
+  },
   {
     type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
     name = "signal-check",
@@ -107,7 +104,7 @@ data:extend(
     icon_size = 32,
     subgroup = "virtual-signal-color",
     order = "d[colors]-[9checked]"
-  },  
+  },
   {
     type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
     name = "signal-info",
@@ -115,7 +112,7 @@ data:extend(
     icon_size = 32,
     subgroup = "virtual-signal-color",
     order = "d[colors]-[9info]"
-  },  
+  },
   {
     type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
     name = "signal-dot",

@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.27
+Version: 0.17.28
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.27
+Date: 09. 04. 2019
+  Bugfixes:
+    - Fixed that pollution statistic values from entities were reversed and didn't increase evolution. (https://forums.factorio.com/69231)
+    - Fixed a crash when mods would set special_signal = true for virtual-signal prototypes.
+    - Fixed a crash when a mining drill is destroyed during the resource-depleted event.
+    - Fixed a crash when loading modded saves related to recipe migrations and fluidboxes.
+    - Fixed a desync related to the blueprint library and keeping outdated blueprints between versions.
+    - Fixed crash when undoing manual removal of entity marked for deconstruction. (https://forums.factorio.com/69247)
+    - Fixed that the technology GUI would show 100% researched for near-100% values. (https://forums.factorio.com/68021)
+    - Fixed crash when calling LuaGameScript::take_technology_screenshot for force that doesn't have any technologies enabled.
+    - Fixed that action bar link to blueprint in the inventory had tooltip size limited too much. (https://forums.factorio.com/69157)
+    - Fixed that blueprint cost table width wasn't correct for UI scale different than 100%.
+  Scripting:
+    - Added surface_index to the on_robot_mined_tile event.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.26
 Date: 08. 04. 2019
