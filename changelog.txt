@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.31
+Version: 0.17.32
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.31
+Date: 12. 04. 2019
+  Bugfixes:
+    - Fixed a crash when hosting multiplayer games in some scenarios.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.30
 Date: 12. 04. 2019
@@ -13,7 +18,7 @@ Date: 12. 04. 2019
     - Fixed that movement by keys or clicking on an alert didn't unsnap the currently followed train in the map. (https://forums.factorio.com/69199) (https://forums.factorio.com/69002)
     - Fixed that the game would crash when showing blueprint library tooltips. (https://forums.factorio.com/69398)
     - Fixed that the game would crash when showing a blueprint library tooltip in multiplayer when the blueprint/book was removed by another player.
-    - Fixed alt-mode icon background for narrow icons was be very subtle. (https://forums.factorio.com/65338)
+    - Fixed alt-mode icon background for narrow icons was very subtle. (https://forums.factorio.com/65338)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.29
 Date: 12. 04. 2019
