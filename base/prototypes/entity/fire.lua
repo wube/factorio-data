@@ -1027,7 +1027,7 @@ data:extend({
 
     fluid_box =
     {
-      --production_type = "input",
+      production_type = "input-output",
       secondary_draw_order = 0,
       render_layer = "lower-object",
       --pipe_picture = fireutil.flamethrower_turret_pipepictures(),

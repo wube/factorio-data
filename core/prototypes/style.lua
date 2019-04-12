@@ -474,7 +474,7 @@ data:extend(
       disabled_font_color = {1, 1, 1, 0.5},
       rich_text_setting = "enabled",
       single_line = true,
-      want_ellipsis = false
+      want_ellipsis = true
     },
 
     clickable_label =
@@ -488,8 +488,7 @@ data:extend(
     {
       type = "label_style",
       parent = "clickable_label",
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     black_clickable_label =
@@ -504,8 +503,7 @@ data:extend(
     {
       type = "label_style",
       parent = "black_clickable_label",
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     label_in_table = -- pushed up a little for centering
@@ -623,6 +621,24 @@ data:extend(
       parent = "label",
       maximal_width = 350,
       single_line = false
+    },
+    mods_gui_left_pane_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      maximal_width = 724,
+      natural_width = 724,
+      maximal_height = 692,
+      natural_height = 692,
+      vertical_spacing = 12
+    },
+    mods_gui_right_pane_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      maximal_width = 664,
+      natural_width = 664,
+      maximal_height = 692,
+      natural_height = 692,
+      vertical_spacing = 12
     },
     description_label =
     {
@@ -1275,8 +1291,7 @@ data:extend(
       type = "label_style",
       font = "heading-1",
       font_color = heading_font_color,
-      single_line = true,
-      want_ellipsis = true
+      single_line = true
     },
 
     tooltip_heading_label =
@@ -3072,8 +3087,7 @@ data:extend(
       type = "label_style",
       font_color = {255, 138, 138},
       hovered_font_color = default_orange_color,
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     train_schedule_non_existent_stop_label =
@@ -3081,8 +3095,7 @@ data:extend(
       type = "label_style",
       font_color = {255, 138, 138},
       hovered_font_color = {255, 138, 138},
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     hyperlink_label =
@@ -3955,8 +3968,7 @@ data:extend(
 
       column_widths =
       {
-        {column = 1, width = 116}, -- name
-        {column = 2, width = 350}, -- value
+        {column = 1, width = 116} -- name
       }
     },
 
@@ -6636,8 +6648,7 @@ data:extend(
     squashable_label =
     {
       type = "label_style",
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     black_label =
@@ -6650,8 +6661,7 @@ data:extend(
     {
       type = "label_style",
       parent = "black_label",
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     black_label_with_left_padding =
@@ -6665,8 +6675,7 @@ data:extend(
     {
       type = "label_style",
       parent = "black_label_with_left_padding",
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     label_with_left_padding =
@@ -6679,8 +6688,7 @@ data:extend(
     {
       type = "label_style",
       parent = "label_with_left_padding",
-      horizontally_squashable = "on",
-      want_ellipsis = true
+      horizontally_squashable = "on"
     },
 
     train_schedule_delete_button =

@@ -1,6 +1,47 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.29
+Version: 0.17.30
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.29
+Date: 12. 04. 2019
+  Changes:
+    - Simplified rail building.
+      Holding shift while rail building always activates the combination of ghost-rail-building + remove-obstacles, releasing shift returns back to normal manual mode.
+      It doesn't matter anymore, whether the rail building started with shift or not.
+      This removed the possibility to do ghost-rail-building without the remove-obstacles, but since it seems to be almost useless, we consider it to be worth the simplification.
+    - font/color rich text tags now have to be properly terminated. This means eg: "[color=red]Red circuits" will now need to be "[color=red]Red circuits[/color]".
+      This fixes a number of issues with handling start/end tags. (https://forums.factorio.com/66263, https://forums.factorio.com/66256)
+    - Enter key will be shown as "ENTER" instead of "RETURN" on Windows and Linux. (https://forums.factorio.com/69329)
+  Minor Features:
+    - Added a shortcut for increasing/decreasing/resetting UI scale, mainly for debugging of proper automatic adjustment of UI, but people might find it useful for something as well.
+  Bugfixes:
+    - After a realization of a big misleading mistake, the pollution per second had to be renamed to pollution per minute, because it is what it actually is. (https://forums.factorio.com/68269)
+    - Fixed that tree pollution absorption was recorded as pollution emission in the statistics.
+    - Fixed that equipment electric network priority migration wasn't present. (https://forums.factorio.com/69389)
+    - Crafting group selection by typing exact recipe match will now preserve the same way as selecting the crafting group manually. (https://forums.factorio.com/67165)
+    - Fixed few layouting issues in the mods GUI. (https://forums.factorio.com/68788)
+    - Fixed that sticker duration could be 0. (https://forums.factorio.com/69042)
+    - Restored previous behavior where normal (not only underground) pipe connections reconnected when a fluidbox got removed. (https://forums.factorio.com/68343)
+    - Fixed crash when robots try to revive locomotive that has both front and back wheels on rails, but no rail in-between. (https://forums.factorio.com/68623)
+    - Fixed that repair packs could be lost if they didn't fit in your inventory when using personal robots. (https://forums.factorio.com/69110)
+    - Added missing pipe connection arrows to flamethrower turret. (https://forums.factorio.com/69272)
+    - Fixed that custom GUI style values specified directly on the elements weren't updated after UI scale change. (https://forums.factorio.com/68007)
+    - Fixed that the electric network GUI would sometimes be opened when starting deconstruction planner selection on an electric pole in the map view. (https://forums.factorio.com/68960)
+    - Fixed that Textfield and Sliders didn't update its size properly on UI change.
+    - Fixed UI change update in ModSettingsGui and MapGeneratorGui with preview open.
+    - Fixed quickbar selection disappearing when cursor stack is refreshed with a new stack. (https://forums.factorio.com/68243)
+    - Fixed that nested frame styles (horizontal flow, vertical flow, header filler flow, filler) weren't initialized/updated correctly in the GUI created by script.
+    - Fixed that the loading indicator in the browse games GUI was left of the "Back" button. (https://forums.factorio.com/66513)
+    - Fixed turret prototype definition allowed ammo_type of attack_parameters to be optional resulting in crash when the turret started to shoot.
+    - Don't consider recipes with 0 minimum amount (and possible randomised result) when resolving automatic crafting of ingredients when crafting manually. (https://forums.factorio.com/68836)
+  Scripting:
+    - Changed the LabelStyle::want_ellipsis default value to true and it is never changed to be something else now. We are considering to even remove this style property
+      completely, as we basically want the ellipsis always when the label is squashed.
+    - Added tile parameter to on_player_built_tile and on_robot_built_tile.
+    - Removed unused on_player_tool_inventory_changed event.
+  Modding:
+    - Added emissions_per_minute property in the energy source, that is supposed to replace the emissions_per_second_per_watt which was basically wrong and hard to work with,
+      both emissions_per_second_per_watt emissions definition will work for some time (at least in 0.17) so mods don't get broken.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.28
 Date: 09. 04. 2019

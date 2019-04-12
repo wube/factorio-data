@@ -1034,7 +1034,7 @@ data:extend(
       fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 1,
-      emissions_per_second_per_watt = 2 / 90000,
+      emissions_per_minute = 2,
       smoke =
       {
         {
@@ -1261,7 +1261,7 @@ data:extend(
       fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 1,
-      emissions_per_second_per_watt = 30 / 1800000,
+      emissions_per_minute = 30,
       smoke =
       {
         {
@@ -3685,7 +3685,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 4 / 75000
+      emissions_per_minute = 4
     },
     energy_usage = "75kW",
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },

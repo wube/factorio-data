@@ -853,7 +853,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      emissions_per_second_per_watt = 10 / 90000,
+      emissions_per_minute = 10,
       usage_priority = "secondary-input"
     },
     energy_usage = "90kW",
@@ -905,7 +905,7 @@ data:extend(
       fuel_category = "chemical",
       effectivity = 1,
       fuel_inventory_size = 1,
-      emissions_per_second_per_watt = 12 / 150000,
+      emissions_per_minute = 12,
       smoke =
       {
         {

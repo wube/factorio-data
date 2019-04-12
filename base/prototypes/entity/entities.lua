@@ -1580,7 +1580,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 3 / 150000
+      emissions_per_minute = 3
     },
     energy_usage = "150kW",
     module_specification =
@@ -1707,7 +1707,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 2 / 375000
+      emissions_per_minute = 2
     },
     energy_usage = "375kW",
     module_specification =
@@ -9466,7 +9466,7 @@ data:extend(
       type = "burner",
       fuel_category = "chemical",
       effectivity = 1,
-      emissions_per_second_per_watt = 4 / 90000,
+      emissions_per_minute = 4,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -9641,7 +9641,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 1 / 180000
+      emissions_per_minute = 1
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
@@ -10608,7 +10608,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 6 / 420000
+      emissions_per_minute = 6
     },
     energy_usage = "420kW",
 
@@ -10921,7 +10921,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 4 / 210000
+      emissions_per_minute = 4
     },
     energy_usage = "210kW",
     crafting_categories = {"chemistry"},
@@ -12471,7 +12471,7 @@ data:extend(
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_second_per_watt = 4 / 350000
+      emissions_per_minute = 4
     },
     energy_usage = "350kW",
     module_specification =

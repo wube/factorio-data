@@ -17,7 +17,7 @@ data:extend(
     energy_source =
     {
       type = "electric",
-      emissions_per_second_per_watt = 10 / 90000,
+      emissions_per_minute = 10,
       usage_priority = "secondary-input"
     },
     output_fluid_box =
