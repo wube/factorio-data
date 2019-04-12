@@ -49,6 +49,7 @@ local function make_default_modifier_icon()
     priority = "medium",
     width = 32,
     height = 32,
+    generate_sdf = true,
     flags = {"icon"}
   }
 end

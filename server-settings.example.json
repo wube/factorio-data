@@ -29,6 +29,9 @@
   "_comment_max_upload_in_kilobytes_per_second" : "optional, default value is 0. 0 means unlimited.",
   "max_upload_in_kilobytes_per_second": 0,
 
+  "_comment_max_upload_slots" : "optional, default value is 5. 0 means unlimited.",
+  "max_upload_slots": 5,
+
   "_comment_minimum_latency_in_ticks": "optional one tick is 16ms in default speed, default value is 0. 0 means no minimum.",
   "minimum_latency_in_ticks": 0,
 
@@ -54,7 +57,7 @@
 
   "_comment_autosave_only_on_server": "Whether autosaves should be saved only on server or also on all connected clients. Default is true.",
   "autosave_only_on_server": true,
-  
+
   "_comment_non_blocking_saving": "Highly experimental feature, enable only at your own risk of losing your saves. On UNIX systems, server will fork itself to create an autosave. Autosaving on connected Windows clients will be disabled regardless of autosave_only_on_server option.",
   "non_blocking_saving": false,
 }

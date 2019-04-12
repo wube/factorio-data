@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.30
+Version: 0.17.31
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.30
+Date: 12. 04. 2019
+  Minor Features:
+    - Added ability to set a maximum number of map upload slots for multiplayer servers. Setting this is recommended to prevent the server from being flooded with map fragment requests from clients.
+  Optimisations:
+    - Optimized alt-mode icon background rendering. (https://forums.factorio.com/67280)
+  Bugfixes:
+    - Fixed that cut tool marked trees/rocks/cliffs for deconstruction when there was other valid entity in the selection. (https://forums.factorio.com/68759)
+    - Fixed that movement by keys or clicking on an alert didn't unsnap the currently followed train in the map. (https://forums.factorio.com/69199) (https://forums.factorio.com/69002)
+    - Fixed that the game would crash when showing blueprint library tooltips. (https://forums.factorio.com/69398)
+    - Fixed that the game would crash when showing a blueprint library tooltip in multiplayer when the blueprint/book was removed by another player.
+    - Fixed alt-mode icon background for narrow icons was be very subtle. (https://forums.factorio.com/65338)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.29
 Date: 12. 04. 2019

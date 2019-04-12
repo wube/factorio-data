@@ -127,13 +127,15 @@ data:extend(
     default_alert_icon_scale_by_type = {},
 
     item_outline_color = { 0, 0, 0, 1 },
-    item_outline_radius = 16.720,
-    item_outline_sharpness = 0.020,
+    item_outline_radius = 16,
+    item_outline_inset = 0,
+    item_outline_sharpness = 0,
     filter_outline_color = { 0, 0, 0, 1 },
 
-    icon_shadow_radius = 5,
+    icon_shadow_radius = 17.248,
+    icon_shadow_inset = 9.888,
     icon_shadow_sharpness = 0,
-    icon_shadow_color = { a = 155 },
+    icon_shadow_color = { a = 1 },
 
     bonus_gui_ordering = bonus_gui_ordering,
 
