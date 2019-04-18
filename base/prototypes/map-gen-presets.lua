@@ -144,8 +144,8 @@ data:extend(
             size = 1
           }
         },
-        terrain_segmentation = "very-low",
-        water = "high"
+        terrain_segmentation = 0.5,
+        water = 1.5
       },
       advanced_settings =
       {

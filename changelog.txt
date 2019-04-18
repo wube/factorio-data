@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.32
+Version: 0.17.33
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.32
+Date: 18. 04. 2019
+  Changes:
+    - Admins ignore multiplayer map upload slot limit
+    - "Player is being dropped"/"Server not responding" messages will only show after 2 seconds, to avoid irrelevant short pop-ups.
+  Bugfixes:
+    - Fixed that the server-settings.example.json had an additional comma at the end of the file. (https://forums.factorio.com/69451)
+    - Filled in a missing fluid mixing check for miner. (https://forums.factorio.com/69381)
+    - Fixed that create-blueprint-item shortcut prototypes could have no item_to_create set. (https://forums.factorio.com/69500)
+    - Fixed upload slot queue blocking players from joining even if not all slots were filled.
+    - Fixed a desync from rotation of an assembler with fluid energy source. (https://forums.factorio.com/69395)
+    - Fixed a connection consistency problems of wire/circuit connections ghosts and undo. (https://forums.factorio.com/69452)
+    - Added a no-crop requirement to the wire sprite definitions to avoid mods removing it, which can confuse the drawing logic. (https://forums.factorio.com/69325)
+    - Fixed text boxes would not respect keyboard layout for shortcuts like copy or paste. (https://forums.factorio.com/68380)
+    - Fixed blocking of game shortcuts when a text box has focus did not take into account keyboard layout settings. (https://forums.factorio.com/67021)
+    - Fixed the game would not respect remapping of modifier keys (Ctrl, Shift, Alt) in operating system. (https://forums.factorio.com/65093)
+    - Fixed it wasn't possible to bind mouse buttons 6 to 9. (https://forums.factorio.com/69588)
+    - It is no more possible to teleport an entity into fluid mixing. (https://forums.factorio.com/69316)
+    - Fixed a crash when defining a programmable speaker with no instruments. (https://forums.factorio.com/69632)
+    - Sync-mods-with-save will no longer offer to load-save when attempting to sync while hosting a multiplayer game. (https://forums.factorio.com/67756)
+    - Fixed that negative health regeneration wouldn't work when the entity had full health. (https://forums.factorio.com/69605)
+    - Fixed a crash related to migrating game versions while having gates marked for deconstruction with ghost walls built over them. (https://forums.factorio.com/69473)
+  Modding:
+    - For performance reasons inserter pickup/dropoff vectors are now limited to half a chunk or less.
+  Scripting:
+    - Added LuaEntityPrototype::lab_inputs read.
+    - Added LuaEntityPrototype::researching_speed read.
+    - Added LuaGameScript::pollution_statistics read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.31
 Date: 12. 04. 2019

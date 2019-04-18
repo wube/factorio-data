@@ -71,7 +71,7 @@ function accumulator_picture(tint, repeat_count)
     {
       {
         filename = "__base__/graphics/entity/accumulator/accumulator.png",
-        priority = "extra-high",
+        priority = "high",
         width = 66,
         height = 94,
         repeat_count = repeat_count,
@@ -81,7 +81,7 @@ function accumulator_picture(tint, repeat_count)
         hr_version =
         {
           filename = "__base__/graphics/entity/accumulator/hr-accumulator.png",
-          priority = "extra-high",
+          priority = "high",
           width = 130,
           height = 189,
           repeat_count = repeat_count,
@@ -93,7 +93,7 @@ function accumulator_picture(tint, repeat_count)
       },
       {
         filename = "__base__/graphics/entity/accumulator/accumulator-shadow.png",
-        priority = "extra-high",
+        priority = "high",
         width = 120,
         height = 54,
         repeat_count = repeat_count,
@@ -102,7 +102,7 @@ function accumulator_picture(tint, repeat_count)
         hr_version =
         {
           filename = "__base__/graphics/entity/accumulator/hr-accumulator-shadow.png",
-          priority = "extra-high",
+          priority = "high",
           width = 234,
           height = 106,
           repeat_count = repeat_count,
@@ -123,6 +123,7 @@ function accumulator_charge()
       accumulator_picture({ r=1, g=1, b=1, a=1 } , 24),
       {
         filename = "__base__/graphics/entity/accumulator/accumulator-charge.png",
+        priority = "high",
         width = 90,
         height = 100,
         line_length = 6,
@@ -132,6 +133,7 @@ function accumulator_charge()
         hr_version =
         {
           filename = "__base__/graphics/entity/accumulator/hr-accumulator-charge.png",
+          priority = "high",
           width = 178,
           height = 206,
           line_length = 6,
@@ -153,6 +155,7 @@ function accumulator_discharge()
       accumulator_picture({ r=1, g=1, b=1, a=1 } , 24),
       {
         filename = "__base__/graphics/entity/accumulator/accumulator-discharge.png",
+        priority = "high",
         width = 88,
         height = 104,
         line_length = 6,
@@ -162,6 +165,7 @@ function accumulator_discharge()
         hr_version =
         {
           filename = "__base__/graphics/entity/accumulator/hr-accumulator-discharge.png",
+          priority = "high",
           width = 170,
           height = 210,
           line_length = 6,
