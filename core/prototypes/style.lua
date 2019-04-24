@@ -3465,6 +3465,13 @@ data:extend(
       horizontal_spacing = 8
     },
 
+    technology_tooltip_effects_flow =
+    {
+      type = "flow_style",
+      parent = "featured_technology_effects_flow",
+      bottom_padding = 4
+    },
+
     horizontal_flow =
     {
       type = "horizontal_flow_style",
@@ -6765,6 +6772,13 @@ data:extend(
         type = "horizontal_flow_style",
         vertical_align = "center"
       }
+    },
+
+    info_label =
+    {
+      type = "label_style",
+      font = "default",
+      font_color = {128, 206, 240}
     },
   }
 }

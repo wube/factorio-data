@@ -19,14 +19,18 @@ local starting_area_clearing_peak =
 
 local next_tree_noise_layer_number = 1
 
--- static_influence is added
--- tree_noise_influence is multiplied by tree noise, the result of which is added
-local function tree_autoplace( temperature_optimal, temperature_range, water_optimal, water_range, static_influence, tree_noise_influence )
-  tree_noise_influence = tree_noise_influence ~= nil and tree_noise_influence or 1
-  static_influence = static_influence ~= nil and static_influence or 0
+local function tree_autoplace2(options)
+  temperature_optimal = options.temperature_optimal
+  temperature_range = options.temperature_range
+  water_optimal = options.water_optimal
+  water_range = options.water_range
+  static_influence = options.static_influence or 0 -- Added to influence
+  tree_noise_influence = options.tree_noise_influence or 1 -- Multiplied by noise
+  richness_base = options.richness_base or 0
+  richness_multiplier = options.richness_multiplier or 1
 
   static_influence = static_influence - 0.75 -- Less trees everywhere!
-  tree_noise_influence = tree_noise_influence * 0.5
+  tree_noise_influence = tree_noise_influence * 0.5 -- Less noise everywhere!
 
   local tree_noise_layer_name = "trees-"..next_tree_noise_layer_number
   if tree_noise_influence ~= 0 then
@@ -46,8 +50,8 @@ local function tree_autoplace( temperature_optimal, temperature_range, water_opt
     max_probability = 0.45,
     random_probability_penalty = 1e-3;
     sharpness = 0.4,
-    richness_base = 0.0,
-    richness_multiplier = 1,
+    richness_base = richness_base,
+    richness_multiplier = richness_multiplier,
     peaks =
     {
       {
@@ -90,6 +94,21 @@ local function tree_autoplace( temperature_optimal, temperature_range, water_opt
       },
       starting_area_clearing_peak
     }
+  }
+end
+
+
+-- static_influence is added
+-- tree_noise_influence is multiplied by tree noise, the result of which is added
+local function tree_autoplace( temperature_optimal, temperature_range, water_optimal, water_range, static_influence, tree_noise_influence )
+  return tree_autoplace2
+  {
+    temperature_optimal = temperature_optimal,
+    temperature_range = temperature_range,
+    water_optimal = water_optimal,
+    water_range = water_range,
+    static_influence = static_influence,
+    tree_noise_influence = tree_noise_influence,
   }
 end
 
@@ -1433,383 +1452,557 @@ local tree_types =
   },
   { -- tree-03
     { -- a
-      trunk =
-      {
-        width = 113,
-        height = 142,
-        shift = util.by_pixel(7.5, -52),
-        hr_version =
-        {
-          width = 227,
-          height = 283,
-          shift = util.by_pixel(7.75, -52.25),
+      trunk = {
+        width = 135,
+        height = 157,
+        shift = util.by_pixel(-6, -56),
+        hr_version = {
+          width = 264,
+          height = 312,
+          shift = util.by_pixel(-5, -56),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 44,
-        height = 35,
-        shift = util.by_pixel(0, 1.5),
-        hr_version =
-        {
-          width = 87,
-          height = 69,
-          shift = util.by_pixel(0.25, 1.25),
+      stump = {
+        width = 53,
+        height = 41,
+        shift = util.by_pixel(0, 2),
+        hr_version = {
+          width = 100,
+          height = 80,
+          shift = util.by_pixel(1, 2),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 196,
-        height = 64,
-        shift = util.by_pixel(92, 1),
-        hr_version =
-        {
-          width = 396,
-          height = 128,
-          shift = util.by_pixel(90.5, 0.5),
+      shadow = {
+        width = 153,
+        height = 101,
+        shift = util.by_pixel(60, -14),
+        hr_version = {
+          width = 300,
+          height = 202,
+          shift = util.by_pixel(61, -14),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 119,
-        height = 98,
-        shift = util.by_pixel(4.5, -73),
-        hr_version =
-        {
-          width = 238,
-          height = 195,
-          shift = util.by_pixel(4.5, -73.25),
+      leaves = {
+        width = 141,
+        height = 153,
+        shift = util.by_pixel(-8, -74),
+        hr_version = {
+          width = 282,
+          height = 304,
+          shift = util.by_pixel(-8, -74),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- b
-      trunk =
-      {
-        width = 74,
-        height = 114,
-        shift = util.by_pixel(6, -44),
-        hr_version =
-        {
-          width = 148,
-          height = 226,
-          shift = util.by_pixel(6, -44),
+      trunk = {
+        width = 127,
+        height = 157,
+        shift = util.by_pixel(20, -58),
+        hr_version = {
+          width = 252,
+          height = 314,
+          shift = util.by_pixel(20, -58),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 33,
-        height = 28,
-        shift = util.by_pixel(1.5, -1),
-        hr_version =
-        {
-          width = 64,
-          height = 54,
-          shift = util.by_pixel(1.5, -1),
+      stump = {
+        width = 53,
+        height = 43,
+        shift = util.by_pixel(-4, 0),
+        hr_version = {
+          width = 106,
+          height = 84,
+          shift = util.by_pixel(-4, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 141,
-        height = 55,
-        shift = util.by_pixel(61.5, -5.5),
-        hr_version =
-        {
-          width = 283,
-          height = 110,
-          shift = util.by_pixel(61.25, -5.5),
+      shadow = {
+        width = 203,
+        height = 117,
+        shift = util.by_pixel(86, -12),
+        hr_version = {
+          width = 406,
+          height = 230,
+          shift = util.by_pixel(86, -11),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 78,
-        height = 71,
-        shift = util.by_pixel(5, -66.5),
-        hr_version =
-        {
-          width = 157,
-          height = 145,
-          shift = util.by_pixel(5.25, -66.25),
+      leaves = {
+        width = 171,
+        height = 137,
+        shift = util.by_pixel(22, -80),
+        hr_version = {
+          width = 342,
+          height = 272,
+          shift = util.by_pixel(22, -80),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- c
-      trunk =
-      {
-        width = 88,
-        height = 150,
-        shift = util.by_pixel(7, -61),
-        hr_version =
-        {
-          width = 175,
-          height = 298,
-          shift = util.by_pixel(6.75, -61),
+      trunk = {
+        width = 135,
+        height = 125,
+        shift = util.by_pixel(-10, -44),
+        hr_version = {
+          width = 268,
+          height = 246,
+          shift = util.by_pixel(-9, -43),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 38,
-        height = 33,
-        shift = util.by_pixel(2, -3.5),
-        hr_version =
-        {
-          width = 76,
-          height = 66,
-          shift = util.by_pixel(2, -3.5),
+      stump = {
+        width = 51,
+        height = 41,
+        shift = util.by_pixel(2, -2),
+        hr_version = {
+          width = 98,
+          height = 78,
+          shift = util.by_pixel(3, -1),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 197,
-        height = 86,
-        shift = util.by_pixel(88.5, -10),
-        hr_version =
-        {
-          width = 395,
-          height = 170,
-          shift = util.by_pixel(88.25, -10),
+      shadow = {
+        width = 323,
+        height = 97,
+        shift = util.by_pixel(-26, 8),
+        hr_version = {
+          width = 646,
+          height = 188,
+          shift = util.by_pixel(-26, 9),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 93,
-        height = 89,
-        shift = util.by_pixel(8.5, -93.5),
-        hr_version =
-        {
-          width = 188,
-          height = 179,
-          shift = util.by_pixel(8.5, -93.75),
+      leaves = {
+        width = 161,
+        height = 117,
+        shift = util.by_pixel(-10, -48),
+        hr_version = {
+          width = 314,
+          height = 232,
+          shift = util.by_pixel(-8, -48),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- d
-      trunk =
-      {
-        width = 95,
-        height = 151,
-        shift = util.by_pixel(-5.5, -62.5),
-        hr_version =
-        {
-          width = 190,
-          height = 302,
-          shift = util.by_pixel(-6, -62.5),
+      trunk = {
+        width = 73,
+        height = 145,
+        shift = util.by_pixel(6, -52),
+        hr_version = {
+          width = 142,
+          height = 286,
+          shift = util.by_pixel(7, -51),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 44,
-        height = 36,
-        shift = util.by_pixel(-2, -5),
-        hr_version =
-        {
-          width = 86,
-          height = 71,
-          shift = util.by_pixel(-2, -4.75),
+      stump = {
+        width = 51,
+        height = 41,
+        shift = util.by_pixel(-6, 0),
+        hr_version = {
+          width = 96,
+          height = 78,
+          shift = util.by_pixel(-5, 1),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 195,
-        height = 83,
-        shift = util.by_pixel(86.5, -11.5),
-        hr_version =
-        {
-          width = 389,
-          height = 166,
-          shift = util.by_pixel(86.75, -11.5),
+      shadow = {
+        width = 159,
+        height = 79,
+        shift = util.by_pixel(66, 0),
+        hr_version = {
+          width = 318,
+          height = 156,
+          shift = util.by_pixel(66, 0),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 101,
-        height = 83,
-        shift = util.by_pixel(-5.5, -101.5),
-        hr_version =
-        {
-          width = 203,
-          height = 167,
-          shift = util.by_pixel(-4.75, -101.75),
+      leaves = {
+        width = 103,
+        height = 129,
+        shift = util.by_pixel(8, -68),
+        hr_version = {
+          width = 202,
+          height = 254,
+          shift = util.by_pixel(9, -67),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- e
-      trunk =
-      {
-        width = 112,
-        height = 131,
-        shift = util.by_pixel(-14, -54.5),
-        hr_version =
-        {
-          width = 223,
-          height = 262,
-          shift = util.by_pixel(-14.25, -54.5),
+      trunk = {
+        width = 89,
+        height = 127,
+        shift = util.by_pixel(6, -48),
+        hr_version = {
+          width = 174,
+          height = 250,
+          shift = util.by_pixel(7, -47),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 45,
-        height = 30,
-        shift = util.by_pixel(-7.5, -4),
-        hr_version =
-        {
-          width = 90,
-          height = 60,
-          shift = util.by_pixel(-7, -4),
+      stump = {
+        width = 51,
+        height = 39,
+        shift = util.by_pixel(-4, -4),
+        hr_version = {
+          width = 98,
+          height = 74,
+          shift = util.by_pixel(-3, -3),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 195,
-        height = 60,
-        shift = util.by_pixel(79.5, -8),
-        hr_version =
-        {
-          width = 389,
-          height = 120,
-          shift = util.by_pixel(79.75, -8),
+      shadow = {
+        width = 167,
+        height = 69,
+        shift = util.by_pixel(70, 0),
+        hr_version = {
+          width = 330,
+          height = 132,
+          shift = util.by_pixel(71, 1),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 118,
-        height = 84,
-        shift = util.by_pixel(-14, -81),
-        hr_version =
-        {
-          width = 235,
-          height = 167,
-          shift = util.by_pixel(-14.25, -80.75),
+      leaves = {
+        width = 117,
+        height = 105,
+        shift = util.by_pixel(8, -62),
+        hr_version = {
+          width = 234,
+          height = 208,
+          shift = util.by_pixel(8, -61),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- f
-      trunk =
-      {
-        width = 88,
-        height = 136,
-        shift = util.by_pixel(-14, -55),
-        hr_version =
-        {
-          width = 175,
-          height = 270,
-          shift = util.by_pixel(-14.25, -55),
+      trunk = {
+        width = 79,
+        height = 133,
+        shift = util.by_pixel(-12, -50),
+        hr_version = {
+          width = 158,
+          height = 262,
+          shift = util.by_pixel(-12, -49),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 41,
-        height = 30,
-        shift = util.by_pixel(-6.5, -2),
-        hr_version =
-        {
-          width = 82,
-          height = 58,
-          shift = util.by_pixel(-6, -2),
+      stump = {
+        width = 47,
+        height = 33,
+        shift = util.by_pixel(4, 0),
+        hr_version = {
+          width = 90,
+          height = 66,
+          shift = util.by_pixel(5, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 174,
-        height = 67,
-        shift = util.by_pixel(69, 1.5),
-        hr_version =
-        {
-          width = 348,
-          height = 132,
-          shift = util.by_pixel(69.5, 1.5),
+      shadow = {
+        width = 113,
+        height = 73,
+        shift = util.by_pixel(48, -4),
+        hr_version = {
+          width = 224,
+          height = 142,
+          shift = util.by_pixel(48, -3),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 93,
-        height = 99,
-        shift = util.by_pixel(-14.5, -66.5),
-        hr_version =
-        {
-          width = 186,
-          height = 200,
-          shift = util.by_pixel(-14.5, -66.5),
+      leaves = {
+        width = 109,
+        height = 119,
+        shift = util.by_pixel(-14, -58),
+        hr_version = {
+          width = 214,
+          height = 232,
+          shift = util.by_pixel(-13, -57),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- g
-      trunk =
-      {
-        width = 72,
+      trunk = {
+        width = 73,
         height = 123,
-        shift = util.by_pixel(-12, -47.5),
-        hr_version =
-        {
-          width = 145,
-          height = 247,
-          shift = util.by_pixel(-11.75, -48.25),
+        shift = util.by_pixel(-10, -42),
+        hr_version = {
+          width = 140,
+          height = 240,
+          shift = util.by_pixel(-9, -41),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 37,
-        height = 30,
-        shift = util.by_pixel(-5.5, -1),
-        hr_version =
-        {
-          width = 73,
-          height = 58,
-          shift = util.by_pixel(-5.25, -1),
+      stump = {
+        width = 45,
+        height = 39,
+        shift = util.by_pixel(0, 0),
+        hr_version = {
+          width = 88,
+          height = 76,
+          shift = util.by_pixel(0, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 174,
-        height = 67,
-        shift = util.by_pixel(69, 1.5),
-        hr_version =
-        {
-          width = 348,
+      shadow = {
+        width = 107,
+        height = 71,
+        shift = util.by_pixel(44, -6),
+        hr_version = {
+          width = 212,
+          height = 136,
+          shift = util.by_pixel(44, -5),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 95,
+        height = 117,
+        shift = util.by_pixel(0, -58),
+        hr_version = {
+          width = 188,
+          height = 230,
+          shift = util.by_pixel(1, -57),
+          scale = 0.5
+        },
+      },
+    },
+    { -- h
+      trunk = {
+        width = 87,
+        height = 115,
+        shift = util.by_pixel(2, -38),
+        hr_version = {
+          width = 174,
+          height = 224,
+          shift = util.by_pixel(2, -37),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 45,
+        height = 41,
+        shift = util.by_pixel(-2, -2),
+        hr_version = {
+          width = 88,
+          height = 74,
+          shift = util.by_pixel(-2, 0),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 131,
+        height = 69,
+        shift = util.by_pixel(54, -2),
+        hr_version = {
+          width = 258,
           height = 132,
-          shift = util.by_pixel(69.5, 1.5),
+          shift = util.by_pixel(55, -1),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 77,
-        height = 105,
-        shift = util.by_pixel(-12.5, -58.5),
-        hr_version =
-        {
-          width = 155,
-          height = 212,
-          shift = util.by_pixel(-12.25, -58.5),
+      leaves = {
+        width = 93,
+        height = 103,
+        shift = util.by_pixel(6, -44),
+        hr_version = {
+          width = 182,
+          height = 200,
+          shift = util.by_pixel(7, -43),
           scale = 0.5
-        }
-      }
-    }
+        },
+      },
+    },
+    { -- i
+      trunk = {
+        width = 99,
+        height = 101,
+        shift = util.by_pixel(2, -34),
+        hr_version = {
+          width = 196,
+          height = 202,
+          shift = util.by_pixel(2, -34),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 49,
+        height = 43,
+        shift = util.by_pixel(0, -4),
+        hr_version = {
+          width = 92,
+          height = 80,
+          shift = util.by_pixel(1, -3),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 109,
+        height = 61,
+        shift = util.by_pixel(48, 4),
+        hr_version = {
+          width = 218,
+          height = 120,
+          shift = util.by_pixel(48, 4),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 99,
+        height = 91,
+        shift = util.by_pixel(-2, -42),
+        hr_version = {
+          width = 198,
+          height = 178,
+          shift = util.by_pixel(-1, -41),
+          scale = 0.5
+        },
+      },
+    },
+    { -- j
+      trunk = {
+        width = 51,
+        height = 95,
+        shift = util.by_pixel(6, -34),
+        hr_version = {
+          width = 100,
+          height = 188,
+          shift = util.by_pixel(6, -34),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 29,
+        height = 27,
+        shift = util.by_pixel(-2, 0),
+        hr_version = {
+          width = 58,
+          height = 52,
+          shift = util.by_pixel(-2, 0),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 89,
+        height = 55,
+        shift = util.by_pixel(38, -2),
+        hr_version = {
+          width = 178,
+          height = 110,
+          shift = util.by_pixel(39, -2),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 57,
+        height = 85,
+        shift = util.by_pixel(6, -44),
+        hr_version = {
+          width = 112,
+          height = 166,
+          shift = util.by_pixel(6, -43),
+          scale = 0.5
+        },
+      },
+    },
+    { -- k
+      trunk = {
+        width = 47,
+        height = 69,
+        shift = util.by_pixel(8, -24),
+        hr_version = {
+          width = 92,
+          height = 134,
+          shift = util.by_pixel(8, -23),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 27,
+        height = 25,
+        shift = util.by_pixel(-2, -2),
+        hr_version = {
+          width = 52,
+          height = 46,
+          shift = util.by_pixel(-2, -1),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 85,
+        height = 35,
+        shift = util.by_pixel(38, 2),
+        hr_version = {
+          width = 170,
+          height = 66,
+          shift = util.by_pixel(38, 3),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 69,
+        height = 63,
+        shift = util.by_pixel(4, -32),
+        hr_version = {
+          width = 140,
+          height = 126,
+          shift = util.by_pixel(4, -32),
+          scale = 0.5
+        },
+      },
+    },
+    { -- l
+      trunk = {
+        width = 59,
+        height = 85,
+        shift = util.by_pixel(-10, -30),
+        hr_version = {
+          width = 112,
+          height = 166,
+          shift = util.by_pixel(-9, -29),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 33,
+        height = 25,
+        shift = util.by_pixel(2, 0),
+        hr_version = {
+          width = 62,
+          height = 50,
+          shift = util.by_pixel(3, 0),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 73,
+        height = 47,
+        shift = util.by_pixel(30, -6),
+        hr_version = {
+          width = 142,
+          height = 90,
+          shift = util.by_pixel(31, -5),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 79,
+        height = 71,
+        shift = util.by_pixel(-14, -42),
+        hr_version = {
+          width = 154,
+          height = 142,
+          shift = util.by_pixel(-13, -42),
+          scale = 0.5
+        },
+      },
+    },
   },
   { -- tree-04
     { -- a
@@ -2463,1195 +2656,1019 @@ local tree_types =
   },
   { -- tree-05
     { -- a
-      trunk =
-      {
-        width = 72,
+      trunk = {
+        width = 74,
         height = 120,
-        shift = util.by_pixel(12, -46),
-        hr_version =
-        {
-          width = 142,
-          height = 240,
+        shift = util.by_pixel(12, -44),
+        hr_version = {
+          width = 144,
+          height = 242,
           shift = util.by_pixel(13, -45),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 44,
-        height = 34,
-        shift = util.by_pixel(-2, -2),
-        hr_version =
-        {
-          width = 86,
-          height = 62,
+      stump = {
+        width = 46,
+        height = 32,
+        shift = util.by_pixel(-2, 0),
+        hr_version = {
+          width = 88,
+          height = 64,
           shift = util.by_pixel(-1, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
+      shadow = {
         width = 160,
-        height = 74,
+        height = 76,
         shift = util.by_pixel(62, -8),
-        hr_version =
-        {
-          width = 320,
-          height = 148,
+        hr_version = {
+          width = 322,
+          height = 150,
           shift = util.by_pixel(62, -8),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 118,
+      leaves = {
+        width = 116,
         height = 130,
-        shift = util.by_pixel(4, -62),
-        hr_version =
-        {
-          width = 232,
-          height = 260,
-          shift = util.by_pixel(5, -61),
+        shift = util.by_pixel(6, -60),
+        hr_version = {
+          width = 234,
+          height = 258,
+          shift = util.by_pixel(5, -60),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- b
-      trunk =
-      {
-        width = 58,
+      trunk = {
+        width = 60,
         height = 114,
-        shift = util.by_pixel(0, -42),
-        hr_version =
-        {
-          width = 112,
-          height = 228,
-          shift = util.by_pixel(1, -41),
+        shift = util.by_pixel(0, -40),
+        hr_version = {
+          width = 114,
+          height = 226,
+          shift = util.by_pixel(1, -40),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
+      stump = {
         width = 38,
         height = 34,
-        shift = util.by_pixel(-2, -2),
-        hr_version =
-        {
-          width = 76,
-          height = 66,
+        shift = util.by_pixel(0, 0),
+        hr_version = {
+          width = 78,
+          height = 68,
           shift = util.by_pixel(-1, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 144,
-        height = 84,
-        shift = util.by_pixel(58, 0),
-        hr_version =
-        {
-          width = 288,
-          height = 164,
+      shadow = {
+        width = 146,
+        height = 82,
+        shift = util.by_pixel(58, 2),
+        hr_version = {
+          width = 290,
+          height = 166,
           shift = util.by_pixel(58, 1),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 110,
+      leaves = {
+        width = 112,
         height = 122,
-        shift = util.by_pixel(6, -62),
-        hr_version =
-        {
-          width = 220,
-          height = 244,
-          shift = util.by_pixel(6, -61),
+        shift = util.by_pixel(6, -60),
+        hr_version = {
+          width = 222,
+          height = 242,
+          shift = util.by_pixel(6, -60),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- c
-      trunk =
-      {
-        width = 64,
-        height = 140,
-        shift = util.by_pixel(-12, -56),
-        hr_version =
-        {
-          width = 124,
-          height = 274,
-          shift = util.by_pixel(-11, -54),
+      trunk = {
+        width = 60,
+        height = 138,
+        shift = util.by_pixel(-10, -54),
+        hr_version = {
+          width = 122,
+          height = 276,
+          shift = util.by_pixel(-10, -54),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 42,
-        height = 32,
-        shift = util.by_pixel(-2, -2),
-        hr_version =
-        {
-          width = 82,
-          height = 66,
-          shift = util.by_pixel(-1, -2),
-          scale = 0.5
-        }
-      },
-      shadow =
-      {
-        width = 134,
-        height = 82,
-        shift = util.by_pixel(52, 2),
-        hr_version =
-        {
-          width = 270,
-          height = 160,
-          shift = util.by_pixel(52, 3),
-          scale = 0.5
-        }
-      },
-      leaves =
-      {
-        width = 114,
-        height = 148,
-        shift = util.by_pixel(-4, -68),
-        hr_version =
-        {
-          width = 222,
-          height = 292,
-          shift = util.by_pixel(-2, -66),
-          scale = 0.5
-        }
-      }
-    },
-    { -- d
-      trunk =
-      {
-        width = 62,
-        height = 124,
-        shift = util.by_pixel(2, -46),
-        hr_version =
-        {
-          width = 118,
-          height = 246,
-          shift = util.by_pixel(4, -45),
-          scale = 0.5
-        }
-      },
-      stump =
-      {
-        width = 40,
-        height = 36,
-        shift = util.by_pixel(0, -2),
-        hr_version =
-        {
-          width = 76,
-          height = 68,
-          shift = util.by_pixel(1, 0),
-          scale = 0.5
-        }
-      },
-      shadow =
-      {
-        width = 138,
-        height = 86,
-        shift = util.by_pixel(54, -4),
-        hr_version =
-        {
-          width = 276,
-          height = 170,
-          shift = util.by_pixel(54, -3),
-          scale = 0.5
-        }
-      },
-      leaves =
-      {
-        width = 102,
-        height = 122,
-        shift = util.by_pixel(4, -60),
-        hr_version =
-        {
-          width = 200,
-          height = 242,
-          shift = util.by_pixel(5, -59),
-          scale = 0.5
-        }
-      }
-    },
-    { -- e
-      trunk =
-      {
-        width = 52,
-        height = 116,
-        shift = util.by_pixel(0, -44),
-        hr_version =
-        {
-          width = 104,
-          height = 234,
-          shift = util.by_pixel(0, -44),
-          scale = 0.5
-        }
-      },
-      stump =
-      {
-        width = 38,
-        height = 32,
-        shift = util.by_pixel(0, -2),
-        hr_version =
-        {
-          width = 78,
-          height = 62,
-          shift = util.by_pixel(0, -1),
-          scale = 0.5
-        }
-      },
-      shadow =
-      {
-        width = 134,
-        height = 70,
-        shift = util.by_pixel(52, 2),
-        hr_version =
-        {
-          width = 266,
-          height = 142,
-          shift = util.by_pixel(53, 2),
-          scale = 0.5
-        }
-      },
-      leaves =
-      {
-        width = 120,
-        height = 124,
-        shift = util.by_pixel(-4, -58),
-        hr_version =
-        {
-          width = 238,
-          height = 248,
-          shift = util.by_pixel(-3, -57),
-          scale = 0.5
-        }
-      }
-    },
-    { -- f
-      trunk =
-      {
-        width = 56,
-        height = 118,
-        shift = util.by_pixel(-10, -44),
-        hr_version =
-        {
-          width = 110,
-          height = 234,
-          shift = util.by_pixel(-9, -43),
-          scale = 0.5
-        }
-      },
-      stump =
-      {
+      stump = {
         width = 40,
         height = 34,
-        shift = util.by_pixel(-2, -2),
-        hr_version =
-        {
-          width = 78,
-          height = 66,
+        shift = util.by_pixel(0, -2),
+        hr_version = {
+          width = 84,
+          height = 64,
           shift = util.by_pixel(-1, -1),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 138,
+      shadow = {
+        width = 136,
         height = 84,
-        shift = util.by_pixel(50, -2),
-        hr_version =
-        {
-          width = 270,
-          height = 170,
-          shift = util.by_pixel(52, -2),
+        shift = util.by_pixel(52, 2),
+        hr_version = {
+          width = 272,
+          height = 162,
+          shift = util.by_pixel(52, 3),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 96,
-        height = 126,
-        shift = util.by_pixel(-4, -56),
-        hr_version =
-        {
-          width = 192,
-          height = 254,
-          shift = util.by_pixel(-4, -55),
+      leaves = {
+        width = 112,
+        height = 148,
+        shift = util.by_pixel(-2, -66),
+        hr_version = {
+          width = 224,
+          height = 290,
+          shift = util.by_pixel(-2, -65),
           scale = 0.5
-        }
-      }
+        },
+      },
+    },
+    { -- d
+      trunk = {
+        width = 60,
+        height = 122,
+        shift = util.by_pixel(4, -44),
+        hr_version = {
+          width = 120,
+          height = 244,
+          shift = util.by_pixel(4, -44),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 42,
+        height = 36,
+        shift = util.by_pixel(0, 0),
+        hr_version = {
+          width = 78,
+          height = 70,
+          shift = util.by_pixel(1, 0),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 140,
+        height = 84,
+        shift = util.by_pixel(54, -2),
+        hr_version = {
+          width = 278,
+          height = 168,
+          shift = util.by_pixel(54, -2),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 100,
+        height = 124,
+        shift = util.by_pixel(6, -60),
+        hr_version = {
+          width = 202,
+          height = 244,
+          shift = util.by_pixel(5, -59),
+          scale = 0.5
+        },
+      },
+    },
+    { -- e
+      trunk = {
+        width = 54,
+        height = 118,
+        shift = util.by_pixel(0, -44),
+        hr_version = {
+          width = 106,
+          height = 232,
+          shift = util.by_pixel(0, -43),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 40,
+        height = 34,
+        shift = util.by_pixel(0, -2),
+        hr_version = {
+          width = 80,
+          height = 64,
+          shift = util.by_pixel(0, -1),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 136,
+        height = 72,
+        shift = util.by_pixel(52, 2),
+        hr_version = {
+          width = 268,
+          height = 144,
+          shift = util.by_pixel(53, 2),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 118,
+        height = 126,
+        shift = util.by_pixel(-2, -58),
+        hr_version = {
+          width = 236,
+          height = 250,
+          shift = util.by_pixel(-2, -57),
+          scale = 0.5
+        },
+      },
+    },
+    { -- f
+      trunk = {
+        width = 58,
+        height = 120,
+        shift = util.by_pixel(-10, -44),
+        hr_version = {
+          width = 112,
+          height = 236,
+          shift = util.by_pixel(-9, -43),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 38,
+        height = 36,
+        shift = util.by_pixel(0, -2),
+        hr_version = {
+          width = 80,
+          height = 68,
+          shift = util.by_pixel(-1, -1),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 136,
+        height = 86,
+        shift = util.by_pixel(52, -2),
+        hr_version = {
+          width = 272,
+          height = 168,
+          shift = util.by_pixel(52, -1),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 98,
+        height = 126,
+        shift = util.by_pixel(-4, -54),
+        hr_version = {
+          width = 194,
+          height = 252,
+          shift = util.by_pixel(-4, -54),
+          scale = 0.5
+        },
+      },
     },
     { -- g
-      trunk =
-      {
-        width = 46,
-        height = 104,
-        shift = util.by_pixel(-2, -40),
-        hr_version =
-        {
-          width = 88,
-          height = 212,
-          shift = util.by_pixel(-1, -40),
+      trunk = {
+        width = 44,
+        height = 108,
+        shift = util.by_pixel(0, -40),
+        hr_version = {
+          width = 86,
+          height = 214,
+          shift = util.by_pixel(0, -40),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 34,
-        height = 36,
-        shift = util.by_pixel(-2, -6),
-        hr_version =
-        {
-          width = 66,
-          height = 72,
-          shift = util.by_pixel(-1, -5),
-          scale = 0.5
-        }
-      },
-      shadow =
-      {
-        width = 120,
-        height = 82,
-        shift = util.by_pixel(40, -6),
-        hr_version =
-        {
-          width = 236,
-          height = 162,
-          shift = util.by_pixel(42, -5),
-          scale = 0.5
-        }
-      },
-      leaves =
-      {
-        width = 88,
-        height = 110,
-        shift = util.by_pixel(0, -52),
-        hr_version =
-        {
-          width = 176,
-          height = 218,
-          shift = util.by_pixel(0, -51),
-          scale = 0.5
-        }
-      }
-    },
-    { -- h
-      trunk =
-      {
-        width = 72,
-        height = 106,
-        shift = util.by_pixel(6, -40),
-        hr_version =
-        {
-          width = 142,
-          height = 210,
-          shift = util.by_pixel(7, -39),
-          scale = 0.5
-        }
-      },
-      stump =
-      {
-        width = 34,
-        height = 38,
+      stump = {
+        width = 32,
+        height = 40,
         shift = util.by_pixel(0, -6),
-        hr_version =
-        {
-          width = 70,
+        hr_version = {
+          width = 64,
           height = 74,
           shift = util.by_pixel(0, -5),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 136,
-        height = 64,
-        shift = util.by_pixel(48, -2),
-        hr_version =
-        {
-          width = 268,
-          height = 124,
-          shift = util.by_pixel(49, -1),
+      shadow = {
+        width = 120,
+        height = 84,
+        shift = util.by_pixel(42, -6),
+        hr_version = {
+          width = 238,
+          height = 164,
+          shift = util.by_pixel(42, -5),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 112,
-        height = 98,
+      leaves = {
+        width = 90,
+        height = 112,
+        shift = util.by_pixel(0, -52),
+        hr_version = {
+          width = 178,
+          height = 220,
+          shift = util.by_pixel(0, -51),
+          scale = 0.5
+        },
+      },
+    },
+    { -- h
+      trunk = {
+        width = 74,
+        height = 108,
+        shift = util.by_pixel(6, -40),
+        hr_version = {
+          width = 144,
+          height = 212,
+          shift = util.by_pixel(7, -39),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 36,
+        height = 36,
+        shift = util.by_pixel(0, -4),
+        hr_version = {
+          width = 72,
+          height = 76,
+          shift = util.by_pixel(0, -5),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 134,
+        height = 62,
+        shift = util.by_pixel(50, 0),
+        hr_version = {
+          width = 270,
+          height = 122,
+          shift = util.by_pixel(49, 0),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 114,
+        height = 100,
         shift = util.by_pixel(6, -48),
-        hr_version =
-        {
-          width = 226,
-          height = 194,
+        hr_version = {
+          width = 228,
+          height = 196,
           shift = util.by_pixel(6, -47),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- i
-      trunk =
-      {
-        width = 36,
-        height = 90,
-        shift = util.by_pixel(-4, -34),
-        hr_version =
-        {
-          width = 68,
-          height = 182,
+      trunk = {
+        width = 34,
+        height = 92,
+        shift = util.by_pixel(-2, -34),
+        hr_version = {
+          width = 70,
+          height = 184,
           shift = util.by_pixel(-3, -34),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 26,
-        height = 30,
+      stump = {
+        width = 30,
+        height = 32,
         shift = util.by_pixel(0, -4),
-        hr_version =
-        {
-          width = 56,
-          height = 58,
-          shift = util.by_pixel(0, -3),
-          scale = 0.5
-        }
-      },
-      shadow =
-      {
-        width = 106,
-        height = 60,
-        shift = util.by_pixel(40, -4),
-        hr_version =
-        {
-          width = 212,
-          height = 116,
-          shift = util.by_pixel(40, -3),
-          scale = 0.5
-        }
-      },
-      leaves =
-      {
-        width = 82,
-        height = 100,
-        shift = util.by_pixel(-6, -46),
-        hr_version =
-        {
-          width = 168,
-          height = 198,
-          shift = util.by_pixel(-6, -45),
-          scale = 0.5
-        }
-      }
-    },
-    { -- j
-      trunk =
-      {
-        width = 34,
-        height = 80,
-        shift = util.by_pixel(2, -30),
-        hr_version =
-        {
-          width = 64,
-          height = 160,
-          shift = util.by_pixel(3, -29),
-          scale = 0.5
-        }
-      },
-      stump =
-      {
-        width = 28,
-        height = 28,
-        shift = util.by_pixel(0, -4),
-        hr_version =
-        {
+        hr_version = {
           width = 58,
           height = 60,
-          shift = util.by_pixel(0, -4),
+          shift = util.by_pixel(0, -3),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 96,
+      shadow = {
+        width = 108,
         height = 62,
-        shift = util.by_pixel(40, 0),
-        hr_version =
-        {
-          width = 190,
-          height = 128,
-          shift = util.by_pixel(41, 0),
+        shift = util.by_pixel(40, -4),
+        hr_version = {
+          width = 214,
+          height = 118,
+          shift = util.by_pixel(40, -3),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 72,
-        height = 92,
+      leaves = {
+        width = 84,
+        height = 102,
+        shift = util.by_pixel(-6, -46),
+        hr_version = {
+          width = 166,
+          height = 200,
+          shift = util.by_pixel(-5, -45),
+          scale = 0.5
+        },
+      },
+    },
+    { -- j
+      trunk = {
+        width = 36,
+        height = 84,
+        shift = util.by_pixel(2, -30),
+        hr_version = {
+          width = 66,
+          height = 162,
+          shift = util.by_pixel(3, -29),
+          scale = 0.5
+        },
+      },
+      stump = {
+        width = 30,
+        height = 32,
+        shift = util.by_pixel(0, -4),
+        hr_version = {
+          width = 56,
+          height = 62,
+          shift = util.by_pixel(1, -4),
+          scale = 0.5
+        },
+      },
+      shadow = {
+        width = 98,
+        height = 66,
+        shift = util.by_pixel(40, 0),
+        hr_version = {
+          width = 192,
+          height = 126,
+          shift = util.by_pixel(41, 1),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 74,
+        height = 94,
         shift = util.by_pixel(0, -42),
-        hr_version =
-        {
-          width = 140,
-          height = 182,
+        hr_version = {
+          width = 142,
+          height = 184,
           shift = util.by_pixel(1, -41),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- k
-      trunk =
-      {
-        width = 138,
-        height = 88,
+      trunk = {
+        width = 140,
+        height = 90,
         shift = util.by_pixel(-18, 8),
-        hr_version =
-        {
-          width = 276,
-          height = 174,
-          shift = util.by_pixel(-18, 9),
+        hr_version = {
+          width = 274,
+          height = 176,
+          shift = util.by_pixel(-17, 9),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 54,
-        height = 44,
+      stump = {
+        width = 56,
+        height = 46,
         shift = util.by_pixel(24, -14),
-        hr_version =
-        {
-          width = 108,
-          height = 86,
+        hr_version = {
+          width = 110,
+          height = 88,
           shift = util.by_pixel(24, -13),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 138,
-        height = 82,
-        shift = util.by_pixel(-14, 10),
-        hr_version =
-        {
-          width = 278,
-          height = 158,
-          shift = util.by_pixel(-14, 12),
-          scale = 0.5
-        }
-      },
-      leaves =
-      {
-        width = 116,
-        height = 78,
-        shift = util.by_pixel(-30, 8),
-        hr_version =
-        {
-          width = 232,
+      shadow = {
+        width = 140,
+        height = 80,
+        shift = util.by_pixel(-14, 12),
+        hr_version = {
+          width = 276,
           height = 160,
+          shift = util.by_pixel(-13, 12),
+          scale = 0.5
+        },
+      },
+      leaves = {
+        width = 120,
+        height = 84,
+        shift = util.by_pixel(-30, 6),
+        hr_version = {
+          width = 234,
+          height = 162,
           shift = util.by_pixel(-29, 7),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- l
-      trunk =
-      {
-        width = 126,
+      trunk = {
+        width = 124,
         height = 94,
-        shift = util.by_pixel(14, -24),
-        hr_version =
-        {
-          width = 250,
-          height = 188,
-          shift = util.by_pixel(15, -23),
+        shift = util.by_pixel(16, -22),
+        hr_version = {
+          width = 252,
+          height = 186,
+          shift = util.by_pixel(15, -22),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 52,
-        height = 32,
-        shift = util.by_pixel(-22, 6),
-        hr_version =
-        {
-          width = 102,
-          height = 68,
+      stump = {
+        width = 54,
+        height = 34,
+        shift = util.by_pixel(-22, 8),
+        hr_version = {
+          width = 104,
+          height = 70,
           shift = util.by_pixel(-21, 7),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
+      shadow = {
         width = 128,
-        height = 92,
-        shift = util.by_pixel(20, -18),
-        hr_version =
-        {
-          width = 256,
-          height = 188,
-          shift = util.by_pixel(21, -19),
+        height = 94,
+        shift = util.by_pixel(22, -18),
+        hr_version = {
+          width = 258,
+          height = 186,
+          shift = util.by_pixel(21, -18),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 118,
-        height = 74,
-        shift = util.by_pixel(18, -36),
-        hr_version =
-        {
-          width = 250,
-          height = 162,
+      leaves = {
+        width = 124,
+        height = 82,
+        shift = util.by_pixel(16, -30),
+        hr_version = {
+          width = 252,
+          height = 164,
           shift = util.by_pixel(15, -30),
           scale = 0.5
-        }
-      }
-    }
+        },
+      },
+    },
   },
   { -- tree-06
     { -- a
-      trunk =
-      {
-        width = 71,
+      trunk = {
+        width = 72,
         height = 134,
-        shift = util.by_pixel(6.5, -39),
-        hr_version =
-        {
-          width = 142,
-          height = 269,
-          shift = util.by_pixel(6.5, -38.75),
+        shift = util.by_pixel(6, -40),
+        hr_version = {
+          width = 140,
+          height = 268,
+          shift = util.by_pixel(7, -40),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
+      stump = {
         width = 60,
         height = 62,
-        shift = util.by_pixel(1, -3),
-        hr_version =
-        {
-          width = 120,
-          height = 126,
-          shift = util.by_pixel(1, -3),
+        shift = util.by_pixel(0, -4),
+        hr_version = {
+          width = 118,
+          height = 120,
+          shift = util.by_pixel(0, -3),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 168,
-        height = 74,
-        shift = util.by_pixel(65, 1),
-        hr_version =
-        {
-          width = 336,
-          height = 149,
-          shift = util.by_pixel(64.5, 1.25),
+      shadow = {
+        width = 170,
+        height = 76,
+        shift = util.by_pixel(64, 0),
+        hr_version = {
+          width = 338,
+          height = 148,
+          shift = util.by_pixel(64, 1),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 66,
-        height = 97,
-        shift = util.by_pixel(11, -49.5),
-        hr_version =
-        {
-          width = 133,
-          height = 194,
-          shift = util.by_pixel(11.25, -49.5),
+      leaves = {
+        width = 68,
+        height = 98,
+        shift = util.by_pixel(10, -50),
+        hr_version = {
+          width = 132,
+          height = 196,
+          shift = util.by_pixel(11, -50),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- b
-      trunk =
-      {
-        width = 83,
-        height = 125,
-        shift = util.by_pixel(8.5, -24.5),
-        hr_version =
-        {
-          width = 165,
-          height = 251,
-          shift = util.by_pixel(8.75, -24.75),
+      trunk = {
+        width = 84,
+        height = 124,
+        shift = util.by_pixel(8, -26),
+        hr_version = {
+          width = 168,
+          height = 248,
+          shift = util.by_pixel(8, -26),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
+      stump = {
         width = 62,
-        height = 69,
-        shift = util.by_pixel(0, 3.5),
-        hr_version =
-        {
-          width = 125,
-          height = 139,
-          shift = util.by_pixel(-0.25, 3.25),
+        height = 68,
+        shift = util.by_pixel(0, 2),
+        hr_version = {
+          width = 124,
+          height = 132,
+          shift = util.by_pixel(0, 3),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 175,
-        height = 57,
-        shift = util.by_pixel(67.5, 12.5),
-        hr_version =
-        {
-          width = 350,
-          height = 115,
-          shift = util.by_pixel(67.5, 12.75),
+      shadow = {
+        width = 174,
+        height = 58,
+        shift = util.by_pixel(68, 12),
+        hr_version = {
+          width = 352,
+          height = 116,
+          shift = util.by_pixel(67, 12),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 86,
-        height = 93,
-        shift = util.by_pixel(10, -39.5),
-        hr_version =
-        {
-          width = 170,
+      leaves = {
+        width = 84,
+        height = 94,
+        shift = util.by_pixel(10, -40),
+        hr_version = {
+          width = 172,
           height = 186,
-          shift = util.by_pixel(10, -40),
+          shift = util.by_pixel(9, -40),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- c
-      trunk =
-      {
-        width = 99,
-        height = 104,
-        shift = util.by_pixel(0.5, -14),
-        hr_version =
-        {
-          width = 196,
-          height = 209,
-          shift = util.by_pixel(0.5, -13.75),
+      trunk = {
+        width = 100,
+        height = 106,
+        shift = util.by_pixel(0, -16),
+        hr_version = {
+          width = 198,
+          height = 208,
+          shift = util.by_pixel(0, -15),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 61,
-        height = 60,
-        shift = util.by_pixel(-2.5, 8),
-        hr_version =
-        {
+      stump = {
+        width = 62,
+        height = 58,
+        shift = util.by_pixel(-4, 8),
+        hr_version = {
           width = 122,
-          height = 122,
+          height = 116,
           shift = util.by_pixel(-3, 8),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
+      shadow = {
         width = 174,
-        height = 48,
-        shift = util.by_pixel(66, 17),
-        hr_version =
-        {
-          width = 349,
-          height = 95,
-          shift = util.by_pixel(65.75, 17.25),
+        height = 50,
+        shift = util.by_pixel(66, 16),
+        hr_version = {
+          width = 352,
+          height = 98,
+          shift = util.by_pixel(65, 16),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 89,
+      leaves = {
+        width = 92,
         height = 80,
-        shift = util.by_pixel(3.5, -28),
-        hr_version =
-        {
-          width = 179,
-          height = 159,
-          shift = util.by_pixel(3.25, -28.25),
+        shift = util.by_pixel(2, -28),
+        hr_version = {
+          width = 178,
+          height = 162,
+          shift = util.by_pixel(3, -29),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- d
-      trunk =
-      {
+      trunk = {
         width = 74,
         height = 124,
-        shift = util.by_pixel(-15, -20),
-        hr_version =
-        {
-          width = 147,
-          height = 247,
-          shift = util.by_pixel(-14.75, -19.75),
+        shift = util.by_pixel(-16, -22),
+        hr_version = {
+          width = 148,
+          height = 244,
+          shift = util.by_pixel(-16, -21),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
+      stump = {
         width = 60,
-        height = 67,
-        shift = util.by_pixel(-6, 8.5),
-        hr_version =
-        {
-          width = 121,
-          height = 135,
-          shift = util.by_pixel(-6.25, 8.25),
+        height = 64,
+        shift = util.by_pixel(-6, 8),
+        hr_version = {
+          width = 120,
+          height = 128,
+          shift = util.by_pixel(-6, 8),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 153,
-        height = 65,
-        shift = util.by_pixel(43.5, 15.5),
-        hr_version =
-        {
-          width = 306,
+      shadow = {
+        width = 152,
+        height = 68,
+        shift = util.by_pixel(44, 14),
+        hr_version = {
+          width = 308,
           height = 130,
-          shift = util.by_pixel(43.5, 15.5),
+          shift = util.by_pixel(43, 15),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 75,
-        height = 89,
-        shift = util.by_pixel(-14.5, -38.5),
-        hr_version =
-        {
+      leaves = {
+        width = 74,
+        height = 92,
+        shift = util.by_pixel(-14, -40),
+        hr_version = {
           width = 150,
-          height = 179,
-          shift = util.by_pixel(-14.5, -38.75),
+          height = 180,
+          shift = util.by_pixel(-15, -39),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- e
-      trunk =
-      {
-        width = 77,
-        height = 136,
-        shift = util.by_pixel(-13.5, -32),
-        hr_version =
-        {
+      trunk = {
+        width = 76,
+        height = 134,
+        shift = util.by_pixel(-14, -32),
+        hr_version = {
           width = 154,
-          height = 273,
-          shift = util.by_pixel(-13.5, -31.75),
+          height = 270,
+          shift = util.by_pixel(-15, -33),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 65,
-        height = 56,
-        shift = util.by_pixel(-7.5, 8),
-        hr_version =
-        {
-          width = 131,
-          height = 113,
-          shift = util.by_pixel(-7.75, 8.25),
+      stump = {
+        width = 64,
+        height = 54,
+        shift = util.by_pixel(-8, 8),
+        hr_version = {
+          width = 126,
+          height = 106,
+          shift = util.by_pixel(-8, 8),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 123,
-        height = 74,
-        shift = util.by_pixel(26.5, 7),
-        hr_version =
-        {
-          width = 247,
+      shadow = {
+        width = 124,
+        height = 76,
+        shift = util.by_pixel(26, 6),
+        hr_version = {
+          width = 248,
           height = 146,
-          shift = util.by_pixel(26.25, 7),
+          shift = util.by_pixel(26, 7),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
+      leaves = {
         width = 68,
-        height = 112,
-        shift = util.by_pixel(-18, -47),
-        hr_version =
-        {
+        height = 114,
+        shift = util.by_pixel(-18, -48),
+        hr_version = {
           width = 136,
-          height = 225,
-          shift = util.by_pixel(-18, -47.25),
+          height = 226,
+          shift = util.by_pixel(-18, -48),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- f
-      trunk =
-      {
-        width = 91,
-        height = 135,
-        shift = util.by_pixel(-16.5, -36.5),
-        hr_version =
-        {
-          width = 181,
-          height = 271,
-          shift = util.by_pixel(-16.25, -36.25),
+      trunk = {
+        width = 90,
+        height = 136,
+        shift = util.by_pixel(-16, -38),
+        hr_version = {
+          width = 184,
+          height = 268,
+          shift = util.by_pixel(-17, -37),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
+      stump = {
         width = 62,
-        height = 63,
-        shift = util.by_pixel(-10, -0.5),
-        hr_version =
-        {
-          width = 123,
-          height = 127,
-          shift = util.by_pixel(-10.25, -0.25),
+        height = 60,
+        shift = util.by_pixel(-10, 0),
+        hr_version = {
+          width = 122,
+          height = 120,
+          shift = util.by_pixel(-10, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 163,
-        height = 55,
-        shift = util.by_pixel(42.5, -4.5),
-        hr_version =
-        {
-          width = 324,
-          height = 109,
-          shift = util.by_pixel(42.5, -4.25),
+      shadow = {
+        width = 162,
+        height = 54,
+        shift = util.by_pixel(42, -4),
+        hr_version = {
+          width = 326,
+          height = 110,
+          shift = util.by_pixel(42, -5),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 89,
-        height = 115,
-        shift = util.by_pixel(-18.5, -48.5),
-        hr_version =
-        {
-          width = 177,
-          height = 229,
-          shift = util.by_pixel(-18.25, -48.75),
+      leaves = {
+        width = 88,
+        height = 114,
+        shift = util.by_pixel(-18, -48),
+        hr_version = {
+          width = 180,
+          height = 230,
+          shift = util.by_pixel(-19, -49),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- g
-      trunk =
-      {
-        width = 97,
+      trunk = {
+        width = 100,
         height = 132,
-        shift = util.by_pixel(-8.5, -35),
-        hr_version =
-        {
+        shift = util.by_pixel(-10, -36),
+        hr_version = {
           width = 194,
-          height = 268,
-          shift = util.by_pixel(-9, -35),
+          height = 266,
+          shift = util.by_pixel(-9, -36),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 63,
-        height = 65,
-        shift = util.by_pixel(-6.5, -1.5),
-        hr_version =
-        {
-          width = 127,
-          height = 133,
-          shift = util.by_pixel(-6.75, -1.25),
+      stump = {
+        width = 64,
+        height = 64,
+        shift = util.by_pixel(-8, -2),
+        hr_version = {
+          width = 122,
+          height = 126,
+          shift = util.by_pixel(-7, -1),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 177,
-        height = 50,
-        shift = util.by_pixel(55.5, -7),
-        hr_version =
-        {
-          width = 352,
-          height = 101,
-          shift = util.by_pixel(55.5, -6.75),
+      shadow = {
+        width = 180,
+        height = 52,
+        shift = util.by_pixel(54, -8),
+        hr_version = {
+          width = 354,
+          height = 100,
+          shift = util.by_pixel(55, -7),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 89,
-        height = 114,
-        shift = util.by_pixel(-8.5, -47),
-        hr_version =
-        {
-          width = 177,
+      leaves = {
+        width = 92,
+        height = 116,
+        shift = util.by_pixel(-10, -48),
+        hr_version = {
+          width = 178,
           height = 228,
-          shift = util.by_pixel(-8.25, -46.5),
+          shift = util.by_pixel(-9, -47),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- h
-      trunk =
-      {
-        width = 84,
-        height = 129,
-        shift = util.by_pixel(5, -34.5),
-        hr_version =
-        {
-          width = 169,
+      trunk = {
+        width = 86,
+        height = 130,
+        shift = util.by_pixel(4, -36),
+        hr_version = {
+          width = 166,
           height = 258,
-          shift = util.by_pixel(4.75, -34.5),
+          shift = util.by_pixel(5, -36),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
+      stump = {
         width = 66,
-        height = 59,
-        shift = util.by_pixel(-4, 0.5),
-        hr_version =
-        {
-          width = 133,
-          height = 119,
-          shift = util.by_pixel(-4.25, 0.25),
+        height = 58,
+        shift = util.by_pixel(-6, 0),
+        hr_version = {
+          width = 128,
+          height = 114,
+          shift = util.by_pixel(-5, 0),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 159,
-        height = 74,
-        shift = util.by_pixel(56.5, -7),
-        hr_version =
-        {
-          width = 318,
-          height = 147,
-          shift = util.by_pixel(56.5, -6.75),
+      shadow = {
+        width = 160,
+        height = 76,
+        shift = util.by_pixel(56, -8),
+        hr_version = {
+          width = 320,
+          height = 146,
+          shift = util.by_pixel(56, -7),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 71,
-        height = 95,
-        shift = util.by_pixel(13.5, -45.5),
-        hr_version =
-        {
-          width = 143,
-          height = 191,
-          shift = util.by_pixel(13.25, -45.75),
+      leaves = {
+        width = 74,
+        height = 96,
+        shift = util.by_pixel(12, -46),
+        hr_version = {
+          width = 144,
+          height = 190,
+          shift = util.by_pixel(13, -46),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- i
-      trunk =
-      {
-        width = 76,
+      trunk = {
+        width = 74,
         height = 118,
-        shift = util.by_pixel(-13, -20),
-        hr_version =
-        {
-          width = 151,
-          height = 239,
-          shift = util.by_pixel(-12.75, -19.75),
+        shift = util.by_pixel(-14, -20),
+        hr_version = {
+          width = 152,
+          height = 238,
+          shift = util.by_pixel(-14, -21),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 72,
-        height = 65,
-        shift = util.by_pixel(-11, 6.5),
-        hr_version =
-        {
-          width = 145,
-          height = 132,
-          shift = util.by_pixel(-11.25, 7),
+      stump = {
+        width = 70,
+        height = 66,
+        shift = util.by_pixel(-12, 6),
+        hr_version = {
+          width = 144,
+          height = 126,
+          shift = util.by_pixel(-12, 7),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 113,
-        height = 74,
-        shift = util.by_pixel(19.5, 13),
-        hr_version =
-        {
-          width = 226,
+      shadow = {
+        width = 116,
+        height = 76,
+        shift = util.by_pixel(18, 12),
+        hr_version = {
+          width = 228,
           height = 148,
-          shift = util.by_pixel(19.5, 13),
+          shift = util.by_pixel(19, 13),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 65,
-        height = 93,
-        shift = util.by_pixel(-18.5, -36.5),
-        hr_version =
-        {
-          width = 129,
-          height = 187,
-          shift = util.by_pixel(-18.25, -36.75),
+      leaves = {
+        width = 64,
+        height = 92,
+        shift = util.by_pixel(-18, -36),
+        hr_version = {
+          width = 132,
+          height = 186,
+          shift = util.by_pixel(-19, -37),
           scale = 0.5
-        }
-      }
+        },
+      },
     },
     { -- j
-      trunk =
-      {
-        width = 71,
-        height = 118,
-        shift = util.by_pixel(-10.5, -21),
-        hr_version =
-        {
+      trunk = {
+        width = 72,
+        height = 116,
+        shift = util.by_pixel(-12, -22),
+        hr_version = {
           width = 142,
-          height = 237,
-          shift = util.by_pixel(-10.5, -20.75),
+          height = 232,
+          shift = util.by_pixel(-12, -22),
           scale = 0.5
-        }
+        },
       },
-      stump =
-      {
-        width = 69,
-        height = 61,
-        shift = util.by_pixel(-9.5, 7.5),
-        hr_version =
-        {
-          width = 138,
-          height = 124,
-          shift = util.by_pixel(-9.5, 7.5),
+      stump = {
+        width = 68,
+        height = 60,
+        shift = util.by_pixel(-10, 6),
+        hr_version = {
+          width = 134,
+          height = 116,
+          shift = util.by_pixel(-10, 7),
           scale = 0.5
-        }
+        },
       },
-      shadow =
-      {
-        width = 127,
-        height = 73,
-        shift = util.by_pixel(26.5, 9.5),
-        hr_version =
-        {
-          width = 254,
-          height = 146,
-          shift = util.by_pixel(26.5, 10),
+      shadow = {
+        width = 128,
+        height = 76,
+        shift = util.by_pixel(26, 8),
+        hr_version = {
+          width = 256,
+          height = 148,
+          shift = util.by_pixel(26, 9),
           scale = 0.5
-        }
+        },
       },
-      leaves =
-      {
-        width = 67,
+      leaves = {
+        width = 66,
         height = 92,
-        shift = util.by_pixel(-14.5, -38),
-        hr_version =
-        {
-          width = 133,
+        shift = util.by_pixel(-14, -38),
+        hr_version = {
+          width = 134,
           height = 182,
-          shift = util.by_pixel(-14.25, -38),
+          shift = util.by_pixel(-15, -38),
           scale = 0.5
-        }
-      }
-    }
+        },
+      },
+    },
   },
   { -- tree-07
     { -- a
@@ -5445,23 +5462,30 @@ define_trees{
     type = 3,
     enabled = true,
     drawing_box = {{-0.9, -3.7}, {0.9, 0.6}},
-    autoplace = tree_autoplace(25, 5, 0.8, 0.1),
+    -- autoplace = tree_autoplace(25, 5, 0.8, 0.2, 0.1, 1.1),
+    autoplace = tree_autoplace2
+    {
+      temperature_optimal = 25,
+      temperature_range = 7,
+      water_optimal = 0.8,
+      water_range = 0.2,
+      static_influence = 0.1,
+      tree_noise_influence = 1.1,
+      richness_base = 0,
+      richness_multiplier = 2,
+    },
     colors =
     {
       --green
-      {r = 151, g = 159, b = 71},
-      {r = 151, g = 136, b = 71},
-      {r = 136, g = 146, b = 78},
-      {r = 122, g = 133, b = 78},
-      {r = 122, g = 150, b = 81},
-      {r = 145, g = 151, b = 89},
-      -- brown/yel/red
-      --{r = 197, g = 144, b = 136},
-      --{r = 235, g = 157, b = 141},
-      --{r = 212, g = 171, b = 89},
-      --{r = 176, g = 124, b = 86},
-      --{r = 209, g = 120, b = 102},
-      --{r = 209, g = 134, b = 88}
+      {r = 187, g = 199, b = 102},
+      {r = 217, g = 193, b =  88},
+      {r = 174, g = 195, b =  51},
+      {r = 199, g = 219, b = 117},
+      {r = 169, g = 213, b = 105},
+      {r = 213, g = 198, b =  87},
+      {r = 201, g = 151, b =  77},
+      {r = 219, g = 173, b =  91},
+      {r = 213, g = 193, b =  95},
     }
   },
   {

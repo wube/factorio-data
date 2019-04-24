@@ -1,6 +1,50 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.33
+Version: 0.17.34
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.33
+Date: 24. 04. 2019
+  Changes:
+    - Added out of fuel alert icon to flamethrower turrets.
+    - UI scale won't be synchronised over Steam Cloud anymore. (https://forums.factorio.com/67085)
+    - Syncing startup settings with a server will automatically join the server on game restart. (https://forums.factorio.com/69064)
+  Bugfixes:
+    - Fixed yet another consistency bug related to ghost connections. (https://forums.factorio.com/69694)
+    - Fixed crash related to changing force of entity marked for deconstruction/upgrade/in undo queue. (https://forums.factorio.com/69493)
+    - Fixed a crash resulting from overlapping underground pipes. (https://forums.factorio.com/69548)
+    - Fixed power grid overlay not showing correctly on map when changing surfaces. (https://forums.factorio.com/69104)
+    - Fixed another instance of furnaces with fluid outputs not working correctly. (https://forums.factorio.com/69674)
+    - Fixed multiplayer paused notification not being cleared when the client is dropped.  (https://forums.factorio.com/67326)
+    - Fixed accumulators showing discharge animation and empty icon at the same time. (https://forums.factorio.com/67929)
+    - Fixed that the game would desync when changing forces of beams, fluid streams, projectiles, stickers, and fire flames.
+    - Fixed player inventory income flying text would sometimes show incorrect total item count. (https://forums.factorio.com/66542)
+    - Fixed switched technology levels in the console message when changing research. (https://forums.factorio.com/69681)
+    - Fixed that the keyboard shortcuts for new blueprint/upgrade planner/deconstruction planner wouldn't work when the cut or copy tool was selected. (https://forums.factorio.com/68904)
+    - Changed render layer of belts marked for deconstruction so they don't clip with other belts. (https://forums.factorio.com/65931)
+    - Fixed attempt to rotate ore patches that are out of reach would create "Can't Reach" floating message. (https://forums.factorio.com/66647)
+    - Fixed that generators would produce infinite pollution in some cases. (https://forums.factorio.com/69450) (https://forums.factorio.com/69879)
+    - Fixed that generator tooltips did not show pollution. (https://forums.factorio.com/69494)
+    - Fixed that LuaGameScript::tick_paused read was not of type boolean. (https://forums.factorio.com/69892)
+    - Fixed that the map editor convert-save-to-scenario didn't work correctly in some cases. (https://forums.factorio.com/68913)
+    - Fixed that the map editor intensity slider number fields wouldn't accept numbers outside the slider range. (https://forums.factorio.com/69165)
+    - Fixed that the deconstruction planner "tiles only" mode would ignore tile ghosts. (https://forums.factorio.com/68360)
+    - Fixed that exporting blueprint strings wouldn't include pending icon changes. (https://forums.factorio.com/67180)
+    - Fixed that cloning rocket silos with rockets waiting to launch wouldn't auto-launch correctly. (https://forums.factorio.com/69781)
+    - Fixed that cloning single entities with wire connections to themselves didn't work correctly. (https://forums.factorio.com/69770)
+    - Fixed a desync related to rail item names. (https://forums.factorio.com/69807)
+    - Map generator GUI now remembers the last preset used.
+    - Fixed an older bug with pull-placement of power poles. (https://forums.factorio.com/69659)
+    - Fixed copying files to temp folder would preserve read only permissions, which could cause errors. (https://forums.factorio.com/61763)
+    - Fixed rich text issue with sometimes removing font/color tags when it shouldn't. (https://forums.factorio.com/69848)
+  Modding:
+    - Fixed that trivial smoke wouldn't work correctly if it moved > 8 chunks from its origin. (https://forums.factorio.com/69383)
+    - Renamed gate prototype collision_mask to opened_collision_mask so that it can be different from the entity collision mask.
+  Scripting:
+    - Changed creation of tile ghosts to use "ghost_name" to match the rest of the API.
+    - Added LuaSurface::entity_prototype_collides() and LuaSurface::decorative_prototype_collides().
+    - Added LuaRecipePrototype::allow_decomposition read.
+    - Added LuaSpriteButton::number allows nil value, which signals/specifies no number to be drawn, which now allows showing of 0.
+    - Added LuaTrain::signal read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.32
 Date: 18. 04. 2019
