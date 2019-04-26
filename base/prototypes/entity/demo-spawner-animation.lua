@@ -124,7 +124,7 @@ return
         line_length = 8,
         tint = tint,
         y = variation * 118,
-        he_version =
+        hr_version =
         {
           filename = "__base__/graphics/entity/spawner/hr-spawner-die-mask.png",
           flags = { "mask" },

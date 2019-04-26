@@ -1,6 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.34
+Version: 0.17.35
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.34
+Date: 26. 04. 2019
+  Changes:
+    - Improved fluid simulation threading. Decreases CPU usage. Threading available on all operating systems. Simulation performance should remain unchanged.
+  Bugfixes:
+    - Fixed a crash when importing blueprint strings with power switch wires.
+    - Fixed fluid mixing for fixed recipe assemblers. (https://forums.factorio.com/69676)
+    - Fixed "Not enough rails" message after successful track placement. (https://forums.factorio.com/69930)
+    - Fixed a crash when destroying entities during the on_pre_ghost_deconstructed event. (https://forums.factorio.com/69965)
+    - Fixed that trains with "logistics while moving" disabled would not deploy robots when switched into automatic mode while waiting at a station (https://forums.factorio.com/69914)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.33
 Date: 24. 04. 2019
