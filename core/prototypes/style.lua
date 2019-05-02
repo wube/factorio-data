@@ -506,7 +506,7 @@ data:extend(
       horizontally_squashable = "on"
     },
 
-    label_in_table = -- pushed up a little for centering
+    map_gen_row_label = -- pushed up a little for centering
     {
       type = "label_style",
       top_padding = -2,
@@ -1051,8 +1051,8 @@ data:extend(
       {
         border_width = 8,
         left_end = {position = {248, 40}, size = {8, 8}},
-        horizontal_line = {position = {8, 40}, size = {1, 8}},
-        right_end = {position = {256, 40}, size = {8, 8}}
+        horizontal_line = {position = {256, 40}, size = {1, 8}},
+        right_end = {position = {257, 40}, size = {8, 8}}
       }
     },
 
@@ -3197,7 +3197,8 @@ data:extend(
       type = "list_box_style",
       minimal_height = 130,
       maximal_height = 400,
-      minimal_width = 300
+      minimal_width = 300,
+      maximal_width = 1000,
     },
 
     button_with_shadow =
@@ -4232,17 +4233,26 @@ data:extend(
       height = 500
     },
 
+    frame_title =
+    {
+      type = "label_style",
+      parent = "label",
+      font = "heading-1",
+      font_color = heading_font_color,
+      top_padding = 0,
+      left_padding = 0,
+      bottom_padding = 0,
+      right_padding = 0,
+    },
+
     frame =
     {
       type = "frame_style",
-      font = "heading-1",
-      font_color = heading_font_color,
-      -- padding of the title area of the frame, when the frame title
-      -- is empty, the area doesn't exist and these values are not used
-      title_top_padding = -2,
-      title_left_padding = 0,
-      title_bottom_padding = 6,
-      title_right_padding = 0,
+      title_style =
+      {
+        type = "label_style",
+        parent = "frame_title",
+      },
       -- padding of the content area of the frame
       top_padding  = 4,
       right_padding = 8,
@@ -4256,7 +4266,7 @@ data:extend(
       flow_style = { type = "flow_style" },
       horizontal_flow_style = { type = "horizontal_flow_style" },
       vertical_flow_style = { type = "vertical_flow_style"  },
-      header_flow_style = { type = "horizontal_flow_style", vertical_align = "center", maximal_height = 24},
+      header_flow_style = { type = "horizontal_flow_style", vertical_align = "center", bottom_padding = 4},
       header_filler_style =
       {
         type = "empty_widget_style",
@@ -4283,8 +4293,13 @@ data:extend(
     void_inventory_frame =
     {
       type = "frame_style",
-      title_top_padding = 0,
-      title_bottom_padding = 0,
+      title_style =
+      {
+        type = "label_style",
+        parent = "frame_title",
+        top_padding = 0,
+        bottom_padding = 0
+      },
       top_padding = 0,
       bottom_padding = 0,
       height = 0,
@@ -4541,6 +4556,28 @@ data:extend(
         -- this is to avoid shows of frames that are touching to interact
       }
     },
+    train_stop_frame =
+    {
+      type = "frame_style",
+      parent = "inner_frame_in_outer_frame",
+      title_style =
+      {
+        type = "label_style",
+        parent = "frame_title",
+        maximal_width = 800,
+      }
+    },
+    rename_train_stop_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      title_style =
+      {
+        type = "label_style",
+        parent = "frame_title",
+        maximal_width = 800,
+      }
+    },
     -- Dark deep frame for window content
     inside_deep_frame =
     {
@@ -4678,7 +4715,12 @@ data:extend(
     {
       type = "frame_style",
       padding = 0,
-      title_bottom_padding = 5,
+      title_style =
+      {
+        type = "label_style",
+        parent = "frame_title",
+        bottom_padding = 5
+      },
       graphical_set = {}
     },
     tooltip_frame =
@@ -6085,6 +6127,15 @@ data:extend(
       graphical_set = outer_frame_light(),
       background_graphical_set = {},
       extra_padding_when_activated = 4
+    },
+
+    only_inner_shadow_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      graphical_set =
+      {
+        shadow = default_inner_shadow
+      }
     },
 
     -- The graphical set is compatibilie with the ligher panel color

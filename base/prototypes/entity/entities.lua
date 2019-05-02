@@ -5,7 +5,7 @@ require ("prototypes.entity.demo-transport-belt-pictures")
 require ("prototypes.entity.transport-belt-pictures")
 require ("circuit-connector-sprites")
 require ("prototypes.entity.assemblerpipes")
-require ("prototypes.entity.demo-player-animations")
+require ("prototypes.entity.demo-character-animations")
 require ("prototypes.entity.laser-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
 require ("prototypes.entity.combinator-pictures")
@@ -361,8 +361,8 @@ function make_heat_pipe_pictures(path, name_prefix, data)
   return all_pictures
 end
 
--- add heavy armor to the player animations
-for _, animation in ipairs(data.raw["player"]["player"]["animations"]) do
+-- add heavy armor to the character animations
+for _, animation in ipairs(data.raw["character"]["character"]["animations"]) do
   if animation.armors then
     for _, armor in ipairs(animation.armors) do
       if armor == "light-armor" then

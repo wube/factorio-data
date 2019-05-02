@@ -3,7 +3,7 @@ local production_score = require("production-score")
 local default_prices = function()
   return
   {
-    ["player"] = 2500,
+    ["character"] = 2500,
 
     ["small-biter"] = 250,
     ["medium-biter"] = 1250,

@@ -154,6 +154,7 @@ data:extend(
       decorative_editor_selection_preview_radius = 10
     },
 
-    recipe_step_limit = 50000 -- number of steps before calculating total-raw/times-can-be-crafted is aborted for a given recipe
+    recipe_step_limit = 50000, -- number of steps before calculating total-raw/times-can-be-crafted is aborted for a given recipe
+    manual_rail_building_reach_modifier = 3
   }
 })

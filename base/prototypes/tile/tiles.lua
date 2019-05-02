@@ -1587,8 +1587,8 @@ define_tiles
     type = "tile",
     collision_mask =
     {
-      -- Player collides only with player-layer and train-layer,
-      -- this can have any tile collision masks it doesn't matter for being walkable by player but not buildable.
+      -- Character collides only with player-layer and train-layer,
+      -- this can have any tile collision masks it doesn't matter for being walkable by character but not buildable.
       -- Having water-tile prevents placing paths, ground-tile prevents placing landfill.
       -- Not sure what other side effects could different combinations of tile masks cause.
       "water-tile",

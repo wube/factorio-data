@@ -108,7 +108,7 @@ function toggle_frame(player)
     caption = {"gui-silo-script.frame-caption"},
     style = mod_gui.frame_style
   }
-  frame.style.title_bottom_padding = 0
+  --frame.style.title_bottom_padding = 0
   frame.style.horizontally_stretchable = false
   frame.style.vertically_stretchable = false
   gui_update(player)
@@ -219,7 +219,7 @@ silo_script.on_rocket_launched = function(event)
   if force.rockets_launched > 1 then
     --They finished before, lets just check if we should turn on the research queue for them...
     script_data.finished[force.name] = true
-    if rocket.surface.map_gen_settings.research_queue_from_the_start == "after-victory" then
+    if game.difficulty_settings.research_queue_setting == "after-victory" then
       force.research_queue_enabled = true
     end
     return

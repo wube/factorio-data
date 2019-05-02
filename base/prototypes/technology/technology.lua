@@ -1400,10 +1400,9 @@ data:extend(
   },
   {
     type = "technology",
-    name = "power-armor-2",
+    name = "power-armor-mk2",
     icon_size = 128,
     icon = "__base__/graphics/technology/power-armor-mk2.png",
-    localised_description = {"technology-description.power-armor-2"},
     effects =
     {
       {
@@ -3195,9 +3194,9 @@ data:extend(
   },
   {
     type = "technology",
-    name = "personal-roboport-equipment-2",
+    name = "personal-roboport-mk2-equipment",
     icon_size = 128,
-    icon = "__base__/graphics/technology/personal-roboport-equipment.png",
+    icon = "__base__/graphics/technology/personal-roboport-mk2-equipment.png",
     effects =
     {
       {

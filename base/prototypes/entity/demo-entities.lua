@@ -3,7 +3,7 @@ require ("prototypes.entity.demo-assemblerpipes")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
 require ("circuit-connector-sprites")
-require ("prototypes.entity.demo-player-animations")
+require ("prototypes.entity.demo-character-animations")
 
 local function scale_bounding_box(bb, scale)
   local orientation = bb[3] or 0
@@ -652,7 +652,7 @@ data:extend(
   {
     type = "character-corpse",
     name = "character-corpse",
-    icon = "__base__/graphics/icons/player.png",
+    icon = "__base__/graphics/icons/character.png",
     icon_size = 32,
     minable = {mining_time = 2},
     time_to_live = 15 * 60 * 60, -- 15 minutes
@@ -663,29 +663,29 @@ data:extend(
       {
         layers =
         {
-          playeranimations.level1.dead,
-          playeranimations.level1.dead_mask,
-          playeranimations.level1.dead_shadow
+          character_animations.level1.dead,
+          character_animations.level1.dead_mask,
+          character_animations.level1.dead_shadow
         }
       },
       {
         layers =
         {
-          playeranimations.level1.dead,
-          playeranimations.level1.dead_mask,
-          playeranimations.level2addon.dead,
-          playeranimations.level2addon.dead_mask,
-          playeranimations.level1.dead_shadow
+          character_animations.level1.dead,
+          character_animations.level1.dead_mask,
+          character_animations.level2addon.dead,
+          character_animations.level2addon.dead_mask,
+          character_animations.level1.dead_shadow
         }
       },
       {
         layers =
         {
-          playeranimations.level1.dead,
-          playeranimations.level1.dead_mask,
-          playeranimations.level3addon.dead,
-          playeranimations.level3addon.dead_mask,
-          playeranimations.level1.dead_shadow
+          character_animations.level1.dead,
+          character_animations.level1.dead_mask,
+          character_animations.level3addon.dead,
+          character_animations.level3addon.dead_mask,
+          character_animations.level1.dead_shadow
         }
       }
     },
@@ -701,9 +701,9 @@ data:extend(
     }
   },
   {
-    type = "player",
-    name = "player",
-    icon = "__base__/graphics/icons/player.png",
+    type = "character",
+    name = "character",
+    icon = "__base__/graphics/icons/character.png",
     icon_size = 32,
     flags = {"placeable-off-grid", "breaths-air", "not-repairable", "not-on-map", "not-flammable"},
     max_health = 250,
@@ -767,45 +767,45 @@ data:extend(
         {
           layers =
           {
-            playeranimations.level1.idle,
-            playeranimations.level1.idle_mask,
-            playeranimations.level1.idle_shadow
+            character_animations.level1.idle,
+            character_animations.level1.idle_mask,
+            character_animations.level1.idle_shadow
           }
         },
         idle_with_gun =
         {
           layers =
           {
-            playeranimations.level1.idle_gun,
-            playeranimations.level1.idle_gun_mask,
-            playeranimations.level1.idle_gun_shadow
+            character_animations.level1.idle_gun,
+            character_animations.level1.idle_gun_mask,
+            character_animations.level1.idle_gun_shadow
           }
         },
         mining_with_tool =
         {
           layers =
           {
-            playeranimations.level1.mining_tool,
-            playeranimations.level1.mining_tool_mask,
-            playeranimations.level1.mining_tool_shadow
+            character_animations.level1.mining_tool,
+            character_animations.level1.mining_tool_mask,
+            character_animations.level1.mining_tool_shadow
           }
         },
         running_with_gun =
         {
           layers =
           {
-            playeranimations.level1.running_gun,
-            playeranimations.level1.running_gun_mask,
-            playeranimations.level1.running_gun_shadow
+            character_animations.level1.running_gun,
+            character_animations.level1.running_gun_mask,
+            character_animations.level1.running_gun_shadow
           }
         },
         running =
         {
           layers =
           {
-            playeranimations.level1.running,
-            playeranimations.level1.running_mask,
-            playeranimations.level1.running_shadow
+            character_animations.level1.running,
+            character_animations.level1.running_mask,
+            character_animations.level1.running_shadow
           }
         }
       },
@@ -816,55 +816,55 @@ data:extend(
         {
           layers =
           {
-            playeranimations.level1.idle,
-            playeranimations.level1.idle_mask,
-            playeranimations.level2addon.idle,
-            playeranimations.level2addon.idle_mask,
-            playeranimations.level1.idle_shadow
+            character_animations.level1.idle,
+            character_animations.level1.idle_mask,
+            character_animations.level2addon.idle,
+            character_animations.level2addon.idle_mask,
+            character_animations.level1.idle_shadow
           }
         },
         idle_with_gun =
         {
           layers =
           {
-            playeranimations.level1.idle_gun,
-            playeranimations.level1.idle_gun_mask,
-            playeranimations.level2addon.idle_gun,
-            playeranimations.level2addon.idle_gun_mask,
-            playeranimations.level1.idle_gun_shadow
+            character_animations.level1.idle_gun,
+            character_animations.level1.idle_gun_mask,
+            character_animations.level2addon.idle_gun,
+            character_animations.level2addon.idle_gun_mask,
+            character_animations.level1.idle_gun_shadow
           }
         },
         mining_with_tool =
         {
           layers =
           {
-            playeranimations.level1.mining_tool,
-            playeranimations.level1.mining_tool_mask,
-            playeranimations.level2addon.mining_tool,
-            playeranimations.level2addon.mining_tool_mask,
-            playeranimations.level1.mining_tool_shadow
+            character_animations.level1.mining_tool,
+            character_animations.level1.mining_tool_mask,
+            character_animations.level2addon.mining_tool,
+            character_animations.level2addon.mining_tool_mask,
+            character_animations.level1.mining_tool_shadow
           }
         },
         running_with_gun =
         {
           layers =
           {
-            playeranimations.level1.running_gun,
-            playeranimations.level1.running_gun_mask,
-            playeranimations.level2addon.running_gun,
-            playeranimations.level2addon.running_gun_mask,
-            playeranimations.level1.running_gun_shadow
+            character_animations.level1.running_gun,
+            character_animations.level1.running_gun_mask,
+            character_animations.level2addon.running_gun,
+            character_animations.level2addon.running_gun_mask,
+            character_animations.level1.running_gun_shadow
           }
         },
         running =
         {
           layers =
           {
-            playeranimations.level1.running,
-            playeranimations.level1.running_mask,
-            playeranimations.level2addon.running,
-            playeranimations.level2addon.running_mask,
-            playeranimations.level1.running_shadow
+            character_animations.level1.running,
+            character_animations.level1.running_mask,
+            character_animations.level2addon.running,
+            character_animations.level2addon.running_mask,
+            character_animations.level1.running_shadow
           }
         }
       },
@@ -875,55 +875,55 @@ data:extend(
         {
           layers =
           {
-            playeranimations.level1.idle,
-            playeranimations.level1.idle_mask,
-            playeranimations.level3addon.idle,
-            playeranimations.level3addon.idle_mask,
-            playeranimations.level1.idle_shadow
+            character_animations.level1.idle,
+            character_animations.level1.idle_mask,
+            character_animations.level3addon.idle,
+            character_animations.level3addon.idle_mask,
+            character_animations.level1.idle_shadow
           }
         },
         idle_with_gun =
         {
           layers =
           {
-            playeranimations.level1.idle_gun,
-            playeranimations.level1.idle_gun_mask,
-            playeranimations.level3addon.idle_gun,
-            playeranimations.level3addon.idle_gun_mask,
-            playeranimations.level1.idle_gun_shadow
+            character_animations.level1.idle_gun,
+            character_animations.level1.idle_gun_mask,
+            character_animations.level3addon.idle_gun,
+            character_animations.level3addon.idle_gun_mask,
+            character_animations.level1.idle_gun_shadow
           }
         },
         mining_with_tool =
         {
           layers =
           {
-            playeranimations.level1.mining_tool,
-            playeranimations.level1.mining_tool_mask,
-            playeranimations.level3addon.mining_tool,
-            playeranimations.level3addon.mining_tool_mask,
-            playeranimations.level1.mining_tool_shadow
+            character_animations.level1.mining_tool,
+            character_animations.level1.mining_tool_mask,
+            character_animations.level3addon.mining_tool,
+            character_animations.level3addon.mining_tool_mask,
+            character_animations.level1.mining_tool_shadow
           }
         },
         running_with_gun =
         {
           layers =
           {
-            playeranimations.level1.running_gun,
-            playeranimations.level1.running_gun_mask,
-            playeranimations.level3addon.running_gun,
-            playeranimations.level3addon.running_gun_mask,
-            playeranimations.level1.running_gun_shadow
+            character_animations.level1.running_gun,
+            character_animations.level1.running_gun_mask,
+            character_animations.level3addon.running_gun,
+            character_animations.level3addon.running_gun_mask,
+            character_animations.level1.running_gun_shadow
           }
         },
         running =
         {
           layers =
           {
-            playeranimations.level1.running,
-            playeranimations.level1.running_mask,
-            playeranimations.level3addon.running,
-            playeranimations.level3addon.running_mask,
-            playeranimations.level1.running_shadow
+            character_animations.level1.running,
+            character_animations.level1.running_mask,
+            character_animations.level3addon.running,
+            character_animations.level3addon.running_mask,
+            character_animations.level1.running_shadow
           }
         }
       }
@@ -3501,23 +3501,6 @@ data:extend(
           max_underground_distance = 10
         }
       }
-    },
-    underground_sprite =
-    {
-      filename = "__core__/graphics/arrows/underground-lines.png",
-      priority = "extra-high-no-scale",
-      width = 64,
-      height = 64,
-      scale = 0.5
-    },
-    underground_remove_pipes_sprite =
-    {
-      filename = "__core__/graphics/arrows/underground-lines-remove.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      scale = 0.5
     },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     pictures =

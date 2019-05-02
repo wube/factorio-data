@@ -1,6 +1,65 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.35
+Version: 0.17.36
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.35
+Date: 02. 05. 2019
+  Changes:
+    - Increased the maximal length of station name to 1024, mainly to allow wider usage of multiple tags in the name. (https://forums.factorio.com/68219)
+  Bugfixes:
+    - Fixed that making blueprints of locomotive ghosts wouldn't include the schedules. (https://forums.factorio.com/69856)
+    - Fixed that worms and spitters didn't show attack parameters in description.
+    - Fixed that the game would crash if it was closed when Sound Settings was opened. (https://forums.factorio.com/69977)
+    - Limited the manual rail building distance to 3 times the normal building distance.
+    - Fixed dangling tooltip bug related to widget reorganization in map generator GUI and possibly other places. (https://forums.factorio.com/69471)
+    - Fixed that the train time condition label wasn't properly set to squashable resulting in wrong layouting in certain languages. (https://forums.factorio.com/69583)
+    - Fixed truncation of labels containing rich text. (https://forums.factorio.com/69917)
+    - Fixed PvP and Wave defense starting base entities wouldn't spawn if a mod added a tile with a certain collision mask and a name which sorted alphabetically above dirt.
+    - Fixed PvP production score error when a mod or script adds another force during a round.
+    - Fixed PvP error when using DEFCON mode.
+    - Fixed that the shortcut bar selection list wasn't scrollable until the window was resized. (https://forums.factorio.com/68804)
+    - Making disabling of features in map generator more clear by adding checkboxes for it. (https://forums.factorio.com/65841)
+    - The wagon door opening animation (that is only available for horizontal/vertical direction) is now chosen based on the drawing sprite of the wagon selected instead of the orientation of the wagon.
+      This means, that orientations really close to horizontal/vertical still use the animation. (https://forums.factorio.com/68768)
+    - Fixed that changing map size didn't mark the map preset as modified. (https://forums.factorio.com/67261)
+    - Fixed label text not updating correctly when cleared and had non-zero minimal width and height. (https://forums.factorio.com/69763)
+    - Improved handling of whitespace characters in technology count formula parsing.
+    - Checking that only the l (or L) variable used in the technology formula on startup, to avoid errors later on. (https://forums.factorio.com/69870)
+    - Fixed NPE error at startup that could occur when using mods. (https://forums.factorio.com/69439)
+    - Fixed GUI window of an entity not updating when pasting settings to that entity. (https://forums.factorio.com/69102)
+    - Fixed error in consistency check of ghost connections related to multiple connections to entities only in the undo queue. (https://forums.factorio.com/70126)
+    - Fixed train condition fulfilling indication for artillery wagon. (https://forums.factorio.com/69677)
+    - IDXGIOutput::FindClosestMatchingMode returning an error is not treated as critical failure anymore. (https://forums.factorio.com/70152)
+    - Fixed that the Mods GUI go-to-dependency buttons wouldn't work in some scenarios. (https://forums.factorio.com/69545)
+    - Fixed that ghost building mode works the same as ghost building (with shift) when it comes to rail building. (https://forums.factorio.com/69761)
+    - Fixed that upgrading entities in would leave invalid module requests. (https://forums.factorio.com/70040)
+    - Fixed, that sorting changes were moving the scrolled position in the browse game gui. It is now consistent with the mods gui. (https://forums.factorio.com/70128)
+    - Fixed some achievements being given to players while the save game is loading, not respecting player online time. (https://forums.factorio.com/64214)
+    - Fixed LuaTransportLine::output_line read for right-hand output lines of a lonely splitter. (https://forums.factorio.com/70207)
+    - Fixes to make tabbed pane work properly when it comes to squashing in different situations. (https://forums.factorio.com/69488)
+    - Tweaked the algorithm that is putting trains on rails to work properly in junctions when constrained by the direction caused by blueprint/ghost train building. (https://forums.factorio.com/69457)
+  Modding:
+    - Renamed the character entity type and name from "player" to "character" to make it consistent with how we call/access it in all other places.
+    - Renamed the technology personal-roboport-equipment-2 to personal-roboport-mk2-equipment and gave it corresponding icon to be consistent with other technologies of this kind.
+    - Renamed the technology power-armor-2 to power-armor-mk2 to be consistent with other technologies of this kind.
+    - Added optional storage tank prototype property "scale_info_icons".
+    - Added "manual_rail_building_reach_modifier" to the utility-constants.
+    - MapGenPresets' advanced_settings.difficulty_settings.research_queue_setting now works. (https://forums.factorio.com/69546)
+  Scripting:
+    - Mod GUI root elements (top/left/center/goal) are now contained in scroll panes, so when there is not enough space, it will become scrollable instead of being cut off.
+      With enough space, it looks the same as before, the only change is, that the mod GUI contents can now not expect to be squashed by the screen, as it will just make a scroll bar instead.
+    - Added LuaCircuitNetwork::connected_circuit_count read.
+    - Added LuaEntity::time_to_live read/write for highlight box entities.
+    - Added LuaEntity::allow_dispatching_robots read/write.
+    - Added LuaEntity::toggle_equipment_movement_bonus().
+    - Added LuaEquipmentGrid::inhibit_movement_bonus read/write.
+    - Added optional 'radius' to LuaSurface 'find_xyz' functions.
+    - Added defines.inventory.editor_main, editor_guns, editor_ammo, editor_armor.
+    - AutoplaceSpecification::control is always included in property tree, even for non-peak-based autoplace specifications. (https://forums.factorio.com/69286)
+    - Fixed a save corruption problem when using LuaSurface::clone_area(). (https://forums.factorio.com/67207)
+    - Renamed defines.inventory.player_main, player_guns, player_ammo, player_armor, player_vehicle and player_trash to
+      defines.inventory.character_main, character_guns, character_ammo, character_armor, character_vehicle and character_trash.
+    - Removed LuaStyle::title_top_padding, title_right_padding, title_bottom_padding and title_left_padding.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.34
 Date: 26. 04. 2019

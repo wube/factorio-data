@@ -138,8 +138,7 @@ function util.oppositedirection(direction)
     [d.west] = d.east,
     [d.northwest] = d.southeast
   }
-  if opposites[direction] then return opposites[direction] end
-  error(direction .. " is not a valid direction")
+  return opposites[direction] or error(direction .. " is not a valid direction")
 end
 
 function util.ismoduleavailable(name)
@@ -193,7 +192,7 @@ function util.add_shift(a, b)
 end
 
 function util.add_shift_offset(offset_, table_)
-  return util.foreach_sprite_definition(table_, function(tab)  
+  return util.foreach_sprite_definition(table_, function(tab)
             tab.shift = util.add_shift(tab.shift, offset_)
         end)
 end
@@ -341,17 +340,30 @@ util.split = function(inputstr, sep)
 end
 
 util.online_players = function()
-  local result = {}
-  for _, player in pairs(game.players) do
-    if player.connected then
-      table.insert(result, player)
-    end
-  end
-  return result
+  log("But why?")
+  return game.connected_players
 end
 
 util.clamp = function(x, lower, upper)
   return math.max(lower, math.min(upper, x))
+end
+
+local walkable_mask = {"item-layer", "object-layer", "player-layer", "water-tile"}
+
+local is_walkable = function(mask)
+  for k, layer in pairs (walkable_mask) do
+    if mask[layer] then return false end
+  end
+  return true
+end
+
+util.get_walkable_tile = function()
+  for name, tile in pairs (game.tile_prototypes) do
+    if is_walkable(tile.collision_mask) and not tile.items_to_place_this then
+      return name
+    end
+  end
+  error("No walkable tile in prototype list")
 end
 
 return util

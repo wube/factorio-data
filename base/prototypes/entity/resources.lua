@@ -2,30 +2,6 @@ local noise = require("noise");
 local tne = noise.to_noise_expression;
 resource_autoplace = require("prototypes.entity.demo-resource-autoplace");
 
--- Pre-spot noise
-local oil_old_autoplace =
-{
-  order = "b",
-  control = "crude-oil",
-  -- probability_expression = oil_probability,
-  -- richness_expression = (oil_probability + 240000) * 300000,
-  -- richness_expression should be probability_expression + some amount probably
-  sharpness = 0.99,
-  max_probability = 0.02,
-  richness_base = 240000,
-  richness_multiplier = 300000,
-  richness_multiplier_distance_bonus = 1500,
-  coverage = 0.001 / 3,
-  peaks =
-  {
-    {
-      noise_layer = "crude-oil",
-      noise_octaves_difference = -0.5,
-      noise_persistence = 0.4
-    }
-  }
-};
-
 data:extend(
 {
   {
@@ -60,7 +36,6 @@ data:extend(
     },
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    -- autoplace = oil_old_autoplace,
     autoplace = resource_autoplace.resource_autoplace_settings{
       name = "crude-oil",
       order = "c", -- Other resources are "b"; oil won't get placed if something else is already there.
