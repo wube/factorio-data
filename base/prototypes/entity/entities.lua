@@ -383,7 +383,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "underground-belt"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "underground-belt-remnants",
     max_distance = 5,
     underground_sprite =
     {
@@ -553,7 +553,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "fast-underground-belt"},
     max_health = 160,
-    corpse = "small-remnants",
+    corpse = "fast-underground-belt-remnants",
     max_distance = 7,
     underground_sprite =
     {
@@ -717,7 +717,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "express-underground-belt"},
     max_health = 170,
-    corpse = "small-remnants",
+    corpse = "express-underground-belt-remnants",
     max_distance = 9,
     underground_sprite =
     {
@@ -1024,7 +1024,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "splitter"},
     max_health = 170,
-    corpse = "medium-remnants",
+    corpse = "splitter-remnants",
     resistances =
     {
       {
@@ -1137,7 +1137,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "fast-splitter"},
     max_health = 180,
-    corpse = "medium-remnants",
+    corpse = "fast-splitter-remnants",
     resistances =
     {
       {
@@ -1250,7 +1250,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "express-splitter"},
     max_health = 190,
-    corpse = "medium-remnants",
+    corpse = "express-splitter-remnants",
     resistances =
     {
       {
@@ -1362,7 +1362,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "fast-transport-belt"},
     max_health = 160,
-    corpse = "small-remnants",
+    corpse = "fast-transport-belt-remnants",
     resistances =
     {
       {
@@ -1419,7 +1419,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "express-transport-belt"},
     max_health = 170,
-    corpse = "small-remnants",
+    corpse = "express-transport-belt-remnants",
     resistances =
     {
       {
@@ -1474,8 +1474,8 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-2"},
     max_health = 350,
-    corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "medium-remnants",
     alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
     {
@@ -1601,8 +1601,8 @@ data:extend(
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-3"},
     max_health = 400,
-    corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "medium-remnants",
     alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
     {
@@ -1729,7 +1729,7 @@ data:extend(
     minable = {mining_time = 0.4, result = "car"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 450,
-    corpse = "medium-remnants",
+    corpse = "car-remnants",
     dying_explosion = "medium-explosion",
     alert_icon_shift = util.by_pixel(0, -13),
     energy_per_hit_point = 1,
@@ -2102,7 +2102,7 @@ data:extend(
     minable = {mining_time = 0.5, result = "tank"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
-    corpse = "medium-remnants",
+    corpse = "tank-remnants",
     dying_explosion = "medium-explosion",
     alert_icon_shift = util.by_pixel(-4, -13),
     immune_to_tree_impacts = true,
@@ -2665,7 +2665,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "long-handed-inserter"},
     max_health = 160,
-    corpse = "small-remnants",
+    corpse = "long-handed-inserter-remnants",
     resistances =
     {
       {
@@ -2840,7 +2840,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = { mining_time = 0.1, result = "fast-inserter" },
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "fast-inserter-remnants",
     resistances =
     {
       {
@@ -3017,7 +3017,7 @@ data:extend(
     stack = true,
     minable = { mining_time = 0.1, result = "stack-inserter" },
     max_health = 160,
-    corpse = "small-remnants",
+    corpse = "stack-inserter-remnants",
     resistances =
     {
       {
@@ -3194,7 +3194,7 @@ data:extend(
     filter_count = 1,
     minable = { mining_time = 0.1, result = "stack-filter-inserter" },
     max_health = 160,
-    corpse = "small-remnants",
+    corpse = "stack-filter-inserter-remnants",
     resistances =
     {
       {
@@ -3369,7 +3369,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "filter-inserter"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "filter-inserter-remnants",
     resistances =
     {
       {
@@ -3545,7 +3545,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "solar-panel"},
     max_health = 200,
-    corpse = "big-remnants",
+    corpse = "solar-panel-remnants",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     energy_source =
@@ -5898,7 +5898,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     minable = {mining_time = 0.2, result = "train-stop"},
     max_health = 250,
-    corpse = "medium-remnants",
+    corpse = "train-stop-remnants",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.9, -0.9}, {0.9, 0.9}},
     drawing_boxes =
@@ -6332,7 +6332,7 @@ data:extend(
     fast_replaceable_group = "rail-signal",
     minable = {mining_time = 0.1, result = "rail-signal"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "rail-signal-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
@@ -6394,7 +6394,7 @@ data:extend(
     fast_replaceable_group = "rail-signal",
     minable = {mining_time = 0.1, result = "rail-chain-signal"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "rail-chain-signal-remnants",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     animation =
@@ -7325,8 +7325,8 @@ data:extend(
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     minable = {mining_time = 1, result = "rocket-silo"},
     max_health = 5000,
-    corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "rocket-silo-generic-remnants",
     collision_box = {{-4.40, -4.40}, {4.40, 4.40}},
     selection_box = {{-4.5, -4.5}, {4.5, 4.5}},
     hole_clipping_box = { {-2.75, -1.15}, {2.75, 2.25} },
@@ -8265,7 +8265,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "roboport"},
     max_health = 500,
-    corpse = "big-remnants",
+    corpse = "roboport-remnants",
     collision_box = {{-1.7, -1.7}, {1.7, 1.7}},
     selection_box = {{-2, -2}, {2, 2}},
     resistances =
@@ -8618,7 +8618,7 @@ data:extend(
     minable = {mining_time = 0.2, result = "pump"},
     max_health = 180,
     fast_replaceable_group = "pipe",
-    corpse = "small-remnants",
+    corpse = "1x2-remnants",
     collision_box = {{-0.29, -0.79}, {0.29, 0.79}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     resistances =
@@ -8961,7 +8961,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "big-electric-pole"},
     max_health = 150,
-    corpse = "medium-remnants",
+    corpse = "big-electric-pole-remnants",
     resistances =
     {
       {
@@ -9094,7 +9094,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "medium-electric-pole"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "medium-electric-pole-remnants",
     track_coverage_during_build_by_moving = true,
     fast_replaceable_group = "electric-pole",
     resistances =
@@ -9229,7 +9229,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "substation"},
     max_health = 200,
-    corpse = "medium-remnants",
+    corpse = "substation-remnants",
     track_coverage_during_build_by_moving = true,
     resistances =
     {
@@ -9395,7 +9395,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "accumulator"},
     max_health = 150,
-    corpse = "medium-remnants",
+    corpse = "accumulator-remnants",
     collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
     selection_box = {{-1, -1}, {1, 1}},
     drawing_box = {{-1, -1.5}, {1, 1}},
@@ -9445,7 +9445,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "steel-furnace"},
     max_health = 300,
-    corpse = "medium-remnants",
+    corpse = "medium-small-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
@@ -9619,7 +9619,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "electric-furnace"},
     max_health = 350,
-    corpse = "big-remnants",
+    corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     resistances =
     {
@@ -9784,7 +9784,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "beacon"},
     max_health = 200,
-    corpse = "big-remnants",
+    corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -10594,8 +10594,8 @@ data:extend(
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 0.2, result = "oil-refinery"},
     max_health = 350,
-    corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "oil-refinery-remnants",
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     drawing_box = {{-2.5, -2.8}, {2.5, 2.5}},
@@ -10743,7 +10743,7 @@ data:extend(
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "chemical-plant"},
     max_health = 300,
-    corpse = "big-remnants",
+    corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -10969,7 +10969,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "arithmetic-combinator"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "1x2-remnants",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
 
@@ -11037,7 +11037,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "decider-combinator"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "1x2-remnants",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
 
@@ -11241,7 +11241,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "power-switch"},
     max_health = 200,
-    corpse = "medium-remnants",
+    corpse = "medium-small-remnants",
 
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1, -1}, {1, 1}},
@@ -11935,7 +11935,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.5, result = "nuclear-reactor"},
     max_health = 500,
-    corpse = "big-remnants",
+    corpse = "nuclear-reactor-remnants",
     consumption = "40MW",
     neighbour_bonus = 1,
     energy_source =
@@ -12216,7 +12216,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "centrifuge"},
     max_health = 350,
-    corpse = "big-remnants",
+    corpse = "centrifuge-remnants",
     dying_explosion = "medium-explosion",
     resistances =
     {
@@ -12492,7 +12492,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "heat-exchanger"},
     max_health = 200,
-    corpse = "medium-remnants",
+    corpse = "boiler-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     mode = "output-to-separate-pipe",
     resistances =
@@ -12761,7 +12761,7 @@ data:extend(
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 0.3, result = "steam-turbine"},
     max_health = 300,
-    corpse = "big-remnants",
+    corpse = "steam-turbine-remnants",
     dying_explosion = "medium-explosion",
     alert_icon_shift = util.by_pixel(0, -12),
     effectivity = 1,
@@ -12923,7 +12923,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "heat-pipe"},
     max_health = 200,
-    corpse = "small-remnants",
+    corpse = "heat-pipe-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     resistances =
     {

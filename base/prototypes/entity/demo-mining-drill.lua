@@ -15,7 +15,7 @@ data:extend(
     minable = {mining_time = 0.3, result = "electric-mining-drill"},
     max_health = 300,
     resource_categories = {"basic-solid"},
-    corpse = "big-remnants",
+    corpse = "medium-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     input_fluid_box = (not data.is_demo) and
@@ -885,7 +885,7 @@ data:extend(
     resource_categories = {"basic-solid"},
     minable = {mining_time = 0.3, result = "burner-mining-drill"},
     max_health = 150,
-    corpse = "medium-remnants",
+    corpse = "burner-mining-drill-remnants",
     collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{ -1, -1}, {1, 1}},
     mining_speed = 0.25,

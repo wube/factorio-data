@@ -448,7 +448,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "gun-turret"},
     max_health = 400,
-    corpse = "medium-remnants",
+    corpse = "gun-turret-remnants",
     collision_box = {{-0.7, -0.7 }, {0.7, 0.7}},
     selection_box = {{-1, -1 }, {1, 1}},
     rotation_speed = 0.015,

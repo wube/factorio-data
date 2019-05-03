@@ -996,7 +996,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "stone-furnace"},
     max_health = 200,
-    corpse = "medium-remnants",
+    corpse = "stone-furnace-remnants",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
@@ -1138,7 +1138,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "transport-belt"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "transport-belt-remnants",
     resistances =
     {
       {
@@ -1206,7 +1206,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "boiler"},
     max_health = 200,
-    corpse = "medium-remnants",
+    corpse = "boiler-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     mode = "output-to-separate-pipe",
     resistances =
@@ -1752,7 +1752,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "small-electric-pole"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "small-electric-pole-remnants",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
     drawing_box = {{-0.5, -2.6}, {0.5, 0.5}},
@@ -2421,8 +2421,8 @@ data:extend(
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 0.3, result = "steam-engine"},
     max_health = 400,
-    corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "steam-engine-remnants",
     alert_icon_shift = util.by_pixel(3, -34),
     effectivity = 1,
     fluid_usage_per_tick = 0.5,
@@ -2798,7 +2798,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "inserter"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "inserter-remnants",
     resistances =
     {
       {
@@ -2974,7 +2974,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "burner-inserter"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "burner-inserter-remnants",
     resistances =
     {
       {
@@ -3167,7 +3167,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "pipe"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "pipe-remnants",
     resistances =
     {
       {
@@ -3220,7 +3220,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "radar"},
     max_health = 250,
-    corpse = "big-remnants",
+    corpse = "radar-remnants",
     resistances =
     {
       {
@@ -3338,7 +3338,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "small-lamp"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "lamp-remnants",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -3473,7 +3473,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "pipe-to-ground"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "pipe-remnants",
     resistances =
     {
       {
@@ -3576,8 +3576,8 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-1"},
     max_health = 300,
-    corpse = "big-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "medium-remnants",
     resistances =
     {
       {
@@ -4463,81 +4463,6 @@ data:extend(
   },
 
   {
-    type = "corpse",
-    name = "wall-remnants",
-    icon = "__base__/graphics/icons/wall-remnants.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "not-on-map"},
-    subgroup="remnants",
-    order="d[remnants]-c[wall]",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    remove_on_entity_placement = false,
-    remove_on_tile_placement = false,
-    animation =
-    {
-      {
-        width = 36,
-        height = 36,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-01.png"
-      },
-      {
-        width = 38,
-        height = 35,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-02.png"
-      },
-      {
-        width = 35,
-        height = 36,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-03.png"
-      },
-      {
-        width = 41,
-        height = 36,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-04.png"
-      },
-      {
-        width = 35,
-        height = 35,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-05.png"
-      },
-      {
-        width = 50,
-        height = 37,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-06.png"
-      },
-      {
-        width = 54,
-        height = 40,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-07.png"
-      },
-      {
-        width = 43,
-        height = 45,
-        frame_count = 1,
-        direction_count = 1,
-        filename = "__base__/graphics/entity/wall/remains/wall-remain-08.png"
-      }
-    }
-  },
-  {
     type = "electric-pole",
     name = "wreck-pole",
     icon = "__base__/graphics/icons/small-electric-pole.png",
@@ -4743,7 +4668,7 @@ data:extend(
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "lab"},
     max_health = 150,
-    corpse = "big-remnants",
+    corpse = "lab-remnants",
     dying_explosion = "medium-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},

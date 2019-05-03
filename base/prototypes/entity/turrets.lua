@@ -227,8 +227,8 @@ data:extend(
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
-    corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
+    corpse = "artillery-turret-remnants",
     collision_box = {{-1.45, -1.45}, {1.45, 1.45}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     gun = "artillery-wagon-cannon",
@@ -927,12 +927,12 @@ data:extend(
     flags = { "placeable-player", "placeable-enemy", "player-creation"},
     minable = { mining_time = 0.5, result = "laser-turret" },
     max_health = 1000,
-    corpse = "medium-remnants",
     collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{ -1, -1}, {1, 1}},
     rotation_speed = 0.01,
     preparing_speed = 0.05,
     dying_explosion = "medium-explosion",
+    corpse = "laser-turret-remnants",
     folding_speed = 0.05,
     energy_source =
     {

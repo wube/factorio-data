@@ -1006,7 +1006,7 @@ data:extend({
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "flamethrower-turret"},
     max_health = 1400,
-    corpse = "medium-remnants",
+    corpse = "flamethrower-turret-remnants",
     collision_box = {{-0.7, -1.2 }, {0.7, 1.2}},
     selection_box = {{-1, -1.5 }, {1, 1.5}},
     rotation_speed = 0.015,

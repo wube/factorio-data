@@ -94,7 +94,13 @@ function acid_stream(data)
             },
             {
               type = "create-fire",
-              entity_name = data.splash_fire_name
+              entity_name = data.splash_fire_name,
+              check_buildability = true
+            },
+            {
+              type = "create-entity",
+              entity_name = "water-splash",
+              tile_collision_mask = { "ground-tile" }
             }
           }
         }
@@ -211,6 +217,7 @@ function acid_splash_fire(data)
     maximum_damage_multiplier = 3,
     damage_multiplier_increase_per_added_fuel = 1,
     damage_multiplier_decrease_per_tick = 0.005,
+    collision_mask = { "water-tile" },
 
     --spawn_entity = "fire-flame-on-tree",
     uses_alternative_behavior = true,

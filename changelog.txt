@@ -1,6 +1,24 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.36
+Version: 0.17.37
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.36
+Date: 03. 05. 2019
+  Graphics:
+    - Added new specific remnants for various entities. (Work in progress)
+  Bugfixes:
+    - Fixed that ghosts could be built in fog of war.
+    - Fixed a stack overflow when merging large electric networks (149'000+ electric poles). (https://forums.factorio.com/70244)
+    - Fixed some achievements not counting their requirements properly. (https://forums.factorio.com/70276)
+    - Changed worm and spitter acid attack so they do not create acid splashes on water. (https://forums.factorio.com/70069)
+    - Changed fonts for Asian languages (Chinese, Japanese, Korean).
+    - Fixed that power switch connections weren't restored by undo. (https://forums.factorio.com/70240)
+  Modding:
+    - Added "check_buildability" to "create-fire" trigger effect definition.
+    - Added "tile_collision_mask" to "create-entity" and "create-fire" trigger effect definitions as faster alternative to full buildability check.
+    - Added "trigger_created_entity" to "create-fire" and "create-sticker" trigger effect definitions.
+  Scripting:
+    - Added "item" to the on_built_entity event.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.35
 Date: 02. 05. 2019
