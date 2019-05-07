@@ -5,7 +5,7 @@ function story_init_helpers(story)
 end
 
 function make_helpers(story)
-  local helpers = {} 
+  local helpers = {}
   helpers.story_points_by_name = {}
   helpers.story_branches = {}
   for story_index, data in pairs(story) do
@@ -349,7 +349,7 @@ function export_entities(param)
   end
   local ignore = param.ignore or
   {
-    player = true,
+    character = true,
     particle = true,
     projectile = true,
     ["item-request-proxy"] = true,

@@ -1,6 +1,34 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.37
+Version: 0.17.38
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.37
+Date: 07. 05. 2019
+  Bugfixes:
+    - Fixed acid splashes were blocking placement of buildings. (https://forums.factorio.com/70317)
+    - Fixed that acid splashes would have a burning sound effect.
+    - Fixed typo in font name that would cause crash in Cyrillic locales on Linux. (https://forums.factorio.com/70337)
+    - Fixed that script changing train path as a reaction to train created event could break the rolling-stock connection process. (https://forums.factorio.com/69749)
+    - Fixed that scroll panes empty areas of the mod GUI was blocking the mouse interaction with the map. (https://forums.factorio.com/70383)
+    - Fixed that ghost rail building didn't avoid ghost buildings properly. (https://forums.factorio.com/70349)
+    - All unused control inputs are saved in the config file, to preserve mod key bindings even when the mod is disabled and enabled again. (https://forums.factorio.com/70332)
+    - Fixed that zooming in the train preview window didn't respect the zooming key binding settings. (https://forums.factorio.com/69338)
+    - Fixed that train with no path changed from NO_PATH to PATH_LOST and back to NO_PATH every few seconds. (https://forums.factorio.com/69722)
+    - Fixed that train waiting at the signal changed from WAIT_SIGNAL to ARRIVE_SIGNAL and back to WAIT_SIGNAL every few seconds. (https://forums.factorio.com/67576)
+    - Fixed a crash that would sometimes happen when two players were connecting to a server at the same time and one of them quit before the map finished saving. (https://forums.factorio.com/69783)
+    - Fixed a crash related to modded deconstruction item filters. (https://forums.factorio.com/70470)
+    - Fixed performance issues in mipmap generation routines causing the game to freeze or crash at 95% of sprite loading. (https://forums.factorio.com/67723)
+    - Fixed traditional Chinese font being used for simplified Chinese. (https://forums.factorio.com/70429)
+    - Fixed that pollution would not be shown in entity tooltip when using a void energy source. (https://forums.factorio.com/70498)
+    - Fixed PvP re-roll round button not generating a different map with only a single team.
+    - Fixed PvP state when playing Last silo standing with only a single team.
+    - Fixed PvP DEFCON mode interaction with research queue.
+    - Fixed screenshot rendering could crash when using LuaScriptRendering API to draw a sprite from file. (https://forums.factorio.com/70322)
+  Modding:
+    - Added CraftingMachinePrototype::entity_info_icon_shift.
+    - Added CraftingMachinePrototype::draw_entity_info_icon_background.
+  Scripting:
+    - Included "item" in on_built_entity event when ghost cursor building.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.36
 Date: 03. 05. 2019

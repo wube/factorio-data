@@ -95,7 +95,7 @@ function acid_stream(data)
             {
               type = "create-fire",
               entity_name = data.splash_fire_name,
-              check_buildability = true
+              tile_collision_mask = { "water-tile" }
             },
             {
               type = "create-entity",
@@ -217,7 +217,6 @@ function acid_splash_fire(data)
     maximum_damage_multiplier = 3,
     damage_multiplier_increase_per_added_fuel = 1,
     damage_multiplier_decrease_per_tick = 0.005,
-    collision_mask = { "water-tile" },
 
     --spawn_entity = "fire-flame-on-tree",
     uses_alternative_behavior = true,
@@ -250,12 +249,6 @@ function acid_splash_fire(data)
     delay_between_initial_flames = 10,
     initial_flame_count = 1,
     burnt_patch_lifetime = 0,
-
-    working_sound =
-    {
-      sound = { filename = "__base__/sound/furnace.ogg" },
-      max_sounds_per_type = 3
-    },
 
     on_damage_tick_effect =
     {

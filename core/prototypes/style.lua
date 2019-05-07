@@ -1862,7 +1862,70 @@ data:extend(
     disabled_technology_slot =
     {
       type = "technology_slot_style",
-      parent = "technology_slot"
+      parent = "technology_slot",
+      default_graphical_set =
+      {
+        base = {position = {296, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {312, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      selected_hovered_graphical_set =
+      {
+        base = {position = {312, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {312, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      selected_graphical_set =
+      {
+        base = {position = {312, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      selected_clicked_graphical_set =
+      {
+        base = {position = {312, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {296, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      highlighted_graphical_set =
+      {
+        base = {position = {330, 204}, corner_size = 8},
+        shadow = default_shadow
+      },
+      level_band = {position = {381, 204}, corner_size = 8},
+      level_range_band = {position = {397, 204}, corner_size = 8},
+      default_ingredients_background = {position = {347, 204}, corner_size = 8},
+      hovered_ingredients_background = {position = {364, 204}, corner_size = 8},
+      clicked_ingredients_background = {position = {364, 204}, corner_size = 8},
+      disabled_ingredients_background = {position = {364, 204}, corner_size = 8},
+      highlighted_ingredients_background = {position = {364, 204}, corner_size = 8},
+      level_font_color = {0, 84, 5},
+      level_range_font_color = {165, 255, 171},
+
+      clicked_overlay =
+      {
+        left_top = {position = {456, 136}, size = {16, 16}},
+        top = {position = {472, 136}, size = {1, 16}},
+        right_top = {position = {473, 136}, size = {16, 16}},
+        left = {position = {456, 152}, size = {16, 1}},
+        center = {position = {472, 152}, size = {1, 1}},
+        right = {position = {473, 152}, size = {16, 1}},
+
+        left_bottom = {position = {416, 204}, size = {16, 16}},
+        bottom = {position = {432, 204}, size = {1, 16}},
+        right_bottom = {position = {433, 204}, size = {16, 16}}
+      }
     },
 
     researched_technology_slot =
@@ -2132,6 +2195,16 @@ data:extend(
         bottom = {position = {432, 170}, size = {1, 16}},
         right_bottom = {position = {433, 170}, size = {16, 16}}
       }
+    },
+
+    disabled_preview_technology_slot =
+    {
+      type = "technology_slot_style",
+      parent = "disabled_technology_slot",
+      scalable = false,
+      width = featured_technology_slot_base_width,
+      height = featured_technology_slot_base_height + 32,
+      ingredients_padding = 32
     },
 
     researched_preview_technology_slot =
