@@ -1,6 +1,40 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.38
+Version: 0.17.39
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.38
+Date: 10. 05. 2019
+  Changes:
+    - When a train performs path finding while in a chain signal sequence, the pathfinding will have a constraint
+      to not go through reserved block before exiting the chain sequence.
+      This solves a problem of train intersections being possible to be deadlocked even with proper chain signals usage in cases of using temporary stops or
+      when path is changed because of station is being enabled/disabled by a circuit network. (https://forums.factorio.com/68681)
+      This also allowed us to to let train recalculate path spontaneously even in chain signal sequence, as it shouldn't break anything now.
+    - When a temporary blueprint(e.g. blueprint from copy) is placed in the quickbar, the blueprint won't be destroyed when clearing the cursor and instead moved to the inventory. (https://forums.factorio.com/65332)
+    - Separated incompatible mods from dependencies in browse mods GUI.
+  Bugfixes:
+    - Fixed a crash when trying to build locomotives near water/edges of the map. (https://forums.factorio.com/66407)
+    - Fixed players getting a new player character when they connect twice to a paused game. (https://forums.factorio.com/62555)
+    - Fixed that entity tooltips did not show negative emissions. (https://forums.factorio.com/68016)
+    - Fluid assembler ghosts now show correct pipe connections.
+    - Fixed a crash when trying to write auto trash filters with not-a-table.
+    - Fixed possible fluid mixing from reviving fluid assembler ghost by higher version. (https://forums.factorio.com/70266)
+    - Disabled areas of new map GUI are set correctly on exchange string import. (https://forums.factorio.com/70355)
+    - Fixed that script rendering sprites loaded from files would disappear on save/load. (https://forums.factorio.com/70318)
+    - Fixed that LuaForce::reset_technology_effects() wouldn't preserve things in the research queue. (https://forums.factorio.com/70543)
+    - Fixed that using an upgrade planner on a blueprint wouldn't upgrade configured modules. (https://forums.factorio.com/70565)
+    - Fixed cross-platform issues related to the Lua bit library. (https://forums.factorio.com/70571)
+    - Fixed crash when changing controller in multiplayer and changing your selection at the same time.
+    - Fixed that blueprint shortcuts in action bar would become magically available when they are destroyed, if they originated from the blueprint library. (https://forums.factorio.com/66002)
+    - Fixed that technology tooltips could sometimes end up behind the technology screen. (https://forums.factorio.com/66413)
+    - Fixed that target leading would not take into account any slowdown modifiers on units. (https://forums.factorio.com/70584)
+    - Fixed that the favorite button for servers wouldn't work correctly if the server was already selected. (https://forums.factorio.com/70616)
+    - Fixed that rocket silos would show an unhelpful status in the tooltip. (https://forums.factorio.com/68251)
+    - Fixed PvP crash when loading save games before "player" -> "character" rename. (https://forums.factorio.com/70633)
+    - Fixed PvP crash when importing old configs. (https://forums.factorio.com/70633)
+    - Fixed that only some parts of the current research info panel would open the technology tree when clicked. (https://forums.factorio.com/67092)
+  Scripting:
+    - Added LuaTechnology::visible_when_disabled read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.37
 Date: 07. 05. 2019

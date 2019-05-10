@@ -1168,7 +1168,7 @@ data:extend(
       parent = "label",
       font = "default-large-bold",
       font_color = achievement_tan_color,
-      width = 250
+      width = 364
     },
     tutorial_locked_title_label =
     {
