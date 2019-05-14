@@ -711,6 +711,7 @@ data:extend(
     healing_per_tick = 0.15,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -1.4}, {0.4, 0.2}},
+    hit_visualization_box = {{-0.2, -1.1}, {0.2, 0.2}},
     sticker_box = {{-0.2, -1}, {0.2, 0}},
     crafting_categories = {"crafting"},
     mining_categories = {"basic-solid"},

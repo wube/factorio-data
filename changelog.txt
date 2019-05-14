@@ -1,6 +1,36 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.39
+Version: 0.17.40
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.39
+Date: 14. 05. 2019
+  Bugfixes:
+    - Fixed crash related to train schedule containing only temporary stations. (https://forums.factorio.com/69576)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.39
+Date: 14. 05. 2019
+  Bugfixes:
+    - Fixed that hand crafting wouldn't respect the hide_from_flow_statistics property. (https://forums.factorio.com/70655)
+    - Fixed that modded GUI tables did not display borders that were set in their style.
+    - Fixed the game would fail on startup if control settings were reset during migration of 0.16 config file. (https://forums.factorio.com/70769)
+    - Fixed that train stop "must be build next to rails" error was not using the name of the train stop. (https://forums.factorio.com/70710)
+    - Fixed that beam damage interval was sometimes not respected properly.
+    - Fixed that beams would be immediately created and destroyed when standing very close to max range.
+    - Fixed that beams would not show any animation if the target was killed in one hit. (https://forums.factorio.com/67020)
+    - Fixed that laser beams would always aim at player character's feet.
+    - Fixed entity hit_visualization_box not working properly.
+    - Fixed running out of memory during sprite loading was not handled gracefully. (https://forums.factorio.com/70667)
+    - Fixed a map corruption problem when creating games from scenarios that used difficulties per-entity. (https://forums.factorio.com/69838)
+    - Fixed that some Lua errors wouldn't show proper lua stack traces. (https://forums.factorio.com/70653)
+    - Fixed a crash related to reading pollution statistic values through Lua. (https://forums.factorio.com/70801)
+    - Fixed a crash resulting from building a blueprint of an assembler with a fluid recipe that is not researched yet. (https://forums.factorio.com/70765)
+    - Fixed that temporary blueprints (e.g. from the copy tool) would sometimes go to inventory instead of being destroyed. (https://forums.factorio.com/70806)
+    - Added fluid mixing check to infinity pipe. (https://forums.factorio.com/70737)
+    - Fixed that you could build rail ghosts in the basic rail tutorial. (https://forums.factorio.com/69503)
+    - Fixed special case of dragging station/condition order in the train configure GUI. (https://forums.factorio.com/68544)
+    - Fixed tightspot script error starting the round with flying text on the map. (https://forums.factorio.com/70162)
+  Changes:
+    - Changed the mods GUI so it lists mod settings by mod alphabetically using natural ordering.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.38
 Date: 10. 05. 2019

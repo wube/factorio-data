@@ -400,37 +400,38 @@ function export_entities(param)
           index_map[unit_number] = count
         end
         info.name = entity.name
-        if entity.type == "resource" then
+        local type = entity.type
+        if type == "resource" then
           info.amount = entity.amount
-        elseif entity.type == "entity-ghost" then
+        elseif type == "entity-ghost" then
           info.inner_name = entity.ghost_name
-        elseif entity.type == "item-entity" then
+        elseif type == "item-entity" then
           info.stack = {name = entity.stack.name, count = entity.stack.count}
-        elseif entity.type == "transport-belt" or entity.type == "underground-belt" then
+        elseif type == "transport-belt" or type == "underground-belt" then
           info.line_contents = {}
           for k = 1, 2 do
             local line = entity.get_transport_line(k)
             info.line_contents[k] = line.get_contents()
             line.clear()
           end
-        elseif entity.type == "splitter" then
+        elseif type == "splitter" then
           info.line_contents = {}
           for k = 1, 8 do
             local line = entity.get_transport_line(k)
             info.line_contents[k] = line.get_contents()
             line.clear()
           end
-        elseif entity.type == "locomotive" then
+        elseif type == "locomotive" then
           info.schedule = entity.train.schedule
           info.speed = entity.train.speed
           info.manual_mode = entity.train.manual_mode
           info.direction = math.floor(0.5+entity.orientation*8)%8
-        elseif entity.name == "flying-text" then
-          info.text = ""
-        elseif entity.type == "assembling-machine" then
+        elseif type == "assembling-machine" then
           if entity.get_recipe() then
             info.recipe = entity.get_recipe().name
           end
+        elseif type == "flying-text" then
+          info.text = entity.text
         end
         if entity.type == "underground-belt" then
           info.type = entity.belt_to_ground_type
@@ -552,6 +553,9 @@ function recreate_entities(array, param, bool)
           end
           if entity.backer_name then
             created.backer_name = entity.backer_name
+          end
+          if entity.text then
+            created.text = entity.text
           end
           if entity.color then
             created.color = entity.color

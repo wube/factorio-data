@@ -9,7 +9,6 @@ function make_beam(sound)
     width = 0.5,
     damage_interval = 20,
     random_target_offset = true,
-    target_offset_y = -0.3,
     action =
     {
       type = "direct",
