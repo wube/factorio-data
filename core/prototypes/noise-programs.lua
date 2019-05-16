@@ -200,20 +200,6 @@ local function make_multioctave_modulated_noise_function(params)
   end
 end
 
-local function make_split_multioctave_noise_function(seed0,seed1,octaveses,octave_output_scale_multiplier,octave_input_scale_multiplier,output_scale0,input_scale0)
-  output_scale0 = output_scale0 or 1
-  input_scale0 = input_scale0 or 1
-  octave_output_scale_multiplier = octave_output_scale_multiplier or 1
-  octave_input_scale_multiplier = octave_input_scale_multiplier or 1
-  local funx = {}
-  for i=1,#octaveses do
-    funx[i] = make_multioctave_noise_function(seed0,seed1,octaveses[i],octave_output_scale_multiplier,octave_input_scale_multiplier,output_scale0,input_scale0)
-    output_scale0 = output_scale0 * octave_output_scale_multiplier ^ octaveses[i]
-    input_scale0  = input_scale0  * octave_input_scale_multiplier  ^ octaveses[i]
-  end
-  return funx
-end
-
 local standard_starting_lake_elevation_expression = noise.define_noise_function( function(x,y,tile,map)
   local starting_lake_distance = noise.distance_from(x, y, noise.var("starting_lake_positions"), 1024)
   local minimal_starting_lake_depth = 4
@@ -244,22 +230,23 @@ local standard_starting_lake_elevation_expression = noise.define_noise_function(
     octave_count = 5,
     persistence = 0.75
   }
-  return noise.min(
+  return noise.ident(noise.min(
     minimal_starting_lake_bottom,
     starting_cone_offset + starting_cone_slope * starting_lake_distance + starting_cone_noise_multiplier * starting_lake_noise,
     noise.max(
       second_cone_offset,
       second_cone_offset + second_cone_slope * starting_lake_distance + second_cone_noise_multiplier * starting_lake_noise
     )
-  )
+  ))
 end)
 
 local function water_level_correct(to_be_corrected, map)
-  return noise.max(
+  return noise.ident(noise.max(
     map.wlc_elevation_minimum,
     to_be_corrected + map.wlc_elevation_offset
-  )
+  ))
 end
+
 
 local cliff_terracing_enabled = false
 
@@ -353,7 +340,7 @@ data:extend{
         make_multioctave_noise_function(map.seed, 5, 4, 3)(x,y,1/32,1/20) +
         noise.var("control-setting:temperature:bias")
       local elevation_adjusted_temperature = base_temp + noise.var("elevation") * elevation_temperature_gradient
-      return clamp_temperature(elevation_adjusted_temperature)
+      return noise.ident(clamp_temperature(elevation_adjusted_temperature))
     end)
   },
   {
@@ -361,7 +348,7 @@ data:extend{
     name = "debug-temperature",
     intended_property = debug_property("temperature"),
     expression = noise.define_noise_function( function(x,y,tile,map)
-      return clamp_temperature(x * (1 / 4))
+      return noise.ident(clamp_temperature(x * (1 / 4)))
     end)
   },
   {
@@ -375,7 +362,7 @@ data:extend{
         3/8 +
         make_multioctave_noise_function(map.seed, 6, 4, 1.5, 1/3)(x,y,1/256,1/8) +
         noise.var("control-setting:moisture:bias")
-      return clamp_moisture(raw_moisture)
+      return noise.ident(clamp_moisture(raw_moisture))
     end)
   },
   {
@@ -383,7 +370,7 @@ data:extend{
     name = "debug-moisture",
     intended_property = debug_property("moisture"),
     expression = noise.define_noise_function( function(x,y,tile,map)
-      return clamp_moisture(y * (1 / 400))
+      return noise.ident(clamp_moisture(y * (1 / 400)))
     end)
   },
   {
@@ -397,7 +384,7 @@ data:extend{
         0.5 +
         make_multioctave_noise_function(map.seed, 7, 4, 1/2, 3)(x,y,1/2048,1/4) +
         noise.var("control-setting:aux:bias")
-      return clamp_aux(raw_aux)
+      return noise.ident(clamp_aux(raw_aux))
     end)
   },
   {
@@ -407,14 +394,14 @@ data:extend{
     expression = noise.define_noise_function( function(x,y,tile,map)
       -- Tile peaks tend to be based on aux+water,
       -- so let's use the same dimension as temperature for aux
-      return clamp_aux(x * (1 / 400))
+      return noise.ident(clamp_aux(x * (1 / 400)))
     end)
   },
   {
     type = "noise-expression",
     name = "rings",
     expression = noise.define_noise_function( function(x,y,tile,map)
-      return noise.ridge(tile.distance / 4, -32, 32)
+      return noise.ident(noise.ridge(tile.distance / 4, -32, 32))
     end)
   },
   {
@@ -549,7 +536,7 @@ data:extend{
         hill_modulation * (normal - hill_modulation_identity) + hill_modulation_identity
       )
 
-      return finish_elevation(hill_modulated, map)
+      return noise.ident(finish_elevation(hill_modulated, map))
     end),
   },
   {

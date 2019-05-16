@@ -1,11 +1,33 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.40
+Version: 0.17.41
 Date: ????
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.39
-Date: 14. 05. 2019
+Version: 0.17.40
+Date: 16. 05. 2019
+  Changes:
+    - Improved efficiency of noise program compilation and quality of error messages.
   Bugfixes:
+    - Fixed a crash that would sometimes happen after deleting a blueprint from the library. (https://forums.factorio.com/70158)
     - Fixed crash related to train schedule containing only temporary stations. (https://forums.factorio.com/69576)
+    - Fixed GUI inspector vertical align value inconsistency (middle instead of center). (https://forums.factorio.com/70677)
+    - Fixed LuaInventory::sort_and_merge when used on cargo wagons with inventory limits set. (https://forums.factorio.com/68307)
+    - Fixed that distractor robots would show in the bonus GUI under the follower robots section. (https://forums.factorio.com/69532)
+    - Fixed that reading invalid chain signals wouldn't work correctly. (https://forums.factorio.com/67496)
+    - Fixed yet another ghost connection error related to consistency checks. (https://forums.factorio.com/70275)
+    - Fixed some cases of multi-layered icons not being scaled correctly. (https://forums.factorio.com/67210)
+    - Fixed power switch connection consistency problem. (https://forums.factorio.com/70856)
+    - Fixed "Confirm Message" key-binding not working when bound to some mouse buttons. (https://forums.factorio.com/67182)
+    - Fixed backwards/forwards max speed fuel modifier related to two-headed trains. (https://forums.factorio.com/70758)
+    - Fixed interactions of assemblers and underground pipe connections blocked by induced fluid mixing. (https://forums.factorio.com/70596)
+    - Fixed setting entity ghosts to minable=false didn't work. (https://forums.factorio.com/69306)
+    - Fixed that the statistics GUI would show count values < 0.5 as "no count". (https://forums.factorio.com/70865)
+    - Fixed a performance problem with high speed idling trains on circular rail networks. (https://forums.factorio.com/70797)
+    - Fixed signal placement visualisation for special cases related to straight diagonal rail. (https://forums.factorio.com/69591)
+    - Fixed that items supposed to be removed on clearing cursor (copy, cut, paste, blueprints from blueprint library etc.) were put into character corpse. (https://forums.factorio.com/70850)
+    - Fixed uranium cannon shells shooting backwards when aimed closed to the tank.(https://forums.factorio.com/70877)
+    - Fixed Programmable Speaker alert textbox not losing focus when pressing ENTER. (https://forums.factorio.com/70891)
+    - Fixed desync caused by setting font colors on buttons. (https://forums.factorio.com/70893)
+    - Fixed that blueprint rotation was not saved for blueprint books in the blueprint library.  (https://forums.factorio.com/68382)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.39
 Date: 14. 05. 2019

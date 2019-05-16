@@ -1,21 +1,27 @@
-local next_expression_number = 1;
--- Can we get rid of this now that expression IDs are calculated automatically?
-local id_expression = function(expr)
-  if (expr.type == "literal-number") then
-    return "literal-number:" .. expr.literal_value
-  elseif expr.type == "variable" then
-    -- only valid as long as we're not allowing new variables in local scopes;
-    -- if we do, the same name could mean different things at different
-    -- points in the same procedure
-    return "variable:" .. expr.variable_name
+local tne
+
+-- level is the number of levels up *from the caller*
+-- we want to take our location from, defaulting to 1.
+local function csloc(level)
+  if level == nil then level = 0 end
+  -- to debug.getinfo,
+  --   1 = this very function (csloc)
+  --   2 = the caller
+  -- etc.
+  -- we want our level = 0 to mean the caller of csloc,
+  -- level = 1 to be the caller of that, etc.  So add 2.
+  local info = debug.getinfo(level+2, "Sl")
+  local filename
+  if string.sub(info.source, 1, 1) == "@" then
+    filename = string.sub(info.source, 2)
   else
-    -- Would be better to use a hash but
-    -- at least this will allow the compiler to identify
-    -- explicitly duplicated expressions
-    local id = "expr#" .. next_expression_number
-    next_expression_number = next_expression_number + 1
-    return id
+    filename = "data:" .. info.source
   end
+  return
+  {
+    filename = filename,
+    line_number = info.currentline,
+  }
 end
 
 local tne
@@ -32,6 +38,7 @@ local function funcapp(name, arguments)
   end
   return tne{
     type = "function-application",
+    source_location = sloc or csloc(1),
     function_name = name,
     arguments = fixed_arguments
   }
@@ -42,6 +49,7 @@ local noise_expression_metatable =
   __add = function(lhs, rhs)
     return tne{
       type = "function-application",
+      source_location = csloc(1),
       function_name = "add",
       arguments = { tne(lhs), tne(rhs) }
     }
@@ -49,6 +57,7 @@ local noise_expression_metatable =
   __sub = function(lhs, rhs)
     return tne{
       type = "function-application",
+      source_location = csloc(1),
       function_name = "subtract",
       arguments = { tne(lhs), tne(rhs) }
     }
@@ -56,6 +65,7 @@ local noise_expression_metatable =
   __mul = function(lhs, rhs)
     return tne{
       type = "function-application",
+      source_location = csloc(1),
       function_name = "multiply",
       arguments = { tne(lhs), tne(rhs) }
     }
@@ -63,6 +73,7 @@ local noise_expression_metatable =
   __div = function(lhs, rhs)
     return tne{
       type = "function-application",
+      source_location = csloc(1),
       function_name = "divide",
       arguments = { tne(lhs), tne(rhs) }
     }
@@ -70,11 +81,27 @@ local noise_expression_metatable =
   __pow = function(lhs, rhs)
     return tne{
       type = "function-application",
+      source_location = csloc(1),
       function_name = "exponentiate",
       arguments = { tne(lhs), tne(rhs) }
     }
   end
 }
+
+function fixne(v)
+  if v.type == nil then
+    error("Tried to create noise expression with no 'type'")
+  end
+  if v.source_location == nil then
+    error("Noise expression has no 'source_location'")
+  end
+
+  setmetatable(v, noise_expression_metatable)
+  -- if v.expression_id == nil then
+  --   v.expression_id = id_expression(v)
+  -- end
+  return v
+end
 
 function log2(power)
   return tne{
@@ -85,16 +112,19 @@ function log2(power)
 end
 
 -- 'to noise expression'
+-- turns simple values into noise expressions and
 -- adds a metatable so you can do arithmetic operations on noise expressions
-function tne(v)
+function tne(v, sloc)
   if type(v) == "number" then
-    return tne{
+    return fixne{
       type = "literal-number",
+      source_location = sloc or csloc(1),
       literal_value = v
     }
   elseif type(v) == "boolean" then
-    return tne{
+    return fixne{
       type = "literal-boolean",
+      source_location = sloc or csloc(1),
       literal_value = v
     }
   elseif type(v) == "string" then
@@ -103,39 +133,44 @@ function tne(v)
       literal_value = v
     }
   elseif type(v) == "table" then
-    if v.type ~= nil then
-      setmetatable(v, noise_expression_metatable)
-      if v.expression_id == nil then
-        v.expression_id = id_expression(v)
-      end
-      return v
-    else
+    if v.type == nil then
       error("Can't turn table without 'type' property into noise expression")
     end
+    if v.source_location == nil then
+      v.source_location = sloc or csloc(1)
+    end
+    return fixne(v)
   else
     error("Can't turn "..type(v).." into noise expression")
   end
 end
 
-local function nfvar(name)
+local function nfvar(name, sloc)
   return tne{
     type = "variable",
+    source_location = sloc or csloc(1),
     variable_name = name
   }
 end
 
-local function literal_object(obj)
+local function literal_object(obj, sloc)
   return tne{
     type = "literal-object",
+    source_location = sloc or csloc(1),
     literal_value = obj
   }
 end
 
-local function literal_string(str)
+local function literal_string(str, sloc)
   return tne{
     type = "literal-string",
+    source_location = sloc or csloc(1),
     literal_value = str
   }
+end
+
+local function absolute_value(x)
+  return funcapp("absolute-value", {x})
 end
 
 local function autoplace_probability(autoplace)
@@ -197,20 +232,19 @@ local function define_noise_function( func )
     water_level = nfvar("water_level"),
     finite_water_level = nfvar("finite_water_level")
   }
-  return tne(func(x,y,tile_props,map_props))
+  return tne(func(x,y,tile_props,map_props), csloc(0)) -- TODO: Pass in sloc of the function, if we know it
 end
 
-local function clamp(v, min, max)
-  return tne{
-    type = "function-application",
-    function_name = "clamp",
-    arguments =
+local function clamp(v, min, max, sloc)
+  return funcapp(
+    "clamp",
     {
-      tne(v),
-      tne(min),
-      tne(max)
-    }
-  }
+      tne(v, sloc),
+      tne(min, sloc),
+      tne(max, sloc)
+    },
+    sloc
+  )
 end
 
 local function reduce(reducer, list)
@@ -222,21 +256,24 @@ local function reduce(reducer, list)
 end
 
 local function max(...)
+  local sloc = csloc(1)
   return reduce(function(a,b)
-    return clamp(a, b, math.huge)
+    return clamp(a, b, math.huge, sloc)
   end, {...})
 end
 
 local function min(...)
+  local sloc = csloc(1)
   return reduce(function(a,b)
-    return clamp(a, -math.huge, b)
+    return clamp(a, -math.huge, b, sloc)
   end, {...})
 end
 
-local function ridge(v, min, max)
+local function ridge(v, min, max, sloc)
   return tne{
     type = "function-application",
     function_name = "ridge",
+    source_location = sloc or csloc(1),
     arguments =
     {
       tne(v),
@@ -339,10 +376,11 @@ local function if_else_chain(...)
   }
 end
 
-local function literal_object(val)
+local function literal_object(val, sloc)
   return
   {
     type = "literal-object",
+    source_location = sloc or csloc(1),
     literal_value = val
   }
 end
@@ -379,12 +417,21 @@ local function compile_time_log(...)
   return funcapp("compile-time-log", arg_expressions)
 end
 
+-- Useful for preventing tail-calls
+-- because we want to not lose part of the stacktrace
+-- in order that csloc() gives the desired result
+local function ident(x)
+  return x
+end
+
 return
 {
+  csloc = csloc,
   to_noise_expression = tne,
   define_noise_function = define_noise_function,
   clamp = clamp,
   compile_time_log = compile_time_log,
+  ident = ident,
   min = min,
   max = max,
   ridge = ridge,
@@ -395,6 +442,7 @@ return
   distance_from = distance_from,
   var = nfvar,
   get_control_setting = get_control_setting,
+  absolute_value = absolute_value,
   autoplace_probability = autoplace_probability,
   autoplace_richness = autoplace_richness,
   fraction = fraction,

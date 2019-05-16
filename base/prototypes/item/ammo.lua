@@ -429,6 +429,7 @@ data:extend(
           direction_deviation = 0.1,
           range_deviation = 0.1,
           max_range = 30,
+          min_range = 5,
           source_effects =
           {
             type = "create-explosion",
