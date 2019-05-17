@@ -161,6 +161,30 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "fast-inserter",
+    enabled = false,
+    ingredients =
+    {
+      {"electronic-circuit", 2},
+      {"iron-plate", 2},
+      {"inserter", 1}
+    },
+    result = "fast-inserter"
+  },
+  {
+    type = "recipe",
+    name = "long-handed-inserter",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-gear-wheel", 1},
+      {"iron-plate", 1},
+      {"inserter", 1}
+    },
+    result = "long-handed-inserter"
+  },
+  {
+    type = "recipe",
     name = "burner-inserter",
     ingredients =
     {
@@ -322,6 +346,144 @@ data:extend(
       {"iron-gear-wheel", 2}
     },
     result = "repair-pack"
+  },
+  {
+    type = "recipe",
+    name = "automation-science-pack",
+    energy_required = 5,
+    ingredients =
+    {
+      {"copper-plate", 1},
+      {"iron-gear-wheel", 1}
+    },
+    result = "automation-science-pack"
+  },
+  {
+    type = "recipe",
+    name = "logistic-science-pack",
+    enabled = false,
+    energy_required = 6,
+    ingredients =
+    {
+      {"inserter", 1},
+      {"transport-belt", 1}
+    },
+    result = "logistic-science-pack"
+  },
+  {
+    type = "recipe",
+    name = "lab",
+    energy_required = 2,
+    ingredients =
+    {
+      {"electronic-circuit", 10},
+      {"iron-gear-wheel", 10},
+      {"transport-belt", 4}
+    },
+    result = "lab"
+  },
+  {
+    type = "recipe",
+    name = "stone-wall",
+    enabled = false,
+    ingredients = {{"stone-brick", 5}},
+    result = "stone-wall"
+  },
+  {
+    type = "recipe",
+    name = "assembling-machine-2",
+    normal =
+    {
+      enabled = false,
+      ingredients =
+      {
+        {"steel-plate", 2},
+        {"electronic-circuit", 3},
+        {"iron-gear-wheel", 5},
+        {"assembling-machine-1", 1}
+      },
+      result = "assembling-machine-2"
+    },
+    expensive =
+    {
+      enabled = false,
+      ingredients =
+      {
+        {"steel-plate", 5},
+        {"electronic-circuit", 5},
+        {"iron-gear-wheel", 10},
+        {"assembling-machine-1", 1}
+      },
+      result = "assembling-machine-2"
+    }
+  },
+  {
+    type = "recipe",
+    name = "splitter",
+    enabled = false,
+    energy_required = 1,
+    ingredients =
+    {
+      {"electronic-circuit", 5},
+      {"iron-plate", 5},
+      {"transport-belt", 4}
+    },
+    result = "splitter"
+  },
+  {
+    type = "recipe",
+    name = "underground-belt",
+    enabled = false,
+    energy_required = 1,
+    ingredients =
+    {
+      {"iron-plate", 10},
+      {"transport-belt", 5}
+    },
+    result_count = 2,
+    result = "underground-belt"
+  },
+  {
+    type = "recipe",
+    name = "loader",
+    enabled = false,
+    energy_required = 1,
+    ingredients =
+    {
+      {"inserter", 5},
+      {"electronic-circuit", 5},
+      {"iron-gear-wheel", 5},
+      {"iron-plate", 5},
+      {"transport-belt", 5}
+    },
+    result = "loader"
+  },
+  {
+    type = "recipe",
+    name = "car",
+    enabled = false,
+    energy_required = 2,
+    ingredients =
+    {
+      {"engine-unit", 8},
+      {"iron-plate", 20},
+      {"steel-plate", 5}
+    },
+    result = "car"
+  },
+  {
+    type = "recipe",
+    name = "engine-unit",
+    energy_required = 10,
+    category = "advanced-crafting",
+    ingredients =
+    {
+      {"steel-plate", 1},
+      {"iron-gear-wheel", 1},
+      {"pipe", 2}
+    },
+    result = "engine-unit",
+    enabled = false
   },
 }
 )

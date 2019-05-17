@@ -1,7 +1,7 @@
 require ("prototypes.entity.demo-spawner-animation")
 require ("prototypes.entity.demo-biter-animations")
 require ("prototypes.entity.demo-enemy-sounds")
-require ("prototypes.entity.spitter-animations")
+require ("prototypes.entity.demo-spitter-animations")
 enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 require ("prototypes.entity.demo-biter-ai-settings")
 

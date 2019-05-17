@@ -66,34 +66,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "assembling-machine-2",
-    normal =
-    {
-      enabled = false,
-      ingredients =
-      {
-        {"steel-plate", 2},
-        {"electronic-circuit", 3},
-        {"iron-gear-wheel", 5},
-        {"assembling-machine-1", 1}
-      },
-      result = "assembling-machine-2"
-    },
-    expensive =
-    {
-      enabled = false,
-      ingredients =
-      {
-        {"steel-plate", 5},
-        {"electronic-circuit", 5},
-        {"iron-gear-wheel", 10},
-        {"assembling-machine-1", 1}
-      },
-      result = "assembling-machine-2"
-    }
-  },
-  {
-    type = "recipe",
     name = "assembling-machine-3",
     enabled = false,
     ingredients =
@@ -102,19 +74,6 @@ data:extend(
       {"assembling-machine-2", 2}
     },
     result = "assembling-machine-3"
-  },
-  {
-    type = "recipe",
-    name = "car",
-    enabled = false,
-    energy_required = 2,
-    ingredients =
-    {
-      {"engine-unit", 8},
-      {"iron-plate", 20},
-      {"steel-plate", 5}
-    },
-    result = "car"
   },
   {
     type = "recipe",
@@ -303,13 +262,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "stone-wall",
-    enabled = false,
-    ingredients = {{"stone-brick", 5}},
-    result = "stone-wall"
-  },
-  {
-    type = "recipe",
     name = "gate",
     enabled = false,
     ingredients = {{"stone-wall", 1}, {"steel-plate", 2}, {"electronic-circuit", 2}},
@@ -397,29 +349,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "automation-science-pack",
-    energy_required = 5,
-    ingredients =
-    {
-      {"copper-plate", 1},
-      {"iron-gear-wheel", 1}
-    },
-    result = "automation-science-pack"
-  },
-  {
-    type = "recipe",
-    name = "logistic-science-pack",
-    enabled = false,
-    energy_required = 6,
-    ingredients =
-    {
-      {"inserter", 1},
-      {"transport-belt", 1}
-    },
-    result = "logistic-science-pack"
-  },
-  {
-    type = "recipe",
     name = "chemical-science-pack",
     enabled = false,
     energy_required = 24,
@@ -474,19 +403,6 @@ data:extend(
     result_count = 3,
     result = "utility-science-pack"
   },
-
-  {
-    type = "recipe",
-    name = "lab",
-    energy_required = 2,
-    ingredients =
-    {
-      {"electronic-circuit", 10},
-      {"iron-gear-wheel", 10},
-      {"transport-belt", 4}
-    },
-    result = "lab"
-  },
   {
     type = "recipe",
     name = "red-wire",
@@ -508,19 +424,6 @@ data:extend(
       {"copper-cable", 1}
     },
     result = "green-wire"
-  },
-  {
-    type = "recipe",
-    name = "underground-belt",
-    enabled = false,
-    energy_required = 1,
-    ingredients =
-    {
-      {"iron-plate", 10},
-      {"transport-belt", 5}
-    },
-    result_count = 2,
-    result = "underground-belt"
   },
   {
     type = "recipe",
@@ -552,21 +455,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "loader",
-    enabled = false,
-    energy_required = 1,
-    ingredients =
-    {
-      {"inserter", 5},
-      {"electronic-circuit", 5},
-      {"iron-gear-wheel", 5},
-      {"iron-plate", 5},
-      {"transport-belt", 5}
-    },
-    result = "loader"
-  },
-  {
-    type = "recipe",
     name = "fast-loader",
     enabled = false,
     energy_required = 3,
@@ -588,19 +476,6 @@ data:extend(
       {"fast-loader", 1}
     },
     result = "express-loader"
-  },
-  {
-    type = "recipe",
-    name = "splitter",
-    enabled = false,
-    energy_required = 1,
-    ingredients =
-    {
-      {"electronic-circuit", 5},
-      {"iron-plate", 5},
-      {"transport-belt", 4}
-    },
-    result = "splitter"
   },
   {
     type = "recipe",

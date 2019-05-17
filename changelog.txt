@@ -1,6 +1,25 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.41
+Version: 0.17.42
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.41
+Date: 17. 05. 2019
+  Bugfixes:
+    - Fixed that GUI element size wasn't updated in inactive tabs when ui scaled changed. (https://forums.factorio.com/70649)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.41
+Date: 17. 05. 2019
+  Bugfixes:
+    - Fixed that some noise expression types used by some mods (literal map positions, offset-points, and
+      distance-from-nearest-point) were unimplemented.
+    - Fixed that blueprint rotation was not saved for blueprint books in the blueprint library.  (https://forums.factorio.com/68382)
+    - Fixed that the focus-search shortcut could be used to bring up the search field when it was disabled. (https://forums.factorio.com/70903)
+    - Fixed that game.reload_script() could break LuaRecipe/LuaPrototype references.
+    - Fixed a PvP script error on configuration changed. (https://forums.factorio.com/70914)
+  Scripting:
+    - Added LuaEntityPrototype::item_slot_count read.
+    - Added LuaEntity::get_stopped_train().
+    - Added "surface_index" to the on_post_entity_died event.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.40
 Date: 16. 05. 2019
@@ -27,7 +46,6 @@ Date: 16. 05. 2019
     - Fixed uranium cannon shells shooting backwards when aimed closed to the tank.(https://forums.factorio.com/70877)
     - Fixed Programmable Speaker alert textbox not losing focus when pressing ENTER. (https://forums.factorio.com/70891)
     - Fixed desync caused by setting font colors on buttons. (https://forums.factorio.com/70893)
-    - Fixed that blueprint rotation was not saved for blueprint books in the blueprint library.  (https://forums.factorio.com/68382)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.39
 Date: 14. 05. 2019

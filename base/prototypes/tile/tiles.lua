@@ -3086,842 +3086,837 @@ define_tiles
     },
     map_color={r=0, g=0, b=0},
     pollution_absorption_per_second = 0
+  },
+
+  {
+    type = "tile",
+    name = "concrete",
+    needs_correction = false,
+    minable = (not data.is_demo) and {mining_time = 0.1, result = "concrete"} or nil,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.4,
+    layer = 61,
+    transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete
+    decorative_removal_probability = 0.25,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner-mask.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner-mask.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      side =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-side.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-side.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-side-mask.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+
+      u_transition =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-u.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-u.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-u-mask.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      o_transition =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-o.png",
+        count = 4,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-o.png",
+          count = 4,
+          scale = 0.5
+        }
+      },
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
+        count = 4,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-o-mask.png",
+          count = 4,
+          scale = 0.5
+        }
+      },
+
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+
+    transitions = concrete_transitions,
+    transitions_between_transitions = concrete_transitions_between_transitions,
+
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.0
+      }
+    },
+    map_color={r=100, g=100, b=100},
+    pollution_absorption_per_second = 0,
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
+    name = "hazard-concrete-left",
+    needs_correction = false,
+    next_direction = "hazard-concrete-right",
+    transition_merges_with_tile = "concrete",
+    minable = (not data.is_demo) and {mining_time = 0.1, result = "hazard-concrete"} or nil,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.4,
+    layer = 62,
+    decorative_removal_probability = 0.25,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-inner-corner-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-outer-corner-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-side-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-u-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-o-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hr-hazard-concrete-left.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.0
+      }
+    },
+    map_color={r=0.5, g=0.5, b=0},
+    pollution_absorption_per_second = 0,
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
+    name = "hazard-concrete-right",
+    needs_correction = false,
+    next_direction = "hazard-concrete-left",
+    transition_merges_with_tile = "concrete",
+    minable = (not data.is_demo) and {mining_time = 0.1, result = "hazard-concrete"} or nil,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.4,
+    layer = 62,
+    decorative_removal_probability = 0.25,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
+        count = 1
+      },
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
+        count = 1
+      },
+
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
+        count = 1
+      },
+
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
+        count = 1
+      },
+
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
+        count = 1
+      },
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hr-hazard-concrete-right.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.0
+      }
+    },
+    map_color={r=0.5, g=0.5, b=0},
+    pollution_absorption_per_second = 0,
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+  },
+
+  {
+    type = "tile",
+    name = "refined-concrete",
+    needs_correction = false,
+    minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-concrete"} or nil,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.5,
+    layer = 64,
+    transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete
+    decorative_removal_probability = 0.25,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+      inner_corner =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner-mask.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+
+      outer_corner =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner-mask.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      side =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-side.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-side.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
+        count = 16,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-side-mask.png",
+          count = 16,
+          scale = 0.5
+        }
+      },
+
+      u_transition =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-u.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-u.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-u-mask.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      o_transition =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-o.png",
+        count = 4,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-o.png",
+          count = 4,
+          scale = 0.5
+        }
+      },
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
+        count = 4,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-concrete-o-mask.png",
+          count = 4,
+          scale = 0.5
+        }
+      },
+
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/concrete/refined-concrete.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-refined-concrete.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+
+    transitions = concrete_transitions,
+    transitions_between_transitions = concrete_transitions_between_transitions,
+
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.0
+      }
+    },
+    map_color={r=100, g=100, b=100},
+    pollution_absorption_per_second = 0,
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
+    name = "refined-hazard-concrete-left",
+    needs_correction = false,
+    next_direction = "refined-hazard-concrete-right",
+    transition_merges_with_tile = "refined-concrete",
+    minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-hazard-concrete"} or nil,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.5,
+    layer = 65,
+    decorative_removal_probability = 0.25,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-inner-corner-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-outer-corner-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-side-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-u-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-o-mask.png",
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/hazard-concrete-left/refined-hazard-concrete-left.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-left/hr-refined-hazard-concrete-left.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.0
+      }
+    },
+    map_color={r=0.5, g=0.5, b=0},
+    pollution_absorption_per_second = 0,
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+  },
+  {
+    type = "tile",
+    name = "refined-hazard-concrete-right",
+    needs_correction = false,
+    next_direction = "refined-hazard-concrete-left",
+    transition_merges_with_tile = "refined-concrete",
+    minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-hazard-concrete"} or nil,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    collision_mask = {"ground-tile"},
+    walking_speed_modifier = 1.5,
+    layer = 65,
+    decorative_removal_probability = 0.25,
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
+        count = 1
+      },
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
+        count = 1
+      },
+
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
+        count = 1
+      },
+
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
+        count = 1
+      },
+
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
+        count = 1
+      },
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/hazard-concrete-right/refined-hazard-concrete-right.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/hazard-concrete-right/hr-refined-hazard-concrete-right.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/concrete-01.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-02.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-03.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/concrete-04.ogg",
+        volume = 1.0
+      }
+    },
+    map_color={r=0.5, g=0.5, b=0},
+    pollution_absorption_per_second = 0,
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier
   }
 }
-
-if not data.is_demo then
-  define_tiles
-  {
-    {
-      type = "tile",
-      name = "concrete",
-      needs_correction = false,
-      minable = {mining_time = 0.1, result = "concrete"},
-      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-      collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.4,
-      layer = 61,
-      transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete
-      decorative_removal_probability = 0.25,
-      variants =
-      {
-        main =
-        {
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 1
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 2,
-            probability = 0.39
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 4,
-            probability = 1
-          }
-        },
-        inner_corner =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-        inner_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner-mask.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-
-        outer_corner =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-        outer_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner-mask.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-
-        side =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-side.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-side.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-        side_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-side-mask.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-
-        u_transition =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-u.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-u.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-        u_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-u-mask.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-
-        o_transition =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-o.png",
-          count = 4,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-o.png",
-            count = 4,
-            scale = 0.5
-          }
-        },
-        o_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
-          count = 4,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-o-mask.png",
-            count = 4,
-            scale = 0.5
-          }
-        },
-
-
-        material_background =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete.png",
-            count = 8,
-            scale = 0.5
-          }
-        }
-      },
-
-      transitions = concrete_transitions,
-      transitions_between_transitions = concrete_transitions_between_transitions,
-
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.0
-        }
-      },
-      map_color={r=100, g=100, b=100},
-      pollution_absorption_per_second = 0,
-      vehicle_friction_modifier = concrete_vehicle_speed_modifier
-    },
-    {
-      type = "tile",
-      name = "hazard-concrete-left",
-      needs_correction = false,
-      next_direction = "hazard-concrete-right",
-      transition_merges_with_tile = "concrete",
-      minable = {mining_time = 0.1, result = "hazard-concrete"},
-      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-      collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.4,
-      layer = 62,
-      decorative_removal_probability = 0.25,
-      variants =
-      {
-        main =
-        {
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 1
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 2,
-            probability = 0.39
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 4,
-            probability = 1
-          }
-        },
-
-        inner_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-inner-corner-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-        outer_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-outer-corner-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        side_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-side-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        u_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-u-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        o_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-o-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        material_background =
-        {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/hazard-concrete-left.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/hazard-concrete-left/hr-hazard-concrete-left.png",
-            count = 8,
-            scale = 0.5
-          }
-        }
-      },
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.0
-        }
-      },
-      map_color={r=0.5, g=0.5, b=0},
-      pollution_absorption_per_second = 0,
-      vehicle_friction_modifier = concrete_vehicle_speed_modifier
-    },
-    {
-      type = "tile",
-      name = "hazard-concrete-right",
-      needs_correction = false,
-      next_direction = "hazard-concrete-left",
-      transition_merges_with_tile = "concrete",
-      minable = {mining_time = 0.1, result = "hazard-concrete"},
-      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-      collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.4,
-      layer = 62,
-      decorative_removal_probability = 0.25,
-      variants =
-      {
-        main =
-        {
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 1
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 2,
-            probability = 0.39
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 4,
-            probability = 1
-          }
-        },
-        inner_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
-          count = 1
-        },
-        outer_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
-          count = 1
-        },
-
-        side_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
-          count = 1
-        },
-
-        u_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
-          count = 1
-        },
-
-        o_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
-          count = 1
-        },
-
-        material_background =
-        {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/hazard-concrete-right.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/hazard-concrete-right/hr-hazard-concrete-right.png",
-            count = 8,
-            scale = 0.5
-          }
-        }
-      },
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.0
-        }
-      },
-      map_color={r=0.5, g=0.5, b=0},
-      pollution_absorption_per_second = 0,
-      vehicle_friction_modifier = concrete_vehicle_speed_modifier
-    },
-
-    {
-      type = "tile",
-      name = "refined-concrete",
-      needs_correction = false,
-      minable = {mining_time = 0.1, result = "refined-concrete"},
-      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-      collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.5,
-      layer = 64,
-      transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete
-      decorative_removal_probability = 0.25,
-      variants =
-      {
-        main =
-        {
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 1
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 2,
-            probability = 0.39
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 4,
-            probability = 1
-          }
-        },
-        inner_corner =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-        inner_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-inner-corner-mask.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-inner-corner-mask.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-
-        outer_corner =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-        outer_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-outer-corner-mask.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-outer-corner-mask.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-
-        side =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-side.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-side.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-        side_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-side-mask.png",
-          count = 16,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-side-mask.png",
-            count = 16,
-            scale = 0.5
-          }
-        },
-
-        u_transition =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-u.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-u.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-        u_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-u-mask.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-u-mask.png",
-            count = 8,
-            scale = 0.5
-          }
-        },
-
-        o_transition =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-o.png",
-          count = 4,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-o.png",
-            count = 4,
-            scale = 0.5
-          }
-        },
-        o_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/concrete-o-mask.png",
-          count = 4,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-concrete-o-mask.png",
-            count = 4,
-            scale = 0.5
-          }
-        },
-
-
-        material_background =
-        {
-          picture = "__base__/graphics/terrain/concrete/refined-concrete.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-refined-concrete.png",
-            count = 8,
-            scale = 0.5
-          }
-        }
-      },
-
-      transitions = concrete_transitions,
-      transitions_between_transitions = concrete_transitions_between_transitions,
-
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.0
-        }
-      },
-      map_color={r=100, g=100, b=100},
-      pollution_absorption_per_second = 0,
-      vehicle_friction_modifier = concrete_vehicle_speed_modifier
-    },
-    {
-      type = "tile",
-      name = "refined-hazard-concrete-left",
-      needs_correction = false,
-      next_direction = "refined-hazard-concrete-right",
-      transition_merges_with_tile = "refined-concrete",
-      minable = {mining_time = 0.1, result = "refined-hazard-concrete"},
-      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-      collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.5,
-      layer = 65,
-      decorative_removal_probability = 0.25,
-      variants =
-      {
-        main =
-        {
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 1
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 2,
-            probability = 0.39
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 4,
-            probability = 1
-          }
-        },
-
-        inner_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-inner-corner-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-        outer_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-outer-corner-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        side_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-side-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        u_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-u-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        o_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
-          count = 1,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/concrete/hr-hazard-concrete-o-mask.png",
-            count = 1,
-            scale = 0.5
-          }
-        },
-
-        material_background =
-        {
-          picture = "__base__/graphics/terrain/hazard-concrete-left/refined-hazard-concrete-left.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/hazard-concrete-left/hr-refined-hazard-concrete-left.png",
-            count = 8,
-            scale = 0.5
-          }
-        }
-      },
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.0
-        }
-      },
-      map_color={r=0.5, g=0.5, b=0},
-      pollution_absorption_per_second = 0,
-      vehicle_friction_modifier = concrete_vehicle_speed_modifier
-    },
-    {
-      type = "tile",
-      name = "refined-hazard-concrete-right",
-      needs_correction = false,
-      next_direction = "refined-hazard-concrete-left",
-      transition_merges_with_tile = "refined-concrete",
-      minable = {mining_time = 0.1, result = "refined-hazard-concrete"},
-      mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-      collision_mask = {"ground-tile"},
-      walking_speed_modifier = 1.5,
-      layer = 65,
-      decorative_removal_probability = 0.25,
-      variants =
-      {
-        main =
-        {
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 1
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 2,
-            probability = 0.39
-          },
-          {
-            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
-            count = 1,
-            size = 4,
-            probability = 1
-          }
-        },
-        inner_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-inner-corner-mask.png",
-          count = 1
-        },
-        outer_corner_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-outer-corner-mask.png",
-          count = 1
-        },
-
-        side_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-side-mask.png",
-          count = 1
-        },
-
-        u_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-u-mask.png",
-          count = 1
-        },
-
-        o_transition_mask =
-        {
-          picture = "__base__/graphics/terrain/concrete/hazard-concrete-o-mask.png",
-          count = 1
-        },
-
-        material_background =
-        {
-          picture = "__base__/graphics/terrain/hazard-concrete-right/refined-hazard-concrete-right.png",
-          count = 8,
-          hr_version =
-          {
-            picture = "__base__/graphics/terrain/hazard-concrete-right/hr-refined-hazard-concrete-right.png",
-            count = 8,
-            scale = 0.5
-          }
-        }
-      },
-      walking_sound =
-      {
-        {
-          filename = "__base__/sound/walking/concrete-01.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-02.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-03.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/walking/concrete-04.ogg",
-          volume = 1.0
-        }
-      },
-      map_color={r=0.5, g=0.5, b=0},
-      pollution_absorption_per_second = 0,
-      vehicle_friction_modifier = concrete_vehicle_speed_modifier
-    }
-  }
-end

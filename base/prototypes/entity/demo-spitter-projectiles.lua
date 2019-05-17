@@ -1,4 +1,4 @@
-require ("prototypes.entity.spitter-animations")
+require ("prototypes.entity.demo-spitter-animations")
 local math3d = require "math3d"
 
 function spitter_attack_parameters(data)

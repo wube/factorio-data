@@ -1817,21 +1817,25 @@ data:extend(
       selected_clicked_graphical_set = {position = {282, 17}, corner_size = 8},
       default_background_shadow = {position = {392, 328}, size = 88},
       level_band = {position = {381, 136}, corner_size = 8},
+      hovered_level_band = {position = {381, 136}, corner_size = 8},
       level_offset_x = 12,
       level_offset_y = -2.5,
       level_band_width = 28,
       level_band_height = 12,
       level_font = "technology-slot-level-font",
       level_font_color = {0, 0, 0},
+      hovered_level_font_color = {0, 0, 0},
       scalable = false,
       width = 72,
       height = 100,
 
       level_range_band = {position = {397, 136}, corner_size = 8},
+      hovered_level_range_band = {position = {397, 136}, corner_size = 8},
       level_range_offset_x = -4,
       level_range_offset_y = -2.5,
       level_range_font = "technology-slot-level-font",
       level_range_font_color = {1, 1, 1},
+      hovered_level_range_font_color = {1, 1, 1},
 
       ingredients_height = 20,
       default_ingredients_background = {position = {347, 136}, corner_size = 8},
@@ -1865,53 +1869,130 @@ data:extend(
       parent = "technology_slot",
       default_graphical_set =
       {
-        base = {position = {296, 204}, corner_size = 8},
+        base = {position = {313, 619}, corner_size = 8},
         shadow = default_shadow
       },
       hovered_graphical_set =
       {
-        base = {position = {312, 204}, corner_size = 8},
+        base = {position = {330, 619}, corner_size = 8},
         shadow = default_shadow
       },
       selected_hovered_graphical_set =
       {
-        base = {position = {312, 204}, corner_size = 8},
+        base = {position = {330, 619}, corner_size = 8},
         shadow = default_shadow
       },
       clicked_graphical_set =
       {
-        base = {position = {312, 204}, corner_size = 8},
+        base = {position = {330, 619}, corner_size = 8},
         shadow = default_shadow
       },
       selected_graphical_set =
       {
-        base = {position = {312, 204}, corner_size = 8},
+        base = {position = {330, 619}, corner_size = 8},
         shadow = default_shadow
       },
       selected_clicked_graphical_set =
       {
-        base = {position = {312, 204}, corner_size = 8},
+        base = {position = {330, 619}, corner_size = 8},
         shadow = default_shadow
       },
       disabled_graphical_set =
       {
-        base = {position = {296, 204}, corner_size = 8},
+        base = {position = {313, 619}, corner_size = 8},
         shadow = default_shadow
       },
       highlighted_graphical_set =
       {
-        base = {position = {330, 204}, corner_size = 8},
+        base = {position = {381, 619}, corner_size = 8},
         shadow = default_shadow
       },
-      level_band = {position = {381, 204}, corner_size = 8},
-      level_range_band = {position = {397, 204}, corner_size = 8},
-      default_ingredients_background = {position = {347, 204}, corner_size = 8},
-      hovered_ingredients_background = {position = {364, 204}, corner_size = 8},
-      clicked_ingredients_background = {position = {364, 204}, corner_size = 8},
-      disabled_ingredients_background = {position = {364, 204}, corner_size = 8},
-      highlighted_ingredients_background = {position = {364, 204}, corner_size = 8},
-      level_font_color = {0, 84, 5},
-      level_range_font_color = {165, 255, 171},
+      level_band = {position = {398, 619}, corner_size = 8},
+      hovered_level_band = {position = {433, 602}, corner_size = 8},
+      level_range_band = {position = {415, 619}, corner_size = 8},
+      hovered_level_range_band = {position = {448, 602}, corner_size = 8},
+      default_ingredients_background = {position = {364, 619}, corner_size = 8},
+      hovered_ingredients_background = {position = {347, 619}, corner_size = 8},
+      clicked_ingredients_background = {position = {347, 619}, corner_size = 8},
+      disabled_ingredients_background = {position = {364, 619}, corner_size = 8},
+      highlighted_ingredients_background = {position = {347, 619}, corner_size = 8},
+      level_font_color = {132, 132, 132},
+      hovered_level_font_color = {255, 255, 255},
+      level_range_font_color = {132, 132, 132},
+      hovered_level_range_font_color = {255, 255, 255},
+
+      clicked_overlay =
+      {
+        left_top = {position = {456, 136}, size = {16, 16}},
+        top = {position = {472, 136}, size = {1, 16}},
+        right_top = {position = {473, 136}, size = {16, 16}},
+        left = {position = {456, 152}, size = {16, 1}},
+        center = {position = {472, 152}, size = {1, 1}},
+        right = {position = {473, 152}, size = {16, 1}},
+
+        left_bottom = {position = {416, 204}, size = {16, 16}},
+        bottom = {position = {432, 204}, size = {1, 16}},
+        right_bottom = {position = {433, 204}, size = {16, 16}}
+      }
+    },
+
+    disabled_index_technology_slot =
+    {
+      type = "technology_slot_style",
+      parent = "technology_slot",
+      default_graphical_set =
+      {
+        base = {position = {313, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {330, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      selected_hovered_graphical_set =
+      {
+        base = {position = {330, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {330, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      selected_graphical_set =
+      {
+        base = {position = {330, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      selected_clicked_graphical_set =
+      {
+        base = {position = {330, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {313, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      highlighted_graphical_set =
+      {
+        base = {position = {381, 639}, corner_size = 8},
+        shadow = default_shadow
+      },
+      level_band = {position = {466, 639}, corner_size = 8},
+      hovered_level_band = {position = {381, 639}, corner_size = 8},
+      level_range_band = {position = {415, 639}, corner_size = 8},
+      hovered_level_range_band = {position = {398, 639}, corner_size = 8},
+      default_ingredients_background = {position = {364, 639}, corner_size = 8},
+      hovered_ingredients_background = {position = {347, 639}, corner_size = 8},
+      clicked_ingredients_background = {position = {347, 639}, corner_size = 8},
+      disabled_ingredients_background = {position = {364, 639}, corner_size = 8},
+      highlighted_ingredients_background = {position = {347, 639}, corner_size = 8},
+      level_font_color = {132, 132, 132},
+      hovered_level_font_color = {255, 255, 255},
+      level_range_font_color = {132, 132, 132},
+      hovered_level_range_font_color = {255, 255, 255},
 
       clicked_overlay =
       {
@@ -1973,14 +2054,18 @@ data:extend(
         shadow = default_shadow
       },
       level_band = {position = {381, 187}, corner_size = 8},
+      hovered_level_band = {position = {381, 187}, corner_size = 8},
       level_range_band = {position = {397, 187}, corner_size = 8},
+      hovered_level_range_band = {position = {397, 187}, corner_size = 8},
       default_ingredients_background = {position = {347, 187}, corner_size = 8},
       hovered_ingredients_background = {position = {364, 187}, corner_size = 8},
       clicked_ingredients_background = {position = {364, 187}, corner_size = 8},
       disabled_ingredients_background = {position = {364, 187}, corner_size = 8},
       highlighted_ingredients_background = {position = {364, 187}, corner_size = 8},
       level_font_color = {0, 84, 5},
+      hovered_level_font_color = {0, 84, 5},
       level_range_font_color = {165, 255, 171},
+      hovered_level_range_font_color = {165, 255, 171},
 
       clicked_overlay =
       {
@@ -2042,9 +2127,13 @@ data:extend(
         shadow = default_shadow
       },
       level_band = {position = {381, 136}, corner_size = 8},
+      hovered_level_band = {position = {381, 136}, corner_size = 8},
       level_range_band = {position = {397, 136}, corner_size = 8},
+      hovered_level_range_band = {position = {397, 136}, corner_size = 8},
       level_font_color = {77, 71, 48},
+      hovered_level_font_color = {77, 71, 48},
       level_range_font_color = {255, 241, 183},
+      hovered_level_range_font_color = {255, 241, 183},
 
       clicked_overlay =
       {
@@ -2106,14 +2195,18 @@ data:extend(
         shadow = default_shadow
       },
       level_band = {position = {381, 153}, corner_size = 8},
+      hovered_level_band = {position = {381, 153}, corner_size = 8},
       level_range_band = {position = {397, 153}, corner_size = 8},
+      hovered_level_range_band = {position = {397, 153}, corner_size = 8},
       default_ingredients_background = {position = {347, 153}, corner_size = 8},
       hovered_ingredients_background = {position = {364, 136}, corner_size = 8},
       clicked_ingredients_background = {position = {364, 136}, corner_size = 8},
       disabled_ingredients_background = {position = {364, 136}, corner_size = 8},
       highlighted_ingredients_background = {position = {364, 136}, corner_size = 8},
       level_font_color = {95, 68, 32},
+      hovered_level_font_color = {95, 68, 32},
       level_range_font_color = {255, 234, 206},
+      hovered_level_range_font_color = {255, 234, 206},
       clicked_overlay =
       {
         left_top = {position = {456, 136}, size = {16, 16}},
@@ -2174,14 +2267,18 @@ data:extend(
         shadow = default_shadow
       },
       level_band = {position = {381, 170}, corner_size = 8},
+      hovered_level_band = {position = {381, 170}, corner_size = 8},
       level_range_band = {position = {397, 170}, corner_size = 8},
+      hovered_level_range_band = {position = {397, 170}, corner_size = 8},
       default_ingredients_background = {position = {347, 170}, corner_size = 8},
       hovered_ingredients_background = {position = {364, 170}, corner_size = 8},
       clicked_ingredients_background = {position = {364, 170}, corner_size = 8},
       disabled_ingredients_background = {position = {364, 170}, corner_size = 8},
       highlighted_ingredients_background = {position = {364, 170}, corner_size = 8},
       level_font_color = {116, 34, 32},
+      hovered_level_font_color = {116, 34, 32},
       level_range_font_color = {255, 214, 213},
+      hovered_level_range_font_color = {255, 214, 213},
       clicked_overlay =
       {
         left_top = {position = {456, 136}, size = {16, 16}},
@@ -2201,6 +2298,16 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "disabled_technology_slot",
+      scalable = false,
+      width = featured_technology_slot_base_width,
+      height = featured_technology_slot_base_height + 32,
+      ingredients_padding = 32
+    },
+
+    disabled_preview_index_technology_slot =
+    {
+      type = "technology_slot_style",
+      parent = "disabled_index_technology_slot",
       scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,

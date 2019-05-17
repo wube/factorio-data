@@ -2,30 +2,6 @@ data:extend(
 {
   {
     type = "recipe",
-    name = "long-handed-inserter",
-    enabled = false,
-    ingredients =
-    {
-      {"iron-gear-wheel", 1},
-      {"iron-plate", 1},
-      {"inserter", 1}
-    },
-    result = "long-handed-inserter"
-  },
-  {
-    type = "recipe",
-    name = "fast-inserter",
-    enabled = false,
-    ingredients =
-    {
-      {"electronic-circuit", 2},
-      {"iron-plate", 2},
-      {"inserter", 1}
-    },
-    result = "fast-inserter"
-  },
-  {
-    type = "recipe",
     name = "filter-inserter",
     enabled = false,
     ingredients =

@@ -27,4 +27,16 @@ data:extend(
     gas_temperature = 15,
     auto_barrel = false
   },
+  {
+    type = "fluid",
+    name = "sulfuric-acid",
+    default_temperature = 25,
+    heat_capacity = "0.1KJ",
+    base_color = {r=0.75, g=0.65, b=0.1},
+    flow_color = {r=0.7, g=1, b=0.1},
+    max_temperature = 100,
+    icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
+    icon_size = 32,
+    order = "a[fluid]-f[sulfuric-acid]"
+  }
 })

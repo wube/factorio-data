@@ -91,7 +91,7 @@ data:extend(
   -- "d" is available for another resource, but isn't used for now.
 
   resource(
-    { 
+    {
       name = "iron-ore",
       order = "b",
       map_color = {r=0.415, g=0.525, b=0.580},
@@ -104,7 +104,7 @@ data:extend(
     }
   ),
   resource(
-    { 
+    {
       name = "copper-ore",
       order = "b",
       map_color = {r=0.803, g=0.388, b=0.215},
@@ -117,7 +117,7 @@ data:extend(
     }
   ),
   resource(
-    { 
+    {
       name = "coal",
       order = "b",
       map_color = {r=0, g=0, b=0},
@@ -130,7 +130,7 @@ data:extend(
     }
   ),
   resource(
-    { 
+    {
       name = "stone",
       order = "b",
       map_color = {r=0.690, g=0.611, b=0.427},
@@ -141,6 +141,92 @@ data:extend(
       regular_rq_factor_multiplier = 1.0,
       starting_rq_factor_multiplier = 1.1
     }
-  )
+  ),
+  {
+    type = "resource",
+    name = "uranium-ore",
+    icon = "__base__/graphics/icons/uranium-ore.png",
+    icon_size = 32,
+    flags = {"placeable-neutral"},
+    order="a-b-e",
+    tree_removal_probability = 0.7,
+    tree_removal_max_distance = 32 * 32,
+    minable =
+    {
+      mining_particle = "stone-particle",
+      mining_time = 2,
+      result = (not data.is_demo) and "uranium-ore" or nil,
+      fluid_amount = 10,
+      required_fluid = "sulfuric-acid"
+    },
+    collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
+    selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
+    autoplace = resource_autoplace.resource_autoplace_settings{
+      name = "uranium-ore",
+      order = "c",
+      base_density = 0.9,
+      base_spots_per_km2 = 1.25,
+      has_starting_area_placement = false,
+      random_spot_size_minimum = 2,
+      random_spot_size_maximum = 4,
+      resource_index = resource_autoplace.get_next_resource_index(),
+      regular_rq_factor_multiplier = 1
+    },
+    stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50},
+    stages =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/uranium-ore/uranium-ore.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        frame_count = 8,
+        variation_count = 8,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/uranium-ore/hr-uranium-ore.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          frame_count = 8,
+          variation_count = 8,
+          scale = 0.5
+        }
+      }
+    },
+    stages_effect =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/uranium-ore/uranium-ore-glow.png",
+        priority = "extra-high",
+        width = 64,
+        height = 64,
+        frame_count = 8,
+        variation_count = 8,
+        blend_mode = "additive",
+        flags = {"light"},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/uranium-ore/hr-uranium-ore-glow.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          frame_count = 8,
+          variation_count = 8,
+          scale = 0.5,
+          blend_mode = "additive",
+          flags = {"light"}
+        }
+      }
+    },
+    effect_animation_period = 5,
+    effect_animation_period_deviation = 1,
+    effect_darkness_multiplier = 3.6,
+    min_effect_alpha = 0.2,
+    max_effect_alpha = 0.3,
+    map_color = {r=0, g=0.7, b=0}
+  }
 }
 )

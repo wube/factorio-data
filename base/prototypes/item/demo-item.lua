@@ -192,6 +192,26 @@ data:extend(
   },
   {
     type = "item",
+    name = "fast-inserter",
+    icon = "__base__/graphics/icons/fast-inserter.png",
+    icon_size = 32,
+    subgroup = "inserter",
+    order = "d[fast-inserter]",
+    place_result = "fast-inserter",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "long-handed-inserter",
+    icon = "__base__/graphics/icons/long-handed-inserter.png",
+    icon_size = 32,
+    subgroup = "inserter",
+    order = "c[long-handed-inserter]",
+    place_result = "long-handed-inserter",
+    stack_size = 50
+  },
+  {
+    type = "item",
     name = "offshore-pump",
     icon = "__base__/graphics/icons/offshore-pump.png",
     icon_size = 32,
@@ -298,6 +318,16 @@ data:extend(
     subgroup = "production-machine",
     order = "a[assembling-machine-1]",
     place_result = "assembling-machine-1",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "assembling-machine-2",
+    icon = "__base__/graphics/icons/assembling-machine-2.png",
+    icon_size = 32,
+    subgroup = "production-machine",
+    order = "b[assembling-machine-2]",
+    place_result = "assembling-machine-2",
     stack_size = 50
   },
   {
@@ -424,7 +454,7 @@ data:extend(
     {
     type = "item",
     name = "escape-pod-power",
-    icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
+    icons = { {icon = "__base__/graphics/icons/wreckage-reactor.png", tint = {r=1, g=0.8, b=1, a=1}} },
     icon_size = 32,
     flags = {"hidden"},
     order = "zzz[infinite-power]",
@@ -498,6 +528,127 @@ data:extend(
     order = "a[items]-d[compilatron-chest]",
     place_result = "compilatron-chest",
     stack_size = 50,
+  },
+  {
+    type = "tool",
+    name = "automation-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icon = "__base__/graphics/icons/automation-science-pack.png",
+    icon_size = 32,
+    subgroup = "science-pack",
+    order = "a[automation-science-pack]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "tool",
+    name = "logistic-science-pack",
+    localised_description = {"item-description.science-pack"},
+    icon = "__base__/graphics/icons/logistic-science-pack.png",
+    icon_size = 32,
+    subgroup = "science-pack",
+    order = "b[logistic-science-pack]",
+    stack_size = 200,
+    durability = 1,
+    durability_description_key = "description.science-pack-remaining-amount-key",
+    durability_description_value = "description.science-pack-remaining-amount-value"
+  },
+  {
+    type = "item",
+    name = "steel-plate",
+    icon = "__base__/graphics/icons/steel-plate.png",
+    icon_size = 32,
+    subgroup = "raw-material",
+    order = "d[steel-plate]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "splitter",
+    icon = "__base__/graphics/icons/splitter.png",
+    icon_size = 32,
+    subgroup = "belt",
+    order = "c[splitter]-a[splitter]",
+    place_result = "splitter",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "underground-belt",
+    icon = "__base__/graphics/icons/underground-belt.png",
+    icon_size = 32,
+    subgroup = "belt",
+    order = "b[underground-belt]-a[underground-belt]",
+    place_result = "underground-belt",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "loader",
+    icon = "__base__/graphics/icons/loader.png",
+    icon_size = 32,
+    flags = {"hidden"},
+    subgroup = "belt",
+    order = "d[loader]-a[basic-loader]",
+    place_result = "loader",
+    stack_size = 50
+  },
+  {
+    type = "item-with-entity-data",
+    name = "car",
+    icon = "__base__/graphics/icons/car.png",
+    icon_size = 32,
+    subgroup = "transport",
+    order = "b[personal-transport]-a[car]",
+    place_result = "car",
+    stack_size = 1
+  },
+  {
+    type = "item",
+    name = "engine-unit",
+    icon = "__base__/graphics/icons/engine-unit.png",
+    icon_size = 32,
+    subgroup = "intermediate-product",
+    order = "h[engine-unit]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "electric-furnace",
+    icon = "__base__/graphics/icons/electric-furnace.png",
+    icon_size = 32,
+    subgroup = "smelting-machine",
+    order = "c[electric-furnace]",
+    place_result = "electric-furnace",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "solid-fuel",
+    icon = "__base__/graphics/icons/solid-fuel.png",
+    icon_size = 32,
+    fuel_category = "chemical",
+    fuel_value = "12MJ",
+    fuel_acceleration_multiplier = 1.2,
+    fuel_top_speed_multiplier = 1.05,
+    subgroup = "raw-material",
+    order = "c[solid-fuel]",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "rocket-fuel",
+    icon = "__base__/graphics/icons/rocket-fuel.png",
+    icon_size = 32,
+    fuel_category = "chemical",
+    fuel_value = "100MJ",
+    fuel_acceleration_multiplier = 1.8,
+    fuel_top_speed_multiplier = 1.15,
+    subgroup = "intermediate-product",
+    order = "p[rocket-fuel]",
+    stack_size = 10
   },
 }
 )
