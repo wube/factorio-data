@@ -474,7 +474,10 @@ data:extend(
       disabled_font_color = {1, 1, 1, 0.5},
       rich_text_setting = "enabled",
       single_line = true,
-      want_ellipsis = true
+      want_ellipsis = true,
+      rich_text_highlight_error_color = {r=255,g=0,b=0},
+      rich_text_highlight_warning_color = {r=255,g=255,b=0},
+      rich_text_highlight_ok_color = {r=0,g=255,b=0},
     },
 
     clickable_label =
@@ -4219,7 +4222,13 @@ data:extend(
       selection_background_color= {241, 190, 100},
       width = 200,
       minimal_height = 28,
-      rich_text_setting = "enabled"
+      rich_text_setting = "enabled",
+      rich_text_highlight_error_color = {r=255,g=0,b=0},
+      rich_text_highlight_warning_color = {r=255,g=255,b=0},
+      rich_text_highlight_ok_color = {r=0,g=255,b=0},
+      selected_rich_text_highlight_error_color = {r=255,g=0,b=0},
+      selected_rich_text_highlight_warning_color = {r=255,g=255,b=0},
+      selected_rich_text_highlight_ok_color = {r=0,g=255,b=0},
     },
 
     notice_textbox =

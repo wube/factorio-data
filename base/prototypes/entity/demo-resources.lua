@@ -52,7 +52,7 @@ local function resource(resource_parameters, autoplace_parameters)
       order = resource_parameters.order,
       base_density = autoplace_parameters.base_density,
       has_starting_area_placement = true,
-      resource_index = resource_autoplace.get_next_resource_index(),
+      resource_index = resource_autoplace.resource_indexes[resource_parameters.name],
       regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier;
       starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier;
     },
@@ -169,7 +169,7 @@ data:extend(
       has_starting_area_placement = false,
       random_spot_size_minimum = 2,
       random_spot_size_maximum = 4,
-      resource_index = resource_autoplace.get_next_resource_index(),
+      resource_index = resource_autoplace.resource_indexes["uranium-ore"],
       regular_rq_factor_multiplier = 1
     },
     stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50},

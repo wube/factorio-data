@@ -6804,14 +6804,16 @@ data:extend(
       width = 481,
       height = 481,
       shift = util.by_pixel(-2, -2),
-      hr_version = {
-        filename = "__base__/graphics/entity/rocket-silo/hr-03-rocket-over-glare.png",
-        blend_mode = "additive",
-        width = 954,
-        height = 954,
-        shift = util.by_pixel(0, 0),
-        scale = 0.5
-      }
+      flags = { "linear-magnification", "linear-minification" },
+      --hr_version =
+      --{
+      --  filename = "__base__/graphics/entity/rocket-silo/hr-03-rocket-over-glare.png",
+      --  blend_mode = "additive",
+      --  width = 954,
+      --  height = 954,
+      --  shift = util.by_pixel(0, 0),
+      --  scale = 0.5
+      --}
     }),
     rocket_smoke_top1_animation = util.add_shift_offset(util.by_pixel(0-66, -112+28+232+32),
     {
@@ -10661,6 +10663,8 @@ data:extend(
     },
 
     light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 0.0, g = 1.0, b = 0.0}},
+    -- use_fuel_glow_color = false, -- should use glow color from fuel item prototype as light color and tint for working_light_picture
+    -- default_fuel_glow_color = { 0, 1, 0, 1 } -- color used as working_light_picture tint for fuels that don't have glow color defined
 
     heat_buffer =
     {

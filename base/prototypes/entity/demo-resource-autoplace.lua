@@ -6,7 +6,7 @@ local litexp = noise.literal_expression
 local starting_resource_count = 4
 local regular_resource_count = 6 -- add oil and uranium
 
-next_resource_index = 0
+next_resource_index = 6
 function get_next_resource_index()
   local resource_index = next_resource_index
   next_resource_index = next_resource_index + 1
@@ -21,6 +21,15 @@ local function dump_expression(name, expr)
 end
 
 local onethird = tne(1)/3 -- Looks nicer in output than 0.333333
+
+local resource_indexes = {
+  ["iron-ore"] = 0,
+  ["copper-ore"] = 1,
+  ["coal"] = 2,
+  ["stone"] = 3,
+  ["crude-oil"] = 4,
+  ["uranium-ore"] = 5,
+}
 
 local function resource_autoplace_settings(params)
   local name = params.name
@@ -353,5 +362,6 @@ end
 return
 {
   get_next_resource_index = get_next_resource_index,
+  resource_indexes = resource_indexes,
   resource_autoplace_settings = resource_autoplace_settings
 }

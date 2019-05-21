@@ -5778,8 +5778,8 @@ data:extend(
   {
     type = "flying-text",
     name = "tile-proxy",
-    icon = "__core__/graphics/white-square.png",
-    icon_size = 10,
+    icon = "__base__/graphics/icons/landfill.png",
+    icon_size = 32,
     flags = {"hidden"},
     time_to_live = 150,
     speed = 0.05

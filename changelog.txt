@@ -1,11 +1,43 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.42
+Version: 0.17.43
 Date: ????
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.41
-Date: 17. 05. 2019
+Version: 0.17.42
+Date: 21. 05. 2019
+  Changes:
+    - Tweaked default graphics settings. The game should choose better default graphics settings for computers with integrated GPUs or less than 6 GB of RAM.
   Bugfixes:
     - Fixed that GUI element size wasn't updated in inactive tabs when ui scaled changed. (https://forums.factorio.com/70649)
+    - Fixed "Confirm Message" conflicting with some key-bindings. "Confirm Message" can no longer be bound to mouse input. (https://forums.factorio.com/70910)
+    - Fixed possible crash when rendering GUI element with dynamically loaded sprite. (https://forums.factorio.com/66507)
+    - Fixed recipe window showing wrong item count or not enough ingredients in some situations. (https://forums.factorio.com/67592)
+    - Fixed a crash when deleting the force of a car with an active logistic network through vehicle equipment grid. (https://forums.factorio.com/70734)
+    - Mod names are no longer allowed to contain rich text. (https://forums.factorio.com/70895)
+    - Fixed IME (Input Method Editors) did not work (Windows only). (https://forums.factorio.com/65358)
+    - Fixed placement of oil and uranium patches back to that of 0.17.40. (https://forums.factorio.com/70967)
+    - Fixed that roboports with a request_to_open_door_timeout of 0 wouldn't work correctly. (https://forums.factorio.com/70973)
+    - Fixed that products wouldn't allow amount_min of 0 for items. (https://forums.factorio.com/71014)
+    - Fixed that migrated/removed fuel items could leave the game in an invalid state. (https://forums.factorio.com/71029)
+    - Fixed a crash when building combat robots after resetting the achievements in-game. (https://forums.factorio.com/71041)
+    - Fixed that assembler ghosts would carry over the unresearched blueprint bug from 0.17.38. (https://forums.factorio.com/708990)
+    - Fixed crash related to clearing a blueprint book from the cursor. (https://forums.factorio.com/70955)
+    - Fixed that the rotation of blueprint was not saved to the blueprint library in some situations.
+    - Fixed bad icon in pollution statistics. (https://forums.factorio.com/71011)
+    - Fixed hand icon not disappearing when you grab a blueprint from chat. (https://forums.factorio.com/70971)
+    - Fixed that reviving modded tile ghost entities could destroy other entities in some situations. (https://forums.factorio.com/70606)
+    - Fixed car tooltip showing it's moving when it's not actually moving.
+    - Fixed car rotating in place when the speed is very low. (https://forums.factorio.com/71076)
+    - Fixed that fluid wagons could not carry fluids with sub-zero temperatures. (https://forums.factorio.com/71013)
+    - Fixed that rolling stock "must be build on rails" error was not using the name of the rolling stock. (https://forums.factorio.com/71087)
+    - Possibly handled fullscreen window being moved to screen of different size on Windows. (https://forums.factorio.com/63292)
+    - Fixed a crash when using table_size() without any argument. (https://forums.factorio.com/71090)
+    - Fixed players getting a new player character when they connect after disconnecting, connecting and disconnecting again from a paused game. (https://forums.factorio.com/71017)
+  Modding:
+    - Added map-gen-seed-max command line parameter.
+    - Added generate-map-preview-random command line parameter.
+    - Changed generate-map-preview command line parameter to need PATH instead of PNGFILE, the file name is now always the seed.
+    - Made "apply_recipe_tint" be applied also to "light" working visualization effects of crafting machines.
+    - Added "use_fuel_glow_color" property to reactor prototype.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.41
 Date: 17. 05. 2019
