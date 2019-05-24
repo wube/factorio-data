@@ -115,25 +115,36 @@ local function generate_fill_barrel_icons(fluid)
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
   top_hoop_tint.a = top_hoop_alpha
 
-  return
+  local icons = 
   {
     {
-      icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png"
+      icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png",
+      icon_size = 32
     },
     {
       icon = barrel_fill_side_mask,
+      icon_size = 32,
       tint = side_tint
     },
     {
       icon = barrel_fill_top_mask,
+      icon_size = 32,
       tint = top_hoop_tint
-    },
-    {
-      icon = fluid.icon,
-      scale = 0.5,
-      shift = {4, -8}
     }
   }
+  if fluid.icon and fluid.icon_size then
+    table.insert(icons,
+    {
+      icon = fluid.icon,
+      icon_size = fluid.icon_size,
+      scale = 16.0 / fluid.icon_size, -- scale = 0.5 * 32 / icon_size simplified
+      shift = {4, -8}
+    }
+    )
+  elseif fluid.icons then
+    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {4, -8}})
+  end
+  return icons
 end
 
 -- Generates the icons definition for a empty-barrel recipe with the provided barrel name and fluid definition
@@ -143,25 +154,36 @@ local function generate_empty_barrel_icons(fluid)
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
   top_hoop_tint.a = top_hoop_alpha
 
-  return
+  local icons = 
   {
     {
-      icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png"
+      icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
+      icon_size = 32
     },
     {
       icon = barrel_empty_side_mask,
+      icon_size = 32,
       tint = side_tint
     },
     {
       icon = barrel_empty_top_mask,
+      icon_size = 32,
       tint = top_hoop_tint
-    },
-    {
-      icon = fluid.icon,
-      scale = 0.5,
-      shift = {7, 8}
     }
   }
+  if fluid.icon and fluid.icon_size then
+    table.insert(icons,
+    {
+      icon = fluid.icon,
+      icon_size = fluid.icon_size,
+      scale = 16.0 / fluid.icon_size,
+      shift = {7, 8}
+    }
+    )
+  elseif fluid.icons then
+    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {7, 8}})
+  end
+  return icons
 end
 
 -- Creates a recipe to fill the provided barrel item with the provided fluid
@@ -295,7 +317,7 @@ local function process_fluids(fluids, technology, empty_barrel_item)
 
   for name,fluid in pairs(fluids) do
     -- Allow fluids to opt-out
-    if (fluid.auto_barrel == nil or fluid.auto_barrel) and fluid.icon then
+    if (fluid.auto_barrel == nil or fluid.auto_barrel) and (fluid.icon and fluid.icon_size) or fluid.icons then
 
       local barrel_name = fluid.name .. "-barrel"
 

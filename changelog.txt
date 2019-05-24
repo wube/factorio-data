@@ -1,6 +1,33 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.43
+Version: 0.17.44
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.43
+Date: 24. 05. 2019
+  Changes:
+    - The argument to --generate-map-preview is treated as a directory only if it ends with a '/' or '\'.
+    - Car/tank color keeps the color of the last user.
+  Bugfixes:
+    - Fixed that the technology GUI could freeze on certain technologies. (https://forums.factorio.com/70997)
+    - Fixed a crash when trying to build train ghosts not on rails. (https://forums.factorio.com/71118)
+    - Fixed a crash related to changing the logistic mode on an infinity-chest type entity through mods. (https://forums.factorio.com/70911)
+    - Fixed low readability tag color highlighting in textboxes. (https://forums.factorio.com/67469)
+    - Fixed Korean IME still did not work (Windows only). (https://forums.factorio.com/71123)
+    - Fixed statistics graphs X axis labels showing wrong values for 250h and 1000h time frames. (https://forums.factorio.com/71091)
+    - Fixed that the wrong entry could be highlighted in the electric network graph. (https://forums.factorio.com/67361)
+    - Fixed that picking up an item from quickbar wouldn't reserve the slot with an inventory hand when the inventory was full. (https://forums.factorio.com/70974)
+    - Fixed robot energy consumption when using very high speed bonuses. (https://forums.factorio.com/70951)
+    - Fixed a false-positive changed message in the mods GUI under specific situations. (https://forums.factorio.com/69772)
+    - Fixed icons inside blueprint book items not being scaled properly.
+    - Fixed that delimit-procedure noise expressions at the root of an expression tree would crash the compiler.
+  Modding:
+    - Added util.combine_icons(icons1, icons2, inputs) function to aid in combining icons tables.
+    - Changed the auto_barrel recipe icon generation to account for fluids with an icon_size not set to 32, or fluids with an icons table. (https://forums.factorio.com/71158)
+  Scripting:
+    - Added LuaNamedNoiseExpression and LuaGameScript::named_noise_expressions read.
+    - Added LuaEntity::tree_stage_index read/write.
+    - Added LuaEntity::tree_stage_index_max and tree_color_index_max read.
+    - Added "player_index" to the on_rocket_launch_ordered and on_rocket_launched events.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.42
 Date: 21. 05. 2019

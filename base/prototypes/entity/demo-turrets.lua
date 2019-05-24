@@ -542,7 +542,7 @@ data:extend(
         --},
         {
           filename = "__base__/graphics/entity/gun-turret/gun-turret-base-mask.png",
-          flags = { "mask" },
+          flags = { "mask", "low-object" },
           line_length = 1,
           width = 62,
           height = 52,
@@ -554,7 +554,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/gun-turret/hr-gun-turret-base-mask.png",
-            flags = { "mask" },
+            flags = { "mask", "low-object" },
             line_length = 1,
             width = 122,
             height = 102,

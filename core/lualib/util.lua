@@ -366,4 +366,32 @@ util.get_walkable_tile = function()
   error("No walkable tile in prototype list")
 end
 
+-- This function takes 2 icons tables, and adds the second to the first, but applies scale, shift and tint to the entire second set.
+-- This allows you to manipulate the entire second icons table in the same way as you would manipulate a single icon when adding to the icons table.
+function util.combine_icons(icons1, icons2, inputs)
+  scale = inputs.scale or 1
+  shift = inputs.shift or {0, 0}
+  tint = inputs.tint or {r = 1, g = 1, b = 1, a = 1}
+
+  local icons = table.deepcopy(icons1)
+  for _,icon_to_add in pairs(icons2) do
+    local icon = {}
+    icon.icon = icon_to_add.icon -- the only line you can guarantee
+    icon.icon_size = icon_to_add.icon_size or 32
+    icon.scale = scale * (icon_to_add.scale or 32.0/icon.icon_size)
+    if icon_to_add.shift then
+      icon.shift = {icon_to_add.shift[1] * scale + shift[1], icon_to_add.shift[2] * scale + shift[2]}
+    else
+      icon.shift = shift
+    end
+    if icon_to_add.tint then
+      icon.tint = util.mix_color(tint, icon_to_add.tint)
+    else
+      icon.tint = tint
+    end
+    table.insert(icons,icon)
+  end
+  return icons
+end
+
 return util

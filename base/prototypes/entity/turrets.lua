@@ -285,6 +285,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/artillery-turret/hr-artillery-turret-base.png",
+            priority = "high",
             line_length = 1,
             width = 207,
             height = 199,
@@ -1006,7 +1007,6 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/laser-turret/laser-turret-base-shadow.png",
-          flags = { "mask" },
           line_length = 1,
           width = 66,
           height = 42,
@@ -1017,7 +1017,6 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/laser-turret/hr-laser-turret-base-shadow.png",
-            flags = { "mask" },
             line_length = 1,
             width = 132,
             height = 82,

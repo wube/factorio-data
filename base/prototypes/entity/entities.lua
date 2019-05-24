@@ -4163,6 +4163,10 @@ data:extend(
         percent = 100
       },
       {
+        type = "acid",
+        percent = 80
+      },
+      {
         type = "laser",
         percent = 70
       }

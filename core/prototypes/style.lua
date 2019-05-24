@@ -4223,12 +4223,12 @@ data:extend(
       width = 200,
       minimal_height = 28,
       rich_text_setting = "enabled",
-      rich_text_highlight_error_color = {r=255,g=0,b=0},
-      rich_text_highlight_warning_color = {r=255,g=255,b=0},
-      rich_text_highlight_ok_color = {r=0,g=255,b=0},
-      selected_rich_text_highlight_error_color = {r=255,g=0,b=0},
-      selected_rich_text_highlight_warning_color = {r=255,g=255,b=0},
-      selected_rich_text_highlight_ok_color = {r=0,g=255,b=0},
+      rich_text_highlight_error_color = {r=166,g=10,b=10},
+      rich_text_highlight_warning_color = {r=255,g=90,b=0},
+      rich_text_highlight_ok_color = {r=63,g=105,b=0},
+      selected_rich_text_highlight_error_color = {r=166,g=10,b=10},
+      selected_rich_text_highlight_warning_color = {r=182,g=62,b=4},
+      selected_rich_text_highlight_ok_color = {r=50,g=80,b=0},
     },
 
     notice_textbox =
@@ -4288,7 +4288,13 @@ data:extend(
       top_padding = 0,
       bottom_padding = 0,
       selection_background_color= {241, 190, 100},
-      rich_text_setting = "highlight",
+      rich_text_setting = "enabled",
+      rich_text_highlight_error_color = {r=255,g=0,b=0},
+      rich_text_highlight_warning_color = {r=255,g=255,b=0},
+      rich_text_highlight_ok_color = {r=0,g=255,b=0},
+      selected_rich_text_highlight_error_color = {r=255,g=0,b=0},
+      selected_rich_text_highlight_warning_color = {r=255,g=255,b=0},
+      selected_rich_text_highlight_ok_color = {r=0,g=255,b=0},
       default_background =
       {
         top_border = 2,
