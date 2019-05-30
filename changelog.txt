@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.44
+Version: 0.17.45
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.44
+Date: 30. 05. 2019
+  Changes:
+    - The resource frequency slider in the map generator settings has a smaller influence over the amount of ore in the starting area patches. (https://forums.factorio.com/70520)
+    - Inserters with stack bonus are now smarter when picking up items, and thus slightly faster. (https://forums.factorio.com/66973)
+  Bugfixes:
+    - Fixed that researching the appropriate technology would re-add shortcut buttons to the shortcut toolbar even if the player explicitly removed them earlier. (https://forums.factorio.com/71152)
+    - Fixed that some saves that contained multiple surfaces would cause the game to crash on load. (https://forums.factorio.com/71199)
+    - Fixed that auto-barreling opt-out didn't work if the fluid has icons defined. (https://forums.factorio.com/71202)
+    - Fixed that auto-barreling recipes would use the wrong fluid name if the fluid had a custom localised name defined. (https://forums.factorio.com/71193)
+    - Fixed that the entity damaged event original_damage value wouldn't be accurate if the entity had shields or resistances. (https://forums.factorio.com/71218)
+    - Fixed a performance problem related to the undo logic and large blueprints. (https://forums.factorio.com/70855)
+    - Fixed that trying to join Steam networking enabled games with Steam networking disabled didn't work correctly. (https://forums.factorio.com/71250)
+    - Fixed that trains built part of a blueprint was snapping to train stop which could prevent some specific blueprints from being built.
+    - Fixed smoke for generators without animation. (https://forums.factorio.com/68757)
+    - Fixed train circuit conditions not working properly sometimes when arriving at disabled station. (https://forums.factorio.com/70867)
+    - Fixed transparency of tables. (https://forums.factorio.com/70093)
+    - Fixed reintroduction of blueprint train building problems. (https://forums.factorio.com/71215)
+    - Fixed that the game could freeze on exit on Linux after clicking a link. (https://forums.factorio.com/70110)
+    - Fixed statistics windows showing strange totals in some situations.  (https://forums.factorio.com/71170)
+    - Fixed statistics windows not showing the first few values (e.g. when an items is produced for the first time). (https://forums.factorio.com/71353)
+    - Fixed that belt immunity equipment would drain energy in armor when not equipped. (https://forums.factorio.com/70090)
+    - Using the NO_SCHEDULE train state more consistently (for train in automatic mode with empty schedule. (https://forums.factorio.com/71312)
+    - Fixed inserters behaving differently when rotated. (https://forums.factorio.com/69592)
+    - Fixed that the control key would be ignored by Factorio on Linux if the "Press Ctrl to highlight the pointer" (or equivalent) option was enabled. (https://forums.factorio.com/69319)
+    - Fixed that cloning tiles in the map editor wouldn't always clone transitions correctly. (https://forums.factorio.com/70956)
+    - Fixed that the supply mission finished game GUI was too small. (https://forums.factorio.com/71333)
+  Modding:
+    - Added optional assembling machine gui_title_key property.
+    - Changed belt immunity equipment to consume energy through "energy_consumption" instead of "energy_source.drain".
+  Scripting:
+    - Added LuaGuiElement::vertical_centering read/write.
+    - Added LuaEntity::auto_launch read/write.
+    - Added LuaTransportLine::line_equals().
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.43
 Date: 24. 05. 2019

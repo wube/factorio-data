@@ -877,7 +877,7 @@ data:extend(
       default_graphical_set = arrow_back(grey_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
       hovered_graphical_set = arrow_back(grey_arrow_tileset, arrow_hovered_index, "glow", default_glow_color),
       clicked_graphical_set = arrow_back(grey_arrow_tileset, arrow_clicked_index),
-      disabled_graphical_set = arrow_back(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
+      disabled_graphical_set = arrow_back(grey_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
     },
 
     red_back_button =

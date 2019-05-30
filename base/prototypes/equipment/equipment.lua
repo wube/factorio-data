@@ -485,9 +485,9 @@ data:extend(
       type = "electric",
       buffer_capacity = "100kJ",
       input_flow_limit = "240kW",
-      drain = "100kW",
       usage_priority = "primary-input"
     },
+    energy_consumption = "100kW",
     categories = {"armor"},
     order = "b-i-c"
   }

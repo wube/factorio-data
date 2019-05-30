@@ -3391,6 +3391,7 @@ data:extend(
       }
     },
     extension_speed = 0.0214,
+    rotation_speed = 0.01,
     fast_replaceable_group = "inserter",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
@@ -3532,7 +3533,6 @@ data:extend(
         }
       }
     },
-    rotation_speed = 0.01,
     circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
     circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,

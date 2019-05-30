@@ -163,8 +163,11 @@ local function resource_autoplace_settings(params)
   -- Values for starting spots.
   -- Simpler calculations than for regular spots because they are only placed
   -- in one place and therefore there are fewer variables!
-
-  local starting_amount = 40000 * base_density * density_multiplier
+  
+  -- reduce the influence of the frequency slider over the amount of ore in the starting area.
+  -- note that starting_spot_count is still set to frequency_multiplier below, so we still split the ore to a fairly high amount of patches.
+  local starting_frequency_multiplier = ((frequency_multiplier - 1) * 0.5) + 1
+  local starting_amount = 40000 * base_density * starting_frequency_multiplier * size_multiplier
   --local starting_amount = 1000000 -- nicer for testing - just check that all spots have ~1.0M
   local starting_area_sharpness = tne(math.huge)
   local starting_resource_placement_area = math.pi*starting_resource_placement_radius*starting_resource_placement_radius

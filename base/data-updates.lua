@@ -87,7 +87,7 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
   {
     type = "item",
     name = name,
-    localised_name = {"item-name.filled-barrel", {"fluid-name." .. fluid.name}},
+    localised_name = {"item-name.filled-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
     icons = generate_barrel_item_icons(fluid, empty_barrel_item),
     icon_size = 32,
     subgroup = "fill-barrel",
@@ -110,12 +110,13 @@ end
 
 -- Generates the icons definition for a fill-barrel recipe with the provided barrel name and fluid definition
 local function generate_fill_barrel_icons(fluid)
+
   local side_tint = util.table.deepcopy(fluid.base_color)
   side_tint.a = side_alpha
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
   top_hoop_tint.a = top_hoop_alpha
 
-  local icons = 
+  local icons =
   {
     {
       icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png",
@@ -132,6 +133,7 @@ local function generate_fill_barrel_icons(fluid)
       tint = top_hoop_tint
     }
   }
+
   if fluid.icon and fluid.icon_size then
     table.insert(icons,
     {
@@ -144,6 +146,7 @@ local function generate_fill_barrel_icons(fluid)
   elseif fluid.icons then
     icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {4, -8}})
   end
+
   return icons
 end
 
@@ -154,7 +157,7 @@ local function generate_empty_barrel_icons(fluid)
   local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
   top_hoop_tint.a = top_hoop_alpha
 
-  local icons = 
+  local icons =
   {
     {
       icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
@@ -183,6 +186,7 @@ local function generate_empty_barrel_icons(fluid)
   elseif fluid.icons then
     icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {7, 8}})
   end
+
   return icons
 end
 
@@ -192,7 +196,7 @@ local function create_fill_barrel_recipe(item, fluid)
   {
     type = "recipe",
     name = "fill-" .. item.name,
-    localised_name = {"recipe-name.fill-barrel", {"fluid-name." .. fluid.name}},
+    localised_name = {"recipe-name.fill-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
     category = "crafting-with-fluid",
     energy_required = energy_per_fill,
     subgroup = "fill-barrel",
@@ -222,7 +226,7 @@ local function create_empty_barrel_recipe(item, fluid)
   {
     type = "recipe",
     name = "empty-" .. item.name,
-    localised_name = {"recipe-name.empty-filled-barrel", {"fluid-name." .. fluid.name}},
+    localised_name = {"recipe-name.empty-filled-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
     category = "crafting-with-fluid",
     energy_required = energy_per_empty,
     subgroup = "empty-barrel",
@@ -291,46 +295,66 @@ local function add_barrel_to_technology(fill_recipe, empty_recipe, technology)
   end
 end
 
-local function get_disabled_reason(fluids, technology, empty_barrel_item)
-  if not fluids then
-    return "there are no fluids"
-  end
-
-  if not technology then
-    return "the " .. technology_name .. " technology doesn't exist"
-  end
-
-  if not empty_barrel_item then
-    return "the " .. empty_barrel_name .. " item doesn't exist"
-  end
-
-  if not empty_barrel_item.icon then
-    return "the " .. empty_barrel_name .. " item singular-icon definition doesn't exist"
-  end
+local function log_barrel_error(string)
+  log("Auto barrel generation is disabled: " .. string .. ".")
 end
 
-local function process_fluids(fluids, technology, empty_barrel_item)
-  if not fluids or not technology or not empty_barrel_item or not empty_barrel_item.icon then
-    log("Auto barrel generation is disabled: " .. get_disabled_reason(fluids, technology, empty_barrel_item) .. ".")
+local function can_process_fluids(fluids, technology, empty_barrel_item)
+
+  if not fluids then
+    log_barrel_error("there are no fluids")
     return
   end
 
-  for name,fluid in pairs(fluids) do
-    -- Allow fluids to opt-out
-    if (fluid.auto_barrel == nil or fluid.auto_barrel) and (fluid.icon and fluid.icon_size) or fluid.icons then
-
-      local barrel_name = fluid.name .. "-barrel"
-
-      -- check if a barrel already exists for this fluid if not - create one
-      local barrel_item = get_or_create_barrel_item(barrel_name, fluid, empty_barrel_item)
-
-      -- check if the barrel has a recipe if not - create one
-      local barrel_fill_recipe, barrel_empty_recipe = get_or_create_barrel_recipes(barrel_item, fluid)
-
-      -- check if the barrel recipe exists in the unlock list of the technology if not - add it
-      add_barrel_to_technology(barrel_fill_recipe, barrel_empty_recipe, technology)
-    end
+  if not technology then
+    log_barrel_error("the " .. technology_name .. " technology doesn't exist")
+    return
   end
+
+  if not empty_barrel_item then
+    log_barrel_error("the " .. empty_barrel_name .. " item doesn't exist")
+    return
+  end
+
+  if not empty_barrel_item.icon then
+    log_barrel_error("the " .. empty_barrel_name .. " item singular-icon definition doesn't exist")
+    return
+  end
+
+  return true
+end
+
+local function process_fluid(fluid, technology, empty_barrel_item)
+
+  -- Allow fluids to opt-out
+  if fluid.auto_barrel == false then return end
+
+  if not (fluid.icon or fluid.icons) then
+    log("Can't make barrel recipe for "..fluid.name..", it doesn't have any icon or icons.")
+    return
+  end
+
+  local barrel_name = fluid.name .. "-barrel"
+
+  -- check if a barrel already exists for this fluid if not - create one
+  local barrel_item = get_or_create_barrel_item(barrel_name, fluid, empty_barrel_item)
+
+  -- check if the barrel has a recipe if not - create one
+  local barrel_fill_recipe, barrel_empty_recipe = get_or_create_barrel_recipes(barrel_item, fluid)
+
+  -- check if the barrel recipe exists in the unlock list of the technology if not - add it
+  add_barrel_to_technology(barrel_fill_recipe, barrel_empty_recipe, technology)
+
+end
+
+local function process_fluids(fluids, technology, empty_barrel_item)
+
+  if not can_process_fluids(fluids, technology, empty_barrel_item) then return end
+
+  for name, fluid in pairs(fluids) do
+    process_fluid(fluid, technology, empty_barrel_item)
+  end
+
 end
 
 process_fluids(data.raw["fluid"], get_technology(technology_name), get_item(empty_barrel_name))
