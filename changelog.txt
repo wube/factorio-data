@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.45
+Version: 0.17.46
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.45
+Date: 31. 05. 2019
+  Bugfixes:
+    - Changed the go-to-mod buttons in the manage and update tabs of the Mods GUI to switch to the install tab if needed. (https://forums.factorio.com/65902)
+    - Fixed that it was possible to open the command console while inside the technology GUI. (https://forums.factorio.com/66458)
+    - Fixed that it was not possible to build ghosts in normally visible area which is in fog of war in map view. (https://forums.factorio.com/71411)
+    - Fixed a crash when removing modded recipes while hand-crafting those recipes. (https://forums.factorio.com/70247)
+    - Fixed that nested CustomGuiStyle changes didn't work correctly. (https://forums.factorio.com/71419)
+    - Fixed that inserter would sometimes put items on the wrong side of the belt.
+  Scripting:
+    - Added only_in_alt_mode to LuaRendering draw functions.
+    - Changed LuaEntity::copy_settings() to also copy settings from ghosts.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.44
 Date: 30. 05. 2019
