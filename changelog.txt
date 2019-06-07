@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.47
+Version: 0.17.48
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.47
+Date: 07. 06. 2019
+  Bugfixes:
+    - Fixed that the game crashed when passing train signal while driving train in manual mode.
+    - Fixed that 'station name' and 'player name' map toggles would seemingly randomly toggle on when turning on some options. (https://forums.factorio.com/71620)
+    - Disabled check that prevented loading of some mods. (https://forums.factorio.com/71664)
+    - Fixed crash when saving speech bubbles that had been migrated from old saves. (https://forums.factorio.com/71660)
+    - Fixed NPE crash when Compilatron is boxed while building. (https://forums.factorio.com/71665)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.46
 Date: 07. 06. 2019
