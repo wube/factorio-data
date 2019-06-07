@@ -255,7 +255,8 @@ function acid_splash_fire(data)
       type = "direct",
       radius = 2.5,
       force = "enemy",
-      collision_mask = { "train-layer" },
+      ignore_collision_condition = true,
+      trigger_target_mask = { "ground-unit" },
       filter_enabled = true,
       action_delivery =
       {

@@ -1759,7 +1759,77 @@ data:extend(
     circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance
   },
-
+  {
+    type = "container",
+    name = "iron-chest",
+    icon = "__base__/graphics/icons/iron-chest.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.2, result = "iron-chest"},
+    max_health = 200,
+    corpse = "small-remnants",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 80
+      },
+      {
+        type = "impact",
+        percent = 30
+      }
+    },
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    fast_replaceable_group = "container",
+    inventory_size = 32,
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
+          priority = "extra-high",
+          width = 34,
+          height = 38,
+          shift = util.by_pixel(0, -0.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/iron-chest/hr-iron-chest.png",
+            priority = "extra-high",
+            width = 66,
+            height = 76,
+            shift = util.by_pixel(-0.5, -0.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/iron-chest/iron-chest-shadow.png",
+          priority = "extra-high",
+          width = 56,
+          height = 26,
+          shift = util.by_pixel(10, 6.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/iron-chest/hr-iron-chest-shadow.png",
+            priority = "extra-high",
+            width = 110,
+            height = 50,
+            shift = util.by_pixel(10.5, 6),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
+  },
   {
     type = "container",
     name = "bait-chest",
@@ -4217,21 +4287,7 @@ data:extend(
   {
     type = "speech-bubble",
     name = "compi-speech-bubble",
-    font = "scenario-message-dialog",
-    font_color = {r=255,g=174,b=24},
-    arrow_sprite =
-    {
-      type = "sprite",
-      name = "speech_bubble_arrow",
-      filename = "__core__/graphics/gui-new.png",
-      priority = "extra-high-no-scale",
-      x = 465,
-      y = 552,
-      width = 32,
-      height = 19,
-      scale = 0.5,
-      flags = {"icon"}
-    },
+    style = "compilatron_speech_bubble",
     flags = {"not-on-map", "placeable-off-grid"}
   },
   {
@@ -5060,7 +5116,7 @@ data:extend(
     vision_distance = 30,
     movement_speed = 0.2,
     distance_per_frame = 0.1,
-    pollution_to_join_attack = 4,
+    pollution_to_join_attack = 1,
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
@@ -5151,7 +5207,9 @@ data:extend(
     crafting_speed = 1.25,
     energy_source =
     {
-      type = "void",
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions_per_minute = 4
     },
     energy_usage = "90kW",
     ingredient_count = 2,
@@ -5348,7 +5406,7 @@ data:extend(
     icon = "__base__/graphics/icons/lab.png",
     icon_size = 32,
     flags = {"placeable-player", "player-creation", "hidden"},
-    minable = {mining_time = 1, result = "lab"},
+    minable = {mining_time = 1, result = "escape-pod-lab"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 150,
     corpse = "big-remnants",
@@ -5496,7 +5554,9 @@ data:extend(
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     energy_source =
     {
-      type = "void"
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions_per_minute = 4
     },
     energy_usage = "60kW",
     researching_speed = 1,
@@ -5508,7 +5568,7 @@ data:extend(
   {
     type = "electric-energy-interface",
     name = "escape-pod-power",
-    icons = { {icon = "__base__/graphics/icons/wreckage-reactor.png", tint = {r=1, g=0.8, b=1, a=1}} },
+    icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "escape-pod-power"},
@@ -5699,7 +5759,7 @@ data:extend(
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    inventory_size = 3,
+    inventory_size = 32,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
     vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },

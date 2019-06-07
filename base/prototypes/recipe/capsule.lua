@@ -59,8 +59,8 @@ data:extend(
     energy_required = 8,
     ingredients =
     {
-      {"piercing-rounds-magazine", 1},
-      {"flying-robot-frame", 1},
+      {"piercing-rounds-magazine", 3},
+      {"electronic-circuit", 3},
       {"iron-gear-wheel", 3}
     },
     result = "defender-capsule"

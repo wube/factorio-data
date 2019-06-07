@@ -98,27 +98,27 @@ data:extend(
     order = "d[colors]-[9black]"
   },
   {
-    type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
+    type = "virtual-signal",
     name = "signal-check",
     icon = "__base__/graphics/icons/checked-green.png",
     icon_size = 32,
-    subgroup = "virtual-signal-color",
-    order = "d[colors]-[9checked]"
+    subgroup = "virtual-signal",
+    order = "e[signal]-[1checked]"
   },
   {
-    type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
+    type = "virtual-signal",
     name = "signal-info",
     icon = "__base__/graphics/icons/info.png",
     icon_size = 32,
-    subgroup = "virtual-signal-color",
-    order = "d[colors]-[9info]"
+    subgroup = "virtual-signal",
+    order = "e[signal]-[2info]"
   },
   {
-    type = "virtual-signal", -- TODO: placeholder, when removing, remember to remove localised name too!
+    type = "virtual-signal",
     name = "signal-dot",
     icon = "__base__/graphics/icons/list-dot.png",
     icon_size = 32,
-    subgroup = "virtual-signal-color",
-    order = "d[colors]-[9dot]"
-  },
+    subgroup = "virtual-signal",
+    order = "e[signal]-[3dot]"
+  }
 })

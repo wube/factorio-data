@@ -3,6 +3,7 @@ require ("prototypes.entity.demo-worm-animations")
 require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
 enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
+local util = require('util')
 
 function gun_turret_extension(inputs)
 return
@@ -616,3 +617,34 @@ data:extend(
   }
 }
 )
+
+local cutscene_turret = util.table.deepcopy(data.raw["ammo-turret"]["gun-turret"])
+cutscene_turret.name = 'cutscene-gun-turret'
+cutscene_turret.order = 'aaa'
+cutscene_turret.rotation_speed = 0.015
+cutscene_turret.preparing_speed = 0.08
+cutscene_turret.folding_speed = 0.08
+cutscene_turret.attacking_speed = 0.5
+cutscene_turret.attack_parameters =
+{
+  type = "projectile",
+  ammo_category = "bullet",
+  cooldown = 6,
+  projectile_creation_distance = 1.39375,
+  projectile_center = {0, -0.0875}, -- same as gun_turret_attack shift
+  shell_particle =
+  {
+    name = "shell-particle",
+    direction_deviation = 0.1,
+    speed = 0.1,
+    speed_deviation = 0.03,
+    center = {-0.0625, 0},
+    creation_distance = -1.925,
+    starting_frame_speed = 0.2,
+    starting_frame_speed_deviation = 0.1
+  },
+  range = 18,
+  sound = make_heavy_gunshot_sounds()
+}
+data:extend({cutscene_turret})
+

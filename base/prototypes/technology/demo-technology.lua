@@ -35,7 +35,11 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "copper-plate"
-      }
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "small-electric-pole"
+      },
     },
     unit =
     {
@@ -60,10 +64,6 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "copper-cable"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "small-electric-pole"
       },
       {
         type = "unlock-recipe",

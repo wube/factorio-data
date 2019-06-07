@@ -154,7 +154,17 @@ data:extend(
       decorative_editor_selection_preview_radius = 10
     },
 
+    default_trigger_target_mask_by_type =
+    {
+      ["character"] = { "common", "ground-unit" },
+      ["car"] = { "common", "ground-unit" },
+      ["unit"] = { "common", "ground-unit" }
+    },
+
     recipe_step_limit = 50000, -- number of steps before calculating total-raw/times-can-be-crafted is aborted for a given recipe
-    manual_rail_building_reach_modifier = 3
+    manual_rail_building_reach_modifier = 3,
+    train_temporary_stop_wait_time =  60 * 5,
+    train_time_wait_condition_default = 60 * 30,
+    train_inactivity_wait_condition_default = 60 * 5
   }
 })

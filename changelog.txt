@@ -1,6 +1,65 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.46
+Version: 0.17.47
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.46
+Date: 07. 06. 2019
+  Minor Features:
+    - Added an option to filter by has-players in the browse games GUI.
+  Changes:
+    - Tank no longer takes damage from hitting rocks.
+    - Increased tank acid resistance from 50% to 70%.
+    - Defender robots no longer require flying robot frames in their recipe.
+    - Defender robotics technology only has Military science pack technology as a pre-requisite.
+    - Defender robot damage increased from 5 to 8.
+    - The Map Editor - resources - paint and spray options will show the non-infinite ore count next to the cursor.
+  Graphics:
+    - Added new higher resolution icons for resource ores with randomized variations when drawn on belts.
+  Bugfixes:
+    - Fixed that global programmable speaker volume depended on the zoom level. (https://forums.factorio.com/68119)
+    - Fixed a crash related to changing biter forces. (https://forums.factorio.com/71494)
+    - Fixed that 'signal-check', 'signal-info' and 'signal-dot' were in the 'virtual-signal-color' item subgroup.
+    - Fixed a new case of inserters behaving differently when rotated.
+    - Fixed unexpected behaviour when it comes to dividing rail segments in some special cases. (https://forums.factorio.com/70981)
+    - Extended straight rail collision box, so there is not an empty space between individual rail entities.
+    - Fixed Arithmetic Combinator sometimes outputting wrong number when setting a constant in the first field. (https://forums.factorio.com/71492)
+    - Fixed wording on the Lua Product documentation + fixed reading probability/amount_min/amount_max from Products. (https://forums.factorio.com/71529)
+    - Fixed that modded tiles in blueprints stored in the blueprint library wouldn't persist through mod enable/disable. (https://forums.factorio.com/67917)
+    - Fixed that quickbar pick item shortcut would sometimes select the wrong item when rotating quickbars in multiplayer. (https://forums.factorio.com/71547)
+    - Fixed that widget under the point of (0,0) got always hovered when mouse left the window. (https://forums.factorio.com/71296)
+    - Fixed that leaving the window while entity is selected didn't de-select the entity.
+    - Fixed that a fresh stack of wires was not added back to cursor when the cursor stack was depleted. (https://forums.factorio.com/71457)
+    - Fixed that train stopped moving without a schedule. (https://forums.factorio.com/71466)
+    - Possibly worked around the game extremely flickering on some computers when rendering scenes with lot of draw calls. (https://forums.factorio.com/69022)
+    - Possibly worked around "Unknown D3D Error (0x8876017c)" preventing the game to start on some computers. (https://forums.factorio.com/71521)
+    - Fixed crash when dragging station while temporary stop being removed. (https://forums.factorio.com/71262)
+    - Fixed that train entering block that is reserved more than once by it cancelled all the reservations and opened the block for other
+      trains after leaving (and still having another invalid reservation to it) it which could lead to train collisions and desyncs. (https://forums.factorio.com/71409)
+    - Laser turret and robot beams now render properly in the dark. (https://forums.factorio.com/65114)
+    - Fixed that in certain translations, there would be a gap between the shortcut bar and alerts if the shortcut selector was open. (https://forums.factorio.com/71392)
+    - Fixed that failed mod downloads would be incorrectly marked as successful. (https://forums.factorio.com/71451)
+    - Fixed that modded choose-elem-buttons would behave strangely when locked. (https://forums.factorio.com/70550)
+    - Fixed that the candidate_spot_count argument to the spot-noise function was ignored.
+    - Fixed spitter and worm acid splashes would deal continuous damage to closed gates and trains. (https://forums.factorio.com/71177)
+    - Fixed that you could set some invalid signal combinations in combinators using lua. (https://forums.factorio.com/71613)
+    - Fixed a desync related to how Lua formatted negative zero. (https://forums.factorio.com/67983)
+  Modding:
+    - Moved the train wait condition default times into utility-constants.
+    - Fixed that it was possible to specify max_level of technology to be lower then level and crash the game by it. (https://forums.factorio.com/71431)
+    - Fixed that the game would allow invalid heat-pipe connections that would end up crashing the game. (https://forums.factorio.com/69267)
+    - The update mods GUI will now attempt to install new required dependencies. (https://forums.factorio.com/70993)
+    - Added "trigger_target_mask" to entity prototype definition and triggers as more flexible system for filtering entities in triggers.
+    - Added "trigger-target-type" prototype type to define custom values for use in "trigger_target_mask". Current limit for total count of trigger-target-types is 56.
+  Scripting:
+    - Added LuaGameScript::evaluate_expression(), which can be used to calculate the technology unit cost formula at any level.
+    - Added LuaProfiler::divide() to allow printing average duration.
+    - Added optional snap_to_train_stop parameter to LuaGameScript::create_entity.
+    - Added LuaEntity::ghost_unit_number read.
+    - Added "source_index" to on_forces_merged event.
+    - Added LuaStyle::padding, margin write.
+    - Added LuaEntity::selected_gun_index read/write for cars.
+    - Fixed that LuaForce::index was 1 larger than it was supposed to be.
+    - LuaGameScript::forces can now be indexed with the name and the LuaForce::index.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.45
 Date: 31. 05. 2019

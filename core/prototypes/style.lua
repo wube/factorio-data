@@ -584,14 +584,6 @@ data:extend(
       parent = "label",
       font_color = warning_red_color
     },
-    scenario_message_dialog_label=
-    {
-      type = "label_style",
-      parent = "label",
-      font = "scenario-message-dialog",
-      maximal_width = 500,
-      font_color = {r=255,g=174,b=24},
-    },
     goal_label =
     {
       type = "label_style",
@@ -4159,7 +4151,7 @@ data:extend(
 
       column_widths =
       {
-        {column = 1, width = 116} -- name
+        {column = 1, minimal_width = 116} -- name
       }
     },
 
@@ -4470,6 +4462,175 @@ data:extend(
       },
       use_header_filler = true,
       border = {}
+    },
+
+    speech_bubble =
+    {
+      type = "speech_bubble_style",
+      frame_style =
+      {
+        type = "frame_style",
+        graphical_set =
+        {
+          type = "composition",
+          filename = "__core__/graphics/arrows/hint-orange-box.png",
+          priority = "extra-high-no-scale",
+          corner_size = {13, 13},
+          position = {0, 0}
+        },
+        top_padding = 0,
+        right_padding = 0,
+        bottom_padding = 10,
+        left_padding = 5
+      },
+
+      label_style =
+      {
+        type = "label_style",
+        parent = "label",
+        width = 400,
+        font = "scenario-message-dialog",
+        single_line = false,
+        font_color = {r=0, g=0, b=0}
+      },
+
+      arrow_graphical_set =
+      {
+        top =
+        {
+          filename = "__core__/graphics/arrows/hint-orange-arrow-up.png",
+          width = 62,
+          height = 37,
+        },
+        bottom =
+        {
+          filename = "__core__/graphics/arrows/hint-orange-arrow-down.png",
+          width = 71,
+          height = 35,
+        },
+        right =
+        {
+          filename = "__core__/graphics/arrows/hint-orange-arrow-right.png",
+          width = 38,
+          height = 73,
+        },
+        left =
+        {
+          filename = "__core__/graphics/arrows/hint-orange-arrow-left.png",
+          width = 43,
+          height = 73,
+        },
+      },
+      arrow_indent = 7,
+      close_color = {0,0,0},
+    },
+
+    compilatron_gui_message =
+    {
+      type = "speech_bubble_style",
+      frame_style =
+      {
+        type = "frame_style",
+        graphical_set =
+        {
+          filename = "__core__/graphics/gui-new.png",
+          corner_size = 8,
+          position = {433, 424},
+          scale = 0.5
+        },
+        padding = 12,
+      },
+
+      label_style =
+      {
+        type = "label_style",
+        parent = "label",
+        font = "compilatron-message-font",
+        maximal_width = 500,
+        single_line = false,
+        font_color = {r=255,g=174,b=24},
+      },
+
+      arrow_graphical_set =
+      {
+        top =
+        {
+          position = {433, 473},
+          size = {32, 24}
+        },
+        bottom =
+        {
+          position = {465, 473},
+          size = {32, 24}
+        },
+        right =
+        {
+          position = {458, 441},
+          size = {24, 32}
+        },
+        left =
+        {
+          position = {433, 441},
+          size = {24, 32}
+        },
+      },
+      arrow_indent = 2.5,
+      close_color = {0.361,0.894,0.278},
+    },
+
+    compilatron_speech_bubble =
+    {
+      type = "speech_bubble_style",
+
+      frame_style =
+      {
+        type = "frame_style",
+        graphical_set =
+        {
+          filename = "__core__/graphics/gui-new.png",
+          corner_size = 8,
+          position = {433, 498},
+          scale = 0.5
+        },
+        padding = 12,
+      },
+
+      label_style =
+      {
+        type = "label_style",
+        parent = "label",
+        font = "compilatron-message-font",
+        maximal_width = 500,
+        single_line = false,
+        font_color = {r=255,g=174,b=24},
+      },
+
+      arrow_graphical_set =
+      {
+        top =
+        {
+          position = {433, 547},
+          size = {32, 24}
+        },
+        bottom =
+        {
+          position = {465, 547},
+          size = {32, 24}
+        },
+        right =
+        {
+          position = {458, 515},
+          size = {24, 32}
+        },
+        left =
+        {
+          position = {433, 515},
+          size = {24, 32}
+        },
+      },
+
+      arrow_indent = 2.5,
+      close_color = {0.361,0.894,0.278}
     },
 
     frame_without_footer =
@@ -4956,18 +5117,6 @@ data:extend(
     {
       type = "frame_style",
       parent = "inner_frame_in_outer_frame"
-    },
-    scenario_message_dialog =
-    {
-      type = "frame_style",
-      graphical_set =
-      {
-        filename = "__core__/graphics/gui-new.png",
-        corner_size = 8,
-        position = {433, 424},
-        scale = 0.5
-      },
-      padding = 12
     },
     goal_frame =
     {

@@ -3678,10 +3678,10 @@ data:extend(
         modifier = 4
       }
     },
-    prerequisites = {"military-science-pack", "robotics"},
+    prerequisites = {"military-science-pack"},
     unit =
     {
-      count = 150,
+      count = 100,
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -4039,6 +4039,28 @@ data:extend(
       count = 2000
     },
     order = "d-e-f"
-  }
+  },
+  {
+    type = "technology",
+    name = "radar",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/radar.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "radar"
+      },
+    },
+    unit =
+    {
+      count = 20,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 2
+    },
+    prerequisites = {'electronics'},
+    order = "c-a"
+  },
 }
 )

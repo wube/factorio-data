@@ -29,9 +29,17 @@ data:extend(
   {
     type = "item",
     name = "coal",
-    icon = "__base__/graphics/icons/coal.png",
-    icon_size = 32,
-    dark_background_icon = "__base__/graphics/icons/coal-dark-background.png",
+    icon = "__base__/graphics/icons/mip/coal.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    dark_background_icon = "__base__/graphics/icons/mip/coal-dark-background.png",
+    pictures =
+    {
+      { size = 64, filename = "__base__/graphics/icons/mip/coal.png",   scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/coal-1.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/coal-2.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/coal-3.png", scale = 0.25, mipmap_count = 4 }
+    },
     fuel_category = "chemical",
     fuel_value = "4MJ",
     subgroup = "raw-resource",
@@ -41,8 +49,16 @@ data:extend(
   {
     type = "item",
     name = "stone",
-    icon = "__base__/graphics/icons/stone.png",
-    icon_size = 32,
+    icon = "__base__/graphics/icons/mip/stone.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    pictures =
+    {
+      { size = 64, filename = "__base__/graphics/icons/mip/stone.png",   scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/stone-1.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/stone-2.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/stone-3.png", scale = 0.25, mipmap_count = 4 }
+    },
     subgroup = "raw-resource",
     order = "d[stone]",
     stack_size = 50
@@ -50,8 +66,16 @@ data:extend(
   {
     type = "item",
     name = "iron-ore",
-    icon = "__base__/graphics/icons/iron-ore.png",
-    icon_size = 32,
+    icon = "__base__/graphics/icons/mip/iron-ore.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    pictures =
+    {
+      { size = 64, filename = "__base__/graphics/icons/mip/iron-ore.png",   scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/iron-ore-1.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/iron-ore-2.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/iron-ore-3.png", scale = 0.25, mipmap_count = 4 }
+    },
     subgroup = "raw-resource",
     order = "e[iron-ore]",
     stack_size = 50
@@ -59,8 +83,16 @@ data:extend(
   {
     type = "item",
     name = "copper-ore",
-    icon = "__base__/graphics/icons/copper-ore.png",
-    icon_size = 32,
+    icon = "__base__/graphics/icons/mip/copper-ore.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    pictures =
+    {
+      { size = 64, filename = "__base__/graphics/icons/mip/copper-ore.png",   scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/copper-ore-1.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/copper-ore-2.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/copper-ore-3.png", scale = 0.25, mipmap_count = 4 }
+    },
     subgroup = "raw-resource",
     order = "f[copper-ore]",
     stack_size = 50

@@ -907,8 +907,16 @@ data:extend(
   {
     type = "item",
     name = "uranium-ore",
-    icon = "__base__/graphics/icons/uranium-ore.png",
-    icon_size = 32,
+    icon = "__base__/graphics/icons/mip/uranium-ore.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    pictures =
+    {
+      { size = 64, filename = "__base__/graphics/icons/mip/uranium-ore.png",   scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/uranium-ore-1.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/uranium-ore-2.png", scale = 0.25, mipmap_count = 4 },
+      { size = 64, filename = "__base__/graphics/icons/mip/uranium-ore-3.png", scale = 0.25, mipmap_count = 4 }
+    },
     subgroup = "raw-resource",
     order = "g[uranium-ore]",
     stack_size = 50

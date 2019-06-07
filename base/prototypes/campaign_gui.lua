@@ -22,9 +22,11 @@ add_styles(
     quest_item_subheading =
     {
       type = "label_style",
-      parent = "quest_item_description",
       font_color = {r=255, g=230, b=192},
       font = "default-semibold",
+      single_line = true,
+      left_padding = 3,
+      horizontal_align = "left"
     },
     quest_item_description_uncomplete =
     {
@@ -177,5 +179,18 @@ add_styles(
       parent = "label",
       font = 'default'
     },
+    quest_gui_more_button =
+    {
+      type = "button_style",
+      default_graphical_set =
+      {
+        base = {position = {0, 0}, corner_size = 8},
+        shadow = default_shadow
+      },
+      font = 'heading-2',
+      default_font_color = heading_font_color,
+      horizontally_stretchable = "on",
+      height = 25,
+    }
   }
 )

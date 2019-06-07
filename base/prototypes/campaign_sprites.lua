@@ -98,5 +98,17 @@ data:extend(
       flags = {"no-crop"},
       scale = tree_view_tileset_scale
     },
+    {
+      type = "sprite",
+      name = "quest_gui_empty_status",
+      filename = "__base__/graphics/tree_view_tileset.png",
+      priority = "extra-high-no-scale",
+      x = 5,
+      y = 58,
+      width = 32,
+      height = 32,
+      flags = {"no-crop"},
+      scale = 0.5
+    },
   }
 )

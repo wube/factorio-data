@@ -972,6 +972,7 @@ data:extend(
     },
     --attacking_speed = 0.1,
     energy_glow_animation = laser_turret_shooting_glow(),
+    glow_light_intensity = 0.5, -- defaults to 0
     folding_animation =
     {
       layers =

@@ -53,6 +53,12 @@ data:extend(
   {
     type = "font",
     name = "scenario-message-dialog",
+    from = "default",
+    size = 18
+  },
+  {
+    type = "font",
+    name = "compilatron-message-font",
     from = "scenario-message-dialog",
     size = 12
   },

@@ -45,6 +45,17 @@ function make_beam(sound)
         scale = 0.5
       }
     },
+    start_light =
+    {
+      filename = "__base__/graphics/entity/beam/hr-tileable-beam-START-light.png",
+      line_length = 4,
+      width = 94,
+      height = 66,
+      frame_count = 16,
+      direction_count = 1,
+      shift = {0.53125, 0},
+      scale = 0.5
+    },
     ending =
     {
       filename = "__base__/graphics/entity/beam/tileable-beam-END.png",
@@ -66,6 +77,17 @@ function make_beam(sound)
         scale = 0.5
       }
     },
+    ending_light =
+    {
+      filename = "__base__/graphics/entity/beam/hr-tileable-beam-END-light.png",
+      line_length = 4,
+      width = 91,
+      height = 93,
+      frame_count = 16,
+      direction_count = 1,
+      shift = {-0.078125, -0.046875},
+      scale = 0.5
+    },
     head =
     {
       filename = "__base__/graphics/entity/beam/beam-head.png",
@@ -76,6 +98,15 @@ function make_beam(sound)
       animation_speed = 0.5,
       blend_mode = beam_blend_mode
     },
+    head_light =
+    {
+      filename = "__base__/graphics/entity/beam/beam-head-light.png",
+      line_length = 16,
+      width = 45,
+      height = 39,
+      frame_count = 16,
+      animation_speed = 0.5,
+    },
     tail =
     {
       filename = "__base__/graphics/entity/beam/beam-tail.png",
@@ -84,6 +115,14 @@ function make_beam(sound)
       height = 39,
       frame_count = 16,
       blend_mode = beam_blend_mode
+    },
+    tail_light =
+    {
+      filename = "__base__/graphics/entity/beam/beam-tail-light.png",
+      line_length = 16,
+      width = 45,
+      height = 39,
+      frame_count = 16,
     },
     body =
     {
@@ -135,6 +174,52 @@ function make_beam(sound)
         frame_count = 16,
         blend_mode = beam_blend_mode
       }
+    },
+    body_light =
+    {
+      {
+        filename = "__base__/graphics/entity/beam/beam-body-1-light.png",
+        line_length = 16,
+        width = 45,
+        height = 39,
+        frame_count = 16,
+      },
+      {
+        filename = "__base__/graphics/entity/beam/beam-body-2-light.png",
+        line_length = 16,
+        width = 45,
+        height = 39,
+        frame_count = 16,
+      },
+      {
+        filename = "__base__/graphics/entity/beam/beam-body-3-light.png",
+        line_length = 16,
+        width = 45,
+        height = 39,
+        frame_count = 16,
+      },
+      {
+        filename = "__base__/graphics/entity/beam/beam-body-4-light.png",
+        line_length = 16,
+        width = 45,
+        height = 39,
+        frame_count = 16,
+      },
+      {
+        filename = "__base__/graphics/entity/beam/beam-body-5-light.png",
+        line_length = 16,
+        width = 45,
+        height = 39,
+        frame_count = 16,
+      },
+      {
+        filename = "__base__/graphics/entity/beam/beam-body-6-light.png",
+        line_length = 16,
+        width = 45,
+        height = 39,
+        frame_count = 16,
+      }
+
     }
   }
 
@@ -213,6 +298,38 @@ function make_laser_beam(sound)
         scale = 0.5,
         animation_speed = 0.5,
         blend_mode = laser_beam_blend_mode
+      }
+    },
+    head_light =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-body-light.png",
+      line_length = 8,
+      width = 64,
+      height = 12,
+      frame_count = 8,
+      scale = 0.5,
+      animation_speed = 0.5,
+    },
+    tail_light =
+    {
+      filename = "__base__/graphics/entity/laser-turret/hr-laser-end-light.png",
+      width = 110,
+      height = 62,
+      frame_count = 8,
+      shift = util.by_pixel(11.5, 1),
+      scale = 0.5,
+      animation_speed = 0.5,
+    },
+    body_light =
+    {
+      {
+        filename = "__base__/graphics/entity/laser-turret/hr-laser-body-light.png",
+        line_length = 8,
+        width = 64,
+        height = 12,
+        frame_count = 8,
+        scale = 0.5,
+        animation_speed = 0.5,
       }
     }
   }

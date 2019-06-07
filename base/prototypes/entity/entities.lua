@@ -1261,6 +1261,7 @@ data:extend(
     dying_explosion = "medium-explosion",
     alert_icon_shift = util.by_pixel(-4, -13),
     immune_to_tree_impacts = true,
+    immune_to_rock_impacts = true,
     energy_per_hit_point = 0.5,
     resistances =
     {
@@ -1287,7 +1288,7 @@ data:extend(
       {
         type = "acid",
         decrease = 0,
-        percent = 50
+        percent = 70
       }
     },
     collision_box = {{-0.9, -1.3}, {0.9, 1.3}},
@@ -1669,77 +1670,6 @@ data:extend(
     weight = 20000,
     inventory_size = 80,
     guns = { "tank-cannon", "tank-machine-gun", "tank-flamethrower" }
-  },
-  {
-    type = "container",
-    name = "iron-chest",
-    icon = "__base__/graphics/icons/iron-chest.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 0.2, result = "iron-chest"},
-    max_health = 200,
-    corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
-    resistances =
-    {
-      {
-        type = "fire",
-        percent = 80
-      },
-      {
-        type = "impact",
-        percent = 30
-      }
-    },
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    fast_replaceable_group = "container",
-    inventory_size = 32,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    picture =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/iron-chest/iron-chest.png",
-          priority = "extra-high",
-          width = 34,
-          height = 38,
-          shift = util.by_pixel(0, -0.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/iron-chest/hr-iron-chest.png",
-            priority = "extra-high",
-            width = 66,
-            height = 76,
-            shift = util.by_pixel(-0.5, -0.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/iron-chest/iron-chest-shadow.png",
-          priority = "extra-high",
-          width = 56,
-          height = 26,
-          shift = util.by_pixel(10, 6.5),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/iron-chest/hr-iron-chest-shadow.png",
-            priority = "extra-high",
-            width = 110,
-            height = 50,
-            shift = util.by_pixel(10.5, 6),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
-        }
-      }
-    },
-    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
-    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
-    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "container",
@@ -4578,7 +4508,7 @@ data:extend(
         percent = 80
       }
     },
-    collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
+    collision_box = {{-0.7, -0.99}, {0.7, 0.99}},
     selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
     rail_category = "regular",
     pictures = rail_pictures()
@@ -7396,7 +7326,8 @@ data:extend(
           frame_count = 60,
           axially_symmetrical = false,
           animation_speed = 0.25,
-          direction_count = 1
+          direction_count = 1,
+          scale = 0.5
         }
       }
     },
@@ -8825,7 +8756,7 @@ data:extend(
               },
               {
                 type = "damage",
-                damage = { amount = 5 , type = "physical"}
+                damage = { amount = 8 , type = "physical"}
               }
             }
           }
