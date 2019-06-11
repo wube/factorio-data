@@ -1,6 +1,39 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.48
+Version: 0.17.49
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.48
+Date: 11. 06. 2019
+  Changes:
+    - Improved manual building of character corpses through the map editor. (https://forums.factorio.com/71686)
+    - Textures that are being streamed are compressed now to reduce RAM usage and increase rendering performance.
+  Bugfixes:
+    - Fixed production statistics were not cleared before starting the Introduction scenario (https://forums.factorio.com/71802)
+    - Fixed Compilatron getting stuck in a loop between two help nodes. (https://forums.factorio.com/71617)
+    - Fixed various bugs uncovered (mainly) by more rigid rail signal handling.
+    - Fixed that when starting a server with --start-server-load-scenario, --map-settings would have no effect. (https://forums.factorio.com/67813)
+    - Fixed that the minimap radar coverage preview would show radars on different surfaces. (https://forums.factorio.com/71705)
+    - Fixed that turrets would show the glow animation in some cases when dead. (https://forums.factorio.com/71707)
+    - Fixed that checking for mod updates would work correctly if the mod author had previously uploaded a broken version of the mod. (https://forums.factorio.com/71709)
+    - Fixed that crafting machine lights wouldn't render correctly when off-screen partially. (https://forums.factorio.com/71729)
+    - Fixed that the map editor extra-settings GUI didn't resize correctly. (https://forums.factorio.com/71741)
+    - Fixed that the bonus GUI had transparent edges when the vertical scroll bar was visible. (https://forums.factorio.com/71643)
+    - Added workaround for issue with missing icons on macOS with Intel GPUs. (https://forums.factorio.com/71649)
+    - Fixed framerate issues caused by overloading GPU. (https://forums.factorio.com/71682)
+    - Fixed a crash when using some hotkeys while in cutscenes. (https://forums.factorio.com/71807)
+    - Fixed that re-mapping "stack split" didn't work correctly. (https://forums.factorio.com/71824)
+    - Fixed speech bubbles jittering when their target moved across a chunk boundary.
+    - Fixed that tank could not drive backwards. (https://forums.factorio.com/71804)
+    - Fixed that rendering.draw_line() sometimes did not render lines. (https://forums.factorio.com/71859)
+    - Fixed that the map wouldn't update during a non-blocking save. (https://forums.factorio.com/65826)
+    - Fixed that LuaPlayer::set_controller() would crash if set to another players character. (https://forums.factorio.com/71822)
+    - Fixed bug where NPE could get stuck in a cutscene. (https://forums.factorio.com/71772)
+  Modding:
+    - Limited maximum number of picture variations that will be loaded from item prototype definition to 16.
+    - Added y_offset property to speech_bubble prototype.
+  Scripting:
+    - Added a sanity check to LuaForce::chart() that errors on large sizes instead of trying to use 71,000 gigabytes of RAM.
+    - Added LuaFlowStatistics::clear().
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.47
 Date: 07. 06. 2019
