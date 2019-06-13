@@ -5563,20 +5563,28 @@ data:extend(
     },
     shadow_working =
     {
-      stripes = util.multiplystripes(2,
-      {
-        {
-          filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-          width_in_frames = 16,
-          height_in_frames = 1
-        }
-      }),
+      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
       priority = "high",
+      line_length = 16,
       width = 50,
       height = 24,
-      frame_count = 2,
+      frame_count = 1,
+      repeat_count = 2,
       shift = {1.09375, 0.59375},
-      direction_count = 16
+      direction_count = 16,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 104,
+        height = 49,
+        frame_count = 1,
+        repeat_count = 2,
+        shift = util.by_pixel(33.5, 18.75),
+        direction_count = 16,
+        scale = 0.5
+      }
     },
     smoke =
     {

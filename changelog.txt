@@ -1,6 +1,24 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.49
+Version: 0.17.50
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.49
+Date: 13. 06. 2019
+  Bugfixes:
+    - Fixed sprite batching issue when drawing many inserters with circuit connectors. (https://forums.factorio.com/61861)
+    - Fixed construction robot working shadow. (https://forums.factorio.com/71909)
+    - Fixed using repeat_count in RotatedAnimation definition would cause crash. (https://forums.factorio.com/71939)
+    - Fixed rail signal consistency in case of reserved signal being invalidated by building a rail that puts both sides into same block.
+    - Fixed rail crash related to marking reserved signal for deconstruction.
+    - Fixed that programmatically set locale for autoplace controls didn't work. (https://forums.factorio.com/71933)
+    - Fixed that scrollpane consumed the mouse wheel events even when not activated, which blocked the other (parent) scrollpane. (https://forums.factorio.com/69766)
+    - Fixed that re-pathing in chain signal sequence didn't respect the need for green exit when the re-pathing was based on manual change of target station. (https://forums.factorio.com/71371)
+    - Fixed that changing state of rail signal by circuit network didn't properly update state of parent circuit signals. (https://forums.factorio.com/71731)
+    - Fixed that rail signal disabled by circuit network didn't prevent train passing by it if it guards a block that is already reserved/occupied by the same train. (https://forums.factorio.com/71839)
+    - Limited of usage of tab/shift-tab to move between textboxes as other objects didn't support it and it seems like it isn't worth to try to support it for everything. (https://forums.factorio.com/69656) (https://forums.factorio.com/71556)
+    - Reduced the UPS impact of a large number of biters trying to pathfind. (https://forums.factorio.com/71865)
+    - Fixed that tabbing could move to invisible or disabled widgets.
+    - Fixed a special case of assembler pipe connection bug. (https://forums.factorio.com/71776)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.48
 Date: 11. 06. 2019

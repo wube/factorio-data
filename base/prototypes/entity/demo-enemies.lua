@@ -46,7 +46,6 @@ data:extend(
     dying_sound =  make_biter_dying_sounds(0.4),
     working_sound =  make_biter_calls(0.3),
     run_animation = biterrunanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
-    --idle_animation = biteridleanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
     ai_settings = biter_ai_settings
   },
 
