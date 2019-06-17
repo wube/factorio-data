@@ -1,6 +1,29 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.50
+Version: 0.17.51
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.50
+Date: 17. 06. 2019
+  Changes:
+    - Inserters are slightly faster when picking up from belts as they can now select an item and pick it up in the same tick.
+  Bugfixes:
+    - Fixed a special case of assembler pipe connection bug. (https://forums.factorio.com/71776)
+    - Fixed a crash when trying to check for mod updates with mods that have dependencies not on the mod portal.
+    - Fixed that multiple modded inserters aiming for the same belt would compete for the same item.  (https://forums.factorio.com/58613)
+    - Fixed that opening signal by circuit network could let train to go to a reserved/occupied block. (https://forums.factorio.com/72000)
+    - Fixed that it was possible to build a special rail crossing that didn't merge the blocks and allowed trains to cross without collisions. (https://forums.factorio.com/71990)
+    - Fixed a crash related to pathfinding toward a moving target, such as when the player was fighting biters. (https://forums.factorio.com/71989 https://forums.factorio.com/72011)
+    - Fixed turret ranges would not render properly on some models of Apple computers with Intel integrated GPU. (https://forums.factorio.com/67259)
+    - Fixed most of the Map Editor GUI would still work when doing replays. (https://forums.factorio.com/72031)
+    - Fixed that "the hand" didn't work correctly in the Map Editor when the inventory was full. (https://forums.factorio.com/72016)
+    - Fixed that cut ignored the not-minable and not-deconstructable flags in some cases. (https://forums.factorio.com/72010)
+    - Fixed rail signal to block binding that occurred in special cases. (https://forums.factorio.com/71986)
+    - Fixed shooting would refresh only the first beam if multiple beams were active. (https://forums.factorio.com/71868)
+    - Fixed that cloning rails with locomotive on top in the map editor made the copied rails not minable even when the locomotive was removed. (https://forums.factorio.com/72085)
+    - Fixed another train pathfinding issue related to re-pathing while in chain signal sequence. (https://forums.factorio.com/72032)
+  Scripting:
+    - Added LuaEntity::energy_generated_last_tick read.
+    - Added LuaGameScript::parse_map_exchange_string().
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.49
 Date: 13. 06. 2019
@@ -18,7 +41,6 @@ Date: 13. 06. 2019
     - Limited of usage of tab/shift-tab to move between textboxes as other objects didn't support it and it seems like it isn't worth to try to support it for everything. (https://forums.factorio.com/69656) (https://forums.factorio.com/71556)
     - Reduced the UPS impact of a large number of biters trying to pathfind. (https://forums.factorio.com/71865)
     - Fixed that tabbing could move to invisible or disabled widgets.
-    - Fixed a special case of assembler pipe connection bug. (https://forums.factorio.com/71776)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.48
 Date: 11. 06. 2019

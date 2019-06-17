@@ -4534,11 +4534,11 @@ data:extend(
       },
     },
     collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
-    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
+    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.59}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     rail_category = "regular",
     pictures = rail_pictures(),
-    placeable_by = { item="rail", count = 4}
+    placeable_by = {item = "rail", count = 4}
   },
   {
     type = "land-mine",
