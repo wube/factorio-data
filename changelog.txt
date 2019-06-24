@@ -1,6 +1,54 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.51
+Version: 0.17.52
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.51
+Date: 24. 06. 2019
+  Bugfixes:
+    - Fixed crashes related to creating tile-ghost entities through the Lua API. (https://forums.factorio.com/72162)
+    - Fixed that configuring blueprints and then directly exporting to a string didn't work correctly. (https://forums.factorio.com/71977) (https://forums.factorio.com/71267)
+    - Fixed that the Lua API would allow the same non-infinite technology to be queued multiple times. (https://forums.factorio.com/71795)
+    - Fixed a crash when queuing things to be crafting during the crafting finished event. (https://forums.factorio.com/72145)
+    - Fixed train pathfinding bug related to two different station connected to the same rail from different sides when one after another is in the schedule. (https://forums.factorio.com/72008)
+    - Fixed rail signal consistency when rail is removed from reserved signal. (https://forums.factorio.com/72148)
+    - Added "buffer-rename-workaround" config setting as a possible workaround for rendering glitches on some Sandy Bridge and Ivy Bridge GPUs. (https://forums.factorio.com/70991)
+    - Fixed an issue that made unit group pathfinding fail often, resulting in very few biter attacks. (https://forums.factorio.com/72056)
+    - Fixed that the hovering entity tooltip would still follow the cursor while in the menu. (https://forums.factorio.com/68531)
+    - Fixed a crash when exiting the campaign during the same tick as a script-triggered autosave.
+    - Fixed that incompatible dependencies would effect mod sort order.
+    - Fixed missing fluid icons on new ghosts. (https://forums.factorio.com/71825)
+    - Replay button in new game GUI is now remembered after confirm. (https://forums.factorio.com/72007)
+    - Changed rendering of belts to use linear interpolation for minification to reduce flickering effect on some zoom levels. (https://forums.factorio.com/72138)
+    - Fixed that units could sometimes get stuck forever. (https://forums.factorio.com/70922)
+    - Fixed that multiplayer replay would crash the game if it contained a blueprint transferred using the blueprint library. (https://forums.factorio.com/62193)
+    - Fixed that LuaEntity::destroy({raise_destroy=false}) would still raise the destroy event. (https://forums.factorio.com/72297)
+    - Fixed that the style debug tooltips could in some cases show multiple at once. (https://forums.factorio.com/71249)
+    - Fixed that robots could get stuck if the chest they're trying to put items into was blocked. (https://forums.factorio.com/60580)
+    - Fixed that the update mods GUI would incorrectly disable the "Update selected" button in some cases. (https://forums.factorio.com/72317)
+    - Fixed that building concrete/stone paths wouldn't use all tile variations in some cases. (https://forums.factorio.com/72279)
+    - Fixed a performance problem related to large amounts of incredibly fast robots and storage chests. (https://forums.factorio.com/72309)
+    - Fixed turret range overlay in map was not rendering correctly. (https://forums.factorio.com/67259)
+    - Fixed that turret tooltips could show damage modifiers from the wrong force. (https://forums.factorio.com/72357)
+    - Prevented possible number overflow in train condition gui. (https://forums.factorio.com/72171)
+  Modding:
+    - Added uses_stack to the thrown capsule item action.
+    - Removed the rail-category prototype type.
+    - resource_autoplace_settings has been made public (require('resource-autoplace').resource_autoplace_settings) and the API improved.
+      It will automatically allocate a unique resource index for each patch_set_name.
+      'patch_set_name' and 'autoplace_control_name' can be independently specified.
+      'seed1' can be specified as a parameter.
+      The global function 'get_next_resource_index' is obsolete and has been deleted.
+    - Equipment shapes can be defined as "manual" (a set of points).
+    - Added optional lamp prototype property "always_on".
+  Scripting:
+    - Added "entity_to_ignore" to LuaSurface::request_path.
+    - Added target, orientation, and orientation_target to LuaRendering::draw_polygon().
+    - Added LuaGameScript::item_subgroup_prototypes, item_group_prototypes, fuel_category_prototypes, resource_category_prototypes, achievement_prototypes,
+      module_category_prototypes, equipment_category_prototypes, trivial_smoke_prototypes, shortcut_prototypes, and recipe_category_prototypes read.
+    - Added LuaControl::character_mining_progress read.
+    - Added LuaEntity::can_shoot().
+    - Added LuaEntityPrototype::always_on read.
+    - Added LuaGuiElement type "line".
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.50
 Date: 17. 06. 2019

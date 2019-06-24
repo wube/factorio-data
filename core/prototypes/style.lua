@@ -4280,7 +4280,7 @@ data:extend(
       top_padding = 0,
       bottom_padding = 0,
       selection_background_color= {241, 190, 100},
-      rich_text_setting = "enabled",
+      rich_text_setting = "highlight",
       rich_text_highlight_error_color = {r=255,g=0,b=0},
       rich_text_highlight_warning_color = {r=255,g=255,b=0},
       rich_text_highlight_ok_color = {r=0,g=255,b=0},

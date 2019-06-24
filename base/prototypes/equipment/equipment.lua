@@ -189,6 +189,14 @@ data:extend(
       width = 4,
       height = 4,
       type = "full"
+      --[[ Can also be defined as manual (a set of points which fall within the width/height - can't be empty)
+           Note: the automatic background does not work when using 'manual'.
+      type = "manual",
+      points = {{0, 0}, {1, 0}, {2, 0}, {3, 0},
+                {0, 1},                 {3, 1},
+                {0, 2},                 {3, 2},
+                {0, 3}, {1, 3}, {2, 3}, {3, 3},}
+      ]]--
     },
     energy_source =
     {
@@ -395,7 +403,9 @@ data:extend(
     robot_limit = 10,
     construction_radius = 15,
     spawn_and_station_height = 0.4,
+    spawn_and_station_shadow_height_offset = 0.5,
     charge_approach_distance = 2.6,
+    robots_shrink_when_entering_and_exiting = true,
 
     recharging_animation =
     {
@@ -444,7 +454,9 @@ data:extend(
     robot_limit = 25,
     construction_radius = 20,
     spawn_and_station_height = 0.4,
+    spawn_and_station_shadow_height_offset = 0.5,
     charge_approach_distance = 2.6,
+    robots_shrink_when_entering_and_exiting = true,
 
     recharging_animation =
     {

@@ -8,6 +8,7 @@ data:extend(
     capsule_action =
     {
       type = "throw",
+      --uses_stack = false,
       attack_parameters =
       {
         type = "projectile",

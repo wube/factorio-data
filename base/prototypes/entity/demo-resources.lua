@@ -1,6 +1,14 @@
 local noise = require("noise");
 local tne = noise.to_noise_expression;
-local resource_autoplace = require("prototypes.entity.demo-resource-autoplace");
+local resource_autoplace = require("resource-autoplace");
+
+-- Initialize the core patch sets in a predictable order
+resource_autoplace.initialize_patch_set("iron-ore", true)
+resource_autoplace.initialize_patch_set("copper-ore", true)
+resource_autoplace.initialize_patch_set("coal", true)
+resource_autoplace.initialize_patch_set("stone", true)
+resource_autoplace.initialize_patch_set("crude-oil", false)
+resource_autoplace.initialize_patch_set("uranium-ore", false)
 
 local function autoplace_settings(name, order, coverage)
   return
@@ -52,7 +60,6 @@ local function resource(resource_parameters, autoplace_parameters)
       order = resource_parameters.order,
       base_density = autoplace_parameters.base_density,
       has_starting_area_placement = true,
-      resource_index = resource_autoplace.resource_indexes[resource_parameters.name],
       regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier;
       starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier;
     },
@@ -169,7 +176,6 @@ data:extend(
       has_starting_area_placement = false,
       random_spot_size_minimum = 2,
       random_spot_size_maximum = 4,
-      resource_index = resource_autoplace.resource_indexes["uranium-ore"],
       regular_rq_factor_multiplier = 1
     },
     stage_counts = {10000, 6330, 3670, 1930, 870, 270, 100, 50},
