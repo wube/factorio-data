@@ -1,6 +1,53 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.53
+Version: 0.17.54
 Date: ????
+  Bugfixes:
+    - Fixed adding conditions to a train station after it was dragged. (https://forums.factorio.com/72655)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.53
+Date: 01. 07. 2019
+  Changes:
+    - Updated version of introduction campaign.
+    - Added a new system for better handling of mouse button locales. See https://wiki.factorio.com/Tutorial:Localisation#Localising_alternate_input_names for more information.
+    - Limited chart tags to a maximum of 1024 characters.
+  Bugfixes:
+    - Fixed that curved rail bounding box wasn't rotationally symmetric.
+    - Fixed window would flicker when dragging window from left to right, from normal DPI display to higher DPI display. (https://forums.factorio.com/72474)
+    - Fixed that modded pollution modifiers wouldn't show in some cases. (https://forums.factorio.com/70545)
+    - Fixed that trying to repair inoperable entities would show the "can't mine" message. (https://forums.factorio.com/71638)
+    - Fixed that checking for mod updates could fail when old versions of a mod had bad data. (https://forums.factorio.com/72558)
+    - Fixed graphical artifacts in curved rail sprites when zoomed out (OpenGL). (https://forums.factorio.com/71332)
+    - Fixed a crash of some modded entities with fluid energy source. (https://forums.factorio.com/72529)
+    - Fixed that sending long commands through RCON could cause some players to drop from the game. (https://forums.factorio.com/72495)
+    - Fixed drawing speech bubbles on top of other gui elements, and on top of the map view.
+    - Fixed NPE crash when building ghosts. (https://forums.factorio.com/71991)
+    - Fixed rotated text not working with certain fonts. (https://forums.factorio.com/65780#p438232)
+    - Fixed that the drag-map action wasn't allowed when the cursor had specific items even if the drag map control didn't conflict with building. (https://forums.factorio.com/71069)
+    - Fixed that restarting scenario levels would leave the generate-map GUI in a strange state. (https://forums.factorio.com/71671)
+    - Fixed that RCON commands would not be processed if a player had paused the game. (https://forums.factorio.com/70930)
+    - Fixed that the "include modules" checkbox would always show if the blueprint had a train with fuel in it. (https://forums.factorio.com/72627)
+    - Fixed that infinite technologies wouldn't display the level in the technology screen if their prototype name didn't include a level. (https://forums.factorio.com/69296)
+    - Fixed that clicking alerts from multiple modded surfaces wouldn't work correctly. (https://forums.factorio.com/72632)
+    - Fixed that unit groups wouldn't be able to pathfind if their centre was colliding with another entity of the same force. (https://forums.factorio.com/63832)
+    - Fixed a crash related to train crashing while passing a reserved signal. (https://forums.factorio.com/72320)
+    - Fixed a crash related to teleporting reserved signal. (https://forums.factorio.com/72292)
+    - Fixed that errors from the asynchronous saving process sometimes wouldn't be communicated back to the parent. (https://forums.factorio.com/64794)
+    - Fixed that dying and respawning wouldn't preserve the toggle-personal-roboport setting. (https://forums.factorio.com/72602)
+    - Fixed that train waiting time was reset when adding temporary station. (https://forums.factorio.com/72403)
+    - Fixed that entity-to-be-built tooltips didn't work correctly with tooltip delay. (https://forums.factorio.com/65663)
+    - Fixed that train without a schedule didn't try to stop. (https://forums.factorio.com/72355)
+  Modding:
+    - Fixed that the game would allow entities with different sized bounding boxes or collision masks to be upgraded. (https://forums.factorio.com/72698)
+    - Fixed excessive memory usage and long time to exit related large amounts of sprite definitions. (https://forums.factorio.com/72200)
+    - Fixed that GUI graphical_sets wouldn't render corners correctly in some cases. (https://forums.factorio.com/69468)
+    - Fixed that technologies marked as "visible_when_disabled" would still be researchable when the research queue was enabled. (https://forums.factorio.com/72423)
+    - Moved the entity_renderer_search_box_limits values into utility constants.
+    - Secondary bounding box of rail is not moddable anymore.
+    - Changed module prototype property "tier" to unsigned int from float.
+  Scripting:
+    - Fixed that get_blueprint_entities() didn't include train schedules. (https://forums.factorio.com/71614)
+    - Added LuaSurface::calculate_tile_properties().
+    - Added LuaEntity::storage_filter read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.52
 Date: 24. 06. 2019

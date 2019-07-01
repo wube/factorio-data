@@ -485,5 +485,12 @@ data:extend(
     result = "engine-unit",
     enabled = false
   },
+  {
+    type = "recipe",
+    name = "iron-chest",
+    enabled = true,
+    ingredients = {{"iron-plate", 8}},
+    result = "iron-chest"
+  },
 }
 )

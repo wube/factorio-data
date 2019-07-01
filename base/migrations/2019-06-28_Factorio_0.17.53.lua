@@ -1,0 +1,1 @@
+game.reload_script()

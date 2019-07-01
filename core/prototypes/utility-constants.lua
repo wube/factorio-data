@@ -165,6 +165,16 @@ data:extend(
     manual_rail_building_reach_modifier = 3,
     train_temporary_stop_wait_time =  60 * 5,
     train_time_wait_condition_default = 60 * 30,
-    train_inactivity_wait_condition_default = 60 * 5
+    train_inactivity_wait_condition_default = 60 * 5,
+
+    -- we render a bit more to compensate for electric poles, shadows, decoratives and tall entities
+    -- with decoratives being most demanding on that, using them as heuristic
+    entity_renderer_search_box_limits =
+    {
+      left = 6, -- to compensate for shadows
+      top = 3,
+      right = 3,
+      bottom = 4 -- to compensate for tall entities like electric poles
+    }
   }
 })

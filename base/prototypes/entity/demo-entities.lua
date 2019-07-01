@@ -686,6 +686,23 @@ function crash_trigger()
   }
 end
 
+function flying_robot_sounds()
+  return
+  {
+    sound =
+    {
+      { filename = "__base__/sound/flying-robot-1.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-2.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-3.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.6 },
+      { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.6 }
+    },
+    max_sounds_per_type = 3,
+    audible_distance_modifier = 0.5,
+    probability = 1 / (3 * 60) -- average pause between the sound is 3 seconds
+  }
+end
+
 data:extend(
 {
   {
@@ -4288,6 +4305,8 @@ data:extend(
     type = "speech-bubble",
     name = "compi-speech-bubble",
     style = "compilatron_speech_bubble",
+    wrapper_flow_style = "compilatron_speech_bubble_wrapper",
+    fade_in_out_ticks = 60 * 0.5,
     flags = {"not-on-map", "placeable-off-grid"}
   },
   {
@@ -5568,8 +5587,8 @@ data:extend(
   {
     type = "electric-energy-interface",
     name = "escape-pod-power",
-    icons = { {icon = "__base__/graphics/icons/accumulator.png", tint = {r=1, g=0.8, b=1, a=1}} },
-    icon_size = 32,
+    icons = { {icon = "__core__/graphics/white-square.png"} },
+    icon_size = 10,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "escape-pod-power"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
@@ -6712,6 +6731,396 @@ data:extend(
       }
     },
     fast_replaceable_group = "furnace"
+  },
+
+  {
+    type = "roboport",
+    name = "compi-roboport",
+    order="compi-roboport",
+    icon = "__base__/graphics/icons/roboport.png",
+    icon_size = 32,
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_mask = {},
+    energy_source = { type = "void" },
+    recharge_minimum = "40MJ",
+    energy_usage = "50kW",
+    -- per one charge slot
+    charging_energy = "1000kW",
+    logistics_radius = 25,
+    construction_radius = 55,
+    charge_approach_distance = 5,
+    robot_slots_count = 7,
+    material_slots_count = 7,
+    stationing_offset = {0, 0},
+    charging_offsets =
+    {
+      {-1.5, -0.5}, {1.5, -0.5}, {1.5, 1.5}, {-1.5, 1.5}
+    },
+    base =
+    {
+      layers =
+      {
+        {
+          filename = "__core__/graphics/empty.png",
+          width = 1,
+          height = 1,
+        },
+      }
+    },
+    base_patch =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "high",
+      width = 1,
+      height = 1,
+      frame_count = 1
+    },
+    base_animation =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "high",
+      width = 1,
+      height = 1,
+      frame_count = 1
+    },
+    door_animation_up =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "high",
+      width = 1,
+      height = 1,
+      frame_count = 1
+    },
+    door_animation_down =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "high",
+      width = 1,
+      height = 1,
+      frame_count = 1
+    },
+    recharging_animation =
+    {
+      filename = "__base__/graphics/entity/roboport/roboport-recharging.png",
+      priority = "high",
+      width = 37,
+      height = 35,
+      frame_count = 16,
+      scale = 1.5,
+      animation_speed = 0.5
+    },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.6 },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.5,
+      probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
+    },
+    recharging_light = {intensity = 0.4, size = 5, color = {r = 1.0, g = 1.0, b = 1.0}},
+    request_to_open_door_timeout = 15,
+    spawn_and_station_height = 0.8,
+    robots_shrink_when_entering_and_exiting = true,
+
+    draw_logistic_radius_visualization = true,
+    draw_construction_radius_visualization = true,
+
+    open_door_trigger_effect =
+    {
+      {
+        type = "play-sound",
+        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 1.0 }
+      }
+    },
+    close_door_trigger_effect =
+    {
+      {
+        type = "play-sound",
+        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.75 }
+      }
+    },
+
+    circuit_wire_connection_point = circuit_connector_definitions["roboport"].points,
+    circuit_connector_sprites = circuit_connector_definitions["roboport"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
+    default_available_logistic_output_signal = {type = "virtual", name = "signal-X"},
+    default_total_logistic_output_signal = {type = "virtual", name = "signal-Y"},
+    default_available_construction_output_signal = {type = "virtual", name = "signal-Z"},
+    default_total_construction_output_signal = {type = "virtual", name = "signal-T"}
+  },
+
+  {
+    type = "logistic-container",
+    name = "compi-logistics-chest",
+    icons = { {icon = "__core__/graphics/white-square.png"} },
+    icon_size = 10,
+    logistic_slots_count = 1,
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    collision_mask = {},
+    fast_replaceable_group = "container",
+    inventory_size = 48,
+    logistic_mode = "storage",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    opened_duration = logistic_chest_opened_duration,
+    animation =
+    {
+      filename = "__core__/graphics/empty.png",
+      priority = "high",
+      width = 1,
+      height = 1,
+      frame_count = 1
+    },
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
+  },
+
+  {
+    type = "construction-robot",
+    name = "construction-robot",
+    icon = "__base__/graphics/icons/construction-robot.png",
+    icon_size = 32,
+    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
+    minable = {mining_time = 0.1, result = "construction-robot"},
+    resistances = { { type = "fire", percent = 85 } },
+    max_health = 100,
+    collision_box = {{0, 0}, {0, 0}},
+    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
+    max_payload_size = 1,
+    speed = 0.06,
+    transfer_distance = 0.5,
+    max_energy = "1.5MJ",
+    energy_per_tick = "0.05kJ",
+    speed_multiplier_when_out_of_energy = 0.2,
+    energy_per_move = "5kJ",
+    min_to_charge = 0.2,
+    max_to_charge = 0.95,
+    working_light = {intensity = 0.8, size = 3, color = {r = 0.8, g = 0.8, b = 0.8}},
+    idle =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
+      priority = "high",
+      line_length = 16,
+      width = 32,
+      height = 36,
+      frame_count = 1,
+      shift = {0, -0.15625},
+      direction_count = 16,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 66,
+        height = 76,
+        frame_count = 1,
+        shift = util.by_pixel(0,-4.5),
+        direction_count = 16,
+        scale = 0.5
+      }
+    },
+    in_motion =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
+      priority = "high",
+      line_length = 16,
+      width = 32,
+      height = 36,
+      frame_count = 1,
+      shift = {0, -0.15625},
+      direction_count = 16,
+      y = 36,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
+        priority = "high",
+        line_length = 16,
+        width = 66,
+        height = 76,
+        frame_count = 1,
+        shift = util.by_pixel(0, -4.5),
+        direction_count = 16,
+        y = 76,
+        scale = 0.5
+      }
+    },
+    shadow_idle =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
+      priority = "high",
+      line_length = 16,
+      width = 50,
+      height = 24,
+      frame_count = 1,
+      shift = {1.09375, 0.59375},
+      direction_count = 16,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 104,
+        height = 49,
+        frame_count = 1,
+        shift = util.by_pixel(33.5, 18.75),
+        direction_count = 16,
+        scale = 0.5
+      }
+    },
+    shadow_in_motion =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
+      priority = "high",
+      line_length = 16,
+      width = 50,
+      height = 24,
+      frame_count = 1,
+      shift = {1.09375, 0.59375},
+      direction_count = 16,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 104,
+        height = 49,
+        frame_count = 1,
+        shift = util.by_pixel(33.5, 18.75),
+        direction_count = 16,
+        scale = 0.5
+      }
+    },
+    working =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot-working.png",
+      priority = "high",
+      line_length = 2,
+      width = 28,
+      height = 36,
+      frame_count = 2,
+      shift = {0, -0.15625},
+      direction_count = 16,
+      animation_speed = 0.3,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-working.png",
+        priority = "high",
+        line_length = 2,
+        width = 57,
+        height = 74,
+        frame_count = 2,
+        shift = util.by_pixel(-0.25, -5),
+        direction_count = 16,
+        animation_speed = 0.3,
+        scale = 0.5
+      }
+    },
+    shadow_working =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
+      priority = "high",
+      line_length = 16,
+      width = 50,
+      height = 24,
+      frame_count = 1,
+      repeat_count = 2,
+      shift = {1.09375, 0.59375},
+      direction_count = 16,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
+        priority = "high",
+        line_length = 16,
+        width = 104,
+        height = 49,
+        frame_count = 1,
+        repeat_count = 2,
+        shift = util.by_pixel(33.5, 18.75),
+        direction_count = 16,
+        scale = 0.5
+      }
+    },
+    smoke =
+    {
+      filename = "__base__/graphics/entity/smoke-construction/smoke-01.png",
+      width = 39,
+      height = 32,
+      frame_count = 19,
+      line_length = 19,
+      shift = {0.078125, -0.15625},
+      animation_speed = 0.3
+    },
+    sparks =
+    {
+      {
+        filename = "__base__/graphics/entity/sparks/sparks-01.png",
+        width = 39,
+        height = 34,
+        frame_count = 19,
+        line_length = 19,
+        shift = {-0.109375, 0.3125},
+        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+        animation_speed = 0.3
+      },
+      {
+        filename = "__base__/graphics/entity/sparks/sparks-02.png",
+        width = 36,
+        height = 32,
+        frame_count = 19,
+        line_length = 19,
+        shift = {0.03125, 0.125},
+        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+        animation_speed = 0.3
+      },
+      {
+        filename = "__base__/graphics/entity/sparks/sparks-03.png",
+        width = 42,
+        height = 29,
+        frame_count = 19,
+        line_length = 19,
+        shift = {-0.0625, 0.203125},
+        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+        animation_speed = 0.3
+      },
+      {
+        filename = "__base__/graphics/entity/sparks/sparks-04.png",
+        width = 40,
+        height = 35,
+        frame_count = 19,
+        line_length = 19,
+        shift = {-0.0625, 0.234375},
+        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+        animation_speed = 0.3
+      },
+      {
+        filename = "__base__/graphics/entity/sparks/sparks-05.png",
+        width = 39,
+        height = 29,
+        frame_count = 19,
+        line_length = 19,
+        shift = {-0.109375, 0.171875},
+        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+        animation_speed = 0.3
+      },
+      {
+        filename = "__base__/graphics/entity/sparks/sparks-06.png",
+        width = 44,
+        height = 36,
+        frame_count = 19,
+        line_length = 19,
+        shift = {0.03125, 0.3125},
+        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
+        animation_speed = 0.3
+      }
+    },
+    working_sound = flying_robot_sounds(),
+    cargo_centered = {0.0, 0.2},
+    construction_vector = {0.30, 0.22}
   },
 }
 )

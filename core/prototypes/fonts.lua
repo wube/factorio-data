@@ -59,8 +59,8 @@ data:extend(
   {
     type = "font",
     name = "compilatron-message-font",
-    from = "scenario-message-dialog",
-    size = 12
+    from = "default-semibold",
+    size = 18
   },
   {
     type = "font",

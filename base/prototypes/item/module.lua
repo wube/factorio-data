@@ -50,8 +50,7 @@ data:extend(
     tier = 1,
     order = "c[effectivity]-a[effectivity-module-1]",
     stack_size = 50,
-    effect = { consumption = {bonus = -0.3}},
-    limitation = production
+    effect = { consumption = {bonus = -0.3}}
   },
   {
     type = "module",

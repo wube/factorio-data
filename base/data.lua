@@ -43,6 +43,8 @@ require("prototypes.campaign_sprites")
 require("prototypes.campaign_gui")
 require("prototypes.campaign_sounds")
 require("prototypes.trigger-target-types")
+require("prototypes.signal.signal")
+
 
 if not data.is_demo then
   require("prototypes.achievements")
@@ -72,7 +74,6 @@ if not data.is_demo then
   require("prototypes.recipe.recipe")
   require("prototypes.recipe.turret")
   require("prototypes.fluid.fluid")
-  require("prototypes.signal.signal")
   require("prototypes.entity.resources")
   require("prototypes.technology.military-upgrades")
   require("prototypes.technology.technology")

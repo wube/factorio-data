@@ -4467,6 +4467,11 @@ data:extend(
     speech_bubble =
     {
       type = "speech_bubble_style",
+
+      wrapper_flow_style =
+      {
+        type = "flow_style"
+      },
       frame_style =
       {
         type = "frame_style",
@@ -4578,6 +4583,12 @@ data:extend(
       close_color = {0.361,0.894,0.278},
     },
 
+    compilatron_speech_bubble_wrapper =
+    {
+      type = "flow_style",
+      effect = "compilatron-hologram",
+    },
+
     compilatron_speech_bubble =
     {
       type = "speech_bubble_style",
@@ -4589,8 +4600,9 @@ data:extend(
         {
           filename = "__core__/graphics/gui-new.png",
           corner_size = 8,
-          position = {433, 498},
-          scale = 0.5
+          position = {450, 498},
+          scale = 0.5,
+          opacity = 0.15,
         },
         padding = 12,
       },
@@ -4602,34 +4614,19 @@ data:extend(
         font = "compilatron-message-font",
         maximal_width = 500,
         single_line = false,
-        font_color = {r=255,g=174,b=24},
+        font_color = {r=255,g=246,b=113},
       },
 
       arrow_graphical_set =
       {
-        top =
-        {
-          position = {433, 547},
-          size = {32, 24}
-        },
         bottom =
         {
-          position = {465, 547},
-          size = {32, 24}
-        },
-        right =
-        {
-          position = {458, 515},
-          size = {24, 32}
-        },
-        left =
-        {
-          position = {433, 515},
-          size = {24, 32}
+          position = {465, 551},
+          size = {32, 20}
         },
       },
 
-      arrow_indent = 2.5,
+      arrow_indent = 0,
       close_color = {0.361,0.894,0.278}
     },
 

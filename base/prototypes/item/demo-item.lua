@@ -682,5 +682,25 @@ data:extend(
     order = "p[rocket-fuel]",
     stack_size = 10
   },
+  {
+    type = "item",
+    name = "iron-chest",
+    icon = "__base__/graphics/icons/iron-chest.png",
+    icon_size = 32,
+    subgroup = "storage",
+    order = "a[items]-b[iron-chest]",
+    place_result = "iron-chest",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "construction-robot",
+    icon = "__base__/graphics/icons/construction-robot.png",
+    icon_size = 32,
+    subgroup = "logistic-network",
+    order = "a[robot]-b[construction-robot]",
+    place_result = "construction-robot",
+    stack_size = 50
+  },
 }
 )

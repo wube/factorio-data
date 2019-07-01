@@ -2,16 +2,6 @@ data:extend(
 {
   {
     type = "item",
-    name = "iron-chest",
-    icon = "__base__/graphics/icons/iron-chest.png",
-    icon_size = 32,
-    subgroup = "storage",
-    order = "a[items]-b[iron-chest]",
-    place_result = "iron-chest",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "steel-chest",
     icon = "__base__/graphics/icons/steel-chest.png",
     icon_size = 32,
@@ -367,16 +357,6 @@ data:extend(
     subgroup = "logistic-network",
     order = "a[robot]-a[logistic-robot]",
     place_result = "logistic-robot",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "construction-robot",
-    icon = "__base__/graphics/icons/construction-robot.png",
-    icon_size = 32,
-    subgroup = "logistic-network",
-    order = "a[robot]-b[construction-robot]",
-    place_result = "construction-robot",
     stack_size = 50
   },
   {
