@@ -1,8 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.54
+Version: 0.17.55
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.54
+Date: 04. 07. 2019
+  Changes:
+    - Removed the message of "<X> is in the way" when building over the exact same entity with same direction and position as in cursor. (https://forums.factorio.com/65436)
+    - Rails under trains can be marked for deconstruction. (https://forums.factorio.com/72579)
+    - Better latency hiding in multiplayer when experiencing connection issues. Less issues with rubber-banding or character teleporting.
+    - Latency hiding is no longer completely disabled when the character is shooting. Character position and animation are still not latency-hidden while the character is in combat (10 seconds after shooting or taking damage). This should make combat smoother in multiplayer.
+    - The Linux version of the game now depends on PulseAudio.
   Bugfixes:
     - Fixed adding conditions to a train station after it was dragged. (https://forums.factorio.com/72655)
+    - Improved drawing of a wall preview in some special cases. (https://forums.factorio.com/72650)
+    - Fixed that the sync-mods-with-save could in some cases leave mods enabled. (https://forums.factorio.com/72772)
+    - Added Right Control as secondary binding for "Temporary station modifier" controls. (https://forums.factorio.com/72795)
+    - Fixed that migrating saves could in some cases mess up damage bonuses. (https://forums.factorio.com/72779)
+    - Added a migration for unloadable saves because of invalid train paths caused by bugs in previous versions. (https://forums.factorio.com/72773)
+    - Fixed that rails wouldn't build correctly if they had a fast_replaceable_group defined. (https://forums.factorio.com/72699)
+    - Fixed flamethrower turret tooltip was missing info about created fire. (https://forums.factorio.com/71053)
+    - Fixed that modded units with minimal attack range wouldn't try to get away from a target if they were too close. (https://forums.factorio.com/68875)
+    - Fixed that train built from blueprint could miss a connection occasionally due the rail building order. (https://forums.factorio.com/72295)
+    - Fixed that electric-energy-interface and heat-interface entity types didn't export properly in blueprint string format. (https://forums.factorio.com/72808)
+    - Fixed Compilatron speech bubble hologram effect would cause entire screen to flicker when "Full color depth" graphics option was disabled. (https://forums.factorio.com/72820)
+    - Fixed a map corruption issue related to building blueprints outside of the map through script. (https://forums.factorio.com/72580)
+    - Fixed that too long description of shortcut tool could make the selection frame to be too big and unclosable. (https://forums.factorio.com/72836)
+    - Fixed that undo doesn't work for trains. (https://forums.factorio.com/72827)
+    - Fixed that reading 'disabled' from train stop control behaviors from Lua would report bad values in some cases. (https://forums.factorio.com/72821)
+    - Fixed that rich text tooltips would flicker in multiplayer. (https://forums.factorio.com/72637)
+    - Fixed possible crash in NPE when Compilatron builds an iron mining setup. (https://forums.factorio.com/72785)
+    - Fixed multiplayer issue where a client and server would sometimes send a large amount of data, causing players with slower connection to disconnect (https://factorio.com/blog/post/fff-302)
+    - Fixed that the wind sound would cut off abruptly when the technology screen was opened. (https://forums.factorio.com/69184)
+    - Fixed that inserter tooltips would list pollution despite inserters being unable to produce pollution. (https://forums.factorio.com/72855)
+    - Fixed that the bar of train wagon in blueprint was lost when the game was saved and loaded. (https://forums.factorio.com/72863)
+    - Fixed that textfield selection wasn't removed when the focus was lost. (https://forums.factorio.com/72860)
+  Modding:
+    - Equipment with the "manual" shape now renders backgrounds/outlines automatically like equipment with the "full" shape.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.53
 Date: 01. 07. 2019

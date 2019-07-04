@@ -1707,20 +1707,6 @@ data:extend(
     action =
     {
       {
-        type = "direct",
-        action_delivery =
-        {
-          type = "instant",
-          target_effects =
-          {
-            {
-              type = "create-fire",
-              entity_name = "fire-flame"
-            }
-          }
-        }
-      },
-      {
         type = "area",
         radius = 2.5,
         action_delivery =
@@ -1736,6 +1722,21 @@ data:extend(
               type = "damage",
               damage = { amount = 3, type = "fire" },
               apply_damage_to_trees = false
+            }
+          }
+        }
+      },
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-fire",
+              entity_name = "fire-flame",
+              show_in_tooltip = true
             }
           }
         }
@@ -1816,21 +1817,6 @@ data:extend(
     action =
     {
       {
-        type = "direct",
-        action_delivery =
-        {
-          type = "instant",
-          target_effects =
-          {
-            {
-              type = "create-fire",
-              entity_name = "fire-flame",
-              initial_ground_flame_count = 2
-            }
-          }
-        }
-      },
-      {
         type = "area",
         radius = 2.5,
         action_delivery =
@@ -1846,6 +1832,22 @@ data:extend(
               type = "damage",
               damage = { amount = 2, type = "fire" },
               apply_damage_to_trees = false
+            }
+          }
+        }
+      },
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-fire",
+              entity_name = "fire-flame",
+              show_in_tooltip = true,
+              initial_ground_flame_count = 2
             }
           }
         }

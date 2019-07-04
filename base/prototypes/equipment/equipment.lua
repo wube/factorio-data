@@ -190,7 +190,6 @@ data:extend(
       height = 4,
       type = "full"
       --[[ Can also be defined as manual (a set of points which fall within the width/height - can't be empty)
-           Note: the automatic background does not work when using 'manual'.
       type = "manual",
       points = {{0, 0}, {1, 0}, {2, 0}, {3, 0},
                 {0, 1},                 {3, 1},

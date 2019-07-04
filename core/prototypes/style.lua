@@ -5317,6 +5317,12 @@ data:extend(
       vertical_spacing = 0
     },
 
+    shortcut_bar_name_label =
+    {
+      type = "label_style",
+      maximal_width = 360
+    },
+
     --this will keep the health/shield/mining bars in the correct place
     quickbar_holder_flow =
     {
