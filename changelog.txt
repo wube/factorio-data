@@ -1,6 +1,20 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.55
+Version: 0.17.56
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.55
+Date: 09. 07. 2019
+  Bugfixes:
+    - Fixed that deconstructing tiles in the map editors instant-deconstruction mode didn't work. (https://forums.factorio.com/73060)
+---------------------------------------------------------------------------------------------------
+Version: 0.17.55
+Date: 09. 07. 2019
+  Bugfixes:
+    - Fixed that some of the textboxes didn't allow to write characters bound for different actions when focused. (https://forums.factorio.com/72666)
+    - Fixed a desync related to removing rail signal that merges two rail blocks reserved by different trains into one.
+    - Fixed that the belt-gap-fill logic could replace splitters/underground belts in some cases. (https://forums.factorio.com/73023)
+  Modding:
+    - Added LuaPlayer::connect_to_server().
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.54
 Date: 04. 07. 2019
@@ -34,6 +48,7 @@ Date: 04. 07. 2019
     - Fixed that inserter tooltips would list pollution despite inserters being unable to produce pollution. (https://forums.factorio.com/72855)
     - Fixed that the bar of train wagon in blueprint was lost when the game was saved and loaded. (https://forums.factorio.com/72863)
     - Fixed that textfield selection wasn't removed when the focus was lost. (https://forums.factorio.com/72860)
+    - Fixed that importing empty upgrade planners would error (https://forums.factorio.com/72977)
   Modding:
     - Equipment with the "manual" shape now renders backgrounds/outlines automatically like equipment with the "full" shape.
 ---------------------------------------------------------------------------------------------------

@@ -11589,7 +11589,7 @@ data:extend{
       {
         filename = "__base__/graphics/decorative/sand-decal/sand-decal-01.png",
         width = 488,
-        height = 322,
+        height = 332,
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-decal/hr-sand-decal-01.png",

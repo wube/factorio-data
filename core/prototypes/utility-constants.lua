@@ -167,6 +167,9 @@ data:extend(
     train_time_wait_condition_default = 60 * 30,
     train_inactivity_wait_condition_default = 60 * 5,
 
+    unit_group_collision_mask = {"player-layer", "train-layer"},
+    unit_group_pathfind_resolution = 0,
+      
     -- we render a bit more to compensate for electric poles, shadows, decoratives and tall entities
     -- with decoratives being most demanding on that, using them as heuristic
     entity_renderer_search_box_limits =
