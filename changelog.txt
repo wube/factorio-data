@@ -1,11 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.56
+Version: 0.17.57
 Date: ????
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.55
-Date: 09. 07. 2019
+Version: 0.17.56
+Date: 11. 07. 2019
+  Minor Features:
+    - Added option to enable Steam Cloud Sync for blueprint library to Other Settings GUI. Please backup your blueprint-storage.dat if you chose to enable it.
+      The option is available in Steam version of the game and Cloud Sync needs to be enabled in Steam for the library to be actually synchronized.
   Bugfixes:
+    - Fixed that the blueprint library GUI sometimes wouldn't update until the mouse was moved. (https://forums.factorio.com/72624)
     - Fixed that deconstructing tiles in the map editors instant-deconstruction mode didn't work. (https://forums.factorio.com/73060)
+    - Fixed setting FireFlamePrototype::spread_delay_deviation to 0 or 1 would crash the game. (https://forums.factorio.com/73053)
+    - Fixed logistics system tutorial after game script migration. (https://forums.factorio.com/73066)
+    - Fixed that the game would freeze when using LuaLogisticNetwork::remove_item() if the item was only in the players cursor. (https://forums.factorio.com/72988)
+    - Fixed yet another case of rails not merging blocks as expected. (https://forums.factorio.com/73016)
+    - Fixed occasional crash when dragging train wait conditions with brackets. (https://forums.factorio.com/72899)
+    - Removed the focusability of buttons, as we don't support it graphically and the functionality was just half-functional. (https://forums.factorio.com/72932)
+    - Fixed that copy-paste for assembling machines would ignore fixed_recipe. (https://forums.factorio.com/73115)
+    - Fixed that failing to join multiplayer games through --join-game-by-id would fail to show the error and show an empty background. (https://forums.factorio.com/72991)
+    - Fixed inserting items into underground belts with inserters could put items onto the belt leading into the underground belt. (https://forums.factorio.com/70749)
+    - Fixed rail signal internal consistency for some cases of rail cycle with one signal. (https://forums.factorio.com/72916)
+    - Fixed that electric energy interface stopped accumulators from working. (https://forums.factorio.com/73078)
+    - Fixed high CRC time related to large amounts of electric networks in multiplayer games. (https://forums.factorio.com/73100)
+    - Fixed that multiple map settings prototypes could be defined.
+  Modding:
+    - Removed label style want_ellipsis as it will be used automatically everywhere as with button.
+    - All rail bounding boxes are now hardcoded/not moddable. This is to avoid unexpected collision/rail block merging behaviour.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.55
 Date: 09. 07. 2019

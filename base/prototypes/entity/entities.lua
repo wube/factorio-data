@@ -1020,26 +1020,6 @@ data:extend(
       persistent = true
     },
     animation_speed_coefficient = 32,
-    animations =
-    {
-      filename = "__base__/graphics/entity/fast-transport-belt/fast-transport-belt.png",
-      priority = "extra-high",
-      width = 64,
-      height = 64,
-      frame_count = 32,
-      direction_count = 12,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/fast-transport-belt/hr-fast-transport-belt.png",
-        priority = "extra-high",
-        width = 128,
-        height = 128,
-        frame_count = 32,
-        line_length = 32,
-        direction_count = 12,
-        scale = 0.5
-      }
-    },
     belt_animation_set = fast_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     next_upgrade = "express-transport-belt",
@@ -1077,25 +1057,6 @@ data:extend(
       persistent = true
     },
     animation_speed_coefficient = 32,
-    animations =
-    {
-      filename = "__base__/graphics/entity/express-transport-belt/express-transport-belt.png",
-      priority = "extra-high",
-      width = 40,
-      height = 40,
-      frame_count = 32,
-      direction_count = 12,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/express-transport-belt/hr-express-transport-belt.png",
-        priority = "extra-high",
-        width = 128,
-        height = 128,
-        frame_count = 32,
-        direction_count = 12,
-        scale = 0.5
-      }
-    },
     belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
@@ -2607,7 +2568,6 @@ data:extend(
       scale = 0.5
     },
     wheels = standard_train_wheels,
-    rail_category = "regular",
     stop_trigger =
     {
       -- left side
@@ -3062,7 +3022,6 @@ data:extend(
       scale = 0.5
     },
     wheels = standard_train_wheels,
-    rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
     tie_distance = 50,
     working_sound =
@@ -3246,7 +3205,6 @@ data:extend(
       scale = 0.5
     },
     wheels = standard_train_wheels,
-    rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
     tie_distance = 50,
     working_sound =
@@ -4019,7 +3977,6 @@ data:extend(
       scale = 0.5
     },
     wheels = standard_train_wheels,
-    rail_category = "regular",
     drive_over_tie_trigger = drive_over_tie(),
     tie_distance = 50,
     working_sound =
@@ -4491,9 +4448,9 @@ data:extend(
         percent = 80
       }
     },
-    collision_box = {{-0.7, -0.99}, {0.7, 0.99}},
+    -- collision box is hardcoded for rails as they need to be different for different orientations (diagonal or straight) and to
+    -- avoid unexpected changes in the way rail blocks are merged
     selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
-    rail_category = "regular",
     pictures = rail_pictures()
   },
   {
@@ -4516,9 +4473,8 @@ data:extend(
         percent = 80
       },
     },
-    collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
+    -- collision box is hardcoded for rails as to avoid unexpected changes in the way rail blocks are merged
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
-    rail_category = "regular",
     pictures = rail_pictures(),
     placeable_by = {item = "rail", count = 4}
   },
@@ -5197,7 +5153,6 @@ data:extend(
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     max_payload_size = 1,
     speed = 0.05,
-    transfer_distance = 0.5,
     max_energy = "1.5MJ",
     energy_per_tick = "0.05kJ",
     speed_multiplier_when_out_of_energy = 0.2,
@@ -8228,7 +8183,6 @@ data:extend(
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
-    distance_per_frame = 0.13,
     time_to_live = 60 * 45,
     speed = 0,
     resistances =
@@ -8258,8 +8212,6 @@ data:extend(
       ammo_category = "combat-robot-laser",
       cooldown = 20,
       damage_modifier = 1,
-      projectile_center = {0, 0},
-      projectile_creation_distance = 0.6,
       range = 15,
       sound = make_laser_sounds(),
       ammo_type =
@@ -8679,7 +8631,6 @@ data:extend(
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    distance_per_frame = 0.13,
     time_to_live = 60 * 60 * 2,
     speed = 0.01,
     follows_player = true,
@@ -10446,38 +10397,6 @@ data:extend(
       }
     },
 
-    connection_patches =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-north.png",
-        width = 160,
-        height = 15,
-        shift = util.by_pixel(0, -72.5)
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-east.png",
-        width = 15,
-        height = 160,
-        shift = util.by_pixel(72.5, 0)
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-south.png",
-        width = 160,
-        height = 15,
-        shift = util.by_pixel(0, 72.5)
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/nuclear-reactor/connection-patch-west.png",
-        width = 15,
-        height = 160,
-        shift = util.by_pixel(-72.5, 0)
-      }
-    },
-
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
 
     meltdown_action =
@@ -11612,7 +11531,6 @@ data:extend(
   {
     type = "trivial-smoke",
     name = "artillery-smoke",
-    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
@@ -11645,19 +11563,17 @@ for k, v in pairs(uranium_cannon_explosion.animations) do
 end
 data:extend({uranium_cannon_explosion})
 
-local red_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-passive-provider"])
+local red_chest = util.table.deepcopy(data.raw["container"]["steel-chest"])
 red_chest.minable = nil
-red_chest.type = "container"
 red_chest.name = "red-chest"
-red_chest.picture = red_chest.animation
+red_chest.picture = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-passive-provider"].animation)
 red_chest.order = "r-e-d"
 data:extend({red_chest})
 
-local blue_chest = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-requester"])
+local blue_chest = util.table.deepcopy(data.raw["container"]["steel-chest"])
 blue_chest.minable = nil
-blue_chest.type = "container"
 blue_chest.name = "blue-chest"
-blue_chest.picture = blue_chest.animation
+blue_chest.picture = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-requester"].animation)
 blue_chest.order = "b-l-u-e"
 data:extend({blue_chest})
 

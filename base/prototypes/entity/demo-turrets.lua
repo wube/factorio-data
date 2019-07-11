@@ -383,7 +383,6 @@ data:extend(
           {
             type = "stream",
             stream = "acid-stream-worm-small",
-            duration = 160,
             source_offset = {0.15, -0.5}
           }
         }

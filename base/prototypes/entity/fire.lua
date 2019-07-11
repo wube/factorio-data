@@ -1502,7 +1502,6 @@ local function trivial_firesmoke(opts)
   {
     type = "trivial-smoke",
     name = opts.name,
-    flags = {"not-on-map"},
     duration = opts.duration or 600,
     fade_in_duration = opts.fade_in_duration or 0,
     fade_away_duration = opts.fade_away_duration or 600,

@@ -210,7 +210,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[asterisk]-a[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings("brown-fluff", 1, {{{35, 0.5}, {-15, 0.1}}}),
     autoplace = tog_autoplace
@@ -559,7 +558,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[asterisk-mini]-b[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 1}, {0, 0.7}}}),
     autoplace = tog_autoplace
@@ -908,7 +906,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[asterisk-mini]-c[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
@@ -1130,7 +1127,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[asterisk-mini]-c[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
@@ -1352,7 +1348,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[asterisk]-c[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selectable_in_game = false,
     render_layer = "decorative",
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
@@ -1703,7 +1698,6 @@ data:extend{
     order = "b[decorative]-c[pita]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -1983,7 +1977,6 @@ data:extend{
     order = "b[decorative]-c[pita]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2263,7 +2256,6 @@ data:extend{
     order = "b[decorative]-d[croton]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2623,7 +2615,6 @@ data:extend{
     order = "b[decorative]-d[croton]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2980,7 +2971,6 @@ data:extend{
     order = "b[decorative]-d[pita-mini]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -3256,7 +3246,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-a[normal]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -3644,7 +3633,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-b[dry]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4036,7 +4024,6 @@ data:extend{
     order = "b[decorative]-i[garballo]-a[normal]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4385,7 +4372,6 @@ data:extend{
     order = "b[decorative]-i[garballo]-a[mini-dry]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4733,7 +4719,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     --autoplace =
     --{
     --  order = "a[doodad]-e[garballo]",
@@ -5016,7 +5001,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -5237,7 +5221,6 @@ data:extend{
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-f[grass]-b",
@@ -5586,7 +5569,6 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-f[grass]-c",
@@ -5810,7 +5792,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6166,7 +6147,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6394,7 +6374,6 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6751,7 +6730,6 @@ data:extend{
     order = "b[decorative]-a[grass]-c[small]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     grows_through_rail_path = true,
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-f[grass]-d",
@@ -6972,7 +6950,6 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-f[grass]-c",
@@ -7206,7 +7183,6 @@ data:extend{
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
     render_layer = "decorative",
-    selectable_in_game = false,
     autoplace =
     {
       order = "a[doodad]-f[grass]-b",
@@ -8136,7 +8112,6 @@ data:extend{
     name = "rock-medium",
     type = "optimized-decorative",
     order = "b[decorative]-l[rock]-c[medium]",
-    selectable_in_game = false,
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     render_layer = "decorative",
     autoplace = rock_autoplace_settings(0.5, "c[medium]", {{0, 0.3}, {1, 1}}),
@@ -8339,9 +8314,7 @@ data:extend{
   {
     name = "rock-small",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-l[rock]-d[small]",
-    selectable_in_game = false,
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
     autoplace = rock_autoplace_settings(1, "d[small]", {{0, 0.3}, {1, 1}}),
@@ -8608,9 +8581,7 @@ data:extend{
   {
     name = "rock-tiny",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-l[rock]-e[tiny]",
-    selectable_in_game = false,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     render_layer = "decorative",
     autoplace = rock_autoplace_settings(1.1, "e[tiny]", {{0, 0.3}, {1, 1}}),
@@ -9141,7 +9112,6 @@ data:extend{
     type = "optimized-decorative",
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
-    selectable_in_game = false,
     render_layer = "floor",
     autoplace = rock_autoplace_settings(0.4, "c[medium]", {{0, 0}, {0.4, 0.2}}),
     pictures =
@@ -9410,7 +9380,6 @@ data:extend{
     type = "optimized-decorative",
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
-    selectable_in_game = false,
     render_layer = "floor",
     autoplace = rock_autoplace_settings(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
     pictures =
@@ -9677,7 +9646,6 @@ data:extend{
   {
     name = "concrete-hole-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-4, -4}, {4, 4}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -10113,7 +10081,6 @@ data:extend{
   {
     name = "red-desert-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-4.40625, -5.6875}, {4.375, 5.625}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -10272,7 +10239,6 @@ data:extend{
   {
     name = "dark-mud-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-4.625, -3.25}, {4.6875, 3.125}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -10707,7 +10673,6 @@ data:extend{
   {
     name = "puberty-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-3.75, -2.5625}, {3.75, 2.5625}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -11142,7 +11107,6 @@ data:extend{
   {
     name = "light-mud-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-3.375, -2.3125}, {3.25, 2.3125}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -11577,7 +11541,6 @@ data:extend{
   {
     name = "sand-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-7.21875, -5.9375}, {7.3125, 5.71875}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -11953,7 +11916,6 @@ data:extend{
   {
     name = "sand-dune-decal",
     type = "optimized-decorative",
-    subgroup = "grass",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-1.78125, -1.34375}, {1.78125, 1.34375}},
     collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
@@ -12412,7 +12374,6 @@ data:extend{
     order = "d[remnants]-d[ship-wreck-grass]-a[big]",
     collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
     grows_through_rail_path = true,
-    selectable_in_game = false,
     pictures =
     {
       {
@@ -12430,7 +12391,6 @@ data:extend{
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     grows_through_rail_path = true,
-    selectable_in_game = false,
     render_layer = "floor",
     pictures =
     {

@@ -2853,7 +2853,6 @@ data:extend(
   {
     type = "trivial-smoke",
     name = "smoke-train-stop",
-    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
@@ -2875,7 +2874,6 @@ data:extend(
   {
     type = "trivial-smoke",
     name = "smoke-building",
-    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
@@ -2897,7 +2895,6 @@ data:extend(
   {
     type = "trivial-smoke",
     name = "smoke-explosion-particle",
-    flags = {"not-on-map"},
     animation =
     {
       filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
@@ -5148,8 +5145,7 @@ data:extend(
         compilatron_animations.walk_shadow,
         compilatron_animations.walk
       }
-    },
-    destroy_when_commands_fail = false
+    }
   },
   {
     type = "assembling-machine",
@@ -5157,7 +5153,7 @@ data:extend(
     icon = "__base__/graphics/icons/assembling-machine-0.png",
     icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation", "hidden"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "escape-pod-assembler"},
+    minable = {mining_time = 0.5, result = "escape-pod-assembler"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 300,
     corpse = "big-remnants",
@@ -5414,8 +5410,6 @@ data:extend(
     module_specification =
     {
       module_slots = 2,
-      max_entity_info_module_icons_per_row = 3,
-      max_entity_info_module_icon_rows = 1,
       module_info_icon_shift = {0, 0.9}
     }
   },
@@ -5590,14 +5584,13 @@ data:extend(
     icons = { {icon = "__core__/graphics/white-square.png"} },
     icon_size = 10,
     flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "escape-pod-power"},
+    minable = {mining_time = 0.5, result = "escape-pod-power"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 150,
     corpse = "medium-remnants",
     subgroup = "other",
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.4, -1.4}, {1.4, 1.4}},
-    enable_gui = true,
     allow_copy_paste = true,
     energy_source =
     {
@@ -5648,7 +5641,6 @@ data:extend(
   {
     type = "simple-entity",
     name = "lab-wreck",
-    enable_inventory_bar = false,
     icon = "__base__/graphics/icons/ship-wreck/medium-ship-wreck.png",
     icon_size = 32,
     flags = {"placeable-neutral"},
@@ -5677,7 +5669,6 @@ data:extend(
     {
     type = "simple-entity",
     name = "assembler-wreck",
-    enable_inventory_bar = false,
     icon = "__base__/graphics/icons/ship-wreck/medium-ship-wreck.png",
     icon_size = 32,
     flags = {"placeable-neutral"},
@@ -5708,7 +5699,7 @@ data:extend(
     name = "mineable-wreckage",
     icon = "__base__/graphics/icons/ship-wreck/small-ship-wreck.png",
     icon_size = 32,
-    minable = {hardness = 0.2, mining_time = 0.5, result = "iron-gear-wheel"},
+    minable = {mining_time = 0.5, result = "iron-gear-wheel"},
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     subgroup = "wrecks",
     order = "d[remnants]-d[ship-wreck]-c[small]-a",
@@ -6893,7 +6884,6 @@ data:extend(
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     max_payload_size = 1,
     speed = 0.06,
-    transfer_distance = 0.5,
     max_energy = "1.5MJ",
     energy_per_tick = "0.05kJ",
     speed_multiplier_when_out_of_energy = 0.2,

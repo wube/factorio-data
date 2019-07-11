@@ -15,7 +15,6 @@ data:extend(
       ammo_category = "flamethrower",
       cooldown = 1,
       movement_slow_down_factor = 0.4,
-      projectile_creation_distance = 0.6,
       gun_barrel_length = 0.8,
       gun_center_shift = { 0, -1 },
       range = 15,
@@ -92,7 +91,6 @@ data:extend(
       type = "stream",
       ammo_category = "flamethrower",
       cooldown = 1,
-      projectile_creation_distance = 0.6,
       gun_barrel_length = 1.4,
       gun_center_shift = { -0.17, -1.15 },
       range = 9,
@@ -129,12 +127,10 @@ data:extend(
     name = "land-mine",
     icon = "__base__/graphics/icons/land-mine.png",
     icon_size = 32,
-    damage_radius = 5,
     subgroup = "gun",
     order = "f[land-mine]",
     place_result = "land-mine",
     stack_size = 100,
-    trigger_radius = 1
   },
   {
     type = "gun",

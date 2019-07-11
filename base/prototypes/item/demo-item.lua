@@ -541,7 +541,6 @@ data:extend(
     stack_size = 1,
     stackable = false,
     draw_label_for_cursor_render = true,
-    item_to_clear = "electronic-circuit",
     selection_color = {0, 1, 0},
     alt_selection_color = {0, 1, 0},
     selection_mode = {"blueprint"},

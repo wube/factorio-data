@@ -67,10 +67,6 @@ add_styles(
     {
       type = "frame_style",
       parent = "frame",
-      title_top_padding = 0,
-      title_left_padding = 0,
-      title_bottom_padding = 8,
-      title_right_padding = 0,
       padding = 0,
       use_header_filler = false,
       horizontally_stretchable = "on"

@@ -457,8 +457,6 @@ data:extend(
     type = "artillery-projectile",
     name = "artillery-projectile",
     flags = {"not-on-map"},
-    acceleration = 0,
-    direction_only = true,
     reveal_map = true,
     map_color = {r=1, g=1, b=0},
     picture =
@@ -552,14 +550,6 @@ data:extend(
           }
         }
       }
-    },
-    animation =
-    {
-      filename = "__base__/graphics/entity/bullet/bullet.png",
-      frame_count = 1,
-      width = 3,
-      height = 50,
-      priority = "high"
     },
     height_from_ground = 280 / 64
   },

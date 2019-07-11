@@ -57,9 +57,7 @@ data:extend(
           action_delivery =
           {
             type = "stream",
-            stream = "handheld-flamethrower-fire-stream",
-            max_length = 15,
-            duration = 160
+            stream = "handheld-flamethrower-fire-stream"
           }
         }
       },
@@ -76,9 +74,7 @@ data:extend(
           action_delivery =
           {
             type = "stream",
-            stream = "tank-flamethrower-fire-stream",
-            max_length = 9,
-            duration = 160
+            stream = "tank-flamethrower-fire-stream"
           }
         }
       }

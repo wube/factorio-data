@@ -709,7 +709,6 @@ data:extend(
           {
             type = "stream",
             stream = "acid-stream-worm-medium",
-            duration = 160,
             source_offset = {0.15, -0.5}
           }
         }
@@ -810,7 +809,6 @@ data:extend(
           {
             type = "stream",
             stream = "acid-stream-worm-big",
-            duration = 160,
             source_offset = {0.15, -0.5}
           }
         }
@@ -855,7 +853,6 @@ data:extend(
     corpse = "behemoth-worm-corpse",
     dying_explosion = "blood-explosion-big",
     dying_sound = make_worm_dying_sounds(1.0),
-    inventory_size = 2,
 
     folded_speed = 0.01,
     folded_speed_secondary = 0.024,
@@ -910,7 +907,6 @@ data:extend(
           {
             type = "stream",
             stream = "acid-stream-worm-behemoth",
-            duration = 160,
             source_offset = {0.15, -0.5}
           }
         }
@@ -1051,8 +1047,6 @@ data:extend(
           {
             type = "beam",
             beam = "laser-beam",
-            max_length = 24,
-            duration = 20,
             source_offset = {0, -1.31439 }
           }
         }

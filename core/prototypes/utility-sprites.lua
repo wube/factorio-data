@@ -878,7 +878,7 @@ data:extend(
       priority = "medium",
       width = 64,
       height = 64,
-      flag = {"icon"}
+      flags = {"icon"}
     },
     import_slot =
     {
@@ -886,7 +886,7 @@ data:extend(
       priority = "medium",
       width = 64,
       height = 64,
-      flag = {"icon"}
+      flags = {"icon"}
     },
     tile_editor_icon =
     {

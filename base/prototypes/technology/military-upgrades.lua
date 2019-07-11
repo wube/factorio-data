@@ -1652,7 +1652,6 @@ data:extend(
       time = 30,
       count_formula = "100(L-6)+900"
     },
-    level = 14,
     max_level = "infinite",
     upgrade = true,
     order = "e-p-b-c"

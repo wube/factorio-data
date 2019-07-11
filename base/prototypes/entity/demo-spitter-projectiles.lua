@@ -26,9 +26,7 @@ function spitter_attack_parameters(data)
         action_delivery =
         {
           type = "stream",
-          stream = data.acid_stream_name,
-          starting_speed = 0.5,
-          max_range = data.range*2
+          stream = data.acid_stream_name
         }
       }
     },
@@ -253,7 +251,6 @@ function acid_splash_fire(data)
     on_damage_tick_effect =
     {
       type = "direct",
-      radius = 2.5,
       force = "enemy",
       ignore_collision_condition = true,
       trigger_target_mask = { "ground-unit" },

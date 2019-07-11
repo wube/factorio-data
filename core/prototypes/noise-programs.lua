@@ -87,7 +87,7 @@ local function simple_variable_persistence_multioctave_noise(params)
   local octave0_output_scale = params.octave0_output_scale or 1
   local octave0_input_scale = params.octave0_input_scale or 1
   local persistence = params.persistence or 1/2
-  
+
   local terms = {}
   -- Start at the 'large' octave (assuming powers of 2 size increases)
   -- and work inwards, doubling the frequency and mulitplying amplitude by persistence.
@@ -181,12 +181,12 @@ local function make_multioctave_modulated_noise_function(params)
   end
   -- input scale of modulation relative to each octave's base input scale
   local mris = params.modulation_relative_input_scale or 1/17
-  
+
   return function(x,y)
     local outscale = octave0_output_scale
     local inscale = octave0_input_scale
     local result = 0
-    
+
     for i=1,octave_count do
       local noise = basis_noise_function(x*inscale, y*inscale)
       local modulation = modulation_noise_function(x*(inscale*mris), y*(inscale*mris))
@@ -195,7 +195,7 @@ local function make_multioctave_modulated_noise_function(params)
       outscale = outscale * octave_output_scale_multiplier
       inscale = inscale * octave_input_scale_multiplier
     end
-    
+
     return result
   end
 end
@@ -407,7 +407,7 @@ data:extend{
   {
     type = "noise-expression",
     name = "0_17-lakes-elevation",
-    description = "Large lakes similar to those from Factorio 0.12",
+    -- Large lakes similar to those from Factorio 0.12
     expression = noise.define_noise_function( function(x,y,tile,map)
       x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
       y = y * map.segmentation_multiplier
@@ -418,7 +418,7 @@ data:extend{
     type = "noise-expression",
     name = "0_17-starting-plateau",
     intended_property = debug_property("elevation"),
-    description = "The starting area plateau surrounded by an endless ociean",
+    -- The starting area plateau surrounded by an endless ociean
     expression = noise.define_noise_function( function(x,y,tile,map)
       x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
       y = y * map.segmentation_multiplier
@@ -433,7 +433,7 @@ data:extend{
     type = "noise-expression",
     name = "0_17-island",
     intended_property = "elevation",
-    description = "A large island surrounded by an endless ociean",
+    -- A large island surrounded by an endless ociean
     expression = noise.define_noise_function( function(x,y,tile,map)
       map = util.merge
       {
@@ -453,7 +453,7 @@ data:extend{
     type = "noise-expression",
     name = "0_17-islands+continents",
     intended_property = debug_property("elevation"),
-    description = "Similar to lakes, but with a negative bias instead of a positive one",
+    --Similar to lakes, but with a negative bias instead of a positive one
     expression = noise.define_noise_function( function(x,y,tile,map)
       x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
       y = y * map.segmentation_multiplier
@@ -469,7 +469,7 @@ data:extend{
     type = "noise-expression",
     name = "endless-plateau-with-starting-area-elevation",
     intended_property = debug_property("elevation"),
-    description = "A big plateau, except for the starting area",
+    -- A big plateau, except for the starting area
     expression = noise.define_noise_function( function(x,y,tile,map)
       return finish_elevation(100, map)
     end),
@@ -478,7 +478,7 @@ data:extend{
     type = "noise-expression",
     name = "0_16-elevation",
     intended_property = debug_property("elevation"),
-    description = "Elevation function often described as 'swampy' from 0.16",
+    -- Elevation function often described as 'swampy' from 0.16
     expression = noise.define_noise_function( function(x,y,tile,map)
       local plateau_octaves = 3
       local lf_octaves = 6
@@ -520,9 +520,9 @@ data:extend{
       local very_low_freq_noise = make_basis_noise_function(map.seed, 9, 20, 1/1024)
       local basis = low_freq_noise(x,y) + very_low_freq_noise(x,y)
       local ridged1 = noise.ridge(basis, low_ridge, high_ridge)
-      
+
       local normal = noise.max(ridged1 + high_freq_noise(x,y), plateaus + plateau_noise(x,y)) + global_bias
-      
+
       -- Multily elevation by low-frequency noise to make hilly and non-hilly areas
       local hill_modulation = noise.clamp(make_multioctave_noise_function(map.seed, 12, 4, 2, 1/3)(x,y,1/256,3/4) - 2, 0.1, 1.0)
 
@@ -530,7 +530,7 @@ data:extend{
       -- Set to slightly above the water level so that flat plains don't all become a giant beach/sandbar thing.
       -- To do its job it just has to be lower than the first row of cliffs.
       local hill_modulation_identity = 3 - map.wlc_elevation_offset
-      
+
       local hill_modulated = noise.min(
         normal,
         hill_modulation * (normal - hill_modulation_identity) + hill_modulation_identity

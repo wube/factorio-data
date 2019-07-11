@@ -474,7 +474,6 @@ data:extend(
       disabled_font_color = {1, 1, 1, 0.5},
       rich_text_setting = "enabled",
       single_line = true,
-      want_ellipsis = true,
       rich_text_highlight_error_color = {r=255,g=0,b=0},
       rich_text_highlight_warning_color = {r=255,g=255,b=0},
       rich_text_highlight_ok_color = {r=0,g=255,b=0},
@@ -921,7 +920,6 @@ data:extend(
     {
       type = "button_style",
       parent = "back_button",
-      padding_left = 0
     },
 
     map_generator_preview_button =
@@ -1772,10 +1770,7 @@ data:extend(
     research_queue_first_slot_flow =
     {
       type = "horizontal_flow_style",
-      padding_left = 0,
-      padding_right = 0,
-      padding_top = 0,
-      padding_bottom = 0
+      padding = 0
     },
 
     research_queue_cancel_button =
@@ -1820,7 +1815,6 @@ data:extend(
       level_font = "technology-slot-level-font",
       level_font_color = {0, 0, 0},
       hovered_level_font_color = {0, 0, 0},
-      scalable = false,
       width = 72,
       height = 100,
 
@@ -2293,7 +2287,6 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "disabled_technology_slot",
-      scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,
       ingredients_padding = 32
@@ -2303,7 +2296,6 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "disabled_index_technology_slot",
-      scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,
       ingredients_padding = 32
@@ -2313,7 +2305,6 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "researched_technology_slot",
-      scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,
       ingredients_padding = 32
@@ -2323,7 +2314,6 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "available_technology_slot",
-      scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,
       ingredients_padding = 32
@@ -2333,7 +2323,6 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "conditionally_available_technology_slot",
-      scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,
       ingredients_padding = 32
@@ -2343,7 +2332,6 @@ data:extend(
     {
       type = "technology_slot_style",
       parent = "unavailable_technology_slot",
-      scalable = false,
       width = featured_technology_slot_base_width,
       height = featured_technology_slot_base_height + 32,
       ingredients_padding = 32
@@ -2352,7 +2340,6 @@ data:extend(
     technology_card =
     {
       type = "vertical_flow_style",
-      horizontal_spacing = 0,
       vertical_spacing = 0
     },
 
@@ -2875,12 +2862,6 @@ data:extend(
     control_settings_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertical_flow =
-      {
-        type = "vertical_flow_style",
-        padding = 4,
-        vertical_spacing = 4
-      },
       graphical_set =
       {
         base =
@@ -2941,7 +2922,6 @@ data:extend(
       list_box_style =
       {
         type = "list_box_style",
-        font = "default",
         maximal_height = 400,
         scroll_pane_style =
         {
@@ -2959,7 +2939,6 @@ data:extend(
       list_box_style =
       {
         type = "list_box_style",
-        font = "default",
         maximal_height = 400,
         item_style =
         {
@@ -3008,7 +2987,7 @@ data:extend(
         default_graphical_set =
         {
           base = {position = {0, 17}, corner_size = 8},
-          ghow = default_dirt
+          glow = default_dirt
         },
         hovered_graphical_set =
         {
@@ -3044,7 +3023,6 @@ data:extend(
       list_box_style =
       {
         type = "list_box_style",
-        font = "default",
         maximal_height = 400,
         item_style =
         {
@@ -3082,8 +3060,8 @@ data:extend(
       default_font_color = warning_red_color,
       hovered_font_color = {61, 3, 0},
       selected_font_color = {61, 3, 0},
-      selected_hovered_color = {61, 3, 0},
-      selected_clicked_color = {61, 3, 0}
+      selected_hovered_font_color = {61, 3, 0},
+      selected_clicked_font_color = {61, 3, 0}
     },
 
     partially_accessible_station_in_station_selection =
@@ -3093,30 +3071,10 @@ data:extend(
       default_font_color = {110, 179, 255},
       hovered_font_color = {0, 23, 84},
       selected_font_color = {0, 23, 84},
-      selected_hovered_color = {0, 23, 84},
-      selected_clicked_color = {0, 23, 84}
+      selected_hovered_font_color = {0, 23, 84},
+      selected_clicked_font_color = {0, 23, 84}
     },
 
-    mod_invalid_list_box_item =
-    {
-      type = "button_style",
-      parent = "list_box_item",
-      default_font_color = warning_red_color,
-      hovered_font_color = warning_red_color,
-      selected_font_color = warning_red_color,
-      selected_hovered_color = warning_red_color,
-      selected_clicked_color = warning_red_color
-    },
-    mod_disabled_list_box_item =
-    {
-      type = "button_style",
-      parent = "list_box_item",
-      default_font_color = {0.5, 0.5, 0.5},
-      hovered_font_color = {0.5, 0.5, 0.5},
-      selected_font_color = {0.5, 0.5, 0.5},
-      selected_hovered_color = {0.5, 0.5, 0.5},
-      selected_clicked_color = {0.5, 0.5, 0.5}
-    },
     mod_updates_available_list_box_item =
     {
       type = "button_style",
@@ -3522,7 +3480,6 @@ data:extend(
     train_schedule_comparison_type_button =
     {
       type = "button_style",
-      minimal_width = 0,
       left_padding = 4,
       right_padding = 4,
       width = 56,
@@ -3543,7 +3500,6 @@ data:extend(
     schedule_in_train_view_list_box =
     {
       type = "list_box_style",
-      font = "default",
       width = 200,
       height = 80
     },
@@ -3602,8 +3558,8 @@ data:extend(
       default_font_color = {0.55, 0.55, 1},
       hovered_font_color = {0.8, 0.8, 1.0},
       selected_font_color = {0.2, 0.2, 0.8},
-      selected_hovered_color = {0.2, 0.2, 0.8},
-      selected_clicked_color = {0.2, 0.2, 0.8},
+      selected_hovered_font_color = {0.2, 0.2, 0.8},
+      selected_clicked_font_color = {0.2, 0.2, 0.8},
     },
 
     steam_friend_label =
@@ -4468,10 +4424,6 @@ data:extend(
     {
       type = "speech_bubble_style",
 
-      wrapper_flow_style =
-      {
-        type = "flow_style"
-      },
       frame_style =
       {
         type = "frame_style",
@@ -4479,7 +4431,6 @@ data:extend(
         {
           type = "composition",
           filename = "__core__/graphics/arrows/hint-orange-box.png",
-          priority = "extra-high-no-scale",
           corner_size = {13, 13},
           position = {0, 0}
         },
@@ -4746,8 +4697,7 @@ data:extend(
         {
           center = {position = {336, 0}, size = {1, 1}},
           opacity = 0.75,
-          background_blur = true,
-          blend_mode = "multiplicative-with-alpha"
+          background_blur = true
         },
         shadow = default_shadow
       }
@@ -4876,7 +4826,6 @@ data:extend(
     {
       type = "frame_style",
       padding = 0,
-      title_bottom_padding = 0,
       graphical_set = { shadow = default_shadow },
       horizontal_flow_style =
       {
@@ -4900,7 +4849,6 @@ data:extend(
 
     inner_frame_in_outer_frame =
     {
-      title_bottom_padding = 10,
       type = "frame_style",
       graphical_set =
       {
@@ -5102,8 +5050,7 @@ data:extend(
     naked_frame =
     {
       type = "frame_style",
-      parent = "inner_frame",
-      title_bottom_padding = 5
+      parent = "inner_frame"
     },
     graphicless_frame =
     {
@@ -5210,13 +5157,11 @@ data:extend(
       horizontal_flow_style =
       {
         type = "horizontal_flow_style",
-        horizontal_spacing = 0,
-        vertical_spacing = 0
+        horizontal_spacing = 0
       },
       vertical_flow_style =
       {
         type = "vertical_flow_style",
-        horizontal_spacing = 0,
         vertical_spacing = 0
       },
     },
@@ -5235,8 +5180,7 @@ data:extend(
       {
         type = "horizontal_flow_style",
         --space between page buttons and icon slots
-        horizontal_spacing = 8,
-        vertical_spacing = 0
+        horizontal_spacing = 8
       },
     },
 
@@ -5265,13 +5209,11 @@ data:extend(
       {
         type = "horizontal_flow_style",
         --spacing between tables
-        horizontal_spacing = 4,
-        vertical_spacing = 0
+        horizontal_spacing = 4
       },
       vertical_flow_style =
       {
         type = "vertical_flow_style",
-        horizontal_spacing = 0,
         vertical_spacing = 0
       },
     },
@@ -5676,7 +5618,7 @@ data:extend(
       vertical_flow_style =
       {
         type = "vertical_flow_style",
-        minimum_width = 10,
+        minimal_width = 10,
         vertical_spacing = 0
       }
     },
@@ -5837,7 +5779,7 @@ data:extend(
     info_box_activity_bar =
     {
       type = "activity_bar_style",
-      min_width = 300,
+      minimal_width = 300,
       horizontally_stretchable = "on",
     },
     info_box_progressbar =
@@ -6240,7 +6182,7 @@ data:extend(
       type = "graph_style",
       natural_width = 550, -- it resizes to 550 by default, but it can be squashed to be smaller
       height = 200,
-      background_color = {r=0.05, 0.05, 0.05, 0.9},
+      background_color = {r=0.05, g=0.05, b=0.05, a=0.9},
       line_colors=
       {
         {0.22, 0.41, 0.69},
@@ -6504,7 +6446,7 @@ data:extend(
         base = {},
         shadow = default_inner_shadow
       },
-      vertical_scroll_bar_style =
+      vertical_scrollbar_style =
       {
         type = "vertical_scrollbar_style",
         background_graphical_set = {position = {0, 72}, corner_size = 8, opacity = 0.7, blend_mode = "multiplicative-with-alpha"}
@@ -6673,6 +6615,12 @@ data:extend(
       top_padding = 2,
       bottom_padding = 5
     },
+    tile_variation_button =
+    {
+      type = "button_style",
+      size = 100,
+      padding = 2,
+    },
     battery_widget =
     {
       type = "empty_widget_style",
@@ -6681,8 +6629,7 @@ data:extend(
     glow =
     {
       type = "glow_style",
-      image_set = default_glow(),
-      offset = 0
+      image_set = default_glow()
     },
     research_queue_active_glow_dark =
     {

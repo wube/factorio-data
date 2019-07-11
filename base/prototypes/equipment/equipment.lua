@@ -307,7 +307,6 @@ data:extend(
         type = "projectile",
         category = "electric",
         energy_consumption = "2MJ",
-        speed = 1,
         action =
         {
           {
