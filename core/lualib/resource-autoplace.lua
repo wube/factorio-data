@@ -170,7 +170,7 @@ local function resource_autoplace_settings(params)
     return base_density * density_multiplier * distance_density_multiplier * regular_ns_multiplier_at(dist)
   end
   local spots_per_km2_near_start = base_spots_per_km2 * frequency_multiplier
-  local candidate_spot_count = tne(21)
+  local candidate_spot_count = params.candidate_spot_count or 21
   
   if pointillist_mode then
     -- Split ore into lots and lots and lots of little patches
@@ -259,6 +259,7 @@ local function resource_autoplace_settings(params)
       seed1 = tne(seed1),
       region_size = tne(1024),
       candidate_spot_count = tne(candidate_spot_count),
+      suggested_minimum_candidate_point_spacing = tne(45.254833995939045), -- Magic number to match 0.17.50 spot placement, when candidate_point_count was always 128
       skip_span = noise.var("regular-resource-patch-set-count"),
       skip_offset = tne(regular_patch_metaset:get_patch_set_index(patch_set_name)),
       density_expression = litexp(regular_density_expression), -- low-frequency noise evaluate for an entire region

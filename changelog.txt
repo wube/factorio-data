@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.57
+Version: 0.17.58
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.57
+Date: 15. 07. 2019
+  Changes:
+    - Restored ore placement to match that of 0.17.50 (https://forums.factorio.com/72487)
+  Optimisations:
+    - Optimized synchronization time of blueprint library to a new game map. (https://forums.factorio.com/73166)
+  Bugfixes:
+    - Fixed glitch in pollution cloud overlay rendering. (https://forums.factorio.com/73151)
+    - Fixed joining multiplayer through Steam Friends would not work sometimes. (https://forums.factorio.com/70481)
+    - Fixed rail signal consistency for a very special corner case. (https://forums.factorio.com/73162)
+    - Fixed that the Linux server's standard input could get closed under some circumstances. (https://forums.factorio.com/73106)
+    - Fixed crash when enabling blueprint library cloud sync when local blueprint library did not exist. (https://forums.factorio.com/73197)
+    - Fixed that trains couldn't be rotated while in the map editor. (https://forums.factorio.com/73215)
+    - Fixed that LuaGameScript::ban_player() only worked with real players. (https://forums.factorio.com/73223)
+    - Fixed that the changelog GUI could have unnecessary scroll bars. (https://forums.factorio.com/73249)
+    - Fixed that hiding the search bar didn't unfocus it, so it was still possible to write to the invisible search bar. (https://forums.factorio.com/73251)
+    - Fixed wrong signal placeability in some specific cases. (https://forums.factorio.com/73245)
+    - Fixed that the entity tooltip would flicker in some cases related to the tooltip delay. (https://forums.factorio.com/72942)
+    - Fixed a crash when opening assembling machines with fixed_recipe set in the latency state. (https://forums.factorio.com/73297)
+  Modding:
+    - Added a prototype property for hiding recipes from the player crafting GUI.
+    - Renamed spot noise argument 'minimum_candidate_point_spacing' to 'suggested_minimum_candidate_point_spacing'
+    - Added base_productivity to assembling machines, mining drill, and lab prototypes.
+    - Added LuaEntityPrototype::base_productivity read.
+  Scripting:
+    - Added optional "ignore_characters" to LuaSurface::clear().
+    - Added on_gui_confirmed event.
+    - Added LuaGuiElement::numeric, allow_decimal, allow_negative, is_password, lose_focus_on_confirm, clear_and_focus_on_right_click read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.56
 Date: 11. 07. 2019

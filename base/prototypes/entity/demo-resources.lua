@@ -60,8 +60,9 @@ local function resource(resource_parameters, autoplace_parameters)
       order = resource_parameters.order,
       base_density = autoplace_parameters.base_density,
       has_starting_area_placement = true,
-      regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier;
-      starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier;
+      regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier,
+      starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier,
+      candidate_spot_count = autoplace_parameters.candidate_spot_count,
     },
     stage_counts = {15000, 9500, 5500, 2900, 1300, 400, 150, 80},
     stages =
@@ -107,7 +108,8 @@ data:extend(
     {
       base_density = 10,
       regular_rq_factor_multiplier = 1.10,
-      starting_rq_factor_multiplier = 1.5
+      starting_rq_factor_multiplier = 1.5,
+      candidate_spot_count = 22, -- To match 0.17.50 placement
     }
   ),
   resource(
@@ -120,7 +122,8 @@ data:extend(
     {
       base_density = 8,
       regular_rq_factor_multiplier = 1.10,
-      starting_rq_factor_multiplier = 1.2
+      starting_rq_factor_multiplier = 1.2,
+      candidate_spot_count = 22, -- To match 0.17.50 placement
     }
   ),
   resource(

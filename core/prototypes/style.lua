@@ -4417,6 +4417,7 @@ data:extend(
         height = 24
       },
       use_header_filler = true,
+      drag_by_title = true,
       border = {}
     },
 
