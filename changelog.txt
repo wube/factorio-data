@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.58
+Version: 0.17.59
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.58
+Date: 15. 07. 2019
+  Bugfixes:
+    - Fixed a crash related to researching technologies through script.
+    - Fixed a crash when opening other settings on the steam version of the game. (https://forums.factorio.com/73306)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.57
 Date: 15. 07. 2019
