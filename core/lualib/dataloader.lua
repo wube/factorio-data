@@ -13,9 +13,15 @@ function data.extend(self, otherdata)
   end
 
   for _, e in ipairs(otherdata) do
-    if not e.type or not e.name then
-      error("Missing name or type in the following prototype definition " .. serpent.block(e))
+
+    if not e.type then
+      error("Missing type in the following prototype definition " .. serpent.block(e))
     end
+
+    if not e.name then
+      error("Missing name in the following prototype definition " .. serpent.block(e))
+    end
+
     local t = self.raw[e.type]
     if t == nil then
       t = {}

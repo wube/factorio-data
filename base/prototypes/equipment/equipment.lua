@@ -231,11 +231,11 @@ data:extend(
     attack_parameters =
     {
       type = "beam",
-      cooldown = 20,
+      cooldown = 40,
       range = 15,
       --source_direction_count = 64,
       --source_offset = {0, -3.423489 / 4},
-      damage_modifier = 4,
+      damage_modifier = 3,
       ammo_type =
       {
         category = "laser-turret",
@@ -248,7 +248,7 @@ data:extend(
             type = "beam",
             beam = "laser-beam",
             max_length = 15,
-            duration = 20,
+            duration = 40,
             source_offset = {0, -1.31439 }
           }
         }

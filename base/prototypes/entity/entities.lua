@@ -7185,6 +7185,7 @@ data:extend(
     },
 
     fluid_wagon_connector_frame_count = 35,
+    fluid_wagon_connector_alignment_tolerance = 2.0 / 32.0,
 
     fluid_wagon_connector_graphics = require("prototypes.entity.pump-connector"),
 
@@ -7382,7 +7383,8 @@ data:extend(
     icon = "__base__/graphics/icons/market.png",
     icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
-    order="d-a-a",
+    allow_access_to_all_forces = true,
+    order = "d-a-a",
     subgroup = "other",
     max_health = 150,
     corpse = "big-remnants",
@@ -11389,6 +11391,8 @@ data:extend(
   {
     type = "artillery-flare",
     name = "artillery-flare",
+    icon = "__base__/graphics/icons/artillery-targeting-remote.png",
+    icon_size = 32,
     flags = {"placeable-off-grid", "not-on-map"},
     map_color = {r=1, g=0.5, b=0},
     life_time = 60 * 60,

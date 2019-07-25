@@ -80,7 +80,7 @@ data:extend(
       ingredients =
       {
         {"iron-plate", 2},
-        {"copper-cable", 10}
+        {"copper-cable", 8}
       },
       result = "electronic-circuit"
     }

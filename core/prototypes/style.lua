@@ -4571,10 +4571,25 @@ data:extend(
 
       arrow_graphical_set =
       {
+        top =
+        {
+          position = {433, 547},
+          size = {32, 24}
+        },
         bottom =
         {
           position = {465, 551},
           size = {32, 20}
+        },
+        right =
+        {
+          position = {458, 516},
+          size = {24, 32}
+        },
+        left =
+        {
+          position = {433, 516},
+          size = {24, 32}
         },
       },
 
@@ -7124,7 +7139,8 @@ data:extend(
     {
       type = "label_style",
       font = "default",
-      font_color = {128, 206, 240}
+      font_color = {128, 206, 240},
+      single_line = false
     },
   }
 }

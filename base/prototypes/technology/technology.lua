@@ -133,10 +133,6 @@ data:extend(
     icon = "__base__/graphics/technology/space-science-pack.png",
     effects =
     {
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "space-science-pack"
-      --},
       {
         type = "unlock-recipe",
         recipe = "satellite"
@@ -155,7 +151,7 @@ data:extend(
       },
       time = 30
     },
-    prerequisites = {"rocket-silo"},
+    prerequisites = {"rocket-silo", "electric-energy-accumulators", "solar-energy"},
     order = "c-a"
   },
 
@@ -1542,32 +1538,6 @@ data:extend(
     },
     order = "c-i"
   },
-  --[[
-  {
-    type = "technology",
-    name = "alien-technology",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/alien-technology.png",
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "military-science-pack"
-      }
-    },
-    prerequisites = {"rocketry"},
-    unit =
-    {
-      count = 300,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
-      },
-      time = 30
-    },
-    order = "e-f"
-  }, ]]--
   {
     type = "technology",
     name = "rocket-fuel",
@@ -1657,26 +1627,10 @@ data:extend(
         type = "unlock-recipe",
         recipe = "rocket-silo"
       },
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "low-density-structure"
-      --},
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "rocket-fuel"
-      --},
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "rocket-control-unit"
-      --},
       {
         type = "unlock-recipe",
         recipe = "rocket-part"
-      },
-      --{
-      --  type = "unlock-recipe",
-      --  recipe = "satellite"
-      --}
+      }
     },
     prerequisites = {"concrete", "speed-module-3", "productivity-module-3", "rocket-fuel", "rocket-control-unit"},
     unit =

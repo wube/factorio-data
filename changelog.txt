@@ -1,12 +1,85 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.59
+Version: 0.17.60
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.59
+Date: 25. 07. 2019
+  Balancing:
+    - Changed expensive variant of electronic circuit to require 8 copper cables instead of 10.
+  Changes:
+    - User verification must be enabled for public multiplayer games. LAN games, direct-connect, and Steam still don't require user verification.
+    - Network message segment size can be configured in server-settings.json, for server providers with large enough upload bandwidth.
+    - Added "Build with obstacle avoidance" into controls settings with CONTROL + Left mouse click as default.
+      It re-introduces the possibility to build rails in ghost mode that avoid trees rocks and cliffs.
+    - Decreased base damage of Personal laser defense from 40 to 30.
+    - Decreased base shooting speed of Laser turret and Personal laser defense equipment from 3 shots per second to 1.5 shots per second.
+    - Reverted combat latency behavior to do latency hiding while in combat. (https://forums.factorio.com/73126)
+  Bugfixes:
+    - Fixed that extra fast (modded) splitters didn't work properly. (https://forums.factorio.com/73059)
+    - Fixed an inconsistency between area selection and logistic network highlight. (https://forums.factorio.com/72969)
+    - Fixed that probabilistic recipe result that is also a catalyst didn't put itself into consumed statistics when the probability check failed and the item wasn't produced. (https://forums.factorio.com/71211)
+    - Fixed visual errors when dragging train schedule conditions. (https://forums.factorio.com/73275)
+    - Fixed that locale settings didn't save when changed. (https://forums.factorio.com/73332)
+    - Solved that pressing ALT while walking right (D being pressed) stopped the character as it interfered with ALT + D. (https://forums.factorio.com/67585)
+    - Fixed connection preview of underground belt in blueprint in a specific case. (https://forums.factorio.com/73342)
+    - Changed accumulator/wall/underground belt map color to be more contrast against certain tiles. (https://forums.factorio.com/44597)
+    - Fixed laser turrets were shooting beams that would last until target was destroyed even if it got out of range and turret stopped shooting. (https://forums.factorio.com/73474)
+    - Fixed Laser turret shooting speed research didn't increase damage of laser turret. (https://forums.factorio.com/72360)
+    - Fixed Laser turret shooting speed research didn't increase damage of Personal laser defense equipment. (https://forums.factorio.com/71003)
+    - Fixed that biters sometimes couldn't get past other biters. (https://forums.factorio.com/73208)
+    - Fixed that migration scripts couldn't use "require". (https://forums.factorio.com/73373)
+    - Fixed a crash related to fast-replacing modded generator entities without fluidboxes.
+    - Fixed loaders would not wake up sometimes after picking up items from them manually. (https://forums.factorio.com/73398)
+    - Fixed that space science pack technology did not have accumulators and solar panels in prerequisites. (https://forums.factorio.com/72675)
+    - Fixed that switching to another window while dragging a widget (slider) with a tooltip didn't clear the tooltip. (https://forums.factorio.com/65433)
+    - Fixed that rails would report bounding box sizes of zero when read through the LuaEntityPrototype API. (https://forums.factorio.com/73438)
+    - Fixed that unit groups could get stuck at the end of their assigned path. (https://forums.factorio.com/72961)
+    - Fixed a desync related to changing forces in the map editor. (https://forums.factorio.com/73492)
+    - Fixed a crash related to fluid connection changes in mods. (https://forums.factorio.com/73509)
+    - Fixed that creating character corpses using player_index was off by 1. (https://forums.factorio.com/73519)
+    - Added extra check to prevent infinite cycle in fast belt building. (https://forums.factorio.com/73368)
+    - Fixed a crash when building train stations when the backers.json file is empty. (https://forums.factorio.com/73532)
+    - Fixed that entities could have their light rendered twice. (https://forums.factorio.com/73451)
+    - Fixed that biters had difficulty pathfinding around crescent-shaped lakes. (https://forums.factorio.com/72985)
+    - Fixed that the "not enough rails" error didn't work correctly in the map editor. (https://forums.factorio.com/73427)
+    - Fixed train would not stop exactly in the station preventing pumps to connect to fluid wagons when a mod was changing speed of breaking train. (https://forums.factorio.com/73466)
+    - Fixed that trains would try to path to train stops on different surfaces. (https://forums.factorio.com/73551)
+    - Fixed pump would not disconnect from fluid wagon when rail besides pump was mined or destroyed. (https://forums.factorio.com/73449)
+    - Fixed a crash related to the rail planner. (https://forums.factorio.com/73584)
+    - Fixed that the mod info label in the technology tooltip didn't line wrap. (https://forums.factorio.com/73598)
+    - Fixed a crash near the start of the NPE. (https://forums.factorio.com/73481)
+  Modding:
+    - Changed how beams are drawn to improve seamless tiling of beam segments.
+      Head and tail segments are now stretched to fill space from source/target position to next segment.
+    - Changed how beams apply damage. By default, they no longer trigger their action every damage_interval, instead the action is triggered when
+      its owner triggers shooting. The old behavior can be turned on by setting BeamPrototype::action_triggered_automatically to true.
+    - It is possible to specify fluid product or ingredient with a fluidbox_index so they use exactly one slot corresponding to the specified fluidbox of the machine.
+    - Changed the "market" entity from entity-with-health to entity-with-owner so it now has a force and unit_number.
+    - Changed fluid energy source prototypes to error when no consumption limits are set instead of logging a warning.
+    - Added util.parse_energy().
+  Scripting:
+    - Added LuaGui::screen.
+    - Added on_gui_location_changed, on_gui_selected_tab_changed, and on_gui_switch_state_changed events.
+    - Added LuaGuiElement type "empty-widget", "tabbed-pane", "tab", and "switch".
+    - Added LuaGuiElement::add_tab(), remove_tab(), and force_auto_center().
+    - Added LuaGuiElement::location, auto_center, drag_target, selected_tab_index, tabs read/write.
+    - Added LuaGuiElement::switch_state, allow_none_state, left_label_caption, left_label_tooltip, right_label_caption, right_label_tooltip read/write.
+    - Added LuaStyle::badge_font, badge_horizontal_spacing, default_badge_font_color, selected_badge_font_color, disabled_badge_font_color,
+      selected_font_color, selected_hovered_font_color, selected_clicked_font_color, strikethrough_color read/write.
+    - Added clear_and_focus_on_right_click to LuaGuiElement text-box.
+    - Added LuaGuiElement::get_slider_value_step(), get_slider_discrete_slider(), get_slider_discrete_values(), set_slider_value_step(),
+      set_slider_discrete_slider(), set_slider_discrete_values().
+    - Added LuaGuiElement::get_mod().
+    - Added LuaEntity::loader_container read.
+    - Added LuaEntity::belt_neighbours read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.58
 Date: 15. 07. 2019
   Bugfixes:
     - Fixed a crash related to researching technologies through script.
     - Fixed a crash when opening other settings on the steam version of the game. (https://forums.factorio.com/73306)
+    - Fixed possible NPE crash when attacking biters. (https://forums.factorio.com/73324)
+    - Fixed possible NPE crash when building in second area. (https://forums.factorio.com/72906)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.57
 Date: 15. 07. 2019

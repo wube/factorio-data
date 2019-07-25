@@ -38,10 +38,10 @@ data:extend(
         ["fluid-turret"] = {r = 0.92, g = 0.46, b = 0.1},
         ["transport-belt"] = {r = 0.8, g = 0.63, b = 0.28},
         ["splitter"] = {r = 1, g = 0.82, b = 0},
-        ["underground-belt"] = {r = 0.56, g = 0.46, b = 0},
+        ["underground-belt"] = {r = 0.44, g = 0.36, b = 0},
         ["solar-panel"] = {r = 0.12, g = 0.13, b = 0.14},
-        ["accumulator"] = {r = 0.42, g = 0.42, b = 0.42},
-        ["wall"] = {r = 0.75, g = 0.8, b = 0.75},
+        ["accumulator"] = {r = 0.48, g = 0.48, b = 0.48},
+        ["wall"] = {r = 0.8, g = 0.85, b = 0.8},
         ["gate"] = {r = 0.5, g = 0.5, b = 0.5}
       },
       default_color_by_type =
@@ -169,7 +169,7 @@ data:extend(
 
     unit_group_collision_mask = {"player-layer", "train-layer"},
     unit_group_pathfind_resolution = 0,
-      
+
     -- we render a bit more to compensate for electric poles, shadows, decoratives and tall entities
     -- with decoratives being most demanding on that, using them as heuristic
     entity_renderer_search_box_limits =

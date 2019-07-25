@@ -205,8 +205,8 @@ data:extend(
       short_request_ratio = 0.5,
       -- absolute minimum of steps that will be performed for every path find request no matter what
       min_steps_to_check_path_find_termination = 2000,
-      -- if the amount of steps is higher than this times estimate of start to goal then path finding is terminated
-      start_to_goal_cost_multiplier_to_terminate_path_find = 500.0
+      -- if the current actual cost from start is higher than this times estimate of start to goal then path finding is terminated
+      start_to_goal_cost_multiplier_to_terminate_path_find = 20.0
     },
 
     -- If a behavior fails this many times, the enemy (or enemy group)

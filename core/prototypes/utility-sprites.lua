@@ -856,6 +856,21 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
+    missing_icon =
+    {
+      filename = "__core__/graphics/cancel.png",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+    deconstruction_mark =
+    {
+      filename = "__core__/graphics/cancel.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
     upgrade_mark =
     {
       filename = "__core__/graphics/upgrade.png",

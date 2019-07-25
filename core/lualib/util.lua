@@ -4,50 +4,55 @@ util =
 }
 
 function table.deepcopy(object)
-    local lookup_table = {}
-    local function _copy(object)
-        if type(object) ~= "table" then
-            return object
-        -- don't copy factorio rich objects
-        elseif object.__self then
-          return object
-        elseif lookup_table[object] then
-            return lookup_table[object]
-        end
-        local new_table = {}
-        lookup_table[object] = new_table
-        for index, value in pairs(object) do
-            new_table[_copy(index)] = _copy(value)
-        end
-        return setmetatable(new_table, getmetatable(object))
+  local lookup_table = {}
+  local function _copy(object)
+    if type(object) ~= "table" then
+      return object
+    -- don't copy factorio rich objects
+    elseif object.__self then
+      return object
+    elseif lookup_table[object] then
+      return lookup_table[object]
     end
-    return _copy(object)
+    local new_table = {}
+    lookup_table[object] = new_table
+    for index, value in pairs(object) do
+      new_table[_copy(index)] = _copy(value)
+    end
+    return setmetatable(new_table, getmetatable(object))
+  end
+  return _copy(object)
 end
 
 function table.compare( tbl1, tbl2 )
-    if tbl1 == tbl2 then return true end
-    for k, v in pairs( tbl1 ) do
-        if  type(v) == "table" and type(tbl2[k]) == "table" then
-            if not table.compare( v, tbl2[k] )  then return false end
-        else
-            if ( v ~= tbl2[k] ) then return false end
-        end
+  if tbl1 == tbl2 then return true end
+  for k, v in pairs( tbl1 ) do
+    if  type(v) == "table" and type(tbl2[k]) == "table" then
+      if not table.compare( v, tbl2[k] )  then return false end
+    else
+      if ( v ~= tbl2[k] ) then return false end
     end
-    for k, v in pairs( tbl2 ) do
-        if tbl1[k] == nil then return false end
-    end
-    return true
+  end
+  for k, v in pairs( tbl2 ) do
+    if tbl1[k] == nil then return false end
+  end
+  return true
 end
 
 util.table.deepcopy = table.deepcopy
 util.table.compare = table.compare
+util.copy = util.table.deepcopy
 
 function util.distance(position1, position2)
-  return ((position1.x - position2.x)^2 + (position1.y - position2.y)^2)^0.5
+  local x1 = position1[1] or position1.x
+  local y1 = position1[2] or position1.y
+  local x2 = position2[1] or position2.x
+  local y2 = position2[2] or position2.y
+  return ((x1 - x2) ^ 2 + (y1 - y2) ^ 2) ^ 0.5
 end
 
 function util.positiontostr(pos)
-  return string.format("[%g, %g]", pos.x, pos.y)
+  return string.format("[%g, %g]", pos[1] or pos.x, pos[2] or pos.y)
 end
 
 function util.formattime(ticks)
@@ -126,19 +131,8 @@ function util.moveposition(position, direction, distance)
 end
 
 function util.oppositedirection(direction)
-  local d = defines.direction
-  local opposites =
-  {
-    [d.north] = d.south,
-    [d.northeast] = d.southwest,
-    [d.east] = d.west,
-    [d.southeast] = d.northwest,
-    [d.south] = d.north,
-    [d.southwest] = d.northeast,
-    [d.west] = d.east,
-    [d.northwest] = d.southeast
-  }
-  return opposites[direction] or error(direction .. " is not a valid direction")
+  if not tonumber(direction) then error(direction .. " is not a valid direction") end
+  return (direction + 4) % 8
 end
 
 function util.ismoduleavailable(name)
@@ -166,11 +160,11 @@ function util.multiplystripes(count, stripes)
 end
 
 function util.by_pixel(x,y)
-  return {x/32,y/32}
+  return {x / 32, y / 32}
 end
 
 function util.by_pixel_hr(x,y)
-  return {x/64,y/64}
+  return {x / 64, y / 64}
 end
 
 function util.foreach_sprite_definition(table_, fun_)
@@ -184,25 +178,24 @@ function util.foreach_sprite_definition(table_, fun_)
 end
 
 function util.add_shift(a, b)
-  if (not a) or (not b) then
+  if not (a and b) then
     return a or b
   end
-
   return { a[1] + b[1], a[2] + b[2] }
 end
 
 function util.add_shift_offset(offset_, table_)
-  return util.foreach_sprite_definition(table_, function(tab)
-            tab.shift = util.add_shift(tab.shift, offset_)
-        end)
+  return
+    util.foreach_sprite_definition(table_, function(tab)
+      tab.shift = util.add_shift(tab.shift, offset_)
+    end)
 end
 
 function util.mul_shift(shift, scale)
-  if (not shift) or (not scale) then
+  if not (shift and scale) then
     return shift
   end
-
-  return { shift[1] * scale, shift[2] * scale }
+  return {shift[1] * scale, shift[2] * scale}
 end
 
 function util.format_number(amount, append_suffix)
@@ -238,11 +231,7 @@ function util.increment(t, k, v)
 end
 
 function util.conditional_return(value, data)
-  if not value then
-    return nil
-  else
-    return data
-  end
+  return value and data
 end
 
 -- Recursively merges and/or deep-copies tables.
@@ -393,5 +382,38 @@ function util.combine_icons(icons1, icons2, inputs)
   end
   return icons
 end
+
+local energy_chars =
+{
+  k = 10^3,
+  K = 10^3,
+  M = 10^6,
+  G = 10^9,
+  T = 10^12,
+  P = 10^15,
+  E = 10^18,
+  Z = 10^21,
+  Y = 10^24
+}
+
+function util.parse_energy(energy)
+
+  local ending = energy:sub(energy:len())
+  if not (ending == "J" or ending == "W") then
+    error(ending.. " is not a valid unit of energy")
+  end
+
+  local multiplier = (ending == "W" and  1 / 60) or 1
+  local magnitude = energy:sub(energy:len() - 1, energy:len() - 1)
+
+  if tonumber(magnitude) then
+    return tonumber(energy:sub(1, energy:len()-1)) * multiplier
+  end
+
+  multiplier = multiplier * (energy_chars[magnitude] or error(magnitude.. " is not valid magnitude"))
+  return tonumber(energy:sub(1, energy:len()-2)) * multiplier
+
+end
+
 
 return util
