@@ -1,6 +1,39 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.60
+Version: 0.17.61
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.60
+Date: 30. 07. 2019
+  Balancing:
+    - Basic oil processing produces only Petroleum gas, for more streamlined oil setup in the beginning.
+    - Basic oil processing keeps some of the refinery input/output slots unused, so it is more clear which ones will be used by Advanced oil processing.
+    - Chemical science pack requires Sulfur instead of Solid fuel.
+    - Flamethrower ammo requires crude oil instead of heavy and Light oil.
+    - Rocket fuel requires light oil.
+    - Laser Turrets, Lubricant, and Worker robots technologies need Chemical science pack.
+    - Deathworld marathon preset was made a little bit easier.
+  Bugfixes:
+    - Fixed a crash when trying to show invalid thumbnails for mods. (https://forums.factorio.com/73670)
+    - Fixed that up/down keyboard navigation of the load/save game GUIs and manage mods GUI didn't work in some cases. (https://forums.factorio.com/73671)
+    - Fixed that cloning belts with items didn't preserve the item positions correctly. (https://forums.factorio.com/73662)
+    - Fixed a script error in train stations mini-tutorial. (https://forums.factorio.com/73663)
+    - Fixed a script error in the NPE. (https://forums.factorio.com/73705)
+    - Fixed car turret shadow would rotate in opposite direction to the turret. (https://forums.factorio.com/73692)
+    - Fixed that changing sound settings didn't persist through game restart. (https://forums.factorio.com/73734)
+    - Fixed that the migrated-content GUI wouldn't show in some cases. (https://forums.factorio.com/73721)
+    - Fixed that right-click-and-drag didn't work in the blueprint GUI to remove things. (https://forums.factorio.com/73704)
+    - Fixed that unit groups would use paths going through cliffs. (https://forums.factorio.com/73740)
+    - Fixed some cases of entity rotation with blocked underground pipes. (https://forums.factorio.com/73600)
+    - Fixed inserters sometimes getting stuck when picking up from a non-backed-up underground belt. (https://forums.factorio.com/72253)
+    - Fixed fluid mixing checks for some setups when setting an assembler recipe. (https://forums.factorio.com/73793)
+  Modding:
+    - Added CraftingMachinePrototype::default_recipe_tint.
+  Scripting:
+    - Added LuaEntityPrototype::supports_direction read.
+    - Fixed that LuaGuiElement::force_auto_center() didn't work. (https://forums.factorio.com/73647)
+    - Added LuaGameScript::get_filtered_entity_prototypes(), get_filtered_item_prototypes(), get_filtered_equipment_prototypes(),
+      get_filtered_mod_setting_prototypes(), and get_filtered_achievement_prototypes().
+    - Added workaround for a driver crash when calling D3D11CreateDeviceAndSwapChain. (https://forums.factorio.com/73780)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.59
 Date: 25. 07. 2019

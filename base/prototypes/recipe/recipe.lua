@@ -349,7 +349,7 @@ data:extend(
     {
       {"engine-unit", 2},
       {"advanced-circuit", 3},
-      {"solid-fuel", 1}
+      {"sulfur", 1}
     },
     result_count = 2,
     result = "chemical-science-pack"
@@ -1035,10 +1035,11 @@ data:extend(
     name = "rocket-fuel",
     energy_required = 30,
     enabled = false,
-    category = "crafting",
+    category = "crafting-with-fluid",
     ingredients =
     {
-      {"solid-fuel", 10}
+      {"solid-fuel", 10},
+      {type="fluid", name="light-oil", amount=10}
     },
     result= "rocket-fuel"
   },

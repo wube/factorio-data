@@ -46,7 +46,7 @@ data:extend(
       },
       time = 10
     },
-    prerequisites = {"advanced-electronics"},
+    prerequisites = {"advanced-electronics", "sulfur-processing"},
     order = "c-a"
   },
   {
@@ -1256,14 +1256,15 @@ data:extend(
     name = "laser",
     icon_size = 128,
     icon = "__base__/graphics/technology/laser.png",
-    prerequisites = {"optics", "battery"},
+    prerequisites = {"optics", "battery", "chemical-science-pack"},
     unit =
     {
-      count = 150,
+      count = 100,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 30
     },
@@ -1285,7 +1286,7 @@ data:extend(
         recipe = "rocket"
       }
     },
-    prerequisites = {"explosives", "rocket-fuel", "military-science-pack"},
+    prerequisites = {"explosives", "flammables", "military-science-pack"},
     unit =
     {
       count = 120,
@@ -1457,12 +1458,13 @@ data:extend(
     prerequisites = {"turrets", "laser", "military-science-pack"},
     unit =
     {
-      count = 200,
+      count = 150,
       ingredients =
       {
         {"automation-science-pack", 1},
         {"logistic-science-pack", 1},
-        {"military-science-pack", 1}
+        {"military-science-pack", 1},
+        {"chemical-science-pack", 1},
       },
       time = 30
     },
@@ -1521,11 +1523,12 @@ data:extend(
     prerequisites = {"electric-engine", "battery"},
     unit =
     {
-      count = 150,
+      count = 75,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 30
     },
@@ -1550,14 +1553,15 @@ data:extend(
         recipe = "rocket-fuel"
       }
     },
-    prerequisites = {"flammables"},
+    prerequisites = {"flammables", "advanced-oil-processing"},
     unit =
     {
       count = 300,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 45
     },
@@ -2063,14 +2067,15 @@ data:extend(
     name = "lubricant",
     icon_size = 128,
     icon = "__base__/graphics/technology/lubricant.png",
-    prerequisites = {"oil-processing"},
+    prerequisites = {"advanced-oil-processing"},
     unit =
     {
       count = 50,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 30
     },
@@ -2091,11 +2096,12 @@ data:extend(
     prerequisites = {"lubricant"},
     unit =
     {
-      count = 100,
+      count = 50,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 30
     },
@@ -2186,14 +2192,15 @@ data:extend(
         modifier = 60 * 60 * 60 * 24 * 7
       }
     },
-    prerequisites = {"robotics", "advanced-electronics"},
+    prerequisites = {"robotics"},
     unit =
     {
       count = 100,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
       },
       time = 30
     },
@@ -2223,14 +2230,15 @@ data:extend(
         recipe = "logistic-robot"
       }
     },
-    prerequisites = {"robotics", "advanced-electronics"},
+    prerequisites = {"robotics"},
     unit =
     {
       count = 150,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
       },
       time = 30
     },
@@ -2285,7 +2293,7 @@ data:extend(
         modifier = 0.35
       }
     },
-    prerequisites = {"robotics", "chemical-science-pack"},
+    prerequisites = {"robotics"},
     unit =
     {
       count = 50,
@@ -2455,7 +2463,7 @@ data:extend(
         modifier = 1
       }
     },
-    prerequisites = {"robotics", "chemical-science-pack"},
+    prerequisites = {"robotics"},
     unit =
     {
       count = 200,
@@ -2542,11 +2550,12 @@ data:extend(
     prerequisites = {"logistic-robotics"},
     unit =
     {
-      count = 100,
+      count = 50,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 30
     },
@@ -2568,11 +2577,12 @@ data:extend(
     prerequisites = {"character-logistic-slots-1"},
     unit =
     {
-      count = 150,
+      count = 75,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1}
       },
       time = 30
     },
@@ -2706,11 +2716,12 @@ data:extend(
     prerequisites = {"logistic-robotics"},
     unit =
     {
-      count = 100,
+      count = 30,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
       },
       time = 30
     },
@@ -2841,7 +2852,7 @@ data:extend(
         modifier = true
       }
     },
-    prerequisites = {"character-logistic-trash-slots-2", "chemical-science-pack"},
+    prerequisites = {"character-logistic-trash-slots-2"},
     unit =
     {
       count = 150,
@@ -3132,7 +3143,7 @@ data:extend(
         recipe = "personal-roboport-equipment"
       }
     },
-    prerequisites = { "construction-robotics", "solar-panel-equipment", "chemical-science-pack" },
+    prerequisites = { "construction-robotics", "solar-panel-equipment"},
     unit =
     {
       count = 50,
@@ -3228,15 +3239,7 @@ data:extend(
       },
       {
         type = "unlock-recipe",
-        recipe = "solid-fuel-from-light-oil"
-      },
-      {
-        type = "unlock-recipe",
         recipe = "solid-fuel-from-petroleum-gas"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "solid-fuel-from-heavy-oil"
       }
     },
     unit =
@@ -3266,6 +3269,14 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "light-oil-cracking"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "solid-fuel-from-heavy-oil"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "solid-fuel-from-light-oil"
       }
     },
     unit =

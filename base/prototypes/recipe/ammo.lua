@@ -202,8 +202,7 @@ data:extend(
     ingredients =
     {
       {type="item", name="steel-plate", amount=5},
-      {type="fluid", name="light-oil", amount=50},
-      {type="fluid", name="heavy-oil", amount=50}
+      {type="fluid", name="crude-oil", amount=100}
     },
     result = "flamethrower-ammo",
     crafting_machine_tint =

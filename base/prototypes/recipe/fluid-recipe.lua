@@ -10,18 +10,17 @@ data:extend(
     energy_required = 5,
     ingredients =
     {
-      {type="fluid", name="crude-oil", amount=100}
+      {type="fluid", name="crude-oil", amount=100, fluidbox_index = 2}
     },
     results=
     {
-      {type="fluid", name="heavy-oil", amount=30},
-      {type="fluid", name="light-oil", amount=30},
-      {type="fluid", name="petroleum-gas", amount=40}
+      {type="fluid", name="petroleum-gas", amount=45, fluidbox_index = 3}
     },
     icon = "__base__/graphics/icons/fluid/basic-oil-processing.png",
     icon_size = 32,
     subgroup = "fluid-recipes",
-    order = "a[oil-processing]-a[basic-oil-processing]"
+    order = "a[oil-processing]-a[basic-oil-processing]",
+    main_product = ""
   },
 
   {
@@ -37,7 +36,7 @@ data:extend(
     },
     results=
     {
-      {type="fluid", name="heavy-oil", amount=10},
+      {type="fluid", name="heavy-oil", amount=25},
       {type="fluid", name="light-oil", amount=45},
       {type="fluid", name="petroleum-gas", amount=55}
     },

@@ -85,13 +85,13 @@ data:extend(
       {
         enemy_evolution =
         {
-          time_factor = 0.00002,
-          pollution_factor = 0.0000012
+          time_factor = 0.000015,
+          pollution_factor = 0.0000010
         },
         pollution =
         {
           ageing = 0.5,
-          enemy_attack_pollution_consumption_modifier = 0.5
+          enemy_attack_pollution_consumption_modifier = 0.8
         },
         difficulty_settings =
         {
