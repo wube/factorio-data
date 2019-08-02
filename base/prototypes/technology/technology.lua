@@ -3669,7 +3669,7 @@ data:extend(
         recipe = "distractor-capsule"
       }
     },
-    prerequisites = {"combat-robotics", "military-3"},
+    prerequisites = {"combat-robotics", "military-3", "laser"},
     unit =
     {
       count = 200,

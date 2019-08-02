@@ -1256,6 +1256,92 @@ data:extend(
         variation_count = 3
       }
     }
-  }
+  },
+
+  {
+    type = "corpse",
+    name = "medium-electric-pole-remnants",
+    icon = "__base__/graphics/icons/medium-electric-pole.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order = "d[remnants]-a[generic]-a[small]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (1,
+    {
+      filename = "__base__/graphics/entity/medium-electric-pole/remnants/medium-electric-pole-remnants.png",
+      line_length = 1,
+      width = 62,
+      height = 64,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(12, -9),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/medium-electric-pole/remnants/hr-medium-electric-pole-remnants.png",
+        line_length = 1,
+        width = 124,
+        height = 126,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(12, -9.5),
+        scale = 0.5,
+      },
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "big-electric-pole-remnants",
+    icon = "__base__/graphics/icons/big-electric-pole.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order = "d[remnants]-a[generic]-a[small]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (1,
+    {
+      filename = "__base__/graphics/entity/big-electric-pole/remnants/big-electric-pole-remnants.png",
+      line_length = 1,
+      width = 96,
+      height = 64,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(12, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/big-electric-pole/remnants/hr-big-electric-pole-remnants.png",
+        line_length = 1,
+        width = 190,
+        height = 128,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(12, 0.5),
+        scale = 0.5,
+      },
+    })
+  },
 }
 )

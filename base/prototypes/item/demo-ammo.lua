@@ -82,5 +82,51 @@ data:extend(
     order = "a[basic-clips]-b[piercing-rounds-magazine]",
     stack_size = 200
   },
+  {
+    type = "ammo",
+    name = "shotgun-shell",
+    icon = "__base__/graphics/icons/shotgun-shell.png",
+    icon_size = 32,
+    ammo_type =
+    {
+      category = "shotgun-shell",
+      target_type = "direction",
+      clamp_position = true,
+      action =
+      {
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "instant",
+            source_effects =
+            {
+              {
+                type = "create-explosion",
+                entity_name = "explosion-gunshot"
+              }
+            }
+          }
+        },
+        {
+          type = "direct",
+          repeat_count = 12,
+          action_delivery =
+          {
+            type = "projectile",
+            projectile = "shotgun-pellet",
+            starting_speed = 1,
+            direction_deviation = 0.3,
+            range_deviation = 0.3,
+            max_range = 15
+          }
+        }
+      }
+    },
+    magazine_size = 10,
+    subgroup = "ammo",
+    order = "b[shotgun]-a[basic]",
+    stack_size = 200
+  },
 }
 )

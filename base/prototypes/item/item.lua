@@ -145,16 +145,6 @@ data:extend(
     stack_size = 50
   },
   {
-    type = "item",
-    name = "gate",
-    icon = "__base__/graphics/icons/gate.png",
-    icon_size = 32,
-    subgroup = "defensive-structure",
-    order = "a[wall]-b[gate]",
-    place_result = "gate",
-    stack_size = 50
-  },
-  {
     type = "item-with-entity-data",
     name = "tank",
     icon = "__base__/graphics/icons/tank.png",
@@ -441,26 +431,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "big-electric-pole",
-    icon = "__base__/graphics/icons/big-electric-pole.png",
-    icon_size = 32,
-    subgroup = "energy-pipe-distribution",
-    order = "a[energy]-c[big-electric-pole]",
-    place_result = "big-electric-pole",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "medium-electric-pole",
-    icon = "__base__/graphics/icons/medium-electric-pole.png",
-    icon_size = 32,
-    subgroup = "energy-pipe-distribution",
-    order = "a[energy]-b[medium-electric-pole]",
-    place_result = "medium-electric-pole",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "substation",
     icon = "__base__/graphics/icons/substation.png",
     icon_size = 32,
@@ -477,16 +447,6 @@ data:extend(
     subgroup = "energy",
     order = "e[accumulator]-a[accumulator]",
     place_result = "accumulator",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "steel-furnace",
-    icon = "__base__/graphics/icons/steel-furnace.png",
-    icon_size = 32,
-    subgroup = "smelting-machine",
-    order = "b[steel-furnace]",
-    place_result = "steel-furnace",
     stack_size = 50
   },
   {

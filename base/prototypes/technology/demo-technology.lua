@@ -34,6 +34,10 @@ data:extend(
       },
       {
         type = "unlock-recipe",
+        recipe = "stone-brick"
+      },
+      {
+        type = "unlock-recipe",
         recipe = "copper-plate"
       },
       {
@@ -321,10 +325,6 @@ data:extend(
         type = "unlock-recipe",
         recipe = "stone-wall"
       },
-      {
-        type = "unlock-recipe",
-        recipe = "stone-brick"
-      },
     },
     unit =
     {
@@ -381,18 +381,10 @@ data:extend(
         type = "unlock-recipe",
         recipe = "logistic-science-pack"
       },
-      {
-        type = "unlock-recipe",
-        recipe = "assembling-machine-2"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "steel-plate"
-      },
     },
     unit =
     {
-      count = 150,
+      count = 100,
       ingredients = {{"automation-science-pack", 1}},
       time = 36
     },
@@ -401,19 +393,187 @@ data:extend(
   },
   {
     type = "technology",
-    name = "demo-logistics",
+    name = "demo-steel-processing",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-logistics.png",
+    icon = "__base__/graphics/technology/demo/demo-steel-processing.png",
     enabled = false,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "splitter"
+        recipe = "steel-plate"
+      },
+    },
+    unit =
+    {
+      count = 30,
+      ingredients = {
+        {"automation-science-pack", 1},
+      },
+      time = 30
+    },
+    prerequisites = {'improved-equipment'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
+    name = "demo-automation-upgrade",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-automation-upgrade.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "assembling-machine-2"
+      },
+    },
+    unit =
+    {
+      count = 30,
+      ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    prerequisites = {'demo-steel-processing','demo-science-pack'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
+    name = "demo-steel-poles",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-steel-poles.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "medium-electric-pole"
       },
       {
         type = "unlock-recipe",
+        recipe = "big-electric-pole"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "iron-stick"
+      },
+    },
+    unit =
+    {
+      count = 30,
+      ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    prerequisites = {'demo-steel-processing'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
+    name = "demo-military-equipment",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-military-equipment.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "submachine-gun"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "shotgun"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "shotgun-shell"
+      },
+    },
+    unit =
+    {
+      count = 60,
+      ingredients = {
+        {"automation-science-pack", 1},
+      },
+      time = 30
+    },
+    prerequisites = {'basic-military'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
+    name = "demo-munitions-upgrade",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-munitions-upgrade.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "piercing-rounds-magazine"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "grenade"
+      },
+    },
+    unit =
+    {
+      count = 60,
+      ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    prerequisites = {'demo-military-equipment','demo-steel-processing','demo-science-pack'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
+    name = "demo-steel-furnace",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-steel-furnace.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "steel-furnace"
+      },
+    },
+    unit =
+    {
+      count = 60,
+      ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    prerequisites = {'demo-steel-processing','demo-science-pack'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
+    name = "demo-logistics",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-underground-belt.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
         recipe = "underground-belt"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "splitter"
       },
       {
         type = "unlock-recipe",
@@ -431,6 +591,31 @@ data:extend(
   },
   {
     type = "technology",
+    name = "demo-gates",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-gates.png",
+    enabled = false,
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "gate"
+      },
+    },
+    unit =
+    {
+      count = 25,
+      ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    prerequisites = {'passive-defense','demo-steel-processing','demo-science-pack'},
+    order = "c-a"
+  },
+  {
+    type = "technology",
     name = "demo-productivity-1",
     icon_size = 128,
     icon = "__base__/graphics/technology/demo/demo-productivity.png",
@@ -439,10 +624,10 @@ data:extend(
     {
       {
         type = "mining-drill-productivity-bonus",
-        modifier = 0.01
+        modifier = 0.1
       }
     },
-    prerequisites = {"demo-science-pack"},
+    prerequisites = {"demo-automation-upgrade"},
     unit =
     {
       count_formula = "100*L",
@@ -478,6 +663,35 @@ data:extend(
       ingredients =
       {
         {"automation-science-pack", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    max_level = 3,
+    order = "e-j-a"
+  },
+  {
+    type = "technology",
+    name = "demo-shooting-speed-4",
+    enabled = false,
+    icon_size = 128,
+    icon = "__base__/graphics/technology/demo/demo-shooting-speed.png",
+    effects =
+    {
+      {
+        type = "gun-speed",
+        ammo_category = "bullet",
+        modifier = 0.1
+      },
+    },
+    prerequisites = {"demo-shooting-speed-1"},
+    unit =
+    {
+      count_formula = "150*L",
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
       },
       time = 30
     },

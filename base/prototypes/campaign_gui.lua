@@ -154,7 +154,7 @@ add_styles(
       type = "horizontal_flow_style",
       parent = 'quest_gui_entry_wrapper_common',
       horizontal_align = "left",
-      left_padding = 4
+      left_padding = 15
     },
     quest_item_icons_label =
     {

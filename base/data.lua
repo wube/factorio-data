@@ -3,6 +3,7 @@ require "util"
 -- this is both in demo and alpha
 require("prototypes.ambient-sounds")
 require("prototypes.entity.demo-entities")
+require("prototypes.entity.demo-crash-site")
 require("prototypes.entity.demo-mining-drill")
 require("prototypes.entity.demo-particles")
 require("prototypes.entity.demo-spitter-projectiles")
@@ -15,6 +16,7 @@ require("prototypes.item.demo-ammo")
 require("prototypes.item.demo-armor")
 require("prototypes.item.demo-gun")
 require("prototypes.item.demo-item")
+require("prototypes.item.demo-crash-site-item")
 require("prototypes.item.demo-turret")
 require("prototypes.item.demo-item-groups")
 require("prototypes.recipe.demo-furnace-recipe")
@@ -44,6 +46,7 @@ require("prototypes.campaign_gui")
 require("prototypes.campaign_sounds")
 require("prototypes.trigger-target-types")
 require("prototypes.signal.signal")
+require("prototypes.entity.demo-projectiles")
 
 
 if not data.is_demo then

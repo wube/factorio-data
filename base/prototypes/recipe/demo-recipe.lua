@@ -492,5 +492,95 @@ data:extend(
     ingredients = {{"iron-plate", 8}},
     result = "iron-chest"
   },
+  {
+    type = "recipe",
+    name = "big-electric-pole",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-stick", 8},
+      {"steel-plate", 5},
+      {"copper-plate", 5}
+    },
+    result = "big-electric-pole"
+  },
+  {
+    type = "recipe",
+    name = "medium-electric-pole",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-stick", 4},
+      {"steel-plate", 2},
+      {"copper-plate", 2}
+    },
+    result = "medium-electric-pole"
+  },
+  {
+    type = "recipe",
+    name = "shotgun",
+    enabled = false,
+    energy_required = 10,
+    ingredients =
+    {
+      {"iron-plate", 15},
+      {"iron-gear-wheel", 5},
+      {"copper-plate", 10},
+      {"wood", 5}
+    },
+    result = "shotgun"
+  },
+  {
+    type = "recipe",
+    name = "shotgun-shell",
+    enabled = false,
+    energy_required = 3,
+    ingredients =
+    {
+      {"copper-plate", 2},
+      {"iron-plate", 2}
+    },
+    result = "shotgun-shell"
+  },
+  {
+    type = "recipe",
+    name = "piercing-rounds-magazine",
+    enabled = false,
+    energy_required = 3,
+    ingredients =
+    {
+      {"firearm-magazine", 1},
+      {"steel-plate", 1},
+      {"copper-plate", 5}
+    },
+    result = "piercing-rounds-magazine"
+  },
+  {
+    type = "recipe",
+    name = "grenade",
+    enabled = false,
+    energy_required = 8,
+    ingredients =
+    {
+      {"iron-plate", 5},
+      {"coal", 10}
+    },
+    result = "grenade"
+  },
+  {
+    type = "recipe",
+    name = "steel-furnace",
+    ingredients = {{"steel-plate", 6}, {"stone-brick", 10}},
+    result = "steel-furnace",
+    energy_required = 3,
+    enabled = false
+  },
+  {
+    type = "recipe",
+    name = "gate",
+    enabled = false,
+    ingredients = {{"stone-wall", 1}, {"steel-plate", 2}, {"electronic-circuit", 2}},
+    result = "gate"
+  },
 }
 )

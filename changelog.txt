@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.61
+Version: 0.17.62
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.61
+Date: 02. 08. 2019
+  Changes:
+    - Combat robotics 2 technology now require Laser. (https://forums.factorio.com/73856)
+  Bugfixes:
+    - Fixed fluid mixing checks for some setups when setting an assembler recipe. (https://forums.factorio.com/73793)
+    - Fixed flying notifications showing player's inventory updates were visible to all forces. (https://forums.factorio.com/73761)
+    - Fixed error during PNG decompression would cause crash on Linux. (https://forums.factorio.com/71058)
+    - Fixed that save files could become very large. (https://forums.factorio.com/73749)
+    - Fixed that cloning furnaces wouldn't preserve the crafting progress. (https://forums.factorio.com/73850)
+    - Fixed inserters being slower and rotationally asymmetrical after the previous version.
+    - Fixed that wandering units could be activated for longer than necessary. (https://forums.factorio.com/73672)
+    - Fixed a crash when trying to check if 'game' is equal to anything using the Lua API. (https://forums.factorio.com/73904)
+    - Added a check for overlapping crafter fluidboxes to detect wrong mod configuration. (https://forums.factorio.com/73488)
+    - Fixed desync related to inserter ghosts and belts. (https://forums.factorio.com/73788)
+    - Fixed setting health of item stack of item-with-entity-data to 1 would do nothing. (https://forums.factorio.com/73920)
+    - Fixed a desync with the map editor resource editor. (https://forums.factorio.com/73914)
+    - Fixed a desync with the map editor decorative editor. (https://forums.factorio.com/73954)
+    - Prevented some rare cases of fluid mixing tied to underground connections. (https://forums.factorio.com/73884)
+    - Fixed placing entities that consume type of energy other than electric would still show electric coverage visualization. (https://forums.factorio.com/73774)
+  Modding:
+    - Added InserterPrototype::draw_inserter_arrow.
+  Scripting:
+    - Added LuaGuiElement::choose-elem-button elem_types "decorative", "item-group", "achievement", "equipment", and "technology".
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.60
 Date: 30. 07. 2019
@@ -25,7 +50,7 @@ Date: 30. 07. 2019
     - Fixed that unit groups would use paths going through cliffs. (https://forums.factorio.com/73740)
     - Fixed some cases of entity rotation with blocked underground pipes. (https://forums.factorio.com/73600)
     - Fixed inserters sometimes getting stuck when picking up from a non-backed-up underground belt. (https://forums.factorio.com/72253)
-    - Fixed fluid mixing checks for some setups when setting an assembler recipe. (https://forums.factorio.com/73793)
+    - Added workaround for a driver crash when calling D3D11CreateDeviceAndSwapChain. (https://forums.factorio.com/73780)
   Modding:
     - Added CraftingMachinePrototype::default_recipe_tint.
   Scripting:
@@ -33,7 +58,6 @@ Date: 30. 07. 2019
     - Fixed that LuaGuiElement::force_auto_center() didn't work. (https://forums.factorio.com/73647)
     - Added LuaGameScript::get_filtered_entity_prototypes(), get_filtered_item_prototypes(), get_filtered_equipment_prototypes(),
       get_filtered_mod_setting_prototypes(), and get_filtered_achievement_prototypes().
-    - Added workaround for a driver crash when calling D3D11CreateDeviceAndSwapChain. (https://forums.factorio.com/73780)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.59
 Date: 25. 07. 2019

@@ -68,6 +68,16 @@ function math2d.bounding_box.contains_point(box, point)
          box.left_top.y <= point.y and box.right_bottom.y >= point.y
 end
 
+function math2d.bounding_box.contains_box(box, other)
+  box = math2d.bounding_box.ensure_xy(box)
+  other = math2d.bounding_box.ensure_xy(other)
+
+  return box.left_top.x <= other.left_top.x and
+         box.left_top.y <= other.left_top.y and
+         box.right_bottom.x >= other.right_bottom.x and
+         box.right_bottom.y >= other.right_bottom.y
+end
+
 function math2d.bounding_box.collides_with(box1,box2)
   box1 = math2d.bounding_box.ensure_xy(box1)
   box2 = math2d.bounding_box.ensure_xy(box2)

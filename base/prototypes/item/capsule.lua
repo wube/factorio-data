@@ -2,43 +2,6 @@ data:extend(
 {
   {
     type = "capsule",
-    name = "grenade",
-    icon = "__base__/graphics/icons/grenade.png",
-    icon_size = 32,
-    capsule_action =
-    {
-      type = "throw",
-      --uses_stack = false,
-      attack_parameters =
-      {
-        type = "projectile",
-        ammo_category = "grenade",
-        cooldown = 30,
-        projectile_creation_distance = 0.6,
-        range = 15,
-        ammo_type =
-        {
-          category = "grenade",
-          target_type = "position",
-          action =
-          {
-            type = "direct",
-            action_delivery =
-            {
-              type = "projectile",
-              projectile = "grenade",
-              starting_speed = 0.3
-            }
-          }
-        }
-      }
-    },
-    subgroup = "capsule",
-    order = "a[grenade]-a[normal]",
-    stack_size = 100
-  },
-  {
-    type = "capsule",
     name = "cluster-grenade",
     icon = "__base__/graphics/icons/cluster-grenade.png",
     icon_size = 32,

@@ -93,5 +93,31 @@ data:extend(
     },
     stack_size = 1
   },
+  {
+    type = "gun",
+    name = "shotgun",
+    icon = "__base__/graphics/icons/shotgun.png",
+    icon_size = 32,
+    subgroup = "gun",
+    order = "b[shotgun]-a[basic]",
+    attack_parameters =
+    {
+      type = "projectile",
+      ammo_category = "shotgun-shell",
+      cooldown = 60,
+      movement_slow_down_factor = 0.6,
+      projectile_creation_distance = 1.125,
+      range = 20,
+      min_range = 1,
+      sound =
+      {
+        {
+          filename = "__base__/sound/pump-shotgun.ogg",
+          volume = 0.5
+        }
+      }
+    },
+    stack_size = 5
+  },
 }
 )

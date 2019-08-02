@@ -443,17 +443,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "escape-pod-assembler",
-    icon = "__base__/graphics/icons/assembling-machine-0.png",
-    icon_size = 32,
-    flags = {'hidden'},
-    subgroup = "production-machine",
-    order = "a[assembling-machine-0]",
-    place_result = "escape-pod-assembler",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "lab",
     icon = "__base__/graphics/icons/lab.png",
     icon_size = 32,
@@ -461,37 +450,6 @@ data:extend(
     order = "g[lab]",
     place_result = "lab",
     stack_size = 10
-  },
-  {
-    type = "item",
-    name = "escape-pod-lab",
-    icon = "__base__/graphics/icons/lab.png",
-    icon_size = 32,
-    flags = {'hidden'},
-    subgroup = "production-machine",
-    order = "g[lab]",
-    place_result = "escape-pod-lab",
-    stack_size = 10
-  },
-  {
-    type = "item",
-    name = "pollution",
-    icon = "__base__/graphics/icons/fluid/pollution.png",
-    icon_size = 32,
-    flags = {'hidden'},
-    subgroup = "intermediate-product",
-    order = "a[fluid]-b[pollution]",
-    stack_size = 500,
-  },
-    {
-    type = "item",
-    name = "escape-pod-power",
-    icons = { {icon = "__base__/graphics/icons/wreckage-reactor.png", tint = {r=1, g=0.8, b=1, a=1}} },
-    icon_size = 32,
-    flags = {"hidden"},
-    order = "zzz[infinite-power]",
-    place_result = "escape-pod-power",
-    stack_size = 50
   },
   {
     type = "copy-paste-tool",
@@ -699,6 +657,83 @@ data:extend(
     subgroup = "logistic-network",
     order = "a[robot]-b[construction-robot]",
     place_result = "construction-robot",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "big-electric-pole",
+    icon = "__base__/graphics/icons/big-electric-pole.png",
+    icon_size = 32,
+    subgroup = "energy-pipe-distribution",
+    order = "a[energy]-c[big-electric-pole]",
+    place_result = "big-electric-pole",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "medium-electric-pole",
+    icon = "__base__/graphics/icons/medium-electric-pole.png",
+    icon_size = 32,
+    subgroup = "energy-pipe-distribution",
+    order = "a[energy]-b[medium-electric-pole]",
+    place_result = "medium-electric-pole",
+    stack_size = 50
+  },
+  {
+    type = "capsule",
+    name = "grenade",
+    icon = "__base__/graphics/icons/grenade.png",
+    icon_size = 32,
+    capsule_action =
+    {
+      type = "throw",
+      --uses_stack = false,
+      attack_parameters =
+      {
+        type = "projectile",
+        ammo_category = "grenade",
+        cooldown = 30,
+        projectile_creation_distance = 0.6,
+        range = 15,
+        ammo_type =
+        {
+          category = "grenade",
+          target_type = "position",
+          action =
+          {
+            type = "direct",
+            action_delivery =
+            {
+              type = "projectile",
+              projectile = "grenade",
+              starting_speed = 0.3
+            }
+          }
+        }
+      }
+    },
+    subgroup = "capsule",
+    order = "a[grenade]-a[normal]",
+    stack_size = 100
+  },
+  {
+    type = "item",
+    name = "steel-furnace",
+    icon = "__base__/graphics/icons/steel-furnace.png",
+    icon_size = 32,
+    subgroup = "smelting-machine",
+    order = "b[steel-furnace]",
+    place_result = "steel-furnace",
+    stack_size = 50
+  },
+  {
+    type = "item",
+    name = "gate",
+    icon = "__base__/graphics/icons/gate.png",
+    icon_size = 32,
+    subgroup = "defensive-structure",
+    order = "a[wall]-b[gate]",
+    place_result = "gate",
     stack_size = 50
   },
 }

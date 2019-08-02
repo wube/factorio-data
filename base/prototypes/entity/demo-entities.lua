@@ -4933,7 +4933,7 @@ data:extend(
       }
     },
 
-    wall_diode_green = util.conditional_return(not data.is_demo,
+    wall_diode_green =
     {
       sheet =
       {
@@ -4954,41 +4954,41 @@ data:extend(
           scale = 0.5
         }
       }
-    }),
-    wall_diode_green_light_top = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_green_light_top =
     {
       minimum_darkness = 0.3,
       color = {g=1},
       shift = util.by_pixel(0, -30),
       size = 1,
       intensity = 0.3
-    }),
-    wall_diode_green_light_right = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_green_light_right =
     {
       minimum_darkness = 0.3,
       color = {g=1},
       shift = util.by_pixel(12, -23),
       size = 1,
       intensity = 0.3
-    }),
-    wall_diode_green_light_bottom = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_green_light_bottom =
     {
       minimum_darkness = 0.3,
       color = {g=1},
       shift = util.by_pixel(0, -17),
       size = 1,
       intensity = 0.3
-    }),
-    wall_diode_green_light_left = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_green_light_left =
     {
       minimum_darkness = 0.3,
       color = {g=1},
       shift = util.by_pixel(-12, -23),
       size = 1,
       intensity = 0.3
-    }),
+    },
 
-    wall_diode_red = util.conditional_return(not data.is_demo,
+    wall_diode_red =
     {
       sheet =
       {
@@ -5009,92 +5009,44 @@ data:extend(
           scale = 0.5
         }
       }
-    }),
-    wall_diode_red_light_top = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_red_light_top =
     {
       minimum_darkness = 0.3,
       color = {r=1},
       shift = util.by_pixel(0, -30),
       size = 1,
       intensity = 0.3
-    }),
-    wall_diode_red_light_right = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_red_light_right =
     {
       minimum_darkness = 0.3,
       color = {r=1},
       shift = util.by_pixel(12, -23),
       size = 1,
       intensity = 0.3
-    }),
-    wall_diode_red_light_bottom = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_red_light_bottom =
     {
       minimum_darkness = 0.3,
       color = {r=1},
       shift = util.by_pixel(0, -17),
       size = 1,
       intensity = 0.3
-    }),
-    wall_diode_red_light_left = util.conditional_return(not data.is_demo,
+    },
+    wall_diode_red_light_left =
     {
       minimum_darkness = 0.3,
       color = {r=1},
       shift = util.by_pixel(-12, -23),
       size = 1,
       intensity = 0.3
-    }),
+    },
 
     circuit_wire_connection_point = circuit_connector_definitions["gate"].points,
     circuit_connector_sprites = circuit_connector_definitions["gate"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     default_output_signal = data.is_demo and {type = "virtual", name = "signal-green"} or {type = "virtual", name = "signal-G"}
-  },
-
-  {
-    type = "electric-pole",
-    name = "wreck-pole",
-    icon = "__base__/graphics/icons/small-electric-pole.png",
-    icon_size = 32,
-    flags = {"placeable-neutral"},
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 100,
-    corpse = "small-remnants",
-    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
-    selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    drawing_box = {{-0.5, -2.6}, {0.5, 0.5}},
-    maximum_wire_distance = 7.5,
-    selectable_in_game = false,
-    order="a",
-    supply_area_distance = 1,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
-    pictures =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/escape-pod-power/wreck-pole.png",
-          width = 4,
-          height= 4,
-          direction_count = 1,
-        },
-      }
-    },
-    connection_points =
-    {
-      {
-        shadow =
-        {
-          copper = util.by_pixel(158, -4),
-          red = util.by_pixel(0, 0),
-          green = util.by_pixel(0, 0)
-        },
-        wire =
-        {
-          copper = util.by_pixel(3, -93),
-          red = util.by_pixel(0, 0),
-          green = util.by_pixel(0, 0)
-        }
-      },
-    }
   },
   {
     type = "unit",
@@ -5145,107 +5097,6 @@ data:extend(
         compilatron_animations.walk_shadow,
         compilatron_animations.walk
       }
-    }
-  },
-  {
-    type = "assembling-machine",
-    name = "escape-pod-assembler",
-    icon = "__base__/graphics/icons/assembling-machine-0.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "placeable-player", "player-creation", "hidden"},
-    minable = {mining_time = 0.5, result = "escape-pod-assembler"},
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 300,
-    corpse = "big-remnants",
-    dying_explosion = "medium-explosion",
-    resistances =
-    {
-      {
-        type = "fire",
-        percent = 70
-      }
-    },
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    alert_icon_shift = util.by_pixel(-3, -12),
-    animation =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/assembling-machine-0/assembling-machine-0.png",
-          priority="high",
-          width = 108,
-          height = 114,
-          frame_count = 32,
-          line_length = 8,
-          shift = util.by_pixel(0, 2),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/assembling-machine-0/hr-assembling-machine-0.png",
-            priority="high",
-            width = 214,
-            height = 226,
-            frame_count = 32,
-            line_length = 8,
-            shift = util.by_pixel(0, 2),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/assembling-machine-0/assembling-machine-0-shadow.png",
-          priority="high",
-          width = 95,
-          height = 83,
-          frame_count = 1,
-          line_length = 1,
-          repeat_count = 32,
-          draw_as_shadow = true,
-          shift = util.by_pixel(8.5, 5.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/assembling-machine-0/hr-assembling-machine-0-shadow.png",
-            priority="high",
-            width = 190,
-            height = 165,
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = 32,
-            draw_as_shadow = true,
-            shift = util.by_pixel(8.5, 5),
-            scale = 0.5
-          }
-        }
-      }
-    },
-    crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
-    crafting_speed = 1.25,
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = 4
-    },
-    energy_usage = "90kW",
-    ingredient_count = 2,
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    working_sound =
-    {
-      sound =
-      {
-        {
-          filename = "__base__/sound/assembling-machine-t1-1.ogg",
-          volume = 0.8
-        },
-        {
-          filename = "__base__/sound/assembling-machine-t1-2.ogg",
-          volume = 0.8
-        }
-      },
-      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5
     }
   },
   {
@@ -5414,285 +5265,8 @@ data:extend(
     }
   },
   {
-    type = "lab",
-    name = "escape-pod-lab",
-    icon = "__base__/graphics/icons/lab.png",
-    icon_size = 32,
-    flags = {"placeable-player", "player-creation", "hidden"},
-    minable = {mining_time = 1, result = "escape-pod-lab"},
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 150,
-    corpse = "big-remnants",
-    dying_explosion = "medium-explosion",
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
-    on_animation =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/lab-red/lab-red-integration.png",
-          width = 122,
-          height = 104,
-          frame_count = 1,
-          line_length = 1,
-          repeat_count = 33,
-          animation_speed = 1 / 3,
-          shift = util.by_pixel(0, 4),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab-red/hr-lab-red-integration.png",
-            width = 242,
-            height = 206,
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = 33,
-            animation_speed = 1 / 3,
-            shift = util.by_pixel(0, 3.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-red.png",
-          width = 98,
-          height = 87,
-          frame_count = 33,
-          line_length = 11,
-          animation_speed = 1 / 3,
-          shift = util.by_pixel(0, 1.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-red.png",
-            width = 194,
-            height = 174,
-            frame_count = 33,
-            line_length = 11,
-            animation_speed = 1 / 3,
-            shift = util.by_pixel(0, 1.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-shadow.png",
-          width = 122,
-          height = 68,
-          frame_count = 1,
-          line_length = 1,
-          repeat_count = 33,
-          animation_speed = 1 / 3,
-          shift = util.by_pixel(13, 11),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
-            width = 242,
-            height = 136,
-            frame_count = 1,
-            line_length = 1,
-            repeat_count = 33,
-            animation_speed = 1 / 3,
-            shift = util.by_pixel(13, 11),
-            scale = 0.5,
-            draw_as_shadow = true
-          }
-        }
-      }
-    },
-    off_animation =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/lab-red/lab-red-integration.png",
-          width = 122,
-          height = 104,
-          frame_count = 1,
-          shift = util.by_pixel(0, 4),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab-red/hr-lab-red-integration.png",
-            width = 242,
-            height = 206,
-            frame_count = 1,
-            shift = util.by_pixel(0, 3.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-red.png",
-          width = 98,
-          height = 87,
-          frame_count = 1,
-          shift = util.by_pixel(0, 1.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-red.png",
-            width = 194,
-            height = 174,
-            frame_count = 1,
-            shift = util.by_pixel(0, 1.5),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/lab/lab-shadow.png",
-          width = 122,
-          height = 68,
-          frame_count = 1,
-          shift = util.by_pixel(13, 11),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
-            width = 242,
-            height = 136,
-            frame_count = 1,
-            shift = util.by_pixel(13, 11),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
-        }
-      }
-    },
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/lab.ogg",
-        volume = 0.7
-      },
-      apparent_volume = 1
-    },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = 4
-    },
-    energy_usage = "60kW",
-    researching_speed = 1,
-    inputs =
-    {
-      "automation-science-pack"
-    }
-  },
-  {
-    type = "electric-energy-interface",
-    name = "escape-pod-power",
-    icons = { {icon = "__core__/graphics/white-square.png"} },
-    icon_size = 10,
-    flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 0.5, result = "escape-pod-power"},
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 150,
-    corpse = "medium-remnants",
-    subgroup = "other",
-    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
-    selection_box = {{-1.4, -1.4}, {1.4, 1.4}},
-    allow_copy_paste = true,
-    energy_source =
-    {
-      type = "electric",
-      buffer_capacity = "10GJ",
-      usage_priority = "tertiary",
-      input_flow_limit = "0kW",
-      output_flow_limit = "500GW"
-    },
-
-    energy_production = "500GW",
-    energy_usage = "0kW",
-    -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
-    picture =
-    {
-      filename = "__base__/graphics/entity/escape-pod-power/escape-pod-power.png",
-      width = 208,
-      height= 144,
-      shift = util.by_pixel(51,-15),
-      hr_version = {
-        filename = "__base__/graphics/entity/escape-pod-power/hr-escape-pod-power.png",
-        width = 416,
-        height= 286,
-        shift = util.by_pixel(50.5,-15),
-        scale = 0.5
-      }
-    },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/accumulator-working.ogg",
-        volume = 1
-      },
-      idle_sound =
-      {
-        filename = "__base__/sound/accumulator-idle.ogg",
-        volume = 0.4
-      },
-      max_sounds_per_type = 5
-    }
-  },
-  {
     type = "highlight-box",
     name = "highlight-box"
-  },
-  {
-    type = "simple-entity",
-    name = "lab-wreck",
-    icon = "__base__/graphics/icons/ship-wreck/medium-ship-wreck.png",
-    icon_size = 32,
-    flags = {"placeable-neutral"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-a[big]-a",
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 50,
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    picture =
-    {
-        filename = "__base__/graphics/entity/lab-red/lab-red-broken.png",
-        width = 122,
-        height= 110,
-        shift = util.by_pixel(0, 1),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/lab-red/hr-lab-red-broken.png",
-          width = 242,
-          height= 216,
-          shift = util.by_pixel(0, 0.5),
-          scale = 0.5
-        }
-    }
-  },
-    {
-    type = "simple-entity",
-    name = "assembler-wreck",
-    icon = "__base__/graphics/icons/ship-wreck/medium-ship-wreck.png",
-    icon_size = 32,
-    flags = {"placeable-neutral"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-a[big]-a",
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 50,
-    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    picture =
-    {
-      filename = "__base__/graphics/entity/assembling-machine-0/assembling-machine-0-broken.png",
-      width = 118,
-      height= 124,
-      shift = util.by_pixel(5,-2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/assembling-machine-0/hr-assembling-machine-0-broken.png",
-        width = 234,
-        height= 246,
-        shift = util.by_pixel(5,-2.5),
-        scale = 0.5
-      }
-    }
   },
   {
     type = "simple-entity",
@@ -7111,6 +6685,862 @@ data:extend(
     working_sound = flying_robot_sounds(),
     cargo_centered = {0.0, 0.2},
     construction_vector = {0.30, 0.22}
+  },
+   {
+    type = "electric-pole",
+    name = "big-electric-pole",
+    icon = "__base__/graphics/icons/big-electric-pole.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
+    minable = {mining_time = 0.1, result = "big-electric-pole"},
+    max_health = 150,
+    corpse = "big-electric-pole-remnants",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    collision_box = {{-0.65, -0.65}, {0.65, 0.65}},
+    selection_box = {{-1, -1}, {1, 1}},
+    drawing_box = {{-1, -3}, {1, 0.5}},
+    maximum_wire_distance = 30,
+    supply_area_distance = 2,
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    pictures =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole.png",
+          priority = "extra-high",
+          width = 76,
+          height = 156,
+          direction_count = 4,
+          shift = util.by_pixel(1, -51),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/big-electric-pole/hr-big-electric-pole.png",
+            priority = "extra-high",
+            width = 148,
+            height = 312,
+            direction_count = 4,
+            shift = util.by_pixel(0, -51),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole-shadow.png",
+          priority = "extra-high",
+          width = 188,
+          height = 48,
+          direction_count = 4,
+          shift = util.by_pixel(60, 0),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/big-electric-pole/hr-big-electric-pole-shadow.png",
+            priority = "extra-high",
+            width = 374,
+            height = 94,
+            direction_count = 4,
+            shift = util.by_pixel(60, 0),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    connection_points =
+    {
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(245.0, -34.0),
+          red = util.by_pixel_hr(301.0, -0.0),
+          green = util.by_pixel_hr(206.0, -0.0)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(0, -246.0),
+          red = util.by_pixel_hr(58.0, -211.0),
+          green = util.by_pixel_hr(-58.0, -211.0)
+        }
+      },
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(279.0, -24.0),
+          red = util.by_pixel_hr(284.0, 28.0),
+          green = util.by_pixel_hr(204.0, -31.0)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(34.0, -235.0),
+          red = util.by_pixel_hr(41.0, -183.0),
+          green = util.by_pixel_hr(-40.0, -240.0)
+        }
+      },
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(292.0, 0.0),
+          red = util.by_pixel_hr(244.0, 41.0),
+          green = util.by_pixel_hr(244.0, -41.0)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(47.0, -212.0),
+          red = util.by_pixel_hr(1.0, -170.0),
+          green = util.by_pixel_hr(1.0, -251.0)
+        }
+      },
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(277.0, 23.0),
+          red = util.by_pixel_hr(204.0, 30.0),
+          green = util.by_pixel_hr(286.0, -29.0)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(33.0, -188.0),
+          red = util.by_pixel_hr(-41.0, -182.5),
+          green = util.by_pixel_hr(41.0, -239.0)
+        }
+      }
+    },
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
+      width = 12,
+      height = 12,
+      priority = "extra-high-no-scale"
+    }
+  },
+  {
+    type = "electric-pole",
+    name = "medium-electric-pole",
+    icon = "__base__/graphics/icons/medium-electric-pole.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
+    minable = {mining_time = 0.1, result = "medium-electric-pole"},
+    max_health = 100,
+    corpse = "medium-electric-pole-remnants",
+    track_coverage_during_build_by_moving = true,
+    fast_replaceable_group = "electric-pole",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    drawing_box = {{-0.5, -2.8}, {0.5, 0.5}},
+    maximum_wire_distance = 9,
+    supply_area_distance = 3.5,
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    pictures =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole.png",
+          priority = "extra-high",
+          width = 40,
+          height = 124,
+          direction_count = 4,
+          shift = util.by_pixel(4, -44),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/medium-electric-pole/hr-medium-electric-pole.png",
+            priority = "extra-high",
+            width = 84,
+            height = 252,
+            direction_count = 4,
+            shift = util.by_pixel(3.5, -44),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole-shadow.png",
+          priority = "extra-high",
+          width = 140,
+          height = 32,
+          direction_count = 4,
+          shift = util.by_pixel(56, -1),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/medium-electric-pole/hr-medium-electric-pole-shadow.png",
+            priority = "extra-high",
+            width = 280,
+            height = 64,
+            direction_count = 4,
+            shift = util.by_pixel(56.5, -1),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    connection_points =
+    {
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(246, -2),
+          green = util.by_pixel_hr(201, -2)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(43, -179),
+          green = util.by_pixel_hr(-15, -185)
+        }
+      },
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(230, 10),
+          green = util.by_pixel_hr(196, -23)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(27, -167),
+          green = util.by_pixel_hr(-9, -200)
+        }
+      },
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(208, 12),
+          green = util.by_pixel_hr(217, -30)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(5, -166),
+          green = util.by_pixel_hr(13, -206)
+        }
+      },
+      {
+        shadow =
+        {
+          copper = util.by_pixel_hr(229, -13),
+          red = util.by_pixel_hr(195, 1),
+          green = util.by_pixel_hr(238, -23)
+        },
+        wire =
+        {
+          copper = util.by_pixel_hr(15, -199),
+          red = util.by_pixel_hr(-12, -175),
+          green = util.by_pixel_hr(36, -199)
+        }
+      }
+    },
+    radius_visualisation_picture =
+    {
+      filename = "__base__/graphics/entity/small-electric-pole/electric-pole-radius-visualization.png",
+      width = 12,
+      height = 12,
+      priority = "extra-high-no-scale"
+    }
+  },
+  {
+    type = "furnace",
+    name = "steel-furnace",
+    icon = "__base__/graphics/icons/steel-furnace.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.2, result = "steel-furnace"},
+    max_health = 300,
+    corpse = "medium-small-remnants",
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/furnace.ogg" }
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      }
+    },
+    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
+    selection_box = {{-0.8, -1}, {0.8, 1}},
+    crafting_categories = {"smelting"},
+    result_inventory_size = 1,
+    energy_usage = "90kW",
+    crafting_speed = 2,
+    source_inventory_size = 1,
+    energy_source =
+    {
+      type = "burner",
+      fuel_category = "chemical",
+      effectivity = 1,
+      emissions_per_minute = 4,
+      fuel_inventory_size = 1,
+      smoke =
+      {
+        {
+          name = "smoke",
+          frequency = 10,
+          position = {0.7, -1.2},
+          starting_vertical_speed = 0.08,
+          starting_frame_deviation = 60
+        }
+      }
+    },
+    animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace.png",
+          priority = "high",
+          width = 85,
+          height = 87,
+          frame_count = 1,
+          shift = util.by_pixel(-1.5, 1.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace.png",
+            priority = "high",
+            width = 171,
+            height = 174,
+            frame_count = 1,
+            shift = util.by_pixel(-1.25, 2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-shadow.png",
+          priority = "high",
+          width = 139,
+          height = 43,
+          frame_count = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(39.5, 11.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-shadow.png",
+            priority = "high",
+            width = 277,
+            height = 85,
+            frame_count = 1,
+            draw_as_shadow = true,
+            shift = util.by_pixel(39.25, 11.25),
+            scale = 0.5
+          }
+        }
+      }
+    },
+    working_visualisations =
+    {
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        animation =
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-fire.png",
+          priority = "high",
+          line_length = 8,
+          width = 29,
+          height = 40,
+          frame_count = 48,
+          direction_count = 1,
+          shift = util.by_pixel(-0.5, 6),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-fire.png",
+            priority = "high",
+            line_length = 8,
+            width = 57,
+            height = 81,
+            frame_count = 48,
+            direction_count = 1,
+            shift = util.by_pixel(-0.75, 5.75),
+            scale = 0.5
+          }
+        },
+        light = {intensity = 1, size = 1, color = {r = 1.0, g = 1.0, b = 1.0}}
+      },
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        effect = "flicker", -- changes alpha based on energy source light intensity
+        animation =
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-glow.png",
+          priority = "high",
+          width = 60,
+          height = 43,
+          frame_count = 1,
+          shift = {0.03125, 0.640625},
+          blend_mode = "additive"
+        }
+      },
+      {
+        north_position = {0.0, 0.0},
+        east_position = {0.0, 0.0},
+        south_position = {0.0, 0.0},
+        west_position = {0.0, 0.0},
+        effect = "flicker", -- changes alpha based on energy source light intensity
+        animation =
+        {
+          filename = "__base__/graphics/entity/steel-furnace/steel-furnace-working.png",
+          priority = "high",
+          line_length = 8,
+          width = 64,
+          height = 75,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(0, -4.5),
+          blend_mode = "additive",
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-furnace/hr-steel-furnace-working.png",
+            priority = "high",
+            line_length = 8,
+            width = 130,
+            height = 149,
+            frame_count = 1,
+            direction_count = 1,
+            shift = util.by_pixel(0, -4.25),
+            blend_mode = "additive",
+            scale = 0.5
+          }
+        }
+      }
+    },
+    fast_replaceable_group = "furnace"
+  },
+
+   {
+    type = "gate",
+    name = "gate",
+    icon = "__base__/graphics/icons/gate.png",
+    icon_size = 32,
+    flags = {"placeable-neutral","placeable-player", "player-creation"},
+    fast_replaceable_group = "wall",
+    minable = {mining_time = 0.1, result = "gate"},
+    max_health = 350,
+    corpse = "small-remnants",
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    opening_speed = 0.0666666,
+    activation_distance = 3,
+    timeout_to_close = 5,
+    fadeout_interval = 15,
+    resistances =
+    {
+      {
+        type = "physical",
+        decrease = 3,
+        percent = 20
+      },
+      {
+        type = "impact",
+        decrease = 45,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 10,
+        percent = 30
+      },
+      {
+        type = "fire",
+        percent = 100
+      },
+      {
+        type = "acid",
+        percent = 80
+      },
+      {
+        type = "laser",
+        percent = 70
+      }
+    },
+    vertical_animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-vertical.png",
+          line_length = 8,
+          width = 38,
+          height = 62,
+          frame_count = 16,
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-vertical.png",
+            line_length = 8,
+            width = 78,
+            height = 120,
+            frame_count = 16,
+            shift = util.by_pixel(-1, -13),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-vertical-shadow.png",
+          line_length = 8,
+          width = 40,
+          height = 54,
+          frame_count = 16,
+          shift = util.by_pixel(10, 8),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-vertical-shadow.png",
+            line_length = 8,
+            width = 82,
+            height = 104,
+            frame_count = 16,
+            shift = util.by_pixel(9, 9),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    horizontal_animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-horizontal.png",
+          line_length = 8,
+          width = 34,
+          height = 48,
+          frame_count = 16,
+          shift = util.by_pixel(0, -4),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-horizontal.png",
+            line_length = 8,
+            width = 66,
+            height = 90,
+            frame_count = 16,
+            shift = util.by_pixel(0, -3),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-horizontal-shadow.png",
+          line_length = 8,
+          width = 62,
+          height = 30,
+          frame_count = 16,
+          shift = util.by_pixel(12, 10),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-horizontal-shadow.png",
+            line_length = 8,
+            width = 122,
+            height = 60,
+            frame_count = 16,
+            shift = util.by_pixel(12, 10),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    horizontal_rail_animation_left =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-left.png",
+          line_length = 8,
+          width = 34,
+          height = 40,
+          frame_count = 16,
+          shift = util.by_pixel(0, -8),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-left.png",
+            line_length = 8,
+            width = 66,
+            height = 74,
+            frame_count = 16,
+            shift = util.by_pixel(0, -7),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-shadow-left.png",
+          line_length = 8,
+          width = 62,
+          height = 30,
+          frame_count = 16,
+          shift = util.by_pixel(12, 10),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-shadow-left.png",
+            line_length = 8,
+            width = 122,
+            height = 60,
+            frame_count = 16,
+            shift = util.by_pixel(12, 10),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    horizontal_rail_animation_right =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-right.png",
+          line_length = 8,
+          width = 34,
+          height = 40,
+          frame_count = 16,
+          shift = util.by_pixel(0, -8),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-right.png",
+            line_length = 8,
+            width = 66,
+            height = 74,
+            frame_count = 16,
+            shift = util.by_pixel(0, -7),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-horizontal-shadow-right.png",
+          line_length = 8,
+          width = 62,
+          height = 30,
+          frame_count = 16,
+          shift = util.by_pixel(12, 10),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-horizontal-shadow-right.png",
+            line_length = 8,
+            width = 122,
+            height = 58,
+            frame_count = 16,
+            shift = util.by_pixel(12, 11),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    vertical_rail_animation_left =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-left.png",
+          line_length = 8,
+          width = 22,
+          height = 62,
+          frame_count = 16,
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-left.png",
+            line_length = 8,
+            width = 42,
+            height = 118,
+            frame_count = 16,
+            shift = util.by_pixel(0, -13),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-shadow-left.png",
+          line_length = 8,
+          width = 44,
+          height = 54,
+          frame_count = 16,
+          shift = util.by_pixel(8, 8),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-shadow-left.png",
+            line_length = 8,
+            width = 82,
+            height = 104,
+            frame_count = 16,
+            shift = util.by_pixel(9, 9),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    vertical_rail_animation_right =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-right.png",
+          line_length = 8,
+          width = 22,
+          height = 62,
+          frame_count = 16,
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-right.png",
+            line_length = 8,
+            width = 42,
+            height = 118,
+            frame_count = 16,
+            shift = util.by_pixel(0, -13),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-rail-vertical-shadow-right.png",
+          line_length = 8,
+          width = 44,
+          height = 54,
+          frame_count = 16,
+          shift = util.by_pixel(8, 8),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-rail-vertical-shadow-right.png",
+            line_length = 8,
+            width = 82,
+            height = 104,
+            frame_count = 16,
+            shift = util.by_pixel(9, 9),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    vertical_rail_base =
+    {
+      filename = "__base__/graphics/entity/gate/gate-rail-base-vertical.png",
+      line_length = 8,
+      width = 68,
+      height = 66,
+      frame_count = 16,
+      shift = util.by_pixel(0, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/gate/hr-gate-rail-base-vertical.png",
+        line_length = 8,
+        width = 138,
+        height = 130,
+        frame_count = 16,
+        shift = util.by_pixel(-1, 0),
+        scale = 0.5
+      }
+    },
+    horizontal_rail_base =
+    {
+      filename = "__base__/graphics/entity/gate/gate-rail-base-horizontal.png",
+      line_length = 8,
+      width = 66,
+      height = 54,
+      frame_count = 16,
+      shift = util.by_pixel(0, 2),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/gate/hr-gate-rail-base-horizontal.png",
+        line_length = 8,
+        width = 130,
+        height = 104,
+        frame_count = 16,
+        shift = util.by_pixel(0, 3),
+        scale = 0.5
+      }
+    },
+    wall_patch =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/gate/gate-wall-patch.png",
+          line_length = 8,
+          width = 34,
+          height = 48,
+          frame_count = 16,
+          shift = util.by_pixel(0, 12),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-wall-patch.png",
+            line_length = 8,
+            width = 70,
+            height = 94,
+            frame_count = 16,
+            shift = util.by_pixel(-1, 13),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/gate/gate-wall-patch-shadow.png",
+          line_length = 8,
+          width = 44,
+          height = 38,
+          frame_count = 16,
+          shift = util.by_pixel(8, 32),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gate/hr-gate-wall-patch-shadow.png",
+            line_length = 8,
+            width = 82,
+            height = 72,
+            frame_count = 16,
+            shift = util.by_pixel(9, 33),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    open_sound =
+    {
+      variations = { filename = "__base__/sound/gate1.ogg", volume = 0.5 },
+      aggregation =
+      {
+        max_count = 1,
+        remove = true
+      }
+    },
+    close_sound =
+    {
+      variations = { filename = "__base__/sound/gate1.ogg", volume = 0.5 },
+      aggregation =
+      {
+        max_count = 1,
+        remove = true
+      }
+    }
   },
 }
 )

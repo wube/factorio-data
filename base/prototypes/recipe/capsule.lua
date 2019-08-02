@@ -29,18 +29,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "grenade",
-    enabled = false,
-    energy_required = 8,
-    ingredients =
-    {
-      {"iron-plate", 5},
-      {"coal", 10}
-    },
-    result = "grenade"
-  },
-  {
-    type = "recipe",
     name = "cluster-grenade",
     enabled = false,
     energy_required = 8,

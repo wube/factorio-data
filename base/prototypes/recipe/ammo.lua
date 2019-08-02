@@ -2,19 +2,6 @@ data:extend(
 {
   {
     type = "recipe",
-    name = "piercing-rounds-magazine",
-    enabled = false,
-    energy_required = 3,
-    ingredients =
-    {
-      {"firearm-magazine", 1},
-      {"steel-plate", 1},
-      {"copper-plate", 5}
-    },
-    result = "piercing-rounds-magazine"
-  },
-  {
-    type = "recipe",
     name = "uranium-rounds-magazine",
     enabled = false,
     energy_required = 10,
@@ -62,18 +49,6 @@ data:extend(
       {"uranium-235", 30}
     },
     result = "atomic-bomb"
-  },
-  {
-    type = "recipe",
-    name = "shotgun-shell",
-    enabled = false,
-    energy_required = 3,
-    ingredients =
-    {
-      {"copper-plate", 2},
-      {"iron-plate", 2}
-    },
-    result = "shotgun-shell"
   },
   {
     type = "recipe",
