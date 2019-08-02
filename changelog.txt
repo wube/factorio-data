@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.62
+Version: 0.17.63
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.62
+Date: 02. 08. 2019
+  Bugfixes:
+    - Fixed a script error in the NPE while using demo. (https://forums.factorio.com/73993)
+    - Fixed that reading LuaGuiElement::elem_type would always error. (https://forums.factorio.com/73996)
+    - Fixed a crash related to modded fluid energy sources. (https://forums.factorio.com/73980)
+    - Fixed corrupted alt-mode icons on low zoom levels on macOS. (https://forums.factorio.com/73982)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.61
 Date: 02. 08. 2019
