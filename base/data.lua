@@ -47,6 +47,7 @@ require("prototypes.campaign_sounds")
 require("prototypes.trigger-target-types")
 require("prototypes.signal.signal")
 require("prototypes.entity.demo-projectiles")
+require("prototypes.entity.demo-beams")
 
 
 if not data.is_demo then

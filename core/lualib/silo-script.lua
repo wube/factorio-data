@@ -175,9 +175,8 @@ function get_tracked_items()
   script_data.tracked_items = map
   return map
 end
-silo_script = {}
 
-silo_script.on_rocket_launched = function(event)
+local on_rocket_launched = function(event)
   local rocket = event.rocket
   if not (rocket and rocket.valid) then return end
   local force = rocket.force
@@ -229,13 +228,13 @@ silo_script.on_rocket_launched = function(event)
 
 end
 
-silo_script.on_player_created = function(event)
+local on_player_created = function(event)
   local player = game.players[event.player_index]
   if not (player and player.valid) then return end
   get_sprite_button(player)
 end
 
-silo_script.on_gui_click = function(event)
+local on_gui_click = function(event)
   local gui = event.element
   local player = game.players[event.player_index]
   if not (player and player.valid and gui and gui.valid) then return end
@@ -244,6 +243,15 @@ silo_script.on_gui_click = function(event)
     return
   end
 end
+
+silo_script = {}
+
+silo_script.events =
+{
+  [defines.events.on_gui_click] = on_gui_click,
+  [defines.events.on_player_created] = on_player_created,
+  [defines.events.on_rocket_launched] = on_rocket_launched
+}
 
 silo_script.add_remote_interface = function()
   remote.add_interface("silo_script",
@@ -304,25 +312,14 @@ silo_script.on_load = function()
   script_data = global.silo_script or script_data
 end
 
-local script_events =
-{
-  [defines.events.on_gui_click] = silo_script.on_gui_click,
-  [defines.events.on_player_created] = silo_script.on_player_created,
-  [defines.events.on_rocket_launched] = silo_script.on_rocket_launched
-}
-
 silo_script.on_event = function(event)
   local action = script_events[event.name]
   if not action then return end
   return action(event)
 end
 
-silo_script.get_event_handler = function(name)
-  return script_events[name]
-end
-
 silo_script.get_events = function()
-  return script_events
+  return silo_script.events
 end
 
 return silo_script

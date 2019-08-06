@@ -88,6 +88,7 @@ data:extend(
     collision_box = {{-2.2, -1.2}, {2.2, 1.2}},
     selection_box = {{-2.5, -1.5}, {2.5, 1.5}},
     --light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
+    integration_patch_render_layer = "decals",
     integration_patch = hr_crash_site_lab_ground(),
 
     animations =
@@ -840,6 +841,7 @@ data:extend(
     energy_usage = "0kW",
     light = {intensity = 0.75, size = 6, color = {r = 1.0, g = 1.0, b = 1.0}, shift = {64/64, -140/64}},
     continuous_animation = true,
+    integration_patch_render_layer = "decals",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
     integration_patch = {
       filename = "__base__/graphics/entity/crash-site-generator/crash-site-generator-ground.png",

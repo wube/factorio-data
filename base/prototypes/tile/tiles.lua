@@ -166,6 +166,14 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
     table.insert(main_, main_variation(8))
   end
 
+  if options.empty_transitions then
+    return
+    {
+      main = main_,
+      empty_transitions = true
+    }
+  end
+
   return
   {
     main = main_,
@@ -1051,21 +1059,7 @@ define_tiles
           size = 1
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
-        count = 0
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
-        count = 0
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-side.png",
-        count = 0
-      }
+      empty_transitions = true
     },
     map_color = {r=0, g=0, b=0},
     pollution_absorption_per_second = out_of_map_pollution_absorption
@@ -1191,11 +1185,12 @@ define_tiles
     name = "landfill",
     type = "tile",
     collision_mask = {"ground-tile"},
-    layer = 26,
+    layer = 27,
     variants = tile_variations_template(
-      "__base__/graphics/terrain/grass-1.png", "__base__/graphics/terrain/masks/transition-3.png",
-      "__base__/graphics/terrain/hr-grass-1.png", "__base__/graphics/terrain/masks/hr-transition-3.png",
+      "__base__/graphics/terrain/grass-1.png", nil,
+      "__base__/graphics/terrain/hr-grass-1.png", nil,
       {
+        empty_transitions = true,
         max_size = 4,
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
         [2] = { probability = 0.91, weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 }, },
@@ -1204,8 +1199,9 @@ define_tiles
       }
     ),
 
-    transitions = grass_transitions,
-    transitions_between_transitions = grass_transitions_between_transitions,
+    transition_merges_with_tile = "grass-1", -- as long as landfill has the same sprites as grass-1, merging transitions with grass-1 looks better
+    -- transitions = grass_transitions,
+    -- transitions_between_transitions = grass_transitions_between_transitions,
 
     walking_sound =
     {
@@ -1877,7 +1873,7 @@ define_tiles
     type = "tile",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-2", "grass", {{0.45, 0.45}, {1, 0.8}}),
-    layer = 27,
+    layer = 28,
     variants = tile_variations_template(
       "__base__/graphics/terrain/grass-2.png", "__base__/graphics/terrain/masks/transition-3.png",
       "__base__/graphics/terrain/hr-grass-2.png", "__base__/graphics/terrain/masks/hr-transition-3.png",
@@ -1923,7 +1919,7 @@ define_tiles
     type = "tile",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-3", "grass", {{0, 0.6}, {0.65, 0.9}}),
-    layer = 28,
+    layer = 29,
     variants = tile_variations_template(
       "__base__/graphics/terrain/grass-3.png", "__base__/graphics/terrain/masks/transition-3.png",
       "__base__/graphics/terrain/hr-grass-3.png", "__base__/graphics/terrain/masks/hr-transition-3.png",
@@ -1968,7 +1964,7 @@ define_tiles
     type = "tile",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-4", "grass", {{0, 0.5}, {0.55, 0.7}}),
-    layer = 29,
+    layer = 30,
     variants = tile_variations_template(
       "__base__/graphics/terrain/grass-4.png", "__base__/graphics/terrain/masks/transition-3.png",
       "__base__/graphics/terrain/hr-grass-4.png", "__base__/graphics/terrain/masks/hr-transition-3.png",
@@ -2483,7 +2479,7 @@ define_tiles
     type = "tile",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("red-desert-0", "desert", {{0.55, 0.35}, {1, 0.5}}),
-    layer = 30,
+    layer = 31,
     variants = tile_variations_template(
       "__base__/graphics/terrain/red-desert-0.png", "__base__/graphics/terrain/masks/transition-3.png",
       "__base__/graphics/terrain/hr-red-desert-0.png", "__base__/graphics/terrain/masks/hr-transition-3.png",
@@ -2823,21 +2819,7 @@ define_tiles
           size = 1
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
-        count = 0
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
-        count = 0
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-side.png",
-        count = 0
-      }
+      empty_transitions = true
     },
     walking_sound =
     {
@@ -2876,21 +2858,7 @@ define_tiles
           size = 1
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
-        count = 0
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
-        count = 0
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-side.png",
-        count = 0
-      }
+      empty_transitions = true
     },
     walking_sound =
     {
@@ -2929,21 +2897,7 @@ define_tiles
           size = 1
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-inner-corner.png",
-        count = 0
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-outer-corner.png",
-        count = 0
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/out-of-map-side.png",
-        count = 0
-      }
+      empty_transitions = true
     },
     walking_sound =
     {

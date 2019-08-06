@@ -725,7 +725,7 @@ data:extend(
     name = "advanced-electronics-2",
     icon_size = 128,
     icon = "__base__/graphics/technology/advanced-electronics-2.png",
-    prerequisites = {"chemical-science-pack", "sulfur-processing"},
+    prerequisites = {"chemical-science-pack"},
     effects =
     {
       {
@@ -3737,7 +3737,7 @@ data:extend(
         recipe = "uranium-fuel-cell"
       }
     },
-    prerequisites = {"chemical-science-pack", "concrete", "sulfur-processing"},
+    prerequisites = {"chemical-science-pack", "concrete"},
     unit =
     {
       ingredients =

@@ -5071,7 +5071,25 @@ data:extend(
       range = 0.5,
       cooldown = 35,
       ammo_category = "melee",
-      ammo_type = make_unit_melee_ammo_type(7),
+      ammo_type =
+      {
+        action = {
+          action_delivery = {
+            target_effects = {
+              damage = {
+                amount = 7,
+                type = "physical"
+              },
+              type = "damage",
+              show_in_tooltip = false
+            },
+            type = "instant"
+          },
+          type = "direct"
+        },
+        category = "melee",
+        target_type = "entity"
+      },
       animation =
       {
         layers =

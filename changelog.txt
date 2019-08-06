@@ -1,6 +1,39 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.63
+Version: 0.17.64
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.63
+Date: 06. 08. 2019
+  Changes:
+    - Inventory filters tooltip now shows they are inventory filters to avoid confusion. (https://forums.factorio.com/62775)
+    - The quickbar tooltip now shows what shortcut to use in order to clear it.
+    - Quickbar filters can now be set from the ghost cursor.
+    - In Introduction, changed some places Compilatron stands at to be less in the way. (https://forums.factorio.com/74138, https://forums.factorio.com/74018)
+  Bugfixes:
+    - Fixed some combination of graphics options could cause infinite loop at 95% of sprite loading in the demo. (https://forums.factorio.com/74037)
+    - Fixed assigning empty table to sprite definition would not cause loading error but crash in-game instead. (https://forums.factorio.com/74089)
+    - Fixed a desync related to accumulators in multiple networks. (https://forums.factorio.com/73974)
+    - Fixed transitions on tiles where landfill, grass and water meet. (https://forums.factorio.com/74117)
+    - Fixed logistic network technology description did not mention buffer chests. (https://forums.factorio.com/74064)
+    - Fixed "use-version-filter-in-browse-games-gui" config option didn't work. (https://forums.factorio.com/73838)
+    - Fixed possible crash in introduction scenario if player builds turrets too far to either side. (https://forums.factorio.com/74133, https://forums.factorio.com/74060)
+    - Fixed electric coverage visualization was not shown when hovering mouse over invisible widgets. (https://forums.factorio.com/74120)
+    - Fixed a crash when using a path_resolution_modifier of 8. (https://forums.factorio.com/73785)
+    - Fixed introduction leftover invisible entity after cutscene. (https://forums.factorio.com/74127)
+    - Fixed introduction bug where sometimes Compilatron wouldn't build things properly. (https://forums.factorio.com/74087)
+    - Fixed "toggle filter" control setting would not work if bound to modifier key and left or right click. (https://forums.factorio.com/73656)
+    - Fixed introduction bug where poles could still connect to the generator after it was destroyed. (https://forums.factorio.com/74057)
+    - Fixed introduction possible crash when removing power consumers. (https://forums.factorio.com/74041)
+    - Fixed missing laser-beam entity from demo. (https://forums.factorio.com/74049)
+    - Fixed issue with walls in hidden smelter section in introduction. (https://forums.factorio.com/73335)
+    - Fixed that biters could form too many attack groups when aggroed by artillery. (https://forums.factorio.com/72732)
+    - Fixed that clicking and dragging electric poles in multiplayer latency didn't work correctly.
+    - Fixed that fast-replacing assembling machines with fixed recipes didn't work correctly. (https://forums.factorio.com/73976)
+    - Fixed a crash when deleting surfaces during the same tick as auto-save running. (https://forums.factorio.com/74159)
+    - Moved integration patches of crash site entities to decals render layer. (https://forums.factorio.com/74017)
+    - Fixed that inserters would pick up from the left lane of a loader even when positioned closer to the right side.
+  Scripting:
+    - Added LuaEntity::request_from_buffers read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.62
 Date: 02. 08. 2019
