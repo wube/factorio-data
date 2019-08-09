@@ -328,6 +328,10 @@ util.split = function(inputstr, sep)
   return result
 end
 
+util.string_starts_with = function(str, start)
+  return str.sub(str, 1, string.len(start)) == start
+end
+
 util.online_players = function()
   log("But why?")
   return game.connected_players

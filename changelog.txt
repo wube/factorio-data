@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.64
+Version: 0.17.65
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.64
+Date: 09. 08. 2019
+  Changes:
+    - Range modifier and shooting speed modifier are now shown in ammo tooltip and ammo turret tooltip.
+    - Allow pressing ESC to cancel saving or downloading the map while desynced. (https://forums.factorio.com/74198)
+    - Added copy paste from assemblers to infinity chests, similar to requester chests.
+  Bugfixes:
+    - Fixed crash when loading a save containing modded crafting machines with fluid boxes, with mods disabled. (https://forums.factorio.com/74178)
+    - Fixed turret range drawing not accounting for ammo range modifier in world and in map view. Fixed turret unfolding and animation not accounting for ammo range modifier. (https://forums.factorio.com/65043)
+    - Fixed case of swapping left and right lane of underground belts. (https://forums.factorio.com/74114)
+    - Fixed desync related to marking and then un-marking combinators for deconstruction. (https://forums.factorio.com/73868)
+    - Fixed Infinity Chest GUI showing wrong label when modded as a storage chest. (https://forums.factorio.com/74235)
+    - Fixed when target of combat robot changed force to an allied force, the combat robot wouldn't stop attacking it. (https://forums.factorio.com/74270)
+    - Fixed silo script error using generic on_event function. (https://forums.factorio.com/74276)
+    - Fixed a desync related to using multiple custom fluid indexes in a recipe. (https://forums.factorio.com/74009)
+    - Fixed some labels getting cut of in the statistics GUI, on some translations. (https://forums.factorio.com/59084)
+    - Fixed a crash that could sometimes happen when fighting large groups of biters. (https://forums.factorio.com/74072)
+    - Fixed a special corner case of signal internal state consistency. (https://forums.factorio.com/73560)
+    - Fixed that the circuit and logistic network buttons in the train stop GUI were swapped. (https://forums.factorio.com/74308)
+  Scripting:
+    - Combinators can now be activated or deactivated through LuaEntity::active.
+    - Added LuaEntity::upgrade_target read.
+    - Removed the ability to convert a table address into a string.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.63
 Date: 06. 08. 2019

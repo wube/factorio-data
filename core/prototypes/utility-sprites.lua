@@ -63,7 +63,17 @@ data:extend(
     priority = "extra-high-no-scale",
     width = 16,
     height = 40,
-    flags = {"no-crop"},
+    flags = {"no-crop", "trilinear-filtering"},
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "info_no_border",
+    filename = "__core__/graphics/icons/info-blue-no-border.png",
+    priority = "extra-high-no-scale",
+    width = 16,
+    height = 16,
+    flags = {"no-crop", "trilinear-filtering"},
     scale = 0.5
   },
   {

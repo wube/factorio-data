@@ -313,9 +313,8 @@ silo_script.on_load = function()
 end
 
 silo_script.on_event = function(event)
-  local action = script_events[event.name]
-  if not action then return end
-  return action(event)
+  local action = silo_script.events[event.name]
+  return action and action(event)
 end
 
 silo_script.get_events = function()

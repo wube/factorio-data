@@ -16,6 +16,7 @@ add_styles(
       single_line = false,
       maximal_width = 250,
       left_padding = 3,
+      top_padding = 2,
       horizontal_align = "left"
     },
 
@@ -58,10 +59,11 @@ add_styles(
       parent = "quest_item_description",
       font_color = {r=128, g=206, b=240},
     },
-    quest_vertical_flow =
+    quest_item_description_first =
     {
-      type = "vertical_flow_style",
-      vertical_spacing = 0,
+      type = "label_style",
+      parent = "quest_item_description",
+      font_color = heading_font_color,
     },
     quest_gui_frame =
     {
@@ -69,7 +71,15 @@ add_styles(
       parent = "frame",
       padding = 0,
       use_header_filler = false,
-      horizontally_stretchable = "on"
+      horizontally_stretchable = "on",
+
+      top_padding = 0,
+      left_padding = 8,
+      right_padding = 8,
+      bottom_padding = 4,
+
+      right_margin = 10,
+      bottom_margin = 10,
     },
     quest_item_table =
     {
@@ -84,7 +94,7 @@ add_styles(
       horizontally_stretchable = "on",
       odd_row_graphical_set =
       {
-        base = {position = {43, 8}, size = {1, 1}},
+        base = {position = {324, 8}, size = {1, 1}},
       }
     },
 
@@ -92,10 +102,9 @@ add_styles(
     {
       type = "horizontal_flow_style",
       horizontal_spacing = 2,
-      minimal_height = 26,
+      minimal_height = 24,
       vertical_align = 'top'
     },
-
 
     quest_hint_row =
     {
@@ -108,19 +117,6 @@ add_styles(
       vertically_stretchable = "off",
       horizontally_stretchable = "on",
     },
-    quest_hint_wrapper =
-    {
-      type = "horizontal_flow_style",
-      parent = "quest_gui_entry_wrapper_common",
-      minimal_width = 30,
-      horizontal_align = "center"
-    },
-    quest_hint_icon_label =
-    {
-      type = "label_style",
-      parent = "label",
-      font = 'default'
-    },
     quest_hint_description_wrapper =
     {
       type = "horizontal_flow_style",
@@ -130,7 +126,7 @@ add_styles(
     {
       type = "label_style",
       font = "default",
-      font_color = { r = 128, g = 206, b = 240 },
+      font_color = { r = 255, g = 255, b = 255 },
       rich_text_setting = "enabled",
       single_line = false,
       left_padding = 3,
@@ -162,20 +158,7 @@ add_styles(
       parent = "label",
       font = 'default'
     },
-    quest_item_state_icon_wrapper =
-    {
-      type = "horizontal_flow_style",
-      parent = 'quest_gui_entry_wrapper_common',
-      horizontal_align = 'center',
-      left_padding = 4
-    },
-    quest_item_state_icon_label =
-    {
-      type = "label_style",
-      parent = "label",
-      font = 'default'
-    },
-    quest_gui_more_button =
+    open_close_hints_button =
     {
       type = "button_style",
       default_graphical_set =
@@ -185,8 +168,74 @@ add_styles(
       },
       font = 'heading-2',
       default_font_color = heading_font_color,
-      horizontally_stretchable = "on",
-      height = 25,
-    }
+      width = 28,
+      height = 28,
+
+      padding = 0,
+      right_margin = 12,
+    },
+
+    quest_gui_inner_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      graphical_set =
+      {
+        base =
+        {
+          center =
+          {
+            position = {76, 8},
+            size = {1, 1}
+          },
+
+          position = {17, 0},
+          corner_size = 8,
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+
+      top_margin = 4,
+      bottom_margin = 4,
+
+      padding = 0,
+    },
+
+    quest_gui_inner_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane",
+      graphical_set =
+      {
+        base =
+        {
+          center =
+          {
+            position = {76, 8},
+            size = {1, 1}
+          },
+
+          position = {17, 0},
+          corner_size = 8,
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+
+      top_margin = 4,
+      bottom_margin = 4,
+    },
+
+    quest_hint_info_sprite =
+    {
+      type = "image_style",
+      width = 8,
+      height = 8,
+      left_margin = 8,
+      right_margin = 4,
+      top_margin = 6,
+      stretch_image_to_widget_size = true,
+    },
   }
 )
