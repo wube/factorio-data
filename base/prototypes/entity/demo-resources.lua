@@ -52,10 +52,11 @@ local function resource(resource_parameters, autoplace_parameters)
       mining_time = resource_parameters.mining_time,
       result = resource_parameters.name
     },
-    collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
-    selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
+    collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     -- autoplace = autoplace_settings(name, order, coverage),
-    autoplace = resource_autoplace.resource_autoplace_settings{
+    autoplace = resource_autoplace.resource_autoplace_settings
+    {
       name = resource_parameters.name,
       order = resource_parameters.order,
       base_density = autoplace_parameters.base_density,
@@ -102,7 +103,7 @@ data:extend(
     {
       name = "iron-ore",
       order = "b",
-      map_color = {r=0.415, g=0.525, b=0.580},
+      map_color = {0.415, 0.525, 0.580},
       mining_time = 1
     },
     {
@@ -116,7 +117,7 @@ data:extend(
     {
       name = "copper-ore",
       order = "b",
-      map_color = {r=0.803, g=0.388, b=0.215},
+      map_color = {0.803, 0.388, 0.215},
       mining_time = 1
     },
     {
@@ -130,7 +131,7 @@ data:extend(
     {
       name = "coal",
       order = "b",
-      map_color = {r=0, g=0, b=0},
+      map_color = {0, 0, 0},
       mining_time = 1
     },
     {
@@ -143,7 +144,7 @@ data:extend(
     {
       name = "stone",
       order = "b",
-      map_color = {r=0.690, g=0.611, b=0.427},
+      map_color = {0.690, 0.611, 0.427},
       mining_time = 1
     },
     {
@@ -169,9 +170,10 @@ data:extend(
       fluid_amount = 10,
       required_fluid = "sulfuric-acid"
     },
-    collision_box = {{ -0.1, -0.1}, {0.1, 0.1}},
-    selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    autoplace = resource_autoplace.resource_autoplace_settings{
+    collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    autoplace = resource_autoplace.resource_autoplace_settings
+    {
       name = "uranium-ore",
       order = "c",
       base_density = 0.9,
@@ -235,7 +237,7 @@ data:extend(
     effect_darkness_multiplier = 3.6,
     min_effect_alpha = 0.2,
     max_effect_alpha = 0.3,
-    map_color = {r=0, g=0.7, b=0}
+    map_color = {0, 0.7, 0}
   }
 }
 )

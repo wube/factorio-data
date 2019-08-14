@@ -1,6 +1,39 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.66
+Date: ????
+  Bugfixes:
+    - Fixed crash when using the close button while the client is saving the map for desync report. (https://forums.factorio.com/74508)
+---------------------------------------------------------------------------------------------------
 Version: 0.17.65
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.65
+Date: 14. 08. 2019
+  Changes:
+    - Modded achievements and their progress are now stored even when the mods adding extra achievements are temporarily removed. Up to 5000 modded achievements are stored indefinitely. (https://forums.factorio.com/64884)
+    - Programmable Speaker sounds now change volume accordingly as player moves. (https://forums.factorio.com/60468)
+    - Rocket Silo sounds now change volume accordingly as player moves.
+  Bugfixes:
+    - Fixed tightspot level 5 expecting old chemical science recipe. (https://forums.factorio.com/74351)
+    - Fixed Transport belt madness inserter exploit. (https://forums.factorio.com/74354)
+    - Fixed that filling energy of entities in map editor didn't work for accumulators in electric network.
+    - Fixed a crash or desync that could happen after assigning a build_base command to a single unit. (https://forums.factorio.com/74430)
+    - Fixed that mining drill covering more than 1 infinite resource showed the mining speed as sum instead of average. (https://forums.factorio.com/74443)
+    - Fixed that infinite item based resources with yield of more then 100% didn't actually mine more. So yield of 260% for example means that it mines 2 resources and 60% probability of 1 extra.
+    - Fixed cloning of accumulators in the map editor not setting available energy correctly.
+    - Fixed a desync related to cloning accumulators. (https://forums.factorio.com/74363)
+    - Fixed 2 crashes related to custom-switch. (https://forums.factorio.com/74459)
+    - Fixed that train could consider itself being parked in station when in fact being misaligned. (https://forums.factorio.com/73653)
+    - Fixed that activating deconstruction planner/blueprint/blueprint tool from the shortcut by pressing the buttons didn't clear the cursor if it wasn't empty. (https://forums.factorio.com/69976)
+    - Fixed condition operator button visibility when dragging conditions in the train schedule GUI. (https://forums.factorio.com/73959)
+    - Fixed few layouting issues with scroll panes.
+    - Fixed that biters could get stuck in narrow passages between water tiles. (https://forums.factorio.com/73857)
+    - Fixed that members of unit groups could sometimes get far ahead of the group. (https://forums.factorio.com/74458)
+  Modding:
+    - Added CraftingMachinePrototype::match_animation_speed_to_activity.
+    - Added LoaderPrototype::structure.back_patch and front_patch.
+  Scripting:
+    - Added ability to clear a sprite or sprite-button by writing nil or empty string to LuaGuiElement::sprite. (https://forums.factorio.com/74491)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.64
 Date: 09. 08. 2019
@@ -21,6 +54,7 @@ Date: 09. 08. 2019
     - Fixed a crash that could sometimes happen when fighting large groups of biters. (https://forums.factorio.com/74072)
     - Fixed a special corner case of signal internal state consistency. (https://forums.factorio.com/73560)
     - Fixed that the circuit and logistic network buttons in the train stop GUI were swapped. (https://forums.factorio.com/74308)
+    - Fixed that map generator GUI default preset selection (again). (https://forums.factorio.com/74286)
   Scripting:
     - Combinators can now be activated or deactivated through LuaEntity::active.
     - Added LuaEntity::upgrade_target read.

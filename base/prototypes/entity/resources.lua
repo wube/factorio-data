@@ -34,9 +34,10 @@ data:extend(
         }
       }
     },
-    collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
-    selection_box = {{ -0.5, -0.5}, {0.5, 0.5}},
-    autoplace = resource_autoplace.resource_autoplace_settings{
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    autoplace = resource_autoplace.resource_autoplace_settings
+    {
       name = "crude-oil",
       order = "c", -- Other resources are "b"; oil won't get placed if something else is already there.
       base_density = 8.2,
@@ -61,7 +62,7 @@ data:extend(
         variation_count = 1
       }
     },
-    map_color = {r=0.78, g=0.2, b=0.77},
+    map_color = {0.78, 0.2, 0.77},
     map_grid = false
   },
 })

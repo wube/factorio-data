@@ -5896,71 +5896,37 @@ data:extend(
     silo_fade_out_start_distance = 8,
     silo_fade_out_end_distance = 15,
 
-    alarm_trigger =
+    alarm_sound =
     {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/silo-alarm.ogg",
-            volume = 1.0
-          }
-        }
-      }
+      filename = "__base__/sound/silo-alarm.ogg",
+      volume = 1.0
     },
-    clamps_on_trigger =
+    clamps_on_sound =
     {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/silo-clamps-on.ogg",
-            volume = 1.0
-          }
-        }
-      }
+      filename = "__base__/sound/silo-clamps-on.ogg",
+      volume = 1.0
     },
-    clamps_off_trigger =
+    clamps_off_sound =
     {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/silo-clamps-off.ogg",
-            volume = 1.0
-          }
-        }
-      }
+      filename = "__base__/sound/silo-clamps-off.ogg",
+      volume = 1.0
     },
-    doors_trigger =
+    doors_sound =
     {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/silo-doors.ogg",
-            volume = 1.0
-          }
-        }
-      }
+      filename = "__base__/sound/silo-doors.ogg",
+      volume = 1.0
     },
-    raise_rocket_trigger =
+    raise_rocket_sound =
     {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/silo-raise-rocket.ogg",
-            volume = 1.0
-          }
-        }
-      }
+      filename = "__base__/sound/silo-raise-rocket.ogg",
+      volume = 1.0
+    },
+    flying_sound =
+    {
+      filename = "__base__/sound/silo-rocket.ogg",
+      volume = 1.0
     }
+
   },
   {
     type = "rocket-silo-rocket",
@@ -6262,20 +6228,6 @@ data:extend(
     shadow_fade_out_start_ratio = 0.25,
     shadow_fade_out_end_ratio = 0.75,
     rocket_visible_distance_from_center = 2.75,
-
-    flying_trigger =
-    {
-      {
-        type = "play-sound",
-        sound =
-        {
-          {
-            filename = "__base__/sound/silo-rocket.ogg",
-            volume = 1.0
-          }
-        }
-      }
-    }
   },
   {
     type = "rocket-silo-rocket-shadow",

@@ -142,15 +142,6 @@ data:extend(
       }
     },
     vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = 4
-    },
-    energy_usage = "60kW",
-    researching_speed = 1,
-    inputs = { "automation-science-pack" }
   },-- broken
   {
     type = "lab",
@@ -392,16 +383,6 @@ data:extend(
           }
       }
     },
-    crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
-    crafting_speed = 1.25,
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = 4
-    },
-    energy_usage = "90kW",
-    ingredient_count = 2,
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -612,16 +593,6 @@ data:extend(
         }
       }
     },
-    crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
-    crafting_speed = 1.25,
-    energy_source =
-    {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = 4
-    },
-    energy_usage = "90kW",
-    ingredient_count = 2,
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
@@ -826,7 +797,6 @@ data:extend(
     --subgroup = "other",
     collision_box = {{-1.5, -0.9}, {0.9, 0.9}},
     selection_box = {{-1.5, -0.9}, {0.9, 0.9}},
-    enable_gui = true,
     allow_copy_paste = false,
     energy_source =
     {
