@@ -1,11 +1,23 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.66
+Version: 0.17.67
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.66
+Date: 16. 08. 2019
+  Changes:
+    - Blocked underground pipe connections (see e.g. https://forums.factorio.com/73840) are always highlighted.
   Bugfixes:
     - Fixed crash when using the close button while the client is saving the map for desync report. (https://forums.factorio.com/74508)
----------------------------------------------------------------------------------------------------
-Version: 0.17.65
-Date: ????
+    - Fixed a crash related to settings copy/paste of some modded assemblers. (https://forums.factorio.com/74025)
+    - Correctly highlighting blocked connections of modded underground pipes. (https://forums.factorio.com/74116)
+    - Fixed a case of disappearing fluid in a special fluid furnace configuration. (https://forums.factorio.com/74373)
+    - Fixed programmable speaker caused crash when using --disable-audio command line option. (https://forums.factorio.com/74551)
+    - Fixed that an underground pipe ghost did not split fluid systems. (https://forums.factorio.com/74252)
+    - Fixed that an underground pipe ghost did not split blocked connection. (https://forums.factorio.com/74269)
+    - Fixed that fluids in assembling machines and furnaces would get voided any time mods changed. (https://forums.factorio.com/74284)
+    - Prevented construction of underground pipe that could crash the game due to blocked pipe connection. (https://forums.factorio.com/74116)
+  Scripting:
+    - Added LuaEntityPrototype::terrain_friction_modifier read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.65
 Date: 14. 08. 2019
