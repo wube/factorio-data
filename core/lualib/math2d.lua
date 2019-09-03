@@ -40,6 +40,42 @@ math2d.position.rotate_vector = function(vector, angle_in_deg)
   return {x = x, y = y}
 end
 
+math2d.position.subtract = function(p1, p2)
+  p1 = math2d.position.ensure_xy(p1)
+  p2 = math2d.position.ensure_xy(p2)
+
+  return {x = p1.x - p2.x, y = p1.y - p2.y}
+end
+
+math2d.position.add = function(p1, p2)
+  p1 = math2d.position.ensure_xy(p1)
+  p2 = math2d.position.ensure_xy(p2)
+
+  return {x = p1.x + p2.x, y = p1.y + p2.y}
+end
+
+math2d.position.multiply_scalar = function(vec, scalar)
+  vec = math2d.position.ensure_xy(vec)
+  return {x = vec.x * scalar, y = vec.y * scalar}
+end
+
+math2d.position.divide_scalar = function(vec, scalar)
+  vec = math2d.position.ensure_xy(vec)
+  return {x = vec.x / scalar, y = vec.y / scalar}
+end
+
+math2d.position.vector_length = function(vec)
+  vec = math2d.position.ensure_xy(vec)
+  return math.sqrt(vec.x*vec.x + vec.y*vec.y)
+end
+
+math2d.position.get_normalised = function(vec)
+  vec = math2d.position.ensure_xy(vec)
+
+  local length = math.sqrt(vec.x*vec.x + vec.y*vec.y)
+  return {x = vec.x / length, y = vec.y / length}
+end
+
 math2d.bounding_box = {}
 
 -- Takes a bounding box with positions that might be either two element arrays, or tables

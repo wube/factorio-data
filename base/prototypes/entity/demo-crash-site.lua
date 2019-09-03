@@ -157,6 +157,7 @@ data:extend(
     selection_box = {{-2.5, -1.5}, {2.5, 1.5}},
     entity_info_icon_shift = util.by_pixel(32, 0),
     light = {intensity = 0.9, size = 12, color = {r = 1.0, g = 1.0, b = 1.0}, shift = {1.5, 0.5}},
+    integration_patch_render_layer = "decals",
     integration_patch = hr_crash_site_lab_ground(),
 
     on_animation =

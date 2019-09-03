@@ -148,6 +148,7 @@ data:extend(
       script_editor_drag_area_color = { r = 1, g = 1, b = 1, a = 0.5 },
       force_editor_select_area_color = { r = 0, g = 1, b = 0 },
       cliff_editor_remove_cliffs_color = { r = 1, g = 0, b = 0 },
+      tile_editor_area_selection_color = { r = 0, g = 1, b = 0 },
       tile_editor_selection_preview_tint = { r = 0.15, g = 0.15, b = 0.15, a = 0.15 },
       tile_editor_selection_preview_radius = 6,
       decorative_editor_selection_preview_tint = { r = 0.25, g = 0.25, b = 0.25, a = 0.25 },

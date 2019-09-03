@@ -93,9 +93,10 @@ data:extend(
     order = "b[fluid-chemistry]-a[heavy-oil-cracking]",
     crafting_machine_tint =
     {
-      primary = {r = 0.290, g = 0.027, b = 0.000, a = 0.000}, -- #49060000
-      secondary = {r = 0.722, g = 0.465, b = 0.190, a = 0.000}, -- #b8763000
-      tertiary = {r = 0.870, g = 0.365, b = 0.000, a = 0.000}, -- #dd5d0000
+      primary = {r = 1.000, g = 0.642, b = 0.261, a = 1.000}, -- #ffa342ff
+      secondary = {r = 1.000, g = 0.722, b = 0.376, a = 1.000}, -- #ffb85fff
+      tertiary = {r = 0.854, g = 0.659, b = 0.576, a = 1.000}, -- #d9a892ff
+      quaternary = {r = 1.000, g = 0.494, b = 0.271, a = 1.000}, -- #ff7e45ff
     }
   },
 
@@ -121,9 +122,10 @@ data:extend(
     order = "b[fluid-chemistry]-b[light-oil-cracking]",
     crafting_machine_tint =
     {
-      primary = {r = 0.785, g = 0.406, b = 0.000, a = 0.000}, -- #c8670000
-      secondary = {r = 0.795, g = 0.805, b = 0.605, a = 0.000}, -- #cacd9a00
-      tertiary = {r = 0.835, g = 0.551, b = 0.000, a = 0.000}, -- #d48c0000
+      primary = {r = 0.764, g = 0.596, b = 0.780, a = 1.000}, -- #c298c6ff
+      secondary = {r = 0.762, g = 0.551, b = 0.844, a = 1.000}, -- #c28cd7ff
+      tertiary = {r = 0.895, g = 0.773, b = 0.596, a = 1.000}, -- #e4c597ff
+      quaternary = {r = 1.000, g = 0.734, b = 0.290, a = 1.000}, -- #ffbb49ff
     }
   },
 
@@ -146,9 +148,10 @@ data:extend(
     subgroup = "fluid-recipes",
     crafting_machine_tint =
     {
-      primary = {r = 0.875, g = 0.735, b = 0.000, a = 0.000}, -- #dfbb0000
-      secondary = {r = 0.103, g = 0.940, b = 0.000, a = 0.000}, -- #1aef0000
-      tertiary = {r = 0.564, g = 0.795, b = 0.000, a = 0.000}, -- #8fca0000
+      primary = {r = 1.000, g = 0.958, b = 0.000, a = 1.000}, -- #fff400ff
+      secondary = {r = 1.000, g = 0.852, b = 0.172, a = 1.000}, -- #ffd92bff
+      tertiary = {r = 0.876, g = 0.869, b = 0.597, a = 1.000}, -- #dfdd98ff
+      quaternary = {r = 0.969, g = 1.000, b = 0.019, a = 1.000}, -- #f7ff04ff
     }
   },
 
@@ -169,9 +172,10 @@ data:extend(
     },
     crafting_machine_tint =
     {
-      primary = {r = 0.498, g = 0.498, b = 0.498, a = 0.000}, -- #7f7f7f00
-      secondary = {r = 0.400, g = 0.400, b = 0.400, a = 0.000}, -- #66666600
-      tertiary = {r = 0.305, g = 0.305, b = 0.305, a = 0.000}, -- #4d4d4d00
+      primary = {r = 1.000, g = 1.000, b = 1.000, a = 1.000}, -- #fefeffff
+      secondary = {r = 0.771, g = 0.771, b = 0.771, a = 1.000}, -- #c4c4c4ff
+      tertiary = {r = 0.768, g = 0.665, b = 0.762, a = 1.000}, -- #c3a9c2ff
+      quaternary = {r = 0.000, g = 0.000, b = 0.000, a = 1.000}, -- #000000ff
     }
   },
 
@@ -195,9 +199,10 @@ data:extend(
     order = "b[fluid-chemistry]-c[solid-fuel-from-light-oil]",
     crafting_machine_tint =
     {
-      primary = {r = 0.270, g = 0.122, b = 0.000, a = 0.000}, -- #441f0000
-      secondary = {r = 0.735, g = 0.546, b = 0.325, a = 0.000}, -- #bb8b5200
-      tertiary = {r = 0.610, g = 0.348, b = 0.000, a = 0.000}, -- #9b580000
+      primary = {r = 0.710, g = 0.633, b = 0.482, a = 1.000}, -- #b5a17aff
+      secondary = {r = 0.745, g = 0.672, b = 0.527, a = 1.000}, -- #beab86ff
+      tertiary = {r = 0.894, g = 0.773, b = 0.596, a = 1.000}, -- #e4c598ff
+      quaternary = {r = 0.812, g = 0.583, b = 0.202, a = 1.000}, -- #cf9433ff
     }
   },
 
@@ -221,9 +226,10 @@ data:extend(
     order = "b[fluid-chemistry]-d[solid-fuel-from-petroleum-gas]",
     crafting_machine_tint =
     {
-      primary = {r = 0.331, g = 0.075, b = 0.510, a = 0.000}, -- #54138200
-      secondary = {r = 0.589, g = 0.540, b = 0.615, a = 0.361}, -- #96899c5c
-      tertiary = {r = 0.469, g = 0.145, b = 0.695, a = 0.000}, -- #7724b100
+      primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+      secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+      tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+      quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
     }
   },
 
@@ -247,9 +253,10 @@ data:extend(
     order = "b[fluid-chemistry]-e[solid-fuel-from-heavy-oil]",
     crafting_machine_tint =
     {
-      primary = {r = 0.160, g = 0.095, b = 0.095, a = 0.000}, -- #28181800
-      secondary = {r = 0.470, g = 0.215, b = 0.190, a = 0.000}, -- #77363000
-      tertiary = {r = 0.435, g = 0.144, b = 0.135, a = 0.000}, -- #6e242200
+      primary = {r = 0.889, g = 0.628, b = 0.566, a = 1.000}, -- #e2a090ff
+      secondary = {r = 0.803, g = 0.668, b = 0.644, a = 1.000}, -- #ccaaa4ff
+      tertiary = {r = 0.854, g = 0.659, b = 0.576, a = 1.000}, -- #d9a892ff
+      quaternary = {r = 1.000, g = 0.395, b = 0.127, a = 1.000}, -- #ff6420ff
     }
   },
 
@@ -271,9 +278,10 @@ data:extend(
     },
     crafting_machine_tint =
     {
-      primary = {r = 1.000, g = 0.659, b = 0.000, a = 0.000}, -- #ffa70000
-      secondary = {r = 0.812, g = 1.000, b = 0.000, a = 0.000}, -- #cfff0000
-      tertiary = {r = 0.960, g = 0.806, b = 0.000, a = 0.000}, -- #f4cd0000
+      primary = {r = 1.000, g = 0.995, b = 0.089, a = 1.000}, -- #fffd16ff
+      secondary = {r = 1.000, g = 0.974, b = 0.691, a = 1.000}, -- #fff8b0ff
+      tertiary = {r = 0.723, g = 0.638, b = 0.714, a = 1.000}, -- #b8a2b6ff
+      quaternary = {r = 0.954, g = 1.000, b = 0.350, a = 1.000}, -- #f3ff59ff
     }
   },
 
@@ -294,9 +302,10 @@ data:extend(
     subgroup = "fluid-recipes",
     crafting_machine_tint =
     {
-      primary = {r = 0.000, g = 0.260, b = 0.010, a = 0.000}, -- #00420200
-      secondary = {r = 0.071, g = 0.640, b = 0.000, a = 0.000}, -- #12a30000
-      tertiary = {r = 0.026, g = 0.520, b = 0.000, a = 0.000}, -- #06840000
+      primary = {r = 0.268, g = 0.723, b = 0.223, a = 1.000}, -- #44b838ff
+      secondary = {r = 0.432, g = 0.793, b = 0.386, a = 1.000}, -- #6eca62ff
+      tertiary = {r = 0.647, g = 0.471, b = 0.396, a = 1.000}, -- #a57865ff
+      quaternary = {r = 1.000, g = 0.395, b = 0.127, a = 1.000}, -- #ff6420ff
     }
   },
 

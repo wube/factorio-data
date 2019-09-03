@@ -5068,6 +5068,21 @@ data:extend(
       type = "frame_style",
       parent = "inner_frame"
     },
+    naked_frame_with_no_spacing =
+    {
+      type = "frame_style",
+      parent = "naked_frame",
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      },
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        horizontal_spacing = 0
+      }
+    },
     graphicless_frame =
     {
       type = "frame_style",

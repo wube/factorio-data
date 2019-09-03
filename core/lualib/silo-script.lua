@@ -253,6 +253,10 @@ silo_script.events =
   [defines.events.on_rocket_launched] = on_rocket_launched
 }
 
+silo_script.on_gui_click = on_gui_click
+silo_script.on_player_created = on_player_created
+silo_script.on_rocket_launched = on_rocket_launched
+
 silo_script.add_remote_interface = function()
   remote.add_interface("silo_script",
   {

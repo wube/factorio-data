@@ -1,7 +1,13 @@
 
 local libraries = {}
 
+local setup_ran = false
+
 local register_events = function()
+
+  --Sometimes, in special cases, on_init and on_load can be run at the same time. Only register events once in this case.
+  if setup_ran then return end
+  setup_ran = true
 
   local all_events = {}
   local on_nth_tick = {}

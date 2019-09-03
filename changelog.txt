@@ -1,6 +1,79 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.67
+Version: 0.17.68
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.67
+Date: 03. 09. 2019
+  Graphics:
+    - New chemical plant graphics.
+    - Heat pipes (also in reactors and heat exchangers) glow with high temperatures.
+  Changes:
+    - Pressing ESC while catching up to a multiplayer game will disconnect instead of opening the menu.  (https://forums.factorio.com/74735)
+    - An entity can't be teleported into a position where pipe connections would overlap. (https://forums.factorio.com/74652)
+    - The camera will zoom to center instead of zooming to cursor in God controller, Ghost controller and Spectator controller.
+  Features:
+    - Added an area tool to the map editor tile editor.
+    - Added highlighting of the source entities when selecting areas to clone in the map editor.
+    - Added a setting in the map editor to hide entity health bars.
+    - Added a setting in the map editor surface editor to generate new chunks using lab tiles.
+    - Added support to manipulate items on the stored character while in the map editor.
+    - Added infinity settings for automatically controlling items in the map editor.
+    - Changed the infinity chest so it can also spawn hidden items.
+  Gui:
+    - Rearranged key-bindings in Control Settings to different categories. Improved and added more descriptions of key-bindings.
+  Bugfixes:
+    - Fixed cloning ghost entities with rotation didn't work correctly. (https://forums.factorio.com/74635)
+    - Fixed that the lab GUI wouldn't update when the technology being researched changed. (https://forums.factorio.com/74605)
+    - Fixed loader front patch and back patch were not sorted correctly when drawing. (https://forums.factorio.com/74680)
+    - Fixed wire connection distance sometimes being inconsistent. (https://forums.factorio.com/74666)
+    - Fixed a rotation of modded pump with regard to blocked pipe connections. (https://forums.factorio.com/74629)
+    - Prevented a crash resulting from teleporting a pipe to a fluid system with blocked connection. (https://forums.factorio.com/74702)
+    - Fixed that the filter GUI tooltip would flicker when changing tabs. (https://forums.factorio.com/74623)
+    - Fixed fluid mixing from creating an underground pipe by script into a blocked fluid system. (https://forums.factorio.com/74614)
+    - Fixed fluid mixing from copy/pasting an infinite pipe next to a different fluid. (https://forums.factorio.com/74702)
+    - Prevented playing Jesus and changing water into other fluids. (https://forums.factorio.com/74624)
+    - Fixed assembler ghost fluid filters disappearing through loading. (https://forums.factorio.com/74723)
+    - Cliffs sections which are fully marked as indestructible can't be exploded. (https://forums.factorio.com/73939)
+    - Fixed interaction of underground pipes with modded length. (https://forums.factorio.com/74610)
+    - Fixed fluid mixing caused by fluid producing furnace. (https://forums.factorio.com/74648)
+    - Fixed that opening the technology GUI in the same tick as the entity tooltip being shown didn't work correctly. (https://forums.factorio.com/74710)
+    - Prevented rotation of a modded assembler with a blocked pipe connection that results in fluid mixing. (https://forums.factorio.com/74657)
+    - Fixed train condition button indentation not being properly updated under special circumstances. (https://forums.factorio.com/74527)
+    - Fixed that train schedule waypoint was considered to be passed when train departed the related rail rather when it entered it. (https://forums.factorio.com/74678)
+    - Fixed that storage tank entities ignored pipe_picture property in their fluid box definition. (https://forums.factorio.com/74878)
+    - Fixed improper action selection for UI actions for key bindings differentiated by modifiers only. (https://forums.factorio.com/74631)
+    - Fixed a crash related to a modded assembler and fluid mixing. (https://forums.factorio.com/74746)
+    - Applied the cannon shadow to the artillery wagon, fixing some unintended highlights. (https://forums.factorio.com/57931)
+    - Fixed crash when removing electric pole. (https://forums.factorio.com/73458)
+    - Fixed event handler could try to register events twice in some cases. (https://forums.factorio.com/74665)
+    - Fixed blueprinted locomotives would preview as snapped to train stop. (https://forums.factorio.com/74540)
+    - Fixed items spilling on the ground when using fast entity transfer while robots are trying to insert into the player. (https://forums.factorio.com/74819)
+    - Fixed hand reserving a non-empty slot in some situations when player inventory auto-sorting is disabled.
+    - Fixed custom lua slider sometimes initializing with the marker in the wrong position. (https://forums.factorio.com/75052)
+    - Fixed "list-box" and "drop-down" custom GUI elements would not update selected index when changing its items programmatically. (https://forums.factorio.com/75044)
+    - Fixed that the map editor 'instant blueprint building' would fail to place trains correctly.
+    - Rail signal that is to be reserved by circuit network doesn't allow train to go through even when the block is already occupied by the given train. (https://forums.factorio.com/74506)
+    - Rail signal will change from reserved by circuit network state to closed state when train is manually placed into the block it guards. (https://forums.factorio.com/74862)
+    - Fixed train stop name in map not being positioned properly. (https://forums.factorio.com/75099)
+  Modding:
+    - Changed default value of LoaderPrototype::structure_render_layer from "lower-object" to "transport-belt-circuit-connector", in order to be consistent with other on-belt structure sprites.
+    - Different wall types will connect visually by default. If this behavior is not desired for a wall prototype, set it unique "visual_merge_group". (https://forums.factorio.com/74695)
+    - Added optional random_variation_on_create to all simple entity prototypes.
+    - Pump was changed to not expand its bounding box when connected to pipe. Collision box for vanilla pump was adjusted to reflect this change.
+  Scripting:
+    - Added additional filtering to LuaGameScript::get_filtered_..._prototypes() functions.
+    - Added optional "tags" to entities in blueprints and entity ghosts.
+    - Added optional "tags" to script_raised_revive, on_built_entity and on_robot_built_entity events when reviving ghosts.
+    - Added LuaEntity::tags read/write for entity ghosts.
+    - Added LuaItemStack::get_blueprint_entity_count(), get_blueprint_entity_tags(), set_blueprint_entity_tags(),
+      get_blueprint_entity_tag(), and set_blueprint_entity_tag().
+    - Added on_force_friends_changed and on_force_cease_fire_changed events.
+    - Added "area" to on_chunk_charted and on_sector_scanned events.
+    - Added "position" to on_chunk_generated event.
+    - Added area to the LuaChunkIterator operator() return value.
+    - Added LuaPlayer::toggle_map_editor().
+    - The script_destroyed_entity event is raised for map editor instant deconstruction.
+    - Added LuaEntity::tick_of_last_attack and LuaEntity::tick_of_last_damage write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.66
 Date: 16. 08. 2019

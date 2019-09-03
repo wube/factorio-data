@@ -768,9 +768,10 @@ data:extend(
     category = "chemistry",
     crafting_machine_tint =
     {
-      primary = {r = 0.955, g = 0.945, b = 0.000, a = 0.000}, -- #f3f10000
-      secondary = {r = 0.000, g = 0.441, b = 0.659, a = 0.898}, -- #0070a8e5
-      tertiary = {r = 0.000, g = 0.288, b = 0.365, a = 0.000}, -- #00495d00
+      primary = {r = 0.968, g = 0.381, b = 0.259, a = 1.000}, -- #f66142ff
+      secondary = {r = 0.892, g = 0.664, b = 0.534, a = 1.000}, -- #e3a988ff
+      tertiary = {r = 1.000, g = 0.978, b = 0.513, a = 1.000}, -- #fff982ff
+      quaternary = {r = 0.210, g = 0.170, b = 0.013, a = 1.000}, -- #352b03ff
     },
     normal =
     {
@@ -829,9 +830,10 @@ data:extend(
     },
     crafting_machine_tint =
     {
-      primary = {r = 0.970, g = 0.611, b = 0.000, a = 0.000}, -- #f79b0000
-      secondary = {r = 0.000, g = 0.680, b = 0.894, a = 0.357}, -- #00ade45b
-      tertiary = {r = 0.430, g = 0.805, b = 0.726, a = 0.000}, -- #6dcdb900
+      primary = {r = 0.965, g = 0.482, b = 0.338, a = 1.000}, -- #f67a56ff
+      secondary = {r = 0.831, g = 0.560, b = 0.222, a = 1.000}, -- #d38e38ff
+      tertiary = {r = 0.728, g = 0.818, b = 0.443, a = 1.000}, -- #b9d070ff
+      quaternary = {r = 0.939, g = 0.763, b = 0.191, a = 1.000}, -- #efc230ff
     }
   },
   {

@@ -142,10 +142,12 @@ function make_laser_beam(sound)
   if sound then
     result.working_sound =
     {
+      sound =
       {
         filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 0.7
-      }
+        volume = 1
+      },
+      max_sounds_per_type = 4
     }
     result.name = "laser-beam"
   else

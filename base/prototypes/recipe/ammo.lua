@@ -182,9 +182,10 @@ data:extend(
     result = "flamethrower-ammo",
     crafting_machine_tint =
     {
-      primary = {r = 0.845, g = 0.533, b = 0.000, a = 0.000}, -- #d7870000
-      secondary = {r = 0.655, g = 0.000, b = 0.000, a = 0.000}, -- #a7000000
-      tertiary = {r = 0.685, g = 0.329, b = 0.000, a = 0.000}, -- #ae530000
+      primary = {r = 1.000, g = 0.735, b = 0.643, a = 1.000}, -- #ffbba4ff
+      secondary = {r = 0.749, g = 0.557, b = 0.490, a = 1.000}, -- #bf8e7dff
+      tertiary = {r = 0.637, g = 0.637, b = 0.637, a = 1.000}, -- #a2a2a2ff
+      quaternary = {r = 0.283, g = 0.283, b = 0.283, a = 1.000}, -- #484848ff
     }
   }
 }

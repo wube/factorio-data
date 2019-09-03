@@ -16,10 +16,14 @@ data:extend(
     instant_blueprint_building = true,
     instant_deconstruction = true,
     instant_upgrading = true,
+    instant_rail_planner = true,
     show_status_icons = true,
     show_hidden_entities = true,
     show_entity_tags = true,
+    show_entity_health_bars = true,
     generate_neighbor_chunks = true,
-    fill_built_entity_energy_buffers = true
+    fill_built_entity_energy_buffers = true,
+    show_character_tab_in_controller_gui = false,
+    placed_corpses_never_expire = true
   }
 })

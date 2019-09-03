@@ -251,15 +251,25 @@ end
 
 function make_4way_animation_from_spritesheet(animation)
   local function make_animation_layer(idx, anim)
+    local start_frame = (anim.frame_count or 1) * idx
+    local x = 0
+    local y = 0
+    if anim.line_length then
+      y = anim.height * math.floor(start_frame / (anim.line_length or 1))
+    else
+      x = idx * anim.width
+    end
     return
     {
       filename = anim.filename,
       priority = anim.priority or "high",
-      x = idx * anim.width,
+      x = x,
+      y = y,
       width = anim.width,
       height = anim.height,
       frame_count = anim.frame_count or 1,
       line_length = anim.line_length,
+      repeat_count = anim.repeat_count,
       shift = anim.shift,
       draw_as_shadow = anim.draw_as_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
@@ -296,6 +306,8 @@ function make_4way_animation_from_spritesheet(animation)
     west = make_animation(3)
   }
 end
+
+heat_glow_tint = {r=1.0, g=0.85, b=0.75}
 
 function make_heat_pipe_pictures(path, name_prefix, data)
   local all_pictures = {}
@@ -694,6 +706,7 @@ data:extend(
     belt_animation_set = fast_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.0625,
+    structure_render_layer = "lower-object",
     structure =
     {
       direction_in =
@@ -742,6 +755,7 @@ data:extend(
     belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.09375,
+    structure_render_layer = "lower-object",
     structure =
     {
       direction_in =
@@ -4176,7 +4190,6 @@ data:extend(
     rail_overlay_animations = make_4way_animation_from_spritesheet(
     {
       filename = "__base__/graphics/entity/train-stop/train-stop-ground.png",
-      line_length = 4,
       width = 194,
       height = 189,
       direction_count = 4,
@@ -4184,7 +4197,6 @@ data:extend(
         hr_version =
         {
           filename = "__base__/graphics/entity/train-stop/hr-train-stop-ground.png",
-          line_length = 4,
           width = 386,
           height = 377,
           direction_count = 4,
@@ -4197,7 +4209,6 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-bottom.png",
-        line_length = 4,
         width = 71,
         height = 146,
         direction_count = 4,
@@ -4205,7 +4216,6 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-bottom.png",
-            line_length = 4,
             width = 140,
             height = 291,
             direction_count = 4,
@@ -4215,7 +4225,6 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-shadow.png",
-        line_length = 4,
         width = 361,
         height = 304,
         direction_count = 4,
@@ -4224,7 +4233,6 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-shadow.png",
-            line_length = 4,
             width = 720,
             height = 607,
             direction_count = 4,
@@ -4239,7 +4247,6 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-top.png",
-        line_length = 4,
         width = 156,
         height = 153,
         direction_count = 4,
@@ -4247,7 +4254,6 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-top.png",
-            line_length = 4,
             width = 311,
             height = 305,
             direction_count = 4,
@@ -4257,7 +4263,6 @@ data:extend(
       },
       {
         filename = "__base__/graphics/entity/train-stop/train-stop-top-mask.png",
-        line_length = 4,
         width = 154,
         height = 148,
         direction_count = 4,
@@ -4266,7 +4271,6 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/train-stop/hr-train-stop-top-mask.png",
-            line_length = 4,
             width = 306,
             height = 295,
             direction_count = 4,
@@ -6600,7 +6604,7 @@ data:extend(
     max_health = 180,
     fast_replaceable_group = "pipe",
     corpse = "1x2-remnants",
-    collision_box = {{-0.29, -0.79}, {0.29, 0.79}},
+    collision_box = {{-0.29, -0.9}, {0.29, 0.9}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     resistances =
     {
@@ -8130,34 +8134,38 @@ data:extend(
     {
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant.png",
-        width = 122,
-        height = 134,
-        frame_count = 1,
-        shift = util.by_pixel(-5, -4.5),
+        width = 108,
+        height = 148,
+        frame_count = 24,
+        line_length = 12,
+        shift = util.by_pixel(1, -9),
         hr_version =
         {
           filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant.png",
-          width = 244,
-          height = 268,
-          frame_count = 1,
-          shift = util.by_pixel(-5, -4.5),
+          width = 220,
+          height = 292,
+          frame_count = 24,
+          line_length = 12,
+          shift = util.by_pixel(0.5, -9),
           scale = 0.5
           }
       },
       {
         filename = "__base__/graphics/entity/chemical-plant/chemical-plant-shadow.png",
-        width = 175,
-        height = 141,
+        width = 154,
+        height = 112,
+        repeat_count = 24,
         frame_count = 1,
-        shift = util.by_pixel(31.5, 11),
+        shift = util.by_pixel(28, 6),
         draw_as_shadow = true,
         hr_version =
         {
           filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-shadow.png",
-          width = 350,
-          height = 219,
+          width = 312,
+          height = 222,
+          repeat_count = 24,
           frame_count = 1,
-          shift = util.by_pixel(31.5, 10.75),
+          shift = util.by_pixel(27, 6),
           draw_as_shadow = true,
           scale = 0.5
           }
@@ -8166,114 +8174,219 @@ data:extend(
     working_visualisations =
     {
       {
-        north_position = util.by_pixel(30, -24),
-        west_position = util.by_pixel(1, -49.5),
-        south_position = util.by_pixel(-30, -48),
-        east_position = util.by_pixel(-11, -1),
         apply_recipe_tint = "primary",
-        animation =
-        {
-          filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch.png",
-          frame_count = 32,
-          width = 15,
-          height = 10,
-          animation_speed = 0.5,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-green-patch.png",
-            frame_count = 32,
-            width = 30,
-            height = 20,
-            animation_speed = 0.5,
-            scale = 0.5
-          }
-        }
-      },
-
-      {
-        north_position = util.by_pixel(30, -24),
-        west_position = util.by_pixel(1, -49.5),
-        south_position = util.by_pixel(-30, -48),
-        east_position = util.by_pixel(-11, -1),
-        apply_recipe_tint = "secondary",
-        animation =
-        {
-          filename = "__base__/graphics/entity/chemical-plant/boiling-green-patch-mask.png",
-          frame_count = 32,
-          width = 15,
-          height = 10,
-          animation_speed = 0.5,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-green-patch-mask.png",
-            frame_count = 32,
-            width = 30,
-            height = 20,
-            animation_speed = 0.5,
-            scale = 0.5
-          }
-        }
-      },
-
-      {
-        apply_recipe_tint = "tertiary",
-        north_position = {0, 0},
-        west_position = {0, 0},
-        south_position = {0, 0},
-        east_position = {0, 0},
         north_animation =
         {
-          filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
-          frame_count = 1,
-          width = 87,
-          height = 60,
-          shift = util.by_pixel(0, -5),
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-liquid-north.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 32,
+          height = 24,
+          shift = util.by_pixel(24, 14),
           hr_version =
           {
-            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
-            x = 0,
-            frame_count = 1,
-            width = 174,
-            height = 119,
-            shift = util.by_pixel(0, -5.25),
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-liquid-north.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 66,
+            height = 44,
+            shift = util.by_pixel(23, 15),
             scale = 0.5
           }
         },
         east_animation =
         {
-          filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
-          x = 87,
-          frame_count = 1,
-          width = 87,
-          height = 60,
-          shift = util.by_pixel(0, -5),
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-liquid-east.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 36,
+          height = 18,
+          shift = util.by_pixel(0, 22),
           hr_version =
           {
-            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
-            x = 174,
-            frame_count = 1,
-            width = 174,
-            height = 119,
-            shift = util.by_pixel(0, -5.25),
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-liquid-east.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 70,
+            height = 36,
+            shift = util.by_pixel(0, 22),
             scale = 0.5
           }
         },
         south_animation =
         {
-          filename = "__base__/graphics/entity/chemical-plant/boiling-window-green-patch.png",
-          x = 174,
-          frame_count = 1,
-          width = 87,
-          height = 60,
-          shift = util.by_pixel(0, -5),
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-liquid-south.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 34,
+          height = 24,
+          shift = util.by_pixel(0, 16),
           hr_version =
           {
-            filename = "__base__/graphics/entity/chemical-plant/hr-boiling-window-green-patch.png",
-            x = 348,
-            frame_count = 1,
-            width = 174,
-            height = 119,
-            shift = util.by_pixel(0, -5.25),
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-liquid-south.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 66,
+            height = 42,
+            shift = util.by_pixel(0, 17),
+            scale = 0.5
+          }
+        },
+        west_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-liquid-west.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 38,
+          height = 20,
+          shift = util.by_pixel(-10, 12),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-liquid-west.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 74,
+            height = 36,
+            shift = util.by_pixel(-10, 13),
+            scale = 0.5
+          }
+        }
+      },
+      {
+        apply_recipe_tint = "secondary",
+        north_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-foam-north.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 32,
+          height = 22,
+          shift = util.by_pixel(24, 14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-foam-north.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 62,
+            height = 42,
+            shift = util.by_pixel(24, 15),
+            scale = 0.5
+          }
+        },
+        east_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-foam-east.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 34,
+          height = 18,
+          shift = util.by_pixel(0, 22),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-foam-east.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 68,
+            height = 36,
+            shift = util.by_pixel(0, 22),
+            scale = 0.5
+          }
+        },
+        south_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-foam-south.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 32,
+          height = 18,
+          shift = util.by_pixel(0, 18),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-foam-south.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 60,
+            height = 40,
+            shift = util.by_pixel(1, 17),
+            scale = 0.5
+          }
+        },
+        west_animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-foam-west.png",
+          frame_count = 24,
+          line_length = 6,
+          width = 36,
+          height = 16,
+          shift = util.by_pixel(-10, 14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-foam-west.png",
+            frame_count = 24,
+            line_length = 6,
+            width = 68,
+            height = 28,
+            shift = util.by_pixel(-9, 15),
+            scale = 0.5
+          }
+        }
+      },
+      {
+        apply_recipe_tint = "tertiary",
+        fadeout = true,
+        constant_speed = true,
+        north_position = util.by_pixel_hr(-30, -161),
+        east_position = util.by_pixel_hr(29, -150),
+        south_position = util.by_pixel_hr(12, -134),
+        west_position = util.by_pixel_hr(-32, -130),
+        animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-smoke-outer.png",
+          frame_count = 47,
+          line_length = 16,
+          width = 46,
+          height = 94,
+          animation_speed = 0.5,
+          shift = util.by_pixel(-2, -40),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-smoke-outer.png",
+            frame_count = 47,
+            line_length = 16,
+            width = 90,
+            height = 188,
+            animation_speed = 0.5,
+            shift = util.by_pixel(-2, -40),
+            scale = 0.5
+          }
+        }
+      },
+      {
+        apply_recipe_tint = "quaternary",
+        fadeout = true,
+        constant_speed = true,
+        north_position = util.by_pixel_hr(-30, -161),
+        east_position = util.by_pixel_hr(29, -150),
+        south_position = util.by_pixel_hr(12, -134),
+        west_position = util.by_pixel_hr(-32, -130),
+        animation =
+        {
+          filename = "__base__/graphics/entity/chemical-plant/chemical-plant-smoke-inner.png",
+          frame_count = 47,
+          line_length = 16,
+          width = 20,
+          height = 42,
+          animation_speed = 0.5,
+          shift = util.by_pixel(0, -14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/chemical-plant/hr-chemical-plant-smoke-inner.png",
+            frame_count = 47,
+            line_length = 16,
+            width = 40,
+            height = 84,
+            animation_speed = 0.5,
+            shift = util.by_pixel(0, -14),
             scale = 0.5
           }
         }
@@ -9325,16 +9438,31 @@ data:extend(
     lower_layer_picture =
     {
       filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes.png",
-      width = 160,
-      height = 160,
-      shift = { -0.03125, -0.1875 },
+      width = 156,
+      height = 156,
+      shift = util.by_pixel(-2, -4),
       hr_version =
       {
         filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-pipes.png",
         width = 320,
-        height = 320,
+        height = 316,
         scale = 0.5,
-        shift = { -0.03125, -0.1875 }
+        shift = util.by_pixel(-1, -5),
+      }
+    },
+    heat_lower_layer_picture =
+    {
+      filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes-heated.png",
+      width = 156,
+      height = 156,
+      shift = util.by_pixel(-3, -4),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-pipes-heated.png",
+        width = 320,
+        height = 316,
+        scale = 0.5,
+        shift = util.by_pixel(-0.5, -4.5),
       }
     },
 
@@ -9344,16 +9472,16 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/nuclear-reactor/reactor.png",
-          width = 160,
-          height = 160,
-          shift = { -0.03125, -0.1875 },
+          width = 154,
+          height = 158,
+          shift = util.by_pixel(-6, -6),
           hr_version =
           {
             filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor.png",
-            width = 320,
-            height = 320,
+            width = 302,
+            height = 318,
             scale = 0.5,
-            shift = { -0.03125, -0.1875 }
+            shift = util.by_pixel(-5, -7),
           }
         },
         {
@@ -9402,6 +9530,8 @@ data:extend(
       max_temperature = 1000,
       specific_heat = "10MJ",
       max_transfer = "10GW",
+      minimum_glow_temperature = 350,
+      glow_alpha_modifier = 0.6,
       connections =
       {
         {
@@ -9452,6 +9582,31 @@ data:extend(
           position = {-2, -2},
           direction = defines.direction.west
         }
+      },
+
+      heat_picture =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-heated.png",
+        width = 108,
+        height = 128,
+        shift = util.by_pixel(1, -7),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-heated.png",
+          width = 216,
+          height = 256,
+          scale = 0.5,
+          shift = util.by_pixel(3, -6.5),
+        }
+      },
+      heat_glow =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-heat-glow.png",
+        priority = "extra-high",
+        width = 188,
+        height = 190,
+        tint = heat_glow_tint,
+        shift = util.by_pixel(-2, -4)
       }
     },
 
@@ -9486,6 +9641,46 @@ data:extend(
         hr_version =
         {
           filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-connect-patches.png",
+          width = 64,
+          height = 64,
+          variation_count = 12,
+          y = 64,
+          scale = 0.5
+        }
+      }
+    },
+
+    heat_connection_patches_connected =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches-heated.png",
+        width = 32,
+        height = 32,
+        variation_count = 12,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-connect-patches-heated.png",
+          width = 64,
+          height = 64,
+          variation_count = 12,
+          scale = 0.5
+        }
+      }
+    },
+
+    heat_connection_patches_disconnected =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/nuclear-reactor/reactor-connect-patches-heated.png",
+        width = 32,
+        height = 32,
+        variation_count = 12,
+        y = 32,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/nuclear-reactor/hr-reactor-connect-patches-heated.png",
           width = 64,
           height = 64,
           variation_count = 12,
@@ -9890,6 +10085,7 @@ data:extend(
       specific_heat = "1MJ",
       max_transfer = "2GW",
       min_working_temperature = 500,
+      minimum_glow_temperature = 350,
       connections =
       {
         {
@@ -9898,25 +10094,145 @@ data:extend(
         }
       },
       pipe_covers =
-
         make_4way_animation_from_spritesheet(
         {
           filename = "__base__/graphics/entity/heat-exchanger/heatex-endings.png",
-          line_length = 4,
           width = 32,
           height = 32,
           direction_count = 4,
           hr_version =
           {
             filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-endings.png",
-            line_length = 4,
             width = 64,
             height = 64,
             direction_count = 4,
             scale = 0.5
           }
-        })
-
+        }),
+      heat_pipe_covers =
+        make_4way_animation_from_spritesheet(
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-endings-heated.png",
+          width = 32,
+          height = 32,
+          direction_count = 4,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-endings-heated.png",
+            width = 64,
+            height = 64,
+            direction_count = 4,
+            scale = 0.5
+          }
+        }),
+      heat_picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-N-heated.png",
+          priority = "extra-high",
+          width = 24,
+          height = 48,
+          shift = util.by_pixel(-1, 8),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-N-heated.png",
+            priority = "extra-high",
+            width = 44,
+            height = 96,
+            shift = util.by_pixel(-0.5, 8.5),
+            scale = 0.5
+          }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-E-heated.png",
+          priority = "extra-high",
+          width = 40,
+          height = 40,
+          shift = util.by_pixel(-21, -13),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-E-heated.png",
+            priority = "extra-high",
+            width = 80,
+            height = 80,
+            shift = util.by_pixel(-21, -13),
+            scale = 0.5
+          }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-S-heated.png",
+          priority = "extra-high",
+          width = 16,
+          height = 20,
+          shift = util.by_pixel(-1, -30),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-S-heated.png",
+            priority = "extra-high",
+            width = 28,
+            height = 40,
+            shift = util.by_pixel(-1, -30),
+            scale = 0.5
+          }
+        },
+        west =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-W-heated.png",
+          priority = "extra-high",
+          width = 32,
+          height = 40,
+          shift = util.by_pixel(23, -13),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/heat-exchanger/hr-heatex-W-heated.png",
+            priority = "extra-high",
+            width = 64,
+            height = 76,
+            shift = util.by_pixel(23, -13),
+            scale = 0.5
+          }
+        },
+      },
+      heat_glow =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-N-glow.png",
+          priority = "extra-high",
+          width = 38,
+          height = 70,
+          tint = heat_glow_tint,
+          shift = util.by_pixel(0, 8)
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-E-glow.png",
+          priority = "extra-high",
+          width = 60,
+          height = 62,
+          shift = util.by_pixel(-22, -12)
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-S-glow.png",
+          priority = "extra-high",
+          width = 38,
+          height = 40,
+          tint = heat_glow_tint,
+          shift = util.by_pixel(0, -36)
+        },
+        west =
+        {
+          filename = "__base__/graphics/entity/heat-exchanger/heatex-W-glow.png",
+          priority = "extra-high",
+          width = 60,
+          height = 64,
+          shift = util.by_pixel(20, -12)
+        },
+      }
     },
     working_sound =
     {
@@ -10284,13 +10600,12 @@ data:extend(
     },
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    minimum_glow_temperature = 350,
-    glow_alpha_modifier = 0.6,
     heat_buffer =
     {
       max_temperature = 1000,
       specific_heat = "1MJ",
       max_transfer = "1GW",
+      minimum_glow_temperature = 350,
       connections =
       {
         {
@@ -10309,6 +10624,14 @@ data:extend(
           position = {0, 0},
           direction = defines.direction.west
         }
+      },
+      heat_glow =
+      {
+        filename = "__base__/graphics/entity/heat-pipe/heated-glow.png",
+        priority = "extra-high",
+        width = 55,
+        height = 55,
+        tint = heat_glow_tint
       }
     },
 
@@ -10350,17 +10673,7 @@ data:extend(
         ending_down = {},
         ending_right = {},
         ending_left = {}
-      }),
-
-    heat_glow_light =
-    {
-      --minimum_darkness = 0.3,
-      color = { r = 1, g = 155/255, b = 0.05, a = 0 },
-      --shift = {-0.6, 3.5},
-      size = 2.5,
-      intensity = 0.1,
-      --add_perspective = true
-    }
+      })
   },
   {
     type = "simple-entity-with-force",

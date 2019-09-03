@@ -1012,7 +1012,7 @@ data:extend(
       }
     },
     mining_speed = 0.5,
-    mining_with_tool_particles_animation_positions = {28},
+    mining_with_tool_particles_animation_positions = {19},
     running_sound_animation_positions = {5, 16},
     footstep_particle_triggers =
     {
@@ -4460,6 +4460,7 @@ data:extend(
         percent = 70
       }
     },
+    visual_merge_group = 0, -- different walls will visually connect to each other if their merge group is same (defaults to 0)
     pictures =
     {
       single =
@@ -5752,6 +5753,7 @@ data:extend(
     belt_animation_set = basic_belt_animation_set,
     fast_replaceable_group = "loader",
     speed = 0.03125,
+    structure_render_layer = "lower-object",
     structure =
     {
       direction_in =
