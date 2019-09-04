@@ -1,6 +1,20 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.68
+Version: 0.17.69
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.68
+Date: 04. 09. 2019
+  Changes:
+    - Pressing ESC while catching up to a multiplayer game will open the menu with most options disabled. (https://forums.factorio.com/74735)
+  Bugfixes:
+    - Fixed migration bug that doubles up to one sample worth of statistics when a save is loaded from before 0.17.44.
+    - Fixed production statistics not calculating the totals correctly. (https://forums.factorio.com/69068)
+    - Fixed that on_built_entity wouldn't be fired for built blueprint entities. (https://forums.factorio.com/75244)
+    - Fixed a crash when right clicking with the map editor tile area tool. (https://forums.factorio.com/75248)
+    - Fluid mixing does not crash the game anymore and is fixed the same way as on migration.
+    - Fixed some Lua tables would be incorrectly interpreted as Lua arrays. (https://forums.factorio.com/75179)
+  Modding:
+    - Changed pipe_covers to be drawn with secondary sprite draw order 64 resp. -64 to prevent "z-fighting" issues. (https://forums.factorio.com/75243)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.67
 Date: 03. 09. 2019

@@ -100,7 +100,7 @@ circuit_connector_definitions["programmable-speaker"] = circuit_connector_defini
 (
   universal_connector_template,
   {
-    { variation = 18, main_offset = util.by_pixel(6, 5.5), shadow_offset = util.by_pixel(10.5, 7.5), show_shadow = true }
+    { variation = 18, main_offset = util.by_pixel(0, -8), shadow_offset = util.by_pixel(4.5, -7), show_shadow = true }
   }
 )
 
