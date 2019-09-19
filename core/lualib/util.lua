@@ -419,5 +419,9 @@ function util.parse_energy(energy)
 
 end
 
+function util.product_amount(product)
+  return product.probability * (product.amount or ((product.amount_min + product.amount_max) / 2))
+end
+
 
 return util

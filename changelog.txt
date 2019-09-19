@@ -1,6 +1,57 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.69
+Version: 0.17.70
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.69
+Date: 19. 09. 2019
+  Changes:
+    - Allow closing rich text tags with . as well as /, to allow color tags in save names. (https://forums.factorio.com/75081)
+    - Using wires in the map editor no longer consumes the wires.
+  Features:
+    - Added a setting to the map editor to show/hide the infinity filters.
+  Bugfixes:
+    - Fixed splitter input flipping mechanism. (https://forums.factorio.com/74273)
+    - Fixed pressing Backspace when text box caret was at the start of the text, in front of rich text icon, would delete the icon. (https://forums.factorio.com/75306)
+    - Fixed it was possible to paste non-numeric values to numeric text fields. (https://forums.factorio.com/75303)
+    - Fixed tooltips appearing in the top-left corner during autosaves. (https://forums.factorio.com/75156)
+    - Changed render-layer of smoke used as activity indicator on chemical plant. (https://forums.factorio.com/75335)
+    - Fixed that escape didn't work in the "new scenario for map editor" GUI. (https://forums.factorio.com/75375)
+    - Fixed that prototype-defined locale didn't work nicely related to items that built things. (https://forums.factorio.com/75419)
+    - Fixed a consistency issue with rotation of a modded assembler. (https://forums.factorio.com/74746)
+    - Train will cancel reservation of signals in front of it when it runs out of fuel. (https://forums.factorio.com/74647)
+    - Fixed manipulating with inventory of other character could cause an armor to be deleted leading to save file corruption. (https://forums.factorio.com/75446)
+    - Fixed achievement sound stacking loudly when multiple achievements are unlocked. (https://forums.factorio.com/75498)
+    - Fixed underground pipe connections of a large entity ghost. (https://forums.factorio.com/75492)
+    - Fixed oil refinery was missing shadow on some configurations. (https://forums.factorio.com/75563)
+    - Fixed an issue with loading some saves with modded lengths of underground pipes, such as Py mods. (https://forums.factorio.com/75552)
+    - Fixed that the Lua API allowed setting direction on entity ghosts which would crash in most cases. (https://forums.factorio.com/75600)
+    - Fixed train stations penalty when there are two stations attached to same rail segment. (https://forums.factorio.com/75555)
+    - Fixed rotating underground pipe into mixing and blocked connection. (https://forums.factorio.com/75494)
+    - Fixed that the player cursor stack would be empty during the 'cut' part of cut-paste. (https://forums.factorio.com/75522)
+    - Fixed train stop rich text tags would show as trains. (https://forums.factorio.com/75611)
+    - Added automated fix for another case of fluid mixing. (https://forums.factorio.com/75484)
+    - Changed runtime fluid mixing fix so that it can't be abused in PvP. (https://forums.factorio.com/75495)
+    - Changed the map editor so it can place blueprints with recipes that haven't been researched yet. (https://forums.factorio.com/75745)
+    - Fixed rotation of modded boiler with regard to blocked connections. (https://forums.factorio.com/75666)
+    - Fixed that a pipe block would not get fixed when a rotation removed the reason for the pipe block. (https://forums.factorio.com/75695)
+    - Fixed a crash in the map editor related to 0-count infinity filters and items in the cursor. (https://forums.factorio.com/75759)
+    - Fixed crash when attempting to use LuaRendering to render icon of an entity that doesn't have icon defined. (https://forums.factorio.com/75797)
+    - Fixed fluid mixing from removing a modded boiler in a special setup. (https://forums.factorio.com/75675)
+  Modding:
+    - Added 'allow_burner_leech' to inserter prototypes. If set to true, burner inserters will look in the pickup targets fuel inventory when refueling.
+  Scripting:
+    - Added LuaEntityPrototype::collision_mask_with_flags read.
+    - Added LuaTilePrototype::collision_mask_with_flags read.
+    - Added LuaDecorativePrototype::collision_mask and collision_mask_with_flags read.
+    - Added LuaStyle::rich_text_setting read/write for labels, text boxes, and text fields.
+    - Added LuaEntityPrototype::allow_burner_leech read.
+    - Added LuaPlayer::request_translation().
+    - Added "on_string_translated" event.
+    - Added LuaEntity::get_merged_signal().
+    - Added to_be_upgraded to LuaSurface::count/find_entities_filtered. (https://forums.factorio.com/75132)
+    - Added a blueprint entity index to source entity mapping to the on_player_setup_blueprint event.
+    - Changed entity, tile, and decorative prototype collision_mask filters to support filtering by 'collides' or 'layers-equals'.
+    - Added allow_in_replay flag into LuaGameScript::take_screenshot. (https://forums.factorio.com/75272)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.68
 Date: 04. 09. 2019

@@ -24,6 +24,7 @@ data:extend(
     generate_neighbor_chunks = true,
     fill_built_entity_energy_buffers = true,
     show_character_tab_in_controller_gui = false,
+    show_infinity_filters_in_controller_gui = false,
     placed_corpses_never_expire = true
   }
 })

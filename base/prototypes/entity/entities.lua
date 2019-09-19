@@ -272,6 +272,7 @@ function make_4way_animation_from_spritesheet(animation)
       repeat_count = anim.repeat_count,
       shift = anim.shift,
       draw_as_shadow = anim.draw_as_shadow,
+      force_hr_shadow = anim.force_hr_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
       scale = anim.scale or 1,
       tint = anim.tint
@@ -8026,6 +8027,7 @@ data:extend(
           frame_count = 1,
           shift = util.by_pixel(82.5, 26.5),
           draw_as_shadow = true,
+          force_hr_shadow = true,
           scale = 0.5
         }
       }
@@ -8339,6 +8341,7 @@ data:extend(
         east_position = util.by_pixel_hr(29, -150),
         south_position = util.by_pixel_hr(12, -134),
         west_position = util.by_pixel_hr(-32, -130),
+        render_layer = "wires",
         animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/chemical-plant-smoke-outer.png",
@@ -8369,6 +8372,7 @@ data:extend(
         east_position = util.by_pixel_hr(29, -150),
         south_position = util.by_pixel_hr(12, -134),
         west_position = util.by_pixel_hr(-32, -130),
+        render_layer = "wires",
         animation =
         {
           filename = "__base__/graphics/entity/chemical-plant/chemical-plant-smoke-inner.png",

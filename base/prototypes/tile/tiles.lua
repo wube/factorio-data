@@ -866,6 +866,62 @@ local dark_dirt_transitions_between_transitions =
   ),
 }
 
+local landfill_transitions =
+{
+  water_transition_template
+  (
+      water_tile_type_names,
+      "__base__/graphics/terrain/water-transitions/landfill.png",
+      "__base__/graphics/terrain/water-transitions/hr-landfill.png",
+      {
+        o_transition_tall = false,
+        u_transition_count = 2,
+        o_transition_count = 4,
+        side_count = 8,
+        outer_corner_count = 8,
+        inner_corner_count = 8
+      }
+  ),
+  out_of_map_transition
+}
+
+local landfill_transitions_between_transitions =
+{
+  generic_transition_between_transitions_template
+  (
+      default_transition_group_id,
+      water_transition_group_id,
+      "__base__/graphics/terrain/water-transitions/landfill-transition.png",
+      "__base__/graphics/terrain/water-transitions/hr-landfill-transition.png",
+      {
+        o_transition_tall = false,
+        inner_corner_count = 3,
+        outer_corner_count = 3,
+        side_count = 3,
+        u_transition_count = 1,
+        o_transition_count = 0,
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
+      }
+  ),
+  dirt_out_of_map_transition,
+  generic_transition_between_transitions_template
+  (
+      water_transition_group_id,
+      out_of_map_transition_group_id,
+      "__base__/graphics/terrain/out-of-map-transition/landfill-shore-out-of-map-transition.png",
+      "__base__/graphics/terrain/out-of-map-transition/hr-landfill-shore-out-of-map-transition.png",
+      {
+        o_transition_tall = false,
+        inner_corner_count = 3,
+        outer_corner_count = 3,
+        side_count = 3,
+        u_transition_count = 1,
+        o_transition_count = 0,
+        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+      }
+  ),
+}
+
 local concrete_transitions =
 {
   water_transition_template
@@ -1180,51 +1236,6 @@ define_tiles
     allowed_neighbors = { "water" },
     map_color={r=38, g=64, b=73},
     pollution_absorption_per_second = water_pollution_absorption
-  },
-  {
-    name = "landfill",
-    type = "tile",
-    collision_mask = {"ground-tile"},
-    layer = 27,
-    variants = tile_variations_template(
-      "__base__/graphics/terrain/grass-1.png", nil,
-      "__base__/graphics/terrain/hr-grass-1.png", nil,
-      {
-        empty_transitions = true,
-        max_size = 4,
-        [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
-        [2] = { probability = 0.91, weights = {0.150, 0.150, 0.150, 0.150, 0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025 }, },
-        [4] = { probability = 0.91, weights = {0.100, 0.80, 0.80, 0.100, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01 }, },
-        --[8] = { probability = 1.00, weights = {0.090, 0.125, 0.125, 0.125, 0.125, 0.125, 0.125, 0.025, 0.125, 0.005, 0.010, 0.100, 0.100, 0.010, 0.020, 0.020} }
-      }
-    ),
-
-    transition_merges_with_tile = "grass-1", -- as long as landfill has the same sprites as grass-1, merging transitions with grass-1 looks better
-    -- transitions = grass_transitions,
-    -- transitions_between_transitions = grass_transitions_between_transitions,
-
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=53, g=52, b=27},
-    pollution_absorption_per_second = grass_pollution_absorption,
-    vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
   {
     name = "deepwater-green",
@@ -3872,5 +3883,137 @@ define_tiles
     map_color={r=0.5, g=0.5, b=0},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
-  }
+  },
+  {
+    type = "tile",
+    name = "landfill",
+    collision_mask = {"ground-tile"},
+    layer = 57,
+
+    transitions = landfill_transitions,
+    transitions_between_transitions = landfill_transitions_between_transitions,
+
+    variants =
+    {
+      main =
+      {
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 1
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 2,
+          probability = 0.39
+        },
+        {
+          picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+          count = 1,
+          size = 4,
+          probability = 1
+        }
+      },
+
+      inner_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/masks/transition-1.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      outer_corner_mask =
+      {
+        picture = "__base__/graphics/terrain/masks/transition-1.png",
+        x = 32 * 9,
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
+          x = 64 * 9,
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      side_mask =
+      {
+        picture = "__base__/graphics/terrain/masks/transition-1.png",
+        x = 32 * 18,
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
+          x = 64 * 18,
+          count = 8,
+          scale = 0.5
+        }
+      },
+
+      u_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/masks/transition-1.png",
+        x = 32 * 27,
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
+          x = 64 * 27,
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+      o_transition_mask =
+      {
+        picture = "__base__/graphics/terrain/masks/transition-1.png",
+        x = 32 * 36,
+        count = 1,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
+          x = 64 * 36,
+          count = 1,
+          scale = 0.5
+        }
+      },
+
+
+      material_background =
+      {
+        picture = "__base__/graphics/terrain/landfill.png",
+        count = 8,
+        hr_version =
+        {
+          picture = "__base__/graphics/terrain/hr-landfill.png",
+          count = 8,
+          scale = 0.5
+        }
+      }
+    },
+
+    walking_sound =
+    {
+      {
+        filename = "__base__/sound/walking/dirt-02.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/dirt-03.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__base__/sound/walking/dirt-04.ogg",
+        volume = 0.8
+      }
+    },
+    map_color={r=54, g=46, b=37},
+    pollution_absorption_per_second = 0
+  },
 }

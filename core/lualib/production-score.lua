@@ -40,7 +40,7 @@ local function get_product_list()
         product_list[product.name] = {}
       end
       local recipe_ingredients = {}
-      local product_amount = product.amount or product.probability * ((product.amount_min + product.amount_max) / 2) or 1
+      local product_amount = util.product_amount(product)
       if product_amount > 0 then
         for j, ingredient in pairs (ingredients) do
           recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
@@ -61,7 +61,7 @@ local function get_product_list()
       local required_parts = entity.rocket_parts_required
       local list = {}
       for k, product in pairs (recipe.products) do
-        local product_amount = product.amount or product.probability * ((product.amount_min + product.amount_max) / 2) or 1
+        local product_amount = util.product_amount(product)
         if product_amount > 0 then
           product_amount = product_amount * required_parts
           list[product.name] = product_amount
@@ -76,7 +76,7 @@ local function get_product_list()
     if launch_products then
       for k, launch_product in pairs (launch_products) do
         product_list[launch_product.name] = product_list[launch_product.name] or {}
-        local launch_product_amount = launch_product.amount or launch_product.probability * ((launch_product.amount_min + launch_product.amount_max) / 2) or 1
+        local launch_product_amount = util.product_amount(launch_product)
         if launch_product_amount > 0 then
           for k, silo_products in pairs (rocket_silos) do
             local this_silo = {}
@@ -158,7 +158,7 @@ function deduce_nil_prices(price_list, param)
         if not ingredient_value then break end
         local product_value = 0
         for k, product in pairs (recipe.products) do
-          local amount = product.amount or (product.amount_max + product.amount_min) * 0.5 * product.probability
+          local amount = util.product_amount(product)
           local product_price = price_list[product.name]
           if product_price then
             product_value = product_value + product_price * amount
