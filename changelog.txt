@@ -1,6 +1,58 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.70
+Version: 0.17.71
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.70
+Date: 15. 10. 2019
+  Features:
+    - Added interface option to adjust the number of shortcut bar rows that are visible on the screen.
+    - Added ability to shift click a research in the technology screen to start that research.
+    - Allowed setting filters with the ghost cursor.
+  Changes:
+    - Biters and Spitters will no longer collide with other biters/spitters. (https://factorio.com/blog/post/fff-316)
+  Graphics:
+    - Added new remnants for several entities. They are still work-in-progress and subject to further change.
+  Bugfixes:
+    - Excluding runtime fluid mixing check from assembler migration that caused some crashes when loading a save with mixing in it.
+    - Fixed landfill map color on old saves. (https://forums.factorio.com/75870)
+    - Added migration to recalculate tile transitions when tile layer definition changes in tile prototype. (https://forums.factorio.com/75871)
+    - Fixed that artillery remote failure sounds could be duplicated in some cases. (https://forums.factorio.com/75639)
+    - Fixed that the game would still process mod dependencies for disabled mods. (https://forums.factorio.com/75873)
+    - Fixed that underground pipes with different length could sometimes connect one tile further.
+    - Fixed that the cursor would appear in the wrong position after textbox alignment was changed by scripting. (https://forums.factorio.com/74971)
+    - Fixed placement of scrollbars around textboxes. (https://forums.factorio.com/74969)
+    - Fixed a crash related to teleporting biters during the ai-completed events. (https://forums.factorio.com/75962)
+    - Fixed that non-square crafting machines without fluid boxes didn't rotate correctly. (https://forums.factorio.com/75944)
+    - Fixed that the game would freeze when trying to find automatic artillery targets with very high levels of artillery range. (https://forums.factorio.com/76056)
+    - Fixed tile ghosts sometimes overlapped on edges which created visible lines. (https://forums.factorio.com/76189)
+    - Fixed that the on_gui_switch_state_changed event would fire twice in some cases. (https://forums.factorio.com/76211)
+    - Fixed wrong damage bonus values in tooltips of combat robots and units in a different force. (https://forums.factorio.com/76182)
+    - Fixed that the research screen would show a technology as "available" when it was queued. (https://forums.factorio.com/75960)
+    - Fixed that LuaEntity::last_user didn't support writing `nil`. (https://forums.factorio.com/76360)
+    - Fixed that mod GUIs could show on top of the technology screen after loading a save. (https://forums.factorio.com/75979)
+    - Fixed a crash when using the /screenshot command. (https://forums.factorio.com/76418)
+    - Fixed that the --disable-migration-window command line option didn't always work. (https://forums.factorio.com/76542)
+    - Fixed that pumps had a drain when using a non-electric energy source. (https://forums.factorio.com/76355)
+    - Fixed a bug in fluid system splitting.
+    - Changed order of pipe connections to avoid previous cases of fluid mixing. A.k.a Boskid's deferred pipes.
+    - Offshore pumps now set fluid filter automatically based on produced fluid. (https://forums.factorio.com/76286)
+    - Fixed crash when closing shortcut selection list while dragging. (https://forums.factorio.com/76718)
+    - Fixed that biters could get overloaded by artillery and stop moving. (https://forums.factorio.com/64334)
+    - Fixed that biters could get stuck during attacks. (https://forums.factorio.com/74740)
+    - Fixed that biter pathfinding could cause unreasonably large save files. (https://forums.factorio.com/74058)
+    - Fixed that biters would attack in a single file due to their colliding with each other. (https://forums.factorio.com/66977)
+    - Fixed that personal roboports would function with literally no power.
+    - Fixed migrating pre-0.17 maps with detached characters that had a grid armor in quick bar would corrupt game state. (https://forums.factorio.com/76466)
+  Modding:
+    - Added optional flying robot prototype property "max_speed".
+    - Added light_renderer_search_distance_limit to utility constants.
+  Scripting:
+    - Changed LuaEntity::color to also work for cars.
+    - Changed LuaStyle::padding, margin to also accept arrays of padding values.
+    - Added optional "unit_number" to on_post_entity_died event.
+    - Added support to teleport car entity types between surfaces.
+    - Added LuaEntityPrototype::call_for_help_radius, max_count_of_owned_units, max_friends_around_to_spawn, spawning_radius and spawning_spacing read.
+    - Added LuaForce::research_enabled read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.69
 Date: 19. 09. 2019

@@ -714,6 +714,7 @@ data:extend(
     time_to_live = 15 * 60 * 60, -- 15 minutes
     selection_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_priority = 100, -- 0-255 value with 255 being on-top of everything else
+    flags = {"placeable-off-grid", "not-rotatable", "not-on-map"},
     pictures =
     {
       {
@@ -1724,7 +1725,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "wooden-chest"},
     max_health = 100,
-    corpse = "small-remnants",
+    corpse = "wooden-chest-remnants",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -1784,7 +1785,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "iron-chest"},
     max_health = 200,
-    corpse = "small-remnants",
+    corpse = "iron-chest-remnants",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
     resistances =
@@ -3946,7 +3947,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "pipe-to-ground"},
     max_health = 150,
-    corpse = "pipe-remnants",
+    corpse = "pipe-to-ground-remnants",
     resistances =
     {
       {
@@ -6160,7 +6161,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "electric-furnace"},
     max_health = 350,
-    corpse = "medium-remnants",
+    corpse = "electric-furnace-remnants",
     dying_explosion = "medium-explosion",
     resistances =
     {
@@ -6982,7 +6983,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "steel-furnace"},
     max_health = 300,
-    corpse = "medium-small-remnants",
+    corpse = "steel-furnace-remnants",
     vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
     working_sound =
     {
@@ -7158,7 +7159,7 @@ data:extend(
     fast_replaceable_group = "wall",
     minable = {mining_time = 0.1, result = "gate"},
     max_health = 350,
-    corpse = "small-remnants",
+    corpse = "gate-remnants",
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     opening_speed = 0.0666666,

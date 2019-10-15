@@ -149,10 +149,10 @@ data:extend(
       -- heuristic value is multiplied by this ratio
       -- the higher the number the more is the search directed directly towards the goal
       goal_pressure_ratio = 2,
-      -- when this is exhausted no more requests are allowed
-      -- at the moment the first path to exhaust this will be finished (even if it is hundreds of steps)
-      max_steps_worked_per_tick = 100,
-
+      -- How many nodes can be expanded at most per tick.
+      max_steps_worked_per_tick = 1000,
+      -- How much work each patfinding job is allowed to do per tick.
+      max_work_done_per_tick = 8000,
       -- path cache setings
       use_path_cache = true,
       -- number of elements in the cache

@@ -4179,6 +4179,15 @@ data:extend(
       selected_rich_text_highlight_ok_color = {r=50,g=80,b=0},
     },
 
+    editor_lua_textbox =
+    {
+      type = "textbox_style",
+      parent = "textbox",
+      horizontally_stretchable = "on",
+      height = 300,
+      maximal_width = 600
+    },
+
     notice_textbox =
     {
       type = "textbox_style",

@@ -1708,7 +1708,7 @@ define_tiles
     transitions = { water_shallow_out_of_map_transition },
     transitions_between_transitions = water_shallow_transitions_between_transitions,
     allowed_neighbors = { "water-mud" },
-    map_color={r=31, g=48, b=18},
+    map_color={r=82, g=98, b=92},
     pollution_absorption_per_second = water_pollution_absorption
   },
   {
@@ -1830,7 +1830,7 @@ define_tiles
     transitions = { water_shallow_out_of_map_transition },
     transitions_between_transitions = water_mud_transitions_between_transitions,
     allowed_neighbors = { "water", "water-shallow" },
-    map_color={r=31, g=48, b=18},
+    map_color={r=65, g=89, b=90},
     pollution_absorption_per_second = water_pollution_absorption
   },
   -----------//////////////////////////////////////////////////////////////GRASS-1

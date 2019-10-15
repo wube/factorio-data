@@ -3,18 +3,40 @@ require ("util")
 function make_rotated_animation_variations_from_sheet(variation_count, sheet) --makes remnants work with more than 1 variation
   local result = {}
 
+  local function set_y_offset(variation, i)
+    local frame_count = variation.frame_count or 1
+    local line_length = variation.line_length or frame_count
+    if (line_length < 1) then
+      line_length = frame_count
+    end
+
+    local height_in_frames = math.floor((frame_count * variation.direction_count + line_length - 1) / line_length)
+    -- if (height_in_frames ~= 1) then
+    --   log("maybe broken sheet: h=" .. height_in_frames .. ", vc=" .. variation_count .. ", " .. variation.filename)
+    -- end
+    variation.y = variation.height * (i - 1) * height_in_frames
+  end
+
   for i = 1,variation_count do
     local variation = util.table.deepcopy(sheet)
 
-    variation.y = variation.height * (i - 1)
-    if (variation.hr_version) then
-      variation.hr_version.y = variation.hr_version.height * (i - 1)
+    if variation.layers then
+      for _, layer in pairs(variation.layers) do
+        set_y_offset(layer, i)
+        if (layer.hr_version) then
+          set_y_offset(layer.hr_version, i)
+        end
+      end
+    else
+      set_y_offset(variation, i)
+      if (variation.hr_version) then
+        set_y_offset(variation.hr_version, i)
+      end
     end
 
     table.insert(result, variation)
   end
  return result
-
 end
 
 data:extend(
@@ -263,43 +285,77 @@ data:extend(
 
   {
     type = "corpse",
-    name = "boiler-remnants",
-    icon = "__base__/graphics/icons/boiler.png",
+    name = "wooden-chest-remnants",
+    icon = "__base__/graphics/icons/wooden-chest.png",
     icon_size = 32,
-    flags = {"placeable-neutral", "not-on-map"},
-    selection_box = {{-1.5, -1}, {1.5, 1}},
-    tile_width = 3,
-    tile_height = 2,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
     selectable_in_game = false,
     subgroup = "remnants",
-    order="d[remnants]-a[generic]-a[small]",
+    order="d[remnants]-a[generic]-b[medium]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
-      filename = "__base__/graphics/entity/boiler/remnants/boiler-remnants.png",
+      filename = "__base__/graphics/entity/wooden-chest/remnants/wooden-chest-remnants.png",
       line_length = 1,
-      width = 116,
-      height = 98,
+      width = 56,
+      height = 38,
       frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 4,
-      shift = util.by_pixel(-4, 10),
+      direction_count = 1,
+      shift = util.by_pixel(8, -1),
       hr_version =
       {
-        filename = "__base__/graphics/entity/boiler/remnants/hr-boiler-remnants.png",
+        filename = "__base__/graphics/entity/wooden-chest/remnants/hr-wooden-chest-remnants.png",
         line_length = 1,
-        width = 230,
-        height = 194,
+        width = 110,
+        height = 74,
         frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(-4, 9.5),
+        direction_count = 1,
+        shift = util.by_pixel(7.5, -1),
         scale = 0.5,
-      },
+      }
+    }
+  },
+
+  {
+    type = "corpse",
+    name = "iron-chest-remnants",
+    icon = "__base__/graphics/icons/iron-chest.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-b[medium]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/iron-chest/remnants/iron-chest-remnants.png",
+      line_length = 1,
+      width = 64,
+      height = 40,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(12, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/iron-chest/remnants/hr-iron-chest-remnants.png",
+        line_length = 1,
+        width = 126,
+        height = 78,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(12, 0),
+        scale = 0.5,
+      }
     }
   },
 
@@ -317,28 +373,28 @@ data:extend(
     order="d[remnants]-a[generic]-a[small]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
-    animation = make_rotated_animation_variations_from_sheet (3,
+    animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/burner-inserter/remnants/burner-inserter-remnants.png",
       line_length = 1,
-      width = 52,
-      height = 42,
+      width = 68,
+      height = 48,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = util.by_pixel(1, 5),
+      shift = util.by_pixel(4, -2),
       hr_version =
       {
         filename = "__base__/graphics/entity/burner-inserter/remnants/hr-burner-inserter-remnants.png",
         line_length = 1,
-        width = 102,
-        height = 80,
+        width = 134,
+        height = 94,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 1,
-        shift = util.by_pixel(0.5, 4.5),
+        shift = util.by_pixel(3.5, -2),
         scale = 0.5,
       },
     })
@@ -358,28 +414,69 @@ data:extend(
     order="d[remnants]-a[generic]-a[small]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
-    animation = make_rotated_animation_variations_from_sheet (3,
+    animation = make_rotated_animation_variations_from_sheet (4,
     {
-      filename = "__base__/graphics/entity/inserter/remnants/standard-inserter-remnants.png",
+      filename = "__base__/graphics/entity/inserter/remnants/inserter-remnants.png",
       line_length = 1,
-      width = 52,
-      height = 42,
+      width = 68,
+      height = 48,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = util.by_pixel(0, 1),
+      shift = util.by_pixel(4, -2),
       hr_version =
       {
-        filename = "__base__/graphics/entity/inserter/remnants/hr-standard-inserter-remnants.png",
+        filename = "__base__/graphics/entity/inserter/remnants/hr-inserter-remnants.png",
         line_length = 1,
-        width = 102,
-        height = 80,
+        width = 134,
+        height = 94,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 1,
-        shift = util.by_pixel(0.5, 4.5),
+        shift = util.by_pixel(3.5, -2),
+        scale = 0.5,
+      },
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "long-handed-inserter-remnants",
+    icon = "__base__/graphics/icons/long-handed-inserter.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = make_rotated_animation_variations_from_sheet (4,
+    {
+      filename = "__base__/graphics/entity/long-handed-inserter/remnants/long-handed-inserter-remnants.png",
+      line_length = 1,
+      width = 68,
+      height = 48,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(4, -2),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/long-handed-inserter/remnants/hr-long-handed-inserter-remnants.png",
+        line_length = 1,
+        width = 134,
+        height = 94,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(3.5, -2),
         scale = 0.5,
       },
     })
@@ -400,69 +497,28 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (3,
+    animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/fast-inserter/remnants/fast-inserter-remnants.png",
       line_length = 1,
-      width = 52,
-      height = 42,
+      width = 68,
+      height = 48,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = util.by_pixel(1, 5),
+      shift = util.by_pixel(4, -2),
       hr_version =
       {
         filename = "__base__/graphics/entity/fast-inserter/remnants/hr-fast-inserter-remnants.png",
         line_length = 1,
-        width = 102,
-        height = 80,
+        width = 134,
+        height = 94,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 1,
-        shift = util.by_pixel(0.5, 4.5),
-        scale = 0.5,
-      },
-    })
-  },
-
-  {
-    type = "corpse",
-    name = "long-handed-inserter-remnants",
-    icon = "__base__/graphics/icons/long-handed-inserter.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "not-on-map"},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    tile_width = 1,
-    tile_height = 1,
-    selectable_in_game = false,
-    subgroup = "remnants",
-    order="d[remnants]-a[generic]-a[small]",
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    animation = make_rotated_animation_variations_from_sheet (3,
-    {
-      filename = "__base__/graphics/entity/long-handed-inserter/remnants/long-handed-inserter-remnants.png",
-      line_length = 1,
-      width = 52,
-      height = 42,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(1, 5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/long-handed-inserter/remnants/hr-long-handed-inserter-remnants.png",
-        line_length = 1,
-        width = 102,
-        height = 80,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(0.5, 4.5),
+        shift = util.by_pixel(3.5, -2),
         scale = 0.5,
       },
     })
@@ -482,7 +538,7 @@ data:extend(
     order="d[remnants]-a[generic]-a[small]",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
-    animation =  make_rotated_animation_variations_from_sheet (8,
+    animation =  make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/transport-belt/remnants/transport-belt-remnants.png",
       line_length = 1,
@@ -491,7 +547,7 @@ data:extend(
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
-      direction_count = 1,
+      direction_count = 4,
       shift = util.by_pixel(1, 0),
       hr_version =
       {
@@ -502,7 +558,7 @@ data:extend(
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
-        direction_count = 1,
+        direction_count = 4,
         shift = util.by_pixel(1, -0.5),
         scale = 0.5,
       },
@@ -528,24 +584,24 @@ data:extend(
     {
       filename = "__base__/graphics/entity/splitter/remnants/splitter-remnants.png",
       line_length = 1,
-      width = 86,
-      height = 76,
+      width = 96,
+      height = 96,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 4,
-      shift = util.by_pixel(1, 2),
+      shift = util.by_pixel(4, 1.5),
       hr_version =
       {
         filename = "__base__/graphics/entity/splitter/remnants/hr-splitter-remnants.png",
         line_length = 1,
-        width = 172,
-        height = 150,
+        width = 190,
+        height = 190,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 4,
-        shift = util.by_pixel(1, 1.5),
+        shift = util.by_pixel(3.5, 1.5),
         scale = 0.5,
       },
     }
@@ -566,28 +622,28 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation =
+    animation = 
     {
       filename = "__base__/graphics/entity/underground-belt/remnants/underground-belt-remnants.png",
       line_length = 1,
-      width = 60,
-      height =50,
+      width = 78,
+      height =72,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 8,
-      shift = util.by_pixel(4, 3),
+      shift = util.by_pixel(10, 3),
       hr_version =
       {
         filename = "__base__/graphics/entity/underground-belt/remnants/hr-underground-belt-remnants.png",
         line_length = 1,
-        width = 116,
-        height = 100,
+        width = 156,
+        height = 144,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 8,
-        shift = util.by_pixel(3.5, 3.5),
+        shift = util.by_pixel(10.5, 3),
         scale = 0.5,
       },
     }
@@ -609,31 +665,120 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (8,
+    animation = make_rotated_animation_variations_from_sheet(4,
     {
       filename = "__base__/graphics/entity/wall/remnants/wall-remnants.png",
-      line_length = 1,
-      width = 70,
+      width = 60,
       height = 58,
+      line_length = 1,
       frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(-3, 8),
+      direction_count = 2,
+      shift = util.by_pixel(3, 7.5),
       hr_version =
       {
         filename = "__base__/graphics/entity/wall/remnants/hr-wall-remnants.png",
+        width = 118,
+        height = 114,
         line_length = 1,
-        width = 138,
-        height = 116,
         frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(-3.5, 8),
+        direction_count = 2,
+        shift = util.by_pixel(3, 7.5), --was 3.5
         scale = 0.5,
       },
     })
+  },
+
+  {
+    type = "corpse",
+    name = "gate-remnants",
+    icon = "__base__/graphics/icons/gate.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order="d[remnants]-c[wall]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      {
+        filename = "__base__/graphics/entity/gate/remnants/gate-remnants-var-1.png",
+        line_length = 1,
+        width = 44,
+        height = 42,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(0, 1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/gate/remnants/hr-gate-remnants-var-1.png",
+          line_length = 1,
+          width = 86,
+          height = 82,
+          frame_count = 1,
+          variation_count = 1,
+          axially_symmetrical = false,
+          direction_count = 4,
+          shift = util.by_pixel(0, 1),
+          scale = 0.5,
+        },
+      },
+      {
+        filename = "__base__/graphics/entity/gate/remnants/gate-remnants-var-2.png",
+        line_length = 1,
+        width = 42,
+        height = 42,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(-1, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/gate/remnants/hr-gate-remnants-var-2.png",
+          line_length = 1,
+          width = 84,
+          height = 82,
+          frame_count = 1,
+          variation_count = 1,
+          axially_symmetrical = false,
+          direction_count = 4,
+          shift = util.by_pixel(-0.5, 0),
+          scale = 0.5,
+        },
+      },
+      {
+        filename = "__base__/graphics/entity/gate/remnants/gate-remnants-var-3.png",
+        line_length = 1,
+        width = 42,
+        height = 42,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/gate/remnants/hr-gate-remnants-var-3.png",
+          line_length = 1,
+          width = 82,
+          height = 84,
+          frame_count = 1,
+          variation_count = 1,
+          axially_symmetrical = false,
+          direction_count = 4,
+          shift = util.by_pixel(0, 0.5),
+          scale = 0.5,
+        }
+      },
+    },
   },
 
   {
@@ -694,33 +839,206 @@ data:extend(
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
+    animation_overlay_final_render_layer = "object",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (2,
+    animation = make_rotated_animation_variations_from_sheet (4,
+  {
+    layers =
     {
-      filename = "__base__/graphics/entity/small-electric-pole/remnants/small-electric-pole-remnants.png",
-      line_length = 1,
-      width = 60,
-      height = 44,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(8, -2),
-      hr_version =
       {
-        filename = "__base__/graphics/entity/small-electric-pole/remnants/hr-small-electric-pole-remnants.png",
+        filename = "__base__/graphics/entity/small-electric-pole/remnants/small-electric-pole-base-remnants.png",
         line_length = 1,
-        width = 120,
-        height = 88,
+        width = 90,
+        height = 54,
         frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
         direction_count = 1,
-        shift = util.by_pixel(8, -1.5),
-        scale = 0.5,
+        shift = util.by_pixel(17, -1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/small-electric-pole/remnants/hr-small-electric-pole-base-remnants.png",
+          line_length = 1,
+          width = 180,
+          height = 106,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(17, -1),
+          scale = 0.5,
+        }
+      }
+    },
+  }),
+  
+  animation_overlay = make_rotated_animation_variations_from_sheet (4,
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/small-electric-pole/remnants/small-electric-pole-top-remnants.png",
+        line_length = 1,
+        width = 44,
+        height = 62,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(4 , -21),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/small-electric-pole/remnants/hr-small-electric-pole-top-remnants.png",
+          line_length = 1,
+          width = 86,
+          height = 120,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(3.5, -21.5),
+          scale = 0.5,
+        }
       },
-    })
-  },
+    },
+  })
+ },
+
+  {
+    type = "corpse",
+    name = "medium-electric-pole-remnants",
+    icon = "__base__/graphics/icons/medium-electric-pole.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order = "d[remnants]-a[generic]-a[small]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation_overlay_final_render_layer = "object",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet(3,
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/medium-electric-pole/remnants/medium-electric-pole-base-remnants.png",
+        line_length = 1,
+        width = 142,
+        height = 70,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(35, -5),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/medium-electric-pole/remnants/hr-medium-electric-pole-base-remnants.png",
+          line_length = 1,
+          width = 284,
+          height = 140,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(35, -5),
+          scale = 0.5,
+        }
+      }
+    }
+  }),
+  
+  animation_overlay = make_rotated_animation_variations_from_sheet(3,
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/medium-electric-pole/remnants/medium-electric-pole-top-remnants.png",
+        line_length = 1,
+        width = 50,
+        height = 92,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(0 , -39),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/medium-electric-pole/remnants/hr-medium-electric-pole-top-remnants.png",
+          line_length = 1,
+          width = 100,
+          height = 184,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(0, -38.5),
+          scale = 0.5,
+        }
+      },
+    },
+  })
+ },
+
+  {
+    type = "corpse",
+    name = "big-electric-pole-remnants",
+    icon = "__base__/graphics/icons/big-electric-pole.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order = "d[remnants]-a[generic]-a[small]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation_overlay_final_render_layer = "object",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (4,
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/big-electric-pole/remnants/big-electric-pole-base-remnants.png",
+        line_length = 1,
+        width = 184,
+        height = 94,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(44, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/big-electric-pole/remnants/hr-big-electric-pole-base-remnants.png",
+          line_length = 1,
+          width = 366,
+          height = 188,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(43, 0.5),
+          scale = 0.5,
+        }
+      }
+    },
+  }),
+  
+  animation_overlay = make_rotated_animation_variations_from_sheet (4,
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/big-electric-pole/remnants/big-electric-pole-top-remnants.png",
+        line_length = 1,
+        width = 76,
+        height = 126,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(-1, -48),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/big-electric-pole/remnants/hr-big-electric-pole-top-remnants.png",
+          line_length = 1,
+          width = 148,
+          height = 252,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(-1.5, -48),
+          scale = 0.5,
+        }
+      },
+    }
+  })
+ },
 
   {
     type = "corpse",
@@ -736,31 +1054,64 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (4,
+    animation = make_rotated_animation_variations_from_sheet(2,
     {
       filename = "__base__/graphics/entity/pipe/remnants/pipe-remnants.png",
+      width = 62,
+      height = 62,
       line_length = 1,
-      width = 54,
-      height = 52,
       frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(1, 0),
+      direction_count = 2,
+      shift = util.by_pixel(2, 3),
       hr_version =
       {
         filename = "__base__/graphics/entity/pipe/remnants/hr-pipe-remnants.png",
+        width = 122,
+        height = 120,
         line_length = 1,
-        width = 104,
-        height = 104,
         frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(0.5, 0),
+        direction_count = 2,
+        shift = util.by_pixel(1.5, 2.5), -- -0,5
         scale = 0.5,
       },
     })
+  },
+
+  {
+    type = "corpse",
+    name = "pipe-to-ground-remnants",
+    icon = "__base__/graphics/icons/pipe-to-ground.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order = "d[remnants]-a[generic]-a[small]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/pipe-to-ground/remnants/pipe-to-ground-remnants.png",
+      width = 46,
+      height = 40,
+      line_length = 1,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(0, -3),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/pipe-to-ground/remnants/hr-pipe-to-ground-remnants.png",
+        width = 90,
+        height = 80,
+        line_length = 1,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(0.5, -3),
+        scale = 0.5,
+      },
+    }
   },
 
   {
@@ -782,23 +1133,99 @@ data:extend(
     {
       filename = "__base__/graphics/entity/stone-furnace/remnants/stone-furnace-remnants.png",
       line_length = 1,
-      width = 78,
-      height = 62,
+      width = 76,
+      height = 66,
       frame_count = 1,
       direction_count = 1,
-      shift = util.by_pixel(2, -2),
+      shift = util.by_pixel(0, 10),
       hr_version =
       {
         filename = "__base__/graphics/entity/stone-furnace/remnants/hr-stone-furnace-remnants.png",
         line_length = 1,
         width = 152,
-        height = 118,
+        height = 130,
         frame_count = 1,
         direction_count = 1,
-        shift = util.by_pixel(1.5, -1),
+        shift = util.by_pixel(0, 9.5),
         scale = 0.5,
       }
     })
+  },
+
+  {
+    type = "corpse",
+    name = "steel-furnace-remnants",
+    icon = "__base__/graphics/icons/steel-furnace.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-b[medium]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet(1,
+    {
+      filename = "__base__/graphics/entity/steel-furnace/remnants/steel-furnace-remnants.png",
+      line_length = 1,
+      width = 134,
+      height = 120,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(4, 1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/steel-furnace/remnants/hr-steel-furnace-remnants.png",
+        line_length = 1,
+        width = 268,
+        height = 238,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(4, 0.5),
+        scale = 0.5,
+      }
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "electric-furnace-remnants",
+    icon = "__base__/graphics/icons/electric-furnace.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-b[medium]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/electric-furnace/remnants/electric-furnace-remnants.png",
+      line_length = 1,
+      width = 228,
+      height = 224,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(-3, 7),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/electric-furnace/remnants/hr-electric-furnace-remnants.png",
+        line_length = 1,
+        width = 454,
+        height = 448,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(-3.25, 7.25),
+        scale = 0.5,
+      }
+    }
   },
 
   {
@@ -817,28 +1244,28 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (2,
+    animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/burner-mining-drill/remnants/burner-mining-drill-remnants.png",
       line_length = 1,
-      width = 82,
-      height = 74,
+      width = 138,
+      height = 118,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 1,
-      shift = util.by_pixel(1, 1),
+      shift = util.by_pixel(0, -4),
       hr_version =
       {
         filename = "__base__/graphics/entity/burner-mining-drill/remnants/hr-burner-mining-drill-remnants.png",
         line_length = 1,
-        width = 164,
-        height = 148,
+        width = 272,
+        height = 234,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 1,
-        shift = util.by_pixel(1, 1.5),
+        shift = util.by_pixel(-0.5, -4.5),
         scale = 0.5,
       },
     })
@@ -861,28 +1288,57 @@ data:extend(
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (3,
     {
-      filename = "__base__/graphics/entity/gun-turret/remnants/gun-turret-remnants.png",
-      line_length = 1,
-      width = 94,
-      height = 74,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(5, -1),
-      hr_version =
+      layers =
       {
-        filename = "__base__/graphics/entity/gun-turret/remnants/hr-gun-turret-remnants.png",
-        line_length = 1,
-        width = 186,
-        height = 146,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(4.5, -1),
-        scale = 0.5,
-      },
+        {
+          filename = "__base__/graphics/entity/gun-turret/remnants/gun-turret-remnants.png",
+          line_length = 1,
+          width = 126,
+          height = 122,
+          frame_count = 1,
+          variation_count = 1,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = util.by_pixel(3, -1),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/gun-turret/remnants/hr-gun-turret-remnants.png",
+            line_length = 1,
+            width = 252,
+            height = 242,
+            frame_count = 1,
+            variation_count = 1,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(3, -1.5),
+            scale = 0.5,
+          }
+        },
+        {
+          priority = "low",
+          filename = "__base__/graphics/entity/gun-turret/remnants/mask/gun-turret-remnants-mask.png",
+          width = 34,
+          height = 32,
+          frame_count = 1,
+          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          apply_runtime_tint = true,
+          direction_count = 1,
+          shift = util.by_pixel(-1, -11),
+          hr_version=
+          {
+            priority = "low",
+            filename = "__base__/graphics/entity/gun-turret/remnants/mask/hr-gun-turret-remnants-mask.png",
+            width = 68,
+            height = 64,
+            frame_count = 1,
+            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+            apply_runtime_tint = true,
+            direction_count = 1,
+            shift = util.by_pixel(-1, -11),
+            scale = 0.5,
+          }
+        }
+      }
     })
   },
 
@@ -947,24 +1403,24 @@ data:extend(
     {
       filename = "__base__/graphics/entity/steam-engine/remnants/steam-engine-remnants.png",
       line_length = 1,
-      width = 168,
-      height = 242,
+      width = 232,
+      height = 194,
       frame_count = 1,
       variation_count = 1,
       axially_symmetrical = false,
       direction_count = 4,
-      shift = util.by_pixel(1, 39),
+      shift = util.by_pixel(17, 7),
       hr_version =
       {
         filename = "__base__/graphics/entity/steam-engine/remnants/hr-steam-engine-remnants.png",
         line_length = 1,
-        width = 334,
-        height = 482,
+        width = 462,
+        height = 386,
         frame_count = 1,
         variation_count = 1,
         axially_symmetrical = false,
         direction_count = 4,
-        shift = util.by_pixel(0.5, 39),
+        shift = util.by_pixel(17, 6.5),
         scale = 0.5,
       },
     })
@@ -1014,6 +1470,48 @@ data:extend(
 
   {
     type = "corpse",
+    name = "boiler-remnants",
+    icon = "__base__/graphics/icons/boiler.png",
+    icon_size = 32,
+    flags = {"placeable-neutral", "not-on-map"},
+    selection_box = {{-1.5, -1}, {1.5, 1}},
+    tile_width = 3,
+    tile_height = 2,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/boiler/remnants/boiler-remnants.png",
+      line_length = 1,
+      width = 138,
+      height = 110,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 4,
+      shift = util.by_pixel(0, -3),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/boiler/remnants/hr-boiler-remnants.png",
+        line_length = 1,
+        width = 274,
+        height = 220,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(-0.5, -3),
+        scale = 0.5,
+      },
+    }
+  },
+
+  {
+    type = "corpse",
     name = "car-remnants",
     icon = "__base__/graphics/icons/car.png",
     icon_size = 32,
@@ -1027,27 +1525,56 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet(1,
+    animation =
     {
-      filename = "__base__/graphics/entity/car/remnants/car-remnants.png",
-      line_length = 1,
-      width = 116,
-      height = 84,
-      frame_count = 1,
-      direction_count = 1,
-      shift = util.by_pixel(8, 8),
-      hr_version =
+      layers =
       {
-        filename = "__base__/graphics/entity/car/remnants/hr-car-remnants.png",
-        line_length = 1,
-        width = 232,
-        height = 166,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(8, 7.5),
-        scale = 0.5,
+        {
+          filename = "__base__/graphics/entity/car/remnants/car-remnants.png",
+          line_length = 1,
+          width = 152,
+          height = 152,
+          frame_count = 1,
+          direction_count = 4,
+          shift = util.by_pixel(0, 6),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/car/remnants/hr-car-remnants.png",
+            line_length = 1,
+            width = 302,
+            height = 300,
+            frame_count = 1,
+            direction_count = 4,
+            shift = util.by_pixel(0, 4.5),
+            scale = 0.5,
+          }
+        },
+        {
+          priority = "low",
+          filename = "__base__/graphics/entity/car/remnants/mask/car-remnants-mask.png",
+          width = 98,
+          height = 74,
+          frame_count = 1,
+          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          apply_runtime_tint = true,
+          direction_count = 4,
+          shift = util.by_pixel(0, 5),
+          hr_version=
+          {
+            priority = "low",
+            filename = "__base__/graphics/entity/car/remnants/mask/hr-car-remnants-mask.png",
+            width = 196,
+            height = 146,
+            frame_count = 1,
+            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+            apply_runtime_tint = true,
+            direction_count = 4,
+            shift = util.by_pixel(0, 4.5),
+            scale = 0.5,
+          }
+        }
       }
-    })
+    }
   },
 
   {
@@ -1256,92 +1783,6 @@ data:extend(
         variation_count = 3
       }
     }
-  },
-
-  {
-    type = "corpse",
-    name = "medium-electric-pole-remnants",
-    icon = "__base__/graphics/icons/medium-electric-pole.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "not-on-map"},
-    subgroup="remnants",
-    order = "d[remnants]-a[generic]-a[small]",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    tile_width = 1,
-    tile_height = 1,
-    selectable_in_game = false,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (1,
-    {
-      filename = "__base__/graphics/entity/medium-electric-pole/remnants/medium-electric-pole-remnants.png",
-      line_length = 1,
-      width = 62,
-      height = 64,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(12, -9),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/medium-electric-pole/remnants/hr-medium-electric-pole-remnants.png",
-        line_length = 1,
-        width = 124,
-        height = 126,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(12, -9.5),
-        scale = 0.5,
-      },
-    })
-  },
-
-  {
-    type = "corpse",
-    name = "big-electric-pole-remnants",
-    icon = "__base__/graphics/icons/big-electric-pole.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "not-on-map"},
-    subgroup="remnants",
-    order = "d[remnants]-a[generic]-a[small]",
-    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
-    selection_box = {{-1, -1}, {1, 1}},
-    tile_width = 2,
-    tile_height = 2,
-    selectable_in_game = false,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (1,
-    {
-      filename = "__base__/graphics/entity/big-electric-pole/remnants/big-electric-pole-remnants.png",
-      line_length = 1,
-      width = 96,
-      height = 64,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(12, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/big-electric-pole/remnants/hr-big-electric-pole-remnants.png",
-        line_length = 1,
-        width = 190,
-        height = 128,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(12, 0.5),
-        scale = 0.5,
-      },
-    })
   },
 }
 )
