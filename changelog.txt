@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.71
+Version: 0.17.72
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.71
+Date: 16. 10. 2019
+  Bugfixes:
+    - Fixed a crash that would happen on loading certain saves made in previous versions. (https://forums.factorio.com/76817)
+    - Fixed entity selection could desync from mouse cursor when switching to cutscene controller in multiplayer. (https://forums.factorio.com/76398)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.70
 Date: 15. 10. 2019
