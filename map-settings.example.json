@@ -85,6 +85,7 @@
     "fwd2bwd_ratio": 5,
     "goal_pressure_ratio": 2,
     "max_steps_worked_per_tick": 100,
+    "max_work_done_per_tick": 8000,
     "use_path_cache": true,
     "short_cache_size": 5,
     "long_cache_size": 25,

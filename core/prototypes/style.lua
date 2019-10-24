@@ -5575,18 +5575,18 @@ data:extend(
       parent = "shortcut_bar_button",
       default_graphical_set =
       {
-        base = {position = {312, 760}, corner_size = 8},
+        base = {position = {312, 759}, corner_size = 8},
         shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       hovered_graphical_set =
       {
-        base = {position = {346, 760}, corner_size = 8},
+        base = {position = {346, 759}, corner_size = 8},
         shadow = offset_by_2_default_glow(default_dirt_color, 0.5),
         glow = offset_by_2_default_glow({132, 177, 198, 127}, 0.5)
       },
       clicked_graphical_set =
       {
-        base = {position = {363, 760}, corner_size = 8},
+        base = {position = {363, 759}, corner_size = 8},
         shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       }
     },

@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.73
+Version: 0.17.74
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.73
+Date: 24. 10. 2019
+  Graphics:
+    - Extended transport belt sprites a little bit to avoid rendering glitches at some zoom levels.
+  Bugfixes:
+    - Added missing max_work_done_per_tick in map-settings.example.json. (https://forums.factorio.com/76870)
+    - Fixed that accumulator settings could not be copy-pasted. (https://forums.factorio.com/76993)
+    - Fixed that generators could rotate and render incorrectly. (https://forums.factorio.com/77028)
+    - Fixed bad quest GUI in NPE. (https://forums.factorio.com/76439)
+    - Fixed a crash related to the map editor "recipe locked" setting for assembling machines. (https://forums.factorio.com/76574)
+    - Fixed that Military science pack was sorted after Chemical science pack in the Lab GUI.
+    - Fixed low quality texture compression would create major artifacts on some sprites. (https://forums.factorio.com/77123)
+    - Fixed a crash when reading storage_filter on infinity chests. (https://forums.factorio.com/77128)
+    - Fixed a crash when reading LuaEntity::tree_stage_index_max in some cases. (https://forums.factorio.com/77132)
+    - Changed blueprinting selection previews to include both tile ghosts and tiles when only tile ghost entities are being selected. (https://forums.factorio.com/75925)
+    - Fixed a crash that could happen when path_resolution_modifier was set to very low values. (https://forums.factorio.com/77001)
+  Modding:
+    - Changed input_flow_limit and output_flow_limit so 0 means 0 instead of unlimited (no value still means unlimited).
+  Scripting:
+    - Added LuaEntity::driver_is_gunner read/write.
+  Balancing:
+    - Changed: Amount of copper-cable in Introduction scenario crash site.
+    - Changed: Increased minimum size of a resource deposit to 100 in the Introduction scenario.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.72
 Date: 18. 10. 2019

@@ -660,8 +660,8 @@ local lab_inputs =
 if not data.is_demo then
   local extra_lab_inputs =
   {
-    "chemical-science-pack",
     "military-science-pack",
+    "chemical-science-pack",
     "production-science-pack",
     "utility-science-pack",
     "space-science-pack"
