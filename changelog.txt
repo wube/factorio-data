@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.74
+Version: 0.17.75
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.74
+Date: 25. 10. 2019
+  Bugfixes:
+    - Fixed crafter would not reconnect heat energy source after rotate in some cases. (https://forums.factorio.com/67803)
+    - Fixed a crash when adding science pack types to labs. (https://forums.factorio.com/77173)
+    - Fixed a crash related to text boxes and clearing them with selected text. (https://forums.factorio.com/77200)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.73
 Date: 24. 10. 2019
