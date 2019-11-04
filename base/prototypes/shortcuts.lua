@@ -10,35 +10,39 @@ data:extend(
     technology_to_unlock = "construction-robotics",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/undo-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/undo-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/undo-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/undo-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -51,27 +55,30 @@ data:extend(
     technology_to_unlock = "construction-robotics",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/copy-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/copy-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/copy-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     }
   },
   {
@@ -84,27 +91,30 @@ data:extend(
     technology_to_unlock = "construction-robotics",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/cut-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 0.5,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/cut-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/cut-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -117,27 +127,30 @@ data:extend(
     technology_to_unlock = "construction-robotics",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/paste-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/paste-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/paste-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -149,27 +162,30 @@ data:extend(
     technology_to_unlock = "construction-robotics",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/import-string-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/import-string-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/import-string-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -184,27 +200,30 @@ data:extend(
     style = "blue",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-blueprint-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-blueprint-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-blueprint-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -219,27 +238,30 @@ data:extend(
     style = "blue",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-blueprint-book-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-blueprint-book-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-blueprint-book-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -254,27 +276,30 @@ data:extend(
     style = "red",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-deconstruction-planner-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-deconstruction-planner-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-deconstruction-planner-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -289,27 +314,30 @@ data:extend(
     style = "green",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-upgrade-planner-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-upgrade-planner-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/new-upgrade-planner-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -322,35 +350,39 @@ data:extend(
     technology_to_unlock = "personal-roboport-equipment",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-personal-roboport-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-personal-roboport-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-personal-roboport-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-personal-roboport-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
   {
@@ -363,35 +395,39 @@ data:extend(
     technology_to_unlock = "exoskeleton-equipment",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-exoskeleton-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-exoskeleton-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-exoskeleton-x32-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x32-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/toggle-exoskeleton-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
   },
 

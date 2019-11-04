@@ -1,6 +1,40 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.76
+Date: ????
+  Bugfixes:
+    - Fixed a bug in NPE where Compilatron would sometimes loop around smashing things. (https://forums.factorio.com/76072)
+    - Fixed possibility of sying just before a cutscene in NPE, which would lead to a crash. (https://forums.factorio.com/77179)
+    - Fixed game crashing in NPE if it can't find anywhere to spawn a biter. (https://forums.factorio.com/77486)
+    - Fixed using dark coal icon on dark speech bubble background. (https://forums.factorio.com/75916)
+---------------------------------------------------------------------------------------------------
 Version: 0.17.75
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.75
+Date: 04. 11. 2019
+  Features:
+    - Construction robots will attempt to batch build tiles.
+  Changes:
+    - Tooltips reworked. They now have a new structure and look.
+      - Properties in tooltips have been reorganized and reworked. Common properties have been added to categories.
+      - Added more information to tooltips, for example to be able to calculate steam power and nuclear ratios.
+      - Recipe and item tooltips are now separate. Item tooltips will be shown for each product in the recipe, if relevant.
+      - Descriptions and Total Raw can be hidden using the interface setting.
+    - Reorganized the interface settings menu.
+  Bugfixes:
+    - Fixed a crash when switching between the map editor and the ghost controller type. (https://forums.factorio.com/77253)
+    - Fixed car movement animation played forwards when reversing. (https://forums.factorio.com/77158)
+    - Fixed a crash related to using LuaCustomTables incorrectly. (https://forums.factorio.com/77374)
+    - Fixed that accumulators wouldn't copy circuit signals correctly in some cases. (https://forums.factorio.com/77384)
+    - Fixed a crash related to removing all collision masks from rails. (https://forums.factorio.com/77479)
+  Modding:
+    - Added ProductPrototype::show_details_in_recipe_tooltip. It determines if a product tooltip should be shown when hovering a recipe.
+  Scripting:
+    - Added filtering support for several common Lua events.
+    - Added LuaEntity::logistic_network write for construction and logistic robots.
+    - Added "lifetime" optional entity creation parameter for speech-bubble entities.
+    - Added LuaEntityPrototype::max_distance_of_sector_revealed and max_distance_of_nearby_sector_revealed read.
+    - Changed RecipePrototype so it calculates catalyst from ingredients and products automatically if not manually defined.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.74
 Date: 25. 10. 2019
@@ -8,6 +42,7 @@ Date: 25. 10. 2019
     - Fixed crafter would not reconnect heat energy source after rotate in some cases. (https://forums.factorio.com/67803)
     - Fixed a crash when adding science pack types to labs. (https://forums.factorio.com/77173)
     - Fixed a crash related to text boxes and clearing them with selected text. (https://forums.factorio.com/77200)
+    - Fixed a crash when building with a rebound build key while the game was paused. (https://forums.factorio.com/77273)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.73
 Date: 24. 10. 2019

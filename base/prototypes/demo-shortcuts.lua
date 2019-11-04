@@ -9,27 +9,30 @@ data:extend(
     associated_control_input = "show-info",
     icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/alt-mode-x32.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x32.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/alt-mode-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     disabled_small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/alt-mode-x24-white.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     }
   },
 })

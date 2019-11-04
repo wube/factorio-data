@@ -6316,6 +6316,7 @@ data:extend(
             width = 294,
             height = 201,
             draw_as_shadow = true,
+            force_hr_shadow = true,
             shift = util.by_pixel(28.5, 19.25),
             scale = 0.5
           }

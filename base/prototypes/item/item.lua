@@ -926,7 +926,7 @@ data:extend(
     icon = "__base__/graphics/icons/heat-boiler.png",
     icon_size = 32,
     subgroup = "energy",
-    order = "f[nuclear-energy]-b[heat-exchanger]",
+    order = "f[nuclear-energy]-c[heat-exchanger]",
     place_result = "heat-exchanger",
     stack_size = 50
   },
@@ -936,7 +936,7 @@ data:extend(
     icon = "__base__/graphics/icons/steam-turbine.png",
     icon_size = 32,
     subgroup = "energy",
-    order = "b[steam-power]-c[steam-turbine]",
+    order = "f[nuclear-energy]-d[steam-turbine]",
     place_result = "steam-turbine",
     stack_size = 10
   },
@@ -946,7 +946,7 @@ data:extend(
     icon = "__base__/graphics/icons/heat-pipe.png",
     icon_size = 32,
     subgroup = "energy",
-    order = "f[nuclear-energy]-c[heat-pipe]",
+    order = "f[nuclear-energy]-b[heat-pipe]",
     place_result = "heat-pipe",
     stack_size = 50
   },

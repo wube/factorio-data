@@ -48,7 +48,7 @@ require("prototypes.trigger-target-types")
 require("prototypes.signal.signal")
 require("prototypes.entity.demo-projectiles")
 require("prototypes.entity.demo-beams")
-
+require("prototypes.utility-sprites")
 
 if not data.is_demo then
   require("prototypes.achievements")

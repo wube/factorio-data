@@ -45,6 +45,15 @@ data:extend(
     get_tree_view_tile("quest_gui_empty_status", 5, 58),
 
     -- must be 1px tall to look good with trilinear filtering
-    get_tree_view_tile("tree_view_tileset-stretchy_bit", 164, 58, 48, 1)
+    get_tree_view_tile("tree_view_tileset-stretchy_bit", 164, 58, 48, 1),
+
+    {
+      type = "sprite",
+      name = "coal-dark-background",
+      filename = "__base__/graphics/icons/mip/coal-dark-background.png",
+      width = 64,
+      height = 64,
+      scale = 0.5
+    }
   }
 )

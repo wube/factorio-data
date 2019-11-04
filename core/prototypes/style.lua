@@ -48,12 +48,6 @@ arrow_disabled_index = 1
 arrow_hovered_index = 2
 arrow_clicked_index = 3
 
-technology_description_slot_tileset =
-{
-  position = {0, 34},
-  corner_size = 1
-}
-
 function back_button_glow(glow_color)
   return
   {
@@ -634,24 +628,33 @@ data:extend(
       natural_height = 692,
       vertical_spacing = 12
     },
+    --used for the description text of an item/entity
     description_label =
     {
       type = "label_style",
       parent = "label",
-      font = "default-semibold"
+      font = "default"
     },
+    --the left side of a property: value item
+    description_property_name_label =
+    {
+      type = "label_style",
+      parent = "label",
+      font = "default-semibold",
+      font_color = bold_font_color
+    },
+    --the right side of a property: value item
     description_value_label =
     {
       type = "label_style",
       parent = "label",
-      font = "default",
-      font_color = default_light_orange_color
+      font = "default"
     },
-    description_remark_label =
+    recipe_count_label =
     {
       type = "label_style",
       parent = "label",
-      font = "default-semibold"
+      font = "default-bold"
     },
     description_title_label =
     {
@@ -687,19 +690,32 @@ data:extend(
       type = "label_style",
       parent = "description_label",
       font = "default-bold",
-      minimal_width = 100,
-      maximal_width = 350
+      minimal_width = 50,
+      maximal_width = 356
+    },
+
+    recipe_tooltip_cannot_craft_count_label =
+    {
+      type = "label_style",
+      parent = "recipe_count_label",
+      font_color = warning_red_color
+    },
+    recipe_tooltip_transitive_craft_count_label =
+    {
+      type = "label_style",
+      parent = "recipe_count_label",
+      font_color = default_orange_color
     },
     recipe_tooltip_cannot_craft_label =
     {
       type = "label_style",
-      parent = "tooltip_label",
+      parent = "description_value_label",
       font_color = warning_red_color
     },
     recipe_tooltip_transitive_craft_label =
     {
       type = "label_style",
-      parent = "tooltip_label",
+      parent = "description_value_label",
       font_color = default_orange_color
     },
     subheader_caption_label =
@@ -996,14 +1012,14 @@ data:extend(
     {
       type = "button_style",
       parent = "red_button",
-      padding = 3,
+      padding = 2,
       size = 28
     },
 
     tool_button =
     {
       type = "button_style",
-      padding = 3,
+      padding = 2,
       size = 28
     },
 
@@ -1032,14 +1048,9 @@ data:extend(
       border = border_image_set()
     },
 
-    -- it takes 0 height in the leyout and extends the graphics into top/bottom
-    -- so it is consistent with paddings of frame border
-    frame_division_fake_horizontal_line =
+    tooltip_horizontal_line =
     {
       type = "line_style",
-      height = 8,
-      top_margin = -4,
-      bottom_margin = -4,
       border =
       {
         border_width = 8,
@@ -1058,6 +1069,18 @@ data:extend(
         vertical_line = {position = {208, 40}, size = {8, 1}},
         top_end = {position = {200, 40}, size = 8},
         bottom_end = {position = {216, 40}, size = 8}
+      }
+    },
+
+    tooltip_category_line =
+    {
+      type = "line_style",
+      border =
+      {
+        border_width = 8,
+        left_end = {position = {184, 40}, size = 8},
+        horizontal_line = {position = {176, 40}, size = {1, 8}},
+        right_end = {position = {192, 40}, size = 8}
       }
     },
 
@@ -1294,6 +1317,12 @@ data:extend(
       font_color = {0.0, 0.0, 0.0},
       horizontally_squashable = "on",
       single_line = false
+    },
+    tooltip_heading_label_category =
+    {
+      type = "label_style",
+      font = "default-bold",
+      font_color = {1, 0.8275, 0.29}
     },
 
     switch =
@@ -2435,14 +2464,15 @@ data:extend(
       padding = 0
     },
 
-    technology_description_slot =
+    transparent_slot =
     {
       type = "button_style",
       parent = "slot_button",
       size = 32,
-      default_graphical_set = technology_description_slot_tileset,
-      clicked_graphical_set = technology_description_slot_tileset,
-      hovered_graphical_set = technology_description_slot_tileset,
+      padding = 0,
+      default_graphical_set = {},
+      clicked_graphical_set = {},
+      hovered_graphical_set = {},
       draw_shadow_under_picture = true
     },
 
@@ -2913,11 +2943,13 @@ data:extend(
       },
       icon =
       {
-        filename = "__core__/graphics/icons/dropdown.png",
+        filename = "__core__/graphics/icons/mip/dropdown.png",
         priority = "extra-high-no-scale",
         size = 32,
         scale = 0.5,
-        flags = {"icon", "no-crop"}
+        --flags = {"icon", "no-crop"},
+        flags = {"gui-icon"},
+        mipmap_count = 2,
       },
       list_box_style =
       {
@@ -3642,11 +3674,6 @@ data:extend(
     {
       type = "vertical_flow_style",
       vertical_spacing = 0
-    },
-    description_vertical_flow =
-    {
-      type = "vertical_flow_style",
-      vertical_spacing = 2
     },
     mod_info_vertical_flow =
     {
@@ -5054,12 +5081,13 @@ data:extend(
       type = "frame_style",
       graphical_set =
       {
-        filename = "__core__/graphics/gui.png",
-        position = {11, 3},
-        size = 1,
-        scale = 1,
-        --background_blur_sigma = 5
+        base = {position = {403, 0}, corner_size = 8, opacity = 0.88, background_blur_sigma = 4},
+        shadow = default_shadow
       },
+      top_padding = 0,
+      bottom_padding = 0,
+      left_padding = 4,
+      right_padding = 4,
       vertical_flow_style =
       {
         type = "vertical_flow_style",
@@ -5069,8 +5097,45 @@ data:extend(
     tooltip_generated_from_description_frame =
     {
       type = "frame_style",
-      parent = "tooltip_frame",
-      maximal_width = 350
+      padding = 0,
+      title_bottom_padding = 0,
+      graphical_set = { shadow = default_shadow },
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        horizontal_spacing = 0
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      },
+      maximal_width = 356
+    },
+    tooltip_generated_from_description_blueprint_frame =
+    {
+      type = "frame_style",
+      parent = "tooltip_generated_from_description_frame",
+      maximal_width = 600,
+    },
+
+    --used by tooltips that show multiple tooltips at the same time(e.g. the recipe tooltip)
+    multi_tooltip_invisible_frame =
+    {
+      type = "frame_style",
+      padding = 0,
+      title_bottom_padding = 0,
+      graphical_set = {},
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        horizontal_spacing = 0
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 4
+      },
     },
     naked_frame =
     {
@@ -5169,18 +5234,15 @@ data:extend(
     entity_info_frame =
     {
       type = "frame_style",
-      maximal_width = 400
+      parent = "tooltip_generated_from_description_frame",
+      maximal_width = 356
     },
 
     entity_info_frame_on_cursor =
     {
       type = "frame_style",
-      maximal_width = 400,
-      graphical_set =
-      {
-        base =  { position = {403, 0}, corner_size = 8, opacity = 0.88, background_blur_sigma = 4},
-        shadow = default_shadow
-      },
+      parent = "tooltip_generated_from_description_frame",
+      maximal_width = 356
     },
 
     minimap_frame =
@@ -5315,22 +5377,6 @@ data:extend(
       minimal_width = 468
     },
 
-    modern_tooltip_frame =
-    {
-      type = "frame_style",
-      maximal_width = 380,
-      padding = 0,
-      graphical_set =
-      {
-        shadow = default_shadow
-      },
-      vertical_flow_style =
-      {
-        type = "vertical_flow_style",
-        vertical_spacing = 0
-      }
-    },
-
     tooltip_title_frame_light =
     {
       type = "frame_style",
@@ -5339,18 +5385,40 @@ data:extend(
       top_padding = 0,
       bottom_padding = 0,
       left_padding = 4,
-      right_padding = 4
+      right_padding = 4,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      }
     },
 
     tooltip_panel_background =
     {
       type = "frame_style",
       horizontally_stretchable = "on",
-      graphical_set = {position = {386, 0}, corner_size = 8, opacity = 0.88, background_blur_sigma = 4},
+      graphical_set = {position = {403, 0}, corner_size = 8, opacity = 0.88, background_blur_sigma = 4},
       top_padding = 0,
       bottom_padding = 0,
       left_padding = 4,
-      right_padding = 4
+      right_padding = 4,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      }
+    },
+
+    tooltip_panel_background_category =
+    {
+      type = "frame_style",
+      horizontally_stretchable = "on",
+      right_padding = 4,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      }
     },
 
     quick_bar_slot_table =
@@ -7165,6 +7233,13 @@ data:extend(
       font = "default",
       font_color = {128, 206, 240},
       single_line = false
+    },
+    --style to use on all input shortcuts
+    control_input_shortcut_label =
+    {
+      type = "label_style",
+      font = "default-semibold",
+      font_color = {128, 206, 240},
     },
   }
 }

@@ -1715,7 +1715,8 @@ data:extend(
           {
             {
               type = "create-sticker",
-              sticker = "fire-sticker"
+              sticker = "fire-sticker",
+              show_in_tooltip = true
             },
             {
               type = "damage",

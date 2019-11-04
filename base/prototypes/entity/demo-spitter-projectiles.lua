@@ -93,7 +93,8 @@ function acid_stream(data)
             {
               type = "create-fire",
               entity_name = data.splash_fire_name,
-              tile_collision_mask = { "water-tile" }
+              tile_collision_mask = { "water-tile" },
+              show_in_tooltip = true
             },
             {
               type = "create-entity",
@@ -262,7 +263,8 @@ function acid_splash_fire(data)
         {
           {
             type = "create-sticker",
-            sticker = data.sticker_name
+            sticker = data.sticker_name,
+            show_in_tooltip = true
           },
           {
             type = "damage",

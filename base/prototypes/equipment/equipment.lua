@@ -118,8 +118,6 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "20MJ",
-      input_flow_limit = "200MW",
-      output_flow_limit = "200MW",
       usage_priority = "tertiary"
     },
     categories = {"armor"}
@@ -144,8 +142,6 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "100MJ",
-      input_flow_limit = "1GW",
-      output_flow_limit = "1GW",
       usage_priority = "tertiary"
     },
     categories = {"armor"}

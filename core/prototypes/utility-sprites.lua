@@ -58,72 +58,246 @@ data:extend(
 {
   {
     type = "sprite",
+    name = "tooltip-category-electricity",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-electricity.png",
+    priority = "extra-high-no-scale",
+    width = 32,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-equipment-grid-electricity",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-equipment-grid-electricity.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-equipment-grid",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-equipment-grid.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-placed-in-equipment-grid",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-equipment-grid.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-turret",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-turret.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-thrown",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-thrown.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-effect",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-effect.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-vehicle",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-vehicle.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-vehicle-weapons",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-vehicle-weapons.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-heat",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-heat.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-train",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-train.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-debug",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-debug.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-consumes",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-consumes.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-generates",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-generates.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
     name = "info",
-    filename = "__core__/graphics/icons/info-blue.png",
+    filename = "__core__/graphics/icons/mip/info-blue.png",
     priority = "extra-high-no-scale",
     width = 16,
     height = 40,
-    flags = {"no-crop", "trilinear-filtering"},
+    --flags = {"no-crop", "trilinear-filtering"},
+    flags = {"gui-icon"},
+    mipmap_count = 2,
     scale = 0.5
   },
   {
     type = "sprite",
     name = "info_no_border",
-    filename = "__core__/graphics/icons/info-blue-no-border.png",
+    filename = "__core__/graphics/icons/mip/info-blue-no-border.png",
     priority = "extra-high-no-scale",
     width = 16,
     height = 16,
-    flags = {"no-crop", "trilinear-filtering"},
+    flags = {"gui-icon"},
+    mipmap_count = 2,
     scale = 0.5
   },
   {
     type = "sprite",
     name = "restart_required",
-    filename = "__core__/graphics/icons/needs-restart.png",
+    filename = "__core__/graphics/icons/mip/needs-restart.png",
     priority = "extra-high-no-scale",
     width = 16,
     height = 40,
-    flags = {"no-crop"},
+    flags = {"gui-icon"},
+    mipmap_count = 2,
     scale = 0.5
   },
   {
     type = "sprite",
     name = "developer",
-    filename = "__core__/graphics/icons/developer.png",
+    filename = "__core__/graphics/icons/mip/developer.png",
     priority = "extra-high-no-scale",
     width = 16,
     height = 40,
-    flags = {"no-crop"},
+    flags = {"gui-icon"},
+    mipmap_count = 2,
     scale = 0.5
   },
   {
     type = "sprite",
     name = "quantity-time",
-    filename = "__core__/graphics/icons/quantity-time.png",
+    filename = "__core__/graphics/icons/mip/quantity-time.png",
     priority = "extra-high-no-scale",
     width = 28,
     height = 40,
-    flags = {"no-crop"},
+    flags = {"gui-icon"},
+    mipmap_count = 2,
     scale = 0.5
   },
   {
     type = "sprite",
     name = "quantity-multiplier",
-    filename = "__core__/graphics/icons/quantity-multiplier.png",
+    filename = "__core__/graphics/icons/mip/quantity-multiplier.png",
     priority = "extra-high-no-scale",
     width = 20,
     height = 40,
-    flags = {"no-crop"},
+    flags = {"gui-icon"},
+    mipmap_count =2,
     scale = 0.5
   },
+  -- {
+    -- type = "sprite",
+    -- name = "quantity-multiplier",
+    -- filename = "__core__/graphics/icons/mip/quantity-multiplier-red.png",
+    -- priority = "extra-high-no-scale",
+    -- width = 20,
+    -- height = 40,
+    -- flags = {"gui-icon"},
+    -- mipmap_count =2,
+    -- scale = 0.5
+  -- },
   {
     type = "sprite",
     name = "infinity",
-    filename = "__core__/graphics/icons/infinity.png",
+    filename = "__core__/graphics/icons/mip/infinity.png",
     priority = "extra-high-no-scale",
     width = 24,
     height = 32,
-    flags = {"no-crop", "icon"},
+    --flags = {"no-crop", "icon"},
+    flags = {"gui-icon"},
+    mipmap_count = 2,
     scale = 0.5
   },
   {
@@ -230,99 +404,142 @@ data:extend(
     },
     play =
     {
-      filename = "__core__/graphics/icons/play.png",
+      filename = "__core__/graphics/icons/mip/play.png",
       priority = "medium",
       width = 32,
       height = 32,
-      flags = {"icon"}
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     pause =
     {
-      filename = "__core__/graphics/icons/pause.png",
-      priority = "medium",
-      width = 128,
-      height = 128,
-      flags = {"icon"}
-    },
-    stop =
-    {
-      filename = "__core__/graphics/icons/stop.png",
+      filename = "__core__/graphics/icons/mip/pause.png",
       priority = "medium",
       width = 32,
       height = 32,
-      flags = {"icon"}
+      mipmap_count =2,
+      flags = {"gui-icon"}
+    },
+    stop =
+    {
+      filename = "__core__/graphics/icons/mip/stop.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     speed_down =
     {
-      filename = "__core__/graphics/speed-down.png",
+      filename = "__core__/graphics/icons/mip/speed-down.png",
       priority = "medium",
-      width = 128,
-      height = 128,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     speed_up =
     {
-      filename = "__core__/graphics/speed-up.png",
+      filename = "__core__/graphics/icons/mip/speed-up.png",
       priority = "medium",
-      width = 128,
-      height = 128,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     editor_speed_down =
     {
-      filename = "__core__/graphics/editor-speed-down-icon.png",
+      filename = "__core__/graphics/icons/mip/speed-down.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     editor_pause =
     {
-      filename = "__core__/graphics/editor-pause-icon.png",
+      filename = "__core__/graphics/icons/mip/pause.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"},
     },
     editor_play =
     {
-      filename = "__core__/graphics/editor-play-icon.png",
+      filename = "__core__/graphics/icons/mip/play.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale= 0.5
     },
     editor_speed_up =
     {
-      filename = "__core__/graphics/editor-speed-up-icon.png",
+      filename = "__core__/graphics/icons/mip/speed-up.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     tick_once =
     {
-      filename = "__core__/graphics/editor-tick-once-icon.png",
+      filename = "__core__/graphics/icons/mip/editor-tick-once-icon.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     tick_sixty =
     {
-      filename = "__core__/graphics/editor-tick-sixty-icon.png",
+      filename = "__core__/graphics/icons/mip/editor-tick-sixty-icon.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     tick_custom =
     {
-      filename = "__core__/graphics/editor-tick-custom-icon.png",
+      filename = "__core__/graphics/icons/mip/editor-tick-custom-icon.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
+    },
+    variations_tool_icon =
+    {
+      filename = "__core__/graphics/icons/mip/variations.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
+    },
+    lua_snippet_tool_icon =
+    {
+      filename = "__core__/graphics/icons/mip/run-snippet-tool.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     clear =
     {
@@ -334,11 +551,13 @@ data:extend(
     },
     search_icon =
     {
-      filename = "__core__/graphics/icons/search.png",
+      filename = "__core__/graphics/icons/mip/search.png",
       priority = "medium",
       width = 32,
       height = 32,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     too_far =
     {
@@ -366,7 +585,7 @@ data:extend(
     },
     electricity_icon =
     {
-      filename = "__core__/graphics/electricity-icon-red.png",
+      filename = "__core__/graphics/icons/alerts/electricity-icon-red.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -374,7 +593,7 @@ data:extend(
     },
     fuel_icon =
     {
-      filename = "__core__/graphics/fuel-icon-red.png",
+      filename = "__core__/graphics/icons/alerts/fuel-icon-red.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -382,7 +601,7 @@ data:extend(
     },
     ammo_icon =
     {
-      filename = "__core__/graphics/ammo-icon-red.png",
+      filename = "__core__/graphics/icons/alerts/ammo-icon-red.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -390,7 +609,7 @@ data:extend(
     },
     fluid_icon =
     {
-      filename = "__core__/graphics/fluid-icon-red.png",
+      filename = "__core__/graphics/icons/alerts/fluid-icon-red.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -398,7 +617,7 @@ data:extend(
     },
     warning_icon =
     {
-      filename = "__core__/graphics/warning-icon.png",
+      filename = "__core__/graphics/icons/alerts/warning-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -406,7 +625,7 @@ data:extend(
     },
     too_far_from_roboport_icon =
     {
-      filename = "__core__/graphics/too-far-from-roboport-icon.png",
+      filename = "__core__/graphics/icons/alerts/too-far-from-roboport-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -414,7 +633,7 @@ data:extend(
     },
     danger_icon =
     {
-      filename = "__core__/graphics/danger-icon.png",
+      filename = "__core__/graphics/icons/alerts/danger-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -422,7 +641,7 @@ data:extend(
     },
     destroyed_icon =
     {
-      filename = "__core__/graphics/destroyed-icon.png",
+      filename = "__core__/graphics/icons/alerts/destroyed-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -430,7 +649,7 @@ data:extend(
     },
     recharge_icon =
     {
-      filename = "__core__/graphics/recharge-icon.png",
+      filename = "__core__/graphics/icons/alerts/recharge-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -446,7 +665,7 @@ data:extend(
     },
     not_enough_repair_packs_icon =
     {
-      filename = "__core__/graphics/not-enough-repair-packs-icon.png",
+      filename = "__core__/graphics/icons/alerts/not-enough-repair-packs-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -454,7 +673,7 @@ data:extend(
     },
     not_enough_construction_robots_icon =
     {
-      filename = "__core__/graphics/not-enough-construction-robots-icon.png",
+      filename = "__core__/graphics/icons/alerts/not-enough-construction-robots-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -462,7 +681,7 @@ data:extend(
     },
     no_building_material_icon =
     {
-      filename = "__core__/graphics/no-building-material-icon.png",
+      filename = "__core__/graphics/icons/alerts/no-building-material-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -470,7 +689,7 @@ data:extend(
     },
     no_storage_space_icon =
     {
-      filename = "__core__/graphics/no-storage-space-icon.png",
+      filename = "__core__/graphics/icons/alerts/no-storage-space-icon.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -478,7 +697,7 @@ data:extend(
     },
     electricity_icon_unplugged =
     {
-      filename = "__core__/graphics/electricity-icon-unplugged.png",
+      filename = "__core__/graphics/icons/alerts/electricity-icon-unplugged.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
@@ -891,11 +1110,13 @@ data:extend(
     },
     confirm_slot =
     {
-      filename = "__core__/graphics/confirm.png",
+      filename = "__core__/graphics/icons/mip/confirm.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     export_slot =
     {
@@ -915,11 +1136,13 @@ data:extend(
     },
     tile_editor_icon =
     {
-      filename = "__core__/graphics/tile-editor-icon.png",
+      filename = "__core__/graphics/icons/category/tiles-editor.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     clone_editor_icon =
     {
@@ -931,27 +1154,33 @@ data:extend(
     },
     scripting_editor_icon=
     {
-      filename = "__core__/graphics/scripting-editor-icon.png",
+      filename = "__core__/graphics/icons/category/scripting-editor.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     decorative_editor_icon =
     {
-      filename = "__core__/graphics/decorative-editor-icon.png",
+      filename = "__core__/graphics/icons/category/decorative-editor.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     resource_editor_icon =
     {
-      filename = "__core__/graphics/resource-editor-icon.png",
+      filename = "__core__/graphics/icons/category/resource-editor.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     entity_editor_icon =
     {
@@ -979,7 +1208,7 @@ data:extend(
     },
     none_editor_icon =
     {
-      filename = "__core__/graphics/none-editor-icon.png",
+      filename = "__core__/graphics/icons/mip/none-editor-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
@@ -995,11 +1224,13 @@ data:extend(
     },
     surface_editor_icon =
     {
-      filename = "__core__/graphics/surface-editor-icon.png",
+      filename = "__core__/graphics/icons/category/surface-editor.png",
       priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     time_editor_icon =
     {
@@ -1011,59 +1242,73 @@ data:extend(
     },
     cliff_editor_icon =
     {
-      filename = "__core__/graphics/cliff-editor-icon.png",
+      filename = "__core__/graphics/icons/category/cliff-editor.png",
       priority = "medium",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 2
     },
     paint_bucket_icon =
     {
-      filename = "__core__/graphics/paint-bucket-icon.png",
+      filename = "__core__/graphics/icons/mip/paint-bucket-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     brush_icon =
     {
-      filename = "__core__/graphics/brush-icon.png",
+      filename = "__core__/graphics/icons/mip/brush-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     spray_icon =
     {
-      filename = "__core__/graphics/spray-icon.png",
+      filename = "__core__/graphics/icons/mip/spray-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     cursor_icon =
     {
-      filename = "__core__/graphics/cursor-icon.png",
+      filename = "__core__/graphics/icons/mip/cursor-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     area_icon =
     {
-      filename = "__core__/graphics/area-icon.png",
+      filename = "__core__/graphics/icons/mip/select-area.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     line_icon =
     {
-      filename = "__core__/graphics/line-icon.png",
+      filename = "__core__/graphics/icons/mip/line-icon.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      mipmap_count = 3,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     editor_selection =
     {
@@ -1075,19 +1320,23 @@ data:extend(
     },
     brush_square_shape =
     {
-      filename = "__core__/graphics/brush-square-shape.png",
+      filename = "__core__/graphics/icons/mip/brush-square-shape.png",
       priority = "medium",
       width = 32,
       height = 32,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     brush_circle_shape =
     {
-      filename = "__core__/graphics/brush-circle-shape.png",
+      filename = "__core__/graphics/icons/mip/brush-circle-shape.png",
       priority = "medium",
       width = 32,
       height = 32,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"},
+      scale = 0.5
     },
     player_force_icon =
     {
@@ -1867,234 +2116,263 @@ data:extend(
 
     expand =
     {
-      filename = "__core__/graphics/icons/expand.png",
+      filename = "__core__/graphics/icons/mip/expand.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
 
     expand_dark =
     {
-      filename = "__core__/graphics/icons/expand-dark.png",
+      filename = "__core__/graphics/icons/mip/expand-dark.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
 
     collapse =
     {
-      filename = "__core__/graphics/icons/collapse.png",
+      filename = "__core__/graphics/icons/mip/collapse.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
 
     collapse_dark =
     {
-      filename = "__core__/graphics/icons/collapse-dark.png",
+      filename = "__core__/graphics/icons/mip/collapse-dark.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
 
     ----- new icons
 
     close_white =
     {
-      filename = "__core__/graphics/icons/close-white.png",
+      filename = "__core__/graphics/icons/mip/close-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     close_black =
     {
-      filename = "__core__/graphics/icons/close-black.png",
+      filename = "__core__/graphics/icons/mip/close-black.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
     },
     close_fat =
     {
-      filename = "__core__/graphics/icons/close-fat.png",
+      filename = "__core__/graphics/icons/mip/close-fat.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     dropdown =
     {
-      filename = "__core__/graphics/icons/dropdown.png",
+      filename = "__core__/graphics/icons/mip/dropdown.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     expand_dots =
     {
-      filename = "__core__/graphics/icons/open-panel-options-8x16.png",
+      filename = "__core__/graphics/icons/mip/open-panel-options-8x16.png",
       priority = "extra-high-no-scale",
       width = 8,
       height = 16,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     expand_dots_white =
     {
-      filename = "__core__/graphics/icons/open-panel-options-8x16-white.png",
+      filename = "__core__/graphics/icons/mip/open-panel-options-8x16-white.png",
       priority = "extra-high-no-scale",
       width = 8,
       height = 16,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     export =
     {
-      filename = "__core__/graphics/icons/export.png",
+      filename = "__core__/graphics/icons/mip/export.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     import =
     {
-      filename = "__core__/graphics/icons/import.png",
+      filename = "__core__/graphics/icons/mip/import.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     map_exchange_string =
     {
-      filename = "__core__/graphics/icons/map-exchange-string.png",
+      filename = "__core__/graphics/icons/mip/map-exchange-string.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 1,
-      flags = {"icon"}
+      flags = {"gui-icon"},
+      mipmap_count = 2,
+      scale = 0.5
     },
     preset =
     {
-      filename = "__core__/graphics/icons/preset.png",
+      filename = "__core__/graphics/icons/mip/preset.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     refresh =
     {
-      filename = "__core__/graphics/icons/refresh.png",
+      filename = "__core__/graphics/icons/mip/refresh.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     reset =
     {
-      filename = "__core__/graphics/icons/reset.png",
+      filename = "__core__/graphics/icons/mip/reset.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     reset_white =
     {
-      filename = "__core__/graphics/icons/reset-white.png",
+      filename = "__core__/graphics/icons/mip/reset-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     shuffle =
     {
-      filename = "__core__/graphics/icons/shuffle.png",
+      filename = "__core__/graphics/icons/mip/shuffle.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     sync_mods =
     {
-      filename = "__core__/graphics/icons/sync-mods.png",
+      filename = "__core__/graphics/icons/mip/sync-mods.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      flags = {"gui-icon"},
+      mipmap_count = 2,
+      scale = 0.5
     },
     trash =
     {
-      filename = "__core__/graphics/icons/trash.png",
+      filename = "__core__/graphics/icons/mip/trash.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      flags = {"gui-icon"},
+      mipmap_count = 2,
+      scale = 0.5
     },
     trash_white =
     {
-      filename = "__core__/graphics/icons/trash-white.png",
+      filename = "__core__/graphics/icons/mip/trash-white.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     warning =
     {
-      filename = "__core__/graphics/icons/warning.png",
+      filename = "__core__/graphics/icons/mip/warning.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     color_picker =
     {
-      filename = "__core__/graphics/icons/color-picker.png",
+      filename = "__core__/graphics/icons/mip/color-picker.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     map =
     {
-      filename = "__core__/graphics/icons/map.png",
+      filename = "__core__/graphics/icons/mip/map.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count =2,
+      flags = {"gui-icon"}
     },
     center =
     {
-      filename = "__core__/graphics/icons/center.png",
+      filename = "__core__/graphics/icons/mip/center.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     station_name =
     {
-      filename = "__core__/graphics/icons/station-name.png",
+      filename = "__core__/graphics/icons/mip/station-name.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     not_available =
     {
-      filename = "__core__/graphics/icons/not-available.png",
+      filename = "__core__/graphics/icons/mip/not-available.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
-      flags = {"icon"}
+      scale = 0.5,
+      mipmap_count =2,
+      flags = {"gui-icon"}
     },
     mod_dependency_arrow =
     {
-      filename = "__core__/graphics/icons/go-to-minibutton-arrow.png",
+      filename = "__core__/graphics/icons/mip/go-to-minibutton-arrow.png",
       priority = "extra-high-no-scale",
       size = 16,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     missing_mod_icon =
     {
@@ -2105,45 +2383,51 @@ data:extend(
     },
     warning_white =
     {
-      filename = "__core__/graphics/icons/warning-white.png",
+      filename = "__core__/graphics/icons/mip/warning-white.png",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     check_mark_white =
     {
-      filename = "__core__/graphics/icons/check-mark-white.png",
+      filename = "__core__/graphics/icons/mip/check-mark-white.png",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"gui-icon"},
+      mipmap_count = 2
     },
     downloading =
     {
-      filename = "__core__/graphics/icons/downloading.png",
+      filename = "__core__/graphics/icons/mip/downloading.png",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     downloading_white =
     {
-      filename = "__core__/graphics/icons/downloading-white.png",
+      filename = "__core__/graphics/icons/mip/downloading-white.png",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     downloaded =
     {
-      filename = "__core__/graphics/icons/downloaded.png",
+      filename = "__core__/graphics/icons/mip/downloaded.png",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     downloaded_white =
     {
-      filename = "__core__/graphics/icons/downloaded-white.png",
+      filename = "__core__/graphics/icons/mip/downloaded-white.png",
       size = 32,
       scale = 0.5,
-      flags = {"icon"}
+      mipmap_count = 2,
+      flags = {"gui-icon"}
     }
   }
 })

@@ -81,6 +81,32 @@ return
           y = variation * 234 * 2,
           scale = 0.5
         }
+      },
+      {
+        filename = "__base__/graphics/entity/spawner/spawner-idle-shadow.png",
+        draw_as_shadow = true,
+        width = 232,
+        height = 176,
+        frame_count = 8,
+        animation_speed = 0.18,
+        run_mode = "forward-then-backward",
+        shift = util.by_pixel(36, -2),
+        line_length = 4,
+        y = variation * 176 * 2,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/spawner/hr-spawner-idle-shadow.png",
+          draw_as_shadow = true,
+          width = 464,
+          height = 406,
+          frame_count = 8,
+          animation_speed = 0.18,
+          run_mode = "forward-then-backward",
+          shift = util.by_pixel(36, 10),
+          line_length = 4,
+          y = variation * 406 * 2,
+          scale = 0.5
+        }
       }
     }
   }
@@ -136,6 +162,30 @@ return
           line_length = 8,
           tint = tint,
           y = variation * 234,
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/entity/spawner/spawner-die-shadow.png",
+        draw_as_shadow = true,
+        width = 232,
+        height = 176,
+        frame_count = 8,
+        direction_count = 1,
+        shift = util.by_pixel(36, -2),
+        line_length = 8,
+        y = variation * 176,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/spawner/hr-spawner-die-shadow.png",
+          draw_as_shadow = true,
+          width = 466,
+          height = 406,
+          frame_count = 8,
+          direction_count = 1,
+          shift = util.by_pixel(36, 10),
+          line_length = 8,
+          y = variation * 406,
           scale = 0.5
         }
       }
