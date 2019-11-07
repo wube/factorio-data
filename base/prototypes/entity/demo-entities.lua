@@ -4344,7 +4344,7 @@ data:extend(
     name = "item-request-proxy",
     picture =
     {
-      filename = "__core__/graphics/logistic-delivery.png",
+      filename = "__core__/graphics/icons/alerts/logistic-delivery.png",
       flags = { "icon" },
       priority = "extra-high",
       width = 64,

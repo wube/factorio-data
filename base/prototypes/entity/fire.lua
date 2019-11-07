@@ -1056,7 +1056,7 @@ data:extend({
     enough_fuel_indicator_picture = fireutil.foreach(util.table.deepcopy(indicator_pictures), function (tab) tab.x = tab.width end),
     out_of_ammo_alert_icon =
     {
-      filename = "__core__/graphics/fuel-icon-red.png",
+      filename = "__core__/graphics/icons/alerts/fuel-icon-red.png",
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,

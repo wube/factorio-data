@@ -1,14 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.76
+Version: 0.17.77
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.76
+Date: 07. 11. 2019
+  Changes:
+    - Energy consumption is no longer shown in the tooltip for void energy sources.
   Bugfixes:
     - Fixed a bug in NPE where Compilatron would sometimes loop around smashing things. (https://forums.factorio.com/76072)
-    - Fixed possibility of sying just before a cutscene in NPE, which would lead to a crash. (https://forums.factorio.com/77179)
+    - Fixed possibility of dying just before a cutscene in NPE, which would lead to a crash. (https://forums.factorio.com/77179)
     - Fixed game crashing in NPE if it can't find anywhere to spawn a biter. (https://forums.factorio.com/77486)
     - Fixed using dark coal icon on dark speech bubble background. (https://forums.factorio.com/75916)
----------------------------------------------------------------------------------------------------
-Version: 0.17.75
-Date: ????
+    - Fixed a crash when loading modded saves without the mod when you had entities marked to be upgraded to the now removed modded items but the entity is still valid.
+    - Fixed incorrect string for "Fuel Pollution" in tooltip. (https://forums.factorio.com/77555)
+    - Fixed tooltip not showing max consumption correctly when using modules. (https://forums.factorio.com/77570)
+    - Fixed battery equipment and accumulator tooltips showing wrong input flow limit when it's unlimited. (https://forums.factorio.com/77570)
+    - Fixed item tooltips not showing custom_description. (https://forums.factorio.com/77569)
+    - Fixed some item tooltips having incorrect title or description.
+    - Fixed that hovering over a logistic request didn't highlight inventory items. (https://forums.factorio.com/77565)
+    - Fixed pump tooltip not showing pumped amount when pumping from a fluid wagon. (https://forums.factorio.com/77656)
+    - Show the products of a recipe more clearly when the product has a probability and/or an interval defined. (https://forums.factorio.com/77468)
+    - Fixed a crash when restarting the game after it failed to load modded fluidboxes. (https://forums.factorio.com/77617)
+    - Fixed tech tree quantity icon being shown incorrectly. (https://forums.factorio.com/77674)
+    - Fixed an exploit related to upgrading ghosts while a robot is trying to work on them. (https://forums.factorio.com/77665)
+    - Fixed target leading logic would cause turret to shoot outside of its range sometimes. (https://forums.factorio.com/77071)
+  Modding:
+    - Added AmmoTurretPrototype::entity_info_icon_shift.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.75
 Date: 04. 11. 2019
