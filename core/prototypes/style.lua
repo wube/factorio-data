@@ -1878,7 +1878,18 @@ data:extend(
         left_bottom = {position = {416, 136}, size = {16, 16}},
         bottom = {position = {432, 136}, size = {1, 16}},
         right_bottom = {position = {433, 136}, size = {16, 16}}
-      }
+      },
+
+      progress_bar_background = {position = {296, 39}, corner_size = 4},
+      progress_bar = {position = {305, 39}, corner_size = 4},
+      progress_bar_shadow =
+      {
+        left = {position = {456, 152}, size = {16, 1}},
+        center = {position = {472, 152}, size = {1, 1}},
+        right = {position = {473, 152}, size = {16, 1}},
+      },
+      progress_bar_height = 4,
+      progress_bar_color = {g = 1},
     },
 
     disabled_technology_slot =
@@ -5365,6 +5376,12 @@ data:extend(
     {
       type = "label_style",
       maximal_width = 360
+    },
+
+    saved_research_label =
+    {
+      type = "label_style",
+      left_padding = 4,
     },
 
     --this will keep the health/shield/mining bars in the correct place

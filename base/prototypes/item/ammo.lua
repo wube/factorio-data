@@ -205,6 +205,7 @@ data:extend(
             type = "projectile",
             projectile = "piercing-shotgun-pellet",
             starting_speed = 1,
+            starting_speed_deviation = 0.1,
             direction_deviation = 0.3,
             range_deviation = 0.3,
             max_range = 15

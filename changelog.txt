@@ -1,6 +1,40 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.77
+Version: 0.17.78
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.77
+Date: 14. 11. 2019
+  Changes:
+    - When a team loses in PvP, all their characters will die.
+    - Technology GUI shows saved progress of partially-researched technologies.
+  Bugfixes:
+    - Fixed a crash when when loading modded saves that had construction robots working on modded entities.
+    - Fixed that 'corpses' and 'dying_explosion' wouldn't be created on the correct force. (https://forums.factorio.com/77685)
+    - Fixed that LuaEntity::get_fuel_inventory() didn't work on burner pumps. (https://forums.factorio.com/77535)
+    - Fixed ammo turret tooltip not showing the damage bonus correctly. (https://forums.factorio.com/77556)
+    - Fixed fluid name and amount not being shown when the tooltip is on the side. (https://forums.factorio.com/77722)
+    - Show how module energy consumption is applied more clearly in the tooltips. (https://forums.factorio.com/77703)
+    - Fixed several issues related to modded reactors set to use electric energy. (https://forums.factorio.com/77244)
+    - Fixed spitters were not able to destroy trees and rocks. (https://forums.factorio.com/77715)
+    - Fixed that shift+click recipes in cheat mode wasn't able to handle recipes that included fluids but still only produced 1 item result. (https://forums.factorio.com/77752)
+    - Fixed a difference in map editor paused vs unpaused game ticking related to enabled/disabled train stops. (https://forums.factorio.com/77762)
+    - Fixed that produce item per hour achievements could not be progressed. (https://forums.factorio.com/77661)
+    - Fixed an issue with reading localised strings in Lua. (https://forums.factorio.com/77769)
+    - Fixed that right clicking to add 1 item to assembling machines had no limit. (https://forums.factorio.com/73698)
+    - Fixed that teleporting players/cars between surfaces would invalidate lua references to them.
+    - Fixed a crash with trains that had wheels.direction_count = 0. (https://forums.factorio.com/77655)
+    - Fixed statistics not counting items correctly on large intervals when a large number of items are produced/consumed. (https://forums.factorio.com/77355)
+    - Fixed Beacon ghost tooltip missing some information. (https://forums.factorio.com/77780)
+    - Fixed ghost tooltips not showing correct max energy consumption.
+    - Fixed tooltips for tile creating items showing wrong title. (https://forums.factorio.com/77920)
+    - Fixed blueprint strings not saving empty values for some circuit network settings.  (https://forums.factorio.com/77303)
+    - Fixed PvP config import would always append the default item and equipment lists. (https://forums.factorio.com/77925)
+    - Fixed that creating infinity chests with logistic_mode set would ignore request filters. (https://forums.factorio.com/77957)
+  Scripting:
+    - Added LuaEntity::command, LuaEntity::distraction_command, LuaUnitGroup::command, and LuaUnitGroup::distraction_command reads.
+    - Added LuaUnitGroup::is_script_driven read.
+  Modding:
+    - Changed RollingStockPrototype::wheels to be optional.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.76
 Date: 07. 11. 2019

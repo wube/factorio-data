@@ -211,6 +211,7 @@ function acid_splash_fire(data)
   return{
     type = "fire",
     name = data.name,
+    localised_name = {"entity-name.acid-splash"},
     flags = {"placeable-off-grid", "not-on-map"},
     damage_per_tick = {amount = 0 / 60, type = "acid"},
     maximum_damage_multiplier = 3,

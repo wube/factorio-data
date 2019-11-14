@@ -827,6 +827,7 @@ data:extend({
 {
   type = "fire",
   name = "fire-flame-on-tree",
+  localised_name = {"entity-name.fire-flame"},
   flags = {"placeable-off-grid", "not-on-map"},
 
   damage_per_tick = {amount = 35 / 60, type = "fire"},
