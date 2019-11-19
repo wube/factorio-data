@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.79
+Version: 0.17.80
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.17.79
+Date: 19. 11. 2019
+  Bugfixes:
+    - Fixed that the infinity pipe mode could sometimes reset when changing other infinity pipe settings. (https://forums.factorio.com/78047)
+    - Fixed that electric energy interfaces didn't consume power correctly. (https://forums.factorio.com/77998)
+    - Fixed market GUI not showing price in the tooltips of modifiers. (https://forums.factorio.com/78042)
+    - Fixed market GUI showing empty price property in the tooltips when no price is set.
+    - Fixed lights render quality slider in graphics settings missing tooltip. (https://forums.factorio.com/78005)
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.78
 Date: 15. 11. 2019

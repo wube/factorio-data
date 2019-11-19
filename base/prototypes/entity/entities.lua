@@ -9362,9 +9362,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "10GJ",
-      usage_priority = "tertiary",
-      input_flow_limit = "0kW",
-      output_flow_limit = "500GW"
+      usage_priority = "tertiary"
     },
 
     energy_production = "500GW",
