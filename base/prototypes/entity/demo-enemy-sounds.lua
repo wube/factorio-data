@@ -29,6 +29,32 @@ function make_biter_roars(volume)
   }
 end
 
+function make_biter_roars_big(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/biter-roar-big-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-big-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-big-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-big-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-big-5.ogg",
+      volume = volume
+    }
+  }
+end
+
 function make_biter_dying_sounds(volume)
   return
   {
@@ -55,29 +81,436 @@ function make_biter_dying_sounds(volume)
   }
 end
 
-function make_biter_calls(volume)
+function make_biter_dying_sounds_big(volume)
   return
   {
     {
-      filename = "__base__/sound/creatures/biter-call-1.ogg",
+      filename = "__base__/sound/creatures/biter-death-big-1.ogg",
       volume = volume
     },
     {
-      filename = "__base__/sound/creatures/biter-call-2.ogg",
+      filename = "__base__/sound/creatures/biter-death-big-2.ogg",
       volume = volume
     },
     {
-      filename = "__base__/sound/creatures/biter-call-3.ogg",
+      filename = "__base__/sound/creatures/biter-death-big-3.ogg",
       volume = volume
     },
     {
-      filename = "__base__/sound/creatures/biter-call-4.ogg",
+      filename = "__base__/sound/creatures/biter-death-big-4.ogg",
       volume = volume
     },
     {
-      filename = "__base__/sound/creatures/biter-call-5.ogg",
+      filename = "__base__/sound/creatures/biter-death-big-5.ogg",
       volume = volume
     }
+  }
+end
+
+function make_biter_calls(volume)
+  return
+  {
+    sound =
+    {
+      {
+        filename = "__base__/sound/creatures/biter-call-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-5.ogg",
+        volume = volume
+      },
+    },
+    probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
+    max_sounds_per_type = 2,
+    --audible_distance_modifier = 0.9,
+  }
+end
+
+function make_biter_calls_big(volume)
+  return
+  {
+    sound =
+    {
+      {
+        filename = "__base__/sound/creatures/biter-call-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-big-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-big-6.ogg",
+        volume = volume
+      },
+    },
+    probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
+    max_sounds_per_type = 2,
+  }
+end
+
+function make_biter_walk_sounds(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 2,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/biter-walk-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-7.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+function make_biter_walk_sounds_big(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 2,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-7.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-8.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-9.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-walk-big-10.ogg",
+        volume = volume
+      },
+    }
+  }
+end
+
+function make_spitter_walk_sounds(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 2,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/spitter-walk-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-7.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-8.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-9.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-10.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+function make_spitter_walk_sounds_big(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 2,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-7.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-8.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-9.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-walk-big-10.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+function make_spitter_calls(volume)
+  return
+  {
+    sound =
+    {
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-7.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-8.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-small-9.ogg",
+        volume = volume
+      }
+    },
+    probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
+    max_sounds_per_type = 2,
+    --audible_distance_modifier = 0.9,
+  }
+end
+
+function make_spitter_calls_med(volume)
+  return
+  {
+    --aggregation =
+    --{
+    -- max_count = 1,
+    --remove = true
+    --},
+    --variations =
+    sound =
+    {
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-7.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-8.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-9.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-med-10.ogg",
+        volume = volume
+      },
+    },
+    probability = 1 / (8 * 60) -- average pause between the sound is 8 seconds
+  }
+end
+
+function make_spitter_calls_big(volume)
+  return
+  {
+    sound =
+    {
+      {
+        filename = "__base__/sound/creatures/spitter-call-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/spitter-call-big-5.ogg",
+        volume = volume
+      },
+    },
+    probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
+    max_sounds_per_type = 2,
+    --audible_distance_modifier = 0.9,
   }
 end
 
@@ -162,6 +595,32 @@ function make_spitter_dying_sounds(volume)
   }
 end
 
+function make_spitter_dying_sounds_big(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-5.ogg",
+      volume = volume
+    }
+  }
+end
+
 
 function make_worm_roars(volume)
   return
@@ -226,19 +685,35 @@ function make_worm_breath(volume)
     {
       {
         filename = "__base__/sound/creatures/worm-breathe-01.ogg",
-        volume = volume
+        volume = 0.5
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-02.ogg",
-        volume = volume
+        volume = 0.5
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-03.ogg",
-        volume = volume
+        volume = 0.5
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-04.ogg",
-        volume = volume
+        volume = 0.5
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-05.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-06.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-07.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-08.ogg",
+        volume = 0.5
       }
     },
     audible_distance_modifier = 2.0

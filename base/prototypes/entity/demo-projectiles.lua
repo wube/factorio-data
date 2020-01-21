@@ -45,7 +45,7 @@ data:extend(
           {
             {
               type = "create-entity",
-              entity_name = "medium-explosion"
+              entity_name = "grenade-explosion"
             },
             {
               type = "create-entity",
@@ -64,12 +64,12 @@ data:extend(
           target_effects =
           {
             {
-            type = "damage",
-            damage = {amount = 35, type = "explosion"}
+              type = "damage",
+              damage = {amount = 35, type = "explosion"}
             },
             {
-            type = "create-entity",
-            entity_name = "explosion"
+              type = "create-entity",
+              entity_name = "explosion"
             }
           }
         }

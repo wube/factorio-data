@@ -50,7 +50,7 @@ data:extend(
     {
       type = "sprite",
       name = "coal-dark-background",
-      filename = "__base__/graphics/icons/mip/coal-dark-background.png",
+      filename = "__base__/graphics/icons/coal-dark-background.png",
       width = 64,
       height = 64,
       scale = 0.5

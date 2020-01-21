@@ -2013,6 +2013,14 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    train_stop_disabled_in_map_view =
+    {
+      filename = "__core__/graphics/train-stop-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     custom_tag_in_map_view =
     {
       filename = "__core__/graphics/custom-tag-in-map-view.png",

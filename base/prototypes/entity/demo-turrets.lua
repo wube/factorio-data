@@ -3,6 +3,7 @@ require ("prototypes.entity.demo-worm-animations")
 require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-gunshot-sounds")
 enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
 local util = require('util')
 
 function gun_turret_extension(inputs)
@@ -316,7 +317,7 @@ data:extend(
     type = "turret",
     name = "small-worm-turret",
     icon = "__base__/graphics/icons/small-worm.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     order="b-b-d",
     max_health = 200,
@@ -326,6 +327,7 @@ data:extend(
     collision_box = {{-0.9, -0.8 }, {0.9, 0.8}},
     map_generator_bounding_box = {{-1.9, -1.8}, {1.9, 1.8}},
     selection_box = {{-0.9, -0.8 }, {0.9, 0.8}},
+    damaged_trigger_effect = hit_effects.biter(),
     shooting_cursor_size = 3,
     corpse = "small-worm-corpse",
     dying_explosion = "blood-explosion-big",
@@ -393,21 +395,29 @@ data:extend(
         begin_sound =
         {
           {
-            filename = "__base__/sound/fight/flamethrower-start.ogg",
+            filename = "__base__/sound/creatures/worm-spit-start.ogg",
             volume = 0.7
-          }
-        },
-        middle_sound =
-        {
+          },
           {
-            filename = "__base__/sound/fight/flamethrower-mid.ogg",
-            volume = 0.7
-          }
+            filename = "__base__/sound/creatures/worm-spit-start-2.ogg",
+            volume = 0.3
+          },
+          {
+            filename = "__base__/sound/creatures/worm-spit-start-3.ogg",
+            volume = 0.3
+          },
         },
+        --middle_sound =
+       -- {
+          --{
+           -- filename = "__base__/sound/fight/flamethrower-mid.ogg",
+            --volume = 0.7
+          --}
+        --},
         end_sound =
         {
           {
-            filename = "__base__/sound/fight/flamethrower-end.ogg",
+            filename = "__base__/sound/creatures/worm-spit-end.ogg",
             volume = 0.7
           }
         }
@@ -444,17 +454,18 @@ data:extend(
     type = "ammo-turret",
     name = "gun-turret",
     icon = "__base__/graphics/icons/gun-turret.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "gun-turret"},
     max_health = 400,
     corpse = "gun-turret-remnants",
+    dying_explosion = "gun-turret-explosion",
     collision_box = {{-0.7, -0.7 }, {0.7, 0.7}},
     selection_box = {{-1, -1 }, {1, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
     rotation_speed = 0.015,
     preparing_speed = 0.08,
     folding_speed = 0.08,
-    dying_explosion = "medium-explosion",
     inventory_size = 1,
     automated_ammo_count = 10,
     attacking_speed = 0.5,
@@ -569,7 +580,7 @@ data:extend(
 
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
 
     attack_parameters =
     {
@@ -593,13 +604,28 @@ data:extend(
       sound = make_heavy_gunshot_sounds()
     },
 
-    call_for_help_radius = 40
+    call_for_help_radius = 40,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/gun-turret/gun-turret-reflection.png",
+        priority = "extra-high",
+        width = 20,
+        height = 32,
+        shift = util.by_pixel(0, 40),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
   {
     type = "corpse",
     name = "small-worm-corpse",
     icon = "__base__/graphics/icons/small-worm-corpse.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     dying_speed = 0.01,
@@ -646,4 +672,3 @@ cutscene_turret.attack_parameters =
   sound = make_heavy_gunshot_sounds()
 }
 data:extend({cutscene_turret})
-

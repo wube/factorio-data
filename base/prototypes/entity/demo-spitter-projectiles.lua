@@ -7,6 +7,7 @@ function spitter_attack_parameters(data)
     type = "stream",
     ammo_category = "biological",
     cooldown = data.cooldown,
+    cooldown_deviation = data.cooldown_deviation,
     range = data.range,
     min_attack_distance = data.min_attack_distance,
     --projectile_creation_distance = 1.9,
@@ -30,7 +31,43 @@ function spitter_attack_parameters(data)
         }
       }
     },
-    sound = make_spitter_roars(data.roarvolume),
+    cyclic_sound =
+    {
+      begin_sound =
+      {
+        {
+          filename = "__base__/sound/creatures/spitter-spit-start-1.ogg",
+          volume = 0.3
+        },
+        {
+          filename = "__base__/sound/creatures/spitter-spit-start-2.ogg",
+          volume = 0.3
+        },
+        {
+          filename = "__base__/sound/creatures/spitter-spit-start-3.ogg",
+          volume = 0.3
+        },
+        {
+          filename = "__base__/sound/creatures/spitter-spit-start-4.ogg",
+          volume = 0.3
+        }
+      },
+      middle_sound =
+      {
+        {
+          filename = "__base__/sound/fight/flamethrower-mid.ogg",
+          volume = 0
+        }
+      },
+      end_sound =
+      {
+        {
+          filename = "__base__/sound/creatures/spitter-spit-end-1.ogg",
+          volume = 0
+        }
+      }
+    },
+    --sound = make_spitter_roars(data.roarvolume),
     animation = spitterattackanimation(data.scale, data.tint1, data.tint2)
   }
 end

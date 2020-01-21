@@ -42,7 +42,9 @@ data:extend(
       maximum = 1.0
     },
     categories = {"armor"},
-    darkness_to_turn_on = 0.5
+    darkness_to_turn_on = 0.5,
+    color_lookup = {{0.5, "__core__/graphics/color_luts/nightvision.png"}}
+
   },
   {
     type = "energy-shield-equipment",
@@ -260,16 +262,18 @@ data:extend(
     ability_icon =
     {
       filename = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
-      width = 32,
-      height = 32,
-      priority = "medium"
+      flags = { "icon" },
+      mipmap_count = 4,
+      size = 64,
+      priority = "extra-high-no-scale"
     },
     sprite =
     {
-      filename = "__base__/graphics/equipment/discharge-defense-equipment.png",
-      width = 64,
-      height = 64,
-      priority = "medium"
+      filename = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
+      flags = { "icon" },
+      mipmap_count = 4,
+      size = 64,
+      priority = "extra-high-no-scale"
     },
     shape =
     {

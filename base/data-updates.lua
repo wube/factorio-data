@@ -68,14 +68,20 @@ local function generate_barrel_item_icons(fluid, empty_barrel_item)
   return
   {
     {
-      icon = empty_barrel_item.icon
+      icon = empty_barrel_item.icon,
+      icon_size = empty_barrel_item.icon_size,
+      icon_mipmaps = empty_barrel_item.icon_mipmaps
     },
     {
       icon = barrel_side_mask,
+      icon_size = 64,
+      icon_mipmaps = 4,
       tint = side_tint
     },
     {
       icon = barrel_hoop_top_mask,
+      icon_size = 64,
+      icon_mipmaps = 4,
       tint = top_hoop_tint
     }
   }
@@ -89,7 +95,8 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
     name = name,
     localised_name = {"item-name.filled-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
     icons = generate_barrel_item_icons(fluid, empty_barrel_item),
-    icon_size = 32,
+    icon_size = empty_barrel_item.icon_size,
+    icon_mipmaps = empty_barrel_item.icon_mipmaps,
     subgroup = "fill-barrel",
     order = "b[" .. name .. "]",
     stack_size = empty_barrel_item.stack_size
@@ -120,16 +127,16 @@ local function generate_fill_barrel_icons(fluid)
   {
     {
       icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png",
-      icon_size = 32
+      icon_size = 64, icon_mipmaps = 4,
     },
     {
       icon = barrel_fill_side_mask,
-      icon_size = 32,
+      icon_size = 64, icon_mipmaps = 4,
       tint = side_tint
     },
     {
       icon = barrel_fill_top_mask,
-      icon_size = 32,
+      icon_size = 64, icon_mipmaps = 4,
       tint = top_hoop_tint
     }
   }
@@ -139,6 +146,7 @@ local function generate_fill_barrel_icons(fluid)
     {
       icon = fluid.icon,
       icon_size = fluid.icon_size,
+      icon_mipmaps = fluid.icon_mipmaps,
       scale = 16.0 / fluid.icon_size, -- scale = 0.5 * 32 / icon_size simplified
       shift = {4, -8}
     }
@@ -161,16 +169,16 @@ local function generate_empty_barrel_icons(fluid)
   {
     {
       icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
-      icon_size = 32
+      icon_size = 64, icon_mipmaps = 4,
     },
     {
       icon = barrel_empty_side_mask,
-      icon_size = 32,
+      icon_size = 64, icon_mipmaps = 4,
       tint = side_tint
     },
     {
       icon = barrel_empty_top_mask,
-      icon_size = 32,
+      icon_size = 64, icon_mipmaps = 4,
       tint = top_hoop_tint
     }
   }
@@ -179,6 +187,7 @@ local function generate_empty_barrel_icons(fluid)
     {
       icon = fluid.icon,
       icon_size = fluid.icon_size,
+      icon_mipmaps = fluid.icon_mipmaps,
       scale = 16.0 / fluid.icon_size,
       shift = {7, 8}
     }
@@ -203,7 +212,7 @@ local function create_fill_barrel_recipe(item, fluid)
     order = "b[fill-" .. item.name .. "]",
     enabled = false,
     icons = generate_fill_barrel_icons(fluid),
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ingredients =
     {
       {type = "fluid", name = fluid.name, amount = fluid_per_barrel, catalyst_amount = fluid_per_barrel},
@@ -233,7 +242,7 @@ local function create_empty_barrel_recipe(item, fluid)
     order = "c[empty-" .. item.name .. "]",
     enabled = false,
     icons = generate_empty_barrel_icons(fluid),
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ingredients =
     {
       {type = "item", name = item.name, amount = 1, catalyst_amount = 1}

@@ -1,18 +1,22 @@
+
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
+
 data:extend(
 {
   {
     type = "mining-drill",
     name = "pumpjack",
     icon = "__base__/graphics/icons/pumpjack.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.5, result = "pumpjack"},
     resource_categories = {"basic-fluid"},
     max_health = 200,
-    dying_explosion = "medium-explosion",
     corpse = "pumpjack-remnants",
+    dying_explosion = "pumpjack-explosion",
     collision_box = {{ -1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     drawing_box = {{-1.6, -2.5}, {1.5, 1.6}},
     energy_source =
     {
@@ -142,11 +146,17 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
-      sound = { filename = "__base__/sound/pumpjack.ogg" },
-      apparent_volume = 1.5
+      sound =
+      {
+        filename = "__base__/sound/pumpjack.ogg"
+      },
+      apparent_volume = 1.5,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30,
     },
     fast_replaceable_group = "pumpjack",
 

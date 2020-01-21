@@ -135,20 +135,6 @@ function util.oppositedirection(direction)
   return (direction + 4) % 8
 end
 
-function util.ismoduleavailable(name)
-  if package.loaded[name] then
-    return true
-  else
-    for _, searcher in ipairs(package.searchers or package.loaders) do
-      local loader = searcher(name)
-      if type(loader) == 'function' then
-        return true
-      end
-    end
-    return false
-  end
-end
-
 function util.multiplystripes(count, stripes)
   local ret = {}
   for _, stripe in ipairs(stripes) do
@@ -421,6 +407,17 @@ end
 
 function util.product_amount(product)
   return product.probability * (product.amount or ((product.amount_min + product.amount_max) / 2))
+end
+
+function util.empty_sprite()
+  return
+  {
+    filename = "__core__/graphics/empty.png",
+    priority = "high",
+    width = 1,
+    height = 1,
+    frame_count = 1
+  }
 end
 
 

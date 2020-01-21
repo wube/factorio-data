@@ -4,7 +4,7 @@ data:extend(
     type = "ammo",
     name = "uranium-rounds-magazine",
     icon = "__base__/graphics/icons/uranium-rounds-magazine.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "bullet",
@@ -23,7 +23,9 @@ data:extend(
           {
             {
               type = "create-entity",
-              entity_name = "explosion-hit"
+              entity_name = "explosion-hit",
+              offsets = {{0, 1}},
+              offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
             },
             {
               type = "damage",
@@ -42,7 +44,7 @@ data:extend(
     type = "ammo",
     name = "flamethrower-ammo",
     icon = "__base__/graphics/icons/flamethrower-ammo.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       {
@@ -88,7 +90,7 @@ data:extend(
     type = "ammo",
     name = "rocket",
     icon = "__base__/graphics/icons/rocket.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "rocket",
@@ -103,7 +105,7 @@ data:extend(
           source_effects =
           {
             type = "create-entity",
-            entity_name = "explosion-hit"
+            entity_name = "explosion-hit",
           }
         }
       }
@@ -116,7 +118,7 @@ data:extend(
     type = "ammo",
     name = "explosive-rocket",
     icon = "__base__/graphics/icons/explosive-rocket.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "rocket",
@@ -144,7 +146,7 @@ data:extend(
     type = "ammo",
     name = "atomic-bomb",
     icon = "__base__/graphics/icons/atomic-bomb.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       range_modifier = 3,
@@ -175,7 +177,7 @@ data:extend(
     type = "ammo",
     name = "piercing-shotgun-shell",
     icon = "__base__/graphics/icons/piercing-shotgun-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "shotgun-shell",
@@ -222,7 +224,7 @@ data:extend(
     type = "ammo",
     name = "railgun-dart",
     icon = "__base__/graphics/icons/railgun-ammo.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     ammo_type =
     {
@@ -260,7 +262,7 @@ data:extend(
     type = "ammo",
     name = "cannon-shell",
     icon = "__base__/graphics/icons/cannon-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "cannon-shell",
@@ -293,7 +295,7 @@ data:extend(
     type = "ammo",
     name = "explosive-cannon-shell",
     icon = "__base__/graphics/icons/explosive-cannon-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "cannon-shell",
@@ -326,7 +328,7 @@ data:extend(
     type = "ammo",
     name = "uranium-cannon-shell",
     icon = "__base__/graphics/icons/uranium-cannon-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "cannon-shell",
@@ -359,7 +361,7 @@ data:extend(
     type = "ammo",
     name = "explosive-uranium-cannon-shell",
     icon = "__base__/graphics/icons/explosive-uranium-cannon-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "cannon-shell",
@@ -392,7 +394,7 @@ data:extend(
     type = "ammo",
     name = "artillery-shell",
     icon = "__base__/graphics/icons/artillery-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "artillery-shell",

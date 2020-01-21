@@ -79,7 +79,7 @@ data:extend(
     type = "simple-entity",
     name = "crash-site-lab-broken",
     icon = "__base__/graphics/icons/crash-site-lab-broken.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "hidden"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 150,
@@ -147,7 +147,7 @@ data:extend(
     type = "lab",
     name = "crash-site-lab-repaired",
     icon = "__base__/graphics/icons/crash-site-lab-repaired.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "hidden"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 150,
@@ -290,17 +290,20 @@ data:extend(
     {
       sound =
       {
-          filename = "__base__/sound/lab.ogg",
-          volume = 0.7
+        filename = "__base__/sound/lab.ogg",
+        volume = 0.7
       },
-      apparent_volume = 1
+      apparent_volume = 1,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     energy_source =
     {
-    type = "electric",
-    usage_priority = "secondary-input",
-    emissions_per_minute = 4
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions_per_minute = 4
     },
     energy_usage = "60kW",
     researching_speed = 1,
@@ -317,7 +320,7 @@ data:extend(
     type = "simple-entity",
     name = "crash-site-assembling-machine-1-broken",
     icon = "__base__/graphics/icons/crash-site-assembling-machine-1-broken.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation", "hidden"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 300,
@@ -340,59 +343,59 @@ data:extend(
     {
       layers =
       {
+        {
+          filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-broken.png",
+          priority="high",
+          width = 166,
+          height = 108,
+          frame_count = 1,
+          line_length = 1,
+          shift = util.by_pixel(0, 14),
+          hr_version =
           {
-            filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-broken.png",
+            filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-broken.png",
             priority="high",
-            width = 166,
-            height = 108,
+            width = 330,
+            height = 216,
             frame_count = 1,
             line_length = 1,
-            shift = util.by_pixel(0, 14),
-            hr_version =
-            {
-              filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-broken.png",
-              priority="high",
-              width = 330,
-              height = 216,
-              frame_count = 1,
-              line_length = 1,
-              shift = util.by_pixel(1, 14),
-              scale = 0.5
-            }
-          },
+            shift = util.by_pixel(1, 14),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-broken-shadow.png",
+          priority="high",
+          width = 144,
+          height = 92,
+          frame_count = 1,
+          line_length = 1,
+          draw_as_shadow = true,
+          shift = util.by_pixel(8, 18),
+          hr_version =
           {
-            filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-broken-shadow.png",
+            filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-broken-shadow.png",
             priority="high",
-            width = 144,
-            height = 92,
+            width = 290,
+            height = 190,
             frame_count = 1,
             line_length = 1,
             draw_as_shadow = true,
-            shift = util.by_pixel(8, 18),
-            hr_version =
-            {
-              filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-broken-shadow.png",
-              priority="high",
-              width = 290,
-              height = 190,
-              frame_count = 1,
-              line_length = 1,
-              draw_as_shadow = true,
-              shift = util.by_pixel(10, 16),
-              scale = 0.5
-            }
+            shift = util.by_pixel(10, 16),
+            scale = 0.5
           }
+        }
       }
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
   },-- rotation 1 broken
   {
     type = "assembling-machine",
     name = "crash-site-assembling-machine-1-repaired",
     icon = "__base__/graphics/icons/crash-site-assembling-machine-1-repaired.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden", "not-rotatable"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 300,
@@ -466,7 +469,7 @@ data:extend(
     working_visualisations =
     {
       {
-      animation =
+        animation =
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-repaired-light.png",
           priority="high",
@@ -505,7 +508,7 @@ data:extend(
     ingredient_count = 2,
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -519,15 +522,16 @@ data:extend(
           volume = 0.8
         }
       },
-      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5
+      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
+      apparent_volume = 1.5,
+      max_sounds_per_type = 2,
     }
   },-- rotation 1 repaired
   {
     type = "simple-entity",
     name = "crash-site-assembling-machine-2-broken",
     icon = "__base__/graphics/icons/crash-site-assembling-machine-2-broken.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden", "not-rotatable"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 300,
@@ -596,13 +600,13 @@ data:extend(
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
   },-- rotation 2 broken
   {
     type = "assembling-machine",
     name = "crash-site-assembling-machine-2-repaired",
     icon = "__base__/graphics/icons/crash-site-assembling-machine-2-repaired.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden", "not-rotatable"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 300,
@@ -676,7 +680,7 @@ data:extend(
     working_visualisations =
     {
       {
-      animation =
+        animation =
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-repaired-light.png",
           priority="high",
@@ -715,7 +719,7 @@ data:extend(
     ingredient_count = 2,
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -729,8 +733,11 @@ data:extend(
           volume = 0.8
         }
       },
-      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5
+      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
+      apparent_volume = 1.5,
+      max_sounds_per_type = 2,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     }
   },-- rotation 2 repaired
 })-- assembling-machine
@@ -743,7 +750,7 @@ data:extend(
     type = "electric-pole",
     name = "crash-site-electric-pole",
     icon = "__base__/graphics/icons/crash-site-electric-pole.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral","placeable-off-grid"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 100,
@@ -755,7 +762,7 @@ data:extend(
     selectable_in_game = false,
     order="a",
     supply_area_distance = 1,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
     pictures =
     {
       layers =
@@ -790,7 +797,7 @@ data:extend(
     type = "electric-energy-interface",
     name = "crash-site-generator",
     icon = "__base__/graphics/icons/crash-site-generator.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "hidden", "not-rotatable"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 150,
@@ -917,22 +924,24 @@ data:extend(
       idle_sound =
       {
         filename = "__base__/sound/accumulator-idle.ogg",
-        volume = 0.4
+        volume = 0.5
       },
-      max_sounds_per_type = 5
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     }
   },
 
-  { -- crash site chest 1
+  {
     type = "container",
     name = "crash-site-chest-1",
     icon = "__base__/graphics/icons/crash-site-chest.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     max_health = 350,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
     resistances =
     {
       {
@@ -948,8 +957,9 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    integration_patch = {
+    vehicle_impact_sound = generic_impact_sound(),
+    integration_patch =
+    {
       filename = "__base__/graphics/entity/crash-site-chests/crash-site-chest-1-ground.png",
       priority="high",
       width = 111,
@@ -1015,16 +1025,16 @@ data:extend(
     circuit_wire_max_distance = default_circuit_wire_max_distance
   },
 
-  { -- crash site chest 2
+  {
     type = "container",
     name = "crash-site-chest-2",
     icon = "__base__/graphics/icons/crash-site-chest.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     max_health = 350,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
     resistances =
     {
       {
@@ -1040,8 +1050,9 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
-    integration_patch = {
+    vehicle_impact_sound = generic_impact_sound(),
+    integration_patch =
+    {
       filename = "__base__/graphics/entity/crash-site-chests/crash-site-chest-2-ground.png",
       priority="high",
       width = 111,

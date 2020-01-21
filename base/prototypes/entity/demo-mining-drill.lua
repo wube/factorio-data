@@ -1,5 +1,7 @@
 require ("prototypes.entity.demo-pipecovers")
 
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
+
 if not data.is_demo then
   require ("prototypes.entity.assemblerpipes")
 end
@@ -10,7 +12,7 @@ data:extend(
     type = "mining-drill",
     name = "electric-mining-drill",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.3, result = "electric-mining-drill"},
     max_health = 300,
@@ -18,6 +20,7 @@ data:extend(
     corpse = "medium-remnants",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     input_fluid_box = (not data.is_demo) and
     {
       production_type = "input-output",
@@ -40,9 +43,12 @@ data:extend(
         filename = "__base__/sound/electric-mining-drill.ogg",
         volume = 0.75
       },
-      apparent_volume = 1.5
+      apparent_volume = 1.5,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     animations =
     {
       north =
@@ -880,24 +886,31 @@ data:extend(
     type = "mining-drill",
     name = "burner-mining-drill",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     resource_categories = {"basic-solid"},
     minable = {mining_time = 0.3, result = "burner-mining-drill"},
     max_health = 150,
     corpse = "burner-mining-drill-remnants",
+    dying_explosion = "burner-mining-drill-explosion",
     collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{ -1, -1}, {1, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
     mining_speed = 0.25,
     working_sound =
     {
       sound =
       {
-        filename = "__base__/sound/burner-mining-drill.ogg",
-        volume = 0.8
-      }
+        {
+          filename = "__base__/sound/burner-mining-drill.ogg",
+          volume = 0.8
+        }
+      },
+      max_sounds_per_type = 2,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     allowed_effects = {}, -- no beacon effects on the burner drill
     energy_source =
     {

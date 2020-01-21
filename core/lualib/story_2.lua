@@ -151,7 +151,8 @@ story.init = function(name, story_table)
       first_run = true,
       current_node_name = story_tables[name].story_table[1].name,
       current_node_started_tick = game.ticks_played,
-      debug = false
+      debug = false,
+      auto_advance = false,
     }
 
     story_data[name] = this_story_data
@@ -173,7 +174,7 @@ local get_current_node = function(this_story_table, this_story_data)
 end
 
 -- Update only one story. If you are only using one story, or just want to update them all, you can use update_all()
-story.update = function(story_table_name, event)
+story.update = function(story_table_name, event, blah)
   local this_story_data = story_data[story_table_name]
   local this_story_table = story_tables[story_table_name]
 
@@ -188,7 +189,7 @@ story.update = function(story_table_name, event)
     current_node.update(event, story_table_name)
     current_node = get_current_node(this_story_table, this_story_data) -- update could change the current node
 
-    if current_node.condition(event, story_table_name) then
+    if current_node.condition(event, story_table_name) or this_story_data.auto_advance then
       current_node.action(event, story_table_name)
 
       -- If the action didn't change the current node explicitly, then advance to the normal next node
@@ -258,6 +259,21 @@ end
 story.set_debug = function(story_table_name, enabled)
   local this_story_data = story_data[story_table_name]
   this_story_data.debug = enabled
+end
+
+story.get_story_table = function(story_table_name)
+  return story_tables[story_table_name].story_table
+end
+
+-- when enabled, all story node conditions will return true
+story.set_auto_advance = function(story_table_name, value)
+  local this_story_data = story_data[story_table_name]
+  this_story_data.auto_advance = value
+end
+
+story.get_auto_advance = function(story_table_name)
+  local this_story_data = story_data[story_table_name]
+  return this_story_data.auto_advance
 end
 
 return story

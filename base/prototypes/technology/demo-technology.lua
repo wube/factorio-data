@@ -117,6 +117,10 @@ data:extend(
         type = "unlock-recipe",
         recipe = "inserter"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "iron-chest"
+      },
     },
     unit =
     {

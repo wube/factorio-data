@@ -20,6 +20,7 @@ data:extend(
     icon_size = 64,
     order = "z"
   },
+
   {
     type = "item-subgroup",
     name = "other",
@@ -317,6 +318,31 @@ data:extend(
     name = "virtual-signal",
     group = "signals",
     order = "e"
+  },
+  {
+    type = "item-group",
+    name = "effects",
+    icon = "__base__/graphics/item-group/effects.png",
+    icon_size = 64,
+    order = "y"
+  },
+  {
+    type = "item-subgroup",
+    name = "explosions",
+    group = "effects",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "hit-effects",
+    group = "effects",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "particles",
+    group = "effects",
+    order = "b"
   }
 }
 )

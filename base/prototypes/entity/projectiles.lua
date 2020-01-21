@@ -150,16 +150,6 @@ data:extend(
       }
     }
   },
-  trivial_smoke
-  {
-    name = "nuclear-smoke",
-    spread_duration = 0,
-    duration = 120,
-    fade_away_duration = 120,
-    start_scale = 0.5,
-    end_scale = 1,
-    affected_by_wind = false
-  },
   {
     type = "projectile",
     name = "atomic-rocket",

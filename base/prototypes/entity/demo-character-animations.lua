@@ -1,4 +1,4 @@
-character_animations =
+character_animations = 
 {
   level1 =
   {
@@ -17,7 +17,7 @@ character_animations =
         shift = util.by_pixel(-7.0,-5.5),
         frame_count = 2,
         scale = 0.5
-      }
+      },
     },
     dead_mask =
     {
@@ -36,26 +36,26 @@ character_animations =
         frame_count = 2,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
     dead_shadow =
     {
       filename = "__base__/graphics/entity/character/level1_dead_shadow.png",
-      width = 58,
+      width = 54,
       height = 54,
-      shift = util.by_pixel(-7.0,-2.0),
+      shift = util.by_pixel(-4.0,-3.0),
       frame_count = 2,
       draw_as_shadow = true,
       hr_version =
       {
         filename = "__base__/graphics/entity/character/hr-level1_dead_shadow.png",
-        width = 114,
+        width = 108,
         height = 106,
-        shift = util.by_pixel(-7.5,-2.5),
+        shift = util.by_pixel(-3.5,-3.0),
         frame_count = 2,
         draw_as_shadow = true,
         scale = 0.5
-      }
+      },
     },
     idle =
     {
@@ -76,7 +76,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      }
+      },
     },
     idle_mask =
     {
@@ -99,14 +99,14 @@ character_animations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
     idle_shadow =
     {
       filename = "__base__/graphics/entity/character/level1_idle_shadow.png",
-      width = 52,
+      width = 82,
       height = 38,
-      shift = util.by_pixel(0.0,1.0),
+      shift = util.by_pixel(30.0,0.0),
       frame_count = 22,
       direction_count = 8,
       animation_speed = 0.15,
@@ -114,15 +114,15 @@ character_animations =
       hr_version =
       {
         filename = "__base__/graphics/entity/character/hr-level1_idle_shadow.png",
-        width = 104,
+        width = 164,
         height = 74,
-        shift = util.by_pixel(0.0,1.0),
+        shift = util.by_pixel(30.5,0.0),
         frame_count = 22,
         direction_count = 8,
         animation_speed = 0.15,
         draw_as_shadow = true,
         scale = 0.5
-      }
+      },
     },
     idle_gun =
     {
@@ -143,7 +143,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      }
+      },
     },
     idle_gun_mask =
     {
@@ -166,14 +166,14 @@ character_animations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
     idle_gun_shadow =
     {
       filename = "__base__/graphics/entity/character/level1_idle_gun_shadow.png",
-      width = 64,
-      height = 46,
-      shift = util.by_pixel(0.0,1.0),
+      width = 92,
+      height = 48,
+      shift = util.by_pixel(33.0,0.0),
       frame_count = 22,
       direction_count = 8,
       animation_speed = 0.15,
@@ -181,15 +181,15 @@ character_animations =
       hr_version =
       {
         filename = "__base__/graphics/entity/character/hr-level1_idle_gun_shadow.png",
-        width = 128,
-        height = 90,
-        shift = util.by_pixel(0.0,1.0),
+        width = 182,
+        height = 94,
+        shift = util.by_pixel(33.0,0.0),
         frame_count = 22,
         direction_count = 8,
         animation_speed = 0.15,
         draw_as_shadow = true,
         scale = 0.5
-      }
+      },
     },
     mining_tool =
     {
@@ -198,13 +198,13 @@ character_animations =
         {
         filename = "__base__/graphics/entity/character/level1_mining_tool-1.png",
         width_in_frames = 13,
-        height_in_frames = 8
+        height_in_frames = 8,
         },
         {
         filename = "__base__/graphics/entity/character/level1_mining_tool-2.png",
         width_in_frames = 13,
-        height_in_frames = 8
-        }
+        height_in_frames = 8,
+        },
       },
       width = 98,
       height = 98,
@@ -219,13 +219,13 @@ character_animations =
           {
           filename = "__base__/graphics/entity/character/hr-level1_mining_tool-1.png",
           width_in_frames = 13,
-          height_in_frames = 8
+          height_in_frames = 8,
           },
           {
           filename = "__base__/graphics/entity/character/hr-level1_mining_tool-2.png",
           width_in_frames = 13,
-          height_in_frames = 8
-          }
+          height_in_frames = 8,
+          },
         },
         width = 196,
         height = 194,
@@ -234,7 +234,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.9,
         scale = 0.5
-      }
+      },
     },
     mining_tool_mask =
     {
@@ -257,7 +257,7 @@ character_animations =
         animation_speed = 0.9,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
     mining_tool_shadow =
     {
@@ -266,17 +266,17 @@ character_animations =
         {
         filename = "__base__/graphics/entity/character/level1_mining_tool_shadow-1.png",
         width_in_frames = 13,
-        height_in_frames = 8
+        height_in_frames = 8,
         },
         {
         filename = "__base__/graphics/entity/character/level1_mining_tool_shadow-2.png",
         width_in_frames = 13,
-        height_in_frames = 8
-        }
+        height_in_frames = 8,
+        },
       },
-      width = 100,
+      width = 146,
       height = 72,
-      shift = util.by_pixel(0.0,1.0),
+      shift = util.by_pixel(26.0,0.0),
       frame_count = 26,
       direction_count = 8,
       animation_speed = 0.9,
@@ -288,23 +288,23 @@ character_animations =
           {
           filename = "__base__/graphics/entity/character/hr-level1_mining_tool_shadow-1.png",
           width_in_frames = 13,
-          height_in_frames = 8
+          height_in_frames = 8,
           },
           {
           filename = "__base__/graphics/entity/character/hr-level1_mining_tool_shadow-2.png",
           width_in_frames = 13,
-          height_in_frames = 8
-          }
+          height_in_frames = 8,
+          },
         },
-        width = 200,
+        width = 292,
         height = 142,
-        shift = util.by_pixel(0.0,1.0),
+        shift = util.by_pixel(26.0,0.0),
         frame_count = 26,
         direction_count = 8,
         animation_speed = 0.9,
         draw_as_shadow = true,
         scale = 0.5
-      }
+      },
     },
     running =
     {
@@ -325,7 +325,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      }
+      },
     },
     running_mask =
     {
@@ -348,30 +348,54 @@ character_animations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
     running_shadow =
     {
-      filename = "__base__/graphics/entity/character/level1_running_shadow.png",
-      width = 46,
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/character/level1_running_shadow-1.png",
+        width_in_frames = 11,
+        height_in_frames = 8,
+        },
+        {
+        filename = "__base__/graphics/entity/character/level1_running_shadow-2.png",
+        width_in_frames = 11,
+        height_in_frames = 8,
+        },
+      },
+      width = 96,
       height = 34,
-      shift = util.by_pixel(0.0,4.0),
+      shift = util.by_pixel(30.0,2.0),
       frame_count = 22,
       direction_count = 8,
       animation_speed = 0.6,
       draw_as_shadow = true,
       hr_version =
       {
-        filename = "__base__/graphics/entity/character/hr-level1_running_shadow.png",
-        width = 92,
-        height = 66,
-        shift = util.by_pixel(0.0,3.5),
+        stripes =
+        {
+          {
+          filename = "__base__/graphics/entity/character/hr-level1_running_shadow-1.png",
+          width_in_frames = 11,
+          height_in_frames = 8,
+          },
+          {
+          filename = "__base__/graphics/entity/character/hr-level1_running_shadow-2.png",
+          width_in_frames = 11,
+          height_in_frames = 8,
+          },
+        },
+        width = 190,
+        height = 68,
+        shift = util.by_pixel(30.0,2.5),
         frame_count = 22,
         direction_count = 8,
         animation_speed = 0.6,
         draw_as_shadow = true,
         scale = 0.5
-      }
+      },
     },
     running_gun =
     {
@@ -392,7 +416,7 @@ character_animations =
         direction_count = 18,
         animation_speed = 0.6,
         scale = 0.5
-      }
+      },
     },
     running_gun_mask =
     {
@@ -415,31 +439,81 @@ character_animations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
     running_gun_shadow =
     {
-      filename = "__base__/graphics/entity/character/level1_running_gun_shadow.png",
-      width = 60,
-      height = 48,
-      shift = util.by_pixel(4.0,1.0),
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/character/level1_running_gun_shadow-1.png",
+        width_in_frames = 11,
+        height_in_frames = 18,
+        },
+        {
+        filename = "__base__/graphics/entity/character/level1_running_gun_shadow-2.png",
+        width_in_frames = 11,
+        height_in_frames = 18,
+        },
+      },
+      width = 96,
+      height = 50,
+      shift = util.by_pixel(30.0,0.0),
       frame_count = 22,
       direction_count = 18,
       animation_speed = 0.6,
       draw_as_shadow = true,
       hr_version =
       {
-        filename = "__base__/graphics/entity/character/hr-level1_running_gun_shadow.png",
-        width = 120,
-        height = 96,
-        shift = util.by_pixel(4.5,1.0),
+        stripes =
+        {
+          {
+          filename = "__base__/graphics/entity/character/hr-level1_running_gun_shadow-1.png",
+          width_in_frames = 11,
+          height_in_frames = 18,
+          },
+          {
+          filename = "__base__/graphics/entity/character/hr-level1_running_gun_shadow-2.png",
+          width_in_frames = 11,
+          height_in_frames = 18,
+          },
+        },
+        width = 192,
+        height = 100,
+        shift = util.by_pixel(30.0,0.0),
         frame_count = 22,
         direction_count = 18,
         animation_speed = 0.6,
         draw_as_shadow = true,
         scale = 0.5
-      }
-    }
+      },
+    },
+    running_gun_shadow_flipped =
+    {
+      filename = "__base__/graphics/entity/character/level1_running_gun_shadow_flipped.png",
+      line_length = 22,
+      width = 90,
+      height = 50,
+      shift = util.by_pixel(26.0,0.0),
+      frame_count = 22,
+      direction_count = 18,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level1_running_gun_shadow_flipped.png",
+        line_length = 22,
+        width = 178,
+        height = 100,
+        shift = util.by_pixel(25.5,0.0),
+        frame_count = 22,
+        direction_count = 18,
+        animation_speed = 0.6,
+        line_length = 22,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
+    },
   },
   level2addon =
   {
@@ -458,7 +532,7 @@ character_animations =
         shift = util.by_pixel(-1.0,-5.0),
         frame_count = 2,
         scale = 0.5
-      }
+      },
     },
     dead_mask =
     {
@@ -477,7 +551,26 @@ character_animations =
         frame_count = 2,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    dead_shadow =
+    {
+      filename = "__base__/graphics/entity/character/level2addon_dead_shadow.png",
+      width = 46,
+      height = 36,
+      shift = util.by_pixel(2.0,0.0),
+      frame_count = 2,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level2addon_dead_shadow.png",
+        width = 90,
+        height = 68,
+        shift = util.by_pixel(1.5,-0.5),
+        frame_count = 2,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     idle =
     {
@@ -498,7 +591,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      }
+      },
     },
     idle_mask =
     {
@@ -521,7 +614,42 @@ character_animations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    idle_shadow =
+    {
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/character/level2addon_idle_shadow-1.png",
+        width_in_frames = 11,
+        height_in_frames = 8,
+        },
+        {
+        filename = "__base__/graphics/entity/character/level2addon_idle_shadow-2.png",
+        width_in_frames = 11,
+        height_in_frames = 8,
+        },
+      },
+      width = 94,
+      height = 40,
+      shift = util.by_pixel(36.0,1.0),
+      frame_count = 22,
+      direction_count = 8,
+      animation_speed = 0.15,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level2addon_idle_shadow.png",
+        width = 186,
+        height = 78,
+        shift = util.by_pixel(36.0,0.5),
+        frame_count = 22,
+        direction_count = 8,
+        animation_speed = 0.15,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     idle_gun =
     {
@@ -542,7 +670,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      }
+      },
     },
     idle_gun_mask =
     {
@@ -565,51 +693,30 @@ character_animations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
-    mining_hands =
+    idle_gun_shadow =
     {
-      filename = "__base__/graphics/entity/character/level2addon_mining_hands.png",
-      width = 42,
-      height = 46,
-      shift = util.by_pixel(0.0,-17.0),
-      frame_count = 14,
+      filename = "__base__/graphics/entity/character/level2addon_idle_gun_shadow.png",
+      width = 92,
+      height = 48,
+      shift = util.by_pixel(33.0,0.0),
+      frame_count = 22,
       direction_count = 8,
-      animation_speed = 0.6,
+      animation_speed = 0.15,
+      draw_as_shadow = true,
       hr_version =
       {
-        filename = "__base__/graphics/entity/character/hr-level2addon_mining_hands.png",
-        width = 82,
-        height = 90,
-        shift = util.by_pixel(0.0,-17.0),
-        frame_count = 14,
+        filename = "__base__/graphics/entity/character/hr-level2addon_idle_gun_shadow.png",
+        width = 182,
+        height = 94,
+        shift = util.by_pixel(33.0,0.0),
+        frame_count = 22,
         direction_count = 8,
-        animation_speed = 0.6,
+        animation_speed = 0.15,
+        draw_as_shadow = true,
         scale = 0.5
-      }
-    },
-    mining_hands_mask =
-    {
-      filename = "__base__/graphics/entity/character/level2addon_mining_hands_mask.png",
-      width = 40,
-      height = 46,
-      shift = util.by_pixel(0.0,-17.0),
-      frame_count = 14,
-      direction_count = 8,
-      animation_speed = 0.6,
-      apply_runtime_tint = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/character/hr-level2addon_mining_hands_mask.png",
-        width = 80,
-        height = 90,
-        shift = util.by_pixel(0.0,-17.0),
-        frame_count = 14,
-        direction_count = 8,
-        animation_speed = 0.6,
-        apply_runtime_tint = true,
-        scale = 0.5
-      }
+      },
     },
     mining_tool =
     {
@@ -630,7 +737,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.9,
         scale = 0.5
-      }
+      },
     },
     mining_tool_mask =
     {
@@ -653,7 +760,54 @@ character_animations =
         animation_speed = 0.9,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    mining_tool_shadow =
+    {
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/character/level2addon_mining_tool_shadow-1.png",
+        width_in_frames = 13,
+        height_in_frames = 8,
+        },
+        {
+        filename = "__base__/graphics/entity/character/level2addon_mining_tool_shadow-2.png",
+        width_in_frames = 13,
+        height_in_frames = 8,
+        },
+      },
+      width = 146,
+      height = 72,
+      shift = util.by_pixel(26.0,0.0),
+      frame_count = 26,
+      direction_count = 8,
+      animation_speed = 0.9,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        stripes =
+        {
+          {
+          filename = "__base__/graphics/entity/character/hr-level2addon_mining_tool_shadow-1.png",
+          width_in_frames = 13,
+          height_in_frames = 8,
+          },
+          {
+          filename = "__base__/graphics/entity/character/hr-level2addon_mining_tool_shadow-2.png",
+          width_in_frames = 13,
+          height_in_frames = 8,
+          },
+        },
+        width = 292,
+        height = 142,
+        shift = util.by_pixel(26.0,0.0),
+        frame_count = 26,
+        direction_count = 8,
+        animation_speed = 0.9,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     running =
     {
@@ -674,7 +828,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      }
+      },
     },
     running_mask =
     {
@@ -697,7 +851,54 @@ character_animations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    running_shadow =
+    {
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/character/level2addon_running_shadow-1.png",
+        width_in_frames = 11,
+        height_in_frames = 8,
+        },
+        {
+        filename = "__base__/graphics/entity/character/level2addon_running_shadow-2.png",
+        width_in_frames = 11,
+        height_in_frames = 8,
+        },
+      },
+      width = 98,
+      height = 34,
+      shift = util.by_pixel(31.0,2.0),
+      frame_count = 22,
+      direction_count = 8,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        stripes =
+        {
+          {
+          filename = "__base__/graphics/entity/character/hr-level2addon_running_shadow-1.png",
+          width_in_frames = 11,
+          height_in_frames = 8,
+          },
+          {
+          filename = "__base__/graphics/entity/character/hr-level2addon_running_shadow-2.png",
+          width_in_frames = 11,
+          height_in_frames = 8,
+          },
+        },
+        width = 194,
+        height = 68,
+        shift = util.by_pixel(31.0,2.5),
+        frame_count = 22,
+        direction_count = 8,
+        animation_speed = 0.6,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     running_gun =
     {
@@ -718,7 +919,7 @@ character_animations =
         direction_count = 18,
         animation_speed = 0.6,
         scale = 0.5
-      }
+      },
     },
     running_gun_mask =
     {
@@ -741,8 +942,57 @@ character_animations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      }
-    }
+      },
+    },
+    running_gun_shadow =
+    {
+      filename = "__base__/graphics/entity/character/level2addon_running_gun_shadow.png",
+      width = 68,
+      height = 30,
+      shift = util.by_pixel(37.0,1.0),
+      frame_count = 22,
+      direction_count = 18,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level2addon_running_gun_shadow.png",
+        width = 134,
+        height = 58,
+        shift = util.by_pixel(37.0,1.0),
+        frame_count = 22,
+        direction_count = 18,
+        animation_speed = 0.6,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
+    },
+    running_gun_shadow_flipped =
+    {
+      filename = "__base__/graphics/entity/character/level2addon_running_gun_shadow_flipped.png",
+      line_length = 22,
+      width = 70,
+      height = 30,
+      shift = util.by_pixel(34.0,1.0),
+      frame_count = 22,
+      direction_count = 18,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level2addon_running_gun_shadow_flipped.png",
+        line_length = 22,
+        width = 138,
+        height = 58,
+        shift = util.by_pixel(34.0,1.0),
+        frame_count = 22,
+        direction_count = 18,
+        animation_speed = 0.6,
+        line_length = 22,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
+    },
   },
   level3addon =
   {
@@ -761,7 +1011,7 @@ character_animations =
         shift = util.by_pixel(-0.5,-5.0),
         frame_count = 2,
         scale = 0.5
-      }
+      },
     },
     dead_mask =
     {
@@ -780,7 +1030,26 @@ character_animations =
         frame_count = 2,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    dead_shadow =
+    {
+      filename = "__base__/graphics/entity/character/level3addon_dead_shadow.png",
+      width = 48,
+      height = 36,
+      shift = util.by_pixel(2.0,-1.0),
+      frame_count = 2,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level3addon_dead_shadow.png",
+        width = 92,
+        height = 72,
+        shift = util.by_pixel(1.5,-1.0),
+        frame_count = 2,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     idle =
     {
@@ -801,7 +1070,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      }
+      },
     },
     idle_mask =
     {
@@ -824,7 +1093,30 @@ character_animations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    idle_shadow =
+    {
+      filename = "__base__/graphics/entity/character/level3addon_idle_shadow.png",
+      width = 66,
+      height = 32,
+      shift = util.by_pixel(38.0,0.0),
+      frame_count = 22,
+      direction_count = 8,
+      animation_speed = 0.15,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level3addon_idle_shadow.png",
+        width = 132,
+        height = 64,
+        shift = util.by_pixel(38.5,0.0),
+        frame_count = 22,
+        direction_count = 8,
+        animation_speed = 0.15,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     idle_gun =
     {
@@ -845,7 +1137,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.15,
         scale = 0.5
-      }
+      },
     },
     idle_gun_mask =
     {
@@ -868,51 +1160,30 @@ character_animations =
         animation_speed = 0.15,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
     },
-    mining_hands =
+    idle_gun_shadow =
     {
-      filename = "__base__/graphics/entity/character/level3addon_mining_hands.png",
-      width = 42,
-      height = 48,
-      shift = util.by_pixel(0.0,-17.0),
-      frame_count = 14,
+      filename = "__base__/graphics/entity/character/level3addon_idle_gun_shadow.png",
+      width = 66,
+      height = 32,
+      shift = util.by_pixel(34.0,0.0),
+      frame_count = 22,
       direction_count = 8,
-      animation_speed = 0.6,
+      animation_speed = 0.15,
+      draw_as_shadow = true,
       hr_version =
       {
-        filename = "__base__/graphics/entity/character/hr-level3addon_mining_hands.png",
-        width = 82,
-        height = 94,
-        shift = util.by_pixel(0.0,-17.0),
-        frame_count = 14,
+        filename = "__base__/graphics/entity/character/hr-level3addon_idle_gun_shadow.png",
+        width = 130,
+        height = 64,
+        shift = util.by_pixel(33.5,0.0),
+        frame_count = 22,
         direction_count = 8,
-        animation_speed = 0.6,
+        animation_speed = 0.15,
+        draw_as_shadow = true,
         scale = 0.5
-      }
-    },
-    mining_hands_mask =
-    {
-      filename = "__base__/graphics/entity/character/level3addon_mining_hands_mask.png",
-      width = 40,
-      height = 40,
-      shift = util.by_pixel(0.0,-20.0),
-      frame_count = 14,
-      direction_count = 8,
-      animation_speed = 0.6,
-      apply_runtime_tint = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/character/hr-level3addon_mining_hands_mask.png",
-        width = 80,
-        height = 78,
-        shift = util.by_pixel(0.0,-20.5),
-        frame_count = 14,
-        direction_count = 8,
-        animation_speed = 0.6,
-        apply_runtime_tint = true,
-        scale = 0.5
-      }
+      },
     },
     mining_tool =
     {
@@ -933,7 +1204,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.9,
         scale = 0.5
-      }
+      },
     },
     mining_tool_mask =
     {
@@ -956,7 +1227,54 @@ character_animations =
         animation_speed = 0.9,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    mining_tool_shadow =
+    {
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/character/level3addon_mining_tool_shadow-1.png",
+        width_in_frames = 13,
+        height_in_frames = 8,
+        },
+        {
+        filename = "__base__/graphics/entity/character/level3addon_mining_tool_shadow-2.png",
+        width_in_frames = 13,
+        height_in_frames = 8,
+        },
+      },
+      width = 92,
+      height = 58,
+      shift = util.by_pixel(30.0,0.0),
+      frame_count = 26,
+      direction_count = 8,
+      animation_speed = 0.9,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        stripes =
+        {
+          {
+          filename = "__base__/graphics/entity/character/hr-level3addon_mining_tool_shadow-1.png",
+          width_in_frames = 13,
+          height_in_frames = 8,
+          },
+          {
+          filename = "__base__/graphics/entity/character/hr-level3addon_mining_tool_shadow-2.png",
+          width_in_frames = 13,
+          height_in_frames = 8,
+          },
+        },
+        width = 184,
+        height = 116,
+        shift = util.by_pixel(30.0,0.0),
+        frame_count = 26,
+        direction_count = 8,
+        animation_speed = 0.9,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     running =
     {
@@ -977,7 +1295,7 @@ character_animations =
         direction_count = 8,
         animation_speed = 0.6,
         scale = 0.5
-      }
+      },
     },
     running_mask =
     {
@@ -1000,7 +1318,30 @@ character_animations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      }
+      },
+    },
+    running_shadow =
+    {
+      filename = "__base__/graphics/entity/character/level3addon_running_shadow.png",
+      width = 84,
+      height = 36,
+      shift = util.by_pixel(38.0,3.0),
+      frame_count = 22,
+      direction_count = 8,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level3addon_running_shadow.png",
+        width = 168,
+        height = 68,
+        shift = util.by_pixel(38.0,2.5),
+        frame_count = 22,
+        direction_count = 8,
+        animation_speed = 0.6,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
     },
     running_gun =
     {
@@ -1021,7 +1362,7 @@ character_animations =
         direction_count = 18,
         animation_speed = 0.6,
         scale = 0.5
-      }
+      },
     },
     running_gun_mask =
     {
@@ -1044,7 +1385,56 @@ character_animations =
         animation_speed = 0.6,
         apply_runtime_tint = true,
         scale = 0.5
-      }
-    }
-  }
+      },
+    },
+    running_gun_shadow =
+    {
+      filename = "__base__/graphics/entity/character/level3addon_running_gun_shadow.png",
+      width = 68,
+      height = 32,
+      shift = util.by_pixel(36.0,0.0),
+      frame_count = 22,
+      direction_count = 18,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level3addon_running_gun_shadow.png",
+        width = 136,
+        height = 64,
+        shift = util.by_pixel(36.0,0.5),
+        frame_count = 22,
+        direction_count = 18,
+        animation_speed = 0.6,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
+    },
+    running_gun_shadow_flipped =
+    {
+      filename = "__base__/graphics/entity/character/level3addon_running_gun_shadow_flipped.png",
+      line_length = 22,
+      width = 72,
+      height = 32,
+      shift = util.by_pixel(34.0,0.0),
+      frame_count = 22,
+      direction_count = 18,
+      animation_speed = 0.6,
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/character/hr-level3addon_running_gun_shadow_flipped.png",
+        line_length = 22,
+        width = 142,
+        height = 64,
+        shift = util.by_pixel(33.5,0.5),
+        frame_count = 22,
+        direction_count = 18,
+        animation_speed = 0.6,
+        line_length = 22,
+        draw_as_shadow = true,
+        scale = 0.5
+      },
+    },
+  },
 }

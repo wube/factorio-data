@@ -17,6 +17,214 @@ local dirt_pollution_absorption = 0.0000066
 local sand_pollution_absorption = 0.0000058
 local red_desert_pollution_absorption = 0.0000066
 
+local grass_sounds =
+{
+  {
+    filename = "__base__/sound/walking/grass-01.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-02.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-03.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-04.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-05.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-06.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-07.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-08.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-09.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/grass-10.ogg",
+    volume = 0.8
+  }
+}
+
+local sand_sounds =
+{
+  {
+    filename = "__base__/sound/walking/sand-01.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-02.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-03.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-04.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-05.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-06.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-07.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-08.ogg",
+    volume = 0.8
+  },
+  {
+    filename = "__base__/sound/walking/sand-09.ogg",
+    volume = 0.8
+  }
+}
+
+local concrete_sounds =
+{
+  {
+    filename = "__base__/sound/walking/concrete-01.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-02.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-03.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-04.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-05.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-06.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-07.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-08.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-09.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-10.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/concrete-11.ogg",
+    volume = 0.5
+  }
+}
+
+local shallow_water_sound =
+{
+  {
+    filename = "__base__/sound/walking/shallow-water-01.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/shallow-water-02.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/shallow-water-03.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/shallow-water-04.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/shallow-water-05.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/shallow-water-06.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/shallow-water-07.ogg",
+    volume = 1.0
+  }
+}
+
+local dirt_sounds =
+{
+  {
+    filename = "__base__/sound/walking/dirt-1-01.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-02.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-03.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-04.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-05.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-06.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-07.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-08.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-09.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/dirt-1-10.ogg",
+    volume = 1.0
+  }
+}
+
 local function noise_layer_expression(noise_name)
   if tile_noise_enabled == false then return noise.to_noise_expression(0) end
   return noise.function_application("factorio-multioctave-noise",
@@ -107,6 +315,52 @@ local function autoplace_settings(noise_name, control_name, ...)
   }
 end
 
+-- Todo: make public function library for transition templates
+local function append_transition_mask_template(normal_res_transition, high_res_transition, options, tab)
+  local function make_transition_variation(x_, cnt_, line_len_)
+    local t =
+    {
+      picture = normal_res_transition,
+      count = cnt_,
+      line_length = line_len_ or cnt_,
+      x = x_,
+    }
+
+    if high_res_transition then
+      t.hr_version = {
+                       picture = high_res_transition,
+                       count = cnt_,
+                       line_length = line_len_ or cnt_,
+                       x = 2 * x_,
+                       scale = 0.5
+                     }
+    end
+    return t
+  end
+
+  local mv = (options and options.mask_variations) or 8
+  local suffix = (options and options.mask_suffix) or "mask"
+  tab["inner_corner_" .. suffix] = make_transition_variation(0, mv)
+  tab["outer_corner_" .. suffix] = make_transition_variation(288, mv)
+  tab["side_" .. suffix]         = make_transition_variation(576, mv)
+  tab["u_transition_" .. suffix] = make_transition_variation(864, 1, 1)
+  tab["o_transition_" .. suffix] = make_transition_variation(1152, 1, 2)
+
+  return tab
+end
+
+local function append_transition_mask_white(options, tab)
+  local mask_picture =  { picture = "__core__/graphics/white-square.png", count = 1, scale = 32 }
+  local suffix = (options and options.mask_suffix) or "mask"
+  tab["inner_corner_" .. suffix] = mask_picture
+  tab["outer_corner_" .. suffix] = mask_picture
+  tab["side_" .. suffix]         = mask_picture
+  tab["u_transition_" .. suffix] = mask_picture
+  tab["o_transition_" .. suffix] = mask_picture
+
+  return tab
+end
+
 function tile_variations_template(normal_res_picture, normal_res_transition, high_res_picture, high_res_transition, options)
   local function main_variation(size_)
     local y_ = ((size_ == 1) and 0) or ((size_ == 2) and 64) or ((size_ == 4) and 160) or 320
@@ -138,24 +392,6 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
     return ret
   end
 
-  local function make_transition_variation(x_, line_len_, cnt_)
-    return
-    {
-      picture = normal_res_transition,
-      count = cnt_ or 8,
-      line_length = line_len_ or 8,
-      x = x_,
-      hr_version=
-      {
-        picture = high_res_transition,
-        count = cnt_ or 8,
-        line_length = line_len_ or 8,
-        x = 2 * x_,
-        scale = 0.5
-      }
-    }
-  end
-
   local main_ =
   {
     main_variation(1),
@@ -174,15 +410,7 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
     }
   end
 
-  return
-  {
-    main = main_,
-    inner_corner_mask = make_transition_variation(0),
-    outer_corner_mask = make_transition_variation(288),
-    side_mask         = make_transition_variation(576),
-    u_transition_mask = make_transition_variation(864, 1, 1),
-    o_transition_mask = make_transition_variation(1152, 2, 1)
-  }
+  return append_transition_mask_template(normal_res_transition, high_res_transition, options, { main = main_ })
 end
 
 
@@ -207,6 +435,12 @@ local function make_tile_transition_from_template_variation(src_x, src_y, cnt_, 
     }
   }
 end
+
+local function water_transition_template_with_effect(to_tiles, normal_res_transition, high_res_transition, options)
+  return make_generic_transition_template(to_tiles, water_transition_group_id, nil, normal_res_transition, high_res_transition, options, true, false, true)
+end
+
+
 
 function water_transition_template(to_tiles, normal_res_transition, high_res_transition, options)
   return make_generic_transition_template(to_tiles, water_transition_group_id, nil, normal_res_transition, high_res_transition, options, true, true, true)
@@ -251,6 +485,19 @@ function make_generic_transition_template(to_tiles, group1, group2, normal_res_t
       end
       if mask == true then
         t[k .. "_mask"] = make_tile_transition_from_template_variation(1088, y, count, line_length, nil, normal_res_transition, high_res_transition)
+      end
+
+      if options.effect_map ~= nil then
+        local effect_default_count = options.effect_map.count or 16
+        local effect_count = options.effect_map[k .. "_count"] or effect_default_count
+        if effect_count > 0 then
+          local effect_line_length = options.effect_map[k .. "_line_length"] or effect_count
+          local effect_is_tall = true
+          if (options.effect_map[k .. "_tall"] == false) then
+            effect_is_tall = false
+          end
+          t[k .. "_effect_map"] = make_tile_transition_from_template_variation(0, y, effect_count, effect_line_length, effect_is_tall, options.effect_map.filename_norm, options.effect_map.filename_high)
+        end
       end
     end
   end
@@ -300,26 +547,6 @@ patch_for_inner_corner_of_transition_between_transition =
   }
 }
 
---local water_transitions_between_transitions =
---{
---  generic_transition_between_transitions_template
---  (
---      default_transition_group_id,
---      out_of_map_transition_group_id,
---      "__base__/graphics/terrain/water-transitions/grass-transition.png",
---      "__base__/graphics/terrain/water-transitions/hr-grass-transition.png",
---      {
---        inner_corner_tall = true,
---        inner_corner_count = 3,
---        outer_corner_count = 3,
---        side_count = 3,
---        u_transition_count = 1,
---        o_transition_count = 0,
---        base = { background_layer_offset = 7, }
---      }
---  ),
---}
-
 function init_transition_between_transition_common_options(base)
   local t = base or {}
 
@@ -330,6 +557,23 @@ function init_transition_between_transition_common_options(base)
   end
 
   return t
+end
+
+function init_transition_between_transition_water_out_of_map_options(base)
+  return init_transition_between_transition_common_options(base)
+
+  --[[
+  local t = base or {}
+
+  t.background_layer_offset = t.background_layer_offset or 1
+  t.background_layer_group = t.background_layer_group or "water-overlay"
+  t.water_patch = patch_for_inner_corner_of_transition_between_transition
+  --if (t.offset_background_layer_by_tile_layer == nil) then
+  --  t.offset_background_layer_by_tile_layer = true
+  --end
+
+  return t
+  --]]
 end
 
 function create_water_transitions_between_transitions(normal_res_transition, high_res_transition)
@@ -355,36 +599,115 @@ function create_water_transitions_between_transitions(normal_res_transition, hig
   )
 end
 
-local water_transitions_between_transitions =
+base_tile_transition_effect_maps = {}
+local ttfxmaps = base_tile_transition_effect_maps
+
+ttfxmaps.water_grass =
 {
-  make_generic_transition_template
-  (
-      nil,
-      default_transition_group_id,
-      out_of_map_transition_group_id,
-      "__base__/graphics/terrain/water-transitions/grass-transition.png",
-      "__base__/graphics/terrain/water-transitions/hr-grass-transition.png",
-      {
-        inner_corner_tall = true,
-        inner_corner_count = 3,
-        outer_corner_count = 3,
-        side_count = 3,
-        u_transition_count = 1,
-        o_transition_count = 0,
-        base = init_transition_between_transition_common_options()
-      },
-      false,
-      true,
-      true
-  )
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-grass-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-grass-mask.png",
+  o_transition_tall = false,
+  u_transition_count = 4,
+  o_transition_count = 1,
 }
 
-local deepwater_transitions_between_transitions =
+ttfxmaps.water_grass_to_land =
 {
-  create_water_transitions_between_transitions(
-    "__base__/graphics/terrain/out-of-map-transition/deepwater-out-of-map-transition-to-water.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-deepwater-out-of-map-transition-to-water.png"
-  )
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-grass-to-land-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-grass-to-land-mask.png",
+  count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_grass_to_out_of_map =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-grass-to-out-of-map-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-grass-to-out-of-map-mask.png",
+  count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_sand =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-sand-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-sand-mask.png",
+  o_transition_tall = false,
+  u_transition_count = 4,
+  o_transition_count = 1,
+}
+
+ttfxmaps.water_sand_to_land =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-sand-to-land-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-sand-to-land-mask.png",
+  count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_sand_to_out_of_map =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-sand-to-out-of-map-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-sand-to-out-of-map-mask.png",
+  count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_dirt =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-dirt-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-dirt-mask.png",
+  count = 8,
+  o_transition_tall = false,
+  u_transition_count = 2,
+  o_transition_count = 1,
+}
+
+ttfxmaps.water_dirt_to_land =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-dirt-to-land-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-dirt-to-land-mask.png",
+  count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_dirt_to_out_of_map =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-dirt-to-out-of-map-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-dirt-to-out-of-map-mask.png",
+  count = 3,
+  u_transition_count = 0,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_stone =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-stone-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-stone-mask.png",
+  count = 1,
+  o_transition_tall = false,
+}
+
+ttfxmaps.water_stone_to_land =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-stone-to-land-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-stone-to-land-mask.png",
+  count = 3,
+  u_transition_count = 1,
+  o_transition_count = 0,
+}
+
+ttfxmaps.water_stone_to_out_of_map =
+{
+  filename_norm = "__base__/graphics/terrain/effect-maps/water-stone-to-out-of-map-mask.png",
+  filename_high = "__base__/graphics/terrain/effect-maps/hr-water-stone-to-out-of-map-mask.png",
+  count = 3,
+  u_transition_count = 0,
+  o_transition_count = 0,
 }
 
 local water_shallow_transitions_between_transitions =
@@ -403,28 +726,12 @@ local water_mud_transitions_between_transitions =
   )
 }
 
-local deepwater_green_transitions_between_transitions =
-{
-  create_water_transitions_between_transitions(
-    "__base__/graphics/terrain/out-of-map-transition/deepwater-green-out-of-map-transition-to-water.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-deepwater-green-out-of-map-transition-to-water.png"
-  )
-}
-
-local water_green_transitions_between_transitions =
-{
-  create_water_transitions_between_transitions(
-    "__base__/graphics/terrain/out-of-map-transition/water-green-out-of-map-transition-to-water.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-water-green-out-of-map-transition-to-water.png"
-  )
-}
-
-local water_out_of_map_transition =
+local water_to_out_of_map_transition =
   make_out_of_map_transition_template
   (
     { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/water-out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-water-out-of-map-transition.png",
+    "__base__/graphics/terrain/out-of-map-transition/water-out-of-map-transition-tintable.png",
+    "__base__/graphics/terrain/out-of-map-transition/hr-water-out-of-map-transition-tintable.png",
     {
       o_transition_tall = false,
       side_count = 8,
@@ -432,74 +739,30 @@ local water_out_of_map_transition =
       outer_corner_count = 4,
       u_transition_count = 1,
       o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
+      base = init_transition_between_transition_common_options(
+      {
+        overlay_layer_group = "zero",
+        apply_effect_color_to_overlay = true,
+        effect_mask = {
+                        filename = "__base__/graphics/terrain/effects/water-edge-mask.png",
+                        frame_count = 47,
+                        line_length = 8,
+                        scale = 0.5,
+                        size = 64
+                      }
+      })
     },
-    false,
     true,
-    true
+    false,
+    false
   )
 
-local deepwater_out_of_map_transition =
-  make_out_of_map_transition_template
-  (
-    { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/deepwater-out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-deepwater-out-of-map-transition.png",
-    {
-      o_transition_tall = false,
-      side_count = 8,
-      inner_corner_count = 4,
-      outer_corner_count = 4,
-      u_transition_count = 1,
-      o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
-    },
-    false,
-    true,
-    true
-  )
+--local deepwater_out_of_map_transition = water_to_out_of_map_transition
+--local deepwater_green_out_of_map_transition = water_to_out_of_map_transition
+--local water_green_out_of_map_transition = water_to_out_of_map_transition
 
-local deepwater_green_out_of_map_transition =
-  make_out_of_map_transition_template
-  (
-    { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/deepwater-green-out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-deepwater-green-out-of-map-transition.png",
-    {
-      o_transition_tall = false,
-      side_count = 8,
-      inner_corner_count = 4,
-      outer_corner_count = 4,
-      u_transition_count = 1,
-      o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
-    },
-    false,
-    true,
-    true
-  )
-
-local water_green_out_of_map_transition =
-  make_out_of_map_transition_template
-  (
-    { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/water-green-out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-water-green-out-of-map-transition.png",
-    {
-      o_transition_tall = false,
-      side_count = 8,
-      inner_corner_count = 4,
-      outer_corner_count = 4,
-      u_transition_count = 1,
-      o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
-    },
-    false,
-    true,
-    true
-  )
-
-local water_shallow_out_of_map_transition =
+--local water_shallow_to_out_of_map_transition = water_to_out_of_map_transition
+local water_shallow_to_out_of_map_transition  =
   make_out_of_map_transition_template
   (
     { "out-of-map" },
@@ -512,19 +775,23 @@ local water_shallow_out_of_map_transition =
       outer_corner_count = 4,
       u_transition_count = 1,
       o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
+      base = init_transition_between_transition_common_options(--[[{
+        background_layer_offset = 0,
+        background_layer_group = "zero",
+        offset_background_layer_by_tile_layer = false
+      }--]])
     },
     false,
     true,
     true
   )
 
-local out_of_map_transition =
-  make_out_of_map_transition_template
+local function create_transition_to_out_of_map_from_template(normal_res_template_path, high_res_template_path, options)
+  return make_out_of_map_transition_template
   (
     { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-out-of-map-transition.png",
+    normal_res_template_path,
+    high_res_template_path,
     {
       o_transition_tall = false,
       side_count = 8,
@@ -534,56 +801,61 @@ local out_of_map_transition =
       o_transition_count = 1,
       base = init_transition_between_transition_common_options()
     },
-    false,
-    true,
-    true
+    options.has_base_layer == true,
+    options.has_background == true,
+    options.has_mask == true
   )
+end
 
-local concrete_out_of_map_transition =
-  out_of_map_transition_template
-  (
-    { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-concrete-out-of-map-transition.png",
-    {
-      o_transition_tall = false,
-      side_count = 8,
-      inner_corner_count = 4,
-      outer_corner_count = 4,
-      u_transition_count = 1,
-      o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
-    }
-  )
+local out_of_map_transition = "error"
 
-local stone_path_out_of_map_transition =
-  make_out_of_map_transition_template
-  (
-    { "out-of-map" },
-    "__base__/graphics/terrain/out-of-map-transition/stone-path-out-of-map-transition.png",
-    "__base__/graphics/terrain/out-of-map-transition/hr-stone-path-out-of-map-transition.png",
-    {
-      o_transition_tall = false,
-      side_count = 8,
-      inner_corner_count = 4,
-      outer_corner_count = 4,
-      u_transition_count = 1,
-      o_transition_count = 1,
-      base = init_transition_between_transition_common_options()
-    },
-    true,
-    true,
-    false
-  )
+local ground_to_out_of_map_transition =
+  create_transition_to_out_of_map_from_template("__base__/graphics/terrain/out-of-map-transition/out-of-map-transition.png",
+                                                "__base__/graphics/terrain/out-of-map-transition/hr-out-of-map-transition.png",
+                                                { has_base_layer = false, has_background = true, has_mask = true })
+
+local concrete_to_out_of_map_transition =
+  create_transition_to_out_of_map_from_template("__base__/graphics/terrain/out-of-map-transition/concrete-out-of-map-transition.png",
+                                                "__base__/graphics/terrain/out-of-map-transition/hr-concrete-out-of-map-transition.png",
+                                                { has_base_layer = true, has_background = true, has_mask = true })
+
+local stone_path_to_out_of_map_transition =
+  create_transition_to_out_of_map_from_template("__base__/graphics/terrain/out-of-map-transition/stone-path-out-of-map-transition.png",
+                                                "__base__/graphics/terrain/out-of-map-transition/hr-stone-path-out-of-map-transition.png",
+                                                { has_base_layer = true, has_background = true, has_mask = false })
+
+-- ~~~SAND
+
+local function get_sand_transition_base_with_underwater_background(tab)
+  local t = tab or {}
+
+  --t.background_layer_offset = t.background_layer_offset or 1
+  --t.background_layer_group = t.background_layer_group or "zero"
+  --if (t.offset_background_layer_by_tile_layer == nil) then
+  --  t.offset_background_layer_by_tile_layer = true
+  --end
+  --t.background_layer_group = "water-overlay"
+  t.background_layer_group = "water"
+  t.background_layer_offset = -5
+  t.masked_background_layer_offset = 1
+  t.offset_background_layer_by_tile_layer = false
+  --return append_transition_mask_template("__base__/graphics/terrain/masks/transition-5.png",
+  --                                       "__base__/graphics/terrain/masks/hr-transition-5.png",
+  --                                       { mask_variations = 1, mask_suffix = "background_mask" },
+  --                                       t)
+
+  return append_transition_mask_white({ mask_suffix = "background_mask" }, t)
+end
 
 local sand_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
     water_tile_type_names,
     "__base__/graphics/terrain/water-transitions/sand.png",
     "__base__/graphics/terrain/water-transitions/hr-sand.png",
     {
+      effect_map = ttfxmaps.water_sand,
       o_transition_tall = false,
       u_transition_tall = false,
       side_tall = false,
@@ -592,20 +864,24 @@ local sand_transitions =
       u_transition_count = 4,
       o_transition_count = 8,
       --base = init_transition_between_transition_common_options()
+      base = get_sand_transition_base_with_underwater_background()
     }
   ),
-  out_of_map_transition
+  ground_to_out_of_map_transition
 }
 
 local sand_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  --generic_transition_between_transitions_template
+  make_generic_transition_template --(nil, group1, group2, normal_res_transition, high_res_transition, options, true, true, true)
   (
+    nil,
     default_transition_group_id,
     water_transition_group_id,
     "__base__/graphics/terrain/water-transitions/sand-transition.png",
     "__base__/graphics/terrain/water-transitions/hr-sand-transition.png",
     {
+      effect_map = ttfxmaps.water_sand_to_land,
       side_tall = false,
       inner_corner_tall = false,
       outer_corner_tall = false,
@@ -614,8 +890,11 @@ local sand_transitions_between_transitions =
       side_count = 3,
       u_transition_count = 1,
       o_transition_count = 0,
-      base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
-    }
+      base = { water_patch = patch_for_inner_corner_of_transition_between_transition, --[[ background_for_water_effect = true --]] }
+    },
+    true,
+    false,
+    true
   ),
   make_generic_transition_template
   (
@@ -637,61 +916,81 @@ local sand_transitions_between_transitions =
     true,
     true
   ),
-  generic_transition_between_transitions_template
+  make_generic_transition_template --generic_transition_between_transitions_template
   (
+      nil, --
       water_transition_group_id,
       out_of_map_transition_group_id,
       "__base__/graphics/terrain/out-of-map-transition/sand-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-sand-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_sand_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
-      }
+        base = init_transition_between_transition_common_options(
+                 get_sand_transition_base_with_underwater_background(
+                   { water_patch = patch_for_inner_corner_of_transition_between_transition,
+                     --overlay_layer_offset = 0,
+                     --masked_material_layer_offset = 1
+                   }))
+      },
+      true,
+      true,
+      true
   ),
 }
 
+-- ~~~GRASS
+
 local grass_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
     water_tile_type_names,
     "__base__/graphics/terrain/water-transitions/grass.png",
     "__base__/graphics/terrain/water-transitions/hr-grass.png",
     {
+      effect_map = ttfxmaps.water_grass,
       o_transition_tall = false,
       u_transition_count = 4,
       o_transition_count = 8,
       base =
       {
-        side_weights = { 1, 1, 1, 1,  0.25, 0.25, 1, 1,  1, 1, 0.125, 0.25,  1, 1, 1, 1 }
-      }
+        side_weights = { 1, 1, 1, 1,  0.25, 0.25, 1, 1,  1, 1, 0.125, 0.25,  1, 1, 1, 1 },
+        --background_for_water_effect = true
+      },
     }
   ),
-  out_of_map_transition
+  ground_to_out_of_map_transition
 }
 
 local grass_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  --generic_transition_between_transitions_template
+  make_generic_transition_template --(nil, group1, group2, normal_res_transition, high_res_transition, options, true, true, true)
   (
+      nil,
       default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/grass-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-grass-transition.png",
       {
+        effect_map = ttfxmaps.water_grass_to_land,
         inner_corner_tall = true,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
-      }
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, --[[ background_for_water_effect = true --]] }
+      },
+      true,
+      false,
+      true
   ),
   make_generic_transition_template
   (
@@ -721,16 +1020,19 @@ local grass_transitions_between_transitions =
       "__base__/graphics/terrain/out-of-map-transition/grass-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-grass-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_grass_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+        base = init_transition_between_transition_water_out_of_map_options()
       }
   ),
 }
+
+-- ~~~DIRT_DRY
 
 local dirt_out_of_map_transition =
   make_generic_transition_template
@@ -756,12 +1058,13 @@ local dirt_out_of_map_transition =
 
 local dry_dirt_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
     water_tile_type_names,
     "__base__/graphics/terrain/water-transitions/dry-dirt.png",
     "__base__/graphics/terrain/water-transitions/hr-dry-dirt.png",
     {
+      effect_map = ttfxmaps.water_dirt,
       o_transition_tall = false,
       u_transition_count = 2,
       o_transition_count = 4,
@@ -770,18 +1073,20 @@ local dry_dirt_transitions =
       inner_corner_count = 8
     }
   ),
-  out_of_map_transition
+  ground_to_out_of_map_transition
 }
 
 local dry_dirt_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  make_generic_transition_template --generic_transition_between_transitions_template
   (
+      nil,
       default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/dry-dirt-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-dry-dirt-transition.png",
       {
+        effect_map = ttfxmaps.water_dirt_to_land,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
@@ -789,7 +1094,10 @@ local dry_dirt_transitions_between_transitions =
         u_transition_count = 1,
         o_transition_count = 0,
         base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
-      }
+      },
+      true,
+      false,
+      true
   ),
   dirt_out_of_map_transition,
   generic_transition_between_transitions_template
@@ -799,25 +1107,29 @@ local dry_dirt_transitions_between_transitions =
       "__base__/graphics/terrain/out-of-map-transition/dry-dirt-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-dry-dirt-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_dirt_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+        base = init_transition_between_transition_water_out_of_map_options()
       }
   ),
 }
 
+-- ~~~DIRT_DARK
+
 local dark_dirt_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
       water_tile_type_names,
       "__base__/graphics/terrain/water-transitions/dark-dirt.png",
       "__base__/graphics/terrain/water-transitions/hr-dark-dirt.png",
       {
+        effect_map = ttfxmaps.water_dirt,
         o_transition_tall = false,
         u_transition_count = 2,
         o_transition_count = 4,
@@ -826,18 +1138,20 @@ local dark_dirt_transitions =
         inner_corner_count = 8
       }
   ),
-  out_of_map_transition
+  ground_to_out_of_map_transition
 }
 
 local dark_dirt_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  make_generic_transition_template --generic_transition_between_transitions_template
   (
+      nil,
       default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/dark-dirt-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-dark-dirt-transition.png",
       {
+        effect_map = ttfxmaps.water_dirt_to_land,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
@@ -845,7 +1159,10 @@ local dark_dirt_transitions_between_transitions =
         u_transition_count = 1,
         o_transition_count = 0,
         base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
-      }
+      },
+      true,
+      false,
+      true
   ),
   dirt_out_of_map_transition,
   generic_transition_between_transitions_template
@@ -855,25 +1172,29 @@ local dark_dirt_transitions_between_transitions =
       "__base__/graphics/terrain/out-of-map-transition/dark-dirt-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-dark-dirt-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_dirt_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+        base = init_transition_between_transition_water_out_of_map_options()
       }
   ),
 }
 
+-- ~~~DIRT_LANDFILL
+
 local landfill_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
       water_tile_type_names,
       "__base__/graphics/terrain/water-transitions/landfill.png",
       "__base__/graphics/terrain/water-transitions/hr-landfill.png",
       {
+        effect_map = ttfxmaps.water_dirt,
         o_transition_tall = false,
         u_transition_count = 2,
         o_transition_count = 4,
@@ -882,18 +1203,20 @@ local landfill_transitions =
         inner_corner_count = 8
       }
   ),
-  out_of_map_transition
+  ground_to_out_of_map_transition
 }
 
 local landfill_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  make_generic_transition_template --generic_transition_between_transitions_template
   (
+      nil,
       default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/landfill-transition.png",
       "__base__/graphics/terrain/water-transitions/hr-landfill-transition.png",
       {
+        effect_map = ttfxmaps.water_dirt_to_land,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
@@ -901,7 +1224,10 @@ local landfill_transitions_between_transitions =
         u_transition_count = 1,
         o_transition_count = 0,
         base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
-      }
+      },
+      true,
+      false,
+      true
   ),
   dirt_out_of_map_transition,
   generic_transition_between_transitions_template
@@ -911,25 +1237,29 @@ local landfill_transitions_between_transitions =
       "__base__/graphics/terrain/out-of-map-transition/landfill-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-landfill-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_dirt_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+        base = init_transition_between_transition_water_out_of_map_options()
       }
   ),
 }
 
+-- ~~~STONE_CONCRETE
+
 local concrete_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
       water_tile_type_names,
       "__base__/graphics/terrain/water-transitions/concrete.png",
       "__base__/graphics/terrain/water-transitions/hr-concrete.png",
       {
+        effect_map = ttfxmaps.water_stone,
         o_transition_tall = false,
         u_transition_count = 4,
         o_transition_count = 4,
@@ -944,20 +1274,25 @@ local concrete_transitions =
 
 local concrete_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  make_generic_transition_template -- generic_transition_between_transitions_template
   (
+      nil,
       default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/concrete-transitions.png",
       "__base__/graphics/terrain/water-transitions/hr-concrete-transitions.png",
       {
+        effect_map = ttfxmaps.water_stone_to_land,
         inner_corner_tall = true,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0
-      }
+      },
+      true,
+      false,
+      true
   ),
   make_generic_transition_template
   (
@@ -986,25 +1321,29 @@ local concrete_transitions_between_transitions =
       "__base__/graphics/terrain/out-of-map-transition/concrete-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-concrete-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_stone_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+        base = init_transition_between_transition_water_out_of_map_options()
       }
   ),
 }
 
+-- ~~~STONE_STONE_PATH
+
 local stone_path_transitions =
 {
-  water_transition_template
+  water_transition_template_with_effect
   (
       water_tile_type_names,
       "__base__/graphics/terrain/water-transitions/stone-path.png",
       "__base__/graphics/terrain/water-transitions/hr-stone-path.png",
       {
+        effect_map = ttfxmaps.water_stone,
         o_transition_tall = false,
         u_transition_count = 4,
         o_transition_count = 4,
@@ -1019,20 +1358,25 @@ local stone_path_transitions =
 
 local stone_path_transitions_between_transitions =
 {
-  generic_transition_between_transitions_template
+  make_generic_transition_template
   (
+      nil,
       default_transition_group_id,
       water_transition_group_id,
       "__base__/graphics/terrain/water-transitions/stone-path-transitions.png",
       "__base__/graphics/terrain/water-transitions/hr-stone-path-transitions.png",
       {
+        effect_map = ttfxmaps.water_stone_to_land,
         inner_corner_tall = true,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0
-      }
+      },
+      true,
+      false,
+      true
   ),
   make_generic_transition_template
   (
@@ -1062,13 +1406,14 @@ local stone_path_transitions_between_transitions =
       "__base__/graphics/terrain/out-of-map-transition/stone-path-shore-out-of-map-transition.png",
       "__base__/graphics/terrain/out-of-map-transition/hr-stone-path-shore-out-of-map-transition.png",
       {
+        effect_map = ttfxmaps.water_stone_to_out_of_map,
         o_transition_tall = false,
         inner_corner_count = 3,
         outer_corner_count = 3,
         side_count = 3,
         u_transition_count = 1,
         o_transition_count = 0,
-        base = init_transition_between_transition_common_options({ water_patch = patch_for_inner_corner_of_transition_between_transition, })
+        base = init_transition_between_transition_water_out_of_map_options()
       },
       true,
       true,
@@ -1123,6 +1468,7 @@ define_tiles
   {
     name = "deepwater",
     type = "tile",
+    transition_merges_with_tile = "water",
     collision_mask =
     {
       "water-tile",
@@ -1132,6 +1478,8 @@ define_tiles
       "doodad-layer"
     },
     autoplace = make_water_autoplace_settings(-2, 200),
+    effect = "water",
+    effect_color = {0.135, 0.507, 0.583},--{ 23, 111, 129 }, -- { 30, 76, 94 }
     draw_in_water_layer = true,
     layer = 3,
     variants =
@@ -1175,64 +1523,10 @@ define_tiles
           }
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/deepwater/deepwater-inner-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater/hr-deepwater-inner-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/deepwater/deepwater-outer-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater/hr-deepwater-outer-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/deepwater/deepwater-side.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater/hr-deepwater-side.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      u_transition =
-      {
-        picture = "__base__/graphics/terrain/deepwater/deepwater-u.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater/hr-deepwater-u.png",
-          count = 1,
-          scale = 0.5
-        }
-      },
-      o_transition =
-      {
-        picture = "__base__/graphics/terrain/deepwater/deepwater-o.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater/hr-deepwater-o.png",
-          count = 1,
-          scale = 0.5
-        }
-      }
+      empty_transitions = true
     },
-    transitions = { deepwater_out_of_map_transition },
-    transitions_between_transitions = deepwater_transitions_between_transitions,
+    --transitions = { deepwater_out_of_map_transition },
+    --transitions_between_transitions = deepwater_transitions_between_transitions,
     allowed_neighbors = { "water" },
     map_color={r=38, g=64, b=73},
     pollution_absorption_per_second = water_pollution_absorption
@@ -1240,6 +1534,7 @@ define_tiles
   {
     name = "deepwater-green",
     type = "tile",
+    transition_merges_with_tile = "water",
     collision_mask =
     {
       "water-tile",
@@ -1248,8 +1543,10 @@ define_tiles
       "player-layer",
       "doodad-layer"
     },
+    effect = "water",
+    effect_color = { 45, 68, 25 },
     draw_in_water_layer = true,
-    layer = 4,
+    layer = 3,
     variants =
     {
       main =
@@ -1291,64 +1588,8 @@ define_tiles
           }
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-inner-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-inner-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-outer-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-outer-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-side.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-side.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      u_transition =
-      {
-        picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-u.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-u.png",
-          count = 1,
-          scale = 0.5
-        }
-      },
-      o_transition =
-      {
-        picture = "__base__/graphics/terrain/deepwater-green/deepwater-green-o.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green-o.png",
-          count = 1,
-          scale = 0.5
-        }
-      }
+      empty_transitions = true,
     },
-    transitions = { deepwater_green_out_of_map_transition },
-    transitions_between_transitions = deepwater_green_transitions_between_transitions,
     allowed_neighbors = { "water-green" },
     map_color={r=0.0941, g=0.149, b=0.066},
     pollution_absorption_per_second = water_pollution_absorption
@@ -1366,8 +1607,10 @@ define_tiles
       "doodad-layer"
     },
     autoplace = make_water_autoplace_settings(0, 100),
+    effect = "water",
+    effect_color = { 21, 147, 167 },
     draw_in_water_layer = true,
-    layer = 1,
+    layer = 3,
     variants =
     {
       main =
@@ -1465,9 +1708,7 @@ define_tiles
         }
       },
     },
-    transitions = { water_out_of_map_transition },
-    --transitions_between_transitions = water_transitions_between_transitions,
-    --allowed_neighbors = { "deepwater" },
+    transitions = { water_to_out_of_map_transition },
     map_color={r=51, g=83, b=95},
     pollution_absorption_per_second = water_pollution_absorption
   },
@@ -1475,6 +1716,7 @@ define_tiles
   {
     name = "water-green",
     type = "tile",
+    transition_merges_with_tile = "water",
     collision_mask =
     {
       "water-tile",
@@ -1483,8 +1725,10 @@ define_tiles
       "player-layer",
       "doodad-layer"
     },
+    effect = "water",
+    effect_color = { 49, 80, 14 },
     draw_in_water_layer = true,
-    layer = 2,
+    layer = 3,
     variants =
     {
       main =
@@ -1526,64 +1770,8 @@ define_tiles
           }
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/water-green/water-green-inner-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water-green/hr-water-green-inner-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/water-green/water-green-outer-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water-green/hr-water-green-outer-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/water-green/water-green-side.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water-green/hr-water-green-side.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      u_transition =
-      {
-        picture = "__base__/graphics/terrain/water-green/water-green-u.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water-green/hr-water-green-u.png",
-          count = 1,
-          scale = 0.5
-        }
-      },
-      o_transition =
-      {
-        picture = "__base__/graphics/terrain/water-green/water-green-o.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water-green/hr-water-green-o.png",
-          count = 1,
-          scale = 0.5
-        }
-      }
+      empty_transitions = true
     },
-    transitions = { water_green_out_of_map_transition },
-    transitions_between_transitions = water_green_transitions_between_transitions,
     allowed_neighbors = { "water" },
     map_color={r=31, g=48, b=18},
     pollution_absorption_per_second = water_pollution_absorption
@@ -1592,6 +1780,7 @@ define_tiles
   {
     name = "water-shallow",
     type = "tile",
+    transition_merges_with_tile = "water",
     collision_mask =
     {
       -- Character collides only with player-layer and train-layer,
@@ -1599,15 +1788,18 @@ define_tiles
       -- Having water-tile prevents placing paths, ground-tile prevents placing landfill.
       -- Not sure what other side effects could different combinations of tile masks cause.
       "water-tile",
-      "ground-tile",
+      --"ground-tile",
       "item-layer",
       "resource-layer",
       "object-layer"
       --"doodad-layer"
     },
+    walking_sound = shallow_water_sound,
     draw_in_water_layer = true,
     layer = 6,
     walking_speed_modifier = 0.8,
+    effect = "water",
+    effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
     variants =
     {
       main =
@@ -1705,7 +1897,7 @@ define_tiles
         }
       }
     },
-    transitions = { water_shallow_out_of_map_transition },
+    transitions = { water_shallow_to_out_of_map_transition },
     transitions_between_transitions = water_shallow_transitions_between_transitions,
     allowed_neighbors = { "water-mud" },
     map_color={r=82, g=98, b=92},
@@ -1714,6 +1906,7 @@ define_tiles
   {
     name = "water-mud",
     type = "tile",
+    transition_merges_with_tile = "water",
     collision_mask =
     {
       -- Player collides only with player-layer and train-layer,
@@ -1721,15 +1914,18 @@ define_tiles
       -- Having water-tile prevents placing paths, ground-tile prevents placing landfill.
       -- Not sure what other side effects could different combinations of tile masks cause.
       "water-tile",
-      "ground-tile",
+      --"ground-tile",
       "item-layer",
       "resource-layer",
       "object-layer"
       --"doodad-layer"
     },
+    walking_sound = shallow_water_sound,
     draw_in_water_layer = true,
     layer = 15,
     walking_speed_modifier = 0.7,
+    effect = "water",
+    effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
     variants =
     {
       main =
@@ -1827,9 +2023,9 @@ define_tiles
         }
       }
     },
-    transitions = { water_shallow_out_of_map_transition },
+    transitions = { water_shallow_to_out_of_map_transition },
     transitions_between_transitions = water_mud_transitions_between_transitions,
-    allowed_neighbors = { "water", "water-shallow" },
+    allowed_neighbors = { "water-shallow" },
     map_color={r=65, g=89, b=90},
     pollution_absorption_per_second = water_pollution_absorption
   },
@@ -1855,26 +2051,8 @@ define_tiles
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=53, g=52, b=27},
+    walking_sound = grass_sounds,
+    map_color={r=55, g=53, b=11},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
@@ -1900,26 +2078,8 @@ define_tiles
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=57, g=54, b=35},
+    walking_sound = grass_sounds,
+    map_color={r=66, g=57, b=15},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
@@ -1946,26 +2106,8 @@ define_tiles
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=59, g=56, b=41},
+    walking_sound = grass_sounds,
+    map_color={r=65, g=52, b=28},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
@@ -1991,26 +2133,8 @@ define_tiles
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=54, g=47, b=35},
+    walking_sound = grass_sounds,
+    map_color={r=59, g=40, b=18},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
@@ -2037,22 +2161,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=108, g=92, b=71},
+    walking_sound = dirt_sounds,
+    map_color={r=94, g=66, b=37},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2078,22 +2188,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=119, g=104, b=85},
+    walking_sound = sand_sounds,
+    map_color={r=141, g=104, b=60},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2119,22 +2215,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=109, g=94, b=75},
+    walking_sound = sand_sounds,
+    map_color={r=136, g=96, b=59},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2160,22 +2242,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=99, g=85, b=65},
+    walking_sound = sand_sounds,
+    map_color={r=133, g=92, b=53},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2201,22 +2269,8 @@ define_tiles
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=89, g=74, b=57},
+    walking_sound = dirt_sounds,
+    map_color={r=103, g=72, b=43},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2242,22 +2296,8 @@ define_tiles
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=97, g=83, b=67},
+    walking_sound = dirt_sounds,
+    map_color={r=91, g=63, b=38},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2283,22 +2323,8 @@ define_tiles
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=77, g=65, b=53},
+    walking_sound = dirt_sounds,
+    map_color={r=80, g=55, b=31},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2324,22 +2350,8 @@ define_tiles
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=60, g=51, b=41},
+    walking_sound = dirt_sounds,
+    map_color={r=80, g=54, b=28},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier
   },
@@ -2371,26 +2383,8 @@ define_tiles
     transitions = sand_transitions,
     transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/sand-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=145, g=129, b=104},
+    walking_sound = sand_sounds,
+    map_color={r=138, g=103, b=58},
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
@@ -2416,26 +2410,8 @@ define_tiles
     transitions = sand_transitions,
     transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/sand-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=130, g=114, b=90},
+    walking_sound = sand_sounds,
+    map_color={r=128, g=93, b=52},
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
@@ -2461,26 +2437,8 @@ define_tiles
     transitions = sand_transitions,
     transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/sand-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/sand-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=124, g=108, b=86},
+    walking_sound = sand_sounds,
+    map_color={r=115, g=83, b=47 },
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier
   },
@@ -2508,26 +2466,8 @@ define_tiles
     --transitions = sand_transitions,
     --transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=91, g=74, b=56},
+    walking_sound = sand_sounds,
+    map_color={r=103, g=70, b=32},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
@@ -2554,26 +2494,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=107, g=87, b=71},
+    walking_sound = sand_sounds,
+    map_color={r=116, g=81, b=39},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
@@ -2600,26 +2522,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=120, g=94, b=78},
+    walking_sound = sand_sounds,
+    map_color={r=116, g=84, b=43},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false
@@ -2646,26 +2550,8 @@ define_tiles
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/grass-01.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/grass-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=114, g=86, b=75},
+    walking_sound = sand_sounds,
+    map_color={r=128, g=93, b=52},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
@@ -2792,26 +2678,8 @@ define_tiles
     transitions = stone_path_transitions,
     transitions_between_transitions = stone_path_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=50, g=50, b=50},
+    walking_sound = concrete_sounds,
+    map_color={r=86, g=82, b=74},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = stone_path_vehicle_speed_modifier
   },
@@ -2832,26 +2700,8 @@ define_tiles
       },
       empty_transitions = true
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0, g=0, b=0},
+    walking_sound = concrete_sounds,
+    map_color={r=49, g=49, b=49},
     pollution_absorption_per_second = 0
   },
   {
@@ -2871,26 +2721,8 @@ define_tiles
       },
       empty_transitions = true
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0.2, g=0.2, b=0.2},
+    walking_sound = concrete_sounds,
+    map_color={r=0, g=0, b=0},
     pollution_absorption_per_second = 0
   },
   {
@@ -2910,25 +2742,7 @@ define_tiles
       },
       empty_transitions = true
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
+    walking_sound = concrete_sounds,
     map_color={r=1, g=1, b=1},
     pollution_absorption_per_second = 0
   },
@@ -3030,26 +2844,8 @@ define_tiles
         }
       }
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0, g=0, b=0},
+    walking_sound = concrete_sounds,
+    map_color={r=122, g=122, b=122},
     pollution_absorption_per_second = 0
   },
 
@@ -3218,26 +3014,8 @@ define_tiles
     transitions = concrete_transitions,
     transitions_between_transitions = concrete_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=100, g=100, b=100},
+    walking_sound = concrete_sounds,
+    map_color={r=63, g=61, b=59},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
   },
@@ -3347,26 +3125,8 @@ define_tiles
         }
       }
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0.5, g=0.5, b=0},
+    walking_sound = concrete_sounds,
+    map_color={r=176, g=142, b=39},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
   },
@@ -3445,26 +3205,8 @@ define_tiles
         }
       }
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0.5, g=0.5, b=0},
+    walking_sound = concrete_sounds,
+    map_color={r=176, g=142, b=39},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
   },
@@ -3637,23 +3379,51 @@ define_tiles
     walking_sound =
     {
       {
-        filename = "__base__/sound/walking/concrete-01.ogg",
+        filename = "__base__/sound/walking/refined-concrete-01.ogg",
         volume = 1.0
       },
       {
-        filename = "__base__/sound/walking/concrete-02.ogg",
+        filename = "__base__/sound/walking/refined-concrete-02.ogg",
         volume = 1.0
       },
       {
-        filename = "__base__/sound/walking/concrete-03.ogg",
+        filename = "__base__/sound/walking/refined-concrete-03.ogg",
         volume = 1.0
       },
       {
-        filename = "__base__/sound/walking/concrete-04.ogg",
+        filename = "__base__/sound/walking/refined-concrete-04.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-05.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-06.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-07.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-08.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-09.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-10.ogg",
+        volume = 1.0
+      },
+      {
+        filename = "__base__/sound/walking/refined-concrete-11.ogg",
         volume = 1.0
       }
     },
-    map_color={r=100, g=100, b=100},
+    map_color={r=49, g=48, b=45},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
   },
@@ -3763,26 +3533,8 @@ define_tiles
         }
       }
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0.5, g=0.5, b=0},
+    walking_sound = concrete_sounds,
+    map_color={r=116, g=94, b=26},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
   },
@@ -3861,26 +3613,8 @@ define_tiles
         }
       }
     },
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/concrete-04.ogg",
-        volume = 1.0
-      }
-    },
-    map_color={r=0.5, g=0.5, b=0},
+    walking_sound = concrete_sounds,
+    map_color={r=116, g=94, b=26},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
   },
@@ -3893,7 +3627,10 @@ define_tiles
     transitions = landfill_transitions,
     transitions_between_transitions = landfill_transitions_between_transitions,
 
-    variants =
+    variants = append_transition_mask_template(
+    "__base__/graphics/terrain/masks/transition-1.png",
+    "__base__/graphics/terrain/masks/hr-transition-1.png",
+    nil,
     {
       main =
       {
@@ -3916,75 +3653,6 @@ define_tiles
         }
       },
 
-      inner_corner_mask =
-      {
-        picture = "__base__/graphics/terrain/masks/transition-1.png",
-        count = 8,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
-          count = 8,
-          scale = 0.5
-        }
-      },
-
-      outer_corner_mask =
-      {
-        picture = "__base__/graphics/terrain/masks/transition-1.png",
-        x = 32 * 9,
-        count = 8,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
-          x = 64 * 9,
-          count = 8,
-          scale = 0.5
-        }
-      },
-
-      side_mask =
-      {
-        picture = "__base__/graphics/terrain/masks/transition-1.png",
-        x = 32 * 18,
-        count = 8,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
-          x = 64 * 18,
-          count = 8,
-          scale = 0.5
-        }
-      },
-
-      u_transition_mask =
-      {
-        picture = "__base__/graphics/terrain/masks/transition-1.png",
-        x = 32 * 27,
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
-          x = 64 * 27,
-          count = 1,
-          scale = 0.5
-        }
-      },
-
-      o_transition_mask =
-      {
-        picture = "__base__/graphics/terrain/masks/transition-1.png",
-        x = 32 * 36,
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/masks/hr-transition-1.png",
-          x = 64 * 36,
-          count = 1,
-          scale = 0.5
-        }
-      },
-
-
       material_background =
       {
         picture = "__base__/graphics/terrain/landfill.png",
@@ -3996,24 +3664,38 @@ define_tiles
           scale = 0.5
         }
       }
-    },
+    }),
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/dirt-02.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-03.ogg",
-        volume = 0.8
-      },
-      {
-        filename = "__base__/sound/walking/dirt-04.ogg",
-        volume = 0.8
-      }
-    },
-    map_color={r=54, g=46, b=37},
+    walking_sound = dirt_sounds,
+    map_color={r=57, g=39, b=26},
     pollution_absorption_per_second = 0
   },
 }
+
+data:extend(
+{
+  {
+    type = "tile-effect",
+    name = "water",
+    texture =
+    {
+      filename = "__base__/graphics/terrain/effects/water-noise.png",
+      width = 512,
+      height = 512
+    },
+    specular_lightness = { 46, 51, 48 },
+    foam_color = { 230, 255, 252 },
+    foam_color_multiplier = 2.470,
+
+    animation_speed = 0.07,
+    animation_scale = { 0.006, 0.006 },
+
+    dark_threshold = { 0.359, 0.289 },
+    reflection_threshold = { 0.056, 0.056 },
+    specular_threshold = { 0.291, 0.291 },
+    tick_scale = 0.09,
+
+    near_zoom = 2,
+    far_zoom = 0.5
+  }
+})

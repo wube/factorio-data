@@ -1,6 +1,147 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.17.80
+Version: 0.18.1
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.0
+Date: 21. 01. 2020
+  Features:
+    - Steam users can now log in automatically through Steam without needing their Factorio account password.
+    - Steam users without a Factorio account can create one by providing only a username.
+    - Reworked main menu structure.
+      - Added a "Continue" button which quickly loads the latest save game.
+      - Added a "New Game" GUI that shows all the ways to play the game
+    - Added a setting to the map editor to show/hide the extra entity settings.
+    - Added a map editor GUI to edit force data modifiers.
+    - Added a PvP team option to create a moat around the starting area.
+  Graphics:
+    - Added animation to water.
+    - Added animation to trees.
+    - Added LUTs and color corrected the game sprites.
+    - Added sliders to the graphics settings to adjust brightness, contrast, and saturation.
+    - Added on damaged effects for most entities.
+    - Added specific dying explosions for most entities.
+  Sounds:
+    - New or updated sound effects include:
+      - Nuclear reactor, chemical plant, furnace, fire, burner mining drill.
+      - Tank.
+      - Mining by hand, chopping wood
+      - Roboport door, Combat robots
+      - Player footsteps.
+      - Biter and Spitter footsteps.
+      - Worm breathing, Spitters and Biters, idling and attacking.
+    - New sound features include:
+      - The ability to fade out sounds instead of a sudden stop, e.g. for the furnace.
+      - Varying the pitch of sounds to a min/max level, to add more variety.
+      - A 'Random, no repeat' feature to reduce repetition, especially on sounds that happen frequently, such as player steps.
+    - The sound for the game has also been rebalanced to highlight certain sounds and make others fade into the distance.
+    - The default sound settings have also been updated to improve this mix.
+  Optimizations:
+    - Optimized particle logic.
+    - Improved performance when side-loading transport belts.
+    - Improved performance of inserters interacting with assembling machines and furnaces.
+    - Improved performance of inserters when the circuit network turns them off.
+    - Improved performance of mining drills and inserters in general.
+    - Improved performance of burner entities.
+    - Improved performance polluting entities.
+    - Improved performance of smoke producing entities.
+    - Improved performance logistic and construction robot performance when they're flying towards their target.
+    - Improved performance of furnaces and assembling machines that use fluids.
+    - Improved heat pipe performance by 3x.
+    - Improved item request proxy performance by turning them off in 99%+ of the cases.
+    - Improved locomotive, cargo wagon, and fluid wagon performance by turning them off in 99%+ of the cases.
+    - Electric networks, fluids, and heat pipes are updated in parallel if you have enough cores.
+    - Improved script rendering performance for text and lines.
+    - Improved performance of rotated bounding boxes.
+  Bugfixes:
+    - Fixed the recipe tooltip showing negative values for some complex recipes.  (https://forums.factorio.com/77512)
+    - Fixed graphical glitch when GUI element with blurred background got out of bounds of the screen. (https://forums.factorio.com/78278)
+    - Fixed hard coded English string in NPE. (https://forums.factorio.com/78203)
+    - Fixed potential crash in NPE when Compilatron is pointing at something that gets deleted. (https://forums.factorio.com/77669)
+    - Fixed issue where sometimes you couldn't move to the second area in NPE. (https://forums.factorio.com/77763)
+    - Fixed issue where Compilatron would sometimes tell you to build more boilers when that was not the problem. (https://forums.factorio.com/77931)
+    - Fixed issue where Compilatron's speech bubbles could block you from interacting with the world behind him. (https://forums.factorio.com/77616)
+    - Fixed items with excessively long names squashing the count label in the recipe tooltips. (https://forums.factorio.com/78274)
+    - Fixed accumulator charge text in statistics bouncing around because of inconsistent number of digits. (https://forums.factorio.com/78274)
+    - Fixed train path finding penalty when there are 2 or more trains in block. (https://forums.factorio.com/78336)
+    - Fixed a crash when creating trains during the player moved event that was caused by the player getting ejected from a vehicle because the vehicle died. (https://forums.factorio.com/78620)
+    - Fixed a crash when removing mods that had custom GUI elements. (https://forums.factorio.com/78550)
+    - Fixed a crash when using Lua event filters when the thing to be filtered becomes invalid. (https://forums.factorio.com/78559)
+    - Fixed that some turret sounds could be heard on other surfaces. (https://forums.factorio.com/78503)
+    - Fixed that the tooltip for the generator would not show its efficiency correctly. (https://forums.factorio.com/78226)
+    - Fixed a crash related to building tiles in multiplayer with some mods. (https://forums.factorio.com/78552)
+    - Fixed that turrets would sometimes fail to attack things that are in range. (https://forums.factorio.com/78789)
+    - Fixed follower robot lifetime tooltip property not taking into account following_robots_lifetime_modifier. (https://forums.factorio.com/78842)
+    - Fixed cliffs sometimes getting marked for deconstruction when they shouldn't have been. (https://forums.factorio.com/78504)
+    - Fixed inconsistent rounding in the statistics window. (https://forums.factorio.com/78370)
+    - Fixed a desync when setting .active=false on beacons through script. (https://forums.factorio.com/78469)
+    - The map will be re-charted when the mod configuration changes. (https://forums.factorio.com/78868)
+    - Fixed inserters sometimes not being highlighted when selecting a large modded vehicle. (https://forums.factorio.com/78633)
+    - Fixed a crash when entity grid would destroy itself during update. (https://forums.factorio.com/78887)
+    - Fixed a crash with rich text tags and dynamic images. (https://forums.factorio.com/78980)
+    - Fixed setting the held stack of an inserter didn't update the inserter state correctly. (https://forums.factorio.com/79031)
+    - Fixed tooltip alignment in some specific cases. (https://forums.factorio.com/77904)
+    - Fixed a crash when lua removes pipe-to-ground between entity revive and deferred pipe connection fix. (https://forums.factorio.com/79113)
+    - Fixed a crash when setting infinity chest filters to legacy items. (https://forums.factorio.com/79453)
+    - Fixed that splitters could be set to have invalid bounding boxes that would lead to corrupt saves. (https://forums.factorio.com/78225)
+    - Fixed word wrapping of rich text containing tag that doesn't fit given width would duplicate the tag on multiple lines. (https://forums.factorio.com/79174)
+    - Fixed if migrating old achievement data to Steam Cloud failed, the old file would not be deleted resulting in the same error on every startup. (https://forums.factorio.com/79644)
+    - Fixed train pathfinding penalty for circuit network closed rail signal was not applied in some cases. (https://forums.factorio.com/79640)
+    - Fixed a crash when mods would define construction robots without some sprites. (https://forums.factorio.com/79697)
+    - Fixed that trying to do 0 damage would still trigger the entity-damaged event. (https://forums.factorio.com/79579)
+    - Fixed a save corruption issue related to modded loaders with different belt_distance values. (https://forums.factorio.com/79200)
+    - Fixed that train would forget amount of ticks waiting at signal when doing repath. (https://forums.factorio.com/79640)
+    - Fixed that train pathfinder was not counting penalty of last segment length in path cost. (https://forums.factorio.com/78821)
+    - Fixed PvP error on configuration changed. (https://forums.factorio.com/79296)
+    - Fixed pump tooltip showing double pumped amount when pumping to fluid wagon. (https://forums.factorio.com/79942)
+    - Fixed manual ghost revive of a loader in unload mode would not work in visually matching direction. (https://forums.factorio.com/79124)
+    - Fixed calling LuaEntity::order_deconstruction() on item-request-proxy would corrupt the game state leading to crash. (https://forums.factorio.com/80096)
+    - Landfill can be placed over shallow water.
+    - Fixed that LuaEntity::color wouldn't accept "nil" to reset the color. (https://forums.factorio.com/80172)
+    - Fixed that train pathfinder was not counting penalty of opposite train stop at last segment.
+    - Fixed that train pathfinder was counting penalty of whole starting segment instead of only part in front of locomotive. (https://forums.factorio.com/79951)
+    - Fixed that train pathfinder would return single segment path even if there are shorter, multi segment ones. (https://forums.factorio.com/79951)
+    - Fixed technology screen not showing modifier tooltips when tooltip descriptions are disabled. (https://forums.factorio.com/79499)
+    - Fixed belt tooltips sometimes showing their speed in exponent format. (https://forums.factorio.com/79100)
+  Modding:
+    - Added UnitPrototype::light.
+    - Removed the "particle" prototype type.
+    - Added the "optimized-particle" prototype type.
+    - Added the "burner-generator" prototype type.
+    - Removed GeneratorPrototype::burner.
+    - Added the "pass_through_mouse" option to speech bubble styles. This lets mouse interactions fall through to interact with the world behind.
+    - Added optional "radius_color" property to capsule prototype.
+    - Removed EntityPrototype::emissions_per_tick, it is replaced by emissions_per_second.
+    - Removed EnergySourcePrototype::emissions_per_second_per_watt and emissions, they are replaced by emissions_per_minute.
+    - Removed TilePrototype::ageing, it is replaced by pollution_absorption_per_second.
+    - Removed ItemPrototype::stackable, primary_place_result_item and can_be_mod_opened, they were replaced by ItemPrototypeFlags "not-stackable", "primary-place-result" and "mod-openable".
+    - Added "probability" to trigger items and trigger effect items.
+    - Added "script" trigger effect item. It will call the "on_script_trigger_effect" when triggered.
+    - Added AttackParameters::rotate_penalty and AttackParameters::health_penalty.
+    - Added generic support for rendering radius visualisations on entities through radius_visualisation_specification.
+    - Changed construction robots and logistic robots sprites to be optional.
+    - Changed the loader prototype type so it has a fixed belt_distance of 0.5.
+    - Added the prototype type "loader-1x1" that has a fixed belt_distance of 0.
+    - Changed render layer of belt structures (underground belt, splitter, circuit connector) to object layer. They now have special sorting logic, so they are not rendered over player or cars.
+    - Horizontal directions of splitter sprites were separated to two sprites (for purposes of the special sorting logic).
+    - Added AttackParameters::ammo_categories.
+    - Added optional artillery projectile property "rotatable".
+    - Scenarios can now contain a description.json file. In the file "order" determines the sorting in the New Game gui; "multiplayer-compatible" determines weather the scenario is shown for multiplayer games.
+    - Added "multiplayer-compatible" to description.json file of campaigns also.
+  Scripting:
+    - Added on_unit_group_finished_gathering and on_build_base_arrived events.
+    - Added LuaRendering::bring_to_front().
+    - Changed LuaGameScript::particle_prototypes to reference the optimized-particle type.
+    - Added LuaGuiElement::scroll_to_item() function.
+    - Renamed LuaInventory::hasbar(), getbar() and setbar() to supports_bar(), get_bar() and set_bar().
+    - Added LuaEquipmentPrototype::attack_parameters read.
+    - Added on_script_trigger_effect event.
+    - Set lower limit of zoom parameter of LuaGameScript::take_screenshot to be 0.0315 (1 pixel per tile) instead of allowing any value greater than 0.
+    - Added LuaPlayer::get_infinity_inventory_filter(), set_infinity_inventory_filter() functions.
+    - Added LuaPlayer::remove_unfiltered_items, infinity_inventory_filters read/write.
+    - Added LuaSurface::get_entities_with_force().
+    - Added optional "dealer" parameter to LuaEntity::damage().
+    - Added "force" filters to the on_built_entity and on_robot_built_entity event filters.
+    - LuaSurface::min_brightness doesn't have any effect on rendering as brightness of night depends only on color LUT of night.
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.79
 Date: 19. 11. 2019

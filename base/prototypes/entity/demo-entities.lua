@@ -5,10 +5,35 @@ require ("prototypes.entity.demo-transport-belt-pictures")
 require ("circuit-connector-sprites")
 require ("prototypes.entity.demo-character-animations")
 
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
+
 if not data.is_demo then
   require ("prototypes.entity.assemblerpipes")
 end
 
+generic_impact_sound = function()
+  return
+  {
+    {
+      filename = "__base__/sound/car-metal-impact.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-2.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-3.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-4.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-5.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-6.ogg", volume = 0.5
+    }
+  }
+end
 
 local function scale_bounding_box(bb, scale)
   local orientation = bb[3] or 0
@@ -106,7 +131,7 @@ local function scaled_cliff(name, scale, fill_volume)
     type = "cliff",
     name = name,
     icon = "__base__/graphics/icons/cliff-icon.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "cliffs",
     flags = {"placeable-neutral"},
     -- generic collision box is intentionally small so you can place trees nearby in map editor
@@ -116,11 +141,11 @@ local function scaled_cliff(name, scale, fill_volume)
     selection_box = scale_bounding_box({{-1.5, -1.5}, {1.5, 1.5}}, scale),
     order = "b[decorative]-l[rock]-b[big]",
     selectable_in_game = false,
-    map_color = {r=0.4, g=0.3, b=0.2, a=0.75},
+    map_color = {r=144, g=119, b=87},
     grid_size = {4 * scale, 4 * scale},
     grid_offset = grid_offset,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
     cliff_explosive = "cliff-explosives",
     orientations =
     {
@@ -169,6 +194,60 @@ function make_unit_melee_ammo_type(damagevalue)
         }
       }
     }
+  }
+end
+
+function car_reflection(scale)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/car/car-reflection.png",
+      priority = "extra-high",
+      width = 20,
+      height = 24,
+      shift = util.by_pixel(0, 35),
+      variation_count = 1,
+      scale = 5 * scale,
+    },
+    rotate = true,
+    orientation_to_variation = false
+  }
+end
+
+function boiler_reflection()
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/boiler/boiler-reflection.png",
+      priority = "extra-high",
+      width = 28,
+      height = 32,
+      shift = util.by_pixel(5, 30),
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = true
+  }
+end
+
+function robot_reflection(scale)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/construction-robot/construction-robot-reflection.png",
+      priority = "extra-high",
+      width = 12,
+      height = 12,
+      shift = util.by_pixel(0, 105),
+      variation_count = 1,
+      scale = 5 * scale,
+    },
+    rotate = false,
+    orientation_to_variation = false
   }
 end
 
@@ -363,11 +442,11 @@ pipepictures = function()
       height = 64,
       hr_version =
       {
-         filename = "__base__/graphics/entity/pipe/hr-pipe-t-left.png",
-         priority = "extra-high",
-         width = 128,
-         height = 128,
-         scale = 0.5
+        filename = "__base__/graphics/entity/pipe/hr-pipe-t-left.png",
+        priority = "extra-high",
+        width = 128,
+        height = 128,
+        scale = 0.5
       }
     },
     cross =
@@ -399,7 +478,7 @@ pipepictures = function()
         height = 128,
         scale = 0.5
       }
-      },
+    },
     ending_down =
     {
       filename = "__base__/graphics/entity/pipe/pipe-ending-down.png",
@@ -536,35 +615,6 @@ pipepictures = function()
   }
 end
 
-function trivial_smoke(opts)
-  return
-  {
-    type = "trivial-smoke",
-    name = opts.name,
-    duration = opts.duration or 600,
-    fade_in_duration = opts.fade_in_duration or 0,
-    fade_away_duration = opts.fade_away_duration or ((opts.duration or 600) - (opts.fade_in_duration or 0)),
-    spread_duration = opts.spread_duration or 600,
-    start_scale = opts.start_scale or 0.20,
-    end_scale = opts.end_scale or 1.0,
-    color = opts.color,
-    cyclic = true,
-    affected_by_wind = opts.affected_by_wind or true,
-    animation =
-    {
-      width = 152,
-      height = 120,
-      line_length = 5,
-      frame_count = 60,
-      shift = {-0.53125, -0.4375},
-      priority = "high",
-      animation_speed = 0.25,
-      filename = "__base__/graphics/entity/smoke/smoke.png",
-      flags = { "smoke" }
-    }
-  }
-end
-
 local compilatron_animations =
 {
   walk =
@@ -691,15 +741,15 @@ function flying_robot_sounds()
   {
     sound =
     {
-      { filename = "__base__/sound/flying-robot-1.ogg", volume = 0.6 },
-      { filename = "__base__/sound/flying-robot-2.ogg", volume = 0.6 },
-      { filename = "__base__/sound/flying-robot-3.ogg", volume = 0.6 },
-      { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.6 },
-      { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.6 }
+      { filename = "__base__/sound/flying-robot-1.ogg", volume = 0.5 },
+      { filename = "__base__/sound/flying-robot-2.ogg", volume = 0.5 },
+      { filename = "__base__/sound/flying-robot-3.ogg", volume = 0.5 },
+      { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.5 },
+      { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.5 }
     },
     max_sounds_per_type = 3,
-    audible_distance_modifier = 0.5,
-    probability = 1 / (3 * 60) -- average pause between the sound is 3 seconds
+    audible_distance_modifier = 1,
+    probability = 1 / (6 * 60) -- average pause between the sound is 6 seconds
   }
 end
 
@@ -709,7 +759,7 @@ data:extend(
     type = "character-corpse",
     name = "character-corpse",
     icon = "__base__/graphics/icons/character.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     minable = {mining_time = 2},
     time_to_live = 15 * 60 * 60, -- 15 minutes
     selection_box = {{-0.7, -0.7}, {0.7, 0.7}},
@@ -761,7 +811,7 @@ data:extend(
     type = "character",
     name = "character",
     icon = "__base__/graphics/icons/character.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-off-grid", "breaths-air", "not-repairable", "not-on-map", "not-flammable"},
     max_health = 250,
     alert_when_damaged = false,
@@ -812,8 +862,8 @@ data:extend(
         type = "instant",
         target_effects =
         {
-            type = "damage",
-            damage = { amount = 8 , type = "physical"}
+          type = "damage",
+          damage = { amount = 8 , type = "physical"}
         }
       }
     },
@@ -857,6 +907,13 @@ data:extend(
             character_animations.level1.running_gun_shadow
           }
         },
+        flipped_shadow_running_with_gun =
+        {
+          layers =
+          {
+            character_animations.level1.running_gun_shadow_flipped
+          }
+        },
         running =
         {
           layers =
@@ -878,7 +935,8 @@ data:extend(
             character_animations.level1.idle_mask,
             character_animations.level2addon.idle,
             character_animations.level2addon.idle_mask,
-            character_animations.level1.idle_shadow
+            character_animations.level1.idle_shadow,
+            character_animations.level2addon.idle_shadow
           }
         },
         idle_with_gun =
@@ -889,7 +947,8 @@ data:extend(
             character_animations.level1.idle_gun_mask,
             character_animations.level2addon.idle_gun,
             character_animations.level2addon.idle_gun_mask,
-            character_animations.level1.idle_gun_shadow
+            character_animations.level1.idle_gun_shadow,
+            character_animations.level2addon.idle_gun_shadow
           }
         },
         mining_with_tool =
@@ -900,7 +959,8 @@ data:extend(
             character_animations.level1.mining_tool_mask,
             character_animations.level2addon.mining_tool,
             character_animations.level2addon.mining_tool_mask,
-            character_animations.level1.mining_tool_shadow
+            character_animations.level1.mining_tool_shadow,
+            character_animations.level2addon.mining_tool_shadow
           }
         },
         running_with_gun =
@@ -911,7 +971,16 @@ data:extend(
             character_animations.level1.running_gun_mask,
             character_animations.level2addon.running_gun,
             character_animations.level2addon.running_gun_mask,
-            character_animations.level1.running_gun_shadow
+            character_animations.level1.running_gun_shadow,
+            character_animations.level2addon.running_gun_shadow
+          }
+        },
+        flipped_shadow_running_with_gun =
+        {
+          layers =
+          {
+            character_animations.level1.running_gun_shadow_flipped,
+            character_animations.level2addon.running_gun_shadow_flipped
           }
         },
         running =
@@ -922,7 +991,8 @@ data:extend(
             character_animations.level1.running_mask,
             character_animations.level2addon.running,
             character_animations.level2addon.running_mask,
-            character_animations.level1.running_shadow
+            character_animations.level1.running_shadow,
+            character_animations.level2addon.running_shadow
           }
         }
       },
@@ -937,7 +1007,8 @@ data:extend(
             character_animations.level1.idle_mask,
             character_animations.level3addon.idle,
             character_animations.level3addon.idle_mask,
-            character_animations.level1.idle_shadow
+            character_animations.level1.idle_shadow,
+            character_animations.level3addon.idle_shadow
           }
         },
         idle_with_gun =
@@ -948,7 +1019,8 @@ data:extend(
             character_animations.level1.idle_gun_mask,
             character_animations.level3addon.idle_gun,
             character_animations.level3addon.idle_gun_mask,
-            character_animations.level1.idle_gun_shadow
+            character_animations.level1.idle_gun_shadow,
+            character_animations.level3addon.idle_gun_shadow
           }
         },
         mining_with_tool =
@@ -959,7 +1031,8 @@ data:extend(
             character_animations.level1.mining_tool_mask,
             character_animations.level3addon.mining_tool,
             character_animations.level3addon.mining_tool_mask,
-            character_animations.level1.mining_tool_shadow
+            character_animations.level1.mining_tool_shadow,
+            character_animations.level3addon.mining_tool_shadow
           }
         },
         running_with_gun =
@@ -970,7 +1043,16 @@ data:extend(
             character_animations.level1.running_gun_mask,
             character_animations.level3addon.running_gun,
             character_animations.level3addon.running_gun_mask,
-            character_animations.level1.running_gun_shadow
+            character_animations.level1.running_gun_shadow,
+            character_animations.level3addon.running_gun_shadow
+          }
+        },
+        flipped_shadow_running_with_gun =
+        {
+          layers =
+          {
+            character_animations.level1.running_gun_shadow_flipped,
+            character_animations.level3addon.running_gun_shadow_flipped
           }
         },
         running =
@@ -981,7 +1063,8 @@ data:extend(
             character_animations.level1.running_mask,
             character_animations.level3addon.running,
             character_animations.level3addon.running_mask,
-            character_animations.level1.running_shadow
+            character_animations.level1.running_shadow,
+            character_animations.level3addon.running_shadow
           }
         }
       }
@@ -1022,7 +1105,7 @@ data:extend(
 
         type = "create-particle",
         repeat_count = 5,
-        entity_name = "shallow-water-droplet-particle",
+        particle_name = "shallow-water-droplet-particle",
         initial_height = 0.2,
         speed_from_center = 0.01,
         speed_from_center_deviation = 0.05,
@@ -1035,7 +1118,7 @@ data:extend(
 
         type = "create-particle",
         repeat_count = 5,
-        entity_name = "shallow-water-droplet-particle",
+        particle_name = "shallow-water-droplet-particle",
         initial_height = 0.2,
         speed_from_center = 0.01,
         speed_from_center_deviation = 0.05,
@@ -1043,6 +1126,23 @@ data:extend(
         initial_vertical_speed_deviation = 0.05,
         offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
       }
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/character/character-reflection.png",
+        priority = "extra-high",
+        -- flags = { "linear-magnification", "not-compressed" },
+        -- default value: flags = { "terrain-effect-map" },
+        width = 13,
+        height = 19,
+        shift = util.by_pixel(0, 67 * 0.5),
+        scale = 5,
+        variation_count = 1
+      },
+      rotate = false,
+      orientation_to_variation = false
     }
   },
 
@@ -1050,19 +1150,30 @@ data:extend(
     type = "furnace",
     name = "stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "stone-furnace"},
     max_health = 200,
     corpse = "stone-furnace-remnants",
+    dying_explosion = "stone-furnace-explosion",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
     working_sound =
     {
-      sound = { filename = "__base__/sound/furnace.ogg", }
+      sound =
+      {
+        {
+          filename = "__base__/sound/furnace.ogg",
+          volume = 1.0
+        }
+      },
+      max_sounds_per_type = 2,
+      apparent_volume = 1.5,
+      fade_in_ticks = 10,
+      fade_out_ticks = 60
     },
     resistances =
     {
@@ -1081,6 +1192,7 @@ data:extend(
     },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
+    damaged_trigger_effect = hit_effects.rock(),
     crafting_categories = {"smelting"},
     result_inventory_size = 1,
     energy_usage = "90kW",
@@ -1181,22 +1293,38 @@ data:extend(
             scale = 0.5
           }
         },
-      light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
+        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
       }
     },
     fast_replaceable_group = "furnace",
-    next_upgrade = "steel-furnace"
+    next_upgrade = "steel-furnace",
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/stone-furnace/stone-furnace-reflection.png",
+        priority = "extra-high",
+        width = 16,
+        height = 16,
+        shift = util.by_pixel(0, 35),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
 
   {
     type = "transport-belt",
     name = "transport-belt",
     icon = "__base__/graphics/icons/transport-belt.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "transport-belt"},
     max_health = 150,
     corpse = "transport-belt-remnants",
+    dying_explosion = "transport-belt-explosion",
     resistances =
     {
       {
@@ -1206,6 +1334,7 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     working_sound =
     {
       sound =
@@ -1230,7 +1359,7 @@ data:extend(
     type = "fish",
     name = "fish",
     icon = "__base__/graphics/icons/fish.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
     minable = {mining_time = 0.4, result = "raw-fish", count = 5},
     max_health = 20,
@@ -1260,12 +1389,13 @@ data:extend(
     type = "boiler",
     name = "boiler",
     icon = "__base__/graphics/icons/boiler.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "boiler"},
     max_health = 200,
     corpse = "boiler-remnants",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    dying_explosion = "boiler-explosion",
+    vehicle_impact_sound = generic_impact_sound(),
     mode = "output-to-separate-pipe",
     resistances =
     {
@@ -1284,6 +1414,7 @@ data:extend(
     },
     collision_box = {{-1.29, -0.79}, {1.29, 0.79}},
     selection_box = {{-1.5, -1}, {1.5, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
     target_temperature = 165,
     fluid_box =
     {
@@ -1357,7 +1488,7 @@ data:extend(
             height = 108,
             shift = util.by_pixel(-0.5, 4),
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-N-idle.png",
               priority = "extra-high",
               width = 269,
@@ -1374,7 +1505,7 @@ data:extend(
             shift = util.by_pixel(20.5, 9),
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-N-shadow.png",
               priority = "extra-high",
               width = 274,
@@ -1397,7 +1528,7 @@ data:extend(
             height = 147,
             shift = util.by_pixel(-3.5, -0.5),
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-E-idle.png",
               priority = "extra-high",
               width = 216,
@@ -1414,7 +1545,7 @@ data:extend(
             shift = util.by_pixel(30, 9.5),
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-E-shadow.png",
               priority = "extra-high",
               width = 184,
@@ -1437,7 +1568,7 @@ data:extend(
             height = 95,
             shift = util.by_pixel(3, 12.5),
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-S-idle.png",
               priority = "extra-high",
               width = 260,
@@ -1454,7 +1585,7 @@ data:extend(
             shift = util.by_pixel(30, 16),
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-S-shadow.png",
               priority = "extra-high",
               width = 311,
@@ -1477,7 +1608,7 @@ data:extend(
             height = 132,
             shift = util.by_pixel(1, 5),
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-W-idle.png",
               priority = "extra-high",
               width = 196,
@@ -1494,7 +1625,7 @@ data:extend(
             shift = util.by_pixel(19.5, 6.5),
             draw_as_shadow = true,
             hr_version =
-        {
+            {
               filename = "__base__/graphics/entity/boiler/hr-boiler-W-shadow.png",
               priority = "extra-high",
               width = 206,
@@ -1714,25 +1845,28 @@ data:extend(
         }
       }
     },
-    burning_cooldown = 20
+    burning_cooldown = 20,
+    water_reflection = boiler_reflection()
   },
 
   {
     type = "container",
     name = "wooden-chest",
     icon = "__base__/graphics/icons/wooden-chest.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "wooden-chest"},
     max_health = 100,
     corpse = "wooden-chest-remnants",
+    dying_explosion = "wooden-chest-explosion",
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     inventory_size = 16,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
     picture =
     {
       layers =
@@ -1781,13 +1915,14 @@ data:extend(
     type = "container",
     name = "iron-chest",
     icon = "__base__/graphics/icons/iron-chest.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "iron-chest"},
     max_health = 200,
     corpse = "iron-chest-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
+    dying_explosion = "iron-chest-explosion",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
     resistances =
     {
       {
@@ -1801,9 +1936,10 @@ data:extend(
     },
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     fast_replaceable_group = "container",
     inventory_size = 32,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     picture =
     {
       layers =
@@ -1853,16 +1989,17 @@ data:extend(
     name = "bait-chest",
     order = "a",
     icon = "__base__/graphics/icons/wooden-chest.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     max_health = 1,
     collision_box = {{-0.01, -0.01}, {0.01, 0.01}},
     selectable_in_game = false,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     inventory_size = 16,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
@@ -1876,17 +2013,19 @@ data:extend(
     type = "electric-pole",
     name = "small-electric-pole",
     icon = "__base__/graphics/icons/small-electric-pole.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "small-electric-pole"},
     max_health = 100,
     corpse = "small-electric-pole-remnants",
+    dying_explosion = "small-electric-pole-explosion",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    damaged_trigger_effect = hit_effects.entity({{-0.2, -2.2}, {0.2, 0.2}}),
     drawing_box = {{-0.5, -2.6}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
     supply_area_distance = 2.5,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
     track_coverage_during_build_by_moving = true,
     fast_replaceable_group = "electric-pole",
     pictures =
@@ -1998,559 +2137,36 @@ data:extend(
       width = 12,
       height = 12,
       priority = "extra-high-no-scale"
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/small-electric-pole/small-electric-pole-reflection.png",
+        priority = "extra-high",
+        width = 12,
+        height = 28,
+        shift = util.by_pixel(5, 40),
+        variation_count = 4,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = true
     }
   },
 
-  {
-    type = "explosion",
-    name = "explosion",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/explosion/explosion-1.png",
-        priority = "high",
-        width = 64,
-        height = 59,
-        frame_count = 16,
-        animation_speed = 0.5
-      },
-      {
-        filename = "__base__/graphics/entity/explosion/explosion-2.png",
-        priority = "high",
-        width = 64,
-        height = 57,
-        frame_count = 16,
-        animation_speed = 0.5
-      },
-      {
-        filename = "__base__/graphics/entity/explosion/explosion-3.png",
-        priority = "high",
-        width = 64,
-        height = 49,
-        frame_count = 16,
-        animation_speed = 0.5
-      },
-      {
-        filename = "__base__/graphics/entity/explosion/explosion-4.png",
-        priority = "high",
-        width = 64,
-        height = 51,
-        frame_count = 16,
-        animation_speed = 0.5
-      }
-    },
-    light = {intensity = 1, size = 20, color = {r=1.0, g=1.0, b=1.0}},
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
-    sound =
-    {
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      },
-      variations =
-      {
-        {
-          filename = "__base__/sound/fight/small-explosion-1.ogg",
-          volume = 0.75
-        },
-        {
-          filename = "__base__/sound/fight/small-explosion-2.ogg",
-          volume = 0.75
-        }
-      }
-    }
-  },
 
-  {
-    type = "explosion",
-    name = "explosion-gunshot",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        frame_count = 2,
-        animation_speed = 1.5,
-        shift = {0, 0}
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        x = 34 * 2,
-        frame_count = 2,
-        animation_speed = 1.5,
-        shift = {0, 0}
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        x = 34 * 4,
-        frame_count = 3,
-        animation_speed = 1.5,
-        shift = {0, 0}
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        x = 34 * 7,
-        frame_count = 3,
-        animation_speed = 1.5,
-        shift = {0, 0}
-      },
-      {
-        filename = "__base__/graphics/entity/explosion-gunshot/explosion-gunshot.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        x = 34 * 10,
-        frame_count = 3,
-        animation_speed = 1.5,
-        shift = {0, 0}
-      }
-    },
-    rotate = true,
-    light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
-    smoke = "smoke-fast",
-    smoke_count = 1,
-    smoke_slow_down_factor = 1
-  },
-
-  {
-    type = "explosion",
-    name = "explosion-gunshot-small",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/explosion-hit/explosion-hit.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        frame_count = 13,
-        animation_speed = 1.5,
-        shift = {0, 0}
-      }
-    },
-    rotate = true,
-    light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
-    smoke = "smoke-fast",
-    smoke_count = 1,
-    smoke_slow_down_factor = 1
-  },
-  {
-    type = "explosion",
-    name = "explosion-hit",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/explosion-hit/explosion-hit.png",
-        priority = "extra-high",
-        width = 34,
-        height = 38,
-        frame_count = 13,
-        animation_speed = 1.5,
-        shift = {0, -0.3125}
-      }
-    },
-    light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
-    smoke = "smoke-fast",
-    smoke_count = 1,
-    smoke_slow_down_factor = 1
-  },
-  {
-    type = "explosion",
-    name = "big-explosion",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/big-explosion/big-explosion.png",
-        flags = { "compressed" },
-        width = 197,
-        height = 245,
-        frame_count = 47,
-        line_length = 6,
-        shift = {0.1875, -0.75},
-        animation_speed = 0.5
-      }
-    },
-    light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound =
-    {
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      },
-      variations =
-      {
-        {
-          filename = "__base__/sound/fight/large-explosion-1.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/fight/large-explosion-2.ogg",
-          volume = 1.0
-        }
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 20,
-            entity_name = "explosion-remnants-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.15,
-            initial_vertical_speed = 0.08,
-            initial_vertical_speed_deviation = 0.15,
-            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-          }
-        }
-      }
-    }
-  },
-  {
-    type = "explosion",
-    name = "medium-explosion",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
-        priority = "high",
-        width = 112,
-        height = 94,
-        frame_count = 54,
-        line_length = 6,
-        shift = {-0.56, -0.96},
-        animation_speed = 0.5
-      }
-    },
-    light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound =
-    {
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      },
-      variations =
-      {
-        {
-          filename = "__base__/sound/fight/large-explosion-1.ogg",
-          volume = 0.8
-        },
-        {
-          filename = "__base__/sound/fight/large-explosion-2.ogg",
-          volume = 0.8
-        }
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 20,
-            entity_name = "explosion-remnants-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.15,
-            initial_vertical_speed = 0.08,
-            initial_vertical_speed_deviation = 0.15,
-            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-          }
-        }
-      }
-    }
-  },
-  {
-    type = "explosion",
-    name = "massive-explosion",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
-        priority = "high",
-        width = 112,
-        height = 94,
-        scale = 0.8,
-        frame_count = 54,
-        line_length = 6,
-        shift = {-0.56, -0.96},
-        animation_speed = 0.5
-      }
-    },
-    light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound =
-    {
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      },
-      variations =
-      {
-        {
-          filename = "__base__/sound/fight/large-explosion-1.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/fight/large-explosion-2.ogg",
-          volume = 1.0
-        }
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 60,
-            entity_name = "explosion-remnants-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.15,
-            initial_vertical_speed = 0.08,
-            initial_vertical_speed_deviation = 0.15,
-            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-          }
-        }
-      }
-    }
-  },
-  {
-    type = "explosion",
-    name = "ground-explosion",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/medium-explosion/medium-explosion.png",
-        priority = "high",
-        width = 112,
-        height = 94,
-        scale = 0.8,
-        frame_count = 54,
-        line_length = 6,
-        shift = {-0.56, -0.96},
-        animation_speed = 0.5
-      }
-    },
-    light = {intensity = 1, size = 10, color = {r=1.0, g=0.8, b=0.6}},
-    sound =
-    {
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      },
-      variations =
-      {
-        {
-          filename = "__base__/sound/fight/large-explosion-1.ogg",
-          volume = 1.0
-        },
-        {
-          filename = "__base__/sound/fight/large-explosion-2.ogg",
-          volume = 1.0
-        }
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 10,
-            entity_name = "explosion-remnants-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.15,
-            initial_vertical_speed = 0.20,
-            initial_vertical_speed_deviation = 0.15,
-            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-          },
-          {
-            type = "create-particle",
-            repeat_count = 100,
-            entity_name = "stone-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.15,
-            initial_vertical_speed = 0.20,
-            initial_vertical_speed_deviation = 0.15,
-            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-          }
-        }
-      }
-    }
-  },
-  {
-    type = "explosion",
-    name = "blood-explosion-small",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__core__/graphics/empty.png",
-        priority = "high",
-        width = 1,
-        height = 1,
-        frame_count = 1
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          type = "create-entity",
-          entity_name = "blood-fountain",
-          repeat_count = 20,
-          offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
-        }
-      }
-    }
-  },
-  {
-    type = "explosion",
-    name = "blood-explosion-big",
-    flags = {"not-on-map"},
-     animations =
-    {
-      {
-        filename = "__core__/graphics/empty.png",
-        priority = "high",
-        width = 1,
-        height = 1,
-        frame_count = 1
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 150,
-            entity_name = "blood-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.05,
-            initial_vertical_speed = -0.01,
-            initial_vertical_speed_deviation = 0.02,
-            offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
-          },
-          {
-            type = "create-entity",
-            entity_name = "blood-fountain",
-            repeat_count = 35,
-            offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
-          }
-        }
-      }
-    }
-  },
-
-  {
-    type = "explosion",
-    name = "blood-explosion-huge",
-    flags = {"not-on-map"},
-     animations =
-    {
-      {
-        filename = "__core__/graphics/empty.png",
-        priority = "high",
-        width = 1,
-        height = 1,
-        frame_count = 1
-      }
-    },
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 150,
-            entity_name = "blood-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.05,
-            initial_vertical_speed = -0.01,
-            initial_vertical_speed_deviation = 0.02,
-            offset_deviation = {{-0.4, -0.4}, {0.4, 0.4}}
-          },
-          {
-            type = "create-entity",
-            entity_name = "blood-fountain-big",
-            repeat_count = 35,
-            offset_deviation = {{-1.6, -1.6}, {1.6, 1.6}}
-          }
-        }
-      }
-    }
-  },
   {
     type = "generator",
     name = "steam-engine",
     icon = "__base__/graphics/icons/steam-engine.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 0.3, result = "steam-engine"},
     max_health = 400,
     dying_explosion = "medium-explosion",
     corpse = "steam-engine-remnants",
+    dying_explosion = "steam-engine-explosion",
     alert_icon_shift = util.by_pixel(3, -34),
     effectivity = 1,
     fluid_usage_per_tick = 0.5,
@@ -2569,6 +2185,7 @@ data:extend(
     fast_replaceable_group = "steam-engine",
     collision_box = {{-1.35, -2.35}, {1.35, 2.35}},
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
     {
       base_area = 1,
@@ -2689,7 +2306,7 @@ data:extend(
         starting_frame_deviation = 60
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -2697,17 +2314,36 @@ data:extend(
         filename = "__base__/sound/steam-engine-90bpm.ogg",
         volume = 0.6
       },
-      match_speed_to_activity = true
+      match_speed_to_activity = true,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 60
     },
     min_perceived_performance = 0.25,
-    performance_to_sound_speedup = 0.5
+    performance_to_sound_speedup = 0.5,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/steam-engine/steam-engine-reflection.png",
+        priority = "extra-high",
+        width = 40,
+        height = 44,
+        shift = util.by_pixel(0, 55),
+        variation_count = 2,
+        repeat_count = 2,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = true
+    }
   },
 
   {
     type = "offshore-pump",
     name = "offshore-pump",
     icon = "__base__/graphics/icons/offshore-pump.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "filter-directions"},
     collision_mask = { "ground-tile", "object-layer" },
     fluid_box_tile_collision_test = { "ground-tile" },
@@ -2715,6 +2351,7 @@ data:extend(
     minable = {mining_time = 0.1, result = "offshore-pump"},
     max_health = 150,
     corpse = "small-remnants",
+    dying_explosion = "offshore-pump-explosion",
     fluid = "water",
     resistances =
     {
@@ -2729,6 +2366,7 @@ data:extend(
     },
     collision_box = {{-0.6, -1.05}, {0.6, 0.3}},
     selection_box = {{-1, -1.49}, {1, 0.49}},
+    damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
     {
       base_area = 1,
@@ -2747,7 +2385,7 @@ data:extend(
     pumping_speed = 20,
     tile_width = 1,
     tile_height = 1,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     picture =
     {
       north =
@@ -2797,133 +2435,34 @@ data:extend(
     },
     circuit_wire_connection_points = circuit_connector_definitions["offshore-pump"].points,
     circuit_connector_sprites = circuit_connector_definitions["offshore-pump"].sprites,
-    circuit_wire_max_distance = default_circuit_wire_max_distance
-
-  },
-
-  trivial_smoke{name = "smoke", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}},
-  trivial_smoke{name = "light-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}},
-  trivial_smoke{name = "turbine-smoke", color = {r = 0.5, g = 0.5, b = 0.5, a = 0.3}, start_scale = 0.8, fade_in_duration = 30 },
-  trivial_smoke
-  {
-    name = "train-smoke",
-    color = {r = 0.3, g = 0.3, b = 0.3, a = 0.3},
-    duration = 150,
-    spread_duration = 100,
-    fade_away_duration = 100,
-    start_scale = 0.4,
-    end_scale = 1.5,
-    affected_by_wind = true
-  },
-  trivial_smoke
-  {
-    name = "car-smoke",
-    color = {r = 0.5, g = 0.5, b = 0.5, a = 0.5},
-    duration = 12,
-    spread_duration = 12,
-    fade_away_duration = 12,
-    start_scale = 0.1,
-    end_scale = 0.5
-  },
-  trivial_smoke
-  {
-    name = "tank-smoke",
-    color = {r = 0.6, g = 0.6, b = 0.6, a = 0.6},
-    duration = 100,
-    spread_duration = 100,
-    fade_away_duration = 100,
-    start_scale = 0.3,
-    end_scale = 1.0
-  },
-  {
-    type = "trivial-smoke",
-    name = "smoke-fast",
-    animation =
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    water_reflection =
     {
-      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
-      priority = "high",
-      width = 50,
-      height = 50,
-      frame_count = 16,
-      animation_speed = 16 / 60,
-    },
-    duration = 60,
-    fade_away_duration = 60
-  },
-
-  {
-    type = "trivial-smoke",
-    name = "smoke-train-stop",
-    animation =
-    {
-      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
-      priority = "high",
-      width = 50,
-      height = 50,
-      animation_speed = 16 / 60,
-      frame_count = 16,
-      scale = 0.5
-    },
-    render_layer = "lower-object",
-    affected_by_wind = false,
-    movement_slow_down_factor = 0.95,
-    duration = 40,
-    fade_away_duration = 30,
-    show_when_smoke_off = true
-  },
-
-  {
-    type = "trivial-smoke",
-    name = "smoke-building",
-    animation =
-    {
-      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
-      priority = "high",
-      width = 50,
-      height = 50,
-      animation_speed = 1 / 2,
-      frame_count = 16,
-      scale = 0.5
-    },
-    render_layer = "building-smoke",
-    affected_by_wind = false,
-    movement_slow_down_factor = 0.96,
-    duration = 45,
-    fade_away_duration = 20,
-    show_when_smoke_off = true
-  },
-
-  {
-    type = "trivial-smoke",
-    name = "smoke-explosion-particle",
-    animation =
-    {
-      filename = "__base__/graphics/entity/smoke-fast/smoke-fast.png",
-      priority = "high",
-      width = 50,
-      height = 50,
-      animation_speed = 1 / 2,
-      frame_count = 16,
-      scale = 0.5,
-      tint = {r = 0.1, g = 0.1, b = 0.1, a = 0.7}
-    },
-    render_layer = "smoke",
-    affected_by_wind = false,
-    movement_slow_down_factor = 0.96,
-    duration = 150,
-    fade_away_duration = 60,
-    show_when_smoke_off = true
+      pictures =
+      {
+        filename = "__base__/graphics/entity/offshore-pump/offshore-pump-reflection.png",
+        priority = "extra-high",
+        width = 24,
+        height = 24,
+        shift = util.by_pixel(5, 30),
+        variation_count = 4,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = true
+    }
   },
 
   {
     type = "inserter",
     name = "inserter",
     icon = "__base__/graphics/icons/inserter.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "inserter"},
     max_health = 150,
     corpse = "inserter-remnants",
+    dying_explosion = "inserter-explosion",
     resistances =
     {
       {
@@ -2933,6 +2472,7 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
+    damaged_trigger_effect = hit_effects.entity(),
     energy_per_movement = "5kJ",
     energy_per_rotation = "5kJ",
     energy_source =
@@ -2945,7 +2485,7 @@ data:extend(
     rotation_speed = 0.014,
     fast_replaceable_group = "inserter",
     next_upgrade = "fast-inserter",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       match_progress_to_activity = true,
@@ -2971,7 +2511,9 @@ data:extend(
           filename = "__base__/sound/inserter-basic-5.ogg",
           volume = 0.75
         }
-      }
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.7,
     },
     hand_base_picture =
     {
@@ -3094,11 +2636,12 @@ data:extend(
     type = "inserter",
     name = "fast-inserter",
     icon = "__base__/graphics/icons/fast-inserter.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = { mining_time = 0.1, result = "fast-inserter" },
     max_health = 150,
     corpse = "fast-inserter-remnants",
+    dying_explosion = "fast-inserter-explosion",
     resistances =
     {
       {
@@ -3108,6 +2651,7 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
+    damaged_trigger_effect = hit_effects.entity(),
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
     energy_per_movement = "7KJ",
@@ -3122,7 +2666,7 @@ data:extend(
     rotation_speed = 0.04,
     fast_replaceable_group = "inserter",
     next_upgrade = "stack-inserter",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       match_progress_to_activity = true,
@@ -3130,25 +2674,27 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 0.75
+          volume = 1.0
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 0.75
+          volume = 1.0
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 0.75
+          volume = 1.0
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 0.75
+          volume = 1.0
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 0.75
+          volume = 1.0
         }
-      }
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.7,
     },
     hand_base_picture =
     {
@@ -3269,11 +2815,12 @@ data:extend(
     type = "inserter",
     name = "long-handed-inserter",
     icon = "__base__/graphics/icons/long-handed-inserter.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "long-handed-inserter"},
     max_health = 160,
     corpse = "long-handed-inserter-remnants",
+    dying_explosion = "long-handed-inserter-explosion",
     resistances =
     {
       {
@@ -3283,6 +2830,7 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
+    damaged_trigger_effect = hit_effects.entity(),
     pickup_position = {0, -2},
     insert_position = {0, 2.2},
     energy_per_movement = "5KJ",
@@ -3297,7 +2845,7 @@ data:extend(
       drain = "0.4kW"
     },
     fast_replaceable_group = "long-handed-inserter",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       match_progress_to_activity = true,
@@ -3323,7 +2871,9 @@ data:extend(
           filename = "__base__/sound/inserter-long-handed-5.ogg",
           volume = 0.75
         }
-      }
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.7,
     },
     hand_base_picture =
     {
@@ -3444,11 +2994,12 @@ data:extend(
     type = "inserter",
     name = "burner-inserter",
     icon = "__base__/graphics/icons/burner-inserter.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "burner-inserter"},
     max_health = 100,
     corpse = "burner-inserter-remnants",
+    dying_explosion = "burner-inserter-explosion",
     resistances =
     {
       {
@@ -3458,6 +3009,7 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
+    damaged_trigger_effect = hit_effects.entity(),
     energy_per_movement = "50KJ",
     energy_per_rotation = "50KJ",
     energy_source =
@@ -3478,7 +3030,7 @@ data:extend(
     extension_speed = 0.0214,
     rotation_speed = 0.01,
     fast_replaceable_group = "inserter",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       match_progress_to_activity = true,
@@ -3504,7 +3056,9 @@ data:extend(
           filename = "__base__/sound/inserter-basic-5.ogg",
           volume = 0.75
         }
-      }
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.7,
     },
     hand_base_picture =
     {
@@ -3637,11 +3191,12 @@ data:extend(
     type = "pipe",
     name = "pipe",
     icon = "__base__/graphics/icons/pipe.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "pipe"},
     max_health = 100,
     corpse = "pipe-remnants",
+    dying_explosion = "pipe-explosion",
     resistances =
     {
       {
@@ -3656,6 +3211,7 @@ data:extend(
     fast_replaceable_group = "pipe",
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
     {
       base_area = 1,
@@ -3667,7 +3223,7 @@ data:extend(
         { position = {-1, 0} }
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     pictures = pipepictures(),
     working_sound =
     {
@@ -3675,11 +3231,13 @@ data:extend(
       {
         {
           filename = "__base__/sound/pipe.ogg",
-          volume = 0.85
+          volume = 0.5
         }
       },
       match_volume_to_activity = true,
-      max_sounds_per_type = 3
+      max_sounds_per_type = 2,
+      fade_in_ticks = 10,
+      fade_out_ticks = 60
     },
 
     horizontal_window_bounding_box = {{-0.25, -0.28125}, {0.25, 0.15625}},
@@ -3690,11 +3248,12 @@ data:extend(
     type = "radar",
     name = "radar",
     icon = "__base__/graphics/icons/radar.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.1, result = "radar"},
     max_health = 250,
     corpse = "radar-remnants",
+    dying_explosion = "radar-explosion",
     resistances =
     {
       {
@@ -3708,6 +3267,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     energy_per_sector = "10MJ",
     max_distance_of_sector_revealed = 14,
     max_distance_of_nearby_sector_revealed = 3,
@@ -3789,7 +3349,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -3801,21 +3361,38 @@ data:extend(
       apparent_volume = 2
     },
     radius_minimap_visualisation_color = { r = 0.059, g = 0.092, b = 0.235, a = 0.275 },
-    rotation_speed = 0.01
+    rotation_speed = 0.01,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/radar/radar-reflection.png",
+        priority = "extra-high",
+        width = 28,
+        height = 32,
+        shift = util.by_pixel(5, 35),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
 
   {
     type = "lamp",
     name = "small-lamp",
     icon = "__base__/graphics/icons/small-lamp.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "small-lamp"},
     max_health = 100,
     corpse = "lamp-remnants",
+    dying_explosion = "lamp-explosion",
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    damaged_trigger_effect = hit_effects.entity(),
+    vehicle_impact_sound = generic_impact_sound(),
     energy_source =
     {
       type = "electric",
@@ -3943,11 +3520,12 @@ data:extend(
     type = "pipe-to-ground",
     name = "pipe-to-ground",
     icon = "__base__/graphics/icons/pipe-to-ground.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "pipe-to-ground"},
     max_health = 150,
     corpse = "pipe-to-ground-remnants",
+    dying_explosion = "pipe-to-ground-explosion",
     resistances =
     {
       {
@@ -3963,6 +3541,7 @@ data:extend(
     fast_replaceable_group = "pipe",
     collision_box = {{-0.29, -0.29}, {0.29, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
     {
       base_area = 1,
@@ -3976,7 +3555,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     pictures =
     {
       up =
@@ -3987,11 +3566,11 @@ data:extend(
         height = 64, --, shift = {0.10, -0.04}
         hr_version =
         {
-           filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-up.png",
-           priority = "extra-high",
-           width = 128,
-           height = 128,
-           scale = 0.5
+          filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-up.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          scale = 0.5
         }
       },
       down =
@@ -4002,11 +3581,11 @@ data:extend(
         height = 64, --, shift = {0.05, 0}
         hr_version =
         {
-           filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-down.png",
-           priority = "extra-high",
-           width = 128,
-           height = 128,
-           scale = 0.5
+          filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-down.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          scale = 0.5
         }
       },
       left =
@@ -4017,11 +3596,11 @@ data:extend(
         height = 64, --, shift = {-0.12, 0.1}
         hr_version =
         {
-           filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-left.png",
-           priority = "extra-high",
-           width = 128,
-           height = 128,
-           scale = 0.5
+          filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-left.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          scale = 0.5
         }
       },
       right =
@@ -4032,11 +3611,11 @@ data:extend(
         height = 64, --, shift = {0.1, 0.1}
         hr_version =
         {
-           filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-right.png",
-           priority = "extra-high",
-           width = 128,
-           height = 128,
-           scale = 0.5
+          filename = "__base__/graphics/entity/pipe-to-ground/hr-pipe-to-ground-right.png",
+          priority = "extra-high",
+          width = 128,
+          height = 128,
+          scale = 0.5
         }
       }
     }
@@ -4046,12 +3625,12 @@ data:extend(
     type = "assembling-machine",
     name = "assembling-machine-1",
     icon = "__base__/graphics/icons/assembling-machine-1.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-1"},
     max_health = 300,
-    dying_explosion = "medium-explosion",
     corpse = "medium-remnants",
+    dying_explosion = "assembling-machine-1-explosion",
     resistances =
     {
       {
@@ -4083,6 +3662,7 @@ data:extend(
     --},
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     fast_replaceable_group = "assembling-machine",
     next_upgrade = "assembling-machine-2",
     alert_icon_shift = util.by_pixel(-3, -12),
@@ -4147,7 +3727,7 @@ data:extend(
     energy_usage = "75kW",
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -4161,20 +3741,23 @@ data:extend(
           volume = 0.8
         }
       },
-      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5
+      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
+      apparent_volume = 1.5,
+      max_sounds_per_type = 2,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     }
   },
   {
     type = "assembling-machine",
     name = "assembling-machine-2",
     icon = "__base__/graphics/icons/assembling-machine-2.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-2"},
     max_health = 350,
-    dying_explosion = "medium-explosion",
     corpse = "medium-remnants",
+    dying_explosion = "assembling-machine-2-explosion",
     alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
     {
@@ -4207,6 +3790,7 @@ data:extend(
     } or nil,
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     fast_replaceable_group = "assembling-machine",
     next_upgrade = "assembling-machine-3",
     animation =
@@ -4259,7 +3843,7 @@ data:extend(
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -4273,8 +3857,11 @@ data:extend(
           volume = 0.8
         }
       },
-      idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.6 },
-      apparent_volume = 1.5
+      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
+      apparent_volume = 1.5,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     },
     crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
 
@@ -4358,24 +3945,6 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -0.4}, {0.5, 0.6}}
   },
-  {
-    type = "explosion",
-    name = "water-splash",
-    flags = {"not-on-map"},
-    animations =
-    {
-      {
-        filename = "__base__/graphics/entity/water-splash/water-splash.png",
-        priority = "extra-high",
-        width = 92,
-        height = 66,
-        frame_count = 15,
-        line_length = 5,
-        shift = {-0.437, 0.5},
-        animation_speed = 0.35
-      }
-    }
-  },
 
   scaled_cliff("cliff", 1.0, 16),
 
@@ -4383,45 +3952,47 @@ data:extend(
     type = "wall",
     name = "stone-wall",
     icon = "__base__/graphics/icons/wall.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.wall(),
     minable = {mining_time = 0.2, result = "stone-wall"},
     fast_replaceable_group = "wall",
     max_health = 350,
     repair_speed_modifier = 2,
     corpse = "wall-remnants",
+    dying_explosion = "wall-explosion",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
     -- this kind of code can be used for having walls mirror the effect
     -- there can be multiple reaction items
     --attack_reaction =
     --{
-      --{
-        ---- how far the mirroring works
-        --range = 2,
-        ---- what kind of damage triggers the mirroring
-        ---- if not present then anything triggers the mirroring
-        --damage_type = "physical",
-        ---- caused damage will be multiplied by this and added to the subsequent damages
-        --reaction_modifier = 0.1,
-        --action =
-        --{
-          --type = "direct",
-          --action_delivery =
-          --{
-            --type = "instant",
-            --target_effects =
-            --{
-              --type = "damage",
-              ---- always use at least 0.1 damage
-              --damage = {amount = 0.1, type = "physical"}
-            --}
-          --}
-        --},
-      --}
+    --{
+    ---- how far the mirroring works
+    --range = 2,
+    ---- what kind of damage triggers the mirroring
+    ---- if not present then anything triggers the mirroring
+    --damage_type = "physical",
+    ---- caused damage will be multiplied by this and added to the subsequent damages
+    --reaction_modifier = 0.1,
+    --action =
+    --{
+    --type = "direct",
+    --action_delivery =
+    --{
+    --type = "instant",
+    --target_effects =
+    --{
+    --type = "damage",
+    ---- always use at least 0.1 damage
+    --damage = {amount = 0.1, type = "physical"}
+    --}
+    --}
+    --},
+    --}
     --},
     connected_gate_visualization =
     {
@@ -4835,23 +4406,23 @@ data:extend(
       filling =
       {
         filename = "__base__/graphics/entity/wall/wall-filling.png",
+        priority = "extra-high",
+        width = 24,
+        height = 30,
+        variation_count = 8,
+        line_length = 8,
+        shift = util.by_pixel(0, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/wall/hr-wall-filling.png",
           priority = "extra-high",
-          width = 24,
-          height = 30,
+          width = 48,
+          height = 56,
           variation_count = 8,
           line_length = 8,
-          shift = util.by_pixel(0, -2),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/wall/hr-wall-filling.png",
-            priority = "extra-high",
-            width = 48,
-            height = 56,
-            variation_count = 8,
-            line_length = 8,
-            shift = util.by_pixel(0, -1),
-            scale = 0.5
-          }
+          shift = util.by_pixel(0, -1),
+          scale = 0.5
+        }
       },
       water_connection_patch =
       {
@@ -5054,7 +4625,7 @@ data:extend(
     type = "unit",
     name = "compilatron",
     icon = "__base__/graphics/icons/compilatron.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 1000000,
@@ -5108,8 +4679,6 @@ data:extend(
     distraction_cooldown = 300,
     min_pursue_time = 10 * 60,
     max_pursue_distance = 50,
-    corpse = "small-biter-corpse",
-    dying_explosion = "blood-explosion-small",
     run_animation =
     {
       layers =
@@ -5117,20 +4686,36 @@ data:extend(
         compilatron_animations.walk_shadow,
         compilatron_animations.walk
       }
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/compilatron/compilatron-reflection.png",
+        priority = "extra-high",
+        width = 20,
+        height = 20,
+        shift = util.by_pixel(0, 67 * 0.5),
+        scale = 5,
+        variation_count = 1
+      },
+      rotate = false,
+      orientation_to_variation = false
     }
   },
   {
     type = "lab",
     name = "lab",
     icon = "__base__/graphics/icons/lab.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "lab"},
     max_health = 150,
     corpse = "lab-remnants",
-    dying_explosion = "medium-explosion",
+    dying_explosion = "lab-explosion",
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
     on_animation =
     {
@@ -5267,9 +4852,12 @@ data:extend(
         filename = "__base__/sound/lab.ogg",
         volume = 0.7
       },
-      apparent_volume = 1
+      apparent_volume = 1,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     energy_source =
     {
       type = "electric",
@@ -5292,7 +4880,7 @@ data:extend(
     type = "simple-entity",
     name = "mineable-wreckage",
     icon = "__base__/graphics/icons/ship-wreck/small-ship-wreck.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     minable = {mining_time = 0.5, result = "iron-gear-wheel"},
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     subgroup = "wrecks",
@@ -5300,6 +4888,7 @@ data:extend(
     max_health = 200,
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1.3, -1.1}, {1.3, 1.1}},
+    damaged_trigger_effect = hit_effects.entity(),
     pictures =
     {
       {
@@ -5355,7 +4944,7 @@ data:extend(
     type = "container",
     name = "compilatron-chest",
     icon = "__base__/graphics/icons/compilatron-chest.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "compilatron-chest"},
     max_health = 100,
@@ -5366,7 +4955,7 @@ data:extend(
     inventory_size = 32,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
     picture =
     {
       layers =
@@ -5415,7 +5004,7 @@ data:extend(
     type = "flying-text",
     name = "tree-proxy",
     icon = "__base__/graphics/icons/tree-01.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     time_to_live = 150,
     speed = 0.05
@@ -5426,15 +5015,15 @@ data:extend(
     icons =
     {
       {
-       icon = "__base__/graphics/icons/tree-01.png",
-       icon_size = 32
+        icon = "__base__/graphics/icons/tree-01.png",
+        icon_size = 64, icon_mipmaps = 4
       },
       {
         icon = "__core__/graphics/cancel.png",
         icon_size = 64
       }
     },
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     time_to_live = 150,
     speed = 0.05
@@ -5443,7 +5032,7 @@ data:extend(
     type = "flying-text",
     name = "tile-proxy",
     icon = "__base__/graphics/icons/landfill.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     time_to_live = 150,
     speed = 0.05
@@ -5452,11 +5041,12 @@ data:extend(
     type = "splitter",
     name = "splitter",
     icon = "__base__/graphics/icons/splitter.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "splitter"},
     max_health = 170,
     corpse = "splitter-remnants",
+    dying_explosion = "splitter-explosion",
     resistances =
     {
       {
@@ -5466,6 +5056,7 @@ data:extend(
     },
     collision_box = {{-0.9, -0.4}, {0.9, 0.4}},
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     animation_speed_coefficient = 32,
     structure_animation_speed_coefficient = 0.7,
     structure_animation_movement_cooldown = 10,
@@ -5503,8 +5094,8 @@ data:extend(
         line_length = 8,
         priority = "extra-high",
         width = 46,
-        height = 80,
-        shift = util.by_pixel(4, -6),
+        height = 44,
+        shift = util.by_pixel(4, 12),
         hr_version =
         {
           filename = "__base__/graphics/entity/splitter/hr-splitter-east.png",
@@ -5512,8 +5103,8 @@ data:extend(
           line_length = 8,
           priority = "extra-high",
           width = 90,
-          height = 160,
-          shift = util.by_pixel(4, -6),
+          height = 84,
+          shift = util.by_pixel(4, 13),
           scale = 0.5
         }
       },
@@ -5545,8 +5136,8 @@ data:extend(
         line_length = 8,
         priority = "extra-high",
         width = 46,
-        height = 76,
-        shift = util.by_pixel(6, -4),
+        height = 44,
+        shift = util.by_pixel(6, 12),
         hr_version =
         {
           filename = "__base__/graphics/entity/splitter/hr-splitter-west.png",
@@ -5554,8 +5145,55 @@ data:extend(
           line_length = 8,
           priority = "extra-high",
           width = 90,
-          height = 150,
-          shift = util.by_pixel(6, -4),
+          height = 86,
+          shift = util.by_pixel(6, 12),
+          scale = 0.5
+        }
+      }
+    },
+    structure_patch =
+    {
+      north = util.empty_sprite(),
+      east =
+      {
+        filename = "__base__/graphics/entity/splitter/splitter-east-top_patch.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 46,
+        height = 52,
+        shift = util.by_pixel(4, -20),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/splitter/hr-splitter-east-top_patch.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 90,
+          height = 104,
+          shift = util.by_pixel(4, -20),
+          scale = 0.5
+        }
+      },
+      south = util.empty_sprite(),
+      west =
+      {
+        filename = "__base__/graphics/entity/splitter/splitter-west-top_patch.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 46,
+        height = 48,
+        shift = util.by_pixel(6, -18),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/splitter/hr-splitter-west-top_patch.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 90,
+          height = 96,
+          shift = util.by_pixel(6, -18),
           scale = 0.5
         }
       }
@@ -5565,11 +5203,12 @@ data:extend(
     type = "underground-belt",
     name = "underground-belt",
     icon = "__base__/graphics/icons/underground-belt.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "underground-belt"},
     max_health = 150,
     corpse = "underground-belt-remnants",
+    dying_explosion = "underground-belt-explosion",
     max_distance = 5,
     underground_sprite =
     {
@@ -5602,6 +5241,7 @@ data:extend(
     },
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     animation_speed_coefficient = 32,
     belt_animation_set = basic_belt_animation_set,
     fast_replaceable_group = "transport-belt",
@@ -5735,7 +5375,7 @@ data:extend(
     type = "loader",
     name = "loader",
     icon = "__base__/graphics/icons/loader.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "loader"},
     max_health = 170,
@@ -5781,16 +5421,55 @@ data:extend(
     }
   },
   {
+    type = "loader-1x1",
+    name = "loader-1x1",
+    icon = "__base__/graphics/icons/loader.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "other",
+    max_health = 170,
+    filter_count = 5,
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    animation_speed_coefficient = 32,
+    belt_animation_set = basic_belt_animation_set,
+    speed = 0.03125,
+    structure_render_layer = "lower-object",
+    structure =
+    {
+      direction_in =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/loader/loader-structure.png",
+          priority = "extra-high",
+          width = 64,
+          height = 64
+        }
+      },
+      direction_out =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/loader/loader-structure.png",
+          priority = "extra-high",
+          width = 64,
+          height = 64,
+          y = 64
+        }
+      }
+    }
+  },
+  {
     type = "car",
     name = "car",
     icon = "__base__/graphics/icons/car.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-flammable"},
     minable = {mining_time = 0.4, result = "car"},
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 450,
     corpse = "car-remnants",
-    dying_explosion = "medium-explosion",
+    dying_explosion = "car-explosion",
     alert_icon_shift = util.by_pixel(0, -13),
     energy_per_hit_point = 1,
     crash_trigger = crash_trigger(),
@@ -5812,6 +5491,7 @@ data:extend(
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
     effectivity = 0.6,
     braking_power = "200kW",
 
@@ -5888,19 +5568,19 @@ data:extend(
           stripes =
           {
             {
-             filename = "__base__/graphics/entity/car/car-1.png",
-             width_in_frames = 2,
-             height_in_frames = 22
+              filename = "__base__/graphics/entity/car/car-1.png",
+              width_in_frames = 2,
+              height_in_frames = 22
             },
             {
-             filename = "__base__/graphics/entity/car/car-2.png",
-             width_in_frames = 2,
-             height_in_frames = 22
+              filename = "__base__/graphics/entity/car/car-2.png",
+              width_in_frames = 2,
+              height_in_frames = 22
             },
             {
-             filename = "__base__/graphics/entity/car/car-3.png",
-             width_in_frames = 2,
-             height_in_frames = 20
+              filename = "__base__/graphics/entity/car/car-3.png",
+              width_in_frames = 2,
+              height_in_frames = 20
             }
           },
           hr_version =
@@ -6031,21 +5711,21 @@ data:extend(
           max_advance = 0.2,
           stripes = util.multiplystripes(2,
           {
-           {
-            filename = "__base__/graphics/entity/car/car-shadow-1.png",
-            width_in_frames = 1,
-            height_in_frames = 22
-           },
-           {
-            filename = "__base__/graphics/entity/car/car-shadow-2.png",
-            width_in_frames = 1,
-            height_in_frames = 22
-           },
-           {
-            filename = "__base__/graphics/entity/car/car-shadow-3.png",
-            width_in_frames = 1,
-            height_in_frames = 20
-           }
+            {
+              filename = "__base__/graphics/entity/car/car-shadow-1.png",
+              width_in_frames = 1,
+              height_in_frames = 22
+            },
+            {
+              filename = "__base__/graphics/entity/car/car-shadow-2.png",
+              width_in_frames = 1,
+              height_in_frames = 22
+            },
+            {
+              filename = "__base__/graphics/entity/car/car-shadow-3.png",
+              width_in_frames = 1,
+              height_in_frames = 20
+            }
           })
         }
       }
@@ -6120,29 +5800,29 @@ data:extend(
         {
           {
             filename = "__base__/sound/car-breaks.ogg",
-            volume = 0.6
+            volume = 0.2
           }
         }
       }
     },
     sound_minimum_speed = 0.2;
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/car-engine.ogg",
-        volume = 0.6
+        volume = 0.7
       },
       activate_sound =
       {
         filename = "__base__/sound/car-engine-start.ogg",
-        volume = 0.6
+        volume = 0.7
       },
       deactivate_sound =
       {
         filename = "__base__/sound/car-engine-stop.ogg",
-        volume = 0.6
+        volume = 0.7
       },
       match_speed_to_activity = true
     },
@@ -6151,18 +5831,19 @@ data:extend(
     rotation_speed = 0.015,
     weight = 700,
     guns = { "vehicle-machine-gun" },
-    inventory_size = 80
+    inventory_size = 80,
+    water_reflection = car_reflection(1)
   },
   {
     type = "furnace",
     name = "electric-furnace",
     icon = "__base__/graphics/icons/electric-furnace.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "electric-furnace"},
     max_health = 350,
     corpse = "electric-furnace-remnants",
-    dying_explosion = "medium-explosion",
+    dying_explosion = "electric-furnace-explosion",
     resistances =
     {
       {
@@ -6172,6 +5853,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     module_specification =
     {
       module_slots = 2,
@@ -6189,7 +5871,7 @@ data:extend(
       usage_priority = "secondary-input",
       emissions_per_minute = 1
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound =
@@ -6197,7 +5879,10 @@ data:extend(
         filename = "__base__/sound/electric-furnace.ogg",
         volume = 0.7
       },
-      apparent_volume = 1.5
+      max_sounds_per_type = 2,
+      apparent_volume = 1.5,
+      fade_in_ticks = 10,
+      fade_out_ticks = 60
     },
     animation =
     {
@@ -6316,7 +6001,22 @@ data:extend(
         }
       }
     },
-    fast_replaceable_group = "furnace"
+    fast_replaceable_group = "furnace",
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-reflection.png",
+        priority = "extra-high",
+        width = 24,
+        height = 24,
+        shift = util.by_pixel(5, 40),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
 
   {
@@ -6324,7 +6024,7 @@ data:extend(
     name = "compi-roboport",
     order="compi-roboport",
     icon = "__base__/graphics/icons/roboport.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = {},
@@ -6396,7 +6096,7 @@ data:extend(
       scale = 1.5,
       animation_speed = 0.5
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
       sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.6 },
@@ -6416,14 +6116,26 @@ data:extend(
     {
       {
         type = "play-sound",
-        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 1.0 }
+        sound =
+        {
+          filename = "__base__/sound/roboport-door.ogg",
+          volume = 0.5,
+          min_speed = 1,
+          max_speed = 1.5
+        }
       }
     },
     close_door_trigger_effect =
     {
       {
         type = "play-sound",
-        sound = { filename = "__base__/sound/roboport-door.ogg", volume = 0.75 }
+        sound =
+        {
+          filename = "__base__/sound/roboport-door-close.ogg",
+          volume = 0.5,
+          min_speed = 1,
+          max_speed = 1.5
+        }
       }
     },
 
@@ -6449,9 +6161,9 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "storage",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.65 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.7 },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    vehicle_impact_sound = generic_impact_sound(),
     opened_duration = logistic_chest_opened_duration,
     animation =
     {
@@ -6470,13 +6182,14 @@ data:extend(
     type = "construction-robot",
     name = "construction-robot",
     icon = "__base__/graphics/icons/construction-robot.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 0.1, result = "construction-robot"},
     resistances = { { type = "fire", percent = 85 } },
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
+    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
     max_payload_size = 1,
     speed = 0.06,
     max_energy = "1.5MJ",
@@ -6705,17 +6418,19 @@ data:extend(
     },
     working_sound = flying_robot_sounds(),
     cargo_centered = {0.0, 0.2},
-    construction_vector = {0.30, 0.22}
+    construction_vector = {0.30, 0.22},
+    water_reflection = robot_reflection(1),
   },
-   {
+  {
     type = "electric-pole",
     name = "big-electric-pole",
     icon = "__base__/graphics/icons/big-electric-pole.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "big-electric-pole"},
     max_health = 150,
     corpse = "big-electric-pole-remnants",
+    dying_explosion = "big-electric-pole-explosion",
     resistances =
     {
       {
@@ -6725,10 +6440,11 @@ data:extend(
     },
     collision_box = {{-0.65, -0.65}, {0.65, 0.65}},
     selection_box = {{-1, -1}, {1, 1}},
+    damaged_trigger_effect = hit_effects.entity({{-0.5, -2.5},{0.5, 0.5}}),
     drawing_box = {{-1, -3}, {1, 0.5}},
     maximum_wire_distance = 30,
     supply_area_distance = 2,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     pictures =
     {
       layers =
@@ -6838,17 +6554,33 @@ data:extend(
       width = 12,
       height = 12,
       priority = "extra-high-no-scale"
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/big-electric-pole/big-electric-pole-reflection.png",
+        priority = "extra-high",
+        width = 16,
+        height = 32,
+        shift = util.by_pixel(0, 60),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
     }
   },
   {
     type = "electric-pole",
     name = "medium-electric-pole",
     icon = "__base__/graphics/icons/medium-electric-pole.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
     minable = {mining_time = 0.1, result = "medium-electric-pole"},
     max_health = 100,
     corpse = "medium-electric-pole-remnants",
+    dying_explosion = "medium-electric-pole-explosion",
     track_coverage_during_build_by_moving = true,
     fast_replaceable_group = "electric-pole",
     resistances =
@@ -6860,10 +6592,11 @@ data:extend(
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity({{-0.2, -2.2},{0.2, 0.2}}),
     drawing_box = {{-0.5, -2.8}, {0.5, 0.5}},
     maximum_wire_distance = 9,
     supply_area_distance = 3.5,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     pictures =
     {
       layers =
@@ -6973,21 +6706,47 @@ data:extend(
       width = 12,
       height = 12,
       priority = "extra-high-no-scale"
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/medium-electric-pole/medium-electric-pole-reflection.png",
+        priority = "extra-high",
+        width = 12,
+        height = 28,
+        shift = util.by_pixel(0, 55),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
     }
   },
   {
     type = "furnace",
     name = "steel-furnace",
     icon = "__base__/graphics/icons/steel-furnace.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "steel-furnace"},
     max_health = 300,
     corpse = "steel-furnace-remnants",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    dying_explosion = "steel-furnace-explosion",
+    vehicle_impact_sound = generic_impact_sound(),
     working_sound =
     {
-      sound = { filename = "__base__/sound/furnace.ogg" }
+      sound =
+      {
+        {
+          filename = "__base__/sound/furnace.ogg",
+          volume = 0.8
+        }
+      },
+      max_sounds_per_type = 2,
+      apparent_volume = 1.5,
+      fade_in_ticks = 10,
+      fade_out_ticks = 60
     },
     resistances =
     {
@@ -6998,6 +6757,7 @@ data:extend(
     },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-0.8, -1}, {0.8, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
     crafting_categories = {"smelting"},
     result_inventory_size = 1,
     energy_usage = "90kW",
@@ -7147,21 +6907,38 @@ data:extend(
         }
       }
     },
-    fast_replaceable_group = "furnace"
+    fast_replaceable_group = "furnace",
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/steel-furnace/steel-furnace-reflection.png",
+        priority = "extra-high",
+        width = 20,
+        height = 24,
+        shift = util.by_pixel(0, 45),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
 
-   {
+  {
     type = "gate",
     name = "gate",
     icon = "__base__/graphics/icons/gate.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     fast_replaceable_group = "wall",
     minable = {mining_time = 0.1, result = "gate"},
     max_health = 350,
     corpse = "gate-remnants",
+    dying_explosion = "gate-explosion",
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     opening_speed = 0.0666666,
     activation_distance = 3,
     timeout_to_close = 5,
@@ -7543,7 +7320,7 @@ data:extend(
       }
     },
 
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
     open_sound =
     {
       variations = { filename = "__base__/sound/gate1.ogg", volume = 0.5 },
@@ -7555,7 +7332,7 @@ data:extend(
     },
     close_sound =
     {
-      variations = { filename = "__base__/sound/gate1.ogg", volume = 0.5 },
+      variations = { filename = "__base__/sound/gate2.ogg", volume = 0.5 },
       aggregation =
       {
         max_count = 1,

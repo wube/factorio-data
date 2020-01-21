@@ -47,14 +47,13 @@ data:extend(
       },
       default_color_by_type =
       {
-        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.19}
+        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40}
       },
+      chart_train_stop_text_color = {r = 1, g = 1, b = 1},
       chart_train_stop_disabled_text_color = {r = 0.9,  g = 0.2, b = 0.2},
       vehicle_outer_color = {r = 1, g = 0.1, b = 0.1},
       vehicle_outer_color_selected = {r = 1, g = 1, b = 1},
       vehicle_inner_color = {r = 0.9, g = 0.9, b = 0.9},
-      vehicle_cargo_wagon_color = {r = 238, g = 162, b = 0},
-      vehicle_fluid_wagon_color = {r = 0, g = 233, b = 118},
       vehicle_wagon_connection_color = { r = 1, g = 0.1, b = 0.1 },
       resource_outline_selection_color = {r = 1, g = 1, b = 1},
       custom_tag_scale = 0.6*30/32,
@@ -145,6 +144,10 @@ data:extend(
       clone_editor_copy_source_color = { r = 0, g = 1, b = 0 },
       clone_editor_copy_destination_allowed_color = { r = 1, g = 1, b = 1 },
       clone_editor_copy_destination_not_allowed_color = { r = 1, g = 0, b = 0 },
+      clone_editor_brush_source_color = { r = 1, g = 1, b = 0 },
+      clone_editor_brush_destination_color = { r = 0, g = 1, b = 0 },
+      clone_editor_brush_cursor_preview_tint = {r = 0.8, g = 0.8, b = 0.8, a = 0.9},
+      clone_editor_brush_world_preview_tint = {r = 0.8, g = 0.8, b = 0.8, a = 0.4},
       script_editor_select_area_color = { r = 1, g = 1, b = 1 },
       script_editor_drag_area_color = { r = 1, g = 1, b = 1, a = 0.5 },
       force_editor_select_area_color = { r = 0, g = 1, b = 0 },
@@ -182,6 +185,41 @@ data:extend(
       bottom = 4 -- to compensate for tall entities like electric poles
     },
 
-    light_renderer_search_distance_limit = 15
+    light_renderer_search_distance_limit = 15,
+
+    tree_leaf_distortion_strength_far = { 0.46, 0.47 },
+    tree_leaf_distortion_distortion_far = { 7.6, 9.1 },
+    tree_leaf_distortion_speed_far = { 4.31, 6.1 },
+    tree_leaf_distortion_strength_near = { 0.15, 0.12 },
+    tree_leaf_distortion_distortion_near = { 7.5, 15.6 },
+    tree_leaf_distortion_speed_near = { 2.25, 2.25 },
+    tree_shadow_roughness = 1.01,
+    tree_shadow_speed = 0.93,
+
+    missing_preview_sprite_location = "__core__/graphics/missing-preview.png",
+    
+    -- Should be based on the default day/night times, ie
+    -- sun starts to set at 0.25
+    -- sun fully set at 0.45
+    -- sun starts to rise at 0.55
+    -- sun fully risen at 0.75
+    daytime_color_lookup =
+    {
+      {0.00, "identity"},
+      {0.15, "identity"},
+      {0.20, "identity"},
+      {0.45, "__core__/graphics/color_luts/lut-night.png"},
+      {0.55, "__core__/graphics/color_luts/lut-night.png"},
+      {0.80, "identity"},
+      {0.85, "identity"},
+    },
+
+    zoom_to_world_daytime_color_lookup =
+    {
+      {0.25, "identity"},
+      {0.45, "__core__/graphics/color_luts/night.png"},
+      {0.55, "__core__/graphics/color_luts/night.png"},
+      {0.75, "identity"},
+    },
   }
 })

@@ -574,6 +574,24 @@ function add_spitter_die_animation(scale, tint1, tint2, corpse)
   return corpse
 end
 
+function spitter_water_reflection(scale)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/spitter/spitter-reflection.png",
+      priority = "extra-high",
+      width = 20,
+      height = 32,
+      shift = util.by_pixel(5, 15),
+      scale = 5 * scale,
+      variation_count = 1,
+    },
+    rotate = true,
+    orientation_to_variation = false
+  }
+end
+
 function spitter_shoot_shiftings(scale, offset)
   return
   {

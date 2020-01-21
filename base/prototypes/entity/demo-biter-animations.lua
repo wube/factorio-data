@@ -819,3 +819,21 @@ function add_biter_die_animation(scale, tint1, tint2, corpse)
   }
   return corpse
 end
+
+function biter_water_reflection(scale)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/biter/biter-reflection.png",
+      priority = "extra-high",
+      width = 20,
+      height = 28,
+      shift = util.by_pixel(5, 15),
+      scale = 5 * scale,
+      variation_count = 1,
+    },
+    rotate = true,
+    orientation_to_variation = false
+  }
+end

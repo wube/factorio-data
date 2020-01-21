@@ -1,5 +1,138 @@
 local autoplace_utils = require("autoplace_utils")
 
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
+
+local plant_sounds =
+{
+  {
+    filename = "__base__/sound/walking/plant/plant-01.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/walking/plant/plant-02.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/walking/plant/plant-03.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/walking/plant/plant-04.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/walking/plant/plant-05.ogg",
+    volume = 0.4
+  }
+}
+
+local big_bush_sounds =
+{
+  {
+    filename = "__base__/sound/walking/plant/bush-big-01.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-big-02.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-big-03.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-big-04.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-big-05.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-big-06.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-big-07.ogg",
+    volume = 0.3
+  }
+}
+
+local small_bush_sounds =
+{
+  {
+    filename = "__base__/sound/walking/plant/bush-small-01.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-small-02.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-small-03.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-small-04.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-small-05.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-small-06.ogg",
+    volume = 1.0
+  },
+  {
+    filename = "__base__/sound/walking/plant/bush-small-07.ogg",
+    volume = 1.0
+  }
+}
+local pebble_sounds =
+{
+  {
+    filename = "__base__/sound/walking/pebble/stones_01.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_02.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_03.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_03.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_04.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_05.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_06.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_07.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_08.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/walking/pebble/stones_09.ogg",
+    volume = 0.6
+  }
+}
+
 local base_decorative_sprite_priority = "extra-high"
 
 local function add_dim_to_peak(peak, dim_name, values)
@@ -211,6 +344,7 @@ data:extend{
     order = "b[decorative]-b[asterisk]-a[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = plant_sounds,
     -- autoplace = autoplace_settings("brown-fluff", 1, {{{35, 0.5}, {-15, 0.1}}}),
     autoplace = tog_autoplace
     {
@@ -559,6 +693,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-b[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = plant_sounds,
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 1}, {0, 0.7}}}),
     autoplace = tog_autoplace
     {
@@ -1349,6 +1484,7 @@ data:extend{
     order = "b[decorative]-b[asterisk]-c[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = plant_sounds,
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
     {
@@ -1698,6 +1834,7 @@ data:extend{
     order = "b[decorative]-c[pita]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -1977,6 +2114,7 @@ data:extend{
     order = "b[decorative]-c[pita]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2256,6 +2394,7 @@ data:extend{
     order = "b[decorative]-d[croton]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2615,6 +2754,7 @@ data:extend{
     order = "b[decorative]-d[croton]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2971,6 +3111,7 @@ data:extend{
     order = "b[decorative]-d[pita-mini]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -3246,6 +3387,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-a[normal]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    walking_sound = big_bush_sounds,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -3633,6 +3775,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-b[dry]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    walking_sound = big_bush_sounds,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4024,6 +4167,7 @@ data:extend{
     order = "b[decorative]-i[garballo]-a[normal]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -5001,6 +5145,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    walking_sound = plant_sounds,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -5792,6 +5937,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    walking_sound = big_bush_sounds,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6147,6 +6293,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    walking_sound = small_bush_sounds,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6374,6 +6521,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    walking_sound = small_bush_sounds,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -7533,11 +7681,12 @@ data:extend{
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/rock-huge-icon.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "grass",
     order = "b[decorative]-l[rock]-a[huge]",
     collision_box = {{-1.5, -1.1}, {1.5, 1.1}},
     selection_box = {{-1.7, -1.3}, {1.7, 1.3}},
+    damaged_trigger_effect = hit_effects.rock(),
     minable =
     {
       mining_particle = "stone-particle",
@@ -7551,7 +7700,7 @@ data:extend{
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
     render_layer = "object",
     max_health = 2000,
     resistances =
@@ -7795,11 +7944,12 @@ data:extend{
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/rock-big-icon.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "grass",
     order = "b[decorative]-l[rock]-b[big]",
     collision_box = {{-1.0, -0.9}, {1.0, 1.0}},
     selection_box = {{-1.2, -1.2}, {1.2, 1.2}},
+    damaged_trigger_effect = hit_effects.rock(),
     minable =
     {
       mining_particle = "stone-particle",
@@ -7813,7 +7963,7 @@ data:extend{
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
     render_layer = "object",
     max_health = 500,
     resistances =
@@ -8317,6 +8467,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
+    walking_sound = pebble_sounds,
     autoplace = rock_autoplace_settings(1, "d[small]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
@@ -8584,6 +8735,7 @@ data:extend{
     order = "b[decorative]-l[rock]-e[tiny]",
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     render_layer = "decorative",
+    walking_sound = pebble_sounds,
     autoplace = rock_autoplace_settings(1.1, "e[tiny]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
@@ -8851,11 +9003,12 @@ data:extend{
     type = "simple-entity",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/rock-big-icon.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "wrecks",
     order = "b[decorative]-l[rock]-b[big]",
     collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
     selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
+    damaged_trigger_effect = hit_effects.rock(),
     render_layer = "object",
     max_health = 500,
     autoplace = rock_autoplace_settings(0.25, "b[big]", {{0, 0}, {0.4, 0.2}}),
@@ -8878,7 +9031,7 @@ data:extend{
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
     pictures =
     {
       {
@@ -9382,6 +9535,7 @@ data:extend{
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     render_layer = "floor",
     autoplace = rock_autoplace_settings(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
+    walking_sound = pebble_sounds,
     pictures =
     {
       {
@@ -11925,7 +12079,7 @@ data:extend{
     {
       order = "a[doodad]-b[decal]",
       sharpness = 0.3,
-      max_probability = 0.01,
+      max_probability = 0.04,
       peaks =
       {
         peak,
@@ -11943,424 +12097,196 @@ data:extend{
     },
     pictures =
     {
-      --dune
+      --brownCarpet
       {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-00.png",
-        width = 105,
-        height = 84,
-        shift = util.by_pixel(-8.5, 0),
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-06.png",
+        priority = base_decorative_sprite_priority,
+        width = 120,
+        height = 111,
+        shift = util.by_pixel(-1, -3.5),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-00.png",
-          width = 212,
-          height = 168,
-          shift = util.by_pixel(-8, 0),
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-06.png",
+          priority = base_decorative_sprite_priority,
+          width = 239,
+          height = 220,
+          shift = util.by_pixel(-1.25, -3.5),
           scale = 0.5
         }
       },
       {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-01.png",
-        width = 88,
-        height = 73,
-        shift = util.by_pixel(-3, -3.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-01.png",
-          width = 211,
-          height = 148,
-          shift = util.by_pixel(5.75, -3.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-02.png",
-        width = 130,
-        height = 91,
-        shift = util.by_pixel(3, 1.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-02.png",
-          width = 260,
-          height = 184,
-          shift = util.by_pixel(3, 1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-03.png",
-        width = 61,
-        height = 90,
-        shift = util.by_pixel(0.5, 2),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-03.png",
-          width = 129,
-          height = 181,
-          shift = util.by_pixel(0.75, 1.75),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-04.png",
-        width = 95,
-        height = 92,
-        shift = util.by_pixel(-3.5, -1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-04.png",
-          width = 196,
-          height = 184,
-          shift = util.by_pixel(-3.5, -1.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-05.png",
-        width = 107,
-        height = 92,
-        shift = util.by_pixel(-1.5, -1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-05.png",
-          width = 215,
-          height = 184,
-          shift = util.by_pixel(-1.25, -1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-06.png",
-        width = 108,
-        height = 89,
-        shift = util.by_pixel(6, 4.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-06.png",
-          width = 218,
-          height = 179,
-          shift = util.by_pixel(6.5, 4.25),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-07.png",
-        width = 125,
-        height = 91,
-        shift = util.by_pixel(17.5, 3.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-07.png",
-          width = 250,
-          height = 183,
-          shift = util.by_pixel(17.5, 3.25),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-08.png",
-        width = 130,
-        height = 86,
-        shift = util.by_pixel(5, 1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-08.png",
-          width = 260,
-          height = 176,
-          shift = util.by_pixel(5, 0.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-09.png",
-        width = 129,
-        height = 92,
-        shift = util.by_pixel(-5.5, -1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-09.png",
-          width = 260,
-          height = 184,
-          shift = util.by_pixel(-5.5, -1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-10.png",
-        width = 115,
-        height = 91,
-        shift = util.by_pixel(-14.5, 1.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-10.png",
-          width = 233,
-          height = 183,
-          shift = util.by_pixel(-13.75, 1.25),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-11.png",
-        width = 85,
-        height = 92,
-        shift = util.by_pixel(-9.5, 2),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-11.png",
-          width = 172,
-          height = 184,
-          shift = util.by_pixel(-9.5, 2),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-12.png",
-        width = 129,
-        height = 82,
-        shift = util.by_pixel(2.5, -7),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-12.png",
-          width = 260,
-          height = 166,
-          shift = util.by_pixel(2.5, -6.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-13.png",
-        width = 129,
-        height = 85,
-        shift = util.by_pixel(4.5, -0.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-13.png",
-          width = 259,
-          height = 172,
-          shift = util.by_pixel(4.75, -1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-14.png",
-        width = 98,
-        height = 92,
-        shift = util.by_pixel(-3, -2),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-14.png",
-          width = 199,
-          height = 184,
-          shift = util.by_pixel(-2.25, -2),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-15.png",
-        width = 104,
-        height = 92,
-        shift = util.by_pixel(9, -3),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-15.png",
-          width = 214,
-          height = 184,
-          shift = util.by_pixel(8.5, -3),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-16.png",
-        width = 80,
-        height = 91,
-        shift = util.by_pixel(-8, -4.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-16.png",
-          width = 162,
-          height = 182,
-          shift = util.by_pixel(-8, -4.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-17.png",
-        width = 110,
-        height = 76,
-        shift = util.by_pixel(-3, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-17.png",
-          width = 222,
-          height = 153,
-          shift = util.by_pixel(-3, -0.25),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-18.png",
-        width = 122,
-        height = 92,
-        shift = util.by_pixel(4, -3),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-18.png",
-          width = 247,
-          height = 184,
-          shift = util.by_pixel(4.25, -2.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-19.png",
-        width = 103,
-        height = 92,
-        shift = util.by_pixel(-6.5, -3),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-19.png",
-          width = 211,
-          height = 184,
-          shift = util.by_pixel(-5.75, -3),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-20.png",
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-07.png",
+        priority = base_decorative_sprite_priority,
         width = 121,
-        height = 91,
-        shift = util.by_pixel(-0.5, 2.5),
+        height = 138,
+        shift = util.by_pixel(6.5, -7),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-20.png",
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-07.png",
+          priority = base_decorative_sprite_priority,
+          width = 241,
+          height = 274,
+          shift = util.by_pixel(6.25, -7),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-08.png",
+        priority = base_decorative_sprite_priority,
+        width = 133,
+        height = 131,
+        shift = util.by_pixel(3.5, 0.5),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-08.png",
+          priority = base_decorative_sprite_priority,
+          width = 266,
+          height = 261,
+          shift = util.by_pixel(3.5, 0.25),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-09.png",
+        priority = base_decorative_sprite_priority,
+        width = 133,
+        height = 114,
+        shift = util.by_pixel(10.5, -12),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-09.png",
+          priority = base_decorative_sprite_priority,
+          width = 265,
+          height = 228,
+          shift = util.by_pixel(10.25, -11.5),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-10.png",
+        priority = base_decorative_sprite_priority,
+        width = 144,
+        height = 146,
+        shift = util.by_pixel(4, 3),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-10.png",
+          priority = base_decorative_sprite_priority,
+          width = 288,
+          height = 293,
+          shift = util.by_pixel(4, 3.25),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-11.png",
+        priority = base_decorative_sprite_priority,
+        width = 135,
+        height = 133,
+        shift = util.by_pixel(4.5, -4.5),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-11.png",
+          priority = base_decorative_sprite_priority,
+          width = 269,
+          height = 265,
+          shift = util.by_pixel(4.25, -4.25),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-00.png",
+        priority = base_decorative_sprite_priority,
+        width = 105,
+        height = 97,
+        shift = util.by_pixel(2.5, 8.5),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-00.png",
+          priority = base_decorative_sprite_priority,
+          width = 211,
+          height = 195,
+          shift = util.by_pixel(2.25, 8.25),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-01.png",
+        priority = base_decorative_sprite_priority,
+        width = 124,
+        height = 129,
+        shift = util.by_pixel(0, -2.5),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-01.png",
+          priority = base_decorative_sprite_priority,
           width = 248,
-          height = 183,
-          shift = util.by_pixel(-1.5, 2.25),
+          height = 259,
+          shift = util.by_pixel(0, -2.75),
           scale = 0.5
         }
       },
       {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-21.png",
-        width = 87,
-        height = 91,
-        shift = util.by_pixel(6.5, 1.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-21.png",
-          width = 176,
-          height = 184,
-          shift = util.by_pixel(6.5, 1.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-22.png",
-        width = 104,
-        height = 92,
-        shift = util.by_pixel(9, -2),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-22.png",
-          width = 208,
-          height = 185,
-          shift = util.by_pixel(9, -1.75),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-23.png",
-        width = 113,
-        height = 91,
-        shift = util.by_pixel(-3.5, -1.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-23.png",
-          width = 227,
-          height = 184,
-          shift = util.by_pixel(-3.75, -1.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-24.png",
-        width = 78,
-        height = 92,
-        shift = util.by_pixel(5, -1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-24.png",
-          width = 158,
-          height = 186,
-          shift = util.by_pixel(4.5, -1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-25.png",
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-02.png",
+        priority = base_decorative_sprite_priority,
         width = 129,
-        height = 91,
-        shift = util.by_pixel(1.5, -1.5),
+        height = 131,
+        shift = util.by_pixel(1.5, -2.5),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-25.png",
-          width = 260,
-          height = 184,
-          shift = util.by_pixel(1.5, -1.5),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-26.png",
-        width = 66,
-        height = 92,
-        shift = util.by_pixel(-1, -1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-26.png",
-          width = 134,
-          height = 184,
-          shift = util.by_pixel(-0.5, -1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-27.png",
-        width = 63,
-        height = 82,
-        shift = util.by_pixel(26.5, 1),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-27.png",
-          width = 127,
-          height = 165,
-          shift = util.by_pixel(26.25, 1.25),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-28.png",
-        width = 129,
-        height = 79,
-        shift = util.by_pixel(-2.5, -4.5),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-28.png",
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-02.png",
+          priority = base_decorative_sprite_priority,
           width = 258,
-          height = 158,
-          shift = util.by_pixel(-2.5, -4.5),
+          height = 263,
+          shift = util.by_pixel(1.5, -2.75),
           scale = 0.5
         }
       },
       {
-        filename = "__base__/graphics/decorative/sand-dune-decal/sand-dune-decal-29.png",
-        width = 89,
-        height = 92,
-        shift = util.by_pixel(-3.5, -2),
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-03.png",
+        priority = base_decorative_sprite_priority,
+        width = 141,
+        height = 63,
+        shift = util.by_pixel(4.5, -2.5),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/sand-dune-decal/hr-sand-dune-decal-29.png",
-          width = 180,
-          height = 184,
-          shift = util.by_pixel(-3.5, -2),
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-03.png",
+          priority = base_decorative_sprite_priority,
+          width = 283,
+          height = 126,
+          shift = util.by_pixel(5.25, -2.5),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-04.png",
+        priority = base_decorative_sprite_priority,
+        width = 76,
+        height = 133,
+        shift = util.by_pixel(0, -7.5),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-04.png",
+          priority = base_decorative_sprite_priority,
+          width = 152,
+          height = 265,
+          shift = util.by_pixel(0, -7.25),
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/brown-carpet-grass/brown-carpet-grass-05.png",
+        priority = base_decorative_sprite_priority,
+        width = 123,
+        height = 108,
+        shift = util.by_pixel(3.5, -1),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/brown-carpet-grass/hr-brown-carpet-grass-05.png",
+          priority = base_decorative_sprite_priority,
+          width = 247,
+          height = 216,
+          shift = util.by_pixel(3.25, -1),
           scale = 0.5
         }
       }

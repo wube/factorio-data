@@ -32,6 +32,14 @@ end
 
 data:extend(
 {
-  smoke{name = "smoke-for-migration", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}}
+  smoke{name = "smoke-for-migration", color = {r = 0.4, g = 0.4, b = 0.4, a = 0.4}},
+  {
+    type = "particle",
+    name = "particle-for-migration"
+  },
+  {
+    type = "leaf-particle",
+    name = "leaf-particle-for-migration"
+  }
 }
 )

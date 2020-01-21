@@ -4,7 +4,7 @@ data:extend(
     type = "armor",
     name = "light-armor",
     icon = "__base__/graphics/icons/light-armor.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     resistances =
     {
       {

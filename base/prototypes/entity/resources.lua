@@ -7,8 +7,8 @@ data:extend(
   {
     type = "resource",
     name = "crude-oil",
-    icon = "__base__/graphics/icons/crude-oil.png",
-    icon_size = 32,
+    icon = "__base__/graphics/icons/crude-oil-resource.png",
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral"},
     category = "basic-fluid",
     order="a-b-a",

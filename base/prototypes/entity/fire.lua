@@ -814,11 +814,23 @@ data:extend({
 
   light = {intensity = 1, size = 20},
 
-  working_sound =
-  {
-    sound = { filename = "__base__/sound/furnace.ogg" },
-    max_sounds_per_type = 3
-  },
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/fire-1.ogg",
+          volume = 0.7
+        },
+        {
+          filename = "__base__/sound/fire-2.ogg",
+          volume = 0.7
+        }
+      },
+    max_sounds_per_type = 2,
+    fade_in_ticks = 70,
+    fade_out_ticks = 90
+  }
 
 }})
 
@@ -897,8 +909,8 @@ data:extend({
 
   working_sound =
   {
-    sound = { filename = "__base__/sound/furnace.ogg" },
-    max_sounds_per_type = 3
+    sound = { filename = "__base__/sound/fire-1.ogg" },
+    max_sounds_per_type = 2
   }
 }})
 
@@ -1003,7 +1015,7 @@ data:extend({
     type = "fluid-turret",
     name = "flamethrower-turret",
     icon = "__base__/graphics/icons/flamethrower-turret.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 0.5, result = "flamethrower-turret"},
     max_health = 1400,
@@ -1421,7 +1433,7 @@ data:extend({
     ending_attack_muzzle_animation_shift   = fireutil.flamethrower_turret_preparing_muzzle_animation{ frame_count = 1,  orientation_count = 64, progress = 1},
     folding_muzzle_animation_shift         = fireutil.flamethrower_turret_preparing_muzzle_animation{ frame_count = 15, orientation_count = 4, run_mode = "backward", layers = {[0] = "object"}},
 
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
 
     prepare_range = 35,
     shoot_in_prepare_state = false,

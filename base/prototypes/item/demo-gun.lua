@@ -6,7 +6,7 @@ data:extend(
     type = "gun",
     name = "pistol",
     icon = "__base__/graphics/icons/pistol.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "a[basic-clips]-a[pistol]",
     attack_parameters =
@@ -36,7 +36,7 @@ data:extend(
     type = "gun",
     name = "submachine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "a[basic-clips]-b[submachine-gun]",
     attack_parameters =
@@ -66,7 +66,7 @@ data:extend(
     type = "gun",
     name = "vehicle-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[vehicle-machine-gun]",
@@ -97,7 +97,7 @@ data:extend(
     type = "gun",
     name = "shotgun",
     icon = "__base__/graphics/icons/shotgun.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "b[shotgun]-a[basic]",
     attack_parameters =

@@ -22,7 +22,7 @@ heading_font_color = bold_font_color
 -- Button
 button_default_font_color = {} -- less surface of black (not bold), we need it to be pure black
 button_hovered_font_color = {}
-button_default_bold_font_color = {40, 39, 40} -- more surface of black, we don't need it to be pure black
+button_default_bold_font_color = {28, 28, 28} -- more surface of black, we don't need it to be pure black
 
 achievement_green_color = color "96ce82"
 achievement_tan_color = color "d1c58e"
@@ -683,7 +683,9 @@ data:extend(
     tooltip_label =
     {
       type = "label_style",
-      parent = "description_label"
+      parent = "description_label",
+      minimal_width = 50,
+      maximal_width = 356      
     },
     tooltip_title_label =
     {
@@ -968,7 +970,14 @@ data:extend(
       parent = "confirm_button",
       minimal_width = 300
     },
-
+    
+    load_game_subheader_caption_label =
+    {
+      type = "label_style",
+      parent = "subheader_caption_label",
+      maximal_width = 800
+    },
+    
     red_confirm_button =
     {
       type = "button_style",
@@ -1422,10 +1431,37 @@ data:extend(
       default_font_color = button_default_bold_font_color,
       hovered_font_color = button_default_bold_font_color,
       clicked_font_color = button_default_bold_font_color,
-      minimal_width = 300,
+      minimal_width = 320,
+      maximal_width = 320,
       minimal_height = 50,
       top_padding = 4,
-      bottom_padding = 4
+      bottom_padding = 4,
+    },
+    menu_button_continue =
+    {
+      type = "button_style",
+      parent = "menu_button",
+      default_graphical_set =
+      {
+        base = {position = {68, 17}, corner_size = 8},
+        shadow = default_dirt
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {102, 17}, corner_size = 8},
+        shadow = default_dirt,
+        glow = default_glow(green_arrow_button_glow_color, 0.5)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {119, 17}, corner_size = 8},
+        shadow = default_dirt
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {85, 25}, corner_size = 8},
+        shadow = default_dirt
+      },
     },
 
     search_mods_button =
@@ -3129,6 +3165,23 @@ data:extend(
       selected_clicked_font_color = {1, 1, 0}
     },
 
+    new_game_header_list_box_item =
+    {
+      type = "button_style",
+      parent = "list_box_item",
+      font = "heading-2",
+      font_color = heading_font_color,
+      default_font_color = heading_font_color,
+      hovered_font_color = heading_font_color,
+      selected_font_color = heading_font_color,
+      selected_hovered_font_color = heading_font_color,
+      selected_clicked_font_color = heading_font_color,
+      disabled_font_color = heading_font_color,
+      default_graphical_set = {position = {17, 17},  corner_size = 8},
+      hovered_graphical_set = {position = {17, 17},  corner_size = 8},
+      disabled_graphical_set = {position = {17, 17},  corner_size = 8}
+    },
+
     list_box_item =
     {
       type = "button_style",
@@ -3143,8 +3196,8 @@ data:extend(
         --glow = default_glow(default_glow_color, 0.5) -- removed to avoid glow going outside when the item is partially covered
       },
       clicked_graphical_set = {position = {51, 17}, corner_size = 8},
-      disabled_font_color = default_font_color,
-      disabled_graphical_set = {position = {26, 17}, corner_size = 8}
+      disabled_font_color = {179, 179, 179},
+      disabled_graphical_set = {position = {17, 17}, corner_size = 8}
     },
 
     list_box_scroll_pane =
@@ -3336,6 +3389,31 @@ data:extend(
       parent = "player_input_horizontal_flow",
       left_padding = 4
     },
+    
+    new_game_information_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      parent = "vertical_flow",
+      vertically_stretchable = "on",
+      top_padding  = 4,
+      right_padding = 8,
+      bottom_padding = 4,
+      left_padding = 8,
+    },
+    
+     new_game_subheader_caption_label =
+    {
+      type = "label_style",
+      parent = "subheader_caption_label",
+      maximal_width = 400
+    },
+
+    new_game_info_frame =
+    {
+      type = "frame_style",
+      parent = "a_inner_paddingless_frame",
+      size = {500, 616},
+    },
 
     mods_list_box =
     {
@@ -3346,12 +3424,16 @@ data:extend(
     campaigns_list_box =
     {
       type = "list_box_style",
-      size = {300, 450}
+      minimal_width = 300,
+      maximal_width = 400,
+      minimal_height = 450,
+      vertically_stretchable = "on"
     },
     campaign_levels_list_box =
     {
       type = "list_box_style",
-      size = {300, 350}
+      maximal_width = 280,
+      height = 140
     },
     custom_games_list_box =
     {
@@ -4262,12 +4344,6 @@ data:extend(
       padding = 8,
       margin = 16
     },
-    info_box_textbox =
-    {
-      type = "textbox_style",
-      parent = "notice_textbox",
-      width = 450
-    },
     search_textfield_with_fixed_width =
     {
       type = "textbox_style",
@@ -4527,6 +4603,7 @@ data:extend(
       },
       arrow_indent = 7,
       close_color = {0,0,0},
+      pass_through_mouse = false,
     },
 
     compilatron_gui_message =
@@ -4580,6 +4657,7 @@ data:extend(
       },
       arrow_indent = 2.5,
       close_color = {0.361,0.894,0.278},
+      pass_through_mouse = false,
     },
 
     compilatron_speech_bubble_wrapper =
@@ -4641,7 +4719,8 @@ data:extend(
       },
 
       arrow_indent = 0,
-      close_color = {0.361,0.894,0.278}
+      close_color = {0.361,0.894,0.278},
+      pass_through_mouse = true,
     },
 
     frame_without_footer =
@@ -5109,7 +5188,6 @@ data:extend(
     {
       type = "frame_style",
       padding = 0,
-      title_bottom_padding = 0,
       graphical_set = { shadow = default_shadow },
       horizontal_flow_style =
       {
@@ -5135,7 +5213,6 @@ data:extend(
     {
       type = "frame_style",
       padding = 0,
-      title_bottom_padding = 0,
       graphical_set = {},
       horizontal_flow_style =
       {
@@ -5232,11 +5309,7 @@ data:extend(
     menu_frame =
     {
       type = "frame_style",
-      vertical_flow_style =
-      {
-        type = "vertical_flow_style",
-        vertical_spacing = 0
-      }
+      bottom_padding = 8,
     },
     frame_in_right_container =
     {
@@ -5376,6 +5449,17 @@ data:extend(
     {
       type = "label_style",
       maximal_width = 360
+    },
+    main_menu_login_notice_label =
+    {
+      type = "label_style",
+      maximal_width = 400
+    },
+
+    main_menu_version_label =
+    {
+      type = "label_style",
+      font = "default-game",
     },
 
     saved_research_label =
@@ -5904,8 +5988,7 @@ data:extend(
     info_box_activity_bar =
     {
       type = "activity_bar_style",
-      minimal_width = 300,
-      horizontally_stretchable = "on",
+      width = 300,
     },
     info_box_progressbar =
     {
@@ -6529,6 +6612,12 @@ data:extend(
       left_margin = 4,
       right_margin = 4
     },
+    other_settings_slider =
+    {
+      type = "slider_style",
+      parent = "slider",
+      minimal_width = 250
+    },
 
     scroll_pane =
     {
@@ -6696,8 +6785,17 @@ data:extend(
             draw_type = "inner"
           }
         }
-      }
+      },
     },
+    
+    new_game_info_image =
+    {
+      type = "image_style",
+      parent = "map_info_image",
+      stretch_image_to_widget_size = true,
+      size = {500, 285}
+    },
+    
     tabbed_pane =
     {
       type = "tabbed_pane_style",
@@ -6825,6 +6923,12 @@ data:extend(
       type = "empty_widget_style",
       parent = "draggable_space",
       left_margin = 0
+    },
+    draggable_space_with_no_right_margin =
+    {
+      type = "empty_widget_style",
+      parent = "draggable_space",
+      right_margin = 0
     },
     draggable_space_header =
     {
@@ -6956,7 +7060,24 @@ data:extend(
         shadow = default_inner_shadow
       }
     },
-
+    
+    window_content_frame_deep =
+    {
+      type = "frame_style",
+      padding = 4,
+      graphical_set =
+      {
+        base =
+        {
+          position = {17, 0},
+          corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      }
+    },
+    
     window_content_frame_in_tabbed_panne =
     {
       type = "frame_style",

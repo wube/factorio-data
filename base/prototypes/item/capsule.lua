@@ -4,7 +4,7 @@ data:extend(
     type = "capsule",
     name = "cluster-grenade",
     icon = "__base__/graphics/icons/cluster-grenade.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "throw",
@@ -40,7 +40,7 @@ data:extend(
     type = "capsule",
     name = "poison-capsule",
     icon = "__base__/graphics/icons/poison-capsule.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "throw",
@@ -76,7 +76,7 @@ data:extend(
     type = "capsule",
     name = "slowdown-capsule",
     icon = "__base__/graphics/icons/slowdown-capsule.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "throw",
@@ -112,7 +112,7 @@ data:extend(
     type = "capsule",
     name = "defender-capsule",
     icon = "__base__/graphics/icons/defender.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "throw",
@@ -148,7 +148,7 @@ data:extend(
     type = "capsule",
     name = "distractor-capsule",
     icon = "__base__/graphics/icons/distractor.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "throw",
@@ -184,7 +184,7 @@ data:extend(
     type = "capsule",
     name = "destroyer-capsule",
     icon = "__base__/graphics/icons/destroyer.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "throw",
@@ -220,7 +220,7 @@ data:extend(
     type = "capsule",
     name = "discharge-defense-remote",
     icon = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "equipment-remote",
@@ -234,7 +234,7 @@ data:extend(
     type = "capsule",
     name = "cliff-explosives",
     icon = "__base__/graphics/icons/cliff-explosives.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hide-from-bonus-gui"},
     capsule_action =
     {
@@ -298,7 +298,7 @@ data:extend(
     type = "capsule",
     name = "artillery-targeting-remote",
     icon = "__base__/graphics/icons/artillery-targeting-remote.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {
       type = "artillery-remote",

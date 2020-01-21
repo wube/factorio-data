@@ -6,6 +6,8 @@ require ("prototypes.entity.assemblerpipes")
 require "util"
 enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
+
 function laser_turret_extension(inputs)
 return
 {
@@ -216,7 +218,7 @@ data:extend(
     type = "artillery-turret",
     name = "artillery-turret",
     icon = "__base__/graphics/icons/artillery-turret.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     inventory_size = 1,
     ammo_stack_limit = 15,
@@ -227,10 +229,11 @@ data:extend(
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
-    dying_explosion = "medium-explosion",
     corpse = "artillery-turret-remnants",
+    dying_explosion = "artillery-turret-explosion",
     collision_box = {{-1.45, -1.45}, {1.45, 1.45}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
     gun = "artillery-wagon-cannon",
     turret_rotation_speed = 0.001,
     turn_after_shooting_cooldown = 60,
@@ -613,7 +616,22 @@ data:extend(
       { 0,       0,   0.25 }
     },
 
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
+    vehicle_impact_sound = generic_impact_sound(),
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/artillery-turret/artillery-turret-reflection.png",
+        priority = "extra-high",
+        width = 28,
+        height = 32,
+        shift = util.by_pixel(0, 75),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   }
 })
 
@@ -623,7 +641,7 @@ data:extend(
     type = "turret",
     name = "medium-worm-turret",
     icon = "__base__/graphics/icons/medium-worm.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     order="b-b-e",
     subgroup="enemies",
@@ -649,6 +667,7 @@ data:extend(
     collision_box = {{-1.1, -1.0}, {1.1, 1.0}},
     map_generator_bounding_box = {{-2.1, -2.0}, {2.1, 2.0}},
     selection_box = {{-1.1, -1.0}, {1.1, 1.0}},
+    damaged_trigger_effect = hit_effects.biter(),
     shooting_cursor_size = 3.5,
     rotation_speed = 1,
     corpse = "medium-worm-corpse",
@@ -724,7 +743,7 @@ data:extend(
     type = "turret",
     name = "big-worm-turret",
     icon = "__base__/graphics/icons/big-worm.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 750,
     order="b-b-f",
@@ -750,6 +769,7 @@ data:extend(
     collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
     map_generator_bounding_box = {{-2.4, -2.2}, {2.4, 2.2}},
     selection_box = {{-1.4, -1.2}, {1.4, 1.2}},
+    damaged_trigger_effect = hit_effects.biter(),
     shooting_cursor_size = 4,
     rotation_speed = 1,
     corpse = "big-worm-corpse",
@@ -822,7 +842,7 @@ data:extend(
     type = "turret",
     name = "behemoth-worm-turret",
     icon = "__base__/graphics/icons/behemoth-worm.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 750,
     order="b-b-g",
@@ -848,6 +868,7 @@ data:extend(
     collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
     map_generator_bounding_box = {{-2.4, -2.2}, {2.4, 2.2}},
     selection_box = {{-1.4, -1.2}, {1.4, 1.2}},
+    damaged_trigger_effect = hit_effects.biter(),
     shooting_cursor_size = 4,
     rotation_speed = 1,
     corpse = "behemoth-worm-corpse",
@@ -920,16 +941,17 @@ data:extend(
     type = "electric-turret",
     name = "laser-turret",
     icon = "__base__/graphics/icons/laser-turret.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = { "placeable-player", "placeable-enemy", "player-creation"},
     minable = { mining_time = 0.5, result = "laser-turret" },
     max_health = 1000,
     collision_box = {{ -0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{ -1, -1}, {1, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
     rotation_speed = 0.01,
     preparing_speed = 0.05,
-    dying_explosion = "medium-explosion",
     corpse = "laser-turret-remnants",
+    dying_explosion = "laser-turret-explosion",
     folding_speed = 0.05,
     energy_source =
     {
@@ -1026,7 +1048,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = generic_impact_sound(),
 
     attack_parameters =
     {
@@ -1055,13 +1077,28 @@ data:extend(
       }
     },
 
-    call_for_help_radius = 40
+    call_for_help_radius = 40,
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__base__/graphics/entity/laser-turret/laser-turret-reflection.png",
+        priority = "extra-high",
+        width = 20,
+        height = 32,
+        shift = util.by_pixel(0, 40),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+    }
   },
   {
     type = "corpse",
     name = "medium-worm-corpse",
     icon = "__base__/graphics/icons/medium-worm-corpse.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     subgroup="corpses",
@@ -1080,7 +1117,7 @@ data:extend(
     type = "corpse",
     name = "big-worm-corpse",
     icon = "__base__/graphics/icons/big-worm-corpse.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     subgroup="corpses",
@@ -1099,7 +1136,7 @@ data:extend(
     type = "corpse",
     name = "behemoth-worm-corpse",
     icon = "__base__/graphics/icons/behemoth-worm-corpse.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     subgroup="corpses",

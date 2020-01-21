@@ -6,7 +6,7 @@ data:extend(
     type = "gun",
     name = "flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "e[flamethrower]",
     attack_parameters =
@@ -50,7 +50,7 @@ data:extend(
     type = "gun",
     name = "tank-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "gun",
     order = "a[basic-clips]-b[tank-machine-gun]",
@@ -82,7 +82,7 @@ data:extend(
     type = "gun",
     name = "tank-flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "gun",
     order = "b[flamethrower]-b[tank-flamethrower]",
@@ -126,7 +126,7 @@ data:extend(
     type = "item",
     name = "land-mine",
     icon = "__base__/graphics/icons/land-mine.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "f[land-mine]",
     place_result = "land-mine",
@@ -136,7 +136,7 @@ data:extend(
     type = "gun",
     name = "rocket-launcher",
     icon = "__base__/graphics/icons/rocket-launcher.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "d[rocket-launcher]",
     attack_parameters =
@@ -162,7 +162,7 @@ data:extend(
     type = "gun",
     name = "combat-shotgun",
     icon = "__base__/graphics/icons/combat-shotgun.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "gun",
     order = "b[shotgun]-a[combat]",
     attack_parameters =
@@ -188,7 +188,7 @@ data:extend(
     type = "gun",
     name = "railgun",
     icon = "__base__/graphics/icons/railgun.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "gun",
     order = "c[railgun]",
@@ -214,7 +214,7 @@ data:extend(
     type = "gun",
     name = "tank-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "gun",
     order = "z[tank]-a[cannon]",
@@ -231,7 +231,7 @@ data:extend(
       {
         {
           filename = "__base__/sound/fight/tank-cannon.ogg",
-          volume = 1.0
+          volume = 0.7
         }
       }
     },
@@ -241,7 +241,7 @@ data:extend(
     type = "gun",
     name = "artillery-wagon-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "gun",
     order = "z[artillery]-a[cannon]",
@@ -259,8 +259,8 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/fight/tank-cannon.ogg",
-          volume = 1.0
+          filename = "__base__/sound/fight/artillery-shoots-1.ogg",
+          volume = 0.7
         }
       }
     },

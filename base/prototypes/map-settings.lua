@@ -208,7 +208,12 @@ data:extend(
       -- absolute minimum of steps that will be performed for every path find request no matter what
       min_steps_to_check_path_find_termination = 2000,
       -- if the amount of steps is higher than this times estimate of start to goal then path finding is terminated
-      start_to_goal_cost_multiplier_to_terminate_path_find = 2000.0
+      start_to_goal_cost_multiplier_to_terminate_path_find = 2000.0,
+      -- When the number of waiting clients exceeds certain values, the per-tick work limit will be increased by the
+      -- given multiplier. overload_levels gives the threshold values, overload_multipliers gives the multipliers.
+      -- overload_levels and overload_multipliers must be the same length.
+      overload_levels = {0, 100, 500},
+      overload_multipliers = {2, 3, 4}
     },
 
     -- If a behavior fails this many times, the enemy (or enemy group)

@@ -21,6 +21,7 @@ data:extend(
     show_hidden_entities = true,
     show_entity_tags = true,
     show_entity_health_bars = true,
+    show_additional_entity_info_gui = true,
     generate_neighbor_chunks = true,
     fill_built_entity_energy_buffers = true,
     show_character_tab_in_controller_gui = false,

@@ -201,9 +201,22 @@ local tree_types =
           width = 184,
           height = 306,
           shift = util.by_pixel(-1, -74),
+          scale = 0.5,
+        }
+      },
+      normal =
+      {
+        width = 94,
+        height = 146,
+        shift = util.by_pixel(0, -76),
+        hr_version =
+        {
+	    width = 184,
+	    height = 290,
+	    shift = util.by_pixel(-0.5, -76),
           scale = 0.5
         }
-      }
+      },
     },
     { -- b
       trunk =
@@ -257,7 +270,20 @@ local tree_types =
           shift = util.by_pixel(1, -72),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 90,
+        height = 150,
+        shift = util.by_pixel(2, -75),
+        hr_version =
+        {
+	      width = 180,
+	      height = 300,
+	      shift = util.by_pixel(2, -75),
+          scale = 0.5
+        }
+      },
     },
     { -- c
       trunk =
@@ -311,7 +337,20 @@ local tree_types =
           shift = util.by_pixel(0, -72),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 92,
+        height = 154,
+        shift = util.by_pixel(1, -70),
+        hr_version =
+        {
+	      width = 182,
+	      height = 306,
+	      shift = util.by_pixel(0.5, -70),
+          scale = 0.5
+        }
+      },
     },
     { -- d
       trunk =
@@ -365,7 +404,20 @@ local tree_types =
           shift = util.by_pixel(1, -72),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 94,
+        height = 144,
+        shift = util.by_pixel(2, -75),
+        hr_version =
+        {
+	      width = 188,
+	      height = 286,
+	      shift = util.by_pixel(2, -75.5),
+          scale = 0.5
+        }
+      },
     },
     { -- e
       trunk =
@@ -419,7 +471,20 @@ local tree_types =
           shift = util.by_pixel(3, -71),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 96,
+        height = 140,
+        shift = util.by_pixel(4, -68),
+        hr_version =
+        {
+	      width = 190,
+	      height = 280,
+	      shift = util.by_pixel(4, -68),
+          scale = 0.5
+        }
+      },
     },
     { -- f
       trunk =
@@ -473,7 +538,20 @@ local tree_types =
           shift = util.by_pixel(-3, -67),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 96,
+        height = 140,
+        shift = util.by_pixel(-2, -71),
+        hr_version =
+        {
+	      width = 190,
+	      height = 278,
+	      shift = util.by_pixel(-2, -71),
+          scale = 0.5
+        }
+      },
     },
     { -- g
       trunk =
@@ -527,7 +605,20 @@ local tree_types =
           shift = util.by_pixel(-3, -61),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 94,
+        height = 124,
+        shift = util.by_pixel(-2, -62),
+        hr_version =
+        {
+          width = 186,
+          height = 248,
+          shift = util.by_pixel(-2.5, -62),
+          scale = 0.5
+        }
+      },
     },
     { -- h
       trunk =
@@ -581,7 +672,20 @@ local tree_types =
           shift = util.by_pixel(1, -63),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 92,
+        height = 122,
+        shift = util.by_pixel(2, -61),
+        hr_version =
+        {
+          width = 180,
+          height = 244,
+          shift = util.by_pixel(1.5, -61),
+          scale = 0.5
+        }
+      },
     },
     { -- i
       trunk =
@@ -635,7 +739,20 @@ local tree_types =
           shift = util.by_pixel(-2, -52),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 78,
+        height = 100,
+        shift = util.by_pixel(-1, -56),
+        hr_version =
+        {
+          width = 152,
+          height = 196,
+          shift = util.by_pixel(-1.5, -56.5),
+          scale = 0.5
+        }
+      },
     },
     { -- j
       trunk =
@@ -689,7 +806,20 @@ local tree_types =
           shift = util.by_pixel(0, -51),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 68,
+        height = 98,
+        shift = util.by_pixel(2, -58),
+        hr_version =
+        {
+		  width = 134,
+		  height = 194,
+		  shift = util.by_pixel(1.5, -58.5),
+          scale = 0.5
+        }
+      },
     },
     { -- k
       trunk =
@@ -743,7 +873,20 @@ local tree_types =
           shift = util.by_pixel(10, -12),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 94,
+        height = 76,
+        shift = util.by_pixel(26, -26),
+        hr_version =
+        {
+		  width = 186,
+		  height = 150,
+		  shift = util.by_pixel(26, -26),
+          scale = 0.5
+        }
+      },
     },
     { -- l
       trunk =
@@ -797,7 +940,20 @@ local tree_types =
           shift = util.by_pixel(-31, 0),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 122,
+        height = 56,
+        shift = util.by_pixel(-52, 1),
+        hr_version =
+        {
+          width = 240,
+          height = 112,
+          shift = util.by_pixel(-52.5, 1),
+          scale = 0.5
+        }
+      },
     }
   },
   { -- tree-02
@@ -853,7 +1009,20 @@ local tree_types =
           shift = util.by_pixel(0, -74),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 94,
+        height = 146,
+        shift = util.by_pixel(1, -78),
+        hr_version =
+        {
+		  width = 186,
+		  height = 292,
+		  shift = util.by_pixel(0.5, -78),
+          scale = 0.5
+        }
+      },
     },
     { -- b
       trunk =
@@ -907,7 +1076,20 @@ local tree_types =
           shift = util.by_pixel(-2, -62),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 92,
+        height = 132,
+        shift = util.by_pixel(-1, -64),
+        hr_version =
+        {
+		  width = 184,
+		  height = 262,
+		  shift = util.by_pixel(-1, -64),
+          scale = 0.5
+        }
+      },
     },
     { -- c
       trunk =
@@ -961,7 +1143,20 @@ local tree_types =
           shift = util.by_pixel(-1, -62),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 90,
+        height = 124,
+        shift = util.by_pixel(0, -66),
+        hr_version =
+        {
+		  width = 178,
+		  height = 244,
+		  shift = util.by_pixel(0, -66.5),
+          scale = 0.5
+        }
+      },
     },
     { -- d
       trunk =
@@ -1015,7 +1210,20 @@ local tree_types =
           shift = util.by_pixel(6, -75),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 90,
+        height = 152,
+        shift = util.by_pixel(7, -82),
+        hr_version =
+        {
+		  width = 180,
+		  height = 302,
+		  shift = util.by_pixel(7, -82),
+          scale = 0.5
+        }
+      },
     },
     { -- e
       trunk =
@@ -1069,7 +1277,20 @@ local tree_types =
           shift = util.by_pixel(1, -63),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 98,
+        height = 138,
+        shift = util.by_pixel(2, -64),
+        hr_version =
+        {
+		  width = 194,
+		  height = 272,
+		  shift = util.by_pixel(2, -64.5),
+          scale = 0.5
+        }
+      },
     },
     { -- f
       trunk =
@@ -1123,7 +1344,20 @@ local tree_types =
           shift = util.by_pixel(-10, -68),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 92,
+        height = 148,
+        shift = util.by_pixel(-9, -69),
+        hr_version =
+        {
+		  width = 184,
+		  height = 292,
+		  shift = util.by_pixel(-9, -69.5),
+          scale = 0.5
+        }
+      },
     },
     { -- g
       trunk =
@@ -1177,7 +1411,20 @@ local tree_types =
           shift = util.by_pixel(5, -67),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 98,
+        height = 120,
+        shift = util.by_pixel(6, -74),
+        hr_version =
+        {
+		  width = 196,
+		  height = 238,
+		  shift = util.by_pixel(6, -74.5),
+          scale = 0.5
+        }
+      },
     },
     { -- h
       trunk =
@@ -1231,7 +1478,20 @@ local tree_types =
           shift = util.by_pixel(-7, -58),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 96,
+        height = 112,
+        shift = util.by_pixel(-6, -60),
+        hr_version =
+        {
+		  width = 190,
+		  height = 220,
+		  shift = util.by_pixel(-6, -60.5),
+          scale = 0.5
+        }
+      },
     },
     { -- i
       trunk =
@@ -1285,7 +1545,20 @@ local tree_types =
           shift = util.by_pixel(4, -48),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 76,
+        height = 98,
+        shift = util.by_pixel(5, -47),
+        hr_version =
+        {
+		  width = 152,
+		  height = 194,
+		  shift = util.by_pixel(5, -47),
+          scale = 0.5
+        }
+      },
     },
     { -- j
       trunk =
@@ -1339,7 +1612,20 @@ local tree_types =
           shift = util.by_pixel(-7, -47),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 78,
+        height = 100,
+        shift = util.by_pixel(-6, -47),
+        hr_version =
+        {
+		  width = 152,
+		  height = 200,
+		  shift = util.by_pixel(-6.5, -46.5),
+          scale = 0.5
+        }
+      },
     },
     { -- k
       trunk =
@@ -1393,7 +1679,20 @@ local tree_types =
           shift = util.by_pixel(13, -30),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 108,
+        height = 108,
+        shift = util.by_pixel(14, -41),
+        hr_version =
+        {
+		  width = 214,
+		  height = 212,
+		  shift = util.by_pixel(14, -41.5),
+          scale = 0.5
+        }
+      },
     },
     { -- l
       trunk =
@@ -1447,7 +1746,20 @@ local tree_types =
           shift = util.by_pixel(-11, -6),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 154,
+        height = 80,
+        shift = util.by_pixel(-35, -5),
+        hr_version =
+        {
+		  width = 308,
+		  height = 156,
+		  shift = util.by_pixel(-35, -5.5),
+          scale = 0.5
+        }
+      },
     }
   },
   { -- tree-03
@@ -1493,6 +1805,17 @@ local tree_types =
           width = 282,
           height = 304,
           shift = util.by_pixel(-8, -74),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 142,
+        height = 136,
+        shift = util.by_pixel(-8, -82),
+        hr_version = {
+          width = 284,
+          height = 270,
+          shift = util.by_pixel(-8, -82),
           scale = 0.5
         },
       },
@@ -1542,6 +1865,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 174,
+        height = 138,
+        shift = util.by_pixel(23, -80),
+        hr_version = {
+          width = 344,
+          height = 276,
+          shift = util.by_pixel(22.5, -79.5),
+          scale = 0.5
+        },
+      },
     },
     { -- c
       trunk = {
@@ -1585,6 +1919,17 @@ local tree_types =
           width = 314,
           height = 232,
           shift = util.by_pixel(-8, -48),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 160,
+        height = 118,
+        shift = util.by_pixel(-8, -47),
+        hr_version = {
+          width = 318,
+          height = 234,
+          shift = util.by_pixel(-8, -47.5),
           scale = 0.5
         },
       },
@@ -1634,6 +1979,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 102,
+        height = 116,
+        shift = util.by_pixel(10, -72),
+        hr_version = {
+          width = 202,
+          height = 230,
+          shift = util.by_pixel(9.5, -72.5),
+          scale = 0.5
+        },
+      },
     },
     { -- e
       trunk = {
@@ -1677,6 +2033,17 @@ local tree_types =
           width = 234,
           height = 208,
           shift = util.by_pixel(8, -61),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 120,
+        height = 100,
+        shift = util.by_pixel(9, -64),
+        hr_version = {
+          width = 238,
+          height = 198,
+          shift = util.by_pixel(8.5, -64),
           scale = 0.5
         },
       },
@@ -1726,6 +2093,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 108,
+        height = 102,
+        shift = util.by_pixel(-12, -63),
+        hr_version = {
+          width = 216,
+          height = 202,
+          shift = util.by_pixel(-12, -63.5),
+          scale = 0.5
+        },
+      },
     },
     { -- g
       trunk = {
@@ -1769,6 +2147,17 @@ local tree_types =
           width = 188,
           height = 230,
           shift = util.by_pixel(1, -57),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 94,
+        height = 96,
+        shift = util.by_pixel(2, -66),
+        hr_version = {
+          width = 186,
+          height = 188,
+          shift = util.by_pixel(1.5, -66.5),
           scale = 0.5
         },
       },
@@ -1818,6 +2207,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 94,
+        height = 78,
+        shift = util.by_pixel(8, -54),
+        hr_version = {
+          width = 186,
+          height = 154,
+          shift = util.by_pixel(7.5, -54),
+          scale = 0.5
+        },
+      },
     },
     { -- i
       trunk = {
@@ -1861,6 +2261,17 @@ local tree_types =
           width = 198,
           height = 178,
           shift = util.by_pixel(-1, -41),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 96,
+        height = 68,
+        shift = util.by_pixel(-3, -51),
+        hr_version = {
+          width = 190,
+          height = 136,
+          shift = util.by_pixel(-3.5, -50.5),
           scale = 0.5
         },
       },
@@ -1910,6 +2321,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 58,
+        height = 68,
+        shift = util.by_pixel(7, -51),
+        hr_version = {
+          width = 114,
+          height = 136,
+          shift = util.by_pixel(6.5, -50.5),
+          scale = 0.5
+        },
+      },
     },
     { -- k
       trunk = {
@@ -1956,6 +2378,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 72,
+        height = 54,
+        shift = util.by_pixel(5, -36),
+        hr_version = {
+          width = 140,
+          height = 104,
+          shift = util.by_pixel(4.5, -36.5),
+          scale = 0.5
+        },
+      },
     },
     { -- l
       trunk = {
@@ -1999,6 +2432,17 @@ local tree_types =
           width = 154,
           height = 142,
           shift = util.by_pixel(-13, -42),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 78,
+        height = 62,
+        shift = util.by_pixel(-12, -46),
+        hr_version = {
+          width = 154,
+          height = 122,
+          shift = util.by_pixel(-12.5, -46),
           scale = 0.5
         },
       },
@@ -2057,7 +2501,20 @@ local tree_types =
           shift = util.by_pixel(-3, -67),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 110,
+        height = 124,
+        shift = util.by_pixel(-2, -82),
+        hr_version =
+        {
+          width = 218,
+          height = 248,
+          shift = util.by_pixel(-2.5, -82),
+          scale = 0.5
+        }
+      },
     },
     { -- b
       trunk =
@@ -2111,7 +2568,20 @@ local tree_types =
           shift = util.by_pixel(4, -72),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 94,
+        height = 124,
+        shift = util.by_pixel(5, -84),
+        hr_version =
+        {
+          width = 186,
+          height = 246,
+          shift = util.by_pixel(5, -84.5),
+          scale = 0.5
+        }
+      },
     },
     { -- c
       trunk =
@@ -2165,7 +2635,20 @@ local tree_types =
           shift = util.by_pixel(2, -64),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 106,
+        height = 134,
+        shift = util.by_pixel(3, -77),
+        hr_version =
+        {
+          width = 208,
+          height = 268,
+          shift = util.by_pixel(2.5, -77),
+          scale = 0.5
+        }
+      },
     },
     { -- d
       trunk =
@@ -2219,7 +2702,20 @@ local tree_types =
           shift = util.by_pixel(-6, -64),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 116,
+        height = 126,
+        shift = util.by_pixel(-5, -74),
+        hr_version =
+        {
+          width = 230,
+          height = 250,
+          shift = util.by_pixel(-5, -74),
+          scale = 0.5
+        }
+      },
     },
     { -- e
       trunk =
@@ -2273,7 +2769,20 @@ local tree_types =
           shift = util.by_pixel(-4, -84),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 112,
+        height = 130,
+        shift = util.by_pixel(-3, -88),
+        hr_version =
+        {
+          width = 222,
+          height = 256,
+          shift = util.by_pixel(-3, -88.5),
+          scale = 0.5
+        }
+      },
     },
     { -- f
       trunk =
@@ -2327,7 +2836,20 @@ local tree_types =
           shift = util.by_pixel(11, -82),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 112,
+        height = 122,
+        shift = util.by_pixel(13, -87),
+        hr_version =
+        {
+          width = 222,
+          height = 244,
+          shift = util.by_pixel(12.5, -87),
+          scale = 0.5
+        }
+      },
     },
     { -- g
       trunk =
@@ -2381,7 +2903,20 @@ local tree_types =
           shift = util.by_pixel(-11, -75),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 112,
+        height = 110,
+        shift = util.by_pixel(-10, -84),
+        hr_version =
+        {
+          width = 222,
+          height = 220,
+          shift = util.by_pixel(-10.5, -83.5),
+          scale = 0.5
+        }
+      },
     },
     { -- h
       trunk =
@@ -2435,7 +2970,20 @@ local tree_types =
           shift = util.by_pixel(8, -57),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 102,
+        height = 102,
+        shift = util.by_pixel(8, -76),
+        hr_version =
+        {
+          width = 204,
+          height = 202,
+          shift = util.by_pixel(8.5, -76),
+          scale = 0.5
+        }
+      },
     },
     { -- i
       trunk =
@@ -2489,7 +3037,20 @@ local tree_types =
           shift = util.by_pixel(6, -50),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 70,
+        height = 104,
+        shift = util.by_pixel(7, -57),
+        hr_version =
+        {
+          width = 138,
+          height = 206,
+          shift = util.by_pixel(7, -57),
+          scale = 0.5
+        }
+      },
     },
     { -- j
       trunk =
@@ -2543,7 +3104,20 @@ local tree_types =
           shift = util.by_pixel(-8, -55),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 70,
+        height = 106,
+        shift = util.by_pixel(-7, -65),
+        hr_version =
+        {
+          width = 140,
+          height = 210,
+          shift = util.by_pixel(-7, -65),
+          scale = 0.5
+        }
+      },
     },
     { -- k
       trunk =
@@ -2597,7 +3171,20 @@ local tree_types =
           shift = util.by_pixel(-19, -19),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 134,
+        height = 72,
+        shift = util.by_pixel(-55, -22),
+        hr_version =
+        {
+          width = 266,
+          height = 144,
+          shift = util.by_pixel(-55, -22),
+          scale = 0.5
+        }
+      },
     },
     { -- l
       trunk =
@@ -2651,7 +3238,20 @@ local tree_types =
           shift = util.by_pixel(10, 1),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 110,
+        height = 94,
+        shift = util.by_pixel(35, 15),
+        hr_version =
+        {
+          width = 218,
+          height = 186,
+          shift = util.by_pixel(35, 15),
+          scale = 0.5
+        }
+      },
     }
   },
   { -- tree-05
@@ -2697,6 +3297,17 @@ local tree_types =
           width = 234,
           height = 258,
           shift = util.by_pixel(5, -60),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 118,
+        height = 108,
+        shift = util.by_pixel(6, -71),
+        hr_version = {
+          width = 234,
+          height = 216,
+          shift = util.by_pixel(6, -71),
           scale = 0.5
         },
       },
@@ -2746,6 +3357,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 112,
+        height = 106,
+        shift = util.by_pixel(6, -68),
+        hr_version = {
+          width = 222,
+          height = 212,
+          shift = util.by_pixel(6, -67.5),
+          scale = 0.5
+        },
+      },
     },
     { -- c
       trunk = {
@@ -2789,6 +3411,17 @@ local tree_types =
           width = 224,
           height = 290,
           shift = util.by_pixel(-2, -65),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 112,
+        height = 128,
+        shift = util.by_pixel(-2, -74),
+        hr_version = {
+          width = 224,
+          height = 256,
+          shift = util.by_pixel(-2, -74),
           scale = 0.5
         },
       },
@@ -2838,6 +3471,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 100,
+        height = 104,
+        shift = util.by_pixel(6, -67),
+        hr_version = {
+          width = 200,
+          height = 208,
+          shift = util.by_pixel(6, -67),
+          scale = 0.5
+        },
+      },
     },
     { -- e
       trunk = {
@@ -2881,6 +3525,17 @@ local tree_types =
           width = 236,
           height = 250,
           shift = util.by_pixel(-2, -57),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 118,
+        height = 104,
+        shift = util.by_pixel(-2, -66),
+        hr_version = {
+          width = 236,
+          height = 206,
+          shift = util.by_pixel(-2, -66.5),
           scale = 0.5
         },
       },
@@ -2930,6 +3585,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 98,
+        height = 106,
+        shift = util.by_pixel(-3, -64),
+        hr_version = {
+          width = 194,
+          height = 212,
+          shift = util.by_pixel(-3.5, -64),
+          scale = 0.5
+        },
+      },
     },
     { -- g
       trunk = {
@@ -2973,6 +3639,17 @@ local tree_types =
           width = 178,
           height = 220,
           shift = util.by_pixel(0, -51),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 88,
+        height = 108,
+        shift = util.by_pixel(1, -51),
+        hr_version = {
+          width = 176,
+          height = 216,
+          shift = util.by_pixel(1, -51),
           scale = 0.5
         },
       },
@@ -3022,6 +3699,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 114,
+        height = 88,
+        shift = util.by_pixel(6, -51),
+        hr_version = {
+          width = 228,
+          height = 174,
+          shift = util.by_pixel(6.5, -51),
+          scale = 0.5
+        },
+      },
     },
     { -- i
       trunk = {
@@ -3065,6 +3753,17 @@ local tree_types =
           width = 166,
           height = 200,
           shift = util.by_pixel(-5, -45),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 84,
+        height = 84,
+        shift = util.by_pixel(-5, -53),
+        hr_version = {
+          width = 166,
+          height = 166,
+          shift = util.by_pixel(-5, -53.5),
           scale = 0.5
         },
       },
@@ -3114,6 +3813,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 72,
+        height = 82,
+        shift = util.by_pixel(1, -45),
+        hr_version = {
+          width = 144,
+          height = 164,
+          shift = util.by_pixel(1.5, -45),
+          scale = 0.5
+        },
+      },
     },
     { -- k
       trunk = {
@@ -3160,6 +3870,17 @@ local tree_types =
           scale = 0.5
         },
       },
+	  normal = {
+        width = 86,
+        height = 76,
+        shift = util.by_pixel(-45, 9),
+        hr_version = {
+          width = 170,
+          height = 152,
+          shift = util.by_pixel(-45, 9.5),
+          scale = 0.5
+        },
+      },
     },
     { -- l
       trunk = {
@@ -3203,6 +3924,17 @@ local tree_types =
           width = 252,
           height = 164,
           shift = util.by_pixel(15, -30),
+          scale = 0.5
+        },
+      },
+	  normal = {
+        width = 80,
+        height = 74,
+        shift = util.by_pixel(35, -34),
+        hr_version = {
+          width = 158,
+          height = 146,
+          shift = util.by_pixel(34.5, -34.5),
           scale = 0.5
         },
       },
@@ -3723,7 +4455,20 @@ local tree_types =
           shift = util.by_pixel(2, -67),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 124,
+        height = 146,
+        shift = util.by_pixel(3, -78),
+        hr_version =
+        {
+          width = 246,
+          height = 290,
+          shift = util.by_pixel(2.5, -78.5),
+          scale = 0.5
+        }
+      },
     },
     { -- b
       trunk =
@@ -3777,7 +4522,20 @@ local tree_types =
           shift = util.by_pixel(9, -62),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 142,
+        height = 126,
+        shift = util.by_pixel(10, -72),
+        hr_version =
+        {
+          width = 282,
+          height = 250,
+          shift = util.by_pixel(9.5, -72),
+          scale = 0.5
+        }
+      },
     },
     { -- c
       trunk =
@@ -3831,7 +4589,20 @@ local tree_types =
           shift = util.by_pixel(-15, -68),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 136,
+        height = 152,
+        shift = util.by_pixel(-14, -71),
+        hr_version =
+        {
+          width = 270,
+          height = 304,
+          shift = util.by_pixel(-14, -71),
+          scale = 0.5
+        }
+      },
     },
     { -- d
       trunk =
@@ -3885,7 +4656,20 @@ local tree_types =
           shift = util.by_pixel(0, -66),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 116,
+        height = 124,
+        shift = util.by_pixel(1, -77),
+        hr_version =
+        {
+          width = 232,
+          height = 248,
+          shift = util.by_pixel(1, -76.5),
+          scale = 0.5
+        }
+      },
     },
     { -- e
       trunk =
@@ -3939,7 +4723,20 @@ local tree_types =
           shift = util.by_pixel(3, -63),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 122,
+        height = 120,
+        shift = util.by_pixel(4, -75),
+        hr_version =
+        {
+          width = 242,
+          height = 238,
+          shift = util.by_pixel(4, -75.5),
+          scale = 0.5
+        }
+      },
     },
     { -- f
       trunk =
@@ -3993,7 +4790,20 @@ local tree_types =
           shift = util.by_pixel(-5, -74),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 128,
+        height = 132,
+        shift = util.by_pixel(-4, -77),
+        hr_version =
+        {
+          width = 254,
+          height = 264,
+          shift = util.by_pixel(-4, -77),
+          scale = 0.5
+        }
+      },
     },
     { -- g
       trunk =
@@ -4047,7 +4857,20 @@ local tree_types =
           shift = util.by_pixel(10, -54),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 112,
+        height = 112,
+        shift = util.by_pixel(11, -61),
+        hr_version =
+        {
+          width = 222,
+          height = 222,
+          shift = util.by_pixel(10.5, -61),
+          scale = 0.5
+        }
+      },
     },
     { -- h
       trunk =
@@ -4101,7 +4924,20 @@ local tree_types =
           shift = util.by_pixel(-10, -53),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 114,
+        height = 110,
+        shift = util.by_pixel(-9, -57),
+        hr_version =
+        {
+          width = 226,
+          height = 218,
+          shift = util.by_pixel(-9, -57.5),
+          scale = 0.5
+        }
+      },
     },
     { -- i
       trunk =
@@ -4155,7 +4991,20 @@ local tree_types =
           shift = util.by_pixel(-1, -54),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 92,
+        height = 104,
+        shift = util.by_pixel(-1, -56),
+        hr_version =
+        {
+          width = 184,
+          height = 206,
+          shift = util.by_pixel(-0.5, -56.5),
+          scale = 0.5
+        }
+      },
     },
     { -- j
       trunk =
@@ -4209,7 +5058,20 @@ local tree_types =
           shift = util.by_pixel(2, -44),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 102,
+        height = 86,
+        shift = util.by_pixel(2, -50),
+        hr_version =
+        {
+          width = 202,
+          height = 170,
+          shift = util.by_pixel(2, -50.5),
+          scale = 0.5
+        }
+      },
     },
     { -- k
       trunk =
@@ -4263,7 +5125,20 @@ local tree_types =
           shift = util.by_pixel(15, -43),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 102,
+        height = 92,
+        shift = util.by_pixel(16, -47),
+        hr_version =
+        {
+          width = 204,
+          height = 184,
+          shift = util.by_pixel(16, -46.5),
+          scale = 0.5
+        }
+      },
     },
     { -- l
       trunk =
@@ -4317,7 +5192,20 @@ local tree_types =
           shift = util.by_pixel(-31, 3),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 122,
+        height = 74,
+        shift = util.by_pixel(-51, 4),
+        hr_version =
+        {
+          width = 242,
+          height = 146,
+          shift = util.by_pixel(-51, 3.5),
+          scale = 0.5
+        }
+      },
     }
   },
   { -- tree-08
@@ -4373,7 +5261,20 @@ local tree_types =
           shift = util.by_pixel(-6, -77),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 130,
+        height = 112,
+        shift = util.by_pixel(-5, -91),
+        hr_version =
+        {
+          width = 260,
+          height = 222,
+          shift = util.by_pixel(-5, -91),
+          scale = 0.5
+        }
+      },
     },
     { -- b
       trunk =
@@ -4427,7 +5328,20 @@ local tree_types =
           shift = util.by_pixel(-3, -70),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 162,
+        height = 104,
+        shift = util.by_pixel(-2, -95),
+        hr_version =
+        {
+          width = 322,
+          height = 206,
+          shift = util.by_pixel(-2, -95),
+          scale = 0.5
+        }
+      },
     },
     { -- c
       trunk =
@@ -4481,7 +5395,20 @@ local tree_types =
           shift = util.by_pixel(6, -83),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 128,
+        height = 130,
+        shift = util.by_pixel(7, -90),
+        hr_version =
+        {
+          width = 254,
+          height = 260,
+          shift = util.by_pixel(6.5, -90),
+          scale = 0.5
+        }
+      },
     },
     { -- d
       trunk =
@@ -4535,7 +5462,20 @@ local tree_types =
           shift = util.by_pixel(0, -73),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 108,
+        height = 92,
+        shift = util.by_pixel(0, -82),
+        hr_version =
+        {
+          width = 216,
+          height = 182,
+          shift = util.by_pixel(0.5, -82),
+          scale = 0.5
+        }
+      },
     },
     { -- e
       trunk =
@@ -4589,7 +5529,20 @@ local tree_types =
           shift = util.by_pixel(2, -71),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 116,
+        height = 84,
+        shift = util.by_pixel(3, -79),
+        hr_version =
+        {
+          width = 228,
+          height = 166,
+          shift = util.by_pixel(2.5, -79.5),
+          scale = 0.5
+        }
+      },
     },
     { -- f
       trunk =
@@ -4643,7 +5596,20 @@ local tree_types =
           shift = util.by_pixel(-2, -67),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 108,
+        height = 102,
+        shift = util.by_pixel(-1, -90),
+        hr_version =
+        {
+          width = 216,
+          height = 200,
+          shift = util.by_pixel(-1, -90.5),
+          scale = 0.5
+        }
+      },
     },
     { -- g
       trunk =
@@ -4697,7 +5663,20 @@ local tree_types =
           shift = util.by_pixel(12, -71),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 96,
+        height = 82,
+        shift = util.by_pixel(12, -77),
+        hr_version =
+        {
+          width = 192,
+          height = 164,
+          shift = util.by_pixel(12.5, -77),
+          scale = 0.5
+        }
+      },
     },
     { -- h
       trunk =
@@ -4751,7 +5730,20 @@ local tree_types =
           shift = util.by_pixel(-9, -54),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 110,
+        height = 78,
+        shift = util.by_pixel(-8, -58),
+        hr_version =
+        {
+          width = 218,
+          height = 152,
+          shift = util.by_pixel(-8.5, -58.5),
+          scale = 0.5
+        }
+      },
     },
     { -- i
       trunk =
@@ -4805,7 +5797,20 @@ local tree_types =
           shift = util.by_pixel(3, -60),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 64,
+        height = 78,
+        shift = util.by_pixel(4, -62),
+        hr_version =
+        {
+          width = 128,
+          height = 154,
+          shift = util.by_pixel(4, -62.5),
+          scale = 0.5
+        }
+      },
     },
     { -- j
       trunk =
@@ -4859,7 +5864,20 @@ local tree_types =
           shift = util.by_pixel(3, -56),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 82,
+        height = 74,
+        shift = util.by_pixel(4, -59),
+        hr_version =
+        {
+          width = 162,
+          height = 148,
+          shift = util.by_pixel(4, -58.5),
+          scale = 0.5
+        }
+      },
     },
     { -- k
       trunk =
@@ -4913,7 +5931,20 @@ local tree_types =
           shift = util.by_pixel(-34, -35),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 92,
+        height = 94,
+        shift = util.by_pixel(-66, -47),
+        hr_version =
+        {
+          width = 180,
+          height = 188,
+          shift = util.by_pixel(-66.5, -46.5),
+          scale = 0.5
+        }
+      },
     },
     { -- l
       trunk =
@@ -4967,7 +5998,20 @@ local tree_types =
           shift = util.by_pixel(48, 9),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 100,
+        height = 54,
+        shift = util.by_pixel(60, 28),
+        hr_version =
+        {
+          width = 200,
+          height = 108,
+          shift = util.by_pixel(60, 28),
+          scale = 0.5
+        }
+      },
     }
   },
   { -- tree-09
@@ -5023,7 +6067,20 @@ local tree_types =
           shift = util.by_pixel(0, -78),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 176,
+        height = 148,
+        shift = util.by_pixel(1, -102),
+        hr_version =
+        {
+          width = 350,
+          height = 294,
+          shift = util.by_pixel(1, -102),
+          scale = 0.5
+        }
+      },
     },
     { -- b
       trunk =
@@ -5077,7 +6134,20 @@ local tree_types =
           shift = util.by_pixel(7, -88),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 168,
+        height = 154,
+        shift = util.by_pixel(8, -102),
+        hr_version =
+        {
+          width = 336,
+          height = 306,
+          shift = util.by_pixel(8, -102),
+          scale = 0.5
+        }
+      },
     },
     { -- c
       trunk =
@@ -5131,7 +6201,20 @@ local tree_types =
           shift = util.by_pixel(3, -78),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 134,
+        height = 180,
+        shift = util.by_pixel(3, -89),
+        hr_version =
+        {
+          width = 268,
+          height = 356,
+          shift = util.by_pixel(3.5, -89.5),
+          scale = 0.5
+        }
+      },
     },
     { -- d
       trunk =
@@ -5185,7 +6268,20 @@ local tree_types =
           shift = util.by_pixel(-1, -76),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 142,
+        height = 128,
+        shift = util.by_pixel(0, -88),
+        hr_version =
+        {
+          width = 282,
+          height = 256,
+          shift = util.by_pixel(0, -87.5),
+          scale = 0.5
+        }
+      },
     },
     { -- e
       trunk =
@@ -5239,7 +6335,20 @@ local tree_types =
           shift = util.by_pixel(12, -56),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 140,
+        height = 112,
+        shift = util.by_pixel(13, -65),
+        hr_version =
+        {
+          width = 278,
+          height = 224,
+          shift = util.by_pixel(13, -65),
+          scale = 0.5
+        }
+      },
     },
     { -- f
       trunk =
@@ -5293,7 +6402,20 @@ local tree_types =
           shift = util.by_pixel(-11, -58),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 130,
+        height = 128,
+        shift = util.by_pixel(-9, -66),
+        hr_version =
+        {
+          width = 258,
+          height = 254,
+          shift = util.by_pixel(-9.5, -66.5),
+          scale = 0.5
+        }
+      },
     },
     { -- g
       trunk =
@@ -5347,7 +6469,20 @@ local tree_types =
           shift = util.by_pixel(-13, -67),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 134,
+        height = 110,
+        shift = util.by_pixel(-12, -85),
+        hr_version =
+        {
+          width = 266,
+          height = 218,
+          shift = util.by_pixel(-12.5, -85.5),
+          scale = 0.5
+        }
+      },
     },
     { -- h
       trunk =
@@ -5401,10 +6536,194 @@ local tree_types =
           shift = util.by_pixel(18, -64),
           scale = 0.5
         }
-      }
+      },
+	  normal =
+      {
+        width = 120,
+        height = 110,
+        shift = util.by_pixel(17, -83),
+        hr_version =
+        {
+          width = 238,
+          height = 216,
+          shift = util.by_pixel(17, -83.5),
+          scale = 0.5
+        }
+      },
     }
   }
 }
+
+function tree_01_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/01/tree-01-reflection.png",
+      priority = "extra-high",
+      width = 28,
+      height = 40,
+      shift = util.by_pixel(0, 70),
+      y = 40 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_02_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/02/tree-02-reflection.png",
+      priority = "extra-high",
+      width = 28,
+      height = 40,
+      shift = util.by_pixel(5, 75),
+      y = 40 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_03_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/03/tree-03-reflection.png",
+      priority = "extra-high",
+      width = 44,
+      height = 40,
+      shift = util.by_pixel(10, 65),
+      y = 40 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_04_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/04/tree-04-reflection.png",
+      priority = "extra-high",
+      width = 32,
+      height = 40,
+      shift = util.by_pixel(5, 65),
+      y = 40 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_05_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/05/tree-05-reflection.png",
+      priority = "extra-high",
+      width = 32,
+      height = 36,
+      shift = util.by_pixel(5, 60),
+      y = 36 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_06_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/06/tree-06-reflection.png",
+      priority = "extra-high",
+      width = 28,
+      height = 32,
+      shift = util.by_pixel(-5, 35),
+      x = 28 * variation,
+      variation_count = 1,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_07_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/07/tree-07-reflection.png",
+      priority = "extra-high",
+      width = 40,
+      height = 40,
+      shift = util.by_pixel(0, 65),
+      y = 40 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_08_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/08/tree-08-reflection.png",
+      priority = "extra-high",
+      width = 36,
+      height = 40,
+      shift = util.by_pixel(0, 75),
+      y = 40 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
+
+function tree_09_reflection(variation)
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/tree/09/tree-09-reflection.png",
+      priority = "extra-high",
+      width = 44,
+      height = 48,
+      shift = util.by_pixel(5, 75),
+      y = 48 * variation,
+      variation_count = 4,
+      scale = 5,
+    },
+    rotate = false,
+    orientation_to_variation = false
+  }
+end
 
 local tree_data = {}
 
@@ -5420,20 +6739,21 @@ define_trees{
     type = 1,
     variation_weights = { 1, 1, 1, 1, 1, 1, 1, 1, 0.3, 0.3, 0.05, 0.05},
     enabled = true,
-    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
+    drawing_box = {{-0.9, -3.9}, {0.9, 0.6}},
     autoplace = tree_autoplace(30, 5, 0.75, 0.25),
     colors =
     {
       -- olive green, yellowish
-      {r = 219, g = 200, b = 96},
-      {r = 199, g = 184, b = 100},
-      {r = 205, g = 191, b = 112},
-      {r = 199, g = 175, b = 78},
-      {r = 224, g = 206, b = 110},
-      {r = 209, g = 185, b = 91},
-      {r = 197, g = 201, b = 80},
-      {r = 214, g = 202, b = 100}
-    }
+      {r = 156, g = 255, b = 224},
+      {r = 118, g = 243, b = 152},
+      {r = 116, g = 215, b = 227},
+      {r = 221, g = 209, b =  80},
+      {r = 131, g = 242, b =  90},
+      {r =  83, g = 185, b = 138},
+      {r =  71, g = 224, b =  74},
+      {r = 230, g = 242, b =  41}
+    },
+    get_water_reflection = tree_01_reflection
   },
   {
     -- lightish green trees
@@ -5441,21 +6761,22 @@ define_trees{
     type = 2,
     variation_weights = { 1, 1, 1, 1, 1, 1, 1, 1, 0.3, 0.3, 0.05, 0.05},
     enabled = true,
-    drawing_box = {{-0.9, -3.9}, {0.9, 0.6}},
+    drawing_box = {{-0.9, -4}, {0.9, 0.6}},
     autoplace = tree_autoplace(17, 7, 0.65, 0.1, -0.25),
     colors =
     {
-      {r = 136, g = 167, b =  97},
-      {r = 111, g = 172, b =  97},
-      {r = 181, g = 183, b =  99},
-      {r = 142, g = 164, b =  87},
-      {r = 185, g = 214, b = 116},
-      {r = 145, g = 172, b =  88},
-      {r = 164, g = 175, b =  73},
-      {r = 171, g = 180, b = 103},
-      {r = 160, g = 204, b =  89},
-      {r = 135, g = 180, b = 101}
-    }
+      {r = 191, g = 255, b = 111},
+      {r = 209, g = 200, b = 152},
+      {r = 252, g = 255, b = 133},
+      {r = 230, g = 178, b =  94},
+      {r = 190, g = 215, b = 132},
+      {r = 204, g = 175, b = 110},
+      {r = 240, g = 255, b = 120},
+      {r = 194, g = 208, b =  87},
+      {r = 222, g = 255, b = 169},
+      {r = 150, g = 201, b = 111}
+    },
+    get_water_reflection = tree_02_reflection
   },
 
   {
@@ -5477,16 +6798,17 @@ define_trees{
     colors =
     {
       --green
-      {r = 187, g = 199, b = 102},
-      {r = 217, g = 193, b =  88},
-      {r = 174, g = 195, b =  51},
-      {r = 199, g = 219, b = 117},
-      {r = 169, g = 213, b = 105},
-      {r = 213, g = 198, b =  87},
-      {r = 201, g = 151, b =  77},
+      {r = 230, g = 253, b =  66},
+      {r = 255, g = 223, b =  87},
+      {r = 170, g = 187, b =  65},
+      {r = 216, g =  70, b =  70},
+      {r = 179, g = 238, b =  95},
+      {r = 255, g = 234, b =  82},
+      {r = 238, g = 171, b =  71},
       {r = 219, g = 173, b =  91},
-      {r = 213, g = 193, b =  95},
-    }
+      {r = 231, g = 214, b = 129},
+    },
+    get_water_reflection = tree_03_reflection
   },
   {
     -- dark bluish green trees
@@ -5499,19 +6821,20 @@ define_trees{
     autoplace = tree_autoplace(12, 7, 0.6, 0.2, -0.5),
     colors =
     {
-      {r = 173, g = 209, b = 123},
-      {r = 151, g = 188, b = 100},
-      {r = 165, g = 198, b = 117},
-      {r = 180, g = 211, b = 140},
-      {r = 145, g = 207, b = 125},
-      {r = 129, g = 181, b = 111},
-      {r = 130, g = 185, b = 115},
-      {r = 151, g = 189, b = 140},
-      {r = 179, g = 207, b = 118},
-      {r = 139, g = 214, b = 151},
-      {r = 156, g = 198, b = 166},
-      {r = 157, g = 177, b = 121}
-    }
+      {r = 213, g = 255, b = 156},
+      {r = 196, g = 255, b = 116},
+      {r = 212, g = 255, b = 150},
+      {r = 213, g = 255, b = 159},
+      {r = 146, g = 211, b = 235},
+      {r =  93, g = 222, b = 227},
+      {r = 186, g = 255, b = 167},
+      {r = 146, g = 226, b = 123},
+      {r =  56, g = 188, b = 125},
+      {r = 172, g = 227, b = 177},
+      {r = 183, g = 255, b = 200},
+      {r = 169, g = 141, b = 207},
+    },
+    get_water_reflection = tree_04_reflection
   },
   {
     -- bright green tree
@@ -5524,38 +6847,41 @@ define_trees{
     autoplace = tree_autoplace(12, 7, 0.8, 0.2, -5/8),
     colors =
     {
-      {r = 143, g = 166, b =  91},
-      {r = 137, g = 163, b =  74},
-      {r = 155, g = 184, b =  86},
-      {r = 147, g = 168, b =  94},
-      {r = 127, g = 163, b =  76},
-      {r = 146, g = 166, b =  79},
-      {r = 151, g = 173, b =  74},
-      {r = 145, g = 166, b =  77},
+      {r = 186, g = 227, b =  93},
+      {r = 211, g = 241, b = 139},
+      {r = 195, g = 228, b = 114},
+      {r = 200, g = 242, b =  94},
+      {r = 161, g = 222, b =  75},
+      {r = 182, g = 216, b =  67},
+      {r = 188, g = 209, b = 112},
+      {r = 190, g = 231, b =  54},
       {r = 178, g = 179, b =  79},
       {r = 173, g = 173, b =  82},
       {r = 172, g = 173, b =  81},
       {r = 167, g = 168, b =  96},
-      {r = 201, g = 202, b = 117}
-    }
+      {r = 253, g = 255, b = 115},
+    },
+    get_water_reflection = tree_05_reflection
   },
   {
     type = 9,
     enabled = true,
-    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
+    drawing_box = {{-0.9, -4}, {0.9, 0.6}},
     autoplace = merge{
       tree_autoplace(30, 5, 0.45, 0.05, 0.21),
       { max_probability = 0.5 * 0.5 }
     },
     colors =
     {
-      {r = 163, g = 188, b = 111},
-      {r = 153, g = 175, b =  90},
-      {r = 156, g = 172, b =  78},
-      {r = 177, g = 165, b =  82},
-      {r = 167, g = 150, b =  83},
-      {r = 158, g = 183, b =  87}
-    }
+      {r = 231, g = 120, b =   0},
+      {r = 255, g = 127, b = 100},
+      {r = 221, g =  76, b =  76},
+      {r = 255, g = 180, b =  71},
+      {r = 255, g = 120, b =  89},
+      {r = 255, g =  96, b =  60},
+      {r = 255, g =  93, b =  93},
+    },
+    get_water_reflection = tree_09_reflection
   }
 }
 
@@ -5577,21 +6903,22 @@ define_trees{
     {
       {r = 227, g = 143, b =  88},
       {r = 226, g = 196, b =  94},
-      {r = 204, g = 138, b =  65},
+      {r = 255, g = 176, b = 130},
       {r = 221, g = 189, b = 103},
-      {r = 225, g = 140, b =  68},
-      {r = 221, g = 135, b =  57},
+      {r = 255, g = 183, b = 183},
+      {r = 255, g = 149, b =  65},
       {r = 236, g = 159, b =  72},
-      {r = 200, g = 115, b =  72},
+      {r = 255, g = 127, b =  62},
       {r = 209, g = 113, b =  81},
       {r = 207, g = 118, b =  60},
-      {r = 206, g = 120, b =  75},
-      {r = 219, g = 152, b =  57},
+      {r = 255, g = 152, b =  98},
+      {r = 255, g = 135, b = 135},
       {r = 202, g = 107, b =  80},
       {r = 212, g = 128, b =  90},
-      {r = 219, g = 178, b =  79},
-      {r = 228, g = 156, b =  53}
-    }
+      {r = 255, g = 101, b = 101},
+      {r = 255, g = 117, b = 117},
+    },
+    get_water_reflection = tree_02_reflection
   },
 
   {
@@ -5621,7 +6948,8 @@ define_trees{
       {r = 230, g = 173, b = 37},
       {r = 247, g = 223, b = 88},
       {r = 205, g = 186, b = 81}
-    }
+    },
+    get_water_reflection = tree_07_reflection
   }
 }
 
@@ -5648,7 +6976,8 @@ define_trees{
       {r = 238, g = 236, b = 113},
       {r = 245, g = 240, b = 117},
       {r = 208, g = 238, b = 118}
-    }
+    },
+    get_water_reflection = tree_06_reflection
   },
   {
     -- more brown desert trees
@@ -5673,7 +7002,8 @@ define_trees{
       {r = 207, g = 145, b = 58},
       {r = 249, g = 177, b = 92},
       {r = 253, g = 155, b = 0}
-    }
+    },
+    get_water_reflection = tree_06_reflection
   }
 }
 
@@ -5682,21 +7012,22 @@ define_trees{
     type = 9,
     enabled = true,
     identifier = "brown",
-    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
+    drawing_box = {{-0.9, -4}, {0.9, 0.6}},
     autoplace = merge{
       tree_autoplace(25, 10, 0.20, 0.05, -1/2, 1+1/4),
       { max_probability = 0.35 * 0.5 }
     },
     colors =
     {
-      {r = 212, g = 173, b =  67},
-      {r = 190, g = 134, b =  60},
-      {r = 210, g = 174, b =  73},
-      {r = 196, g = 165, b =  84},
-      {r = 212, g = 165, b =  72},
-      {r = 202, g = 154, b =  86},
-      {r = 228, g = 162, b =  88}
-    }
+      {r = 255, g = 186, b =   0},
+      {r = 255, g =  96, b =  45},
+      {r = 255, g = 204, b =  64},
+      {r = 255, g = 212, b =  98},
+      {r = 255, g = 193, b =  72},
+      {r = 255, g = 103, b =  66},
+      {r = 255, g = 151, b =   0},
+    },
+    get_water_reflection = tree_09_reflection
   },
   {
     type = 9,
@@ -5709,14 +7040,15 @@ define_trees{
     },
     colors =
     {
-      {r = 208, g = 110, b = 110},
-      {r = 238, g = 148, b = 111},
-      {r = 230, g = 124, b = 124},
-      {r = 206, g =  95, b =  95},
-      {r = 218, g = 114, b =  90},
-      {r = 226, g = 119, b =  95},
-      {r = 228, g = 134, b = 112}
-    }
+      {r = 231, g = 120, b =   0},
+      {r = 255, g = 127, b = 100},
+      {r = 221, g =  76, b =  76},
+      {r = 255, g = 180, b =  71},
+      {r = 255, g = 120, b =  89},
+      {r = 255, g =  96, b =  60},
+      {r = 255, g =  93, b =  93},
+    },
+    get_water_reflection = tree_09_reflection
   },
 
   -- Desert trees
@@ -5724,7 +7056,7 @@ define_trees{
     type = 8,
     variation_weights = { 1, 1, 1, 1, 1, 1, 1, 1, 0.3, 0.3, 0.05, 0.05},
     enabled = true,
-    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     autoplace = merge{
       tree_autoplace(20, 5, 0.10, 0.10, -1),
       {
@@ -5734,22 +7066,22 @@ define_trees{
     },
     colors =
     {
-      {r = 216, g = 238, b = 142},
-      {r = 206, g = 230, b = 126},
-      {r = 203, g = 222, b = 140},
-      {r = 211, g = 219, b = 111},
-      {r = 238, g = 236, b = 113},
-      {r = 245, g = 240, b = 117},
-      {r = 208, g = 238, b = 118}
-    }
-
+      {r = 231, g = 255, b =  83},
+      {r = 209, g = 255, b =  58},
+      {r = 165, g = 159, b =   4},
+      {r = 194, g = 231, b =  73},
+      {r = 245, g = 242, b =  44},
+      {r = 248, g = 242, b = 102},
+      {r = 208, g = 238, b = 118},
+    },
+    get_water_reflection = tree_08_reflection
   },
   {
     type = 8,
     variation_weights = { 1, 1, 1, 1, 1, 1, 1, 1, 0.3, 0.3, 0.05, 0.05},
     enabled = true,
     identifier = "brown",
-    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
+    drawing_box = {{-0.9, -4}, {0.9, 0.6}},
     autoplace = merge{
       tree_autoplace(20, 5, 0.10, 0.10, -0.999), --this makes much more brown trees
       {
@@ -5759,11 +7091,12 @@ define_trees{
     },
     colors =
     {
-      {r = 218, g = 154, b =  85},
-      {r = 190, g = 159, b =  87},
-      {r = 240, g = 194, b = 139},
-      {r = 234, g = 158, b = 108}
-    }
+      {r = 255, g = 162, b =  62},
+      {r = 255, g = 232, b = 145},
+      {r = 255, g = 226, b =  74},
+      {r = 255, g = 142, b =  68},
+    },
+    get_water_reflection = tree_08_reflection
   },
   -- Even more desert tree
   {
@@ -5779,13 +7112,19 @@ define_trees{
       {r = 228, g = 107, b = 107},
       {r = 226, g = 136, b = 107},
       {r = 222, g = 125, b = 114}
-    }
+    },
+    get_water_reflection = tree_08_reflection
   }
 }
 
 local function index_to_letter(index, starting_at)
   return string.char(string.byte(starting_at or "a", 1) - 1 + index)
 end
+
+---- Generate trees from tree_data
+
+local tree_flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"}
+local tree_corpse_flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"}
 
 for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
   local type_number = string.format("%02d", tree_data.type)
@@ -5827,7 +7166,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
       leaf_generation =
       {
         type = "create-particle",
-        entity_name = "leaf-particle",
+        particle_name = "leaf-particle",
         offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
         initial_height = 2,
         initial_height_deviation = 1,
@@ -5836,7 +7175,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
       branch_generation =
       {
         type = "create-particle",
-        entity_name = "branch-particle",
+        particle_name = "branch-particle",
         offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
         initial_height = 2,
         initial_height_deviation = 2,
@@ -5845,6 +7184,19 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         repeat_count = 15
       }
     }
+    if variation.normal then
+      newTree.normal =
+      {
+        filename = "__base__/graphics/entity/tree/" .. variation_path .. "-normal.png",
+        width = variation.normal.width,
+        height = variation.normal.height,
+        frame_count = 3,
+        shift = variation.normal.shift,
+        hr_version = util.table.deepcopy(variation.normal.hr_version)
+      }
+      newTree.normal.hr_version.filename = "__base__/graphics/entity/tree/" .. hr_variation_path .. "-normal.png"
+      newTree.normal.hr_version.frame_count = newTree.normal.frame_count
+    end
     if newTree.trunk.hr_version then
       newTree.trunk.hr_version.filename = "__base__/graphics/entity/tree/" .. hr_variation_path .. "-trunk.png"
       newTree.trunk.hr_version.frame_count = newTree.trunk.frame_count
@@ -5866,6 +7218,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         frame_count = 4,
         shift = variation.shadow.shift,
         draw_as_shadow = true,
+		disable_shadow_distortion_beginning_at_frame = 2,
         hr_version = util.table.deepcopy(variation.shadow.hr_version)
       }
       if newTree.shadow.hr_version then
@@ -5873,7 +7226,12 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         newTree.shadow.hr_version.frame_count = newTree.shadow.frame_count
         newTree.shadow.hr_version.draw_as_shadow = true
         newTree.shadow.hr_version.flags = { "mipmap", "shadow" }
+		newTree.shadow.hr_version.disable_shadow_distortion_beginning_at_frame = 2
       end
+    end
+
+    if tree_data.get_water_reflection then
+      newTree.water_reflection = tree_data.get_water_reflection(variation_index - 1)
     end
 
     tree_variations[#tree_variations + 1] = newTree
@@ -5885,8 +7243,8 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
       type = "tree",
       name = name,
       icon = "__base__/graphics/icons/" .. type_name .. ".png",
-      icon_size = 32,
-      flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+      icon_size = 64, icon_mipmaps = 4,
+      flags = tree_flags,
       minable =
       {
         mining_particle = "wooden-particle",
@@ -5903,15 +7261,24 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
       drawing_box = tree_data.drawing_box,
       subgroup = "trees",
       order = "a[tree]-a[regular]-" .. order,
-      vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+      vehicle_impact_sound =
+      {
+        { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+        { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
+        { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
+        { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
+      },
       autoplace = tree_data.autoplace,
       variations = tree_variations,
       variation_weights = tree_data.variation_weights,
       colors = tree_data.colors,
-      darkness_of_burnt_tree = 0.5
+      darkness_of_burnt_tree = 0.5,
+      -- water_reflection = tree_data.water_reflection
     }
   })
 end end
+
+---- Generate stumps (corpses)
 
 for i, type_data in ipairs(tree_types) do
   local type_number = string.format("%02d", i)
@@ -5970,8 +7337,8 @@ for i, type_data in ipairs(tree_types) do
       type = "corpse",
       name = type_name .. "-stump",
       icon = "__base__/graphics/icons/" .. type_name .. "-stump.png",
-      icon_size = 32,
-      flags = {"placeable-neutral", "not-on-map"},
+      icon_size = 64, icon_mipmaps = 4,
+      flags = tree_corpse_flags,
       collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
       selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
       tile_width = 1,
@@ -5996,8 +7363,8 @@ data:extend(
     type = "tree",
     name = "dry-tree",
     icon = "__base__/graphics/icons/dry-tree.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    icon_size = 64, icon_mipmaps = 4,
+    flags = tree_flags,
     minable =
     {
       count = 4,
@@ -6012,7 +7379,13 @@ data:extend(
     drawing_box = {{-0.6, -1.8}, {0.6, 0.3}},
     subgroup = "trees",
     order = "a[tree]-c[dry-tree]",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =
+    {
+      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
+    },
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {
@@ -6150,8 +7523,8 @@ data:extend(
     type = "tree",
     name = "dead-tree-desert",
     icon = "__base__/graphics/icons/dead-tree.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    icon_size = 64, icon_mipmaps = 4,
+    flags = tree_flags,
     minable =
     {
       mining_particle = "wooden-particle",
@@ -6163,9 +7536,16 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =
+    {
+      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
+    },
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {
@@ -6317,8 +7697,8 @@ data:extend(
     type = "tree",
     name = "dead-grey-trunk",
     icon = "__base__/graphics/icons/dead-grey-trunk.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    icon_size = 64, icon_mipmaps = 4,
+    flags = tree_flags,
     minable =
     {
       mining_particle = "wooden-particle",
@@ -6332,7 +7712,13 @@ data:extend(
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =
+    {
+      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
+    },
     autoplace = dead_trees_autoplace(1),
     pictures =
     {
@@ -6484,8 +7870,8 @@ data:extend(
     type = "tree",
     name = "dead-dry-hairy-tree",
     icon = "__base__/graphics/icons/dead-dry-hairy-tree.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    icon_size = 64, icon_mipmaps = 4,
+    flags = tree_flags,
     minable =
     {
       mining_particle = "wooden-particle",
@@ -6499,7 +7885,13 @@ data:extend(
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =
+    {
+      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
+    },
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {
@@ -6678,8 +8070,8 @@ data:extend(
     type = "tree",
     name = "dry-hairy-tree",
     icon = "__base__/graphics/icons/dry-hairy-tree.png",
-    icon_size = 32,
-    flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+    icon_size = 64, icon_mipmaps = 4,
+    flags = tree_flags,
     minable =
     {
       mining_particle = "wooden-particle",
@@ -6691,9 +8083,16 @@ data:extend(
     max_health = 20,
     collision_box = {{-0.6, -0.6}, {0.6, 0.6}},
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+    vehicle_impact_sound =
+    {
+      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
+      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
+    },
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {

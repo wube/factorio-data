@@ -4,7 +4,7 @@ data:extend(
     type = "ammo",
     name = "firearm-magazine",
     icon = "__base__/graphics/icons/firearm-magazine.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "bullet",
@@ -27,7 +27,9 @@ data:extend(
               {
                 {
                   type = "create-entity",
-                  entity_name = "explosion-hit"
+                  entity_name = "explosion-hit",
+                  offsets = {{0, 1}},
+                  offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
                 },
                 {
                   type = "damage",
@@ -48,7 +50,7 @@ data:extend(
     type = "ammo",
     name = "piercing-rounds-magazine",
     icon = "__base__/graphics/icons/piercing-rounds-magazine.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "bullet",
@@ -67,7 +69,9 @@ data:extend(
           {
             {
               type = "create-entity",
-              entity_name = "explosion-hit"
+              entity_name = "explosion-hit",
+              offsets = {{0, 1}},
+              offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
             },
             {
               type = "damage",
@@ -86,7 +90,7 @@ data:extend(
     type = "ammo",
     name = "shotgun-shell",
     icon = "__base__/graphics/icons/shotgun-shell.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
       category = "shotgun-shell",

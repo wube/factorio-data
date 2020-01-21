@@ -4,6 +4,8 @@ require ("prototypes.entity.demo-enemy-sounds")
 local enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 require ("prototypes.entity.demo-biter-ai-settings")
 
+local hit_effects = require ("prototypes.entity.demo-hit-effects")
+
 small_biter_scale = 0.5
 small_biter_tint1 = {r=0.60, g=0.58, b=0.51, a=1}
 small_biter_tint2 = {r=0.9 , g=0.83, b=0.54, a=1}
@@ -16,7 +18,7 @@ data:extend(
     type = "unit",
     name = "small-biter",
     icon = "__base__/graphics/icons/small-biter.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 15,
     order = "b-b-a",
@@ -25,11 +27,13 @@ data:extend(
     healing_per_tick = 0.01,
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.4, -0.7}, {0.7, 0.4}},
+    damaged_trigger_effect = hit_effects.biter(),
     attack_parameters =
     {
       type = "projectile",
       range = 0.5,
       cooldown = 35,
+      cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(7),
       sound = make_biter_roars(0.4),
       animation = biterattackanimation(small_biter_scale, small_biter_tint1, small_biter_tint2)
@@ -44,9 +48,12 @@ data:extend(
     corpse = "small-biter-corpse",
     dying_explosion = "blood-explosion-small",
     dying_sound =  make_biter_dying_sounds(0.4),
-    working_sound =  make_biter_calls(0.3),
+    working_sound =  make_biter_calls(0.9),
     run_animation = biterrunanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
-    ai_settings = biter_ai_settings
+    running_sound_animation_positions = {2,},
+    walking_sound = make_biter_walk_sounds(0.3),
+    ai_settings = biter_ai_settings,
+    water_reflection = biter_water_reflection(small_biter_scale)
   },
 
   add_biter_die_animation(small_biter_scale, small_biter_tint1, small_biter_tint2,
@@ -54,7 +61,7 @@ data:extend(
     type = "corpse",
     name = "small-biter-corpse",
     icon = "__base__/graphics/icons/small-biter-corpse.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     selectable_in_game = false,
     subgroup="corpses",
@@ -67,7 +74,7 @@ data:extend(
     type = "unit-spawner",
     name = "biter-spawner",
     icon = "__base__/graphics/icons/biter-spawner.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     max_health = 350,
     order="b-b-g",
@@ -116,6 +123,7 @@ data:extend(
     collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
     map_generator_bounding_box = {{-4.2, -3.2}, {3.2, 3.2}},
     selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
+    damaged_trigger_effect = hit_effects.biter(),
     -- in ticks per 1 pu
     pollution_absorption_absolute = 20,
     pollution_absorption_proportional = 0.01,
@@ -163,7 +171,7 @@ data:extend(
     name = "biter-spawner-corpse",
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/biter-spawner-corpse.png",
-    icon_size = 32,
+    icon_size = 64, icon_mipmaps = 4,
     collision_box = {{-2, -2}, {2, 2}},
     selection_box = {{-2, -2}, {2, 2}},
     selectable_in_game = false,

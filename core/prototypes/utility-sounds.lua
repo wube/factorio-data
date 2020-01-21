@@ -18,23 +18,43 @@ data:extend(
       {
         {
           filename = "__core__/sound/axe-mining-ore-1.ogg",
-          volume = 0.75
+          volume = 0.4
         },
         {
           filename = "__core__/sound/axe-mining-ore-2.ogg",
-          volume = 0.75
+          volume = 0.4
         },
         {
           filename = "__core__/sound/axe-mining-ore-3.ogg",
-          volume = 0.75
+          volume = 0.4
         },
         {
           filename = "__core__/sound/axe-mining-ore-4.ogg",
-          volume = 0.75
+          volume = 0.4
         },
         {
           filename = "__core__/sound/axe-mining-ore-5.ogg",
-          volume = 0.75
+          volume = 0.4
+        },
+        {
+          filename = "__core__/sound/axe-mining-ore-6.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__core__/sound/axe-mining-ore-7.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__core__/sound/axe-mining-ore-8.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__core__/sound/axe-mining-ore-9.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__core__/sound/axe-mining-ore-10.ogg",
+          volume = 0.4
         }
       }
     },
@@ -44,11 +64,27 @@ data:extend(
       {
         {
           filename = "__core__/sound/mining-wood-1.ogg",
-          volume = 0.75
+          volume = 0.6
         },
         {
           filename = "__core__/sound/mining-wood-2.ogg",
-          volume = 0.75
+          volume = 0.6
+        },
+        {
+          filename = "__core__/sound/mining-wood-3.ogg",
+          volume = 0.6
+        },
+        {
+          filename = "__core__/sound/mining-wood-4.ogg",
+          volume = 0.6
+        },
+        {
+          filename = "__core__/sound/mining-wood-5.ogg",
+          volume = 0.6
+        },
+        {
+          filename = "__core__/sound/mining-wood-6.ogg",
+          volume = 0.6
         }
       }
     },
@@ -72,12 +108,40 @@ data:extend(
       variations =
       {
         {
-          filename = "__core__/sound/walking/metal-01.ogg",
-          volume = 0.5
+          filename = "__core__/sound/walking/transport-belt-01.ogg",
+          volume = 0.8
         },
         {
-          filename = "__core__/sound/walking/metal-02.ogg",
-          volume = 0.4
+          filename = "__core__/sound/walking/transport-belt-02.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-03.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-04.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-05.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-06.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-07.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-08.ogg",
+          volume = 0.8
+        },
+        {
+          filename = "__core__/sound/walking/transport-belt-09.ogg",
+          volume = 0.8
         }
       }
     },
