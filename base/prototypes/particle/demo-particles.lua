@@ -3319,6 +3319,34 @@ local particles =
     render_layer = "object",
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
+  
+  make_particle
+  {
+    name = "electric-mining-drill-long-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.533, b = 0.514, a = 1.000}}), -- #a68883ff
+    shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "electric-mining-drill-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.667, g = 0.525, b = 0.403, a = 1.000}}), -- #a98566ff
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "electric-mining-drill-metal-particle-big",
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}), -- #8e8e8eff
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = default_smoke_trigger_effect(),
+    render_layer = "object",
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
 
   make_particle
   {

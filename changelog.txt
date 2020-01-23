@@ -1,6 +1,32 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.1
+Version: 0.18.2
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.1
+Date: 23. 01. 2020
+  Changes:
+    - Train stop at train's starting segment exit is no longer counted into penalty. (https://forums.factorio.com/80268)
+    - Inventory transfers mini-tutorial has been updated to feature the quickbar.
+    - Split the map editor sub-menu into more options so it's more clear when scenarios are copied and when they are edited directly.
+  Bugfixes:
+    - Fixed replay gui covering tooltips. (https://forums.factorio.com/78990)
+    - Fixed tooltips in statistics window not showing force modifiers. (https://forums.factorio.com/78973)
+    - Fixed electric mining drill was missing dying explosion. (https://forums.factorio.com/80256)
+    - Fixed when using OpenGL backed turret range overlay was rendered incorrectly when zoomed in. (https://forums.factorio.com/80262)
+    - Fixed a crash when using script.get_event_order during control.lua init. (https://forums.factorio.com/80271)
+    - Fixed that LuaForce::reset_technology_effects() could change the enabled/visible when disabled state. (https://forums.factorio.com/80105)
+    - Fixed wrong lua docs about what event(s) could be filtered. (https://forums.factorio.com/80201)
+    - Fixed a wrong error message related to multiplayer and migration scripts. (https://forums.factorio.com/79616)
+    - Fixed crash when rail with temporary train stop is removed. (https://forums.factorio.com/80287)
+    - Fixed crash if you attempted to ping a train wagon immediately after placing it on a multiplayer server with high latency. (https://forums.factorio.com/78136)
+    - Fixed that clicking the drop-down widget in the map editor script section would stop the mouse from working. (https://forums.factorio.com/80311)
+    - Fixed nightvision effect was applied to zoomed-to-world view sometimes. (https://forums.factorio.com/80315)
+    - Fixed that enemies would attack rails. (https://forums.factorio.com/80285)
+  Modding:
+    - Changed default value of LoaderPrototype::structure_render_layer from "transport-belt-circuit-connector" to "object", in order to be consistent with other on-belt structure sprites. (https://forums.factorio.com/80290)
+  Scripting:
+    - Added LuaEntity::get_damage_to_be_taken().
+    - Added LuaSurface::brightness_visual_weights to add back ability to control darkness of the night runtime per-surface. (https://forums.factorio.com/80266)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.0
 Date: 21. 01. 2020
@@ -135,7 +161,7 @@ Date: 21. 01. 2020
     - Renamed LuaInventory::hasbar(), getbar() and setbar() to supports_bar(), get_bar() and set_bar().
     - Added LuaEquipmentPrototype::attack_parameters read.
     - Added on_script_trigger_effect event.
-    - Set lower limit of zoom parameter of LuaGameScript::take_screenshot to be 0.0315 (1 pixel per tile) instead of allowing any value greater than 0.
+    - Set lower limit of zoom parameter of LuaGameScript::take_screenshot to be 0.03125 (1 pixel per tile) instead of allowing any value greater than 0.
     - Added LuaPlayer::get_infinity_inventory_filter(), set_infinity_inventory_filter() functions.
     - Added LuaPlayer::remove_unfiltered_items, infinity_inventory_filters read/write.
     - Added LuaSurface::get_entities_with_force().

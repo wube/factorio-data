@@ -18,6 +18,7 @@ data:extend(
     max_health = 300,
     resource_categories = {"basic-solid"},
     corpse = "medium-remnants",
+    dying_explosion = "electric-mining-drill-explosion",
     collision_box = {{ -1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{ -1.5, -1.5}, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
