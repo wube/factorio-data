@@ -1,5 +1,6 @@
 require "util"
 local math3d = require "math3d"
+local sounds = require("prototypes.entity.demo-sounds")
 
 local function make_color(r_,g_,b_,a_)
   return { r = r_ * a_, g = g_ * a_, b = b_ * a_, a = a_ }
@@ -827,8 +828,8 @@ data:extend({
           volume = 0.7
         }
       },
-    max_sounds_per_type = 2,
-    fade_in_ticks = 70,
+    max_sounds_per_type = 3,
+    fade_in_ticks = 10,
     fade_out_ticks = 90
   }
 
@@ -1433,7 +1434,7 @@ data:extend({
     ending_attack_muzzle_animation_shift   = fireutil.flamethrower_turret_preparing_muzzle_animation{ frame_count = 1,  orientation_count = 64, progress = 1},
     folding_muzzle_animation_shift         = fireutil.flamethrower_turret_preparing_muzzle_animation{ frame_count = 15, orientation_count = 4, run_mode = "backward", layers = {[0] = "object"}},
 
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
 
     prepare_range = 35,
     shoot_in_prepare_state = false,

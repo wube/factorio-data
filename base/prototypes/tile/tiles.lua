@@ -149,6 +149,54 @@ local concrete_sounds =
   }
 }
 
+local refined_concrete_sounds =
+{
+  {
+    filename = "__base__/sound/walking/refined-concrete-01.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-02.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-03.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-04.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-05.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-06.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-07.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-08.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-09.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-10.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/refined-concrete-11.ogg",
+    volume = 0.5
+  }
+}
+
 local shallow_water_sound =
 {
   {
@@ -3376,53 +3424,8 @@ define_tiles
     transitions = concrete_transitions,
     transitions_between_transitions = concrete_transitions_between_transitions,
 
-    walking_sound =
-    {
-      {
-        filename = "__base__/sound/walking/refined-concrete-01.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-02.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-03.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-04.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-05.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-06.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-07.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-08.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-09.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-10.ogg",
-        volume = 1.0
-      },
-      {
-        filename = "__base__/sound/walking/refined-concrete-11.ogg",
-        volume = 1.0
-      }
-    },
+    walking_sound = refined_concrete_sounds,
+    
     map_color={r=49, g=48, b=45},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
@@ -3533,7 +3536,7 @@ define_tiles
         }
       }
     },
-    walking_sound = concrete_sounds,
+    walking_sound = refined_concrete_sounds,
     map_color={r=116, g=94, b=26},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
@@ -3613,7 +3616,7 @@ define_tiles
         }
       }
     },
-    walking_sound = concrete_sounds,
+    walking_sound = refined_concrete_sounds,
     map_color={r=116, g=94, b=26},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier
@@ -3695,7 +3698,6 @@ data:extend(
     specular_threshold = { 0.291, 0.291 },
     tick_scale = 0.09,
 
-    near_zoom = 2,
-    far_zoom = 0.5
+    near_zoom = 2
   }
 })

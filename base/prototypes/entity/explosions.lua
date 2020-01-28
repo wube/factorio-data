@@ -1,5 +1,5 @@
 local explosion_animations = require("prototypes.entity.demo-explosion-animations")
-local explosion_sounds = require("prototypes.entity.demo-explosion-sounds")
+local sounds = require("prototypes.entity.demo-sounds")
 
 local default_light = function(size)
   return
@@ -45,7 +45,7 @@ data:extend
     subgroup = "explosions",
     animations = explosion_animations.bigass_explosion(),
     light = default_light(50),
-    sound = explosion_sounds.large(1.0),
+    sound = sounds.large_explosion(1.0),
     created_effect =
     {
       type = "direct",
@@ -122,7 +122,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -173,7 +173,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -224,7 +224,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -275,7 +275,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -326,7 +326,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -377,7 +377,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -428,7 +428,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -503,7 +503,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -578,7 +578,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -641,7 +641,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -704,7 +704,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -791,7 +791,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -878,7 +878,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -941,7 +941,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -1004,7 +1004,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -1067,7 +1067,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1156,7 +1156,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -1239,7 +1239,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1308,7 +1308,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1405,7 +1405,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -1498,7 +1498,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -1567,7 +1567,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1642,7 +1642,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1717,7 +1717,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1780,7 +1780,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1867,7 +1867,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -1942,7 +1942,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2007,7 +2007,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2082,7 +2082,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2159,7 +2159,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2236,7 +2236,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2313,7 +2313,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2380,7 +2380,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2455,7 +2455,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2518,7 +2518,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2582,7 +2582,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2685,7 +2685,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2762,7 +2762,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2825,7 +2825,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -2878,7 +2878,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -2953,7 +2953,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -3040,7 +3040,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -3146,7 +3146,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -3234,7 +3234,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -3322,7 +3322,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -3385,7 +3385,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
   },
 
   {
@@ -3401,7 +3401,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3476,7 +3476,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3551,7 +3551,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3638,7 +3638,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.large(0.75),
+    sound = sounds.large_explosion(0.75),
     created_effect =
     {
       type = "direct",
@@ -3740,7 +3740,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3805,7 +3805,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3870,7 +3870,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = explosion_sounds.small(0.75),
+    sound = sounds.small_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3932,7 +3932,7 @@ data:extend
     height = 0,
     animations = explosion_animations.medium_explosion(),
     light = default_light(50),
-    sound = explosion_sounds.large(0.8),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",

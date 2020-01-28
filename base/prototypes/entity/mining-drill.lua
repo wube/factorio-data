@@ -1,5 +1,6 @@
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
+local sounds = require("prototypes.entity.demo-sounds")
 
 data:extend(
 {
@@ -146,15 +147,16 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
       {
-        filename = "__base__/sound/pumpjack.ogg"
+        filename = "__base__/sound/pumpjack.ogg",
+        volume = 0.7
       },
       apparent_volume = 1.5,
-      max_sounds_per_type = 3,
+      max_sounds_per_type = 2,
       fade_in_ticks = 10,
       fade_out_ticks = 30,
     },

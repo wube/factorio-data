@@ -23,3 +23,4 @@
 2019-06-28_Factorio_0.17.54.lua
 2019-08-05_Factorio_0.17.63.lua
 2019-12-12_Factorio_0.18.00.lua
+2020-01-27_Factorio_0.18.02.lua

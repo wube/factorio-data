@@ -1,11 +1,11 @@
 require ("prototypes.entity.demo-spitter-projectiles")
 require ("prototypes.entity.demo-worm-animations")
-require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.assemblerpipes")
 require "util"
 enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 
+local sounds = require("prototypes.entity.demo-sounds")
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 
 function laser_turret_extension(inputs)
@@ -225,8 +225,8 @@ data:extend(
     automated_ammo_count = 5,
     alert_when_attacking = false,
     minable = {mining_time = 0.5, result = "artillery-turret"},
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
     mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
     max_health = 2000,
     corpse = "artillery-turret-remnants",
@@ -616,7 +616,7 @@ data:extend(
       { 0,       0,   0.25 }
     },
 
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     water_reflection =
     {
       pictures =
@@ -672,7 +672,7 @@ data:extend(
     rotation_speed = 1,
     corpse = "medium-worm-corpse",
     dying_explosion = "blood-explosion-big",
-    dying_sound = make_worm_dying_sounds(1),
+    dying_sound = sounds.worm_dying(1),
 
     folded_speed = 0.01,
     folded_speed_secondary = 0.024,
@@ -681,22 +681,22 @@ data:extend(
     prepared_speed = 0.024,
     prepared_speed_secondary = 0.012,
     preparing_animation = worm_preparing_animation(scale_worm_medium, tint_worm_medium, "forward"),
-    preparing_sound = make_worm_standup_sounds(1),
-    prepared_sound = make_worm_breath(0.8),
+    preparing_sound = sounds.worm_standup(1),
+    prepared_sound = sounds.worm_breath(0.8),
     prepared_alternative_speed = 0.014,
     prepared_alternative_speed_secondary = 0.010,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_medium, tint_worm_medium),
-    prepared_alternative_sound = make_worm_roar_alternative(0.7),
+    prepared_alternative_sound = sounds.worm_roar_alternative(0.7),
     prepared_animation = worm_prepared_animation(scale_worm_medium, tint_worm_medium),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_medium, tint_worm_medium),
-    starting_attack_sound = make_worm_roars(0.7),
+    starting_attack_sound = sounds.worm_roars(0.7),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_medium, tint_worm_medium),
     folding_speed = 0.015,
     folding_animation =  worm_preparing_animation(scale_worm_medium, tint_worm_medium, "backward"),
-    folding_sound = make_worm_fold_sounds(1),
+    folding_sound = sounds.worm_fold(1),
     secondary_animation = true,
     random_animation_offset = true,
     attack_from_start_frame = true,
@@ -774,31 +774,31 @@ data:extend(
     rotation_speed = 1,
     corpse = "big-worm-corpse",
     dying_explosion = "blood-explosion-big",
-    dying_sound = make_worm_dying_sounds(1.0),
+    dying_sound = sounds.worm_dying(1.0),
 
     folded_speed = 0.01,
     folded_speed_secondary = 0.024,
     folded_animation = worm_folded_animation(scale_worm_big, tint_worm_big),
     preparing_speed = 0.024,
     preparing_animation = worm_preparing_animation(scale_worm_big, tint_worm_big, "forward"),
-    preparing_sound = make_worm_standup_sounds(1),
+    preparing_sound = sounds.worm_standup(1),
     prepared_speed = 0.024,
     prepared_speed_secondary = 0.012,
     prepared_animation = worm_prepared_animation(scale_worm_big, tint_worm_big),
-    prepared_sound = make_worm_breath(0.8),
+    prepared_sound = sounds.worm_breath(0.8),
     prepared_alternative_speed = 0.014,
     prepared_alternative_speed_secondary = 0.010,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_big, tint_worm_big),
-    prepared_alternative_sound = make_worm_roar_alternative(0.7),
+    prepared_alternative_sound = sounds.worm_roar_alternative(0.7),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_big, tint_worm_big),
-    starting_attack_sound = make_worm_roars(0.85),
+    starting_attack_sound = sounds.worm_roars(0.85),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_big, tint_worm_big),
     folding_speed = 0.015,
     folding_animation =  worm_preparing_animation(scale_worm_big, tint_worm_big, "backward"),
-    folding_sound = make_worm_fold_sounds(1),
+    folding_sound = sounds.worm_fold(1),
     integration = worm_integration(scale_worm_big),
     secondary_animation = true,
     random_animation_offset = true,
@@ -873,31 +873,31 @@ data:extend(
     rotation_speed = 1,
     corpse = "behemoth-worm-corpse",
     dying_explosion = "blood-explosion-big",
-    dying_sound = make_worm_dying_sounds(1.0),
+    dying_sound = sounds.worm_dying(1.0),
 
     folded_speed = 0.01,
     folded_speed_secondary = 0.024,
     folded_animation = worm_folded_animation(scale_worm_behemoth, tint_worm_behemoth),
     preparing_speed = 0.024,
     preparing_animation = worm_preparing_animation(scale_worm_behemoth, tint_worm_behemoth, "forward"),
-    preparing_sound = make_worm_standup_sounds(1),
+    preparing_sound = sounds.worm_standup(1),
     prepared_speed = 0.024,
     prepared_speed_secondary = 0.012,
     prepared_animation = worm_prepared_animation(scale_worm_behemoth, tint_worm_behemoth),
-    prepared_sound = make_worm_breath(0.8),
+    prepared_sound = sounds.worm_breath(0.8),
     prepared_alternative_speed = 0.014,
     prepared_alternative_speed_secondary = 0.010,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_behemoth, tint_worm_behemoth),
-    prepared_alternative_sound = make_worm_roar_alternative(0.7),
+    prepared_alternative_sound = sounds.worm_roar_alternative(0.7),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_behemoth, tint_worm_behemoth),
-    starting_attack_sound = make_worm_roars(0.85),
+    starting_attack_sound = sounds.worm_roars(0.85),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_behemoth, tint_worm_behemoth),
     folding_speed = 0.015,
     folding_animation =  worm_preparing_animation(scale_worm_behemoth, tint_worm_behemoth, "backward"),
-    folding_sound = make_worm_fold_sounds(1),
+    folding_sound = sounds.worm_fold(1),
     integration = worm_integration(scale_worm_behemoth),
     secondary_animation = true,
     random_animation_offset = true,
@@ -1048,7 +1048,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
 
     attack_parameters =
     {

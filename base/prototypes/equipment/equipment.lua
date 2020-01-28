@@ -26,21 +26,6 @@ data:extend(
       usage_priority = "primary-input"
     },
     energy_input = "10kW",
-    tint = {r = 0.1, g = 0.5, b = 0.2, a = 0},
-    desaturation_params =
-    {
-      smoothstep_min = 0.1,
-      smoothstep_max = 0.7,
-      minimum = 0.3,
-      maximum = 1.0
-    },
-    light_params =
-    {
-      smoothstep_min = 0.1,
-      smoothstep_max = 0.7,
-      minimum = 0.666,
-      maximum = 1.0
-    },
     categories = {"armor"},
     darkness_to_turn_on = 0.5,
     color_lookup = {{0.5, "__core__/graphics/color_luts/nightvision.png"}}

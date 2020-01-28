@@ -1,9 +1,9 @@
 require ("prototypes.entity.demo-spawner-animation")
 require ("prototypes.entity.demo-biter-animations")
-require ("prototypes.entity.demo-enemy-sounds")
 local enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 require ("prototypes.entity.demo-biter-ai-settings")
 
+local sounds = require ("prototypes.entity.demo-sounds")
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 
 small_biter_scale = 0.5
@@ -35,7 +35,7 @@ data:extend(
       cooldown = 35,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(7),
-      sound = make_biter_roars(0.4),
+      sound = sounds.biter_roars(0.4),
       animation = biterattackanimation(small_biter_scale, small_biter_tint1, small_biter_tint2)
     },
     vision_distance = 30,
@@ -47,11 +47,11 @@ data:extend(
     max_pursue_distance = 50,
     corpse = "small-biter-corpse",
     dying_explosion = "blood-explosion-small",
-    dying_sound =  make_biter_dying_sounds(0.4),
-    working_sound =  make_biter_calls(0.9),
+    dying_sound =  sounds.biter_dying(0.4),
+    working_sound =  sounds.biter_calls(0.9),
     run_animation = biterrunanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
     running_sound_animation_positions = {2,},
-    walking_sound = make_biter_walk_sounds(0.3),
+    walking_sound = sounds.biter_walk(0.3),
     ai_settings = biter_ai_settings,
     water_reflection = biter_water_reflection(small_biter_scale)
   },

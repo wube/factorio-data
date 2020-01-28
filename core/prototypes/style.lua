@@ -104,6 +104,32 @@ function notched_slider_glow(glow_color)
   }
 end
 
+function left_slider_glow(glow_color)
+  return
+  {
+    center = {position = {481, 96}, size = {56, 40}},
+    top_outer_border_shift = -4,
+    left_outer_border_shift = -4,
+    right_outer_border_shift = 4,
+    bottom_outer_border_shift = 4,
+    tint = glow_color,
+    draw_type = "outer"
+  }
+end
+
+function right_slider_glow(glow_color)
+  return
+  {
+    center = {position = {537, 96}, size = {56, 40}},
+    top_outer_border_shift = -4,
+    left_outer_border_shift = -4,
+    right_outer_border_shift = 4,
+    bottom_outer_border_shift = 4,
+    tint = glow_color,
+    draw_type = "outer"
+  }
+end
+
 function arrow_back(tileset, index, glow_name, glow_color)
   local arrow_shift = index * arrow_tileset_width * 2
   local composition_shift = index * (arrow_tileset_composition_corner_size * 2 + 1)
@@ -685,7 +711,7 @@ data:extend(
       type = "label_style",
       parent = "description_label",
       minimal_width = 50,
-      maximal_width = 356      
+      maximal_width = 356
     },
     tooltip_title_label =
     {
@@ -970,14 +996,14 @@ data:extend(
       parent = "confirm_button",
       minimal_width = 300
     },
-    
+
     load_game_subheader_caption_label =
     {
       type = "label_style",
       parent = "subheader_caption_label",
       maximal_width = 800
     },
-    
+
     red_confirm_button =
     {
       type = "button_style",
@@ -1371,8 +1397,8 @@ data:extend(
         left_click_sound =
         {
           {
-            filename = "__core__/sound/gui-click.ogg",
-            volume = 1
+            filename = "__core__/sound/gui-switch.ogg",
+            volume = 0.7
           }
         }
       }
@@ -1636,7 +1662,13 @@ data:extend(
         scale = 1
       },
       pie_progress_color = {0.98, 0.66, 0.22, 0.5},
-      left_click_sound = {}
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      }
     },
 
     recipe_slot_button =
@@ -1861,7 +1893,13 @@ data:extend(
       pie_progress_color = {1, 0, 0},
       horizontal_align = "center",
       vertical_align = "center",
-      left_click_sound = {},
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      },
       default_graphical_set = {position = {282, 17}, corner_size = 8},
       hovered_graphical_set = {position = {282, 17}, corner_size = 8},
       clicked_graphical_set = {position = {282, 17}, corner_size = 8},
@@ -2970,7 +3008,13 @@ data:extend(
       padding = 0,
       horizontal_align = "left",
       font = "default-dropdown",
-      left_click_sound = {}
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      }
     },
 
     dropdown =
@@ -3170,7 +3214,6 @@ data:extend(
       type = "button_style",
       parent = "list_box_item",
       font = "heading-2",
-      font_color = heading_font_color,
       default_font_color = heading_font_color,
       hovered_font_color = heading_font_color,
       selected_font_color = heading_font_color,
@@ -3389,7 +3432,7 @@ data:extend(
       parent = "player_input_horizontal_flow",
       left_padding = 4
     },
-    
+
     new_game_information_vertical_flow =
     {
       type = "vertical_flow_style",
@@ -3400,7 +3443,7 @@ data:extend(
       bottom_padding = 4,
       left_padding = 8,
     },
-    
+
      new_game_subheader_caption_label =
     {
       type = "label_style",
@@ -5706,7 +5749,13 @@ data:extend(
         shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
       },
       pie_progress_color = {0.98, 0.66, 0.22, 0.5},
-      left_click_sound = {}
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      }
     },
 
     shortcut_bar_button =
@@ -6237,7 +6286,13 @@ data:extend(
       thumb_button_style =
       {
         type = "button_style",
-        left_click_sound = {},
+        left_click_sound =
+        {
+          {
+            filename = "__core__/sound/gui-click.ogg",
+            volume = 1
+          }
+        },
         height = 10,
         default_graphical_set =
         {
@@ -6282,7 +6337,13 @@ data:extend(
       thumb_button_style =
       {
         type = "button_style",
-        left_click_sound = {},
+        left_click_sound =
+        {
+          {
+            filename = "__core__/sound/gui-click.ogg",
+            volume = 1
+          }
+        },
         width = 10,
         default_graphical_set =
         {
@@ -6444,6 +6505,97 @@ data:extend(
       grid_lines_color = {r=0.15, g=0.15, b=0.15},
       guide_lines_color = {r=0.9, g=0.9, b=0.9}
     },
+
+    slider_button =
+    {
+      type = "button_style",
+      width = 20,
+      height = 12,
+      padding = 0,
+      default_graphical_set =
+      {
+        base = {position = {64, 48}, size = {40, 24}},
+        shadow = default_shadow
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {144, 48}, size = {40, 24}},
+        glow = default_glow(default_glow_color, 0.5)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {184, 48}, size = {40, 24}},
+        shadow = default_shadow
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {104, 48}, size = {40, 24}},
+        shadow = default_shadow
+      },
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      }
+    },
+
+    -- for double slider
+    left_slider_button =
+    {
+      type = "button_style",
+      parent = "slider_button",
+      default_graphical_set =
+      {
+        base = {position = {489, 0}, size = {40, 24}},
+        shadow = left_slider_glow(default_shadow_color)
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {489, 48}, size = {40, 24}},
+        glow = left_slider_glow(default_glow_color)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {489, 72}, size = {40, 24}},
+        shadow = left_slider_glow(default_shadow_color)
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {489, 24}, size = {40, 24}},
+        shadow = left_slider_glow(default_shadow_color)
+      },
+      left_click_sound = {}
+    },
+
+    right_slider_button =
+    {
+      type = "button_style",
+      parent = "slider_button",
+      default_graphical_set =
+      {
+        base = {position = {529, 0}, size = {40, 24}},
+        shadow = right_slider_glow(default_shadow_color)
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {529, 48}, size = {40, 24}},
+        glow = right_slider_glow(default_glow_color)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {529, 72}, size = {40, 24}},
+        shadow = right_slider_glow(default_shadow_color)
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {529, 24}, size = {40, 24}},
+        shadow = right_slider_glow(default_shadow_color)
+      },
+      left_click_sound = {}
+    },
+
     slider =
     {
       type = "slider_style",
@@ -6499,30 +6651,7 @@ data:extend(
       button =
       {
         type = "button_style",
-        width = 20,
-        height = 12,
-        padding = 0,
-        default_graphical_set =
-        {
-          base = {position = {64, 48}, size = {40, 24}},
-          shadow = default_shadow
-        },
-        hovered_graphical_set =
-        {
-          base = {position = {144, 48}, size = {40, 24}},
-          glow = default_glow(default_glow_color, 0.5)
-        },
-        clicked_graphical_set =
-        {
-          base = {position = {184, 48}, size = {40, 24}},
-          shadow = default_shadow
-        },
-        disabled_graphical_set =
-        {
-          base = {position = {104, 48}, size = {40, 24}},
-          shadow = default_shadow
-        },
-        left_click_sound = {}
+        parent = "slider_button"
       }
     },
     notched_slider =
@@ -6557,9 +6686,79 @@ data:extend(
           base = {position = {24, 189}, size = {24, 35}},
           shadow = notched_slider_glow(default_shadow_color)
         },
-        left_click_sound = {}
+        left_click_sound =
+        {
+          {
+            filename = "__core__/sound/gui-click.ogg",
+            volume = 1
+          }
+        }
       }
     },
+
+    double_slider =
+    {
+      type = "double_slider_style",
+      button =
+      {
+        type = "button_style",
+        parent = "left_slider_button",
+      },
+      high_button =
+      {
+        type = "button_style",
+        parent = "right_slider_button",
+      },
+      minimal_width = 160,
+      height = 12,
+      full_bar =
+      {
+        base = {position = {73, 72}, corner_size = 8},
+        shadow = default_dirt
+      },
+      full_bar_disabled =
+      {
+        base = {position = {90, 72}, corner_size = 8},
+        shadow = default_dirt
+      },
+      empty_bar =
+      {
+        base =
+        {
+          left = {position = {56, 72}, size = {8, 8}},
+          right = {position = {65, 72}, size = {8, 8}},
+          center = {position = {64, 72}, size = {1, 8}}
+        },
+        shadow = default_dirt
+      },
+      empty_bar_disabled =
+      {
+        base =
+        {
+          left = {position = {56, 80}, size = {8, 8}},
+          right = {position = {65, 80}, size = {8, 8}},
+          center = {position = {65, 80}, size = {1, 8}}
+        },
+        shadow = default_dirt
+      },
+      draw_notches = false,
+      notch =
+      {
+        base = {position = {138, 200}, size = {4, 16}},
+        shadow =
+        {
+          position = {146, 192},
+          size = {20, 32},
+          draw_type = "outer",
+          tint = default_dirt_color,
+          top_outer_border_shift = -4,
+          bottom_outer_border_shift = 4,
+          left_outer_border_shift = -4,
+          right_outer_border_shift = 4
+        },
+      }
+    },
+
     red_slider =
     {
       type = "slider_style",
@@ -6787,7 +6986,7 @@ data:extend(
         }
       },
     },
-    
+
     new_game_info_image =
     {
       type = "image_style",
@@ -6795,7 +6994,7 @@ data:extend(
       stretch_image_to_widget_size = true,
       size = {500, 285}
     },
-    
+
     tabbed_pane =
     {
       type = "tabbed_pane_style",
@@ -7060,7 +7259,7 @@ data:extend(
         shadow = default_inner_shadow
       }
     },
-    
+
     window_content_frame_deep =
     {
       type = "frame_style",
@@ -7077,7 +7276,7 @@ data:extend(
         shadow = default_inner_shadow
       }
     },
-    
+
     window_content_frame_in_tabbed_panne =
     {
       type = "frame_style",

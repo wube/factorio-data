@@ -1,11 +1,11 @@
 require ("prototypes.entity.demo-spawner-animation")
 require ("prototypes.entity.demo-biter-animations")
-require ("prototypes.entity.demo-enemy-sounds")
 require ("prototypes.entity.demo-spitter-animations")
 enemy_autoplace = require ("prototypes.entity.demo-enemy-autoplace-utils")
 require ("prototypes.entity.demo-biter-ai-settings")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
+local sounds = require("prototypes.entity.demo-sounds")
 
 spitter_spawner_tint = {r=0.99, g=0.09, b=0.09, a=1}
 
@@ -61,7 +61,7 @@ data:extend(
       range = 1,
       cooldown = 35,
       cooldown_deviation = 0.15,
-      sound = make_biter_roars(0.4),
+      sound = sounds.biter_roars(0.4),
       animation = biterattackanimation(medium_biter_scale, medium_biter_tint1, medium_biter_tint2)
     },
     vision_distance = 30,
@@ -71,11 +71,11 @@ data:extend(
     pollution_to_join_attack = 20,
     corpse = "medium-biter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_biter_calls(0.9),
-    dying_sound = make_biter_dying_sounds(0.5),
+    working_sound = sounds.biter_calls(0.9),
+    dying_sound = sounds.biter_dying(0.5),
     run_animation = biterrunanimation(medium_biter_scale, medium_biter_tint1, medium_biter_tint2),
     running_sound_animation_positions = {2,},
-    walking_sound = make_biter_walk_sounds(0.4),
+    walking_sound = sounds.biter_walk(0.4),
     ai_settings = biter_ai_settings,
     water_reflection = biter_water_reflection(medium_biter_scale)
   },
@@ -117,7 +117,7 @@ data:extend(
       cooldown = 35,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(30),
-      sound =  make_biter_roars_big(0.4),
+      sound =  sounds.biter_roars_big(0.4),
       animation = biterattackanimation(big_biter_scale, big_biter_tint1, big_biter_tint2)
     },
     vision_distance = 30,
@@ -127,11 +127,11 @@ data:extend(
     pollution_to_join_attack = 80,
     corpse = "big-biter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_biter_calls_big(1.0),
-    dying_sound = make_biter_dying_sounds_big(0.6),
+    working_sound = sounds.biter_calls_big(1.0),
+    dying_sound = sounds.biter_dying_big(0.6),
     run_animation = biterrunanimation(big_biter_scale, big_biter_tint1, big_biter_tint2),
     running_sound_animation_positions = {2,},
-    walking_sound = make_biter_walk_sounds_big(0.7),
+    walking_sound = sounds.biter_walk_big(0.7),
     ai_settings = biter_ai_settings,
     water_reflection = biter_water_reflection(big_biter_scale)
   },
@@ -174,7 +174,7 @@ data:extend(
       cooldown = 50,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(90),
-      sound =  make_biter_roars_big(0.6),
+      sound =  sounds.biter_roars_big(0.6),
       animation = biterattackanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2)
     },
     vision_distance = 30,
@@ -184,11 +184,11 @@ data:extend(
     pollution_to_join_attack = 400,
     corpse = "behemoth-biter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_biter_calls_big(1.0),
-    dying_sound = make_biter_dying_sounds_big(0.7),
+    working_sound = sounds.biter_calls_big(1.0),
+    dying_sound = sounds.biter_dying_big(0.7),
     run_animation = biterrunanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2),
     running_sound_animation_positions = {2,},
-    walking_sound = make_biter_walk_sounds_big(0.8),
+    walking_sound = sounds.biter_walk_big(0.8),
     ai_settings = biter_ai_settings,
     water_reflection = biter_water_reflection(behemoth_biter_scale)
   },
@@ -234,11 +234,11 @@ data:extend(
     pollution_to_join_attack = 4,
     corpse = "small-spitter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_spitter_calls(0.7),
-    dying_sound = make_spitter_dying_sounds(0.4),
+    working_sound = sounds.spitter_calls(0.7),
+    dying_sound = sounds.spitter_dying(0.4),
     run_animation = spitterrunanimation(scale_spitter_small, tint_1_spitter_small, tint_2_spitter_small),
     running_sound_animation_positions = {2,},
-    walking_sound = make_spitter_walk_sounds(0.3),
+    walking_sound = sounds.spitter_walk(0.3),
     ai_settings = biter_ai_settings,
     water_reflection = spitter_water_reflection(scale_spitter_small)
   },
@@ -288,11 +288,11 @@ data:extend(
     pollution_to_join_attack = 12,
     corpse = "medium-spitter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_spitter_calls_med(0.6),
-    dying_sound = make_spitter_dying_sounds(0.5),
+    working_sound = sounds.spitter_calls_med(0.6),
+    dying_sound = sounds.spitter_dying(0.5),
     run_animation = spitterrunanimation(scale_spitter_medium, tint_1_spitter_medium, tint_2_spitter_medium),
     running_sound_animation_positions = {2,},
-    walking_sound = make_spitter_walk_sounds(0.6),
+    walking_sound = sounds.spitter_walk(0.6),
     ai_settings = biter_ai_settings,
     water_reflection = spitter_water_reflection(scale_spitter_medium)
   },
@@ -343,11 +343,11 @@ data:extend(
     pollution_to_join_attack = 30,
     corpse = "big-spitter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_spitter_calls_big(0.7),
-    dying_sound = make_spitter_dying_sounds_big(0.8),
+    working_sound = sounds.spitter_calls_big(0.7),
+    dying_sound = sounds.spitter_dying_big(0.8),
     run_animation = spitterrunanimation(scale_spitter_big, tint_1_spitter_big, tint_2_spitter_big),
     running_sound_animation_positions = {2,},
-    walking_sound = make_spitter_walk_sounds_big(0.5),
+    walking_sound = sounds.spitter_walk_big(0.5),
     ai_settings = biter_ai_settings,
     water_reflection = spitter_water_reflection(scale_spitter_big)
   },
@@ -400,11 +400,11 @@ data:extend(
     pollution_to_join_attack = 200,
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "blood-explosion-big",
-    working_sound = make_spitter_calls_big(0.8),
-    dying_sound = make_spitter_dying_sounds_big(0.8),
+    working_sound = sounds.spitter_calls_big(0.8),
+    dying_sound = sounds.spitter_dying_big(0.8),
     run_animation = spitterrunanimation(scale_spitter_behemoth, tint_1_spitter_behemoth, tint_2_spitter_behemoth),
     running_sound_animation_positions = {2,},
-    walking_sound = make_spitter_walk_sounds_big(0.6),
+    walking_sound = sounds.spitter_walk_big(0.6),
     ai_settings = biter_ai_settings,
     water_reflection = spitter_water_reflection(scale_spitter_behemoth)
   },
@@ -553,6 +553,7 @@ data:extend(
     collision_box = {{-3.2, -2.2}, {2.2, 2.2}},
     map_generator_bounding_box = {{-4.2, -3.2}, {3.2, 3.2}},
     selection_box = {{-3.5, -2.5}, {2.5, 2.5}},
+    damaged_trigger_effect = hit_effects.biter(),
     pollution_absorption_absolute = 20,
     pollution_absorption_proportional = 0.01,
     corpse = "spitter-spawner-corpse",

@@ -1,6 +1,7 @@
 require ("prototypes.entity.demo-pipecovers")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
+local sounds = require("prototypes.entity.demo-sounds")
 
 if not data.is_demo then
   require ("prototypes.entity.assemblerpipes")
@@ -49,7 +50,7 @@ data:extend(
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     animations =
     {
       north =
@@ -911,7 +912,7 @@ data:extend(
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     allowed_effects = {}, -- no beacon effects on the burner drill
     energy_source =
     {

@@ -31,8 +31,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -53,8 +51,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -100,8 +96,6 @@ data:extend
               { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1.5,
             initial_height_deviation = 0.2,
@@ -122,8 +116,6 @@ data:extend
               { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1.5,
             initial_height_deviation = 0.2,
@@ -169,8 +161,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -216,8 +206,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -238,8 +226,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -260,8 +246,6 @@ data:extend
               { 0.07031, 0.2031 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -312,8 +296,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 0.3,
             initial_height_deviation = 0.1,
@@ -334,8 +316,6 @@ data:extend
             { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
-            trigger_created_entity = false,
-            check_buildablity = false,
             show_in_tooltip = false,
             initial_height = 0.3,
             initial_height_deviation = 0.1,

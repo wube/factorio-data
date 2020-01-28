@@ -154,7 +154,6 @@ data:extend
   {
     type = "trivial-smoke",
     name = "smoke-explosion-particle-small",
-    flags = {"not-on-map"},
     animation = smoke_fast_animation
     {
       animation_speed = 0.5,
@@ -174,7 +173,6 @@ data:extend
   {
     type = "trivial-smoke",
     name = "smoke-explosion-particle-stone-small",
-    flags = {"not-on-map"},
     animation = smoke_fast_animation
     {
       animation_speed = 0.5,
@@ -190,7 +188,7 @@ data:extend
     start_scale = 0.3,
     end_scale = 0.1,
   },
-  
+
   {
     type = "trivial-smoke",
     name = "artillery-smoke",

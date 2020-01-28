@@ -1807,6 +1807,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/indication-arrow.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       scale = 0.5
@@ -1815,6 +1816,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/fluid-indication-arrow.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 48,
       height = 48,
       scale = 0.5
@@ -1823,6 +1825,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/fluid-indication-arrow-both-ways.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 48,
       height = 48,
       scale = 0.5
@@ -1831,6 +1834,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/heat-exchange-indication.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 48,
       height = 48,
       scale = 0.5
@@ -1839,6 +1843,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/rail-planner-indication-arrow.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 82,
       height = 44,
       scale = 0.5
@@ -1847,6 +1852,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/rail-planner-indication-arrow-too-far.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 82,
       height = 44,
       scale = 0.5
@@ -1855,6 +1861,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/indication-line.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       scale = 0.5
@@ -1863,6 +1870,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/short-indication-line.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       scale = 0.5
@@ -1871,6 +1879,7 @@ data:extend(
     {
       filename = "__core__/graphics/rail-placement-indicators.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       scale = 0.5
@@ -1879,6 +1888,7 @@ data:extend(
     {
       filename = "__core__/graphics/rail-placement-indicators.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       x = 64,
@@ -1888,6 +1898,7 @@ data:extend(
     {
       filename = "__core__/graphics/rail-placement-indicators.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       x = 128,
@@ -1897,6 +1908,7 @@ data:extend(
     {
       filename = "__core__/graphics/rail-placement-indicators.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       y = 64,
@@ -1906,6 +1918,7 @@ data:extend(
     {
       filename = "__core__/graphics/rail-placement-indicators.png",
       priority = "extra-high-no-scale",
+      flags = { "icon" },
       width = 64,
       height = 64,
       x = 128,
@@ -2092,6 +2105,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/underground-lines-remove.png",
       priority = "high",
+      flags = {"icon"},
       width = 64,
       height = 64,
       x = 64,
@@ -2101,6 +2115,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/underground-lines-remove.png",
       priority = "high",
+      flags = {"icon"},
       width = 64,
       height = 64,
       scale = 0.5
@@ -2109,6 +2124,7 @@ data:extend(
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
       priority = "extra-high-no-scale",
+      flags = {"icon"},
       width = 64,
       height = 64,
       scale = 0.5

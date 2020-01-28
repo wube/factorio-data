@@ -60,7 +60,6 @@ local make_particle = function(params)
     type = "optimized-particle",
     name = name,
 
-    flags = params.flags or {"not-on-map"},
     life_time = params.life_time or 60 * 15,
 
     render_layer = params.render_layer or "projectile",
@@ -3319,7 +3318,7 @@ local particles =
     render_layer = "object",
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
-  
+
   make_particle
   {
     name = "electric-mining-drill-long-metal-particle-medium",
@@ -4743,9 +4742,7 @@ local particles =
     vertical_speed = 0.02,
     vertical_speed_deviation = 0.08,
     horizontal_speed = 0.07,
-    horizontal_speed_deviation = 0.04,
-    animation_speed = 0.5,
-    animation_speed_deviation = 0.2,
+    horizontal_speed_deviation = 0.04
   },
 
   {

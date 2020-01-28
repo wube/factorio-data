@@ -1,4 +1,4 @@
-require ("prototypes.entity.demo-gunshot-sounds")
+local sounds = require("prototypes.entity.demo-sounds")
 
 data:extend(
 {
@@ -28,7 +28,7 @@ data:extend(
       },
       projectile_creation_distance = 1.125,
       range = 15,
-      sound = make_light_gunshot_sounds()
+      sound = sounds.light_gunshot
     },
     stack_size = 5
   },
@@ -58,7 +58,7 @@ data:extend(
       },
       projectile_creation_distance = 1.125,
       range = 18,
-      sound = make_light_gunshot_sounds()
+      sound = sounds.light_gunshot
     },
     stack_size = 5
   },
@@ -89,7 +89,7 @@ data:extend(
       },
       projectile_creation_distance = 0.65,
       range = 20,
-      sound = make_heavy_gunshot_sounds()
+      sound = sounds.heavy_gunshot
     },
     stack_size = 1
   },
@@ -109,13 +109,7 @@ data:extend(
       projectile_creation_distance = 1.125,
       range = 20,
       min_range = 1,
-      sound =
-      {
-        {
-          filename = "__base__/sound/pump-shotgun.ogg",
-          volume = 0.5
-        }
-      }
+      sound = sounds.shotgun
     },
     stack_size = 5
   },

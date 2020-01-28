@@ -1,3 +1,5 @@
+local sounds = require("prototypes.entity.demo-sounds")
+
 function hr_crash_site_assembling_machine_1_ground()
   return
   {
@@ -298,7 +300,7 @@ data:extend(
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     energy_source =
     {
       type = "electric",
@@ -387,9 +389,9 @@ data:extend(
         }
       }
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    vehicle_impact_sound = sounds.generic_impact,
   },-- rotation 1 broken
   {
     type = "assembling-machine",
@@ -506,9 +508,9 @@ data:extend(
     },
     energy_usage = "90kW",
     ingredient_count = 2,
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -598,9 +600,9 @@ data:extend(
         }
       }
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    vehicle_impact_sound = sounds.generic_impact,
   },-- rotation 2 broken
   {
     type = "assembling-machine",
@@ -717,9 +719,9 @@ data:extend(
     },
     energy_usage = "90kW",
     ingredient_count = 2,
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -926,6 +928,7 @@ data:extend(
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.5
       },
+      --persistent = true,
       max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
@@ -957,7 +960,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     integration_patch =
     {
       filename = "__base__/graphics/entity/crash-site-chests/crash-site-chest-1-ground.png",
@@ -1050,7 +1053,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     fast_replaceable_group = "container",
     inventory_size = 48,
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     integration_patch =
     {
       filename = "__base__/graphics/entity/crash-site-chests/crash-site-chest-2-ground.png",

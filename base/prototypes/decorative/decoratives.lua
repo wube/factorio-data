@@ -2,136 +2,7 @@ local autoplace_utils = require("autoplace_utils")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 
-local plant_sounds =
-{
-  {
-    filename = "__base__/sound/walking/plant/plant-01.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/walking/plant/plant-02.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/walking/plant/plant-03.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/walking/plant/plant-04.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/walking/plant/plant-05.ogg",
-    volume = 0.4
-  }
-}
-
-local big_bush_sounds =
-{
-  {
-    filename = "__base__/sound/walking/plant/bush-big-01.ogg",
-    volume = 0.3
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-big-02.ogg",
-    volume = 0.3
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-big-03.ogg",
-    volume = 0.3
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-big-04.ogg",
-    volume = 0.3
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-big-05.ogg",
-    volume = 0.3
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-big-06.ogg",
-    volume = 0.3
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-big-07.ogg",
-    volume = 0.3
-  }
-}
-
-local small_bush_sounds =
-{
-  {
-    filename = "__base__/sound/walking/plant/bush-small-01.ogg",
-    volume = 1.0
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-small-02.ogg",
-    volume = 1.0
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-small-03.ogg",
-    volume = 1.0
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-small-04.ogg",
-    volume = 1.0
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-small-05.ogg",
-    volume = 1.0
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-small-06.ogg",
-    volume = 1.0
-  },
-  {
-    filename = "__base__/sound/walking/plant/bush-small-07.ogg",
-    volume = 1.0
-  }
-}
-local pebble_sounds =
-{
-  {
-    filename = "__base__/sound/walking/pebble/stones_01.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_02.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_03.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_03.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_04.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_05.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_06.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_07.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_08.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/walking/pebble/stones_09.ogg",
-    volume = 0.6
-  }
-}
+local sounds = require ("prototypes.entity.demo-sounds")
 
 local base_decorative_sprite_priority = "extra-high"
 
@@ -344,7 +215,7 @@ data:extend{
     order = "b[decorative]-b[asterisk]-a[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     -- autoplace = autoplace_settings("brown-fluff", 1, {{{35, 0.5}, {-15, 0.1}}}),
     autoplace = tog_autoplace
     {
@@ -693,7 +564,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-b[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 1}, {0, 0.7}}}),
     autoplace = tog_autoplace
     {
@@ -1484,7 +1355,7 @@ data:extend{
     order = "b[decorative]-b[asterisk]-c[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
     {
@@ -1834,7 +1705,7 @@ data:extend{
     order = "b[decorative]-c[pita]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2114,7 +1985,7 @@ data:extend{
     order = "b[decorative]-c[pita]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2394,7 +2265,7 @@ data:extend{
     order = "b[decorative]-d[croton]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2754,7 +2625,7 @@ data:extend{
     order = "b[decorative]-d[croton]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -3111,7 +2982,7 @@ data:extend{
     order = "b[decorative]-d[pita-mini]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -3387,7 +3258,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-a[normal]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = big_bush_sounds,
+    walking_sound = sounds.big_bush,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -3775,7 +3646,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-b[dry]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = big_bush_sounds,
+    walking_sound = sounds.big_bush,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4167,7 +4038,7 @@ data:extend{
     order = "b[decorative]-i[garballo]-a[normal]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -5145,7 +5016,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = plant_sounds,
+    walking_sound = sounds.plant,
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -5937,7 +5808,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = big_bush_sounds,
+    walking_sound = sounds.big_bush,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6293,7 +6164,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = small_bush_sounds,
+    walking_sound = sounds.small_bush,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6521,7 +6392,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = small_bush_sounds,
+    walking_sound = sounds.small_bush,
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -7700,7 +7571,7 @@ data:extend{
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 2000,
     resistances =
@@ -7963,7 +7834,7 @@ data:extend{
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 500,
     resistances =
@@ -8467,7 +8338,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
-    walking_sound = pebble_sounds,
+    walking_sound = sounds.pebble,
     autoplace = rock_autoplace_settings(1, "d[small]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
@@ -8735,7 +8606,7 @@ data:extend{
     order = "b[decorative]-l[rock]-e[tiny]",
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     render_layer = "decorative",
-    walking_sound = pebble_sounds,
+    walking_sound = sounds.pebble,
     autoplace = rock_autoplace_settings(1.1, "e[tiny]", {{0, 0.3}, {1, 1}}),
     pictures =
     {
@@ -9031,7 +8902,7 @@ data:extend{
     },
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_stone_impact,
     pictures =
     {
       {
@@ -9535,7 +9406,7 @@ data:extend{
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     render_layer = "floor",
     autoplace = rock_autoplace_settings(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
-    walking_sound = pebble_sounds,
+    walking_sound = sounds.pebble,
     pictures =
     {
       {

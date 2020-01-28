@@ -1,6 +1,44 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.2
+Version: 0.18.3
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.2
+Date: 28. 01. 2020
+  Graphics:
+    - Improved map colors by adding specific colors to beacons, pipes, heat pipes, roboports and steam engines.
+  Sounds:
+    - New or updated sound effects include:
+      - Pump, pumpjack, boiler, heat pipe, offshore pump, substation.
+      - Logistic and construction robots, roboport.
+      - Train.
+      - Rocket takeoff sequence.
+      - Car and tank (pitch scaling adjusted to sound more natural).
+      - All transport belts, splitters, inserters, assembling machines, power switch.
+      - Added some UI sounds that were missing.
+      - Shotgun, small explosions.
+      - Entity destroyed alert.
+    - New sound tech includes:
+      - Listener position set to centre of screen by default. This will allow you to hear what you see even when in map mode.
+      - The ability to turn off the Doppler effect in Lua, used for the Substation so far.
+      - environment-audible-distance setting increased to 30 so you can hear entities a bit further away.
+      - zoom-volume-coefficient changed so you can hear more of the world when you zoom out. This will help with combat and give a greater sense of the overall factory.
+  Bugfixes:
+    - Fixed that pressing escape in some log-in screens lead to blank screen or incorrect states. (https://forums.factorio.com/80282)
+    - Fixed enemy walls should not render as connected to ghosts, since enemy ghosts are not visible. (https://forums.factorio.com/80323)
+    - Fixed undo on self-looped combinator ghosts not restoring wires. (https://forums.factorio.com/77347)
+    - Fixed achievement cards not showing description when descriptions are turned off in interface settings.
+    - Fixed that inserters from 0.17 save files could end up teleporting items into/from trains. (https://forums.factorio.com/80276)
+    - Fixed that the sync mods with save GUI wouldn't size correctly. (https://forums.factorio.com/80389)
+    - Fixed that thrown capsules could end up broken forever if thrown at exactly the right tick. (https://forums.factorio.com/80395)
+    - Fixed crash when using "create-entity" trigger effect item to create an artillery flare. (https://forums.factorio.com/80405)
+    - Fixed map view night LUT. (https://forums.factorio.com/80319)
+    - Fixed a crash that would sometimes happen when a biter, who was in previous versions of the game aggroed by a player in a car or tank, was aggroed again. (https://forums.factorio.com/80326)
+    - Fixed crash when joining a game through Steam without having previously logged in.
+  Modding:
+    - Migrating loaders between loader and loader-1x1 will maintain the loader type (input/output). (https://forums.factorio.com/80384)
+  Scripting:
+    - Added LuaSurface::create_particle().
+    - Added LuaEntityPrototype::inserter_pickup_position and inserter_drop_position read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.1
 Date: 23. 01. 2020

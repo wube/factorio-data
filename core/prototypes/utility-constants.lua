@@ -47,8 +47,16 @@ data:extend(
       },
       default_color_by_type =
       {
-        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40}
-      },
+        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40},
+        ["heat-pipe"] = {r = 58, g = 130, b = 172},
+        ["pipe"] = {r = 69, g = 130, b = 165},
+        ["pipe-to-ground"] = {r = 25, g = 103, b = 150},
+        ["pump"] = {r = 109, g = 154, b = 181},
+        ["storage-tank"] = {r = 131, g = 166, b = 188},
+        ["beacon"] = {r = 7, g = 68, b = 104},
+        ["generator"] = {r = 0, g = 127, b = 160},
+        ["roboport"] = {r = 211, g = 207, b = 136},
+},
       chart_train_stop_text_color = {r = 1, g = 1, b = 1},
       chart_train_stop_disabled_text_color = {r = 0.9,  g = 0.2, b = 0.2},
       vehicle_outer_color = {r = 1, g = 0.1, b = 0.1},
@@ -73,7 +81,6 @@ data:extend(
     deconstruct_mark_tint = { r = 0.65, g = 0.65, b = 0.65, a = 0.65 },
 
     zoom_to_world_can_use_nightvision = false,
-    zoom_to_world_darkness_multiplier = 0.5,
     zoom_to_world_effect_strength = 0.05,
     max_terrain_building_size = 255, -- the min of this or the player build reach is used
     rail_segment_colors =
@@ -197,7 +204,7 @@ data:extend(
     tree_shadow_speed = 0.93,
 
     missing_preview_sprite_location = "__core__/graphics/missing-preview.png",
-    
+
     -- Should be based on the default day/night times, ie
     -- sun starts to set at 0.25
     -- sun fully set at 0.45

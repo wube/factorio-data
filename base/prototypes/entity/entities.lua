@@ -7,13 +7,12 @@ require ("circuit-connector-sprites")
 require ("prototypes.entity.assemblerpipes")
 require ("prototypes.entity.demo-character-animations")
 require ("prototypes.entity.laser-sounds")
-require ("prototypes.entity.demo-gunshot-sounds")
 require ("prototypes.entity.combinator-pictures")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
+local sounds = require("prototypes.entity.demo-sounds")
 
 logistic_chest_opened_duration = 7
-
 
 rail_pictures = function()
   return rail_pictures_internal
@@ -239,6 +238,14 @@ function drive_over_tie()
       },
       {
         filename = "__base__/sound/train-tie-4.ogg",
+        volume = 0.6
+      },
+      {
+        filename = "__base__/sound/train-tie-5.ogg",
+        volume = 0.6
+      },
+      {
+        filename = "__base__/sound/train-tie-6.ogg",
         volume = 0.6
       }
     }
@@ -610,10 +617,13 @@ data:extend(
     {
       sound =
       {
-        filename = "__base__/sound/express-transport-belt.ogg",
-        volume = 0.4
+        filename = "__base__/sound/express-underground-belt.ogg",
+        volume = 0.3
       },
-      persistent = true
+      max_sounds_per_type = 2,
+      audible_distance_modifier = 0.5,
+      persistent = true,
+      use_doppler_shift = false
     },
     animation_speed_coefficient = 32,
     belt_animation_set = express_belt_animation_set,
@@ -864,6 +874,18 @@ data:extend(
     fast_replaceable_group = "transport-belt",
     next_upgrade = "express-splitter",
     speed = 0.0625,
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/splitters/fast-splitter.ogg",
+          volume = 0.5
+        }
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.5,
+    },
     structure =
     {
       north =
@@ -1025,6 +1047,18 @@ data:extend(
     belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/splitters/express-splitter.ogg",
+          volume = 0.5
+        }
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.5,
+    },
     structure =
     {
       north =
@@ -1185,7 +1219,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/fast-transport-belt.ogg",
-        volume = 0.4
+        volume = 0.3
       },
       persistent = true
     },
@@ -1226,7 +1260,8 @@ data:extend(
         filename = "__base__/sound/express-transport-belt.ogg",
         volume = 0.4
       },
-      persistent = true
+      persistent = true,
+      use_doppler_shift = false
     },
     animation_speed_coefficient = 32,
     belt_animation_set = express_belt_animation_set,
@@ -1277,9 +1312,9 @@ data:extend(
       },
       off_when_no_fluid_recipe = true
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -1764,7 +1799,8 @@ data:extend(
       }
     },
     sound_minimum_speed = 0.2;
-    vehicle_impact_sound = generic_impact_sound(),
+    sound_scaling_ratio = 0.8,
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -1784,8 +1820,22 @@ data:extend(
       },
       match_speed_to_activity = true
     },
-    open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
-    close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
+    stop_trigger_speed = 0.1,
+    stop_trigger =
+    {
+      {
+        type = "play-sound",
+        sound =
+        {
+          {
+            filename = "__base__/sound/fight/tank-brakes.ogg",
+            volume = 0.3
+          }
+        }
+      }
+    },
+    open_sound = { filename = "__base__/sound/fight/tank-door-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/fight/tank-door-close.ogg", volume = 0.4 },
     rotation_speed = 0.0035,
     tank_driving = true,
     weight = 20000,
@@ -1821,7 +1871,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     fast_replaceable_group = "container",
     inventory_size = 48,
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     picture =
     {
       layers =
@@ -1900,7 +1950,7 @@ data:extend(
     extension_speed = 0.07,
     rotation_speed = 0.04,
     fast_replaceable_group = "inserter",
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       match_progress_to_activity = true,
@@ -1908,26 +1958,26 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 1.0
+          volume = 0.4
         }
       },
-      max_sounds_per_type = 3,
+      max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -2081,7 +2131,7 @@ data:extend(
     extension_speed = 0.07,
     rotation_speed = 0.04,
     fast_replaceable_group = "inserter",
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       match_progress_to_activity = true,
@@ -2089,26 +2139,26 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 1.0
+          volume = 0.4
         }
       },
-      max_sounds_per_type = 3,
+      max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -2244,7 +2294,7 @@ data:extend(
         percent = 90
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       match_progress_to_activity = true,
@@ -2252,26 +2302,26 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 1.0
+          volume = 0.4
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 1.0
+          volume = 0.4
         }
       },
-      max_sounds_per_type = 3,
+      max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
@@ -2487,7 +2537,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     production = "60kW"
   },
   {
@@ -2802,19 +2852,20 @@ data:extend(
     },
     drive_over_tie_trigger = drive_over_tie(),
     tie_distance = 50,
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/train-engine.ogg",
-        volume = 0.4
+        volume = 0.3
       },
-      match_speed_to_activity = true
+      match_speed_to_activity = true,
+      max_sounds_per_type = 2,
     },
-    open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
-    close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
-    sound_minimum_speed = 0.3;
+    open_sound = { filename = "__base__/sound/train-door-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/train-door-close.ogg", volume = 0.4 },
+    sound_minimum_speed = 0.1;
     water_reflection = locomotive_reflection(),
   },
   {
@@ -3226,15 +3277,15 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/train-wheels.ogg",
-        volume = 0.6
+        volume = 0.3
       },
       match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    sound_minimum_speed = 0.5;
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    sound_minimum_speed = 0.1;
+    vehicle_impact_sound = sounds.generic_impact,
     water_reflection = locomotive_reflection()
   },
   {
@@ -3411,13 +3462,13 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/train-wheels.ogg",
-        volume = 0.6
+        volume = 0.3
       },
       match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
-    sound_minimum_speed = 0.5;
-    vehicle_impact_sound = generic_impact_sound(),
+    sound_minimum_speed = 0.1;
+    vehicle_impact_sound = sounds.generic_impact,
     water_reflection = locomotive_reflection()
   },
   {
@@ -4185,15 +4236,15 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/train-wheels.ogg",
-        volume = 0.6
+        volume = 0.3
       },
       match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    sound_minimum_speed = 0.5;
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    sound_minimum_speed = 0.1;
+    vehicle_impact_sound = sounds.generic_impact,
     water_reflection =
     {
       pictures =
@@ -4799,10 +4850,16 @@ data:extend(
 
     color={r=0.95,  g=0, b=0, a=0.5},
 
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
-      sound = { filename = "__base__/sound/train-stop.ogg", volume = 0.8 }
+      sound =
+      {
+        {
+          filename = "__base__/sound/train-stop.ogg", volume = 0.7
+        }
+      },
+      audible_distance_modifier = 0.2,
     },
 
     circuit_wire_connection_points = circuit_connector_definitions["train-station"].points,
@@ -5171,7 +5228,7 @@ data:extend(
         scale = 0.5
       }
     },
-    working_sound = flying_robot_sounds(),
+    working_sound = sounds.flying_robot(0.5),
     cargo_centered = {0.0, 0.2},
     water_reflection = robot_reflection(1),
   },
@@ -5204,7 +5261,7 @@ data:extend(
     logistic_mode = "passive-provider",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
     animation =
     {
@@ -5283,7 +5340,7 @@ data:extend(
     logistic_mode = "active-provider",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
     animation =
     {
@@ -5363,7 +5420,7 @@ data:extend(
     logistic_mode = "storage",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
     animation =
     {
@@ -5443,7 +5500,7 @@ data:extend(
     logistic_slots_count = 12,
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
     animation =
     {
@@ -5523,7 +5580,7 @@ data:extend(
     logistic_slots_count = 12,
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
     animation =
     {
@@ -5610,7 +5667,7 @@ data:extend(
         percent = 60
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     energy_source =
     {
       type = "electric",
@@ -6152,12 +6209,12 @@ data:extend(
     clamps_off_sound =
     {
       filename = "__base__/sound/silo-clamps-off.ogg",
-      volume = 1.0
+      volume = 0.8
     },
     doors_sound =
     {
       filename = "__base__/sound/silo-doors.ogg",
-      volume = 1.0
+      volume = 0.8
     },
     raise_rocket_sound =
     {
@@ -6650,13 +6707,13 @@ data:extend(
       scale = 1.5,
       animation_speed = 0.5
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
-      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.6 },
+      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.8 },
       max_sounds_per_type = 3,
       audible_distance_modifier = 0.5,
-      probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
+      --probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
     },
     recharging_light = {intensity = 0.4, size = 5, color = {r = 1.0, g = 1.0, b = 1.0}},
     request_to_open_door_timeout = 15,
@@ -6841,7 +6898,7 @@ data:extend(
       }
     },
     flow_length_in_ticks = 360,
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -6887,6 +6944,17 @@ data:extend(
     dying_explosion = "pump-explosion",
     collision_box = {{-0.29, -0.9}, {0.29, 0.9}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
+    working_sound =
+    {
+      sound =
+      {
+          filename = "__base__/sound/pump.ogg",
+          volume = 0.3
+      },
+      apparent_volume = 1,
+      audible_distance_modifier = 0.5,
+      max_sounds_per_type = 2
+    },
     damaged_trigger_effect = hit_effects.entity(),
     resistances =
     {
@@ -6918,7 +6986,7 @@ data:extend(
     },
     energy_usage = "29kW",
     pumping_speed = 200,
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
 
     animations =
     {
@@ -7276,15 +7344,19 @@ data:extend(
     --},
     --light = {intensity = 0.75, size = 3, color = {r = 1.0, g = 1.0, b = 1.0}},
 
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
-      sound = { filename = "__base__/sound/substation.ogg" },
-      volume = 0.3,
-      max_sounds_per_type = 2,
-      apparent_volume = 1.5,
-      audible_distance_modifier = 0.5,
-      probability = 1 / (3 * 60) -- average pause between the sound is 3 seconds
+      sound =
+      {
+        filename = "__base__/sound/substation.ogg",
+        volume = 0.7,
+      },
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 30,
+      fade_out_ticks = 40,
+      use_doppler_shift = false
     },
     connection_points =
     {
@@ -7399,7 +7471,7 @@ data:extend(
     discharge_animation = accumulator_discharge(),
     discharge_cooldown = 60,
     discharge_light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -7412,6 +7484,7 @@ data:extend(
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.5
       },
+      --persistent = true,
       max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
@@ -7478,7 +7551,7 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input"
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     energy_usage = "480kW",
     distribution_effectivity = 0.5,
     module_specification =
@@ -7579,7 +7652,7 @@ data:extend(
           volume = 0.7
       },
       apparent_volume = 1,
-      max_sounds_per_type = 3
+      persistent = true
     },
     resistances =
     {
@@ -7811,7 +7884,7 @@ data:extend(
           volume = 0.7
       },
       apparent_volume = 1,
-      max_sounds_per_type = 3
+      persistent = true
     },
     resistances =
     {
@@ -7842,7 +7915,7 @@ data:extend(
       projectile_center = {0, 1},
       projectile_creation_distance = 0.6,
       range = 15,
-      sound = make_light_gunshot_sounds(),
+      sound = sounds.light_gunshot,
       ammo_type =
       {
         category = "bullet",
@@ -8056,7 +8129,7 @@ data:extend(
           volume = 0.7
       },
       apparent_volume = 1,
-      max_sounds_per_type = 3
+      persistent = true
     },
     resistances =
     {
@@ -8389,7 +8462,7 @@ data:extend(
         light = {intensity = 0.4, size = 6, color = {r = 1.0, g = 1.0, b = 1.0}}
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -8737,7 +8810,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -8750,8 +8823,8 @@ data:extend(
       max_sounds_per_type = 2,
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
-      fade_in_ticks = 10,
-      fade_out_ticks = 60
+      fade_in_ticks = 20,
+      fade_out_ticks = 60,
     },
     crafting_speed = 1,
     energy_source =
@@ -8838,9 +8911,11 @@ data:extend(
         volume = 0.6
       },
       max_sounds_per_type = 2,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30,
       match_speed_to_activity = true
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
 
     activity_led_light =
     {
@@ -8908,6 +8983,8 @@ data:extend(
         volume = 0.6
       },
       max_sounds_per_type = 2,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30,
       match_speed_to_activity = true
     },
 
@@ -9067,7 +9144,7 @@ data:extend(
 
     item_slot_count = 18,
 
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
 
     activity_led_light =
     {
@@ -9111,7 +9188,36 @@ data:extend(
       frame_count = 6,
       shift = {0.453125, 0.1875}
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/fight/tank-engine.ogg",
+        volume = 0
+      },
+      activate_sound =
+      {
+        {
+          filename = "__base__/sound/power-switch-activate-1.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__base__/sound/power-switch-activate-2.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__base__/sound/power-switch-activate-3.ogg",
+          volume = 0.4
+        },
+      },
+      deactivate_sound =
+      {
+        filename = "__base__/sound/fight/tank-engine-stop.ogg",
+        volume = 0
+      },
+      max_sounds_per_type = 3,
+    },
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
     overlay_start =
     {
@@ -9202,7 +9308,7 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity({{-0.2, -2},{0.2, 0.2}}),
     drawing_box = {{-0.5, -2.5}, {0.5, 0.3}},
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     energy_source =
     {
       type = "electric",
@@ -9757,16 +9863,11 @@ data:extend(
     {
       sound =
       {
-        filename = "__base__/sound/accumulator-working.ogg",
-        volume = 1
-      },
-      idle_sound =
-      {
-        filename = "__base__/sound/accumulator-idle.ogg",
-        volume = 0.5
+        filename = "__base__/sound/electric-energy.ogg",
+        volume = 0.7
       },
       max_sounds_per_type = 3,
-      fade_in_ticks = 10,
+      fade_in_ticks = 16,
       fade_out_ticks = 30
     }
   },
@@ -10397,9 +10498,9 @@ data:extend(
         light = {intensity = 0.6, size = 9.9, shift = {0.0, 0.0}, color = {r = 0.0, g = 1.0, b = 0.0}}
       }
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
-    vehicle_impact_sound = generic_impact_sound(),
+    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -10459,7 +10560,7 @@ data:extend(
     max_health = 200,
     corpse = "heat-exchanger-remnants",
     dying_explosion = "heat-exchanger-explosion",
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     mode = "output-to-separate-pipe",
     resistances =
     {
@@ -10994,15 +11095,16 @@ data:extend(
         starting_frame_deviation = 60
       }
     },
-    vehicle_impact_sound = generic_impact_sound(),
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/steam-turbine.ogg",
-        volume = 0.5
+        volume = 0.6
       },
       match_speed_to_activity = true,
+      --persistent = true,
       max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
@@ -11037,7 +11139,21 @@ data:extend(
     corpse = "heat-pipe-remnants",
     dying_explosion = "heat-pipe-explosion",
     random_corpse_variation = true,
-    vehicle_impact_sound = generic_impact_sound(),
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/heat-pipe.ogg",
+          volume = 0.8
+        }
+      },
+      match_volume_to_activity = true,
+      max_sounds_per_type = 3,
+      fade_in_ticks = 10,
+      fade_out_ticks = 30,
+    },
+    vehicle_impact_sound = sounds.generic_impact,
     resistances =
     {
       {

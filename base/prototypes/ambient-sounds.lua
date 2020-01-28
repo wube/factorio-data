@@ -257,7 +257,7 @@ data:extend(
     sound =
     {
       filename = "__base__/sound/wind/wind.ogg",
-      volume = 1.0
+      volume = 0.8
     }
   }
 })

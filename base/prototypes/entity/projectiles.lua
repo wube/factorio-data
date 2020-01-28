@@ -1117,9 +1117,10 @@ data:extend(
     {
       filename = "__base__/graphics/icons/cliff-explosives.png",
       frame_count = 1,
-      width = 24,
-      height = 24,
-      priority = "high"
+      width = 64,
+      height = 64,
+      priority = "high",
+      scale = 0.5*0.75
     },
     shadow =
     {
