@@ -233,43 +233,43 @@ local dirt_sounds =
 {
   {
     filename = "__base__/sound/walking/dirt-1-01.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-02.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-03.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-04.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-05.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-06.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-07.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-08.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-09.ogg",
-    volume = 1.0
+    volume = 0.8
   },
   {
     filename = "__base__/sound/walking/dirt-1-10.ogg",
-    volume = 1.0
+    volume = 0.8
   }
 }
 

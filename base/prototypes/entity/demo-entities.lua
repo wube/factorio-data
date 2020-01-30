@@ -726,6 +726,8 @@ data:extend(
     selection_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_priority = 100, -- 0-255 value with 255 being on-top of everything else
     flags = {"placeable-off-grid", "not-rotatable", "not-on-map"},
+    open_sound = { filename = "__base__/sound/character-corpse-open.ogg", volume = 0.5 },
+    close_sound = { filename = "__base__/sound/character-corpse-close.ogg", volume = 0.5 },
     pictures =
     {
       {
@@ -2468,23 +2470,23 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-basic-1.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-2.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-3.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-4.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-5.ogg",
-          volume = 0.4
+          volume = 0.3
         }
       },
       max_sounds_per_type = 5,
@@ -2828,23 +2830,23 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-long-handed-1.ogg",
-          volume = 0.5
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-long-handed-2.ogg",
-          volume = 0.5
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-long-handed-3.ogg",
-          volume = 0.5
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-long-handed-4.ogg",
-          volume = 0.5
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-long-handed-5.ogg",
-          volume = 0.5
+          volume = 0.3
         }
       },
       max_sounds_per_type = 7,
@@ -3013,23 +3015,23 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-basic-1.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-2.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-3.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-4.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-basic-5.ogg",
-          volume = 0.4
+          volume = 0.3
         }
       },
       max_sounds_per_type = 5,
@@ -4612,11 +4614,11 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/fight/compilatron-1.ogg",
-        volume = 0.5
+        volume = 0
       },
       {
         filename = "__base__/sound/fight/compilatron-2.ogg",
-        volume = 0.5
+        volume = 0
       },
       apparent_volume = 1,
       max_sounds_per_type = 4,
@@ -6189,6 +6191,7 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    dying_explosion = "construction-robot-explosion",
     max_payload_size = 1,
     speed = 0.06,
     max_energy = "1.5MJ",
@@ -6738,8 +6741,8 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/furnace.ogg",
-          volume = 0.8
+          filename = "__base__/sound/steel-furnace.ogg",
+          volume = 0.6
         }
       },
       max_sounds_per_type = 2,

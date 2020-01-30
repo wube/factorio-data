@@ -226,27 +226,27 @@ function drive_over_tie()
     {
       {
         filename = "__base__/sound/train-tie-1.ogg",
-        volume = 0.6
+        volume = 0.4
       },
       {
         filename = "__base__/sound/train-tie-2.ogg",
-        volume = 0.6
+        volume = 0.4
       },
       {
         filename = "__base__/sound/train-tie-3.ogg",
-        volume = 0.6
+        volume = 0.4
       },
       {
         filename = "__base__/sound/train-tie-4.ogg",
-        volume = 0.6
+        volume = 0.4
       },
       {
         filename = "__base__/sound/train-tie-5.ogg",
-        volume = 0.6
+        volume = 0.4
       },
       {
         filename = "__base__/sound/train-tie-6.ogg",
-        volume = 0.6
+        volume = 0.4
       }
     }
   }
@@ -1958,23 +1958,23 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 0.4
+          volume = 0.3
         }
       },
       max_sounds_per_type = 5,
@@ -2139,23 +2139,23 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 0.4
+          volume = 0.3
         }
       },
       max_sounds_per_type = 5,
@@ -2302,23 +2302,23 @@ data:extend(
       {
         {
           filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 0.4
+          volume = 0.3
         },
         {
           filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 0.4
+          volume = 0.3
         }
       },
       max_sounds_per_type = 5,
@@ -2845,7 +2845,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/train-breaks.ogg",
-            volume = 0.6
+            volume = 0.3
           }
         }
       }
@@ -2865,7 +2865,7 @@ data:extend(
     },
     open_sound = { filename = "__base__/sound/train-door-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/train-door-close.ogg", volume = 0.4 },
-    sound_minimum_speed = 0.1;
+    sound_minimum_speed = 0.7;
     water_reflection = locomotive_reflection(),
   },
   {
@@ -5025,6 +5025,7 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    dying_explosion = "logistic-robot-explosion",
     max_payload_size = 1,
     speed = 0.05,
     max_energy = "1.5MJ",
@@ -6224,7 +6225,8 @@ data:extend(
     flying_sound =
     {
       filename = "__base__/sound/silo-rocket.ogg",
-      volume = 1.0
+      volume = 1.0,
+      audible_distance_modifier = 3,
     }
 
   },
@@ -6970,7 +6972,7 @@ data:extend(
     fluid_box =
     {
       base_area = 1,
-      height = 2,
+      height = 4,
       pipe_covers = pipecoverspictures(),
       pipe_connections =
       {
@@ -7599,6 +7601,14 @@ data:extend(
     fade_away_duration = 2 * 60,
     spread_duration = 10,
     color = { r = 0.2, g = 0.9, b = 0.2 },
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/fight/poison-cloud.ogg",
+        volume = 0.7
+      },
+    },
     action =
     {
       type = "direct",
@@ -7642,6 +7652,7 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
     damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    dying_explosion = "distractor-robot-explosion",
     time_to_live = 60 * 45,
     speed = 0,
     working_sound =
@@ -7871,6 +7882,7 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    dying_explosion = "defender-robot-explosion",
     time_to_live = 60 * 45,
     follows_player = true,
     friction = 0.01,
@@ -8116,6 +8128,7 @@ data:extend(
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
     damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    dying_explosion = "destroyer-robot-explosion",
     time_to_live = 60 * 60 * 2,
     speed = 0.01,
     follows_player = true,

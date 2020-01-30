@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.3
+Version: 0.18.4
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.3
+Date: 30. 01. 2020
+  Graphics:
+    - Applied LUT color correction to new explosions.
+  Sounds:
+    - Transport belts - high frequencies reduced.
+    - Train - pitch scaling reduced and sound levels remixed (Work in Progress).
+    - Inserters lowered in level slightly (Work in Progress).
+    - Compilatron muted as it was too annoying.
+    - Removed scrollbar GUI click sound.
+  Changes:
+    - Overwriting a save file will show a confirmation if the selected save has more playtime on it than what you are about to save. (https://forums.factorio.com/47857)
+  Bugfixes:
+    - Fixed tile rendering would break at extremely low zoom. (https://forums.factorio.com/80523)
+    - Fixed dragging train schedules in the train GUI. (https://forums.factorio.com/80317)
+    - Fixed a crash when migrating loader entities in blueprints. (https://forums.factorio.com/80513)
+    - Fixed fast entity split to burner inserters. (https://forums.factorio.com/80602)
+    - Fixed that the pump could never reach its pumping speed of 12000/s. (https://forums.factorio.com/67037) (https://forums.factorio.com/80585)
+    - Fixed logistic and combat robots were missing dying explosion effect.
+    - Fixed migration of 1x1 loaders from pre-0.18 saves. It still might result in loss of items on transport lines that start on the migrated loaders.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.2
 Date: 28. 01. 2020
@@ -2050,7 +2071,7 @@ Date: 08. 03. 2019
     - Fixed problems related to circuit network connection inconsistency related to undo. (https://forums.factorio.com/67071)
     - Fixed NPE issue where Compilatron could destroy essential buildings. (https://forums.factorio.com/67031)
     - Fixed NPE crash when Compilatron tells you to pick up scrap. (https://forums.factorio.com/66241)
-    - Fixed that he bonus GUI wouldn't show personal equipment. (https://forums.factorio.com/65618)
+    - Fixed that the bonus GUI wouldn't show personal equipment. (https://forums.factorio.com/65618)
     - Fixed using special-item tags would cause desyncs. (https://forums.factorio.com/66311)
     - Fixed NPE crash when Compilatron tries to point at an object that doesn't exist any more. (https://forums.factorio.com/65162)
     - Fixed Local errors in scenarios would crash the game when viewing scenarios in the GUI. (https://forums.factorio.com/66716)
@@ -6215,7 +6236,7 @@ Date: 15. 09. 2016
     - Fixed personal roboport wouldn't update properly when modded equipment was used in some cases.
     - Fixed train ignoring wait conditions in some cases (https://forums.factorio.com/32562)
     - Fixed chain signal visual state right before a station (https://forums.factorio.com/30881)
-    - Fixed that the client was stuck when he disconnected after a reconnect.
+    - Fixed that the client was stuck when they disconnected after a reconnect.
     - Fixed Save As GUI not responding to input after multiplayer disconnect with chat open. (https://forums.factorio.com/32574)
     - Fixed inserter placement in the 2nd level of new hope campaign mission. (https://forums.factorio.com/31688)
     - Server automatically deletes temporary save files once the upload of finishes.
@@ -6334,7 +6355,7 @@ Date: 02. 09. 2016
     - Fixed that right clicking in the crafting menu to craft 5 items wouldn't de-focus the search widget. (https://forums.factorio.com/31063)
     - Fixed that joining paused game resulted in a black screen that was there until someone else unpaused it. (https://forums.factorio.com/31763)
     - Fixed that map2scenario errors when loading an edited save file that contained assembling machines connected to inserters. (https://forums.factorio.com/31706)
-    - Fixed that the exit message was wrong when the person just dropped. (saying he couldn't keep up)
+    - Fixed that the exit message was wrong when the person just dropped. (saying they couldn't keep up)
     - Fixed that after reconnecting to server using the small save/quit/reconnect window didn't close the window. (https://forums.factorio.com/32010)
     - Potential desync fix related to locomotives being selected in the same tick they are mined by someone else.
     - Potential fix of crash after a desync.
@@ -7439,7 +7460,7 @@ Date: 05. 04. 2016
     - Fixed mining drills getting stuck when built pointing at rails and then rotated. (https://forums.factorio.com/22764)
     - Fixed remote.call() within the same mod passing invalid data. (https://forums.factorio.com/22459)
     - Fixed the typo in the error "mulitplayer.cannot-load-downloaded-map", the cause of the error wasn't displayed because of it. (https://forums.factorio.com/22169)
-    - Fixed that the server could get desynced and in a state where he has no one to download from. (https://forums.factorio.com/22206)
+    - Fixed that the server could get desynced and in a state where they have no one to download from. (https://forums.factorio.com/22206)
     - Fixed that the train tooltip was showing the current station as the next one when in the station. (https://forums.factorio.com/22280)
     - Fixed crash when a Lua function was used as a value in a table in data.raw. (https://forums.factorio.com/22992)
     - Fixed the tooltip of the inventory limit feature to "Limit the inventory part to be filled by machines.",
@@ -7623,7 +7644,7 @@ Date: 22. 01. 2016
   Bugfixes:
     - Fixed that save is not loadable when mod changes type of entity. (https://forums.factorio.com/19053)
     - Fixed that enemy train stops were visible in the rename station gui. (https://forums.factorio.com/19023)
-    - Fixed freeze when there is no place to put character when he exits the vehicle and there is no exit point. (https://forums.factorio.com/19056)
+    - Fixed freeze when there is no place to put character when they exit the vehicle and there is no exit point. (https://forums.factorio.com/19056)
     - Fixed internally inconsistent data state after cancelling deconstruction from script in a certain way. (https://forums.factorio.com/19209)
     - Fixed that map/minimap wasn't updated when settiles was used. (https://forums.factorio.com/19355)
     - Fixed the graphics inconsistencies related to belt versus inserter drawing. (https://forums.factorio.com/19231)
@@ -9354,7 +9375,7 @@ Date: 12.9. 2014
     - Fixed that the container's inventory didn't get sorted in case the container couldn't be mined because all the items wouldn't fit the inventory.
       (https://forums.factorio.com/5614).
     - Fixed crash during enemy attack when the enemy unit was modded to attack by destroying everything including itself. (https://forums.factorio.com/5727)
-    - Fixed that the player mined item event was not called when he got just part of the inventory (https://forums.factorio.com/5608).
+    - Fixed that the player mined item event was not called when they got just part of the inventory (https://forums.factorio.com/5608).
     - Fixed that it wasn't possible to start fullscreen game in other than the primary window. There is now settings in config in category [graphics] section:
       preffered-screen-index. Changing the value changes the display adapter (monitor) that is used. If many people use this feature in the future, we can put it in the
       graphics settings ingame as well (https://forums.factorio.com/5048).
@@ -9572,7 +9593,7 @@ Date: 11.7. 2014
     - Fixed MacOSX application short version(https://forums.factorio.com/4598).
   Changes:
     - Changed the logistic robot supply strategy.
-      For player, robots take just enough items to fulfill exactly the requested amount, so the player doesn't get more than he asked for.
+      For player, robots take just enough items to fulfill exactly the requested amount, so the player doesn't get more than they asked for.
       For requester chests, robots take always as much as they can carry and leave it in the chest, so it can get a bit more than requested.
     - Consistent stack sizes for guns.
     - Lights rendering quality can be set in the graphics settings.
@@ -10088,7 +10109,7 @@ Date: 14.2. 2014
     - Roboports have separate logistic radius (now 25) and construction radius (now 50).
     - Player gets separate warning icon when building is destroyed.
     - Warning icons tooltip shows list of entities that are under attack/destroyed/attacking.
-    - Highlight inventory slots that contains results of the recipe the player already have when he is hovering the recipe slot.
+    - Highlight inventory slots that contains results of the recipe the player already have when they are hovering the recipe slot.
     - Added / updated sounds for player actions (building, mining buildings, crafting, inventory move, gui click, etc.)
     - Optional ordering of items sub-categories into individual lines in the crafting window.
   Graphics:
@@ -10614,7 +10635,7 @@ Date: 27.9. 2013
     - Enemies wander around their base when they have nothing to do.
     - Enemies call for help when attacked.
     - Added upgrades (research) for all types of ammo and for laser turrets as well.
-    - The player movement is slower when he is shooting (differs per weapon).
+    - The player movement is slower when they are shooting (differs per weapon).
     - Weapons have different damage types, entities have different resistances.
     - Added production statistics similar to the electricity statistics. (on the P key by default)
     - "Shift-build" - when building with shift the settings of the last built entity of that type are applied.

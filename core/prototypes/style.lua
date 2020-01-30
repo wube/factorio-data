@@ -6286,13 +6286,13 @@ data:extend(
       thumb_button_style =
       {
         type = "button_style",
-        left_click_sound =
+      left_click_sound =
+      {
         {
-          {
-            filename = "__core__/sound/gui-click.ogg",
-            volume = 1
-          }
-        },
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      },
         height = 10,
         default_graphical_set =
         {
@@ -6341,9 +6341,9 @@ data:extend(
         {
           {
             filename = "__core__/sound/gui-click.ogg",
-            volume = 1
+            volume = 0
           }
-        },
+      },
         width = 10,
         default_graphical_set =
         {
@@ -6651,9 +6651,40 @@ data:extend(
       button =
       {
         type = "button_style",
-        parent = "slider_button"
+        parent = "slider_button",
+        width = 20,
+        height = 12,
+        padding = 0,
+        default_graphical_set =
+        {
+          base = {position = {64, 48}, size = {40, 24}},
+          shadow = default_shadow
+        },
+        hovered_graphical_set =
+        {
+          base = {position = {144, 48}, size = {40, 24}},
+          glow = default_glow(default_glow_color, 0.5)
+        },
+        clicked_graphical_set =
+        {
+          base = {position = {184, 48}, size = {40, 24}},
+          shadow = default_shadow
+        },
+        disabled_graphical_set =
+        {
+          base = {position = {104, 48}, size = {40, 24}},
+          shadow = default_shadow
+        },
+        left_click_sound =
+        {
+          {
+            filename = "__core__/sound/gui-click.ogg",
+            volume = 1
+          }
+        }
       }
     },
+
     notched_slider =
     {
       type = "slider_style",
