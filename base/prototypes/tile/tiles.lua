@@ -1536,36 +1536,36 @@ define_tiles
       {
         {
           picture = "__base__/graphics/terrain/deepwater/deepwater1.png",
-          count = 8,
+          count = 1,
           size = 1,
           hr_version =
           {
             picture = "__base__/graphics/terrain/deepwater/hr-deepwater1.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 1
           }
         },
         {
           picture = "__base__/graphics/terrain/deepwater/deepwater2.png",
-          count = 8,
+          count = 1,
           size = 2,
           hr_version =
           {
             picture = "__base__/graphics/terrain/deepwater/hr-deepwater2.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 2
           }
         },
         {
           picture = "__base__/graphics/terrain/deepwater/deepwater4.png",
-          count = 8,
+          count = 1,
           size = 4,
           hr_version =
           {
             picture = "__base__/graphics/terrain/deepwater/hr-deepwater4.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 4
           }
@@ -1601,36 +1601,36 @@ define_tiles
       {
         {
           picture = "__base__/graphics/terrain/deepwater-green/deepwater-green1.png",
-          count = 8,
+          count = 1,
           size = 1,
           hr_version =
           {
             picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green1.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 1
           }
         },
         {
           picture = "__base__/graphics/terrain/deepwater-green/deepwater-green2.png",
-          count = 8,
+          count = 1,
           size = 2,
           hr_version =
           {
             picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green2.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 2
           }
         },
         {
           picture = "__base__/graphics/terrain/deepwater-green/deepwater-green4.png",
-          count = 8,
+          count = 1,
           size = 4,
           hr_version =
           {
             picture = "__base__/graphics/terrain/deepwater-green/hr-deepwater-green4.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 4
           }
@@ -1665,96 +1665,42 @@ define_tiles
       {
         {
           picture = "__base__/graphics/terrain/water/water1.png",
-          count = 8,
+          count = 1,
           size = 1,
           hr_version =
           {
             picture = "__base__/graphics/terrain/water/hr-water1.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 1
           }
         },
         {
           picture = "__base__/graphics/terrain/water/water2.png",
-          count = 8,
+          count = 1,
           size = 2,
           hr_version =
           {
             picture = "__base__/graphics/terrain/water/hr-water2.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 2
           }
         },
         {
           picture = "__base__/graphics/terrain/water/water4.png",
-          count = 8,
+          count = 1,
           size = 4,
           hr_version =
           {
             picture = "__base__/graphics/terrain/water/hr-water4.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 4
           }
         }
       },
-      inner_corner =
-      {
-        picture = "__base__/graphics/terrain/water/water-inner-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water/hr-water-inner-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      outer_corner =
-      {
-        picture = "__base__/graphics/terrain/water/water-outer-corner.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water/hr-water-outer-corner.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      side =
-      {
-        picture = "__base__/graphics/terrain/water/water-side.png",
-        count = 6,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water/hr-water-side.png",
-          count = 6,
-          scale = 0.5
-        }
-      },
-      u_transition =
-      {
-        picture = "__base__/graphics/terrain/water/water-u.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water/hr-water-u.png",
-          count = 1,
-          scale = 0.5
-        }
-      },
-      o_transition =
-      {
-        picture = "__base__/graphics/terrain/water/water-o.png",
-        count = 1,
-        hr_version =
-        {
-          picture = "__base__/graphics/terrain/water/hr-water-o.png",
-          count = 1,
-          scale = 0.5
-        }
-      },
+      empty_transitions = true,
     },
     transitions = { water_to_out_of_map_transition },
     map_color={r=51, g=83, b=95},
@@ -1783,36 +1729,36 @@ define_tiles
       {
         {
           picture = "__base__/graphics/terrain/water-green/water-green1.png",
-          count = 8,
+          count = 1,
           size = 1,
           hr_version =
           {
             picture = "__base__/graphics/terrain/water-green/hr-water-green1.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 1
           }
         },
         {
           picture = "__base__/graphics/terrain/water-green/water-green2.png",
-          count = 8,
+          count = 1,
           size = 2,
           hr_version =
           {
             picture = "__base__/graphics/terrain/water-green/hr-water-green2.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 2
           }
         },
         {
           picture = "__base__/graphics/terrain/water-green/water-green4.png",
-          count = 8,
+          count = 1,
           size = 4,
           hr_version =
           {
             picture = "__base__/graphics/terrain/water-green/hr-water-green4.png",
-            count = 8,
+            count = 1,
             scale = 0.5,
             size = 4
           }
@@ -1820,7 +1766,6 @@ define_tiles
       },
       empty_transitions = true
     },
-    allowed_neighbors = { "water" },
     map_color={r=31, g=48, b=18},
     pollution_absorption_per_second = water_pollution_absorption
   },
@@ -1947,7 +1892,7 @@ define_tiles
     },
     transitions = { water_shallow_to_out_of_map_transition },
     transitions_between_transitions = water_shallow_transitions_between_transitions,
-    allowed_neighbors = { "water-mud" },
+    -- allowed_neighbors = { "water-mud" },
     map_color={r=82, g=98, b=92},
     pollution_absorption_per_second = water_pollution_absorption
   },
@@ -2073,7 +2018,7 @@ define_tiles
     },
     transitions = { water_shallow_to_out_of_map_transition },
     transitions_between_transitions = water_mud_transitions_between_transitions,
-    allowed_neighbors = { "water-shallow" },
+    -- allowed_neighbors = { "water-shallow" },
     map_color={r=65, g=89, b=90},
     pollution_absorption_per_second = water_pollution_absorption
   },
@@ -3425,7 +3370,7 @@ define_tiles
     transitions_between_transitions = concrete_transitions_between_transitions,
 
     walking_sound = refined_concrete_sounds,
-    
+
     map_color={r=49, g=48, b=45},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier

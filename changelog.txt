@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.4
+Version: 0.18.5
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.4
+Date: 06. 02. 2020
+  Balancing:
+    - Wave defense difficulty will scale with online player count.
+    - Wave defense hard difficulty will give 50% less bounty on each kill.
+  Sounds:
+    - New sound for small explosion.
+    - Combat robots now have their own explosion sound.
+    - Shotgun has more variety so it sounds less repetitive.
+    - Vehicle impacting wooden objects (e.g chests) now sounds subtly different to crashing into trees.
+    - A few minor volume level changes including lowering the offshore pump and electric furnace.
+  Bugfixes:
+    - Fixed a crash when saving fails due to mod issues. (https://forums.factorio.com/80691)
+    - Fixed a crash that would happen when the player entered a vehicle when some biters were aggroed at them. (https://forums.factorio.com/80613)
+    - Fixed that cargo wagons built while a train is moving didn't animate the doors correctly. (https://forums.factorio.com/80671)
+    - Fixed an error when using modded night vision defined in zip files. (https://forums.factorio.com/80877)
+    - Fixed a performance issue with assembling machine result slot tooltips. (https://forums.factorio.com/80718)
+    - Fixed that items marked with the mod-openable flag couldn't be opened from the quickbar in some cases. (https://forums.factorio.com/80794)
+    - Fixed that train could fail with chain signal sequence escape maneuver when path goes multiple times through a rail segment.
+    - Possibly fixed seam on terrain at certain position and zoom level. (https://forums.factorio.com/80677)
+    - Fixed that sometimes wave defense would trigger victory before killing all spawners. (https://forums.factorio.com/80769)
+  Scripting:
+    - Fixed that writing to LuaForce::stack_inserter_capacity_bonus was limited to 200 instead of 254.
+  Modding:
+    - Changed definitions of map colors of beacons, pipes, heat pipes, roboports and steam engines, so they can be overridden by friendly_map_color. (https://forums.factorio.com/80669)
+    - Added ParticlePrototype::ended_on_ground_trigger_effect.
+    - Added fuel burnt results to the item tooltip.
+    - Loader remnants will pick rotation the same way as underground belts do. (https://forums.factorio.com/80901)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.3
 Date: 30. 01. 2020

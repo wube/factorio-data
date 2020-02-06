@@ -109,39 +109,39 @@ data:extend(
       {
         {
           filename = "__core__/sound/walking/transport-belt-01.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-02.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-03.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-04.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-05.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-06.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-07.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-08.ogg",
-          volume = 0.8
+          volume = 0.6
         },
         {
           filename = "__core__/sound/walking/transport-belt-09.ogg",
-          volume = 0.8
+          volume = 0.6
         }
       }
     },

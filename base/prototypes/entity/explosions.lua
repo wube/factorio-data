@@ -3740,7 +3740,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.robot_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3805,7 +3805,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.robot_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3870,7 +3870,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.robot_explosion(0.5),
     created_effect =
     {
       type = "direct",

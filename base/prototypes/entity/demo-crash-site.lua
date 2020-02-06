@@ -925,10 +925,10 @@ data:extend(
       },
       idle_sound =
       {
-        filename = "__base__/sound/accumulator-idle.ogg",
-        volume = 0.5
+        filename = "__base__/sound/electric-energy.ogg",
+        volume = 0.3
       },
-      --persistent = true,
+      audible_distance_modifier = 0.5,
       max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30

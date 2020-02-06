@@ -152,8 +152,14 @@ data:extend(
     {
       sound =
       {
-        filename = "__base__/sound/pumpjack.ogg",
-        volume = 0.7
+        {
+          filename = "__base__/sound/pumpjack.ogg",
+          volume = 0.4
+        },
+        {
+          filename = "__base__/sound/pumpjack-1.ogg",
+          volume = 0.4
+        }  
       },
       apparent_volume = 1.5,
       max_sounds_per_type = 2,

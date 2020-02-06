@@ -63,6 +63,7 @@ if not data.is_demo then
   require("prototypes.entity.mining-drill")
   require("prototypes.entity.fire")
   require("prototypes.entity.remnants")
+  require("prototypes.entity.flying-robot")
   require("prototypes.item.capsule")
   require("prototypes.item.ammo")
   require("prototypes.item.armor")

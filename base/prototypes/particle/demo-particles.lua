@@ -4623,6 +4623,7 @@ local particles =
     render_layer = "higher-object-under",
     pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false
   },
 
   make_particle
@@ -4634,6 +4635,7 @@ local particles =
     pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     render_layer = "lower-object-above-shadow",
+    ended_in_water_trigger_effect = false
   },
 
   make_particle
@@ -4652,7 +4654,8 @@ local particles =
     movement_modifier_when_on_ground = 0,
     life_time = 20,
     render_layer = "air-object",
-    pictures = particle_animations.get_sparks_particle_pictures()
+    pictures = particle_animations.get_sparks_particle_pictures(),
+    ended_in_water_trigger_effect = false
   },
 
   make_particle
@@ -4661,7 +4664,8 @@ local particles =
     movement_modifier_when_on_ground = 0,
     life_time = 20,
     render_layer = "air-object",
-    pictures = particle_animations.get_pole_sparks_particle_pictures()
+    pictures = particle_animations.get_pole_sparks_particle_pictures(),
+    ended_in_water_trigger_effect = false
   },
 
   make_particle
@@ -4670,7 +4674,8 @@ local particles =
     movement_modifier_when_on_ground = 0,
     life_time = 20,
     render_layer = "air-object",
-    pictures = particle_animations.get_sparks_debris_pictures()
+    pictures = particle_animations.get_sparks_debris_pictures(),
+    ended_in_water_trigger_effect = false
   },
 
   {
@@ -4846,7 +4851,8 @@ local particles =
     life_time = 180,
     movement_modifier = 0.9,
     pictures = particle_animations.get_leaf_particle_pictures(),
-    shadows = particle_animations.get_leaf_particle_shadow_pictures()
+    shadows = particle_animations.get_leaf_particle_shadow_pictures(),
+    ended_in_water_trigger_effect = false
   },
 
   make_particle
@@ -4854,7 +4860,8 @@ local particles =
     name = "branch-particle",
     life_time = 1200,
     pictures = particle_animations.get_branch_particle_pictures(),
-    shadows = particle_animations.get_branch_particle_shadow_pictures()
+    shadows = particle_animations.get_branch_particle_shadow_pictures(),
+    ended_in_water_trigger_effect = false
   },
 
   make_particle

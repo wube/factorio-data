@@ -43,11 +43,7 @@ data:extend(
         ["solar-panel"] = {r = 0.12, g = 0.13, b = 0.14},
         ["accumulator"] = {r = 0.48, g = 0.48, b = 0.48},
         ["wall"] = {r = 0.8, g = 0.85, b = 0.8},
-        ["gate"] = {r = 0.5, g = 0.5, b = 0.5}
-      },
-      default_color_by_type =
-      {
-        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40},
+        ["gate"] = {r = 0.5, g = 0.5, b = 0.5},
         ["heat-pipe"] = {r = 58, g = 130, b = 172},
         ["pipe"] = {r = 69, g = 130, b = 165},
         ["pipe-to-ground"] = {r = 25, g = 103, b = 150},
@@ -55,8 +51,12 @@ data:extend(
         ["storage-tank"] = {r = 131, g = 166, b = 188},
         ["beacon"] = {r = 7, g = 68, b = 104},
         ["generator"] = {r = 0, g = 127, b = 160},
-        ["roboport"] = {r = 211, g = 207, b = 136},
-},
+        ["roboport"] = {r = 211, g = 207, b = 136}
+      },
+      default_color_by_type =
+      {
+        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40},
+      },
       chart_train_stop_text_color = {r = 1, g = 1, b = 1},
       chart_train_stop_disabled_text_color = {r = 0.9,  g = 0.2, b = 0.2},
       vehicle_outer_color = {r = 1, g = 0.1, b = 0.1},

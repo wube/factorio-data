@@ -1,5 +1,6 @@
 local util = require('util')
 local merge = util.merge
+local sounds = require("prototypes.entity.demo-sounds")
 
 local tree_emissions_per_second = -0.001
 local dead_tree_emissions_per_second = -0.0001
@@ -7261,13 +7262,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
       drawing_box = tree_data.drawing_box,
       subgroup = "trees",
       order = "a[tree]-a[regular]-" .. order,
-      vehicle_impact_sound =
-      {
-        { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
-        { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
-        { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
-        { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
-      },
+      vehicle_impact_sound = sounds.tree_impact,
       autoplace = tree_data.autoplace,
       variations = tree_variations,
       variation_weights = tree_data.variation_weights,
@@ -7379,13 +7374,7 @@ data:extend(
     drawing_box = {{-0.6, -1.8}, {0.6, 0.3}},
     subgroup = "trees",
     order = "a[tree]-c[dry-tree]",
-    vehicle_impact_sound =
-    {
-      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
-    },
+    vehicle_impact_sound = sounds.tree_impact,
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {
@@ -7539,13 +7528,7 @@ data:extend(
     drawing_box = {{-0.9, -3}, {0.9, 0.6}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =
-    {
-      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
-    },
+    vehicle_impact_sound = sounds.tree_impact,
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {
@@ -7712,13 +7695,7 @@ data:extend(
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =
-    {
-      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
-    },
+    vehicle_impact_sound = sounds.tree_impact,
     autoplace = dead_trees_autoplace(1),
     pictures =
     {
@@ -7885,13 +7862,7 @@ data:extend(
     selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =
-    {
-      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
-    },
+    vehicle_impact_sound = sounds.tree_impact,
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {
@@ -8086,13 +8057,7 @@ data:extend(
     drawing_box = {{-0.9, -3.5}, {0.9, 0.6}},
     subgroup = "trees",
     order = "a[tree]-b[dead-tree]",
-    vehicle_impact_sound =
-    {
-      { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5 },
-      { filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5 },
-    },
+    vehicle_impact_sound = sounds.tree_impact,
     autoplace = dead_trees_autoplace(0.5),
     pictures =
     {

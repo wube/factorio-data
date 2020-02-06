@@ -5237,6 +5237,7 @@ data:extend{
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
+    walking_sound = sounds.hairy_grass,
     autoplace =
     {
       order = "a[doodad]-f[grass]-b",
@@ -5585,6 +5586,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
+    walking_sound = sounds.carpet_grass,
     autoplace =
     {
       order = "a[doodad]-f[grass]-c",
@@ -6749,6 +6751,7 @@ data:extend{
     order = "b[decorative]-a[grass]-c[small]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     grows_through_rail_path = true,
+    walking_sound = sounds.carpet_grass,
     autoplace =
     {
       order = "a[doodad]-f[grass]-d",
@@ -6969,6 +6972,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
+    walking_sound = sounds.carpet_grass,
     autoplace =
     {
       order = "a[doodad]-f[grass]-c",
@@ -7202,6 +7206,7 @@ data:extend{
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
     render_layer = "decorative",
+    walking_sound = sounds.hairy_grass,
     autoplace =
     {
       order = "a[doodad]-f[grass]-b",
@@ -12171,6 +12176,7 @@ data:extend{
     order = "d[remnants]-d[ship-wreck-grass]-a[big]",
     collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
     grows_through_rail_path = true,
+    walking_sound = sounds.mud,
     pictures =
     {
       {
@@ -12188,6 +12194,7 @@ data:extend{
     order = "d[remnants]-d[ship-wreck-grass]-b[small]",
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     grows_through_rail_path = true,
+    walking_sound = sounds.mud,
     render_layer = "floor",
     pictures =
     {

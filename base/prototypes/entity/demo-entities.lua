@@ -1831,7 +1831,7 @@ data:extend(
     inventory_size = 16,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_wood_impact,
     picture =
     {
       layers =
@@ -1964,7 +1964,7 @@ data:extend(
     inventory_size = 16,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_wood_impact,
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
@@ -1990,7 +1990,7 @@ data:extend(
     drawing_box = {{-0.5, -2.6}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
     supply_area_distance = 2.5,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_wood_impact,
     track_coverage_during_build_by_moving = true,
     fast_replaceable_group = "electric-pole",
     pictures =
@@ -2355,7 +2355,7 @@ data:extend(
       {
         {
           filename = "__base__/sound/offshore-pump.ogg",
-          volume = 0.8
+          volume = 0.4
         }
       },
       match_volume_to_activity = true,
@@ -4942,7 +4942,7 @@ data:extend(
     inventory_size = 32,
     open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
     close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_wood_impact,
     picture =
     {
       layers =
@@ -6179,250 +6179,6 @@ data:extend(
     circuit_wire_max_distance = default_circuit_wire_max_distance
   },
 
-  {
-    type = "construction-robot",
-    name = "construction-robot",
-    icon = "__base__/graphics/icons/construction-robot.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
-    minable = {mining_time = 0.1, result = "construction-robot"},
-    resistances = { { type = "fire", percent = 85 } },
-    max_health = 100,
-    collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
-    dying_explosion = "construction-robot-explosion",
-    max_payload_size = 1,
-    speed = 0.06,
-    max_energy = "1.5MJ",
-    energy_per_tick = "0.05kJ",
-    speed_multiplier_when_out_of_energy = 0.2,
-    energy_per_move = "5kJ",
-    min_to_charge = 0.2,
-    max_to_charge = 0.95,
-    working_light = {intensity = 0.8, size = 3, color = {r = 0.8, g = 0.8, b = 0.8}},
-    idle =
-    {
-      filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
-      priority = "high",
-      line_length = 16,
-      width = 32,
-      height = 36,
-      frame_count = 1,
-      shift = {0, -0.15625},
-      direction_count = 16,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
-        priority = "high",
-        line_length = 16,
-        width = 66,
-        height = 76,
-        frame_count = 1,
-        shift = util.by_pixel(0,-4.5),
-        direction_count = 16,
-        scale = 0.5
-      }
-    },
-    in_motion =
-    {
-      filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
-      priority = "high",
-      line_length = 16,
-      width = 32,
-      height = 36,
-      frame_count = 1,
-      shift = {0, -0.15625},
-      direction_count = 16,
-      y = 36,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot.png",
-        priority = "high",
-        line_length = 16,
-        width = 66,
-        height = 76,
-        frame_count = 1,
-        shift = util.by_pixel(0, -4.5),
-        direction_count = 16,
-        y = 76,
-        scale = 0.5
-      }
-    },
-    shadow_idle =
-    {
-      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-      priority = "high",
-      line_length = 16,
-      width = 50,
-      height = 24,
-      frame_count = 1,
-      shift = {1.09375, 0.59375},
-      direction_count = 16,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
-        priority = "high",
-        line_length = 16,
-        width = 104,
-        height = 49,
-        frame_count = 1,
-        shift = util.by_pixel(33.5, 18.75),
-        direction_count = 16,
-        scale = 0.5
-      }
-    },
-    shadow_in_motion =
-    {
-      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-      priority = "high",
-      line_length = 16,
-      width = 50,
-      height = 24,
-      frame_count = 1,
-      shift = {1.09375, 0.59375},
-      direction_count = 16,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
-        priority = "high",
-        line_length = 16,
-        width = 104,
-        height = 49,
-        frame_count = 1,
-        shift = util.by_pixel(33.5, 18.75),
-        direction_count = 16,
-        scale = 0.5
-      }
-    },
-    working =
-    {
-      filename = "__base__/graphics/entity/construction-robot/construction-robot-working.png",
-      priority = "high",
-      line_length = 2,
-      width = 28,
-      height = 36,
-      frame_count = 2,
-      shift = {0, -0.15625},
-      direction_count = 16,
-      animation_speed = 0.3,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-working.png",
-        priority = "high",
-        line_length = 2,
-        width = 57,
-        height = 74,
-        frame_count = 2,
-        shift = util.by_pixel(-0.25, -5),
-        direction_count = 16,
-        animation_speed = 0.3,
-        scale = 0.5
-      }
-    },
-    shadow_working =
-    {
-      filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
-      priority = "high",
-      line_length = 16,
-      width = 50,
-      height = 24,
-      frame_count = 1,
-      repeat_count = 2,
-      shift = {1.09375, 0.59375},
-      direction_count = 16,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
-        priority = "high",
-        line_length = 16,
-        width = 104,
-        height = 49,
-        frame_count = 1,
-        repeat_count = 2,
-        shift = util.by_pixel(33.5, 18.75),
-        direction_count = 16,
-        scale = 0.5
-      }
-    },
-    smoke =
-    {
-      filename = "__base__/graphics/entity/smoke-construction/smoke-01.png",
-      width = 39,
-      height = 32,
-      frame_count = 19,
-      line_length = 19,
-      shift = {0.078125, -0.15625},
-      animation_speed = 0.3
-    },
-    sparks =
-    {
-      {
-        filename = "__base__/graphics/entity/sparks/sparks-01.png",
-        width = 39,
-        height = 34,
-        frame_count = 19,
-        line_length = 19,
-        shift = {-0.109375, 0.3125},
-        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3
-      },
-      {
-        filename = "__base__/graphics/entity/sparks/sparks-02.png",
-        width = 36,
-        height = 32,
-        frame_count = 19,
-        line_length = 19,
-        shift = {0.03125, 0.125},
-        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3
-      },
-      {
-        filename = "__base__/graphics/entity/sparks/sparks-03.png",
-        width = 42,
-        height = 29,
-        frame_count = 19,
-        line_length = 19,
-        shift = {-0.0625, 0.203125},
-        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3
-      },
-      {
-        filename = "__base__/graphics/entity/sparks/sparks-04.png",
-        width = 40,
-        height = 35,
-        frame_count = 19,
-        line_length = 19,
-        shift = {-0.0625, 0.234375},
-        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3
-      },
-      {
-        filename = "__base__/graphics/entity/sparks/sparks-05.png",
-        width = 39,
-        height = 29,
-        frame_count = 19,
-        line_length = 19,
-        shift = {-0.109375, 0.171875},
-        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3
-      },
-      {
-        filename = "__base__/graphics/entity/sparks/sparks-06.png",
-        width = 44,
-        height = 36,
-        frame_count = 19,
-        line_length = 19,
-        shift = {0.03125, 0.3125},
-        tint = { r = 1.0, g = 0.9, b = 0.0, a = 1.0 },
-        animation_speed = 0.3
-      }
-    },
-    working_sound = sounds.construction_robot(0.7),
-    cargo_centered = {0.0, 0.2},
-    construction_vector = {0.30, 0.22},
-    water_reflection = robot_reflection(1),
-  },
   {
     type = "electric-pole",
     name = "big-electric-pole",
