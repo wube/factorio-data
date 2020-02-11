@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.6
+Version: 0.18.7
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.6
+Date: 11. 02. 2020
+  Bugfixes:
+    - Fixed infinite loop in renderer when trying to render water reflections created by off-screen entities under some circumstances. (https://forums.factorio.com/81148)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.5
 Date: 11. 02. 2020
