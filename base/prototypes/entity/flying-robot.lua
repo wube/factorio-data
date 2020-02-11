@@ -938,7 +938,9 @@ local robots =
     shadow_idle = robot_animations.construction_robot.shadow_idle,
     shadow_idle_with_cargo = robot_animations.construction_robot.shadow_idle_with_cargo,
     shadow_in_motion = robot_animations.construction_robot.shadow_in_motion,
-    shadow_in_motion_with_cargo = robot_animations.construction_robot.shadow_in_motion_with_cargo
+    shadow_in_motion_with_cargo = robot_animations.construction_robot.shadow_in_motion_with_cargo,
+    working = robot_animations.construction_robot.working,
+    shadow_working = robot_animations.construction_robot.shadow_working
   },
   {
     type = "logistic-robot",

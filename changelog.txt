@@ -1,6 +1,24 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.5
+Version: 0.18.6
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.5
+Date: 11. 02. 2020
+  Bugfixes:
+    - Fixed a crash related to multiple blocks reserved for different trains but later merged by placing a rail. (https://forums.factorio.com/80964)
+    - Fixed that construction robots were missing their working animation. (https://forums.factorio.com/80965)
+    - Fixed circuit network debug visualization text overlap. (https://forums.factorio.com/80969)
+    - Fixed the circuit network tooltip backgrounds didn't highlight correctly. (https://forums.factorio.com/80979)
+    - Fixed that script.active_mods wouldn't be accurate when loading save files in some cases. (https://forums.factorio.com/80958)
+    - Fixed that the sync-mods-with-save feature would try to download mods it didn't need to in some cases. (https://forums.factorio.com/80436)
+    - Fixed that trains pathfinder could create non contiguous path in case of single segment cycle with a junction. (https://forums.factorio.com/81035)
+    - Fixed possible crash when units were attacking rails with train on them. (https://forums.factorio.com/80986)
+    - Fixed pump would consume energy and play animation when it tried to transfer very small amount of fluid but failed to do so. (https://forums.factorio.com/80759)
+    - Fixed creating fire entity by trigger effect invoked by a particle would crash the game.
+    - Fixed overriding LuaSurface::brightness_visual_weight would cause light map to appear in map view. (https://forums.factorio.com/81143)
+  Scripting:
+    - Building entities with from items with 0 health will set the entity to 1 health instead of 0. (https://forums.factorio.com/80950)
+    - Added LuaGameScript::reset_time_played() which will reset the 'Time played' to 0.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.4
 Date: 06. 02. 2020
