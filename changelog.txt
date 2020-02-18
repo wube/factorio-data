@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.8
+Version: 0.18.9
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.8
+Date: 18. 02. 2020
+  Bugfixes:
+    - Fixed that setting infinity filters through script didn't update the GUI. (https://forums.factorio.com/81338)
+    - Fixed that dedicated server authentication didn't work when using the token option. (https://forums.factorio.com/81397)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.7
 Date: 18. 02. 2020
