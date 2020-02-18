@@ -21,7 +21,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 15,
-    order = "b-b-a",
+    order = "b-a-a",
     subgroup="enemies",
     resistances = {},
     healing_per_tick = 0.01,
@@ -77,7 +77,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     max_health = 350,
-    order="b-b-g",
+    order="b-d-a",
     subgroup="enemies",
     resistances =
     {

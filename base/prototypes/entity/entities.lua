@@ -874,18 +874,7 @@ data:extend(
     fast_replaceable_group = "transport-belt",
     next_upgrade = "express-splitter",
     speed = 0.0625,
-    working_sound =
-    {
-      sound =
-      {
-        {
-          filename = "__base__/sound/splitters/fast-splitter.ogg",
-          volume = 0.5
-        }
-      },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5,
-    },
+    working_sound = sounds.fast_splitter,
     structure =
     {
       north =
@@ -1047,18 +1036,7 @@ data:extend(
     belt_animation_set = express_belt_animation_set,
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
-    working_sound =
-    {
-      sound =
-      {
-        {
-          filename = "__base__/sound/splitters/express-splitter.ogg",
-          volume = 0.5
-        }
-      },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5,
-    },
+    working_sound = sounds.express_splitter,
     structure =
     {
       north =
@@ -1330,7 +1308,7 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
-      max_sounds_per_type = 3,
+      --max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
@@ -1835,7 +1813,7 @@ data:extend(
       }
     },
     open_sound = { filename = "__base__/sound/fight/tank-door-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/fight/tank-door-close.ogg", volume = 0.4 },
+    close_sound = { filename = "__base__/sound/fight/tank-door-close.ogg", volume = 0.3 },
     rotation_speed = 0.0035,
     tank_driving = true,
     weight = 20000,
@@ -1977,7 +1955,7 @@ data:extend(
           volume = 0.3
         }
       },
-      max_sounds_per_type = 5,
+      --max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -2158,7 +2136,7 @@ data:extend(
           volume = 0.3
         }
       },
-      max_sounds_per_type = 5,
+      --max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -2321,7 +2299,7 @@ data:extend(
           volume = 0.3
         }
       },
-      max_sounds_per_type = 5,
+      --max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
@@ -5042,6 +5020,7 @@ data:extend(
     logistic_mode = "passive-provider",
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    animation_sound = sounds.logistics_chest_open,
     vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
     animation =
@@ -6509,7 +6488,7 @@ data:extend(
       {
         type = "play-sound",
         sound = { filename = "__base__/sound/roboport-door.ogg",
-        volume = 0.5,
+        volume = 0.3,
         min_speed = 1,
         max_speed = 1.5,}
       }
@@ -6519,7 +6498,7 @@ data:extend(
       {
         type = "play-sound",
         sound = { filename = "__base__/sound/roboport-door-close.ogg",
-        volume = 0.5,
+        volume = 0.3,
         min_speed = 1,
         max_speed = 1.5, }
       }
@@ -7359,28 +7338,81 @@ data:extend(
     }
   },
   {
-    type = "smoke-with-trigger",
     name = "poison-cloud",
+    type = "smoke-with-trigger",
     flags = {"not-on-map"},
     show_when_smoke_off = true,
-    animation =
-    {
-      filename = "__base__/graphics/entity/cloud/cloud-45-frames.png",
-      flags = { "compressed" },
-      priority = "low",
-      width = 256,
-      height = 256,
-      frame_count = 45,
-      animation_speed = 0.5,
-      line_length = 7,
-      scale = 3
-    },
+    particle_count = 16,
+    particle_spread = { 3.6 * 1.05, 3.6 * 0.6 * 1.05 },
+    particle_distance_scale_factor = 0.5,
+    particle_scale_factor = { 1, 0.707 },
+    wave_speed = { 1/80, 1/60 },
+    wave_distance = { 0.3, 0.2 },
+    spread_duration_variation = 20;
+    particle_duration_variation = 60 * 3;
+    experiment_radius = 11;
+    render_layer = "object",
+
     affected_by_wind = false,
     cyclic = true,
     duration = 60 * 20,
     fade_away_duration = 2 * 60,
-    spread_duration = 10,
-    color = { r = 0.2, g = 0.9, b = 0.2 },
+    spread_duration = 20,
+    color = {r = 0.239, g = 0.875, b = 0.992, a = 0.690}, -- #3ddffdb0,
+
+    animation =
+    {
+      width = 152,
+      height = 120,
+      line_length = 5,
+      frame_count = 60,
+      shift = {-0.53125, -0.4375},
+      priority = "high",
+      animation_speed = 0.25,
+      filename = "__base__/graphics/entity/smoke/smoke.png",
+      flags = { "smoke" }
+    },
+
+    created_effect =
+    {
+      {
+        type = "cluster",
+        cluster_count = 10,
+        distance = 4,
+        distance_deviation = 5,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            type = "create-smoke",
+            show_in_tooltip = false,
+            entity_name = "poison-cloud-visual-dummy",
+            initial_height = 0,
+            initial_vertical_speed = 0,
+          }
+        }
+      },
+      {
+        type = "cluster",
+        cluster_count = 11,
+        distance = 8 * 1.1,
+        distance_deviation = 2,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            type = "create-smoke",
+            show_in_tooltip = false,
+            entity_name = "poison-cloud-visual-dummy",
+            initial_height = 0,
+            initial_vertical_speed = 0,
+          }
+        }
+      }
+    },
+
     working_sound =
     {
       sound =
@@ -7417,6 +7449,52 @@ data:extend(
       }
     },
     action_cooldown = 30
+  },
+  {
+    type = "smoke-with-trigger",
+    name = "poison-cloud-visual-dummy",
+    flags = {"not-on-map"},
+    show_when_smoke_off = true,
+    experiment_radius = 2,
+    particle_count = 24,
+    particle_spread = { 3.6 * 1.05, 3.6 * 0.6 * 1.05 },
+    particle_distance_scale_factor = 0.5,
+    particle_scale_factor = { 1, 0.707 },
+    particle_duration_variation = 60 * 3;
+    wave_speed = { 0.5 / 80, 0.5 / 60 },
+    wave_distance = { 1, 0.5 },
+    spread_duration_variation = 300 - 20;
+
+    render_layer = "object",
+
+    affected_by_wind = false,
+    cyclic = true,
+    duration = 60 * 20 + 4 * 60,
+    fade_away_duration = 3 * 60,
+    spread_duration = (300 - 20) / 2 ,
+    color = {r = 0.014, g = 0.358, b = 0.395, a = 0.322}, -- #035b6452
+
+    animation =
+    {
+      width = 152,
+      height = 120,
+      line_length = 5,
+      frame_count = 60,
+      shift = {-0.53125, -0.4375},
+      priority = "high",
+      animation_speed = 0.25,
+      filename = "__base__/graphics/entity/smoke/smoke.png",
+      flags = { "smoke" }
+    },
+
+    --working_sound =
+    --{
+    --  sound =
+    --  {
+    --    filename = "__base__/sound/fight/poison-cloud.ogg",
+    --    volume = 0.5
+    --  },
+    --},
   },
   {
     type = "sticker",
@@ -7556,8 +7634,8 @@ data:extend(
       },
       apparent_volume = 2.5,
       max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 60
+      fade_in_ticks = 4,
+      fade_out_ticks = 30
     },
     fluid_boxes =
     {
@@ -7996,7 +8074,7 @@ data:extend(
         volume = 0.6
       },
       max_sounds_per_type = 2,
-      fade_in_ticks = 10,
+      fade_in_ticks = 4,
       fade_out_ticks = 30,
       match_speed_to_activity = true
     },
@@ -8068,7 +8146,7 @@ data:extend(
         volume = 0.6
       },
       max_sounds_per_type = 2,
-      fade_in_ticks = 10,
+      fade_in_ticks = 4,
       fade_out_ticks = 30,
       match_speed_to_activity = true
     },
@@ -8943,7 +9021,7 @@ data:extend(
     energy_usage = "0kW",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
     picture = accumulator_picture( {r=1, g=0.8, b=1, a=1} ),
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
@@ -9265,7 +9343,7 @@ data:extend(
       }
     },
 
-    vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+    vehicle_impact_sound = sounds.generic_impact,
 
     working_sound =
     {
@@ -9316,7 +9394,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "small-scorchmark",
+            entity_name = "medium-scorchmark",
             check_buildability = true
           },
           {
@@ -9599,9 +9677,9 @@ data:extend(
           volume = 0.5
         }
       },
-      fade_in_ticks = 10,
+      fade_in_ticks = 4,
       fade_out_ticks = 30,
-      max_sounds_per_type = 2,
+      max_sounds_per_type = 3,
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5
     },
@@ -9857,9 +9935,9 @@ data:extend(
         filename = "__base__/sound/boiler.ogg",
         volume = 0.8
       },
-      max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      --max_sounds_per_type = 3,
+      fade_in_ticks = 4,
+      fade_out_ticks = 30,
     },
 
     structure =

@@ -318,7 +318,7 @@ data:extend(
     icon = "__base__/graphics/icons/small-worm.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
-    order="b-b-d",
+    order="b-c-a",
     max_health = 200,
     subgroup="enemies",
     resistances = {},
@@ -330,7 +330,7 @@ data:extend(
     shooting_cursor_size = 3,
     corpse = "small-worm-corpse",
     dying_explosion = "blood-explosion-big",
-    dying_sound = sounds.worm_dying_small(0.8),
+    dying_sound = sounds.worm_dying_small(0.6),
 
     folded_speed = 0.01,
     folded_speed_secondary = 0.024,
@@ -464,6 +464,8 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     rotation_speed = 0.015,
     preparing_speed = 0.08,
+    preparing_sound = sounds.gun_turret_activate,
+    folding_sound = sounds.gun_turret_deactivate,
     folding_speed = 0.08,
     inventory_size = 1,
     automated_ammo_count = 10,
@@ -600,7 +602,7 @@ data:extend(
         starting_frame_speed_deviation = 0.1
       },
       range = 18,
-      sound = sounds.heavy_gunshot
+      sound = sounds.gun_turret_gunshot
     },
 
     call_for_help_radius = 40,
@@ -668,6 +670,6 @@ cutscene_turret.attack_parameters =
     starting_frame_speed_deviation = 0.1
   },
   range = 18,
-  sound = sounds.heavy_gunshot
+  sound = sounds.gun_turret_gunshot
 }
 data:extend({cutscene_turret})

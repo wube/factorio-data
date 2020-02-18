@@ -143,7 +143,7 @@ data:extend(
         }
       }
     },
-    vehicle_impact_sound = { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound = sounds.generic_impact,
   },-- broken
   {
     type = "lab",
@@ -296,7 +296,7 @@ data:extend(
         volume = 0.7
       },
       apparent_volume = 1,
-      max_sounds_per_type = 3,
+      --max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
@@ -526,7 +526,7 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
-      max_sounds_per_type = 2,
+      --max_sounds_per_type = 2,
     }
   },-- rotation 1 repaired
   {
@@ -737,7 +737,7 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
-      max_sounds_per_type = 2,
+      --max_sounds_per_type = 2,
       fade_in_ticks = 10,
       fade_out_ticks = 30
     }
@@ -915,7 +915,7 @@ data:extend(
         },
       }
     },
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65},
+    vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =

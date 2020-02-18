@@ -32,7 +32,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 75,
-    order="b-b-b",
+    order="b-a-b",
     subgroup="enemies",
     resistances =
     {
@@ -83,7 +83,7 @@ data:extend(
   {
     type = "unit",
     name = "big-biter",
-    order="b-b-c",
+    order="b-a-c",
     icon = "__base__/graphics/icons/big-biter.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
@@ -139,7 +139,7 @@ data:extend(
   {
     type = "unit",
     name = "behemoth-biter",
-    order="b-b-d",
+    order="b-a-d",
     icon = "__base__/graphics/icons/behemoth-biter.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
@@ -200,7 +200,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 10,
-    order="b-b-e",
+    order="b-b-a",
     subgroup="enemies",
     resistances = {},
     healing_per_tick = 0.01,
@@ -250,7 +250,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 50,
-    order="b-b-f",
+    order="b-b-b",
     subgroup="enemies",
     resistances =
     {
@@ -304,7 +304,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 200,
-    order="b-b-g",
+    order="b-b-c",
     subgroup="enemies",
     resistances =
     {
@@ -362,7 +362,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "breaths-air", "not-repairable"},
     max_health = 1500,
-    order="b-b-h",
+    order="b-b-d",
     subgroup="enemies",
     resistances =
     {
@@ -507,7 +507,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "not-repairable"},
     max_health = 350,
-    order="b-b-h",
+    order="b-d-b",
     subgroup="enemies",
     working_sound =
     {

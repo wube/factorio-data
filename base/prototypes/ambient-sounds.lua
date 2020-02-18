@@ -190,27 +190,7 @@ data:extend(
       filename = "__base__/sound/ambient/swell-pad.ogg"
     }
   },
-
-  {
-    type = "ambient-sound",
-    name = "world-ambience-1",
-    track_type = "interlude",
-    sound =
-    {
-      filename = "__base__/sound/ambient/world-ambience-1.ogg",
-      volume = 1.0
-    }
-  },
-  {
-    type = "ambient-sound",
-    name = "world-ambience-2",
-    track_type = "interlude",
-    sound =
-    {
-      filename = "__base__/sound/ambient/world-ambience-2.ogg",
-      volume = 1.0
-    }
-  },
+--world-ambience-1 and 2 taken out because they have the wind mixed in which fades in and out...
   {
     type = "ambient-sound",
     name = "world-ambience-3",

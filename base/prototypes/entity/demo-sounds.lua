@@ -255,8 +255,118 @@ sounds.mud =
     volume = 0.3
   }
 }
+sounds.ore =
+{
+  {
+    filename = "__base__/sound/walking/resources/ore-01.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-02.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-03.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-04.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-05.ogg",
+    volume = 0.5
+  }
+}
 
-sounds.car_stone_impact =
+sounds.splitter =
+{
+  sound =
+  {
+    {
+      filename = "__base__/sound/splitters/splitter.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/splitter-2.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/splitter-3.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/splitter-4.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/splitter-5.ogg",
+      volume = 0.5
+    }
+  },
+  max_sounds_per_type = 3,
+  audible_distance_modifier = 0.5
+}
+
+sounds.fast_splitter =
+{
+  sound =
+  {
+    {
+      filename = "__base__/sound/splitters/fast-splitter.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/fast-splitter-2.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/fast-splitter-3.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/fast-splitter-4.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/fast-splitter-5.ogg",
+      volume = 0.5
+    }
+  },
+  max_sounds_per_type = 3,
+  audible_distance_modifier = 0.5
+}
+
+sounds.express_splitter =
+{
+  sound =
+  {
+    {
+      filename = "__base__/sound/splitters/express-splitter.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/express-splitter-2.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/express-splitter-3.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/express-splitter-4.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/splitters/express-splitter-5.ogg",
+      volume = 0.5
+    }
+  },
+  max_sounds_per_type = 3,
+  audible_distance_modifier = 0.5
+}
+
+sounds.car_stone_impact = 
 {
   { 
     filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5
@@ -275,7 +385,7 @@ sounds.car_stone_impact =
   },
   { 
     filename = "__base__/sound/car-stone-impact-6.ogg", volume = 0.5
-  }
+  },
 }
 
 sounds.car_wood_impact =
@@ -299,9 +409,6 @@ sounds.car_wood_impact =
 
 sounds.generic_impact =
 {
-  {
-    filename = "__base__/sound/car-metal-impact.ogg", volume = 0.5
-  },
   {
     filename = "__base__/sound/car-metal-impact-2.ogg", volume = 0.5
   },
@@ -397,6 +504,73 @@ sounds.construction_robot = function(volume)
   }
 end
 
+sounds.laser_turret_activate =
+{
+  {
+    filename = "__base__/sound/fight/laser-turret-activate-01.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/fight/laser-turret-activate-02.ogg",
+    volume = 0.2
+  }
+}
+
+sounds.laser_turret_deactivate =
+{
+  {
+    filename = "__base__/sound/fight/laser-turret-deactivate-01.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/fight/laser-turret-deactivate-02.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/fight/laser-turret-deactivate-03.ogg",
+    volume = 0.2
+  }
+}
+
+sounds.gun_turret_activate =
+{
+  {
+    filename = "__base__/sound/fight/gun-turret-activate-01.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-activate-02.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-activate-03.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-activate-04.ogg",
+    volume = 0.3
+  }
+}
+
+sounds.gun_turret_deactivate =
+{
+  {
+    filename = "__base__/sound/fight/gun-turret-deactivate-01.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-deactivate-02.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-deactivate-03.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-deactivate-04.ogg",
+    volume = 0.3
+  }
+}
 
 sounds.heavy_gunshot =
 {
@@ -418,19 +592,55 @@ sounds.heavy_gunshot =
   }
 }
 
+sounds.gun_turret_gunshot =
+{
+  {
+    filename = "__base__/sound/fight/gun-turret-gunshot-01.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-gunshot-02.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-gunshot-03.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/gun-turret-gunshot-04.ogg",
+    volume = 0.4
+  }
+}
+
 sounds.light_gunshot = 
 {
   {
     filename = "__base__/sound/fight/light-gunshot-1.ogg",
-    volume = 0.3
+    volume = 0.6
   },
   {
     filename = "__base__/sound/fight/light-gunshot-2.ogg",
-    volume = 0.3
+    volume = 0.6
   },
   {
     filename = "__base__/sound/fight/light-gunshot-3.ogg",
-    volume = 0.3
+    volume = 0.6
+  }
+}
+
+sounds.submachine_gunshot = 
+{
+  {
+    filename = "__base__/sound/fight/submachine-gunshot-1.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/fight/submachine-gunshot-2.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/fight/submachine-gunshot-3.ogg",
+    volume = 0.6
   }
 }
 
@@ -554,6 +764,29 @@ sounds.large_explosion = function(volume)
   }
 end
 
+sounds.logistics_chest_open =
+{
+  {
+    filename = "__base__/sound/passive-provider-chest-open-1.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/passive-provider-chest-open-2.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/passive-provider-chest-open-3.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/passive-provider-chest-open-4.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/passive-provider-chest-open-5.ogg",
+    volume = 0.3
+  },
+}
 
 sounds.biter_roars = function(volume)
   return

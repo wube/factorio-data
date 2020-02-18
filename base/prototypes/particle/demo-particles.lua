@@ -4880,6 +4880,23 @@ local particles =
     shadows = particle_animations.get_explosion_remnants_shadow_pictures(),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "poison-capsule-metal-particle",
+    pictures = particle_animations.get_metal_particle_small_pictures({}),
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect =
+    {
+      type = "create-trivial-smoke",
+      smoke_name = "poison-capsule-particle-smoke",
+      starting_frame_deviation = 0,
+      starting_frame_speed_deviation = 0,
+      offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
+      speed_from_center = nil,
+    },
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
   }
 }
 

@@ -643,7 +643,7 @@ data:extend(
     icon = "__base__/graphics/icons/medium-worm.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
-    order="b-b-e",
+    order="b-c-b",
     subgroup="enemies",
     max_health = 400,
     resistances =
@@ -746,7 +746,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 750,
-    order="b-b-f",
+    order="b-c-c",
     subgroup="enemies",
     resistances =
     {
@@ -845,7 +845,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     max_health = 750,
-    order="b-b-g",
+    order="b-c-d",
     subgroup="enemies",
     resistances =
     {
@@ -950,6 +950,8 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     rotation_speed = 0.01,
     preparing_speed = 0.05,
+    preparing_sound = sounds.laser_turret_activate,
+    folding_sound = sounds.laser_turret_deactivate,
     corpse = "laser-turret-remnants",
     dying_explosion = "laser-turret-explosion",
     folding_speed = 0.05,

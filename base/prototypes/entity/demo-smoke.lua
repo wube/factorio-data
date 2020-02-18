@@ -214,5 +214,33 @@ data:extend
     start_scale = 0.5,
     end_scale = 1,
     affected_by_wind = false
-  }
+  },
+
+  {
+    type = "trivial-smoke",
+    name = "poison-capsule-smoke",
+    animation = smoke_fast_animation(
+      {
+        scale = 0.5
+      }
+    ),
+    duration = 60,
+    fade_away_duration = 60,
+    render_layer = "higher-object-above",
+    color = {r = 0.239, g = 0.875, b = 0.992, a = 0.690}
+  },
+
+  {
+    type = "trivial-smoke",
+    name = "poison-capsule-particle-smoke",
+    animation = smoke_fast_animation(
+      {
+        scale = 0.2
+      }
+    ),
+    duration = 60,
+    fade_away_duration = 60,
+    render_layer = "higher-object-above",
+    color = {r = 0.239, g = 0.875, b = 0.992, a = 0.690}
+  },
 }

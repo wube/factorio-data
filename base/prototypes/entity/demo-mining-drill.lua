@@ -46,9 +46,9 @@ data:extend(
         volume = 0.75
       },
       apparent_volume = 1.5,
-      max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      --max_sounds_per_type = 3,
+      fade_in_ticks = 4,
+      fade_out_ticks = 30,
     },
     vehicle_impact_sound = sounds.generic_impact,
     animations =
@@ -908,8 +908,8 @@ data:extend(
           volume = 0.8
         }
       },
-      max_sounds_per_type = 2,
-      fade_in_ticks = 10,
+      --max_sounds_per_type = 3,
+      fade_in_ticks = 4,
       fade_out_ticks = 30
     },
     vehicle_impact_sound = sounds.generic_impact,

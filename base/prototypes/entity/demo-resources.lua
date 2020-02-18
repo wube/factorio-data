@@ -1,6 +1,7 @@
 local noise = require("noise");
 local tne = noise.to_noise_expression;
 local resource_autoplace = require("resource-autoplace");
+local sounds = require ("prototypes.entity.demo-sounds");
 
 -- Initialize the core patch sets in a predictable order
 resource_autoplace.initialize_patch_set("iron-ore", true)
@@ -53,6 +54,7 @@ local function resource(resource_parameters, autoplace_parameters)
       mining_time = resource_parameters.mining_time,
       result = resource_parameters.name
     },
+    walking_sound = resource_parameters.walking_sound,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     -- autoplace = autoplace_settings(name, order, coverage),
@@ -105,7 +107,8 @@ data:extend(
       name = "iron-ore",
       order = "b",
       map_color = {0.415, 0.525, 0.580},
-      mining_time = 1
+      mining_time = 1,
+      walking_sound = sounds.ore
     },
     {
       base_density = 10,
@@ -119,7 +122,8 @@ data:extend(
       name = "copper-ore",
       order = "b",
       map_color = {0.803, 0.388, 0.215},
-      mining_time = 1
+      mining_time = 1,
+      walking_sound = sounds.ore
     },
     {
       base_density = 8,
@@ -133,7 +137,8 @@ data:extend(
       name = "coal",
       order = "b",
       map_color = {0, 0, 0},
-      mining_time = 1
+      mining_time = 1,
+      walking_sound = sounds.pebble
     },
     {
       base_density = 8,
@@ -146,7 +151,8 @@ data:extend(
       name = "stone",
       order = "b",
       map_color = {0.690, 0.611, 0.427},
-      mining_time = 1
+      mining_time = 1,
+      walking_sound = sounds.pebble
     },
     {
       base_density = 4,
@@ -164,6 +170,7 @@ data:extend(
     order="a-b-e",
     tree_removal_probability = 0.7,
     tree_removal_max_distance = 32 * 32,
+    walking_sound = sounds.ore,
     minable =
     {
       mining_particle = "stone-particle",

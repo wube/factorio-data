@@ -1,6 +1,37 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.7
+Version: 0.18.8
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.7
+Date: 18. 02. 2020
+  Graphics:
+    - New visuals for poison capsule effect.
+    - New dying effect and remnants for flying robots.
+  Sounds:
+    - Entity destroyed alert - Sound softened and lowered in volume.
+    - Weapon sounds (WIP) - new Pistol, Submachine gun, Gun turret, Laser turret.
+    - Logistic chests open sound (WIP).
+    - Poison capsule cloud (WIP).
+  Bugfixes:
+    - Fixed that reordering heat buffers during the same tick a different heat buffer was built would leave the heat buffer state corrupted. (https://forums.factorio.com/81141)
+    - Fixed that entity sounds with probabilities would loop forever once they started playing. (https://forums.factorio.com/80610)
+    - Fixed rocket silo tooltip did not include contents of the rocket result inventory. (https://forums.factorio.com/81211)
+    - Fixed that styles were applied to wrong slot in a filtered train view. (https://forums.factorio.com/81176)
+    - Fixed that server authentication would fail if both the token and username and password were provided. (https://forums.factorio.com/80899)
+    - Fixed that changing inserter pickup/dropoff through mods didn't work correctly. (https://forums.factorio.com/81263)
+    - Fixed that combat robots had their fire resistance overwritten. (https://forums.factorio.com/81317)
+    - Fixed that rolling stocks were not pulled correctly when train was moving through curved rails. (https://forums.factorio.com/81102)
+    - Fixed that LuaEntityPrototype::burner_prototype didn't work for the burner-generator entity type. (https://forums.factorio.com/81281)
+    - Fixed janky construction robot flying animation during repair work. (https://forums.factorio.com/81335)
+  Scripting:
+    - Added optional LuaItemStack::build_blueprint raise_built.
+    - Added LuaInventory::find_empty_stack(), count_empty_stacks(), and get_insertable_count().
+    - Added LuaEntityPrototype::heat_energy_source_prototype, fluid_energy_source_prototype, and void_energy_source_prototype read.
+    - Added LuaGameScript::encode_string() and decode_string().
+    - Added on_player_set_quick_bar_slot.
+    - Added on_pre_player_toggled_map_editor.
+    - Removed LuaPlayer::name write. (https://forums.factorio.com/81372)
+    - Removed core lualib util.encode() and util.decode().
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.6
 Date: 11. 02. 2020

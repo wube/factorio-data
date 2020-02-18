@@ -277,7 +277,7 @@ function make_beam(sound)
       sound =
       {
         filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 1
+        volume = 0.6
       },
       max_sounds_per_type = 4
     }

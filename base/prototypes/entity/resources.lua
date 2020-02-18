@@ -1,6 +1,7 @@
 local noise = require("noise");
 local tne = noise.to_noise_expression;
 resource_autoplace = require("resource-autoplace");
+local sounds = require ("prototypes.entity.demo-sounds");
 
 data:extend(
 {
@@ -34,6 +35,7 @@ data:extend(
         }
       }
     },
+    walking_sound = sounds.mud,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     autoplace = resource_autoplace.resource_autoplace_settings

@@ -329,6 +329,60 @@ data:extend
         }
       }
     }
+  },
+  {
+    type = "explosion",
+    name = "flying-robot-damaged-explosion",
+    flags = {"not-on-map"},
+    subgroup = "hit-effects",
+    icon = "__core__/graphics/icons/mip/trash.png",
+    height = 0.3,
+    icon_size = 32,
+    animations =
+    {
+      util.empty_sprite()
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            particle_name = "spark-particle",
+            tail_length = 10,
+            tail_length_deviation = 5,
+            tail_width = 5,
+            probability = 1,
+            initial_height = 1.5,
+            initial_height_variation = 0.1,
+            initial_vertical_speed = 0.05,
+            initial_vertical_speed_deviation = 0.02,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            offset_deviation = {{-0.05, -0.05},{0.05, 0.05}}
+          },
+          {
+            type = "create-particle",
+            particle_name = "compilatron-chest-metal-particle-small",
+            tail_length = 3,
+            tail_length_deviation = 1,
+            tail_width = 5,
+            probability = 0.5,
+            initial_height = 1.5,
+            initial_height_variation = 0.1,
+            initial_vertical_speed = 0.05,
+            initial_vertical_speed_deviation = 0.02,
+            speed_from_center = 0.02,
+            speed_from_center_deviation = 0.01,
+            offset_deviation = {{-0.05, -0.05},{0.05, 0.05}}
+          }
+        }
+      }
+    }
   }
 }
 
@@ -388,6 +442,17 @@ function hit_effects.rock(offset_deviation, offset)
     offset_deviation = offset_deviation or {{-0.5, -0.5}, {0.5, 0.5}},
     offsets = {offset}
   }
+end
+
+function hit_effects.flying_robot(offset_deviation, offset)
+  local offset = offset or {0, 0}
+  return
+  {
+    type = "create-entity",
+    entity_name = "flying-robot-damaged-explosion",
+    offset_deviation = offset_deviation or {{-0.25, -0.25},{0.25, 0.25}},
+    ofsets = {offset}
+  }  
 end
 
 return hit_effects

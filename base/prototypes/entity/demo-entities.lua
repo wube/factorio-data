@@ -1133,10 +1133,10 @@ data:extend(
           volume = 1.0
         }
       },
-      max_sounds_per_type = 2,
+      --max_sounds_per_type = 3,
       apparent_volume = 1.5,
-      fade_in_ticks = 10,
-      fade_out_ticks = 60
+      fade_in_ticks = 4,
+      fade_out_ticks = 30
     },
     resistances =
     {
@@ -1435,8 +1435,8 @@ data:extend(
         filename = "__base__/sound/boiler.ogg",
         volume = 0.8
       },
-      max_sounds_per_type = 3,
-      fade_in_ticks = 10,
+      --max_sounds_per_type = 3,
+      fade_in_ticks = 4,
       fade_out_ticks = 30,
     },
 
@@ -2280,7 +2280,7 @@ data:extend(
       match_speed_to_activity = true,
       max_sounds_per_type = 3,
       fade_in_ticks = 10,
-      fade_out_ticks = 60
+      fade_out_ticks = 30
     },
     min_perceived_performance = 0.25,
     performance_to_sound_speedup = 0.5,
@@ -2489,7 +2489,7 @@ data:extend(
           volume = 0.3
         }
       },
-      max_sounds_per_type = 5,
+      --max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -2670,7 +2670,7 @@ data:extend(
           volume = 0.4
         }
       },
-      max_sounds_per_type = 5,
+      --max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -2849,7 +2849,7 @@ data:extend(
           volume = 0.3
         }
       },
-      max_sounds_per_type = 7,
+      --max_sounds_per_type = 7,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -3034,7 +3034,7 @@ data:extend(
           volume = 0.3
         }
       },
-      max_sounds_per_type = 5,
+      --max_sounds_per_type = 5,
       audible_distance_modifier = 0.7,
     },
     hand_base_picture =
@@ -3715,7 +3715,7 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
-      max_sounds_per_type = 2,
+      --max_sounds_per_type = 2,
       fade_in_ticks = 10,
       fade_out_ticks = 30
     }
@@ -3831,7 +3831,7 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       --apparent_volume = 1.5,
-      max_sounds_per_type = 3,
+      --max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
@@ -4601,7 +4601,7 @@ data:extend(
     flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
     max_health = 1000000,
-    order = "b-b-a",
+    order = "z-z-z",
     subgroup="enemies",
     has_belt_immunity = true,
     selectable_in_game = true,
@@ -4840,7 +4840,7 @@ data:extend(
         volume = 0.7
       },
       apparent_volume = 1,
-      max_sounds_per_type = 3,
+      --max_sounds_per_type = 3,
       fade_in_ticks = 10,
       fade_out_ticks = 30
     },
@@ -5051,18 +5051,7 @@ data:extend(
     next_upgrade = "fast-splitter",
     speed = 0.03125,
     belt_animation_set = basic_belt_animation_set,
-    working_sound =
-    {
-      sound =
-      {
-        {
-          filename = "__base__/sound/splitters/splitter.ogg",
-          volume = 0.5
-        }
-      },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5,
-    },
+    working_sound = sounds.splitter,
     structure =
     {
       north =
@@ -5880,10 +5869,10 @@ data:extend(
         filename = "__base__/sound/electric-furnace.ogg",
         volume = 0.7
       },
-      max_sounds_per_type = 2,
+      --max_sounds_per_type = 3,
       apparent_volume = 1.5,
-      fade_in_ticks = 10,
-      fade_out_ticks = 60
+      fade_in_ticks = 4,
+      fade_out_ticks = 30
     },
     animation =
     {
@@ -6501,10 +6490,10 @@ data:extend(
           volume = 0.6
         }
       },
-      max_sounds_per_type = 2,
-      apparent_volume = 1.5,
-      fade_in_ticks = 10,
-      fade_out_ticks = 60
+      max_sounds_per_type = 4,
+      --apparent_volume = 1.5,
+      fade_in_ticks = 4,
+      fade_out_ticks = 30
     },
     resistances =
     {

@@ -278,7 +278,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "small-scorchmark",
+            entity_name = "medium-scorchmark",
             check_buildability = true
           },
           {

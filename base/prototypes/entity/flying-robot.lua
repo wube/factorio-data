@@ -77,7 +77,7 @@ robot_animations.logistic_robot =
     width = 41,
     height = 42,
     frame_count = 1,
-    shift = {0.015625, -0.09375},
+    shift = util.by_pixel(0, -3),
     direction_count = 16,
     y = 42,
     hr_version =
@@ -102,7 +102,7 @@ robot_animations.logistic_robot =
     width = 41,
     height = 42,
     frame_count = 1,
-    shift = {0.015625, -0.09375},
+    shift = util.by_pixel(0, -3),
     direction_count = 16,
     hr_version =
     {
@@ -125,7 +125,7 @@ robot_animations.logistic_robot =
     width = 41,
     height = 42,
     frame_count = 1,
-    shift = {0.015625, -0.09375},
+    shift = util.by_pixel(0, -3),
     direction_count = 16,
     y = 126,
     hr_version =
@@ -150,7 +150,7 @@ robot_animations.logistic_robot =
     width = 41,
     height = 42,
     frame_count = 1,
-    shift = {0.015625, -0.09375},
+    shift = util.by_pixel(0, -3),
     direction_count = 16,
     y = 84,
     hr_version =
@@ -172,12 +172,13 @@ robot_animations.logistic_robot =
     filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 59,
-    height = 23,
+    width = 58,
+    height = 29,
     frame_count = 1,
-    shift = {0.96875, 0.609375},
+    shift = util.by_pixel(32, 19.5),
     direction_count = 16,
-    y = 23,
+    y = 29,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
@@ -189,19 +190,21 @@ robot_animations.logistic_robot =
       shift = util.by_pixel(31.75, 19.75),
       direction_count = 16,
       y = 57,
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   shadow_idle_with_cargo =
   {
     filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 59,
-    height = 23,
+    width = 58,
+    height = 29,
     frame_count = 1,
-    shift = {0.96875, 0.609375},
+    shift = util.by_pixel(32, 19.5),
     direction_count = 16,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
@@ -212,20 +215,22 @@ robot_animations.logistic_robot =
       frame_count = 1,
       shift = util.by_pixel(31.75, 19.75),
       direction_count = 16,
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   shadow_in_motion =
   {
     filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 59,
-    height = 23,
+    width = 58,
+    height = 29,
     frame_count = 1,
-    shift = {0.96875, 0.609375},
+    shift = util.by_pixel(32, 19.5),
     direction_count = 16,
-    y = 23,
+    y = 29,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
@@ -236,20 +241,22 @@ robot_animations.logistic_robot =
       frame_count = 1,
       shift = util.by_pixel(31.75, 19.75),
       direction_count = 16,
-      y = 171,
-      scale = 0.5
-    }
+      y = 57*3,
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   shadow_in_motion_with_cargo =
   {
     filename = "__base__/graphics/entity/logistic-robot/logistic-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 59,
-    height = 23,
+    width = 58,
+    height = 29,
     frame_count = 1,
-    shift = {0.96875, 0.609375},
+    shift = util.by_pixel(32, 19.5),
     direction_count = 16,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/logistic-robot/hr-logistic-robot-shadow.png",
@@ -261,8 +268,9 @@ robot_animations.logistic_robot =
       shift = util.by_pixel(31.75, 19.75),
       direction_count = 16,
       y = 114,
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   }
 }
 
@@ -277,7 +285,7 @@ robot_animations.construction_robot =
     width = 32,
     height = 36,
     frame_count = 1,
-    shift = {0, -0.15625},
+    shift = util.by_pixel(0,-4.5),
     direction_count = 16,
     hr_version =
     {
@@ -300,7 +308,7 @@ robot_animations.construction_robot =
     width = 32,
     height = 36,
     frame_count = 1,
-    shift = {0, -0.15625},
+    shift = util.by_pixel(0, -4.5),
     direction_count = 16,
     y = 36,
     hr_version =
@@ -322,11 +330,12 @@ robot_animations.construction_robot =
     filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 50,
-    height = 24,
+    width = 53,
+    height = 25,
     frame_count = 1,
-    shift = {1.09375, 0.59375},
+    shift = util.by_pixel(33.5, 18.5),
     direction_count = 16,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
@@ -337,19 +346,21 @@ robot_animations.construction_robot =
       frame_count = 1,
       shift = util.by_pixel(33.5, 18.75),
       direction_count = 16,
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   shadow_in_motion =
   {
     filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 50,
-    height = 24,
+    width = 53,
+    height = 25,
     frame_count = 1,
-    shift = {1.09375, 0.59375},
+    shift = util.by_pixel(33.5, 18.5),
     direction_count = 16,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
@@ -360,8 +371,9 @@ robot_animations.construction_robot =
       frame_count = 1,
       shift = util.by_pixel(33.5, 18.75),
       direction_count = 16,
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   working =
   {
@@ -371,7 +383,7 @@ robot_animations.construction_robot =
     width = 28,
     height = 36,
     frame_count = 2,
-    shift = {0, -0.15625},
+    shift = util.by_pixel(-0.25, -5),
     direction_count = 16,
     animation_speed = 0.3,
     hr_version =
@@ -393,12 +405,13 @@ robot_animations.construction_robot =
     filename = "__base__/graphics/entity/construction-robot/construction-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 50,
-    height = 24,
+    width = 53,
+    height = 25,
     frame_count = 1,
     repeat_count = 2,
-    shift = {1.09375, 0.59375},
+    shift = util.by_pixel(33.5, 18.5),
     direction_count = 16,
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/construction-robot/hr-construction-robot-shadow.png",
@@ -410,8 +423,9 @@ robot_animations.construction_robot =
       repeat_count = 2,
       shift = util.by_pixel(33.5, 18.75),
       direction_count = 16,
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   }
 }
 
@@ -430,7 +444,7 @@ robot_animations.distractor =
         height = 33,
         frame_count = 1,
         direction_count = 16,
-        shift = {0, -0.078125},
+        shift = util.by_pixel(0, -2.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot.png",
@@ -452,7 +466,7 @@ robot_animations.distractor =
         height = 21,
         frame_count = 1,
         direction_count = 16,
-        shift = {0, -0.203125},
+        shift = util.by_pixel(0, -6.25),
         apply_runtime_tint = true,
         hr_version =
         {
@@ -475,11 +489,12 @@ robot_animations.distractor =
     filename = "__base__/graphics/entity/distractor-robot/distractor-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 40,
-    height = 25,
+    width = 49,
+    height = 30,
     frame_count = 1,
     direction_count = 16,
-    shift = {0.9375, 0.609375},
+    shift = util.by_pixel(32.5, 19),
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
@@ -490,8 +505,9 @@ robot_animations.distractor =
       frame_count = 1,
       direction_count = 16,
       shift = util.by_pixel(32.5, 19.25),
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   in_motion =
   {
@@ -505,7 +521,7 @@ robot_animations.distractor =
         height = 33,
         frame_count = 1,
         direction_count = 16,
-        shift = {0, -0.078125},
+        shift = util.by_pixel(0, -2.5),
         y = 33,
         hr_version =
         {
@@ -529,7 +545,7 @@ robot_animations.distractor =
         height = 21,
         frame_count = 1,
         direction_count = 16,
-        shift = {0, -0.203125},
+        shift = util.by_pixel(0, -6.25),
         apply_runtime_tint = true,
         y = 21,
         hr_version =
@@ -554,11 +570,12 @@ robot_animations.distractor =
     filename = "__base__/graphics/entity/distractor-robot/distractor-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 40,
-    height = 25,
+    width = 49,
+    height = 30,
     frame_count = 1,
     direction_count = 16,
-    shift = {0.9375, 0.609375},
+    shift = util.by_pixel(32.5, 19),
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/distractor-robot/hr-distractor-robot-shadow.png",
@@ -569,8 +586,9 @@ robot_animations.distractor =
       frame_count = 1,
       direction_count = 16,
       shift = util.by_pixel(32.5, 19.25),
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   }
 }
 
@@ -589,7 +607,7 @@ robot_animations.defender =
         height = 33,
         frame_count = 1,
         direction_count = 16,
-        shift = {0, 0.015625},
+        shift = util.by_pixel(0, 0.25),
         hr_version =
         {
           filename = "__base__/graphics/entity/defender-robot/hr-defender-robot.png",
@@ -611,7 +629,7 @@ robot_animations.defender =
         height = 16,
         frame_count = 1,
         direction_count = 16,
-        shift = {0, -0.125},
+        shift = util.by_pixel(0, -4.75),
         apply_runtime_tint = true,
         hr_version =
         {
@@ -634,11 +652,12 @@ robot_animations.defender =
     filename = "__base__/graphics/entity/defender-robot/defender-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 43,
-    height = 23,
+    width = 45,
+    height = 26,
     frame_count = 1,
     direction_count = 16,
-    shift = {0.859375, 0.609375},
+    shift = util.by_pixel(25.5, 19),
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-shadow.png",
@@ -649,8 +668,9 @@ robot_animations.defender =
       frame_count = 1,
       direction_count = 16,
       shift = util.by_pixel(25.5, 19),
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   in_motion =
   {
@@ -663,8 +683,9 @@ robot_animations.defender =
         width = 32,
         height = 33,
         frame_count = 1,
+        animation_speed = 1,
         direction_count = 16,
-        shift = {0, 0.015625},
+        shift = util.by_pixel(0, 0.25),
         y = 33,
         hr_version =
         {
@@ -674,6 +695,7 @@ robot_animations.defender =
           width = 56,
           height = 59,
           frame_count = 1,
+          animation_speed = 1,
           direction_count = 16,
           shift = util.by_pixel(0, 0.25),
           y = 59,
@@ -687,8 +709,9 @@ robot_animations.defender =
         width = 18,
         height = 16,
         frame_count = 1,
+        animation_speed = 1,
         direction_count = 16,
-        shift = {0, -0.125},
+        shift = util.by_pixel(0, -4.75),
         apply_runtime_tint = true,
         y = 16,
         hr_version =
@@ -699,6 +722,7 @@ robot_animations.defender =
           width = 28,
           height = 21,
           frame_count = 1,
+          animation_speed = 1,
           direction_count = 16,
           shift = util.by_pixel(0, -4.75),
           apply_runtime_tint = true,
@@ -713,11 +737,13 @@ robot_animations.defender =
     filename = "__base__/graphics/entity/defender-robot/defender-robot-shadow.png",
     priority = "high",
     line_length = 16,
-    width = 43,
-    height = 23,
+    width = 45,
+    height = 26,
     frame_count = 1,
+    animation_speed = 1,
     direction_count = 16,
-    shift = {0.859375, 0.609375},
+    shift = util.by_pixel(25.5, 19),
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/defender-robot/hr-defender-robot-shadow.png",
@@ -726,10 +752,12 @@ robot_animations.defender =
       width = 88,
       height = 50,
       frame_count = 1,
+      animation_speed = 1,
       direction_count = 16,
       shift = util.by_pixel(25.5, 19),
-      scale = 0.5
-    }
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   }
 }
 
@@ -749,7 +777,7 @@ robot_animations.destroyer =
         y = 39,
         frame_count = 1,
         direction_count = 32,
-        shift = {0.078125, -0.546875},
+        shift = util.by_pixel(2.5, -1.25),
         hr_version =
         {
           filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot.png",
@@ -760,7 +788,7 @@ robot_animations.destroyer =
           y = 77,
           frame_count = 1,
           direction_count = 32,
-          shift = util.by_pixel(2.5, -17.25),
+          shift = util.by_pixel(2.5, -1.25),
           scale = 0.5
         }
       },
@@ -773,7 +801,7 @@ robot_animations.destroyer =
         y = 21,
         frame_count = 1,
         direction_count = 32,
-        shift = {0.078125, -0.734375},
+        shift = util.by_pixel(2.5, -7),
         apply_runtime_tint = true,
         hr_version =
         {
@@ -785,7 +813,7 @@ robot_animations.destroyer =
           y = 42,
           frame_count = 1,
           direction_count = 32,
-          shift = util.by_pixel(2.5, -23),
+          shift = util.by_pixel(2.5, -7),
           apply_runtime_tint = true,
           scale = 0.5
         }
@@ -797,11 +825,12 @@ robot_animations.destroyer =
     filename = "__base__/graphics/entity/destroyer-robot/destroyer-robot-shadow.png",
     priority = "high",
     line_length = 32,
-    width = 48,
-    height = 32,
+    width = 55,
+    height = 34,
     frame_count = 1,
     direction_count = 32,
-    shift = {0.78125, 0},
+    shift = util.by_pixel(23.5, 19),
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-shadow.png",
@@ -811,9 +840,10 @@ robot_animations.destroyer =
       height = 66,
       frame_count = 1,
       direction_count = 32,
-      shift = util.by_pixel(23.5, 1),
-      scale = 0.5
-    }
+      shift = util.by_pixel(23.5, 19),
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   },
   in_motion =
   {
@@ -827,7 +857,7 @@ robot_animations.destroyer =
         height = 39,
         frame_count = 1,
         direction_count = 32,
-        shift = {0.078125, -0.546875},
+        shift = util.by_pixel(2.5, -1.25),
         hr_version =
         {
           filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot.png",
@@ -837,7 +867,7 @@ robot_animations.destroyer =
           height = 77,
           frame_count = 1,
           direction_count = 32,
-          shift = util.by_pixel(2.5, -17.25),
+          shift = util.by_pixel(2.5, -1.25),
           scale = 0.5
         }
       },
@@ -849,7 +879,7 @@ robot_animations.destroyer =
         height = 21,
         frame_count = 1,
         direction_count = 32,
-        shift = {0.078125, -0.734375},
+        shift = util.by_pixel(2.5, -7),
         apply_runtime_tint = true,
         hr_version =
         {
@@ -860,7 +890,7 @@ robot_animations.destroyer =
           height = 42,
           frame_count = 1,
           direction_count = 32,
-          shift = util.by_pixel(2.5, -23),
+          shift = util.by_pixel(2.5, -7),
           apply_runtime_tint = true,
           scale = 0.5
         }
@@ -872,11 +902,12 @@ robot_animations.destroyer =
     filename = "__base__/graphics/entity/destroyer-robot/destroyer-robot-shadow.png",
     priority = "high",
     line_length = 32,
-    width = 48,
-    height = 32,
+    width = 55,
+    height = 34,
     frame_count = 1,
     direction_count = 32,
-    shift = {0.78125, 0},
+    shift = util.by_pixel(23.5, 19),
+    draw_as_shadow = true,
     hr_version =
     {
       filename = "__base__/graphics/entity/destroyer-robot/hr-destroyer-robot-shadow.png",
@@ -886,9 +917,10 @@ robot_animations.destroyer =
       height = 66,
       frame_count = 1,
       direction_count = 32,
-      shift = util.by_pixel(23.5, 1),
-      scale = 0.5
-    }
+      shift = util.by_pixel(23.5, 19),
+      scale = 0.5,
+      draw_as_shadow = true
+    },
   }
 }
 
@@ -901,11 +933,18 @@ local robots =
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 0.1, result = "construction-robot"},
-    resistances = { { type = "fire", percent = 85 } },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 85
+      }
+    },
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
+    damaged_trigger_effect = hit_effects.flying_robot(),
     dying_explosion = "construction-robot-explosion",
     max_payload_size = 1,
     speed = 0.06,
@@ -949,11 +988,18 @@ local robots =
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map"},
     minable = {mining_time = 0.1, result = "logistic-robot"},
-    resistances = { { type = "fire", percent = 85 } },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 85
+      }
+    },
     max_health = 100,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
+    damaged_trigger_effect = hit_effects.flying_robot(),
     dying_explosion = "logistic-robot-explosion",
     max_payload_size = 1,
     speed = 0.05,
@@ -981,14 +1027,26 @@ local robots =
     icon = "__base__/graphics/icons/distractor.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
-    resistances = { { type = "fire", percent = 95 } },
-    order="e-a-b",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 95
+      },
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 85
+      }
+    },
     subgroup="capsule",
+    order="e-a-b",
     max_health = 90,
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
-    selection_box = {{-0.9, -1.5}, {0.9, -0.5}},
-    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
+    hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
+    damaged_trigger_effect = hit_effects.flying_robot(),
     dying_explosion = "distractor-robot-explosion",
     time_to_live = 60 * 45,
     speed = 0,
@@ -1001,14 +1059,6 @@ local robots =
       },
       apparent_volume = 1,
       persistent = true
-    },
-    resistances =
-    {
-      {
-        type = "acid",
-        decrease = 0,
-        percent = 85
-      },
     },
     destroy_action =
     {
@@ -1061,14 +1111,26 @@ local robots =
     icon = "__base__/graphics/icons/defender.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
-    resistances = { { type = "fire", percent = 95 } },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 95
+      },
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 80
+      }
+    },
     subgroup="capsule",
     order="e-a-a",
     max_health = 60,
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    hit_visualization_box = {{-0.1, -1.1}, {0.1, -1.0}},
+    damaged_trigger_effect = hit_effects.flying_robot(),
     dying_explosion = "defender-robot-explosion",
     time_to_live = 60 * 45,
     follows_player = true,
@@ -1084,14 +1146,6 @@ local robots =
       },
       apparent_volume = 1,
       persistent = true
-    },
-    resistances =
-    {
-      {
-        type = "acid",
-        decrease = 0,
-        percent = 80
-      },
     },
     destroy_action =
     {
@@ -1156,14 +1210,26 @@ local robots =
     icon = "__base__/graphics/icons/destroyer.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-player", "player-creation", "placeable-off-grid", "not-on-map", "not-repairable"},
-    resistances = { { type = "fire", percent = 95 } },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 95
+      }, 
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 90
+      }
+    },
     subgroup="capsule",
     order="e-a-c",
     max_health = 60,
     alert_when_damaged = false,
     collision_box = {{0, 0}, {0, 0}},
     selection_box = {{-0.5, -1.5}, {0.5, -0.5}},
-    damaged_trigger_effect = hit_effects.entity(nil, {0, -1}),
+    hit_visualization_box = {{-0.1, -1.4}, {0.1, -1.3}},
+    damaged_trigger_effect = hit_effects.flying_robot(),
     dying_explosion = "destroyer-robot-explosion",
     time_to_live = 60 * 60 * 2,
     speed = 0.01,
@@ -1179,14 +1245,6 @@ local robots =
       },
       apparent_volume = 1,
       persistent = true
-    },
-    resistances =
-    {
-      {
-        type = "acid",
-        decrease = 0,
-        percent = 90
-      },
     },
     destroy_action =
     {
@@ -1235,3 +1293,162 @@ local robots =
 }
 
 data:extend(robots)
+
+local shadow_shift = {-0.75, -0.40}
+local animation_shift = {0, 0}
+
+local adjust_animation = function(animation)
+
+  local animation = util.copy(animation)
+  local layers = animation.layers or {animation}
+
+  for k, layer in pairs (layers) do
+    
+    layer.frame_count = layer.direction_count
+    layer.direction_count = 0
+    layer.animation_speed = 1
+    layer.shift = util.add_shift(layer.shift, animation_shift)
+
+    if layer.hr_version then
+      layer.hr_version.frame_count = layer.hr_version.direction_count
+      layer.hr_version.direction_count = 0
+      layer.hr_version.animation_speed = 1
+      layer.hr_version.shift = util.add_shift(layer.hr_version.shift, animation_shift)
+    end
+
+  end
+
+  return animation
+end
+
+local adjust_shadow = function(shadow_animation)
+
+  local shadow_animation = util.copy(shadow_animation)
+  local layers = shadow_animation.layers or {shadow_animation}
+
+  for k, layer in pairs (layers) do
+
+    layer.frame_count = layer.direction_count
+    layer.direction_count = 0
+    layer.animation_speed = 1
+    layer.shift = util.add_shift(layer.shift, shadow_shift)
+
+    if layer.hr_version then
+      layer.hr_version.frame_count = layer.hr_version.direction_count
+      layer.hr_version.direction_count = 0
+      layer.hr_version.animation_speed = 1
+      layer.hr_version.shift = util.add_shift(layer.hr_version.shift, shadow_shift)
+    end
+
+  end
+
+  return shadow_animation
+end
+
+local reversed = function(animation)
+  local animation = util.copy(animation)
+  local layers = animation.layers or {animation}
+
+  for k, layer in pairs (layers) do
+    layer.run_mode = "backward"
+    if layer.hr_version then
+      layer.hr_version.run_mode = "backward"
+    end
+  end
+
+  return animation
+end
+
+local make_robot_particle = function(prototype)
+
+  local particle_name = prototype.name.."-dying-particle"
+
+  local animation = adjust_animation(prototype.in_motion)
+  local shadow_animation = adjust_shadow(prototype.shadow_in_motion)
+
+  local particle = 
+  {
+    type = "optimized-particle",
+    name = particle_name,
+    pictures = {animation, reversed(animation)},
+    shadows = {shadow_animation, reversed(shadow_animation)},
+    movement_modifier = 0.95,
+    life_time = 1000,
+    regular_trigger_effect_frequency = 2,
+    regular_trigger_effect =
+    {
+      {
+        type = "create-trivial-smoke",
+        smoke_name = "smoke-fast",
+        starting_frame_deviation = 5,
+        probability = 0.5
+      },
+      {
+        type = "create-particle",
+        particle_name = "spark-particle",
+        tail_length = 10,
+        tail_length_deviation = 5,
+        tail_width = 5,
+        probability = 0.2,
+        initial_height = 0.2,
+        initial_height_variation = 0.1,
+        initial_vertical_speed = 0.15,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.1,
+        speed_from_center_deviation = 0.05,
+        offset_deviation = {{-0.25, -0.25},{0.25, 0.25}}
+      }
+    },
+    ended_on_ground_trigger_effect =
+    {
+      type = "create-entity",
+      entity_name = prototype.name.."-remnants",
+      offsets = {{0, 0}}
+    }
+  }
+
+  data:extend{particle}
+
+  prototype.dying_trigger_effect =
+  {
+    {
+      type = "create-particle",
+      particle_name = particle_name,
+      initial_height = 1.8,
+      initial_vertical_speed = 0,
+      frame_speed = 1,
+      frame_speed_deviation = 0.5,
+      speed_from_center = 0,
+      speed_from_center_deviation = 0.2,
+      offset_deviation = {{-0.01, -0.01},{0.01, 0.01}},
+      offsets = {{0, 0.5}}
+    }
+  }
+
+  prototype.destroy_action =
+  {
+    type = "direct",
+    action_delivery =
+    {
+      type = "instant",
+      source_effects = 
+      {
+        type = "create-particle",
+        particle_name = particle_name,
+        initial_height = 1.8,
+        initial_vertical_speed = 0,
+        frame_speed = 0.5,
+        frame_speed_deviation = 0.5,
+        speed_from_center = 0,
+        speed_from_center_deviation = 0.1,
+        offset_deviation = {{-0.01, -0.01},{0.01, 0.01}},
+        offsets = {{0, 0.5}}
+      }
+    }
+  }
+
+end
+
+for k, robot in pairs (robots) do
+  make_robot_particle(robot)
+end

@@ -225,7 +225,9 @@ data:extend(
       {
         {
           filename = "__base__/sound/fight/tank-cannon.ogg",
-          volume = 0.7
+          volume = 0.5,
+          min_speed = 0.98,
+          max_speed = 1.06,
         }
       }
     },

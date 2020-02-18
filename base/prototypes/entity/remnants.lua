@@ -1189,6 +1189,216 @@ data:extend
       },
     })
   },
+  
+  {
+    type = "corpse",
+    name = "logistic-robot-remnants",
+    icon = "__base__/graphics/icons/logistic-robot.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      filename = "__base__/graphics/entity/logistic-robot/remnants/logistic-robot-remnants.png",
+      line_length = 1,
+      width = 58,
+      height = 58,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(1, 1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/logistic-robot/remnants/hr-logistic-robot-remnants.png",
+        line_length = 1,
+        width = 116,
+        height = 114,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(1, 1),
+        scale = 0.5,
+      },
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "construction-robot-remnants",
+    icon = "__base__/graphics/icons/construction-robot.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      filename = "__base__/graphics/entity/construction-robot/remnants/construction-robot-remnants.png",
+      line_length = 1,
+      width = 60,
+      height = 58,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(2, 1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/construction-robot/remnants/hr-construction-robot-remnants.png",
+        line_length = 1,
+        width = 120,
+        height = 114,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(2, 1),
+        scale = 0.5,
+      },
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "defender-remnants",
+    icon = "__base__/graphics/icons/defender.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      filename = "__base__/graphics/entity/defender-robot/remnants/defender-robot-remnants.png",
+      line_length = 1,
+      width = 50,
+      height = 48,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(1, 1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/defender-robot/remnants/hr-defender-robot-remnants.png",
+        line_length = 1,
+        width = 98,
+        height = 94,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(0.5, 0.5),
+        scale = 0.5,
+      },
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "distractor-remnants",
+    icon = "__base__/graphics/icons/distractor.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      filename = "__base__/graphics/entity/distractor-robot/remnants/distractor-robot-remnants.png",
+      line_length = 1,
+      width = 56,
+      height = 56,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(-1, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/distractor-robot/remnants/hr-distractor-robot-remnants.png",
+        line_length = 1,
+        width = 112,
+        height = 110,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(-0.5, 0),
+        scale = 0.5,
+      },
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "destroyer-remnants",
+    icon = "__base__/graphics/icons/destroyer.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      filename = "__base__/graphics/entity/destroyer-robot/remnants/destroyer-robot-remnants.png",
+      line_length = 1,
+      width = 60,
+      height = 56,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(1, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/destroyer-robot/remnants/hr-destroyer-robot-remnants.png",
+        line_length = 1,
+        width = 120,
+        height = 108,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(1.5, -0.5), -- was -0.5
+        scale = 0.5,
+      },
+    })
+  },
 
   {
     type = "corpse",
@@ -2028,7 +2238,7 @@ data:extend
     }
   },
 
-    {
+  {
     type = "corpse",
     name = "artillery-wagon-remnants",
     icon = "__base__/graphics/icons/artillery-wagon.png",
@@ -2067,6 +2277,67 @@ data:extend
         shift = util.by_pixel(1, -0.5),
         scale = 0.5,
       },
+    }
+  },
+  {
+    type = "corpse",
+    name = "medium-scorchmark",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    selection_box = {{-2, -2}, {2, 2}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 10, -- 10 minutes
+    final_render_layer = "ground-patch-higher2",
+    subgroup = "remnants",
+    order="d[remnants]-b[scorchmark]-a[medium]",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = true,
+    ground_patch =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
+        width = 256,
+        height = 176,
+        line_length = 2,
+        shift = util.by_pixel(0, -2),
+        variation_count = 2,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
+          width = 510,
+          height = 352,
+          line_length = 2,
+          shift = util.by_pixel(0, 0),
+          variation_count = 2,
+          scale = 0.5,
+        }
+      }
+    },
+    ground_patch_higher =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
+        width = 68,
+        height = 50,
+        line_length = 2,
+        variation_count = 2,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
+          width = 136,
+          height = 100,
+          line_length = 2,
+          shift = util.by_pixel(0, 0),
+          variation_count = 2,
+          scale = 0.5,
+        }
+      }
     }
   },
 }

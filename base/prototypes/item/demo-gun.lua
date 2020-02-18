@@ -58,7 +58,7 @@ data:extend(
       },
       projectile_creation_distance = 1.125,
       range = 18,
-      sound = sounds.light_gunshot
+      sound = sounds.submachine_gunshot
     },
     stack_size = 5
   },
