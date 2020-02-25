@@ -1485,6 +1485,7 @@ define_tiles
   {
     name = "out-of-map",
     type = "tile",
+    order = "z-a",
     collision_mask =
     {
       "ground-tile",
@@ -1516,6 +1517,7 @@ define_tiles
   {
     name = "deepwater",
     type = "tile",
+    order = "c-b",
     transition_merges_with_tile = "water",
     collision_mask =
     {
@@ -1582,6 +1584,7 @@ define_tiles
   {
     name = "deepwater-green",
     type = "tile",
+    order = "c-d",
     transition_merges_with_tile = "water",
     collision_mask =
     {
@@ -1646,6 +1649,7 @@ define_tiles
   {
     name = "water",
     type = "tile",
+    order = "c-a",
     collision_mask =
     {
       "water-tile",
@@ -1710,6 +1714,7 @@ define_tiles
   {
     name = "water-green",
     type = "tile",
+    order = "c-c",
     transition_merges_with_tile = "water",
     collision_mask =
     {
@@ -1773,6 +1778,7 @@ define_tiles
   {
     name = "water-shallow",
     type = "tile",
+    order = "c-e",
     transition_merges_with_tile = "water",
     collision_mask =
     {
@@ -1899,6 +1905,7 @@ define_tiles
   {
     name = "water-mud",
     type = "tile",
+    order = "c-f",
     transition_merges_with_tile = "water",
     collision_mask =
     {
@@ -2026,6 +2033,7 @@ define_tiles
   {
     name = "grass-1",
     type = "tile",
+    order = "b-a-a",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-1", "grass", {{0, 0.7}, {1, 1}}),
     layer = 26,
@@ -2053,6 +2061,7 @@ define_tiles
   {
     name = "grass-2",
     type = "tile",
+    order = "b-a-b",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-2", "grass", {{0.45, 0.45}, {1, 0.8}}),
     layer = 28,
@@ -2081,6 +2090,7 @@ define_tiles
   {
     name = "grass-3",
     type = "tile",
+    order = "b-a-c",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-3", "grass", {{0, 0.6}, {0.65, 0.9}}),
     layer = 29,
@@ -2108,6 +2118,7 @@ define_tiles
   {
     name = "grass-4",
     type = "tile",
+    order = "b-a-d",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("grass-4", "grass", {{0, 0.5}, {0.55, 0.7}}),
     layer = 30,
@@ -2136,6 +2147,7 @@ define_tiles
   {
     name = "dry-dirt",
     type = "tile",
+    order = "b-b-a",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dry-dirt", "dirt", {{0.45, 0}, {0.55, 0.35}}),
     layer = 18,
@@ -2163,6 +2175,7 @@ define_tiles
   {
     name = "dirt-1",
     type = "tile",
+    order = "b-b-b",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-1", "dirt", {{0, 0.25}, {0.45, 0.3}}, {{0.4, 0}, {0.45, 0.25}}),
     layer = 19,
@@ -2190,6 +2203,7 @@ define_tiles
   {
     name = "dirt-2",
     type = "tile",
+    order = "b-b-c",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-2", "dirt", {{0, 0.3}, {0.45, 0.35}}),
     layer = 20,
@@ -2217,6 +2231,7 @@ define_tiles
   {
     name = "dirt-3",
     type = "tile",
+    order = "b-b-d",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-3", "dirt", {{0, 0.35}, {0.55, 0.4}}),
     layer = 21,
@@ -2244,6 +2259,7 @@ define_tiles
   {
     name = "dirt-4",
     type = "tile",
+    order = "b-b-e",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-4", "dirt", {{0.55, 0}, {0.6, 0.35}}, {{0.6, 0.3}, {1, 0.35}}),
     layer = 22,
@@ -2271,6 +2287,7 @@ define_tiles
   {
     name = "dirt-5",
     type = "tile",
+    order = "b-b-f",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-5", "dirt", {{0, 0.4}, {0.55, 0.45}}),
     layer = 23,
@@ -2298,6 +2315,7 @@ define_tiles
   {
     name = "dirt-6",
     type = "tile",
+    order = "b-b-g",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-6", "dirt", {{0, 0.45}, {0.55, 0.5}}),
     layer = 24,
@@ -2325,6 +2343,7 @@ define_tiles
   {
     name = "dirt-7",
     type = "tile",
+    order = "b-b-h",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("dirt-7", "dirt", {{0, 0.5}, {0.55, 0.55}}),
     layer = 25,
@@ -2352,6 +2371,7 @@ define_tiles
   {
     name = "sand-1",
     type = "tile",
+    order = "b-c-a",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("sand-1", "sand", {{0, 0}, {0.25, 0.15}}, function(prob)
       local beach_peak = beach_influence * noise.min(
@@ -2385,6 +2405,7 @@ define_tiles
   {
     name = "sand-2",
     type = "tile",
+    order = "b-c-b",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("sand-2", "sand", {{0, 0.15}, {0.3, 0.2}}, {{0.25, 0}, {0.3, 0.15}}),
     layer = 9,
@@ -2412,6 +2433,7 @@ define_tiles
   {
     name = "sand-3",
     type = "tile",
+    order = "b-c-c",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("sand-3", "sand", {{0, 0.2}, {0.4, 0.25}}, {{0.3, 0}, {0.4, 0.2}}),
     layer = 10,
@@ -2439,6 +2461,7 @@ define_tiles
   {
     name = "red-desert-0",
     type = "tile",
+    order = "b-d-a",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("red-desert-0", "desert", {{0.55, 0.35}, {1, 0.5}}),
     layer = 31,
@@ -2469,6 +2492,7 @@ define_tiles
   {
     name = "red-desert-1",
     type = "tile",
+    order = "b-d-b",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("red-desert-1", "desert", {{0.6, 0}, {0.7, 0.3}}, {{0.7, 0.25}, {1, 0.3}}),
     layer = 14,
@@ -2497,6 +2521,7 @@ define_tiles
   {
     name = "red-desert-2",
     type = "tile",
+    order = "b-d-c",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("red-desert-2", "desert", {{0.7, 0}, {0.8, 0.25}}, {{0.8, 0.2}, {1, 0.25}}),
     layer = 15,
@@ -2525,6 +2550,7 @@ define_tiles
   {
     name = "red-desert-3",
     type = "tile",
+    order = "b-d-d",
     collision_mask = {"ground-tile"},
     autoplace = autoplace_settings("red-desert-3", "desert", {{0.8, 0}, {1, 0.2}}),
     layer = 16,
@@ -2552,6 +2578,7 @@ define_tiles
   {
     type = "tile",
     name = "stone-path",
+    order = "a-a-a",
     needs_correction = false,
     minable = {mining_time = 0.1, result = "stone-brick"},
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
@@ -2679,6 +2706,7 @@ define_tiles
   {
     type = "tile",
     name = "lab-dark-1",
+    order = "z-b-a",
     collision_mask = {"ground-tile"},
     layer = 70,
     variants =
@@ -2700,6 +2728,7 @@ define_tiles
   {
     type = "tile",
     name = "lab-dark-2",
+    order = "z-b-b",
     collision_mask = {"ground-tile"},
     layer = 70,
     variants =
@@ -2721,6 +2750,7 @@ define_tiles
   {
     type = "tile",
     name = "lab-white",
+    order = "z-b-c",
     collision_mask = {"ground-tile"},
     layer = 70,
     variants =
@@ -2742,8 +2772,9 @@ define_tiles
   {
     type = "tile",
     name = "tutorial-grid",
+    order = "z-c-a",
     collision_mask = {"ground-tile"},
-    layer = 75,
+    layer = 55,
     variants =
     {
       main =
@@ -2845,6 +2876,7 @@ define_tiles
   {
     type = "tile",
     name = "concrete",
+    order = "a-b-a",
     needs_correction = false,
     minable = (not data.is_demo) and {mining_time = 0.1, result = "concrete"} or nil,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
@@ -3015,6 +3047,7 @@ define_tiles
   {
     type = "tile",
     name = "hazard-concrete-left",
+    order = "a-b-b",
     needs_correction = false,
     next_direction = "hazard-concrete-right",
     transition_merges_with_tile = "concrete",
@@ -3126,6 +3159,7 @@ define_tiles
   {
     type = "tile",
     name = "hazard-concrete-right",
+    order = "a-b-c",
     needs_correction = false,
     next_direction = "hazard-concrete-left",
     transition_merges_with_tile = "concrete",
@@ -3207,6 +3241,7 @@ define_tiles
   {
     type = "tile",
     name = "refined-concrete",
+    order = "a-c-a",
     needs_correction = false,
     minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-concrete"} or nil,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
@@ -3378,6 +3413,7 @@ define_tiles
   {
     type = "tile",
     name = "refined-hazard-concrete-left",
+    order = "a-c-b",
     needs_correction = false,
     next_direction = "refined-hazard-concrete-right",
     transition_merges_with_tile = "refined-concrete",
@@ -3489,6 +3525,7 @@ define_tiles
   {
     type = "tile",
     name = "refined-hazard-concrete-right",
+    order = "a-c-c",
     needs_correction = false,
     next_direction = "refined-hazard-concrete-left",
     transition_merges_with_tile = "refined-concrete",
@@ -3569,6 +3606,7 @@ define_tiles
   {
     type = "tile",
     name = "landfill",
+    order = "a-d-a",
     collision_mask = {"ground-tile"},
     layer = 57,
 
@@ -3646,3 +3684,33 @@ data:extend(
     near_zoom = 2
   }
 })
+
+
+--Copied from utility constants, but we don't want all of them, so we comment them out. Also tinting the concrete is a bit different, so we tweak some...
+local colors =
+{
+  { name = "red"    , player_color = { r = 0.815, g = 0.024, b = 0.0  , a = 0.5 }, chat_color = { r = 1.000, g = 0.266, b = 0.241 } },
+  { name = "green"  , player_color = { r = 0.093, g = 0.768, b = 0.172, a = 0.5 }, chat_color = { r = 0.173, g = 0.824, b = 0.250 } },
+  { name = "blue"   , player_color = { r = 0.155, g = 0.540, b = 0.898, a = 0.5 }, chat_color = { r = 0.343, g = 0.683, b = 1.000 } },
+  { name = "orange" , player_color = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 }, chat_color = { r = 1.000, g = 0.630, b = 0.259 } },
+  { name = "yellow" , player_color = { r = 0.835, g = 0.666, b = 0.077, a = 0.5 }, chat_color = { r = 1.000, g = 0.828, b = 0.231 } },
+  { name = "pink"   , player_color = { r = 0.929, g = 0.386, b = 0.514, a = 0.5 }, chat_color = { r = 1.000, g = 0.720, b = 0.833 } },
+  { name = "purple" , player_color = { r = 0.485, g = 0.111, b = 0.659, a = 0.5 }, chat_color = { r = 0.821, g = 0.440, b = 0.998 } },
+  { name = "black"  , player_color = { r = 0.1  , g = 0.1  , b = 0.1,   a = 0.5 }, chat_color = { r = 0.5  , g = 0.5  , b = 0.5   } },
+  { name = "brown"  , player_color = { r = 0.300, g = 0.117, b = 0.0,   a = 0.5 }, chat_color = { r = 0.757, g = 0.522, b = 0.371 } },
+  { name = "cyan"   , player_color = { r = 0.275, g = 0.755, b = 0.712, a = 0.5 }, chat_color = { r = 0.335, g = 0.918, b = 0.866 } },
+  { name = "acid"   , player_color = { r = 0.559, g = 0.761, b = 0.157, a = 0.5 }, chat_color = { r = 0.708, g = 0.996, b = 0.134 } }
+}
+
+local concrete = data.raw.tile["refined-concrete"]
+
+for k, color in pairs (colors) do
+  local new = util.copy(concrete)
+  new.name = color.name.."-"..new.name
+  new.localised_name = {"", {"color."..color.name}, " ", {"tile-name."..concrete.name}}
+  new.tint = color.chat_color
+  new.order = "a-e-"..color.name
+  new.layer = concrete.layer + (k * 3)
+  new.map_color = color.player_color
+  data:extend{new}
+end

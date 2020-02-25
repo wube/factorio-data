@@ -394,14 +394,6 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
-    remove =
-    {
-      filename = "__core__/graphics/remove-icon.png",
-      priority = "medium",
-      width = 64,
-      height = 64,
-      flags = {"icon"}
-    },
     play =
     {
       filename = "__core__/graphics/icons/mip/play.png",

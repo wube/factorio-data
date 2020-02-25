@@ -2704,13 +2704,6 @@ data:extend(
       size = 24
     },
 
-    edit_label_button =
-    {
-      type = "button_style",
-      parent = "slot_button",
-      size = 28
-    },
-
     selected_slot_button =
     {
       type = "button_style",
@@ -3456,6 +3449,13 @@ data:extend(
       type = "frame_style",
       parent = "a_inner_paddingless_frame",
       size = {500, 616},
+    },
+
+    blueprint_settings_frame =
+    {
+      type = "frame_style",
+      parent = "a_inner_frame",
+      width = 472
     },
 
     mods_list_box =
@@ -4939,6 +4939,7 @@ data:extend(
       right_padding = 4,
       left_padding = 4,
       bottom_padding = 1,
+      height = 36,
       -- bottom 4 come from border
       vertically_stretchable = "off"
     },

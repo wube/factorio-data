@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.9
+Version: 0.18.10
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.9
+Date: 25. 02. 2020
+  Features:
+    - Added Rocket rush scenario. (https://factorio.com/blog/post/fff-335)
+  Changes:
+    - Changed Team production team joining system and cleaned up the map sets.
+    - Changed Wave defense bounty system and refactored unit spawning logic.
+    - Changed fire sticker to deal damage only once per 10 ticks.
+  Graphics:
+    - Added big scorch mark which is now used by atomic rocket and nuclear reactor meltdown.
+  Bugfixes:
+    - Fixed that fluid energy source effectivity was not shown in the tooltip. (https://forums.factorio.com/77819)
+    - Fixed that the default column ordering in the update-mods GUI didn't match the visual ordering. (https://forums.factorio.com/80487)
+    - Fixed that train could accelerate for one tick into wrong direction when train stop is disabled. (https://forums.factorio.com/81436)
+    - Fixed that minimap would not allow setting temporary train stop when train would have to change movement direction. (https://forums.factorio.com/77718)
+    - Fixed damage value in sticker tooltip was 60 times too small.
+    - Fixed icons with overlays were drawn incorrectly when used in rich text. (https://forums.factorio.com/76913)
+    - Fixed PvP error when DEFCON was active alongside normal labs. (https://forums.factorio.com/81506)
+    - Fixed that modded recipes with no products or no ingredients still showed those sections in the recipe tooltip. (https://forums.factorio.com/81524)
+    - Fixed that modded burner generator equipment didn't show pollution in the tooltip. (https://forums.factorio.com/81557)
+    - Fixed teleporting or changing the force of an entity with a control behavior that was connected to the logistic network. (https://forums.factorio.com/81490)
+    - Reverted optimisation that caused inserters picking up items from belts to be slower.
+  Modding:
+    - Added support to filter on-damaged trigger effects through the trigger prototype definition.
+    - Added secondary_draw_order property to simple-entity prototypes.
+    - Added StickerPrototype::damage_interval, defaults to 1.
+  Gui:
+    - Updated the window of creating/editing blueprint.
+  Scripting:
+    - Added LuaTile::surface read.
+    - Added event filtering support to on_sector_scanned and on_entity_cloned.
+    - Added "original-damage-amount", "final-damage-amount" and "damage-type" filters to the on_entity_damaged event filters.
+    - Added LuaGameScript::is_valid_sprite_path().
+    - Removed the required argument from LuaEnity::to_be_deconstructed() because it did nothing.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.8
 Date: 18. 02. 2020

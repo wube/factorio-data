@@ -9394,7 +9394,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "medium-scorchmark",
+            entity_name = "big-scorchmark",
             check_buildability = true
           },
           {

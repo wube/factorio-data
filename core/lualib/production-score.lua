@@ -93,30 +93,42 @@ local function get_product_list()
   return product_list
 end
 
+local default_seed_prices = function()
+  return
+  {
+    ["iron-ore"] = 3.1,
+    ["copper-ore"] = 3.6,
+    ["coal"] = 3,
+    ["stone"] = 2.4,
+    ["crude-oil"] = 0.2,
+    ["water"] = 1/1000,
+    ["steam"] = 1/1000,
+    ["wood"] = 3.2,
+    ["raw-fish"] = 100,
+    ["energy"] = 1,
+    ["uranium-ore"] = 8.2
+  }
+end
+
+local default_ingredient_exponent = function() return 1.025 end
+local default_raw_resource_price = function() return 2.5 end
+local default_resource_ignore = function() return {} end
+
 local default_param = function()
   return
   {
     ingredient_exponent = 1.025, --[[The exponent for increase in value for each additional ingredient formula exponent^#ingredients-2]]
     raw_resource_price = 2.5, --[[If a raw resource isn't given a price, it uses this price]]
-    seed_prices =
-    {
-      ["iron-ore"] = 3.1,
-      ["copper-ore"] = 3.6,
-      ["coal"] = 3,
-      ["stone"] = 2.4,
-      ["crude-oil"] = 0.2,
-      ["water"] = 1/1000,
-      ["steam"] = 1/1000,
-      ["wood"] = 3.2,
-      ["raw-fish"] = 100,
-      ["energy"] = 1,
-      ["uranium-ore"] = 8.2
-    },
     resource_ignore = {} --[[This is used to account for mods removing resource generation, in which case we want the item price to be calculated from recipes.]]
   }
 end
 
-function deduce_nil_prices(price_list, param)
+
+local ingredient_multiplier = function(recipe, param)
+  return (param.ingredient_exponent or 1) ^ (table_size(recipe) - 2)
+end
+
+local deduce_nil_prices = function(price_list, param)
   local nil_prices = {}
   for name, item in pairs (game.item_prototypes) do
     if not price_list[name] then
@@ -170,7 +182,7 @@ function deduce_nil_prices(price_list, param)
         if not product_value then
           break
         end
-        local reverse_price = (product_value - energy_addition(recipe, product_value)) / ingredient_multiplier(recipe.ingredients, param) -- Not perfect, but close enough
+        local reverse_price = (product_value - param.energy_addition(recipe, product_value)) / ingredient_multiplier(recipe.ingredients, param) -- Not perfect, but close enough
         local this_cost = (reverse_price - ingredient_value) / ingredient_amount
         if recipe_cost then
           recipe_cost = math.min(recipe_cost, this_cost)
@@ -178,34 +190,41 @@ function deduce_nil_prices(price_list, param)
           recipe_cost = this_cost
         end
       end
-      price_list[name] = recipe_cost
+      if recipe_cost then
+        price_list[name] = param.round(recipe_cost)
+      end
     end
   end
 end
 
-function ingredient_multiplier(recipe, param)
-  return (param.ingredient_exponent or 1) ^ (table_size(recipe) - 2)
-end
-
 local ln = math.log
-function energy_addition(recipe, cost)
+local default_energy_addition = function(recipe, cost)
   return ((ln(recipe.energy + 1) * (cost ^ 0.5)))
 end
 
-production_score = {}
-
-production_score.get_default_param = function()
-return default_param()
+local default_rounding = function(number)
+  return number
 end
 
+local production_score = {}
+
 production_score.generate_price_list = function(param)
-  local param = param or default_param()
-  local price_list = param.seed_prices or {}
+
+  local param = param or {}
+  local price_list = param.seed_prices or default_seed_prices()
+
+  param.ingredient_exponent = param.ingredient_exponent or default_ingredient_exponent()
+  param.raw_resource_price = param.raw_resource_price or default_raw_resource_price()
+  param.resource_ignore = param.resource_ignore or default_resource_ignore()
+  param.round = param.round or default_rounding
+  param.energy_addition = param.energy_addition or default_energy_addition
+  param.normalise = param.normalise or function(number) return number end
 
   local resource_list = get_raw_resources()
+
   for name, k in pairs (resource_list) do
     if not price_list[name] then
-      price_list[name] = param.raw_resource_price
+      price_list[name] = param.round(param.raw_resource_price)
     end
   end
 
@@ -243,7 +262,7 @@ production_score.generate_price_list = function(param)
         end
       end
       if this_recipe_cost > 0 then
-        this_recipe_cost = (this_recipe_cost * ingredient_multiplier(recipe, param)) + energy_addition(recipe, this_recipe_cost)
+        this_recipe_cost = (this_recipe_cost * ingredient_multiplier(recipe, param)) + param.energy_addition(recipe, this_recipe_cost)
         if recipe_cost then
           recipe_cost = math.min(recipe_cost, this_recipe_cost)
         else
@@ -252,7 +271,7 @@ production_score.generate_price_list = function(param)
       end
     end
     if recipe_cost then
-      price = recipe_cost
+      price = param.round(recipe_cost)
       price_list[name] = price
       return price
     end
@@ -277,6 +296,11 @@ production_score.generate_price_list = function(param)
     get_price_recursive(name, current_loop, true)
   end
   deduce_nil_prices(price_list, param)
+
+  for k, price in pairs (price_list) do
+    price_list[k] = param.normalise(price)
+  end
+
   return price_list
 end
 

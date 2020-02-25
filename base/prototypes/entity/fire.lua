@@ -1674,8 +1674,9 @@ data:extend(
     },
 
     duration_in_ticks = 30 * 60,
+    damage_interval = 10,
     target_movement_modifier = 0.8,
-    damage_per_tick = { amount = 100 / 60, type = "fire" },
+    damage_per_tick = { amount = 10 * 100 / 60, type = "fire" },
     spread_fire_entity = "fire-flame-on-tree",
     fire_spread_cooldown = 30,
     fire_spread_radius = 0.75
@@ -1840,7 +1841,8 @@ data:extend(
           {
             {
               type = "create-sticker",
-              sticker = "fire-sticker"
+              sticker = "fire-sticker",
+              show_in_tooltip = true
             },
             {
               type = "damage",

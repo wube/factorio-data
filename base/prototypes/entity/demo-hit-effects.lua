@@ -395,7 +395,8 @@ function hit_effects.entity(offset_deviation, offset)
     type = "create-entity",
     entity_name = "spark-explosion",
     offset_deviation = offset_deviation or {{-0.5, -0.5}, {0.5, 0.5}},
-    offsets = {offset}
+    offsets = {offset},
+    damage_type_filters = "fire"
   }
 end
 
@@ -407,7 +408,8 @@ function hit_effects.entity_higher(offset_deviation, offset)
     type = "create-entity",
     entity_name = "spark-explosion-higher",
     offset_deviation = offset_deviation or {{-0.5, -0.5}, {0.5, 0.5}},
-    offsets = {offset}
+    offsets = {offset},
+    damage_type_filters = "fire"
   }
 end
 
@@ -418,7 +420,8 @@ function hit_effects.wall(offset_deviation, offset)
     type = "create-entity",
     entity_name = "wall-damaged-explosion",
     offset_deviation = offset_deviation or {{-0.5, -0.5}, {0.5, 0.5}},
-    offsets = {offset}
+    offsets = {offset},
+    damage_type_filters = "fire"
   }
 end
 
@@ -429,7 +432,8 @@ function hit_effects.biter(offset_deviation, offset)
     type = "create-entity",
     entity_name = "enemy-damaged-explosion",
     offset_deviation = offset_deviation or {{-0.5, -0.5}, {0.5, 0.5}},
-    offsets = {offset}
+    offsets = {offset},
+    damage_type_filters = "fire"
   }
 end
 
@@ -440,7 +444,8 @@ function hit_effects.rock(offset_deviation, offset)
     type = "create-entity",
     entity_name = "rock-damaged-explosion",
     offset_deviation = offset_deviation or {{-0.5, -0.5}, {0.5, 0.5}},
-    offsets = {offset}
+    offsets = {offset},
+    damage_type_filters = "fire"
   }
 end
 
@@ -451,8 +456,9 @@ function hit_effects.flying_robot(offset_deviation, offset)
     type = "create-entity",
     entity_name = "flying-robot-damaged-explosion",
     offset_deviation = offset_deviation or {{-0.25, -0.25},{0.25, 0.25}},
-    ofsets = {offset}
-  }  
+    ofsets = {offset},
+    damage_type_filters = "fire"
+  }
 end
 
 return hit_effects

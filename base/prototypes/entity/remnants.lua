@@ -2340,4 +2340,65 @@ data:extend
       }
     }
   },
+  {
+    type = "corpse",
+    name = "big-scorchmark",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
+    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    selection_box = {{-4, -4}, {4, 4}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 10, -- 10 minutes
+    final_render_layer = "ground-patch-higher2",
+    subgroup = "remnants",
+    order="d[remnants]-b[scorchmark]-a[big]",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = true,
+    ground_patch =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+        width = 480,
+        height = 352,
+        line_length = 1,
+        shift = util.by_pixel(0, 0),
+        variation_count = 1,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
+          width = 960,
+          height = 704,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          variation_count = 1,
+          scale = 0.5,
+        }
+      }
+    },
+    ground_patch_higher =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
+        width = 138,
+        height = 96,
+        line_length = 1,
+        variation_count = 1,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
+          width = 274,
+          height = 194,
+          line_length = 1,
+          shift = util.by_pixel(0, 0),
+          variation_count = 1,
+          scale = 0.5,
+        }
+      }
+    }
+  },
 }
