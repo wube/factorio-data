@@ -366,43 +366,43 @@ sounds.express_splitter =
   audible_distance_modifier = 0.5
 }
 
-sounds.car_stone_impact = 
+sounds.car_stone_impact =
 {
-  { 
+  {
     filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-stone-impact-2.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-stone-impact-3.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-stone-impact-4.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-stone-impact-5.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-stone-impact-6.ogg", volume = 0.5
   },
 }
 
 sounds.car_wood_impact =
 {
-  { 
+  {
     filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5
   },
-  { 
+  {
     filename = "__base__/sound/car-wood-impact-05.ogg", volume = 0.5
   },
 }
@@ -431,32 +431,32 @@ sounds.flying_robot = function(volume)
   {
     sound =
     {
-      { 
-        filename = "__base__/sound/flying-robot-1.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-1.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-2.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-2.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-3.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-3.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-4.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-4.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-5.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-5.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-6.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-6.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-7.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-7.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-8.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-8.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/flying-robot-9.ogg", volume = volume 
+      {
+        filename = "__base__/sound/flying-robot-9.ogg", volume = volume
       }
     },
     max_sounds_per_type = 5,
@@ -470,32 +470,32 @@ sounds.construction_robot = function(volume)
   {
     sound =
     {
-      { 
-        filename = "__base__/sound/construction-robot-1.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-1.ogg", volume = volume
       },
-      { 
+      {
         filename = "__base__/sound/construction-robot-2.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-3.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-3.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-4.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-4.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-5.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-5.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-6.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-6.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-7.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-7.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-8.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-8.ogg", volume = volume
       },
-      { 
-        filename = "__base__/sound/construction-robot-9.ogg", volume = volume 
+      {
+        filename = "__base__/sound/construction-robot-9.ogg", volume = volume
       }
     },
     max_sounds_per_type = 1,
@@ -612,7 +612,7 @@ sounds.gun_turret_gunshot =
   }
 }
 
-sounds.light_gunshot = 
+sounds.light_gunshot =
 {
   {
     filename = "__base__/sound/fight/light-gunshot-1.ogg",
@@ -628,7 +628,7 @@ sounds.light_gunshot =
   }
 }
 
-sounds.submachine_gunshot = 
+sounds.submachine_gunshot =
 {
   {
     filename = "__base__/sound/fight/submachine-gunshot-1.ogg",
@@ -678,7 +678,6 @@ sounds.small_explosion = function(volume)
     aggregation =
     {
       max_count = 1,
-      max_sounds_per_type = 2,
       remove = true
     },
     variations =
@@ -713,7 +712,6 @@ sounds.robot_explosion = function(volume)
     aggregation =
     {
       max_count = 1,
-      max_sounds_per_type = 2,
       remove = true
     },
     variations =
@@ -923,7 +921,6 @@ sounds.biter_calls = function(volume)
       },
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_per_type = 2,
     --audible_distance_modifier = 0.9,
   }
 end
@@ -959,7 +956,6 @@ sounds.biter_calls_big = function(volume)
       },
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_per_type = 2,
   }
 end
 
@@ -1210,7 +1206,6 @@ sounds.spitter_calls = function(volume)
       }
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_per_type = 2,
     --audible_distance_modifier = 0.9,
   }
 end
@@ -1298,7 +1293,6 @@ sounds.spitter_calls_big = function(volume)
       },
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_per_type = 2,
     --audible_distance_modifier = 0.9,
   }
 end

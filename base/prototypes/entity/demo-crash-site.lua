@@ -915,24 +915,7 @@ data:extend(
         },
       }
     },
-    vehicle_impact_sound = sounds.generic_impact,
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/accumulator-working.ogg",
-        volume = 1
-      },
-      idle_sound =
-      {
-        filename = "__base__/sound/electric-energy.ogg",
-        volume = 0.3
-      },
-      audible_distance_modifier = 0.5,
-      max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
-    }
+    vehicle_impact_sound = sounds.generic_impact
   },
 
   {

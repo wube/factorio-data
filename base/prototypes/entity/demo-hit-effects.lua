@@ -358,7 +358,6 @@ data:extend
             tail_width = 5,
             probability = 1,
             initial_height = 1.5,
-            initial_height_variation = 0.1,
             initial_vertical_speed = 0.05,
             initial_vertical_speed_deviation = 0.02,
             speed_from_center = 0.05,
@@ -373,7 +372,6 @@ data:extend
             tail_width = 5,
             probability = 0.5,
             initial_height = 1.5,
-            initial_height_variation = 0.1,
             initial_vertical_speed = 0.05,
             initial_vertical_speed_deviation = 0.02,
             speed_from_center = 0.02,
@@ -456,7 +454,7 @@ function hit_effects.flying_robot(offset_deviation, offset)
     type = "create-entity",
     entity_name = "flying-robot-damaged-explosion",
     offset_deviation = offset_deviation or {{-0.25, -0.25},{0.25, 0.25}},
-    ofsets = {offset},
+    offsets = {offset},
     damage_type_filters = "fire"
   }
 end

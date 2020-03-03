@@ -974,8 +974,7 @@ data:extend(
               type = "create-smoke",
               show_in_tooltip = true,
               entity_name = "poison-cloud",
-              initial_height = 0,
-              initial_vertical_speed = 0,
+              initial_height = 0
             },
             {
               type = "create-particle",
@@ -1015,7 +1014,7 @@ data:extend(
         priority = "high",
         scale = 0.5
       }
-      
+
     },
     shadow =
     {
@@ -1042,7 +1041,7 @@ data:extend(
         scale = 0.5
       }
     },
-    smoke = 
+    smoke =
     {
       {
         name = "poison-capsule-smoke",

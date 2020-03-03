@@ -32,24 +32,28 @@ end
 local function get_product_list()
   local product_list = {}
   local recipes = game.recipe_prototypes
+
   for recipe_name, recipe_prototype in pairs (recipes) do
-    local ingredients = recipe_prototype.ingredients
-    local products = recipe_prototype.products
-    for k, product in pairs (products) do
-      if not product_list[product.name] then
-        product_list[product.name] = {}
-      end
-      local recipe_ingredients = {}
-      local product_amount = util.product_amount(product)
-      if product_amount > 0 then
-        for j, ingredient in pairs (ingredients) do
-          recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
+    if recipe_prototype.allow_decomposition then
+      local ingredients = recipe_prototype.ingredients
+      local products = recipe_prototype.products
+      for k, product in pairs (products) do
+        if not product_list[product.name] then
+          product_list[product.name] = {}
         end
-        recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
-        table.insert(product_list[product.name], recipe_ingredients)
+        local recipe_ingredients = {}
+        local product_amount = util.product_amount(product)
+        if product_amount > 0 then
+          for j, ingredient in pairs (ingredients) do
+            recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
+          end
+          recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
+          table.insert(product_list[product.name], recipe_ingredients)
+        end
       end
     end
   end
+
   local items = game.item_prototypes
   local entities = game.entity_prototypes
   --[[Now we do some tricky stuff for space science type items]]

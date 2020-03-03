@@ -4221,6 +4221,7 @@ data:extend(
     crash_trigger = crash_trigger(),
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    rotating_sound = { sound = { filename = "__base__/sound/fight/artillery-rotation-loop.ogg", volume = 0.6 }},
     sound_minimum_speed = 0.1;
     vehicle_impact_sound = sounds.generic_impact,
     water_reflection =
@@ -7350,7 +7351,6 @@ data:extend(
     wave_distance = { 0.3, 0.2 },
     spread_duration_variation = 20;
     particle_duration_variation = 60 * 3;
-    experiment_radius = 11;
     render_layer = "object",
 
     affected_by_wind = false,
@@ -7388,8 +7388,7 @@ data:extend(
             type = "create-smoke",
             show_in_tooltip = false,
             entity_name = "poison-cloud-visual-dummy",
-            initial_height = 0,
-            initial_vertical_speed = 0,
+            initial_height = 0
           }
         }
       },
@@ -7406,8 +7405,7 @@ data:extend(
             type = "create-smoke",
             show_in_tooltip = false,
             entity_name = "poison-cloud-visual-dummy",
-            initial_height = 0,
-            initial_vertical_speed = 0,
+            initial_height = 0
           }
         }
       }
@@ -7455,7 +7453,6 @@ data:extend(
     name = "poison-cloud-visual-dummy",
     flags = {"not-on-map"},
     show_when_smoke_off = true,
-    experiment_radius = 2,
     particle_count = 24,
     particle_spread = { 3.6 * 1.05, 3.6 * 0.6 * 1.05 },
     particle_distance_scale_factor = 0.5,
@@ -9021,18 +9018,7 @@ data:extend(
     energy_usage = "0kW",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
     picture = accumulator_picture( {r=1, g=0.8, b=1, a=1} ),
-    vehicle_impact_sound = sounds.generic_impact,
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/electric-energy.ogg",
-        volume = 0.7
-      },
-      max_sounds_per_type = 3,
-      fade_in_ticks = 16,
-      fade_out_ticks = 30
-    }
+    vehicle_impact_sound = sounds.generic_impact
   },
   {
     type = "electric-energy-interface",

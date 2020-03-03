@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.10
+Version: 0.18.11
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.10
+Date: 03. 03. 2020
+  Graphics:
+    - New offshore pump graphics.
+  Changes:
+    - Removed the sound effect from the console-only electric-energy-interface.
+    - Item localised name takes priority over place-result localised name when showing item's tooltip. (https://forums.factorio.com/81736)
+    - Offshore pump is now buildable on ground tile adjacent to water instead of water tile adjacent to ground.
+  Bugfixes:
+    - Fixed that the map generator GUI didn't reset to the correct defaults when changing presets. (https://forums.factorio.com/81535)
+    - Fixed blueprint window sizing for wide blueprints.
+    - Fixed some cases of not considering dark background icon when drawing alt mode overlay. (https://forums.factorio.com/81620)
+    - Fixed that burner generator idle_animation and animation could have different frame counts.
+    - Fixed icons with overlays were drawn incorrectly when used in sprite widget. (https://forums.factorio.com/81756)
+    - Fixed crash when loading map after removing fluid recipes with indexes. (https://forums.factorio.com/81020)
+    - Fixed spitters would not break from attacking an obstacle when the obstacle moved away. (https://forums.factorio.com/81603)
+  Modding:
+    - Added Instrument Mode to support mod development tools.
+    - Added optional burner generator prototype properties always_draw_idle_animation, performance_to_sound_speedup and min_perceived_performance.
+    - Added optional offshore pump prototype properties min_perceived_performance, adjacent_tile_collision_box, adjacent_tile_collision_mask and center_collision_mask.
+    - Changed offshore pump graphics definition. Old definition will still be accepted, but is deprecated.
+  Scripting:
+    - Added optional parameters daytime and water_tick to LuaGameScript::take_screenshot() function.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.9
 Date: 25. 02. 2020

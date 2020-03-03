@@ -3,7 +3,7 @@ local sounds = require("prototypes.entity.demo-sounds")
 
 local robot_animations = {}
 
-robot_animations.sparks = 
+robot_animations.sparks =
 {
   {
     filename = "__base__/graphics/entity/sparks/sparks-01.png",
@@ -274,9 +274,9 @@ robot_animations.logistic_robot =
   }
 }
 
-robot_animations.construction_robot = 
+robot_animations.construction_robot =
 {
-  
+
   idle =
   {
     filename = "__base__/graphics/entity/construction-robot/construction-robot.png",
@@ -431,7 +431,7 @@ robot_animations.construction_robot =
 
 robot_animations.distractor =
 {
-  
+
   idle =
   {
     layers =
@@ -594,7 +594,7 @@ robot_animations.distractor =
 
 robot_animations.defender =
 {
-  
+
   idle =
   {
     layers =
@@ -763,7 +763,7 @@ robot_animations.defender =
 
 robot_animations.destroyer =
 {
-  
+
   idle =
   {
     layers =
@@ -925,7 +925,7 @@ robot_animations.destroyer =
 }
 
 local robots =
-{  
+{
   {
     type = "construction-robot",
     name = "construction-robot",
@@ -1215,7 +1215,7 @@ local robots =
       {
         type = "fire",
         percent = 95
-      }, 
+      },
       {
         type = "acid",
         decrease = 0,
@@ -1303,7 +1303,7 @@ local adjust_animation = function(animation)
   local layers = animation.layers or {animation}
 
   for k, layer in pairs (layers) do
-    
+
     layer.frame_count = layer.direction_count
     layer.direction_count = 0
     layer.animation_speed = 1
@@ -1366,7 +1366,7 @@ local make_robot_particle = function(prototype)
   local animation = adjust_animation(prototype.in_motion)
   local shadow_animation = adjust_shadow(prototype.shadow_in_motion)
 
-  local particle = 
+  local particle =
   {
     type = "optimized-particle",
     name = particle_name,
@@ -1391,7 +1391,6 @@ local make_robot_particle = function(prototype)
         tail_width = 5,
         probability = 0.2,
         initial_height = 0.2,
-        initial_height_variation = 0.1,
         initial_vertical_speed = 0.15,
         initial_vertical_speed_deviation = 0.05,
         speed_from_center = 0.1,
@@ -1425,13 +1424,15 @@ local make_robot_particle = function(prototype)
     }
   }
 
+  if prototype.type == "construction-robot" or prototype.type == "logistic-robot" then return end
+
   prototype.destroy_action =
   {
     type = "direct",
     action_delivery =
     {
       type = "instant",
-      source_effects = 
+      source_effects =
       {
         type = "create-particle",
         particle_name = particle_name,

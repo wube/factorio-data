@@ -606,10 +606,10 @@ circuit_connector_definitions["offshore-pump"] = circuit_connector_definitions.c
 (
   universal_connector_template,
   {
-    { variation = 8, main_offset = util.by_pixel(-10, -9.5), shadow_offset = util.by_pixel(81, 6), show_shadow = false },
-    { variation = 10, main_offset = util.by_pixel(-5, -7.5), shadow_offset = util.by_pixel(38.5, 33.5), show_shadow = false },
-    { variation = 12, main_offset = util.by_pixel(11.5, -7), shadow_offset = util.by_pixel(56.5, 15.5), show_shadow = false },
-    { variation = 18, main_offset = util.by_pixel(3, -0.5), shadow_offset = util.by_pixel(48.5, 19), show_shadow = false }
+    { variation = 24, main_offset = util.by_pixel(-16, -8.5), shadow_offset = util.by_pixel(0-2, -0.5), show_shadow = false },
+    { variation = 26, main_offset = util.by_pixel(-7, 4.5), shadow_offset = util.by_pixel(-5, 14.5), show_shadow = true },
+    { variation = 24-8, main_offset = util.by_pixel(-13.5, -5.5), shadow_offset = util.by_pixel(-11.5, 9), show_shadow = false },
+    { variation = 26, main_offset = util.by_pixel(5.5, 4.5), shadow_offset = util.by_pixel(-15, -12.5), show_shadow = true }
   }
 )
 
