@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.11
+Version: 0.18.12
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.11
+Date: 10. 03. 2020
+  Graphics:
+    - Fixed player character shadow didn't animate in idle state when not facing north.
+  Bugfixes:
+    - Fixed that LuaEntity::splitter_filter would reject a LuaItemPrototype. (https://forums.factorio.com/81811)
+    - Fixed smart entity collision mode in tile editor did not work with offshore pump. (https://forums.factorio.com/81933)
+    - Fixed that modded shortcuts that spawned items not visible in the blueprint library didn't work. (https://forums.factorio.com/81940)
+    - Fixed that technology tooltips didn't show debug tooltip data the same as other tooltips. (https://forums.factorio.com/81762)
+    - Fixed that crafting machines would report as supporting backer names through the Lua API. (https://forums.factorio.com/81786)
+    - Fixed that un-researched recipes couldn't be used while in the map editor. (https://forums.factorio.com/82082)
+    - Fixed that the removed-content GUI didn't include some translations. (https://forums.factorio.com/82101)
+    - Fixed a desync related to invalid rail signal requested to be closed by circuit network. (https://forums.factorio.com/82085)
+  Modding:
+    - Added InserterPrototype::chases_belt_items. (https://forums.factorio.com/61354)
+  Scripting:
+    - Added LuaEntityPrototype::inserter_chases_belt_items read.
+    - Added surface to the selected-area events.
+    - Changed LuaSurface::spill_item_stack() to return the created entities if any.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.10
 Date: 03. 03. 2020

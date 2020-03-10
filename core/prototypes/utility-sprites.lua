@@ -54,6 +54,21 @@ local function make_default_modifier_icon()
   }
 end
 
+local function make_side_menu_button(row, hover)
+  local side_menu_icon_size = 64
+  local hover_x_offset = 64 + 32
+  return
+  {
+    filename = "__core__/graphics/side-menu-buttons.png",
+    priority = "high",
+    size = side_menu_icon_size,
+    mipmap_count = 2,
+    x = hover and hover_x_offset or 0,
+    y = row * side_menu_icon_size,
+    flags = {"icon"}
+  }
+end
+
 data:extend(
 {
   {
@@ -1544,135 +1559,25 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
-    side_menu_menu_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      y = data.is_demo and 384 or 0,
-      flags = {"icon"}
-    },
-    side_menu_production_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      y = 64,
-      flags = {"icon"}
-    },
-    side_menu_bonus_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      y = 128,
-      flags = {"icon"}
-    },
-    side_menu_map_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      y = data.is_demo and 448 or 192,
-      flags = {"icon"}
-    },
-    side_menu_tutorials_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      y = 192,
-      flags = {"icon"}
-    },
-    side_menu_train_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      y = 256,
-      flags = {"icon"}
-    },
-    side_menu_achievements_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 0,
-      y = 320,
-      flags = {"icon"}
-    },
-    side_menu_menu_hover_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 64,
-      y = data.is_demo and 384 or 0,
-      flags = {"icon"}
-    },
-    side_menu_production_hover_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 64,
-      y = 64,
-      flags = {"icon"}
-    },
-    side_menu_bonus_hover_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 64,
-      y = 128,
-      flags = {"icon"}
-    },
-    side_menu_map_hover_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 64,
-      y = data.is_demo and 448 or 192,
-      flags = {"icon"}
-    },
-    side_menu_train_hover_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 64,
-      y = 256,
-      flags = {"icon"}
-    },
-    side_menu_achievements_hover_icon =
-    {
-      filename = "__core__/graphics/side-menu-icons.png",
-      priority = "high",
-      width = 64,
-      height = 64,
-      x = 64,
-      y = 320,
-      flags = {"icon"}
-    },
+
+    side_menu_blueprint_library_icon =  make_side_menu_button(0, false),
+    side_menu_production_icon =   make_side_menu_button(1, false),
+    side_menu_bonus_icon =        make_side_menu_button(2, false),
+    side_menu_tutorials_icon =    make_side_menu_button(3, false),
+    side_menu_train_icon =        make_side_menu_button(4, false),
+    side_menu_achievements_icon = make_side_menu_button(5, false),
+    side_menu_menu_icon =         make_side_menu_button(6, false), -- for demo
+    side_menu_map_icon =          make_side_menu_button(7, false), -- for demo
+
+    side_menu_blueprint_library_hover_icon =  make_side_menu_button(0, true),
+    side_menu_production_hover_icon =   make_side_menu_button(1, true),
+    side_menu_bonus_hover_icon =        make_side_menu_button(2, true),
+    side_menu_tutorials_hover_icon =    make_side_menu_button(3, true),
+    side_menu_train_hover_icon =        make_side_menu_button(4, true),
+    side_menu_achievements_hover_icon = make_side_menu_button(5, true),
+    side_menu_menu_hover_icon =         make_side_menu_button(6, true), -- for demo
+    side_menu_map_hover_icon =          make_side_menu_button(7, true), -- for demo
+
     circuit_network_panel =
     {
       filename = "__core__/graphics/circuit-network-panel.png",

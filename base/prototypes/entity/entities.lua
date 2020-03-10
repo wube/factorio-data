@@ -7540,7 +7540,6 @@ data:extend(
     allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     crafting_categories = {"oil-processing"},
     crafting_speed = 1,
-    has_backer_name = true,
     energy_source =
     {
       type = "electric",

@@ -104,9 +104,9 @@ character_animations =
     idle_shadow =
     {
       filename = "__base__/graphics/entity/character/level1_idle_shadow.png",
-      width = 82,
-      height = 38,
-      shift = util.by_pixel(30.0,0.0),
+      width = 84,
+      height = 40,
+      shift = util.by_pixel(31.0,1.0),
       frame_count = 22,
       direction_count = 8,
       animation_speed = 0.15,
@@ -115,8 +115,8 @@ character_animations =
       {
         filename = "__base__/graphics/entity/character/hr-level1_idle_shadow.png",
         width = 164,
-        height = 74,
-        shift = util.by_pixel(30.5,0.0),
+        height = 78,
+        shift = util.by_pixel(30.5,0.5),
         frame_count = 22,
         direction_count = 8,
         animation_speed = 0.15,

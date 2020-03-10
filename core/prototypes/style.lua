@@ -1519,12 +1519,16 @@ data:extend(
     side_menu_button =
     {
       type = "button_style",
-      parent = "icon_button"
+      parent = "icon_button",
+      top_padding = 0, -- fixes height not being 32 in 100% GUI size, and 64 in 200% GUI size
+      bottom_padding = 0
     },
     side_menu_button_hovered =
     {
       type = "button_style",
       parent = "icon_button",
+      top_padding = 0,
+      bottom_padding = 0,
       default_graphical_set =
       {
         filename = "__core__/graphics/gui.png",
