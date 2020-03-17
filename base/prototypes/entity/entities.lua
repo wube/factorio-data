@@ -310,6 +310,7 @@ function make_4way_animation_from_spritesheet(animation)
     {
       filename = anim.filename,
       priority = anim.priority or "high",
+      flags = anim.flags,
       x = x,
       y = y,
       width = anim.width,
@@ -321,8 +322,10 @@ function make_4way_animation_from_spritesheet(animation)
       draw_as_shadow = anim.draw_as_shadow,
       force_hr_shadow = anim.force_hr_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
+      animation_speed = anim.animation_speed,
       scale = anim.scale or 1,
-      tint = anim.tint
+      tint = anim.tint,
+      blend_mode = anim.blend_mode
     }
   end
 

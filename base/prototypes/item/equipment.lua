@@ -18,7 +18,8 @@ data:extend(
     placed_as_equipment_result = "fusion-reactor-equipment",
     subgroup = "equipment",
     order = "a[energy-source]-b[fusion-reactor]",
-    stack_size = 20
+    default_request_amount = 1,
+    stack_size = 20,
   },
   {
     type = "item",
@@ -28,6 +29,7 @@ data:extend(
     placed_as_equipment_result = "energy-shield-equipment",
     subgroup = "equipment",
     order = "b[shield]-a[energy-shield-equipment]",
+    default_request_amount = 5,
     stack_size = 20
   },
   {
@@ -39,6 +41,7 @@ data:extend(
     placed_as_equipment_result = "energy-shield-mk2-equipment",
     subgroup = "equipment",
     order = "b[shield]-b[energy-shield-equipment-mk2]",
+    default_request_amount = 5,
     stack_size = 20
   },
   {
@@ -49,6 +52,7 @@ data:extend(
     placed_as_equipment_result = "battery-equipment",
     subgroup = "equipment",
     order = "c[battery]-a[battery-equipment]",
+    default_request_amount = 5,
     stack_size = 20
   },
   {
@@ -60,6 +64,7 @@ data:extend(
     placed_as_equipment_result = "battery-mk2-equipment",
     subgroup = "equipment",
     order = "c[battery]-b[battery-equipment-mk2]",
+    default_request_amount = 5,
     stack_size = 20
   },
   {
@@ -70,6 +75,7 @@ data:extend(
     placed_as_equipment_result = "personal-laser-defense-equipment",
     subgroup = "equipment",
     order = "d[active-defense]-a[personal-laser-defense-equipment]",
+    default_request_amount = 5,
     stack_size = 20
   },
   {
@@ -80,6 +86,7 @@ data:extend(
     placed_as_equipment_result = "discharge-defense-equipment",
     subgroup = "equipment",
     order = "d[active-defense]-b[discharge-defense-equipment]",
+    default_request_amount = 1,
     stack_size = 20
   },
   {
@@ -90,6 +97,7 @@ data:extend(
     placed_as_equipment_result = "belt-immunity-equipment",
     subgroup = "equipment",
     order = "e[belt-immunity]-a[belt-immunity]",
+    default_request_amount = 1,
     stack_size = 20
   },
   {
@@ -100,6 +108,7 @@ data:extend(
     placed_as_equipment_result = "exoskeleton-equipment",
     subgroup = "equipment",
     order = "e[exoskeleton]-a[exoskeleton-equipment]",
+    default_request_amount = 5,
     stack_size = 20
   },
   {
@@ -110,6 +119,7 @@ data:extend(
     placed_as_equipment_result = "personal-roboport-equipment",
     subgroup = "equipment",
     order = "e[robotics]-a[personal-roboport-equipment]",
+    default_request_amount = 1,
     stack_size = 20
   },
   {
@@ -121,6 +131,7 @@ data:extend(
     placed_as_equipment_result = "personal-roboport-mk2-equipment",
     subgroup = "equipment",
     order = "e[robotics]-b[personal-roboport-mk2-equipment]",
+    default_request_amount = 1,
     stack_size = 20
   },
   {
@@ -131,6 +142,7 @@ data:extend(
     placed_as_equipment_result = "night-vision-equipment",
     subgroup = "equipment",
     order = "f[night-vision]-a[night-vision-equipment]",
+    default_request_amount = 1,
     stack_size = 20
   }
 }

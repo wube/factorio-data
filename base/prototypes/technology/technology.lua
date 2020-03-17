@@ -2228,12 +2228,24 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "logistic-robot"
+      },
+      {
+        type = "character-logistic-requests",
+        modifier = true
+      },
+      {
+        type = "auto-character-logistic-trash-slots",
+        modifier = true
+      },
+      {
+        type = "character-logistic-trash-slots",
+        modifier = 30
       }
     },
     prerequisites = {"robotics"},
     unit =
     {
-      count = 150,
+      count = 250,
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -2244,7 +2256,6 @@ data:extend(
     },
     order = "c-k-c"
   },
-
   {
     type = "technology",
     name = "logistic-system",
@@ -2534,337 +2545,6 @@ data:extend(
     },
     upgrade = true,
     order = "c-k-g-c"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-slots-1",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"logistic-robotics"},
-    unit =
-    {
-      count = 50,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-e-a"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-slots-2",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-slots-1"},
-    unit =
-    {
-      count = 75,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-e-b"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-slots-3",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-slots-2"},
-    unit =
-    {
-      count = 150,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-e-c"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-slots-4",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-slots-3"},
-    unit =
-    {
-      count = 150,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-e-d"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-slots-5",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-slots-4"},
-    unit =
-    {
-      count = 500,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-e-e"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-slots-6",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-slots-5"},
-    unit =
-    {
-      count = 1000,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1},
-        {"utility-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-e-f"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-trash-slots-1",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-trash-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"logistic-robotics"},
-    unit =
-    {
-      count = 30,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-f-a"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-trash-slots-2",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-trash-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-trash-slots-1"},
-    unit =
-    {
-      count = 100,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    order = "c-k-f-b"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-trash-slots-3",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-trash-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-trash-slots-2"},
-    unit =
-    {
-      count = 100,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1}
-      },
-      time = 60
-    },
-    upgrade = true,
-    order = "c-k-f-c"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-trash-slots-4",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-trash-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-trash-slots-3"},
-    unit =
-    {
-      count = 200,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"utility-science-pack", 1}
-      },
-      time = 60
-    },
-    upgrade = true,
-    order = "c-k-f-d"
-  },
-  {
-    type = "technology",
-    name = "character-logistic-trash-slots-5",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-logistic-trash-slots.png",
-    effects =
-    {
-      {
-        type = "character-logistic-trash-slots",
-        modifier = 6
-      }
-    },
-    prerequisites = {"character-logistic-trash-slots-4"},
-    unit =
-    {
-      count = 500,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"production-science-pack", 1},
-        {"utility-science-pack", 1}
-      },
-      time = 60
-    },
-    upgrade = true,
-    order = "c-k-f-e"
-  },
-  {
-    type = "technology",
-    name = "auto-character-logistic-trash-slots",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/character-auto-logistic-trash-slots.png",
-    effects =
-    {
-      {
-        type = "auto-character-logistic-trash-slots",
-        modifier = true
-      }
-    },
-    prerequisites = {"character-logistic-trash-slots-2"},
-    unit =
-    {
-      count = 150,
-      ingredients =
-      {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1}
-      },
-      time = 30
-    },
-    order = "c-k-f-c"
   },
   {
     type = "technology",

@@ -84,7 +84,7 @@ data:extend(
     trigger =
     {
       type = "research-technology",
-      technology = "character-logistic-slots-1"
+      technology = "logistic-robotics"
     },
     icon = "__base__/graphics/technology/logistic-robotics.png",
     icon_size = 128,

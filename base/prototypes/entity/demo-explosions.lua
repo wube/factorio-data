@@ -1712,7 +1712,7 @@ data:extend
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "electric-mining-drill-explosion",

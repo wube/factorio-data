@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.13
+Version: 0.18.14
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.13
+Date: 17. 03. 2020
+  Gui:
+    - The character GUI now has a new look.
+      - Personal logistics has been moved to a separate tab. Logistic requests and auto trash have been merged into one panel.
+      - Using quick inventory transfers in the player inventory of the character gui will transfer the items either to weapons and armor slots or to trash slots depending on the selected tab, regardless of item type.
+    - Updated the look of filter, item and circuit signal selection GUIs.
+  Changes:
+    - Personal logistics are now unlocked by a single research. This unlocks personal logistic requests and auto trash(unlimited count), plus 30 character trash slots.
+    - Removed the restriction of not allowing to have two identical blueprints in the blueprint library or blueprint book.
+    - Allowed to delete blueprint/books/upgrade planners/deconstruction planners also when opened in other inventory.
+    - Removed the utility slots (to create blueprint, book etc) from blueprint library as it is now available directly through quick tools menu.
+    - Allowed to edit blueprints in the blueprint library the same way as when it is an item.
+    - Allowed to export blueprint books in blueprint library (it was only possible in inventory before).
+    - Allowed to choose whether train fuel should be included in a blueprint.
+  Bugfixes:
+    - Fixed that 3rd last row of 4th sheet of gun turret shooting had duplicate frame. (https://forums.factorio.com/82144)
+    - Fixed desync when changing recipe that was outputting large amount of fluid per crafting cycle to recipe that outputs low amount of fluid. (https://forums.factorio.com/74155)
+    - Fixed sprite button would not respect draw_shadow_under_picture style property. (https://forums.factorio.com/82334)
+  Modding:
+    - Added main_menu_background_image_location to utility constants.
+  Scripting:
+    - Removed LuaStyle::extra_padding_when_activated read/write.
+    - Added LuaStyle::extra_top_padding_when_activated, extra_bottom_padding_when_activated, extra_left_padding_when_activated and extra_right_padding_when_activated read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.12
 Date: 10. 03. 2020
@@ -17,6 +42,7 @@ Date: 10. 03. 2020
     - Fixed that modded shortcuts that spawned items not visible in the blueprint library didn't work. (https://forums.factorio.com/81940)
     - Fixed that technology tooltips didn't show debug tooltip data the same as other tooltips. (https://forums.factorio.com/81762)
     - Fixed that crafting machines would report as supporting backer names through the Lua API. (https://forums.factorio.com/81786)
+  Gui:
     - Fixed that un-researched recipes couldn't be used while in the map editor. (https://forums.factorio.com/82082)
     - Fixed that the removed-content GUI didn't include some translations. (https://forums.factorio.com/82101)
     - Fixed a desync related to invalid rail signal requested to be closed by circuit network. (https://forums.factorio.com/82085)

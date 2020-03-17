@@ -498,7 +498,7 @@ sounds.construction_robot = function(volume)
         filename = "__base__/sound/construction-robot-9.ogg", volume = volume
       }
     },
-    max_sounds_per_type = 1,
+    max_sounds_per_type = 5,
     audible_distance_modifier = 1,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }

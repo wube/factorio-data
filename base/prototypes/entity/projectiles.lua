@@ -742,7 +742,7 @@ data:extend(
           {
             {
               type = "create-entity",
-              entity_name = "explosion"
+              entity_name = "grenade-explosion"
             },
             {
               type = "create-entity",

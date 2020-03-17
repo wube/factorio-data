@@ -556,16 +556,6 @@ data:extend(
       height = 128,
       flags = {"icon"}
     },
-    search_icon =
-    {
-      filename = "__core__/graphics/icons/mip/search.png",
-      priority = "medium",
-      width = 32,
-      height = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
     too_far =
     {
       filename = "__core__/graphics/too-far.png",
@@ -891,6 +881,7 @@ data:extend(
     max_successful_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
     artillery_range_modifier_icon = make_default_modifier_icon(),
     character_additional_mining_categories_modifier_icon = make_default_modifier_icon(),
+    character_logistic_requests_modifier_icon = make_default_modifier_icon(),
     hint_arrow_up =
     {
       filename = "__core__/graphics/gui-new.png",
@@ -1133,6 +1124,15 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
+    upgrade_blueprint =
+    {
+      filename = "__core__/graphics/icons/mip/upgrade-blueprint.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      mipmap_count = 2,
+      flags = {"icon"}
+    },
     import_slot =
     {
       filename = "__core__/graphics/import.png",
@@ -1159,7 +1159,7 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
-    scripting_editor_icon=
+    scripting_editor_icon =
     {
       filename = "__core__/graphics/icons/category/scripting-editor.png",
       priority = "medium",
@@ -1822,7 +1822,7 @@ data:extend(
       y = 64,
       scale = 0.5
     },
-    battery_indicator =
+    battery =
     {
       filename = "__core__/graphics/battery.png",
       priority = "extra-high-no-scale",
@@ -2075,8 +2075,49 @@ data:extend(
       flags = {"gui-icon"}
     },
 
-    ----- new icons
-
+    ------------------------------------------------------------ new icons
+    battery_indicator =
+    {
+      filename = "__core__/graphics/battery-indicator.png",
+      priority = "extra-high-no-scale",
+      width = 54,
+      height = 94,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    battery_indicator_bar =
+    {
+      filename = "__core__/graphics/battery-indicator-bar.png",
+      priority = "extra-high-no-scale",
+      width = 26,
+      height = 16,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    center =
+    {
+      filename = "__core__/graphics/icons/mip/center.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    check_mark =
+    {
+      filename = "__core__/graphics/icons/check-mark.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    check_mark_white =
+    {
+      filename = "__core__/graphics/icons/mip/check-mark-white.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
     close_white =
     {
       filename = "__core__/graphics/icons/mip/close-white.png",
@@ -2104,6 +2145,47 @@ data:extend(
       mipmap_count = 2,
       flags = {"gui-icon"}
     },
+    color_picker =
+    {
+      filename = "__core__/graphics/icons/mip/color-picker.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    downloading =
+    {
+      filename = "__core__/graphics/icons/mip/downloading.png",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    downloading_white =
+    {
+      filename = "__core__/graphics/icons/mip/downloading-white.png",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    downloaded =
+    {
+      filename = "__core__/graphics/icons/mip/downloaded.png",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    downloaded_white =
+    {
+      filename = "__core__/graphics/icons/mip/downloaded-white.png",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
     dropdown =
     {
       filename = "__core__/graphics/icons/mip/dropdown.png",
@@ -2112,6 +2194,14 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
+    },
+    equipment_grid =
+    {
+      filename = "__core__/graphics/icons/equipment-grid.png",
+      priority = "extra-high-no-scale",
+      size = 46,
+      scale = 1,
+      flags = {"icon"}
     },
     expand_dots =
     {
@@ -2141,7 +2231,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    },  
     import =
     {
       filename = "__core__/graphics/icons/mip/import.png",
@@ -2149,6 +2239,15 @@ data:extend(
       size = 32,
       scale = 0.5,
       mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    map =
+    {
+      filename = "__core__/graphics/icons/mip/map.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count =2,
       flags = {"gui-icon"}
     },
     map_exchange_string =
@@ -2160,6 +2259,30 @@ data:extend(
       flags = {"gui-icon"},
       mipmap_count = 2,
       scale = 0.5
+    },
+    missing_mod_icon =
+    {
+      filename = "__core__/graphics/missing-thumbnail.png",
+      size = 144,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    mod_dependency_arrow =
+    {
+      filename = "__core__/graphics/icons/mip/go-to-minibutton-arrow.png",
+      priority = "extra-high-no-scale",
+      size = 16,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    not_available =
+    {
+      filename = "__core__/graphics/icons/mip/not-available.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count =2,
+      flags = {"gui-icon"}
     },
     preset =
     {
@@ -2215,6 +2338,45 @@ data:extend(
       mipmap_count = 2,
       scale = 0.5
     },
+    search_icon =
+    {
+      filename = "__core__/graphics/icons/mip/search.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    search_small_black =
+    {
+      filename = "__core__/graphics/icons/search-small-black.png",
+      priority = "extra-high-no-scale",
+      x = 2,
+      y = 2,
+      size = 28,
+      scale = 1,
+      flags = {"icon"}
+    },
+    search_small_white =
+    {
+      filename = "__core__/graphics/icons/search-small-white.png",
+      priority = "extra-high-no-scale",
+      x = 2,
+      y = 2,
+      size = 28,
+      scale = 1,
+      flags = {"icon"}
+    },
+    station_name =
+    {
+      filename = "__core__/graphics/icons/mip/station-name.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
     trash =
     {
       filename = "__core__/graphics/icons/mip/trash.png",
@@ -2242,66 +2404,6 @@ data:extend(
       mipmap_count = 2,
       flags = {"gui-icon"}
     },
-    color_picker =
-    {
-      filename = "__core__/graphics/icons/mip/color-picker.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    map =
-    {
-      filename = "__core__/graphics/icons/mip/map.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count =2,
-      flags = {"gui-icon"}
-    },
-    center =
-    {
-      filename = "__core__/graphics/icons/mip/center.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      mipmap_count = 2,
-      scale = 0.5,
-      flags = {"gui-icon"}
-    },
-    station_name =
-    {
-      filename = "__core__/graphics/icons/mip/station-name.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    not_available =
-    {
-      filename = "__core__/graphics/icons/mip/not-available.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count =2,
-      flags = {"gui-icon"}
-    },
-    mod_dependency_arrow =
-    {
-      filename = "__core__/graphics/icons/mip/go-to-minibutton-arrow.png",
-      priority = "extra-high-no-scale",
-      size = 16,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    missing_mod_icon =
-    {
-      filename = "__core__/graphics/missing-thumbnail.png",
-      size = 144,
-      scale = 0.5,
-      flags = {"icon"}
-    },
     warning_white =
     {
       filename = "__core__/graphics/icons/mip/warning-white.png",
@@ -2310,45 +2412,5 @@ data:extend(
       mipmap_count = 2,
       flags = {"gui-icon"}
     },
-    check_mark_white =
-    {
-      filename = "__core__/graphics/icons/mip/check-mark-white.png",
-      size = 32,
-      scale = 0.5,
-      flags = {"gui-icon"},
-      mipmap_count = 2
-    },
-    downloading =
-    {
-      filename = "__core__/graphics/icons/mip/downloading.png",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    downloading_white =
-    {
-      filename = "__core__/graphics/icons/mip/downloading-white.png",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    downloaded =
-    {
-      filename = "__core__/graphics/icons/mip/downloaded.png",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    downloaded_white =
-    {
-      filename = "__core__/graphics/icons/mip/downloaded-white.png",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
   }
 })

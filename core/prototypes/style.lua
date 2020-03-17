@@ -23,6 +23,11 @@ heading_font_color = bold_font_color
 button_default_font_color = {} -- less surface of black (not bold), we need it to be pure black
 button_hovered_font_color = {}
 button_default_bold_font_color = {28, 28, 28} -- more surface of black, we don't need it to be pure black
+-- slots
+default_slot_glow_color = {255, 174, 0, 128}
+red_slot_glow_color = {255, 166, 123, 128}
+green_slot_glow_color = {34, 255, 75, 128}
+blue_slot_glow_color = {34, 181, 255, 128}
 
 achievement_green_color = color "96ce82"
 achievement_tan_color = color "d1c58e"
@@ -32,8 +37,8 @@ technology_slot_base_height = 88
 featured_technology_slot_base_width = 136
 featured_technology_slot_base_height = 168
 
-green_arrow_button_glow_color = {135, 216, 139, 128}
-red_arrow_button_glow_color = {254, 90, 90, 128}
+green_button_glow_color = {135, 216, 139, 128}
+red_button_glow_color = {254, 90, 90, 128}
 
 arrow_tileset_width = 48
 arrow_tileset_height = 64
@@ -264,6 +269,17 @@ function tab_glow(tint_value, scale_value)
   }
 end
 
+function top_and_bottom_inner_glow(tint_value, scale_value)
+  return
+  {
+    top = {position = {191, 128}, size = {1, 8}},
+    bottom = {position = {191, 137}, size = {1, 8}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "inner"
+  }
+end
+
 function top_glow(tint_value, scale_value) --only top side
   return
   {
@@ -302,6 +318,149 @@ function top_glow(tint_value, scale_value) --only top side
   return
   {
     top = {position = {208, 128}, size = {1, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function glow_without_left(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    right_top = {position = {209, 128}, size = {8, 8}},
+    right = {position = {209, 136}, size = {8, 1}},
+    right_bottom = {position = {209, 137}, size = {8, 8}},
+    bottom = {position = {208, 137}, size = {1, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function glow_without_right(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    left_top = {position = {200, 128}, size = {8, 8}},
+    left = {position = {200, 136}, size = {8, 1}},
+    left_bottom = {position = {200, 137}, size = {8, 8}},
+    bottom = {position = {208, 137}, size = {1, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function glow_without_top(tint_value, scale_value)
+  return
+  {
+    right = {position = {209, 136}, size = {8, 1}},
+    left = {position = {200, 136}, size = {8, 1}},
+    left_bottom = {position = {200, 137}, size = {8, 8}},
+    bottom = {position = {208, 137}, size = {1, 8}},
+    right_bottom = {position = {209, 137}, size = {8, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function glow_without_bottom(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    right_top = {position = {209, 128}, size = {8, 8}},
+    right = {position = {209, 136}, size = {8, 1}},
+    left = {position = {200, 136}, size = {8, 1}},
+    left_top = {position = {200, 128}, size = {8, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function top_right_glow(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    right_top = {position = {209, 128}, size = {8, 8}},
+    right = {position = {209, 136}, size = {8, 1}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function top_left_glow(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    --right_top = {position = {209, 128}, size = {8, 8}},
+    left = {position = {200, 136}, size = {8, 1}},
+    left_top = {position = {200, 128}, size = {8, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function bottom_right_glow(tint_value, scale_value)
+  return
+  {
+    right = {position = {209, 136}, size = {8, 1}},
+    right_bottom = {position = {209, 137}, size = {8, 8}},
+    bottom = {position = {208, 137}, size = {1, 8}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function top_glow_with_left_corner(tint_value, scale_value) --only top side
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    left_top = {position = {200, 128}, size = {8, 8}},
+    left = {position = {250, 105}, size = {1, 8}}, -- empty area
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function top_right_glow_with_top_corner(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    left_top = {position = {200, 128}, size = {8, 8}},
+    left = {position = {250, 105}, size = {1, 8}}, -- empty area
+    right_top = {position = {209, 128}, size = {8, 8}},
+    right = {position = {209, 136}, size = {8, 1}},
+    center = {position = {208, 136}, size = {1, 1}},
+    tint = tint_value,
+    scale = scale_value,
+    draw_type = "outer"
+  }
+end
+
+function top_left_glow_with_top_corner(tint_value, scale_value)
+  return
+  {
+    top = {position = {208, 128}, size = {1, 8}},
+    left = {position = {200, 136}, size = {8, 1}},
+    left_top = {position = {200, 128}, size = {8, 8}},
+    right_top = {position = {209, 128}, size = {8, 8}},
+    right = {position = {250, 105}, size = {1, 8}}, -- empty area
     center = {position = {208, 136}, size = {1, 1}},
     tint = tint_value,
     scale = scale_value,
@@ -377,7 +536,16 @@ default_inner_shadow = default_inner_glow(hard_shadow_color, 0.5)
 top_shadow = top_glow(default_shadow_color, 0.5)
 bottom_shadow = bottom_glow(default_shadow_color, 0.5)
 top_bottom_shadow = top_bottom_glow(default_shadow_color, 0.5)
-top_shadow = top_glow(default_shadow_color, 0.5)
+shadow_without_left = glow_without_left(default_shadow_color, 0.5)
+shadow_without_right = glow_without_right(default_shadow_color, 0.5)
+shadow_without_bottom = glow_without_bottom(default_shadow_color, 0.5)
+shadow_without_top = glow_without_top(default_shadow_color, 0.5)
+top_right_shadow = top_right_glow(default_shadow_color, 0.5)
+top_left_shadow = top_left_glow(default_shadow_color, 0.5)
+top_shadow_with_left_corner = top_glow_with_left_corner(default_shadow_color, 0.5)
+top_right_shadow_with_top_corner = top_right_glow_with_top_corner(default_shadow_color, 0.5)
+top_left_shadow_with_top_corner = top_left_glow_with_top_corner(default_shadow_color, 0.5)
+bottom_right_shadow = bottom_right_glow(default_shadow_color, 0.5)
 
 function orangebuttongraphcialset()
   return
@@ -565,6 +733,11 @@ data:extend(
       type = "label_style",
       parent = "bold_label",
       font_color = {0, 1, 0}
+    },
+    yellow_label =
+    {
+      type = "label_style",
+      font_color = heading_font_color
     },
     player_online_label =
     {
@@ -754,6 +927,20 @@ data:extend(
       left_padding = 8,
       font_color = heading_font_color
     },
+    subheader_right_aligned_label =
+    {
+      type = "label_style",
+      parent = "label",
+      right_padding = 8
+
+    },    
+    heading_1_label =
+    {
+      type = "label_style",
+      font = "heading-1",
+      font_color = heading_font_color,
+      single_line = true
+    },
     heading_2_label =
     {
       type = "label_style",
@@ -863,6 +1050,33 @@ data:extend(
       }
     },
 
+    green_button =
+    {
+      type = "button_style",
+      parent = "button",
+      default_graphical_set =
+      {
+        base = {position = {68, 17}, corner_size = 8},
+        shadow = default_dirt
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {102, 17}, corner_size = 8},
+        shadow = default_dirt,
+        glow = default_glow(green_button_glow_color, 0.5)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {119, 17}, corner_size = 8},
+        shadow = default_dirt
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {85, 17}, corner_size = 8},
+        shadow = default_dirt
+      }
+    },
+
     rounded_button =
     {
       type = "button_style",
@@ -921,7 +1135,7 @@ data:extend(
       parent = "dialog_button",
       horizontal_align = "left",
       default_graphical_set = arrow_back(red_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
-      hovered_graphical_set = arrow_back(red_arrow_tileset, arrow_hovered_index, "glow", red_arrow_button_glow_color),
+      hovered_graphical_set = arrow_back(red_arrow_tileset, arrow_hovered_index, "glow", red_button_glow_color),
       clicked_graphical_set = arrow_back(red_arrow_tileset, arrow_clicked_index),
       disabled_font_color = {0.5, 0.5, 0.5},
       disabled_graphical_set = arrow_back(red_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
@@ -944,7 +1158,7 @@ data:extend(
       parent = "dialog_button",
       horizontal_align = "right",
       default_graphical_set = arrow_forward(green_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
-      hovered_graphical_set = arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_arrow_button_glow_color),
+      hovered_graphical_set = arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = arrow_forward(green_arrow_tileset, arrow_clicked_index),
       disabled_graphical_set = arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
     },
@@ -955,7 +1169,7 @@ data:extend(
       parent = "dialog_button",
       horizontal_align = "right",
       default_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
-      hovered_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_arrow_button_glow_color),
+      hovered_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_clicked_index),
       disabled_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
     },
@@ -1010,7 +1224,7 @@ data:extend(
       parent = "dialog_button",
       horizontal_align = "right",
       default_graphical_set = arrow_forward(red_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
-      hovered_graphical_set = arrow_forward(red_arrow_tileset, arrow_hovered_index, "glow", red_arrow_button_glow_color),
+      hovered_graphical_set = arrow_forward(red_arrow_tileset, arrow_hovered_index, "glow", red_button_glow_color),
       clicked_graphical_set = arrow_forward(red_arrow_tileset, arrow_clicked_index),
       disabled_font_color = {0.5, 0.5, 0.5},
       disabled_graphical_set = arrow_forward(red_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
@@ -1029,7 +1243,7 @@ data:extend(
       {
         base = {position = {170, 17}, corner_size = 8},
         shadow = default_dirt,
-        glow = default_glow(red_arrow_button_glow_color, 0.5)
+        glow = default_glow(red_button_glow_color, 0.5)
       },
       clicked_graphical_set =
       {
@@ -1056,6 +1270,28 @@ data:extend(
       type = "button_style",
       padding = 2,
       size = 28
+    },
+
+    tool_button_green =
+    {
+      type = "button_style",
+      parent = "tool_button",
+      default_graphical_set =
+      {
+        base = {position = {431, 48}, corner_size = 8},
+        shadow = default_dirt
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {448, 48}, corner_size = 8},
+        shadow = default_dirt,
+        glow = default_glow({110, 164, 104, 127}, 0.5)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {465, 48}, corner_size = 8},
+        shadow = default_dirt
+      }
     },
 
     mini_button =
@@ -1086,6 +1322,23 @@ data:extend(
     tooltip_horizontal_line =
     {
       type = "line_style",
+      border =
+      {
+        border_width = 8,
+        left_end = {position = {248, 40}, size = {8, 8}},
+        horizontal_line = {position = {256, 40}, size = {1, 8}},
+        right_end = {position = {257, 40}, size = {8, 8}}
+      }
+    },
+
+    -- it takes 0 height in the layout and extends the graphics into top/bottom
+    -- so it is consistent with paddings of frame border
+    frame_division_fake_horizontal_line =
+    {
+      type = "line_style",
+      height = 8,
+      top_margin = -4,
+      bottom_margin = -4,
       border =
       {
         border_width = 8,
@@ -1336,15 +1589,6 @@ data:extend(
       font_color = {29, 29, 29},
       disabled_font_color = {0, 0, 0, 0.5}
     },
-
-    heading_1_label =
-    {
-      type = "label_style",
-      font = "heading-1",
-      font_color = heading_font_color,
-      single_line = true
-    },
-
     tooltip_heading_label =
     {
       type = "label_style",
@@ -1594,12 +1838,13 @@ data:extend(
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
     },
-    logistic_button_slot =
+
+    logistic_slot_button =
     {
       type = "button_style",
       parent = "slot_button"
     },
-    logistic_button_selected_slot =
+    selected_logistic_slot_button =
     {
       type = "button_style",
       parent = "slot_button",
@@ -1607,6 +1852,36 @@ data:extend(
       hovered_graphical_set =  orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
     },
+
+    CGUI_logistic_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_filter_slot_button"
+    },
+
+    CGUI_selected_logistic_slot_button = -- needed for a hack of toggle in logistic gui; basically default graphics are as selected.
+    {
+      type = "button_style",
+      parent = "CGUI_filter_slot_button",
+      default_graphical_set =
+      {
+        base = {border = 4, position = {80, 736}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
+      }
+    },
+
+    CGUI_yellow_logistic_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_yellow_filter_slot_button"
+    },
+
+    CGUI_red_logistic_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_red_filter_slot_button"
+    },
+
     red_circuit_network_content_slot =
     {
       type = "button_style",
@@ -1675,45 +1950,86 @@ data:extend(
       }
     },
 
+    CGUI_slot_button =
+    {
+      type = "button_style",
+      parent = "button",
+      size = 40,
+      padding = 1,
+      default_graphical_set = { base = {border = 3, position = {0, 424}, size = 80}},
+      hovered_graphical_set = { base = {border = 3, position = {80, 424}, size = 80}}, -- glow = default_glow(default_slot_glow_color, 0.5)
+      clicked_graphical_set = { base = {border = 3, position = {160, 424}, size = 80}},
+      pie_progress_color = {0.98, 0.66, 0.22, 0.5},
+      left_click_sound = {}
+    },
+
+    CGUI_red_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_slot_button",
+      default_graphical_set = { base = {border = 3, position = {504, 376}, size = 80}},
+      hovered_graphical_set = { base = {border = 3, position = {504, 456}, size = 80}}, -- glow = default_glow(red_slot_glow_color, 0.5)
+      clicked_graphical_set = { base = {border = 3, position = {504, 536}, size = 80}},
+      selected_graphical_set = { base = {border = 3, position = {504, 456}, size = 80}}
+    },
+
+    CGUI_green_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_slot_button",
+      default_graphical_set = { base = {border = 3, position = {504, 136}, size = 80}},
+      hovered_graphical_set = { base = {border = 3, position = {504, 216}, size = 80}}, -- glow = default_glow(green_slot_glow_color, 0.5)
+      clicked_graphical_set = { base = {border = 3, position = {504, 296}, size = 80}},
+    },
+
+    CGUI_blue_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_slot_button",
+      default_graphical_set = { base = {border = 3, position = {0, 504}, size = 80}},
+      hovered_graphical_set = { base = {border = 3, position = {80, 504}, size = 80}}, -- glow = default_glow(blue_slot_glow_color, 0.5)
+      clicked_graphical_set = { base = {border = 3, position = {160, 504}, size = 80}},
+    },
+
+    CGUI_inventory_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_slot_button",
+      --inventory_slot_buttons get selected(toggled) when we select a filter. So we use the blue clicked style
+      selected_graphical_set = { base = {border = 3, position = {160, 504}, size = 80}},
+      selected_hovered_graphical_set = { base = {border = 3, position = {160, 504}, size = 80}},
+      selected_clicked_graphical_set = { base = {border = 3, position = {160, 504}, size = 80}},
+    },
+
+    CGUI_filter_inventory_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_blue_slot_button",
+    },
+
+    CGUI_closed_inventory_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_red_slot_button",
+    },
+
+    CGUI_picture_slot_button =
+    {
+      type = "button_style",
+      parent = "slot_button",
+    },
+
+    small_picture_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_picture_slot_button",
+      size = 20,
+    },
+
     recipe_slot_button =
     {
       type = "button_style",
-      parent = "slot_button",
-      size = 36,
-      padding = 1,
-      default_graphical_set =
-      {
-        border = 1,
-        filename = "__core__/graphics/gui.png",
-        size = 36,
-        x = 111,
-        y = 144,
-        scale = 1
-      },
-      hovered_graphical_set =
-      {
-        border = 1,
-        filename = "__core__/graphics/gui.png",
-        position = {148, 144},
-        size = 36,
-        scale = 1
-      },
-      clicked_graphical_set =
-      {
-        border = 1,
-        filename = "__core__/graphics/gui.png",
-        position = {185, 144},
-        size = 36,
-        scale = 1
-      },
-      pie_progress_color = {0.98, 0.66, 0.22, 0.5}
-    },
-
-    small_slot_button =
-    {
-      type = "button_style",
-      parent = "slot_button",
-      size = 20
+      parent = "CGUI_filter_slot_button",
     },
 
     tracking_off_button =
@@ -2569,7 +2885,7 @@ data:extend(
     {
       type = "button_style",
       parent = "button",
-      padding = -4,
+      padding = 0,
       default_graphical_set =
       {
         base = {position = {0, 0}, corner_size = 8},
@@ -2598,11 +2914,27 @@ data:extend(
       }
     },
 
-    close_button =
+    -- small square buttons on the frame top right, such as close and search.
+    frame_action_button =
     {
       type = "button_style",
       parent = "frame_button",
-      size = 16
+      size = 24,
+      --top_margin = 4, -- to center it with respect to the filler
+      --left_margin = 4,
+    },
+
+    frame_action_button_no_border =
+    {
+      type = "button_style",
+      parent = "frame_action_button",
+      padding = -4, -- negate the 4xp border of the button
+    },
+
+    close_button =
+    {
+      type = "button_style",
+      parent = "frame_action_button_no_border",
     },
 
     blueprint_record_slot_button =
@@ -2616,6 +2948,12 @@ data:extend(
     {
       type = "empty_widget_style",
       size = 76
+    },
+
+    blueprint_icon_preview =
+    {
+      type = "empty_widget_style",
+      size = 64
     },
 
     color_indicator =
@@ -2708,12 +3046,19 @@ data:extend(
       size = 24
     },
 
+    search_popup_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      padding = 2,
+    },
+
     selected_slot_button =
     {
       type = "button_style",
       parent = "slot_button",
-      default_graphical_set =  orangebuttongraphcialset(),
-      hovered_graphical_set =  orangebuttongraphcialset(),
+      default_graphical_set = orangebuttongraphcialset(),
+      hovered_graphical_set = orangebuttongraphcialset(),
       clicked_graphical_set = orangebuttongraphcialset()
     },
 
@@ -2721,8 +3066,8 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_button",
-      default_graphical_set =  bluebuttongraphcialset("default"),
-      hovered_graphical_set =  bluebuttongraphcialset("hovered"),
+      default_graphical_set = bluebuttongraphcialset("default"),
+      hovered_graphical_set = bluebuttongraphcialset("hovered"),
       clicked_graphical_set = bluebuttongraphcialset("clicked")
     },
 
@@ -2753,6 +3098,29 @@ data:extend(
         position = {185, 36},
         size = 36,
         scale = 1
+      }
+    },
+
+    CGUI_not_available_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_red_filter_slot_button",
+    },
+
+    crafting_frame =
+    {
+      type = "frame_style",
+      parent = "inside_deep_frame",
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on",
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0,
+        vertically_stretchable = "on",
+        horizontally_stretchable = "on",
+        vertical_align = "center",
+        horizontal_align = "center",
       }
     },
 
@@ -3326,7 +3694,7 @@ data:extend(
       {
         position = {282, 17},
         corner_size = 8,
-        custom_horizontal_tiling_sizes = {28, 56, 288},
+        custom_horizontal_tiling_sizes = {28, 44, 288},
         overall_tiling_horizontal_spacing = 8,
         overall_tiling_horizontal_padding = 4,
         overall_tiling_vertical_spacing = 12,
@@ -3349,6 +3717,349 @@ data:extend(
         overall_tiling_horizontal_padding = 4,
         overall_tiling_vertical_padding = 4
       }
+    },
+
+    inventory_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane",
+      vertically_stretchable = "stretch_and_expand",
+      horizontally_stretchable = "stretch_and_expand",
+      left_padding = 12,
+      right_padding = 12,
+      extra_padding_when_activated = 0,
+      extra_right_padding_when_activated = -12,
+      graphical_set =
+      {
+        base =
+        {
+          top = {position = {76, 9}, size = {1, 8}},
+          bottom = {position = {76, 0}, size = {1, 8}},
+          draw_type = "outer"
+        },
+        shadow = top_and_bottom_inner_glow(default_shadow_color, 0.5)
+      },
+      background_graphical_set =
+      {
+        position = {256, 136},
+        corner_size = 16,
+        overall_tiling_vertical_size = 24,
+        overall_tiling_vertical_spacing = 16,
+        overall_tiling_vertical_padding = 8,
+        overall_tiling_horizontal_size = 24,
+        overall_tiling_horizontal_spacing = 16,
+        overall_tiling_horizontal_padding = 8,
+      }
+    },
+
+    filter_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane",
+      vertically_stretchable = "stretch_and_expand",
+      horizontally_stretchable = "stretch_and_expand",
+      bottom_margin = 4,
+      top_margin = 4,
+      left_padding = 12,
+      right_padding = 12,
+      extra_padding_when_activated = 0,
+      extra_right_padding_when_activated = -12,
+      dont_force_clipping_rect_for_contents = true,
+      graphical_set =
+      {
+        base =
+        {
+          top = {position = {76, 9}, size = {1, 8}},
+          bottom = {position = {76, 0}, size = {1, 8}},
+          draw_type = "outer"
+        },
+        shadow = top_and_bottom_inner_glow(default_shadow_color, 0.5)
+      },
+      background_graphical_set = {}
+    },
+
+    filter_scroll_pane_background_frame =
+    {
+      type = "frame_style",
+      parent = "borderless_deep_frame",
+      minimal_height = 5 * 40,
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on",
+      graphical_set =
+      {
+        base =
+        {
+          position = {85, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      background_graphical_set =
+      {
+        position = {282, 17},
+        corner_size = 8,
+        overall_tiling_vertical_size = 32,
+        overall_tiling_vertical_spacing = 8,
+        overall_tiling_vertical_padding = 4,
+        overall_tiling_horizontal_size = 32,
+        overall_tiling_horizontal_spacing = 8,
+        overall_tiling_horizontal_padding = 4,
+      },
+    },
+
+    filter_scroll_pane_background_frame_no_background =
+    {
+      type = "frame_style",
+      parent = "filter_scroll_pane_background_frame",
+      background_graphical_set = {}
+    },
+
+    logistics_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "filter_scroll_pane",
+      vertically_stretchable = "on";
+    },
+
+    controller_logistics_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "filter_scroll_pane",
+      vertically_stretchable = "on",
+    },
+
+    logistics_scroll_pane_background_frame =
+    {
+      type = "frame_style",
+      parent = "filter_scroll_pane_background_frame",
+      minimal_height = 3 * 40 -- 3 rows
+    },
+
+    character_info_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      extra_padding_when_activated = 0,
+    },
+
+    item_and_count_select_background =
+    {
+      type = "frame_style",
+      parent = "inside_deep_frame",
+      padding = 4,
+      right_padding = 8,
+      horizontal_flow_style = { type = "horizontal_flow_style", vertical_align = "center", horizontal_spacing = 8 }
+    },
+
+    item_and_count_select_confirm =
+    {
+      type = "button_style",
+      parent = "green_button",
+      size = 28,
+      padding = 0,
+      top_margin = 1, -- optical align with text input next to it
+    },
+
+    filter_tabbed_pane =
+    {
+      type = "tabbed_pane_style",
+      parent = "tabbed_pane",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        top_padding = 4,
+        right_padding = 0,
+        left_padding = 0,
+        bottom_padding = 4,
+        graphical_set = tabbed_pane_graphical_set
+      },
+      tab_container =
+      {
+        type = "horizontal_flow_style",
+        horizontally_stretchable =  "on",
+        left_padding = 0,
+        right_padding = 0,
+        horizontal_spacing = 0
+      }
+    },
+
+    filter_group_tab =
+    {
+      type = "tab_style",
+      height = 64,
+      minimal_width = 64,
+      horizontally_stretchable =  "on",
+      top_padding = 8,
+      right_padding = 8,
+      bottom_padding = 8,
+      left_padding = 8,
+      default_graphical_set =
+      {
+        base =
+        {
+          -- basically button without bottom side
+          left_top = {position = {0, 17}, size = {8, 8}},
+          left = {position = {0, 25}, size = {8, 1}},
+          left_bottom = {position = {0, 25}, size = {8, 1}},
+          top = {position = {8, 17}, size = {1, 8}},
+          center = {position = {8, 25}, size = {1, 1}},
+          bottom = {position = {8, 25}, size = {1, 1}},
+          right_top = {position = {9, 17}, size = {8, 8}},
+          right = {position = {9, 25}, size = {8, 1}},
+          right_bottom = {position = {9, 25}, size = {8, 1}},
+        },
+        shadow = default_glow(default_shadow_color, 0.5)
+      },
+      selected_graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {68, 0}, size = {8, 8}},
+          left = {position = {68, 8}, size = {8, 1}},
+          left_bottom = {position = {136, 9}, size = {8, 8}},
+          top = {position = {76, 0}, size = {1, 8}},
+          center = {position = {76, 8}, size = {1, 1}},
+          bottom = {position = {144, 9}, size = {1, 8}},
+          right_top = {position = {77, 0}, size = {8, 8}},
+          right = {position = {77, 8}, size = {8, 1}},
+          right_bottom = {position = {145, 9}, size = {8, 8}},
+        },
+        shadow = default_glow(default_shadow_color, 0.5)
+      },
+      hover_graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {34, 17}, size = {8, 8}},
+          left = {position = {34, 25}, size = {8, 1}},
+          left_bottom = {position = {34, 25}, size = {8, 1}},
+          top = {position = {42, 17}, size = {1, 8}},
+          center = {position = {42, 25}, size = {1, 1}},
+          bottom = {position = {42, 25}, size = {1, 1}},
+          right_top = {position = {43, 17}, size = {8, 8}},
+          right = {position = {43, 25}, size = {8, 1}},
+          right_bottom = {position = {43, 25}, size = {8, 1}},
+        },
+        glow = default_glow(default_glow_color, 0.5)
+      },
+      press_graphical_set =
+      {
+        base = {position = {51, 17}, corner_size = 8},
+        shadow = default_glow(default_glow_color, 0.5)
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {208, 17}, corner_size = 8},
+        shadow = default_glow(default_shadow_color, 0.5)
+      },
+      override_graphics_on_edges = true,
+      left_edge_selected_graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {68, 0}, size = {8, 8}},
+          left = {position = {68, 8}, size = {8, 1}},
+          left_bottom = {position = {68, 4}, size = {8, 8}}, -- cutout from size of no.5 tile, need 8x8 for image set to work right.
+          top = {position = {76, 0}, size = {1, 8}},
+          center = {position = {76, 8}, size = {1, 1}},
+          bottom = {position = {144, 9}, size = {1, 8}},
+          right_top = {position = {77, 0}, size = {8, 8}},
+          right = {position = {77, 8}, size = {8, 1}},
+          right_bottom = {position = {145, 9}, size = {8, 8}},
+        },
+        shadow = default_glow(default_shadow_color, 0.5)
+      },
+      right_edge_selected_graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {68, 0}, size = {8, 8}},
+          left = {position = {68, 8}, size = {8, 1}},
+          left_bottom = {position = {136, 9}, size = {8, 8}},
+          top = {position = {76, 0}, size = {1, 8}},
+          center = {position = {76, 8}, size = {1, 1}},
+          bottom = {position = {144, 9}, size = {1, 8}},
+          right_top = {position = {77, 0}, size = {8, 8}},
+          right = {position = {77, 8}, size = {8, 1}},
+          right_bottom = {position = {77, 8}, size = {8, 1}},
+        },
+        shadow = default_glow(default_shadow_color, 0.5)
+      },
+    },
+
+    filter_group_table =
+    {
+      type = "table_style",
+      horizontal_spacing = 0,
+      vertical_spacing = 0,
+      padding = 0,
+      background_graphical_set =
+      {
+        position = {282, 17},
+        corner_size = 8,
+        overall_tiling_vertical_size = 48,
+        overall_tiling_vertical_spacing = 24,
+        overall_tiling_vertical_padding = 12,
+        overall_tiling_horizontal_size = 48,
+        overall_tiling_horizontal_spacing = 23,
+        overall_tiling_horizontal_padding = 12,
+      }
+    },
+
+    filter_group_button_tab =
+    {
+      type = "button_style",
+      parent = "button",
+      size = {71, 72}, --warning: width does not respect module size, but the current design requires it
+      padding = 8,
+
+      clicked_vertical_offset = 0,
+      clicked_graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_dirt
+      },
+      disabled_graphical_set =
+      {
+        base = {position = {208, 17}, corner_size = 8},
+        shadow = default_dirt
+      },
+      selected_font_color = button_hovered_font_color,
+      selected_graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_dirt
+      },
+      selected_hovered_font_color = button_hovered_font_color,
+      selected_hovered_graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_dirt
+      },
+      selected_clicked_font_color = button_hovered_font_color,
+      selected_clicked_graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_dirt
+      },
+    },
+
+    filter_frame = -- used in button mode
+    {
+      type = "frame_style",
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on",
+      top_padding = 6,
+      right_padding = 0,
+      bottom_padding = 4,
+      left_padding = 0,
+      graphical_set = tabbed_pane_graphical_set,
+    },
+
+    assembler_recipe_frame =
+    {
+      type = "frame_style",
+      bottom_padding = 8,
     },
 
     train_schedule_unavailable_stop_label =
@@ -3542,7 +4253,7 @@ data:extend(
       parent = "button_with_shadow",
       horizontal_align = "left",
       height = 36,
-      width = 392
+      width = 380
     },
     train_schedule_mode_switch_horizontal_flow =
     {
@@ -3615,7 +4326,7 @@ data:extend(
       type = "frame_style",
       parent = "dark_frame",
       padding = 0,
-      width = 392,
+      width = 380,
       horizontal_flow_style =
       {
         type = "horizontal_flow_style",
@@ -3871,6 +4582,7 @@ data:extend(
     {
       type = "horizontal_flow_style"
     },
+
     table =
     {
       type = "table_style",
@@ -4041,6 +4753,30 @@ data:extend(
       horizontal_spacing = 2,
       vertical_spacing = 2
     },
+
+    CGUI_slot_table =
+    {
+      type = "table_style",
+      horizontal_spacing = 0,
+      vertical_spacing = 0,
+    },
+
+    filter_slot_table =
+    {
+      type = "table_style",
+      padding = 0,
+      horizontal_spacing = 0,
+      vertical_spacing = 0
+    },
+
+    logistics_slot_table =
+    {
+      type = "table_style",
+      padding = 0,
+      horizontal_spacing = 0,
+      vertical_spacing = 0
+    },
+
     browse_games_table =
     {
       type = "table_style",
@@ -4396,6 +5132,11 @@ data:extend(
       type = "textbox_style",
       width = 150
     },
+    search_popup_textfield =
+    {
+      type = "textbox_style",
+      width = 104
+    },
     console_input_textfield =
     {
       type = "textbox_style",
@@ -4436,6 +5177,13 @@ data:extend(
     {
       type = "textbox_style",
       default_background =
+      {
+        filename = "__core__/graphics/gui.png",
+        corner_size = 3,
+        position = {16, 16},
+        scale = 1
+      },
+      active_background =
       {
         filename = "__core__/graphics/gui.png",
         corner_size = 3,
@@ -4552,10 +5300,8 @@ data:extend(
       parent = "label",
       font = "heading-1",
       font_color = heading_font_color,
-      top_padding = 0,
-      left_padding = 0,
-      bottom_padding = 0,
-      right_padding = 0,
+      top_padding  = -3,
+      bottom_padding = 3,
     },
 
     frame =
@@ -4577,13 +5323,15 @@ data:extend(
         shadow = default_shadow
       },
       flow_style = { type = "flow_style" },
-      horizontal_flow_style = { type = "horizontal_flow_style" },
-      vertical_flow_style = { type = "vertical_flow_style"  },
-      header_flow_style = { type = "horizontal_flow_style", vertical_align = "center", bottom_padding = 4},
+      horizontal_flow_style = { type = "horizontal_flow_style" }, -- content in Gui::Direction::Horizontal
+      vertical_flow_style = { type = "vertical_flow_style" }, -- content in Gui::Direction::Vertical
+      header_flow_style = { type = "horizontal_flow_style", horizontally_stretchable = "on", bottom_padding = 4},
       header_filler_style =
       {
         type = "empty_widget_style",
         parent = "draggable_space_header",
+        horizontally_stretchable = "on",
+        vertically_stretchable = "on",
         height = 24
       },
       use_header_filler = true,
@@ -5011,12 +5759,12 @@ data:extend(
       }
     },
 
-    -- used for frames that contains exclusively other inner frames
-    outer_frame =
+    invisible_frame =
     {
       type = "frame_style",
       padding = 0,
-      graphical_set = { shadow = default_shadow },
+      margin = 0,
+      graphical_set = {},
       horizontal_flow_style =
       {
         type = "horizontal_flow_style",
@@ -5029,6 +5777,14 @@ data:extend(
       }
     },
 
+    -- used for frames that contains exclusively other inner frames
+    outer_frame =
+    {
+      type = "frame_style",
+      parent = "invisible_frame",
+      graphical_set = { shadow = default_shadow },
+    },
+
     -- used for frames that contains windows or frames that have shadows
     outer_frame_without_shadow =
     {
@@ -5037,15 +5793,31 @@ data:extend(
       graphical_set = {}
     },
 
+    -- used for frames that contains windows or frames that have shadows
+    outer_frame_without_top_shadow =
+    {
+      type = "frame_style",
+      parent = "outer_frame",
+      graphical_set = {shadow = shadow_without_top},
+    },
+
+    borderless_frame =
+    {
+      type = "frame_style",
+      parent = "invisible_frame",
+      graphical_set = { base = { center = {position = {8, 8}, size = {1, 1}}}},
+    },
+
     inner_frame_in_outer_frame =
     {
       type = "frame_style",
+      bottom_padding = 8,
       graphical_set =
       {
         base = {position = {0, 0}, corner_size = 8}
         -- no shadow in inner frame as it is managed by outer frame
         -- this is to avoid shows of frames that are touching to interact
-      }
+      },
     },
     train_stop_frame =
     {
@@ -5079,12 +5851,10 @@ data:extend(
       {
         base =
         {
-          --position = {34, 0}, corner_size = 8,
           position = {17, 0}, corner_size = 8,
           center = {position = {42, 8}, size = {1, 1}},
           draw_type = "outer"
         },
-        --shadow = default_shadow
         shadow = default_inner_shadow
       },
       vertical_flow_style =
@@ -5099,6 +5869,184 @@ data:extend(
       type = "frame_style",
       parent = "inside_deep_frame",
       top_padding = 12
+    },
+
+    borderless_deep_frame = -- very dark background
+    {
+      type = "frame_style",
+      parent = "borderless_frame",
+      graphical_set = { base = { center = {position = {42, 8}, size = {1, 1}}}},
+    },
+
+    -- Light deep frame for window content, e.g. for inventory frame
+    inside_shallow_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      padding = 0,
+      graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {76, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      }
+    },
+
+    deep_frame_in_shallow_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      padding = 0,
+      graphical_set =
+      {
+        base =
+        {
+          position = {85, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      }
+    },
+
+    inventory_frame =
+    {
+      type = "frame_style",
+      parent = "inside_shallow_frame",
+      top_padding = 12,
+      bottom_padding = 12,
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on",
+      -- when header is used, InventoryGui sets the frame top_padding to 0
+      header_flow_style =
+      {
+        type = "horizontal_flow_style",
+        top_padding = 8,
+        bottom_padding = 8,
+      },
+      title_style =
+      {
+        type = "label_style",
+        parent = "heading_3_label",
+      },
+      use_header_filler = false,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertically_stretchable = "on",
+        vertical_spacing = 0
+      },
+    },
+
+    train_inventory_frame =
+    {
+      type = "frame_style",
+      parent = "inventory_frame",
+      left_margin = -4, -- counter the margins of the tab frame
+      right_margin = -4,
+      top_padding = 0,
+      bottom_padding = 0,
+      graphical_set = { base = {center = {position = {76, 8}, size = {1, 1}}}},
+    },
+
+    character_logistics_frame =
+    {
+      type = "frame_style",
+      parent = "inventory_frame",
+      top_padding = 0,
+      left_padding = 0,
+      header_flow_style =
+      {
+        type = "horizontal_flow_style",
+        top_padding = 8,
+        bottom_padding = 4,
+      },
+    },
+
+    container_logistics_frame =
+    {
+      type = "frame_style",
+      parent = "inside_shallow_frame",
+      top_padding = 12,
+      bottom_padding = 4,
+    },
+
+    slot_count_change_button =
+    {
+      type = "button_style",
+      parent = "button",
+      size = {40, 20}
+    },
+
+    auto_trash_frame =
+    {
+      type = "frame_style",
+      parent = "invisible_frame",
+      --top_padding = 0,
+      --left_padding = 0,
+      header_flow_style =
+      {
+        type = "horizontal_flow_style",
+        top_padding = 8,
+        bottom_padding = 8,
+      },
+      title_style =
+      {
+        type = "label_style",
+        parent = "heading_3_label",
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        horizontal_align = "center"
+      },
+      use_header_filler = false,
+    },
+
+    character_logistics_trash_label =
+    {
+      type = "label_style",
+      parent = "heading_3_label",
+      top_padding = 12,
+      left_padding = 0,
+    },
+
+    open_armor_button =
+    {
+      type = "button_style",
+      parent = "forward_button",
+      padding = 7,
+      height = 38,
+      width = 76,
+    },
+
+    slot_count_change_button =
+    {
+      type = "button_style",
+      parent = "button",
+      size = {40, 20}
+    },
+
+    character_logistics_trash_label =
+    {
+      type = "label_style",
+      parent = "heading_3_label",
+      top_padding = 12,
+      left_padding = 12,
     },
 
     -- frame with borders around it
@@ -5714,7 +6662,7 @@ data:extend(
       }
     },
 
-    quick_bar_slot_button =
+    CGUI_filter_slot_button =
     {
       type = "button_style",
       parent = "button",
@@ -5761,6 +6709,58 @@ data:extend(
           volume = 1
         }
       }
+    },
+
+    CGUI_yellow_filter_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_filter_slot_button",
+      default_graphical_set =
+      {
+        base = {border = 4, position = {0, 656}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color)
+      },
+      hovered_graphical_set =
+      {
+        base = {border = 4, position = {80, 656}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
+        glow = offset_by_2_rounded_corners_glow(default_glow_color)
+      },
+      clicked_graphical_set =
+      {
+        base = {border = 4, position = {160, 656}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color)
+      },
+      -- selected is default
+    },
+
+    CGUI_red_filter_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_filter_slot_button",
+      default_graphical_set =
+      {
+        base = {border = 4, position = {240, 656}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color)
+      },
+      hovered_graphical_set =
+      {
+        base = {border = 4, position = {320, 656}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color),
+        glow = offset_by_2_rounded_corners_glow(red_slot_glow_color)
+      },
+      clicked_graphical_set =
+      {
+        base = {border = 4, position = {400, 656}, size = 80},
+        shadow = offset_by_2_rounded_corners_glow(default_dirt_color)
+      },
+      -- selected is default
+    },
+
+    quick_bar_slot_button =
+    {
+      type = "button_style",
+      parent = "CGUI_filter_slot_button",
     },
 
     shortcut_bar_button =
@@ -6291,13 +7291,13 @@ data:extend(
       thumb_button_style =
       {
         type = "button_style",
-      left_click_sound =
-      {
+        left_click_sound =
         {
-          filename = "__core__/sound/gui-click.ogg",
-          volume = 1
-        }
-      },
+          {
+            filename = "__core__/sound/gui-click.ogg",
+            volume = 1
+          }
+        },
         height = 10,
         default_graphical_set =
         {
@@ -6401,9 +7401,9 @@ data:extend(
       minimal_width = 84,
       horizontal_align = "center",
       vertical_align = "center",
-      top_padding = 8,
+      top_padding = 7,
       right_padding = 8,
-      bottom_padding = 8,
+      bottom_padding = 9,
       left_padding = 8,
       default_graphical_set =
       {
@@ -6430,6 +7430,9 @@ data:extend(
         base = {position = {119, 0}, corner_size = 8},
         shadow = tab_glow(default_shadow_color, 0.5)
       },
+      override_graphics_on_edges = false, -- used when tab container padding is 0, to connect to frame edges
+      left_edge_selected_graphical_set = {},
+      right_edge_selected_graphical_set = {},
       default_badge_graphical_set =
       {
         base = {position = {176, 72}, corner_size = 8}
@@ -6449,7 +7452,14 @@ data:extend(
       disabled_badge_graphical_set =
       {
         base = {position = {176, 72}, corner_size = 8}
-      }
+      },
+      left_click_sound =
+      {
+        {
+          filename = "__core__/sound/gui-click.ogg",
+          volume = 1
+        }
+      },
     },
     graph =
     {
@@ -6652,7 +7662,6 @@ data:extend(
           right_outer_border_shift = 4
         },
       },
-
       button =
       {
         type = "button_style",
@@ -6870,12 +7879,20 @@ data:extend(
     only_inner_shadow_scroll_pane =
     {
       type = "scroll_pane_style",
+      extra_padding_when_activated = 0,
       graphical_set =
       {
         shadow = default_inner_shadow
       }
     },
 
+    naked_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      extra_padding_when_activated = 0,
+      graphical_set = {}
+    },
+    
     -- The graphical set is compatibilie with the ligher panel color
     scroll_pane_light =
     {
@@ -6935,14 +7952,17 @@ data:extend(
     {
       type = "scroll_pane_style",
       vertically_squashable = "off",
-      maximal_height = 100
+      maximal_height = 100,
+      extra_padding_when_activated = 0,
     },
     trash_slots_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertically_squashable = "off",
-      maximal_height = 100
+      parent = "inventory_scroll_pane",
+      vertically_stretchable = "off",
+      maximal_height = 120; -- 3 rows of 38 size slots, 1px margin around each
     },
+
     logistic_gui_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -7041,7 +8061,7 @@ data:extend(
         type = "frame_style",
         top_padding = 8,
         right_padding = 4,
-        bottom_padding = 8,
+        bottom_padding = 4,
         left_padding = 4,
         graphical_set = tabbed_pane_graphical_set
       },
@@ -7054,6 +8074,172 @@ data:extend(
       }
     },
 
+    -- tabs styled like a main frame - used in character gui
+    -- shadows are a crazy composition: main window has all without top, left frame and right tabbed frame (=under the tabs) have top,
+    -- tabs and frame fillers around the tabs (frame_tabbed_pane_corner, frame_tabbed_pane_frame_header) have the rest.
+    frame_tabbed_pane =
+    {
+      type = "tabbed_pane_style",
+      top_padding = 0,
+      vertically_squashable = "on",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        parent = "frame_without_left_side",
+        vertically_squashable = "on",
+        graphical_set =
+        {
+          base =
+          {
+            right_top = {position = {9, 0}, size = {8, 8}},
+            right = {position = {9, 8}, size = {8, 1}},
+            right_bottom = {position = {9, 9}, size = {8, 8}},
+            top = {position = {8, 0}, size = {1, 8}},
+            bottom = {position = {8, 9}, size = {1, 8}},
+            center = {position = {8, 8}, size = {1, 1}},
+          },
+          shadow = top_shadow,
+        },
+      },
+      tab_container =
+      {
+        type = "horizontal_flow_style",
+        horizontally_stretchable = "on",
+        left_padding = 0,
+        right_padding = 0,
+        horizontal_spacing = 0
+      }
+    },
+
+    frame_tab =
+    {
+      type = "tab_style",
+      parent = "tab",
+      height = 32,
+      top_padding = 6,
+      bottom_padding = 6,
+      selected_graphical_set =
+      {
+        base = {position = {448, 103}, corner_size = 8},
+        shadow = tab_glow(default_shadow_color, 0.5)
+      },
+    },
+
+    -- left top conrner for a tabs in character gui that connects to the inventory frame
+    frame_tabbed_pane_corner =
+    {
+      type = "frame_style",
+      width = 2*4,
+      vertically_stretchable = "on",
+      bottom_margin = -4,
+      graphical_set =
+      {
+        base =
+        {
+          top = {position = {8, 0}, size = {1, 8}},
+          right_top = {position = {9, 0}, size = {8, 8}},
+          right = {position = {9, 8}, size = {8, 1}},
+          right_bottom = {position = {17, 9}, size = {8, 8}},
+          bottom = {position = {8, 8}, size = {1, 1}},
+          center = {position = {8, 8}, size = {1, 1}},
+        },
+        shadow = top_right_shadow,
+      },
+    },
+
+    -- right top conrner for a tabs in character gui that contains the frame header filler and buttons
+    frame_tabbed_pane_frame_header =
+    {
+      type = "frame_style",
+      horizontally_stretchable = "on",
+      vertically_stretchable = "on",
+      bottom_margin = -4,
+      left_padding = 0,
+      bottom_padding = 4,
+      graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {0, 0}, size = {8, 8}},
+          top = {position = {8, 0}, size = {1, 8}},
+          right_top = {position = {9, 0}, size = {8, 8}},
+          right = {position = {9, 8}, size = {8, 1}},
+          right_bottom = {position = {9, 8}, size = {8, 1}},
+          bottom = {position = {8, 8}, size = {1, 1}},
+          left_bottom = {position = {26, 9}, size = {8, 8}},
+          left = {position = {0, 8}, size = {8, 1}},
+          center = {position = {8, 8}, size = {1, 1}},
+        },
+        shadow = top_left_shadow_with_top_corner,
+      },
+      header_flow_style =
+      {
+        type = "horizontal_flow_style",
+        vertical_align = "top",
+        horizontal_spacing = 4,
+      },
+    },
+
+    frame_without_right_side =
+    {
+      type = "frame_style",
+      bottom_padding = 8,
+      graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {0, 0}, size = {8, 8}},
+          left = {position = {0, 8}, size = {8, 1}},
+          left_bottom = {position = {0, 9}, size = {8, 8}},
+          top = {position = {8, 0}, size = {1, 8}},
+          bottom = {position = {8, 9}, size = {1, 8}},
+          center = {position = {8, 8}, size = {1, 1}},
+        },
+        shadow = shadow_without_right,
+      },
+    },
+
+    -- character gui inventory
+    character_gui_left_side =
+    {
+      type = "frame_style",
+      bottom_padding = 8,
+      right_padding = 4,
+      graphical_set =
+      {
+        base =
+        {
+          left_top = {position = {0, 0}, size = {8, 8}},
+          left = {position = {0, 8}, size = {8, 1}},
+          left_bottom = {position = {0, 9}, size = {8, 8}},
+          top = {position = {8, 0}, size = {1, 8}},
+          bottom = {position = {8, 9}, size = {1, 8}},
+          center = {position = {8, 8}, size = {1, 1}},
+        },
+        shadow = top_shadow_with_left_corner,
+      },
+    },
+
+    -- character gui right side
+    frame_without_left_side =
+    {
+      type = "frame_style",
+      bottom_padding = 8,
+      graphical_set =
+      {
+        base =
+        {
+          right_top = {position = {9, 0}, size = {8, 8}},
+          right = {position = {9, 8}, size = {8, 1}},
+          right_bottom = {position = {9, 9}, size = {8, 8}},
+          top = {position = {8, 0}, size = {1, 8}},
+          bottom = {position = {8, 9}, size = {1, 8}},
+          center = {position = {8, 8}, size = {1, 1}},
+        },
+        shadow = shadow_without_left,
+      },
+    },
+
     empty_widget =
     {
       type = "empty_widget_style",
@@ -7063,6 +8249,11 @@ data:extend(
     {
       type = "empty_widget_style",
       size = 100
+    },
+    character_gui_entity_button =
+    {
+      type = "empty_widget_style",
+      size = 92
     },
     entity_variation_button =
     {
@@ -7080,6 +8271,11 @@ data:extend(
       padding = 2,
     },
     battery_widget =
+    {
+      type = "empty_widget_style",
+      size = {27, 47}
+    },
+    battery_widget_old =
     {
       type = "empty_widget_style",
       size = {21, 54}
@@ -7169,6 +8365,7 @@ data:extend(
     {
       type = "empty_widget_style",
       parent = "draggable_space",
+      left_margin = 4,
       right_margin = 0,
     },
 
@@ -7523,6 +8720,12 @@ data:extend(
       parent = "label_with_left_padding",
       horizontally_squashable = "on"
     },
+    
+    color_picker_label =
+    {
+      type = "label_style",
+      maximal_width = 24,
+    },
 
     train_schedule_delete_button =
     {
@@ -7606,6 +8809,12 @@ data:extend(
       font = "default",
       font_color = {128, 206, 240},
       single_line = false
+    },
+
+    color_picker_horizontal_flow =
+    {
+      type = "horizontal_flow_style",
+      horizontal_spacing = 8,
     },
     --style to use on all input shortcuts
     control_input_shortcut_label =

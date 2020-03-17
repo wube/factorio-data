@@ -129,8 +129,9 @@ data:extend(
     server_command_console_chat_color = { r = 0.75, g = 0.75, b = 0.75, a = 1 },
     script_command_console_chat_color = { r = 0.75, g = 0.75, b = 0.75, a = 1 },
     enabled_recipe_slot_tint = {r = 1, g = 1, b = 1},
-    disabled_recipe_slot_tint = { r = 0.55, g = 0.55, b = 0.55, a = 0.55 },
-    forced_enabled_recipe_slot_tint = { r = 0.70, g = 0.7, b = 0.0, a = 0.8 },
+    disabled_recipe_slot_tint = { r = 0.7, g = 0.7, b = 0.7, a = 0.7 },
+    disabled_recipe_slot_background_tint = { r = 0.7, g = 0.7, b = 0.7, a = 1 },
+    forced_enabled_recipe_slot_background_tint = { r = 0.70, g = 0.7, b = 0.0, a = 0.8 },
 
     default_alert_icon_scale = 0.5,
     default_alert_icon_scale_by_type = {},
@@ -206,6 +207,7 @@ data:extend(
     tree_shadow_speed = 0.93,
 
     missing_preview_sprite_location = "__core__/graphics/missing-preview.png",
+    main_menu_background_image_location = "__core__/graphics/background-image.jpg",
 
     -- Should be based on the default day/night times, ie
     -- sun starts to set at 0.25

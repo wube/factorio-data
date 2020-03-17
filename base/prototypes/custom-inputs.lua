@@ -41,6 +41,13 @@ data:extend(
   },
   {
     type = "custom-input",
+    name = "toggle-personal-logistic-requests",
+    key_sequence = "ALT + L",
+    consuming = "game-only",
+    action = "toggle-personal-logistic-requests"
+  },
+  {
+    type = "custom-input",
     name = "toggle-equipment-movement-bonus",
     key_sequence = "ALT + E",
     consuming = "game-only",
