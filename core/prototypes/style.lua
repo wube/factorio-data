@@ -252,6 +252,17 @@ function offset_by_2_default_glow(tint_value, scale_value)
   }
 end
 
+offset_by_4_rounded_corners_subpanel_inset =
+{
+  position = {345, 103},
+  corner_size = 16,
+  draw_type = "outer",
+  top_outer_border_shift = 4,
+  bottom_outer_border_shift = -4,
+  left_outer_border_shift = 4,
+  right_outer_border_shift = -4
+}
+
 function tab_glow(tint_value, scale_value)
   return
   {
@@ -2076,6 +2087,29 @@ data:extend(
         corner_size = 8,
         overall_tiling_horizontal_size = 72,
         overall_tiling_vertical_size = 100
+      },
+      extra_padding_when_activated = 0
+    },
+
+    statistics_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane",
+      graphical_set =
+      {
+        base = {center = {position = {42, 8}, width = 1, height = 1}},
+        shadow = default_inner_shadow
+      },
+      background_graphical_set =
+      {
+        position = {282, 17},
+        corner_size = 8,
+        overall_tiling_horizontal_size = 278,
+        overall_tiling_vertical_size = 44,
+        overall_tiling_horizontal_padding = 8,
+        overall_tiling_horizontal_spacing = 12,
+        overall_tiling_vertical_padding = 8,
+        overall_tiling_vertical_spacing = 12,
       },
       extra_padding_when_activated = 0
     },
@@ -4747,6 +4781,15 @@ data:extend(
         scale = 1
       }
     },
+
+    statistics_element_table =
+    {
+      type = "table_style",
+      padding = 0,
+      horizontal_spacing = 0,
+      vertical_spacing = 0
+    },
+
     slot_table =
     {
       type = "table_style",
@@ -5132,6 +5175,12 @@ data:extend(
       type = "textbox_style",
       width = 150
     },
+    titlebar_search_textfield =
+    {
+      type = "textbox_style",
+      horizontally_stretchable = "on",
+      width = 0
+    },
     search_popup_textfield =
     {
       type = "textbox_style",
@@ -5325,7 +5374,13 @@ data:extend(
       flow_style = { type = "flow_style" },
       horizontal_flow_style = { type = "horizontal_flow_style" }, -- content in Gui::Direction::Horizontal
       vertical_flow_style = { type = "vertical_flow_style" }, -- content in Gui::Direction::Vertical
-      header_flow_style = { type = "horizontal_flow_style", horizontally_stretchable = "on", bottom_padding = 4},
+      header_flow_style =
+      {
+        type = "horizontal_flow_style", 
+        vertical_align = "center",
+        horizontally_stretchable = "on",
+        bottom_padding = 4
+      },
       header_filler_style =
       {
         type = "empty_widget_style",
@@ -5704,11 +5759,74 @@ data:extend(
       right_padding = 4
     },
 
+    statistics_frame =
+    {
+      type = "frame_style",
+      parent = "subpanel_frame",
+      graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_inner_shadow
+      },
+      title_style =
+      {
+        type = "label_style",
+        parent = "heading_3_label",
+        bottom_padding = 4
+      },
+      use_header_filler = false,
+      padding = 12,
+      top_padding = 4
+    },
+
+    statistics_table_item_frame =
+    {
+      type = "frame_style",
+      parent = "subpanel_frame",
+      graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_shadow
+      },
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        vertical_align = "center"
+      }
+    },
+
     subpanel_inset_frame =
     {
       type = "frame_style",
-      graphical_set = {base = {position = {85, 0}, corner_size = 8, draw_type = "outer"}},
+      graphical_set =
+      {
+        base = {position = {85, 0}, corner_size = 8, draw_type = "outer"},
+        shadow = default_inner_shadow
+      },
       padding = 0
+    },
+
+    subpanel_inset_frame_packed =
+    {
+      type = "frame_style",
+      parent = "subpanel_inset_frame",
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        horizontal_spacing = 0
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      },
+    },
+
+    control_settings_section_frame =
+    {
+      type = "frame_style",
+      parent = "subpanel_inset_frame",
+      graphical_set = {base = {position = {85, 0}, corner_size = 8, draw_type = "outer"}}
     },
 
     mod_info_frame =
@@ -6374,6 +6492,23 @@ data:extend(
       use_header_filler = false
     },
 
+    statistics_time_buttons_frame =
+    {
+      type = "frame_style",
+      graphical_set =
+      {
+        base =
+        {
+          position = {68, 9}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        }
+        -- TODO Oxyd: Bottom shadow.
+      },
+      left_padding = 4,
+      right_padding = 4
+    },
+
     quick_bar_inner_panel =
     {
       type = "frame_style",
@@ -6711,6 +6846,41 @@ data:extend(
       }
     },
 
+    statistics_slot_button =
+    {
+      type = "button_style",
+      parent = "quick_bar_slot_button",
+      default_graphical_set =
+      {
+        base = {border = 4, position = {0, 736}, size = 80},
+        shadow = offset_by_4_rounded_corners_subpanel_inset
+      },
+      hovered_graphical_set =
+      {
+        base = {border = 4, position = {80, 736}, size = 80},
+        shadow = offset_by_4_rounded_corners_subpanel_inset
+      },
+      clicked_graphical_set =
+      {
+        base = {border = 4, position = {160, 736}, size = 80},
+        shadow = offset_by_4_rounded_corners_subpanel_inset
+      },
+      selected_graphical_set =
+      {
+        base = {border = 4, position = {80, 736}, size = 80},
+        shadow = offset_by_4_rounded_corners_subpanel_inset
+      },
+      selected_hovered_graphical_set =
+      {
+        base = {border = 4, position = {80, 736}, size = 80},
+        shadow = offset_by_4_rounded_corners_subpanel_inset
+      },
+      selected_clicked_graphical_set =
+      {
+        base = {border = 4, position = {160, 736}, size = 80},
+        shadow = offset_by_4_rounded_corners_subpanel_inset
+      },
+    },
     CGUI_yellow_filter_slot_button =
     {
       type = "button_style",
@@ -7008,7 +7178,8 @@ data:extend(
       },
       bar = {position = {313, 48}, corner_size = 8},
       font = "default",
-      font_color = {1, 1, 1}
+      font_color = {1, 1, 1},
+      embed_text_in_bar = false
     },
     activity_bar =
     {
@@ -7177,11 +7348,29 @@ data:extend(
     electric_satisfaction_progressbar =
     {
       type = "progressbar_style",
+      filled_font_color = {0, 0, 0},
+      horizontal_align = "right",
+      right_padding = 8,
+      color = {43, 227, 39},
       other_colors =
       {
-        {less_than = 0.5, color = {1, 0, 0}},
-        {less_than = 1, color = {1, 1, 0}}
+        {less_than = 0.5, color = {218, 69, 53}},
+        {less_than = 1, color = {219, 176, 22}}
       }
+    },
+    electric_satisfaction_statistics_progressbar =
+    {
+      type = "progressbar_style",
+      parent = "electric_satisfaction_progressbar",
+      height = 28,
+      bar_width = 28,
+      embed_text_in_bar = true,
+    },
+    electric_statistics_progressbar =
+    {
+      type = "progressbar_style",
+      parent = "electric_satisfaction_statistics_progressbar",
+      other_colors = {}
     },
     electric_satisfaction_in_description_progressbar =
     {
@@ -7189,6 +7378,16 @@ data:extend(
       parent = "electric_satisfaction_progressbar",
       top_padding = 2, -- to compensate the text not looking centered
       height = 9
+    },
+    electric_satisfaction_table =
+    {
+      type = "table_style",
+      parent = "bordered_table",
+      top_cell_padding = 0,
+      bottom_cell_padding = 0,
+      right_cell_padding = 0,
+      top_padding = 8,
+      bottom_padding = 8
     },
     checkbox =
     {
@@ -7467,58 +7666,62 @@ data:extend(
       natural_width = 550, -- it resizes to 550 by default, but it can be squashed to be smaller
       height = 200,
       background_color = {r=0.05, g=0.05, b=0.05, a=0.9},
-      line_colors=
+      line_colors =
       {
-        {0.22, 0.41, 0.69},
-        {0.85, 0.48, 0.18},
-        {0.24, 0.58, 0.31},
-        {0.8, 0.1, 0.16},
-        {0.553, 0.365, 0.675},
-        {0.87, 0.72, 0},
-        {0, 0.667, 0.7},
-        {0.47, 0.47, 0.47},
-        {0.816, 0.533, 0.72},
-        {0.565, 0.33, 0.22},
-        {0.49, 0.7, 0},
-        {0.58, 0.69, 0.898},
-        {0.937, 0.714, 0.604},
-        {0.518, 0.753, 0.592},
-        {1, 0.57, 0.565},
-        {0.78, 0.682, 0.87},
-        {0.945, 0.86, 0.467},
-        {0.514, 0.843, 0.81},
-        {0.733, 0.733, 0.733},
-        {0.906, 0.733, 0.84},
-        {0.67, 0.855, 0.486},
-        {0.72, 0.604, 0.553}
+        {0, 109, 255},
+        {255, 100, 0},
+        {80, 178, 14},
+        {204, 25, 40},
+        {212, 158, 27},
+        {232, 0, 213},
+        {0, 159, 173},
+        {133, 69, 40},
+        {137, 0, 161},
+        {83, 117, 59},
+        {224, 127, 126},
+        {142, 106, 169},
+        {98, 172, 101},
+        {73, 123, 155},
+        {134, 129, 78},
+        {133, 104, 49},
+        {208, 104, 0},
+        {145, 75, 75}
       },
-      horizontal_lable_style =
+      horizontal_label_style =
       {
         type = "label_style",
         parent = "label",
         font = "default-small",
-        right_padding = 0
+        right_padding = 0,
+        font_color = {100, 100, 100},
       },
-      vertical_lable_style =
+      vertical_label_style =
       {
         type = "label_style",
         parent = "label",
         font = "default-small",
         right_padding = 4,
-        left_padding = 0
+        left_padding = 0,
+        font_color = {100, 100, 100},
       },
       minimal_horizontal_label_spacing = 25,
       minimal_vertical_label_spacing = 22,
-      horizontal_labels_margin = 16,
-      vertical_labels_margin = 32,
-      -- this margin should be just enough to make the topmost vertical label not render outside
-      graph_top_margin = 5,
+      horizontal_labels_margin = 24,
+      vertical_labels_margin = 36,
+      graph_top_margin = 12,
+      graph_right_margin = 12,
       -- how close do you need to hover a data line for it to be highlited and the tooltip to appear
       data_line_highlight_distance = 20,
       -- the size of the dot that shows the currently selected data point
       selection_dot_radius = 3,
       grid_lines_color = {r=0.15, g=0.15, b=0.15},
       guide_lines_color = {r=0.9, g=0.9, b=0.9}
+    },
+
+    production_graph =
+    {
+      type = "graph_style",
+      width = 556,
     },
 
     slider_button =
@@ -8071,6 +8274,28 @@ data:extend(
         left_padding = 12,
         right_padding = 12,
         horizontal_spacing = 0
+      }
+    },
+
+    production_gui_tabbed_pane =
+    {
+      type = "tabbed_pane_style",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        top_padding = 8,
+        right_padding = 0,
+        bottom_padding = 0,
+        left_padding = 0,
+        graphical_set =
+        {
+          base =
+          {
+            top = {position = {76, 0}, size = {1, 8}},
+            center = {position = {76, 8}, size = {1, 1}}
+          },
+          shadow = top_shadow
+        }
       }
     },
 
@@ -8822,6 +9047,12 @@ data:extend(
       type = "label_style",
       font = "default-semibold",
       font_color = {128, 206, 240},
+    },
+
+    search_bar_horizontal_flow =
+    {
+      type = "horizontal_flow_style",
+      vertical_align = "center"
     },
   }
 }

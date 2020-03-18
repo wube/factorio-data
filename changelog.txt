@@ -1,6 +1,20 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.14
+Version: 0.18.15
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.14
+Date: 18. 03. 2020
+  Gui:
+    - The production statistics and electric network GUIs now have a new look.
+    - The kills GUI (K keyboard shortcut) has been removed. Kills statistics are now accessible as a tab in the production statistics GUI.
+  Bugfixes:
+    - Fixed an issue with nested items in items. (https://forums.factorio.com/82280)
+    - Fixed Character GUI missing logistics tab due to missing technology migration. (https://forums.factorio.com/82445)
+    - Fixed Character GUI recipes constantly scrolling up when crafting or when inventory changes. (https://forums.factorio.com/82438)
+    - Fixed that simple mouse click on double slider button would not set a slider as active. (https://forums.factorio.com/82454)
+    - Fixed that tabbing out of empty high value textfield of double slider would reset it to 0. (https://forums.factorio.com/82454)
+  Scripting:
+    - Removed the defines.gui_type.kills value from defines.gui_type.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.13
 Date: 17. 03. 2020
