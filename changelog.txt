@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.15
+Version: 0.18.16
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.15
+Date: 20. 03. 2020
+  Changes:
+    - ENTER key can now be used to confirm the small "Set request" pop-up windows.
+  Bugfixes:
+    - Fixed that defines.gui_type was missing some values. (https://forums.factorio.com/82493)
+    - Fixed tabs not changing correctly in the item select gui for train circuit/item/fluid conditions. (https://forums.factorio.com/82522)
+    - Fixed that deleting blueprints didn't work in some cases. (https://forums.factorio.com/82511)
+    - Fixed a crash related to fast-replacing character entities through mods. (https://forums.factorio.com/82453)
+    - Fixed that the "watch your step" achievement wouldn't show the achievement popup. (https://forums.factorio.com/82015)
+    - Fixed script error when starting the mini-tutorials. (https://forums.factorio.com/82496)
+    - Possibly fixed setting up heavily edited blueprints could drop players in multiplayer. (https://forums.factorio.com/75542)
+    - Fixed that the graph in statistics GUI wouldn't show some data series if the search was being used. (https://forums.factorio.com/82497)
+  Scripting:
+    - Serpent now uses 0 instead of nil as a placeholder in case of cyclic references. This will help prevent some specific desyncs with custom scenario or mod scripts.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.14
 Date: 18. 03. 2020
