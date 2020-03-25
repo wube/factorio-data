@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.16
+Version: 0.18.17
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.16
+Date: 25. 03. 2020
+  Graphics:
+    - New water splash effects using water particles instead of an animation.
+    - New animations for leaf particles.
+  Bugfixes:
+    - Fixed the tank not being properly centered to its bounding box (graphical issue).
+    - Fixed GUI windows not drawing properly when they can't fit the screen width. (https://forums.factorio.com/82708)
+    - Fixed glowing Heat pipe ending sprites. (https://forums.factorio.com/81410)
+    - Fixed some character bonuses in bonus GUI not being printed correctly. (https://forums.factorio.com/82642)
+    - Fixed character GUI player color sliders not changing chat colors (https://forums.factorio.com/82501)
+    - Fixed that hotkeys wouldn't work while using the character logistics GUI in some cases. (https://forums.factorio.com/82593)
+    - Fixed a desync related to unit speed changing while part of a unit group. (https://forums.factorio.com/81054)
+    - Fixed some Trigger Effects not showing correct repeat count in tooltips. (https://forums.factorio.com/80872)
+  Scripting:
+    - Added LuaEntity::effective_speed
+    - Added LuaControl::is_flashlight_enabled
+    - The 'on_ai_command_completed' event will now fire for distraction commands.
+    - Added 'was_distracted' to the 'on_ai_command_completed' event. If true, it means the completed command was a distraction command.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.15
 Date: 20. 03. 2020

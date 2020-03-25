@@ -1379,111 +1379,33 @@ particle_animations.get_branch_particle_pictures = function()
   }
 end
 
-particle_animations.get_leaf_particle_shadow_pictures = function()
-  return  
-  {
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-01-shadow.png",
-      width = 6,
-      height = 6,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-02-shadow.png",
-      width = 6,
-      height = 4,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-03-shadow.png",
-      width = 8,
-      height = 5,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-04-shadow.png",
-      width = 6,
-      height = 6,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-05-shadow.png",
-      width = 6,
-      height = 5,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-06-shadow.png",
-      width = 6,
-      height = 4,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-07-shadow.png",
-      width = 6,
-      height = 6,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-08-shadow.png",
-      width = 4,
-      height = 7,
-      frame_count = 8
-    }
-  }
-end
-
 particle_animations.get_leaf_particle_pictures = function()
   return
-  
   {
+    sheet =
     {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-01.png",
-      width = 6,
-      height = 6,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-02.png",
-      width = 6,
-      height = 4,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-03.png",
-      width = 8,
-      height = 5,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-04.png",
-      width = 6,
-      height = 6,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-05.png",
-      width = 6,
-      height = 5,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-06.png",
-      width = 6,
-      height = 4,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-07.png",
-      width = 6,
-      height = 6,
-      frame_count = 8
-    },
-    {
-      filename = "__base__/graphics/particle/leaf-particle/leaf-particle-08.png",
-      width = 4,
-      height = 7,
-      frame_count = 8
+      filename = "__base__/graphics/particle/leaf-particle/leaf-particle.png",
+      priority = "extra-high",
+      line_length = 12,
+      width = 12,
+      height = 10,
+      frame_count = 12,
+      animation_speed = 0.5,
+      variation_count = 10,
+      shift = util.add_shift(util.by_pixel(3.5,-0.5), options.shift),
+      hr_version =
+      {
+        filename = "__base__/graphics/particle/leaf-particle/hr-leaf-particle.png",
+        priority = "extra-high",
+        line_length = 12,
+        width = 26,
+        height = 18,
+        frame_count = 12,
+        animation_speed = 0.5,
+        variation_count = 10,
+        shift = util.add_shift(util.by_pixel(3.25,-0.75), options.shift),
+        scale = 0.5,
+      }
     }
   }
 end

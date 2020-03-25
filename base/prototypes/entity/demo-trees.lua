@@ -7171,7 +7171,10 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
         initial_height = 2,
         initial_height_deviation = 1,
-        speed_from_center = 0.01
+        initial_vertical_speed = 0.01,
+        initial_height_deviation = 0.05,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0.01
       },
       branch_generation =
       {
@@ -7180,8 +7183,10 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
         initial_height = 2,
         initial_height_deviation = 2,
-        speed_from_center = 0.01,
-        frame_speed = 0.1,
+        initial_vertical_speed = 0.01,
+        speed_from_center = 0.03,
+        speed_from_center_deviation = 0.01,
+        frame_speed = 0.4,
         repeat_count = 15
       }
     }

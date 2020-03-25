@@ -39,10 +39,61 @@ end
 local default_ended_in_water_trigger_effect = function()
   return
   {
-    type = "create-entity",
-    entity_name = "water-splash"
+    
+    {
+      
+      type = "create-particle",
+      probability = 1,
+      affects_target = false,
+      show_in_tooltip = false,
+      particle_name = "deep-water-particle",
+      offset_deviation = { { -0.05, -0.05 }, { 0.05, 0.05 } },
+      tile_collision_mask = nil,
+      initial_height = 0,
+      initial_height_deviation = 0.02,
+      initial_vertical_speed = 0.05,
+      initial_vertical_speed_deviation = 0.05,
+      speed_from_center = 0.01,
+      speed_from_center_deviation = 0.006,
+      frame_speed = 1,
+      frame_speed_deviation = 0,
+      tail_length = 2,
+      tail_length_deviation = 1,
+      tail_width = 3
+    },
+    {
+      type = "create-particle",
+      repeat_count = 10,
+      repeat_count_deviation = 6,
+      probability = 0.03,
+      affects_target = false,
+      show_in_tooltip = false,
+      particle_name = "deep-water-particle",
+      offsets =
+      {
+        { 0, 0 },
+        { 0.01563, -0.09375 },
+        { 0.0625, 0.09375 },
+        { -0.1094, 0.0625 }
+      },
+      offset_deviation = { { -0.2969, -0.1992 }, { 0.2969, 0.1992 } },
+      tile_collision_mask = nil,
+      initial_height = 0,
+      initial_height_deviation = 0.02,
+      initial_vertical_speed = 0.053,
+      initial_vertical_speed_deviation = 0.005,
+      speed_from_center = 0.02,
+      speed_from_center_deviation = 0.006,
+      frame_speed = 1,
+      frame_speed_deviation = 0,
+      tail_length = 9,
+      tail_length_deviation = 0,
+      tail_width = 1
+    }
   }
+  
 end
+
 
 local make_particle = function(params)
 
@@ -433,9 +484,9 @@ local particles =
     name = "deep-water-particle",
     movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = watertint()}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.072, g = 0.278, b = 0.322, a = 0.314 }}), 
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
   },
 
   make_particle
@@ -4844,14 +4895,14 @@ local particles =
     horizontal_speed = 0.05,
     horizontal_speed_deviation = 0.04,
   },
-
+  
   make_particle
   {
     name = "leaf-particle",
     life_time = 180,
     movement_modifier = 0.9,
     pictures = particle_animations.get_leaf_particle_pictures(),
-    shadows = particle_animations.get_leaf_particle_shadow_pictures(),
+    shadows = particle_animations.get_leaf_particle_pictures{shift = util.by_pixel(1.5, -1), tint = shadowtint()},
     ended_in_water_trigger_effect = false
   },
 

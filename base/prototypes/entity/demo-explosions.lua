@@ -359,7 +359,38 @@ data:extend
     name = "water-splash",
     flags = {"not-on-map"},
     subgroup = "explosions",
-    animations = explosion_animations.water_splash()
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          type = "create-particle",
+          repeat_count = 10,
+          repeat_count_deviation = 6,
+          particle_name = "deep-water-particle",
+          offsets =
+          {
+            { 0, 0 },
+          },
+          offset_deviation = { { -0.2969, -0.1992 }, { 0.2969, 0.1992 } },
+          initial_height = 0,
+          initial_height_deviation = 0.02,
+          initial_vertical_speed = 0.053,
+          initial_vertical_speed_deviation = 0.005,
+          speed_from_center = 0.02,
+          speed_from_center_deviation = 0.006,
+          frame_speed = 1,
+          frame_speed_deviation = 0,
+          tail_length = 9,
+          tail_length_deviation = 0,
+          tail_width = 1
+        }
+      }
+    }
   },
 
   {

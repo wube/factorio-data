@@ -418,20 +418,4 @@ explosion_animations.artillery_muzzle_flash = function()
   }
 end
 
-explosion_animations.water_splash = function()
-  return
-  {
-    {
-      filename = "__base__/graphics/entity/water-splash/water-splash.png",
-      priority = "extra-high",
-      width = 92,
-      height = 66,
-      frame_count = 15,
-      line_length = 5,
-      shift = {-0.437, 0.5},
-      animation_speed = 0.35
-    }
-  }
-end
-
 return explosion_animations

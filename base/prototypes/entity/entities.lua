@@ -12,6 +12,8 @@ require ("prototypes.entity.combinator-pictures")
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 local sounds = require("prototypes.entity.demo-sounds")
 
+local tank_shift_y = 6
+
 logistic_chest_opened_duration = 7
 
 rail_pictures = function()
@@ -1467,7 +1469,7 @@ data:extend(
           width = 200,
           height = 200
         },
-        shift = {-0.6, -14},
+        shift = {-0.6, -14 + tank_shift_y / 32},
         size = 2,
         intensity = 0.6,
         color = {r = 0.9, g = 1.0, b = 1.0}
@@ -1484,7 +1486,7 @@ data:extend(
           width = 200,
           height = 200
         },
-        shift = {0.6, -14},
+        shift = {0.6, -14 + tank_shift_y / 32},
         size = 2,
         intensity = 0.6,
         color = {r = 0.9, g = 1.0, b = 1.0}
@@ -1496,11 +1498,11 @@ data:extend(
       {
         {
           priority = "low",
-          width = 135,
+          width = 136,
           height = 106,
           frame_count = 2,
           direction_count = 64,
-          shift = util.by_pixel(-4.5, -10),
+          shift = util.by_pixel(0, -16 + tank_shift_y),
           animation_speed = 8,
           max_advance = 1,
           stripes =
@@ -1529,11 +1531,11 @@ data:extend(
           hr_version =
           {
             priority = "low",
-            width = 269,
+            width = 270,
             height = 212,
             frame_count = 2,
             direction_count = 64,
-            shift = util.by_pixel(-4.75, -10),
+            shift = util.by_pixel(0, -16 + tank_shift_y),
             animation_speed = 8,
             max_advance = 1,
             stripes =
@@ -1565,11 +1567,11 @@ data:extend(
         {
           priority = "low",
           width = 104,
-          height = 84,
+          height = 83,
           frame_count = 2,
           apply_runtime_tint = true,
           direction_count = 64,
-          shift = util.by_pixel(-5, -21),
+          shift = util.by_pixel(0, -27.5 + tank_shift_y),
           max_advance = 1,
           line_length = 2,
           stripes = util.multiplystripes(2,
@@ -1593,12 +1595,12 @@ data:extend(
           hr_version =
           {
             priority = "low",
-            width = 207,
+            width = 208,
             height = 166,
             frame_count = 2,
             apply_runtime_tint = true,
             direction_count = 64,
-            shift = util.by_pixel(-4.75, -21),
+            shift = util.by_pixel(0, -27.5 + tank_shift_y),
             max_advance = 1,
             line_length = 2,
             stripes = util.multiplystripes(2,
@@ -1629,7 +1631,7 @@ data:extend(
           frame_count = 2,
           draw_as_shadow = true,
           direction_count = 64,
-          shift = util.by_pixel(17.5, 7),
+          shift = util.by_pixel(22.5, 1 + tank_shift_y),
           max_advance = 1,
           stripes = util.multiplystripes(2,
           {
@@ -1657,12 +1659,12 @@ data:extend(
           hr_version =
           {
             priority = "low",
-            width = 301,
+            width = 302,
             height = 194,
             frame_count = 2,
             draw_as_shadow = true,
             direction_count = 64,
-            shift = util.by_pixel(17.75, 7),
+            shift = util.by_pixel(22.5, 1 + tank_shift_y),
             max_advance = 1,
             stripes = util.multiplystripes(2,
             {
@@ -1704,7 +1706,7 @@ data:extend(
           height = 67,
           frame_count = 1,
           direction_count = 64,
-          shift = util.by_pixel(-5, -34.5),
+          shift = util.by_pixel(2-2, -40.5 + tank_shift_y),
           animation_speed = 8,
           hr_version =
           {
@@ -1715,7 +1717,7 @@ data:extend(
             height = 132,
             frame_count = 1,
             direction_count = 64,
-            shift = util.by_pixel(-4.75, -34.5),
+            shift = util.by_pixel(2.25-2, -40.5 + tank_shift_y),
             animation_speed = 8,
             scale = 0.5
           }
@@ -1729,7 +1731,7 @@ data:extend(
           frame_count = 1,
           apply_runtime_tint = true,
           direction_count = 64,
-          shift = util.by_pixel(-5, -35.5),
+          shift = util.by_pixel(2-2, -41.5 + tank_shift_y),
           hr_version =
           {
             filename = "__base__/graphics/entity/tank/hr-tank-turret-mask.png",
@@ -1740,7 +1742,7 @@ data:extend(
             frame_count = 1,
             apply_runtime_tint = true,
             direction_count = 64,
-            shift = util.by_pixel(-5, -35.5),
+            shift = util.by_pixel(2-2, -41.5 + tank_shift_y),
             scale = 0.5
           }
         },
@@ -1753,7 +1755,7 @@ data:extend(
           frame_count = 1,
           draw_as_shadow = true,
           direction_count = 64,
-          shift = util.by_pixel(51.5, 6.5),
+          shift = util.by_pixel(58.5-2, 0.5 + tank_shift_y),
           hr_version =
           {
             filename = "__base__/graphics/entity/tank/hr-tank-turret-shadow.png",
@@ -1764,7 +1766,7 @@ data:extend(
             frame_count = 1,
             draw_as_shadow = true,
             direction_count = 64,
-            shift = util.by_pixel(51.25, 6.5),
+            shift = util.by_pixel(58.25-2, 0.5 + tank_shift_y),
             scale = 0.5
           }
         }
