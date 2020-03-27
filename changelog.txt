@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.17
+Version: 0.18.18
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.17
+Date: 27. 03. 2020
+  Bugfixes:
+    - Fixed Map Generator GUI becoming larger than the screen. (https://forums.factorio.com/82802)
+    - Fixed Blueprint Setup GUI becoming larger than the screen. (https://forums.factorio.com/82840)
+    - Fixed number pad Enter would be ignored by personal logistic request setup GUI if it was bound to in-game action. (https://forums.factorio.com/82852)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.16
 Date: 25. 03. 2020
