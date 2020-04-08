@@ -2581,7 +2581,7 @@ define_tiles
     order = "a-a-a",
     needs_correction = false,
     minable = {mining_time = 0.1, result = "stone-brick"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.3,
     layer = 60,
@@ -2879,7 +2879,7 @@ define_tiles
     order = "a-b-a",
     needs_correction = false,
     minable = (not data.is_demo) and {mining_time = 0.1, result = "concrete"} or nil,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.4,
     layer = 61,
@@ -3052,7 +3052,7 @@ define_tiles
     next_direction = "hazard-concrete-right",
     transition_merges_with_tile = "concrete",
     minable = (not data.is_demo) and {mining_time = 0.1, result = "hazard-concrete"} or nil,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.4,
     layer = 62,
@@ -3164,7 +3164,7 @@ define_tiles
     next_direction = "hazard-concrete-left",
     transition_merges_with_tile = "concrete",
     minable = (not data.is_demo) and {mining_time = 0.1, result = "hazard-concrete"} or nil,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.4,
     layer = 62,
@@ -3244,7 +3244,7 @@ define_tiles
     order = "a-c-a",
     needs_correction = false,
     minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-concrete"} or nil,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.5,
     layer = 64,
@@ -3418,7 +3418,7 @@ define_tiles
     next_direction = "refined-hazard-concrete-right",
     transition_merges_with_tile = "refined-concrete",
     minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-hazard-concrete"} or nil,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.5,
     layer = 65,
@@ -3530,7 +3530,7 @@ define_tiles
     next_direction = "refined-hazard-concrete-left",
     transition_merges_with_tile = "refined-concrete",
     minable = (not data.is_demo) and {mining_time = 0.1, result = "refined-hazard-concrete"} or nil,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.5,
     layer = 65,
@@ -3712,5 +3712,6 @@ for k, color in pairs (colors) do
   new.order = "a-e-"..color.name
   new.layer = concrete.layer + (k * 3)
   new.map_color = color.player_color
+  new.minable = nil
   data:extend{new}
 end

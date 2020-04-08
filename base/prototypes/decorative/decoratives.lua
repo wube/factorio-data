@@ -3265,7 +3265,7 @@ data:extend{
       sharpness = 1,
       max_probability = 1,
       random_probability_penalty = 0.4,
-      coverage = 0.01;
+      coverage = 0.01,
       peaks = autoplace_utils.peaks({{{35, 1}, {25, 0.3}}},
       {
         {
@@ -3653,7 +3653,7 @@ data:extend{
       sharpness = 1,
       max_probability = 1,
       random_probability_penalty = 0.4,
-      -- coverage = 0.01;
+      -- coverage = 0.01,
       peaks = autoplace_utils.peaks({{{35, 2/8}, {25, 1/8}}},
       {
         {
@@ -4045,7 +4045,7 @@ data:extend{
       sharpness = 1,
       max_probability = 1,
       random_probability_penalty = 0.4,
-      coverage = 0.01;
+      coverage = 0.01,
       peaks = autoplace_utils.peaks({{{30, 0.5}, {20, 0.3}}},
       {
         {
@@ -4393,7 +4393,7 @@ data:extend{
       sharpness = 1,
       max_probability = 1,
       random_probability_penalty = 0.4,
-      coverage = 0.01;
+      coverage = 0.01,
       peaks = autoplace_utils.peaks({{{30, 0.4}, {20, 0.25}}},
       {
         {
@@ -4740,7 +4740,7 @@ data:extend{
     --  sharpness = 1,
     --  max_probability = 1,
     --  random_probability_penalty = 0.4,
-    --  coverage = 0.01;
+    --  coverage = 0.01,
     --  peaks = autoplace_utils.peaks({{{35, 1}, {20, 0.4}}},
     --  {
     --    {
@@ -5023,7 +5023,7 @@ data:extend{
       sharpness = 1,
       max_probability = 1,
       random_probability_penalty = 0.4,
-      coverage = 0.01;
+      coverage = 0.01,
       peaks = autoplace_utils.peaks({{{35, 1}, {20, 0.4}}},
       {
         {
@@ -7575,7 +7575,7 @@ data:extend{
       {item = "stone", probability = 1, count_min = 25, count_max = 50}
     },
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sounds.axe_mining_ore,
     vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 2000,
@@ -7838,7 +7838,7 @@ data:extend{
       {item = "stone", probability = 1, count_min = 9, count_max = 25}
     },
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sounds.axe_mining_ore,
     vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 500,
@@ -8906,7 +8906,7 @@ data:extend{
       }
     },
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sounds.axe_mining_ore,
     vehicle_impact_sound = sounds.car_stone_impact,
     pictures =
     {

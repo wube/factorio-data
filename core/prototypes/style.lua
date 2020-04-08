@@ -190,7 +190,7 @@ function arrow_forward(tileset, index, glow_name, glow_color)
   if (glow_name) then
     result[glow_name] = forward_button_glow(glow_color)
   end
-  return result;
+  return result
 end
 
 function double_arrow_forward(tileset, index, glow_name, glow_color)
@@ -212,7 +212,7 @@ function double_arrow_forward(tileset, index, glow_name, glow_color)
   if (glow_name) then
     result[glow_name] = double_arrow_forward_button_glow(glow_color)
   end
-  return result;
+  return result
 end
 
 function default_inner_glow(tint_value, scale_value)
@@ -3853,7 +3853,7 @@ data:extend(
     {
       type = "scroll_pane_style",
       parent = "filter_scroll_pane",
-      vertically_stretchable = "on";
+      vertically_stretchable = "on"
     },
 
     controller_logistics_scroll_pane =
@@ -5178,8 +5178,19 @@ data:extend(
     titlebar_search_textfield =
     {
       type = "textbox_style",
-      horizontally_stretchable = "on",
-      width = 0
+      top_margin = -2,
+    },
+    production_gui_search_textfield =
+    {
+      type = "textbox_style",
+      parent = "titlebar_search_textfield",
+      width = 336
+    },
+    electric_gui_search_textfield =
+    {
+      type = "textbox_style",
+      parent = "titlebar_search_textfield",
+      width = 328
     },
     search_popup_textfield =
     {
@@ -5757,6 +5768,13 @@ data:extend(
       graphical_set = {base = {position = {68, 0}, corner_size = 8}},
       left_padding = 4,
       right_padding = 4
+    },
+
+    subpanel_frame_packed =
+    {
+      type = "frame_style",
+      parent = "subpanel_frame",
+      padding = 0
     },
 
     statistics_frame =
@@ -8163,7 +8181,7 @@ data:extend(
       type = "scroll_pane_style",
       parent = "inventory_scroll_pane",
       vertically_stretchable = "off",
-      maximal_height = 120; -- 3 rows of 38 size slots, 1px margin around each
+      maximal_height = 120 -- 3 rows of 38 size slots, 1px margin around each
     },
 
     logistic_gui_scroll_pane =

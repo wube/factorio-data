@@ -148,23 +148,26 @@ data:extend(
       }
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         {
           filename = "__base__/sound/pumpjack.ogg",
-          volume = 0.4
+          volume = 0.43
         },
         {
           filename = "__base__/sound/pumpjack-1.ogg",
-          volume = 0.4
+          volume = 0.43
         }  
       },
       apparent_volume = 1.5,
-      max_sounds_per_type = 2,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30,
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 1,
+      fade_in_ticks = 4,
+      fade_out_ticks = 10,
     },
     fast_replaceable_group = "pumpjack",
 

@@ -61,7 +61,7 @@ data:extend(
       range = 1,
       cooldown = 35,
       cooldown_deviation = 0.15,
-      sound = sounds.biter_roars(0.4),
+      sound = sounds.biter_roars(0.45),
       animation = biterattackanimation(medium_biter_scale, medium_biter_tint1, medium_biter_tint2)
     },
     vision_distance = 30,
@@ -70,9 +70,9 @@ data:extend(
     -- in pu
     pollution_to_join_attack = 20,
     corpse = "medium-biter-corpse",
-    dying_explosion = "blood-explosion-small",
-    working_sound = sounds.biter_calls(0.9),
-    dying_sound = sounds.biter_dying(0.5),
+    dying_explosion = "medium-biter-die",
+    working_sound = sounds.biter_calls(0.87),
+    dying_sound = sounds.biter_dying(0.43),
     run_animation = biterrunanimation(medium_biter_scale, medium_biter_tint1, medium_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk(0.4),
@@ -117,7 +117,7 @@ data:extend(
       cooldown = 35,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(30),
-      sound =  sounds.biter_roars_big(0.4),
+      sound =  sounds.biter_roars_big(0.3),
       animation = biterattackanimation(big_biter_scale, big_biter_tint1, big_biter_tint2)
     },
     vision_distance = 30,
@@ -126,9 +126,9 @@ data:extend(
     -- in pu
     pollution_to_join_attack = 80,
     corpse = "big-biter-corpse",
-    dying_explosion = "blood-explosion-big",
-    working_sound = sounds.biter_calls_big(1.0),
-    dying_sound = sounds.biter_dying_big(0.6),
+    dying_explosion = "big-biter-die",
+    working_sound = sounds.biter_calls_big(0.62),
+    dying_sound = sounds.biter_dying_big(0.5),
     run_animation = biterrunanimation(big_biter_scale, big_biter_tint1, big_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk_big(0.7),
@@ -174,7 +174,7 @@ data:extend(
       cooldown = 50,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(90),
-      sound =  sounds.biter_roars_big(0.6),
+      sound =  sounds.biter_roars_big(0.4),
       animation = biterattackanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2)
     },
     vision_distance = 30,
@@ -183,9 +183,9 @@ data:extend(
     -- in pu
     pollution_to_join_attack = 400,
     corpse = "behemoth-biter-corpse",
-    dying_explosion = "blood-explosion-big",
-    working_sound = sounds.biter_calls_big(1.0),
-    dying_sound = sounds.biter_dying_big(0.7),
+    dying_explosion = "behemoth-biter-die",
+    working_sound = sounds.biter_calls_big(0.71),
+    dying_sound = sounds.biter_dying_big(0.6),
     run_animation = biterrunanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk_big(0.8),
@@ -233,8 +233,8 @@ data:extend(
     -- in pu
     pollution_to_join_attack = 4,
     corpse = "small-spitter-corpse",
-    dying_explosion = "blood-explosion-small",
-    working_sound = sounds.spitter_calls(0.7),
+    dying_explosion = "small-spitter-die",
+    working_sound = sounds.spitter_calls(0.44),
     dying_sound = sounds.spitter_dying(0.4),
     run_animation = spitterrunanimation(scale_spitter_small, tint_1_spitter_small, tint_2_spitter_small),
     running_sound_animation_positions = {2,},
@@ -287,8 +287,8 @@ data:extend(
     -- in pu
     pollution_to_join_attack = 12,
     corpse = "medium-spitter-corpse",
-    dying_explosion = "blood-explosion-small",
-    working_sound = sounds.spitter_calls_med(0.6),
+    dying_explosion = "medium-spitter-die",
+    working_sound = sounds.spitter_calls_med(0.53),
     dying_sound = sounds.spitter_dying(0.5),
     run_animation = spitterrunanimation(scale_spitter_medium, tint_1_spitter_medium, tint_2_spitter_medium),
     running_sound_animation_positions = {2,},
@@ -342,8 +342,8 @@ data:extend(
     -- in pu
     pollution_to_join_attack = 30,
     corpse = "big-spitter-corpse",
-    dying_explosion = "blood-explosion-big",
-    working_sound = sounds.spitter_calls_big(0.7),
+    dying_explosion = "big-spitter-die",
+    working_sound = sounds.spitter_calls_big(0.46),
     dying_sound = sounds.spitter_dying_big(0.8),
     run_animation = spitterrunanimation(scale_spitter_big, tint_1_spitter_big, tint_2_spitter_big),
     running_sound_animation_positions = {2,},
@@ -399,8 +399,8 @@ data:extend(
     distance_per_frame = 0.084,
     pollution_to_join_attack = 200,
     corpse = "behemoth-spitter-corpse",
-    dying_explosion = "blood-explosion-big",
-    working_sound = sounds.spitter_calls_big(0.8),
+    dying_explosion = "behemoth-spitter-die",
+    working_sound = sounds.spitter_calls_big(0.6),
     dying_sound = sounds.spitter_dying_big(0.8),
     run_animation = spitterrunanimation(scale_spitter_behemoth, tint_1_spitter_behemoth, tint_2_spitter_behemoth),
     running_sound_animation_positions = {2,},
@@ -515,7 +515,7 @@ data:extend(
       {
         {
           filename = "__base__/sound/creatures/spawner.ogg",
-          volume = 1.0
+          volume = 0.9
         }
       },
       apparent_volume = 2
@@ -557,7 +557,7 @@ data:extend(
     pollution_absorption_absolute = 20,
     pollution_absorption_proportional = 0.01,
     corpse = "spitter-spawner-corpse",
-    dying_explosion = "blood-explosion-huge",
+    dying_explosion = "spitter-spawner-die",
     max_count_of_owned_units = 7,
     max_friends_around_to_spawn = 5,
     animations =

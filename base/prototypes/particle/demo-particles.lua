@@ -1,4 +1,5 @@
 local particle_animations = require("prototypes/particle/demo-particle-animations")
+local sounds = require("prototypes.entity.demo-sounds")
 
 local default_smoke_trigger_effect = function()
   return
@@ -39,9 +40,9 @@ end
 local default_ended_in_water_trigger_effect = function()
   return
   {
-    
+
     {
-      
+
       type = "create-particle",
       probability = 1,
       affects_target = false,
@@ -89,9 +90,13 @@ local default_ended_in_water_trigger_effect = function()
       tail_length = 9,
       tail_length_deviation = 0,
       tail_width = 1
-    }
+    },
+    {
+      type = "play-sound",
+      sound = sounds.small_splash,
+    },
   }
-  
+
 end
 
 
@@ -100,7 +105,7 @@ local make_particle = function(params)
   if not params then error("No params given to make_particle function") end
   local name = params.name or error("No name given")
 
-  local ended_in_water_trigger_effect = params.ended_in_water_trigger_effect or default_ended_in_water_trigger_effect();
+  local ended_in_water_trigger_effect = params.ended_in_water_trigger_effect or default_ended_in_water_trigger_effect()
   if params.ended_in_water_trigger_effect == false then
     ended_in_water_trigger_effect = nil
   end
@@ -122,6 +127,7 @@ local make_particle = function(params)
 
     pictures = params.pictures,
     shadows = params.shadows,
+    draw_shadow_when_on_ground = params.draw_shadow_when_on_ground,
 
     movement_modifier_when_on_ground = params.movement_modifier_when_on_ground,
     movement_modifier = params.movement_modifier,
@@ -277,7 +283,7 @@ local particles =
   make_particle
   {
     name = "wooden-chest-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({tint = {r = 1.000, g = 0.804, b = 0.463, a = 1.000}}), -- #ffcd75ff
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({tint = {r = 1.000, g = 0.804, b = 0.463, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -286,7 +292,7 @@ local particles =
   make_particle
   {
     name = "wooden-chest-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures ({tint = {r = 0.855, g = 0.687, b = 0.396, a = 1.000}}), -- #daaf64ff
+    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures ({tint = {r = 0.855, g = 0.687, b = 0.396, a = 1.000}}),
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -296,7 +302,7 @@ local particles =
   make_particle
   {
     name = "transport-belt-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures ({tint = {r = 0.416, g = 0.378, b = 0.341, a = 1.000}}), -- #6a6056ff
+    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures ({tint = {r = 0.416, g = 0.378, b = 0.341, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -305,7 +311,7 @@ local particles =
   make_particle
   {
     name = "transport-belt-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.898, g = 0.659, b = 0.031, a = 1.000}}), -- #e5a80800
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.898, g = 0.659, b = 0.031, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -314,7 +320,7 @@ local particles =
   make_particle
   {
     name = "transport-belt-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -323,7 +329,7 @@ local particles =
   make_particle
   {
     name = "fast-transport-belt-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.886, g = 0.090, b = 0.024, a = 1.000}}), -- #e21706ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.886, g = 0.090, b = 0.024, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -332,7 +338,7 @@ local particles =
   make_particle
   {
     name = "fast-transport-belt-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -341,7 +347,7 @@ local particles =
   make_particle
   {
     name = "express-transport-belt-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.024, g = 0.596, b = 0.816, a = 1.000}}), -- #0698d0ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.024, g = 0.596, b = 0.816, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -350,7 +356,7 @@ local particles =
   make_particle
   {
     name = "express-transport-belt-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -359,7 +365,7 @@ local particles =
   make_particle
   {
     name = "transport-belt-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.898, g = 0.659, b = 0.031, a = 1.000}}), -- #e5a80800
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.898, g = 0.659, b = 0.031, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -368,7 +374,7 @@ local particles =
   make_particle
   {
     name = "fast-transport-belt-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.886, g = 0.090, b = 0.024, a = 1.000}}), -- #e21706ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.886, g = 0.090, b = 0.024, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -377,7 +383,7 @@ local particles =
   make_particle
   {
     name = "express-transport-belt-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.024, g = 0.596, b = 0.816, a = 1.000}}), -- #0698d0ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.024, g = 0.596, b = 0.816, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -386,7 +392,7 @@ local particles =
   make_particle
   {
     name = "small-electric-pole-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({tint = {r = 0.694, g = 0.486, b = 0.289, a = 1.000}}), -- #B17C4AFF
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({tint = {r = 0.694, g = 0.486, b = 0.289, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -395,7 +401,7 @@ local particles =
   make_particle
   {
     name = "small-electric-pole-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.610, g = 0.427, b = 0.258, a = 1.000}}), -- #9b6c41ff
+    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.610, g = 0.427, b = 0.258, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -405,7 +411,7 @@ local particles =
   make_particle
   {
     name = "programmable-speaker-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({tint = {r = 0.595, g = 0.525, b = 0.445, a = 1.000}}), -- #978571ff
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({tint = {r = 0.595, g = 0.525, b = 0.445, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -414,7 +420,7 @@ local particles =
   make_particle
   {
     name = "programmable-speaker-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.895, g = 0.786, b = 0.659, a = 1.000}}), -- #e4c8a8ff
+    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.895, g = 0.786, b = 0.659, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -424,7 +430,7 @@ local particles =
   make_particle
   {
     name = "rail-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.843, g = 0.701, b = 0.378, a = 1.000}}), -- #d6b260ff
+    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.843, g = 0.701, b = 0.378, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -434,7 +440,7 @@ local particles =
   make_particle
   {
     name = "rail-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({tint = {r = 0.815, g = 0.815, b = 0.815, a = 1.000}}), -- #cfcfcfff
+    pictures = particle_animations.get_stone_particle_small_pictures({tint = {r = 0.815, g = 0.815, b = 0.815, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -470,7 +476,7 @@ local particles =
   make_particle
   {
     name = "rail-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.749, g = 0.749, b = 0.749, a = 1.000}}), -- #bebebeff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.749, g = 0.749, b = 0.749, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -484,7 +490,7 @@ local particles =
     name = "deep-water-particle",
     movement_modifier_when_on_ground = 0,
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.072, g = 0.278, b = 0.322, a = 0.314 }}), 
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.072, g = 0.278, b = 0.322, a = 0.314 }}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     ended_in_water_trigger_effect = false,
   },
@@ -1964,7 +1970,7 @@ local particles =
   make_particle
   {
     name = "iron-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.962, g = 0.899, b = 0.857, a = 1.000}}), -- #f5e5dbff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.962, g = 0.899, b = 0.857, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -1973,7 +1979,7 @@ local particles =
   make_particle
   {
     name = "iron-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.962, g = 0.899, b = 0.857, a = 1.000}}), -- #f5e5dbff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.962, g = 0.899, b = 0.857, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -1982,7 +1988,7 @@ local particles =
   make_particle
   {
     name = "steel-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.616, g = 0.553, b = 0.663, a = 1.000}}), -- #9d8da9ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.616, g = 0.553, b = 0.663, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -1991,7 +1997,7 @@ local particles =
   make_particle
   {
     name = "steel-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.616, g = 0.553, b = 0.663, a = 1.000}}), -- #9d8da9ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.616, g = 0.553, b = 0.663, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2009,7 +2015,7 @@ local particles =
   make_particle
   {
     name = "compilatron-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.843, g = 0.843, b = 0.843, a = 1.000}}), -- #d6d6d6ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.843, g = 0.843, b = 0.843, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2018,7 +2024,7 @@ local particles =
   make_particle
   {
     name = "compilatron-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.782, g = 0.782, b = 0.782, a = 1.000}}), -- #c7c7c7ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.782, g = 0.782, b = 0.782, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2027,7 +2033,7 @@ local particles =
   make_particle
   {
     name = "underground-belt-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.855, g = 0.710, b = 0.362, a = 1.000}}), -- #dab55cff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.855, g = 0.710, b = 0.362, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2036,7 +2042,7 @@ local particles =
   make_particle
   {
     name = "underground-belt-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.844, g = 0.844, b = 0.844, a = 1.000}}), -- #d7d7d7ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.844, g = 0.844, b = 0.844, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2045,7 +2051,7 @@ local particles =
   make_particle
   {
     name = "underground-belt-metal-particle-medium-yellow",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.855, g = 0.710, b = 0.362, a = 1.000}}), -- #dab55cff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.855, g = 0.710, b = 0.362, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2054,7 +2060,7 @@ local particles =
  make_particle
   {
     name = "fast-underground-belt-metal-particle-medium-red",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.890, g = 0.275, b = 0.282, a = 1.000}}), -- #e34648ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.890, g = 0.275, b = 0.282, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2063,7 +2069,7 @@ local particles =
  make_particle
   {
     name = "express-underground-belt-metal-particle-medium-blue",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.310, g = 0.682, b = 0.827, a = 1.000}}), -- #4faed3ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.310, g = 0.682, b = 0.827, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2072,7 +2078,7 @@ local particles =
   make_particle
   {
     name = "fast-underground-belt-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.701, g = 0.366, b = 0.366, a = 1.000}}), -- #b25d5dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.701, g = 0.366, b = 0.366, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2081,7 +2087,7 @@ local particles =
   make_particle
   {
     name = "fast-underground-belt-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.625, g = 0.598, b = 0.557, a = 1.000}}), -- #9f988dff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.625, g = 0.598, b = 0.557, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2090,7 +2096,7 @@ local particles =
   make_particle
   {
     name = "express-underground-belt-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.310, g = 0.682, b = 0.827, a = 1.000}}), -- #4faed3ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.310, g = 0.682, b = 0.827, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2099,7 +2105,7 @@ local particles =
   make_particle
   {
     name = "express-underground-belt-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.676, g = 0.602, b = 0.531, a = 1.000}}), -- #ac9987ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.676, g = 0.602, b = 0.531, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2108,7 +2114,7 @@ local particles =
   make_particle
   {
     name = "splitter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.766, g = 0.635, b = 0.541, a = 1.000}}), -- #c3a28aff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.766, g = 0.635, b = 0.541, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2117,7 +2123,7 @@ local particles =
   make_particle
   {
     name = "splitter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.863, b = 0.474, a = 1.000}}), -- #ffdb78ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.863, b = 0.474, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer ="object",
@@ -2127,7 +2133,7 @@ local particles =
   make_particle
   {
     name = "splitter-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.764, g = 0.764, b = 0.764, a = 1.000}}), -- #c2c2c2ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.764, g = 0.764, b = 0.764, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2136,7 +2142,7 @@ local particles =
   make_particle
   {
     name = "splitter-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.827, g = 0.655, b = 0.357, a = 1.000}}), -- #d3a75bff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.827, g = 0.655, b = 0.357, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2146,7 +2152,7 @@ local particles =
   make_particle
   {
     name = "splitter-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2155,7 +2161,7 @@ local particles =
   make_particle
   {
     name = "fast-splitter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.701, g = 0.366, b = 0.366, a = 1.000}}), -- #b25d5dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.701, g = 0.366, b = 0.366, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2164,7 +2170,7 @@ local particles =
   make_particle
   {
     name = "fast-splitter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.729, g = 0.275, b = 0.267, a = 1.000}}), -- #ba4644ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.729, g = 0.275, b = 0.267, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2174,7 +2180,7 @@ local particles =
   make_particle
   {
     name = "fast-splitter-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.672, g = 0.672, b = 0.672, a = 1.000}}), -- #abababff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.672, g = 0.672, b = 0.672, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2183,7 +2189,7 @@ local particles =
   make_particle
   {
     name = "fast-splitter-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.729, g = 0.275, b = 0.267, a = 1.000}}), -- #ba4644ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.729, g = 0.275, b = 0.267, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2193,7 +2199,7 @@ local particles =
   make_particle
   {
     name = "fast-splitter-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2202,7 +2208,7 @@ local particles =
   make_particle
   {
     name = "express-splitter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.832, g = 0.654, b = 0.592, a = 1.000}}), -- #d4a696ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.832, g = 0.654, b = 0.592, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2211,7 +2217,7 @@ local particles =
   make_particle
   {
     name = "express-splitter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.298, g = 0.671, b = 0.804, a = 1.000}}), -- #4cabcdff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.298, g = 0.671, b = 0.804, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2221,7 +2227,7 @@ local particles =
   make_particle
   {
     name = "express-splitter-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.764, g = 0.764, b = 0.764, a = 1.000}}), -- #c2c2c2ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.764, g = 0.764, b = 0.764, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2230,7 +2236,7 @@ local particles =
   make_particle
   {
     name = "express-splitter-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.298, g = 0.671, b = 0.804, a = 1.000}}), -- #4cabcdff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.298, g = 0.671, b = 0.804, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2240,7 +2246,7 @@ local particles =
   make_particle
   {
     name = "express-splitter-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2249,7 +2255,7 @@ local particles =
   make_particle
   {
     name = "burner-inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.883, g = 0.786, b = 0.735, a = 1.000}}), -- #e1c8bbff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.883, g = 0.786, b = 0.735, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2258,7 +2264,7 @@ local particles =
   make_particle
   {
     name = "burner-inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.635, g = 0.635, b = 0.635, a = 1.000}}), -- #a1a1a1ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.635, g = 0.635, b = 0.635, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2268,7 +2274,7 @@ local particles =
   make_particle
   {
     name = "burner-inserter-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({ tint = {r = 0.706, g = 0.706, b = 0.706, a = 1.000}}), -- #b4b4b4ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({ tint = {r = 0.706, g = 0.706, b = 0.706, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2277,7 +2283,7 @@ local particles =
   make_particle
   {
     name = "inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.508, g = 0.423, b = 0.337, a = 1.000}}), -- #816b55ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.508, g = 0.423, b = 0.337, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2286,7 +2292,7 @@ local particles =
   make_particle
   {
     name = "inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.749, g = 0.491, b = 0.224, a = 1.000}}), -- #bf7d39ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.749, g = 0.491, b = 0.224, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2296,7 +2302,7 @@ local particles =
   make_particle
   {
     name = "long-handed-inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.727, g = 0.601, b = 0.545, a = 1.000}}), -- #b9998aff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.727, g = 0.601, b = 0.545, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2305,7 +2311,7 @@ local particles =
   make_particle
   {
     name = "long-handed-inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.797, g = 0.324, b = 0.324, a = 1.000}}), -- #cb5252ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.797, g = 0.324, b = 0.324, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2315,7 +2321,7 @@ local particles =
   make_particle
   {
     name = "fast-inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.500, g = 0.500, b = 0.500, a = 1.000}}), -- #7f7f7fff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.500, g = 0.500, b = 0.500, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2324,7 +2330,7 @@ local particles =
   make_particle
   {
     name = "fast-inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.308, g = 0.447, b = 0.535, a = 1.000}}), -- #4e7288ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.308, g = 0.447, b = 0.535, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2334,7 +2340,7 @@ local particles =
   make_particle
   {
     name = "filter-inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.648, g = 0.648, b = 0.648, a = 1.000}}), -- #a5a5a5ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.648, g = 0.648, b = 0.648, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2343,7 +2349,7 @@ local particles =
   make_particle
   {
     name = "filter-inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.571, g = 0.419, b = 0.594, a = 1.000}}), -- #916a97ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.571, g = 0.419, b = 0.594, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2353,7 +2359,7 @@ local particles =
   make_particle
   {
     name = "stack-inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.508, g = 0.508, b = 0.508, a = 1.000}}), -- #818181ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.508, g = 0.508, b = 0.508, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2362,7 +2368,7 @@ local particles =
   make_particle
   {
     name = "stack-inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.762, g = 0.937, b = 0.495, a = 1.000}}), -- #c2ef7eff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.762, g = 0.937, b = 0.495, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2372,7 +2378,7 @@ local particles =
   make_particle
   {
     name = "stack-filter-inserter-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.590, g = 0.502, b = 0.401, a = 1.000}}), -- #967f66ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.590, g = 0.502, b = 0.401, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2381,7 +2387,7 @@ local particles =
   make_particle
   {
     name = "stack-filter-inserter-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.731, g = 0.731, b = 0.731, a = 1.000}}), -- #bababaff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.731, g = 0.731, b = 0.731, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2391,7 +2397,7 @@ local particles =
   make_particle
   {
     name = "small-electric-pole-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.906, g = 0.906, b = 0.906, a = 1.000}}), -- #e7e7e7ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.906, g = 0.906, b = 0.906, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2400,7 +2406,7 @@ local particles =
   make_particle
   {
     name = "medium-electric-pole-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.583, g = 0.424, b = 0.269, a = 1.000}}), -- #946c44ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.583, g = 0.424, b = 0.269, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2409,7 +2415,7 @@ local particles =
   make_particle
   {
     name = "medium-electric-pole-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.910, g = 0.651, b = 0.398, a = 1.000}}), -- #e8a665ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.910, g = 0.651, b = 0.398, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2419,7 +2425,7 @@ local particles =
   make_particle
   {
     name = "big-electric-pole-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.353, g = 0.498, b = 0.553, a = 1.000}}), -- #5a7f8dff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.353, g = 0.498, b = 0.553, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2428,7 +2434,7 @@ local particles =
   make_particle
   {
     name = "big-electric-pole-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.353, g = 0.498, b = 0.553, a = 1.000}}), -- #5a7f8dff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.353, g = 0.498, b = 0.553, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2438,7 +2444,7 @@ local particles =
   make_particle
   {
     name = "substation-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.797, g = 0.797, b = 0.797, a = 1.000}}), -- #cbcbcbff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.797, g = 0.797, b = 0.797, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2447,7 +2453,7 @@ local particles =
   make_particle
   {
     name = "substation-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.639, g = 0.639, b = 0.639, a = 1.000}}), -- #a2a2a2ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.639, g = 0.639, b = 0.639, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2457,7 +2463,7 @@ local particles =
   make_particle
   {
     name = "substation-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.533, b = 0.514, a = 1.000}}), -- #a68883ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.533, b = 0.514, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2466,7 +2472,7 @@ local particles =
   make_particle
   {
     name = "substation-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.345, g = 0.420, b = 0.490, a = 1.000}}), -- #586b7dff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.345, g = 0.420, b = 0.490, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2493,7 +2499,7 @@ local particles =
   make_particle
   {
     name = "pipe-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.648, g = 0.555, b = 0.447, a = 1.000}}), -- #a58d72ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.648, g = 0.555, b = 0.447, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2522,7 +2528,7 @@ local particles =
   make_particle
   {
     name = "pump-glass-particle-small",
-    pictures = particle_animations.get_glass_particle_small_pictures({}), -- #b79f91ff
+    pictures = particle_animations.get_glass_particle_small_pictures({}), 
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2531,7 +2537,7 @@ local particles =
   make_particle
   {
     name = "pump-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.720, g = 0.626, b = 0.569, a = 1.000}}), -- #b79f91ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.720, g = 0.626, b = 0.569, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2540,7 +2546,7 @@ local particles =
   make_particle
   {
     name = "pump-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.720, g = 0.720, b = 0.720, a = 1.000}}), -- #b7b7b7ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.720, g = 0.720, b = 0.720, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2550,7 +2556,7 @@ local particles =
   make_particle
   {
     name = "pump-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.539, g = 0.458, b = 0.367, a = 1.000}}), -- #89745dff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.539, g = 0.458, b = 0.367, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2569,7 +2575,7 @@ local particles =
   make_particle
   {
     name = "train-stop-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.852, g = 0.852, b = 0.852, a = 1.000}}), -- #d9d9d9ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.852, g = 0.852, b = 0.852, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect =  nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2578,7 +2584,7 @@ local particles =
   make_particle
   {
     name = "train-stop-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.544, g = 0.476, b = 0.443, a = 1.000}}), -- #8a7971ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.544, g = 0.476, b = 0.443, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2588,7 +2594,7 @@ local particles =
   make_particle
   {
     name = "train-stop-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.616, g = 0.616, b = 0.616, a = 1.000}}), -- #9d9d9dff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.616, g = 0.616, b = 0.616, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2598,7 +2604,7 @@ local particles =
   make_particle
   {
     name = "rail-signal-glass-particle-small-red",
-    pictures = particle_animations.get_glass_particle_small_pictures ({tint = {r = 0.645, g = 0.000, b = 0.000, a = 1.000}}), -- #a40000ff
+    pictures = particle_animations.get_glass_particle_small_pictures ({tint = {r = 0.645, g = 0.000, b = 0.000, a = 1.000}}),
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2607,7 +2613,7 @@ local particles =
   make_particle
   {
     name = "rail-signal-glass-particle-small-green",
-    pictures = particle_animations.get_glass_particle_small_pictures ({tint = {r = 0.141, g = 0.642, b = 0.000, a = 1.000}}), -- #24a300ff
+    pictures = particle_animations.get_glass_particle_small_pictures ({tint = {r = 0.141, g = 0.642, b = 0.000, a = 1.000}}),
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2616,7 +2622,7 @@ local particles =
   make_particle
   {
     name = "rail-signal-glass-particle-small-yellow",
-    pictures = particle_animations.get_glass_particle_small_pictures ({tint = {r = 0.619, g = 0.642, b = 0.000, a = 1.000}}), -- #9da300ff
+    pictures = particle_animations.get_glass_particle_small_pictures ({tint = {r = 0.619, g = 0.642, b = 0.000, a = 1.000}}),
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2634,7 +2640,7 @@ local particles =
   make_particle
   {
     name = "rail-signal-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.787, g = 0.787, b = 0.787, a = 1.000}}), -- #c8c8c8ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.787, g = 0.787, b = 0.787, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2643,7 +2649,7 @@ local particles =
   make_particle
   {
     name = "rail-signal-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}), -- #8e8e8eff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2662,7 +2668,7 @@ local particles =
   make_particle
   {
     name = "rail-chain-signal-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.566, g = 0.390, b = 0.390, a = 1.000}}), -- #906363ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.566, g = 0.390, b = 0.390, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2671,7 +2677,7 @@ local particles =
   make_particle
   {
     name = "rail-chain-signal-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.725, g = 0.725, b = 0.725, a = 1.000}}), -- #b8b8b8ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.725, g = 0.725, b = 0.725, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2681,7 +2687,7 @@ local particles =
   make_particle
   {
     name = "locomotive-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.811, g = 0.811, b = 0.811, a = 1.000}}), -- #cececeff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.811, g = 0.811, b = 0.811, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2690,7 +2696,7 @@ local particles =
   make_particle
   {
     name = "locomotive-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.701, g = 0.598, b = 0.556, a = 1.000}}), -- #b2988dff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.701, g = 0.598, b = 0.556, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2699,7 +2705,7 @@ local particles =
   make_particle
   {
     name = "locomotive-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.515, g = 0.515, b = 0.515, a = 1.000}}), -- #838383ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.515, g = 0.515, b = 0.515, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2709,7 +2715,7 @@ local particles =
   make_particle
   {
     name = "locomotive-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.631, g = 0.582, b = 0.536, a = 1.000}}), -- #a09488ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.631, g = 0.582, b = 0.536, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2718,7 +2724,7 @@ local particles =
   make_particle
   {
     name = "cargo-wagon-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.549, g = 0.447, b = 0.322, a = 1.000}}), -- #8c7252ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.549, g = 0.447, b = 0.322, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2727,7 +2733,7 @@ local particles =
   make_particle
   {
     name = "cargo-wagon-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.549, g = 0.447, b = 0.322, a = 1.000}}), -- #8c7252ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.549, g = 0.447, b = 0.322, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2737,7 +2743,7 @@ local particles =
   make_particle
   {
     name = "cargo-wagon-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.491, g = 0.460, b = 0.419, a = 1.000}}), -- #7d756aff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.491, g = 0.460, b = 0.419, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2747,7 +2753,7 @@ local particles =
   make_particle
   {
     name = "fluid-wagon-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures  ({tint = {r = 0.780, g = 0.769, b = 0.753, a = 1.000}}), -- #c7c4c0ff
+    pictures = particle_animations.get_metal_particle_small_pictures  ({tint = {r = 0.780, g = 0.769, b = 0.753, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2756,7 +2762,7 @@ local particles =
   make_particle
   {
     name = "fluid-wagon-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.633, g = 0.534, b = 0.459, a = 1.000}}), -- #a18875ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.633, g = 0.534, b = 0.459, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2766,7 +2772,7 @@ local particles =
   make_particle
   {
     name = "fluid-wagon-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.561, g = 0.561, b = 0.541, a = 1.000}}), -- #8f8f8aff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.561, g = 0.561, b = 0.541, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2776,7 +2782,7 @@ local particles =
   make_particle
   {
     name = "fluid-wagon-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.459, g = 0.427, b = 0.396, a = 1.000}}), -- #756d65ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.459, g = 0.427, b = 0.396, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2786,7 +2792,7 @@ local particles =
   make_particle
   {
     name = "artillery-wagon-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.547, g = 0.547, b = 0.547, a = 1.000}}), -- #8b8b8bff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.547, g = 0.547, b = 0.547, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2795,7 +2801,7 @@ local particles =
   make_particle
   {
     name = "artillery-wagon-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.594, g = 0.594, b = 0.594, a = 1.000}}), -- #979797ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.594, g = 0.594, b = 0.594, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2805,7 +2811,7 @@ local particles =
   make_particle
   {
     name = "artillery-wagon-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.408, g = 0.408, b = 0.341, a = 1.000}}), -- #686857ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.408, g = 0.408, b = 0.341, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2815,7 +2821,7 @@ local particles =
   make_particle
   {
     name = "artillery-wagon-metal-particle-big-yellow",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.706, g = 0.608, b = 0.024, a = 1.000}}), -- #b49b06ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.706, g = 0.608, b = 0.024, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2825,7 +2831,7 @@ local particles =
   make_particle
   {
     name = "artillery-wagon-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2834,7 +2840,7 @@ local particles =
   make_particle
   {
     name = "car-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.699, g = 0.542, b = 0.365, a = 1.000}}), -- #b28a5dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.699, g = 0.542, b = 0.365, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2843,7 +2849,7 @@ local particles =
   make_particle
   {
     name = "car-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.821, g = 0.821, b = 0.821, a = 1.000}}), -- #d1d1d1ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.821, g = 0.821, b = 0.821, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2853,7 +2859,7 @@ local particles =
   make_particle
   {
     name = "car-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.519, g = 0.519, b = 0.519, a = 1.000}}), -- #848484ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.519, g = 0.519, b = 0.519, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2863,7 +2869,7 @@ local particles =
   make_particle
   {
     name = "tank-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.695, g = 0.695, b = 0.695, a = 1.000}}), -- #b1b1b1ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.695, g = 0.695, b = 0.695, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2872,7 +2878,7 @@ local particles =
   make_particle
   {
     name = "tank-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.769, g = 0.630, b = 0.619, a = 1.000}}), -- #c4a09dff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.769, g = 0.630, b = 0.619, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2882,7 +2888,7 @@ local particles =
   make_particle
   {
     name = "tank-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.510, g = 0.510, b = 0.510, a = 1.000}}), -- #828282ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.510, g = 0.510, b = 0.510, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2892,7 +2898,7 @@ local particles =
   make_particle
   {
     name = "logistic-robot-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.469, g = 0.469, b = 0.469, a = 1.000}}), -- #777777ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.469, g = 0.469, b = 0.469, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2901,7 +2907,7 @@ local particles =
   make_particle
   {
     name = "logistic-robot-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.753, g = 0.727, b = 0.687, a = 1.000}}), -- #c0b9afff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.753, g = 0.727, b = 0.687, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2911,7 +2917,7 @@ local particles =
   make_particle
   {
     name = "construction-robot-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.847, g = 0.788, b = 0.655, a = 1.000}}), -- #d8c9a7ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.847, g = 0.788, b = 0.655, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2920,7 +2926,7 @@ local particles =
   make_particle
   {
     name = "construction-robot-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.846, g = 0.788, b = 0.657, a = 1.000}}), -- #d7c8a7ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.846, g = 0.788, b = 0.657, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2930,7 +2936,7 @@ local particles =
   make_particle
   {
     name = "roboport-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.892, g = 0.807, b = 0.591, a = 1.000}}), -- #e3cd96ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.892, g = 0.807, b = 0.591, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2939,7 +2945,7 @@ local particles =
   make_particle
   {
     name = "roboport-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.456, g = 0.622, b = 0.776, a = 1.000}}), -- #749ec5ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.456, g = 0.622, b = 0.776, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -2949,7 +2955,7 @@ local particles =
   make_particle
   {
     name = "roboport-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.699, g = 0.699, b = 0.699, a = 1.000}}), -- #b2b2b2ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.699, g = 0.699, b = 0.699, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -2968,7 +2974,7 @@ local particles =
   make_particle
   {
     name = "lamp-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.840, g = 0.840, b = 0.840, a = 1.000}}), -- #d6d6d6ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.840, g = 0.840, b = 0.840, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2977,7 +2983,7 @@ local particles =
   make_particle
   {
     name = "arithmetic-combinator-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.480, g = 0.539, b = 0.606, a = 1.000}}), -- #7a899aff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.480, g = 0.539, b = 0.606, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -2986,7 +2992,7 @@ local particles =
   make_particle
   {
     name = "arithmetic-combinator-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.704, g = 0.735, b = 0.772, a = 1.000}}), -- #b3bbc4ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.704, g = 0.735, b = 0.772, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3005,7 +3011,7 @@ local particles =
   make_particle
   {
     name = "decider-combinator-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.627, g = 0.627, b = 0.627, a = 1.000}}), -- #9f9f9fff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.627, g = 0.627, b = 0.627, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3014,7 +3020,7 @@ local particles =
   make_particle
   {
     name = "decider-combinator-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.819, g = 0.652, b = 0.306, a = 1.000}}), -- #d0a64eff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.819, g = 0.652, b = 0.306, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3024,7 +3030,7 @@ local particles =
   make_particle
   {
     name = "decider-combinator-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.624, g = 0.624, b = 0.624, a = 1.000}}), -- #9f9f9fff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.624, g = 0.624, b = 0.624, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3034,7 +3040,7 @@ local particles =
   make_particle
   {
     name = "constant-combinator-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.614, g = 0.510, b = 0.392, a = 1.000}}), -- #9c8264ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.614, g = 0.510, b = 0.392, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3043,7 +3049,7 @@ local particles =
   make_particle
   {
     name = "constant-combinator-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.721, g = 0.352, b = 0.352, a = 1.000}}), -- #b75959ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.721, g = 0.352, b = 0.352, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3053,7 +3059,7 @@ local particles =
   make_particle
   {
     name = "constant-combinator-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.399, g = 0.294, b = 0.294, a = 1.000}}), -- #654a4aff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.399, g = 0.294, b = 0.294, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3063,7 +3069,7 @@ local particles =
   make_particle
   {
     name = "power-switch-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.429, g = 0.562, b = 0.678, a = 1.000}}), -- #6d8facff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.429, g = 0.562, b = 0.678, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3072,7 +3078,7 @@ local particles =
   make_particle
   {
     name = "power-switch-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.528, g = 0.528, b = 0.528, a = 1.000}}), -- #868686ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.528, g = 0.528, b = 0.528, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3082,7 +3088,7 @@ local particles =
   make_particle
   {
     name = "programmable-speaker-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.599, g = 0.589, b = 0.488, a = 1.000}}), -- #98967cff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.599, g = 0.589, b = 0.488, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3091,7 +3097,7 @@ local particles =
   make_particle
   {
     name = "boiler-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.787, g = 0.723, b = 0.556, a = 1.000}}), -- #c8b88dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.787, g = 0.723, b = 0.556, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3100,7 +3106,7 @@ local particles =
   make_particle
   {
     name = "boiler-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.553, g = 0.581, b = 0.428, a = 1.000}}), -- #8d946dff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.553, g = 0.581, b = 0.428, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3110,7 +3116,7 @@ local particles =
   make_particle
   {
     name = "boiler-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.577, g = 0.577, b = 0.577, a = 1.000}}), -- #939393ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.577, g = 0.577, b = 0.577, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3120,7 +3126,7 @@ local particles =
   make_particle
   {
     name = "steam-engine-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.871, g = 0.746, b = 0.514, a = 1.000}}), -- #debe83ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.871, g = 0.746, b = 0.514, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3129,7 +3135,7 @@ local particles =
   make_particle
   {
     name = "steam-engine-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.888, g = 0.878, b = 0.788, a = 1.000}}), -- #e2dfc8ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.888, g = 0.878, b = 0.788, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3139,7 +3145,7 @@ local particles =
   make_particle
   {
     name = "steam-engine-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.798, g = 0.786, b = 0.695, a = 1.000}}), -- #cbc8b1ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.798, g = 0.786, b = 0.695, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3149,7 +3155,7 @@ local particles =
   make_particle
   {
     name = "steam-engine-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3158,7 +3164,7 @@ local particles =
   make_particle
   {
     name = "steam-turbine-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.747, g = 0.596, b = 0.387, a = 1.000}}), -- #be9862ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.747, g = 0.596, b = 0.387, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3167,7 +3173,7 @@ local particles =
   make_particle
   {
     name = "steam-turbine-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.933, g = 0.875, b = 0.635, a = 1.000}}), -- #eedfa2ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.933, g = 0.875, b = 0.635, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3177,7 +3183,7 @@ local particles =
   make_particle
   {
     name = "steam-turbine-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.503, g = 0.479, b = 0.377, a = 1.000}}), -- #807a60ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.503, g = 0.479, b = 0.377, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3187,7 +3193,7 @@ local particles =
   make_particle
   {
     name = "steam-turbine-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3196,7 +3202,7 @@ local particles =
   make_particle
   {
     name = "solar-panel-glass-particle-small",
-    pictures = particle_animations.get_glass_particle_small_pictures({tint = {r = 0.583, g = 0.887, b = 1.000, a = 1.000}}), -- #94e2ffff
+    pictures = particle_animations.get_glass_particle_small_pictures({tint = {r = 0.583, g = 0.887, b = 1.000, a = 1.000}}),
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3205,7 +3211,7 @@ local particles =
   make_particle
   {
     name = "solar-panel-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.709, g = 0.709, b = 0.709, a = 1.000}}), -- #b4b4b4ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.709, g = 0.709, b = 0.709, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect =  nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3214,7 +3220,7 @@ local particles =
   make_particle
   {
     name = "solar-panel-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.709, g = 0.709, b = 0.709, a = 1.000}}), -- #b4b4b4ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.709, g = 0.709, b = 0.709, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3224,7 +3230,7 @@ local particles =
   make_particle
   {
     name = "accumulator-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.643, g = 0.698, b = 0.780, a = 1.000}}), -- #a3b1c7ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.643, g = 0.698, b = 0.780, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3233,7 +3239,7 @@ local particles =
   make_particle
   {
     name = "accumulator-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.643, g = 0.698, b = 0.780, a = 1.000}}), -- #a3b1c7ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.643, g = 0.698, b = 0.780, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect (),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3242,7 +3248,7 @@ local particles =
   make_particle
   {
     name = "accumulator-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.663, g = 0.663, b = 0.663, a = 1.000}}), -- #a8a8a9ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.663, g = 0.663, b = 0.663, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3252,7 +3258,7 @@ local particles =
   make_particle
   {
     name = "nuclear-reactor-glass-particle-small",
-    pictures = particle_animations.get_glass_particle_small_pictures({tint = {r = 0.621, g = 1.000, b = 0.570, a = 1.000}}), -- #9eff91ff
+    pictures = particle_animations.get_glass_particle_small_pictures({tint = {r = 0.621, g = 1.000, b = 0.570, a = 1.000}}),
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3261,7 +3267,7 @@ local particles =
   make_particle
   {
     name = "nuclear-reactor-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.898, g = 0.902, b = 0.780, a = 1.000}}), -- #e5e6c7ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.898, g = 0.902, b = 0.780, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3270,7 +3276,7 @@ local particles =
   make_particle
   {
     name = "nuclear-reactor-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.705, g = 0.705, b = 0.705, a = 1.000}}), -- #b3b3b3ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.705, g = 0.705, b = 0.705, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3279,7 +3285,7 @@ local particles =
   make_particle
   {
     name = "nuclear-reactor-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.898, g = 0.902, b = 0.780, a = 1.000}}), -- #e4e5c6ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.898, g = 0.902, b = 0.780, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3288,7 +3294,7 @@ local particles =
   make_particle
   {
     name = "nuclear-reactor-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3297,7 +3303,7 @@ local particles =
   make_particle
   {
     name = "heat-exchanger-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.743, g = 0.663, b = 0.543, a = 1.000}}), -- #bda98aff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.743, g = 0.663, b = 0.543, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3306,7 +3312,7 @@ local particles =
   make_particle
   {
     name = "heat-exchanger-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.946, g = 1.000, b = 0.895, a = 1.000}}), -- #f1ffe4ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.946, g = 1.000, b = 0.895, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3316,7 +3322,7 @@ local particles =
   make_particle
   {
     name = "heat-exchanger-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.614, g = 0.644, b = 0.585, a = 1.000}}), -- #9ca495ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.614, g = 0.644, b = 0.585, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3326,7 +3332,7 @@ local particles =
   make_particle
   {
     name = "heat-pipe-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.702, g = 0.702, b = 0.702, a = 1.000}}), -- #b2b2b2ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.702, g = 0.702, b = 0.702, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3335,7 +3341,7 @@ local particles =
   make_particle
   {
     name = "heat-pipe-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.788, g = 0.586, b = 0.464, a = 1.000}}), -- #c99576ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.788, g = 0.586, b = 0.464, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3354,7 +3360,7 @@ local particles =
   make_particle
   {
     name = "burner-mining-drill-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.667, g = 0.525, b = 0.403, a = 1.000}}), -- #a98566ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.667, g = 0.525, b = 0.403, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3363,7 +3369,7 @@ local particles =
   make_particle
   {
     name = "burner-mining-drill-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}), -- #8e8e8eff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3373,7 +3379,7 @@ local particles =
   make_particle
   {
     name = "electric-mining-drill-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.533, b = 0.514, a = 1.000}}), -- #a68883ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.533, b = 0.514, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3382,7 +3388,7 @@ local particles =
   make_particle
   {
     name = "electric-mining-drill-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.667, g = 0.525, b = 0.403, a = 1.000}}), -- #a98566ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.667, g = 0.525, b = 0.403, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3391,7 +3397,7 @@ local particles =
   make_particle
   {
     name = "electric-mining-drill-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}), -- #8e8e8eff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3401,7 +3407,7 @@ local particles =
   make_particle
   {
     name = "burner-mining-drill-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3410,7 +3416,7 @@ local particles =
   make_particle
   {
     name = "offshore-pump-glass-particle-small",
-    pictures = particle_animations.get_glass_particle_small_pictures({tint = {r = 1.000, g = 1.000, b = 1.000, a = 1.000}}), -- #ffffffff
+    pictures = particle_animations.get_glass_particle_small_pictures({tint = {r = 1.000, g = 1.000, b = 1.000, a = 1.000}}), 
     shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3419,7 +3425,7 @@ local particles =
   make_particle
   {
     name = "offshore-pump-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.831, g = 0.831, b = 0.831, a = 1.000}}), -- #d3d3d3ff
+    pictures = particle_animations.get_metal_particle_small_pictures({ tint = { r = 0.776, g = 0.600, b = 0.224, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3428,7 +3434,7 @@ local particles =
   make_particle
   {
     name = "offshore-pump-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.702, g = 0.615, b = 0.547, a = 1.000}}), -- #b29c8bff
+    pictures = particle_animations.get_metal_particle_medium_pictures({ tint = { r = 0.600, g = 0.545, b = 0.518, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3438,7 +3444,7 @@ local particles =
   make_particle
   {
     name = "offshore-pump-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.583, g = 0.583, b = 0.583, a = 1.000}}), -- #949494ff
+    pictures = particle_animations.get_metal_particle_big_pictures({ tint = { r = 0.502, g = 0.455, b = 0.435, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3448,7 +3454,7 @@ local particles =
   make_particle
   {
     name = "offshore-pump-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3457,7 +3463,7 @@ local particles =
   make_particle
   {
     name = "pumpjack-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.715, g = 0.586, b = 0.454, a = 1.000}}), -- #b69573ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.715, g = 0.586, b = 0.454, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3466,7 +3472,7 @@ local particles =
   make_particle
   {
     name = "pumpjack-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.380, g = 0.576, b = 0.353, a = 1.000}}), -- #61935aff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.380, g = 0.576, b = 0.353, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3476,7 +3482,7 @@ local particles =
   make_particle
   {
     name = "pumpjack-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.380, g = 0.576, b = 0.353, a = 1.000}}), -- #61935aff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.380, g = 0.576, b = 0.353, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3485,7 +3491,7 @@ local particles =
   make_particle
   {
     name = "pumpjack-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3494,7 +3500,7 @@ local particles =
   make_particle
   {
     name = "stone-furnace-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({tint = {r = 0.614, g = 0.614, b = 0.614, a = 1.000}}), -- #9c9c9cff
+    pictures = particle_animations.get_stone_particle_small_pictures({tint = {r = 0.614, g = 0.614, b = 0.614, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3503,7 +3509,7 @@ local particles =
   make_particle
   {
     name = "explosion-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures  ({tint = {r = 0.706, g = 0.606, b = 0.509, a = 1.000}}), -- #b49a81ff
+    pictures = particle_animations.get_stone_particle_tiny_pictures  ({tint = {r = 0.706, g = 0.606, b = 0.509, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3512,7 +3518,7 @@ local particles =
   make_particle
   {
     name = "explosion-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures  ({tint = {r = 0.706, g = 0.606, b = 0.509, a = 1.000}}), -- #b49a81ff
+    pictures = particle_animations.get_stone_particle_small_pictures  ({tint = {r = 0.706, g = 0.606, b = 0.509, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3521,7 +3527,7 @@ local particles =
   make_particle
   {
     name = "explosion-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures ({tint = {r = 0.706, g = 0.606, b = 0.509, a = 1.000}}), -- #b49a81ff
+    pictures = particle_animations.get_stone_particle_medium_pictures ({tint = {r = 0.706, g = 0.606, b = 0.509, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3530,7 +3536,7 @@ local particles =
   make_particle
   {
     name = "stone-furnace-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({tint = {r = 1.000, g = 0.815, b = 0.000, a = 1.000}}), -- #ffcf00ff
+    pictures = particle_animations.get_stone_particle_medium_pictures({tint = {r = 1.000, g = 0.815, b = 0.000, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3539,7 +3545,7 @@ local particles =
   make_particle
   {
     name = "stone-furnace-stone-particle-big",
-    pictures = particle_animations.get_stone_particle_big_pictures({tint = {r = 0.583, g = 0.583, b = 0.583, a = 1.000}}), -- #949494ff
+    pictures = particle_animations.get_stone_particle_big_pictures({tint = {r = 0.583, g = 0.583, b = 0.583, a = 1.000}}),
     shadows = particle_animations.get_stone_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3548,7 +3554,7 @@ local particles =
   make_particle
   {
     name = "steel-furnace-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.365, g = 0.365, b = 0.365, a = 1.000}}), -- #5d5d5dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.365, g = 0.365, b = 0.365, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3557,7 +3563,7 @@ local particles =
   make_particle
   {
     name = "steel-furnace-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.938, g = 0.860, b = 0.680, a = 1.000}}), -- #efdbadff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.938, g = 0.860, b = 0.680, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3567,7 +3573,7 @@ local particles =
   make_particle
   {
     name = "steel-furnace-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.509, g = 0.509, b = 0.509, a = 1.000}}), -- #818181ff
+    pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.509, g = 0.509, b = 0.509, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3577,7 +3583,7 @@ local particles =
   make_particle
   {
     name = "electric-furnace-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.396, g = 0.251, b = 0.063, a = 1.000}}), -- #654010ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.396, g = 0.251, b = 0.063, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3586,7 +3592,7 @@ local particles =
   make_particle
   {
     name = "electric-furnace-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.431, g = 0.490, b = 0.463, a = 1.000}}), -- #6e7d76ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.431, g = 0.490, b = 0.463, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3596,7 +3602,7 @@ local particles =
   make_particle
   {
     name = "electric-furnace-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.447, g = 0.490, b = 0.545, a = 1.000}}), -- #727d8bff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.447, g = 0.490, b = 0.545, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3606,7 +3612,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3615,7 +3621,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-1-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), -- #dbc3adff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3624,7 +3630,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-1-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.350, g = 0.369, b = 0.332, a = 1.000}}), -- #595e54ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.350, g = 0.369, b = 0.332, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3633,7 +3639,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-1-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.349, g = 0.369, b = 0.333, a = 1.000}}), -- #595e55ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.349, g = 0.369, b = 0.333, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3643,7 +3649,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-2-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.992, g = 0.825, b = 0.637, a = 1.000}}), -- #fcd2a2ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.992, g = 0.825, b = 0.637, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3652,7 +3658,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-2-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.376, g = 0.463, b = 0.580, a = 1.000}}), -- #607694ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.376, g = 0.463, b = 0.580, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3661,7 +3667,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-2-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.376, g = 0.463, b = 0.580, a = 1.000}}), -- #607694ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.376, g = 0.463, b = 0.580, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3671,7 +3677,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-3-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.880, g = 0.733, b = 0.569, a = 1.000}}), -- #e0bb91ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.880, g = 0.733, b = 0.569, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3680,7 +3686,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-3-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.533, g = 0.580, b = 0.384, a = 1.000}}), -- #889462ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.533, g = 0.580, b = 0.384, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3689,7 +3695,7 @@ local particles =
   make_particle
   {
     name = "assembling-machine-3-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.533, g = 0.580, b = 0.384, a = 1.000}}), -- #889462ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.533, g = 0.580, b = 0.384, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3699,7 +3705,7 @@ local particles =
   make_particle
   {
     name = "oil-refinery-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.388, g = 0.380, b = 0.306, a = 1.000}}), -- #63614eff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.388, g = 0.380, b = 0.306, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3708,7 +3714,7 @@ local particles =
   make_particle
   {
     name = "oil-refinery-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.658, g = 0.659, b = 0.586, a = 1.000}}), -- #a7a895ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.658, g = 0.659, b = 0.586, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3717,7 +3723,7 @@ local particles =
   make_particle
   {
     name = "oil-refinery-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.620, b = 0.506, a = 1.000}}), -- #a69e81ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.620, b = 0.506, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3727,7 +3733,7 @@ local particles =
   make_particle
   {
     name = "oil-refinery-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.388, g = 0.380, b = 0.306, a = 1.000}}), -- #63614eff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.388, g = 0.380, b = 0.306, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3736,7 +3742,7 @@ local particles =
   make_particle
   {
     name = "oil-refinery-metal-particle-big-tint",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.455, g = 0.349, b = 0.204, a = 1.000}}), -- #745934ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.455, g = 0.349, b = 0.204, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3754,7 +3760,7 @@ local particles =
   make_particle
   {
     name = "chemical-plant-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.617, g = 0.617, b = 0.617, a = 1.000}}), -- #9d9d9dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.617, g = 0.617, b = 0.617, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3763,7 +3769,7 @@ local particles =
   make_particle
   {
     name = "chemical-plant-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.675, g = 0.522, b = 0.204, a = 1.000}}), -- #ac8534ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.675, g = 0.522, b = 0.204, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3772,7 +3778,7 @@ local particles =
   make_particle
   {
     name = "chemical-plant-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.675, g = 0.522, b = 0.204, a = 1.000}}), -- #ac8534ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.675, g = 0.522, b = 0.204, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3782,7 +3788,7 @@ local particles =
   make_particle
   {
     name = "chemical-plant-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3791,7 +3797,7 @@ local particles =
   make_particle
   {
     name = "centrifuge-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.582, g = 0.582, b = 0.582, a = 1.000}}), -- #949494ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.582, g = 0.582, b = 0.582, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3800,7 +3806,7 @@ local particles =
   make_particle
   {
     name = "centrifuge-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.761, g = 0.757, b = 0.671, a = 1.000}}), -- #c2c1abff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.761, g = 0.757, b = 0.671, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3809,7 +3815,7 @@ local particles =
   make_particle
   {
     name = "centrifuge-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.761, g = 0.757, b = 0.671, a = 1.000}}), -- #c2c1abff
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.761, g = 0.757, b = 0.671, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3819,7 +3825,7 @@ local particles =
   make_particle
   {
     name = "centrifuge-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({ tint = {r = 0.631, g = 0.514, b = 0.086, a = 1.000}}), -- #a18316ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({ tint = {r = 0.631, g = 0.514, b = 0.086, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3828,7 +3834,7 @@ local particles =
   make_particle
   {
     name = "centrifuge-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3846,7 +3852,7 @@ local particles =
   make_particle
   {
     name = "lab-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.612, g = 0.612, b = 0.612, a = 1.000}}), -- #9c9c9cff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.612, g = 0.612, b = 0.612, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3855,7 +3861,7 @@ local particles =
   make_particle
   {
     name = "lab-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.828, g = 0.821, b = 0.742, a = 1.000}}), -- #d3d1bdff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.828, g = 0.821, b = 0.742, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3865,7 +3871,7 @@ local particles =
   make_particle
   {
     name = "lab-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.828, g = 0.821, b = 0.742, a = 1.000}}), -- #d3d1bdff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.828, g = 0.821, b = 0.742, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3874,7 +3880,7 @@ local particles =
   make_particle
   {
     name = "lab-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3883,7 +3889,7 @@ local particles =
   make_particle
   {
     name = "beacon-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.602, g = 0.420, b = 0.291, a = 1.000}}), -- #996b4aff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.602, g = 0.420, b = 0.291, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3892,7 +3898,7 @@ local particles =
   make_particle
   {
     name = "beacon-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.602, g = 0.420, b = 0.291, a = 1.000}}), -- #996b4aff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.602, g = 0.420, b = 0.291, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3901,7 +3907,7 @@ local particles =
   make_particle
   {
     name = "beacon-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.506, g = 0.457, b = 0.371, a = 1.000}}), -- #81745eff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.506, g = 0.457, b = 0.371, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3920,7 +3926,7 @@ local particles =
   make_particle
   {
     name = "damaged-assembling-machine-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.866, g = 0.601, b = 0.504, a = 1.000}}), -- #dc9980ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.866, g = 0.601, b = 0.504, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3929,7 +3935,7 @@ local particles =
   make_particle
   {
     name = "damaged-assembling-machine-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.866, g = 0.730, b = 0.403, a = 1.000}}), -- #dcba66ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.866, g = 0.730, b = 0.403, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3938,7 +3944,7 @@ local particles =
   make_particle
   {
     name = "damaged-assembling-machine-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), -- #7b7b7bff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -3948,7 +3954,7 @@ local particles =
   make_particle
   {
     name = "damaged-assembling-machine-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), -- #d4d4d4ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3958,7 +3964,7 @@ local particles =
   make_particle
   {
     name = "damaged-assembling-machine-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), -- #d4d4d4ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -3977,7 +3983,7 @@ local particles =
   make_particle
   {
     name = "repaired-assembling-machine-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.866, g = 0.601, b = 0.504, a = 1.000}}), -- #dc9980ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.866, g = 0.601, b = 0.504, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3986,7 +3992,7 @@ local particles =
   make_particle
   {
     name = "repaired-assembling-machine-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.866, g = 0.730, b = 0.403, a = 1.000}}), -- #dcba66ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.866, g = 0.730, b = 0.403, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -3995,7 +4001,7 @@ local particles =
   make_particle
   {
     name = "repaired-assembling-machine-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), -- #7b7b7bff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4005,7 +4011,7 @@ local particles =
   make_particle
   {
     name = "repaired-assembling-machine-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), -- #d4d4d4ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4015,7 +4021,7 @@ local particles =
   make_particle
   {
     name = "chest-capsule-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), -- #ffde6cff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4024,7 +4030,7 @@ local particles =
   make_particle
   {
     name = "chest-capsule-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), -- #ffde6cff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4033,7 +4039,7 @@ local particles =
   make_particle
   {
     name = "chest-capsule-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.667, g = 0.667, b = 0.667, a = 1.000}}), -- #aaaaaaff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.667, g = 0.667, b = 0.667, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4052,7 +4058,7 @@ local particles =
   make_particle
   {
     name = "electricity-generator-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), -- #ffde6cff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4061,7 +4067,7 @@ local particles =
   make_particle
   {
     name = "electricity-generator-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), -- #ffde6cff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.871, b = 0.424, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4070,7 +4076,7 @@ local particles =
   make_particle
   {
     name = "electricity-generator-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), -- #7b7b7bff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4080,7 +4086,7 @@ local particles =
   make_particle
   {
     name = "electricity-generator-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), -- #d4d4d4ff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4099,7 +4105,7 @@ local particles =
   make_particle
   {
     name = "damaged-lab-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), -- #f9e45aff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4108,7 +4114,7 @@ local particles =
   make_particle
   {
     name = "damaged-lab-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), -- #f9e45aff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4117,7 +4123,7 @@ local particles =
   make_particle
   {
     name = "damaged-lab-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.562, g = 0.562, b = 0.562, a = 1.000}}), -- #8f8f8fff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.562, g = 0.562, b = 0.562, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4126,7 +4132,7 @@ local particles =
   make_particle
   {
     name = "damaged-lab-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), -- #7b7b7bff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4144,7 +4150,7 @@ local particles =
   make_particle
   {
     name = "repaired-lab-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), -- #f9e45aff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4153,7 +4159,7 @@ local particles =
   make_particle
   {
     name = "repaired-lab-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), -- #f9e45aff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.980, g = 0.897, b = 0.354, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4162,7 +4168,7 @@ local particles =
   make_particle
   {
     name = "repaired-lab-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), -- #7b7b7bff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4171,7 +4177,7 @@ local particles =
   make_particle
   {
     name = "repaired-lab-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.562, g = 0.562, b = 0.562, a = 1.000}}), -- #8f8f8fff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.562, g = 0.562, b = 0.562, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4180,7 +4186,7 @@ local particles =
   make_particle
   {
     name = "wall-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({tint = {r = 0.753, g = 0.718, b = 0.580, a = 1.000}}), -- #c0b794ff
+    pictures = particle_animations.get_stone_particle_tiny_pictures({tint = {r = 0.753, g = 0.718, b = 0.580, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4189,7 +4195,7 @@ local particles =
   make_particle
   {
     name = "wall-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({tint = {r = 0.753, g = 0.719, b = 0.582, a = 1.000}}), -- #c0b794ff
+    pictures = particle_animations.get_stone_particle_small_pictures({tint = {r = 0.753, g = 0.719, b = 0.582, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4198,7 +4204,7 @@ local particles =
   make_particle
   {
     name = "wall-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({tint = {r = 0.667, g = 0.636, b = 0.515, a = 1.000}}), -- #aaa283ff
+    pictures = particle_animations.get_stone_particle_medium_pictures({tint = {r = 0.667, g = 0.636, b = 0.515, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect (),
     render_layer = "object",
@@ -4208,7 +4214,7 @@ local particles =
   make_particle
   {
     name = "gate-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.806, g = 0.734, b = 0.301, a = 1.000}}), -- #cdbb4cff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.806, g = 0.734, b = 0.301, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4217,7 +4223,7 @@ local particles =
   make_particle
   {
     name = "gate-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures ({tint = {r = 0.667, g = 0.636, b = 0.515, a = 1.000}}), -- #aaa283ff
+    pictures = particle_animations.get_stone_particle_small_pictures ({tint = {r = 0.667, g = 0.636, b = 0.515, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4226,7 +4232,7 @@ local particles =
   make_particle
   {
     name = "gate-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.735, g = 0.735, b = 0.735, a = 1.000}}), -- #bbbbbbff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.735, g = 0.735, b = 0.735, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4235,7 +4241,7 @@ local particles =
   make_particle
   {
     name = "gate-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.496, g = 0.496, b = 0.496, a = 1.000}}), -- #7e7e7eff
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.496, g = 0.496, b = 0.496, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4245,7 +4251,7 @@ local particles =
   make_particle
   {
     name = "gun-turret-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {r = 0.490, g = 0.447, b = 0.416, a = 1.000}}), -- #7c716aff
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {r = 0.490, g = 0.447, b = 0.416, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4254,7 +4260,7 @@ local particles =
   make_particle
   {
     name = "gun-turret-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures  ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), -- #ccc0b1ff
+    pictures = particle_animations.get_metal_particle_medium_pictures  ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4264,7 +4270,7 @@ local particles =
   make_particle
   {
     name = "gun-turret-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), -- #8a7e75ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4274,7 +4280,7 @@ local particles =
   make_particle
   {
     name = "laser-turret-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {r = 0.490, g = 0.447, b = 0.416, a = 1.000}}), -- #7c716aff
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {r = 0.490, g = 0.447, b = 0.416, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4283,7 +4289,7 @@ local particles =
   make_particle
   {
     name = "laser-turret-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), -- #ccc0b1ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4293,7 +4299,7 @@ local particles =
   make_particle
   {
     name = "laser-turret-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), -- #8a7e75ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4303,7 +4309,7 @@ local particles =
   make_particle
   {
     name = "flame-thrower-turret-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {r = 0.490, g = 0.447, b = 0.416, a = 1.000}}), -- #7c716aff
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = {r = 0.490, g = 0.447, b = 0.416, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4312,7 +4318,7 @@ local particles =
   make_particle
   {
     name = "flame-thrower-turret-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), -- #ccc0b1ff
+    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4322,7 +4328,7 @@ local particles =
   make_particle
   {
     name = "flame-thrower-turret-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), -- #8a7e75ff
+    pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4332,7 +4338,7 @@ local particles =
   make_particle
   {
     name = "artillery-turret-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.905, g = 0.878, b = 0.320, a = 1.000}}), -- #e6df51ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.905, g = 0.878, b = 0.320, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4341,7 +4347,7 @@ local particles =
   make_particle
   {
     name = "artillery-turret-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.315, g = 0.315, b = 0.315, a = 1.000}}), -- #505050ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.315, g = 0.315, b = 0.315, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4351,7 +4357,7 @@ local particles =
   make_particle
   {
     name = "artillery-turret-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.712, g = 0.712, b = 0.712, a = 1.000}}), -- #b5b5b5ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.712, g = 0.712, b = 0.712, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4361,7 +4367,7 @@ local particles =
   make_particle
   {
     name = "radar-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.806, g = 0.703, b = 0.401, a = 1.000}}), -- #cdb366ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.806, g = 0.703, b = 0.401, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4370,7 +4376,7 @@ local particles =
   make_particle
   {
     name = "radar-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.835, g = 0.859, b = 0.682, a = 1.000}}), -- #d5dbaeff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.835, g = 0.859, b = 0.682, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4379,7 +4385,7 @@ local particles =
   make_particle
   {
     name = "radar-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.835, g = 0.859, b = 0.682, a = 1.000}}), -- #d5dbaeff
+    pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.835, g = 0.859, b = 0.682, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4389,7 +4395,7 @@ local particles =
   make_particle
   {
     name = "radar-long-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.834, g = 0.860, b = 0.682, a = 1.000}}), -- #d4dbadff
+    pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.834, g = 0.860, b = 0.682, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4399,7 +4405,7 @@ local particles =
   make_particle
   {
     name = "rocket-silo-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.861, g = 0.670, b = 0.450, a = 1.000}}), -- #dbaa72ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.861, g = 0.670, b = 0.450, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     render_layer = "object",
@@ -4409,7 +4415,7 @@ local particles =
   make_particle
   {
     name = "rocket-silo-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.828, g = 0.622, b = 0.539, a = 1.000}}), -- #d39e89ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.828, g = 0.622, b = 0.539, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4419,7 +4425,7 @@ local particles =
   make_particle
   {
     name = "rocket-silo-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.344, g = 0.344, b = 0.344, a = 1.000}}), -- #575757ff
+    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.344, g = 0.344, b = 0.344, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     render_layer = "object",
@@ -4429,7 +4435,7 @@ local particles =
   make_particle
   {
     name = "rocket-silo-mechanical-component-particle-medium",
-    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), -- #b6b6b6ff
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {r = 0.715, g = 0.715, b = 0.715, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4438,7 +4444,7 @@ local particles =
   make_particle
   {
     name = "defender-robot-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.793, g = 0.611, b = 0.449, a = 1.000}}), -- #ca9b72ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.793, g = 0.611, b = 0.449, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4447,7 +4453,7 @@ local particles =
   make_particle
   {
     name = "defender-robot-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.772, g = 0.772, b = 0.772, a = 1.000}}), -- #c4c4c4ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.772, g = 0.772, b = 0.772, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4457,7 +4463,7 @@ local particles =
   make_particle
   {
     name = "distractor-robot-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.793, g = 0.611, b = 0.449, a = 1.000}}), -- #ca9b72ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.793, g = 0.611, b = 0.449, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4466,7 +4472,7 @@ local particles =
   make_particle
   {
     name = "distractor-robot-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures  ({tint = {r = 0.599, g = 0.475, b = 0.403, a = 1.000}}), -- #987966ff
+    pictures = particle_animations.get_metal_particle_medium_pictures  ({tint = {r = 0.599, g = 0.475, b = 0.403, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4475,7 +4481,7 @@ local particles =
   make_particle
   {
     name = "destroyer-robot-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.793, g = 0.611, b = 0.449, a = 1.000}}), -- #ca9b72ff
+    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.793, g = 0.611, b = 0.449, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4493,7 +4499,7 @@ local particles =
   make_particle
   {
     name = "compilatron-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.552, g = 0.452, b = 0.371, a = 1.000}}), -- #8c735eff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.552, g = 0.452, b = 0.371, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4502,7 +4508,7 @@ local particles =
   make_particle
   {
     name = "compilatron-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.944, g = 0.936, b = 0.895, a = 1.000}}), -- #f0eee4ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.944, g = 0.936, b = 0.895, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4547,7 +4553,7 @@ local particles =
   make_particle
   {
     name = "active-provider-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.634, g = 0.537, b = 0.657, a = 1.000}}), -- #a188a7ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.634, g = 0.537, b = 0.657, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4556,7 +4562,7 @@ local particles =
   make_particle
   {
     name = "active-provider-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.564, g = 0.564, b = 0.564, a = 1.000}}), -- #8f8f8fff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.564, g = 0.564, b = 0.564, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect (),
     render_layer = "object",
@@ -4566,7 +4572,7 @@ local particles =
   make_particle
   {
     name = "passive-provider-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.813, g = 0.424, b = 0.424, a = 1.000}}), -- #cf6c6cff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.813, g = 0.424, b = 0.424, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4575,7 +4581,7 @@ local particles =
   make_particle
   {
     name = "passive-provider-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.631, g = 0.631, b = 0.631, a = 1.000}}), -- #a0a0a0ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.631, g = 0.631, b = 0.631, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer= "object",
@@ -4585,7 +4591,7 @@ local particles =
   make_particle
   {
     name = "storage-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.924, g = 0.874, b = 0.556, a = 1.000}}), -- #ebde8dff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.924, g = 0.874, b = 0.556, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4594,7 +4600,7 @@ local particles =
   make_particle
   {
     name = "storage-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.793, g = 0.793, b = 0.793, a = 1.000}}), -- #cacacaff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.793, g = 0.793, b = 0.793, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4604,7 +4610,7 @@ local particles =
   make_particle
   {
     name = "buffer-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.455, g = 0.649, b = 0.404, a = 1.000}}), -- #73a566ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.455, g = 0.649, b = 0.404, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4613,7 +4619,7 @@ local particles =
   make_particle
   {
     name = "buffer-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.809, g = 0.809, b = 0.809, a = 1.000}}), -- #cececeff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.809, g = 0.809, b = 0.809, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4623,7 +4629,7 @@ local particles =
   make_particle
   {
     name = "requester-chest-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.569, g = 0.816, b = 0.973, a = 1.000}}), -- #91d0f8ff
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.569, g = 0.816, b = 0.973, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4632,7 +4638,7 @@ local particles =
   make_particle
   {
     name = "requester-chest-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.726, g = 0.726, b = 0.726, a = 1.000}}), -- #b9b9b9ff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.726, g = 0.726, b = 0.726, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4642,7 +4648,7 @@ local particles =
   make_particle
   {
     name = "storage-tank-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.800, g = 0.709, b = 0.624, a = 1.000}}), -- #ccb49fff
+    pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.800, g = 0.709, b = 0.624, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
     render_layer = "object",
@@ -4651,7 +4657,7 @@ local particles =
   make_particle
   {
     name = "storage-tank-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.500, g = 0.458, b = 0.420, a = 1.000}}), -- #7f746bff
+    pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.500, g = 0.458, b = 0.420, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -4674,6 +4680,7 @@ local particles =
     render_layer = "higher-object-under",
     pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false
   },
 
@@ -4682,10 +4689,23 @@ local particles =
     name = "blood-particle-lower-layer",
     movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
     pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     render_layer = "lower-object-above-shadow",
+    draw_shadow_when_on_ground = false,
+    ended_in_water_trigger_effect = false
+  },
+  
+  make_particle
+  {
+    name = "blood-particle-carpet",
+    movement_modifier_when_on_ground = 0,
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    render_layer = "projectile",
+    render_layer_when_on_ground = "ground-patch-higher2",
+    draw_shadow_when_on_ground = false,
     ended_in_water_trigger_effect = false
   },
 
@@ -4695,7 +4715,7 @@ local particles =
     movement_modifier_when_on_ground = 0,
     life_time = 180,
     render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = {r = 0.715, g = 0.515, b = 0.232, a = 1.000}}), -- #b6833bff
+    pictures = particle_animations.get_blood_particle_pictures({tint = {r = 0.715, g = 0.515, b = 0.232, a = 1.000}}), 
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
   },
 
@@ -4895,7 +4915,7 @@ local particles =
     horizontal_speed = 0.05,
     horizontal_speed_deviation = 0.04,
   },
-  
+
   make_particle
   {
     name = "leaf-particle",

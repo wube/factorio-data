@@ -1168,7 +1168,7 @@ local robots =
       projectile_center = {0, 1},
       projectile_creation_distance = 0.6,
       range = 15,
-      sound = sounds.light_gunshot,
+      sound = sounds.defender_gunshot,
       ammo_type =
       {
         category = "bullet",
@@ -1400,9 +1400,15 @@ local make_robot_particle = function(prototype)
     },
     ended_on_ground_trigger_effect =
     {
+      {
       type = "create-entity",
       entity_name = prototype.name.."-remnants",
       offsets = {{0, 0}}
+      },
+      {
+        type = "play-sound",
+        sound = sounds.robot_die_impact,
+      },
     }
   }
 
@@ -1421,9 +1427,17 @@ local make_robot_particle = function(prototype)
       speed_from_center_deviation = 0.2,
       offset_deviation = {{-0.01, -0.01},{0.01, 0.01}},
       offsets = {{0, 0.5}}
-    }
+    },
+    {
+      type = "play-sound",
+      sound = sounds.robot_die_whoosh,
+    }, 
+    {
+      type = "play-sound",
+      sound = sounds.robot_die_vox,
+    },
   }
-
+  
   if prototype.type == "construction-robot" or prototype.type == "logistic-robot" then return end
 
   prototype.destroy_action =
@@ -1432,18 +1446,32 @@ local make_robot_particle = function(prototype)
     action_delivery =
     {
       type = "instant",
-      source_effects =
+      source_effects = 
       {
-        type = "create-particle",
-        particle_name = particle_name,
-        initial_height = 1.8,
-        initial_vertical_speed = 0,
-        frame_speed = 0.5,
-        frame_speed_deviation = 0.5,
-        speed_from_center = 0,
-        speed_from_center_deviation = 0.1,
-        offset_deviation = {{-0.01, -0.01},{0.01, 0.01}},
-        offsets = {{0, 0.5}}
+        {
+          type = "create-particle",
+          particle_name = particle_name,
+          initial_height = 1.8,
+          initial_vertical_speed = 0,
+          frame_speed = 0.5,
+          frame_speed_deviation = 0.5,
+          speed_from_center = 0,
+          speed_from_center_deviation = 0.1,
+          offset_deviation = {{-0.01, -0.01},{0.01, 0.01}},
+          offsets = {{0, 0.5}}
+        },
+        {
+          type = "play-sound",
+          sound = sounds.robot_die_whoosh,
+        },
+        {
+          type = "play-sound",
+          sound = sounds.robot_die_vox,
+        },
+        {
+          type = "play-sound",
+          sound = sounds.robot_selfdestruct,
+        },    
       }
     }
   }

@@ -277,7 +277,7 @@ function make_beam(sound)
       sound =
       {
         filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 0.6
+        volume = 0.7
       },
       max_sounds_per_type = 4
     }
@@ -286,7 +286,7 @@ function make_beam(sound)
     result.name = "electric-beam-no-sound"
   end
 
-  return append_base_electric_beam_graphics(result, beam_blend_mode, beam_non_light_flags, nil, nil);
+  return append_base_electric_beam_graphics(result, beam_blend_mode, beam_non_light_flags, nil, nil)
 end
 
 data:extend(

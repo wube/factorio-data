@@ -293,14 +293,17 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/lab.ogg",
-        volume = 0.7
+        volume = 0.65
       },
       apparent_volume = 1,
       --max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     energy_source =
     {
       type = "electric",
@@ -389,8 +392,8 @@ data:extend(
         }
       }
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
   },-- rotation 1 broken
   {
@@ -508,21 +511,17 @@ data:extend(
     },
     energy_usage = "90kW",
     ingredient_count = 2,
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
       {
         {
-          filename = "__base__/sound/assembling-machine-t1-1.ogg",
+          filename = "__base__/sound/assembling-machine-repaired-1.ogg",
           volume = 0.8
         },
-        {
-          filename = "__base__/sound/assembling-machine-t1-2.ogg",
-          volume = 0.8
-        }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
@@ -600,8 +599,8 @@ data:extend(
         }
       }
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
   },-- rotation 2 broken
   {
@@ -719,27 +718,23 @@ data:extend(
     },
     energy_usage = "90kW",
     ingredient_count = 2,
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
       sound =
       {
         {
-          filename = "__base__/sound/assembling-machine-t1-1.ogg",
+          filename = "__base__/sound/assembling-machine-repaired-1.ogg",
           volume = 0.8
         },
-        {
-          filename = "__base__/sound/assembling-machine-t1-2.ogg",
-          volume = 0.8
-        }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
       --max_sounds_per_type = 2,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     }
   },-- rotation 2 repaired
 })-- assembling-machine
@@ -764,7 +759,7 @@ data:extend(
     selectable_in_game = false,
     order="a",
     supply_area_distance = 1,
-    vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5 },
+    vehicle_impact_sound = sounds.car_wood_impact(0.5),
     pictures =
     {
       layers =

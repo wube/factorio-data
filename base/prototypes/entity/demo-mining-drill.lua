@@ -43,14 +43,17 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/electric-mining-drill.ogg",
-        volume = 0.75
+        volume = 0.42
       },
-      apparent_volume = 1.5,
+      --apparent_volume = 1.5,
       --max_sounds_per_type = 3,
+      audible_distance_modifier = 0.7,
       fade_in_ticks = 4,
-      fade_out_ticks = 30,
+      fade_out_ticks = 20,
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     animations =
     {
       north =
@@ -905,13 +908,19 @@ data:extend(
       {
         {
           filename = "__base__/sound/burner-mining-drill.ogg",
-          volume = 0.8
+          volume = 0.6
+        },
+        {
+          filename = "__base__/sound/burner-mining-drill-1.ogg",
+          volume = 0.6
         }
       },
       --max_sounds_per_type = 3,
       fade_in_ticks = 4,
-      fade_out_ticks = 30
+      fade_out_ticks = 20
     },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
     allowed_effects = {}, -- no beacon effects on the burner drill
     energy_source =

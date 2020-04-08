@@ -1383,6 +1383,66 @@ data:extend(
       },
     })
   },
+  
+  {
+    type = "corpse",
+    name = "offshore-pump-remnants",
+    icon = "__base__/graphics/icons/offshore-pump.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-b[medium]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = 
+    {
+      {
+        filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-1.png",
+        line_length = 1,
+        width = 74,
+        height = 72,
+        frame_count = 1,
+        direction_count = 4,
+        shift = util.by_pixel(2, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1.png",
+          line_length = 1,
+          width = 146,
+          height = 140,
+          frame_count = 1,
+          direction_count = 4,
+          shift = util.by_pixel(2, -2.5),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-2.png",
+        line_length = 1,
+        width = 68,
+        height = 68,
+        frame_count = 1,
+        direction_count = 4,
+        shift = util.by_pixel(1, 1),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2.png",
+          line_length = 1,
+          width = 136,
+          height = 134,
+          frame_count = 1,
+          direction_count = 4,
+          shift = util.by_pixel(1.5, 0.5),
+          scale = 0.5,
+        }
+      }
+    }
+  },
 
   {
     type = "corpse",

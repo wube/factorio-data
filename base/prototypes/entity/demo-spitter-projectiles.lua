@@ -37,19 +37,19 @@ function spitter_attack_parameters(data)
       {
         {
           filename = "__base__/sound/creatures/spitter-spit-start-1.ogg",
-          volume = 0.3
+          volume = 0.27
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-2.ogg",
-          volume = 0.3
+          volume = 0.27
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-3.ogg",
-          volume = 0.3
+          volume = 0.27
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-4.ogg",
-          volume = 0.3
+          volume = 0.27
         }
       },
       middle_sound =
@@ -63,7 +63,7 @@ function spitter_attack_parameters(data)
       {
         {
           filename = "__base__/sound/creatures/spitter-spit-end-1.ogg",
-          volume = 0
+          volume = 0.27
         }
       }
     },
@@ -96,6 +96,16 @@ function acid_stream(data)
     particle_fade_out_duration = 2,
     particle_loop_exit_threshold = 0.25,
     special_neutral_target_damage = {amount = 1, type = "acid"},
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/fight/projectile-acid-burn-loop.ogg",
+          volume = 0.4
+        },
+      }
+    },
     initial_action =
     {
       {
@@ -111,19 +121,19 @@ function acid_stream(data)
               {
                 {
                   filename = "__base__/sound/creatures/projectile-acid-burn-1.ogg",
-                  volume = 0.8
+                  volume = 0.65
                 },
                 {
                   filename = "__base__/sound/creatures/projectile-acid-burn-2.ogg",
-                  volume = 0.8
+                  volume = 0.65
                 },
                 {
                   filename = "__base__/sound/creatures/projectile-acid-burn-long-1.ogg",
-                  volume = 0.8
+                  volume = 0.6
                 },
                 {
                   filename = "__base__/sound/creatures/projectile-acid-burn-long-2.ogg",
-                  volume = 0.8
+                  volume = 0.6
                 }
               }
             },

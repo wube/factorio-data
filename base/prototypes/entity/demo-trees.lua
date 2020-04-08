@@ -18,6 +18,25 @@ local starting_area_clearing_peak =
   distance_top_property_limit = starting_area_clearing_radius, -- must be halfway between range and max_range so that influence never becomes positive!
 }
 
+local leaf_sound = sounds.tree_leaves
+
+local leaf_sound_trigger = 
+{
+  {
+    type = "play-sound",
+    sound = leaf_sound,
+    damage_type_filters = "fire"
+  }
+}
+
+local axe_hitting_wood_trigger =
+{
+  {
+    type = "play-sound",
+    sound = data.raw["utility-sounds"].default.mining_wood
+  }
+}
+
 local next_tree_noise_layer_number = 1
 
 local function tree_autoplace2(options)
@@ -49,7 +68,7 @@ local function tree_autoplace2(options)
     control = "trees",
     order = "a[tree]-b[forest]",
     max_probability = 0.45,
-    random_probability_penalty = 1e-3;
+    random_probability_penalty = 1e-3,
     sharpness = 0.4,
     richness_base = richness_base,
     richness_multiplier = richness_multiplier,
@@ -7256,9 +7275,28 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         mining_particle = "wooden-particle",
         mining_time = 0.55,
         result = "wood",
-        count = 4
+        count = 4,
+        mining_trigger = 
+        {
+          {
+            type = "direct",
+            action_delivery =
+            {
+              {
+                type = "instant",
+                target_effects = leaf_sound_trigger
+              },
+              {
+                type = "instant",
+                target_effects = axe_hitting_wood_trigger
+              }
+            }
+          }
+        }
       },
       corpse = type_name .. "-stump",
+      damaged_trigger_effect = leaf_sound_trigger,
+      mined_sound = leaf_sound,
       remains_when_mined = type_name .. "-stump",
       emissions_per_second = tree_emissions_per_second,
       max_health = 50,

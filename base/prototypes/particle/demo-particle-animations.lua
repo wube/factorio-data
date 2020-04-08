@@ -33,7 +33,7 @@ particle_animations.get_metal_particle_big_pictures = function(options)
 end
 
 particle_animations.get_wooden_particle_pictures = function(options)
-  return  
+  return
   {
     {
       filename = "__base__/graphics/particle/wooden-particle/wooden-particle-01.png",
@@ -1379,7 +1379,7 @@ particle_animations.get_branch_particle_pictures = function()
   }
 end
 
-particle_animations.get_leaf_particle_pictures = function()
+particle_animations.get_leaf_particle_pictures = function(options)
   return
   {
     sheet =
@@ -1392,7 +1392,8 @@ particle_animations.get_leaf_particle_pictures = function()
       frame_count = 12,
       animation_speed = 0.5,
       variation_count = 10,
-      shift = util.add_shift(util.by_pixel(3.5,-0.5), options.shift),
+      shift = util.add_shift(util.by_pixel(3.5,-0.5), options and options.shift or nil),
+      tint = options and options.tint or nil,
       hr_version =
       {
         filename = "__base__/graphics/particle/leaf-particle/hr-leaf-particle.png",
@@ -1403,7 +1404,8 @@ particle_animations.get_leaf_particle_pictures = function()
         frame_count = 12,
         animation_speed = 0.5,
         variation_count = 10,
-        shift = util.add_shift(util.by_pixel(3.25,-0.75), options.shift),
+        shift = util.add_shift(util.by_pixel(3.25,-0.75), options and options.shift or nil),
+        tint = options and options.tint or nil,
         scale = 0.5,
       }
     }
@@ -1412,7 +1414,7 @@ end
 
 particle_animations.get_coal_particle_shadow_pictures = function()
   return
-  
+
   {
     {
       filename = "__base__/graphics/particle/coal-particle/coal-particle-shadow-1.png",
@@ -1482,7 +1484,7 @@ particle_animations.get_coal_particle_shadow_pictures = function()
 end
 
 particle_animations.get_coal_particle_pictures = function()
-  return  
+  return
   {
     {
       filename = "__base__/graphics/particle/coal-particle/coal-particle-1.png",
@@ -1553,7 +1555,7 @@ end
 
 particle_animations.get_old_stone_particle_shadow_pictures = function(options)
   return
-  
+
   {
     {
       filename = "__base__/graphics/particle/stone-particle/stone-particle-shadow-1.png",
@@ -1694,7 +1696,7 @@ end
 
 particle_animations.get_copper_particle_shadow_pictures = function(options)
   return
-  
+
   {
     {
       filename = "__base__/graphics/particle/copper-ore-particle/copper-ore-particle-shadow-1.png",
@@ -1765,7 +1767,7 @@ end
 
 particle_animations.get_copper_particle_pictures = function(options)
   return
-  
+
   {
     {
       filename = "__base__/graphics/particle/copper-ore-particle/copper-ore-particle-1.png",
@@ -1976,7 +1978,7 @@ end
 
 particle_animations.get_explosion_remnants_front_pictures = function(options)
   local options = options or {}
-  return 
+  return
   {
     sheet =
     {
@@ -2023,7 +2025,7 @@ end
 
 particle_animations.get_explosion_remnants_shadow_pictures = function(options)
   local options = options or {}
-  return 
+  return
   {
     sheet =
     {
@@ -2080,7 +2082,7 @@ particle_animations.get_shell_particle_shadow_pictures = function(options)
 end
 
 particle_animations.get_wooden_particle_shadow_pictures = function(options)
-  return   
+  return
   {
     {
       filename = "__base__/graphics/particle/wooden-particle/wooden-particle-shadow-01.png",
@@ -2519,8 +2521,8 @@ end
 
 particle_animations.get_metal_particle_medium_pictures = function(options)
   local options = options or {}
-  return 
-  { 
+  return
+  {
   sheet =
     {
       filename = "__base__/graphics/particle/metal-particle/metal-particle-medium.png",
@@ -2646,7 +2648,7 @@ particle_animations.get_vegetation_particle_small_medium_pictures = function(opt
     }
   }
 end
-  
+
 
 particle_animations.get_metal_particle_small_pictures = function(options)
   local options = options or {}
@@ -2939,7 +2941,7 @@ end
 particle_animations.get_stone_particle_big_pictures = function(options)
   local options = options or {}
   return
-  { 
+  {
     sheet =
     {
       filename = "__base__/graphics/particle/stone-particle/stone-particle-big.png",
@@ -3056,7 +3058,7 @@ end
 
 particle_animations.get_sparks_particle_pictures = function()
   return
-  
+
   {
     sheet =
     {

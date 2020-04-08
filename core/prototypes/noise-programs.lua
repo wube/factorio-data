@@ -1,6 +1,6 @@
-local noise = require("noise");
+local noise = require("noise")
 local util = require("util")
-local tne = noise.to_noise_expression;
+local tne = noise.to_noise_expression
 
 local enable_debug_expressions = false
 local function debug_property(propname)

@@ -1,5 +1,6 @@
 local explosion_animations = require("prototypes.entity.demo-explosion-animations")
 local sounds = require("prototypes.entity.demo-sounds")
+local biter_die_effects = require("prototypes.entity.biter-die-effects")
 
 local default_light = function(size)
   return
@@ -7,6 +8,18 @@ local default_light = function(size)
     intensity = 1,
     size = size,
     color = {r = 1.0, g = 1.0, b = 1.0}
+  }
+end
+
+local empty_explosion = function(params)
+  return
+  {
+    type = "explosion",
+    name = params.name,
+    flags = {"not-on-map"},
+    subgroup = "explosions",
+    animations = util.empty_sprite(),
+    created_effect = params.created_effect
   }
 end
 
@@ -70,7 +83,7 @@ data:extend
     subgroup = "explosions",
     animations = explosion_animations.big_explosion(),
     light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound = sounds.large_explosion(1.0),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -102,7 +115,7 @@ data:extend
     subgroup = "explosions",
     animations = explosion_animations.medium_explosion(),
     light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -135,7 +148,7 @@ data:extend
     height = 0,
     animations = explosion_animations.medium_explosion(),
     light = default_light(50),
-    sound = sounds.large_explosion(1.0),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -191,7 +204,7 @@ data:extend
     subgroup = "explosions",
     animations = explosion_animations.massive_explosion(),
     light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound = sounds.large_explosion(1.0),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -223,7 +236,7 @@ data:extend
     subgroup = "explosions",
     animations = explosion_animations.medium_explosion(),
     light = {intensity = 1, size = 10, color = {r=1.0, g=0.8, b=0.6}},
-    sound = sounds.large_explosion(1.0),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -259,12 +272,9 @@ data:extend
     }
   },
 
+  empty_explosion
   {
-    type = "explosion",
     name = "blood-explosion-small",
-    flags = {"not-on-map"},
-    subgroup = "explosions",
-    animations = util.empty_sprite(),
     created_effect =
     {
       type = "direct",
@@ -282,12 +292,9 @@ data:extend
     }
   },
 
+  empty_explosion
   {
-    type = "explosion",
     name = "blood-explosion-big",
-    flags = {"not-on-map"},
-    subgroup = "explosions",
-    animations = util.empty_sprite(),
     created_effect =
     {
       type = "direct",
@@ -318,12 +325,8 @@ data:extend
     }
   },
 
-  {
-    type = "explosion",
+  empty_explosion{
     name = "blood-explosion-huge",
-    flags = {"not-on-map"},
-    subgroup = "explosions",
-    animations = util.empty_sprite(),
     created_effect =
     {
       type = "direct",
@@ -354,12 +357,8 @@ data:extend
     }
   },
 
-  {
-    type = "explosion",
+  empty_explosion{
     name = "water-splash",
-    flags = {"not-on-map"},
-    subgroup = "explosions",
-    animations = util.empty_sprite(),
     created_effect =
     {
       type = "direct",
@@ -406,7 +405,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -1174,7 +1173,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -1353,7 +1352,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -1544,7 +1543,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -1607,7 +1606,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -1757,7 +1756,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -1971,7 +1970,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2034,7 +2033,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2098,7 +2097,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2185,7 +2184,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2272,7 +2271,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -2498,7 +2497,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -2590,7 +2589,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -2695,7 +2694,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2760,7 +2759,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2847,7 +2846,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -2948,7 +2947,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.75),
+    sound = sounds.large_explosion(0.8),
     created_effect =
     {
       type = "direct",
@@ -3049,7 +3048,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.medium_explosion(0.5),
     created_effect =
     {
       type = "direct",
@@ -3113,7 +3112,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.medium_explosion(0.4),
     created_effect =
     {
       type = "direct",
@@ -3185,5 +3184,23 @@ data:extend
         },
       }
     }
+  },
+
+  empty_explosion
+  {
+    name = "small-biter-die",
+    created_effect = biter_die_effects.small_biter
+  },
+
+  empty_explosion
+  {
+    name = "small-worm-die",
+    created_effect = biter_die_effects.small_worm
+  },
+
+  empty_explosion
+  {
+    name = "biter-spawner-die",
+    created_effect = biter_die_effects.spawner_biter
   }
 }

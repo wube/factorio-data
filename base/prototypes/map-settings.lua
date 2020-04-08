@@ -69,7 +69,7 @@ data:extend(
       building_coefficient = 0.1,
       other_base_coefficient = 2.0,
       neighbouring_chunk_coefficient = 0.5,
-      neighbouring_base_chunk_coefficient = 0.4;
+      neighbouring_base_chunk_coefficient = 0.4,
 
       -- A chunk has to have at most this much percent unbuildable tiles for it to be considered a candidate.
       -- This is to avoid chunks full of water to be marked as candidates.
@@ -116,8 +116,8 @@ data:extend(
       -- Maximum number of automatically created unit groups gathering for attack at any time.
       max_gathering_unit_groups = 30,
 
-      -- Maximum size of an attack unit group. This only affects automatically-created unit groups; manual groups
-      -- created through the API are unaffected.
+      -- Maximum size of an attack unit group. This only affects automatically-created unit groups;
+      -- manual groups created through the API are unaffected.
       max_unit_group_size = 200
     },
 

@@ -259,24 +259,207 @@ sounds.ore =
 {
   {
     filename = "__base__/sound/walking/resources/ore-01.ogg",
-    volume = 0.5
+    volume = 0.4
   },
   {
     filename = "__base__/sound/walking/resources/ore-02.ogg",
-    volume = 0.5
+    volume = 0.4
   },
   {
     filename = "__base__/sound/walking/resources/ore-03.ogg",
-    volume = 0.5
+    volume = 0.4
   },
   {
     filename = "__base__/sound/walking/resources/ore-04.ogg",
-    volume = 0.5
+    volume = 0.4
   },
   {
     filename = "__base__/sound/walking/resources/ore-05.ogg",
-    volume = 0.5
+    volume = 0.4
   }
+}
+
+sounds.oil =
+{
+  {
+    filename = "__base__/sound/walking/resources/oil-01.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/oil-02.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/oil-03.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/oil-04.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/oil-05.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/oil-06.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/oil-07.ogg",
+    volume = 0.7
+  }
+}
+
+sounds.coal =
+{
+  {
+    filename = "__base__/sound/walking/resources/coal-01.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-02.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-03.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-04.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-05.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-06.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-07.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-08.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-09.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/coal-10.ogg",
+    volume = 0.7
+  }
+}
+
+sounds.tree_leaves =
+{
+  {
+    filename = "__base__/sound/particles/tree-leaves-1.ogg",
+    volume = 0.25
+  },
+  {
+    filename = "__base__/sound/particles/tree-leaves-2.ogg",
+    volume = 0.25
+  },
+  {
+    filename = "__base__/sound/particles/tree-leaves-3.ogg",
+    volume = 0.25
+  },
+  {
+    filename = "__base__/sound/particles/tree-leaves-4.ogg",
+    volume = 0.25
+  },
+}
+
+sounds.inserter_basic =
+{
+  match_progress_to_activity = true,
+  sound =
+  {
+    {
+      filename = "__base__/sound/inserter-basic-1.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-basic-2.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-basic-3.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-basic-4.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-basic-5.ogg",
+      volume = 0.3
+    },
+  },
+  audible_distance_modifier = 0.5,
+}
+
+sounds.inserter_fast =
+{
+  match_progress_to_activity = true,
+  sound =
+  {
+    {
+      filename = "__base__/sound/inserter-fast-1.ogg",
+      volume = 0.2
+    },
+    {
+      filename = "__base__/sound/inserter-fast-2.ogg",
+      volume = 0.2
+    },
+    {
+      filename = "__base__/sound/inserter-fast-3.ogg",
+      volume = 0.2
+    },
+    {
+      filename = "__base__/sound/inserter-fast-4.ogg",
+      volume = 0.2
+    },
+    {
+      filename = "__base__/sound/inserter-fast-5.ogg",
+      volume = 0.2
+    }
+  },
+  audible_distance_modifier = 0.5,
+}
+
+sounds.inserter_long_handed =
+{
+  match_progress_to_activity = true,
+  sound =
+  {
+    {
+      filename = "__base__/sound/inserter-long-handed-1.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-long-handed-2.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-long-handed-3.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-long-handed-4.ogg",
+      volume = 0.3
+    },
+    {
+      filename = "__base__/sound/inserter-long-handed-5.ogg",
+      volume = 0.3
+    },
+  },
+  audible_distance_modifier = 0.5,
 }
 
 sounds.splitter =
@@ -285,27 +468,27 @@ sounds.splitter =
   {
     {
       filename = "__base__/sound/splitters/splitter.ogg",
-      volume = 0.5
+      volume = 0.33
     },
     {
       filename = "__base__/sound/splitters/splitter-2.ogg",
-      volume = 0.5
+      volume = 0.33
     },
     {
       filename = "__base__/sound/splitters/splitter-3.ogg",
-      volume = 0.5
+      volume = 0.33
     },
     {
       filename = "__base__/sound/splitters/splitter-4.ogg",
-      volume = 0.5
+      volume = 0.33
     },
     {
       filename = "__base__/sound/splitters/splitter-5.ogg",
-      volume = 0.5
+      volume = 0.33
     }
   },
   max_sounds_per_type = 3,
-  audible_distance_modifier = 0.5
+  audible_distance_modifier = 0.45
 }
 
 sounds.fast_splitter =
@@ -314,27 +497,27 @@ sounds.fast_splitter =
   {
     {
       filename = "__base__/sound/splitters/fast-splitter.ogg",
-      volume = 0.5
+      volume = 0.31
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-2.ogg",
-      volume = 0.5
+      volume = 0.31
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-3.ogg",
-      volume = 0.5
+      volume = 0.31
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-4.ogg",
-      volume = 0.5
+      volume = 0.31
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-5.ogg",
-      volume = 0.5
+      volume = 0.32
     }
   },
   max_sounds_per_type = 3,
-  audible_distance_modifier = 0.5
+  audible_distance_modifier = 0.45
 }
 
 sounds.express_splitter =
@@ -343,27 +526,45 @@ sounds.express_splitter =
   {
     {
       filename = "__base__/sound/splitters/express-splitter.ogg",
-      volume = 0.5
+      volume = 0.3
     },
     {
       filename = "__base__/sound/splitters/express-splitter-2.ogg",
-      volume = 0.5
+      volume = 0.3
     },
     {
       filename = "__base__/sound/splitters/express-splitter-3.ogg",
-      volume = 0.5
+      volume = 0.3
     },
     {
       filename = "__base__/sound/splitters/express-splitter-4.ogg",
-      volume = 0.5
+      volume = 0.3
     },
     {
       filename = "__base__/sound/splitters/express-splitter-5.ogg",
-      volume = 0.5
+      volume = 0.3
     }
   },
   max_sounds_per_type = 3,
-  audible_distance_modifier = 0.5
+  audible_distance_modifier = 0.45
+}
+
+sounds.train_brakes =
+{
+  {
+    filename = "__base__/sound/train-breaks.ogg",
+    volume = 0.3
+  }
+}
+
+sounds.train_brake_screech =
+{
+  {
+    filename = "__base__/sound/train-brake-screech.ogg", volume = 0.3
+  },
+  {
+    filename = "__base__/sound/train-brake-screech-1.ogg", volume = 0.3
+  }
 }
 
 sounds.car_stone_impact =
@@ -388,24 +589,26 @@ sounds.car_stone_impact =
   },
 }
 
-sounds.car_wood_impact =
-{
+sounds.car_wood_impact = function(volume)
+  return
   {
-    filename = "__base__/sound/car-wood-impact.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-wood-impact-02.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-wood-impact-03.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-wood-impact-04.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-wood-impact-05.ogg", volume = 0.5
-  },
-}
+    {
+      filename = "__base__/sound/car-wood-impact.ogg", volume = volume
+    },
+    {
+      filename = "__base__/sound/car-wood-impact-02.ogg", volume = volume
+    },
+    {
+      filename = "__base__/sound/car-wood-impact-03.ogg", volume = volume
+    },
+    {
+      filename = "__base__/sound/car-wood-impact-04.ogg", volume = volume
+    },
+    {
+      filename = "__base__/sound/car-wood-impact-05.ogg", volume = volume
+    },
+  }
+end
 
 sounds.generic_impact =
 {
@@ -423,6 +626,62 @@ sounds.generic_impact =
   },
   {
     filename = "__base__/sound/car-metal-impact-6.ogg", volume = 0.5
+  }
+}
+
+sounds.machine_open =
+{
+  {
+    filename = "__base__/sound/machine-open.ogg", volume = 0.5
+  }
+}
+
+sounds.machine_close =
+{
+  {
+    filename = "__base__/sound/machine-close.ogg", volume = 0.5
+  }
+}
+
+sounds.electric_network_open =
+{
+  {
+    filename = "__base__/sound/electric-network-open.ogg", volume = 0.6
+  }
+}
+
+sounds.electric_network_close =
+{
+  {
+    filename = "__base__/sound/electric-network-close.ogg", volume = 0.6
+  }
+}
+
+sounds.roboport_door_open =
+{
+  {
+    type = "play-sound",
+    sound =
+    {
+      filename = "__base__/sound/roboport-door.ogg",
+      volume = 0.3,
+      min_speed = 1,
+      max_speed = 1.5
+    }
+  }
+}
+
+sounds.roboport_door_close =
+{
+  {
+    type = "play-sound",
+    sound = 
+    { 
+      filename = "__base__/sound/roboport-door-close.ogg",
+    volume = 0.2,
+    min_speed = 1,
+    max_speed = 1.5, 
+    }
   }
 }
 
@@ -457,10 +716,36 @@ sounds.flying_robot = function(volume)
       },
       {
         filename = "__base__/sound/flying-robot-9.ogg", volume = volume
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.5
       }
     },
     max_sounds_per_type = 5,
-    audible_distance_modifier = 1,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }
 end
@@ -496,39 +781,136 @@ sounds.construction_robot = function(volume)
       },
       {
         filename = "__base__/sound/construction-robot-9.ogg", volume = volume
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.5
+      },
+      {
+        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.5
       }
     },
     max_sounds_per_type = 5,
-    audible_distance_modifier = 1,
+    audible_distance_modifier = 0.8,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }
 end
+
+sounds.robot_die_whoosh =
+{
+  {
+    filename = "__base__/sound/fight/robot-die-whoosh-01.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-whoosh-02.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-whoosh-03.ogg", volume = 0.5
+  }
+}
+
+sounds.robot_die_vox =
+{
+  {
+    filename = "__base__/sound/fight/robot-die-vox-01.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-vox-02.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-vox-03.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-vox-04.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-vox-05.ogg", volume = 0.5
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-vox-06.ogg", volume = 0.5
+  },
+}
+
+sounds.robot_selfdestruct =
+{
+  {
+    filename = "__base__/sound/fight/robot-selfdestruct-01.ogg", volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/robot-selfdestruct-02.ogg", volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/robot-selfdestruct-03.ogg", volume = 0.4
+  }
+}
+
+sounds.robot_die_impact =
+{
+  {
+    filename = "__base__/sound/fight/robot-die-impact-01.ogg", volume = 0.7
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-impact-02.ogg", volume = 0.7
+  },
+  {
+    filename = "__base__/sound/fight/robot-die-impact-03.ogg", volume = 0.7
+  }
+}
 
 sounds.laser_turret_activate =
 {
   {
     filename = "__base__/sound/fight/laser-turret-activate-01.ogg",
-    volume = 0.2
+    volume = 0.3
   },
   {
     filename = "__base__/sound/fight/laser-turret-activate-02.ogg",
-    volume = 0.2
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/laser-turret-activate-03.ogg",
+    volume = 0.3
   }
+
 }
 
 sounds.laser_turret_deactivate =
 {
   {
     filename = "__base__/sound/fight/laser-turret-deactivate-01.ogg",
-    volume = 0.2
+    volume = 0.3
   },
   {
     filename = "__base__/sound/fight/laser-turret-deactivate-02.ogg",
-    volume = 0.2
+    volume = 0.3
   },
   {
     filename = "__base__/sound/fight/laser-turret-deactivate-03.ogg",
-    volume = 0.2
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/laser-turret-deactivate-04.ogg",
+    volume = 0.3
   }
 }
 
@@ -569,6 +951,46 @@ sounds.gun_turret_deactivate =
   {
     filename = "__base__/sound/fight/gun-turret-deactivate-04.ogg",
     volume = 0.3
+  }
+}
+
+sounds.flamethrower_turret_activate =
+{
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-activate-01.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-activate-02.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-activate-03.ogg",
+    volume = 0.3
+  },
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-activate-04.ogg",
+    volume = 0.3
+  }
+}
+
+sounds.flamethrower_turret_deactivate =
+{
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-deactivate-01.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-deactivate-02.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-deactivate-03.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/fight/flamethrower-turret-deactivate-04.ogg",
+    volume = 0.2
   }
 }
 
@@ -628,6 +1050,22 @@ sounds.light_gunshot =
   }
 }
 
+sounds.defender_gunshot =
+{
+  {
+    filename = "__base__/sound/fight/defender-gunshot-1.ogg",
+    volume = 0.65
+  },
+  {
+    filename = "__base__/sound/fight/defender-gunshot-2.ogg",
+    volume = 0.65
+  },
+  {
+    filename = "__base__/sound/fight/defender-gunshot-3.ogg",
+    volume = 0.65
+  }
+}
+
 sounds.submachine_gunshot =
 {
   {
@@ -648,28 +1086,49 @@ sounds.shotgun =
 {
   {
     filename = "__base__/sound/fight/pump-shotgun-1.ogg",
-    volume = 0.5
+    volume = 0.37
   },
   {
     filename = "__base__/sound/fight/pump-shotgun-2.ogg",
-    volume = 0.5
+    volume = 0.37
   },
   {
     filename = "__base__/sound/fight/pump-shotgun-3.ogg",
-    volume = 0.5
+    volume = 0.37
   },
   {
     filename = "__base__/sound/fight/pump-shotgun-4.ogg",
-    volume = 0.5
+    volume = 0.37
   },
   {
     filename = "__base__/sound/fight/pump-shotgun-5.ogg",
-    volume = 0.5
+    volume = 0.37
+  }
+}
+
+sounds.tank_gunshot =
+{
+  {
+    filename = "__base__/sound/fight/tank-cannon-1.ogg",
+    volume = 0.57
   },
   {
-    filename = "__base__/sound/fight/pump-shotgun-6.ogg",
-    volume = 0.5
+    filename = "__base__/sound/fight/tank-cannon-2.ogg",
+    volume = 0.57
+  },
+  {
+    filename = "__base__/sound/fight/tank-cannon-3.ogg",
+    volume = 0.57
+  },
+  {
+    filename = "__base__/sound/fight/tank-cannon-4.ogg",
+    volume = 0.57
+  },
+  {
+    filename = "__base__/sound/fight/tank-cannon-5.ogg",
+    volume = 0.57
   }
+
 }
 
 sounds.small_explosion = function(volume)
@@ -700,6 +1159,41 @@ sounds.small_explosion = function(volume)
       },
       {
         filename = "__base__/sound/small-explosion-5.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+sounds.medium_explosion = function(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 1,
+      remove = true
+    },
+    audible_distance_modifier = 0.7,
+    variations =
+    {
+      {
+        filename = "__base__/sound/fight/medium-explosion-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/fight/medium-explosion-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/fight/medium-explosion-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/fight/medium-explosion-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/fight/medium-explosion-5.ogg",
         volume = volume
       }
     }
@@ -748,19 +1242,45 @@ sounds.large_explosion = function(volume)
       max_count = 1,
       remove = true
     },
+    audible_distance_modifier = 1.95,
     variations =
     {
       {
         filename = "__base__/sound/fight/large-explosion-1.ogg",
-        volume = volume
+        volume = 0.55
       },
       {
         filename = "__base__/sound/fight/large-explosion-2.ogg",
-        volume = volume
+        volume = 0.55
       }
     }
   }
 end
+
+sounds.small_splash = 
+{
+  {
+    filename = "__base__/sound/particles/small-splash-1.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/particles/small-splash-2.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/particles/small-splash-3.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/particles/small-splash-4.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/particles/small-splash-5.ogg",
+    volume = 0.7
+  }
+}
+
 
 sounds.logistics_chest_open =
 {
@@ -783,6 +1303,44 @@ sounds.logistics_chest_open =
   {
     filename = "__base__/sound/passive-provider-chest-open-5.ogg",
     volume = 0.3
+  },
+}
+
+sounds.gate_open =
+{
+  {
+    filename = "__base__/sound/gate-open-1.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-open-2.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-open-3.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-open-4.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-open-5.ogg", volume = 0.55
+  },
+}
+
+sounds.gate_close =
+{
+  {
+    filename = "__base__/sound/gate-close-1.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-close-2.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-close-3.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-close-4.ogg", volume = 0.55
+  },
+  {
+    filename = "__base__/sound/gate-close-5.ogg", volume = 0.55
   },
 }
 
@@ -901,27 +1459,27 @@ sounds.biter_calls = function(volume)
     {
       {
         filename = "__base__/sound/creatures/biter-call-1.ogg",
-        volume = volume
+        volume = 0.58
       },
       {
         filename = "__base__/sound/creatures/biter-call-2.ogg",
-        volume = volume
+        volume = 0.58
       },
       {
         filename = "__base__/sound/creatures/biter-call-3.ogg",
-        volume = volume
+        volume = 0.58
       },
       {
         filename = "__base__/sound/creatures/biter-call-4.ogg",
-        volume = volume
+        volume = 0.58
       },
       {
         filename = "__base__/sound/creatures/biter-call-5.ogg",
-        volume = volume
+        volume = 0.58
       },
     },
-    probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    --audible_distance_modifier = 0.9,
+    probability = 1 / (12 * 60), -- average pause between the sound is 12 seconds
+    max_sounds_per_type = 2,
   }
 end
 
@@ -956,6 +1514,7 @@ sounds.biter_calls_big = function(volume)
       },
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
+    max_sounds_per_type = 2,
   }
 end
 
@@ -1427,7 +1986,37 @@ sounds.worm_roars = function(volume)
         volume = volume
       }
     },
-    audible_distance_modifier = 2.0
+    audible_distance_modifier = 1.5
+  }
+end
+
+sounds.worm_roars_big = function(volume)
+  return
+  {
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/worm-roar-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-big-5.ogg",
+        volume = volume
+      }
+    },
+    audible_distance_modifier = 1.3
   }
 end
 
@@ -1461,6 +2050,36 @@ sounds.worm_roar_alternative = function(volume)
   }
 end
 
+sounds.worm_roar_alternative_big = function(volume)
+  return
+  {
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-roar-alt-big-5.ogg",
+        volume = volume
+      }
+    },
+   audible_distance_modifier = 1.8
+  }
+end
+
 sounds.worm_breath = function(volume)
   return
   {
@@ -1468,72 +2087,118 @@ sounds.worm_breath = function(volume)
     {
       {
         filename = "__base__/sound/creatures/worm-breathe-01.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-02.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-03.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-04.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-05.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-06.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-07.ogg",
-        volume = 0.5
+        volume = volume
       },
       {
         filename = "__base__/sound/creatures/worm-breathe-08.ogg",
-        volume = 0.5
+        volume = volume
       }
     },
-    audible_distance_modifier = 2.0
+   audible_distance_modifier = 1.2
+  }
+end
+
+sounds.worm_breath_big = function(volume)
+  return
+  {
+    variations =
+    {
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-01.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-02.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-03.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-04.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-05.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-06.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-07.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-breathe-big-08.ogg",
+        volume = volume
+      }
+    },
+    audible_distance_modifier = 1.5
   }
 end
 
 sounds.worm_dying = function(volume)
   return
   {
+    variations =
     {
-      filename = "__base__/sound/creatures/worm-death-1.ogg",
-      volume = volume
+      {
+        filename = "__base__/sound/creatures/worm-death-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-7.ogg",
+        volume = volume
+      }
     },
-    {
-      filename = "__base__/sound/creatures/worm-death-2.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/worm-death-3.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/worm-death-4.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/worm-death-5.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/worm-death-6.ogg",
-      volume = volume
-    },
-    {
-      filename = "__base__/sound/creatures/worm-death-7.ogg",
-      volume = volume
-    }
+    -- audible_distance_modifier = 1.2
   }
 end
 
@@ -1556,6 +2221,44 @@ sounds.worm_dying_small = function(volume)
       filename = "__base__/sound/creatures/worm-death-small-4.ogg",
       volume = volume
     }
+  }
+end
+
+sounds.worm_dying_big = function(volume)
+  return
+  {
+    variations = 
+    {
+      {
+        filename = "__base__/sound/creatures/worm-death-big-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-big-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-big-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-big-4.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-big-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-big-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/worm-death-big-7.ogg",
+        volume = volume
+      }
+    },
+    audible_distance_modifier = 1.2
   }
 end
 

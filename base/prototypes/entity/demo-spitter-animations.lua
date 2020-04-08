@@ -191,7 +191,7 @@ spitter_alternative_attacking_animation_sequence =
 
   warmup_animation_speed = 1 / 6 * 0.4,
   attacking_animation_speed = 1 / 16 * 0.4,
-  cooldown_animation_speed = 1 / 1 * 0.4 * 0.125;
+  cooldown_animation_speed = 1 / 1 * 0.4 * 0.125,
   prepared_animation_speed = 1 / 1 * 0.5 * 0.4,
   back_to_walk_animation_speed = 1 / 6 * 0.4,
 }

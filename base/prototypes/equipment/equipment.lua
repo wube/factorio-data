@@ -254,9 +254,8 @@ data:extend(
     },
     sprite =
     {
-      filename = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
+      filename = "__base__/graphics/equipment/discharge-defense-equipment.png",
       flags = { "icon" },
-      mipmap_count = 4,
       size = 64,
       priority = "extra-high-no-scale"
     },

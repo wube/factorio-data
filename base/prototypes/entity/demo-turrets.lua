@@ -329,9 +329,8 @@ data:extend(
     damaged_trigger_effect = hit_effects.biter(),
     shooting_cursor_size = 3,
     corpse = "small-worm-corpse",
-    dying_explosion = "blood-explosion-big",
-    dying_sound = sounds.worm_dying_small(0.6),
-
+    dying_explosion = "small-worm-die",
+    dying_sound = sounds.worm_dying_small(0.57),
     folded_speed = 0.01,
     folded_speed_secondary = 0.024,
     folded_animation = worm_folded_animation(scale_worm_small, tint_worm_small),
@@ -340,16 +339,16 @@ data:extend(
     preparing_sound = sounds.worm_standup_small(1),
     prepared_speed = 0.024,
     prepared_speed_secondary = 0.012,
-    prepared_sound = sounds.worm_breath(0.8),
+    prepared_sound = sounds.worm_breath(0.6),
     prepared_animation = worm_prepared_animation(scale_worm_small, tint_worm_small),
     prepared_alternative_speed = 0.024,
     prepared_alternative_speed_secondary = 0.018,
     prepared_alternative_chance = 0.2,
     prepared_alternative_animation = worm_prepared_alternative_animation(scale_worm_small, tint_worm_small),
-    prepared_alternative_sound = sounds.worm_roar_alternative(0.7),
+    prepared_alternative_sound = sounds.worm_roar_alternative(0.64),
     starting_attack_speed = 0.034,
     starting_attack_animation = worm_start_attack_animation(scale_worm_small, tint_worm_small),
-    starting_attack_sound = sounds.worm_roars(0.7),
+    starting_attack_sound = sounds.worm_roars(0.62),
     ending_attack_speed = 0.016,
     ending_attack_animation = worm_end_attack_animation(scale_worm_small, tint_worm_small),
     folding_speed = 0.015,
@@ -395,15 +394,15 @@ data:extend(
         {
           {
             filename = "__base__/sound/creatures/worm-spit-start.ogg",
-            volume = 0.7
+            volume = 0.0
           },
           {
             filename = "__base__/sound/creatures/worm-spit-start-2.ogg",
-            volume = 0.3
+            volume = 0.0
           },
           {
             filename = "__base__/sound/creatures/worm-spit-start-3.ogg",
-            volume = 0.3
+            volume = 0.0
           },
         },
         --middle_sound =
@@ -417,7 +416,7 @@ data:extend(
         {
           {
             filename = "__base__/sound/creatures/worm-spit-end.ogg",
-            volume = 0.7
+            volume = 0.0
           }
         }
       }
@@ -466,13 +465,21 @@ data:extend(
     preparing_speed = 0.08,
     preparing_sound = sounds.gun_turret_activate,
     folding_sound = sounds.gun_turret_deactivate,
+    rotating_sound = 
+    {
+      sound =
+      {
+        filename = "__base__/sound/fight/gun-turret-rotation-01.ogg",
+        volume = 0.3
+      }
+    },
     folding_speed = 0.08,
     inventory_size = 1,
     automated_ammo_count = 10,
     attacking_speed = 0.5,
     alert_when_attacking = true,
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     folded_animation =
     {
       layers =
@@ -602,7 +609,7 @@ data:extend(
         starting_frame_speed_deviation = 0.1
       },
       range = 18,
-      sound = sounds.gun_turret_gunshot
+      sound = sounds.gun_turret_gunshot,
     },
 
     call_for_help_radius = 40,

@@ -120,7 +120,7 @@ local function scaled_cliff(name, scale, fill_volume)
     map_color = {r=144, g=119, b=87},
     grid_size = {4 * scale, 4 * scale},
     grid_offset = grid_offset,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     vehicle_impact_sound = sounds.car_stone_impact,
     cliff_explosive = "cliff-explosives",
     orientations =
@@ -1120,9 +1120,9 @@ data:extend(
     corpse = "stone-furnace-remnants",
     dying_explosion = "stone-furnace-explosion",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.car_stone_impact,
     working_sound =
     {
@@ -1130,13 +1130,14 @@ data:extend(
       {
         {
           filename = "__base__/sound/furnace.ogg",
-          volume = 1.0
+          volume = 0.6
         }
       },
       --max_sounds_per_type = 3,
-      apparent_volume = 1.5,
+      apparent_volume = 0.7,
       fade_in_ticks = 4,
-      fade_out_ticks = 30
+      fade_out_ticks = 20,
+      audible_distance_modifier = 0.4,
     },
     resistances =
     {
@@ -1298,12 +1299,14 @@ data:extend(
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/transport-belt.ogg",
-        volume = 0.3
+        volume = 0.17
       },
       persistent = true
     },
@@ -1433,12 +1436,15 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/boiler.ogg",
-        volume = 0.8
+        volume = 0.7
       },
       --max_sounds_per_type = 3,
+      audible_distance_modifier = 0.3,
       fade_in_ticks = 4,
-      fade_out_ticks = 30,
+      fade_out_ticks = 20,
     },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
 
     structure =
     {
@@ -1829,9 +1835,9 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
     inventory_size = 16,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound = sounds.car_wood_impact,
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.8 },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.8 },
+    vehicle_impact_sound = sounds.car_wood_impact(0.5),
     picture =
     {
       layers =
@@ -1962,9 +1968,9 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
     inventory_size = 16,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound = sounds.car_wood_impact,
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.8 },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.8 },
+    vehicle_impact_sound = sounds.car_wood_impact(0.5),
     picture =
     {
       filename = "__base__/graphics/entity/wooden-chest/wooden-chest.png",
@@ -1990,7 +1996,9 @@ data:extend(
     drawing_box = {{-0.5, -2.6}, {0.5, 0.5}},
     maximum_wire_distance = 7.5,
     supply_area_distance = 2.5,
-    vehicle_impact_sound = sounds.car_wood_impact,
+    vehicle_impact_sound = sounds.car_wood_impact(0.5),
+    open_sound = sounds.electric_network_open,
+    close_sound = sounds.electric_network_close,
     track_coverage_during_build_by_moving = true,
     fast_replaceable_group = "electric-pole",
     pictures =
@@ -2146,7 +2154,7 @@ data:extend(
       }
     },
     fast_replaceable_group = "steam-engine",
-    collision_box = {{-1.35, -2.35}, {1.35, 2.35}},
+    collision_box = {{-1.25, -2.35}, {1.25, 2.35}},
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
     damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
@@ -2270,17 +2278,20 @@ data:extend(
       }
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/steam-engine-90bpm.ogg",
-        volume = 0.6
+        volume = 0.55
       },
       match_speed_to_activity = true,
+      audible_distance_modifier = 0.8,
       max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
     min_perceived_performance = 0.25,
     performance_to_sound_speedup = 0.5,
@@ -2316,7 +2327,7 @@ data:extend(
     adjacent_tile_collision_box = { { -1, -2 }, { 1, -1 } },
     minable = {mining_time = 0.1, result = "offshore-pump"},
     max_health = 150,
-    corpse = "small-remnants",
+    corpse = "offshore-pump-remnants",
     dying_explosion = "offshore-pump-explosion",
     fluid = "water",
     resistances =
@@ -2352,19 +2363,22 @@ data:extend(
     tile_width = 1,
     tile_height = 1,
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         {
           filename = "__base__/sound/offshore-pump.ogg",
-          volume = 0.4
+          volume = 0.45
         }
       },
       match_volume_to_activity = true,
+      audible_distance_modifier = 0.5,
       max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20,
     },
     min_perceived_performance = 0.5,
     always_draw_fluid = true,
@@ -2926,35 +2940,9 @@ data:extend(
     fast_replaceable_group = "inserter",
     next_upgrade = "fast-inserter",
     vehicle_impact_sound = sounds.generic_impact,
-    working_sound =
-    {
-      match_progress_to_activity = true,
-      sound =
-      {
-        {
-          filename = "__base__/sound/inserter-basic-1.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-2.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-3.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-4.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-5.ogg",
-          volume = 0.3
-        }
-      },
-      --max_sounds_per_type = 5,
-      audible_distance_modifier = 0.7,
-    },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound = sounds.inserter_basic,
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/inserter/inserter-hand-base.png",
@@ -3107,35 +3095,9 @@ data:extend(
     fast_replaceable_group = "inserter",
     next_upgrade = "stack-inserter",
     vehicle_impact_sound = sounds.generic_impact,
-    working_sound =
-    {
-      match_progress_to_activity = true,
-      sound =
-      {
-        {
-          filename = "__base__/sound/inserter-fast-1.ogg",
-          volume = 0.4
-        },
-        {
-          filename = "__base__/sound/inserter-fast-2.ogg",
-          volume = 0.4
-        },
-        {
-          filename = "__base__/sound/inserter-fast-3.ogg",
-          volume = 0.4
-        },
-        {
-          filename = "__base__/sound/inserter-fast-4.ogg",
-          volume = 0.4
-        },
-        {
-          filename = "__base__/sound/inserter-fast-5.ogg",
-          volume = 0.4
-        }
-      },
-      --max_sounds_per_type = 5,
-      audible_distance_modifier = 0.7,
-    },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound = sounds.inserter_fast,
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/fast-inserter/fast-inserter-hand-base.png",
@@ -3286,35 +3248,9 @@ data:extend(
     },
     fast_replaceable_group = "long-handed-inserter",
     vehicle_impact_sound = sounds.generic_impact,
-    working_sound =
-    {
-      match_progress_to_activity = true,
-      sound =
-      {
-        {
-          filename = "__base__/sound/inserter-long-handed-1.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-long-handed-2.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-long-handed-3.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-long-handed-4.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-long-handed-5.ogg",
-          volume = 0.3
-        }
-      },
-      --max_sounds_per_type = 7,
-      audible_distance_modifier = 0.7,
-    },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound = sounds.inserter_long_handed,
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/long-handed-inserter/long-handed-inserter-hand-base.png",
@@ -3471,35 +3407,7 @@ data:extend(
     rotation_speed = 0.01,
     fast_replaceable_group = "inserter",
     vehicle_impact_sound = sounds.generic_impact,
-    working_sound =
-    {
-      match_progress_to_activity = true,
-      sound =
-      {
-        {
-          filename = "__base__/sound/inserter-basic-1.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-2.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-3.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-4.ogg",
-          volume = 0.3
-        },
-        {
-          filename = "__base__/sound/inserter-basic-5.ogg",
-          volume = 0.3
-        }
-      },
-      --max_sounds_per_type = 5,
-      audible_distance_modifier = 0.7,
-    },
+    working_sound = sounds.inserter_basic,
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base.png",
@@ -3671,12 +3579,12 @@ data:extend(
       {
         {
           filename = "__base__/sound/pipe.ogg",
-          volume = 0.5
+          volume = 0.35
         }
       },
       match_volume_to_activity = true,
-      max_sounds_per_type = 2,
-      fade_in_ticks = 10,
+      audible_distance_modifier = 0.2,
+      fade_in_ticks = 4,
       fade_out_ticks = 60
     },
 
@@ -3800,7 +3708,8 @@ data:extend(
         }
       },
     max_sounds_per_type = 3,
-    audible_distance_modifier = 0.8,
+    --audible_distance_modifier = 0.8,
+    use_doppler_shift = false
     },
     radius_minimap_visualisation_color = { r = 0.059, g = 0.092, b = 0.235, a = 0.275 },
     rotation_speed = 0.01,
@@ -4160,8 +4069,8 @@ data:extend(
       emissions_per_minute = 4
     },
     energy_usage = "75kW",
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
@@ -4178,9 +4087,9 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       apparent_volume = 1.5,
-      --max_sounds_per_type = 2,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     }
   },
   {
@@ -4276,8 +4185,8 @@ data:extend(
         }
       }
     },
-    open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.6 },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact,
     working_sound =
     {
@@ -4294,9 +4203,9 @@ data:extend(
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       --apparent_volume = 1.5,
-      --max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
     crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid"},
 
@@ -4399,7 +4308,7 @@ data:extend(
     corpse = "wall-remnants",
     dying_explosion = "wall-explosion",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     vehicle_impact_sound = sounds.car_stone_impact,
     -- this kind of code can be used for having walls mirror the effect
     -- there can be multiple reaction items
@@ -5302,14 +5211,17 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/lab.ogg",
-        volume = 0.7
+        volume = 0.65
       },
       apparent_volume = 1,
       --max_sounds_per_type = 3,
-      fade_in_ticks = 10,
-      fade_out_ticks = 30
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     energy_source =
     {
       type = "electric",
@@ -5405,9 +5317,9 @@ data:extend(
     fast_replaceable_group = "container",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     inventory_size = 32,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg" },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg" },
-    vehicle_impact_sound = sounds.car_wood_impact,
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.8 },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.8 },
+    vehicle_impact_sound = sounds.car_wood_impact(0.5),
     picture =
     {
       layers =
@@ -5663,6 +5575,20 @@ data:extend(
     corpse = "underground-belt-remnants",
     dying_explosion = "underground-belt-explosion",
     max_distance = 5,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/underground-belt.ogg",
+        volume = 0.2
+      },
+      max_sounds_per_type = 2,
+      audible_distance_modifier = 0.5,
+      persistent = true,
+      use_doppler_shift = false
+    },
     underground_sprite =
     {
       filename = "__core__/graphics/arrows/underground-lines.png",
@@ -5920,7 +5846,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid", "not-flammable"},
     minable = {mining_time = 0.4, result = "car"},
-    mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg"},
+    mined_sound = {filename = "__core__/sound/deconstruct-medium.ogg",volume = 0.8},
     max_health = 450,
     corpse = "car-remnants",
     dying_explosion = "car-explosion",
@@ -6259,7 +6185,7 @@ data:extend(
         }
       }
     },
-    sound_minimum_speed = 0.25;
+    sound_minimum_speed = 0.25,
     sound_scaling_ratio = 0.8,
     vehicle_impact_sound = sounds.generic_impact,
     working_sound =
@@ -6267,17 +6193,17 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/car-engine.ogg",
-        volume = 0.7
+        volume = 0.67
       },
       activate_sound =
       {
         filename = "__base__/sound/car-engine-start.ogg",
-        volume = 0.7
+        volume = 0.67
       },
       deactivate_sound =
       {
         filename = "__base__/sound/car-engine-stop.ogg",
-        volume = 0.7
+        volume = 0.67
       },
       match_speed_to_activity = true
     },
@@ -6327,17 +6253,20 @@ data:extend(
       emissions_per_minute = 1
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/electric-furnace.ogg",
-        volume = 0.7
+        volume = 0.6
       },
       --max_sounds_per_type = 3,
       apparent_volume = 1.5,
+      audible_distance_modifier = 0.6,
       fade_in_ticks = 4,
-      fade_out_ticks = 30
+      fade_out_ticks = 20
     },
     animation =
     {
@@ -6552,11 +6481,13 @@ data:extend(
       animation_speed = 0.5
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.5 },
+      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.6 },
       max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5,
+      audible_distance_modifier = 0.6,
       --probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
     },
     recharging_light = {intensity = 0.4, size = 5, color = {r = 1.0, g = 1.0, b = 1.0}},
@@ -6567,32 +6498,8 @@ data:extend(
     draw_logistic_radius_visualization = true,
     draw_construction_radius_visualization = true,
 
-    open_door_trigger_effect =
-    {
-      {
-        type = "play-sound",
-        sound =
-        {
-          filename = "__base__/sound/roboport-door.ogg",
-          volume = 0.5,
-          min_speed = 1,
-          max_speed = 1.5
-        }
-      }
-    },
-    close_door_trigger_effect =
-    {
-      {
-        type = "play-sound",
-        sound =
-        {
-          filename = "__base__/sound/roboport-door-close.ogg",
-          volume = 0.5,
-          min_speed = 1,
-          max_speed = 1.5
-        }
-      }
-    },
+    open_door_trigger_effect = sounds.roboport_door_open,
+    close_door_trigger_effect = sounds.roboport_door_close,
 
     circuit_wire_connection_point = circuit_connector_definitions["roboport"].points,
     circuit_connector_sprites = circuit_connector_definitions["roboport"].sprites,
@@ -6657,6 +6564,8 @@ data:extend(
     maximum_wire_distance = 30,
     supply_area_distance = 2,
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.electric_network_open,
+    close_sound = sounds.electric_network_close,
     pictures =
     {
       layers =
@@ -6809,6 +6718,8 @@ data:extend(
     maximum_wire_distance = 9,
     supply_area_distance = 3.5,
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.electric_network_open,
+    close_sound = sounds.electric_network_close,
     pictures =
     {
       layers =
@@ -6946,19 +6857,22 @@ data:extend(
     corpse = "steel-furnace-remnants",
     dying_explosion = "steel-furnace-explosion",
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
       {
         {
           filename = "__base__/sound/steel-furnace.ogg",
-          volume = 0.6
+          volume = 0.46
         }
       },
       max_sounds_per_type = 4,
       --apparent_volume = 1.5,
+      audible_distance_modifier = 0.37,
       fade_in_ticks = 4,
-      fade_out_ticks = 30
+      fade_out_ticks = 20
     },
     resistances =
     {
@@ -7533,28 +7447,12 @@ data:extend(
     },
 
     vehicle_impact_sound = sounds.generic_impact,
-    open_sound =
-    {
-      variations = { filename = "__base__/sound/gate1.ogg", volume = 0.5 },
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      }
-    },
-    close_sound =
-    {
-      variations = { filename = "__base__/sound/gate2.ogg", volume = 0.5 },
-      aggregation =
-      {
-        max_count = 1,
-        remove = true
-      }
-    }
+    open_sound = sounds.gate_open,
+    close_sound = sounds.gate_close,
   },
 }
 )
 
 -- for mod backwards compatibility
 data.raw["offshore-pump"]["offshore-pump"].picture = data.raw["offshore-pump"]["offshore-pump"].graphics_set.animation
-data.raw["offshore-pump"]["offshore-pump"].picture.ignore = true;
+data.raw["offshore-pump"]["offshore-pump"].picture.ignore = true

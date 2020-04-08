@@ -198,7 +198,7 @@ data:extend(
       {
         {
           filename = "__base__/sound/railgun.ogg",
-          volume = 0.8
+          volume = 0.5
         }
       }
     },
@@ -221,15 +221,7 @@ data:extend(
       projectile_creation_distance = 1.6,
       projectile_center = {-0.15625, -0.07812},
       range = 25,
-      sound =
-      {
-        {
-          filename = "__base__/sound/fight/tank-cannon.ogg",
-          volume = 0.5,
-          min_speed = 0.98,
-          max_speed = 1.06,
-        }
-      }
+      sound = sounds.tank_gunshot,
     },
     stack_size = 5
   },

@@ -144,8 +144,8 @@ function make_laser_beam(sound)
     {
       sound =
       {
-        filename = "__base__/sound/fight/electric-beam.ogg",
-        volume = 0.6
+        filename = "__base__/sound/fight/laser-beam.ogg",
+        volume = 0.85
       },
       max_sounds_per_type = 4
     }
@@ -153,7 +153,7 @@ function make_laser_beam(sound)
   else
     result.name = "laser-beam-no-sound"
   end
-  return result;
+  return result
 end
 
 data:extend(

@@ -1,7 +1,7 @@
-local noise = require("noise");
-local tne = noise.to_noise_expression;
-local resource_autoplace = require("resource-autoplace");
-local sounds = require ("prototypes.entity.demo-sounds");
+local noise = require("noise")
+local tne = noise.to_noise_expression
+local resource_autoplace = require("resource-autoplace")
+local sounds = require ("prototypes.entity.demo-sounds")
 
 -- Initialize the core patch sets in a predictable order
 resource_autoplace.initialize_patch_set("iron-ore", true)
@@ -138,7 +138,7 @@ data:extend(
       order = "b",
       map_color = {0, 0, 0},
       mining_time = 1,
-      walking_sound = sounds.pebble
+      walking_sound = sounds.coal
     },
     {
       base_density = 8,
@@ -152,7 +152,7 @@ data:extend(
       order = "b",
       map_color = {0.690, 0.611, 0.427},
       mining_time = 1,
-      walking_sound = sounds.pebble
+      walking_sound = sounds.ore
     },
     {
       base_density = 4,

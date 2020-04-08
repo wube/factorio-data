@@ -319,6 +319,7 @@ function util.combine_icons(icons1, icons2, inputs)
     icon.icon = icon_to_add.icon -- the only line you can guarantee
     icon.icon_size = icon_to_add.icon_size or 32
     icon.scale = scale * (icon_to_add.scale or 32.0/icon.icon_size)
+    icon.icon_mipmaps = icon_to_add.icon_mipmaps
     if icon_to_add.shift then
       icon.shift = {icon_to_add.shift[1] * scale + shift[1], icon_to_add.shift[2] * scale + shift[2]}
     else

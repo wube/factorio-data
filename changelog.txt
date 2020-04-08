@@ -1,6 +1,50 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.18
+Version: 0.18.19
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.18
+Date: 08. 04. 2020
+  Changes:
+    - Adjusted steam engine and turbine collision boxes so player can walk between two steam engines.
+    - Roboports allow exporting both logistics and robot stats at the same time. (https://forums.factorio.com/80652)
+  Graphics:
+    - Added offshore pump remnants.
+    - Added new dying effects for biters, spitters, worms, and spawners.
+  Gui:
+    - Added confirmation box for deleting blueprint book.
+  Sounds:
+    - New or updated sound effects include:
+      - Transport belts - new concept for these sounds.
+      - Turrets rotation sounds and fold/unfold.
+      - Weapons improved and made more powerful, e.g. submachine gun, shotgun, gun turret, vehicle machine gun, Laser and electric beam.
+      - Particles: Water splashes, Tree debris.
+    - Various mix level tweaks including the train, enemies.
+    - Attenuations (audible distance) adjusted for entities such as Pipe, Substation and Offshore Pump.
+    - New sound when walking over ore patches.
+    - Default Sound Settings Updated:
+      - Music, Game Effects and Walking sound lowered, Environment sounds and Master Level raised.
+      - Zoom audible distance and volume levels adjusted.
+      - Maximum Environment Sounds increased (edited).
+  Bugfixes:
+    - Fixed mining entity with randomized mining result amount would never return the largest defined amount. (https://forums.factorio.com/82959)
+    - Fixed crash when loading replay. (https://forums.factorio.com/83030)
+    - Fixed reading LuaPlayer::entity_copy_source when the player is dead. (https://forums.factorio.com/83133)
+    - Fixed that upgrading and delivering modules at the same time didn't work right. (https://forums.factorio.com/83175)
+    - Fixed a crash when closing the game while some GUIs are shown. (https://forums.factorio.com/83227)
+    - Fixed crash when setting max_group_gathering_time and min_group_gathering_time to the same value. (https://forums.factorio.com/82985)
+    - Fixed discharge defense equipment had the wrong sprite in the equipment grid. (https://forums.factorio.com/83248)
+    - Fixed that artillery wagons wouldn't show out of ammo icons. (https://forums.factorio.com/82834)
+    - Fixed that modded cargo wagon colors wouldn't copy correctly through blueprints. (https://forums.factorio.com/83302)
+    - Fixed furnaces with recipes using fluid ingredients could cause crash. (https://forums.factorio.com/81482)
+    - Fixed a crash when removing a player that has modded associated character entities. (https://forums.factorio.com/83349)
+  Modding:
+    - Furnaces now ignore off_when_no_fluid_recipe property of their fluid box definition. Fluid boxes will not be disabled based on enabled recipes. (https://forums.factorio.com/77971)
+    - Changed colored concrete tiles to be non-mineable.
+  Scripting:
+    - Added LuaEquipmentPrototype::automatic.
+    - Added "include_entities", "include_trains", "include_station_names", and "include_modules" fields to LuaItemStack::create_blueprint.
+    - Added LuaRoboportControlBehaviour::read_logistics and read_robot_stats
+    - Removed LuaRoboportControlBehaviour::mode_of_operations
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.17
 Date: 27. 03. 2020

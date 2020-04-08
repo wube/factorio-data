@@ -828,9 +828,10 @@ data:extend({
           volume = 0.7
         }
       },
-    max_sounds_per_type = 3,
-    fade_in_ticks = 10,
-    fade_out_ticks = 90
+      match_volume_to_activity = true,
+    --max_sounds_per_type = 3,
+    --fade_in_ticks = 10,
+    --fade_out_ticks = 90
   }
 
 }})
@@ -1025,6 +1026,8 @@ data:extend({
     selection_box = {{-1, -1.5 }, {1, 1.5}},
     rotation_speed = 0.015,
     preparing_speed = 0.08,
+    preparing_sound = sounds.flamethrower_turret_activate,
+    folding_sound = sounds.flamethrower_turret_deactivate,
     folding_speed = 0.08,
     attacking_speed = 1,
     ending_attack_speed = 0.2,
@@ -1487,22 +1490,46 @@ data:extend({
         begin_sound =
         {
           {
-            filename = "__base__/sound/fight/flamethrower-start.ogg",
-            volume = 0.7
+            filename = "__base__/sound/fight/flamethrower-turret-start-01.ogg",
+            volume = 0.5
+          },
+          {
+            filename = "__base__/sound/fight/flamethrower-turret-start-02.ogg",
+            volume = 0.5
+          },
+          {
+            filename = "__base__/sound/fight/flamethrower-turret-start-03.ogg",
+            volume = 0.5
           }
         },
         middle_sound =
         {
           {
-            filename = "__base__/sound/fight/flamethrower-mid.ogg",
-            volume = 0.7
+            filename = "__base__/sound/fight/flamethrower-turret-mid-01.ogg",
+            volume = 0.5
+          },
+          {
+            filename = "__base__/sound/fight/flamethrower-turret-mid-02.ogg",
+            volume = 0.5
+          },
+          {
+            filename = "__base__/sound/fight/flamethrower-turret-mid-03.ogg",
+            volume = 0.5
           }
         },
         end_sound =
         {
           {
-            filename = "__base__/sound/fight/flamethrower-end.ogg",
-            volume = 0.7
+            filename = "__base__/sound/fight/flamethrower-turret-end-01.ogg",
+            volume = 0.5
+          },
+          {
+            filename = "__base__/sound/fight/flamethrower-turret-end-02.ogg",
+            volume = 0.5
+          },
+          {
+            filename = "__base__/sound/fight/flamethrower-turret-end-03.ogg",
+            volume = 0.5
           }
         }
       }

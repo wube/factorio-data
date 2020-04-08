@@ -649,16 +649,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "construction-robot",
-    icon = "__base__/graphics/icons/construction-robot.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "logistic-network",
-    order = "a[robot]-b[construction-robot]",
-    place_result = "construction-robot",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "big-electric-pole",
     icon = "__base__/graphics/icons/big-electric-pole.png",
     icon_size = 64, icon_mipmaps = 4,

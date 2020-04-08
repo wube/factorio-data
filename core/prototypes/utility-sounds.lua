@@ -64,27 +64,27 @@ data:extend(
       {
         {
           filename = "__core__/sound/mining-wood-1.ogg",
-          volume = 0.6
+          volume = 0.4
         },
         {
           filename = "__core__/sound/mining-wood-2.ogg",
-          volume = 0.6
+          volume = 0.4
         },
         {
           filename = "__core__/sound/mining-wood-3.ogg",
-          volume = 0.6
+          volume = 0.4
         },
         {
           filename = "__core__/sound/mining-wood-4.ogg",
-          volume = 0.6
+          volume = 0.4
         },
         {
           filename = "__core__/sound/mining-wood-5.ogg",
-          volume = 0.6
+          volume = 0.4
         },
         {
           filename = "__core__/sound/mining-wood-6.ogg",
-          volume = 0.6
+          volume = 0.4
         }
       }
     },
@@ -93,13 +93,28 @@ data:extend(
       variations =
       {
         {
-          filename = "__core__/sound/axe-meat-1.ogg"
+          filename = "__core__/sound/axe-meat-1.ogg",
+          volume = 0.7
         },
         {
-          filename = "__core__/sound/axe-meat-2.ogg"
+          filename = "__core__/sound/axe-meat-2.ogg",
+          volume = 0.7
         },
         {
-          filename = "__core__/sound/axe-meat-3.ogg"
+          filename = "__core__/sound/axe-meat-3.ogg",
+          volume = 0.7
+        },
+        {
+          filename = "__core__/sound/axe-meat-4.ogg",
+          volume = 0.7
+        },
+        {
+          filename = "__core__/sound/axe-meat-4.ogg",
+          volume = 0.7
+        },
+        {
+          filename = "__core__/sound/axe-meat-6.ogg",
+          volume = 0.7
         }
       }
     },
