@@ -85,6 +85,8 @@ data:extend(
     zoom_to_world_can_use_nightvision = false,
     zoom_to_world_effect_strength = 0.05,
     max_terrain_building_size = 255, -- the min of this or the player build reach is used
+    small_area_size = 1.5, -- less than this plays the 'small' sound variants
+    medium_area_size = 6.5, -- less than this plays the 'medium' sound variants, larger and equal plays the 'big' sound variants.
     rail_segment_colors =
     {
       {r = 1, g = 1},

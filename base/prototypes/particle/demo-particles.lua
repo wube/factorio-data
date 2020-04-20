@@ -117,6 +117,7 @@ local make_particle = function(params)
     name = name,
 
     life_time = params.life_time or 60 * 15,
+    fade_away_duration = params.fade_away_duration,
 
     render_layer = params.render_layer or "projectile",
     render_layer_when_on_ground = params.render_layer_when_on_ground or "corpse",
@@ -131,6 +132,7 @@ local make_particle = function(params)
 
     movement_modifier_when_on_ground = params.movement_modifier_when_on_ground,
     movement_modifier = params.movement_modifier,
+    vertical_acceleration = params.vertical_acceleration,
 
     mining_particle_frame_speed = params.mining_particle_frame_speed,
 

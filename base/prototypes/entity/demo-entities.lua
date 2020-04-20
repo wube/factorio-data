@@ -2342,7 +2342,7 @@ data:extend(
       }
     },
     collision_box = {{-0.6, -1.05}, {0.6, 0.3}},
-    selection_box = {{-1, -1.49}, {1, 0.49}},
+    selection_box = {{-0.6, -1.49}, {0.6, 0.49}},
     damaged_trigger_effect = hit_effects.entity(),
     fluid_box =
     {

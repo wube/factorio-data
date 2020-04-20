@@ -1,6 +1,43 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.19
+Version: 0.18.20
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.19
+Date: 20. 04. 2020
+  Bugfixes:
+    - Fixed a crash when loading saves from 0.18.12 and older while re-spawning and having personal logistics researched. (https://forums.factorio.com/83173)
+    - Fixed offshore pump selection box to match the new graphics. (https://forums.factorio.com/83454)
+    - Fixed possible performance issue related to animated trees in OpenGL rendering backend. (https://forums.factorio.com/83500)
+    - Fixed opening the character GUI through hotkey when the logistic tab isn't visible. (https://forums.factorio.com/82900)
+    - Fixed that curved rail ghosts selection didn't work quite right. (https://forums.factorio.com/83619)
+    - Fixed that the offshore pump would play sounds even when it wasn't doing anything. (https://forums.factorio.com/83513)
+    - Fixed wrong Lua docs for LuaCommandProcessor::add_command. (https://forums.factorio.com/83657)
+    - Fixed a desync when personal logistics is researched while a player is disconnected from the server with personal logistics disabled. (https://forums.factorio.com/83355)
+    - Fixed a crash when moving armors around in other players inventories in multiplayer. (https://forums.factorio.com/83712)
+    - Fixed a regression issue with the select-a-signal GUI related to group ordering. (https://forums.factorio.com/82838)
+    - Fixed that trying to load a save created from a scenario in a now disabled/removed mod would crash the game. (https://forums.factorio.com/83738)
+    - Fixed a crash when trying to join games through Steam when the Steam API fails to initialize.
+    - Fixed that the character corpse wasn't included in the post-player-died event 'corpses' parameter. (https://forums.factorio.com/83812)
+    - Fixed that trains pathfinder could create non contiguous path in case of single segment cycle with a single train stop. (https://forums.factorio.com/83864)
+  Modding:
+    - Added warning for empty layers in sprite or animation definition. In next release, this will become an error. (https://forums.factorio.com/83721)
+    - Added a check to make sure placeable_by.count isn't larger than the placeable_by.item.stack_size. (https://forums.factorio.com/83928)
+    - Added support to play sounds when left clicking radio buttons and checkboxes.
+    - Added ParticlePrototype::fade_away_duration and vertical_acceleration.
+    - Rolling stock entities can no longer have next_upgrade set.
+    - Added support for rotated_sound on entity prototypes.
+  Scripting:
+    - Fixed that LuaEntityPrototype::fluidbox_prototypes didn't include fluid energy source fluidbox prototypes.
+    - Added LuaEntity::productivity_bonus, pollution_bonus, speed_bonus, and consumption_bonus read.
+    - Added LuaGameScript::create_inventory() and get_script_inventories().
+    - Added LuaInventory::destroy() and resize().
+    - Added LuaInventory::mod_owner read.
+    - Added LuaEntityPrototype::adjacent_tile_collision_box, adjacent_tile_collision_mask, adjacent_tile_collision_test, center_collision_mask read to access new offshore pump prototype properties.
+    - Added "final-health" to the entity-damaged event.
+    - Added "final-health" to the entity-damaged event filter.
+    - Added LuaGameScript::max_force_distraction_distance, max_force_distraction_chunk_distance, max_electric_pole_supply_area_distance, max_electric_pole_connection_distance,
+      max_beacon_supply_area_distance, max_gate_activation_distance, max_inserter_reach_distance, max_pipe_to_ground_distance, max_underground_belt_distance read.
+    - Added LuaEntity::deplete().
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.18
 Date: 08. 04. 2020
