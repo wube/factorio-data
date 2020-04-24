@@ -111,6 +111,20 @@ data:extend(
             type = "create-entity",
             entity_name = "small-scorchmark",
             check_buildability = true
+          },
+          {
+            type = "invoke-tile-trigger",
+            repeat_count = 1,
+          },
+          {
+            type = "destroy-decoratives",
+            from_render_layer = "decorative",
+            to_render_layer = "object",
+            include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+            include_decals = false,
+            invoke_decorative_trigger = true,
+            decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+            radius = 1.5 -- large radius for demostrative purposes
           }
         }
       }
@@ -186,6 +200,20 @@ data:extend(
             type = "create-entity",
             entity_name = "big-scorchmark",
             check_buildability = true
+          },
+          {
+            type = "invoke-tile-trigger",
+            repeat_count = 1,
+          },
+          {
+            type = "destroy-decoratives",
+            from_render_layer = "decorative",
+            to_render_layer = "object",
+            include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+            include_decals = false,
+            invoke_decorative_trigger = true,
+            decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+            radius = 7 -- large radius for demostrative purposes
           },
           {
             type = "nested-result",
@@ -267,6 +295,20 @@ data:extend(
             type = "create-entity",
             entity_name = "medium-scorchmark",
             check_buildability = true
+          },
+          {
+            type = "invoke-tile-trigger",
+            repeat_count = 1,
+          },
+          {
+            type = "destroy-decoratives",
+            from_render_layer = "decorative",
+            to_render_layer = "object",
+            include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+            include_decals = false,
+            invoke_decorative_trigger = true,
+            decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+            radius = 3.5 -- large radius for demostrative purposes
           },
           {
             type = "nested-result",
@@ -508,6 +550,20 @@ data:extend(
             type = "create-entity",
             entity_name = "medium-scorchmark",
             check_buildability = true
+          },
+          {
+            type = "invoke-tile-trigger",
+            repeat_count = 1,
+          },
+          {
+          type = "destroy-decoratives",
+          from_render_layer = "decorative",
+          to_render_layer = "object",
+          include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+          include_decals = false,
+          invoke_decorative_trigger = true,
+          decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+          radius = 3.5 -- large radius for demostrative purposes
           }
         }
       }
@@ -635,6 +691,20 @@ data:extend(
             type = "create-entity",
             entity_name = "medium-scorchmark",
             check_buildability = true
+          },
+          {
+            type = "invoke-tile-trigger",
+            repeat_count = 1,
+          },
+          {
+            type = "destroy-decoratives",
+            from_render_layer = "decorative",
+            to_render_layer = "object",
+            include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+            include_decals = false,
+            invoke_decorative_trigger = true,
+            decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+            radius = 3.25 -- large radius for demostrative purposes
           }
         }
       }
@@ -713,6 +783,20 @@ data:extend(
             type = "create-entity",
             entity_name = "medium-scorchmark",
             check_buildability = true
+          },
+          {
+          type = "invoke-tile-trigger",
+          repeat_count = 1,
+          },
+          {
+          type = "destroy-decoratives",
+          from_render_layer = "decorative",
+          to_render_layer = "object",
+          include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+          include_decals = false,
+          invoke_decorative_trigger = true,
+          decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+          radius = 2 -- large radius for demostrative purposes
           }
         }
       }
@@ -748,7 +832,7 @@ data:extend(
               type = "create-entity",
               entity_name = "small-scorchmark",
               check_buildability = true
-            }
+            },
           }
         }
       },
@@ -1172,6 +1256,20 @@ data:extend(
               type = "destroy-cliffs",
               radius = 1.5,
               explosion = "explosion"
+            },
+            {
+              type = "invoke-tile-trigger",
+              repeat_count = 1,
+            },
+            {
+              type = "destroy-decoratives",
+              from_render_layer = "decorative",
+              to_render_layer = "object",
+              include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+              include_decals = false,
+              invoke_decorative_trigger = true,
+              decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+              radius = 2 -- large radius for demostrative purposes
             }
           }
         }

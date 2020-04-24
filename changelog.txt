@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.20
+Version: 0.18.21
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.20
+Date: 24. 04. 2020
+  Features:
+    - Added new environmental trigger effects for grenade, artillery and nuke explosions. (https://www.factorio.com/blog/post/fff-343)
+    - Added 3 level 'First steps' tutorial Campaign. (https://www.factorio.com/blog/post/fff-342)
+    - Mini-tutorial improvements.
+  Changes:
+    - Moved Compilatron and Compilatron speech-bubble entities from demo to base game files.
+    - Removed Introduction Campaign.
+    - Removed Compilatron chest, Compilatron roboport, Compilatron logistic chest.
+    - Removed Tutorial/Campaign Lualib (base/lualib).
+    - Removed other campaign-only prototypes, such as styles, sprites, sounds.
+  Bugfixes:
+    - Fixed that thumbnails wouldn't show in the update-mods tab of the mods GUI. (https://forums.factorio.com/83975)
+    - Fixed that LuaSurface::spill_item_stacks return value didn't work correctly. (https://forums.factorio.com/84034)
+    - Fixed that the research progress of the current tier showed for next queued tier in the technology GUI. (https://forums.factorio.com/81049)
+    - Fixed that the game didn't validate modded rail-planner item type values and would crash in some cases. (https://forums.factorio.com/84047)
+    - Fixed that modded units with consider-tile-transitions in their collision mask would cause the pathfinder to crash. (https://forums.factorio.com/80072)
+  Modding:
+    - Empty layers in sprite or animation definition will yield an error now. (https://forums.factorio.com/83721)
+    - Added support for playing a sound when using smart-pipette.
+    - Added support for playing activate/deactivate sounds for night vision.
+    - Added support for playing a sound while an resource-style is being mined through mining_sound.
+    - Added mod-setting value "hidden" to hide mod settings from the GUI.
+    - Added 'invoke-tile-trigger' and 'destroy-decoratives' trigger effects.
+    - Added 'rotate-offsets' to the create-particle trigger effect.
+    - Added 'trigger_effect' to tiles. It is called with the 'invoke-tile-trigger' trigger effect.
+    - Added 'trigger_effect' to decoratives. It is called when the decorative is destroyed with the 'destroy-decorative' trigger effect.
+  Scripting:
+    - Added on_pre_script_inventory_resized and on_script_inventory_resized events.
+    - Added 'allow_paths_through_own_entities' and 'no_break' path finding flags.
+    - Added LuaModSettingPrototype::hidden read.
+    - Added 'to_be_deconstructed' to the options for LuaSurface::find_entities_filtered. (https://forums.factorio.com/82643)
+    - Added LuaGuiElement::badge_text read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.19
 Date: 20. 04. 2020

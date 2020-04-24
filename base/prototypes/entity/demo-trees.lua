@@ -7203,6 +7203,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         initial_height = 2,
         initial_height_deviation = 2,
         initial_vertical_speed = 0.01,
+        -- initial_vertical_speed_deviation = 0.05,
         speed_from_center = 0.03,
         speed_from_center_deviation = 0.01,
         frame_speed = 0.4,

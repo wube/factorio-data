@@ -74,7 +74,91 @@ data:extend(
     type = "item-subgroup",
     name = "remnants",
     group = "environment",
-    order = "d"
+    order = "dz"
+  },
+  {
+    type = "item-subgroup",
+    name = "storage-remnants",
+    group = "environment",
+    order = "da"
+  },
+  {
+    type = "item-subgroup",
+    name = "belt-remnants",
+    group = "environment",
+    order = "db"
+  },
+  {
+    type = "item-subgroup",
+    name = "inserter-remnants",
+    group = "environment",
+    order = "dc"
+  },
+    {
+    type = "item-subgroup",
+    name = "energy-pipe-distribution-remnants",
+    group = "environment",
+    order = "dd"
+  },
+  {
+    type = "item-subgroup",
+    name = "transport-remnants",
+    group = "environment",
+    order = "de"
+  },
+  {
+    type = "item-subgroup",
+    name = "logistic-network-remnants",
+    group = "environment",
+    order = "df"
+  },
+  {
+    type = "item-subgroup",
+    name = "circuit-network-remnants",
+    group = "environment",
+    order = "dg"
+  },
+  {
+    type = "item-subgroup",
+    name = "energy-remnants",
+    group = "environment",
+    order = "dh"
+  },
+  {
+    type = "item-subgroup",
+    name = "extraction-machine-remnants",
+    group = "environment",
+    order = "dh"
+  },
+  {
+    type = "item-subgroup",
+    name = "smelting-machine-remnants",
+    group = "environment",
+    order = "di"
+  },
+  {
+    type = "item-subgroup",
+    name = "production-machine-remnants",
+    group = "environment",
+    order = "dj"
+  },
+  {
+    type = "item-subgroup",
+    name = "defensive-structure-remnants",
+    group = "environment",
+    order = "dk"
+  },
+  {
+    type = "item-subgroup",
+    name = "generic-remnants",
+    group = "environment",
+    order = "dk"
+  },
+  {
+    type = "item-subgroup",
+    name = "scorchmarks",
+    group = "environment",
+    order = "dl"
   },
   {
     type = "item-subgroup",
@@ -328,21 +412,141 @@ data:extend(
   },
   {
     type = "item-subgroup",
+    name = "storage-explosions",
+    group = "effects",
+    order = "aa"
+  },
+  {
+    type = "item-subgroup",
+    name = "belt-explosions",
+    group = "effects",
+    order = "ab"
+  },
+  {
+    type = "item-subgroup",
+    name = "inserter-explosions",
+    group = "effects",
+    order = "ac"
+  },
+  {
+    type = "item-subgroup",
+    name = "energy-pipe-distribution-explosions",
+    group = "effects",
+    order = "ad"
+  },
+  {
+    type = "item-subgroup",
+    name = "transport-explosions",
+    group = "effects",
+    order = "ae"
+  },
+  {
+    type = "item-subgroup",
+    name = "logistic-network-explosions",
+    group = "effects",
+    order = "af"
+  },
+  {
+    type = "item-subgroup",
+    name = "circuit-network-explosions",
+    group = "effects",
+    order = "ag"
+  },
+  {
+    type = "item-subgroup",
+    name = "energy-explosions",
+    group = "effects",
+    order = "ba"
+  },
+  {
+    type = "item-subgroup",
+    name = "extraction-machine-explosions",
+    group = "effects",
+    order = "bb"
+  },
+  {
+    type = "item-subgroup",
+    name = "smelting-machine-explosions",
+    group = "effects",
+    order = "bc"
+  },
+  {
+    type = "item-subgroup",
+    name = "production-machine-explosions",
+    group = "effects",
+    order = "bd"
+  },
+  {
+    type = "item-subgroup",
+    name = "module-explosions",
+    group = "effects",
+    order = "be"
+  },
+  {
+    type = "item-subgroup",
+    name = "campaign-explosions",
+    group = "effects",
+    order = "bf"
+  },
+  {
+    type = "item-subgroup",
+    name = "gun-explosions",
+    group = "effects",
+    order = "ca"
+  },
+  {
+    type = "item-subgroup",
+    name = "defensive-structure-explosions",
+    group = "effects",
+    order = "cb"
+  },
+  {
+    type = "item-subgroup",
+    name = "capsule-explosions",
+    group = "effects",
+    order = "cc"
+  },
+  {
+    type = "item-subgroup",
+    name = "tree-explosions",
+    group = "effects",
+    order = "cd"
+  },
+  {
+    type = "item-subgroup",
+    name = "rock-explosions",
+    group = "effects",
+    order = "da"
+  },
+  {
+    type = "item-subgroup",
+    name = "ground-explosions",
+    group = "effects",
+    order = "db"
+  },
+  {
+    type = "item-subgroup",
+    name = "decorative-explosions",
+    group = "effects",
+    order = "dc"
+  },
+  {
+    type = "item-subgroup",
     name = "explosions",
     group = "effects",
-    order = "a"
+    order = "de"
   },
   {
     type = "item-subgroup",
     name = "hit-effects",
     group = "effects",
-    order = "b"
+    order = "e"
   },
   {
     type = "item-subgroup",
     name = "particles",
     group = "effects",
-    order = "b"
+    order = "e"
   }
 }
 )

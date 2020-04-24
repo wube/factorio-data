@@ -591,92 +591,6 @@ pipepictures = function()
   }
 end
 
-local compilatron_animations =
-{
-  walk =
-  {
-    width = 40,
-    height = 52,
-    frame_count = 2,
-    axially_symmetrical = false,
-    direction_count = 32,
-    shift = util.by_pixel(0.0, -14.0),
-    stripes =
-    {
-      {
-        filename = "__base__/graphics/entity/compilatron/compilatron-walk-1.png",
-        width_in_frames = 2,
-        height_in_frames = 16
-      },
-      {
-        filename = "__base__/graphics/entity/compilatron/compilatron-walk-2.png",
-        width_in_frames = 2,
-        height_in_frames = 16
-      }
-    },
-
-    hr_version =
-    {
-      width = 78,
-      height = 104,
-      frame_count = 2,
-      axially_symmetrical = false,
-      direction_count = 32,
-      shift = util.by_pixel(0.0, -14),
-      scale = 0.5,
-      stripes =
-      {
-        {
-          filename = "__base__/graphics/entity/compilatron/hr-compilatron-walk-1.png",
-          width_in_frames = 2,
-          height_in_frames = 16
-        },
-        {
-          filename = "__base__/graphics/entity/compilatron/hr-compilatron-walk-2.png",
-          width_in_frames = 2,
-          height_in_frames = 16
-        }
-      },
-    }
-  },
-  walk_shadow =
-  {
-    width = 72,
-    height = 30,
-    frame_count = 2,
-    direction_count = 32,
-    shift = util.by_pixel(19, 0.0),
-    draw_as_shadow = true,
-    stripes = util.multiplystripes(2,
-    {
-      {
-        filename = "__base__/graphics/entity/compilatron/compilatron-walk-shadow.png",
-        width_in_frames = 1,
-        height_in_frames = 32
-      }
-    }),
-    hr_version =
-    {
-      width = 142,
-      height = 56,
-      frame_count = 2,
-      axially_symmetrical = false,
-      direction_count = 32,
-      shift = util.by_pixel(15.5, -0.5),
-      draw_as_shadow = true,
-      scale = 0.5,
-      stripes = util.multiplystripes(2,
-      {
-        {
-          filename = "__base__/graphics/entity/compilatron/hr-compilatron-walk-shadow.png",
-          width_in_frames = 1,
-          height_in_frames = 32
-        }
-      })
-    }
-  }
-}
-
 local lab_inputs =
 {
   "automation-science-pack",
@@ -1068,27 +982,27 @@ data:extend(
 
         type = "create-particle",
         repeat_count = 5,
-        particle_name = "shallow-water-droplet-particle",
+        particle_name = "shallow-water-particle",
         initial_height = 0.2,
         speed_from_center = 0.01,
         speed_from_center_deviation = 0.05,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
       },
       {
         tiles = { "water-mud" },
 
         type = "create-particle",
         repeat_count = 5,
-        particle_name = "shallow-water-droplet-particle",
+        particle_name = "shallow-water-2-particle",
         initial_height = 0.2,
         speed_from_center = 0.01,
         speed_from_center_deviation = 0.05,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-      }
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+      },
     },
     water_reflection =
     {
@@ -4231,14 +4145,6 @@ data:extend(
     speed = 0.05
   },
   {
-    type = "speech-bubble",
-    name = "compi-speech-bubble",
-    style = "compilatron_speech_bubble",
-    wrapper_flow_style = "compilatron_speech_bubble_wrapper",
-    fade_in_out_ticks = 60 * 0.5,
-    flags = {"not-on-map", "placeable-off-grid"}
-  },
-  {
     type = "flying-text",
     name = "tutorial-flying-text",
     flags = {"not-on-map", "placeable-off-grid"},
@@ -4966,105 +4872,6 @@ data:extend(
     default_output_signal = data.is_demo and {type = "virtual", name = "signal-green"} or {type = "virtual", name = "signal-G"}
   },
   {
-    type = "unit",
-    name = "compilatron",
-    icon = "__base__/graphics/icons/compilatron.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-player", "placeable-enemy", "placeable-off-grid", "not-repairable", "breaths-air"},
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 1000000,
-    order = "z-z-z",
-    subgroup="enemies",
-    has_belt_immunity = true,
-    selectable_in_game = true,
-    can_open_gates = true,
-    healing_per_tick = 1000000,
-    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
-    selection_box = {{-0.8, -1.3}, {0.8, 0.5}},
-    working_sound =
-    {
-      sound =
-      {
-        {
-          filename = "__base__/sound/fight/compilatron-1.ogg",
-          volume = 0
-        },
-        {
-          filename = "__base__/sound/fight/compilatron-2.ogg",
-          volume = 0
-        },
-      },
-      apparent_volume = 1,
-      max_sounds_per_type = 4,
-      probability = 1 / (6 * 60) -- average pause between the sound is 6 seconds
-    },
-    attack_parameters =
-    {
-      type = "projectile",
-      damage_modifier = 1000000,
-      range = 0.5,
-      cooldown = 35,
-      ammo_category = "melee",
-      ammo_type =
-      {
-        action = {
-          action_delivery = {
-            target_effects = {
-              damage = {
-                amount = 7,
-                type = "physical"
-              },
-              type = "damage",
-              show_in_tooltip = false
-            },
-            type = "instant"
-          },
-          type = "direct"
-        },
-        category = "melee",
-        target_type = "entity"
-      },
-      animation =
-      {
-        layers =
-        {
-          compilatron_animations.walk_shadow,
-          compilatron_animations.walk
-        }
-      }
-    },
-    vision_distance = 30,
-    movement_speed = 0.2,
-    distance_per_frame = 0.1,
-    pollution_to_join_attack = 1,
-    distraction_cooldown = 300,
-    min_pursue_time = 10 * 60,
-    max_pursue_distance = 50,
-    run_animation =
-    {
-      layers =
-      {
-        compilatron_animations.walk_shadow,
-        compilatron_animations.walk
-      }
-    },
-    water_reflection =
-    {
-      pictures =
-      {
-        filename = "__base__/graphics/entity/compilatron/compilatron-reflection.png",
-        priority = "extra-high",
-        width = 20,
-        height = 20,
-        shift = util.by_pixel(0, 67 * 0.5),
-        scale = 5,
-        variation_count = 1
-      },
-      rotate = false,
-      orientation_to_variation = false
-    }
-  },
-  {
     type = "lab",
     name = "lab",
     icon = "__base__/graphics/icons/lab.png",
@@ -5303,66 +5110,6 @@ data:extend(
       }
     },
     render_layer = "object"
-  },
-  {
-    type = "container",
-    name = "compilatron-chest",
-    icon = "__base__/graphics/icons/compilatron-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral", "player-creation"},
-    minable = {mining_time = 0.1, result = "compilatron-chest"},
-    max_health = 100,
-    corpse = "small-remnants",
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
-    fast_replaceable_group = "container",
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    inventory_size = 32,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.8 },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.8 },
-    vehicle_impact_sound = sounds.car_wood_impact(0.5),
-    picture =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/compilatron-chest/compilatron-chest.png",
-          priority = "extra-high",
-          width = 34,
-          height = 40,
-          shift = util.by_pixel(0, -3),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/compilatron-chest/hr-compilatron-chest.png",
-            priority = "extra-high",
-            width = 68,
-            height = 79,
-            shift = util.by_pixel(0, -3),
-            scale = 0.5
-          }
-        },
-        {
-          filename = "__base__/graphics/entity/compilatron-chest/compilatron-chest-shadow.png",
-          priority = "extra-high",
-          width = 57,
-          height = 21,
-          shift = util.by_pixel(12, 6),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/compilatron-chest/hr-compilatron-chest-shadow.png",
-            priority = "extra-high",
-            width = 114,
-            height = 41,
-            shift = util.by_pixel(12, 6),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
-        }
-      }
-    },
-    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
-    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
-    circuit_wire_max_distance = default_circuit_wire_max_distance
   },
   {
     type = "flying-text",
@@ -6402,144 +6149,6 @@ data:extend(
       orientation_to_variation = false
     }
   },
-
-  {
-    type = "roboport",
-    name = "compi-roboport",
-    order="compi-roboport",
-    icon = "__base__/graphics/icons/roboport.png",
-    icon_size = 64, icon_mipmaps = 4,
-    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    collision_mask = {},
-    energy_source = { type = "void" },
-    recharge_minimum = "40MJ",
-    energy_usage = "50kW",
-    -- per one charge slot
-    charging_energy = "1000kW",
-    logistics_radius = 25,
-    construction_radius = 55,
-    charge_approach_distance = 5,
-    robot_slots_count = 7,
-    material_slots_count = 7,
-    stationing_offset = {0, 0},
-    charging_offsets =
-    {
-      {-1.5, -0.5}, {1.5, -0.5}, {1.5, 1.5}, {-1.5, 1.5}
-    },
-    base =
-    {
-      layers =
-      {
-        {
-          filename = "__core__/graphics/empty.png",
-          width = 1,
-          height = 1,
-        },
-      }
-    },
-    base_patch =
-    {
-      filename = "__core__/graphics/empty.png",
-      priority = "high",
-      width = 1,
-      height = 1,
-      frame_count = 1
-    },
-    base_animation =
-    {
-      filename = "__core__/graphics/empty.png",
-      priority = "high",
-      width = 1,
-      height = 1,
-      frame_count = 1
-    },
-    door_animation_up =
-    {
-      filename = "__core__/graphics/empty.png",
-      priority = "high",
-      width = 1,
-      height = 1,
-      frame_count = 1
-    },
-    door_animation_down =
-    {
-      filename = "__core__/graphics/empty.png",
-      priority = "high",
-      width = 1,
-      height = 1,
-      frame_count = 1
-    },
-    recharging_animation =
-    {
-      filename = "__base__/graphics/entity/roboport/roboport-recharging.png",
-      priority = "high",
-      width = 37,
-      height = 35,
-      frame_count = 16,
-      scale = 1.5,
-      animation_speed = 0.5
-    },
-    vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
-    working_sound =
-    {
-      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.6 },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.6,
-      --probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
-    },
-    recharging_light = {intensity = 0.4, size = 5, color = {r = 1.0, g = 1.0, b = 1.0}},
-    request_to_open_door_timeout = 15,
-    spawn_and_station_height = 0.8,
-    robots_shrink_when_entering_and_exiting = true,
-
-    draw_logistic_radius_visualization = true,
-    draw_construction_radius_visualization = true,
-
-    open_door_trigger_effect = sounds.roboport_door_open,
-    close_door_trigger_effect = sounds.roboport_door_close,
-
-    circuit_wire_connection_point = circuit_connector_definitions["roboport"].points,
-    circuit_connector_sprites = circuit_connector_definitions["roboport"].sprites,
-    circuit_wire_max_distance = default_circuit_wire_max_distance,
-
-    default_available_logistic_output_signal = {type = "virtual", name = "signal-X"},
-    default_total_logistic_output_signal = {type = "virtual", name = "signal-Y"},
-    default_available_construction_output_signal = {type = "virtual", name = "signal-Z"},
-    default_total_construction_output_signal = {type = "virtual", name = "signal-T"}
-  },
-
-  {
-    type = "logistic-container",
-    name = "compi-logistics-chest",
-    icons = { {icon = "__core__/graphics/white-square.png"} },
-    icon_size = 10,
-    logistic_slots_count = 1,
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    collision_mask = {},
-    fast_replaceable_group = "container",
-    inventory_size = 48,
-    logistic_mode = "storage",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
-    vehicle_impact_sound = sounds.generic_impact,
-    opened_duration = logistic_chest_opened_duration,
-    animation =
-    {
-      filename = "__core__/graphics/empty.png",
-      priority = "high",
-      width = 1,
-      height = 1,
-      frame_count = 1
-    },
-    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
-    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
-    circuit_wire_max_distance = default_circuit_wire_max_distance
-  },
-
   {
     type = "electric-pole",
     name = "big-electric-pole",

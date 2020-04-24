@@ -675,12 +675,12 @@ sounds.roboport_door_close =
 {
   {
     type = "play-sound",
-    sound = 
-    { 
+    sound =
+    {
       filename = "__base__/sound/roboport-door-close.ogg",
     volume = 0.2,
     min_speed = 1,
-    max_speed = 1.5, 
+    max_speed = 1.5,
     }
   }
 }
@@ -1257,7 +1257,7 @@ sounds.large_explosion = function(volume)
   }
 end
 
-sounds.small_splash = 
+sounds.small_splash =
 {
   {
     filename = "__base__/sound/particles/small-splash-1.ogg",
@@ -2227,7 +2227,7 @@ end
 sounds.worm_dying_big = function(volume)
   return
   {
-    variations = 
+    variations =
     {
       {
         filename = "__base__/sound/creatures/worm-death-big-1.ogg",

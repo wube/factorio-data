@@ -1085,9 +1085,11 @@ data:extend(
     },
     missing_icon =
     {
-      filename = "__core__/graphics/cancel.png",
+      filename = "__core__/graphics/questionmark.png",
+      priority = "medium",
       width = 64,
       height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     deconstruction_mark =
@@ -2231,7 +2233,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },  
+    },
     import =
     {
       filename = "__core__/graphics/icons/mip/import.png",

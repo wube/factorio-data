@@ -27,9 +27,10 @@ data:extend(
     },
     energy_input = "10kW",
     categories = {"armor"},
+    --activate_sound = { filename = "__base__/sound/nightvision-on.ogg" },
+    --deactivate_sound = { filename = "__base__/sound/nightvision-off.ogg" },
     darkness_to_turn_on = 0.5,
     color_lookup = {{0.5, "__core__/graphics/color_luts/nightvision.png"}}
-
   },
   {
     type = "energy-shield-equipment",

@@ -150,10 +150,48 @@ data:extend
     fade_away_duration = 60,
     show_when_smoke_off = true
   },
+  
+  {
+    type = "trivial-smoke",
+    name = "smoke-explosion-particle-tiny",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.2,
+      tint = {r = 0.1, g = 0.1, b = 0.1, a = 0.5}
+    },
+    render_layer = "object",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.1,
+    end_scale = 0.1,
+  },
 
   {
     type = "trivial-smoke",
     name = "smoke-explosion-particle-small",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {r = 0.1, g = 0.1, b = 0.1, a = 0.7}
+    },
+    render_layer = "smoke",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.3,
+    end_scale = 0.1,
+  },
+  
+    {
+    type = "trivial-smoke",
+    name = "smoke-explosion-lower-particle-small",
     animation = smoke_fast_animation
     {
       animation_speed = 0.5,

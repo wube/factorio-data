@@ -26,9 +26,10 @@ data:extend
             repeat_count = 2,
             affects_target = false,
             particle_name = "spark-particle",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,
@@ -46,9 +47,10 @@ data:extend
             repeat_count = 1,
             affects_target = false,
             particle_name = "spark-particle-debris",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,
@@ -91,7 +93,8 @@ data:extend
             repeat_count = 2,
             affects_target = false,
             particle_name = "spark-particle",
-            offsets = {
+            offsets =
+            {
               { 0.07031, 0.2031 },
               { -0.02344, 0.07813 }
             },
@@ -111,7 +114,8 @@ data:extend
             repeat_count = 1,
             affects_target = false,
             particle_name = "spark-particle-debris",
-            offsets = {
+            offsets =
+            {
               { 0.07031, 0.2031 },
               { -0.02344, 0.07813 }
             },
@@ -136,9 +140,9 @@ data:extend
     name = "wall-damaged-explosion",
     flags = {"not-on-map"},
     subgroup = "hit-effects",
-    icon = "__core__/graphics/icons/mip/trash.png",
+    icon = "__base__/graphics/icons/wall.png",
+    icon_size = 64, icon_mipmaps = 4,
     height = 1,
-    icon_size = 32,
     animations =
     {
       util.empty_sprite()
@@ -156,9 +160,10 @@ data:extend
             repeat_count = 2,
             affects_target = false,
             particle_name = "wall-stone-particle-small",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,
@@ -179,11 +184,11 @@ data:extend
   {
     type = "explosion",
     name = "rock-damaged-explosion",
+    icon = "__base__/graphics/icons/rock-big-icon.png",
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
     subgroup = "hit-effects",
-    icon = "__core__/graphics/icons/mip/trash.png",
     height = 1,
-    icon_size = 32,
     animations =
     {
       util.empty_sprite()
@@ -201,9 +206,10 @@ data:extend
             repeat_count = 2,
             affects_target = false,
             particle_name = "rock-damage-stone-particle-tiny",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,
@@ -221,9 +227,10 @@ data:extend
             repeat_count = 1,
             affects_target = false,
             particle_name = "rock-damage-stone-particle-small",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,
@@ -264,11 +271,11 @@ data:extend
   {
     type = "explosion",
     name = "enemy-damaged-explosion",
+    icon = "__base__/graphics/icons/small-biter.png",
+    icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
     subgroup = "hit-effects",
-    icon = "__core__/graphics/icons/mip/trash.png",
     height = 0.3,
-    icon_size = 32,
     animations =
     {
       util.empty_sprite()
@@ -291,9 +298,10 @@ data:extend
             repeat_count = 2,
             affects_target = false,
             particle_name = "blood-particle",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,
@@ -311,9 +319,10 @@ data:extend
             repeat_count = 2,
             affects_target = false,
             particle_name = "blood-particle-lower-layer",
-            offsets = {
-            { 0.07031, 0.2031 },
-            { -0.02344, 0.07813 }
+            offsets =
+            {
+              { 0.07031, 0.2031 },
+              { -0.02344, 0.07813 }
             },
             offset_deviation = { { -0.09766, -0.09766 }, { 0.09766, 0.09766 } },
             show_in_tooltip = false,

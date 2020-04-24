@@ -13,11 +13,35 @@ local default_smoke_trigger_effect = function()
   }
 end
 
+local tiny_smoke_trigger_effect = function()
+  return
+  {
+    type = "create-trivial-smoke",
+    smoke_name = "smoke-explosion-particle-tiny",
+    starting_frame_deviation = 0,
+    starting_frame_speed_deviation = 0,
+    offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
+    speed_from_center = nil,
+  }
+end
+
 local small_smoke_trigger_effect = function()
   return
   {
     type = "create-trivial-smoke",
     smoke_name = "smoke-explosion-particle-small",
+    starting_frame_deviation = 0,
+    starting_frame_speed_deviation = 0,
+    offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
+    speed_from_center = nil,
+  }
+end
+
+local small_lower_smoke_trigger_effect = function()
+  return
+  {
+    type = "create-trivial-smoke",
+    smoke_name = "smoke-explosion-lower-particle-small",
     starting_frame_deviation = 0,
     starting_frame_speed_deviation = 0,
     offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
@@ -42,7 +66,6 @@ local default_ended_in_water_trigger_effect = function()
   {
 
     {
-
       type = "create-particle",
       probability = 1,
       affects_target = false,
@@ -69,7 +92,7 @@ local default_ended_in_water_trigger_effect = function()
       probability = 0.03,
       affects_target = false,
       show_in_tooltip = false,
-      particle_name = "deep-water-particle",
+      particle_name = "water-particle",
       offsets =
       {
         { 0, 0 },
@@ -99,6 +122,33 @@ local default_ended_in_water_trigger_effect = function()
 
 end
 
+
+local particle_ended_in_water_trigger_effect = function()
+  return
+  {
+    type = "create-particle",
+    repeat_count = 5,
+    repeat_count_deviation = 4,
+    probability = 0.2,
+    affects_target = false,
+    show_in_tooltip = false,
+    particle_name = "deep-water-particle",
+    offsets = { { 0, 0 } },
+    offset_deviation = { { -0.2969, -0.2969 }, { 0.2969, 0.2969 } },
+    tile_collision_mask = nil,
+    initial_height = 0.1,
+    initial_height_deviation = 0.5,
+    initial_vertical_speed = 0.06,
+    initial_vertical_speed_deviation = 0.069,
+    speed_from_center = 0.02,
+    speed_from_center_deviation = 0.05,
+    frame_speed = 1,
+    frame_speed_deviation = 0,
+    tail_length = 9,
+    tail_length_deviation = 8,
+    tail_width = 1
+  }
+end
 
 local make_particle = function(params)
 
@@ -204,13 +254,12 @@ local particles =
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
-
   make_particle
   {
     name = "stone-particle-tiny",
     pictures = particle_animations.get_stone_particle_tiny_pictures({}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -256,7 +305,6 @@ local particles =
     shadows = particle_animations.get_coal_particle_shadow_pictures()
   },
 
-
   make_particle
   {
     name = "glass-particle-small",
@@ -279,7 +327,427 @@ local particles =
     name = "vegetation-particle-small-medium",
     pictures = particle_animations.get_vegetation_particle_small_medium_pictures({}),
     shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-hairy-grass-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.722, g = 0.354, b = 0.192, a = 1.000 }}), 
+    shadows = particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95
+  },
+  
+  make_particle
+  {
+    name = "brown-hairy-grass-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.369, g = 0.174, b = 0.088, a = 1.000 }}), 
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+  
+  make_particle
+  {
+    name = "green-hairy-grass-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.891, g = 0.898, b = 0.282, a = 1.000 }}), 
+    shadows = particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95
+  },
+
+  make_particle
+  {
+    name = "green-hairy-grass-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.283, g = 0.341, b = 0.079, a = 1.000 }}), 
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+  
+  make_particle
+  {
+    name = "green-carpet-grass-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.891, g = 0.898, b = 0.282, a = 1.000 }}),
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-carpet-grass-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.283, g = 0.341, b = 0.079, a = 1.000 }}),   
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-small-grass-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.773, g = 0.933, b = 0.216, a = 1.000 }}),  
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+  
+  make_particle
+  {
+    name = "green-small-grass-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.283, g = 0.341, b = 0.079, a = 1.000 }}),   
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-carpet-grass-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.886, g = 0.549, b = 0.400, a = 1.000 }}),
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-carpet-grass-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.424, g = 0.208, b = 0.113, a = 1.000 }}),  
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-asterisk-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow", 
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.479, g = 0.627, b = 0.221, a = 1.000 }}), 
+    shadows = particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-asterisk-grass-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.479, g = 0.627, b = 0.221, a = 1.000 }}), 
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-asterisk-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.312, g = 0.408, b = 0.144, a = 1.000 }}),    
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-asterisk-mini-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.788, g = 0.736, b = 0.158, a = 1.000 }}),
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-asterisk-mini-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}),  
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-asterisk-mini-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.443, g = 0.733, b = 0.354, a = 1.000 }}),  
+    shadows = particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-asterisk-mini-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}),   
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-asterisk-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 1.000, g = 0.830, b = 0.647, a = 1.000 }}),    
+    shadows = particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-asterisk-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 1.000, g = 0.830, b = 0.647, a = 1.000 }}),    
+    shadows = particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-asterisk-grass-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.788, g = 0.736, b = 0.158, a = 1.000 }}),     
+    shadows = particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "brown-asterisk-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}),    
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "red-asterisk-vegetation-particle-small-medium",
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.588, g = 0.443, b = 0.272, a = 1.000 }}),   
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {  
+    name = "deep-water-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.230, g = 0.341, b = 0.337, a = 0.314 }}), 
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0
+  },
+
+  make_particle
+  {
+    name = "red-asterisk-grass-particle-small-medium",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.718, g = 0.541, b = 0.332, a = 1.000 }}),    
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "red-asterisk-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.424, g = 0.322, b = 0.196, a = 1.000 }}),   
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil, 
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "green-pita-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.769, g = 0.894, b = 0.589, a = 1.000 }}),
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "green-croton-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.788, g = 0.760, b = 0.303, a = 1.000 }}), 
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "green-croton-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.396, g = 0.290, b = 0.188, a = 1.000 }}),  
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95
+  },
+
+  make_particle
+  {
+    name = "red-croton-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.890, g = 0.410, b = 0.262, a = 1.000 }}),
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "red-croton-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.286, g = 0.230, b = 0.131, a = 1.000 }}), 
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95
+  },
+
+  make_particle
+  {
+    name = "green-pita-mini-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.769, g = 0.894, b = 0.589, a = 1.000 }}),
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "brown-fluff-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}), 
+    shadows = particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "brown-fluff-dry-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}), 
+    shadows = particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "brown-fluff-dry-wooden-splinter-particle-small",
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}), 
+    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false
+  },
+
+  make_particle
+  {
+    name = "red-pita-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.780, g = 0.390, b = 0.217, a = 1.000 }}),  
+    shadows = particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "green-desert-bush-vegetation-particle-small-medium",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.758, g = 0.769, b = 0.464, a = 1.000 }}),  
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "green-bush-mini-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.604, g = 0.730, b = 0.243, a = 1.000 }}),  
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "red-desert-bush-vegetation-particle-small-medium",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.655, g = 0.441, b = 0.211, a = 1.000 }}), 
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer_when_on_ground = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "white-desert-bush-vegetation-particle-small-medium",
+    pictures = particle_animations.get_grass_particle_small_medium_pictures ({ tint = { r = 0.651, g = 0.539, b = 0.419, a = 1.000 }}),  
+    shadows =particle_animations.get_grass_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "garballo-mini-dry-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.631, g = 0.517, b = 0.243, a = 1.000 }}), 
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "garballo-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.392, g = 0.459, b = 0.086, a = 1.000 }}), 
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "lichen-vegetation-particle-small-medium",
+    pictures = particle_animations.get_vegetation_particle_small_medium_pictures ({ tint = { r = 0.412, g = 0.424, b = 0.188, a = 1.000 }}), 
+    shadows =particle_animations.get_vegetation_particle_small_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (0.5,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.95,
+    render_layer_when_on_ground = "lower-object-above-shadow"
   },
 
   make_particle
@@ -299,7 +767,6 @@ local particles =
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
-
 
   make_particle
   {
@@ -406,8 +873,8 @@ local particles =
     pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.610, g = 0.427, b = 0.258, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -425,8 +892,8 @@ local particles =
     pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.895, g = 0.786, b = 0.659, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -435,8 +902,8 @@ local particles =
     pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({tint = {r = 0.843, g = 0.701, b = 0.378, a = 1.000}}), 
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -448,7 +915,7 @@ local particles =
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
-    make_particle
+  make_particle
   {
     name = "rock-damage-stone-particle-tiny",
     pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.776, g = 0.612, b = 0.466, a = 1.000 }}),
@@ -457,7 +924,7 @@ local particles =
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
-    make_particle
+  make_particle
   {
     name = "rock-damage-stone-particle-small",
     pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.776, g = 0.612, b = 0.466, a = 1.000 }}),
@@ -466,7 +933,7 @@ local particles =
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
-    make_particle
+  make_particle
   {
     name = "rock-damage-stone-particle-medium",
     pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.776, g = 0.612, b = 0.466, a = 1.000 }}),
@@ -481,809 +948,1254 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.749, g = 0.749, b = 0.749, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
---terrains
+  make_particle
+  {
+    name = "sand-dust-particle",
+    life_time = 15,
+    pictures = particle_animations.get_dust_particle ({tint = { r = 0.369, g = 0.294, b = 0.162, a = 0.3 }}),
+    shadows = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.1,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object",
+  },
+  
+  make_particle
+  {
+    name = "dirt-dust-particle",
+    life_time = 15,
+    pictures = particle_animations.get_dust_particle ({ tint = { r = 0.522, g = 0.391, b = 0.237, a = 0.298 }}), 
+    shadows = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.1,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object",
+  },
 
   make_particle
   {
     name = "deep-water-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.072, g = 0.278, b = 0.322, a = 0.314 }}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.226, g = 0.341, b = 0.337, a = 0.314 }}), 
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0
+  },
+
+  make_particle
+  {
+    name = "deep-water-lower-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.226, g = 0.341, b = 0.337, a = 0.314 }}),  
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "deep-green-water-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = watertint()}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.173, g = 0.243, b = 0.116, a = 0.196 }}),  
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0
+  },
+
+  make_particle
+  {
+    name = "deep-green-water-lower-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.145, g = 0.224, b = 0.082, a = 0.196 }}),   
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "deep-green-water-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({tint = { r = 0.145, g = 0.220, b = 0.082, a = 0.196 }}), 
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "water-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = watertint()}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.272, g = 0.406, b = 0.402, a = 0.314 }}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+  },
+
+ make_particle
+  {
+    name = "water-lower-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.272, g = 0.406, b = 0.402, a = 0.314 }}), 
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "green-water-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = watertint()}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.278, g = 0.396, b = 0.272, a = 0.314 }}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+  },
+
+  make_particle
+  {
+    name = "green-water-lower-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.278, g = 0.396, b = 0.272, a = 0.314 }}),  
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "shallow-water-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = watertint()}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.194, g = 0.360, b = 0.396, a = 0.314 }}),  
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+  },
+  
+  make_particle
+  {
+    name = "shallow-water-lower-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.194, g = 0.360, b = 0.396, a = 0.314 }}), 
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "shallow-water-2-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = watertint()}),
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.174, g = 0.341, b = 0.376, a = 0.314 }}),   
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+  },
+
+  make_particle
+  {
+    name = "shallow-water-2-lower-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.174, g = 0.341, b = 0.376, a = 0.314 }}),   
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "dirt-1-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-1-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-1-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
-
-
+  
+  make_particle
+  {
+    name = "dirt-1-stone-lower-particle-medium",
+    render_layer = "lower-object-above-shadow",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
 
   make_particle
   {
     name = "dirt-2-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-2-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-2-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "dirt-2-stone-lower-particle-medium",
+    render_layer = "lower-object-above-shadow",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.766, b = 0.490, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-3-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
-    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.994, g = 0.743, b = 0.448, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),    
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-3-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.994, g = 0.743, b = 0.448, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-3-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.994, g = 0.743, b = 0.448, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "dirt-3-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.994, g = 0.743, b = 0.448, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "dirt-4-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}),  
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-4-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-4-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}),  
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "dirt-4-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}),  
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "landfill-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.749, g = 0.517, b = 0.311, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
+    name = "landfill-stone-particle-small",
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.749, g = 0.517, b = 0.311, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "landfill-stone-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.749, g = 0.517, b = 0.311, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "landfill-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.749, g = 0.517, b = 0.311, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
     name = "dirt-5-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-5-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-5-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "dirt-5-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.691, b = 0.416, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "dirt-6-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.690, b = 0.439, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-6-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.690, b = 0.439, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-6-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.690, b = 0.439, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "dirt-6-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.690, b = 0.439, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "dirt-7-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.808, g = 0.545, b = 0.310, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-7-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.808, g = 0.545, b = 0.310, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dirt-7-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.808, g = 0.545, b = 0.310, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "dirt-7-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.769, g = 0.518, b = 0.295, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "dry-dirt-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.660, b = 0.384, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dry-dirt-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.660, b = 0.384, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "dry-dirt-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.660, b = 0.384, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "dry-dirt-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.660, b = 0.384, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
   },
 
   make_particle
   {
     name = "grass-1-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures(),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.899, g = 0.604, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-1-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.899, g = 0.604, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-1-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.899, g = 0.604, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
+    name = "grass-1-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.899, g = 0.604, b = 0.400, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
     name = "grass-2-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.827, g = 0.524, b = 0.198, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-2-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.827, g = 0.524, b = 0.198, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-2-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.827, g = 0.524, b = 0.198, a = 1.000 }}),  
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "grass-2-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.827, g = 0.524, b = 0.198, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "grass-3-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.863, g = 0.496, b = 0.352, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-3-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.863, g = 0.496, b = 0.352, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-3-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.863, g = 0.496, b = 0.352, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "grass-3-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.863, g = 0.496, b = 0.352, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "grass-4-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.722, g = 0.537, b = 0.340, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-4-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.722, g = 0.537, b = 0.340, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "grass-4-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.722, g = 0.537, b = 0.340, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+    make_particle
+  {
+    name = "grass-4-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.722, g = 0.537, b = 0.340, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+  
+  make_particle
+  {
+    name = "red-desert-0-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.661, b = 0.329, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "red-desert-0-stone-particle-small",
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.661, b = 0.329, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "red-desert-0-stone-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.661, b = 0.329, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "red-desert-0-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.661, b = 0.329, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "red-desert-1-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-1-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-1-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "red-desert-1-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "red-desert-2-stone-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-2-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-2-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-2-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "red-desert-2-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "red-desert-3-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-3-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-desert-3-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "red-desert-3-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures({ tint = { r = 1.000, g = 0.725, b = 0.400, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "sand-1-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
+    name = "sand-1-stone-particle-small",
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "sand-1-stone-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "sand-1-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+  
+  make_particle
+  {
     name = "sand-2-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "sand-2-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "sand-2-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "sand-3-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "sand-3-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "sand-3-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.799, b = 0.538, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "concrete-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "concrete-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "concrete-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
+    name = "concrete-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
     name = "hazard-concrete-left-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "hazard-concrete-left-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "hazard-concrete-left-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.372, g = 0.420, b = 0.411, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "hazard-concrete-left-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "hazard-concrete-right-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "hazard-concrete-right-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "hazard-concrete-right-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.372, g = 0.420, b = 0.411, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "hazard-concrete-right-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-concrete-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-concrete-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-concrete-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.829, g = 0.829, b = 0.835, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-hazard-concrete-left-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-hazard-concrete-left-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-hazard-concrete-left-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.372, g = 0.420, b = 0.411, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-hazard-concrete-right-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.400, g = 0.443, b = 0.443, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-hazard-concrete-right-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 1.000, g = 0.873, b = 0.431, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "refined-hazard-concrete-right-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.372, g = 0.420, b = 0.411, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "stone-path-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.890, g = 0.772, b = 0.632, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "stone-path-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.890, g = 0.772, b = 0.632, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "stone-path-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.678, g = 0.702, b = 0.669, a = 1.000 }}),  
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "stone-path-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.678, g = 0.702, b = 0.669, a = 1.000 }}),  
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "tutorial-grid-stone-path-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.801, g = 0.808, b = 0.795, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+  
+  make_particle
+  {
+    name = "tutorial-grid-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.801, g = 0.808, b = 0.795, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "tutorial-grid-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.801, g = 0.808, b = 0.795, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "tutorial-grid-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.801, g = 0.808, b = 0.795, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
-    name = "lab-tile-1-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
-    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "lab-tile-1-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
-    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "lab-tile-1-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    name = "tutorial-grid-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.801, g = 0.808, b = 0.795, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "lab-tile-2-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.482, g = 0.482, b = 0.482, a = 1.000 }}),  
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "lab-tile-2-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.482, g = 0.482, b = 0.482, a = 1.000 }}),  
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "lab-tile-2-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.482, g = 0.482, b = 0.482, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "lab-tile-2-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.482, g = 0.482, b = 0.482, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "lab-tile-1-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.231, g = 0.231, b = 0.231, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "lab-tile-1-stone-particle-small",
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.231, g = 0.231, b = 0.231, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "lab-tile-1-stone-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.231, g = 0.231, b = 0.231, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "lab-tile-1-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.231, g = 0.231, b = 0.231, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "lab-tile-white-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -1292,7 +2204,7 @@ local particles =
     name = "lab-tile-white-stone-particle-tiny",
     pictures = particle_animations.get_stone_particle_tiny_pictures({}),
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -1301,7 +2213,7 @@ local particles =
     name = "lab-tile-white-stone-particle-small",
     pictures = particle_animations.get_stone_particle_small_pictures({}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -1310,384 +2222,51 @@ local particles =
     name = "lab-tile-white-stone-particle-medium",
     pictures = particle_animations.get_stone_particle_medium_pictures({}),
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
---Environment-entities
-  make_particle
-  {
-    name = "tree-01-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
-    name = "tree-01-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-02-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-02-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-02-red-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-02-red-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-03-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-03-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-04-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-04-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-03-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-05-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-05-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-03-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-06-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-06-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-06-brown-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-06-brown-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-07-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-07-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-08-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-08-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-08-brown-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-08-brown-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-08-brown-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-08-red-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-09-red-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "tree-09-brown-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dead-dry-hairy-tree-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dead-dry-hairy-tree-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dead-grey-trunk-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dead-grey-trunk-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dead-tree-desert-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dead-tree-desert-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dry-hairy-tree-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dry-hairy-tree-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dry-tree-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dry-tree-wooden-splinter-particle-medium",
-    pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    name = "lab-tile-white-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow",
   },
 
   make_particle
   {
     name = "huge-rock-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "huge-rock-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "huge-rock-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "huge-rock-stone-particle-big",
-    pictures = particle_animations.get_stone_particle_big_pictures({}),
+    pictures = particle_animations.get_stone_particle_big_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -1696,34 +2275,34 @@ local particles =
   make_particle
   {
     name = "big-rock-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "big-rock-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "big-rock-stone-particle-medium",
-    pictures = particle_animations.get_stone_particle_medium_pictures({}),
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "big-rock-stone-particle-big",
-    pictures = particle_animations.get_stone_particle_big_pictures({}),
+    pictures = particle_animations.get_stone_particle_big_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -1731,217 +2310,178 @@ local particles =
 
   make_particle
   {
-    name = "dark-mud-decal-stone-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
-    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "dark-mud-decal-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
-    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "light-mud-decal-stone-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
-    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "light-mud-decal-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
-    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "cracked-mud-stone-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
-    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "cracked-mud-decal-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
-    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "sand-decal-stone-stone-particle-tiny",
-    pictures = particle_animations.get_stone_particle_tiny_pictures({}),
-    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "sand-decal-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
-    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
---enviromnent-decoratives
-  make_particle
-  {
     name = "green-pita-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.286, g = 0.230, b = 0.131, a = 1.000 }}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "green-pita-mini-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.286, g = 0.230, b = 0.131, a = 1.000 }}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "green-croton-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "red-pita-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.431, g = 0.305, b = 0.228, a = 1.000 }}),  
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
-  },
-
-  make_particle
-  {
-    name = "red-croton-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
-    shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "brown-fluff-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.373, g = 0.231, b = 0.125, a = 1.000 }}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    movement_modifier = 0.95
   },
 
   make_particle
   {
     name = "green-desert-bush-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.340, g = 0.345, b = 0.208, a = 1.000 }}),  
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    movement_modifier = 0.95,
   },
 
   make_particle
   {
     name = "red-desert-bush-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.345, g = 0.208, b = 0.078, a = 1.000 }}),  
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "white-desert-bush-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.286, g = 0.230, b = 0.131, a = 1.000 }}), 
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    movement_modifier = 0.8,
   },
 
   make_particle
   {
     name = "garballo-mini-dry-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.533, g = 0.334, b = 0.119, a = 1.000 }}),  
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    movement_modifier = 0.8,
   },
 
   make_particle
   {
     name = "garballo-wooden-splinter-particle-small",
-    pictures = particle_animations.get_wooden_splinter_particle_small_pictures({}),
+    pictures = particle_animations.get_wooden_splinter_particle_small_pictures ({ tint = { r = 0.427, g = 0.275, b = 0.051, a = 1.000 }}),  
     shadows = particle_animations.get_wooden_splinter_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
+    movement_modifier = 0.8,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "lichen-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.702, g = 0.467, b = 0.459, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer_when_on_ground = "lower-object-above-shadow",
+  },
+
+  make_particle
+  {
+    name = "medium-rock-stone-particle-small",
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
-    name = "medium-rock--stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
-    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    name = "medium-rock-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "small-rock-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "small-rock-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "tiny-rock-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "small-sand-rock-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "small-sand-rock-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "medium-sand-rock-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
   {
     name = "medium-sand-rock-stone-particle-small",
-    pictures = particle_animations.get_stone_particle_small_pictures({}),
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.686, g = 0.480, b = 0.296, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -1950,9 +2490,10 @@ local particles =
     name = "wooden-splinter-particle-medium",
     pictures = particle_animations.get_wooden_splinter_particle_medium_pictures({}),
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = default_smoke_trigger_effect(),
+    regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
+
   make_particle
   {
     name = "wooden-particle",
@@ -1966,7 +2507,8 @@ local particles =
     name = "shell-particle",
     life_time = 600,
     pictures = particle_animations.get_shell_particle_pictures(),
-    shadows = particle_animations.get_shell_particle_shadow_pictures()
+    shadows = particle_animations.get_shell_particle_shadow_pictures(),
+    ended_in_water_trigger_effect = particle_ended_in_water_trigger_effect(),
   },
 
   make_particle
@@ -2128,8 +2670,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 1.000, g = 0.863, b = 0.474, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer ="object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2147,8 +2689,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.827, g = 0.655, b = 0.357, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2175,8 +2717,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.729, g = 0.275, b = 0.267, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2194,8 +2736,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.729, g = 0.275, b = 0.267, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2222,8 +2764,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.298, g = 0.671, b = 0.804, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2241,8 +2783,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.298, g = 0.671, b = 0.804, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2269,8 +2811,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.635, g = 0.635, b = 0.635, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2297,8 +2839,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.749, g = 0.491, b = 0.224, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2316,8 +2858,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.797, g = 0.324, b = 0.324, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2335,8 +2877,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.308, g = 0.447, b = 0.535, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2354,8 +2896,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.571, g = 0.419, b = 0.594, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2373,8 +2915,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.762, g = 0.937, b = 0.495, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2392,8 +2934,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.731, g = 0.731, b = 0.731, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2420,8 +2962,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.910, g = 0.651, b = 0.398, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2439,8 +2981,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.353, g = 0.498, b = 0.553, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2458,8 +3000,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.639, g = 0.639, b = 0.639, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2477,8 +3019,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.345, g = 0.420, b = 0.490, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2498,14 +3040,15 @@ local particles =
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
+
   make_particle
   {
     name = "pipe-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.648, g = 0.555, b = 0.447, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2523,8 +3066,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.648, g = 0.555, b = 0.447, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2551,8 +3094,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.720, g = 0.720, b = 0.720, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2561,8 +3104,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.539, g = 0.458, b = 0.367, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2589,8 +3132,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.544, g = 0.476, b = 0.443, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2599,8 +3142,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.616, g = 0.616, b = 0.616, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2654,8 +3197,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2682,8 +3225,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.725, g = 0.725, b = 0.725, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2710,8 +3253,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.515, g = 0.515, b = 0.515, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2738,8 +3281,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.549, g = 0.447, b = 0.322, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2748,8 +3291,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.491, g = 0.460, b = 0.419, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2767,8 +3310,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.633, g = 0.534, b = 0.459, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2777,8 +3320,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.561, g = 0.561, b = 0.541, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2787,8 +3330,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.459, g = 0.427, b = 0.396, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2806,8 +3349,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.594, g = 0.594, b = 0.594, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2816,8 +3359,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.408, g = 0.408, b = 0.341, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2826,8 +3369,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.706, g = 0.608, b = 0.024, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2854,8 +3397,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.821, g = 0.821, b = 0.821, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2864,8 +3407,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.519, g = 0.519, b = 0.519, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2883,8 +3426,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.769, g = 0.630, b = 0.619, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2893,8 +3436,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.510, g = 0.510, b = 0.510, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2912,8 +3455,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.753, g = 0.727, b = 0.687, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2931,8 +3474,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.846, g = 0.788, b = 0.657, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2950,8 +3493,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.456, g = 0.622, b = 0.776, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -2960,8 +3503,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.699, g = 0.699, b = 0.699, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -2997,8 +3540,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.704, g = 0.735, b = 0.772, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3006,8 +3549,8 @@ local particles =
     name = "arithmetic-combinator-metal-particle-big",
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.515, g = 0.531, b = 0.552, a = 1.000}}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3025,8 +3568,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.819, g = 0.652, b = 0.306, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3035,8 +3578,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.624, g = 0.624, b = 0.624, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3054,8 +3597,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.721, g = 0.352, b = 0.352, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3083,8 +3626,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.528, g = 0.528, b = 0.528, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3111,8 +3654,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.553, g = 0.581, b = 0.428, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3121,8 +3664,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.577, g = 0.577, b = 0.577, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3140,8 +3683,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.888, g = 0.878, b = 0.788, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3150,8 +3693,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.798, g = 0.786, b = 0.695, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3178,8 +3721,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.933, g = 0.875, b = 0.635, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3188,8 +3731,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.503, g = 0.479, b = 0.377, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -3225,8 +3768,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.709, g = 0.709, b = 0.709, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -3253,8 +3796,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.663, g = 0.663, b = 0.663, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3317,8 +3860,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.946, g = 1.000, b = 0.895, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3327,8 +3870,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.614, g = 0.644, b = 0.585, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3346,8 +3889,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.788, g = 0.586, b = 0.464, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3374,8 +3917,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3402,8 +3945,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.558, g = 0.558, b = 0.558, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3439,8 +3982,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({ tint = { r = 0.600, g = 0.545, b = 0.518, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3449,8 +3992,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({ tint = { r = 0.502, g = 0.455, b = 0.435, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3477,8 +4020,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.380, g = 0.576, b = 0.353, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3568,8 +4111,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.938, g = 0.860, b = 0.680, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3578,8 +4121,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.509, g = 0.509, b = 0.509, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
   make_particle
@@ -3597,8 +4140,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.431, g = 0.490, b = 0.463, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3607,8 +4150,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.447, g = 0.490, b = 0.545, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3644,8 +4187,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.349, g = 0.369, b = 0.333, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3672,8 +4215,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.376, g = 0.463, b = 0.580, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3700,8 +4243,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.533, g = 0.580, b = 0.384, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3728,8 +4271,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.651, g = 0.620, b = 0.506, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3783,8 +4326,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.675, g = 0.522, b = 0.204, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3820,8 +4363,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.761, g = 0.757, b = 0.671, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3866,8 +4409,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.828, g = 0.821, b = 0.742, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3912,8 +4455,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.506, g = 0.457, b = 0.371, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3949,8 +4492,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3959,8 +4502,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -3969,8 +4512,8 @@ local particles =
     pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4006,8 +4549,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4016,8 +4559,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4044,8 +4587,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.667, g = 0.667, b = 0.667, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4081,8 +4624,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.485, g = 0.485, b = 0.485, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4091,8 +4634,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures ({tint = {r = 0.835, g = 0.835, b = 0.835, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4209,8 +4752,8 @@ local particles =
     pictures = particle_animations.get_stone_particle_medium_pictures({tint = {r = 0.667, g = 0.636, b = 0.515, a = 1.000}}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect (),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4246,8 +4789,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({tint = {r = 0.496, g = 0.496, b = 0.496, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4265,8 +4808,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures  ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    ender_layer = "object"
   },
 
   make_particle
@@ -4275,8 +4818,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4294,8 +4837,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4304,8 +4847,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4323,8 +4866,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = {r = 0.800, g = 0.753, b = 0.694, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4333,8 +4876,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures ({ tint = {r = 0.541, g = 0.494, b = 0.459, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4352,8 +4895,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.315, g = 0.315, b = 0.315, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4362,8 +4905,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.712, g = 0.712, b = 0.712, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4390,8 +4933,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({ tint = {r = 0.835, g = 0.859, b = 0.682, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4400,8 +4943,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_long_pictures({tint = {r = 0.834, g = 0.860, b = 0.682, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4410,8 +4953,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.861, g = 0.670, b = 0.450, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4420,8 +4963,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.828, g = 0.622, b = 0.539, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4430,8 +4973,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.344, g = 0.344, b = 0.344, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4460,7 +5003,6 @@ local particles =
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
-
 
   make_particle
   {
@@ -4567,8 +5109,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.564, g = 0.564, b = 0.564, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect (),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4586,8 +5128,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.631, g = 0.631, b = 0.631, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer= "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer= "object"
   },
 
   make_particle
@@ -4605,8 +5147,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.793, g = 0.793, b = 0.793, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4624,8 +5166,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.809, g = 0.809, b = 0.809, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4643,8 +5185,8 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.726, g = 0.726, b = 0.726, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
 
   make_particle
@@ -4653,9 +5195,10 @@ local particles =
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {r = 0.800, g = 0.709, b = 0.624, a = 1.000}}), 
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_smoke_trigger_effect(),
-    render_layer = "object",
-    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
   },
+  
   make_particle
   {
     name = "storage-tank-metal-particle-big",
@@ -4677,78 +5220,68 @@ local particles =
   make_particle
   {
     name = "blood-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
-    render_layer = "higher-object-under",
     pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "higher-object-under"
   },
 
   make_particle
   {
     name = "blood-particle-lower-layer",
-    movement_modifier_when_on_ground = 0,
     life_time = 180,
     pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    render_layer = "lower-object-above-shadow",
     draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false
-  },
-  
-  make_particle
-  {
-    name = "blood-particle-carpet",
+    ended_in_water_trigger_effect = false,
     movement_modifier_when_on_ground = 0,
-    life_time = 180,
-    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
-    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    render_layer = "projectile",
-    render_layer_when_on_ground = "ground-patch-higher2",
-    draw_shadow_when_on_ground = false,
-    ended_in_water_trigger_effect = false
+    render_layer = "lower-object-above-shadow"
   },
 
   make_particle
   {
-    name = "storage-tank-fluid-particle",
-    movement_modifier_when_on_ground = 0,
+    name = "blood-particle-carpet",
     life_time = 180,
-    render_layer = "higher-object-under",
-    pictures = particle_animations.get_blood_particle_pictures({tint = {r = 0.715, g = 0.515, b = 0.232, a = 1.000}}), 
+    pictures = particle_animations.get_blood_particle_pictures({tint = bloodtint()}),
     shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    draw_shadow_when_on_ground = false,
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "projectile",
+    render_layer_when_on_ground = "ground-patch-higher2"
   },
 
   make_particle
   {
     name = "spark-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 20,
-    render_layer = "air-object",
     pictures = particle_animations.get_sparks_particle_pictures(),
-    ended_in_water_trigger_effect = false
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "air-object"
   },
 
   make_particle
   {
     name = "pole-spark-particle",
-    movement_modifier_when_on_ground = 0,
     life_time = 20,
-    render_layer = "air-object",
     pictures = particle_animations.get_pole_sparks_particle_pictures(),
-    ended_in_water_trigger_effect = false
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "air-object"
   },
 
   make_particle
   {
     name = "spark-particle-debris",
-    movement_modifier_when_on_ground = 0,
     life_time = 20,
-    render_layer = "air-object",
     pictures = particle_animations.get_sparks_debris_pictures(),
-    ended_in_water_trigger_effect = false
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "air-object"
   },
 
   {
@@ -4826,10 +5359,10 @@ local particles =
   {
     type = "particle-source",
     name = "blood-fountain-death-spawner",
+    icon = "__base__/graphics/icons/biter-spawner.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "particles",
     particle = "blood-particle",
-    icon = "__core__/graphics/icons/mip/trash.png",
-    icon_size = 32,
     time_to_live = 65,
     time_to_live_deviation = 5,
     time_before_start = 5,
@@ -4845,10 +5378,10 @@ local particles =
   {
     type = "particle-source",
     name = "blood-fountain-death-behemoth-worm",
+    icon = "__base__/graphics/icons/behemoth-worm.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "particles",
     particle = "blood-particle",
-    icon = "__core__/graphics/icons/mip/trash.png",
-    icon_size = 32,
     time_to_live = 15,
     time_to_live_deviation = 5,
     time_before_start = 0,
@@ -4864,10 +5397,10 @@ local particles =
   {
     type = "particle-source",
     name = "blood-fountain-death-big-worm",
+    icon = "__base__/graphics/icons/big-worm.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "particles",
     particle = "blood-particle",
-    icon = "__core__/graphics/icons/mip/trash.png",
-    icon_size = 32,
     time_to_live = 25,
     time_to_live_deviation = 5,
     time_before_start = 0,
@@ -4883,10 +5416,10 @@ local particles =
   {
     type = "particle-source",
     name = "blood-fountain-death-medium-worm",
+    icon = "__base__/graphics/icons/medium-worm.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "particles",
     particle = "blood-particle",
-    icon = "__core__/graphics/icons/mip/trash.png",
-    icon_size = 32,
     time_to_live = 25,
     time_to_live_deviation = 5,
     time_before_start = 0,
@@ -4902,10 +5435,10 @@ local particles =
   {
     type = "particle-source",
     name = "blood-fountain-death-small-worm",
+    icon = "__base__/graphics/icons/small-worm.png",
+    icon_size = 64, icon_mipmaps = 4,
     subgroup = "particles",
     particle = "blood-particle",
-    icon = "__core__/graphics/icons/mip/trash.png",
-    icon_size = 32,
     time_to_live = 25,
     time_to_live_deviation = 5,
     time_before_start = 0,
@@ -4920,12 +5453,22 @@ local particles =
 
   make_particle
   {
-    name = "leaf-particle",
+    name = "old-leaf-particle",
     life_time = 180,
-    movement_modifier = 0.9,
     pictures = particle_animations.get_leaf_particle_pictures(),
     shadows = particle_animations.get_leaf_particle_pictures{shift = util.by_pixel(1.5, -1), tint = shadowtint()},
-    ended_in_water_trigger_effect = false
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.9,
+  },
+
+  make_particle
+  {
+    name = "leaf-particle",
+    life_time = 180,
+    pictures = particle_animations.get_new_leaf_particle_pictures(),
+    shadows = particle_animations.get_new_leaf_particle_pictures{shift = util.by_pixel(1.5, -1), tint = shadowtint()},
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.9
   },
 
   make_particle
@@ -4934,7 +5477,8 @@ local particles =
     life_time = 1200,
     pictures = particle_animations.get_branch_particle_pictures(),
     shadows = particle_animations.get_branch_particle_shadow_pictures(),
-    ended_in_water_trigger_effect = false
+    ended_in_water_trigger_effect = false,
+    animation_speed = 0.1
   },
 
   make_particle

@@ -1,7 +1,7 @@
 require "util"
 
 -- this is both in demo and alpha
-require("prototypes.ambient-sounds") 
+require("prototypes.ambient-sounds")
 require("prototypes.entity.demo-entities")
 require("prototypes.entity.demo-explosions")
 require("prototypes.entity.demo-crash-site")
@@ -41,11 +41,7 @@ require("prototypes.categories.resource-category")
 require("prototypes.categories.module-category")
 require("prototypes.equipment-grid")
 require("prototypes.categories.equipment-category")
-require("prototypes.technology.demo-technology")
 require("prototypes.demo-shortcuts")
-require("prototypes.campaign_sprites")
-require("prototypes.campaign_gui")
-require("prototypes.campaign_sounds")
 require("prototypes.trigger-target-types")
 require("prototypes.signal.signal")
 require("prototypes.entity.demo-projectiles")

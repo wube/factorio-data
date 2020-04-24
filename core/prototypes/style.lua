@@ -789,11 +789,17 @@ data:extend(
     },
     goal_label =
     {
-      type = "label_style",
-      parent = "label",
-      font = "scenario-message-dialog",
-      width = 364,
-      font_color = {1, 1, 1}
+       type = "label_style",
+       font = "default",
+       font_color = {1,1,1},
+       rich_text_setting = "enabled",
+       single_line = false,
+       left_padding = 8,
+       right_padding = 8,
+       top_padding = 4,
+       bottom_padding = 0,
+       width = 364,
+       horizontal_align = "left"
     },
     electric_usage_label =
     {
@@ -5431,8 +5437,7 @@ data:extend(
         parent = "label",
         width = 400,
         font = "scenario-message-dialog",
-        single_line = false,
-        font_color = {r=0, g=0, b=0}
+        single_line = false
       },
 
       arrow_graphical_set =
@@ -5463,7 +5468,7 @@ data:extend(
         },
       },
       arrow_indent = 7,
-      close_color = {0,0,0},
+      close_color = bold_font_color,
       pass_through_mouse = false,
     },
 
@@ -6391,8 +6396,42 @@ data:extend(
     {
       type = "frame_style",
       parent = "frame",
-      top_padding = 2,
-      left_padding = 2
+      padding = 0,
+      use_header_filler = false,
+      horizontally_stretchable = "on",
+
+      top_padding = 0,
+      left_padding = 8,
+      right_padding = 8,
+      bottom_padding = 4,
+
+      right_margin = 12,
+      bottom_margin = 12,
+    },
+    goal_inner_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      graphical_set =
+      {
+        base =
+        {
+          center =
+          {
+            position = {76, 8},
+            size = {1, 1}
+          },
+
+          position = {17, 0},
+          corner_size = 8,
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      },
+
+      top_margin = 4,
+      bottom_margin = 4,
+      padding = 0,
     },
     image_frame =
     {

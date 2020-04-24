@@ -1,6 +1,7 @@
 local noise = require("noise")
 local autoplace_utils = require("autoplace_utils")
 local bvu = require("biome-visualization-utils")
+local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 
 local tile_noise_enabled = true
 local tile_noise_persistence = 0.7
@@ -273,6 +274,7 @@ local dirt_sounds =
   }
 }
 
+
 local function noise_layer_expression(noise_name)
   if tile_noise_enabled == false then return noise.to_noise_expression(0) end
   return noise.function_application("factorio-multioctave-noise",
@@ -375,13 +377,14 @@ local function append_transition_mask_template(normal_res_transition, high_res_t
     }
 
     if high_res_transition then
-      t.hr_version = {
-                       picture = high_res_transition,
-                       count = cnt_,
-                       line_length = line_len_ or cnt_,
-                       x = 2 * x_,
-                       scale = 0.5
-                     }
+      t.hr_version =
+      {
+        picture = high_res_transition,
+        count = cnt_,
+        line_length = line_len_ or cnt_,
+        x = 2 * x_,
+        scale = 0.5
+      }
     end
     return t
   end
@@ -791,13 +794,14 @@ local water_to_out_of_map_transition =
       {
         overlay_layer_group = "zero",
         apply_effect_color_to_overlay = true,
-        effect_mask = {
-                        filename = "__base__/graphics/terrain/effects/water-edge-mask.png",
-                        frame_count = 47,
-                        line_length = 8,
-                        scale = 0.5,
-                        size = 64
-                      }
+        effect_mask =
+        {
+          filename = "__base__/graphics/terrain/effects/water-edge-mask.png",
+          frame_count = 47,
+          line_length = 8,
+          scale = 0.5,
+          size = 64
+        }
       })
     },
     true,
@@ -1579,7 +1583,9 @@ define_tiles
     --transitions_between_transitions = deepwater_transitions_between_transitions,
     allowed_neighbors = { "water" },
     map_color={r=38, g=64, b=73},
-    pollution_absorption_per_second = water_pollution_absorption
+    pollution_absorption_per_second = water_pollution_absorption,
+
+    trigger_effect = tile_trigger_effects.deep_water_trigger_effect(),
   },
   {
     name = "deepwater-green",
@@ -1643,7 +1649,9 @@ define_tiles
     },
     allowed_neighbors = { "water-green" },
     map_color={r=0.0941, g=0.149, b=0.066},
-    pollution_absorption_per_second = water_pollution_absorption
+    pollution_absorption_per_second = water_pollution_absorption,
+
+    trigger_effect = tile_trigger_effects.deep_green_water_trigger_effect(),
   },
 
   {
@@ -1708,7 +1716,9 @@ define_tiles
     },
     transitions = { water_to_out_of_map_transition },
     map_color={r=51, g=83, b=95},
-    pollution_absorption_per_second = water_pollution_absorption
+    pollution_absorption_per_second = water_pollution_absorption,
+
+    trigger_effect = tile_trigger_effects.water_trigger_effect(),
   },
 
   {
@@ -1772,7 +1782,9 @@ define_tiles
       empty_transitions = true
     },
     map_color={r=31, g=48, b=18},
-    pollution_absorption_per_second = water_pollution_absorption
+    pollution_absorption_per_second = water_pollution_absorption,
+
+    trigger_effect = tile_trigger_effects.green_water_trigger_effect(),
   },
 
   {
@@ -1900,7 +1912,9 @@ define_tiles
     transitions_between_transitions = water_shallow_transitions_between_transitions,
     -- allowed_neighbors = { "water-mud" },
     map_color={r=82, g=98, b=92},
-    pollution_absorption_per_second = water_pollution_absorption
+    pollution_absorption_per_second = water_pollution_absorption,
+
+    trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
   },
   {
     name = "water-mud",
@@ -2027,7 +2041,9 @@ define_tiles
     transitions_between_transitions = water_mud_transitions_between_transitions,
     -- allowed_neighbors = { "water-shallow" },
     map_color={r=65, g=89, b=90},
-    pollution_absorption_per_second = water_pollution_absorption
+    pollution_absorption_per_second = water_pollution_absorption,
+
+    trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
   },
   -----------//////////////////////////////////////////////////////////////GRASS-1
   {
@@ -2055,7 +2071,9 @@ define_tiles
     walking_sound = grass_sounds,
     map_color={r=55, g=53, b=11},
     pollution_absorption_per_second = grass_pollution_absorption,
-    vehicle_friction_modifier = grass_vehicle_speed_modifier
+    vehicle_friction_modifier = grass_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.grass_1_trigger_effect(),
   },
    -----------//////////////////////////////////////////////////////////////GRASS-2 - potato
   {
@@ -2084,7 +2102,9 @@ define_tiles
     map_color={r=66, g=57, b=15},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
-    can_be_part_of_blueprint = false
+    can_be_part_of_blueprint = false,
+
+    trigger_effect = tile_trigger_effects.grass_2_trigger_effect(),
   },
   -----------//////////////////////////////////////////////////////////////GRASS-3
   {
@@ -2112,7 +2132,9 @@ define_tiles
     walking_sound = grass_sounds,
     map_color={r=65, g=52, b=28},
     pollution_absorption_per_second = grass_pollution_absorption,
-    vehicle_friction_modifier = grass_vehicle_speed_modifier
+    vehicle_friction_modifier = grass_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.grass_3_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////GRASS-4
   {
@@ -2140,7 +2162,9 @@ define_tiles
     walking_sound = grass_sounds,
     map_color={r=59, g=40, b=18},
     pollution_absorption_per_second = grass_pollution_absorption,
-    vehicle_friction_modifier = grass_vehicle_speed_modifier
+    vehicle_friction_modifier = grass_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.grass_4_trigger_effect(),
   },
 
 -----------//////////////////////////////////////////////////////////////DRY-DIRT
@@ -2169,7 +2193,9 @@ define_tiles
     walking_sound = dirt_sounds,
     map_color={r=94, g=66, b=37},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dry_dirt_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT
   {
@@ -2197,7 +2223,9 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=141, g=104, b=60},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_1_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT-2
   {
@@ -2225,7 +2253,9 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=136, g=96, b=59},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT-3
   {
@@ -2253,7 +2283,9 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=133, g=92, b=53},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_3_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT-4
   {
@@ -2281,7 +2313,9 @@ define_tiles
     walking_sound = dirt_sounds,
     map_color={r=103, g=72, b=43},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_4_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT-5
   {
@@ -2309,7 +2343,9 @@ define_tiles
     walking_sound = dirt_sounds,
     map_color={r=91, g=63, b=38},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_5_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT-6
   {
@@ -2337,7 +2373,9 @@ define_tiles
     walking_sound = dirt_sounds,
     map_color={r=80, g=55, b=31},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_6_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////DIRT-7
   {
@@ -2365,7 +2403,9 @@ define_tiles
     walking_sound = dirt_sounds,
     map_color={r=80, g=54, b=28},
     pollution_absorption_per_second = dirt_pollution_absorption,
-    vehicle_friction_modifier = dirt_vehicle_speed_modifier
+    vehicle_friction_modifier = dirt_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.dirt_7_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////SAND-1
   {
@@ -2399,7 +2439,10 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=138, g=103, b=58},
     pollution_absorption_per_second = sand_pollution_absorption,
-    vehicle_friction_modifier = sand_vehicle_speed_modifier
+    vehicle_friction_modifier = sand_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.sand_trigger_effect(),
+
   },
 -----------//////////////////////////////////////////////////////////////SAND-2
   {
@@ -2427,7 +2470,9 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=128, g=93, b=52},
     pollution_absorption_per_second = sand_pollution_absorption,
-    vehicle_friction_modifier = sand_vehicle_speed_modifier
+    vehicle_friction_modifier = sand_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.sand_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////SAND-3
   {
@@ -2455,7 +2500,9 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=115, g=83, b=47 },
     pollution_absorption_per_second = sand_pollution_absorption,
-    vehicle_friction_modifier = sand_vehicle_speed_modifier
+    vehicle_friction_modifier = sand_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.sand_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-0 //potato-gate//
   {
@@ -2486,7 +2533,9 @@ define_tiles
     map_color={r=103, g=70, b=32},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
-    can_be_part_of_blueprint = false
+    can_be_part_of_blueprint = false,
+
+    trigger_effect = tile_trigger_effects.red_desert_0_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-1
   {
@@ -2515,7 +2564,9 @@ define_tiles
     map_color={r=116, g=81, b=39},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
-    can_be_part_of_blueprint = false
+    can_be_part_of_blueprint = false,
+
+    trigger_effect = tile_trigger_effects.red_desert_1_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-2
   {
@@ -2544,7 +2595,9 @@ define_tiles
     map_color={r=116, g=84, b=43},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
-    can_be_part_of_blueprint = false
+    can_be_part_of_blueprint = false,
+
+    trigger_effect = tile_trigger_effects.red_desert_2_trigger_effect(),
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-3
   {
@@ -2572,7 +2625,9 @@ define_tiles
     walking_sound = sand_sounds,
     map_color={r=128, g=93, b=52},
     pollution_absorption_per_second = red_desert_pollution_absorption,
-    vehicle_friction_modifier = grass_vehicle_speed_modifier
+    vehicle_friction_modifier = grass_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.red_desert_3_trigger_effect(),
   },
   -----------//////////////////////////////////////////////////////////////STONE-PATH
   {
@@ -2701,7 +2756,9 @@ define_tiles
     walking_sound = concrete_sounds,
     map_color={r=86, g=82, b=74},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = stone_path_vehicle_speed_modifier
+    vehicle_friction_modifier = stone_path_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.stone_path_trigger_effect(),
   },
   {
     type = "tile",
@@ -2723,7 +2780,9 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=49, g=49, b=49},
-    pollution_absorption_per_second = 0
+    pollution_absorption_per_second = 0,
+
+    trigger_effect = tile_trigger_effects.lab_tile_dark_1_trigger_effect(),
   },
   {
     type = "tile",
@@ -2745,7 +2804,9 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=0, g=0, b=0},
-    pollution_absorption_per_second = 0
+    pollution_absorption_per_second = 0,
+
+    trigger_effect = tile_trigger_effects.lab_tile_dark_2_trigger_effect(),
   },
   {
     type = "tile",
@@ -2767,7 +2828,9 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=1, g=1, b=1},
-    pollution_absorption_per_second = 0
+    pollution_absorption_per_second = 0,
+
+    trigger_effect = tile_trigger_effects.lab_tile_white_trigger_effect(),
   },
   {
     type = "tile",
@@ -2870,7 +2933,9 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=122, g=122, b=122},
-    pollution_absorption_per_second = 0
+    pollution_absorption_per_second = 0,
+
+    trigger_effect = tile_trigger_effects.tutorial_grid_trigger_effect(),
   },
 
   {
@@ -3042,7 +3107,9 @@ define_tiles
     walking_sound = concrete_sounds,
     map_color={r=63, g=61, b=59},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.concrete_trigger_effect(),
   },
   {
     type = "tile",
@@ -3154,7 +3221,10 @@ define_tiles
     walking_sound = concrete_sounds,
     map_color={r=176, g=142, b=39},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.hazard_concrete_left_trigger_effect(),
+
   },
   {
     type = "tile",
@@ -3235,7 +3305,9 @@ define_tiles
     walking_sound = concrete_sounds,
     map_color={r=176, g=142, b=39},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.hazard_concrete_right_trigger_effect(),
   },
 
   {
@@ -3408,7 +3480,9 @@ define_tiles
 
     map_color={r=49, g=48, b=45},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.concrete_trigger_effect(),
   },
   {
     type = "tile",
@@ -3520,7 +3594,9 @@ define_tiles
     walking_sound = refined_concrete_sounds,
     map_color={r=116, g=94, b=26},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.hazard_concrete_left_trigger_effect(),
   },
   {
     type = "tile",
@@ -3601,7 +3677,9 @@ define_tiles
     walking_sound = refined_concrete_sounds,
     map_color={r=116, g=94, b=26},
     pollution_absorption_per_second = 0,
-    vehicle_friction_modifier = concrete_vehicle_speed_modifier
+    vehicle_friction_modifier = concrete_vehicle_speed_modifier,
+
+    trigger_effect = tile_trigger_effects.hazard_concrete_right_trigger_effect(),
   },
   {
     type = "tile",
@@ -3612,6 +3690,7 @@ define_tiles
 
     transitions = landfill_transitions,
     transitions_between_transitions = landfill_transitions_between_transitions,
+    trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     variants = append_transition_mask_template(
     "__base__/graphics/terrain/masks/transition-1.png",
@@ -3715,3 +3794,30 @@ for k, color in pairs (colors) do
   new.minable = nil
   data:extend{new}
 end
+
+--[[
+-- FOR DEBUGGING PURPOSES
+
+for k, v in pairs(data.raw["tile"]) do
+  data:extend
+  {
+    {
+      type = "explosion",
+      name = v.name .. "-explosion",
+      icon = "__core__/graphics/icons/category/tiles-editor.png",
+      icon_size = 128, icon_mipmaps = 0,
+      flags = {"not-on-map"},
+      subgroup = "ground-explosions",
+      order = "a-s-a",
+      height = 0,
+      animations = util.empty_sprite(),--explosion_animations.small_explosion(),
+      light = { intensity = 1, size = 20 },
+      smoke = "smoke-fast",
+      smoke_count = 2,
+      smoke_slow_down_factor = 1,
+      sound = nil, --explosion_sounds.small(0.75),
+      created_effect = { type = "direct", action_delivery = { type = "instant", target_effects = v.trigger_effect } }
+    }
+  }
+end
+--]]

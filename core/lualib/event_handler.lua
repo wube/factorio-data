@@ -3,12 +3,23 @@ local libraries = {}
 
 local setup_ran = false
 
-local register_events = function()
-
+local register_remote_interfaces = function()
   --Sometimes, in special cases, on_init and on_load can be run at the same time. Only register events once in this case.
   if setup_ran then return end
   setup_ran = true
 
+  for lib_name, lib in pairs (libraries) do
+    if lib.add_remote_interface then
+      lib.add_remote_interface()
+    end
+
+    if lib.add_commands then
+      lib.add_commands()
+    end
+  end
+end
+
+local register_events = function()
   local all_events = {}
   local on_nth_tick = {}
 
@@ -26,14 +37,6 @@ local register_events = function()
         on_nth_tick[n] = on_nth_tick[n] or {}
         on_nth_tick[n][lib_name] = handler
       end
-    end
-
-    if lib.add_remote_interface then
-      lib.add_remote_interface()
-    end
-
-    if lib.add_commands then
-      lib.add_commands()
     end
 
   end
@@ -59,21 +62,23 @@ local register_events = function()
 end
 
 script.on_init(function()
-  register_events()
+  register_remote_interfaces()
   for k, lib in pairs (libraries) do
     if lib.on_init then
       lib.on_init()
     end
   end
+  register_events()
 end)
 
 script.on_load(function()
-  register_events()
+  register_remote_interfaces()
   for k, lib in pairs (libraries) do
     if lib.on_load then
       lib.on_load()
     end
   end
+  register_events()
 end)
 
 script.on_configuration_changed(function(data)

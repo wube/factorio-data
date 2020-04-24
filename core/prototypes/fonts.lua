@@ -54,7 +54,7 @@ data:extend(
     type = "font",
     name = "scenario-message-dialog",
     from = "default",
-    size = 18
+    size = 16
   },
   {
     type = "font",

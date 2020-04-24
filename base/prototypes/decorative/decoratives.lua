@@ -4,6 +4,8 @@ local hit_effects = require ("prototypes.entity.demo-hit-effects")
 
 local sounds = require ("prototypes.entity.demo-sounds")
 
+local decorative_trigger_effects = require("prototypes.decorative.decorative-trigger-effects")
+
 local base_decorative_sprite_priority = "extra-high"
 
 local function add_dim_to_peak(peak, dim_name, values)
@@ -216,6 +218,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.brown_asterisk(),
     -- autoplace = autoplace_settings("brown-fluff", 1, {{{35, 0.5}, {-15, 0.1}}}),
     autoplace = tog_autoplace
     {
@@ -565,6 +568,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.green_asterisk(),
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 1}, {0, 0.7}}}),
     autoplace = tog_autoplace
     {
@@ -913,6 +917,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-c[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    trigger_effect = decorative_trigger_effects.green_asterisk_mini(),
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
     {
@@ -1134,6 +1139,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-c[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    trigger_effect = decorative_trigger_effects.brown_asterisk_mini(),
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
     {
@@ -1356,6 +1362,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.red_asterisk(),
     -- autoplace = autoplace_settings(nil, 0.05, {{{35, 0.7}, {-5, 0.4}}}),
     autoplace = tog_autoplace
     {
@@ -1706,6 +1713,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.green_pita(),
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -1986,6 +1994,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.red_pita(),
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2266,6 +2275,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.green_croton(),
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2626,6 +2636,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.red_croton(),
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -2983,6 +2994,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.green_pita_mini(),
     autoplace =
     {
       order = "a[doodad]-e[pita]",
@@ -3259,6 +3271,7 @@ data:extend{
     order = "b[decorative]-g[fluff]-a[normal]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     walking_sound = sounds.big_bush,
+    trigger_effect = decorative_trigger_effects.brown_fluff(),
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -3647,6 +3660,7 @@ data:extend{
     order = "b[decorative]-g[fluff]-b[dry]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     walking_sound = sounds.big_bush,
+    trigger_effect = decorative_trigger_effects.brown_fluff_dry(),
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4039,6 +4053,7 @@ data:extend{
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.garballo(),
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4387,6 +4402,7 @@ data:extend{
     order = "b[decorative]-i[garballo]-a[mini-dry]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     render_layer = "object",
+    trigger_effect = decorative_trigger_effects.garballo_mini_dry(),
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -4733,6 +4749,7 @@ data:extend{
     name = "lichen",
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
+    trigger_effect = decorative_trigger_effects.lichen(),
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     --autoplace =
     --{
@@ -5017,6 +5034,7 @@ data:extend{
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     walking_sound = sounds.plant,
+    trigger_effect = decorative_trigger_effects.green_bush_mini(),
     autoplace =
     {
       order = "a[doodad]-e[garballo]",
@@ -5238,6 +5256,7 @@ data:extend{
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
     walking_sound = sounds.hairy_grass,
+    trigger_effect = decorative_trigger_effects.green_hairy_grass(),
     autoplace =
     {
       order = "a[doodad]-f[grass]-b",
@@ -5587,6 +5606,7 @@ data:extend{
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
     walking_sound = sounds.carpet_grass,
+    trigger_effect = decorative_trigger_effects.green_carpet_grass(),
     autoplace =
     {
       order = "a[doodad]-f[grass]-c",
@@ -5811,6 +5831,7 @@ data:extend{
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     walking_sound = sounds.big_bush,
+    trigger_effect = decorative_trigger_effects.white_desert_bush(),
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6167,6 +6188,7 @@ data:extend{
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     walking_sound = sounds.small_bush,
+    trigger_effect = decorative_trigger_effects.green_desert_bush(),
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6395,6 +6417,7 @@ data:extend{
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     walking_sound = sounds.small_bush,
+    trigger_effect = decorative_trigger_effects.red_desert_bush(),
     autoplace =
     {
       order = "a[doodad]-d[fluff]",
@@ -6752,6 +6775,7 @@ data:extend{
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     grows_through_rail_path = true,
     walking_sound = sounds.carpet_grass,
+    trigger_effect = decorative_trigger_effects.green_small_grass(),
     autoplace =
     {
       order = "a[doodad]-f[grass]-d",
@@ -6973,6 +6997,7 @@ data:extend{
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
     walking_sound = sounds.carpet_grass,
+    trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace =
     {
       order = "a[doodad]-f[grass]-c",
@@ -7207,6 +7232,7 @@ data:extend{
     grows_through_rail_path = true,
     render_layer = "decorative",
     walking_sound = sounds.hairy_grass,
+    trigger_effect = decorative_trigger_effects.brown_hairy_grass(),
     autoplace =
     {
       order = "a[doodad]-f[grass]-b",
@@ -7563,6 +7589,7 @@ data:extend{
     collision_box = {{-1.5, -1.1}, {1.5, 1.1}},
     selection_box = {{-1.7, -1.3}, {1.7, 1.3}},
     damaged_trigger_effect = hit_effects.rock(),
+    dying_trigger_effect = decorative_trigger_effects.huge_rock(),
     minable =
     {
       mining_particle = "stone-particle",
@@ -7575,7 +7602,7 @@ data:extend{
       {item = "stone", probability = 1, count_min = 25, count_max = 50}
     },
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = sounds.axe_mining_ore,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 2000,
@@ -7826,6 +7853,7 @@ data:extend{
     collision_box = {{-1.0, -0.9}, {1.0, 1.0}},
     selection_box = {{-1.2, -1.2}, {1.2, 1.2}},
     damaged_trigger_effect = hit_effects.rock(),
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
     minable =
     {
       mining_particle = "stone-particle",
@@ -7838,7 +7866,7 @@ data:extend{
       {item = "stone", probability = 1, count_min = 9, count_max = 25}
     },
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = sounds.axe_mining_ore,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 500,
@@ -8141,6 +8169,7 @@ data:extend{
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     render_layer = "decorative",
     autoplace = rock_autoplace_settings(0.5, "c[medium]", {{0, 0.3}, {1, 1}}),
+    trigger_effect = decorative_trigger_effects.medium_rock(),
     pictures =
     {
       {
@@ -8345,6 +8374,7 @@ data:extend{
     render_layer = "decorative",
     walking_sound = sounds.pebble,
     autoplace = rock_autoplace_settings(1, "d[small]", {{0, 0.3}, {1, 1}}),
+    trigger_effect = decorative_trigger_effects.small_rock(),
     pictures =
     {
       {
@@ -8613,6 +8643,7 @@ data:extend{
     render_layer = "decorative",
     walking_sound = sounds.pebble,
     autoplace = rock_autoplace_settings(1.1, "e[tiny]", {{0, 0.3}, {1, 1}}),
+    trigger_effect = decorative_trigger_effects.tiny_rock(),
     pictures =
     {
       {
@@ -8880,14 +8911,15 @@ data:extend{
     flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
     icon = "__base__/graphics/icons/rock-big-icon.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "wrecks",
-    order = "b[decorative]-l[rock]-b[big]",
+    subgroup = "grass",
+    order = "b[decorative]-l[rock]-a[big]",
     collision_box = {{-0.75, -0.75}, {0.75, 0.75}},
     selection_box = {{-1.0, -1.0}, {1.0, 0.75}},
     damaged_trigger_effect = hit_effects.rock(),
     render_layer = "object",
     max_health = 500,
     autoplace = rock_autoplace_settings(0.25, "b[big]", {{0, 0}, {0.4, 0.2}}),
+    dying_trigger_effect = decorative_trigger_effects.big_rock(),
     minable =
     {
       mining_particle = "stone-particle",
@@ -8906,7 +8938,7 @@ data:extend{
       }
     },
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = sounds.axe_mining_ore,
+    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     vehicle_impact_sound = sounds.car_stone_impact,
     pictures =
     {
@@ -9143,6 +9175,7 @@ data:extend{
     collision_box = {{-1.5, -0.5}, {1.5, 0.5}},
     render_layer = "floor",
     autoplace = rock_autoplace_settings(0.4, "c[medium]", {{0, 0}, {0.4, 0.2}}),
+    trigger_effect = decorative_trigger_effects.medium_rock(),
     pictures =
     {
       {
@@ -9412,6 +9445,7 @@ data:extend{
     render_layer = "floor",
     autoplace = rock_autoplace_settings(1.1, "d[small]", {{0, 0}, {0.4, 0.2}}),
     walking_sound = sounds.pebble,
+    trigger_effect = decorative_trigger_effects.small_rock(),
     pictures =
     {
       {
@@ -12177,6 +12211,7 @@ data:extend{
     collision_box = {{-2.5, -1.5}, {2.5, 1.5}},
     grows_through_rail_path = true,
     walking_sound = sounds.mud,
+    trigger_effect = decorative_trigger_effects.big_ship_wreck_grass(),
     pictures =
     {
       {
@@ -12196,6 +12231,7 @@ data:extend{
     grows_through_rail_path = true,
     walking_sound = sounds.mud,
     render_layer = "floor",
+    trigger_effect = decorative_trigger_effects.small_ship_wreck_grass(),
     pictures =
     {
       {
@@ -12219,3 +12255,30 @@ data:extend{
     }
   }
 }
+
+--[[
+-- FOR DEBUGGING PURPOSES
+
+for k, v in pairs(data.raw["optimized-decorative"]) do
+  data:extend
+  {
+    {
+      type = "explosion",
+      name = v.name .. "-explosion",
+      icon = "__core__/graphics/icons/category/decorative-editor.png",
+      icon_size = 128, icon_mipmaps = 0,
+      flags = {"not-on-map"},
+      subgroup = "decorative-explosions",
+      order = "a-s-a",
+      height = 0,
+      animations = util.empty_sprite(),--explosion_animations.small_explosion(),
+      light = { intensity = 1, size = 20 },
+      smoke = "smoke-fast",
+      smoke_count = 2,
+      smoke_slow_down_factor = 1,
+      sound = nil, --explosion_sounds.small(0.75),
+      created_effect = { type = "direct", action_delivery = { type = "instant", target_effects = v.trigger_effect } }
+    }
+  }
+end
+--]]
