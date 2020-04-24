@@ -1412,7 +1412,7 @@ particle_animations.get_leaf_particle_pictures = function(options)
   }
 end
 
-particle_animations.get_new_leaf_particle_pictures = function()
+particle_animations.get_new_leaf_particle_pictures = function(options)
   return
   {
     sheet =
@@ -1425,7 +1425,8 @@ particle_animations.get_new_leaf_particle_pictures = function()
       frame_count = 12,
       animation_speed = 0.5,
       variation_count = 10,
-      shift = util.add_shift(util.by_pixel(3.5,-0.5), options.shift),
+      shift = util.add_shift(util.by_pixel(3.5,-0.5), options and options.shift or nil),
+      tint = options and options.tint or nil,
       hr_version =
       {
         filename = "__base__/graphics/particle/leaf-particle/hr-new-leaf-particle.png",
@@ -1436,7 +1437,8 @@ particle_animations.get_new_leaf_particle_pictures = function()
         frame_count = 12,
         animation_speed = 0.5,
         variation_count = 10,
-        shift = util.add_shift(util.by_pixel(3.25,-0.75), options.shift),
+        shift = util.add_shift(util.by_pixel(3.25,-0.75), options and options.shift or nil),
+        tint = options and options.tint or nil,
         scale = 0.5,
       },
     }
@@ -2713,7 +2715,7 @@ particle_animations.get_grass_particle_small_medium_pictures = function(options)
       }
     }
   }
-end  
+end
 
 particle_animations.get_metal_particle_small_pictures = function(options)
   local options = options or {}
