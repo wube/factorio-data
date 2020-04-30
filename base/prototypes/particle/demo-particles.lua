@@ -5514,6 +5514,17 @@ local particles =
       speed_from_center = nil,
     },
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+  },
+
+  make_particle
+  {
+    name = "artillery-shell-particle",
+    pictures = particle_animations.get_artillery_shell_particle({}),
+    shadows = particle_animations.get_artillery_shell_particle({ tint = shadowtint(), shift = util.by_pixel (2.5,-0.25)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    movement_modifier_when_on_ground = 0.85,
+    render_layer_when_on_ground = "lower-object-above-shadow",
   }
 }
 

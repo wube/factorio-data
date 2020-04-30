@@ -3233,5 +3233,40 @@ particle_animations.get_dust_particle = function(options)
 end
 
 
+particle_animations.get_artillery_shell_particle = function(options)
+  local options = options or {}
+  return
+  {
+    sheet =
+    { 
+      filename = "__base__/graphics/particle/artillery-shell-particle/artillery-shells.png",
+      line_length = 12,
+      width = 18,
+      height = 18,
+      frame_count = 12,
+      variation_count = 4,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(2.5, -0.5),
+      shift = util.add_shift(util.by_pixel(2.5,-0.5), options.shift),
+      animation_speed = 1,
+      hr_version =
+      { 
+        filename = "__base__/graphics/particle/artillery-shell-particle/hr-artillery-shells.png",
+        line_length = 12,
+        width = 34,
+        height = 36,
+        frame_count = 12,
+        variation_count = 4,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.add_shift(util.by_pixel(2.25,-0.75), options.shift),
+        animation_speed = 1,
+        scale = 0.5
+      }
+    }
+  }
+end
+
 
 return particle_animations

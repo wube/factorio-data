@@ -367,3 +367,6 @@ local function process_fluids(fluids, technology, empty_barrel_item)
 end
 
 process_fluids(data.raw["fluid"], get_technology(technology_name), get_item(empty_barrel_name))
+
+-- data.raw["tile"]["water-mud"] = nil
+-- util.remove_tile_references(data, { "water-mud" })

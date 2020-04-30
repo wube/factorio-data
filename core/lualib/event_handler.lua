@@ -63,22 +63,22 @@ end
 
 script.on_init(function()
   register_remote_interfaces()
+  register_events()
   for k, lib in pairs (libraries) do
     if lib.on_init then
       lib.on_init()
     end
   end
-  register_events()
 end)
 
 script.on_load(function()
   register_remote_interfaces()
+  register_events()
   for k, lib in pairs (libraries) do
     if lib.on_load then
       lib.on_load()
     end
   end
-  register_events()
 end)
 
 script.on_configuration_changed(function(data)

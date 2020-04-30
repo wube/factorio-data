@@ -1,6 +1,29 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.22
+Version: 0.18.23
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.22
+Date: 30. 04. 2020
+  Graphics:
+    - Added shell particle effect for the artillery shooting.
+    - Added tinted scorch marks for explosion effects. Explosions on different tile types will result in scorch marks of different colors.
+  Changes:
+    - Pressing escape/close GUI when a search field is focused only closes the search field instead of the entire GUI.
+    - Updated GUI styles for PvP configuration GUI.
+    - Unit groups will determine their collision mask based on the collision masks of their members. (https://forums.factorio.com/84204)
+  Bugfixes:
+    - Fixed landfill spawning under player when building landfill elsewhere. (https://forums.factorio.com/84170)
+    - Fixed a crash when a train recalculating path during movement is unable to reserve rail signal within movement distance. (https://forums.factorio.com/84216)
+    - Fixed production statistics corruption when recipe returns some but not all catalyst. (https://forums.factorio.com/83881)
+    - Fixed a pathfinding crash related to changing tiles in a way that affected neighbouring tiles' transitions. (https://forums.factorio.com/84181)
+    - Fixed that malformed data in data.raw wouldn't show the minimal-mode failure GUI. (https://forums.factorio.com/84412)
+  Modding:
+    - Fixed that writing to mod settings would silently ignore bad values.
+    - Added "allowed_effects" support to the lab.
+    - Added "creation_distance_orientation", "use_source_position", "height" and "vertical_speed" to particle creation parameters (related to shooting effect shell particles).
+    - Added "scorch_mark_color" to TilePrototype.
+    - Added util.remove_tile_references for easier compatibility maintenance with future game updates when removing base game tiles.
+    - Removed migration for CustomInputPrototype consuming types that were removed in 0.15.24.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.21
 Date: 24. 04. 2020

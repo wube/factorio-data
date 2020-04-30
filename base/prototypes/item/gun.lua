@@ -250,7 +250,24 @@ data:extend(
           filename = "__base__/sound/fight/artillery-shoots-1.ogg",
           volume = 0.7
         }
-      }
+      },
+      shell_particle =
+      {
+        name = "artillery-shell-particle",
+        direction_deviation = 0.05,
+        direction = 0.4,
+        speed = 0.10,
+        speed_deviation = 0.1,
+        vertical_speed = 0.05,
+        vertical_speed_deviation = 0.01,
+        center = {0, -0.5},
+        creation_distance = 0.5,
+        creation_distance_orientation = 0.4,
+        starting_frame_speed = 0.5,
+        starting_frame_speed_deviation = 0.5,
+        use_source_position = true,
+        height = 1
+      },
     },
     stack_size = 1
   }

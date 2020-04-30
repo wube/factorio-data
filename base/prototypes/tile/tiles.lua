@@ -1912,6 +1912,7 @@ define_tiles
     transitions_between_transitions = water_shallow_transitions_between_transitions,
     -- allowed_neighbors = { "water-mud" },
     map_color={r=82, g=98, b=92},
+    scorch_mark_color={r=82, g=98, b=92},
     pollution_absorption_per_second = water_pollution_absorption,
 
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
@@ -2041,6 +2042,7 @@ define_tiles
     transitions_between_transitions = water_mud_transitions_between_transitions,
     -- allowed_neighbors = { "water-shallow" },
     map_color={r=65, g=89, b=90},
+    scorch_mark_color={r=65, g=89, b=90},
     pollution_absorption_per_second = water_pollution_absorption,
 
     trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
@@ -2070,6 +2072,7 @@ define_tiles
 
     walking_sound = grass_sounds,
     map_color={r=55, g=53, b=11},
+    scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
@@ -2100,6 +2103,7 @@ define_tiles
 
     walking_sound = grass_sounds,
     map_color={r=66, g=57, b=15},
+    scorch_mark_color = {r = 0.361, g = 0.251, b = 0.170, a = 1.000},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
@@ -2131,6 +2135,7 @@ define_tiles
 
     walking_sound = grass_sounds,
     map_color={r=65, g=52, b=28},
+    scorch_mark_color = {r = 0.353, g = 0.244, b = 0.155, a = 1.000},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
@@ -2161,6 +2166,7 @@ define_tiles
 
     walking_sound = grass_sounds,
     map_color={r=59, g=40, b=18},
+    scorch_mark_color = {r = 0.325, g = 0.242, b = 0.133, a = 1.000},
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
@@ -2192,6 +2198,7 @@ define_tiles
 
     walking_sound = dirt_sounds,
     map_color={r=94, g=66, b=37},
+    scorch_mark_color = {r = 0.357, g = 0.249, b = 0.153, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2222,6 +2229,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=141, g=104, b=60},
+    scorch_mark_color = {r = 0.541, g = 0.407, b = 0.248, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2252,6 +2260,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=136, g=96, b=59},
+    scorch_mark_color = {r = 0.522, g = 0.391, b = 0.237, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2282,6 +2291,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=133, g=92, b=53},
+    scorch_mark_color = {r = 0.486, g = 0.346, b = 0.210, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2312,6 +2322,7 @@ define_tiles
 
     walking_sound = dirt_sounds,
     map_color={r=103, g=72, b=43},
+    scorch_mark_color = {r = 0.420, g = 0.304, b = 0.191, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2342,6 +2353,7 @@ define_tiles
 
     walking_sound = dirt_sounds,
     map_color={r=91, g=63, b=38},
+    scorch_mark_color = {r = 0.412, g = 0.298, b = 0.197, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2372,6 +2384,7 @@ define_tiles
 
     walking_sound = dirt_sounds,
     map_color={r=80, g=55, b=31},
+    scorch_mark_color = {r = 0.435, g = 0.310, b = 0.188, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2402,6 +2415,7 @@ define_tiles
 
     walking_sound = dirt_sounds,
     map_color={r=80, g=54, b=28},
+    scorch_mark_color = {r = 0.380, g = 0.269, b = 0.161, a = 1.000},
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
@@ -2438,6 +2452,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=138, g=103, b=58},
+    scorch_mark_color = {r = 0.588, g = 0.451, b = 0.272, a = 1.000},
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier,
 
@@ -2469,6 +2484,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=128, g=93, b=52},
+    scorch_mark_color = {r = 0.600, g = 0.440, b = 0.252, a = 1.000},
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier,
 
@@ -2499,6 +2515,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=115, g=83, b=47 },
+    scorch_mark_color = {r = 0.620, g = 0.472, b = 0.279, a = 1.000},
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier,
 
@@ -2531,6 +2548,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=103, g=70, b=32},
+    scorch_mark_color = {r = 0.447, g = 0.309, b = 0.174, a = 1.000},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
@@ -2562,6 +2580,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=116, g=81, b=39},
+    scorch_mark_color = {r = 0.514, g = 0.371, b = 0.203, a = 1.000},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
@@ -2593,6 +2612,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=116, g=84, b=43},
+    scorch_mark_color = {r = 0.553, g = 0.403, b = 0.243, a = 1.000},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
@@ -2624,6 +2644,7 @@ define_tiles
 
     walking_sound = sand_sounds,
     map_color={r=128, g=93, b=52},
+    scorch_mark_color = {r = 0.604, g = 0.447, b = 0.263, a = 1.000},
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
@@ -2755,6 +2776,7 @@ define_tiles
 
     walking_sound = concrete_sounds,
     map_color={r=86, g=82, b=74},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = stone_path_vehicle_speed_modifier,
 
@@ -2780,6 +2802,7 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=49, g=49, b=49},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
 
     trigger_effect = tile_trigger_effects.lab_tile_dark_1_trigger_effect(),
@@ -2804,6 +2827,7 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=0, g=0, b=0},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
 
     trigger_effect = tile_trigger_effects.lab_tile_dark_2_trigger_effect(),
@@ -2828,6 +2852,7 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=1, g=1, b=1},
+    scorch_mark_color = {r = 1.000, g = 1.000, b = 1.000, a = 1.000},
     pollution_absorption_per_second = 0,
 
     trigger_effect = tile_trigger_effects.lab_tile_white_trigger_effect(),
@@ -2933,6 +2958,7 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=122, g=122, b=122},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
 
     trigger_effect = tile_trigger_effects.tutorial_grid_trigger_effect(),
@@ -3106,6 +3132,7 @@ define_tiles
 
     walking_sound = concrete_sounds,
     map_color={r=63, g=61, b=59},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
@@ -3220,6 +3247,7 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=176, g=142, b=39},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
@@ -3304,6 +3332,7 @@ define_tiles
     },
     walking_sound = concrete_sounds,
     map_color={r=176, g=142, b=39},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
@@ -3479,6 +3508,7 @@ define_tiles
     walking_sound = refined_concrete_sounds,
 
     map_color={r=49, g=48, b=45},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
@@ -3593,6 +3623,7 @@ define_tiles
     },
     walking_sound = refined_concrete_sounds,
     map_color={r=116, g=94, b=26},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
@@ -3676,6 +3707,7 @@ define_tiles
     },
     walking_sound = refined_concrete_sounds,
     map_color={r=116, g=94, b=26},
+    scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
@@ -3733,6 +3765,7 @@ define_tiles
 
     walking_sound = dirt_sounds,
     map_color={r=57, g=39, b=26},
+    scorch_mark_color = {r = 0.329, g = 0.242, b = 0.177, a = 1.000},
     pollution_absorption_per_second = 0
   },
 }
@@ -3792,6 +3825,10 @@ for k, color in pairs (colors) do
   new.layer = concrete.layer + (k * 3)
   new.map_color = color.player_color
   new.minable = nil
+  -- reference original transition tables so that they keep referencing global water_tile_type_names
+  new.transitions = concrete.transitions
+  new.transitions_between_transitions = concrete.transitions_between_transitions
+
   data:extend{new}
 end
 

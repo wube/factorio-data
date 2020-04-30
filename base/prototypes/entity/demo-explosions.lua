@@ -88,28 +88,6 @@ data:extend
     animations = explosion_animations.big_explosion(),
     light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
     sound = sounds.large_explosion(1.0),
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 20,
-            particle_name = "explosion-remnants-particle",
-            initial_height = 0.5,
-            speed_from_center = 0.08,
-            speed_from_center_deviation = 0.15,
-            initial_vertical_speed = 0.08,
-            initial_vertical_speed_deviation = 0.15,
-            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
-          }
-        }
-      }
-    }
   },
 
   {
@@ -565,7 +543,7 @@ data:extend
     subgroup = "storage-explosions",
     order = "a-b-a",
     height = 0,
-    animations = util.empty_sprite(),--explosion_animations.small_explosion(),
+    animations = util.empty_sprite(),
     light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
@@ -617,7 +595,7 @@ data:extend
     subgroup = "belt-explosions",
     order = "b-a-a",
     height = 0,
-    animations = util.empty_sprite (),--explosion_animations.small_explosion(),
+    animations = util.empty_sprite (),
     light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
@@ -1553,7 +1531,7 @@ data:extend
     subgroup = "energy-explosions",
     order = "g-a-a",
     height = 0,
-    animations = util.empty_sprite(),--explosion_animations.small_explosion(),
+    animations = util.empty_sprite(),
     light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
@@ -2431,7 +2409,7 @@ data:extend
     subgroup = "defensive-structure-explosions",
     order = "b-a-a",
     height = 0,
-    animations = util.empty_sprite(),--explosion_animations.small_explosion(),
+    animations = util.empty_sprite(),
     light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,

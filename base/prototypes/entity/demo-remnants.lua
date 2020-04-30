@@ -1364,8 +1364,8 @@ data:extend(
     tile_width = 1,
     tile_height = 1,
     selectable_in_game = false,
-    subgroup = "remnants",
-    order="d[remnants]-a[generic]-b[medium]",
+    subgroup = "extraction-machine-remnants",
+    order="a-d-b",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
@@ -1781,6 +1781,7 @@ data:extend(
     order="a-a-a",
     remove_on_entity_placement = false,
     remove_on_tile_placement = true,
+    use_tile_color_for_ground_patch_tint = false,
     ground_patch =
     {
       sheet =
@@ -1821,6 +1822,72 @@ data:extend(
           line_length = 4,
           shift = util.by_pixel(0, -2),
           variation_count = 4,
+          scale = 0.5,
+        }
+      }
+    }
+  },
+  {
+    type = "corpse",
+    name = "small-scorchmark-tintable",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    selection_box = {{-1, -1}, {1, 1}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 10, -- 10 minutes
+    final_render_layer = "ground-patch-higher2",
+    subgroup = "scorchmarks",
+    order="a-b-a",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = true,
+    use_tile_color_for_ground_patch_tint = true,
+    ground_patch =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/scorchmark/small-scorchmark-tintable.png",
+        width = 128,
+        height = 92,
+        line_length = 4,
+        shift = util.by_pixel(0, 2),
+        apply_runtime_tint = true,
+        variation_count = 4,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/scorchmark/hr-small-scorchmark-tintable.png",
+          width = 256,
+          height = 182,
+          line_length = 4,
+          shift = util.by_pixel(0, 2),
+          apply_runtime_tint = true,
+          variation_count = 4,
+          scale = 0.5,
+        }
+      }
+    },
+    ground_patch_higher =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/scorchmark/small-scorchmark-tintable-top.png",
+        width = 34,
+        height = 28,
+        line_length = 4,
+        variation_count = 4,
+        shift = util.by_pixel(0, -2),
+        apply_runtime_tint = true,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/scorchmark/hr-small-scorchmark-tintable-top.png",
+          width = 68,
+          height = 54,
+          line_length = 4,
+          shift = util.by_pixel(0, -2),
+          variation_count = 4,
+          apply_runtime_tint = true,
           scale = 0.5,
         }
       }

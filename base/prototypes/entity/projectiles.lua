@@ -109,7 +109,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "small-scorchmark",
+            entity_name = "small-scorchmark-tintable",
             check_buildability = true
           },
           {
@@ -198,7 +198,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "big-scorchmark",
+            entity_name = "big-scorchmark-tintable",
             check_buildability = true
           },
           {
@@ -293,7 +293,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "medium-scorchmark",
+            entity_name = "medium-scorchmark-tintable",
             check_buildability = true
           },
           {
@@ -441,7 +441,7 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "small-scorchmark",
+            entity_name = "small-scorchmark-tintable",
             check_buildability = true
           }
         }
@@ -548,7 +548,7 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "medium-scorchmark",
+            entity_name = "medium-scorchmark-tintable",
             check_buildability = true
           },
           {
@@ -611,7 +611,7 @@ data:extend(
         {
           {
             type = "create-entity",
-            entity_name = "small-scorchmark",
+            entity_name = "small-scorchmark-tintable",
             check_buildability = true
           }
         }
@@ -689,7 +689,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "medium-scorchmark",
+            entity_name = "medium-scorchmark-tintable",
             check_buildability = true
           },
           {
@@ -781,7 +781,7 @@ data:extend(
           },
           {
             type = "create-entity",
-            entity_name = "medium-scorchmark",
+            entity_name = "medium-scorchmark-tintable",
             check_buildability = true
           },
           {
@@ -830,7 +830,7 @@ data:extend(
             },
             {
               type = "create-entity",
-              entity_name = "small-scorchmark",
+              entity_name = "small-scorchmark-tintable",
               check_buildability = true
             },
           }
@@ -1249,7 +1249,7 @@ data:extend(
             },
             {
               type = "create-entity",
-              entity_name = "small-scorchmark",
+              entity_name = "small-scorchmark-tintable",
               check_buildability = true
             },
             {

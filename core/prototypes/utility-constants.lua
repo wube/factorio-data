@@ -184,7 +184,6 @@ data:extend(
     train_time_wait_condition_default = 60 * 30,
     train_inactivity_wait_condition_default = 60 * 5,
 
-    unit_group_collision_mask = {"player-layer", "train-layer"},
     unit_group_pathfind_resolution = 0,
 
     -- we render a bit more to compensate for electric poles, shadows, decoratives and tall entities
@@ -210,6 +209,8 @@ data:extend(
 
     missing_preview_sprite_location = "__core__/graphics/missing-preview.png",
     main_menu_background_image_location = "__core__/graphics/background-image.jpg",
+
+    default_scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 
     -- Should be based on the default day/night times, ie
     -- sun starts to set at 0.25

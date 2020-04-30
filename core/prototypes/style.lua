@@ -1094,6 +1094,14 @@ data:extend(
       }
     },
 
+    green_icon_button =
+    {
+      type = "button_style",
+      parent = "green_button",
+      padding = 2,
+      size = 28
+    },
+
     rounded_button =
     {
       type = "button_style",

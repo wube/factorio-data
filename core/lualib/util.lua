@@ -382,5 +382,62 @@ function util.empty_sprite()
   }
 end
 
+function util.remove_tile_references(data, array_of_tiles_to_remove)
+  -- Does not handle:
+  --   explicit tile filters in "selection-tool" items
+  --   ItemPrototype::place_as_tile
+  --   TilePrototype::next_direction
+  --   TilePrototype::transition_merges_with_tile
+  --   general tile transitions, only removes tile names from water_tile_type_names
+
+  if (type(array_of_tiles_to_remove) ~= "table") then
+    error("The second parameter of util.remove_tile_reference() is expected to be array of strings.")
+  end
+
+  local tiles_to_remove = {}
+  for i, n in pairs(array_of_tiles_to_remove) do
+    tiles_to_remove[n] = true
+  end
+
+  local remove_from_mapping = function(mapping)
+    if not mapping then
+      return
+    end
+
+    for _, item in pairs(mapping) do
+      if item.tiles then
+        for i, t in pairs(item.tiles) do
+          if t and tiles_to_remove[t] then
+            item.tiles[i] = nil
+          end
+        end
+      end
+    end
+  end
+
+  for k,e in pairs(data.raw["character"]) do
+    remove_from_mapping(e.footstep_particle_triggers)
+  end
+
+  if data.raw["fire"] then
+    for k, fire in pairs(data.raw["fire"]) do
+      if fire.burnt_patch_alpha_variations then
+        for i, v in pairs(fire.burnt_patch_alpha_variations) do
+          if v and v.tile and tiles_to_remove[v.tile] then
+            fire.burnt_patch_alpha_variations[i] = nil
+          end
+        end
+      end
+    end
+  end
+
+  if water_tile_type_names then
+    for i = #water_tile_type_names, 1, -1 do
+      if tiles_to_remove[water_tile_type_names[i]] then
+          table.remove(water_tile_type_names, i)
+      end
+    end
+  end
+end
 
 return util
