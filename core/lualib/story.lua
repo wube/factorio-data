@@ -247,7 +247,7 @@ function player_set_info(player, info)
     end
   else
     if not info_flow then
-      info_flow = gui.add{type = "flow", name = "goal_info_frame", direction = "vertical"}
+      info_flow = gui.add{type = "frame", name = "goal_info_frame", direction = "vertical", style = "goal_inner_frame"}
     end
     if not info.append then
       info_flow.clear()
@@ -256,16 +256,14 @@ function player_set_info(player, info)
       if info.custom_function then
         info.custom_function(info_flow)
       end
-      if info.text then
+      if info.text or info[1] then
         local label = info_flow.add
         {
           type = "label",
-          caption = info.text
+          caption = info.text or info,
+          style = "goal_label"
         }
         label.style.single_line = false
-        label.style.top_padding = 3
-        label.style.bottom_padding = 3
-        label.style.maximal_width = 384
       end
       if info.picture then
         local flow = info_flow.add{type = "flow"}

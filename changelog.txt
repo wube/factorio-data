@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.23
+Version: 0.18.24
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.23
+Date: 12. 05. 2020
+  Graphics:
+    - Added player footprints and footstep visual effects.
+    - Added car and tank dust and particle trail visual effects.
+  Changes:
+    - Construction robots throw cliff explosives from afar the same as players do, instead of dropping them at the cliff.
+    - Changed rail segment visualisation colors to be more different from rail signal colors (red/green).
+    - Clicking a GUI now brings it to the front. Most noticeable when using the map editor or debug GUIs where they overlap.
+  Bugfixes:
+    - Fixed that Fast splitters were missing a piece visually in East rotation top_patch (https://forums.factorio.com/84573)
+    - Fixed that inserters could insert modules for recipes into module slots in some rare cases. (https://forums.factorio.com/84224)
+    - Fixed that robots blowing up cliffs was different than manually blowing up cliffs. (https://forums.factorio.com/83568)
+    - Fixed limiting cargo wagon to 0 slots would break progress visualization for full cargo and empty cargo train conditions. (https://forums.factorio.com/84631)
+    - Fixed teleporting player between surfaces while the player was in a map view would not invalidate tile renderer cache. (https://forums.factorio.com/84633)
+    - Fixed that the "use different settings per save" setting didn't work for single player games. (https://forums.factorio.com/84301)
+    - Fixed crash due to use-after-delete when single unit builds a base in position that does not collide with the unit. (https://forums.factorio.com/84649)
+  Modding:
+    - Added the Prototypes GUI (ctrl + shift + E).
+    - Added the Prototype Explorer GUI (mouse over most anything + ctrl + shift + F).
+    - Added support to play different sounds for entity ghosts depending on the size of the entity in the ghost
+      through build_sound (for small), medium_build_sound and large_build_sound on the entity ghost prototype.
+    - Added support to play a sound when switching weapons defined through utility-sounds 'switch_gun'.
+    - Added support to play a sound when picking up items (F key) through utility-sounds 'picked_up_item'.
+    - Added optional 'turn_speed' to projectile prototypes.
+  Scripting:
+    - Added "include_fuel" field to LuaItemStack::create_blueprint.
+    - Changed LuaSurface::create_entity so it places resource entities to center of a tile as map generator would. This can be overridden by optional snap_to_tile_center parameter. (https://forums.factorio.com/83891)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.22
 Date: 30. 04. 2020

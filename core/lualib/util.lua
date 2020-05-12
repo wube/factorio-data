@@ -417,6 +417,12 @@ function util.remove_tile_references(data, array_of_tiles_to_remove)
 
   for k,e in pairs(data.raw["character"]) do
     remove_from_mapping(e.footstep_particle_triggers)
+    remove_from_mapping(e.synced_footstep_particle_triggers)
+    remove_from_mapping(e.footprint_particles)
+  end
+
+  for k,e in pairs(data.raw["car"]) do
+    remove_from_mapping(e.track_particle_triggers)
   end
 
   if data.raw["fire"] then

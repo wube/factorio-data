@@ -2717,6 +2717,77 @@ particle_animations.get_grass_particle_small_medium_pictures = function(options)
   }
 end
 
+particle_animations.get_vegetation_particle_character_pictures = function(options)
+  local options = options or {}
+  return
+    {
+    sheet =
+    {
+      filename = "__base__/graphics/particle/vegetation-particle/vegetation-particle-small-medium.png",
+      priority = "extra-high",
+      line_length = 12,
+      width = 10,
+      height = 14,
+      tint = options.tint,
+      frame_count = 12,
+      animation_speed = 0.5,
+      variation_count = 4,
+      shift = util.add_shift(util.by_pixel(2.5,-0.5), options.shift),
+       scale = 1.1,
+      hr_version =
+      {
+        filename = "__base__/graphics/particle/vegetation-particle/hr-vegetation-particle-small-medium.png",
+        priority = "extra-high",
+        line_length = 12,
+        width = 20,
+        height = 26,
+        tint = options.tint,
+        frame_count = 12,
+        animation_speed = 0.5,
+        variation_count = 4,
+        shift = util.add_shift(util.by_pixel(2.25,-1.25), options.shift),
+        scale = 0.7,
+      }
+    }
+  }
+end
+
+particle_animations.get_vegetation_particle_vehicle_pictures = function(options)
+  local options = options or {}
+  return
+    {
+    sheet =
+    {
+      filename = "__base__/graphics/particle/vegetation-particle/vegetation-particle-small-medium.png",
+      priority = "extra-high",
+      line_length = 12,
+      width = 10,
+      height = 14,
+      tint = options.tint,
+      frame_count = 12,
+      animation_speed = 0.5,
+      variation_count = 4,
+      shift = util.add_shift(util.by_pixel(2.5,-0.5), options.shift),
+      scale = 1.2,
+      hr_version =
+      {
+        filename = "__base__/graphics/particle/vegetation-particle/hr-vegetation-particle-small-medium.png",
+        priority = "extra-high",
+        line_length = 12,
+        width = 20,
+        height = 26,
+        tint = options.tint,
+        frame_count = 12,
+        animation_speed = 0.5,
+        variation_count = 4,
+        shift = util.add_shift(util.by_pixel(2.25,-1.25), options.shift),
+        scale = 0.8,
+      }
+    }
+  }
+end
+  
+
 particle_animations.get_metal_particle_small_pictures = function(options)
   local options = options or {}
   return
@@ -3226,7 +3297,27 @@ particle_animations.get_dust_particle = function(options)
     animation_speed = 1 / 2,
     scale = 0.5,
     variation_count = 1,
-    tint = options.tint,
+    tint = options.tint, 
+    affected_by_wind = true,
+    }
+  }
+end
+
+particle_animations.get_general_dust_particle = function(options)
+  local options = options or {}
+  return
+  {
+    sheet =
+    {
+    filename = "__base__/graphics/entity/smoke-fast/smoke-general.png",
+    priority = "high",
+    width = 50,
+    height = 50,
+    frame_count = 16,
+    animation_speed = 1 / 2,
+    scale = 0.5,
+    variation_count = 1,
+    tint = options.tint, 
     affected_by_wind = true,
     }
   }
@@ -3267,6 +3358,7 @@ particle_animations.get_artillery_shell_particle = function(options)
     }
   }
 end
+
 
 
 return particle_animations

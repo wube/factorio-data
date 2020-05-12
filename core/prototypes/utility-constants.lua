@@ -89,13 +89,13 @@ data:extend(
     medium_area_size = 6.5, -- less than this plays the 'medium' sound variants, larger and equal plays the 'big' sound variants.
     rail_segment_colors =
     {
-      {r = 1, g = 1},
-      {r = 1},
-      {g = 1, b = 1},
-      {b = 1},
-      {r = 1, g = 1, b = 1},
-      {},
-      {r = 0.7, g = 0.7, b = 0.7}
+      { r = 0   , g = 1    , b = 1   },
+      { r = 1   , g = 0    , b = 1   },
+      { r = 1   , g = 1    , b = 0   },
+      { r = 0.1 , g = 0.1  , b = 0.7 },
+      { r = 1   , g = 1    , b = 1   },
+      { r = 0.1 , g = 0.1  , b = 0.1 },
+      { r = 0.2 , g = 0.7  , b = 0.7 },
     },
     player_colors =
     {

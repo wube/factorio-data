@@ -264,32 +264,6 @@ data:extend(
         }
       }
     },
-    robot_action =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-entity",
-            entity_name = "ground-explosion"
-          },
-          {
-            type = "create-entity",
-            entity_name = "medium-scorchmark",
-            check_buildability = true
-          },
-          {
-            type = "destroy-cliffs",
-            radius = 1.5,
-            explosion = "explosion"
-          }
-        }
-      }
-    },
-
     subgroup = "terrain",
     order = "d[cliff-explosives]",
     stack_size = 20

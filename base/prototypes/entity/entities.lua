@@ -11,6 +11,7 @@ require ("prototypes.entity.combinator-pictures")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 local sounds = require("prototypes.entity.demo-sounds")
+local movement_triggers = require("prototypes.entity.demo-movement-triggers")
 
 local tank_shift_y = 6
 
@@ -1551,7 +1552,7 @@ data:extend(
         {
           name = "tank-smoke",
           deviation = {0.25, 0.25},
-          frequency = 50,
+          frequency = 30,
           position = {0, 1.5},
           starting_frame = 0,
           starting_frame_deviation = 60
@@ -1930,6 +1931,7 @@ data:extend(
     weight = 20000,
     inventory_size = 80,
     guns = { "tank-cannon", "tank-machine-gun", "tank-flamethrower" },
+    track_particle_triggers = movement_triggers.tank,
     water_reflection = car_reflection(1.2)
   },
   {

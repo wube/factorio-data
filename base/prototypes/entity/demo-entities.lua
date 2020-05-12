@@ -6,6 +6,7 @@ require ("prototypes.entity.demo-character-animations")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 local sounds = require("prototypes.entity.demo-sounds")
+local movement_triggers = require("prototypes.entity.demo-movement-triggers")
 
 if not data.is_demo then
   require ("prototypes.entity.assemblerpipes")
@@ -685,6 +686,38 @@ data:extend(
     }
   },
   {
+    type = "optimized-particle",
+    name = "character-footprint-particle",
+    render_layer = "decals",
+    render_layer_when_on_ground = "decals",
+    life_time = 600, --300
+    fade_away_duration = 125,
+    pictures =
+    {
+      sheet =
+      {
+        filename = "__base__/graphics/entity/character/footprints.png",
+        line_length = 2,
+        frame_count = 2,
+        width = 15,
+        height = 11,
+        shift = util.by_pixel(0.5, 0.5),
+        variation_count = 8,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/character/hr-footprints.png",
+          line_length = 2,
+          frame_count = 2,
+          width = 30,
+          height = 22,
+          shift = util.by_pixel(0.25, 0.25),
+          scale = 0.5,
+          variation_count = 8,
+        },
+      }
+    },
+  },
+  {
     type = "character",
     name = "character",
     icon = "__base__/graphics/icons/character.png",
@@ -975,35 +1008,31 @@ data:extend(
     mining_speed = 0.5,
     mining_with_tool_particles_animation_positions = {19},
     running_sound_animation_positions = {5, 16},
-    footstep_particle_triggers =
+    synced_footstep_particle_triggers = movement_triggers.character,
+    footprint_particles =
     {
       {
-        tiles = { "water-shallow" },
-
-        type = "create-particle",
-        repeat_count = 5,
-        particle_name = "shallow-water-particle",
-        initial_height = 0.2,
-        speed_from_center = 0.01,
-        speed_from_center_deviation = 0.05,
-        initial_vertical_speed = 0.02,
-        initial_vertical_speed_deviation = 0.05,
-        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+        tiles = 
+        { 
+          "dry-dirt",
+          "dirt-1", "dirt-2", "dirt-3", "dirt-4","dirt-5", "dirt-6", "dirt-7",
+          "sand-1", "sand-2", "sand-3",
+          "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3" 
+        },
+        particle_name = "character-footprint-particle",
       },
+      -- no particle by default so that both (synced_)footstep_particle_triggers are consistently not defined for tiles by default
       {
-        tiles = { "water-mud" },
-
-        type = "create-particle",
-        repeat_count = 5,
-        particle_name = "shallow-water-2-particle",
-        initial_height = 0.2,
-        speed_from_center = 0.01,
-        speed_from_center_deviation = 0.05,
-        initial_vertical_speed = 0.02,
-        initial_vertical_speed_deviation = 0.05,
-        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
-      },
+        tiles = {},
+        use_as_default = true,
+        particle_name = nil,
+      }
     },
+    right_footprint_frames = { 10, 21 },
+    left_footprint_frames = {5, 16}, --{ 5 },
+    right_footprint_offset = { 0.1, 0 },
+    left_footprint_offset = { -0.1, 0 },
+
     water_reflection =
     {
       pictures =
@@ -4157,6 +4186,9 @@ data:extend(
     type = "entity-ghost",
     name = "entity-ghost",
     flags = {"not-on-map"},
+    --build_sound = { filename = "__core__/sound/place-ghost-small.ogg" },
+    --medium_build_sound = { filename = "__core__/sound/place-ghost-medium.ogg" },
+    --large_build_sound = { filename = "__core__/sound/place-ghost-large.ogg" },
     minable = { mining_time = 0, results={}}
   },
 
@@ -4166,6 +4198,7 @@ data:extend(
     flags = {"not-on-map"},
     minable = { mining_time = 0, results={}},
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    --build_sound = { filename = "__core__/sound/place-ghost-small.ogg" },
     selection_priority = 45
   },
 
@@ -5960,6 +5993,7 @@ data:extend(
     weight = 700,
     guns = { "vehicle-machine-gun" },
     inventory_size = 80,
+    track_particle_triggers = movement_triggers.car,
     water_reflection = car_reflection(1)
   },
   {

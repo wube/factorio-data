@@ -90,7 +90,7 @@ data:extend
   trivial_smoke
   {
     name = "tank-smoke",
-    color = {r = 0.6, g = 0.6, b = 0.6, a = 0.6},
+    color = {r = 0.5, g = 0.5, b = 0.5, a = 0.5},
     duration = 100,
     spread_duration = 100,
     fade_away_duration = 100,
