@@ -493,6 +493,48 @@ data:extend(
       },
     })
   },
+  
+  {
+    type = "corpse",
+    name = "filter-inserter-remnants",
+    icon = "__base__/graphics/icons/filter-inserter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "inserter-remnants",
+    order = "a-e-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (4,
+    {
+      filename = "__base__/graphics/entity/filter-inserter/remnants/filter-inserter-remnants.png",
+      line_length = 1,
+      width = 68,
+      height = 48,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(4, -2),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/filter-inserter/remnants/hr-filter-inserter-remnants.png",
+        line_length = 1,
+        width = 134,
+        height = 94,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(3.5, -2),
+        scale = 0.5,
+      },
+    })
+  },
 
   {
     type = "corpse",
@@ -1989,7 +2031,843 @@ data:extend(
     },
     time_before_removed = 60 * 60 * 45,
     time_before_shading_off = 60 * 60 * 1
-  }
+  },
+
+  
+  {
+    type = "corpse",
+    name = "rail-chain-signal-remnants",
+    icon = "__base__/graphics/icons/rail-chain-signal.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "transport-remnants",
+    order = "a-e-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = make_rotated_animation_variations_from_sheet(1,
+    {
+      filename = "__base__/graphics/entity/rail-chain-signal/remnants/rail-chain-signal-remnants.png",
+      line_length = 1,
+      width = 50,
+      height = 48,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(-2, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rail-chain-signal/remnants/hr-rail-chain-signal-remnants.png",
+        line_length = 1,
+        width = 98,
+        height = 94,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(-2, -0.5),
+        scale = 0.5,
+      }
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "steel-chest-remnants",
+    icon = "__base__/graphics/icons/steel-chest.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "storage-remnants",
+    order = "a-c-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/steel-chest/remnants/steel-chest-remnants.png",
+      line_length = 1,
+      width = 76,
+      height = 44,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(15, -1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/steel-chest/remnants/hr-steel-chest-remnants.png",
+        line_length = 1,
+        width = 150,
+        height = 88,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(15, -1),
+        scale = 0.5,
+      }
+    }
+  },
+
+  
+  {
+    type = "corpse",
+    name = "rail-signal-remnants",
+    icon = "__base__/graphics/icons/rail-signal.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "transport-remnants",
+    order = "a-d-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation = make_rotated_animation_variations_from_sheet(1,
+    {
+      filename = "__base__/graphics/entity/rail-signal/remnants/rail-signal-remnants.png",
+      line_length = 1,
+      width = 46,
+      height = 44,
+      frame_count = 1,
+      direction_count = 1,
+      shift = util.by_pixel(5, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rail-signal/remnants/hr-rail-signal-remnants.png",
+        line_length = 1,
+        width = 90,
+        height = 88,
+        frame_count = 1,
+        direction_count = 1,
+        shift = util.by_pixel(5, 0),
+        scale = 0.5,
+      }
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "fast-transport-belt-remnants",
+    icon = "__base__/graphics/icons/fast-transport-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "belt-remnants",
+    order = "a-b-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =  make_rotated_animation_variations_from_sheet (2,
+    {
+      filename = "__base__/graphics/entity/fast-transport-belt/remnants/fast-transport-belt-remnants.png",
+      line_length = 1,
+      width = 54,
+      height = 52,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 4,
+      shift = util.by_pixel(1, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/fast-transport-belt/remnants/hr-fast-transport-belt-remnants.png",
+        line_length = 1,
+        width = 106,
+        height = 102,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(1, -0.5),
+        scale = 0.5,
+      },
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "fast-splitter-remnants",
+    icon = "__base__/graphics/icons/fast-splitter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "belt-remnants",
+    order = "a-h-a",
+    selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
+    tile_width = 2,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/fast-splitter/remnants/fast-splitter-remnants.png",
+      line_length = 1,
+      width = 96,
+      height = 96,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 4,
+      shift = util.by_pixel(4, 1.5),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/remnants/hr-fast-splitter-remnants.png",
+        line_length = 1,
+        width = 190,
+        height = 190,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(3.5, 1.5),
+        scale = 0.5,
+      },
+    }
+  },
+
+  {
+    type = "corpse",
+    name = "fast-underground-belt-remnants",
+    icon = "__base__/graphics/icons/fast-underground-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "building-direction-8-way"},
+    subgroup = "belt-remnants",
+    order = "a-e-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/fast-underground-belt/remnants/fast-underground-belt-remnants.png",
+      line_length = 1,
+      width = 78,
+      height = 72,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 8,
+      shift = util.by_pixel(10, 3),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/fast-underground-belt/remnants/hr-fast-underground-belt-remnants.png",
+        line_length = 1,
+        width = 156,
+        height = 144,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 8,
+        shift = util.by_pixel(10.5, 3),
+        scale = 0.5,
+      },
+    }
+  },
+  
+  {
+    type = "corpse",
+    name = "laser-turret-remnants",
+    icon = "__base__/graphics/icons/laser-turret.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "defensive-structure-remnants",
+    order = "a-d-a",
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/laser-turret/remnants/laser-turret-remnants.png",
+          line_length = 1,
+          width = 100,
+          height = 98,
+          frame_count = 1,
+          variation_count = 1,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = util.by_pixel(3, -2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/laser-turret/remnants/hr-laser-turret-remnants.png",
+            line_length = 1,
+            width = 198,
+            height = 194,
+            frame_count = 1,
+            variation_count = 1,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(2.5, -2),
+            scale = 0.5,
+          }
+        },
+        {
+          priority = "low",
+          filename = "__base__/graphics/entity/laser-turret/remnants/mask/laser-turret-remnants-mask.png",
+          width = 58,
+          height = 48,
+          frame_count = 1,
+          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          apply_runtime_tint = true,
+          direction_count = 1,
+          shift = util.by_pixel(4, -2),
+          hr_version=
+          {
+            priority = "low",
+            filename = "__base__/graphics/entity/laser-turret/remnants/mask/hr-laser-turret-remnants-mask.png",
+            width = 114,
+            height = 94,
+            frame_count = 1,
+            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+            apply_runtime_tint = true,
+            direction_count = 1,
+            shift = util.by_pixel(4, -2.5),
+            scale = 0.5,
+          }
+        }
+      }
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "constant-combinator-remnants",
+    icon = "__base__/graphics/icons/constant-combinator.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "circuit-network-remnants",
+    order = "a-d-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (1,
+    {
+      filename = "__base__/graphics/entity/combinator/remnants/constant/constant-combinator-remnants.png",
+      line_length = 1,
+      width = 60,
+      height = 56,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 4,
+      shift = util.by_pixel(0, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/combinator/remnants/constant/hr-constant-combinator-remnants.png",
+        line_length = 1,
+        width = 118,
+        height = 112,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(0, 0),
+        scale = 0.5,
+      },
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "arithmetic-combinator-remnants",
+    icon = "__base__/graphics/icons/arithmetic-combinator.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "circuit-network-remnants",
+    order = "a-b-a",
+    selection_box = {{-0.5, -1}, {0.5, 1}},
+    tile_width = 1,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/combinator/remnants/arithmetic/arithmetic-combinator-remnants.png",
+      line_length = 1,
+      width = 78,
+      height = 78,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 4,
+      shift = util.by_pixel(0, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/combinator/remnants/arithmetic/hr-arithmetic-combinator-remnants.png",
+        line_length = 1,
+        width = 156,
+        height = 156,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(0, 0),
+        scale = 0.5,
+      },
+    }
+  },
+
+  {
+    type = "corpse",
+    name = "decider-combinator-remnants",
+    icon = "__base__/graphics/icons/decider-combinator.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "circuit-network-remnants",
+    order = "a-c-a",
+    selection_box = {{-0.5, -1}, {0.5, 1}},
+    tile_width = 1,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/combinator/remnants/decider/decider-combinator-remnants.png",
+      line_length = 1,
+      width = 78,
+      height = 78,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 4,
+      shift = util.by_pixel(0, -1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/combinator/remnants/decider/hr-decider-combinator-remnants.png",
+        line_length = 1,
+        width = 156,
+        height = 156,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 4,
+        shift = util.by_pixel(0, -0.5),
+        scale = 0.5,
+      },
+    }
+  },
+  
+  {
+    type = "corpse",
+    name = "programmable-speaker-remnants",
+    icon = "__base__/graphics/icons/programmable-speaker.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "circuit-network-remnants",
+    order = "a-e-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation_overlay_final_render_layer = "object",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet(3,
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/programmable-speaker/remnants/programmable-speaker-base-remnants.png",
+          line_length = 1,
+          width = 86,
+          height = 60,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(12, 0),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/programmable-speaker/remnants/hr-programmable-speaker-base-remnants.png",
+            line_length = 1,
+            width = 170,
+            height = 120,
+            frame_count = 1,
+            direction_count = 1,
+            shift = util.by_pixel(12, 0),
+            scale = 0.5,
+          }
+        }
+      },
+    }),  
+    animation_overlay = make_rotated_animation_variations_from_sheet (3,
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/programmable-speaker/remnants/programmable-speaker-top-remnants.png",
+          line_length = 1,
+          width = 38,
+          height = 46,
+          frame_count = 1,
+          direction_count = 1,
+          shift = util.by_pixel(1, -18),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/programmable-speaker/remnants/hr-programmable-speaker-top-remnants.png",
+            line_length = 1,
+            width = 74,
+            height = 90,
+            frame_count = 1,
+            direction_count = 1,
+            shift = util.by_pixel(0.5, -18),
+            scale = 0.5,
+          }
+        },
+      }
+    })
+  }, 
+  
+  {
+    type = "corpse",
+    name = "train-stop-remnants",
+    icon = "__base__/graphics/icons/train-stop.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "transport-remnants",
+    order = "a-c-a",
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    animation_overlay_final_render_layer = "object",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/train-stop/remnants/train-stop-base-remnants.png",
+          line_length = 1,
+          width = 244,
+          height = 228,
+          frame_count = 1,
+          direction_count = 4,
+          shift = util.by_pixel(5, 14),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/remnants/hr-train-stop-base-remnants.png",
+            line_length = 1,
+            width = 486,
+            height = 454,
+            frame_count = 1,
+            shift = util.by_pixel(4.5, 13.5),
+            direction_count = 4,
+            scale = 0.5,
+          }
+        },
+        {
+          priority = "low",
+          filename = "__base__/graphics/entity/train-stop/remnants/mask/train-stop-base-remnants-mask.png",
+          width = 142,
+          height = 108,
+          frame_count = 1,
+          apply_runtime_tint = true,
+          direction_count = 4,
+          shift = util.by_pixel(-1, -1),
+          hr_version=
+          {
+            priority = "low",
+            filename = "__base__/graphics/entity/train-stop/remnants/mask/hr-train-stop-base-remnants-mask.png",
+            width = 284,
+            height = 214,
+            frame_count = 1,
+            apply_runtime_tint = true,
+            direction_count = 4,
+            shift = util.by_pixel(-1, 0.5),
+            scale = 0.5,
+          }
+        }
+      },
+    },
+
+    animation_overlay =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/train-stop/remnants/train-stop-top-remnants.png",
+          line_length = 1,
+          width = 68,
+          height = 128,
+          frame_count = 1,
+          direction_count = 4,
+          shift = util.by_pixel(1, -38),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/remnants/hr-train-stop-top-remnants.png",
+            line_length = 1,
+            width = 136,
+            height = 254,
+            frame_count = 1,
+            shift = util.by_pixel(1.5, -38),
+            direction_count = 4,
+            scale = 0.5,
+          }
+        },
+      }
+    }
+  },
+
+  {
+    type = "corpse",
+    name = "solar-panel-remnants",
+    icon = "__base__/graphics/icons/solar-panel.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "energy-remnants",
+    order = "a-c-a",
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (2,
+    {
+      filename = "__base__/graphics/entity/solar-panel/remnants/solar-panel-remnants.png",
+      line_length = 1,
+      width = 146,
+      height = 142,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(4, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/solar-panel/remnants/hr-solar-panel-remnants.png",
+        line_length = 1,
+        width = 290,
+        height = 282,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(3.5, 0),
+        scale = 0.5,
+      },
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "locomotive-remnants",
+    icon = "__base__/graphics/icons/locomotive.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "transport-remnants",
+    order = "a-f-a",
+    selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
+    tile_width = 2,
+    tile_height = 6,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/diesel-locomotive/remnants/diesel-locomotive-base-remnants.png",
+          line_length = 1,
+          width = 230,
+          height = 218,
+          frame_count = 1,
+          direction_count = 8,
+          shift = util.by_pixel(4, 0),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/diesel-locomotive/remnants/hr-diesel-locomotive-base-remnants.png",
+            line_length = 1,
+            width = 460,
+            height = 436,
+            frame_count = 1,
+            direction_count = 8,
+            shift = util.by_pixel(4, 0.5),
+            scale = 0.5,
+          }
+        },
+        {
+          priority = "low",
+          filename = "__base__/graphics/entity/diesel-locomotive/remnants/mask/diesel-locomotive-remnants-mask.png",
+          width = 196,
+          height = 146,
+          frame_count = 1,
+          --tint = { r = 0.91, g = 0.06  , b = 0.0, a = 0.35 },
+          apply_runtime_tint = true,
+          direction_count = 8,
+          shift = util.by_pixel(0, 2),
+          hr_version=
+          {
+            priority = "low",
+            filename = "__base__/graphics/entity/diesel-locomotive/remnants/mask/hr-diesel-locomotive-remnants-mask.png",
+            width = 390,
+            height = 292,
+            frame_count = 1,
+            --tint = { r = 0.91, g = 0.06  , b = 0.00, a = 0.35 },
+            apply_runtime_tint = true,
+            direction_count = 8,
+            shift = util.by_pixel(0, 2),
+            scale = 0.5,
+          }
+        }
+      }
+    }
+  },
+
+  {
+    type = "corpse",
+    name = "cargo-wagon-remnants",
+    icon = "__base__/graphics/icons/cargo-wagon.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    subgroup = "transport-remnants",
+    order = "a-g-a",
+    selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
+    tile_width = 2,
+    tile_height = 6,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/cargo-wagon/remnants/cargo-wagon-remnants.png",
+      line_length = 1,
+      width = 248,
+      height = 242,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 8,
+      shift = util.by_pixel(2, 6),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/cargo-wagon/remnants/hr-cargo-wagon-remnants.png",
+        line_length = 1,
+        width = 494,
+        height = 484,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 8,
+        shift = util.by_pixel(1.5, 6),
+        scale = 0.5,
+      },
+    }
+  },
+  
+  {
+    type = "corpse",
+    name = "accumulator-remnants",
+    icon = "__base__/graphics/icons/accumulator.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "energy-remnants",
+    order = "a-d-a",
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (1,
+    {
+      filename = "__base__/graphics/entity/accumulator/remnants/accumulator-remnants.png",
+      line_length = 1,
+      width = 86,
+      height = 74,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(2, 4),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/accumulator/remnants/hr-accumulator-remnants.png",
+        line_length = 1,
+        width = 172,
+        height = 146,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(2.5, 3.5),
+        scale = 0.5,
+      },
+    })
+  },
+  
+  {
+    type = "corpse",
+    name = "defender-remnants",
+    icon = "__base__/graphics/icons/defender.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    subgroup = "remnants",
+    order="d[remnants]-a[generic]-a[small]",
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (3,
+    {
+      filename = "__base__/graphics/entity/defender-robot/remnants/defender-robot-remnants.png",
+      line_length = 1,
+      width = 50,
+      height = 48,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(1, 1),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/defender-robot/remnants/hr-defender-robot-remnants.png",
+        line_length = 1,
+        width = 98,
+        height = 94,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(0.5, 0.5),
+        scale = 0.5,
+      },
+    })
+  },
+
 }
 )
 

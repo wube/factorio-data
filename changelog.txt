@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.25
+Version: 0.18.26
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.25
+Date: 19. 05. 2020
+  Features:
+    - Added new tutorial campaign levels 04 and 05. (https://www.factorio.com/blog/post/fff-347)
+  Changes:
+    - Added a search bar to the mod settings GUI.
+  Bugfixes:
+    - Fixed a crash when building entity ghosts that immediately get invalidated through script.
+    - Fixed that the choose-elem-button elem_type "signal" didn't show special signals. (https://forums.factorio.com/84877)
+    - Fixed that furnaces required module slots to be effected by beacons. (https://forums.factorio.com/84337)
+    - Fixed that some select-a-thing GUIs didn't have search bars. (https://forums.factorio.com/84907)
+    - Fixed that LuaEntity::revive({raise_revive=false}) would still raise the revive event.
+    - Fixed a crash when trying to iterate game.forces with the maximum number of forces created. (https://forums.factorio.com/85053)
+    - Fixed a desync related to fast-replacing modded beacons. (https://forums.factorio.com/85037)
+    - Fixed performance issue with initializing huge Lua arrays, that could cause loading of some modded saves take forever. (https://forums.factorio.com/84794)
+  Modding:
+    - Added item prototype flag "draw-logistic-overlay".
+    - Added support to play a sound when a robot deconstructs something through utility-constants "deconstruct_robot".
+  Scripting:
+    - Added on_force_reset event called when LuaForce::reset() is run.
+    - Added remove_colliding_entities and remove_colliding_decoratives parameters to LuaSurface::set_tiles().
+    - Added LuaSurface::get_script_area, edit_script_area, add_script_area, remove_script_area,
+      get_script_position, edit_script_position, add_script_position, remove_script_position.
+    - Added 'elem_filters' onto choose-elem-button LuaGuiElements to control what options appear in the picker GUI.
+    - Added 'crafting-category' filter to EntityPrototypeFilters.
+    - Added 'has-ingredient-fluid', 'has-ingredient-item', 'has-product-fluid', 'has-product-item' filters to RecipePrototypeFilters which can accept a nested set of FluidPrototypeFilters or ItemPrototypeFilters.
+    - Added 'place-result', 'burnt-result', 'place-as-tile', 'placed-as-equipment-result' filters to EntityPrototypeFilters which can each accept a nested set filters.
+    - Added 'name' filter to EntityPrototypeFilters, FluidPrototypeFilters, and ItemPrototypeFilters which accepts either a single name or a list of names to accept, similar to LuaSurface::find_entities_filtered.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.24
 Date: 12. 05. 2020

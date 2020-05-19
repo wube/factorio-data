@@ -12,6 +12,6 @@ data:extend(
       {"iron-plate", 20}
     },
     result = "gun-turret"
-  }
+  },
 }
 )

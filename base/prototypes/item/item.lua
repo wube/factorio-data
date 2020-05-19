@@ -2,26 +2,6 @@ data:extend(
 {
   {
     type = "item",
-    name = "steel-chest",
-    icon = "__base__/graphics/icons/steel-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "storage",
-    order = "a[items]-c[steel-chest]",
-    place_result = "steel-chest",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "fast-transport-belt",
-    icon = "__base__/graphics/icons/fast-transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "belt",
-    order = "a[transport-belt]-b[fast-transport-belt]",
-    place_result = "fast-transport-belt",
-    stack_size = 100
-  },
-  {
-    type = "item",
     name = "express-transport-belt",
     icon = "__base__/graphics/icons/express-transport-belt.png",
     icon_size = 64, icon_mipmaps = 4,
@@ -29,16 +9,6 @@ data:extend(
     order = "a[transport-belt]-c[express-transport-belt]",
     place_result = "express-transport-belt",
     stack_size = 100
-  },
-  {
-    type = "item",
-    name = "filter-inserter",
-    icon = "__base__/graphics/icons/filter-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "inserter",
-    order = "e[filter-inserter]",
-    place_result = "filter-inserter",
-    stack_size = 50
   },
   {
     type = "item",
@@ -71,36 +41,6 @@ data:extend(
     stack_size = 50
   },
   {
-    type = "item",
-    name = "solar-panel",
-    icon = "__base__/graphics/icons/solar-panel.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "energy",
-    order = "d[solar-panel]-a[solar-panel]",
-    place_result = "solar-panel",
-    stack_size = 50
-  },
-  {
-    type = "item-with-entity-data",
-    name = "locomotive",
-    icon = "__base__/graphics/icons/locomotive.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
-    order = "a[train-system]-f[locomotive]",
-    place_result = "locomotive",
-    stack_size = 5
-  },
-  {
-    type = "item-with-entity-data",
-    name = "cargo-wagon",
-    icon = "__base__/graphics/icons/cargo-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
-    order = "a[train-system]-g[cargo-wagon]",
-    place_result = "cargo-wagon",
-    stack_size = 5
-  },
-  {
     type = "item-with-entity-data",
     name = "fluid-wagon",
     icon = "__base__/graphics/icons/fluid-wagon.png",
@@ -119,19 +59,6 @@ data:extend(
     order = "a[train-system]-i[artillery-wagon]",
     place_result = "artillery-wagon",
     stack_size = 5
-  },
-  {
-    type = "rail-planner",
-    name = "rail",
-    icon = "__base__/graphics/icons/rail.png",
-    icon_size = 64, icon_mipmaps = 4,
-    localised_name = {"item-name.rail"},
-    subgroup = "transport",
-    order = "a[train-system]-a[rail]",
-    place_result = "straight-rail",
-    stack_size = 100,
-    straight_rail = "straight-rail",
-    curved_rail = "curved-rail"
   },
   {
     type = "item",
@@ -220,62 +147,12 @@ data:extend(
   },
   {
     type = "item",
-    name = "train-stop",
-    icon = "__base__/graphics/icons/train-stop.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
-    order = "a[train-system]-c[train-stop]",
-    place_result = "train-stop",
-    stack_size = 10
-  },
-  {
-    type = "item",
-    name = "rail-signal",
-    icon = "__base__/graphics/icons/rail-signal.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
-    order = "a[train-system]-d[rail-signal]",
-    place_result = "rail-signal",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "rail-chain-signal",
-    icon = "__base__/graphics/icons/rail-chain-signal.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
-    order = "a[train-system]-e[rail-signal-chain]",
-    place_result = "rail-chain-signal",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "fast-underground-belt",
-    icon = "__base__/graphics/icons/fast-underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "belt",
-    order = "b[underground-belt]-b[fast-underground-belt]",
-    place_result = "fast-underground-belt",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "express-underground-belt",
     icon = "__base__/graphics/icons/express-underground-belt.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "belt",
     order = "b[underground-belt]-c[express-underground-belt]",
     place_result = "express-underground-belt",
-    stack_size = 50
-  },
-  {
-    type = "item",
-    name = "fast-splitter",
-    icon = "__base__/graphics/icons/fast-splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "belt",
-    order = "c[splitter]-b[fast-splitter]",
-    place_result = "fast-splitter",
     stack_size = 50
   },
   {
@@ -451,16 +328,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "accumulator",
-    icon = "__base__/graphics/icons/accumulator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "energy",
-    order = "e[accumulator]-a[accumulator]",
-    place_result = "accumulator",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "beacon",
     icon = "__base__/graphics/icons/beacon.png",
     icon_size = 64, icon_mipmaps = 4,
@@ -628,56 +495,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "arithmetic-combinator",
-    icon = "__base__/graphics/icons/arithmetic-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "circuit-network",
-    place_result="arithmetic-combinator",
-    order = "c[combinators]-a[arithmetic-combinator]",
-    stack_size= 50
-  },
-  {
-    type = "item",
-    name = "decider-combinator",
-    icon = "__base__/graphics/icons/decider-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "circuit-network",
-    place_result="decider-combinator",
-    order = "c[combinators]-b[decider-combinator]",
-    stack_size= 50
-  },
-  {
-    type = "item",
-    name = "constant-combinator",
-    icon = "__base__/graphics/icons/constant-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "circuit-network",
-    place_result="constant-combinator",
-    order = "c[combinators]-c[constant-combinator]",
-    stack_size= 50
-  },
-  {
-    type = "item",
-    name = "power-switch",
-    icon = "__base__/graphics/icons/power-switch.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "circuit-network",
-    place_result="power-switch",
-    order = "d[other]-a[power-switch]",
-    stack_size= 50
-  },
-  {
-    type = "item",
-    name = "programmable-speaker",
-    icon = "__base__/graphics/icons/programmable-speaker.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "circuit-network",
-    order = "d[other]-b[programmable-speaker]",
-    place_result = "programmable-speaker",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "low-density-structure",
     icon = "__base__/graphics/icons/low-density-structure.png",
     icon_size = 64, icon_mipmaps = 4,
@@ -729,81 +546,6 @@ data:extend(
     rocket_launch_product = {"space-science-pack", 1000}
   },
   {
-    type = "item",
-    name = "concrete",
-    icon = "__base__/graphics/icons/concrete.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "terrain",
-    order = "b[concrete]-a[plain]",
-    stack_size = 100,
-    place_as_tile =
-    {
-      result = "concrete",
-      condition_size = 1,
-      condition = { "water-tile" }
-    }
-  },
-  {
-    type = "item",
-    name = "refined-concrete",
-    icon = "__base__/graphics/icons/refined-concrete.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "terrain",
-    order = "b[concrete]-c[refined]",
-    stack_size = 100,
-    place_as_tile =
-    {
-      result = "refined-concrete",
-      condition_size = 1,
-      condition = { "water-tile" }
-    }
-  },
-  {
-    type = "item",
-    name = "hazard-concrete",
-    icon = "__base__/graphics/icons/hazard-concrete.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "terrain",
-    order = "b[concrete]-b[hazard]",
-    stack_size = 100,
-    place_as_tile =
-    {
-      result = "hazard-concrete-left",
-      condition_size = 1,
-      condition = { "water-tile" }
-    }
-  },
-  {
-    type = "item",
-    name = "refined-hazard-concrete",
-    icon = "__base__/graphics/icons/refined-hazard-concrete.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "terrain",
-    order = "b[concrete]-d[refined-hazard]",
-    stack_size = 100,
-    place_as_tile =
-    {
-      result = "refined-hazard-concrete-left",
-      condition_size = 1,
-      condition = { "water-tile" }
-    }
-  },
-  {
-    type = "item",
-    name = "landfill",
-    icon = "__base__/graphics/icons/landfill.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "terrain",
-    order = "c[landfill]-a[dirt]",
-    stack_size = 100,
-    place_as_tile =
-    {
-      result = "landfill",
-      condition_size = 1,
-      condition = { "ground-tile" }
-    }
-  },
-  {
     -- This allows loading the selection-tool type item when mods are removed
     type = "selection-tool",
     name = "selection-tool",
@@ -852,23 +594,6 @@ data:extend(
     order = "b[heat-interface]",
     place_result = "heat-interface",
     stack_size = 20
-  },
-  {
-    type = "item",
-    name = "uranium-ore",
-    icon = "__base__/graphics/icons/uranium-ore.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
-    pictures =
-    {
-      { size = 64, filename = "__base__/graphics/icons/uranium-ore.png",   scale = 0.25, mipmap_count = 4 },
-      { size = 64, filename = "__base__/graphics/icons/uranium-ore-1.png", scale = 0.25, mipmap_count = 4 },
-      { size = 64, filename = "__base__/graphics/icons/uranium-ore-2.png", scale = 0.25, mipmap_count = 4 },
-      { size = 64, filename = "__base__/graphics/icons/uranium-ore-3.png", scale = 0.25, mipmap_count = 4 }
-    },
-    subgroup = "raw-resource",
-    order = "g[uranium-ore]",
-    stack_size = 50
   },
   {
     type = "item",

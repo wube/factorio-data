@@ -789,17 +789,14 @@ data:extend(
     },
     goal_label =
     {
-       type = "label_style",
-       font = "default",
-       font_color = {1,1,1},
-       rich_text_setting = "enabled",
-       single_line = false,
-       left_padding = 8,
-       right_padding = 8,
-       top_padding = 4,
-       bottom_padding = 0,
-       width = 364,
-       horizontal_align = "left"
+      type = "label_style",
+      font = "default",
+      font_color = {1,1,1},
+      rich_text_setting = "enabled",
+      single_line = false,
+      bottom_padding = 0,
+      width = 364,
+      horizontal_align = "left"
     },
     electric_usage_label =
     {
@@ -6404,17 +6401,9 @@ data:extend(
     {
       type = "frame_style",
       parent = "frame",
-      padding = 0,
+      bottom_padding = 8,
       use_header_filler = false,
       horizontally_stretchable = "on",
-
-      top_padding = 0,
-      left_padding = 8,
-      right_padding = 8,
-      bottom_padding = 4,
-
-      right_margin = 12,
-      bottom_margin = 12,
     },
     goal_inner_frame =
     {
@@ -6436,10 +6425,7 @@ data:extend(
         },
         shadow = default_inner_shadow
       },
-
-      top_margin = 4,
-      bottom_margin = 4,
-      padding = 0,
+      horizontally_stretchable = "on",
     },
     image_frame =
     {

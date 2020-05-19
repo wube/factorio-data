@@ -112,7 +112,7 @@ belt_connector_template =
     { rg = util.by_pixel(9, 5), b = util.by_pixel(-9, -11) },
     { rg = util.by_pixel(10, 4.5), b = util.by_pixel(-10, -20.5) },
     { rg = util.by_pixel(10.5, 4.5), b = util.by_pixel(-9.5, -13.5) },
-    { rg = util.by_pixel(1.5, 5.5), b = util.by_pixel(-9.5, -14) }
+    { rg = util.by_pixel(0.0, 4.0), b = util.by_pixel(-9.5, -14) }
   }
 }
 

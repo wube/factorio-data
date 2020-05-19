@@ -871,63 +871,6 @@ data:extend(
   },
   {
     type = "projectile",
-    name = "defender-capsule",
-    flags = {"not-on-map"},
-    acceleration = 0.005,
-    action =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-entity",
-            show_in_tooltip = true,
-            entity_name = "defender"
-          }
-        }
-      }
-    },
-    light = {intensity = 0.5, size = 4},
-    enable_drawing_with_mask = true,
-    animation =
-    {
-      layers =
-      {
-        {
-          filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
-          flags = { "no-crop" },
-          frame_count = 1,
-          width = 28,
-          height = 20,
-          priority = "high"
-        },
-        {
-          filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-mask.png",
-          flags = { "no-crop" },
-          frame_count = 1,
-          width = 28,
-          height = 20,
-          priority = "high",
-          apply_runtime_tint = true
-        }
-      }
-    },
-    shadow =
-    {
-      filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-shadow.png",
-      flags = { "no-crop" },
-      frame_count = 1,
-      width = 26,
-      height = 20,
-      priority = "high"
-    },
-    smoke = capsule_smoke
-  },
-  {
-    type = "projectile",
     name = "distractor-capsule",
     flags = {"not-on-map"},
     acceleration = 0.005,

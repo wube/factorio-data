@@ -110,42 +110,6 @@ data:extend(
   },
   {
     type = "capsule",
-    name = "defender-capsule",
-    icon = "__base__/graphics/icons/defender.png",
-    icon_size = 64, icon_mipmaps = 4,
-    capsule_action =
-    {
-      type = "throw",
-      attack_parameters =
-      {
-        type = "projectile",
-        ammo_category = "capsule",
-        cooldown = 15,
-        projectile_creation_distance = 0.6,
-        range = 20,
-        ammo_type =
-        {
-          category = "capsule",
-          target_type = "position",
-          action =
-          {
-            type = "direct",
-            action_delivery =
-            {
-              type = "projectile",
-              projectile = "defender-capsule",
-              starting_speed = 0.3
-            }
-          }
-        }
-      }
-    },
-   subgroup = "capsule",
-    order = "d[defender-capsule]",
-    stack_size = 100
-  },
-  {
-    type = "capsule",
     name = "distractor-capsule",
     icon = "__base__/graphics/icons/distractor.png",
     icon_size = 64, icon_mipmaps = 4,

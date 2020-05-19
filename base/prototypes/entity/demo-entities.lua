@@ -3,6 +3,7 @@ require ("prototypes.entity.demo-pipecovers")
 require ("prototypes.entity.demo-transport-belt-pictures")
 require ("circuit-connector-sprites")
 require ("prototypes.entity.demo-character-animations")
+require ("prototypes.entity.demo-rail-pictures")
 
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 local sounds = require("prototypes.entity.demo-sounds")
@@ -11,6 +12,352 @@ local movement_triggers = require("prototypes.entity.demo-movement-triggers")
 if not data.is_demo then
   require ("prototypes.entity.assemblerpipes")
 end
+
+rail_pictures = function()
+  return rail_pictures_internal
+  {
+    {"metals", "metals", mipmap = true},
+    {"backplates", "backplates", mipmap = true},
+    {"ties", "ties", variations = 3},
+    {"stone_path", "stone-path", variations = 3},
+    {"stone_path_background", "stone-path-background", variations = 3},
+    {"segment_visualisation_middle", "segment-visualisation-middle"},
+    {"segment_visualisation_ending_front", "segment-visualisation-ending-1"},
+    {"segment_visualisation_ending_back", "segment-visualisation-ending-2"},
+    {"segment_visualisation_continuing_front", "segment-visualisation-continuing-1"},
+    {"segment_visualisation_continuing_back", "segment-visualisation-continuing-2"}
+  }
+end
+
+standard_train_wheels =
+{
+  priority = "very-low",
+  width = 115,
+  height = 115,
+  direction_count = 256,
+  filenames =
+  {
+    "__base__/graphics/entity/diesel-locomotive/train-wheels-01.png",
+    "__base__/graphics/entity/diesel-locomotive/train-wheels-02.png"
+  },
+  line_length = 8,
+  lines_per_file = 16,
+  hr_version =
+  {
+    priority = "very-low",
+    width = 229,
+    height = 227,
+    direction_count = 256,
+    filenames =
+    {
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-1.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-2.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-3.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-4.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-5.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-6.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-7.png",
+      "__base__/graphics/entity/diesel-locomotive/hr-train-wheels-8.png"
+    },
+    line_length = 4,
+    lines_per_file = 8,
+    --shift = {0.015625, -0.453125}, original shifting from spritesheeter (likely needs doubling or halving)
+    scale = 0.5
+  }
+}
+
+function accumulator_picture(tint, repeat_count)
+  return
+  {
+    layers =
+    {
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator.png",
+        priority = "high",
+        width = 66,
+        height = 94,
+        repeat_count = repeat_count,
+        shift = util.by_pixel(0, -10),
+        tint = tint,
+        animation_speed = 0.5,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator.png",
+          priority = "high",
+          width = 130,
+          height = 189,
+          repeat_count = repeat_count,
+          shift = util.by_pixel(0, -11),
+          tint = tint,
+          animation_speed = 0.5,
+          scale = 0.5
+        }
+      },
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-shadow.png",
+        priority = "high",
+        width = 120,
+        height = 54,
+        repeat_count = repeat_count,
+        shift = util.by_pixel(28, 6),
+        draw_as_shadow = true,
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator-shadow.png",
+          priority = "high",
+          width = 234,
+          height = 106,
+          repeat_count = repeat_count,
+          shift = util.by_pixel(29, 6),
+          draw_as_shadow = true,
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
+function accumulator_charge()
+  return
+  {
+    layers =
+    {
+      accumulator_picture({ r=1, g=1, b=1, a=1 } , 24),
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-charge.png",
+        priority = "high",
+        width = 90,
+        height = 100,
+        line_length = 6,
+        frame_count = 24,
+        blend_mode = "additive",
+        shift = util.by_pixel(0, -22),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator-charge.png",
+          priority = "high",
+          width = 178,
+          height = 206,
+          line_length = 6,
+          frame_count = 24,
+          blend_mode = "additive",
+          shift = util.by_pixel(0, -22),
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
+function accumulator_reflection()
+  return
+  {
+    pictures =
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-reflection.png",
+        priority = "extra-high",
+        width = 20,
+        height = 24,
+        shift = util.by_pixel(0, 50),
+        variation_count = 1,
+        scale = 5,
+      },
+      rotate = false,
+      orientation_to_variation = false
+  }
+end
+
+function accumulator_discharge()
+  return
+  {
+    layers =
+    {
+      accumulator_picture({ r=1, g=1, b=1, a=1 } , 24),
+      {
+        filename = "__base__/graphics/entity/accumulator/accumulator-discharge.png",
+        priority = "high",
+        width = 88,
+        height = 104,
+        line_length = 6,
+        frame_count = 24,
+        blend_mode = "additive",
+        shift = util.by_pixel(-2, -22),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/accumulator/hr-accumulator-discharge.png",
+          priority = "high",
+          width = 170,
+          height = 210,
+          line_length = 6,
+          frame_count = 24,
+          blend_mode = "additive",
+          shift = util.by_pixel(-1, -23),
+          scale = 0.5
+        }
+      }
+    }
+  }
+end
+
+function locomotive_reflection()
+  return
+  {
+    pictures =
+    {
+      filename = "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-reflection.png",
+      priority = "extra-high",
+      width = 20,
+      height = 52,
+      shift = util.by_pixel(0, 40),
+      variation_count = 1,
+      scale = 5,
+    },
+    rotate = true,
+    orientation_to_variation = false
+  }
+end
+
+function drive_over_tie()
+  return
+  {
+    type = "play-sound",
+    sound =
+    {
+      {
+        filename = "__base__/sound/train-tie-1.ogg",
+        volume = 0.4
+      },
+      {
+        filename = "__base__/sound/train-tie-2.ogg",
+        volume = 0.4
+      },
+      {
+        filename = "__base__/sound/train-tie-3.ogg",
+        volume = 0.4
+      },
+      {
+        filename = "__base__/sound/train-tie-4.ogg",
+        volume = 0.4
+      },
+      {
+        filename = "__base__/sound/train-tie-5.ogg",
+        volume = 0.4
+      },
+      {
+        filename = "__base__/sound/train-tie-6.ogg",
+        volume = 0.4
+      }
+    }
+  }
+end
+
+function rolling_stock_back_light()
+  return
+  {
+    {
+      minimum_darkness = 0.3,
+      color = { r = 1, g = 0.1, b = 0.05, a = 0 },
+      shift = {-0.6, 3.5},
+      size = 2,
+      intensity = 0.6,
+      add_perspective = true
+    },
+    {
+      minimum_darkness = 0.3,
+      color = { r = 1, g = 0.1, b = 0.05, a = 0 },
+      shift = {0.6, 3.5},
+      size = 2,
+      intensity = 0.6,
+      add_perspective = true
+    }
+  }
+end
+
+function rolling_stock_stand_by_light()
+  return
+  {
+    {
+      minimum_darkness = 0.3,
+      color = { r = 0.05, g = 0.2, b = 1, a = 0 },
+      shift = {-0.6, -3.5},
+      size = 2,
+      intensity = 0.5,
+      add_perspective = true
+    },
+    {
+      minimum_darkness = 0.3,
+      color = { r = 0.05, g = 0.2, b = 1, a = 0 },
+      shift = {0.6, -3.5},
+      size = 2,
+      intensity = 0.5,
+      add_perspective = true
+    }
+  }
+end
+
+function make_4way_animation_from_spritesheet(animation)
+  local function make_animation_layer(idx, anim)
+    local start_frame = (anim.frame_count or 1) * idx
+    local x = 0
+    local y = 0
+    if anim.line_length then
+      y = anim.height * math.floor(start_frame / (anim.line_length or 1))
+    else
+      x = idx * anim.width
+    end
+    return
+    {
+      filename = anim.filename,
+      priority = anim.priority or "high",
+      flags = anim.flags,
+      x = x,
+      y = y,
+      width = anim.width,
+      height = anim.height,
+      frame_count = anim.frame_count or 1,
+      line_length = anim.line_length,
+      repeat_count = anim.repeat_count,
+      shift = anim.shift,
+      draw_as_shadow = anim.draw_as_shadow,
+      force_hr_shadow = anim.force_hr_shadow,
+      apply_runtime_tint = anim.apply_runtime_tint,
+      animation_speed = anim.animation_speed,
+      scale = anim.scale or 1,
+      tint = anim.tint,
+      blend_mode = anim.blend_mode
+    }
+  end
+
+  local function make_animation_layer_with_hr_version(idx, anim)
+    local anim_parameters = make_animation_layer(idx, anim)
+    if anim.hr_version and anim.hr_version.filename then
+      anim_parameters.hr_version = make_animation_layer(idx, anim.hr_version)
+    end
+    return anim_parameters
+  end
+
+  local function make_animation(idx)
+    if animation.layers then
+      local tab = { layers = {} }
+      for k,v in ipairs(animation.layers) do
+        table.insert(tab.layers, make_animation_layer_with_hr_version(idx, v))
+      end
+      return tab
+    else
+      return make_animation_layer_with_hr_version(idx, animation)
+    end
+  end
+
+  return
+  {
+    north = make_animation(0),
+    east = make_animation(1),
+    south = make_animation(2),
+    west = make_animation(3)
+  }
+end
+
+
 
 local function scale_bounding_box(bb, scale)
   local orientation = bb[3] or 0
@@ -835,8 +1182,7 @@ data:extend(
         }
       },
       {
-        -- heavy-armor is not in the demo
-        armors = data.is_demo and {"light-armor"} or {"light-armor", "heavy-armor"},
+        armors = {"light-armor", "heavy-armor"},
         idle =
         {
           layers =
@@ -3151,6 +3497,160 @@ data:extend(
         }
       }
     },
+    circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
+    circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
+    circuit_wire_max_distance = inserter_circuit_wire_max_distance,
+    default_stack_control_input_signal = inserter_default_stack_control_input_signal
+  },
+  {
+    type = "inserter",
+    name = "filter-inserter",
+    icon = "__base__/graphics/icons/filter-inserter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    minable = {mining_time = 0.1, result = "filter-inserter"},
+    max_health = 150,
+    corpse = "filter-inserter-remnants",
+    dying_explosion = "filter-inserter-explosion",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      }
+    },
+    vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound = sounds.inserter_fast,
+    collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
+    selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
+    damaged_trigger_effect = hit_effects.entity(),
+    pickup_position = {0, -1},
+    insert_position = {0, 1.2},
+    energy_per_movement = "8KJ",
+    energy_per_rotation = "8KJ",
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input",
+      drain = "0.5kW"
+    },
+    extension_speed = 0.07,
+    rotation_speed = 0.04,
+    fast_replaceable_group = "inserter",
+    filter_count = 5,
+    hand_base_picture =
+    {
+      filename = "__base__/graphics/entity/filter-inserter/filter-inserter-hand-base.png",
+      priority = "extra-high",
+      width = 8,
+      height = 34,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-hand-base.png",
+        priority = "extra-high",
+        width = 32,
+        height = 136,
+        scale = 0.25
+      }
+    },
+    hand_closed_picture =
+    {
+      filename = "__base__/graphics/entity/filter-inserter/filter-inserter-hand-closed.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-hand-closed.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
+    },
+    hand_open_picture =
+    {
+      filename = "__base__/graphics/entity/filter-inserter/filter-inserter-hand-open.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-hand-open.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
+    },
+    hand_base_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base-shadow.png",
+      priority = "extra-high",
+      width = 8,
+      height = 33,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-base-shadow.png",
+        priority = "extra-high",
+        width = 32,
+        height = 132,
+        scale = 0.25
+      }
+    },
+    hand_closed_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-closed-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-closed-shadow.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
+    },
+    hand_open_shadow =
+    {
+      filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-open-shadow.png",
+      priority = "extra-high",
+      width = 18,
+      height = 41,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/burner-inserter/hr-burner-inserter-hand-open-shadow.png",
+        priority = "extra-high",
+        width = 72,
+        height = 164,
+        scale = 0.25
+      }
+    },
+    platform_picture =
+    {
+      sheet=
+      {
+        filename = "__base__/graphics/entity/filter-inserter/filter-inserter-platform.png",
+        priority = "extra-high",
+        width = 46,
+        height = 46,
+        shift = {0.09375, 0},
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/filter-inserter/hr-filter-inserter-platform.png",
+          priority = "extra-high",
+          width = 105,
+          height = 79,
+          shift = util.by_pixel(1.5, 7.5-1),
+          scale = 0.5
+        }
+      }
+    },
+
     circuit_wire_connection_points = circuit_connector_definitions["inserter"].points,
     circuit_connector_sprites = circuit_connector_definitions["inserter"].sprites,
     circuit_wire_max_distance = inserter_circuit_wire_max_distance,
@@ -7093,6 +7593,2007 @@ data:extend(
     open_sound = sounds.gate_open,
     close_sound = sounds.gate_close,
   },
+  
+  {
+    type = "container",
+    name = "steel-chest",
+    icon = "__base__/graphics/icons/steel-chest.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.2, result = "steel-chest"},
+    max_health = 350,
+    corpse = "steel-chest-remnants",
+    dying_explosion = "steel-chest-explosion",
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 90
+      },
+      {
+        type = "impact",
+        percent = 60
+      }
+    },
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    fast_replaceable_group = "container",
+    inventory_size = 48,
+    vehicle_impact_sound = sounds.generic_impact,
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
+          priority = "extra-high",
+          width = 32,
+          height = 40,
+          shift = util.by_pixel(0, -0.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-chest/hr-steel-chest.png",
+            priority = "extra-high",
+            width = 64,
+            height = 80,
+            shift = util.by_pixel(-0.25, -0.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/steel-chest/steel-chest-shadow.png",
+          priority = "extra-high",
+          width = 56,
+          height = 22,
+          shift = util.by_pixel(12, 7.5),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/steel-chest/hr-steel-chest-shadow.png",
+            priority = "extra-high",
+            width = 110,
+            height = 46,
+            shift = util.by_pixel(12.25, 8),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    circuit_wire_connection_point = circuit_connector_definitions["chest"].points,
+    circuit_connector_sprites = circuit_connector_definitions["chest"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance
+  },
+  {
+    type = "train-stop",
+    name = "train-stop",
+    icon = "__base__/graphics/icons/train-stop.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "filter-directions"},
+    minable = {mining_time = 0.2, result = "train-stop"},
+    max_health = 250,
+    corpse = "train-stop-remnants",
+    dying_explosion = "train-stop-explosion",
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    selection_box = {{-0.9, -0.9}, {0.9, 0.9}},
+    damaged_trigger_effect = hit_effects.entity(),
+    drawing_boxes =
+    {
+      north = {{-3,-2.5}, {0.8, 1.25}},
+      east = {{-1.75, -4.25},{1.625, 0.5}},
+      south = {{-0.8125, -3.625},{2.75, 0.4375}},
+      west = {{-1.75, -1.6875},{2.0625, 2.75}}
+    },
+    tile_width = 2,
+    tile_height = 2,
+    animation_ticks_per_frame = 20,
+    rail_overlay_animations = make_4way_animation_from_spritesheet(
+    {
+      filename = "__base__/graphics/entity/train-stop/train-stop-ground.png",
+      width = 194,
+      height = 189,
+      direction_count = 4,
+      shift = util.by_pixel(0, -0.5),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/train-stop/hr-train-stop-ground.png",
+          width = 386,
+          height = 377,
+          direction_count = 4,
+          shift = util.by_pixel(0, -0.75),
+          scale = 0.5
+      }
+    }),
+
+    animations = make_4way_animation_from_spritesheet({ layers =
+    {
+      {
+        filename = "__base__/graphics/entity/train-stop/train-stop-bottom.png",
+        width = 71,
+        height = 146,
+        direction_count = 4,
+        shift = util.by_pixel(-0.5, -27),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-bottom.png",
+            width = 140,
+            height = 291,
+            direction_count = 4,
+            shift = util.by_pixel(-0.5, -26.75),
+            scale = 0.5
+          }
+      },
+      {
+        filename = "__base__/graphics/entity/train-stop/train-stop-shadow.png",
+        width = 361,
+        height = 304,
+        direction_count = 4,
+        shift = util.by_pixel(-7.5, 18),
+        draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-shadow.png",
+            width = 720,
+            height = 607,
+            direction_count = 4,
+            shift = util.by_pixel(-7.5, 17.75),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+      }
+    }}),
+
+    top_animations = make_4way_animation_from_spritesheet({ layers =
+    {
+      {
+        filename = "__base__/graphics/entity/train-stop/train-stop-top.png",
+        width = 156,
+        height = 153,
+        direction_count = 4,
+        shift = util.by_pixel(0, -50.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-top.png",
+            width = 311,
+            height = 305,
+            direction_count = 4,
+            shift = util.by_pixel(0, -50.75),
+            scale = 0.5
+          }
+      },
+      {
+        filename = "__base__/graphics/entity/train-stop/train-stop-top-mask.png",
+        width = 154,
+        height = 148,
+        direction_count = 4,
+        apply_runtime_tint = true,
+        shift = util.by_pixel(0, -49),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-top-mask.png",
+            width = 306,
+            height = 295,
+            direction_count = 4,
+            apply_runtime_tint = true,
+            shift = util.by_pixel(-0.25, -48.75),
+            scale = 0.5
+          }
+      }
+    }}),
+
+    light1 =
+    {
+      light = {intensity = 0.5, size = 3, color = {r = 1.0, g = 1.0, b = 1.0}},
+      picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-north-light-1.png",
+          width = 9,
+          height = 5,
+          frame_count = 1,
+          shift = util.by_pixel(-70.5, -44.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-light-1.png",
+            width = 17,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-70.75, -44.25),
+            scale = 0.5
+            }
+        },
+        west =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-east-light-1.png",
+          width = 3,
+          height = 9,
+          frame_count = 1,
+          shift = util.by_pixel(34.5, 19.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 19.5),
+            scale = 0.5
+            }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-south-light-1.png",
+          width = 8,
+          height = 2,
+          frame_count = 1,
+          shift = util.by_pixel(70, -95),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-light-1.png",
+            width = 16,
+            height = 4,
+            frame_count = 1,
+            shift = util.by_pixel(70, -95),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-light-1.png",
+          width = 3,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-30.5, -112),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(-30.5, -112),
+            scale = 0.5
+            }
+        }
+      },
+      red_picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-north-red-light-1.png",
+          width = 9,
+          height = 5,
+          frame_count = 1,
+          shift = util.by_pixel(-70.5, -44.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-red-light-1.png",
+            width = 17,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-70.75, -44.25),
+            scale = 0.5
+            }
+        },
+        west =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-east-red-light-1.png",
+          width = 3,
+          height = 9,
+          frame_count = 1,
+          shift = util.by_pixel(34.5, 19.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-red-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 19.5),
+            scale = 0.5
+            }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-south-red-light-1.png",
+          width = 8,
+          height = 2,
+          frame_count = 1,
+          shift = util.by_pixel(70, -95),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-red-light-1.png",
+            width = 16,
+            height = 4,
+            frame_count = 1,
+            shift = util.by_pixel(70, -95),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-red-light-1.png",
+          width = 3,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-30.5, -112),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-red-light-1.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(-30.5, -112),
+            scale = 0.5
+            }
+        }
+      }
+    },
+
+    light2 =
+    {
+      light = {intensity = 0.5, size = 3, color = {r = 1.0, g = 1.0, b = 1.0}},
+      picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-north-light-2.png",
+          width = 9,
+          height = 5,
+          frame_count = 1,
+          shift = util.by_pixel(-57.5, -43.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-light-2.png",
+            width = 16,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-57.5, -43.75),
+            scale = 0.5
+            }
+        },
+        west =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-east-light-2.png",
+          width = 3,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(34.5, 10),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-light-2.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 10),
+            scale = 0.5
+            }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-south-light-2.png",
+          width = 8,
+          height = 3,
+          frame_count = 1,
+          shift = util.by_pixel(57, -94.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-light-2.png",
+            width = 16,
+            height = 5,
+            frame_count = 1,
+            shift = util.by_pixel(57, -94.75),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-light-2.png",
+          width = 4,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-31, -103),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-light-2.png",
+            width = 7,
+            height = 15,
+            frame_count = 1,
+            shift = util.by_pixel(-30.75, -102.75),
+            scale = 0.5
+            }
+        }
+      },
+      red_picture =
+      {
+        north =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-north-red-light-2.png",
+          width = 9,
+          height = 5,
+          frame_count = 1,
+          shift = util.by_pixel(-57.5, -43.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-north-red-light-2.png",
+            width = 16,
+            height = 9,
+            frame_count = 1,
+            shift = util.by_pixel(-57.5, -43.75),
+            scale = 0.5
+            }
+        },
+        west =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-east-red-light-2.png",
+          width = 3,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(34.5, 10),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-east-red-light-2.png",
+            width = 6,
+            height = 16,
+            frame_count = 1,
+            shift = util.by_pixel(34.5, 10),
+            scale = 0.5
+            }
+        },
+        south =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-south-red-light-2.png",
+          width = 8,
+          height = 3,
+          frame_count = 1,
+          shift = util.by_pixel(57, -94.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-south-red-light-2.png",
+            width = 16,
+            height = 5,
+            frame_count = 1,
+            shift = util.by_pixel(57, -94.75),
+            scale = 0.5
+            }
+        },
+        east =
+        {
+          filename = "__base__/graphics/entity/train-stop/train-stop-west-red-light-2.png",
+          width = 4,
+          height = 8,
+          frame_count = 1,
+          shift = util.by_pixel(-31, -103),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/train-stop/hr-train-stop-west-red-light-2.png",
+            width = 7,
+            height = 15,
+            frame_count = 1,
+            shift = util.by_pixel(-30.75, -102.75),
+            scale = 0.5
+            }
+        }
+      }
+    },
+
+    color={r=0.95,  g=0, b=0, a=0.5},
+
+    vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/train-stop.ogg", volume = 0.7
+        }
+      },
+      audible_distance_modifier = 0.2,
+    },
+
+    circuit_wire_connection_points = circuit_connector_definitions["train-station"].points,
+    circuit_connector_sprites = circuit_connector_definitions["train-station"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
+    default_train_stopped_signal = {type = "virtual", name = "signal-T"}
+  },
+  {
+    type = "rail-signal",
+    name = "rail-signal",
+    icon = "__base__/graphics/icons/rail-signal.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
+    fast_replaceable_group = "rail-signal",
+    minable = {mining_time = 0.1, result = "rail-signal"},
+    max_health = 100,
+    corpse = "rail-signal-remnants",
+    dying_explosion = "rail-signal-explosion",
+    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    animation =
+    {
+      filename = "__base__/graphics/entity/rail-signal/rail-signal.png",
+      priority = "high",
+      width = 96,
+      height = 96,
+      frame_count = 3,
+      direction_count = 8,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rail-signal/hr-rail-signal.png",
+        priority = "high",
+        width = 192,
+        height = 192,
+        frame_count = 3,
+        direction_count = 8,
+        scale = 0.5
+      }
+    },
+    rail_piece =
+    {
+      filename = "__base__/graphics/entity/rail-signal/rail-signal-metal.png",
+      line_length = 10,
+      width = 96,
+      height = 96,
+      frame_count = 10,
+      axially_symmetrical = false,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rail-signal/hr-rail-signal-metal.png",
+        line_length = 10,
+        width = 192,
+        height = 192,
+        frame_count = 10,
+        axially_symmetrical = false,
+        scale = 0.5
+      }
+    },
+    green_light = {intensity = 0.2, size = 4, color={g=1}},
+    orange_light = {intensity = 0.2, size = 4, color={r=1, g=0.5}},
+    red_light = {intensity = 0.2, size = 4, color={r=1}},
+
+    circuit_wire_connection_points = circuit_connector_definitions["rail-signal"].points,
+    circuit_connector_sprites = circuit_connector_definitions["rail-signal"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
+    default_red_output_signal = {type = "virtual", name = "signal-red"},
+    default_orange_output_signal = {type = "virtual", name = "signal-yellow"},
+    default_green_output_signal = {type = "virtual", name = "signal-green"}
+  },
+  {
+    type = "rail-chain-signal",
+    name = "rail-chain-signal",
+    icon = "__base__/graphics/icons/rail-chain-signal.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "building-direction-8-way", "filter-directions", "fast-replaceable-no-build-while-moving"},
+    fast_replaceable_group = "rail-signal",
+    minable = {mining_time = 0.1, result = "rail-chain-signal"},
+    max_health = 100,
+    corpse = "rail-chain-signal-remnants",
+    dying_explosion = "rail-chain-signal-explosion",
+    collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    animation =
+    {
+      filename = "__base__/graphics/entity/rail-chain-signal/rail-chain-signal.png",
+      priority = "high",
+      line_length = 5,
+      width = 160,
+      height = 160,
+      frame_count = 5,
+      axially_symmetrical = false,
+      direction_count = 8,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rail-chain-signal/hr-rail-chain-signal.png",
+        priority = "high",
+        line_length = 5,
+        width = 320,
+        height = 320,
+        frame_count = 5,
+        axially_symmetrical = false,
+        direction_count = 8,
+        scale = 0.5
+      }
+    },
+    rail_piece =
+    {
+      filename = "__base__/graphics/entity/rail-chain-signal/rail-chain-signal-metal.png",
+      line_length = 10,
+      width = 192,
+      height = 192,
+      frame_count = 10,
+      axially_symmetrical = false,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/rail-chain-signal/hr-rail-chain-signal-metal.png",
+        line_length = 10,
+        width = 384,
+        height = 384,
+        frame_count = 10,
+        axially_symmetrical = false,
+        scale = 0.5
+      }
+    },
+    selection_box_offsets =
+    {
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0},
+      {0, 0}
+    },
+    green_light = {intensity = 0.3, size = 4, color={r=0.592157, g=1, b=0.117647}},
+    orange_light = {intensity = 0.3, size = 4, color={r=0.815686, g=0.670588, b=0.431373}},
+    red_light = {intensity = 0.3, size = 4, color={r=0.784314, g=0.431373, b=0.431373}},
+    blue_light = {intensity = 0.3, size = 4, color={r=0.431373, g=0.694118, b=0.623529}},
+
+    circuit_wire_connection_points = circuit_connector_definitions["rail-chain-signal"].points,
+    circuit_connector_sprites = circuit_connector_definitions["rail-chain-signal"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
+    default_red_output_signal = {type = "virtual", name = "signal-red"},
+    default_orange_output_signal = {type = "virtual", name = "signal-yellow"},
+    default_green_output_signal = {type = "virtual", name = "signal-green"},
+    default_blue_output_signal = {type = "virtual", name = "signal-blue"}
+  },
+  
+  {
+    type = "locomotive",
+    name = "locomotive",
+    icon = "__base__/graphics/icons/locomotive.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    minable = {mining_time = 0.5, result = "locomotive"},
+    mined_sound = {filename = "__core__/sound/deconstruct-large.ogg",volume = 0.8},
+    max_health = 1000,
+    corpse = "locomotive-remnants",
+    dying_explosion = "locomotive-explosion",
+    collision_box = {{-0.6, -2.6}, {0.6, 2.6}},
+    selection_box = {{-1, -3}, {1, 3}},
+    damaged_trigger_effect = hit_effects.entity(),
+    drawing_box = {{-1, -4}, {1, 3}},
+    alert_icon_shift = util.by_pixel(0, -24),
+    weight = 2000,
+    max_speed = 1.2,
+    max_power = "600kW",
+    reversing_power_modifier = 0.6,
+    braking_force = 10,
+    friction_force = 0.50,
+    vertical_selection_shift = -0.5,
+    air_resistance = 0.0075, -- this is a percentage of current speed that will be subtracted
+    connection_distance = 3,
+    joint_distance = 4,
+    energy_per_hit_point = 5,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 3,
+        percent = 20
+      }
+    },
+    burner =
+    {
+      fuel_category = "chemical",
+      effectivity = 1,
+      fuel_inventory_size = 3,
+      smoke =
+      {
+        {
+          name = "train-smoke",
+          deviation = {0.3, 0.3},
+          frequency = 100,
+          position = {0, 0},
+          starting_frame = 0,
+          starting_frame_deviation = 60,
+          height = 2,
+          height_deviation = 0.5,
+          starting_vertical_speed = 0.2,
+          starting_vertical_speed_deviation = 0.1
+        }
+      }
+    },
+    front_light =
+    {
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "extra-high",
+          flags = { "light" },
+          scale = 2,
+          width = 200,
+          height = 200
+        },
+        shift = {-0.6, -16},
+        size = 2,
+        intensity = 0.6,
+        color = {r = 1.0, g = 0.9, b = 0.9}
+      },
+      {
+        type = "oriented",
+        minimum_darkness = 0.3,
+        picture =
+        {
+          filename = "__core__/graphics/light-cone.png",
+          priority = "extra-high",
+          flags = { "light" },
+          scale = 2,
+          width = 200,
+          height = 200
+        },
+        shift = {0.6, -16},
+        size = 2,
+        intensity = 0.6,
+        color = {r = 1.0, g = 0.9, b = 0.9}
+      }
+    },
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
+    color = {r = 0.92, g = 0.07, b = 0, a = 0.5},
+    pictures =
+    {
+      layers =
+      {
+        {
+          slice = 4,
+          priority = "very-low",
+          width = 238,
+          height = 230,
+          direction_count = 256,
+          allow_low_quality_rotation = true,
+          filenames =
+          {
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-01.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-02.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-03.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-04.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-05.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-06.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-07.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-08.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {0.0, -0.5},
+          hr_version =
+          {
+            priority = "very-low",
+            slice = 4,
+            width = 474,
+            height = 458,
+            direction_count = 256,
+            allow_low_quality_rotation = true,
+            filenames =
+            {
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-1.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-2.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-3.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-4.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-5.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-6.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-7.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-8.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-9.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-10.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-11.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-12.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-13.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-14.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-15.png",
+              "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-16.png"
+            },
+            line_length = 4,
+            lines_per_file = 4,
+            shift = {0.0, -0.5},
+            scale = 0.5
+            }
+        },
+        {
+          priority = "very-low",
+          flags = { "mask" },
+          slice = 4,
+          width = 236,
+          height = 228,
+          direction_count = 256,
+          allow_low_quality_rotation = true,
+          filenames =
+          {
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-01.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-02.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-03.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-04.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-05.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-06.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-07.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-mask-08.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {0.0, -0.5},
+          apply_runtime_tint = true,
+          hr_version =
+            {
+              priority = "very-low",
+              flags = { "mask" },
+              slice = 4,
+              width = 472,
+              height = 456,
+              direction_count = 256,
+              allow_low_quality_rotation = true,
+              filenames =
+              {
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-1.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-2.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-3.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-4.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-5.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-6.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-7.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-8.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-9.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-10.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-11.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-12.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-13.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-14.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-15.png",
+                "__base__/graphics/entity/diesel-locomotive/hr-diesel-locomotive-mask-16.png"
+              },
+              line_length = 4,
+              lines_per_file = 4,
+              shift = {0.0, -0.5},
+              apply_runtime_tint = true,
+              scale = 0.5
+            }
+        },
+        {
+          priority = "very-low",
+          slice = 4,
+          flags = { "shadow" },
+          width = 253,
+          height = 212,
+          direction_count = 256,
+          draw_as_shadow = true,
+          allow_low_quality_rotation = true,
+          filenames =
+          {
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-01.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-02.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-03.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-04.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-05.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-06.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-07.png",
+            "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-shadow-08.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {1, 0.3}
+        }
+      }
+    },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    selected_minimap_representation =
+    {
+      filename = "__base__/graphics/entity/diesel-locomotive/diesel-locomotive-selected-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    wheels = standard_train_wheels,
+    stop_trigger =
+    {
+      -- left side
+      {
+        type = "create-trivial-smoke",
+        repeat_count = 125,
+        smoke_name = "smoke-train-stop",
+        initial_height = 0,
+        -- smoke goes to the left
+        speed = {-0.03, 0},
+        speed_multiplier = 0.75,
+        speed_multiplier_deviation = 1.1,
+        offset_deviation = {{-0.75, -2.7}, {-0.3, 2.7}}
+      },
+      -- right side
+      {
+        type = "create-trivial-smoke",
+        repeat_count = 125,
+        smoke_name = "smoke-train-stop",
+        initial_height = 0,
+        -- smoke goes to the right
+        speed = {0.03, 0},
+        speed_multiplier = 0.75,
+        speed_multiplier_deviation = 1.1,
+        offset_deviation = {{0.3, -2.7}, {0.75, 2.7}}
+      },
+      {
+        type = "play-sound",
+        sound = sounds.train_brakes,
+      },
+      {
+        type = "play-sound",
+        sound = sounds.train_brake_screech,
+      },
+    },
+    drive_over_tie_trigger = drive_over_tie(),
+    tie_distance = 50,
+    vehicle_impact_sound = sounds.generic_impact,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/train-engine.ogg",
+        volume = 0.3
+      },
+      deactivate_sound =
+      {
+        filename = "__base__/sound/train-engine-stop.ogg",
+        volume = 0
+      },
+      match_speed_to_activity = true,
+      max_sounds_per_type = 2,
+    },
+    open_sound = { filename = "__base__/sound/train-door-open.ogg", volume=0.5 },
+    close_sound = { filename = "__base__/sound/train-door-close.ogg", volume = 0.4 },
+    sound_minimum_speed = 0.5,
+    sound_scaling_ratio = 0.3,
+    water_reflection = locomotive_reflection(),
+  },
+  {
+    type = "cargo-wagon",
+    name = "cargo-wagon",
+    icon = "__base__/graphics/icons/cargo-wagon.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    inventory_size = 40,
+    minable = {mining_time = 0.5, result = "cargo-wagon"},
+    mined_sound = {filename = "__core__/sound/deconstruct-large.ogg",volume = 0.8},
+    max_health = 600,
+    corpse = "cargo-wagon-remnants",
+    dying_explosion = "cargo-wagon-explosion",
+    collision_box = {{-0.6, -2.4}, {0.6, 2.4}},
+    selection_box = {{-1, -2.703125}, {1, 3.296875}},
+    damaged_trigger_effect = hit_effects.entity(),
+    vertical_selection_shift = -0.796875,
+    weight = 1000,
+    max_speed = 1.5,
+    braking_force = 3,
+    friction_force = 0.50,
+    air_resistance = 0.01,
+    connection_distance = 3,
+    joint_distance = 4,
+    energy_per_hit_point = 5,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 50
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 60
+      },
+      {
+        type = "explosion",
+        decrease = 15,
+        percent = 30
+      },
+      {
+        type = "acid",
+        decrease = 3,
+        percent = 20
+      }
+    },
+    back_light = rolling_stock_back_light(),
+    stand_by_light = rolling_stock_stand_by_light(),
+    color = {r = 0.43, g = 0.23, b = 0, a = 0.5},
+    pictures =
+    {
+      layers =
+      {
+        {
+          priority = "very-low",
+          slice = 4,
+          width = 222,
+          height = 205,
+          back_equals_front = true,
+          direction_count = 128,
+          allow_low_quality_rotation = true,
+          filenames =
+          {
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-1.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-2.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-3.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-4.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {0, -0.796875},
+          hr_version =
+          {
+            priority = "very-low",
+            slice = 4,
+            width = 442,
+            height = 407,
+            back_equals_front = true,
+            direction_count = 128,
+            allow_low_quality_rotation = true,
+            filenames =
+            {
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-1.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-2.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-3.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-4.png"
+            },
+            line_length = 4,
+            lines_per_file = 8,
+            shift = util.by_pixel(0, -25.25),
+            scale = 0.5
+          }
+        },
+        {
+          flags = { "mask" },
+          priority = "very-low",
+          slice = 4,
+          width = 196,
+          height = 174,
+          direction_count = 128,
+          allow_low_quality_rotation = true,
+          back_equals_front = true,
+          apply_runtime_tint = true,
+          shift = {0, -1.125},
+          filenames =
+          {
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-mask-1.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-mask-2.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-mask-3.png"
+          },
+          line_length = 4,
+          lines_per_file = 11,
+          hr_version =
+          {
+            flags = { "mask" },
+            priority = "very-low",
+            slice = 4,
+            width = 406,
+            height = 371,
+            direction_count = 128,
+            allow_low_quality_rotation = true,
+            back_equals_front = true,
+            apply_runtime_tint = true,
+            shift = util.by_pixel(-0.5, -30.25),
+            filenames =
+            {
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-1.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-2.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-mask-3.png"
+            },
+            line_length = 4,
+            lines_per_file = 11,
+            scale = 0.5
+          }
+        },
+        {
+          flags = { "shadow" },
+          priority = "very-low",
+          slice = 4,
+          width = 246,
+          height = 201,
+          back_equals_front = true,
+          draw_as_shadow = true,
+          direction_count = 128,
+          allow_low_quality_rotation = true,
+          filenames =
+          {
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-shadow-1.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-shadow-2.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-shadow-3.png",
+            "__base__/graphics/entity/cargo-wagon/cargo-wagon-shadow-4.png"
+          },
+          line_length = 4,
+          lines_per_file = 8,
+          shift = {0.8, -0.078125},
+          hr_version =
+          {
+            flags = { "shadow" },
+            priority = "very-low",
+            slice = 4,
+            width = 490,
+            height = 401,
+            back_equals_front = true,
+            draw_as_shadow = true,
+            direction_count = 128,
+            allow_low_quality_rotation = true,
+            filenames =
+            {
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-1.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-2.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-3.png",
+              "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-shadow-4.png"
+            },
+            line_length = 4,
+            lines_per_file = 8,
+            shift = util.by_pixel(32, -2.25),
+            scale = 0.5
+          }
+        }
+      }
+    },
+    horizontal_doors =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-end.png",
+          line_length = 1,
+          width = 220,
+          height = 33,
+          frame_count = 8,
+          shift = {0, -0.921875},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-end.png",
+            line_length = 1,
+            width = 438,
+            height = 63,
+            frame_count = 8,
+            shift = util.by_pixel(0, -29.25),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-side.png",
+          line_length = 1,
+          width = 186,
+          height = 38,
+          frame_count = 8,
+          shift = {0, -0.78125},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-side.png",
+            line_length = 1,
+            width = 368,
+            height = 76,
+            frame_count = 8,
+            shift = util.by_pixel(0, -24.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-side-mask.png",
+          width = 182,
+          height = 35,
+          line_length = 1,
+          frame_count = 8,
+          shift = {0, -0.828125},
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-side-mask.png",
+            width = 320,
+            height = 69,
+            line_length = 1,
+            frame_count = 8,
+            shift = util.by_pixel(0, -26.25),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-top.png",
+          line_length = 1,
+          width = 184,
+          height = 28,
+          frame_count = 8,
+          shift = {0.015625, -1.125},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-top.png",
+            line_length = 1,
+            width = 369,
+            height = 54,
+            frame_count = 8,
+            shift = util.by_pixel(0.75, -35.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-horizontal-top-mask.png",
+          width = 185,
+          height = 23,
+          frame_count = 8,
+          line_length = 1,
+          shift = {0.015625, -1.17188},
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-horizontal-top-mask.png",
+            width = 369,
+            height = 45,
+            frame_count = 8,
+            line_length = 1,
+            shift = util.by_pixel(0.75, -37.75),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    vertical_doors =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-end.png",
+          line_length = 8,
+          width = 30,
+          height = 23,
+          frame_count = 8,
+          shift = util.by_pixel(0, 62.5),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-end.png",
+            line_length = 8,
+            width = 58,
+            height = 44,
+            frame_count = 8,
+            shift = util.by_pixel(0, 62.5),-- 241),--62.5+178.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-side.png",
+          line_length = 8,
+          width = 67,
+          height = 169,
+          frame_count = 8,
+          shift = {0.015625, -1.01563},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-side.png",
+            line_length = 8,
+            width = 127,
+            height = 337,
+            frame_count = 8,
+            shift = util.by_pixel(0.25, -32.75),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-side-mask.png",
+          line_length = 8,
+          width = 56,
+          height = 163,
+          frame_count = 8,
+          shift = {0, -1.10938},
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-side-mask.png",
+            line_length = 8,
+            width = 112,
+            height = 326,
+            frame_count = 8,
+            shift = util.by_pixel(0, -35.5),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-top.png",
+          line_length = 8,
+          width = 32,
+          height = 168,
+          frame_count = 8,
+          shift = {0, -1.125},
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-top.png",
+            line_length = 8,
+            width = 64,
+            height = 337,
+            frame_count = 8,
+            shift = util.by_pixel(0, -35.75),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-door-vertical-top-mask.png",
+          line_length = 8,
+          width = 32,
+          height = 166,
+          frame_count = 8,
+          shift = {0, -1.15625},
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/cargo-wagon/hr-cargo-wagon-door-vertical-top-mask.png",
+            line_length = 8,
+            width = 64,
+            height = 332,
+            frame_count = 8,
+            shift = util.by_pixel(0, -37),
+            apply_runtime_tint = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    selected_minimap_representation =
+    {
+      filename = "__base__/graphics/entity/cargo-wagon/cargo-wagon-selected-minimap-representation.png",
+      flags = {"icon"},
+      size = {20, 40},
+      scale = 0.5
+    },
+    wheels = standard_train_wheels,
+    drive_over_tie_trigger = drive_over_tie(),
+    tie_distance = 50,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/train-wheels.ogg",
+        volume = 0.3
+      },
+      match_volume_to_activity = true
+    },
+    crash_trigger = crash_trigger(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    sound_minimum_speed = 1,
+    vehicle_impact_sound = sounds.generic_impact,
+    water_reflection = locomotive_reflection()
+  },
+  
+  {
+    type = "underground-belt",
+    name = "fast-underground-belt",
+    icon = "__base__/graphics/icons/fast-underground-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "fast-underground-belt"},
+    max_health = 160,
+    corpse = "fast-underground-belt-remnants",
+    dying_explosion = "fast-underground-belt-explosion",
+    max_distance = 7,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/fast-underground-belt.ogg",
+        volume = 0.2
+      },
+      max_sounds_per_type = 2,
+      audible_distance_modifier = 0.5,
+      persistent = true,
+      use_doppler_shift = false
+    },
+    underground_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      scale = 0.5
+    },
+    underground_remove_belts_sprite =
+    {
+      filename = "__core__/graphics/arrows/underground-lines-remove.png",
+      priority = "high",
+      width = 64,
+      height = 64,
+      x = 64,
+      scale = 0.5
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 60
+      },
+      {
+        type = "impact",
+        percent = 30
+      }
+    },
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    animation_speed_coefficient = 32,
+    belt_animation_set = fast_belt_animation_set,
+    fast_replaceable_group = "transport-belt",
+    next_upgrade = "express-underground-belt",
+    speed = 0.0625,
+    structure =
+    {
+      direction_in =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height =192,
+            scale = 0.5
+          }
+        }
+      },
+      direction_in_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*3,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*3,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*2,
+            scale = 0.5
+          }
+        }
+      },
+      back_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure-back-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure-back-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+        }
+      },
+      front_patch =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/fast-underground-belt/fast-underground-belt-structure-front-patch.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/fast-underground-belt/hr-fast-underground-belt-structure-front-patch.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "splitter",
+    name = "fast-splitter",
+    icon = "__base__/graphics/icons/fast-splitter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "fast-splitter"},
+    max_health = 180,
+    corpse = "fast-splitter-remnants",
+    dying_explosion = "fast-splitter-explosion",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 60
+      }
+    },
+    collision_box = {{-0.9, -0.4}, {0.9, 0.4}},
+    selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    animation_speed_coefficient = 32,
+    structure_animation_speed_coefficient = 1.2,
+    structure_animation_movement_cooldown = 10,
+    belt_animation_set = fast_belt_animation_set,
+    fast_replaceable_group = "transport-belt",
+    next_upgrade = "express-splitter",
+    speed = 0.0625,
+    working_sound = sounds.fast_splitter,
+    structure =
+    {
+      north =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/fast-splitter-north.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 82,
+        height = 36,
+        shift = util.by_pixel(6, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-north.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 160,
+          height = 70,
+          shift = util.by_pixel(7, 0),
+          scale = 0.5
+        }
+      },
+      east =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/fast-splitter-east.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 46,
+        height = 44,
+        shift = util.by_pixel(4, 12),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-east.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 90,
+          height = 84,
+          shift = util.by_pixel(4, 13),
+          scale = 0.5
+        }
+      },
+      south =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/fast-splitter-south.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 82,
+        height = 32,
+        shift = util.by_pixel(4, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-south.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 164,
+          height = 64,
+          shift = util.by_pixel(4, 0),
+          scale = 0.5
+        }
+      },
+      west =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/fast-splitter-west.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 46,
+        height = 44,
+        shift = util.by_pixel(6, 12),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-west.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 90,
+          height = 86,
+          shift = util.by_pixel(6, 12),
+          scale = 0.5
+        }
+      }
+    },
+    structure_patch =
+    {
+      north = util.empty_sprite(),
+      east =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/fast-splitter-east-top_patch.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 46,
+        height = 52,
+        shift = util.by_pixel(4, -20),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-east-top_patch.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 90,
+          height = 104,
+          shift = util.by_pixel(4, -20),
+          scale = 0.5
+        }
+      },
+      south = util.empty_sprite(),
+      west =
+      {
+        filename = "__base__/graphics/entity/fast-splitter/fast-splitter-west-top_patch.png",
+        frame_count = 32,
+        line_length = 8,
+        priority = "extra-high",
+        width = 46,
+        height = 48,
+        shift = util.by_pixel(6, -18),
+        hr_version =
+        {
+          filename = "__base__/graphics/entity/fast-splitter/hr-fast-splitter-west-top_patch.png",
+          frame_count = 32,
+          line_length = 8,
+          priority = "extra-high",
+          width = 90,
+          height = 96,
+          shift = util.by_pixel(6, -18),
+          scale = 0.5
+        }
+      }
+    }
+  },
+  {
+    type = "transport-belt",
+    name = "fast-transport-belt",
+    icon = "__base__/graphics/icons/fast-transport-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "fast-transport-belt"},
+    max_health = 160,
+    corpse = "fast-transport-belt-remnants",
+    dying_explosion = "fast-transport-belt-explosion",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 50
+      }
+    },
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/fast-transport-belt.ogg",
+        volume = 0.3
+      },
+      persistent = true
+    },
+    animation_speed_coefficient = 32,
+    belt_animation_set = fast_belt_animation_set,
+    fast_replaceable_group = "transport-belt",
+    next_upgrade = "express-transport-belt",
+    speed = 0.0625,
+    connector_frame_sprites = transport_belt_connector_frame_sprites,
+    circuit_wire_connection_points = circuit_connector_definitions["belt"].points,
+    circuit_connector_sprites = circuit_connector_definitions["belt"].sprites,
+    circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
+  },
+  
+  {
+    type = "solar-panel",
+    name = "solar-panel",
+    icon = "__base__/graphics/icons/solar-panel.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "solar-panel"},
+    max_health = 200,
+    corpse = "solar-panel-remnants",
+    dying_explosion = "solar-panel-explosion",
+    collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "solar"
+    },
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel.png",
+          priority = "high",
+          width = 116,
+          height = 112,
+          shift = util.by_pixel(-3, 3),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/solar-panel/hr-solar-panel.png",
+            priority = "high",
+            width = 230,
+            height = 224,
+            shift = util.by_pixel(-3, 3.5),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel-shadow.png",
+          priority = "high",
+          width = 112,
+          height = 90,
+          shift = util.by_pixel(10, 6),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/solar-panel/hr-solar-panel-shadow.png",
+            priority = "high",
+            width = 220,
+            height = 180,
+            shift = util.by_pixel(9.5, 6),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
+    },
+    overlay =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/solar-panel/solar-panel-shadow-overlay.png",
+          priority = "high",
+          width = 108,
+          height = 90,
+          shift = util.by_pixel(11, 6),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/solar-panel/hr-solar-panel-shadow-overlay.png",
+            priority = "high",
+            width = 214,
+            height = 180,
+            shift = util.by_pixel(10.5, 6),
+            scale = 0.5
+          }
+        }
+      }
+    },
+    vehicle_impact_sound = sounds.generic_impact,
+    production = "60kW"
+  },
+  {
+    type = "straight-rail",
+    name = "straight-rail",
+    icon = "__base__/graphics/icons/rail.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
+    minable = {mining_time = 0.2, result = "rail"},
+    max_health = 100,
+    corpse = "straight-rail-remnants",
+    dying_explosion = "rail-explosion",
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      },
+      {
+        type = "acid",
+        percent = 80
+      }
+    },
+    -- collision box is hardcoded for rails as they need to be different for different orientations (diagonal or straight) and to
+    -- avoid unexpected changes in the way rail blocks are merged
+    selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
+    damaged_trigger_effect = hit_effects.wall(),
+    pictures = rail_pictures()
+  },
+  {
+    type = "curved-rail",
+    name = "curved-rail",
+    icon = "__base__/graphics/icons/curved-rail.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
+    minable = {mining_time = 0.2, result = "rail", count = 4},
+    max_health = 200,
+    corpse = "curved-rail-remnants",
+    dying_explosion =
+    {
+      {
+        name = "rail-explosion",
+        offset = {0.9, 2.2}
+      },
+      {
+        name = "rail-explosion"
+      },
+      {
+        name = "rail-explosion",
+        offset = {-1.2, -2}
+      }
+    },
+    resistances =
+    {
+      {
+        type = "fire",
+        percent = 100
+      },
+      {
+        type = "acid",
+        percent = 80
+      },
+    },
+    -- collision box is hardcoded for rails as to avoid unexpected changes in the way rail blocks are merged
+    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
+    damaged_trigger_effect = hit_effects.wall(),
+    pictures = rail_pictures(),
+    placeable_by = {item = "rail", count = 4}
+  },
+  
+  {
+    type = "accumulator",
+    name = "accumulator",
+    icon = "__base__/graphics/icons/accumulator.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "accumulator"},
+    max_health = 150,
+    corpse = "accumulator-remnants",
+    dying_explosion = "accumulator-explosion",
+    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
+    selection_box = {{-1, -1}, {1, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
+    drawing_box = {{-1, -1.5}, {1, 1}},
+    energy_source =
+    {
+      type = "electric",
+      buffer_capacity = "5MJ",
+      usage_priority = "tertiary",
+      input_flow_limit = "300kW",
+      output_flow_limit = "300kW"
+    },
+    picture = accumulator_picture(),
+    charge_animation = accumulator_charge(),
+    water_reflection = accumulator_reflection(),
+
+    charge_cooldown = 30,
+    charge_light = {intensity = 0.3, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
+    discharge_animation = accumulator_discharge(),
+    discharge_cooldown = 60,
+    discharge_light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}},
+    vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/accumulator-working.ogg",
+        volume = 0.4
+      },
+      idle_sound =
+      {
+        filename = "__base__/sound/accumulator-idle.ogg",
+        volume = 0.35
+      },
+      --persistent = true,
+      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.5,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
+    },
+
+    circuit_wire_connection_point = circuit_connector_definitions["accumulator"].points,
+    circuit_connector_sprites = circuit_connector_definitions["accumulator"].sprites,
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+
+    default_output_signal = {type = "virtual", name = "signal-A"}
+  }
 }
 )
 

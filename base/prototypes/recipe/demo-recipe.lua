@@ -173,6 +173,17 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "filter-inserter",
+    enabled = false,
+    ingredients =
+    {
+      {"fast-inserter", 1},
+      {"electronic-circuit", 4}
+    },
+    result = "filter-inserter"
+  },
+  {
+    type = "recipe",
     name = "long-handed-inserter",
     enabled = false,
     ingredients =
@@ -581,6 +592,229 @@ data:extend(
     enabled = false,
     ingredients = {{"stone-wall", 1}, {"steel-plate", 2}, {"electronic-circuit", 2}},
     result = "gate"
+  },
+  {
+    type = "recipe",
+    name = "heavy-armor",
+    enabled = false,
+    energy_required = 8,
+    ingredients = {{ "copper-plate", 100}, {"steel-plate", 50}},
+    result = "heavy-armor"
+  },
+  {
+    type = "recipe",
+    name = "steel-chest",
+    enabled = false,
+    ingredients = {{"steel-plate", 8}},
+    result = "steel-chest"
+  },
+  {
+    type = "recipe",
+    name = "fast-underground-belt",
+    energy_required = 2,
+    enabled = false,
+    ingredients =
+    {
+      {"iron-gear-wheel", 40},
+      {"underground-belt", 2}
+    },
+    result_count = 2,
+    result = "fast-underground-belt"
+  },
+  {
+    type = "recipe",
+    name = "fast-splitter",
+    enabled = false,
+    energy_required = 2,
+    ingredients =
+    {
+      {"splitter", 1},
+      {"iron-gear-wheel", 10},
+      {"electronic-circuit", 10}
+    },
+    result = "fast-splitter"
+  },
+  {
+    type = "recipe",
+    name = "engine-unit",
+    energy_required = 10,
+    category = "advanced-crafting",
+    ingredients =
+    {
+      {"steel-plate", 1},
+      {"iron-gear-wheel", 1},
+      {"pipe", 2}
+    },
+    result = "engine-unit",
+    enabled = false
+  },
+  {
+    type = "recipe",
+    name = "concrete",
+    energy_required = 10,
+    enabled = false,
+    category = "crafting-with-fluid",
+    ingredients =
+    {
+      {"stone-brick", 5},
+      {"iron-ore", 1},
+      {type="fluid", name="water", amount=100}
+    },
+    result= "concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "hazard-concrete",
+    energy_required = 0.25,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"concrete", 10}
+    },
+    result= "hazard-concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "refined-concrete",
+    energy_required = 15,
+    enabled = false,
+    category = "crafting-with-fluid",
+    ingredients =
+    {
+      {"concrete", 20},
+      {"iron-stick", 8},
+      {"steel-plate", 1},
+      {type="fluid", name="water", amount=100}
+    },
+    result= "refined-concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "refined-hazard-concrete",
+    energy_required = 0.25,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"refined-concrete", 10}
+    },
+    result= "refined-hazard-concrete",
+    result_count = 10
+  },
+  {
+    type = "recipe",
+    name = "landfill",
+    energy_required = 0.5,
+    enabled = false,
+    category = "crafting",
+    ingredients =
+    {
+      {"stone", 20}
+    },
+    result= "landfill",
+    result_count = 1
+  },
+  {
+    type = "recipe",
+    name = "fast-transport-belt",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-gear-wheel", 5},
+      {"transport-belt", 1}
+    },
+    result = "fast-transport-belt"
+  },
+  {
+    type = "recipe",
+    name = "solar-panel",
+    energy_required = 10,
+    enabled = false,
+    ingredients =
+    {
+      {"steel-plate", 5},
+      {"electronic-circuit", 15},
+      {"copper-plate", 5}
+    },
+    result = "solar-panel"
+  },
+  {
+    type = "recipe",
+    name = "rail",
+    enabled = false,
+    ingredients =
+    {
+      {"stone", 1},
+      {"iron-stick", 1},
+      {"steel-plate", 1}
+    },
+    result = "rail",
+    result_count = 2
+  },
+  {
+    type = "recipe",
+    name = "locomotive",
+    energy_required = 4,
+    enabled = false,
+    ingredients =
+    {
+      {"engine-unit", 20},
+      {"electronic-circuit", 10},
+      {"steel-plate", 30}
+    },
+    result = "locomotive"
+  },
+  {
+    type = "recipe",
+    name = "cargo-wagon",
+    energy_required = 1,
+    enabled = false,
+    ingredients =
+    {
+      {"iron-gear-wheel", 10},
+      {"iron-plate", 20},
+      {"steel-plate", 20}
+    },
+    result = "cargo-wagon"
+  },
+  {
+    type = "recipe",
+    name = "rail-signal",
+    enabled = false,
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"iron-plate", 5}
+    },
+    result = "rail-signal"
+  },
+  {
+    type = "recipe",
+    name = "rail-chain-signal",
+    enabled = false,
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"iron-plate", 5}
+    },
+    result = "rail-chain-signal"
+  },
+  {
+    type = "recipe",
+    name = "train-stop",
+    enabled = false,
+    ingredients =
+    {
+      {"electronic-circuit", 5},
+      {"iron-plate", 6},
+      {"iron-stick", 6},
+      {"steel-plate", 3}
+    },
+    result = "train-stop"
   },
 }
 )

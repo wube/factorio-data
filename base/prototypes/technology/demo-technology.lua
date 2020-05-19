@@ -1,488 +1,140 @@
-data:extend(
-{
+data:extend
+{ 
   {
     type = "technology",
-    name = "basic-mining",
+    name = "automation",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/basic-mining.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/automation.png",
     effects =
     {
-      {
-        type = "unlock-recipe",
-        recipe = "burner-mining-drill"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "wooden-chest"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "automation-science-pack"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "iron-gear-wheel"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "stone-furnace"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "iron-plate"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "stone-brick"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "copper-plate"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "small-electric-pole"
-      },
-    },
-    unit =
-    {
-      count = 8,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 1
-    },
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "basic-electronics",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/basic-electronics.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "electronic-circuit"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "copper-cable"
-      },
       {
         type = "unlock-recipe",
         recipe = "assembling-machine-1"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "long-handed-inserter"
       }
     },
     unit =
     {
       count = 10,
       ingredients = {{"automation-science-pack", 1}},
-      time = 6
+      time = 10
     },
-    prerequisites = {'basic-mining'},
-    order = "c-a"
+    order = "a-b-a"
   },
   {
     type = "technology",
-    name = "basic-mapping",
+    name = "automation-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/basic-mapping.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/automation.png",
+    localised_description = {"technology-description.automation-2"},
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "radar"
-      },
+        recipe = "assembling-machine-2"
+      }
     },
+    prerequisites = {"electronics", "steel-processing", "logistic-science-pack"},
     unit =
     {
-      count = 20,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 2
+      count = 40,
+      ingredients = {{"automation-science-pack", 1},{"logistic-science-pack", 1}},
+      time = 15
     },
-    prerequisites = {'basic-electronics'},
-    order = "c-a"
+    order = "a-b-b"
   },
   {
     type = "technology",
-    name = "electric-inserter",
+    name = "electronics",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/electric-inserter.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "inserter"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "iron-chest"
-      },
-    },
-    unit =
-    {
-      count = 10,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 5
-    },
-    prerequisites = {'basic-electronics'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "basic-logistics",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/basic-logistics.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "transport-belt"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "burner-inserter"
-      },
-    },
-  unit =
-    {
-      count = 20,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 5
-    },
-    prerequisites = {'basic-mining'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "analyse-ship",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/analyse-ship.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "pipe-to-ground"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "pipe"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "offshore-pump"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "steam-engine"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "boiler"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "lab"
-      },
-    },
+    icon = "__base__/graphics/technology/electronics.png",
+    prerequisites = {"automation"},
     unit =
     {
       count = 30,
       ingredients = {{"automation-science-pack", 1}},
-      time = 2
-    },
-    prerequisites = {'basic-mapping'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "basic-optics",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/basic-optics.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "small-lamp"
-      }
-    },
-    unit =
-    {
-      count = 15,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 30
-    },
-    prerequisites = {'improved-equipment'},
-    order = "a-h-a"
-  },
-  {
-    type = "technology",
-    name = "basic-military",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/basic-military.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "light-armor"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "pistol"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "firearm-magazine"
-      }
-    },
-    unit =
-    {
-      count = 40,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 12
-    },
-    prerequisites = {'improved-equipment'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "electric-mining",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/electric-mining.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "electric-mining-drill"
-      },
-    },
-    unit =
-    {
-      count = 15,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 30
-    },
-    prerequisites = {'analyse-ship'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "active-defense",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/active-defense.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "gun-turret"
-      },
-    },
-    unit =
-    {
-      count = 80,
-      ingredients = {{"automation-science-pack", 1}},
       time = 15
     },
-    prerequisites = {'basic-military'},
-    order = "c-a"
+    order = "a-d-a"
   },
   {
     type = "technology",
-    name = "repair-tech",
+    name = "logistic-science-pack",
+    localised_name = {"technology-name.logistic-science-pack"},
+    localised_description = {"technology-description.logistic-science-pack"},
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/repair-tech.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "repair-pack"
-      },
-    },
-    unit =
-    {
-      count = 15,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 30
-    },
-    prerequisites = {'basic-military'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "passive-defense",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/passive-defense.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "stone-wall"
-      },
-    },
-    unit =
-    {
-      count = 15,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 30
-    },
-    prerequisites = {'active-defense'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "improved-equipment",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/improved-equipment.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "electronic-circuit"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "copper-cable"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "automation-science-pack"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "iron-gear-wheel"
-      },
-    },
-    unit =
-    {
-      count = 50,
-      ingredients = {{"automation-science-pack", 1}},
-      time = 12
-    },
-    prerequisites = {'analyse-ship'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "demo-science-pack",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-science-pack.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/logistic-science-pack.png",
     effects =
     {
       {
         type = "unlock-recipe",
         recipe = "logistic-science-pack"
-      },
+      }
     },
     unit =
     {
-      count = 100,
+      count = 75,
       ingredients = {{"automation-science-pack", 1}},
-      time = 36
+      time = 5
     },
-    prerequisites = {'improved-equipment'},
     order = "c-a"
   },
   {
     type = "technology",
-    name = "demo-steel-processing",
+    name = "steel-processing",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-steel-processing.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/steel-processing.png",
     effects =
     {
       {
         type = "unlock-recipe",
         recipe = "steel-plate"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "steel-chest"
+      }
     },
     unit =
     {
-      count = 30,
-      ingredients = {
-        {"automation-science-pack", 1},
-      },
-      time = 30
+      count = 50,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 5
     },
-    prerequisites = {'improved-equipment'},
     order = "c-a"
   },
   {
     type = "technology",
-    name = "demo-automation-upgrade",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-automation-upgrade.png",
-    enabled = false,
+    name = "steel-axe",
+    icon_size = 64, icon_mipmaps = 4,
+    icon = "__base__/graphics/icons/steel-axe.png",
     effects =
     {
       {
-        type = "unlock-recipe",
-        recipe = "assembling-machine-2"
-      },
+        type = "character-mining-speed",
+        modifier = 1
+      }
     },
+    prerequisites = {"steel-processing"},
     unit =
     {
-      count = 30,
-      ingredients = {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
+      count = 50,
+      ingredients =
+      {
+        {"automation-science-pack", 1}
       },
       time = 30
     },
-    prerequisites = {'demo-steel-processing','demo-science-pack'},
-    order = "c-a"
+    order = "c-c-a"
   },
   {
     type = "technology",
-    name = "demo-steel-poles",
+    name = "military",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-steel-poles.png",
-    enabled = false,
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "medium-electric-pole"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "big-electric-pole"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "iron-stick"
-      },
-    },
-    unit =
-    {
-      count = 30,
-      ingredients = {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
-      },
-      time = 30
-    },
-    prerequisites = {'demo-steel-processing'},
-    order = "c-a"
-  },
-  {
-    type = "technology",
-    name = "demo-military-equipment",
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-military-equipment.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/military.png",
     effects =
     {
       {
@@ -496,25 +148,21 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "shotgun-shell"
-      },
+      }
     },
     unit =
     {
-      count = 60,
-      ingredients = {
-        {"automation-science-pack", 1},
-      },
-      time = 30
+      count = 10,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 15
     },
-    prerequisites = {'basic-military'},
-    order = "c-a"
+    order = "e-a-a"
   },
   {
     type = "technology",
-    name = "demo-munitions-upgrade",
+    name = "military-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-munitions-upgrade.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/military.png",
     effects =
     {
       {
@@ -524,51 +172,51 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "grenade"
-      },
+      }
     },
+    prerequisites = {"military", "steel-processing", "logistic-science-pack"},
     unit =
     {
-      count = 60,
-      ingredients = {
+      count = 20,
+      ingredients =
+      {
         {"automation-science-pack", 1},
         {"logistic-science-pack", 1}
       },
-      time = 30
+      time = 15
     },
-    prerequisites = {'demo-military-equipment','demo-steel-processing','demo-science-pack'},
-    order = "c-a"
+    order = "e-a-b"
   },
   {
     type = "technology",
-    name = "demo-steel-furnace",
+    name = "fast-inserter",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-steel-furnace.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/fast-inserter.png",
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "steel-furnace"
+        recipe = "fast-inserter"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "filter-inserter"
+      }
     },
+    prerequisites = {"electronics"},
     unit =
     {
-      count = 60,
-      ingredients = {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1}
-      },
-      time = 30
+      count = 30,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 15
     },
-    prerequisites = {'demo-steel-processing','demo-science-pack'},
-    order = "c-a"
+    order = "a-d-a"
   },
   {
     type = "technology",
-    name = "demo-logistics",
+    name = "logistics",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-underground-belt.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/logistics.png",
     effects =
     {
       {
@@ -578,63 +226,367 @@ data:extend(
       {
         type = "unlock-recipe",
         recipe = "splitter"
-      },
-      {
-        type = "unlock-recipe",
-        recipe = "long-handed-inserter"
-      },
+      }
     },
     unit =
     {
-      count = 25,
+      count = 20,
       ingredients = {{"automation-science-pack", 1}},
-      time = 30
+      time = 15
     },
-    prerequisites = {'improved-equipment'},
-    order = "c-a"
+    order = "a-f-a"
   },
   {
     type = "technology",
-    name = "demo-gates",
+    name = "railway",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-gates.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/railway.png",
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "gate"
+        recipe = "rail"
       },
+      {
+        type = "unlock-recipe",
+        recipe = "locomotive"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "cargo-wagon"
+      }
     },
+    prerequisites = {"logistics-2", "engine"},
     unit =
     {
-      count = 25,
-      ingredients = {
+      count = 75,
+      ingredients =
+      {
         {"automation-science-pack", 1},
         {"logistic-science-pack", 1}
       },
       time = 30
     },
-    prerequisites = {'passive-defense','demo-steel-processing','demo-science-pack'},
-    order = "c-a"
+    order = "c-g-a"
   },
   {
     type = "technology",
-    name = "demo-productivity-1",
+    name = "automated-rail-transportation",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-productivity.png",
-    enabled = false,
+    icon = "__base__/graphics/technology/automated-rail-transportation.png",
     effects =
     {
       {
-        type = "mining-drill-productivity-bonus",
-        modifier = 0.1
+        type = "unlock-recipe",
+        recipe = "train-stop"
       }
     },
-    prerequisites = {"demo-automation-upgrade"},
+    prerequisites = {"railway"},
     unit =
     {
-      count_formula = "100*L",
+      count = 75,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "c-g-b"
+  },
+  {
+    type = "technology",
+    name = "rail-signals",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/rail-signals.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "rail-signal"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "rail-chain-signal"
+      }
+    },
+    prerequisites = {"automated-rail-transportation"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "c-g-c"
+  },
+  {
+    type = "technology",
+    name = "automobilism",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/automobilism.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "car"
+      }
+    },
+    prerequisites = {"logistics-2", "engine"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "e-b"
+  },
+  {
+    type = "technology",
+    name = "optics",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/optics.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "small-lamp"
+      }
+    },
+    unit =
+    {
+      count = 10,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 15
+    },
+    order = "a-h-a"
+  },
+  {
+    type = "technology",
+    name = "solar-energy",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/solar-energy.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "solar-panel"
+      }
+    },
+    prerequisites = {"optics", "electronics", "steel-processing", "logistic-science-pack"},
+    unit =
+    {
+      count = 250,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "a-h-c"
+  },
+  {
+    type = "technology",
+    name = "heavy-armor",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/armor-making.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "heavy-armor"
+      }
+    },
+    prerequisites = {"military", "steel-processing"},
+    unit =
+    {
+      count = 30,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 30
+    },
+    order = "g-a-b"
+  },
+  {
+    type = "technology",
+    name = "turrets",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/turrets.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "gun-turret"
+      }
+    },
+    unit =
+    {
+      count = 10,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 10
+    },
+    order = "a-j-a"
+  },
+  
+  {
+    type = "technology",
+    name = "research-speed-1",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/research-speed.png",
+    effects =
+    {
+      {
+        type = "laboratory-speed",
+        modifier = 0.2
+      }
+    },
+    prerequisites = {"automation-2"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "c-m-a"
+  },
+  {
+    type = "technology",
+    name = "research-speed-2",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/research-speed.png",
+    effects =
+    {
+      {
+        type = "laboratory-speed",
+        modifier = 0.3
+      }
+    },
+    prerequisites = {"research-speed-1"},
+    unit =
+    {
+      count = 200,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    upgrade = true,
+    order = "c-m-b"
+  },
+  {
+    type = "technology",
+    name = "electric-energy-distribution-1",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/electric-energy-distribution.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "medium-electric-pole"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "big-electric-pole"
+      }
+    },
+    prerequisites = {"electronics", "steel-processing", "logistic-science-pack"},
+    unit =
+    {
+      count = 120,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "c-e-b"
+  },
+  {
+    type = "technology",
+    name = "advanced-material-processing",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/advanced-material-processing.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "steel-furnace"
+      }
+    },
+    prerequisites = {"steel-processing", "logistic-science-pack"},
+    unit =
+    {
+      count = 75,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "c-c-a"
+  },
+  {
+    type = "technology",
+    name = "concrete",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/concrete.png",
+    prerequisites = {"advanced-material-processing", "automation-2"},
+    unit =
+    {
+      count = 250,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "concrete"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "hazard-concrete"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "refined-concrete"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "refined-hazard-concrete"
+      }
+    },
+    order = "c-c-c"
+  },
+  {
+    type = "technology",
+    name = "engine",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/engine.png",
+    prerequisites = {"steel-processing", "logistic-science-pack"},
+    unit =
+    {
+      count = 100,
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -642,66 +594,141 @@ data:extend(
       },
       time = 15
     },
-    upgrade = true,
-    max_level = "infinite",
-    order = "c-k-f-e"
-  },
-  {
-    type = "technology",
-    name = "demo-shooting-speed-1",
-    enabled = false,
-    icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-shooting-speed.png",
     effects =
     {
       {
-        type = "gun-speed",
-        ammo_category = "bullet",
-        modifier = 0.1
-      },
+        type = "unlock-recipe",
+        recipe = "engine-unit"
+      }
     },
-    prerequisites = {"active-defense"},
-    unit =
-    {
-      count_formula = "150*L",
-      ingredients =
-      {
-        {"automation-science-pack", 1}
-      },
-      time = 30
-    },
-    upgrade = true,
-    max_level = 3,
-    order = "e-j-a"
+    order = "b-a"
   },
   {
     type = "technology",
-    name = "demo-shooting-speed-4",
-    enabled = false,
+    name = "landfill",
     icon_size = 128,
-    icon = "__base__/graphics/technology/demo/demo-shooting-speed.png",
-    effects =
-    {
-      {
-        type = "gun-speed",
-        ammo_category = "bullet",
-        modifier = 0.1
-      },
-    },
-    prerequisites = {"demo-shooting-speed-1"},
+    icon = "__base__/graphics/technology/landfill.png",
+    prerequisites = {"logistic-science-pack"},
     unit =
     {
-      count_formula = "150*L",
+      count = 50,
       ingredients =
       {
         {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
+        {"logistic-science-pack", 1}
       },
       time = 30
     },
-    upgrade = true,
-    max_level = "infinite",
-    order = "e-j-a"
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "landfill"
+      }
+    },
+    order = "b-d"
   },
-})
-
+  {
+    type = "technology",
+    name = "logistics-2",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/logistics.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "fast-transport-belt"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "fast-underground-belt"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "fast-splitter"
+      }
+    },
+    prerequisites = {"logistics", "logistic-science-pack"},
+    unit =
+    {
+      count = 200,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "a-f-b"
+  },  
+  {
+    type = "technology",
+    name = "toolbelt",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/toolbelt.png",
+    prerequisites = {"logistic-science-pack"},
+    effects =
+    {
+      {
+        type = "character-inventory-slots-bonus",
+        modifier = 10
+      }
+    },
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "c-k-m"
+  },  
+  {
+    type = "technology",
+    name = "stone-walls",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/stone-walls.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "stone-wall"
+      }
+    },
+    unit =
+    {
+      count = 10,
+      ingredients = {{"automation-science-pack", 1}},
+      time = 10
+    },
+    order = "a-k-a"
+  },
+  {
+    type = "technology",
+    name = "gates",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/gates.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "gate"
+      }
+    },
+    prerequisites = {"stone-walls", "military-2"},
+    unit =
+    {
+      count = 100,
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1}
+      },
+      time = 30
+    },
+    order = "a-l-a"
+  },
+}

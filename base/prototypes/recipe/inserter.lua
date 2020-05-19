@@ -2,17 +2,6 @@ data:extend(
 {
   {
     type = "recipe",
-    name = "filter-inserter",
-    enabled = false,
-    ingredients =
-    {
-      {"fast-inserter", 1},
-      {"electronic-circuit", 4}
-    },
-    result = "filter-inserter"
-  },
-  {
-    type = "recipe",
     name = "stack-inserter",
     enabled = false,
     ingredients =
