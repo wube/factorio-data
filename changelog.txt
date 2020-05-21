@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.26
+Version: 0.18.27
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.26
+Date: 21. 05. 2020
+  Changes:
+    - Crafting machines will now refund item ingredients when crafting is cancelled before finishing.
+    - Disallowed saving over autosave files or making saves that begin with '_autosave'.
+  Bugfixes:
+    - Fix tutorial description only mentioning 3 levels instead of the full 5. (https://forums.factorio.com/85126)
+  Modding:
+    - Changed default value of return_ingredients_on_change property of furnaces, assembling machines and rocket silo to 'true'.
+    - Added script_raised_set_tiles.
+    - Added by_player to LuaEntity::copy_settings()
+    - Added by_player to LuaEquipmentGrid::take, take_all, clear, and put.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.25
 Date: 19. 05. 2020

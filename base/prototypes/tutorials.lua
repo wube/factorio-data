@@ -29,7 +29,8 @@ data:extend(
     icon = "__base__/graphics/technology/railway.png",
     icon_size = 128,
     related_items = {"rail", "construction-robot"},
-    dependencies = {"trains-basics", "construction-robots"}
+    dependencies = {"trains-basics", "construction-robots"},
+    visible_when_dependencies_not_completed = true
   },
   {
     type = "tutorial",
@@ -44,7 +45,8 @@ data:extend(
     icon = "__base__/graphics/technology/automated-rail-transportation.png",
     icon_size = 128,
     related_items = {"train-stop", "locomotive", "cargo-wagon"},
-    dependencies = {"trains-basics"}
+    dependencies = {"trains-basics"},
+    visible_when_dependencies_not_completed = true
   },
   {
     type = "tutorial",
@@ -59,7 +61,8 @@ data:extend(
     icon = "__base__/graphics/technology/rail-signals.png",
     icon_size = 128,
     related_items = {"rail-signal", "locomotive"},
-    dependencies = {"trains-stations"}
+    dependencies = {"trains-stations"},
+    visible_when_dependencies_not_completed = true
   },
   {
     type = "tutorial",
@@ -74,7 +77,8 @@ data:extend(
     icon = "__base__/graphics/technology/rail-signals.png",
     icon_size = 128,
     related_items = {"rail-signal", "rail-chain-signal", "locomotive"},
-    dependencies = {"trains-basic-signals"}
+    dependencies = {"trains-basic-signals"},
+    visible_when_dependencies_not_completed = true
   },
   {
     type = "tutorial",
@@ -103,7 +107,8 @@ data:extend(
     icon = "__base__/graphics/technology/construction-robotics.png",
     icon_size = 128,
     related_items = {"roboport", "construction-robot", "blueprint"},
-    dependencies = {"logistic-system-basic"}
+    dependencies = {"logistic-system-basic"},
+    visible_when_dependencies_not_completed = true
   },
   --[[
   {
