@@ -247,7 +247,9 @@ function player_set_info(player, info)
     end
   else
     if not info_flow then
-      info_flow = gui.add{type = "frame", name = "goal_info_frame", direction = "vertical", style = "goal_inner_frame"}
+      info_flow = gui.add{type = "flow", name = "goal_info_frame", direction = "vertical"}
+      info_flow.style.vertical_spacing = 8
+      info_flow.style.top_padding = 8
     end
     if not info.append then
       info_flow.clear()
@@ -268,13 +270,13 @@ function player_set_info(player, info)
       if info.picture then
         local flow = info_flow.add{type = "flow"}
         if type(info.picture) == "string" then
-          flow.add{type = "frame", style = "image_frame"}.add
+          flow.add{type = "frame", style = "deep_frame_in_shallow_frame"}.add
           {
             type = "sprite",
             sprite = info.picture
           }
         else
-          local element = flow.add{type = "frame", style = "image_frame"}.add
+          local element = flow.add{type = "frame", style = "deep_frame_in_shallow_frame"}.add
           {
             type = "sprite",
             name = info.picture.name,
@@ -301,7 +303,7 @@ function player_set_info(player, info)
             if picture.split then
               flow = info_flow.add{type = "flow"}
             end
-            local element = flow.add{type = "frame", style = "image_frame"}.add
+            local element = flow.add{type = "frame", style = "deep_frame_in_shallow_frame"}.add
             {
               type = "sprite",
               sprite = picture.path,

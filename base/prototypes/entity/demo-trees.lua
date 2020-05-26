@@ -7268,7 +7268,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
     {
       type = "tree",
       name = name,
-      icon = "__base__/graphics/icons/" .. type_name .. ".png",
+      icon = "__base__/graphics/icons/" .. name .. ".png",
       icon_size = 64, icon_mipmaps = 4,
       flags = tree_flags,
       minable =

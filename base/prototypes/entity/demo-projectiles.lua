@@ -93,19 +93,52 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/grenade/grenade.png",
-      frame_count = 1,
-      width = 24,
-      height = 24,
-      priority = "high"
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 28,
+      shift = util.by_pixel(1, 1),
+      priority = "high",
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/grenade/hr-grenade.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 48,
+        height = 54,
+        shift = util.by_pixel(0.5, 0.5),
+        priority = "high",
+        scale = 0.5
+      }
+
     },
     shadow =
     {
       filename = "__base__/graphics/entity/grenade/grenade-shadow.png",
-      frame_count = 1,
-      width = 24,
-      height = 24,
-      priority = "high"
-    }
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 20,
+      shift = util.by_pixel(2, 6),
+      priority = "high",
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/grenade/hr-grenade-shadow.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 50,
+        height = 40,
+        shift = util.by_pixel(2, 6),
+        priority = "high",
+        draw_as_shadow = true,
+        scale = 0.5
+      }
+    },
   },
   
   {

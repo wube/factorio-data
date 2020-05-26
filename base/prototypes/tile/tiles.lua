@@ -18,6 +18,106 @@ local dirt_pollution_absorption = 0.0000066
 local sand_pollution_absorption = 0.0000058
 local red_desert_pollution_absorption = 0.0000066
 
+local landfill_build_sounds =
+{
+  small =  
+  {
+    {
+      filename = "__core__/sound/landfill-small.ogg"
+    },
+    {
+      filename = "__core__/sound/landfill-small-1.ogg"
+    },
+    {
+      filename = "__core__/sound/landfill-small-2.ogg"
+    },
+    {
+      filename = "__core__/sound/landfill-small-3.ogg"
+    },
+    {
+      filename = "__core__/sound/landfill-small-4.ogg"
+    },
+    {
+      filename = "__core__/sound/landfill-small-5.ogg"
+    }
+  },
+  medium =
+  {
+    {
+      filename = "__core__/sound/landfill-medium.ogg",
+      volume = 0.8
+    },
+    {
+      filename = "__core__/sound/landfill-medium-1.ogg",
+      volume = 0.8
+    },
+    {
+      filename = "__core__/sound/landfill-medium-2.ogg",
+      volume = 0.8
+    },
+    {
+      filename = "__core__/sound/landfill-medium-3.ogg",
+      volume = 0.8
+    },
+    {
+      filename = "__core__/sound/landfill-medium-4.ogg",
+      volume = 0.8
+    },
+    {
+      filename = "__core__/sound/landfill-medium-5.ogg",
+      volume = 0.8
+    }
+  },
+  large =
+   { 
+    {
+      filename = "__core__/sound/landfill-large.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__core__/sound/landfill-large-1.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__core__/sound/landfill-large-2.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__core__/sound/landfill-large-3.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__core__/sound/landfill-large-4.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__core__/sound/landfill-large-5.ogg",
+      volume = 0.5
+    }
+  }
+}
+
+local concrete_tile_build_sounds =
+{ small =  {{ filename = "__core__/sound/build-concrete-small.ogg", volume = 0.4 },
+            { filename = "__core__/sound/build-concrete-small-1.ogg", volume = 0.4 },
+            { filename = "__core__/sound/build-concrete-small-2.ogg", volume = 0.4 },
+            { filename = "__core__/sound/build-concrete-small-3.ogg", volume = 0.4 },
+            { filename = "__core__/sound/build-concrete-small-4.ogg", volume = 0.4 },
+            { filename = "__core__/sound/build-concrete-small-5.ogg", volume = 0.4 }},
+  medium = {{ filename = "__core__/sound/build-concrete-medium.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-medium-1.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-medium-2.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-medium-3.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-medium-4.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-medium-5.ogg", volume = 0.5 }},
+  large =  {{ filename = "__core__/sound/build-concrete-large.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-large-1.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-large-2.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-large-3.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-large-4.ogg", volume = 0.5 },
+            { filename = "__core__/sound/build-concrete-large-5.ogg", volume = 0.5 }},
+}
+
 local grass_sounds =
 {
   {
@@ -2775,6 +2875,7 @@ define_tiles
     transitions_between_transitions = stone_path_transitions_between_transitions,
 
     walking_sound = concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
     map_color={r=86, g=82, b=74},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
@@ -3131,6 +3232,7 @@ define_tiles
     transitions_between_transitions = concrete_transitions_between_transitions,
 
     walking_sound = concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
     map_color={r=63, g=61, b=59},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
@@ -3246,6 +3348,7 @@ define_tiles
       }
     },
     walking_sound = concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
     map_color={r=176, g=142, b=39},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
@@ -3331,6 +3434,7 @@ define_tiles
       }
     },
     walking_sound = concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
     map_color={r=176, g=142, b=39},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
@@ -3506,6 +3610,7 @@ define_tiles
     transitions_between_transitions = concrete_transitions_between_transitions,
 
     walking_sound = refined_concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
 
     map_color={r=49, g=48, b=45},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
@@ -3622,6 +3727,7 @@ define_tiles
       }
     },
     walking_sound = refined_concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
     map_color={r=116, g=94, b=26},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
@@ -3706,6 +3812,7 @@ define_tiles
       }
     },
     walking_sound = refined_concrete_sounds,
+    build_sound = concrete_tile_build_sounds,
     map_color={r=116, g=94, b=26},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
@@ -3764,6 +3871,7 @@ define_tiles
     }),
 
     walking_sound = dirt_sounds,
+    build_sound = landfill_build_sounds,
     map_color={r=57, g=39, b=26},
     scorch_mark_color = {r = 0.329, g = 0.242, b = 0.177, a = 1.000},
     pollution_absorption_per_second = 0

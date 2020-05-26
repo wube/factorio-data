@@ -855,19 +855,52 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/cluster-grenade/cluster-grenade.png",
-      frame_count = 1,
-      width = 24,
-      height = 24,
-      priority = "high"
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 28,
+      shift = util.by_pixel(1, 1),
+      priority = "high",
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/cluster-grenade/hr-cluster-grenade.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 48,
+        height = 54,
+        shift = util.by_pixel(0.5, 0.5),
+        priority = "high",
+        scale = 0.5
+      }
+
     },
     shadow =
     {
       filename = "__base__/graphics/entity/grenade/grenade-shadow.png",
-      frame_count = 1,
-      width = 24,
-      height = 24,
-      priority = "high"
-    }
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 20,
+      shift = util.by_pixel(2, 6),
+      priority = "high",
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/grenade/hr-grenade-shadow.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 50,
+        height = 40,
+        shift = util.by_pixel(2, 6),
+        priority = "high",
+        draw_as_shadow = true,
+        scale = 0.5
+      }
+    },
   },
   {
     type = "projectile",
@@ -1105,18 +1138,51 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/slowdown-capsule/slowdown-capsule.png",
-      frame_count = 1,
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
       width = 32,
-      height = 32,
-      priority = "high"
+      height = 30,
+      shift = util.by_pixel(1, 0),
+      priority = "high",
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/slowdown-capsule/hr-slowdown-capsule.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 60,
+        height = 60,
+        shift = util.by_pixel(0.5, 0.5),
+        priority = "high",
+        scale = 0.5
+      }
+
     },
     shadow =
     {
       filename = "__base__/graphics/entity/slowdown-capsule/slowdown-capsule-shadow.png",
-      frame_count = 1,
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
       width = 32,
-      height = 32,
-      priority = "high"
+      height = 24,
+      shift = util.by_pixel(2, 13),
+      priority = "high",
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/slowdown-capsule/hr-slowdown-capsule-shadow.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 64,
+        height = 48,
+        shift = util.by_pixel(2, 13.5),
+        priority = "high",
+        draw_as_shadow = true,
+        scale = 0.5
+      }
     },
     smoke = capsule_smoke
   },
@@ -1221,20 +1287,52 @@ data:extend(
     light = {intensity = 0.5, size = 4},
     animation =
     {
-      filename = "__base__/graphics/icons/cliff-explosives.png",
-      frame_count = 1,
-      width = 64,
-      height = 64,
+      filename = "__base__/graphics/entity/cliff-explosives/cliff-explosives.png",
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 30,
+      shift = util.by_pixel(0, -4),
       priority = "high",
-      scale = 0.5*0.75
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/cliff-explosives/hr-cliff-explosives.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 52,
+        height = 58,
+        shift = util.by_pixel(0.5, -4.5),
+        priority = "high",
+        scale = 0.5
+      }
+
     },
     shadow =
     {
-      filename = "__base__/graphics/entity/grenade/grenade-shadow.png",
-      frame_count = 1,
-      width = 24,
-      height = 24,
-      priority = "high"
+      filename = "__base__/graphics/entity/cliff-explosives/cliff-explosives-shadow.png",
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 38,
+      height = 22,
+      shift = util.by_pixel(-3, 4),
+      priority = "high",
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/cliff-explosives/hr-cliff-explosives-shadow.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 74,
+        height = 42,
+        shift = util.by_pixel(-3.5, 4),
+        priority = "high",
+        draw_as_shadow = true,
+        scale = 0.5
+      }
     }
   }
 }

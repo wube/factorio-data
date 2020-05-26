@@ -183,7 +183,7 @@ data:extend(
   {
     type = "capsule",
     name = "discharge-defense-remote",
-    icon = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
+    icon = "__base__/graphics/icons/discharge-defense-equipment-controller.png",
     icon_size = 64, icon_mipmaps = 4,
     capsule_action =
     {

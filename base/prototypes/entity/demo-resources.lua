@@ -137,7 +137,7 @@ data:extend({
       order = "b",
       map_color = {0, 0, 0},
       mining_time = 1,
-      walking_sound = sounds.coal
+      walking_sound = sounds.ore
     },
     {
       base_density = 8,

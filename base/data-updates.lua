@@ -148,11 +148,11 @@ local function generate_fill_barrel_icons(fluid)
       icon_size = fluid.icon_size,
       icon_mipmaps = fluid.icon_mipmaps,
       scale = 16.0 / fluid.icon_size, -- scale = 0.5 * 32 / icon_size simplified
-      shift = {4, -8}
+      shift = {-8, -8}
     }
     )
   elseif fluid.icons then
-    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {4, -8}})
+    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {-8, -8}})
   end
 
   return icons

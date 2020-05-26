@@ -1,6 +1,34 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.27
+Version: 0.18.28
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.27
+Date: 26. 05. 2020
+  Graphics:
+    - New high resolution icons for all items.
+    - New sprites for some equipment grid items.
+  Gui:
+    - Logistic chests have a different layout.
+    - Visual improvements to the equipment grid.
+    - Minor visual improvements to most of the game GUIs.
+    - Minor layout changes to GUI of Combinators, Programmable speaker, Circuit and logistic connection windows, Rocket silo.
+    - Added a close button to most game windows.
+  Sounds:
+    - New sounds for GUI interactions.
+    - New sounds for game interactions, such as pipette, rotate entity, build ghost, mine ghost, switching gun.
+    - Updating working sounds for many entities, such as substation, roboport, combinator.
+    - New working sound for rocket silo.
+    - New sound for night vision equipment, discharge defense equipment.
+    - New tile build sounds for landfill, concrete, stone bricks and refined concrete.
+  Changes:
+    - Increased logistic filter count for requester and buffer chests from 12 to 30.
+  Scripting:
+    - Changed script.raise_event() to only allow mod-created events and specific game events.
+    - Changed script.raise_event() to validate all required fields are provided for the given event being raised.
+    - Added event filters for script raised revive, destroy, and created events.
+    - Changed event erroring so errors during raise_event are properly blamed on the mod erroring.
+    - Changed raise_event ordering to match standard event ordering.
+    - All game events that support filters now filter correctly regardless of how they're raised (raise_event or actual game event).
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.26
 Date: 21. 05. 2020

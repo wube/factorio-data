@@ -259,23 +259,43 @@ sounds.ore =
 {
   {
     filename = "__base__/sound/walking/resources/ore-01.ogg",
-    volume = 0.4
+    volume = 0.7
   },
   {
     filename = "__base__/sound/walking/resources/ore-02.ogg",
-    volume = 0.4
+    volume = 0.7
   },
   {
     filename = "__base__/sound/walking/resources/ore-03.ogg",
-    volume = 0.4
+    volume = 0.7
   },
   {
     filename = "__base__/sound/walking/resources/ore-04.ogg",
-    volume = 0.4
+    volume = 0.7
   },
   {
     filename = "__base__/sound/walking/resources/ore-05.ogg",
-    volume = 0.4
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-06.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-07.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-08.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-09.ogg",
+    volume = 0.7
+  },
+  {
+    filename = "__base__/sound/walking/resources/ore-10.ogg",
+    volume = 0.7
   }
 }
 
@@ -311,47 +331,56 @@ sounds.oil =
   }
 }
 
-sounds.coal =
+local rail_walking_sounds_volume = 0.7
+sounds.rails = 
 {
   {
-    filename = "__base__/sound/walking/resources/coal-01.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-01.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-02.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-02.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-03.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-03.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-04.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-04.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-05.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-05.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-06.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-06.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-07.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-07.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-08.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-08.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-09.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-09.ogg",
+    volume = rail_walking_sounds_volume 
   },
   {
-    filename = "__base__/sound/walking/resources/coal-10.ogg",
-    volume = 0.7
+    filename = "__base__/sound/walking/rails/rails-10.ogg",
+    volume = rail_walking_sounds_volume 
+  },
+  {
+    filename = "__base__/sound/walking/rails/rails-11.ogg",
+    volume = rail_walking_sounds_volume 
+  },
+  {
+    filename = "__base__/sound/walking/rails/rails-12.ogg",
+    volume = rail_walking_sounds_volume 
   }
 }
 
@@ -373,6 +402,49 @@ sounds.tree_leaves =
     filename = "__base__/sound/particles/tree-leaves-4.ogg",
     volume = 0.25
   },
+}
+
+sounds.mine_fish =
+{
+  {
+    filename = "__core__/sound/mine-fish.ogg",volume = 0.8
+  },
+  {
+    filename = "__core__/sound/mine-fish-1.ogg",volume = 0.8
+  },
+  {
+    filename = "__core__/sound/mine-fish-2.ogg",volume = 0.8
+  },
+  {
+    filename = "__core__/sound/mine-fish-3.ogg",volume = 0.8
+  },
+  {
+    filename = "__core__/sound/mine-fish-4.ogg",volume = 0.8
+  }
+}
+
+sounds.eat_fish =
+{
+  {
+    filename = "__base__/sound/eat.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/eat-1.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/eat-2.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/eat-3.ogg",
+    volume = 0.6
+  },
+  {
+    filename = "__base__/sound/eat-4.ogg",
+    volume = 0.6
+  }
 }
 
 sounds.inserter_basic =
@@ -411,23 +483,23 @@ sounds.inserter_fast =
   {
     {
       filename = "__base__/sound/inserter-fast-1.ogg",
-      volume = 0.2
+      volume = 0.25
     },
     {
       filename = "__base__/sound/inserter-fast-2.ogg",
-      volume = 0.2
+      volume = 0.25
     },
     {
       filename = "__base__/sound/inserter-fast-3.ogg",
-      volume = 0.2
+      volume = 0.25
     },
     {
       filename = "__base__/sound/inserter-fast-4.ogg",
-      volume = 0.2
+      volume = 0.25
     },
     {
       filename = "__base__/sound/inserter-fast-5.ogg",
-      volume = 0.2
+      volume = 0.25
     }
   },
   audible_distance_modifier = 0.5,
@@ -440,23 +512,23 @@ sounds.inserter_long_handed =
   {
     {
       filename = "__base__/sound/inserter-long-handed-1.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-long-handed-2.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-long-handed-3.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-long-handed-4.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-long-handed-5.ogg",
-      volume = 0.3
+      volume = 0.4
     },
   },
   audible_distance_modifier = 0.5,
@@ -718,34 +790,35 @@ sounds.flying_robot = function(volume)
         filename = "__base__/sound/flying-robot-9.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.47
       }
     },
-    max_sounds_per_type = 5,
+    -- max_sounds_per_type = 5,
+    audible_distance_modifier = 0.9,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }
 end
@@ -783,35 +856,35 @@ sounds.construction_robot = function(volume)
         filename = "__base__/sound/construction-robot-9.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.47
       },
       {
-        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.5
+        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.47
       }
     },
-    max_sounds_per_type = 5,
-    audible_distance_modifier = 0.8,
+    -- max_sounds_per_type = 5,
+    audible_distance_modifier = 0.85,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }
 end
@@ -1374,6 +1447,48 @@ sounds.biter_roars = function(volume)
   }
 end
 
+sounds.biter_roars_mid = function(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-4.ogg",
+      volume = volume
+    },
+    --{
+    --  filename = "__base__/sound/creatures/biter-roar-mid-5.ogg",
+    --  volume = volume
+    --},
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-6.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-7.ogg",
+      volume = volume
+    },
+    --{
+    --  filename = "__base__/sound/creatures/biter-roar-mid-8.ogg",
+    --  volume = volume
+    --},
+    {
+      filename = "__base__/sound/creatures/biter-roar-mid-9.ogg",
+      volume = volume
+    }
+  }
+end
+
 sounds.biter_roars_big = function(volume)
   return
   {
@@ -1395,6 +1510,52 @@ sounds.biter_roars_big = function(volume)
     },
     {
       filename = "__base__/sound/creatures/biter-roar-big-5.ogg",
+      volume = volume
+    }
+  }
+end
+
+sounds.biter_roars_behemoth = function(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-5.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-6.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-7.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-8.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/biter-roar-behemoth-9.ogg",
       volume = volume
     }
   }
@@ -1512,6 +1673,42 @@ sounds.biter_calls_big = function(volume)
         filename = "__base__/sound/creatures/biter-call-big-6.ogg",
         volume = volume
       },
+    },
+    probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
+    max_sounds_per_type = 2,
+  }
+end
+
+sounds.biter_calls_behemoth = function(volume)
+  return
+  {
+    sound =
+    {
+      {
+        filename = "__base__/sound/creatures/biter-call-behemoth-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-behemoth-3.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-behemoth-5.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-behemoth-6.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-behemoth-7.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/creatures/biter-call-behemoth-8.ogg",
+        volume = volume
+      },
+
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
     max_sounds_per_type = 2,
@@ -1937,6 +2134,40 @@ sounds.spitter_dying = function(volume)
   }
 end
 
+sounds.spitter_dying_mid = function(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-5.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-6.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-mid-7.ogg",
+      volume = volume
+    }
+  }
+end
+
 sounds.spitter_dying_big = function(volume)
   return
   {
@@ -1959,10 +2190,51 @@ sounds.spitter_dying_big = function(volume)
     {
       filename = "__base__/sound/creatures/spitter-death-big-5.ogg",
       volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-6.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-big-7.ogg",
+      volume = volume
     }
   }
 end
 
+sounds.spitter_dying_behemoth = function(volume)
+  return
+  {
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-1.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-2.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-3.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-4.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-5.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-6.ogg",
+      volume = volume
+    },
+    {
+      filename = "__base__/sound/creatures/spitter-death-behemoth-7.ogg",
+      volume = volume
+    }
+  }
+end
 
 sounds.worm_roars = function(volume)
   return

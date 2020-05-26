@@ -337,7 +337,7 @@ function laser_turret_extension(inputs)
     }
   }
 end
-  
+
 function laser_turret_extension_shadow(inputs)
   return
   {
@@ -367,7 +367,7 @@ function laser_turret_extension_shadow(inputs)
     }
   }
 end
-  
+
 function laser_turret_extension_mask(inputs)
   return
   {
@@ -399,7 +399,7 @@ function laser_turret_extension_mask(inputs)
     }
   }
 end
-  
+
 function laser_turret_shooting()
   return
   {
@@ -663,14 +663,6 @@ data:extend(
     preparing_speed = 0.08,
     preparing_sound = sounds.gun_turret_activate,
     folding_sound = sounds.gun_turret_deactivate,
-    rotating_sound = 
-    {
-      sound =
-      {
-        filename = "__base__/sound/fight/gun-turret-rotation-01.ogg",
-        volume = 0.3
-      }
-    },
     folding_speed = 0.08,
     inventory_size = 1,
     automated_ammo_count = 10,
@@ -861,14 +853,6 @@ data:extend(
     preparing_speed = 0.05,
     preparing_sound = sounds.laser_turret_activate,
     folding_sound = sounds.laser_turret_deactivate,
-    rotating_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/fight/laser-turret-rotation-01.ogg",
-        volume = 0.3
-      }
-    },
     corpse = "laser-turret-remnants",
     dying_explosion = "laser-turret-explosion",
     folding_speed = 0.05,

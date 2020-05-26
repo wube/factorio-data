@@ -1,3 +1,5 @@
+local sounds = require ("prototypes.entity.demo-sounds")
+
 data:extend(
 {
   {
@@ -419,8 +421,14 @@ data:extend(
               type = "instant",
               target_effects =
               {
-                type = "damage",
-                damage = {type = "physical", amount = -80}
+                {
+                  type = "damage",
+                  damage = {type = "physical", amount = -80}
+                },
+                {
+                  type = "play-sound",
+                  sound = sounds.eat_fish,
+                },
               }
             }
           }

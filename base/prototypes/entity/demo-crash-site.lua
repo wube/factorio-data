@@ -293,10 +293,8 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/lab.ogg",
-        volume = 0.65
+        volume = 0.7
       },
-      apparent_volume = 1,
-      --max_sounds_per_type = 3,
       audible_distance_modifier = 0.7,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -524,7 +522,6 @@ data:extend(
         },
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      apparent_volume = 1.5,
       --max_sounds_per_type = 2,
     }
   },-- rotation 1 repaired
@@ -731,7 +728,6 @@ data:extend(
         },
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      apparent_volume = 1.5,
       --max_sounds_per_type = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20

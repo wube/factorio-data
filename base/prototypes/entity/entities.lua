@@ -187,7 +187,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/express-underground-belt.ogg",
-        volume = 0.2
+        volume = 0.35
       },
       max_sounds_per_type = 2,
       audible_distance_modifier = 0.5,
@@ -325,6 +325,8 @@ data:extend(
     minable = {mining_time = 0.1, result = "fast-loader"},
     max_health = 170,
     filter_count = 5,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     corpse = "small-remnants",
     resistances =
     {
@@ -375,6 +377,8 @@ data:extend(
     minable = {mining_time = 0.1, result = "express-loader"},
     max_health = 170,
     filter_count = 5,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     corpse = "small-remnants",
     resistances =
     {
@@ -443,6 +447,8 @@ data:extend(
     fast_replaceable_group = "transport-belt",
     speed = 0.09375,
     working_sound = sounds.express_splitter,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     structure =
     {
       north =
@@ -668,15 +674,14 @@ data:extend(
       {
         {
           filename = "__base__/sound/assembling-machine-t3-1.ogg",
-          volume = 0.7
+          volume = 0.6
         },
         {
           filename = "__base__/sound/assembling-machine-t3-2.ogg",
-          volume = 0.7
+          volume = 0.6
         }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      apparent_volume = 1.5,
       audible_distance_modifier = 0.7,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -2072,19 +2077,23 @@ data:extend(
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     picture_safe =
     {
-      filename = "__base__/graphics/entity/land-mine/land-mine.png",
+      filename = "__base__/graphics/entity/land-mine/hr-land-mine.png",
       priority = "medium",
-      width = 32,
-      height = 32
+      width = 64,
+      height = 64,
+      scale = 0.5
     },
     picture_set =
     {
-      filename = "__base__/graphics/entity/land-mine/land-mine-set.png",
+      filename = "__base__/graphics/entity/land-mine/hr-land-mine-set.png",
       priority = "medium",
-      width = 32,
-      height = 32
+      width = 64,
+      height = 64,
+      scale = 0.5
     },
     picture_set_enemy =
     {
@@ -2408,7 +2417,7 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "buffer",
-    logistic_slots_count = 12,
+    logistic_slots_count = 30,
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
     animation_sound = sounds.logistics_chest_open,
@@ -2489,7 +2498,7 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "requester",
-    logistic_slots_count = 12,
+    logistic_slots_count = 30,
     open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
     animation_sound = sounds.logistics_chest_open,
@@ -3136,6 +3145,14 @@ data:extend(
     },
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/rocket-silo-working-1.ogg",
+        volume = 0.8
+      },
+    },
     flying_sound =
     {
       filename = "__base__/sound/silo-rocket.ogg",
@@ -3628,9 +3645,9 @@ data:extend(
     close_sound = sounds.machine_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.8 },
+      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.4 },
       max_sounds_per_type = 3,
-      audible_distance_modifier = 0.6,
+      audible_distance_modifier = 0.75,
       --probability = 1 / (5 * 60) -- average pause between the sound is 5 seconds
     },
     recharging_light = {intensity = 0.4, size = 5, color = {r = 1.0, g = 1.0, b = 1.0}},
@@ -3810,7 +3827,6 @@ data:extend(
       },
       match_volume_to_activity = true,
       audible_distance_modifier = 0.5,
-      apparent_volume = 1.5,
       max_sounds_per_type = 3
     },
 
@@ -3854,7 +3870,6 @@ data:extend(
           filename = "__base__/sound/pump.ogg",
           volume = 0.3
       },
-      apparent_volume = 1,
       audible_distance_modifier = 0.5,
       max_sounds_per_type = 2
     },
@@ -4148,6 +4163,8 @@ data:extend(
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     picture =
     {
       filename = "__base__/graphics/entity/market/market.png",
@@ -4257,10 +4274,10 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/substation.ogg",
-        volume = 0.9,
+        volume = 0.4,
       },
       max_sounds_per_type = 3,
-      audible_distance_modifier = 0.45,
+      audible_distance_modifier = 0.32,
       fade_in_ticks = 30,
       fade_out_ticks = 40,
       use_doppler_shift = false
@@ -4509,6 +4526,9 @@ data:extend(
         filename = "__base__/sound/fight/poison-cloud.ogg",
         volume = 0.7
       },
+      max_sounds_per_type = 3,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
     action =
     {
@@ -5153,8 +5173,7 @@ data:extend(
       {
         filename = "__base__/sound/oil-refinery.ogg"
       },
-      apparent_volume = 2.5,
-      max_sounds_per_type = 3,
+      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -5495,8 +5514,8 @@ data:extend(
       }
     },
     vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.electric_network_open,
+    close_sound = sounds.electric_network_close,
     working_sound =
     {
       sound =
@@ -5602,6 +5621,8 @@ data:extend(
     energy_usage = "0kW",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
     picture = accumulator_picture( {r=1, g=0.8, b=1, a=1} ),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.generic_impact
   },
   {
@@ -5930,7 +5951,6 @@ data:extend(
         }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      apparent_volume = 1.5,
       max_sounds_per_type = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -6256,7 +6276,6 @@ data:extend(
       fade_out_ticks = 20,
       max_sounds_per_type = 3,
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      apparent_volume = 1.5
     },
     crafting_speed = 1,
     crafting_categories = {"centrifuging"},
@@ -7329,7 +7348,7 @@ infinity_chest.picture =
   }
 }
 infinity_chest.logistic_mode = nil
-infinity_chest.logistic_slots_count = 12
+infinity_chest.logistic_slots_count = 30
 infinity_chest.minable = {mining_time = 0.1, result = "infinity-chest"}
 infinity_chest.resistances = full_resistances()
 data:extend({infinity_chest})

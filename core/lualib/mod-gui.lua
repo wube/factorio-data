@@ -25,7 +25,7 @@ function mod_gui.get_button_flow(player)
   local gui = player.gui.top
   local button_flow = gui.mod_gui_button_flow
   if not button_flow then
-    button_flow = gui.add{type = "flow", name = "mod_gui_button_flow", direction = "horizontal", style = "slot_table_spacing_horizontal_flow"}
+    button_flow = gui.add{type = "flow", name = "mod_gui_button_flow", direction = "horizontal", style = "mod_gui_spacing_horizontal_flow"}
     button_flow.style.left_padding = 4
     button_flow.style.top_padding = 4
   end
@@ -36,7 +36,7 @@ function mod_gui.get_frame_flow(player)
   local gui = player.gui.left
   local frame_flow = gui.mod_gui_frame_flow
   if not frame_flow then
-    frame_flow = gui.add{type = "flow", name = "mod_gui_frame_flow", direction = "horizontal", style = "slot_table_spacing_horizontal_flow"}
+    frame_flow = gui.add{type = "flow", name = "mod_gui_frame_flow", direction = "horizontal", style = "mod_gui_spacing_horizontal_flow"}
     frame_flow.style.left_padding = 4
     frame_flow.style.top_padding = 4
   end

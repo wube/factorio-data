@@ -31,11 +31,12 @@ data:extend
       sound =
       {
         filename = "__base__/sound/combinator.ogg",
-        volume = 0.6
+        volume = 0.45
       },
-      max_sounds_per_type = 2,
+      -- max_sounds_per_type = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
+      audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
     vehicle_impact_sound = sounds.generic_impact,
@@ -105,13 +106,15 @@ data:extend
       sound =
       {
         filename = "__base__/sound/combinator.ogg",
-        volume = 0.6
+        volume = 0.45
       },
-      max_sounds_per_type = 2,
+      -- max_sounds_per_type = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
+      audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
+    vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
 
@@ -272,6 +275,8 @@ data:extend
     item_slot_count = 18,
 
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
 
     activity_led_light =
     {
@@ -306,6 +311,8 @@ data:extend
     damaged_trigger_effect = hit_effects.entity({{-0.2, -2},{0.2, 0.2}}),
     drawing_box = {{-0.5, -2.5}, {0.5, 0.3}},
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     energy_source =
     {
       type = "electric",
@@ -855,6 +862,8 @@ data:extend
       shift = {0.453125, 0.1875}
     },
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =
@@ -882,8 +891,10 @@ data:extend
         filename = "__base__/sound/fight/tank-engine-stop.ogg",
         volume = 0
       },
-      max_sounds_per_type = 3,
+      audible_distance_modifier = 0.4,
+      --max_sounds_per_type = 3,
     },
+    
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
     overlay_start =
     {

@@ -69,6 +69,21 @@ local function make_side_menu_button(row, hover)
   }
 end
 
+local function make_side_map_menu_button(row, hover)
+  local side_menu_icon_size = 64
+  local hover_x_offset = 64 + 32
+  return
+  {
+    filename = "__core__/graphics/side-map-menu-buttons.png",
+    priority = "high",
+    size = side_menu_icon_size,
+    mipmap_count = 2,
+    x = hover and hover_x_offset or 0,
+    y = row * side_menu_icon_size,
+    flags = {"icon"}
+  }
+end
+
 data:extend(
 {
   {
@@ -548,14 +563,6 @@ data:extend(
       flags = {"gui-icon"},
       scale = 0.5
     },
-    clear =
-    {
-      filename = "__core__/graphics/clear.png",
-      priority = "medium",
-      width = 128,
-      height = 128,
-      flags = {"icon"}
-    },
     too_far =
     {
       filename = "__core__/graphics/too-far.png",
@@ -938,40 +945,36 @@ data:extend(
     {
       filename = "__core__/graphics/slot-icon-module.png",
       priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_armor =
     {
       filename = "__core__/graphics/slot-icon-armor.png",
       priority = "medium",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    slot_icon_blueprint =
-    {
-      filename = "__core__/graphics/slot-icon-blueprint.png",
-      priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_gun =
     {
       filename = "__core__/graphics/slot-icon-gun.png",
       priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_ammo =
     {
       filename = "__core__/graphics/slot-icon-ammo.png",
       priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_resource =
@@ -986,8 +989,9 @@ data:extend(
     {
       filename = "__core__/graphics/slot-icon-fuel.png",
       priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_result =
@@ -1002,24 +1006,18 @@ data:extend(
     {
       filename = "__core__/graphics/slot-icon-robot.png",
       priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_robot_material =
     {
       filename = "__core__/graphics/slot-icon-robot-material.png",
       priority = "medium",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    slot_icon_upgrade =
-    {
-      filename = "__core__/graphics/slot-icon-upgrade.png",
-      priority = "medium",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     slot =
@@ -1032,25 +1030,25 @@ data:extend(
     },
     equipment_slot =
     {
-      filename = "__core__/graphics/gui.png",
+      filename = "__core__/graphics/gui-new.png",
       priority = "medium",
-      width = 32,
-      height = 32,
-      x = 43,
-      y = 77,
+      width = 80,
+      height = 80,
+      x = 0,
+      y = 930,
       flags = {"icon"},
-      scale = 1
+      scale = 0.5
     },
     equipment_collision =
     {
-      filename = "__core__/graphics/gui.png",
+      filename = "__core__/graphics/gui-new.png",
       priority = "medium",
-      width = 32,
-      height = 32,
-      x = 43,
-      y = 109,
+      width = 80,
+      height = 80,
+      x = 80,
+      y = 930,
       flags = {"icon"},
-      scale = 1
+      scale = 0.5
     },
     green_circle =
     {
@@ -1077,10 +1075,11 @@ data:extend(
     },
     set_bar_slot =
     {
-      filename = "__core__/graphics/cancel.png",
+      filename = "__core__/graphics/set-bar-slot.png",
       priority = "medium",
       width = 64,
       height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     missing_icon =
@@ -1580,38 +1579,57 @@ data:extend(
     side_menu_menu_hover_icon =         make_side_menu_button(6, true), -- for demo
     side_menu_map_hover_icon =          make_side_menu_button(7, true), -- for demo
 
-    circuit_network_panel =
+    circuit_network_panel_black =
     {
-      filename = "__core__/graphics/circuit-network-panel.png",
+      filename = "__core__/graphics/circuit-network-panel-black.png",
       priority = "high",
       width = 16,
       height = 16,
       flags = {"icon"}
     },
-    logistic_network_panel =
+    circuit_network_panel_white =
     {
-      filename = "__core__/graphics/logistic-network-panel.png",
+      filename = "__core__/graphics/circuit-network-panel-white.png",
       priority = "high",
       width = 16,
       height = 16,
       flags = {"icon"}
     },
-    electric_network_info =
+    
+    logistic_network_panel_black =
     {
-      filename = "__core__/graphics/electric-network-info.png",
+      filename = "__core__/graphics/logistic-network-panel-black.png",
       priority = "high",
       width = 16,
       height = 16,
       flags = {"icon"}
     },
-    rename_icon_small =
+    logistic_network_panel_white =
     {
-      filename = "__core__/graphics/rename-small.png",
+      filename = "__core__/graphics/logistic-network-panel-white.png",
       priority = "high",
       width = 16,
       height = 16,
       flags = {"icon"}
     },
+
+    rename_icon_small_black =
+    {
+      filename = "__core__/graphics/rename-small-black.png",
+      priority = "high",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    rename_icon_small_white =
+    {
+      filename = "__core__/graphics/rename-small-white.png",
+      priority = "high",
+      width = 16,
+      height = 16,
+      flags = {"icon"}
+    },
+    
     rename_icon_normal =
     {
       filename = "__core__/graphics/rename-normal.png",
@@ -1869,54 +1887,17 @@ data:extend(
         }
       }
     },
-    show_logistics_network_in_map_view =
-    {
-      filename = "__core__/graphics/show-logistics-network-in-map-view.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    show_electric_network_in_map_view =
-    {
-      filename = "__core__/graphics/show-electric-network-in-map-view.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    show_turret_range_in_map_view =
-    {
-      filename = "__core__/graphics/show-turret-range-in-map-view.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    show_pollution_in_map_view =
-    {
-      filename = "__core__/graphics/show-pollution-in-map-view.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    show_train_station_names_in_map_view =
-    {
-      filename = "__core__/graphics/show-train-station-names-in-map-view.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
-    show_player_names_in_map_view =
-    {
-      filename = "__core__/graphics/show-player-names-in-map-view.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
+    show_logistics_network_in_map_view   = make_side_map_menu_button(0, false),
+    show_electric_network_in_map_view    = make_side_map_menu_button(1, false),
+    show_turret_range_in_map_view        = make_side_map_menu_button(2, false),
+    show_pollution_in_map_view           = make_side_map_menu_button(3, false),
+    show_train_station_names_in_map_view = make_side_map_menu_button(4, false),
+    show_player_names_in_map_view        = make_side_map_menu_button(5, false),    show_logistics_network_in_map_view_black   = make_side_map_menu_button(0, true),
+    show_electric_network_in_map_view_black    = make_side_map_menu_button(1, true),
+    show_turret_range_in_map_view_black        = make_side_map_menu_button(2, true),
+    show_pollution_in_map_view_black           = make_side_map_menu_button(3, true),
+    show_train_station_names_in_map_view_black = make_side_map_menu_button(4, true),
+    show_player_names_in_map_view_black        = make_side_map_menu_button(5, true),
     train_stop_in_map_view =
     {
       filename = "__core__/graphics/train-stop-in-map-view.png",
@@ -2122,21 +2103,19 @@ data:extend(
     },
     close_white =
     {
-      filename = "__core__/graphics/icons/mip/close-white.png",
+      filename = "__core__/graphics/icons/close-white.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      mipmap_count = 2,
       flags = {"gui-icon"}
     },
     close_black =
     {
-      filename = "__core__/graphics/icons/mip/close-black.png",
+      filename = "__core__/graphics/icons/close-black.png",
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
       flags = {"gui-icon"},
-      mipmap_count = 2
     },
     close_fat =
     {
@@ -2154,6 +2133,14 @@ data:extend(
       size = 32,
       scale = 0.5,
       mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    change_recipe =
+    {
+      filename = "__core__/graphics/icons/change-recipe.png",
+      priority = "extra-high-no-scale",
+      size = 64,
+      scale = 0.5,
       flags = {"gui-icon"}
     },
     downloading =
@@ -2350,25 +2337,21 @@ data:extend(
       mipmap_count = 2,
       flags = {"gui-icon"}
     },
-    search_small_black =
+    search_black =
     {
-      filename = "__core__/graphics/icons/search-small-black.png",
+      filename = "__core__/graphics/icons/search-black.png",
       priority = "extra-high-no-scale",
-      x = 2,
-      y = 2,
-      size = 28,
-      scale = 1,
-      flags = {"icon"}
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
     },
-    search_small_white =
+    search_white =
     {
-      filename = "__core__/graphics/icons/search-small-white.png",
+      filename = "__core__/graphics/icons/search-white.png",
       priority = "extra-high-no-scale",
-      x = 2,
-      y = 2,
-      size = 28,
-      scale = 1,
-      flags = {"icon"}
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
     },
     station_name =
     {

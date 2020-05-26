@@ -797,7 +797,7 @@ local robots =
       animation_speed = 0.3
     },
     sparks = robot_animations.sparks,
-    working_sound = sounds.construction_robot(0.7),
+    working_sound = sounds.construction_robot(0.5),
     cargo_centered = {0.0, 0.2},
     construction_vector = {0.30, 0.22},
     water_reflection = robot_reflection(1),
@@ -888,7 +888,6 @@ local robots =
         filename = "__base__/sound/fight/distractor-robot-loop.ogg",
         volume = 0.7
       },
-      apparent_volume = 1,
       persistent = true
     },
     destroy_action =
@@ -975,7 +974,6 @@ local robots =
         filename = "__base__/sound/fight/destroyer-robot-loop.ogg",
         volume = 0.7
       },
-      apparent_volume = 1,
       persistent = true
     },
     destroy_action =

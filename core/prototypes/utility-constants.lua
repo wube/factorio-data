@@ -1,5 +1,9 @@
 require ("bonus-gui-ordering")
 
+function premultiply_alpha(color)
+ return {r = color.r * color.a, g = color.g * color.a, b = color.b * color.a, a = color.a}
+end
+
 data:extend(
 {
   {
@@ -15,8 +19,9 @@ data:extend(
     building_no_tint = {r = 1, g = 1, b = 1, a = 1},
     ghost_tint = {r = 0.6, g = 0.6, b = 0.6, a = 0.3},
     tile_ghost_tint = {r = 0.8, g = 0.8, b = 0.8, a = 0.4},
-    equipment_default_background_color = { r = 65 / 255, g = 76 / 255, b = 193 / 255 },
-    weapon_equipment_default_background_color = { r = 193 / 255, g = 0, b = 0 },
+    equipment_default_background_color = premultiply_alpha{ r = 200 / 255, g = 200 / 255, b = 200 / 255, a = 0.3 },
+    equipment_default_background_border_color = { r = 36 / 255, g = 35 / 255, b = 36 / 255 },
+    equipment_default_grabbed_background_color = premultiply_alpha{ r = 1, g = 1, b = 1, a = 0.3 },
     turret_range_visualization_color = { r = 0.05, g = 0.1, b = 0.05, a = 0.15 },
     capsule_range_visualization_color = { r = 0.05, g = 0.1, b = 0.05, a = 0.15 },
     artillery_range_visualization_color = { r = 0.12, g = 0.0375, b = 0.0375, a = 0.15 },

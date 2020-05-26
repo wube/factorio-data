@@ -27,8 +27,8 @@ data:extend(
     },
     energy_input = "10kW",
     categories = {"armor"},
-    --activate_sound = { filename = "__base__/sound/nightvision-on.ogg" },
-    --deactivate_sound = { filename = "__base__/sound/nightvision-off.ogg" },
+    activate_sound = { filename = "__base__/sound/nightvision-on.ogg", volume = 0.6 },
+    deactivate_sound = { filename = "__base__/sound/nightvision-off.ogg", volume = 0.6 },
     darkness_to_turn_on = 0.5,
     color_lookup = {{0.5, "__core__/graphics/color_luts/nightvision.png"}}
   },
@@ -247,7 +247,7 @@ data:extend(
     name = "discharge-defense-equipment",
     ability_icon =
     {
-      filename = "__base__/graphics/equipment/discharge-defense-equipment-ability.png",
+      filename = "__base__/graphics/icons/discharge-defense-equipment-controller.png",
       flags = { "icon" },
       mipmap_count = 4,
       size = 64,

@@ -109,8 +109,8 @@ data:extend
   {
     type = "technology",
     name = "steel-axe",
-    icon_size = 64, icon_mipmaps = 4,
-    icon = "__base__/graphics/icons/steel-axe.png",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/steel-axe.png",
     effects =
     {
       {

@@ -454,7 +454,7 @@ local function scaled_cliff(name, scale, fill_volume)
   {
     type = "cliff",
     name = name,
-    icon = "__base__/graphics/icons/cliff-icon.png",
+    icon = "__base__/graphics/icons/cliff.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "cliffs",
     flags = {"placeable-neutral"},
@@ -1422,8 +1422,6 @@ data:extend(
           volume = 0.6
         }
       },
-      --max_sounds_per_type = 3,
-      apparent_volume = 0.7,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       audible_distance_modifier = 0.4,
@@ -1617,6 +1615,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
     minable = {mining_time = 0.4, result = "raw-fish", count = 5},
+    mined_sound = sounds.mine_fish,
     max_health = 20,
     subgroup = "creatures",
     order = "b-a",
@@ -2124,8 +2123,8 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
     inventory_size = 16,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.8 },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.8 },
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.6 },
     vehicle_impact_sound = sounds.car_wood_impact(0.5),
     picture =
     {
@@ -2257,8 +2256,8 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
     inventory_size = 16,
-    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.8 },
-    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.8 },
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.6 },
     vehicle_impact_sound = sounds.car_wood_impact(0.5),
     picture =
     {
@@ -2660,11 +2659,11 @@ data:extend(
       {
         {
           filename = "__base__/sound/offshore-pump.ogg",
-          volume = 0.45
+          volume = 0.5
         }
       },
       match_volume_to_activity = true,
-      audible_distance_modifier = 0.5,
+      audible_distance_modifier = 0.7,
       max_sounds_per_type = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
@@ -3851,6 +3850,8 @@ data:extend(
     fast_replaceable_group = "inserter",
     vehicle_impact_sound = sounds.generic_impact,
     working_sound = sounds.inserter_basic,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     hand_base_picture =
     {
       filename = "__base__/graphics/entity/burner-inserter/burner-inserter-hand-base.png",
@@ -3972,6 +3973,8 @@ data:extend(
   {
     type = "item-entity",
     name = "item-on-ground",
+    icon = "__core__/graphics/item-on-ground.png",
+    icon_size = 64,
     flags = {"placeable-off-grid", "not-on-map"},
     collision_box = {{-0.14, -0.14}, {0.14, 0.14}},
     selection_box = {{-0.17, -0.17}, {0.17, 0.17}},
@@ -4187,20 +4190,18 @@ data:extend(
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
     vehicle_impact_sound = sounds.generic_impact,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
-   {
+    {
       sound =
       {
-        filename = "__base__/sound/fight/tank-engine.ogg",
-        volume = 0
-      },
-      activate_sound =
-      --set to 0 until we can make it work properly
-      {
-        filename = "__base__/sound/lamp-activate.ogg",
-        volume = 0
+        filename = "__base__/sound/lamp-working.ogg",
+        volume = 0.4
       },
       max_sounds_per_type = 3,
+      use_doppler_shift = false,
+      audible_distance_modifier = 0.5,
     },
     energy_source =
     {
@@ -4529,7 +4530,6 @@ data:extend(
         }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      apparent_volume = 1.5,
       audible_distance_modifier = 0.7,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -4637,15 +4637,14 @@ data:extend(
       {
         {
           filename = "__base__/sound/assembling-machine-t2-1.ogg",
-          volume = 0.5
+          volume = 0.6
         },
         {
           filename = "__base__/sound/assembling-machine-t2-2.ogg",
-          volume = 0.5
+          volume = 0.6
         }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      --apparent_volume = 1.5,
       audible_distance_modifier = 0.7,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -4685,20 +4684,26 @@ data:extend(
   {
     type = "entity-ghost",
     name = "entity-ghost",
+    icon = "__core__/graphics/entity-ghost.png",
+    icon_size = 32,
     flags = {"not-on-map"},
-    --build_sound = { filename = "__core__/sound/place-ghost-small.ogg" },
-    --medium_build_sound = { filename = "__core__/sound/place-ghost-medium.ogg" },
-    --large_build_sound = { filename = "__core__/sound/place-ghost-large.ogg" },
-    minable = { mining_time = 0, results={}}
+    build_sound = {{ filename = "__core__/sound/place-ghost-small.ogg",  volume = 0.6 }},
+    medium_build_sound = {{ filename = "__core__/sound/place-ghost-medium.ogg",  volume = 0.7 }},
+    large_build_sound = {{ filename = "__core__/sound/place-ghost-large.ogg",  volume = 0.7 }},
+    minable = { mining_time = 0, results={}},
+    mined_sound = {{ filename = "__core__/sound/deconstruct-ghost.ogg",  volume = 0.4 }},
   },
 
   {
     type = "tile-ghost",
     name = "tile-ghost",
+    icon = "__core__/graphics/tile-ghost.png",
+    icon_size = 32,
     flags = {"not-on-map"},
     minable = { mining_time = 0, results={}},
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    --build_sound = { filename = "__core__/sound/place-ghost-small.ogg" },
+    build_sound = {{ filename = "__core__/sound/place-ghost-tile.ogg",  volume = 0.9 }},
+    mined_sound = {{ filename = "__core__/sound/deconstruct-ghost-tile.ogg",  volume = 0.7 }},
     selection_priority = 45
   },
 
@@ -4712,6 +4717,8 @@ data:extend(
   {
     type = "item-request-proxy",
     name = "item-request-proxy",
+    icon = "__core__/graphics/item-request-slot.png",
+    icon_size = 64,
     picture =
     {
       filename = "__core__/graphics/icons/alerts/logistic-delivery.png",
@@ -4748,6 +4755,8 @@ data:extend(
     dying_explosion = "wall-explosion",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     vehicle_impact_sound = sounds.car_stone_impact,
     -- this kind of code can be used for having walls mirror the effect
     -- there can be multiple reaction items
@@ -5551,10 +5560,8 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/lab.ogg",
-        volume = 0.65
+        volume = 0.7
       },
-      apparent_volume = 1,
-      --max_sounds_per_type = 3,
       audible_distance_modifier = 0.7,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -5708,6 +5715,8 @@ data:extend(
     next_upgrade = "fast-splitter",
     speed = 0.03125,
     belt_animation_set = basic_belt_animation_set,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound = sounds.splitter,
     structure =
     {
@@ -6039,6 +6048,8 @@ data:extend(
     minable = {mining_time = 0.1, result = "loader"},
     max_health = 170,
     filter_count = 5,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     corpse = "small-remnants",
     resistances =
     {
@@ -6543,8 +6554,6 @@ data:extend(
         filename = "__base__/sound/electric-furnace.ogg",
         volume = 0.6
       },
-      --max_sounds_per_type = 3,
-      apparent_volume = 1.5,
       audible_distance_modifier = 0.6,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -7012,7 +7021,6 @@ data:extend(
         }
       },
       max_sounds_per_type = 4,
-      --apparent_volume = 1.5,
       audible_distance_modifier = 0.37,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -8114,6 +8122,8 @@ data:extend(
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     animation =
     {
       filename = "__base__/graphics/entity/rail-signal/rail-signal.png",
@@ -8178,6 +8188,8 @@ data:extend(
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     animation =
     {
       filename = "__base__/graphics/entity/rail-chain-signal/rail-chain-signal.png",
@@ -8562,7 +8574,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/train-engine.ogg",
-        volume = 0.3
+        volume = 0.35
       },
       deactivate_sound =
       {
@@ -8571,11 +8583,12 @@ data:extend(
       },
       match_speed_to_activity = true,
       max_sounds_per_type = 2,
+      -- use_doppler_shift = false
     },
     open_sound = { filename = "__base__/sound/train-door-open.ogg", volume=0.5 },
     close_sound = { filename = "__base__/sound/train-door-close.ogg", volume = 0.4 },
     sound_minimum_speed = 0.5,
-    sound_scaling_ratio = 0.3,
+    sound_scaling_ratio = 0.35,
     water_reflection = locomotive_reflection(),
   },
   {
@@ -9017,7 +9030,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/fast-underground-belt.ogg",
-        volume = 0.2
+        volume = 0.27
       },
       max_sounds_per_type = 2,
       audible_distance_modifier = 0.5,
@@ -9207,6 +9220,8 @@ data:extend(
     next_upgrade = "express-splitter",
     speed = 0.0625,
     working_sound = sounds.fast_splitter,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     structure =
     {
       north =

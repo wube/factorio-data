@@ -35,7 +35,7 @@ data:extend(
       cooldown = 35,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(7),
-      sound = sounds.biter_roars(0.38),
+      sound = sounds.biter_roars(0.35),
       animation = biterattackanimation(small_biter_scale, small_biter_tint1, small_biter_tint2)
     },
     vision_distance = 30,
@@ -47,7 +47,7 @@ data:extend(
     max_pursue_distance = 50,
     corpse = "small-biter-corpse",
     dying_explosion = "small-biter-die",
-    dying_sound =  sounds.biter_dying(0.27),
+    dying_sound =  sounds.biter_dying(0.5),
     working_sound =  sounds.biter_calls(0.75),
     run_animation = biterrunanimation(small_biter_scale, small_biter_tint1, small_biter_tint2),
     running_sound_animation_positions = {2,},
@@ -106,7 +106,6 @@ data:extend(
           volume = 0.9
         }
       },
-      apparent_volume = 2
     },
     dying_sound =
     {

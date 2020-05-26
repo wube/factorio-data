@@ -43,11 +43,9 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/electric-mining-drill.ogg",
-        volume = 0.42
+        volume = 0.5
       },
-      --apparent_volume = 1.5,
-      --max_sounds_per_type = 3,
-      audible_distance_modifier = 0.7,
+      audible_distance_modifier = 0.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
     },

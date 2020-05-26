@@ -184,7 +184,7 @@ data:extend
   {
     type = "explosion",
     name = "rock-damaged-explosion",
-    icon = "__base__/graphics/icons/rock-big-icon.png",
+    icon = "__base__/graphics/icons/rock-big.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
     subgroup = "hit-effects",
