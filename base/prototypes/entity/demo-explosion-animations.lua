@@ -151,7 +151,7 @@ explosion_animations.dust_explosion = function ()
 end
 
 explosion_animations.small_explosion = function()
-  return 
+  return
   {
     {
       filename = "__base__/graphics/entity/small-explosion/small-explosion-1.png",

@@ -295,7 +295,7 @@ data:extend
 
     circuit_wire_max_distance = 9
   },
-  
+
   {
     type = "programmable-speaker",
     name = "programmable-speaker",
@@ -835,7 +835,7 @@ data:extend
       orientation_to_variation = false
     }
   },
-  
+
   {
     type = "power-switch",
     name = "power-switch",
@@ -894,7 +894,7 @@ data:extend
       audible_distance_modifier = 0.4,
       --max_sounds_per_type = 3,
     },
-    
+
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
     overlay_start =
     {

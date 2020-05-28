@@ -150,7 +150,7 @@ data:extend
     fade_away_duration = 60,
     show_when_smoke_off = true
   },
-  
+
   {
     type = "trivial-smoke",
     name = "smoke-explosion-particle-tiny",
@@ -188,7 +188,7 @@ data:extend
     start_scale = 0.3,
     end_scale = 0.1,
   },
-  
+
     {
     type = "trivial-smoke",
     name = "smoke-explosion-lower-particle-small",

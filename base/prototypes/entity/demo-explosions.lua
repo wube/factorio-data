@@ -1069,7 +1069,7 @@ data:extend
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "filter-inserter-explosion",
@@ -3332,7 +3332,7 @@ data:extend
     created_effect = biter_die_effects.spawner_biter
   },
 
-  
+
   {
     type = "explosion",
     name = "fast-transport-belt-explosion",
@@ -3610,7 +3610,7 @@ data:extend
     }
   },
 
-  
+
   {
     type = "explosion",
     name = "rail-explosion",
@@ -4083,7 +4083,7 @@ data:extend
     }
   },
 
-  
+
   {
     type = "explosion",
     name = "arithmetic-combinator-explosion",
@@ -4384,7 +4384,7 @@ data:extend
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "solar-panel-explosion",
@@ -4526,7 +4526,7 @@ data:extend
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "laser-turret-explosion",
@@ -4602,7 +4602,7 @@ data:extend
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "accumulator-explosion",

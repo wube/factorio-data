@@ -332,55 +332,55 @@ sounds.oil =
 }
 
 local rail_walking_sounds_volume = 0.7
-sounds.rails = 
+sounds.rails =
 {
   {
     filename = "__base__/sound/walking/rails/rails-01.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-02.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-03.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-04.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-05.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-06.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-07.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-08.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-09.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-10.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-11.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   },
   {
     filename = "__base__/sound/walking/rails/rails-12.ogg",
-    volume = rail_walking_sounds_volume 
+    volume = rail_walking_sounds_volume
   }
 }
 

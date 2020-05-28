@@ -171,7 +171,7 @@ local function resource_autoplace_settings(params)
   end
   local spots_per_km2_near_start = base_spots_per_km2 * frequency_multiplier
   local candidate_spot_count = params.candidate_spot_count or 21
-  
+
   if pointillist_mode then
     -- Split ore into lots and lots and lots of little patches
     -- so that we can get a better idea of the underlying distribution
@@ -211,7 +211,7 @@ local function resource_autoplace_settings(params)
   -- Values for starting spots.
   -- Simpler calculations than for regular spots because they are only placed
   -- in one place and therefore there are fewer variables!
-  
+
   -- reduce the influence of the frequency slider over the amount of ore in the starting area.
   -- note that starting_spot_count is still set to frequency_multiplier below, so we still split the ore to a fairly high amount of patches.
   local starting_frequency_multiplier = ((frequency_multiplier - 1) * 0.5) + 1
@@ -342,7 +342,7 @@ local function resource_autoplace_settings(params)
     }
   }
   local blobs0f = blobs0 - 1/4
-  
+
   local blobs1 = blobs0 + tne{
     type = "function-application",
     function_name = "factorio-basis-noise",
@@ -405,7 +405,7 @@ local function resource_autoplace_settings(params)
   local richness_distance_multiplier = noise.max(1, post_semd_richness_distance_multiplier_at(size_effective_distance_at(distance)))
 
   richness_expression = richness_expression * richness_distance_multiplier * richness_post_multiplier
-  
+
   local ret =
   {
     order = order,
@@ -413,7 +413,7 @@ local function resource_autoplace_settings(params)
     probability_expression = probability_expression,
     richness_expression = richness_expression
   }
-  
+
   return ret
 end
 

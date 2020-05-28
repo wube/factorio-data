@@ -5514,8 +5514,8 @@ data:extend(
       }
     },
     vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.electric_network_open,
-    close_sound = sounds.electric_network_close,
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     working_sound =
     {
       sound =

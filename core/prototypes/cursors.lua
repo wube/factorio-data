@@ -12,5 +12,5 @@ data:extend({
   --  name = "system-crosshair",
   --  system_cursor = "crosshair", -- one of "arrow", "i-beam", "crosshair", "wait-arrow", "size-all", "no", "hand"
   --}
-  
+
 })

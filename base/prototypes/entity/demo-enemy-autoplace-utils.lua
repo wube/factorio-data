@@ -157,7 +157,7 @@ local function enemy_autoplace(params)
   -- log("Probability expression for " .. params.order .. "#" .. distance_factor .. ":")
   -- log(tostring(expression_to_ascii_math(probability_expression)))
   local richness_expression = tne(1)
-  
+
   return
   {
     control = control_name,

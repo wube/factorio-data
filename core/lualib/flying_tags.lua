@@ -3,7 +3,7 @@ local flying_tags = {}
 flying_tags.update = function(tags)
   local tags = tags or global.flying_tags
   if not tags then return end
-  if type(tags) ~= "table" then 
+  if type(tags) ~= "table" then
     error("Tags must be a list of following tags not: "..type(tags))
   end
 
@@ -23,7 +23,7 @@ flying_tags.update = function(tags)
     if not update_tag(tag) then
       tags[k] = nil
     end
-  end 
+  end
 
 end
 

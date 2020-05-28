@@ -1358,12 +1358,12 @@ data:extend(
     footprint_particles =
     {
       {
-        tiles = 
-        { 
+        tiles =
+        {
           "dry-dirt",
           "dirt-1", "dirt-2", "dirt-3", "dirt-4","dirt-5", "dirt-6", "dirt-7",
           "sand-1", "sand-2", "sand-3",
-          "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3" 
+          "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3"
         },
         particle_name = "character-footprint-particle",
       },
@@ -7601,7 +7601,7 @@ data:extend(
     open_sound = sounds.gate_open,
     close_sound = sounds.gate_close,
   },
-  
+
   {
     type = "container",
     name = "steel-chest",
@@ -8257,7 +8257,7 @@ data:extend(
     default_green_output_signal = {type = "virtual", name = "signal-green"},
     default_blue_output_signal = {type = "virtual", name = "signal-blue"}
   },
-  
+
   {
     type = "locomotive",
     name = "locomotive",
@@ -9011,7 +9011,7 @@ data:extend(
     vehicle_impact_sound = sounds.generic_impact,
     water_reflection = locomotive_reflection()
   },
-  
+
   {
     type = "underground-belt",
     name = "fast-underground-belt",
@@ -9398,7 +9398,7 @@ data:extend(
     circuit_connector_sprites = circuit_connector_definitions["belt"].sprites,
     circuit_wire_max_distance = transport_belt_circuit_wire_max_distance
   },
-  
+
   {
     type = "solar-panel",
     name = "solar-panel",
@@ -9549,7 +9549,7 @@ data:extend(
     pictures = rail_pictures(),
     placeable_by = {item = "rail", count = 4}
   },
-  
+
   {
     type = "accumulator",
     name = "accumulator",

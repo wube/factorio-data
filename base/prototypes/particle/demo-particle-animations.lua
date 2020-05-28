@@ -2786,7 +2786,7 @@ particle_animations.get_vegetation_particle_vehicle_pictures = function(options)
     }
   }
 end
-  
+
 
 particle_animations.get_metal_particle_small_pictures = function(options)
   local options = options or {}
@@ -3297,7 +3297,7 @@ particle_animations.get_dust_particle = function(options)
     animation_speed = 1 / 2,
     scale = 0.5,
     variation_count = 1,
-    tint = options.tint, 
+    tint = options.tint,
     affected_by_wind = true,
     }
   }
@@ -3317,7 +3317,7 @@ particle_animations.get_general_dust_particle = function(options)
     animation_speed = 1 / 2,
     scale = 0.5,
     variation_count = 1,
-    tint = options.tint, 
+    tint = options.tint,
     affected_by_wind = true,
     }
   }
@@ -3329,7 +3329,7 @@ particle_animations.get_artillery_shell_particle = function(options)
   return
   {
     sheet =
-    { 
+    {
       filename = "__base__/graphics/particle/artillery-shell-particle/artillery-shells.png",
       line_length = 12,
       width = 18,
@@ -3342,7 +3342,7 @@ particle_animations.get_artillery_shell_particle = function(options)
       shift = util.add_shift(util.by_pixel(2.5,-0.5), options.shift),
       animation_speed = 1,
       hr_version =
-      { 
+      {
         filename = "__base__/graphics/particle/artillery-shell-particle/hr-artillery-shells.png",
         line_length = 12,
         width = 34,

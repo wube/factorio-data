@@ -20,7 +20,7 @@ local red_desert_pollution_absorption = 0.0000066
 
 local landfill_build_sounds =
 {
-  small =  
+  small =
   {
     {
       filename = "__core__/sound/landfill-small.ogg"
@@ -69,7 +69,7 @@ local landfill_build_sounds =
     }
   },
   large =
-   { 
+   {
     {
       filename = "__core__/sound/landfill-large.ogg",
       volume = 0.5

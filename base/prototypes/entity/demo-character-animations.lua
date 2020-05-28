@@ -1,4 +1,4 @@
-character_animations = 
+character_animations =
 {
   level1 =
   {

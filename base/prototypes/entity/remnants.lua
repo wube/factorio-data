@@ -801,7 +801,7 @@ data:extend
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "logistic-robot-remnants",
@@ -843,7 +843,7 @@ data:extend
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "construction-robot-remnants",
@@ -885,7 +885,7 @@ data:extend
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "distractor-remnants",
@@ -927,7 +927,7 @@ data:extend
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "destroyer-remnants",

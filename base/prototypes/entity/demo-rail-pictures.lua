@@ -66,7 +66,7 @@ rail_pictures_internal = function(elems)
              scale = 0.5
            }
          },
-         {         
+         {
            filename = "__base__/graphics/entity/rail-endings/rail-endings-metals.png",
            priority = "high",
            flags = { "trilinear-filtering" },

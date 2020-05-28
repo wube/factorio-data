@@ -158,7 +158,7 @@ data:extend({
       regular_rq_factor_multiplier = 1.0,
       starting_rq_factor_multiplier = 1.1
     }
-  ), 
+  ),
 
   {
     type = "resource",

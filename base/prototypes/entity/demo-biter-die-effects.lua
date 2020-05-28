@@ -1526,7 +1526,7 @@ effects.spawner_biter =
         frame_speed_deviation = 0,
         tail_length = 25,
         tail_length_deviation = 0,
-        tail_width = 1      
+        tail_width = 1
       },
       {
         type = "create-particle",
@@ -1725,7 +1725,7 @@ effects.spawner_spitter =
         frame_speed_deviation = 0,
         tail_length = 25,
         tail_length_deviation = 0,
-        tail_width = 1      
+        tail_width = 1
       },
       {
         type = "create-particle",

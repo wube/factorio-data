@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.28
+Version: 0.18.29
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.28
+Date: 28. 05. 2020
+  Gui:
+    - Minor visual changes and fixes to achievement and tutorial related guis.
+  Bugfixes:
+    - Fixed that changing script areas and positions through the map editor in multiplayer as the client didn't work correctly. (https://forums.factorio.com/85308)
+    - Fixed a crash when clearing logistic requests. (https://forums.factorio.com/85323)
+    - Fixed some styles being defined twice in style.lua. (https://forums.factorio.com/85337)
+    - Fixed follower robot count alert not showing correctly. (https://forums.factorio.com/85313)
+    - Fixed container gui not showing logistics filters properly in large containers. (https://forums.factorio.com/85338)
+    - Fixed wrong open/close sound for chemical plant. (https://forums.factorio.com/85315)
+  Modding:
+    - Added support to play a sound when opening dropdowns through opened_sound.
+    - Improved performance by up to 2.5x when the game needs to iterate Lua tables on the C++ side.
+    - Improved save/load performance of mod script data.
+  Scripting:
+    - Lua functions are now explicitly disallowed in the script 'global' table.
+    - Added LuaSurface::generate_with_lab_tiles read/write
+    - Added LuaEntity::mine().
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.27
 Date: 26. 05. 2020

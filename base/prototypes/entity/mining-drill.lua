@@ -161,7 +161,7 @@ data:extend(
         --{
         --  filename = "__base__/sound/pumpjack-1.ogg",
         --  volume = 0.43
-        --}  
+        --}
       },
       max_sounds_per_type = 3,
       audible_distance_modifier = 0.6,

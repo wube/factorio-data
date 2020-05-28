@@ -20,7 +20,7 @@ local starting_area_clearing_peak =
 
 local leaf_sound = sounds.tree_leaves
 
-local leaf_sound_trigger = 
+local leaf_sound_trigger =
 {
   {
     type = "play-sound",
@@ -7277,7 +7277,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
         mining_time = 0.55,
         result = "wood",
         count = 4,
-        mining_trigger = 
+        mining_trigger =
         {
           {
             type = "direct",

@@ -1595,7 +1595,7 @@ data:extend(
       height = 16,
       flags = {"icon"}
     },
-    
+
     logistic_network_panel_black =
     {
       filename = "__core__/graphics/logistic-network-panel-black.png",
@@ -1629,7 +1629,7 @@ data:extend(
       height = 16,
       flags = {"icon"}
     },
-    
+
     rename_icon_normal =
     {
       filename = "__core__/graphics/rename-normal.png",

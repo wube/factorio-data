@@ -273,7 +273,7 @@ data:extend(
     },
     order = "e-a-b"
   },
-  
+
   {
     type = "technology",
     name = "automation-3",
@@ -482,7 +482,7 @@ data:extend(
     },
     order = "a-d-c"
   },
-  
+
   {
     type = "technology",
     name = "fluid-wagon",
@@ -508,7 +508,7 @@ data:extend(
     },
     order = "c-g-a-b"
   },
-  
+
   {
     type = "technology",
     name = "braking-force-1",

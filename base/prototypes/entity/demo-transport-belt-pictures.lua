@@ -216,7 +216,7 @@ basic_belt_starting_side =
   }
 }
 
-  
+
 fast_belt_animation_set =
 {
   animation_set =

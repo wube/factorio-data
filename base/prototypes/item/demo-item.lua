@@ -910,7 +910,7 @@ data:extend(
       condition = { "ground-tile" }
     }
   },
-  
+
   {
     type = "item",
     name = "fast-splitter",
@@ -932,7 +932,7 @@ data:extend(
     place_result = "accumulator",
     stack_size = 50
   },
-  
+
   {
     type = "item",
     name = "uranium-ore",
@@ -950,7 +950,7 @@ data:extend(
     order = "g[uranium-ore]",
     stack_size = 50
   },
-  
+
   {
     type = "capsule",
     name = "defender-capsule",

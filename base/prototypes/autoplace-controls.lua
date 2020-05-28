@@ -42,7 +42,7 @@ data:extend(
     order = "b-f",
     category = "resource"
   },
-  
+
 --[[  {
     type = "autoplace-control",
     name = "grass",

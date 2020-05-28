@@ -873,7 +873,7 @@ data:extend(
       parent = "label",
       right_padding = 8
 
-    },    
+    },
     heading_1_label =
     {
       type = "label_style",
@@ -1256,7 +1256,7 @@ data:extend(
       left_margin = -12,
       right_margin = -12
     },
-    
+
     control_behavior_window_line =
     {
       type = "line_style",
@@ -1679,7 +1679,7 @@ data:extend(
       type = "button_style",
       parent = "icon_button"
     },
-    
+
     mod_gui_button = --used by mod gui lua
     {
       type = "button_style",
@@ -1688,14 +1688,14 @@ data:extend(
       height = 36,
       padding = 1
     },
-    
+
     image_tab_slot =
     {
       type = "button_style",
       parent = "slot_sized_button",
       size = 68,
     },
-    
+
     image_tab_selected_slot =
     {
       type = "button_style",
@@ -1792,7 +1792,7 @@ data:extend(
       hovered_graphical_set = { base = {border = 4, position = {80, 424}, size = 80}}, -- glow = default_glow(default_slot_glow_color, 0.5)
       clicked_graphical_set = { base = {border = 4, position = {160, 424}, size = 80}},
       pie_progress_color = {0.98, 0.66, 0.22, 0.5},
-      left_click_sound = {{ filename = "__core__/sound/gui-inventory-slot-button.ogg", volume = 0.6 }}, 
+      left_click_sound = {{ filename = "__core__/sound/gui-inventory-slot-button.ogg", volume = 0.6 }},
     },
 
     red_slot =
@@ -1804,7 +1804,7 @@ data:extend(
       clicked_graphical_set = { base = {border = 4, position = {400, 816}, size = 80}},
       selected_graphical_set = { base = {border = 4, position = {320, 816}, size = 80}}
     },
-    
+
     yellow_slot =
     {
       type = "button_style",
@@ -1814,7 +1814,7 @@ data:extend(
       clicked_graphical_set = { base = {border = 4, position = {160, 816}, size = 80}},
       selected_graphical_set = { base = {border = 4, position = {80, 816}, size = 80}}
     },
-    
+
     green_slot =
     {
       type = "button_style",
@@ -1870,7 +1870,7 @@ data:extend(
       type = "button_style",
       parent = "button",
       padding = 0,
-      size = 3+16+3
+      size = 4+16+4
     },
 
     tracking_on_button =
@@ -1879,19 +1879,19 @@ data:extend(
       parent = "tracking_off_button",
       default_graphical_set =
       {
-        filename = "__core__/graphics/gui.png",
-        corner_size = 3,
-        position = {0, 40},
-        scale = 1
+        base = {position = {225, 17}, corner_size = 8},
+        shadow = default_dirt
       },
       hovered_graphical_set =
       {
-        filename = "__core__/graphics/gui.png",
-        corner_size = 3,
-        position = {0, 48},
-        scale = 1
+        base = {position = {369, 17}, corner_size = 8},
+        shadow = default_dirt
       },
-      -- pressed is the same as default
+      clicked_graphical_set =
+      {
+        base = {position = {352, 17}, corner_size = 8},
+        shadow = default_dirt
+      },
     },
 
     technology_list_scroll_pane =
@@ -2942,7 +2942,7 @@ data:extend(
       parent = "compact_slot",
       pie_progress_color = {0.98, 0.66, 0.22, 0.5}
     },
-    
+
     promised_crafting_queue_slot =
     {
       type = "button_style",
@@ -3251,7 +3251,7 @@ data:extend(
         overall_tiling_horizontal_padding = 4
       }
     },
-    
+
     list_box_in_shallow_frame_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -3283,7 +3283,7 @@ data:extend(
         parent = "list_box_item"
       }
     },
-    
+
     list_box_in_shallow_frame =
     {
       type = "list_box_style",
@@ -3464,7 +3464,8 @@ data:extend(
       type = "scroll_pane_style",
       parent = "filter_scroll_pane",
       vertically_stretchable = "off",
-      maximal_height = 4 * 40
+      maximal_height = 4 * 40,
+      minimal_height = 3 * 40
     },
 
     controller_logistics_scroll_pane =
@@ -3478,7 +3479,7 @@ data:extend(
     {
       type = "frame_style",
       parent = "filter_scroll_pane_background_frame",
-      minimal_height = 3 * 40 -- 3 rows
+      minimal_height = 3 * 40
     },
 
     character_info_scroll_pane =
@@ -3818,7 +3819,7 @@ data:extend(
       vertical_flow_style = { type = "vertical_flow_style" },
       width = 436
     },
-  
+
     mods_list_box =
     {
       type = "list_box_style",
@@ -4126,7 +4127,7 @@ data:extend(
       parent = "featured_technology_effects_flow",
       bottom_padding = 4
     },
-    
+
     flow_with_no_spacing =
     {
       type = "flow_style",
@@ -4181,13 +4182,13 @@ data:extend(
       type = "horizontal_flow_style",
       horizontal_spacing = 0
     },
-    
+
     mod_gui_spacing_horizontal_flow = --used by mod gui lua
     {
       type = "horizontal_flow_style",
       horizontal_spacing = 2
     },
-    
+
     blueprint_shelf_flow =
     {
       type = "vertical_flow_style",
@@ -4939,7 +4940,7 @@ data:extend(
       vertical_flow_style = { type = "vertical_flow_style" }, -- content in Gui::Direction::Vertical
       header_flow_style =
       {
-        type = "horizontal_flow_style", 
+        type = "horizontal_flow_style",
         horizontally_stretchable = "on",
         bottom_padding = 4
       },
@@ -5462,7 +5463,7 @@ data:extend(
         vertical_spacing = 0
       }
     },
-    
+
     -- used for frames that contains exclusively other inner frames
     outer_frame =
     {
@@ -5586,7 +5587,7 @@ data:extend(
         vertical_spacing = 0
       }
     },
-    
+
     inside_shallow_frame_with_padding =
     {
       type = "frame_style",
@@ -5601,7 +5602,7 @@ data:extend(
       top_padding = 12,
       minimal_width = 4*40 + 2*12 -- 4 slots
     },
-    
+
     deep_frame_in_shallow_frame =
     {
       type = "frame_style",
@@ -5623,7 +5624,7 @@ data:extend(
         vertical_spacing = 0
       }
     },
-    
+
     slot_button_deep_frame = --frame meant to hold slot buttons. Similar to filter_scroll_pane_background_frame
     {
       type = "frame_style",
@@ -5713,7 +5714,7 @@ data:extend(
       bottom_padding = 0,
       graphical_set = { base = {center = {position = {76, 8}, size = {1, 1}}}},
     },
-    
+
     train_inventory_fake_window =
     {
       type = "frame_style",
@@ -5722,7 +5723,7 @@ data:extend(
       use_header_filler = false,
       header_flow_style =
       {
-        type = "horizontal_flow_style", 
+        type = "horizontal_flow_style",
         horizontally_stretchable = "on",
         bottom_padding = 4,
         left_padding = 12,
@@ -5744,14 +5745,6 @@ data:extend(
       },
     },
 
-    slot_count_change_button =
-    {
-      type = "button_style",
-      parent = "button",
-      size = {40, 20},
-      left_click_sound = {{ filename = "__core__/sound/gui-tool-button.ogg", volume = 1 }},
-    },
-
     invisible_frame_with_title =
     {
       type = "frame_style",
@@ -5764,7 +5757,7 @@ data:extend(
         bottom_padding = 4,
         left_padding = 0,
         right_padding = 0
-      },      
+      },
       title_style =
       {
         type = "label_style",
@@ -5781,7 +5774,7 @@ data:extend(
         vertical_spacing = default_container_spacing
       },
     },
-    
+
     invisible_frame_with_title_for_inventory = --for frames which have content with 12px padding(mostly inventories with scroll pane)
     {
       type = "frame_style",
@@ -5806,7 +5799,7 @@ data:extend(
         horizontal_align = "center"
       }
     },
-    
+
     auto_trash_frame =
     {
       type = "frame_style",
@@ -5817,14 +5810,14 @@ data:extend(
         parent = "heading_3_label",
       },
     },
-    
+
     container_invisible_frame_with_title =
     {
       type = "frame_style",
       parent = "invisible_frame_with_title_for_inventory",
       bottom_padding = 8,
     },
-   
+
     constant_combinator_invisible_frame_with_title =
     {
       type = "frame_style",
@@ -5834,7 +5827,7 @@ data:extend(
       left_margin = -12,
       right_margin = -12,
     },
-    
+
     car_top_part_frame =
     {
       type = "frame_style",
@@ -6559,13 +6552,13 @@ data:extend(
       },
       left_click_sound = {{ filename = "__core__/sound/gui-square-button.ogg", volume = 1 }},
     },
-    
+
     statistics_slot_button =
     {
       type = "button_style",
       parent = "slot_button_in_shallow_frame",
     },
-    
+
     yellow_slot_button =
     {
       type = "button_style",
@@ -6647,14 +6640,14 @@ data:extend(
       size = 40,
       padding = 0
     },
-    
+
     compact_slot_sized_button =
     {
       type = "button_style",
       parent = "slot_sized_button",
       size = 36
     },
-    
+
     slot_sized_button_pressed =
     {
       type = "button_style",
@@ -6755,28 +6748,28 @@ data:extend(
       parent = "slot_sized_button",
       padding = 8
     },
-    
+
     shortcut_bar_button_blue =
     {
       type = "button_style",
       parent = "slot_sized_button_blue",
       padding = 8
     },
-    
+
     shortcut_bar_button_red =
     {
       type = "button_style",
       parent = "slot_sized_button_red",
       padding = 8
     },
-    
+
     shortcut_bar_button_green =
     {
       type = "button_style",
       parent = "slot_sized_button_green",
       padding = 8
     },
-    
+
     shortcut_bar_button_small =
     {
       type = "button_style",
@@ -6867,10 +6860,8 @@ data:extend(
       top_padding = default_container_padding,
       graphical_set =
       {
-        filename = "__core__/graphics/gui.png",
-        corner_size = 3,
-        position = {0, 24},
-        scale = 1
+        base = {position = {420, 17}, corner_size = 8},
+        shadow = default_shadow
       }
     },
     unlocked_achievement_frame =
@@ -6887,10 +6878,8 @@ data:extend(
       top_padding = default_container_padding,
       graphical_set =
       {
-        filename = "__core__/graphics/gui.png",
-        corner_size = 3,
-        position = {0, 32},
-        scale = 1
+        base = {position = {403, 17}, corner_size = 8},
+        shadow = default_shadow
       }
     },
     failed_achievement_frame =
@@ -7808,7 +7797,7 @@ data:extend(
       extra_padding_when_activated = 0,
       graphical_set = {}
     },
-    
+
     -- Scroll pane to be used in inside_shallow_frame and similar
     scroll_pane_in_shallow_frame =
     {
@@ -7848,7 +7837,7 @@ data:extend(
     {
       type = "scroll_pane_style"
     },
-    
+
     machine_ingredients_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -7856,7 +7845,7 @@ data:extend(
       vertically_squashable = "off",
       maximal_height = 100
     },
-    
+
     machine_outputs_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -7864,7 +7853,7 @@ data:extend(
       vertically_squashable = "off",
       maximal_height = 100
     },
-    
+
     module_inventory_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -7873,7 +7862,7 @@ data:extend(
       maximal_height = 100,
       extra_padding_when_activated = 0,
     },
-    
+
     trash_slots_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -7895,7 +7884,7 @@ data:extend(
       minimal_width = 400,
       maximal_width = 600
     },
-    
+
     map_preview_scroll_pane = -- does not paint top edge
     {
       type = "scroll_pane_style",
@@ -7932,6 +7921,13 @@ data:extend(
         },
         shadow = default_inner_shadow
       }
+    },
+    equipment_grid_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      vertically_stretchable = "stretch_and_expand",
+      horizontally_stretchable = "stretch_and_expand",
+      extra_padding_when_activated = 0
     },
     camera =
     {
@@ -8001,7 +7997,7 @@ data:extend(
         horizontal_spacing = 0
       }
     },
-    
+
     deconstruction_planner_tabbed_pane =
     {
       type = "tabbed_pane_style",
@@ -8666,7 +8662,7 @@ data:extend(
       parent = "label_with_left_padding",
       horizontally_squashable = "on"
     },
-    
+
     color_picker_label =
     {
       type = "label_style",
@@ -8714,12 +8710,7 @@ data:extend(
       type = "progressbar_style",
       bar_width = 24
     },
-    train_schedule_condition_time_selection_button =
-    {
-      type = "button_style",
-      width = 84,
-      left_click_sound = {{ filename = "__core__/sound/gui-menu-small.ogg", volume = 1 }},
-    },
+
     train_schedule_condition_time_selection_button =
     {
       type = "button_style",

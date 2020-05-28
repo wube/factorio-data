@@ -214,7 +214,7 @@ data:extend(
       }
     })
   },
-  
+
   {
     type = "corpse",
     name = "1x2-remnants",
@@ -493,7 +493,7 @@ data:extend(
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "filter-inserter-remnants",
@@ -634,7 +634,7 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = 
+    animation =
     {
       filename = "__base__/graphics/entity/underground-belt/remnants/underground-belt-remnants.png",
       line_length = 1,
@@ -879,7 +879,7 @@ data:extend(
       }
     },
   }),
-  
+
   animation_overlay = make_rotated_animation_variations_from_sheet (4,
   {
     layers =
@@ -951,7 +951,7 @@ data:extend(
       }
     }
   }),
-  
+
   animation_overlay = make_rotated_animation_variations_from_sheet(3,
   {
     layers =
@@ -1023,7 +1023,7 @@ data:extend(
       }
     },
   }),
-  
+
   animation_overlay = make_rotated_animation_variations_from_sheet (4,
   {
     layers =
@@ -1395,7 +1395,7 @@ data:extend(
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "offshore-pump-remnants",
@@ -1411,7 +1411,7 @@ data:extend(
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
-    animation = 
+    animation =
     {
       {
         filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-1.png",
@@ -1984,7 +1984,7 @@ data:extend(
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selectable_in_game = false,
     animation =
-    {      
+    {
       layers =
       {
         {
@@ -2007,7 +2007,7 @@ data:extend(
             scale = 0.5
           }
         },
-        {         
+        {
           filename = "__base__/graphics/entity/rail-endings/rail-endings-metals.png",
           priority = "high",
           flags = { "trilinear-filtering" },
@@ -2033,7 +2033,7 @@ data:extend(
     time_before_shading_off = 60 * 60 * 1
   },
 
-  
+
   {
     type = "corpse",
     name = "rail-chain-signal-remnants",
@@ -2109,7 +2109,7 @@ data:extend(
     }
   },
 
-  
+
   {
     type = "corpse",
     name = "rail-signal-remnants",
@@ -2272,7 +2272,7 @@ data:extend(
       },
     }
   },
-  
+
   {
     type = "corpse",
     name = "laser-turret-remnants",
@@ -2343,7 +2343,7 @@ data:extend(
       }
     })
   },
-  
+
   {
     type = "corpse",
     name = "constant-combinator-remnants",
@@ -2469,7 +2469,7 @@ data:extend(
       },
     }
   },
-  
+
   {
     type = "corpse",
     name = "programmable-speaker-remnants",
@@ -2511,7 +2511,7 @@ data:extend(
           }
         }
       },
-    }),  
+    }),
     animation_overlay = make_rotated_animation_variations_from_sheet (3,
     {
       layers =
@@ -2538,8 +2538,8 @@ data:extend(
         },
       }
     })
-  }, 
-  
+  },
+
   {
     type = "corpse",
     name = "train-stop-remnants",
@@ -2674,7 +2674,7 @@ data:extend(
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "locomotive-remnants",
@@ -2783,7 +2783,7 @@ data:extend(
       },
     }
   },
-  
+
   {
     type = "corpse",
     name = "accumulator-remnants",
@@ -2825,7 +2825,7 @@ data:extend(
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "defender-remnants",

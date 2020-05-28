@@ -140,7 +140,7 @@ data:extend(
       }
     },
   },
-  
+
   {
     type = "projectile",
     name = "defender-capsule",

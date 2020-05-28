@@ -12,7 +12,7 @@ movement_triggers.tank =
     speed_from_center = 0.01,
     speed_from_center_deviation = 0.05,
     initial_vertical_speed = 0.02,
-    offsets = 
+    offsets =
     {
       {0.75, 1},
       {-0.75,1},
@@ -32,7 +32,7 @@ movement_triggers.tank =
     speed_from_center = 0.01,
     speed_from_center_deviation = 0.05,
     initial_vertical_speed = 0.02,
-    offsets = 
+    offsets =
     {
       {0.75, 1},
       {-0.75,1},
@@ -57,7 +57,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -76,7 +76,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -95,7 +95,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -118,7 +118,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -147,7 +147,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -166,7 +166,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -185,7 +185,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -208,7 +208,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -237,7 +237,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -256,7 +256,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -275,7 +275,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -298,7 +298,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -327,7 +327,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -350,7 +350,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -373,7 +373,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -395,7 +395,7 @@ movement_triggers.tank =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -422,7 +422,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -445,7 +445,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -453,7 +453,7 @@ movement_triggers.tank =
           {-0.8,-0.5},
           {0.8, -1},
           {-0.8,-1}
-        }, 
+        },
         offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
         rotate_offsets = true
       },
@@ -468,7 +468,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -490,7 +490,7 @@ movement_triggers.tank =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -517,7 +517,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -540,7 +540,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -563,7 +563,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -585,7 +585,7 @@ movement_triggers.tank =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -612,7 +612,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -635,7 +635,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -658,7 +658,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -680,7 +680,7 @@ movement_triggers.tank =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -707,7 +707,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -726,7 +726,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -745,7 +745,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -768,7 +768,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -791,7 +791,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -820,7 +820,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -839,7 +839,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -858,7 +858,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -881,7 +881,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -910,7 +910,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -945,7 +945,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -968,7 +968,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -997,7 +997,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1016,7 +1016,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1035,7 +1035,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1058,7 +1058,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1087,7 +1087,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1106,7 +1106,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1125,7 +1125,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1148,7 +1148,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1177,7 +1177,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1212,7 +1212,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1235,7 +1235,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1264,7 +1264,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1283,7 +1283,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1302,7 +1302,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1325,7 +1325,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1354,7 +1354,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1373,7 +1373,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1392,7 +1392,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1415,7 +1415,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1444,7 +1444,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1463,7 +1463,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1472,7 +1472,7 @@ movement_triggers.tank =
         rotate_offsets = true
       },
       {
-        type = "create-particle", 
+        type = "create-particle",
         repeat_count = 4,
         particle_name = "dirt-5-stone-vehicle-particle-tiny",
         probability = 0.05,
@@ -1482,7 +1482,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1505,7 +1505,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1534,7 +1534,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1553,7 +1553,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1572,7 +1572,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1595,7 +1595,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1624,7 +1624,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1643,7 +1643,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1662,7 +1662,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1685,7 +1685,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1714,7 +1714,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1733,7 +1733,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1752,7 +1752,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1775,7 +1775,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1804,7 +1804,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, 1},
           {-0.7,1}
@@ -1823,7 +1823,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.7, -1},
           {-0.7,-1}
@@ -1842,7 +1842,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1865,7 +1865,7 @@ movement_triggers.tank =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1893,7 +1893,7 @@ movement_triggers.car =
     speed_from_center = 0.01,
     speed_from_center_deviation = 0.05,
     initial_vertical_speed = 0.02,
-    offsets = 
+    offsets =
     {
       {0.75, 1},
       {-0.75,1},
@@ -1913,7 +1913,7 @@ movement_triggers.car =
     speed_from_center = 0.01,
     speed_from_center_deviation = 0.05,
     initial_vertical_speed = 0.02,
-    offsets = 
+    offsets =
     {
       {0.75, 1},
       {-0.75,1},
@@ -1937,7 +1937,7 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1958,7 +1958,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -1979,7 +1979,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2005,13 +2005,13 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
           {0.55, -0.8},
           {-0.55,-0.8}
-        }, 
+        },
         offset_deviation = {{-0.25, -0.25}, {0.25, 0.25}},
         rotate_offsets = true
       },
@@ -2026,7 +2026,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2047,7 +2047,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2073,7 +2073,7 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2094,7 +2094,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2115,7 +2115,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2142,7 +2142,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2163,7 +2163,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2184,7 +2184,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2204,7 +2204,7 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2231,7 +2231,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2252,7 +2252,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2273,7 +2273,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2293,7 +2293,7 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2320,7 +2320,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2341,7 +2341,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2362,7 +2362,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2382,7 +2382,7 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2409,7 +2409,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2430,7 +2430,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2451,7 +2451,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2471,7 +2471,7 @@ movement_triggers.car =
         speed_from_center_deviation = 0,
         initial_vertical_speed = 0.02,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2498,7 +2498,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2519,7 +2519,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2540,7 +2540,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2561,7 +2561,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2588,7 +2588,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2609,7 +2609,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2630,7 +2630,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2657,7 +2657,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2678,7 +2678,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2699,7 +2699,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2726,7 +2726,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2747,7 +2747,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2768,7 +2768,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2795,7 +2795,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2816,7 +2816,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2837,7 +2837,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2864,7 +2864,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2885,7 +2885,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2906,7 +2906,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2933,7 +2933,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2954,7 +2954,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -2975,7 +2975,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3002,7 +3002,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3023,7 +3023,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3044,13 +3044,13 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
-          {-0.75,1}, 
+          {-0.75,1},
           {0.55, -0.75},
           {-0.55,-0.75}
-        }, 
+        },
         offset_deviation = {{-0.25, -0.25}, {0.25, 0.25}},
         rotate_offsets = true
       },
@@ -3071,10 +3071,10 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
-          {-0.75,1}, 
+          {-0.75,1},
           {0.55, -0.75},
           {-0.55,-0.75}
         },
@@ -3092,7 +3092,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3113,7 +3113,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3139,7 +3139,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3160,7 +3160,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3181,7 +3181,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3208,7 +3208,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3229,7 +3229,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3250,7 +3250,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3277,7 +3277,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3298,7 +3298,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3319,7 +3319,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3346,7 +3346,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3367,7 +3367,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},
@@ -3388,7 +3388,7 @@ movement_triggers.car =
         initial_vertical_speed = 0.02,
         frame_speed = 1,
         initial_vertical_speed_deviation = 0.05,
-        offsets = 
+        offsets =
         {
           {0.75, 1},
           {-0.75,1},

@@ -2124,7 +2124,7 @@ data:extend
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
     subgroup = "gun-explosions",
-    order = "a-a-a", 
+    order = "a-a-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
     light = default_light(20),
@@ -2583,7 +2583,7 @@ data:extend
       }
     }
   },
-  
+
   empty_explosion
   {
     name = "medium-biter-die",
@@ -2601,7 +2601,7 @@ data:extend
     name = "behemoth-biter-die",
     created_effect = biter_die_effects.behemoth_biter
   },
-  
+
   empty_explosion
   {
     name = "medium-worm-die",

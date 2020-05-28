@@ -1,31 +1,25 @@
 require("mod-gui")
 
 function story_init_helpers(story)
-  story.helpers = make_helpers(story)
-end
-
-function make_helpers(story)
-  local helpers = {}
-  helpers.story_points_by_name = {}
-  helpers.story_branches = {}
+  story_points_by_name = {}
+  story_branches = {}
   for story_index, data in pairs(story) do
     if (story_index ~= "update-functions") then
-      helpers.story_branches[story_index] = data
+      story_branches[story_index] = data
       for index, item in pairs(data) do
         if item.name ~= nil then
-          helpers.story_points_by_name[item.name] = {}
-          helpers.story_points_by_name[item.name].story_index = story_index
-          helpers.story_points_by_name[item.name].position = index
+          story_points_by_name[item.name] = {}
+          story_points_by_name[item.name].story_index = story_index
+          story_points_by_name[item.name].position = index
         end
       end
     else
       story_update_table = data
     end
   end
-  return helpers
 end
 
-function story_init(story_table,player)
+function story_init(player)
   local result = {}
   -- List of names of currently active update functions
   result.updates = {}
@@ -38,10 +32,6 @@ function story_init(story_table,player)
   -- Utility variables used to ensure that the init of the story item is called just once
   result.init_called_last_on_story_index = 0
   result.init_called_last_on_position = 0
-  if player then
-    result.player = player
-  end
-  result.helpers = make_helpers(story_table)
   return result
 end
 
@@ -51,7 +41,7 @@ function story_update(story, event, next_level, onwin)
     global.last_built_position = event.created_entity.position
   end
   on_gui_click(event)
-  local branches = story.helpers.story_branches[story.story_index]
+  local branches = story_branches[story.story_index]
   local starting_story_index = story.story_index
   local starting_story_position = story.story_position
   local branch = branches[story.story_position]
@@ -112,7 +102,7 @@ function story_update(story, event, next_level, onwin)
       return
     end
     story.story_position = story.story_position + 1
-    story.current_story_started_at = game.ticks_played
+    story.current_story_started_at = event.tick
     if story.story_position > #branches then
       if onwin ~= nil then
         onwin()
@@ -128,11 +118,6 @@ function story_update(story, event, next_level, onwin)
   end
 end
 
-function story_on_tick(event)
-  if event.name ~= defines.events.on_tick then return end
-  flash_message_log_on_tick()
-end
-
 function story_add_update(story, name)
   story.updates[name] = true
 end
@@ -142,15 +127,14 @@ function story_remove_update(story, name)
 end
 
 function story_jump_to(story, name)
-  local story_point = story.helpers.story_points_by_name[name]
+  local story_point = story_points_by_name[name]
   story.story_index = story_point.story_index
   story.story_position = story_point.position
-  --story.current_story_started_at = game.ticks_played
   if story.story_position ~= 1 then
     local test = story.story_index + 1
-    local branch = story.helpers.story_branches[story.story_index]
+    local branch = story_branches[story.story_index]
     if branch[story.story_position - 1].action ~= nil then
-      branch[story.story_position - 1].action(nil, story)
+      branch[story.story_position - 1].action()
     end
   end
 end
@@ -159,11 +143,7 @@ function story_elapsed(story, event, seconds)
   return event.tick - story.current_story_started_at > seconds * 60
 end
 
-function story_check_passed(story, seconds)
-  return story.current_story_started_at + (seconds*60) < game.ticks_played
-end
-
-function story_elapsed_check(seconds,story_optional)
+function story_elapsed_check(seconds)
   return function(event, current_story) return story_elapsed(current_story, event, seconds) end
 end
 
@@ -349,7 +329,7 @@ function export_entities(param)
   end
   local ignore = param.ignore or
   {
-    character = true,
+    player = true,
     particle = true,
     projectile = true,
     ["item-request-proxy"] = true,
@@ -400,38 +380,37 @@ function export_entities(param)
           index_map[unit_number] = count
         end
         info.name = entity.name
-        local type = entity.type
-        if type == "resource" then
+        if entity.type == "resource" then
           info.amount = entity.amount
-        elseif type == "entity-ghost" then
+        elseif entity.type == "entity-ghost" then
           info.inner_name = entity.ghost_name
-        elseif type == "item-entity" then
+        elseif entity.type == "item-entity" then
           info.stack = {name = entity.stack.name, count = entity.stack.count}
-        elseif type == "transport-belt" or type == "underground-belt" then
+        elseif entity.type == "transport-belt" or entity.type == "underground-belt" then
           info.line_contents = {}
           for k = 1, 2 do
             local line = entity.get_transport_line(k)
             info.line_contents[k] = line.get_contents()
             line.clear()
           end
-        elseif type == "splitter" then
+        elseif entity.type == "splitter" then
           info.line_contents = {}
           for k = 1, 8 do
             local line = entity.get_transport_line(k)
             info.line_contents[k] = line.get_contents()
             line.clear()
           end
-        elseif type == "locomotive" then
+        elseif entity.type == "locomotive" then
           info.schedule = entity.train.schedule
           info.speed = entity.train.speed
           info.manual_mode = entity.train.manual_mode
           info.direction = math.floor(0.5+entity.orientation*8)%8
-        elseif type == "assembling-machine" then
+        elseif entity.name == "flying-text" then
+          info.text = ""
+        elseif entity.type == "assembling-machine" then
           if entity.get_recipe() then
             info.recipe = entity.get_recipe().name
           end
-        elseif type == "flying-text" then
-          info.text = entity.text
         end
         if entity.type == "underground-belt" then
           info.type = entity.belt_to_ground_type
@@ -461,8 +440,7 @@ function export_entities(param)
           if unit_number then
             local index = index_map[unit_number]
             if index then
-              connection_definitions[index] =
-              {
+              connection_definitions[index] = {
                 wire = definition.wire,
                 source_circuit_id = definition.source_circuit_id,
                 target_circuit_id = definition.target_circuit_id
@@ -553,9 +531,6 @@ function recreate_entities(array, param, bool)
           end
           if entity.backer_name then
             created.backer_name = entity.backer_name
-          end
-          if entity.text then
-            created.text = entity.text
           end
           if entity.color then
             created.color = entity.color

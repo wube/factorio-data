@@ -414,13 +414,13 @@ local make_robot_particle = function(prototype)
     {
       type = "play-sound",
       sound = sounds.robot_die_whoosh,
-    }, 
+    },
     {
       type = "play-sound",
       sound = sounds.robot_die_vox,
     },
   }
-  
+
   if prototype.type == "construction-robot" or prototype.type == "logistic-robot" then return end
 
   prototype.destroy_action =
@@ -429,7 +429,7 @@ local make_robot_particle = function(prototype)
     action_delivery =
     {
       type = "instant",
-      source_effects = 
+      source_effects =
       {
         {
           type = "create-particle",
@@ -454,7 +454,7 @@ local make_robot_particle = function(prototype)
         {
           type = "play-sound",
           sound = sounds.robot_selfdestruct,
-        },    
+        },
       }
     }
   }

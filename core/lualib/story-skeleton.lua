@@ -16,7 +16,7 @@ script.on_event(defines.events.on_tick, function(event)
   --Other things on tick can go here.
 end)
 
-story_table = 
+story_table =
 {
   {
     {

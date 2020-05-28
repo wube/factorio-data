@@ -1,5 +1,5 @@
 data:extend
-{ 
+{
   {
     type = "technology",
     name = "automation",
@@ -434,7 +434,7 @@ data:extend
     },
     order = "a-j-a"
   },
-  
+
   {
     type = "technology",
     name = "research-speed-1",
@@ -660,7 +660,7 @@ data:extend
       time = 30
     },
     order = "a-f-b"
-  },  
+  },
   {
     type = "technology",
     name = "toolbelt",
@@ -685,7 +685,7 @@ data:extend
       time = 30
     },
     order = "c-k-m"
-  },  
+  },
   {
     type = "technology",
     name = "stone-walls",

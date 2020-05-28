@@ -183,7 +183,7 @@ end
 tile_trigger_effects.red_desert_1_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -273,7 +273,7 @@ end
 tile_trigger_effects.red_desert_2_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -363,7 +363,7 @@ end
 tile_trigger_effects.red_desert_3_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -453,7 +453,7 @@ end
 tile_trigger_effects.dirt_1_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -543,7 +543,7 @@ end
 tile_trigger_effects.dirt_2_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -633,7 +633,7 @@ end
 tile_trigger_effects.dirt_3_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -723,7 +723,7 @@ end
 tile_trigger_effects.dirt_4_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -903,7 +903,7 @@ end
 tile_trigger_effects.dirt_6_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
@@ -1173,7 +1173,7 @@ end
 tile_trigger_effects.grass_1_trigger_effect = function()
   return
   {
-    { 
+    {
       type = "create-particle",
       repeat_count = 20,
       repeat_count_deviation = 5,
