@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.29
+Version: 0.18.30
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.29
+Date: 01. 06. 2020
+  Graphics:
+    - Reworked Engine unit icon.
+    - Tweaked the color of Sulfur icon.
+  Changes:
+    - Updates to mini-tutorials.
+    - New descriptions for mini-tutorial list.
+  Features:
+    - Added support to manually set several paths through the config.ini [path] file.
+      'saves', 'scenarios', 'mods', 'archive', and 'script-output'
+  Bugfixes:
+    - Fixed choose-elem-button filters not being respected when clicking the button with an item in hand.
+  Scripting:
+    - Added LuaEntityPrototype::grid_prototype read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.28
 Date: 28. 05. 2020

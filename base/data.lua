@@ -51,6 +51,7 @@ require("prototypes.entity.demo-beams")
 require("prototypes.utility-sprites")
 require("prototypes.technology.demo-technology")
 require("prototypes.technology.demo-military-upgrades")
+require("prototypes.demo-tutorials")
 
 if not data.is_demo then
   require("prototypes.achievements")
