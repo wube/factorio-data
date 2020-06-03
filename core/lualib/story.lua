@@ -333,7 +333,8 @@ function export_entities(param)
     particle = true,
     projectile = true,
     ["item-request-proxy"] = true,
-    explosion = true
+    explosion = true,
+    ["highlight-box"] = true
   }
   local get_inventory = function(entity)
     if not entity.valid then return nil end

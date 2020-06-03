@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.30
+Version: 0.18.31
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.30
+Date: 03. 06. 2020
+  Graphics:
+    - Improved 8px versions of circuits so they look better on belts when zooming out.
+    - Improved 8px versions of inserters so they retain their color better.
+    - Tweaked Steel plate and Plastic bar icons to improve contrast between them.
+  Changes:
+    - Constant combinator and infinity chest filters can now be confirmed using Enter. (https://forums.factorio.com/85314)
+  Bugfixes:
+    - Made grey virtual signal a bit darker to have more contrast with white virtual signal. (https://forums.factorio.com/85330)
+    - Fixed building entity seemingly colliding with rolling stock ghost would delete the ghost. (https://forums.factorio.com/81419)
+    - Fixed Tutorial campaign level 05 had non-translated train stop names. (https://forums.factorio.com/85457)
+    - Fixed tiny maps hanging in PvP. (https://forums.factorio.com/85370)
+    - Fixed Wave defense bonuses being lost when technology effects were reset. (https://forums.factorio.com/82583)
+    - Fixed progression block in Tutorial level 01 if you don't close the furnace GUI while smelting the iron plate. (https://forums.factorio.com/85510)
+    - Fixed redundant title in modded Container gui. (https://forums.factorio.com/85420)
+    - Fixed changelog gui not reacting properly to window resize. (https://forums.factorio.com/85433)
+    - Fixed premature goal completed notifications in Tutorial level 03. (https://forums.factorio.com/85523)
+    - Fixed transport belt madness script error when trying to handle highlight-box entities. (https://forums.factorio.com/82695)
+    - Fixed tightspot output chest deleting items when starting the level. (https://forums.factorio.com/84475)
+    - Fixed tutorial level 01 start cutscene could be zoomed with the scroll wheel causing glitchy rendering. (https://forums.factorio.com/85521)
+    - Fixed can_insert logic related to ammo and guns on the character entity. (https://forums.factorio.com/85192)
+    - Fixed crash when clearing infinity pipe filter. (https://forums.factorio.com/85551)
+  Modding:
+    - Added 'tank_count' to fluid wagon prototype. Allowed values are 1, 2 or 3. Default value is 3. (https://forums.factorio.com/84978)
+  Scripting:
+    - Added start_position and start_zoom to cutscene controller initialisation.
+    - Made final_transition_time of cutscene controller optional. If not given, the cutscene won't loop back to the start position.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.29
 Date: 01. 06. 2020
