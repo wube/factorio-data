@@ -89,7 +89,8 @@ local function resource(resource_parameters, autoplace_parameters)
         }
       }
     },
-    map_color = resource_parameters.map_color
+    map_color = resource_parameters.map_color,
+    mining_visualisation_tint = resource_parameters.mining_visualisation_tint
   }
 end
 
@@ -107,7 +108,8 @@ data:extend({
       order = "b",
       map_color = {0.415, 0.525, 0.580},
       mining_time = 1,
-      walking_sound = sounds.ore
+      walking_sound = sounds.ore,
+      mining_visualisation_tint = {r = 0.895, g = 0.965, b = 1.000, a = 1.000}, -- #e4f6ffff
     },
     {
       base_density = 10,
@@ -122,7 +124,8 @@ data:extend({
       order = "b",
       map_color = {0.803, 0.388, 0.215},
       mining_time = 1,
-      walking_sound = sounds.ore
+      walking_sound = sounds.ore,
+      mining_visualisation_tint = {r = 1.000, g = 0.675, b = 0.541, a = 1.000}, -- #ffac89ff
     },
     {
       base_density = 8,
@@ -136,8 +139,10 @@ data:extend({
       name = "coal",
       order = "b",
       map_color = {0, 0, 0},
+      mining_visualisation_tint = {0, 0, 0},
       mining_time = 1,
-      walking_sound = sounds.ore
+      walking_sound = sounds.ore,
+      mining_visualisation_tint = {r = 0.465, g = 0.465, b = 0.465, a = 1.000}, -- #767676ff
     },
     {
       base_density = 8,
@@ -151,7 +156,8 @@ data:extend({
       order = "b",
       map_color = {0.690, 0.611, 0.427},
       mining_time = 1,
-      walking_sound = sounds.ore
+      walking_sound = sounds.ore,
+      mining_visualisation_tint = {r = 0.984, g = 0.883, b = 0.646, a = 1.000}, -- #fae1a4ff
     },
     {
       base_density = 4,
@@ -246,6 +252,7 @@ data:extend({
     effect_darkness_multiplier = 3.6,
     min_effect_alpha = 0.2,
     max_effect_alpha = 0.3,
+    mining_visualisation_tint = {r = 0.814, g = 1.000, b = 0.499, a = 1.000}, -- #cfff7fff
     map_color = {0, 0.7, 0}
   }
 })

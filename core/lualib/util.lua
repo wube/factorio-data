@@ -371,14 +371,15 @@ function util.product_amount(product)
   return product.probability * (product.amount or ((product.amount_min + product.amount_max) / 2))
 end
 
-function util.empty_sprite()
+function util.empty_sprite(animation_length)
   return
   {
     filename = "__core__/graphics/empty.png",
     priority = "high",
     width = 1,
     height = 1,
-    frame_count = 1
+    frame_count = 1,
+    repeat_count = animation_length
   }
 end
 

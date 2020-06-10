@@ -217,6 +217,47 @@ data:extend(
 
     default_scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 
+    color_filters =
+    {
+      -- matrices based on http://blog.noblemaster.com/wp-content/uploads/2013/10/2013-10-26-ColorCorrection.txt
+      -- which was based on http://tylerdavidhoward.com/thesis/
+
+      -- Matrices are row-major, of course.
+      {
+        name = "protanopia",
+        localised_name = {"gui-graphics-settings.color-filter-protanopia"},
+        matrix =
+        {
+          {  1.1701, -0.2554,  0.0438,  0.0000 },
+          {  0.1313,  0.8029,  0.0338,  0.0000 },
+          {  0.1051, -0.1578,  1.0271,  0.0000 },
+          {  0.0000,  0.0000,  0.0000,  1.0000 }
+        }
+      },
+      {
+        name = "deuteranopia",
+        localised_name = {"gui-graphics-settings.color-filter-deuteranopia"},
+        matrix =
+        {
+          {  1.1701, -0.2554,  0.0438,  0.0000 },
+          {  0.1313,  0.8029,  0.0338,  0.0000 },
+          {  0.1051, -0.1578,  1.0271,  0.0000 },
+          {  0.0000,  0.0000,  0.0000,  1.0000 }
+        }
+      },
+      {
+        name = "tritanopia",
+        localised_name = {"gui-graphics-settings.color-filter-tritanopia"},
+        matrix =
+        {
+          {  1.0531,  0.2640, -0.4159,  0.0000 },
+          {  0.0410,  1.2038, -0.3210,  0.0000 },
+          {  0.0328,  0.1631,  0.7431,  0.0000 },
+          {  0.0000,  0.0000,  0.0000,  1.0000 }
+        }
+      }
+    },
+
     -- Should be based on the default day/night times, ie
     -- sun starts to set at 0.25
     -- sun fully set at 0.45

@@ -1,6 +1,37 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.31
+Version: 0.18.32
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.31
+Date: 10. 06. 2020
+  Graphics:
+    - New electric mining drill graphics.
+    - Tweaked electric mining drill icon to be a bit more colorful.
+  Minor Features:
+    - Hovering over the circuit network id in the entity circuit control window will now show a tooltip with the circuit network contents.
+    - Added experimental Color Filters graphics option to attempt to improve accessibility for color-blind players.
+    - The debug setting "show-time-usage" now 'line wraps' if it doesn't fit on screen vertically.
+  Bugfixes:
+    - Fixed crash when merging force that contained unit groups. (https://forums.factorio.com/85549)
+    - Fixed character preview being empty when the character is in a vehicle.
+    - Fixed script error when trying to load old PvP save games. (https://forums.factorio.com/85713)
+    - Fixed setting vehicle driver/passenger to an offline player would crash the game. (https://forums.factorio.com/85572)
+    - Fixed 4th parameter of noise.terrace function was parsed as literal number but was used as noise program register index. (https://forums.factorio.com/85710)
+    - Fixed an issue with modded entities having an electric output flow limit of 0. (https://forums.factorio.com/84963)
+    - Fixed that furnace recipe auto-selection didn't work correctly with temperature ranges. (https://forums.factorio.com/85561)
+    - Fixed that LuaUnitGroup could be used while in an invalid destroyed state.
+    - Fixed button for selecting signal or number would not switch from number to signal with left click. (https://forums.factorio.com/85766)
+  Modding:
+    - Changed mining drill graphics definitions. Graphics are now defined using working visualizations contained in graphics_set and wet_mining_graphics_set prototype properties.
+      If graphics_set is not defined, old animations property will be loaded instead for limited backwards compatibility, but other old graphics properties will be ignored.
+    - Mods can now be loaded from directories with the name of the mod but no version number.
+    - Added color_filters to utility-constants.
+    - Input fluid box with connection set to output or input-output will not have volume forced down by recipe fluid ingredient amount.
+  Scripting:
+    - Added LuaSurface::show_clouds read/write.
+    - Added LuaPlayer::stashed_controller_type read.
+    - Added LuaBootstrap::register_on_entity_destroyed().
+    - Added on_entity_destroyed event fired after an entity registered with LuaBootstrap::register_on_entity_destroyed() is destroyed.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.30
 Date: 03. 06. 2020

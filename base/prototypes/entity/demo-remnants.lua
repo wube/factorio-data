@@ -1282,6 +1282,49 @@ data:extend(
       },
     })
   },
+  
+  {
+    type = "corpse",
+    name = "electric-mining-drill-remnants",
+    icon = "__base__/graphics/icons/electric-mining-drill.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup="remnants",
+    order = "d[remnants]-a[generic]-a[small]",
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-1, -1}, {1, 1}},
+    tile_width = 2,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (4,
+    {
+      filename = "__base__/graphics/entity/electric-mining-drill/remnants/electric-mining-drill-remnants.png",
+      line_length = 1,
+      width = 178,
+      height = 166,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(7, 0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/electric-mining-drill/remnants/hr-electric-mining-drill-remnants.png",
+        line_length = 1,
+        width = 356,
+        height = 328,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(7, -0.5),
+        scale = 0.5,
+      },
+    })
+  },
 
   {
     type = "corpse",

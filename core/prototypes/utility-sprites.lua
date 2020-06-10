@@ -2017,6 +2017,14 @@ data:extend(
       scale = 1,
       flags = {"icon"}
     },
+    tile_ghost_cursor =
+    {
+      filename = "__core__/graphics/tile-ghost-cursor.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 1,
+      flags = {"icon"}
+    },
 
     expand =
     {
