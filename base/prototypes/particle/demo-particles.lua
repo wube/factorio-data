@@ -5776,7 +5776,7 @@ make_particle
   make_particle
   {
     name = "beacon-metal-particle-small",
-    pictures = particle_animations.get_metal_particle_small_pictures ({tint = {r = 0.602, g = 0.420, b = 0.291, a = 1.000}}),
+    pictures = particle_animations.get_metal_particle_small_pictures ({ tint = { r = 0.678, g = 0.447, b = 0.314, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -5785,7 +5785,7 @@ make_particle
   make_particle
   {
     name = "beacon-metal-particle-medium",
-    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {r = 0.602, g = 0.420, b = 0.291, a = 1.000}}),
+    pictures = particle_animations.get_metal_particle_medium_pictures ({ tint = { r = 0.761, g = 0.699, b = 0.612, a = 1.000 }}),  
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
@@ -5794,7 +5794,7 @@ make_particle
   make_particle
   {
     name = "beacon-metal-particle-big",
-    pictures = particle_animations.get_metal_particle_big_pictures({tint = {r = 0.506, g = 0.457, b = 0.371, a = 1.000}}),
+    pictures = particle_animations.get_metal_particle_big_pictures({ tint = { r = 0.859, g = 0.808, b = 0.741, a = 1.000 }}), 
     shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = default_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),

@@ -1,6 +1,34 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.32
+Version: 0.18.33
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.32
+Date: 16. 06. 2020
+  Graphics:
+    - New beacon graphics.
+  Features:
+    - Changed fluid mixing to a simpler version that only checks when manually building most things.
+    - Added a flush fluids button to the pipe, underground pipe, and storage tank entity GUIs.
+  Gui:
+    - Show only unlocked items in filter selection (inventory and quickbar) and logistic/trash requests.
+      Other selections like signal selection/upgrade selection are not affected.
+      New interface settings (off by default) bypasses this and allows the player to see all items as before.
+    - When selecting an element from a slot that has already value, the selected value is now going to be highlighted with the related tab (if applicable) selected.
+  Bugfixes:
+    - Fixed a few weird pixels in heat exchanger East sprites. (https://forums.factorio.com/85069)
+    - Fixed player mining animation had the backpack affected by the color mask. (https://forums.factorio.com/85830)
+    - Fixed mining drill status after disconnecting it from logistic network. (https://forums.factorio.com/85836)
+    - Fixed massive script time usage in Wave defense scenario after configuration changes. (https://forums.factorio.com/85841)
+    - Fixed that infinity GUI filters didn't list all items.
+    - Fixed issue with upgrading ghost of assembler with pipes. (https://forums.factorio.com/85905)
+    - Fixed new electric mining drill was missing integration layer. (https://forums.factorio.com/85923)
+    - Fixed crash when unit group is destroyed while its goto behavior is being updated. (https://forums.factorio.com/85883)
+  Modding:
+    - Changed beacon graphics definitions. Graphics are now defined in graphics_set prototype property.
+      If graphics_set is not defined, old animation and base_picture properties will be loaded instead for limited backwards compatibility.
+  Scripting:
+    - Added LuaFluidBox::flush().
+    - Added LuaPlayer::auto_sort_main_inventory read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.31
 Date: 10. 06. 2020

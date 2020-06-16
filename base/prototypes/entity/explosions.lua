@@ -2078,41 +2078,135 @@ data:extend
         {
           {
             type = "create-particle",
-            repeat_count = 22,
+            repeat_count = 5,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
             particle_name = "beacon-metal-particle-big",
-            offset_deviation = { { -0.4961, -0.5938 }, { 0.4961, 0.5938 } },
-            initial_height = 0.5,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.092,
-            initial_vertical_speed_deviation = 0.05,
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.4961, -0.5938 },
+              right_bottom = { 0.4961, 0.5938 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.45,
+            initial_height_deviation = 0.46,
+            initial_vertical_speed = 0.106,
+            initial_vertical_speed_deviation = 0.036,
             speed_from_center = 0.03,
-            speed_from_center_deviation = 0.05
+            speed_from_center_deviation = 0.007,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
           },
           {
             type = "create-particle",
-            repeat_count = 27,
+            repeat_count = 15,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
             particle_name = "beacon-metal-particle-medium",
-            offset_deviation = { { -0.4961, -0.5 }, { 0.4961, 0.5 } },
-            initial_height = 0.5,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.094,
-            initial_vertical_speed_deviation = 0.049,
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.4961, -0.5 },
+              right_bottom = { 0.4961, 0.5 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.4,
+            initial_height_deviation = 0,
+            initial_vertical_speed = 0.092,
+            initial_vertical_speed_deviation = 0.038,
             speed_from_center = 0.04,
-            speed_from_center_deviation = 0.018
+            speed_from_center_deviation = 0.006,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
           },
           {
             type = "create-particle",
             repeat_count = 29,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
             particle_name = "beacon-metal-particle-small",
-            offset_deviation = { { -0.5938, -0.5938 }, { 0.5938, 0.5938 } },
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.5938, -0.5938 },
+              right_bottom = { 0.5938, 0.5938 }
+            },
+            tile_collision_mask = nil,
             initial_height = 0.5,
             initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.109,
-            initial_vertical_speed_deviation = 0.05,
+            initial_vertical_speed = 0.063,
+            initial_vertical_speed_deviation = 0.035,
             speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
+            speed_from_center_deviation = 0,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 15,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "cable-and-electronics-particle-small-medium",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.5, -0.5 },
+              right_bottom = { 0.5, 0.5 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.2,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.082,
+            initial_vertical_speed_deviation = 0.031,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 12,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "concrete-stone-particle-small",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.5, -0.5 },
+              right_bottom = { 0.5, 0.5 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.087,
+            initial_vertical_speed_deviation = 0.034,
+            speed_from_center = 0.04,
+            speed_from_center_deviation = 0.012,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
           }
-        },
+        }
       }
     }
   },

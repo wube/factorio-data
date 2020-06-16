@@ -62,6 +62,14 @@ local noise_expression_metatable =
       arguments = { tne(lhs), tne(rhs) }
     }
   end,
+  __unm = function(val)
+    return tne{
+      type = "function-application",
+      source_location = csloc(1),
+      function_name = "subtract",
+      arguments = { tne(0), tne(val) }
+    }
+  end,
   __mul = function(lhs, rhs)
     return tne{
       type = "function-application",
