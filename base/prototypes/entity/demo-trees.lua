@@ -7150,8 +7150,10 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
   local type_number = string.format("%02d", tree_data.type)
   local type_name = "tree-" .. type_number
   local name = type_name
+  local localised_name = {"entity-name.tree"}
   if tree_data.identifier then
     name = name .. "-" .. tree_data.identifier
+    localised_name = {"entity-name.tree-"..tree_data.identifier}
   end
   local order = index_to_letter(i) .. "[" .. name .. "]"
 
@@ -7268,6 +7270,7 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
     {
       type = "tree",
       name = name,
+      localised_name = localised_name,
       icon = "__base__/graphics/icons/" .. name .. ".png",
       icon_size = 64, icon_mipmaps = 4,
       flags = tree_flags,
@@ -7375,6 +7378,7 @@ for i, type_data in ipairs(tree_types) do
     {
       type = "corpse",
       name = type_name .. "-stump",
+      localised_name = {"entity-name.tree-stump"},
       icon = "__base__/graphics/icons/" .. type_name .. "-stump.png",
       icon_size = 64, icon_mipmaps = 4,
       flags = tree_corpse_flags,

@@ -16,6 +16,7 @@ local empty_explosion = function(params)
   {
     type = "explosion",
     name = params.name,
+    localised_name = params.localised_name,
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = util.empty_sprite(),
@@ -23,11 +24,12 @@ local empty_explosion = function(params)
   }
 end
 
-data:extend
+local demo_explosions =
 {
   {
     type = "explosion",
     name = "explosion",
+    localised_name = {"entity-name.explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -43,6 +45,7 @@ data:extend
   {
     type = "explosion",
     name = "explosion-gunshot",
+    localised_name = {"entity-name.explosion-gunshot"},
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = explosion_animations.gunshot(),
@@ -56,6 +59,7 @@ data:extend
   {
     type = "explosion",
     name = "explosion-gunshot-small",
+    localised_name = {"entity-name.explosion-gunshot-small"},
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = explosion_animations.small_gunshot(),
@@ -69,6 +73,7 @@ data:extend
   {
     type = "explosion",
     name = "explosion-hit",
+    localised_name = {"entity-name.explosion-hit"},
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = explosion_animations.hit_explosion(),
@@ -81,6 +86,7 @@ data:extend
   {
     type = "explosion",
     name = "big-explosion",
+    localised_name = {"entity-name.big-explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -93,6 +99,7 @@ data:extend
   {
     type = "explosion",
     name = "medium-explosion",
+    localised_name = {"entity-name.medium-explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -151,6 +158,7 @@ data:extend
   {
     type = "explosion",
     name = "grenade-explosion",
+    localised_name = {"entity-name.grenade-explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -164,6 +172,7 @@ data:extend
   {
     type = "explosion",
     name = "massive-explosion",
+    localised_name = {"entity-name.massive-explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -222,6 +231,7 @@ data:extend
   {
     type = "explosion",
     name = "ground-explosion",
+    localised_name = {"entity-name.ground-explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -280,6 +290,7 @@ data:extend
   empty_explosion
   {
     name = "blood-explosion-small",
+    localised_name = {"entity-name.blood-explosion-small"},
     icon = "__base__/graphics/icons/small-biter.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -305,6 +316,7 @@ data:extend
   empty_explosion
   {
     name = "blood-explosion-big",
+    localised_name = {"entity-name.blood-explosion-big"},
     icon = "__base__/graphics/icons/big-biter.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -340,8 +352,10 @@ data:extend
     }
   },
 
-  empty_explosion{
+  empty_explosion
+  {
     name = "blood-explosion-huge",
+    localised_name = {"entity-name.blood-explosion-huge"},
     flags = {"not-on-map"},
     icon = "__base__/graphics/icons/biter-spawner-corpse.png",
     icon_size = 64, icon_mipmaps = 4,
@@ -380,6 +394,7 @@ data:extend
   {
     type = "explosion",
     name = "water-splash",
+    localised_name = {"entity-name.water-splash"},
     icon = "__base__/graphics/icons/fluid/water.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -1589,6 +1604,7 @@ data:extend
   {
     type = "explosion",
     name = "lamp-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.small-lamp"}},
     icon = "__base__/graphics/icons/small-lamp.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2492,6 +2508,7 @@ data:extend
   {
     type = "explosion",
     name = "wall-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.stone-wall"}},
     icon = "__base__/graphics/icons/wall.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2632,6 +2649,7 @@ data:extend
   {
     type = "explosion",
     name = "damaged-assembling-machine-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.assembler-wreck"}},
     icon = "__base__/graphics/icons/crash-site-assembling-machine-1-broken.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2725,6 +2743,7 @@ data:extend
   {
     type = "explosion",
     name = "repaired-assembling-machine-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.crash-site-assembling-machine-1-repaired"}},
     icon = "__base__/graphics/icons/crash-site-assembling-machine-1-repaired.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2831,6 +2850,7 @@ data:extend
   {
     type = "explosion",
     name = "chest-capsule-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.crash-site-chest-1"}},
     icon = "__base__/graphics/icons/crash-site-chest.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2897,6 +2917,7 @@ data:extend
   {
     type = "explosion",
     name = "electricity-generator-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.crash-site-generator"}},
     icon = "__base__/graphics/icons/crash-site-generator.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2985,6 +3006,7 @@ data:extend
   {
     type = "explosion",
     name = "damaged-lab-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.crash-site-lab-broken"}},
     icon = "__base__/graphics/icons/crash-site-lab-broken.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -3087,6 +3109,7 @@ data:extend
   {
     type = "explosion",
     name = "repaired-lab-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.crash-site-lab-repaired"}},
     icon = "__base__/graphics/icons/crash-site-lab-repaired.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -3348,6 +3371,7 @@ data:extend
   empty_explosion
   {
     name = "small-worm-die",
+    localised_name = {"dying-explosion-name", {"entity-name.small-worm-turret"}},
     created_effect = biter_die_effects.small_worm
   },
 
@@ -3639,6 +3663,7 @@ data:extend
   {
     type = "explosion",
     name = "rail-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.straight-rail"}},
     icon = "__base__/graphics/icons/rail.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -4697,6 +4722,7 @@ data:extend
   {
     type = "explosion",
     name = "defender-robot-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.defender"}},
     icon = "__base__/graphics/icons/defender.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -4758,6 +4784,18 @@ data:extend
         },
       }
     }
-  },
-
+  }
 }
+
+for k, explosion in pairs (demo_explosions) do
+  if not explosion.localised_name then
+    local name = explosion.name
+    if name:find("%-explosion") then
+      explosion.localised_name = {"dying-explosion-name", {"entity-name."..name:gsub("%-explosion", "")}}
+    elseif name:find("%-die") then
+      explosion.localised_name = {"dying-explosion-name", {"entity-name."..name:gsub("%-die", "")}}
+    end
+  end
+end
+
+data:extend(demo_explosions)

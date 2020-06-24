@@ -3491,10 +3491,12 @@ data:extend(
     item_and_count_select_background =
     {
       type = "frame_style",
-      parent = "inside_deep_frame",
-      padding = 4,
-      right_padding = 8,
-      horizontal_flow_style = { type = "horizontal_flow_style", vertical_align = "center", horizontal_spacing = 8 }
+      parent = "inside_shallow_frame_with_padding",
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        parent = "player_input_horizontal_flow"
+      }
     },
 
     item_and_count_select_confirm =
@@ -4065,20 +4067,22 @@ data:extend(
       type = "button_style",
       parent = "list_box_item",
       default_font_color = default_orange_color,
-      hovered_font_color = {0.97, 0.54, 0.15},
-      selected_font_color = {0.97, 0.54, 0.15},
-      selected_hovered_font_color = {0.97, 0.54, 0.15},
-      selected_clicked_font_color = {0.97, 0.54, 0.15}
+      hovered_font_color = {82, 47, 0},
+      clicked_font_color = {82, 47, 0},
+      selected_font_color = {82, 47, 0},
+      selected_hovered_font_color = {82, 47, 0},
+      selected_clicked_font_color = {82, 47, 0}
     },
     no_path_station_in_schedule_in_train_view_list_box_item =
     {
       type = "button_style",
       parent = "list_box_item",
       default_font_color = {1, 0.2, 0.3},
-      hovered_font_color = {0.8, 0.15, 0.12},
-      selected_font_color = {0.8, 0.15, 0.12},
-      selected_hovered_font_color = {0.8, 0.15, 0.12},
-      selected_clicked_font_color = {0.8, 0.15, 0.12}
+      hovered_font_color = {135, 0, 17},
+      clicked_font_color = {135, 0, 17},
+      selected_font_color = {135, 0, 17},
+      selected_hovered_font_color = {135, 0, 17},
+      selected_clicked_font_color = {135, 0, 17}
     },
     default_permission_group_list_box_item =
     {
@@ -4449,10 +4453,17 @@ data:extend(
       vertical_spacing = 12,
       horizontal_spacing = 12
     },
+
     inset_frame_container_horizontal_flow =
     {
       type = "horizontal_flow_style",
       horizontal_spacing = 12
+    },
+
+    inset_frame_container_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      vertical_spacing = 12
     },
     map_generator_frequency_table =
     {
@@ -4928,7 +4939,7 @@ data:extend(
       -- padding of the content area of the frame
       top_padding  = 4,
       right_padding = 8,
-      bottom_padding = 4,
+      bottom_padding = 8,
       left_padding = 8,
       graphical_set =
       {
@@ -5135,17 +5146,16 @@ data:extend(
       pass_through_mouse = true,
     },
 
-    frame_without_footer =
+    frame_with_even_small_even_paddings =
     {
       type = "frame_style",
-      bottom_padding = 8
+      padding = 4,
     },
 
     frame_with_even_paddings =
     {
       type = "frame_style",
       top_padding = 8,
-      bottom_padding = 8
     },
 
     void_inventory_frame =
@@ -5257,16 +5267,9 @@ data:extend(
       }
     },
 
-    dialog_frame =
+    no_header_filler_frame =
     {
       type = "frame_style",
-      parent = "frame",
-      bottom_padding = 8
-    },
-    dialog_frame_no_header_filler =
-    {
-      type = "frame_style",
-      parent = "dialog_frame",
       use_header_filler = false
     },
 
@@ -5318,7 +5321,8 @@ data:extend(
       type = "frame_style",
       graphical_set = {base = {position = {68, 0}, corner_size = 8}},
       left_padding = 4,
-      right_padding = 4
+      right_padding = 4,
+      bottom_padding = 4
     },
 
     subpanel_frame_packed =
@@ -5449,9 +5453,7 @@ data:extend(
     invisible_frame =
     {
       type = "frame_style",
-      padding = 0,
-      margin = 0,
-      graphical_set = {},
+      parent = "borderless_frame",
       horizontal_flow_style =
       {
         type = "horizontal_flow_style",
@@ -5472,6 +5474,22 @@ data:extend(
       graphical_set = { shadow = default_shadow },
     },
 
+    inset_frame_container_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        parent = "inset_frame_container_vertical_flow"
+      },
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        parent = "inset_frame_container_horizontal_flow"
+      }
+    },
+
     -- used for frames that contains windows or frames that have shadows
     outer_frame_without_shadow =
     {
@@ -5488,16 +5506,9 @@ data:extend(
       graphical_set = {shadow = shadow_without_top},
     },
 
-    standalone_inner_frame_in_outer_frame = --same as inner_frame_in_outer_frame, but has shadow
-    {
-      type = "frame_style",
-      bottom_padding = 8,
-    },
-
     inner_frame_in_outer_frame =
     {
       type = "frame_style",
-      bottom_padding = 8,
       graphical_set =
       {
         base = {position = {0, 0}, corner_size = 8}
@@ -6044,6 +6055,15 @@ data:extend(
         vertical_spacing = 4
       },
     },
+    borderless_frame =
+    {
+      type = "frame_style",
+      graphical_set = {},
+      padding = 0,
+      margin = 0,
+      graphical_set = {}
+    },
+
     naked_frame =
     {
       type = "frame_style",
@@ -6073,7 +6093,6 @@ data:extend(
     {
       type = "frame_style",
       parent = "frame",
-      bottom_padding = 8,
       use_header_filler = false,
       horizontally_stretchable = "on",
       maximal_width = 512 + 52 --Largest image width used in the mini-tutorials + the frame paddings
@@ -6107,15 +6126,6 @@ data:extend(
       type = "frame_style",
       parent = "failed_achievement_in_sidebar_frame"
     },
-    menu_frame =
-    {
-      type = "frame_style",
-      bottom_padding = 8,
-    },
-    frame_in_right_container =
-    {
-      type = "frame_style"
-    },
     entity_info_frame =
     {
       type = "frame_style",
@@ -6133,7 +6143,7 @@ data:extend(
     minimap_frame =
     {
       type = "frame_style",
-      parent = "frame_in_right_container",
+      parent = "frame_with_even_paddings",
       minimal_height = 256
     },
 
@@ -6176,6 +6186,7 @@ data:extend(
       type = "frame_style",
       left_padding = 4,
       right_padding = 0,
+      bottom_padding = 4,
       use_header_filler = false
     },
 
@@ -6193,7 +6204,8 @@ data:extend(
         -- TODO Oxyd: Bottom shadow.
       },
       left_padding = 4,
-      right_padding = 4
+      right_padding = 4,
+      bottom_padding = 4
     },
 
     quick_bar_inner_panel =
@@ -8013,7 +8025,7 @@ data:extend(
         bottom_padding = 8,
         left_padding = 12,
         graphical_set = tabbed_pane_graphical_set
-      },
+      }
     },
 
     logistic_gui_tabbed_pane =
@@ -8028,7 +8040,7 @@ data:extend(
         bottom_padding = 8,
         left_padding = 4,
         graphical_set = tabbed_pane_graphical_set
-      },
+      }
     },
 
     production_gui_tabbed_pane =
@@ -8075,9 +8087,9 @@ data:extend(
             right_bottom = {position = {9, 9}, size = {8, 8}},
             top = {position = {8, 0}, size = {1, 8}},
             bottom = {position = {8, 9}, size = {1, 8}},
-            center = {position = {8, 8}, size = {1, 1}},
+            center = {position = {8, 8}, size = {1, 1}}
           },
-          shadow = top_shadow,
+          shadow = top_shadow
         },
       },
       tab_container =
@@ -8101,7 +8113,7 @@ data:extend(
       {
         base = {position = {448, 103}, corner_size = 8},
         shadow = tab_glow(default_shadow_color, 0.5)
-      },
+      }
     },
 
     -- left top conrner for a tabs in character gui that connects to the inventory frame
@@ -8120,9 +8132,9 @@ data:extend(
           right = {position = {9, 8}, size = {8, 1}},
           right_bottom = {position = {17, 9}, size = {8, 8}},
           bottom = {position = {8, 8}, size = {1, 1}},
-          center = {position = {8, 8}, size = {1, 1}},
+          center = {position = {8, 8}, size = {1, 1}}
         },
-        shadow = top_right_shadow,
+        shadow = top_right_shadow
       },
     },
 
@@ -8147,22 +8159,21 @@ data:extend(
           bottom = {position = {8, 8}, size = {1, 1}},
           left_bottom = {position = {26, 9}, size = {8, 8}},
           left = {position = {0, 8}, size = {8, 1}},
-          center = {position = {8, 8}, size = {1, 1}},
+          center = {position = {8, 8}, size = {1, 1}}
         },
-        shadow = top_left_shadow_with_top_corner,
+        shadow = top_left_shadow_with_top_corner
       },
       header_flow_style =
       {
         type = "horizontal_flow_style",
         vertical_align = "top",
-        horizontal_spacing = 4,
-      },
+        horizontal_spacing = 4
+      }
     },
 
     frame_without_right_side =
     {
       type = "frame_style",
-      bottom_padding = 8,
       graphical_set =
       {
         base =
@@ -8174,15 +8185,14 @@ data:extend(
           bottom = {position = {8, 9}, size = {1, 8}},
           center = {position = {8, 8}, size = {1, 1}},
         },
-        shadow = shadow_without_right,
-      },
+        shadow = shadow_without_right
+      }
     },
 
     -- character gui inventory
     character_gui_left_side =
     {
       type = "frame_style",
-      bottom_padding = 8,
       right_padding = 4,
       graphical_set =
       {
@@ -8195,15 +8205,14 @@ data:extend(
           bottom = {position = {8, 9}, size = {1, 8}},
           center = {position = {8, 8}, size = {1, 1}},
         },
-        shadow = top_shadow_with_left_corner,
-      },
+        shadow = top_shadow_with_left_corner
+      }
     },
 
     -- character gui right side
     frame_without_left_side =
     {
       type = "frame_style",
-      bottom_padding = 8,
       graphical_set =
       {
         base =
@@ -8213,10 +8222,10 @@ data:extend(
           right_bottom = {position = {9, 9}, size = {8, 8}},
           top = {position = {8, 0}, size = {1, 8}},
           bottom = {position = {8, 9}, size = {1, 8}},
-          center = {position = {8, 8}, size = {1, 1}},
+          center = {position = {8, 8}, size = {1, 1}}
         },
-        shadow = shadow_without_left,
-      },
+        shadow = shadow_without_left
+      }
     },
 
     empty_widget =
@@ -8675,7 +8684,7 @@ data:extend(
       parent = "dark_button",
       padding = 0,
       size = {16, 28},
-      left_click_sound = {{ filename = "__core__/sound/gui-tool-button.ogg", volume = 1 }},
+      left_click_sound = {{ filename = "__core__/sound/gui-tool-button.ogg", volume = 1 }}
     },
 
     mod_thumbnail_image =
@@ -8715,7 +8724,7 @@ data:extend(
     {
       type = "button_style",
       width = 84,
-      left_click_sound = {{ filename = "__core__/sound/gui-menu-small.ogg", volume = 1 }},
+      left_click_sound = {{ filename = "__core__/sound/gui-menu-small.ogg", volume = 1 }}
     },
 
     shortcut_bar_expand_button =
@@ -8752,11 +8761,6 @@ data:extend(
       single_line = false
     },
 
-    color_picker_horizontal_flow =
-    {
-      type = "horizontal_flow_style",
-      horizontal_spacing = 8,
-    },
     --style to use on all input shortcuts
     control_input_shortcut_label =
     {
@@ -8783,18 +8787,7 @@ data:extend(
       parent = "container_equipment_grid_flow",
       left_padding = 12,
       right_padding = 12
-    },
-
-    locomotive_gui_frame =
-    {
-      type = "frame_style",
-      parent = "frame_without_footer",
-      horizontal_flow_style =
-      {
-        type = "horizontal_flow_style",
-        horizontal_spacing = 8
-      },
-    },
+    }
   }
 }
 )

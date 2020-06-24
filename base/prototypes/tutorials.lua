@@ -16,7 +16,7 @@ data:extend(
     icon_size = 128,
     related_items = {"rail", "construction-robot"},
     dependencies = {"trains-basics", "construction-robots"},
-    visible_when_dependencies_not_completed = true
+    locked_when_dependencies_not_completed = false
   },
   {
     type = "tutorial",
@@ -46,7 +46,7 @@ data:extend(
     icon_size = 128,
     related_items = {"roboport", "construction-robot", "blueprint"},
     dependencies = {"logistic-system-basic"},
-    visible_when_dependencies_not_completed = true
+    locked_when_dependencies_not_completed = false
   },
   --[[
   {

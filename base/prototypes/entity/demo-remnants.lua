@@ -47,11 +47,12 @@ function make_rotated_animation_variations_from_sheet(variation_count, sheet) --
  return result
 end
 
-data:extend(
+local demo_remnants =
 {
   {
     type = "corpse",
     name = "big-remnants",
+    localised_name = {"entity-name.big-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
@@ -104,6 +105,7 @@ data:extend(
   {
     type = "corpse",
     name = "medium-remnants",
+    localised_name = {"entity-name.medium-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -142,6 +144,7 @@ data:extend(
   {
     type = "corpse",
     name = "medium-small-remnants",
+    localised_name = {"entity-name.medium-small-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -180,6 +183,7 @@ data:extend(
   {
     type = "corpse",
     name = "small-remnants",
+    localised_name = {"entity-name.small-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -218,6 +222,7 @@ data:extend(
   {
     type = "corpse",
     name = "1x2-remnants",
+    localised_name = {"entity-name.1x2-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
@@ -664,6 +669,7 @@ data:extend(
   {
     type = "corpse",
     name = "wall-remnants",
+    localised_name = {"remnant-name", {"entity-name.stone-wall"}},
     icon = "__base__/graphics/icons/wall.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
@@ -796,6 +802,7 @@ data:extend(
   {
     type = "corpse",
     name = "lamp-remnants",
+    localised_name = {"remnant-name", {"entity-name.small-lamp"}},
     icon = "__base__/graphics/icons/small-lamp.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
@@ -1282,7 +1289,7 @@ data:extend(
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "electric-mining-drill-remnants",
@@ -2018,6 +2025,7 @@ data:extend(
   {
     type = "corpse",
     name = "rail-ending-remnants",
+    localised_name = {"entity-name.rail-ending-remnants"},
     icon = "__base__/graphics/icons/curved-rail-remnants.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -2912,5 +2920,14 @@ data:extend(
   },
 
 }
-)
 
+for k, remnant in pairs (demo_remnants) do
+  if not remnant.localised_name then
+    local name = remnant.name
+    if name:find("%-remnants") then
+      remnant.localised_name = {"remnant-name", {"entity-name."..name:gsub("%-remnants", "")}}
+    end
+  end
+end
+
+data:extend(demo_remnants)

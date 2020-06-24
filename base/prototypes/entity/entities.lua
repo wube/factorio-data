@@ -7244,15 +7244,23 @@ data:extend(
 local red_chest = util.table.deepcopy(data.raw["container"]["steel-chest"])
 red_chest.minable = nil
 red_chest.name = "red-chest"
-red_chest.picture = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-passive-provider"].animation)
 red_chest.order = "r-e-d"
+local red_chest_reference = data.raw["logistic-container"]["logistic-chest-passive-provider"]
+red_chest.icon = util.table.deepcopy(red_chest_reference.icon)
+red_chest.icon_size = red_chest_reference.icon_size
+red_chest.icon_mipmaps = red_chest_reference.icon_mipmaps
+red_chest.picture = util.table.deepcopy(red_chest_reference.animation)
 data:extend({red_chest})
 
 local blue_chest = util.table.deepcopy(data.raw["container"]["steel-chest"])
 blue_chest.minable = nil
 blue_chest.name = "blue-chest"
-blue_chest.picture = util.table.deepcopy(data.raw["logistic-container"]["logistic-chest-requester"].animation)
 blue_chest.order = "b-l-u-e"
+local blue_chest_reference = data.raw["logistic-container"]["logistic-chest-requester"]
+blue_chest.icon = util.table.deepcopy(blue_chest_reference.icon)
+blue_chest.icon_size = blue_chest_reference.icon_size
+blue_chest.icon_mipmaps = blue_chest_reference.icon_mipmaps
+blue_chest.picture = util.table.deepcopy(blue_chest_reference.animation)
 data:extend({blue_chest})
 
 local full_resistances = function()

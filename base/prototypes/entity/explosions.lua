@@ -16,6 +16,7 @@ local empty_explosion = function(params)
   {
     type = "explosion",
     name = params.name,
+    localised_name = params.localised_name,
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = util.empty_sprite(),
@@ -23,11 +24,12 @@ local empty_explosion = function(params)
   }
 end
 
-data:extend
+local explosions =
 {
   {
     type = "explosion",
     name = "laser-bubble",
+    localised_name = {"entity-name.laser-bubble"},
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = explosion_animations.laser_bubble(),
@@ -40,6 +42,7 @@ data:extend
   {
     type = "explosion",
     name = "railgun-beam",
+    localised_name = {"entity-name.railgun-beam"},
     flags = {"not-on-map"},
     subgroup = "explosions",
     rotate = true,
@@ -54,6 +57,7 @@ data:extend
   {
     type = "explosion",
     name = "big-artillery-explosion",
+    localised_name = {"entity-name.big-artillery-explosion"},
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
     flags = {"not-on-map"},
@@ -112,6 +116,7 @@ data:extend
   {
     type = "explosion",
     name = "artillery-cannon-muzzle-flash",
+    localised_name = {"entity-name.artillery-cannon-muzzle-flash"},
     flags = {"not-on-map"},
     subgroup = "explosions",
     animations = explosion_animations.artillery_muzzle_flash(),
@@ -128,6 +133,7 @@ data:extend
   {
     type = "explosion",
     name = "active-provider-chest-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-active-provider"}},
     icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -181,6 +187,7 @@ data:extend
     type = "explosion",
     name = "passive-provider-chest-explosion",
     icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
+    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-passive-provider"}},
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
     subgroup = "logistic-network-explosions",
@@ -232,6 +239,7 @@ data:extend
   {
     type = "explosion",
     name = "storage-chest-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-storage"}},
     icon = "__base__/graphics/icons/logistic-chest-storage.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -284,6 +292,7 @@ data:extend
   {
     type = "explosion",
     name = "buffer-chest-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-buffer"}},
     icon = "__base__/graphics/icons/logistic-chest-buffer.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -336,6 +345,7 @@ data:extend
   {
     type = "explosion",
     name = "requester-chest-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-requester"}},
     icon = "__base__/graphics/icons/logistic-chest-requester.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2500,6 +2510,7 @@ data:extend
   {
     type = "explosion",
     name = "distractor-robot-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.distractor"}},
     icon = "__base__/graphics/icons/distractor.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2566,6 +2577,7 @@ data:extend
   {
     type = "explosion",
     name = "destroyer-robot-explosion",
+    localised_name = {"dying-explosion-name", {"entity-name.destroyer"}},
     icon = "__base__/graphics/icons/destroyer.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
@@ -2699,18 +2711,21 @@ data:extend
   empty_explosion
   {
     name = "medium-worm-die",
+    localised_name = {"dying-explosion-name", {"entity-name.medium-worm-turret"}},
     created_effect = biter_die_effects.medium_worm
   },
 
   empty_explosion
   {
     name = "big-worm-die",
+    localised_name = {"dying-explosion-name", {"entity-name.big-worm-turret"}},
     created_effect = biter_die_effects.big_worm
   },
 
   empty_explosion
   {
     name = "behemoth-worm-die",
+    localised_name = {"dying-explosion-name", {"entity-name.behemoth-worm-turret"}},
     created_effect = biter_die_effects.behemoth_worm
   },
 
@@ -2746,21 +2761,39 @@ data:extend
 
 }
 
+for k, explosion in pairs (explosions) do
+  if not explosion.localised_name then
+    local name = explosion.name
+    if name:find("%-explosion") then
+      explosion.localised_name = {"dying-explosion-name", {"entity-name."..name:gsub("%-explosion", "")}}
+    elseif name:find("%-die") then
+      explosion.localised_name = {"dying-explosion-name", {"entity-name."..name:gsub("%-die", "")}}
+    end
+  end
+end
+
+data:extend(explosions)
 
 local uranium_cannon_shell_explosion = util.copy(data.raw["explosion"]["big-explosion"])
 uranium_cannon_shell_explosion.name = "uranium-cannon-shell-explosion"
+uranium_cannon_shell_explosion.localised_name = {"entity-name.uranium-cannon-shell-explosion"}
 
---TODO handle HR version when its added.
 uranium_cannon_shell_explosion.animations[1].tint = {r = 0.4, g = 1, b = 0.4}
+if uranium_cannon_shell_explosion.animations[1].hr_version then
+  uranium_cannon_shell_explosion.animations[1].hr_version.tint = {r = 0.4, g = 1, b = 0.4}
+end
 
 data:extend({uranium_cannon_shell_explosion})
 
 local uranium_cannon_explosion = util.copy(data.raw["explosion"]["explosion"])
 uranium_cannon_explosion.name = "uranium-cannon-explosion"
+uranium_cannon_explosion.localised_name = "entity-name.uranium-cannon-explosion"
 
---TODO handle HR version when its added.
 for k, v in pairs(uranium_cannon_explosion.animations) do
   v.tint = {r = 0.4, g = 1, b = 0.4}
+  if v.hr_version then
+    v.hr_version.tint = {r = 0.4, g = 1, b = 0.4}
+  end
 end
 
 data:extend({uranium_cannon_explosion})

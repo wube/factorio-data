@@ -6,7 +6,7 @@ destroyed_rail_pictures = function()
                                  {"stone_path_background", "stone-path-background-remnants", variations = 3, priority = "high"}})
 end
 
-data:extend
+local remnants =
 {
   {
     type = "corpse",
@@ -49,6 +49,7 @@ data:extend
   {
     type = "corpse",
     name = "buffer-chest-remnants",
+    localised_name = {"remnant-name", {"entity-name.logistic-chest-buffer"}},
     icon = "__base__/graphics/icons/logistic-chest-buffer.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -87,6 +88,7 @@ data:extend
   {
     type = "corpse",
     name = "active-provider-chest-remnants",
+    localised_name = {"remnant-name", {"entity-name.logistic-chest-active-provider"}},
     icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -125,6 +127,7 @@ data:extend
   {
     type = "corpse",
     name = "passive-provider-chest-remnants",
+    localised_name = {"remnant-name", {"entity-name.logistic-chest-passive-provider"}},
     icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -163,6 +166,7 @@ data:extend
   {
     type = "corpse",
     name = "requester-chest-remnants",
+    localised_name = {"remnant-name", {"entity-name.logistic-chest-requester"}},
     icon = "__base__/graphics/icons/logistic-chest-requester.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -201,6 +205,7 @@ data:extend
   {
     type = "corpse",
     name = "storage-chest-remnants",
+    localised_name = {"remnant-name", {"entity-name.logistic-chest-storage"}},
     icon = "__base__/graphics/icons/logistic-chest-storage.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
@@ -1053,7 +1058,7 @@ data:extend
       },
     })
   },
-  
+
   {
     type = "corpse",
     name = "beacon-remnants",
@@ -1667,3 +1672,14 @@ data:extend
     }
   },
 }
+
+for k, remnant in pairs (remnants) do
+  if not remnant.localised_name then
+    local name = remnant.name
+    if name:find("%-remnants") then
+      remnant.localised_name = {"remnant-name", {"entity-name."..name:gsub("%-remnants", "")}}
+    end
+  end
+end
+
+data:extend(remnants)

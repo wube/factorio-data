@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.33
+Version: 0.18.34
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.33
+Date: 24. 06. 2020
+  Changes:
+    - Full English text proofreading and corrections.
+  Bugfixes:
+    - Fixed Trains gui listbox labels not being readable when hovered. (https://forums.factorio.com/68302)
+    - Fixed a crash when using LuaChunkIterator. (https://forums.factorio.com/86089)
+    - Fixed a desync related to placing blueprint with assembling machine with not yet researched recipe. (https://forums.factorio.com/86134)
+  Gui:
+    - Windows with item and count to be selected are now merged into single window and double click on the item auto-confirms the
+      window with the default count. Windows affected are logistic request, signal selection and (debug tool)infinity count selections.
+  Modding:
+    - All mining results of resources are forced to be unlocked in the selection lists, even when recipe to create them exists as well. (https://forums.factorio.com/86021)
+    - Added ItemPrototypeFlags::always_show, which forces the prototype to be always visible in the selection lists regardless of related recipes.
+    - Added RecipePrototype::unlock_results bool (true by default). When set to false, the recipe doesn't unlock the item to be shown in selection lists.
+    - Added RotatedSprite::counterclockwise bool (false by default). Set to true to indicate sprites in the spritesheet are in counterclockwise order.
+    - Added CharacterPrototype::has_belt_immunity bool (false by default).
+    - Entities no longer require the order string be set when there's no item-to-place them.
+    - Added EntityPrototype::remove_decoratives. "true", "false", or "automatic". Defaults to "automatic".
+    - Added TurretPrototype::attack_target_mask and ignore_target_mask. (https://forums.factorio.com/86164)
+    - Changed roboport tooltip to not show robot recharge rate when the roboport has no charging slots. (https://forums.factorio.com/86202)
+  Scripting:
+    - Added LuaRecipePrototype::unlock_results read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.32
 Date: 16. 06. 2020

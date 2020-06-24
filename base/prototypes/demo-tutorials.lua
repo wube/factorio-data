@@ -73,6 +73,7 @@ data:extend(
     },
     icon = "__base__/graphics/technology/toolbelt.png",
     icon_size = 128,
-    related_items = {"iron-chest"}
+    related_items = {"iron-chest"},
+    unlocked = true
   },
 })
