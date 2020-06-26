@@ -7721,6 +7721,13 @@ data:extend(
       }
     },
 
+    notched_double_slider =
+    {
+      type = "double_slider_style",
+      draw_notches = true,
+      height = 20
+    },
+
     red_slider =
     {
       type = "slider_style",
@@ -7818,7 +7825,8 @@ data:extend(
       {
         base = {position = {85, 0}, corner_size = 8, draw_type = "outer"},
         shadow = default_inner_shadow
-      }
+      },
+      dont_force_clipping_rect_for_contents = true
     },
 
     blurry_scroll_pane =
@@ -8225,6 +8233,23 @@ data:extend(
           center = {position = {8, 8}, size = {1, 1}}
         },
         shadow = shadow_without_left
+      }
+    },
+
+    -- character gui right side
+    frame_without_left_and_right_side =
+    {
+      type = "frame_style",
+      right_padding = 4,
+      graphical_set =
+      {
+        base =
+        {
+          top = {position = {8, 0}, size = {1, 8}},
+          bottom = {position = {8, 9}, size = {1, 8}},
+          center = {position = {8, 8}, size = {1, 1}}
+        },
+        shadow = shadow_without_left_and_right
       }
     },
 

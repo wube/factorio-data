@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.34
+Version: 0.18.35
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.34
+Date: 26. 06. 2020
+  Bugfixes:
+    - Fixed desync related to non-deterministic transport belt merging order when multiple merges happen in the same tick. (https://forums.factorio.com/79617)
+    - Fixed alignment of number input entries.
+    - Fixed that undo didn't remove deconstruction task to remove things in the way. (https://forums.factorio.com/75923)
+    - Fixed stray tooltip bug in the map generator window. (https://forums.factorio.com/76640)
+    - Fixed of saving control inputs related to mouse buttons 4+. (https://forums.factorio.com/86285)
+    - Fixed minor clipping issue. (https://forums.factorio.com/86286)
+    - Fixed that train fuel request were unreliable. (https://forums.factorio.com/77805)
+  Gui:
+    - Windows with item and count to be selected have count/confirm buttons disabled when item is not yet selected.
+    - Logistic request related item and count windows now have notched sliders for 0 to 10 stacks selection.
+      Different numbers that are not multiplies of stacks can be still written into the textboxes.
+    - Added an interface option to show both crafting and logistic windows in the character screen.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.33
 Date: 24. 06. 2020
