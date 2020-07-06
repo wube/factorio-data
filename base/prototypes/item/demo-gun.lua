@@ -107,7 +107,7 @@ data:extend(
       cooldown = 60,
       movement_slow_down_factor = 0.6,
       projectile_creation_distance = 1.125,
-      range = 20,
+      range = 15,
       min_range = 1,
       sound = sounds.shotgun
     },

@@ -307,6 +307,16 @@ data:extend(
     mipmap_count =2,
     scale = 0.5
   },
+  {
+    type = "sprite",
+    name = "warning-white",
+    filename = "__core__/graphics/icons/mip/warning-white.png",
+    priority = "extra-high-no-scale",
+    size = 32,
+    scale = 0.5,
+    mipmap_count = 2,
+    flags = {"gui-icon"}
+  },
   -- {
     -- type = "sprite",
     -- name = "quantity-multiplier",

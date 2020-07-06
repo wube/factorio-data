@@ -39,6 +39,9 @@ featured_technology_slot_base_height = 168
 green_button_glow_color = {135, 216, 139, 128}
 red_button_glow_color = {254, 90, 90, 128}
 
+red_body_text_color = {255, 136, 136}
+green_body_text_color = {210, 253, 145}
+
 arrow_tileset_width = 48
 arrow_tileset_height = 64
 arrow_tileset_composition_corner_size = 8
@@ -1417,19 +1420,20 @@ data:extend(
       type = "label_style",
       parent = "label",
       font = "default-large-bold",
-      font_color = achievement_tan_color,
+      font_color = bold_font_color,
       width = 364
     },
     tutorial_locked_title_label =
     {
       type = "label_style",
-      parent = "tutorial_title_label"
+      parent = "tutorial_title_label",
+      font_color = red_body_text_color
     },
     tutorial_completed_title_label =
     {
       type = "label_style",
       parent = "tutorial_title_label",
-      font_color = achievement_green_color
+      font_color = green_body_text_color
     },
 
     tutorial_description_label =
@@ -1583,14 +1587,6 @@ data:extend(
     {
       type = "button_style",
       parent = "play_tutorial_button",
-      left_click_sound = {{ filename = "__core__/sound/gui-menu-small.ogg", volume = 1 }},
-      default_graphical_set =
-      {
-        filename = "__core__/graphics/gui.png",
-        corner_size = 3,
-        position = {0, 24},
-        scale = 1
-      }
     },
     play_locked_tutorial_button =
     {
@@ -1632,7 +1628,7 @@ data:extend(
       {
         base = {position = {102, 17}, corner_size = 8},
         shadow = default_dirt,
-        glow = default_glow(green_arrow_button_glow_color, 0.5)
+        glow = default_glow(green_button_glow_color, 0.5)
       },
       clicked_graphical_set =
       {
@@ -3422,13 +3418,10 @@ data:extend(
       background_graphical_set = {}
     },
 
-    filter_scroll_pane_background_frame =
+    slot_container_frame =
     {
       type = "frame_style",
-      parent = "borderless_deep_frame",
-      minimal_height = 5 * 40,
-      vertically_stretchable = "on",
-      horizontally_stretchable = "on",
+      parent = "invisible_frame",
       graphical_set =
       {
         base =
@@ -3439,6 +3432,15 @@ data:extend(
         },
         shadow = default_inner_shadow
       },
+    },
+
+    filter_scroll_pane_background_frame =
+    {
+      type = "frame_style",
+      parent = "slot_container_frame",
+      minimal_height = 5 * 40,
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on",
       background_graphical_set =
       {
         position = {282, 17},
@@ -4953,7 +4955,8 @@ data:extend(
       {
         type = "horizontal_flow_style",
         horizontally_stretchable = "on",
-        bottom_padding = 4
+        bottom_padding = 4,
+        horizontal_spacing = 8
       },
       header_filler_style =
       {
@@ -5314,6 +5317,21 @@ data:extend(
       height = 36,
       -- bottom 4 come from border
       vertically_stretchable = "off"
+    },
+
+    negative_subheader_frame =
+    {
+      type = "frame_style",
+      parent = "subheader_frame",
+      graphical_set =
+      {
+        base =
+        {
+          center = {position = {411, 25}, size = {1, 1}},
+          bottom = {position = {411, 26}, size = {1, 8}}
+        },
+        shadow = bottom_shadow
+      },
     },
 
     subpanel_frame =
@@ -8586,6 +8604,12 @@ data:extend(
       vertical_spacing = 0
     },
 
+    padded_vertical_flow =
+    {
+      type = "vertical_flow_style",
+      padding = 4
+    },
+
     packed_horizontal_flow =
     {
       type = "horizontal_flow_style",
@@ -8595,7 +8619,8 @@ data:extend(
     centering_horizontal_flow =
     {
       type = "horizontal_flow_style",
-      vertical_align = "center"
+      vertical_align = "center",
+      horizontal_align = "center",
     },
 
     centering_flow =
@@ -8812,7 +8837,143 @@ data:extend(
       parent = "container_equipment_grid_flow",
       left_padding = 12,
       right_padding = 12
-    }
+    },
+
+    bonus_card_frame =
+    {
+      type = "frame_style",
+      parent = "subpanel_frame",
+      padding = 4,
+      minimal_width = 192,
+      minimal_height = 112,
+      graphical_set =
+      {
+        base = {position = {68, 0}, corner_size = 8},
+        shadow = default_shadow
+      },
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 8
+      }
+    },
+
+    empty_bonus_card_frame =
+    {
+      type = "frame_style",
+      parent = "bonus_card_frame",
+      graphical_set =
+      {
+        base = {position = {282, 17}, corner_size = 8},
+      }
+    },
+
+    bonus_card_with_scroll_frame =
+    {
+      type = "frame_style",
+      parent = "bonus_card_frame",
+      padding = -4,
+    },
+
+    bonus_card_labels_flow_with_scroll_pane =
+    {
+      type = "vertical_flow_style",
+      parent = "packed_vertical_flow",
+      left_padding = 8,
+    },
+
+    bonus_card_flow =
+    {
+      type = "flow_style",
+      max_on_row = 5
+    },
+
+    bonus_card_related_items_frame =
+    {
+      type = "frame_style",
+      parent = "bordered_frame",
+      padding = 0
+    },
+
+    bonus_list_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      extra_padding_when_activated = 0,
+      graphical_set =
+      {
+        base = {position = {34, 0}, corner_size = 8},
+        shadow = default_inner_shadow
+      },
+    },
+
+    tutorial_list_subheader_frame =
+    {
+      type = "frame_style",
+      parent = "subheader_frame",
+      height = 0,
+      width = 508,
+      left_padding = 8,
+      right_padding = 8,
+    },
+
+    tutorial_list_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      padding = 0,
+      graphical_set = {},
+    },
+
+    tutorial_card_items_and_button_flow =
+    {
+      type = "horizontal_flow_style",
+      vertical_align = "bottom",
+    },
+
+    tutorial_card_button_flow =
+    {
+      type = "horizontal_flow_style",
+      horizontal_align = "right",
+      bottom_padding = 4,
+    },
+
+    suggested_tutorial_card_slot_frame =
+    {
+      type = "frame_style",
+      parent = "bordered_frame",
+      padding = 4,
+    },
+
+    completed_tutorial_card_slot_frame =
+    {
+      type = "frame_style",
+      parent = "suggested_tutorial_card_slot_frame",
+      border =
+      {
+        border_width = 8,
+        vertical_line = {position = {0, 1016}, size = {8, 1}},
+        horizontal_line = {position = {8, 1016}, size = {1, 8}},
+        top_right_corner = {position = {16, 1016}, size = {8, 8}},
+        bottom_right_corner = {position = {24, 1016}, size = {8, 8}},
+        bottom_left_corner = {position = {32, 1016}, size = {8, 8}},
+        top_left_coner = {position = {40, 1016}, size = {8, 8}},
+      },
+    },
+
+    not_suggested_yet_tutorial_card_slot_frame =
+    {
+      type = "frame_style",
+      parent = "suggested_tutorial_card_slot_frame",
+      border =
+      {
+        border_width = 8,
+        vertical_line = {position = {0, 1024}, size = {8, 1}},
+        horizontal_line = {position = {8, 1024}, size = {1, 8}},
+        top_right_corner = {position = {16, 1024}, size = {8, 8}},
+        bottom_right_corner = {position = {24, 1024}, size = {8, 8}},
+        bottom_left_corner = {position = {32, 1024}, size = {8, 8}},
+        top_left_coner = {position = {40, 1024}, size = {8, 8}},
+      },
+    },
   }
 }
 )

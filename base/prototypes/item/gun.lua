@@ -173,7 +173,7 @@ data:extend(
       movement_slow_down_factor = 0.5,
       damage_modifier = 1.2,
       projectile_creation_distance = 1.125,
-      range = 20,
+      range = 15,
       sound = sounds.shotgun
     },
     stack_size = 5

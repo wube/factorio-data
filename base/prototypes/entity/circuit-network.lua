@@ -844,7 +844,7 @@ data:extend
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "power-switch"},
     max_health = 200,
-    corpse = "medium-small-remnants",
+    corpse = "power-switch-remnants",
     dying_explosion = "power-switch-explosion",
 
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
@@ -853,13 +853,50 @@ data:extend
 
     power_on_animation =
     {
-      filename = "__base__/graphics/entity/power-switch/power-switch.png",
-      animation_speed = 0.2,
-      line_length = 2,
-      width = 117,
-      height = 74,
-      frame_count = 6,
-      shift = {0.453125, 0.1875}
+      layers = {
+        {
+          filename = "__base__/graphics/entity/power-switch/power-switch.png",
+          animation_speed = 0.2,
+          line_length = 2,
+          width = 86,
+          height = 70,
+          frame_count = 6,
+          shift = util.by_pixel(-4, 2),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/power-switch/hr-power-switch.png",
+            animation_speed = 0.2,
+            line_length = 2,
+            width = 168,
+            height = 138,
+            frame_count = 6,
+            shift = util.by_pixel(-3, 2),
+            scale = 0.5
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/power-switch/power-switch-shadow.png",
+          animation_speed = 0.2,
+          line_length = 2,
+          width = 84,
+          height = 46,
+          frame_count = 6,
+          shift = util.by_pixel(6, 14),
+          draw_as_shadow = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/power-switch/hr-power-switch-shadow.png",
+            animation_speed = 0.2,
+            line_length = 2,
+            width = 166,
+            height = 92,
+            frame_count = 6,
+            shift = util.by_pixel(6, 14),
+            draw_as_shadow = true,
+            scale = 0.5
+          }
+        }
+      }
     },
     vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.machine_open,
@@ -902,10 +939,21 @@ data:extend
       blend_mode = "additive",
       animation_speed = 0.2,
       line_length = 2,
-      width = 38,
-      height = 49,
+      width = 30,
+      height = 32,
       frame_count = 2,
-      shift = {0.15625, 0.046875}
+      shift = util.by_pixel(2, -4),
+      hr_version = {
+        filename = "__base__/graphics/entity/power-switch/hr-power-switch-electricity-start.png",
+        blend_mode = "additive",
+        animation_speed = 0.2,
+        line_length = 2,
+        width = 60,
+        height = 64,
+        frame_count = 2,
+        shift = util.by_pixel(2, -4),
+        scale = 0.5
+      }
     },
     overlay_loop =
     {
@@ -913,59 +961,91 @@ data:extend
       blend_mode = "additive",
       animation_speed = 0.25,
       line_length = 4,
-      width = 53,
-      height = 56,
-      frame_count = 16,
-      shift = {0.046875, -0.0625}
+      width = 32,
+      height = 26,
+      frame_count = 22,
+      shift = util.by_pixel(2, -8),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/power-switch/hr-power-switch-electricity-loop.png",
+        blend_mode = "additive",
+        animation_speed = 0.25,
+        line_length = 4,
+        width = 62,
+        height = 56,
+        frame_count = 22,
+        shift = util.by_pixel(2, -9),
+        scale = 0.5
+      }
     },
     led_on =
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
-      x = 6,
-      width = 6,
-      height = 9,
-      shift = {0.71875, 0.140625}
+      x = 22,
+      width = 22,
+      height = 32,
+      shift = util.by_pixel(20, -2),
+      blend_mode = "additive",
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/power-switch/hr-power-switch-led.png",
+        x = 48,
+        width = 48,
+        height = 60,
+        shift = util.by_pixel(21, -1),
+        blend_mode = "additive",
+        scale = 0.5
+      }
     },
     led_off =
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
-      width = 6,
-      height = 9,
-      shift = {0.71875, 0.140625}
+      width = 22,
+      height = 32,
+      shift = util.by_pixel(20, -2),
+      blend_mode = "additive",
+      hr_version = {
+        filename = "__base__/graphics/entity/power-switch/hr-power-switch-led.png",
+        width = 48,
+        height = 60,
+        shift = util.by_pixel(21, -1),
+        blend_mode = "additive",
+        scale = 0.5
+      }
     },
     circuit_wire_connection_point =
     {
       shadow =
       {
-        red = {-0.328125, 1.01563},
-        green = {-0.328125, 1.01563}
+        red   = util.by_pixel(-17, 34+3),
+        green = util.by_pixel(-17, 34+3)
       },
       wire =
       {
-        red = {-0.609375, 0.828125},
-        green = {-0.609375, 0.828125}
+        red =   util.by_pixel(-19, 26+3),
+        green = util.by_pixel(-19, 26+3)
       }
     },
     left_wire_connection_point =
     {
       shadow =
       {
-        copper = {0.296875, -0.171875}
+        copper = util.by_pixel(-8, -5+3)
       },
       wire =
       {
-        copper = {-0.765625, -0.890625}
+        copper = util.by_pixel(-26, -33+3)
       }
     },
     right_wire_connection_point =
     {
       shadow =
       {
-        copper = {2.14063, 0.015625}
+        copper = util.by_pixel(45, -3+3)
       },
       wire =
       {
-        copper = {0.859375, -0.890625}
+        copper = util.by_pixel(29, -32+3)
       }
     },
 

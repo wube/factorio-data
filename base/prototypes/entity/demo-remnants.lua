@@ -2520,6 +2520,48 @@ local demo_remnants =
       },
     }
   },
+  
+  {
+    type = "corpse",
+    name = "power-switch-remnants",
+    icon = "__base__/graphics/icons/power-switch.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "circuit-network-remnants",
+    order = "a-c-a",
+    selection_box = {{-0.5, -1}, {0.5, 1}},
+    tile_width = 1,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/power-switch/remnants/power-switch-remnants.png",
+      line_length = 1,
+      width = 98,
+      height = 88,
+      frame_count = 1,
+      variation_count = 1,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = util.by_pixel(5, 11),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/power-switch/remnants/hr-power-switch-remnants.png",
+        line_length = 1,
+        width = 194,
+        height = 176,
+        frame_count = 1,
+        variation_count = 1,
+        axially_symmetrical = false,
+        direction_count = 1,
+        shift = util.by_pixel(4.5, 10.5),
+        scale = 0.5,
+      },
+    }
+  },
 
   {
     type = "corpse",

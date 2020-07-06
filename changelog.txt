@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.35
+Version: 0.18.36
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.35
+Date: 06. 07. 2020
+  Graphics:
+    - High resolution power switch graphics.
+  Bugfixes:
+    - Entities of other forces that are mined and brought back by undo are now set to have player force upon the undo application. (https://forums.factorio.com/82243)
+    - Fixed a desync when unit group radius settings are changed.
+    - Fixed that the final health value in the entity damaged event was wrong. (https://forums.factorio.com/86411)
+    - Fixed a performance problem with the production stats GUI. (https://forums.factorio.com/86356)
+    - Fixed the double slider with discrete values functionality. (https://forums.factorio.com/86417)
+    - Fix 'Train stop names' checkbox showing tooltip with no locale entry. (https://forums.factorio.com/86448)
+    - Fixed rendering of pipe pictures and covers when fluid box compound covers some fluid boxes without pipe pictures or covers. (https://forums.factorio.com/86475)
+  Gui:
+    - Visual improvements to the bonuses GUI.
+    - Visual improvements to the tutorial list GUI.
+  Minor Features:
+    - Gps tags are now surface aware.
+  Scripting:
+    - Added on_player_clicked_gps_tag event.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.34
 Date: 26. 06. 2020
@@ -12,6 +32,7 @@ Date: 26. 06. 2020
     - Fixed of saving control inputs related to mouse buttons 4+. (https://forums.factorio.com/86285)
     - Fixed minor clipping issue. (https://forums.factorio.com/86286)
     - Fixed that train fuel request were unreliable. (https://forums.factorio.com/77805)
+    - Fixed sizing of script created switch gui element. (https://forums.factorio.com/78920)
   Gui:
     - Windows with item and count to be selected have count/confirm buttons disabled when item is not yet selected.
     - Logistic request related item and count windows now have notched sliders for 0 to 10 stacks selection.
