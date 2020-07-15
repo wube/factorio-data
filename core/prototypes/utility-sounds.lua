@@ -1,8 +1,9 @@
-local function add_utility_sound(name, filename)
+local function add_utility_sound(name, filename, volume)
   data.raw["utility-sounds"]["default"][name] =
   {
     {
-      filename = filename
+      filename = filename,
+      volume = volume
     }
   }
 end
@@ -166,7 +167,7 @@ data:extend(
       {
         {
           filename = "__core__/sound/build-small.ogg",
-          volume = 0.5
+          volume = 0.7
         },
       }
     },
@@ -176,7 +177,7 @@ data:extend(
       {
         {
           filename = "__core__/sound/build-medium.ogg",
-          volume = 0.6
+          volume = 0.7
         },
       }
     },
@@ -200,6 +201,26 @@ data:extend(
         },
       }
     },
+    deconstruct_medium =
+    {
+      variations =
+      {
+        {
+          filename = "__core__/sound/deconstruct-medium.ogg",
+          volume = 0.8
+        },
+      }
+    },
+    achievement_unlocked =
+    {
+      variations =
+      {
+        {
+          filename = "__core__/sound/achievement-unlocked.ogg",
+          volume = 0.65
+        },
+      }
+    },
     default_manual_repair =
     {
       variations =
@@ -219,7 +240,6 @@ add_utility_sound("gui_click", "__core__/sound/gui-click.ogg")
 add_utility_sound("list_box_click", "__core__/sound/list-box-click.ogg")
 add_utility_sound("cannot_build", "__core__/sound/cannot-build.ogg")
 add_utility_sound("deconstruct_small", "__core__/sound/deconstruct-small.ogg")
-add_utility_sound("deconstruct_medium", "__core__/sound/deconstruct-medium.ogg")
 add_utility_sound("deconstruct_big", "__core__/sound/deconstruct-large.ogg")
 add_utility_sound("deconstruct_robot", "__core__/sound/deconstruct-robot.ogg")
 add_utility_sound("rotated_small", "__core__/sound/rotate-small.ogg")
@@ -232,10 +252,10 @@ add_utility_sound("game_lost", "__core__/sound/game-lost.ogg")
 add_utility_sound("game_won", "__core__/sound/game-won.ogg")
 add_utility_sound("research_completed", "__core__/sound/research-completed.ogg")
 add_utility_sound("crafting_finished", "__core__/sound/crafting-finished.ogg")
+add_utility_sound("inventory_click", "__core__/sound/gui-inventory-slot-button.ogg", 0.6)
 add_utility_sound("inventory_move", "__core__/sound/inventory-move.ogg")
 add_utility_sound("armor_insert", "__core__/sound/armor-insert.ogg")
 add_utility_sound("armor_remove", "__core__/sound/armor-remove.ogg")
-add_utility_sound("achievement_unlocked", "__core__/sound/achievement-unlocked.ogg")
 add_utility_sound("wire_connect_pole", "__core__/sound/wire-connect-pole.ogg")
 add_utility_sound("wire_disconnect", "__core__/sound/wire-disconnect.ogg")
 add_utility_sound("wire_pickup", "__core__/sound/wire-pickup.ogg")

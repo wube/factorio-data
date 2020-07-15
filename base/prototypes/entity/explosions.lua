@@ -2690,6 +2690,181 @@ local explosions =
     }
   },
 
+  {
+    type = "explosion",
+    name = "slowdown-capsule-explosion",
+    icon = "__base__/graphics/icons/wooden-chest.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"not-on-map"},
+    subgroup = "storage-explosions",
+    height = 0,
+    render_layer = "lower-object-above-shadow",
+    animations = util.empty_sprite(),
+    light = default_light(20),
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.small_explosion(0.5),
+    order = "a-a-a",
+    render_layer = "lower-object-above-shadow",
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 4,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "slowdown-capsule-particle",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.09766, -0.09766 },
+              right_bottom = { 0.09766, 0.09766 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 1,
+            initial_height_deviation = 0,
+            initial_vertical_speed = 0.1,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.01,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0,
+            tail_length = 15,
+            tail_length_deviation = 1,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 2,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "slowdown-capsule-particle-big",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.4961, -0.3945 },
+              right_bottom = { 0.4961, 0.3945 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.7,
+            initial_height_deviation = 0.14,
+            initial_vertical_speed = 0.1,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.06,
+            speed_from_center_deviation = 0.01,
+            frame_speed = 0.3,
+            frame_speed_deviation = 0,
+            tail_length = 15,
+            tail_length_deviation = 1,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 5,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "slowdown-capsule-particle",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.1914, -0.2969 },
+              right_bottom = { 0.1914, 0.2969 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.03,
+            initial_vertical_speed = 0.012,
+            initial_vertical_speed_deviation = 0,
+            speed_from_center = 0.1,
+            speed_from_center_deviation = 0,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0,
+            tail_length = 10,
+            tail_length_deviation = 0,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 5,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "slowdown-capsule-particle-big",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.09766, -0.2969 },
+              right_bottom = { 0.09766, 0.2969 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.03,
+            initial_vertical_speed = 0.021,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.07,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0,
+            tail_length = 10,
+            tail_length_deviation = 0,
+            tail_width = 1,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 7,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "slowdown-capsule-particle-big",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.5, 0 },
+              right_bottom = { 0.5, 0 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.2,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.051,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 0.25,
+            frame_speed_deviation = 0,
+            tail_length = 7,
+            tail_length_deviation = 0,
+            tail_width = 1,
+            rotate_offsets = false
+          }
+        }
+      }
+    }
+  },
+  
   empty_explosion
   {
     name = "medium-biter-die",

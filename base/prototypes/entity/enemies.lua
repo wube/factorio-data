@@ -174,7 +174,7 @@ data:extend(
       cooldown = 50,
       cooldown_deviation = 0.15,
       ammo_type = make_unit_melee_ammo_type(90),
-      sound =  sounds.biter_roars_behemoth(0.67),
+      sound =  sounds.biter_roars_behemoth(0.65),
       animation = biterattackanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2)
     },
     vision_distance = 30,
@@ -185,7 +185,7 @@ data:extend(
     corpse = "behemoth-biter-corpse",
     dying_explosion = "behemoth-biter-die",
     working_sound = sounds.biter_calls_behemoth(0.97),
-    dying_sound = sounds.biter_dying_big(0.55),
+    dying_sound = sounds.biter_dying_big(0.52),
     run_animation = biterrunanimation(behemoth_biter_scale, behemoth_biter_tint1, behemoth_biter_tint2),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.biter_walk_big(0.78),
@@ -344,7 +344,7 @@ data:extend(
     corpse = "big-spitter-corpse",
     dying_explosion = "big-spitter-die",
     working_sound = sounds.spitter_calls_big(0.46),
-    dying_sound = sounds.spitter_dying_big(0.78),
+    dying_sound = sounds.spitter_dying_big(0.71),
     run_animation = spitterrunanimation(scale_spitter_big, tint_1_spitter_big, tint_2_spitter_big),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.spitter_walk_big(0.5),
@@ -401,7 +401,7 @@ data:extend(
     corpse = "behemoth-spitter-corpse",
     dying_explosion = "behemoth-spitter-die",
     working_sound = sounds.spitter_calls_big(0.6),
-    dying_sound = sounds.spitter_dying_behemoth(0.72),
+    dying_sound = sounds.spitter_dying_behemoth(0.70),
     run_animation = spitterrunanimation(scale_spitter_behemoth, tint_1_spitter_behemoth, tint_2_spitter_behemoth),
     running_sound_animation_positions = {2,},
     walking_sound = sounds.spitter_walk_big(0.6),
@@ -514,8 +514,8 @@ data:extend(
       sound =
       {
         {
-          filename = "__base__/sound/creatures/spawner.ogg",
-          volume = 0.9
+          filename = "__base__/sound/creatures/spawner-spitter.ogg",
+          volume = 0.6
         }
       },
     },

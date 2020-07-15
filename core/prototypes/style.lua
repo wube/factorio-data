@@ -1094,7 +1094,7 @@ data:extend(
       hovered_graphical_set = arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = arrow_forward(green_arrow_tileset, arrow_clicked_index),
       disabled_graphical_set = arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color),
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }},
+      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 0.8 }},
     },
 
     confirm_double_arrow_button =
@@ -1106,7 +1106,7 @@ data:extend(
       hovered_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_clicked_index),
       disabled_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color),
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }},
+      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 0.8 }},
     },
 
     map_generator_preview_button =
@@ -1640,6 +1640,7 @@ data:extend(
         base = {position = {85, 25}, corner_size = 8},
         shadow = default_dirt
       },
+      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 0.8 }},
     },
 
     icon_button =
@@ -1837,12 +1838,14 @@ data:extend(
       selected_graphical_set = { base = {border = 4, position = {160, 504}, size = 80}},
       selected_hovered_graphical_set = { base = {border = 4, position = {160, 504}, size = 80}},
       selected_clicked_graphical_set = { base = {border = 4, position = {160, 504}, size = 80}},
+      left_click_sound = {},
     },
 
     filter_inventory_slot =
     {
       type = "button_style",
       parent = "blue_slot",
+      left_click_sound = {},
     },
 
     closed_inventory_slot =
@@ -1852,7 +1855,8 @@ data:extend(
       default_graphical_set = { base = {border = 4, position = {504, 376}, size = 80}},
       hovered_graphical_set = { base = {border = 4, position = {504, 456}, size = 80}}, -- glow = default_glow(red_slot_glow_color, 0.5)
       clicked_graphical_set = { base = {border = 4, position = {504, 536}, size = 80}},
-      selected_graphical_set = { base = {border = 4, position = {504, 456}, size = 80}}
+      selected_graphical_set = { base = {border = 4, position = {504, 456}, size = 80}},
+      left_click_sound = {},
     },
 
     recipe_slot_button =
@@ -1866,7 +1870,8 @@ data:extend(
       type = "button_style",
       parent = "button",
       padding = 0,
-      size = 4+16+4
+      size = 4+16+4,
+      left_click_sound = {{ filename = "__core__/sound/gui-tool-button.ogg", volume = 1 }}
     },
 
     tracking_on_button =
@@ -3038,6 +3043,7 @@ data:extend(
       left_padding = 8,
       right_padding = 4,
       selector_and_title_spacing = 8,
+      opened_sound = { filename = "__core__/sound/gui-dropdown-open.ogg" },
       button_style =
       {
         type = "button_style",

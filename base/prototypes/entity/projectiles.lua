@@ -1121,16 +1121,34 @@ data:extend(
     acceleration = 0.005,
     action =
     {
-      type = "area",
-      radius = 9,
-      force = "enemy",
-      action_delivery =
       {
-        type = "instant",
-        target_effects =
+        type = "direct",
+        action_delivery =
         {
-          type = "create-sticker",
-          sticker = "slowdown-sticker"
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-entity",
+              entity_name = "slowdown-capsule-explosion"
+            },
+          }
+        }
+      },
+      {
+        type = "area",
+        radius = 9,
+        force = "enemy",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects = 
+          {
+            {
+              type = "create-sticker",
+              sticker = "slowdown-sticker"
+            },
+          }
         }
       }
     },

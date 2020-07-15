@@ -1,6 +1,44 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.36
+Version: 0.18.37
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.36
+Date: 15. 07. 2020
+  Gui:
+    - New high resolution tips and tricks images.
+    - Visual improvements to the tips and tricks GUI and the rocket silo stats GUI.
+  Graphics:
+    - New remnants for assembling machines and land mine.
+    - New visual effects for slowdown capsule.
+  Changes:
+    - Changed sorting order of items: Same items but without data are first. Descending order of Health/Ammo/Durability.
+    - Units are now affected by the 'movement_slow_down_factor' defined in their attack parameters.
+    - Slowdown capsules slowdown factor increased from 50% to 75%.
+  Sounds:
+    - Updated sounds for assembling machines 1, 2, and 3.
+    - New sounds for mining and eating fish.
+    - New sound for spitter spawner, repairing robots.
+    - New sound for throwing capsules, grenades, combat robots.
+    - Various levels adjusted including new default sound settings.
+  Bugfixes:
+    - Fixed that force.reset() wouldn't clear saved research progress. (https://forums.factorio.com/86407)
+    - Fixed disabling, renaming or destroying unreachable train stop would not cause repath of trains in NO_PATH to go to next station.
+    - Fixed bonuses GUI showing duplicate entries if it was open when a research finished. (https://forums.factorio.com/86687)
+    - Fixed auto-launch would send rocket when there were still empty slots for payload. (https://forums.factorio.com/86780)
+    - Fixed corruption related to sorting module inventories.
+    - Fixed logistic robots would keep trying to feed chest which has item stacks over the stack size. (https://forums.factorio.com/86583)
+    - Fixed entities with wire rendering disabled in entity prototype would still have wires rendered in screenshots. (https://forums.factorio.com/84288)
+    - Fixed upgrading mining drill would disable input fluid box if resource was depleted. (https://forums.factorio.com/84248)
+    - Fixed pause game control input was not working when in multiplayer. (https://forums.factorio.com/86631)
+    - Fixed that the RCON interface would sometimes send an extra empty reply. (https://forums.factorio.com/85963)
+    - Fixed that groups of enemies wouldn't be distracted by a player in a car or tank. (https://forums.factorio.com/81325)
+    - Fixed tank icon having accidental border. (https://forums.factorio.com/86630)
+  Optimizations:
+    - Improved performance of sorting inventories.
+    - Improved performance of inventory highlights.
+  Scripting:
+    - Added on_player_flushed_fluid event.
+    - Added LuaPlayer::hand_location. (https://forums.factorio.com/65304)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.35
 Date: 06. 07. 2020

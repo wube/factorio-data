@@ -1,3 +1,5 @@
+local sounds = require ("prototypes.entity.demo-sounds")
+
 data:extend(
 {
   {
@@ -21,14 +23,30 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "cluster-grenade",
-              starting_speed = 0.3
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "cluster-grenade",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
             }
-          }
+          } 
         }
       }
     },
@@ -57,12 +75,28 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "poison-capsule",
-              starting_speed = 0.3
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "poison-capsule",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
             }
           }
         }
@@ -93,12 +127,28 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "slowdown-capsule",
-              starting_speed = 0.3
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "slowdown-capsule",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
             }
           }
         }
@@ -129,14 +179,30 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "distractor-capsule",
-              starting_speed = 0.3
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "distractor-capsule",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
             }
-          }
+          } 
         }
       }
     },
@@ -165,12 +231,28 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "destroyer-capsule",
-              starting_speed = 0.3
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "destroyer-capsule",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
             }
           }
         }

@@ -797,7 +797,15 @@ local robots =
       animation_speed = 0.3
     },
     sparks = robot_animations.sparks,
-    working_sound = sounds.construction_robot(0.5),
+    repairing_sound =
+    {
+      { filename = "__base__/sound/robot-repair-1.ogg" },
+      { filename = "__base__/sound/robot-repair-2.ogg" },
+      { filename = "__base__/sound/robot-repair-3.ogg" },
+      { filename = "__base__/sound/robot-repair-4.ogg" },
+      { filename = "__base__/sound/robot-repair-5.ogg" }
+    },
+    working_sound = sounds.construction_robot(0.47),
     cargo_centered = {0.0, 0.2},
     construction_vector = {0.30, 0.22},
     water_reflection = robot_reflection(1),
@@ -840,7 +848,7 @@ local robots =
     energy_per_move = "5kJ",
     min_to_charge = 0.2,
     max_to_charge = 0.95,
-    working_sound = sounds.flying_robot(0.5),
+    working_sound = sounds.flying_robot(0.48),
     cargo_centered = {0.0, 0.2},
     water_reflection = robot_reflection(1),
     idle = robot_animations.logistic_robot.idle,

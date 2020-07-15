@@ -6743,6 +6743,30 @@ make_particle
     },
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
   },
+  
+  make_particle
+  {
+    name = "slowdown-capsule-particle",
+    life_time = 180,
+    pictures = particle_animations.get_blood_particle_pictures ({ tint = { r = 0.878, g = 0.632, b = 0.155, a = 0.694 }}),         
+    shadows = particle_animations.get_blood_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    draw_shadow_when_on_ground = true,
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0
+  },
+  
+  make_particle
+  {
+    name = "slowdown-capsule-particle-big",
+    life_time = 180,
+    pictures = particle_animations.get_slowdown_particle_pictures ({ tint = { r = 0.878, g = 0.632, b = 0.155, a = 0.694 }}),       
+    shadows = particle_animations.get_slowdown_particle_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    render_layer_when_on_ground = "lower-object-above-shadow",
+    draw_shadow_when_on_ground = true,
+    ended_in_water_trigger_effect = false,
+    movement_modifier_when_on_ground = 0
+  },
 
   make_particle
   {

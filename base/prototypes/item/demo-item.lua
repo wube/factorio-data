@@ -696,13 +696,29 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "grenade",
-              starting_speed = 0.3
-            }
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "grenade",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
+            } 
           }
         }
       }
@@ -972,12 +988,28 @@ data:extend(
           target_type = "position",
           action =
           {
-            type = "direct",
-            action_delivery =
             {
-              type = "projectile",
-              projectile = "defender-capsule",
-              starting_speed = 0.3
+              type = "direct",
+              action_delivery =
+              {
+                type = "projectile",
+                projectile = "defender-capsule",
+                starting_speed = 0.3
+              }
+            },
+            {
+              type = "direct",
+              action_delivery =
+              {
+                type = "instant",
+                target_effects =
+                {
+                  {
+                    type = "play-sound",
+                    sound = sounds.throw_projectile,
+                  },
+                }
+              }
             }
           }
         }

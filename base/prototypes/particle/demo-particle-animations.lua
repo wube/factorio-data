@@ -3253,6 +3253,37 @@ particle_animations.get_blood_particle_pictures = function(options)
   }
 end
 
+particle_animations.get_slowdown_particle_pictures = function(options)
+  local options = options or {}
+  return
+  {
+    sheet =
+    {
+      filename = "__base__/graphics/particle/blood-particle/blood-particle.png",
+      line_length = 12,
+      width = 10,
+      height = 8,
+      frame_count = 12,
+      variation_count = 7,
+      tint = options.tint,
+      scale = 1.9,
+      shift = util.add_shift(util.by_pixel(2,-1), options.shift),
+      hr_version =
+      {
+        filename = "__base__/graphics/particle/blood-particle/hr-blood-particle.png",
+        line_length = 12,
+        width = 16,
+        height = 16,
+        frame_count = 12,
+        variation_count = 7,
+        tint = options.tint,
+        scale = 0.9,
+        shift = util.add_shift(util.by_pixel(1.5,-1), options.shift),
+      }
+    }
+  }
+end
+
 particle_animations.get_explosion_remnants_particle = function(options)
   local options = options or {}
   return

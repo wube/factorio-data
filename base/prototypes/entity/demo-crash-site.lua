@@ -1010,8 +1010,8 @@ data:extend(
     flags = {"not-deconstructable", "placeable-neutral", "player-creation"},
     max_health = 350,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     resistances =
     {
       {

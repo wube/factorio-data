@@ -968,7 +968,7 @@ function crash_trigger()
     {
       {
         filename = "__base__/sound/car-crash.ogg",
-        volume = 0.2
+        volume = 0
       }
     }
   }
@@ -1408,7 +1408,7 @@ data:extend(
     max_health = 200,
     corpse = "stone-furnace-remnants",
     dying_explosion = "stone-furnace-explosion",
-    repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+    repair_sound = sounds.manual_repair,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
@@ -2180,8 +2180,8 @@ data:extend(
     max_health = 200,
     corpse = "iron-chest-remnants",
     dying_explosion = "iron-chest-explosion",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     resistances =
     {
       {
@@ -4439,7 +4439,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-1"},
     max_health = 300,
-    corpse = "medium-remnants",
+    corpse = "assembling-machine-1-remnants",
     dying_explosion = "assembling-machine-1-explosion",
     resistances =
     {
@@ -4522,12 +4522,12 @@ data:extend(
       {
         {
           filename = "__base__/sound/assembling-machine-t1-1.ogg",
-          volume = 0.8
+          volume = 0.5
         },
-        {
-          filename = "__base__/sound/assembling-machine-t1-2.ogg",
-          volume = 0.8
-        }
+        --{
+          --filename = "__base__/sound/assembling-machine-t1-2.ogg",
+          --volume = 0.8
+        --}
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       audible_distance_modifier = 0.7,
@@ -4543,7 +4543,7 @@ data:extend(
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-2"},
     max_health = 350,
-    corpse = "medium-remnants",
+    corpse = "assembling-machine-2-remnants",
     dying_explosion = "assembling-machine-2-explosion",
     alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
@@ -4637,12 +4637,12 @@ data:extend(
       {
         {
           filename = "__base__/sound/assembling-machine-t2-1.ogg",
-          volume = 0.6
+          volume = 0.55
         },
-        {
-          filename = "__base__/sound/assembling-machine-t2-2.ogg",
-          volume = 0.6
-        }
+        --{
+          --filename = "__base__/sound/assembling-machine-t2-2.ogg",
+          --volume = 0.6
+        --}
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       audible_distance_modifier = 0.7,
@@ -4753,7 +4753,7 @@ data:extend(
     repair_speed_modifier = 2,
     corpse = "wall-remnants",
     dying_explosion = "wall-explosion",
-    repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
+    repair_sound = sounds.manual_repair,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
@@ -6050,6 +6050,7 @@ data:extend(
     filter_count = 5,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
+    working_sound = sounds.loader,
     corpse = "small-remnants",
     resistances =
     {
@@ -7612,8 +7613,8 @@ data:extend(
     max_health = 350,
     corpse = "steel-chest-remnants",
     dying_explosion = "steel-chest-explosion",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     resistances =
     {
       {
@@ -9005,8 +9006,8 @@ data:extend(
       match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.cargo_wagon_open,
+    close_sound = sounds.cargo_wagon_close,
     sound_minimum_speed = 1,
     vehicle_impact_sound = sounds.generic_impact,
     water_reflection = locomotive_reflection()
@@ -9507,7 +9508,8 @@ data:extend(
     -- avoid unexpected changes in the way rail blocks are merged
     selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
     damaged_trigger_effect = hit_effects.wall(),
-    pictures = rail_pictures()
+    pictures = rail_pictures(),
+    walking_sound = sounds.rails
   },
   {
     type = "curved-rail",
@@ -9547,7 +9549,8 @@ data:extend(
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     damaged_trigger_effect = hit_effects.wall(),
     pictures = rail_pictures(),
-    placeable_by = {item = "rail", count = 4}
+    placeable_by = {item = "rail", count = 4},
+    walking_sound = sounds.rails
   },
 
   {

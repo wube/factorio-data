@@ -905,7 +905,7 @@ data:extend
     {
       sound =
       {
-        filename = "__base__/sound/fight/tank-engine.ogg",
+        filename = "__core__/sound/silence-1sec.ogg",
         volume = 0
       },
       activate_sound =
@@ -925,7 +925,7 @@ data:extend
       },
       deactivate_sound =
       {
-        filename = "__base__/sound/fight/tank-engine-stop.ogg",
+        filename = "__core__/sound/silence-1sec.ogg",
         volume = 0
       },
       audible_distance_modifier = 0.4,

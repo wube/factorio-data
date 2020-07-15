@@ -103,7 +103,7 @@ data:extend(
       {
         {
           filename = "__base__/sound/creatures/spawner.ogg",
-          volume = 0.9
+          volume = 0.6
         }
       },
     },

@@ -51,38 +51,47 @@ function migrate(old_version, new_version)
 end
 
 function gui_update(player)
+
   local gui = mod_gui.get_frame_flow(player).silo_gui_frame
   if not gui then return end
+
   gui.clear()
+
+  local inner = gui.add{type = "frame", style = "inside_shallow_frame", direction = "vertical"}
+  inner.style.horizontally_stretchable = true
+
   local items = game.item_prototypes
   local launched = player.force.items_launched
-  if table_size(launched) > 0 then
-    local item_table = gui.add
-    {
-      type = "table",
-      name = "silo_gui_table",
-      column_count = 2
-    }
-    item_table.style.left_padding = 12
-    item_table.style.horizontal_spacing = 8
-    item_table.style.vertical_spacing = 0
-    item_table.style.column_alignments[2] = "right"
-    local label = item_table.add{type = "label", caption = {"gui-silo-script.sent-label"}, style = "caption_label"}
-    label.style.font = "default-bold"
-    label.style.bottom_padding = 4
-    item_table.add{type = "label"}
-    for name, bool in pairs (get_tracked_items()) do
-      local item = items[name]
-      local count = launched[name]
-      if item and count then
-        local label = item_table.add{type = "label", caption = {"", item.localised_name, {"colon"}}}
-        label.style.font = "default-semibold"
-        item_table.add{type = "label", caption = util.format_number(count)}
-      end
-    end
-  else
-    gui.add{type = "label", caption = {"gui-silo-script.no-sent-items"}}
+
+  if not next(launched) then
+    local label = inner.add{type = "label", caption = {"gui-silo-script.no-sent-items"}}
+    label.style.padding = {4, 4, 0, 4}
+    return
   end
+
+  local item_table = inner.add
+  {
+    type = "table",
+    name = "silo_gui_table",
+    style = "bordered_table",
+    column_count = 3
+  }
+
+  for name, bool in pairs (get_tracked_items()) do
+    local item = items[name]
+    local count = launched[name]
+
+    if item and count then
+      local sprite = item_table.add{type = "sprite-button", sprite = "item/"..name, style = "transparent_slot"}
+      --Height of the label is 20. Lets not make the whole GUI bigger just to show more icon.
+      sprite.style.height = 20
+      sprite.style.width = 20
+      item_table.add{type = "label", caption = item.localised_name, style = "bold_label"}
+      item_table.add{type = "label", caption = util.format_number(count)}
+    end
+
+  end
+
 end
 
 function update_players(players)
@@ -101,16 +110,16 @@ function toggle_frame(player)
     return
   end
 
-  frame = gui.add{
+  frame = gui.add
+  {
     type = "frame",
     name = "silo_gui_frame",
     direction = "vertical",
     caption = {"gui-silo-script.frame-caption"},
     style = mod_gui.frame_style
   }
-  --frame.style.title_bottom_padding = 0
-  frame.style.horizontally_stretchable = false
-  frame.style.vertically_stretchable = false
+  frame.style.use_header_filler = false
+
   gui_update(player)
 end
 

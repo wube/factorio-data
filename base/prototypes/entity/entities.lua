@@ -327,6 +327,7 @@ data:extend(
     filter_count = 5,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
+    working_sound = sounds.fast_loader,
     corpse = "small-remnants",
     resistances =
     {
@@ -379,6 +380,7 @@ data:extend(
     filter_count = 5,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
+    working_sound = sounds.express_loader,
     corpse = "small-remnants",
     resistances =
     {
@@ -633,7 +635,7 @@ data:extend(
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {mining_time = 0.2, result = "assembling-machine-3"},
     max_health = 400,
-    corpse = "medium-remnants",
+    corpse = "assembling-machine-3-remnants",
     dying_explosion = "assembling-machine-3-explosion",
     alert_icon_shift = util.by_pixel(-3, -12),
     resistances =
@@ -676,10 +678,10 @@ data:extend(
           filename = "__base__/sound/assembling-machine-t3-1.ogg",
           volume = 0.6
         },
-        {
-          filename = "__base__/sound/assembling-machine-t3-2.ogg",
-          volume = 0.6
-        }
+        --{
+        --  filename = "__base__/sound/assembling-machine-t3-2.ogg",
+        --  volume = 0.6
+        --}
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       audible_distance_modifier = 0.7,
@@ -2015,8 +2017,8 @@ data:extend(
       match_volume_to_activity = true
     },
     crash_trigger = crash_trigger(),
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.artillery_open,
+    close_sound = sounds.artillery_close,
     rotating_sound = { sound = { filename = "__base__/sound/fight/artillery-rotation-loop.ogg", volume = 0.2 }},
     rotating_stopped_sound = { filename = "__base__/sound/fight/artillery-rotation-stop.ogg" },
     sound_minimum_speed = 0.1,
@@ -2072,7 +2074,7 @@ data:extend(
     minable = {mining_time = 0.5, result = "land-mine"},
     mined_sound = { filename = "__core__/sound/deconstruct-small.ogg" },
     max_health = 15,
-    corpse = "small-remnants",
+    corpse = "land-mine-remnants",
     dying_explosion = "land-mine-explosion",
     collision_box = {{-0.4,-0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2144,7 +2146,7 @@ data:extend(
           {
             type = "damage",
             damage = { amount = 1000, type = "explosion"}
-          }
+          },        
         }
       }
     }
@@ -2176,8 +2178,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "passive-provider",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     animation_sound = sounds.logistics_chest_open,
     vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
@@ -2256,8 +2258,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "active-provider",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     animation_sound = sounds.logistics_chest_open,
     vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
@@ -2337,8 +2339,8 @@ data:extend(
     fast_replaceable_group = "container",
     inventory_size = 48,
     logistic_mode = "storage",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     animation_sound = sounds.logistics_chest_open,
     vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
@@ -2418,8 +2420,8 @@ data:extend(
     inventory_size = 48,
     logistic_mode = "buffer",
     logistic_slots_count = 30,
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     animation_sound = sounds.logistics_chest_open,
     vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
@@ -2499,8 +2501,8 @@ data:extend(
     inventory_size = 48,
     logistic_mode = "requester",
     logistic_slots_count = 30,
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
+    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
     animation_sound = sounds.logistics_chest_open,
     vehicle_impact_sound = sounds.generic_impact,
     opened_duration = logistic_chest_opened_duration,
@@ -3152,6 +3154,8 @@ data:extend(
         filename = "__base__/sound/rocket-silo-working-1.ogg",
         volume = 0.8
       },
+      fade_in_ticks = 10,
+      fade_out_ticks = 15,
     },
     flying_sound =
     {
@@ -4398,6 +4402,24 @@ data:extend(
     vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
+    working_sound =
+    {
+      sound =
+      {
+        {
+          filename = "__base__/sound/beacon-1.ogg",
+          volume = 0.2
+        },
+        {
+          filename = "__base__/sound/beacon-2.ogg",
+          volume = 0.2
+        }
+      },
+      audible_distance_modifier = 0.33,
+      max_sounds_per_type = 3
+      -- fade_in_ticks = 4,
+      -- fade_out_ticks = 60
+    },
     energy_usage = "480kW",
     distribution_effectivity = 0.5,
     module_specification =
@@ -4470,10 +4492,16 @@ data:extend(
           type = "instant",
           target_effects =
           {
-            type = "create-smoke",
-            show_in_tooltip = false,
-            entity_name = "poison-cloud-visual-dummy",
-            initial_height = 0
+            {
+              type = "create-smoke",
+              show_in_tooltip = false,
+              entity_name = "poison-cloud-visual-dummy",
+              initial_height = 0,
+            },
+            {
+              type = "play-sound",
+              sound = sounds.poison_capsule_explosion(0.3),
+            }
           }
         }
       },
@@ -4487,25 +4515,15 @@ data:extend(
           type = "instant",
           target_effects =
           {
-            type = "create-smoke",
-            show_in_tooltip = false,
-            entity_name = "poison-cloud-visual-dummy",
-            initial_height = 0
+            {
+              type = "create-smoke",
+              show_in_tooltip = false,
+              entity_name = "poison-cloud-visual-dummy",
+              initial_height = 0
+            }
           }
         }
       }
-    },
-
-    working_sound =
-    {
-      sound =
-      {
-        filename = "__base__/sound/fight/poison-cloud.ogg",
-        volume = 0.7
-      },
-      max_sounds_per_type = 3,
-      fade_in_ticks = 4,
-      fade_out_ticks = 20
     },
     action =
     {
@@ -4536,6 +4554,7 @@ data:extend(
     },
     action_cooldown = 30
   },
+
   {
     type = "car",
     name = "tank",
@@ -4967,8 +4986,8 @@ data:extend(
         }
       }
     },
-    open_sound = { filename = "__base__/sound/fight/tank-door-open.ogg", volume=0.53 },
-    close_sound = { filename = "__base__/sound/fight/tank-door-close.ogg", volume = 0.45 },
+    open_sound = { filename = "__base__/sound/fight/tank-door-open.ogg", volume=0.48 },
+    close_sound = { filename = "__base__/sound/fight/tank-door-close.ogg", volume = 0.43 },
     rotation_speed = 0.0035,
     tank_driving = true,
     weight = 20000,
@@ -5012,6 +5031,11 @@ data:extend(
       filename = "__base__/graphics/entity/smoke/smoke.png",
       flags = { "smoke" }
     },
+    working_sound =
+    {
+      sound = sounds.poison_cloud(0.8),
+      persistent = true
+    },
   },
   {
     type = "sticker",
@@ -5022,13 +5046,28 @@ data:extend(
     {
       filename = "__base__/graphics/entity/slowdown-sticker/slowdown-sticker.png",
       priority = "extra-high",
-      width = 11,
-      height = 11,
-      frame_count = 13,
-      animation_speed = 0.4
+      line_length = 5,
+      width = 22,
+      height = 24,
+      frame_count = 50,
+      animation_speed = 0.5,
+      tint = {r = 1.000, g = 0.663, b = 0.000, a = 0.694}, -- #ffa900b1
+      shift = util.by_pixel (2,-1),
+      hr_version = 
+      {
+        filename = "__base__/graphics/entity/slowdown-sticker/hr-slowdown-sticker.png",
+        line_length = 5,
+        width = 42,
+        height = 48,
+        frame_count = 50,
+        animation_speed = 0.5,
+        tint = {r = 1.000, g = 0.663, b = 0.000, a = 0.694}, -- #ffa900b1
+        shift = util.by_pixel(2, -0.5),
+        scale = 0.5
+      }
     },
     duration_in_ticks = 30 * 60,
-    target_movement_modifier = 0.5
+    target_movement_modifier = 0.25
   },
   {
     type = "sticker",
@@ -6251,7 +6290,7 @@ data:extend(
       },
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      max_sounds_per_type = 3,
+      --max_sounds_per_type = 3,
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
     },
     crafting_speed = 1,
@@ -6840,7 +6879,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/steam-turbine.ogg",
-        volume = 0.5
+        volume = 0.37
       },
       match_speed_to_activity = true,
       audible_distance_modifier = 0.7,

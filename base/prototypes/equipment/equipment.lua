@@ -27,8 +27,8 @@ data:extend(
     },
     energy_input = "10kW",
     categories = {"armor"},
-    activate_sound = { filename = "__base__/sound/nightvision-on.ogg", volume = 0.6 },
-    deactivate_sound = { filename = "__base__/sound/nightvision-off.ogg", volume = 0.6 },
+    activate_sound = { filename = "__base__/sound/nightvision-on.ogg", volume = 0.5 },
+    deactivate_sound = { filename = "__base__/sound/nightvision-off.ogg", volume = 0.5 },
     darkness_to_turn_on = 0.5,
     color_lookup = {{0.5, "__core__/graphics/color_luts/nightvision.png"}}
   },

@@ -183,43 +183,43 @@ function spitter_big_attack_parameters(data)
       {
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-1.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-2.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-3.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-4.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-5.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-6.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-7.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-8.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-9.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-big-10.ogg",
-          volume = 0.45
+          volume = 0.47
         }
       },
       middle_sound =
@@ -278,35 +278,35 @@ function spitter_behemoth_attack_parameters(data)
       {
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-1.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-2.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-3.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-4.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-5.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-6.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-7.ogg",
-          volume = 0.45
+          volume = 0.47
         },
         {
           filename = "__base__/sound/creatures/spitter-spit-start-behemoth-8.ogg",
-          volume = 0.45
+          volume = 0.47
         }
       },
       middle_sound =
@@ -1006,20 +1006,28 @@ function acid_sticker(data)
 
     animation =
     {
-      filename = "__base__/graphics/entity/fire-flame/fire-flame-13.png",
-      line_length = 8,
-      width = 60,
-      height = 118,
-      frame_count = 25,
-      axially_symmetrical = false,
-      direction_count = 1,
-      blend_mode = "additive",
-      animation_speed = 2,
-      scale = 0.4,
-      tint = data.tint,
-      shift = math3d.vector2.mul({-0.078125, -1.8125}, 0.1)
+      filename = "__base__/graphics/entity/acid-sticker/acid-sticker.png",
+      priority = "extra-high",
+      line_length = 5,
+      width = 16,
+      height = 18,
+      frame_count = 50,
+      animation_speed = 0.5,
+      tint = {r = 0.714, g = 0.669, b = 0.291, a = 0.745}, -- #b6aa4abe
+      shift = util.by_pixel (2,0),
+      hr_version = 
+      {
+        filename = "__base__/graphics/entity/acid-sticker/hr-acid-sticker.png",
+        line_length = 5,
+        width = 30,
+        height = 34,
+        frame_count = 50,
+        animation_speed = 0.5,
+        tint = {r = 0.714, g = 0.669, b = 0.291, a = 0.745}, -- #b6aa4abe
+        shift = util.by_pixel(1.5, 0),
+        scale = 0.5
+      }
     },
-
     duration_in_ticks = data.slow_seconds * 60,
     target_movement_modifier_from = data.slow_player_movement,
     target_movement_modifier_to = 1,

@@ -331,56 +331,55 @@ sounds.oil =
   }
 }
 
-local rail_walking_sounds_volume = 0.7
 sounds.rails =
 {
   {
     filename = "__base__/sound/walking/rails/rails-01.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-02.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-03.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-04.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-05.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-06.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-07.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-08.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-09.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-10.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-11.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   },
   {
     filename = "__base__/sound/walking/rails/rails-12.ogg",
-    volume = rail_walking_sounds_volume
+    volume = 0.6
   }
 }
 
@@ -388,19 +387,19 @@ sounds.tree_leaves =
 {
   {
     filename = "__base__/sound/particles/tree-leaves-1.ogg",
-    volume = 0.25
+    volume = 0.35
   },
   {
     filename = "__base__/sound/particles/tree-leaves-2.ogg",
-    volume = 0.25
+    volume = 0.35
   },
   {
     filename = "__base__/sound/particles/tree-leaves-3.ogg",
-    volume = 0.25
+    volume = 0.35
   },
   {
     filename = "__base__/sound/particles/tree-leaves-4.ogg",
-    volume = 0.25
+    volume = 0.35
   },
 }
 
@@ -621,6 +620,45 @@ sounds.express_splitter =
   audible_distance_modifier = 0.45
 }
 
+sounds.loader =
+{
+  sound =
+  {
+    {
+      filename = "__base__/sound/transport-belt.ogg",
+    volume = 0.3
+    }
+  },
+  max_sounds_per_type = 3,
+  audible_distance_modifier = 0.45
+}
+
+sounds.fast_loader =
+{
+  sound =
+  {
+    {
+      filename = "__base__/sound/fast-transport-belt.ogg",
+    volume = 0.3
+    }
+  },
+  max_sounds_per_type = 3,
+  audible_distance_modifier = 0.45
+}
+
+sounds.express_loader =
+{
+  sound =
+  {
+    {
+      filename = "__base__/sound/express-transport-belt.ogg",
+    volume = 0.3
+    }
+  },
+  max_sounds_per_type = 3,
+  audible_distance_modifier = 0.45
+}
+
 sounds.train_brakes =
 {
   {
@@ -701,6 +739,34 @@ sounds.generic_impact =
   }
 }
 
+sounds.artillery_open =
+{
+  {
+    filename = "__base__/sound/artillery-open.ogg", volume = 0.57
+  }
+}
+
+sounds.artillery_close =
+{
+  {
+    filename = "__base__/sound/artillery-close.ogg", volume = 0.6
+  }
+}
+
+sounds.cargo_wagon_open =
+{
+  {
+    filename = "__base__/sound/cargo-wagon-open.ogg", volume = 0.55
+  }
+}
+
+sounds.cargo_wagon_close =
+{
+  {
+    filename = "__base__/sound/cargo-wagon-close.ogg", volume = 0.54
+  }
+}
+
 sounds.machine_open =
 {
   {
@@ -763,62 +829,52 @@ sounds.flying_robot = function(volume)
     sound =
     {
       {
-        filename = "__base__/sound/flying-robot-1.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-11.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-2.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-12.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-3.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-13.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-4.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-14.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-5.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-15.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-6.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-16.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-7.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-17.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-8.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-18.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-9.ogg", volume = volume
+        filename = "__base__/sound/construction-robot-19.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-1.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-2.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-3.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43
       }
     },
-    -- max_sounds_per_type = 5,
-    audible_distance_modifier = 0.9,
+    max_sounds_per_type = 20,
+    audible_distance_modifier = 1,
+    fade_in_ticks = 8,
+    fade_out_ticks = 10,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }
 end
@@ -856,35 +912,25 @@ sounds.construction_robot = function(volume)
         filename = "__base__/sound/construction-robot-9.ogg", volume = volume
       },
       {
-        filename = "__base__/sound/flying-robot-1-1.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-1.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-2.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-2.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-3.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-3.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-4.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43
       },
       {
-        filename = "__base__/sound/flying-robot-1-5.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-6.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-7.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-8.ogg", volume = 0.47
-      },
-      {
-        filename = "__base__/sound/flying-robot-1-9.ogg", volume = 0.47
+        filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43
       }
     },
-    -- max_sounds_per_type = 5,
-    audible_distance_modifier = 0.85,
+    max_sounds_per_type = 20,
+    audible_distance_modifier = 1,
+    fade_in_ticks = 8,
+    fade_out_ticks = 8,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
   }
 end
@@ -1204,6 +1250,72 @@ sounds.tank_gunshot =
 
 }
 
+sounds.throw_projectile =
+{
+  {
+    filename = "__base__/sound/fight/throw-projectile-1.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/throw-projectile-2.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/throw-projectile-3.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/throw-projectile-4.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/throw-projectile-5.ogg",
+    volume = 0.4
+  },
+  {
+    filename = "__base__/sound/fight/throw-projectile-6.ogg",
+    volume = 0.4
+  }
+
+}
+
+sounds.poison_cloud = function(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 1,
+      remove = true
+    },
+    audible_distance_modifier = 0.8, --multiplies the default 40 tiles of audible distance by this number
+    variations =
+    {
+      {
+        filename = "__base__/sound/fight/poison-cloud.ogg",
+        volume = volume
+      },
+    }
+  }
+end
+
+sounds.poison_capsule_explosion = function(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 1,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/fight/poison-capsule-explosion-1.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
 sounds.small_explosion = function(volume)
   return
   {
@@ -1351,6 +1463,30 @@ sounds.small_splash =
   {
     filename = "__base__/sound/particles/small-splash-5.ogg",
     volume = 0.7
+  }
+}
+
+sounds.manual_repair =
+{
+  {
+    filename = "__base__/sound/manual-repair-simple-1.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/manual-repair-simple-2.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/manual-repair-simple-3.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/manual-repair-simple-4.ogg",
+    volume = 0.5
+  },
+  {
+    filename = "__base__/sound/manual-repair-simple-5.ogg",
+    volume = 0.4
   }
 }
 
