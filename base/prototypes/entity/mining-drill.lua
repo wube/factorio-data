@@ -27,7 +27,7 @@ data:extend(
     },
     output_fluid_box =
     {
-      base_area = 1,
+      base_area = 10,
       base_level = 1,
       pipe_covers = pipecoverspictures(),
       pipe_connections =

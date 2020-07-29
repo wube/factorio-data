@@ -1418,6 +1418,7 @@ data:extend(
       priority = "medium",
       width = 64,
       height = 64,
+      scale = 0.5,
       flags = {"icon"}
     },
     copper_wire =
@@ -2398,6 +2399,24 @@ data:extend(
       mipmap_count = 2,
       flags = {"gui-icon"}
     },
+    copy =
+    {
+      filename = "__core__/graphics/icons/mip/copy.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      flags = {"gui-icon"},
+      mipmap_count = 2,
+      scale = 0.5
+    },
+    reassign =
+    {
+      filename = "__core__/graphics/icons/mip/reassign.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      flags = {"gui-icon"},
+      mipmap_count = 2,
+      scale = 0.5
+    },
     warning =
     {
       filename = "__core__/graphics/icons/mip/warning.png",
@@ -2415,5 +2434,28 @@ data:extend(
       mipmap_count = 2,
       flags = {"gui-icon"}
     },
+    list_view =
+    {
+      filename = "__core__/graphics/icons/mip/list-view.png",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    grid_view =
+    {
+      filename = "__core__/graphics/icons/mip/grid-view.png",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    reference_point =
+    {
+      filename = "__core__/graphics/reference-point.png",
+      size = 100,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    }
   }
 })

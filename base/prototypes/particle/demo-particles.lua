@@ -1577,7 +1577,7 @@ local particles =
     life_time_deviation = 10,
     render_layer = "lower-object",
     movement_modifier = 0.1,
-    pictures = particle_animations.get_general_dust_particle ({ tint = { r = 0.549, g = 0.393, b = 0.254, a = 1.000 }}),  --({ tint = { r = 0.255, g = 0.182, b = 0.118, a = 0.502 }}),  --({ tint = { r = 0.235, g = 0.168, b = 0.109, a = 0.502 }}),
+    pictures = particle_animations.get_general_dust_particle ({ tint = { r = 0.549, g = 0.393, b = 0.254, a = 1.000 }}),  
     shadows = nil,
     ended_in_water_trigger_effect = nil,
     fade_away_duration = 30,
@@ -1605,6 +1605,49 @@ local particles =
     render_layer = "lower-object",
     movement_modifier = 0.1,
     pictures = particle_animations.get_general_dust_particle ({ tint = { r = 0.235, g = 0.168, b = 0.109, a = 0.502 }}),
+    shadows = nil,
+    ended_in_water_trigger_effect = false,
+    movement_modifier = 0.1,
+    movement_modifier_when_on_ground = 0,
+    render_layer = "lower-object",
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-dust-particle",
+    movement_modifier_when_on_ground = 0,
+    life_time = 30,
+    life_time_deviation = 10,
+    render_layer = "lower-object",
+    movement_modifier = 0.1,
+    pictures = particle_animations.get_general_dust_particle ({ tint = { r = 0.294, g = 0.237, b = 0.186, a = 1.000 }}), 
+    shadows = nil,
+    ended_in_water_trigger_effect = nil,
+    fade_away_duration = 30,
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-dust-vehicle-particle",
+    movement_modifier_when_on_ground = 0,
+    life_time = 20,
+    life_time_deviation = 10,
+    render_layer = "lower-object",
+    movement_modifier = 0.1,
+    pictures = particle_animations.get_general_dust_particle ({ tint = { r = 0.157, g = 0.125, b = 0.097, a = 0.502 }}), 
+    shadows = nil,
+    ended_in_water_trigger_effect = nil,
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-dust-tank-front-particle",
+    movement_modifier_when_on_ground = 0,
+    life_time = 30,
+    life_time_deviation = 10,
+    render_layer = "lower-object",
+    movement_modifier = 0.1,
+    pictures = particle_animations.get_general_dust_particle ({ tint = { r = 0.157, g = 0.125, b = 0.097, a = 0.502 }}), 
     shadows = nil,
     ended_in_water_trigger_effect = false,
     movement_modifier = 0.1,
@@ -2097,7 +2140,6 @@ local particles =
   {
     name = "landfill-stone-vehicle-particle-small",
     life_time = 30,
-
     pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.604, g = 0.420, b = 0.251, a = 1.000 }}),
     shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = nil,
@@ -2118,6 +2160,76 @@ local particles =
   {
     name = "landfill-stone-lower-particle-medium",
     pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.749, g = 0.517, b = 0.311, a = 1.000 }}),
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_lower_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-particle-tiny",
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-character-particle-tiny",
+    life_time = 20,
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-vehicle-particle-tiny",
+    life_time = 30,
+    pictures = particle_animations.get_stone_particle_tiny_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_tiny_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-particle-small",
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = tiny_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-vehicle-particle-small",
+    life_time = 30,
+    pictures = particle_animations.get_stone_particle_small_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = false,
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
+    shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "nuclear-ground-stone-lower-particle-medium",
+    pictures = particle_animations.get_stone_particle_medium_pictures ({ tint = { r = 0.439, g = 0.349, b = 0.269, a = 1.000 }}), 
     shadows = particle_animations.get_stone_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
     regular_trigger_effect = small_lower_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),

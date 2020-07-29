@@ -1227,11 +1227,51 @@ data:extend(
       }
     },
 
+    tool_button_blue =
+    {
+      type = "button_style",
+      parent = "tool_button",
+      default_graphical_set =
+      {
+        base = {position = {329, 48}, corner_size = 8},
+        shadow = default_dirt
+      },
+      hovered_graphical_set =
+      {
+        base = {position = {346, 48}, corner_size = 8},
+        shadow = default_dirt,
+        glow = default_glow({110, 101, 164, 127}, 0.5)
+      },
+      clicked_graphical_set =
+      {
+        base = {position = {363, 48}, corner_size = 8},
+        shadow = default_dirt
+      }
+    },
+
     mini_button =
     {
       type = "button_style",
       padding = 0,
       size = 16,
+      left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
+    },
+
+    mini_button_aligned_to_text_vertically =
+    {
+      type = "button_style",
+      padding = 0,
+      size = 16,
+      top_margin = 3,
+      left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
+    },
+
+    mini_button_aligned_to_text_vertically_when_centered =
+    {
+      type = "button_style",
+      padding = 0,
+      size = 16,
+      top_margin = 1,
       left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
     },
 
@@ -2669,6 +2709,7 @@ data:extend(
       hovered_graphical_set = {},
       clicked_vertical_offset = 0,
       draw_shadow_under_picture = true,
+      pie_progress_color = {0.98, 0.66, 0.22, 0.5},
       left_click_sound = {}
     },
 
@@ -2722,15 +2763,29 @@ data:extend(
     blueprint_record_slot_button =
     {
       type = "button_style",
-      parent = "button",
-      size = 76,
-      left_click_sound = {{ filename = "__core__/sound/gui-square-button-large.ogg", volume = 1 }},
+      parent = "inventory_slot",
+      size = 80,
+      padding = 8
+    },
+
+    blueprint_record_selection_button =
+    {
+      type = "button_style",
+      parent = "slot_button",
+      size = 80,
+      padding = 8
     },
 
     blueprint_drop_slot_button =
     {
       type = "empty_widget_style",
       size = 76
+    },
+
+    blueprint_preview =
+    {
+      type = "empty_widget_style",
+      size = 64
     },
 
     blueprint_icon_preview =
@@ -3460,6 +3515,36 @@ data:extend(
       },
     },
 
+    blueprint_record_selection_background_frame =
+    {
+      type = "frame_style",
+      parent = "slot_container_frame",
+      minimal_height = 120 * 2,
+      minimal_width = 80 * 6,
+      background_graphical_set =
+      {
+        position = {282, 17},
+        corner_size = 8,
+        overall_tiling_vertical_size = 72,
+        overall_tiling_vertical_spacing = 40 + 8,
+        overall_tiling_vertical_padding = 4 + 36, -- 36 == subheader size
+        overall_tiling_horizontal_size = 72,
+        overall_tiling_horizontal_spacing = 8,
+        overall_tiling_horizontal_padding = 4,
+      },
+
+      graphical_set =
+      {
+        base =
+        {
+          position = {17, 0}, corner_size = 8,
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      }
+    },
+
     filter_scroll_pane_background_frame_no_background =
     {
       type = "frame_style",
@@ -3803,7 +3888,7 @@ data:extend(
       left_padding = 8,
     },
 
-     new_game_subheader_caption_label =
+    new_game_subheader_caption_label =
     {
       type = "label_style",
       parent = "subheader_caption_label",
@@ -4201,10 +4286,10 @@ data:extend(
       horizontal_spacing = 2
     },
 
-    blueprint_shelf_flow =
+    blueprint_book_edit_frame =
     {
-      type = "vertical_flow_style",
-      padding = 5
+      type = "frame_style",
+      minimal_width = 500
     },
 
     table =
@@ -4513,6 +4598,12 @@ data:extend(
       width = 80
     },
 
+    very_short_number_textfield =
+    {
+      type = "textbox_style",
+      width = 40
+    },
+
     long_number_textfield =
     {
       type = "textbox_style",
@@ -4724,6 +4815,7 @@ data:extend(
       minimal_width = 0,
       padding = 0
     },
+
     map_generator_preset_description =
     {
       type = "textbox_style",
@@ -4923,7 +5015,16 @@ data:extend(
       type = "textbox_style",
       parent = "textbox",
       minimal_width = 600,
+      maximal_width = 0,
       height = 500
+    },
+
+    edit_blueprint_description_textbox =
+    {
+      type = "textbox_style",
+      horizontally_stretchable = "on",
+      height = 120,
+      maximal_width = 0
     },
 
     frame_title =
@@ -5325,6 +5426,53 @@ data:extend(
       vertically_stretchable = "off"
     },
 
+    subheader_frame_with_top_border =
+    {
+      type = "frame_style",
+      parent = "subheader_frame",
+      graphical_set =
+      {
+        base =
+        { -- add top transition into subheader center
+          top = {position = {42, 0}, size = {1, 8}},
+          center = {position = {256, 25}, size = {1, 1}},
+          bottom = {position = {256, 26}, size = {1, 8}}
+        },
+        glow =
+        { -- transition from content frame
+          top = {position = {93, 0}, size = {1, 8}},
+          draw_type = "outer"
+        },
+        shadow = bottom_shadow
+      },
+      -- to maintain alignment with standard subheader frames
+      top_margin = 1,
+      -- optical correction - the added shadow increases the perceived height
+      -- of the frame
+      top_padding = -1,
+      height = 35
+    },
+
+    subheader_frame_that_cuts_to_sides =
+    {
+      type = "frame_style",
+      parent = "subheader_frame",
+      graphical_set =
+      {
+        base =
+        {
+          center = {position = {256, 25}, size = {1, 1}}
+        },
+        shadow = bottom_shadow
+      },
+      top_padding = 12,
+      right_margin = -4,
+      left_margin = -4,
+      left_padding = 12,
+      right_padding = 12,
+      height = 0
+    },
+
     negative_subheader_frame =
     {
       type = "frame_style",
@@ -5623,6 +5771,40 @@ data:extend(
       }
     },
 
+    blueprint_header_frame =
+    {
+      type = "frame_style",
+      parent = "frame",
+      padding = 12,
+      margin = 8,
+      horizontally_stretchable = "on",
+      graphical_set =
+      {
+        base =
+        {
+          position = {51, 0}, corner_size = 8,
+          center = {position = {76, 8}, size = {1, 1}},
+          draw_type = "outer"
+        },
+        shadow = default_inner_shadow
+      }
+    },
+
+    blueprint_header_holder_frame =
+    {
+      type = "frame_style",
+      padding = 4,
+      bottom_padding = 0,
+      graphical_set =
+      {
+        base =
+        {
+          center = {position = {42, 8}, size = {1, 1}},
+          bottom = {position = {42, 9}, size = {1, 8}}
+        },
+      }
+    },
+
     inside_shallow_frame_with_padding =
     {
       type = "frame_style",
@@ -5906,6 +6088,22 @@ data:extend(
       border = border_image_set(),
       cell_padding = 4,
       left_cell_padding = 8
+    },
+
+    table_with_extra_margins =
+    {
+      type = "table_style",
+      left_margin = 8,
+      right_margin = 0,
+      top_margin = 4
+    },
+
+    vertical_flow_with_extra_margins =
+    {
+      type = "vertical_flow_style",
+      left_margin = 8,
+      right_margin = 0,
+      top_margin = 4
     },
 
     armor_info_table =
@@ -7969,8 +8167,6 @@ data:extend(
     equipment_grid_scroll_pane =
     {
       type = "scroll_pane_style",
-      vertically_stretchable = "stretch_and_expand",
-      horizontally_stretchable = "stretch_and_expand",
       extra_padding_when_activated = 0
     },
     camera =
@@ -8039,6 +8235,53 @@ data:extend(
         left_padding = 12,
         right_padding = 12,
         horizontal_spacing = 0
+      }
+    },
+
+    tabbed_pane_with_no_side_padding =
+    {
+      type = "tabbed_pane_style",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        top_padding = 8,
+        bottom_padding = 0,
+        left_padding = 0,
+        right_padding = 0,
+        graphical_set =
+        {
+          base =
+          {
+            -- same as tabbed_pane_graphical_set - but without bottom
+            top = {position = {76, 0}, size = {1, 8}},
+            center = {position = {76, 8}, size = {1, 1}}
+          },
+          shadow = top_shadow
+        }
+      }
+    },
+
+    tabbed_pane_with_no_side_padding_and_tabs_hidden =
+    {
+      type = "tabbed_pane_style",
+      parent = "tabbed_pane_with_no_side_padding",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        top_padding = -4,
+        bottom_padding = 0,
+        left_padding = 0,
+        right_padding = 0,
+        graphical_set =
+        {
+          base =
+          {
+            -- same as tabbed_pane_graphical_set - but without bottom
+            top = {position = {76, 0}, size = {1, 8}},
+            center = {position = {76, 8}, size = {1, 1}}
+          },
+          shadow = top_shadow
+        }
       }
     },
 
@@ -8909,7 +9152,23 @@ data:extend(
       {
         base = {position = {34, 0}, corner_size = 8},
         shadow = default_inner_shadow
-      },
+      }
+    },
+
+    label_under_widget =
+    {
+      type = "label_style",
+      height = 40,
+      single_line = false,
+      top_margin = -4,
+      bottom_margin = 4
+    },
+
+    special_label_under_widget =
+    {
+      type = "label_style",
+      parent = "label_under_widget",
+      font_color = heading_font_color
     },
 
     tutorial_list_subheader_frame =
@@ -8978,8 +9237,8 @@ data:extend(
         bottom_right_corner = {position = {24, 1024}, size = {8, 8}},
         bottom_left_corner = {position = {32, 1024}, size = {8, 8}},
         top_left_coner = {position = {40, 1024}, size = {8, 8}},
-      },
-    },
+      }
+    }
   }
 }
 )

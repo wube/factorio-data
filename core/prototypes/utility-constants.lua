@@ -39,6 +39,7 @@ data:extend(
       default_friendly_color = {r = 0, g = 0.38, b = 0.57},
       default_enemy_color = {r = 1, g = 0.1, b = 0.1},
       rail_color = {r = 0.55, g = 0.55, b = 0.55},
+      entity_ghost_color = {r = 0.57, g = 0.38, b = 0.57},
       default_friendly_color_by_type =
       {
         ["ammo-turret"] = {r = 202, g = 167, b = 24},

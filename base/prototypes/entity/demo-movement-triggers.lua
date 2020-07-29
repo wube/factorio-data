@@ -1879,6 +1879,96 @@ movement_triggers.tank =
       },
     }
   },
+  {
+    tiles = { "nuclear-ground" },
+    actions =
+    {
+      {
+        type = "create-particle",
+        repeat_count = 8,
+        particle_name = "nuclear-ground-dust-vehicle-particle",
+        probability = 0.3,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.7, 1},
+          {-0.7,1}
+        },
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+        rotate_offsets = true
+      },
+      {
+        type = "create-particle",
+        repeat_count = 5,
+        particle_name = "nuclear-ground-dust-tank-front-particle",
+        probability = 0.3,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.7, -1},
+          {-0.7,-1}
+        },
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+        rotate_offsets = true
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        particle_name = "nuclear-ground-stone-vehicle-particle-tiny",
+        probability = 0.05,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.75, 1},
+          {-0.75,1},
+          {0.9,-0.5},
+          {-0.9,-0.5},
+          {0.9, -1},
+          {-0.9,-1}
+        },
+        offset_deviation = {{-0.2, -0.25}, {0.2, 0.2}},
+        rotate_offsets = true
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        particle_name = "nuclear-ground-stone-vehicle-particle-small",
+        probability = 0.05,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.75, 1},
+          {-0.75,1},
+          {0.9,-0.5},
+          {-0.9,-0.5},
+          {0.9, -1},
+          {-0.9,-1}
+        },
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+        rotate_offsets = true
+      },
+    }
+  },
 }
 
 movement_triggers.car =
@@ -3399,6 +3489,75 @@ movement_triggers.car =
         rotate_offsets = true
       },
     }
+  },
+  {
+    tiles = { "nuclear-ground" },
+    actions =
+    {
+      {
+        type = "create-particle",
+        repeat_count = 5,
+        particle_name = "nuclear-ground-dust-vehicle-particle",
+        probability = 0.5,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.75, 1},
+          {-0.75,1},
+          {0.55, -0.75},
+          {-0.55,-0.75}
+        },
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+        rotate_offsets = true
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        particle_name = "nuclear-ground-stone-vehicle-particle-tiny",
+        probability = 0.05,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.75, 1},
+          {-0.75,1},
+          {0.55, -0.75},
+          {-0.55,-0.75}
+        },
+        offset_deviation = {{-0.25, -0.25}, {0.25, 0.25}},
+        rotate_offsets = true
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        particle_name = "nuclear-ground-stone-vehicle-particle-small",
+        probability = 0.05,
+        initial_height = 0.1,
+        speed_from_center = 0.01,
+        speed_from_center_deviation = 0,
+        initial_vertical_speed = 0.02,
+        frame_speed = 1,
+        initial_vertical_speed_deviation = 0.05,
+        offsets =
+        {
+          {0.75, 1},
+          {-0.75,1},
+          {0.55, -0.75},
+          {-0.55,-0.75}
+        },
+        offset_deviation = {{-0.25, -0.25}, {0.25, 0.25}},
+        rotate_offsets = true
+      },
+    }
   }
 }
 
@@ -4041,6 +4200,38 @@ movement_triggers.character =
       type = "create-particle",
       repeat_count = 5,
       particle_name = "landfill-stone-character-particle-tiny",
+      probability = 1,
+      initial_height = 0.1,
+      speed_from_center = 0.01,
+      speed_from_center_deviation = 0,
+      initial_vertical_speed = 0.01,
+      frame_speed = 0.4,
+      initial_vertical_speed_deviation = 0.05,
+      offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+      },
+    }
+  },
+  {
+    tiles = { "nuclear-ground" },
+    actions =
+    {
+      {
+      type = "create-particle",
+      repeat_count = 7,
+      particle_name = "nuclear-ground-dust-particle",
+      probability = 1,
+      initial_height = 0.1,
+      speed_from_center = 0.01,
+      speed_from_center_deviation = 0,
+      initial_vertical_speed = 0.02,
+      frame_speed = 0.4,
+      initial_vertical_speed_deviation = 0.05,
+      offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+      },
+      {
+      type = "create-particle",
+      repeat_count = 5,
+      particle_name = "nuclear-ground-stone-character-particle-tiny",
       probability = 1,
       initial_height = 0.1,
       speed_from_center = 0.01,

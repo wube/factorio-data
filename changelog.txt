@@ -1,6 +1,83 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.37
+Version: 0.18.38
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.37
+Date: 29. 07. 2020
+  Major Features:
+    - New blueprint library GUI. Its user interface had been aligned with the way inventory works in as many ways as possible. (https://www.factorio.com/blog/post/fff-356)
+  Features:
+    - Added blueprint building from the map view.
+    - Blueprints can have snapping dimensions specified. When they are built by dragging, they are only built in the grid relative to where the build started.
+    - Blueprints can have absolute map snapping specified, so the blueprints are always aligned to the global grid.
+    - Blueprint books can be inserted into blueprint books, cycling through the books works in a hierarchical way.
+    - Upgrade planners and deconstruction planners can be inserted into blueprint books and the blueprint library.
+    - Blueprint books, upgrade planners and deconstruction planners can now have custom icons specified.
+    - All blueprints tools have an editable description.
+    - Added Blueprint reassign tool. It allows to set new contents of a blueprint by world selection.
+    - All blueprint tools have a copy function.
+    - All the blueprint tools are usable directly from the blueprint library.
+    - Quickbar links to blueprint tools are persistent when moving them between library shelves and inventories.
+    - Most of the blueprint tools manipulation in the blueprint library is part of a multiplayer latency hiding.
+    - Icons on the blueprint tools and filters in the upgrade planners/deconstruction planners are preserving the original values
+      so whenever the mods would be re-added, the original values can be restored, unless the player clears the related icons manually.
+    - Any blueprint contents that are not available due to mod removal are also kept in the blueprint persistently, so blueprints
+      can be copied and transferred in multiplayer without losing its original data.
+    - Added downgrading feature to upgrade planner. It works on blueprints, books and also when applying in the world.
+    - Clicking an upgrade planner button in the blueprint or a book now provides a list of all available upgrade planners to be applied.
+    - Upgrade planners now also update the relevant icons of blueprints and books.
+  Minor Features:
+    - Grabbing an item from a blueprint book has the same hand item functionality as when holding an item from inventory, so it
+      goes back to the original position when clean cursor is triggered.
+  Gui:
+    - All the blueprint tools now show all possible actions it can perform in the tooltip.
+    - Control settings search now also searches by the currently assigned key-binding.
+  Optimizations:
+    - Decreased the header size of blueprint-storage and of individual blueprints with backed up modded entities, as only the id mapping
+      relevant to the blueprints (and whole storage) is now saved.
+  Bugfixes:
+    - Fixed that exporting blueprint didn't include the unconfirmed blueprint changes into the exported string.
+    - Fixed blueprint preview icons rendering scale when blueprint was held in cursor.
+    - Fixed that blueprint was not detecting modded data to be lost when loading unless one of the top level entities or tiles were to be lost.
+      This means, that a blueprint with vanilla constant combinator (for example) with a modded signal will no longer silently lose the modded signals on resaving the blueprint storage when the mod is not currently active.
+    - Fixed that biters when faced with a rock might get stuck in an infinite pathfinding loop. (https://forums.factorio.com/86552)
+    - Fixed that clicking a technology in the research queue, holding the mouse down and moving it over the cancel button would make the cancel button flicker. (https://forums.factorio.com/82014)
+    - Fixed slider tooltip would show old value. (https://forums.factorio.com/86632)
+    - Fixed terrain particles would be spawned when walking over belts. (https://forums.factorio.com/84874)
+    - Fixed player movement on belts in latency state was not exactly matched with the real game state logic. (https://forums.factorio.com/84554)
+    - Fixed that the set-request GUI didn't respect the show-all-items setting. (https://forums.factorio.com/86956)
+    - Fixed that burner assembling machines could cause inserters to get stuck holding extra fuel in some cases. (https://forums.factorio.com/87031)
+    - Fixed noise.terrace function did not assert that constant parameters are constant.
+    - Fixed that item durability tooltips used the wrong locale key in some places. (https://forums.factorio.com/87000)
+    - Fixed that upgrading inserters in blueprints wouldn't preserve modded pickup/drop locations. (https://forums.factorio.com/86982)
+    - Fixed that exporting empty blueprint books didn't work correctly. (https://forums.factorio.com/86945)
+    - Fixed that the mods GUI didn't have any mod selection by default. (https://forums.factorio.com/85232)
+    - Fixed that positions of entities in blueprint string were not properly fixed to be aligned to grid according to our rules and centered.
+    - Fixed a crash when mods destroy the character entity during the on_gui_closed event. (https://forums.factorio.com/87058)
+    - Fixed a crash when canceling loading some modded saves. (https://forums.factorio.com/87086)
+    - Fixed that artillery turrets didn't fully use the shooting speed research. (https://forums.factorio.com/87140)
+    - Reduced flicker of mining drill indicator lights when zoomed out. (https://forums.factorio.com/86777)
+    - Fixed lua documentation for LuaGuiElement::index read. (https://forums.factorio.com/87195)
+    - Fixed that biters would try to attack over large distances individually instead of in groups. (https://forums.factorio.com/86920)
+    - Map tag edit GUI can now be confirmed with Enter key even when the textbox is not focused. (https://forums.factorio.com/86386)
+    - Fixed a pathfinder crash related to entities and tiles using collision layers 11 to 15. (https://forums.factorio.com/82098)
+    - Fixed the changelog GUI indentation.
+  Modding:
+    - Implemented compileIntoCurrentProcedure for the "if-else-chain" noise expression type. This allows non-constant values to be used as conditions.
+    - Added "modulo", "ceil" and "floor" noise expression types.
+    - Added "bitwise-and", "bitwise-or", "bitwise-xor" and "bitwise-not" noise expression types.
+    - Added "sin", "atan2" and "cos" noise expression types.
+    - Added "less-than", "less-or-equal" and "equals" noise expression types.
+    - Changed turret base_picture animation to actually play the animation.
+    - Added several properties to ExplosionPrototype to control light fading through applying a multiplier to the light's size and intensity.
+      "light_intensity_factor_initial" (default 0), "light_intensity_factor_final" (default 0),
+      "light_intensity_peak_start_progress" (default 0), "light_intensity_peak_end_progress" (default 0.9),
+      "light_size_factor_initial" (default 0.05), "light_size_factor_final" (default 0.1),
+      "light_size_peak_start_progress" (default 0.1), "light_size_peak_end_progress" (default 0.5)
+  Scripting:
+    - Added permission events: on_permission_group_edited, on_pre_permission_string_imported, on_permission_string_imported,
+      on_per_permission_group_deleted, on_permission_group_deleted, and on_permission_group_added.
+    - Simplified the rules of entity positions aligned to grid in the blueprint. Now they have the same rules as entities in the world.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.36
 Date: 15. 07. 2020
@@ -70,7 +147,7 @@ Date: 26. 06. 2020
     - Fixed of saving control inputs related to mouse buttons 4+. (https://forums.factorio.com/86285)
     - Fixed minor clipping issue. (https://forums.factorio.com/86286)
     - Fixed that train fuel request were unreliable. (https://forums.factorio.com/77805)
-    - Fixed sizing of script created switch gui element. (https://forums.factorio.com/78920)
+    - Fixed sizing of script created switch GUI element. (https://forums.factorio.com/78920)
   Gui:
     - Windows with item and count to be selected have count/confirm buttons disabled when item is not yet selected.
     - Logistic request related item and count windows now have notched sliders for 0 to 10 stacks selection.
@@ -82,7 +159,7 @@ Date: 24. 06. 2020
   Changes:
     - Full English text proofreading and corrections.
   Bugfixes:
-    - Fixed Trains gui listbox labels not being readable when hovered. (https://forums.factorio.com/68302)
+    - Fixed Trains GUI listbox labels not being readable when hovered. (https://forums.factorio.com/68302)
     - Fixed a crash when using LuaChunkIterator. (https://forums.factorio.com/86089)
     - Fixed a desync related to placing blueprint with assembling machine with not yet researched recipe. (https://forums.factorio.com/86134)
   Gui:
@@ -175,8 +252,8 @@ Date: 03. 06. 2020
     - Fixed tiny maps hanging in PvP. (https://forums.factorio.com/85370)
     - Fixed Wave defense bonuses being lost when technology effects were reset. (https://forums.factorio.com/82583)
     - Fixed progression block in Tutorial level 01 if you don't close the furnace GUI while smelting the iron plate. (https://forums.factorio.com/85510)
-    - Fixed redundant title in modded Container gui. (https://forums.factorio.com/85420)
-    - Fixed changelog gui not reacting properly to window resize. (https://forums.factorio.com/85433)
+    - Fixed redundant title in modded Container GUI. (https://forums.factorio.com/85420)
+    - Fixed changelog GUI not reacting properly to window resize. (https://forums.factorio.com/85433)
     - Fixed premature goal completed notifications in Tutorial level 03. (https://forums.factorio.com/85523)
     - Fixed transport belt madness script error when trying to handle highlight-box entities. (https://forums.factorio.com/82695)
     - Fixed tightspot output chest deleting items when starting the level. (https://forums.factorio.com/84475)
@@ -214,7 +291,7 @@ Date: 28. 05. 2020
     - Fixed a crash when clearing logistic requests. (https://forums.factorio.com/85323)
     - Fixed some styles being defined twice in style.lua. (https://forums.factorio.com/85337)
     - Fixed follower robot count alert not showing correctly. (https://forums.factorio.com/85313)
-    - Fixed container gui not showing logistics filters properly in large containers. (https://forums.factorio.com/85338)
+    - Fixed container GUI not showing logistics filters properly in large containers. (https://forums.factorio.com/85338)
     - Fixed wrong open/close sound for chemical plant. (https://forums.factorio.com/85315)
   Modding:
     - Added support to play a sound when opening dropdowns through opened_sound.
@@ -507,7 +584,7 @@ Date: 20. 03. 2020
     - ENTER key can now be used to confirm the small "Set request" pop-up windows.
   Bugfixes:
     - Fixed that defines.gui_type was missing some values. (https://forums.factorio.com/82493)
-    - Fixed tabs not changing correctly in the item select gui for train circuit/item/fluid conditions. (https://forums.factorio.com/82522)
+    - Fixed tabs not changing correctly in the item select GUI for train circuit/item/fluid conditions. (https://forums.factorio.com/82522)
     - Fixed that deleting blueprints didn't work in some cases. (https://forums.factorio.com/82511)
     - Fixed a crash related to fast-replacing character entities through mods. (https://forums.factorio.com/82453)
     - Fixed that the "watch your step" achievement wouldn't show the achievement popup. (https://forums.factorio.com/82015)
@@ -536,7 +613,7 @@ Date: 17. 03. 2020
   Gui:
     - The character GUI now has a new look.
       - Personal logistics has been moved to a separate tab. Logistic requests and auto trash have been merged into one panel.
-      - Using quick inventory transfers in the player inventory of the character gui will transfer the items either to weapons and armor slots or to trash slots depending on the selected tab, regardless of item type.
+      - Using quick inventory transfers in the player inventory of the character GUI will transfer the items either to weapons and armor slots or to trash slots depending on the selected tab, regardless of item type.
     - Updated the look of filter, item and circuit signal selection GUIs.
   Changes:
     - Personal logistics are now unlocked by a single research. This unlocks personal logistic requests and auto trash(unlimited count), plus 30 character trash slots.
@@ -796,7 +873,7 @@ Date: 23. 01. 2020
     - Inventory transfers mini-tutorial has been updated to feature the quickbar.
     - Split the map editor sub-menu into more options so it's more clear when scenarios are copied and when they are edited directly.
   Bugfixes:
-    - Fixed replay gui covering tooltips. (https://forums.factorio.com/78990)
+    - Fixed replay GUI covering tooltips. (https://forums.factorio.com/78990)
     - Fixed tooltips in statistics window not showing force modifiers. (https://forums.factorio.com/78973)
     - Fixed electric mining drill was missing dying explosion. (https://forums.factorio.com/80256)
     - Fixed when using OpenGL backed turret range overlay was rendered incorrectly when zoomed in. (https://forums.factorio.com/80262)
@@ -938,7 +1015,7 @@ Date: 21. 01. 2020
     - Horizontal directions of splitter sprites were separated to two sprites (for purposes of the special sorting logic).
     - Added AttackParameters::ammo_categories.
     - Added optional artillery projectile property "rotatable".
-    - Scenarios can now contain a description.json file. In the file "order" determines the sorting in the New Game gui; "multiplayer-compatible" determines weather the scenario is shown for multiplayer games.
+    - Scenarios can now contain a description.json file. In the file "order" determines the sorting in the New Game GUI; "multiplayer-compatible" determines weather the scenario is shown for multiplayer games.
     - Added "multiplayer-compatible" to description.json file of campaigns also.
   Scripting:
     - Added on_unit_group_finished_gathering and on_build_base_arrived events.
@@ -1649,7 +1726,7 @@ Date: 01. 07. 2019
     - Fixed graphical artifacts in curved rail sprites when zoomed out (OpenGL). (https://forums.factorio.com/71332)
     - Fixed a crash of some modded entities with fluid energy source. (https://forums.factorio.com/72529)
     - Fixed that sending long commands through RCON could cause some players to drop from the game. (https://forums.factorio.com/72495)
-    - Fixed drawing speech bubbles on top of other gui elements, and on top of the map view.
+    - Fixed drawing speech bubbles on top of other GUI elements, and on top of the map view.
     - Fixed NPE crash when building ghosts. (https://forums.factorio.com/71991)
     - Fixed rotated text not working with certain fonts. (https://forums.factorio.com/65780#p438232)
     - Fixed that the drag-map action wasn't allowed when the cursor had specific items even if the drag map control didn't conflict with building. (https://forums.factorio.com/71069)
@@ -1712,7 +1789,7 @@ Date: 24. 06. 2019
     - Fixed a performance problem related to large amounts of incredibly fast robots and storage chests. (https://forums.factorio.com/72309)
     - Fixed turret range overlay in map was not rendering correctly. (https://forums.factorio.com/67259)
     - Fixed that turret tooltips could show damage modifiers from the wrong force. (https://forums.factorio.com/72357)
-    - Prevented possible number overflow in train condition gui. (https://forums.factorio.com/72171)
+    - Prevented possible number overflow in train condition GUI. (https://forums.factorio.com/72171)
   Modding:
     - Added uses_stack to the thrown capsule item action.
     - Removed the rail-category prototype type.
@@ -2162,7 +2239,7 @@ Date: 02. 05. 2019
     - Fixed that the Mods GUI go-to-dependency buttons wouldn't work in some scenarios. (https://forums.factorio.com/69545)
     - Fixed that ghost building mode works the same as ghost building (with shift) when it comes to rail building. (https://forums.factorio.com/69761)
     - Fixed that upgrading entities in would leave invalid module requests. (https://forums.factorio.com/70040)
-    - Fixed, that sorting changes were moving the scrolled position in the browse game gui. It is now consistent with the mods gui. (https://forums.factorio.com/70128)
+    - Fixed, that sorting changes were moving the scrolled position in the browse game GUI. It is now consistent with the mods GUI. (https://forums.factorio.com/70128)
     - Fixed some achievements being given to players while the save game is loading, not respecting player online time. (https://forums.factorio.com/64214)
     - Fixed LuaTransportLine::output_line read for right-hand output lines of a lonely splitter. (https://forums.factorio.com/70207)
     - Fixes to make tabbed pane work properly when it comes to squashing in different situations. (https://forums.factorio.com/69488)
@@ -2483,7 +2560,7 @@ Date: 29. 03. 2019
     - Fixed that fast-replacing ghosts would not transfer settings.
     - Fixed that double clicking on a list box scroll bar would trigger the confirm action. (https://forums.factorio.com/66224)
     - Fixed train GUI preview not centering on locomotive when opening the color picker. (https://forums.factorio.com/66115)
-    - Fixed gui clipping for scrollpane inside a scrollpane. (https://forums.factorio.com/66925)
+    - Fixed GUI clipping for scrollpane inside a scrollpane. (https://forums.factorio.com/66925)
     - Fixed biters ignoring the player when building a new base. (https://forums.factorio.com/68492)
     - Fixed that copying settings with a blueprint would not show returned materials. (https://forums.factorio.com/67227)
     - Fixed turret ranges with huge radius would not render correctly when zooming into a map. (https://forums.factorio.com/68461)
@@ -2528,7 +2605,7 @@ Date: 26. 03. 2019
     - Fixed possible crash when editing font names in rich text. (https://forums.factorio.com/68390)
     - Fix of previous fix of certain situations of assembler settings copy/paste. (https://forums.factorio.com/68487)
     - Fixed that toolbar buttons stayed pressed down. (https://forums.factorio.com/68459)
-    - Fixed crash when an inventory gui was shown with 0 slots. (https://forums.factorio.com/68467)
+    - Fixed crash when an inventory GUI was shown with 0 slots. (https://forums.factorio.com/68467)
   Scripting:
     - Added LuaGuiElement::scroll_to_top(), scroll_to_bottom(), scroll_to_left() and scroll_to_right().
     - Added LuaGuiElement::scroll_to_element().
@@ -2561,7 +2638,7 @@ Date: 25. 03. 2019
     - Fixed PvP force modifiers were being overwritten. (https://forums.factorio.com/68397)
     - Fixed "graphics_variation" was read-only on entities of type "corpse". (https://forums.factorio.com/68391)
     - Fixed buildability check of some fluid entities in blueprints. (https://forums.factorio.com/65389)
-    - Fixed gui layouting related to having more squashable elements with different minimal sizes in one row/column.
+    - Fixed GUI layouting related to having more squashable elements with different minimal sizes in one row/column.
     - Fixed possible crash when hovering the statistics graphs.
     - Fixed a crash when using LuaGameScript::show_message_dialog during on_init.
     - Fixed headless server would hang when shutting down on Windows. (https://forums.factorio.com/68422)
@@ -3901,7 +3978,7 @@ Date: 22. 03. 2018
     - Fixed, that when the server is slower then the client, the player input is stuck. (https://forums.factorio.com/48387)
     - Fixed that using rail by the rail planner stopped replay. (https://forums.factorio.com/58933)
     - Fixed that burner inserter didn't show fuel in the entity info. (https://forums.factorio.com/58876)
-    - Fixed that blueprint manipulation was broken in replays. (even opening the gui crashed the game) (https://forums.factorio.com/58870)
+    - Fixed that blueprint manipulation was broken in replays. (even opening the GUI crashed the game) (https://forums.factorio.com/58870)
     - Fixed PvP script error when 'DEFCON timer' was set too low. (https://forums.factorio.com/58855)
     - Fixed that ctrl-click to transfer modules into assembling machines didn't work correctly. (https://forums.factorio.com/58896)
     - Small improvement in mining logic when using rail planner. (https://forums.factorio.com/58483)
@@ -4052,7 +4129,7 @@ Date: 05. 03. 2018
     - Fixed a crash in rail pathing when deleting signals. (https://forums.factorio.com/58133)
     - Fixed a crash when creating beam entities through script. (https://forums.factorio.com/58316)
     - Fixed old boilers in New Hope level 4. (https://forums.factorio.com/58066)
-    - Fixed that changing the values in new game gui could move other gui elements. (https://forums.factorio.com/57414)
+    - Fixed that changing the values in new game GUI could move other GUI elements. (https://forums.factorio.com/57414)
     - Changed order of drawing, so if sprite button uses caption, its text is over the picture. (https://forums.factorio.com/57888)
     - Fixed that the wire connection distance visualization didn't match the actual distance limits. (https://forums.factorio.com/58340)
     - Fixed a crash when trains are destroyed while the trains GUI is open. (https://forums.factorio.com/58356)
@@ -4158,7 +4235,7 @@ Date: 19. 02. 2018
     - Improved behavior of mode switches in deconstruction planner. (https://forums.factorio.com/57871)
   Bugfixes:
     - Fixed crash when train was leaving station that was disabled by circuit network or destroyed. (https://forums.factorio.com/57869)
-    - Fixed search box losing focus inconveniently in mods gui. (https://forums.factorio.com/57821)
+    - Fixed search box losing focus inconveniently in mods GUI. (https://forums.factorio.com/57821)
     - Fixed client crash when server exits while player has the save game dialog open. (https://forums.factorio.com/57701)
     - Removing components of a blueprint no longer resizes the window. (https://forums.factorio.com/56412)
     - Fixed performance issue when running out of storage while big deconstruction is in progress.
@@ -4510,7 +4587,7 @@ Date: 03. 01. 2018
     - Fixed issues of console in combination with technology GUI in multiplayer. (https://forums.factorio.com/55719)
     - Fixed changelogs (including mod changelogs) not properly displaying the "All" subversion for a version x.y when there was no version x.y.0. (https://forums.factorio.com/55959)
     - Fixed horizontal scroll pane scroller. (https://forums.factorio.com/55689)
-    - Fixed that changing value in GameViewSettings in the Lua script didn't update the gui until the game was reloaded.
+    - Fixed that changing value in GameViewSettings in the Lua script didn't update the GUI until the game was reloaded.
     - Fixed a crash when controller view is disabled. (https://forums.factorio.com/56115)
     - Fixed script error when destroying a chest in the supply scenario.
     - Fixed PvP production score price calculation.
@@ -4863,7 +4940,7 @@ Date: 13. 12. 2017
     - Blueprints never show the number 1 when held in cursor.
     - Robots in the air from personal roboport now count towards logistics requests for that robot type (https://forums.factorio.com/51403)
     - Added /server-save command that does the same thing as lua server_save, but doesn't disable achievements. (https://forums.factorio.com/52414)
-    - Gamesave names in the load game dialog that are too long to fit the gui now show in a tooltip in full. (https://forums.factorio.com/51653)
+    - Gamesave names in the load game dialog that are too long to fit the GUI now show in a tooltip in full. (https://forums.factorio.com/51653)
     - Removed the option to turn off the item groups and sub groups from the GUI. It can still be done through the config file or lua commands.
     - Added separate control option for placing tags on the map, so by default map scroll is left click, and place tag is right click.
     - Allow easier dragging of underground pipes and belts when not moving in a perfect straight line.
@@ -4915,7 +4992,7 @@ Date: 13. 12. 2017
     - Assembling machine can now output product with amount over stack size. (https://forums.factorio.com/51625)
     - Fixed entity description for resources that require fluids. (https://forums.factorio.com/52450)
     - Possible fix of the problem that map download blocks all other communication and client is disconnected when downloading. (https://forums.factorio.com/52429)
-    - Fixed that the game could crash when catching up when processing queued gui actions. (https://forums.factorio.com/52429)
+    - Fixed that the game could crash when catching up when processing queued GUI actions. (https://forums.factorio.com/52429)
     - Fixed a rare case, when the paused dialog stayed active when reconnecting game after drop. (https://forums.factorio.com/51683)
     - Fixed colored lights would lose their color when nightvision was on. (https://forums.factorio.com/45762)
     - Fixed very bad performance when previewing blueprint with one big connected circuit network. (https://forums.factorio.com/52558)
@@ -4948,7 +5025,7 @@ Date: 13. 12. 2017
     - Fixed that it was still possible to get some achievements in a replay. (https://forums.factorio.com/54174)
     - Fixed that circular references passed through the Lua remote interface would crash the game. (https://forums.factorio.com/54349)
     - Fixed missing personal robot recharging animation when character was in a vehicle. (https://forums.factorio.com/53390)
-    - Fixed that vertical size of progress bar wasn't respecting the gui scale.
+    - Fixed that vertical size of progress bar wasn't respecting the GUI scale.
     - Fixed that the number drawn next to cursor when item is held was differently positioned compared to how it is in the inventory.
     - Fixed texture compression would not be disabled when d3dx9.dll is not installed, corrupting sprites that were expected to be compressed.
   Optimisations:
@@ -5014,7 +5091,7 @@ Date: 13. 12. 2017
     - Changed "on_preplayer_mined_item" to "on_pre_player_mined_item".
     - Changed LuaEntity::recipe to LuaEntity::get_recipe() and LuaEntity::set_recipe().
     - Changed LuaSurface::regenerate_decorative/regenerate_entity to accept zero arguments and regenerate everything.
-    - Changed the root custom gui containers (top, left, center, goal) to have the corresponding name.
+    - Changed the root custom GUI containers (top, left, center, goal) to have the corresponding name.
     - Changed the event data from script.raise_event will contain mod_name, the name of the mod that raised it.
     - Changed LuaFluidBox fluid from {type="...", amount=...} to {name="...", amount=...}
     - Changed name of colspan parameter of table to column_count.
@@ -5051,7 +5128,7 @@ Date: 13. 12. 2017
     - Added an optional parameter to LuaSurface::drop_item_stack to mark dropped items for deconstruction.
     - Added LuaForce::cancel_charting(...).
     - Added LuaSurface::force_generate_chunk_requests().
-    - Added support for setting a LuaGuiElement as the opened GUI for a player causing it to close with the normal close-GUI methods.
+    - Added support for setting a LuaGuiElement as the opened GUI for a player causing it to close with the normal close GUI methods.
     - Added on_gui_opened and on_gui_closed events.
     - Added on_player_muted/unmuted and on_player_cheat_mode_enabled/disabled events.
     - Added LuaItemStack read properties to tell if a given item is some specific item type.
@@ -5459,7 +5536,7 @@ Date: 21. 06. 2017
     - Fixed that tile ghosts would always get selected over real entities. (https://forums.factorio.com/49880)
     - Fixed that the heat-connection icon was not visible on entities other than boiler and reactor. (related to modding)
     - Fixed that furnace with heat source couldn't be rotated before placing it.
-    - Fixed the gui of furnace using heat as energy source.
+    - Fixed the GUI of furnace using heat as energy source.
     - Fix PvP Gui script error. (https://forums.factorio.com/49876)
     - Fix that clearing items in Transport belt madness didn't give the items back. (https://forums.factorio.com/49509)
     - Fixed that rails marked for deconstruction wouldn't allow canceling deconstruction while a train was on  them. (https://forums.factorio.com/49950)
@@ -5568,7 +5645,7 @@ Date: 08. 06. 2017
     - Fixed that clicking escape while connecting to the game could lead to weird situations as the normal menu was opened.
       Pressing escape while connecting will abort the connection instead. (https://forums.factorio.com/37460)
     - Fixed the productivity bar in the mining drill wouldn't show in some cases. (https://forums.factorio.com/40158)
-    - Fixed that the blueprint book gui didn't stretch vertically when possible. (https://forums.factorio.com/49353)
+    - Fixed that the blueprint book GUI didn't stretch vertically when possible. (https://forums.factorio.com/49353)
     - Fixed inconsistent hovered font color on buttons and dropdowns. (https://forums.factorio.com/49213)
     - Fixed train stuttering with only disabled stations in their schedule (https://forums.factorio.com/47911)
     - Fixed that you could disconnect wires at any distance. (https://forums.factorio.com/46259)
@@ -5600,7 +5677,7 @@ Date: 01. 06. 2017
   Graphics:
     - Inserters in high resolution; normal resolution inserters are unchanged.
   Bugfixes:
-    - Fixed some inconsistencies in programmable speaker gui (https://forums.factorio.com/48593)
+    - Fixed some inconsistencies in programmable speaker GUI (https://forums.factorio.com/48593)
     - Fixed that headless mode wiped out controls section of config file (https://forums.factorio.com/47950)
     - Fixed that detached roboports (e.g. after blackout) would not reset circuit network readings on number of robots (https://forums.factorio.com/48915)
     - Fixed that active blueprint/deconstruction-planner selection did not reset when switching between game and map (https://forums.factorio.com/48815)
@@ -5704,7 +5781,7 @@ Date: 26.05.2017
 Version: 0.15.13
 Date: 23. 05. 2017
   Changes:
-    - Most of the gui elements now work only with left mouse button, so other buttons might be used without interfering with gui.
+    - Most of the GUI elements now work only with left mouse button, so other buttons might be used without interfering with GUI.
   Bugfixes:
     - Fixed that biters would sometimes try to attack indestructible entities. (https://forums.factorio.com/45803)
     - Fixed that clearing the blueprint label would make the GUI show the previous label. (https://forums.factorio.com/45894)
@@ -5737,7 +5814,7 @@ Date: 23. 05. 2017
     - Fixed that map was not updated correctly when tile editing ended up changing other tiles in different chunk. (https://forums.factorio.com/48285)
     - Fixed crash when loading modded saves that contained specific items without the mods. (https://forums.factorio.com/48307)
     - You can now open circuit network connectible entities while holding copper wire. (https://forums.factorio.com/48279)
-    - Fixed crash when closing the game window in Browse Games/Play on LAN gui. (https://forums.factorio.com/47253)
+    - Fixed crash when closing the game window in Browse Games/Play on LAN GUI. (https://forums.factorio.com/47253)
     - Fixed that the bonus progress bar of furnace disappeared when the smelting was not currently in progress.
     - Fixed that changing recipe in the furnace didn't reset the bonus progress bar. (https://forums.factorio.com/47439)
     - Fixed that selection box of rotated (and modded) storage tank wasn't respecting the rotation properly. (https://forums.factorio.com/48315)
@@ -5816,7 +5893,7 @@ Date: 16. 05. 2017
     - The zoom level at which the map switches from 'map view' to 'world view' was increased.
     - The first level of infinite researches is not needed for the tech maniac achievement anymore.
     - The game will default to low sprite quality on computers with less than 2.5GB RAM. (https://forums.factorio.com/47525)
-    - Tweaked the rocket launch gui. It doesn't show the result inventory slot when it is empty to avoid confusion when people put the satellite in it.
+    - Tweaked the rocket launch GUI. It doesn't show the result inventory slot when it is empty to avoid confusion when people put the satellite in it.
     - Removed the zoom-to-world-outside-coverage debug option because it was causing issues. (https://forums.factorio.com/47442)
     - Added "create specialized sprite atlases" option to graphics settings. If checked, tile and shadow sprites won't be put into separated sprite atlases
       instead of the main one. This should give graphics driver more room to fit required sprites to graphics memory.
@@ -5871,7 +5948,7 @@ Date: 16. 05. 2017
     - Fixed logistic and construction radius visualization sprites would ignore tint. (https://forums.factorio.com/47689)
   Scripting:
     - Fixed setting technology::researched wouldn't research all levels of a formula based technology. (https://forums.factorio.com/45857)
-    - Fixed it was possible to add gui element with same to the same parent name more than once. (https://forums.factorio.com/45371)
+    - Fixed it was possible to add GUI element with same to the same parent name more than once. (https://forums.factorio.com/45371)
     - Fixed the custom camera widget wouldn't render the correct entities when switching the surface it was rendering for. (https://forums.factorio.com/47639)
     - Fixed LuaTrain::schedule would allow an invalid current schedule record. (https://forums.factorio.com/47691)
     - Added LuaEntityPrototype::mining_speed, mining_power, energy_usage, max_energy_usage, normal_resource_amount, infinite_depletion_resource_amount, attack_parameters read.
@@ -5903,7 +5980,7 @@ Date: 10. 05. 2017
     - Fixed speed-module-3 recipe typo. (https://forums.factorio.com/46820)
     - Fixed downgrading underground belts by fast replace would not work for even if output piece was close enough. (https://forums.factorio.com/46595)
     - Fixed that robots trying to repair each other wouldn't work correctly. (https://forums.factorio.com/46628)
-    - More understandable description current level of technologies that have multiple levels merged into one slot in the technology gui.
+    - More understandable description current level of technologies that have multiple levels merged into one slot in the technology GUI.
     - Fixed crash that would happen when loading old modded saves in vanilla Factorio. (https://forums.factorio.com/46642)
     - Fixed that it wasn't possible to fast-transfer blueprints to other players. (https://forums.factorio.com/46178)
     - Fixed that hitting rocks with vehicles made no sound. (https://forums.factorio.com/45888)
@@ -6267,7 +6344,7 @@ Date: 24. 04. 2017
     - Fixed Steam config loading error.
     - Fixed headless not starting without server-settings.json (https://forums.factorio.com/44537)
     - Fixed the "reset" button in the generate map GUI wouldn't reset settings to the actual default values. (https://forums.factorio.com/44527)
-    - Fixed that right clicking icon in the tag edit gui crashed the game. (https://forums.factorio.com/44541)
+    - Fixed that right clicking icon in the tag edit GUI crashed the game. (https://forums.factorio.com/44541)
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.0
 Date: 24. 04. 2017
@@ -6489,7 +6566,7 @@ Date: 24. 04. 2017
     - Added "cause" to on_entity_died - the entity that did the killing if available.
     - Added "recipe" to on_player_crafted_item.
     - Added "rocket_silo" to the rocket launched event.
-    - Added 4th custom gui root position "goal", which is used in the objectives.
+    - Added 4th custom GUI root position "goal", which is used in the objectives.
     - Added column_alignments settings in table style.
     - Added LuaBurner - readable off entities and equipment - the burner energy source for the entity.
     - Added LuaCircuitNetwork::network_id read.
@@ -6535,11 +6612,11 @@ Date: 24. 04. 2017
     - Added LuaSurface::regenerate_decorative().
     - Added LuaTrain::has_path, path_end_rail, and path_end_stop read + recalculate_path().
     - Added LuaTransportLine::operator[] and operator#.
-    - Added Mod gui script for easy consistent styling of mod buttons and frames within the game.
-    - Added mouse info to the gui clicked event.
+    - Added Mod GUI script for easy consistent styling of mod buttons and frames within the game.
+    - Added mouse info to the GUI clicked event.
     - Added on_biter_base_built - fires when biters build bases during migration.
     - Added on_entity_renamed - fires when an entity is renamed either by the player or through script.
-    - Added on_gui_selection_state_changed - fires when an item in a drop-down gui element is selected.
+    - Added on_gui_selection_state_changed - fires when an item in a drop-down GUI element is selected.
     - Added on_market_item_purchased - fires when a player purchases something from a market entity.
     - Added on_player_changed_force - fires when a players force is changed.
     - Added on_player_dropped_item - fires when a player drops an item that results in an item-on-ground entity.
@@ -6552,7 +6629,7 @@ Date: 24. 04. 2017
     - Added optional fields "durability" and "ammo" when using SimpleItemStack definitions.
     - Added optional parameter "return_item_request_proxy" to LuaEntity::revive. If true and revive creates item request proxy, the proxy will be returned as the third value.
     - Added player_index to the entity settings pasted events.
-    - Added remote interface functions for the rocket silo gui: add_tracked_item, remove_tracked_item, get_tracked_items, update_gui
+    - Added remote interface functions for the rocket silo GUI: add_tracked_item, remove_tracked_item, get_tracked_items, update_gui
     - Added remote interface to freeplay and sandbox scripts.
     - Added support for full copying LuaItemStack in most places that take the SimpleItemStack type.
     - Added support for LuaFlowStatistics read on electric poles.
@@ -6580,7 +6657,7 @@ Date: 24. 04. 2017
     - Removed LuaPlayer::build_from_cursor + LuaPlayer::rotate_for_build as they aren't replay/MP safe.
     - Removed LuaSurface::get_tileproperties.
     - Removed LuaForce::item_resource_statistics and LuaForce::fluid_resource_statistics - they've been merged into the production versions.
-    - The goal and left gui element has default direction vertical.
+    - The goal and left GUI element has default direction vertical.
     - Utility sprites can be used in the sprite button.
   Bugfixes:
     - Fixed that setting LuaForce::ai_controllable to false wouldn't prevent pollution-based unit group formation. (https://forums.factorio.com/35650)
@@ -6683,7 +6760,7 @@ Date: 02. 11. 2016
     - Fixed crash when clearing items robots held through script. (https://forums.factorio.com/35585)
     - Possibly fixed xrandr related crash on Linux. (https://forums.factorio.com/35430)
   Minor Features:
-    - Added minimum_latency_in_ticks to server settings (for headless server) and into config (for starting game from gui).
+    - Added minimum_latency_in_ticks to server settings (for headless server) and into config (for starting game from GUI).
     - Enemy players are shown on the map when the chunk is being charted (a radar or player is exposing it).
 ---------------------------------------------------------------------------------------------------
 Version: 0.14.17
@@ -6789,7 +6866,7 @@ Date: 05. 10. 2016
     - Fixed map downloader getting stuck and flooding the network after a big timeout.
     - Fixed rotating of placed flamethrower turret. (https://forums.factorio.com/33700)
     - Fixed that /command would warn about disabling achievements even in situations where achievements weren't possible. (https://forums.factorio.com/33597)
-    - Fixed that custom gui input was processed even when the game was being saved in singleplayer. (https://forums.factorio.com/33682)
+    - Fixed that custom GUI input was processed even when the game was being saved in singleplayer. (https://forums.factorio.com/33682)
     - Fixed that boiler wouldn't work after being replaced by bots. (https://forums.factorio.com/33723)
     - Fixed possible desync when boiler would get destroyed and created a ghost.
     - Fixed crash when destroying fire during the entity_died event. (https://forums.factorio.com/33763)
@@ -6846,7 +6923,7 @@ Date: 28. 09. 2016
     - Fixed mod browser filters and ordering being lost. (https://forums.factorio.com/33277)
     - Fixed freshly installed mods not being marked in the mod browser. (https://forums.factorio.com/33277)
     - Fixed signals sometimes not finding their child signals properly. (https://forums.factorio.com/33148)
-    - Fixed up/down keys in schedule gui were not selecting properly. (https://forums.factorio.com/33227)
+    - Fixed up/down keys in schedule GUI were not selecting properly. (https://forums.factorio.com/33227)
     - Additional keys ignored when the console is opened. (https://forums.factorio.com/33411)
     - Fixed that aliens would ignore very narrow paths they could barely fit through. (https://forums.factorio.com/33069)
     - Fixed that numbers were sometimes rounded differently on 32 bit systems in lua.
@@ -7008,7 +7085,7 @@ Date: 09. 09. 2016
     - Fixed train getting stuck on a yellow signal (https://forums.factorio.com/28660)
     - Fixed that the notification about changed research was shown even when the other player selected the same research as already in progress. (https://forums.factorio.com/32278)
     - Fixed that underground belt "teleported" few items when the connection was built. (https://forums.factorio.com/30716)
-    - Fixed that the mod info gui wasn't scrollable, so it didn't fit the screen sometimes. (https://forums.factorio.com/30158)
+    - Fixed that the mod info GUI wasn't scrollable, so it didn't fit the screen sometimes. (https://forums.factorio.com/30158)
     - Fixed that saving scenario to the same directory it was loaded for resulted in deleting all the script and locale files. (https://forums.factorio.com/29555)
     - Fixed that the menu wasn't accessible when the respawn countdown was there, until the menu was closed and opened again.
     - Fixed inserters sometimes taking items from cargo wagons not in front of it. (https://forums.factorio.com/32138)
@@ -7018,7 +7095,7 @@ Date: 09. 09. 2016
   Scripting:
     - Added LuaEntity::supports_direction
     - Changed LuaEntity::direction write to not error if the entity doesn't support directions.
-    - Moved the top gui to be above the left gui as in 0.13 (https://forums.factorio.com/31585)
+    - Moved the top GUI to be above the left GUI as in 0.13 (https://forums.factorio.com/31585)
     - Added LuaPlayer::afk_ticks and LuaPlayer::online_ticks.
 ---------------------------------------------------------------------------------------------------
 Version: 0.14.4
@@ -7413,7 +7490,7 @@ Date: 22. 07. 2016
     - Fixed chat message rainbow when the game tick would go past 2147483648. (https://forums.factorio.com/29307)
     - Fixed password field not being focused when connecting to a game. (https://forums.factorio.com/29175)
     - Fixed rocket silo moving slow when using efficiency modules.(https://forums.factorio.com/29108)
-    - Fixed pressing Escape in multiplayer connect password dialog closed all gui windows. (https://forums.factorio.com/29176)
+    - Fixed pressing Escape in multiplayer connect password dialog closed all GUI windows. (https://forums.factorio.com/29176)
     - Fixed gates sometimes not opening soon enough. (https://forums.factorio.com/28593)
     - Fixed side menu buttons being focusable. (https://forums.factorio.com/27575)
     - Fixed numbers display rounding up when it shouldn't. (https://forums.factorio.com/29184)
@@ -7615,7 +7692,7 @@ Date: 05. 07. 2016
     - When showing the count of entities in the network, it is now showing all entities connected in the network including sub-networks connected to power switches.
     - crash when getting killed by a locomotive you currently had the GUI open for (for real this time). (https://forums.factorio.com/27895)
     - When splitting electric networks because switch was turned off, the network with more entities is considered the "master one" which keeps the statistics.
-    - Fixed entity power bars in the electric network statistics gui being sometimes scaled and colored improperly.
+    - Fixed entity power bars in the electric network statistics GUI being sometimes scaled and colored improperly.
     - Fixed the electric network statistics merging when networks are connected by turning power switch on.
     - Fixed that the last train inserter didn't grab from the cargo wagon sometimes. (https://forums.factorio.com/28028)
     - Fixed crashes related to bad circuit network state caused by old mods. (https://forums.factorio.com/27523)
@@ -7685,7 +7762,7 @@ Date: 01. 07. 2016
     - Fixed bug related to building/removing poles connected to network with power switch. (https://forums.factorio.com/27737)
     - Fixed that some items seemed to be repairable in multiplayer. (https://forums.factorio.com/27572)
     - Fixed that modules could get lost when upgrading them. (https://forums.factorio.com/27835)
-    - Fixed timezone issues with the browse mods gui.
+    - Fixed timezone issues with the browse mods GUI.
 ---------------------------------------------------------------------------------------------------
 Version: 0.13.2
 Date: 30. 06. 2016
@@ -7729,7 +7806,7 @@ Date: 30. 06. 2016
     - Fixed requester chest filters getting cleared when changing the force of the chest. (https://forums.factorio.com/27691)
     - Fixed rocks not being ignored when rail planner ghost building. (https://forums.factorio.com/27522)
     - Fixed that when a transport belt got destroyed and turned into a ghost, it wouldn't drop items on ground. (https://forums.factorio.com/27650)
-    - Fixed occasional random browse game gui crash when moving close to the end of the list.
+    - Fixed occasional random browse game GUI crash when moving close to the end of the list.
     - Fixed script error in supply challenge. (https://forums.factorio.com/27689)
     - Fixed that rail signal visualization helper was not working properly in some specific cases. (https://forums.factorio.com/27328)
     - Fixed construction robots getting stuck when they return for repair pack to passive/active provider chest. (https://forums.factorio.com/27526)
@@ -7793,21 +7870,21 @@ Date: 27. 06. 2016
     - Power switch. It can be used to control the energy flow. Power switch can be connected to the circuit network. (https://www.factorio.com/blog/post/fff-115)
     - Added the Stack inserter - an expensive upgrade over fast inserters that can move several more items at a time.
     - Flamethrower turret. Fueled with fluid, shoots a stream of burning oil towards oncoming enemies.
-    - Bonus gui (accessible from sidebar gui) showing bonuses the force has researched.
+    - Bonus GUI (accessible from sidebar GUI) showing bonuses the force has researched.
     - Train station window contains a list of all trains (each can be opened) that have that station on their schedule.
-    - Single train gui now has an additional panel which shows the minimap/camera view of the given train.
+    - Single train GUI now has an additional panel which shows the minimap/camera view of the given train.
     - Search field to the filter selection and recipes selection windows.
-    - Trains gui. It displays all the trains as small minimaps with schedules, which can be searched.
+    - Trains GUI. It displays all the trains as small minimaps with schedules, which can be searched.
     - Extension of the train wait conditions. (https://www.factorio.com/blog/post/fff-114)
     - New locomotive, cargo wagon and train stop graphics. Locomotives can be colored. The trains are a consistent size in horizontal and vertical orientations.
-    - New technology tree gui. (https://www.factorio.com/blog/post/fff-128)
+    - New technology tree GUI. (https://www.factorio.com/blog/post/fff-128)
   Minor Features:
     - Blueprints can be now edited.
     - Added the Blueprint Book item - an item to manage blueprints. The book can be renamed and only holds blueprints.
     - Map generator algorithm changed, further resource field now have greater richness.
     - Added landfill, it can be used to replace water areas with grass.
     - Added yellow/black striped concrete tile that is rotatable.
-    - Small sidebar gui containing buttons for main menu, production statistics, etc.
+    - Small sidebar GUI containing buttons for main menu, production statistics, etc.
     - Armors have inventory size bonuses (10 for modular armor, 20 for power armor, 30 for power armor mk2).
     - Underground pipes and belts are placed at max connecting distance apart when built by dragging.
     - --scenario2map: Creates a save from a custom scenario, without initialising the graphics.
@@ -7933,7 +8010,7 @@ Date: 27. 06. 2016
     - Added linear filtering for GUI icons. This can be disabled in Graphics options.
     - New combinator graphics.
   Optimisations:
-    - Optimised gui render.
+    - Optimised GUI render.
     - Minimap is rendered in 16bit colors to reduce memory usage.
     - Less memory usage for entities that are connectable to the circuit network.
     - Faster map unload on Quit to Main Menu or closing the game.
@@ -8056,8 +8133,8 @@ Date: 27. 06. 2016
     - The Train changed state event now fires when a train goes from stationary to moving or from moving to stationary while under manual control.
     - Prototypes can have the optional properties "localised_name" and "localised_description" to manually define the localised keys instead of using
       the auto generated keys.
-    - Added sprite-button gui element, works the same way as button, but it can have sprite name assigned.
-    - Added sprite gui element, can have the sprite name assigned/changed and has no interaction logic.
+    - Added sprite-button GUI element, works the same way as button, but it can have sprite name assigned.
+    - Added sprite GUI element, can have the sprite name assigned/changed and has no interaction logic.
     - Custom sprites can be defined in lua data definition (type = sprite, the rest is sprite definition).
     - Sprite identifier can either point to custom definition from the data, or have form <type>/<id>, type can be (item, entity, recipe and technology), for example button.sprite = "item/iron-plate"
     - Renamed some defines (groupstate->group_state, circuitconnector->circuit_connector, circuitconditionindex->circuit_condition_index, trainstate->train_state)
@@ -8371,7 +8448,7 @@ Version: 0.12.22
 Date: 22. 01. 2016
   Bugfixes:
     - Fixed that save is not loadable when mod changes type of entity. (https://forums.factorio.com/19053)
-    - Fixed that enemy train stops were visible in the rename station gui. (https://forums.factorio.com/19023)
+    - Fixed that enemy train stops were visible in the rename station GUI. (https://forums.factorio.com/19023)
     - Fixed freeze when there is no place to put character when they exit the vehicle and there is no exit point. (https://forums.factorio.com/19056)
     - Fixed internally inconsistent data state after cancelling deconstruction from script in a certain way. (https://forums.factorio.com/19209)
     - Fixed that map/minimap wasn't updated when settiles was used. (https://forums.factorio.com/19355)
@@ -8394,12 +8471,12 @@ Date: 06. 01. 2016
     - Fixed slight direction bias with the flamethrower (https://forums.factorio.com/18361).
     - Fixed items in logistic GUI sometimes disappearing or reappearing.(https://forums.factorio.com/18486)
     - Fixed copy&paste on linux, again (https://forums.factorio.com/18577).
-    - Fixed controls settings gui bad alignment in some situations(https://forums.factorio.com/18484).
+    - Fixed controls settings GUI bad alignment in some situations(https://forums.factorio.com/18484).
     - Fixed the scripting error in the 3rd level of the transport belt madness.
     - Fixed various scripting errors in the tight-spot scenario.
     - Fixed that enemy train stations were selectable when setting train destination. (https://forums.factorio.com/18485)
     - Fixed crash that could happen when logistic networks are disconnected. (https://forums.factorio.com/18607)
-    - Fixed invalid gui pointing messages (visible namely in the first demo level).
+    - Fixed invalid GUI pointing messages (visible namely in the first demo level).
     - Fixed that entities could overlap wrongly in blueprint preview. (https://forums.factorio.com/18483)
     - Fixed that roboport sound continued even when it was out of power.
     - Fixed that train could crash a gate by accelerating too fast. (https://forums.factorio.com/18639)
@@ -8508,7 +8585,7 @@ Date: 30. 10. 2015
     - Fixed crash when building locomotive on the junction. (https://forums.factorio.com/17372)
     - Fixed crash when the first lab is built by construction robots. (https://forums.factorio.com/17411)
     - Fixed crash related to train stopping for auto control. (https://forums.factorio.com/17406)
-    - Removed the limit of 800 pixels height of the recipe gui. (https://forums.factorio.com/17059)
+    - Removed the limit of 800 pixels height of the recipe GUI. (https://forums.factorio.com/17059)
     - Fixed problems with too big character windows with too big inventory (modded) on screens that can't hold it, by making it scrollable.
     - Fixed problem with night vision effect on some PC configurations. (https://forums.factorio.com/17317)
 ---------------------------------------------------------------------------------------------------
@@ -8651,7 +8728,7 @@ Date: 30. 09. 2015
     - Fixed that --create wouldn't create a control.lua, causing the victory dialog not being shown after launching the rocket, or creating new players without giving them the initial inventory (https://forums.factorio.com/16619).
     - Player <> entity transfer now ignores modules only when the entity has module inventory.
     - Fixed beacons affected steel furnaces (https://forums.factorio.com/16634).
-    - Fixed car starting sound playing when opening it's gui.
+    - Fixed car starting sound playing when opening it's GUI.
     - Fixed crash when fast replacing a beacon (modded game only) (https://forums.factorio.com/16677).
     - Fixed train station names appearing on minimap with certain GUI scale settings.
     - Fixed crash when zooming in the map all the way with the keyboard (https://forums.factorio.com/16643).
@@ -8821,7 +8898,7 @@ Date: 28. 08. 2015
     - Fixed internal roboport connection inconsistency that could happen when migrating from 0.11 version. (https://forums.factorio.com/14723)
     - Fixed train still having path while being in NO_SCHEDULE state (https://forums.factorio.com/15226).
     - Fixed disconnecting roboport from roboport network caused all construction robots in the network to cancel orders (https://forums.factorio.com/15187).
-    - Fixed that the game could crash when some mod tried to modify the gui in the on_save event.
+    - Fixed that the game could crash when some mod tried to modify the GUI in the on_save event.
       The game now disallows these kind of modifications while processing the on_save event. (https://forums.factorio.com/15066)
     - Fixed crash when changing recipes (mod related). (https://forums.factorio.com/15166)
     - Fixed solar energy source was not included in electric demand satisfaction. (https://forums.factorio.com/14927)
@@ -8921,7 +8998,7 @@ Date: 07. 08. 2015
   Changes:
     - Cars of your own force always render their tags on the map.
     - Multisampling not officially supported from now on.
-      It can still be manually specified in the config, but not in the graphic settings gui.
+      It can still be manually specified in the config, but not in the graphic settings GUI.
       The main reason is the trouble with tiling which doesn't really have a simple fix.
     - Changed the console spam-prevention mechanic to check all messages for the last second instead of just the last entered one.
   Bugfixes:
@@ -8940,7 +9017,7 @@ Date: 07. 08. 2015
     - Fixed crash related to alerts on multiple surfaces. (https://forums.factorio.com/14502)
     - Fixed copy-paste for cars/tanks. (https://forums.factorio.com/14513)
     - Fixed single locomotives not rendering on the chart view.
-    - Fixed the non standard number format of big numbers in the research tooltip gui. (https://forums.factorio.com/14517)
+    - Fixed the non standard number format of big numbers in the research tooltip GUI. (https://forums.factorio.com/14517)
     - Fixed crash after finishing the game in multiplayer (https://forums.factorio.com/14508).
     - Fixed construction robots got stuck when trying to take items from logistic trash slots (https://forums.factorio.com/14554).
     - Fixed productivity bonus being lost with very high productivity values (https://forums.factorio.com/14005)
@@ -8968,7 +9045,7 @@ Date: 31. 07. 2015
     - Disabled repairing of combat robots (https://forums.factorio.com/13984).
     - --start-server and --create now accept filenames with dots in them (https://forums.factorio.com/13881).
     - Combinators will no longer turn off when no wires are connected (https://forums.factorio.com/13957).
-    - Shift + click will move items into logistic trash slots only in character gui (https://forums.factorio.com/14137).
+    - Shift + click will move items into logistic trash slots only in character GUI (https://forums.factorio.com/14137).
     - Fixed circuit network crash when removing mods that changed the inserter (https://forums.factorio.com/14141).
     - Fixed crashes related to migrating entities (https://forums.factorio.com/14141).
     - Inserters and logistic robots no longer extract from enemy chests (https://forums.factorio.com/14192&p=95512).
@@ -9013,7 +9090,7 @@ Date: 24. 07. 2015
     - Changed fast inventory transfer from the main player inventory so ctrl+clicking empty slots doesn't move items to the logistic trash slots.
     - Changed Assembling machine's auto-insertion behaviour when using speed module effects. Faster speed with fast recipes will insert more items sooner.
   Bugfixes:
-    - Very rough support for RTL languages, the texts are no longer rendered backwards (but the gui still is and multi line text will cause problems).
+    - Very rough support for RTL languages, the texts are no longer rendered backwards (but the GUI still is and multi line text will cause problems).
     - Fixed Rocket Silo rocket inventory tool tip sticking around when it shouldn't (https://forums.factorio.com/13551).
     - Fixed furnaces rendering light when inactive (https://forums.factorio.com/13532).
     - Fixed transport belt to ground in blueprints when rotating crashing the game (https://forums.factorio.com/13572).
@@ -9069,7 +9146,7 @@ Date: 17. 07. 2015
     - Added personal roboport as modular armor equipment.
       Once it is active, it uses the materials and robots in the players inventory.
       It supports all the tasks construction robots can do like building blueprints, repairing structures, deconstruction etc.
-    - Added logistic trash fields to the character gui.
+    - Added logistic trash fields to the character GUI.
       They supply items into the logistic system in the same way active provider chests do.
     - Added combinators (Arithmetic Combinator, Decider Combinator and Constant combinator).
       These allow more advanced manipulation with the circuit network logic (https://www.factorio.com/blog/post/fff-88)
@@ -9387,7 +9464,7 @@ Date: 5.3. 2015
     - Fixed that the train didn't continue when it crashed to something (typically player) while breaking for signal/station.
     - Fixed that the technology ingredients weren't sorted.
     - Unified the rail align of signal to the diagonal rails (https://forums.factorio.com/8697).
-    - Fixed crash when the recipe of assembling machine is changed while the gui is opened. (https://forums.factorio.com/8701)
+    - Fixed crash when the recipe of assembling machine is changed while the GUI is opened. (https://forums.factorio.com/8701)
     - Fixed another updater post-update logic error on windows.
     - Fixed shift-removing equipment from the equipment grid freezing the game. (https://forums.factorio.com/8738)
     - Fixed the item to entity insertion logic. (https://forums.factorio.com/8766)
@@ -9398,7 +9475,7 @@ Date: 5.3. 2015
     - Fixed the crashes that can happen when accessing the train controls in multiplayer. (https://forums.factorio.com/8799)
     - Fixed electric energy logic, so it is handled properly when the electric poles /electric machines are moved (mod related).
     - Fixed that rail signal disconnected from rail didn't show health bar and deconstruction icon.
-    - Fixed crash when clicking into gui in replay mode.
+    - Fixed crash when clicking into GUI in replay mode.
     - Fixed that the button based questions in the sandbox scenario logic could interfere with other mods. (https://forums.factorio.com/8815)
     - Fixed occasional crash when building cargo wagons/locomotives. (https://forums.factorio.com/8813)
     - Fixed crash when removing rail under train in map editor or from a script. The train on the rail is destroyed in that case.
@@ -9412,7 +9489,7 @@ Date: 5.3. 2015
     - Fixed lockup when iterating large numerical arrays in lua (https://forums.factorio.com/8919&p=71104)
     - Fixed that the small electric pole has wire reach 7.5, but the game was showing 8 in the tooltip.
     - Fixed the tank controls, as it could start to break when it hit something. The tank doesn't get stuck when plowing through stuff now.
-    - Fixed, that the gui of inactive mod wasn't deleted the same way as the mod was removed completely. (https://forums.factorio.com/8942)
+    - Fixed, that the GUI of inactive mod wasn't deleted the same way as the mod was removed completely. (https://forums.factorio.com/8942)
     - When the player data file gets corrupted, the file is ignored and the game can be still launched.
     - Fixed that furnace can be modded to have no output/input inventories without the game crashing.
   Changes:
@@ -9580,20 +9657,20 @@ Date: 16.1. 2015
       but it was not intended feature anyway.
     - Fixed the logistics request text box. (https://forums.factorio.com/8002)
     - Changed default logistic request amount for few items to be different (10) than the stack amount (modules + alien artifacts).
-    - Fixed the problem of the shaking frame of the assembling machine (and possibly other) entities in the gui preview.
+    - Fixed the problem of the shaking frame of the assembling machine (and possibly other) entities in the GUI preview.
     - Fixed the shaking image of burner mining drill.
     - Fixed the reversed manual controls of train when driving backwards in some cases.
     - Fixed the splitter drawing in blueprint preview.
     - Gates open in time (depends on the speed) for cars/tanks.
     - Proper processing of save loading errors. The error message is shown instead of the crash.
-    - Fixed crashes when trying to set invalid style to gui elements from script/console.
+    - Fixed crashes when trying to set invalid style to GUI elements from script/console.
     - Changed stack sizes of battery/energy shield to 50 so it can be built in assembling machine without getting stuck.
     - Changed recipe of power armor (less processing units/steel) so it can be automated more easily as well.
     - Fixed the occasional crash when some of the internal Factorio directories/files were read-only.
     - Fixed that the enemy turrets were attacking in the peaceful mode.
     - The logfile contains more specific OS info (currently extended only for windows).
     - The game is automatically closed with notification when the service pack on windows 7 is missing.
-    - Fixed gui error in the mod settings. (https://forums.factorio.com/6947)
+    - Fixed GUI error in the mod settings. (https://forums.factorio.com/6947)
     - Fixed the bug with construction robots following vehicles outside of roboport area (again).
     - Fixed that inserter could stretch for wrong wagon when facing a rail curve. (https://forums.factorio.com/6391)
     - Fixed crash related to connecting tight train wagons or high-speed train crashes.
@@ -9620,10 +9697,10 @@ Date: 13.1. 2015
     - Fixed crash when MP game is refused by the host.
     - Update doesn't require UAC approval, when the zip package version is used.
     - Fixed some of the technology prerequisites.
-    - Fixed logistic gui issues (http://www.factorioforums.com/forum/posting.php?t=7942)
-    - The default value of item in the logistic gui is the count of one stack.
-    - Fixed crash when accessing logistic gui that is opened directly in the save game.
-    - Fixed that in the logistic gui selecting already set request didn't work. (https://forums.factorio.com/7943)
+    - Fixed logistic GUI issues (http://www.factorioforums.com/forum/posting.php?t=7942)
+    - The default value of item in the logistic GUI is the count of one stack.
+    - Fixed crash when accessing logistic GUI that is opened directly in the save game.
+    - Fixed that in the logistic GUI selecting already set request didn't work. (https://forums.factorio.com/7943)
     - Radar ignores chunks outside the map borders. (https://forums.factorio.com/7604)
     - Fixed (hopefully) the "unique_path: An Internal error occurred" problem.
     - Fixed that the inserter was buildable on the top of underground belt.
@@ -9661,7 +9738,7 @@ Date: 5.1. 2015
     - Fixed the crash when you kill your car/tank using the car/tank weapon.
     - Fixed the crash (trying to make chunk at unreasonable position) related to creation two members
       of unit group on the exact same position (mod related).
-    - Fixed issues with the train schedule gui. (https://forums.factorio.com/7790).
+    - Fixed issues with the train schedule GUI. (https://forums.factorio.com/7790).
     - Fixed the text selection issues (Going back and forth while selecting the text reset the selection).
     - Fixed the problems related to blueprint selection cancellation by pressing q (to get the blueprint out of the cursor).
     - Fixed the crash related to item on the ground marked for deconstruction getting on transport belt -> underground
@@ -9808,7 +9885,7 @@ Date: 4.12. 2014
     - Multiple players can connect to the MP game at the same time.
     - Fixed problems with locale names containing dash (for example zh-CN).
     - Fixed case sensitivity problem with Chinese font on linux.
-    - Fixed freeze when closing Assembler's gui with tool-tip (https://forums.factorio.com/6793).
+    - Fixed freeze when closing Assembler's GUI with tool-tip (https://forums.factorio.com/6793).
     - Loading MP game in SP tries to retain player's original identity (https://forums.factorio.com/6744).
     - Fixed swapping gun turret ammo types (https://forums.factorio.com/6707)
     - Fixed that the information about which mod crated (or modified) the item/entity/recipe/technology was missing.
@@ -9821,8 +9898,8 @@ Date: 4.12. 2014
     - Fixed the infinite furnace rebuilding bug (https://forums.factorio.com/6873)
     - When there is invalid control sequence in the translation, instead of closing Factorio when it id displayed, the
       text just contains the error message.
-    - Fixed that the game removed all the gui created by mod automatically on game load.
-      Now it removes just gui of mods that were removed as before.
+    - Fixed that the game removed all the GUI created by mod automatically on game load.
+      Now it removes just GUI of mods that were removed as before.
     - Fixed that rail over gate (or the other way around), wasn't buildable as part of the blueprint, as the first one
       built removed the ghost of the second one.
     - Fixed that the exe file in the zip package was missing the factorio icon.
@@ -9895,14 +9972,14 @@ Date: 13.11. 2014
     - Fixed that ghosts of turrets were not removed when turret was built over.
     - Attempted to fix the "receiveMovementImpulse ended up with unreasonable position" car and tank error.
     - Unified the Floating point model on all windows distributions. That might solve the 32bit/64bit desync issues.
-    - Fixed bug with double-clicking in assembler gui during autosaving (https://forums.factorio.com/6515).
+    - Fixed bug with double-clicking in assembler GUI during autosaving (https://forums.factorio.com/6515).
     - Fixed bug with burner inserter grabbing coal even when setup with full stack (https://forums.factorio.com/5856).
     - Fixed that the command /c game.regenerate_tiles could crash easily, because it didn't take the parallel map generation into account.
     - Fixed train description speed units and locale.
   Changes:
     - In multiplayer game anyone can unpause the game (not just the one who paused it).
     - Walls and gates are fast replaceable.
-    - In Multiplayer, research progress gui (in the top right) blinks once research has completed.
+    - In Multiplayer, research progress GUI (in the top right) blinks once research has completed.
       There is no technology window popup anymore. This is optional behavior in single player as well.
     - Fixed bug that SP game wouldn't have commands allowed after loaded from MP game.
     - MapEditor doesn't allow to place and edit character anymore. Instead a spawn point (red flag) can be put on map.
@@ -9910,7 +9987,7 @@ Date: 13.11. 2014
     - Fixed that the on_robot_built_entity was not working at all.
     - Fixed that events giving player index were crashing in the sandbox mode.
       (on_picked_up_item, on_built_entity, on_player_mined_item, on_preplayer_mined_item, on_player_createditem, onplayerrotatedetity)
-    - Fixed crashes when modifying style of gui of player that has no view (always in multiplayer).
+    - Fixed crashes when modifying style of GUI of player that has no view (always in multiplayer).
     - LuaPlayer::name (read) now contains the player name.
     - Replaced removeofflineplayer with remove_offline_players. It takes a lua table of player indexed to remove.
       If no arguments are provided it removes all the players.
@@ -9941,7 +10018,7 @@ Date: 31.10. 2014
     - Copy/paste entity settings (filters) for cargo wagons (like e.g. recipes for assembling machines).
   Bugfixes:
     - Loads of determinism fixes, mainly for the multiplayer, but the replay stability should improve a lot as well.
-    - When game speed is < 1 the gui doesn't lag.
+    - When game speed is < 1 the GUI doesn't lag.
     - Fixed crash when trying to connect trains in a situation that would result in collision of the new train with other trains
       (https://forums.factorio.com/5853).
     - Fixed invalid directions in game.create_entity() crashing the game.
@@ -10049,7 +10126,7 @@ Date: 16.9. 2014
     - The worm turrets are not taken into consideration when deciding enemy expansions.
     - Fixed that enemy expansion candidates were not updated correctly when base was destroyed.
     - Fixed that combat robots were on the map/minimap.
-    - Fixed extra mouse buttons over gui behavior (https://forums.factorio.com/5810).
+    - Fixed extra mouse buttons over GUI behavior (https://forums.factorio.com/5810).
   Balancing:
     - The maximum distance for enemy expansion was increased from 5 to 7.
   Scripting:
@@ -10159,14 +10236,14 @@ Date: 29.8. 2014
     - Worms don't collide with the world during the dying animation (https://forums.factorio.com/5409).
     - Worms don't show health bar and don't regenerate health during the dying animation.
     - Fixed scrolling with sliders in game (https://forums.factorio.com/5392).
-    - Fixed bug when some controls didn't work with mouse over the gui (https://forums.factorio.com/5130).
-      Now they work just fine unless there is a gui action (i.e. crafting, transfer) with the same binding.
+    - Fixed bug when some controls didn't work with mouse over the GUI (https://forums.factorio.com/5130).
+      Now they work just fine unless there is a GUI action (i.e. crafting, transfer) with the same binding.
     - Fixed extremely low placement probabilities of worms.
     - Fixed resetting key bindings when changing keyboard layouts (https://forums.factorio.com/5192)
     - Fixed bug when using deconstruction tool broke the replay (https://forums.factorio.com/5570&p=42998#p42998).
-    - Fixed that pausing the game closed the opened gui (https://forums.factorio.com/5563)
-    - Fixed that setting more than 65535 value in the logistics request gui didn't work properly.
-    - Fixed that the number in the logistic gui wasn't set to 0 when the slot was cleared (https://forums.factorio.com/5565).
+    - Fixed that pausing the game closed the opened GUI (https://forums.factorio.com/5563)
+    - Fixed that setting more than 65535 value in the logistics request GUI didn't work properly.
+    - Fixed that the number in the logistic GUI wasn't set to 0 when the slot was cleared (https://forums.factorio.com/5565).
     - Map map2scenario reports errors correctly instead of crashing.
     - Using map2scenario no longer resets researched technologies and unlocked recipes.
     - Migrations are applied even when using map2scenario.
@@ -10188,7 +10265,7 @@ Date: 15.8. 2014
   Bugfixes:
     - Fixed bug with non-primary mouse not working on OSX (https://forums.factorio.com/5063).
     - Fixed OSX crash due to non-existent write data directory (https://forums.factorio.com/5284).
-    - Fixed crash when electric pole with open electricity gui is deconstructed (https://forums.factorio.com/5310).
+    - Fixed crash when electric pole with open electricity GUI is deconstructed (https://forums.factorio.com/5310).
     - Fixed crash when assembling machine item tooltip was active while it was removed (https://forums.factorio.com/5196).
     - Fixed crash when starting the game with dutch translation active.
     - Fixed various replay desynchronizations related to research.
@@ -10208,7 +10285,7 @@ Date: 15.8. 2014
   Changes:
     - Mod zip package and folder should follow the pattern <Mod name>_<Mod version> (https://forums.factorio.com/5364)
     - Slightly smaller bounding box for the steam engine (https://forums.factorio.com/5338).
-    - Roboport gui says "repair packs" not "material" (https://forums.factorio.com/5351).
+    - Roboport GUI says "repair packs" not "material" (https://forums.factorio.com/5351).
   Balancing:
     - Roboport is no longer categorised as military structure.
       Therefore biters don't target it primary, only when it is in their "area of rage", same as with other factory buildings.
@@ -10251,8 +10328,8 @@ Date: 30.7. 2014
     - Fixed the unloadable save caused by wrong rail segments (https://forums.factorio.com/4875).
     - Fixed load game dialog inconsistencies when the window is resized (https://forums.factorio.com/5023).
     - Fixed the blueprint buildability check inconsistency (https://forums.factorio.com/4072).
-    - The invisible rectangle containing the gui created by mods will no longer obstruct the interaction area of the player.
-      This applies generally on any transparent part of the gui (https://forums.factorio.com/4957&p=38885#p38885).
+    - The invisible rectangle containing the GUI created by mods will no longer obstruct the interaction area of the player.
+      This applies generally on any transparent part of the GUI (https://forums.factorio.com/4957&p=38885#p38885).
     - Minor transport belt graphics fix, when the belt is starting against curve to opposite direction, the belt ending graphics was missing
       (https://forums.factorio.com/5018).
     - When the last piece of item is removed from the circuit network, the item is no longer displayed without number in the network contents, but disappears instead
@@ -10280,7 +10357,7 @@ Date: 25.7. 2014
     - Fixed that player was oversupplied in some cases (https://forums.factorio.com/4801).
     - Fixed that radar didn't rescan chunks (https://forums.factorio.com/4793).
     - Inserter wakes up after copying entity settings(https://forums.factorio.com/4950).
-    - Pickup items and zoom in/zoom out works even when assigned to mouse cursor that is over gui.
+    - Pickup items and zoom in/zoom out works even when assigned to mouse cursor that is over GUI.
     - Fixed the non-fitting graphics of the belt in the underground belt for north+west direction (https://forums.factorio.com/4901).
     - Game guis don't interact when the game is paused(https://forums.factorio.com/4891).
     - Fixed that the provider chests started to be ignored under some circumstances (https://forums.factorio.com/4600).
@@ -10306,14 +10383,14 @@ Date: 25.7. 2014
 Version: 0.10.3
 Date: 11.7. 2014
   Features:
-    - Slider input (smart inserter gui, logistic gui) now has an alternative of specifying the value exactly.
+    - Slider input (smart inserter GUI, logistic GUI) now has an alternative of specifying the value exactly.
   Bugfixes:
     - Fixed crash when loading game with ScenarioMessage pointing to player(https://forums.factorio.com/4628).
     - Fixed that buildings created from damaged items were not repaired by the construction robots.
     - Fixed crashes when the crop-cache.dat file is corrupted.
     - Fixed crash when simultaneously removing spawner and its biters from script.
     - Fixed crash when starting new game with the sound disabled.
-    - Scrolling for crafting gui and for objects selection(https://forums.factorio.com/4620).
+    - Scrolling for crafting GUI and for objects selection(https://forums.factorio.com/4620).
     - Fixed enemy expansions ignoring player bases after load (https://forums.factorio.com/4578&p=34466#p34466)
     - Objective fix in demo level 1 (https://forums.factorio.com/4690).
     - Fixed behavior of game.can_place_entity() Lua command (https://forums.factorio.com/4729)
@@ -10357,7 +10434,7 @@ Date: 27.6. 2014
     - The repair speed of repair packs didn't affect construction robots repair speed when using these.
     - Fixed bug with placing other objects (i.e. pipes) on top of rail signals.
     - Game doesn't crash when loading replays from older saves.
-    - Fixed buggy scrolling in train gui when item is crafted.
+    - Fixed buggy scrolling in train GUI when item is crafted.
     - Ghosts can be mined even out of the building / mining distance.
     - Added the missing help methods to Lua objects.
     - Fixed crashes with graphics cards that have larger texture size than available memory.
@@ -10384,21 +10461,21 @@ Date: 20.6. 2014
     - Sounds for alerts.
     - Proper visualization of trains and car on map / minimap.
     - Added scrolling for windows that get too large (i.e. because of mod additions):
-      Map generator, Technology list, Removed content window, Finished game window (kill counts), Debug settings gui (F4).
+      Map generator, Technology list, Removed content window, Finished game window (kill counts), Debug settings GUI (F4).
   Bugfixes:
     - Fixed bug when turrets were not shooting.
     - Fixed crash when auto placing electric poles.
     - Fixed that the shotgun had just one projectile.
     - Fixed changing locale.
     - Fixed multiple bugs with loading / unloading the cargo wagons.
-    - Fixed unloadable save from 0.9 with mod created buttons gui.
+    - Fixed unloadable save from 0.9 with mod created buttons GUI.
     - Fixed bug with wrong alt info for the cargo wagon.
     - Fixed bug when boiler couldn't fast-replace the pipe.
     - Fixed occasional crash when fighting with biters (calling for help biter without behavior).
     - Fixed crash on loading save where generator equipment has been removed because same mods are not installed.
     - Fixed bug with migrated inserters (when mod is removed) causing the save to be not loadable.
     - Fixed that game couldn't be started when audio can't be initialised.
-    - Solved that gui of removed mods stayed in the save forever, it is removed now.
+    - Solved that GUI of removed mods stayed in the save forever, it is removed now.
     - Fixed bug when pausing scheduled trains didn't clear yellow signal.
     - Fixed bug with wrong signal placement(https://forums.factorio.com/4274).
     - Fixed changed direction of transport belt to ground when used in blueprint sometimes.
@@ -10420,7 +10497,7 @@ Date: 20.6. 2014
     - Fixed bug when entity settings copy for wires was not working at all for logistic containers.
     - Pasting entity settings copy will now work only for entities in the players reach.
     - Wires now don't have an unlimited wiring range.
-    - Game doesn't crash on invalid number input in map generation gui.
+    - Game doesn't crash on invalid number input in map generation GUI.
     - Added missing open / close sounds for logistic containers.
     - Idle sound for entity is not played when it is out of energy.
     - Fixed oil leak from pumpjack(https://forums.factorio.com/4353).
@@ -10461,7 +10538,7 @@ Date: 6.6. 2014
     - Proper volume settings for master volume / effects volume / etc.
     - Map generation string - stores seed and settings for sharing map conditions.
     - Clipboard copy & paste (useful for map generation string, updater username, updater password).
-    - Station names can be changed in the train stop gui.
+    - Station names can be changed in the train stop GUI.
     - Burner inserter will use item with fuel value for itself when it has empty inventory.
     - Flying text indication for items collected while placing a building (for instance a rotated transport belt).
     - Cargo wagon can have filters in the inventory.
@@ -10475,8 +10552,8 @@ Date: 6.6. 2014
     - New steam engine graphics.
     - New radar graphics.
   Gui:
-    - Proper research unit tooltip in the laboratory gui.
-    - Save game gui tweaks (Enter key in text field saves game, text field starts with focus)
+    - Proper research unit tooltip in the laboratory GUI.
+    - Save game GUI tweaks (Enter key in text field saves game, text field starts with focus)
     - Scenario message dialog resizes when the image is too big.
     - Whole language name in locale dropdown.
     - Slots with filter have a blue background (both in quickbar and in cargo wagon).
@@ -10501,7 +10578,7 @@ Date: 6.6. 2014
     - Fixed that inserters had switched the closed/open hand pictures.
     - Load game dialog scrolls to the selected item (that can be off screen).
     - When there are more items than 4 in the entity info (i.e. smart inserter filters), the first 4 are shown.
-    - Limited (and sorted) the amount of items in the finished game gui.
+    - Limited (and sorted) the amount of items in the finished game GUI.
     - Fixed crash when using fish capsule in the god mode.
     - Prevent negative overflow when mining resources.
     - Unused pipe connections (in chemical plant, assembler) are passive (they don't connect with other pipes).
@@ -10509,7 +10586,7 @@ Date: 6.6. 2014
     - Fixed unloadable save with train in station with no stations left in schedule.
     - Fixed that radars could explore the same chunk when their progress ended in the same moment.
     - Solved that items on ground in the way of electric poles were lost when building by dragging.
-    - Fixed bug with hovering in the map editor over assembler gui output.
+    - Fixed bug with hovering in the map editor over assembler GUI output.
     - Game won't crash when the modlist.json is corrupted.
     - Fixed bug when effect from beacon was applied twice after load.
     - Fixed crash when previewing a technology with "give-item" modifier.
@@ -10544,7 +10621,7 @@ Date: 15.4. 2014
     - Fixed that turrets ordered to be deconstructed couldn't be destroyed.
     - Fixed crash when locomotive/cargo wagons were attempted to be built as ghosts.
   Scripting:
-    - Fixed the wrong positioning of the top custom gui flow.
+    - Fixed the wrong positioning of the top custom GUI flow.
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.8
 Date: 11.4. 2014
@@ -10554,8 +10631,8 @@ Date: 11.4. 2014
     - Fixed crash when using fast transfer (control click) in the demo levels 1 and 2.
     - Removed 0 iron ore resource fields in demo level 1.
     - Fixed bug in the map editor that created resources with 0 amount.
-    - Fixed that mouse button action set to close gui didn't work over the gui (same for similar actions).
-      Mouse actions that interact with the map, like mining shooting etc still work only outside of the gui.
+    - Fixed that mouse button action set to close GUI didn't work over the GUI (same for similar actions).
+      Mouse actions that interact with the map, like mining shooting etc still work only outside of the GUI.
     - Slightly better allocation of count of construction robots to deconstruct entity with items inside.
     - Fixed the allocation of construction robots to targets in some cases, mainly for containers build using blueprints.
     - Fixed twitching of animation of some entities in special cases.
@@ -10600,8 +10677,8 @@ Date: 28.3. 2014
   Bugfixes:
     - Fixed loadability of save with inserter in logistic network, that has cleared the
       logistic condition due to mod removal.
-    - Fixed of loading save with gui element with custom mod style, when the mod was removed.
-      Note, that we plan to remove gui created by mod that was removed completely in the future versions.
+    - Fixed of loading save with GUI element with custom mod style, when the mod was removed.
+      Note, that we plan to remove GUI created by mod that was removed completely in the future versions.
     - Fixed crash with inserter putting stuff to rail-tile when first the rail and then the inserter is removed.
   Graphics:
     - New transport belt graphics.
@@ -10633,7 +10710,7 @@ Date: 20.3. 2014
     - Fixed various problems when mod changes electric usage priority of existing entities.
     - Fixed a bag in displaying electricity production / consumption.
     - Battery technology unlocks science pack 3 instead of rocketry.
-    - Fixed too wide filter selection gui when too many items are in one subgroup.
+    - Fixed too wide filter selection GUI when too many items are in one subgroup.
     - Limit the size of the blueprint preview, so it is usable for huge blueprints.
     - Fixed that control clicking to get items from the logistic robot could crash the game in some cases.
     - Fixed that having error in the mod init rewrote the config file specifying which mods are enabled.
@@ -10662,7 +10739,7 @@ Date: 20.3. 2014
 Version: 0.9.3
 Date: 14.3. 2014
   Bugfixes:
-    - Fixed crash when loading save containing gui created by script.
+    - Fixed crash when loading save containing GUI created by script.
     - Logistic robot didn't need robot flying frame to craft.
     - Fixed crash when construction robots destroyed tracks under train. Now they wait for the train to move away.
     - For two different pipe to ground types, the distance limit is the now the minimum of the two connections.
@@ -10679,7 +10756,7 @@ Date: 14.3. 2014
     - Fixed crash when disconnecting from character in the car.
     - Laser turrets can be researched in New hope campaign level4.
     - Removed one (minor) memory leak.
-    - Fixed gap between current and per-minute stats in production statistics gui.
+    - Fixed gap between current and per-minute stats in production statistics GUI.
     - Separate input and output counters for production statistics.
     - Solved roboport left/right jitter on low graphics settings.
     - Fixed incorrect button positions (and lack of resolution update) when starting Factorio as maximised.
@@ -10700,7 +10777,7 @@ Date: 7.3. 2014
     - Fixed segfault at research screen after researching tool belt
     - Fixed missing translation after loading game in campaigns.
     - Fixed bug with mining drill getting stuck on low yield resource.
-    - Fixed overflowing effects in the technology preview gui.
+    - Fixed overflowing effects in the technology preview GUI.
     - Displaying car rotations when building it.
     - Unified the smelting recipes time to mean seconds in the stone furnace.
     - Train stop and Lab built from the blueprint have proper dedicated to names.
@@ -10715,14 +10792,14 @@ Date: 7.3. 2014
       (limited) part of the inventory. The limitation is now just for input.
     - Fixed clouds drawing in low-graphics mode.
     - Fixed that trying to build trains as ghost did create corrupted rails.
-    - Crafting gui has the size that fits all groups, so it don't change size when switching groups.
-    - Right gui container doesn't change size when certain entities selected.
+    - Crafting GUI has the size that fits all groups, so it don't change size when switching groups.
+    - Right GUI container doesn't change size when certain entities selected.
     - Fixed bounding box + connectability of underground belt build by blueprint.
     - Items in the selection guis (quickbar filter, logistic filter, etc.) are ordered into subgroups.
     - Fixed offshore direction when building using blueprint.
   Changes:
     - Assembling Machine Recipe Gui shows all the recipes, but those that are
-      not craftable are show in red (consistent with character recipe gui).
+      not craftable are show in red (consistent with character recipe GUI).
     - Assembling Machines 2 and 3 have an input and output pipe.
       Electric engine unit, processing unit, filling and emptying barrels is done here.
     - Locomotive can be fed by fuel even off station when not moving (on signal, out of fuel etc.)
@@ -10742,7 +10819,7 @@ Date: 7.3. 2014
     - New dark entity info background (the old one can be still switched in graphics settings).
   Scripting:
     - Added clear_chart method to luaForce.
-    - Destroying/adding custom gui element will correctly update the size and position of parent elements holding it.
+    - Destroying/adding custom GUI element will correctly update the size and position of parent elements holding it.
   Modding:
     - Offshore pump can specify the fluid it will produce.
     - Max on row/resize row to width in flow style can be specified.
@@ -10786,7 +10863,7 @@ Date: 21.2. 2014
     - Show dimensions of equipment in the tooltip.
     - Fixed the help message to open armor to be connected with the correct control (split stack).
     - Fixed crash when generating map under some circumstances.
-    - Updated the map generation gui to be more responsive to water settings.
+    - Updated the map generation GUI to be more responsive to water settings.
     - Fixed crash when throwing capsules in the God mode.
     - Fixed crash when technology window is displayed over logistic condition window.
     - Config file is saved as early as possible to avoid problems with switching to low graphics mode.
@@ -10827,7 +10904,7 @@ Date: 14.2. 2014
     - Logistic network condition for smart inserters. Takes the sum of all items in storage/provider chests into consideration.
   Features:
     - Biomes. Gives more variation to the nature, tends to generate similar types of vegetation close together.
-    - Recipe gui contains even recipes not craftable by player (their tooltip shows machines where they can be crafted).
+    - Recipe GUI contains even recipes not craftable by player (their tooltip shows machines where they can be crafted).
     - Copying entity settings (replaces the old shift build functionality).
       Shift + left click sets the selected entity as a copy source, shift + right click applies the settings to selected entity.
     - Ghost buildings can be built (shift + right click) and mined individually.
@@ -10838,7 +10915,7 @@ Date: 14.2. 2014
     - Player gets separate warning icon when building is destroyed.
     - Warning icons tooltip shows list of entities that are under attack/destroyed/attacking.
     - Highlight inventory slots that contains results of the recipe the player already have when they are hovering the recipe slot.
-    - Added / updated sounds for player actions (building, mining buildings, crafting, inventory move, gui click, etc.)
+    - Added / updated sounds for player actions (building, mining buildings, crafting, inventory move, GUI click, etc.)
     - Optional ordering of items sub-categories into individual lines in the crafting window.
   Graphics:
     - New pipes graphics.
@@ -10878,7 +10955,7 @@ Date: 14.2. 2014
     - Configurable key mapping for lua console, "/" key no longer opens the console by default.
     - ESC (by default) closes the windows in the game as well.
     - Capsules (including the fish) are used by build action when they are in the cursor
-    - By default the left mouse key builds and opens gui and the right mouse key does mining.
+    - By default the left mouse key builds and opens GUI and the right mouse key does mining.
     - Disabled loading of saves before 0.5.0 version (You can use version up to 0.6.4 to load any old saves and re-save them).
     - MiningDrill can be built only if there are some resources within its radius.
     - The world is slowly generated around the player up to big distance, so exploring should not matter regarding
@@ -10887,7 +10964,7 @@ Date: 14.2. 2014
     - Modules are now transfered when fast replacing furnaces.
     - Electricity icon of laser turrets in ghost mode.
     - Fixed missing black text font borders in some of the texts.
-    - Fixed crash when opening gui in the ghost mode that is active in some of the challenge missions.
+    - Fixed crash when opening GUI in the ghost mode that is active in some of the challenge missions.
     - Fixed crash when player fed turret with ammo at the same moment it was destroyed.
     - Biters can no longer destroy the shipwreck in the 3rd new hope campaign (it is indestructible).
     - Fixed that the sound of walking to the left/right was played from the left/right side.
@@ -10975,7 +11052,7 @@ Date: 22.12. 2013
 Version: 0.8.2
 Date: 20.12. 2013
   Bugfixes:
-    - Fixed bug when armor gui couldn't be opened.
+    - Fixed bug when armor GUI couldn't be opened.
     - Fixed infinite loop when looking for enemy expansion (causing 100% cpu load and eating all RAM).
     - Added migration to enable combat robot recipes when technologies are researched.
     - Fixed positioning of tooltip when it can't fit both under and above the cursor.
@@ -11027,7 +11104,7 @@ Date: 18.12. 2013
       Existing unkillable turrets are terminated on the transition from older versions.
     - Player (and other biological entities) are not repairable.
     - Ghosts for removed (i.e. from mods) / migrated entities are removed as well.
-    - Removed content gui can be closed by ESC.
+    - Removed content GUI can be closed by ESC.
     - Biter expansions can no longer skip over water.
     - Fixed of loading of game containing entity with different energy source type than it previously had.
     - Mining drill ignores resources that can't be mined because of the higher hardness.
@@ -11054,7 +11131,7 @@ Date: 6.12. 2013
   Major Features:
     - Construction robots that can be used to automatically repair and reconstruct damaged structures.
     - Roboport - the home, charging point and transmission provider for the logistic and construction robots.
-    - Redesigned the map editor (separate editing layers, brush / spray / cursor tool, better character edit gui)
+    - Redesigned the map editor (separate editing layers, brush / spray / cursor tool, better character edit GUI)
     - Structures keep their damage when mined and built again.
     - Structures can be manually repaired by the player with repair-pack.
   Features:
@@ -11110,7 +11187,7 @@ Date: 6.12. 2013
   Scripting:
     - Added on_player_crafted_item event.
     - Added read/write property current_research to LuaLorce.
-    - Added the option to create and manipulate the checkbox gui element.
+    - Added the option to create and manipulate the checkbox GUI element.
     - GameViewSettings to control what is shown in the game view.
     - LuaUnitGroup valid and members attributes.
     - Lua API call to check if path finder is busy (game.is_pathfinder_busy).
@@ -11148,7 +11225,7 @@ Date: 29.10. 2013
     - Fixed the resistance->damage calculation for damage amount near the resistance.
     - Fixed bug causing crash with one specific rail setup.
     - Fix of loading save with non empty modular armor in secondary quickbar.
-    - Fixed loading game with the armor gui opened.
+    - Fixed loading game with the armor GUI opened.
     - Fixed that logistic robots brought wrong item to requester chest occasionally.
     - Fixed bug when enemies would attack neutral objects after distraction (rails, poles, buildings, etc.)
     - Enemies will now attack neutral objects only after pollution attack or close to their spawner.
@@ -11239,18 +11316,18 @@ Date: 17.10. 2013
     - Tweaked small enemy and group movement bugs.
     - Fixed bug of burner mining drill accepting more than 5 coal (up to full stack) by inserters.
     - Fixed bug with the double click in list dialogs Game was loaded even when clicked on two different items in the short period of time.
-    - Fixed bug when settings to not use item groups in character crafting gui were not working.
+    - Fixed bug when settings to not use item groups in character crafting GUI were not working.
     - Fixed bug of active window not being always on top (minimap was over it).
     - Fixed bug of the mining drill consuming resource even when executing the bonus production (given by productivity modules).
     - Fixed crash when spawning on the player port.
     - Fix in the recipe requirements calculations.
     - Total raw calculates requirements per one item with float numbers (circuit needs 1.5 copper for example)
     - Fixed crash when opening the modular armor in the container.
-    - Fixed inconsistency in gui opening state when destroying entity (chest) that contains currently opened armor.
+    - Fixed inconsistency in GUI opening state when destroying entity (chest) that contains currently opened armor.
     - Fixed crash when inventory with currently opened armor was destroyed.
     - Fixed bug that caused production modules make lab work faster.
     - Fixed bug that caused remaining pollution in inactive chunks.
-    - Fixed bug in gui opening after switching controllers.
+    - Fixed bug in GUI opening after switching controllers.
     - Fixed crash when trying to manipulate armor with paused game.
     - Remnants are buildable/selectable in the map editor.
     - Biters are getting stuck less now.
@@ -11299,16 +11376,16 @@ Date: 8.10. 2013
     - Removed the limit of one logistic robot order per tick.
     - Speed module doesn't produce additional pollution (except for pollution increase from speed)
   Bugfixes:
-    - Fixed memory leak created when any text on the screen was printed (including gui).
+    - Fixed memory leak created when any text on the screen was printed (including GUI).
     - Fixed crash on shift + space after using a capsule.
     - Fixed map editor crash on zoom out.
     - Fixed missing English locales.
     - Fixed bug with smelting single resource in the furnace.
     - Added missing pollution descriptions.
     - Enemy bases should no longer appear on water.
-    - Fixed crash when opening production and character gui together.
+    - Fixed crash when opening production and character GUI together.
     - Fixed bug with off armor equipment placing.
-    - Entity info panel is shown over armor gui.
+    - Entity info panel is shown over armor GUI.
     - Fixed that game.map_settings.pollution.enabled didn't have any effect on the game.
     - Mining Mining drills/Labs with modules will give the modules back as well.
     - Pollution on the minimap shown only in the alt mode.
@@ -11378,13 +11455,13 @@ Date: 27.9. 2013
     - Extended tips and tricks.
     - Mark missing elemental ingredients in the recipe tooltip as red.
     - Show cooldown of weapons/usable items in the slot.
-    - Debug settings can be changed in game (F4 triggers the gui).
+    - Debug settings can be changed in game (F4 triggers the GUI).
     - Flying text notification when a train has no path.
     - Automatically connect rolling stocks into trains when placed nearby with indication.
     - Show direction of train stop when to be built/selected.
     - Show connected/to be connected rails that are selected/to be build
     - Double click in load/save dialog opens/saves the game.
-    - Technologies in the technology gui are sorted (using order string)
+    - Technologies in the technology GUI are sorted (using order string)
   Graphics:
     - Replaced enemy placeholders (units, turrets).
     - New selection boxes.
@@ -11411,7 +11488,7 @@ Date: 27.9. 2013
     - Fixed script crashes when using god mode in freeplay.
     - Fixed armor relative protection (It was inversed and 10% protection made 90% instead)
     - Player inventory didn't get auto sorted when item was crafted or delivered by logistic robot.
-    - Player crafting gui didn't get updated (number of items craftable), when player received
+    - Player crafting GUI didn't get updated (number of items craftable), when player received
       items from logistic robots or dropped item on ground.
     - Fixed sharp edges in new maps.
     - Fixed crash when player hovers ammo placed in quickbar.
@@ -11422,7 +11499,7 @@ Date: 27.9. 2013
     - Speedups in the path finding (though path finding around very big lakes is still slow).
     - Speedups in enemy movement.
   Scripting:
-    - Fixed lua gui element#isvalid function, it threw error when the element was invalid.
+    - Fixed lua GUI element#isvalid function, it threw error when the element was invalid.
     - Added lua object for entity/item prototype. All prototypes can be acquired by game.(entity/item)prototypes.
     - Added (readonly now) way to access tiles by game.get_tile(x.y) (provides name property and collides_with method)
     - getenergy method additionally works for Lamp, Lab, Electric turret, Accumulator, Car, Locomotive and Solar panel.
@@ -11452,7 +11529,7 @@ Date: 12.8. 2013
       creating more message dialogs in one tick now creates a queue, and player gets
       to see them all.
     - The game doesn't crash when unlock recipe modifier is used in market, although, the
-      gui interface should be upgraded. (Price is not shown in the tooltip, and is not understandable
+      GUI interface should be upgraded. (Price is not shown in the tooltip, and is not understandable
       that you are not buying the item, but the recipe. There is no indication, when you already
       have the recipe, this will be added as feature later, this is bugfix release.)
 ---------------------------------------------------------------------------------------------------
@@ -11471,7 +11548,7 @@ Date: 9.8. 2013
     - Correct rounding and SI prefixes for power and energy.
     - Proper centering of custom guis on creation.
     - Adjust the size and count of machines info displayed in the electric
-      network gui to screen size.
+      network GUI to screen size.
     - Too fast scrolling when game speed is set to faster than 1.
     - Fixed moving on the map while in the vehicle.
     - Fixed crash when disconnecting character while crafting.
@@ -11507,8 +11584,8 @@ Date: 29.7. 2013
     - Fixed game speed > 1.
     - Fixed linux updater ignoring the binary in some cases.
   Scripting:
-    - Fixed exception throw when setting custom gui element caption.
-    - Added children_names() method to lua gui element.
+    - Fixed exception throw when setting custom GUI element caption.
+    - Added children_names() method to lua GUI element.
   Changes:
     - Changed express splitter recipe.
 ---------------------------------------------------------------------------------------------------
@@ -11542,8 +11619,8 @@ Date: 26.7. 2013
     - New fish graphics.
   Bugfixes:
     - Fixed bug with incorrect sum in the flying text.
-    - Fixed bug of switching of order of internal gui elements (typically in the
-      electric network gui after dragging)
+    - Fixed bug of switching of order of internal GUI elements (typically in the
+      electric network GUI after dragging)
     - Transport belt doesn't pull player out of the edge of it (like items), so player
       won't be almost trapped on faster transport belts.
     - Fixed crafting queue overlaying the quickbar.
@@ -11557,13 +11634,13 @@ Date: 26.7. 2013
     - Transport belt simulation optimisations
   Changes:
     - Assembling machine and furnace use the ingredients when they start creating the product.
-    - Rotated tool equip gui. Gives more space to right side block.
+    - Rotated tool equip GUI. Gives more space to right side block.
     - Updates and tweaks in the demo scenario.
     - Labs are dedicated to backers (displayed in entity info).
     - Simplified burner logic (burner inserter, miner, car, locomotive), it shows the power consumption now.
     - Use relevant energy values as fuel value (coal fuel value = 8KJ etc)
   Scripting:
-    - Added textfield gui type with text property.
+    - Added textfield GUI type with text property.
     - Adjust the maximum cover distance of electric pole dynamically depending
       on the pole with biggest reach.
     - New field "stack" (contains name, count) for entities on the ground
@@ -11571,7 +11648,7 @@ Date: 26.7. 2013
 Version: 0.5.3
 Date: 3.7. 2013
   Bugfixes:
-    - Fix of loading of custom gui styles
+    - Fix of loading of custom GUI styles
     - Mining cargo wagon gives back items inside.
     - Fixed crash in map editor when opening furnace / boiler / etc.
     - Wire dragging in god mode.
@@ -11595,12 +11672,12 @@ Date: 22.6. 2013
     - Fixed map editor segfaults caused by entities staged for update.
     - Fixed double translation in Czech translation.
     - Added player entity to the locale file.
-    - Fixed restart button in finished game gui.
+    - Fixed restart button in finished game GUI.
     - Fixed crashes in map editor when building belts to ground on top of each other.
     - Fixed the crafting speed description in the assembling machine.
     - Fixed straight lines in the newly generated maps.
     - Fixed crashes when loading maps with missing tile or resource definitions.
-    - Fixed setting of sizes of custom gui elements in scripts (took effect after save, but not immediately).
+    - Fixed setting of sizes of custom GUI elements in scripts (took effect after save, but not immediately).
     - Fixed some of the line wrapping problems in tool tips.
     - Fixed bug when starting chest buttons appeared when loading sandbox game.
     - Fixed attacking with tool when there is no ammo.
@@ -11639,8 +11716,8 @@ Date: 13.6. 2013
     - Fixed crash when train destroyed another wagon / locomotive.
     - Fixed crash when using set_command with define.command.go_to_location.
     - Style for button pie slice progress color (used for crafting slot).
-    - Small gui style fixes (car gui, inserter gui)
-    - Unified gui title bottom styles.
+    - Small GUI style fixes (car GUI, inserter GUI)
+    - Unified GUI title bottom styles.
     - Minimal width for dialog buttons.
     - Fixed crashes in updater.
     - Fixed the steam engine power output indicator (allowing it to have value up to 100%)
@@ -11671,19 +11748,19 @@ Date: 7.6. 2013
     - Visualisation of guarded rail area by rail signal when building/selecting it.
     - Blinking unplugged icon for generator/solar panel when it is not connected to any machine that
       can use the electricity, same icon for consumer when not connected to source.
-    - Multiple Train Stops for the Train Station (Train stop has gui to change the station it belongs to)
+    - Multiple Train Stops for the Train Station (Train stop has GUI to change the station it belongs to)
     - Updated recipe tooltip for assembling machine output and technology window.
     - Inserter can pick up to 5 items when moving from inventory to inventory (when researched), this is
       useful for faster loading/unloading of cargo in train stations.
     - God controller (mode without a player)
     - Added sandbox custom scenario (no goal, just building factories).
-    - Enemy base generation settings can be set in the map generation gui.
-    - Load game gui automatically selects latest save when opened.
+    - Enemy base generation settings can be set in the map generation GUI.
+    - Load game GUI automatically selects latest save when opened.
     - Crop Cache for atlas (requires less video memory to run, first load when crop cache is initialized can be slower)
   Optimisations:
     - Faster loading times (sounds are loaded when needed, faster images loading)
   Graphics:
-    - New gui look.
+    - New GUI look.
     - New locomotive graphics.
     - New graphics for mining drills (burner and electric)
     - Use shooting particles when player is shooting.
@@ -11714,7 +11791,7 @@ Date: 7.6. 2013
     - Fixed ordering of commands on entity die to allow clone mod.
     - Confirm exit from map editor when map is not saved.
     - Fixed bug of not loadable saves with entities on the edge of the region in some cases.
-    - Fixed automatic resizing of script-based gui when text is element or child items are removed.
+    - Fixed automatic resizing of script-based GUI when text is element or child items are removed.
   Changes:
     - Larger scale of terrain features.
     - Better movement on transport belts in turns and crossings.
@@ -11737,12 +11814,12 @@ Date: 7.6. 2013
     - Saving and Loading game from the script (game.load(name) and game.save(name)).
       Used in tight-spot and transport-belt-madness.
   Modding:
-    - Mods can modify the gui style of the game.
+    - Mods can modify the GUI style of the game.
     - Configurable car trunk size in the entity definition.
     - Measure time spent in scripts divided in individual mods and show in time statistics info (F5).
     - force.reset_technologies now loads new versions of technologies (like before), but it preserves the
       research and enabled state of technologies, so it is usable in migrations to reload existing technologies that changed.
-    - Enabled to have recipe with no prerequisites (just energy). In the crafting gui, it shows Infinite count craftable
+    - Enabled to have recipe with no prerequisites (just energy). In the crafting GUI, it shows Infinite count craftable
       of that item (and all items dependent on recipes that are for free).
 ---------------------------------------------------------------------------------------------------
 Version: 0.4.1
@@ -11804,7 +11881,7 @@ Date: 3.5. 2013
     - Fixed the calculation of loot count.
     - Fixed not working clear filter action.
     - Fixed drawing position of one of the trees.
-    - Fixed mouse click originated in gui that closes affecting the game. (Clicking on resume started mining etc)
+    - Fixed mouse click originated in GUI that closes affecting the game. (Clicking on resume started mining etc)
     - Fixed crash after confirming notice box of error in script on level/campaign start.
     - Show error in the player console when autosave can't be made and continue, instead of closing the game.
     - Fixed over extension in the recipe window.
@@ -11821,13 +11898,13 @@ Date: 3.5. 2013
   Scripting:
     - Better error handling on many places (so the game will write the cause of the
       error instead of crashing, or writing error -1)
-    - Changed the gui interface to minimise mod conflicts.
-      gui object contains now 3 accessible sub object (top, left, center).
+    - Changed the GUI interface to minimise mod conflicts.
+      GUI object contains now 3 accessible sub object (top, left, center).
       These are always flows and can't be removed, when more than one mod (and/or script)
       adds something there it all stacks.
-    - Added frame, label, table and progressbar to creatable gui.
-    - Added basic font settings for gui elements (bold/not bold + color)
-    - Added way to change caption of existing gui elements
+    - Added frame, label, table and progressbar to creatable GUI.
+    - Added basic font settings for GUI elements (bold/not bold + color)
+    - Added way to change caption of existing GUI elements
     - Gui name doesn't need to be unique globally, it just needs to be unique in the context of the parent element.
     - Allowed loading bounding box with named parameters (left_top, right_bottom)
       as well as without it in format {{1, 2}, {3, 4}}
@@ -11881,7 +11958,7 @@ Date: 29.3. 2013
     - Lighter stone furnace graphics
     - New logistic robot graphics
   Bugfixes:
-    - Fixed crash when restarting the game with technology gui opened.
+    - Fixed crash when restarting the game with technology GUI opened.
     - Fixed crafting queue properties when saved during crafting.
     - Fixed laser turret not consuming energy in idle state.
     - Splitter has maximum memory of 5 items when forced to send items on one side because the other one is blocked.
@@ -11904,7 +11981,7 @@ Date: 29.3. 2013
     - Translation files are merged properly.
     - Default English fallback for translations.
   Scripting:
-    - Simple way to add gui elements using script.
+    - Simple way to add GUI elements using script.
     - Divided the player and its character, some functions that are not directly connected with the character (goal description, printing etc)
       are accessible from the player object, the rest from the character.
       The access to character is game.player.character
@@ -11937,7 +12014,7 @@ Date: 3.3. 2013
     - Start game script even with missing control.lua
       a) Lua-based migrations work for these saves.
       b) It is possible to run console commands in these games.
-    - Tool tip in technology preview shows total raw in the same system as in player crafting gui
+    - Tool tip in technology preview shows total raw in the same system as in player crafting GUI
       (Using just recipes that player can use for the calculations, so not smelting)
   Translation:
     - Added Finish and Spanish translation.
@@ -12045,7 +12122,7 @@ Date: 15.2. 2013
     - Window to choose filter in the filter inserter was closed when something was crafted.
     - Strange (teleport-like) behavior on the Transport Belt turn in some cases.
     - Eternal tooltip in the Burner Inserter.
-    - Eternal tooltip in the Technology gui.
+    - Eternal tooltip in the Technology GUI.
     - Crash when clicking on bonuses in the Technology Gui.
     - Removed sources of several memory leaks.
   Translation:
@@ -12173,7 +12250,7 @@ Date: 26.12. 2012
 Version: 0.1.1
 Date: 26.12. 2012
   Bugfixes:
-    - Czech localisation (complete demo campaign/gui localisation)
+    - Czech localisation (complete demo campaign/GUI localisation)
     - Building sound when dragging
     - Fix of pressing T crashing the game
 ---------------------------------------------------------------------------------------------------

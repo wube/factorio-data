@@ -10170,11 +10170,13 @@ data:extend{
         filename = "__base__/graphics/decorative/red-desert-decal/red-desert-decal-01.png",
         width = 277,
         height = 377,
+        slice_y = 2,
         hr_version =
         {
           filename = "__base__/graphics/decorative/red-desert-decal/hr-red-desert-decal-01.png",
           width = 553,
           height = 753,
+          slice_y = 2,
           scale = 0.5
         }
       },
@@ -11653,11 +11655,13 @@ data:extend{
         filename = "__base__/graphics/decorative/sand-decal/sand-decal-04.png",
         width = 435,
         height = 391,
+        slice_y = 2,
         hr_version =
         {
           filename = "__base__/graphics/decorative/sand-decal/hr-sand-decal-04.png",
           width = 870,
           height = 781,
+          slice_y = 2,
           scale = 0.5
         }
       },

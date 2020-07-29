@@ -1362,7 +1362,7 @@ data:extend(
         {
           "dry-dirt",
           "dirt-1", "dirt-2", "dirt-3", "dirt-4","dirt-5", "dirt-6", "dirt-7",
-          "sand-1", "sand-2", "sand-3",
+          "sand-1", "sand-2", "sand-3", "nuclear-ground",
           "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3"
         },
         particle_name = "character-footprint-particle",
@@ -4686,7 +4686,6 @@ data:extend(
     name = "entity-ghost",
     icon = "__core__/graphics/entity-ghost.png",
     icon_size = 32,
-    flags = {"not-on-map"},
     build_sound = {{ filename = "__core__/sound/place-ghost-small.ogg",  volume = 0.6 }},
     medium_build_sound = {{ filename = "__core__/sound/place-ghost-medium.ogg",  volume = 0.7 }},
     large_build_sound = {{ filename = "__core__/sound/place-ghost-large.ogg",  volume = 0.7 }},

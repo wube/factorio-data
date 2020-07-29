@@ -1651,6 +1651,7 @@ local remnants =
         height = 352,
         line_length = 1,
         shift = util.by_pixel(0, 0),
+        slice_y = 2,
         variation_count = 1,
         hr_version =
         {
@@ -1659,6 +1660,7 @@ local remnants =
           height = 704,
           line_length = 1,
           shift = util.by_pixel(0, 0),
+          slice_y = 2,
           variation_count = 1,
           scale = 0.5,
         }
@@ -1715,6 +1717,7 @@ local remnants =
         line_length = 1,
         shift = util.by_pixel(0, 0),
         apply_runtime_tint = true,
+        slice_y = 2,
         variation_count = 1,
         hr_version =
         {
@@ -1724,6 +1727,7 @@ local remnants =
           line_length = 1,
           shift = util.by_pixel(0, 0),
           apply_runtime_tint = true,
+          slice_y = 2,
           variation_count = 1,
           scale = 0.5,
         }

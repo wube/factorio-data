@@ -94,6 +94,8 @@ local noise_expression_metatable =
       arguments = { tne(lhs), tne(rhs) }
     }
   end
+  -- Missing: __lt, __le, __eq because Lua forces the return values to be boolean, so these cannot be implemented to return a noise expression.
+  --   Use less_than(), less_or_equal(), equals() instead.
 }
 
 function fixne(v)
@@ -112,11 +114,62 @@ function fixne(v)
 end
 
 function log2(power)
-  return tne{
-    type = "function-application",
-    function_name = "log2",
-    arguments = { tne(power) }
-  }
+  return funcapp("log2", { power })
+end
+
+local function fmod(lhs, rhs)
+  return funcapp("modulo", { lhs, rhs })
+end
+
+local function floor(value)
+  return funcapp("floor", { value })
+end
+
+local function ceil(value)
+  return funcapp("ceil", { value })
+end
+
+local function band(...)
+  return funcapp("bitwise-and", { ... })
+end
+
+local function bor(...)
+  return funcapp("bitwise-or", { ... })
+end
+
+local function bxor(...)
+  return funcapp("bitwise-xor", { ... })
+end
+
+local function bnot(value)
+  return funcapp("bitwise-not", { value })
+end
+
+local function sin(value)
+  return funcapp("sin", { value })
+end
+
+local function cos(value)
+  return funcapp("cos", { value })
+end
+
+local function atan2(y, x)
+  return funcapp("atan2", { y, x })
+end
+
+-- This results in a number that is '0' for 'false' or '1' for 'true'.
+local function less_than(lhs, rhs)
+  return funcapp("less-than", { lhs, rhs })
+end
+
+-- This results in a number that is '0' for 'false' or '1' for 'true'.
+local function less_or_equal(lhs, rhs)
+  return funcapp("less-or-equal", { lhs, rhs })
+end
+
+-- This results in a number that is '0' for 'false' or '1' for 'true'.
+local function equals(lhs, rhs)
+  return funcapp("equals", { lhs, rhs })
 end
 
 -- 'to noise expression'
@@ -465,4 +518,17 @@ return
   random_penalty = random_penalty,
   delimit_procedure = delimit_procedure,
   log2 = log2,
+  fmod = fmod,
+  floor = floor,
+  ceil = ceil,
+  band = band,
+  bor = bor,
+  bxor = bxor,
+  bnot = bnot,
+  sin = sin,
+  cos = cos,
+  atan2 = atan2,
+  less_than = less_than,
+  less_or_equal = less_or_equal,
+  equals = equals,
 }

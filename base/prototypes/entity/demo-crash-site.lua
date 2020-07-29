@@ -1,10 +1,12 @@
 local sounds = require("prototypes.entity.demo-sounds")
 
+local crash_site_sprite_priority = "very-low"
+
 function hr_crash_site_assembling_machine_1_ground()
   return
   {
     filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-ground.png",
-    priority="high",
+    priority = crash_site_sprite_priority,
     width = 208,
     height = 116,
     shift = util.by_pixel(-24, 12),
@@ -13,7 +15,7 @@ function hr_crash_site_assembling_machine_1_ground()
     hr_version =
     {
       filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-ground.png",
-      priority="high",
+      priority = crash_site_sprite_priority,
       width = 446,
       height = 234,
       shift = util.by_pixel(-31, 12),
@@ -29,7 +31,7 @@ function hr_crash_site_assembling_machine_2_ground()
   return
   {
     filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-ground.png",
-    priority="high",
+    priority = crash_site_sprite_priority,
     width = 146,
     height = 106,
     shift = util.by_pixel(-8, -4),
@@ -38,7 +40,7 @@ function hr_crash_site_assembling_machine_2_ground()
     hr_version =
     {
       filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-2-ground.png",
-      priority="high",
+      priority = crash_site_sprite_priority,
       width = 290,
       height = 238,
       shift = util.by_pixel(-8, -10),
@@ -54,7 +56,7 @@ function hr_crash_site_lab_ground()
   return
   {
     filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-ground.png",
-    priority="high",
+    priority = crash_site_sprite_priority,
     width = 352,
     height = 170,
     shift = util.by_pixel(-48, 12),
@@ -63,7 +65,7 @@ function hr_crash_site_lab_ground()
     hr_version =
     {
       filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-ground.png",
-      priority="high",
+      priority = crash_site_sprite_priority,
       width = 700,
       height = 344,
       shift = util.by_pixel(-49, 11),
@@ -99,6 +101,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-broken.png",
+          priority = crash_site_sprite_priority,
           width = 236,
           height = 140,
           frame_count = 1,
@@ -108,6 +111,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-broken.png",
+            priority = crash_site_sprite_priority,
             width = 472,
             height = 280,
             frame_count = 1,
@@ -119,6 +123,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-broken-shadow.png",
+          priority = crash_site_sprite_priority,
           width = 270,
           height = 150,
           frame_count = 1,
@@ -130,6 +135,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-broken-shadow.png",
+            priority = crash_site_sprite_priority,
             width = 550,
             height = 304,
             frame_count = 1,
@@ -168,6 +174,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-repaired.png",
+          priority = crash_site_sprite_priority,
           width = 244,
           height = 126,
           frame_count = 1,
@@ -178,6 +185,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-repaired.png",
+            priority = crash_site_sprite_priority,
             width = 488,
             height = 252,
             frame_count = 1,
@@ -190,6 +198,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-repaired-beams.png",
+          priority = crash_site_sprite_priority,
           width = 68,
           height = 50,
           frame_count = 24,
@@ -200,6 +209,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-repaired-beams.png",
+            priority = crash_site_sprite_priority,
             width = 130,
             height = 100,
             frame_count = 24,
@@ -212,6 +222,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-repaired-shadow.png",
+          priority = crash_site_sprite_priority,
           width = 350,
           height = 148,
           frame_count = 1,
@@ -223,6 +234,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-repaired-shadow.png",
+            priority = crash_site_sprite_priority,
             width = 696,
             height = 302,
             frame_count = 1,
@@ -242,6 +254,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-repaired.png",
+          priority = crash_site_sprite_priority,
           width = 244,
           height = 126,
           frame_count = 1,
@@ -252,6 +265,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-repaired.png",
+            priority = crash_site_sprite_priority,
             width = 488,
             height = 252,
             frame_count = 1,
@@ -264,6 +278,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-lab/crash-site-lab-repaired-shadow.png",
+          priority = crash_site_sprite_priority,
           width = 350,
           height = 148,
           frame_count = 1,
@@ -275,6 +290,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-lab/hr-crash-site-lab-repaired-shadow.png",
+            priority = crash_site_sprite_priority,
             width = 696,
             height = 302,
             frame_count = 1,
@@ -348,7 +364,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-broken.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 166,
           height = 108,
           frame_count = 1,
@@ -357,7 +373,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-broken.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 330,
             height = 216,
             frame_count = 1,
@@ -368,7 +384,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-broken-shadow.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 144,
           height = 92,
           frame_count = 1,
@@ -378,7 +394,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-broken-shadow.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 290,
             height = 190,
             frame_count = 1,
@@ -423,7 +439,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-repaired.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 142,
           height = 92,
           frame_count = 20,
@@ -433,7 +449,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-repaired.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 282,
             height = 182,
             frame_count = 20,
@@ -445,7 +461,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-repaired-shadow.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 140,
           height = 84,
           frame_count = 20,
@@ -456,7 +472,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-repaired-shadow.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 278,
             height = 168,
             frame_count = 20,
@@ -475,7 +491,7 @@ data:extend(
         animation =
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-1-repaired-light.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 78,
           height = 64,
           frame_count = 20,
@@ -486,7 +502,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-1-repaired-light.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 162,
             height = 120,
             frame_count = 20,
@@ -554,7 +570,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-broken.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 136,
           height = 104,
           frame_count = 1,
@@ -563,7 +579,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-2-broken.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 266,
             height = 208,
             frame_count = 1,
@@ -574,7 +590,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-broken-shadow.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 146,
           height = 96,
           frame_count = 1,
@@ -584,7 +600,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-2-broken-shadow.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 296,
             height = 190,
             frame_count = 1,
@@ -629,7 +645,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-repaired.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 100,
           height = 98,
           frame_count = 20,
@@ -639,7 +655,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-2-repaired.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 198,
             height = 200,
             frame_count = 20,
@@ -651,7 +667,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-repaired-shadow.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 106,
           height = 86,
           frame_count = 20,
@@ -662,7 +678,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-2-repaired-shadow.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 208,
             height = 174,
             frame_count = 20,
@@ -681,7 +697,7 @@ data:extend(
         animation =
         {
           filename = "__base__/graphics/entity/crash-site-assembling-machine/crash-site-assembling-machine-2-repaired-light.png",
-          priority="high",
+          priority = crash_site_sprite_priority,
           width = 84,
           height = 62,
           frame_count = 20,
@@ -692,7 +708,7 @@ data:extend(
           hr_version =
           {
             filename = "__base__/graphics/entity/crash-site-assembling-machine/hr-crash-site-assembling-machine-2-repaired-light.png",
-            priority="high",
+            priority = crash_site_sprite_priority,
             width = 174,
             height = 124,
             frame_count = 20,
@@ -814,9 +830,10 @@ data:extend(
     continuous_animation = true,
     integration_patch_render_layer = "decals",
     -- also 'pictures' for 4-way sprite is available, or 'animation' resp. 'animations'
-    integration_patch = {
+    integration_patch = 
+    {
       filename = "__base__/graphics/entity/crash-site-generator/crash-site-generator-ground.png",
-      priority="high",
+      priority = crash_site_sprite_priority,
       width = 192,
       height = 180,
       shift = util.by_pixel(-28, -38),
@@ -825,7 +842,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/crash-site-generator/hr-crash-site-generator-ground.png",
-        priority="high",
+        priority = crash_site_sprite_priority,
         width = 384,
         height = 360,
         shift = util.by_pixel(-28, -38),
@@ -841,6 +858,7 @@ data:extend(
       {
         {
           filename = "__base__/graphics/entity/crash-site-generator/crash-site-generator.png",
+          priority = crash_site_sprite_priority,
           width = 142,
           height= 128,
           frame_count = 5,
@@ -850,6 +868,7 @@ data:extend(
           animation_speed = crash_site_generator_animation_speed,
           hr_version = {
             filename = "__base__/graphics/entity/crash-site-generator/hr-crash-site-generator.png",
+            priority = crash_site_sprite_priority,
             width = 286,
             height= 252,
             frame_count = 5,
@@ -862,6 +881,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-generator/crash-site-generator-beams.png",
+          priority = crash_site_sprite_priority,
           width = 48,
           height= 116,
           frame_count = 16,
@@ -871,6 +891,7 @@ data:extend(
           animation_speed = crash_site_generator_animation_speed,
           hr_version = {
             filename = "__base__/graphics/entity/crash-site-generator/hr-crash-site-generator-beams.png",
+            priority = crash_site_sprite_priority,
             width = 224,
             height= 232,
             frame_count = 16,
@@ -883,6 +904,7 @@ data:extend(
         },
         {
           filename = "__base__/graphics/entity/crash-site-generator/crash-site-generator-shadow.png",
+          priority = crash_site_sprite_priority,
           width = 236,
           height= 78,
           frame_count = 1,
@@ -891,8 +913,10 @@ data:extend(
           shift = util.by_pixel(26, 4),
           draw_as_shadow = true,
           animation_speed = crash_site_generator_animation_speed,
-          hr_version = {
+          hr_version = 
+          {
             filename = "__base__/graphics/entity/crash-site-generator/hr-crash-site-generator-shadow.png",
+            priority = crash_site_sprite_priority,
             width = 474,
             height= 152,
             frame_count = 1,
@@ -938,7 +962,7 @@ data:extend(
     integration_patch =
     {
       filename = "__base__/graphics/entity/crash-site-chests/crash-site-chest-1-ground.png",
-      priority="high",
+      priority = crash_site_sprite_priority,
       width = 111,
       height = 73,
       shift = util.by_pixel(-6, 12),
@@ -947,7 +971,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/crash-site-chests/hr-crash-site-chest-1-ground.png",
-        priority="high",
+        priority = crash_site_sprite_priority,
         width = 220,
         height = 148,
         shift = util.by_pixel(-6, 12),
@@ -1031,7 +1055,7 @@ data:extend(
     integration_patch =
     {
       filename = "__base__/graphics/entity/crash-site-chests/crash-site-chest-2-ground.png",
-      priority="high",
+      priority = crash_site_sprite_priority,
       width = 111,
       height = 95,
       shift = util.by_pixel(-12, 4),
@@ -1040,7 +1064,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/crash-site-chests/hr-crash-site-chest-2-ground.png",
-        priority="high",
+        priority = crash_site_sprite_priority,
         width = 218,
         height = 186,
         shift = util.by_pixel(-10, 5),

@@ -367,10 +367,13 @@ data:extend(
     mapper_count = 24,
     selection_color = {1, 0, 0},
     alt_selection_color = {0, 0, 1},
+    reverse_selection_color = {1, 0, 1},
     selection_mode = {"upgrade"},
     alt_selection_mode = {"cancel-upgrade"},
+    reverse_selection_mode = {"downgrade"},
     selection_cursor_box_type = "not-allowed",
-    alt_selection_cursor_box_type = "not-allowed"
+    alt_selection_cursor_box_type = "not-allowed",
+    reverse_selection_cursor_box_type = "not-allowed"
   },
   {
     type = "deconstruction-item",
@@ -398,7 +401,7 @@ data:extend(
     subgroup = "tool",
     order = "c[automated-construction]-d[blueprint-book]",
     stack_size = 1,
-    inventory_size = 1000
+    inventory_size = "dynamic"
   },
   {
     type = "item",
@@ -571,7 +574,6 @@ data:extend(
     --alt_tile_filters = {"concrete", "stone-path"},
     --alt_entity_filter_mode = "whitelist",
     --alt_tile_filter_mode = "whitelist",
-    show_in_library = false
   },
   {
     type = "item",

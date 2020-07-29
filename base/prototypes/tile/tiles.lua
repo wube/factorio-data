@@ -18,6 +18,9 @@ local dirt_pollution_absorption = 0.0000066
 local sand_pollution_absorption = 0.0000058
 local red_desert_pollution_absorption = 0.0000066
 
+-- doesn't matter that much, with Vaclav we thought it would be good if it is less then water but more than concrete (so above zero)
+local nuclear_ground_pollution_absorption = water_pollution_absorption * 0.5 
+
 local landfill_build_sounds =
 {
   small =
@@ -1401,6 +1404,70 @@ local landfill_transitions_between_transitions =
   ),
 }
 
+-- ~~~NUCLEAR_GROUND
+local nuclear_ground_transitions =
+{
+  water_transition_template_with_effect
+  (
+    water_tile_type_names,
+    "__base__/graphics/terrain/water-transitions/nuclear-ground.png",
+    "__base__/graphics/terrain/water-transitions/hr-nuclear-ground.png",
+    {
+      effect_map = ttfxmaps.water_dirt,
+      o_transition_tall = false,
+      u_transition_count = 2,
+      o_transition_count = 4,
+      side_count = 8,
+      outer_corner_count = 8,
+      inner_corner_count = 8
+    }
+  ),
+  ground_to_out_of_map_transition
+}
+
+local nuclear_ground_transitions_between_transitions =
+{
+  make_generic_transition_template --generic_transition_between_transitions_template
+  (
+      nil,
+      default_transition_group_id,
+      water_transition_group_id,
+      "__base__/graphics/terrain/water-transitions/nuclear-ground-transition.png",
+      "__base__/graphics/terrain/water-transitions/hr-nuclear-ground-transition.png",
+      {
+        effect_map = ttfxmaps.water_dirt_to_land,
+        o_transition_tall = false,
+        inner_corner_count = 3,
+        outer_corner_count = 3,
+        side_count = 3,
+        u_transition_count = 1,
+        o_transition_count = 0,
+        base = { water_patch = patch_for_inner_corner_of_transition_between_transition, }
+      },
+      true,
+      false,
+      true
+  ),
+  dirt_out_of_map_transition,
+  generic_transition_between_transitions_template
+  (
+      water_transition_group_id,
+      out_of_map_transition_group_id,
+      "__base__/graphics/terrain/out-of-map-transition/nuclear-ground-shore-out-of-map-transition.png",
+      "__base__/graphics/terrain/out-of-map-transition/hr-nuclear-ground-shore-out-of-map-transition.png",
+      {
+        effect_map = ttfxmaps.water_dirt_to_out_of_map,
+        o_transition_tall = false,
+        inner_corner_count = 3,
+        outer_corner_count = 3,
+        side_count = 3,
+        u_transition_count = 1,
+        o_transition_count = 0,
+        base = init_transition_between_transition_water_out_of_map_options()
+      }
+  ),
+}
+
 -- ~~~STONE_CONCRETE
 
 local concrete_transitions =
@@ -1634,6 +1701,7 @@ define_tiles
     autoplace = make_water_autoplace_settings(-2, 200),
     effect = "water",
     effect_color = {0.135, 0.507, 0.583},--{ 23, 111, 129 }, -- { 30, 76, 94 }
+    polluted_effect_color = { 45, 68, 25 },
     draw_in_water_layer = true,
     layer = 3,
     variants =
@@ -1769,6 +1837,7 @@ define_tiles
     autoplace = make_water_autoplace_settings(0, 100),
     effect = "water",
     effect_color = { 21, 147, 167 },
+    polluted_effect_color = { 49, 80, 14 },
     draw_in_water_layer = true,
     layer = 3,
     variants =
@@ -1911,6 +1980,8 @@ define_tiles
     walking_speed_modifier = 0.8,
     effect = "water",
     effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
+    polluted_effect_color = {r = 0.031, g = 0.129, b = 0.031, a = 0.361},
+    
     variants =
     {
       main =
@@ -2041,6 +2112,7 @@ define_tiles
     walking_speed_modifier = 0.7,
     effect = "water",
     effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
+    polluted_effect_color = {r = 0.031, g = 0.129, b = 0.031, a = 0.361}, 
     variants =
     {
       main =
@@ -2749,6 +2821,62 @@ define_tiles
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
     trigger_effect = tile_trigger_effects.red_desert_3_trigger_effect(),
+  },
+  -----------//////////////////////////////////////////////////////////////NUCLEAR-GROUND
+  {
+    name = "nuclear-ground",
+    type = "tile",
+    localised_name = { "tile-name.dry-dirt" }, -- FIXME: add locale when hard-freeze for 1.0 release ends
+    order = "b-d-d",
+    collision_mask = {"ground-tile"},
+    layer = 33,
+    variants = append_transition_mask_template(
+      "__base__/graphics/terrain/masks/transition-1.png",
+      "__base__/graphics/terrain/masks/hr-transition-1.png",
+      nil,
+      {
+        main =
+        {
+          {
+            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+            count = 1,
+            size = 1
+          },
+          {
+            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+            count = 1,
+            size = 2,
+            probability = 0.39
+          },
+          {
+            picture = "__base__/graphics/terrain/concrete/concrete-dummy.png",
+            count = 1,
+            size = 4,
+            probability = 1
+          }
+        },
+
+        material_background =
+        {
+          picture = "__base__/graphics/terrain/nuclear-ground.png",
+          count = 4,
+          hr_version =
+          {
+            picture = "__base__/graphics/terrain/hr-nuclear-ground.png",
+            count = 4,
+            scale = 0.5
+          }
+        }
+      }
+    ),
+  
+    transitions = nuclear_ground_transitions,
+    transitions_between_transitions = nuclear_ground_transitions_between_transitions,
+  
+    walking_sound = sand_sounds,
+    map_color={r=48, g=40, b=35},
+    pollution_absorption_per_second = nuclear_ground_pollution_absorption,
+    vehicle_friction_modifier = grass_vehicle_speed_modifier
   },
   -----------//////////////////////////////////////////////////////////////STONE-PATH
   {

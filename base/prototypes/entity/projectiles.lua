@@ -1239,22 +1239,8 @@ data:extend(
         }
       }
     },
-    animation =
-    {
-      filename = "__core__/graphics/empty.png",
-      frame_count = 1,
-      width = 1,
-      height = 1,
-      priority = "high"
-    },
-    shadow =
-    {
-      filename = "__core__/graphics/empty.png",
-      frame_count = 1,
-      width = 1,
-      height = 1,
-      priority = "high"
-    }
+    animation = nil,
+    shadow = nil,
   },
   {
     type = "projectile",

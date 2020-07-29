@@ -282,7 +282,7 @@ function electric_mining_drill_status_leds_working_visualisation()
     apply_tint = "status",
     always_draw = true,
     draw_as_sprite = true,
-    draw_as_light = true,
+    -- draw_as_light = true,
     north_animation =
     {
       filename = "__base__/graphics/entity/electric-mining-drill/electric-mining-drill-N-light.png",
@@ -361,6 +361,28 @@ function electric_mining_drill_status_leds_working_visualisation()
     }
   }
 end
+
+function electric_mining_drill_add_light_offsets(t)
+  t.north_position = { 1.0 - 11/64, -2.0 - 10/64}
+  t.east_position =  { 1.5 - 13/64, -1.5 +  8/64}
+  t.south_position = { 1.0 - 10/64,  0.5 - 12/64}
+  t.west_position =  {-1.5 + 13/64, -1.5 +  7/64}
+  return t
+end
+
+local electric_mining_drill_primary_light =
+  electric_mining_drill_add_light_offsets(
+  {
+    light = { intensity = 1, size = 3, color={r=1, g=1, b=1}, minimum_darkness = 0.1 }
+  })
+
+local electric_mining_drill_secondary_light =
+  electric_mining_drill_add_light_offsets(
+  {
+    always_draw = true,
+    apply_tint = "status",
+    light = { intensity = 0.8, size = 1.5, color={r=1, g=1, b=1}, minimum_darkness = 0.1 }
+  })
 
 data:extend(
 {
@@ -1070,14 +1092,8 @@ data:extend(
         electric_mining_drill_status_leds_working_visualisation(),
 
         -- light
-        {
-          -- always_draw = true,
-          light = {intensity = 1, size = 2, color={r=1, g=1, b=1}},
-          north_position = {1, -2.0},
-          east_position = {1.5, -1.5},
-          south_position = {1, 0.5},
-          west_position = {-1.5, -1.5},
-        }
+        electric_mining_drill_primary_light,
+        electric_mining_drill_secondary_light
       }
     },
 
@@ -2276,14 +2292,8 @@ data:extend(
         electric_mining_drill_status_leds_working_visualisation(),
 
         -- light
-        {
-          -- always_draw = true,
-          light = {intensity = 1, size = 2, color={r=1, g=1, b=1}},
-          north_position = {1, -2.0},
-          east_position = {1.5, -1.5},
-          south_position = {1, 0.5},
-          west_position = {-1.5, -1.5},
-        }
+        electric_mining_drill_primary_light,
+        electric_mining_drill_secondary_light
       }
     },
 
