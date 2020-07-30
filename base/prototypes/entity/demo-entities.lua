@@ -8379,7 +8379,7 @@ data:extend(
       layers =
       {
         {
-          slice = 4,
+          dice = 4,
           priority = "very-low",
           width = 238,
           height = 230,
@@ -8402,7 +8402,7 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 474,
             height = 458,
             direction_count = 256,
@@ -8435,7 +8435,7 @@ data:extend(
         {
           priority = "very-low",
           flags = { "mask" },
-          slice = 4,
+          dice = 4,
           width = 236,
           height = 228,
           direction_count = 256,
@@ -8459,7 +8459,7 @@ data:extend(
             {
               priority = "very-low",
               flags = { "mask" },
-              slice = 4,
+              dice = 4,
               width = 472,
               height = 456,
               direction_count = 256,
@@ -8492,7 +8492,7 @@ data:extend(
         },
         {
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           flags = { "shadow" },
           width = 253,
           height = 212,
@@ -8652,7 +8652,7 @@ data:extend(
       {
         {
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           width = 222,
           height = 205,
           back_equals_front = true,
@@ -8671,7 +8671,7 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 442,
             height = 407,
             back_equals_front = true,
@@ -8693,7 +8693,7 @@ data:extend(
         {
           flags = { "mask" },
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           width = 196,
           height = 174,
           direction_count = 128,
@@ -8713,7 +8713,7 @@ data:extend(
           {
             flags = { "mask" },
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 406,
             height = 371,
             direction_count = 128,
@@ -8735,7 +8735,7 @@ data:extend(
         {
           flags = { "shadow" },
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           width = 246,
           height = 201,
           back_equals_front = true,
@@ -8756,7 +8756,7 @@ data:extend(
           {
             flags = { "shadow" },
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 490,
             height = 401,
             back_equals_front = true,

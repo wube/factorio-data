@@ -407,7 +407,13 @@ data:extend(
         make_cursor_box(128, 128, 1.05),
         make_cursor_box(64, 128, 3.5),
         make_cursor_box(0, 128, 4.0)
-      }
+      },
+      blueprint_snap_rectangle =
+      {
+        make_full_cursor_box(320, 0, 1, 1),
+        make_cursor_box(64, 324, 1.1), -- box for size <= 1
+        make_cursor_box(0, 324, 2) -- box for rest
+      },
     },
 
     add =
@@ -1801,6 +1807,14 @@ data:extend(
       flags = { "icon" },
       width = 64,
       height = 64,
+      scale = 0.5
+    },
+    short_indication_line_green =
+    {
+      filename = "__core__/graphics/arrows/short-indication-line-green.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 12,
       scale = 0.5
     },
     rail_signal_placement_indicator =

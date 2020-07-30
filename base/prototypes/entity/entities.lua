@@ -1125,7 +1125,7 @@ data:extend(
       {
         {
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           width = 208,
           height = 210,
           back_equals_front = true,
@@ -1144,7 +1144,7 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 416,
             height = 419,
             back_equals_front = true,
@@ -1170,7 +1170,7 @@ data:extend(
         {
           flags = { "shadow" },
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           width = 251,
           height = 188,
           back_equals_front = true,
@@ -1191,7 +1191,7 @@ data:extend(
           {
             flags = { "shadow" },
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 501,
             height = 375,
             back_equals_front = true,
@@ -1322,7 +1322,7 @@ data:extend(
           line_length = 4,
           lines_per_file = 4,
           shift = util.by_pixel(0, -27),
-          slice = 4,
+          dice = 4,
           filenames =
           {
             "__base__/graphics/entity/artillery-wagon/artillery-wagon-base-1.png",
@@ -1353,7 +1353,7 @@ data:extend(
             lines_per_file = 4,
             shift = util.by_pixel(0.5, -27.5),
             scale = 0.5,
-            slice = 4,
+            dice = 4,
             filenames =
             {
               "__base__/graphics/entity/artillery-wagon/hr-artillery-wagon-base-1.png",
@@ -1377,7 +1377,7 @@ data:extend(
         },
         {
           priority = "very-low",
-          slice = 4,
+          dice = 4,
           width = 300,
           height = 240,
           direction_count = 256,
@@ -1408,7 +1408,7 @@ data:extend(
           hr_version =
           {
             priority = "very-low",
-            slice = 4,
+            dice = 4,
             width = 598,
             height = 480,
             direction_count = 256,
@@ -2146,7 +2146,7 @@ data:extend(
           {
             type = "damage",
             damage = { amount = 1000, type = "explosion"}
-          },        
+          },
         }
       }
     }
@@ -5053,7 +5053,7 @@ data:extend(
       animation_speed = 0.5,
       tint = {r = 1.000, g = 0.663, b = 0.000, a = 0.694}, -- #ffa900b1
       shift = util.by_pixel (2,-1),
-      hr_version = 
+      hr_version =
       {
         filename = "__base__/graphics/entity/slowdown-sticker/hr-slowdown-sticker.png",
         line_length = 5,

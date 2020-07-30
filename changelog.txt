@@ -1,6 +1,28 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.38
+Version: 0.18.39
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.38
+Date: 30. 07. 2020
+  Graphics:
+    - Improved the blueprint grid visualisation, so it shows a rectangle instead of just the corners.
+    - Added blueprint grid visualisation when building in the world.
+  Bugfixes:
+    - Fixed cleaning ghost cursor. (https://forums.factorio.com/87257)
+    - Fixed crash when clicking a blueprint book upgrade slot with an upgrade planner in hand.
+    - Fixed navigating in a blueprint book item when opened directly from a quickbar. (https://forums.factorio.com/87256)
+    - Fixed that it was possible to put book into itself using hand->swap and clean cursor.
+    - Fixed that the hand functionality didn't work properly for gun and ammo and gave misleading error messages in some cases.
+    - Fixed "slice" property of animation definition was interpreted as dicing parameter, possibly causing large memory allocations. (https://forums.factorio.com/87274)
+    - Fixed that grabbing gun/ammo, swapping it with some other item in the inventory and pressing Q, gave a message of inventory
+      full, instead of the item in cursor not being returnable to the hand location
+    - Fixed that Internal inventory stack transfer messages weren't specific enough, or not present at all.
+  Modding:
+    - Renamed sprite and animation properties for sprite dicing from "slice", "slice_x" and "slice_y" to "dice", "dice_x" and "dice_y",
+      because "slice" collided with property of rotated animation definition used for defining spritesheet sliced into multiple files.
+      Sprite dicing is a technique of chopping large sprite into smaller ones to improve packing in sprite atlas.
+  Scripting:
+    - Fixed a typo (per vs pre) in the on_pre_permission_group_deleted event name.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.37
 Date: 29. 07. 2020
@@ -76,7 +98,7 @@ Date: 29. 07. 2020
       "light_size_peak_start_progress" (default 0.1), "light_size_peak_end_progress" (default 0.5)
   Scripting:
     - Added permission events: on_permission_group_edited, on_pre_permission_string_imported, on_permission_string_imported,
-      on_per_permission_group_deleted, on_permission_group_deleted, and on_permission_group_added.
+      on_pre_permission_group_deleted, on_permission_group_deleted, and on_permission_group_added.
     - Simplified the rules of entity positions aligned to grid in the blueprint. Now they have the same rules as entities in the world.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.36
