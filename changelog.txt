@@ -1,6 +1,32 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.39
+Version: 0.18.40
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.39
+Date: 01. 08. 2020
+  Bugfixes:
+    - Fixed clearing ghost from cursor would not clear quickbar selection. (https://forums.factorio.com/87329)
+    - Fixed blueprint book not shrinking when the last item was destroyed.
+    - Fixed crash when Lua received event of player selecting area to deconstruct.
+    - Fixed upgrading book by item would not work while being in editor. (https://forums.factorio.com/87308)
+    - Fixed biters not grouping before attacking an artillery outpost. (https://forums.factorio.com/87297)
+    - Fixed crash related to saving blueprint which has all the entities/tiles as question marks.
+    - Fixed desync when loading blueprint shelf with modded entities. (https://forums.factorio.com/87303)
+    - Fixed that swapping blueprint cursor into a non transferred blueprint didn't trigger the transfer.
+    - Fixed that cycling blueprint book in the shared blueprint library could also cycle the index for other players holding the same book.
+    - Fixed that cycling book wouldn't mark blueprint storage to be resaved, so the indexes would be lost if no other changes were done.
+    - Fixed a desync when returning to a multiplayer game while the book active index was changed in a different game. (https://forums.factorio.com/87262)
+    - Fixed that the action to put item into a blueprint library was not based on the latency hiding state of held item, which could
+      result into the action doing nothing when the item held was not in the server state yet.
+    - Fixed that quickbar links into items contained in blueprint books in the player inventory didn't work.
+    - Fixed that it was possible to setup empty blueprint of other player if the original player was still having the quickbar link to it.
+    - Fixed that quickbar links did work only for the main inventory of player, so it didn't work for currently equipped armor for example.
+    - Fixed that LuaInventory.insert() didn't work properly for blueprint books. (https://forums.factorio.com/87337)
+    - Fixed crash when reassigning blueprint with non-even snap grid size to contain rails. (https://forums.factorio.com/87369)
+    - Fixed crash when holding a blueprint from the blueprint library while being dead. (https://forums.factorio.com/87363)
+    - Fixed that the info for selecting entities to be upgraded was mentioning entities that were marked for deconstruction, even when
+      these are ignored by the upgrade planner.
+    - Fixed that ordering deconstruction didn't cancel upgrade order. (https://forums.factorio.com/87117)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.38
 Date: 30. 07. 2020

@@ -1701,7 +1701,7 @@ define_tiles
     autoplace = make_water_autoplace_settings(-2, 200),
     effect = "water",
     effect_color = {0.135, 0.507, 0.583},--{ 23, 111, 129 }, -- { 30, 76, 94 }
-    polluted_effect_color = { 45, 68, 25 },
+    effect_color_secondary = { 45, 68, 25 },
     draw_in_water_layer = true,
     layer = 3,
     variants =
@@ -1837,7 +1837,7 @@ define_tiles
     autoplace = make_water_autoplace_settings(0, 100),
     effect = "water",
     effect_color = { 21, 147, 167 },
-    polluted_effect_color = { 49, 80, 14 },
+    effect_color_secondary = { 49, 80, 14 },
     draw_in_water_layer = true,
     layer = 3,
     variants =
@@ -1980,7 +1980,7 @@ define_tiles
     walking_speed_modifier = 0.8,
     effect = "water",
     effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
-    polluted_effect_color = {r = 0.031, g = 0.129, b = 0.031, a = 0.361},
+    effect_color_secondary = {r = 0.031, g = 0.129, b = 0.031, a = 0.361},
     
     variants =
     {
@@ -2112,7 +2112,7 @@ define_tiles
     walking_speed_modifier = 0.7,
     effect = "water",
     effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
-    polluted_effect_color = {r = 0.031, g = 0.129, b = 0.031, a = 0.361}, 
+    effect_color_secondary = {r = 0.031, g = 0.129, b = 0.031, a = 0.361}, 
     variants =
     {
       main =
