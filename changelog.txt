@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.42
+Version: 0.18.43
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.42
+Date: 03. 08. 2020
+  Bugfixes:
+    - Fixed a crash when holding a blueprint book.
+    - Fixed that blueprint book in an item form didn't have mod-persistent icons.
+    - Don't drag map when in zoomed in map mode and building blueprints.
+    - Don't place map tags when building blueprints.
+    - Fixed crash in rendering due to game state being modified by buildability checks for drawing blueprint placement visualization on chunks in fog-of-war when zoomed-to-world.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.41
 Date: 03. 08. 2020
