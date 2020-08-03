@@ -26,6 +26,17 @@ data:extend(
     stack_size = 1
   },
   {
+    type = "fluid",
+    name = "fluid-unknown",
+    icon = "__core__/graphics/icons/unknown.png",
+    base_color = {},
+    flow_color = {},
+    icon_size = 64,
+    hidden = true,
+    default_temperature = 0,
+    max_temperature = 0
+  },
+  {
     name = "tile-unknown",
     type = "tile",
     order = "z-a",

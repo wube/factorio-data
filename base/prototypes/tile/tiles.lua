@@ -377,7 +377,6 @@ local dirt_sounds =
   }
 }
 
-
 local function noise_layer_expression(noise_name)
   if tile_noise_enabled == false then return noise.to_noise_expression(0) end
   return noise.function_application("factorio-multioctave-noise",
@@ -567,7 +566,6 @@ function tile_variations_template(normal_res_picture, normal_res_transition, hig
   return append_transition_mask_template(normal_res_transition, high_res_transition, options, { main = main_ })
 end
 
-
 local function make_tile_transition_from_template_variation(src_x, src_y, cnt_, line_len_, is_tall, normal_res_transition, high_res_transition)
   return
   {
@@ -593,8 +591,6 @@ end
 local function water_transition_template_with_effect(to_tiles, normal_res_transition, high_res_transition, options)
   return make_generic_transition_template(to_tiles, water_transition_group_id, nil, normal_res_transition, high_res_transition, options, true, false, true)
 end
-
-
 
 function water_transition_template(to_tiles, normal_res_transition, high_res_transition, options)
   return make_generic_transition_template(to_tiles, water_transition_group_id, nil, normal_res_transition, high_res_transition, options, true, true, true)
@@ -3342,7 +3338,6 @@ define_tiles
         }
       },
 
-
       material_background =
       {
         picture = "__base__/graphics/terrain/concrete/concrete.png",
@@ -3720,7 +3715,6 @@ define_tiles
         }
       },
 
-
       material_background =
       {
         picture = "__base__/graphics/terrain/concrete/refined-concrete.png",
@@ -4032,7 +4026,6 @@ data:extend(
     near_zoom = 2
   }
 })
-
 
 --Copied from utility constants, but we don't want all of them, so we comment them out. Also tinting the concrete is a bit different, so we tweak some...
 local colors =

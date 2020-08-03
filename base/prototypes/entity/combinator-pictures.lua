@@ -1035,8 +1035,6 @@ function generate_arithmetic_combinator(combinator)
   return combinator
 end
 
-
-
 function generate_decider_combinator(combinator)
   combinator.sprites =
     make_4way_animation_from_spritesheet({ layers =
@@ -1719,8 +1717,6 @@ function generate_decider_combinator(combinator)
   return combinator
 end
 
-
-
 function generate_constant_combinator(combinator)
   combinator.sprites =
     make_4way_animation_from_spritesheet({ layers =
@@ -1885,6 +1881,4 @@ function generate_constant_combinator(combinator)
   }
   return combinator
 end
-
-
 

@@ -418,5 +418,4 @@ explosion_animations.artillery_muzzle_flash = function()
   }
 end
 
-
 return explosion_animations

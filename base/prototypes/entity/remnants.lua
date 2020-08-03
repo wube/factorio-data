@@ -241,7 +241,6 @@ local remnants =
     }
   },
 
-
   {
     type = "corpse",
     name = "stack-inserter-remnants",
@@ -1758,7 +1757,6 @@ local remnants =
       }
     }
   },
-
 
 }
 

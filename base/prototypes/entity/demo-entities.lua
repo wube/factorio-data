@@ -357,8 +357,6 @@ function make_4way_animation_from_spritesheet(animation)
   }
 end
 
-
-
 local function scale_bounding_box(bb, scale)
   local orientation = bb[3] or 0
   return
@@ -973,8 +971,6 @@ function crash_trigger()
     }
   }
 end
-
-
 
 data:extend(
 {

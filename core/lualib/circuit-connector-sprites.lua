@@ -166,7 +166,6 @@ belt_ccm.frame_main_scanner_cross_vertical_end_shift = {0, 0.1875}
 belt_ccm.frame_main_scanner_cross_vertical_y_scale = 0.75
 belt_ccm.frame_main_scanner_cross_vertical_rotation = 0.25
 
-
 belt_ccm.frame_main_scanner_nw_ne =
 {
   filename = "__base__/graphics/entity/transport-belt/connector/transport-belt-connector-frame-main-scanner-nw-ne.png",

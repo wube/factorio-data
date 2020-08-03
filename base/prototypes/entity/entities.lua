@@ -2763,7 +2763,6 @@ data:extend(
       }
     },
 
-
     door_back_sprite =
     {
       filename = "__base__/graphics/entity/rocket-silo/04-door-back.png",
@@ -2825,7 +2824,6 @@ data:extend(
     --    scale = 0.5
     --  }
     --},
-
 
     red_lights_back_sprites =
     {
@@ -3465,6 +3463,8 @@ data:extend(
     shadow_fade_out_start_ratio = 0.25,
     shadow_fade_out_end_ratio = 0.75,
     rocket_visible_distance_from_center = 2.75,
+    rocket_above_wires_slice_offset_from_center = -3,
+    rocket_air_object_slice_offset_from_center = -5.5
   },
   {
     type = "rocket-silo-rocket-shadow",
@@ -7242,7 +7242,6 @@ data:extend(
 }
 )
 
-
 local red_chest = util.table.deepcopy(data.raw["container"]["steel-chest"])
 red_chest.minable = nil
 red_chest.name = "red-chest"
@@ -7361,7 +7360,6 @@ for name, picture in pairs(infinity_pipe.pictures) do
   end
 end
 data:extend({infinity_pipe})
-
 
 data:extend({
 {

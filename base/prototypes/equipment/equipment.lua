@@ -328,7 +328,6 @@ data:extend(
       }
     },
 
-
     automatic = false,
     categories = {"armor"}
   },

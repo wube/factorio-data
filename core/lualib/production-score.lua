@@ -127,7 +127,6 @@ local default_param = function()
   }
 end
 
-
 local ingredient_multiplier = function(recipe, param)
   return (param.ingredient_exponent or 1) ^ (table_size(recipe) - 2)
 end

@@ -122,7 +122,6 @@ local default_ended_in_water_trigger_effect = function()
 
 end
 
-
 local particle_ended_in_water_trigger_effect = function()
   return
   {
@@ -1528,7 +1527,6 @@ local particles =
     ended_in_water_trigger_effect = nil,
   },
 
-
   make_particle
   {
     name = "dry-dirt-dust-particle",
@@ -1864,7 +1862,6 @@ local particles =
     ended_in_water_trigger_effect = false,
     render_layer = "lower-object-above-shadow"
   },
-
 
   make_particle
   {
@@ -2306,7 +2303,6 @@ local particles =
     regular_trigger_effect = small_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
-
 
   make_particle
   {
@@ -3078,7 +3074,6 @@ make_particle
     render_layer = "lower-object-above-shadow"
   },
 
-
   make_particle
   {
     name = "red-desert-3-stone-particle-medium",
@@ -3187,7 +3182,6 @@ make_particle
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "lower-object-above-shadow"
   },
-
 
   make_particle
   {

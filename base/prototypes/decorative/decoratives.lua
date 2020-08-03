@@ -12207,7 +12207,6 @@ data:extend{
     }
   },
 
-
   {
     name = "big-ship-wreck-grass",
     type = "optimized-decorative",

@@ -381,7 +381,6 @@ local function make_array(list)
   }
 end
 
-
 local function make_point_list(list)
   local value_expressions = {}
 

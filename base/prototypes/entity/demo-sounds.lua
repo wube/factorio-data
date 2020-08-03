@@ -1490,7 +1490,6 @@ sounds.manual_repair =
   }
 }
 
-
 sounds.logistics_chest_open =
 {
   {

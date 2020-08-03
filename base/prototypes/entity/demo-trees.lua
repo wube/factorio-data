@@ -117,7 +117,6 @@ local function tree_autoplace2(options)
   }
 end
 
-
 -- static_influence is added
 -- tree_noise_influence is multiplied by tree noise, the result of which is added
 local function tree_autoplace( temperature_optimal, temperature_range, water_optimal, water_range, static_influence, tree_noise_influence )

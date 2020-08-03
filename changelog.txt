@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.41
+Version: 0.18.42
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.41
+Date: 03. 08. 2020
+  Changes:
+    - The tiles and entities filtering logic in the deconstruction planner is now independent.
+    - Selecting first entity filter switches tile mode to never when it has the default normal mode and no filters.
+  Bugfixes:
+    - Probably fixed problem with blueprint preview data not being empty when blueprint is empty.
+    - Improved layering of rocket in rocket silo, so it occludes inserter hands. (https://forums.factorio.com/83615)
+    - Fixed inventory consistency check failing when loading some saves. (https://forums.factorio.com/87418)
+    - Fixed inventory error messages in god and editor controller. (https://forums.factorio.com/87405)
+    - Fixed smoke might not be spawned from generator entity if its animation was too short. (https://forums.factorio.com/82946)
+    - Fixed underground belts and loaders would not draw half-belt with layers correctly. (https://forums.factorio.com/83606)
+    - Fixed localised strings in text objects created through script rendering API, would be untranslated after saving and loading. (https://forums.factorio.com/84696)
+    - Fixed that right-clicking blueprint book with empty blueprint being selected destroyed the whole book.
+    - Fixed that cut and copy created empty blueprint when nothing was selected with alternative selection type.
+    - Fixed that the mouse "cross" selection cursor was not present when selection tools from the blueprint library were held in the cursor.
+    - Fixed that the latency state of deconstructing using tool from library didn't take the tool settings into consideration.
+    - Fixed the alert tooltips showing all surface names in the tooltip when multiple surfaces existed.
+  Modding:
+    - Added LuaEntityPrototype::rocket_entity_prototype read.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.40
 Date: 01. 08. 2020

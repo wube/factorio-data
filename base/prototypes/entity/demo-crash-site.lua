@@ -26,7 +26,6 @@ function hr_crash_site_assembling_machine_1_ground()
   }
 end
 
-
 function hr_crash_site_assembling_machine_2_ground()
   return
   {
@@ -51,7 +50,6 @@ function hr_crash_site_assembling_machine_2_ground()
   }
 end
 
-
 function hr_crash_site_lab_ground()
   return
   {
@@ -75,7 +73,6 @@ function hr_crash_site_lab_ground()
     }
   }
 end
-
 
 data:extend(
 {

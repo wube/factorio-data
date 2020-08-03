@@ -407,7 +407,6 @@ function hit_effects.entity(offset_deviation, offset)
   }
 end
 
-
 function hit_effects.entity_higher(offset_deviation, offset)
   local offset = offet or {0, 1.5}
   return
@@ -469,6 +468,3 @@ function hit_effects.flying_robot(offset_deviation, offset)
 end
 
 return hit_effects
-
-
-

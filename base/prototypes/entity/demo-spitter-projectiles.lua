@@ -1321,7 +1321,6 @@ data:extend(
     sticker_name = "acid-sticker-behemoth"
   }),
 
-
   -- A C I D   S T I C K E R --------------------------------------------------------------------------------------------------------------
   acid_sticker({
     name = "acid-sticker-small",

@@ -2787,7 +2787,6 @@ particle_animations.get_vegetation_particle_vehicle_pictures = function(options)
   }
 end
 
-
 particle_animations.get_metal_particle_small_pictures = function(options)
   local options = options or {}
   return
@@ -3354,7 +3353,6 @@ particle_animations.get_general_dust_particle = function(options)
   }
 end
 
-
 particle_animations.get_artillery_shell_particle = function(options)
   local options = options or {}
   return
@@ -3389,7 +3387,5 @@ particle_animations.get_artillery_shell_particle = function(options)
     }
   }
 end
-
-
 
 return particle_animations

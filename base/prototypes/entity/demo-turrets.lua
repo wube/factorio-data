@@ -306,8 +306,6 @@ return
 }
 end
 
-
-
 function laser_turret_extension(inputs)
   return
   {

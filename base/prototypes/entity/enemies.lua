@@ -9,7 +9,6 @@ local sounds = require("prototypes.entity.demo-sounds")
 
 spitter_spawner_tint = {r=0.99, g=0.09, b=0.09, a=1}
 
-
 medium_biter_scale = 0.7
 medium_biter_tint1 = {r=0.49, g=0.46, b=0.51, a=1}
 medium_biter_tint2 = {r=0.93, g=0.72, b=0.72, a=1}
@@ -21,7 +20,6 @@ big_biter_tint2 = {r=0.55, g=0.76, b=0.75, a=1}
 behemoth_biter_scale = 1.2
 behemoth_biter_tint1 = {r=0.21, g=0.19, b=0.25, a=1}
 behemoth_biter_tint2 = {r = 0.657, g = 0.95, b = 0.432, a = 1.000}
-
 
 data:extend(
 {

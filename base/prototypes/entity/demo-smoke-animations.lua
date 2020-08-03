@@ -36,7 +36,6 @@ smoke_animations.trivial_nuke_smoke = function(opts)
   }
 end
 
-
 smoke_animations.trivial_smoke = function(opts)
   return
   {

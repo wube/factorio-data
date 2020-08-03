@@ -129,7 +129,6 @@ local explosions =
     smoke_slow_down_factor = 1
   },
 
-
   {
     type = "explosion",
     name = "active-provider-chest-explosion",
@@ -471,7 +470,6 @@ local explosions =
     }
   },
 
-
   {
     type = "explosion",
     name = "express-underground-belt-explosion",
@@ -535,7 +533,6 @@ local explosions =
       }
     }
   },
-
 
   {
     type = "explosion",
@@ -624,7 +621,6 @@ local explosions =
       }
     }
   },
-
 
   {
     type = "explosion",
@@ -1310,7 +1306,6 @@ local explosions =
     }
   },
 
-
   {
     type = "explosion",
     name = "steam-turbine-explosion",
@@ -1386,7 +1381,6 @@ local explosions =
       }
     }
   },
-
 
   {
     type = "explosion",
@@ -1491,7 +1485,6 @@ local explosions =
       }
     }
   },
-
 
   {
     type = "explosion",
@@ -2237,7 +2230,6 @@ local explosions =
     smoke_slow_down_factor = 1,
     sound = sounds.small_explosion(0.5),
   },
-
 
   {
     type = "explosion",

@@ -2060,7 +2060,6 @@ tile_trigger_effects.hazard_concrete_right_trigger_effect = function()
   }
 end
 
-
 tile_trigger_effects.lab_tile_white_trigger_effect = function()
   return
   {

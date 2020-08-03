@@ -356,7 +356,8 @@ load_animations =
         width = 64,
         height = 80,
         line_length = 1,
-        frame_count = 16,
+        frame_count = 1,
+        repeat_count = 1,
         shift = util.by_pixel(18, -52),
         hr_version =
         {
@@ -364,8 +365,8 @@ load_animations =
           width = 126,
           height = 158,
           scale = 0.5,
-          line_length = 1,
-          frame_count = 16,
+          frame_count = 1,
+          repeat_count = 1,
           shift = util.by_pixel(18, -52)
         }
       },

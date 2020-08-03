@@ -87,7 +87,6 @@ function math3d.vector2.rotate(v, phi)
   }
 end
 
-
 math3d.matrix4x4 = {}
 math3d.matrix4x4.identity =
 {

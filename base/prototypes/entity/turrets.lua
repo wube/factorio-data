@@ -543,7 +543,6 @@ data:extend(
     call_for_help_radius = 40
   },
 
-
   {
     type = "turret",
     name = "big-worm-turret",

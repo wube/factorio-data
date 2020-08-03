@@ -1,6 +1,5 @@
 module(..., package.seeall)
 
-
 Builder = {}
 
 function Builder:new(definition)

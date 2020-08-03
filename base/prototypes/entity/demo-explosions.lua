@@ -3273,7 +3273,6 @@ local demo_explosions =
     }
   },
 
-
   {
     type = "explosion",
     name = "radar-explosion",
@@ -3380,7 +3379,6 @@ local demo_explosions =
     name = "biter-spawner-die",
     created_effect = biter_die_effects.spawner_biter
   },
-
 
   {
     type = "explosion",
@@ -3658,7 +3656,6 @@ local demo_explosions =
       }
     }
   },
-
 
   {
     type = "explosion",
@@ -4132,7 +4129,6 @@ local demo_explosions =
       }
     }
   },
-
 
   {
     type = "explosion",

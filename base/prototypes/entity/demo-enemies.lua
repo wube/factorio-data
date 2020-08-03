@@ -69,7 +69,6 @@ data:extend(
     flags = {"placeable-neutral", "placeable-off-grid", "building-direction-8-way", "not-repairable", "not-on-map"}
   }),
 
-
   {
     type = "unit-spawner",
     name = "biter-spawner",

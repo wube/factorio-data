@@ -2165,7 +2165,6 @@ local demo_remnants =
     time_before_shading_off = 60 * 60 * 1
   },
 
-
   {
     type = "corpse",
     name = "rail-chain-signal-remnants",
@@ -2240,7 +2239,6 @@ local demo_remnants =
       }
     }
   },
-
 
   {
     type = "corpse",

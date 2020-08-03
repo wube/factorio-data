@@ -147,5 +147,3 @@ pipecoverspictures = function()
     }
   }
 end
-
-

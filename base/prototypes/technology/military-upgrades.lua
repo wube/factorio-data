@@ -451,7 +451,6 @@ data:extend(
     order = "e-l-f"
   },
 
-
 })
 
 data:extend(
@@ -698,7 +697,6 @@ data:extend(
     upgrade = true,
     order = "e-l-f"
   },
-
 
 })
 
@@ -1329,7 +1327,6 @@ data:extend(
   },
 })
 
-
 data:extend(
 {
   {
@@ -1394,7 +1391,6 @@ data:extend(
     order = "e-k-k"
   }
 })
-
 
 function create_follower_upgrade(level, pack1, pack2, pack3, military_pack, high_tech_pack, production_pack, count, addition)
   local result =

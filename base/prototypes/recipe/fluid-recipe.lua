@@ -260,7 +260,6 @@ data:extend(
     }
   },
 
-
   {
     type = "recipe",
     name = "sulfur",

@@ -56,7 +56,6 @@ local function multioctave_noise(params)
     octave_input_scale_multiplier = 1 / octave_input_scale_multiplier
   end
 
-
   return tne{
     type = "function-application",
     function_name = "factorio-quick-multioctave-noise",
@@ -139,7 +138,6 @@ local function simple_amplitude_corrected_multioctave_noise(params)
   end
   return simple_variable_persistence_multioctave_noise(util.merge{params, {octave0_output_scale = multiplier * amplitide}})
 end
-
 
 local function make_multioctave_noise_function(seed0,seed1,octaves,octave_output_scale_multiplier,octave_input_scale_multiplier,output_scale0,input_scale0)
   octave_output_scale_multiplier = octave_output_scale_multiplier or 2
@@ -246,7 +244,6 @@ local function water_level_correct(to_be_corrected, map)
     to_be_corrected + map.wlc_elevation_offset
   ))
 end
-
 
 local cliff_terracing_enabled = false
 
