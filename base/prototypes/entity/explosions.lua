@@ -2685,7 +2685,7 @@ local explosions =
   {
     type = "explosion",
     name = "slowdown-capsule-explosion",
-    icon = "__base__/graphics/icons/wooden-chest.png",
+    icon = "__base__/graphics/icons/slowdown-capsule.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
     subgroup = "storage-explosions",
@@ -2697,6 +2697,7 @@ local explosions =
     smoke_count = 2,
     smoke_slow_down_factor = 1,
     sound = sounds.small_explosion(0.5),
+    subgroup = "gun-explosions",
     order = "a-a-a",
     render_layer = "lower-object-above-shadow",
     created_effect =

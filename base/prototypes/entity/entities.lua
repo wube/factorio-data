@@ -2208,19 +2208,19 @@ data:extend(
         {
           filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
           priority = "extra-high",
-          width = 48,
+          width = 56,
           height = 24,
           repeat_count = 7,
-          shift = util.by_pixel(8.5, 5.5),
+          shift = util.by_pixel(12, 5),
           draw_as_shadow = true,
           hr_version =
           {
             filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
             priority = "extra-high",
-            width = 96,
-            height = 44,
+            width = 112,
+            height = 46,
             repeat_count = 7,
-            shift = util.by_pixel(8.5, 5),
+            shift = util.by_pixel(12, 4.5),
             draw_as_shadow = true,
             scale = 0.5
           }
@@ -2288,19 +2288,19 @@ data:extend(
         {
           filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
           priority = "extra-high",
-          width = 48,
+          width = 56,
           height = 24,
           repeat_count = 7,
-          shift = util.by_pixel(8.5, 5.5),
+          shift = util.by_pixel(12, 5),
           draw_as_shadow = true,
           hr_version =
           {
             filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
             priority = "extra-high",
-            width = 96,
-            height = 44,
+            width = 112,
+            height = 46,
             repeat_count = 7,
-            shift = util.by_pixel(8.5, 5),
+            shift = util.by_pixel(12, 4.5),
             draw_as_shadow = true,
             scale = 0.5
           }
@@ -2369,19 +2369,19 @@ data:extend(
         {
           filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
           priority = "extra-high",
-          width = 48,
+          width = 56,
           height = 24,
           repeat_count = 7,
-          shift = util.by_pixel(8.5, 5.5),
+          shift = util.by_pixel(12, 5),
           draw_as_shadow = true,
           hr_version =
           {
             filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
             priority = "extra-high",
-            width = 96,
-            height = 44,
+            width = 112,
+            height = 46,
             repeat_count = 7,
-            shift = util.by_pixel(8.5, 5),
+            shift = util.by_pixel(12, 4.5),
             draw_as_shadow = true,
             scale = 0.5
           }
@@ -2450,19 +2450,19 @@ data:extend(
         {
           filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
           priority = "extra-high",
-          width = 48,
+          width = 56,
           height = 24,
           repeat_count = 7,
-          shift = util.by_pixel(8.5, 5.5),
+          shift = util.by_pixel(12, 5),
           draw_as_shadow = true,
           hr_version =
           {
             filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
             priority = "extra-high",
-            width = 96,
-            height = 44,
+            width = 112,
+            height = 46,
             repeat_count = 7,
-            shift = util.by_pixel(8.5, 5),
+            shift = util.by_pixel(12, 4.5),
             draw_as_shadow = true,
             scale = 0.5
           }
@@ -2531,19 +2531,19 @@ data:extend(
         {
           filename = "__base__/graphics/entity/logistic-chest/logistic-chest-shadow.png",
           priority = "extra-high",
-          width = 48,
+          width = 56,
           height = 24,
           repeat_count = 7,
-          shift = util.by_pixel(8.5, 5.5),
+          shift = util.by_pixel(12, 5),
           draw_as_shadow = true,
           hr_version =
           {
             filename = "__base__/graphics/entity/logistic-chest/hr-logistic-chest-shadow.png",
             priority = "extra-high",
-            width = 96,
-            height = 44,
+            width = 112,
+            height = 46,
             repeat_count = 7,
-            shift = util.by_pixel(8.5, 5),
+            shift = util.by_pixel(12, 4.5),
             draw_as_shadow = true,
             scale = 0.5
           }

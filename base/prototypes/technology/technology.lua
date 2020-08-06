@@ -278,7 +278,7 @@ data:extend(
     type = "technology",
     name = "automation-3",
     icon_size = 128,
-    icon = "__base__/graphics/technology/automation.png",
+    icon = "__base__/graphics/technology/automation-3.png",
     localised_description = {"technology-description.automation-3"},
     effects =
     {
@@ -744,7 +744,7 @@ data:extend(
     type = "technology",
     name = "logistics-3",
     icon_size = 128,
-    icon = "__base__/graphics/technology/logistics.png",
+    icon = "__base__/graphics/technology/logistics-3.png",
     effects =
     {
       {
@@ -1206,7 +1206,7 @@ data:extend(
     type = "technology",
     name = "electric-energy-distribution-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/electric-energy-distribution.png",
+    icon = "__base__/graphics/technology/electric-energy-distribution-2.png",
     effects =
     {
       {
@@ -2287,7 +2287,7 @@ data:extend(
     type = "technology",
     name = "speed-module",
     icon_size = 128,
-    icon = "__base__/graphics/technology/speed-module.png",
+    icon = "__base__/graphics/technology/speed-module-1.png",
     effects =
     {
       {
@@ -2313,7 +2313,7 @@ data:extend(
     type = "technology",
     name = "speed-module-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/speed-module.png",
+    icon = "__base__/graphics/technology/speed-module-2.png",
     effects =
     {
       {
@@ -2340,7 +2340,7 @@ data:extend(
     type = "technology",
     name = "speed-module-3",
     icon_size = 128,
-    icon = "__base__/graphics/technology/speed-module.png",
+    icon = "__base__/graphics/technology/speed-module-3.png",
     effects =
     {
       {
@@ -2368,7 +2368,7 @@ data:extend(
     type = "technology",
     name = "productivity-module",
     icon_size = 128,
-    icon = "__base__/graphics/technology/productivity-module.png",
+    icon = "__base__/graphics/technology/productivity-module-1.png",
     effects =
     {
       {
@@ -2394,7 +2394,7 @@ data:extend(
     type = "technology",
     name = "productivity-module-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/productivity-module.png",
+    icon = "__base__/graphics/technology/productivity-module-2.png",
     effects =
     {
       {
@@ -2421,7 +2421,7 @@ data:extend(
     type = "technology",
     name = "productivity-module-3",
     icon_size = 128,
-    icon = "__base__/graphics/technology/productivity-module.png",
+    icon = "__base__/graphics/technology/productivity-module-3.png",
     effects =
     {
       {
@@ -2449,7 +2449,7 @@ data:extend(
     type = "technology",
     name = "effectivity-module",
     icon_size = 128,
-    icon = "__base__/graphics/technology/effectivity-module.png",
+    icon = "__base__/graphics/technology/effectivity-module-1.png",
     effects =
     {
       {
@@ -2475,7 +2475,7 @@ data:extend(
     type = "technology",
     name = "effectivity-module-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/effectivity-module.png",
+    icon = "__base__/graphics/technology/effectivity-module-2.png",
     effects =
     {
       {
@@ -2502,7 +2502,7 @@ data:extend(
     type = "technology",
     name = "effectivity-module-3",
     icon_size = 128,
-    icon = "__base__/graphics/technology/effectivity-module.png",
+    icon = "__base__/graphics/technology/effectivity-module-3.png",
     effects =
     {
       {

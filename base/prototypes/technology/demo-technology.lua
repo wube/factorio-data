@@ -4,7 +4,7 @@ data:extend
     type = "technology",
     name = "automation",
     icon_size = 128,
-    icon = "__base__/graphics/technology/automation.png",
+    icon = "__base__/graphics/technology/automation-1.png",
     effects =
     {
       {
@@ -28,7 +28,7 @@ data:extend
     type = "technology",
     name = "automation-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/automation.png",
+    icon = "__base__/graphics/technology/automation-2.png",
     localised_description = {"technology-description.automation-2"},
     effects =
     {
@@ -216,7 +216,7 @@ data:extend
     type = "technology",
     name = "logistics",
     icon_size = 128,
-    icon = "__base__/graphics/technology/logistics.png",
+    icon = "__base__/graphics/technology/logistics-1.png",
     effects =
     {
       {
@@ -491,7 +491,7 @@ data:extend
     type = "technology",
     name = "electric-energy-distribution-1",
     icon_size = 128,
-    icon = "__base__/graphics/technology/electric-energy-distribution.png",
+    icon = "__base__/graphics/technology/electric-energy-distribution-1.png",
     effects =
     {
       {
@@ -632,7 +632,7 @@ data:extend
     type = "technology",
     name = "logistics-2",
     icon_size = 128,
-    icon = "__base__/graphics/technology/logistics.png",
+    icon = "__base__/graphics/technology/logistics-2.png",
     effects =
     {
       {

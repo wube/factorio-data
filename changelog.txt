@@ -1,6 +1,38 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.43
+Version: 0.18.44
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.43
+Date: 06. 08. 2020
+  Graphics:
+    - Updated the technology icons.
+    - Updated the "Make a copy of blueprint" icon.
+  Gui:
+    - Added simple credits gui.
+    - Updated the style of progressbar dialogs.
+    - Updated the style of map editor.
+  Changes:
+    - Changed the default debug settings to only show grid and nothing else.
+  Bugfixes:
+    - Fixed that Blueprint books in the library didn't propagate its modded icon backups properly into the game.
+    - Fixed that Blueprint books in item form did loose its modded icon backed up state when saved between versions 0.18.37 and 0.18.42
+    - Fixed that swapping ghost cursor with an item didn't clear the quickbar selection immediately.
+    - Fixed PvP script error when starting a new round with duplicate starting areas. (https://forums.factorio.com/87533)
+    - Fixed PvP scenario not restoring character bonuses after respawn. (https://forums.factorio.com/87493)
+    - Fixed that most of the windows were not squashing as they should when they couldn't fit the screen.
+    - Fixed squashing of save name label in the load/save map dialog and load/save map progress windows.
+    - Fixed that biters could attack entities beyond their attack range. (https://forums.factorio.com/87158)
+    - Fixed crash when opening train gui through non-locomotive while in map view in latency state. (https://forums.factorio.com/84158)
+    - Fixed that the deconstruction planner was ignoring specified tile filters when removing tile ghosts.
+    - Fixed that the deconstruction planner with normal tile setting was ignoring tiles when the selection contained only tile ghosts + tiles.
+    - Fixed that the deconstruction planner with tile ghost filter selected didn't select (with whitelist) or ignore (with blacklist) the tile ghosts.
+    - Fixed that the deconstruction planner with tiles and rocks only and blacklist always ignored tiles.
+    - Fixed lights of entities just outside of right or bottom border of screen were drawn twice sometimes.
+    - Fixed drag-placing ghost item in zoomed-to-world view would drag the view instead. (https://forums.factorio.com/87559)
+    - Fixed that barreling recipes were generated for "fluid-unknown".
+  Scripting:
+    - Empty LuaPrototype collision masks will now return an empty table, rather than nil.
+    - LuaEntity::circuit_connected_entities and LuaEntity::circuit_connection_definitions return data for entity ghosts. (https://forums.factorio.com/45823)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.42
 Date: 03. 08. 2020
@@ -10,6 +42,7 @@ Date: 03. 08. 2020
     - Don't drag map when in zoomed in map mode and building blueprints.
     - Don't place map tags when building blueprints.
     - Fixed crash in rendering due to game state being modified by buildability checks for drawing blueprint placement visualization on chunks in fog-of-war when zoomed-to-world.
+    - Fixed that upgrade orders could get abandoned in some cases. (https://forums.factorio.com/87473)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.41
 Date: 03. 08. 2020

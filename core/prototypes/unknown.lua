@@ -34,7 +34,8 @@ data:extend(
     icon_size = 64,
     hidden = true,
     default_temperature = 0,
-    max_temperature = 0
+    max_temperature = 0,
+    auto_barrel = false
   },
   {
     name = "tile-unknown",

@@ -1137,14 +1137,8 @@ data:extend(
     {
       type = "button_style",
       parent = "confirm_button",
-      minimal_width = 300
-    },
-
-    load_game_subheader_caption_label =
-    {
-      type = "label_style",
-      parent = "subheader_caption_label",
-      maximal_width = 800
+      natural_width = 300,
+      horizontally_squashable = "on"
     },
 
     red_confirm_button =
@@ -2974,13 +2968,15 @@ data:extend(
     working_weapon_button =
     {
       type = "button_style",
-      parent = "green_slot"
+      parent = "green_slot",
+      left_click_sound = {}
     },
 
     not_working_weapon_button =
     {
       type = "button_style",
-      parent = "red_slot"
+      parent = "red_slot",
+      left_click_sound = {}
     },
 
     omitted_technology_slot =
@@ -3748,18 +3744,55 @@ data:extend(
       }
     },
 
+    editor_mode_selection_frame =
+    {
+      type = "frame_style",
+      graphical_set =
+      {
+        base =
+        {
+          top = { position = {74, 9}, size = {1, 8}},
+          center = {position = {42, 8}, size = {1, 1}},
+          draw_type = "outer"
+        }
+      },
+      padding = 0
+    },
+
+    editor_mode_selection_table =
+    {
+      type = "table_style",
+      horizontal_spacing = 0,
+      vertical_spacing = 0,
+      padding = 0,
+      background_graphical_set =
+      {
+        position = {282, 17},
+        corner_size = 8,
+        overall_tiling_horizontal_size = 63,
+        overall_tiling_horizontal_spacing = 12,
+        overall_tiling_horizontal_padding = 6,
+        overall_tiling_vertical_size = 64,
+        overall_tiling_vertical_spacing = 12,
+        overall_tiling_vertical_padding = 6
+        }
+    },
+
     filter_group_button_tab =
     {
       type = "button_style",
       parent = "button",
       size = {71, 72}, --warning: width does not respect module size, but the current design requires it
-      padding = 8,
+      left_padding = 3,
+      right_padding = 4,
+      top_padding = 4,
+      bottom_padding = 4, -- so there is exactly 64X64 space for the icon
 
       clicked_vertical_offset = 0,
-      clicked_graphical_set =
+      selected_graphical_set =
       {
-        base = {position = {68, 0}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {363, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       disabled_graphical_set =
       {
@@ -3769,21 +3802,41 @@ data:extend(
       selected_font_color = button_hovered_font_color,
       selected_graphical_set =
       {
-        base = {position = {68, 0}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {363, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       selected_hovered_font_color = button_hovered_font_color,
       selected_hovered_graphical_set =
       {
-        base = {position = {68, 0}, corner_size = 8},
-        shadow = default_dirt
+        base = {position = {363, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
       },
       selected_clicked_font_color = button_hovered_font_color,
       selected_clicked_graphical_set =
       {
-        base = {position = {68, 0}, corner_size = 8},
-        shadow = default_dirt
-      },
+        base = {position = {363, 744}, corner_size = 8},
+        shadow = offset_by_2_default_glow(default_dirt_color, 0.5)
+      }
+    },
+
+    filter_group_button_tab_slightly_larger =
+    {
+      type = "button_style",
+      parent = "filter_group_button_tab",
+      size = {71 + 4, 72 + 4}
+    },
+
+    editor_inner_frame =
+    {
+      type = "frame_style",
+      vertically_stretchable = "on",
+      horizontally_stretchable = "on",
+      top_padding = 6,
+      right_padding = 12,
+      bottom_padding = 4,
+      left_padding = 12,
+      use_header_filler = false,
+      graphical_set = tabbed_pane_graphical_set
     },
 
     filter_frame = -- used in button mode
@@ -3877,29 +3930,12 @@ data:extend(
       left_padding = 4
     },
 
-    new_game_information_vertical_flow =
-    {
-      type = "vertical_flow_style",
-      parent = "vertical_flow",
-      vertically_stretchable = "on",
-      top_padding  = 4,
-      right_padding = 8,
-      bottom_padding = 4,
-      left_padding = 8,
-    },
-
-    new_game_subheader_caption_label =
-    {
-      type = "label_style",
-      parent = "subheader_caption_label",
-      maximal_width = 400
-    },
-
     new_game_info_frame =
     {
       type = "frame_style",
-      parent = "a_inner_paddingless_frame",
-      size = {500, 616},
+      parent = "a_inner_frame",
+      natural_size = {500 - 16, 616},
+      bottom_padding = 4
     },
 
     blueprint_settings_frame =
@@ -3926,7 +3962,7 @@ data:extend(
       type = "list_box_style",
       minimal_width = 300,
       maximal_width = 400,
-      minimal_height = 450,
+      natural_height = 450,
       vertically_stretchable = "on"
     },
     campaign_levels_list_box =
@@ -5740,6 +5776,13 @@ data:extend(
       top_padding = 12
     },
 
+    deep_frame_in_shallow_frame_for_tabs =
+    {
+      type = "frame_style",
+      parent = "deep_frame_in_shallow_frame",
+      top_padding = 12
+    },
+
     borderless_deep_frame = -- very dark background
     {
       type = "frame_style",
@@ -6082,6 +6125,16 @@ data:extend(
       right_padding = 4
     },
 
+    bordered_frame_with_extra_side_margins =
+    {
+      type = "frame_style",
+      graphical_set = {},
+      border = border_image_set(),
+      right_padding = 4,
+      left_margin = 8,
+      right_margin = 8
+    },
+
     bordered_table =
     {
       type = "table_style",
@@ -6184,7 +6237,8 @@ data:extend(
     {
       type = "horizontal_flow_style",
       horizontal_spacing = 8,
-      vertical_align = "center"
+      vertical_align = "center",
+      minimal_height = 28
     },
     player_input_table =
     {
@@ -6882,6 +6936,13 @@ data:extend(
       size = 36
     },
 
+    slot_button_that_fits_textline =
+    {
+      type = "button_style",
+      parent = "slot_sized_button",
+      size = 28
+    },
+
     slot_sized_button_pressed =
     {
       type = "button_style",
@@ -7177,16 +7238,6 @@ data:extend(
         size = {1, 7},
         scale = 1
       }
-    },
-    info_box_activity_bar =
-    {
-      type = "activity_bar_style",
-      width = 300,
-    },
-    info_box_progressbar =
-    {
-      type = "progressbar_style",
-      width = 300
     },
     production_progressbar =
     {
@@ -7614,6 +7665,13 @@ data:extend(
       },
       left_click_sound = {{ filename = "__core__/sound/gui-tab.ogg", volume = 1 }},
     },
+
+    slightly_smaller_tab =
+    {
+      type = "tab_style",
+      minimal_width = 64
+    },
+
     graph =
     {
       type = "graph_style",
@@ -8067,12 +8125,21 @@ data:extend(
       extra_padding_when_activated = -4,
       padding = 8
     },
+
     tab_scroll_pane = -- inside tab pane
     {
       type = "scroll_pane_style",
       graphical_set = inner_frame_tab_pane(),
       extra_left_margin_when_activated = 8,
       extra_right_margin_when_activated = -4
+    },
+
+    tab_scroll_pane_with_extra_padding = -- inside tab pane - contains elements directly
+    {
+      type = "scroll_pane_style",
+      parent = "tab_scroll_pane",
+      left_padding = 8,
+      right_padding = 8
     },
 
     browse_games_scroll_pane =
@@ -8212,7 +8279,20 @@ data:extend(
       type = "image_style",
       parent = "map_info_image",
       stretch_image_to_widget_size = true,
-      size = {500, 285}
+      natural_size = {500, 285},
+      top_margin = -4,
+      left_margin = -8,
+      right_margin = -8
+    },
+
+    tabbed_pane_frame =
+    {
+      type = "frame_style",
+      top_padding = 8,
+      right_padding = 4,
+      bottom_padding = 4,
+      left_padding = 4,
+      graphical_set = tabbed_pane_graphical_set
     },
 
     tabbed_pane =
@@ -8223,11 +8303,7 @@ data:extend(
       tab_content_frame =
       {
         type = "frame_style",
-        top_padding = 8,
-        right_padding = 4,
-        bottom_padding = 4,
-        left_padding = 4,
-        graphical_set = tabbed_pane_graphical_set
+        parent = "tabbed_pane_frame"
       },
       tab_container =
       {
@@ -8235,6 +8311,18 @@ data:extend(
         left_padding = 12,
         right_padding = 12,
         horizontal_spacing = 0
+      }
+    },
+
+    tabbed_pane_with_extra_padding =
+    {
+      type = "tabbed_pane_style",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        parent = "tabbed_pane_frame",
+        right_padding = 12,
+        left_padding = 12
       }
     },
 
@@ -9238,7 +9326,20 @@ data:extend(
         bottom_left_corner = {position = {32, 1024}, size = {8, 8}},
         top_left_coner = {position = {40, 1024}, size = {8, 8}},
       }
-    }
+    },
+
+    main_progressbar_frame =
+    {
+      type = "frame_style",
+      use_header_filler = false,
+      width = 300
+    },
+
+    wide_activity_bar =
+    {
+      type = "activity_bar_style",
+      bar_width = 24
+    },
   }
 }
 )
