@@ -87,7 +87,10 @@ function gui_update(player)
       sprite.style.height = 20
       sprite.style.width = 20
       item_table.add{type = "label", caption = item.localised_name, style = "bold_label"}
-      item_table.add{type = "label", caption = util.format_number(count)}
+      local count_flow = item_table.add{type = "flow"}
+      local pusher = count_flow.add{type = "empty-widget"}
+      pusher.style.horizontally_stretchable = true
+      count_flow.add{type = "label", caption = util.format_number(count)}
     end
 
   end

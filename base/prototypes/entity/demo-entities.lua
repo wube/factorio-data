@@ -4017,18 +4017,14 @@ data:extend(
     pictures = pipepictures(),
     working_sound =
     {
-      sound =
-      {
-        {
-          filename = "__base__/sound/pipe.ogg",
-          volume = 0.35
-        }
-      },
+      sound = sounds.pipe,
       match_volume_to_activity = true,
-      audible_distance_modifier = 0.2,
+      audible_distance_modifier = 0.3,
       fade_in_ticks = 4,
       fade_out_ticks = 60
     },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
 
     horizontal_window_bounding_box = {{-0.25, -0.28125}, {0.25, 0.15625}},
     vertical_window_bounding_box = {{-0.28125, -0.5}, {0.03125, 0.125}}
@@ -4520,13 +4516,8 @@ data:extend(
           filename = "__base__/sound/assembling-machine-t1-1.ogg",
           volume = 0.5
         },
-        --{
-          --filename = "__base__/sound/assembling-machine-t1-2.ogg",
-          --volume = 0.8
-        --}
       },
-      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      audible_distance_modifier = 0.7,
+      audible_distance_modifier = 0.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     }
@@ -4633,15 +4624,10 @@ data:extend(
       {
         {
           filename = "__base__/sound/assembling-machine-t2-1.ogg",
-          volume = 0.55
+          volume = 0.45
         },
-        --{
-          --filename = "__base__/sound/assembling-machine-t2-2.ogg",
-          --volume = 0.6
-        --}
       },
-      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      audible_distance_modifier = 0.7,
+      audible_distance_modifier = 0.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },

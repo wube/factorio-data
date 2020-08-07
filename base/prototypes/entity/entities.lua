@@ -676,15 +676,10 @@ data:extend(
       {
         {
           filename = "__base__/sound/assembling-machine-t3-1.ogg",
-          volume = 0.6
+          volume = 0.45
         },
-        --{
-        --  filename = "__base__/sound/assembling-machine-t3-2.ogg",
-        --  volume = 0.6
-        --}
       },
-      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
-      audible_distance_modifier = 0.7,
+      audible_distance_modifier = 0.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -5033,10 +5028,12 @@ data:extend(
     },
     working_sound =
     {
-      sound = sounds.poison_cloud(0.8),
-      persistent = true
+      sound = sounds.poison_cloud(0.5),
+      persistent = true,
+      audible_distance_modifier = 0.8,
     },
   },
+
   {
     type = "sticker",
     name = "slowdown-sticker",
@@ -5959,11 +5956,11 @@ data:extend(
       {
         {
           filename = "__base__/sound/nuclear-reactor-1.ogg",
-          volume = 0.7
+          volume = 0.55
         },
         {
           filename = "__base__/sound/nuclear-reactor-2.ogg",
-          volume = 0.7
+          volume = 0.55
         }
       },
       --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
@@ -6240,15 +6237,15 @@ data:extend(
       {
         {
           filename = "__base__/sound/centrifuge-1.ogg",
-          volume = 0.5
+          volume = 0.3
         },
         {
           filename = "__base__/sound/centrifuge-2.ogg",
-          volume = 0.5
+          volume = 0.3
         },
         {
           filename = "__base__/sound/centrifuge-6.ogg",
-          volume = 0.5
+          volume = 0.3
         },
       },
       fade_in_ticks = 4,
@@ -6506,7 +6503,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/heat-exchanger.ogg",
-        volume = 0.75
+        volume = 0.65
       },
       --max_sounds_per_type = 3,
       audible_distance_modifier = 0.5,
@@ -6842,7 +6839,7 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/steam-turbine.ogg",
-        volume = 0.37
+        volume = 0.67
       },
       match_speed_to_activity = true,
       audible_distance_modifier = 0.7,

@@ -211,6 +211,16 @@ data:extend(
         },
       }
     },
+    deconstruct_big =
+    {
+      variations =
+      {
+        {
+          filename = "__core__/sound/deconstruct-large.ogg",
+          volume = 0.8
+        },
+      }
+    },
     achievement_unlocked =
     {
       variations =
@@ -240,7 +250,6 @@ add_utility_sound("gui_click", "__core__/sound/gui-click.ogg")
 add_utility_sound("list_box_click", "__core__/sound/list-box-click.ogg")
 add_utility_sound("cannot_build", "__core__/sound/cannot-build.ogg")
 add_utility_sound("deconstruct_small", "__core__/sound/deconstruct-small.ogg")
-add_utility_sound("deconstruct_big", "__core__/sound/deconstruct-large.ogg")
 add_utility_sound("deconstruct_robot", "__core__/sound/deconstruct-robot.ogg")
 add_utility_sound("rotated_small", "__core__/sound/rotate-small.ogg")
 add_utility_sound("rotated_medium", "__core__/sound/rotate-medium.ogg")

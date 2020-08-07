@@ -453,26 +453,26 @@ sounds.inserter_basic =
   {
     {
       filename = "__base__/sound/inserter-basic-1.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-basic-2.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-basic-3.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-basic-4.ogg",
-      volume = 0.3
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-basic-5.ogg",
-      volume = 0.3
+      volume = 0.4
     },
   },
-  audible_distance_modifier = 0.5,
+  audible_distance_modifier = 0.3,
 }
 
 sounds.inserter_fast =
@@ -482,26 +482,26 @@ sounds.inserter_fast =
   {
     {
       filename = "__base__/sound/inserter-fast-1.ogg",
-      volume = 0.25
+      volume = 0.4
     },
     {
       filename = "__base__/sound/inserter-fast-2.ogg",
-      volume = 0.25
+      volume = 0.45
     },
     {
       filename = "__base__/sound/inserter-fast-3.ogg",
-      volume = 0.25
+      volume = 0.45
     },
     {
       filename = "__base__/sound/inserter-fast-4.ogg",
-      volume = 0.25
+      volume = 0.45
     },
     {
       filename = "__base__/sound/inserter-fast-5.ogg",
-      volume = 0.25
+      volume = 0.45
     }
   },
-  audible_distance_modifier = 0.5,
+  audible_distance_modifier = 0.3,
 }
 
 sounds.inserter_long_handed =
@@ -511,23 +511,23 @@ sounds.inserter_long_handed =
   {
     {
       filename = "__base__/sound/inserter-long-handed-1.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-long-handed-2.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-long-handed-3.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-long-handed-4.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-long-handed-5.ogg",
-      volume = 0.4
+      volume = 0.5
     },
   },
   audible_distance_modifier = 0.5,
@@ -539,23 +539,23 @@ sounds.splitter =
   {
     {
       filename = "__base__/sound/splitters/splitter.ogg",
-      volume = 0.33
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/splitter-2.ogg",
-      volume = 0.33
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/splitter-3.ogg",
-      volume = 0.33
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/splitter-4.ogg",
-      volume = 0.33
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/splitter-5.ogg",
-      volume = 0.33
+      volume = 0.2
     }
   },
   max_sounds_per_type = 3,
@@ -658,6 +658,15 @@ sounds.express_loader =
   max_sounds_per_type = 3,
   audible_distance_modifier = 0.45
 }
+
+sounds.pipe =
+{
+  {
+    filename = "__base__/sound/pipe.ogg",
+    volume = 0.45
+  }
+}
+
 
 sounds.train_brakes =
 {
@@ -1282,12 +1291,6 @@ sounds.throw_projectile =
 sounds.poison_cloud = function(volume)
   return
   {
-    aggregation =
-    {
-      max_count = 1,
-      remove = true
-    },
-    audible_distance_modifier = 0.8, --multiplies the default 40 tiles of audible distance by this number
     variations =
     {
       {

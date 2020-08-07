@@ -1,6 +1,17 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.45
+Version: 0.18.46
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.45
+Date: 07. 08. 2020
+  Graphics:
+    - Fixed mistakes in some technology icons. (Flipped underground belt in Logistics, and graphical artifacts in modules)
+  Sounds:
+    - Improved various sounds, mainly inserters, assembling machines and laser beam.
+    - Tweaked various sound levels.
+  Bugfixes:
+    - Fixed empty spacing in Rocket silo stats GUI. (https://forums.factorio.com/87630)
+    - Fixed wave defence bonuses persisting between rounds if you lost via rocket silo dying. (https://forums.factorio.com/87657)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.44
 Date: 07. 08. 2020
