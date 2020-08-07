@@ -7074,6 +7074,33 @@ data:extend(
       left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
     },
 
+    shortcut_bar_button_small_green =
+    {
+      type = "button_style",
+      parent = "slot_sized_button_green",
+      size = 20,
+      padding = 0,
+      left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
+    },
+
+    shortcut_bar_button_small_red =
+    {
+      type = "button_style",
+      parent = "slot_sized_button_red",
+      size = 20,
+      padding = 0,
+      left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
+    },
+
+    shortcut_bar_button_small_blue =
+    {
+      type = "button_style",
+      parent = "slot_sized_button_blue",
+      size = 20,
+      padding = 0,
+      left_click_sound = {{ filename = "__core__/sound/gui-button-mini.ogg", volume = 1 }},
+    },
+
     tool_bar_frame =
     {
       type = "frame_style",
@@ -9332,7 +9359,14 @@ data:extend(
     {
       type = "frame_style",
       use_header_filler = false,
-      width = 300
+      width = 400
+    },
+
+     side_progressbar_frame =
+    {
+      type = "frame_style",
+      use_header_filler = false,
+      width = 400
     },
 
     wide_activity_bar =

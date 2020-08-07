@@ -1,6 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.44
+Version: 0.18.45
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.44
+Date: 07. 08. 2020
+  Graphics:
+    - Reworked Electric mining drill graphics, removing their vertical structure - to fix tile overlapping and other issues introduced with redesign.
+  Bugfixes:
+    - Added equipment icon to Personal laser defense technology icon. (https://forums.factorio.com/87625)
+    - Fixed logistic chest shadows were shorter than other chests. (https://forums.factorio.com/86782)
+    - Fixed that unit groups could get stuck after getting close to their target. (https://forums.factorio.com/87628)
+    - Fixed loading Blueprint books before version 0.18.42.
+    - Fixed that when importing blueprint string, the error had success sound and the success had error sound. (https://forums.factorio.com/87623)
+    - Fixed the small shortcut buttons didn't follow the same color settings as the big ones.
+    - Added better error when attempting to load NPE save.
+  Gui:
+    - Tweaked the loading progress bar styles a bit, so they are slimmer and can fit more text.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.43
 Date: 06. 08. 2020
