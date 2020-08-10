@@ -565,10 +565,10 @@ circuit_connector_definitions["electric-mining-drill"] = circuit_connector_defin
 (
   universal_connector_template,
   {
-    { variation = 4, main_offset = util.by_pixel(-42, -62), shadow_offset = util.by_pixel(0, -34), show_shadow = false },
-    { variation = 2, main_offset = util.by_pixel(36, -1), shadow_offset = util.by_pixel(70, 35), show_shadow = false },
-    { variation = 0, main_offset = util.by_pixel(-31, 4), shadow_offset = util.by_pixel(0, 34), show_shadow = false },
-    { variation = 6, main_offset = util.by_pixel(-32, 5), shadow_offset = util.by_pixel(0, 35), show_shadow = false }
+    { variation = 4, main_offset = util.by_pixel(-44, -41), shadow_offset = util.by_pixel(-34, -36), show_shadow = false },
+    { variation = 2, main_offset = util.by_pixel(34, 30), shadow_offset = util.by_pixel(36, 35), show_shadow = false },
+    { variation = 0, main_offset = util.by_pixel(-35, 24), shadow_offset = util.by_pixel(-34, 31), show_shadow = false },
+    { variation = 6, main_offset = util.by_pixel(-34, 37), shadow_offset = util.by_pixel(-40, 49), show_shadow = false }
   }
 )
 

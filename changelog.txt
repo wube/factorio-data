@@ -1,6 +1,18 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.46
+Version: 0.18.47
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 0.18.46
+Date: 10. 08. 2020
+  Graphics:
+    - Electric mining drill graphics now fill bounding box more accurately.
+  Bugfixes:
+    - Fixed hovering over unit that was going toward an entity would crash if the entity was destroyed. (https://forums.factorio.com/87701)
+    - Fixed crashes/desyncs related to various different operations on a shelf of a player that just joined, and his blueprint shelf meta-data hasn't be synchronized yet.
+    - Fixed crashes/desyncs related to swapping item with a blueprint/book in the blueprint library that is not yet fully transferred into the game. (https://forums.factorio.com/87673)
+    - Fixed electric mining drill circuit connection graphics.
+    - Fixed crash when picking up something using the quickbar while setting up a blueprint from the inventory.
+    - Fixed that blueprint book GUI was scrolling to the top whenever something was done. (https://forums.factorio.com/87602)
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.45
 Date: 07. 08. 2020

@@ -1,4 +1,5 @@
 local smoke_animations = require("prototypes.entity.demo-smoke-animations")
+local util = require("util")
 
 local smoke_fast_animation = smoke_animations.trivial_smoke_fast
 local trivial_smoke = smoke_animations.trivial_smoke
@@ -242,4 +243,108 @@ data:extend
     render_layer = "higher-object-above",
     color = {r = 0.239, g = 0.875, b = 0.992, a = 0.690}
   },
+
+  smoke_animations.trivial_fire_smoke
+  {
+    name = "fire-smoke",
+    color = {r=0.4, g=0.4, b=0.4, a=0.25},
+    start_scale = 0.5,
+    end_scale = 1,
+    duration = 300,
+    spread_delay = 120,
+    fade_away_duration = 90,
+    fade_in_duration = 60,
+    animation =
+    {
+      filename = "__base__/graphics/entity/fire-smoke/fire-smoke.png",
+      flags = { "smoke" },
+      line_length = 8,
+      width = 253,
+      height = 210,
+      frame_count = 60,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.265625, -0.09375},
+      priority = "high",
+      animation_speed = 0.25
+    },
+    glow_animation =
+    {
+      filename = "__base__/graphics/entity/fire-smoke/fire-smoke-glow.png",
+      flags = { "smoke" },
+      blend_mode = "additive",
+      line_length = 8,
+      width = 253,
+      height = 152,
+      frame_count = 60,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.265625, 0.8125},
+      priority = "high",
+      animation_speed = 0.25
+    },
+    glow_fade_away_duration = 70
+  },
+
+  smoke_animations.trivial_fire_smoke
+  {
+    name = "fire-smoke-without-glow",
+    color = util.premul_color{1,1,1, 0.25},
+    start_scale = 0.5,
+    end_scale = 1,
+    duration = 300,
+    spread_delay = 120,
+    fade_away_duration = 90,
+    fade_in_duration = 60,
+    animation =
+    {
+      filename = "__base__/graphics/entity/fire-smoke/fire-smoke.png",
+      flags = { "smoke" },
+      line_length = 8,
+      width = 253,
+      height = 210,
+      frame_count = 60,
+      axially_symmetrical = false,
+      direction_count = 1,
+      shift = {-0.265625, -0.09375},
+      priority = "high",
+      animation_speed = 0.25
+    }
+  },
+
+  smoke_animations.trivial_fire_smoke
+  {
+    name = "soft-fire-smoke",
+    color = util.premul_color{0.3, 0.3, 0.3, 0.1},
+    start_scale = 0.5,
+    end_scale = 1.2,
+    duration = 300,
+    spread_delay = 120,
+    fade_away_duration = 60
+  },
+
+  smoke_animations.trivial_fire_smoke
+  {
+    name = "fire-smoke-on-adding-fuel",
+    start_scale = 0.5,
+    end_scale = 0.7,
+    duration = 300,
+    spread_delay = 120,
+    fade_away_duration = 60,
+    fade_in_duration = 60,
+    animation =
+    {
+       filename = "__base__/graphics/entity/fire-smoke/fire-smoke.png",
+       flags = { "smoke" },
+       line_length = 8,
+       width = 253,
+       height = 210,
+       frame_count = 60,
+       axially_symmetrical = false,
+       direction_count = 1,
+       shift = {-0.265625, -0.09375},
+       priority = "high",
+       animation_speed = 0.25
+    }
+  }
 }
