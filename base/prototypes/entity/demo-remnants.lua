@@ -1761,7 +1761,7 @@ local demo_remnants =
           --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
           apply_runtime_tint = true,
           direction_count = 4,
-          shift = util.by_pixel(0, 5),
+          shift = util.by_pixel(0, 6),
           hr_version=
           {
             priority = "low",
@@ -2760,7 +2760,7 @@ local demo_remnants =
           frame_count = 1,
           apply_runtime_tint = true,
           direction_count = 4,
-          shift = util.by_pixel(-1, -1),
+          shift = util.by_pixel(-1, 1),
           hr_version=
           {
             priority = "low",
