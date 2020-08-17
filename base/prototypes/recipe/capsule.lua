@@ -79,13 +79,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "discharge-defense-remote",
-    enabled = false,
-    ingredients = {{"electronic-circuit", 1}},
-    result = "discharge-defense-remote"
-  },
-  {
-    type = "recipe",
     name = "cliff-explosives",
     enabled = false,
     energy_required = 8,
@@ -96,16 +89,5 @@ data:extend(
       {"empty-barrel", 1}
     },
     result = "cliff-explosives"
-  },
-  {
-    type = "recipe",
-    name = "artillery-targeting-remote",
-    enabled = false,
-    ingredients =
-    {
-      {"processing-unit", 1},
-      {"radar", 1}
-    },
-    result = "artillery-targeting-remote"
   }
 })

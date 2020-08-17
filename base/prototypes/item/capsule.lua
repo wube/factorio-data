@@ -264,20 +264,6 @@ data:extend(
   },
   {
     type = "capsule",
-    name = "discharge-defense-remote",
-    icon = "__base__/graphics/icons/discharge-defense-equipment-controller.png",
-    icon_size = 64, icon_mipmaps = 4,
-    capsule_action =
-    {
-      type = "equipment-remote",
-      equipment = "discharge-defense-equipment"
-    },
-    subgroup = "capsule",
-    order = "z",
-    stack_size = 1
-  },
-  {
-    type = "capsule",
     name = "cliff-explosives",
     icon = "__base__/graphics/icons/cliff-explosives.png",
     icon_size = 64, icon_mipmaps = 4,
@@ -313,19 +299,5 @@ data:extend(
     subgroup = "terrain",
     order = "d[cliff-explosives]",
     stack_size = 20
-  },
-  {
-    type = "capsule",
-    name = "artillery-targeting-remote",
-    icon = "__base__/graphics/icons/artillery-targeting-remote.png",
-    icon_size = 64, icon_mipmaps = 4,
-    capsule_action =
-    {
-      type = "artillery-remote",
-      flare = "artillery-flare"
-    },
-    subgroup = "capsule",
-    order = "zz",
-    stack_size = 1
   }
 })

@@ -1,4 +1,5 @@
 local explosion_animations = require("prototypes.entity.demo-explosion-animations")
+local smoke_animations = require("prototypes.entity.demo-smoke-animations")
 local sounds = require("prototypes.entity.demo-sounds")
 local biter_die_effects = require("prototypes.entity.demo-biter-die-effects")
 
@@ -154,7 +155,7 @@ local demo_explosions =
       }
     }
   },
-
+  
   {
     type = "explosion",
     name = "grenade-explosion",
@@ -3664,7 +3665,7 @@ local demo_explosions =
     icon = "__base__/graphics/icons/rail.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-a-a",
     height = 0,
     animations =  util.empty_sprite(),--explosion_animations.medium_explosion(),
@@ -3734,7 +3735,7 @@ local demo_explosions =
     icon = "__base__/graphics/icons/train-stop.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-b-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
@@ -3832,7 +3833,7 @@ local demo_explosions =
     icon = "__base__/graphics/icons/rail-signal.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-c-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
@@ -3926,7 +3927,7 @@ local demo_explosions =
     icon = "__base__/graphics/icons/rail-chain-signal.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-d-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
@@ -3996,7 +3997,7 @@ local demo_explosions =
     icon = "__base__/graphics/icons/locomotive.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-e-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
@@ -4072,7 +4073,7 @@ local demo_explosions =
     icon = "__base__/graphics/icons/cargo-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-g-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),

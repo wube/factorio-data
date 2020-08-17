@@ -1,0 +1,43 @@
+Albert Bertolín Soler / glex - Art director
+Aleš Navrátil / Zopa - Graphic designer
+Ben Buckton / Abregado - Level designer
+Bětka Pospíšilová - Office & Administration manager
+Dan Stevens / TOGoS - Programmer
+Daniel James Taylor - Composer & sound designer
+Denis Koshman  / Harkonnen - Programmer
+Dominik Franěk - Programmer
+Dominik Schmaderer - 3D artist
+Erik Wellmann / Bilka - Wiki admin
+Ernestas Norvaišas / Einis - 3D artist
+Ian Macbeth - Sound designer
+Jan Kadlec - Programmer
+Jiří Šebele - Programmer
+Jitka Říhová - Office & Administration manager
+Jurek Höefer - 3D artist
+Kuba Marek / Blue Cube - Programmer
+Martin Hanzík / HanziQ - Operations Developer
+Michaela Woodhouse - Office & Administration manager
+Michal Kovařík / kovarex - Founder, Technology director
+Michal Pavelčík / Posila - Programmer
+Ondřej Majerech / Oxyd - Programmer
+Pavel Vlášek - 3D artist
+Petr Kratochvíl - Programmer
+Robert Asaftei / Twinsen - Programmer
+Robert Eding / Rseding91 - Programmer
+Sanqui - Operations Developer
+Sławomir Fraś / boskid - QA tester
+Scott Woodhouse / Klonan - Press, Community & Support manager
+Tomáš Kozelek / slpwnd - Managing director
+Tom Mason / wheybags - Programmer
+Václav Benč / V453000 - Technical artist
+Valerii Kuznietsov / Soliery - Sound designer
+Viktor Kopp - Programmer
+
+Big thanks to our source access community members who contributed code to the game.
+
+One very big thank you goes to the whole Factorio community, namely on the Factorio forums, on Steam, and on Reddit.
+- They have been testing experimental versions and found many bugs.
+- They created some great mods for the game.
+- They have been helping out to the people new to the game.
+- They have provided us with ideas, suggestions and feedback.
+- They have translated the game to many languages.

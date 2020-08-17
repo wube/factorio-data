@@ -65,6 +65,7 @@ if not data.is_demo then
   require("prototypes.entity.remnants")
   require("prototypes.entity.flying-robot")
   require("prototypes.entity.circuit-network")
+  require("prototypes.entity.atomic-bomb")
   require("prototypes.item.capsule")
   require("prototypes.item.ammo")
   require("prototypes.item.armor")

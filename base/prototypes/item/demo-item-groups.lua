@@ -102,63 +102,69 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "transport-remnants",
+    name = "train-transport-remnants",
     group = "environment",
     order = "de"
   },
   {
     type = "item-subgroup",
-    name = "logistic-network-remnants",
+    name = "transport-remnants",
     group = "environment",
     order = "df"
   },
   {
     type = "item-subgroup",
-    name = "circuit-network-remnants",
+    name = "logistic-network-remnants",
     group = "environment",
     order = "dg"
   },
   {
     type = "item-subgroup",
+    name = "circuit-network-remnants",
+    group = "environment",
+    order = "dh"
+  },
+  {
+    type = "item-subgroup",
     name = "energy-remnants",
-    group = "environment",
-    order = "dh"
-  },
-  {
-    type = "item-subgroup",
-    name = "extraction-machine-remnants",
-    group = "environment",
-    order = "dh"
-  },
-  {
-    type = "item-subgroup",
-    name = "smelting-machine-remnants",
     group = "environment",
     order = "di"
   },
   {
     type = "item-subgroup",
-    name = "production-machine-remnants",
+    name = "extraction-machine-remnants",
+    group = "environment",
+    order = "di"
+  },
+  {
+    type = "item-subgroup",
+    name = "smelting-machine-remnants",
     group = "environment",
     order = "dj"
   },
   {
     type = "item-subgroup",
-    name = "defensive-structure-remnants",
+    name = "production-machine-remnants",
     group = "environment",
     order = "dk"
+  },
+  {
+    type = "item-subgroup",
+    name = "defensive-structure-remnants",
+    group = "environment",
+    order = "dl"
   },
   {
     type = "item-subgroup",
     name = "generic-remnants",
     group = "environment",
-    order = "dk"
+    order = "dl"
   },
   {
     type = "item-subgroup",
     name = "scorchmarks",
     group = "environment",
-    order = "dl"
+    order = "dm"
   },
   {
     type = "item-subgroup",
@@ -213,27 +219,33 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "transport",
+    name = "train-transport",
     group = "logistics",
     order = "e"
   },
   {
     type = "item-subgroup",
-    name = "logistic-network",
+    name = "transport",
     group = "logistics",
     order = "f"
   },
   {
     type = "item-subgroup",
-    name = "circuit-network",
+    name = "logistic-network",
     group = "logistics",
     order = "g"
   },
   {
     type = "item-subgroup",
-    name = "terrain",
+    name = "circuit-network",
     group = "logistics",
     order = "h"
+  },
+  {
+    type = "item-subgroup",
+    name = "terrain",
+    group = "logistics",
+    order = "i"
   },
   {
     type = "item-group",
@@ -318,9 +330,15 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "defensive-structure",
+    name = "military-equipment",
     group = "combat",
     order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "defensive-structure",
+    group = "combat",
+    order = "g"
   },
   {
     type = "item-group",
@@ -436,21 +454,27 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "transport-explosions",
+    name = "train-transport-explosions",
     group = "effects",
     order = "ae"
   },
   {
     type = "item-subgroup",
-    name = "logistic-network-explosions",
+    name = "transport-explosions",
     group = "effects",
     order = "af"
   },
   {
     type = "item-subgroup",
-    name = "circuit-network-explosions",
+    name = "logistic-network-explosions",
     group = "effects",
     order = "ag"
+  },
+  {
+    type = "item-subgroup",
+    name = "circuit-network-explosions",
+    group = "effects",
+    order = "ah"
   },
   {
     type = "item-subgroup",

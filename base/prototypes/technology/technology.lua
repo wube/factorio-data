@@ -2905,6 +2905,39 @@ data:extend(
   },
   {
     type = "technology",
+    name = "spidertron",
+    icon_size = 128,
+    icon = "__base__/graphics/technology/spidertron.png",
+    effects =
+    {
+      {
+        type = "unlock-recipe",
+        recipe = "spidertron"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "spidertron-remote"
+      },
+    },
+    prerequisites = {"military-4", "exoskeleton-equipment", "fusion-reactor-equipment", "rocketry", "rocket-control-unit", "effectivity-module-3" },
+    unit =
+    {
+      ingredients =
+      {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"military-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"production-science-pack", 1},
+        {"utility-science-pack", 1}
+      },
+      time = 30,
+      count = 2500
+    },
+    order = "d-e-g"
+  },
+  {
+    type = "technology",
     name = "circuit-network",
     icon_size = 128,
     icon = "__base__/graphics/technology/circuit-network.png",

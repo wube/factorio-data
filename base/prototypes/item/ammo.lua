@@ -149,8 +149,8 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     ammo_type =
     {
-      range_modifier = 3,
-      cooldown_modifier = 3,
+      range_modifier = 1.5,
+      cooldown_modifier = 10,
       target_type = "position",
       category = "rocket",
       action =

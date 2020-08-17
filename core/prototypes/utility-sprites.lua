@@ -789,9 +789,10 @@ data:extend(
     {
       filename = "__core__/graphics/hand.png",
       priority = "extra-high-no-scale",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
+      width = 128,
+      height = 128,
+      mipmap_count = 3,
+      flags = {"gui-icon"}
     },
     entity_info_dark_background =
     {

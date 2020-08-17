@@ -642,7 +642,39 @@ data:extend(
     --  }
     --},
     autoplace = enemy_autoplace.enemy_worm_autoplace(0),
-    call_for_help_radius = 40
+    call_for_help_radius = 40,
+    spawn_decorations_on_expansion = true,
+    spawn_decoration =
+    {
+      {
+        decorative = "worms-decal",
+        spawn_min = 0,
+        spawn_max = 2,
+        spawn_min_radius = 1,
+        spawn_max_radius = 2
+      },
+      {
+        decorative = "shroom-decal",
+        spawn_min = 1,
+        spawn_max = 1,
+        spawn_min_radius = 1,
+        spawn_max_radius = 2
+      },
+      {
+        decorative = "enemy-decal",
+        spawn_min = 1,
+        spawn_max = 2,
+        spawn_min_radius = 0,
+        spawn_max_radius = 1,
+      },
+      {
+        decorative = "enemy-decal-transparent",
+        spawn_min = 2,
+        spawn_max = 4,
+        spawn_min_radius = 1,
+        spawn_max_radius = 2,
+      },
+    }
   },
   {
     type = "ammo-turret",

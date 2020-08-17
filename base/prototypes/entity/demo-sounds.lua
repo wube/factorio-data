@@ -453,23 +453,23 @@ sounds.inserter_basic =
   {
     {
       filename = "__base__/sound/inserter-basic-1.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-basic-2.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-basic-3.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-basic-4.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-basic-5.ogg",
-      volume = 0.4
+      volume = 0.5
     },
   },
   audible_distance_modifier = 0.3,
@@ -482,23 +482,23 @@ sounds.inserter_fast =
   {
     {
       filename = "__base__/sound/inserter-fast-1.ogg",
-      volume = 0.4
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-fast-2.ogg",
-      volume = 0.45
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-fast-3.ogg",
-      volume = 0.45
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-fast-4.ogg",
-      volume = 0.45
+      volume = 0.5
     },
     {
       filename = "__base__/sound/inserter-fast-5.ogg",
-      volume = 0.45
+      volume = 0.5
     }
   },
   audible_distance_modifier = 0.3,
@@ -568,23 +568,23 @@ sounds.fast_splitter =
   {
     {
       filename = "__base__/sound/splitters/fast-splitter.ogg",
-      volume = 0.31
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-2.ogg",
-      volume = 0.31
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-3.ogg",
-      volume = 0.31
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-4.ogg",
-      volume = 0.31
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/fast-splitter-5.ogg",
-      volume = 0.32
+      volume = 0.2
     }
   },
   max_sounds_per_type = 3,
@@ -597,23 +597,23 @@ sounds.express_splitter =
   {
     {
       filename = "__base__/sound/splitters/express-splitter.ogg",
-      volume = 0.3
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/express-splitter-2.ogg",
-      volume = 0.3
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/express-splitter-3.ogg",
-      volume = 0.3
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/express-splitter-4.ogg",
-      volume = 0.3
+      volume = 0.2
     },
     {
       filename = "__base__/sound/splitters/express-splitter-5.ogg",
-      volume = 0.3
+      volume = 0.2
     }
   },
   max_sounds_per_type = 3,
@@ -659,6 +659,30 @@ sounds.express_loader =
   audible_distance_modifier = 0.45
 }
 
+sounds.spidertron_leg =
+{
+  {
+    filename = "__base__/sound/spidertron/spidertron-leg-1.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/spidertron/spidertron-leg-2.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/spidertron/spidertron-leg-3.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/spidertron/spidertron-leg-4.ogg",
+    volume = 0.2
+  },
+  {
+    filename = "__base__/sound/spidertron/spidertron-leg-5.ogg",
+    volume = 0.2
+  }
+}
+
 sounds.pipe =
 {
   {
@@ -666,7 +690,6 @@ sounds.pipe =
     volume = 0.45
   }
 }
-
 
 sounds.train_brakes =
 {
@@ -1440,6 +1463,50 @@ sounds.large_explosion = function(volume)
       {
         filename = "__base__/sound/fight/large-explosion-2.ogg",
         volume = 0.55
+      }
+    }
+  }
+end
+
+sounds.nuclear_explosion = function(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 1,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/fight/nuclear-explosion-1.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/fight/nuclear-explosion-2.ogg",
+        volume = volume
+      },
+      {
+        filename = "__base__/sound/fight/nuclear-explosion-3.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+sounds.nuclear_explosion_aftershock = function(volume)
+  return
+  {
+    aggregation =
+    {
+      max_count = 1,
+      remove = true
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/fight/nuclear-explosion-aftershock.ogg",
+        volume = volume
       }
     }
   }

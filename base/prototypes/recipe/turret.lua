@@ -40,6 +40,17 @@ data:extend(
       {"advanced-circuit", 20}
     },
     result = "artillery-turret"
+  },
+  {
+    type = "recipe",
+    name = "artillery-targeting-remote",
+    enabled = false,
+    ingredients =
+    {
+      {"processing-unit", 1},
+      {"radar", 1}
+    },
+    result = "artillery-targeting-remote"
   }
 }
 )

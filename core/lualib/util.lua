@@ -255,6 +255,19 @@ util.insert_safe = function(entity, item_dict)
   end
 end
 
+util.remove_safe = function(entity, item_dict)
+  if not (entity and entity.valid and item_dict) then return end
+  local items = game.item_prototypes
+  local remove = entity.remove_item
+  for name, count in pairs (item_dict) do
+    if items[name] then
+      remove{name = name, count = count}
+    else
+      log("Item to remove not valid: "..name)
+    end
+  end
+end
+
 util.split_whitespace = function(string)
   if not string then return {} end
 

@@ -540,7 +540,39 @@ data:extend(
     },
     build_base_evolution_requirement = 0.3,
     autoplace = enemy_autoplace.enemy_worm_autoplace(2),
-    call_for_help_radius = 40
+    call_for_help_radius = 40,
+    spawn_decorations_on_expansion = true,
+    spawn_decoration =
+    {
+      {
+        decorative = "worms-decal",
+        spawn_min = 1,
+        spawn_max = 2,
+        spawn_min_radius = 1,
+        spawn_max_radius = 3
+      },
+      {
+        decorative = "shroom-decal",
+        spawn_min = 1,
+        spawn_max = 2,
+        spawn_min_radius = 1,
+        spawn_max_radius = 2
+      },
+      {
+        decorative = "enemy-decal",
+        spawn_min = 1,
+        spawn_max = 3,
+        spawn_min_radius = 0,
+        spawn_max_radius = 3,
+      },
+      {
+        decorative = "enemy-decal-transparent",
+        spawn_min = 2,
+        spawn_max = 4,
+        spawn_min_radius = 1,
+        spawn_max_radius = 3,
+      },
+    }
   },
 
   {
@@ -639,7 +671,39 @@ data:extend(
     },
     build_base_evolution_requirement = 0.5,
     autoplace = enemy_autoplace.enemy_worm_autoplace(5),
-    call_for_help_radius = 40
+    call_for_help_radius = 40,
+    spawn_decorations_on_expansion = true,
+    spawn_decoration =
+    {
+      {
+        decorative = "worms-decal",
+        spawn_min = 1,
+        spawn_max = 2,
+        spawn_min_radius = 1,
+        spawn_max_radius = 4
+      },
+      {
+        decorative = "shroom-decal",
+        spawn_min = 1,
+        spawn_max = 2,
+        spawn_min_radius = 1,
+        spawn_max_radius = 2
+      },
+      {
+        decorative = "enemy-decal",
+        spawn_min = 1,
+        spawn_max = 4,
+        spawn_min_radius = 1,
+        spawn_max_radius = 3,
+      },
+      {
+        decorative = "enemy-decal-transparent",
+        spawn_min = 3,
+        spawn_max = 5,
+        spawn_min_radius = 1,
+        spawn_max_radius = 4,
+      },
+    }
   },
   {
     type = "turret",
@@ -737,7 +801,39 @@ data:extend(
     },
     build_base_evolution_requirement = 0.9,
     autoplace = enemy_autoplace.enemy_worm_autoplace(8),
-    call_for_help_radius = 80
+    call_for_help_radius = 80,
+    spawn_decorations_on_expansion = true,
+    spawn_decoration =
+    {
+      {
+        decorative = "worms-decal",
+        spawn_min = 1,
+        spawn_max = 3,
+        spawn_min_radius = 1,
+        spawn_max_radius = 5
+      },
+      {
+        decorative = "shroom-decal",
+        spawn_min = 1,
+        spawn_max = 2,
+        spawn_min_radius = 1,
+        spawn_max_radius = 2
+      },
+      {
+        decorative = "enemy-decal",
+        spawn_min = 1,
+        spawn_max = 4,
+        spawn_min_radius = 1,
+        spawn_max_radius = 4,
+      },
+      {
+        decorative = "enemy-decal-transparent",
+        spawn_min = 3,
+        spawn_max = 5,
+        spawn_min_radius = 1,
+        spawn_max_radius = 4,
+      },
+    }
   },
   {
     type = "corpse",

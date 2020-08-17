@@ -118,6 +118,611 @@ local function rock_autoplace_settings(multiplier, order_suffix, rectangle)
   }
 end
 
+function shroom_decal(name, tint)
+  return
+  {
+    name = name,
+    type = "optimized-decorative",
+    order = "b[decorative]-j[bush]-a[mini]-a[green]",
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
+    collision_box = {{-3.5, -1.8}, {3.5, 1.8}},
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-00.png",
+        priority = base_decorative_sprite_priority,
+        width = 166,
+        height = 88,
+        shift = util.by_pixel(-12, -10),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-00.png",
+          priority = base_decorative_sprite_priority,
+          width = 334,
+          height = 206,
+          shift = util.by_pixel(-13, -1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-01.png",
+        priority = base_decorative_sprite_priority,
+        width = 128,
+        height = 94,
+        shift = util.by_pixel(12, 6),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-01.png",
+          priority = base_decorative_sprite_priority,
+          width = 256,
+          height = 182,
+          shift = util.by_pixel(12, 7),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-02.png",
+        priority = base_decorative_sprite_priority,
+        width = 204,
+        height = 96,
+        shift = util.by_pixel(-8, -2),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-02.png",
+          priority = base_decorative_sprite_priority,
+          width = 406,
+          height = 194,
+          shift = util.by_pixel(-8, -3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-03.png",
+        priority = base_decorative_sprite_priority,
+        width = 216,
+        height = 96,
+        shift = util.by_pixel(6, 8),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-03.png",
+          priority = base_decorative_sprite_priority,
+          width = 432,
+          height = 220,
+          shift = util.by_pixel(6, 1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-04.png",
+        priority = base_decorative_sprite_priority,
+        width = 184,
+        height = 102,
+        shift = util.by_pixel(-12, 8),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-04.png",
+          priority = base_decorative_sprite_priority,
+          width = 368,
+          height = 206,
+          shift = util.by_pixel(-12, 7),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-05.png",
+        priority = base_decorative_sprite_priority,
+        width = 170,
+        height = 102,
+        shift = util.by_pixel(24, 2),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-05.png",
+          priority = base_decorative_sprite_priority,
+          width = 340,
+          height = 200,
+          shift = util.by_pixel(24, 3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-06.png",
+        priority = base_decorative_sprite_priority,
+        width = 162,
+        height = 108,
+        shift = util.by_pixel(24, 2),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-06.png",
+          priority = base_decorative_sprite_priority,
+          width = 326,
+          height = 214,
+          shift = util.by_pixel(23, 2),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-07.png",
+        priority = base_decorative_sprite_priority,
+        width = 168,
+        height = 98,
+        shift = util.by_pixel(20, 8),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-07.png",
+          priority = base_decorative_sprite_priority,
+          width = 336,
+          height = 190,
+          shift = util.by_pixel(20, 9),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-08.png",
+        priority = base_decorative_sprite_priority,
+        width = 192,
+        height = 104,
+        shift = util.by_pixel(-12, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-08.png",
+          priority = base_decorative_sprite_priority,
+          width = 386,
+          height = 206,
+          shift = util.by_pixel(-12, 1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-09.png",
+        priority = base_decorative_sprite_priority,
+        width = 138,
+        height = 78,
+        shift = util.by_pixel(8, -12),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-09.png",
+          priority = base_decorative_sprite_priority,
+          width = 278,
+          height = 150,
+          shift = util.by_pixel(8, -11),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-10.png",
+        priority = base_decorative_sprite_priority,
+        width = 182,
+        height = 100,
+        shift = util.by_pixel(2, -2),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-10.png",
+          priority = base_decorative_sprite_priority,
+          width = 364,
+          height = 204,
+          shift = util.by_pixel(2, -3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-11.png",
+        priority = base_decorative_sprite_priority,
+        width = 192,
+        height = 104,
+        shift = util.by_pixel(22, 4),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-11.png",
+          priority = base_decorative_sprite_priority,
+          width = 378,
+          height = 206,
+          shift = util.by_pixel(23, 5),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-12.png",
+        priority = base_decorative_sprite_priority,
+        width = 160,
+        height = 108,
+        shift = util.by_pixel(-4, 4),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-12.png",
+          priority = base_decorative_sprite_priority,
+          width = 320,
+          height = 220,
+          shift = util.by_pixel(-4, 3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-13.png",
+        priority = base_decorative_sprite_priority,
+        width = 158,
+        height = 82,
+        shift = util.by_pixel(32, 10),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-13.png",
+          priority = base_decorative_sprite_priority,
+          width = 318,
+          height = 160,
+          shift = util.by_pixel(31, 11),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-14.png",
+        priority = base_decorative_sprite_priority,
+        width = 186,
+        height = 104,
+        shift = util.by_pixel(24, 6),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-14.png",
+          priority = base_decorative_sprite_priority,
+          width = 368,
+          height = 206,
+          shift = util.by_pixel(25, 6),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/shroom-decal/shroom-decal-15.png",
+        priority = base_decorative_sprite_priority,
+        width = 208,
+        height = 112,
+        shift = util.by_pixel(-6, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/shroom-decal/hr-shroom-decal-15.png",
+          priority = base_decorative_sprite_priority,
+          width = 410,
+          height = 222,
+          shift = util.by_pixel(-5, 0),
+          tint = tint,
+          scale = 0.5,
+        }
+      }
+    }
+  }
+end
+
+function lichen(name, tint)
+  return
+  {
+    name = name,
+    type = "optimized-decorative",
+    order = "b[decorative]-j[bush]-a[mini]-a[green]",
+    trigger_effect = decorative_trigger_effects.lichen(),
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
+    collision_box = {{-2.1, -1.7}, {2.1, 1.7}},
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-00.png",
+        priority = base_decorative_sprite_priority,
+        width = 180,
+        height = 118,
+        shift = util.by_pixel(-4, -6),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-00.png",
+          priority = base_decorative_sprite_priority,
+          width = 356,
+          height = 248,
+          shift = util.by_pixel(-3, -7),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-01.png",
+        priority = base_decorative_sprite_priority,
+        width = 168,
+        height = 128,
+        shift = util.by_pixel(4, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-01.png",
+          priority = base_decorative_sprite_priority,
+          width = 334,
+          height = 260,
+          shift = util.by_pixel(4, -1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-02.png",
+        priority = base_decorative_sprite_priority,
+        width = 202,
+        height = 128,
+        shift = util.by_pixel(4, 4),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-02.png",
+          priority = base_decorative_sprite_priority,
+          width = 418,
+          height = 262,
+          shift = util.by_pixel(4, 3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-03.png",
+        priority = base_decorative_sprite_priority,
+        width = 178,
+        height = 116,
+        shift = util.by_pixel(2, 2),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-03.png",
+          priority = base_decorative_sprite_priority,
+          width = 364,
+          height = 226,
+          shift = util.by_pixel(0, 3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-04.png",
+        priority = base_decorative_sprite_priority,
+        width = 188,
+        height = 154,
+        shift = util.by_pixel(-2, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-04.png",
+          priority = base_decorative_sprite_priority,
+          width = 382,
+          height = 304,
+          shift = util.by_pixel(1, 1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-05.png",
+        priority = base_decorative_sprite_priority,
+        width = 150,
+        height = 114,
+        shift = util.by_pixel(-8, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-05.png",
+          priority = base_decorative_sprite_priority,
+          width = 300,
+          height = 224,
+          shift = util.by_pixel(-8, 1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-06.png",
+        priority = base_decorative_sprite_priority,
+        width = 160,
+        height = 102,
+        shift = util.by_pixel(-10, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-06.png",
+          priority = base_decorative_sprite_priority,
+          width = 314,
+          height = 224,
+          shift = util.by_pixel(-9, 2),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-07.png",
+        priority = base_decorative_sprite_priority,
+        width = 160,
+        height = 128,
+        shift = util.by_pixel(-2, -4),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-07.png",
+          priority = base_decorative_sprite_priority,
+          width = 318,
+          height = 266,
+          shift = util.by_pixel(-2, -7),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-08.png",
+        priority = base_decorative_sprite_priority,
+        width = 162,
+        height = 98,
+        shift = util.by_pixel(2, 0),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-08.png",
+          priority = base_decorative_sprite_priority,
+          width = 326,
+          height = 200,
+          shift = util.by_pixel(1, -1),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-09.png",
+        priority = base_decorative_sprite_priority,
+        width = 146,
+        height = 94,
+        shift = util.by_pixel(-18, 6),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-09.png",
+          priority = base_decorative_sprite_priority,
+          width = 304,
+          height = 182,
+          shift = util.by_pixel(-18, 7),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-10.png",
+        priority = base_decorative_sprite_priority,
+        width = 118,
+        height = 88,
+        shift = util.by_pixel(-2, -14),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-10.png",
+          priority = base_decorative_sprite_priority,
+          width = 238,
+          height = 172,
+          shift = util.by_pixel(-3, -13),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-11.png",
+        priority = base_decorative_sprite_priority,
+        width = 154,
+        height = 130,
+        shift = util.by_pixel(8, -4),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-11.png",
+          priority = base_decorative_sprite_priority,
+          width = 332,
+          height = 258,
+          shift = util.by_pixel(6, -4),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-12.png",
+        priority = base_decorative_sprite_priority,
+        width = 130,
+        height = 110,
+        shift = util.by_pixel(2, -10),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-12.png",
+          priority = base_decorative_sprite_priority,
+          width = 256,
+          height = 218,
+          shift = util.by_pixel(3, -9),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-13.png",
+        priority = base_decorative_sprite_priority,
+        width = 184,
+        height = 104,
+        shift = util.by_pixel(0, -8),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-13.png",
+          priority = base_decorative_sprite_priority,
+          width = 372,
+          height = 216,
+          shift = util.by_pixel(-1, -6),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-14.png",
+        priority = base_decorative_sprite_priority,
+        width = 68,
+        height = 68,
+        shift = util.by_pixel(-2, 4),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-14.png",
+          priority = base_decorative_sprite_priority,
+          width = 134,
+          height = 140,
+          shift = util.by_pixel(-2, 3),
+          tint = tint,
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/lichen-decal/lichen-decal-15.png",
+        priority = base_decorative_sprite_priority,
+        width = 90,
+        height = 66,
+        shift = util.by_pixel(10, 6),
+        tint = tint,
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/lichen-decal/hr-lichen-decal-15.png",
+          priority = base_decorative_sprite_priority,
+          width = 174,
+          height = 134,
+          shift = util.by_pixel(11, 5),
+          tint = tint,
+          scale = 0.5,
+        }
+      }
+    }
+  }
+end
+
 local function decal_autoplace_settgins(noise_layer, rectangle)
   local peak = {}
 
@@ -4745,289 +5350,273 @@ data:extend{
       }
     }
   },
+  lichen("lichen-decal", {r = 221 / 255, g = 219 / 255, b = 81 / 255}),
   {
-    name = "lichen",
+    name = "worms-decal",
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
-    trigger_effect = decorative_trigger_effects.lichen(),
-    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    --autoplace =
-    --{
-    --  order = "a[doodad]-e[garballo]",
-    --  sharpness = 1,
-    --  max_probability = 1,
-    --  random_probability_penalty = 0.4,
-    --  coverage = 0.01,
-    --  peaks = autoplace_utils.peaks({{{35, 1}, {20, 0.4}}},
-    --  {
-    --    {
-    --      influence = 0.5,
-    --      noise_layer = "garballo",
-    --      noise_octaves_difference = -2,
-    --      noise_persistence = 0.7
-    --    }
-    --  })
-    --},
+    collision_box = {{-3.1, -2.5}, {3.1, 2.5}},
     pictures =
     {
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-00.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-00.png",
         priority = base_decorative_sprite_priority,
-        width = 164,
-        height = 112,
-        shift = util.by_pixel(-8, -6),
+        width = 212,
+        height = 104,
+        shift = util.by_pixel(-10, -12),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-00.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-00.png",
           priority = base_decorative_sprite_priority,
-          width = 324,
-          height = 224,
-          shift = util.by_pixel(-7, -6),
-          scale = 0.5
+          width = 426,
+          height = 206,
+          shift = util.by_pixel(-11, -12),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-01.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-01.png",
         priority = base_decorative_sprite_priority,
-        width = 160,
-        height = 116,
-        shift = util.by_pixel(4, 0),
+        width = 200,
+        height = 110,
+        shift = util.by_pixel(-6, -16),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-01.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-01.png",
           priority = base_decorative_sprite_priority,
-          width = 320,
-          height = 234,
-          shift = util.by_pixel(4, -1),
-          scale = 0.5
+          width = 400,
+          height = 216,
+          shift = util.by_pixel(-6, -15),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-02.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-02.png",
         priority = base_decorative_sprite_priority,
-        width = 180,
-        height = 126,
-        shift = util.by_pixel(0, 2),
+        width = 202,
+        height = 110,
+        shift = util.by_pixel(2, 0),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-02.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-02.png",
           priority = base_decorative_sprite_priority,
-          width = 372,
-          height = 252,
-          shift = util.by_pixel(2, 2),
-          scale = 0.5
+          width = 436,
+          height = 232,
+          shift = util.by_pixel(10, 5),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-03.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-03.png",
         priority = base_decorative_sprite_priority,
-        width = 170,
-        height = 108,
-        shift = util.by_pixel(0, 0),
+        width = 220,
+        height = 96,
+        shift = util.by_pixel(2, 0),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-03.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-03.png",
           priority = base_decorative_sprite_priority,
-          width = 340,
-          height = 212,
-          shift = util.by_pixel(0, 1),
-          scale = 0.5
+          width = 472,
+          height = 236,
+          shift = util.by_pixel(10, -11),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-04.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-04.png",
         priority = base_decorative_sprite_priority,
-        width = 178,
-        height = 134,
-        shift = util.by_pixel(0, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-04.png",
-          priority = base_decorative_sprite_priority,
-          width = 350,
-          height = 278,
-          shift = util.by_pixel(1, 2),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/lichen/lichen-05.png",
-        priority = base_decorative_sprite_priority,
-        width = 132,
-        height = 108,
-        shift = util.by_pixel(-4, 2),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-05.png",
-          priority = base_decorative_sprite_priority,
-          width = 278,
-          height = 218,
-          shift = util.by_pixel(-8, 2),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/lichen/lichen-06.png",
-        priority = base_decorative_sprite_priority,
-        width = 122,
-        height = 102,
+        width = 194,
+        height = 122,
         shift = util.by_pixel(8, 0),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-06.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-04.png",
           priority = base_decorative_sprite_priority,
-          width = 242,
-          height = 202,
-          shift = util.by_pixel(8, 0),
-          scale = 0.5
+          width = 392,
+          height = 244,
+          shift = util.by_pixel(7, 0),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-07.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-05.png",
         priority = base_decorative_sprite_priority,
-        width = 142,
-        height = 106,
-        shift = util.by_pixel(-2, 6),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-07.png",
-          priority = base_decorative_sprite_priority,
-          width = 286,
-          height = 212,
-          shift = util.by_pixel(0, 6),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/lichen/lichen-08.png",
-        priority = base_decorative_sprite_priority,
-        width = 136,
-        height = 94,
-        shift = util.by_pixel(-14, -2),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-08.png",
-          priority = base_decorative_sprite_priority,
-          width = 268,
-          height = 186,
-          shift = util.by_pixel(-13, -2),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/lichen/lichen-09.png",
-        priority = base_decorative_sprite_priority,
-        width = 138,
-        height = 78,
-        shift = util.by_pixel(-16, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-09.png",
-          priority = base_decorative_sprite_priority,
-          width = 270,
-          height = 152,
-          shift = util.by_pixel(-15, 1),
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/decorative/lichen/lichen-10.png",
-        priority = base_decorative_sprite_priority,
-        width = 106,
+        width = 190,
         height = 80,
-        shift = util.by_pixel(2, -10),
+        shift = util.by_pixel(0, 14),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-10.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-05.png",
           priority = base_decorative_sprite_priority,
-          width = 206,
+          width = 378,
           height = 158,
-          shift = util.by_pixel(3, -10),
-          scale = 0.5
+          shift = util.by_pixel(0, 14),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-11.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-06.png",
         priority = base_decorative_sprite_priority,
-        width = 150,
-        height = 116,
-        shift = util.by_pixel(8, -6),
+        width = 190,
+        height = 114,
+        shift = util.by_pixel(18, -2),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-11.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-06.png",
           priority = base_decorative_sprite_priority,
-          width = 298,
+          width = 444,
           height = 226,
-          shift = util.by_pixel(8, -5),
-          scale = 0.5
+          shift = util.by_pixel(2, -2),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-12.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-07.png",
         priority = base_decorative_sprite_priority,
-        width = 128,
-        height = 98,
+        width = 188,
+        height = 90,
+        shift = util.by_pixel(14, -4),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-07.png",
+          priority = base_decorative_sprite_priority,
+          width = 376,
+          height = 178,
+          shift = util.by_pixel(14, -4),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-08.png",
+        priority = base_decorative_sprite_priority,
+        width = 198,
+        height = 96,
+        shift = util.by_pixel(18, -10),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-08.png",
+          priority = base_decorative_sprite_priority,
+          width = 398,
+          height = 190,
+          shift = util.by_pixel(17, -10),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-09.png",
+        priority = base_decorative_sprite_priority,
+        width = 210,
+        height = 102,
         shift = util.by_pixel(2, -10),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-12.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-09.png",
           priority = base_decorative_sprite_priority,
-          width = 256,
-          height = 192,
-          shift = util.by_pixel(2, -9),
-          scale = 0.5
+          width = 414,
+          height = 206,
+          shift = util.by_pixel(3, -11),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-13.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-10.png",
         priority = base_decorative_sprite_priority,
-        width = 162,
-        height = 100,
-        shift = util.by_pixel(-2, -8),
+        width = 210,
+        height = 116,
+        shift = util.by_pixel(-2, -2),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-13.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-10.png",
           priority = base_decorative_sprite_priority,
-          width = 324,
-          height = 196,
-          shift = util.by_pixel(-2, -7),
-          scale = 0.5
+          width = 416,
+          height = 226,
+          shift = util.by_pixel(-1, -1),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-14.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-11.png",
         priority = base_decorative_sprite_priority,
-        width = 60,
-        height = 56,
-        shift = util.by_pixel(-2, 6),
+        width = 184,
+        height = 118,
+        shift = util.by_pixel(-4, -6),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-14.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-11.png",
           priority = base_decorative_sprite_priority,
-          width = 120,
-          height = 110,
-          shift = util.by_pixel(-2, 6),
-          scale = 0.5
+          width = 368,
+          height = 232,
+          shift = util.by_pixel(-4, -5),
+          scale = 0.5,
         }
       },
       {
-        filename = "__base__/graphics/decorative/lichen/lichen-15.png",
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-12.png",
         priority = base_decorative_sprite_priority,
-        width = 70,
+        width = 208,
+        height = 108,
+        shift = util.by_pixel(14, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-12.png",
+          priority = base_decorative_sprite_priority,
+          width = 416,
+          height = 214,
+          shift = util.by_pixel(14, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-13.png",
+        priority = base_decorative_sprite_priority,
+        width = 186,
+        height = 104,
+        shift = util.by_pixel(14, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-13.png",
+          priority = base_decorative_sprite_priority,
+          width = 368,
+          height = 208,
+          shift = util.by_pixel(15, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-14.png",
+        priority = base_decorative_sprite_priority,
+        width = 122,
         height = 60,
-        shift = util.by_pixel(12, 4),
+        shift = util.by_pixel(30, 4),
         hr_version =
         {
-          filename = "__base__/graphics/decorative/lichen/hr-lichen-15.png",
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-14.png",
           priority = base_decorative_sprite_priority,
-          width = 146,
-          height = 116,
-          shift = util.by_pixel(10, 5),
-          scale = 0.5
+          width = 246,
+          height = 122,
+          shift = util.by_pixel(29, 3),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/worms-decal/worms-decal-15.png",
+        priority = base_decorative_sprite_priority,
+        width = 202,
+        height = 100,
+        shift = util.by_pixel(-4, -8),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/worms-decal/hr-worms-decal-15.png",
+          priority = base_decorative_sprite_priority,
+          width = 404,
+          height = 198,
+          shift = util.by_pixel(-4, -8),
+          scale = 0.5,
         }
       }
     }
   },
+  shroom_decal("shroom-decal", {r = 225 / 255, g = 171 / 255, b = 141 / 255}),
   {
     name = "green-bush-mini",
     type = "optimized-decorative",
@@ -5597,6 +6186,177 @@ data:extend{
         }
       },
 
+    }
+  },
+  {
+    name = "muddy-stump",
+    type = "optimized-decorative",
+    order = "b[decorative]-a[stump]-a[muddy]",
+    collision_mask = {"water-tile"},
+    collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    render_layer = "object",
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-00.png",
+        priority = base_decorative_sprite_priority,
+        width = 52,
+        height = 44,
+        shift = util.by_pixel(2, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-00.png",
+          priority = base_decorative_sprite_priority,
+          width = 106,
+          height = 90,
+          shift = util.by_pixel(1, -3),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-01.png",
+        priority = base_decorative_sprite_priority,
+        width = 60,
+        height = 42,
+        shift = util.by_pixel(2, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-01.png",
+          priority = base_decorative_sprite_priority,
+          width = 114,
+          height = 84,
+          shift = util.by_pixel(3, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-02.png",
+        priority = base_decorative_sprite_priority,
+        width = 58,
+        height = 48,
+        shift = util.by_pixel(2, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-02.png",
+          priority = base_decorative_sprite_priority,
+          width = 120,
+          height = 92,
+          shift = util.by_pixel(1, -1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-03.png",
+        priority = base_decorative_sprite_priority,
+        width = 52,
+        height = 38,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-03.png",
+          priority = base_decorative_sprite_priority,
+          width = 104,
+          height = 74,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-04.png",
+        priority = base_decorative_sprite_priority,
+        width = 46,
+        height = 36,
+        shift = util.by_pixel(0, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-04.png",
+          priority = base_decorative_sprite_priority,
+          width = 92,
+          height = 68,
+          shift = util.by_pixel(0, -1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-05.png",
+        priority = base_decorative_sprite_priority,
+        width = 48,
+        height = 40,
+        shift = util.by_pixel(4, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-05.png",
+          priority = base_decorative_sprite_priority,
+          width = 92,
+          height = 80,
+          shift = util.by_pixel(5, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-06.png",
+        priority = base_decorative_sprite_priority,
+        width = 56,
+        height = 36,
+        shift = util.by_pixel(4, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-06.png",
+          priority = base_decorative_sprite_priority,
+          width = 112,
+          height = 72,
+          shift = util.by_pixel(4, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-07.png",
+        priority = base_decorative_sprite_priority,
+        width = 44,
+        height = 42,
+        shift = util.by_pixel(4, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-07.png",
+          priority = base_decorative_sprite_priority,
+          width = 88,
+          height = 84,
+          shift = util.by_pixel(4, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-08.png",
+        priority = base_decorative_sprite_priority,
+        width = 46,
+        height = 32,
+        shift = util.by_pixel(-4, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-08.png",
+          priority = base_decorative_sprite_priority,
+          width = 92,
+          height = 60,
+          shift = util.by_pixel(-4, 1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/muddy-stump/muddy-stump-09.png",
+        priority = base_decorative_sprite_priority,
+        width = 48,
+        height = 36,
+        shift = util.by_pixel(4, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/muddy-stump/hr-muddy-stump-09.png",
+          priority = base_decorative_sprite_priority,
+          width = 96,
+          height = 72,
+          shift = util.by_pixel(4, -2),
+          scale = 0.5,
+        }
+      },
     }
   },
   {
@@ -10307,7 +11067,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-4.625, -3.25}, {4.6875, 3.125}},
-    collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
     render_layer = "decals",
     tile_layer = 59, -- under stone-path
     autoplace = decal_autoplace_settgins("red-desert-decal", {{0.6, 0.2}, {1, 0.85}}),
@@ -11175,7 +11935,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-3.375, -2.3125}, {3.25, 2.3125}},
-    collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
     render_layer = "decals",
     tile_layer = 59, -- under stone-path
     autoplace = decal_autoplace_settgins("red-desert-decal", {{0.6, 0.2}, {1, 0.85}}),
@@ -11609,7 +12369,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-7.21875, -5.9375}, {7.3125, 5.71875}},
-    collision_mask = {"doodad-layer", "water-tile", "not-colliding-with-itself"},
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
     render_layer = "decals",
     tile_layer = 59, -- despite the name, this is not sand exclusive decal; draw under stone path and concrete
     autoplace = decal_autoplace_settgins("sand-decal", {{0, 0.3}, {1, 1}}),
@@ -12206,6 +12966,256 @@ data:extend{
       }
     }
   },
+  {
+    name = "enemy-decal",
+    type = "optimized-decorative",
+    order = "b[decorative]-b[enemy-decal]",
+    collision_box = {{-6, -4}, {6, 4}},
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
+    render_layer = "decals",
+    tile_layer = 58,
+    decal_overdraw_priority = 500,
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-00.png",
+        width = 508,
+        height = 364,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-00.png",
+          width = 1016,
+          height = 726,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-01.png",
+        width = 494,
+        height = 316,
+        shift = util.by_pixel(-8, 24),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-01.png",
+          width = 998,
+          height = 722,
+          shift = util.by_pixel(-4, 1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-02.png",
+        width = 508,
+        height = 360,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-02.png",
+          width = 1014,
+          height = 718,
+          shift = util.by_pixel(0, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-03.png",
+        width = 508,
+        height = 360,
+        shift = util.by_pixel(0, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-03.png",
+          width = 1010,
+          height = 718,
+          shift = util.by_pixel(1, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-04.png",
+        width = 422,
+        height = 362,
+        shift = util.by_pixel(4, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-04.png",
+          width = 862,
+          height = 722,
+          shift = util.by_pixel(4, 0),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-05.png",
+        width = 456,
+        height = 292,
+        shift = util.by_pixel(16, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-05.png",
+          width = 920,
+          height = 578,
+          shift = util.by_pixel(14, -1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-06.png",
+        width = 482,
+        height = 322,
+        shift = util.by_pixel(4, 14),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-06.png",
+          width = 968,
+          height = 708,
+          shift = util.by_pixel(3, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-07.png",
+        width = 508,
+        height = 360,
+        shift = util.by_pixel(0, 0),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-07.png",
+          width = 1016,
+          height = 722,
+          shift = util.by_pixel(0, -1),
+          scale = 0.5,
+        }
+      },
+    }
+  },
+  {
+    name = "enemy-decal-transparent",
+    type = "optimized-decorative",
+    order = "b[decorative]-b[enemy-decal]",
+    collision_box = {{-6, -4}, {6, 4}},
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
+    render_layer = "decals",
+    tile_layer = 57,
+    decal_overdraw_priority = 100,
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-00.png",
+        width = 508,
+        height = 360,
+        shift = util.by_pixel(0, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-00.png",
+          width = 1016,
+          height = 720,
+          shift = util.by_pixel(0, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-01.png",
+        width = 470,
+        height = 288,
+        shift = util.by_pixel(-4, 22),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-01.png",
+          width = 936,
+          height = 570,
+          shift = util.by_pixel(-3, 23),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-02.png",
+        width = 422,
+        height = 272,
+        shift = util.by_pixel(-42, 22),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-02.png",
+          width = 848,
+          height = 540,
+          shift = util.by_pixel(-43, 23),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-03.png",
+        width = 484,
+        height = 344,
+        shift = util.by_pixel(4, -6),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-03.png",
+          width = 968,
+          height = 690,
+          shift = util.by_pixel(4, -7),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-04.png",
+        width = 402,
+        height = 360,
+        shift = util.by_pixel(6, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-04.png",
+          width = 800,
+          height = 720,
+          shift = util.by_pixel(7, -2),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-05.png",
+        width = 426,
+        height = 250,
+        shift = util.by_pixel(16, 2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-05.png",
+          width = 846,
+          height = 496,
+          shift = util.by_pixel(17, 3),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-06.png",
+        width = 458,
+        height = 300,
+        shift = util.by_pixel(6, 10),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-06.png",
+          width = 916,
+          height = 602,
+          shift = util.by_pixel(6, 9),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/enemy-decal/enemy-decal-t-07.png",
+        width = 504,
+        height = 358,
+        shift = util.by_pixel(2, -4),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/enemy-decal/hr-enemy-decal-t-07.png",
+          width = 1004,
+          height = 710,
+          shift = util.by_pixel(3, -3),
+          scale = 0.5,
+        }
+      },
+    }
+  },
 
   {
     name = "big-ship-wreck-grass",
@@ -12256,7 +13266,116 @@ data:extend{
         height = 37
       }
     }
-  }
+  },
+  {
+    name = "nuclear-ground-patch",
+    type = "optimized-decorative",
+    localised_name = { "decorative-name.concrete-hole-decal" }, -- FIXME: add locale when hard-freeze for 1.0 release ends
+    order = "b[decorative]-b[red-desert-decal]",
+    collision_box = {{-4.625, -3.25}, {4.6875, 3.125}},
+    collision_mask = {"water-tile", "colliding-with-tiles-only"},
+    render_layer = "decals",
+    tile_layer = 59, -- above terrain tiles, bellow stone path
+    pictures =
+    {
+      {
+        filename = "__base__/graphics/decorative/nuclear-ground-patch/nuclear-ground-patch-00.png",
+        priority = base_decorative_sprite_priority,
+        width = 194,
+        height = 144,
+        shift = util.by_pixel(4, -8),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/nuclear-ground-patch/hr-nuclear-ground-patch-00.png",
+          priority = base_decorative_sprite_priority,
+          width = 388,
+          height = 284,
+          shift = util.by_pixel(4, -7),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/nuclear-ground-patch/nuclear-ground-patch-01.png",
+        priority = base_decorative_sprite_priority,
+        width = 186,
+        height = 132,
+        shift = util.by_pixel(4, 8),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/nuclear-ground-patch/hr-nuclear-ground-patch-01.png",
+          priority = base_decorative_sprite_priority,
+          width = 372,
+          height = 262,
+          shift = util.by_pixel(4, 8),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/nuclear-ground-patch/nuclear-ground-patch-02.png",
+        priority = base_decorative_sprite_priority,
+        width = 190,
+        height = 126,
+        shift = util.by_pixel(4, 2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/nuclear-ground-patch/hr-nuclear-ground-patch-02.png",
+          priority = base_decorative_sprite_priority,
+          width = 374,
+          height = 254,
+          shift = util.by_pixel(5, 1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/nuclear-ground-patch/nuclear-ground-patch-03.png",
+        priority = base_decorative_sprite_priority,
+        width = 182,
+        height = 128,
+        shift = util.by_pixel(4, -4),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/nuclear-ground-patch/hr-nuclear-ground-patch-03.png",
+          priority = base_decorative_sprite_priority,
+          width = 364,
+          height = 252,
+          shift = util.by_pixel(4, -3),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/nuclear-ground-patch/nuclear-ground-patch-04.png",
+        priority = base_decorative_sprite_priority,
+        width = 164,
+        height = 130,
+        shift = util.by_pixel(12, -2),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/nuclear-ground-patch/hr-nuclear-ground-patch-04.png",
+          priority = base_decorative_sprite_priority,
+          width = 328,
+          height = 256,
+          shift = util.by_pixel(12, -1),
+          scale = 0.5,
+        }
+      },
+      {
+        filename = "__base__/graphics/decorative/nuclear-ground-patch/nuclear-ground-patch-05.png",
+        priority = base_decorative_sprite_priority,
+        width = 188,
+        height = 130,
+        shift = util.by_pixel(2, 8),
+        hr_version =
+        {
+          filename = "__base__/graphics/decorative/nuclear-ground-patch/hr-nuclear-ground-patch-05.png",
+          priority = base_decorative_sprite_priority,
+          width = 374,
+          height = 260,
+          shift = util.by_pixel(2, 8),
+          scale = 0.5,
+        }
+      }
+    }
+  },
 }
 
 --[[

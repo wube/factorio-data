@@ -127,6 +127,13 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "discharge-defense-remote",
+    enabled = false,
+    ingredients = {{"electronic-circuit", 1}},
+    result = "discharge-defense-remote"
+  },
+  {
+    type = "recipe",
     name = "exoskeleton-equipment",
     enabled = false,
     energy_required = 10,

@@ -7288,10 +7288,6 @@ for i, tree_data in ipairs(tree_data) do if tree_data.enabled then
               {
                 type = "instant",
                 target_effects = leaf_sound_trigger
-              },
-              {
-                type = "instant",
-                target_effects = axe_hitting_wood_trigger
               }
             }
           }

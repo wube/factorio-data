@@ -45,7 +45,7 @@ data:extend(
     name = "fluid-wagon",
     icon = "__base__/graphics/icons/fluid-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-h[fluid-wagon]",
     place_result = "fluid-wagon",
     stack_size = 5
@@ -55,7 +55,7 @@ data:extend(
     name = "artillery-wagon",
     icon = "__base__/graphics/icons/artillery-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-i[artillery-wagon]",
     place_result = "artillery-wagon",
     stack_size = 5
@@ -142,6 +142,7 @@ data:extend(
     order = "g[space-science-pack]",
     stack_size = 2000,
     durability = 1,
+    rocket_launch_product = {"raw-fish", 1},
     durability_description_key = "description.science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value"
   },
@@ -547,6 +548,26 @@ data:extend(
     order = "m[satellite]",
     stack_size = 1,
     rocket_launch_product = {"space-science-pack", 1000}
+  },
+  {
+    type = "item-with-entity-data",
+    name = "spidertron",
+    icon = "__base__/graphics/icons/spidertron.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "transport",
+    order = "b[personal-transport]-c[spidertron]-a[spider]",
+    place_result="spidertron",
+    stack_size = 1,
+  },
+  {
+    type = "spidertron-remote",
+    name = "spidertron-remote",
+    icon = "__base__/graphics/icons/spidertron-remote.png",
+    icon_color_indicator_mask = "__base__/graphics/icons/spidertron-remote-mask.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "transport",
+    order = "b[personal-transport]-c[spidertron]-b[remote]",
+    stack_size = 1
   },
   {
     -- This allows loading the selection-tool type item when mods are removed

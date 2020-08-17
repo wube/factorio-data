@@ -1003,8 +1003,7 @@ data:extend(
       {
         base = {position = {85, 17}, corner_size = 8},
         shadow = default_dirt
-      },
-      left_click_sound = {{ filename = "__core__/sound/gui-green-button.ogg", volume = 0.8 }},
+      }
     },
 
     rounded_button =
@@ -1093,8 +1092,7 @@ data:extend(
       default_graphical_set = arrow_forward(green_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
       hovered_graphical_set = arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = arrow_forward(green_arrow_tileset, arrow_clicked_index),
-      disabled_graphical_set = arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color),
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 0.8 }},
+      disabled_graphical_set = arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
     },
 
     confirm_double_arrow_button =
@@ -1105,8 +1103,7 @@ data:extend(
       default_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
       hovered_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_clicked_index),
-      disabled_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color),
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 0.8 }},
+      disabled_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
     },
 
     map_generator_preview_button =
@@ -1673,8 +1670,7 @@ data:extend(
       {
         base = {position = {85, 25}, corner_size = 8},
         shadow = default_dirt
-      },
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 0.8 }},
+      }
     },
 
     icon_button =
@@ -7475,7 +7471,7 @@ data:extend(
         base = {position = {84, 132}, size = {28, 28}},
         glow = default_glow(default_glow_color, 0.5)
       },
-      left_click_sound = {{ filename = "__core__/sound/list-box-click.ogg", volume = 1 }},
+      left_click_sound = { filename = "__core__/sound/gui-checkbox-click.ogg" },
       checkmark = {position = {112, 132}, size = {28, 28}},
       disabled_checkmark = {position = {456, 188}, size = {28, 28}},
       intermediate_mark = {position = {456, 160}, size = {28, 28}},
@@ -7487,7 +7483,6 @@ data:extend(
       type = "checkbox_style",
       font = "default-bold",
       font_color = bold_font_color,
-      left_click_sound = {{ filename = "__core__/sound/list-box-click.ogg", volume = 1 }},
     },
     radiobutton =
     {

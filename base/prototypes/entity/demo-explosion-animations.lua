@@ -200,6 +200,111 @@ explosion_animations.small_explosion = function()
   }
 end
 
+explosion_animations.nuke_shockwave = function()
+  return
+  {
+    {
+      filename = "__base__/graphics/entity/smoke/nuke-shockwave-1.png",
+      priority = "high",
+      flags = {"smoke"},
+      line_length = 8,
+      width = 66,
+      height = 68,
+      frame_count = 32,
+      animation_speed = 0.5,
+      shift = util.by_pixel(-1,0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/smoke/hr-nuke-shockwave-1.png",
+        priority = "high",
+        flags = {"smoke"},
+        line_length = 8,
+        width = 132,
+        height = 136,
+        frame_count = 32,
+        animation_speed = 0.5,
+        shift = util.by_pixel(-0.5,0),
+        scale = 1.5,
+      }
+    },
+    {
+      filename = "__base__/graphics/entity/smoke/nuke-shockwave-2.png",
+      priority = "high",
+      flags = {"smoke"},
+      line_length = 8,
+      width = 56,
+      height = 64,
+      frame_count = 32,
+      animation_speed = 0.5,
+      shift = util.by_pixel(-1,0),
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/smoke/hr-nuke-shockwave-2.png",
+        priority = "high",
+        flags = {"smoke"},
+        line_length = 8,
+        width = 110,
+        height = 128,
+        frame_count = 32,
+        animation_speed = 0.5,
+        shift = util.by_pixel(0,3),
+        scale = 1.5,
+      }
+    },
+  }
+end
+
+
+-- explosion_animations.nuke_shockwave = function()
+  -- return
+  -- {
+    -- {
+      -- filename = "__base__/graphics/entity/smoke/nuke-shockwave-1.png",
+      -- priority = "high",
+      -- line_length = 8,
+      -- width = 66,
+      -- height = 68,
+      -- frame_count = 32,
+      -- animation_speed = 0.5,
+      -- shift = util.by_pixel(-1,0),
+      -- hr_version =
+      -- {
+        -- filename = "__base__/graphics/entity/smoke/hr-nuke-shockwave-1.png",
+        -- priority = "high",
+        -- line_length = 8,
+        -- width = 132,
+        -- height = 136,
+        -- frame_count = 32,
+        -- animation_speed = 0.5,
+        -- shift = util.by_pixel(-0.5,0),
+        -- scale = 1.5,
+      -- },
+      -- {
+      -- filename = "__base__/graphics/entity/smoke/nuke-shockwave-2.png",
+      -- priority = "high",
+      -- line_length = 8,
+      -- width = 56,
+      -- height = 64,
+      -- frame_count = 32,
+      -- animation_speed = 0.5,
+      -- shift = util.by_pixel(-1,0),
+      -- hr_version =
+      -- {
+        -- filename = "__base__/graphics/entity/smoke/hr-nuke-shockwave-2.png",
+        -- priority = "high",
+        -- line_length = 8,
+        -- width = 110,
+        -- height = 128,
+        -- frame_count = 32,
+        -- animation_speed = 0.5,
+        -- shift = util.by_pixel(0,3),
+        -- scale = 1.5,
+      -- },
+    -- },
+  -- }
+-- end
+
+
 explosion_animations.medium_explosion = function()
   return
   {
@@ -332,6 +437,79 @@ explosion_animations.massive_explosion = function()
           filename = "__base__/graphics/entity/massive-explosion/hr-massive-explosion-2.png",
           width_in_frames = 6,
           height_in_frames = 5,
+        }
+      }
+    }
+  }
+end
+
+explosion_animations.nuke_explosion = function()
+  return
+  {
+    width = 316,
+    height = 360,
+    frame_count = 100,
+    priority = "very-low",
+    flags = {"linear-magnification"},
+    shift = util.by_pixel(1, -123), --shift = util.by_pixel(1, -63), shifted by 60 due to scaling and centering
+    animation_speed = 0.5 * 0.75,
+    scale = 2,
+    dice_y = 5,
+    stripes =
+    {
+      {
+      filename = "__base__/graphics/entity/nuke-explosion/nuke-explosion-1.png",
+      width_in_frames = 5,
+      height_in_frames = 5,
+      },
+      {
+      filename = "__base__/graphics/entity/nuke-explosion/nuke-explosion-2.png",
+      width_in_frames = 5,
+      height_in_frames = 5,
+      },
+      {
+      filename = "__base__/graphics/entity/nuke-explosion/nuke-explosion-3.png",
+      width_in_frames = 5,
+      height_in_frames = 5,
+      },
+      {
+      filename = "__base__/graphics/entity/nuke-explosion/nuke-explosion-4.png",
+      width_in_frames = 5,
+      height_in_frames = 5,
+      }
+    },
+    hr_version =
+    {
+      width = 628,
+      height = 720,
+      frame_count = 100,
+      priority = "very-low",
+      flags = {"linear-magnification"},
+      shift = util.by_pixel(0.5, -122.5), --shift = util.by_pixel(0.5, -62.5), shifted by 60 due to scaling and centering
+      animation_speed = 0.5 * 0.75,
+      scale = 1,
+      dice_y = 5,
+      stripes =
+      {
+        {
+        filename = "__base__/graphics/entity/nuke-explosion/hr-nuke-explosion-1.png",
+        width_in_frames = 5,
+        height_in_frames = 5,
+        },
+        {
+        filename = "__base__/graphics/entity/nuke-explosion/hr-nuke-explosion-2.png",
+        width_in_frames = 5,
+        height_in_frames = 5,
+        },
+        {
+        filename = "__base__/graphics/entity/nuke-explosion/hr-nuke-explosion-3.png",
+        width_in_frames = 5,
+        height_in_frames = 5,
+        },
+        {
+        filename = "__base__/graphics/entity/nuke-explosion/hr-nuke-explosion-4.png",
+        width_in_frames = 5,
+        height_in_frames = 5,
         }
       }
     }

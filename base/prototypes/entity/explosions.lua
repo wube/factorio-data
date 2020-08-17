@@ -930,7 +930,7 @@ local explosions =
     icon = "__base__/graphics/icons/fluid-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-f-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
@@ -1006,7 +1006,7 @@ local explosions =
     icon = "__base__/graphics/icons/artillery-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
-    subgroup = "transport-explosions",
+    subgroup = "train-transport-explosions",
     order = "e-h-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
@@ -1484,6 +1484,250 @@ local explosions =
         },
       }
     }
+  },
+  {
+    type = "explosion",
+    name = "spidertron-explosion",
+    icon = "__base__/graphics/icons/spidertron.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"not-on-map"},
+    subgroup = "transport-explosions",
+    order = "e-k-a",
+    height = 0,
+    animations = explosion_animations.massive_explosion(),
+    light = default_light(20),
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.large_explosion(0.8),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 39,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "spidertron-metal-particle-big",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.6875, -0.793 },
+              right_bottom = { 0.6875, 0.793 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 1,
+            initial_height_deviation = 0.49,
+            initial_vertical_speed = 0.083,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 31,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "spidertron-metal-particle-medium",
+            offsets = {
+              { -0.2891, 0.2344 }
+            },
+            offset_deviation = {
+              left_top = { -0.6875, -0.5 },
+              right_bottom = { 0.6875, 0.5 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.4,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.096,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 48,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "spidertron-glass-particle-small",
+            offsets = {
+              { -0.6641, 0.6406 }
+            },
+            offset_deviation = {
+              left_top = { -0.8906, -0.7969 },
+              right_bottom = { 0.8906, 0.7969 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.099,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 41,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "spidertron-metal-particle-small",
+            offsets = {
+              { 0, 0 }
+            },
+            offset_deviation = {
+              left_top = { -0.8906, -0.7969 },
+              right_bottom = { 0.8906, 0.7969 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.089,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 15,
+            repeat_count_deviation = 5,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "spidertron-long-metal-particle-medium",
+            offsets = {
+              { -0.2891, 0.2344 }
+            },
+            offset_deviation = {
+              left_top = { -0.6875, -0.5 },
+              right_bottom = { 0.6875, 0.5 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.4,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.131,
+            initial_vertical_speed_deviation = 0,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.026,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 25,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "cable-and-electronics-particle-small-medium",
+            offsets = {
+              { 0.5234, -0.4609 }
+            },
+            offset_deviation = {
+              left_top = { -0.5, -0.5 },
+              right_bottom = { 0.5, 0.5 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.093,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          },
+          {
+            type = "create-particle",
+            repeat_count = 12,
+            repeat_count_deviation = 0,
+            probability = 1,
+            affects_target = false,
+            show_in_tooltip = false,
+            particle_name = "spidertron-mechanical-component-particle-medium",
+            offsets = {
+              { -0.6641, 0.6406 }
+            },
+            offset_deviation = {
+              left_top = { -0.8867, -0.7969 },
+              right_bottom = { 0.8867, 0.7969 }
+            },
+            tile_collision_mask = nil,
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.099,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0,
+            rotate_offsets = false
+          }
+        },
+      }
+    }
+  },
+
+  {
+    type = "explosion",
+    name = "nuke-explosion",
+    flags = {"not-on-map"},
+    subgroup = "explosions",
+    height = 0,
+    animations = explosion_animations.nuke_explosion(),
+    light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
+    sound = sounds.large_explosion(1.0),
+    --[[
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 60,
+            particle_name = "explosion-remnants-particle",
+            initial_height = 0.5,
+            speed_from_center = 0.08,
+            speed_from_center_deviation = 0.15,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.15,
+            offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}}
+          }
+        }
+      }
+    }
+    --]]
   },
 
   {

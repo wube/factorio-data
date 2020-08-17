@@ -1375,7 +1375,7 @@ local remnants =
     icon = "__base__/graphics/icons/fluid-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
-    subgroup = "transport-remnants",
+    subgroup = "train-transport-remnants",
     order = "a-h-a",
     selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
     tile_width = 2,
@@ -1417,7 +1417,7 @@ local remnants =
     icon = "__base__/graphics/icons/artillery-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
-    subgroup = "transport-remnants",
+    subgroup = "train-transport-remnants",
     order = "a-i-a",
     selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
     tile_width = 2,
@@ -1491,6 +1491,77 @@ local remnants =
         shift = util.by_pixel(0, 9.5),
         scale = 0.5,
       },
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "spidertron-remnants",
+    icon = "__base__/graphics/icons/spidertron.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "transport-remnants",
+    order = "a-l-a",
+    selection_box = {{-3, -3}, {3, 3}},
+    tile_width = 3,
+    tile_height = 3,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = make_rotated_animation_variations_from_sheet (1,
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/spidertron/remnants/spidertron-remnants.png",
+          line_length = 1,
+          width = 224,
+          height = 224,
+          frame_count = 1,
+          variation_count = 1,
+          axially_symmetrical = false,
+          direction_count = 1,
+          shift = util.by_pixel(0, 0),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/spidertron/remnants/hr-spidertron-remnants.png",
+            line_length = 1,
+            width = 448,
+            height = 448,
+            frame_count = 1,
+            variation_count = 1,
+            axially_symmetrical = false,
+            direction_count = 1,
+            shift = util.by_pixel(0, 0),
+            scale = 0.5,
+          }
+        },
+        {
+          priority = "low",
+          filename = "__base__/graphics/entity/spidertron/remnants/mask/spidertron-remnants-mask.png",
+          width = 184,
+          height = 176,
+          frame_count = 1,
+         -- tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          apply_runtime_tint = true,
+          direction_count = 1,
+          shift = util.by_pixel(9, 1),
+          hr_version=
+          {
+            priority = "low",
+            filename = "__base__/graphics/entity/spidertron/remnants/mask/hr-spidertron-remnants-mask.png",
+            width = 366,
+            height = 350,
+            frame_count = 1,
+            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+            apply_runtime_tint = true,
+            direction_count = 1,
+            shift = util.by_pixel(9, 1),
+            scale = 0.5,
+          }
+        }
+      }
     })
   },
 
@@ -1758,6 +1829,675 @@ local remnants =
     }
   },
 
+  {
+    type = "corpse",
+    name = "huge-scorchmark",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
+    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    selection_box = {{-4, -4}, {4, 4}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 10, -- 10 minutes
+    final_render_layer = "ground-patch-higher2",
+    subgroup = "scorchmarks",
+    order="a-g-a",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = true,
+    use_tile_color_for_ground_patch_tint = true,
+    ground_patch =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(0, -24),
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(0, -24),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(44, -25),
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(44, -23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(-44, -25),
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(-44, -23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(32, 0),
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(32, 0),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(-32, 0),
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(-32, 0),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(44, 21),
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(44, 23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(-44, 21),
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(-44, 23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(0, 24),
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(0, 24),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+      }
+    },
+    ground_patch_higher =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(0, -24),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(0, -24),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(44, -23),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(44, -23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(-44, -23),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(-44, -23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(32, 0),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(32, 0),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(-32, 0),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(-32, 0),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(44, 23),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(44, 23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(-44, 23),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(-44, 23),
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(0, 24),
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(0, 24),
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+      }
+    }
+  },
+
+  {
+    type = "corpse",
+    name = "huge-scorchmark-tintable",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
+    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    selection_box = {{-4, -4}, {4, 4}},
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 10, -- 10 minutes
+    final_render_layer = "ground-patch-higher2",
+    subgroup = "scorchmarks",
+    order="a-h-a",
+    remove_on_entity_placement = false,
+    remove_on_tile_placement = true,
+    use_tile_color_for_ground_patch_tint = true,
+    ground_patch =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(0, -24),
+          apply_runtime_tint = true,
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(0, -24),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(44, -25),
+          apply_runtime_tint = true,
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(44, -23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(-44, -25),
+          apply_runtime_tint = true,
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(-44, -23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(32, 0),
+          apply_runtime_tint = true,
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(32, 0),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(-32, 0),
+          apply_runtime_tint = true,
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(-32, 0),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(44, 21),
+          apply_runtime_tint = true,
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(44, 23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
+          width = 256,
+          height = 176,
+          line_length = 2,
+          shift = util.by_pixel(-44, 21),
+          apply_runtime_tint = true,
+          variation_count = 2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
+            width = 510,
+            height = 352,
+            line_length = 2,
+            shift = util.by_pixel(-44, 23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          width = 480,
+          height = 352,
+          line_length = 1,
+          shift = util.by_pixel(0, 24),
+          apply_runtime_tint = true,
+          variation_count = 1,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
+            width = 960,
+            height = 704,
+            line_length = 1,
+            shift = util.by_pixel(0, 24),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+      }
+    },
+    ground_patch_higher =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(0, -24),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(0, -24),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(44, -23),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(44, -23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(-44, -23),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(-44, -23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(32, 0),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(32, 0),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(-32, 0),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(-32, 0),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(44, 23),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(44, 23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
+          width = 68,
+          height = 50,
+          line_length = 2,
+          variation_count = 2,
+          shift = util.by_pixel(-44, 23),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
+            width = 136,
+            height = 100,
+            line_length = 2,
+            shift = util.by_pixel(-44, 23),
+            apply_runtime_tint = true,
+            variation_count = 2,
+            scale = 0.5,
+          }
+        },
+        {
+          filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
+          width = 138,
+          height = 96,
+          line_length = 1,
+          variation_count = 1,
+          shift = util.by_pixel(0, 24),
+          apply_runtime_tint = true,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
+            width = 274,
+            height = 194,
+            line_length = 1,
+            shift = util.by_pixel(0, 24),
+            apply_runtime_tint = true,
+            variation_count = 1,
+            scale = 0.5,
+          }
+        },
+      }
+    }
+  },
 }
 
 for k, remnant in pairs (remnants) do

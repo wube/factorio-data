@@ -331,7 +331,7 @@ data:extend(
     icon_size = 64, icon_mipmaps = 4,
     flags = {"hidden"},
     subgroup = "transport",
-    order = "b[personal-transport]-c[small-plane]",
+    order = "b[personal-transport]-x[small-plane]",
     stack_size = 1
   },
   {
@@ -783,7 +783,7 @@ data:extend(
     name = "locomotive",
     icon = "__base__/graphics/icons/locomotive.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-f[locomotive]",
     place_result = "locomotive",
     stack_size = 5
@@ -793,7 +793,7 @@ data:extend(
     name = "cargo-wagon",
     icon = "__base__/graphics/icons/cargo-wagon.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-g[cargo-wagon]",
     place_result = "cargo-wagon",
     stack_size = 5
@@ -804,7 +804,7 @@ data:extend(
     icon = "__base__/graphics/icons/rail.png",
     icon_size = 64, icon_mipmaps = 4,
     localised_name = {"item-name.rail"},
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-a[rail]",
     place_result = "straight-rail",
     stack_size = 100,
@@ -816,7 +816,7 @@ data:extend(
     name = "train-stop",
     icon = "__base__/graphics/icons/train-stop.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-c[train-stop]",
     place_result = "train-stop",
     stack_size = 10
@@ -826,7 +826,7 @@ data:extend(
     name = "rail-signal",
     icon = "__base__/graphics/icons/rail-signal.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-d[rail-signal]",
     place_result = "rail-signal",
     stack_size = 50
@@ -836,7 +836,7 @@ data:extend(
     name = "rail-chain-signal",
     icon = "__base__/graphics/icons/rail-chain-signal.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "transport",
+    subgroup = "train-transport",
     order = "a[train-system]-e[rail-signal-chain]",
     place_result = "rail-chain-signal",
     stack_size = 50

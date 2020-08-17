@@ -5287,6 +5287,60 @@ make_particle
 
   make_particle
   {
+    name = "spidertron-glass-particle-small",
+    pictures = particle_animations.get_glass_particle_small_pictures({ tint = { r = 1.000, g = 0.094, b = 0.000, a = 1.000 }}), 
+    shadows = particle_animations.get_glass_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "spidertron-metal-particle-small",
+    pictures = particle_animations.get_metal_particle_small_pictures({ tint = { r = 0.902, g = 0.871, b = 0.855, a = 1.000 }}), 
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "spidertron-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures({ tint = { r = 0.654, g = 0.626, b = 0.654, a = 1.000 }}), 
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "spidertron-metal-particle-big",
+    pictures = particle_animations.get_metal_particle_big_pictures({ tint = { r = 0.800, g = 0.614, b = 0.489, a = 1.000 }}),  
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = default_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "spidertron-long-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_long_pictures ({ tint = { r = 0.824, g = 0.783, b = 0.839, a = 1.000 }}), 
+    shadows = particle_animations.get_metal_particle_medium_long_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
+    name = "spidertron-mechanical-component-particle-medium",
+    pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {r = 0.859, g = 0.766, b = 0.680, a = 1.000}}),
+    shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
+  },
+
+  make_particle
+  {
     name = "heat-exchanger-metal-particle-small",
     pictures = particle_animations.get_metal_particle_small_pictures({tint = {r = 0.743, g = 0.663, b = 0.543, a = 1.000}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),

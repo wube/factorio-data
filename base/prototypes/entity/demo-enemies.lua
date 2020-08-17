@@ -161,7 +161,61 @@ data:extend(
     max_spawn_shift = 0,
     max_richness_for_spawn_shift = 100,
     autoplace = enemy_autoplace.enemy_spawner_autoplace(0),
-    call_for_help_radius = 50
+    call_for_help_radius = 50,
+    spawn_decorations_on_expansion = true,
+    spawn_decoration =
+    {
+      {
+        decorative = "light-mud-decal",
+        spawn_min = 0,
+        spawn_max = 2,
+        spawn_min_radius = 2,
+        spawn_max_radius = 5,
+      },
+      {
+        decorative = "dark-mud-decal",
+        spawn_min = 0,
+        spawn_max = 3,
+        spawn_min_radius = 2,
+        spawn_max_radius = 6,
+      },
+      {
+        decorative = "enemy-decal",
+        spawn_min = 3,
+        spawn_max = 5,
+        spawn_min_radius = 2,
+        spawn_max_radius = 7,
+      },
+      {
+        decorative = "enemy-decal-transparent",
+        spawn_min = 4,
+        spawn_max = 20,
+        spawn_min_radius = 2,
+        spawn_max_radius = 14,
+        radius_curve = 0.9
+      },
+      {
+        decorative = "muddy-stump",
+        spawn_min = 2,
+        spawn_max = 5,
+        spawn_min_radius = 3,
+        spawn_max_radius = 6,
+      },
+      {
+        decorative = "red-croton",
+        spawn_min = 2,
+        spawn_max = 8,
+        spawn_min_radius = 3,
+        spawn_max_radius = 6,
+      },
+      {
+        decorative = "red-pita",
+        spawn_min = 1,
+        spawn_max = 5,
+        spawn_min_radius = 3,
+        spawn_max_radius = 6,
+      },
+    }
   },
 
   {

@@ -118,5 +118,50 @@ data:extend(
     place_result = "crash-site-chest-2",
     stack_size = 1,
     flags = {"hidden"}
-  },
+  }
 })
+
+local big_wreck_item = function(n)
+  return
+  {
+    type = "item",
+    name = "crash-site-spaceship-wreck-big-"..n,
+    icon = "__base__/graphics/icons/crash-site-spaceship-wreck-big-"..n..".png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "crash-site",
+    order = "z[crash-site-spaceship]-b",
+    place_result = "crash-site-spaceship-wreck-big-"..n,
+    stack_size = 1,
+    flags = {"hidden"}
+  }
+end
+
+local medium_wreck_item = function(n)
+  return
+  {
+    type = "item",
+    name = "crash-site-spaceship-wreck-medium-"..n,
+    icon = "__base__/graphics/icons/crash-site-spaceship-wreck-medium-"..n..".png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "crash-site",
+    order = "z[crash-site-spaceship]-c",
+    place_result = "crash-site-spaceship-wreck-medium-"..n,
+    stack_size = 1,
+    flags = {"hidden"}
+  }
+end
+
+local small_wreck_item = function(n)
+  return
+  {
+    type = "item",
+    name = "crash-site-spaceship-wreck-small-"..n,
+    icon = "__base__/graphics/icons/crash-site-spaceship-wreck-small-"..n..".png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "crash-site",
+    order = "z[crash-site-spaceship]-d",
+    place_result = "crash-site-spaceship-wreck-small-"..n,
+    stack_size = 1,
+    flags = {"hidden"}
+  }
+end

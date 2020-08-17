@@ -1,6 +1,43 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.18.48
-Date: ????
+Version: 1.0.0
+Date: 14. 08. 2020
+  Features:
+    - Added Spidertron and Spidertron remote.
+    - Added Freeplay crash site.
+  Graphics:
+    - Added polluted water visual effect.
+    - Added biter base decoratives.
+    - New visual effects for the atomic bomb.
+  Sounds:
+    - Significantly reduced the volume of robots deconstructing and entity destroyed alert.
+    - Reverted mining drill sound to the 0.17 version with high pitched part removed.
+    - Reverted inserter, furnace and assembling machine sounds to the 0.17 version.
+    - Changed the checkbox click sound (based on dropdown open sound).
+    - Changed the "green button sound" to have a normal button sound.
+  Modding:
+    - Added EnemySpawnerPrototype and TurretPrototype properties: spawn_decoration and spawn_decoration_on_expansion.
+    - EntityPrototype water_reflection can now be defined inside graphics_set.
+    - Added ExplosionPrototype properties: Explosion prototype: scale_animation_speed, fade_in_duration, fade_out_duration, scale_in_duration, scale_out_duration, scale_end, scale_increment_per_tick, scale_initial, scale_initial_deviation, scale, and scale_deviation.
+    - ParticleSourcePrototype particle is now optional, added smoke property.
+    - Added ProjectilePrototype properties: speed_modifier and turning_speed_increases_exponentially_with_projectile_speed.
+    - Added LightDefinitionItem::source_orientation_offset.
+    - Added DecorativePrototype::decal_overdraw_priority.
+    - Added AreaTriggerItem::show_in_tooltip.
+    - Added 'set-tile' and 'camera-effect' trigger effects.
+    - Added CreateDecorativesTriggerEffectItem properties: apply_projection and spread_evenly.
+    - Added CreateExplosionTriggerEffectItem properties: max_movement_distance, inherit_movement_distance_from_projectile and cycle_while_moving.
+    - Added DamageTriggerEffectItem properties: vaporize, lower_distance_threshold, upper_distance_threshold, lower_damage_modifier and upper_damage_modifier.
+    - Added PlaySoundTriggerEffectItem properties: min_distance, max_distance, volume_modifier, audible_distance_modifier and play_on_target_position.
+    - Added ProjectileAttackParameters::projectile_orientation_offset.
+    - Added build_blueprint_small, build_blueprint_medium and build_blueprint_large to utility sounds.
+    - Renamed build_big utility sound to build_large.
+  Scripting:
+    - Added LuaEntity::autopilot_destination, vehicle_automatic_targeting_parameters and time_to_next_effect read/write.
+    - Added LuaItemStack::connected_entity read/write.
+    - Added LuaEntity::is_entity_with_force, is_entity_with_owner and is_entity_with_health read.
+    - Added LuaEntity::spawn_decorations().
+    - Added on_cutscene_cancelled, on_player_configured_spider_remote and on_player_used_spider_remote events.
+    - Added optional spawn_decorations parameter to LuaGameScript::create_entity.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.47
 Date: 11. 08. 2020

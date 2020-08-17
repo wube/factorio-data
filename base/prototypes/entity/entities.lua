@@ -9,6 +9,7 @@ require ("prototypes.entity.laser-sounds")
 local hit_effects = require ("prototypes.entity.demo-hit-effects")
 local sounds = require("prototypes.entity.demo-sounds")
 local movement_triggers = require("prototypes.entity.demo-movement-triggers")
+local spidertron_animations = require("prototypes.entity.spidertron-animations")
 
 logistic_chest_opened_duration = 7
 
@@ -47,6 +48,33 @@ function make_heat_pipe_pictures(path, name_prefix, data)
     end
   end
   return all_pictures
+end
+
+function make_spidertron_leg(number, base_sprite, ending_sprite)
+  return
+  {
+    type = "spider-leg",
+    name = "spidertron-leg-" .. number,
+    localised_name = {"entity-name.spidertron-leg"},
+    collision_box = {{-0.01, -0.01}, {0.01, 0.01}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    icon = "__base__/graphics/icons/spidertron.png",
+    icon_size = 64, icon_mipmaps = 4,
+    walking_sound_volume_modifier = 0.6,
+    working_sound = 
+    {
+      match_progress_to_activity = true,
+      sound = sounds.spidertron_leg,
+      audible_distance_modifier = 0.5,
+    },
+    part_length = 3.5,
+    initial_movement_speed = 0.06,
+    movement_acceleration = 0.03,
+    max_health = 100,
+    movement_based_position_selection_distance = 4,
+    selectable_in_game = false,
+    graphics_set = spidertron_animations.legs[number],
+  }
 end
 
 local compilatron_animations =
@@ -2653,7 +2681,7 @@ data:extend(
       width = 304,
       height = 290,
       draw_as_shadow = true,
-      slice = 2,
+      dice = 2,
       shift = util.by_pixel(8, 2),
       hr_version =
       {
@@ -2662,7 +2690,7 @@ data:extend(
         width = 612,
         height = 578,
         draw_as_shadow = true,
-        slice = 2,
+        dice = 2,
         shift = util.by_pixel(7, 2),
         scale = 0.5
       },
@@ -7042,6 +7070,26 @@ data:extend(
         }
       }
     }
+  }
+})
+
+function get_leg_hit_the_ground_trigger()
+  return
+    {
+      {
+        type = "create-trivial-smoke",
+        smoke_name = "smoke-building",
+        repeat_count = 4,
+        starting_frame_deviation = 5,
+        starting_frame_speed_deviation = 5,
+        offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
+        speed_from_center = 0.03
+      }
+    }
+end
+
+data:extend(
+{
 --[[  or instead of picture it is possible to define animations with variations
    random_animation_offset = false,
    animations =
@@ -7064,7 +7112,6 @@ data:extend(
      }
    }
 ]]--
-  },
   {
     type = "flame-thrower-explosion",
     name = "dummy-flame-thrower-explosion",
@@ -7235,7 +7282,199 @@ data:extend(
     wrapper_flow_style = "compilatron_speech_bubble_wrapper",
     fade_in_out_ticks = 60 * 0.5,
     flags = {"not-on-map", "placeable-off-grid"}
-  }
+  },
+  {
+    type = "spider-vehicle",
+    name = "spidertron",
+    collision_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -1}, {1, 1}},
+    icon = "__base__/graphics/icons/spidertron.png",
+    mined_sound = {filename = "__core__/sound/deconstruct-large.ogg",volume = 0.8},
+    open_sound = { filename = "__base__/sound/spidertron/spidertron-door-open.ogg", volume= 0.35 },
+    close_sound = { filename = "__base__/sound/spidertron/spidertron-door-close.ogg", volume = 0.4 },
+    sound_minimum_speed = 0.1,
+    sound_scaling_ratio = 0.6,
+    working_sound =
+    {
+      sound =
+      {
+        filename = "__base__/sound/spidertron/spidertron-vox.ogg",
+        volume = 0.35
+      },
+      activate_sound =
+      {
+        filename = "__base__/sound/spidertron/spidertron-activate.ogg",
+        volume = 0.5
+      },
+      deactivate_sound =
+      {
+        filename = "__base__/sound/spidertron/spidertron-deactivate.ogg",
+        volume = 0.5
+      },
+      match_speed_to_activity = true,
+    },
+    icon_size = 64, icon_mipmaps = 4,
+    weight = 1,
+    braking_force = 1,
+    friction_force = 1,
+    flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
+    collision_mask = {},
+    minable = {mining_time = 1, result = "spidertron"},
+    max_health = 3000,
+    resistances =
+    {
+      {
+        type = "fire",
+        decrease = 15,
+        percent = 60
+      },
+      {
+        type = "physical",
+        decrease = 15,
+        percent = 60
+      },
+      {
+        type = "impact",
+        decrease = 50,
+        percent = 80
+      },
+      {
+        type = "explosion",
+        decrease = 20,
+        percent = 75
+      },
+      {
+        type = "acid",
+        decrease = 0,
+        percent = 70
+      },
+      {
+        type = "laser",
+        decrease = 0,
+        percent = 70
+      },
+      {
+        type = "electric",
+        decrease = 0,
+        percent = 70
+      }
+    },
+    minimap_representation =
+    {
+      filename = "__base__/graphics/entity/spidertron/spidertron-map.png",
+      flags = {"icon"},
+      size = {128, 128},
+      scale = 0.5
+    },
+    corpse = "spidertron-remnants",
+    dying_explosion = "spidertron-explosion",
+    energy_per_hit_point = 1,
+    guns = { "spidertron-rocket-launcher-1", "spidertron-rocket-launcher-2", "spidertron-rocket-launcher-3", "spidertron-rocket-launcher-4" },
+    inventory_size = 80,
+    equipment_grid = "spidertron-equipment-grid",
+    height = 1.5,
+    torso_rotation_speed = 0.005,
+    chunk_exploration_radius = 3,
+    selection_priority = 51,
+    graphics_set = spidertron_animations.torso,
+    energy_source =
+    {
+      type = "void",
+    },
+    movement_energy_consumption = "250kW",
+    automatic_weapon_cycling = true,
+    chain_shooting_cooldown_modifier = 0.5,
+    spider_engine =
+    {
+      legs =
+      {
+        { -- 1
+          leg = "spidertron-leg-1",
+          mount_position = util.by_pixel(15, -22),--{0.5, -0.75},
+          ground_position = {2.25, -2.5},
+          blocking_legs = {2},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 2
+          leg = "spidertron-leg-2",
+          mount_position = util.by_pixel(23, -10),--{0.75, -0.25},
+          ground_position = {3, -1},
+          blocking_legs = {1, 3},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 3
+          leg = "spidertron-leg-3",
+          mount_position = util.by_pixel(25, 4),--{0.75, 0.25},
+          ground_position = {3, 1},
+          blocking_legs = {2, 4},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 4
+          leg = "spidertron-leg-4",
+          mount_position = util.by_pixel(15, 17),--{0.5, 0.75},
+          ground_position = {2.25, 2.5},
+          blocking_legs = {3},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 5
+          leg = "spidertron-leg-5",
+          mount_position = util.by_pixel(-15, -22),--{-0.5, -0.75},
+          ground_position = {-2.25, -2.5},
+          blocking_legs = {6, 1},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 6
+          leg = "spidertron-leg-6",
+          mount_position = util.by_pixel(-23, -10),--{-0.75, -0.25},
+          ground_position = {-3, -1},
+          blocking_legs = {5, 7},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 7
+          leg = "spidertron-leg-7",
+          mount_position = util.by_pixel(-25, 4),--{-0.75, 0.25},
+          ground_position = {-3, 1},
+          blocking_legs = {6, 8},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        },
+        { -- 8
+          leg = "spidertron-leg-8",
+          mount_position = util.by_pixel(-15, 17),--{-0.5, 0.75},
+          ground_position = {-2.25, 2.5},
+          blocking_legs = {7},
+          leg_hit_the_ground_trigger = get_leg_hit_the_ground_trigger()
+        }
+      },
+      military_target = "spidertron-military-target",
+    }
+  },
+  make_spidertron_leg(1),
+  make_spidertron_leg(2),
+  make_spidertron_leg(3),
+  make_spidertron_leg(4),
+  make_spidertron_leg(5),
+  make_spidertron_leg(6),
+  make_spidertron_leg(7),
+  make_spidertron_leg(8),
+  {
+    type = "simple-entity-with-force",
+    name = "spidertron-military-target",
+    icon = "__base__/graphics/icons/steel-chest.png",
+    collision_mask = {},
+    icon_size = 64, icon_mipmaps = 4,
+    max_health = 3000,
+    corpse = "small-remnants",
+    collision_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -1}, {1, 1}},
+    picture =
+    {
+      filename = "__base__/graphics/entity/steel-chest/steel-chest.png",
+      priority = "extra-high",
+      width = 32,
+      height = 40,
+      shift = util.by_pixel(-11, 4.5),
+    }
+  },
 }
 )
 

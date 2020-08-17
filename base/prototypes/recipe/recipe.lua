@@ -83,6 +83,38 @@ data:extend(
   },
   {
     type = "recipe",
+    name = "spidertron",
+    normal =
+    {
+      enabled = false,
+      energy_required = 10,
+      ingredients =
+      {
+        {"exoskeleton-equipment", 4},
+        {"fusion-reactor-equipment", 2},
+        {"rocket-launcher", 4},
+        {"rocket-control-unit", 16},
+        {"low-density-structure", 150},
+        {"radar", 2},
+        {"effectivity-module-3", 2},
+        {"raw-fish", 1},
+      },
+      result = "spidertron"
+    },
+  },
+  {
+    type = "recipe",
+    name = "spidertron-remote",
+    enabled = false,
+    ingredients =
+    {
+      {"rocket-control-unit", 1},
+      {"radar", 1}
+    },
+    result = "spidertron-remote"
+  },
+  {
+    type = "recipe",
     name = "fluid-wagon",
     enabled = false,
     energy_required = 1.5,
