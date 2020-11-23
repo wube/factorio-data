@@ -31,7 +31,7 @@ data:extend(
       order = "c",
       basic_settings =
       {
-        property_expression_names = {},
+        property_expression_names = {}
       },
       advanced_settings =
       {
@@ -66,7 +66,7 @@ data:extend(
         {
           ageing = 0.5,
           enemy_attack_pollution_consumption_modifier = 0.5
-        },
+        }
       }
     },
     ["death-world-marathon"] =
@@ -216,11 +216,11 @@ data:extend(
       {
         property_expression_names =
         {
-          elevation = "0_17-island",
+          elevation = "0_17-island"
         },
         autoplace_controls = {},
-        terrain_segmentation = 1,
+        terrain_segmentation = 1
       }
-    },
+    }
   }
 })

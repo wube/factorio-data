@@ -27,6 +27,6 @@ data:extend(
     width = 10,
     height = 6,
     equipment_categories = {"armor"}
-  },
+  }
 }
 )

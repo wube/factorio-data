@@ -1,14 +1,1 @@
-2017-12-03_Factorio_0.16.0.json
-2018-05-22_Factorio_0.17.0.json
-2018-06-12_Factorio_0.17.0.json
-2018-12-21_Factorio_0.17.0.json
-2018-12-27_Factorio_0.17.0.json
-2019-03-04_Factorio_0.17.5.lua
-2019-03-05_Factorio_0.17.6.lua
-2019-03-29_Factorio_0.17.23.json
-2019-04-27_Factorio_0.17.35.json
-2019-04-30_Factorio_0.17.35.json
-2019-05-01_Factorio_0.17.35.json
-2020-01-27_Factorio_0.18.02.lua
-2020-03-18_Factorio_0.18.14.lua
-2020-05-27_Factorio_0.18.28.lua
+1.1.0.json

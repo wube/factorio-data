@@ -12,11 +12,7 @@ data:extend(
   },
   {
     type = "ammo-category",
-    name = "combat-robot-laser"
-  },
-  {
-    type = "ammo-category",
-    name = "laser-turret"
+    name = "laser"
   },
   {
     type = "ammo-category",
@@ -29,10 +25,6 @@ data:extend(
   {
     type = "ammo-category",
     name = "shotgun-shell"
-  },
-  {
-    type = "ammo-category",
-    name = "railgun"
   },
   {
     type = "ammo-category",
@@ -60,7 +52,7 @@ data:extend(
   },
   {
     type = "ammo-category",
-    name = "combat-robot-beam"
+    name = "beam"
   },
   {
     type = "ammo-category",

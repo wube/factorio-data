@@ -1,6 +1,6 @@
 require "util"
 local math3d = require "math3d"
-local sounds = require("prototypes.entity.demo-sounds")
+local sounds = require("prototypes.entity.sounds")
 local fireutil = require("prototypes.fire-util")
 
 function fireutil.flamethrower_turret_extension_animation(shft, opts)
@@ -236,6 +236,39 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
       scale = 0.5
     }
   }
+
+  local glow_light_layer =
+  {
+    filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-gun-active.png",
+    counterclockwise = true,
+    line_length = 8,
+    width = 82,
+    height = 66,
+    frame_count = 1,
+    axially_symmetrical = false,
+    direction_count = 64,
+    shift = util.by_pixel(-2, -26),
+    tint = util.premul_color{1, 1, 1, 0.5},
+    blend_mode = "additive",
+    draw_as_light = true,
+    hr_version =
+    {
+      filename = "__base__/graphics/entity/flamethrower-turret/hr-flamethrower-turret-gun-active.png",
+      counterclockwise = true,
+      line_length = 8,
+      width = 158,
+      height = 126,
+      frame_count = 1,
+      axially_symmetrical = false,
+      direction_count = 64,
+      shift = util.by_pixel(-1, -25),
+      tint = util.premul_color{1, 1, 1, 0.5},
+      blend_mode = "additive",
+      draw_as_light = true,
+      scale = 0.5
+    }
+  }
+
   local mask_layer =
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-gun-mask.png",
@@ -293,7 +326,7 @@ function fireutil.flamethrower_turret_prepared_animation(shft, opts)
     }
   }
 
-  local ret_layers = opts and opts.attacking and { diffuse_layer, glow_layer, mask_layer, shadow_layer }
+  local ret_layers = opts and opts.attacking and { diffuse_layer, glow_layer, glow_light_layer, mask_layer, shadow_layer }
                                              or  { diffuse_layer, mask_layer, shadow_layer }
 
   return { layers = fireutil.foreach(ret_layers, function(tab)
@@ -405,7 +438,7 @@ data:extend({
     }
   },
 
-  light = {intensity = 1, size = 20},
+  light = {intensity = 0.2, size = 8, color = {1, 0.5, 0}},
 
   working_sound =
   {
@@ -416,7 +449,7 @@ data:extend({
 
 local indicator_pictures =
 {
-  north =
+  north = util.draw_as_glow
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-north.png",
     line_length = 2,
@@ -439,7 +472,7 @@ local indicator_pictures =
       scale = 0.5
     }
   },
-  east =
+  east = util.draw_as_glow
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-east.png",
     line_length = 2,
@@ -462,7 +495,7 @@ local indicator_pictures =
       scale = 0.5
     }
   },
-  south =
+  south = util.draw_as_glow
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-south.png",
     line_length = 2,
@@ -485,7 +518,7 @@ local indicator_pictures =
       scale = 0.5
     }
   },
-  west =
+  west = util.draw_as_glow
   {
     filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-led-indicator-west.png",
     line_length = 2,
@@ -568,7 +601,9 @@ data:extend({
     folding_animation = fireutil.flamethrower_turret_extension({ run_mode = "backward" }),
 
     not_enough_fuel_indicator_picture = indicator_pictures,
+    not_enough_fuel_indicator_light = {intensity = 0.2, size = 1.5, color = {1, 0, 0}},
     enough_fuel_indicator_picture = fireutil.foreach(util.table.deepcopy(indicator_pictures), function (tab) tab.x = tab.width end),
+    enough_fuel_indicator_light = {intensity = 0.2, size = 1.5, color = {0, 1, 0}},
     out_of_ammo_alert_icon =
     {
       filename = "__core__/graphics/icons/alerts/fuel-icon-red.png",
@@ -577,7 +612,6 @@ data:extend({
       height = 64,
       flags = {"icon"}
     },
-    indicator_light = { intensity = 0.8, size = 0.9 },
 
     gun_animation_render_layer = "object",
     gun_animation_secondary_draw_order = 1,
@@ -912,7 +946,7 @@ data:extend({
       }
     },
 
-    muzzle_animation =
+    muzzle_animation = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/flamethrower-turret/flamethrower-turret-muzzle-fire.png",
       line_length = 8,
@@ -925,7 +959,7 @@ data:extend({
       scale = 0.5,
       shift = {0.015625 * 0.5, -0.546875 * 0.5 + 0.05}
     },
-    muzzle_light = {intensity = 0.7, size = 3},
+    muzzle_light = {size = 1.5, intensity = 0.2, color = {1, 0.5, 0}},
 
     folded_muzzle_animation_shift          = fireutil.flamethrower_turret_preparing_muzzle_animation{ frame_count = 1,  orientation_count = 4, progress = 0, layers = {[0] = "object"} },
     preparing_muzzle_animation_shift       = fireutil.flamethrower_turret_preparing_muzzle_animation{ frame_count = 15, orientation_count = 4, layers = {[0] = "object"} },
@@ -1054,7 +1088,8 @@ data:extend(
       animation_speed = 1,
       scale = 0.2,
       tint = { r = 0.5, g = 0.5, b = 0.5, a = 0.18 }, --{ r = 1, g = 1, b = 1, a = 0.35 },
-      shift = math3d.vector2.mul({-0.078125, -1.8125}, 0.1)
+      shift = math3d.vector2.mul({-0.078125, -1.8125}, 0.1),
+      draw_as_glow = true
     },
 
     duration_in_ticks = 30 * 60,
@@ -1071,14 +1106,53 @@ data:extend(
 --- ******************************************************************
 --- ******************************************************************
 
+local stream_sprites =
+{
+  spine_animation = util.draw_as_glow
+  {
+    filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-fire-stream-spine.png",
+    blend_mode = "additive",
+    --tint = {r=1, g=1, b=1, a=0.5},
+    line_length = 4,
+    width = 32,
+    height = 18,
+    frame_count = 32,
+    axially_symmetrical = false,
+    direction_count = 1,
+    animation_speed = 2,
+    shift = {0, 0}
+  },
+
+  shadow =
+  {
+    filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
+    line_length = 5,
+    width = 28,
+    height = 16,
+    frame_count = 33,
+    priority = "high",
+    shift = {-0.09, 0.395}
+  },
+
+  particle = util.draw_as_glow
+  {
+    filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-explosion.png",
+    priority = "extra-high",
+    width = 64,
+    height = 64,
+    frame_count = 32,
+    line_length = 8
+  }
+}
+
 data:extend(
 {
   {
     type = "stream",
     name = "flamethrower-fire-stream",
     flags = {"not-on-map"},
-    stream_light = {intensity = 1, size = 4},
-    ground_light = {intensity = 0.8, size = 4},
+    --stream_light = {intensity = 1, size = 4},
+    --ground_light = {intensity = 0.8, size = 4},
 
     smoke_sources =
     {
@@ -1140,42 +1214,9 @@ data:extend(
         }
       }
     },
-
-    spine_animation =
-    {
-      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-fire-stream-spine.png",
-      blend_mode = "additive",
-      --tint = {r=1, g=1, b=1, a=0.5},
-      line_length = 4,
-      width = 32,
-      height = 18,
-      frame_count = 32,
-      axially_symmetrical = false,
-      direction_count = 1,
-      animation_speed = 2,
-      shift = {0, 0}
-    },
-
-    shadow =
-    {
-      filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
-      line_length = 5,
-      width = 28,
-      height = 16,
-      frame_count = 33,
-      priority = "high",
-      shift = {-0.09, 0.395}
-    },
-
-    particle =
-    {
-      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-explosion.png",
-      priority = "extra-high",
-      width = 64,
-      height = 64,
-      frame_count = 32,
-      line_length = 8
-    }
+    spine_animation = stream_sprites.spine_animation,
+    shadow = stream_sprites.shadow,
+    particle = stream_sprites.particle
   }
 }
 )
@@ -1197,8 +1238,8 @@ data:extend(
       }
     },
 
-    stream_light = {intensity = 1, size = 4 * 0.8},
-    ground_light = {intensity = 0.8, size = 4 * 0.8},
+    --stream_light = {intensity = 1, size = 4 * 0.8},
+    --ground_light = {intensity = 0.8, size = 4 * 0.8},
 
     particle_buffer_size = 65,
     particle_spawn_interval = 2,
@@ -1252,45 +1293,9 @@ data:extend(
         }
       }
     },
-
-    spine_animation =
-    {
-      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-fire-stream-spine.png",
-      blend_mode = "additive",
-      --tint = {r=1, g=1, b=1, a=0.5},
-      line_length = 4,
-      width = 32,
-      height = 18,
-      frame_count = 32,
-      axially_symmetrical = false,
-      direction_count = 1,
-      animation_speed = 2,
-      scale = 0.75,
-      shift = {0, 0}
-    },
-
-    shadow =
-    {
-      filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
-      line_length = 5,
-      width = 28,
-      height = 16,
-      frame_count = 33,
-      priority = "high",
-      scale = 0.5,
-      shift = {-0.09 * 0.5, 0.395 * 0.5}
-    },
-
-    particle =
-    {
-      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-explosion.png",
-      priority = "extra-high",
-      width = 64,
-      height = 64,
-      frame_count = 32,
-      line_length = 8,
-      scale = 0.8
-    }
+    spine_animation = stream_sprites.spine_animation,
+    shadow = stream_sprites.shadow,
+    particle = stream_sprites.particle
   },
   {
     type = "stream",
@@ -1307,8 +1312,8 @@ data:extend(
       }
     },
 
-    stream_light = {intensity = 1, size = 4 * 0.8},
-    ground_light = {intensity = 0.8, size = 4 * 0.8},
+    --stream_light = {intensity = 1, size = 4 * 0.8},
+    --ground_light = {intensity = 0.8, size = 4 * 0.8},
 
     particle_buffer_size = 65,
     particle_spawn_interval = 2,
@@ -1341,45 +1346,9 @@ data:extend(
         }
       }
     },
-
-    spine_animation =
-    {
-      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-fire-stream-spine.png",
-      blend_mode = "additive",
-      --tint = {r=1, g=1, b=1, a=0.5},
-      line_length = 4,
-      width = 32,
-      height = 18,
-      frame_count = 32,
-      axially_symmetrical = false,
-      direction_count = 1,
-      animation_speed = 2,
-      scale = 1.40625,
-      shift = {0, 0}
-    },
-
-    shadow =
-    {
-      filename = "__base__/graphics/entity/acid-projectile/projectile-shadow.png",
-      line_length = 5,
-      width = 28,
-      height = 16,
-      frame_count = 33,
-      priority = "high",
-      scale = 0.9375,
-      shift = {-0.09 * 0.5, 0.395 * 0.5}
-    },
-
-    particle =
-    {
-      filename = "__base__/graphics/entity/flamethrower-fire-stream/flamethrower-explosion.png",
-      priority = "extra-high",
-      width = 64,
-      height = 64,
-      frame_count = 32,
-      line_length = 8,
-      scale = 1.5
-    }
+    spine_animation = stream_sprites.spine_animation,
+    shadow = stream_sprites.shadow,
+    particle = stream_sprites.particle
   }
 }
 )

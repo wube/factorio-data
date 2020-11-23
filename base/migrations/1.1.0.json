@@ -1,0 +1,20 @@
+{
+  "technology":
+  [
+    [ "laser-turret-speed-1", "laser-shooting-speed-1" ],
+    [ "laser-turret-speed-2", "laser-shooting-speed-2" ],
+    [ "laser-turret-speed-3", "laser-shooting-speed-3" ],
+    [ "laser-turret-speed-4", "laser-shooting-speed-4" ],
+    [ "laser-turret-speed-5", "laser-shooting-speed-5" ],
+    [ "laser-turret-speed-6", "laser-shooting-speed-6" ],
+    [ "laser-turret-speed-7", "laser-shooting-speed-7" ],
+    [ "turrets", "gun-turret" ],
+    [ "laser-turrets", "laser-turret" ],
+    [ "combat-robotics", "defender" ],
+    [ "combat-robotics-2", "distractor" ],
+    [ "combat-robotics-3", "destroyer" ],
+    [ "gates", "gate" ],
+    [ "stone-walls", "stone-wall" ],
+    [ "tanks", "tank" ]
+  ]
+}

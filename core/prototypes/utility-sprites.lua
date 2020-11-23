@@ -42,15 +42,65 @@ local function make_full_cursor_box(x, y, side_length, side_height)
   }
 end
 
-local function make_default_modifier_icon()
+local function make_default_modifier_icon(filename)
+  --if filename then
+  --  return
+  --  {
+  --    filename = "__core__/graphics/technology-effect/" .. filename,
+  --    priority = "extra-high-no-scale",
+  --    width = 64,
+  --    height = 64,
+  --    mipmap_count = 2,
+  --    generate_sdf = true,
+  --    flags = {"icon"}
+  --  }
+  --end
+
   return
   {
     filename = "__core__/graphics/bonus-icon.png",
-    priority = "medium",
+    priority = "extra-high-no-scale",
     width = 32,
     height = 32,
     generate_sdf = true,
     flags = {"icon"}
+  }
+end
+
+local function make_technology_modifier_icon(filename)
+  return
+  {
+    filename = "__core__/graphics/icons/technology/effect/" .. filename,
+    priority = "extra-high-no-scale",
+    width = 64,
+    height = 64,
+    mipmap_count = 2,
+    generate_sdf = true,
+    flags = {"icon"}
+  }
+end
+
+local default_character_modifier_icon =
+{
+  filename = "__core__/graphics/icons/entity/character.png",
+  priority = "extra-high-no-scale",
+  size = 64,
+  scale = 0.5,
+  mipmap_count = 2,
+  generate_sdf = true,
+  flags = {"icon"}
+}
+
+local function make_modifier_constant(filename)
+  return
+  {
+    filename = "__core__/graphics/icons/technology/effect-constant/" .. filename,
+    priority = "extra-high-no-scale",
+    width = 64,
+    height = 64,
+    generate_sdf = true,
+    mipmap_count = 2,
+    flags = {"gui-icon"}
   }
 end
 
@@ -74,7 +124,7 @@ local function make_side_map_menu_button(row, hover)
   local hover_x_offset = 64 + 32
   return
   {
-    filename = "__core__/graphics/side-map-menu-buttons.png",
+    filename = "__core__/graphics/icons/mip/side-map-menu-buttons.png",
     priority = "high",
     size = side_menu_icon_size,
     mipmap_count = 2,
@@ -145,6 +195,39 @@ data:extend(
     type = "sprite",
     name = "tooltip-category-thrown",
     filename = "__core__/graphics/icons/tooltips/tooltip-category-thrown.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-consumed",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-consumed.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-shot",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-effect.png",
+    priority = "extra-high-no-scale",
+    width = 40,
+    height = 40,
+    flags = {"gui-icon"},
+    mipmap_count = 2,
+    scale = 0.5
+  },
+  {
+    type = "sprite",
+    name = "tooltip-category-activated",
+    filename = "__core__/graphics/icons/tooltips/tooltip-category-activated.png",
     priority = "extra-high-no-scale",
     width = 40,
     height = 40,
@@ -413,7 +496,7 @@ data:extend(
         make_full_cursor_box(320, 0, 1, 1),
         make_cursor_box(64, 324, 1.1), -- box for size <= 1
         make_cursor_box(0, 324, 2) -- box for rest
-      },
+      }
     },
 
     add =
@@ -507,7 +590,7 @@ data:extend(
       height = 32,
       mipmap_count = 2,
       scale = 0.5,
-      flags = {"gui-icon"},
+      flags = {"gui-icon"}
     },
     editor_play =
     {
@@ -787,11 +870,22 @@ data:extend(
     },
     hand =
     {
-      filename = "__core__/graphics/hand.png",
+      filename = "__core__/graphics/icons/mip/slot-item-in-hand.png",
       priority = "extra-high-no-scale",
-      width = 128,
-      height = 128,
-      mipmap_count = 3,
+      width = 64,
+      height = 64,
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    hand_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-item-in-hand-black.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      mipmap_count = 2,
+      scale = 0.5,
       flags = {"gui-icon"}
     },
     entity_info_dark_background =
@@ -858,54 +952,91 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
-    default_ammo_damage_modifier_icon = make_default_modifier_icon(),
-    default_gun_speed_modifier_icon = make_default_modifier_icon(),
-    default_turret_attack_modifier_icon = make_default_modifier_icon(),
-    inserter_stack_size_bonus_modifier_icon = make_default_modifier_icon(),
-    stack_inserter_capacity_bonus_modifier_icon = make_default_modifier_icon(),
-    laboratory_speed_modifier_icon = make_default_modifier_icon(),
-    character_logistic_slots_modifier_icon = make_default_modifier_icon(),
-    character_logistic_trash_slots_modifier_icon = make_default_modifier_icon(),
-    quick_bar_count_modifier_icon = make_default_modifier_icon(),
-    maximum_following_robots_count_modifier_icon = make_default_modifier_icon(),
-    worker_robot_speed_modifier_icon = make_default_modifier_icon(),
-    worker_robot_storage_modifier_icon = make_default_modifier_icon(),
-    ghost_time_to_live_modifier_icon = make_default_modifier_icon(),
-    turret_attack_modifier_icon = make_default_modifier_icon(),
-    ammo_damage_modifier_icon = make_default_modifier_icon(),
-    give_item_modifier_icon = make_default_modifier_icon(),
-    gun_speed_modifier_icon = make_default_modifier_icon(),
-    unlock_recipe_modifier_icon = make_default_modifier_icon(),
-    character_crafting_speed_modifier_icon = make_default_modifier_icon(),
-    character_mining_speed_modifier_icon = make_default_modifier_icon(),
-    character_running_speed_modifier_icon = make_default_modifier_icon(),
-    character_build_distance_modifier_icon = make_default_modifier_icon(),
-    character_item_drop_distance_modifier_icon = make_default_modifier_icon(),
-    character_reach_distance_modifier_icon = make_default_modifier_icon(),
-    character_resource_reach_distance_modifier_icon = make_default_modifier_icon(),
-    character_item_pickup_distance_modifier_icon = make_default_modifier_icon(),
-    character_loot_pickup_distance_modifier_icon = make_default_modifier_icon(),
-    character_inventory_slots_bonus_modifier_icon = make_default_modifier_icon(),
-    deconstruction_time_to_live_modifier_icon = make_default_modifier_icon(),
-    character_health_bonus_modifier_icon = make_default_modifier_icon(),
-    auto_character_logistic_trash_slots_modifier_icon = make_default_modifier_icon(),
-    mining_drill_productivity_bonus_modifier_icon = make_default_modifier_icon(),
-    train_braking_force_bonus_modifier_icon = make_default_modifier_icon(),
-    zoom_to_world_enabled_modifier_icon = make_default_modifier_icon(),
-    zoom_to_world_ghost_building_enabled_modifier_icon = make_default_modifier_icon(),
-    zoom_to_world_blueprint_enabled_modifier_icon = make_default_modifier_icon(),
-    zoom_to_world_deconstruction_planner_enabled_modifier_icon = make_default_modifier_icon(),
-    zoom_to_world_upgrade_planner_enabled_modifier_icon = make_default_modifier_icon(),
-    zoom_to_world_selection_tool_enabled_modifier_icon = make_default_modifier_icon(),
-    worker_robot_battery_modifier_icon = make_default_modifier_icon(),
-    laboratory_productivity_modifier_icon = make_default_modifier_icon(),
-    follower_robot_lifetime_modifier_icon = make_default_modifier_icon(),
-    nothing_modifier_icon = make_default_modifier_icon(),
-    max_failed_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
-    max_successful_attempts_per_tick_per_construction_queue_modifier_icon = make_default_modifier_icon(),
-    artillery_range_modifier_icon = make_default_modifier_icon(),
-    character_additional_mining_categories_modifier_icon = make_default_modifier_icon(),
-    character_logistic_requests_modifier_icon = make_default_modifier_icon(),
+    default_ammo_damage_modifier_icon                                     = make_default_modifier_icon("default-ammo-damage-modifier.png"),
+    default_gun_speed_modifier_icon                                       = make_default_modifier_icon("default-gun-speed-modifier.png"),
+    default_turret_attack_modifier_icon                                   = make_default_modifier_icon("default-turret-attack-modifier.png"),
+    inserter_stack_size_bonus_modifier_icon                               = make_technology_modifier_icon("inserter.png"),
+    stack_inserter_capacity_bonus_modifier_icon                           = make_technology_modifier_icon("stack-inserter.png"),
+    laboratory_speed_modifier_icon                                        = make_default_modifier_icon("laboratory-speed-modifier.png"),
+    character_logistic_slots_modifier_icon                                = make_default_modifier_icon("character-logistic-slots-modifier.png"),
+    character_logistic_trash_slots_modifier_icon                          = make_technology_modifier_icon("effect-logistic-trash-slots.png"),
+    maximum_following_robots_count_modifier_icon                          = make_technology_modifier_icon("defender.png"),
+    worker_robot_speed_modifier_icon                                      = make_default_modifier_icon("worker-robot-speed-modifier.png"),
+    worker_robot_storage_modifier_icon                                    = make_default_modifier_icon("worker-robot-storage-modifier.png"),
+    ghost_time_to_live_modifier_icon                                      = make_technology_modifier_icon("effect-ghost.png"),
+    turret_attack_modifier_icon                                           = make_default_modifier_icon("turret-attack-modifier.png"),
+    ammo_damage_modifier_icon                                             = make_default_modifier_icon("ammo-damage-modifier.png"),
+    give_item_modifier_icon                                               = make_default_modifier_icon("give-item-modifier.png"),
+    gun_speed_modifier_icon                                               = make_default_modifier_icon("gun-speed-modifier.png"),
+    unlock_recipe_modifier_icon                                           = make_default_modifier_icon("unlock-recipe-modifier.png"),
+    character_crafting_speed_modifier_icon                                = default_character_modifier_icon,
+    character_mining_speed_modifier_icon                                  = default_character_modifier_icon,
+    character_running_speed_modifier_icon                                 = default_character_modifier_icon,
+    character_build_distance_modifier_icon                                = default_character_modifier_icon,
+    character_item_drop_distance_modifier_icon                            = default_character_modifier_icon,
+    character_reach_distance_modifier_icon                                = default_character_modifier_icon,
+    character_resource_reach_distance_modifier_icon                       = default_character_modifier_icon,
+    character_item_pickup_distance_modifier_icon                          = default_character_modifier_icon,
+    character_loot_pickup_distance_modifier_icon                          = default_character_modifier_icon,
+    character_inventory_slots_bonus_modifier_icon                         = default_character_modifier_icon,
+    character_health_bonus_modifier_icon                                  = default_character_modifier_icon,
+    deconstruction_time_to_live_modifier_icon                             = make_technology_modifier_icon("effect-deconstruction.png"),
+    mining_drill_productivity_bonus_modifier_icon                         = make_technology_modifier_icon("electric-mining-drill.png"),
+    train_braking_force_bonus_modifier_icon                               = make_default_modifier_icon("train-braking-force-bonus-modifier.png"),
+    zoom_to_world_enabled_modifier_icon                                   = make_technology_modifier_icon("effect-zoom-to-world.png"),
+    zoom_to_world_ghost_building_enabled_modifier_icon                    = make_technology_modifier_icon("effect-zoom-to-world.png"),
+    zoom_to_world_blueprint_enabled_modifier_icon                         = make_technology_modifier_icon("effect-zoom-to-world.png"),
+    zoom_to_world_deconstruction_planner_enabled_modifier_icon            = make_technology_modifier_icon("effect-zoom-to-world.png"),
+    zoom_to_world_upgrade_planner_enabled_modifier_icon                   = make_technology_modifier_icon("effect-zoom-to-world.png"),
+    zoom_to_world_selection_tool_enabled_modifier_icon                    = make_technology_modifier_icon("effect-zoom-to-world.png"),
+    worker_robot_battery_modifier_icon                                    = make_default_modifier_icon("worker-robot-battery-modifier.png"),
+    laboratory_productivity_modifier_icon                                 = make_default_modifier_icon("laboratory-productivity-modifier.png"),
+    follower_robot_lifetime_modifier_icon                                 = make_default_modifier_icon("follower-robot-lifetime-modifier.png"),
+    nothing_modifier_icon                                                 = make_default_modifier_icon("nothing-modifier.png"),
+    max_failed_attempts_per_tick_per_construction_queue_modifier_icon     = make_technology_modifier_icon("effect-ghost.png"),
+    max_successful_attempts_per_tick_per_construction_queue_modifier_icon = make_technology_modifier_icon("effect-ghost.png"),
+    artillery_range_modifier_icon                                         = make_technology_modifier_icon("artillery-shell.png"),
+    character_additional_mining_categories_modifier_icon                  = make_default_modifier_icon("character-additional-mining-categories-modifier.png"),
+    character_logistic_requests_modifier_icon                             = make_technology_modifier_icon("effect-logistic-slots.png"),
+
+    ammo_damage_modifier_constant                                             = make_modifier_constant("effect-constant-damage.png"),
+    turret_attack_modifier_constant                                           = make_modifier_constant("effect-constant-damage.png"),
+    worker_robot_speed_modifier_constant                                      = make_modifier_constant("effect-constant-movement-speed.png"),
+    gun_speed_modifier_constant                                               = make_modifier_constant("effect-constant-speed.png"),
+    laboratory_speed_modifier_constant                                        = make_modifier_constant("effect-constant-speed.png"),
+    artillery_range_modifier_constant                                         = make_modifier_constant("effect-constant-range.png"),
+    maximum_following_robots_count_modifier_constant                          = make_modifier_constant("effect-constant-count.png"),
+    follower_robot_lifetime_modifier_constant                                 = make_modifier_constant("effect-constant-time-to-live.png"),
+    character_logistic_trash_slots_modifier_constant                          = make_modifier_constant("effect-constant-capacity.png"),
+    --capacity_modifier_constant                                                = make_modifier_constant("effect-constant-capacity.png"),
+    worker_robot_storage_modifier_constant                                    = make_modifier_constant("effect-constant-capacity.png"),
+    worker_robot_battery_modifier_constant                                    = make_modifier_constant("effect-constant-battery.png"),
+    mining_drill_productivity_bonus_modifier_constant                         = make_modifier_constant("effect-constant-mining-productivity.png"),
+    laboratory_productivity_modifier_constant                                 = make_modifier_constant("effect-constant-laboratory-productivity.png"),
+    train_braking_force_bonus_modifier_constant                               = make_modifier_constant("effect-constant-braking-force.png"),
+    character_mining_speed_modifier_constant                                  = make_modifier_constant("effect-constant-mining.png"),
+    character_crafting_speed_modifier_constant                                = make_modifier_constant("effect-constant-crafting-speed.png"),
+    character_running_speed_modifier_constant                                 = make_modifier_constant("effect-constant-movement-speed.png"),
+    character_build_distance_modifier_constant                                = make_modifier_constant("effect-constant-range.png"),
+    character_item_drop_distance_modifier_constant                            = make_modifier_constant("effect-constant-range.png"),
+    character_reach_distance_modifier_constant                                = make_modifier_constant("effect-constant-range.png"),
+    character_resource_reach_distance_modifier_constant                       = make_modifier_constant("effect-constant-range.png"),
+    character_item_pickup_distance_modifier_constant                          = make_modifier_constant("effect-constant-range.png"),
+    character_loot_pickup_distance_modifier_constant                          = make_modifier_constant("effect-constant-range.png"),
+    character_inventory_slots_bonus_modifier_constant                         = make_modifier_constant("effect-constant-capacity.png"),
+    character_health_bonus_modifier_constant                                  = make_modifier_constant("effect-constant-health.png"),
+    stack_inserter_capacity_bonus_modifier_constant                           = make_modifier_constant("effect-constant-capacity.png"),
+    inserter_stack_size_bonus_modifier_constant                               = make_modifier_constant("effect-constant-capacity.png"),
+    zoom_to_world_ghost_building_enabled_modifier_constant                    = make_modifier_constant("effect-constant-ghost.png"),
+    zoom_to_world_blueprint_enabled_modifier_constant                         = make_modifier_constant("effect-constant-blueprint.png"),
+    zoom_to_world_deconstruction_planner_enabled_modifier_constant            = make_modifier_constant("effect-constant-deconstruction-planner.png"),
+    zoom_to_world_upgrade_planner_enabled_modifier_constant                   = make_modifier_constant("effect-constant-upgrade-planner.png"),
+    zoom_to_world_selection_tool_enabled_modifier_constant                    = make_modifier_constant("effect-constant-selection-tool.png"),
+    ghost_time_to_live_modifier_constant                                      = make_modifier_constant("effect-constant-time-to-live.png"),
+    deconstruction_time_to_live_modifier_constant                             = make_modifier_constant("effect-constant-time-to-live.png"),
+    max_failed_attempts_per_tick_per_construction_queue_modifier_constant     = make_modifier_constant("effect-constant-speed.png"),
+    max_successful_attempts_per_tick_per_construction_queue_modifier_constant = make_modifier_constant("effect-constant-speed.png"),
+
     hint_arrow_up =
     {
       filename = "__core__/graphics/gui-new.png",
@@ -960,37 +1091,81 @@ data:extend(
     },
     slot_icon_module =
     {
-      filename = "__core__/graphics/slot-icon-module.png",
+      filename = "__core__/graphics/icons/mip/slot-module-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"gui-icon"}
+    },
+    slot_icon_module_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-module-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     slot_icon_armor =
     {
-      filename = "__core__/graphics/slot-icon-armor.png",
+      filename = "__core__/graphics/icons/mip/slot-armor-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    slot_icon_armor_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-armor-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
       scale = 0.5,
       flags = {"icon"}
     },
     slot_icon_gun =
     {
-      filename = "__core__/graphics/slot-icon-gun.png",
+      filename = "__core__/graphics/icons/mip/slot-gun-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"gui-icon"}
+    },
+    slot_icon_gun_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-gun-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     slot_icon_ammo =
     {
-      filename = "__core__/graphics/slot-icon-ammo.png",
+      filename = "__core__/graphics/icons/mip/slot-ammo-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"icon"}
+    },
+    slot_icon_ammo_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-ammo-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
       scale = 0.5,
       flags = {"icon"}
     },
@@ -1002,14 +1177,33 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    slot_icon_resource_black =
+    {
+      filename = "__core__/graphics/slot-icon-resource-black.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     slot_icon_fuel =
     {
-      filename = "__core__/graphics/slot-icon-fuel.png",
+      filename = "__core__/graphics/icons/mip/slot-fuel-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"gui-icon"}
+    },
+    slot_icon_fuel_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-fuel-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     slot_icon_result =
     {
@@ -1019,30 +1213,80 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    slot_icon_result_black =
+    {
+      filename = "__core__/graphics/slot-icon-result-black.png",
+      priority = "medium",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     slot_icon_robot =
     {
-      filename = "__core__/graphics/slot-icon-robot.png",
+      filename = "__core__/graphics/icons/mip/slot-robot-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"gui-icon"}
+    },
+    slot_icon_robot_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-robot-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     slot_icon_robot_material =
     {
-      filename = "__core__/graphics/slot-icon-robot-material.png",
+      filename = "__core__/graphics/icons/mip/slot-robot-material-white.png",
       priority = "medium",
       width = 64,
       height = 64,
+      mipmap_count = 3,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"gui-icon"}
+    },
+    slot_icon_robot_material_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-robot-material-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    slot_icon_inserter_hand =
+    {
+      filename = "__core__/graphics/icons/mip/slot-inserter-hand-white.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    slot_icon_inserter_hand_black =
+    {
+      filename = "__core__/graphics/icons/mip/slot-inserter-hand-black.png",
+      priority = "medium",
+      width = 64,
+      height = 64,
+      mipmap_count = 3,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
     slot =
     {
       filename = "__core__/graphics/slot.png",
       priority = "extra-high-no-scale",
-      width = 36,
-      height = 36,
+      width = 80,
+      height = 80,
       flags = {"icon"}
     },
     equipment_slot =
@@ -1084,11 +1328,13 @@ data:extend(
     },
     robot_slot =
     {
-      filename = "__core__/graphics/robot-slot.png",
+      filename = "__core__/graphics/icons/mip/slot-robot-white.png",
       priority = "medium",
       width = 64,
       height = 64,
-      flags = {"icon"}
+    mipmap_count = 3,
+    scale = 0.5,
+      flags = {"gui-icon"}
     },
     set_bar_slot =
     {
@@ -1365,26 +1611,29 @@ data:extend(
     },
     player_force_icon =
     {
-      filename = "__core__/graphics/player-force-icon.png",
+      filename = "__core__/graphics/icons/force/player-force-icon.png",
       priority = "medium",
-      width = 32,
-      height = 32,
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
       flags = {"icon"}
     },
     neutral_force_icon =
     {
-      filename = "__core__/graphics/treex64-provisional.png",
+      filename = "__core__/graphics/icons/force/neutral-force-icon.png",
       priority = "medium",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
       flags = {"icon"}
     },
     enemy_force_icon =
     {
-      filename = "__core__/graphics/enemy-force-icon.png",
+      filename = "__core__/graphics/icons/force/enemy-force-icon.png",
       priority = "medium",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
+      mipmap_count = 2,
       flags = {"icon"}
     },
     nature_icon =
@@ -1530,14 +1779,6 @@ data:extend(
         scale = 0.5
       }
     },
-    trash_bin =
-    {
-      filename = "__core__/graphics/trash-bin.png",
-      priority = "high",
-      width = 32,
-      height = 32,
-      flags = {"icon"}
-    },
     and_or =
     {
       filename = "__core__/graphics/and-or-icon.png",
@@ -1566,8 +1807,9 @@ data:extend(
     {
       filename = "__core__/graphics/down-arrow.png",
       priority = "high",
-      width = 32,
+      width = 24,
       height = 16,
+      scale = 1,
       flags = {"icon"}
     },
     enter =
@@ -1599,36 +1841,40 @@ data:extend(
 
     circuit_network_panel_black =
     {
-      filename = "__core__/graphics/circuit-network-panel-black.png",
+      filename = "__core__/graphics/icons/mip/circuit-connection-black.png",
       priority = "high",
-      width = 16,
-      height = 16,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+    mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     circuit_network_panel_white =
     {
-      filename = "__core__/graphics/circuit-network-panel-white.png",
+      filename = "__core__/graphics/icons/mip/circuit-connection-white.png",
       priority = "high",
-      width = 16,
-      height = 16,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+    mipmap_count = 2,
+      flags = {"gui-icon"}
     },
 
     logistic_network_panel_black =
     {
-      filename = "__core__/graphics/logistic-network-panel-black.png",
+      filename = "__core__/graphics/icons/mip/logistic-connection-black.png",
       priority = "high",
-      width = 16,
-      height = 16,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+    mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     logistic_network_panel_white =
     {
-      filename = "__core__/graphics/logistic-network-panel-white.png",
+      filename = "__core__/graphics/icons/mip/logistic-connection-white.png",
       priority = "high",
-      width = 16,
-      height = 16,
-      flags = {"icon"}
+      width = 32,
+      height = 32,
+    mipmap_count = 2,
+      flags = {"gui-icon"}
     },
 
     rename_icon_small_black =
@@ -1918,12 +2164,21 @@ data:extend(
     show_turret_range_in_map_view        = make_side_map_menu_button(2, false),
     show_pollution_in_map_view           = make_side_map_menu_button(3, false),
     show_train_station_names_in_map_view = make_side_map_menu_button(4, false),
-    show_player_names_in_map_view        = make_side_map_menu_button(5, false),    show_logistics_network_in_map_view_black   = make_side_map_menu_button(0, true),
+    show_player_names_in_map_view        = make_side_map_menu_button(5, false),
+    show_tags_in_map_view                = make_side_map_menu_button(6, false),
+    show_worker_robots_in_map_view       = make_side_map_menu_button(7, false),
+    show_rail_signal_states_in_map_view  = make_side_map_menu_button(8, false),
+    show_recipe_icons_in_map_view         = make_side_map_menu_button(9, false),
+    show_logistics_network_in_map_view_black   = make_side_map_menu_button(0, true),
     show_electric_network_in_map_view_black    = make_side_map_menu_button(1, true),
     show_turret_range_in_map_view_black        = make_side_map_menu_button(2, true),
     show_pollution_in_map_view_black           = make_side_map_menu_button(3, true),
     show_train_station_names_in_map_view_black = make_side_map_menu_button(4, true),
     show_player_names_in_map_view_black        = make_side_map_menu_button(5, true),
+    show_tags_in_map_view_black                = make_side_map_menu_button(6, true),
+    show_worker_robots_in_map_view_black       = make_side_map_menu_button(7, true),
+    show_rail_signal_states_in_map_view_black  = make_side_map_menu_button(8, true),
+    show_recipe_icons_in_map_view_black         = make_side_map_menu_button(9, false),
     train_stop_in_map_view =
     {
       filename = "__core__/graphics/train-stop-in-map-view.png",
@@ -1940,12 +2195,20 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    train_stop_full_in_map_view =
+    {
+      filename = "__core__/graphics/train-stop-in-map-view.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     custom_tag_in_map_view =
     {
       filename = "__core__/graphics/custom-tag-in-map-view.png",
       priority = "extra-high-no-scale",
       width = 32,
-      height = 32,
+      height = 49,
       flags = {"icon"}
     },
     covered_chunk =
@@ -2007,6 +2270,14 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
+    custom_tag_icon =
+    {
+      filename = "__core__/graphics/icons/mip/custom-tag-icon.png",
+      priority = "extra-high-no-scale",
+      width = 32,
+      height = 32,
+      flags = {"icon"}
+    },
     underground_remove_belts =
     {
       filename = "__core__/graphics/arrows/underground-lines-remove.png",
@@ -2037,19 +2308,21 @@ data:extend(
     },
     ghost_cursor =
     {
-      filename = "__core__/graphics/ghost-cursor.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 1,
-      flags = {"icon"}
+      filename = "__core__/graphics/icons/mip/cursor-ghost.png",
+      priority = "extra-high",
+      size = 64,
+      scale = 0.5,
+    mipmap_count = 2,
+      flags = {"gui-icon"}
     },
     tile_ghost_cursor =
     {
-      filename = "__core__/graphics/tile-ghost-cursor.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 1,
-      flags = {"icon"}
+      filename = "__core__/graphics/icons/mip/cursor-ghost-tile.png",
+      priority = "extra-high",
+      size = 64,
+    mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
     },
 
     expand =
@@ -2093,24 +2366,6 @@ data:extend(
     },
 
     ------------------------------------------------------------ new icons
-    battery_indicator =
-    {
-      filename = "__core__/graphics/battery-indicator.png",
-      priority = "extra-high-no-scale",
-      width = 54,
-      height = 94,
-      scale = 0.5,
-      flags = {"icon"}
-    },
-    battery_indicator_bar =
-    {
-      filename = "__core__/graphics/battery-indicator-bar.png",
-      priority = "extra-high-no-scale",
-      width = 26,
-      height = 16,
-      scale = 0.5,
-      flags = {"icon"}
-    },
     center =
     {
       filename = "__core__/graphics/icons/mip/center.png",
@@ -2135,6 +2390,54 @@ data:extend(
       flags = {"gui-icon"},
       mipmap_count = 2
     },
+    check_mark_green =
+    {
+      filename = "__core__/graphics/icons/mip/check-mark-green.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
+    check_mark_dark_green =
+    {
+      filename = "__core__/graphics/icons/mip/check-mark-dark-green.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
+    not_played_yet_green =
+    {
+      filename = "__core__/graphics/icons/mip/not-played-yet-green.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
+    not_played_yet_dark_green =
+    {
+      filename = "__core__/graphics/icons/mip/not-played-yet-dark-green.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
+    played_green =
+    {
+      filename = "__core__/graphics/icons/mip/played-green.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
+    played_dark_green =
+    {
+      filename = "__core__/graphics/icons/mip/played-dark-green.png",
+      size = 32,
+      scale = 0.5,
+      flags = {"gui-icon"},
+      mipmap_count = 2
+    },
     close_white =
     {
       filename = "__core__/graphics/icons/close-white.png",
@@ -2149,7 +2452,7 @@ data:extend(
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"gui-icon"},
+      flags = {"gui-icon"}
     },
     close_fat =
     {
@@ -2220,9 +2523,10 @@ data:extend(
     },
     equipment_grid =
     {
-      filename = "__core__/graphics/icons/equipment-grid.png",
+      filename = "__core__/graphics/icons/mip/equipment-grid-white.png",
       priority = "extra-high-no-scale",
-      size = 46,
+      mipmap_count = 2,
+      size = 64,
       scale = 1,
       flags = {"icon"}
     },
@@ -2278,10 +2582,9 @@ data:extend(
       filename = "__core__/graphics/icons/mip/map-exchange-string.png",
       priority = "extra-high-no-scale",
       size = 32,
-      scale = 1,
+      scale = 0.5,
       flags = {"gui-icon"},
-      mipmap_count = 2,
-      scale = 0.5
+      mipmap_count = 2
     },
     missing_mod_icon =
     {
@@ -2377,7 +2680,7 @@ data:extend(
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"gui-icon"},
+      flags = {"gui-icon"}
     },
     search_white =
     {
@@ -2385,7 +2688,7 @@ data:extend(
       priority = "extra-high-no-scale",
       size = 32,
       scale = 0.5,
-      flags = {"gui-icon"},
+      flags = {"gui-icon"}
     },
     station_name =
     {
@@ -2471,6 +2774,97 @@ data:extend(
       size = 100,
       scale = 0.5,
       flags = {"gui-icon"}
-    }
+    },
+    mouse_cursor =
+    {
+      filename = "__core__/graphics/mouse-cursor.png",
+      size = {30, 45},
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    status_working =
+    {
+      filename = "__core__/graphics/status.png",
+      size = {32, 32},
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    status_not_working =
+    {
+      filename = "__core__/graphics/status.png",
+      size = {32, 32},
+      x = 32,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    status_yellow =
+    {
+      filename = "__core__/graphics/status.png",
+      size = {32, 32},
+      x = 64,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    gradient =
+    {
+      filename = "__core__/graphics/gui-new.png",
+      size = {1, 296},
+      position = {496, 136},
+      flags = {"gui-icon"}
+    },
+    output_console_gradient =
+    {
+      filename = "__core__/graphics/gui-new.png",
+      size = {475, 1},
+      position = {0, 1219},
+      flags = {"gui-icon"}
+    },
+    select_icon_black =
+    {
+      filename = "__core__/graphics/icons/mip/select-icon-black.png",
+      size = 40,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    select_icon_white =
+    {
+      filename = "__core__/graphics/icons/mip/select-icon-white.png",
+      size = 40,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    notification =
+    {
+      filename = "__core__/graphics/icons/mip/notification.png",
+      size = 20,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    alert_arrow =
+    {
+      filename = "__core__/graphics/arrows/alert-arrow.png",
+      size = {42, 55},
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    technology_black =
+    {
+      filename = "__core__/graphics/icons/mip/technology-black.png",
+      size = 64,
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    technology_white =
+    {
+      filename = "__core__/graphics/icons/mip/technology-white.png",
+      size = 64,
+      mipmap_count = 2,
+      scale = 0.5,
+      flags = {"gui-icon"}
+    },
   }
 })

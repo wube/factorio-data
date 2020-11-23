@@ -5,32 +5,32 @@ data:extend(
     name = "give-blueprint",
     key_sequence = "ALT + B",
     consuming = "game-only",
-    item_to_create = "blueprint",
-    action = "create-blueprint-item"
+    item_to_spawn = "blueprint",
+    action = "spawn-item"
   },
   {
     type = "custom-input",
     name = "give-blueprint-book",
     key_sequence = "",
     consuming = "game-only",
-    item_to_create = "blueprint-book",
-    action = "create-blueprint-item"
+    item_to_spawn = "blueprint-book",
+    action = "spawn-item"
   },
   {
     type = "custom-input",
     name = "give-deconstruction-planner",
     key_sequence = "ALT + D",
     consuming = "game-only",
-    item_to_create = "deconstruction-planner",
-    action = "create-blueprint-item"
+    item_to_spawn = "deconstruction-planner",
+    action = "spawn-item"
   },
   {
     type = "custom-input",
     name = "give-upgrade-planner",
     key_sequence = "ALT + U",
     consuming = "game-only",
-    item_to_create = "upgrade-planner",
-    action = "create-blueprint-item"
+    item_to_spawn = "upgrade-planner",
+    action = "spawn-item"
   },
   {
     type = "custom-input",

@@ -1,6 +1,6 @@
-mod_gui = {}
+local mod_gui = {}
 mod_gui.button_style = "mod_gui_button"
-mod_gui.frame_style = "inner_frame_in_outer_frame"
+mod_gui.frame_style = "non_draggable_frame"
 
 --[[
 
@@ -23,13 +23,22 @@ Any other questions please feel free to ask on the modding help forum.
 
 function mod_gui.get_button_flow(player)
   local gui = player.gui.top
-  local button_flow = gui.mod_gui_button_flow
-  if not button_flow then
-    button_flow = gui.add{type = "flow", name = "mod_gui_button_flow", direction = "horizontal", style = "mod_gui_spacing_horizontal_flow"}
-    button_flow.style.left_padding = 4
-    button_flow.style.top_padding = 4
+
+  if gui.mod_gui_button_flow then
+    --legacy...
+    return gui.mod_gui_button_flow
   end
-  return button_flow
+
+  local button_flow = gui.mod_gui_top_frame and gui.mod_gui_top_frame.mod_gui_inner_frame
+
+  if button_flow then
+    return button_flow
+  end
+
+  local frame = gui.add{type = "frame", name = "mod_gui_top_frame", direction = "horizontal", style = "quick_bar_window_frame"}
+  local inner = frame.add{type = "frame", name = "mod_gui_inner_frame", style = "mod_gui_inside_deep_frame"}
+
+  return inner
 end
 
 function mod_gui.get_frame_flow(player)
@@ -37,8 +46,6 @@ function mod_gui.get_frame_flow(player)
   local frame_flow = gui.mod_gui_frame_flow
   if not frame_flow then
     frame_flow = gui.add{type = "flow", name = "mod_gui_frame_flow", direction = "horizontal", style = "mod_gui_spacing_horizontal_flow"}
-    frame_flow.style.left_padding = 4
-    frame_flow.style.top_padding = 4
   end
   return frame_flow
 end

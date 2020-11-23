@@ -213,7 +213,9 @@ data:extend(
       -- given multiplier. overload_levels gives the threshold values, overload_multipliers gives the multipliers.
       -- overload_levels and overload_multipliers must be the same length.
       overload_levels = {0, 100, 500},
-      overload_multipliers = {2, 3, 4}
+      overload_multipliers = {2, 3, 4},
+      -- The score of all paths in the negative cache is decreased by one every this many ticks.
+      negative_path_cache_delay_interval = 20,
     },
 
     -- If a behavior fails this many times, the enemy (or enemy group)

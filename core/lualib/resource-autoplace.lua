@@ -36,7 +36,7 @@ if not resource_autoplace__patch_metasets then
   resource_autoplace__patch_metasets =
   {
     regular = new_patch_metaset{ count_expression_name = "regular-resource-patch-set-count" },
-    starting = new_patch_metaset{ count_expression_name = "starting-resource-patch-set-count" },
+    starting = new_patch_metaset{ count_expression_name = "starting-resource-patch-set-count" }
   }
 end
 

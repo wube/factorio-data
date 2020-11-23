@@ -65,7 +65,7 @@ return
     util.by_pixel(5, -27),
     util.by_pixel(7, -27),
     util.by_pixel(9, -26),
-    util.by_pixel(11, -25),
+    util.by_pixel(11, -25)
   },
   [1] = 
   {
@@ -132,7 +132,7 @@ return
     util.by_pixel(-15, -22),
     util.by_pixel(-13, -23),
     util.by_pixel(-11, -24),
-    util.by_pixel(-9, -25),
+    util.by_pixel(-9, -25)
   },
   [2] = 
   {
@@ -199,7 +199,7 @@ return
     util.by_pixel(-5, -27),
     util.by_pixel(-3, -28),
     util.by_pixel(-1, -28),
-    util.by_pixel(0, -28),
+    util.by_pixel(0, -28)
   },
   [3] = 
   {
@@ -266,7 +266,7 @@ return
     util.by_pixel(-18, -28),
     util.by_pixel(-17, -29),
     util.by_pixel(-15, -30),
-    util.by_pixel(-14, -31),
+    util.by_pixel(-14, -31)
   },
   [4] = 
   {
@@ -333,7 +333,7 @@ return
     util.by_pixel(-21, -14),
     util.by_pixel(-21, -15),
     util.by_pixel(-21, -17),
-    util.by_pixel(-21, -18),
+    util.by_pixel(-21, -18)
   },
   [5] = 
   {
@@ -400,7 +400,7 @@ return
     util.by_pixel(13, -30),
     util.by_pixel(14, -29),
     util.by_pixel(15, -28),
-    util.by_pixel(16, -27),
+    util.by_pixel(16, -27)
   },
   [6] = 
   {
@@ -467,7 +467,7 @@ return
     util.by_pixel(18, -23),
     util.by_pixel(19, -22),
     util.by_pixel(20, -20),
-    util.by_pixel(21, -19),
+    util.by_pixel(21, -19)
   },
   [7] = 
   {
@@ -534,7 +534,7 @@ return
     util.by_pixel(9, -24),
     util.by_pixel(11, -24),
     util.by_pixel(13, -23),
-    util.by_pixel(14, -22),
+    util.by_pixel(14, -22)
   },
   [8] = 
   {
@@ -601,7 +601,7 @@ return
     util.by_pixel(-19, -18),
     util.by_pixel(-17, -20),
     util.by_pixel(-16, -21),
-    util.by_pixel(-14, -22),
+    util.by_pixel(-14, -22)
   },
   [9] = 
   {
@@ -668,7 +668,7 @@ return
     util.by_pixel(3, -25),
     util.by_pixel(5, -24),
     util.by_pixel(7, -24),
-    util.by_pixel(9, -23),
+    util.by_pixel(9, -23)
   },
   [10] = 
   {
@@ -735,6 +735,6 @@ return
     util.by_pixel(-10, -21),
     util.by_pixel(-10, -22),
     util.by_pixel(-10, -22),
-    util.by_pixel(-10, -23),
-  },
+    util.by_pixel(-10, -23)
+  }
 }

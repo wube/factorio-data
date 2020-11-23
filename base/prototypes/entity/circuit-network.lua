@@ -1,6 +1,6 @@
 require("prototypes.entity.combinator-pictures")
-local hit_effects = require("prototypes.entity.demo-hit-effects")
-local sounds = require("prototypes.entity.demo-sounds")
+local hit_effects = require("prototypes.entity.hit-effects")
+local sounds = require("prototypes.entity.sounds")
 
 data:extend
 {
@@ -45,7 +45,7 @@ data:extend
 
     activity_led_light =
     {
-      intensity = 0.8,
+      intensity = 0,
       size = 1,
       color = {r = 1.0, g = 1.0, b = 1.0}
     },
@@ -60,7 +60,7 @@ data:extend
 
     screen_light =
     {
-      intensity = 0.3,
+      intensity = 0,
       size = 0.6,
       color = {r = 1.0, g = 1.0, b = 1.0}
     },
@@ -120,7 +120,7 @@ data:extend
 
     activity_led_light =
     {
-      intensity = 0.8,
+      intensity = 0,
       size = 1,
       color = {r = 1.0, g = 1.0, b = 1.0}
     },
@@ -135,7 +135,7 @@ data:extend
 
     screen_light =
     {
-      intensity = 0.3,
+      intensity = 0,
       size = 0.6,
       color = {r = 1.0, g = 1.0, b = 1.0}
     },
@@ -272,7 +272,7 @@ data:extend
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
 
-    item_slot_count = 18,
+    item_slot_count = 20,
 
     vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.machine_open,
@@ -280,7 +280,7 @@ data:extend
 
     activity_led_light =
     {
-      intensity = 0.8,
+      intensity = 0,
       size = 1,
       color = {r = 1.0, g = 1.0, b = 1.0}
     },
@@ -829,7 +829,7 @@ data:extend
         height = 24,
         shift = util.by_pixel(0, 45),
         variation_count = 1,
-        scale = 5,
+        scale = 5
       },
       rotate = false,
       orientation_to_variation = false
@@ -921,7 +921,7 @@ data:extend
         {
           filename = "__base__/sound/power-switch-activate-3.ogg",
           volume = 0.4
-        },
+        }
       },
       deactivate_sound =
       {
@@ -929,11 +929,11 @@ data:extend
         volume = 0
       },
       audible_distance_modifier = 0.4,
-      --max_sounds_per_type = 3,
+      --max_sounds_per_type = 3
     },
 
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
-    overlay_start =
+    overlay_start = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-electricity-start.png",
       blend_mode = "additive",
@@ -955,7 +955,7 @@ data:extend
         scale = 0.5
       }
     },
-    overlay_loop =
+    overlay_loop = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-electricity-loop.png",
       blend_mode = "additive",
@@ -978,7 +978,7 @@ data:extend
         scale = 0.5
       }
     },
-    led_on =
+    led_on = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
       x = 22,
@@ -997,7 +997,7 @@ data:extend
         scale = 0.5
       }
     },
-    led_off =
+    led_off = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
       width = 22,

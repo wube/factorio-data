@@ -25,6 +25,8 @@ data:extend(
     turret_range_visualization_color = { r = 0.05, g = 0.1, b = 0.05, a = 0.15 },
     capsule_range_visualization_color = { r = 0.05, g = 0.1, b = 0.05, a = 0.15 },
     artillery_range_visualization_color = { r = 0.12, g = 0.0375, b = 0.0375, a = 0.15 },
+    train_no_path_color = {1, 0.2, 0.2},
+    train_destination_full_color = {0.8, 0.2, 0.8},
     chart =
     {
       electric_lines_color = {r = 0, g = 212, b = 255, a = 255},
@@ -32,7 +34,7 @@ data:extend(
       electric_lines_color_switch_disabled = {r = 255, g = 0, b = 0, a = 255},
       electric_power_pole_color = {r = 0, g = 158, b = 163, a = 255},
       switch_color = {r = 60, g = 0, b = 160, a = 255},
-      electric_line_width = 1.5,
+      electric_line_width = 0.5,
       electric_line_minimum_absolute_width = 2,
       turret_range_color = {r = 0.8, g = 0.25, b = 0.25, a = 1},
       artillery_range_color = {r = 0.8, g = 0.25, b = 0.25, a = 1},
@@ -63,10 +65,11 @@ data:extend(
       },
       default_color_by_type =
       {
-        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40},
+        ["tree"] = {r = 0.19, g = 0.39, b = 0.19, a = 0.40}
       },
       chart_train_stop_text_color = {r = 1, g = 1, b = 1},
       chart_train_stop_disabled_text_color = {r = 0.9,  g = 0.2, b = 0.2},
+      chart_train_stop_full_text_color = {r = 0.5,  g = 0.5, b = 0.9},
       vehicle_outer_color = {r = 1, g = 0.1, b = 0.1},
       vehicle_outer_color_selected = {r = 1, g = 1, b = 1},
       vehicle_inner_color = {r = 0.9, g = 0.9, b = 0.9},
@@ -81,18 +84,24 @@ data:extend(
       explosion_visualization_duration = 48,
       train_path_color = { r = 1, g = 1, b = 1 },
       train_preview_path_outline_color = { r = 0, g = 1, b = 0 },
-      train_current_path_outline_color ={ r = 1, g = 0, b = 0 }
+      train_current_path_outline_color = { r = 1, g = 0, b = 0 },
+      chart_deconstruct_tint = { r = 0.75, g = 0.2, b = 0.2, a = 1 }
     },
     default_player_force_color = { r = 0.869, g = 0.5, b = 0.130, a = 0.5 },
     default_enemy_force_color = { r = 0.815, g = 0.024, b = 0.0, a = 0.5 },
     default_other_force_color = { r = 0.2, g = 0.2, b = 0.2 },
     deconstruct_mark_tint = { r = 0.65, g = 0.65, b = 0.65, a = 0.65 },
+    rail_planner_count_button_color = {1, 1, 1},
+    count_button_size = 40,
 
     zoom_to_world_can_use_nightvision = false,
-    zoom_to_world_effect_strength = 0.05,
+    zoom_to_world_effect_strength = 1.0,
     max_terrain_building_size = 255, -- the min of this or the player build reach is used
     small_area_size = 1.5, -- less than this plays the 'small' sound variants
     medium_area_size = 6.5, -- less than this plays the 'medium' sound variants, larger and equal plays the 'big' sound variants.
+
+    small_blueprint_area_size = 50, -- less than this plays the 'small' sound variants
+    medium_blueprint_area_size = 200, -- less than this plays the 'medium' sound variants, larger and equal plays the 'big' sound variants.
     rail_segment_colors =
     {
       { r = 0   , g = 1    , b = 1   },
@@ -101,7 +110,7 @@ data:extend(
       { r = 0.1 , g = 0.1  , b = 0.7 },
       { r = 1   , g = 1    , b = 1   },
       { r = 0.1 , g = 0.1  , b = 0.1 },
-      { r = 0.2 , g = 0.7  , b = 0.7 },
+      { r = 0.2 , g = 0.7  , b = 0.7 }
     },
     player_colors =
     {
@@ -177,6 +186,9 @@ data:extend(
       decorative_editor_selection_preview_radius = 10
     },
 
+    checkerboard_white = {56, 56, 56},
+    checkerboard_black = {42, 42, 42},
+
     default_trigger_target_mask_by_type =
     {
       ["character"] = { "common", "ground-unit" },
@@ -216,6 +228,9 @@ data:extend(
 
     missing_preview_sprite_location = "__core__/graphics/missing-preview.png",
     main_menu_background_image_location = "__core__/graphics/background-image.jpg",
+    main_menu_background_vignette_intensity = 30,
+    main_menu_background_vignette_sharpness = 0.444,
+    main_menu_simulation_volume_modifier = 0.35,
 
     default_scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 
@@ -273,7 +288,7 @@ data:extend(
       {0.45, "__core__/graphics/color_luts/lut-night.png"},
       {0.55, "__core__/graphics/color_luts/lut-night.png"},
       {0.80, "identity"},
-      {0.85, "identity"},
+      {0.85, "identity"}
     },
 
     zoom_to_world_daytime_color_lookup =
@@ -281,7 +296,9 @@ data:extend(
       {0.25, "identity"},
       {0.45, "__core__/graphics/color_luts/night.png"},
       {0.55, "__core__/graphics/color_luts/night.png"},
-      {0.75, "identity"},
+      {0.75, "identity"}
     },
+
+    train_button_hovered_tint = {r = 255 / 255, g = 162 / 255, b = 0, a = 0.7},
   }
 })

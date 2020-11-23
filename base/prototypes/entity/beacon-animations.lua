@@ -33,7 +33,7 @@
                 width = 212,
                 height = 192,
                 scale = 0.5,
-                shift = util.by_pixel(0.5, 1),
+                shift = util.by_pixel(0.5, 1)
               }
             },
             {
@@ -49,11 +49,11 @@
                 height = 176,
                 scale = 0.5,
                 draw_as_shadow = true,
-                shift = util.by_pixel(12.5, 0.5),
+                shift = util.by_pixel(12.5, 0.5)
               }
             }
           }
-        },
+        }
       },
       {
         render_layer = "object",
@@ -74,7 +74,7 @@
             scale = 0.5,
             repeat_count = 45,
             animation_speed = 0.5,
-            shift = util.by_pixel(3, -19),
+            shift = util.by_pixel(3, -19)
           }
         }
       },
@@ -104,10 +104,10 @@
             animation_speed = 0.5,
             scale = 0.5,
             shift = util.by_pixel(0.5, -18),
-            blend_mode = "additive",
+            blend_mode = "additive"
           }
         }
-      },
+      }
     },
 
     module_visualisations =
@@ -140,7 +140,7 @@
                   height = 66,
                   variation_count = 4,
                   scale = 0.5,
-                  shift = util.by_pixel(-16, 14.5),
+                  shift = util.by_pixel(-16, 14.5)
                 }
               }
             },
@@ -163,7 +163,7 @@
                   height = 32,
                   variation_count = 3,
                   scale = 0.5,
-                  shift = util.by_pixel(-17, 15),
+                  shift = util.by_pixel(-17, 15)
                 }
               }
             },
@@ -186,7 +186,7 @@
                   height = 12,
                   variation_count = 3,
                   scale = 0.5,
-                  shift = util.by_pixel(-18.5, 13),
+                  shift = util.by_pixel(-18.5, 13)
                 }
               }
             },
@@ -236,7 +236,7 @@
                   height = 44,
                   variation_count = 4,
                   scale = 0.5,
-                  shift = util.by_pixel(19, -12),
+                  shift = util.by_pixel(19, -12)
                 }
               }
             },
@@ -259,7 +259,7 @@
                   height = 26,
                   variation_count = 3,
                   scale = 0.5,
-                  shift = util.by_pixel(20.5, -12),
+                  shift = util.by_pixel(20.5, -12)
                 }
               }
             },
@@ -282,7 +282,7 @@
                   height = 14,
                   variation_count = 3,
                   scale = 0.5,
-                  shift = util.by_pixel(22, -15.5),
+                  shift = util.by_pixel(22, -15.5)
                 }
               }
             },

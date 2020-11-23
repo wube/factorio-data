@@ -1,4 +1,4 @@
-local explosion_animations = require("prototypes.entity.demo-explosion-animations")
+local explosion_animations = require("prototypes.entity.explosion-animations")
 
 acid_tint_medium = {r = 0.35, g = 0.56, b = 0.04, a = 1}
 acid_tint_big = {r = 0.35, g = 0.56, b = 0.04, a = 1}
@@ -18,6 +18,207 @@ capsule_smoke =
 
 data:extend(
 {
+  {
+    type = "projectile",
+    name = "shotgun-pellet",
+    flags = {"not-on-map"},
+    collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
+    acceleration = 0,
+    direction_only = true,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          type = "damage",
+          damage = {amount = 5, type = "physical"}
+        }
+      }
+    },
+    animation =
+    {
+      filename = "__base__/graphics/entity/bullet/bullet.png",
+      draw_as_glow = true,
+      frame_count = 1,
+      width = 3,
+      height = 50,
+      priority = "high"
+    }
+  },
+  {
+    type = "projectile",
+    name = "grenade",
+    flags = {"not-on-map"},
+    acceleration = 0.005,
+    action =
+    {
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-entity",
+              entity_name = "grenade-explosion"
+            },
+            {
+              type = "create-entity",
+              entity_name = "small-scorchmark-tintable",
+              check_buildability = true
+            },
+            {
+              type = "invoke-tile-trigger",
+              repeat_count = 1
+            },
+            {
+              type = "destroy-decoratives",
+              from_render_layer = "decorative",
+              to_render_layer = "object",
+              include_soft_decoratives = true, -- soft decoratives are decoratives with grows_through_rail_path = true
+              include_decals = false,
+              invoke_decorative_trigger = true,
+              decoratives_with_trigger_only = false, -- if true, destroys only decoratives that have trigger_effect set
+              radius = 2.25 -- large radius for demostrative purposes
+            }
+          }
+        }
+      },
+      {
+        type = "area",
+        radius = 6.5,
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "damage",
+              damage = {amount = 35, type = "explosion"}
+            },
+            {
+              type = "create-entity",
+              entity_name = "explosion"
+            }
+          }
+        }
+      }
+    },
+    light = {intensity = 0.5, size = 4},
+    animation =
+    {
+      filename = "__base__/graphics/entity/grenade/grenade.png",
+      draw_as_glow = true,
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 28,
+      shift = util.by_pixel(1, 1),
+      priority = "high",
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/grenade/hr-grenade.png",
+        draw_as_glow = true,
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 48,
+        height = 54,
+        shift = util.by_pixel(0.5, 0.5),
+        priority = "high",
+        scale = 0.5
+      }
+
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/grenade/grenade-shadow.png",
+      frame_count = 16,
+      line_length = 8,
+      animation_speed = 0.250,
+      width = 26,
+      height = 20,
+      shift = util.by_pixel(2, 6),
+      priority = "high",
+      draw_as_shadow = true,
+      hr_version =
+      {
+        filename = "__base__/graphics/entity/grenade/hr-grenade-shadow.png",
+        frame_count = 16,
+        line_length = 8,
+        animation_speed = 0.250,
+        width = 50,
+        height = 40,
+        shift = util.by_pixel(2, 6),
+        priority = "high",
+        draw_as_shadow = true,
+        scale = 0.5
+      }
+    }
+  },
+
+  {
+    type = "projectile",
+    name = "defender-capsule",
+    flags = {"not-on-map"},
+    acceleration = 0.005,
+    action =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-entity",
+            show_in_tooltip = true,
+            entity_name = "defender"
+          }
+        }
+      }
+    },
+    light = {intensity = 0.5, size = 4},
+    enable_drawing_with_mask = true,
+    animation =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
+          flags = { "no-crop" },
+          frame_count = 1,
+          width = 28,
+          height = 20,
+          priority = "high"
+        },
+        {
+          filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-mask.png",
+          flags = { "no-crop" },
+          frame_count = 1,
+          width = 28,
+          height = 20,
+          priority = "high",
+          apply_runtime_tint = true
+        }
+      }
+    },
+    shadow =
+    {
+      filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-shadow.png",
+      flags = { "no-crop" },
+      frame_count = 1,
+      width = 26,
+      height = 20,
+      priority = "high"
+    },
+    smoke = capsule_smoke
+  },
   {
     type = "projectile",
     name = "laser",
@@ -42,10 +243,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 10},
+    --light = {intensity = 0.5, size = 10},
     animation =
     {
       filename = "__base__/graphics/entity/laser/laser-to-tint-medium.png",
+      draw_as_glow = true,
       tint = {r=1.0, g=0.0, b=0.0},
       frame_count = 1,
       width = 12,
@@ -78,10 +280,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 10},
+    --light = {intensity = 0.5, size = 10},
     animation =
     {
       filename = "__base__/graphics/entity/blue-laser/blue-laser.png",
+      draw_as_glow = true,
       frame_count = 1,
       width = 7,
       height = 14,
@@ -118,7 +321,7 @@ data:extend(
           },
           {
             type = "invoke-tile-trigger",
-            repeat_count = 1,
+            repeat_count = 1
           },
           {
             type = "destroy-decoratives",
@@ -133,10 +336,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     animation =
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
+      draw_as_glow = true,
       frame_count = 8,
       line_length = 8,
       width = 9,
@@ -200,7 +404,7 @@ data:extend(
           },
           {
             type = "invoke-tile-trigger",
-            repeat_count = 1,
+            repeat_count = 1
           },
           {
             type = "destroy-decoratives",
@@ -238,10 +442,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     animation =
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
+      draw_as_glow = true,
       frame_count = 8,
       line_length = 8,
       width = 9,
@@ -296,6 +501,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/piercing-bullet/piercing-bullet.png",
+      draw_as_glow = true,
       frame_count = 1,
       width = 3,
       height = 50,
@@ -352,6 +558,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
+      draw_as_glow = true,
       frame_count = 1,
       width = 3,
       height = 50,
@@ -367,6 +574,7 @@ data:extend(
     picture =
     {
       filename = "__base__/graphics/entity/artillery-projectile/hr-shell.png",
+      draw_as_glow = true,
       width = 64,
       height = 64,
       scale = 0.5
@@ -455,7 +663,7 @@ data:extend(
           },
           {
             type = "invoke-tile-trigger",
-            repeat_count = 1,
+            repeat_count = 1
           },
           {
           type = "destroy-decoratives",
@@ -522,6 +730,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
+      draw_as_glow = true,
       frame_count = 1,
       width = 3,
       height = 50,
@@ -596,7 +805,7 @@ data:extend(
           },
           {
             type = "invoke-tile-trigger",
-            repeat_count = 1,
+            repeat_count = 1
           },
           {
             type = "destroy-decoratives",
@@ -614,6 +823,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
+      draw_as_glow = true,
       frame_count = 1,
       width = 3,
       height = 50,
@@ -688,7 +898,7 @@ data:extend(
           },
           {
           type = "invoke-tile-trigger",
-          repeat_count = 1,
+          repeat_count = 1
           },
           {
           type = "destroy-decoratives",
@@ -706,6 +916,7 @@ data:extend(
     animation =
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
+      draw_as_glow = true,
       frame_count = 1,
       width = 3,
       height = 50,
@@ -734,7 +945,7 @@ data:extend(
               type = "create-entity",
               entity_name = "small-scorchmark-tintable",
               check_buildability = true
-            },
+            }
           }
         }
       },
@@ -753,10 +964,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     animation =
     {
       filename = "__base__/graphics/entity/cluster-grenade/cluster-grenade.png",
+      draw_as_glow = true,
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
@@ -767,6 +979,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/cluster-grenade/hr-cluster-grenade.png",
+        draw_as_glow = true,
         frame_count = 16,
         line_length = 8,
         animation_speed = 0.250,
@@ -802,7 +1015,7 @@ data:extend(
         draw_as_shadow = true,
         scale = 0.5
       }
-    },
+    }
   },
   {
     type = "projectile",
@@ -826,7 +1039,7 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     enable_drawing_with_mask = true,
     animation =
     {
@@ -882,7 +1095,7 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     enable_drawing_with_mask = true,
     animation =
     {
@@ -953,10 +1166,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     animation =
     {
       filename = "__base__/graphics/entity/poison-capsule/poison-capsule.png",
+      draw_as_glow = true,
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
@@ -967,6 +1181,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/poison-capsule/hr-poison-capsule.png",
+        draw_as_glow = true,
         frame_count = 16,
         line_length = 8,
         animation_speed = 0.250,
@@ -1033,7 +1248,7 @@ data:extend(
             {
               type = "create-entity",
               entity_name = "slowdown-capsule-explosion"
-            },
+            }
           }
         }
       },
@@ -1044,20 +1259,21 @@ data:extend(
         action_delivery =
         {
           type = "instant",
-          target_effects = 
+          target_effects =
           {
             {
               type = "create-sticker",
               sticker = "slowdown-sticker"
-            },
+            }
           }
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     animation =
     {
       filename = "__base__/graphics/entity/slowdown-capsule/slowdown-capsule.png",
+      draw_as_glow = true,
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
@@ -1068,6 +1284,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/slowdown-capsule/hr-slowdown-capsule.png",
+        draw_as_glow = true,
         frame_count = 16,
         line_length = 8,
         animation_speed = 0.250,
@@ -1136,7 +1353,7 @@ data:extend(
             },
             {
               type = "invoke-tile-trigger",
-              repeat_count = 1,
+              repeat_count = 1
             },
             {
               type = "destroy-decoratives",
@@ -1152,10 +1369,11 @@ data:extend(
         }
       }
     },
-    light = {intensity = 0.5, size = 4},
+    --light = {intensity = 0.5, size = 4},
     animation =
     {
       filename = "__base__/graphics/entity/cliff-explosives/cliff-explosives.png",
+      draw_as_glow = true,
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
@@ -1166,6 +1384,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/cliff-explosives/hr-cliff-explosives.png",
+        draw_as_glow = true,
         frame_count = 16,
         line_length = 8,
         animation_speed = 0.250,

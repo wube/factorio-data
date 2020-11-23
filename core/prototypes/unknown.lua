@@ -5,8 +5,7 @@ data:extend(
     name = "signal-unknown",
     icon = "__core__/graphics/icons/unknown.png",
     icon_size = 64,
-    subgroup = "other",
-    special_signal = true
+    subgroup = "other"
   },
   {
     type = "flying-text",
@@ -15,7 +14,7 @@ data:extend(
     icon_size = 64,
     flags = {"hidden"},
     time_to_live = 0,
-   speed = 0
+    speed = 0
   },
   {
     type = "item",
@@ -58,7 +57,7 @@ data:extend(
             picture = "__core__/graphics/icons/unknown.png",
             count = 1,
             size = 1,
-            scale = 0.5,
+            scale = 0.5
           }
         }
       },
@@ -66,5 +65,5 @@ data:extend(
     },
     map_color = {r=0, g=0, b=0},
     pollution_absorption_per_second = 0
-  },
+  }
 })

@@ -1,4 +1,365 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 23. 11. 2020
+  Major Features:
+    - Added logistic requests to spidertron.
+    - Train stop allows to set limit of incoming trains.
+  Features:
+    - The continue button now respects the last type of game played (single player, MP host, MP client).
+    - Added support to use blueprints, deconstruction planners, upgrade planners, and modded selection tools from the map view.
+    - Hovering the alert notification will show arrows on the edge of the pointing to alert locations.
+    - Rich text icon selector.
+    - Newly unlocked recipes are highlighted until hovered.
+    - Spidertron remotes now allow to add queue commands and a command to follow any entity.
+    - Added vertical/horizontal blueprint flipping.
+    - Transport belt drag building is locked into a line, can be turned off by an interface setting.
+    - Ghosts can be fast replaced and rotated.
+    - Ghost build can be used to fast replace non-ghost entities, which results in an upgrade order with (optionally) a direction
+      change order.
+  Minor Features:
+    - When editing blueprint:
+      Added a way to specify relative grid position for blueprint that is snapping to absolute grid.
+      Blueprint preview rendering box is updated based on selected grid size and position.
+    - Inventory transfer works on empty equipment grid slot the same as on empty inventory slot (moves all).
+    - Equipment can be placed by moving.
+    - Cursor replenishes when placing into the equipment grid the same way as when building in world.
+    - Spidertron item shows its color.
+    - Added a way to reset spidertron remote.
+    - Spider tries to move legs away when they are blocking robots construction.
+    - Power poles/underground belts built by dragging logic works also with ghost building.
+    - Power pole ghosts show connections.
+    - Power pole connections are saved in the blueprint. They still auto connect to other poles outside the blueprint.
+    - Entities marked for deconstruction show the target upgrade.
+    - Added tags, worker robots, rail signal states and recipes toggles into the settings to what show on the map.
+    - Added support to use the add-stop and add-temporary-stop controls for the train you're driving in the map view.
+    - Added hotkey (F10) to switch between viewed player in replay.
+    - Added support to reset mod settings in the "failed to load mods" startup GUI.
+    - Expanded undo to work with fast replace and upgrade planner.
+    - Added SteelSeries GameSense support. (https://steelseries.com/engine/apps)
+  Graphics:
+    - Added unique technology icon for Advanced material processing 2 (Electric furnace).
+    - Changed postprocessing effect in zoomed-to-world view.
+    - Added detailed night lighting of entities.
+  Optimisations:
+    - Multithreaded belt update logic.
+    - Overall small entity update time reduction + statistics of how much update time is taken by individual entities.
+  Balancing:
+    - Productivity module 1 decreases speed of the machine by 5% instead of 15%.
+    - Productivity module 2 decreases speed of the machine by 10% instead of 15%.
+  Changes:
+    - the Close GUI key-binding (default value is "E") was renamed to Confirm Gui.
+      It works the same as before for many cases (just closing the GUI), but in a lot of other cases, it works as confirm, which generally means
+      the same as clicking the "green button".
+    - Renamed clean-cursor to clear-cursor on all the relevant places (locale, key-binding name)
+    - Equipment placing now uses the build key-binding instead of the cursor transfer. The default same key-binding is the same.
+    - Changed maximum temperature of all fluids apart water and steam to be the same as the default.
+    - Poles built by dragging are now actually build on the maximum connection distance from the last built pole instead of the
+      previous logic that was working weird in a lot of corner cases.
+    - Underground belt build by dragging now accept the existing piece you start building on as part of the dragging logic.
+    - Removed 'mineable wreckage' entity. (https://forums.factorio.com/89381)
+    - Removed the (+/-) buttons for logistic requests, instead they expand dynamically when something is put in the last line.
+    - Wave defense can now only be won by launching a rocket.
+    - Invalid names of icons in preview icons of blueprint tools now load as unknowns instead of canceling the import string process for that item. (https://forums.factorio.com/87383)
+    - Fluids in train circuit logic treat summed < 1 fluid values as 1 instead of 0.
+    - Clicking non-empty quickbar slot with something in cursor sets the quickbar slot to the cursor value rather than selecting the quickbar value.
+    - Invalid rail signals output no values into circuit network.
+    - Added a confirmation message when loading saves with removed mods or changed mod settings.
+    - The cut tool now properly includes trains. It showed trains in the selection preview, but ignored them.
+    - Added alternate control locales for keyboard and mouse scroll control binds. (https://forums.factorio.com/83430)
+    - Disabled loading of saves before 0.18.0 version (You can use 1.0 to load older saves and re-save them).
+    - Adjusted the artillery turret collision box so it is possible to squeak through.
+    - Removed the 'Rocket silos stats' GUI.
+    - Arithmetic combinator 'Each' signal can now be used in either left or right parameter.
+  Gui:
+    - Added unique icons for technology effects.
+    - Added list of affected entities to the technology effect tooltips.
+    - Menu background now features various factory simulations instead of a static picture.
+    - When entering vehicle, the vehicle window is shown next to the character gun window, instead of replacing it.
+    - Moved the character/vehicle gun window to the left of the quickbar.
+    - Removed the "Character" tab from the character window.
+    - Changed the flat character screen option to be defaulted to true.
+    - Added held stack item slot for inserter window.
+    - Improved the tips and tricks window: it contains index, search and allows interactive text tags to be used.
+    - Added search to loading/saving, settings, shortcuts selection, multiplayer host settings windows and rename stop.
+    - Moved the ammo/used-up/health indicator of items down, so it is not obstructed by the number.
+    - Added underline for hyperlinks.
+    - Personal request button have custom text + red diode when it is out of network or when the personal requests are turned off.
+    - Logistic/Trash request buttons show only one number when the trash and request count is the same.
+    - Train elapsed time condition has confirmation button and only updates the time when confirmed.
+    - Fixed styles for: browse games GUI, host game settings, opened character and select upgrade slot.
+    - Tabbing into a textfield selects the text.
+    - Removed tiles stay in the list of components in the blueprint setup GUI with 0, the same way as entities, so they can be easily enabled.
+    - Added minimum/maximum temperature and heat capacity info to the fluid tooltip.
+    - Added usage instruction to capsules/fish.
+    - Fixed fish tooltip so it shows consumption/healing instead of shooting/damage.
+  Sounds:
+    - Added blueprint building sound.
+    - Added undo sound.
+    - Added sound for rail planner activation.
+    - Added sound for copy/paste.
+    - Added sound for opening items and armor.
+    - Added sound for selection start and selection finish. Related to blueprint tools.
+    - Added sound for pipe to ground as per the pipe.
+    - Added sound effects and a specific music track to the main menu.
+    - Assembling Machine 2 and 3 made less noisy
+    - Robot repair reworked to sound more high tech
+    - Removed dead space at the end of some sounds which may have stopped sounds playing
+    - Ghost rail building now has the ghost building sound
+    - Lowered volume on game won and lost sounds
+    - Assembling Machine 2 and 3 made less noisy.
+    - Robot repair reworked to sound more high tech.
+    - Removed dead space at the end of some sounds which may have stopped sounds playing.
+    - Ghost rail building now has the ghost building sound.
+    - Lowered volume on game won and lost sounds.
+  Bugfixes:
+    - Fixed that copying the spider in the map editor while it had equipment crashed the game. (https://forums.factorio.com/87920)
+    - Fixed a crash when trying to use different weapons in the spider. (https://forums.factorio.com/87974)
+    - Fixed a crash when reading/writing blueprint icons through the Lua API in some cases. (https://forums.factorio.com/87981)
+    - Fixed a crash when importing blueprint books in some cases. (https://forums.factorio.com/88307)
+    - Fixed that the spidertron would still be marked as moving when it wasn't resulting in the 'enable logistics while moving' option not working. (https://forums.factorio.com/88018)
+    - Fixed splitter behaviour when putting to it directly and it has the priority output blocked. (https://forums.factorio.com/81421)
+    - Fixed that spidertron descriptions didn't show the custom name. (https://forums.factorio.com/87955)
+    - Fixed building curved rails with damaged rails could duplicate rails. (https://forums.factorio.com/84046)
+    - Fixed logistic request slot highlighting when they're changed through circuit connections. (https://forums.factorio.com/85619)
+    - Fixed a game freeze when empty unit groups are told to build bases. (https://forums.factorio.com/88435)
+    - Fixed LuaTrain::path_end_stop would return nil when train had path extended due to waypoint.
+    - Fixed the spidertron preview box.
+    - Fixed that the blueprint book preview disappeared after editing it.
+    - Fixed that spidertron and its remote weren't swappable.
+    - Fixed that players could be stuck in walls when building them.
+    - Removed the possibility to specify alpha when changing player color by command.
+    - Fixed LuaInventory::find_empty_stack would return only filtered stacks when filter is provided. (https://forums.factorio.com/88430)
+    - Fixed that blueprint library slots padding was too big.
+    - Fixed that some items didn't render properly in the world. Specifically blueprint like items, spidertrons and spider remotes. (https://forums.factorio.com/88297)
+    - Fixed a crash when a modded fast train goes through junction occupied by another train. (https://forums.factorio.com/88396)
+    - Fixed replay desync when existing save is given to a server which promotes or demotes a player based on its own admin list. (https://forums.factorio.com/86262)
+    - Fixed train GUI instructions for translations that are long. (https://forums.factorio.com/87925)
+    - Fixed interaction with the delete button in the blueprint setup. (https://forums.factorio.com/85101)
+    - Fixed that map preview in the train window wasn't squashing its size when needed. (https://forums.factorio.com/85964)
+    - Fixed that force-building blueprint from the blueprint library on top of an existing electric pole triggered wire removal instead of blueprint building. (https://forums.factorio.com/87695)
+    - Fixed that the map editor spawn-items GUI didn't work with chat rich text. (https://forums.factorio.com/88651)
+    - Fixed that deconstruction planners and upgrade planners wouldn't show the logistic overlay when used from the blueprint library. (https://forums.factorio.com/87824)
+    - Fixed that rebinding rotate to middle mouse button caused conflicts when trying to rotate while modifiers were pressed. (https://forums.factorio.com/84302)
+    - Fixed on_gui_switch_state_changed was not fired for custom switch elements in some cases. (https://forums.factorio.com/88760)
+    - Fixed that entities were selected under the GUI on the right side.
+    - Fixed that the key to activate tooltips didn't work outside game, or when the game was stopped.
+    - Fixed Team production script error when building before any round starts. (https://forums.factorio.com/88846)
+    - Fixed Wave defense error message would error due to trying to concatenate a nil variable. (https://forums.factorio.com/88845)
+    - Fixed that it was possible to stay invulnerable after the crash site cutscene. (https://forums.factorio.com/88024)
+    - Fixed train mini-tutorial script errors due to missing entity prototypes. (https://forums.factorio.com/88056)
+    - Fixed tightspot script error when trying to restore invalid entities. (https://forums.factorio.com/88021)
+    - Fixed that bonus research production could add progress even if no research could be done. (https://forums.factorio.com/88154)
+    - Fixed that game.server_save() was able to write to locations outside the saves folder. (https://forums.factorio.com/88866)
+    - Fixed that technology tooltip in the lab GUI wouldn't update when research changed. (https://forums.factorio.com/88633)
+    - Fixed a bad message when using the permissions command. (https://forums.factorio.com/88946)
+    - Fixed a crash when remote calls fail. (https://forums.factorio.com/88974)
+    - Fixed that biters would sometimes not be able to attack entities blocking their way. (https://forums.factorio.com/89002)
+    - Fixed that writing .energy for entities with heat energy sources didn't work correctly. (https://forums.factorio.com/87043)
+    - Fixed that non-blueprint items in blueprint books didn't draw their name. (https://forums.factorio.com/88679)
+    - Fixed that the cut-paste tool allowed alt-cutting which didn't deconstruct what was selected. (https://forums.factorio.com/88262)
+    - Fixed that setting rolling-stock inventory size to 0 while having an equipment great meant the GUI couldn't be opened. (https://forums.factorio.com/89160)
+    - Fixed that trying to save temporary LuaItemStacks from some events resulted in the save failing to load. (https://forums.factorio.com/89271)
+    - Fixed that blueprint component icons weren't kept in a stable order. (https://forums.factorio.com/89297)
+    - Fixed that the finished game sound could play multiple times. (https://forums.factorio.com/87847)
+    - Fixed that building blueprints by dragging in the map view didn't work correctly. (https://forums.factorio.com/89122)
+    - Fixed that building train ghosts manually didn't work in most cases. (https://forums.factorio.com/87656)
+    - Fixed that moving blueprint sin the blueprint library didn't make sounds.
+    - Fixed that opening/closing sound were not working properly in latency in some cases.
+    - Fixed that LuaEntity::can_insert() didn't work right for module inventories. (https://forums.factorio.com/89410)
+    - Fixed that on_player_built_tile had the wrong 'tile' when using hazard concrete in some cases. (https://forums.factorio.com/89382)
+    - Fixed that some of the checkboxes weren't highlighted as they should when hovering reset in the map generator GUI. (https://forums.factorio.com/88028)
+    - Fixed performance issue related to rendering long train paths. (https://forums.factorio.com/84766)
+    - Fixed missing tooltip on the editing button in upgrade planner, deconstruction planner and blueprint book. (https://forums.factorio.com/89455)
+    - Fixed Shallow water 2 to be layered above sand tiles and therefore missing transitions with sand tiles. (https://forums.factorio.com/89351)
+    - Fixed stone path and concrete were missing transitions to out-of-map tiles. (https://forums.factorio.com/88888)
+    - Fixed the upgrade planner to upgrade the corresponding underground belt for all combinations of real/ghost connections.
+    - Fixed that biters could get stuck trying to pathfind toward spidertron, causing performance issues. (https://forums.factorio.com/88744 https://forums.factorio.com/89327)
+    - Fixed lights near right or bottom edge of the screen would render twice sometimes. (https://forums.factorio.com/88388)
+    - Fixed that setting style properties on LuaGuiElements didn't work correctly for some widget types. (https://forums.factorio.com/84607)
+    - Fixed that rails didn't have the building smoke.
+    - Fixed that modded locomotives with void energy sources and equipment grids wouldn't show the grid in the GUI. (https://forums.factorio.com/89642)
+    - Fixed that modded productivity bonuses in tooltips didn't always show everything. (https://forums.factorio.com/86020)
+    - Fixed that unit groups could get stuck in the gathering phase. (https://forums.factorio.com/81238)
+    - Fixed that negative damage stickers didn't work. (https://forums.factorio.com/89789)
+    - Fixed that selection tool type items marked as mod-openable didn't work correctly in the quickbar. (https://forums.factorio.com/89661)
+    - Fixed that train would not repath when possible due to being in chain signal section. (https://forums.factorio.com/89587)
+    - Fixed GeneratorPrototype::scale_fluid_usage would cause non-linear scaling of fluid consumption based on energy demand. (https://forums.factorio.com/88263)
+    - Fixed crash when storage tank was defined with too small fluid flow sprite with low priority and ended up streamed. (https://forums.factorio.com/89256)
+    - Fixed rotating assembling machines with heat and fluid connections. (https://forums.factorio.com/89945)
+    - Fixed that it was possible to hold ghost building + blueprint from the library at the same time. (https://forums.factorio.com/89055)
+    - Fixed crash related to being possible to insert blueprint for re-assignment into the blueprint library. (https://forums.factorio.com/89886)
+    - Fixed that previous technology key-binding focused search in the blueprint library. (https://forums.factorio.com/88851)
+    - Fixed that ghosts created by destroying entities weren't upgradeable. (https://forums.factorio.com/87684)
+    - Fixed that kick & ban commands broke replays. (https://forums.factorio.com/89141)
+    - Fixed that spidertron would stretch its leg way too much in some special situations. (https://forums.factorio.com/87982)
+    - Fixed offshore pump underwater layer being drawn over landfill tiles sometimes. (https://forums.factorio.com/87696)
+    - Fixed decimal textfield would not take decimal point as input when selection would make it valid input. (https://forums.factorio.com/89025)
+    - Fixed that train could get stuck within chain signal section when exit signal is requested to close by circuit network and train is forced to repath. (https://forums.factorio.com/90015)
+    - Fixed that train would not immediately reserve signals in chain signal section after repath when there are no signals within braking distance.
+    - Fixed that wrong slider position when requesting items in some cases. (https://forums.factorio.com/89680)
+    - Fixed that rocket silo without fixed_recipe didn't save its recipe in the blueprint. (https://forums.factorio.com/88753)
+    - Fixed that the total-raw list in the recipe tooltip for some translations. (https://forums.factorio.com/85188)
+    - Fixed glitching sound loops: steam turbine and electric furnace. (https://forums.factorio.com/89108)
+    - Fixed changing dawn property of a surface would create visual glitch in day-night cycle. (https://forums.factorio.com/88585)
+    - Fixed misleading tooltip for disabled shortcut bar items. (https://forums.factorio.com/87380)
+    - Fixed startup music volume balance. (https://forums.factorio.com/84459)
+    - Fixed that sounds outside of radar coverage would still play. (https://forums.factorio.com/88145)
+    - Fixed personal laser defense with minimum range would stop working when enemies would get within minimum range. (https://forums.factorio.com/88515)
+    - Fixed that automatic rail signal direction selection works also when ghost-force building over trees/rocks in the way. (https://forums.factorio.com/83937)
+    - Fixed that the replay controls weren't accessible when the current player opened the technology screen. (https://forums.factorio.com/84127)
+    - Fixed the hand behaviour for some cases of fast entity transfer. (https://forums.factorio.com/88610)
+    - Fixed sizing of the right panel when show_side_menu is disabled. (https://forums.factorio.com/82529)
+    - Fixed that blueprint book tooltip based on chat icon had overflowing contents. (https://forums.factorio.com/87735)
+    - Fixed that the entity hover interval wasn't applied when switching from entity to entity. (https://forums.factorio.com/86410)
+    - Fixed that belts didn't show the proper curved preview when fast replacing. (https://forums.factorio.com/88340)
+    - Fixed that the entity tooltip was being shown in some cases where it was not supposed to. (https://forums.factorio.com/82117)
+    - Fixed that the station name icons were clipped in some cases. (https://forums.factorio.com/83591)
+    - Fixed that the minimap focus wasn't updating when switching player in the replay. (https://forums.factorio.com/85387)
+    - Fixed that it wasn't possible to start scenario with replay enabled. (https://forums.factorio.com/85646)
+    - Fixed losing chain signals in the advanced rail mini-tutorial. (https://forums.factorio.com/89333)
+    - Fixed train buttons being cut off in advanced rail mini-tutorial in some locales. (https://forums.factorio.com/89210)
+    - Fixed a crash related to building laser turrets through robots. (https://forums.factorio.com/87139)
+    - Fixed Bulgarian language name. (https://forums.factorio.com/80695)
+    - Fixed text box font not refreshing after being changed. (https://forums.factorio.com/78003)
+    - Clarified tooltip text for locked levels in new game GUI. (https://forums.factorio.com/87852)
+    - Fixed server crashing when quitting while it's saving for desync report. (https://forums.factorio.com/84819)
+    - Fixed that rolling stock rotation was not set correctly when using the pipette tool.  (https://forums.factorio.com/89154)
+    - Fixed that if else chain noise expressions would sometimes produce corrupt results. (https://forums.factorio.com/87698)
+    - Fixed a crash when using identical literal expression in spot noise expressions. (https://forums.factorio.com/87663)
+    - Fixed that steam engine would show as producing 960kW in electric network GUI. (https://forums.factorio.com/82509)
+    - Fixed that rail ghost building didn't play the ghost building sound.
+    - Fixed a crash when a startup error tried to use rich-text. (https://forums.factorio.com/90438)
+    - Fixed a crash when related to editing edited scenarios while in vehicles. (https://forums.factorio.com/90199)
+    - Fixed that it was possible to specify a rail signal pair that does not collide with each other. (https://forums.factorio.com/86385)
+    - Fixed that collision box could be removed from the rail signal resulting in a signal that could be placed not on a tile center. (https://forums.factorio.com/82623)
+    - Fixed that it was possible to specify a transport belt connectable entity that would not collide with other belt connectable entities. (https://forums.factorio.com/82294)
+    - Fixed barrel recipe generation not taking into account fluid icon_size if fluid icons were defined. (https://forums.factorio.com/90526)
+    - Fixed that clients wouldn't be able to join a multiplayer game if the banlist was too large. (https://forums.factorio.com/85425)
+    - Fixed that selecting folders in the save-game-gui would still allow saving as the save file name. (https://forums.factorio.com/85935)
+    - Fixed a crash when opening the blueprint library through lua. (https://forums.factorio.com/90494)
+    - Fixed the program exit status code when a dedicated server fails. (https://forums.factorio.com/89819)
+    - Fixed that blueprints with rolling stocks could get invalidated when syncing shelves. (https://forums.factorio.com/90545)
+    - Fixed that the technology screen would show a "Resume" button for technology levels that haven't yet been researched at all. (https://forums.factorio.com/85642)
+    - Fixed that cars with minimap_representation set would still render the default triangle. (https://forums.factorio.com/89915)
+    - Fixed building assembling machine ghosts with unresearched recipes left them with no fluid connection previews. (https://forums.factorio.com/88881)
+    - Fixed that biters who couldn't reach their spawner would remain on the map, potentially preventing other biters from spawning. (https://forums.factorio.com/88614)
+    - Fixed script data leak in wave defense scenario. (https://forums.factorio.com/90615)
+    - Fixed that background sound didn't fade out when stopping replay. (https://forums.factorio.com/90467)
+    - Fixed that the deconstruction planner ignored tile mode & filters when cancelling deconstruction.
+    - Fixed signature error when updating non-steam version on OSX. (https://forums.factorio.com/87964)
+    - Fixed fast-replacing entity connected to a ghost entity by circuit network. (https://forums.factorio.com/90515)
+    - Fixed that on some maps, biter attacks could decrease almost to nothing. (https://forums.factorio.com/89324)
+    - Fixed inserter with fluid energy source could consume too much fluid when no fluid usage was given and scaling was disabled. (https://forums.factorio.com/90613)
+    - Fixed that building rolling stock could place multiple of them when there are close adjacent rails. (https://forums.factorio.com/89152)
+    - Fixed that LuaPlayer::can_place_entity would not calculate player reach the same way as manual building. (https://forums.factorio.com/90162)
+    - Fixed that steam engine in multiple connected electric networks would overproduce and waste energy. (https://forums.factorio.com/86243)
+    - Fixed problems related to opening blueprint while other blueprint is in the process of being configured. (https://forums.factorio.com/89387)
+    - Fixed cutscene starting at {0,0} instead of player position when no start_position was given. (https://forums.factorio.com/90694)
+    - Fixed electric network GUI production bar related to tertiary energy sources. (https://forums.factorio.com/85725)
+    - Fixed a crash in the pathfinder that could happen when the bounding box didn't contain the tile center. (https://forums.factorio.com/90146)
+    - Fixed tooltips not showing electric energy source information for electric-energy-interface entities. (https://forums.factorio.com/90779)
+    - Fixed that undoing a deconstruction order of entities with item requests didn't recover these requests unless the entity was actually removed. (https://forums.factorio.com/83571)
+    - Fixed that spidertron remote usage on map was bound to open item control rather than the build item control it is bound to in normal view. (https://forums.factorio.com/89949)
+    - Fixed that flamethrower turrets could fail to shoot at a target. (https://forums.factorio.com/90815)
+    - Fixed problem with rich text in blueprint library. (https://forums.factorio.com/87268)
+    - Fixed tiles would be rendered with 1px gap between them at some positions, zoom levels and screen resolutions. (https://forums.factorio.com/83023)
+    - Fixed heat pipe related drawing only working for boiler type entities. (https://forums.factorio.com/85306)
+    - Fixed that running /server-save wouldn't save anything if the server was started with --start-server-load-scenario. (https://forums.factorio.com/76767)
+    - Fixed activation working sound playing even when the entity was already active when being encountered. (https://forums.factorio.com/80646)
+    - Fixed a pathfinding-related crash. (https://forums.factorio.com/87204)
+    - Fixed crash when organizing sprites into atlases when using "not-compressed" sprite flag. (https://forums.factorio.com/87820)
+    - Fixed pipe-to-ground working sound would ignore flow rate. (https://forums.factorio.com/91073)
+    - Fixed crash when calling take_screenshot with very small resolution values. (https://forums.factorio.com/91095)
+    - Fixed that setting fluid wagon fluid through the Lua API didn't update the train inactivity value. (https://forums.factorio.com/91101)
+    - Fixed various issues related to entities leaving gaps when building too fast.
+    - Fixed a crash when setting specific fluids in the infinity pipe GUI. (https://forums.factorio.com/91211)
+    - Fixed that the admin GUI didn't live-update the whitelisted field. (https://forums.factorio.com/91347)
+    - Fixed crash related to migrating circuit network entities while loading the blueprint library. (https://forums.factorio.com/91470)
+    - Fixed that artillery would keep shooting at something when it moved out of range. (https://forums.factorio.com/91498)
+    - Fixed softlock in tutorial if the player took the iron plates too quickly. (https://forums.factorio.com/91618)
+    - Fixed missing blueprint components scroll bar when there is a lot of components. (https://forums.factorio.com/91426)
+  Modding:
+    - New item flag "spawnable", every item has to have that flag to be creatable through the shortcuts directly. (https://forums.factorio.com/87777)
+    - Renamed create-blueprint-item shortcut action to spawn-item and item_to_create to item_to_spawn.
+    - Increased the total number of collision masks from 14 to 55. See the lua-api collision mask concepts page for which layers the game doesn't actively use.
+    - Changed collision mask 'layer-11' to 'rail-layer'.
+    - Changed collision mask 'layer-12' to 'transport-belt-layer'.
+    - Changed loader to only connect to the front belt, not from side. This is to fix internal problems related to modded loaders with custom sizes and side loading of it.
+    - Implemented NoiseExpressions::fromPropertyTree for the "offset-points" noise expression function.
+    - Removed rocket silo rocket prototype property "result_items" because it did nothing.
+    - Added draw_as_light and draw_as_glow property to sprite definitions. draw_as_shadow, draw_as_light and draw_as_glow are mutually exclusive and draw_as_shadow takes precedence.
+    - Unified laser and beam related ammo categories to just "laser" and "beam".
+    - Renamed technology "laser-turret-speed"->"laser-shooting-speed", it now affects both robots and laser turrets.
+    - Renamed technology "turrets"->"gun-turret", "laser-turrets"->"laser-turret", "combat-robotics"->"defender", "combat-robotics-2"->"distractor", "combat-robotics-3"->"destroyer"
+      "tanks"->"tank", "stone-walls"->"stone-wall", "gates"->"gate"
+    - Internal spidertron specification in a way to make torso and leg scaling much easier.
+    - Renamed "source_effects" property of line trigger item to "range_effects", due to ambiguity with source_effects on action delivery. (https://forums.factorio.com/90591)
+    - Added the "linked-container" entity type.
+    - Removed 'small-plane', 'computer', 'railgun-dart' and 'railgun' items.
+    - Removed 'bait-chest', 'crash-site-assembling-machine-1-broken', 'crash-site-assembling-machine-1-repaired', 'crash-site-assembling-machine-2-broken', 'crash-site-assembling-machine-2-repaired',
+      'crash-site-electric-pole', 'crash-site-generator', 'crash-site-lab-broken' and 'crash-site-lab-repaired' entities.
+    - Removed the "auto-character-logistic-trash-slots" modifier and forceDataValues. The auto trash are now always enabled when any trash slots present.
+    - Added direction to SimpleEntityWithOwner and SimpleEntityWithForce.
+    - Constrained collision_box and collision_mask of transport belt connectable prototypes so it is not possible to build the entities in overlapping positions. (https://forums.factorio.com/82294)
+    - Added optional draw_fluid_icon_override boolean to pipe to ground prototypes. Causes fluid icon to be drawn, ignoring the usual pair requirement.
+    - Removed fluid turret prototype property 'indicator_light'.
+    - Added fluid turret prototype properties 'enough_fuel_indicator_light' and 'not_enough_fuel_indicator_light'.
+    - Added locomotive and car prototype properties 'front_light_pictures' and 'darkness_to_render_light_animation'.
+    - Renamed logistic-container prototype property 'logistic_slots_count' to 'max_logistic_slots'.
+    - The data stage files are no longer divided into demo and non-demo.
+      This means the files with the demo- prefix were either merged into files without the prefix and/or the prefix was removed from the file name.
+  Scripting:
+    - Renamed the clean_cursor method to clear_cursor.
+    - Renamed on_put_item to on_pre_build, as it is much more precise name for that event. It fires when anything is used for building: item, blueprint, blueprint record or ghost cursor.
+    - Changed 'control_behavior.parameters.parameters' to just 'control_behavior.parameters' for LuaDeciderCombinatorControlBehavior, LuaConstantCombinatorControlBehavior, and LuaArithmeticCombinatorControlBehavior.
+    - Changed LuaItemStack::active_index to return `nil` if the blueprint book inventory has zero slots. (https://forums.factorio.com/88427)
+    - Changed LuaItemStack::count to return 0 instead of failing when the stack is empty.
+    - Changed LuaControl for players in cutscenes so the character is still usable.
+    - Changed on_player_cancelled_crafting 'cancel_count' to report the exact number of crafts cancelled.
+    - Decoupled deactivation by script and deactivation by circuit network.
+    - mod-gui.lua no longer defines 'mod_gui' as a global variable, it is now only available when required: local mod_gui = require("mod-gui")
+    - Made LuaEntity::speed read work with spider-vehicle.
+    - Made LuaEntityPrototype::guns read work for spider-vehicle.
+    - Removed LuaEntityPrototype::production read.
+    - Removed LuaBootstrap::is_game_in_debug_mode read.
+    - Added LuaEntityPrototype::max_energy_production read.
+    - Added LuaEntity::trains_limit read/write.
+    - Added LuaEntity::trains_count read.
+    - Added LuaTrainStopControlBehavior::trains_count_signal, trains_limit_signal, set_trains_limit and read_trains_count read/write.
+    - Added LuaEntity::tree_gray_stage_index, read/write.
+    - Added LuaEntity::tree_gray_stage_index_max read.
+    - Added LuaEntity::can_wires_reach().
+    - Added LuaEntity::crafting_queue_progress read.
+    - Added on_spider_command_completed event.
+    - Added LuaEntity::get_connected_rolling_stock().
+    - Added 'create_at_cursor' to LuaPlayer::create_local_flying_text().
+    - Added LuaGameScript::map_gen_presets read.
+    - Added LuaStyle::extra_margin_when_activated and extra_padding_when_activated write, which also accept arrays of values.
+    - Added LuaStyle::size write.
+    - Added LuaGuiElement::name write support.
+    - Added LuaGuiElement::tags read/write.
+    - Added LuaTile::to_be_deconstructed().
+    - Added LuaGuiElement::bring_to_front().
+    - Added 'has-rocket-launch-products' filter to ItemPrototypeFilters.
+    - Added support to save/load LuaProfilers. They simply reset the time when saved/loaded.
+    - Added LuaEntityPrototype::guns for artillery turrets and wagons.
+    - Added LuaEntity::combat_robot_owner read/write.
+    - Added LuaPlayer::clear_recipe_notifications and LuaPlayer::add_recipe_notification
+    - Added LuaGuiElement::add "index" property, allowing insertion to anywhere in the parent element.
+    - Added LuaGuiElement::get_index_in_parent().
+    - Added support to connect/disconnect power switches through LuaEntity::connect_neighbour/disconnect_neighbour.
+    - Added LuaForce::get_linked_inventory().
+    - Added LuaEntity::link_id read/write.
+    - Added LuaGui 'relative' (player.gui.relative). For showing a CustomGuiElement relative to some base game C++ GUI.
+    - Added LuaGuiElement::anchor read/write.
+    - Added 'alt_mode' to on_player_toggled_alt_mode event.
+    - Added 'cursor_position' to the custom input events.
+    - Added 'queued_count' to on_pre_player_crafted_item.
+    - Added LuaPlayer::cutscene_character read.
+---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 14. 08. 2020
   Features:
@@ -88,7 +449,7 @@ Date: 06. 08. 2020
     - Updated the technology icons.
     - Updated the "Make a copy of blueprint" icon.
   Gui:
-    - Added simple credits gui.
+    - Added simple credits GUI.
     - Updated the style of progressbar dialogs.
     - Updated the style of map editor.
   Changes:
@@ -102,7 +463,7 @@ Date: 06. 08. 2020
     - Fixed that most of the windows were not squashing as they should when they couldn't fit the screen.
     - Fixed squashing of save name label in the load/save map dialog and load/save map progress windows.
     - Fixed that biters could attack entities beyond their attack range. (https://forums.factorio.com/87158)
-    - Fixed crash when opening train gui through non-locomotive while in map view in latency state. (https://forums.factorio.com/84158)
+    - Fixed crash when opening train GUI through non-locomotive while in map view in latency state. (https://forums.factorio.com/84158)
     - Fixed that the deconstruction planner was ignoring specified tile filters when removing tile ghosts.
     - Fixed that the deconstruction planner with normal tile setting was ignoring tiles when the selection contained only tile ghosts + tiles.
     - Fixed that the deconstruction planner with tile ghost filter selected didn't select (with whitelist) or ignore (with blacklist) the tile ghosts.
@@ -481,7 +842,7 @@ Date: 01. 06. 2020
 Version: 0.18.28
 Date: 28. 05. 2020
   Gui:
-    - Minor visual changes and fixes to achievement and tutorial related guis.
+    - Minor visual changes and fixes to achievement and tutorial related GUIs.
   Bugfixes:
     - Fixed that changing script areas and positions through the map editor in multiplayer as the client didn't work correctly. (https://forums.factorio.com/85308)
     - Fixed a crash when clearing logistic requests. (https://forums.factorio.com/85323)

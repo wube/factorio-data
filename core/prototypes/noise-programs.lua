@@ -409,13 +409,13 @@ data:extend{
       x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
       y = y * map.segmentation_multiplier
       return finish_elevation(make_0_12like_lakes(x, y, tile, map), map)
-    end),
+    end)
   },
   {
     type = "noise-expression",
     name = "0_17-starting-plateau",
     intended_property = debug_property("elevation"),
-    -- The starting area plateau surrounded by an endless ociean
+    -- The starting area plateau surrounded by an endless ocean
     expression = noise.define_noise_function( function(x,y,tile,map)
       x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
       y = y * map.segmentation_multiplier
@@ -424,13 +424,13 @@ data:extend{
         bias = -1000
       }
       return finish_elevation(make_0_12like_lakes(x, y, tile, map, options), map)
-    end),
+    end)
   },
   {
     type = "noise-expression",
     name = "0_17-island",
     intended_property = "elevation",
-    -- A large island surrounded by an endless ociean
+    -- A large island surrounded by an endless ocean
     expression = noise.define_noise_function( function(x,y,tile,map)
       map = util.merge
       {
@@ -441,10 +441,10 @@ data:extend{
       y = y * map.segmentation_multiplier
       options =
       {
-        bias = -1000,
+        bias = -1000
       }
       return finish_elevation(make_0_12like_lakes(x, y, tile, map, options), map)
-    end),
+    end)
   },
   {
     type = "noise-expression",
@@ -460,7 +460,7 @@ data:extend{
         terrain_octaves = 10
       }
       return finish_elevation(make_0_12like_lakes(x, y, tile, map, options), map)
-    end),
+    end)
   },
   {
     type = "noise-expression",
@@ -469,7 +469,7 @@ data:extend{
     -- A big plateau, except for the starting area
     expression = noise.define_noise_function( function(x,y,tile,map)
       return finish_elevation(100, map)
-    end),
+    end)
   },
   {
     type = "noise-expression",
@@ -534,7 +534,7 @@ data:extend{
       )
 
       return noise.ident(finish_elevation(hill_modulated, map))
-    end),
+    end)
   },
   {
     type = "noise-expression",
@@ -596,7 +596,7 @@ local function add_climate_control_defaults(control_name)
       type = "noise-expression",
       name = "control-setting:" .. control_name .. ":bias",
       expression = noise.to_noise_expression(0)
-    },
+    }
   }
 end
 

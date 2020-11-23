@@ -149,7 +149,8 @@ lib.create_crash_site = function(surface, position, ship_items, part_items)
   {
     name = main_ship_name,
     position = position,
-    force = "player"
+    force = "player",
+    create_build_effect_smoke = false
   }
   util.insert_safe(main_ship, ship_items)
   local box = main_ship.bounding_box
@@ -228,7 +229,8 @@ lib.create_crash_site = function(surface, position, ship_items, part_items)
           {
             name = name,
             position = part_position,
-            force = "neutral"
+            force = "neutral",
+            create_build_effect_smoke = false
           }
 
           if entity.get_output_inventory() and #entity.get_output_inventory() > 0 then
@@ -329,7 +331,7 @@ lib.create_cutscene = function(player, goal_position)
 end
 
 lib.is_crash_site_cutscene = function(event)
-  return event.player_index == 1 and event.waypoint_index == 1 and event.tick < 2000
+  return event.player_index == 1 and event.waypoint_index == 1
 end
 
 lib.on_player_display_refresh = function(event)

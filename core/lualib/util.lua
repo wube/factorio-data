@@ -321,7 +321,7 @@ end
 
 -- This function takes 2 icons tables, and adds the second to the first, but applies scale, shift and tint to the entire second set.
 -- This allows you to manipulate the entire second icons table in the same way as you would manipulate a single icon when adding to the icons table.
-function util.combine_icons(icons1, icons2, inputs)
+function util.combine_icons(icons1, icons2, inputs, default_icon_size)
   scale = inputs.scale or 1
   shift = inputs.shift or {0, 0}
   tint = inputs.tint or {r = 1, g = 1, b = 1, a = 1}
@@ -329,9 +329,9 @@ function util.combine_icons(icons1, icons2, inputs)
   local icons = table.deepcopy(icons1)
   for _,icon_to_add in pairs(icons2) do
     local icon = {}
-    icon.icon = icon_to_add.icon -- the only line you can guarantee
-    icon.icon_size = icon_to_add.icon_size or 32
-    icon.scale = scale * (icon_to_add.scale or 32.0/icon.icon_size)
+    icon.icon = icon_to_add.icon
+    icon.icon_size = icon_to_add.icon_size or default_icon_size or error("No icon size defined for icon \n"..serpent.block(icon))
+    icon.scale = scale * (icon_to_add.scale or 32.0 / icon.icon_size)
     icon.icon_mipmaps = icon_to_add.icon_mipmaps
     if icon_to_add.shift then
       icon.shift = {icon_to_add.shift[1] * scale + shift[1], icon_to_add.shift[2] * scale + shift[2]}
@@ -361,6 +361,183 @@ local energy_chars =
   Y = 10^24
 }
 
+function util.technology_icon_constant_damage(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-damage.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_speed(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-speed.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_movement_speed(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-movement-speed.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_range(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-range.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_equipment(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-equipment.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_followers(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-count.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_capacity(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_stack_size(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_productivity(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-mining-productivity.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_braking_force(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-braking-force.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_mining(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256, icon_mipmaps = 4
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-mining.png",
+      icon_size = 128,
+      icon_mipmaps = 3,
+      shift = {100, 100}
+    }
+  }
+  return icons
+end
+
 function util.parse_energy(energy)
 
   local ending = energy:sub(energy:len())
@@ -388,12 +565,21 @@ function util.empty_sprite(animation_length)
   return
   {
     filename = "__core__/graphics/empty.png",
-    priority = "high",
+    priority = "extra-high",
     width = 1,
     height = 1,
     frame_count = 1,
-    repeat_count = animation_length
+    repeat_count = animation_length,
+    direction_count = 1
   }
+end
+
+function util.draw_as_glow(layer)
+  layer.draw_as_glow = true
+  if layer.hr_version then
+    layer.hr_version.draw_as_glow = true
+  end
+  return layer
 end
 
 function util.remove_tile_references(data, array_of_tiles_to_remove)
@@ -458,6 +644,26 @@ function util.remove_tile_references(data, array_of_tiles_to_remove)
       end
     end
   end
+end
+
+local remove = table.remove
+util.remove_from_list = function(list, value)
+  for k, v in pairs (list) do
+    if v == value then
+      remove(list, k)
+      return true
+    end
+  end
+  return false
+end
+
+util.list_to_map = function(list)
+  local map = {}
+  --Here I am trusting you not to give a list of junk.
+  for k, value in pairs(list) do
+    map[value] = true
+  end
+  return map
 end
 
 return util

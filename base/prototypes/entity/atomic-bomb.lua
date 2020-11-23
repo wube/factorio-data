@@ -1,7 +1,7 @@
-local explosion_animations = require("prototypes.entity.demo-explosion-animations")
-local smoke_animations = require("prototypes.entity.demo-smoke-animations")
-local smoke_animations = require("prototypes.entity.demo-smoke-animations")
-local sounds = require("prototypes.entity.demo-sounds")
+local explosion_animations = require("prototypes.entity.explosion-animations")
+local smoke_animations = require("prototypes.entity.smoke-animations")
+local smoke_animations = require("prototypes.entity.smoke-animations")
+local sounds = require("prototypes.entity.sounds")
 
 local max_nuke_shockwave_movement_distance_deviation = 2
 
@@ -32,8 +32,8 @@ data:extend({
     {
       animation_speed = 1 / 6,
       scale = 2.5,
-      flags = { "smoke", "linear-magnification" },
-    },
+      flags = { "smoke", "linear-magnification" }
+    }
   },
 
   -----------------------------------------------------------------------
@@ -91,11 +91,11 @@ data:extend({
               max_movement_distance = max_nuke_shockwave_movement_distance,
               max_movement_distance_deviation = max_nuke_shockwave_movement_distance_deviation,
               inherit_movement_distance_from_projectile = true,
-              cycle_while_moving = true,
+              cycle_while_moving = true
             }
           }
         }
-      },
+      }
     },
     animation = nil,
     shadow = nil
@@ -126,10 +126,10 @@ data:extend({
               starting_frame_speed = 0,
               starting_frame_speed_deviation = 5,
               speed_from_center = 0.035
-            },
+            }
           }
         }
-      },
+      }
     },
     animation = nil,
     shadow = nil
@@ -156,11 +156,11 @@ data:extend({
               max_movement_distance = max_nuke_shockwave_movement_distance,
               max_movement_distance_deviation = max_nuke_shockwave_movement_distance_deviation,
               inherit_movement_distance_from_projectile = true,
-              cycle_while_moving = true,
+              cycle_while_moving = true
             }
           }
         }
-      },
+      }
     },
     animation = nil,
     shadow = nil
@@ -169,7 +169,7 @@ data:extend({
   {
     type = "projectile",
     name = "atomic-bomb-wave-spawns-cluster-nuke-explosion",
-    flags = {"not-on-map"},
+    flags = {"not-on-map", "hidden"},
     acceleration = 0.001,
     speed_modifier = { 1.0, 0.707 },
     action =
@@ -187,11 +187,11 @@ data:extend({
               -- following properties are recognized only be "create-explosion" trigger
               --max_movement_distance = max_nuke_shockwave_movement_distance,
               --max_movement_distance_deviation = max_nuke_shockwave_movement_distance_deviation,
-              --inherit_movement_distance_from_projectile = true,
+              --inherit_movement_distance_from_projectile = true
             }
           }
         }
-      },
+      }
     },
     animation = nil,
     shadow = nil
@@ -290,7 +290,7 @@ data:extend({
         tint = {r = 0.627, g = 0.478, b = 0.345, a = 0.500},
         filename = "__base__/graphics/entity/smoke/smoke.png",
         flags = { "smoke" }
-      },
+      }
     }
   },
 
@@ -314,7 +314,7 @@ data:extend({
     scale_increment_per_tick = 0.005,
     scale_animation_speed = true,
 
-    animations = explosion_animations.nuke_shockwave(),
+    animations = explosion_animations.nuke_shockwave()
   },
 
   {
@@ -322,7 +322,7 @@ data:extend({
     name = "cluster-nuke-explosion",
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 64,
-    flags = {"not-on-map"},
+    flags = {"not-on-map", "hidden"},
     subgroup = "explosions",
     animations = smoke_animations.trivial_nuke_smoke({
       tint = {r = 0.627, g = 0.478, b = 0.345, a = 0.500},
@@ -333,7 +333,7 @@ data:extend({
       spread_duration = 100,
       start_scale = 2.5,
       end_scale = 1.5,}),
-    light = {intensity = 1, size = 20, color = {r=1.0, g=1.0, b=1.0}},
+    --light = {intensity = 1, size = 20, color = {r=1.0, g=1.0, b=1.0}},
     scale_increment_per_tick = 0.002,
     fade_out_duration = 30,
     scale_out_duration = 20,
@@ -370,7 +370,7 @@ data:extend({
             tile_name = "nuclear-ground",
             radius = 12,
             apply_projection = true,
-            tile_collision_mask = { "water-tile" },
+            tile_collision_mask = { "water-tile" }
           },
           {
             type = "destroy-cliffs",
@@ -417,11 +417,12 @@ data:extend({
           {
             type = "create-entity",
             entity_name = "huge-scorchmark",
-            check_buildability = true,
+            offsets = {{ 0, -0.5 }},
+            check_buildability = true
           },
           {
             type = "invoke-tile-trigger",
-            repeat_count = 1,
+            repeat_count = 1
           },
           {
             type = "destroy-decoratives",
@@ -455,7 +456,7 @@ data:extend({
                 type = "projectile",
                 projectile = "atomic-bomb-ground-zero-projectile",
                 starting_speed = 0.6 * 0.8,
-                starting_speed_deviation = nuke_shockwave_starting_speed_deviation,
+                starting_speed_deviation = nuke_shockwave_starting_speed_deviation
               }
             }
           },
@@ -473,7 +474,7 @@ data:extend({
                 type = "projectile",
                 projectile = "atomic-bomb-wave",
                 starting_speed = 0.5 * 0.7,
-                starting_speed_deviation = nuke_shockwave_starting_speed_deviation,
+                starting_speed_deviation = nuke_shockwave_starting_speed_deviation
               }
             }
           },
@@ -492,7 +493,7 @@ data:extend({
                 type = "projectile",
                 projectile = "atomic-bomb-wave-spawns-cluster-nuke-explosion",
                 starting_speed = 0.5 * 0.7,
-                starting_speed_deviation = nuke_shockwave_starting_speed_deviation,
+                starting_speed_deviation = nuke_shockwave_starting_speed_deviation
               }
             }
           },
@@ -511,7 +512,7 @@ data:extend({
                 type = "projectile",
                 projectile = "atomic-bomb-wave-spawns-fire-smoke-explosion",
                 starting_speed = 0.5 * 0.65,
-                starting_speed_deviation = nuke_shockwave_starting_speed_deviation,
+                starting_speed_deviation = nuke_shockwave_starting_speed_deviation
               }
             }
           },
@@ -530,7 +531,7 @@ data:extend({
                 type = "projectile",
                 projectile = "atomic-bomb-wave-spawns-nuke-shockwave-explosion",
                 starting_speed = 0.5 * 0.65,
-                starting_speed_deviation = nuke_shockwave_starting_speed_deviation,
+                starting_speed_deviation = nuke_shockwave_starting_speed_deviation
               }
             }
           },
@@ -549,7 +550,7 @@ data:extend({
                 type = "projectile",
                 projectile = "atomic-bomb-wave-spawns-nuclear-smoke",
                 starting_speed = 0.5 * 0.65,
-                starting_speed_deviation = nuke_shockwave_starting_speed_deviation,
+                starting_speed_deviation = nuke_shockwave_starting_speed_deviation
               }
             }
           },
@@ -580,10 +581,11 @@ data:extend({
         }
       }
     },
-    light = {intensity = 0.8, size = 15},
+    --light = {intensity = 0.8, size = 15},
     animation =
     {
       filename = "__base__/graphics/entity/rocket/rocket.png",
+      draw_as_glow = true,
       frame_count = 8,
       line_length = 8,
       width = 9,

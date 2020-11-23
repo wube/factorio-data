@@ -1,8 +1,8 @@
 local autoplace_utils = require("autoplace_utils")
 
-local hit_effects = require ("prototypes.entity.demo-hit-effects")
+local hit_effects = require ("prototypes.entity.hit-effects")
 
-local sounds = require ("prototypes.entity.demo-sounds")
+local sounds = require ("prototypes.entity.sounds")
 
 local decorative_trigger_effects = require("prototypes.decorative.decorative-trigger-effects")
 
@@ -143,7 +143,7 @@ function shroom_decal(name, tint)
           height = 206,
           shift = util.by_pixel(-13, -1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -161,7 +161,7 @@ function shroom_decal(name, tint)
           height = 182,
           shift = util.by_pixel(12, 7),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -179,7 +179,7 @@ function shroom_decal(name, tint)
           height = 194,
           shift = util.by_pixel(-8, -3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -197,7 +197,7 @@ function shroom_decal(name, tint)
           height = 220,
           shift = util.by_pixel(6, 1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -215,7 +215,7 @@ function shroom_decal(name, tint)
           height = 206,
           shift = util.by_pixel(-12, 7),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -233,7 +233,7 @@ function shroom_decal(name, tint)
           height = 200,
           shift = util.by_pixel(24, 3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -251,7 +251,7 @@ function shroom_decal(name, tint)
           height = 214,
           shift = util.by_pixel(23, 2),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -269,7 +269,7 @@ function shroom_decal(name, tint)
           height = 190,
           shift = util.by_pixel(20, 9),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -287,7 +287,7 @@ function shroom_decal(name, tint)
           height = 206,
           shift = util.by_pixel(-12, 1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -305,7 +305,7 @@ function shroom_decal(name, tint)
           height = 150,
           shift = util.by_pixel(8, -11),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -323,7 +323,7 @@ function shroom_decal(name, tint)
           height = 204,
           shift = util.by_pixel(2, -3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -341,7 +341,7 @@ function shroom_decal(name, tint)
           height = 206,
           shift = util.by_pixel(23, 5),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -359,7 +359,7 @@ function shroom_decal(name, tint)
           height = 220,
           shift = util.by_pixel(-4, 3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -377,7 +377,7 @@ function shroom_decal(name, tint)
           height = 160,
           shift = util.by_pixel(31, 11),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -395,7 +395,7 @@ function shroom_decal(name, tint)
           height = 206,
           shift = util.by_pixel(25, 6),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -413,7 +413,7 @@ function shroom_decal(name, tint)
           height = 222,
           shift = util.by_pixel(-5, 0),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       }
     }
@@ -446,7 +446,7 @@ function lichen(name, tint)
           height = 248,
           shift = util.by_pixel(-3, -7),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -464,7 +464,7 @@ function lichen(name, tint)
           height = 260,
           shift = util.by_pixel(4, -1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -482,7 +482,7 @@ function lichen(name, tint)
           height = 262,
           shift = util.by_pixel(4, 3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -500,7 +500,7 @@ function lichen(name, tint)
           height = 226,
           shift = util.by_pixel(0, 3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -518,7 +518,7 @@ function lichen(name, tint)
           height = 304,
           shift = util.by_pixel(1, 1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -536,7 +536,7 @@ function lichen(name, tint)
           height = 224,
           shift = util.by_pixel(-8, 1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -554,7 +554,7 @@ function lichen(name, tint)
           height = 224,
           shift = util.by_pixel(-9, 2),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -572,7 +572,7 @@ function lichen(name, tint)
           height = 266,
           shift = util.by_pixel(-2, -7),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -590,7 +590,7 @@ function lichen(name, tint)
           height = 200,
           shift = util.by_pixel(1, -1),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -608,7 +608,7 @@ function lichen(name, tint)
           height = 182,
           shift = util.by_pixel(-18, 7),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -626,7 +626,7 @@ function lichen(name, tint)
           height = 172,
           shift = util.by_pixel(-3, -13),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -644,7 +644,7 @@ function lichen(name, tint)
           height = 258,
           shift = util.by_pixel(6, -4),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -662,7 +662,7 @@ function lichen(name, tint)
           height = 218,
           shift = util.by_pixel(3, -9),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -680,7 +680,7 @@ function lichen(name, tint)
           height = 216,
           shift = util.by_pixel(-1, -6),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -698,7 +698,7 @@ function lichen(name, tint)
           height = 140,
           shift = util.by_pixel(-2, 3),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -716,7 +716,7 @@ function lichen(name, tint)
           height = 134,
           shift = util.by_pixel(11, 5),
           tint = tint,
-          scale = 0.5,
+          scale = 0.5
         }
       }
     }
@@ -5371,7 +5371,7 @@ data:extend{
           width = 426,
           height = 206,
           shift = util.by_pixel(-11, -12),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5387,7 +5387,7 @@ data:extend{
           width = 400,
           height = 216,
           shift = util.by_pixel(-6, -15),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5403,7 +5403,7 @@ data:extend{
           width = 436,
           height = 232,
           shift = util.by_pixel(10, 5),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5419,7 +5419,7 @@ data:extend{
           width = 472,
           height = 236,
           shift = util.by_pixel(10, -11),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5435,7 +5435,7 @@ data:extend{
           width = 392,
           height = 244,
           shift = util.by_pixel(7, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5451,7 +5451,7 @@ data:extend{
           width = 378,
           height = 158,
           shift = util.by_pixel(0, 14),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5467,7 +5467,7 @@ data:extend{
           width = 444,
           height = 226,
           shift = util.by_pixel(2, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5483,7 +5483,7 @@ data:extend{
           width = 376,
           height = 178,
           shift = util.by_pixel(14, -4),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5499,7 +5499,7 @@ data:extend{
           width = 398,
           height = 190,
           shift = util.by_pixel(17, -10),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5515,7 +5515,7 @@ data:extend{
           width = 414,
           height = 206,
           shift = util.by_pixel(3, -11),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5531,7 +5531,7 @@ data:extend{
           width = 416,
           height = 226,
           shift = util.by_pixel(-1, -1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5547,7 +5547,7 @@ data:extend{
           width = 368,
           height = 232,
           shift = util.by_pixel(-4, -5),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5563,7 +5563,7 @@ data:extend{
           width = 416,
           height = 214,
           shift = util.by_pixel(14, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5579,7 +5579,7 @@ data:extend{
           width = 368,
           height = 208,
           shift = util.by_pixel(15, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5595,7 +5595,7 @@ data:extend{
           width = 246,
           height = 122,
           shift = util.by_pixel(29, 3),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -5611,7 +5611,7 @@ data:extend{
           width = 404,
           height = 198,
           shift = util.by_pixel(-4, -8),
-          scale = 0.5,
+          scale = 0.5
         }
       }
     }
@@ -6210,7 +6210,7 @@ data:extend{
           width = 106,
           height = 90,
           shift = util.by_pixel(1, -3),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6226,7 +6226,7 @@ data:extend{
           width = 114,
           height = 84,
           shift = util.by_pixel(3, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6242,7 +6242,7 @@ data:extend{
           width = 120,
           height = 92,
           shift = util.by_pixel(1, -1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6258,7 +6258,7 @@ data:extend{
           width = 104,
           height = 74,
           shift = util.by_pixel(0, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6274,7 +6274,7 @@ data:extend{
           width = 92,
           height = 68,
           shift = util.by_pixel(0, -1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6290,7 +6290,7 @@ data:extend{
           width = 92,
           height = 80,
           shift = util.by_pixel(5, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6306,7 +6306,7 @@ data:extend{
           width = 112,
           height = 72,
           shift = util.by_pixel(4, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6322,7 +6322,7 @@ data:extend{
           width = 88,
           height = 84,
           shift = util.by_pixel(4, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6338,7 +6338,7 @@ data:extend{
           width = 92,
           height = 60,
           shift = util.by_pixel(-4, 1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -6354,9 +6354,9 @@ data:extend{
           width = 96,
           height = 72,
           shift = util.by_pixel(4, -2),
-          scale = 0.5,
+          scale = 0.5
         }
-      },
+      }
     }
   },
   {
@@ -8341,7 +8341,7 @@ data:extend{
   {
     name = "rock-huge",
     type = "simple-entity",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__base__/graphics/icons/rock-huge.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "grass",
@@ -8361,6 +8361,7 @@ data:extend{
     {
       {item = "stone", probability = 1, count_min = 25, count_max = 50}
     },
+    map_color = {r=129, g=105, b=78},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     vehicle_impact_sound = sounds.car_stone_impact,
@@ -8605,7 +8606,7 @@ data:extend{
   {
     name = "rock-big",
     type = "simple-entity",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__base__/graphics/icons/rock-big.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "grass",
@@ -8625,6 +8626,7 @@ data:extend{
     {
       {item = "stone", probability = 1, count_min = 9, count_max = 25}
     },
+    map_color = {r=129, g=105, b=78},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     vehicle_impact_sound = sounds.car_stone_impact,
@@ -9668,7 +9670,7 @@ data:extend{
   {
     name = "sand-rock-big",
     type = "simple-entity",
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
+    flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__base__/graphics/icons/sand-rock-big.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "grass",
@@ -9697,6 +9699,7 @@ data:extend{
         percent = 100
       }
     },
+    map_color = {r=129, g=105, b=78},
     count_as_rock_for_filtered_deconstruction = true,
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
     vehicle_impact_sound = sounds.car_stone_impact,
@@ -12988,7 +12991,7 @@ data:extend{
           width = 1016,
           height = 726,
           shift = util.by_pixel(0, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13002,7 +13005,7 @@ data:extend{
           width = 998,
           height = 722,
           shift = util.by_pixel(-4, 1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13016,7 +13019,7 @@ data:extend{
           width = 1014,
           height = 718,
           shift = util.by_pixel(0, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13030,7 +13033,7 @@ data:extend{
           width = 1010,
           height = 718,
           shift = util.by_pixel(1, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13044,7 +13047,7 @@ data:extend{
           width = 862,
           height = 722,
           shift = util.by_pixel(4, 0),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13058,7 +13061,7 @@ data:extend{
           width = 920,
           height = 578,
           shift = util.by_pixel(14, -1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13072,7 +13075,7 @@ data:extend{
           width = 968,
           height = 708,
           shift = util.by_pixel(3, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13086,9 +13089,9 @@ data:extend{
           width = 1016,
           height = 722,
           shift = util.by_pixel(0, -1),
-          scale = 0.5,
+          scale = 0.5
         }
-      },
+      }
     }
   },
   {
@@ -13113,7 +13116,7 @@ data:extend{
           width = 1016,
           height = 720,
           shift = util.by_pixel(0, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13127,7 +13130,7 @@ data:extend{
           width = 936,
           height = 570,
           shift = util.by_pixel(-3, 23),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13141,7 +13144,7 @@ data:extend{
           width = 848,
           height = 540,
           shift = util.by_pixel(-43, 23),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13155,7 +13158,7 @@ data:extend{
           width = 968,
           height = 690,
           shift = util.by_pixel(4, -7),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13169,7 +13172,7 @@ data:extend{
           width = 800,
           height = 720,
           shift = util.by_pixel(7, -2),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13183,7 +13186,7 @@ data:extend{
           width = 846,
           height = 496,
           shift = util.by_pixel(17, 3),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13197,7 +13200,7 @@ data:extend{
           width = 916,
           height = 602,
           shift = util.by_pixel(6, 9),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13211,9 +13214,9 @@ data:extend{
           width = 1004,
           height = 710,
           shift = util.by_pixel(3, -3),
-          scale = 0.5,
+          scale = 0.5
         }
-      },
+      }
     }
   },
 
@@ -13291,7 +13294,7 @@ data:extend{
           width = 388,
           height = 284,
           shift = util.by_pixel(4, -7),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13307,7 +13310,7 @@ data:extend{
           width = 372,
           height = 262,
           shift = util.by_pixel(4, 8),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13323,7 +13326,7 @@ data:extend{
           width = 374,
           height = 254,
           shift = util.by_pixel(5, 1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13339,7 +13342,7 @@ data:extend{
           width = 364,
           height = 252,
           shift = util.by_pixel(4, -3),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13355,7 +13358,7 @@ data:extend{
           width = 328,
           height = 256,
           shift = util.by_pixel(12, -1),
-          scale = 0.5,
+          scale = 0.5
         }
       },
       {
@@ -13371,11 +13374,11 @@ data:extend{
           width = 374,
           height = 260,
           shift = util.by_pixel(2, 8),
-          scale = 0.5,
+          scale = 0.5
         }
       }
     }
-  },
+  }
 }
 
 --[[

@@ -214,9 +214,13 @@ function fireutil.create_fire_pictures(opts)
       shift = { -0.0703125, -1.039065 }
     }
   }
-  return fireutil.foreach(retval, function(tab)
+  retval = fireutil.foreach(retval, function(tab)
     if tab.shift and tab.scale then tab.shift = { tab.shift[1] * tab.scale, tab.shift[2] * tab.scale } end
   end)
+  for k, layer in pairs (retval) do
+    retval[k] = util.draw_as_glow(layer)
+  end
+  return retval
 end
 
 function fireutil.create_small_tree_flame_animations(opts)
@@ -319,9 +323,14 @@ function fireutil.create_small_tree_flame_animations(opts)
     }
   }
 
-  return fireutil.foreach(retval, function(tab)
+  retval = fireutil.foreach(retval, function(tab)
     if tab.shift and tab.scale then tab.shift = { tab.shift[1] * tab.scale, tab.shift[2] * tab.scale } end
   end)
+
+  for k, layer in pairs (retval) do
+    retval[k] = util.draw_as_glow(layer)
+  end
+  return retval
 end
 
 function fireutil.create_burnt_patch_pictures()
@@ -440,7 +449,7 @@ function fireutil.add_basic_fire_graphics_and_effects_definitions(fire)
     }
   }
 
-  fire.light = fire.light or {intensity = 1, size = 20}
+  fire.light = fire.light or {intensity = 0.2, size = 8, color = {1, 0.5, 0}}
 
   fire.working_sound = fire.working_sound or
   {

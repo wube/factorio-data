@@ -40,7 +40,7 @@ function generate_arithmetic_combinator(combinator)
     })
   combinator.activity_led_sprites =
   {
-    north =
+    north = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-N.png",
       width = 8,
@@ -57,7 +57,7 @@ function generate_arithmetic_combinator(combinator)
         shift = util.by_pixel(8.5, -12.5)
       }
     },
-    east =
+    east = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-E.png",
       width = 8,
@@ -74,7 +74,7 @@ function generate_arithmetic_combinator(combinator)
         shift = util.by_pixel(16.5, -1)
       }
     },
-    south =
+    south = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-S.png",
       width = 8,
@@ -91,7 +91,7 @@ function generate_arithmetic_combinator(combinator)
         shift = util.by_pixel(-8, 7.5)
       }
     },
-    west =
+    west = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-W.png",
       width = 8,
@@ -111,7 +111,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.plus_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -128,7 +128,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -145,7 +145,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -162,7 +162,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -182,7 +182,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.minus_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -199,7 +199,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -216,7 +216,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -233,7 +233,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -253,7 +253,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.multiply_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -270,7 +270,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -287,7 +287,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -304,7 +304,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -324,7 +324,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.divide_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -341,7 +341,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -358,7 +358,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -375,7 +375,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -395,7 +395,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.modulo_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -412,7 +412,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -429,7 +429,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -446,7 +446,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -466,7 +466,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.power_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 11,
@@ -483,7 +483,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 11,
@@ -500,7 +500,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 11,
@@ -517,7 +517,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 11,
@@ -537,7 +537,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.left_shift_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -556,7 +556,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -575,7 +575,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -594,7 +594,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -616,7 +616,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.right_shift_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -635,7 +635,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -654,7 +654,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -673,7 +673,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -695,7 +695,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.and_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -714,7 +714,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -733,7 +733,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -752,7 +752,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -774,7 +774,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.or_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -793,7 +793,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -812,7 +812,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -831,7 +831,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -853,7 +853,7 @@ function generate_arithmetic_combinator(combinator)
   }
   combinator.xor_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -872,7 +872,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -891,7 +891,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -10.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -910,7 +910,7 @@ function generate_arithmetic_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -1077,7 +1077,7 @@ function generate_decider_combinator(combinator)
     })
   combinator.activity_led_sprites =
   {
-    north =
+    north = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-N.png",
       width = 8,
@@ -1094,7 +1094,7 @@ function generate_decider_combinator(combinator)
         shift = util.by_pixel(8.5, -13)
       }
     },
-    east =
+    east = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-E.png",
       width = 8,
@@ -1111,7 +1111,7 @@ function generate_decider_combinator(combinator)
         shift = util.by_pixel(16, -4)
       }
     },
-    south =
+    south = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-S.png",
       width = 8,
@@ -1128,7 +1128,7 @@ function generate_decider_combinator(combinator)
         shift = util.by_pixel(-8, 4.5)
       }
     },
-    west =
+    west = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-W.png",
       width = 8,
@@ -1148,7 +1148,7 @@ function generate_decider_combinator(combinator)
   }
   combinator.greater_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 22,
@@ -1165,7 +1165,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 22,
@@ -1182,7 +1182,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -13.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 22,
@@ -1199,7 +1199,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         y = 22,
@@ -1219,7 +1219,7 @@ function generate_decider_combinator(combinator)
   }
   combinator.less_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -1238,7 +1238,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -1257,7 +1257,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -13.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -1276,7 +1276,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 15,
@@ -1298,7 +1298,7 @@ function generate_decider_combinator(combinator)
   }
   combinator.equal_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -1317,7 +1317,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -1336,7 +1336,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -13.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -1355,7 +1355,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 30,
@@ -1377,7 +1377,7 @@ function generate_decider_combinator(combinator)
   }
   combinator.not_equal_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -1396,7 +1396,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -1415,7 +1415,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -13.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -1434,7 +1434,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 45,
@@ -1456,7 +1456,7 @@ function generate_decider_combinator(combinator)
   }
   combinator.less_or_equal_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -1475,7 +1475,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -1494,7 +1494,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -13.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -1513,7 +1513,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 60,
@@ -1535,7 +1535,7 @@ function generate_decider_combinator(combinator)
   }
   combinator.greater_or_equal_symbol_sprites =
   {
-    north =
+    north = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -1554,7 +1554,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    east =
+    east = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -1573,7 +1573,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -13.5)
         }
       },
-    south =
+    south = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -1592,7 +1592,7 @@ function generate_decider_combinator(combinator)
           shift = util.by_pixel(0, -4.5)
         }
       },
-    west =
+    west = util.draw_as_glow
       {
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
         x = 75,
@@ -1759,7 +1759,7 @@ function generate_constant_combinator(combinator)
     })
   combinator.activity_led_sprites =
   {
-    north =
+    north = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
       width = 8,
@@ -1776,7 +1776,7 @@ function generate_constant_combinator(combinator)
         shift = util.by_pixel(9, -11.5)
       }
     },
-    east =
+    east = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
       width = 8,
@@ -1793,7 +1793,7 @@ function generate_constant_combinator(combinator)
         shift = util.by_pixel(7.5, -0.5)
       }
     },
-    south =
+    south = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
       width = 8,
@@ -1810,7 +1810,7 @@ function generate_constant_combinator(combinator)
         shift = util.by_pixel(-9, 2.5)
       }
     },
-    west =
+    west = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
       width = 8,
@@ -1881,4 +1881,3 @@ function generate_constant_combinator(combinator)
   }
   return combinator
 end
-

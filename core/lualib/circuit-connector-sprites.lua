@@ -7,6 +7,8 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
       priority = animation.priority,
       flags = animation.flags,
       draw_as_shadow = animation.draw_as_shadow,
+      draw_as_light = animation.draw_as_light,
+      draw_as_glow = animation.draw_as_glow,
       width = animation.width,
       height = animation.height,
       scale = animation.scale,
@@ -34,7 +36,7 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
 
   result.led_light =
   {
-    intensity = 0.8,
+    intensity = 0,
     size = 0.9
   }
 
@@ -171,6 +173,7 @@ belt_ccm.frame_main_scanner_nw_ne =
   filename = "__base__/graphics/entity/transport-belt/connector/transport-belt-connector-frame-main-scanner-nw-ne.png",
   priority = "low",
   blend_mode = "additive",
+  draw_as_glow = true,
   line_length = 8,
   width = 28,
   height = 24,
@@ -183,6 +186,7 @@ belt_ccm.frame_main_scanner_sw_se =
   filename = "__base__/graphics/entity/transport-belt/connector/transport-belt-connector-frame-main-scanner-sw-se.png",
   priority = "low",
   blend_mode = "additive",
+  draw_as_glow = true,
   line_length = 8,
   width = 29,
   height = 28,

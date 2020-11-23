@@ -2,6 +2,41 @@ data:extend(
 {
   {
     type = "shortcut",
+    name = "toggle-alt-mode",
+    order = "a[alt-mode]",
+    action = "toggle-alt-mode",
+    localised_name = {"shortcut.alt-mode"},
+    associated_control_input = "show-info",
+    icon =
+    {
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x32.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    small_icon =
+    {
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24.png",
+      priority = "extra-high-no-scale",
+      size = 24,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
+    disabled_small_icon =
+    {
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24-white.png",
+      priority = "extra-high-no-scale",
+      size = 24,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    }
+  },
+  {
+    type = "shortcut",
     name = "undo",
     order = "b[blueprints]-a[undo]",
     action = "undo",
@@ -43,7 +78,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
@@ -115,7 +150,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
@@ -151,7 +186,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
@@ -186,17 +221,17 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
     name = "give-blueprint",
     order = "b[blueprints]-e[blueprint]",
-    action = "create-blueprint-item",
+    action = "spawn-item",
     localised_name = {"shortcut.make-blueprint"},
     associated_control_input = "give-blueprint",
     technology_to_unlock = "construction-robotics",
-    item_to_create = "blueprint",
+    item_to_spawn = "blueprint",
     style = "blue",
     icon =
     {
@@ -209,7 +244,7 @@ data:extend(
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
       scale = 0.5,
@@ -224,17 +259,17 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
     name = "give-blueprint-book",
     order = "b[blueprints]-f[book]",
-    action = "create-blueprint-item",
+    action = "spawn-item",
     localised_name = {"shortcut.make-blueprint-book"},
     associated_control_input = "give-blueprint-book",
     technology_to_unlock = "construction-robotics",
-    item_to_create = "blueprint-book",
+    item_to_spawn = "blueprint-book",
     style = "blue",
     icon =
     {
@@ -247,7 +282,7 @@ data:extend(
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
       scale = 0.5,
@@ -262,17 +297,17 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
     name = "give-deconstruction-planner",
     order = "b[blueprints]-g[deconstruction-planner]",
-    action = "create-blueprint-item",
+    action = "spawn-item",
     localised_name = {"shortcut.make-deconstruction-planner"},
     associated_control_input = "give-deconstruction-planner",
     technology_to_unlock = "construction-robotics",
-    item_to_create = "deconstruction-planner",
+    item_to_spawn = "deconstruction-planner",
     style = "red",
     icon =
     {
@@ -285,7 +320,7 @@ data:extend(
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
       scale = 0.5,
@@ -300,17 +335,17 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
     name = "give-upgrade-planner",
     order = "b[blueprints]-h[upgrade-planner]",
-    action = "create-blueprint-item",
+    action = "spawn-item",
     localised_name = {"shortcut.make-upgrade-planner"},
     associated_control_input = "give-upgrade-planner",
     technology_to_unlock = "construction-robotics",
-    item_to_create = "upgrade-planner",
+    item_to_spawn = "upgrade-planner",
     style = "green",
     icon =
     {
@@ -323,7 +358,7 @@ data:extend(
     },
     small_icon =
     {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24.png",
+      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24-white.png",
       priority = "extra-high-no-scale",
       size = 24,
       scale = 0.5,
@@ -338,7 +373,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
@@ -383,7 +418,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
   {
     type = "shortcut",
@@ -428,7 +463,7 @@ data:extend(
       scale = 0.5,
       mipmap_count = 2,
       flags = {"gui-icon"}
-    },
+    }
   },
 
   -- Custom shortcut can be defined as follows:

@@ -239,5 +239,15 @@ data:extend(
       filename = "__base__/sound/wind/wind.ogg",
       volume = 0.8
     }
+  },
+  {
+    type = "ambient-sound",
+    name = "main-menu",
+    track_type = "menu-track",
+    sound =
+    {
+      filename = "__base__/sound/ambient/main-menu.ogg",
+      volume = 1
+    }
   }
 })

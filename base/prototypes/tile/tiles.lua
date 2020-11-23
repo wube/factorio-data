@@ -19,7 +19,7 @@ local sand_pollution_absorption = 0.0000058
 local red_desert_pollution_absorption = 0.0000066
 
 -- doesn't matter that much, with Vaclav we thought it would be good if it is less then water but more than concrete (so above zero)
-local nuclear_ground_pollution_absorption = water_pollution_absorption * 0.5 
+local nuclear_ground_pollution_absorption = water_pollution_absorption * 0.5
 
 local landfill_build_sounds =
 {
@@ -118,7 +118,7 @@ local concrete_tile_build_sounds =
             { filename = "__core__/sound/build-concrete-large-2.ogg", volume = 0.5 },
             { filename = "__core__/sound/build-concrete-large-3.ogg", volume = 0.5 },
             { filename = "__core__/sound/build-concrete-large-4.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-large-5.ogg", volume = 0.5 }},
+            { filename = "__core__/sound/build-concrete-large-5.ogg", volume = 0.5 }}
 }
 
 local grass_sounds =
@@ -388,7 +388,7 @@ local function noise_layer_expression(noise_name)
       seed1 = noise.noise_layer_name_to_id(noise_name),
       input_scale = noise.fraction(1, 6),
       output_scale = tile_noise_influence,
-      octaves = 4,
+      octaves = 4
     }
   )
 end
@@ -419,7 +419,7 @@ local function extend_edge_rectangle(rectangle)
   return
   {
     { extend_left_rectangle_edge(rectangle[1][1]),  extend_left_rectangle_edge(rectangle[1][2])},
-    {extend_right_rectangle_edge(rectangle[2][1]), extend_right_rectangle_edge(rectangle[2][2])},
+    {extend_right_rectangle_edge(rectangle[2][1]), extend_right_rectangle_edge(rectangle[2][2])}
   }
 end
 
@@ -446,7 +446,7 @@ local function autoplace_settings(noise_name, control_name, ...)
     if type(rectangle) == "table" then
       bvu.log_rectangle(noise_name, {
         aux      = {min = rectangle[1][1], max = rectangle[2][1]},
-        moisture = {min = rectangle[1][2], max = rectangle[2][2]},
+        moisture = {min = rectangle[1][2], max = rectangle[2][2]}
       })
       probability_expression = noise.max(probability_expression, auxwater_rect_to_noise_expression(rectangle))
     elseif type(rectangle) == "function" then
@@ -475,7 +475,7 @@ local function append_transition_mask_template(normal_res_transition, high_res_t
       picture = normal_res_transition,
       count = cnt_,
       line_length = line_len_ or cnt_,
-      x = x_,
+      x = x_
     }
 
     if high_res_transition then
@@ -682,7 +682,7 @@ function make_water_autoplace_settings(max_elevation, influence)
   }
 end
 
-water_tile_type_names = { "water", "deepwater", "water-green", "deepwater-green", "water-shallow", "water-mud" }
+water_tile_type_names = { "water", "deepwater", "water-green", "deepwater-green", "water-shallow", "water-mud", "water-wube" }
 patch_for_inner_corner_of_transition_between_transition =
 {
   filename = "__base__/graphics/terrain/water-transitions/water-patch.png",
@@ -758,7 +758,7 @@ ttfxmaps.water_grass =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-grass-mask.png",
   o_transition_tall = false,
   u_transition_count = 4,
-  o_transition_count = 1,
+  o_transition_count = 1
 }
 
 ttfxmaps.water_grass_to_land =
@@ -767,7 +767,7 @@ ttfxmaps.water_grass_to_land =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-grass-to-land-mask.png",
   count = 3,
   u_transition_count = 1,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_grass_to_out_of_map =
@@ -776,7 +776,7 @@ ttfxmaps.water_grass_to_out_of_map =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-grass-to-out-of-map-mask.png",
   count = 3,
   u_transition_count = 1,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_sand =
@@ -785,7 +785,7 @@ ttfxmaps.water_sand =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-sand-mask.png",
   o_transition_tall = false,
   u_transition_count = 4,
-  o_transition_count = 1,
+  o_transition_count = 1
 }
 
 ttfxmaps.water_sand_to_land =
@@ -794,7 +794,7 @@ ttfxmaps.water_sand_to_land =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-sand-to-land-mask.png",
   count = 3,
   u_transition_count = 1,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_sand_to_out_of_map =
@@ -803,7 +803,7 @@ ttfxmaps.water_sand_to_out_of_map =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-sand-to-out-of-map-mask.png",
   count = 3,
   u_transition_count = 1,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_dirt =
@@ -813,7 +813,7 @@ ttfxmaps.water_dirt =
   count = 8,
   o_transition_tall = false,
   u_transition_count = 2,
-  o_transition_count = 1,
+  o_transition_count = 1
 }
 
 ttfxmaps.water_dirt_to_land =
@@ -822,7 +822,7 @@ ttfxmaps.water_dirt_to_land =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-dirt-to-land-mask.png",
   count = 3,
   u_transition_count = 1,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_dirt_to_out_of_map =
@@ -831,7 +831,7 @@ ttfxmaps.water_dirt_to_out_of_map =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-dirt-to-out-of-map-mask.png",
   count = 3,
   u_transition_count = 0,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_stone =
@@ -839,7 +839,7 @@ ttfxmaps.water_stone =
   filename_norm = "__base__/graphics/terrain/effect-maps/water-stone-mask.png",
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-stone-mask.png",
   count = 1,
-  o_transition_tall = false,
+  o_transition_tall = false
 }
 
 ttfxmaps.water_stone_to_land =
@@ -848,7 +848,7 @@ ttfxmaps.water_stone_to_land =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-stone-to-land-mask.png",
   count = 3,
   u_transition_count = 1,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 ttfxmaps.water_stone_to_out_of_map =
@@ -857,7 +857,7 @@ ttfxmaps.water_stone_to_out_of_map =
   filename_high = "__base__/graphics/terrain/effect-maps/hr-water-stone-to-out-of-map-mask.png",
   count = 3,
   u_transition_count = 0,
-  o_transition_count = 0,
+  o_transition_count = 0
 }
 
 local water_shallow_transitions_between_transitions =
@@ -1092,7 +1092,7 @@ local sand_transitions_between_transitions =
       true,
       true,
       true
-  ),
+  )
 }
 
 -- ~~~GRASS
@@ -1113,7 +1113,7 @@ local grass_transitions =
       {
         side_weights = { 1, 1, 1, 1,  0.25, 0.25, 1, 1,  1, 1, 0.125, 0.25,  1, 1, 1, 1 },
         --background_for_water_effect = true
-      },
+      }
     }
   ),
   ground_to_out_of_map_transition
@@ -1180,7 +1180,7 @@ local grass_transitions_between_transitions =
         o_transition_count = 0,
         base = init_transition_between_transition_water_out_of_map_options()
       }
-  ),
+  )
 }
 
 -- ~~~DIRT_DRY
@@ -1267,7 +1267,7 @@ local dry_dirt_transitions_between_transitions =
         o_transition_count = 0,
         base = init_transition_between_transition_water_out_of_map_options()
       }
-  ),
+  )
 }
 
 -- ~~~DIRT_DARK
@@ -1332,7 +1332,7 @@ local dark_dirt_transitions_between_transitions =
         o_transition_count = 0,
         base = init_transition_between_transition_water_out_of_map_options()
       }
-  ),
+  )
 }
 
 -- ~~~DIRT_LANDFILL
@@ -1397,7 +1397,7 @@ local landfill_transitions_between_transitions =
         o_transition_count = 0,
         base = init_transition_between_transition_water_out_of_map_options()
       }
-  ),
+  )
 }
 
 -- ~~~NUCLEAR_GROUND
@@ -1461,7 +1461,7 @@ local nuclear_ground_transitions_between_transitions =
         o_transition_count = 0,
         base = init_transition_between_transition_water_out_of_map_options()
       }
-  ),
+  )
 }
 
 -- ~~~STONE_CONCRETE
@@ -1484,7 +1484,7 @@ local concrete_transitions =
         --base = { layer = 40 }
       }
   ),
-  concrete_out_of_map_transition
+  concrete_to_out_of_map_transition
 }
 
 local concrete_transitions_between_transitions =
@@ -1545,7 +1545,7 @@ local concrete_transitions_between_transitions =
         o_transition_count = 0,
         base = init_transition_between_transition_water_out_of_map_options()
       }
-  ),
+  )
 }
 
 -- ~~~STONE_STONE_PATH
@@ -1568,7 +1568,7 @@ local stone_path_transitions =
         --base = { layer = 40 }
       }
   ),
-  stone_path_out_of_map_transition
+  stone_path_to_out_of_map_transition
 }
 
 local stone_path_transitions_between_transitions =
@@ -1633,7 +1633,7 @@ local stone_path_transitions_between_transitions =
       true,
       true,
       false
-  ),
+  )
 }
 
 local function define_tiles(tile_prototypes)
@@ -1749,7 +1749,7 @@ define_tiles
     map_color={r=38, g=64, b=73},
     pollution_absorption_per_second = water_pollution_absorption,
 
-    trigger_effect = tile_trigger_effects.deep_water_trigger_effect(),
+    trigger_effect = tile_trigger_effects.deep_water_trigger_effect()
   },
   {
     name = "deepwater-green",
@@ -1809,13 +1809,13 @@ define_tiles
           }
         }
       },
-      empty_transitions = true,
+      empty_transitions = true
     },
     allowed_neighbors = { "water-green" },
     map_color={r=0.0941, g=0.149, b=0.066},
     pollution_absorption_per_second = water_pollution_absorption,
 
-    trigger_effect = tile_trigger_effects.deep_green_water_trigger_effect(),
+    trigger_effect = tile_trigger_effects.deep_green_water_trigger_effect()
   },
 
   {
@@ -1877,13 +1877,13 @@ define_tiles
           }
         }
       },
-      empty_transitions = true,
+      empty_transitions = true
     },
     transitions = { water_to_out_of_map_transition },
     map_color={r=51, g=83, b=95},
     pollution_absorption_per_second = water_pollution_absorption,
 
-    trigger_effect = tile_trigger_effects.water_trigger_effect(),
+    trigger_effect = tile_trigger_effects.water_trigger_effect()
   },
 
   {
@@ -1949,7 +1949,7 @@ define_tiles
     map_color={r=31, g=48, b=18},
     pollution_absorption_per_second = water_pollution_absorption,
 
-    trigger_effect = tile_trigger_effects.green_water_trigger_effect(),
+    trigger_effect = tile_trigger_effects.green_water_trigger_effect()
   },
 
   {
@@ -1977,7 +1977,7 @@ define_tiles
     effect = "water",
     effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
     effect_color_secondary = {r = 0.031, g = 0.129, b = 0.031, a = 0.361},
-    
+
     variants =
     {
       main =
@@ -2082,7 +2082,7 @@ define_tiles
     scorch_mark_color={r=82, g=98, b=92},
     pollution_absorption_per_second = water_pollution_absorption,
 
-    trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
+    trigger_effect = tile_trigger_effects.shallow_water_trigger_effect()
   },
   {
     name = "water-mud",
@@ -2104,11 +2104,11 @@ define_tiles
     },
     walking_sound = shallow_water_sound,
     draw_in_water_layer = true,
-    layer = 15,
+    layer = 7,
     walking_speed_modifier = 0.7,
     effect = "water",
     effect_color = { 31 * 0.25, 114 * 0.25, 133 * 0.25, 255 * 0.125 },
-    effect_color_secondary = {r = 0.031, g = 0.129, b = 0.031, a = 0.361}, 
+    effect_color_secondary = {r = 0.031, g = 0.129, b = 0.031, a = 0.361},
     variants =
     {
       main =
@@ -2213,7 +2213,7 @@ define_tiles
     scorch_mark_color={r=65, g=89, b=90},
     pollution_absorption_per_second = water_pollution_absorption,
 
-    trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
+    trigger_effect = tile_trigger_effects.water_mud_trigger_effect()
   },
   -----------//////////////////////////////////////////////////////////////GRASS-1
   {
@@ -2244,7 +2244,7 @@ define_tiles
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.grass_1_trigger_effect(),
+    trigger_effect = tile_trigger_effects.grass_1_trigger_effect()
   },
    -----------//////////////////////////////////////////////////////////////GRASS-2 - potato
   {
@@ -2276,7 +2276,7 @@ define_tiles
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
 
-    trigger_effect = tile_trigger_effects.grass_2_trigger_effect(),
+    trigger_effect = tile_trigger_effects.grass_2_trigger_effect()
   },
   -----------//////////////////////////////////////////////////////////////GRASS-3
   {
@@ -2307,7 +2307,7 @@ define_tiles
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.grass_3_trigger_effect(),
+    trigger_effect = tile_trigger_effects.grass_3_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////GRASS-4
   {
@@ -2338,7 +2338,7 @@ define_tiles
     pollution_absorption_per_second = grass_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.grass_4_trigger_effect(),
+    trigger_effect = tile_trigger_effects.grass_4_trigger_effect()
   },
 
 -----------//////////////////////////////////////////////////////////////DRY-DIRT
@@ -2370,7 +2370,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dry_dirt_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dry_dirt_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT
   {
@@ -2401,7 +2401,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_1_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_1_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT-2
   {
@@ -2432,7 +2432,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT-3
   {
@@ -2463,7 +2463,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_3_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_3_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT-4
   {
@@ -2494,7 +2494,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_4_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_4_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT-5
   {
@@ -2525,7 +2525,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_5_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_5_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT-6
   {
@@ -2556,7 +2556,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_6_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_6_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////DIRT-7
   {
@@ -2587,7 +2587,7 @@ define_tiles
     pollution_absorption_per_second = dirt_pollution_absorption,
     vehicle_friction_modifier = dirt_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.dirt_7_trigger_effect(),
+    trigger_effect = tile_trigger_effects.dirt_7_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////SAND-1
   {
@@ -2656,7 +2656,7 @@ define_tiles
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.sand_trigger_effect(),
+    trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////SAND-3
   {
@@ -2687,7 +2687,7 @@ define_tiles
     pollution_absorption_per_second = sand_pollution_absorption,
     vehicle_friction_modifier = sand_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.sand_trigger_effect(),
+    trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-0 //potato-gate//
   {
@@ -2721,7 +2721,7 @@ define_tiles
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
 
-    trigger_effect = tile_trigger_effects.red_desert_0_trigger_effect(),
+    trigger_effect = tile_trigger_effects.red_desert_0_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-1
   {
@@ -2753,7 +2753,7 @@ define_tiles
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
 
-    trigger_effect = tile_trigger_effects.red_desert_1_trigger_effect(),
+    trigger_effect = tile_trigger_effects.red_desert_1_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-2
   {
@@ -2785,7 +2785,7 @@ define_tiles
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
     can_be_part_of_blueprint = false,
 
-    trigger_effect = tile_trigger_effects.red_desert_2_trigger_effect(),
+    trigger_effect = tile_trigger_effects.red_desert_2_trigger_effect()
   },
 -----------//////////////////////////////////////////////////////////////RED-DESERT-3
   {
@@ -2816,7 +2816,7 @@ define_tiles
     pollution_absorption_per_second = red_desert_pollution_absorption,
     vehicle_friction_modifier = grass_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.red_desert_3_trigger_effect(),
+    trigger_effect = tile_trigger_effects.red_desert_3_trigger_effect()
   },
   -----------//////////////////////////////////////////////////////////////NUCLEAR-GROUND
   {
@@ -2865,10 +2865,10 @@ define_tiles
         }
       }
     ),
-  
+
     transitions = nuclear_ground_transitions,
     transitions_between_transitions = nuclear_ground_transitions_between_transitions,
-  
+
     walking_sound = sand_sounds,
     map_color={r=48, g=40, b=35},
     pollution_absorption_per_second = nuclear_ground_pollution_absorption,
@@ -3005,7 +3005,7 @@ define_tiles
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = stone_path_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.stone_path_trigger_effect(),
+    trigger_effect = tile_trigger_effects.stone_path_trigger_effect()
   },
   {
     type = "tile",
@@ -3030,7 +3030,7 @@ define_tiles
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
 
-    trigger_effect = tile_trigger_effects.lab_tile_dark_1_trigger_effect(),
+    trigger_effect = tile_trigger_effects.lab_tile_dark_1_trigger_effect()
   },
   {
     type = "tile",
@@ -3055,7 +3055,7 @@ define_tiles
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
 
-    trigger_effect = tile_trigger_effects.lab_tile_dark_2_trigger_effect(),
+    trigger_effect = tile_trigger_effects.lab_tile_dark_2_trigger_effect()
   },
   {
     type = "tile",
@@ -3080,7 +3080,7 @@ define_tiles
     scorch_mark_color = {r = 1.000, g = 1.000, b = 1.000, a = 1.000},
     pollution_absorption_per_second = 0,
 
-    trigger_effect = tile_trigger_effects.lab_tile_white_trigger_effect(),
+    trigger_effect = tile_trigger_effects.lab_tile_white_trigger_effect()
   },
   {
     type = "tile",
@@ -3186,7 +3186,7 @@ define_tiles
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     pollution_absorption_per_second = 0,
 
-    trigger_effect = tile_trigger_effects.tutorial_grid_trigger_effect(),
+    trigger_effect = tile_trigger_effects.tutorial_grid_trigger_effect()
   },
 
   {
@@ -3361,7 +3361,7 @@ define_tiles
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.concrete_trigger_effect(),
+    trigger_effect = tile_trigger_effects.concrete_trigger_effect()
   },
   {
     type = "tile",
@@ -3563,7 +3563,7 @@ define_tiles
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.hazard_concrete_right_trigger_effect(),
+    trigger_effect = tile_trigger_effects.hazard_concrete_right_trigger_effect()
   },
 
   {
@@ -3739,7 +3739,7 @@ define_tiles
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.concrete_trigger_effect(),
+    trigger_effect = tile_trigger_effects.concrete_trigger_effect()
   },
   {
     type = "tile",
@@ -3855,7 +3855,7 @@ define_tiles
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.hazard_concrete_left_trigger_effect(),
+    trigger_effect = tile_trigger_effects.hazard_concrete_left_trigger_effect()
   },
   {
     type = "tile",
@@ -3940,7 +3940,7 @@ define_tiles
     pollution_absorption_per_second = 0,
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
 
-    trigger_effect = tile_trigger_effects.hazard_concrete_right_trigger_effect(),
+    trigger_effect = tile_trigger_effects.hazard_concrete_right_trigger_effect()
   },
   {
     type = "tile",
@@ -3997,7 +3997,7 @@ define_tiles
     map_color={r=57, g=39, b=26},
     scorch_mark_color = {r = 0.329, g = 0.242, b = 0.177, a = 1.000},
     pollution_absorption_per_second = 0
-  },
+  }
 }
 
 data:extend(

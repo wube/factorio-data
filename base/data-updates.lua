@@ -97,7 +97,7 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
     icons = generate_barrel_item_icons(fluid, empty_barrel_item),
     icon_size = empty_barrel_item.icon_size,
     icon_mipmaps = empty_barrel_item.icon_mipmaps,
-    subgroup = "fill-barrel",
+    subgroup = "barrel",
     order = "b[" .. name .. "]",
     stack_size = empty_barrel_item.stack_size
   }
@@ -127,7 +127,7 @@ local function generate_fill_barrel_icons(fluid)
   {
     {
       icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png",
-      icon_size = 64, icon_mipmaps = 4,
+      icon_size = 64, icon_mipmaps = 4
     },
     {
       icon = barrel_fill_side_mask,
@@ -152,7 +152,7 @@ local function generate_fill_barrel_icons(fluid)
     }
     )
   elseif fluid.icons then
-    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {-8, -8}})
+    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {-8, -8}}, fluid.icon_size)
   end
 
   return icons
@@ -169,7 +169,7 @@ local function generate_empty_barrel_icons(fluid)
   {
     {
       icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
-      icon_size = 64, icon_mipmaps = 4,
+      icon_size = 64, icon_mipmaps = 4
     },
     {
       icon = barrel_empty_side_mask,
@@ -193,7 +193,7 @@ local function generate_empty_barrel_icons(fluid)
     }
     )
   elseif fluid.icons then
-    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {7, 8}})
+    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {7, 8}}, fluid.icon_size)
   end
 
   return icons

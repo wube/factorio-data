@@ -20,7 +20,7 @@ local function csloc(level)
   return
   {
     filename = filename,
-    line_number = info.currentline,
+    line_number = info.currentline
   }
 end
 
@@ -31,7 +31,7 @@ local function fraction(num, den)
   return tne(num)/tne(den)
 end
 
-local function funcapp(name, arguments)
+local function funcapp(name, arguments, sloc)
   local fixed_arguments = {}
   for k,v in pairs(arguments) do
     fixed_arguments[k] = tne(v)
@@ -529,5 +529,5 @@ return
   atan2 = atan2,
   less_than = less_than,
   less_or_equal = less_or_equal,
-  equals = equals,
+  equals = equals
 }

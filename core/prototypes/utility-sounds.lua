@@ -168,7 +168,7 @@ data:extend(
         {
           filename = "__core__/sound/new-objective.ogg",
           volume = 0.9
-        },
+        }
       }
     },
     deconstruct_medium =
@@ -178,7 +178,7 @@ data:extend(
         {
           filename = "__core__/sound/deconstruct-medium.ogg",
           volume = 0.8
-        },
+        }
       }
     },
     deconstruct_big =
@@ -188,7 +188,7 @@ data:extend(
         {
           filename = "__core__/sound/deconstruct-large.ogg",
           volume = 0.8
-        },
+        }
       }
     },
     achievement_unlocked =
@@ -198,7 +198,59 @@ data:extend(
         {
           filename = "__core__/sound/achievement-unlocked.ogg",
           volume = 0.65
+        }
+      }
+    },
+    picked_up_item =
+    {
+      variations =
+      {
+        {
+          filename = "__core__/sound/picked-up-item.ogg",
+          volume = 1
         },
+        {
+          filename = "__core__/sound/picked-up-item-2.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/picked-up-item-3.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/picked-up-item-4.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/picked-up-item-5.ogg",
+          volume = 1
+        }
+      }
+    },
+    drop_item =
+    {
+      variations =
+      {
+        {
+          filename = "__core__/sound/drop-item-1.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/drop-item-2.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/drop-item-3.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/drop-item-4.ogg",
+          volume = 1
+        },
+        {
+          filename = "__core__/sound/drop-item-5.ogg",
+          volume = 1
+        }
       }
     },
     default_manual_repair =
@@ -212,7 +264,7 @@ data:extend(
           filename = "__core__/sound/manual-repair-advanced-2.ogg"
         }
       }
-    },
+    }
   }
 })
 add_utility_sound("build_small", "__core__/sound/build-small.ogg", 0.7)
@@ -232,8 +284,8 @@ add_utility_sound("rotated_big", "__core__/sound/rotate-big.ogg")
 add_utility_sound("alert_destroyed", "__core__/sound/alert-destroyed.ogg", 0.5)
 add_utility_sound("console_message", "__core__/sound/console-message.ogg")
 add_utility_sound("scenario_message", "__core__/sound/scenario-message.ogg")
-add_utility_sound("game_lost", "__core__/sound/game-lost.ogg")
-add_utility_sound("game_won", "__core__/sound/game-won.ogg")
+add_utility_sound("game_lost", "__core__/sound/game-lost.ogg", 0.8)
+add_utility_sound("game_won", "__core__/sound/game-won.ogg", 0.75)
 add_utility_sound("research_completed", "__core__/sound/research-completed.ogg")
 add_utility_sound("crafting_finished", "__core__/sound/crafting-finished.ogg")
 add_utility_sound("inventory_click", "__core__/sound/gui-inventory-slot-button.ogg", 0.6)
@@ -247,4 +299,22 @@ add_utility_sound("wire_pickup", "__core__/sound/wire-pickup.ogg")
 add_utility_sound("tutorial_notice", "__core__/sound/achievement-unlocked.ogg")
 add_utility_sound("smart_pipette", "__core__/sound/smart-pipette.ogg")
 add_utility_sound("switch_gun", "__core__/sound/switch-gun.ogg")
-add_utility_sound("picked_up_item", "__core__/sound/picked-up-item.ogg")
+--add_utility_sound("picked_up_item", "__core__/sound/picked-up-item.ogg")
+add_utility_sound("blueprint_selection_started", "__core__/sound/blueprint-select.ogg")
+add_utility_sound("blueprint_selection_ended", "__core__/sound/blueprint-create.ogg")
+add_utility_sound("deconstruction_selection_started", "__core__/sound/deconstruct-select-start.ogg")
+add_utility_sound("deconstruction_selection_ended", "__core__/sound/deconstruct-select-end.ogg")
+add_utility_sound("cancel_deconstruction_selection_started", "__core__/sound/deconstruct-cancel-start.ogg")
+add_utility_sound("cancel_deconstruction_selection_ended", "__core__/sound/deconstruct-cancel-end.ogg")
+add_utility_sound("upgrade_selection_started", "__core__/sound/upgrade-select-start.ogg")
+add_utility_sound("upgrade_selection_ended", "__core__/sound/upgrade-select-end.ogg")
+add_utility_sound("copy_activated", "__core__/sound/copy-cursor.ogg")
+add_utility_sound("cut_activated", "__core__/sound/cut-cursor.ogg")
+add_utility_sound("paste_activated", "__core__/sound/paste-action.ogg")
+add_utility_sound("item_deleted", "__core__/sound/delete-item.ogg")
+add_utility_sound("entity_settings_pasted", "__core__/sound/paste-action.ogg")
+add_utility_sound("entity_settings_copied", "__core__/sound/copy-entity.ogg")
+add_utility_sound("item_spawned", "__core__/sound/spawn-item.ogg")
+add_utility_sound("confirm", "__core__/sound/gui-green-confirm.ogg")
+add_utility_sound("undo", "__core__/sound/undo.ogg")
+add_utility_sound("rail_plan_start", "__core__/sound/rail-plan-start.ogg")
