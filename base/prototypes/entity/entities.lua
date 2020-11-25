@@ -4546,6 +4546,8 @@ data:extend(
       fade_in_ticks = 4,
       fade_out_ticks = 60
     },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     pictures =
     {
       up =

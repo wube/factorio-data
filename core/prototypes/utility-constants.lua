@@ -230,7 +230,6 @@ data:extend(
     main_menu_background_image_location = "__core__/graphics/background-image.jpg",
     main_menu_background_vignette_intensity = 30,
     main_menu_background_vignette_sharpness = 0.444,
-    main_menu_simulation_volume_modifier = 0.35,
 
     default_scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 

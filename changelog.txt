@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.1
+Version: 1.1.2
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 25. 11. 2020
+  Gui:
+    - Added tooltip with list of possible ingredients to the empty furnace input slot.
+  Changes:
+    - Added a sound slider to control main menu and tips and tricks simulation volumes.
+    - Added an interface option (off by default) to change quick bar slot filters by clicking them with different items.
+  Bugfixes:
+    - Fixed performance regression with transport lines in large groups. (https://forums.factorio.com/91678)
+    - Fixed missing freeplay script reload. (https://forums.factorio.com/91691)
+    - Fixed outdated tutorial preview image. (https://forums.factorio.com/91665)
+    - Fixed a crash when using LuaGuiElement::bring_to_front. (https://forums.factorio.com/91727)
+    - Fixed macOS build could not do HTTPS requests. (https://forums.factorio.com/91660)
+    - Fixed trains could reuse reservation when switching to next schedule record with the same name. (https://forums.factorio.com/91742)
+    - Fixed crash when trying to fast replace a ghost underground belt with a downgrade. (https://forums.factorio.com/91672)
+    - Fixed that fast replacing ghost underground belts would fast replace it's opposite end even if it was one tile too far.
+    - Fixed that custom chart tags from 1.0 and older wouldn't show. (https://forums.factorio.com/91716)
+    - Fixed that the bonus GUI inserter lists were backwards. (https://forums.factorio.com/91792)
+    - Fixed that the main-screen langauge selection didn't work. (https://forums.factorio.com/91793)
+    - Fixed a desync with spider logistics when loading 1.0 saves in 1.1. (https://forums.factorio.com/91699)
+    - Fixed that blueprint building could build underground belt ghost on top of different underground belt. (https://forums.factorio.com/91702)
+    - Fixed blueprint flipping when building in the map view. (https://forums.factorio.com/91740)
+    - Fixed rename station window sorting. (https://forums.factorio.com/91774)
+    - Fixed a crash due to transport line groups consistency when entities are removed due to mod removal. (https://forums.factorio.com/91805)
+    - Fix typos in introduction tip and trick simulation Lua. (https://forums.factorio.com/91813)
+    - Fixed that removing belt from blueprint didn't disconnect the entities leading to possible crashes. (https://forums.factorio.com/91710)
+    - Fixed that solar panel status was always not power, not it shows no power only during the night. (https://forums.factorio.com/91775)
+  Modding:
+    - Removed utility constants "main_menu_simulation_volume_modifier".
+    - Added crafting machine prototype "show_recipe_icon_on_map".
+    - Adjusted secondary draw order for graphics layers of car. (https://forums.factorio.com/91764)
+  Scripting:
+    - Removed LuaControl::auto_trash_filters read/write. [set, get, clear]_[personal, vehicle]_logistic_slot replace the functionality.
+    - Fixed that the on_pre_build flip_horizontal/vertical were ints instead of booleans. (https://forums.factorio.com/91821)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 23. 11. 2020
@@ -104,11 +139,6 @@ Date: 23. 11. 2020
     - Added sound for selection start and selection finish. Related to blueprint tools.
     - Added sound for pipe to ground as per the pipe.
     - Added sound effects and a specific music track to the main menu.
-    - Assembling Machine 2 and 3 made less noisy
-    - Robot repair reworked to sound more high tech
-    - Removed dead space at the end of some sounds which may have stopped sounds playing
-    - Ghost rail building now has the ghost building sound
-    - Lowered volume on game won and lost sounds
     - Assembling Machine 2 and 3 made less noisy.
     - Robot repair reworked to sound more high tech.
     - Removed dead space at the end of some sounds which may have stopped sounds playing.
