@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.2
+Version: 1.1.3
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.2
+Date: 28. 11. 2020
+  Bugfixes:
+    - Fixed that [set, clear]_[personal, vehicle]_logistic_slot would not update the GUI slot count correctly. (https://forums.factorio.com/91812)
+    - Fixed that electricity buffer was shown twice in electric-energy-interface entity tooltips. (https://forums.factorio.com/91769)
+    - Fixed LuaFluidBox::get_flow would return incorrect values of flow and would only account for outflow. (https://forums.factorio.com/91875)
+    - Fixed that writing to the script-output folder didn't work correctly. (https://forums.factorio.com/91884)
+    - Fixed lane priorities of splitters in blueprints would not get flipped when flipping blueprint in some cases. (https://forums.factorio.com/91904)
+    - Fixed a performance issue with the SteelSeries hardware integration. (https://forums.factorio.com/91912)
+    - Fixed splitter lane priorities were not flipped when pasting flipped blueprint of top of existing splitter ghosts.
+    - Fixed that it was possible to make ghost belts on top of each other by script, which could lead to desync.
+    - Fixed migration of invalid ghosts of previous versions. (https://forums.factorio.com/91864)
+    - Fixed some of the missing entity statuses. (https://forums.factorio.com/91889)
+    - Fixed that it wasn't possible to interact with widgets at the bottom center of the screen in main menu. (https://forums.factorio.com/91686)
+    - Fixed crash in EntityWithOwner::checkConsistency caused by inconsistent to be upgraded state. (https://forums.factorio.com/91685)
+    - Fixed a freeze when using specific saves for simulations. (https://forums.factorio.com/91953)
+    - Fixed several mining drills in the nuclear power menu simulation had no fluid inputs. (https://forums.factorio.com/91887)
+    - Fixed that lamp tooltips could wrongly show them as producing pollution. (https://forums.factorio.com/92059)
+    - Fixed furnace progress bars wouldn't render correctly at 100%. (https://forums.factorio.com/92013)
+    - Fixed that recipe notifications would show in some cases where they shouldn't. (https://forums.factorio.com/91869)
+    - Fixed that non-electric inserters would always start with some energy. (https://forums.factorio.com/92086)
+    - Fixed crash when undo created electric pole ghost in some cases. (https://forums.factorio.com/91945)
+    - Fixed that first slot in last row of logistics would not create next row of logistic slots. (https://forums.factorio.com/92107)
+    - Fixed that the distance limit when rotating was applied also on rotating of ghosts. (https://forums.factorio.com/92122)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: 25. 11. 2020
@@ -20,7 +45,7 @@ Date: 25. 11. 2020
     - Fixed that fast replacing ghost underground belts would fast replace it's opposite end even if it was one tile too far.
     - Fixed that custom chart tags from 1.0 and older wouldn't show. (https://forums.factorio.com/91716)
     - Fixed that the bonus GUI inserter lists were backwards. (https://forums.factorio.com/91792)
-    - Fixed that the main-screen langauge selection didn't work. (https://forums.factorio.com/91793)
+    - Fixed that the main-screen language selection didn't work. (https://forums.factorio.com/91793)
     - Fixed a desync with spider logistics when loading 1.0 saves in 1.1. (https://forums.factorio.com/91699)
     - Fixed that blueprint building could build underground belt ghost on top of different underground belt. (https://forums.factorio.com/91702)
     - Fixed blueprint flipping when building in the map view. (https://forums.factorio.com/91740)
@@ -28,7 +53,7 @@ Date: 25. 11. 2020
     - Fixed a crash due to transport line groups consistency when entities are removed due to mod removal. (https://forums.factorio.com/91805)
     - Fix typos in introduction tip and trick simulation Lua. (https://forums.factorio.com/91813)
     - Fixed that removing belt from blueprint didn't disconnect the entities leading to possible crashes. (https://forums.factorio.com/91710)
-    - Fixed that solar panel status was always not power, not it shows no power only during the night. (https://forums.factorio.com/91775)
+    - Fixed that solar panel status was always no power, now it shows no power only during the night. (https://forums.factorio.com/91775)
   Modding:
     - Removed utility constants "main_menu_simulation_volume_modifier".
     - Added crafting machine prototype "show_recipe_icon_on_map".
