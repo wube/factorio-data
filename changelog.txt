@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.3
+Version: 1.1.4
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.3
+Date: 30. 11. 2020
+  Bugfixes:
+    - Fixed crash when upgrading ghost that was still built only in latency state. (https://forums.factorio.com/91948)
+    - Fixed script buildability of spidertron not allowing to build in colliding positions.
+    - Fixed that migration could remove spidertrons. (https://forums.factorio.com/92168)
+    - Fixed that map view settings didn't persist between game restarts. (https://forums.factorio.com/92036)
+    - Fixed vehicle equipment grid scrolling when it is too big to fit. (https://forums.factorio.com/91871)
+    - Fixed logistic issue with spidertrons when they request the same amount as they trash. (https://forums.factorio.com/91694)
+    - Fixed that inserters would sleep incorrectly in some situations with linked-chests. (https://forums.factorio.com/92211)
+    - Fixed that fuzzy search didn't work. (https://forums.factorio.com/92217)
+    - Fixed that the trains GUI would always use the surface the player was on to render train backgrounds. (https://forums.factorio.com/92201)
+    - Fixed that tips and tricks prototype errors didn't use the minimal mode GUI. (https://forums.factorio.com/92249)
+    - Fixed tips and trick notification window jumping. (https://forums.factorio.com/91670)
+    - Fixed that create_entities_from_blueprint_string didn't insert modules. (https://forums.factorio.com/91777)
+    - Fixed tips and tricks description text disappearing in certain resolutions. (https://forums.factorio.com/91717)
+    - Fixed Laser shooting speed technology missing the Military science pack pre-requisite. (https://forums.factorio.com/92157)
+    - Fixed crash when editing out loaders from blueprints. (https://forums.factorio.com/92090)
+    - Fixed that pressing "Restart" after a game restart would revert some map settings to default instead of loading them from the save file. (https://forums.factorio.com/91365)
+    - Fixed that power switch would not play its working_sound properly. (https://forums.factorio.com/92269)
+    - Fixed main menu background simulation saves could not be loaded from zipped mods. (https://forums.factorio.com/91862)
+  Scripting:
+    - Added "reason" to the on_pre_player_left_game and on_player_left_game events.
+    - Added LuaEntity::is_registered_for_construction/deconstruction/upgrade/repair().
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 28. 11. 2020

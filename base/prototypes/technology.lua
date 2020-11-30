@@ -1285,7 +1285,7 @@ data:extend(
         modifier = 0.1
       }
     },
-    prerequisites = {"laser"},
+    prerequisites = {"laser", "military-science-pack"},
     unit =
     {
       count = 50,

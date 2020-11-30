@@ -9241,6 +9241,12 @@ data:extend(
       type = "scroll_pane_style",
       extra_padding_when_activated = 0
     },
+    horizontally_limited_equipment_grid_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "equipment_grid_scroll_pane",
+      maximal_width = 424 - 16
+    },
     camera =
     {
       type = "camera_style",
