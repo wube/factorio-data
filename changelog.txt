@@ -1,6 +1,37 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.4
+Version: 1.1.5
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.4
+Date: 03. 12. 2020
+  Bugfixes:
+    - Fixed that train could get stuck when one station is disabled and other station is full. (https://forums.factorio.com/92195)
+    - Fixed selection tool counts rendering. (https://forums.factorio.com/92334)
+    - Fixed that building electric pole ghosts on electric poles marked for deconstruction didn't work correctly. (https://forums.factorio.com/91915)
+    - Fixed that spidertron logistics didn't count the personal robots in flight towards spidertron's item count. (https://forums.factorio.com/92350)
+    - Fixed that zooming with keyboard in the train schedule gui was too fast. (https://forums.factorio.com/92338)
+    - Fixed that zooming with keyboard in the world view was too fast.
+    - Fixed that it was not possible to select player's own character to command spidertron to follow the player in multiplayer. (https://forums.factorio.com/91923)
+    - Fixed that it was possible to multiply electric energy by using accumulators covered by multiple sub networks connected with power switches.
+    - Fixed that on Linux and Mac, uploading blueprint library to Steam Cloud could make the asynchronous saving process hang. (https://forums.factorio.com/91952)
+    - Fixed crash when loading some saves with weaved underground belts when mods are removed. (https://forums.factorio.com/92374)
+    - Fixed the inconsistency between calculation text size internally and in the Textbox related to the UTF8 characters. (https://forums.factorio.com/92355)
+    - Fixed crash when cancelling map loading while connecting to a server. (https://forums.factorio.com/91677)
+    - Fixed that electric power/inserters and transport belt tips were shown in the tutorial mission levels where it wasn't even unlockable. (https://forums.factorio.com/91854)
+    - Fixed showing highlights when holding something in cursor in the simulation. (https://forums.factorio.com/92340)
+    - Fixed that the icon selection GUI would close every time the main menu simulation changed. (https://forums.factorio.com/91927)
+    - Fixed several style issues with the container GUI. (https://forums.factorio.com/91943)
+    - Fixed that cancelling map loading when connecting to a multiplayer game was still waiting for the map to fully load.
+  Changes:
+    - When building electric poles by dragging, the last built pole is always connected with wire before considering other connections. (https://forums.factorio.com/91933)
+    - Power switch will now save it's on/off state in blueprints and the state can also be copy-pasted between power switches. (https://forums.factorio.com/92394)
+    - Fixed it was not possible to use AltGr to type special characters on national keyboard layouts. (https://forums.factorio.com/91681)
+    - Fixed editing existing blueprint to disable snap-to-grid would break the blueprint layout in some cases. (https://forums.factorio.com/92009)
+  Scripting:
+    - Added LuaEntity::follow_target read/write.
+    - Added LuaEntity::time_to_live read/write for sticker entities.
+    - Added LuaEntityPrototype::rocket_rising_delay, launch_wait_time, light_blinking_speed, door_opening_speed, rising_speed,
+      engine_starting_speed, flying_speed and flying_acceleration read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 30. 11. 2020

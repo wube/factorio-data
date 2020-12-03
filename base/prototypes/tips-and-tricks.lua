@@ -230,6 +230,11 @@ data:extend(
     category = "inserters",
     order = "a",
     is_title = true,
+    trigger =
+    {
+      type = "unlocked-recipe",
+      recipe = "inserter"
+    },
     dependencies = {"introduction"},
     simulation = simulations.inserters
   },
@@ -343,6 +348,11 @@ data:extend(
     order = "a",
     is_title = true,
     category = "belts",
+    trigger =
+    {
+      type = "unlocked-recipe",
+      recipe = "transport-belt"
+    },
     dependencies = {"introduction"},
     simulation = simulations.transport_belt
   },
@@ -428,8 +438,28 @@ data:extend(
       triggers =
       {
         {
-          type = "time-elapsed",
-          ticks = 10 * 60 * 15 -- 15 minutes
+          type = "sequence",
+          triggers =
+          {
+            {
+              type = "and", -- making sure that it only gets unlocked in levels where this is not disabled, as in the tutorial
+              triggers =
+              {
+                {
+                  type = "unlocked-recipe",
+                  recipe = "steam-engine"
+                },
+                {
+                  type = "unlocked-recipe",
+                  recipe = "boiler"
+                }
+              }
+            },
+            {
+              type = "time-elapsed",
+              ticks = 60 * 60 * 5 -- 15 minutes
+            }
+          }
         },
         {
           type = "build-entity",
@@ -438,7 +468,11 @@ data:extend(
         {
           type = "build-entity",
           entity = "boiler"
-        }
+        },
+        {
+          type = "build-entity",
+          entity = "offshore-pump"
+        },
       }
     },
     dependencies = {"introduction"},

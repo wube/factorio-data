@@ -1334,20 +1334,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "engine-unit",
-    energy_required = 10,
-    category = "advanced-crafting",
-    ingredients =
-    {
-      {"steel-plate", 1},
-      {"iron-gear-wheel", 1},
-      {"pipe", 2}
-    },
-    result = "engine-unit",
-    enabled = false
-  },
-  {
-    type = "recipe",
     name = "concrete",
     energy_required = 10,
     enabled = false,

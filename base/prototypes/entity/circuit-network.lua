@@ -912,15 +912,15 @@ data:extend
       {
         {
           filename = "__base__/sound/power-switch-activate-1.ogg",
-          volume = 0.4
+          volume = 0.25
         },
         {
           filename = "__base__/sound/power-switch-activate-2.ogg",
-          volume = 0.4
+          volume = 0.25
         },
         {
           filename = "__base__/sound/power-switch-activate-3.ogg",
-          volume = 0.4
+          volume = 0.25
         }
       },
       deactivate_sound =
