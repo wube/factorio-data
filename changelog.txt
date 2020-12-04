@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.5
+Version: 1.1.6
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.5
+Date: 04. 12. 2020
+  Bugfixes:
+    - Fixed a crash when drag-building ghost electric poles. (https://forums.factorio.com/92484)
+    - Fixed that the relative gui 'type' filter didn't work. (https://forums.factorio.com/92511)
+  Scripting:
+    - Added LuaEntity::follow_offset read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 03. 12. 2020
