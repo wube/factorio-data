@@ -1,5 +1,244 @@
 data:extend(
 {
+-------------------------------------------------------------------------- LOGISTICS
+  {
+    type = "item-group",
+    name = "logistics",
+    order = "a",
+    icon = "__base__/graphics/item-group/logistics.png",
+    icon_size = 128,
+    icon_mipmaps = 2
+  },
+  {
+    type = "item-subgroup",
+    name = "storage",
+    group = "logistics",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "belt",
+    group = "logistics",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "inserter",
+    group = "logistics",
+    order = "c"
+  },
+  {
+    type = "item-subgroup",
+    name = "energy-pipe-distribution",
+    group = "logistics",
+    order = "d"
+  },
+  {
+    type = "item-subgroup",
+    name = "train-transport",
+    group = "logistics",
+    order = "e"
+  },
+  {
+    type = "item-subgroup",
+    name = "transport",
+    group = "logistics",
+    order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "logistic-network",
+    group = "logistics",
+    order = "g"
+  },
+  {
+    type = "item-subgroup",
+    name = "circuit-network",
+    group = "logistics",
+    order = "h"
+  },
+  {
+    type = "item-subgroup",
+    name = "terrain",
+    group = "logistics",
+    order = "i"
+  },
+-------------------------------------------------------------------------- PRODUCTION
+  {
+    type = "item-group",
+    name = "production",
+    order = "b",
+    icon = "__base__/graphics/item-group/production.png",
+    icon_size = 128,
+    icon_mipmaps = 2
+  },
+  {
+    type = "item-subgroup",
+    name = "tool",
+    group = "production",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "energy",
+    group = "production",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "extraction-machine",
+    group = "production",
+    order = "c"
+  },
+  {
+    type = "item-subgroup",
+    name = "smelting-machine",
+    group = "production",
+    order = "d"
+  },
+  {
+    type = "item-subgroup",
+    name = "production-machine",
+    group = "production",
+    order = "e"
+  },
+  {
+    type = "item-subgroup",
+    name = "module",
+    group = "production",
+    order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "space-related",
+    group = "production",
+    order = "g"
+  },
+-------------------------------------------------------------------------- INTERMEDIATE PRODUCTS
+  {
+    type = "item-group",
+    name = "intermediate-products",
+    order = "c",
+    order_in_recipe = "0",
+    icon = "__base__/graphics/item-group/intermediate-products.png",
+    icon_size = 128,
+    icon_mipmaps = 2
+  },
+  {
+    type = "item-subgroup",
+    name = "fluid-recipes",
+    group = "intermediate-products",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "raw-resource",
+    group = "intermediate-products",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "raw-material",
+    group = "intermediate-products",
+    order = "c"
+  },
+  {
+    type = "item-subgroup",
+    name = "barrel",
+    group = "intermediate-products",
+    order = "d"
+  },
+  {
+    type = "item-subgroup",
+    name = "fill-barrel",
+    group = "intermediate-products",
+    order = "e"
+  },
+  {
+    type = "item-subgroup",
+    name = "empty-barrel",
+    group = "intermediate-products",
+    order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "intermediate-product",
+    group = "intermediate-products",
+    order = "g"
+  },
+  {
+    type = "item-subgroup",
+    name = "science-pack",
+    group = "intermediate-products",
+    order = "h"
+  },
+-------------------------------------------------------------------------- COMBAT
+  {
+    type = "item-group",
+    name = "combat",
+    order = "d",
+    icon = "__base__/graphics/item-group/military.png",
+    icon_size = 128,
+    icon_mipmaps = 2
+  },
+  {
+    type = "item-subgroup",
+    name = "gun",
+    group = "combat",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "ammo",
+    group = "combat",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "capsule",
+    group = "combat",
+    order = "c"
+  },
+  {
+    type = "item-subgroup",
+    name = "armor",
+    group = "combat",
+    order = "d"
+  },
+  {
+    type = "item-subgroup",
+    name = "equipment",
+    group = "combat",
+    order = "e"
+  },
+  {
+    type = "item-subgroup",
+    name = "military-equipment",
+    group = "combat",
+    order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "defensive-structure",
+    group = "combat",
+    order = "g"
+  },
+-------------------------------------------------------------------------- FLUIDS
+  {
+    type = "item-group",
+    name = "fluids",
+    order = "e",
+    icon = "__base__/graphics/item-group/fluids.png",
+    icon_size = 128,
+    icon_mipmaps = 2
+  },
+  {
+    type = "item-subgroup",
+    name = "fluid",
+    group = "fluids",
+    order = "a"
+  },
+-------------------------------------------------------------------------- SIGNALS
   {
     type = "item-group",
     name = "signals",
@@ -15,19 +254,16 @@ data:extend(
     order = "a"
   },
   {
-    type = "item-group",
-    name = "other",
-    icon = "__core__/graphics/icons/category/unsorted.png",
-    icon_size = 128,
-    icon_mipmaps = 2,
-    order = "z"
+    type = "item-subgroup",
+    name = "virtual-signal-number",
+    group = "signals",
+    order = "b"
   },
-
   {
     type = "item-subgroup",
-    name = "other",
-    group = "other",
-    order = "z"
+    name = "virtual-signal-letter",
+    group = "signals",
+    order = "c"
   },
   {
     type = "item-subgroup",
@@ -35,6 +271,28 @@ data:extend(
     group = "signals",
     order = "d"
   },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal",
+    group = "signals",
+    order = "e"
+  },
+-------------------------------------------------------------------------- ENEMIES
+  {
+    type = "item-group",
+    name = "enemies",
+    icon = "__core__/graphics/icons/category/enemies.png",
+    icon_size = 128,
+    icon_mipmaps = 2,
+    order = "g"
+  },
+  {
+    type = "item-subgroup",
+    name = "enemies",
+    group = "enemies",
+    order = "a"
+  },
+-------------------------------------------------------------------------- ENVIRONMENT
   {
     type = "item-group",
     name = "environment",
@@ -175,272 +433,7 @@ data:extend(
     group = "environment",
     order = "e"
   },
-
-  {
-    type = "item-group",
-    name = "enemies",
-    icon = "__core__/graphics/icons/category/enemies.png",
-    icon_size = 128,
-    icon_mipmaps = 2,
-    order = "g"
-  },
-  {
-    type = "item-subgroup",
-    name = "enemies",
-    group = "enemies",
-    order = "a"
-  },
-  {
-    type = "item-group",
-    name = "logistics",
-    order = "a",
-    icon = "__base__/graphics/item-group/logistics.png",
-    icon_size = 128,
-    icon_mipmaps = 2
-  },
-  {
-    type = "item-subgroup",
-    name = "storage",
-    group = "logistics",
-    order = "a"
-  },
-  {
-    type = "item-subgroup",
-    name = "belt",
-    group = "logistics",
-    order = "b"
-  },
-  {
-    type = "item-subgroup",
-    name = "inserter",
-    group = "logistics",
-    order = "c"
-  },
-  {
-    type = "item-subgroup",
-    name = "energy-pipe-distribution",
-    group = "logistics",
-    order = "d"
-  },
-  {
-    type = "item-subgroup",
-    name = "train-transport",
-    group = "logistics",
-    order = "e"
-  },
-  {
-    type = "item-subgroup",
-    name = "transport",
-    group = "logistics",
-    order = "f"
-  },
-  {
-    type = "item-subgroup",
-    name = "logistic-network",
-    group = "logistics",
-    order = "g"
-  },
-  {
-    type = "item-subgroup",
-    name = "circuit-network",
-    group = "logistics",
-    order = "h"
-  },
-  {
-    type = "item-subgroup",
-    name = "terrain",
-    group = "logistics",
-    order = "i"
-  },
-  {
-    type = "item-group",
-    name = "production",
-    order = "b",
-    icon = "__base__/graphics/item-group/production.png",
-    icon_size = 128,
-    icon_mipmaps = 2
-  },
-  {
-    type = "item-subgroup",
-    name = "tool",
-    group = "production",
-    order = "a"
-  },
-  {
-    type = "item-subgroup",
-    name = "energy",
-    group = "production",
-    order = "b"
-  },
-  {
-    type = "item-subgroup",
-    name = "extraction-machine",
-    group = "production",
-    order = "c"
-  },
-  {
-    type = "item-subgroup",
-    name = "smelting-machine",
-    group = "production",
-    order = "d"
-  },
-  {
-    type = "item-subgroup",
-    name = "production-machine",
-    group = "production",
-    order = "e"
-  },
-  {
-    type = "item-subgroup",
-    name = "module",
-    group = "production",
-    order = "f"
-  },
-  {
-    type = "item-subgroup",
-    name = "crash-site",
-    group = "production",
-    order = "x"
-  },
-  {
-    type = "item-group",
-    name = "combat",
-    order = "d",
-    icon = "__base__/graphics/item-group/military.png",
-    icon_size = 128,
-    icon_mipmaps = 2
-  },
-  {
-    type = "item-subgroup",
-    name = "gun",
-    group = "combat",
-    order = "a"
-  },
-  {
-    type = "item-subgroup",
-    name = "ammo",
-    group = "combat",
-    order = "b"
-  },
-  {
-    type = "item-subgroup",
-    name = "capsule",
-    group = "combat",
-    order = "c"
-  },
-  {
-    type = "item-subgroup",
-    name = "armor",
-    group = "combat",
-    order = "d"
-  },
-  {
-    type = "item-subgroup",
-    name = "equipment",
-    group = "combat",
-    order = "e"
-  },
-  {
-    type = "item-subgroup",
-    name = "military-equipment",
-    group = "combat",
-    order = "f"
-  },
-  {
-    type = "item-subgroup",
-    name = "defensive-structure",
-    group = "combat",
-    order = "g"
-  },
-  {
-    type = "item-group",
-    name = "intermediate-products",
-    order = "c",
-    order_in_recipe = "0",
-    icon = "__base__/graphics/item-group/intermediate-products.png",
-    icon_size = 128,
-    icon_mipmaps = 2
-  },
-  {
-    type = "item-subgroup",
-    name = "fluid-recipes",
-    group = "intermediate-products",
-    order = "a"
-  },
-  {
-    type = "item-subgroup",
-    name = "raw-resource",
-    group = "intermediate-products",
-    order = "b"
-  },
-  {
-    type = "item-subgroup",
-    name = "raw-material",
-    group = "intermediate-products",
-    order = "c"
-  },
-  {
-    type = "item-subgroup",
-    name = "barrel",
-    group = "intermediate-products",
-    order = "d"
-  },
-  {
-    type = "item-subgroup",
-    name = "fill-barrel",
-    group = "intermediate-products",
-    order = "e"
-  },
-  {
-    type = "item-subgroup",
-    name = "empty-barrel",
-    group = "intermediate-products",
-    order = "f"
-  },
-  {
-    type = "item-subgroup",
-    name = "intermediate-product",
-    group = "intermediate-products",
-    order = "g"
-  },
-  {
-    type = "item-subgroup",
-    name = "science-pack",
-    group = "intermediate-products",
-    order = "h"
-  },
-  {
-    type = "item-group",
-    name = "fluids",
-    order = "e",
-    icon = "__base__/graphics/item-group/fluids.png",
-    icon_size = 128,
-    icon_mipmaps = 2
-  },
-  {
-    type = "item-subgroup",
-    name = "fluid",
-    group = "fluids",
-    order = "a"
-  },
-  {
-    type = "item-subgroup",
-    name = "virtual-signal-number",
-    group = "signals",
-    order = "b"
-  },
-  {
-    type = "item-subgroup",
-    name = "virtual-signal-letter",
-    group = "signals",
-    order = "c"
-  },
-  {
-    type = "item-subgroup",
-    name = "virtual-signal",
-    group = "signals",
-    order = "e"
-  },
+-------------------------------------------------------------------------- EFFECTS
   {
     type = "item-group",
     name = "effects",
@@ -592,6 +585,22 @@ data:extend(
     name = "particles",
     group = "effects",
     order = "e"
-  }
+  },
+-------------------------------------------------------------------------- OTHER
+  {
+    type = "item-group",
+    name = "other",
+    icon = "__core__/graphics/icons/category/unsorted.png",
+    icon_size = 128,
+    icon_mipmaps = 2,
+    order = "z"
+  },
+
+  {
+    type = "item-subgroup",
+    name = "other",
+    group = "other",
+    order = "z"
+  },
 }
 )

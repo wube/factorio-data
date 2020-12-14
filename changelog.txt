@@ -1,6 +1,68 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.6
+Version: 1.1.7
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.6
+Date: 14. 12. 2020
+  Changes:
+    - The train time wait condition number field will be auto-focused when it is opened.
+    - Moved rocket silo + satellite into the production tab.
+    - Allowed to use productivity module on nuclear fuel production + nuclear fuel reprocessing.
+  Bugfixes:
+    - Fixed that biters sometimes couldn't pathfind near the edge of generated chunks. (https://forums.factorio.com/92171)
+    - Fixed that some saves made in game versions before 1.1.0 could crash on load.
+    - Fixed camera widget was rendering player's building preview. (https://forums.factorio.com/92559)
+    - Fixed synchronizing blueprint library into existing map would sometimes cause crash on loading a save. (https://forums.factorio.com/92422)
+    - Fixed that trying to move spidertrons with the remote while in a train in map view could add waypoints to the train. (https://forums.factorio.com/92448)
+    - Fixed that "only-in-cursor" didn't work nicely with wire items. (https://forums.factorio.com/92475)
+    - Fixed wrong default in collision mask util lib. (https://forums.factorio.com/92632)
+    - Fixed that the "Trains" side menu button icon had one train window 1 pixel wider. (https://forums.factorio.com/92468)
+    - Fixed entity tooltip would not show up when "Entity tooltip on the side" was disabled and "Entity tooltip delay" was not zero. (https://forums.factorio.com/92638)
+    - Fixed that copy pasting power switch entity settings too fast in multiplayer would cut the wire. (https://forums.factorio.com/92449)
+    - Fixed crash when fast replacing transport belts in some situations. (https://forums.factorio.com/92625)
+    - Fixed that set_[personal, vehicle]_logistic_slot would not update the GUI correctly when setting a duplicate request that would add or remove a row. (https://forums.factorio.com/92494)
+    - Fixed that it was possible to build blueprint with overlapping transport belt/wall entities which would trigger the consistency checks, cause desyncs and make saves unloadable.
+    - Fixed that saves before 1.1 with entities set 'active=false' from script would be stuck disabled. (https://forums.factorio.com/92704)
+    - Fixed that ghost fast replacing gates didn't respect the current direction.
+    - Fixed that ghost rail signal and train stop building didn't follow the same restrictions as normal building.
+    - Fixed that construction robot trying to revive signal next to other signal would get stuck.
+    - Fixed a crash when removing a burner energy source from a spider vehicle. (https://forums.factorio.com/92664)
+    - Fixed that the apply-upgrade-planner GUI wouldn't scroll when needed. (https://forums.factorio.com/92443)
+    - Fixed crash caused by race condition between rendering of camera widget and game view. (https://forums.factorio.com/92388)
+    - Fixed electric-energy-interface entity tooltips showing power consumption twice. (https://forums.factorio.com/92544)
+    - Fixed that biters would try to attack indestructible vehicles.
+    - Fixed assigning new content to an existing blueprint with relative grid position would offset the new content inside the blueprint based on world position. (https://forums.factorio.com/91878)
+    - Fixed that trains counter could sometimes fail to decrease when train stop is destroyed. (https://forums.factorio.com/92761)
+    - Fixed crash in multiplayer when doing undo of mining an entity marked for upgrade and then doing undo of the upgrade selection. (https://forums.factorio.com/92641)
+    - Fixed boiler tooltip calculations not taking into account minimum_temperature. (https://forums.factorio.com/92463)
+    - Fixed when dragging a belt in line-snapping mode, the the buildability preview tint would be based on cursor position instead of the snapped position. (https://forums.factorio.com/91687)
+    - Fixed that entity GUIs could be too small in some locales. (https://forums.factorio.com/92231)
+    - Fixed research complete sound sometimes playing after the window is closed. (https://forums.factorio.com/92190)
+    - Fixed that building preview buildability (red/green color of preview) didn't correspond with the ghost modifier being pressed.
+    - Fixed that ghost rail building didn't ignore entities marked for deconstruction.
+    - Fixed that inserters with custom dropoff vectors would sometimes sleep on the wrong belt lane. (https://forums.factorio.com/91664)
+    - Fixed that the lab GUI couldn't properly display a large number of science pack slots. (https://forums.factorio.com/92830)
+    - Fixed that failing to read file attributes on Windows would sometimes crash the game.  (https://forums.factorio.com/92819)
+    - Fixed crash when creating a new map in the map editor while having an outdated blueprint library.
+    - Fixed that the server might not be able to accept RCON connections if TCP SYN cookies were disabled. (https://forums.factorio.com/92945)
+    - Fixed that programmable speaker would not play global sounds in main menu simulations. (https://forums.factorio.com/92864)
+    - Fixed that shift-tabbing into a text field didn't select the text. (https://forums.factorio.com/91718)
+    - Fixed that you could shift-tab to focus disabled widgets.
+    - Fixed layouting of rich-text that was wrapped to multiple lines. (https://forums.factorio.com/91964)
+    - Fixed force-building blueprints when hovering the mouse over an electric pole. (https://forums.factorio.com/92996)
+  Modding:
+    - Added 'allow_passengers' EntityPrototype bool for vehicles.
+    - Added the "linked-belt" entity type.
+  Scripting:
+    - Module limitation can be specified alternatively by limitation_blacklist instead of a limitation.
+    - Added LuaEntityPrototype::allow_passengers read.
+    - Added LuaEntity::add_autopilot_destination().
+    - Added LuaEntity::autopilot_destinations read.
+    - Removed defines.build_check_type.ghost_place.
+    - Added defines.build_check_type.manual_ghost, script_ghost and blueprint_ghost.
+    - Added LuaEntity::connect_linked_belts() and LuaEntity::disconnect_linked_belts().
+    - Added LuaEntity::linked_belt_type read/write.
+    - Added LuaEntity::linked_belt_neighbour read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.5
 Date: 04. 12. 2020

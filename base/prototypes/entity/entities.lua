@@ -15144,6 +15144,7 @@ data:extend(
     type = "spider-vehicle",
     name = arguments.name,
     collision_box = {{-1 * scale, -1 * scale}, {1 * scale, 1 * scale}},
+    sticker_box = {{-1.5 * scale, -1.5 * scale}, {1.5 * scale, 1.5 * scale}},
     selection_box = {{-1 * scale, -1 * scale}, {1 * scale, 1 * scale}},
     drawing_box = {{-3 * scale, -4 * scale}, {3 * scale, 2 * scale}},
     icon = "__base__/graphics/icons/spidertron.png",
@@ -15814,3 +15815,116 @@ linked_chest.picture =
   }
 }
 data:extend({linked_chest})
+
+data:extend({
+  {
+    type = "linked-belt",
+    name = "linked-belt",
+    icon = "__base__/graphics/icons/linked-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "linked-belt"},
+    max_health = 160,
+    corpse = "underground-belt-remnants",
+    dying_explosion = "underground-belt-explosion",
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    working_sound = data.raw["underground-belt"]["underground-belt"].working_sound,
+    resistances = data.raw["underground-belt"]["underground-belt"].resistances,
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    animation_speed_coefficient = 32,
+    belt_animation_set = basic_belt_animation_set,
+    fast_replaceable_group = "linked-belts",
+    speed = 0.03125,
+    structure_render_layer = "object",
+    structure =
+    {
+      direction_in =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/linked-belt/linked-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/linked-belt/hr-linked-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/linked-belt/linked-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/linked-belt/hr-linked-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            scale = 0.5
+          }
+        }
+      },
+      direction_in_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/linked-belt/linked-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*3,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/linked-belt/hr-linked-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*3,
+            scale = 0.5
+          }
+        }
+      },
+      direction_out_side_loading =
+      {
+        sheet =
+        {
+          filename = "__base__/graphics/entity/linked-belt/linked-belt-structure.png",
+          priority = "extra-high",
+          width = 96,
+          height = 96,
+          y = 96*2,
+          hr_version =
+          {
+            filename = "__base__/graphics/entity/linked-belt/hr-linked-belt-structure.png",
+            priority = "extra-high",
+            width = 192,
+            height = 192,
+            y = 192*2,
+            scale = 0.5
+          }
+        }
+      },
+      back_patch = data.raw["underground-belt"]["underground-belt"].structure.back_patch,
+      front_patch = data.raw["underground-belt"]["underground-belt"].structure.front_patch,
+    },
+    -- clone/blueprint connection work only if both input and output have them and they are contained in the same blueprint/clone
+    allow_clone_connection = true,
+    allow_blueprint_connection = true,
+    allow_side_loading = false
+  }
+})

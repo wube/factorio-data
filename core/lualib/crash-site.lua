@@ -210,7 +210,7 @@ lib.create_crash_site = function(surface, position, ship_items, part_items)
             name = name,
             position = part_position,
             force = "player",
-            build_check_type = defines.build_check_type.ghost_place,
+            build_check_type = defines.build_check_type.manual_ghost,
             forced = true
           } then
             if not part.min_separation and surface.count_entities_filtered{position = part_position, radius = part.min_separation, limit = 1, type = "container"} == 0 then

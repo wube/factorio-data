@@ -35,109 +35,109 @@ local collision_flags =
 
 local default_masks =
 {
-  accumulator = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["accumulator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["ammo-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["arithmetic-combinator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  arrow = {},
+  ["arrow"] = {},
   ["artillery-flare"] = {},
   ["artillery-projectile"] = {},
   ["artillery-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["artillery-wagon"] = {"train-layer"},
   ["assembling-machine"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  beacon = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  beam = {},
-  boiler = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["beacon"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["beam"] = {},
+  ["boiler"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["burner-generator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  car = {"player-layer", "train-layer", "consider-tile-transitions"},
+  ["car"] = {"player-layer", "train-layer", "consider-tile-transitions"},
   ["cargo-wagon"] = {"train-layer"},
-  character = {"player-layer", "train-layer", "consider-tile-transitions"},
   ["character-corpse"] = {},
-  cliff = {"item-layer", "object-layer", "player-layer", "water-tile", "not-colliding-with-itself"},
+  ["character"] = {"player-layer", "train-layer", "consider-tile-transitions"},
+  ["cliff"] = {"item-layer", "object-layer", "player-layer", "water-tile", "not-colliding-with-itself"},
   ["combat-robot"] = {},
   ["constant-combinator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["construction-robot"] = {},
-  container = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  corpse = {},
-  ["curved-rail"] = {"item-layer", "object-layer", "floor-layer", "rail-layer", "water-tile"},
+  ["container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["corpse"] = {},
+  ["curved-rail"] = {"floor-layer", "item-layer", "object-layer", "rail-layer", "water-tile"},
   ["decider-combinator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["deconstructible-tile-proxy"] = {"ground-tile"},
   ["electric-energy-interface"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["electric-pole"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["electric-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["entity-ghost"] = {"ghost-layer"},
-  explosion = {},
-  fire = {},
-  fish = {"ground-tile", "colliding-with-tiles-only"},
+  ["explosion"] = {},
+  ["fire"] = {},
+  ["fish"] = {"ground-tile", "colliding-with-tiles-only"},
   ["flame-thrower-explosion"] = {},
   ["fluid-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["fluid-wagon"] = {"train-layer"},
   ["flying-text"] = {},
-  furnace = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  gate = {"item-layer", "object-layer", "player-layer", "train-layer", "water-tile"},
-  generator = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["furnace"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["gate"] = {"item-layer", "object-layer", "player-layer", "train-layer", "water-tile"},
+  ["generator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["heat-interface"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["heat-pipe"] = {"floor-layer", "object-layer", "water-tile"},
   ["highlight-box"] = {},
   ["infinity-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["infinity-pipe"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  inserter = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["inserter"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["item-entity"] = {"item-layer"},
   ["item-request-proxy"] = {},
-  lab = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  lamp = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["lab"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["lamp"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["land-mine"] = {"object-layer", "water-tile"},
   ["leaf-particle"] = {},
-  loader = {"item-layer", "object-layer", "water-tile", "transport-belt-layer"},
-  ["loader-1x1"] = {"item-layer", "object-layer", "water-tile", "transport-belt-layer"},
-  locomotive = {"train-layer"},
+  ["linked-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["loader-1x1"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
+  ["loader"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
+  ["locomotive"] = {"train-layer"},
   ["logistic-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["logistic-robot"] = {},
-  market = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["market"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["mining-drill"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["offshore-pump"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  particle = {},
   ["particle-source"] = {},
-  pipe = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["particle"] = {},
   ["pipe-to-ground"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["pipe"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["player-port"] = {"floor-layer", "object-layer", "water-tile"},
   ["power-switch"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["programmable-speaker"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  projectile = {},
-  pump = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  radar = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["projectile"] = {},
+  ["pump"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["radar"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["rail-chain-signal"] = {"floor-layer", "item-layer", "rail-layer"},
   ["rail-remnants"] = {},
   ["rail-signal"] = {"floor-layer", "item-layer", "rail-layer"},
-  reactor = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  resource = {"resource-layer"},
-  roboport = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["reactor"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["resource"] = {"resource-layer"},
+  ["roboport"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["rocket-silo-rocket-shadow"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["rocket-silo-rocket"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["rocket-silo"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["rocket-silo-rocket"] = {"not-colliding-with-itself"},
-  ["rocket-silo-rocket-shadow"] = {"not-colliding-with-itself"},
-  ["simple-entity"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["simple-entity-with-force"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["simple-entity-with-owner"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  smoke = {},
+  ["simple-entity"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["smoke-with-trigger"] = {},
+  ["smoke"] = {},
   ["solar-panel"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["speech-bubble"] = {},
   ["spider-leg"] = {"player-layer", "rail-layer"},
-  ["spider-vehicle"] = {},
-  splitter = {"item-layer", "object-layer", "water-tile", "transport-belt-layer"},
-  sticker = {},
+  ["spider-vehicle"] = {"player-layer", "train-layer"},
+  ["splitter"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
+  ["sticker"] = {},
   ["storage-tank"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["straight-rail"] = {"item-layer", "object-layer", "floor-layer", "rail-layer", "water-tile"},
-  stream = {},
-  tile = {},
+  ["straight-rail"] = {"floor-layer", "item-layer", "object-layer", "rail-layer", "water-tile"},
+  ["stream"] = {},
   ["tile-ghost"] = {"ghost-layer"},
   ["train-stop"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["transport-belt"] = {"floor-layer", "object-layer", "water-tile", "transport-belt-layer"},
-  tree = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  turret = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["underground-belt"] = {"item-layer", "object-layer", "water-tile", "transport-belt-layer"},
-  unit = {"doodad-layer", "item-layer", "not-colliding-with-itself", "consider-tile-transitions"},
+  ["transport-belt"] = {"floor-layer", "object-layer", "transport-belt-layer", "water-tile"},
+  ["tree"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
+  ["underground-belt"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
   ["unit-spawner"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  wall = {"item-layer", "object-layer", "player-layer", "water-tile"}
+  ["unit"] = {"player-layer", "train-layer", "not-colliding-with-itself"},
+  ["wall"] = {"item-layer", "object-layer", "player-layer", "water-tile"}
 }
 
 local clear_flags = function(map)
@@ -272,5 +272,37 @@ collision_mask_util.get_first_unused_layer = function()
     end
   end
 end
+
+--[[
+  Script for exporting from the game.
+
+  local defaults = {}
+  for name, prototype in pairs (game.entity_prototypes) do
+    local type = prototype.type
+    if not defaults[type] then
+      defaults[type] = prototype.default_collision_mask_with_flags
+    end
+  end
+
+  local string = "local default_masks =\n{"
+
+  for type, mask in pairs (defaults) do
+    string = string.."\n[\""..type.."\"] = {"
+    local comma = false
+    for layer, bool in pairs (mask) do
+      if comma then
+        string = string..", "
+      end
+      string = string.."\""..layer.."\""
+      comma = true
+    end
+    string = string.."},"
+  end
+
+  string = string.."\n}"
+
+  game.write_file("collision_defaults.lua", string)
+
+]]
 
 return collision_mask_util

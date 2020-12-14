@@ -10,7 +10,15 @@ data:extend(
       filename = "__base__/graphics/equipment/night-vision-equipment.png",
       width = 64,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-night-vision-equipment.png",
+        width = 128,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -40,7 +48,15 @@ data:extend(
       filename = "__base__/graphics/equipment/energy-shield-equipment.png",
       width = 64,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-energy-shield-equipment.png",
+        width = 128,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -67,7 +83,15 @@ data:extend(
       filename = "__base__/graphics/equipment/energy-shield-mk2-equipment.png",
       width = 64,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-energy-shield-mk2-equipment.png",
+        width = 128,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -94,7 +118,15 @@ data:extend(
       filename = "__base__/graphics/equipment/battery-equipment.png",
       width = 32,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-battery-equipment.png",
+        width = 64,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -118,7 +150,15 @@ data:extend(
       filename = "__base__/graphics/equipment/battery-mk2-equipment.png",
       width = 32,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-battery-mk2-equipment.png",
+        width = 64,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -142,7 +182,15 @@ data:extend(
       filename = "__base__/graphics/equipment/solar-panel-equipment.png",
       width = 32,
       height = 32,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-solar-panel-equipment.png",
+        width = 64,
+        height = 64,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -166,7 +214,15 @@ data:extend(
       filename = "__base__/graphics/equipment/fusion-reactor-equipment.png",
       width = 128,
       height = 128,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-fusion-reactor-equipment.png",
+        width = 256,
+        height = 256,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -197,7 +253,14 @@ data:extend(
       filename = "__base__/graphics/equipment/personal-laser-defense-equipment.png",
       width = 64,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version = {
+        filename = "__base__/graphics/equipment/hr-personal-laser-defense-equipment.png",
+        width = 128,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -258,7 +321,15 @@ data:extend(
       filename = "__base__/graphics/equipment/discharge-defense-equipment.png",
       flags = { "icon" },
       size = 64,
-      priority = "extra-high-no-scale"
+      priority = "extra-high-no-scale",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-discharge-defense-equipment.png",
+        flags = { "icon" },
+        size = 128,
+        priority = "extra-high-no-scale",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -339,7 +410,15 @@ data:extend(
       filename = "__base__/graphics/equipment/exoskeleton-equipment.png",
       width = 64,
       height = 128,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-exoskeleton-equipment.png",
+        width = 128,
+        height = 256,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -365,7 +444,15 @@ data:extend(
       filename = "__base__/graphics/equipment/personal-roboport-equipment.png",
       width = 64,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-personal-roboport-equipment.png",
+        width = 128,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -417,7 +504,15 @@ data:extend(
       filename = "__base__/graphics/equipment/personal-roboport-mk2-equipment.png",
       width = 64,
       height = 64,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-personal-roboport-mk2-equipment.png",
+        width = 128,
+        height = 128,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {
@@ -468,7 +563,15 @@ data:extend(
       filename = "__base__/graphics/equipment/belt-immunity-equipment.png",
       width = 32,
       height = 32,
-      priority = "medium"
+      priority = "medium",
+      hr_version =
+      {
+        filename = "__base__/graphics/equipment/hr-belt-immunity-equipment.png",
+        width = 64,
+        height = 64,
+        priority = "medium",
+        scale = 0.5
+      }
     },
     shape =
     {

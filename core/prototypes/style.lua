@@ -1245,7 +1245,7 @@ data:extend(
     {
       type = "frame_style",
       parent = "inside_shallow_frame_with_padding",
-      width = 424,
+      minimal_width = 424,
       vertical_flow_style =
       {
         type = "vertical_flow_style",
@@ -1288,7 +1288,9 @@ data:extend(
     wide_entity_button =
     {
       type = "empty_widget_style",
-      size = {400, 148}
+      minimal_width = 400,
+      height = 148,
+      horizontally_stretchable = "on"
     },
 
     train_stop_entity_button =
@@ -9152,6 +9154,26 @@ data:extend(
       }
     },
 
+    machine_slots_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane_in_shallow_frame",
+      vertically_squashable = "off",
+      maximal_height = 100,
+      extra_padding_when_activated = 0,
+      background_graphical_set =
+      {
+        position = {256, 136},
+        corner_size = 16,
+        overall_tiling_vertical_size = 24,
+        overall_tiling_vertical_spacing = 16,
+        overall_tiling_vertical_padding = 8,
+        overall_tiling_horizontal_size = 24,
+        overall_tiling_horizontal_spacing = 16,
+        overall_tiling_horizontal_padding = 8
+      }
+    },
+
     trash_slots_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -10473,6 +10495,13 @@ data:extend(
       type = "frame_style",
       parent = "deep_frame_in_shallow_frame",
       bottom_margin = 4,
+    },
+
+    entity_button_frame_with_extra_right_margin =
+    {
+      type = "frame_style",
+      parent = "entity_button_frame",
+      right_margin = 12,
     },
 
     train_with_minimap_frame =

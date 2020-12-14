@@ -35,6 +35,8 @@ return
         "flying-robot-frame",
         "low-density-structure",
         "rocket-fuel",
+        "nuclear-fuel",
+        "nuclear-fuel-reprocessing",
         "rocket-control-unit",
         "rocket-part",
         "automation-science-pack",
@@ -1462,7 +1464,7 @@ data:extend(
     name = "rocket-silo",
     icon = "__base__/graphics/icons/rocket-silo.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "defensive-structure",
+    subgroup = "space-related",
     order = "e[rocket-silo]",
     place_result = "rocket-silo",
     stack_size = 1
@@ -1746,7 +1748,7 @@ data:extend(
     name = "satellite",
     icon = "__base__/graphics/icons/satellite.png",
     icon_size = 64, icon_mipmaps = 4,
-    subgroup = "intermediate-product",
+    subgroup = "space-related",
     order = "m[satellite]",
     stack_size = 1,
     rocket_launch_product = {"space-science-pack", 1000}
@@ -2051,6 +2053,17 @@ data:extend(
     subgroup = "other",
     order = "a[items]-a[linked-chest]",
     place_result = "linked-chest",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "linked-belt",
+    icon = "__base__/graphics/icons/linked-belt.png",
+    icon_size = 64, icon_mipmaps = 4,
+    flags = {"hidden"},
+    subgroup = "other",
+    order = "b[items]-b[linked-belt]",
+    place_result = "linked-belt",
     stack_size = 10
   },
   {
