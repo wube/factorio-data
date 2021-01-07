@@ -2190,6 +2190,7 @@ data:extend(
     train_stop_disabled_in_map_view =
     {
       filename = "__core__/graphics/train-stop-in-map-view.png",
+      tint = {r = 0.9, g = 0.2, b = 0.2},
       priority = "extra-high-no-scale",
       width = 32,
       height = 32,
@@ -2198,6 +2199,7 @@ data:extend(
     train_stop_full_in_map_view =
     {
       filename = "__core__/graphics/train-stop-in-map-view.png",
+      tint = {r = 0.5, g = 0.5, b = 0.9},
       priority = "extra-high-no-scale",
       width = 32,
       height = 32,

@@ -85,6 +85,12 @@ data:extend(
       train_path_color = { r = 1, g = 1, b = 1 },
       train_preview_path_outline_color = { r = 0, g = 1, b = 0 },
       train_current_path_outline_color = { r = 1, g = 0, b = 0 },
+
+      chart_logistic_robot_color = {1, 1, 1},
+      chart_construction_robot_color = {1, 1, 0},
+      chart_mobile_construction_robot_color = {0, 1, 1},
+      chart_personal_construction_robot_color = {0, 1, 0},
+
       chart_deconstruct_tint = { r = 0.75, g = 0.2, b = 0.2, a = 1 }
     },
     default_player_force_color = { r = 0.869, g = 0.5, b = 0.130, a = 0.5 },
@@ -141,7 +147,8 @@ data:extend(
       train_arriving_to_signal_penalty = 100,
       train_waiting_at_signal_penalty = 100,
       train_waiting_at_signal_tick_multiplier_penalty = 0.1,
-      train_with_no_path_penalty = 1000
+      train_with_no_path_penalty = 1000,
+      train_auto_without_schedule_penalty = 7000
     },
     server_command_console_chat_color = { r = 0.75, g = 0.75, b = 0.75, a = 1 },
     script_command_console_chat_color = { r = 0.75, g = 0.75, b = 0.75, a = 1 },
@@ -204,6 +211,12 @@ data:extend(
 
     unit_group_pathfind_resolution = 0,
     unit_group_max_pursue_distance = 50,
+
+    -- 1.166 is a magic number representing the maximum number of seconds it takes for a base game inserter to do one cycle.
+    -- the calculated overload multiplier is the number of crafts we can complete during one inserter full swing + 1
+    dynamic_recipe_overload_factor = 1.166,
+    minimum_recipe_overload_multiplier = 2,
+    maximum_recipe_overload_multiplier = 100,
 
     -- we render a bit more to compensate for electric poles, shadows, decoratives and tall entities
     -- with decoratives being most demanding on that, using them as heuristic

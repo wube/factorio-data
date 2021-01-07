@@ -1,6 +1,67 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.7
+Version: 1.1.8
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.7
+Date: 07. 01. 2021
+  Changes:
+    - Changed wire drawing to always have the same opacity regardless of ghost/electric poles being connected.
+    - More specific error message when a blueprint cannot be flipped.
+    - More specific message when copy pasting spidertron with equipment grid.
+    - Color differentiation for robot overview on the map (yellow = construction, white = logistics, cyan = mobile, green = personal).
+    - When dragging electric pole, the next pole is built once the max distance was reached instead of when it was exceeded.
+  Bugfixes:
+    - Fixed that blueprints containing offshore pumps couldn't be flipped. (https://forums.factorio.com/92246)
+    - Fixed spidertron leg could get permanently stuck when many ghost and entity avoidance requests stack up. (https://forums.factorio.com/93050)
+    - Fixed script error in entity transfers tutorial. (https://forums.factorio.com/92587)
+    - Fixed objective sound duplication in Tutorial level 01. (https://forums.factorio.com/92099)
+    - Renamed interface settings "show tutorial notifications" to "show tips and tricks notifications".
+    - Fixed fast rebuilding pump to change direction. (https://forums.factorio.com/92322)
+    - Fixed that it wasn't possible to build train stop next to ghost rails. (https://forums.factorio.com/93137)
+    - Fixed uses of Enter as the confirm key. (https://forums.factorio.com/92056)
+    - Fixed that power pole dragging did not power all ghosts. (https://forums.factorio.com/93115)
+    - Fixed crash related to radar status. (https://forums.factorio.com/93074)
+    - Fixed that script was able to place overlapping rails when they were of different type. (https://forums.factorio.com/93181)
+    - Fixed that spidertron didn't move leg preventing ghost curved rail to be built in some cases.
+    - Fixed that E to confirm didn't work on the connection error notice boxes.
+    - Fixed ghost fast replace of pipe to ground.
+    - Fixed that rail ghost was considered as colliding with rail to be deconstructed. (https://forums.factorio.com/93227)
+    - Fixed inserter's custom vector flip behavior in blueprints. (https://forums.factorio.com/93191)
+    - Fixed that power poles didn't keep their connection configuration when they died.
+    - Fixed inserter status related to placing items into full chest in some cases. (https://forums.factorio.com/93188)
+    - Fixed a crash when installing mods due to the background simulation. (https://forums.factorio.com/93322)
+    - Fixed copying spidertron logistic filters didn't work correctly with empty filters. (https://forums.factorio.com/93224)
+    - Fixed trains limit could be violated when pasting settings onto train stop when it changes station name. (https://forums.factorio.com/93458)
+    - Fixed desync when changing value of LuaEntity::tree_stage_index. (https://forums.factorio.com/93542)
+    - Fixed that building constant combinator over ghost with different direction would not keep settings. (https://forums.factorio.com/93622)
+    - Fixed a crash related to modding rail signal wires. (https://forums.factorio.com/93681)
+    - Fixed that burner rocket silos didn't work correctly. (https://forums.factorio.com/93640)
+    - Fixed that the lab GUI would show incorrect research level if multiple levels were queued. (https://forums.factorio.com/93256)
+    - Fixed that the max-players settings didn't persist correctly between hosting games. (https://forums.factorio.com/93361)
+    - Fixed a crash when exiting the game while some notice boxes are visible. (https://forums.factorio.com/93723)
+    - Fixed blueprint chart rendering of rotated blueprints wasn't correct in some cases. (https://forums.factorio.com/93609)
+    - Fixed using script rendering animations in simulations would crash the game. (https://forums.factorio.com/93443)
+    - Fixed fast electric pole dragging logic with obstacles in the way. (https://forums.factorio.com/91698)
+    - Widened campaign level selection list box, so all of our level names can fit. (https://forums.factorio.com/91661)
+    - Fixed blueprint setup window left part being cut a little when there are so many components that they need a scroll bar. (https://forums.factorio.com/92106)
+    - Fixed that tips & tricks notification window was visible also when playing tutorial.
+    - Fixed tips & tricks notice not being cleared when the tip was finished by playing tutorial before marking as read. (https://forums.factorio.com/92261)
+    - Fixed that changing parent style of a gui element didn't clear the internal style values and didn't resize it until the game was reloaded. (https://forums.factorio.com/93070)
+  Scripting:
+    - Setting a tooltip on a 'slider' custom gui element will set the tooltip to both the body and the notch. (https://forums.factorio.com/93069)
+    - Added override_sound_type to LuaPlayer::play_sound, LuaSurface::play_sound, LuaGameScript::play_sound, and LuaForce::play_sound. (https://forums.factorio.com/93067)
+    - Added "item" to LuaSurface::create_entity. (https://forums.factorio.com/93004)
+    - Added create_build_effect_smoke to LuaEntity::clone(), LuaSurface::clone_area(), ::clone_brush(), and ::clone_entities().
+    - Added LuaRecipePrototype::allow_inserter_overload read.
+    - Added defines.train_state.destination_full.
+    - Added LuaEntity::torso_orientation read/write.
+    - Added LuaGameScript::font_prototypes read.
+    - Added LuaFontPrototype.
+    - Added LuaItemStack::create_grid().
+  Modding:
+    - Added RecipePrototype::allow_inserter_overload bool (true by default). When true, it increases the ingredient overload of the recipe by 4 times the current stack inserter stack size.
+    - Added dynamic_recipe_overload_factor, minimum_recipe_overload_multiplier and maximum_recipe_overload_multiplier to utility constants.
+    - Added train_auto_without_schedule_penalty to the train pathfinder utility constants.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.6
 Date: 14. 12. 2020

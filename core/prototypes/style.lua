@@ -4379,7 +4379,7 @@ data:extend(
     new_game_difficulty_vertical_flow =
     {
       type = "vertical_flow_style",
-      natural_width = 140,
+      natural_width = 180,
     },
 
     blueprint_settings_frame =
@@ -4390,7 +4390,7 @@ data:extend(
       bottom_padding = 4,
       horizontal_flow_style = { type = "horizontal_flow_style" },
       vertical_flow_style = { type = "vertical_flow_style" },
-      width = 436
+      minimal_width = 436
     },
 
     mods_list_box =
@@ -4426,7 +4426,7 @@ data:extend(
           shadow = default_inner_shadow
         }
       },
-      width = 140,
+      width = 180,
       height = 140
     },
     custom_games_list_box =
