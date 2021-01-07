@@ -93,6 +93,7 @@ data:extend(
 
       chart_deconstruct_tint = { r = 0.75, g = 0.2, b = 0.2, a = 1 }
     },
+    gui_remark_color = {r = 34, g = 181, b = 255},
     default_player_force_color = { r = 0.869, g = 0.5, b = 0.130, a = 0.5 },
     default_enemy_force_color = { r = 0.815, g = 0.024, b = 0.0, a = 0.5 },
     default_other_force_color = { r = 0.2, g = 0.2, b = 0.2 },

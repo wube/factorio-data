@@ -1,6 +1,18 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.8
+Version: 1.1.9
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.8
+Date: 07. 01. 2021
+  Gui:
+    - New trains overview GUI.
+  Bugfixes:
+    - Fixed crash when dragging electric pole ghosts into fog of war. (https://forums.factorio.com/94020)
+    - Fixed rotation of belts being built by dragging by making it possible to build continous belts. (https://forums.factorio.com/91689)
+    - Fixed various issues related to blueprints with only trains. (https://forums.factorio.com/93724)
+    - Fixed a performance issue with the character logistics GUI when a large number of requests are being used. (https://forums.factorio.com/94019)
+    - Fixed a crash that would happen when pathfinding with an empty collision box was requested. (https://forums.factorio.com/93263)
+    - Fixed that script generated switch label didn't respect minimal width defined by style. (https://forums.factorio.com/93084)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.7
 Date: 07. 01. 2021

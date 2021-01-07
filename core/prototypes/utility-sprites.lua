@@ -1,24 +1,19 @@
 local function make_cursor_box(x, y, side_length, shift)
+  local shift = shift or {0,0}
   return
   {
-   sprite =
-   {
-     filename = "__core__/graphics/cursor-boxes.png",
-     priority = "extra-high-no-scale",
-     width = 64,
-     height = 64,
-     scale = 0.5,
-     x = x,
-     y = y,
-     shift = (function()
-              if shift then
-                return {0.5 - shift[1] / 32.0, 0.5 - shift[2] / 32.0}
-              else
-                return {0.5, 0.5}
-              end
-            end)()
-   },
-   max_side_length = side_length
+    sprite =
+    {
+      filename = "__core__/graphics/cursor-boxes.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      scale = 0.5,
+      x = x,
+      y = y,
+      shift = {0.5 - (shift[1] / 32.0), 0.5 - (shift[2] / 32.0)}
+    },
+    max_side_length = side_length
   }
 end
 
@@ -401,15 +396,15 @@ data:extend(
     flags = {"gui-icon"}
   },
   -- {
-    -- type = "sprite",
-    -- name = "quantity-multiplier",
-    -- filename = "__core__/graphics/icons/mip/quantity-multiplier-red.png",
-    -- priority = "extra-high-no-scale",
-    -- width = 28,
-    -- height = 40,
-    -- flags = {"gui-icon"},
-    -- mipmap_count =2,
-    -- scale = 0.5
+  -- type = "sprite",
+  -- name = "quantity-multiplier",
+  -- filename = "__core__/graphics/icons/mip/quantity-multiplier-red.png",
+  -- priority = "extra-high-no-scale",
+  -- width = 28,
+  -- height = 40,
+  -- flags = {"gui-icon"},
+  -- mipmap_count =2,
+  -- scale = 0.5
   -- },
   {
     type = "sprite",
@@ -1332,8 +1327,8 @@ data:extend(
       priority = "medium",
       width = 64,
       height = 64,
-    mipmap_count = 3,
-    scale = 0.5,
+      mipmap_count = 3,
+      scale = 0.5,
       flags = {"gui-icon"}
     },
     set_bar_slot =
@@ -1845,7 +1840,7 @@ data:extend(
       priority = "high",
       width = 32,
       height = 32,
-    mipmap_count = 2,
+      mipmap_count = 2,
       flags = {"gui-icon"}
     },
     circuit_network_panel_white =
@@ -1854,7 +1849,7 @@ data:extend(
       priority = "high",
       width = 32,
       height = 32,
-    mipmap_count = 2,
+      mipmap_count = 2,
       flags = {"gui-icon"}
     },
 
@@ -1864,7 +1859,7 @@ data:extend(
       priority = "high",
       width = 32,
       height = 32,
-    mipmap_count = 2,
+      mipmap_count = 2,
       flags = {"gui-icon"}
     },
     logistic_network_panel_white =
@@ -1873,7 +1868,7 @@ data:extend(
       priority = "high",
       width = 32,
       height = 32,
-    mipmap_count = 2,
+      mipmap_count = 2,
       flags = {"gui-icon"}
     },
 
@@ -2314,7 +2309,7 @@ data:extend(
       priority = "extra-high",
       size = 64,
       scale = 0.5,
-    mipmap_count = 2,
+      mipmap_count = 2,
       flags = {"gui-icon"}
     },
     tile_ghost_cursor =
@@ -2322,7 +2317,7 @@ data:extend(
       filename = "__core__/graphics/icons/mip/cursor-ghost-tile.png",
       priority = "extra-high",
       size = 64,
-    mipmap_count = 2,
+      mipmap_count = 2,
       scale = 0.5,
       flags = {"gui-icon"}
     },

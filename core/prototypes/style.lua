@@ -55,6 +55,10 @@ arrow_disabled_index = 1
 arrow_hovered_index = 2
 arrow_clicked_index = 3
 
+-- Determined by the subheader height plus a number of list box items in the station view
+-- It doesn't have to be... but its nice when they all align perfectly
+train_gui_minimap_size = 36 + (28 * 8)
+
 function back_button_glow(glow_color)
   return
   {
@@ -3583,6 +3587,21 @@ data:extend(
       disabled_graphical_set = {position = {17, 17}, corner_size = 8}
     },
 
+    train_status_button =
+    {
+      type = "button_style",
+      parent = "list_box_item",
+      width = train_gui_minimap_size,
+      horizontal_align = "center",
+    },
+
+    station_train_status_button =
+    {
+      type = "button_style",
+      parent = "list_box_item",
+      width = train_gui_minimap_size + 12
+    },
+
     title_tip_item =
     {
       type = "button_style",
@@ -3734,6 +3753,19 @@ data:extend(
         overall_tiling_horizontal_padding = 4,
         overall_tiling_vertical_padding = 4
       }
+    },
+
+    stations_trains_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "mods_scroll_pane",
+      width = train_gui_minimap_size + 12,
+      height = train_gui_minimap_size - 36,
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      },
     },
 
     inventory_scroll_pane =
@@ -4626,8 +4658,7 @@ data:extend(
       type = "button_style",
       parent = "button",
       padding = 0,
-      width = 200,
-      height = 200,
+      size = train_gui_minimap_size,
       default_graphical_set =
       {
         base =
@@ -5120,6 +5151,15 @@ data:extend(
       horizontal_spacing = 12
     },
 
+    inset_frame_container_horizontal_flow_in_tabbed_pane =
+    {
+      type = "horizontal_flow_style",
+      horizontal_spacing = 12,
+      left_padding = 8,
+      right_padding = 8,
+      bottom_padding = 4
+    },
+
     inset_frame_container_vertical_flow =
     {
       type = "vertical_flow_style",
@@ -5285,6 +5325,13 @@ data:extend(
       selected_graphical_set = {position = {51, 17}, corner_size = 8},
       selected_hovered_graphical_set = {position = {369, 17}, corner_size = 8},
       selected_clicked_graphical_set = {position = {352, 17}, corner_size = 8}
+    },
+
+    trains_list_table =
+    {
+      type = "table_style",
+      parent = "mods_table",
+      minimal_width = 350
     },
 
     mod_info_table =
@@ -6442,7 +6489,7 @@ data:extend(
     {
       type = "frame_style",
       parent = "inner_frame_in_outer_frame",
-      width = 708 -- so the title label is limited without it stretching the window
+      width = ((train_gui_minimap_size + 24) * 3) + 24 + 12
     },
     rename_train_stop_frame =
     {
@@ -6603,6 +6650,14 @@ data:extend(
         type = "vertical_flow_style",
         vertical_spacing = 0
       }
+    },
+
+    trains_gui_deep_frame =
+    {
+      type = "frame_style",
+      parent = "deep_frame_in_shallow_frame",
+      natural_width = ((train_gui_minimap_size + 24) * 4) + 12,
+      natural_height = (train_gui_minimap_size + 24 + 40) * 3
     },
 
     slot_button_deep_frame = --frame meant to hold slot buttons. Similar to filter_scroll_pane_background_frame
@@ -9059,8 +9114,28 @@ data:extend(
       {
         position = {282, 17},
         corner_size = 8,
-        overall_tiling_horizontal_size = 208,
-        overall_tiling_vertical_size = 304,
+        overall_tiling_horizontal_size = train_gui_minimap_size + 8,
+        overall_tiling_vertical_size = train_gui_minimap_size + 8 + 40,
+        overall_tiling_horizontal_padding = 8,
+        overall_tiling_horizontal_spacing = 16,
+        overall_tiling_vertical_padding = 8,
+        overall_tiling_vertical_spacing = 16,
+      },
+    },
+
+    stations_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      extra_padding_when_activated = 0,
+      padding = 0,
+      graphical_set = {},
+      minimal_height = train_gui_minimap_size + 24,
+      background_graphical_set =
+      {
+        position = {282, 17},
+        corner_size = 8,
+        overall_tiling_horizontal_size = (train_gui_minimap_size * 2) + 12 + 12 + 8,
+        overall_tiling_vertical_size = train_gui_minimap_size + 8,
         overall_tiling_horizontal_padding = 8,
         overall_tiling_horizontal_spacing = 16,
         overall_tiling_vertical_padding = 8,
@@ -10513,6 +10588,11 @@ data:extend(
         type = "vertical_flow_style",
         vertical_spacing = 12
       },
+      horizontal_flow_style =
+      {
+        type = "horizontal_flow_style",
+        horizontal_spacing = 12
+      },
       graphical_set =
       {
         base = {position = {68, 0}, corner_size = 8},
@@ -10530,7 +10610,7 @@ data:extend(
     trains_gui_frame =
     {
       type = "frame_style",
-      minimal_width = 1144,
+      --minimal_width = 1144,
     },
 
     choose_chat_icon_button =
