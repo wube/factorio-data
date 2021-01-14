@@ -110,11 +110,7 @@ circuit_connector_definitions["programmable-speaker"] = circuit_connector_defini
 
 inserter_circuit_wire_max_distance = 9
 
-if not data.is_demo then
-  inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-S"}
-else
-  inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-black"}
-end
+inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-S"}
 
 ------------------- TRANSPORT BELT -------------------
 

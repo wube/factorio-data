@@ -60,6 +60,10 @@ require("prototypes.equipment")
 require("prototypes.legacy.legacy-entities")
 require("prototypes.custom-inputs")
 
+if data.is_demo then
+  require("prototypes.demo")
+end
+
 local menu_simulations = require("__base__/menu-simulations/menu-simulations")
 if not data.raw["utility-constants"]["default"].main_menu_simulations then
   data.raw["utility-constants"]["default"].main_menu_simulations = {}

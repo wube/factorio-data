@@ -573,8 +573,8 @@ data:extend(
     {
       type = "stream",
       cooldown = 4,
-      range = range_worm_small,--defined in demo-spitter-projectiles.lua
-      damage_modifier = damage_modifier_worm_small,--defined in demo-spitter-projectiles.lua
+      range = range_worm_small,--defined in spitter-projectiles.lua
+      damage_modifier = damage_modifier_worm_small,--defined in spitter-projectiles.lua
       min_range = 0,
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_small, scale_worm_small * scale_worm_stream),
       use_shooter_direction = true,
@@ -1536,8 +1536,8 @@ data:extend(
     {
       type = "stream",
       cooldown = 4,
-      range = range_worm_medium,--defined in demo-spitter-projectiles.lua
-      damage_modifier = damage_modifier_worm_medium,--defined in demo-spitter-projectiles.lua
+      range = range_worm_medium,--defined in spitter-projectiles.lua
+      damage_modifier = damage_modifier_worm_medium,--defined in spitter-projectiles.lua
       min_range = 0,
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_medium, scale_worm_medium * scale_worm_stream),
 
@@ -1666,9 +1666,9 @@ data:extend(
     attack_parameters =
     {
       type = "stream",
-      damage_modifier = damage_modifier_worm_big,--defined in demo-spitter-projectiles.lua
+      damage_modifier = damage_modifier_worm_big,--defined in spitter-projectiles.lua
       cooldown = 4,
-      range = range_worm_big,--defined in demo-spitter-projectiles.lua
+      range = range_worm_big,--defined in spitter-projectiles.lua
       min_range = 0,
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_big, scale_worm_big * scale_worm_stream),
 
@@ -1797,9 +1797,9 @@ data:extend(
     {
       type = "stream",
       ammo_category = "biological",
-      damage_modifier = damage_modifier_worm_behemoth,--defined in demo-spitter-projectiles.lua
+      damage_modifier = damage_modifier_worm_behemoth,--defined in spitter-projectiles.lua
       cooldown = 4,
-      range = range_worm_behemoth,--defined in demo-spitter-projectiles.lua
+      range = range_worm_behemoth,--defined in spitter-projectiles.lua
       min_range = 0,
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_behemoth, scale_worm_behemoth * scale_worm_stream),
       use_shooter_direction = true,

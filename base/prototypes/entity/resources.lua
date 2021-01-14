@@ -181,8 +181,8 @@ data:extend({
       mining_particle = "stone-particle",
       mining_time = 2,
       result = "uranium-ore",
-      fluid_amount = (not data.is_demo and 10) or nil,
-      required_fluid = (not data.is_demo and "sulfuric-acid") or nil
+      fluid_amount = 10,
+      required_fluid = "sulfuric-acid"
     },
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},

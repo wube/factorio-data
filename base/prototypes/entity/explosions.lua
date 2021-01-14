@@ -25,7 +25,7 @@ local empty_explosion = function(params)
   }
 end
 
-local demo_explosions =
+local explosions =
 {
   {
     type = "explosion",
@@ -4218,46 +4218,8 @@ local demo_explosions =
         }
       }
     }
-  }
-}
-
-for k, explosion in pairs (demo_explosions) do
-  if not explosion.localised_name then
-    local name = explosion.name
-    if name:find("%-explosion") then
-      explosion.localised_name = {"dying-explosion-name", {"entity-name."..name:gsub("%-explosion", "")}}
-    elseif name:find("%-die") then
-      explosion.localised_name = {"dying-explosion-name", {"entity-name."..name:gsub("%-die", "")}}
-    end
-  end
-end
-
-data:extend(demo_explosions)
-
-local default_light = function(size)
-  return
-  {
-    intensity = 1,
-    size = size,
-    color = {r = 1.0, g = 1.0, b = 1.0}
-  }
-end
-
-local empty_explosion = function(params)
-  return
-  {
-    type = "explosion",
-    name = params.name,
-    localised_name = params.localised_name,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "explosions",
-    animations = util.empty_sprite(),
-    created_effect = params.created_effect
-  }
-end
-
-local explosions =
-{
+  },
+  
   {
     type = "explosion",
     name = "laser-bubble",

@@ -1,7 +1,3 @@
-if data.is_demo then
-  return
-end
-
 -- Exit if not on version 0.15+. This file might not be deleted when downgrading to pre-0.15.
 if not data.raw["utility-constants"] then
   return

@@ -199,10 +199,6 @@ local hit_effects = require ("prototypes.entity.hit-effects")
 local sounds = require("prototypes.entity.sounds")
 local movement_triggers = require("prototypes.entity.movement-triggers")
 
-if not data.is_demo then
-  require ("prototypes.entity.assemblerpipes")
-end
-
 function accumulator_picture(tint, repeat_count)
   return
   {
@@ -1077,23 +1073,13 @@ end
 local lab_inputs =
 {
   "automation-science-pack",
-  "logistic-science-pack"
+  "logistic-science-pack",
+  "military-science-pack",
+  "chemical-science-pack",
+  "production-science-pack",
+  "utility-science-pack",
+  "space-science-pack"
 }
-
-if not data.is_demo then
-  local extra_lab_inputs =
-  {
-    "military-science-pack",
-    "chemical-science-pack",
-    "production-science-pack",
-    "utility-science-pack",
-    "space-science-pack"
-  }
-
-  for _, item in pairs(extra_lab_inputs) do
-    table.insert(lab_inputs, item)
-  end
-end
 
 function crash_trigger()
   return
@@ -1159,10 +1145,10 @@ data:extend(
     {
       --nil = 1,
       ["light-armor"] = 2,
-      ["heavy-armor"] = not data.is_demo and 2 or nil,
-      ["modular-armor"] = not data.is_demo and 3 or nil,
-      ["power-armor"] = not data.is_demo and 3 or nil,
-      ["power-armor-mk2"] = not data.is_demo and 3 or nil
+      ["heavy-armor"] = 2,
+      ["modular-armor"] = 3,
+      ["power-armor"] = 3,
+      ["power-armor-mk2"] = 3
     }
   },
   {
@@ -1386,8 +1372,7 @@ data:extend(
         }
       },
       {
-        -- modular armors are not in the demo
-        armors = data.is_demo and {} or {"modular-armor", "power-armor", "power-armor-mk2"},
+        armors = {"modular-armor", "power-armor", "power-armor-mk2"},
         idle =
         {
           layers =
@@ -4731,7 +4716,7 @@ data:extend(
         percent = 70
       }
     },
-    fluid_boxes = (not data.is_demo) and
+    fluid_boxes =
     {
       {
         production_type = "input",
@@ -4752,7 +4737,7 @@ data:extend(
         secondary_draw_orders = { north = -1 }
       },
       off_when_no_fluid_recipe = true
-    } or nil,
+    },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     damaged_trigger_effect = hit_effects.entity(),
@@ -5590,7 +5575,7 @@ data:extend(
     circuit_wire_connection_point = circuit_connector_definitions["gate"].points,
     circuit_connector_sprites = circuit_connector_definitions["gate"].sprites,
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    default_output_signal = data.is_demo and {type = "virtual", name = "signal-green"} or {type = "virtual", name = "signal-G"}
+    default_output_signal = {type = "virtual", name = "signal-G"}
   },
   {
     type = "lab",

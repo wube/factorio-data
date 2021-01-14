@@ -227,7 +227,7 @@ data:extend(
     },
     collision_box = {{-8.7, -3.3}, {6.9, 4.5}},
     selection_box = {{-8.7, -3.3}, {6.9, 4.5}},
-    dying_explosion = data.is_demo and "big-explosion" or "nuke-explosion",
+    dying_explosion = "nuke-explosion",
     integration_patch_render_layer = "decals",
     integration_patch =
     {

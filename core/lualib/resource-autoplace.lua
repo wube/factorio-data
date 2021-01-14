@@ -45,7 +45,7 @@ local starting_patch_metaset = resource_autoplace__patch_metasets.starting
 
 -- Indicate that a patch set exists and optionally that it also needs a separate starting patch set.
 -- Call this to initialize patch sets' indexes in a more deterministic order
--- (see demo-resources.lua for an example) before calling resource_autoplace_settings.
+-- (see resources.lua for an example) before calling resource_autoplace_settings.
 local function initialize_patch_set(patch_set_name, has_starting_area_placement)
   regular_patch_metaset:get_patch_set_index(patch_set_name)
   if has_starting_area_placement then

@@ -4,6 +4,7 @@ data = {}
 -- raw data
 data.raw = {}
 -- this will be overwritten in the c++ based on whether we are in demo or not
+-- careful: using this flag to change the number prototypes that are created will make saves not load between demo/retail
 data.is_demo = false
 local table_string = "table"
 
