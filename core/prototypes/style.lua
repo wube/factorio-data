@@ -6485,12 +6485,21 @@ data:extend(
         -- this is to avoid shows of frames that are touching to interact
       }
     },
+
     train_stop_frame =
     {
       type = "frame_style",
       parent = "inner_frame_in_outer_frame",
       width = ((train_gui_minimap_size + 24) * 3) + 24 + 12
     },
+
+    train_stop_trains_frame =
+    {
+      type = "frame_style",
+      parent = "invisible_frame_with_title",
+      natural_height = ((train_gui_minimap_size + 12 + 12 + 40) * 2) + 36
+    },
+
     rename_train_stop_frame =
     {
       type = "frame_style",
@@ -6502,6 +6511,7 @@ data:extend(
         maximal_width = 800
       }
     },
+
     -- Dark deep frame for window content
     inside_deep_frame =
     {
@@ -6657,7 +6667,7 @@ data:extend(
       type = "frame_style",
       parent = "deep_frame_in_shallow_frame",
       natural_width = ((train_gui_minimap_size + 24) * 4) + 12,
-      natural_height = (train_gui_minimap_size + 24 + 40) * 3
+      natural_height = (train_gui_minimap_size + 24 + 40) * 3 + 36
     },
 
     slot_button_deep_frame = --frame meant to hold slot buttons. Similar to filter_scroll_pane_background_frame

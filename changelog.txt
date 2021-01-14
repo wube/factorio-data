@@ -1,6 +1,55 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.9
+Version: 1.1.10
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.9
+Date: 14. 01. 2021
+  Minor Features:
+    - Tooltip for empty ammo, gun and module slots that show all possible items that can be inserted into it.
+    - Added smart belt dragging option that unlocks 2 fundamental features for belt building and is enabled by default:
+      1) Rotating while belt dragging can be used to build belt segments faster.
+      2) Automatic underground belt placement when obstacle is encountered.
+  Changes:
+    - Extended locking for building in line for underground belts/pipes. (https://forums.factorio.com/91719)
+  Bugfixes:
+    - Fixed that E to confirm didn't work correctly with mod changelog GUIs. (https://forums.factorio.com/94024)
+    - Fixed that lamps would show no power warning during the day even when the energy was available in some cases. (https://forums.factorio.com/94032)
+    - Fixed that removing train stop with stopped train would make train to get stuck.
+    - Fixed that entering and exiting a vehicle in the same tick would move you away from the vehicle. (https://forums.factorio.com/94048)
+    - Fixed entity status of full burner mining drill inserting into burner inserter. (https://forums.factorio.com/93859)
+    - Fixed entity status of inserter locked on entity ghost. (https://forums.factorio.com/94078)
+    - Fixed entity status of inserter trying to put item on the ground position that is already occupied. (https://forums.factorio.com/94079)
+    - Fixed a desync when importing blueprint strings with electric poles.
+    - Fixed entity status of inserter trying to put item into train that is not there. (https://forums.factorio.com/94076)
+    - Added status for generator and solar panel for not plugged into electric network. (https://forums.factorio.com/94081)
+    - Fixed crash when drag building from a pole that is mined in the meantime. (https://forums.factorio.com/94090)
+    - Fixed that manipulating modded blueprints with extended wire reach did break the connections. (https://forums.factorio.com/94113)
+    - Fixed drag building entities with no lock to line, or when it is globally disabled. (https://forums.factorio.com/94051)
+    - Fixed that artillery chart hit animations showed on every surface. (https://forums.factorio.com/93447)
+    - Build by dragging through already preexisting electric poles doesn't ignore them.
+    - Fixed that it wasn't possible to enter/exit spidertrons in some cases. (https://forums.factorio.com/94133)
+    - Fixed that unit groups could sometimes wait indefinitely for a stuck member. (https://forums.factorio.com/93391)
+    - Fixed that having more than 8'388'608 solar panels in the same electric network didn't work correctly.
+    - Fixed that replays were broken if async saving was enabled on Linux or Mac. (https://forums.factorio.com/93423)
+    - Probably fixed rare random crash related to scrolling blueprint books. (https://forums.factorio.com/93575)
+    - Fixed an error related to mod GUIs when applying multiple actions in the same tick. (https://forums.factorio.com/94225)
+    - Fixed that flip state of blueprint wasn't reset when changing content into blueprint not compatibile with flipping. (https://forums.factorio.com/94214)
+    - Fixed that resolved server address (when specified by name) was saved and reused when hitting the continue button, making it useless if the server uses dynamic IP address. (https://forums.factorio.com/93751)
+    - Fixed that blueprint tooltip in the chat windows can shake. (https://forums.factorio.com/93317)
+    - When changing item in cursor while building by dragging, the new item is applied instantly instead of the next tile. (https://forums.factorio.com/94083)
+    - Fixed wrong linked underline position in certain fonts. (https://forums.factorio.com/92505)
+    - Fixed item tooltips for fluid furnace recipes. (https://forums.factorio.com/93679)
+    - Fixed that biters would keep attacking entities that became indestructible. (https://forums.factorio.com/93880)
+    - Fixed that LAN servers started in quick succession could receive the same server ID and overwrite each other in the game browser. (https://forums.factorio.com/93180)
+    - Fixed that the editor infinity filters GUI didn't switch item groups correctly. (https://forums.factorio.com/94316)
+  Modding:
+    - String mod setting dropdown items can now have tooltips. (https://forums.factorio.com/85001)
+    - Added bool mod setting "forced_value". (https://forums.factorio.com/88927)
+  Scripting:
+    - Added LuaEntity::get_upgrade_direction().
+    - Added 'direction' to LuaEntity::order_upgrade().
+    - Added 'direction' to the on_marked_for_upgrade event.
+    - Added LuaEntity::entity_label read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.8
 Date: 07. 01. 2021
@@ -8,7 +57,7 @@ Date: 07. 01. 2021
     - New trains overview GUI.
   Bugfixes:
     - Fixed crash when dragging electric pole ghosts into fog of war. (https://forums.factorio.com/94020)
-    - Fixed rotation of belts being built by dragging by making it possible to build continous belts. (https://forums.factorio.com/91689)
+    - Fixed rotation of belts being built by dragging by making it possible to build continuous belts. (https://forums.factorio.com/91689)
     - Fixed various issues related to blueprints with only trains. (https://forums.factorio.com/93724)
     - Fixed a performance issue with the character logistics GUI when a large number of requests are being used. (https://forums.factorio.com/94019)
     - Fixed a crash that would happen when pathfinding with an empty collision box was requested. (https://forums.factorio.com/93263)
