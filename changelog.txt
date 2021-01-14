@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.11
+Version: 1.1.12
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.11
+Date: 14. 01. 2021
+  Bugfixes:
+    - Fixed belt dragging on the the edge of player building reach. (https://forums.factorio.com/94359)
+    - Fixed internal electric pole connection inconsistency preventing the loading of certain saves. (https://forums.factorio.com/94360)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.10
 Date: 14. 01. 2021
