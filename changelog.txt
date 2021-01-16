@@ -1,6 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.12
+Version: 1.1.13
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.12
+Date: 16. 01. 2021
+  Bugfixes:
+    - Fixed that player building reach limit was applied also for ghost building. (https://forums.factorio.com/94394)
+    - Fixed crash related to building out of radar reach. (https://forums.factorio.com/94399)
+    - Fixed build by dragging of underground belt/pipes when starting to drag on existing piece. (https://forums.factorio.com/94391)
+    - Fixed a corner case of power pole drag building related to powering all encountered entities. (https://forums.factorio.com/94406)
+    - Fixed LuaEntity::remove_fluid failing due to bad temperature related float/double comparison.
+    - Fixed belt traversing related to using ghost building over real belts to create upgrade order to change direction.
+    - Smart belt building respects existing underground belts. (https://forums.factorio.com/94356)
+    - Fixed crash when trying to create explosion whose source entity or position can not be determined. (https://forums.factorio.com/94388)
+    - Fixed that the game could not delete files on exFat partition. (https://forums.factorio.com/94387)
+    - Fixed too verbose error message when overbuilding the same entity ghost. (https://forums.factorio.com/94384)
+    - Fixed OpenGL crash when simulation widget is destroyed from the update thread. (https://forums.factorio.com/94464)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.11
 Date: 14. 01. 2021
