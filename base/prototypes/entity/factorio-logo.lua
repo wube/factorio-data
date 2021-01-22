@@ -186,7 +186,7 @@ data:extend
     name = "water-wube",
     icon = "__base__/graphics/icons/water-wube.png",
     icon_size = 64, icon_mipmaps = 4,
-    order = "x-a",
+    order = "x[wube]-a[water-wube]",
     collision_mask =
     {
       "water-tile",

@@ -4157,7 +4157,7 @@ data:extend(
     name = "pipe",
     icon = "__base__/graphics/icons/pipe.png",
     icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral", "player-creation", "fast-replaceable-no-build-while-moving"},
+    flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "pipe"},
     max_health = 100,
     corpse = "pipe-remnants",
@@ -12072,7 +12072,7 @@ data:extend(
         height = 24,
         line_length =8,
         frame_count =32,
-        shift = util.by_pixel(6.000, -8.000),
+        shift = util.by_pixel(6, -8),
         hr_version =
         {
           filename = "__base__/graphics/entity/pump/hr-pump-east-liquid.png",
@@ -12081,7 +12081,7 @@ data:extend(
           scale = 0.5,
           line_length =8,
           frame_count =32,
-          shift = util.by_pixel(6.250, -8.500)
+          shift = util.by_pixel(6.25, -8.5)
         }
       },
 
@@ -12092,7 +12092,7 @@ data:extend(
         height = 55,
         line_length =8,
         frame_count =32,
-        shift = util.by_pixel(3.500, 6.500),
+        shift = util.by_pixel(3.5, 6.5),
         hr_version =
         {
           filename = "__base__/graphics/entity/pump/hr-pump-south-liquid.png",
@@ -12101,7 +12101,7 @@ data:extend(
           scale = 0.5,
           line_length =8,
           frame_count =32,
-          shift = util.by_pixel(0.500, -9.250)
+          shift = util.by_pixel(0.5, -9.25)
         }
       },
       west =
@@ -12111,7 +12111,7 @@ data:extend(
         height = 24,
         line_length =8,
         frame_count =32,
-        shift = util.by_pixel(-6.000, -9.000),
+        shift = util.by_pixel(-6, -9),
         hr_version =
         {
           filename = "__base__/graphics/entity/pump/hr-pump-west-liquid.png",
@@ -12120,7 +12120,7 @@ data:extend(
           scale = 0.5,
           line_length =8,
           frame_count =32,
-          shift = util.by_pixel(-6.500, -9.500)
+          shift = util.by_pixel(-6.5, -9.5)
         }
       }
     },
@@ -12145,7 +12145,7 @@ data:extend(
         filename = "__base__/graphics/entity/pump/pump-east-glass.png",
         width = 32,
         height = 32,
-        shift = util.by_pixel(0.000, -16.000),
+        shift = util.by_pixel(0, -16),
         hr_version =
         {
           filename = "__base__/graphics/entity/pump/hr-pump-east-glass.png",
@@ -12179,7 +12179,7 @@ data:extend(
           width = 192,
           height = 192,
           scale = 0.5,
-          shift = util.by_pixel(-16.000, 0.000)
+          shift = util.by_pixel(-16, 0)
         }
       }
     },

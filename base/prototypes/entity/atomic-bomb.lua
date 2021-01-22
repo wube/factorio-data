@@ -22,7 +22,7 @@ data:extend({
     fade_in_duration = 10,
     fade_away_duration = 20,
     start_scale = 2,
-    -- scale_deviation = 0.5, -- FIXME: add support for scale deviation to trivial-smoke?
+    -- scale_deviation = 0.5, -- MAYBE: add support for scale deviation to trivial-smoke?
     end_scale = 0.2,
     render_layer = "higher-object-under",
     color = {r = 0.627, g = 0.478, b = 0.345, a = 0.500},

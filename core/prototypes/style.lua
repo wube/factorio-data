@@ -637,6 +637,13 @@ data:extend(
       rich_text_highlight_ok_color = {r=0,g=255,b=0}
     },
 
+    tooltip_item_label =
+    {
+      type = "label_style",
+      parent = "label",
+      maximal_width = 200
+    },
+
     clickable_label =
     {
       type = "label_style",

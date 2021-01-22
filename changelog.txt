@@ -1,6 +1,47 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.13
+Version: 1.1.14
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.13
+Date: 22. 01. 2021
+  Minor Features:
+    - Decider combinator can output an Anything signal, which returns exactly one matching signal. (https://forums.factorio.com/28946)
+  Gui:
+    - Various small changes and fixes related to how temperatures are shown. (https://forums.factorio.com/94561)
+  Bugfixes:
+    - Fixed inconsistent usage of Optimisation and Optimization in the changelog and codebase. (https://forums.factorio.com/94476)
+    - Fixed tooltip item lists not showing in some cases. (https://forums.factorio.com/94494)
+    - Fixed missing "Can't reach" message when trying to build out of build reach. (https://forums.factorio.com/94480)
+    - Fixed corner case of fast belt dragging back and forth. (https://forums.factorio.com/94488)
+    - Fixed that belt traversing when ghost building didn't work outside manual building reach distance. (https://forums.factorio.com/94500)
+    - Fixed changing belt direction by dragging when underground part is present. (https://forums.factorio.com/94505)
+    - Fixed cancelling planned belt upgrade by ghost belt dragging. (https://forums.factorio.com/94536)
+    - Fixed that using undo on recently mined entity didn't work in latency state and produced a memory leak instead.
+    - Fixed that using smart belt building traverse when using ghost cursor (instead of shift building) was generating underground belts for free. (https://forums.factorio.com/94526)
+    - Fixed various problems related to latency state and belt building.
+    - Fixed a crash when entity ghost with self connection was destroyed. (https://forums.factorio.com/94524)
+    - Fixed items held by inserters would not draw light layer. (https://forums.factorio.com/94601)
+    - Fixed that power switch state was not saved in blueprint strings.
+    - Fixed that furnace alt-mode didn't show the last recipe, same as map view "Recipe Icons" option. (https://forums.factorio.com/94601)
+    - Fixed locomotive rebuilt through undo operation would not have its schedule restored. (https://forums.factorio.com/94610)
+    - Fixed that overlapping ghosts were removed when they shouldn't while other entities marked for deconstruction were present. (https://forums.factorio.com/94620)
+    - Fixed Train GUI crash when a temporary stop expires and no stops are valid. (https://forums.factorio.com/94296)
+    - Fixed that steam turbines fed with steam of lower temperature would show as producing more electricity in electric network info. (https://forums.factorio.com/94595)
+    - Fixed tiles would be rendered with 1px gap between them at some positions, zoom levels and screen resolutions. (https://forums.factorio.com/94671)
+    - Allowed to freely fast-replace underground pipes by pipes. (https://forums.factorio.com/94666)
+    - Fixed belt upgrading by dragging with belt gap present. (https://forums.factorio.com/94669)
+    - Fixed that tips and tricks were not animating on clients in multiplayer. (https://forums.factorio.com/94720)
+    - Increased build reach check distance for finishing belt turns to avoid unexpected gaps when moving and building. (https://forums.factorio.com/94518)
+    - Fixed a crash when rendering modded mining drills in some situations. (https://forums.factorio.com/94736)
+    - Fixed a network error related to hosting a game using the continue button. (https://forums.factorio.com/94507)
+    - Improved the manual building behaviour when building on (or behind) the edge of the reach while moving.
+    - Fixed that enemy ghost indications could be shown when hovering enemy chest. (https://forums.factorio.com/94758)
+    - Fixed tile ordering of nuclear ground.
+    - Changed tile order strings to the commented style.
+  Modding:
+    - AttackParameters::turn_range greater than 0.5 but less than 1 will be clamped to 0.5 as targeting in arcs larger than half circle is not implemented. (https://forums.factorio.com/94654)
+  Scripting:
+    - Writing nil to LuaEntity::trains_limit disables the limit (sets maximum possible value).
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.12
 Date: 16. 01. 2021
@@ -59,7 +100,7 @@ Date: 14. 01. 2021
     - Fixed that replays were broken if async saving was enabled on Linux or Mac. (https://forums.factorio.com/93423)
     - Probably fixed rare random crash related to scrolling blueprint books. (https://forums.factorio.com/93575)
     - Fixed an error related to mod GUIs when applying multiple actions in the same tick. (https://forums.factorio.com/94225)
-    - Fixed that flip state of blueprint wasn't reset when changing content into blueprint not compatibile with flipping. (https://forums.factorio.com/94214)
+    - Fixed that flip state of blueprint wasn't reset when changing content into blueprint not compatible with flipping. (https://forums.factorio.com/94214)
     - Fixed that resolved server address (when specified by name) was saved and reused when hitting the continue button, making it useless if the server uses dynamic IP address. (https://forums.factorio.com/93751)
     - Fixed that blueprint tooltip in the chat windows can shake. (https://forums.factorio.com/93317)
     - When changing item in cursor while building by dragging, the new item is applied instantly instead of the next tile. (https://forums.factorio.com/94083)
@@ -377,7 +418,7 @@ Date: 23. 11. 2020
     - Added unique technology icon for Advanced material processing 2 (Electric furnace).
     - Changed postprocessing effect in zoomed-to-world view.
     - Added detailed night lighting of entities.
-  Optimisations:
+  Optimizations:
     - Multithreaded belt update logic.
     - Overall small entity update time reduction + statistics of how much update time is taken by individual entities.
   Balancing:
@@ -2502,7 +2543,7 @@ Version: 0.17.57
 Date: 15. 07. 2019
   Changes:
     - Restored ore placement to match that of 0.17.50 (https://forums.factorio.com/72487)
-  Optimisations:
+  Optimizations:
     - Optimized synchronization time of blueprint library to a new game map. (https://forums.factorio.com/73166)
   Bugfixes:
     - Fixed glitch in pollution cloud overlay rendering. (https://forums.factorio.com/73151)
@@ -3246,7 +3287,7 @@ Version: 0.17.30
 Date: 12. 04. 2019
   Minor Features:
     - Added ability to set a maximum number of map upload slots for multiplayer servers. Setting this is recommended to prevent the server from being flooded with map fragment requests from clients.
-  Optimisations:
+  Optimizations:
     - Optimized alt-mode icon background rendering. (https://forums.factorio.com/67280)
   Bugfixes:
     - Fixed that cut tool marked trees/rocks/cliffs for deconstruction when there was other valid entity in the selection. (https://forums.factorio.com/68759)
@@ -4131,7 +4172,7 @@ Date: 26. 02. 2019
     - Added interface option: When selecting a buildable item from the quickbar or when using the pipette tool, if you have no items of that type, a ghost will be placed in the cursor instead.
     - When something is not buildable (manual or blueprint building), the reason of why it isn't buildable is shown as flying text over the cursor when the build is attempted.
     - Only compatible results of a furnace are manually placeable in the result slot. (Mainly to avoid confusion of new players)
-  Optimisations:
+  Optimizations:
     - Modernized and optimized rendering backend. The game now uses DirectX 11 or OpenGL 3.3 Core and requires DirectX 10 class graphics card.
     - DirectX backend doesn't keep backup of all sprites in RAM anymore.
     - Added high quality texture compression to reduce amount of video memory consumed by the game and increase overall rendering performance.
@@ -5386,7 +5427,7 @@ Date: 10. 01. 2018
     - Hide cliff explosives in bonus GUI as they don't really receive any bonuses. (https://forums.factorio.com/56318)
     - Tweaked the balancing of the PvP production score.
     - Changed size of offshore pump from 3x1 to 3x2 in order to prevent pump placement in overlapping positions. (https://forums.factorio.com/55110)
-  Optimisations:
+  Optimizations:
     - Optimized drawing of artillery range visualization when many artilleries were in range of viewed area. (https://forums.factorio.com/56224)
   Bugfixes:
     - Fixed that consecutive splitters could uncompress compressed belt. (https://forums.factorio.com/55645)
@@ -5520,7 +5561,7 @@ Date: 29. 12. 2017
     - Requester chests can now request stuff from buffer chests as was originally intended. Buffer chests are provided items
       only if all requester chests are satisfied for that specific item.
     - Requester chests have a checkbox that specifies whether it should or shouldn't request things from buffer chests. It is off by default.
-  Optimisations:
+  Optimizations:
     - Optimized selecting robot tasks for requester chests.
   Balancing:
     - Changed fluid wagon capacity from 75k to 25k (Same as storage tank).
@@ -5674,7 +5715,7 @@ Version: 0.16.3
 Date: 15. 12. 2017
   Changes:
     - When mining normal entities ghost entity selection is disabled until the mining key is released.
-  Optimisations:
+  Optimizations:
     - Train stop penalty is applied when exiting the block with it instead of entering which should prevent searching
       for long paths just before destination train stop.
   Bugfixes:
@@ -5914,7 +5955,7 @@ Date: 13. 12. 2017
     - Fixed that vertical size of progress bar wasn't respecting the GUI scale.
     - Fixed that the number drawn next to cursor when item is held was differently positioned compared to how it is in the inventory.
     - Fixed texture compression would not be disabled when d3dx9.dll is not installed, corrupting sprites that were expected to be compressed.
-  Optimisations:
+  Optimizations:
     - Improved performance of transport belts about x5 times. (https://www.factorio.com/blog/post/fff-176)
     - Added prefetching of the next entity in the update loop improving overall update performance by approx. 10 %.
     - Improved performance of Item manipulation (4% effect on the overall performance).
@@ -6631,7 +6672,7 @@ Date: 26. 05. 2017
 ---------------------------------------------------------------------------------------------------
 Version: 0.15.14
 Date: 26.05.2017
-  Optimisations:
+  Optimizations:
     - Optimised beacon update times which helps especially when the power is not full and it fluctuates.
   Changes:
     - Added support for using username and password for proxy connections.
@@ -7367,7 +7408,7 @@ Date: 24. 04. 2017
     - Added uranium rounds magazine and uranium cannon shells.
     - Added flamethrower to the tank.
     - Other minor changes.
-  Optimisations:
+  Optimizations:
     - Improved performance of mining drills in general and significantly improved performance when mining drills get backed up.
     - Improved performance when tiles are changed due to migration/mod removal.
     - Significantly improved GUI performance for inventories that required scroll bars.
@@ -7700,7 +7741,7 @@ Date: 14. 10. 2016
     - Added "Show player names on minimap" option to graphics settings.
     - Added multiplayer server option "Autosave only on server".
     - Deconstructing/canceling deconstruction sets the "last user" on an entity.
-  Optimisations:
+  Optimizations:
     - Further performance improvements to the trains GUI.
     - Improved performance in the browse-mods GUI when filtering/sorting.
   Bugfixes:
@@ -7736,7 +7777,7 @@ Date: 05. 10. 2016
     - Added tab-complete parameters logic to the commands: config, color, and help.
     - Updated Team production challenge with 2 new challenge modes and a new map set.
     - Reconnecting to multiplayer game that the player already is in (being dropped probably) instantly closes the previous connection and connects the player.
-  Optimisations:
+  Optimizations:
     - Improved performance when using a lot of vehicles with equipment grids in multiplayer. (https://forums.factorio.com/33688)
     - Improved performance in the Trains GUI when trains have large schedules. (https://forums.factorio.com/33421)
   Bugfixes:
@@ -7843,7 +7884,7 @@ Date: 22. 09. 2016
 ---------------------------------------------------------------------------------------------------
 Version: 0.14.8
 Date: 20. 09. 2016
-  Optimisations:
+  Optimizations:
     - The crc check cycles between sets of 10 players, reducing the time of it in crowded games.
   Minor Features:
     - Disconnecting wires now updates the "last user" tag.
@@ -8271,7 +8312,7 @@ Date: 05. 08. 2016
     - Fixed watch-your-step achievement for real this time. (https://forums.factorio.com/30434)
     - Fixed "failed to create display" error when switching to another window immediately after launching Factorio. (https://forums.factorio.com/30481)
     - Fixed issues with saving to NTFS junctions. (https://forums.factorio.com/28858)
-  Optimisations:
+  Optimizations:
     - Significantly reduced the high CPU usage caused by the main loop logic from 0.13.10.
   Modding:
     - Fixed input loader didn't resume loading after being deactivated due to full target container. (https://forums.factorio.com/28280)
@@ -8392,7 +8433,7 @@ Date: 22. 07. 2016
     - Fix that aggroing a huge amount of biters would cause UPS drop for a long time. (https://forums.factorio.com/29513)
     - Fixed freeze when dragging sound sliders in some instances. (https://forums.factorio.com/29441)
     - Fixed bullet shooting speed not working properly. (https://forums.factorio.com/28707)
-  Optimisations:
+  Optimizations:
     - Improved performance when building large electric poles in the latency state by click-and-drag. (https://forums.factorio.com/29104)
     - The game's main loop has been rewritten. This should increase performance in some cases and fixes some freezes and stability issues.
       For example game freezing when changing system time.
@@ -8597,7 +8638,7 @@ Date: 05. 07. 2016
     - Fixed of the rail signal/train stop visualization planner in specific cases. (https://forums.factorio.com/27980)
     - Fixed crash when opening train stops in the map editor. (https://forums.factorio.com/27903)
     - Fixed misaligned blueprint entities when editing blueprints and removing rails/roboports. (https://forums.factorio.com/28288)
-  Optimisations:
+  Optimizations:
     - Improved performance when there are a large (4000+) amount of alerts going off at the same time. (https://forums.factorio.com/28169)
 ---------------------------------------------------------------------------------------------------
 Version: 0.13.4
@@ -8696,7 +8737,7 @@ Date: 30. 06. 2016
     - Fixed script error in supply challenge. (https://forums.factorio.com/27689)
     - Fixed that rail signal visualization helper was not working properly in some specific cases. (https://forums.factorio.com/27328)
     - Fixed construction robots getting stuck when they return for repair pack to passive/active provider chest. (https://forums.factorio.com/27526)
-  Optimisations:
+  Optimizations:
     - Optimised rendering of huge pollution clouds on map.
   Scripting:
     - Added LuaEntityPrototype::spawn_cooldown - the spawn cooldown for enemy spawners.
@@ -8895,7 +8936,7 @@ Date: 27. 06. 2016
     - Added compression for some sprites to save video memory. This can be enabled in Graphics options.
     - Added linear filtering for GUI icons. This can be disabled in Graphics options.
     - New combinator graphics.
-  Optimisations:
+  Optimizations:
     - Optimised GUI render.
     - Minimap is rendered in 16bit colors to reduce memory usage.
     - Less memory usage for entities that are connectable to the circuit network.
@@ -9126,7 +9167,7 @@ Date: 26. 04. 2016
     - Fixed another crash than can happen when train destroys itself. (https://forums.factorio.com/23416)
     - Fixed rare multiplayer crash "server is missing in the crcs". (https://forums.factorio.com/23376)
     - Fixed several GUI problems on high DPI displays (https://forums.factorio.com/23593)
-  Optimisations:
+  Optimizations:
     - Improved performance when using landmines. (https://forums.factorio.com/23267)
   Scripting:
     - LuaUnitGroup::add_member now requires that the new member's force be the same as the UnitGroup's.
@@ -9519,7 +9560,7 @@ Version: 0.12.11
 Date: 16. 10. 2015
   Features:
     - Added --no-auto-pause: When running as a server, --no-auto-pause will prevent stopping the game when no players are connected.
-  Optimisations:
+  Optimizations:
     - Optimised the particle performance. Helps during heavy fights.
   Changes:
     - Showing the log file location when the game crashes, so it is easier to find when reporting the bug.
@@ -9587,7 +9628,7 @@ Date: 30. 09. 2015
     - Updated the tips and tricks pictures. (+added copy paste)
     - Smoothed map scrolling speed on different zoom levels.
     - Added Resume button to multiplayer game menu.
-  Optimisations:
+  Optimizations:
     - Dramatic speedup of loading packages (mods) from the zip files.
       It is recommended to used only zipped mods from now on, as on non ssd discs, it might even speed up the startup time.
     - Added FPS limiter to main menu screen.
@@ -9759,7 +9800,7 @@ Date: 28. 08. 2015
     - Inserter stack size bonus is added to the assembling machine stack limit, to avoid inserters being stuck in certain situations.
       (https://forums.factorio.com/15219)
     - Robots can charge from closer roboport when heading to distant roboport for stationing. (https://forums.factorio.com/15234)
-  Optimisations:
+  Optimizations:
     - Further optimizations in size of the Multiplayer heartbeat (message sent every tick).
   Bugfixes:
     - Fixed that editing tiles in the map editor on the edge of currently generated map could result in a corrupted scenario.
@@ -10088,7 +10129,7 @@ Date: 17. 07. 2015
     - Improvements to circuit network wire connection. You can connect multiple wires of the same color to the same entity.
     - The autosave dialog no longer cancels an active blueprint or deconstruction planner selection if the mouse button is still held after the autosave finishes
     - Number of autosave slots is now configurable through config.ini (no GUI).
-  Optimisations:
+  Optimizations:
     - Overall optimisation of train + belt heavy factories is roughly 66% compared to 0.11,
       this means that the game runs 3 times faster.
     - Optimised the transport belt movement.
@@ -10645,7 +10686,7 @@ Date: 5.1. 2015
       for deconstruction.
     - Fixed that construction robots, when deconstructing splitters/belts to ground didn't remove the items on these
       the same way as on regular transport belts first. The result was random items leftovers after deconstruction.
-  Optimisations:
+  Optimizations:
     - Reduced the cpu load caused by big count of inserters loading/unloading transport belts.
       Can reduce the update time on big factories by about 30%.
   Scripting:
@@ -10692,7 +10733,7 @@ Date: 19.12. 2014
     - Fixed the wrong buildability check for curved rail versus gate.
     - Fixed that the car wasn't always pushed by transport belts.
     - Fixed that the scorch mark was created water.
-  Optimisations:
+  Optimizations:
     - Reduced the savegame size by 53%, this reduces also the saving time by roughly 40%.
     - Reduced savegame memory usage up to 10%
 ---------------------------------------------------------------------------------------------------
@@ -10929,7 +10970,7 @@ Date: 31.10. 2014
     - Fast/Express splitter are made from the lower variants (same as with transport belts/underground belts)
     - Small electric pole can be used as fuel.
     - Changed wood fuel value from (0.6MJ->2MJ), so 2X wood made from raw wood has the same fuel value as the original raw wood.
-  Optimisations:
+  Optimizations:
     - Faster map drawing.
     - Optimized main loop. The game will automatically skip rendering when it can't keep up with expected updates per second.
       LowFPS mode has been removed because this functionality fully replaces it (it automatically lowers FPS when needed).
@@ -11294,7 +11335,7 @@ Date: 11.7. 2014
   Graphics:
     - Updated exoskeleton equipment.
     - Updated iron and steel axe icons.
-  Optimisations:
+  Optimizations:
     - Faster train movement collision check (related to https://forums.factorio.com/4611).
     - Optimised smoke update (related to https://forums.factorio.com/4611).
 ---------------------------------------------------------------------------------------------------
@@ -11388,7 +11429,7 @@ Date: 20.6. 2014
     - Idle sound for entity is not played when it is out of energy.
     - Fixed oil leak from pumpjack(https://forums.factorio.com/4353).
     - Updated item counts for starting sandbox chest(https://forums.factorio.com/4394).
-  Optimisations:
+  Optimizations:
     - Reduced slowdowns when drawing many lights (lamps, accumulators, etc.) at night (light can be a bit pixelated).
     - Limit for number of concurrent paths searched in the path finder (reduces problems for the "big save bug").
   Changes:
@@ -11456,7 +11497,7 @@ Date: 6.6. 2014
     - Changed walls/pipes/pipes to ground/boilers/pumps collision boxes logic.
       It is possible to walk between diagonal (not connected) walls now, but when connected, there is no space in between.
     - Backer names are used for Locomotives, Roboports and Radars.
-  Optimisations:
+  Optimizations:
     - Parallelised map generation, the hiccups when new part of map is generated should be smaller or non-existent.
     - Reduced the saving time (autosave included).
     - One very long path search will not block path finder for others. This should fix a bug with stuck biters.
@@ -11813,7 +11854,7 @@ Date: 14.2. 2014
     - Pipes show the fluid inside in the alt mode.
     - Only every second pipe in the row has the window.
     - Nicer rail diagonals/turns on minimap.
-  Optimisations:
+  Optimizations:
     - Optimisation of the logistic network update - slow performance with many robots with cargo and no place to put it.
     - Optimisation of the electric network update by the factor of 5.
     - Optimisation of inserters update, inserters that have nothing to do are set to sleep and woke up when their target/source changes.
@@ -12062,7 +12103,7 @@ Date: 6.12. 2013
     - Fixed unlimited length of wire when shift building smart inserters.
     - Fail silently when player data cannot be loaded.
     - Configs are saved before unloading graphics and sound.
-  Optimisations:
+  Optimizations:
     - Enemy spawners are deactivated when there is no enemy force nearby.
   Balancing:
     - Increased mining speed of burner mining drill.
@@ -12380,7 +12421,7 @@ Date: 27.9. 2013
     - Fixed crash when player hovers ammo placed in quickbar.
     - Fixed bug of losing bonus production in furnace/assembling machine when the output slot is full (the production will stop instead).
     - Item tooltip is updated when the item on selected slot changes and closed when the slot is cleared.
-  Optimisations:
+  Optimizations:
     - Mining drills deactivate when the resources run out.
     - Speedups in the path finding (though path finding around very big lakes is still slow).
     - Speedups in enemy movement.
@@ -12513,11 +12554,11 @@ Date: 26.7. 2013
     - Updater protocol should now behave slightly better with firewalls.
     - Fixed bug with rail path planning on cycle rail.
     - Lowered darkness in the middle of the night.
-  Optimisations:
+  Optimizations:
     - Game render and update can run in different threads.
     - Optimisation of the game render.
     - Parallelisation of the render preparation (number of threads is configurable).
-    - Transport belt simulation optimisations
+    - Transport belt simulation optimizations
   Changes:
     - Assembling machine and furnace use the ingredients when they start creating the product.
     - Rotated tool equip GUI. Gives more space to right side block.
@@ -12570,7 +12611,7 @@ Date: 22.6. 2013
     - Limit the frequency of the message sound.
   Changes:
     - The assembling machine 2 speed is now slightly faster (from 1.5 to 2).
-  Optimisations:
+  Optimizations:
     - The game doesn't play (and encode) the ambient when ambient volume is 0.
     - The game doesn't simulate fish (and other stuff in the future) that are far away.
 ---------------------------------------------------------------------------------------------------
@@ -12643,7 +12684,7 @@ Date: 7.6. 2013
     - Enemy base generation settings can be set in the map generation GUI.
     - Load game GUI automatically selects latest save when opened.
     - Crop Cache for atlas (requires less video memory to run, first load when crop cache is initialized can be slower)
-  Optimisations:
+  Optimizations:
     - Faster loading times (sounds are loaded when needed, faster images loading)
   Graphics:
     - New GUI look.
@@ -13083,7 +13124,7 @@ Date: 31.1. 2013
   Bugfixes:
     - Crash when mining tool is crafted and automatically equipped while mining with bare hands.
     - Localisation bugfixes
-    - Transport belt movement optimisations.
+    - Transport belt movement optimizations.
     - Connection of transport belt to underground belt from the opposite side (on game load)
     - Rail building and selection boxes
     - Get the item in the hand of inserter when it is mined.
