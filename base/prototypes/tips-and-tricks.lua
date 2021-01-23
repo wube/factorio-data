@@ -743,6 +743,66 @@ data:extend(
     dependencies = {"drag-building"},
     simulation = simulations.drag_building_underground
   },
+  {
+    type = "tips-and-tricks-item",
+    name = "fast-belt-bending",
+    tag = "[entity=transport-belt]",
+    category = "drag-building",
+    order = "d",
+    indent = 1,
+    trigger =
+    {
+      type = "build-entity",
+      entity = "transport-belt",
+      match_type_only = true,
+      count = 200,
+      build_by_dragging = true
+    },
+    skip_trigger =
+    {
+      type = "fast-belt-bend",
+      count = 3
+    },
+    dependencies = {"drag-building"},
+    simulation = simulations.smart_belt_building
+  },
+
+  {
+    type = "tips-and-tricks-item",
+    name = "fast-obstacle-traversing",
+    tag = "[entity=transport-belt][entity=underground-belt]",
+    category = "drag-building",
+    order = "e",
+    indent = 1,
+    trigger =
+    {
+      type = "and",
+      triggers =
+      {
+        {
+          type = "build-entity",
+          entity = "transport-belt",
+          match_type_only = true,
+          count = 200,
+          build_by_dragging = true
+        },
+        {
+          type = "build-entity",
+          entity = "underground-belt",
+          match_type_only = true,
+          count = 20,
+          build_by_dragging = true
+        }
+      }
+    },
+    skip_trigger =
+    {
+      type = "belt-traverse",
+      count = 3
+    },
+    dependencies = {"drag-building"},
+    simulation = simulations.fast_obstacle_traversing
+  },
 
   {
     type = "tips-and-tricks-item-category",

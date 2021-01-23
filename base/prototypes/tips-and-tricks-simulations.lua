@@ -1500,6 +1500,187 @@ simulations.drag_building_underground =
   ]]
 }
 
+
+simulations.smart_belt_building =
+{
+  init =
+  [[
+
+    player = game.create_test_player{name = "big k"}
+    player.teleport({0, 2.5})
+    game.camera_player = player
+    game.camera_player_cursor_position = player.position
+    game.camera_alt_info = true
+    item_name = "transport-belt"
+    direction = 2
+
+    step_1 = function()
+      player.cursor_stack.set_stack{name = item_name, count = 50}
+      game.camera_player_cursor_direction = direction
+      script.on_nth_tick(1, function()
+        if game.move_cursor{position = {-3.5, -1.5}} then
+          step_2()
+        end
+      end)
+    end
+
+    step_2 = function()
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_3()
+      end)
+    end
+
+    step_3 = function()
+      player.drag_start_position = {3.5, -1.5}
+      local target = {3.5, 0.5}
+      script.on_nth_tick(1, function()
+        local finished = game.move_cursor{position = target}
+        player.raw_build_from_cursor{created_by_moving = true}
+        if finished then
+          step_4()
+        end
+      end)
+    end
+
+    step_4 = function()
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        game.camera_player_cursor_direction = 4
+        player.raw_build_from_cursor{position = {3.5, -1.5}}
+        player.raw_build_from_cursor{position = {3.5, -0.5}}
+        player.raw_build_from_cursor{position = {3.5, 0.5}}
+        step_5()
+      end)
+    end
+
+    step_5 = function()
+      local target = {3.5, 2.5}
+      script.on_nth_tick(1, function()
+        local finished = game.move_cursor{position = target}
+        player.raw_build_from_cursor{created_by_moving = true}
+        if finished then
+          step_6()
+        end
+      end)
+    end
+
+    step_6 = function()
+      player.drag_start_position = nil
+      local target = player.position
+      script.on_nth_tick(1, function()
+        local finished = game.move_cursor{position = target}
+        if finished then
+          reset()
+        end
+      end)
+    end
+
+    reset = function()
+      local count = 60
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        for k, v in pairs (player.surface.find_entities_filtered{name = "transport-belt"}) do
+          v.destroy()
+        end
+        start()
+      end)
+    end
+
+    start = function()
+      local count = 60
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_1()
+      end)
+    end
+
+    start()
+
+  ]]
+}
+
+simulations.fast_obstacle_traversing =
+{
+  init =
+  [[
+    player = game.create_test_player{name = "Arnold J. Rimmer"}
+    player.teleport({0, 2.5})
+    game.camera_player = player
+    game.camera_player_cursor_position = player.position
+    game.camera_alt_info = true
+    player.surface.create_entity{name="stone-furnace", position = {1, -1}}
+    item_name = "transport-belt"
+    direction = 2
+
+    step_1 = function()
+      player.cursor_stack.set_stack{name = item_name, count = 50}
+      player.insert{name = "underground-belt", count = 2}
+      game.camera_player_cursor_direction = direction
+      script.on_nth_tick(1, function()
+        if game.move_cursor{position = {-3.5, -1.5}} then
+          step_2()
+        end
+      end)
+    end
+
+    step_2 = function()
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_3()
+      end)
+    end
+
+    step_3 = function()
+      local target = {4.5, -1.5}
+      script.on_nth_tick(1, function()
+        local finished = game.move_cursor{position = target}
+        player.raw_build_from_cursor{created_by_moving = true}
+        if finished then
+          step_4()
+        end
+      end)
+    end
+
+    step_4 = function()
+      local target = player.position
+      script.on_nth_tick(1, function()
+        local finished = game.move_cursor{position = target}
+        if finished then
+          reset()
+        end
+      end)
+    end
+
+    reset = function()
+      local count = 60
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        for k, v in pairs (player.surface.find_entities_filtered{name = "transport-belt"}) do
+          v.destroy()
+        end
+        for k, v in pairs (player.surface.find_entities_filtered{name = "underground-belt"}) do
+          v.destroy()
+        end
+        start()
+      end)
+    end
+
+    start = function()
+      local count = 60
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_1()
+      end)
+    end
+
+    start()
+  ]]
+}
+
 simulations.trains =
 {
   init_update_count = 300,

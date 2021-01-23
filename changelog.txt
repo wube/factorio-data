@@ -1,6 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.14
+Version: 1.1.15
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.14
+Date: 23. 01. 2021
+  Optimizations:
+    - Improved save-game speed by up to 2x depending on the save file size.
+  Bugfixes:
+    - Fixed that ghost reversion orders prevented manual reversion. (https://forums.factorio.com/94776)
+    - Fixed application of the forced ghost mode that removes trees/rocks/cliffs in the way when ghost building. (https://forums.factorio.com/94784)
+    - Fixed that undo didn't work for upgrade order created by ghost overbuilding.
+    - Fixed extra collision message for ghost drag-building belts. (https://forums.factorio.com/94777)
+    - Fixed crash related to rolling stock drag building. (https://forums.factorio.com/94785)
+    - Fixed not loadable saves related to invalid blueprint settings when entities are migrated in a certain way. (https://forums.factorio.com/94767)
+    - Added missing tips and trick entries related to fast belt bending and belt traversing.
+    - Fixed a crash related to building rail in a specific situation. (https://forums.factorio.com/94808)
+    - Fixed underground belt collision check with underground belt ghost. (https://forums.factorio.com/94817)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.13
 Date: 22. 01. 2021
@@ -22,7 +37,7 @@ Date: 22. 01. 2021
     - Fixed a crash when entity ghost with self connection was destroyed. (https://forums.factorio.com/94524)
     - Fixed items held by inserters would not draw light layer. (https://forums.factorio.com/94601)
     - Fixed that power switch state was not saved in blueprint strings.
-    - Fixed that furnace alt-mode didn't show the last recipe, same as map view "Recipe Icons" option. (https://forums.factorio.com/94601)
+    - Fixed that furnace alt-mode didn't show the last recipe, same as map view "Recipe Icons" option. (https://forums.factorio.com/94640)
     - Fixed locomotive rebuilt through undo operation would not have its schedule restored. (https://forums.factorio.com/94610)
     - Fixed that overlapping ghosts were removed when they shouldn't while other entities marked for deconstruction were present. (https://forums.factorio.com/94620)
     - Fixed Train GUI crash when a temporary stop expires and no stops are valid. (https://forums.factorio.com/94296)
