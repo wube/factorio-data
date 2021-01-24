@@ -97,6 +97,19 @@ simulations.entity_transfers =
     game.surfaces[1].create_entity{name = "coal", position = {-5.5, -1.5}, amount = 123456}
     game.surfaces[1].create_entity{name = "coal", position = {-4.5, -1.5}, amount = 654321}
     game.surfaces[1].create_entity{name = "iron-ore", position = {-5.5, 1.5}, amount = 314159}
+    local chest_name = "wooden-chest"
+
+    local entities = game.entity_prototypes
+    if not (entities[chest_name]) then
+      for name, entity in pairs (entities) do
+        if entity.type == "container" and entity.get_inventory_size(defines.inventory.chest) > 0 then
+          chest_name = name
+          break
+        end
+      end
+    end
+
+    local chest = game.surfaces[1].find_entity(chest_name, {-3.5, 1.5}) or game.surfaces[1].create_entity{name = chest_name, position = {-3.5, 1.5}, force = "player"}
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
@@ -110,9 +123,8 @@ simulations.entity_transfers =
         burnieboy.insert({name = "coal", count = 41})
       end
 
-      local wood = game.surfaces[1].find_entity("wooden-chest", {-3.5, 1.5})
-      wood.clear_items_inside()
-      wood.insert({name = "iron-ore", count = 80})
+      chest.clear_items_inside()
+      chest.insert({name = "iron-ore", count = 80})
 
       for k, furnaceboy in pairs (game.surfaces[1].find_entities_filtered{type = "furnace"}) do
         furnaceboy.crafting_progress = 0
@@ -200,7 +212,7 @@ simulations.entity_transfers =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        local finished = game.move_cursor({position = {-4, -1}})
+        local finished = game.move_cursor({position = {-4, -1.5}})
         if player.selected and player.selected ~= selected then
           selected = player.selected
           fake_transfer_from(player.selected)
@@ -217,7 +229,7 @@ simulations.entity_transfers =
         count = count - 1
         if count > 0 then return end
 
-        local finished = game.move_cursor({position = {0, -1}})
+        local finished = game.move_cursor({position = {0, -1.5}})
 
         if finished then
           step_4()
@@ -249,7 +261,7 @@ simulations.entity_transfers =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        local finished = game.move_cursor({position = {-3.5, 1.5}})
+        local finished = game.move_cursor({position = chest.position})
         if finished then
           step_6()
         end
@@ -568,26 +580,63 @@ simulations.show_info =
 {
   init =
   [[
-    local assembler = game.surfaces[1].create_entity{name = "assembling-machine-1", position = {-4.5, -1.5}, force = "player"}
+    local width = 0
+
+    function box_width(box)
+      return box.right_bottom.x - box.left_top.x
+    end
+
+    function box_height(box)
+      return box.right_bottom.y - box.left_top.y
+    end
+
+    local entity_prototypes = game.entity_prototypes
+
+    local assembler_box = entity_prototypes["assembling-machine-1"].selection_box
+    local mining_drill_box = entity_prototypes["burner-mining-drill"].selection_box
+    local wooden_chest_box = entity_prototypes["wooden-chest"].selection_box
+    local lab_box = entity_prototypes["lab"].selection_box
+    local first_row_width = box_width(assembler_box) + 1 + box_width(mining_drill_box) + 1 + box_width(wooden_chest_box) + 1 + box_width(lab_box)
+    local first_row_height = math.max(box_height(assembler_box), box_height(mining_drill_box), box_height(wooden_chest_box), box_height(lab_box))
+
+    local steam_engine_box = entity_prototypes["steam-engine"].selection_box
+    local boiler_box = entity_prototypes["boiler"].selection_box
+    local second_row_width = box_height(steam_engine_box) + 1 + box_width(boiler_box) + 1 + 2 -- two 2 is for the pipes formation
+    local second_row_height = math.max(box_width(steam_engine_box), box_height(boiler_box), 2) -- two 2 is for the pipes formation
+
+    local height = first_row_height + 1 + second_row_height
+    local y = (-height) / 2 + first_row_height / 2
+    local x = (-first_row_width) / 2
+
+    local assembler = game.surfaces[1].create_entity{name = "assembling-machine-1", position = {x - assembler_box.left_top.x, y}, force = "player"}
     assembler.set_recipe("iron-gear-wheel")
+    x = x + box_width(assembler_box) + 1
 
-    game.surfaces[1].create_entity{name = "burner-mining-drill", position = {-1, -2}, force = "player"}
+    game.surfaces[1].create_entity{name = "burner-mining-drill", position = {x - mining_drill_box.left_top.x, y}, direction = defines.direction.east, force = "player"}
+    x = x + box_width(mining_drill_box) + 1
 
-    local chest = game.surfaces[1].create_entity{name = "wooden-chest", position = {1.5, -1.5}, force = "player"}
+    local chest = game.surfaces[1].create_entity{name = "wooden-chest", position = {x - wooden_chest_box.left_top.x, y}, force = "player"}
     chest.get_output_inventory().insert{name = "iron-plate", count = 1}
     chest.get_output_inventory().insert{name = "iron-gear-wheel", count = 1}
     chest.get_output_inventory().insert{name = "electronic-circuit", count = 1}
+    x = x + box_width(wooden_chest_box) + 1
 
-    local lab = game.surfaces[1].create_entity{name = "lab", position = {4.5, -1.5}, force = "player"}
+    local lab = game.surfaces[1].create_entity{name = "lab", position = {x - lab_box.left_top.x, y}, force = "player"}
     lab.get_output_inventory().insert{name = "automation-science-pack", count=1}
 
-    local pipe = game.surfaces[1].create_entity{name = "pipe", position = {4.5, 2.5}, force = "player"}
-    pipe.insert_fluid{name = "water", amount = 100}
-    game.surfaces[1].create_entity{name = "pipe-to-ground", position = {4.5, 1.5}, force = "player", direction = defines.direction.south}
-    game.surfaces[1].create_entity{name = "pipe-to-ground", position = {5.5, 2.5}, force = "player", direction = defines.direction.west}
+    y = y + (first_row_height + second_row_height) / 2 + 1
+    x = (-second_row_width) / 2
 
-    game.surfaces[1].create_entity{name = "boiler", position = {1.5, 2}, force = "player"}
-    game.surfaces[1].create_entity{name = "steam-engine", position = {-4, 2}, force = "player", direction = defines.direction.east}
+    game.surfaces[1].create_entity{name = "steam-engine", position = {x - steam_engine_box.left_top.y, y}, force = "player", direction = defines.direction.east}
+    x = x + box_height(steam_engine_box) + 1 --box height as it is rotated
+
+    game.surfaces[1].create_entity{name = "boiler", position = {x - boiler_box.left_top.x, y}, force = "player"}
+    x = x + box_width(boiler_box) + 1
+
+    local pipe = game.surfaces[1].create_entity{name = "pipe", position = {x + 0.5, y}, force = "player"}
+    pipe.insert_fluid{name = "water", amount = 100}
+    game.surfaces[1].create_entity{name = "pipe-to-ground", position = {x + 0.5, y - 1}, force = "player", direction = defines.direction.south}
+    game.surfaces[1].create_entity{name = "pipe-to-ground", position = {x + 1.5, y}, force = "player", direction = defines.direction.west}
   ]],
   update =
   [[
@@ -1218,16 +1267,58 @@ simulations.move_between_labs =
   init_update_count = 800,
   init =
   [[
+
+    local science_1 = "automation-science-pack"
+    local science_2 = "logistic-science-pack"
+    local technology = "railway"
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
       string = "0eNq1VduOmzAQ/Rc/wwoTLoFfqSpkzECtgo18WTWN8u8dYJdmG7MhUZcnbM+cmTNzPD6TuncwaiEtKc9EcCUNKb+diRGdZP20Z08jkJIICwMJiGTDtOpZTS4BEbKBX6Skl+8BAWmFFbC4z4tTJd1Qg0aD1VHIVkg8CvkPMBYBR2XQTckpFEKFxUsakBP+ZC/pHGGxrwxYK2RnJjsNg3qFyuFZb0FDU03Z4VHLegMBWbaXTN4TVp0wVvDQcAGSQzgy/hPDc+Um6nEUBWRQzWTKbNgDm5P7y+9yCW5YxSurFs3DXrEGt28pHa8JNUIDX07R/624ytnRWeKJcVhjWM2kGZW2YQ29r3LZx8pdBUo8wMnO5Lcwsx3Jp/vbfviatjNn1cCmQP+z8dnKy7ja2Bnfw4m+MfJB5CsE9FhSjcoECbo7hXgVQbeMwy3i4R3wXxnVrm1BV0b8RkQarZ8n8HEN7JCj7jTWobkrqfRGUmv7hdzofvGEdKM90qXRUxzoNodtCVP6YeZtC3fK3Ocff+4f3XE/fO6e3HFPHu/BvhakjwPTXcDZ1cwwoK1/KG3lmvkg8z2Q9CHI4w7I+CHE4hlNx3evJT7M88tdXj30AXnFMbnMjiNN8iLOaZbnRYYa+gMBb6VK",
       position = {-2, -2}
     }
 
+    local items = game.item_prototypes
+    local technologies = game.technology_prototypes
+    if not (technologies[technology] and items[science_1] and items[science_2]) then
+      technology = nil
+      for k, tech in pairs (technologies) do
+        local units = tech.research_unit_ingredients
+        if #units == 2 then
+          technology = tech.name
+          science_1 = units[1].name
+          science_2 = units[2].name
+          break
+        end
+      end
+    end
+
+    if not technology then return end
+
+    chest_1 = game.surfaces[1].find_entity("infinity-chest", {-9.5, -6.5})
+    if chest_1 then
+      chest_1.set_infinity_container_filter(1, {name = science_1, count = 100, index = 1})
+    end
+
+    chest_2 = game.surfaces[1].find_entity("infinity-chest", {-3.5, -6.5})
+    if chest_2 then
+      chest_2.set_infinity_container_filter(1, {name = science_2, count = 100, index = 1})
+    end
+
+    for name, prerequisite in pairs (technologies[technology].prerequisites) do
+      game.forces.player.technologies[name].researched = true
+    end
+
     game.forces.player.laboratory_speed_modifier = 3
-    game.forces.player.technologies["logistic-science-pack"].researched = true
-    game.forces.player.add_research("landfill")
-    script.on_nth_tick(300, function() game.forces.player.research_progress = 0 end)
+    game.forces.player.add_research(technology)
+    script.on_event(defines.events.on_research_finished,
+    function(event)
+      if not event.by_script then
+        event.research.researched = false
+        event.research.force.add_research(event.research.name)
+        event.research.force.research_progress = 0
+      end
+    end)
   ]]
 }
 
@@ -1611,6 +1702,7 @@ simulations.fast_obstacle_traversing =
     game.camera_player = player
     game.camera_player_cursor_position = player.position
     game.camera_alt_info = true
+    game.smart_belt_building = true
     player.surface.create_entity{name="stone-furnace", position = {1, -1}}
     item_name = "transport-belt"
     direction = 2
@@ -2414,11 +2506,14 @@ simulations.copy_entity_settings =
 {
   init =
     [[
-      game.surfaces[1].create_entities_from_blueprint_string
+      local surface = game.surfaces[1]
+      surface.create_entities_from_blueprint_string
       {
         string = "0eNqVkd0OgjAMhd+l15sRRKd7FWPMwAabsEK2+UMI7+6AG4xGw11P037npO0gr27YOOIAugMqavagjx14KtlUQy+0DYIGCmhBABs7KOM92rwiLqU1xZUYZQq9AOILPkEn/UkAcqBAOPFG0Z75ZnN0ceA3SUBT+7hc85AgAmW22gpoY7FebaOPw4KmWK5mWaJx8nFFrGKGD690qVcy9/oC3CwE/uNlC3lvtxguPf5Gz14p4I7OjxvpPsnUIVXJTqmDWvf9C5Gbou0=",
         position = {0, -1}
       }
+      surface.create_entity{name = "substation", position = {0, -10}}
+      surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
 
 
     player = game.create_test_player{name = "big k"}
@@ -3328,12 +3423,14 @@ simulations.fast_replace =
 {
   init =
   [[
-
-    game.surfaces[1].create_entities_from_blueprint_string
+    local surface = game.surfaces[1]
+    surface.create_entities_from_blueprint_string
     {
       string = "0eNqVk11ugzAQhO+yz3ZUE4gDV4mqytAtWck/yHaaUsTda4haRQq05c1r7XzjtccD1PqCnScboRqAGmcDVKcBArVW6Wkv9h1CBRTRAAOrzFSpENDUmmzLjWrOZJELGBmQfcUPqMT4zABtpEh4481F/2IvpkafGn5IIbokviqtE71zIUmcnXwThov9rmDQp1W5K8aRPXCyf3H+xOx/H+zxYPk38GkZmG8FinsgA48Nzdf+Rh6VN0nbqs8khgWzYqPZmhd5Z3mb7Pj1jKiXrA4brfIVq8Z1HXreqFovjiQ35kOsvMNxWz5umJTdOe3V3edg8I4+zJLsKHJZZlIcpCxl6v8CsJoP7g==",
       position = {0, 0}
     }
+    surface.create_entity{name = "substation", position = {0, -10}}
+    surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
 
     player = game.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
@@ -3632,8 +3729,13 @@ simulations.rotating_assemblers =
     game.camera_player_cursor_position = player.position
     game.camera_alt_info = true
 
-    local assembler_1 = game.surfaces[1].create_entity{name = "assembling-machine-2", position = {-3.5, -0.5}, force = "player"}
-    local assembler_2 = game.surfaces[1].create_entity{name = "assembling-machine-2", position = {3.5, -0.5}, force = "player"}
+    local surface = game.surfaces[1]
+
+    surface.create_entity{name = "substation", position = {0, -10}}
+    surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
+
+    local assembler_1 = surface.create_entity{name = "assembling-machine-2", position = {-3.5, -0.5}, force = "player"}
+    local assembler_2 = surface.create_entity{name = "assembling-machine-2", position = {3.5, -0.5}, force = "player"}
 
     assembler_1.set_recipe("electric-engine-unit")
     assembler_2.set_recipe("electric-engine-unit")

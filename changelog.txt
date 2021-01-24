@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.15
+Version: 1.1.16
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.15
+Date: 24. 01. 2021
+  Changes:
+    - Allowed to build blueprints anywhere regardless fog of war.
+      Deconstruction planner, blueprint creation and related actions are still limited by the fog of war, so you can't easily make
+      changes to the blueprint built out of fog of war, but this still feels like a better solution compared to having to use non-chart
+      building of huge blueprints when no radar coverage is available.
+  Bugfixes:
+    - Fixed that ghost reversion orders prevented manual reversion of existing underground belt. (https://forums.factorio.com/94834)
+    - Fixed that clicking near the train stop in a map mode with a spidertron remote with control settings that have conflicting
+      the send click and open click opened the statio instead of sending the spidertron. (https://forums.factorio.com/94814)
+    - Fixed that the fast belt traversing tutorial didn't work when the option was turned off.
+    - Fixed that ghosted wagons weren't properly considered for snapping. (https://forums.factorio.com/94835)
+    - Fixed logic of searching for free space to exit car when the car was just destroyed, which could lead into passangers being
+      stuck when the car was surrounded at the time of destruction. (https://forums.factorio.com/94845)
+    - Fixed script error if you lose supply challenge in multiplayer. (https://forums.factorio.com/94847)
+    - Tweaked the tips & tricks simulation to be more prepared for mods.
+    - Made it possible to fast-revive cargo wagons. (https://forums.factorio.com/94851)
+    - Fixed plural localisation error in supply challenge. (https://forums.factorio.com/94855)
+    - Fixed multiplayer desync related to electric pole ghost building.
+    - Fixed that pump was using double the energy when transferring to fluid wagon, which could, with the combination of the limited
+      energy buffer, limit the speed of transfer to the wagon, and result in a flickery change of pump speed reporting. (https://forums.factorio.com/94852)
+    - Fixed the entity transfer tutorial to work properly when mods change stack sizes of some of the related items. (https://forums.factorio.com/93833)
+    - Fixed 'Move between labs' tip erroring with some mods. (https://forums.factorio.com/92809)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.14
 Date: 23. 01. 2021
