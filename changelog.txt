@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.16
+Version: 1.1.17
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.16
+Date: 25. 01. 2021
+  Bugfixes:
+    - Fixed possible crashes when building train wagons near train wagon ghosts that are not on rails.
+    - Fixed that the search didn't work correctly in the prototypes GUI in some cases. (https://forums.factorio.com/94889)
+    - Fixed that extra warning sound was played when upgrading underground from the exit side. (https://forums.factorio.com/94887)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.15
 Date: 24. 01. 2021
