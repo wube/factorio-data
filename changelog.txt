@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.17
+Version: 1.1.18
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.17
+Date: 25. 01. 2021
+  Bugfixes:
+    - Limited blueprint building to charted areas - still regardless of fog of war. (https://forums.factorio.com/94933)
+    - Fixed the ability to build belts outside placement range in situations where it shouldn't be possible. (https://forums.factorio.com/94912)
+    - Fixed that modded rapid trains could cause consistency issues with rails. Trains faster than 7386.3km/h will be limited to that speed. (https://forums.factorio.com/94924)
+  Scripting:
+    - Added on_entity_logistic_slot_changed for player and vehicle personal logistics.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.16
 Date: 25. 01. 2021
@@ -19,10 +28,10 @@ Date: 24. 01. 2021
   Bugfixes:
     - Fixed that ghost reversion orders prevented manual reversion of existing underground belt. (https://forums.factorio.com/94834)
     - Fixed that clicking near the train stop in a map mode with a spidertron remote with control settings that have conflicting
-      the send click and open click opened the statio instead of sending the spidertron. (https://forums.factorio.com/94814)
+      the send click and open click opened the station instead of sending the spidertron. (https://forums.factorio.com/94814)
     - Fixed that the fast belt traversing tutorial didn't work when the option was turned off.
     - Fixed that ghosted wagons weren't properly considered for snapping. (https://forums.factorio.com/94835)
-    - Fixed logic of searching for free space to exit car when the car was just destroyed, which could lead into passangers being
+    - Fixed logic of searching for free space to exit car when the car was just destroyed, which could lead into passengers being
       stuck when the car was surrounded at the time of destruction. (https://forums.factorio.com/94845)
     - Fixed script error if you lose supply challenge in multiplayer. (https://forums.factorio.com/94847)
     - Tweaked the tips & tricks simulation to be more prepared for mods.
