@@ -109,13 +109,13 @@ simulations.entity_transfers =
       end
     end
 
-    local chest = game.surfaces[1].find_entity(chest_name, {-3.5, 1.5}) or game.surfaces[1].create_entity{name = chest_name, position = {-3.5, 1.5}, force = "player"}
-
     game.surfaces[1].create_entities_from_blueprint_string
     {
       string = "0eNqV0ttuwyAMANB/8TOpFHJh5VemacrF6ywlJgKyLYr495GiTdWWtesTMsgHG7xCO8w4WWIPegXqDDvQjys4OnEzbHt+mRA0kMcRBHAzblE7W0abjcTEp6y3NAwQBBD3+AE6D+Km4LxhzF6i03R4kSvDkwBkT54wlXIOlmeexxZtxK8WIWAyLuYa3m6OXlYLWOISa4KeLHbpTG4l/pDlnXK5K9c7cvFH27/M4ovcQcr/ItUVpLqzx2TJ249Xf8PvxvTIWfeKzu+IxSGZ+aEK21+fx0JfzKGAN7QuXfSQl+ooVV4rdVRFCJ9StORn",
       position = {-1,0},
     }
+
+    local chest = game.surfaces[1].find_entity(chest_name, {-3.5, 1.5}) or game.surfaces[1].create_entity{name = chest_name, position = {-3.5, 1.5}, force = "player"}
 
     reset_items = function()
       for k, burnieboy in pairs (game.surfaces[1].find_entities_filtered{type = "mining-drill"}) do

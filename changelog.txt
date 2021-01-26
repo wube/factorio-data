@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.19
+Version: 1.1.20
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.19
+Date: 26. 01. 2021
+  Bugfixes:
+    - Fixed certain build by dragging inconsistencies.
+    - Fixed that force-building blueprint from blueprint library near a train stop could add the stop into the schedule instead of building the blueprint. (https://forums.factorio.com/94940)
+    - Fixed desync/consistency issue related to drag building ghost electric pole, while the previous pole is built by robots before the next ghost is built.
+    - Fixed build distance check related to rotation of rectangular entities. (https://forums.factorio.com/94967)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.18
 Date: 25. 01. 2021
