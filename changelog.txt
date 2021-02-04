@@ -1,6 +1,42 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.20
+Version: 1.1.21
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.20
+Date: 04. 02. 2021
+  Changes:
+    - Added hotkey (default O) to toggle the train overview GUI.
+  Bugfixes:
+    - Fixed that gates would open for spidertron. (https://forums.factorio.com/94992)
+    - Fixed tank weapon cooldown rendering. (https://forums.factorio.com/95013)
+    - Fixed that changing the force of a player or spidertron would lose logistic requests. (https://forums.factorio.com/95096)
+    - Fixed that deleting the last scenario didn't correctly clear name, description and preview in the new game gui. (https://forums.factorio.com/95243)
+    - Fixed that it wasn't possible to manually merge trains in chests. (https://forums.factorio.com/95281)
+    - Fixed a crash when rendering rich text tooltips in some cases. (https://forums.factorio.com/95294)
+    - Fixed the Trains/Train stop GUI showing trains on other surfaces. (https://forums.factorio.com/95366)
+    - Fixed player dying in a scenario inside simulation widget would end currently running scenario. (https://forums.factorio.com/95285)
+    - Fixed that create_entities_from_blueprint_string didn't insert train fuel. (https://forums.factorio.com/95286)
+    - Fixed that building blueprints in the game next to uncharted areas didn't work as expected. (https://forums.factorio.com/95056)
+    - Fixed biters and groups in Wave defense overloading the pathfinder. (https://forums.factorio.com/95542)
+    - Building gets interrupted when moving between map and game view. (https://forums.factorio.com/95187)
+    - Fixed building error message spam when building transport belts over obstacle. (https://forums.factorio.com/95402)
+    - Fixed that undoing deconstruction of building with modules created extra module request. (https://forums.factorio.com/95466)
+    - Fixed inconsistency related to building out of reach and moving. (https://forums.factorio.com/95310)
+    - Fixed that the selected map generator preset was not correctly saved when generating a map for multiplayer or map editor. (https://forums.factorio.com/95277)
+    - Fixed that the map generator GUI would only save it's state when pressing Next/Play. (https://forums.factorio.com/95277)
+    - Fixed that dropping single items into machines using modules didn't clear the module requests. (https://forums.factorio.com/95564)
+    - Fixed that the stations list wasn't sorted using natural sort order. (https://forums.factorio.com/95261)
+    - Fixed the blueprint import with odd odd grid offsets. (https://forums.factorio.com/95614)
+    - Fixed that the game didn't show name of the item in the request slot tooltip when it is disabled for being already set. (https://forums.factorio.com/95370)
+    - Fixed that the undo button tooltip didn't update when clicked. (https://forums.factorio.com/95259)
+    - Fixed bad tooltip indentation when instruction can't fit one line. (https://forums.factorio.com/95242)
+    - Fixed overbuilding underground pipe ghosts with real pipes underground pipes. (https://forums.factorio.com/95038)
+    - Fixed inconsistency in direction selection when being a client in a multiplayer game. (https://forums.factorio.com/95330)
+    - Fixed that overbuilding pole out of reach didn't consider the pole to be part of the drag buliding logic. (https://forums.factorio.com/95365)
+    - Fixed that the "Continue" button wouldn't remember whether the last game was single-player or multi-player when non-blocking saving was enabled. (https://forums.factorio.com/92804)
+    - Fixed rare electric network migration error related to loading save without all the related mods. (https://forums.factorio.com/95478)
+  Scripting:
+    - Added on_research_reversed.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.19
 Date: 26. 01. 2021

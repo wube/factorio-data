@@ -49,15 +49,18 @@ local on_rocket_launched = function(event)
 
 end
 
-if not remote.interfaces["silo_script"] then
-  remote.add_interface("silo_script",
-  {
-    set_no_victory = function(bool)
-      if type(bool) ~= "boolean" then error("Value for 'set_no_victory' must be a boolean") end
-      global.no_victory = bool
-    end
-  })
+local add_remote_interface = function()
+  if not remote.interfaces["silo_script"] then
+    remote.add_interface("silo_script",
+    {
+      set_no_victory = function(bool)
+        if type(bool) ~= "boolean" then error("Value for 'set_no_victory' must be a boolean") end
+        global.no_victory = bool
+      end
+    })
+  end
 end
+add_remote_interface()
 
 local silo_script = {}
 
@@ -73,6 +76,7 @@ silo_script.on_configuration_changed = function()
     remove_old_gui()
     log("Remove the old silo script GUI")
   end
+  script_data.finished = script_data.finished or {}
 end
 
 silo_script.on_init = function()
@@ -81,6 +85,14 @@ end
 
 silo_script.on_load = function()
   script_data = global.silo_script or script_data
+end
+
+silo_script.get_events = function()
+  return silo_script.events
+end
+
+silo_script.add_remote_interface = function()
+  add_remote_interface()
 end
 
 return silo_script
