@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.21
+Version: 1.1.22
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.21
+Date: 05. 02. 2021
+  Bugfixes:
+    - Fixed crash related to using belt traversing in latency state. (https://forums.factorio.com/95693)
+    - Fixed crash triggered by desync while entities are marked for upgrade in latency state.
+    - Fixed non precise belt traversing behaviour in latency state.
+    - Fixed a desync related to upgrading entities in the latency state.
+    - Fixed upgrading unpaired underground belt by smart ghost building.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.20
 Date: 04. 02. 2021
@@ -32,7 +41,7 @@ Date: 04. 02. 2021
     - Fixed bad tooltip indentation when instruction can't fit one line. (https://forums.factorio.com/95242)
     - Fixed overbuilding underground pipe ghosts with real pipes underground pipes. (https://forums.factorio.com/95038)
     - Fixed inconsistency in direction selection when being a client in a multiplayer game. (https://forums.factorio.com/95330)
-    - Fixed that overbuilding pole out of reach didn't consider the pole to be part of the drag buliding logic. (https://forums.factorio.com/95365)
+    - Fixed that overbuilding pole out of reach didn't consider the pole to be part of the drag building logic. (https://forums.factorio.com/95365)
     - Fixed that the "Continue" button wouldn't remember whether the last game was single-player or multi-player when non-blocking saving was enabled. (https://forums.factorio.com/92804)
     - Fixed rare electric network migration error related to loading save without all the related mods. (https://forums.factorio.com/95478)
   Scripting:
