@@ -31,8 +31,9 @@ local on_rocket_launched = function(event)
   local rocket = event.rocket
   if not (rocket and rocket.valid) then return end
 
-  local force = rocket.force
-
+  local force = rocket.force  
+  
+  script_data.finished = script_data.finished or {}
   if script_data.finished[force.name] then
     return
   end
@@ -88,11 +89,17 @@ silo_script.on_load = function()
 end
 
 silo_script.get_events = function()
+  --legacy
   return silo_script.events
 end
 
 silo_script.add_remote_interface = function()
+  --legacy
   add_remote_interface()
+end
+
+silo_script.add_commands = function()
+  --legacy
 end
 
 return silo_script

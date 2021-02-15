@@ -1032,6 +1032,7 @@ data:extend(
         shadow = default_dirt
       },
       left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }},
+      tooltip = "gui.confirm-instruction"
     },
 
     rounded_button =
@@ -1121,7 +1122,8 @@ data:extend(
       hovered_graphical_set = arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = arrow_forward(green_arrow_tileset, arrow_clicked_index),
       disabled_graphical_set = arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color),
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }}
+      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }},
+      tooltip = "gui.confirm-instruction"
     },
 
     confirm_double_arrow_button =
@@ -1132,7 +1134,8 @@ data:extend(
       default_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_idle_index, "shadow", default_dirt_color),
       hovered_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_hovered_index, "glow", green_button_glow_color),
       clicked_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_clicked_index),
-      disabled_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color)
+      disabled_graphical_set = double_arrow_forward(green_arrow_tileset, arrow_disabled_index, "glow", default_dirt_color),
+      tooltip = "gui.confirm-instruction"
     },
 
     map_generator_preview_button =
@@ -1578,12 +1581,14 @@ data:extend(
     invalid_hovered_mod_label =
     {
       type = "label_style",
-      font_color = {61, 3, 0}
+      font_color = {61, 3, 0},
+      disabled_font_color = {0, 0, 0, 0.5}
     },
     invalid_selected_mod_label =
     {
       type = "label_style",
-      font_color = {115, 0, 0}
+      font_color = {115, 0, 0},
+      disabled_font_color = {0, 0, 0, 0.5}
     },
     valid_mod_label =
     {
@@ -1707,7 +1712,8 @@ data:extend(
         base = {position = {85, 25}, corner_size = 8},
         shadow = default_dirt
       },
-      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }}
+      left_click_sound = {{ filename = "__core__/sound/gui-green-confirm.ogg", volume = 1 }},
+      tooltip = "gui.confirm-instruction"
     },
 
     side_menu_button =
@@ -3696,8 +3702,7 @@ data:extend(
     vertical_flow_under_subheader =
     {
       type = "vertical_flow_style",
-      padding = 0,
-      top_padding = 12
+      padding = 12
     },
 
     scroll_pane_under_subheader =
@@ -5803,6 +5808,20 @@ data:extend(
       arrow_indent = 7,
       close_color = bold_font_color,
       pass_through_mouse = false
+    },
+
+    cancel_close_button =
+    {
+      type = "button_style",
+      parent = "frame_action_button",
+      tooltip = "gui.cancel-instruction"
+    },
+
+    close_button =
+    {
+      type = "button_style",
+      parent = "frame_action_button",
+      tooltip = "gui.close-instruction"
     },
 
     compilatron_gui_message =
@@ -9118,6 +9137,14 @@ data:extend(
         shadow = default_inner_shadow
       },
       dont_force_clipping_rect_for_contents = true
+    },
+
+
+    scroll_pane_in_shallow_frame_with_extra_padding_when_activated =
+    {
+      type = "scroll_pane_style",
+      parent = "scroll_pane_in_shallow_frame",
+      extra_padding_when_activated = 8
     },
 
     trains_scroll_pane =

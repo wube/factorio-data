@@ -1,6 +1,49 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.22
+Version: 1.1.23
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.22
+Date: 15. 02. 2021
+  Optimizations:
+    - Improved performance when building blueprints in multiplayer. (https://forums.factorio.com/95901)
+  Bugfixes:
+    - Fixed Artillery wagon and turret showing wrong tooltip title in deconstruction planner. (https://forums.factorio.com/95847)
+    - Fixed control setting buttons wouldn't have a tooltip when they started without a set value. (https://forums.factorio.com/95874)
+    - Possible fix for multiplayer server crashing when a client tries to connect. (https://forums.factorio.com/95773)
+    - Fixed a crash in multiplayer when upgrading or deconstructing. (https://forums.factorio.com/95948)
+    - Removed and tweaked some hidden locale to hopefully make 100% possible. (https://forums.factorio.com/95743)
+    - Added explicit values to the circuit network range specification in the tips and tricks. (https://forums.factorio.com/95829)
+    - Fixed that the copy and paste tips and tricks simulation wasn't working properly. (https://forums.factorio.com/95978)
+    - Fixed that LuaFlowStatistics::get_flow_count didn't work correctly. (https://forums.factorio.com/96022)
+    - Fixed that instant blueprint building in the map editor didn't work with undo. (https://forums.factorio.com/96015)
+    - Fixed missing status for wall controlling gate by circuit network. (https://forums.factorio.com/95875)
+    - Fixed a crash when saving when using LuaItemStack::create_grid() on stacks with a count > 1. (https://forums.factorio.com/96053)
+    - Fixed that enter to confirm a logistic request count didn't work. (https://forums.factorio.com/95845)
+    - Fixed pole dragging corner case. (https://forums.factorio.com/95790)
+    - Fixed padding in the sync mods with save window when scroll is activated.
+    - Fixed invalid "Can't reach" message when using ghost cursor to build rails in the latency state.
+    - Fixed wrong status of rail signal next to rail with wrong direction.
+    - Fixed that manual rotation of entity with rotation upgrade order didn't clear that order. (https://forums.factorio.com/95807)
+    - Fixed in calculation of required modules when combining real and requested modules during blueprint creation. (https://forums.factorio.com/96033)
+    - Fixed that blueprint containing only entities placeable off grid was built off grid even with snap to grid specified. (https://forums.factorio.com/96084)
+    - Fixed crash caused by scrolling blueprint book in a blueprint shelf that is not yet synchronised. (https://forums.factorio.com/96110)
+    - Fixed that tips & tricks simulation sounds were continuing to play when switched to a tutorial. (https://forums.factorio.com/96108)
+    - Fixed that player could get stuck by entities created in the tutorials. (https://forums.factorio.com/96107)
+    - Fixed some unnecessary error sounds in a special cases when building power poles. (https://forums.factorio.com/96100)
+    - Fixed that exiting high speed moving train could result in a player being stuck. (https://forums.factorio.com/96092)
+    - Fixed mod dependency tooltips in some cases. (https://forums.factorio.com/96145)
+    - Fixed that the upper 1/3 part of the color picker button in the train stop gui didn't work. (https://forums.factorio.com/96149)
+    - Fixed walls would not be buildable on valid positions in some cases. (https://forums.factorio.com/96043)
+    - Fixed crash related to modded underground pipe ghosts with multiple connections with different lengths. (https://forums.factorio.com/96134)
+    - Fixed that it was sometimes possible for an entity to attack an entity on a different surface. (https://forums.factorio.com/96094)
+    - Fixed inaccurate range indicator in spidertron. (https://forums.factorio.com/95808)
+    - Fixed that some sounds that were audible when viewing a certain part of the map in map view wouldn't stop when closing the map view. (https://forums.factorio.com/96021)
+  Changes:
+    - Added shortcut info tooltips to to all of the relevant confirm buttons and close buttons.
+    - Lowered editor surface changing shortcut to not be in the way if Control + <number> is used for something. (https://forums.factorio.com/96121)
+    - Changed personal logistic requests for ammo so they don't get delivered to the spidertron you're driving. (https://forums.factorio.com/95741)
+  Scripting:
+    - Added move_stuck_players bool parameter (false by default) to the create_entity method.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.21
 Date: 05. 02. 2021
