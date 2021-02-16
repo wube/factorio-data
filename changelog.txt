@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.24
+Version: 1.1.25
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.24
+Date: 16. 02. 2021
+  Bugfixes:
+    - Fixed a crash related to building instant blueprints in editor. (https://forums.factorio.com/96197)
+    - Fixed a visual in blueprint building preview when building walls over walls. (https://forums.factorio.com/96212)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.23
 Date: 16. 02. 2021
