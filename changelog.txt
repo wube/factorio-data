@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.25
+Version: 1.1.26
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.25
+Date: 17. 02. 2021
+  Bugfixes:
+    - Changed defines.flow_precision_index.one_second to five_seconds since that's what it actually is.
+    - Fixed crash related to loading that trigger migration to remove invalid upgrades.
+    - Fixed that confirming the low value in logistic request didn't update the value. (https://forums.factorio.com/96234)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.24
 Date: 16. 02. 2021
