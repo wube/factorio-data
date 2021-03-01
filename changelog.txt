@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.26
+Version: 1.1.27
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.26
+Date: 01. 03. 2021
+  Bugfixes:
+    - Fixed that all entity GUIs in the map editor entity-editor and spectator controller were invisible.
+    - Fixed Train overview GUI not updating the list remark. (https://forums.factorio.com/96262)
+    - Fixed typos in Construction robot tip. (https://forums.factorio.com/96360)
+    - Fixed a crash when quitting while using the linked-container entity type with power armor in it.
+    - Fixed that sounds could sometimes be heard when they shouldn't. (https://forums.factorio.com/96343)
+    - Fixed regenerating tile variations during save migration would not break up old large tiles and would only reset their variations to 0.
+    - Fixed "probability" property of size variants in the tile definition was ignored when "weights" property was left out.
+    - Fixed searching mod settings tab would leave tabs disabled. (https://forums.factorio.com/96489)
+    - Fixed a crash of transport line migration in some cases of mod removal. (https://forums.factorio.com/96342)
+    - Fixed that train stop gui could indicate more trains than there are when trains are removed or merged while gui is opened. (https://forums.factorio.com/96519)
+    - Fixed a conflict between setting the players cursor through script and holding blueprint library blueprints. (https://forums.factorio.com/96452)
+    - Fixed that building entity with multiple items to place would take unrelated items from inventory. (https://forums.factorio.com/96536)
+  Modding:
+    - Added CustomInputPrototype::include_selected_prototype when true the event will include
+      selected_prototype = {base_type=, derived_type=, name=} when applicable.
+  Scripting:
+    - Added LuaCustomInputPrototype::enabled_while_spectating, enabled_while_in_cutscene, include_selected_prototype, and item_to_spawn read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.25
 Date: 17. 02. 2021
