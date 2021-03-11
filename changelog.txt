@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.27
+Version: 1.1.28
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.27
+Date: 11. 03. 2021
+  Bugfixes:
+    - Fixed trees and stones would block placement of wall ghosts. (https://forums.factorio.com/96529)
+    - Fixed interaction with entities from zoomed-to-world view in editor. (https://forums.factorio.com/96530)
+    - Fixed spidertrons with burner energy sources didn't interact with auto-trash correctly. (https://forums.factorio.com/96461)
+    - Fixed a crash when viewing styles in the prototype explorer GUI. (https://forums.factorio.com/96638)
+    - Fixed a crash when fast-replacing electric pole ghosts with non-electric-poles. (https://forums.factorio.com/96652)
+    - Fixed that robots building trains with equipment grids didn't work correctly. (https://forums.factorio.com/96666)
+    - Fixed that changes in mod settings textboxes weren't highlighted when hovering reset/back button. (https://forums.factorio.com/96715)
+    - Fixed that pressing Escape in mod settings with unconfirmed changes didn't open the confirmation dialog as in other settings.
+    - Fixed crash when mod destroys currently opened locomotive and creates and opens new one right away.  (https://forums.factorio.com/viewtopic.php?f=30&t=96707)
+    - Fixed mods gui for case when the mod title can't fit the space. (https://forums.factorio.com/96687)
+    - Fixed unloadable save related to underground belts in a weird state. (https://forums.factorio.com/96685)
+    - Fixed corner case of drawing wires between ghosts and non-ghost entities. (https://forums.factorio.com/96728)
+    - Fixed a crash when using upgrade planners through the Lua API. (https://forums.factorio.com/96778)
+    - Fixed wrong entity selection in multiplayer when using ghost cursor with rail. (https://forums.factorio.com/96443)
+    - Fixed accumulator charged status for some extreme cases. (https://forums.factorio.com/96578)
+  Modding:
+    - Limited the name and title of the mod to 100 characters.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.26
 Date: 01. 03. 2021
@@ -17,6 +38,9 @@ Date: 01. 03. 2021
     - Fixed that train stop gui could indicate more trains than there are when trains are removed or merged while gui is opened. (https://forums.factorio.com/96519)
     - Fixed a conflict between setting the players cursor through script and holding blueprint library blueprints. (https://forums.factorio.com/96452)
     - Fixed that building entity with multiple items to place would take unrelated items from inventory. (https://forums.factorio.com/96536)
+  Minor Features:
+    - Control click on the load button in the load game dialog forces loading in "prototypes changed" mode, which can be useful to avoid some specific problems,
+      and also to force consistency check on load.
   Modding:
     - Added CustomInputPrototype::include_selected_prototype when true the event will include
       selected_prototype = {base_type=, derived_type=, name=} when applicable.
@@ -29,6 +53,7 @@ Date: 17. 02. 2021
     - Changed defines.flow_precision_index.one_second to five_seconds since that's what it actually is.
     - Fixed crash related to loading that trigger migration to remove invalid upgrades.
     - Fixed that confirming the low value in logistic request didn't update the value. (https://forums.factorio.com/96234)
+    - Fixed that E to confirm didn't work in the game reconnect dialog. (https://forums.factorio.com/96292)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.24
 Date: 16. 02. 2021

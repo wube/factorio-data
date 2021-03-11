@@ -5563,6 +5563,22 @@ data:extend(
         corner_size = 8
       }
     },
+
+    highlighted_value_textfield =
+    {
+      type = "textbox_style",
+      default_background =
+      {
+        base = {position = {17, 913}, corner_size = 8},
+        shadow = textbox_dirt
+      },
+      active_background =
+      {
+        base = {position = {17, 913}, corner_size = 8},
+        shadow = textbox_dirt
+      }
+    },
+
     invalid_value_textfield =
     {
       type = "textbox_style",
