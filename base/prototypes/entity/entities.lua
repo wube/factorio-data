@@ -12638,7 +12638,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box = {{-1.8, -1.8}, {1.8, 1.5}},
     effectivity = 0.9,
-    braking_power = "400kW",
+    braking_power = "800kW",
     burner =
     {
       fuel_category = "chemical",

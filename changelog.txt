@@ -1,6 +1,45 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.28
+Version: 1.1.29
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.28
+Date: 24. 03. 2021
+  Minor Features:
+    - Blueprints and copy paste of entities with upgrade order are created based on the upgrade order instead of the current entity. (https://forums.factorio.com/73287)
+    - Enabled upgrading entities marked for upgrade, in which case, the upgrade target is used as the source entity for the upgrade planner filters.
+    - The announcement of player death now contains GPS tag with the location.
+  Balancing:
+    - Increased the tank braking power from 400kw to 800kw. Before this change, the tank acceleration (600kw) was actually even greater than the braking force.
+  Bugfixes:
+    - Fixed incorrect color lookup table interpolation for ambient light around noon.
+    - Fixed that built electric pole from map view was also opened with the same click with alternative key binding. (https://forums.factorio.com/96607)
+    - Fixed that laser and fluid turret bonus, wasn't shown properly in the toooltip. This bonus is not used in vanilla which uses ammo category bonus. (https://forums.factorio.com/96566)
+    - Fixed that part of the flamethrower turret and flamethrower ammo turret description, which describes the properties of the flame bound
+      to it stargets didn't show the bonus damage from upgrades. (https://forums.factorio.com/96566)
+    - Fixed that mod install could cause removal of blueprint entities if it didn't remove the entity, but just made it not acceptable
+      to be used in blueprint. (https://forums.factorio.com/96852)
+    - Fixed that the confirm load game dialog with 2 green arrow buttons had tooltips with (E) to confirm, while the E to confirm doesn't work
+      here as it would be ambiguous. (https://forums.factorio.com/96904)
+    - Fixed crash related to using smart ghost belt building with a mod that specifies belt without related underground belt. (https://forums.factorio.com/96875)
+    - Fixed that renaming Spidertron didn't trigger on_entity_renamed. (https://forums.factorio.com/96955)
+    - Fixed that disabling side menu guis through script would sometimes leave an empty frame. (https://forums.factorio.com/96991)
+    - Fixed that crafting machines wouldn't wake up when the speed effect was changed in some situations. (https://forums.factorio.com/96457)
+    - Fixed that focus-search didn't in some GUIs work while in the map editor. (https://forums.factorio.com/96909)
+    - Fixed that chat icon selector didn't remember the last opened tab when used outside the game.
+    - Fixed that pressing Escape with the chat icon selector opened in a dialog outside the game closed the whole dialog instead of closing just the selector window.
+    - Fixed that pressing Control + F to search in the chat icon selector that is opened on top of a non-game window that already had search activated the bottom window search.
+    - Fixed that enabled train stops would cause schedule records for trains on different surfaces to be rendered as available. (https://forums.factorio.com/96799)
+    - Fixed rare crash when using Map editor -> Convert save. (https://forums.factorio.com/97188)
+    - Fixed electric pole connection consistency issue related to fast replace of modded entities. (https://forums.factorio.com/96929)
+  Modding:
+    - Added mod dependency modifier "~", which marks the mod as required, but doesn't affect mod loading order, so these kind of
+      dependencies can be circular.
+    - Prototype/EntityWithHealth::healing_per_tick is now also used by trees, so their automatic healing is no longer hardcoded. (https://forums.factorio.com/97082)
+    - Loaders are now able to take or insert more than 1 item per transport line per tick. (https://forums.factorio.com/81447)
+  Gui:
+    - Tweaked search in the install mods GUI, so the search order prioritizes the results more naturally.
+    - Unified the search button in the mod settings GUI.
+    - Improved some descriptions in Map Generator GUI. (https://forums.factorio.com/97131)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.27
 Date: 11. 03. 2021
@@ -13,7 +52,7 @@ Date: 11. 03. 2021
     - Fixed that robots building trains with equipment grids didn't work correctly. (https://forums.factorio.com/96666)
     - Fixed that changes in mod settings textboxes weren't highlighted when hovering reset/back button. (https://forums.factorio.com/96715)
     - Fixed that pressing Escape in mod settings with unconfirmed changes didn't open the confirmation dialog as in other settings.
-    - Fixed crash when mod destroys currently opened locomotive and creates and opens new one right away.  (https://forums.factorio.com/viewtopic.php?f=30&t=96707)
+    - Fixed crash when mod destroys currently opened locomotive and creates and opens new one right away.  (https://forums.factorio.com/96707)
     - Fixed mods gui for case when the mod title can't fit the space. (https://forums.factorio.com/96687)
     - Fixed unloadable save related to underground belts in a weird state. (https://forums.factorio.com/96685)
     - Fixed corner case of drawing wires between ghosts and non-ghost entities. (https://forums.factorio.com/96728)
@@ -4262,7 +4301,7 @@ Date: 27. 02. 2019
     - Fixed every incremental change of sound volume would save the full config file. (https://forums.factorio.com/65318)
     - Fixed that the category dropdown in the install mods GUI would only work the first time it was used. (https://forums.factorio.com/65398)
     - Fixed that mod thumbnails in zipped mods wouldn't show in the mods GUI. (https://forums.factorio.com/65419)
-    - Fixed pre-requisites for the first tier of all upgrade technologies so that the required science packs are unlocked first. (https://forums.factorio.com/viewtopic.php?p=401129)
+    - Fixed pre-requisites for the first tier of all upgrade technologies so that the required science packs are unlocked first. (https://forums.factorio.com/65379)
     - Fixed electric inserter technology description in the tutorial. (https://forums.factorio.com/viewtopic.php?f=7&t=65229)
     - Fixed that the undo shortcut tooltip didn't reflect latency hiding values and invalid entries filtering.
     - Fixed a desync when deconstructing item request proxies in the latency state. (https://forums.factorio.com/65420)

@@ -1126,6 +1126,13 @@ data:extend(
       tooltip = "gui.confirm-instruction"
     },
 
+    confirm_button_without_tooltip =
+    {
+      type = "button_style",
+      parent = "confirm_button",
+      tooltip = ""
+    },
+
     confirm_double_arrow_button =
     {
       type = "button_style",
