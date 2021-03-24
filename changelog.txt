@@ -1,6 +1,9 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.30
+Version: 1.1.31
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.30
+Date: 24. 03. 2021
   Bugfixes:
     - Fixed that building by moving ignored the position where the player built the last entity. (https://forums.factorio.com/97179)
     - Fixed a crash that could happen when viewing the tooltip for certain types of ammo. (https://forums.factorio.com/97276)
