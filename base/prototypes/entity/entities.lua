@@ -14824,6 +14824,7 @@ data:extend(
           frame_count = 8,
           line_length = 4,
           shift = util.by_pixel(0, -2.5),
+          run_mode = "backward",
           hr_version =
           {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H.png",
@@ -14832,6 +14833,7 @@ data:extend(
             frame_count = 8,
             line_length = 4,
             shift = util.by_pixel(0, -2.75),
+            run_mode = "backward",
             scale = 0.5
           }
         },
@@ -14844,6 +14846,7 @@ data:extend(
           line_length = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(28.75, 18),
+          run_mode = "backward",
           hr_version =
           {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-H-shadow.png",
@@ -14854,6 +14857,7 @@ data:extend(
             line_length = 1,
             draw_as_shadow = true,
             shift = util.by_pixel(28.5, 18),
+            run_mode = "backward",
             scale = 0.5
           }
         }
@@ -14870,6 +14874,7 @@ data:extend(
           frame_count = 8,
           line_length = 4,
           shift = util.by_pixel(5, 6.5),
+          run_mode = "backward",
           hr_version =
           {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V.png",
@@ -14878,6 +14883,7 @@ data:extend(
             frame_count = 8,
             line_length = 4,
             shift = util.by_pixel(4.75, 6.75),
+            run_mode = "backward",
             scale = 0.5
           }
         },
@@ -14890,6 +14896,7 @@ data:extend(
           line_length = 1,
           draw_as_shadow = true,
           shift = util.by_pixel(39.5, 24.5),
+          run_mode = "backward",
           hr_version =
           {
             filename = "__base__/graphics/entity/steam-turbine/hr-steam-turbine-V-shadow.png",
@@ -14900,6 +14907,7 @@ data:extend(
             line_length = 1,
             draw_as_shadow = true,
             shift = util.by_pixel(39.5, 24.5),
+            run_mode = "backward",
             scale = 0.5
           }
         }
