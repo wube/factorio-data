@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.32
+Version: 1.1.33
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.32
+Date: 14. 04. 2021
+  Bugfixes:
+    - Fixed color blending with a fully transparent color would produce slightly darker original color. (https://forums.factorio.com/97813)
+    - Fixed that clicking gps tags in chat would also trigger chart drag causing chart to be not centered on gps tag. (https://forums.factorio.com/97839)
+    - Fixed market gui would show wrong numbers when an offer has the same item multiple times. (https://forums.factorio.com/97477)
+    - Fixed turret range could sometimes render long line to the top left corner of game window.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.31
 Date: 13. 04. 2021
@@ -16,6 +24,7 @@ Date: 13. 04. 2021
     - Fixed Alt+F4 would close the game on Windows even when other modifier keys were pressed. (https://forums.factorio.com/97710)
     - Fixed that NAT-punching didn't work correctly. (https://forums.factorio.com/97688)
     - Fixed that some infinite crafting recipes didn't work as intermediates. (https://forums.factorio.com/96775)
+    - Fixed crash when an entity marked for an upgrade is selected for another upgrade in multiplayer in some cases. (https://forums.factorio.com/97586)
   Modding:
     - Added defines.prototypes which contains all prototype type names (eg: defines.prototypes.entity = { container, furnace, assembling-machine, ... })
 ---------------------------------------------------------------------------------------------------
@@ -58,7 +67,6 @@ Date: 24. 03. 2021
     - Fixed that enabled train stops would cause schedule records for trains on different surfaces to be rendered as available. (https://forums.factorio.com/96799)
     - Fixed rare crash when using Map editor -> Convert save. (https://forums.factorio.com/97188)
     - Fixed electric pole connection consistency issue related to fast replace of modded entities. (https://forums.factorio.com/96929)
-    - Fixed crash when an entity marked for an upgrade is selected for another upgrade in multiplayer in some cases. (https://forums.factorio.com/97586)
   Modding:
     - Added mod dependency modifier "~", which marks the mod as required, but doesn't affect mod loading order, so these kind of
       dependencies can be circular.
