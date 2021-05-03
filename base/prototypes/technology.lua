@@ -2281,7 +2281,7 @@ data:extend(
     type = "technology",
     name = "heavy-armor",
     icon_size = 256, icon_mipmaps = 4,
-    icon = "__base__/graphics/technology/armor-making.png",
+    icon = "__base__/graphics/technology/heavy-armor.png",
     effects =
     {
       {

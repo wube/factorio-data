@@ -1301,7 +1301,7 @@ data:extend(
         }
       },
       {
-        armors = {"light-armor", "heavy-armor"},
+        armors = {"heavy-armor", "modular-armor"},
         idle =
         {
           layers =
@@ -1372,7 +1372,7 @@ data:extend(
         }
       },
       {
-        armors = {"modular-armor", "power-armor", "power-armor-mk2"},
+        armors = {"power-armor", "power-armor-mk2"},
         idle =
         {
           layers =
@@ -15718,6 +15718,8 @@ data:extend(
       max_temperature = 1000,
       specific_heat = "10MJ",
       max_transfer = "10GW",
+      default_temperature = 0,
+      min_working_temperature = 0,
       connections =
       {
         {

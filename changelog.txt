@@ -1,6 +1,37 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.33
+Version: 1.1.34
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.33
+Date: 03. 05. 2021
+  Graphics:
+    - Reworked all technology icons, and provided higher resolutions used by high GUI scale.
+    - Changed item icons for armors, to match the progression and tech icons better.
+  Changes:
+    - Armor stages on the player character show as 1st with Light armor, and as 2nd with Modular armor.
+  Bugfixes:
+    - Roboport normal resolution graphics have been updated to be a downscale from the high resolution graphics. (https://forums.factorio.com/97848)
+    - Fixed cut-tool showing distinct selection color when holding shift. (https://forums.factorio.com/97864)
+    - Fixed armor rich text tags not using the correct icon. (https://forums.factorio.com/97138)
+    - Fixed pumpjack showing item drop indication arrows. (https://forums.factorio.com/97421)
+    - Fixed being unable to confirm the migrated content window if there was a game GUI open behind it. (https://forums.factorio.com/97458)
+    - Fixed a bad Lua event when invalidating the owning players controller during the gui closed event. (https://forums.factorio.com/97425)
+    - Fixed scaling of icons on buttons with more than 200% UI scale.
+    - Fixed issue where ghosts overlapping with non-ghost entity in cloned area is not cloned. (fixes https://forums.factorio.com/97861)
+    - Fixed using upgrade planner without explicit filters on entities marked for upgrade would not upgrade the existing upgrade orders.
+    - Fixed a crash with mods and chunk generation in some cases. (https://forums.factorio.com/98002)
+    - Fixed the wrong technology level shown on the icon in the currently selected technology.
+    - Fixed the missing notification (i) icon on the recipe group button, when there are more groups, so the tabs are shown as buttons instead.
+    - Fixed a crash when trying to undo actions done on a surface that was deleted in the meantime. (https://forums.factorio.com/98105)
+    - Fixed that train would sometimes NO_PATH during repath while in intersection where the path passes through a block that is already occupied by that train. (https://forums.factorio.com/98150)
+    - Fixed a crash when the link_id of a linked container is changed while a non-admin has the GUI open. (https://forums.factorio.com/98154)
+  Modding:
+    - Added "add" and "remove" modes to the Infinity pipe and Heat interface.
+  Scripting:
+    - Removed the "tile-build" SoundPath type. It has been replaced with "tile-build-small", "tile-build-medium", "tile-build-large",
+      allowing mods to specify which size they want to refer to.
+    - Added LuaEntityPrototype::related_underground_belt read.
+    - Added "add" and "remove" modes to `InfinityPipeFilter` and `HeatSetting.`
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.32
 Date: 14. 04. 2021

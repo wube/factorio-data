@@ -563,7 +563,7 @@ data:extend(
     stack_size = 1,
     draw_label_for_cursor_render = true,
     selection_color = {1, 1, 1},
-    alt_selection_color = {1, 0, 0},
+    alt_selection_color = {1, 1, 1},
     selection_mode = {"deconstruct"},
     alt_selection_mode = {"deconstruct"},
     selection_cursor_box_type = "copy",
