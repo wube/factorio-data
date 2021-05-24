@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.34
+Version: 1.1.35
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.34
+Date: 24. 05. 2021
+  Scripting:
+    - Added LuaEntityPrototype::air_resistance read.
+  Bugfixes:
+    - Fixed black border in spidertron technology icon. (https://forums.factorio.com/98224)
+    - Fixed that having non standard UI scale would render screen white. (https://forums.factorio.com/98218)
+    - Fixed that train could get stuck in destination_full state with available goals when a train stop was built next to ghost rail. (https://forums.factorio.com/98310)
+    - Fixed that LuaPlayer::disable_alert() didn't work for custom alerts. (https://forums.factorio.com/98261)
+    - Fixed that piercing damage didn't work correctly with turrets. (https://forums.factorio.com/98134)
+    - Fixed that LuaSurface::clone_brush() didn't clone entities correctly. (https://forums.factorio.com/98197)
+    - Fixed trees with not-flammable flag would still catch on fire. (https://forums.factorio.com/98414)
+    - Fixed blueprints and copy-paste tools didn't capture planned direction changes of entities. (https://forums.factorio.com/98172)
+    - Fixed that changing train stop limit would not set last player. (https://forums.factorio.com/98441)
+    - Fixed desync when beacons lose power. (https://forums.factorio.com/98445)
+    - Fixed spidertron item icon would look different after changing the spidertron color back to its default value. (https://forums.factorio.com/98204)
+    - Fixed that Tips and tricks trigger related to setting up a logistic chest request was also triggered when setting up the personal request.
+    - Fixed that achivements could block the finished game window.
+    - Fixed crash when loading font wingding.ttf. (https://forums.factorio.com/98492)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.33
 Date: 03. 05. 2021
