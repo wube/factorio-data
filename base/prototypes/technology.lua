@@ -2593,6 +2593,7 @@ data:extend(
   {
     type = "technology",
     name = "gate",
+    localised_description = {"technology-description.gates"}, -- i could rename locale key to "gate" but translators will complain
     icon_size = 256, icon_mipmaps = 4,
     icon = "__base__/graphics/technology/gate.png",
     effects =

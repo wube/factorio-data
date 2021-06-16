@@ -1,6 +1,38 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.35
+Version: 1.1.36
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.35
+Date: 16. 06. 2021
+  Bugfixes:
+    - Fixed multiple issues related to placing blueprints with electric poles near other electric poles or ghost thereof. (https://forums.factorio.com/97398)
+    - Fixed a lighting issue with QCK Prism mousepads. (https://forums.factorio.com/98393)
+    - Fixed recipe notifications when a recipe is hidden from hand crafting. (https://forums.factorio.com/98328)
+    - Fixed that units dying wouldn't contain the unit group they were part of. (https://forums.factorio.com/98142)
+    - Fixed a crash when migrating entities across types in some cases. (https://forums.factorio.com/97882)
+    - Fixed several crashes when writing to disk fails. (https://forums.factorio.com/98386)
+    - Fixed that searching descriptions of some items didn't work correctly. (https://forums.factorio.com/98378)
+    - Fixed that fast-replacing gates would remove wall control behaviors. (https://forums.factorio.com/98369)
+    - Fixed desync related to manually fast replacing both ends of underground belt in a way, that they don't connect in the end.
+    - Fixed a crash when trying to edit the whitelist on a server while autosave happens. (https://forums.factorio.com/98447)
+    - Fixed counting tiles when part of search area hits non existing chunks. (https://forums.factorio.com/98684)
+    - Fixed that gate technology had no description. (https://forums.factorio.com/98683)
+    - Fixed loaders would leave a gap on belt when items started moving. (https://forums.factorio.com/98703)
+    - Fixed nuke did not vaporize things in the epicenter of the blast and would leave corpses and remnants behind.
+    - Fixed a crash when using items with inventories that contain construction robots. (https://forums.factorio.com/98706)
+    - Fixed a crash when making a new game from a scenario with the map editor in a vehicle. (https://forums.factorio.com/98682)
+    - Fixed not being able to leave large cars with certain shape. (https://forums.factorio.com/98729)
+    - Fixed that using large values in the map editor "tick custom" field didn't work correctly. (https://forums.factorio.com/98798)
+    - Fixed that radar coverage preview wasn't visible when the mouse was above invisible parts of the GUI. (https://forums.factorio.com/97500)
+    - Fixed Terrain water checkbox in map generation settings didn't have the tooltip info icon. (https://forums.factorio.com/97953)
+    - Fixed that the mining drill GUI couldn't be moved off screen. (https://forums.factorio.com/98113)
+    - Fixed science pack requirement objective in supply challenge. (https://forums.factorio.com/98267)
+    - Fixed that tooltips of slots in the statistics GUIs didn't account for force bonuses. (https://forums.factorio.com/97931)
+    - Fixed that upgrading underground belts marked for upgrade didn't properly upgrade the (potentially) connected belts on the other side. (https://forums.factorio.com/98849)
+    - Fixed LuaEntityPrototype::module_inventory_size would return nil when entity has 65535 slots for modules. (https://forums.factorio.com/98867)
+  Scripting:
+    - Added a machine-readable JSON format of the runtime documentation, which can be used by developer tools to provide code completion and related functionality.
+    - Added vertical_alignment parameter for LuaRendering::draw_text.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.34
 Date: 24. 05. 2021
