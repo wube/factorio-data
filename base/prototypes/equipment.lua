@@ -308,14 +308,6 @@ data:extend(
   {
     type = "active-defense-equipment",
     name = "discharge-defense-equipment",
-    ability_icon =
-    {
-      filename = "__base__/graphics/icons/discharge-defense-equipment-controller.png",
-      flags = { "icon" },
-      mipmap_count = 4,
-      size = 64,
-      priority = "extra-high-no-scale"
-    },
     sprite =
     {
       filename = "__base__/graphics/equipment/discharge-defense-equipment.png",

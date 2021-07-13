@@ -1,6 +1,50 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.36
+Version: 1.1.37
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.36
+Date: 12. 07. 2021
+  Bugfixes:
+    - Fixed belt drag building on the edge of building reach. (https://forums.factorio.com/97178)
+    - Fixed that canceling upgrade of underground belt didn't make the corresponding operation with the (potentially) connected belt on the other side.
+    - Fixed making blueprint from underground belt with direction upgrade order.
+    - Fixed technology icons of flamethrower and rocketry. (https://forums.factorio.com/98821)
+    - Fixed hang when deleting blueprint/deconstruction/upgrade planner or blueprint book held by an inserter. (https://forums.factorio.com/98329)
+    - Fixed hang when trying to delete blueprint/deconstruction/upgrade planner or blueprint book that was moved to different inventory in the meantime. (https://forums.factorio.com/98329)
+    - Fixed pressing delete key in save/load game menus multiple times would pop-up confirmation dialog multiple times. (https://forums.factorio.com/98100)
+    - Fixed that the close map generator preview button icon was too large. (https://forums.factorio.com/98545)
+    - Fixed that the show/close map generator preview button didn't loose hover after the preview was shown.
+    - Fixed that Cut and copy paste tools select trains in the standard selection mode, even when trains are ignored in this mode. (https://forums.factorio.com/98344)
+    - Fixed crash related to wrong identification of non-default values in the mod settings gui. (https://forums.factorio.com/98903)
+    - Fixed that linked custom inputs didn't work for some game controls. (https://forums.factorio.com/98851)
+    - Fixed that the train fuel tab didn't work right for clients in multiplayer. (https://forums.factorio.com/98377)
+    - Fixed a crash when using the prototype explorer GUI after just changing mods. (https://forums.factorio.com/98736)
+    - Fixed rare corner case related to removal of mods and entities in more than 1 electric network. (https://forums.factorio.com/98576)
+    - Fixed item product overload logic when using variable output items. (https://forums.factorio.com/98833)
+    - Fixed crash when starting game without base mod and with --disable-prototype-history. (https://forums.factorio.com/98968)
+    - Fixed a crash when using set_stack in blueprint books. (https://forums.factorio.com/98967)
+    - Fixed a crash when cloning script-disabled beacons. (https://forums.factorio.com/98960)
+    - Fixed a crash when using repeat_count with frame_sequence in animation definition. (https://forums.factorio.com/98904)
+    - Fixed a crash when trying to build a rolling stock between other rolling stocks from a single train. (https://forums.factorio.com/99054)
+    - Fixed ghost entities had reflections on water.
+    - Fixed a desync related to processing on_gui_opened event of opening blueprint records in multiplayer games.
+    - Fixed a crash when trying to pick a fluid wagon with fluid in clone tool. (https://forums.factorio.com/99081)
+    - Fixed that copying assembling machine recipes didn't update fluidbox temperature filters in some cases. (https://forums.factorio.com/99111)
+    - Fixed that robots could sometimes leave roboports very slowly if they were called to work in the middle of descending into a roboport. (https://forums.factorio.com/98902)
+    - Fixed trains GUI status button tooltip not updating. (https://forums.factorio.com/99130)
+    - Fixed LuaPlayer::build_from_cursor would flip direction when every other building underground belts/pipes. (https://forums.factorio.com/99074)
+    - Fixed Train GUI wait condition bars display with 0 slot cargo wagons. (https://forums.factorio.com/99075)
+    - Fixed in-game EULA showing HTML character sequences. (https://forums.factorio.com/99123)
+  Scripting:
+    - Fixed clearing LuaCustomChartTag.icon by writing nil or empty SignalID.
+    - Added LuaPlayer::start_selection and clear_selection.
+    - Added freeplay remote interface methods for adjusting the crashsite.
+  Modding:
+    - Added overlay layer to the tree variation definitions. (https://forums.factorio.com/98052)
+    - Fixed parameter substitution when used with standard parameter (https://forums.factorio.com/98175)
+    - Removed unused equipment prototype property "ability_icon".
+    - Added select_group_row_count, select_slot_row_count, inventory_width, module_inventory_width, tooltip_monitor_edge_border,
+      normalised_achievement_icon_size, tutorial_notice_icon_size and flying_text_ttl to utility constants.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.35
 Date: 16. 06. 2021

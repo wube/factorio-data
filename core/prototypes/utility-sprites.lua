@@ -2451,6 +2451,13 @@ data:extend(
       scale = 0.5,
       flags = {"gui-icon"}
     },
+    close_map_preview =
+    {
+      filename = "__core__/graphics/icons/close-map-preview.png",
+      priority = "extra-high-no-scale",
+      size = 64,
+      flags = {"gui-icon"}
+    },
     close_fat =
     {
       filename = "__core__/graphics/icons/mip/close-fat.png",

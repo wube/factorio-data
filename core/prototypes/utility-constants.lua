@@ -312,6 +312,15 @@ data:extend(
       {0.75, "identity"}
     },
 
+    select_group_row_count = 6,
+    select_slot_row_count = 10,
+    inventory_width = 10,
+    module_inventory_width = 10,
+    tooltip_monitor_edge_border = 10,
+    normalised_achievement_icon_size = 100,
+    tutorial_notice_icon_size = 96,
+    flying_text_ttl = 80,
+
     train_button_hovered_tint = {r = 255 / 255, g = 162 / 255, b = 0, a = 0.7},
   }
 })

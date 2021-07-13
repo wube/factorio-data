@@ -1159,7 +1159,8 @@ data:extend(
       type = "button_style",
       parent = "back_button",
       width = 160,
-      icon_horizontal_align = "left"
+      icon_horizontal_align = "left",
+      left_padding = -4
     },
 
     map_generator_confirm_button =
