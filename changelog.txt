@@ -1,6 +1,28 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.37
+Version: 1.1.38
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.37
+Date: 04. 08. 2021
+  Bugfixes:
+    - Fixed several issues related to latency state and quickbar.
+    - Fixed underground belt related tips and tricks performing incorrectly. (https://forums.factorio.com/99320)
+    - Fixed forced autosave flag would persist into loading another map if the current map got terminated due to script error before performing the autosave. (https://forums.factorio.com/99360)
+    - Fixed a crash when loading some corrupt save files. (https://forums.factorio.com/99382)
+    - Fixed a crash when using specific mods. (https://forums.factorio.com/99408)
+    - Fixed that disabled mod depenencies would get re-downloaded when installing mods. (https://forums.factorio.com/99343)
+    - Fixed starting message dialog was darkened in the Sandbox scenario. (https://forums.factorio.com/99287)
+    - Fixed the missing dots icon on the tiny shortcut bar expand button.
+    - Fixed that repeated clicking on the Snap to grid checkbox in the blueprint setup gui didn't work unless the mouse moved away and back. (https://forums.factorio.com/99396)
+    - Removed references to iron-axe and steel-axe from the PvP scenario config. (https://forums.factorio.com/99308)
+    - Fixed inserters filters would get cleared in some cases when building from blueprints. (https://forums.factorio.com/99363)
+  Modding:
+    - Changed mining drill storage_slots to be automatic.
+    - Added destroy_action to logistic and construction robot prototypes.
+    - Inserters can now pull from the main output and burnt result inventory of an entity.
+  Scripting:
+    - Added LuaControl::is_cursor_empty(). Returns if the cursor is empty, taking into account items, ghost cursor, and items from the blueprint library.
+    - Added on_worker_robot_expired event. Called when a worker (construction or logistic) robot expires through a lack of energy.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.36
 Date: 12. 07. 2021

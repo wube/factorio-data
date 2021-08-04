@@ -1557,17 +1557,20 @@ simulations.drag_building_underground =
       player.character.walking_state = {walking = true, direction = defines.direction.east}
       last_distance = 1
       last_x = 0
+      direction = defines.direction.east
       script.on_nth_tick(1, function()
         cursor_position = {player.position.x + build_offset[1], player.position.y + build_offset[2]}
 
         if (cursor_position[1] - last_x) > last_distance then
-          if player.can_build_from_cursor{position = cursor_position, direction = defines.direction.east} then
-            player.build_from_cursor{position = cursor_position, direction = defines.direction.east}
+          if player.can_build_from_cursor{position = cursor_position, direction = direction} then
+            player.build_from_cursor{position = cursor_position, direction = direction}
           end
           if last_distance == 1 then
+            direction = defines.direction.west
             game.camera_player_cursor_direction = defines.direction.east
             last_distance = 5
           else
+            direction = defines.direction.east
             game.camera_player_cursor_direction = defines.direction.west
             last_distance = 1
           end
@@ -3671,13 +3674,13 @@ simulations.fast_replace_belt_underground =
         if item_name == "underground-belt" then
 
           if not bippity then
-            player.build_from_cursor{position = game.camera_player_cursor_position, direction = direction}
+            player.build_from_cursor{position = game.camera_player_cursor_position, direction = defines.direction.east}
             bippity = true
           end
 
           if not boppity then
             if game.camera_player_cursor_position.x > 2.51 then
-              player.build_from_cursor{position = game.camera_player_cursor_position, direction = direction}
+              player.build_from_cursor{position = game.camera_player_cursor_position, direction = defines.direction.west}
               boppity = true
             end
           end

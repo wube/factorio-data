@@ -10386,10 +10386,8 @@ data:extend(
       width = 8,
       height = 16,
       left_click_sound = {{ filename = "__core__/sound/gui-shortcut-expand.ogg", volume = 1 }},
-      left_padding = 2,
-      right_padding = 2,
-      top_padding = 4,
-      bottom_padding = 4,
+      left_padding = -2,
+      right_padding = -2,
       selected_graphical_set =
       {
         base = {position = {272, 169}, corner_size = 8},
