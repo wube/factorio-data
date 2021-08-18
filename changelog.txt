@@ -1,6 +1,28 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.38
+Version: 1.1.39
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.38
+Date: 18. 08. 2021
+  Changes:
+    - New Titillium style font for Cyrillic languages.
+  Bugfixes:
+    - Fixed inconsistency when fast-replacing ghosts with circuit connections. (https://forums.factorio.com/98948)
+    - Fixed an issue with drag-building electric poles with long wire reach. (https://forums.factorio.com/99205)
+    - Fixed a crash related to tutorials and modding. (https://forums.factorio.com/99385)
+    - Fixed an issue with LuaEntity::set_request_slot() and duplicates. (https://forums.factorio.com/99209)
+    - Fixed that picking blueprints from the library through quickbar slots didn't fire the Lua cursor stack changed event. (https://forums.factorio.com/99573)
+    - Fixed items with durability/ammo wouldn't merge properly in some cases. (https://forums.factorio.com/99087)
+    - Fixed a roboport "recharging" icon appearing when not connected to the electric network. (https://forums.factorio.com/99582)
+    - Fixed an issue with roboports left in recharging state when revived from ghosts. (https://forums.factorio.com/99582)
+    - Fixed an issue where an error sound played when pasting onto a power switch from anything other than another power switch (https://forums.factorio.com/99378)
+    - Fixed that the non-blocking saving option would be reset when resuming a multiplayer game using the continue button. (https://forums.factorio.com/99035)
+    - Fixed 'Close preview' button having cut off text in some locales. (https://forums.factorio.com/99551)
+    - Fixed a crash when deleting surfaces with script-connected electric poles. (https://forums.factorio.com/99641)
+  Scripting:
+    - Added LuaEntity and LuaUnitGroup::set_distraction_command.
+    - Added LuaSurface::find_nearest_enemy_entity_with_owner().
+    - Added LuaForce::is_friend() and is_enemy().
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.37
 Date: 04. 08. 2021
@@ -10,7 +32,7 @@ Date: 04. 08. 2021
     - Fixed forced autosave flag would persist into loading another map if the current map got terminated due to script error before performing the autosave. (https://forums.factorio.com/99360)
     - Fixed a crash when loading some corrupt save files. (https://forums.factorio.com/99382)
     - Fixed a crash when using specific mods. (https://forums.factorio.com/99408)
-    - Fixed that disabled mod depenencies would get re-downloaded when installing mods. (https://forums.factorio.com/99343)
+    - Fixed that disabled mod dependencies would get re-downloaded when installing mods. (https://forums.factorio.com/99343)
     - Fixed starting message dialog was darkened in the Sandbox scenario. (https://forums.factorio.com/99287)
     - Fixed the missing dots icon on the tiny shortcut bar expand button.
     - Fixed that repeated clicking on the Snap to grid checkbox in the blueprint setup gui didn't work unless the mouse moved away and back. (https://forums.factorio.com/99396)

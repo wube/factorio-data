@@ -1149,8 +1149,6 @@ data:extend(
     {
       type = "button_style",
       parent = "forward_button",
-      natural_width = 136,
-      maximal_width = 250,
       icon_horizontal_align = "left"
     },
 
@@ -1158,7 +1156,6 @@ data:extend(
     {
       type = "button_style",
       parent = "back_button",
-      width = 160,
       icon_horizontal_align = "left",
       left_padding = -4
     },
