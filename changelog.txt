@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.39
+Version: 1.1.40
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.39
+Date: 01. 09. 2021
+  Bugfixes:
+    - Fixed that rotating belt direction when dragging allowed "stash" the rotate and continue in the original direction. (https://forums.factorio.com/99572)
+    - Fixed that loading a game that was saved during drag building didn't clear the internal drag building state causing blueprint snapping not working properly. (https://forums.factorio.com/99496)
+    - Fixed that LuaGameScript::check_prototype_translations() didn't check technologies. (https://forums.factorio.com/99672)
+    - Fixed that items with data would not stack properly in crafting machine source inventory when recipe requires more than a stack of ingredient. (https://forums.factorio.com/99708)
+    - Fixed that pasting a blueprint over existing train could cause a desync. (https://forums.factorio.com/99592)
+    - Fixed that it was possible to interact with locomotive's fuel slots while out of reach. (https://forums.factorio.com/99731)
+    - Fixed wrong status text when a mining drill drop target is marked for deconstruction. (https://forums.factorio.com/99679)
+    - Fixed wrong mining drill status when a resource is depleted while the mining drill is missing the required fluid. (https://forums.factorio.com/99527)
+    - Fixed the blueprint snap-to-grid reference point being drawn behind entities in some situations. (https://forums.factorio.com/99704)
+  Scripting:
+    - LuaEntityPrototype::resource_categories now supports characters.
+    - Added on_equipment_inserted and on_equipment_removed events that fire any time any equipment is added/removed from a grid.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.38
 Date: 18. 08. 2021
