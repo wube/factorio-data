@@ -564,8 +564,8 @@ data:extend(
     draw_label_for_cursor_render = true,
     selection_color = {1, 1, 1},
     alt_selection_color = {1, 1, 1},
-    selection_mode = {"deconstruct"},
-    alt_selection_mode = {"deconstruct"},
+    selection_mode = {"blueprint", "avoid-rolling-stock"},
+    alt_selection_mode = {"blueprint"},
     selection_cursor_box_type = "copy",
     alt_selection_cursor_box_type = "copy",
     cuts = true

@@ -682,13 +682,17 @@ data:extend(
     trigger =
     {
       type = "build-entity",
-      count = 60,
+      build_in_line = true,
+      consecutive = true,
+      count = 4,
     },
     skip_trigger =
     {
       type = "build-entity",
       build_by_dragging = true,
-      count = 10
+      build_in_line = true,
+      consecutive = true,
+      count = 5,
     },
     dependencies = {"introduction"},
     simulation = simulations.drag_building
@@ -705,7 +709,9 @@ data:extend(
       type = "build-entity",
       entity = "small-electric-pole",
       match_type_only = true,
-      count = 15,
+      count = 7,
+      consecutive = true,
+      linear_power_pole_line = true
     },
     skip_trigger =
     {
@@ -713,7 +719,9 @@ data:extend(
       entity = "small-electric-pole",
       match_type_only = true,
       count = 3,
-      build_by_dragging = true
+      build_by_dragging = true,
+      consecutive = true,
+      linear_power_pole_line = true
     },
     dependencies = {"drag-building"},
     simulation = simulations.drag_building_poles

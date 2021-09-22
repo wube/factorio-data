@@ -1,6 +1,25 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.40
+Version: 1.1.41
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.40
+Date: 22. 09. 2021
+  Features:
+    - Added auth server bans feature for multiplayer games.
+      When enabled this will inform the Factorio.com authentication server of ban and unban commands issued in multiplayer sessions.
+      Designed to combat griefers in multiplayer games, it will also query the authentication server for a ban recommendation when a user tries to connect.
+  Bugfixes:
+    - Fixed that trigger prototype flag filters didn't work correctly when an entity had no flags set. (https://forums.factorio.com/99773)
+    - Fixed a crash after inserting fuel into burner inserter while it was already trying to fuel itself. (https://forums.factorio.com/99858)
+    - Fixed that unrelated entities were highlighted when using a cut tool. (https://forums.factorio.com/99720)
+    - Fixed that in editor mode undoing deconstructions did not instantly revive affected entities. (https://forums.factorio.com/99622)
+    - Fixed that setting the direction of a script created character entity didn't work correctly. (https://forums.factorio.com/99887)
+    - Fixed that items with fuel value would be put into furnace fuel inventory when there was enough fuel but item could be smelted. (https://forums.factorio.com/99924)
+    - Fixed inserters picking up items on ground marked for deconstruction. (https://forums.factorio.com/99770)
+    - Fixed that the low power tip didn't show in some circumstances.
+    - Tweaked some of the triggers to show/skip tutorials related to drag building.
+    - Fixed that Furnace's working_visualisations would not apply recipe tint on fadeout. (https://forums.factorio.com/99997)
+    - Fixed crash due to usage of standard library function that is missing on macOS 10.11. (https://forums.factorio.com/100012)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.39
 Date: 01. 09. 2021
