@@ -38,6 +38,7 @@ data:extend(
       electric_line_minimum_absolute_width = 2,
       turret_range_color = {r = 0.8, g = 0.25, b = 0.25, a = 1},
       artillery_range_color = {r = 0.8, g = 0.25, b = 0.25, a = 1},
+      pollution_color = {r = 140, g = 0, b = 0, a = 149},
       default_friendly_color = {r = 0, g = 0.38, b = 0.57},
       default_enemy_color = {r = 1, g = 0.1, b = 0.1},
       rail_color = {r = 0.55, g = 0.55, b = 0.55},

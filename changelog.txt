@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.41
+Version: 1.1.42
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.41
+Date: 23. 09. 2021
+  Bugfixes:
+    - Fixed false positive tile corruption detection when 255 tile prototypes were defined. (https://forums.factorio.com/100036)
+    - Fixed pollution overlay misalignment at certain zoom level/map position combinations. (https://forums.factorio.com/99705)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.40
 Date: 22. 09. 2021
