@@ -7607,9 +7607,8 @@ data:extend(
     tool_bar_empty_slot =
     {
       type = "empty_widget_style",
-      width = 44,
-      height = 32,
-      margin = 4,
+      width = 52,
+      height = 40,
       graphical_set =
       {
         position = {282, 17},

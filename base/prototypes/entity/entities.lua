@@ -10633,7 +10633,7 @@ data:extend(
     },
     energy_usage = "250kW", --energy usage used when crafting the rocket
     idle_energy_usage = "10KW",
-    lamp_energy_usage = "10KW",
+    lamp_energy_usage = "0KW",
     active_energy_usage = "3990KW",
     rocket_entity = "rocket-silo-rocket",
 

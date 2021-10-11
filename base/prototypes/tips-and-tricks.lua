@@ -584,7 +584,7 @@ data:extend(
       entity = "locomotive",
       count = 3
     },
-    dependencies = {"copy-paste"},
+    dependencies = {"copy-entity-settings"},
     simulation = simulations.copy_paste_trains
   },
   {
@@ -611,7 +611,7 @@ data:extend(
         }
       }
     },
-    dependencies = {"copy-paste"},
+    dependencies = {"copy-entity-settings"},
     simulation = simulations.copy_paste_filters
   },
   {
@@ -647,7 +647,7 @@ data:extend(
       match_type_only = true,
       count = 2
     },
-    dependencies = {"copy-paste"},
+    dependencies = {"copy-entity-settings"},
     simulation = simulations.copy_paste_requester_chest
   },
   {
@@ -663,7 +663,7 @@ data:extend(
       entity = "spidertron",
       count = 2
     },
-    dependencies = {"copy-paste"},
+    dependencies = {"copy-entity-settings"},
     simulation = simulations.copy_paste_spidertron
   },
 

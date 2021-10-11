@@ -2904,10 +2904,10 @@ data:extend(
       movement_slow_down_factor = 0,
       projectile_creation_distance = 1.6,
       projectile_center = {-0.15625, -0.07812},
-      range = 25,
+      range = 30,
       sound = sounds.tank_gunshot
     },
-    stack_size = 5
+    stack_size = 1
   },
   {
     type = "gun",

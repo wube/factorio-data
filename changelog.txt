@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.42
+Version: 1.1.43
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.42
+Date: 11. 10. 2021
+  Bugfixes:
+    - Fixed an API error when checking for updates for a large number of mods. (https://forums.factorio.com/99801)
+    - Fixed that inserters wouldn't remove burnt result items from assembling machine recipes with no item outputs. (https://forums.factorio.com/99799)
+    - Fixed vehicle weapon slots GUI not highlighting with the corresponding ammo slot when selected
+    - Fixed tank cannon weapon showing a "1" in the vehicle weapon slots GUI
+    - Fixed that entities not containing certain collision masks would never collide with tiles. (https://forums.factorio.com/100132)
+    - Fixed a crash when opening the tutorials GUI through Lua command. (https://forums.factorio.com/100166)
+    - Rocket silo no longer drains more energy at night. (https://forums.factorio.com/100109)
+    - Fix tank cannon showing smaller range than the cannon shells. (https://forums.factorio.com/100049)
+    - Fix ugly death GUI when the game is paused in MP. (https://forums.factorio.com/100080)
+    - Fix 'Game finished' GUI had an incorrect tooltip for the green button. (https://forums.factorio.com/99921)
+    - Fixed that copy paste entity tips were dependant on the copy-paste tool tip instead of copy paste entity category.
+  Modding:
+    - Added OffshorePumpPrototype::check_bounding_box_collides_with_tiles.
+    - RocketSiloPrototype::lamp_energy_usage now can be zero.
+  Scripting:
+    - Added freeplay remote interface to read the value of `skip_intro`. (https://forums.factorio.com/100169)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.41
 Date: 23. 09. 2021
