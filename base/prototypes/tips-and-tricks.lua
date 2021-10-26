@@ -198,22 +198,17 @@ data:extend(
     order = "j",
     trigger =
     {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "craft-item",
-          event_type = "crafting-of-single-item-ordered",
-          consecutive = true,
-          count = 5
-        },
-        {
-          type = "craft-item",
-          event_type = "crafting-of-multiple-items-ordered",
-          consecutive = true,
-          count = 10
-        }
-      }
+      type = "craft-item",
+      event_type = "crafting-of-single-item-ordered",
+      consecutive = true,
+      count = 5
+    },
+    skip_trigger =
+    {
+      type = "craft-item",
+      event_type = "crafting-of-multiple-items-ordered",
+      consecutive = true,
+      count = 3
     },
     dependencies = {"introduction"},
     image = "__base__/graphics/tips-and-tricks/bulk-crafting.png"
@@ -457,22 +452,30 @@ data:extend(
             },
             {
               type = "time-elapsed",
-              ticks = 60 * 60 * 5 -- 15 minutes
+              ticks = 60 * 60 * 15 -- 15 minutes
             }
           }
         },
         {
-          type = "build-entity",
-          entity = "steam-engine"
+          type = "craft-item",
+          item = "small-electric-pole",
+          event_type = "crafting-finished"
         },
         {
-          type = "build-entity",
-          entity = "boiler"
+          type = "craft-item",
+          item = "steam-engine",
+          event_type = "crafting-finished"
         },
         {
-          type = "build-entity",
-          entity = "offshore-pump"
+          type = "craft-item",
+          item = "boiler",
+          event_type = "crafting-finished"
         },
+        {
+          type = "craft-item",
+          item = "offshore-pump",
+          event_type = "crafting-finished"
+        }
       }
     },
     dependencies = {"introduction"},
@@ -596,20 +599,9 @@ data:extend(
     order = "c",
     trigger =
     {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "build-entity",
-          entity = "filter-inserter",
-          count = 3
-        },
-        {
-          type = "build-entity",
-          entity = "stack-filter-inserter",
-          count = 3
-        }
-      }
+      type = "set-filter",
+      consecutive = true,
+      count = 3
     },
     dependencies = {"copy-entity-settings"},
     simulation = simulations.copy_paste_filters
@@ -682,9 +674,10 @@ data:extend(
     trigger =
     {
       type = "build-entity",
+      build_by_dragging = false,
       build_in_line = true,
       consecutive = true,
-      count = 4,
+      count = 4
     },
     skip_trigger =
     {
@@ -692,7 +685,7 @@ data:extend(
       build_by_dragging = true,
       build_in_line = true,
       consecutive = true,
-      count = 5,
+      count = 5
     },
     dependencies = {"introduction"},
     simulation = simulations.drag_building
@@ -840,8 +833,9 @@ data:extend(
     order = "b",
     trigger =
     {
-      type = "build-entity",
-      entity = "straight-rail"
+      type = "craft-item",
+      item = "rail",
+      event_type = "crafting-finished"
     },
     dependencies = {"trains"},
     simulation = simulations.rail_building
@@ -917,6 +911,7 @@ data:extend(
         }
       }
     },
+    dependencies = {"trains"},
     tutorial = "trains-basic-signals",
     simulation = simulations.rail_signals
   },
@@ -986,8 +981,20 @@ data:extend(
     order = "h",
     trigger =
     {
-      type = "build-entity",
-      entity = "fluid-wagon"
+      type = "and",
+      triggers =
+      {
+        {
+          type = "build-entity",
+          entity = "train-stop",
+          count = 2
+        },
+        {
+          type = "craft-item",
+          item = "fluid-wagon",
+          event_type = "crafting-finished"
+        }
+      }
     },
     dependencies = {"trains"},
     indent = 1,
@@ -1279,6 +1286,7 @@ data:extend(
       target = "transport-belt",
       count = 4
     },
+    dependencies = {"belt-lanes"},
     simulation = simulations.fast_replace_direction
   },
   {

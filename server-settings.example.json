@@ -35,6 +35,9 @@
   "_comment_minimum_latency_in_ticks": "optional one tick is 16ms in default speed, default value is 0. 0 means no minimum.",
   "minimum_latency_in_ticks": 0,
 
+  "_comment_max_heartbeats_per_second": "Network tick rate. Maximum rate game updates packets are sent at before bundling them together. Minimum value is 6, maximum value is 240.",
+  "max_heartbeats_per_second": 60,
+
   "_comment_ignore_player_limit_for_returning_players": "Players that played on this map already can join even when the max player limit was reached.",
   "ignore_player_limit_for_returning_players": false,
 

@@ -1,6 +1,31 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.43
+Version: 1.1.44
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.43
+Date: 26. 10. 2021
+  Changes:
+    - Reduced multiplayer latency on very good connections by up to 66ms(4 ticks). (http://forums.factorio.com/71901)
+    - Changed multiplayer latency calculation to be smoother. This should reduce multiplayer stutter on bad connections.
+    - Changed default network send rate from 30 to 60 packets per second and added an option to configure the rate in server-settings.json.
+  Bugfixes:
+    - Add a 70% damage bonus to discharge defenses with Energy Weapons Damage 6 and 7. (http://forums.factorio.com/100149)
+    - Fixed flamethrower turrets not reporting the correct damage bonuses
+    - Fixed gun turret tooltips showing the ammo in the middle of the other stats
+    - Fixed artillery wagon and artillery turret tooltips not showing the damage of the loaded ammo
+    - Fixed drawing wall filler when hovering mouse over ghosts. (https://forums.factorio.com/100243)
+    - Fixed crash when trying to connect wire after wire type in cursor stack was changed by script. (https://forums.factorio.com/100220)
+    - Fixed roboport would not output signals for 1 tick when electric pole was mined while having circuit wire from same circuit network. (https://forums.factorio.com/100221)
+    - Fixed that the pole drag building skip trigger didn't work, so the tip was always shown even when the player used drag building.
+    - Fixed LuaItemStack::get_tile_filter would incorrectly return entity filters. (https://forums.factorio.com/100288)
+    - Fixed mining drill GUI not being openable if the drill didn't have module slots or energy source with GUI. (https://forums.factorio.com/100282)
+    - Fixed a crash when using 0-length debug names in Lua bytecode. (https://forums.factorio.com/100321)
+  Modding:
+    - Added TurretPrototype::energy_glow_animation_flicker_strength.
+    - Removed obsolete pollution-visualization sprite, which was replaced by pollution_color utility constant.
+  Scripting:
+    - Added LuaEntity::connected_rail_direction read.
+    - Added TrainScheduleRecord::rail_direction.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.42
 Date: 11. 10. 2021

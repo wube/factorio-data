@@ -232,7 +232,7 @@ lib.create_crash_site = function(surface, position, ship_items, part_items, ship
           {
             name = name,
             position = part_position,
-            force = "neutral",
+            force = part.force or "neutral",
             create_build_effect_smoke = false
           }
 

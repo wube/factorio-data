@@ -1040,6 +1040,11 @@ data:extend(
       },
       {
         type = "ammo-damage",
+        ammo_category = "electric",
+        modifier = 0.7
+      },
+      {
+        type = "ammo-damage",
         ammo_category = "beam",
         modifier = 0.6
       }
@@ -1071,6 +1076,11 @@ data:extend(
       {
         type = "ammo-damage",
         ammo_category = "laser",
+        modifier = 0.7
+      },
+      {
+        type = "ammo-damage",
+        ammo_category = "electric",
         modifier = 0.7
       },
       {

@@ -809,13 +809,6 @@ data:extend(
       height = 32,
       flags = {"icon"}
     },
-    pollution_visualization =
-    {
-      filename = "__core__/graphics/pollution-visualization.png",
-      priority = "extra-high-no-scale",
-      width = 32,
-      height = 32
-    },
     health_bar_green_pip =
     {
       filename = "__core__/graphics/health-bar-pips.png",
