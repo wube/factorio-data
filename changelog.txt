@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.44
+Version: 1.1.45
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.44
+Date: 27. 10. 2021
+  Bugfixes:
+    - Fixed that setting the scale parameter to zero in a spidertron leg definition would cause a "double value not in range for fixed point number" error. (https://forums.factorio.com/100394)
+    - Fixed crash when destroying a vehicle on the same frame a tooltip is created for the vehicle's weapon and ammo bar. (https://forums.factorio.com/100122)
+    - Fixed that building an entity over other forces' ghosts and undoing would transfer ownership of those ghosts to the undoer's force.
+    - Fixed a crash when setting inserters to require no power when rotating/extending. (https://forums.factorio.com/100407)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.43
 Date: 26. 10. 2021
