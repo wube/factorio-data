@@ -1,6 +1,16 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.46
+Version: 1.1.47
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.46
+Date: 05. 11. 2021
+  Bugfixes:
+    - Fixed "create-trivial-smoke" triggers being interpreted as "create-entity" triggers in the prototype explorer which could cause a crash. (https://forums.factorio.com/100495)
+    - Added migration for saves with inserters that have NaN hand height or hand length.
+  Scripting:
+    - Added LuaGuiElement::swap_children().
+  Modding:
+    - Sub items are now removed from items used in hand-crafting.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.45
 Date: 28. 10. 2021
