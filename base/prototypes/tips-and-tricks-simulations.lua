@@ -1469,7 +1469,6 @@ simulations.drag_building_poles =
     global.character.cursor_stack.set_stack{name = "small-electric-pole", count=50}
     global.character.walking_state = {walking = true, direction = defines.direction.east}
     game.camera_player = global.player
-    global.last_pole_x = -10
   ]],
   update =
   [[
@@ -1478,9 +1477,9 @@ simulations.drag_building_poles =
       return
     end
     game.camera_position = {global.character.position.x, global.character.position.y - 1.5}
-    local pole_x = global.character.position.x + 2
+    local pole_x = math.floor(global.character.position.x + 2)
     game.camera_player_cursor_position = {pole_x, global.character.position.y - 3}
-    if pole_x - global.last_pole_x > 6.9 then
+    if global.last_pole_x == nil or pole_x - global.last_pole_x == 7 then
       global.player.build_from_cursor{position = {pole_x, global.character.position.y - 3}}
       global.last_pole_x = pole_x
     end
@@ -1492,6 +1491,83 @@ simulations.drag_building_poles =
        global.character.walking_state = {walking = true, direction = defines.direction.south}
        global.stop = true
      end
+  ]]
+}
+
+simulations.pole_dragging_coverage =
+{
+  init =
+  [[
+    global.player = game.create_test_player{name = "Cable Guy"}
+    global.character = global.player.character
+    global.character.teleport{0, 4}
+    global.character.cursor_stack.set_stack{name = "small-electric-pole", count=48}
+    global.character.walking_state = {walking = true, direction = defines.direction.east}
+    game.camera_player = global.player
+    game.camera_player_cursor_position = {0, 0}
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqVlN1uhCAQhd9lrnGzgLCur7LZNGonWxJEg9jUGN69aC/apPjD5RDOdyYnMzNDrUfsrTIOyhlU05kByscMg3qZSi9vbuoRSlAOWyBgqnaphk5XNusrgxo8AWXe8QtK6p8E0DjlFP5g1mJ6M2Nbow0fogACfTcETWcWv8DJmLgIAlMQ8IvwnvwDsbMgdgDiJ0H0fgDKz4LkAUicBfEDkEwOW8ZBt19QW2mdocbGWdVkfadxN/QFGMSoXh91N9plJopnxKFIdKBix+FG6DVmck8OdiMPek1st9jLg1Aa65bS1Ex2TOKBUJY8IfeNRHjyPm6R8uSF3CKJ5I3cIsnkyVlJ4RiuV7P8c2QJfKIdVg0raF5wIaXMBefM+290Ncet",
+      position = {-13,0},
+    }
+    local lights_count = 0
+    while lights_count < 8 do
+      game.surfaces[1].create_entities_from_blueprint_string
+      {
+        string = "0eNrVmN1qwyAUgN/lXGclx8T8wZ5klGBStwmJCWrLSvHdFxs2WpnMW29CjsbjOZ8hfOQGw3TmqxLSQHcDMS5SQ/d2Ay0+JJvcmLmuHDoQhs+QgWSzi/TMpullYvMKNgMhT/wLOrTHDLg0wgi+Z7kH116e54Gr7YG/1mewLnpbski3m0tTHGgG1+2mPtAt+1aTUcvUD/yTXcSi3GOjUONZmH6bO/2ufRdKm/6fyo1iUq+LMi8Dnwzs+bVhDkDugnllihm3DbyC3eclH90m2mVFd1H89Nig2CJis6e4tEdrH8Z+IJA4CCRJCBhouohrmibZdOmdfBWAUMZBKBM9+WcIRQACjYNQJwmh8iA0AQhVHIQqSQiFB4EGINRxENokITQeBMwDFJo4Ck2SFKhHoQ5AaKMgEEzzy5j77wIJYMA8jkOeJIfaw9CGKMRpIklTE9H3RAyJIsaZIknTFFsfQ0gdMc4dSZruiL48YsgeMU4fSaL66PsjhgQS4wySpGmQ4eOPc0aSpjOiL424W+Mx2yvoHv5TZHDhSt/LJg2WTUGrqippURBrvwHLO8AOq",
+        position = {28 + lights_count * 36, 1},
+      }
+      lights_count = lights_count + 1
+      end
+    update_camera = function()
+      game.camera_position = {global.player.position.x, global.player.position.y - 3}
+    end
+
+  ]],
+  update =
+  [[
+    if global.stop then
+      global.character.walking_state = {walking = false, direction = defines.direction.south}
+      return
+    end
+    game.camera_position = {global.character.position.x, global.character.position.y - 3}
+
+    local pole_x = math.floor(global.character.position.x + 2)
+    local pole_y = global.character.position.y - 4
+
+    if global.last_pole_x == nil then
+      global.last_pole_x = pole_x - 3
+      global.pole_count = 0
+
+    end
+    game.camera_player_cursor_position = {pole_x, pole_y}
+
+    if (global.pole_count == 0
+        or global.pole_count == 1
+        or global.pole_count == 2) and pole_x - global.last_pole_x  == 7 then
+      global.player.build_from_cursor{position = {pole_x, pole_y}}
+      global.last_pole_x = global.last_pole_x + 7
+      global.pole_count =  global.pole_count + 1
+    end
+    if (global.pole_count == 3
+        or global.pole_count == 4
+        or global.pole_count == 5) and pole_x - global.last_pole_x  == 5 then
+      global.player.build_from_cursor{position = {pole_x, pole_y}}
+      global.last_pole_x = global.last_pole_x + 5
+      if global.pole_count == 5 then
+        global.pole_count = 0
+      else
+        global.pole_count = global.pole_count + 1
+      end
+    end
+    if game.tick % 60 == 0 then
+      game.surfaces[1].build_checkerboard({{global.character.position.x + 10, global.character.position.y - 10},
+                                            {global.character.position.x + 25, global.character.position.y + 10}})
+    end
+    if global.character.cursor_stack.count == 0 then
+      global.character.walking_state = {walking = true, direction = defines.direction.south}
+      global.stop = true
+    end
   ]]
 }
 

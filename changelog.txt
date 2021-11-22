@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.47
+Version: 1.1.48
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.47
+Date: 22. 11. 2021
+  Bugfixes:
+    - Added tip about power pole coverage when drag-building.
+    - Fixed that the distance between first and second pole in the dragging electric poles tutorial was 6 tiles instead of 7.
+    - Fixed LuaGameScript::save_atlas() function would crash the headless server. (https://forums.factorio.com/100629)
+    - Fixed possibility for the victory screen to be hidden behind other GUIs under specific circumstances (https://forums.factorio.com/100242)
+    - Fixed generator and fluid energy source tooltip showing 0 fluid consumption if burning fluids with 0 fuel value or consuming fluids with temperature close to the default. (https://forums.factorio.com/100370)
+    - Fixed the inserter "hand stack size" tooltip missing if the research-based bonus value was 1. Now it is shown if the value is greater than 0. (https://forums.factorio.com/100663)
+    - Fixed the inserter "hand stack size" tooltip ignoring stack_size_bonus prototype property.
+    - Fixed cloning linked-container would clear its inventory.
+  Modding:
+    - Added FluidEnergySourcePrototype::destroy_non_fuel_fluid, true by default.
+    - Added GeneratorPrototype::destroy_non_fuel_fluid, true by default.
+  Scripting:
+    - Added LuaEntityPrototype::inserter_stack_size_bonus read.
+    - Added LuaFluidEnergySourcePrototype::destroy_non_fuel_fluid read.
+    - Added LuaStyle::bar_width read/write.
+    - Added LuaPlayer::show_on_map read/write.
+    - Reworked table saving and loading to be non-recursive. This allows to have extreme table nesting inside of `global` variable.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.46
 Date: 05. 11. 2021
@@ -28,11 +49,11 @@ Date: 27. 10. 2021
 Version: 1.1.43
 Date: 26. 10. 2021
   Changes:
-    - Reduced multiplayer latency on very good connections by up to 66ms(4 ticks). (http://forums.factorio.com/71901)
+    - Reduced multiplayer latency on very good connections by up to 66ms(4 ticks). (https://forums.factorio.com/71901)
     - Changed multiplayer latency calculation to be smoother. This should reduce multiplayer stutter on bad connections.
     - Changed default network send rate from 30 to 60 packets per second and added an option to configure the rate in server-settings.json.
   Bugfixes:
-    - Add a 70% damage bonus to discharge defenses with Energy Weapons Damage 6 and 7. (http://forums.factorio.com/100149)
+    - Add a 70% damage bonus to discharge defenses with Energy Weapons Damage 6 and 7. (https://forums.factorio.com/100149)
     - Fixed flamethrower turrets not reporting the correct damage bonuses
     - Fixed gun turret tooltips showing the ammo in the middle of the other stats
     - Fixed artillery wagon and artillery turret tooltips not showing the damage of the loaded ammo

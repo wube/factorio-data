@@ -14,7 +14,6 @@ data:extend(
     },
     simulation = simulations.introduction,
   },
-
   {
     type = "tips-and-tricks-item-category",
     name = "game-interaction",
@@ -51,6 +50,11 @@ data:extend(
     name = "clear-cursor",
     category = "game-interaction",
     order = "d",
+    skip_trigger =
+    {
+      type = "clear-cursor",
+      count = 5
+    },
     dependencies = {"introduction"},
     image = "__base__/graphics/tips-and-tricks/clear-cursor.png"
   },
@@ -215,6 +219,78 @@ data:extend(
   },
 
   {
+    type = "tips-and-tricks-item",
+    category = "game-interaction",
+    name = "rotating-assemblers",
+    tag = "[entity=assembling-machine-2]",
+    order = "k",
+    trigger =
+    {
+      type = "or",
+      triggers =
+      {
+        {
+          type = "set-recipe",
+          uses_fluid = true,
+          machine = "assembling-machine-2"
+        },
+        {
+          type = "set-recipe",
+          uses_fluid = true,
+          machine = "assembling-machine-3"
+        }
+      }
+    },
+    dependencies = {"introduction"},
+    simulation = simulations.rotating_assemblers
+  },
+  {
+    type = "tips-and-tricks-item",
+    name = "entity-flip",
+    tag = "",
+    category = "game-interaction",
+    order = "l",
+    trigger =
+    {
+      type = "set-recipe",
+      machine = "oil-refinery",
+      recipe = "advanced-oil-processing",
+      count = 5
+    },
+    skip_trigger =
+    {
+      type = "flip-entity",
+      count = 3
+    },
+    dependencies = {"introduction"},
+    simulation = simulations.entity_flip
+  },
+  {
+    type = "tips-and-tricks-item",
+    category = "game-interaction",
+    name = "circuit-network",
+    tag = "[item=red-wire]",
+    order = "m",
+    trigger =
+    {
+      type = "sequence",
+      triggers =
+      {
+        {
+          type = "research",
+          technology = "circuit-network"
+        },
+        {
+          type = "time-elapsed",
+          ticks = 60 * 60 * 30
+        }
+      }
+    },
+    dependencies = {"introduction"},
+    simulation = simulations.circuit_network
+  },
+
+  {
     type = "tips-and-tricks-item-category",
     name = "inserters",
     order = "b-[inserters]"
@@ -227,7 +303,7 @@ data:extend(
     is_title = true,
     trigger =
     {
-      type = "unlocked-recipe",
+      type = "unlock-recipe",
       recipe = "inserter"
     },
     dependencies = {"introduction"},
@@ -345,7 +421,7 @@ data:extend(
     category = "belts",
     trigger =
     {
-      type = "unlocked-recipe",
+      type = "unlock-recipe",
       recipe = "transport-belt"
     },
     dependencies = {"introduction"},
@@ -397,6 +473,13 @@ data:extend(
       match_type_only = true,
       count = 10
     },
+    skip_trigger =
+    {
+      type = "set-filter",
+      entity = "splitter",
+      match_type_only = true,
+      count = 3
+    },
     dependencies = {"splitters"},
     simulation = simulations.splitter_filters
   },
@@ -441,11 +524,11 @@ data:extend(
               triggers =
               {
                 {
-                  type = "unlocked-recipe",
+                  type = "unlock-recipe",
                   recipe = "steam-engine"
                 },
                 {
-                  type = "unlocked-recipe",
+                  type = "unlock-recipe",
                   recipe = "boiler"
                 }
               }
@@ -493,21 +576,6 @@ data:extend(
   },
   {
     type = "tips-and-tricks-item",
-    name = "low-power",
-    tag = "[img=utility/electricity_icon]",
-    category = "electric-network",
-    indent = 1,
-    order = "d",
-    trigger =
-    {
-      type = "low-power",
-      count = 3 -- checked once per 12 seconds
-    },
-    dependencies = {"electric-network"},
-    simulation = simulations.low_power
-  },
-  {
-    type = "tips-and-tricks-item",
     name = "electric-pole-connections",
     tag = "[item=copper-cable]",
     category = "electric-network",
@@ -530,8 +598,28 @@ data:extend(
         }
       }
     },
+    skip_trigger =
+    {
+      type = "manual-wire-drag",
+      count = 5
+    },
     dependencies = {"electric-network"},
     simulation = simulations.electric_pole_connections
+  },
+  {
+    type = "tips-and-tricks-item",
+    name = "low-power",
+    tag = "[img=utility/electricity_icon]",
+    category = "electric-network",
+    indent = 1,
+    order = "d",
+    trigger =
+    {
+      type = "low-power",
+      count = 3 -- checked once per 12 seconds
+    },
+    dependencies = {"electric-network"},
+    simulation = simulations.low_power
   },
   {
     type = "tips-and-tricks-item",
@@ -721,10 +809,20 @@ data:extend(
   },
   {
     type = "tips-and-tricks-item",
+    name = "pole-dragging-coverage",
+    tag = "[entity=small-electric-pole][img=utility/electricity_icon_unplugged]",
+    category = "drag-building",
+    order = "c",
+    indent = 1,
+    dependencies = {"drag-building-poles"},
+    simulation = simulations.pole_dragging_coverage
+  },
+  {
+    type = "tips-and-tricks-item",
     name = "drag-building-underground-belts",
     tag = "[entity=underground-belt]",
     category = "drag-building",
-    order = "c",
+    order = "d",
     indent = 1,
     trigger =
     {
@@ -749,7 +847,7 @@ data:extend(
     name = "fast-belt-bending",
     tag = "[entity=transport-belt]",
     category = "drag-building",
-    order = "d",
+    order = "e",
     indent = 1,
     trigger =
     {
@@ -773,7 +871,7 @@ data:extend(
     name = "fast-obstacle-traversing",
     tag = "[entity=transport-belt][entity=underground-belt]",
     category = "drag-building",
-    order = "e",
+    order = "f",
     indent = 1,
     trigger =
     {
@@ -833,9 +931,19 @@ data:extend(
     order = "b",
     trigger =
     {
-      type = "craft-item",
-      item = "rail",
-      event_type = "crafting-finished"
+      type = "or",
+      triggers =
+      {
+        {
+          type = "craft-item",
+          item = "rail",
+          event_type = "crafting-finished"
+        },
+        {
+          type = "build-entity",
+          entity = "straight-rail"
+        }
+      }
     },
     dependencies = {"trains"},
     simulation = simulations.rail_building
@@ -947,7 +1055,7 @@ data:extend(
     name = "gate-over-rail",
     tag = "[entity=gate]",
     category = "trains",
-    order = "g",
+    order = "f",
     trigger =
     {
       type = "and",
@@ -969,6 +1077,11 @@ data:extend(
         }
       }
     },
+    skip_trigger =
+    {
+      type = "gate-over-rail-build",
+      count = 4
+    },
     dependencies = {"trains"},
     indent = 1,
     simulation = simulations.gate_over_rail
@@ -978,7 +1091,7 @@ data:extend(
     name = "pump-connection",
     tag = "[entity=pump]",
     category = "trains",
-    order = "h",
+    order = "g",
     trigger =
     {
       type = "and",
@@ -990,9 +1103,19 @@ data:extend(
           count = 2
         },
         {
-          type = "craft-item",
-          item = "fluid-wagon",
-          event_type = "crafting-finished"
+          type = "or",
+          triggers =
+          {
+            {
+              type = "craft-item",
+              item = "fluid-wagon",
+              event_type = "crafting-finished"
+            },
+            {
+              type = "build-entity",
+              entity = "fluid-wagon"
+            }
+          }
         }
       }
     },
@@ -1005,7 +1128,7 @@ data:extend(
     name = "train-stop-same-name",
     tag = "[entity=train-stop][entity=train-stop]",
     category = "trains",
-    order = "i",
+    order = "h",
     trigger =
     {
       type = "build-entity",
@@ -1132,7 +1255,7 @@ data:extend(
     tag = "[item=logistic-chest-buffer]",
     category = "logistic-network",
     indent = 1,
-    order = "g",
+    order = "h",
     trigger =
     {
       type = "research",
@@ -1157,6 +1280,21 @@ data:extend(
     {
       type = "research",
       technology = "construction-robotics"
+    },
+    skip_trigger =
+    {
+      type = "and",
+      triggers =
+      {
+        {
+          type = "shift-build",
+          count = 5
+        },
+        {
+          type = "research",
+          technology = "construction-robotics"
+        }
+      }
     },
     dependencies = {"introduction"},
     simulation = simulations.ghost_building
@@ -1186,6 +1324,10 @@ data:extend(
               type = "craft-item",
               item = "personal-roboport-equipment",
               event_type = "crafting-finished"
+            },
+            {
+              type = "place-equipment",
+              equipment = "personal-roboport-equipment"
             }
           }
         },
@@ -1343,55 +1485,5 @@ data:extend(
     },
     dependencies = {"fast-replace"},
     simulation = simulations.fast_replace_belt_underground
-  },
-
-  {
-    type = "tips-and-tricks-item",
-    name = "rotating-assemblers",
-    tag = "[entity=assembling-machine-2]",
-    order = "y",
-    trigger =
-    {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "set-recipe",
-          uses_fluid = true,
-          machine = "assembling-machine-2"
-        },
-        {
-          type = "set-recipe",
-          uses_fluid = true,
-          machine = "assembling-machine-3"
-        }
-      }
-    },
-    dependencies = {"introduction"},
-    simulation = simulations.rotating_assemblers
-  },
-
-  {
-    type = "tips-and-tricks-item",
-    name = "circuit-network",
-    tag = "[item=red-wire]",
-    order = "z",
-    trigger =
-    {
-      type = "sequence",
-      triggers =
-      {
-        {
-          type = "research",
-          technology = "circuit-network"
-        },
-        {
-          type = "time-elapsed",
-          ticks = 60 * 60 * 30
-        }
-      }
-    },
-    dependencies = {"introduction"},
-    simulation = simulations.circuit_network
   }
 })
