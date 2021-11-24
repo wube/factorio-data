@@ -246,27 +246,6 @@ data:extend(
   },
   {
     type = "tips-and-tricks-item",
-    name = "entity-flip",
-    tag = "",
-    category = "game-interaction",
-    order = "l",
-    trigger =
-    {
-      type = "set-recipe",
-      machine = "oil-refinery",
-      recipe = "advanced-oil-processing",
-      count = 5
-    },
-    skip_trigger =
-    {
-      type = "flip-entity",
-      count = 3
-    },
-    dependencies = {"introduction"},
-    simulation = simulations.entity_flip
-  },
-  {
-    type = "tips-and-tricks-item",
     category = "game-interaction",
     name = "circuit-network",
     tag = "[item=red-wire]",
