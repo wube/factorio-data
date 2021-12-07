@@ -143,7 +143,7 @@ data:extend(
 
     path_finder=
     {
-      -- defines whether we prefer forward (>1) or backward (<-1) or symmetrical (1) search
+      -- The pathfinder performs a step of the backward search every fwd2bwd_ratio'th step. The minimum allowed value is 2, which means symmetric search.
       fwd2bwd_ratio = 5,
       -- when comparing nodes in open which one to check next
       -- heuristic value is multiplied by this ratio

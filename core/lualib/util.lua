@@ -111,6 +111,17 @@ function util.multiply_color(c1, n)
   }
 end
 
+function util.get_color_with_alpha(color, alpha, normalized_alpha)
+  local new_color =
+  {
+    r = color.r or color[1] or 0,
+    g = color.g or color[2] or 0,
+    b = color.b or color[3] or 0
+  }
+  new_color.a = normalized_alpha and (new_color.r > 1 or new_color.g > 1 or new_color.b > 1) and alpha * 255 or alpha
+  return new_color
+end
+
 function util.moveposition(position, direction, distance)
 
   if direction == defines.direction.north then

@@ -15,8 +15,10 @@ local barrel_side_mask = "__base__/graphics/icons/fluid/barreling/barrel-side-ma
 local barrel_hoop_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-hoop-top-mask.png"
 
 -- Recipe icon masks
+local barrel_empty_icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png"
 local barrel_empty_side_mask = "__base__/graphics/icons/fluid/barreling/barrel-empty-side-mask.png"
 local barrel_empty_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-empty-top-mask.png"
+local barrel_fill_icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png"
 local barrel_fill_side_mask = "__base__/graphics/icons/fluid/barreling/barrel-fill-side-mask.png"
 local barrel_fill_top_mask = "__base__/graphics/icons/fluid/barreling/barrel-fill-top-mask.png"
 
@@ -54,31 +56,25 @@ local function get_recipes_for_barrel(name)
   return nil
 end
 
--- Generates the icons definition for a barrel item with the provided name and fluid definition using the provided empty barrel base icon
-local function generate_barrel_item_icons(fluid, empty_barrel_item)
-  local side_tint = util.table.deepcopy(fluid.base_color)
-  side_tint.a = side_alpha
-  local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
-  top_hoop_tint.a = top_hoop_alpha
-
+local function generate_barrel_icons(fluid, base_icon, side_mask, top_mask)
   return
   {
     {
-      icon = empty_barrel_item.icon,
-      icon_size = empty_barrel_item.icon_size,
-      icon_mipmaps = empty_barrel_item.icon_mipmaps
+      icon = base_icon.icon or base_icon,
+      icon_size = base_icon.icon_size or 64,
+      icon_mipmaps = base_icon.icon_mipmaps or 4
     },
     {
-      icon = barrel_side_mask,
+      icon = side_mask,
       icon_size = 64,
       icon_mipmaps = 4,
-      tint = side_tint
+      tint = util.get_color_with_alpha(fluid.base_color, side_alpha, true)
     },
     {
-      icon = barrel_hoop_top_mask,
+      icon = top_mask,
       icon_size = 64,
       icon_mipmaps = 4,
-      tint = top_hoop_tint
+      tint = util.get_color_with_alpha(fluid.flow_color, top_hoop_alpha, true)
     }
   }
 end
@@ -90,7 +86,7 @@ local function create_barrel_item(name, fluid, empty_barrel_item)
     type = "item",
     name = name,
     localised_name = {"item-name.filled-barrel", fluid.localised_name or {"fluid-name." .. fluid.name}},
-    icons = generate_barrel_item_icons(fluid, empty_barrel_item),
+    icons = generate_barrel_icons(fluid, empty_barrel_item, barrel_side_mask, barrel_hoop_top_mask),
     icon_size = empty_barrel_item.icon_size,
     icon_mipmaps = empty_barrel_item.icon_mipmaps,
     subgroup = "barrel",
@@ -111,32 +107,8 @@ local function get_or_create_barrel_item(name, fluid, empty_barrel_item)
   return create_barrel_item(name, fluid, empty_barrel_item)
 end
 
--- Generates the icons definition for a fill-barrel recipe with the provided barrel name and fluid definition
-local function generate_fill_barrel_icons(fluid)
-
-  local side_tint = util.table.deepcopy(fluid.base_color)
-  side_tint.a = side_alpha
-  local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
-  top_hoop_tint.a = top_hoop_alpha
-
-  local icons =
-  {
-    {
-      icon = "__base__/graphics/icons/fluid/barreling/barrel-fill.png",
-      icon_size = 64, icon_mipmaps = 4
-    },
-    {
-      icon = barrel_fill_side_mask,
-      icon_size = 64, icon_mipmaps = 4,
-      tint = side_tint
-    },
-    {
-      icon = barrel_fill_top_mask,
-      icon_size = 64, icon_mipmaps = 4,
-      tint = top_hoop_tint
-    }
-  }
-
+local function generate_barrel_recipe_icons(fluid, base_icon, side_mask, top_mask, fluid_icon_shift)
+  local icons = generate_barrel_icons(fluid, base_icon, side_mask, top_mask)
   if fluid.icon and fluid.icon_size then
     table.insert(icons,
     {
@@ -144,52 +116,11 @@ local function generate_fill_barrel_icons(fluid)
       icon_size = fluid.icon_size,
       icon_mipmaps = fluid.icon_mipmaps,
       scale = 16.0 / fluid.icon_size, -- scale = 0.5 * 32 / icon_size simplified
-      shift = {-8, -8}
+      shift = fluid_icon_shift
     }
     )
   elseif fluid.icons then
-    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {-8, -8}}, fluid.icon_size)
-  end
-
-  return icons
-end
-
--- Generates the icons definition for a empty-barrel recipe with the provided barrel name and fluid definition
-local function generate_empty_barrel_icons(fluid)
-  local side_tint = util.table.deepcopy(fluid.base_color)
-  side_tint.a = side_alpha
-  local top_hoop_tint = util.table.deepcopy(fluid.flow_color)
-  top_hoop_tint.a = top_hoop_alpha
-
-  local icons =
-  {
-    {
-      icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
-      icon_size = 64, icon_mipmaps = 4
-    },
-    {
-      icon = barrel_empty_side_mask,
-      icon_size = 64, icon_mipmaps = 4,
-      tint = side_tint
-    },
-    {
-      icon = barrel_empty_top_mask,
-      icon_size = 64, icon_mipmaps = 4,
-      tint = top_hoop_tint
-    }
-  }
-  if fluid.icon and fluid.icon_size then
-    table.insert(icons,
-    {
-      icon = fluid.icon,
-      icon_size = fluid.icon_size,
-      icon_mipmaps = fluid.icon_mipmaps,
-      scale = 16.0 / fluid.icon_size,
-      shift = {7, 8}
-    }
-    )
-  elseif fluid.icons then
-    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = {7, 8}}, fluid.icon_size)
+    icons = util.combine_icons(icons, fluid.icons, {scale = 0.5, shift = fluid_icon_shift}, fluid.icon_size)
   end
 
   return icons
@@ -207,7 +138,7 @@ local function create_fill_barrel_recipe(item, fluid)
     subgroup = "fill-barrel",
     order = "b[fill-" .. item.name .. "]",
     enabled = false,
-    icons = generate_fill_barrel_icons(fluid),
+    icons = generate_barrel_recipe_icons(fluid, barrel_fill_icon, barrel_fill_side_mask, barrel_fill_top_mask, {-8, -8}),
     icon_size = 64, icon_mipmaps = 4,
     ingredients =
     {
@@ -237,7 +168,7 @@ local function create_empty_barrel_recipe(item, fluid)
     subgroup = "empty-barrel",
     order = "c[empty-" .. item.name .. "]",
     enabled = false,
-    icons = generate_empty_barrel_icons(fluid),
+    icons = generate_barrel_recipe_icons(fluid, barrel_empty_icon, barrel_empty_side_mask, barrel_empty_top_mask, {7, 8}),
     icon_size = 64, icon_mipmaps = 4,
     ingredients =
     {

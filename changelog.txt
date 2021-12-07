@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.49
+Version: 1.1.50
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.49
+Date: 07. 12. 2021
+  Bugfixes:
+    - Fixed transport belts picking up items on ground when rotated. (https://forums.factorio.com/100693)
+    - Fixed that game.map_settings.path_finder.fwd2bwd_ratio could be set to nonsensical values. (https://forums.factorio.com/100785)
+    - Fixed main menu track playing only once. (https://forums.factorio.com/100787)
+    - Fixed that units could get stuck close to their goal. (https://forums.factorio.com/100348)
+    - Fixed that the small research bar in a technology slot wouldn't show for the technology currently in research. (https://forums.factorio.com/100789)
+    - Fixed a crash which was caused by early garbage collection of LuaObject because LuaObject method closures didn't hold a back reference to the object. (https://forums.factorio.com/57490)
+    - Fixed barelling recipe icons having incorrect tint with index-based fluid color definitions. (https://forums.factorio.com/100815)
+    - Fixed barelling recipe icons having incorrect alpha with fluid color definitions in 0-255 range.
+  Scripting:
+    - LuaObjects are now saved using binary format instead of previous format with intermediate Lua table.
+      This speeds up general handling of LuaObjects and makes saving and loading with a lot of them noticable faster.
+    - LuaObject::isluaobject now returns true instead of a magic string.
+    - Clarified LuaGameScript::finished. (https://forums.factorio.com/99764)
+    - Added LuaGameScript::finished_but_continuing read.
+    - Added LuaGameScript::reset_game_state() method.
+    - Implemented new website for Lua API documentation.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.48
 Date: 24. 11. 2021
