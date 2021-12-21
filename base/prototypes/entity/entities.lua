@@ -13816,8 +13816,6 @@ data:extend(
     collision_box = {{-2.2, -2.2}, {2.2, 2.2}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     damaged_trigger_effect = hit_effects.entity(),
-    --the collision box of a reactor is increased by this on the sides where it connects to another reactor:
-    --neighbour_collision_increase = 0.25,
     lower_layer_picture =
     {
       filename = "__base__/graphics/entity/nuclear-reactor/reactor-pipes.png",

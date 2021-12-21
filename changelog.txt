@@ -1,6 +1,25 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.50
+Version: 1.1.51
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.50
+Date: 21. 12. 2021
+  Minor Features:
+    - The permissions list in the permissions GUI can now be localised.
+    - Removed feature where reactor collision box would increase when connected to neighbouring reactor (character can now walk in-between connected reactors)
+  Bugfixes:
+    - Fixed that biters could get stuck trying to attack an entity they were standing on. (https://forums.factorio.com/100269)
+    - Fixed issue regarding placing an electric pole over a ghost of an electric pole connected to an enabled power switch. (https://forums.factorio.com/100388)
+    - Fixed a crash related to units and mod events. (https://forums.factorio.com/100947)
+    - Fixed ghost entities of other forces being considered valid drop targets. (https://forums.factorio.com/100880)
+    - Fixed ghost electric poles connecting to electric poles of other forces. Neutral force is exempt from this fix, it can connect to everything. (https://forums.factorio.com/100922)
+    - Fixed that LuaEntity::disconnect_neighbour was unable to disconnect specified pair of electric poles when they were on different surfaces.
+    - Fixed gate cloning related to opened state. (https://forums.factorio.com/100862)
+    - Fixed that on_game_created_from_scenario event didn't fire after pressing "Save and Play" from map editor. (https://forums.factorio.com/100624)
+  Modding:
+    - Added LuaTilePrototype::check_collision_with_entities, false by default.
+      If set to true - checks for collisions with entities before building or unearthing the tile.
+    - Removed ReactorPrototype::neighbour_collision_increase.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.49
 Date: 07. 12. 2021
