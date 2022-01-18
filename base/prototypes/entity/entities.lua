@@ -1809,7 +1809,8 @@ data:extend(
         height = 32
       }
     },
-    autoplace = { influence = 0.01 }
+    autoplace = { influence = 0.01 },
+    protected_from_tile_building = false
   },
 
   {

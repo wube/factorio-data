@@ -1,6 +1,51 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.51
+Version: 1.1.52
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.51
+Date: 18. 01. 2022
+  Changes:
+    - When using /swap-players undo queues are now also swapped.
+    - Improve performance of querying if an entity is registered for deconstruction from O(N) to O(1).
+    - Adjusted default music volume.
+  Bugfixes:
+    - Fixed that if biters took damage from a forest fire, they would path toward the player who started it, no matter the distance. (https://forums.factorio.com/100894)
+    - Fixed that replacing a tile between a colliding hidden tile (with check_collision_with_entities set to true) and an entity would not yield an item.
+    - Fixed that LuaGameScript::ban_player would incorrectly use reason as a player name when given player was never in game. (https://forums.factorio.com/101053)
+    - Fixed that the saving progress bar and other popups were placed behind the transparent pause overlay. (https://forums.factorio.com/100783)
+    - Fixed a scenario could be created with temporary-state trains which were not properly deleted. (https://forums.factorio.com/101113)
+    - Fixed a crash when using --map-settings while loading a multiplayer map. (https://forums.factorio.com/101089)
+    - Fixed that trying to manually mine a resource that needs a mining fluid would sometimes produce sound of mining. (https://forums.factorio.com/100925)
+    - Fixed script rendered arcs could be considered invisible when they were visible. (https://forums.factorio.com/101038)
+    - Fixed that LuaEntity::belt_neighbours would return LuaEntity based on EntityGhost's inner entity, not the EntityGhost itself. (https://forums.factorio.com/101126)
+    - Fixed fish preventing tiles building with check_collision_with_entities enabled.
+    - Fixed that trains would not account for the train stop snap distance when already at the train stop with the back of a train. (https://forums.factorio.com/100779)
+    - Fixed the intro music volume being set incorrectly.
+    - Fixed that --start-server-load-latest when given an empty saves folder wouldn't work correctly. (https://forums.factorio.com/101119)
+    - Fixed missing efficiency tooltip and incorrect fuel consumption tooltip value in generator equipment with burner energy source.
+    - Fixed ghost electric poles connecting to ghost electric poles of other forces. Neutral force is exempt from this change. (https://forums.factorio.com/101021)
+    - Fixed that biters would sometimes prefer running away over choosing another target. (https://forums.factorio.com/99767)
+    - Fixed trains pathfinder would crash when a train is in a loop next to segment end and was requested to go to rail target in the middle of a loop. (https://forums.factorio.com/100645)
+    - Fixed multi-level technologies showing the same saved progress in technology GUI. (https://forums.factorio.com/101060)
+    - Fixed an icon of recipe notification on item group would show even if there are no recipes visible in a given context. (https://forums.factorio.com/101191)
+    - Fixed a crash when defining too many icon variations. (https://forums.factorio.com/101245)
+    - Fixed changing station name with rich text tags could crash when moving cursor by words. (https://forums.factorio.com/101216)
+    - Fixed LuaBurner::inventory did not work correctly for some burner-energy-source entities. (https://forums.factorio.com/101255)
+    - Fixed a crash caused by undoing an entity deconstruction which another player already cancelled. (https://forums.factorio.com/101251)
+  Modding:
+    - Added EntityPrototype::protected_from_tile_building, true by default.
+      If set to false - entity won't block tile mining/building (with `TilePrototype::check_collision_with_entities` enabled).
+    - Added LandMinePrototype::trigger_collision_mask.
+    - Added EntityWithOwnerPrototype.
+    - Added EntityWithOwnerPrototype::is_military_target and allow_run_time_change_of_is_military_target.
+    - SimpleEntityWithForce now inherits from SimpleEntityWithOwner.
+    - SpiderEnginePrototype::military_target is no longer used. If anything is provided it will make related SpiderVehiclePrototype to become a military target instead.
+  Scripting:
+    - Added LuaEntityPrototype::trigger_collision_mask read.
+    - Added LuaEntity::is_military_target read. This deprecates LuaEntity::is_entity_with_force.
+    - Added LuaEntityPrototype::is_entity_with_owner, is_military_target and allow_run_time_change_of_is_military_target read.
+    - Added LuaEntity::get_spider_legs().
+    - Added LuaEntity::neighbours read for cliffs.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.50
 Date: 21. 12. 2021
@@ -17,7 +62,7 @@ Date: 21. 12. 2021
     - Fixed gate cloning related to opened state. (https://forums.factorio.com/100862)
     - Fixed that on_game_created_from_scenario event didn't fire after pressing "Save and Play" from map editor. (https://forums.factorio.com/100624)
   Modding:
-    - Added LuaTilePrototype::check_collision_with_entities, false by default.
+    - Added TilePrototype::check_collision_with_entities, false by default.
       If set to true - checks for collisions with entities before building or unearthing the tile.
     - Removed ReactorPrototype::neighbour_collision_increase.
 ---------------------------------------------------------------------------------------------------

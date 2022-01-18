@@ -5378,7 +5378,7 @@ data:extend(
     prerequisites = {"advanced-electronics"},
     unit =
     {
-      count = "250",
+      count = 250,
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -5404,7 +5404,7 @@ data:extend(
     prerequisites = {"mining-productivity-1"},
     unit =
     {
-      count = "500",
+      count = 500,
       ingredients =
       {
         {"automation-science-pack", 1},
@@ -5431,7 +5431,7 @@ data:extend(
     prerequisites = {"mining-productivity-2"},
     unit =
     {
-      count = "1000",
+      count = 1000,
       ingredients =
       {
         {"automation-science-pack", 1},
