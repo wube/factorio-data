@@ -1,6 +1,43 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.54
+Version: 1.1.55
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.54
+Date: 23. 02. 2022
+  Minor Features:
+    - The multiplayer games browser can now filter games that are hosted on dedicated servers.
+  Bugfixes:
+    - Fixed west variation of Boiler and Heat exchanger graphics. (https://forums.factorio.com/100790)
+    - Fixed save/load instability occuring when the game was saved after a robot threw cliff explosives but before the cliff exploded.
+    - Fixed a crash when script tries to connect rolling stock during rolling stock destruction. (https://forums.factorio.com/101404)
+    - Fixed LuaTransportLine::output_lines on a splitter's output transport line would incorrectly consider it an input transport line of that splitter. (https://forums.factorio.com/101435)
+    - Fixed LuaTransportLine::input_lines would not return both input lines of a splitter.
+    - Fixed that when train was created, a wrong end could be selected as a front when rolling stock at expected trains front was facing backward.
+    - Fixed that it was possible to specify artillery-projectile as a place_result of an item. (https://forums.factorio.com/101448)
+    - Fixed unnecessary disk writes when showing background simulations. (https://forums.factorio.com/101468)
+    - Fixed that sometimes the host would not have admin rights when hosting a multiplayer game from a save.
+    - Fixed LuaSurface::find_tiles_filtered would not cover bottom right tile.
+    - Fixed that too many open RCON connections would crash the game. There is now a limit of maximum of 128 simultaneous RCON connections. (https://forums.factorio.com/101522)
+    - Fixed a crash related to modded trains that could change travel direction due to air friction computation. (https://forums.factorio.com/101320)
+    - Fixed energy consumers would get too much energy when supplied through multiple electric networks. (https://forums.factorio.com/101515)
+    - Fixed a crash due to LuaLogisticCell not being invalidated when owner entity is being deleted. (https://forums.factorio.com/101550)
+    - Fixed that non-lamp entities could be given the 'lamp' electric usage priority which would crash the game. (https://forums.factorio.com/101545)
+    - Fixed locomotive placement would snap to wrong train stop when there are multiple stops available. (https://forums.factorio.com/101575)
+    - Fixed that the whitelist button was enabled in the /config GUI. (https://forums.factorio.com/101230)
+    - Fixed searching for items in controller gui would not highlight item stacks in the trash slots. (https://forums.factorio.com/101490)
+    - Fixed that building underground belt ghosts with smart belt building would crash if ghosts are immediately revived by script. (https://forums.factorio.com/100619)
+    - Fixed very high deconstruction_time_to_live value would lead to deconstruction orders expiring too soon. (https://forums.factorio.com/101605)
+    - Fixed that a multiplayer client could desync several times in a row, making the server save the map for desync report multiple times.
+    - Fixed that crafting recipes with products exceeding their stack limit would produce only a single full stack when crafting by hand. (https://forums.factorio.com/101614)
+    - Fixed tips and tricks GUI staying open when changing controllers, and not being able to close it afterwards. (https://forums.factorio.com/100508)
+    - Fixed PvP config for health bonus didn't apply correctly.
+    - Fixed that if the game couldn't connect to a server due to corrupted data, it wouldn't show any error to the user. (https://forums.factorio.com/101654)
+  Scripting:
+    - Added 'is_military_target' filter to the options for LuaSurface::find_entities_filtered.
+    - Added LuaFluidBox::get_fluid_system_id() method.
+  Modding:
+    - Added LocomotivePrototype::max_snap_to_train_stop_distance.
+    - Added AutoplaceControl::can_be_disabled.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.53
 Date: 19. 01. 2022
