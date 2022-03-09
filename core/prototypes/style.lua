@@ -6717,6 +6717,14 @@ data:extend(
       natural_height = (train_gui_minimap_size + 24 + 40) * 3 + 36
     },
 
+    trains_gui_deep_frame_small_screen =
+    {
+      type = "frame_style",
+      parent = "trains_gui_deep_frame",
+      natural_width = ((train_gui_minimap_size + 24) * 2) + 12,
+      natural_height = (train_gui_minimap_size + 24 + 40) * 2 + 36
+    },
+
     slot_button_deep_frame = --frame meant to hold slot buttons. Similar to filter_scroll_pane_background_frame
     {
       type = "frame_style",
@@ -9563,6 +9571,13 @@ data:extend(
       type = "frame_style",
       parent = "inside_deep_frame",
       natural_size = {1024 , 576 + 36 + 180} -- image height + subheader height + subfooter height
+    },
+    
+    tips_and_tricks_info_frame_small_screen =
+    {
+      type = "frame_style",
+      parent = "tips_and_tricks_info_frame",
+      natural_size = {768 , 432 + 36 + 180}
     },
 
     tabbed_pane =

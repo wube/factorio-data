@@ -1144,9 +1144,9 @@ data:extend(
     armor_picture_mapping =
     {
       --nil = 1,
-      ["light-armor"] = 2,
+      ["light-armor"] = 1,
       ["heavy-armor"] = 2,
-      ["modular-armor"] = 3,
+      ["modular-armor"] = 2,
       ["power-armor"] = 3,
       ["power-armor-mk2"] = 3
     }
@@ -13099,8 +13099,9 @@ data:extend(
     working_sound =
     {
       sound = sounds.poison_cloud(0.5),
-      persistent = true,
-      audible_distance_modifier = 0.8
+      max_sounds_per_type = 1,
+      audible_distance_modifier = 0.8,
+      match_volume_to_activity = true
     }
   },
 

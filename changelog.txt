@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.56
+Version: 1.1.57
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.56
+Date: 09. 03. 2022
+  Gui:
+    - Some GUI fixes and improvements for screen resolutions under 1920x1080
+    - Set the default GUI scale on the Steam Deck to 100%
+  Bugfixes:
+    - Fixed poison cloud sound fade out.
+    - Fixed tooltips for vehicles would still show entry instructions even when no passengers are allowed. (https://forums.factorio.com/101689)
+    - Fixed train stop names with different amounts of leading spaces being treated as equal in some cases but not in others. (https://forums.factorio.com/101660)
+    - Fixed idle machines without idle sound counting towards the max_sounds_per_type limit. (https://forums.factorio.com/80745)
+    - Fixed that changing the force of artillery wagons didn't work. (https://forums.factorio.com/101731)
+    - Fixed a crash when using non-rectangular equipment. (https://forums.factorio.com/101778)
+    - Fixed a crash when building underground belt or pipe ghosts over belts/pipes of other forces. (https://forums.factorio.com/101776)
+    - Fixed character corpse armor variations being inconsistent with character armor variations. (https://forums.factorio.com/101781)
+    - Fixed a consistency issue if a Lua event handler cancelled deconstruction of an entity that was marked for deconstruction as a result of fast-replace. (https://forums.factorio.com/100775)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.55
 Date: 23. 02. 2022
