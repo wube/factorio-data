@@ -1,6 +1,27 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.57
+Version: 1.1.58
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.57
+Date: 29. 03. 2022
+  Optimizations:
+    - Improved overall performance by 5-10% when fully zoomed out.
+  Bugfixes:
+    - Fixed that some error messages wouldn't be translated. (https://forums.factorio.com/101815)
+    - Fixed that biters might remain inactive when they should be activated. (https://forums.factorio.com/99989)
+    - Fixed that units could teleport through cliffs if they bunched up close together. (https://forums.factorio.com/101834)
+    - Fixed that setting LuaGuiElement::zoom to 0 would crash the game. (https://forums.factorio.com/101841)
+    - Fixed a crash when changing mod options while the cursor hovers the "Back" button. (https://forums.factorio.com/101814)
+    - Fixed a crash due to recursive chain signal update. (https://forums.factorio.com/101806)
+    - Fixed that if a non-attack distraction command failed, it would raise the on_ai_command_completed event repeatedly. (https://forums.factorio.com/101870)
+    - Fixed that opening web links in the Linux Steam build of the game could take unreasonably long. (https://forums.factorio.com/101339)
+    - Fixed that logistic requests, item filters and similar could be set to the copy-paste tool when clicking the slot while holding that item. (https://forums.factorio.com/101861)
+  Scripting:
+    - Added LuaItemPrototype::reverse_* read for selection tool.
+    - Added LuaEntity::radar_scan_progress read.
+    - Added LuaEntityPrototype::logistic_parameters read.
+    - Added LuaEntityPrototype::heat_buffer_prototype read.
+    - Added LuaHeatEnergySourcePrototype::heat_buffer_prototype read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.56
 Date: 09. 03. 2022
