@@ -6,7 +6,7 @@ Its purpose is to allow the public to track changes to the Factorio **Lua protot
 
 See https://github.com/wube/factorio-data/releases for past versions.
 Compare versions using git on the command line, or by using magic github comparison urls, 
-eg: https://github.com/wube/factorio-data/compare/0.14.23...0.15.40
+eg: https://github.com/wube/factorio-data/compare/0.18.43...1.1.57
 
 ## Some Potential Use Cases of Data
 
