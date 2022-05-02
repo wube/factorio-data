@@ -1,6 +1,37 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.58
+Version: 1.1.59
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.58
+Date: 02. 05. 2022
+  Changes:
+    - Significantly reduced the intensity of the red screen flash when the player character takes damage.
+    - Changed fish so they won't swim into inactive chunks. (https://forums.factorio.com/102295)
+    - Changed slowdown capsule and posion capsule icons to be matching in size. (https://forums.factorio.com/85558)
+    - Added email authentication to login GUIs.
+  Bugfixes:
+    - Fixed that overwriting ItemRequestProxy item requests wasn't working properly in some cases when the same item was already requested. (https://forums.factorio.com/102022)
+    - Fixed that loading a mod with a corrupted image file would crash the whole game on Linux. (https://forums.factorio.com/102067)
+    - Fixed a crash with ghost overbuilding and script interactions. (https://forums.factorio.com/102136)
+    - Fixed that infinite technologies didn't respect ignore_tech_cost_multiplier. (https://forums.factorio.com/102179)
+    - Fixed that LuaEntity::belt_neighbours didn't work on ghosts. (https://forums.factorio.com/102178)
+    - Fixed an issue with item-with-inventory extending inventories and quickbars. (https://forums.factorio.com/102095)
+    - Fixed that a train stop helper would not draw when hovering inserters next to rails that were not straight connected to a train stop. (https://forums.factorio.com/101954)
+    - Fixed a crash when fast replacing electric pole marked to be deconstructed when there is another ghost pole on top of it. (https://forums.factorio.com/101536)
+    - Fixed a crash when creating a blueprint with connected electric pole while it has an upgrade target set to not electric pole. (https://forums.factorio.com/101375)
+    - Removed a NaN check when loading map. (https://forums.factorio.com/102198)
+    - Fixed a screenshot for save file preview would not account for a force of a player. (https://forums.factorio.com/102090)
+    - Removed duplicated frame in grenade and cluster grenade animation. (https://forums.factorio.com/102060)
+    - Fixed a map loading issue when changing mod dependencies and nothing else. (https://forums.factorio.com/102253)
+    - Fixed a crash when trying to perform some actions while in multiplayer. (https://forums.factorio.com/101609)
+    - Fixed rotating entities with non-symetric bounding boxes didn't work correctly. (https://forums.factorio.com/101611)
+    - Fixed that already built pipes to ground could show removal indicators for pipes they are bridging when selected.
+    - Fixed the runtime multiplayer settings GUI wouldn't fit on screen. (https://forums.factorio.com/102272)
+    - Fixed that inserters could be flipped in some cases when they weren't supposed to allow it. (https://forums.factorio.com/102294)
+    - Fixed that cliff deconstruction wasn't issued when the corrected cliff collision box overlapped with ghost entities. (https://forums.factorio.com/66400)
+  Scripting:
+    - Added on_research_cancelled.
+    - Added on_player_reverse_selected_area.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.57
 Date: 29. 03. 2022

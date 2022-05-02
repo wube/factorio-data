@@ -1211,7 +1211,7 @@ data:extend(
     ticks_to_keep_aiming_direction = 100,
     --ticks you need to wait after firing a weapon or taking damage to get out of combat and get healed
     ticks_to_stay_in_combat = 600,
-    damage_hit_tint = {r = 1, g = 0, b = 0, a = 0},
+    damage_hit_tint = {r = 0.12, g = 0, b = 0, a = 0},
     running_speed = 0.15,
     distance_per_frame = 0.13,
     maximum_corner_sliding_distance = 0.7,
