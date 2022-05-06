@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.59
+Version: 1.1.60
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.59
+Date: 06. 05. 2022
+  Bugfixes:
+    - Quickbar shortcuts to items in blueprint books can be used again. (https://forums.factorio.com/102322)
+    - Fixed grenade shadows.
+    - Fixed it was possible to put blueprint book indirectly into itself (https://forums.factorio.com/102337)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.58
 Date: 02. 05. 2022

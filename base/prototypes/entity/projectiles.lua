@@ -138,7 +138,7 @@ data:extend(
     shadow =
     {
       filename = "__base__/graphics/entity/grenade/grenade-shadow.png",
-      frame_count = 16,
+      frame_count = 15,
       line_length = 8,
       animation_speed = 0.250,
       width = 26,
@@ -149,7 +149,7 @@ data:extend(
       hr_version =
       {
         filename = "__base__/graphics/entity/grenade/hr-grenade-shadow.png",
-        frame_count = 16,
+        frame_count = 15,
         line_length = 8,
         animation_speed = 0.250,
         width = 50,
