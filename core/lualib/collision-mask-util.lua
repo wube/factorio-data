@@ -129,6 +129,7 @@ local default_masks =
   ["storage-tank"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["straight-rail"] = {"floor-layer", "item-layer", "object-layer", "rail-layer", "water-tile"},
   ["stream"] = {},
+  ["tile"] = {},  -- Tile prototypes are required to have a collision mask so have no default
   ["tile-ghost"] = {"ghost-layer"},
   ["train-stop"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["transport-belt"] = {"floor-layer", "object-layer", "transport-belt-layer", "water-tile"},

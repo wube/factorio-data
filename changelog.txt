@@ -1,6 +1,29 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.60
+Version: 1.1.61
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.60
+Date: 06. 06. 2022
+  Optimizations:
+    - Improved game startup time when using mods.
+  Bugfixes:
+    - Fixed that item requests didn't subtract items picked up from ground when reviving ghosts. (https://forums.factorio.com/102329)
+    - Fixed burner inserter would not fuel itself when drop target was full. (https://forums.factorio.com/102449)
+    - Fixed that inserters would report status other than "Waiting for space in destination" in certain cases. (https://forums.factorio.com/102225, https://forums.factorio.com/65351)
+    - Fixed that Lua collision mask util didn't check for tile prototypes. (https://forums.factorio.com/102474)
+    - Fixed that map pings would always round up the pinged location. (https://forums.factorio.com/102533)
+    - Fixed that replays would always say mods didn't match. (https://forums.factorio.com/102526)
+    - Fixed that canceling syncing mods with a save would exit the GUI.
+    - Fixed that canceling syncing mods with a save through escape would leave the partially downloaded mods.
+    - Fixed that the circular dependency error doesn't list all mods. (https://forums.factorio.com/102430)
+    - Fixed a deadlock on loss of ConnectionAcceptOrDeny message. (https://forums.factorio.com/97596)
+    - Fixed a desync when fast-replacing burner generators.
+  Scripting:
+    - Added LuaEntityPrototype::height, torso_rotation_speed, automatic_weapon_cycling, chain_shooting_cooldown_modifier, chunk_exploration_radius reads.
+    - Added LuaEntityPrototype::animation_speed_coefficient.
+    - Added LuaEntityPrototype::manual_range_modifier.
+    - Added LuaEntityPrototype::dying_speed read.
+    - Added sample_index parameter to LuaFlowStatistics::get_flow_count().
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.59
 Date: 06. 05. 2022
