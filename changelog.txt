@@ -1,6 +1,36 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.61
+Version: 1.1.62
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.61
+Date: 23. 06. 2022
+  Changes:
+    - The game no longer requires re-entering server passwords when restarting to sync mods or mod settings.
+    - When joining modded games mods and settings are synced at the same time reducing the number of restarts needed.
+  Bugfixes:
+    - Fixed server getting stuck at "Saving the map for player" for 20 seconds sometimes if a client disconnects shortly after connecting.
+    - Fixed server getting stuck at "Saving the map for player" forever in some rare situations.
+    - Fixed highlight box on curved-rail would not render selection box correctly. (https://forums.factorio.com/102601)
+    - Fixed heavy-mode when character dies in multiplayer. (https://forums.factorio.com/102624)
+    - Fixed that the "run forest, run" achievement could be unlocked by shooting trees instead of running them over. (https://forums.factorio.com/102623)
+    - Fixed a crash when trying to read LuaEntity::neighbours on a WallConnectable when one of the neighbours is a ghost. (https://forums.factorio.com/102630)
+    - Fixed recipe highlights in the assembling machine GUI. (https://forums.factorio.com/102612)
+    - Fixed an issue with the prototype explorer GUI and guns. (https://forums.factorio.com/102658)
+    - Fixed false-positive desyncs when using mods and running /c game.force_crc() or /toggle-heavy-mode (https://forums.factorio.com/102655)
+    - Fixed a crash when defining a fluid stream prototype with zero particles. (https://forums.factorio.com/102679)
+    - Fixed a GUI layering issue related to some error messages. (https://forums.factorio.com/102569)
+    - Fixed not being able to open blueprint books in books through the quickbar. (https://forums.factorio.com/102681)
+    - Fixed LuaSurface::find_entities_filtered would fail to find entities by collision mask if they only collide with tiles. (https://forums.factorio.com/102706)
+    - Fixed that pump that cannot interact with fluid wagons would crash on save after position change. (https://forums.factorio.com/102643)
+  Modding:
+    - The mod settings GUI will now show the 'tooltip' icon for any settings that have tooltips.
+    - Added a reset button to each mod setting in the mod settings GUI.
+  Scripting:
+    - Added LuaControl::crafting_queue_progress write.
+    - Added LuaTile::tile_ghost.
+    - Added 'to_be_deconstructed', and 'has_tile_ghost' filters to the options for LuaSurface::find_tiles_filtered.
+    - Added LuaEntityPrototype::indexed_guns. It works as LuaEntityPrototype::guns but returns an array.
+    - Collision-mask prototype filters for Entity, Tile and Decorative now support a 'contains-any' and 'contains-all' modes.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.60
 Date: 06. 06. 2022

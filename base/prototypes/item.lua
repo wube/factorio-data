@@ -1800,7 +1800,12 @@ data:extend(
     --alt_entity_type_filters = {"furnace", "assembling-machine"},
     --alt_tile_filters = {"concrete", "stone-path"},
     --alt_entity_filter_mode = "whitelist",
-    --alt_tile_filter_mode = "whitelist"
+    --alt_tile_filter_mode = "whitelist",
+    --reverse_entity_filters = {"stone-furnace", "steel-furnace"},
+    --reverse_entity_type_filters = {"furnace", "assembling-machine"},
+    --reverse_tile_filters = {"concrete", "stone-path"},
+    --reverse_entity_filter_mode = "whitelist",
+    --reverse_tile_filter_mode = "whitelist"
   },
   {
     type = "item",

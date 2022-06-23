@@ -285,6 +285,7 @@ data:extend(
     name = "run-forrest-run",
     order = "e[kill]-c[run-forrest-run]",
     type_to_kill = "tree",
+    damage_type = "impact",
     in_vehicle = true,
     personally = true,
     amount = 100,

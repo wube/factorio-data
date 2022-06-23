@@ -684,6 +684,12 @@ data:extend(
       type = "label_style",
       font = "default-bold"
     },
+    bold_black_label =
+    {
+      type = "label_style",
+      parent = "bold_label",
+      font_color = {0, 0, 0}
+    },
     bold_red_label =
     {
       type = "label_style",
@@ -1339,6 +1345,15 @@ data:extend(
         base = {position = {364, 48}, corner_size = 8},
         shadow = default_dirt
       }
+    },
+
+    mini_tool_button_red =
+    {
+      type = "button_style",
+      parent = "red_button",
+      padding = 0,
+      size = 16,
+      left_click_sound = {{ filename = "__core__/sound/gui-tool-button.ogg", volume = 1 }}
     },
 
     mini_button =
@@ -4630,6 +4645,34 @@ data:extend(
         base = {position = {446, 86}, corner_size = 8},
         shadow = default_shadow
       }
+    },
+
+    sync_mods_default_status_frame =
+    {
+      type = "frame_style",
+      parent = "naked_frame",
+      padding = 4
+    },
+
+    sync_mods_downloading_status_frame =
+    {
+      type = "frame_style",
+      parent = "sync_mods_default_status_frame",
+      padding = 0,
+      graphical_set =
+      {
+        base = {position = {412, 86}, corner_size = 8},
+        shadow = default_shadow
+      }
+    },
+
+    sync_mods_table =
+    {
+      type = "table_style",
+      parent = "bordered_table",
+      cell_padding = 0,
+      left_cell_padding = 4,
+      right_cell_padding = 4
     },
 
     train_schedule_fullfilled_condition_frame =
@@ -9572,7 +9615,7 @@ data:extend(
       parent = "inside_deep_frame",
       natural_size = {1024 , 576 + 36 + 180} -- image height + subheader height + subfooter height
     },
-    
+
     tips_and_tricks_info_frame_small_screen =
     {
       type = "frame_style",
