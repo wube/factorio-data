@@ -1,6 +1,47 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.62
+Version: 1.1.63
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.62
+Date: 26. 07. 2022
+  Minor Features:
+    - Added support for SRV records on Windows.
+  Changes:
+    - Integrated SDL_Mixer for audio mixing, which is now the default mixer.
+  Bugfixes:
+    - Fixed a desync when canceling deconstruction of cliffs when a robot has already thrown the explosive. (https://forums.factorio.com/102216)
+    - Fixed startup mod settings would show as being able to be reset while the game is running. (https://forums.factorio.com/102775)
+    - Fixed an issue when installing mod dependencies related to base-game dependencies. (https://forums.factorio.com/102751)
+    - Fixed an issue with biter AI that could freeze the game. (https://forums.factorio.com/102261)
+    - Fixed a crash when viewing other player inventories when changing controllers. (https://forums.factorio.com/102863)
+    - Fixed that the LuaPlayer::remove_alert 'prototype' parameter wouldn't accept an actual prototype instance. (https://forums.factorio.com/102860)
+    - Fixed character inventory was not auto sorted when changing armor. (https://forums.factorio.com/102875)
+    - Fixed that the reset-to-default tooltip for string mod settings wasn't fully localised. (https://forums.factorio.com/102847)
+  Modding:
+    - Modded tips and tricks information is remembered when the associated mods are temporarily removed/disabled.
+    - Added support for container entities with filters by using inventory_type = "with_bar" or "with_filters_and_bar".
+    - Added EntityPrototype::build_grid_size. Supported values are 1 (for 1x1 grid) and 2 (for 2x2 grid).
+    - Added EntityPrototype::use_exact_mode.
+    - Added support for circuit connections to linked containers.
+  Scripting:
+    - Added support to set player.opened to script inventories.
+    - LuaEntity::get_connected_rail also returns rail_direction and rail_connection_direction going back to origin rail.
+    - Added on_pre_ghost_upgraded event.
+    - Added LuaEntity::get_rail_segment_rails.
+    - Added LuaEntity::is_rail_in_same_rail_segment_as.
+    - Added LuaEntity::is_rail_in_same_rail_block_as.
+    - Added LuaEntity::get_parent_signals.
+    - Added LuaEntity::get_child_signals.
+    - Added LuaEntity::get_inbound_signals.
+    - Added LuaEntity::get_outbound_signals.
+    - Added LuaEntity::rocket_silo_status read and defines.rocket_silo_status
+    - Added LuaBootstrap::register_metatable.
+    - Added LuaLogisticNetwork::can_satisfy_request.
+    - Added LuaLogisticNetwork::get_supply_counts.
+    - Added LuaLogisticNetwork::get_supply_points.
+    - Added LuaEntityPrototype::use_exact_mode read.
+    - Added LuaEntityPrototype::active_energy_usage, idle_energy_usage, lamp_energy_usage reads.
+    - Added rocket_silo_input, rocket_silo_output, rocket_silo_modules inventory defines.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.61
 Date: 23. 06. 2022
