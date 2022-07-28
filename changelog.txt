@@ -1,6 +1,18 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.63
+Version: 1.1.64
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.63
+Date: 28. 07. 2022
+  Changes:
+    - Added PulseAudio driver for the SDL audio backend.
+    - Added Wayland driver for the SDL video backend.
+  Bugfixes:
+    - Fixed a crash when trying to draw a wire connected linked container in a blueprint. (https://forums.factorio.com/102983)
+    - Fixed linked containers with filters would not preserve filters while there are no containers placed. (https://forums.factorio.com/102988)
+    - Fixed a crash when using SDL audio backend with configurations other than stereo. (https://forums.factorio.com/102980)
+  Scripting:
+    - Added LuaEquipmentGrid::unique_id read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.62
 Date: 26. 07. 2022
