@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.65
+Version: 1.1.66
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.65
+Date: 05. 08. 2022
+  Bugfixes:
+    - Fixed a crash related to audio. (https://forums.factorio.com/103033)
+    - Fixed that it was possible to provide invalid path_resolution_modifier value to LuaSurface::request_path. (https://forums.factorio.com/103056)
+    - Fixed double click interaction with number input. (https://forums.factorio.com/103011)
+    - Fixed teleporting spidertrons across surfaces while also changing their position. (https://forums.factorio.com/103067)
+    - Fixed manual filter insertion logic with modded container entities. (https://forums.factorio.com/103070)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.64
 Date: 02. 08. 2022
