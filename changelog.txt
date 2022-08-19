@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.66
+Version: 1.1.67
 Date: ????
+  Minor Features:
+    - Added support for SRV records on Linux and MacOS.
+  Changes:
+    - Updated the --audio-driver command line option description for Windows, and added the option for Linux and Mac.
+    - Storage tanks can now show fluid connection info.
+  Scripting:
+    - Added LuaEntity::stop_spider().
+  Modding:
+    - Added FluidBox::hide_connection_info. When true the blue fluid connection arrows will not be drawn.
+  Bugfixes:
+    - Fixed a crash related to multiplayer latency and modded selection tools. (https://forums.factorio.com/103062)
+    - Fixed an inserter activity progress being incorrect for certain orientations.
+    - Fixed a sound instance leak. (https://forums.factorio.com/103045)
+    - Fixed integer mod settings would allow decimal values. (https://forums.factorio.com/103092)
+    - Fixed that renaming a spidertron wouldn't include the player during the Lua event. (https://forums.factorio.com/102993)
+    - Fixed a lag spike when finishing selection of entities in chart view far from the center of the map. (https://forums.factorio.com/103134)
+    - Fixed a crash related to copy tool when cursor stack was cleared during setup blueprint event. (https://forums.factorio.com/103124)
+    - Fixed multiple instances of the same working sound syncing up, causing "phasing" artefacts.
+    - Fixed fluid wagon fluid tooltips would round the amount shown incorrectly.
+    - Fixed some sounds playing in fog-of-war when they shouldn't.
+    - Fix modded entities not showing input-output fluid connection arrows (https://forums.factorio.com/103061).
+---------------------------------------------------------------------------------------------------
+Version: 1.1.66
+Date: 19. 08. 2022
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.65
 Date: 05. 08. 2022
