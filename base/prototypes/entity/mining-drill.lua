@@ -2931,7 +2931,8 @@ data:extend(
       pipe_connections =
       {
         {
-          positions = { {1, -2}, {2, -1}, {-1, 2}, {-2, 1} }
+          positions = { {1, -2}, {2, -1}, {-1, 2}, {-2, 1} },
+          type = "output"
         }
       }
     },

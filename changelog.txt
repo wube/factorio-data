@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.68
+Version: 1.1.69
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.68
+Date: 22. 08. 2022
+  Bugfixes:
+    - Fixed LuaControl::enable/disable_flashlight when LuaPlayer points at a player with CharacterController. (https://forums.factorio.com/103187)
+    - Fixed incorrect fluid arrows on chemical plants, pumpjacks and oil refineries (https://forums.factorio.com/103191).
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.67
 Date: 19. 08. 2022
