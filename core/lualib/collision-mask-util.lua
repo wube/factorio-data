@@ -173,15 +173,17 @@ end
 
 collision_mask_util.masks_collide = function(mask_1, mask_2)
 
-  local map = util.list_to_map(mask_1)
-  if map["not-colliding-with-itself"] and collision_mask_util.masks_are_same(mask_1, mask_2) then
+  local map_1 = util.list_to_map(mask_1)
+  local map_2 = util.list_to_map(mask_2)
+  if map_1["not-colliding-with-itself"] and map_2["not-colliding-with-itself"] and collision_mask_util.masks_are_same(mask_1, mask_2) then
     return false
   end
 
-  clear_flags(map)
+  clear_flags(map_1)
+  clear_flags(map_2)
 
-  for k, layer in pairs (mask_2) do
-    if map[layer] then
+  for layer, bool in pairs (map_2) do
+    if map_1[layer] then
       return true
     end
   end
@@ -189,12 +191,15 @@ collision_mask_util.masks_collide = function(mask_1, mask_2)
 end
 
 collision_mask_util.masks_are_same = function(mask_1, mask_2)
-  local map = util.list_to_map(mask_1)
-  for k, v in pairs (mask_2) do
-    if not map[v] then return false end
-    map[v] = nil
+  local map1 = util.list_to_map(mask_1)
+  local map2 = util.list_to_map(mask_2)
+  clear_flags(map1)
+  clear_flags(map2)
+  for layer, bool in pairs (map2) do
+    if not map2[layer] then return false end
+    map1[layer] = nil
   end
-  return not next(map)
+  return not next(map1)
 end
 
 collision_mask_util.collect_prototypes_with_mask = function(mask)

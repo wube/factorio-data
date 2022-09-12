@@ -1340,17 +1340,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "loader",
-    icon = "__base__/graphics/icons/loader.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"hidden"},
-    subgroup = "belt",
-    order = "d[loader]-a[basic-loader]",
-    place_result = "loader",
-    stack_size = 50
-  },
-  {
-    type = "item",
     name = "fast-loader",
     icon = "__base__/graphics/icons/fast-loader.png",
     icon_size = 64, icon_mipmaps = 4,

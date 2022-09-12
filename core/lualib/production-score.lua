@@ -18,7 +18,7 @@ local function get_raw_resources()
   local entities = game.entity_prototypes
   for name, entity_prototype in pairs (entities) do
     if entity_prototype.resource_category then
-      if entity_prototype.mineable_properties then
+      if entity_prototype.mineable_properties and entity_prototype.mineable_properties.products then
         for k, product in pairs (entity_prototype.mineable_properties.products) do
           raw_resources[product.name] = true
         end
@@ -89,7 +89,7 @@ local function get_product_list()
             for product_name, product_count in pairs (silo_products) do
               this_silo[product_name] = product_count / launch_product_amount
             end
-            this_silo[item.name] = 1 / launch_product.amount
+            this_silo[item.name] = 1 / launch_product_amount
             table.insert(product_list[launch_product.name], this_silo)
           end
         end

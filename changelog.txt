@@ -1,6 +1,36 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.69
+Version: 1.1.70
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.69
+Date: 12. 09. 2022
+  Graphics:
+    - Updated transport belt icons.
+  Bugfixes:
+    - Fixed unregistering multiple events at once would not clear event filters. (https://forums.factorio.com/103207)
+    - Fixed inactive mining drill playing its working sound for a moment when panning over it. (https://forums.factorio.com/103212)
+    - Fixed a crash when pressing Alt+F4 or clicking the X button when in sound settings. (https://forums.factorio.com/103182)
+    - Fixed a crash when changing the force of a logistic container marked for deconstruction. (https://forums.factorio.com/103278)
+    - Fixed a crash in production score script when a rocket launch product has probabilistic amount. (https://forums.factorio.com/102649)
+    - Fixed a crash in production score script when a resource entity is given no mineable products. (https://forums.factorio.com/103289)
+    - Fixed collision mask util not ignoring other flags when checking "not-colliding-with-itself" masks. (https://forums.factorio.com/102684)
+    - Fixed the player losing contents of the cursor when starting the round in tightspot scenario. (https://forums.factorio.com/102312)
+    - Fixed wave defense losing all upgrades after some prototype changes. (https://forums.factorio.com/101241)
+    - Fixed inactive entity working sound playing its fade-out when pausing and unpausing the game.
+    - Fixed that mod ordering didn't work correctly when searching in the install mods GUI. (https://forums.factorio.com/103292)
+    - Fixed that the 'starting points' in MapGenSettings wasn't loaded when importing a map exchange string. (https://forums.factorio.com/103356)
+    - Fixed that event filters for on_pre_ghost_deconstructed and on_pre_ghost_upgraded weren't filtering correctly. (https://forums.factorio.com/103294)
+    - Fixed that changing render threads to 1 while menu simulations were visible would crash the game. (https://forums.factorio.com/103361)
+    - Fixed rocket silo would get stuck when rocket_parts was set during launch. (https://forums.factorio.com/103213)
+    - Fixed smooth zoom behavior at high game speeds. (https://forums.factorio.com/102974)
+    - Fixed a performance issue when many roboports re-activate at the same time. (https://forums.factorio.com/103383)
+    - Fixed that the sync-mods-with-save GUI didn't work correctly when failing to download in some situations. (https://forums.factorio.com/103386)
+    - Fixed solar panel equipment was unable to produce full expected power when solar multiplier was larger than 1. (https://forums.factorio.com/103066)
+    - Fixed boiler's energy source buffer size was not updated when prototypes data changed. (https://forums.factorio.com/103008)
+  Modding:
+    - Added torso_bob_speed to the spider vehicle prototype.
+  Scripting:
+    - Added LuaEntityPrototype::torso_bob_speed read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.68
 Date: 22. 08. 2022
