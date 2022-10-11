@@ -1,6 +1,37 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.70
+Version: 1.1.71
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.70
+Date: 11. 10. 2022
+  Minor Features:
+    - Added mod portal bookmarks to install mods gui
+  Bugfixes:
+    - Fixed show-player-robots debug option would render lines for characters on other surfaces. (https://forums.factorio.com/103470)
+    - Fixed using incorrect sound settings when there is no configuration file.
+    - Fixed a crash related to teleporting spider vehicles with burner energy sources between surfaces.
+    - Fixed that the return value of some lualib noise functions didn't have the metatable for noise expression arithmetic. (https://forums.factorio.com/103416)
+    - Fixed simulation widgets showing savefiles trying to apply migrations in multiplayer. (https://forums.factorio.com/103528)
+    - Fixed upgrading pair of underground belt ghosts that makes them in reach would flip one of them without updating rotation point of nearby belts. (https://forums.factorio.com/103564)
+    - Fixed that logistic containers didn't deduplicate filters when importing them from untrusted sources which could crash the game. (https://forums.factorio.com/102882)
+    - Fixed a hard crash when a mod called deconstruct_area() with mismatched force and the player undid deconstruction of tiles. (https://forums.factorio.com/103055)
+    - Fixed highlight-box targeting entity not rendering before first update. (https://forums.factorio.com/103559)
+    - Fixed spider-remote would lose connection when spider changes surface. (https://forums.factorio.com/103519)
+    - Fixed SpidertronRemotePrototype was silently forcing stack size to 1 and not marking prototype as non stackable. (https://forums.factorio.com/103472)
+    - Fixed that sounds with fade_out_ticks would synchronize when pausing the game while the sounds are fading out. (https://forums.factorio.com/103646)
+    - Fixed idle sounds would synchronize when pausing the game. (https://forums.factorio.com/103648)
+    - Fixed idle sounds for accumulators not starting in certain scenarios. (https://forums.factorio.com/103603)
+    - Fixed idle sounds playing when they shouldn't for entities with max_sounds_per_type set.
+    - Fixed inserters not highlighting the entity they would pick up from if said entity is a ghost while the inserter is not. (https://forums.factorio.com/100972)
+    - Fixed a save's suggested save name not being updated when using non blocking saving. (https://forums.factorio.com/101610)
+    - Fixed a crash when GUI style errors are found during loading. (https://forums.factorio.com/103688)
+    - Fixed an item duplication when fast replacing underground belts with a damaged item. (https://forums.factorio.com/103711)
+    - Fixed that loader could get stuck when feeding a burner generator. (https://forums.factorio.com/103719)
+    - Fixed a crash when opening blueprint book item while tick is paused. (https://forums.factorio.com/103680)
+    - Fixed a unit group that is building a base could have all its members distracted and still build a base. (https://forums.factorio.com/102586)
+  Scripting:
+    - Added LuaTechnology to LuaPlayer::opened.
+    - Added LuaEntityPrototype::ammo_category read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.69
 Date: 12. 09. 2022

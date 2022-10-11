@@ -429,7 +429,7 @@ local function if_else_chain(...)
   if arg_count % 2 ~= 1 then
     error("if_else_chain requires an odd number of arguments")
   end
-  return
+  return tne
   {
     type = "if-else-chain",
     arguments = arg_expressions
@@ -437,7 +437,7 @@ local function if_else_chain(...)
 end
 
 local function literal_object(val, sloc)
-  return
+  return tne
   {
     type = "literal-object",
     source_location = sloc or csloc(1),
@@ -446,7 +446,7 @@ local function literal_object(val, sloc)
 end
 
 local function literal_expression(x)
-  return
+  return tne
   {
     type = "literal-expression",
     literal_value = tne(x)
@@ -458,7 +458,7 @@ local function noise_layer_name_to_id(name)
 end
 
 local function delimit_procedure(expression)
-  return
+  return tne
   {
     type = "procedure-delimiter",
     expression = tne(expression)

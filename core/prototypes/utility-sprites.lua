@@ -2863,5 +2863,14 @@ data:extend(
       scale = 0.5,
       flags = {"gui-icon"}
     },
+    bookmark =
+    {
+      filename = "__core__/graphics/icons/mip/bookmark.png",
+      priority = "extra-high-no-scale",
+      size = 32,
+      scale = 0.5,
+      mipmap_count = 2,
+      flags = {"gui-icon"}
+    },
   }
 })
