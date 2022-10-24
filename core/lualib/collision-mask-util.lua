@@ -196,8 +196,11 @@ collision_mask_util.masks_are_same = function(mask_1, mask_2)
   clear_flags(map1)
   clear_flags(map2)
   for layer, bool in pairs (map2) do
-    if not map2[layer] then return false end
-    map1[layer] = nil
+    if map1[layer] then
+      map1[layer] = nil
+    else
+      return false
+    end
   end
   return not next(map1)
 end
