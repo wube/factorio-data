@@ -1,6 +1,30 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.71
+Version: 1.1.72
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.71
+Date: 04. 11. 2022
+  Minor Features:
+    - Added preferred audio device output setting.
+    - Added the current binary architecture to the main menu version string.
+  Optimizations:
+    - Added native support for M1 Macs.
+  Bugfixes:
+    - Fixed a crash when canceling deconstruction of a pipe to ground while the GUI was open. (https://forums.factorio.com/103728)
+    - Fixed entity ghosts would draw wires even if prototype of inner entity disabled it. (https://forums.factorio.com/103765)
+    - Fixed incorrect panning of CyclicSound (for example, flamethrower turret's stream sound). (https://forums.factorio.com/103865)
+    - Fixed that ScriptRendering requested string localisation during on_init when it was not available. (https://forums.factorio.com/103745)
+    - Fixed Generator tooltip ignoring fluid emissions multiplier. (https://forums.factorio.com/103847)
+    - Fixed that teleporting cars between surfaces would create the build effect smoke. (https://forums.factorio.com/103972)
+    - Fixed a crash related to undoing mining of another forces entities after the other force had been deleted. (https://forums.factorio.com/103966)
+    - Fixed it was possible to acquire forbidden items in the Transport belt madness levels. (https://forums.factorio.com/103331)
+    - Fixed that linked-belt was missing from the collision mask defaults. (https://forums.factorio.com/103849)
+    - Removed 'Fuel emissions' label from Burner info panel. (https://forums.factorio.com/103942)
+    - Fixed that expansion parties could destroy spidertrons while building new bases. (https://forums.factorio.com/103872)
+  Modding:
+    - Added Alt reverse selection support for selection tools. (https://forums.factorio.com/102470)
+  Scripting:
+    - Added LuaGuiElement::close_dropdown().
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.70
 Date: 11. 10. 2022

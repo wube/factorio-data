@@ -87,6 +87,7 @@ local default_masks =
   ["lamp"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["land-mine"] = {"object-layer", "water-tile"},
   ["leaf-particle"] = {},
+  ["linked-belt"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
   ["linked-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
   ["loader-1x1"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
   ["loader"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
