@@ -1,6 +1,18 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.72
+Version: 1.1.73
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.72
+Date: 11. 11. 2022
+  Minor Features:
+    - Improve mod update checking for large mod collections
+  Graphics:
+    - Loaders now show their item filters in alt mode.
+  Bugfixes:
+    - Fixed a crash when doing alt-reverse selections in zoomed-in map mode. (https://forums.factorio.com/104020)
+  Scripting:
+    - Added LuaInventory::is_full().
+    - Added 'include_bar' parameter to LuaInventory::count_empty_stacks().
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.71
 Date: 04. 11. 2022
@@ -8,7 +20,7 @@ Date: 04. 11. 2022
     - Added preferred audio device output setting.
     - Added the current binary architecture to the main menu version string.
   Optimizations:
-    - Added native support for M1 Macs.
+    - Added native support for Apple Silicon Macs.
   Bugfixes:
     - Fixed a crash when canceling deconstruction of a pipe to ground while the GUI was open. (https://forums.factorio.com/103728)
     - Fixed entity ghosts would draw wires even if prototype of inner entity disabled it. (https://forums.factorio.com/103765)
