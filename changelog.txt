@@ -1,6 +1,22 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.73
+Version: 1.1.74
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.73
+Date: 01. 12. 2022
+  Bugfixes:
+    - Fixed items dropped on underground belts could be inserted at a wrong position when transport lines were facing east or south. (https://forums.factorio.com/104104)
+    - Fixed DNS CNAME records confusing the SRV lookup on Windows (https://forums.factorio.com/viewtopic.php?f=7&t=104089)
+    - Fixed a crash when hovering over some rich text tags and destroying the object they refer to. (https://forums.factorio.com/104149)
+    - Fixed that "request from buffer chests" option wasn't copied between spidertrons. (https://forums.factorio.com/104046)
+    - Fixed that "request from buffer chests" option in spidertrons reset to default when prototypes changed. (https://forums.factorio.com/104124)
+    - Fixed directories in file dialogues not being sorted alphabetically on some systems. (https://forums.factorio.com/104053)
+    - Fixed dropdown button font color when clicked. (https://forums.factorio.com/104249)
+    - Fixed a crash when switching preferred audio device failed.
+    - Fixed not being able to remove script areas in the map editor. (https://forums.factorio.com/104291)
+  Modding:
+    - Added fallback groups format for localised string which picks the first correct translation. (https://forums.factorio.com/71553)
+    - Transparent black in RecipePrototype::crafting_machine_tint won't cause the tint to fallback to value of default_recipe_tint. (https://forums.factorio.com/104272)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.72
 Date: 11. 11. 2022
