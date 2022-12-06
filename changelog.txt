@@ -1,6 +1,18 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.74
+Version: 1.1.75
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.74
+Date: 06. 12. 2022
+  Bugfixes:
+    - Fixed that LocalisedString didn't support fallback groups in some cases when parsed from Lua. (https://forums.factorio.com/104297, https://forums.factorio.com/104303)
+    - Fixed a crash when a mod defines an entity that kills itself when created. (https://forums.factorio.com/104331)
+  Modding:
+    - Added CarPrototype::immune_to_cliff_impacts, true by default.
+      If set to false - entity will take damage when it collides with cliff prototype entities.
+  Scripting:
+    - Added LuaPlayer::cursor_stack_temporary read/write.
+    - Added LuaPlayer::request_translations() for batching translation requests.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.73
 Date: 01. 12. 2022
