@@ -15229,7 +15229,7 @@ data:extend(
     friction_force = 1,
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     collision_mask = {},
-    minable = {mining_time = 1, result = "spidertron"},
+    minable = {mining_time = 1, result = arguments.name},
     max_health = 3000,
     resistances =
     {

@@ -1,6 +1,47 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.75
+Version: 1.1.76
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.75
+Date: 11. 01. 2023
+  Changes:
+    - Added autosave slots to "The Rest" settings gui. (https://forums.factorio.com/104610)
+  Bugfixes:
+    - Fixed a crash with crafting machines using burner energy sources and items that produce burnt results. (https://forums.factorio.com/104343)
+    - Fixed that the bonus GUI could show incorrect values for modded inserter bonuses. (https://forums.factorio.com/104273)
+    - Fixed that additional layers of multi-layer recipe icons were tinted when building. (https://forums.factorio.com/104268)
+    - Fixed that restoring a window minimized to the macOS dock would freeze the graphics. (https://forums.factorio.com/104221)
+    - Fixed a crash related to failed audio initialization and switching audio devices.
+    - Fixed a crash when creating surfaces during the chunk deleted event. (https://forums.factorio.com/104406)
+    - Fixed that projectiles didn't draw oriented lights at the correct orientation. (https://forums.factorio.com/103173)
+    - Fixed that the 'create_spidertron()' Lua function didn't set the correct minable result name. (https://forums.factorio.com/103923)
+    - Fixed that 'item on ground' didn't show item amount in the tooltip. (https://forums.factorio.com/92321)
+    - Fixed a crash when restarting after syncing mods with save if the mod(s) were disabled and the save had a valid replay. (https://forums.factorio.com/104461)
+    - Fixed working sound's volume or speed not being matched to activity when fading, for example with pipes. (https://forums.factorio.com/104450)
+    - Fixed overlaping red and green wires connected to a power switch. (https://forums.factorio.com/103456)
+    - Fixed that moving a container with which a loader was interacting would not disconnect the loader.
+    - Fixed that vehicle ammo slot filter selection would show ammos that the slot cannot accept. (https://forums.factorio.com/104635)
+    - Fixed vehicle ammo slot style when filtered. (https://forums.factorio.com/104634)
+    - Fixed train lights in preview would render for trains on surface a player is on, not for the surface being rendered. (https://forums.factorio.com/104619)
+    - Fixed that cloning item entities wouldn't clone the to-be-looted flag. (https://forums.factorio.com/104659)
+    - Fixed that boilers wouldn't consume fuel if fed fluid at maximum temperature. (https://forums.factorio.com/104670)
+    - Fixed a desync related to custom blueprints. (https://forums.factorio.com/104717)
+    - Fixed transport belts not decompressing overcompressed items in certain cases. (https://forums.factorio.com/104247)
+    - Fixed drawing an extra shadow for health bars of items on ground and items on belts.
+    - Fixed that connecting circuit or copper wires in map view did not work if the Build and Drag map controls conflicted. (https://forums.factorio.com/104694)
+    - Fixed override_sound_type having no effect. (https://forums.factorio.com/104707)
+  Scripting:
+    - Added 'entity' to LuaPlayer::open_map and LuaPlayer::zoom_to_world, which specifies an entity to follow.
+    - Added LuaRailPath::is_front read.
+    - Added LuaEntityPrototype::alert_icon_scale read.
+    - Added LuaBootstrap::get_prototype_history().
+    - Added LuaGameScript::console_command_used read.
+    - Added is_split to on_player_fast_transferred.
+    - Added LuaPlayer::drag_target read.
+    - Added LuaControl::surface_index and force_index read.
+    - Added LuaEntity::inserter_target_pickup_count read.
+  Modding:
+    - Added LoaderPrototype::allow_rail_interaction and allow_container_interaction.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.74
 Date: 06. 12. 2022

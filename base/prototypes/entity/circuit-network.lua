@@ -1018,13 +1018,13 @@ data:extend
     {
       shadow =
       {
-        red   = util.by_pixel(-17, 34+3),
-        green = util.by_pixel(-17, 34+3)
+        red   = util.by_pixel(-14, 34+3),
+        green = util.by_pixel(-22, 34+3)
       },
       wire =
       {
-        red =   util.by_pixel(-19, 26+3),
-        green = util.by_pixel(-19, 26+3)
+        red =   util.by_pixel(-17, 26+3),
+        green = util.by_pixel(-24, 26+3)
       }
     },
     left_wire_connection_point =
