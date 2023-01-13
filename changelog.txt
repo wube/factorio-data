@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.76
+Version: 1.1.77
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.76
+Date: 13. 01. 2023
+  Bugfixes:
+    - Fixed a crash when trying to filter car/spider ammo slots. (https://forums.factorio.com/104769)
+    - Fixed visual artifact in water when zoomed out.
+    - Fixed 'on_entity_renamed' Lua event not including 'player_index' if copy-pasting to a train stop. (https://forums.factorio.com/104460)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.75
 Date: 11. 01. 2023
