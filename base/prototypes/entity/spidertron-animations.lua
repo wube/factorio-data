@@ -65,8 +65,8 @@ local function create_leg_part_graphics(spidertron_scale, leg_index, graphics_de
   return tab
 end
 
-local function create_spidertron_light_cone(orientation, intensity, size, shift_adder)
-  local shift = { x = 0, y = -14 + shift_adder}
+local function create_spidertron_light_cone(orientation, intensity, size, shift_adder, scale)
+  local shift = { x = 0, y = (-14 + shift_adder) * scale}
   return
   {
     type = "oriented",
@@ -83,10 +83,22 @@ local function create_spidertron_light_cone(orientation, intensity, size, shift_
     source_orientation_offset = orientation,
     --add_perspective = true,
     shift = shift,
-    size = 2 * size,
+    size = 2 * size * scale,
     intensity = 0.6 * intensity,
     color = {r = 0.92, g = 0.77, b = 0.3}
   }
+end
+
+local function scale_light_positions(positions, scale)
+  local new_positions = {}
+  for eye_index, position_list in pairs(positions) do
+    new_positions[eye_index] = {}
+    for index, position in pairs(position_list) do
+      local new_position = util.mul_shift(position, scale)
+      new_positions[eye_index][index] = new_position
+    end
+  end
+  return new_positions
 end
 
 function get_leg_graphics_properties(scale, index)
@@ -512,15 +524,15 @@ return
       size = 25 * spidertron_scale,
       color = {r=1.0, g=1.0, b=1.0}
     },
-    create_spidertron_light_cone(0,     1,    1   , -1),
-    create_spidertron_light_cone(-0.05, 0.7,  0.7  , 2.5),
-    create_spidertron_light_cone(0.04,  0.5,  0.45 , 5.5),
-    create_spidertron_light_cone(0.06,  0.6,  0.35 , 6.5)
+    create_spidertron_light_cone(0,     1,    1    , -1, spidertron_scale),
+    create_spidertron_light_cone(-0.05, 0.7,  0.7  , 2.5, spidertron_scale),
+    create_spidertron_light_cone(0.04,  0.5,  0.45 , 5.5, spidertron_scale),
+    create_spidertron_light_cone(0.06,  0.6,  0.35 , 6.5, spidertron_scale)
   },
 
-  light_positions = require("__base__/prototypes/entity/spidertron-light-positions"),
+  light_positions = scale_light_positions(require("__base__/prototypes/entity/spidertron-light-positions"), spidertron_scale),
 
-  eye_light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}},-- {r=1.0, g=0.0, b=0.0}},
+  eye_light = {intensity = 1, size = 1 * spidertron_scale, color = {r=1.0, g=1.0, b=1.0}},-- {r=1.0, g=0.0, b=0.0}},
 
   render_layer = "wires-above",
   base_render_layer = "higher-object-above",

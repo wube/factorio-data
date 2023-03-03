@@ -1,6 +1,53 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.77
+Version: 1.1.78
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.77
+Date: 03. 03. 2023
+  Graphics:
+    - Added support for Wayland on Linux. To enable it, set SDL_VIDEODRIVER=wayland in your environment. (thanks to raiguard)
+  Changes:
+    - Music no longer fades out on technology screen. (https://forums.factorio.com/104760)
+  Bugfixes:
+    - Fixed 'on_string_translated' event having incorrect localised_string parameter for fallback groups.
+    - Fixed that LuaPlayer::cursor_stack_temporary returned false for pasted blueprints. (https://forums.factorio.com/104354)
+    - Fixed size issues related to mod relative GUIs. (https://forums.factorio.com/98151)
+    - Fixed that item request proxies could be created through script with a count of 0. (https://forums.factorio.com/104886)
+    - Fixed that electric energy interface entities didn't use the render layer defined in the prototype for animations. (https://forums.factorio.com/105000)
+    - Fixed a memory corruption issue when saving under linux with async saving enabled. (https://forums.factorio.com/104600)
+    - Fixed ping shown for a server in the multiplayer games browser sometimes not updating correctly.
+    - Fixed the game would fail to load sprites with some mods when max texture size was set to 2048. (https://forums.factorio.com/104853)
+    - Fixed centrifuge uranium glow effect flickering on and off on arm64 builds.
+    - Fixed a scripting error in tips and tricks simulations related to mod migrations. (https://forums.factorio.com/104656)
+    - Fixed a crash when downgrading specific entities in multiplayer. (https://forums.factorio.com/105005)
+    - Fixed that LuaItemStack::transfer_stack didn't work correctly for inventories that went over normal item stack limits. (https://forums.factorio.com/105066)
+    - Fixed TransportLine consistency issue when changing force of a linked-belt. (https://forums.factorio.com/105182)
+    - Fixed a crash related to custom map generation. (https://forums.factorio.com/105215)
+    - Fixed a crash with SDL's X11_XInput2. (https://forums.factorio.com/104267)
+    - Fixed programmable speaker playing incorrect sound in certain scenarios. (https://forums.factorio.com/105255)
+    - Fixed that create_spidertron() didn't scale lights correctly. (https://forums.factorio.com/101085)
+    - Fixed LuaFluidBox::get_prototype would try to return fluidbox prototypes ignoring layout of fluidboxes when part of crafting machine. (https://forums.factorio.com/105338)
+    - Fixed inserter could start moving to the drop target while still being in the pickup mode. (https://forums.factorio.com/104397)
+    - Fixed multiple personal roboports discharging. (https://forums.factorio.com/105358)
+    - Fixed that LuaLogisticNetwork::insert() wouldn't insert all of the requested items in some cases. (https://forums.factorio.com/103784)
+  Modding:
+    - Added a command line flag (dump-data) to dump data-raw to the script output folder as json.
+    - Added a command line flag (dump-icon-sprites) to dump prototype icons to the script output folder.
+    - Added a command line flag (dump-prototype-locale) to dump prototype locale to the script output folder.
+    - Sprites with size close to 2048px (or 4096px when high resolution is enabled) will have forced "no-atlas" priority. (https://forums.factorio.com/99066)
+    - Added LoaderPrototype::energy_source and energy_per_item.
+    - Added support for "icon_horizontal_align" to sprite-button.
+    - Added "color-setting" prototype.
+  Scripting:
+    - Added LuaControl::get_max_inventory_index() read.
+    - Added LuaItemStack::entity_label and LuaItemStack::entity_color read.
+    - Added "unlocks-recipe" to technology prototype filters.
+    - ForceIdentification can now be specified by force index.
+    - Added script_raised_teleported.
+    - Added raise_teleported to LuaControl::teleport.
+    - Added 'use_rich_text' parameter to LuaRendering::draw_text() and getter/setter functions.
+    - Added 'has_item_inside' to LuaSurface::find_entities_filtered parameters. Will filter for entities that have the specified item inside them.
+    - LuaFluidBox::get_prototype may return an array of LuaFluidBoxPrototype if the entity uses compound fluidboxes. (https://forums.factorio.com/105338)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.76
 Date: 13. 01. 2023

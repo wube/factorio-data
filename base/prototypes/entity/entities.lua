@@ -6214,6 +6214,13 @@ data:extend(
         }
       }
     }
+    -- energy_source =
+    -- {
+    --   type = "electric",
+    --   usage_priority = "secondary-input",
+    --   emissions_per_minute = 1
+    -- },
+    -- energy_per_item = "3.0kJ", -- 2.4kJ would match a stack inserter with stack size of 12. Lets make it slightly more expensive
   },
   {
     type = "loader-1x1",
