@@ -92,6 +92,8 @@ data:extend(
       chart_mobile_construction_robot_color = {0, 1, 1},
       chart_personal_construction_robot_color = {0, 1, 0},
 
+      zoom_threshold_to_draw_spider_path = 0.5,
+
       chart_deconstruct_tint = { r = 0.75, g = 0.2, b = 0.2, a = 1 }
     },
     gui_remark_color = {r = 34, g = 181, b = 255},

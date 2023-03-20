@@ -110,7 +110,7 @@ local function make_side_menu_button(row, hover)
     mipmap_count = 2,
     x = hover and hover_x_offset or 0,
     y = row * side_menu_icon_size,
-    flags = {"icon"}
+    flags = {"gui-icon"}
   }
 end
 
@@ -125,7 +125,7 @@ local function make_side_map_menu_button(row, hover)
     mipmap_count = 2,
     x = hover and hover_x_offset or 0,
     y = row * side_menu_icon_size,
-    flags = {"icon"}
+    flags = {"gui-icon"}
   }
 end
 

@@ -2137,6 +2137,26 @@ data:extend(
       left_click_sound = {}
     },
 
+    red_inventory_slot =
+    {
+      type = "button_style",
+      parent = "inventory_slot",
+      default_graphical_set = { base = {border = 4, position = {240, 816}, size = 80}},
+      hovered_graphical_set = { base = {border = 4, position = {320, 816}, size = 80}},
+      clicked_graphical_set = { base = {border = 4, position = {400, 816}, size = 80}},
+      selected_graphical_set = { base = {border = 4, position = {320, 816}, size = 80}}
+    },
+
+    yellow_inventory_slot =
+    {
+      type = "button_style",
+      parent = "inventory_slot",
+      default_graphical_set = { base = {border = 4, position = {0, 816}, size = 80}},
+      hovered_graphical_set = { base = {border = 4, position = {80, 816}, size = 80}},
+      clicked_graphical_set = { base = {border = 4, position = {160, 816}, size = 80}},
+      selected_graphical_set = { base = {border = 4, position = {80, 816}, size = 80}}
+    },
+
     recipe_slot_button =
     {
       type = "button_style",

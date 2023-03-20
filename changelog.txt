@@ -1,6 +1,57 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.78
+Version: 1.1.79
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.78
+Date: 20. 03. 2023
+  Minor Features:
+    - In the blueprint preview window, deselecting all train fuel items disables the 'Train fuel' option. (This was already the case for modules. https://forums.factorio.com/102804)
+  Changes:
+    - On macOS, when AZERTY keyboard layout is used, the shortcut for Undo will default to Cmd + Z instead of Cmd + W. (https://forums.factorio.com/105590)
+  Bugfixes:
+    - Fixed loader would ignore ElectricEnergySourcePrototype::buffer_capacity. (https://forums.factorio.com/105438)
+    - Fixed rotating a loader would not update heat connections if it has any. (https://forums.factorio.com/105441)
+    - Fixed migrating loader energy sources between types could fail to update energy source buffer size. (https://forums.factorio.com/105440)
+    - Fixed migrating inserter energy source between types could fail to update energy source buffer size.
+    - Fixed migrating pump energy source between types could fail to update energy source buffer size.
+    - Fixed migrating radar energy source between types could fail to update energy source buffer size.
+    - Fixed migrating reactor energy source between types could fail to update energy source buffer size.
+    - Fixed double sound when transferring crafting materials from cursor stack into crafting machine or when taking items from the result slot.
+    - Fixed a desync related to fluid energy source energy extraction when floating point rounding errors are involved.
+    - Fixed a bad error message when registering custom hotkey events with filters. (https://forums.factorio.com/105281)
+    - Fixed that color mod settings wouldn't migrate to the default value. (https://forums.factorio.com/105439)
+    - Fixed that escape did not work to close the user-login GUI. (https://forums.factorio.com/103548)
+    - Fixed that the CustomGuiElement "switch" type would fire the click event twice. (https://forums.factorio.com/102950)
+    - Fixed a rare crash related to watching replays. (https://forums.factorio.com/104099)
+    - Fixed consistency issue related to building loader ghosts over existing loader ghosts. (https://forums.factorio.com/102756)
+    - Fixed spilling items would fail to spread items when surface had width or height set to more than 2^31. (https://forums.factorio.com/105493)
+    - Fixed an AI Pathfinder desync when changing goal_pressure_ratio while the pathfinder was running. (https://forums.factorio.com/104323)
+    - Fixed land mine was not colliding with rail signals. (https://forums.factorio.com/103683)
+    - Fixed a crash when disconnecting and reconnecting a display on Wayland (https://forums.factorio.com/105489)
+    - Fixed inconsistent clipboard behavior on Wayland (https://forums.factorio.com/105489)
+    - Fixed that disabling permissions to move didn't work correctly in some cases (https://forums.factorio.com/105478)
+    - Fixed furnace would stop crafting when recipe could not be deduced from ingredients and technology effects were being reset. (https://forums.factorio.com/104896)
+    - Fixed a crash related to script creation of entities. (https://forums.factorio.com/105531)
+    - Fixed module and fuel entries disappearing from blueprint preview when selectively disabled, instead of showing up with count 0. (https://forums.factorio.com/102804)
+    - Fixed automatic targeting with spidertrons did not work if all ammo slots were not filled. (https://forums.factorio.com/105176)
+    - Fixed technology title not updating when technology was researched. (https://forums.factorio.com/102282)
+    - Fixed horizontal lines ending up too short when close to line-wrapping labels (https://forums.factorio.com/102254)
+    - Fixed a crash related to migrating spider vehicle guns. (https://forums.factorio.com/105552)
+    - Fixed loader ghosts would connect to transport belts even when they had different forces. (https://forums.factorio.com/105518)
+    - Fixed a crash when moving blueprint book to blueprint library when there is also another book that will get under the cursor and tooltips are showing. (https://forums.factorio.com/102613)
+    - Fixed that "item-with-inventory" would allow setting inventory_size to "dynamic". (https://forums.factorio.com/102823)
+    - Fixed balance of several audio files. (https://forums.factorio.com/103870)
+    - Fixed InserterPrototype would accept too large stack size bonuses. (https://forums.factorio.com/105627)
+  Modding:
+    - Added 'entity-ghost' and 'tile-ghost' selection tool modes.
+    - Added chart.zoom_threshold_to_draw_spider_path utility constant.
+  Scripting:
+    - Added optional character parameter to LuaSurface::create_entity. Will simulate fast replacing using the character.
+    - Added LuaEntityPrototype::max_power_output read support for burner generators.
+    - Added LuaItemStack::use_capsule.
+    - Added LuaEntity::beacons_count read.
+    - Added LuaEntity::get_beacons().
+    - Added LuaEntity::get_beacon_effect_receivers().
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.77
 Date: 03. 03. 2023
@@ -1968,7 +2019,7 @@ Date: 14. 08. 2020
     - Added LuaEntity::is_entity_with_force, is_entity_with_owner and is_entity_with_health read.
     - Added LuaEntity::spawn_decorations().
     - Added on_cutscene_cancelled, on_player_configured_spider_remote and on_player_used_spider_remote events.
-    - Added optional spawn_decorations parameter to LuaGameScript::create_entity.
+    - Added optional spawn_decorations parameter to LuaSurface::create_entity.
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.47
 Date: 11. 08. 2020
@@ -4070,7 +4121,7 @@ Date: 07. 06. 2019
   Scripting:
     - Added LuaGameScript::evaluate_expression(), which can be used to calculate the technology unit cost formula at any level.
     - Added LuaProfiler::divide() to allow printing average duration.
-    - Added optional snap_to_train_stop parameter to LuaGameScript::create_entity.
+    - Added optional snap_to_train_stop parameter to LuaSurface::create_entity.
     - Added LuaEntity::ghost_unit_number read.
     - Added "source_index" to on_forces_merged event.
     - Added LuaStyle::padding, margin write.
@@ -5571,7 +5622,7 @@ Date: 26. 02. 2019
     - Fixed LuaScript::get_event_handler() didn't handle large numbers correctly. (https://forums.factorio.com/61752)
     - Fixed AutoplaceSettings map_gen_settings didn't always work when defined through script. (https://forums.factorio.com/61754)
     - Fixed a crash when using LuaEntity::get_train_stop_trains(). (https://forums.factorio.com/61743)
-    - Fixed a crash when using LuaGameScript::create_entity() related to making ghosts of ghosts. (https://forums.factorio.com/61605)
+    - Fixed a crash when using LuaSurface::create_entity() related to making ghosts of ghosts. (https://forums.factorio.com/61605)
     - Fixed setting entity healing_per_tick negative resulted in invincible entities. (https://forums.factorio.com/61492)
     - Fixed that shadows wouldn't always render in the train camera. (https://forums.factorio.com/61286)
     - Fixed health bars on large entities wouldn't render correctly. (https://forums.factorio.com/61495)
