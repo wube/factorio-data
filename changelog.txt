@@ -1,6 +1,20 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.79
+Version: 1.1.80
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.79
+Date: 30. 03. 2023
+  Bugfixes:
+    - Fixed a crash when maximum-sounds is set below 16, for example by using --disable-audio or on failed audio initialization. (https://forums.factorio.com/105663)
+    - Fixed that some effects would sometimes be performed twice in multiplayer when FPS is lower than UPS.
+    - Fixed LuaSurface::find_entities_filtered would not accept force indexes. (https://forums.factorio.com/105688)
+    - Fixed that solar panels on multiple surfaces would all produce electricity based on a daytime of one of the surfaces when they were part of a single electric network with a script created wire between surfaces. (https://forums.factorio.com/96830)
+    - Fixed that loaders would spill their items when fast-replaced or upgraded.
+    - Fixed valid path searches failing because a previously failed path with a wider bounding box was cached. (https://forums.factorio.com/104580)
+  Scripting:
+    - Added LuaRendering::use_target_orientation for Sprite, Animation, and Polygon.
+    - Added on_gui_hover, on_gui_leave.
+    - Added LuaGuiElement::raise_hover_events read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.78
 Date: 20. 03. 2023
