@@ -1,6 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.81
+Version: 1.1.82
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.81
+Date: 19. 04. 2023
+  Changes:
+    - Updated SDL to version 2.26.5.
+    - Replace "Version" column in mods install menu with "Last highlighted"
+  Bugfixes:
+    - Fixed wind sound not changing its volume with zoom level.
+    - Fixed that productivity values did not show correctly in some cases. (https://forums.factorio.com/105814)
+    - Fixed texture compression artefacts on Apple Silicon Macs. (https://forums.factorio.com/104219)
+    - Fixed that playing music with master volume and music volume set to 100% would mute all other sounds.
+    - Fixed a crash when unit has a composite command with a dead unit group. (https://forums.factorio.com/105935)
+    - Fixed that recipe category notification icons would draw under the category icon. (https://forums.factorio.com/105910)
+    - Fixed that inserting invalid items into blueprint books through script would crash. (https://forums.factorio.com/105689)
+    - Fixed being unable to copy or paste extremely large blueprint strings on Linux (https://forums.factorio.com/105915)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.80
 Date: 30. 03. 2023
