@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.82
+Version: 1.1.83
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.82
+Date: 22. 05. 2023
+  Changes:
+    - Disabled the Command+W keyboard shortcut for closing the game window on Macs. Command+Q will still quit the application. (https://forums.factorio.com/105655)
+    - On macOS, left and right variants of the Command and Option keys are differentiated when not bound as a modifier.
+  Bugfixes:
+    - Fixed a desync between ARM and x86 platforms when the pathfinder was overloaded. (https://forums.factorio.com/105953)
+    - Fixed a crash when trivial smoke was defined with bad movement speed values. (https://forums.factorio.com/105970)
+    - Fixed that startup color mod settings would appear as changeable during runtime.
+    - Fixed multiple forces being unable to order deconstruction of the same forceless entity. (https://forums.factorio.com/100864)
+    - Fixed deconstruction markers being visible to forces which did not order the deconstruction.
+    - Fixed inconsistent rounding in tooltips caused by floating-point inaccuracy. (https://forums.factorio.com/105661)
+    - Fixed that upgrading modules with fast-transfer could cause the returned modules to overlap with the inventory hand.
+    - Fixed not being able to type in textboxes on steam deck. (https://forums.factorio.com/105988)
+    - Fixed that dump-icon-sprites did not work correctly for icons using shift values. (https://forums.factorio.com/106069)
+    - Fixed ghosts could be removed even if they do not collide with built entity. (https://forums.factorio.com/106071)
+    - Fixed a crash when removing modded pipe-to-ground that connects to a shifted pipe-to-ground. (https://forums.factorio.com/106105)
+    - Fixed a crash when a mod sets a train's schedule while a temporary stop with no wait conditions is being removed.
+    - Fixed a crash when saving the game after a server disconnect with non-blocking saving enabled.
+    - Fixed that blueprints could have duplicate logistic filters. (https://forums.factorio.com/105984)
+    - Fixed that LocalisedString ignored 'correct' translation status of its parameters. (https://forums.factorio.com/104466)
+    - Fixed that some PNGs loaded darker than intended on Macs, affecting some mods.
+    - Fixed remapped modifier keys not registering properly in some environments. (https://forums.factorio.com/106031)
+  Scripting:
+    - Added optional surface parameter to LuaForce::rechart.
+    - Added LuaGuiElement::auto_toggle read/write.
+    - Added LuaGuiElement::toggled read/write.
+    - BoundingBox accepts orientation from lua.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.81
 Date: 19. 04. 2023
@@ -31,6 +60,8 @@ Date: 30. 03. 2023
     - Fixed that solar panels on multiple surfaces would all produce electricity based on a daytime of one of the surfaces when they were part of a single electric network with a script created wire between surfaces. (https://forums.factorio.com/96830)
     - Fixed that loaders would spill their items when fast-replaced or upgraded.
     - Fixed valid path searches failing because a previously failed path with a wider bounding box was cached. (https://forums.factorio.com/104580)
+    - Fixed the Lua event on_equipment_inserted would not be triggered by construction robots delivering the equipment item. (https://forums.factorio.com/105547)
+    - Fixed the Lua events on_equipment_inserted and on_player_placed_equipment would not be triggered by dropping items into entities (using the 'drop item' key), or fast-transfer. (https://forums.factorio.com/105547)
   Scripting:
     - Added LuaRendering::use_target_orientation for Sprite, Animation, and Polygon.
     - Added on_gui_hover, on_gui_leave.
