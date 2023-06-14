@@ -122,23 +122,22 @@ function util.get_color_with_alpha(color, alpha, normalized_alpha)
   return new_color
 end
 
+util.direction_vectors = {
+  [defines.direction.north]     = { 0, -1},
+  [defines.direction.northeast] = { 1, -1},
+  [defines.direction.east]      = { 1,  0},
+  [defines.direction.southeast] = { 1,  1},
+  [defines.direction.south]     = { 0,  1},
+  [defines.direction.southwest] = {-1,  1},
+  [defines.direction.west]      = {-1,  0},
+  [defines.direction.northwest] = {-1, -1},
+}
+
 function util.moveposition(position, direction, distance)
+  local direction_vector = util.direction_vectors[direction]
+  if not direction_vector then error(direction .. " is not a valid or supported direction") end
 
-  if direction == defines.direction.north then
-    return {position[1], position[2] - distance}
-  end
-
-  if direction == defines.direction.south then
-    return {position[1], position[2] + distance}
-  end
-
-  if direction == defines.direction.east then
-    return {position[1] + distance, position[2]}
-  end
-
-  if direction == defines.direction.west then
-    return {position[1] - distance, position[2]}
-  end
+  return {position[1] + direction_vector[1] * distance, position[2] + direction_vector[2] * distance}
 end
 
 function util.oppositedirection(direction)

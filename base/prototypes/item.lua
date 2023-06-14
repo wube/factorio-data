@@ -2924,6 +2924,12 @@ data:extend(
       projectile_creation_parameters = require("prototypes.entity.artillery-cannon-muzzle-flash-shifting"),
       sound =
       {
+        switch_vibration_data =
+        {
+          filename = "__base__/sound/fight/artillery-shoots.bnvib",
+          play_for = "everything"
+        },
+        variations =
         {
           filename = "__base__/sound/fight/artillery-shoots-1.ogg",
           volume = 0.7

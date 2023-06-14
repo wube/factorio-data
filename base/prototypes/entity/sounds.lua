@@ -422,6 +422,78 @@ sounds.mine_fish =
   }
 }
 
+sounds.deconstruct_bricks = function(volume)
+  return
+  {
+    switch_vibration_data =
+    {
+      gain = 0.32,
+      filename = "__core__/sound/deconstruct-bricks.bnvib"
+    },
+    variations =
+    {
+      {
+        filename = "__base__/sound/deconstruct-bricks.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+sounds.deconstruct_small = function(volume)
+  return
+  {
+    switch_vibration_data =
+    {
+      filename = "__core__/sound/deconstruct-small.bnvib",
+      gain = 0.25
+    },
+    variations =
+    {
+      {
+        filename = "__core__/sound/deconstruct-small.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+sounds.deconstruct_medium = function(volume)
+  return
+  {
+    switch_vibration_data =
+    {
+      filename = "__core__/sound/deconstruct-medium.bnvib",
+      gain = 0.25
+    },
+    variations =
+    {
+      {
+        filename = "__core__/sound/deconstruct-medium.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
+sounds.deconstruct_large = function(volume)
+  return
+  {
+    switch_vibration_data =
+    {
+      filename = "__core__/sound/deconstruct-large.bnvib",
+      gain = 0.25
+    },
+    variations =
+    {
+      {
+        filename = "__core__/sound/deconstruct-large.ogg",
+        volume = volume
+      }
+    }
+  }
+end
+
 sounds.eat_fish =
 {
   {
@@ -1147,21 +1219,29 @@ sounds.flamethrower_turret_deactivate =
 
 sounds.heavy_gunshot =
 {
+  switch_vibration_data = 
   {
-    filename = "__base__/sound/fight/heavy-gunshot-1.ogg",
-    volume = 0.4
+    filename = "__base__/sound/fight/heavy-gunshot.bnvib",
+    gain = 0.7
   },
+  variations =
   {
-    filename = "__base__/sound/fight/heavy-gunshot-2.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/fight/heavy-gunshot-3.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/fight/heavy-gunshot-4.ogg",
-    volume = 0.4
+    {
+      filename = "__base__/sound/fight/heavy-gunshot-1.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/heavy-gunshot-2.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/heavy-gunshot-3.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/heavy-gunshot-4.ogg",
+      volume = 0.4
+    }
   }
 }
 
@@ -1187,33 +1267,40 @@ sounds.gun_turret_gunshot =
 
 sounds.light_gunshot =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/fight/light-gunshot-1.ogg",
-    volume = 0.6
+    filename = "__base__/sound/fight/light-gunshot.bnvib",
   },
+  variations =
   {
-    filename = "__base__/sound/fight/light-gunshot-2.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/fight/light-gunshot-3.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/fight/light-gunshot-4.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/fight/light-gunshot-5.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/fight/light-gunshot-6.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/fight/light-gunshot-7.ogg",
-    volume = 0.6
+    {
+      filename = "__base__/sound/fight/light-gunshot-1.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/light-gunshot-2.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/light-gunshot-3.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/light-gunshot-4.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/light-gunshot-5.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/light-gunshot-6.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/light-gunshot-7.ogg",
+      volume = 0.6
+    }
   }
 }
 
@@ -1235,94 +1322,121 @@ sounds.defender_gunshot =
 
 sounds.submachine_gunshot =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/fight/submachine-gunshot-1.ogg",
-    volume = 0.6
+    filename = "__base__/sound/fight/submachine-gunshot.bnvib",
   },
+  variations = 
   {
-    filename = "__base__/sound/fight/submachine-gunshot-2.ogg",
-    volume = 0.6
-  },
-  {
-    filename = "__base__/sound/fight/submachine-gunshot-3.ogg",
-    volume = 0.6
+    {
+      filename = "__base__/sound/fight/submachine-gunshot-1.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/submachine-gunshot-2.ogg",
+      volume = 0.6
+    },
+    {
+      filename = "__base__/sound/fight/submachine-gunshot-3.ogg",
+      volume = 0.6
+    }
   }
 }
 
 sounds.shotgun =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/fight/pump-shotgun-1.ogg",
-    volume = 0.37
+    filename = "__base__/sound/fight/pump-shotgun.bnvib",
   },
+  variations =
   {
-    filename = "__base__/sound/fight/pump-shotgun-2.ogg",
-    volume = 0.37
-  },
-  {
-    filename = "__base__/sound/fight/pump-shotgun-3.ogg",
-    volume = 0.37
-  },
-  {
-    filename = "__base__/sound/fight/pump-shotgun-4.ogg",
-    volume = 0.37
-  },
-  {
-    filename = "__base__/sound/fight/pump-shotgun-5.ogg",
-    volume = 0.37
+    {
+      filename = "__base__/sound/fight/pump-shotgun-1.ogg",
+      volume = 0.37
+    },
+    {
+      filename = "__base__/sound/fight/pump-shotgun-2.ogg",
+      volume = 0.37
+    },
+    {
+      filename = "__base__/sound/fight/pump-shotgun-3.ogg",
+      volume = 0.37
+    },
+    {
+      filename = "__base__/sound/fight/pump-shotgun-4.ogg",
+      volume = 0.37
+    },
+    {
+      filename = "__base__/sound/fight/pump-shotgun-5.ogg",
+      volume = 0.37
+    }
   }
 }
 
 sounds.tank_gunshot =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/fight/tank-cannon-1.ogg",
-    volume = 0.57
+    filename = "__base__/sound/fight/tank-cannon.bnvib",
   },
+  variations =
   {
-    filename = "__base__/sound/fight/tank-cannon-2.ogg",
-    volume = 0.57
-  },
-  {
-    filename = "__base__/sound/fight/tank-cannon-3.ogg",
-    volume = 0.57
-  },
-  {
-    filename = "__base__/sound/fight/tank-cannon-4.ogg",
-    volume = 0.57
-  },
-  {
-    filename = "__base__/sound/fight/tank-cannon-5.ogg",
-    volume = 0.57
+    {
+      filename = "__base__/sound/fight/tank-cannon-1.ogg",
+      volume = 0.57
+    },
+    {
+      filename = "__base__/sound/fight/tank-cannon-2.ogg",
+      volume = 0.57
+    },
+    {
+      filename = "__base__/sound/fight/tank-cannon-3.ogg",
+      volume = 0.57
+    },
+    {
+      filename = "__base__/sound/fight/tank-cannon-4.ogg",
+      volume = 0.57
+    },
+    {
+      filename = "__base__/sound/fight/tank-cannon-5.ogg",
+      volume = 0.57
+    }
   }
-
 }
 
 sounds.throw_projectile =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/fight/throw-projectile-1.ogg",
-    volume = 0.4
+    filename = "__base__/sound/fight/throw-projectile.bnvib",
   },
+  variations =
   {
-    filename = "__base__/sound/fight/throw-projectile-2.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/fight/throw-projectile-3.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/fight/throw-projectile-4.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/fight/throw-projectile-5.ogg",
-    volume = 0.4
-  },
-  {
-    filename = "__base__/sound/fight/throw-projectile-6.ogg",
-    volume = 0.4
+    {
+      filename = "__base__/sound/fight/throw-projectile-1.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/throw-projectile-2.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/throw-projectile-3.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/throw-projectile-4.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/throw-projectile-5.ogg",
+      volume = 0.4
+    },
+    {
+      filename = "__base__/sound/fight/throw-projectile-6.ogg",
+      volume = 0.4
+    }
   }
 
 }
@@ -1348,6 +1462,12 @@ sounds.poison_capsule_explosion = function(volume)
       max_count = 1,
       remove = true
     },
+    switch_vibration_data =
+    {
+      filename = "__base__/sound/fight/poison-capsule-explosion.bnvib",
+      gain = 0.3,
+      play_for = "everything"
+    },        
     variations =
     {
       {
@@ -1401,6 +1521,11 @@ sounds.medium_explosion = function(volume)
       remove = true
     },
     audible_distance_modifier = 0.7,
+    switch_vibration_data =
+    {
+      filename = "__base__/sound/fight/medium-explosion.bnvib",
+      gain = 0.4
+    },
     variations =
     {
       {
@@ -1470,6 +1595,12 @@ sounds.large_explosion = function(volume)
       remove = true
     },
     audible_distance_modifier = 1.95,
+    switch_vibration_data =
+    {
+      filename = "__base__/sound/fight/large-explosion.bnvib",
+      gain = 0.6,
+      play_for = "everything"
+    },
     variations =
     {
       {
@@ -1491,6 +1622,11 @@ sounds.nuclear_explosion = function(volume)
     {
       max_count = 1,
       remove = true
+    },
+    switch_vibration_data =
+    {
+      filename = "__base__/sound/fight/nuclear-explosion.bnvib",
+      play_for = "everything"
     },
     variations =
     {

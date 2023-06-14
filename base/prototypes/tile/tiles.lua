@@ -1,3 +1,4 @@
+local sounds = require("prototypes.entity.sounds")
 local noise = require("noise")
 local autoplace_utils = require("autoplace_utils")
 local bvu = require("biome-visualization-utils")
@@ -25,100 +26,158 @@ local landfill_build_sounds =
 {
   small =
   {
+    switch_vibration_data =
     {
-      filename = "__core__/sound/landfill-small.ogg"
+      gain = 0.25,
+      filename = "__core__/sound/landfill-small.bnvib"
     },
+    variations =
     {
-      filename = "__core__/sound/landfill-small-1.ogg"
-    },
-    {
-      filename = "__core__/sound/landfill-small-2.ogg"
-    },
-    {
-      filename = "__core__/sound/landfill-small-3.ogg"
-    },
-    {
-      filename = "__core__/sound/landfill-small-4.ogg"
-    },
-    {
-      filename = "__core__/sound/landfill-small-5.ogg"
+      {
+        filename = "__core__/sound/landfill-small.ogg"
+      },
+      {
+        filename = "__core__/sound/landfill-small-1.ogg"
+      },
+      {
+        filename = "__core__/sound/landfill-small-2.ogg"
+      },
+      {
+        filename = "__core__/sound/landfill-small-3.ogg"
+      },
+      {
+        filename = "__core__/sound/landfill-small-4.ogg"
+      },
+      {
+        filename = "__core__/sound/landfill-small-5.ogg"
+      }
     }
   },
   medium =
   {
+    switch_vibration_data =
     {
-      filename = "__core__/sound/landfill-medium.ogg",
-      volume = 0.8
+      gain = 0.25,
+      filename = "__core__/sound/landfill-medium.bnvib"
     },
+    variations =
     {
-      filename = "__core__/sound/landfill-medium-1.ogg",
-      volume = 0.8
-    },
-    {
-      filename = "__core__/sound/landfill-medium-2.ogg",
-      volume = 0.8
-    },
-    {
-      filename = "__core__/sound/landfill-medium-3.ogg",
-      volume = 0.8
-    },
-    {
-      filename = "__core__/sound/landfill-medium-4.ogg",
-      volume = 0.8
-    },
-    {
-      filename = "__core__/sound/landfill-medium-5.ogg",
-      volume = 0.8
+      {
+        filename = "__core__/sound/landfill-medium.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__core__/sound/landfill-medium-1.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__core__/sound/landfill-medium-2.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__core__/sound/landfill-medium-3.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__core__/sound/landfill-medium-4.ogg",
+        volume = 0.8
+      },
+      {
+        filename = "__core__/sound/landfill-medium-5.ogg",
+        volume = 0.8
+      }
     }
   },
   large =
-   {
+  {
+    switch_vibration_data =
     {
-      filename = "__core__/sound/landfill-large.ogg",
-      volume = 0.5
+      gain = 0.25,
+      filename = "__core__/sound/landfill-large.bnvib"
     },
+    variations =
     {
-      filename = "__core__/sound/landfill-large-1.ogg",
-      volume = 0.5
-    },
-    {
-      filename = "__core__/sound/landfill-large-2.ogg",
-      volume = 0.5
-    },
-    {
-      filename = "__core__/sound/landfill-large-3.ogg",
-      volume = 0.5
-    },
-    {
-      filename = "__core__/sound/landfill-large-4.ogg",
-      volume = 0.5
-    },
-    {
-      filename = "__core__/sound/landfill-large-5.ogg",
-      volume = 0.5
+      {
+        filename = "__core__/sound/landfill-large.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__core__/sound/landfill-large-1.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__core__/sound/landfill-large-2.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__core__/sound/landfill-large-3.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__core__/sound/landfill-large-4.ogg",
+        volume = 0.5
+      },
+      {
+        filename = "__core__/sound/landfill-large-5.ogg",
+        volume = 0.5
+      }
     }
   }
 }
 
 local concrete_tile_build_sounds =
-{ small =  {{ filename = "__core__/sound/build-concrete-small.ogg", volume = 0.4 },
-            { filename = "__core__/sound/build-concrete-small-1.ogg", volume = 0.4 },
-            { filename = "__core__/sound/build-concrete-small-2.ogg", volume = 0.4 },
-            { filename = "__core__/sound/build-concrete-small-3.ogg", volume = 0.4 },
-            { filename = "__core__/sound/build-concrete-small-4.ogg", volume = 0.4 },
-            { filename = "__core__/sound/build-concrete-small-5.ogg", volume = 0.4 }},
-  medium = {{ filename = "__core__/sound/build-concrete-medium.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-medium-1.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-medium-2.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-medium-3.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-medium-4.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-medium-5.ogg", volume = 0.5 }},
-  large =  {{ filename = "__core__/sound/build-concrete-large.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-large-1.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-large-2.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-large-3.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-large-4.ogg", volume = 0.5 },
-            { filename = "__core__/sound/build-concrete-large-5.ogg", volume = 0.5 }}
+{
+  small =  
+  {
+    switch_vibration_data =
+    {
+      gain = 0.25,
+      filename = "__core__/sound/build-concrete-small.bnvib"
+    },
+    variations =
+    {
+      { filename = "__core__/sound/build-concrete-small.ogg", volume = 0.4 },
+      { filename = "__core__/sound/build-concrete-small-1.ogg", volume = 0.4 },
+      { filename = "__core__/sound/build-concrete-small-2.ogg", volume = 0.4 },
+      { filename = "__core__/sound/build-concrete-small-3.ogg", volume = 0.4 },
+      { filename = "__core__/sound/build-concrete-small-4.ogg", volume = 0.4 },
+      { filename = "__core__/sound/build-concrete-small-5.ogg", volume = 0.4 }
+    },
+  },
+  medium = 
+  {
+    switch_vibration_data =
+    {
+      gain = 0.15,
+      filename = "__core__/sound/build-concrete-medium.bnvib"
+    },
+    variations =
+    {
+      { filename = "__core__/sound/build-concrete-medium.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-medium-1.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-medium-2.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-medium-3.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-medium-4.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-medium-5.ogg", volume = 0.5 }
+    },
+  },
+  large =  
+  {
+    switch_vibration_data =
+    {
+      gain = 0.15,
+      filename = "__core__/sound/build-concrete-large.bnvib"
+    },
+    variations =
+    {
+      { filename = "__core__/sound/build-concrete-large.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-large-1.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-large-2.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-large-3.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-large-4.ogg", volume = 0.5 },
+      { filename = "__core__/sound/build-concrete-large-5.ogg", volume = 0.5 }
+    }
+  }
 }
 
 local grass_sounds =
@@ -2880,7 +2939,7 @@ define_tiles
     order = "a[artificial]-a[tier-1]-a[stone-path]",
     needs_correction = false,
     minable = {mining_time = 0.1, result = "stone-brick"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.3,
     layer = 60,
@@ -3194,7 +3253,7 @@ define_tiles
     order = "a[artificial]-b[tier-2]-a[concrete]",
     needs_correction = false,
     minable = {mining_time = 0.1, result = "concrete"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.4,
     layer = 61,
@@ -3370,7 +3429,7 @@ define_tiles
     next_direction = "hazard-concrete-right",
     transition_merges_with_tile = "concrete",
     minable = {mining_time = 0.1, result = "hazard-concrete"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.4,
     layer = 62,
@@ -3487,7 +3546,7 @@ define_tiles
     next_direction = "hazard-concrete-left",
     transition_merges_with_tile = "concrete",
     minable = {mining_time = 0.1, result = "hazard-concrete"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.4,
     layer = 62,
@@ -3571,7 +3630,7 @@ define_tiles
     order = "a[artificial]-c[tier-3]-a[refined-concrete]",
     needs_correction = false,
     minable = {mining_time = 0.1, result = "refined-concrete"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg",volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.5,
     layer = 64,
@@ -3748,7 +3807,7 @@ define_tiles
     next_direction = "refined-hazard-concrete-right",
     transition_merges_with_tile = "refined-concrete",
     minable = {mining_time = 0.1, result = "refined-hazard-concrete"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.5,
     layer = 65,
@@ -3864,7 +3923,7 @@ define_tiles
     next_direction = "refined-hazard-concrete-left",
     transition_merges_with_tile = "refined-concrete",
     minable = {mining_time = 0.1, result = "refined-hazard-concrete"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8},
+    mined_sound = sounds.deconstruct_bricks(0.8),
     collision_mask = {"ground-tile"},
     walking_speed_modifier = 1.5,
     layer = 65,

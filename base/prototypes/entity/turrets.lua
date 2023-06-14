@@ -1052,7 +1052,7 @@ data:extend(
     minable = {mining_time = 0.5, result = "artillery-turret"},
     open_sound = sounds.artillery_open,
     close_sound = sounds.artillery_close,
-    mined_sound = {filename = "__core__/sound/deconstruct-large.ogg",volume = 0.8},
+    mined_sound = sounds.deconstruct_large(0.8),
     rotating_sound = { sound = { filename = "__base__/sound/fight/artillery-rotation-loop.ogg", volume = 0.6 }},
     rotating_stopped_sound = { filename = "__base__/sound/fight/artillery-rotation-stop.ogg" },
     max_health = 2000,

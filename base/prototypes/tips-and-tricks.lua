@@ -108,7 +108,8 @@ data:extend(
     },
     dependencies = {"introduction"},
     tutorial = "stack-transfers",
-    image = "__base__/graphics/tips-and-tricks/stack-transfers.png"
+    image = "__base__/graphics/tips-and-tricks/stack-transfers.png",
+    image_nintendo_switch = "__base__/graphics/tips-and-tricks/stack-transfers-nintendo-switch.png"
   },
   {
     type = "tips-and-tricks-item",
@@ -192,7 +193,32 @@ data:extend(
       }
     },
     dependencies = {"introduction"},
+    player_input_method_filter = "keyboard_and_mouse",
     simulation = simulations.shoot_targeting
+  },
+  {
+    type = "tips-and-tricks-item",
+    name = "shoot-targeting-controller",
+    category = "game-interaction",
+    tag = "[item=pistol]",
+    order = "i",
+    trigger =
+    {
+      type = "or",
+      triggers =
+      {
+        {
+          type = "group-attack"
+        },
+        {
+          type = "time-elapsed",
+          ticks = 60 * 60 * 135 -- 135 minutes
+        }
+      }
+    },
+    dependencies = {"introduction"},
+    player_input_method_filter = "game_controller",
+    simulation = simulations.shoot_targeting_controller
   },
   {
     type = "tips-and-tricks-item",
@@ -639,7 +665,29 @@ data:extend(
       count = 2
     },
     dependencies = {"introduction"},
+    player_input_method_filter = "keyboard_and_mouse",
     simulation = simulations.copy_entity_settings
+  },
+  {
+    type = "tips-and-tricks-item",
+    name = "copy-entity-settings-controller",
+    category = "copy-paste",
+    order = "a",
+    is_title = true,
+    trigger =
+    {
+      type = "set-recipe",
+      consecutive = true,
+      count = 3
+    },
+    skip_trigger =
+    {
+      type = "paste-entity-settings",
+      count = 2
+    },
+    dependencies = {"introduction"},
+    player_input_method_filter = "game_controller",
+    simulation = simulations.copy_entity_settings_controller
   },
   {
     type = "tips-and-tricks-item",

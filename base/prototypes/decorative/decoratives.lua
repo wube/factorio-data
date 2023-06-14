@@ -8363,7 +8363,7 @@ data:extend{
     },
     map_color = {r=129, g=105, b=78},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sounds.deconstruct_bricks(1.0),
     vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 2000,
@@ -8628,7 +8628,7 @@ data:extend{
     },
     map_color = {r=129, g=105, b=78},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sounds.deconstruct_bricks(1.0),
     vehicle_impact_sound = sounds.car_stone_impact,
     render_layer = "object",
     max_health = 500,
@@ -9701,7 +9701,7 @@ data:extend{
     },
     map_color = {r=129, g=105, b=78},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = sounds.deconstruct_bricks(1.0),
     vehicle_impact_sound = sounds.car_stone_impact,
     pictures =
     {

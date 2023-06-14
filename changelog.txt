@@ -1,6 +1,39 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.83
+Version: 1.1.84
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.83
+Date: 14. 06. 2023
+  Features:
+    - Added controller(gamepad) support. Change input method in Settings->Controls to play using a controller.
+  Minor Features:
+    - Added contextual hotkey hints. Enable it in Settings->Interface. Useful when playing using a controller.
+    - When connecting wires to entities with multiple sides(combinator, power switch), the hovered side is highlighted.
+  Changes:
+    - Improved sounds fading in and out on game resume and pause.
+  Bugfixes:
+    - Fixed that migrating color type mod settings did not work correctly. (https://forums.factorio.com/106445)
+    - Fixed cancel deconstruction of pipe would not remove colliding pipe to ground ghosts.
+    - Fixed a crash related to construction robots delivering items and upgrading entities in the same tick.
+    - Fixed LuaSurface::force_generate_chunk_requests() did not respect generate_with_lab_tiles. (https://forums.factorio.com/106484)
+    - Fixed changing recipe from one using custom fluidbox indexes into one not using custom fluidbox indexes could result in incorrect fluidbox layout. (https://forums.factorio.com/106428)
+    - Fixed some sounds (for example sounds from programmable speaker or rocket silo) not fading out on pause.
+    - Fixed a crash when trying to change direction of a loader simulation with fluid energy source. (https://forums.factorio.com/106562)
+    - Fixed a loader with energy source would not consume all the energy from internal buffer preventing out of fuel icon from showing up. (https://forums.factorio.com/106565)
+    - Fixed god/editor/spectator/ghost controller movement in latency when game speed is greater than 1.
+    - Fixed building underground belt over transport belt with target direction set would create incorrect undo action. (https://forums.factorio.com/106602)
+  Modding:
+    - Added CustomInputPrototype::controller_key_sequence and CustomInputPrototype::controller_alternative_key_sequence.
+  Scripting:
+    - Added LuaModSettingPrototype::type read.
+    - Added on_entity_color_changed.
+    - Added on_player_input_method_changed.
+    - Added defines.game_controller_interaction.
+    - Added LuaGuiElement::game_controller_interaction read/write.
+    - Added LuaPlayer::input_method read.
+    - Added LuaSurface::find_closest_logistic_network_by_position.
+    - Added optional area to LuaSurface::get_connected_tiles.
+    - Added cursor_display_location to custom input events and on_gui_click.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.82
 Date: 22. 05. 2023
@@ -29,6 +62,7 @@ Date: 22. 05. 2023
     - Added optional surface parameter to LuaForce::rechart.
     - Added LuaGuiElement::auto_toggle read/write.
     - Added LuaGuiElement::toggled read/write.
+    - Added on_cutscene_started and on_cutscene_finished.
     - BoundingBox accepts orientation from lua.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.81

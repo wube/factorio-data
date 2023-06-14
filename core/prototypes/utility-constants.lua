@@ -325,5 +325,9 @@ data:extend(
     flying_text_ttl = 80,
 
     train_button_hovered_tint = {r = 255 / 255, g = 162 / 255, b = 0, a = 0.7},
+    gui_game_controller_move_vibration =
+    {
+        filename = "__core__/sound/gui-game-controller-move.bnvib"
+    }
   }
 })

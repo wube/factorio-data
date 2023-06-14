@@ -8,6 +8,23 @@ local function add_utility_sound(name, filename, volume)
   }
 end
 
+local function add_utility_sound_with_vibration(name, filename, volume, vibration_file, vibration_gain)
+  data.raw["utility-sounds"]["default"][name] =
+  {
+    switch_vibration_data =
+    {
+      gain = vibration_gain,
+      filename = vibration_file
+    },
+    variations =
+    {
+      {
+        filename = filename,
+        volume = volume
+      }
+    }
+  }
+end
 data:extend(
 {
   {
@@ -15,6 +32,10 @@ data:extend(
     name = "default",
     axe_mining_ore =
     {
+      switch_vibration_data =
+      {
+        filename = "__core__/sound/axe-mining-ore.bnvib"
+      },
       variations =
       {
         {
@@ -61,6 +82,10 @@ data:extend(
     },
     mining_wood =
     {
+      switch_vibration_data =
+      {
+        filename = "__core__/sound/mining-wood.bnvib"
+      },
       variations =
       {
         {
@@ -91,6 +116,10 @@ data:extend(
     },
     axe_fighting =
     {
+      switch_vibration_data =
+      {
+        filename = "__core__/sound/axe-meat.bnvib"
+      },
       variations =
       {
         {
@@ -173,6 +202,11 @@ data:extend(
     },
     deconstruct_medium =
     {
+      switch_vibration_data =
+      {
+        filename = "__core__/sound/deconstruct-medium.bnvib",
+        gain = 0.25
+      },
       variations =
       {
         {
@@ -183,6 +217,11 @@ data:extend(
     },
     deconstruct_big =
     {
+      switch_vibration_data =
+      {
+        filename = "__core__/sound/deconstruct-large.bnvib",
+        gain = 0.25
+      },
       variations =
       {
         {
@@ -267,16 +306,16 @@ data:extend(
     }
   }
 })
-add_utility_sound("build_small", "__core__/sound/build-small.ogg", 0.7)
-add_utility_sound("build_medium", "__core__/sound/build-medium.ogg", 0.7)
-add_utility_sound("build_large", "__core__/sound/build-large.ogg", 0.7)
+add_utility_sound_with_vibration("build_small", "__core__/sound/build-small.ogg", 0.7, "__core__/sound/build-small.bnvib", 0.2)
+add_utility_sound_with_vibration("build_medium", "__core__/sound/build-medium.ogg", 0.7, "__core__/sound/build-medium.bnvib", 0.25)
+add_utility_sound_with_vibration("build_large", "__core__/sound/build-large.ogg", 0.7, "__core__/sound/build-large.bnvib", 0.3)
 add_utility_sound("build_blueprint_small", "__core__/sound/build-blueprint-small.ogg", 0.7)
 add_utility_sound("build_blueprint_medium", "__core__/sound/build-blueprint-medium.ogg", 0.7)
 add_utility_sound("build_blueprint_large", "__core__/sound/build-blueprint-large.ogg", 0.7)
 add_utility_sound("gui_click", "__core__/sound/gui-click.ogg")
 add_utility_sound("list_box_click", "__core__/sound/list-box-click.ogg")
 add_utility_sound("cannot_build", "__core__/sound/cannot-build.ogg")
-add_utility_sound("deconstruct_small", "__core__/sound/deconstruct-small.ogg")
+add_utility_sound_with_vibration("deconstruct_small", "__core__/sound/deconstruct-small.ogg", 1.0, "__core__/sound/deconstruct-small.bnvib", 0.25)
 add_utility_sound("deconstruct_robot", "__core__/sound/deconstruct-robot.ogg", 0.25)
 add_utility_sound("rotated_small", "__core__/sound/rotate-small.ogg")
 add_utility_sound("rotated_medium", "__core__/sound/rotate-medium.ogg")

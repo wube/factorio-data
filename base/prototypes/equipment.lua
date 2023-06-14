@@ -347,8 +347,17 @@ data:extend(
       range = 10,
       sound =
       {
-         filename = "__base__/sound/fight/pulse.ogg",
-         volume = 0.7
+        switch_vibration_data =
+        {
+          filename = "__base__/sound/fight/pulse.bnvib",
+        }, 
+        variations =
+        {
+          {
+            filename = "__base__/sound/fight/pulse.ogg",
+            volume = 0.7
+          }
+        }
       },
       ammo_type =
       {

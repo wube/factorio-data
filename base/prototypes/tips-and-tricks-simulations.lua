@@ -2696,6 +2696,119 @@ simulations.copy_entity_settings =
   ]]
 }
 
+simulations.copy_entity_settings_controller =
+{
+  init =
+    [[
+      local surface = game.surfaces[1]
+      surface.create_entities_from_blueprint_string
+      {
+        string = "0eNqVkd0OgjAMhd+l15sRRKd7FWPMwAabsEK2+UMI7+6AG4xGw11P037npO0gr27YOOIAugMqavagjx14KtlUQy+0DYIGCmhBABs7KOM92rwiLqU1xZUYZQq9AOILPkEn/UkAcqBAOPFG0Z75ZnN0ceA3SUBT+7hc85AgAmW22gpoY7FebaOPw4KmWK5mWaJx8nFFrGKGD690qVcy9/oC3CwE/uNlC3lvtxguPf5Gz14p4I7OjxvpPsnUIVXJTqmDWvf9C5Gbou0=",
+        position = {0, -1}
+      }
+      surface.create_entity{name = "substation", position = {0, -10}}
+      surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
+
+
+    player = game.create_test_player{name = "big k"}
+    player.teleport({-4.5, 2.5})
+    game.camera_player = player
+    game.camera_alt_info = true
+
+    update_player_selected = function(position)
+      player.update_selected_entity(position)
+      local selected = player.selected
+      if not selected then
+        if fake_source_box then
+          fake_source_box.destroy()
+          fake_source_box = nil
+        end
+        return
+      end
+
+      if copy_source and copy_source ~= selected then
+        if fake_source_box then
+          fake_source_box.destroy()
+        end
+        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
+      end
+
+    end
+
+    step_1 = function()
+      script.on_nth_tick(1, function()
+        update_player_selected({-4.5, -0.5})
+        step_2()
+      end)
+    end
+
+    step_2 = function()
+      local wait = 30
+      copy_source = player.selected
+      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
+      last_selected = player.selected
+      script.on_nth_tick(1, function()
+        wait = wait - 1
+        if wait >= 0 then return end
+        player.walking_state = {walking = true, direction = defines.direction.east}
+        update_player_selected({player.position.x, -0.5})
+        local selected = player.selected
+
+        if selected ~= last_selected then
+          last_selected = selected
+          selected.copy_settings(copy_source, player)
+        end
+
+        if player.position.x >= 4.5 then
+          player.walking_state = {walking = false}
+          step_3()
+        end
+      end)
+    end
+
+    step_3 = function()
+      local wait = 30      
+      script.on_nth_tick(1, function()
+        wait = wait - 1
+        if wait > 0 then return end
+        player.walking_state = {walking = true, direction = defines.direction.west}
+        update_player_selected({player.position.x, player.position.y})
+        if player.position.x <= -4.5 then
+          player.walking_state = {walking = false}
+          reset()
+        end
+      end)
+    end
+
+    reset = function()
+      local reset_tick = game.tick + 60
+      script.on_nth_tick(1, function()
+        if game.tick >= reset_tick then
+          for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "assembling-machine-2"}) do
+            if v ~= copy_source then
+              v.set_recipe(nil)
+            end
+          end
+          copy_source = nil
+          start()
+        end
+      end)
+    end
+
+    start = function()
+      local start_tick = game.tick + 60
+      script.on_nth_tick(1, function()
+        if game.tick >= start_tick then
+          step_1()
+        end
+      end)
+    end
+
+    start()
+
+  ]]
+}
+
 simulations.copy_paste_trains =
 {
   init =
@@ -3990,6 +4103,106 @@ simulations.shoot_targeting =
         if game.move_cursor({position = player.position}) then
           reset()
         end
+      end)
+    end
+
+    reset = function()
+
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        start()
+      end)
+    end
+
+    start = function()
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_1()
+      end)
+    end
+
+    start()
+
+  ]]
+}
+
+simulations.shoot_targeting_controller =
+{
+  init =
+  [[
+
+    player = game.create_test_player{name = "big k"}
+    player.teleport({-4, 0.5})
+    player.character.direction = 2
+    game.camera_player = player
+    game.camera_alt_info = true
+
+    step_1 = function()
+      biter = game.surfaces[1].create_entity{name = "medium-biter", position = {10 + (math.random() * 2), -4 + (math.random() * 4)}}
+      biter.speed = 0.05
+      biter.set_command
+      {
+        type = defines.command.attack,
+        target = player.character
+      }
+
+      tree = game.surfaces[1].create_entity{name = "tree-02", position = {4, 2.5}}
+
+      local count = 60
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_2()
+      end)
+    end
+
+    step_2 = function()
+      local rand_x = -1.5
+      local rand_y = -1
+      local position = {0.5 * ((biter.position.x + rand_x) + player.position.x), 0.5 * ((biter.position.y + rand_y) + player.position.y)}
+      player.clear_items_inside()
+      player.insert("pistol")
+      player.insert("piercing-rounds-magazine")
+      player.force.set_ammo_damage_modifier("bullet", 0.5)
+
+      script.on_nth_tick(1, function()
+        if not biter.valid then
+          step_3()
+          return
+        end
+        player.shooting_state = {state  = defines.shooting.shooting_enemies, position = position}
+      end)
+
+    end
+
+    step_3 = function()
+      local count = 60
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        step_4()
+      end)
+    end
+
+    step_4 = function()
+      player.update_selected_entity(tree.position)
+      local position = tree.position
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        if not tree.valid then
+          step_5()
+          return
+        end
+        player.shooting_state = {state  = defines.shooting.shooting_selected, position = position}
+      end)
+    end
+
+    step_5 = function()
+      local count = 30
+      script.on_nth_tick(1, function()
+        if count > 0 then count = count - 1 return end
+        reset()
       end)
     end
 

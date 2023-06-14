@@ -631,6 +631,7 @@ data:extend(
       font_color = {1, 1, 1},
       disabled_font_color = {1, 1, 1, 0.5},
       rich_text_setting = "enabled",
+      game_controller_hovered_font_color = {1, 0.68, 0},
       single_line = true,
       rich_text_highlight_error_color = {r=255,g=0,b=0},
       rich_text_highlight_warning_color = {r=255,g=255,b=0},
@@ -3340,7 +3341,17 @@ data:extend(
       horizontal_spacing = 0,
       horizontally_stretchable = "on"
     },
-
+    
+    crafting_queue_flow_standalone =
+    {
+      type = "flow_style",
+      parent = "crafting_queue_flow",
+      left_margin = 0,
+      right_margin = 0,
+      vertical_spacing = 0,
+      horizontal_spacing = 0,
+    },
+    
     crafting_queue_slot =
     {
       type = "button_style",
@@ -3497,6 +3508,31 @@ data:extend(
           type = "button_style",
           parent = "button",
           font = "locale-pick"
+        },
+        scroll_pane_style =
+        {
+          type = "scroll_pane_style",
+          padding = 0,
+          extra_padding_when_activated = 0,
+          graphical_set = {shadow = default_shadow}
+        }
+      }
+    },
+    
+    game_controller_icons_dropdown =
+    {
+      type = "dropdown_style",
+      parent = "dropdown",
+      list_box_style =
+      {
+        type = "list_box_style",
+        maximal_height = 400,
+        item_style =
+        {
+          type = "button_style",
+          parent = "button",
+          horizontal_align = "left",
+          font = "default-dropdown",
         },
         scroll_pane_style =
         {
@@ -3819,7 +3855,7 @@ data:extend(
         vertical_spacing = 0
       },
     },
-
+    
     inventory_scroll_pane =
     {
       type = "scroll_pane_style",
@@ -4068,6 +4104,15 @@ data:extend(
       type = "scroll_pane_style",
       parent = "filter_scroll_pane",
       vertically_stretchable = "on"
+    },
+    
+    crafting_queue_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "filter_scroll_pane",
+      vertically_stretchable = "on",
+      minimal_height = 3 * 40,
+      bottom_margin = 12      
     },
 
     logistics_scroll_pane_background_frame =
@@ -5477,6 +5522,11 @@ data:extend(
         base = {position = {265, 0}, corner_size = 8},
         shadow = textbox_dirt
       },
+      game_controller_hovered_background =
+      {
+        base = {position = {265, 0}, corner_size = 8},
+        shadow = textbox_dirt
+      },
       disabled_background =
       {
         base = {position = {282, 0}, corner_size = 8},
@@ -6779,6 +6829,14 @@ data:extend(
       natural_width = ((train_gui_minimap_size + 24) * 4) + 12,
       natural_height = (train_gui_minimap_size + 24 + 40) * 3 + 36
     },
+    
+    trains_gui_deep_frame_small_screen =
+    {
+      type = "frame_style",
+      parent = "trains_gui_deep_frame",
+      natural_width = ((train_gui_minimap_size + 24) * 2) + 12,
+      natural_height = (train_gui_minimap_size + 24 + 40) * 2 + 36
+    },
 
     trains_gui_deep_frame_small_screen =
     {
@@ -6879,6 +6937,13 @@ data:extend(
         vertically_stretchable = "on",
         vertical_spacing = 0
       }
+    },
+    
+    quick_panel_slot_button_deep_frame =
+    {
+      type = "frame_style",
+      parent = "slot_button_deep_frame",
+      size = 120 -- 3x3 grid
     },
 
     other_player_inventory_frame =
@@ -7331,6 +7396,7 @@ data:extend(
         vertical_spacing = 4
       }
     },
+    
     borderless_frame =
     {
       type = "frame_style",
@@ -7415,6 +7481,22 @@ data:extend(
         shadow = default_inner_shadow
       },
       size = 240
+    },
+    
+    character_info_top_frame = 
+    {
+      type = "frame_style",
+      vertically_stretchable = "off",
+      top_padding = 12,
+      bottom_padding = 0,
+      left_padding = 12,
+      right_padding = 12,
+      graphical_set = {},
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 12
+      }      
     },
 
     quick_bar_naked_frame =
@@ -8517,6 +8599,16 @@ data:extend(
       top_padding = 2, -- to compensate the text not looking centered
       height = 9
     },
+    disk_usage_progressbar =
+    {
+      type = "progressbar_style",
+      color = {218, 69, 53},
+      other_colors =
+      {
+        {less_than = 0.8, color = {43, 227, 39}},
+        {less_than = 0.9, color = {219, 176, 22}}
+      }
+    },
     electric_satisfaction_table =
     {
       type = "table_style",
@@ -8748,6 +8840,11 @@ data:extend(
       hover_graphical_set =
       {
         base = {position = {153, 0}, corner_size = 8},
+        glow = tab_glow(default_glow_color, 0.5)
+      },
+      game_controller_selected_hover_graphical_set =
+      {
+        base = {position = {136, 0}, corner_size = 8},
         glow = tab_glow(default_glow_color, 0.5)
       },
       press_graphical_set =
@@ -9753,6 +9850,21 @@ data:extend(
         graphical_set = tabbed_pane_graphical_set
       }
     },
+    
+    quick_panel_tabbed_pane =
+    {
+      type = "tabbed_pane_style",
+      parent = "tabbed_pane",
+      tab_content_frame =
+      {
+        type = "frame_style",
+        top_padding = 8,
+        right_padding = 0,
+        left_padding = 0,
+        bottom_padding = 0,
+        graphical_set = tabbed_pane_graphical_set
+      }
+    },
 
     production_gui_tabbed_pane =
     {
@@ -9877,9 +9989,16 @@ data:extend(
       header_flow_style =
       {
         type = "horizontal_flow_style",
-        vertical_align = "top",
-        horizontal_spacing = 4
-      }
+        horizontal_spacing = 8
+      },
+      header_filler_style =
+      {
+        type = "empty_widget_style",
+        parent = "draggable_space_header",
+        horizontally_stretchable = "on",
+        height = 24,
+        left_margin = 0,
+      },
     },
 
     frame_without_right_side =
@@ -10291,6 +10410,13 @@ data:extend(
       type = "horizontal_flow_style",
       horizontal_spacing = 0
     },
+
+    spaced_horizontal_flow =
+    {
+      type = "horizontal_flow_style",
+      horizontal_spacing = 12
+    },
+
 
     centering_horizontal_flow =
     {
