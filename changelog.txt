@@ -1,6 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.86
+Date: ????
+---------------------------------------------------------------------------------------------------
 Version: 1.1.85
-Date: 15. 06. 2023
+Date: 16. 06. 2023
+  Changes:
+    - Allow "Pick up items" and "Drop items" actions to be fired at the same time as other actions, in keyboard and mouse mode. (https://forums.factorio.com/106680)
+  Bugfixes:
+    - Fixed "Enter/leave vehicle" shortcut never allowing other shortcuts to use the same key combination. (https://forums.factorio.com/106663)
+    - Fixed a crash when downgrading ghost of assembling machine when target machine cannot craft recipe due to missing pipes. (https://forums.factorio.com/106667)
+    - Fixed IME no longer working on Windows. (https://forums.factorio.com/106681)
+    - Fixed on_entity_color_changed not being raised for some entities. (https://forums.factorio.com/106677)
+    - Fixed a crash when trying to start sound fade out when there are no audio devices. (https://forums.factorio.com/106685)
+    - Fixed that Factorio wouldn't load on macOS versions prior to 10.15. (https://forums.factorio.com/106684)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.84
 Date: 15. 06. 2023
