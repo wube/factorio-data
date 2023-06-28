@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.86
+Version: 1.1.87
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.86
+Date: 28. 06. 2023
+  Minor Features:
+    - It is now possible to blueprint entities of friendly forces.
+  Changes:
+    - "Pick up items" will no longer fire at the same time as other actions. This fixes character picking up items when flipping blueprints. (https://forums.factorio.com/106680)
+  Bugfixes:
+    - Fixed not being able to select assembling machine recipe if Craft, Craft 5 and Craft all were not bound to any button (https://forums.factorio.com/106704)
+    - Fixed another crash when downgrading ghost of assembling machine when target machine cannot craft recipe due to missing pipes.
+    - Fixed that you could blueprint enemy force tile ghosts.
+    - Fixed that the mod manager would occasionally download updates that are incompatible with the current game version. (https://forums.factorio.com/106719)
+    - Fixed missing support for wind and ambient category for sound prototypes. (https://forums.factorio.com/106775)
+    - Fixed selection tool rendering in the chart for ghost rails. (https://forums.factorio.com/106801)
+    - Fixed enemy expansion would fail to expand into chunks with entities invisible to the enemy. (https://forums.factorio.com/106787)
+    - Fixed some controls allowing binding to buttons that would not work. (https://forums.factorio.com/106721)
+  Scripting:
+    - Added dash_offset to LuaRendering::draw_line.
+    - Added LuaFluidBox::get_fluid_system_contents() method.
+    - Added LuaFluidBox::get_pipe_connections() method.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.85
 Date: 16. 06. 2023
