@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.87
+Version: 1.1.88
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.87
+Date: 04. 07. 2023
+  Minor Features:
+    - Changed --dump-data to write infinite values as the string "inf" and "-inf".
+  Bugfixes:
+    - Fixed LuaGameScript::check_prototype_translations() did not work correctly for manual localised strings with parameters. (https://forums.factorio.com/107573)
+    - Fixed it was possible to drop cursor items through ghosts. (https://forums.factorio.com/107601)
+    - Fixed a crash when fast replacing loader into a loader with fluid energy source when the loader type needs to be changed. (https://forums.factorio.com/107591)
+    - Fixed LuaFluidBox::get_pipe_connections() returning target_index as zero-indexed.
+  Scripting:
+    - Added target_fluidbox_index to PipeConnection.
+    - Renamed PipeConnection's target_index to target_pipe_connection_index.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.86
 Date: 28. 06. 2023
