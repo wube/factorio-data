@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.88
+Version: 1.1.89
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.88
+Date: 20. 07. 2023
+  Changes:
+    - Automatic UI scale on Steam Deck will never be lower than 100%
+    - Steam on-screen keyboard will automatically appear on Steam Deck and in Steam Big Picture mode when using a controller.
+  Bugfixes:
+    - Fixed that notch slider tooltips would not show in some cases. (https://forums.factorio.com/107602)
+    - Fixed that updating mods with dependencies did not work correctly in some cases. (https://forums.factorio.com/107673)
+    - Fixed music not playing after setting preferred audio output device. (https://forums.factorio.com/107719)
+    - Fixed that any error with an audio stream would crash the game, improved audio stream error handling in general.
+    - Fixed a hang in audio streams. (https://forums.factorio.com/107792)
+    - Fixed Hungarian keyboard layout not being handled correctly. (https://forums.factorio.com/107849)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.87
 Date: 04. 07. 2023
@@ -83,6 +96,7 @@ Date: 14. 06. 2023
     - Added LuaGuiElement::game_controller_interaction read/write.
     - Added LuaPlayer::input_method read.
     - Added LuaSurface::find_closest_logistic_network_by_position.
+    - Added optional include_diagonal to LuaSurface::get_connected_tiles.
     - Added optional area to LuaSurface::get_connected_tiles.
     - Added cursor_display_location to custom input events and on_gui_click.
 ---------------------------------------------------------------------------------------------------
