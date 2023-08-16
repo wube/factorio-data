@@ -1,6 +1,34 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.89
+Version: 1.1.90
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.89
+Date: 16. 08. 2023
+  Features:
+    - Migrated the prototype modding documentation from the wiki to the docs website, enabling a more advanced presentation, an offline version, and machine-readability of the underlying format. They can be found at https://lua-api.factorio.com/latest/index-prototype.html.
+  Minor Features:
+    - Added controller vibrations to some actions.
+    - Added option to capture system mouse cursor when using a controller. This fixes cursor teleporting when using both controller and mouse but locks the mouse cursor to the game window. (https://forums.factorio.com/107969)
+  Bugfixes:
+    - Fixed a desync between ARM and x86 platforms when calling math.atan2() Lua function with NaN arguments.
+    - Fixed a player could not obtain achievements if it was in game for longer than 9942h. (https://forums.factorio.com/107893)
+    - Fixed blueprint setup GUI cutting off at the bottom at certain UI scales. (https://forums.factorio.com/107903)
+    - Fixed that LuaGuiElement type 'slider' didn't enable/disable correctly when first created. (https://forums.factorio.com/107991)
+    - Fixed a crash when clearing the cursor stack through script when using capsules. (https://forums.factorio.com/107862)
+    - Fixed a crash when viewing the map preview when one or more noise expressions are invalid. (https://forums.factorio.com/89023)
+    - Fixed that the game could freeze if there were too many auto-placeable entities defined. (https://forums.factorio.com/108048)
+    - Fixed cursor sometimes teleporting to nearby entities when selecting entities to be built from the Quick panel with controller, in multiplayer.
+    - Fixed that damage trigger effects would not pass the damage source when doing damage. (https://forums.factorio.com/108224)
+  Modding:
+    - Added FurnacePrototype::cant_insert_at_source_message_key. (https://forums.factorio.com/108146)
+    - Added game_controller_vibration_data to sounds.
+  Scripting:
+    - Added LuaEntity::copper_connection_definitions.
+    - LuaGameScript::kick_player and ban_player no longer accept LocalisedString for reason parameter but only regular strings.
+    - LuaSurface::map_gen_settings can be changed during on_chunk_generated. (https://forums.factorio.com/108100)
+    - Added LuaEntityPrototype::vertical_selection_shift.
+    - Added LuaEntity::is_headed_to_trains_front read.
+    - Added LuaEntity::draw_data read for rolling stock.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.88
 Date: 20. 07. 2023

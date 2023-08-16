@@ -2929,6 +2929,12 @@ data:extend(
           filename = "__base__/sound/fight/artillery-shoots.bnvib",
           play_for = "everything"
         },
+        game_controller_vibration_data =
+        {
+          low_frequency_vibration_intensity = 1,
+          duration = 150,
+          play_for = "everything"
+        },
         variations =
         {
           filename = "__base__/sound/fight/artillery-shoots-1.ogg",

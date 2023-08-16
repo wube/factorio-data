@@ -783,63 +783,100 @@ sounds.train_brake_screech =
 
 sounds.car_stone_impact =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5
+    filename = "__base__/sound/car-stone-impact.bnvib"
   },
+  game_controller_vibration_data =
   {
-    filename = "__base__/sound/car-stone-impact-2.ogg", volume = 0.5
+    low_frequency_vibration_intensity = 0.9,
+    duration = 150
   },
+  variations =
   {
-    filename = "__base__/sound/car-stone-impact-3.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-stone-impact-4.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-stone-impact-5.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-stone-impact-6.ogg", volume = 0.5
+    {
+      filename = "__base__/sound/car-stone-impact.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-stone-impact-2.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-stone-impact-3.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-stone-impact-4.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-stone-impact-5.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-stone-impact-6.ogg", volume = 0.5
+    }
   }
 }
 
 sounds.car_wood_impact = function(volume)
   return
   {
+    switch_vibration_data =
     {
-      filename = "__base__/sound/car-wood-impact.ogg", volume = volume
+      filename = "__base__/sound/car-wood-impact.bnvib",
+      gain = volume
     },
+    game_controller_vibration_data =
     {
-      filename = "__base__/sound/car-wood-impact-02.ogg", volume = volume
+      low_frequency_vibration_intensity = 0.9 * volume,
+      duration = 150
     },
+    variations =
     {
-      filename = "__base__/sound/car-wood-impact-03.ogg", volume = volume
-    },
-    {
-      filename = "__base__/sound/car-wood-impact-04.ogg", volume = volume
-    },
-    {
-      filename = "__base__/sound/car-wood-impact-05.ogg", volume = volume
+      {
+        filename = "__base__/sound/car-wood-impact.ogg", volume = volume
+      },
+      {
+        filename = "__base__/sound/car-wood-impact-02.ogg", volume = volume
+      },
+      {
+        filename = "__base__/sound/car-wood-impact-03.ogg", volume = volume
+      },
+      {
+        filename = "__base__/sound/car-wood-impact-04.ogg", volume = volume
+      },
+      {
+        filename = "__base__/sound/car-wood-impact-05.ogg", volume = volume
+      }
     }
   }
 end
 
 sounds.generic_impact =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/car-metal-impact-2.ogg", volume = 0.5
+    filename = "__base__/sound/car-metal-impact.bnvib"
   },
+  game_controller_vibration_data =
   {
-    filename = "__base__/sound/car-metal-impact-3.ogg", volume = 0.5
+    low_frequency_vibration_intensity = 0.9,
+    duration = 150
   },
+  variations =
   {
-    filename = "__base__/sound/car-metal-impact-4.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-metal-impact-5.ogg", volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-metal-impact-6.ogg", volume = 0.5
+    {
+      filename = "__base__/sound/car-metal-impact-2.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-3.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-4.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-5.ogg", volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-metal-impact-6.ogg", volume = 0.5
+    }
   }
 }
 
@@ -1219,10 +1256,15 @@ sounds.flamethrower_turret_deactivate =
 
 sounds.heavy_gunshot =
 {
-  switch_vibration_data = 
+  switch_vibration_data =
   {
     filename = "__base__/sound/fight/heavy-gunshot.bnvib",
     gain = 0.7
+  },
+  game_controller_vibration_data =
+  {
+    high_frequency_vibration_intensity = 0.6,
+    duration = 50
   },
   variations =
   {
@@ -1270,6 +1312,11 @@ sounds.light_gunshot =
   switch_vibration_data =
   {
     filename = "__base__/sound/fight/light-gunshot.bnvib",
+  },
+  game_controller_vibration_data =
+  {
+    high_frequency_vibration_intensity = 0.4,
+    duration = 40
   },
   variations =
   {
@@ -1326,7 +1373,12 @@ sounds.submachine_gunshot =
   {
     filename = "__base__/sound/fight/submachine-gunshot.bnvib",
   },
-  variations = 
+  game_controller_vibration_data =
+  {
+    high_frequency_vibration_intensity = 0.4,
+    duration = 30
+  },
+  variations =
   {
     {
       filename = "__base__/sound/fight/submachine-gunshot-1.ogg",
@@ -1348,6 +1400,11 @@ sounds.shotgun =
   switch_vibration_data =
   {
     filename = "__base__/sound/fight/pump-shotgun.bnvib",
+  },
+  game_controller_vibration_data =
+  {
+    high_frequency_vibration_intensity = 0.6,
+    duration = 100
   },
   variations =
   {
@@ -1379,6 +1436,11 @@ sounds.tank_gunshot =
   switch_vibration_data =
   {
     filename = "__base__/sound/fight/tank-cannon.bnvib",
+  },
+  game_controller_vibration_data =
+  {
+    low_frequency_vibration_intensity = 0.9,
+    duration = 200
   },
   variations =
   {
@@ -1467,7 +1529,13 @@ sounds.poison_capsule_explosion = function(volume)
       filename = "__base__/sound/fight/poison-capsule-explosion.bnvib",
       gain = 0.3,
       play_for = "everything"
-    },        
+    },
+    game_controller_vibration_data =
+    {
+      high_frequency_vibration_intensity = 0.4,
+      duration = 50,
+      play_for = "everything"
+    },
     variations =
     {
       {
@@ -1525,6 +1593,11 @@ sounds.medium_explosion = function(volume)
     {
       filename = "__base__/sound/fight/medium-explosion.bnvib",
       gain = 0.4
+    },
+    game_controller_vibration_data =
+    {
+      low_frequency_vibration_intensity = 0.8,
+      duration = 120
     },
     variations =
     {
@@ -1601,6 +1674,12 @@ sounds.large_explosion = function(volume)
       gain = 0.6,
       play_for = "everything"
     },
+    game_controller_vibration_data =
+    {
+      low_frequency_vibration_intensity = 0.9,
+      duration = 160,
+      play_for = "everything"
+    },
     variations =
     {
       {
@@ -1626,6 +1705,12 @@ sounds.nuclear_explosion = function(volume)
     switch_vibration_data =
     {
       filename = "__base__/sound/fight/nuclear-explosion.bnvib",
+      play_for = "everything"
+    },
+    game_controller_vibration_data =
+    {
+      low_frequency_vibration_intensity = 1,
+      duration = 800,
       play_for = "everything"
     },
     variations =
@@ -2955,21 +3040,34 @@ end
 
 sounds.tree_impact =
 {
+  switch_vibration_data =
   {
-    filename = "__base__/sound/car-tree-wood-impact-01.ogg",
-    volume = 0.5
+    filename = "__base__/sound/car-tree-wood-impact.bnvib",
+    gain = 0.6
   },
+  game_controller_vibration_data =
   {
-    filename = "__base__/sound/car-tree-wood-impact-02.ogg",
-    volume = 0.5
+    low_frequency_vibration_intensity = 0.6,
+    duration = 110
   },
+  variations =
   {
-    filename = "__base__/sound/car-tree-wood-impact-03.ogg",
-    volume = 0.5
-  },
-  {
-    filename = "__base__/sound/car-tree-wood-impact-04.ogg",
-    volume = 0.5
+    {
+      filename = "__base__/sound/car-tree-wood-impact-01.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-tree-wood-impact-02.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-tree-wood-impact-03.ogg",
+      volume = 0.5
+    },
+    {
+      filename = "__base__/sound/car-tree-wood-impact-04.ogg",
+      volume = 0.5
+    }
   }
 }
 

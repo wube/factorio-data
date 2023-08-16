@@ -36,6 +36,11 @@ data:extend(
       {
         filename = "__core__/sound/axe-mining-ore.bnvib"
       },
+      game_controller_vibration_data =
+      {
+        high_frequency_vibration_intensity = 0.8,
+        duration = 70
+      },
       variations =
       {
         {
@@ -85,6 +90,11 @@ data:extend(
       switch_vibration_data =
       {
         filename = "__core__/sound/mining-wood.bnvib"
+      },
+      game_controller_vibration_data =
+      {
+        high_frequency_vibration_intensity = 0.8,
+        duration = 70
       },
       variations =
       {

@@ -350,7 +350,12 @@ data:extend(
         switch_vibration_data =
         {
           filename = "__base__/sound/fight/pulse.bnvib",
-        }, 
+        },
+        game_controller_vibration_data =
+        {
+          low_frequency_vibration_intensity = 0.5,
+          duration = 100
+        },
         variations =
         {
           {
