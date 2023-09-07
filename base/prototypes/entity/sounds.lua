@@ -1684,11 +1684,11 @@ sounds.large_explosion = function(volume)
     {
       {
         filename = "__base__/sound/fight/large-explosion-1.ogg",
-        volume = 0.55
+        volume = volume
       },
       {
         filename = "__base__/sound/fight/large-explosion-2.ogg",
-        volume = 0.55
+        volume = volume
       }
     }
   }

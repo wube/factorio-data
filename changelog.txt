@@ -1,6 +1,23 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.90
+Version: 1.1.91
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.90
+Date: 07. 09. 2023
+  Changes:
+    - Removed option to capture system mouse cursor when using a controller due to it breaking touch screen input.
+    - The temporary virtual cursor shown when using the mouse in controller input mode will now disappear when a controller stick is moved instead of after 1.5 seconds (https://forums.factorio.com/108534)
+  Bugfixes:
+    - Fixed some visual glitches related to LuaGuiElement::auto_toggle and LuaGuiElement::toggled.
+    - Fixed that some remapped keys wouldn't work on Linux. (https://forums.factorio.com/108229)
+    - Fixed that some default mappings on Steam Deck would map to back grip buttons but there was no way to trigger them.
+    - Fixed that --dump-data did not work if the script output folder didn't exist. (https://forums.factorio.com/108259)
+    - Fixed sounds.large_explosion ignoring volume parameter. (https://forums.factorio.com/108493)
+  Modding:
+    - Removed unused rocket silo prototype property idle_energy_usage.
+  Scripting:
+    - LuaEntity::neighbours read for underground belt ghost returns far end.
+    - Removed LuaEntityPrototype::idle_energy_usage read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.89
 Date: 16. 08. 2023
