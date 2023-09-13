@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.91
+Version: 1.1.92
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.91
+Date: 13. 09. 2023
+  Bugfixes:
+    - Fixed that updating a mod would re-download all of its dependencies if they were not enabled. (https://forums.factorio.com/108481)
+    - Fixed that Build control was allowing binding to controller buttons that would not work. (https://forums.factorio.com/106132)
+    - Fixed (again) dump commands not working correctly related to folders. (https://forums.factorio.com/108673)
+    - Fixed that ending copy selection in controller mode could trigger the copied entities to be immediately built. (https://forums.factorio.com/108644)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.90
 Date: 07. 09. 2023
