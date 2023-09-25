@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.92
+Version: 1.1.93
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.92
+Date: 25. 09. 2023
+  Minor Features:
+    - Added a notification when a technology is researched.
+    - Added /enable-research-queue console command to enable the research queue without disabling achievements.
+  Changes:
+    - The research queue is enabled by default for new games.
+  Bugfixes:
+    - Fixed that pumpjacks would not show the correct status when they were stopped due to full fluid output. (https://forums.factorio.com/107907)
+    - Fixed that sync-mods-with-save would download the latest mod version regardless of the mod's base dependency. (https://forums.factorio.com/106289)
+  Modding:
+    - Added ResourceEntityPrototype::cliff_removal_probability defaulting to 1.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.91
 Date: 13. 09. 2023

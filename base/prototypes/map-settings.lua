@@ -229,7 +229,7 @@ data:extend(
        recipe_difficulty = defines.difficulty_settings.recipe_difficulty.normal,
        technology_difficulty = defines.difficulty_settings.technology_difficulty.normal,
        technology_price_multiplier = 1,
-       research_queue_setting = "after-victory"
+       research_queue_setting = "always"
     }
   }
 })
