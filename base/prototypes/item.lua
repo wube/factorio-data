@@ -1978,7 +1978,7 @@ data:extend(
     flags = {"hidden"},
     subgroup = "other",
     order = "s[item-with-tags]-o[item-with-tags]",
-    stack_size = 1
+    stack_size = 2
   },
   {
     type = "item-with-label",
@@ -1988,7 +1988,7 @@ data:extend(
     flags = {"hidden"},
     subgroup = "other",
     order = "s[item-with-label]-o[item-with-label]",
-    stack_size = 1
+    stack_size = 2
   },
   {
     type = "item-with-inventory",

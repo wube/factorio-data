@@ -452,12 +452,17 @@ function make_4way_animation_from_spritesheet(animation)
       repeat_count = anim.repeat_count,
       shift = anim.shift,
       draw_as_shadow = anim.draw_as_shadow,
+      draw_as_glow = anim.draw_as_glow,
+      draw_as_light = anim.draw_as_light,
       force_hr_shadow = anim.force_hr_shadow,
       apply_runtime_tint = anim.apply_runtime_tint,
       animation_speed = anim.animation_speed,
       scale = anim.scale or 1,
       tint = anim.tint,
-      blend_mode = anim.blend_mode
+      blend_mode = anim.blend_mode,
+      load_in_minimal_mode = anim.load_in_minimal_mode,
+      premul_alpha = anim.premul_alpha,
+      generate_sdf = anim.generate_sdf
     }
   end
 

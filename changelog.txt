@@ -1,6 +1,49 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.93
+Version: 1.1.94
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.93
+Date: 17. 10. 2023
+  Minor Features:
+    - Added "--nogamepad" command line option to disable gamepad(controller) detection and support.
+  Changes:
+    - Disabled support for .voc audio files for Allegro audio backend.
+  Bugfixes:
+    - Fixed that selection tool with "cancel-deconstruct", "cancel-upgrade" or "downgrade" mode would not render selection of entities. (https://forums.factorio.com/108620)
+    - Fixed it was possible to create maps with width or height larger than 2000000. (https://forums.factorio.com/108174)
+    - Fixed recipe tooltip in assembling machine was doing intermediate crafting logic when showing items missing for crafting. (https://forums.factorio.com/108190)
+    - Fixed inserter could take items from wrong side of a belt when the belt shape was changed. (https://forums.factorio.com/108046)
+    - Fixed that heat buffer temperatures would not migrate correctly when changing the prototype maximum temperature. (https://forums.factorio.com/108724)
+    - Fixed that the research queue would not be enabled by default for the Marathon and Death world marathon presets.
+    - Fixed fast replacing train stops would not preserve trains limit. (https://forums.factorio.com/109034)
+    - Fixed that crafting machines did not handle item-with-tags type items correctly. (https://forums.factorio.com/109080)
+    - Fixed that setting color to nil for rolling stock did not fire the on_entity_color_changed event. (https://forums.factorio.com/108816)
+    - Fixed that LuaInventory::find_empty_stack() didn't respect the 'hand' location. (https://forums.factorio.com/106381)
+    - Fixed that LuaGameScript::auto_save() didn't handle sub-directories correctly. (https://forums.factorio.com/105701)
+    - Fixed that closing a headless multiplayer game via ctrl+c would give an exit code of 1 instead of 0. (https://forums.factorio.com/109019)
+    - Fixed that all exit codes got coerced into 0 or 1.
+    - Fixed that crafting machine fluid outputs could prevent them from sleeping in some cases. (https://forums.factorio.com/108996)
+    - Fixed that the Lua utility function "make_4way_animation_from_spritesheet" didn't handle several values correctly. (https://forums.factorio.com/viewtopic.php?f=7&t=107928)
+    - Fixed server not showing in LAN server browser if the game is also public and with a different external port because of NAT.
+    - Fixed controller vibrations playing in keyboard and mouse mode.
+    - Fixed controller buttons simulating clicks and modifiers in keyboard and mouse mode. (https://forums.factorio.com/107888)
+  Modding:
+    - SimpleEntityWith[Owner/Force] no longer require a graphics definition.
+    - Accumulators no longer require a graphics definition.
+    - Generators no longer require setting effectivity - it defaults to 1.
+    - Combinators no longer require a graphics definition.
+    - Generators no longer require a graphics definition.
+    - Burner generators no longer require a graphics definition.
+  Scripting:
+    - Added LuaGameScript::get_train_by_id.
+    - Added LuaEntityPrototype::spawn_decoration and spawn_decorations_on_expansion read.
+    - Added LuaEntityPrototype::connection_distance and joint_distance read.
+    - Added LuaEntityPrototype::radius_visualisation_specification read.
+    - Added LuaEntity::sticker_vehicle_modifiers read.
+    - Added LuaForce::is_chunk_requested_for_charting().
+    - Added LuaEntity::spawning_cooldown, absorbed_pollution, and spawn_shift read.
+    - LuaGameScript::print, LuaPlayer::print, LuaSurface::print and LuaForce::print now accept a PrintSettings as a second parameter.
+    - Added LuaStyle::draw_grayscale_picture read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.92
 Date: 25. 09. 2023
