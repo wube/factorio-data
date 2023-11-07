@@ -195,7 +195,7 @@ inserter_connector_template =
     priority = "extra-high",
     flags = { "low-object" },
     scale = 0.5,
-    shift = util.by_pixel(0, 0.5),
+    shift = util.by_pixel(1.0, 2.5),
     width = 52
   },
 
@@ -209,7 +209,7 @@ inserter_connector_template =
     priority = "extra-high",
     flags = { "low-object" },
     scale = 0.5,
-    shift = util.by_pixel(5.5, 5),
+    shift = util.by_pixel(6.5, 7),
     width = 56
   },
 
@@ -222,7 +222,7 @@ inserter_connector_template =
     priority = "extra-high",
     flags = { "low-object" },
     scale = 0.5,
-    shift = util.by_pixel(-1.5, 2),
+    shift = util.by_pixel(-0.5, 4),
     width = 46
   },
 
@@ -236,7 +236,7 @@ inserter_connector_template =
     flags = { "low-object" },
     draw_as_glow = true,
     scale = 0.5,
-    shift = util.by_pixel(-1.5, 2),
+    shift = util.by_pixel(-0.5, 4),
     width = 60
   },
 
@@ -250,7 +250,7 @@ inserter_connector_template =
     flags = { "low-object" },
     draw_as_glow = true,
     scale = 0.5,
-    shift = util.by_pixel(-3, 0.5),
+    shift = util.by_pixel(-2, 2.5),
     width = 54
   },
 
@@ -264,7 +264,7 @@ inserter_connector_template =
     flags = { "low-object" },
     draw_as_glow = true,
     scale = 0.5,
-    shift = util.by_pixel(-3, 0.5),
+    shift = util.by_pixel(-2, 2.5),
     width = 54
   },
 
@@ -277,7 +277,7 @@ inserter_connector_template =
     priority = "extra-high",
     flags = { "low-object" },
     scale = 0.5,
-    shift = util.by_pixel(2, -3),
+    shift = util.by_pixel(3, -1),
     width = 62
   },
 
@@ -291,19 +291,19 @@ inserter_connector_template =
     priority = "extra-high",
     flags = { "low-object" },
     scale = 0.5,
-    shift = util.by_pixel(11, 3.5),
+    shift = util.by_pixel(12, 5.5),
     width = 64
   },
 
-  wire_offset_hotfix = util.by_pixel(-1, 2),
-  wire_shadow_offset_hotfix = util.by_pixel(-1, 2),
-  light_offset_hotfix = util.by_pixel(-1, 2),
+  wire_offset_hotfix = util.by_pixel(0, 2),
+  wire_shadow_offset_hotfix = util.by_pixel(0, 2),
+  --light_offset_hotfix = util.by_pixel(0, 0),
   wire_offsets =
   {
     { red = util.by_pixel(13, -10), green = util.by_pixel(16, -4.5) },
     { red = util.by_pixel(7.5, -13), green = util.by_pixel(13, -10) },
     { red = util.by_pixel(16.5, 1.5), green = util.by_pixel(12.5, 6) },
-    { red = util.by_pixel(-5.5, -13.5), green = util.by_pixel(-12, -11) }
+    { red = util.by_pixel(-5.5, -12.5), green = util.by_pixel(-11, -11) }
   },
 
   wire_shadow_offsets =
@@ -316,10 +316,10 @@ inserter_connector_template =
 
   light_offsets =
   {
-    { rg = util.by_pixel(-9.5, -6.5), b = util.by_pixel(-11, -3) },
-    { rg = util.by_pixel(4.5, 7.5), b = util.by_pixel(8, 5.5) },
-    { rg = util.by_pixel(-11, 2.5), b = util.by_pixel(-8.5, 4.5) },
-    { rg = util.by_pixel(-6.5, 6), b = util.by_pixel(-3, 7) }
+    --{ rg = util.by_pixel(-9.5, -6.5), b = util.by_pixel(-11, -3) },
+    --{ rg = util.by_pixel(4.5, 7.5), b = util.by_pixel(8, 5.5) },
+    --{ rg = util.by_pixel(-11, 2.5), b = util.by_pixel(-8.5, 4.5) },
+    --{ rg = util.by_pixel(-6.5, 6), b = util.by_pixel(-3, 7) }
   }
 }
 

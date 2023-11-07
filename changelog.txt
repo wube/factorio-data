@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.95
+Version: 1.1.96
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.95
+Date: 07. 11. 2023
+  Changes:
+    - Technology researched message does not play chat notification sound.
+  Bugfixes:
+    - Fixed that the prototype explorer and CustomInputEvent::selected_prototype did not work on crafting machine fluid slots.
+    - Fixed LuaEntity::disconnect_neighbour called on electric pole would disconnect left side of power switch when requested to disconnect right side. (https://forums.factorio.com/109309)
+    - Fixed that cloning rails in the map editor could lead to corrupt saves in some instances. (https://forums.factorio.com/109436)
+    - Fixed offset of circuit connector sprites for inserters
+  Scripting:
+    - Added PrintSettings::sound_path, volume_modifier and game_state.
+    - Replaced PrintSettings::skip_if_redundant with PrintSettings::skip. Added defines.print_skip.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.94
 Date: 18. 10. 2023
