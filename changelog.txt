@@ -1,6 +1,19 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.96
+Version: 1.1.97
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.96
+Date: 08. 11. 2023
+  Bugfixes:
+    - Fixed a desync related to manual crafting large recipe counts.
+    - Fixed that Arm builds of the game would not render cliff previews correctly. (https://forums.factorio.com/109564)
+    - Fixed train fulfilled fraction was always showing full green background. (https://forums.factorio.com/109566)
+    - Fixed a desync when mods cause resources to generate with 'infinite' richness.
+    - Fixed a desync when mods change character interaction distance to super large values.
+    - Fixed a desync when technology prices would grow beyond 18~ quintillion.
+    - Fixed a desync when related to mods and custom map generation.
+    - Fixed a desync when mods define corpses with very long lifetimes.
+    - Fixed a crash when entering large values for train wait times.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.95
 Date: 07. 11. 2023
