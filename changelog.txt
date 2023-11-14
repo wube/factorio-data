@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.97
+Version: 1.1.98
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.97
+Date: 14. 11. 2023
+  Bugfixes:
+    - Fixed crashes when putting super large numbers in number input fields.
+    - Fixed a desync when putting super large numbers in the map editor brush size fields.
+    - Fixed that the website link in the about GUI did not work on Linux. (https://forums.factorio.com/109684)
+    - Fixed a crash when changing the technology price multiplier while research is in progress.
+    - Fixed a crash when mods would swap character armor with armor in the player inventory that only existed due to the worm armor inventory size bonus. (https://forums.factorio.com/109677)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.96
 Date: 08. 11. 2023
@@ -11,7 +20,7 @@ Date: 08. 11. 2023
     - Fixed a desync when mods cause resources to generate with 'infinite' richness.
     - Fixed a desync when mods change character interaction distance to super large values.
     - Fixed a desync when technology prices would grow beyond 18~ quintillion.
-    - Fixed a desync when related to mods and custom map generation.
+    - Fixed a desync related to mods and custom map generation.
     - Fixed a desync when mods define corpses with very long lifetimes.
     - Fixed a crash when entering large values for train wait times.
 ---------------------------------------------------------------------------------------------------
@@ -2336,7 +2345,7 @@ Date: 10. 08. 2020
     - Electric mining drill graphics now fill bounding box more accurately.
   Bugfixes:
     - Fixed hovering over unit that was going toward an entity would crash if the entity was destroyed. (https://forums.factorio.com/87701)
-    - Fixed crashes/desyncs related to various different operations on a shelf of a player that just joined, and his blueprint shelf meta-data hasn't be synchronized yet.
+    - Fixed crashes/desyncs related to various different operations on a shelf of a player that just joined, and their blueprint shelf meta-data hasn't be synchronized yet.
     - Fixed crashes/desyncs related to swapping item with a blueprint/book in the blueprint library that is not yet fully transferred into the game. (https://forums.factorio.com/87673)
     - Fixed electric mining drill circuit connection graphics.
     - Fixed crash when picking up something using the quickbar while setting up a blueprint from the inventory.
@@ -12644,8 +12653,8 @@ Date: 12.9. 2014
     - Fixed entity icons of defender/distractor/destroyer robots.
     - Fixed that deconstructing transport-belt-to-ground would delete items they held (https://forums.factorio.com/5667).
     - Fixed that deconstructing inserters holding items would delete items they held (https://forums.factorio.com/5636).
-    - The notifications of destroyed buildings are created only when someone other than player (or his machines) destroys the building.
-      This affects player destroying his buildings manually and also land-mine destroying itself on impact.
+    - The notifications of destroyed buildings are created only when someone other than player (or their machines) destroys the building.
+      This affects player destroying their buildings manually and also land-mine destroying itself on impact.
     - Fixed that slightly more robots than needed could be send to empty provider chest (https://forums.factorio.com/5613).
     - When unresearching (using script) the toolbelt, the items that can't fit it are inserted back into the player's inventory.
       (https://forums.factorio.com/5659).
@@ -12694,7 +12703,7 @@ Date: 29.8. 2014
     - Fixed crash when some modded entity attack_reaction effect killed the attacking biter.
     - Fixed various problems of not loadable save when energy source type of entities changed or mod specifying entities with energy source missing.
       (https://forums.factorio.com/5511).
-    - Removed so called "item bomb" effect. It happened When the player tried to a mine chest that contained items that couldn't fit his inventory.
+    - Removed so called "item bomb" effect. It happened When the player tried to a mine chest that contained items that couldn't fit their inventory.
       Instead of dropping all the items on the ground around (which could be A LOT of items in some cases), the mining just fails, while player
       gets as many items from the chest as possible.
     - Fixed performance when cancelling large crafting queues and the player has no room to hold the items.
@@ -14318,7 +14327,7 @@ Date: 6.5. 2013
     - Don't show the contents of the cursor when map is stopped.
     - Fixed bug in connecting rolling stocks across crossroads.
     - Fixed crash when removing rails in rail crossings.
-    - Fixed crash when not selecting research while the inserter had already his science pack on the way to the lab.
+    - Fixed crash when not selecting research while the inserter had already its science pack on the way to the lab.
     - Stop train when riding manually and switching to automatic mode.
     - Fixed bug of crash (and other problems) when riding rolling stock after it was rotated.
     - Fixed a bug of crash after removing train stop on circular rail.
@@ -14550,7 +14559,7 @@ Date: 22.2. 2013
     - Underground belt can be rotated (using the standard rotate key) and it switches the input and output ends.
     - Intermediate items in the crafting queue have different color.
     - Player doesn't collide with the transport belt to ground.
-    - Player will shoot to enemies close to him no matter where his cursor is.
+    - Player will shoot to enemies close to them no matter where their cursor is.
     - Different colors for promised items in the crafting queue.
   Changes:
     - Little bit more powerful and less frequent attacks of creepers in 3rd level of the demo.
