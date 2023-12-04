@@ -1,6 +1,16 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.100
+Version: 1.1.101
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.100
+Date: 04. 12. 2023
+  Bugfixes:
+    - Fixed loader would not connect to belts in preview in some cases. (https://forums.factorio.com/109999)
+    - Fixed bad pumpjack drain logic related to yield. (https://forums.factorio.com/110005)
+    - Fixed recipes with ingredients craftable for free could not be crafted. (https://forums.factorio.com/110012)
+  Scripting:
+    - Added LuaEntity::belt_shape read.
+    - Added LuaEntity::gps_tag read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.99
 Date: 28. 11. 2023
