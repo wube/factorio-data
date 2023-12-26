@@ -525,23 +525,28 @@ sounds.inserter_basic =
   {
     {
       filename = "__base__/sound/inserter-basic-1.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-basic-2.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-basic-3.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-basic-4.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-basic-5.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     }
   },
   audible_distance_modifier = 0.3
@@ -554,23 +559,28 @@ sounds.inserter_fast =
   {
     {
       filename = "__base__/sound/inserter-fast-1.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-fast-2.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-fast-3.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-fast-4.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     },
     {
       filename = "__base__/sound/inserter-fast-5.ogg",
-      volume = 0.5
+      volume = 0.5,
+      preload = true
     }
   },
   audible_distance_modifier = 0.3
@@ -759,7 +769,8 @@ sounds.pipe =
 {
   {
     filename = "__base__/sound/pipe.ogg",
-    volume = 0.45
+    volume = 0.45,
+    preload = true
   }
 }
 
@@ -911,28 +922,28 @@ sounds.cargo_wagon_close =
 sounds.machine_open =
 {
   {
-    filename = "__base__/sound/machine-open.ogg", volume = 0.5
+    filename = "__base__/sound/machine-open.ogg", volume = 0.5, preload = true
   }
 }
 
 sounds.machine_close =
 {
   {
-    filename = "__base__/sound/machine-close.ogg", volume = 0.5
+    filename = "__base__/sound/machine-close.ogg", volume = 0.5, preload = true
   }
 }
 
 sounds.electric_network_open =
 {
   {
-    filename = "__base__/sound/electric-network-open.ogg", volume = 0.6
+    filename = "__base__/sound/electric-network-open.ogg", volume = 0.6, preload = true
   }
 }
 
 sounds.electric_network_close =
 {
   {
-    filename = "__base__/sound/electric-network-close.ogg", volume = 0.6
+    filename = "__base__/sound/electric-network-close.ogg", volume = 0.6, preload = true
   }
 }
 
@@ -945,7 +956,8 @@ sounds.roboport_door_open =
       filename = "__base__/sound/roboport-door.ogg",
       volume = 0.3,
       min_speed = 1,
-      max_speed = 1.5
+      max_speed = 1.5,
+      preload = true
     }
   }
 }
@@ -957,9 +969,10 @@ sounds.roboport_door_close =
     sound =
     {
       filename = "__base__/sound/roboport-door-close.ogg",
-    volume = 0.2,
-    min_speed = 1,
-    max_speed = 1.5
+      volume = 0.2,
+      min_speed = 1,
+      max_speed = 1.5,
+      preload = true
     }
   }
 }

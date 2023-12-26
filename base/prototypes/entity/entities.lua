@@ -8967,7 +8967,8 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/fast-transport-belt.ogg",
-        volume = 0.3
+        volume = 0.3,
+        preload = true
       },
       persistent = true
     },

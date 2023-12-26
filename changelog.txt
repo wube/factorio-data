@@ -1,6 +1,26 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.101
+Version: 1.1.102
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.101
+Date: 26. 12. 2023
+  Bugfixes:
+    - Fixed a crash when entering bad number values in some input fields. (https://forums.factorio.com/110140)
+    - Fixed a crash when removing an item that is being used to hand craft a recipe while also changing the recipe to take fluid ingredients.
+    - Fixed a crash when defining a recipe that takes zero fluid as the first ingredient.
+    - Fixed cloning a furnace would not preserve previous recipe id.
+    - Fixed that selecting a locale would sometimes reset the setting back to "Default"
+    - Fixed that choose-elem-button equipment tooltips were missing the equipment name and description.
+    - Fixed being unable to focus search in the train overview GUI with Control + F when a mod attaches a relative GUI element to it.
+    - Fixed a crash when item stack of item-on-ground becomes empty because of scripted stack transfer. (https://forums.factorio.com/110322)
+    - Fixed crash when placing linked chest in multiplayer with hotkey suggestions enabled. (https://forums.factorio.com/110356)
+  Modding:
+    - Fluid ingredient amounts must be larger than zero.
+    - TransportBeltConnectables cannot be given given "building-direction-8-way" flag.
+  Scripting:
+    - Added LuaGuiElement::elem_tooltip read/write.
+    - Added LuaEntityPrototype::boiler_mode read.
+    - Added LuaGameScript::request_train_path.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.100
 Date: 04. 12. 2023
@@ -32,6 +52,7 @@ Date: 14. 11. 2023
   Bugfixes:
     - Fixed crashes when putting super large numbers in number input fields.
     - Fixed a desync when putting super large numbers in the map editor brush size fields.
+  Scripting:
     - Fixed that the website link in the about GUI did not work on Linux. (https://forums.factorio.com/109684)
     - Fixed a crash when changing the technology price multiplier while research is in progress.
     - Fixed a crash when mods would swap character armor with armor in the player inventory that only existed due to the worn armor inventory size bonus. (https://forums.factorio.com/109677)
