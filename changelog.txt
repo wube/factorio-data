@@ -1,6 +1,28 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.102
+Version: 1.1.103
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.102
+Date: 18. 01. 2024
+  Bugfixes:
+    - Fixed crash when placing linked chest in multiplayer with hotkey suggestions enabled. (https://forums.factorio.com/110356)
+    - Fixed that migration_applied was always false in the on_configuration_changed event. (https://forums.factorio.com/110392)
+    - Fixed that item health bars didn't render correctly at some scales. (https://forums.factorio.com/110378)
+    - Fixed a crash when the server has disconnected while setting quickbar slots. (https://forums.factorio.com/110242)
+    - Fixed that the delete save confirm could delete the wrong save if a different one was selected while it was showing. (https://forums.factorio.com/110453)
+    - Fixed that the custom camera widget wouldn't render entity status icons correctly. (https://forums.factorio.com/108086)
+    - Fixed that LuaGameScript::auto_save() wouldn't work if the root saves folder didn't already exist. (https://forums.factorio.com/109462)
+    - Fixed that selecting a group in the chat icon selector GUI would occasionally select a random result. (https://forums.factorio.com/105017)
+    - Fixed an error when scenario or blueprint library files are read-only on Linux. (https://forums.factorio.com/102351)
+    - Fixed several potential deadlocking issues with non-blocking saving. (https://forums.factorio.com/108738)
+    - Fixed tank not consuming fuel when turning while braking. (https://forums.factorio.com/110347)
+    - Fixed train could not advance from destination full state when a train stop placed from blueprint was built before a rail next to it. (https://forums.factorio.com/110572)
+    - Fixed partial item transfer not preserving inventory hand location. (https://forums.factorio.com/110543)
+    - Fixed transport belt would keep saying "Disabled by control behavior" after circuit wires were removed.
+    - Fixed controller relative driving mode steering left and right repeatedly in multiplayer.
+    - Fixed controller relative driving mode causing jittery movement when driving backwards.
+  Debug:
+    - Added show_generated_chunks debug option which shows uncharted yet generated chunks on the map.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.101
 Date: 26. 12. 2023
@@ -13,7 +35,6 @@ Date: 26. 12. 2023
     - Fixed that choose-elem-button equipment tooltips were missing the equipment name and description.
     - Fixed being unable to focus search in the train overview GUI with Control + F when a mod attaches a relative GUI element to it.
     - Fixed a crash when item stack of item-on-ground becomes empty because of scripted stack transfer. (https://forums.factorio.com/110322)
-    - Fixed crash when placing linked chest in multiplayer with hotkey suggestions enabled. (https://forums.factorio.com/110356)
   Modding:
     - Fluid ingredient amounts must be larger than zero.
     - TransportBeltConnectables cannot be given given "building-direction-8-way" flag.
