@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.104
+Version: 1.1.105
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.104
+Date: 30. 01. 2024
+  Gui:
+    - Trying to close a window will first close any opened drop-down. This improves navigating drop-downs with controllers.
+  Bugfixes:
+    - Fixed that empty locale would cause things to not show in GUIs. (https://forums.factorio.com/110679)
+    - Fixed intro sound being treated as gui effect instead of music. (https://forums.factorio.com/110848)
+    - Fixed that LuaFluidBox::get_fluid_system_contents() did not behave correctly when the fluid box was not part of a fluid system.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.103
 Date: 19. 01. 2024
