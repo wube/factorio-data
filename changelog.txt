@@ -1,6 +1,34 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.105
+Version: 1.1.106
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.105
+Date: 20. 03. 2024
+  Gui:
+    - Added Paste button to exchange string import GUIs
+    - Scrolling is smoother when using scrollbars with a controller.
+    - Hotkey hints GUI will try to move out of the way of chat messages.
+  Bugfixes:
+    - Fixed that LuaForce::chart_all() wouldn't chart surfaces that had never had any charting. (https://forums.factorio.com/110966)
+    - Fixed LuaEntity::circuit_connection_definitions could return copper wires from ghost entities. (https://forums.factorio.com/111087)
+    - Fixed a desync related to changing in-progress infinite research levels. (https://forums.factorio.com/111127)
+    - Fixed a crash when quitting to the main menu while non-blocking saving is running. (https://forums.factorio.com/110661)
+    - Fixed a rare crash when switching audio devices. (https://forums.factorio.com/111407)
+    - Fixed copying train stop settings could cause some trains to arrive. (https://forums.factorio.com/111511)
+    - Fixed a save corruption issue related to large amounts of overlapping small electric poles. (https://forums.factorio.com/111580)
+    - Fixed crash when finishing a mini-tutorial after changing the input method from keyboard and mouse to controller while in the mini-tutorial.
+    - Fixed strange entity selection behavior after finishing a mini-tutorial after changing the input method from controller to keyboard and mouse while in the mini-tutorial.
+    - Fixed entity status icons being visible in simulations. (https://forums.factorio.com/111618)
+    - Fixed that the game window was missing decorations when using Gnome on Wayland. (https://forums.factorio.com/105512)
+    - Fixed a crash related to XDG cursor themes on Wayland. (https://forums.factorio.com/111787)
+    - Fixed a crash when giving NaN values to some lua APIs. (https://forums.factorio.com/111807)
+    - Fixed a desync when changing the force of a requester chest with filters set from the circuit network. (https://forums.factorio.com/111359)
+    - Fixed a rendering issue with pumpjack arrows when holding some items. (https://forums.factorio.com/106116)
+  Modding:
+    - Added StorageTankPrototype::show_fluid_icon.
+  Scripting:
+    - Added LuaRendering::move_to_back.
+    - Added LuaItemStack::is_ammo read.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.104
 Date: 30. 01. 2024
