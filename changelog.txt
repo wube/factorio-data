@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.106
+Version: 1.1.107
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.106
+Date: 26. 03. 2024
+  Bugfixes:
+    - Fixed a crash when watching a replay when other player looks into blueprint library. (https://forums.factorio.com/107931)
+  Modding:
+    - Added StorageTankPrototype::show_fluid_icon.
+  Scripting:
+    - Added LuaEntityPrototype::vector_to_place_result.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.105
 Date: 20. 03. 2024
@@ -24,8 +33,6 @@ Date: 20. 03. 2024
     - Fixed a crash when giving NaN values to some lua APIs. (https://forums.factorio.com/111807)
     - Fixed a desync when changing the force of a requester chest with filters set from the circuit network. (https://forums.factorio.com/111359)
     - Fixed a rendering issue with pumpjack arrows when holding some items. (https://forums.factorio.com/106116)
-  Modding:
-    - Added StorageTankPrototype::show_fluid_icon.
   Scripting:
     - Added LuaRendering::move_to_back.
     - Added LuaItemStack::is_ammo read.
