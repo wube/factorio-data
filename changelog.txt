@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.110
+Version: 1.1.111
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 1.1.110
+Date: 16. 08. 2024
+  Bugfixes:
+    - Fixed electric furnace shadow missing on some configurations. (https://forums.factorio.com/114217)
+    - Fixed a crash when using weak tables in the lua global table. (https://forums.factorio.com/114713)
+    - Fixed a bonus productivity exploit when crafting machine ingredients were force returned. (https://youtu.be/Za18SLd0PD0)
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.109
 Date: 07. 06. 2024

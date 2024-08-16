@@ -6762,6 +6762,7 @@ data:extend(
             height = 171,
             frame_count = 1,
             draw_as_shadow = true,
+            force_hr_shadow = true,
             shift = util.by_pixel(11.25, 7.75),
             scale = 0.5
           }
