@@ -8,17 +8,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/night-vision-equipment.png",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-night-vision-equipment.png",
-        width = 128,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -46,17 +39,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/energy-shield-equipment.png",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-energy-shield-equipment.png",
-        width = 128,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -81,17 +67,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/energy-shield-mk2-equipment.png",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-energy-shield-mk2-equipment.png",
-        width = 128,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -116,17 +95,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/battery-equipment.png",
-      width = 32,
-      height = 64,
+      width = 64,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-battery-equipment.png",
-        width = 64,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -148,17 +120,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/battery-mk2-equipment.png",
-      width = 32,
-      height = 64,
+      width = 64,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-battery-mk2-equipment.png",
-        width = 64,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -180,17 +145,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/solar-panel-equipment.png",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-solar-panel-equipment.png",
-        width = 64,
-        height = 64,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -208,21 +166,14 @@ data:extend(
   },
   {
     type = "generator-equipment",
-    name = "fusion-reactor-equipment",
+    name = "fission-reactor-equipment",
     sprite =
     {
-      filename = "__base__/graphics/equipment/fusion-reactor-equipment.png",
-      width = 128,
-      height = 128,
+      filename = "__base__/graphics/equipment/fission-reactor-equipment.png",
+      width = 256,
+      height = 256,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-fusion-reactor-equipment.png",
-        width = 256,
-        height = 256,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -251,16 +202,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/personal-laser-defense-equipment.png",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
       priority = "medium",
-      hr_version = {
-        filename = "__base__/graphics/equipment/hr-personal-laser-defense-equipment.png",
-        width = 128,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -280,12 +225,11 @@ data:extend(
       type = "beam",
       cooldown = 40,
       range = 15,
-      --source_direction_count = 64,
-      --source_offset = {0, -3.423489 / 4},
-      damage_modifier = 3,
+      range_mode = "center-to-bounding-box",
+      damage_modifier = 1,
+      ammo_category = "laser",
       ammo_type =
       {
-        category = "laser",
         energy_consumption = "50kJ",
         action =
         {
@@ -312,16 +256,9 @@ data:extend(
     {
       filename = "__base__/graphics/equipment/discharge-defense-equipment.png",
       flags = { "icon" },
-      size = 64,
+      size = 128,
       priority = "extra-high-no-scale",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-discharge-defense-equipment.png",
-        flags = { "icon" },
-        size = 128,
-        priority = "extra-high-no-scale",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -347,27 +284,17 @@ data:extend(
       range = 10,
       sound =
       {
-        switch_vibration_data =
-        {
-          filename = "__base__/sound/fight/pulse.bnvib",
-        },
+        switch_vibration_data = {filename = "__base__/sound/fight/pulse.bnvib"},
         game_controller_vibration_data =
         {
           low_frequency_vibration_intensity = 0.5,
           duration = 100
         },
-        variations =
-        {
-          {
-            filename = "__base__/sound/fight/pulse.ogg",
-            volume = 0.7
-          }
-        }
+        filename = "__base__/sound/fight/pulse.ogg", volume = 0.7
       },
       ammo_type =
       {
         type = "projectile",
-        category = "electric",
         energy_consumption = "2MJ",
         action =
         {
@@ -414,17 +341,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/exoskeleton-equipment.png",
-      width = 64,
-      height = 128,
+      width = 128,
+      height = 256,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-exoskeleton-equipment.png",
-        width = 128,
-        height = 256,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -448,17 +368,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/personal-roboport-equipment.png",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-personal-roboport-equipment.png",
-        width = 128,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -470,7 +383,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "35MJ",
-      input_flow_limit = "3500KW",
+      input_flow_limit = "3500kW",
       usage_priority = "secondary-input"
     },
     charging_energy = "1000kW",
@@ -497,6 +410,7 @@ data:extend(
     stationing_offset = {0, -0.6},
     charging_station_shift = {0, 0.5},
     charging_station_count = 2,
+    charging_station_count_affected_by_quality = true,
     charging_distance = 1.6,
     charging_threshold_distance = 5,
     categories = {"armor"}
@@ -508,17 +422,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/personal-roboport-mk2-equipment.png",
-      width = 64,
-      height = 64,
+      width = 128,
+      height = 128,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-personal-roboport-mk2-equipment.png",
-        width = 128,
-        height = 128,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -530,7 +437,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "35MJ",
-      input_flow_limit = "3500KW",
+      input_flow_limit = "22500kW",
       usage_priority = "secondary-input"
     },
     charging_energy = "1000kW",
@@ -557,6 +464,7 @@ data:extend(
     stationing_offset = {0, -0.6},
     charging_station_shift = {0, 0.5},
     charging_station_count = 4,
+    charging_station_count_affected_by_quality = true,
     charging_distance = 1.6,
     charging_threshold_distance = 5,
     categories = {"armor"}
@@ -567,17 +475,10 @@ data:extend(
     sprite =
     {
       filename = "__base__/graphics/equipment/belt-immunity-equipment.png",
-      width = 32,
-      height = 32,
+      width = 64,
+      height = 64,
       priority = "medium",
-      hr_version =
-      {
-        filename = "__base__/graphics/equipment/hr-belt-immunity-equipment.png",
-        width = 64,
-        height = 64,
-        priority = "medium",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     shape =
     {
@@ -595,6 +496,19 @@ data:extend(
     energy_consumption = "100kW",
     categories = {"armor"},
     order = "b-i-c"
+  },
+  {
+    type = "equipment-ghost",
+    name = "equipment-ghost",
+    order = "z-e-g",
+    sprite =
+    {
+      filename =  "__core__/graphics/icons/mip/ghost-entity.png",
+      width = 64,
+      height = 64,
+      priority = "medium",
+      scale = 0.5
+    },
   }
 }
 )

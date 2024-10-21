@@ -1,0 +1,27 @@
+{
+  "entity":
+  [
+    ["tungsten-loader", "turbo-loader"],
+    ["tungsten-splitter", "turbo-splitter"],
+    ["tungsten-transport-belt", "turbo-transport-belt"],
+    ["tungsten-underground-belt", "turbo-underground-belt"]
+  ],
+  "item":
+  [
+    ["tungsten-loader", "turbo-loader"],
+    ["tungsten-splitter", "turbo-splitter"],
+    ["tungsten-transport-belt", "turbo-transport-belt"],
+    ["tungsten-underground-belt", "turbo-underground-belt"]
+  ],
+  "recipe":
+  [
+    ["tungsten-loader", "turbo-loader"],
+    ["tungsten-splitter", "turbo-splitter"],
+    ["tungsten-transport-belt", "turbo-transport-belt"],
+    ["tungsten-underground-belt", "turbo-underground-belt"]
+  ],
+  "technology":
+  [
+    ["tungsten-transport-belt", "turbo-transport-belt"]
+  ]
+}

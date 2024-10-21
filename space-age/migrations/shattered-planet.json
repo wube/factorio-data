@@ -1,0 +1,30 @@
+{
+  "space-location":
+  [
+    ["interstellar", "shattered-planet"]
+  ],
+  "item":
+  [
+    ["interstellar-science-pack", "promethium-science-pack"],
+    ["interstellar-asteroid-chunk", "promethium-asteroid-chunk"]
+  ],
+  "recipe":
+  [
+    ["interstellar-science-pack", "promethium-science-pack"]
+  ],
+  "technology":
+  [
+    ["interstellar-science-pack", "promethium-science-pack"]
+  ],
+  "asteroid-chunk":
+  [
+    ["interstellar-asteroid-chunk", "promethium-asteroid-chunk"]
+  ],
+  "entity":
+  [
+    ["small-interstellar-asteroid", "small-promethium-asteroid"],
+    ["medium-interstellar-asteroid", "medium-promethium-asteroid"],
+    ["big-interstellar-asteroid", "big-promethium-asteroid"],
+    ["huge-interstellar-asteroid", "huge-promethium-asteroid"]
+  ]
+}

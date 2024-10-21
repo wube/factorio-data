@@ -9,13 +9,13 @@ smoke_animations.trivial_smoke_fast = function(opts)
     width = 50,
     height = 50,
     frame_count = 16,
-    animation_speed = opts.animation_speed or 16 / 60,
+    animation_speed = opts.animation_speed or (16 / 60),
     scale = opts.scale,
     tint = opts.tint
   }
 end
 
-smoke_animations.trivial_nuke_smoke = function(opts)
+smoke_animations.trivial_smoke_animation = function(opts)
   local opts = opts or {}
   return
   {
@@ -24,16 +24,23 @@ smoke_animations.trivial_nuke_smoke = function(opts)
     width = 50,
     height = 50,
     frame_count = 16,
-    animation_speed = opts.animation_speed or 16 / 60,
+    animation_speed = opts.animation_speed or (16 / 60),
     scale = opts.scale,
-    duration = opts.duration or 600,
-    fade_in_duration = opts.fade_in_duration or 0,
-    fade_away_duration = opts.fade_away_duration or ((opts.duration or 600) - (opts.fade_in_duration or 0)),
-    spread_duration = opts.spread_duration or 600,
-    start_scale = opts.start_scale or 0.20,
-    end_scale = opts.end_scale or 1.0,
     tint = opts.tint
   }
+end
+
+smoke_animations.trivial_nuke_smoke = function(opts)
+  local opts = opts or {}
+  local result = smoke_animations.trivial_smoke_animation(opts)
+
+  result.duration = opts.duration or 600
+  result.fade_in_duration = opts.fade_in_duration or 0
+  result.fade_away_duration = opts.fade_away_duration or ((opts.duration or 600) - (opts.fade_in_duration or 0))
+  result.spread_duration = opts.spread_duration or 600
+  result.start_scale = opts.start_scale or 0.20
+  result.end_scale = opts.end_scale or 1.0
+  return result;
 end
 
 smoke_animations.trivial_smoke = function(opts)
@@ -87,8 +94,6 @@ smoke_animations.trivial_fire_smoke = function(opts)
       height = 120,
       line_length = 5,
       frame_count = 60,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {-0.53125, -0.4375},
       priority = "high",
       flags = { "smoke" },

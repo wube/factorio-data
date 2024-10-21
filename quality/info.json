@@ -1,0 +1,11 @@
+{
+  "name": "quality",
+  "version": "2.0.7",
+  "title": "Quality",
+  "author": "Wube Software",
+  "contact": "dev@factorio.com",
+  "homepage": "https://www.factorio.com",
+  "dependencies": ["base >= 2.0.0"],
+  "quality_required": true,
+  "factorio_version": "2.0"
+}

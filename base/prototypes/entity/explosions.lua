@@ -2,6 +2,7 @@ local explosion_animations = require("prototypes.entity.explosion-animations")
 local smoke_animations = require("prototypes.entity.smoke-animations")
 local sounds = require("prototypes.entity.sounds")
 local biter_die_effects = require("prototypes.entity.biter-die-effects")
+local enemy_constants = require("prototypes.entity.enemy-constants")
 
 local default_light = function(size)
   return
@@ -18,7 +19,8 @@ local empty_explosion = function(params)
     type = "explosion",
     name = params.name,
     localised_name = params.localised_name,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = util.empty_sprite(),
     created_effect = params.created_effect
@@ -31,27 +33,36 @@ local explosions =
     type = "explosion",
     name = "explosion",
     localised_name = {"entity-name.explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/cannon-shell.png"}
+    },
+    order = "a-c-a",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.explosion(),
-    --light = {intensity = 1, size = 20, color = {r=1.0, g=1.0, b=1.0}},
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5)
+    sound = sounds.small_explosion
   },
 
   {
     type = "explosion",
     name = "explosion-gunshot",
     localised_name = {"entity-name.explosion-gunshot"},
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/pistol.png"}
+    },
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.gunshot(),
     rotate = true,
-    --light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1
@@ -61,11 +72,16 @@ local explosions =
     type = "explosion",
     name = "explosion-gunshot-small",
     localised_name = {"entity-name.explosion-gunshot-small"},
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/pistol.png"}
+    },
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.small_gunshot(),
     rotate = true,
-    --light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1
@@ -75,10 +91,16 @@ local explosions =
     type = "explosion",
     name = "explosion-hit",
     localised_name = {"entity-name.explosion-hit"},
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/pistol.png"}
+    },
+    order = "a-a-a",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.hit_explosion(),
-    --light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1
@@ -88,12 +110,16 @@ local explosions =
     type = "explosion",
     name = "big-explosion",
     localised_name = {"entity-name.big-explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/explosive-cannon-shell.png"}
+    },
+    order = "a-c-b",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.big_explosion(),
-    --light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
     sound = sounds.large_explosion(1.0)
   },
 
@@ -101,13 +127,12 @@ local explosions =
     type = "explosion",
     name = "medium-explosion",
     localised_name = {"entity-name.medium-explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icon = "__base__/graphics/icons/explosion.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.medium_explosion(),
-    --light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -160,26 +185,29 @@ local explosions =
     type = "explosion",
     name = "grenade-explosion",
     localised_name = {"entity-name.grenade-explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/grenade.png"}
+    },
+    order = "a-a-b",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(50),
-    sound = sounds.medium_explosion(0.4)
+    sound = sounds.medium_explosion
   },
 
   {
     type = "explosion",
     name = "massive-explosion",
     localised_name = {"entity-name.massive-explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icon = "__base__/graphics/icons/explosion.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.massive_explosion(),
-    --light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
     sound = sounds.large_explosion(1.0),
     created_effect =
     {
@@ -233,13 +261,17 @@ local explosions =
     type = "explosion",
     name = "ground-explosion",
     localised_name = {"entity-name.ground-explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/cliff-explosives.png"}
+    },
+    order = "a-a-c",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     animations = explosion_animations.medium_explosion(),
-    --light = {intensity = 1, size = 10, color = {r=1.0, g=0.8, b=0.6}},
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -288,14 +320,21 @@ local explosions =
     }
   },
 
-  empty_explosion
   {
+    type = "explosion",
     name = "blood-explosion-small",
     localised_name = {"entity-name.blood-explosion-small"},
-    icon = "__base__/graphics/icons/small-biter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "explosions",
+    icons =
+    {
+      {
+        icon = "__base__/graphics/icons/fluid/water.png",
+        tint = {1,0.4,1,1}
+      }
+    },
+    order = "c-a",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "fluid-explosions",
     animations = util.empty_sprite(),
     created_effect =
     {
@@ -314,14 +353,21 @@ local explosions =
     }
   },
 
-  empty_explosion
   {
+    type = "explosion",
     name = "blood-explosion-big",
     localised_name = {"entity-name.blood-explosion-big"},
-    icon = "__base__/graphics/icons/big-biter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "explosions",
+    icons =
+    {
+      {
+        icon = "__base__/graphics/icons/fluid/water.png",
+        tint = {1,0.4,1,1}
+      }
+    },
+    order = "c-b",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "fluid-explosions",
     animations = util.empty_sprite(),
     created_effect =
     {
@@ -353,14 +399,21 @@ local explosions =
     }
   },
 
-  empty_explosion
   {
+    type = "explosion",
     name = "blood-explosion-huge",
     localised_name = {"entity-name.blood-explosion-huge"},
-    flags = {"not-on-map", "hidden"},
-    icon = "__base__/graphics/icons/biter-spawner-corpse.png",
-    icon_size = 64, icon_mipmaps = 4,
-    subgroup = "explosions",
+    flags = {"not-on-map"},
+    hidden = true,
+    icons =
+    {
+      {
+        icon = "__base__/graphics/icons/fluid/water.png",
+        tint = {1,0.4,1,1}
+      }
+    },
+    order = "c-c",
+    subgroup = "fluid-explosions",
     animations = util.empty_sprite(),
     created_effect =
     {
@@ -397,9 +450,10 @@ local explosions =
     name = "water-splash",
     localised_name = {"entity-name.water-splash"},
     icon = "__base__/graphics/icons/fluid/water.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "explosions",
+    order = "a-a-a",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "fluid-explosions",
     animations = util.empty_sprite(),
     created_effect =
     {
@@ -412,7 +466,8 @@ local explosions =
           type = "create-particle",
           repeat_count = 10,
           repeat_count_deviation = 6,
-          particle_name = "deep-water-particle",
+          particle_name = "tintable-water-particle",
+          tint = {0.226, 0.341, 0.337, 0.314},
           offsets =
           {
             { 0, 0 }
@@ -438,17 +493,16 @@ local explosions =
     type = "explosion",
     name = "stone-furnace-explosion",
     icon = "__base__/graphics/icons/stone-furnace.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "smelting-machine-explosions",
     order = "c-a-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.8),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -502,16 +556,15 @@ local explosions =
     type = "explosion",
     name = "wooden-chest-explosion",
     icon = "__base__/graphics/icons/wooden-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "storage-explosions",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     order = "a-a-a",
     created_effect =
     {
@@ -554,17 +607,16 @@ local explosions =
     type = "explosion",
     name = "iron-chest-explosion",
     icon = "__base__/graphics/icons/iron-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "storage-explosions",
     order = "a-b-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -606,17 +658,16 @@ local explosions =
     type = "explosion",
     name = "transport-belt-explosion",
     icon = "__base__/graphics/icons/transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-a-a",
     height = 0,
     animations = util.empty_sprite (),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -682,17 +733,16 @@ local explosions =
     type = "explosion",
     name = "underground-belt-explosion",
     icon = "__base__/graphics/icons/underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-d-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -746,17 +796,16 @@ local explosions =
     type = "explosion",
     name = "splitter-explosion",
     icon = "__base__/graphics/icons/splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-g-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -834,17 +883,16 @@ local explosions =
     type = "explosion",
     name = "burner-inserter-explosion",
     icon = "__base__/graphics/icons/burner-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "inserter-explosions",
     order = "c-a-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -898,17 +946,16 @@ local explosions =
     type = "explosion",
     name = "inserter-explosion",
     icon = "__base__/graphics/icons/inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "inserter-explosions",
     order = "c-b-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -962,17 +1009,16 @@ local explosions =
     type = "explosion",
     name = "long-handed-inserter-explosion",
     icon = "__base__/graphics/icons/long-handed-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "inserter-explosions",
     order = "c-c-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1026,17 +1072,16 @@ local explosions =
     type = "explosion",
     name = "fast-inserter-explosion",
     icon = "__base__/graphics/icons/fast-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "inserter-explosions",
     order = "c-d-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1088,83 +1133,18 @@ local explosions =
 
   {
     type = "explosion",
-    name = "filter-inserter-explosion",
-    icon = "__base__/graphics/icons/filter-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "inserter-explosions",
-    order = "c-e-a",
-    height = 0,
-    animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 17,
-            particle_name = "filter-inserter-metal-particle-medium",
-            offset_deviation = { { -0.5, -0.4922 }, { 0.5, 0.4922 } },
-            initial_height = 0.3,
-            initial_height_deviation = 0.44,
-            initial_vertical_speed = 0.058,
-            initial_vertical_speed_deviation = 0.05,
-            speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
-          },
-          {
-            type = "create-particle",
-            repeat_count = 10,
-            particle_name = "filter-inserter-metal-particle-small",
-            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-            initial_height = 0.2,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.08,
-            initial_vertical_speed_deviation = 0.05,
-            speed_from_center = 0.05,
-            speed_from_center_deviation = 0.05
-          },
-          {
-            type = "create-particle",
-            repeat_count = 7,
-            particle_name = "cable-and-electronics-particle-small-medium",
-            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-            initial_height = 0.3,
-            initial_height_deviation = 0.4,
-            initial_vertical_speed = 0.06,
-            initial_vertical_speed_deviation = 0.049,
-            speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
-          }
-        }
-      }
-    }
-  },
-
-  {
-    type = "explosion",
     name = "small-electric-pole-explosion",
     icon = "__base__/graphics/icons/small-electric-pole.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-a-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1218,17 +1198,16 @@ local explosions =
     type = "explosion",
     name = "medium-electric-pole-explosion",
     icon = "__base__/graphics/icons/medium-electric-pole.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-b-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1282,17 +1261,16 @@ local explosions =
     type = "explosion",
     name = "big-electric-pole-explosion",
     icon = "__base__/graphics/icons/big-electric-pole.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-d-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -1346,17 +1324,16 @@ local explosions =
     type = "explosion",
     name = "pipe-explosion",
     icon = "__base__/graphics/icons/pipe.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-f-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1412,17 +1389,16 @@ local explosions =
     type = "explosion",
     name = "pipe-to-ground-explosion",
     icon = "__base__/graphics/icons/pipe-to-ground.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-g-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1464,17 +1440,16 @@ local explosions =
     type = "explosion",
     name = "car-explosion",
     icon = "__base__/graphics/icons/car.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "transport-explosions",
     order = "e-i-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.car_explosion,
     created_effect =
     {
       type = "direct",
@@ -1530,7 +1505,11 @@ local explosions =
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.05,
             speed_from_center_deviation = 0.05
-          }
+          },
+          {
+            type = "play-sound",
+            sound = sounds.car_debris
+          },
         }
       }
     }
@@ -1540,17 +1519,16 @@ local explosions =
     type = "explosion",
     name = "construction-robot-explosion",
     icon = "__base__/graphics/icons/construction-robot.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-b-a",
     height = 1.4,
     animations = explosion_animations.explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1607,17 +1585,16 @@ local explosions =
     name = "lamp-explosion",
     localised_name = {"dying-explosion-name", {"entity-name.small-lamp"}},
     icon = "__base__/graphics/icons/small-lamp.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "energy-explosions",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "circuit-network-explosions",
     order = "g-a-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1659,17 +1636,16 @@ local explosions =
     type = "explosion",
     name = "boiler-explosion",
     icon = "__base__/graphics/icons/boiler.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-a-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -1723,13 +1699,12 @@ local explosions =
     type = "explosion",
     name = "steam-engine-explosion",
     icon = "__base__/graphics/icons/steam-engine.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-b-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -1799,17 +1774,16 @@ local explosions =
     type = "explosion",
     name = "burner-mining-drill-explosion",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "extraction-machine-explosions",
     order = "b-a-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -1875,17 +1849,16 @@ local explosions =
     type = "explosion",
     name = "electric-mining-drill-explosion",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "extraction-machine-explosions",
     order = "b-b-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -1909,7 +1882,6 @@ local explosions =
               left_top = { -0.09375, -0.1875 },
               right_bottom = { 0.09375, 0.1875 }
             },
-            tile_collision_mask = nil,
             initial_height = 1.7,
             initial_height_deviation = 0.31,
             initial_vertical_speed = 0.086,
@@ -1934,7 +1906,6 @@ local explosions =
               left_top = { -0.1875, -0.1875 },
               right_bottom = { 0.1875, 0.1875 }
             },
-            tile_collision_mask = nil,
             initial_height = 1.1,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.106,
@@ -1959,7 +1930,6 @@ local explosions =
               left_top = { -0.8867, -0.8828 },
               right_bottom = { 0.8867, 0.8828 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.4,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.156,
@@ -1984,7 +1954,6 @@ local explosions =
               left_top = { -0.5, -0.5 },
               right_bottom = { 0.5, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 2.2,
             initial_height_deviation = 0.48,
             initial_vertical_speed = 0.074,
@@ -2009,7 +1978,6 @@ local explosions =
               left_top = { -0.5, -0.5 },
               right_bottom = { 0.5, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0,
             initial_vertical_speed = 0.085,
@@ -2028,17 +1996,16 @@ local explosions =
     type = "explosion",
     name = "offshore-pump-explosion",
     icon = "__base__/graphics/icons/offshore-pump.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "extraction-machine-explosions",
     order = "b-c-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -2116,13 +2083,12 @@ local explosions =
     type = "explosion",
     name = "steel-furnace-explosion",
     icon = "__base__/graphics/icons/steel-furnace.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "smelting-machine-explosions",
     order = "c-b-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -2180,13 +2146,12 @@ local explosions =
     type = "explosion",
     name = "electric-furnace-explosion",
     icon = "__base__/graphics/icons/electric-furnace.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "smelting-machine-explosions",
     order = "c-c-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -2245,13 +2210,12 @@ local explosions =
     type = "explosion",
     name = "assembling-machine-1-explosion",
     icon = "__base__/graphics/icons/assembling-machine-1.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-a-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -2333,13 +2297,12 @@ local explosions =
     type = "explosion",
     name = "assembling-machine-2-explosion",
     icon = "__base__/graphics/icons/assembling-machine-2.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-b-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -2421,17 +2384,16 @@ local explosions =
     type = "explosion",
     name = "lab-explosion",
     icon = "__base__/graphics/icons/lab.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-g-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -2511,17 +2473,16 @@ local explosions =
     name = "wall-explosion",
     localised_name = {"dying-explosion-name", {"entity-name.stone-wall"}},
     icon = "__base__/graphics/icons/wall.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-a-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -2575,17 +2536,16 @@ local explosions =
     type = "explosion",
     name = "gate-explosion",
     icon = "__base__/graphics/icons/gate.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-b-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -2651,17 +2611,16 @@ local explosions =
     type = "explosion",
     name = "gun-turret-explosion",
     icon = "__base__/graphics/icons/gun-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-c-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.5),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -2715,17 +2674,16 @@ local explosions =
     type = "explosion",
     name = "radar-explosion",
     icon = "__base__/graphics/icons/radar.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-g-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -2799,40 +2757,20 @@ local explosions =
     }
   },
 
-  empty_explosion
-  {
-    name = "small-biter-die",
-    created_effect = biter_die_effects.small_biter
-  },
-
-  empty_explosion
-  {
-    name = "small-worm-die",
-    localised_name = {"dying-explosion-name", {"entity-name.small-worm-turret"}},
-    created_effect = biter_die_effects.small_worm
-  },
-
-  empty_explosion
-  {
-    name = "biter-spawner-die",
-    created_effect = biter_die_effects.spawner_biter
-  },
-
   {
     type = "explosion",
     name = "fast-transport-belt-explosion",
     icon = "__base__/graphics/icons/fast-transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-b-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -2897,17 +2835,16 @@ local explosions =
     type = "explosion",
     name = "steel-chest-explosion",
     icon = "__base__/graphics/icons/steel-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "storage-explosions",
     order = "a-c-a",
     height = 0,
     animations = util.empty_sprite(), --explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -2948,17 +2885,16 @@ local explosions =
     type = "explosion",
     name = "fast-underground-belt-explosion",
     icon = "__base__/graphics/icons/fast-underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-e-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3011,17 +2947,16 @@ local explosions =
     type = "explosion",
     name = "fast-splitter-explosion",
     icon = "__base__/graphics/icons/fast-splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-h-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3100,17 +3035,16 @@ local explosions =
     name = "rail-explosion",
     localised_name = {"dying-explosion-name", {"entity-name.straight-rail"}},
     icon = "__base__/graphics/icons/rail.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-a-a",
     height = 0,
     animations =  util.empty_sprite(),--explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
-    smoke_count = 2,
+    smoke_count = 1,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -3121,12 +3055,12 @@ local explosions =
         {
           {
             type = "create-particle",
-            repeat_count = 12,
+            repeat_count = 4,
             particle_name = "rail-long-metal-particle-medium",
             offset_deviation = { { -0.6914, -0.6914 }, { 0.6914, 0.6914 } },
             initial_height = 0.2,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.091,
+            initial_height_deviation = 0.1,
+            initial_vertical_speed = 0.051,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
             speed_from_center_deviation = 0.05,
@@ -3135,12 +3069,26 @@ local explosions =
           },
           {
             type = "create-particle",
-            repeat_count = 50,
+            repeat_count = 1,
+            particle_name = "rail-tie-particle",
+            offset_deviation = { { -0.6914, -0.6914 }, { 0.6914, 0.6914 } },
+            initial_height = 0.2,
+            initial_height_deviation = 0.1,
+            initial_vertical_speed = 0.051,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.04,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 0.5,
+            frame_speed_deviation = 0.463
+          },
+          {
+            type = "create-particle",
+            repeat_count = 100,
             particle_name = "rail-stone-particle-small",
             offset_deviation = { { -0.6914, -0.2969 }, { 0.6914, 0.2969 } },
             initial_height = 0.2,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.075,
+            initial_height_deviation = 0.1,
+            initial_vertical_speed = 0.065,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
             speed_from_center_deviation = 0.05,
@@ -3149,12 +3097,12 @@ local explosions =
           },
           {
             type = "create-particle",
-            repeat_count = 28,
+            repeat_count = 25,
             particle_name = "rail-wooden-splinter-particle-medium",
             offset_deviation = { { -0.6914, -0.2969 }, { 0.6914, 0.2969 } },
             initial_height = 0.2,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.11,
+            initial_height_deviation = 0.1,
+            initial_vertical_speed = 0.06,
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.04,
             speed_from_center_deviation = 0.05,
@@ -3170,17 +3118,16 @@ local explosions =
     type = "explosion",
     name = "train-stop-explosion",
     icon = "__base__/graphics/icons/train-stop.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-b-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -3268,17 +3215,16 @@ local explosions =
     type = "explosion",
     name = "rail-signal-explosion",
     icon = "__base__/graphics/icons/rail-signal.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-c-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3362,17 +3308,16 @@ local explosions =
     type = "explosion",
     name = "rail-chain-signal-explosion",
     icon = "__base__/graphics/icons/rail-chain-signal.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-d-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3432,13 +3377,12 @@ local explosions =
     type = "explosion",
     name = "locomotive-explosion",
     icon = "__base__/graphics/icons/locomotive.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-e-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -3508,13 +3452,12 @@ local explosions =
     type = "explosion",
     name = "cargo-wagon-explosion",
     icon = "__base__/graphics/icons/cargo-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-g-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -3572,16 +3515,15 @@ local explosions =
     type = "explosion",
     name = "arithmetic-combinator-explosion",
     icon = "__base__/graphics/icons/arithmetic-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "circuit-network-explosions",
     order = "g-b-a",
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3649,17 +3591,16 @@ local explosions =
     type = "explosion",
     name = "decider-combinator-explosion",
     icon = "__base__/graphics/icons/decider-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "circuit-network-explosions",
     order = "g-c-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3727,17 +3668,16 @@ local explosions =
     type = "explosion",
     name = "constant-combinator-explosion",
     icon = "__base__/graphics/icons/constant-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "circuit-network-explosions",
     order = "g-d-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3805,17 +3745,16 @@ local explosions =
     type = "explosion",
     name = "power-switch-explosion",
     icon = "__base__/graphics/icons/power-switch.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "circuit-network-explosions",
     order = "g-e-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -3873,17 +3812,16 @@ local explosions =
     type = "explosion",
     name = "solar-panel-explosion",
     icon = "__base__/graphics/icons/solar-panel.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-c-a",
     height = 0,
     animations =  util.empty_sprite(),--explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -3937,17 +3875,16 @@ local explosions =
     type = "explosion",
     name = "programmable-speaker-explosion",
     icon = "__base__/graphics/icons/programmable-speaker.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "circuit-network-explosions",
     order = "g-f-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4015,17 +3952,16 @@ local explosions =
     type = "explosion",
     name = "laser-turret-explosion",
     icon = "__base__/graphics/icons/laser-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-d-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4091,18 +4027,16 @@ local explosions =
     type = "explosion",
     name = "accumulator-explosion",
     icon = "__base__/graphics/icons/accumulator.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
-    order = "a-c-a",
+    order = "a-c-b",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    order = "e-e-e",
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4158,17 +4092,16 @@ local explosions =
     name = "defender-robot-explosion",
     localised_name = {"dying-explosion-name", {"entity-name.defender"}},
     icon = "__base__/graphics/icons/defender.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "capsule-explosions",
     order = "c-a-a",
     height = 1.4,
     animations = explosion_animations.explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.robot_explosion(0.5),
+    sound = sounds.robot_explosion,
     created_effect =
     {
       type = "direct",
@@ -4219,15 +4152,17 @@ local explosions =
       }
     }
   },
-  
+
   {
     type = "explosion",
     name = "laser-bubble",
     localised_name = {"entity-name.laser-bubble"},
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
+    icon = "__base__/graphics/icons/laser-turret.png",
+    order = "a-a-a",
     animations = explosion_animations.laser_bubble(),
-    --light = {intensity = 1, size = 10, color = {r = 1.0, g = 1.0, b = 1.0}},
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1
@@ -4236,12 +4171,16 @@ local explosions =
     type = "explosion",
     name = "big-artillery-explosion",
     localised_name = {"entity-name.big-artillery-explosion"},
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/artillery-shell.png"}
+    },
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
+    order = "a-b-a",
     animations = explosion_animations.bigass_explosion(),
-    --light = default_light(50),
     sound = sounds.large_explosion(0.8),
     created_effect =
     {
@@ -4295,13 +4234,15 @@ local explosions =
     type = "explosion",
     name = "artillery-cannon-muzzle-flash",
     localised_name = {"entity-name.artillery-cannon-muzzle-flash"},
-    flags = {"not-on-map", "hidden"},
+    icon = "__base__/graphics/icons/artillery-shell.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
+    order = "a-b-b",
     animations = explosion_animations.artillery_muzzle_flash(),
     rotate = true,
     height = 0,
     correct_rotation = true,
-    --light = {intensity = 1, size = 10, color = {r=1.0, g=1.0, b=1.0}},
     smoke = "smoke-fast",
     smoke_count = 1,
     smoke_slow_down_factor = 1
@@ -4310,19 +4251,18 @@ local explosions =
   {
     type = "explosion",
     name = "active-provider-chest-explosion",
-    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-active-provider"}},
-    icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    localised_name = {"dying-explosion-name", {"entity-name.active-provider-chest"}},
+    icon = "__base__/graphics/icons/active-provider-chest.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-c-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4363,19 +4303,18 @@ local explosions =
   {
     type = "explosion",
     name = "passive-provider-chest-explosion",
-    icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
-    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-passive-provider"}},
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    icon = "__base__/graphics/icons/passive-provider-chest.png",
+    localised_name = {"dying-explosion-name", {"entity-name.passive-provider-chest"}},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-d-a",
     height = 0,
     animations = util.empty_sprite (),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4416,19 +4355,18 @@ local explosions =
   {
     type = "explosion",
     name = "storage-chest-explosion",
-    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-storage"}},
-    icon = "__base__/graphics/icons/logistic-chest-storage.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    localised_name = {"dying-explosion-name", {"entity-name.storage-chest"}},
+    icon = "__base__/graphics/icons/storage-chest.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-e-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4469,19 +4407,18 @@ local explosions =
   {
     type = "explosion",
     name = "buffer-chest-explosion",
-    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-buffer"}},
-    icon = "__base__/graphics/icons/logistic-chest-buffer.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    localised_name = {"dying-explosion-name", {"entity-name.buffer-chest"}},
+    icon = "__base__/graphics/icons/buffer-chest.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-e-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4522,19 +4459,18 @@ local explosions =
   {
     type = "explosion",
     name = "requester-chest-explosion",
-    localised_name = {"dying-explosion-name", {"entity-name.logistic-chest-requester"}},
-    icon = "__base__/graphics/icons/logistic-chest-requester.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    localised_name = {"dying-explosion-name", {"entity-name.requester-chest"}},
+    icon = "__base__/graphics/icons/requester-chest.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-f-a",
     height = 0,
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4576,17 +4512,16 @@ local explosions =
     type = "explosion",
     name = "express-transport-belt-explosion",
     icon = "__base__/graphics/icons/express-transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-c-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4652,17 +4587,16 @@ local explosions =
     type = "explosion",
     name = "express-underground-belt-explosion",
     icon = "__base__/graphics/icons/express-underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-f-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4716,17 +4650,16 @@ local explosions =
     type = "explosion",
     name = "express-splitter-explosion",
     icon = "__base__/graphics/icons/express-splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "belt-explosions",
     order = "b-i-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4802,19 +4735,18 @@ local explosions =
 
   {
     type = "explosion",
-    name = "stack-inserter-explosion",
-    icon = "__base__/graphics/icons/stack-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    name = "bulk-inserter-explosion",
+    icon = "__base__/graphics/icons/bulk-inserter.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "inserter-explosions",
     order = "c-f-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -4826,7 +4758,7 @@ local explosions =
           {
             type = "create-particle",
             repeat_count = 17,
-            particle_name = "stack-inserter-metal-particle-medium",
+            particle_name = "bulk-inserter-metal-particle-medium",
             offset_deviation = { { -0.5, -0.4922 }, { 0.5, 0.4922 } },
             initial_height = 0.3,
             initial_height_deviation = 0.44,
@@ -4838,71 +4770,7 @@ local explosions =
           {
             type = "create-particle",
             repeat_count = 10,
-            particle_name = "stack-inserter-metal-particle-small",
-            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-            initial_height = 0.2,
-            initial_height_deviation = 0.5,
-            initial_vertical_speed = 0.08,
-            initial_vertical_speed_deviation = 0.05,
-            speed_from_center = 0.05,
-            speed_from_center_deviation = 0.05
-          },
-          {
-            type = "create-particle",
-            repeat_count = 7,
-            particle_name = "cable-and-electronics-particle-small-medium",
-            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-            initial_height = 0.3,
-            initial_height_deviation = 0.4,
-            initial_vertical_speed = 0.06,
-            initial_vertical_speed_deviation = 0.049,
-            speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
-          }
-        }
-      }
-    }
-  },
-
-  {
-    type = "explosion",
-    name = "stack-filter-inserter-explosion",
-    icon = "__base__/graphics/icons/stack-filter-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "inserter-explosions",
-    order = "c-g-a",
-    height = 0,
-    animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
-    created_effect =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-          {
-            type = "create-particle",
-            repeat_count = 17,
-            particle_name = "stack-filter-inserter-metal-particle-medium",
-            offset_deviation = { { -0.5, -0.4922 }, { 0.5, 0.4922 } },
-            initial_height = 0.3,
-            initial_height_deviation = 0.44,
-            initial_vertical_speed = 0.058,
-            initial_vertical_speed_deviation = 0.05,
-            speed_from_center = 0.04,
-            speed_from_center_deviation = 0.05
-          },
-          {
-            type = "create-particle",
-            repeat_count = 10,
-            particle_name = "stack-filter-inserter-metal-particle-small",
+            particle_name = "bulk-inserter-metal-particle-small",
             offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
             initial_height = 0.2,
             initial_height_deviation = 0.5,
@@ -4932,17 +4800,16 @@ local explosions =
     type = "explosion",
     name = "substation-explosion",
     icon = "__base__/graphics/icons/substation.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-d-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -5022,17 +4889,16 @@ local explosions =
     type = "explosion",
     name = "pump-explosion",
     icon = "__base__/graphics/icons/pump.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
     order = "d-h-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -5106,13 +4972,12 @@ local explosions =
     type = "explosion",
     name = "fluid-wagon-explosion",
     icon = "__base__/graphics/icons/fluid-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-f-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -5182,13 +5047,12 @@ local explosions =
     type = "explosion",
     name = "artillery-wagon-explosion",
     icon = "__base__/graphics/icons/artillery-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "train-transport-explosions",
     order = "e-h-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -5270,17 +5134,16 @@ local explosions =
     type = "explosion",
     name = "tank-explosion",
     icon = "__base__/graphics/icons/tank.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "transport-explosions",
     order = "e-j-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.tank_explosion,
     created_effect =
     {
       type = "direct",
@@ -5336,7 +5199,11 @@ local explosions =
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.05,
             speed_from_center_deviation = 0.05
-          }
+          },
+          {
+            type = "play-sound",
+            sound = sounds.tank_debris
+          },
         }
       }
     }
@@ -5346,17 +5213,16 @@ local explosions =
     type = "explosion",
     name = "logistic-robot-explosion",
     icon = "__base__/graphics/icons/logistic-robot.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-a-a",
     height = 1.4,
     animations = explosion_animations.explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -5412,17 +5278,16 @@ local explosions =
     type = "explosion",
     name = "roboport-explosion",
     icon = "__base__/graphics/icons/roboport.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "logistic-network-explosions",
     order = "f-g-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -5488,13 +5353,12 @@ local explosions =
     type = "explosion",
     name = "steam-turbine-explosion",
     icon = "__base__/graphics/icons/steam-turbine.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-g-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -5564,13 +5428,12 @@ local explosions =
     type = "explosion",
     name = "nuclear-reactor-explosion",
     icon = "__base__/graphics/icons/nuclear-reactor.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-d-a",
     height = 0,
     animations = explosion_animations.massive_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -5667,17 +5530,16 @@ local explosions =
     type = "explosion",
     name = "spidertron-explosion",
     icon = "__base__/graphics/icons/spidertron.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "transport-explosions",
     order = "e-k-a",
     height = 0,
     animations = explosion_animations.massive_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.spidertron_explosion,
     created_effect =
     {
       type = "direct",
@@ -5701,7 +5563,6 @@ local explosions =
               left_top = { -0.6875, -0.793 },
               right_bottom = { 0.6875, 0.793 }
             },
-            tile_collision_mask = nil,
             initial_height = 1,
             initial_height_deviation = 0.49,
             initial_vertical_speed = 0.083,
@@ -5727,7 +5588,6 @@ local explosions =
               left_top = { -0.6875, -0.5 },
               right_bottom = { 0.6875, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.4,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.096,
@@ -5753,7 +5613,6 @@ local explosions =
               left_top = { -0.8906, -0.7969 },
               right_bottom = { 0.8906, 0.7969 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.099,
@@ -5779,7 +5638,6 @@ local explosions =
               left_top = { -0.8906, -0.7969 },
               right_bottom = { 0.8906, 0.7969 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.089,
@@ -5805,7 +5663,6 @@ local explosions =
               left_top = { -0.6875, -0.5 },
               right_bottom = { 0.6875, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.4,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.131,
@@ -5831,7 +5688,6 @@ local explosions =
               left_top = { -0.5, -0.5 },
               right_bottom = { 0.5, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.093,
@@ -5857,7 +5713,6 @@ local explosions =
               left_top = { -0.8867, -0.7969 },
               right_bottom = { 0.8867, 0.7969 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.099,
@@ -5867,7 +5722,15 @@ local explosions =
             frame_speed = 1,
             frame_speed_deviation = 0,
             rotate_offsets = false
-          }
+          },
+          {
+            type = "play-sound",
+            sound = sounds.spidertron_debris
+          },
+          {
+            type = "play-sound",
+            sound = sounds.spidertron_die_vox
+          },
         }
       }
     }
@@ -5876,11 +5739,17 @@ local explosions =
   {
     type = "explosion",
     name = "nuke-explosion",
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/atomic-bomb.png"}
+    },
+    order = "a-d-a",
     subgroup = "explosions",
     height = 0,
     animations = explosion_animations.nuke_explosion(),
-    --light = {intensity = 1, size = 50, color = {r=1.0, g=1.0, b=1.0}},
     sound = sounds.large_explosion(1.0),
     --[[
     created_effect =
@@ -5912,17 +5781,16 @@ local explosions =
     type = "explosion",
     name = "heat-exchanger-explosion",
     icon = "__base__/graphics/icons/heat-boiler.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-f-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -5976,17 +5844,16 @@ local explosions =
     type = "explosion",
     name = "heat-pipe-explosion",
     icon = "__base__/graphics/icons/heat-pipe.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "energy-explosions",
     order = "a-e-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -6030,13 +5897,12 @@ local explosions =
     type = "explosion",
     name = "pumpjack-explosion",
     icon = "__base__/graphics/icons/pumpjack.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "extraction-machine-explosions",
     order = "b-d-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6106,13 +5972,12 @@ local explosions =
     type = "explosion",
     name = "assembling-machine-3-explosion",
     icon = "__base__/graphics/icons/assembling-machine-3.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-c-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6194,13 +6059,12 @@ local explosions =
     type = "explosion",
     name = "oil-refinery-explosion",
     icon = "__base__/graphics/icons/oil-refinery.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-d-a",
     height = 0,
     animations = explosion_animations.massive_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6304,13 +6168,12 @@ local explosions =
     type = "explosion",
     name = "chemical-plant-explosion",
     icon = "__base__/graphics/icons/chemical-plant.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-e-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6393,13 +6256,12 @@ local explosions =
     type = "explosion",
     name = "centrifuge-explosion",
     icon = "__base__/graphics/icons/centrifuge.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "production-machine-explosions",
     order = "d-f-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6482,13 +6344,12 @@ local explosions =
     type = "explosion",
     name = "beacon-explosion",
     icon = "__base__/graphics/icons/beacon.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "module-explosions",
     order = "e-a-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6516,7 +6377,6 @@ local explosions =
               left_top = { -0.4961, -0.5938 },
               right_bottom = { 0.4961, 0.5938 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.45,
             initial_height_deviation = 0.46,
             initial_vertical_speed = 0.106,
@@ -6542,7 +6402,6 @@ local explosions =
               left_top = { -0.4961, -0.5 },
               right_bottom = { 0.4961, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.4,
             initial_height_deviation = 0,
             initial_vertical_speed = 0.092,
@@ -6568,7 +6427,6 @@ local explosions =
               left_top = { -0.5938, -0.5938 },
               right_bottom = { 0.5938, 0.5938 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.5,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.063,
@@ -6594,7 +6452,6 @@ local explosions =
               left_top = { -0.5, -0.5 },
               right_bottom = { 0.5, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.2,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.082,
@@ -6620,7 +6477,6 @@ local explosions =
               left_top = { -0.5, -0.5 },
               right_bottom = { 0.5, 0.5 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.087,
@@ -6640,34 +6496,32 @@ local explosions =
     type = "explosion",
     name = "land-mine-explosion",
     icon = "__base__/graphics/icons/land-mine.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "gun-explosions",
     order = "a-a-a",
     height = 0,
     animations = explosion_animations.small_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5)
+    sound = sounds.small_explosion
   },
 
   {
     type = "explosion",
     name = "flamethrower-turret-explosion",
     icon = "__base__/graphics/icons/flamethrower-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-e-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.small_explosion,
     created_effect =
     {
       type = "direct",
@@ -6733,17 +6587,16 @@ local explosions =
     type = "explosion",
     name = "artillery-turret-explosion",
     icon = "__base__/graphics/icons/artillery-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-f-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.medium_explosion(0.4),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",
@@ -6821,13 +6674,12 @@ local explosions =
     type = "explosion",
     name = "rocket-silo-explosion",
     icon = "__base__/graphics/icons/rocket-silo.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "defensive-structure-explosions",
     order = "b-h-a",
     height = 0,
     animations = explosion_animations.massive_explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
@@ -6926,17 +6778,16 @@ local explosions =
     name = "distractor-robot-explosion",
     localised_name = {"dying-explosion-name", {"entity-name.distractor"}},
     icon = "__base__/graphics/icons/distractor.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "capsule-explosions",
     order = "c-b-a",
     height = 1.4,
     animations = explosion_animations.explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.robot_explosion(0.5),
+    sound = sounds.robot_explosion,
     created_effect =
     {
       type = "direct",
@@ -6993,17 +6844,16 @@ local explosions =
     name = "destroyer-robot-explosion",
     localised_name = {"dying-explosion-name", {"entity-name.destroyer"}},
     icon = "__base__/graphics/icons/destroyer.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "capsule-explosions",
     order = "c-c-a",
     height = 1.4,
     animations = explosion_animations.explosion(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.robot_explosion(0.5),
+    sound = sounds.robot_explosion,
     created_effect =
     {
       type = "direct",
@@ -7059,13 +6909,12 @@ local explosions =
     type = "explosion",
     name = "storage-tank-explosion",
     icon = "__base__/graphics/icons/storage-tank.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "storage-explosions",
     order = "a-d-a",
     height = 0,
     animations = explosion_animations.medium_explosion(),
-    --light = default_light(50),
     sound = sounds.large_explosion(0.8),
     created_effect =
     {
@@ -7108,17 +6957,14 @@ local explosions =
     type = "explosion",
     name = "slowdown-capsule-explosion",
     icon = "__base__/graphics/icons/slowdown-capsule.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"not-on-map", "hidden"},
-    subgroup = "storage-explosions",
+    flags = {"not-on-map"},
+    hidden = true,
     height = 0,
-    render_layer = "lower-object-above-shadow",
     animations = util.empty_sprite(),
-    --light = default_light(20),
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.small_explosion(0.5),
+    sound = sounds.slowdown_capsule_explosion,
     subgroup = "gun-explosions",
     order = "a-a-a",
     render_layer = "lower-object-above-shadow",
@@ -7145,7 +6991,6 @@ local explosions =
               left_top = { -0.09766, -0.09766 },
               right_bottom = { 0.09766, 0.09766 }
             },
-            tile_collision_mask = nil,
             initial_height = 1,
             initial_height_deviation = 0,
             initial_vertical_speed = 0.1,
@@ -7174,7 +7019,6 @@ local explosions =
               left_top = { -0.4961, -0.3945 },
               right_bottom = { 0.4961, 0.3945 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.7,
             initial_height_deviation = 0.14,
             initial_vertical_speed = 0.1,
@@ -7203,7 +7047,6 @@ local explosions =
               left_top = { -0.1914, -0.2969 },
               right_bottom = { 0.1914, 0.2969 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.03,
             initial_vertical_speed = 0.012,
@@ -7232,7 +7075,6 @@ local explosions =
               left_top = { -0.09766, -0.2969 },
               right_bottom = { 0.09766, 0.2969 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.3,
             initial_height_deviation = 0.03,
             initial_vertical_speed = 0.021,
@@ -7261,7 +7103,6 @@ local explosions =
               left_top = { -0.5, 0 },
               right_bottom = { 0.5, 0 }
             },
-            tile_collision_mask = nil,
             initial_height = 0.2,
             initial_height_deviation = 0.5,
             initial_vertical_speed = 0.051,
@@ -7279,74 +7120,319 @@ local explosions =
       }
     }
   },
-
-  empty_explosion
   {
+    type = "explosion",
+    name = "small-biter-die",
+    scale = small_biter_scale,
+    icon = "__base__/graphics/icons/small-biter-corpse.png",
+    order = "a[corpse]-a[biter]-a[small]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
+    created_effect = biter_die_effects.small_biter
+  },
+  {
+    type = "explosion",
     name = "medium-biter-die",
+    scale = medium_biter_scale,
+    icon = "__base__/graphics/icons/medium-biter-corpse.png",
+    order = "a[corpse]-a[biter]-b[medium]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.medium_biter
   },
-
-  empty_explosion
   {
+    type = "explosion",
     name = "big-biter-die",
+    scale = big_biter_scale,
+    icon = "__base__/graphics/icons/big-biter-corpse.png",
+    order = "a[corpse]-a[biter]-c[big]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.big_biter
   },
-
-  empty_explosion
   {
+    type = "explosion",
     name = "behemoth-biter-die",
+    scale = behemoth_biter_scale,
+    icon = "__base__/graphics/icons/behemoth-biter-corpse.png",
+    order = "a[corpse]-a[biter]-d[behemoth]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.behemoth_biter
   },
-
-  empty_explosion
   {
+    type = "explosion",
+    name = "small-worm-die",
+    localised_name = {"dying-explosion-name", {"entity-name.small-worm-turret"}},
+    icon = "__base__/graphics/icons/small-worm-corpse.png",
+    order = "a[corpse]-c[worm]-a[small]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
+    created_effect = biter_die_effects.small_worm
+  },
+  {
+    type = "explosion",
     name = "medium-worm-die",
     localised_name = {"dying-explosion-name", {"entity-name.medium-worm-turret"}},
+    icon = "__base__/graphics/icons/medium-worm-corpse.png",
+    order = "a[corpse]-c[worm]-b[medium]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.medium_worm
   },
-
-  empty_explosion
   {
+    type = "explosion",
     name = "big-worm-die",
     localised_name = {"dying-explosion-name", {"entity-name.big-worm-turret"}},
+    icon = "__base__/graphics/icons/big-worm-corpse.png",
+    order = "a[corpse]-c[worm]-c[big]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.big_worm
   },
-
-  empty_explosion
   {
+    type = "explosion",
     name = "behemoth-worm-die",
     localised_name = {"dying-explosion-name", {"entity-name.behemoth-worm-turret"}},
+    icon = "__base__/graphics/icons/behemoth-worm-corpse.png",
+    order = "a[corpse]-c[worm]-d[behemoth]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.behemoth_worm
   },
-
-  empty_explosion
   {
-    name = "spitter-spawner-die",
-    created_effect = biter_die_effects.spawner_spitter
+    type = "explosion",
+    name = "biter-spawner-die",
+    created_effect = biter_die_effects.spawner_biter,
+    icon = "__base__/graphics/icons/biter-spawner-corpse.png",
+    order = "a[corpse]-b[biter-spawner]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
   },
-
-  empty_explosion
   {
+    type = "explosion",
+    name = "spitter-spawner-die",
+    created_effect = biter_die_effects.spawner_spitter,
+    icon = "__base__/graphics/icons/spitter-spawner-corpse.png",
+    order = "a[corpse]-c[spitter-spawner]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
+  },
+  {
+    type = "explosion",
     name = "small-spitter-die",
+    scale = scale_spitter_small,
+    icon = "__base__/graphics/icons/small-spitter-corpse.png",
+    order = "a[corpse]-b[spitter]-a[small]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.small_spitter
   },
-
-  empty_explosion
   {
+    type = "explosion",
     name = "medium-spitter-die",
+    scale = scale_spitter_medium,
+    icon = "__base__/graphics/icons/medium-spitter-corpse.png",
+    order = "a[corpse]-b[spitter]-b[medium]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
     created_effect = biter_die_effects.medium_spitter
   },
-
-  empty_explosion
   {
+    type = "explosion",
     name = "big-spitter-die",
-    created_effect = biter_die_effects.big_biter
+    scale = scale_spitter_big,
+    icon = "__base__/graphics/icons/big-spitter-corpse.png",
+    order = "a[corpse]-b[spitter]-c[big]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
+    created_effect = biter_die_effects.big_spitter
+  },
+  {
+    type = "explosion",
+    name = "behemoth-spitter-die",
+    scale = scale_spitter_behemoth,
+    icon = "__base__/graphics/icons/behemoth-spitter-corpse.png",
+    order = "a[corpse]-b[spitter]-d[behemoth]",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "enemy-death-explosions",
+    animations = util.empty_sprite(),
+    created_effect = biter_die_effects.behemoth_spitter
   },
 
-  empty_explosion
   {
-    name = "behemoth-spitter-die",
-    created_effect = biter_die_effects.behemoth_spitter
+    type = "explosion",
+    name = "selector-combinator-explosion",
+    icon = "__base__/graphics/icons/selector-combinator.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "circuit-network-explosions",
+    order = "g-b-a",
+    animations = explosion_animations.small_explosion(),
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.small_explosion,
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 2,
+            particle_name = "selector-combinator-metal-particle-big",
+            offset_deviation = { { -0.3945, -0.2969 }, { 0.3945, 0.2969 } },
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.043,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.04,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 12,
+            particle_name = "selector-combinator-metal-particle-medium",
+            offset_deviation = { { -0.5, -0.3906 }, { 0.5, 0.3906 } },
+            initial_height = 0.1,
+            initial_height_deviation = 0.44,
+            initial_vertical_speed = 0.039,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            particle_name = "selector-combinator-metal-particle-small",
+            offset_deviation = { { -0.5977, -0.8906 }, { 0.5977, 0.8906 } },
+            initial_height = 0.6,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.084,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 13,
+            particle_name = "cable-and-electronics-particle-small-medium",
+            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
+            initial_height = 0.1,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.04,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.02,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0.361
+          }
+        }
+      }
+    }
+  },
+
+  {
+    type = "delayed-active-trigger",
+    name = "cargo-pod-container-explosion-delay",
+    delay = 16*2 - 1, --frames at 0.5 speed
+    action =
+    {
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          source_effects =
+          {
+            {
+              type = "create-entity",
+              entity_name = "cargo-pod-container-remnants"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "cargo-pod-container-explosion",
+    icon = "__base__/graphics/icons/cargo-pod.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "storage-explosions",
+    order = "b-a-a",
+    height = 0,
+    render_layer = "object",
+    animations =
+    {
+      layers =
+      {
+        util.sprite_load("__base__/graphics/entity/cargo-pod/pod-death-shadow",
+        {
+          priority = "medium",
+          scale = 0.5,
+          animation_speed = 0.5,
+          frame_count = 18,
+          draw_as_shadow = true
+        }),
+        util.sprite_load("__base__/graphics/entity/cargo-pod/pod-death",
+        {
+          priority = "medium",
+          scale = 0.5,
+          animation_speed = 0.5,
+          frame_count = 18
+        })
+      }
+    },
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound =
+    {
+      filename = "__base__/sound/car-metal-impact-6.ogg",
+      volume = 0.6
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "delayed",
+        delayed_trigger = "cargo-pod-container-explosion-delay"
+      }
+    }
   },
 
 }
@@ -7367,23 +7453,28 @@ data:extend(explosions)
 local uranium_cannon_shell_explosion = util.copy(data.raw["explosion"]["big-explosion"])
 uranium_cannon_shell_explosion.name = "uranium-cannon-shell-explosion"
 uranium_cannon_shell_explosion.localised_name = {"entity-name.uranium-cannon-shell-explosion"}
-
+uranium_cannon_shell_explosion.icons =
+{
+  {icon = "__base__/graphics/icons/explosion.png"},
+  {icon = "__base__/graphics/icons/explosive-uranium-cannon-shell.png"}
+}
+uranium_cannon_shell_explosion.order = "a-c-d"
 uranium_cannon_shell_explosion.animations[1].tint = {r = 0.4, g = 1, b = 0.4}
-if uranium_cannon_shell_explosion.animations[1].hr_version then
-  uranium_cannon_shell_explosion.animations[1].hr_version.tint = {r = 0.4, g = 1, b = 0.4}
-end
 
 data:extend({uranium_cannon_shell_explosion})
 
 local uranium_cannon_explosion = util.copy(data.raw["explosion"]["explosion"])
 uranium_cannon_explosion.name = "uranium-cannon-explosion"
 uranium_cannon_explosion.localised_name = "entity-name.uranium-cannon-explosion"
+uranium_cannon_explosion.icons =
+{
+  {icon = "__base__/graphics/icons/explosion.png"},
+  {icon = "__base__/graphics/icons/uranium-cannon-shell.png"}
+}
+uranium_cannon_explosion.order = "a-c-c"
 
 for k, v in pairs(uranium_cannon_explosion.animations) do
   v.tint = {r = 0.4, g = 1, b = 0.4}
-  if v.hr_version then
-    v.hr_version.tint = {r = 0.4, g = 1, b = 0.4}
-  end
 end
 
 data:extend({uranium_cannon_explosion})

@@ -60,7 +60,7 @@ kill_score.generate_entity_prices = function(param)
   local param = param or {}
   local prices = param.prices or default_prices()
   local item_prices = param.item_prices or production_score.generate_price_list()
-  local entities = game.entity_prototypes
+  local entities = prototypes.entity
   for name, entity in pairs (entities) do
     prices[name] = prices[name] or get_entity_price(entity, item_prices)
   end

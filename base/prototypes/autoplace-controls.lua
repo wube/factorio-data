@@ -5,7 +5,7 @@ data:extend(
     name = "iron-ore",
     localised_name = {"", "[entity=iron-ore] ", {"entity-name.iron-ore"}},
     richness = true,
-    order = "b-a",
+    order = "a-a",
     category = "resource"
   },
   {
@@ -13,7 +13,7 @@ data:extend(
     name = "copper-ore",
     localised_name = {"", "[entity=copper-ore] ", {"entity-name.copper-ore"}},
     richness = true,
-    order = "b-b",
+    order = "a-b",
     category = "resource"
   },
   {
@@ -21,7 +21,7 @@ data:extend(
     name = "stone",
     localised_name = {"", "[entity=stone] ", {"entity-name.stone"}},
     richness = true,
-    order = "b-c",
+    order = "a-c",
     category = "resource"
   },
   {
@@ -29,15 +29,7 @@ data:extend(
     name = "coal",
     localised_name = {"", "[entity=coal] ", {"entity-name.coal"}},
     richness = true,
-    order = "b-d",
-    category = "resource"
-  },
-  {
-    type = "autoplace-control",
-    name = "uranium-ore",
-    localised_name = {"", "[entity=uranium-ore] ", {"entity-name.uranium-ore"}},
-    richness = true,
-    order = "b-e",
+    order = "a-d",
     category = "resource"
   },
   {
@@ -45,46 +37,51 @@ data:extend(
     name = "crude-oil",
     localised_name = {"", "[entity=crude-oil] ", {"entity-name.crude-oil"}},
     richness = true,
-    order = "b-f",
+    order = "a-e",
     category = "resource"
   },
-
---[[  {
+  {
     type = "autoplace-control",
-    name = "grass",
+    name = "uranium-ore",
+    localised_name = {"", "[entity=uranium-ore] ", {"entity-name.uranium-ore"}},
+    richness = true,
+    order = "a-f",
+    category = "resource"
+  },
+  {
+    type = "autoplace-control",
+    name = "water",
+    localised_description = {"size.only-starting-area"},
     order = "c-a",
     category = "terrain"
   },
   {
     type = "autoplace-control",
-    name = "dirt",
-    order = "c-b",
-    category = "terrain"
-  },
-  {
-    type = "autoplace-control",
-    name = "sand",
-    order = "c-c",
-    category = "terrain"
-  },
-  {
-    type = "autoplace-control",
-    name = "desert",
-    order = "c-d",
-    category = "terrain"
-  },
-]]--
-  {
-    type = "autoplace-control",
     name = "trees",
-    richness = true,
+    order = "c-x",
+    category = "terrain"
+  },
+  {
+    type = "autoplace-control",
+    name = "rocks",
     order = "c-y",
     category = "terrain"
   },
   {
     type = "autoplace-control",
+    name = "starting_area_moisture",
+    order = "c-z",
+    category = "terrain"
+  },
+  {
+    type = "autoplace-control",
+    name = "nauvis_cliff",
+    order = "c-z",
+    category = "cliff"
+  },
+  {
+    type = "autoplace-control",
     name = "enemy-base",
-    richness = false,
     order = "c-z",
     category = "enemy"
   }

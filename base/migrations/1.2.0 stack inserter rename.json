@@ -1,0 +1,22 @@
+{
+  "item":
+  [
+    [ "stack-inserter", "bulk-inserter" ],
+    [ "bulk-inserter", "stack-inserter" ]
+  ],
+  "entity":
+  [
+    [ "stack-inserter", "bulk-inserter" ],
+    [ "bulk-inserter", "stack-inserter" ]
+  ],
+  "recipe":
+  [
+    [ "stack-inserter", "bulk-inserter" ],
+    [ "bulk-inserter", "stack-inserter" ]
+  ],
+  "technology":
+  [
+    [ "stack-inserter", "bulk-inserter" ],
+    [ "bulk-inserter", "stack-inserter" ]
+  ]
+}

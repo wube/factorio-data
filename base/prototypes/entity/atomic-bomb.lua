@@ -42,7 +42,11 @@ data:extend({
   {
     type = "particle-source",
     name = "nuclear-smouldering-smoke-source",
+    icon = "__base__/graphics/icons/small-scorchmark.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "particles",
+    order = "a-a",
     time_to_live = 60 * 60,
     time_to_live_deviation = 30 * 60,
     time_before_start = 90,
@@ -74,6 +78,7 @@ data:extend({
     type = "projectile",
     name = "atomic-bomb-wave-spawns-nuke-shockwave-explosion",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0,
     speed_modifier = { 1, 0.707 },
     action =
@@ -105,6 +110,7 @@ data:extend({
     type = "projectile",
     name = "atomic-bomb-wave-spawns-nuclear-smoke",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0,
     speed_modifier = { 1.000, 0.707 },
     action =
@@ -123,8 +129,6 @@ data:extend({
               offset_deviation = {{-2, -2}, {2, 2}},
               starting_frame = 10,
               starting_frame_deviation = 20,
-              starting_frame_speed = 0,
-              starting_frame_speed_deviation = 5,
               speed_from_center = 0.035
             }
           }
@@ -139,6 +143,7 @@ data:extend({
     type = "projectile",
     name = "atomic-bomb-wave-spawns-fire-smoke-explosion",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0,
     speed_modifier = { 1, 0.707 },
     action =
@@ -169,7 +174,8 @@ data:extend({
   {
     type = "projectile",
     name = "atomic-bomb-wave-spawns-cluster-nuke-explosion",
-    flags = {"not-on-map", "hidden"},
+    flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.001,
     speed_modifier = { 1.0, 0.707 },
     action =
@@ -201,6 +207,7 @@ data:extend({
     type = "projectile",
     name = "atomic-bomb-wave",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0,
     speed_modifier = { 1.0, 0.707 },
     action =
@@ -233,6 +240,7 @@ data:extend({
     type = "projectile",
     name = "atomic-bomb-ground-zero-projectile",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0,
     speed_modifier = { 1.0, 0.707 },
     action =
@@ -268,6 +276,8 @@ data:extend({
   {
     type = "explosion",
     name = "atomic-fire-smoke",
+    flags = {"not-on-map"},
+    hidden = true,
     fade_out_duration = 40,
     scale_out_duration = 50,
     scale_in_duration = 10,
@@ -298,8 +308,8 @@ data:extend({
     type = "explosion",
     name = "atomic-nuke-shockwave",
     icon = "__base__/graphics/icons/destroyer.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
     height = 1.4,
     rotate = true,
@@ -320,20 +330,16 @@ data:extend({
   {
     type = "explosion",
     name = "cluster-nuke-explosion",
-    icon = "__base__/graphics/item-group/effects.png",
-    icon_size = 64,
-    flags = {"not-on-map", "hidden"},
+    icon = "__base__/graphics/icons/atomic-bomb-light.png",
+    flags = {"not-on-map"},
+    hidden = true,
     subgroup = "explosions",
-    animations = smoke_animations.trivial_nuke_smoke({
+    order = "a-d-b",
+    animations = smoke_animations.trivial_smoke_animation(
+    {
       tint = {r = 0.627, g = 0.478, b = 0.345, a = 0.500},
       scale = 2.5,
-      fade_in_duration = 10,
-      duration = 20,
-      fade_away_duration = 20,
-      spread_duration = 100,
-      start_scale = 2.5,
-      end_scale = 1.5,}),
-    --light = {intensity = 1, size = 20, color = {r=1.0, g=1.0, b=1.0}},
+    }),
     scale_increment_per_tick = 0.002,
     fade_out_duration = 30,
     scale_out_duration = 20,
@@ -341,10 +347,6 @@ data:extend({
     scale_initial = 0.1,
     correct_rotation = true,
     scale_animation_speed = true,
-    --smoke = "smoke-fast",
-    --smoke_count = 2,
-    --smoke_slow_down_factor = 1,
-    -- sound = sounds.small_explosion(0.5)
   },
 
   -----------------------------------------------------------------------
@@ -354,6 +356,7 @@ data:extend({
     type = "projectile",
     name = "atomic-rocket",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     turn_speed = 0.003,
     turning_speed_increases_exponentially_with_projectile_speed = true,
@@ -370,12 +373,12 @@ data:extend({
             tile_name = "nuclear-ground",
             radius = 12,
             apply_projection = true,
-            tile_collision_mask = { "water-tile" }
+            tile_collision_mask = { layers={water_tile=true} }
           },
           {
             type = "destroy-cliffs",
             radius = 9,
-            explosion = "explosion"
+            explosion_at_trigger = "explosion"
           },
           {
             type = "create-entity",
@@ -383,7 +386,6 @@ data:extend({
           },
           {
             type = "camera-effect",
-            effect = "screen-burn",
             duration = 60,
             ease_in_duration = 5,
             ease_out_duration = 60,
@@ -572,7 +574,7 @@ data:extend({
                   {
                     type = "create-entity",
                     entity_name = "nuclear-smouldering-smoke-source",
-                    tile_collision_mask = { "water-tile" }
+                    tile_collision_mask = {layers={water_tile=true}}
                   }
                 }
               }
@@ -582,40 +584,9 @@ data:extend({
       }
     },
     --light = {intensity = 0.8, size = 15},
-    animation =
-    {
-      filename = "__base__/graphics/entity/rocket/rocket.png",
-      draw_as_glow = true,
-      frame_count = 8,
-      line_length = 8,
-      width = 9,
-      height = 35,
-      shift = {0, 0},
-      priority = "high"
-    },
-    shadow =
-    {
-      filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
-      frame_count = 1,
-      width = 7,
-      height = 24,
-      priority = "high",
-      shift = {0, 0}
-    },
-    smoke =
-    {
-      {
-        name = "smoke-fast",
-        deviation = {0.15, 0.15},
-        frequency = 1,
-        position = {0, 1},
-        slow_down_factor = 1,
-        starting_frame = 3,
-        starting_frame_deviation = 5,
-        starting_frame_speed = 0,
-        starting_frame_speed_deviation = 5
-      }
-    }
+    animation = require("__base__.prototypes.entity.rocket-projectile-pictures").animation({0.3, 1, 0.3}),
+    shadow = require("__base__.prototypes.entity.rocket-projectile-pictures").shadow,
+    smoke = require("__base__.prototypes.entity.rocket-projectile-pictures").smoke,
   }
 
 })

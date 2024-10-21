@@ -1,0 +1,83 @@
+{
+  "item":
+  [
+    ["empty-barrel", "barrel"],
+    ["filter-inserter", "fast-inserter"],
+    ["stack-filter-inserter", "bulk-inserter"],
+    ["fusion-reactor-equipment", "fission-reactor-equipment"],
+    ["logistic-chest-passive-provider", "passive-provider-chest"],
+    ["logistic-chest-active-provider", "active-provider-chest"],
+    ["logistic-chest-storage", "storage-chest"],
+    ["logistic-chest-buffer", "buffer-chest"],
+    ["logistic-chest-requester", "requester-chest"],
+    ["effectivity-module", "efficiency-module"],
+    ["effectivity-module-2", "efficiency-module-2"],
+    ["effectivity-module-3", "efficiency-module-3"]
+ ],
+  "equipment":
+  [
+    ["fusion-reactor-equipment", "fission-reactor-equipment"]
+ ],
+  "recipe":
+  [
+    ["empty-barrel", "barrel"],
+    ["empty-barrel-recycling", "barrel-recycling"],
+    ["fill-water-barrel", "water-barrel"],
+    ["fill-crude-oil-barrel", "crude-oil-barrel"],
+    ["fill-petroleum-gas-barrel", "petroleum-gas-barrel"],
+    ["fill-light-oil-barrel", "light-oil-barrel"],
+    ["fill-heavy-oil-barrel", "heavy-oil-barrel"],
+    ["fill-lubricant-barrel", "lubricant-barrel"],
+    ["fill-sulfuric-acid-barrel", "sulfuric-acid-barrel"],
+    ["fill-fluoroketone-hot-barrel", "fluoroketone-hot-barrel"],
+    ["fill-fluoroketone-cold-barrel", "fluoroketone-cold-barrel"],
+    ["logistic-chest-passive-provider", "passive-provider-chest"],
+    ["logistic-chest-active-provider", "active-provider-chest"],
+    ["logistic-chest-storage", "storage-chest"],
+    ["logistic-chest-buffer", "buffer-chest"],
+    ["logistic-chest-requester", "requester-chest"],
+    ["effectivity-module", "efficiency-module"],
+    ["effectivity-module-2", "efficiency-module-2"],
+    ["effectivity-module-3", "efficiency-module-3"]
+ ],
+  "entity":
+  [
+    ["filter-inserter", "fast-inserter"],
+    ["stack-filter-inserter", "bulk-inserter"],
+    ["logistic-chest-passive-provider", "passive-provider-chest"],
+    ["logistic-chest-active-provider", "active-provider-chest"],
+    ["logistic-chest-storage", "storage-chest"],
+    ["logistic-chest-buffer", "buffer-chest"],
+    ["logistic-chest-requester", "requester-chest"],
+    ["straight-rail-remnants", "legacy-straight-rail-remnants"],
+    ["curved-rail-remnants", "legacy-curved-rail-remnants"],
+    ["rock-huge", "huge-rock"],
+    ["rock-big", "big-rock"],
+    ["rock-medium", "medium-rock"],
+    ["sand-rock-big", "big-sand-rock"]
+ ],
+  "technology":
+  [
+    ["energy-weapons-damage-1", "laser-weapons-damage-1"],
+    ["energy-weapons-damage-2", "laser-weapons-damage-2"],
+    ["energy-weapons-damage-3", "laser-weapons-damage-3"],
+    ["energy-weapons-damage-4", "laser-weapons-damage-4"],
+    ["energy-weapons-damage-5", "laser-weapons-damage-5"],
+    ["energy-weapons-damage-6", "laser-weapons-damage-6"],
+    ["energy-weapons-damage-7", "laser-weapons-damage-7"],
+    ["advanced-electronics", "advanced-circuit"],
+    ["advanced-electronics-2", "processing-unit"],
+    ["optics", "lamp"],
+    ["effectivity-module", "efficiency-module"],
+    ["effectivity-module-2", "efficiency-module-2"],
+    ["effectivity-module-3", "efficiency-module-3"]
+ ],
+  "optimized-decorative":
+  [
+    ["puberty-decal", "cracked-mud-decal"],
+    ["sand-rock-medium", "medium-sand-rock"],
+    ["sand-rock-small", "small-sand-rock"],
+    ["rock-tiny", "tiny-rock"],
+    ["rock-small", "small-rock"]
+ ]
+}

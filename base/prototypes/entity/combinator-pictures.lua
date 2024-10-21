@@ -3,38 +3,19 @@ function generate_arithmetic_combinator(combinator)
     make_4way_animation_from_spritesheet({ layers =
       {
         {
+          scale = 0.5,
           filename = "__base__/graphics/entity/combinator/arithmetic-combinator.png",
-          width = 74,
-          height = 64,
-          frame_count = 1,
-          shift = util.by_pixel(1, 8),
-          hr_version =
-          {
-            scale = 0.5,
-            filename = "__base__/graphics/entity/combinator/hr-arithmetic-combinator.png",
-            width = 144,
-            height = 124,
-            frame_count = 1,
-            shift = util.by_pixel(0.5, 7.5)
-          }
+          width = 144,
+          height = 124,
+          shift = util.by_pixel(0.5, 7.5)
         },
         {
+          scale = 0.5,
           filename = "__base__/graphics/entity/combinator/arithmetic-combinator-shadow.png",
-          width = 76,
-          height = 78,
-          frame_count = 1,
-          shift = util.by_pixel(14, 24),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            scale = 0.5,
-            filename = "__base__/graphics/entity/combinator/hr-arithmetic-combinator-shadow.png",
-            width = 148,
-            height = 156,
-            frame_count = 1,
-            shift = util.by_pixel(13.5, 24.5),
-            draw_as_shadow = true
-          }
+          width = 148,
+          height = 156,
+          shift = util.by_pixel(13.5, 24.5),
+          draw_as_shadow = true
         }
       }
     })
@@ -42,892 +23,464 @@ function generate_arithmetic_combinator(combinator)
   {
     north = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-N.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(8, -12),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-arithmetic-combinator-LED-N.png",
-        width = 16,
-        height = 14,
-        frame_count = 1,
-        shift = util.by_pixel(8.5, -12.5)
-      }
+      width = 16,
+      height = 14,
+      shift = util.by_pixel(8.5, -12.5)
     },
     east = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-E.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(17, -1),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-arithmetic-combinator-LED-E.png",
-        width = 14,
-        height = 14,
-        frame_count = 1,
-        shift = util.by_pixel(16.5, -1)
-      }
+      width = 14,
+      height = 14,
+      shift = util.by_pixel(16.5, -1)
     },
     south = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-S.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(-8, 7),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-arithmetic-combinator-LED-S.png",
-        width = 16,
-        height = 16,
-        frame_count = 1,
-        shift = util.by_pixel(-8, 7.5)
-      }
+      width = 16,
+      height = 16,
+      shift = util.by_pixel(-8, 7.5)
     },
     west = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/arithmetic-combinator-LED-W.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(-16, -12),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-arithmetic-combinator-LED-W.png",
-        width = 14,
-        height = 14,
-        frame_count = 1,
-        shift = util.by_pixel(-16, -12.5)
-      }
+      width = 14,
+      height = 14,
+      shift = util.by_pixel(-16, -12.5)
     }
   }
   combinator.plus_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 30,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 30,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 30,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 30,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.minus_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 60,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 60,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 60,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 60,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.multiply_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 90,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 90,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 90,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 90,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.divide_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 120,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 120,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 120,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 120,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.modulo_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 150,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 150,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 150,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 150,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.power_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 180,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 180,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 180,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 180,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.left_shift_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 210,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 210,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 210,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 210,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.right_shift_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 240,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 240,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 240,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 240,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.and_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 270,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 270,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 270,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 270,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.or_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 300,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 300,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        x = 300,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        x = 300,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.xor_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
-        y = 11,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -10.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 22,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -10.5)
-        }
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
       }
   }
   combinator.input_connection_points =
@@ -1040,38 +593,19 @@ function generate_decider_combinator(combinator)
     make_4way_animation_from_spritesheet({ layers =
       {
         {
+          scale = 0.5,
           filename = "__base__/graphics/entity/combinator/decider-combinator.png",
-          width = 78,
-          height = 66,
-          frame_count = 1,
-          shift = util.by_pixel(0, 7),
-          hr_version =
-          {
-            scale = 0.5,
-            filename = "__base__/graphics/entity/combinator/hr-decider-combinator.png",
-            width = 156,
-            height = 132,
-            frame_count = 1,
-            shift = util.by_pixel(0.5, 7.5)
-          }
+          width = 156,
+          height = 132,
+          shift = util.by_pixel(0.5, 7.5)
         },
         {
+          scale = 0.5,
           filename = "__base__/graphics/entity/combinator/decider-combinator-shadow.png",
-          width = 78,
-          height = 80,
-          frame_count = 1,
+          width = 156,
+          height = 158,
           shift = util.by_pixel(12, 24),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            scale = 0.5,
-            filename = "__base__/graphics/entity/combinator/hr-decider-combinator-shadow.png",
-            width = 156,
-            height = 158,
-            frame_count = 1,
-            shift = util.by_pixel(12, 24),
-            draw_as_shadow = true
-          }
+          draw_as_shadow = true
         }
       }
     })
@@ -1079,537 +613,293 @@ function generate_decider_combinator(combinator)
   {
     north = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-N.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(8, -13),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-decider-combinator-LED-N.png",
-        width = 16,
-        height = 14,
-        frame_count = 1,
-        shift = util.by_pixel(8.5, -13)
-      }
+      width = 16,
+      height = 14,
+      shift = util.by_pixel(8.5, -13)
     },
     east = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-E.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(16, -4),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-decider-combinator-LED-E.png",
-        width = 16,
-        height = 16,
-        frame_count = 1,
-        shift = util.by_pixel(16, -4)
-      }
+      width = 16,
+      height = 16,
+      shift = util.by_pixel(16, -4)
     },
     south = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-S.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(-8, 5),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-decider-combinator-LED-S.png",
-        width = 16,
-        height = 14,
-        frame_count = 1,
-        shift = util.by_pixel(-8, 4.5)
-      }
+      width = 16,
+      height = 14,
+      shift = util.by_pixel(-8, 4.5)
     },
     west = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/decider-combinator-LED-W.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(-15, -19),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-decider-combinator-LED-W.png",
-        width = 16,
-        height = 16,
-        frame_count = 1,
-        shift = util.by_pixel(-15, -18.5)
-      }
+      width = 16,
+      height = 16,
+      shift = util.by_pixel(-15, -18.5)
     }
   }
   combinator.greater_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       }
   }
   combinator.less_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
+        x = 60,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
+        x = 60,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
+        x = 60,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 15,
+        x = 60,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 30,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       }
   }
   combinator.equal_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
+        x = 90,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
+        x = 90,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
+        x = 90,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 30,
+        x = 90,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 60,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       }
   }
   combinator.not_equal_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
+        x = 120,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
+        x = 120,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
+        x = 120,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 45,
+        x = 120,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 90,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       }
   }
   combinator.less_or_equal_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
+        x = 150,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
+        x = 150,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
+        x = 150,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 60,
+        x = 150,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 120,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       }
   }
   combinator.greater_or_equal_symbol_sprites =
   {
     north = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
+        x = 180,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     east = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
+        x = 180,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       },
     south = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
+        x = 180,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -4.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -4.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
       },
     west = util.draw_as_glow
       {
+        scale = 0.5,
         filename = "__base__/graphics/entity/combinator/combinator-displays.png",
-        x = 75,
+        x = 180,
         y = 22,
-        width = 15,
-        height = 11,
-        shift = util.by_pixel(0, -13.5),
-        hr_version =
-        {
-          scale = 0.5,
-          filename = "__base__/graphics/entity/combinator/hr-combinator-displays.png",
-          x = 150,
-          y = 44,
-          width = 30,
-          height = 22,
-          shift = util.by_pixel(0, -13.5)
-        }
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -13.5)
       }
   }
   combinator.input_connection_points =
@@ -1722,38 +1012,19 @@ function generate_constant_combinator(combinator)
     make_4way_animation_from_spritesheet({ layers =
       {
         {
+          scale = 0.5,
           filename = "__base__/graphics/entity/combinator/constant-combinator.png",
-          width = 58,
-          height = 52,
-          frame_count = 1,
-          shift = util.by_pixel(0, 5),
-          hr_version =
-          {
-            scale = 0.5,
-            filename = "__base__/graphics/entity/combinator/hr-constant-combinator.png",
-            width = 114,
-            height = 102,
-            frame_count = 1,
-            shift = util.by_pixel(0, 5)
-          }
+          width = 114,
+          height = 102,
+          shift = util.by_pixel(0, 5)
         },
         {
+          scale = 0.5,
           filename = "__base__/graphics/entity/combinator/constant-combinator-shadow.png",
-          width = 50,
-          height = 34,
-          frame_count = 1,
-          shift = util.by_pixel(9, 6),
-          draw_as_shadow = true,
-          hr_version =
-          {
-            scale = 0.5,
-            filename = "__base__/graphics/entity/combinator/hr-constant-combinator-shadow.png",
-            width = 98,
-            height = 66,
-            frame_count = 1,
-            shift = util.by_pixel(8.5, 5.5),
-            draw_as_shadow = true
-          }
+          width = 98,
+          height = 66,
+          shift = util.by_pixel(8.5, 5.5),
+          draw_as_shadow = true
         }
       }
     })
@@ -1761,71 +1032,35 @@ function generate_constant_combinator(combinator)
   {
     north = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-      width = 8,
-      height = 6,
-      frame_count = 1,
-      shift = util.by_pixel(9, -12),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-constant-combinator-LED-N.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = util.by_pixel(9, -11.5)
-      }
+      width = 14,
+      height = 12,
+      shift = util.by_pixel(9, -11.5)
     },
     east = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(8, 0),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-constant-combinator-LED-E.png",
-        width = 14,
-        height = 14,
-        frame_count = 1,
-        shift = util.by_pixel(7.5, -0.5)
-      }
+      width = 14,
+      height = 14,
+      shift = util.by_pixel(7.5, -0.5)
     },
     south = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(-9, 2),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-constant-combinator-LED-S.png",
-        width = 14,
-        height = 16,
-        frame_count = 1,
-        shift = util.by_pixel(-9, 2.5)
-      }
+      width = 14,
+      height = 16,
+      shift = util.by_pixel(-9, 2.5)
     },
     west = util.draw_as_glow
     {
+      scale = 0.5,
       filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-      width = 8,
-      height = 8,
-      frame_count = 1,
-      shift = util.by_pixel(-7, -15),
-      hr_version =
-      {
-        scale = 0.5,
-        filename = "__base__/graphics/entity/combinator/activity-leds/hr-constant-combinator-LED-W.png",
-        width = 14,
-        height = 16,
-        frame_count = 1,
-        shift = util.by_pixel(-7, -15)
-      }
+      width = 14,
+      height = 16,
+      shift = util.by_pixel(-7, -15)
     }
   }
   combinator.circuit_wire_connection_points =
@@ -1879,5 +1114,488 @@ function generate_constant_combinator(combinator)
       }
     }
   }
+  return combinator
+end
+
+function generate_selector_combinator(combinator)
+  combinator.sprites =
+    make_4way_animation_from_spritesheet({ layers =
+      {
+        {
+          scale = 0.5,
+          filename = "__base__/graphics/entity/combinator/selector-combinator.png",
+          width = 154,
+          height = 160,
+          shift = util.by_pixel( 1.0, -1.0)
+        },
+        {
+          scale = 0.5,
+          filename = "__base__/graphics/entity/combinator/selector-combinator-shadow.png",
+          width = 134,
+          height = 94,
+          shift = util.by_pixel( 8.0, 7.0),
+          draw_as_shadow = true
+        }
+      }
+    })
+  combinator.frozen_patch =
+  {
+    sheet = {
+      scale = 0.5,
+      filename = "__base__/graphics/entity/combinator/selector-combinator-frozen.png",
+      width = 154,
+      height = 160,
+      shift = util.by_pixel( 1.0, -1.0)
+    }
+  }
+  combinator.activity_led_sprites =
+  {
+    north = util.draw_as_glow
+    {
+      scale = 0.5,
+      filename = "__base__/graphics/entity/combinator/activity-leds/selector-combinator-LED-N.png",
+      width = 16,
+      height = 14,
+      shift = util.by_pixel(7.5, -14.0)
+    },
+    east = util.draw_as_glow
+    {
+      scale = 0.5,
+      filename = "__base__/graphics/entity/combinator/activity-leds/selector-combinator-LED-E.png",
+      width = 16,
+      height = 16,
+      shift = util.by_pixel(15.0, -3.0)
+    },
+    south = util.draw_as_glow
+    {
+      scale = 0.5,
+      filename = "__base__/graphics/entity/combinator/activity-leds/selector-combinator-LED-S.png",
+      width = 16,
+      height = 16,
+      shift = util.by_pixel(-6.0, 7.5)
+    },
+    west = util.draw_as_glow
+    {
+      scale = 0.5,
+      filename = "__base__/graphics/entity/combinator/activity-leds/selector-combinator-LED-W.png",
+      width = 14,
+      height = 14,
+      shift = util.by_pixel(-14.0, -13.5)
+    }
+  }
+  combinator.max_symbol_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 210,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 210,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 210,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 210,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+  combinator.min_symbol_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 240,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 240,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 240,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 240,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+  combinator.count_symbol_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 270,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 270,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 270,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 270,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+  combinator.random_symbol_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 300,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 300,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 300,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 300,
+        y = 22,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+  -- TODO: symbol for quality transfer
+  combinator.quality_symbol_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 0,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+  combinator.stack_size_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 30,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+  combinator.rocket_capacity_sprites =
+  {
+    north = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    east = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      },
+    south = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -4.5)
+      },
+    west = util.draw_as_glow
+      {
+        scale = 0.5,
+        filename = "__base__/graphics/entity/combinator/combinator-displays.png",
+        x = 60,
+        y = 44,
+        width = 30,
+        height = 22,
+        shift = util.by_pixel(0, -10.5)
+      }
+  }
+
+  combinator.input_connection_points =
+  {
+    -- North
+    {
+      shadow =
+      {
+        red = util.by_pixel(2, 25),
+        green = util.by_pixel(21, 25)
+      },
+      wire =
+      {
+        red = util.by_pixel(-9, 16),
+        green = util.by_pixel(9, 16)
+      }
+    },
+    -- East
+    {
+      shadow =
+      {
+        red = util.by_pixel(38, -2),
+        green = util.by_pixel(-12, 12)
+      },
+      wire =
+      {
+        red = util.by_pixel(-24, -11),
+        green = util.by_pixel(-23, 3)
+      }
+    },
+    -- South
+    {
+      shadow =
+      {
+        red = util.by_pixel(20, -13),
+        green = util.by_pixel(1, -13)
+      },
+      wire =
+      {
+        red = util.by_pixel(9, -22),
+        green = util.by_pixel(-9, -22)
+      }
+    },
+    -- West
+    {
+      shadow =
+      {
+        red = util.by_pixel(35, 13),
+        green = util.by_pixel(35, -2)
+      },
+      wire =
+      {
+        red = util.by_pixel(23, 4),
+        green = util.by_pixel(23, -11)
+      }
+    },
+  }
+  combinator.output_connection_points =
+  {
+    -- North
+    {
+      shadow =
+      {
+        red = util.by_pixel(5, -11),
+        green = util.by_pixel(20, -11)
+      },
+      wire =
+      {
+        red = util.by_pixel(-7, -22),
+        green = util.by_pixel(7, -21)
+      }
+    },
+    -- East
+    {
+      shadow =
+      {
+        red = util.by_pixel(-12, -2),
+        green = util.by_pixel(37, 12)
+      },
+      wire =
+      {
+        red = util.by_pixel(24, -12),
+        green = util.by_pixel(24, 1)
+      }
+    },
+    -- South
+    {
+      shadow =
+      {
+        red = util.by_pixel(20, 28),
+        green = util.by_pixel(5, 28)
+      },
+      wire =
+      {
+        red = util.by_pixel(7, 19),
+        green = util.by_pixel(-7, 19)
+      }
+    },
+    -- West
+    {
+      shadow =
+      {
+        red = util.by_pixel(-10, 12),
+        green = util.by_pixel(-10, -1)
+      },
+      wire =
+      {
+        red = util.by_pixel(-24, 1),
+        green = util.by_pixel(-24, -12)
+      }
+    },
+  }
+
   return combinator
 end

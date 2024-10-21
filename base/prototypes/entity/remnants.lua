@@ -1,13 +1,5 @@
 require ("util")
 
-destroyed_rail_pictures = function()
-  return rail_pictures_internal({{"metals", "metals-remnants", mipmap = true, variations = 3, priority = "high"},
-                                 {"backplates", "backplates-remnants", mipmap = true, variations = 3, priority = "high"},
-                                 {"ties", "ties-remnants", variations = 3, priority = "high"},
-                                 {"stone_path", "stone-path-remnants", variations = 3, priority = "high"},
-                                 {"stone_path_background", "stone-path-background-remnants", variations = 3, priority = "high"}})
-end
-
 function make_rotated_animation_variations_from_sheet(variation_count, sheet) --makes remnants work with more than 1 variation
   local result = {}
 
@@ -31,15 +23,9 @@ function make_rotated_animation_variations_from_sheet(variation_count, sheet) --
     if variation.layers then
       for _, layer in pairs(variation.layers) do
         set_y_offset(layer, i)
-        if (layer.hr_version) then
-          set_y_offset(layer.hr_version, i)
-        end
       end
     else
       set_y_offset(variation, i)
-      if (variation.hr_version) then
-        set_y_offset(variation.hr_version, i)
-      end
     end
 
     table.insert(result, variation)
@@ -54,7 +40,7 @@ local remnants =
     name = "big-remnants",
     localised_name = {"entity-name.big-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "generic-remnants",
     order = "a-c-a",
@@ -64,6 +50,7 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
@@ -71,14 +58,12 @@ local remnants =
       {
         width = 109,
         height = 102,
-        frame_count = 1,
         direction_count = 1,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
       },
       {
         width = 109,
         height = 102,
-        frame_count = 1,
         direction_count = 1,
         x = 109,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
@@ -86,7 +71,6 @@ local remnants =
       {
         width = 109,
         height = 102,
-        frame_count = 1,
         direction_count = 1,
         x = 218,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
@@ -94,7 +78,6 @@ local remnants =
       {
         width = 109,
         height = 102,
-        frame_count = 1,
         direction_count = 1,
         x = 327,
         filename = "__base__/graphics/entity/remnants/big-remnants.png"
@@ -107,7 +90,7 @@ local remnants =
     name = "medium-remnants",
     localised_name = {"entity-name.medium-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "generic-remnants",
     order = "a-d-a",
@@ -116,28 +99,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(4,
     {
       filename = "__base__/graphics/entity/remnants/medium-remnants.png",
       line_length = 1,
-      width = 118,
-      height = 124,
-      frame_count = 1,
+      width = 236,
+      height = 246,
       direction_count = 1,
-      shift = util.by_pixel(0, -4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/remnants/hr-medium-remnants.png",
-        line_length = 1,
-        width = 236,
-        height = 246,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(0, -4.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, -4.5),
+      scale = 0.5
     })
   },
 
@@ -146,7 +119,7 @@ local remnants =
     name = "medium-small-remnants",
     localised_name = {"entity-name.medium-small-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "generic-remnants",
     order = "a-e-a",
@@ -155,28 +128,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(2,
     {
       filename = "__base__/graphics/entity/remnants/medium-small-remnants.png",
       line_length = 1,
-      width = 84,
-      height = 90,
-      frame_count = 1,
+      width = 166,
+      height = 176,
       direction_count = 1,
-      shift = util.by_pixel(3, 4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/remnants/hr-medium-small-remnants.png",
-        line_length = 1,
-        width = 166,
-        height = 176,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(3, 3.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3, 3.5),
+      scale = 0.5
     })
   },
 
@@ -185,7 +148,7 @@ local remnants =
     name = "small-remnants",
     localised_name = {"entity-name.small-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "generic-remnants",
     order = "a-a-a",
@@ -194,28 +157,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(2,
     {
       filename = "__base__/graphics/entity/remnants/small-remnants.png",
       line_length = 1,
-      width = 56,
-      height = 56,
-      frame_count = 1,
+      width = 112,
+      height = 110,
       direction_count = 1,
-      shift = util.by_pixel(0, 4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/remnants/hr-small-remnants.png",
-        line_length = 1,
-        width = 112,
-        height = 110,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(0, 3.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, 3.5),
+      scale = 0.5
     })
   },
 
@@ -224,7 +177,7 @@ local remnants =
     name = "1x2-remnants",
     localised_name = {"entity-name.1x2-remnants"},
     icon = "__base__/graphics/icons/remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "generic-remnants",
     order = "a-b-a",
@@ -233,28 +186,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/remnants/1x2-remnants.png",
       line_length = 1,
-      width = 86,
-      height = 72,
-      frame_count = 1,
+      width = 172,
+      height = 142,
       direction_count = 4,
       shift = util.by_pixel(3, 5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/remnants/hr-1x2-remnants.png",
-        line_length = 1,
-        width = 172,
-        height = 142,
-        frame_count = 1,
-        direction_count = 4,
-        shift = util.by_pixel(3, 5),
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
 
@@ -262,7 +205,7 @@ local remnants =
     type = "corpse",
     name = "wooden-chest-remnants",
     icon = "__base__/graphics/icons/wooden-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "storage-remnants",
     order = "a-a-a",
@@ -271,28 +214,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/wooden-chest/remnants/wooden-chest-remnants.png",
       line_length = 1,
-      width = 56,
-      height = 38,
-      frame_count = 1,
+      width = 110,
+      height = 74,
       direction_count = 1,
-      shift = util.by_pixel(8, -1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/wooden-chest/remnants/hr-wooden-chest-remnants.png",
-        line_length = 1,
-        width = 110,
-        height = 74,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(7.5, -1),
-        scale = 0.5
-      }
+      shift = util.by_pixel(7.5, -1),
+      scale = 0.5
     }
   },
 
@@ -300,7 +233,7 @@ local remnants =
     type = "corpse",
     name = "iron-chest-remnants",
     icon = "__base__/graphics/icons/iron-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
     subgroup = "storage-remnants",
     order = "a-b-a",
@@ -309,28 +242,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/iron-chest/remnants/iron-chest-remnants.png",
       line_length = 1,
-      width = 64,
-      height = 40,
-      frame_count = 1,
+      width = 126,
+      height = 78,
       direction_count = 1,
       shift = util.by_pixel(12, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/iron-chest/remnants/hr-iron-chest-remnants.png",
-        line_length = 1,
-        width = 126,
-        height = 78,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(12, 0),
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
 
@@ -338,7 +261,7 @@ local remnants =
     type = "corpse",
     name = "assembling-machine-1-remnants",
     icon = "__base__/graphics/icons/assembling-machine-1.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "production-machine-remnants",
     order = "a-a-a",
@@ -347,31 +270,17 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet (3,
     {
       filename = "__base__/graphics/entity/assembling-machine-1/remnants/assembling-machine-1-remnants.png",
       line_length = 1,
-      width = 164,
-      height = 142,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 328,
+      height = 282,
       direction_count = 1,
-      shift = util.by_pixel(0, 10),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/assembling-machine-1/remnants/hr-assembling-machine-1-remnants.png",
-        line_length = 1,
-        width = 328,
-        height = 282,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(0, 9.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, 9.5),
+      scale = 0.5
     })
   },
 
@@ -379,7 +288,7 @@ local remnants =
     type = "corpse",
     name = "assembling-machine-2-remnants",
     icon = "__base__/graphics/icons/assembling-machine-2.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "production-machine-remnants",
     order = "a-a-a",
@@ -388,31 +297,17 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet (3,
     {
       filename = "__base__/graphics/entity/assembling-machine-2/remnants/assembling-machine-2-remnants.png",
       line_length = 1,
-      width = 164,
-      height = 142,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 328,
+      height = 282,
       direction_count = 1,
-      shift = util.by_pixel(0, 10),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/assembling-machine-2/remnants/hr-assembling-machine-2-remnants.png",
-        line_length = 1,
-        width = 328,
-        height = 282,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(0, 9.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, 9.5),
+      scale = 0.5
     })
   },
 
@@ -420,7 +315,7 @@ local remnants =
     type = "corpse",
     name = "burner-inserter-remnants",
     icon = "__base__/graphics/icons/burner-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "inserter-remnants",
     order = "a-a-a",
@@ -429,31 +324,17 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/burner-inserter/remnants/burner-inserter-remnants.png",
       line_length = 1,
-      width = 68,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 134,
+      height = 94,
       direction_count = 1,
-      shift = util.by_pixel(4, -2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/burner-inserter/remnants/hr-burner-inserter-remnants.png",
-        line_length = 1,
-        width = 134,
-        height = 94,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3.5, -2),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, -2),
+      scale = 0.5
     })
   },
 
@@ -461,7 +342,7 @@ local remnants =
     type = "corpse",
     name = "inserter-remnants",
     icon = "__base__/graphics/icons/inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "inserter-remnants",
     order = "a-b-a",
@@ -470,31 +351,17 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/inserter/remnants/inserter-remnants.png",
       line_length = 1,
-      width = 68,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 134,
+      height = 94,
       direction_count = 1,
-      shift = util.by_pixel(4, -2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/inserter/remnants/hr-inserter-remnants.png",
-        line_length = 1,
-        width = 134,
-        height = 94,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3.5, -2),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, -2),
+      scale = 0.5
     })
   },
 
@@ -502,7 +369,7 @@ local remnants =
     type = "corpse",
     name = "long-handed-inserter-remnants",
     icon = "__base__/graphics/icons/long-handed-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "inserter-remnants",
     order = "a-c-a",
@@ -511,31 +378,17 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/long-handed-inserter/remnants/long-handed-inserter-remnants.png",
       line_length = 1,
-      width = 68,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 134,
+      height = 94,
       direction_count = 1,
-      shift = util.by_pixel(4, -2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/long-handed-inserter/remnants/hr-long-handed-inserter-remnants.png",
-        line_length = 1,
-        width = 134,
-        height = 94,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3.5, -2),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, -2),
+      scale = 0.5
     })
   },
 
@@ -543,7 +396,7 @@ local remnants =
     type = "corpse",
     name = "fast-inserter-remnants",
     icon = "__base__/graphics/icons/fast-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "inserter-remnants",
     order = "a-d-a",
@@ -552,74 +405,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/fast-inserter/remnants/fast-inserter-remnants.png",
       line_length = 1,
-      width = 68,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 134,
+      height = 94,
       direction_count = 1,
-      shift = util.by_pixel(4, -2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/fast-inserter/remnants/hr-fast-inserter-remnants.png",
-        line_length = 1,
-        width = 134,
-        height = 94,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3.5, -2),
-        scale = 0.5
-      }
-    })
-  },
-
-  {
-    type = "corpse",
-    name = "filter-inserter-remnants",
-    icon = "__base__/graphics/icons/filter-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral", "not-on-map"},
-    subgroup = "inserter-remnants",
-    order = "a-e-a",
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    tile_width = 1,
-    tile_height = 1,
-    selectable_in_game = false,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (4,
-    {
-      filename = "__base__/graphics/entity/filter-inserter/remnants/filter-inserter-remnants.png",
-      line_length = 1,
-      width = 68,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(4, -2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/filter-inserter/remnants/hr-filter-inserter-remnants.png",
-        line_length = 1,
-        width = 134,
-        height = 94,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3.5, -2),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, -2),
+      scale = 0.5
     })
   },
 
@@ -627,7 +424,7 @@ local remnants =
     type = "corpse",
     name = "transport-belt-remnants",
     icon = "__base__/graphics/icons/transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "belt-remnants",
     order = "a-a-a",
@@ -636,31 +433,17 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation =  make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/transport-belt/remnants/transport-belt-remnants.png",
       line_length = 1,
-      width = 54,
-      height = 52,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 106,
+      height = 102,
       direction_count = 4,
-      shift = util.by_pixel(1, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/transport-belt/remnants/hr-transport-belt-remnants.png",
-        line_length = 1,
-        width = 106,
-        height = 102,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(1, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(1, -0.5),
+      scale = 0.5
     })
   },
 
@@ -668,7 +451,7 @@ local remnants =
     type = "corpse",
     name = "splitter-remnants",
     icon = "__base__/graphics/icons/splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "belt-remnants",
     order = "a-g-a",
@@ -677,32 +460,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/splitter/remnants/splitter-remnants.png",
       line_length = 1,
-      width = 96,
-      height = 96,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 190,
+      height = 190,
       direction_count = 4,
-      shift = util.by_pixel(4, 1.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/splitter/remnants/hr-splitter-remnants.png",
-        line_length = 1,
-        width = 190,
-        height = 190,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(3.5, 1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, 1.5),
+      scale = 0.5
     }
   },
 
@@ -710,7 +479,7 @@ local remnants =
     type = "corpse",
     name = "underground-belt-remnants",
     icon = "__base__/graphics/icons/underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map", "building-direction-8-way"},
     subgroup = "belt-remnants",
     order="a-d-a",
@@ -719,32 +488,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/underground-belt/remnants/underground-belt-remnants.png",
       line_length = 1,
-      width = 78,
-      height =72,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 156,
+      height = 144,
       direction_count = 8,
-      shift = util.by_pixel(10, 3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/underground-belt/remnants/hr-underground-belt-remnants.png",
-        line_length = 1,
-        width = 156,
-        height = 144,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 8,
-        shift = util.by_pixel(10.5, 3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10.5, 3),
+      scale = 0.5
     }
   },
 
@@ -753,7 +508,7 @@ local remnants =
     name = "wall-remnants",
     localised_name = {"remnant-name", {"entity-name.stone-wall"}},
     icon = "__base__/graphics/icons/wall.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "defensive-structure-remnants",
     order = "a-a-a",
@@ -763,28 +518,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(4,
     {
       filename = "__base__/graphics/entity/wall/remnants/wall-remnants.png",
-      width = 60,
-      height = 58,
+      width = 118,
+      height = 114,
       line_length = 1,
-      frame_count = 1,
       direction_count = 2,
-      shift = util.by_pixel(3, 7.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/wall/remnants/hr-wall-remnants.png",
-        width = 118,
-        height = 114,
-        line_length = 1,
-        frame_count = 1,
-        direction_count = 2,
-        shift = util.by_pixel(3, 7.5), --was 3.5
-        scale = 0.5
-      }
+      shift = util.by_pixel(3, 7.5), --was 3.5
+      scale = 0.5
     })
   },
 
@@ -792,7 +537,7 @@ local remnants =
     type = "corpse",
     name = "gate-remnants",
     icon = "__base__/graphics/icons/gate.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "defensive-structure-remnants",
     order = "a-b-a",
@@ -802,6 +547,7 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
@@ -809,74 +555,29 @@ local remnants =
       {
         filename = "__base__/graphics/entity/gate/remnants/gate-remnants-var-1.png",
         line_length = 1,
-        width = 44,
-        height = 42,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
+        width = 86,
+        height = 82,
         direction_count = 4,
         shift = util.by_pixel(0, 1),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/gate/remnants/hr-gate-remnants-var-1.png",
-          line_length = 1,
-          width = 86,
-          height = 82,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
-          direction_count = 4,
-          shift = util.by_pixel(0, 1),
-          scale = 0.5
-        }
+        scale = 0.5
       },
       {
         filename = "__base__/graphics/entity/gate/remnants/gate-remnants-var-2.png",
         line_length = 1,
-        width = 42,
-        height = 42,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
+        width = 84,
+        height = 82,
         direction_count = 4,
-        shift = util.by_pixel(-1, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/gate/remnants/hr-gate-remnants-var-2.png",
-          line_length = 1,
-          width = 84,
-          height = 82,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
-          direction_count = 4,
-          shift = util.by_pixel(-0.5, 0),
-          scale = 0.5
-        }
+        shift = util.by_pixel(-0.5, 0),
+        scale = 0.5
       },
       {
         filename = "__base__/graphics/entity/gate/remnants/gate-remnants-var-3.png",
         line_length = 1,
-        width = 42,
-        height = 42,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
+        width = 82,
+        height = 84,
         direction_count = 4,
-        shift = util.by_pixel(0, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/gate/remnants/hr-gate-remnants-var-3.png",
-          line_length = 1,
-          width = 82,
-          height = 84,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
-          direction_count = 4,
-          shift = util.by_pixel(0, 0.5),
-          scale = 0.5
-        }
+        shift = util.by_pixel(0, 0.5),
+        scale = 0.5
       }
     }
   },
@@ -886,7 +587,7 @@ local remnants =
     name = "lamp-remnants",
     localised_name = {"remnant-name", {"entity-name.small-lamp"}},
     icon = "__base__/graphics/icons/small-lamp.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "circuit-network-remnants",
     order = "a-a-a",
@@ -896,32 +597,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/small-lamp/remnants/lamp-remnants.png",
       line_length = 1,
-      width = 52,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 102,
+      height = 96,
       direction_count = 1,
       shift = util.by_pixel(-1, 3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/small-lamp/remnants/hr-lamp-remnants.png",
-        line_length = 1,
-        width = 102,
-        height = 96,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(-1, 3),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -929,7 +616,7 @@ local remnants =
     type = "corpse",
     name = "small-electric-pole-remnants",
     icon = "__base__/graphics/icons/small-electric-pole.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-a-a",
@@ -939,6 +626,7 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation_overlay_final_render_layer = "object",
     remove_on_tile_placement = false,
@@ -949,22 +637,11 @@ local remnants =
       {
         filename = "__base__/graphics/entity/small-electric-pole/remnants/small-electric-pole-base-remnants.png",
         line_length = 1,
-        width = 90,
-        height = 54,
-        frame_count = 1,
+        width = 180,
+        height = 106,
         direction_count = 1,
         shift = util.by_pixel(17, -1),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/small-electric-pole/remnants/hr-small-electric-pole-base-remnants.png",
-          line_length = 1,
-          width = 180,
-          height = 106,
-          frame_count = 1,
-          direction_count = 1,
-          shift = util.by_pixel(17, -1),
-          scale = 0.5
-        }
+        scale = 0.5
       }
     }
   }),
@@ -976,22 +653,11 @@ local remnants =
       {
         filename = "__base__/graphics/entity/small-electric-pole/remnants/small-electric-pole-top-remnants.png",
         line_length = 1,
-        width = 44,
-        height = 62,
-        frame_count = 1,
+        width = 86,
+        height = 120,
         direction_count = 1,
-        shift = util.by_pixel(4 , -21),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/small-electric-pole/remnants/hr-small-electric-pole-top-remnants.png",
-          line_length = 1,
-          width = 86,
-          height = 120,
-          frame_count = 1,
-          direction_count = 1,
-          shift = util.by_pixel(3.5, -21.5),
-          scale = 0.5
-        }
+        shift = util.by_pixel(3.5, -21.5),
+        scale = 0.5
       }
     }
   })
@@ -1001,7 +667,7 @@ local remnants =
     type = "corpse",
     name = "medium-electric-pole-remnants",
     icon = "__base__/graphics/icons/medium-electric-pole.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-b-a",
@@ -1011,6 +677,7 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation_overlay_final_render_layer = "object",
     remove_on_tile_placement = false,
@@ -1021,22 +688,11 @@ local remnants =
       {
         filename = "__base__/graphics/entity/medium-electric-pole/remnants/medium-electric-pole-base-remnants.png",
         line_length = 1,
-        width = 142,
-        height = 70,
-        frame_count = 1,
+        width = 284,
+        height = 140,
         direction_count = 1,
         shift = util.by_pixel(35, -5),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/medium-electric-pole/remnants/hr-medium-electric-pole-base-remnants.png",
-          line_length = 1,
-          width = 284,
-          height = 140,
-          frame_count = 1,
-          direction_count = 1,
-          shift = util.by_pixel(35, -5),
-          scale = 0.5
-        }
+        scale = 0.5
       }
     }
   }),
@@ -1048,22 +704,11 @@ local remnants =
       {
         filename = "__base__/graphics/entity/medium-electric-pole/remnants/medium-electric-pole-top-remnants.png",
         line_length = 1,
-        width = 50,
-        height = 92,
-        frame_count = 1,
+        width = 100,
+        height = 184,
         direction_count = 1,
-        shift = util.by_pixel(0 , -39),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/medium-electric-pole/remnants/hr-medium-electric-pole-top-remnants.png",
-          line_length = 1,
-          width = 100,
-          height = 184,
-          frame_count = 1,
-          direction_count = 1,
-          shift = util.by_pixel(0, -38.5),
-          scale = 0.5
-        }
+        shift = util.by_pixel(0, -38.5),
+        scale = 0.5
       }
     }
   })
@@ -1073,7 +718,7 @@ local remnants =
     type = "corpse",
     name = "big-electric-pole-remnants",
     icon = "__base__/graphics/icons/big-electric-pole.png",
-    icon_size = 64, icon_mipmaps = 4,
+    hidden_in_factoriopedia = true,
     flags = {"placeable-neutral", "not-on-map"},
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-c-a",
@@ -1083,6 +728,7 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation_overlay_final_render_layer = "object",
     remove_on_tile_placement = false,
@@ -1093,22 +739,11 @@ local remnants =
       {
         filename = "__base__/graphics/entity/big-electric-pole/remnants/big-electric-pole-base-remnants.png",
         line_length = 1,
-        width = 184,
-        height = 94,
-        frame_count = 1,
+        width = 366,
+        height = 188,
         direction_count = 1,
-        shift = util.by_pixel(44, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/big-electric-pole/remnants/hr-big-electric-pole-base-remnants.png",
-          line_length = 1,
-          width = 366,
-          height = 188,
-          frame_count = 1,
-          direction_count = 1,
-          shift = util.by_pixel(43, 0.5),
-          scale = 0.5
-        }
+        shift = util.by_pixel(43, 0.5),
+        scale = 0.5
       }
     }
   }),
@@ -1120,22 +755,11 @@ local remnants =
       {
         filename = "__base__/graphics/entity/big-electric-pole/remnants/big-electric-pole-top-remnants.png",
         line_length = 1,
-        width = 76,
-        height = 126,
-        frame_count = 1,
+        width = 148,
+        height = 252,
         direction_count = 1,
-        shift = util.by_pixel(-1, -48),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/big-electric-pole/remnants/hr-big-electric-pole-top-remnants.png",
-          line_length = 1,
-          width = 148,
-          height = 252,
-          frame_count = 1,
-          direction_count = 1,
-          shift = util.by_pixel(-1.5, -48),
-          scale = 0.5
-        }
+        shift = util.by_pixel(-1.5, -48),
+        scale = 0.5
       }
     }
   })
@@ -1145,36 +769,26 @@ local remnants =
     type = "corpse",
     name = "pipe-remnants",
     icon = "__base__/graphics/icons/pipe.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-d-a",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(2,
     {
       filename = "__base__/graphics/entity/pipe/remnants/pipe-remnants.png",
-      width = 62,
-      height = 62,
+      width = 122,
+      height = 120,
       line_length = 1,
-      frame_count = 1,
       direction_count = 2,
-      shift = util.by_pixel(2, 3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/pipe/remnants/hr-pipe-remnants.png",
-        width = 122,
-        height = 120,
-        line_length = 1,
-        frame_count = 1,
-        direction_count = 2,
-        shift = util.by_pixel(1.5, 2.5), -- -0,5
-        scale = 0.5
-      }
+      shift = util.by_pixel(1.5, 2.5), -- -0,5
+      scale = 0.5
     })
   },
 
@@ -1182,36 +796,26 @@ local remnants =
     type = "corpse",
     name = "pipe-to-ground-remnants",
     icon = "__base__/graphics/icons/pipe-to-ground.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-d-a",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/pipe-to-ground/remnants/pipe-to-ground-remnants.png",
-      width = 46,
-      height = 40,
+      width = 90,
+      height = 80,
       line_length = 1,
-      frame_count = 1,
       direction_count = 1,
-      shift = util.by_pixel(0, -3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/pipe-to-ground/remnants/hr-pipe-to-ground-remnants.png",
-        width = 90,
-        height = 80,
-        line_length = 1,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(0.5, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0.5, -3),
+      scale = 0.5
     }
   },
 
@@ -1219,8 +823,8 @@ local remnants =
     type = "corpse",
     name = "stone-furnace-remnants",
     icon = "__base__/graphics/icons/stone-furnace.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "smelting-machine-remnants",
     order = "a-a-a",
     selection_box = {{-1, -1}, {1, 1}},
@@ -1228,28 +832,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/stone-furnace/remnants/stone-furnace-remnants.png",
       line_length = 1,
-      width = 76,
-      height = 66,
-      frame_count = 1,
+      width = 152,
+      height = 130,
       direction_count = 1,
-      shift = util.by_pixel(0, 10),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/stone-furnace/remnants/hr-stone-furnace-remnants.png",
-        line_length = 1,
-        width = 152,
-        height = 130,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(0, 9.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, 9.5),
+      scale = 0.5
     })
   },
 
@@ -1257,8 +851,8 @@ local remnants =
     type = "corpse",
     name = "steel-furnace-remnants",
     icon = "__base__/graphics/icons/steel-furnace.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "smelting-machine-remnants",
     order = "a-a-a",
     selection_box = {{-1, -1}, {1, 1}},
@@ -1266,28 +860,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/steel-furnace/remnants/steel-furnace-remnants.png",
       line_length = 1,
-      width = 134,
-      height = 120,
-      frame_count = 1,
+      width = 268,
+      height = 238,
       direction_count = 1,
-      shift = util.by_pixel(4, 1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/steel-furnace/remnants/hr-steel-furnace-remnants.png",
-        line_length = 1,
-        width = 268,
-        height = 238,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(4, 0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(4, 0.5),
+      scale = 0.5
     })
   },
 
@@ -1295,8 +879,8 @@ local remnants =
     type = "corpse",
     name = "electric-furnace-remnants",
     icon = "__base__/graphics/icons/electric-furnace.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "smelting-machine-remnants",
     order = "a-a-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1304,28 +888,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/electric-furnace/remnants/electric-furnace-remnants.png",
       line_length = 1,
-      width = 228,
-      height = 224,
-      frame_count = 1,
+      width = 454,
+      height = 448,
       direction_count = 1,
-      shift = util.by_pixel(-3, 7),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/electric-furnace/remnants/hr-electric-furnace-remnants.png",
-        line_length = 1,
-        width = 454,
-        height = 448,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(-3.25, 7.25),
-        scale = 0.5
-      }
+      shift = util.by_pixel(-3.25, 7.25),
+      scale = 0.5
     }
   },
 
@@ -1333,8 +907,8 @@ local remnants =
     type = "corpse",
     name = "burner-mining-drill-remnants",
     icon = "__base__/graphics/icons/burner-mining-drill.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "extraction-machine-remnants",
     order = "a-a-a",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -1343,32 +917,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/burner-mining-drill/remnants/burner-mining-drill-remnants.png",
       line_length = 1,
-      width = 138,
-      height = 118,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 272,
+      height = 234,
       direction_count = 1,
-      shift = util.by_pixel(0, -4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/burner-mining-drill/remnants/hr-burner-mining-drill-remnants.png",
-        line_length = 1,
-        width = 272,
-        height = 234,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(-0.5, -4.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(-0.5, -4.5),
+      scale = 0.5
     })
   },
 
@@ -1376,8 +936,8 @@ local remnants =
     type = "corpse",
     name = "electric-mining-drill-remnants",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "extraction-machine-remnants",
     order = "a-a-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1385,32 +945,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (4,
     {
       filename = "__base__/graphics/entity/electric-mining-drill/remnants/electric-mining-drill-remnants.png",
       line_length = 1,
-      width = 178,
-      height = 166,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 356,
+      height = 328,
       direction_count = 1,
-      shift = util.by_pixel(7, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/electric-mining-drill/remnants/hr-electric-mining-drill-remnants.png",
-        line_length = 1,
-        width = 356,
-        height = 328,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(7, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(7, -0.5),
+      scale = 0.5
     })
   },
 
@@ -1418,8 +964,8 @@ local remnants =
     type = "corpse",
     name = "gun-turret-remnants",
     icon = "__base__/graphics/icons/gun-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-c-a",
     selection_box = {{-1, -1}, {1, 1}},
@@ -1427,6 +973,7 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (3,
@@ -1436,50 +983,21 @@ local remnants =
         {
           filename = "__base__/graphics/entity/gun-turret/remnants/gun-turret-remnants.png",
           line_length = 1,
-          width = 126,
-          height = 122,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
+          width = 252,
+          height = 242,
           direction_count = 1,
-          shift = util.by_pixel(3, -1),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/gun-turret/remnants/hr-gun-turret-remnants.png",
-            line_length = 1,
-            width = 252,
-            height = 242,
-            frame_count = 1,
-            variation_count = 1,
-            axially_symmetrical = false,
-            direction_count = 1,
-            shift = util.by_pixel(3, -1.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(3, -1.5),
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/gun-turret/remnants/mask/gun-turret-remnants-mask.png",
-          width = 34,
-          height = 32,
-          frame_count = 1,
-          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          width = 68,
+          height = 64,
           apply_runtime_tint = true,
           direction_count = 1,
           shift = util.by_pixel(-1, -11),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/gun-turret/remnants/mask/hr-gun-turret-remnants-mask.png",
-            width = 68,
-            height = 64,
-            frame_count = 1,
-            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
-            apply_runtime_tint = true,
-            direction_count = 1,
-            shift = util.by_pixel(-1, -11),
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     })
@@ -1489,8 +1007,8 @@ local remnants =
     type = "corpse",
     name = "radar-remnants",
     icon = "__base__/graphics/icons/radar.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-g-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1498,32 +1016,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/radar/remnants/radar-remnants.png",
       line_length = 1,
-      width = 142,
-      height = 106,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 282,
+      height = 212,
       direction_count = 1,
-      shift = util.by_pixel(12, 4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/radar/remnants/hr-radar-remnants.png",
-        line_length = 1,
-        width = 282,
-        height = 212,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(12, 4.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(12, 4.5),
+      scale = 0.5
     })
   },
 
@@ -1531,8 +1035,8 @@ local remnants =
     type = "corpse",
     name = "offshore-pump-remnants",
     icon = "__base__/graphics/icons/offshore-pump.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     tile_width = 1,
     tile_height = 1,
@@ -1540,6 +1044,7 @@ local remnants =
     subgroup = "extraction-machine-remnants",
     order="a-d-b",
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
@@ -1547,42 +1052,20 @@ local remnants =
       {
         filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-1.png",
         line_length = 1,
-        width = 74,
-        height = 72,
-        frame_count = 1,
+        width = 146,
+        height = 140,
         direction_count = 4,
-        shift = util.by_pixel(2, -2),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/offshore-pump/remnants/hr-offshore-pump-remnants-variation-1.png",
-          line_length = 1,
-          width = 146,
-          height = 140,
-          frame_count = 1,
-          direction_count = 4,
-          shift = util.by_pixel(2, -2.5),
-          scale = 0.5
-        }
+        shift = util.by_pixel(2, -2.5),
+        scale = 0.5
       },
       {
         filename = "__base__/graphics/entity/offshore-pump/remnants/offshore-pump-remnants-variation-2.png",
         line_length = 1,
-        width = 68,
-        height = 68,
-        frame_count = 1,
+        width = 136,
+        height = 134,
         direction_count = 4,
-        shift = util.by_pixel(1, 1),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/offshore-pump/remnants/hr-offshore-pump-remnants-variation-2.png",
-          line_length = 1,
-          width = 136,
-          height = 134,
-          frame_count = 1,
-          direction_count = 4,
-          shift = util.by_pixel(1.5, 0.5),
-          scale = 0.5
-        }
+        shift = util.by_pixel(1.5, 0.5),
+        scale = 0.5
       }
     }
   },
@@ -1591,8 +1074,8 @@ local remnants =
     type = "corpse",
     name = "steam-engine-remnants",
     icon = "__base__/graphics/icons/steam-engine.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-b-a",
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
@@ -1600,32 +1083,18 @@ local remnants =
     tile_height = 5,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/steam-engine/remnants/steam-engine-remnants.png",
       line_length = 1,
-      width = 232,
-      height = 194,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 462,
+      height = 386,
       direction_count = 4,
-      shift = util.by_pixel(17, 7),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/steam-engine/remnants/hr-steam-engine-remnants.png",
-        line_length = 1,
-        width = 462,
-        height = 386,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(17, 6.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(17, 6.5),
+      scale = 0.5
     })
   },
 
@@ -1633,8 +1102,8 @@ local remnants =
     type = "corpse",
     name = "lab-remnants",
     icon = "__base__/graphics/icons/lab.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "production-machine-remnants",
     order = "a-g-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1642,32 +1111,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/lab/remnants/lab-remnants.png",
       line_length = 1,
-      width = 134,
-      height = 100,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 266,
+      height = 196,
       direction_count = 1,
-      shift = util.by_pixel(7, 6),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/lab/remnants/hr-lab-remnants.png",
-        line_length = 1,
-        width = 266,
-        height = 196,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(7, 5.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(7, 5.5),
+      scale = 0.5
     })
   },
 
@@ -1675,8 +1130,8 @@ local remnants =
     type = "corpse",
     name = "boiler-remnants",
     icon = "__base__/graphics/icons/boiler.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-a-a",
     selection_box = {{-1.5, -1}, {1.5, 1}},
@@ -1684,32 +1139,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/boiler/remnants/boiler-remnants.png",
       line_length = 1,
-      width = 138,
-      height = 110,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 274,
+      height = 220,
       direction_count = 4,
-      shift = util.by_pixel(0, -3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/boiler/remnants/hr-boiler-remnants.png",
-        line_length = 1,
-        width = 274,
-        height = 220,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(-0.5, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(-0.5, -3),
+      scale = 0.5
     }
   },
 
@@ -1717,8 +1158,8 @@ local remnants =
     type = "corpse",
     name = "car-remnants",
     icon = "__base__/graphics/icons/car.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "transport-remnants",
     order = "a-j-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1735,217 +1176,34 @@ local remnants =
         {
           filename = "__base__/graphics/entity/car/remnants/car-remnants.png",
           line_length = 1,
-          width = 152,
-          height = 152,
-          frame_count = 1,
+          width = 302,
+          height = 300,
           direction_count = 4,
-          shift = util.by_pixel(0, 6),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/car/remnants/hr-car-remnants.png",
-            line_length = 1,
-            width = 302,
-            height = 300,
-            frame_count = 1,
-            direction_count = 4,
-            shift = util.by_pixel(0, 4.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(0, 4.5),
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/car/remnants/mask/car-remnants-mask.png",
-          width = 98,
-          height = 74,
-          frame_count = 1,
-          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          width = 196,
+          height = 146,
           apply_runtime_tint = true,
           direction_count = 4,
-          shift = util.by_pixel(0, 6),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/car/remnants/mask/hr-car-remnants-mask.png",
-            width = 196,
-            height = 146,
-            frame_count = 1,
-            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
-            apply_runtime_tint = true,
-            direction_count = 4,
-            shift = util.by_pixel(0, 4.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(0, 4.5),
+          scale = 0.5
         }
       }
     }
   },
 
   {
-    type = "container",
-    name = "big-ship-wreck-1",
-    enable_inventory_bar = false,
-    icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-1.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-a[big]-a",
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 50,
-    collision_box = {{-2.2, -1.5}, {2.2, 1.5}},
-    selection_box = {{-2.7, -1.5}, {2.7, 1.5}},
-    inventory_size = 3,
-    picture =
-    {
-      filename = "__base__/graphics/entity/ship-wreck/big-ship-wreck-1.png",
-      width = 256,
-      height = 212,
-      shift = {0.7, 0}
-    }
-  },
-
-  {
-    type = "container",
-    name = "big-ship-wreck-2",
-    enable_inventory_bar = false,
-    icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-2.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-a[big]-b",
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 50,
-    collision_box = {{-1.4, -1.2}, {1.4, 1.2}},
-    selection_box = {{-2, -1.5}, {2, 1.5}},
-    inventory_size = 3,
-    picture =
-    {
-      filename = "__base__/graphics/entity/ship-wreck/big-ship-wreck-2.png",
-      width = 164,
-      height = 129,
-      shift = {-0.5, 0.6}
-    }
-  },
-
-  {
-    type = "container",
-    name = "big-ship-wreck-3",
-    enable_inventory_bar = false,
-    icon = "__base__/graphics/icons/ship-wreck/big-ship-wreck-3.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-a[big]-c",
-    map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
-    max_health = 50,
-    collision_box = {{-0.9, -0.9}, {0.9, 0.9}},
-    selection_box = {{-2, -1.5}, {2, 1.5}},
-    inventory_size = 3,
-    picture =
-    {
-      filename = "__base__/graphics/entity/ship-wreck/big-ship-wreck-3.png",
-      width = 165,
-      height = 131
-    }
-  },
-
-  {
-    type = "simple-entity",
-    name = "medium-ship-wreck",
-    icon = "__base__/graphics/icons/ship-wreck/medium-ship-wreck.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-b[medium]-a",
-    max_health = 200,
-    collision_box = {{-1.2, -0.9}, {1.2, 0.9}},
-    selection_box = {{-1.5, -1.2}, {1.5, 1.2}},
-    render_layer = "object",
-    pictures =
-    {
-      {
-        filename = "__base__/graphics/entity/ship-wreck/medium-ship-wreck-1.png",
-        width = 120,
-        height= 85
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/medium-ship-wreck-2.png",
-        width = 126,
-        height= 107,
-        shift = {0.3, 0.1}
-      }
-    }
-  },
-
-  {
-    type = "simple-entity",
-    name = "small-ship-wreck",
-    icon = "__base__/graphics/icons/ship-wreck/small-ship-wreck.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral", "placeable-off-grid", "not-on-map"},
-    subgroup = "wrecks",
-    order = "d[remnants]-d[ship-wreck]-c[small]-a",
-    max_health = 200,
-    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-1.3, -1.1}, {1.3, 1.1}},
-    pictures =
-    {
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-a.png",
-        width = 65,
-        height= 68
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-b.png",
-        width = 109,
-        height= 67
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-c.png",
-        width = 63,
-        height= 54
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-d.png",
-        width = 82,
-        height= 67
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-e.png",
-        width = 78,
-        height= 75,
-        shift={0.3, -0.2}
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-f.png",
-        width = 58,
-        height= 35
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-g.png",
-        width = 80,
-        height= 72
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-h.png",
-        width = 79,
-        height= 54
-      },
-      {
-        filename = "__base__/graphics/entity/ship-wreck/small-ship-wreck-i.png",
-        width = 56,
-        height= 55
-      }
-    },
-    render_layer = "object"
-  },
-  {
     type = "corpse",
     name = "small-scorchmark",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-1, -1}, {1, 1}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -1960,21 +1218,12 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/small-scorchmark.png",
-        width = 128,
-        height = 92,
+        width = 256,
+        height = 182,
         line_length = 4,
         shift = util.by_pixel(0, 2),
         variation_count = 4,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-small-scorchmark.png",
-          width = 256,
-          height = 182,
-          line_length = 4,
-          shift = util.by_pixel(0, 2),
-          variation_count = 4,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     ground_patch_higher =
@@ -1982,21 +1231,12 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/small-scorchmark-top.png",
-        width = 34,
-        height = 28,
+        width = 68,
+        height = 54,
         line_length = 4,
-        variation_count = 4,
         shift = util.by_pixel(0, -2),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-small-scorchmark-top.png",
-          width = 68,
-          height = 54,
-          line_length = 4,
-          shift = util.by_pixel(0, -2),
-          variation_count = 4,
-          scale = 0.5
-        }
+        variation_count = 4,
+        scale = 0.5
       }
     }
   },
@@ -2004,10 +1244,10 @@ local remnants =
     type = "corpse",
     name = "small-scorchmark-tintable",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-1, -1}, {1, 1}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -2022,23 +1262,13 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/small-scorchmark-tintable.png",
-        width = 128,
-        height = 92,
+        width = 256,
+        height = 182,
         line_length = 4,
         shift = util.by_pixel(0, 2),
         apply_runtime_tint = true,
         variation_count = 4,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-small-scorchmark-tintable.png",
-          width = 256,
-          height = 182,
-          line_length = 4,
-          shift = util.by_pixel(0, 2),
-          apply_runtime_tint = true,
-          variation_count = 4,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     ground_patch_higher =
@@ -2046,32 +1276,61 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/small-scorchmark-tintable-top.png",
-        width = 34,
-        height = 28,
+        width = 68,
+        height = 54,
         line_length = 4,
-        variation_count = 4,
         shift = util.by_pixel(0, -2),
+        variation_count = 4,
         apply_runtime_tint = true,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-small-scorchmark-tintable-top.png",
-          width = 68,
-          height = 54,
-          line_length = 4,
-          shift = util.by_pixel(0, -2),
-          variation_count = 4,
-          apply_runtime_tint = true,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     }
   },
   {
     type = "rail-remnants",
+    name = "legacy-straight-rail-remnants",
+    icon = "__base__/graphics/icons/straight-rail-remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "remnants",
+    order="d[remnants]-b[rail]-a[straight]",
+    collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
+    selection_box = {{-0.7, -0.8}, {0.7, 0.8}},
+    selectable_in_game = false,
+    expires = false,
+    tile_width = 2,
+    tile_height = 2,
+    related_rail = "legacy-straight-rail",
+    pictures = legacy_rail_remnants_pictures("legacy_straight_rail"),
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
+  },
+  {
+    type = "rail-remnants",
+    name = "legacy-curved-rail-remnants",
+    icon = "__base__/graphics/icons/curved-rail-remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "remnants",
+    order="d[remnants]-b[rail]-b[curved]",
+    collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
+    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
+    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
+    selectable_in_game = false,
+    expires = false,
+    tile_width = 4,
+    tile_height = 8,
+    related_rail = "legacy-curved-rail",
+    pictures = legacy_rail_remnants_pictures("legacy_curved_rail"),
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
+  },
+  {
+    type = "rail-remnants",
     name = "straight-rail-remnants",
     icon = "__base__/graphics/icons/straight-rail-remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "remnants",
     order="d[remnants]-b[rail]-a[straight]",
     collision_box = {{-0.7, -0.8}, {0.7, 0.8}},
@@ -2079,37 +1338,77 @@ local remnants =
     selectable_in_game = false,
     tile_width = 2,
     tile_height = 2,
-    bending_type = "straight",
-    pictures = destroyed_rail_pictures(),
+    related_rail = "straight-rail",
+    pictures = new_rail_remnants_pictures("straight"),
+    expires = false,
     time_before_removed = 60 * 60 * 45,
     time_before_shading_off = 60 * 60 * 1
   },
   {
     type = "rail-remnants",
-    name = "curved-rail-remnants",
-    icon = "__base__/graphics/icons/curved-rail-remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
+    name = "half-diagonal-rail-remnants",
+    icon = "__base__/graphics/icons/straight-rail-remnants.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "remnants",
+    order="d[remnants]-b[rail]-a[straight]",
+    collision_box = {{-0.75, -2.236}, {0.75, 2.236}},
+    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
+    selectable_in_game = false,
+    tile_width = 2,
+    tile_height = 2,
+    related_rail = "half-diagonal-rail",
+    pictures = new_rail_remnants_pictures("half-diagonal"),
+    expires = false,
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
+  },
+  {
+    type = "rail-remnants",
+    name = "curved-rail-a-remnants",
+    icon = "__base__/graphics/icons/curved-rail-remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "remnants",
     order="d[remnants]-b[rail]-b[curved]",
-    collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
-    secondary_collision_box = {{-0.65, -2.43}, {0.65, 2.43}},
+    collision_box = {{-0.75, -2.516}, {0.75, 2.516}},
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     selectable_in_game = false,
     tile_width = 4,
     tile_height = 8,
-    bending_type = "turn",
-    pictures = destroyed_rail_pictures(),
+    related_rail = "curved-rail-a",
+    pictures = new_rail_remnants_pictures("curved-a"),
+    expires = false,
     time_before_removed = 60 * 60 * 45,
     time_before_shading_off = 60 * 60 * 1
   },
+  {
+    type = "rail-remnants",
+    name = "curved-rail-b-remnants",
+    icon = "__base__/graphics/icons/curved-rail-remnants.png",
+    flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "remnants",
+    order="d[remnants]-b[rail]-b[curved]",
+    collision_box = {{-0.75, -2.441}, {0.75, 2.441}},
+    selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
+    selectable_in_game = false,
+    tile_width = 4,
+    tile_height = 8,
+    related_rail = "curved-rail-b",
+    pictures = new_rail_remnants_pictures("curved-b"),
+    expires = false,
+    time_before_removed = 60 * 60 * 45,
+    time_before_shading_off = 60 * 60 * 1
+  },
+
   {
     type = "corpse",
     name = "rail-ending-remnants",
     localised_name = {"entity-name.rail-ending-remnants"},
     icon = "__base__/graphics/icons/curved-rail-remnants.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "remnants",
     order="d[remnants]-b[rail]-c[ending]",
     collision_box = {{-0.75, -0.55}, {0.75, 1.6}},
@@ -2122,45 +1421,26 @@ local remnants =
         {
           filename = "__base__/graphics/entity/rail-endings/rail-endings-background.png",
           priority = "high",
-          flags = { "low-object" },
-          width = 128,
-          height = 128,
+          flags = {"low-object"},
+          width = 256,
+          height = 256,
           direction_count = 8,
           line_length = 8,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/rail-endings/hr-rail-endings-background.png",
-            priority = "high",
-            flags = { "low-object" },
-            width = 256,
-            height = 256,
-            direction_count = 8,
-            line_length = 8,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/rail-endings/rail-endings-metals.png",
           priority = "high",
-          flags = { "trilinear-filtering" },
-          width = 128,
-          height = 128,
+          flags = {"trilinear-filtering"},
+          width = 256,
+          height = 256,
           direction_count = 8,
           line_length = 8,
-          hr_version =
-           {
-            filename = "__base__/graphics/entity/rail-endings/hr-rail-endings-metals.png",
-            priority = "high",
-            flags = { "trilinear-filtering" },
-            width = 256,
-            height = 256,
-            direction_count = 8,
-            line_length = 8,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     },
+    expires = false,
     time_before_removed = 60 * 60 * 45,
     time_before_shading_off = 60 * 60 * 1
   },
@@ -2169,8 +1449,8 @@ local remnants =
     type = "corpse",
     name = "rail-chain-signal-remnants",
     icon = "__base__/graphics/icons/rail-chain-signal.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-e-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2178,27 +1458,17 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/rail-chain-signal/remnants/rail-chain-signal-remnants.png",
       line_length = 1,
-      width = 50,
-      height = 48,
-      frame_count = 1,
+      width = 98,
+      height = 94,
       direction_count = 1,
-      shift = util.by_pixel(-2, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/rail-chain-signal/remnants/hr-rail-chain-signal-remnants.png",
-        line_length = 1,
-        width = 98,
-        height = 94,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(-2, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(-2, -0.5),
+      scale = 0.5
     })
   },
 
@@ -2206,8 +1476,8 @@ local remnants =
     type = "corpse",
     name = "steel-chest-remnants",
     icon = "__base__/graphics/icons/steel-chest.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "storage-remnants",
     order = "a-c-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2215,28 +1485,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/steel-chest/remnants/steel-chest-remnants.png",
       line_length = 1,
-      width = 76,
-      height = 44,
-      frame_count = 1,
+      width = 150,
+      height = 88,
       direction_count = 1,
       shift = util.by_pixel(15, -1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/steel-chest/remnants/hr-steel-chest-remnants.png",
-        line_length = 1,
-        width = 150,
-        height = 88,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(15, -1),
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
 
@@ -2244,8 +1504,8 @@ local remnants =
     type = "corpse",
     name = "rail-signal-remnants",
     icon = "__base__/graphics/icons/rail-signal.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-d-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2253,27 +1513,17 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/rail-signal/remnants/rail-signal-remnants.png",
       line_length = 1,
-      width = 46,
-      height = 44,
-      frame_count = 1,
+      width = 90,
+      height = 88,
       direction_count = 1,
       shift = util.by_pixel(5, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/rail-signal/remnants/hr-rail-signal-remnants.png",
-        line_length = 1,
-        width = 90,
-        height = 88,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(5, 0),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -2281,8 +1531,8 @@ local remnants =
     type = "corpse",
     name = "fast-transport-belt-remnants",
     icon = "__base__/graphics/icons/fast-transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
     order = "a-b-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2290,32 +1540,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =  make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/fast-transport-belt/remnants/fast-transport-belt-remnants.png",
       line_length = 1,
-      width = 54,
-      height = 52,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 106,
+      height = 102,
       direction_count = 4,
-      shift = util.by_pixel(1, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/fast-transport-belt/remnants/hr-fast-transport-belt-remnants.png",
-        line_length = 1,
-        width = 106,
-        height = 102,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(1, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(1, -0.5),
+      scale = 0.5
     })
   },
 
@@ -2323,8 +1559,8 @@ local remnants =
     type = "corpse",
     name = "fast-splitter-remnants",
     icon = "__base__/graphics/icons/fast-splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
     order = "a-h-a",
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
@@ -2332,32 +1568,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/fast-splitter/remnants/fast-splitter-remnants.png",
       line_length = 1,
-      width = 96,
-      height = 96,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 190,
+      height = 190,
       direction_count = 4,
-      shift = util.by_pixel(4, 1.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/fast-splitter/remnants/hr-fast-splitter-remnants.png",
-        line_length = 1,
-        width = 190,
-        height = 190,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(3.5, 1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, 1.5),
+      scale = 0.5
     }
   },
 
@@ -2365,8 +1587,8 @@ local remnants =
     type = "corpse",
     name = "fast-underground-belt-remnants",
     icon = "__base__/graphics/icons/fast-underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "building-direction-8-way"},
+    hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
     order = "a-e-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2374,32 +1596,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/fast-underground-belt/remnants/fast-underground-belt-remnants.png",
       line_length = 1,
-      width = 78,
-      height = 72,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 156,
+      height = 144,
       direction_count = 8,
-      shift = util.by_pixel(10, 3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/fast-underground-belt/remnants/hr-fast-underground-belt-remnants.png",
-        line_length = 1,
-        width = 156,
-        height = 144,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 8,
-        shift = util.by_pixel(10.5, 3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10.5, 3),
+      scale = 0.5
     }
   },
 
@@ -2407,8 +1615,8 @@ local remnants =
     type = "corpse",
     name = "laser-turret-remnants",
     icon = "__base__/graphics/icons/laser-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-d-a",
     selection_box = {{-1, -1}, {1, 1}},
@@ -2416,6 +1624,7 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (3,
@@ -2425,50 +1634,21 @@ local remnants =
         {
           filename = "__base__/graphics/entity/laser-turret/remnants/laser-turret-remnants.png",
           line_length = 1,
-          width = 100,
-          height = 98,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
+          width = 198,
+          height = 194,
           direction_count = 1,
-          shift = util.by_pixel(3, -2),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/laser-turret/remnants/hr-laser-turret-remnants.png",
-            line_length = 1,
-            width = 198,
-            height = 194,
-            frame_count = 1,
-            variation_count = 1,
-            axially_symmetrical = false,
-            direction_count = 1,
-            shift = util.by_pixel(2.5, -2),
-            scale = 0.5
-          }
+          shift = util.by_pixel(2.5, -2),
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/laser-turret/remnants/mask/laser-turret-remnants-mask.png",
-          width = 58,
-          height = 48,
-          frame_count = 1,
-          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          width = 114,
+          height = 94,
           apply_runtime_tint = true,
           direction_count = 1,
-          shift = util.by_pixel(4, -2),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/laser-turret/remnants/mask/hr-laser-turret-remnants-mask.png",
-            width = 114,
-            height = 94,
-            frame_count = 1,
-            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
-            apply_runtime_tint = true,
-            direction_count = 1,
-            shift = util.by_pixel(4, -2.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(4, -2.5),
+          scale = 0.5
         }
       }
     })
@@ -2478,8 +1658,8 @@ local remnants =
     type = "corpse",
     name = "constant-combinator-remnants",
     icon = "__base__/graphics/icons/constant-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "circuit-network-remnants",
     order = "a-d-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2487,32 +1667,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/combinator/remnants/constant/constant-combinator-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 56,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 118,
+      height = 112,
       direction_count = 4,
       shift = util.by_pixel(0, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/combinator/remnants/constant/hr-constant-combinator-remnants.png",
-        line_length = 1,
-        width = 118,
-        height = 112,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(0, 0),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -2520,8 +1686,8 @@ local remnants =
     type = "corpse",
     name = "arithmetic-combinator-remnants",
     icon = "__base__/graphics/icons/arithmetic-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "circuit-network-remnants",
     order = "a-b-a",
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -2529,32 +1695,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/combinator/remnants/arithmetic/arithmetic-combinator-remnants.png",
       line_length = 1,
-      width = 78,
-      height = 78,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 156,
+      height = 156,
       direction_count = 4,
       shift = util.by_pixel(0, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/combinator/remnants/arithmetic/hr-arithmetic-combinator-remnants.png",
-        line_length = 1,
-        width = 156,
-        height = 156,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(0, 0),
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
 
@@ -2562,8 +1714,8 @@ local remnants =
     type = "corpse",
     name = "decider-combinator-remnants",
     icon = "__base__/graphics/icons/decider-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "circuit-network-remnants",
     order = "a-c-a",
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -2571,32 +1723,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/combinator/remnants/decider/decider-combinator-remnants.png",
       line_length = 1,
-      width = 78,
-      height = 78,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 156,
+      height = 156,
       direction_count = 4,
-      shift = util.by_pixel(0, -1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/combinator/remnants/decider/hr-decider-combinator-remnants.png",
-        line_length = 1,
-        width = 156,
-        height = 156,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(0, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, -0.5),
+      scale = 0.5
     }
   },
 
@@ -2604,8 +1742,8 @@ local remnants =
     type = "corpse",
     name = "power-switch-remnants",
     icon = "__base__/graphics/icons/power-switch.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "circuit-network-remnants",
     order = "a-c-a",
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -2613,32 +1751,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/power-switch/remnants/power-switch-remnants.png",
       line_length = 1,
-      width = 98,
-      height = 88,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 194,
+      height = 176,
       direction_count = 1,
-      shift = util.by_pixel(5, 11),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/power-switch/remnants/hr-power-switch-remnants.png",
-        line_length = 1,
-        width = 194,
-        height = 176,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(4.5, 10.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(4.5, 10.5),
+      scale = 0.5
     }
   },
 
@@ -2646,8 +1770,8 @@ local remnants =
     type = "corpse",
     name = "programmable-speaker-remnants",
     icon = "__base__/graphics/icons/programmable-speaker.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "circuit-network-remnants",
     order = "a-e-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -2655,6 +1779,7 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation_overlay_final_render_layer = "object",
     remove_on_tile_placement = false,
@@ -2665,22 +1790,11 @@ local remnants =
         {
           filename = "__base__/graphics/entity/programmable-speaker/remnants/programmable-speaker-base-remnants.png",
           line_length = 1,
-          width = 86,
-          height = 60,
-          frame_count = 1,
+          width = 170,
+          height = 120,
           direction_count = 1,
           shift = util.by_pixel(12, 0),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/programmable-speaker/remnants/hr-programmable-speaker-base-remnants.png",
-            line_length = 1,
-            width = 170,
-            height = 120,
-            frame_count = 1,
-            direction_count = 1,
-            shift = util.by_pixel(12, 0),
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     }),
@@ -2691,22 +1805,11 @@ local remnants =
         {
           filename = "__base__/graphics/entity/programmable-speaker/remnants/programmable-speaker-top-remnants.png",
           line_length = 1,
-          width = 38,
-          height = 46,
-          frame_count = 1,
+          width = 74,
+          height = 90,
           direction_count = 1,
-          shift = util.by_pixel(1, -18),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/programmable-speaker/remnants/hr-programmable-speaker-top-remnants.png",
-            line_length = 1,
-            width = 74,
-            height = 90,
-            frame_count = 1,
-            direction_count = 1,
-            shift = util.by_pixel(0.5, -18),
-            scale = 0.5
-          }
+          shift = util.by_pixel(0.5, -18),
+          scale = 0.5
         }
       }
     })
@@ -2716,8 +1819,8 @@ local remnants =
     type = "corpse",
     name = "train-stop-remnants",
     icon = "__base__/graphics/icons/train-stop.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-c-a",
     selection_box = {{-1, -1}, {1, 1}},
@@ -2725,6 +1828,7 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation_overlay_final_render_layer = "object",
     remove_on_tile_placement = false,
@@ -2735,44 +1839,21 @@ local remnants =
         {
           filename = "__base__/graphics/entity/train-stop/remnants/train-stop-base-remnants.png",
           line_length = 1,
-          width = 244,
-          height = 228,
-          frame_count = 1,
+          width = 486,
+          height = 454,
+          shift = util.by_pixel(4.5, 13.5),
           direction_count = 4,
-          shift = util.by_pixel(5, 14),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/train-stop/remnants/hr-train-stop-base-remnants.png",
-            line_length = 1,
-            width = 486,
-            height = 454,
-            frame_count = 1,
-            shift = util.by_pixel(4.5, 13.5),
-            direction_count = 4,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/train-stop/remnants/mask/train-stop-base-remnants-mask.png",
-          width = 142,
-          height = 108,
-          frame_count = 1,
+          width = 284,
+          height = 214,
           apply_runtime_tint = true,
           direction_count = 4,
-          shift = util.by_pixel(-1, 1),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/train-stop/remnants/mask/hr-train-stop-base-remnants-mask.png",
-            width = 284,
-            height = 214,
-            frame_count = 1,
-            apply_runtime_tint = true,
-            direction_count = 4,
-            shift = util.by_pixel(-1, 0.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(-1, 0.5),
+          scale = 0.5
         }
       }
     },
@@ -2784,22 +1865,11 @@ local remnants =
         {
           filename = "__base__/graphics/entity/train-stop/remnants/train-stop-top-remnants.png",
           line_length = 1,
-          width = 68,
-          height = 128,
-          frame_count = 1,
+          width = 136,
+          height = 254,
+          shift = util.by_pixel(1.5, -38),
           direction_count = 4,
-          shift = util.by_pixel(1, -38),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/train-stop/remnants/hr-train-stop-top-remnants.png",
-            line_length = 1,
-            width = 136,
-            height = 254,
-            frame_count = 1,
-            shift = util.by_pixel(1.5, -38),
-            direction_count = 4,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     }
@@ -2809,8 +1879,8 @@ local remnants =
     type = "corpse",
     name = "solar-panel-remnants",
     icon = "__base__/graphics/icons/solar-panel.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-c-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -2818,32 +1888,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/solar-panel/remnants/solar-panel-remnants.png",
       line_length = 1,
-      width = 146,
-      height = 142,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 290,
+      height = 282,
       direction_count = 1,
-      shift = util.by_pixel(4, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/solar-panel/remnants/hr-solar-panel-remnants.png",
-        line_length = 1,
-        width = 290,
-        height = 282,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3.5, 0),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, 0),
+      scale = 0.5
     })
   },
 
@@ -2851,8 +1907,8 @@ local remnants =
     type = "corpse",
     name = "locomotive-remnants",
     icon = "__base__/graphics/icons/locomotive.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-f-a",
     selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
@@ -2867,48 +1923,24 @@ local remnants =
       layers =
       {
         {
-          filename = "__base__/graphics/entity/diesel-locomotive/remnants/diesel-locomotive-base-remnants.png",
+          filename = "__base__/graphics/entity/locomotive/remnants/locomotive-base-remnants.png",
           line_length = 1,
-          width = 230,
-          height = 218,
-          frame_count = 1,
+          width = 460,
+          height = 436,
           direction_count = 8,
-          shift = util.by_pixel(4, 0),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/diesel-locomotive/remnants/hr-diesel-locomotive-base-remnants.png",
-            line_length = 1,
-            width = 460,
-            height = 436,
-            frame_count = 1,
-            direction_count = 8,
-            shift = util.by_pixel(4, 0.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(4, 0.5),
+          scale = 0.5
         },
         {
           priority = "low",
-          filename = "__base__/graphics/entity/diesel-locomotive/remnants/mask/diesel-locomotive-remnants-mask.png",
-          width = 196,
-          height = 146,
-          frame_count = 1,
-          --tint = { r = 0.91, g = 0.06  , b = 0.0, a = 0.35 },
+          filename = "__base__/graphics/entity/locomotive/remnants/mask/locomotive-remnants-mask.png",
+          width = 390,
+          height = 292,
           apply_runtime_tint = true,
+          tint_as_overlay = true,
           direction_count = 8,
           shift = util.by_pixel(0, 2),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/diesel-locomotive/remnants/mask/hr-diesel-locomotive-remnants-mask.png",
-            width = 390,
-            height = 292,
-            frame_count = 1,
-            --tint = { r = 0.91, g = 0.06  , b = 0.00, a = 0.35 },
-            apply_runtime_tint = true,
-            direction_count = 8,
-            shift = util.by_pixel(0, 2),
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     }
@@ -2918,8 +1950,8 @@ local remnants =
     type = "corpse",
     name = "cargo-wagon-remnants",
     icon = "__base__/graphics/icons/cargo-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-g-a",
     selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
@@ -2933,26 +1965,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/cargo-wagon/remnants/cargo-wagon-remnants.png",
       line_length = 1,
-      width = 248,
-      height = 242,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 494,
+      height = 484,
       direction_count = 8,
-      shift = util.by_pixel(2, 6),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/cargo-wagon/remnants/hr-cargo-wagon-remnants.png",
-        line_length = 1,
-        width = 494,
-        height = 484,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 8,
-        shift = util.by_pixel(1.5, 6),
-        scale = 0.5
-      }
+      shift = util.by_pixel(1.5, 6),
+      scale = 0.5
     }
   },
 
@@ -2960,8 +1977,8 @@ local remnants =
     type = "corpse",
     name = "accumulator-remnants",
     icon = "__base__/graphics/icons/accumulator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-d-a",
     selection_box = {{-1, -1}, {1, 1}},
@@ -2969,32 +1986,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/accumulator/remnants/accumulator-remnants.png",
       line_length = 1,
-      width = 86,
-      height = 74,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 172,
+      height = 146,
       direction_count = 1,
-      shift = util.by_pixel(2, 4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/accumulator/remnants/hr-accumulator-remnants.png",
-        line_length = 1,
-        width = 172,
-        height = 146,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(2.5, 3.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(2.5, 3.5),
+      scale = 0.5
     })
   },
 
@@ -3002,8 +2005,8 @@ local remnants =
     type = "corpse",
     name = "defender-remnants",
     icon = "__base__/graphics/icons/defender.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     tile_width = 3,
     tile_height = 3,
@@ -3017,34 +2020,19 @@ local remnants =
     {
       filename = "__base__/graphics/entity/defender-robot/remnants/defender-robot-remnants.png",
       line_length = 1,
-      width = 50,
-      height = 48,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 98,
+      height = 94,
       direction_count = 1,
-      shift = util.by_pixel(1, 1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/defender-robot/remnants/hr-defender-robot-remnants.png",
-        line_length = 1,
-        width = 98,
-        height = 94,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(0.5, 0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0.5, 0.5),
+      scale = 0.5
     })
   },
   {
     type = "corpse",
     name = "rocket-silo-remnants",
     icon = "__base__/graphics/icons/rocket-silo.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-h-a",
     collision_box = {{-4.40, -4.40}, {4.40, 4.40}}, -- same as the silo, so it does render properly when on the edge of the screen
@@ -3053,38 +2041,28 @@ local remnants =
     tile_height = 9,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/rocket-silo/15-remnants/rocket-silo-remnants.png",
       line_length = 1,
-      width = 318,
-      height = 292,
-      frame_count = 1,
+      width = 634,
+      height = 582,
       direction_count = 1,
-      shift = util.by_pixel(3, 1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/rocket-silo/15-remnants/hr-rocket-silo-remnants.png",
-        line_length = 1,
-        width = 634,
-        height = 582,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(2.5, 0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(2.5, 0.5),
+      scale = 0.5
     })
   },
 
   {
     type = "corpse",
     name = "buffer-chest-remnants",
-    localised_name = {"remnant-name", {"entity-name.logistic-chest-buffer"}},
-    icon = "__base__/graphics/icons/logistic-chest-buffer.png",
-    icon_size = 64, icon_mipmaps = 4,
+    localised_name = {"remnant-name", {"entity-name.buffer-chest"}},
+    icon = "__base__/graphics/icons/buffer-chest.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "logistic-network-remnants",
     order = "a-f-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3092,38 +2070,28 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/logistic-chest/remnants/buffer-chest-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 42,
-      frame_count = 1,
+      width = 116,
+      height = 82,
       direction_count = 1,
-      shift = util.by_pixel(10.5, -2.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/logistic-chest/remnants/hr-buffer-chest-remnants.png",
-        line_length = 1,
-        width = 116,
-        height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(10, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10, -3),
+      scale = 0.5
     }
   },
 
   {
     type = "corpse",
     name = "active-provider-chest-remnants",
-    localised_name = {"remnant-name", {"entity-name.logistic-chest-active-provider"}},
-    icon = "__base__/graphics/icons/logistic-chest-active-provider.png",
-    icon_size = 64, icon_mipmaps = 4,
+    localised_name = {"remnant-name", {"entity-name.active-provider-chest"}},
+    icon = "__base__/graphics/icons/active-provider-chest.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "logistic-network-remnants",
     order = "a-c-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3131,38 +2099,28 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/logistic-chest/remnants/active-provider-chest-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 42,
-      frame_count = 1,
+      width = 116,
+      height = 82,
       direction_count = 1,
-      shift = util.by_pixel(10.5, -2.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/logistic-chest/remnants/hr-active-provider-chest-remnants.png",
-        line_length = 1,
-        width = 116,
-        height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(10, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10, -3),
+      scale = 0.5
     }
   },
 
   {
     type = "corpse",
     name = "passive-provider-chest-remnants",
-    localised_name = {"remnant-name", {"entity-name.logistic-chest-passive-provider"}},
-    icon = "__base__/graphics/icons/logistic-chest-passive-provider.png",
-    icon_size = 64, icon_mipmaps = 4,
+    localised_name = {"remnant-name", {"entity-name.passive-provider-chest"}},
+    icon = "__base__/graphics/icons/passive-provider-chest.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "logistic-network-remnants",
     order = "a-d-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3170,38 +2128,28 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/logistic-chest/remnants/passive-provider-chest-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 42,
-      frame_count = 1,
+      width = 116,
+      height = 82,
       direction_count = 1,
-      shift = util.by_pixel(10.5, -2.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/logistic-chest/remnants/hr-passive-provider-chest-remnants.png",
-        line_length = 1,
-        width = 116,
-        height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(10, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10, -3),
+      scale = 0.5
     }
   },
 
   {
     type = "corpse",
     name = "requester-chest-remnants",
-    localised_name = {"remnant-name", {"entity-name.logistic-chest-requester"}},
-    icon = "__base__/graphics/icons/logistic-chest-requester.png",
-    icon_size = 64, icon_mipmaps = 4,
+    localised_name = {"remnant-name", {"entity-name.requester-chest"}},
+    icon = "__base__/graphics/icons/requester-chest.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "logistic-network-remnants",
     order = "a-g-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3209,38 +2157,28 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/logistic-chest/remnants/requester-chest-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 42,
-      frame_count = 1,
+      width = 116,
+      height = 82,
       direction_count = 1,
-      shift = util.by_pixel(10.5, -2.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/logistic-chest/remnants/hr-requester-chest-remnants.png",
-        line_length = 1,
-        width = 116,
-        height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(10, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10, -3),
+      scale = 0.5
     }
   },
 
   {
     type = "corpse",
     name = "storage-chest-remnants",
-    localised_name = {"remnant-name", {"entity-name.logistic-chest-storage"}},
-    icon = "__base__/graphics/icons/logistic-chest-storage.png",
-    icon_size = 64, icon_mipmaps = 4,
+    localised_name = {"remnant-name", {"entity-name.storage-chest"}},
+    icon = "__base__/graphics/icons/storage-chest.png",
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "logistic-network-remnants",
     order = "a-e-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3248,37 +2186,27 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/logistic-chest/remnants/storage-chest-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 42,
-      frame_count = 1,
+      width = 116,
+      height = 82,
       direction_count = 1,
-      shift = util.by_pixel(10.5, -2.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/logistic-chest/remnants/hr-storage-chest-remnants.png",
-        line_length = 1,
-        width = 116,
-        height = 82,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(10, -3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10, -3),
+      scale = 0.5
     }
   },
 
   {
     type = "corpse",
-    name = "stack-inserter-remnants",
-    icon = "__base__/graphics/icons/stack-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
+    name = "bulk-inserter-remnants",
+    icon = "__base__/graphics/icons/bulk-inserter.png",
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "inserter-remnants",
     order = "a-f-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3286,32 +2214,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (4,
     {
-      filename = "__base__/graphics/entity/stack-inserter/remnants/stack-inserter-remnants.png",
+      filename = "__base__/graphics/entity/bulk-inserter/remnants/bulk-inserter-remnants.png",
       line_length = 1,
-      width = 66,
-      height = 50,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 132,
+      height = 96,
       direction_count = 1,
-      shift = util.by_pixel(3, -1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/stack-inserter/remnants/hr-stack-inserter-remnants.png",
-        line_length = 1,
-        width = 132,
-        height = 96,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3, -1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3, -1.5),
+      scale = 0.5
     })
   },
 
@@ -3319,8 +2233,8 @@ local remnants =
     type = "corpse",
     name = "land-mine-remnants",
     icon = "__base__/graphics/icons/land-mine.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-i-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3328,74 +2242,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (3,
     {
       filename = "__base__/graphics/entity/land-mine/remnants/land-mine-remnants.png",
       line_length = 1,
-      width = 68,
-      height = 66,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 134,
+      height = 130,
       direction_count = 1,
-      shift = util.by_pixel(2, 5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/land-mine/remnants/hr-land-mine-remnants.png",
-        line_length = 1,
-        width = 134,
-        height = 130,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(1.5, 5),
-        scale = 0.5
-      }
-    })
-  },
-
-  {
-    type = "corpse",
-    name = "stack-filter-inserter-remnants",
-    icon = "__base__/graphics/icons/stack-filter-inserter.png",
-    icon_size = 64, icon_mipmaps = 4,
-    flags = {"placeable-neutral", "not-on-map"},
-    subgroup = "inserter-remnants",
-    order = "a-g-a",
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    tile_width = 1,
-    tile_height = 1,
-    selectable_in_game = false,
-    time_before_removed = 60 * 60 * 15, -- 15 minutes
-    final_render_layer = "remnants",
-    remove_on_tile_placement = false,
-    animation = make_rotated_animation_variations_from_sheet (4,
-    {
-      filename = "__base__/graphics/entity/stack-filter-inserter/remnants/stack-filter-inserter-remnants.png",
-      line_length = 1,
-      width = 66,
-      height = 50,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
-      direction_count = 1,
-      shift = util.by_pixel(3, -1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/stack-filter-inserter/remnants/hr-stack-filter-inserter-remnants.png",
-        line_length = 1,
-        width = 132,
-        height = 96,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(3, -1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(1.5, 5),
+      scale = 0.5
     })
   },
 
@@ -3403,8 +2261,8 @@ local remnants =
     type = "corpse",
     name = "express-transport-belt-remnants",
     icon = "__base__/graphics/icons/express-transport-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
     order = "a-c-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3412,41 +2270,26 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =  make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/express-transport-belt/remnants/express-transport-belt-remnants.png",
       line_length = 1,
-      width = 54,
-      height = 52,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 106,
+      height = 102,
       direction_count = 4,
-      shift = util.by_pixel(1, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/express-transport-belt/remnants/hr-express-transport-belt-remnants.png",
-        line_length = 1,
-        width = 106,
-        height = 102,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(1, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(1, -0.5),
+      scale = 0.5
     })
   },
-
   {
     type = "corpse",
     name = "express-splitter-remnants",
     icon = "__base__/graphics/icons/express-splitter.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
     order = "a-i-a",
     selection_box = {{-0.9, -0.5}, {0.9, 0.5}},
@@ -3454,41 +2297,26 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/express-splitter/remnants/express-splitter-remnants.png",
       line_length = 1,
-      width = 96,
-      height = 96,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 190,
+      height = 190,
       direction_count = 4,
-      shift = util.by_pixel(4, 1.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/express-splitter/remnants/hr-express-splitter-remnants.png",
-        line_length = 1,
-        width = 190,
-        height = 190,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(3.5, 1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(3.5, 1.5),
+      scale = 0.5
     }
   },
-
   {
     type = "corpse",
     name = "express-underground-belt-remnants",
     icon = "__base__/graphics/icons/express-underground-belt.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "building-direction-8-way"},
+    hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
     order = "a-f-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -3496,41 +2324,26 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/express-underground-belt/remnants/express-underground-belt-remnants.png",
       line_length = 1,
-      width = 78,
-      height = 72,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 156,
+      height = 144,
       direction_count = 8,
-      shift = util.by_pixel(10, 3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/express-underground-belt/remnants/hr-express-underground-belt-remnants.png",
-        line_length = 1,
-        width = 156,
-        height = 144,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 8,
-        shift = util.by_pixel(10.5, 3),
-        scale = 0.5
-      }
+      shift = util.by_pixel(10.5, 3),
+      scale = 0.5
     }
   },
-
   {
     type = "corpse",
     name = "substation-remnants",
     icon = "__base__/graphics/icons/substation.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-d-a",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -3539,32 +2352,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/substation/remnants/substation-remnants.png",
       line_length = 1,
-      width = 92,
-      height = 68,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 182,
+      height = 134,
       direction_count = 1,
-      shift = util.by_pixel(3, 1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/substation/remnants/hr-substation-remnants.png",
-        line_length = 1,
-        width = 182,
-        height = 134,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(2.5, 0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(2.5, 0.5),
+      scale = 0.5
     })
   },
 
@@ -3572,8 +2371,8 @@ local remnants =
     type = "corpse",
     name = "storage-tank-remnants",
     icon = "__base__/graphics/icons/storage-tank.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "storage-remnants",
     order = "a-d-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -3581,28 +2380,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/storage-tank/remnants/storage-tank-remnants.png",
       line_length = 1,
-      width = 214,
-      height = 142,
-      frame_count = 1,
+      width = 426,
+      height = 282,
       direction_count = 1,
-      shift = util.by_pixel(27, 21), --shift = util.by_pixel(-3, 10.5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/storage-tank/remnants/hr-storage-tank-remnants.png",
-        line_length = 1,
-        width = 426,
-        height = 282,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(27, 21), --shift = util.by_pixel(-2.5, 10.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(27, 21), --shift = util.by_pixel(-2.5, 10.5),
+      scale = 0.5
     })
   },
 
@@ -3610,8 +2399,8 @@ local remnants =
     type = "corpse",
     name = "oil-refinery-remnants",
     icon = "__base__/graphics/icons/oil-refinery.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "production-machine-remnants",
     order = "a-d-a",
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
@@ -3619,28 +2408,18 @@ local remnants =
     tile_height = 5,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/oil-refinery/remnants/refinery-remnants.png",
       line_length = 1,
-      width = 234,
-      height = 200,
-      frame_count = 1,
+      width = 467,
+      height = 415,
       direction_count = 1,
-      shift = util.by_pixel(0, 0), --moved from -8.5 to -4.5
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/oil-refinery/remnants/hr-refinery-remnants.png",
-        line_length = 1,
-        width = 467,
-        height = 415,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(-0.25, -0.25), --moved from -8.5 to -4.5
-        scale = 0.5
-      }
+      shift = util.by_pixel(-0.25, -0.25), --moved from -8.5 to -4.5
+      scale = 0.5
     })
   },
 
@@ -3648,8 +2427,8 @@ local remnants =
     type = "corpse",
     name = "pumpjack-remnants",
     icon = "__base__/graphics/icons/pumpjack.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "extraction-machine-remnants",
     order = "a-d-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -3657,28 +2436,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(2,
     {
       filename = "__base__/graphics/entity/pumpjack/remnants/pumpjack-remnants.png",
       line_length = 1,
-      width = 138,
-      height = 142,
-      frame_count = 1,
+      width = 274,
+      height = 284,
       direction_count = 1,
-      shift = util.by_pixel(0, 3),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/pumpjack/remnants/hr-pumpjack-remnants.png",
-        line_length = 1,
-        width = 274,
-        height = 284,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(0, 3.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, 3.5),
+      scale = 0.5
     })
   },
 
@@ -3686,8 +2455,8 @@ local remnants =
     type = "corpse",
     name = "centrifuge-remnants",
     icon = "__base__/graphics/icons/centrifuge.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "production-machine-remnants",
     order = "a-f-a",
     collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
@@ -3696,32 +2465,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/centrifuge/remnants/centrifuge-remnants.png",
       line_length = 1,
-      width = 144,
-      height = 142,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 286,
+      height = 284,
       direction_count = 1,
       shift = util.by_pixel(7, 4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/centrifuge/remnants/hr-centrifuge-remnants.png",
-        line_length = 1,
-        width = 286,
-        height = 284,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(7, 4),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -3729,8 +2484,8 @@ local remnants =
     type = "corpse",
     name = "flamethrower-turret-remnants",
     icon = "__base__/graphics/icons/flamethrower-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-e-a",
     selection_box = {{-1, -1.5 }, {1, 1.5}},
@@ -3738,6 +2493,7 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
@@ -3747,50 +2503,21 @@ local remnants =
         {
           filename = "__base__/graphics/entity/flamethrower-turret/remnants/flamethrower-turret-remnants.png",
           line_length = 1,
-          width = 152,
-          height = 164,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
+          width = 302,
+          height = 326,
           direction_count = 4,
-          shift = util.by_pixel(-1, -4),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/flamethrower-turret/remnants/hr-flamethrower-turret-remnants.png",
-            line_length = 1,
-            width = 302,
-            height = 326,
-            frame_count = 1,
-            variation_count = 1,
-            axially_symmetrical = false,
-            direction_count = 4,
-            shift = util.by_pixel(-1.5, -4),
-            scale = 0.5
-          }
+          shift = util.by_pixel(-1.5, -4),
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/flamethrower-turret/remnants/mask/flamethrower-turret-remnants-mask.png",
-          width = 82,
-          height = 82,
-          frame_count = 1,
-          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          width = 164,
+          height = 164,
           apply_runtime_tint = true,
           direction_count = 4,
-          shift = util.by_pixel(0, -4),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/flamethrower-turret/remnants/mask/hr-flamethrower-turret-remnants-mask.png",
-            width = 164,
-            height = 164,
-            frame_count = 1,
-            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
-            apply_runtime_tint = true,
-            direction_count = 4,
-            shift = util.by_pixel(0, -3.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(0, -3.5),
+          scale = 0.5
         }
       }
     }
@@ -3800,8 +2527,8 @@ local remnants =
     type = "corpse",
     name = "artillery-turret-remnants",
     icon = "__base__/graphics/icons/artillery-turret.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "defensive-structure-remnants",
     order = "a-f-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -3809,32 +2536,42 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/artillery-turret/remnants/artillery-turret-remnants.png",
       line_length = 1,
-      width = 164,
-      height = 146,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 326,
+      height = 290,
       direction_count = 1,
-      shift = util.by_pixel(10, 2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/artillery-turret/remnants/hr-artillery-turret-remnants.png",
-        line_length = 1,
-        width = 326,
-        height = 290,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(9.5, 1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(9.5, 1.5),
+      scale = 0.5
+    })
+  },
+
+  {
+    type = "corpse",
+    name = "cargo-landing-pad-remnants",
+    icon = "__base__/graphics/icons/cargo-landing-pad.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "logistic-network-remnants",
+    order = "a-h-a",
+    selection_box = {{-4, -4}, {4, 4}},
+    collision_box = {{-3.9, -3.9}, {3.9, 3.9}},
+    tile_width = 8,
+    tile_height = 8,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = util.sprite_load("__base__/graphics/entity/cargo-hubs/hubs/planet-hub-remnants",
+    {
+      direction_count = 1,
+      scale = 0.5
     })
   },
 
@@ -3842,8 +2579,8 @@ local remnants =
     type = "corpse",
     name = "roboport-remnants",
     icon = "__base__/graphics/icons/roboport.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "logistic-network-remnants",
     order = "a-h-a",
     selection_box = {{-2, -2}, {2, 2}},
@@ -3851,32 +2588,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/roboport/remnants/roboport-remnants.png",
       line_length = 1,
-      width = 182,
-      height = 180,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 364,
+      height = 358,
       direction_count = 1,
       shift = util.by_pixel(2, 8),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/roboport/remnants/hr-roboport-remnants.png",
-        line_length = 1,
-        width = 364,
-        height = 358,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(2, 8),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -3884,8 +2607,8 @@ local remnants =
     type = "corpse",
     name = "logistic-robot-remnants",
     icon = "__base__/graphics/icons/logistic-robot.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     tile_width = 3,
     tile_height = 3,
@@ -3899,26 +2622,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/logistic-robot/remnants/logistic-robot-remnants.png",
       line_length = 1,
-      width = 58,
-      height = 58,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 116,
+      height = 114,
       direction_count = 1,
       shift = util.by_pixel(1, 1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/logistic-robot/remnants/hr-logistic-robot-remnants.png",
-        line_length = 1,
-        width = 116,
-        height = 114,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(1, 1),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -3926,8 +2634,8 @@ local remnants =
     type = "corpse",
     name = "construction-robot-remnants",
     icon = "__base__/graphics/icons/construction-robot.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     tile_width = 3,
     tile_height = 3,
@@ -3941,26 +2649,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/construction-robot/remnants/construction-robot-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 58,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 120,
+      height = 114,
       direction_count = 1,
       shift = util.by_pixel(2, 1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/construction-robot/remnants/hr-construction-robot-remnants.png",
-        line_length = 1,
-        width = 120,
-        height = 114,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(2, 1),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -3968,8 +2661,8 @@ local remnants =
     type = "corpse",
     name = "distractor-remnants",
     icon = "__base__/graphics/icons/distractor.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     tile_width = 3,
     tile_height = 3,
@@ -3983,26 +2676,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/distractor-robot/remnants/distractor-robot-remnants.png",
       line_length = 1,
-      width = 56,
-      height = 56,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 112,
+      height = 110,
       direction_count = 1,
-      shift = util.by_pixel(-1, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/distractor-robot/remnants/hr-distractor-robot-remnants.png",
-        line_length = 1,
-        width = 112,
-        height = 110,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(-0.5, 0),
-        scale = 0.5
-      }
+      shift = util.by_pixel(-0.5, 0),
+      scale = 0.5
     })
   },
 
@@ -4010,8 +2688,9 @@ local remnants =
     type = "corpse",
     name = "destroyer-remnants",
     icon = "__base__/graphics/icons/destroyer.png",
-    icon_size = 64, icon_mipmaps = 4,
+
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     tile_width = 3,
     tile_height = 3,
@@ -4025,26 +2704,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/destroyer-robot/remnants/destroyer-robot-remnants.png",
       line_length = 1,
-      width = 60,
-      height = 56,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 120,
+      height = 108,
       direction_count = 1,
-      shift = util.by_pixel(1, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/destroyer-robot/remnants/hr-destroyer-robot-remnants.png",
-        line_length = 1,
-        width = 120,
-        height = 108,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(1.5, -0.5), -- was -0.5
-        scale = 0.5
-      }
+      shift = util.by_pixel(1.5, -0.5), -- was -0.5
+      scale = 0.5
     })
   },
 
@@ -4052,8 +2716,8 @@ local remnants =
     type = "corpse",
     name = "steam-turbine-remnants",
     icon = "__base__/graphics/icons/steam-turbine.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-h-a",
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
@@ -4061,32 +2725,18 @@ local remnants =
     tile_height = 5,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/steam-turbine/remnants/steam-turbine-remnants.png",
       line_length = 1,
-      width = 230,
-      height = 204,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 460,
+      height = 408,
       direction_count = 4,
       shift = util.by_pixel(6, 0),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/steam-turbine/remnants/hr-steam-turbine-remnants.png",
-        line_length = 1,
-        width = 460,
-        height = 408,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(6, 0),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -4094,8 +2744,8 @@ local remnants =
     type = "corpse",
     name = "pump-remnants",
     icon = "__base__/graphics/icons/pump.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-d-a",
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -4103,32 +2753,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       filename = "__base__/graphics/entity/pump/remnants/pump-remnants.png",
       line_length = 1,
-      width = 94,
-      height = 94,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 188,
+      height = 186,
       direction_count = 4,
       shift = util.by_pixel(2, 2),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/pump/remnants/hr-pump-remnants.png",
-        line_length = 1,
-        width = 188,
-        height = 186,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(2, 2),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -4136,8 +2772,8 @@ local remnants =
     type = "corpse",
     name = "beacon-remnants",
     icon = "__base__/graphics/icons/beacon.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-pipe-distribution-remnants",
     order = "a-d-a",
     selection_box = {{-0.5, -1}, {0.5, 1}},
@@ -4145,32 +2781,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (2,
     {
       filename = "__base__/graphics/entity/beacon/remnants/beacon-remnants.png",
       line_length = 1,
-      width = 106,
-      height = 104,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 212,
+      height = 206,
       direction_count = 1,
       shift = util.by_pixel(1, 5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/beacon/remnants/hr-beacon-remnants.png",
-        line_length = 1,
-        width = 212,
-        height = 206,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(1, 5),
-        scale = 0.5
-      }
+      scale = 0.5
     })
   },
 
@@ -4178,8 +2800,8 @@ local remnants =
     type = "corpse",
     name = "heat-exchanger-remnants",
     icon = "__base__/graphics/icons/heat-boiler.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-g-a",
     selection_box = {{-1.5, -1}, {1.5, 1}},
@@ -4187,32 +2809,18 @@ local remnants =
     tile_height = 2,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/heat-exchanger/remnants/heat-exchanger-remnants.png",
       line_length = 1,
-      width = 136,
-      height = 132,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 272,
+      height = 262,
       direction_count = 4,
-      shift = util.by_pixel(0, 8),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/heat-exchanger/remnants/hr-heat-exchanger-remnants.png",
-        line_length = 1,
-        width = 272,
-        height = 262,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 4,
-        shift = util.by_pixel(0.5, 8),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0.5, 8),
+      scale = 0.5
     }
   },
 
@@ -4220,8 +2828,8 @@ local remnants =
     type = "corpse",
     name = "heat-pipe-remnants",
     icon = "__base__/graphics/icons/heat-pipe.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-f-a",
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
@@ -4229,28 +2837,18 @@ local remnants =
     tile_height = 1,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet (6,
     {
       filename = "__base__/graphics/entity/heat-pipe/remnants/heat-pipe-remnants.png",
       line_length = 1,
-      width = 62,
-      height = 52,
-      frame_count = 1,
+      width = 122,
+      height = 100,
       direction_count = 2,
-      shift = util.by_pixel(1, -1),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/heat-pipe/remnants/hr-heat-pipe-remnants.png",
-        line_length = 1,
-        width = 122,
-        height = 100,
-        frame_count = 1,
-        direction_count = 2,
-        shift = util.by_pixel(0.5, -1.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0.5, -1.5),
+      scale = 0.5
     })
   },
 
@@ -4258,8 +2856,8 @@ local remnants =
     type = "corpse",
     name = "nuclear-reactor-remnants",
     icon = "__base__/graphics/icons/nuclear-reactor.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "energy-remnants",
     order = "a-e-a",
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
@@ -4267,32 +2865,18 @@ local remnants =
     tile_height = 5,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/nuclear-reactor/remnants/nuclear-reactor-remnants.png",
       line_length = 1,
-      width = 206,
-      height = 198,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 410,
+      height = 396,
       direction_count = 1,
       shift = util.by_pixel(7, 4),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/nuclear-reactor/remnants/hr-nuclear-reactor-remnants.png",
-        line_length = 1,
-        width = 410,
-        height = 396,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(7, 4),
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
 
@@ -4300,8 +2884,8 @@ local remnants =
     type = "corpse",
     name = "chemical-plant-remnants",
     icon = "__base__/graphics/icons/chemical-plant.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "production-machine-remnants",
     order = "a-e-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -4309,28 +2893,18 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation =
     {
       filename = "__base__/graphics/entity/chemical-plant/remnants/chemical-plant-remnants.png",
       line_length = 1,
-      width = 224,
-      height = 172,
-      frame_count = 1,
+      width = 446,
+      height = 342,
       direction_count = 1,
-      shift = util.by_pixel(16, -5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/chemical-plant/remnants/hr-chemical-plant-remnants.png",
-        line_length = 1,
-        width = 446,
-        height = 342,
-        frame_count = 1,
-        direction_count = 1,
-        shift = util.by_pixel(16, -5.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(16, -5.5),
+      scale = 0.5
     }
   },
 
@@ -4338,8 +2912,8 @@ local remnants =
     type = "corpse",
     name = "tank-remnants",
     icon = "__base__/graphics/icons/tank.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "transport-remnants",
     order = "a-k-a",
     selection_box = {{-1.5, -2.5}, {1.5, 2.5}},
@@ -4356,46 +2930,21 @@ local remnants =
         {
           filename = "__base__/graphics/entity/tank/remnants/tank-remnants.png",
           line_length = 1,
-          width = 208,
-          height = 190,
-          frame_count = 1,
+          width = 414,
+          height = 380,
           direction_count = 4,
-          shift = util.by_pixel(4, 0),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/tank/remnants/hr-tank-remnants.png",
-            line_length = 1,
-            width = 414,
-            height = 380,
-            frame_count = 1,
-            direction_count = 4,
-            shift = util.by_pixel(4, 0.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(4, 0.5),
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/tank/remnants/mask/tank-remnants-mask.png",
-          width = 126,
-          height = 110,
-          frame_count = 1,
-          --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          width = 250,
+          height = 218,
           apply_runtime_tint = true,
           direction_count = 4,
-          shift = util.by_pixel(7, -1),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/tank/remnants/mask/hr-tank-remnants-mask.png",
-            width = 250,
-            height = 218,
-            frame_count = 1,
-            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
-            apply_runtime_tint = true,
-            direction_count = 4,
-            shift = util.by_pixel(6.5, -1.5),
-            scale = 0.5
-          }
+          shift = util.by_pixel(6.5, -1.5),
+          scale = 0.5
         }
       }
     }
@@ -4405,8 +2954,8 @@ local remnants =
     type = "corpse",
     name = "fluid-wagon-remnants",
     icon = "__base__/graphics/icons/fluid-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-h-a",
     selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
@@ -4420,26 +2969,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/fluid-wagon/remnants/fluid-wagon-remnants.png",
       line_length = 1,
-      width = 246,
-      height = 254,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 490,
+      height = 504,
       direction_count = 8,
-      shift = util.by_pixel(2, -5),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/fluid-wagon/remnants/hr-fluid-wagon-remnants.png",
-        line_length = 1,
-        width = 490,
-        height = 504,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 8,
-        shift = util.by_pixel(2, -5.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(2, -5.5),
+      scale = 0.5
     }
   },
 
@@ -4447,8 +2981,8 @@ local remnants =
     type = "corpse",
     name = "artillery-wagon-remnants",
     icon = "__base__/graphics/icons/artillery-wagon.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "building-direction-8-way", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "train-transport-remnants",
     order = "a-i-a",
     selection_box = {{-1.0, -3.0}, {1.0, 3.0}},
@@ -4462,26 +2996,11 @@ local remnants =
     {
       filename = "__base__/graphics/entity/artillery-wagon/remnants/artillery-wagon-remnants.png",
       line_length = 1,
-      width = 230,
-      height = 232,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 458,
+      height = 464,
       direction_count = 8,
-      shift = util.by_pixel(2, 6),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/artillery-wagon/remnants/hr-artillery-wagon-remnants.png",
-        line_length = 1,
-        width = 458,
-        height = 464,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 8,
-        shift = util.by_pixel(1, -0.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(1, -0.5),
+      scale = 0.5
     }
   },
 
@@ -4489,8 +3008,8 @@ local remnants =
     type = "corpse",
     name = "assembling-machine-3-remnants",
     icon = "__base__/graphics/icons/assembling-machine-3.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "production-machine-remnants",
     order = "a-a-a",
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -4498,31 +3017,17 @@ local remnants =
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
     final_render_layer = "remnants",
     animation = make_rotated_animation_variations_from_sheet (3,
     {
       filename = "__base__/graphics/entity/assembling-machine-3/remnants/assembling-machine-3-remnants.png",
       line_length = 1,
-      width = 164,
-      height = 142,
-      frame_count = 1,
-      variation_count = 1,
-      axially_symmetrical = false,
+      width = 328,
+      height = 282,
       direction_count = 1,
-      shift = util.by_pixel(0, 10),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/assembling-machine-3/remnants/hr-assembling-machine-3-remnants.png",
-        line_length = 1,
-        width = 328,
-        height = 282,
-        frame_count = 1,
-        variation_count = 1,
-        axially_symmetrical = false,
-        direction_count = 1,
-        shift = util.by_pixel(0, 9.5),
-        scale = 0.5
-      }
+      shift = util.by_pixel(0, 9.5),
+      scale = 0.5
     })
   },
 
@@ -4530,17 +3035,18 @@ local remnants =
     type = "corpse",
     name = "spidertron-remnants",
     icon = "__base__/graphics/icons/spidertron.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
     subgroup = "transport-remnants",
     order = "a-l-a",
     selection_box = {{-3, -3}, {3, 3}},
+    collision_box = {{-2, -2}, {2, 2}},
     tile_width = 3,
     tile_height = 3,
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 15, -- 15 minutes
     final_render_layer = "remnants",
-    remove_on_tile_placement = false,
+    remove_on_tile_placement = true,
     animation = make_rotated_animation_variations_from_sheet (1,
     {
       layers =
@@ -4548,50 +3054,21 @@ local remnants =
         {
           filename = "__base__/graphics/entity/spidertron/remnants/spidertron-remnants.png",
           line_length = 1,
-          width = 224,
-          height = 224,
-          frame_count = 1,
-          variation_count = 1,
-          axially_symmetrical = false,
+          width = 448,
+          height = 448,
           direction_count = 1,
           shift = util.by_pixel(0, 0),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/spidertron/remnants/hr-spidertron-remnants.png",
-            line_length = 1,
-            width = 448,
-            height = 448,
-            frame_count = 1,
-            variation_count = 1,
-            axially_symmetrical = false,
-            direction_count = 1,
-            shift = util.by_pixel(0, 0),
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           priority = "low",
           filename = "__base__/graphics/entity/spidertron/remnants/mask/spidertron-remnants-mask.png",
-          width = 184,
-          height = 176,
-          frame_count = 1,
-         -- tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
+          width = 366,
+          height = 350,
           apply_runtime_tint = true,
           direction_count = 1,
           shift = util.by_pixel(9, 1),
-          hr_version=
-          {
-            priority = "low",
-            filename = "__base__/graphics/entity/spidertron/remnants/mask/hr-spidertron-remnants-mask.png",
-            width = 366,
-            height = 350,
-            frame_count = 1,
-            --tint = { r = 0.869, g = 0.5  , b = 0.130, a = 0.5 },
-            apply_runtime_tint = true,
-            direction_count = 1,
-            shift = util.by_pixel(9, 1),
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     })
@@ -4601,10 +3078,10 @@ local remnants =
     type = "corpse",
     name = "medium-scorchmark",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-2, -2}, {2, 2}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -4619,21 +3096,12 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
-        width = 256,
-        height = 176,
+        width = 510,
+        height = 352,
         line_length = 2,
-        shift = util.by_pixel(0, -2),
+        shift = util.by_pixel(0, 0),
         variation_count = 2,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
-          width = 510,
-          height = 352,
-          line_length = 2,
-          shift = util.by_pixel(0, 0),
-          variation_count = 2,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     ground_patch_higher =
@@ -4641,21 +3109,12 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
-        width = 68,
-        height = 50,
+        width = 136,
+        height = 100,
         line_length = 2,
-        variation_count = 2,
         shift = util.by_pixel(0, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
-          width = 136,
-          height = 100,
-          line_length = 2,
-          shift = util.by_pixel(0, 0),
-          variation_count = 2,
-          scale = 0.5
-        }
+        variation_count = 2,
+        scale = 0.5
       }
     }
   },
@@ -4664,10 +3123,10 @@ local remnants =
     type = "corpse",
     name = "medium-scorchmark-tintable",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-2, -2}, {2, 2}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -4682,23 +3141,13 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
-        width = 256,
-        height = 176,
+        width = 510,
+        height = 352,
         line_length = 2,
-        shift = util.by_pixel(0, -2),
+        shift = util.by_pixel(0, 0),
         apply_runtime_tint = true,
         variation_count = 2,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
-          width = 510,
-          height = 352,
-          line_length = 2,
-          shift = util.by_pixel(0, 0),
-          apply_runtime_tint = true,
-          variation_count = 2,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     ground_patch_higher =
@@ -4706,23 +3155,13 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
-        width = 68,
-        height = 50,
+        width = 136,
+        height = 100,
         line_length = 2,
-        variation_count = 2,
         shift = util.by_pixel(0, 0),
         apply_runtime_tint = true,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
-          width = 136,
-          height = 100,
-          line_length = 2,
-          shift = util.by_pixel(0, 0),
-          apply_runtime_tint = true,
-          variation_count = 2,
-          scale = 0.5
-        }
+        variation_count = 2,
+        scale = 0.5
       }
     }
   },
@@ -4731,10 +3170,10 @@ local remnants =
     type = "corpse",
     name = "big-scorchmark",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-4, -4}, {4, 4}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -4749,23 +3188,13 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
-        width = 480,
-        height = 352,
+        width = 960,
+        height = 704,
         line_length = 1,
         shift = util.by_pixel(0, 0),
         dice_y = 2,
         variation_count = 1,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
-          width = 960,
-          height = 704,
-          line_length = 1,
-          shift = util.by_pixel(0, 0),
-          dice_y = 2,
-          variation_count = 1,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     ground_patch_higher =
@@ -4773,21 +3202,12 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
-        width = 138,
-        height = 96,
+        width = 274,
+        height = 194,
         line_length = 1,
-        variation_count = 1,
         shift = util.by_pixel(0, 0),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
-          width = 274,
-          height = 194,
-          line_length = 1,
-          shift = util.by_pixel(0, 0),
-          variation_count = 1,
-          scale = 0.5
-        }
+        variation_count = 1,
+        scale = 0.5
       }
     }
   },
@@ -4796,10 +3216,10 @@ local remnants =
     type = "corpse",
     name = "big-scorchmark-tintable",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-4, -4}, {4, 4}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -4814,25 +3234,14 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
-        width = 480,
-        height = 352,
+        width = 960,
+        height = 704,
         line_length = 1,
         shift = util.by_pixel(0, 0),
         apply_runtime_tint = true,
         dice_y = 2,
         variation_count = 1,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
-          width = 960,
-          height = 704,
-          line_length = 1,
-          shift = util.by_pixel(0, 0),
-          apply_runtime_tint = true,
-          dice_y = 2,
-          variation_count = 1,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     ground_patch_higher =
@@ -4840,23 +3249,13 @@ local remnants =
       sheet =
       {
         filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
-        width = 138,
-        height = 96,
+        width = 274,
+        height = 194,
         line_length = 1,
-        variation_count = 1,
         shift = util.by_pixel(0, 0),
         apply_runtime_tint = true,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
-          width = 274,
-          height = 194,
-          line_length = 1,
-          shift = util.by_pixel(0, 0),
-          apply_runtime_tint = true,
-          variation_count = 1,
-          scale = 0.5
-        }
+        variation_count = 1,
+        scale = 0.5
       }
     }
   },
@@ -4865,10 +3264,10 @@ local remnants =
     type = "corpse",
     name = "huge-scorchmark",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-4, -4}, {4, 4}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -4884,147 +3283,67 @@ local remnants =
       {
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(0, -24),
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(0, -24),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(44, -25),
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(44, -23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          shift = util.by_pixel(44, -23),
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(-44, -25),
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(-44, -23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          shift = util.by_pixel(-44, -23),
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(32, 0),
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(32, 0),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(-32, 0),
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(-32, 0),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(44, 21),
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(44, 23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          shift = util.by_pixel(44, 23),
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(-44, 21),
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(-44, 23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          shift = util.by_pixel(-44, 23),
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(0, 24),
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(0, 24),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     },
@@ -5034,147 +3353,67 @@ local remnants =
       {
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(0, -24),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(0, -24),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(44, -23),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(44, -23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(-44, -23),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(-44, -23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(32, 0),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(32, 0),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(-32, 0),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(-32, 0),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(44, 23),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(44, 23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(-44, 23),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(-44, 23),
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(0, 24),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(0, 24),
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     }
@@ -5182,12 +3421,59 @@ local remnants =
 
   {
     type = "corpse",
+    name = "selector-combinator-remnants",
+    icon = "__base__/graphics/icons/selector-combinator.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "circuit-network-remnants",
+    order = "a-b-a",
+    selection_box = {{-0.5, -1}, {0.5, 1}},
+    tile_width = 1,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      filename = "__base__/graphics/entity/combinator/remnants/selector/selector-combinator-remnants.png",
+      line_length = 1,
+      width = 156,
+      height = 156,
+      direction_count = 4,
+      shift = util.by_pixel(0, 0),
+      scale = 0.5
+    }
+  },
+  {
+    type = "corpse",
+    name = "cargo-pod-container-remnants",
+    hidden_in_factoriopedia = true,
+    icon = "__base__/graphics/icons/cargo-pod.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    subgroup = "generic-remnants",
+    order = "c[cargo]-p[pod]-c[container]-r[remnants]",
+    time_before_removed = 60 * 60 * 5, -- 5 minutes
+    selectable_in_game = false,
+    final_render_layer = "remnants",
+    animation =
+    util.sprite_load("__base__/graphics/entity/cargo-pod/pod-corpse",
+    {
+      scale = 0.5,
+      direction_count = 1,
+      frame_count = 1
+    })
+  },
+
+  {
+    type = "corpse",
     name = "huge-scorchmark-tintable",
     icon = "__base__/graphics/icons/small-scorchmark.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "not-on-map", "placeable-off-grid"},
+    hidden_in_factoriopedia = true,
     collision_box = {{-4.5, -4.5}, {4.5, 4.5}},
-    collision_mask = {"doodad-layer", "not-colliding-with-itself"},
+    collision_mask = {layers={doodad=true}, not_colliding_with_itself=true},
     selection_box = {{-4, -4}, {4, 4}},
     selectable_in_game = false,
     time_before_removed = 60 * 60 * 10, -- 10 minutes
@@ -5203,163 +3489,75 @@ local remnants =
       {
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(0, -24),
           apply_runtime_tint = true,
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(0, -24),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(44, -25),
+          shift = util.by_pixel(44, -23),
           apply_runtime_tint = true,
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(44, -23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(-44, -25),
+          shift = util.by_pixel(-44, -23),
           apply_runtime_tint = true,
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(-44, -23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(32, 0),
           apply_runtime_tint = true,
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(32, 0),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(-32, 0),
           apply_runtime_tint = true,
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(-32, 0),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(44, 21),
+          shift = util.by_pixel(44, 23),
           apply_runtime_tint = true,
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(44, 23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable.png",
-          width = 256,
-          height = 176,
+          width = 510,
+          height = 352,
           line_length = 2,
-          shift = util.by_pixel(-44, 21),
+          shift = util.by_pixel(-44, 23),
           apply_runtime_tint = true,
-          variation_count = 2,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable.png",
-            width = 510,
-            height = 352,
-            line_length = 2,
-            shift = util.by_pixel(-44, 23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
-          width = 480,
-          height = 352,
+          width = 960,
+          height = 704,
           line_length = 1,
           shift = util.by_pixel(0, 24),
           apply_runtime_tint = true,
-          variation_count = 1,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable.png",
-            width = 960,
-            height = 704,
-            line_length = 1,
-            shift = util.by_pixel(0, 24),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     },
@@ -5369,163 +3567,75 @@ local remnants =
       {
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(0, -24),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(0, -24),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(44, -23),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(44, -23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(-44, -23),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(-44, -23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(32, 0),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(32, 0),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(-32, 0),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(-32, 0),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(44, 23),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(44, 23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/medium-scorchmark-tintable-top.png",
-          width = 68,
-          height = 50,
+          width = 136,
+          height = 100,
           line_length = 2,
-          variation_count = 2,
           shift = util.by_pixel(-44, 23),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-medium-scorchmark-tintable-top.png",
-            width = 136,
-            height = 100,
-            line_length = 2,
-            shift = util.by_pixel(-44, 23),
-            apply_runtime_tint = true,
-            variation_count = 2,
-            scale = 0.5
-          }
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable-top.png",
-          width = 138,
-          height = 96,
+          width = 274,
+          height = 194,
           line_length = 1,
-          variation_count = 1,
           shift = util.by_pixel(0, 24),
           apply_runtime_tint = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/scorchmark/hr-big-scorchmark-tintable-top.png",
-            width = 274,
-            height = 194,
-            line_length = 1,
-            shift = util.by_pixel(0, 24),
-            apply_runtime_tint = true,
-            variation_count = 1,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     }

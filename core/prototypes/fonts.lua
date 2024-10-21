@@ -58,12 +58,6 @@ data:extend(
   },
   {
     type = "font",
-    name = "compilatron-message-font",
-    from = "default-semibold",
-    size = 18
-  },
-  {
-    type = "font",
     name = "default-large",
     from = "default",
     size = 18
@@ -110,12 +104,6 @@ data:extend(
     name = "heading-2",
     from = "default-bold",
     size = 15, -- will translate 6 modules
-  },
-  {
-    type = "font",
-    name = "heading-3",
-    from = "default-semibold",
-    size = 14 -- will translate 5 modules
   },
   {
     type = "font",

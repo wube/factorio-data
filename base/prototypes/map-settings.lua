@@ -3,6 +3,11 @@ data:extend(
   {
     type="map-settings",
     name="map-settings",
+    asteroids =
+    {
+      spawning_rate = 1,
+      max_ray_portals_expanded_per_tick = 100,
+    },
     pollution=
     {
       enabled=true,
@@ -226,10 +231,7 @@ data:extend(
     -- These can't be changed through game.map_settings - you must use game.difficulty_settings
     difficulty_settings =
     {
-       recipe_difficulty = defines.difficulty_settings.recipe_difficulty.normal,
-       technology_difficulty = defines.difficulty_settings.technology_difficulty.normal,
-       technology_price_multiplier = 1,
-       research_queue_setting = "always"
+       technology_price_multiplier = 1
     }
   }
 })

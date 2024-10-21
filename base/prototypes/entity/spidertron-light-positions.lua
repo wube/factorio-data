@@ -1,6 +1,6 @@
 return
 {
-  [0] = 
+  [1] =
   {
     util.by_pixel(11, -25),
     util.by_pixel(13, -24),
@@ -67,7 +67,7 @@ return
     util.by_pixel(9, -26),
     util.by_pixel(11, -25)
   },
-  [1] = 
+  [2] =
   {
     util.by_pixel(-9, -25),
     util.by_pixel(-7, -26),
@@ -134,7 +134,7 @@ return
     util.by_pixel(-11, -24),
     util.by_pixel(-9, -25)
   },
-  [2] = 
+  [3] =
   {
     util.by_pixel(0, -28),
     util.by_pixel(2, -28),
@@ -201,7 +201,7 @@ return
     util.by_pixel(-1, -28),
     util.by_pixel(0, -28)
   },
-  [3] = 
+  [4] =
   {
     util.by_pixel(-14, -31),
     util.by_pixel(-12, -32),
@@ -268,7 +268,7 @@ return
     util.by_pixel(-15, -30),
     util.by_pixel(-14, -31)
   },
-  [4] = 
+  [5] =
   {
     util.by_pixel(-21, -18),
     util.by_pixel(-20, -20),
@@ -335,7 +335,7 @@ return
     util.by_pixel(-21, -17),
     util.by_pixel(-21, -18)
   },
-  [5] = 
+  [6] =
   {
     util.by_pixel(16, -27),
     util.by_pixel(16, -25),
@@ -402,7 +402,7 @@ return
     util.by_pixel(15, -28),
     util.by_pixel(16, -27)
   },
-  [6] = 
+  [7] =
   {
     util.by_pixel(21, -19),
     util.by_pixel(22, -17),
@@ -469,7 +469,7 @@ return
     util.by_pixel(20, -20),
     util.by_pixel(21, -19)
   },
-  [7] = 
+  [8] =
   {
     util.by_pixel(14, -22),
     util.by_pixel(16, -21),
@@ -536,7 +536,7 @@ return
     util.by_pixel(13, -23),
     util.by_pixel(14, -22)
   },
-  [8] = 
+  [9] =
   {
     util.by_pixel(-14, -22),
     util.by_pixel(-12, -23),
@@ -603,7 +603,7 @@ return
     util.by_pixel(-16, -21),
     util.by_pixel(-14, -22)
   },
-  [9] = 
+  [10] =
   {
     util.by_pixel(9, -23),
     util.by_pixel(11, -22),
@@ -670,7 +670,7 @@ return
     util.by_pixel(7, -24),
     util.by_pixel(9, -23)
   },
-  [10] = 
+  [11] =
   {
     util.by_pixel(-10, -23),
     util.by_pixel(-9, -24),

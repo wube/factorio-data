@@ -10,7 +10,7 @@ data:extend(
   },
   {
     type = "module-category",
-    name = "effectivity"
+    name = "efficiency"
   }
 }
 )

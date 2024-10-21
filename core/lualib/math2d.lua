@@ -1,5 +1,28 @@
 local math2d = {}
 
+math2d.projection_constant = 0.7071067811865
+
+math2d.vector = {}
+
+math2d.vector.from_orientation = function(orientation, length)
+  local sinAngle = math.sin(orientation * math.pi * 2)
+  local cosAngle = math.cos(orientation * math.pi * 2)
+
+  return { x = sinAngle * (length or 1), y = -cosAngle * (length or 1) }
+end
+
+math2d.vector.to_orientation = function(vec)
+  return math.atan2(vec.x, -vec.y) * 0.5 / math.pi
+end
+
+math2d.vector.length = function(vec)
+  return math.sqrt(vec.x * vec.x + vec.y * vec.y)
+end
+
+math2d.vector.projected = function(vec)
+  return { x = vec.x, y = vec.y * math2d.projection_constant }
+end
+
 math2d.position = {}
 
 -- Takes a position that might be either a two element array, or a table

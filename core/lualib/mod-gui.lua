@@ -29,7 +29,7 @@ function mod_gui.get_button_flow(player)
     return gui.mod_gui_button_flow
   end
 
-  local frame = gui.mod_gui_top_frame or gui.add{type = "frame", name = "mod_gui_top_frame", direction = "horizontal", style = "quick_bar_window_frame"}
+  local frame = gui.mod_gui_top_frame or gui.add{type = "frame", name = "mod_gui_top_frame", direction = "horizontal", style = "slot_window_frame"}
   return frame.mod_gui_inner_frame or frame.add{type = "frame", name = "mod_gui_inner_frame", style = "mod_gui_inside_deep_frame"}
 end
 

@@ -7,7 +7,6 @@ data:extend(
     order = "a",
     icon = "__base__/graphics/item-group/logistics.png",
     icon_size = 128,
-    icon_mipmaps = 2
   },
   {
     type = "item-subgroup",
@@ -70,7 +69,6 @@ data:extend(
     order = "b",
     icon = "__base__/graphics/item-group/production.png",
     icon_size = 128,
-    icon_mipmaps = 2
   },
   {
     type = "item-subgroup",
@@ -122,7 +120,6 @@ data:extend(
     order_in_recipe = "0",
     icon = "__base__/graphics/item-group/intermediate-products.png",
     icon_size = 128,
-    icon_mipmaps = 2
   },
   {
     type = "item-subgroup",
@@ -168,18 +165,35 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "science-pack",
+    name = "intermediate-recipe",
     group = "intermediate-products",
     order = "h"
+  },
+  {
+    type = "item-subgroup",
+    name = "uranium-processing",
+    group = "intermediate-products",
+    order = "i"
+  },
+  {
+    type = "item-subgroup",
+    name = "science-pack",
+    group = "intermediate-products",
+    order = "y"
+  },
+  {
+    type = "item-subgroup",
+    name = "internal-process",
+    group = "intermediate-products",
+    order = "z"
   },
 -------------------------------------------------------------------------- COMBAT
   {
     type = "item-group",
     name = "combat",
-    order = "d",
+    order = "e",
     icon = "__base__/graphics/item-group/military.png",
     icon_size = 128,
-    icon_mipmaps = 2
   },
   {
     type = "item-subgroup",
@@ -213,24 +227,41 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "military-equipment",
+    name = "utility-equipment",
     group = "combat",
     order = "f"
   },
   {
     type = "item-subgroup",
-    name = "defensive-structure",
+    name = "military-equipment",
     group = "combat",
     order = "g"
+  },
+  {
+    type = "item-subgroup",
+    name = "defensive-structure",
+    group = "combat",
+    order = "h"
+  },
+  {
+    type = "item-subgroup",
+    name = "turret",
+    group = "combat",
+    order = "i"
+  },
+  {
+    type = "item-subgroup",
+    name = "ammo-category",
+    group = "combat",
+    order = "j"
   },
 -------------------------------------------------------------------------- FLUIDS
   {
     type = "item-group",
     name = "fluids",
-    order = "e",
+    order = "f",
     icon = "__base__/graphics/item-group/fluids.png",
     icon_size = 128,
-    icon_mipmaps = 2
   },
   {
     type = "item-subgroup",
@@ -242,10 +273,9 @@ data:extend(
   {
     type = "item-group",
     name = "signals",
-    order = "f",
+    order = "g",
     icon = "__base__/graphics/item-group/signals.png",
     icon_size = 128,
-    icon_mipmaps = 2
   },
   {
     type = "item-subgroup",
@@ -277,14 +307,31 @@ data:extend(
     group = "signals",
     order = "e"
   },
+  {
+    type = "item-subgroup",
+    name = "shapes",
+    group = "signals",
+    order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "arrows",
+    group = "signals",
+    order = "g"
+  },
+  {
+    type = "item-subgroup",
+    name = "additions",
+    group = "signals",
+    order = "h"
+  },
 -------------------------------------------------------------------------- ENEMIES
   {
     type = "item-group",
     name = "enemies",
     icon = "__core__/graphics/icons/category/enemies.png",
     icon_size = 128,
-    icon_mipmaps = 2,
-    order = "g"
+    order = "h"
   },
   {
     type = "item-subgroup",
@@ -298,8 +345,7 @@ data:extend(
     name = "environment",
     icon = "__core__/graphics/icons/category/environment.png",
     icon_size = 128,
-    icon_mipmaps = 2,
-    order = "h"
+    order = "l"
   },
   {
     type = "item-subgroup",
@@ -324,6 +370,18 @@ data:extend(
     name = "grass",
     group = "environment",
     order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "mineable-fluids",
+    group = "environment",
+    order = "ba"
+  },
+  {
+    type = "item-subgroup",
+    name = "obstacles",
+    group = "environment",
+    order = "bb"
   },
   {
     type = "item-subgroup",
@@ -433,13 +491,68 @@ data:extend(
     group = "environment",
     order = "e"
   },
+-------------------------------------------------------------------------- TILES
+  {
+    type = "item-group",
+    name = "tiles",
+    icon = "__core__/graphics/icons/category/tiles-editor.png",
+    icon_size = 128,
+    order = "i"
+  },
+  {
+    type = "item-subgroup",
+    name = "artificial-tiles",
+    group = "tiles",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "nauvis-tiles",
+    group = "tiles",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "vulcanus-tiles",
+    group = "tiles",
+    order = "c"
+  },
+  {
+    type = "item-subgroup",
+    name = "gleba-water-tiles",
+    group = "tiles",
+    order = "d-a"
+  },
+  {
+    type = "item-subgroup",
+    name = "gleba-tiles",
+    group = "tiles",
+    order = "d-b"
+  },
+  {
+    type = "item-subgroup",
+    name = "fulgora-tiles",
+    group = "tiles",
+    order = "e"
+  },
+  {
+    type = "item-subgroup",
+    name = "aquilo-tiles",
+    group = "tiles",
+    order = "f"
+  },
+  {
+    type = "item-subgroup",
+    name = "special-tiles",
+    group = "tiles",
+    order = "g"
+  },
 -------------------------------------------------------------------------- EFFECTS
   {
     type = "item-group",
     name = "effects",
     icon = "__base__/graphics/item-group/effects.png",
     icon_size = 128,
-    icon_mipmaps = 2,
     order = "y"
   },
   {
@@ -570,9 +683,21 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "explosions",
+    name = "enemy-death-explosions",
     group = "effects",
     order = "de"
+  },
+  {
+    type = "item-subgroup",
+    name = "fluid-explosions",
+    group = "effects",
+    order = "df"
+  },
+  {
+    type = "item-subgroup",
+    name = "explosions",
+    group = "effects",
+    order = "dg"
   },
   {
     type = "item-subgroup",
@@ -592,15 +717,31 @@ data:extend(
     name = "other",
     icon = "__core__/graphics/icons/category/unsorted.png",
     icon_size = 128,
-    icon_mipmaps = 2,
     order = "z"
   },
-
+  {
+    type = "item-subgroup",
+    name = "parameters",
+    group = "other",
+    order = "a"
+  },
+  {
+    type = "item-subgroup",
+    name = "qualities",
+    group = "other",
+    order = "b"
+  },
+  {
+    type = "item-subgroup",
+    name = "spawnables",
+    group = "other",
+    order = "c"
+  },
   {
     type = "item-subgroup",
     name = "other",
     group = "other",
-    order = "z"
+    order = "d"
   },
 }
 )

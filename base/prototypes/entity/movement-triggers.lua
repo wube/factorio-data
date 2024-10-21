@@ -3564,25 +3564,12 @@ movement_triggers.car =
 movement_triggers.character =
 {
   {
-    tiles = { "water-shallow" },
+    tiles = { "water-shallow", "water-shallow" },
 
     type = "create-particle",
     repeat_count = 3,
-    particle_name = "shallow-water-particle",
-    initial_height = 0.2,
-    speed_from_center = 0.01,
-    speed_from_center_deviation = 0.05,
-    initial_vertical_speed = 0.03,
-    initial_vertical_speed_deviation = 0.05,
-    offset_deviation = {{-0.2, -0.2}, {0.2, 0.2}},
-    tail_length = 3
-  },
-  {
-    tiles = { "water-mud" },
-
-    type = "create-particle",
-    repeat_count = 3,
-    particle_name = "shallow-water-2-particle",
+    particle_name = "tintable-water-particle",
+    apply_tile_tint = "primary",
     initial_height = 0.2,
     speed_from_center = 0.01,
     speed_from_center_deviation = 0.05,

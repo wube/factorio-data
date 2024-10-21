@@ -1,8 +1,8 @@
 {
   "name": "base",
-  "version": "1.1.111",
+  "version": "2.0.7",
   "title": "Base Mod",
-  "author": "Factorio team",
+  "author": "Wube Software",
   "contact": "dev@factorio.com",
   "homepage": "https://www.factorio.com",
   "dependencies": []

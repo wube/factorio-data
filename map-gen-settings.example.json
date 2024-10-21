@@ -1,14 +1,4 @@
 {
-  "_terrain_segmentation_comment": "The inverse of 'water scale' in the map generator GUI.",
-  "terrain_segmentation": 1,
-
-  "_water_comment":
-  [
-    "The equivalent to 'water coverage' in the map generator GUI. Higher coverage means more water in larger oceans.",
-    "Water level = 10 * log2(this value)"
-  ],
-  "water": 1,
-
   "_comment_width+height": "Width and height of map, in tiles; 0 means infinite",
   "width": 0,
   "height": 0,
@@ -25,8 +15,9 @@
     "iron-ore": {"frequency": 1, "size": 1, "richness": 1},
     "uranium-ore": {"frequency": 1, "size": 1, "richness": 1},
     "crude-oil": {"frequency": 1, "size": 1, "richness": 1},
-    "trees": {"frequency": 1, "size": 1, "richness": 1},
-    "enemy-base": {"frequency": 1, "size": 1, "richness": 1}
+    "water": {"frequency": 1, "size": 1},
+    "trees": {"frequency": 1, "size": 1},
+    "enemy-base": {"frequency": 1, "size": 1}
   },
 
   "cliff_settings":
@@ -52,20 +43,19 @@
   [
     "Overrides for property value generators (map type)",
     "Leave 'elevation' blank to get 'normal' terrain.",
-    "Use 'elevation': '0_16-elevation' to reproduce terrain from 0.16.",
-    "Use 'elevation': '0_17-island' to get an island.",
+    "Use 'elevation': 'elevation_island' to get an island.",
     "Moisture and terrain type are also controlled via this.",
-    "'control-setting:moisture:frequency:multiplier' is the inverse of the 'moisture scale' in the map generator GUI.",
-    "'control-setting:moisture:bias' is the 'moisture bias' in the map generator GUI.",
-    "'control-setting:aux:frequency:multiplier' is the inverse of the 'terrain type scale' in the map generator GUI.",
-    "'control-setting:aux:bias' is the 'terrain type bias' in the map generator GUI."
+    "'control:moisture:frequency' is the inverse of the 'moisture scale' in the map generator GUI.",
+    "'control:moisture:bias' is the 'moisture bias' in the map generator GUI.",
+    "'control:aux:frequency' is the inverse of the 'terrain type scale' in the map generator GUI.",
+    "'control:aux:bias' is the 'terrain type bias' in the map generator GUI."
   ],
   "property_expression_names":
   {
-    "control-setting:moisture:frequency:multiplier": "1",
-    "control-setting:moisture:bias": "0",
-    "control-setting:aux:frequency:multiplier": "1",
-    "control-setting:aux:bias": "0"
+    "control:moisture:frequency": "1",
+    "control:moisture:bias": "0",
+    "control:aux:frequency": "1",
+    "control:aux:bias": "0"
   },
 
   "starting_points":

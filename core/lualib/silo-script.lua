@@ -3,7 +3,8 @@ local mod_gui = require("mod-gui")
 local script_data =
 {
   finished = {},
-  removed_old_gui = true
+  removed_old_gui = true,
+  no_victory = false
 }
 
 local remove_old_frame = function(player)
@@ -26,13 +27,13 @@ local remove_old_gui = function()
 end
 
 local on_rocket_launched = function(event)
-  if global.no_victory then return end
+  if script_data.no_victory then return end
 
   local rocket = event.rocket
   if not (rocket and rocket.valid) then return end
 
-  local force = rocket.force  
-  
+  local force = rocket.force
+
   script_data.finished = script_data.finished or {}
   if script_data.finished[force.name] then
     return
@@ -40,6 +41,7 @@ local on_rocket_launched = function(event)
 
   script_data.finished[force.name] = true
 
+  game.reset_game_state()
   game.set_game_state
   {
     game_finished = true,
@@ -55,9 +57,11 @@ local add_remote_interface = function()
     remote.add_interface("silo_script",
     {
       set_no_victory = function(bool)
-        if type(bool) ~= "boolean" then error("Value for 'set_no_victory' must be a boolean") end
-        global.no_victory = bool
-      end
+        script_data.no_victory = bool
+      end,
+      get_no_victory = function()
+        return script_data.no_victory
+      end,
     })
   end
 end
@@ -78,14 +82,17 @@ silo_script.on_configuration_changed = function()
     log("Remove the old silo script GUI")
   end
   script_data.finished = script_data.finished or {}
+
+  script_data.no_victory = storage.no_victory
+  storage.no_victory = nil
 end
 
 silo_script.on_init = function()
-  global.silo_script = global.silo_script or script_data
+  storage.silo_script = storage.silo_script or script_data
 end
 
 silo_script.on_load = function()
-  script_data = global.silo_script or script_data
+  script_data = storage.silo_script or script_data
 end
 
 silo_script.get_events = function()

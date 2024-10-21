@@ -251,8 +251,6 @@ data:extend
       width = 253,
       height = 210,
       frame_count = 60,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {-0.265625, -0.09375},
       priority = "high",
       animation_speed = 0.25
@@ -266,8 +264,6 @@ data:extend
       width = 253,
       height = 152,
       frame_count = 60,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {-0.265625, 0.8125},
       priority = "high",
       animation_speed = 0.25
@@ -293,8 +289,6 @@ data:extend
       width = 253,
       height = 210,
       frame_count = 60,
-      axially_symmetrical = false,
-      direction_count = 1,
       shift = {-0.265625, -0.09375},
       priority = "high",
       animation_speed = 0.25
@@ -329,8 +323,6 @@ data:extend
        width = 253,
        height = 210,
        frame_count = 60,
-       axially_symmetrical = false,
-       direction_count = 1,
        shift = {-0.265625, -0.09375},
        priority = "high",
        animation_speed = 0.25

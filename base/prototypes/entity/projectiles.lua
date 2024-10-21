@@ -12,7 +12,6 @@ capsule_smoke =
     position = {0, 0},
     starting_frame = 3,
     starting_frame_deviation = 5,
-    starting_frame_speed_deviation = 5
   }
 }
 
@@ -22,6 +21,7 @@ data:extend(
     type = "projectile",
     name = "shotgun-pellet",
     flags = {"not-on-map"},
+    hidden = true,
     collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
     acceleration = 0,
     direction_only = true,
@@ -34,7 +34,7 @@ data:extend(
         target_effects =
         {
           type = "damage",
-          damage = {amount = 5, type = "physical"}
+          damage = {amount = 8, type = "physical"}
         }
       }
     },
@@ -42,7 +42,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 3,
       height = 50,
       priority = "high"
@@ -52,6 +51,7 @@ data:extend(
     type = "projectile",
     name = "grenade",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -116,24 +116,11 @@ data:extend(
       frame_count = 15,
       line_length = 8,
       animation_speed = 0.250,
-      width = 26,
-      height = 28,
-      shift = util.by_pixel(1, 1),
+      width = 48,
+      height = 54,
+      shift = util.by_pixel(0.5, 0.5),
       priority = "high",
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/grenade/hr-grenade.png",
-        draw_as_glow = true,
-        frame_count = 15,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 48,
-        height = 54,
-        shift = util.by_pixel(0.5, 0.5),
-        priority = "high",
-        scale = 0.5
-      }
-
+      scale = 0.5
     },
     shadow =
     {
@@ -141,24 +128,12 @@ data:extend(
       frame_count = 15,
       line_length = 8,
       animation_speed = 0.250,
-      width = 26,
-      height = 20,
+      width = 50,
+      height = 40,
       shift = util.by_pixel(2, 6),
       priority = "high",
       draw_as_shadow = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/grenade/hr-grenade-shadow.png",
-        frame_count = 15,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 50,
-        height = 40,
-        shift = util.by_pixel(2, 6),
-        priority = "high",
-        draw_as_shadow = true,
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
 
@@ -166,6 +141,7 @@ data:extend(
     type = "projectile",
     name = "defender-capsule",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -192,7 +168,6 @@ data:extend(
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule.png",
           flags = { "no-crop" },
-          frame_count = 1,
           width = 28,
           height = 20,
           priority = "high"
@@ -200,7 +175,6 @@ data:extend(
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-mask.png",
           flags = { "no-crop" },
-          frame_count = 1,
           width = 28,
           height = 20,
           priority = "high",
@@ -212,7 +186,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/defender-capsule-shadow.png",
       flags = { "no-crop" },
-      frame_count = 1,
       width = 26,
       height = 20,
       priority = "high"
@@ -223,6 +196,7 @@ data:extend(
     type = "projectile",
     name = "laser",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.03,
     action =
     {
@@ -249,7 +223,6 @@ data:extend(
       filename = "__base__/graphics/entity/laser/laser-to-tint-medium.png",
       draw_as_glow = true,
       tint = {r=1.0, g=0.0, b=0.0},
-      frame_count = 1,
       width = 12,
       height = 33,
       priority = "high",
@@ -260,6 +233,7 @@ data:extend(
     type = "projectile",
     name = "blue-laser",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.02,
     action =
     {
@@ -285,7 +259,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/blue-laser/blue-laser.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 7,
       height = 14,
       priority = "high"
@@ -295,7 +268,8 @@ data:extend(
     type = "projectile",
     name = "rocket",
     flags = {"not-on-map"},
-    acceleration = 0.005,
+    hidden = true,
+    acceleration = 0.01,
     turn_speed = 0.003,
     turning_speed_increases_exponentially_with_projectile_speed = true,
     action =
@@ -337,48 +311,17 @@ data:extend(
       }
     },
     --light = {intensity = 0.5, size = 4},
-    animation =
-    {
-      filename = "__base__/graphics/entity/rocket/rocket.png",
-      draw_as_glow = true,
-      frame_count = 8,
-      line_length = 8,
-      width = 9,
-      height = 35,
-      shift = {0, 0},
-      priority = "high"
-    },
-    shadow =
-    {
-      filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
-      frame_count = 1,
-      width = 7,
-      height = 24,
-      priority = "high",
-      shift = {0, 0}
-    },
-    smoke =
-    {
-      {
-        name = "smoke-fast",
-        deviation = {0.15, 0.15},
-        frequency = 1,
-        position = {0, 1},
-        slow_down_factor = 1,
-        starting_frame = 3,
-        starting_frame_deviation = 5,
-        starting_frame_speed = 0,
-        starting_frame_speed_deviation = 5
-      }
-    }
+    animation = require("__base__.prototypes.entity.rocket-projectile-pictures").animation({1, 0.8, 0.3}),
+    shadow = require("__base__.prototypes.entity.rocket-projectile-pictures").shadow,
+    smoke = require("__base__.prototypes.entity.rocket-projectile-pictures").smoke,
   },
-
 
   {
     type = "projectile",
     name = "explosive-rocket",
     flags = {"not-on-map"},
-    acceleration = 0.005,
+    hidden = true,
+    acceleration = 0.01,
     turn_speed = 0.003,
     turning_speed_increases_exponentially_with_projectile_speed = true,
     action =
@@ -442,46 +385,15 @@ data:extend(
         }
       }
     },
-    --light = {intensity = 0.5, size = 4},
-    animation =
-    {
-      filename = "__base__/graphics/entity/rocket/rocket.png",
-      draw_as_glow = true,
-      frame_count = 8,
-      line_length = 8,
-      width = 9,
-      height = 35,
-      shift = {0, 0},
-      priority = "high"
-    },
-    shadow =
-    {
-      filename = "__base__/graphics/entity/rocket/rocket-shadow.png",
-      frame_count = 1,
-      width = 7,
-      height = 24,
-      priority = "high",
-      shift = {0, 0}
-    },
-    smoke =
-    {
-      {
-        name = "smoke-fast",
-        deviation = {0.15, 0.15},
-        frequency = 1,
-        position = {0, 1},
-        slow_down_factor = 1,
-        starting_frame = 3,
-        starting_frame_deviation = 5,
-        starting_frame_speed = 0,
-        starting_frame_speed_deviation = 5
-      }
-    }
+    animation = require("__base__.prototypes.entity.rocket-projectile-pictures").animation({1, 0.2, 0.2}),
+    shadow = require("__base__.prototypes.entity.rocket-projectile-pictures").shadow,
+    smoke = require("__base__.prototypes.entity.rocket-projectile-pictures").smoke,
   },
   {
     type = "projectile",
     name = "piercing-shotgun-pellet",
     flags = {"not-on-map"},
+    hidden = true,
     collision_box = {{-0.05, -0.25}, {0.05, 0.25}},
     acceleration = 0,
     direction_only = true,
@@ -502,7 +414,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/piercing-bullet/piercing-bullet.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 3,
       height = 50,
       priority = "high"
@@ -512,10 +423,11 @@ data:extend(
     type = "projectile",
     name = "cannon-projectile",
     flags = {"not-on-map"},
+    hidden = true,
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
     direction_only = true,
-    piercing_damage = 300,
+    piercing_damage = 1000,
     action =
     {
       type = "direct",
@@ -526,7 +438,7 @@ data:extend(
         {
           {
             type = "damage",
-            damage = {amount = 200 , type = "physical"}
+            damage = {amount = 1000 , type = "physical"}
           },
           {
             type = "damage",
@@ -559,7 +471,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 3,
       height = 50,
       priority = "high"
@@ -569,11 +480,12 @@ data:extend(
     type = "artillery-projectile",
     name = "artillery-projectile",
     flags = {"not-on-map"},
+    hidden = true,
     reveal_map = true,
-    map_color = {r=1, g=1, b=0},
+    map_color = {1, 1, 0},
     picture =
     {
-      filename = "__base__/graphics/entity/artillery-projectile/hr-shell.png",
+      filename = "__base__/graphics/entity/artillery-projectile/shell.png",
       draw_as_glow = true,
       width = 64,
       height = 64,
@@ -581,7 +493,7 @@ data:extend(
     },
     shadow =
     {
-      filename = "__base__/graphics/entity/artillery-projectile/hr-shell-shadow.png",
+      filename = "__base__/graphics/entity/artillery-projectile/shell-shadow.png",
       width = 64,
       height = 64,
       scale = 0.5
@@ -590,7 +502,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/artillery-projectile/artillery-shoot-map-visualization.png",
       flags = { "icon" },
-      frame_count = 1,
       width = 64,
       height = 64,
       priority = "high",
@@ -617,11 +528,11 @@ data:extend(
                 {
                   {
                     type = "damage",
-                    damage = {amount = 500 , type = "physical"}
+                    damage = {amount = 1000 , type = "physical"}
                   },
                   {
                     type = "damage",
-                    damage = {amount = 500 , type = "explosion"}
+                    damage = {amount = 1000 , type = "explosion"}
                   }
                 }
               }
@@ -684,10 +595,11 @@ data:extend(
     type = "projectile",
     name = "uranium-cannon-projectile",
     flags = {"not-on-map"},
+    hidden = true,
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
     direction_only = true,
-    piercing_damage = 600,
+    piercing_damage = 2200,
     action =
     {
       type = "direct",
@@ -698,7 +610,7 @@ data:extend(
         {
           {
             type = "damage",
-            damage = {amount = 400 , type = "physical"}
+            damage = {amount = 2000 , type = "physical"}
           },
           {
             type = "damage",
@@ -731,7 +643,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 3,
       height = 50,
       priority = "high"
@@ -741,6 +652,7 @@ data:extend(
     type = "projectile",
     name = "explosive-uranium-cannon-projectile",
     flags = {"not-on-map"},
+    hidden = true,
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
     piercing_damage = 150,
@@ -824,7 +736,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 3,
       height = 50,
       priority = "high"
@@ -834,6 +745,7 @@ data:extend(
     type = "projectile",
     name = "explosive-cannon-projectile",
     flags = {"not-on-map"},
+    hidden = true,
     collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
     acceleration = 0,
     piercing_damage = 100,
@@ -917,7 +829,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/bullet/bullet.png",
       draw_as_glow = true,
-      frame_count = 1,
       width = 3,
       height = 50,
       priority = "high"
@@ -927,6 +838,7 @@ data:extend(
     type = "projectile",
     name = "cluster-grenade",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -972,24 +884,11 @@ data:extend(
       frame_count = 15,
       line_length = 8,
       animation_speed = 0.250,
-      width = 26,
-      height = 28,
-      shift = util.by_pixel(1, 1),
+      width = 48,
+      height = 54,
+      shift = util.by_pixel(0.5, 0.5),
       priority = "high",
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/cluster-grenade/hr-cluster-grenade.png",
-        draw_as_glow = true,
-        frame_count = 15,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 48,
-        height = 54,
-        shift = util.by_pixel(0.5, 0.5),
-        priority = "high",
-        scale = 0.5
-      }
-
+      scale = 0.5
     },
     shadow =
     {
@@ -997,30 +896,19 @@ data:extend(
       frame_count = 15,
       line_length = 8,
       animation_speed = 0.250,
-      width = 26,
-      height = 20,
+      width = 50,
+      height = 40,
       shift = util.by_pixel(2, 6),
       priority = "high",
       draw_as_shadow = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/grenade/hr-grenade-shadow.png",
-        frame_count = 15,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 50,
-        height = 40,
-        shift = util.by_pixel(2, 6),
-        priority = "high",
-        draw_as_shadow = true,
-        scale = 0.5
-      }
+      scale = 0.5
     }
   },
   {
     type = "projectile",
     name = "distractor-capsule",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -1048,7 +936,6 @@ data:extend(
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule.png",
           flags = { "no-crop" },
-          frame_count = 1,
           width = 36,
           height = 30,
           priority = "high"
@@ -1056,7 +943,6 @@ data:extend(
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule-mask.png",
           flags = { "no-crop" },
-          frame_count = 1,
           width = 36,
           height = 30,
           priority = "high",
@@ -1068,7 +954,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/distractor-capsule-shadow.png",
       flags = { "no-crop" },
-      frame_count = 1,
       width = 40,
       height = 26,
       priority = "high"
@@ -1079,6 +964,7 @@ data:extend(
     type = "projectile",
     name = "destroyer-capsule",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -1104,7 +990,6 @@ data:extend(
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule.png",
           flags = { "no-crop" },
-          frame_count = 1,
           width = 42,
           height = 34,
           priority = "high"
@@ -1112,7 +997,6 @@ data:extend(
         {
           filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule-mask.png",
           flags = { "no-crop" },
-          frame_count = 1,
           width = 42,
           height = 34,
           priority = "high",
@@ -1124,7 +1008,6 @@ data:extend(
     {
       filename = "__base__/graphics/entity/combat-robot-capsule/destroyer-capsule-shadow.png",
       flags = { "no-crop" },
-      frame_count = 1,
       width = 48,
       height = 32,
       priority = "high"
@@ -1135,6 +1018,7 @@ data:extend(
     type = "projectile",
     name = "poison-capsule",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -1174,24 +1058,11 @@ data:extend(
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
-      width = 29,
-      height = 29,
+      width = 58,
+      height = 59,
       shift = util.by_pixel(1, 0.5),
       priority = "high",
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/poison-capsule/hr-poison-capsule.png",
-        draw_as_glow = true,
-        frame_count = 16,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 58,
-        height = 59,
-        shift = util.by_pixel(1, 0.5),
-        priority = "high",
-        scale = 0.5
-      }
-
+      scale = 0.5
     },
     shadow =
     {
@@ -1199,24 +1070,12 @@ data:extend(
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
-      width = 27,
-      height = 21,
+      width = 54,
+      height = 42,
       shift = util.by_pixel(1, 2),
       priority = "high",
       draw_as_shadow = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/poison-capsule/hr-poison-capsule-shadow.png",
-        frame_count = 16,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 54,
-        height = 42,
-        shift = util.by_pixel(1, 2),
-        priority = "high",
-        draw_as_shadow = true,
-        scale = 0.5
-      }
+      scale = 0.5
     },
     smoke =
     {
@@ -1227,7 +1086,6 @@ data:extend(
         position = {0, 0},
         starting_frame = 3,
         starting_frame_deviation = 5,
-        starting_frame_speed_deviation = 5
       }
     }
   },
@@ -1235,6 +1093,7 @@ data:extend(
     type = "projectile",
     name = "slowdown-capsule",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -1277,24 +1136,11 @@ data:extend(
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
-      width = 32,
-      height = 30,
-      shift = util.by_pixel(1, 0),
+      width = 60,
+      height = 60,
+      shift = util.by_pixel(0.5, 0.5),
       priority = "high",
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/slowdown-capsule/hr-slowdown-capsule.png",
-        draw_as_glow = true,
-        frame_count = 16,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 60,
-        height = 60,
-        shift = util.by_pixel(0.5, 0.5),
-        priority = "high",
-        scale = 0.5
-      }
-
+      scale = 0.5
     },
     shadow =
     {
@@ -1302,24 +1148,12 @@ data:extend(
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
-      width = 32,
-      height = 24,
-      shift = util.by_pixel(2, 13),
+      width = 64,
+      height = 48,
+      shift = util.by_pixel(2, 13.5),
       priority = "high",
       draw_as_shadow = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/slowdown-capsule/hr-slowdown-capsule-shadow.png",
-        frame_count = 16,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 64,
-        height = 48,
-        shift = util.by_pixel(2, 13.5),
-        priority = "high",
-        draw_as_shadow = true,
-        scale = 0.5
-      }
+      scale = 0.5
     },
     smoke = capsule_smoke
   },
@@ -1327,6 +1161,7 @@ data:extend(
     type = "projectile",
     name = "cliff-explosives",
     flags = {"not-on-map"},
+    hidden = true,
     acceleration = 0.005,
     action =
     {
@@ -1349,7 +1184,7 @@ data:extend(
             {
               type = "destroy-cliffs",
               radius = 1.5,
-              explosion = "explosion"
+              explosion_at_trigger = "explosion"
             },
             {
               type = "invoke-tile-trigger",
@@ -1377,24 +1212,11 @@ data:extend(
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
-      width = 26,
-      height = 30,
-      shift = util.by_pixel(0, -4),
+      width = 52,
+      height = 58,
+      shift = util.by_pixel(0.5, -4.5),
       priority = "high",
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/cliff-explosives/hr-cliff-explosives.png",
-        draw_as_glow = true,
-        frame_count = 16,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 52,
-        height = 58,
-        shift = util.by_pixel(0.5, -4.5),
-        priority = "high",
-        scale = 0.5
-      }
-
+      scale = 0.5
     },
     shadow =
     {
@@ -1402,24 +1224,12 @@ data:extend(
       frame_count = 16,
       line_length = 8,
       animation_speed = 0.250,
-      width = 38,
-      height = 22,
-      shift = util.by_pixel(-3, 4),
+      width = 74,
+      height = 42,
+      shift = util.by_pixel(-3.5, 4),
       priority = "high",
       draw_as_shadow = true,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/cliff-explosives/hr-cliff-explosives-shadow.png",
-        frame_count = 16,
-        line_length = 8,
-        animation_speed = 0.250,
-        width = 74,
-        height = 42,
-        shift = util.by_pixel(-3.5, 4),
-        priority = "high",
-        draw_as_shadow = true,
-        scale = 0.5
-      }
+      scale = 0.5
     }
   }
 }

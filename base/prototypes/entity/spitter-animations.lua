@@ -4,178 +4,62 @@ function spitterattackanimation(scale, tint1, tint2)
   {
     layers=
     {
-      {
-        filenames =
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-attack",
         {
-          "__base__/graphics/entity/spitter/spitter-attack-01.png",
-          "__base__/graphics/entity/spitter/spitter-attack-02.png",
-          "__base__/graphics/entity/spitter/spitter-attack-03.png",
-          "__base__/graphics/entity/spitter/spitter-attack-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        line_length = 7,
-        width = 156,
-        height = 132,
-        frame_count = 14,
-        direction_count = 16,
-        run_mode = "forward-then-backward",
-        animation_speed = 0.4,
-        shift = util.mul_shift(util.by_pixel(0, -18), scale),
-        scale = scale,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-attack-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 312,
-          height = 264,
+          slice = 6,
           frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(0, -18), scale),
           direction_count = 16,
+          scale = scale * 0.5,
           run_mode = "forward-then-backward",
           animation_speed = 0.4,
-          scale = 0.5 * scale
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-attack-mask1",
         {
-          "__base__/graphics/entity/spitter/spitter-attack-mask1-01.png",
-          "__base__/graphics/entity/spitter/spitter-attack-mask1-02.png",
-          "__base__/graphics/entity/spitter/spitter-attack-mask1-03.png",
-          "__base__/graphics/entity/spitter/spitter-attack-mask1-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        flags = { "mask" },
-        line_length = 7,
-        width = 156,
-        height = 126,
-        frame_count = 14,
-        direction_count = 16,
-        run_mode = "forward-then-backward",
-        animation_speed = 0.4,
-        shift = util.mul_shift(util.by_pixel(0, -14), scale),
-        scale = scale,
-        tint = tint1,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask1-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask1-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask1-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask1-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 316,
-          height = 246,
+          slice = 6,
           frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(-1, -13), scale),
           direction_count = 16,
+          scale = scale * 0.5,
           run_mode = "forward-then-backward",
           animation_speed = 0.4,
-          scale = 0.5 * scale,
-          tint = tint1
+          tint = tint1,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-attack-mask2",
         {
-          "__base__/graphics/entity/spitter/spitter-attack-mask2-01.png",
-          "__base__/graphics/entity/spitter/spitter-attack-mask2-02.png",
-          "__base__/graphics/entity/spitter/spitter-attack-mask2-03.png",
-          "__base__/graphics/entity/spitter/spitter-attack-mask2-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        flags = { "mask" },
-        line_length = 7,
-        width = 160,
-        height = 124,
-        frame_count = 14,
-        direction_count = 16,
-        run_mode = "forward-then-backward",
-        animation_speed = 0.4,
-        shift = util.mul_shift(util.by_pixel(-2, -14), scale),
-        scale = scale,
-        tint = tint2,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask2-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask2-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask2-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-mask2-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 310,
-          height = 244,
+          slice = 6,
           frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(0, -13), scale),
           direction_count = 16,
+          scale = scale * 0.5,
           run_mode = "forward-then-backward",
           animation_speed = 0.4,
-          scale = 0.5 * scale,
-          tint = tint2
+          tint = tint2,
+          tint_as_overlay = true,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-attack-shadow",
         {
-          "__base__/graphics/entity/spitter/spitter-attack-shadow-01.png",
-          "__base__/graphics/entity/spitter/spitter-attack-shadow-02.png",
-          "__base__/graphics/entity/spitter/spitter-attack-shadow-03.png",
-          "__base__/graphics/entity/spitter/spitter-attack-shadow-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        line_length = 7,
-        width = 188,
-        height = 110,
-        frame_count = 14,
-        shift = util.mul_shift(util.by_pixel(22, 0), scale),
-        direction_count = 16,
-        run_mode = "forward-then-backward",
-        animation_speed = 0.4,
-        scale = scale,
-        draw_as_shadow = true,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-attack-shadow-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-shadow-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-shadow-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-attack-shadow-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 370,
-          height = 224,
+          slice = 6,
           frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(23, -1), scale),
           direction_count = 16,
+          scale = scale * 0.5,
           run_mode = "forward-then-backward",
           animation_speed = 0.4,
-          scale = 0.5 * scale,
-          draw_as_shadow = true
+          draw_as_shadow = true,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      }
+      )
     }
   }
 end
@@ -201,162 +85,56 @@ function spitterrunanimation(scale, tint1, tint2)
   {
     layers=
     {
-      {
-        filenames =
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-run",
         {
-          "__base__/graphics/entity/spitter/spitter-run-01.png",
-          "__base__/graphics/entity/spitter/spitter-run-02.png",
-          "__base__/graphics/entity/spitter/spitter-run-03.png",
-          "__base__/graphics/entity/spitter/spitter-run-04.png"
-        },
-        slice = 8,
-        lines_per_file = 8,
-        line_length = 8,
-        width = 124,
-        height = 110,
-        frame_count = 16,
-        direction_count = 16,
-        shift = util.mul_shift(util.by_pixel(0, -12), scale),
-        scale = scale,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-run-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-04.png"
-          },
-          slice = 8,
-          lines_per_file = 8,
-          line_length = 8,
-          width = 248,
-          height = 220,
+          slice = 6,
           frame_count = 16,
-          shift = util.mul_shift(util.by_pixel(0, -12), scale),
           direction_count = 16,
-          scale = 0.5 * scale
+          scale = scale * 0.5,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-run-mask1",
         {
-          "__base__/graphics/entity/spitter/spitter-run-mask1-01.png",
-          "__base__/graphics/entity/spitter/spitter-run-mask1-02.png",
-          "__base__/graphics/entity/spitter/spitter-run-mask1-03.png",
-          "__base__/graphics/entity/spitter/spitter-run-mask1-04.png"
-        },
-        slice = 8,
-        lines_per_file = 8,
-        flags = { "mask" },
-        line_length = 8,
-        width = 124,
-        height = 100,
-        frame_count = 16,
-        direction_count = 16,
-        shift = util.mul_shift(util.by_pixel(0, -18), scale),
-        scale = scale,
-        tint = tint1,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask1-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask1-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask1-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask1-04.png"
-          },
-          slice = 8,
-          lines_per_file = 8,
-          line_length = 8,
-          width = 248,
-          height = 194,
+          slice = 6,
           frame_count = 16,
-          shift = util.mul_shift(util.by_pixel(0, -17), scale),
           direction_count = 16,
-          scale = 0.5 * scale,
-          tint = tint1
+          scale = scale * 0.5,
+          flags = { "mask" },
+          tint = tint1,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-run-mask2",
         {
-          "__base__/graphics/entity/spitter/spitter-run-mask2-01.png",
-          "__base__/graphics/entity/spitter/spitter-run-mask2-02.png",
-          "__base__/graphics/entity/spitter/spitter-run-mask2-03.png",
-          "__base__/graphics/entity/spitter/spitter-run-mask2-04.png"
-        },
-        slice = 8,
-        lines_per_file = 8,
-        flags = { "mask" },
-        line_length = 8,
-        width = 124,
-        height = 98,
-        frame_count = 16,
-        direction_count = 16,
-        shift = util.mul_shift(util.by_pixel(0, -18), scale),
-        scale = scale,
-        tint = tint2,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask2-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask2-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask2-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-mask2-04.png"
-          },
-          slice = 8,
-          lines_per_file = 8,
-          line_length = 8,
-          width = 252,
-          height = 196,
+          slice = 6,
           frame_count = 16,
-          shift = util.mul_shift(util.by_pixel(-1, -18), scale),
           direction_count = 16,
-          scale = 0.5 * scale,
-          tint = tint2
+          scale = scale * 0.5,
+          flags = { "mask" },
+          tint = tint2,
+          tint_as_overlay = true,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-run-shadow",
         {
-          "__base__/graphics/entity/spitter/spitter-run-shadow-01.png",
-          "__base__/graphics/entity/spitter/spitter-run-shadow-02.png",
-          "__base__/graphics/entity/spitter/spitter-run-shadow-03.png",
-          "__base__/graphics/entity/spitter/spitter-run-shadow-04.png"
-        },
-        slice = 8,
-        lines_per_file = 8,
-        line_length = 8,
-        width = 154,
-        height = 88,
-        frame_count = 16,
-        shift = util.mul_shift(util.by_pixel(16, 0), scale),
-        direction_count = 16,
-        scale = scale,
-        draw_as_shadow = true,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-run-shadow-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-shadow-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-shadow-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-run-shadow-04.png"
-          },
-          slice = 8,
-          lines_per_file = 8,
-          line_length = 8,
-          width = 306,
-          height = 180,
+          slice = 6,
           frame_count = 16,
-          shift = util.mul_shift(util.by_pixel(16, -1), scale),
           direction_count = 16,
-          scale = 0.5 * scale,
-          draw_as_shadow = true
+          scale = scale * 0.5,
+          draw_as_shadow = true,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      }
+      )
     }
   }
 end
@@ -366,172 +144,131 @@ function spitterdyinganimation(scale, tint1, tint2)
   {
     layers=
     {
-      {
-        filenames =
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-die",
         {
-          "__base__/graphics/entity/spitter/spitter-die-01.png",
-          "__base__/graphics/entity/spitter/spitter-die-02.png",
-          "__base__/graphics/entity/spitter/spitter-die-03.png",
-          "__base__/graphics/entity/spitter/spitter-die-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        line_length = 7,
-        width = 142,
-        height = 128,
-        frame_count = 14,
-        direction_count = 16,
-        shift= util.mul_shift(util.by_pixel(0, -16), scale),
-        scale = scale,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-die-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 282,
-          height = 254,
-          frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(0, -15), scale),
+          slice = 6,
+          frame_count = 15,
           direction_count = 16,
-          scale = 0.5 * scale
+          scale = scale * 0.5,
+          multiply_shift = scale,
+          flags = {"corpse-decay"},
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-die-mask1",
         {
-          "__base__/graphics/entity/spitter/spitter-die-mask1-01.png",
-          "__base__/graphics/entity/spitter/spitter-die-mask1-02.png",
-          "__base__/graphics/entity/spitter/spitter-die-mask1-03.png",
-          "__base__/graphics/entity/spitter/spitter-die-mask1-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        flags = { "mask" },
-        line_length = 7,
-        width = 130,
-        height = 114,
-        frame_count = 14,
-        direction_count = 16,
-        shift = util.mul_shift(util.by_pixel(0, -16), scale),
-        scale = scale,
-        tint = tint1,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask1-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask1-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask1-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask1-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 258,
-          height = 228,
-          frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(0, -16), scale),
+          slice = 6,
+          frame_count = 15,
           direction_count = 16,
-          scale = 0.5 * scale,
-          tint = tint1
+          scale = scale * 0.5,
+          tint = tint1,
+          multiply_shift = scale,
+          flags = {"corpse-decay"},
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-die-mask2",
         {
-          "__base__/graphics/entity/spitter/spitter-die-mask2-01.png",
-          "__base__/graphics/entity/spitter/spitter-die-mask2-02.png",
-          "__base__/graphics/entity/spitter/spitter-die-mask2-03.png",
-          "__base__/graphics/entity/spitter/spitter-die-mask2-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        flags = { "mask" },
-        line_length = 7,
-        width = 128,
-        height = 114,
-        frame_count = 14,
-        direction_count = 16,
-        shift = util.mul_shift(util.by_pixel(0, -16), scale),
-        scale = scale,
-        tint = tint2,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask2-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask2-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask2-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-mask2-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 260,
-          height = 228,
-          frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(-1, -16), scale),
+          slice = 6,
+          frame_count = 15,
           direction_count = 16,
-          scale = 0.5 * scale,
-          tint = tint2
+          scale = scale * 0.5,
+          tint = tint2,
+          tint_as_overlay = true,
+          multiply_shift = scale,
+          flags = {"corpse-decay"},
+          surface = "nauvis",
+          usage = "enemy"
         }
-      },
-      {
-        filenames =
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-die-shadow",
         {
-          "__base__/graphics/entity/spitter/spitter-die-shadow-01.png",
-          "__base__/graphics/entity/spitter/spitter-die-shadow-02.png",
-          "__base__/graphics/entity/spitter/spitter-die-shadow-03.png",
-          "__base__/graphics/entity/spitter/spitter-die-shadow-04.png"
-        },
-        slice = 7,
-        lines_per_file = 8,
-        line_length = 7,
-        width = 180,
-        height = 104,
-        frame_count = 14,
-        shift = util.mul_shift(util.by_pixel(18, -2), scale),
-        direction_count = 16,
-        scale = scale,
-        draw_as_shadow = true,
-        hr_version =
-        {
-          filenames =
-          {
-            "__base__/graphics/entity/spitter/hr-spitter-die-shadow-01.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-shadow-02.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-shadow-03.png",
-            "__base__/graphics/entity/spitter/hr-spitter-die-shadow-04.png"
-          },
-          slice = 7,
-          lines_per_file = 8,
-          line_length = 7,
-          width = 356,
-          height = 204,
-          frame_count = 14,
-          shift = util.mul_shift(util.by_pixel(19, -1), scale),
+          slice = 6,
+          frame_count = 15,
           direction_count = 16,
-          scale = 0.5 * scale,
-          draw_as_shadow = true
+          scale = scale * 0.5,
+          draw_as_shadow = true,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "enemy"
         }
-      }
+      )
+    }
+  }
+end
+
+function spitter_decay_animation(scale, tint1, tint2)
+  return
+  {
+
+    layers=
+    {
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-decay",
+        {
+          slice = 6,
+          frame_count = 24,
+          direction_count = 16,
+          scale = scale * 0.5,
+          multiply_shift = scale,
+          flags = {"corpse-decay"},
+          surface = "nauvis",
+          usage = "corpse-decay"
+        }
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-decay-mask1",
+        {
+          slice = 6,
+          frame_count = 24,
+          direction_count = 16,
+          scale = scale * 0.5,
+          tint = tint1,
+          multiply_shift = scale,
+          flags = {"corpse-decay"},
+          surface = "nauvis",
+          usage = "corpse-decay"
+        }
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-decay-mask2",
+        {
+          slice = 6,
+          frame_count = 24,
+          direction_count = 16,
+          scale = scale * 0.5,
+          tint = tint2,
+          tint_as_overlay = true,
+          multiply_shift = scale,
+          flags = {"corpse-decay"},
+          surface = "nauvis",
+          usage = "corpse-decay"
+        }
+      ),
+      util.sprite_load("__base__/graphics/entity/spitter/spitter-decay-shadow",
+        {
+          slice = 6,
+          frame_count = 24,
+          direction_count = 16,
+          scale = scale * 0.5,
+          draw_as_shadow = true,
+          multiply_shift = scale,
+          surface = "nauvis",
+          usage = "corpse-decay"
+        }
+      ),
     }
   }
 end
 
 function add_spitter_die_animation(scale, tint1, tint2, corpse)
   corpse.animation = spitterdyinganimation(scale, tint1, tint2)
-  corpse.dying_speed = 0.04
+  corpse.decay_animation = spitter_decay_animation(scale, tint1, tint2)
+  corpse.decay_frame_transition_duration = 6 * 60
+  corpse.use_decay_layer = true
+  corpse.dying_speed = (1 / 25) * (0.27 + 0.1 / scale)
   corpse.time_before_removed = 15 * 60 * 60
   corpse.direction_shuffle = { { 1, 2, 3, 16 }, { 4, 5, 6, 7 }, { 8, 9, 10, 11 }, { 12, 13, 14, 15 } }
-  corpse.shuffle_directions_at_frame = 4
+  corpse.shuffle_directions_at_frame = 0
   corpse.final_render_layer = "lower-object-above-shadow"
 
   corpse.ground_patch_render_layer = "decals" -- "transport-belt-integration"
@@ -545,31 +282,16 @@ function add_spitter_die_animation(scale, tint1, tint2, corpse)
   corpse.ground_patch =
   {
     sheet =
-    {
-      filename = "__base__/graphics/entity/biter/blood-puddle-var-main.png",
-      flags = { "low-object" },
-      line_length = 4,
-      variation_count = 4,
-      frame_count = 1,
-      width = 84,
-      height = 68,
-      shift = util.by_pixel(1, 0),
-      tint = {r = 0.6 * d * a, g = 0.1 * d * a, b = 0.6 * d * a, a = a},
-      scale = scale,
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/biter/hr-blood-puddle-var-main.png",
-        flags = { "low-object" },
-        line_length = 4,
-        variation_count = 4,
-        frame_count = 1,
-        width = 164,
-        height = 134,
-        shift = util.by_pixel(-0.5,-0.5),
-        tint = {r = 0.6 * d * a, g = 0.1 * d * a, b = 0.6 * d * a, a = a},
-        scale = 0.5 * scale
-      }
-    }
+      util.sprite_load("__base__/graphics/entity/biter/blood-puddle-var-main",
+        {
+          flags = { "low-object" },
+          variation_count = 4,
+          scale = scale * 0.5,
+          tint = {r = 0.6 * d * a, g = 0.1 * d * a, b = 0.6 * d * a, a = a},
+          multiply_shift = scale,
+        }
+      )
+
   }
   return corpse
 end
@@ -585,7 +307,7 @@ function spitter_water_reflection(scale)
       height = 32,
       shift = util.by_pixel(5, 15),
       scale = 5 * scale,
-      variation_count = 1
+      variation_count = 1,
     },
     rotate = true,
     orientation_to_variation = false

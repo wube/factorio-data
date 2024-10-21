@@ -9,5 +9,9 @@ data:extend(
   {
     type = "trigger-target-type",
     name = "ground-unit"
+  },
+  {
+    type = "trigger-target-type",
+    name = "flying-robot"
   }
 })

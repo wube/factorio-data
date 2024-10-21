@@ -8,9 +8,6 @@ function table.deepcopy(object)
   local function _copy(object)
     if type(object) ~= "table" then
       return object
-    -- don't copy factorio rich objects
-    elseif object.__self then
-      return object
     elseif lookup_table[object] then
       return lookup_table[object]
     end
@@ -123,14 +120,22 @@ function util.get_color_with_alpha(color, alpha, normalized_alpha)
 end
 
 util.direction_vectors = {
-  [defines.direction.north]     = { 0, -1},
-  [defines.direction.northeast] = { 1, -1},
-  [defines.direction.east]      = { 1,  0},
-  [defines.direction.southeast] = { 1,  1},
-  [defines.direction.south]     = { 0,  1},
-  [defines.direction.southwest] = {-1,  1},
-  [defines.direction.west]      = {-1,  0},
-  [defines.direction.northwest] = {-1, -1},
+  [defines.direction.north]          = { 0, -1 },
+  [defines.direction.northnortheast] = { 1, -2 },
+  [defines.direction.northeast]      = { 1, -1 },
+  [defines.direction.eastnortheast]  = { 2, -1 },
+  [defines.direction.east]           = { 1,  0 },
+  [defines.direction.eastsoutheast]  = { 2,  1 },
+  [defines.direction.southeast]      = { 1,  1 },
+  [defines.direction.southsoutheast] = { 1,  2 },
+  [defines.direction.south]          = { 0,  1 },
+  [defines.direction.southsouthwest] = {-1,  2 },
+  [defines.direction.southwest]      = {-1,  1 },
+  [defines.direction.westsouthwest]  = {-2,  1 },
+  [defines.direction.west]           = {-1,  0 },
+  [defines.direction.westnorthwest]  = {-2, -1 },
+  [defines.direction.northwest]      = {-1, -1 },
+  [defines.direction.northnorthwest] = {-1, -2 },
 }
 
 function util.moveposition(position, direction, distance)
@@ -140,9 +145,17 @@ function util.moveposition(position, direction, distance)
   return {position[1] + direction_vector[1] * distance, position[2] + direction_vector[2] * distance}
 end
 
+-- orientation of 1 = 360 degrees
+function util.rotate_position(position, orientation)
+  local x = position[1] or position.x
+  local y = position[2] or position.y
+  local radians = orientation * 2 * math.pi
+  return {x = y * math.sin(radians) + x * math.cos(radians), y = y * math.cos(radians) + x * math.sin(radians)}
+end
+
 function util.oppositedirection(direction)
   if not tonumber(direction) then error(direction .. " is not a valid direction") end
-  return (direction + 4) % 8
+  return (direction + 8) % 16
 end
 
 function util.multiplystripes(count, stripes)
@@ -166,9 +179,6 @@ end
 function util.foreach_sprite_definition(table_, fun_)
   --for k, tab in pairs(table_) do
     fun_(table_)
-    if table_.hr_version then
-      fun_(table_.hr_version)
-    end
   --end
   return table_
 end
@@ -212,7 +222,7 @@ function util.format_number(amount, append_suffix)
       end
     end
   end
-  local formatted, k = amount
+  local formatted, k = amount, nil
   while true do
     formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
     if (k==0) then
@@ -254,7 +264,7 @@ end
 
 util.insert_safe = function(entity, item_dict)
   if not (entity and entity.valid and item_dict) then return end
-  local items = game.item_prototypes
+  local items = prototypes.item
   local insert = entity.insert
   for name, count in pairs (item_dict) do
     if items[name] then
@@ -267,7 +277,7 @@ end
 
 util.remove_safe = function(entity, item_dict)
   if not (entity and entity.valid and item_dict) then return end
-  local items = game.item_prototypes
+  local items = prototypes.item
   local remove = entity.remove_item
   for name, count in pairs (item_dict) do
     if items[name] then
@@ -302,26 +312,29 @@ util.string_starts_with = function(str, start)
   return str.sub(str, 1, string.len(start)) == start
 end
 
-util.online_players = function()
-  log("But why?")
-  return game.connected_players
+util.string_replace = function(str, what, with)
+  -- Only use the first returned value from gsub
+  local what_escaped = string.gsub(what, "[%(%)%.%+%-%*%?%[%]%^%$%%]", "%%%1")
+  local with_escaped = string.gsub(with, "[%%]", "%%%%")
+  str = string.gsub(str, what_escaped, with_escaped)
+  return str --only return the first returned value from
 end
 
 util.clamp = function(x, lower, upper)
   return math.max(lower, math.min(upper, x))
 end
 
-local walkable_mask = {"item-layer", "object-layer", "player-layer", "water-tile"}
+local walkable_if_not_collides_with = {"item", "object", "player", "water_tile"}
 
 local is_walkable = function(mask)
-  for k, layer in pairs (walkable_mask) do
-    if mask[layer] then return false end
+  for k, layer in pairs (walkable_if_not_collides_with) do
+    if mask.layers[layer] then return false end
   end
   return true
 end
 
 util.get_walkable_tile = function()
-  for name, tile in pairs (game.tile_prototypes) do
+  for name, tile in pairs (prototypes.tile) do
     if is_walkable(tile.collision_mask) and not tile.items_to_place_this then
       return name
     end
@@ -341,8 +354,7 @@ function util.combine_icons(icons1, icons2, inputs, default_icon_size)
     local icon = {}
     icon.icon = icon_to_add.icon
     icon.icon_size = icon_to_add.icon_size or default_icon_size or error("No icon size defined for icon \n"..serpent.block(icon))
-    icon.scale = scale * (icon_to_add.scale or 32.0 / icon.icon_size)
-    icon.icon_mipmaps = icon_to_add.icon_mipmaps
+    icon.scale = scale * ((icon_to_add.scale or 32.0) / icon.icon_size)
     if icon_to_add.shift then
       icon.shift = {icon_to_add.shift[1] * scale + shift[1], icon_to_add.shift[2] * scale + shift[2]}
     else
@@ -361,14 +373,15 @@ end
 local energy_chars =
 {
   k = 10^3,
-  K = 10^3,
   M = 10^6,
   G = 10^9,
   T = 10^12,
   P = 10^15,
   E = 10^18,
   Z = 10^21,
-  Y = 10^24
+  Y = 10^24,
+  R = 10^27,
+  Q = 10^30,
 }
 
 function util.technology_icon_constant_damage(technology_icon)
@@ -376,13 +389,13 @@ function util.technology_icon_constant_damage(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256,
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-damage.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -392,13 +405,13 @@ function util.technology_icon_constant_speed(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256,
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-speed.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -408,13 +421,13 @@ function util.technology_icon_constant_movement_speed(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256,
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-movement-speed.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -424,13 +437,29 @@ function util.technology_icon_constant_range(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256,
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-range.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_planet(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256,
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-planet.png",
+      icon_size = 128,
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -440,13 +469,13 @@ function util.technology_icon_constant_equipment(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256,
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-equipment.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -456,13 +485,13 @@ function util.technology_icon_constant_followers(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256,
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-count.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -472,13 +501,13 @@ function util.technology_icon_constant_capacity(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -488,13 +517,13 @@ function util.technology_icon_constant_stack_size(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -504,13 +533,29 @@ function util.technology_icon_constant_productivity(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-mining-productivity.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
+    }
+  }
+  return icons
+end
+function util.technology_icon_constant_recipe_productivity(technology_icon)
+  local icons =
+  {
+    {
+      icon = technology_icon,
+      icon_size = 256
+    },
+    {
+      icon = "__core__/graphics/icons/technology/constants/constant-recipe-productivity.png",
+      icon_size = 128,
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -520,13 +565,13 @@ function util.technology_icon_constant_braking_force(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-braking-force.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -536,13 +581,13 @@ function util.technology_icon_constant_mining(technology_icon)
   {
     {
       icon = technology_icon,
-      icon_size = 256, icon_mipmaps = 4
+      icon_size = 256
     },
     {
       icon = "__core__/graphics/icons/technology/constants/constant-mining.png",
       icon_size = 128,
-      icon_mipmaps = 3,
-      shift = {100, 100}
+      scale = 0.5,
+      shift = {50, 50}
     }
   }
   return icons
@@ -571,25 +616,90 @@ function util.product_amount(product)
   return product.probability * (product.amount or ((product.amount_min + product.amount_max) / 2))
 end
 
-function util.empty_sprite(animation_length)
+function util.empty_sprite()
+  return
+  {
+    filename = "__core__/graphics/empty.png",
+    priority = "extra-high",
+    width = 1,
+    height = 1
+  }
+end
+
+function util.empty_animation(animation_length)
   return
   {
     filename = "__core__/graphics/empty.png",
     priority = "extra-high",
     width = 1,
     height = 1,
-    frame_count = 1,
     repeat_count = animation_length,
     direction_count = 1
   }
 end
 
+function util.empty_icon()
+  return
+  {
+    icon = "__core__/graphics/empty.png",
+    icon_size = 64,
+    scale = 0.5
+  }
+end
+
 function util.draw_as_glow(layer)
   layer.draw_as_glow = true
-  if layer.hr_version then
-    layer.hr_version.draw_as_glow = true
-  end
   return layer
+end
+
+function util.sprite_load(path, table)
+  local original_shift = table.shift or {0, 0}
+  local multiply_shift = table.multiply_shift or 1
+  local sprite_data = require(path)
+  table.width       = sprite_data.width
+  table.height      = sprite_data.height
+  table.shift       = {sprite_data.shift[1] * multiply_shift + original_shift[1], sprite_data.shift[2] * multiply_shift + original_shift[2]}
+  table.line_length = sprite_data.line_length
+  table.frames      = sprite_data.frames
+
+  if table.frame_index then
+    local column_index = table.frame_index % sprite_data.line_length
+    local row_index = (table.frame_index - column_index) / sprite_data.line_length
+    table.x = column_index * sprite_data.width
+    table.y = row_index * sprite_data.height
+    table.frame_index = nil
+  end
+
+  if sprite_data.filenames then
+    local t = {}
+    for k, v in pairs(sprite_data.filenames) do
+      t[k] = path .. v
+    end
+    table.filenames = t
+    table.lines_per_file = sprite_data.lines_per_file
+  else
+    table.filename = path .. '.png'
+  end
+
+  table.multiply_shift = nil
+
+  return table
+end
+
+function util.spritesheets_to_pictures(spritesheets)
+  local pictures = {}
+  for _, spritesheet in pairs(spritesheets) do
+    for i = 1, spritesheet.frame_count or 1, 1 do
+      table.insert(pictures, util.sprite_load(spritesheet.path,
+        {
+          frame_index = i - 1,
+          scale = spritesheet.scale or 0.5,
+          dice_y = spritesheet.dice_y
+        })
+      )
+    end
+  end
+  return pictures
 end
 
 function util.remove_tile_references(data, array_of_tiles_to_remove)
@@ -675,5 +785,62 @@ util.list_to_map = function(list)
   end
   return map
 end
+
+util.normalize_recipe_product = function(raw_product)
+  local product = util.copy(raw_product)
+
+  if product.amount then
+    product.amount_min = product.amount
+    product.amount_max = product.amount
+    product.amount = nil
+  end
+
+  return product
+end
+
+util.normalize_recipe_products = function(recipe)
+  if not recipe.results then
+    error("Recipe has no results: ".. recipe.name)
+  end
+  local products = {}
+
+  for _,raw_product in pairs(recipe.results) do
+    table.insert(products, util.normalize_recipe_product(raw_product))
+  end
+
+  return products
+end
+
+-- Returns the normalized main product or nil if the recipe defintion is invalid or there is no main product
+util.get_recipe_main_product = function(recipe, normalized_products)
+  if not normalized_products then
+    normalized_products = util.normalize_recipe_products(recipe)
+  end
+
+  local main_product_index = 0
+  local main_product = recipe.main_product
+  if main_product and main_product ~= "" then
+    for k,product in pairs(normalized_products) do
+      if product.name == main_product then
+        main_product_index = k
+        break
+      end
+    end
+  elseif main_product == nil and table_size(normalized_products) == 1 then
+    main_product_index = 1
+  end
+
+  return normalized_products[main_product_index]
+end
+
+gram = 1
+grams = gram
+kg = 1000*grams
+tons = 1000*kg
+second = 60
+minute = 60 * second
+hour = 60 * minute
+meter = 1
+kilometer = 1000
 
 return util

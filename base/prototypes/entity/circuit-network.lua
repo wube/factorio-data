@@ -1,6 +1,7 @@
 require("prototypes.entity.combinator-pictures")
 local hit_effects = require("prototypes.entity.hit-effects")
 local sounds = require("prototypes.entity.sounds")
+local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 data:extend
 {
@@ -9,39 +10,34 @@ data:extend
     type = "arithmetic-combinator",
     name = "arithmetic-combinator",
     icon = "__base__/graphics/icons/arithmetic-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "arithmetic-combinator"},
+    fast_replaceable_group = "arithmetic-combinator",
     max_health = 150,
     corpse = "arithmetic-combinator-remnants",
     dying_explosion = "arithmetic-combinator-explosion",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     damaged_trigger_effect = hit_effects.entity(),
+    icon_draw_specification = {scale = 0.5},
 
     energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input"
     },
-    active_energy_usage = "1KW",
+    active_energy_usage = "1kW",
 
     working_sound =
     {
-      sound =
-      {
-        filename = "__base__/sound/combinator.ogg",
-        volume = 0.45
-      },
-      -- max_sounds_per_type = 2,
+      sound = { filename = "__base__/sound/combinator.ogg", volume = 0.45 },
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
-    vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.combinator_open,
+    close_sound = sounds.combinator_close,
 
     activity_led_light =
     {
@@ -84,39 +80,34 @@ data:extend
     type = "decider-combinator",
     name = "decider-combinator",
     icon = "__base__/graphics/icons/decider-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "decider-combinator"},
+    fast_replaceable_group = "decider-combinator",
     max_health = 150,
     corpse = "decider-combinator-remnants",
     dying_explosion = "decider-combinator-explosion",
     collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
     selection_box = {{-0.5, -1}, {0.5, 1}},
     damaged_trigger_effect = hit_effects.entity(),
+    icon_draw_specification = {scale = 0.5},
 
     energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input"
     },
-    active_energy_usage = "1KW",
+    active_energy_usage = "1kW",
 
     working_sound =
     {
-      sound =
-      {
-        filename = "__base__/sound/combinator.ogg",
-        volume = 0.45
-      },
-      -- max_sounds_per_type = 2,
+      sound = { filename = "__base__/sound/combinator.ogg", volume = 0.45 },
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
-    vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.combinator_open,
+    close_sound = sounds.combinator_close,
 
     activity_led_light =
     {
@@ -262,7 +253,6 @@ data:extend
     type = "constant-combinator",
     name = "constant-combinator",
     icon = "__base__/graphics/icons/constant-combinator.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "constant-combinator"},
     max_health = 120,
@@ -272,13 +262,9 @@ data:extend
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity(),
     fast_replaceable_group = "constant-combinator",
-
-    item_slot_count = 20,
-
-    vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
-
+    open_sound = sounds.combinator_open,
+    close_sound = sounds.combinator_close,
+    icon_draw_specification = {scale = 0.7},
     activity_led_light =
     {
       intensity = 0,
@@ -301,17 +287,16 @@ data:extend
     type = "programmable-speaker",
     name = "programmable-speaker",
     icon = "__base__/graphics/icons/programmable-speaker.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "programmable-speaker"},
+    fast_replaceable_group = "programmable-speaker",
     max_health = 150,
     corpse = "programmable-speaker-remnants",
     dying_explosion = "programmable-speaker-explosion",
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     damaged_trigger_effect = hit_effects.entity({{-0.2, -2},{0.2, 0.2}}),
-    drawing_box = {{-0.5, -2.5}, {0.5, 0.3}},
-    vehicle_impact_sound = sounds.generic_impact,
+    drawing_box_vertical_extension = 2,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     energy_source =
@@ -319,7 +304,7 @@ data:extend
       type = "electric",
       usage_priority = "secondary-input"
     },
-    energy_usage_per_tick = "2KW",
+    energy_usage_per_tick = "2kW",
 
     sprite =
     {
@@ -328,36 +313,19 @@ data:extend
         {
           filename = "__base__/graphics/entity/programmable-speaker/programmable-speaker.png",
           priority = "extra-high",
-          width = 30,
-          height = 89,
-          shift = util.by_pixel(-2, -39.5),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/programmable-speaker/hr-programmable-speaker.png",
-            priority = "extra-high",
-            width = 59,
-            height = 178,
-            shift = util.by_pixel(-2.25, -39.5),
-            scale = 0.5
-          }
+          width = 59,
+          height = 178,
+          shift = util.by_pixel(-2.25, -39.5),
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/programmable-speaker/programmable-speaker-shadow.png",
           priority = "extra-high",
-          width = 119,
-          height = 25,
-          shift = util.by_pixel(52.5, -2.5),
+          width = 237,
+          height = 50,
+          shift = util.by_pixel(52.75, -3),
           draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/programmable-speaker/hr-programmable-speaker-shadow.png",
-            priority = "extra-high",
-            width = 237,
-            height = 50,
-            shift = util.by_pixel(52.75, -3),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     },
@@ -817,8 +785,7 @@ data:extend
 
     },
 
-    circuit_wire_connection_point = circuit_connector_definitions["programmable-speaker"].points,
-    circuit_connector_sprites = circuit_connector_definitions["programmable-speaker"].sprites,
+    circuit_connector = circuit_connector_definitions["programmable-speaker"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     water_reflection =
     {
@@ -841,9 +808,9 @@ data:extend
     type = "power-switch",
     name = "power-switch",
     icon = "__base__/graphics/icons/power-switch.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.2, result = "power-switch"},
+    fast_replaceable_group = "power-switch",
     max_health = 200,
     corpse = "power-switch-remnants",
     dying_explosion = "power-switch-explosion",
@@ -859,78 +826,42 @@ data:extend
           filename = "__base__/graphics/entity/power-switch/power-switch.png",
           animation_speed = 0.2,
           line_length = 2,
-          width = 86,
-          height = 70,
+          width = 168,
+          height = 138,
           frame_count = 6,
-          shift = util.by_pixel(-4, 2),
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/power-switch/hr-power-switch.png",
-            animation_speed = 0.2,
-            line_length = 2,
-            width = 168,
-            height = 138,
-            frame_count = 6,
-            shift = util.by_pixel(-3, 2),
-            scale = 0.5
-          }
+          shift = util.by_pixel(-3, 2),
+          scale = 0.5
         },
         {
           filename = "__base__/graphics/entity/power-switch/power-switch-shadow.png",
           animation_speed = 0.2,
           line_length = 2,
-          width = 84,
-          height = 46,
+          width = 166,
+          height = 92,
           frame_count = 6,
           shift = util.by_pixel(6, 14),
           draw_as_shadow = true,
-          hr_version =
-          {
-            filename = "__base__/graphics/entity/power-switch/hr-power-switch-shadow.png",
-            animation_speed = 0.2,
-            line_length = 2,
-            width = 166,
-            height = 92,
-            frame_count = 6,
-            shift = util.by_pixel(6, 14),
-            draw_as_shadow = true,
-            scale = 0.5
-          }
+          scale = 0.5
         }
       }
     },
-    vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     working_sound =
     {
-      sound =
-      {
-        filename = "__core__/sound/silence-1sec.ogg",
-        volume = 0
-      },
-      activate_sound =
+      main_sounds =
       {
         {
-          filename = "__base__/sound/power-switch-activate-1.ogg",
-          volume = 0.25
+          sound = {filename = "__base__/sound/power-switch.ogg", volume = 0.35},
+          match_volume_to_activity = true,
+          activity_to_volume_modifiers = {offset = 1},
+          audible_distance_modifier = 0.4
         },
-        {
-          filename = "__base__/sound/power-switch-activate-2.ogg",
-          volume = 0.25
-        },
-        {
-          filename = "__base__/sound/power-switch-activate-3.ogg",
-          volume = 0.25
-        }
       },
-      deactivate_sound =
-      {
-        filename = "__core__/sound/silence-1sec.ogg",
-        volume = 0
-      },
+      activate_sound = sound_variations("__base__/sound/power-switch-activate", 3, 0.3),
+      deactivate_sound = {filename = "__base__/sound/power-switch-deactivate.ogg", volume = 0.15},
       audible_distance_modifier = 0.4,
-      --max_sounds_per_type = 3
+      max_sounds_per_type = 2
     },
 
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
@@ -940,21 +871,11 @@ data:extend
       blend_mode = "additive",
       animation_speed = 0.2,
       line_length = 2,
-      width = 30,
-      height = 32,
+      width = 62,
+      height = 70,
       frame_count = 2,
       shift = util.by_pixel(2, -4),
-      hr_version = {
-        filename = "__base__/graphics/entity/power-switch/hr-power-switch-electricity-start.png",
-        blend_mode = "additive",
-        animation_speed = 0.2,
-        line_length = 2,
-        width = 60,
-        height = 64,
-        frame_count = 2,
-        shift = util.by_pixel(2, -4),
-        scale = 0.5
-      }
+      scale = 0.5
     },
     overlay_loop = util.draw_as_glow
     {
@@ -962,57 +883,30 @@ data:extend
       blend_mode = "additive",
       animation_speed = 0.25,
       line_length = 4,
-      width = 32,
-      height = 26,
+      width = 70,
+      height = 60,
       frame_count = 22,
-      shift = util.by_pixel(2, -8),
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/power-switch/hr-power-switch-electricity-loop.png",
-        blend_mode = "additive",
-        animation_speed = 0.25,
-        line_length = 4,
-        width = 62,
-        height = 56,
-        frame_count = 22,
-        shift = util.by_pixel(2, -9),
-        scale = 0.5
-      }
+      shift = util.by_pixel(2, -9),
+      scale = 0.5
     },
     led_on = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
-      x = 22,
-      width = 22,
-      height = 32,
-      shift = util.by_pixel(20, -2),
+      x = 48,
+      width = 48,
+      height = 60,
+      shift = util.by_pixel(21, -1),
       blend_mode = "additive",
-      hr_version =
-      {
-        filename = "__base__/graphics/entity/power-switch/hr-power-switch-led.png",
-        x = 48,
-        width = 48,
-        height = 60,
-        shift = util.by_pixel(21, -1),
-        blend_mode = "additive",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     led_off = util.draw_as_glow
     {
       filename = "__base__/graphics/entity/power-switch/power-switch-led.png",
-      width = 22,
-      height = 32,
-      shift = util.by_pixel(20, -2),
+      width = 48,
+      height = 60,
+      shift = util.by_pixel(21, -1),
       blend_mode = "additive",
-      hr_version = {
-        filename = "__base__/graphics/entity/power-switch/hr-power-switch-led.png",
-        width = 48,
-        height = 60,
-        shift = util.by_pixel(21, -1),
-        blend_mode = "additive",
-        scale = 0.5
-      }
+      scale = 0.5
     },
     circuit_wire_connection_point =
     {
@@ -1052,5 +946,173 @@ data:extend
 
     wire_max_distance = 10
   },
+  {
+    type = "display-panel",
+    name = "display-panel",
+    icon = "__base__/graphics/icons/display-panel.png",
+    icon_size = 64,
+    flags = {"player-creation"},
+    minable = {mining_time = 0.2, result = "display-panel"},
+    max_health = 50,
+    corpse = "small-remnants",
+    factoriopedia_simulation = simulations.factoriopedia_display_panel,
+    collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
+    selection_box = {{-0.5, -0.65}, {0.5, 0.5}},
+    sprites = make_4way_animation_from_spritesheet({
+      layers =
+      {
+        {
+          scale = 0.5,
+          filename = "__base__/graphics/entity/display-panel/display-panel.png",
+          width = 128,
+          height = 128
+        },
+        {
+          scale = 0.5,
+          filename = "__base__/graphics/entity/display-panel/display-panel-shadow.png",
+          width = 128,
+          height = 128,
+          draw_as_shadow = true
+        }
+      }
+    }),
+    circuit_connector =
+    {
+      { -- north
+        points =
+        {
+          shadow =
+          {
+            red = util.by_pixel(-4, -7),
+            green = util.by_pixel(19, -7)
+          },
+          wire =
+          {
+            red = util.by_pixel(-11, -17.5),
+            green = util.by_pixel(12, -17.5)
+          }
+        }
+      },
+      { -- east
+        points =
+        {
+          shadow =
+          {
+            red = util.by_pixel(26, -1),
+            green = util.by_pixel(26, 13)
+          },
+          wire =
+          {
+            red = util.by_pixel(15.5, -14),
+            green = util.by_pixel(16.6, -0.5)
+          }
+        }
+      },
+      { -- south
+        points =
+        {
+          shadow =
+          {
+            red = util.by_pixel(18.5, 16.5),
+            green = util.by_pixel(-4, 16.5)
+          },
+          wire =
+          {
+            red = util.by_pixel(12, 6),
+            green = util.by_pixel(-11, 6)
+          }
+        }
+      },
+      { -- west
+        points =
+        {
+          shadow =
+          {
+            red = util.by_pixel(-11.5, 9.5),
+            green = util.by_pixel(-11.5, -4)
+          },
+          wire =
+          {
+            red = util.by_pixel(-16.5, -0.5),
+            green = util.by_pixel(-16.5, -14)
+          }
+        }
+      }
+    },
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    max_text_width = 400,
+    text_shift = util.by_pixel(0, -24),
+    icon_draw_specification = {shift = util.by_pixel(0, -8), scale = 0.5},
+    text_color = {1.0, 1.0, 1.0, 1.0},
+    background_color = {0.0, 0.0, 0.0, 0.25}
+  },
+  generate_selector_combinator
+  {
+    type = "selector-combinator",
+    name = "selector-combinator",
+    icon = "__base__/graphics/icons/selector-combinator.png",
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "selector-combinator"},
+    fast_replaceable_group = "selector-combinator",
+    max_health = 150,
+    corpse = "selector-combinator-remnants",
+    dying_explosion = "selector-combinator-explosion",
+    collision_box = {{-0.35, -0.65}, {0.35, 0.65}},
+    selection_box = {{-0.5, -1}, {0.5, 1}},
+    damaged_trigger_effect = hit_effects.entity(),
+    icon_draw_specification = {scale = 0.5},
 
+    energy_source =
+    {
+      type = "electric",
+      usage_priority = "secondary-input"
+    },
+    active_energy_usage = "5kW",
+
+    working_sound =
+    {
+      sound = { filename = "__base__/sound/combinator.ogg", volume = 0.45 },
+      fade_in_ticks = 4,
+      fade_out_ticks = 20,
+      audible_distance_modifier = 0.2,
+      match_speed_to_activity = true
+    },
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+
+    activity_led_light =
+    {
+      intensity = 0,
+      size = 1,
+      color = {r = 1.0, g = 1.0, b = 1.0}
+    },
+
+    activity_led_light_offsets =
+    {
+      {0.234375, -0.484375},
+      {0.5, 0},
+      {-0.265625, 0.140625},
+      {-0.453125, -0.359375}
+    },
+
+    screen_light =
+    {
+      intensity = 0,
+      size = 0.6,
+      color = {r = 1.0, g = 1.0, b = 1.0}
+    },
+
+    screen_light_offsets =
+    {
+      {0.015625, -0.234375},
+      {0.015625, -0.296875},
+      {0.015625, -0.234375},
+      {0.015625, -0.296875}
+    },
+
+    input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
+    output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
+
+    circuit_wire_max_distance = 13
+  }
 }

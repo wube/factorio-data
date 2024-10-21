@@ -22,9 +22,6 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
   for k,t in pairs(template) do
     if t.filename then
       result[k] = get_frame(t, main_offset, index)
-      if t.hr_version then
-        result[k].hr_version = get_frame(t.hr_version, main_offset, index)
-      end
     end
   end
 
@@ -32,6 +29,12 @@ local function make_circuit_connector_sprites(template, index, main_offset, shad
     result.connector_shadow = get_frame(template.connector_shadow, shadow_offset, index)
   else
     result.connector_shadow = nil
+  end
+
+  if show_shadow and shadow_offset and template.wire_pins_shadow then
+    result.wire_pins_shadow = get_frame(template.wire_pins_shadow, shadow_offset, index)
+  else
+    result.wire_pins_shadow = nil
   end
 
   result.led_light =
@@ -71,39 +74,38 @@ local function make_circuit_connector_points(template, index, main_offset, shado
   return result
 end
 
-local function make_circuit_connector_definitions(template, definitions)
-  local _sprites = {}
-  local _points = {}
+local function make_single_circuit_connector_definition(template, definition)
+  return
+  {
+    sprites = make_circuit_connector_sprites(template, definition.variation, definition.main_offset, definition.shadow_offset, definition.show_shadow),
+    points = make_circuit_connector_points(template, definition.variation, definition.main_offset, definition.shadow_offset)
+  }
+end
 
+local function make_multiple_circuit_connector_definitions(template, definitions)
+  local result = {}
   for k, d in pairs(definitions) do
     if d.variation then
-      table.insert(_sprites, make_circuit_connector_sprites(template, d.variation, d.main_offset, d.shadow_offset, d.show_shadow))
-      table.insert(_points, make_circuit_connector_points(template, d.variation, d.main_offset, d.shadow_offset))
+      table.insert(result, make_single_circuit_connector_definition(template, d))
     end
   end
-
-  if #definitions == 1 then
-    return { sprites = _sprites[1], points = _points[1] }
-  else
-    return { sprites = _sprites, points = _points }
-  end
+  return result
 end
 
 default_circuit_wire_max_distance = 9
 
 circuit_connector_definitions =
 {
-  create = make_circuit_connector_definitions
+  create_single = make_single_circuit_connector_definition,
+  create_vector = make_multiple_circuit_connector_definitions
 }
 
 require ("circuit-connector-generated-definitions")
 
-circuit_connector_definitions["programmable-speaker"] = circuit_connector_definitions.create
+circuit_connector_definitions["programmable-speaker"] = circuit_connector_definitions.create_single
 (
   universal_connector_template,
-  {
-    { variation = 18, main_offset = util.by_pixel(0, -8), shadow_offset = util.by_pixel(4.5, -7), show_shadow = true }
-  }
+  { variation = 18, main_offset = util.by_pixel(0, -8), shadow_offset = util.by_pixel(4.5, -7), show_shadow = true }
 )
 
 ------------------- INSERTER -------------------
@@ -114,7 +116,7 @@ inserter_default_stack_control_input_signal = {type = "virtual", name = "signal-
 
 ------------------- TRANSPORT BELT -------------------
 
-circuit_connector_definitions["belt"] = circuit_connector_definitions.create
+circuit_connector_definitions["belt"] = circuit_connector_definitions.create_vector
 (
   belt_connector_template,
   {
@@ -129,7 +131,7 @@ circuit_connector_definitions["belt"] = circuit_connector_definitions.create
 )
 
 for i, _ in ipairs(belt_connector_template.wire_offsets) do
-  circuit_connector_definitions["belt"].points[i] = make_circuit_connector_points(belt_connector_template, i - 1, {0,0}, {0,0})
+  circuit_connector_definitions["belt"][i].points = make_circuit_connector_points(belt_connector_template, i - 1, {0,0}, {0,0})
 end
 
 transport_belt_connector_frame_sprites =
@@ -191,3 +193,6 @@ belt_ccm.frame_main_scanner_sw_se =
 }
 
 transport_belt_circuit_wire_max_distance = 9
+
+assembling_machine_circuit_wire_max_distance = 9
+reactor_circuit_wire_max_distance = 9

@@ -1,643 +1,584 @@
-local noise = require("noise")
-local util = require("util")
-local tne = noise.to_noise_expression
-
-local enable_debug_expressions = false
-local function debug_property(propname)
-  if enable_debug_expressions then
-    return propname
-  end
-  return nil
-end
-
-local function make_basis_noise_function(seed0,seed1,outscale0,inscale0)
-  outscale0 = outscale0 or 1
-  inscale0 = inscale0 or 1/outscale0
-  return function(x,y,inscale,outscale)
-    return tne
-    {
-      type = "function-application",
-      function_name = "factorio-basis-noise",
-      arguments =
-      {
-        x = tne(x),
-        y = tne(y),
-        seed0 = tne(seed0),
-        seed1 = tne(seed1),
-        input_scale = tne((inscale or 1) * inscale0),
-        output_scale = tne((outscale or 1) * outscale0)
-      }
-    }
-  end
-end
-
-local function multioctave_noise(params)
-  local x = params.x or noise.var("x")
-  local y = params.y or noise.var("y")
-  local seed0 = params.seed0 or 1
-  local seed1 = params.seed1 or 1
-  local octave_count = params.octave_count or 1
-  local octave0_output_scale = params.octave0_output_scale or 1
-  local octave0_input_scale = params.octave0_input_scale or 1
-  if params.persistence and params.octave_output_scale_multiplier then
-    error("Both persistence and octave_output_scale_multiplier were provided to multioctave_noise, which makes no sense!")
-  end
-  local octave_output_scale_multiplier = params.octave_output_scale_multiplier or 2
-  local octave_input_scale_multiplier = params.octave_input_scale_multiplier or 1/2
-  local basis_noise_function = params.basis_noise_function or make_basis_noise_function(seed0, seed1)
-
-  if params.persistence then
-    octave_output_scale_multiplier = params.persistence
-    -- invert everything so that we can multiply by persistence every time
-    -- first octave is the largest instead of the smallest
-    octave0_input_scale = octave0_input_scale * math.pow(octave_input_scale_multiplier, octave_count - 1)
-    -- 'persistence' implies that the octaves would otherwise have been powers of 2, I think
-    octave0_output_scale = octave0_output_scale * math.pow(2, octave_count - 1)
-    octave_input_scale_multiplier = 1 / octave_input_scale_multiplier
-  end
-
-  return tne{
-    type = "function-application",
-    function_name = "factorio-quick-multioctave-noise",
-    arguments =
-    {
-      x = tne(x),
-      y = tne(y),
-      seed0 = tne(seed0),
-      seed1 = tne(seed1),
-      input_scale = tne(octave0_input_scale),
-      output_scale = tne(octave0_output_scale),
-      octaves = tne(octave_count),
-      octave_output_scale_multiplier = tne(octave_output_scale_multiplier),
-      octave_input_scale_multiplier = tne(octave_input_scale_multiplier)
-    }
-  }
-end
-
--- Multioctave noise that's constructed in a simple way and knows about 'persistence'.
--- It doesn't *have* to be variable,
--- but this construction allows for it.
-local function simple_variable_persistence_multioctave_noise(params)
-  local x = params.x or noise.var("x")
-  local y = params.y or noise.var("y")
-  local seed0 = params.seed0 or 1
-  local seed1 = params.seed1 or 1
-  local octave_count = params.octave_count or 1
-  local octave0_output_scale = params.octave0_output_scale or 1
-  local octave0_input_scale = params.octave0_input_scale or 1
-  local persistence = params.persistence or 1/2
-
-  local terms = {}
-  -- Start at the 'large' octave (assuming powers of 2 size increases)
-  -- and work inwards, doubling the frequency and mulitplying amplitude by persistence.
-  -- 'octave0' is the smallest octave.
-  local largest_octave_scale = (2 ^ octave_count)
-  local inscale = octave0_input_scale / largest_octave_scale
-  local outscale = octave0_output_scale * largest_octave_scale
-  for oct=1,octave_count do
-    terms[oct] = tne{
-      type = "function-application",
-      function_name = "factorio-basis-noise",
-      arguments = {
-        x = tne(x),
-        y = tne(y),
-        seed0 = tne(seed0),
-        seed1 = tne(seed1),
-        input_scale = tne(inscale),
-        output_scale = tne(1), -- Since outscale is variable, need to multiply separately
-      }
-    } * outscale
-    inscale = inscale * 2 -- double frequency
-    outscale = outscale * persistence -- lower amplitude (unless persistence is >1, which would be weird but okay)
-  end
-  return tne{
-    type = "function-application",
-    function_name = "add",
-    arguments = terms
-  }
-end
-
--- Accounts for multiple octaves to return an expression whose amplitude maxes out at about +-1
--- (or +-octave0_input_scale, if that's passed in).
--- Parameters are the same as for simple_variable_persistence_multioctave_noise.
-local function simple_amplitude_corrected_multioctave_noise(params)
-  local amplitide = params.amplitude or 1
-  local persistence = params.persistence or 0.5
-  local octave_count = params.octave_count or 1
-  -- 0.12's ImprovedNoise would do like:
-  -- output = total / ((1 - amplitude) / (1 - persistence)) -- where amplitude is persistence ^ octaves
-  -- output = total * (1 - persistence) / (1 - persistence ^ octaves)
-  -- So use (1 - persistence) / (1 - persistence ^ octaves) as the output multiplier
-  -- but it also uses 1 as the amplitude of the largest octave, whereas
-  -- simple_variable_persistence_multioctave_noise uses 2^octave_count.
-  -- So divide by that, too:
-  local multiplier = (1 - persistence) / (2^octave_count) / (1 - persistence ^ octave_count)
-
-  if params.octave0_output_scale then
-    error("Don't pass octave0_output_scale to simple_amplitude_corrected_multioctave_noise; pass amplitude, instead")
-  end
-  return simple_variable_persistence_multioctave_noise(util.merge{params, {octave0_output_scale = multiplier * amplitide}})
-end
-
-local function make_multioctave_noise_function(seed0,seed1,octaves,octave_output_scale_multiplier,octave_input_scale_multiplier,output_scale0,input_scale0)
-  octave_output_scale_multiplier = octave_output_scale_multiplier or 2
-  octave_input_scale_multiplier = octave_input_scale_multiplier or 1 / octave_output_scale_multiplier
-  return function(x,y,inscale,outscale)
-    return tne{
-      type = "function-application",
-      function_name = "factorio-quick-multioctave-noise",
-      arguments =
-      {
-        x = tne(x),
-        y = tne(y),
-        seed0 = tne(seed0),
-        seed1 = tne(seed1),
-        input_scale = tne((inscale or 1) * (input_scale0 or 1)),
-        output_scale = tne((outscale or 1) * (output_scale0 or 1)),
-        octaves = tne(octaves),
-        octave_output_scale_multiplier = tne(octave_output_scale_multiplier),
-        octave_input_scale_multiplier = tne(octave_input_scale_multiplier)
-      }
-    }
-  end
-end
-
--- Returns a multioctave noise function where each octave's noise is multiplied by some other noise
--- by default 'some other noise' is the basis noise at 17x lower frequency,
--- normalized around 0.5 and clamped between 0 and 1
-local function make_multioctave_modulated_noise_function(params)
-  local seed0 = params.seed0 or 1
-  local seed1 = params.seed1 or 1
-  local octave_count = params.octave_count or 1
-  local octave0_output_scale = params.octave0_output_scale or 1
-  local octave0_input_scale = params.octave0_input_scale or 1
-  local octave_output_scale_multiplier = params.octave_output_scale_multiplier or 2
-  local octave_input_scale_multiplier = params.octave_input_scale_multiplier or 1/2
-  local basis_noise_function = params.basis_noise_function or make_basis_noise_function(seed0, seed1)
-  local modulation_noise_function = params.modulation_noise_function or function(x,y)
-    return noise.clamp(basis_noise_function(x,y)+0.5, 0, 1)
-  end
-  -- input scale of modulation relative to each octave's base input scale
-  local mris = params.modulation_relative_input_scale or 1/17
-
-  return function(x,y)
-    local outscale = octave0_output_scale
-    local inscale = octave0_input_scale
-    local result = 0
-
-    for i=1,octave_count do
-      local noise = basis_noise_function(x*inscale, y*inscale)
-      local modulation = modulation_noise_function(x*(inscale*mris), y*(inscale*mris))
-      result = result + (outscale * noise * modulation)
-
-      outscale = outscale * octave_output_scale_multiplier
-      inscale = inscale * octave_input_scale_multiplier
-    end
-
-    return result
-  end
-end
-
-local standard_starting_lake_elevation_expression = noise.define_noise_function( function(x,y,tile,map)
-  local starting_lake_distance = noise.distance_from(x, y, noise.var("starting_lake_positions"), 1024)
-  local minimal_starting_lake_depth = 4
-  local minimal_starting_lake_bottom =
-    starting_lake_distance / 4 - minimal_starting_lake_depth +
-    make_basis_noise_function(map.seed, 123, 1.5, 1/8)(x,y)
-
-  -- Starting cone ensures a more random (but not ~too~ random, because people don't like 'swampy lakes')
-  -- valley outside the starting lake:
-  local starting_cone_slope = noise.fraction(1, 16)
-  local starting_cone_offset = -1
-  local starting_cone_noise_multiplier = noise.var("starting-lake-noise-amplitude")/16
-  -- Second cone is intended to provide a more gradual slope and more noise
-  -- outside of the first cone in order to prevent obvious circles of cliffs.
-  -- Its bottom is clamped to a positive value so that it will only affect cliffs,
-  -- not water.
-  local second_cone_slope = noise.fraction(1, 16)
-  local second_cone_offset = 2
-  local second_cone_noise_multiplier = noise.var("starting-lake-noise-amplitude")/2
-
-  local starting_lake_noise = multioctave_noise{
-    x = x,
-    y = y,
-    seed0 = map.seed,
-    seed1 = 14, -- CorePrototypes::elevationNoiseLayer->getID().getIndex()
-    octave0_input_scale = 1/8, -- We don't want the starting lake to scale along with the rest of the map
-    octave0_output_scale = 1,
-    octave_count = 5,
-    persistence = 0.75
-  }
-  return noise.ident(noise.min(
-    minimal_starting_lake_bottom,
-    starting_cone_offset + starting_cone_slope * starting_lake_distance + starting_cone_noise_multiplier * starting_lake_noise,
-    noise.max(
-      second_cone_offset,
-      second_cone_offset + second_cone_slope * starting_lake_distance + second_cone_noise_multiplier * starting_lake_noise
-    )
-  ))
-end)
-
-local function water_level_correct(to_be_corrected, map)
-  return noise.ident(noise.max(
-    map.wlc_elevation_minimum,
-    to_be_corrected + map.wlc_elevation_offset
-  ))
-end
-
-local cliff_terracing_enabled = false
-
-local function finish_elevation(elevation, map)
-  local elevation = water_level_correct(elevation, map)
-  elevation = elevation / map.segmentation_multiplier
-  elevation = noise.min(elevation, standard_starting_lake_elevation_expression)
-  if cliff_terracing_enabled then
-    elevation = noise.terrace_for_cliffs(elevation, nil, map)
-  end
-  return elevation
-end
-
-local function make_0_12like_lakes(x, y, tile, map, options)
-  options = options or {}
-  local terrain_octaves = options.terrain_octaves or 8
-  local amplitude_multiplier = 1/8
-  local roughness_persistence = 0.7
-  local bias = options.bias or 20 -- increase average elevation level by this much
-  local starting_plateau_bias = 20
-  local starting_plateau_octaves = 6
-
-  local roughness = simple_amplitude_corrected_multioctave_noise{
-    x = x,
-    y = y,
-    seed0 = map.seed,
-    seed1 = 1,
-    octave_count = terrain_octaves - 2,
-    amplitude = 1/2,
-    octave0_input_scale = 1/2,
-    persistence = roughness_persistence
-  }
-  local persistence = noise.clamp(roughness + 0.3, 0.1, 0.9)
-  local lakes = simple_variable_persistence_multioctave_noise{
-    x = x,
-    y = y,
-    seed0 = map.seed,
-    seed1 = 1,
-    octave_count = terrain_octaves,
-    octave0_input_scale = 1/2,
-    octave0_output_scale = amplitude_multiplier,
-    persistence = persistence
-  }
-  local starting_plateau_basis = simple_variable_persistence_multioctave_noise{
-    x = x,
-    y = y,
-    seed0 = map.seed,
-    seed1 = 2,
-    octave_count = starting_plateau_octaves,
-    octave0_input_scale = 1/2,
-    octave0_output_scale = amplitude_multiplier,
-    persistence = persistence
-  }
-  local starting_plateau = starting_plateau_basis + starting_plateau_bias + map.finite_water_level - tile.distance * map.segmentation_multiplier / 10
-  return noise.max(lakes + bias, starting_plateau)
-end
-
-local average_sea_level_temperature = 15
-local elevation_temperature_gradient = 0 -- -0.5 might be a good value to start with if you want to try correlating temperature with elevation
-
-local function clamp_moisture(raw_moisture)
-  -- Clamping logic originally from tilePropertiesProvider
-  -- "also can you remove the indirect influence of temperature over tiles? unless there's some reason for it?"
-  -- -- Twinsen, 2019-01-25
-  --local max_saturation = noise.clamp(
-  --  (noise.var"temperature" + 20) / 40,
-  --  0, 1
-  --)
-  local max_saturation = 1
-  return noise.clamp(raw_moisture, 0, max_saturation)
-end
-
-local function clamp_temperature(raw_temperature)
-  return noise.clamp(raw_temperature, -20, 50)
-end
-
-local function clamp_aux(raw_aux)
-  return noise.clamp(raw_aux, 0, 1)
-end
+-- 'x' variables are shifted to avoid 'fractal similarity' of noise programs.
 
 data:extend{
+
+  -- temperature
   {
     type = "noise-expression",
     name = "temperature",
-    intended_property = "temperature",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      x = x * noise.var("control-setting:temperature:frequency:multiplier") + 40000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * noise.var("control-setting:temperature:frequency:multiplier")
-      local base_temp =
-        average_sea_level_temperature +
-        make_multioctave_noise_function(map.seed, 5, 4, 3)(x,y,1/32,1/20) +
-        noise.var("control-setting:temperature:bias")
-      local elevation_adjusted_temperature = base_temp + noise.var("elevation") * elevation_temperature_gradient
-      return noise.ident(clamp_temperature(elevation_adjusted_temperature))
-    end)
+    --intended_property = "temperature",
+    expression = "temperature_basic",
+    localised_name = {"noise-expression.temperature_basic"}
   },
   {
     type = "noise-expression",
-    name = "debug-temperature",
-    intended_property = debug_property("temperature"),
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      return noise.ident(clamp_temperature(x * (1 / 4)))
-    end)
+    name = "temperature_basic",
+    --intended_property = "temperature", --removed as an option as it is the default
+    expression = "clamp(sea_level_temperature + var('control:temperature:bias') + \z
+                        quick_multioctave_noise{x = x,\z
+                                                y = y,\z
+                                                seed0 = map_seed,\z
+                                                seed1 = 5,\z
+                                                octaves = 4,\z
+                                                input_scale = var('control:temperature:frequency') / 32,\z
+                                                output_scale = 1/20,\z
+                                                offset_x = 40000 / var('control:temperature:frequency'),\z
+                                                octave_output_scale_multiplier = 3,\z
+                                                octave_input_scale_multiplier = 1/3},\z
+                        -20, 50)",
+    local_expressions = {sea_level_temperature = 15}
   },
+
+
+  -- moisture
   {
     type = "noise-expression",
     name = "moisture",
-    intended_property = "moisture",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      x = x * noise.var("control-setting:moisture:frequency:multiplier") + 30000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * noise.var("control-setting:moisture:frequency:multiplier")
-      local raw_moisture =
-        3/8 +
-        make_multioctave_noise_function(map.seed, 6, 4, 1.5, 1/3)(x,y,1/256,1/8) +
-        noise.var("control-setting:moisture:bias")
-      return noise.ident(clamp_moisture(raw_moisture))
-    end)
+    --intended_property = "moisture",
+    expression = "moisture_nauvis",
+    localised_name = {"noise-expression.moisture_nauvis"}
   },
   {
     type = "noise-expression",
-    name = "debug-moisture",
-    intended_property = debug_property("moisture"),
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      return noise.ident(clamp_moisture(y * (1 / 400)))
-    end)
+    name = "moisture_noise",
+    expression = "quick_multioctave_noise{x = x,\z
+                                          y = y,\z
+                                          seed0 = map_seed,\z
+                                          seed1 = 6,\z
+                                          octaves = 4,\z
+                                          input_scale = var('control:moisture:frequency') / 256,\z
+                                          output_scale = 0.125,\z
+                                          offset_x = 30000 / var('control:moisture:frequency'),\z
+                                          octave_output_scale_multiplier = 1.5,\z
+                                          octave_input_scale_multiplier = 1/3}",
   },
+  {
+    type = "noise-expression",
+    name = "moisture_basic",
+    --intended_property = "moisture",
+    expression = "clamp(0.45 + moisture_adjusted_bias + moisture_noise, 0, 1)",
+  },
+  {
+    type = "noise-expression",
+    name = "moisture_adjusted_bias",
+    expression = "lerp(base_bias, starting_bias, starting_bias_region)",
+    local_expressions =
+    {
+      base_bias = "var('control:moisture:bias')",
+      starting_bias = "lerp(base_bias, starting_bias_change, starting_bias_magnitude * 1.1)",
+      starting_bias_change = "slider_to_linear(var('control:starting_area_moisture:size'), -0.5, 0.5)",
+      starting_bias_magnitude = "abs(2 * starting_bias_change)",
+      starting_bias_region = "clamp(2 - var('control:starting_area_moisture:frequency') / 400 * distance, 0, 1)"
+    }
+  },
+  {
+    type = "noise-expression",
+    name = "moisture_nauvis",
+    --intended_property = "moisture", --removed as an option as it is the default
+    -- dirt trails on forest paths, don't affect arid terrain (i.e. grass to dirt, not dirt to sand)
+    expression = "max(min(moisture_main, 0.45), moisture_main - 0.2 * max(0, 1 - trees_forest_path_cutout * 1.5))",
+    local_expressions =
+    {
+      moisture_main = "clamp(0.4 + moisture_adjusted_bias + moisture_noise\z
+                             - 0.08 * (nauvis_plateaus - 0.6),\z
+                             0, 1)"
+    }
+  },
+
+
+  -- aux
   {
     type = "noise-expression",
     name = "aux",
-    intended_property = "aux",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      x = x * noise.var("control-setting:aux:frequency:multiplier") + 20000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * noise.var("control-setting:aux:frequency:multiplier")
-      local raw_aux =
-        0.5 +
-        make_multioctave_noise_function(map.seed, 7, 4, 1/2, 3)(x,y,1/2048,1/4) +
-        noise.var("control-setting:aux:bias")
-      return noise.ident(clamp_aux(raw_aux))
-    end)
+    --intended_property = "aux",
+    expression = "aux_nauvis",
+    localised_name = {"noise-expression.aux_nauvis"}
   },
   {
     type = "noise-expression",
-    name = "debug-aux",
-    intended_property = debug_property("aux"),
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      -- Tile peaks tend to be based on aux+water,
-      -- so let's use the same dimension as temperature for aux
-      return noise.ident(clamp_aux(x * (1 / 400)))
-    end)
+    name = "aux_noise",
+    expression = "quick_multioctave_noise{x = x,\z
+                                          y = y,\z
+                                          seed0 = map_seed,\z
+                                          seed1 = 7,\z
+                                          octaves = 4,\z
+                                          input_scale = var('control:aux:frequency') / 2048,\z
+                                          output_scale = 0.25,\z
+                                          offset_x = 20000 / var('control:aux:frequency'),\z
+                                          octave_output_scale_multiplier = 0.5,\z
+                                          octave_input_scale_multiplier = 3}"
   },
   {
     type = "noise-expression",
-    name = "rings",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      return noise.ident(noise.ridge(tile.distance / 4, -32, 32))
-    end)
+    name = "aux_basic",
+    --intended_property = "aux",
+    expression = "clamp(0.5 + var('control:aux:bias') + aux_noise, 0, 1)"
   },
   {
     type = "noise-expression",
-    name = "0_17-lakes-elevation",
-    -- Large lakes similar to those from Factorio 0.12
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * map.segmentation_multiplier
-      return finish_elevation(make_0_12like_lakes(x, y, tile, map), map)
-    end)
+    name = "aux_nauvis",
+    --intended_property = "aux", --removed as an option as it is the default
+    -- same as aux_basic but canyons are more sandy and plateaus are more red rock
+    expression = "clamp(0.5 + var('control:aux:bias') \z
+                        + 0.06 * (nauvis_plateaus - 0.4)\z
+                        + aux_noise,\z
+                        0, 1)"
   },
-  {
-    type = "noise-expression",
-    name = "0_17-starting-plateau",
-    intended_property = debug_property("elevation"),
-    -- The starting area plateau surrounded by an endless ocean
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * map.segmentation_multiplier
-      options =
-      {
-        bias = -1000
-      }
-      return finish_elevation(make_0_12like_lakes(x, y, tile, map, options), map)
-    end)
-  },
-  {
-    type = "noise-expression",
-    name = "0_17-island",
-    intended_property = "elevation",
-    -- A large island surrounded by an endless ocean
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      map = util.merge
-      {
-        map,
-        { segmentation_multiplier = map.segmentation_multiplier / 4 }
-      }
-      x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * map.segmentation_multiplier
-      options =
-      {
-        bias = -1000
-      }
-      return finish_elevation(make_0_12like_lakes(x, y, tile, map, options), map)
-    end)
-  },
-  {
-    type = "noise-expression",
-    name = "0_17-islands+continents",
-    intended_property = debug_property("elevation"),
-    --Similar to lakes, but with a negative bias instead of a positive one
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * map.segmentation_multiplier
-      options =
-      {
-        bias = -80,
-        terrain_octaves = 10
-      }
-      return finish_elevation(make_0_12like_lakes(x, y, tile, map, options), map)
-    end)
-  },
-  {
-    type = "noise-expression",
-    name = "endless-plateau-with-starting-area-elevation",
-    intended_property = debug_property("elevation"),
-    -- A big plateau, except for the starting area
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      return finish_elevation(100, map)
-    end)
-  },
-  {
-    type = "noise-expression",
-    name = "0_16-elevation",
-    intended_property = debug_property("elevation"),
-    -- Elevation function often described as 'swampy' from 0.16
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      local plateau_octaves = 3
-      local lf_octaves = 6
-      -- Everyone except TOGoS (apparently) likes there to not be much water
-      -- when water-level = 'normal', so shift the elevation up everywhere.
-      -- Set water-level = 'high' if you like oceans.
-      local global_bias = 6
 
-      -- Sometimes we want to use actual coordinates,
-      -- not the warped-to-compensate-for-fractal-similarity ones
-      local map_x = x
-      local map_y = y
 
-      x = x * map.segmentation_multiplier + 10000 -- Move the point where 'fractal similarity' is obvious off into the boonies
-      y = y * map.segmentation_multiplier
-      local rdi = tile.tier / 8 -- ridge distance-based influcence
-      local high_ridge =  16 + rdi + noise.clamp(rdi, 0, 2) * make_multioctave_noise_function(map.seed, 7, 2, 3)(x,y,1/256,1)
-      local low_ridge  = -16 - rdi
-
-      local plateau_noise = make_multioctave_noise_function(map.seed, 9, plateau_octaves, 1/3, 3, 4, 1/128)
-      local plateaus = noise.max(make_basis_noise_function(map.seed, 10, 8, 1/1024)(x,y) - 8, 1 - tile.tier)
-
-      local high_freq_noise = make_multioctave_modulated_noise_function{
-        seed0 = map.seed,
-        seed1 = 11,
-        octave_count = 6,
-        octave0_output_scale = 1/8,
-        octave0_input_scale = 1/4,
-        octave_output_scale_multiplier = 2,
-        octave_input_scale_multiplier = 1/3
-      }
-      local low_freq_noise = make_multioctave_modulated_noise_function{
-        seed0 = map.seed,
-        seed1 = 8,
-        octave_count = lf_octaves,
-        octave0_output_scale = 1,
-        octave0_input_scale = 1/8
-      }
-      local very_low_freq_noise = make_basis_noise_function(map.seed, 9, 20, 1/1024)
-      local basis = low_freq_noise(x,y) + very_low_freq_noise(x,y)
-      local ridged1 = noise.ridge(basis, low_ridge, high_ridge)
-
-      local normal = noise.max(ridged1 + high_freq_noise(x,y), plateaus + plateau_noise(x,y)) + global_bias
-
-      -- Multily elevation by low-frequency noise to make hilly and non-hilly areas
-      local hill_modulation = noise.clamp(make_multioctave_noise_function(map.seed, 12, 4, 2, 1/3)(x,y,1/256,3/4) - 2, 0.1, 1.0)
-
-      -- Elevation below which hill modulation has no effect.
-      -- Set to slightly above the water level so that flat plains don't all become a giant beach/sandbar thing.
-      -- To do its job it just has to be lower than the first row of cliffs.
-      local hill_modulation_identity = 3 - map.wlc_elevation_offset
-
-      local hill_modulated = noise.min(
-        normal,
-        hill_modulation * (normal - hill_modulation_identity) + hill_modulation_identity
-      )
-
-      return noise.ident(finish_elevation(hill_modulated, map))
-    end)
-  },
+  -- elevation
   {
     type = "noise-expression",
     name = "elevation",
-    intended_property = "elevation",
-    expression = noise.var("0_17-lakes-elevation")
+    --intended_property = "elevation",
+    expression = "elevation_nauvis",
+    localised_name = {"noise-expression.elevation_nauvis"}
   },
+  {
+    type = "noise-function",
+    name = "make_0_12like_lakes",
+    parameters = {"x", "y", "bias", "terrain_octaves", "segmentation_multiplier"},
+    expression = "max(bias + variable_persistence_multioctave_noise{x = x,\z
+                                                                    y = y,\z
+                                                                    seed0 = map_seed,\z
+                                                                    seed1 = 1,\z
+                                                                    input_scale = input_scale,\z
+                                                                    output_scale = 0.125,\z
+                                                                    offset_x = offset_x,\z
+                                                                    octaves = terrain_octaves,\z
+                                                                    persistence = persistence},\z
+                      20 + water_level - 0.1 * segmentation_multiplier * distance + \z
+                      variable_persistence_multioctave_noise{x = x,\z
+                                                             y = y,\z
+                                                             seed0 = map_seed,\z
+                                                             seed1 = 2,\z
+                                                             input_scale = input_scale,\z
+                                                             output_scale = 0.125,\z
+                                                             offset_x = offset_x,\z
+                                                             octaves = 6,\z
+                                                             persistence = persistence})",
+    local_expressions =
+    {
+      input_scale = "segmentation_multiplier / 2",
+      offset_x = "10000 / segmentation_multiplier",
+      persistence = "clamp(amplitude_corrected_multioctave_noise{x = x,\z
+                                                                 y = y,\z
+                                                                 seed0 = map_seed,\z
+                                                                 seed1 = 1,\z
+                                                                 octaves = terrain_octaves - 2,\z
+                                                                 input_scale = input_scale,\z
+                                                                 offset_x = offset_x,\z
+                                                                 persistence = 0.7,\z
+                                                                 amplitude = 0.5} + 0.3,\z
+                          0.1, 0.9)"
+    }
+  },
+  {
+    type = "noise-function",
+    name = "finish_elevation",
+    parameters = {"elevation", "segmentation_multiplier"},
+    expression = "min((elevation - water_level) / segmentation_multiplier,\z
+                      basis_noise{x = x, y = y, seed0 = map_seed, seed1 = 123, input_scale = 1/8, output_scale = 1.5} + \z
+                      starting_lake_distance / 4 - 4,\z
+                      -1 + (starting_lake_distance + starting_lake_noise) / 16,\z
+                      max(2, 2 + starting_lake_distance / 16 + starting_lake_noise / 2))",
+    local_expressions =
+    {
+      starting_lake_distance = "distance_from_nearest_point{x = x, y = y, points = starting_lake_positions, maximum_distance = 1024}",
+      starting_lake_noise = "quick_multioctave_noise_persistence{x = x,\z
+                                                                 y = y,\z
+                                                                 seed0 = map_seed,\z
+                                                                 seed1 = 14,\z
+                                                                 input_scale = 1/8,\z
+                                                                 output_scale = 1,\z
+                                                                 octaves = 5,\z
+                                                                 octave_input_scale_multiplier = 0.5,\z
+                                                                 persistence = 0.75}"
+    }
+  },
+  {
+    type = "noise-expression",
+    name = "elevation_nauvis",
+    --intended_property = "elevation", --removed as an option as it is the default
+    expression = "elevation_nauvis_function(nauvis_hills_plateaus)"
+  },
+  {
+    type = "noise-expression",
+    name = "elevation_nauvis_no_cliff",
+    --intended_property = "elevation", --removed as an option as it is the default
+    expression = "elevation_nauvis_function(0)"
+  },
+  {
+    type = "noise-function",
+    name = "elevation_nauvis_function",
+    expression = "min(wlc_elevation, starting_lake)",
+    parameters = {"added_cliff_elevation"},
+    local_expressions =
+    {
+      elevation_magnitude = 20,
+      wlc_amplitude = 2,
+      wlc_elevation = "max(nauvis_main - water_level * wlc_amplitude, starting_island)",
+      nauvis_main = "elevation_magnitude * (lerp(0.5 * added_cliff_elevation - 0.6,\z
+                                                1.9 * added_cliff_elevation + 1.6,\z
+                                                0.1 + 0.5 * nauvis_bridges)\z
+                                           + 0.25 * nauvis_detail\z
+                                           + 3 * nauvis_macro * starting_macro_multiplier)",
+      -- if most of the world is flooded make sure starting areas still have land
+      starting_island = "nauvis_main + elevation_magnitude * (2.5 - distance * segmentation_multiplier / 200)",
+      starting_macro_multiplier = "clamp(distance * nauvis_segmentation_multiplier / 2000, 0, 1)",
+      starting_lake = "elevation_magnitude * (-3 + (starting_lake_distance + starting_lake_noise) / 8) / 8",
+      starting_lake_distance = "distance_from_nearest_point{x = x, y = y, points = starting_lake_positions, maximum_distance = 1024}",
+      starting_lake_noise = "quick_multioctave_noise_persistence{x = x,\z
+                                                                 y = y,\z
+                                                                 seed0 = map_seed,\z
+                                                                 seed1 = 14,\z
+                                                                 input_scale = 1/8,\z
+                                                                 output_scale = 0.8,\z
+                                                                 octaves = 4,\z
+                                                                 octave_input_scale_multiplier = 0.5,\z
+                                                                 persistence = 0.68}"
+    }
+  },
+  {
+    type = "noise-expression",
+    name = "elevation_lakes",
+    --intended_property = "elevation",
+    -- Large lakes similar to those from Factorio 0.12
+    expression = "finish_elevation{elevation = make_0_12like_lakes{x = x,\z
+                                                                   y = y,\z
+                                                                   bias = 20,\z
+                                                                   terrain_octaves = 8,\z
+                                                                   segmentation_multiplier = segmentation_multiplier},\z
+                                   segmentation_multiplier = segmentation_multiplier}"
+  },
+  {
+    type = "noise-expression",
+    name = "elevation_island",
+    --intended_property = "elevation",
+    -- A large island surrounded by an endless ocean
+    expression = "finish_elevation{elevation = make_0_12like_lakes{x = x,\z
+                                                                   y = y,\z
+                                                                   bias = -1000,\z
+                                                                   terrain_octaves = 8,\z
+                                                                   segmentation_multiplier = segmentation_mult},\z
+                                   segmentation_multiplier = segmentation_mult}",
+    local_expressions = {segmentation_mult = "segmentation_multiplier / 4"}
+  },
+
+
+  -- cliff_elevation
+  {
+    type = "noise-expression",
+    name = "cliff_elevation",
+    --intended_property = "cliff_elevation",
+    expression = "cliff_elevation_nauvis",
+    localised_name = {"noise-expression.cliff_elevation_nauvis"}
+  },
+  {
+    type = "noise-expression",
+    name = "cliff_elevation_from_elevation",
+    --intended_property = "cliff_elevation",
+    expression = "elevation"
+  },
+  {
+    type = "noise-expression",
+    name = "cliff_elevation_nauvis",
+    --intended_property = "cliff_elevation", --removed as an option as it is the default
+    expression = "10 + 30 * (nauvis_hills - nauvis_hills_cliff_level)"
+  },
+
+
+  -- cliffiness
   {
     type = "noise-expression",
     name = "cliffiness",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      -- Idea is that elevation function determines general placement of 'mountainey' areas.
-      -- 'cliffiness' only determines small-scale placement, to ensure that there are passages
-      -- through any sufficiently long cliff face.
-      return 0.5 + noise.clamp(
-        make_multioctave_noise_function(map.seed, 123, 2, 1, 1/3)(x,y,1/32,1) +
-        noise.log2(noise.var("control-setting:cliffs:richness:multiplier")) / 2,
-        0, 1)
-    end)
+    --intended_property = "cliffiness",
+    expression = "cliffiness_nauvis",
+    localised_name = {"noise-expression.cliffiness_nauvis"}
+  },
+  {
+    type = "noise-expression",
+    name = "cliffiness_basic",
+    --intended_property = "cliffiness",
+    -- Elevation function determines general placement of 'mountainey' areas.
+    -- Cliffiness only determines small-scale placement to ensure that there are passages through any sufficiently long cliff face.
+    expression = "clamp(0.5 * log2(cliff_richness) + \z
+                        quick_multioctave_noise{x = x,\z
+                                                y = y,\z
+                                                seed0 = map_seed,\z
+                                                seed1 = 123,\z
+                                                input_scale = 1/32,\z
+                                                output_scale = 1,\z
+                                                octaves = 2,\z
+                                                octave_output_scale_multiplier = 1,\z
+                                                octave_input_scale_multiplier = 1/3},\z
+                        0, 1) + 0.5"
+  },
+  {
+    type = "noise-expression",
+    name = "cliffiness_nauvis",
+    --intended_property = "cliffiness", --removed as an option as it is the default
+    expression = "(main_cliffiness >= cliff_cutoff) * 10",
+    -- values are so that main_cliffiness has a debug range from 0-2 being the range that is selected from by cliff_cutoff
+    -- i.e. red+ cliffs are only shwon at high cliff richness, green+ are always shown
+    local_expressions =
+    {
+      cliff_cutoff = "2 * cliff_gap_size ^ 1.5",
+      cliff_gap_size = "0.5 - 0.5 * slider_to_linear(cliff_richness, -1, 1)",
+      main_cliffiness = "min( base_cliffiness,\z
+                              forest_path_cliffiness,\z
+                              bridge_path_cliffiness,\z
+                              elevation_cliffiness,\z
+                              starting_area_cliffiness,\z
+                              4 * low_frequency_cliffiness)",
+      -- compnents to min
+      base_cliffiness = "(nauvis_cliff_ringbreak - 0.01) * 60",
+      forest_path_cliffiness = "(forest_path_billows - 0.03) * 12",
+      bridge_path_cliffiness = "(nauvis_bridge_billows - 0.05) * 15", -- not required if elevation is there
+      elevation_cliffiness = "(elevation_nauvis_no_cliff - 4) / 2",
+      starting_area_cliffiness = "-2 + distance * segmentation_multiplier / 120",
+      -- when frequency is below 100% then it won't remove the final cliff band.
+      -- Vertical frequency can't change below 1, so use the rest of the slider to reduce large-scale horizontal frequency
+      low_frequency_cliffiness = "1.5\z
+                                  + basis_noise{x = x,\z
+                                                y = y,\z
+                                                seed0 = map_seed,\z
+                                                seed1 = 86883,\z
+                                                input_scale = nauvis_segmentation_multiplier/500,\z
+                                                output_scale = 0.51}\z
+                                  + min(slider_to_linear(cliff_frequency, -1.7, 1.7),\z
+                                        slider_to_linear(cliff_richness, -1, 1))",
+
+      -- misc
+      cliff_frequency = "40 / cliff_elevation_interval"
+    }
   },
 
-  -- Variables used by autoplace:
+  -- Nauvis Mesas underlying expressions
+  {
+    type = "noise-expression",
+    name = "nauvis_segmentation_multiplier",
+    expression = "1.5 * control:water:frequency"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_persistance",
+    expression = "clamp(amplitude_corrected_multioctave_noise{x = x,\z
+                                                              y = y,\z
+                                                              seed0 = map_seed,\z
+                                                              seed1 = 500,\z
+                                                              octaves = 5,\z
+                                                              input_scale = nauvis_segmentation_multiplier / 2,\z
+                                                              offset_x = 10000 / nauvis_segmentation_multiplier,\z
+                                                              persistence = 0.7,\z
+                                                              amplitude = 0.5} + 0.55,\z
+                      0.5, 0.65)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_detail", -- the small scale details with variable persistance for a mix of smooth and jagged coastline
+    expression = "variable_persistence_multioctave_noise{x = x,\z
+                                                         y = y,\z
+                                                         seed0 = map_seed,\z
+                                                         seed1 = 600,\z
+                                                         input_scale = nauvis_segmentation_multiplier / 14,\z
+                                                         output_scale = 0.03,\z
+                                                         offset_x = 10000 / nauvis_segmentation_multiplier,\z
+                                                         octaves = 5,\z
+                                                         persistence = nauvis_persistance}"
+  },
+  {
+    type = "noise-expression",
+    name = "forest_path_billows",  -- an extra set of cutouts for trees and cliffs
+    expression = "abs(multioctave_noise{x = x,\z
+                                            y = y,\z
+                                            persistence = 0.5,\z
+                                            seed0 = map_seed,\z
+                                            seed1 = 1800,\z
+                                            octaves = 4,\z
+                                            input_scale = nauvis_segmentation_multiplier / 100})"
+  },
+  {
+    type = "noise-expression",
+    name = "forest_paths",
+    expression = "(forest_path_billows - 0.07) * 3"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_paths",
+    expression = "(nauvis_hills - 0.1) * 3"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_bridge_paths", -- cut paths out of trees and cliffs if elevation is low (e.g. on a land bridge)
+    expression = "(nauvis_bridge_billows - 0.07) * 5"
+  },
+  {
+    type = "noise-expression",
+    name = "tree_small_noise",
+    expression = "multioctave_noise{x = x,\z
+                                    y = y,\z
+                                    persistence = 0.75,\z
+                                    seed0 = map_seed,\z
+                                    seed1 = 'tree-small',\z
+                                    octaves = 3,\z
+                                    input_scale = 0.2,\z
+                                    output_scale = 0.5}"
+  },
+  {
+    type = "noise-expression",
+    name = "trees_forest_path_cutout",
+    expression = "min(nauvis_bridge_paths, nauvis_hills_paths, forest_paths)"
+  },
+  {
+    type = "noise-expression",
+    name = "trees_forest_path_cutout_faded",
+    expression = "trees_forest_path_cutout * 0.3 + tree_small_noise * 0.1" -- make the path edges more sparse and fuzzy instead of a hard line.
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_bridge_billows", -- large scale land-bridges for land connectivity
+    expression = "abs(multioctave_noise{x = x,\z
+                                        y = y,\z
+                                        persistence = 0.5,\z
+                                        seed0 = map_seed,\z
+                                        seed1 = 700,\z
+                                        octaves = 4,\z
+                                        input_scale = nauvis_segmentation_multiplier / 150})"
+  },
 
   {
     type = "noise-expression",
+    name = "nauvis_bridges", -- large scale land-bridges for land connectivity
+    expression = "1 - 0.1 * nauvis_bridge_billows - 0.9 * max(0, -0.1 + nauvis_bridge_billows)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_offset_raw_x",
+    expression = "basis_noise{x = x,\z
+                              y = y,\z
+                              seed0 = map_seed,\z
+                              seed1 = 'nauvis_offset_x',\z
+                              input_scale = nauvis_segmentation_multiplier / 500}"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_offset_raw_y",
+    expression = "basis_noise{x = x,\z
+                              y = y,\z
+                              seed0 = map_seed,\z
+                              seed1 = 'nauvis_offset_y',\z
+                              input_scale = nauvis_segmentation_multiplier / 500}"
+  },
+  {
+    type = "noise-function",
+    name = "normalize",
+    parameters = {"primary", "secondary", "bias"},
+    expression = "primary / sqrt(bias + (primary*primary)+(secondary*secondary))"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_offset_normalized_x",
+    expression = "normalize(nauvis_hills_offset_raw_x, nauvis_hills_offset_raw_y, 0.001)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_offset_normalized_y",
+    expression = "normalize(nauvis_hills_offset_raw_y, nauvis_hills_offset_raw_x, 0.001)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills", -- The medium-scale hills for plateaus that act as cliff forts in normal play, or 'islands' in high-water settings.
+    expression = "abs(multioctave_noise{x = x,\z
+                                        y = y,\z
+                                        persistence = 0.5,\z
+                                        seed0 = map_seed,\z
+                                        seed1 = 900,\z
+                                        octaves = 4,\z
+                                        input_scale = nauvis_segmentation_multiplier / 90})"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_offset",
+    -- A duplicate of nauvis_hills but with an offset to allow ring-breaking.
+    -- By comparing the nauvis_hills and nauvis_hills_offset, there's a low difference band perpendicular to the offset direction.
+    -- which can be used to break small ring features.
+    expression = "abs(multioctave_noise{x = x + 12 * nauvis_hills_offset_normalized_x,\z
+                                        y = y + 12 * nauvis_hills_offset_normalized_y,\z
+                                        persistence = 0.5,\z
+                                        seed0 = map_seed,\z
+                                        seed1 = 900,\z
+                                        octaves = 4,\z
+                                        input_scale = nauvis_segmentation_multiplier / 90})"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_cliff_ringbreak",
+    expression = "abs(nauvis_hills - nauvis_hills_offset)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_plateaus", -- make the hills to plateaus
+    expression = "0.5 + clamp((nauvis_hills - nauvis_hills_cliff_level) * 10, -0.5, 0.5)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_plateaus", -- make the hills to plateaus
+    expression = "0.1 * nauvis_hills + 0.8 * nauvis_plateaus"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_hills_cliff_level", -- make the hills to plateaus
+    expression = "clamp(0.65 + basis_noise{x = x,\z
+                                          y = y,\z
+                                          seed0 = map_seed,\z
+                                          seed1 = 99584,\z
+                                          input_scale = nauvis_segmentation_multiplier/500,\z
+                                          output_scale = 0.6}, 0.15, 1.15)"
+  },
+  {
+    type = "noise-expression",
+    name = "nauvis_macro",
+    expression = "multioctave_noise{x = x,\z
+                                    y = y,\z
+                                    persistence = 0.6,\z
+                                    seed0 = map_seed,\z
+                                    seed1 = 1000,\z
+                                    octaves = 2,\z
+                                    input_scale = nauvis_segmentation_multiplier / 1600}\z
+                  * max(0, multioctave_noise{x = x,\z
+                                    y = y,\z
+                                    persistence = 0.6,\z
+                                    seed0 = map_seed,\z
+                                    seed1 = 1100,\z
+                                    octaves = 1,\z
+                                    input_scale = nauvis_segmentation_multiplier / 1600})",
+  },
+
+  -- Variables used by autoplace:
+  {
+    type = "noise-expression",
     name = "distance",
-    expression = noise.distance_from(noise.var("x"), noise.var("y"), noise.var("starting_positions"))
+    expression = "distance_from_nearest_point{x = x, y = y, points = starting_positions}"
   },
   {
     type = "noise-expression",
     name = "tier_from_start",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      return noise.max(0.0, tile.distance - map.starting_area_radius) / map.starting_area_radius;
-    end)
-  },
-  {
-    type = "noise-expression",
-    name = "tier",
-    expression = noise.var("tier_from_start")
+    expression = "max(0, distance - starting_area_radius) / starting_area_radius"
   },
   {
     type = "noise-expression",
     name = "starting_area_weight",
-    expression = noise.define_noise_function( function(x,y,tile,map)
-      return 1 - noise.min(1.0, tile.tier / 2.0)
-    end)
-  }
-}
-
-local function add_climate_control_defaults(control_name)
-  data:extend
-  {
-    {
-      type = "noise-expression",
-      name = "control-setting:" .. control_name .. ":frequency:multiplier",
-      expression = noise.to_noise_expression(1)
-    },
-    {
-      type = "noise-expression",
-      name = "control-setting:" .. control_name .. ":bias",
-      expression = noise.to_noise_expression(0)
-    }
-  }
-end
-
--- Generate a bunch of options for a property
--- Do like data:extend(fractional_options("some-noise-property"))
-local function fractional_options(property)
-  local opts = {}
-  local den = 4
-  local next_non_default_order = 3000
-  for i, num in ipairs({1,2,3,4,6,8,12,16}) do
-    if num == den then
-      order = 2000 -- Default value should be 1
-    else
-      order = next_non_default_order
-      next_non_default_order = next_non_default_order + 1
-    end
-    opts[#opts+1] =
-    {
-      type = "noise-expression",
-      name = property .. "-" .. num .. "-" .. den,
-      intended_property = property,
-      order = order,
-      expression = noise.fraction(num, den)
-    }
-  end
-  return opts
-end
-
-data:extend
-{
+    expression = "1 - min(1, 0.5 * tier_from_start)"
+  },
   {
     type = "noise-expression",
-    name = "starting-lake-noise-amplitude",
-    expression = noise.to_noise_expression(1)
+    name = "water_level",
+    expression = "10 * log2(control:water:size)"
+  },
+  {
+    type = "noise-expression",
+    name = "segmentation_multiplier",
+    expression = "control:water:frequency"
   }
 }
-
-if enable_debug_expressions then
-  data:extend(fractional_options("starting-lake-noise-amplitude"))
-end
-
-add_climate_control_defaults("temperature")
-add_climate_control_defaults("moisture")
-add_climate_control_defaults("aux")

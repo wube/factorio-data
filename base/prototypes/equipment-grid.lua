@@ -10,8 +10,8 @@ data:extend(
   {
     type = "equipment-grid",
     name = "medium-equipment-grid",
-    width = 7,
-    height = 7,
+    width = 6,
+    height = 8,
     equipment_categories = {"armor"}
   },
   {

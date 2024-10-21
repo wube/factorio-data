@@ -1,0 +1,19 @@
+{
+  "item":
+  [
+    ["biter-lab", "biolab"]
+  ],
+  "recipe":
+  [
+    ["biter-lab", "biolab"],
+    ["biter-lab-recycling", "biolab-recycling"]
+  ],
+  "technology":
+  [
+    ["biter-lab", "biolab"]
+  ],
+  "entity":
+  [
+    ["biter-lab", "biolab"]
+  ]
+}

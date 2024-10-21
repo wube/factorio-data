@@ -2,10 +2,12 @@ Albert Bertolín Soler / glex - Art director
 Aleš Navrátil / Zopa - Graphic designer
 Ben Buckton / Abregado - Level designer
 Bětka Pospíšilová - Office & Administration manager
+Caleb Heuer / Raiguard - Programmer
 Claude Metz / Therenas - Documentation developer & writer
 Dan Andrus / StrangePan - Programmer
 Dan Stevens / TOGoS - Programmer
 Daniel James Taylor - Composer & sound designer
+David Hrusa - Programmer
 Denis Koshman  / Harkonnen - Programmer
 Dominik Franěk - Programmer
 Dominik Schmaderer - 3D artist
@@ -13,7 +15,7 @@ Earendel - Concept artist
 Erik Wellmann / Bilka - Wiki admin
 Ernestas Norvaišas / Einis - 3D artist
 Fearghall Thomas - 3D artist
-Hrusa - Programmer
+Gavin Thomas Endicott - Trailer voiceover
 Ian Macbeth - Sound designer
 Jan Kadlec - Programmer
 Jarosław Kolmaga - 3D artist
@@ -49,6 +51,14 @@ Václav Benč / V453000 - Technical artist
 Valerii Kuznietsov / Soliery - Sound designer
 Viktor Kopp - Programmer
 Vinzenz Sinapius - Operations Developer
+Zsolt Szabó - 3D artist
+
+Base game music:
+Daniel James Taylor - Composer, Producer
+
+Space age music - Soundsgate:
+Petr Wajsar - Composer
+Alexandr Smutny - Producer
 
 Big thanks to our source access community members who contributed code to the game.
 

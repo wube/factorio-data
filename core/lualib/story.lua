@@ -1,5 +1,17 @@
 require("mod-gui")
 
+story_custom_handlers = {}
+
+function tip_story_init(story_table)
+   story_init_helpers(story_table)
+    storage.story = story_init()
+    script.on_event(defines.events.on_tick, function(event)
+      if not game.tick_paused then
+        story_update(storage.story, event)
+      end
+    end)
+end
+
 function story_init_helpers(story)
   story_points_by_name = {}
   story_branches = {}
@@ -37,8 +49,8 @@ end
 
 function story_update(story, event, next_level, onwin)
   if event.name == defines.events.on_entity_renamed then return end
-  if event.created_entity then
-    global.last_built_position = event.created_entity.position
+  if event.entity then
+    storage.last_built_position = event.entity.position
   end
   on_gui_click(event)
   local branches = story_branches[story.story_index]
@@ -126,12 +138,12 @@ function story_remove_update(story, name)
   story.updates[name] = nil
 end
 
+--also calls the action of the story point previous to the one you are jumping to
 function story_jump_to(story, name)
   local story_point = story_points_by_name[name]
   story.story_index = story_point.story_index
   story.story_position = story_point.position
   if story.story_position ~= 1 then
-    local test = story.story_index + 1
     local branch = story_branches[story.story_index]
     if branch[story.story_position - 1].action ~= nil then
       branch[story.story_position - 1].action()
@@ -160,7 +172,7 @@ function story_show_message_dialog(param, player)
 end
 
 function set_goal(goal_string, update_only)
-  global.goal_string = goal_string
+  storage.goal_string = goal_string
   for k, player in pairs (game.players) do
     player_set_goal(player, goal_string, update_only)
   end
@@ -179,11 +191,11 @@ function player_set_goal(player, goal_string, update_only)
 end
 
 function on_player_joined(player)
-  if global.goal_string then
-    player_set_goal(player, global.goal_string)
+  if storage.goal_string then
+    player_set_goal(player, storage.goal_string)
   end
-  if global.set_info then
-    for k, info in pairs (global.set_info) do
+  if storage.set_info then
+    for k, info in pairs (storage.set_info) do
       player_set_info(info)
     end
   end
@@ -198,21 +210,24 @@ function flash_goal()
 end
 
 function set_info(info)
-  if not global.set_info then
-    global.set_info = {}
+  if not storage.set_info then
+    storage.set_info = {}
   end
   if not info then
-    global.set_info = nil
+    storage.set_info = nil
     for k, player in pairs (game.players) do
       player_set_info(player, info)
     end
     return
   end
+  if info.custom_handler then
+    assert(story_custom_handlers[info.custom_handler])
+  end
   local append = info.append
   if not append then
-    global.set_info = {}
+    storage.set_info = {}
   end
-  table.insert(global.set_info, info)
+  table.insert(storage.set_info, info)
   for k, player in pairs (game.players) do
     player_set_info(player, info)
   end
@@ -235,15 +250,14 @@ function player_set_info(player, info)
       info_flow.clear()
     end
     if info then
-      if info.custom_function then
-        info.custom_function(info_flow)
+      if info.custom_handler then
+        story_custom_handlers[info.custom_handler](info_flow)
       end
       if info.text or info[1] then
         local label = info_flow.add
         {
           type = "label",
-          caption = info.text or info,
-          style = "goal_label"
+          caption = info.text or info
         }
         label.style.single_line = false
       end
@@ -363,7 +377,7 @@ function export_entities(param)
         if list then
           local this = false
           for i, listed in pairs (list) do
-            if listed.name == entity.name and entity.type ~= "curved-rail" and entity.type ~= "straight-rail" then
+            if listed.name == entity.name and entity.type ~= "legacy-curved-rail" and entity.type ~= "legacy-straight-rail" then
               this = list[i]
               break
             end
@@ -406,8 +420,6 @@ function export_entities(param)
           info.speed = entity.train.speed
           info.manual_mode = entity.train.manual_mode
           info.direction = math.floor(0.5+entity.orientation*8)%8
-        elseif entity.name == "flying-text" then
-          info.text = ""
         elseif entity.type == "assembling-machine" then
           if entity.get_recipe() then
             info.recipe = entity.get_recipe().name
@@ -432,25 +444,20 @@ function export_entities(param)
     end
   end
   for k, entity in pairs (entities) do
-    if entity.valid and entity.circuit_connected_entities and entity.unit_number then
+    if entity.valid and entity.unit_number then
       local entity_index = index_map[entity.unit_number]
       if entity_index then
-        local connection_definitions = {}
-        for j, definition in pairs (entity.circuit_connection_definitions) do
-          local unit_number = definition.target_entity.unit_number
-          if unit_number then
-            local index = index_map[unit_number]
-            if index then
-              connection_definitions[index] = {
-                wire = definition.wire,
-                source_circuit_id = definition.source_circuit_id,
-                target_circuit_id = definition.target_circuit_id
-              }
+        local wires = {}
+        for _, connector in pairs(entity.get_wire_connectors()) do
+          for _, neighbour in pairs(connector.connections) do
+            local other_index = index_map[neighbour.owner.unit_number]
+            if other_index then
+              table.insert(wires, { entity_index, connector.wire_connector_id, other_index, neighbour.wire_connector_id })
             end
           end
         end
-        if #connection_definitions > 0 then
-          exported[entity_index].circuit_connection_definitions = connection_definitions
+        if #wires > 0 then
+          exported[entity_index].wires = wires
         end
       end
     end
@@ -539,10 +546,10 @@ function recreate_entities(array, param, bool)
           if entity.recipe then
             created.set_recipe(entity.recipe)
           end
-          created.minable = entity.minable
-          created.rotatable = entity.rotatable
-          created.operable = entity.operable
-          created.destructible = entity.destructible
+          created.minable = entity.minable or false
+          created.rotatable = entity.rotatable or false
+          created.operable = entity.operable or false
+          created.destructible = entity.destructible or false
           if entity.schedule then
             created.train.schedule = entity.schedule
             created.train.speed = entity.speed
@@ -566,11 +573,12 @@ function recreate_entities(array, param, bool)
   for k, entity in pairs (array) do
     local created = index_map[entity.index]
     if created and created.valid then
-      if entity.circuit_connection_definitions then
-        for index, definition in pairs (entity.circuit_connection_definitions) do
-          entity_to_connect = index_map[index]
-          if entity_to_connect.valid then
-            created.connect_neighbour({wire = definition.wire, target_entity = entity_to_connect, source_circuit_id = definition.source_circuit_id, target_circuit_id = definition.target_circuit_id})
+      if entity.wires then
+        for _, wire in pairs (entity.wires) do
+          local first_connector = index_map[wire[1]].get_wire_connector(wire[2], true)
+          local second_connector = index_map[wire[3]].get_wire_connector(wire[4], true)
+          if first_connector and second_connector then
+            first_connector.connect_to(second_connector)
           end
         end
       end
@@ -608,9 +616,12 @@ end
 
 function add_button(gui)
   local button = gui.add{type = "button", name = "story_continue_button", caption = {"continue"}}
-  global.continue = false
+  storage.continue = false
   return button
 end
+story_custom_handlers["@add_button"] = add_button
+story_custom_handlers["@add_finish_button"] = function(flow) add_button(flow).caption = {"finish"} end
+story_custom_handlers["@add_continue_button"] = function(flow) add_button(flow).caption = {"continue"} end
 
 function on_gui_click(event)
   if event.name ~= defines.events.on_gui_click then return end
@@ -620,7 +631,7 @@ function on_gui_click(event)
   local player = game.players[event.player_index]
   if name == "story_continue_button" then
     if not element.enabled then return end
-    global.continue = true
+    storage.continue = true
     set_continue_button_style(function (button)
       if button.valid then
         button.enabled = false
@@ -698,17 +709,17 @@ function deconstruct_on_tick(entities, seconds)
       local tick_to_deconstruct = 1 + tick + (k % duration)
       insert(new_table[tick_to_deconstruct], entity)
     end
-    global.entities_to_deconstruct_on_tick = new_table
-    global.entities_to_deconstruct_on_tick.end_tick = tick + duration
+    storage.entities_to_deconstruct_on_tick = new_table
+    storage.entities_to_deconstruct_on_tick.end_tick = tick + duration
     return
   end
 
-  if tick > global.entities_to_deconstruct_on_tick.end_tick then
-    global.entities_to_deconstruct_on_tick = nil
+  if tick > storage.entities_to_deconstruct_on_tick.end_tick then
+    storage.entities_to_deconstruct_on_tick = nil
     return true
   end
 
-  local entities = global.entities_to_deconstruct_on_tick[tick]
+  local entities = storage.entities_to_deconstruct_on_tick[tick]
 
   if entities then
     for k, entity in pairs (entities) do
@@ -717,7 +728,7 @@ function deconstruct_on_tick(entities, seconds)
         entity.destroy()
       end
     end
-    global.entities_to_deconstruct_on_tick[tick] = nil
+    storage.entities_to_deconstruct_on_tick[tick] = nil
   end
 
 end
@@ -742,19 +753,19 @@ function recreate_entities_on_tick(entities, param, seconds)
     end
     new_table.param = param
     new_table.end_tick = tick + duration
-    global.entities_to_build_on_tick = new_table
+    storage.entities_to_build_on_tick = new_table
     return
   end
-  if tick > global.entities_to_build_on_tick.end_tick then
-    global.entities_to_build_on_tick = nil
+  if tick > storage.entities_to_build_on_tick.end_tick then
+    storage.entities_to_build_on_tick = nil
     return true
   end
 
-  local entities = global.entities_to_build_on_tick[tick]
+  local entities = storage.entities_to_build_on_tick[tick]
 
   if entities then
-    recreate_entities(entities, global.entities_to_build_on_tick.param)
-    global.entities_to_build_on_tick[tick] = nil
+    recreate_entities(entities, storage.entities_to_build_on_tick.param)
+    storage.entities_to_build_on_tick[tick] = nil
   end
 
 end
@@ -763,5 +774,5 @@ function flying_congrats(position)
   if not position then position = player().position end
   if not position.x then position.x = position[1] end
   if not position.y then position.y = position[2] end
-  surface().create_entity{name = "tutorial-flying-text", text = {"tutorial-gui.objective-complete"}, position = {position.x, position.y - 1.5}, color = {r = 0.1, g = 1, b = 0.1}}
+  player().create_local_flying_text{text = {"tutorial-gui.objective-complete"}, position = {position.x, position.y - 1.5}, color = {r = 0.1, g = 1, b = 0.1}, time_to_live = 150}
 end

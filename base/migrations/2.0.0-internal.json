@@ -1,0 +1,21 @@
+{
+  "entity":
+  [
+    [ "new-straight-rail-remnants", "straight-rail-remnants" ],
+    [ "kink-rail-remnants", "half-diagonal-rail-remnants" ],
+    [ "curve-a-rail-remnants", "curved-rail-a-remnants" ],
+    [ "curve-b-rail-remnants", "curved-rail-b-remnants" ],
+    [ "drop-pod", "cargo-pod" ],
+    [ "drop-pod-container", "cargo-pod-container" ],
+    [ "effectivity-module-recycling", "efficiency-module-recycling" ],
+    [ "effectivity-module-2-recycling", "efficiency-module-2-recycling" ],
+    [ "effectivity-module-3-recycling", "efficiency-module-3-recycling" ]
+  ],
+  "virtual-signal":
+  [
+    [ "signal-any-item", "signal-item-parameter"],
+    [ "signal-any-fuel", "signal-fuel-parameter"],
+    [ "signal-any-fluid", "signal-fluid-parameter"],
+    [ "signal-any-signal", "signal-signal-parameter"]
+  ]
+}

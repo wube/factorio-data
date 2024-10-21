@@ -2,7 +2,7 @@ local util = require("util")
 
 local function create_leg_sprite_layer_definition(spidertron_scale, column, row, additions, sprite_definition)
   local tab = util.table.deepcopy(sprite_definition)
-  tab.x = (tab.variation_count >= 8) and (tab.width * (column - 1)) or tab.x
+  tab.x = (tab.direction_count >= 8) and (tab.width * (column - 1)) or tab.x
   tab.y = tab.height * (row - 1)
   if tab.scale then
     tab.scale = tab.scale * spidertron_scale
@@ -16,19 +16,8 @@ local function create_leg_sprite_layer_definition(spidertron_scale, column, row,
   tab.draw_as_shadow = additions.draw_as_shadow
   tab.apply_runtime_tint = additions.apply_runtime_tint
   tab.variation_count = nil
-  if tab.hr_version then
-    tab.hr_version.x = (tab.hr_version.variation_count >= 8) and (tab.hr_version.width * (column - 1)) or tab.hr_version.x
-    tab.hr_version.y = tab.hr_version.height * (row - 1)
-    tab.hr_version.x = tab.hr_version.width * (column - 1)
-    tab.hr_version.draw_as_shadow = additions.draw_as_shadow
-    tab.hr_version.apply_runtime_tint = additions.apply_runtime_tint
-    tab.hr_version.variation_count = nil
-    tab.hr_version.scale = tab.hr_version.scale * spidertron_scale
-    if tab.hr_version.shift then
-      tab.hr_version.shift[1] = tab.hr_version.shift[1] * spidertron_scale
-      tab.hr_version.shift[2] = tab.hr_version.shift[2] * spidertron_scale
-    end
-  end
+  tab.line_length = 1 -- spidertron legs don't support rotations just yet, but we load these as rotating sprites anyway
+  tab.direction_count = 1
   return tab
 end
 
@@ -169,56 +158,34 @@ local leg_lower_part_graphics_definitions =
   top_end =
   {
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-lower-end-A.png",
-    width = 20,
-    height = 50,
-    variation_count = 8,
-    shift = util.by_pixel(0, 20),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-lower-end-A.png",
-      width = 40,
-      height = 98,
-      variation_count = 8,
-      scale = 0.5,
-      shift = util.by_pixel(0.5, 19.5)
-    }
+    width = 40,
+    height = 98,
+    line_length = 8,
+    direction_count = 8,
+    scale = 0.5,
+    shift = util.by_pixel(0.5, 19.5)
   },
 
   middle =
   {
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-lower-stretchable.png",
-    width = 26,
-    height = 192,
-    variation_count = 8,
-    scale = 0.5,
-    shift = util.by_pixel(1, 0),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-lower-stretchable.png",
-      width = 50,
-      height = 384,
-      variation_count = 8,
-      scale = 0.25,
-      shift = util.by_pixel(0.5, 0)
-    }
+    width = 50,
+    height = 384,
+    line_length = 8,
+    direction_count = 8,
+    scale = 0.25,
+    shift = util.by_pixel(0.5, 0)
   },
 
   bottom_end =
   {
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-lower-end-B.png",
-    width = 18,
-    height = 46,
-    variation_count = 8,
-    shift = util.by_pixel(0, -21),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-lower-end-B.png",
-      width = 34,
-      height = 92,
-      variation_count = 8,
-      scale = 0.5,
-      shift = util.by_pixel(0, -21)
-    }
+    width = 34,
+    height = 92,
+    line_length = 8,
+    direction_count = 8,
+    scale = 0.5,
+    shift = util.by_pixel(0, -21)
   },
 
   reflection_top_end =
@@ -226,7 +193,8 @@ local leg_lower_part_graphics_definitions =
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-lower-end-A-water-reflection.png",
     width = 56,
     height = 110,
-    variation_count = 1,
+    line_length = 1,
+    direction_count = 1,
     scale = 0.5,
     shift = util.by_pixel(1 * 0.5, 34 * 0.5)
   },
@@ -236,7 +204,8 @@ local leg_lower_part_graphics_definitions =
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-lower-stretchable-water-reflection.png",
     width = 72,
     height = 384,
-    variation_count = 1,
+    line_length = 1,
+    direction_count = 1,
     scale = 0.25,
     shift = util.by_pixel(1 * 0.5, 0)
   },
@@ -246,7 +215,8 @@ local leg_lower_part_graphics_definitions =
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-lower-end-B-water-reflection.png",
     width = 52,
     height = 104,
-    variation_count = 1,
+    line_length = 1,
+    direction_count = 1,
     scale = 0.5,
     shift = util.by_pixel(0, -38 * 0.5)
   }
@@ -259,56 +229,34 @@ local leg_upper_part_graphics_definitions =
   top_end =
   {
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-upper-end-A.png",
-    width = 22,
-    height = 44,
-    variation_count = 8,
-    shift = util.by_pixel(0, 18),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-upper-end-A.png",
-      width = 42,
-      height = 86,
-      variation_count = 8,
-      scale = 0.5,
-      shift = util.by_pixel(0, 18)
-    }
+    width = 42,
+    height = 86,
+    line_length = 8,
+    direction_count = 8,
+    scale = 0.5,
+    shift = util.by_pixel(0, 18)
   },
 
   middle =
   {
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-upper-stretchable.png",
-    width = 30,
-    height = 128,
-    variation_count = 8,
-    scale = 0.5,
-    shift = util.by_pixel(-2, 0),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-upper-stretchable.png",
-      width = 60,
-      height = 256,
-      variation_count = 8,
-      scale = 0.25,
-      shift = util.by_pixel(-1.5, 0)
-    }
+    width = 60,
+    height = 256,
+    line_length = 8,
+    direction_count = 8,
+    scale = 0.25,
+    shift = util.by_pixel(-1.5, 0)
   },
 
   bottom_end =
   {
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-upper-end-B.png",
-    width = 20,
-    height = 30,
-    variation_count = 8,
-    shift = util.by_pixel(1, -9),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-upper-end-B.png",
-      width = 38,
-      height = 58,
-      variation_count = 8,
-      scale = 0.5,
-      shift = util.by_pixel(0.5, -9)
-    }
+    width = 38,
+    height = 58,
+    line_length = 8,
+    direction_count = 8,
+    scale = 0.5,
+    shift = util.by_pixel(0.5, -9)
   },
 
   reflection_top_end =
@@ -316,7 +264,8 @@ local leg_upper_part_graphics_definitions =
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-upper-end-A-water-reflection.png",
     width = 64,
     height = 96,
-    variation_count = 1,
+    line_length = 1,
+    direction_count = 1,
     scale = 0.5,
     shift = util.by_pixel(1 * 0.5, 31 * 0.5)
   },
@@ -326,7 +275,8 @@ local leg_upper_part_graphics_definitions =
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-upper-stretchable-water-reflection.png",
     width = 80,
     height = 256,
-    variation_count = 1,
+    line_length = 1,
+    direction_count = 1,
     scale = 0.25,
     shift = util.by_pixel(-4 * 0.5, 0)
   },
@@ -336,7 +286,8 @@ local leg_upper_part_graphics_definitions =
     filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-upper-end-B-water-reflection.png",
     width = 56,
     height = 74,
-    variation_count = 1,
+    line_length = 1,
+    direction_count = 1,
     scale = 0.5,
     shift = util.by_pixel(1 * 0.5, -14 * 0.5)
   }
@@ -345,19 +296,12 @@ local leg_upper_part_graphics_definitions =
 local leg_joint_graphics_definitions =
 {
   filename = "__base__/graphics/entity/spidertron/legs/spidertron-legs-knee.png",
-  width = 12,
-  height = 14,
-  variation_count = 8,
-  shift = util.by_pixel(1, 0),
-  hr_version =
-  {
-    filename = "__base__/graphics/entity/spidertron/legs/hr-spidertron-legs-knee.png",
-    width = 22,
-    height = 28,
-    variation_count = 8,
-    scale = 0.5,
-    shift = util.by_pixel(0.5, 0)
-  }
+  width = 22,
+  height = 28,
+  line_length = 8,
+  direction_count = 8,
+  scale = 0.5,
+  shift = util.by_pixel(0.5, 0)
 }
 
 function spidertron_torso_graphics_set(spidertron_scale)
@@ -369,43 +313,22 @@ return
     {
       {
         filename = "__base__/graphics/entity/spidertron/torso/spidertron-body-bottom.png",
-        width = 64,
-        height = 54,
+        width = 126,
+        height = 106,
         line_length = 1,
         direction_count = 1,
-        scale = spidertron_scale,
-        shift = util.by_pixel(0 * spidertron_scale, 0 * spidertron_scale),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/spidertron/torso/hr-spidertron-body-bottom.png",
-          width = 126,
-          height = 106,
-          line_length = 1,
-          direction_count = 1,
-          scale = 0.5 * spidertron_scale,
-          shift = util.by_pixel(0 * spidertron_scale, 0 * spidertron_scale)
-        }
+        scale = 0.5 * spidertron_scale,
+        shift = util.by_pixel(0 * spidertron_scale, 0 * spidertron_scale)
       },
       {
         filename = "__base__/graphics/entity/spidertron/torso/spidertron-body-bottom-mask.png",
-        width = 62,
-        height = 46,
+        width = 124,
+        height = 90,
         line_length = 1,
         direction_count = 1,
-        scale = spidertron_scale,
+        scale = 0.5 * spidertron_scale,
         apply_runtime_tint = true,
-        shift = util.by_pixel(0 * spidertron_scale, 4 * spidertron_scale),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/spidertron/torso/hr-spidertron-body-bottom-mask.png",
-          width = 124,
-          height = 90,
-          line_length = 1,
-          direction_count = 1,
-          scale = 0.5 * spidertron_scale,
-          apply_runtime_tint = true,
-          shift = util.by_pixel(0 * spidertron_scale, 3.5 * spidertron_scale)
-        }
+        shift = util.by_pixel(0 * spidertron_scale, 3.5 * spidertron_scale)
       }
     }
   },
@@ -413,24 +336,13 @@ return
   shadow_base_animation =
   {
     filename = "__base__/graphics/entity/spidertron/torso/spidertron-body-bottom-shadow.png",
-    width = 72,
-    height = 48,
+    width = 144,
+    height = 96,
     line_length = 1,
     direction_count = 1,
-    scale = spidertron_scale,
+    scale = 0.5 * spidertron_scale,
     draw_as_shadow = true,
-    shift = util.by_pixel(-1 * spidertron_scale, -1 * spidertron_scale),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/torso/hr-spidertron-body-bottom-shadow.png",
-      width = 144,
-      height = 96,
-      line_length = 1,
-      direction_count = 1,
-      scale = 0.5 * spidertron_scale,
-      draw_as_shadow = true,
-      shift = util.by_pixel(-1 * spidertron_scale, -1 * spidertron_scale)
-    }
+    shift = util.by_pixel(-1 * spidertron_scale, -1 * spidertron_scale)
   },
 
   animation =
@@ -439,43 +351,22 @@ return
     {
       {
         filename = "__base__/graphics/entity/spidertron/torso/spidertron-body.png",
-        width = 66,
-        height = 70,
+        width = 132,
+        height = 138,
         line_length = 8,
         direction_count = 64,
-        scale = spidertron_scale,
-        shift = util.by_pixel(0 * spidertron_scale, -19 * spidertron_scale),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/spidertron/torso/hr-spidertron-body.png",
-          width = 132,
-          height = 138,
-          line_length = 8,
-          direction_count = 64,
-          scale = 0.5 * spidertron_scale,
-          shift = util.by_pixel(0 * spidertron_scale, -19 * spidertron_scale)
-        }
+        scale = 0.5 * spidertron_scale,
+        shift = util.by_pixel(0 * spidertron_scale, -19 * spidertron_scale)
       },
       {
         filename = "__base__/graphics/entity/spidertron/torso/spidertron-body-mask.png",
-        width = 66,
-        height = 50,
+        width = 130,
+        height = 100,
         line_length = 8,
         direction_count = 64,
-        scale = spidertron_scale,
+        scale = 0.5 * spidertron_scale,
         apply_runtime_tint = true,
-        shift = util.by_pixel(0 * spidertron_scale, -14 * spidertron_scale),
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/spidertron/torso/hr-spidertron-body-mask.png",
-          width = 130,
-          height = 100,
-          line_length = 8,
-          direction_count = 64,
-          scale = 0.5 * spidertron_scale,
-          apply_runtime_tint = true,
-          shift = util.by_pixel(0 * spidertron_scale, -14 * spidertron_scale)
-        }
+        shift = util.by_pixel(0 * spidertron_scale, -14 * spidertron_scale)
       }
     }
   },
@@ -483,24 +374,13 @@ return
   shadow_animation =
   {
     filename = "__base__/graphics/entity/spidertron/torso/spidertron-body-shadow.png",
-    width = 96,
-    height = 48,
+    width = 192,
+    height = 94,
     line_length = 8,
     direction_count = 64,
-    scale = spidertron_scale,
+    scale = 0.5 * spidertron_scale,
     draw_as_shadow = true,
-    shift = util.by_pixel(26 * spidertron_scale, 1 * spidertron_scale),
-    hr_version =
-    {
-      filename = "__base__/graphics/entity/spidertron/torso/hr-spidertron-body-shadow.png",
-      width = 192,
-      height = 94,
-      line_length = 8,
-      direction_count = 64,
-      scale = 0.5 * spidertron_scale,
-      draw_as_shadow = true,
-      shift = util.by_pixel(26 * spidertron_scale, 0.5 * spidertron_scale)
-    }
+    shift = util.by_pixel(26 * spidertron_scale, 0.5 * spidertron_scale)
   },
 
   water_reflection =
@@ -534,7 +414,7 @@ return
 
   eye_light = {intensity = 1, size = 1 * spidertron_scale, color = {r=1.0, g=1.0, b=1.0}},-- {r=1.0, g=0.0, b=0.0}},
 
-  render_layer = "wires-above",
+  render_layer = "under-elevated",
   base_render_layer = "higher-object-above",
 
   autopilot_destination_on_map_visualisation =
@@ -620,7 +500,7 @@ function create_spidertron_leg_graphics_set(spidertron_scale, leg_index)
       layers =
       {
         create_leg_sprite_layer_definition(spidertron_scale, leg_index, 1, {}, leg_joint_graphics_definitions),
-        create_leg_sprite_layer_definition(spidertron_scale,leg_index, 3, { apply_runtime_tint = true }, leg_joint_graphics_definitions)
+        create_leg_sprite_layer_definition(spidertron_scale, leg_index, 3, { apply_runtime_tint = true }, leg_joint_graphics_definitions)
       }
     },
 

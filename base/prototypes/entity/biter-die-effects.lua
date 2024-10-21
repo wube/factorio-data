@@ -1,3 +1,4 @@
+local sounds = require("prototypes.entity.sounds")
 local effects = {}
 
 ---- SMALL- BITER DEATH
@@ -16,14 +17,13 @@ effects.small_biter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
+        particle_name = "blood-particle-small",
         offsets =
         {
           { 0, 0.5 },
           { 0, 0.6 }
         },
         offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5} },
-        tile_collision_mask = nil,
         initial_height = 0.9,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.03,
@@ -38,7 +38,7 @@ effects.small_biter =
       },
       {
         type = "create-particle",
-        repeat_count = 4,
+        repeat_count = 3,
         repeat_count_deviation = 2,
         probability = 1,
         affects_target = false,
@@ -49,7 +49,6 @@ effects.small_biter =
           { 0, 0 }
         },
         offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
         initial_height = 0.4,
         initial_height_deviation = 0.4,
         initial_vertical_speed = 0.05,
@@ -69,13 +68,12 @@ effects.small_biter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
+        particle_name = "blood-particle-small",
         offsets =
         {
           { 0, -0.4 }
         },
         offset_deviation = { { 0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
         initial_height = 0.1,
         initial_height_deviation = 0.1,
         initial_vertical_speed = 0.075,
@@ -95,10 +93,9 @@ effects.small_biter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
+        particle_name = "blood-particle-small",
         offsets = { { 0, 0 } },
         offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
         initial_height = 0,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.009,
@@ -110,7 +107,11 @@ effects.small_biter =
         tail_length = 5,
         tail_length_deviation = 5,
         tail_width = 3
-      }
+      },
+      {
+        type = "play-sound",
+        sound = sounds.small_gore
+      },
     }
   }
 }
@@ -138,7 +139,6 @@ effects.medium_biter =
           { 0, -0.24 }
         },
         offset_deviation = { { -0.5, -0.5 }, { -0.5, 0.5 } },
-        tile_collision_mask = nil,
         initial_height = 0.9,
         initial_height_deviation = 0.9,
         initial_vertical_speed = 0.03,
@@ -153,7 +153,7 @@ effects.medium_biter =
       },
       {
         type = "create-particle",
-        repeat_count = 4,
+        repeat_count = 3,
         repeat_count_deviation = 2,
         probability = 1,
         affects_target = false,
@@ -164,7 +164,6 @@ effects.medium_biter =
           { 0, 0 }
         },
         offset_deviation = { { -0.7, -0.7 }, { 0.7, 0.7 } },
-        tile_collision_mask = nil,
         initial_height = 0.4,
         initial_height_deviation = 0.4,
         initial_vertical_speed = 0.05,
@@ -184,10 +183,9 @@ effects.medium_biter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
+        particle_name = "blood-particle-small",
         offsets = { { 0, 0 } },
         offset_deviation = { { -0.7, -0.7 }, { 0.7, 0.7 } },
-        tile_collision_mask = nil,
         initial_height = 0.1,
         initial_height_deviation = 0.1,
         initial_vertical_speed = 0.075,
@@ -210,7 +208,6 @@ effects.medium_biter =
         particle_name = "blood-particle",
         offsets = { { 0, 0 } },
         offset_deviation = { { -0.7, -0.7 }, { 0.7, 0.7 } },
-        tile_collision_mask = nil,
         initial_height = 0,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.01,
@@ -230,10 +227,9 @@ effects.medium_biter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
+        particle_name = "blood-particle-small",
         offsets = { { 0, 0 } },
         offset_deviation = { { -0.7, -0.7 }, { 0.7, 0.7 } },
-        tile_collision_mask = nil,
         initial_height = 0.3,
         initial_height_deviation = 0.3,
         initial_vertical_speed = 0.04,
@@ -245,7 +241,11 @@ effects.medium_biter =
         tail_length = 5,
         tail_length_deviation = 5,
         tail_width = 3
-      }
+      },
+      {
+        type = "play-sound",
+        sound = sounds.medium_gore
+      },
     }
   }
 }
@@ -261,19 +261,20 @@ effects.big_biter =
     {
       {
         type = "create-particle",
-        repeat_count = 3,
-        repeat_count_deviation = 2,
+        repeat_count = 5,
+        repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
+        offsets = {
           { 0, -0.8 },
           { 0, -0.25 }
         },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.9,
         initial_height_deviation = 0.9,
         initial_vertical_speed = 0.03,
@@ -284,45 +285,24 @@ effects.big_biter =
         frame_speed_deviation = 0.02,
         tail_length = 12,
         tail_length_deviation = 25,
-        tail_width = 3
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 4,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { 0, 0 }
-        },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.05,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.05,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 1,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 3
-      },
-      {
-        type = "create-particle",
-        repeat_count = 9,
+        repeat_count = 5,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.1,
         initial_height_deviation = 0.1,
         initial_vertical_speed = 0.075,
@@ -333,53 +313,8 @@ effects.big_biter =
         frame_speed_deviation = 0,
         tail_length = 21,
         tail_length_deviation = 3,
-        tail_width = 3
-      },
-      {
-        type = "create-particle",
-        repeat_count = 13,
-        repeat_count_deviation = 1,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
-        initial_height = 0.1,
-        initial_height_deviation = 0.1,
-        initial_vertical_speed = 0.01,
-        initial_vertical_speed_deviation = 0.01,
-        speed_from_center = 0.05,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 11,
-        tail_length_deviation = 7,
-        tail_width = 3
-      },
-      {
-        type = "create-particle",
-        repeat_count = 6,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
-        initial_height = 0.3,
-        initial_height_deviation = 0.3,
-        initial_vertical_speed = 0.04,
-        initial_vertical_speed_deviation = 0.04,
-        speed_from_center = 0.06,
-        speed_from_center_deviation = 0.06,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 10,
-        tail_length_deviation = 12,
-        tail_width = 3
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
@@ -389,9 +324,13 @@ effects.big_biter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "guts-entrails-particle-big",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.5,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.1,
@@ -402,7 +341,68 @@ effects.big_biter =
         frame_speed_deviation = 0,
         tail_length = 2,
         tail_length_deviation = 0,
-        tail_width = 3
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 2,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
+        initial_height = 0.4,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.05,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.05,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 1,
+        tail_length = 3,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 10,
+        repeat_count_deviation = 1,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "internal-fluids-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.2969, -0.1992 },
+          right_bottom = { 0.2969, 0.1992 }
+        },
+        initial_height = 0.1,
+        initial_height_deviation = 0.1,
+        initial_vertical_speed = 0.05,
+        initial_vertical_speed_deviation = 0.02,
+        speed_from_center = 0.03,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 5,
+        tail_length_deviation = 5,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.big_gore
       }
     }
   }
@@ -424,13 +424,14 @@ effects.behemoth_biter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
+        offsets = {
           { 0, -0.8 },
           { 0, -0.25 }
         },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.5,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.04,
@@ -441,45 +442,24 @@ effects.behemoth_biter =
         frame_speed_deviation = 0.02,
         tail_length = 12,
         tail_length_deviation = 25,
-        tail_width = 3
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
         repeat_count = 5,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { 0, 0 }
-        },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.07,
-        initial_vertical_speed_deviation = 0.07,
-        speed_from_center = 0.07,
-        speed_from_center_deviation = 0.07,
-        frame_speed = 1,
-        frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 3
-      },
-      {
-        type = "create-particle",
-        repeat_count = 9,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.1,
         initial_height_deviation = 0.1,
         initial_vertical_speed = 0.09,
@@ -490,19 +470,24 @@ effects.behemoth_biter =
         frame_speed_deviation = 0,
         tail_length = 21,
         tail_length_deviation = 3,
-        tail_width = 3
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 13,
+        repeat_count = 5,
         repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.1,
         initial_height_deviation = 0.1,
         initial_vertical_speed = 0.02,
@@ -513,42 +498,24 @@ effects.behemoth_biter =
         frame_speed_deviation = 0,
         tail_length = 11,
         tail_length_deviation = 7,
-        tail_width = 3
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 6,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
-        initial_height = 0.3,
-        initial_height_deviation = 0.3,
-        initial_vertical_speed = 0.055,
-        initial_vertical_speed_deviation = 0.055,
-        speed_from_center = 0.1,
-        speed_from_center_deviation = 0.1,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 10,
-        tail_length_deviation = 12,
-        tail_width = 3
-      },
-      {
-        type = "create-particle",
-        repeat_count = 4,
+        repeat_count = 3,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "guts-entrails-particle-big",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.8, -0.8 }, { 0.8, 0.8 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
         initial_height = 0.5,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.1,
@@ -560,6 +527,38 @@ effects.behemoth_biter =
         tail_length = 2,
         tail_length_deviation = 0,
         tail_width = 3
+      },
+      {
+        type = "create-particle",
+        repeat_count = 10,
+        repeat_count_deviation = 0,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "internal-fluids-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -0.7969 },
+          right_bottom = { 0.7969, 0.7969 }
+        },
+        initial_height = 0.1,
+        initial_height_deviation = 0.1,
+        initial_vertical_speed = 0.055,
+        initial_vertical_speed_deviation = 0.055,
+        speed_from_center = 0.05,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 8,
+        tail_length_deviation = 7,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.behemoth_gore
       }
     }
   }
@@ -581,14 +580,14 @@ effects.small_spitter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets =
-        {
-          { -0.07813, 1.211 },
-          { -0.01563, 0.2422 }
+        particle_name = "blood-particle-small",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.1, -1 }, { 0.1, 1 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -0.1992, -0.1992 },
+          right_bottom = { 0.1992, 0.1992 }
+        },
         initial_height = 0.9,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.029,
@@ -599,33 +598,8 @@ effects.small_spitter =
         frame_speed_deviation = 0.02,
         tail_length = 12,
         tail_length_deviation = 25,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 4,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { 0.03906, -0.02344 }
-        },
-        offset_deviation = { { -1, -0.6992 }, { 1, 0.6992 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.04,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.04,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
@@ -634,13 +608,14 @@ effects.small_spitter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets =
-        {
+        particle_name = "blood-particle-small",
+        offsets = {
           { -0.0625, -0.3828 }
         },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.1,
         initial_height_deviation = 0.05,
         initial_vertical_speed = 0.075,
@@ -651,7 +626,8 @@ effects.small_spitter =
         frame_speed_deviation = 0,
         tail_length = 13,
         tail_length_deviation = 3,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
@@ -660,10 +636,14 @@ effects.small_spitter =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
+        particle_name = "blood-particle-carpet-small",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = -0,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.009,
@@ -674,8 +654,69 @@ effects.small_spitter =
         frame_speed_deviation = 0,
         tail_length = 11,
         tail_length_deviation = 0,
-        tail_width = 1
-      }
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 2,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 0.2,
+        initial_height_deviation = 0.11,
+        initial_vertical_speed = 0.058,
+        initial_vertical_speed_deviation = 0.047,
+        speed_from_center = 0.035,
+        speed_from_center_deviation = 0.01,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 5,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0.03906, -0.02344 }
+        },
+        offset_deviation = {
+          left_top = { -1, -0.6953 },
+          right_bottom = { 1, 0.6953 }
+        },
+        initial_height = 0.4,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.04,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 3,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.small_gore
+      },
     }
   }
 }
@@ -696,13 +737,13 @@ effects.medium_spitter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
-          { -0.07813, 1.211 },
-          { -0.01563, 0.2422 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { 0, -1 }, { 0, 1 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.9,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.029,
@@ -713,91 +754,24 @@ effects.medium_spitter =
         frame_speed_deviation = 0.02,
         tail_length = 12,
         tail_length_deviation = 25,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 4,
-        repeat_count_deviation = 2,
+        repeat_count = 11,
+        repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { 0.03906, -0.02344 }
+        particle_name = "blood-particle-small",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -1, -0.6992 }, { 1, 0.6992 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.04,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.04,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 2,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, -0.03906 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.1,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.075,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.01,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 13,
-        tail_length_deviation = 3,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 13,
-        repeat_count_deviation = 1,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
-        initial_height = -0,
-        initial_height_deviation = 0,
-        initial_vertical_speed = 0.009,
-        initial_vertical_speed_deviation = 0.005,
-        speed_from_center = 0.05,
-        speed_from_center_deviation = 0.041,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 11,
-        tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 6,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -0.5 }, { 1, 0.5 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
         initial_height = 0.3,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.043,
@@ -808,8 +782,97 @@ effects.medium_spitter =
         frame_speed_deviation = 0,
         tail_length = 10,
         tail_length_deviation = 12,
-        tail_width = 1
-      }
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 1,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "blood-particle-carpet",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = -0,
+        initial_height_deviation = 0,
+        initial_vertical_speed = 0.009,
+        initial_vertical_speed_deviation = 0.005,
+        speed_from_center = 0.05,
+        speed_from_center_deviation = 0.041,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 11,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 2,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 0.4,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.04,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 3,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 0.3,
+        initial_height_deviation = 0.43,
+        initial_vertical_speed = 0.074,
+        initial_vertical_speed_deviation = 0.049,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.027,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 9,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.medium_gore
+      },
     }
   }
 }
@@ -830,13 +893,13 @@ effects.big_spitter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
-          { 0.0625, 0.7891 },
-          { -0.01563, 0.2422 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.9,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.029,
@@ -847,68 +910,24 @@ effects.big_spitter =
         frame_speed_deviation = 0.02,
         tail_length = 12,
         tail_length_deviation = 25,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 4,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { 0.03906, -0.02344 }
-        },
-        offset_deviation = { { -1, -0.6992 }, { 1, 0.6992 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.04,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.04,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 9,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, -0.03906 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.1,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.075,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.03,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 21,
-        tail_length_deviation = 3,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 13,
+        repeat_count = 6,
         repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.1,
         initial_height_deviation = 0.01,
         initial_vertical_speed = 0.009,
@@ -919,7 +938,8 @@ effects.big_spitter =
         frame_speed_deviation = 0,
         tail_length = 11,
         tail_length_deviation = 7,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
@@ -929,9 +949,13 @@ effects.big_spitter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -0.5 }, { 1, 0.5 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -1, -0.5 },
+          right_bottom = { 1, 0.5 }
+        },
         initial_height = 0.3,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.043,
@@ -942,19 +966,52 @@ effects.big_spitter =
         frame_speed_deviation = 0,
         tail_length = 10,
         tail_length_deviation = 12,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
         repeat_count = 2,
-        repeat_count_deviation = 0,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0.03906, -0.02344 }
+        },
+        offset_deviation = {
+          left_top = { -1, -0.6953 },
+          right_bottom = { 1, 0.6953 }
+        },
+        initial_height = 0.4,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.04,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 3,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 2,
+        repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "guts-entrails-particle-big",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
         initial_height = 0.02,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.125,
@@ -965,12 +1022,45 @@ effects.big_spitter =
         frame_speed_deviation = 0,
         tail_length = 2,
         tail_length_deviation = 0,
-        tail_width = 1
-      }
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, -0.03906 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.2969 },
+          right_bottom = { 0.5, 0.2969 }
+        },
+        initial_height = 0.1,
+        initial_height_deviation = 0.05,
+        initial_vertical_speed = 0.075,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.03,
+        speed_from_center_deviation = 0,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 16,
+        tail_length_deviation = 9,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.big_gore
+      },
     }
   }
 }
-
+--BEHEMOTH-SPITTER
 effects.behemoth_spitter =
 {
   type = "direct",
@@ -987,16 +1077,16 @@ effects.behemoth_spitter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
-          { 0.0625, 0.7891 },
-          { -0.01563, 0.2422 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.9,
         initial_height_deviation = 0,
-        initial_vertical_speed = 0.040,
+        initial_vertical_speed = 0.04,
         initial_vertical_speed_deviation = 0.07,
         speed_from_center = 0.035,
         speed_from_center_deviation = 0.015,
@@ -1004,91 +1094,52 @@ effects.behemoth_spitter =
         frame_speed_deviation = 0.02,
         tail_length = 12,
         tail_length_deviation = 25,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 5,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { 0.03906, -0.02344 }
-        },
-        offset_deviation = { { -1, -0.6992 }, { 1, 0.6992 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.07,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.07,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 9,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets = { { 0, -0.03906 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.1,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.090,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.04,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 21,
-        tail_length_deviation = 3,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 13,
+        repeat_count = 7,
         repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -1 }, { 1, 1 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.1,
         initial_height_deviation = 0.01,
         initial_vertical_speed = 0.018,
         initial_vertical_speed_deviation = 0.005,
-        speed_from_center = 0.20,
-        speed_from_center_deviation = 0.041,
+        speed_from_center = 0.14,
+        speed_from_center_deviation = 0.057,
         frame_speed = 1,
         frame_speed_deviation = 0,
         tail_length = 11,
         tail_length_deviation = 7,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 6,
+        repeat_count = 5,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -1, -0.5 }, { 1, 0.5 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -1, -0.5 },
+          right_bottom = { 1, 0.5 }
+        },
         initial_height = 0.3,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.055,
@@ -1099,19 +1150,52 @@ effects.behemoth_spitter =
         frame_speed_deviation = 0,
         tail_length = 10,
         tail_length_deviation = 12,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 4,
-        repeat_count_deviation = 0,
+        repeat_count = 3,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0.03906, -0.02344 }
+        },
+        offset_deviation = {
+          left_top = { -1, -0.6953 },
+          right_bottom = { 1, 0.6953 }
+        },
+        initial_height = 0.4,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.07,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.07,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 3,
+        tail_length_deviation = 1,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "guts-entrails-particle-big",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
         initial_height = 0.02,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.125,
@@ -1121,8 +1205,41 @@ effects.behemoth_spitter =
         frame_speed = 1,
         frame_speed_deviation = 0,
         tail_length = 2,
-        tail_length_deviation = 0,
-        tail_width = 1
+        tail_length_deviation = 1,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0.01563, -0.125 }
+        },
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
+        initial_height = 0.1,
+        initial_height_deviation = 0.05,
+        initial_vertical_speed = 0.099,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 30,
+        tail_length_deviation = 5,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.behemoth_gore
       }
     }
   }
@@ -1144,16 +1261,16 @@ effects.small_worm =
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle",
-        offsets =
-        {
-          { -0.125, -1.289 },
-          { -0.1406, -1.195 }
+        particle_name = "blood-particle-small",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.1992, -1 }, { 0.1992, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.7,
-        initial_height_deviation = 0,
+        offset_deviation = {
+          left_top = { -0.1953, -1 },
+          right_bottom = { 0.1953, 1 }
+        },
+        initial_height = 1.5,
+        initial_height_deviation = 0.2,
         initial_vertical_speed = 0.029,
         initial_vertical_speed_deviation = 0.07,
         speed_from_center = 0.06,
@@ -1162,33 +1279,36 @@ effects.small_worm =
         frame_speed_deviation = 0.02,
         tail_length = 30,
         tail_length_deviation = 16,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 36,
+        repeat_count = 20,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle-lower-layer",
-        offsets =
-        {
-          { -0.0625, -0.3828 }
+        particle_name = "blood-particle-lower-layer-small",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
-        initial_height = 0.2,
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 0.4,
         initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.071,
+        initial_vertical_speed = 0.051,
         initial_vertical_speed_deviation = 0.05,
         speed_from_center = 0.01,
         speed_from_center_deviation = 0.052,
         frame_speed = 1,
         frame_speed_deviation = 0,
-        tail_length = 25,
+        tail_length = 10,
         tail_length_deviation = 0,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
@@ -1198,9 +1318,13 @@ effects.small_worm =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "guts-entrails-particle-small-medium",
-        offsets = { { 0, 0 } },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
         initial_height = 1,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.019,
@@ -1211,7 +1335,40 @@ effects.small_worm =
         frame_speed_deviation = 0,
         tail_length = 3,
         tail_length_deviation = 0,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.3945, -0.3945 },
+          right_bottom = { 0.3945, 0.3945 }
+        },
+        initial_height = 2,
+        initial_height_deviation = 0.11,
+        initial_vertical_speed = 0.087,
+        initial_vertical_speed_deviation = 0.005,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.038,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 8,
+        tail_length_deviation = 4,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.small_gore_worm
       }
     }
   }
@@ -1234,14 +1391,14 @@ effects.medium_worm =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
-          { 0.07813, 0.1094 },
-          { 0, -0.5703 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.1992, -1 }, { 0.1992, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 1.4,
+        offset_deviation = {
+          left_top = { -0.1953, -1 },
+          right_bottom = { 0.1953, 1 }
+        },
+        initial_height = 2.6,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.067,
         initial_vertical_speed_deviation = 0.07,
@@ -1249,25 +1406,55 @@ effects.medium_worm =
         speed_from_center_deviation = 0.037,
         frame_speed = 1,
         frame_speed_deviation = 0.02,
-        tail_length = 30,
-        tail_length_deviation = 100,
-        tail_width = 1
+        tail_length = 34,
+        tail_length_deviation = 23,
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 6,
+        repeat_count = 17,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets =
-        {
-          { -0.09375, -1.063 }
+        particle_name = "blood-particle-lower-layer-small",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.7969, -1 }, { 0.7969, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 1.5,
+        initial_height_deviation = 0.05,
+        initial_vertical_speed = 0.071,
+        initial_vertical_speed_deviation = 0.04,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.052,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 25,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 2,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -1 },
+          right_bottom = { 0.7969, 1 }
+        },
+        initial_height = 1.6,
         initial_height_deviation = 0.4,
         initial_vertical_speed = 0.06,
         initial_vertical_speed_deviation = 0.05,
@@ -1277,34 +1464,69 @@ effects.medium_worm =
         frame_speed_deviation = 0.955,
         tail_length = 3,
         tail_length_deviation = 0,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 36,
-        repeat_count_deviation = 0,
+        repeat_count = 1,
+        repeat_count_deviation = 2,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle-lower-layer",
-        offsets =
-        {
-          { -0.0625, -0.3828 }
+        particle_name = "guts-entrails-particle-big",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
-        initial_height = 0.2,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.071,
+        offset_deviation = {
+          left_top = { -0.7969, -1 },
+          right_bottom = { 0.7969, 1 }
+        },
+        initial_height = 1.6,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.06,
         initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.02,
-        speed_from_center_deviation = 0.052,
+        speed_from_center = 0.05,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 1,
+        tail_length_deviation = 1,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.3906, -0.3906 },
+          right_bottom = { 0.3906, 0.3906 }
+        },
+        initial_height = 2.3,
+        initial_height_deviation = 0.11,
+        initial_vertical_speed = 0.093,
+        initial_vertical_speed_deviation = 0.005,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0.038,
         frame_speed = 1,
         frame_speed_deviation = 0,
-        tail_length = 25,
-        tail_length_deviation = 0,
-        tail_width = 1
-      }
+        tail_length = 13,
+        tail_length_deviation = 7,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.medium_gore_worm
+      },
     }
   }
 }
@@ -1326,14 +1548,14 @@ effects.big_worm =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
-          { -0.07813, -0.6953 },
-          { -0.125, -1.289 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.1992, -1 }, { 0.1992, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 1.8,
+        offset_deviation = {
+          left_top = { -0.1953, -1 },
+          right_bottom = { 0.1953, 1 }
+        },
+        initial_height = 2.8,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.067,
         initial_vertical_speed_deviation = 0.07,
@@ -1341,51 +1563,27 @@ effects.big_worm =
         speed_from_center_deviation = 0.037,
         frame_speed = 1,
         frame_speed_deviation = 0.02,
-        tail_length = 30,
+        tail_length = 31,
         tail_length_deviation = 100,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 3,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-big",
-        offsets =
-        {
-          { -0.09375, -1.063 }
-        },
-        offset_deviation = { { -0.7969, -1 }, { 0.7969, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
-        initial_height_deviation = 0.4,
-        initial_vertical_speed = 0.06,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.05,
-        speed_from_center_deviation = 0.05,
-        frame_speed = 1,
-        frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 36,
+        repeat_count = 15,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle-lower-layer",
-        offsets =
-        {
-          { -0.0625, -0.3828 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
-        initial_height = 0.2,
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 2.3,
         initial_height_deviation = 0.05,
         initial_vertical_speed = 0.071,
         initial_vertical_speed_deviation = 0.05,
@@ -1395,7 +1593,68 @@ effects.big_worm =
         frame_speed_deviation = 0,
         tail_length = 25,
         tail_length_deviation = 0,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 3,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-big",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -1 },
+          right_bottom = { 0.7969, 1 }
+        },
+        initial_height = 2.4,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.06,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.05,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 3,
+        tail_length_deviation = 2,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.3906, -0.3906 },
+          right_bottom = { 0.3906, 0.3906 }
+        },
+        initial_height = 2.5,
+        initial_height_deviation = 0.11,
+        initial_vertical_speed = 0.093,
+        initial_vertical_speed_deviation = 0.005,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0.038,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 19,
+        tail_length_deviation = 7,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.big_gore_worm
       }
     }
   }
@@ -1418,14 +1677,14 @@ effects.behemoth_worm =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle",
-        offsets =
-        {
-          { -0.07813, -0.6953 },
-          { -0.125, -1.289 }
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.1992, -1 }, { 0.1992, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 2.3,
+        offset_deviation = {
+          left_top = { -0.1953, -1 },
+          right_bottom = { 0.1953, 1 }
+        },
+        initial_height = 3.1,
         initial_height_deviation = 0,
         initial_vertical_speed = 0.067,
         initial_vertical_speed_deviation = 0.07,
@@ -1435,23 +1694,53 @@ effects.behemoth_worm =
         frame_speed_deviation = 0.02,
         tail_length = 30,
         tail_length_deviation = 100,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 5,
+        repeat_count = 19,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-big",
-        offsets =
-        {
-          { -0.09375, -1.063 }
+        particle_name = "blood-particle-lower-layer",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.7969, -1 }, { 0.7969, 1 } },
-        tile_collision_mask = nil,
-        initial_height = 0.4,
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 2.3,
+        initial_height_deviation = 0.05,
+        initial_vertical_speed = 0.09,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.04,
+        speed_from_center_deviation = 0.052,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        tail_length = 29,
+        tail_length_deviation = 0,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 6,
+        repeat_count_deviation = 3,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-big",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.7969, -1 },
+          right_bottom = { 0.7969, 1 }
+        },
+        initial_height = 2.3,
         initial_height_deviation = 0.4,
         initial_vertical_speed = 0.06,
         initial_vertical_speed_deviation = 0.05,
@@ -1459,35 +1748,70 @@ effects.behemoth_worm =
         speed_from_center_deviation = 0.05,
         frame_speed = 1,
         frame_speed_deviation = 0.955,
-        tail_length = 3,
-        tail_length_deviation = 0,
-        tail_width = 1
+        tail_length = 2,
+        tail_length_deviation = 2,
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 36,
-        repeat_count_deviation = 0,
+        repeat_count = 1,
+        repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle-lower-layer",
-        offsets =
-        {
-          { -0.0625, -0.3828 }
+        particle_name = "guts-entrails-particle-spawner",
+        offsets = {
+          { 0, 0 }
         },
-        offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
-        tile_collision_mask = nil,
-        initial_height = 0.2,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.090,
+        offset_deviation = {
+          left_top = { -0.7969, -1 },
+          right_bottom = { 0.7969, 1 }
+        },
+        initial_height = 2.7,
+        initial_height_deviation = 0.4,
+        initial_vertical_speed = 0.06,
         initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.11,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.955,
+        tail_length = 1,
+        tail_length_deviation = 1,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "acid-particle",
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
+          left_top = { -0.3906, -0.3906 },
+          right_bottom = { 0.3906, 0.3906 }
+        },
+        initial_height = 2.6,
+        initial_height_deviation = 0.11,
+        initial_vertical_speed = 0.093,
+        initial_vertical_speed_deviation = 0.005,
         speed_from_center = 0.04,
-        speed_from_center_deviation = 0.052,
+        speed_from_center_deviation = 0.038,
         frame_speed = 1,
         frame_speed_deviation = 0,
-        tail_length = 25,
-        tail_length_deviation = 0,
-        tail_width = 1
+        tail_length = 30,
+        tail_length_deviation = 7,
+        tail_width = 1,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.behemoth_gore_worm
       }
     }
   }
@@ -1503,85 +1827,31 @@ effects.spawner_biter =
     {
       {
         type = "create-particle",
-        repeat_count = 12,
+        repeat_count = 7,
         repeat_count_deviation = 0,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
+        particle_name = "blood-particle",
+        offsets = {
+          { 0.02344, -0.6016 }
+        },
+        offset_deviation = {
           left_top = { -0.5, -0.5 },
           right_bottom = { 0.5, 0.5 }
         },
-        tile_collision_mask = nil,
         initial_height = 0.2,
         initial_height_deviation = 0.05,
         initial_vertical_speed = 0.062,
         initial_vertical_speed_deviation = 0.01,
-        speed_from_center = 0.08,
-        speed_from_center_deviation = 0.011,
+        speed_from_center = 0.1,
+        speed_from_center_deviation = 0.047,
         frame_speed = 1,
         frame_speed_deviation = 0,
         tail_length = 25,
         tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 10,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets =
-        {
-          { 0.0625, 0.7891 },
-          { -0.01563, 0.2422 }
-        },
-        offset_deviation =
-        {
-          left_top = { -1, -1 },
-          right_bottom = { 1, 1 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 0.9,
-        initial_height_deviation = 0,
-        initial_vertical_speed = 0.04,
-        initial_vertical_speed_deviation = 0.07,
-        speed_from_center = 0.035,
-        speed_from_center_deviation = 0.015,
-        frame_speed = 1,
-        frame_speed_deviation = 0.02,
-        tail_length = 12,
-        tail_length_deviation = 25,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 8,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -0.5, -0.5 },
-          right_bottom = { 0.5, 0.5 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 1,
-        initial_height_deviation = 0.52,
-        initial_vertical_speed = 0.078,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.07,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
@@ -1591,13 +1861,13 @@ effects.spawner_biter =
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle-carpet",
-        offsets = { { 0, -0.03906 } },
-        offset_deviation =
-        {
+        offsets = {
+          { 0, -0.3594 }
+        },
+        offset_deviation = {
           left_top = { -1, -1 },
           right_bottom = { 1, 1 }
         },
-        tile_collision_mask = nil,
         initial_height = 0.1,
         initial_height_deviation = 0.05,
         initial_vertical_speed = 0.09,
@@ -1608,77 +1878,81 @@ effects.spawner_biter =
         frame_speed_deviation = 0,
         tail_length = 21,
         tail_length_deviation = 3,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 15,
+        repeat_count = 13,
         repeat_count_deviation = 1,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
         particle_name = "blood-particle-carpet",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
+        offsets = {
+          { 0, 0 }
+        },
+        offset_deviation = {
           left_top = { -1, -1 },
           right_bottom = { 1, 1 }
         },
-        tile_collision_mask = nil,
         initial_height = 0.1,
         initial_height_deviation = 0.01,
         initial_vertical_speed = 0.018,
         initial_vertical_speed_deviation = 0.005,
-        speed_from_center = 0.2,
+        speed_from_center = 0.19,
         speed_from_center_deviation = 0.041,
         frame_speed = 1,
         frame_speed_deviation = 0,
         tail_length = 11,
         tail_length_deviation = 7,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
       {
         type = "create-particle",
-        repeat_count = 15,
-        repeat_count_deviation = 0,
+        repeat_count = 20,
+        repeat_count_deviation = 5,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -1, -0.5 },
-          right_bottom = { 1, 0.5 }
+        particle_name = "internal-fluids-particle",
+        offsets = {
+          { 0.0, -0.3125 }
         },
-        tile_collision_mask = nil,
+        offset_deviation = {
+          left_top = { -1, -1 },
+          right_bottom = { 1, 1 }
+        },
         initial_height = 0.3,
         initial_height_deviation = 0.5,
         initial_vertical_speed = 0.055,
         initial_vertical_speed_deviation = 0.003,
-        speed_from_center = 0.09,
+        speed_from_center = 0.05,
         speed_from_center_deviation = 0.042,
         frame_speed = 1,
         frame_speed_deviation = 0,
         tail_length = 10,
         tail_length_deviation = 12,
-        tail_width = 1
+        tail_width = 1,
+        rotate_offsets = false
       },
+
       {
         type = "create-particle",
-        repeat_count = 2,
+        repeat_count = 4,
         repeat_count_deviation = 2,
         probability = 1,
         affects_target = false,
         show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-big",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
+        particle_name = "guts-entrails-particle-small-medium",
+        offsets = {
+          { 0.0, -0.3281 }
+        },
+        offset_deviation = {
           left_top = { -0.5, -0.5 },
           right_bottom = { 0.5, 0.5 }
         },
-        tile_collision_mask = nil,
         initial_height = 1,
         initial_height_deviation = 0.52,
         initial_vertical_speed = 0.078,
@@ -1686,209 +1960,43 @@ effects.spawner_biter =
         speed_from_center = 0.07,
         speed_from_center_deviation = 0,
         frame_speed = 1,
-        frame_speed_deviation = 0
+        frame_speed_deviation = 0,
+        rotate_offsets = false
+      },
+      {
+        type = "create-particle",
+        repeat_count = 4,
+        repeat_count_deviation = 2,
+        probability = 1,
+        affects_target = false,
+        show_in_tooltip = false,
+        particle_name = "guts-entrails-particle-big",
+        offsets = {
+          { -0.01563, -0.3438 }
+        },
+        offset_deviation = {
+          left_top = { -0.5, -0.5 },
+          right_bottom = { 0.5, 0.5 }
+        },
+        initial_height = 1,
+        initial_height_deviation = 0.52,
+        initial_vertical_speed = 0.078,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.07,
+        speed_from_center_deviation = 0,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+        rotate_offsets = false
+      },
+      {
+        type = "play-sound",
+        sound = sounds.spawner_gore
       }
     }
   }
 }
 
-effects.spawner_spitter =
-{
-  type = "direct",
-  action_delivery =
-  {
-    type = "instant",
-    target_effects =
-    {
-      {
-        type = "create-particle",
-        repeat_count = 12,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -0.5, -0.5 },
-          right_bottom = { 0.5, 0.5 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 0.2,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.062,
-        initial_vertical_speed_deviation = 0.01,
-        speed_from_center = 0.08,
-        speed_from_center_deviation = 0.011,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 25,
-        tail_length_deviation = 0,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 10,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets =
-        {
-          { 0.0625, 0.7891 },
-          { -0.01563, 0.2422 }
-        },
-        offset_deviation =
-        {
-          left_top = { -1, -1 },
-          right_bottom = { 1, 1 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 0.9,
-        initial_height_deviation = 0,
-        initial_vertical_speed = 0.04,
-        initial_vertical_speed_deviation = 0.07,
-        speed_from_center = 0.035,
-        speed_from_center_deviation = 0.015,
-        frame_speed = 1,
-        frame_speed_deviation = 0.02,
-        tail_length = 12,
-        tail_length_deviation = 25,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 8,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-small-medium",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -0.5, -0.5 },
-          right_bottom = { 0.5, 0.5 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 1,
-        initial_height_deviation = 0.52,
-        initial_vertical_speed = 0.078,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.07,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0
-      },
-      {
-        type = "create-particle",
-        repeat_count = 11,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets = { { 0, -0.03906 } },
-        offset_deviation =
-        {
-          left_top = { -1, -1 },
-          right_bottom = { 1, 1 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 0.1,
-        initial_height_deviation = 0.05,
-        initial_vertical_speed = 0.09,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.04,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 21,
-        tail_length_deviation = 3,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 15,
-        repeat_count_deviation = 1,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -1, -1 },
-          right_bottom = { 1, 1 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 0.1,
-        initial_height_deviation = 0.01,
-        initial_vertical_speed = 0.018,
-        initial_vertical_speed_deviation = 0.005,
-        speed_from_center = 0.2,
-        speed_from_center_deviation = 0.041,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 11,
-        tail_length_deviation = 7,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 15,
-        repeat_count_deviation = 0,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "blood-particle-carpet",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -1, -0.5 },
-          right_bottom = { 1, 0.5 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 0.3,
-        initial_height_deviation = 0.5,
-        initial_vertical_speed = 0.055,
-        initial_vertical_speed_deviation = 0.003,
-        speed_from_center = 0.09,
-        speed_from_center_deviation = 0.042,
-        frame_speed = 1,
-        frame_speed_deviation = 0,
-        tail_length = 10,
-        tail_length_deviation = 12,
-        tail_width = 1
-      },
-      {
-        type = "create-particle",
-        repeat_count = 2,
-        repeat_count_deviation = 2,
-        probability = 1,
-        affects_target = false,
-        show_in_tooltip = false,
-        particle_name = "guts-entrails-particle-big",
-        offsets = { { 0, 0 } },
-        offset_deviation =
-        {
-          left_top = { -0.5, -0.5 },
-          right_bottom = { 0.5, 0.5 }
-        },
-        tile_collision_mask = nil,
-        initial_height = 1,
-        initial_height_deviation = 0.52,
-        initial_vertical_speed = 0.078,
-        initial_vertical_speed_deviation = 0.05,
-        speed_from_center = 0.07,
-        speed_from_center_deviation = 0,
-        frame_speed = 1,
-        frame_speed_deviation = 0
-      }
-    }
-  }
-}
+effects.spawner_spitter = effects.spawner_biter
+
 
 return effects

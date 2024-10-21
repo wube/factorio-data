@@ -37,8 +37,6 @@ data:extend(
       {
         difficulty_settings =
         {
-          recipe_difficulty = defines.difficulty_settings.recipe_difficulty.expensive,
-          technology_difficulty = defines.difficulty_settings.technology_difficulty.expensive,
           technology_price_multiplier = 4
         }
       }
@@ -95,8 +93,6 @@ data:extend(
         },
         difficulty_settings =
         {
-          recipe_difficulty = defines.difficulty_settings.recipe_difficulty.expensive,
-          technology_difficulty = defines.difficulty_settings.technology_difficulty.expensive,
           technology_price_multiplier = 4
         }
       }
@@ -142,10 +138,9 @@ data:extend(
           ["enemy-base"] =
           {
             size = 1
-          }
+          },
+          water = {frequency = 0.5, size = 1.5}
         },
-        terrain_segmentation = 0.5,
-        water = 1.5
       },
       advanced_settings =
       {
@@ -201,25 +196,67 @@ data:extend(
             frequency = 3,
             size = 0.5,
             richness = 2
-          }
+          },
+          water = {frequency = 4, size = 0.25}
         },
-        terrain_segmentation = 4,
-        water = 0.25,
         starting_area = 3,
         height = 128 --4 chunks, about 1 screen of height.
       }
     },
-    ["island"] =
+    ["lakes"] =
     {
       order = "g",
       basic_settings =
       {
         property_expression_names =
         {
-          elevation = "0_17-island"
+          elevation = "elevation_lakes",
+          moisture = "moisture_basic",
+          aux = "aux_basic",
+          cliffiness = "cliffiness_basic",
+          cliff_elevation = "cliff_elevation_from_elevation",
+          trees_forest_path_cutout = 1
         },
-        autoplace_controls = {},
-        terrain_segmentation = 1
+        cliff_settings =
+        {
+          cliff_smoothing = 1
+        },
+        autoplace_controls =
+        {
+          ["trees"] =
+          {
+            frequency = 1,
+            size = 0.5
+          }
+        },
+      }
+    },
+    ["island"] =
+    {
+      order = "h",
+      basic_settings =
+      {
+        property_expression_names =
+        {
+          elevation = "elevation_island",
+          moisture = "moisture_basic",
+          aux = "aux_basic",
+          cliffiness = "cliffiness_basic",
+          cliff_elevation = "cliff_elevation_from_elevation",
+          trees_forest_path_cutout = 1
+        },
+        cliff_settings =
+        {
+          cliff_smoothing = 1
+        },
+        autoplace_controls =
+        {
+          ["trees"] =
+          {
+            frequency = 1,
+            size = 0.5
+          }
+        },
       }
     }
   }

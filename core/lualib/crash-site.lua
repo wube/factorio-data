@@ -106,7 +106,7 @@ end
 
 local insert_items_randomly = function(entities, items)
 
-  local item_prototypes = game.item_prototypes
+  local item_prototypes = prototypes.item
   for name, count in pairs (items) do
     if not item_prototypes[name] then
       items[name] = nil
@@ -154,7 +154,7 @@ lib.create_crash_site = function(surface, position, ship_items, part_items, ship
   }
   util.insert_safe(main_ship, ship_items)
   local box = main_ship.bounding_box
-  for k, entity in pairs (surface.find_entities_filtered{area = box, force = "neutral", collision_mask = "player-layer"}) do
+  for k, entity in pairs (surface.find_entities_filtered{area = box, force = "neutral", collision_mask = "player"}) do
     if entity.valid then
       if entity.type == "tree" then
         entity.die()
@@ -332,7 +332,7 @@ lib.create_cutscene = function(player, goal_position)
 end
 
 lib.is_crash_site_cutscene = function(event)
-  return event.player_index == 1 and event.waypoint_index == 1
+  return event.player_index == 1 and event.waypoint_index == 2
 end
 
 lib.on_player_display_refresh = function(event)

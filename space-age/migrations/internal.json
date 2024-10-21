@@ -1,0 +1,132 @@
+{
+  "item":
+  [
+    ["bio-chemical-plant", "biochamber"],
+    ["yumako-seedable-soil", "artificial-yumako-soil"],
+    ["jellynut-seedable-soil", "artificial-jellynut-soil"],
+    ["rocket-engine", "thruster"],
+    ["platform-cargo-bay", "cargo-bay"],
+    ["tesla-tower", "tesla-turret"],
+    ["trash", "scrap"]
+  ],
+  "recipe":
+  [
+    ["bio-chemical-plant", "biochamber"],
+    ["dung-and-biter-eggs", "biter-eggs"],
+    ["yumako-seedable-soil", "artificial-yumako-soil"],
+    ["yumako-seedable-soil-recycling", "artificial-yumako-soil-recycling"],
+    ["jellynut-seedable-soil", "artificial-jellynut-soil"],
+    ["jellynut-seedable-soil-recycling", "artificial-jellynut-soil-recycling"],
+    ["rocket-engine", "thruster"],
+    ["advanced-fuel", "advanced-thruster-fuel"],
+    ["advanced-oxidiser", "advanced-thruster-oxidizer"],
+    ["lava-processing", "molten-iron-from-lava"],
+    ["platform-cargo-bay", "cargo-bay"],
+    ["tesla-tower", "tesla-turret"],
+    ["tesla-tower-recycling", "tesla-turret-recycling"],
+    ["trash-recycling", "scrap-recycling"]
+  ],
+  "entity":
+  [
+    ["bio-chemical-plant", "biochamber"],
+    ["gleba-enemy-stomper", "small-stomper-pentapod"],
+    ["gleba-enemy-strafer", "small-strafer-pentapod"],
+    ["gleba-enemy-wriggler", "small-wriggler-pentapod"],
+    ["gleba-enemy-wriggler-premature","small-wriggler-pentapod-premature"],
+    ["scrap-heap", "fulgoran-ruin-big"],
+    ["gumdew", "hairy-clubnub"],
+    ["oilycoil", "boompuff"],
+    ["onionspire", "lickmaw"],
+    ["helicorn-plant", "jellystem"],
+    ["steampuft", "stingfrond"],
+    ["hairy-clubnub", "funneltrunk"],
+    ["rocket-engine", "thruster"],
+    ["cryogenic-vault", "cryogenic-archive"],
+    ["platform-cargo-bay", "cargo-bay"],
+    ["fulgora-rock-big", "big-fulgora-rock"],
+    ["volcanic-rock-huge", "huge-volcanic-rock"],
+    ["volcanic-rock-big", "big-volcanic-rock"],
+    ["tesla-tower", "tesla-turret"],
+    ["trash", "scrap"],
+    ["trash-heap", "scrap-heap"],
+    ["black-rock-big", "volcanic-rock-big"]
+  ],
+  "fluid":
+  [
+    [ "fuel", "thruster-fuel"],
+    [ "oxidiser", "thruster-oxidizer"]
+  ],
+  "technology":
+  [
+    ["bio-chemical-plant", "biochamber"],
+    ["yumako-seedable-soil", "artificial-yumako-soil"],
+    ["jellynut-seedable-soil", "artificial-jellynut-soil"],
+    ["trash-recycling-productivity", "scrap-recycling-productivity"]
+  ],
+  "tile":
+  [
+    ["sinking-sand", "oil-ocean-shallow"],
+    ["sinking-sand-dark", "oil-ocean-deep"],
+    ["plateau-dirt", "ruins-sand"],
+    ["ruins-sand", "fulgoran-dunes"],
+    ["ruins-sand-flat", "fulgoran-sand"],
+    ["fulgora-cliff-rock","fulgoran-rock"],
+    ["ruins-paving", "fulgoran-paving"],
+    ["ruins-walls", "fulgoran-walls"],
+    ["ruins-scrap", "fulgoran-conduit"],
+    ["ruins-scrap-2", "fulgoran-machinery"],
+    ["wetland-grass", "lowland-olive-blubber"],
+    ["dirt-slime", "lowland-cream-cauliflower"],
+    ["water-mud-grey", "wetland-green-slime"],
+    ["water-mud-green", "wetland-red-tentacle"],
+    ["yumako-seedable-soil", "artificial-yumako-soil"],
+    ["jellynut-seedable-soil", "artificial-jellynut-soil"],
+    ["deep-yumako-mud", "wetland-yumako"],
+    ["deep-jellynut-mud", "wetland-jellynut"],
+    ["gleba-lake", "wetland-blue-slime"],
+    ["wetland-purple-tentacle", "wetland-red-tentacle"],
+    ["dirt-5-v", "volcanic-soil-dark"],
+    ["dirt-6-v", "volcanic-soil-light"],
+    ["dirt-7-v", "volcanic-ash-soil"],
+    ["hot-magma", "lava-hot"],
+    ["hot-lava", "lava"],
+    ["molten-rock", "volcanic-cracks-hot"],
+    ["warm-cracks", "volcanic-cracks-warm"],
+    ["cold-cracks", "volcanic-cracks"],
+    ["smooth-stone", "volcanic-smooth-stone"],
+    ["smooth-stone-warm", "volcanic-smooth-stone-warm"],
+    ["warm-lava", "volcanic-folds-warm"],
+    ["cold-lava", "volcanic-folds"],
+    ["cold-lava-flat", "volcanic-folds-flat"],
+    ["jagged-ground", "volcanic-jagged-ground"],
+    ["volcanic-soil-1", "volcanic-soil-dark"],
+    ["volcanic-soil-2", "volcanic-soil-light"],
+    ["pumice-stones", "volcanic-pumice-stones"],
+    ["ash-sand", "volcanic-ash-light"],
+    ["ash-sand-2", "volcanic-ash-dark"],
+    ["volcanic-soil-3", "volcanic-ash-soil"],
+    ["sandy-cracks", "volcanic-ash-cracks"]
+  ],
+  "optimized-decorative":
+  [
+    ["sulfur-tiny-rock", "tiny-sulfur-rock"],
+    ["volcanic-rock-medium", "medium-volcanic-rock"],
+    ["volcanic-rock-small", "small-volcanic-rock"],
+    ["volcanic-rock-tiny", "tiny-volcanic-rock"],
+    ["fulgora-rock-medium", "medium-fulgora-rock"],
+    ["fulgora-rock-small", "small-fulgora-rock"],
+    ["fulgora-rock-tiny", "tiny-fulgora-rock"],
+    ["ash-sand-dune", "volcanic-dune"],
+    ["black-rock-medium", "volcanic-rock-medium"],
+    ["black-rock-small", "volcanic-rock-small"],
+    ["black-rock-tiny", "volcanic-rock-tiny"]
+  ],
+  "airborne-pollutant":
+  [
+    ["pollen", "spores"]
+  ],
+  "space-location":
+  [
+    ["bacchus", "gleba"]
+  ]
+}

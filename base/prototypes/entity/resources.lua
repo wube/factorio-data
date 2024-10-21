@@ -1,7 +1,6 @@
-local noise = require("noise")
-local tne = noise.to_noise_expression
 local resource_autoplace = require("resource-autoplace")
-local sounds = require ("prototypes.entity.sounds")
+local sounds = require("prototypes.entity.sounds")
+local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 -- Initialize the core patch sets in a predictable order
 resource_autoplace.initialize_patch_set("iron-ore", true)
@@ -11,62 +10,70 @@ resource_autoplace.initialize_patch_set("stone", true)
 resource_autoplace.initialize_patch_set("crude-oil", false)
 resource_autoplace.initialize_patch_set("uranium-ore", false)
 
-local function autoplace_settings(name, order, coverage)
-  return
+local stone_driving_sound =
+{
+  sound =
   {
-    order = order,
-    control = name,
-    sharpness = 15/16,
-    richness_multiplier = 1500,
-    richness_multiplier_distance_bonus = 20,
-    richness_base = 10,
-    coverage = coverage,
-    peaks =
-    {
-      {
-        noise_layer = name,
-        noise_octaves_difference = -0.85,
-        noise_persistence = 0.4
-      }
-    },
-    starting_area_size = 5500 * coverage,
-    starting_area_amount = 1600
-  }
-end
+    filename = "__base__/sound/driving/vehicle-surface-stone.ogg", volume = 0.8,
+    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
+  },
+  fade_ticks = 6
+}
+
+local shallow_water_driving_sound =
+{
+  sound =
+  {
+    filename = "__base__/sound/driving/vehicle-surface-water-shallow.ogg", volume = 0.8,
+    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
+  },
+  fade_ticks = 6
+}
+
+local oil_driving_sound =
+{
+  sound =
+  {
+    filename = "__base__/sound/driving/vehicle-surface-oil.ogg", volume = 0.8,
+    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
+  },
+  fade_ticks = 6
+}
 
 local function resource(resource_parameters, autoplace_parameters)
-  if coverage == nil then coverage = 0.02 end
-
   return
   {
     type = "resource",
     name = resource_parameters.name,
     icon = "__base__/graphics/icons/" .. resource_parameters.name .. ".png",
-    icon_size = 64,
-    icon_mipmaps = 4,
     flags = {"placeable-neutral"},
     order="a-b-"..resource_parameters.order,
     tree_removal_probability = 0.8,
     tree_removal_max_distance = 32 * 32,
-    minable =
+    minable = resource_parameters.minable or
     {
       mining_particle = resource_parameters.name .. "-particle",
       mining_time = resource_parameters.mining_time,
       result = resource_parameters.name
     },
+    category = resource_parameters.category,
+    subgroup = resource_parameters.subgroup,
     walking_sound = resource_parameters.walking_sound,
+    driving_sound = resource_parameters.driving_sound,
+    collision_mask = resource_parameters.collision_mask,
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    -- autoplace = autoplace_settings(name, order, coverage),
     autoplace = resource_autoplace.resource_autoplace_settings
     {
       name = resource_parameters.name,
       order = resource_parameters.order,
       base_density = autoplace_parameters.base_density,
+      base_spots_per_km = autoplace_parameters.base_spots_per_km2,
       has_starting_area_placement = true,
       regular_rq_factor_multiplier = autoplace_parameters.regular_rq_factor_multiplier,
       starting_rq_factor_multiplier = autoplace_parameters.starting_rq_factor_multiplier,
-      candidate_spot_count = autoplace_parameters.candidate_spot_count
+      candidate_spot_count = autoplace_parameters.candidate_spot_count,
+      tile_restriction = autoplace_parameters.tile_restriction
     },
     stage_counts = {15000, 9500, 5500, 2900, 1300, 400, 150, 80},
     stages =
@@ -75,22 +82,15 @@ local function resource(resource_parameters, autoplace_parameters)
       {
         filename = "__base__/graphics/entity/" .. resource_parameters.name .. "/" .. resource_parameters.name .. ".png",
         priority = "extra-high",
-        size = 64,
+        size = 128,
         frame_count = 8,
         variation_count = 8,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/" .. resource_parameters.name .. "/hr-" .. resource_parameters.name .. ".png",
-          priority = "extra-high",
-          size = 128,
-          frame_count = 8,
-          variation_count = 8,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     map_color = resource_parameters.map_color,
-    mining_visualisation_tint = resource_parameters.mining_visualisation_tint
+    mining_visualisation_tint = resource_parameters.mining_visualisation_tint,
+    factoriopedia_simulation = resource_parameters.factoriopedia_simulation
   }
 end
 
@@ -109,7 +109,9 @@ data:extend({
       map_color = {0.415, 0.525, 0.580},
       mining_time = 1,
       walking_sound = sounds.ore,
+      driving_sound = stone_driving_sound,
       mining_visualisation_tint = {r = 0.895, g = 0.965, b = 1.000, a = 1.000}, -- #e4f6ffff
+      factoriopedia_simulation = simulations.factoriopedia_iron_ore,
     },
     {
       base_density = 10,
@@ -125,7 +127,9 @@ data:extend({
       map_color = {0.803, 0.388, 0.215},
       mining_time = 1,
       walking_sound = sounds.ore,
+      driving_sound = stone_driving_sound,
       mining_visualisation_tint = {r = 1.000, g = 0.675, b = 0.541, a = 1.000}, -- #ffac89ff
+      factoriopedia_simulation = simulations.factoriopedia_copper_ore,
     },
     {
       base_density = 8,
@@ -141,7 +145,9 @@ data:extend({
       map_color = {0, 0, 0},
       mining_time = 1,
       walking_sound = sounds.ore,
+      driving_sound = stone_driving_sound,
       mining_visualisation_tint = {r = 0.465, g = 0.465, b = 0.465, a = 1.000}, -- #767676ff
+      factoriopedia_simulation = simulations.factoriopedia_coal,
     },
     {
       base_density = 8,
@@ -156,7 +162,9 @@ data:extend({
       map_color = {0.690, 0.611, 0.427},
       mining_time = 1,
       walking_sound = sounds.ore,
+      driving_sound = stone_driving_sound,
       mining_visualisation_tint = {r = 0.984, g = 0.883, b = 0.646, a = 1.000}, -- #fae1a4ff
+      factoriopedia_simulation = simulations.factoriopedia_stone,
     },
     {
       base_density = 4,
@@ -169,13 +177,13 @@ data:extend({
     type = "resource",
     name = "uranium-ore",
     icon = "__base__/graphics/icons/uranium-ore.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
     flags = {"placeable-neutral"},
-    order="a-b-e",
+    factoriopedia_simulation = simulations.factoriopedia_uranium_ore,
+    order = "a-b-e",
     tree_removal_probability = 0.7,
     tree_removal_max_distance = 32 * 32,
     walking_sound = sounds.ore,
+    driving_sound = stone_driving_sound,
     minable =
     {
       mining_particle = "stone-particle",
@@ -204,20 +212,11 @@ data:extend({
       {
         filename = "__base__/graphics/entity/uranium-ore/uranium-ore.png",
         priority = "extra-high",
-        width = 64,
-        height = 64,
+        width = 128,
+        height = 128,
         frame_count = 8,
         variation_count = 8,
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/uranium-ore/hr-uranium-ore.png",
-          priority = "extra-high",
-          width = 128,
-          height = 128,
-          frame_count = 8,
-          variation_count = 8,
-          scale = 0.5
-        }
+        scale = 0.5
       }
     },
     stages_effect =
@@ -226,24 +225,13 @@ data:extend({
       {
         filename = "__base__/graphics/entity/uranium-ore/uranium-ore-glow.png",
         priority = "extra-high",
-        width = 64,
-        height = 64,
+        width = 128,
+        height = 128,
         frame_count = 8,
         variation_count = 8,
+        scale = 0.5,
         blend_mode = "additive",
-        flags = {"light"},
-        hr_version =
-        {
-          filename = "__base__/graphics/entity/uranium-ore/hr-uranium-ore-glow.png",
-          priority = "extra-high",
-          width = 128,
-          height = 128,
-          frame_count = 8,
-          variation_count = 8,
-          scale = 0.5,
-          blend_mode = "additive",
-          flags = {"light"}
-        }
+        flags = {"light"}
       }
     },
     effect_animation_period = 5,
@@ -258,10 +246,9 @@ data:extend({
     type = "resource",
     name = "crude-oil",
     icon = "__base__/graphics/icons/crude-oil-resource.png",
-    icon_size = 64, icon_mipmaps = 4,
     flags = {"placeable-neutral"},
     category = "basic-fluid",
-    subgroup = "raw-resource",
+    subgroup = "mineable-fluids",
     order="a-b-a",
     infinite = true,
     highlight = true,
@@ -286,6 +273,7 @@ data:extend({
       }
     },
     walking_sound = sounds.oil,
+    driving_sound = oil_driving_sound,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     autoplace = resource_autoplace.resource_autoplace_settings
@@ -304,29 +292,60 @@ data:extend({
     stage_counts = {0},
     stages =
     {
-      sheet =
+      sheet = util.sprite_load("__base__/graphics/entity/crude-oil/crude-oil",
       {
-        filename = "__base__/graphics/entity/crude-oil/crude-oil.png",
         priority = "extra-high",
-        width = 74,
-        height = 60,
-        frame_count = 4,
+        scale = 0.5,
         variation_count = 1,
-        shift = util.by_pixel(0, -2),
-        hr_version =
+        frame_count = 4,
+      })
+    },
+    draw_stateless_visualisation_under_building = false,
+    stateless_visualisation =
+    {
+      {
+        count = 1,
+        render_layer = "decorative",
+        animation = util.sprite_load("__base__/graphics/entity/crude-oil/crude-oil-animation",
         {
-          filename = "__base__/graphics/entity/crude-oil/hr-crude-oil.png",
           priority = "extra-high",
-          width = 148,
-          height = 120,
-          frame_count = 4,
-          variation_count = 1,
-          shift = util.by_pixel(0, -2),
-          scale = 0.5
+          scale = 0.5,
+          frame_count = 32,
+          animation_speed = 0.2,
+        })
+      },
+      {
+        count = 1,
+        render_layer = "smoke",
+        animation = {
+          filename = "__base__/graphics/entity/crude-oil/oil-smoke-outer.png",
+          frame_count = 47,
+          line_length = 16,
+          width = 90,
+          height = 188,
+          animation_speed = 0.3,
+          shift = util.by_pixel(-2, 24 -152),
+          scale = 1.5,
+          tint = util.multiply_color({r=0.3, g=0.3, b=0.3}, 0.2)
+        }
+      },
+      {
+        count = 1,
+        render_layer = "smoke",
+        animation = {
+          filename = "__base__/graphics/entity/crude-oil/oil-smoke-inner.png",
+          frame_count = 47,
+          line_length = 16,
+          width = 40,
+          height = 84,
+          animation_speed = 0.3,
+          shift = util.by_pixel(0, 24 -78),
+          scale = 1.5,
+          tint = util.multiply_color({r=0.4, g=0.4, b=0.4}, 0.2)
         }
       }
     },
     map_color = {0.78, 0.2, 0.77},
     map_grid = false
-  }
+  },
 })

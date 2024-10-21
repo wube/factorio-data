@@ -1,0 +1,11 @@
+{
+  "item":
+  [
+    ["jelly-yum", "bioflux"]
+  ],
+  "recipe":
+  [
+    ["jelly-yum", "bioflux"],
+    ["nutrients-from-jelly-yum", "nutrients-from-bioflux"]
+  ]
+}

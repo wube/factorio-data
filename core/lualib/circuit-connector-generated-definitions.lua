@@ -4,7 +4,7 @@ belt_connector_template =
 {
   led_blue =
   {
-    filename = "__base__/graphics/entity/transport-belt/connector/hr-ccm-belt-04c-LED-B.png",
+    filename = "__base__/graphics/entity/transport-belt/connector/ccm-belt-04c-LED-B.png",
     frame_count = 7,
     height = 44,
     line_length = 1,
@@ -17,7 +17,7 @@ belt_connector_template =
 
   led_red =
   {
-    filename = "__base__/graphics/entity/transport-belt/connector/hr-ccm-belt-04d-LED-R.png",
+    filename = "__base__/graphics/entity/transport-belt/connector/ccm-belt-04d-LED-R.png",
     frame_count = 7,
     height = 18,
     line_length = 1,
@@ -30,7 +30,7 @@ belt_connector_template =
 
   led_green =
   {
-    filename = "__base__/graphics/entity/transport-belt/connector/hr-ccm-belt-04e-LED-G.png",
+    filename = "__base__/graphics/entity/transport-belt/connector/ccm-belt-04e-LED-G.png",
     frame_count = 7,
     height = 26,
     line_length = 1,
@@ -44,64 +44,22 @@ belt_connector_template =
   wire_offsets =
   {
     { red = util.by_pixel(13.5, -21.5), green = util.by_pixel(21.5, -17) },
-    { red = util.by_pixel(13.5, -21.5), green = util.by_pixel(21.5, -17) },
-    { red = util.by_pixel(13.5, -21.5), green = util.by_pixel(21.5, -17) },
-    { red = util.by_pixel(13.5, -21.5), green = util.by_pixel(21.5, -17) },
-    { red = util.by_pixel(10, -26), green = util.by_pixel(18, -21) },
-    { red = util.by_pixel(10, -26), green = util.by_pixel(18, -21) },
-    { red = util.by_pixel(10, -26), green = util.by_pixel(18, -21) },
     { red = util.by_pixel(10, -26), green = util.by_pixel(18, -21) },
     { red = util.by_pixel(13, -21), green = util.by_pixel(21.5, -16) },
-    { red = util.by_pixel(13, -21), green = util.by_pixel(21.5, -16) },
-    { red = util.by_pixel(13, -21), green = util.by_pixel(21.5, -16) },
-    { red = util.by_pixel(13, -21), green = util.by_pixel(21.5, -16) },
-    { red = util.by_pixel(12.5, -27), green = util.by_pixel(20.5, -22) },
-    { red = util.by_pixel(12.5, -27), green = util.by_pixel(20.5, -22) },
-    { red = util.by_pixel(12.5, -27), green = util.by_pixel(20.5, -22) },
     { red = util.by_pixel(12.5, -27), green = util.by_pixel(20.5, -22) },
     { red = util.by_pixel(11, -17), green = util.by_pixel(18.5, -11.5) },
-    { red = util.by_pixel(11, -17), green = util.by_pixel(18.5, -11.5) },
-    { red = util.by_pixel(11, -17), green = util.by_pixel(18.5, -11.5) },
-    { red = util.by_pixel(11, -17), green = util.by_pixel(18.5, -11.5) },
     { red = util.by_pixel(11.5, -20.5), green = util.by_pixel(20, -15.5) },
-    { red = util.by_pixel(11.5, -20.5), green = util.by_pixel(20, -15.5) },
-    { red = util.by_pixel(11.5, -20.5), green = util.by_pixel(20, -15.5) },
-    { red = util.by_pixel(11.5, -20.5), green = util.by_pixel(20, -15.5) },
-    { red = util.by_pixel(13, -20.5), green = util.by_pixel(21, -15.5) },
-    { red = util.by_pixel(13, -20.5), green = util.by_pixel(21, -15.5) },
-    { red = util.by_pixel(13, -20.5), green = util.by_pixel(21, -15.5) },
     { red = util.by_pixel(13, -20.5), green = util.by_pixel(21, -15.5) }
   },
 
   wire_shadow_offsets =
   {
     { red = util.by_pixel(26, -12), green = util.by_pixel(35, -6.5) },
-    { red = util.by_pixel(26, -12), green = util.by_pixel(35, -6.5) },
-    { red = util.by_pixel(26, -12), green = util.by_pixel(35, -6.5) },
-    { red = util.by_pixel(26, -12), green = util.by_pixel(35, -6.5) },
-    { red = util.by_pixel(23.5, -16.5), green = util.by_pixel(33, -11) },
-    { red = util.by_pixel(23.5, -16.5), green = util.by_pixel(33, -11) },
-    { red = util.by_pixel(23.5, -16.5), green = util.by_pixel(33, -11) },
     { red = util.by_pixel(23.5, -16.5), green = util.by_pixel(33, -11) },
     { red = util.by_pixel(28, -11.5), green = util.by_pixel(37.5, -6) },
-    { red = util.by_pixel(28, -11.5), green = util.by_pixel(37.5, -6) },
-    { red = util.by_pixel(28, -11.5), green = util.by_pixel(37.5, -6) },
-    { red = util.by_pixel(28, -11.5), green = util.by_pixel(37.5, -6) },
-    { red = util.by_pixel(28.5, -17.5), green = util.by_pixel(37.5, -12) },
-    { red = util.by_pixel(28.5, -17.5), green = util.by_pixel(37.5, -12) },
-    { red = util.by_pixel(28.5, -17.5), green = util.by_pixel(37.5, -12) },
     { red = util.by_pixel(28.5, -17.5), green = util.by_pixel(37.5, -12) },
     { red = util.by_pixel(27.5, -7), green = util.by_pixel(36, -1) },
-    { red = util.by_pixel(27.5, -7), green = util.by_pixel(36, -1) },
-    { red = util.by_pixel(27.5, -7), green = util.by_pixel(36, -1) },
-    { red = util.by_pixel(27.5, -7), green = util.by_pixel(36, -1) },
     { red = util.by_pixel(29.5, -10.5), green = util.by_pixel(39, -5) },
-    { red = util.by_pixel(29.5, -10.5), green = util.by_pixel(39, -5) },
-    { red = util.by_pixel(29.5, -10.5), green = util.by_pixel(39, -5) },
-    { red = util.by_pixel(29.5, -10.5), green = util.by_pixel(39, -5) },
-    { red = util.by_pixel(30.5, -11.5), green = util.by_pixel(40.5, -6) },
-    { red = util.by_pixel(30.5, -11.5), green = util.by_pixel(40.5, -6) },
-    { red = util.by_pixel(30.5, -11.5), green = util.by_pixel(40.5, -6) },
     { red = util.by_pixel(30.5, -11.5), green = util.by_pixel(40.5, -6) }
   },
 
@@ -123,7 +81,7 @@ belt_frame_connector_template =
   {
     sheet =
     {
-      filename = "__base__/graphics/entity/transport-belt/connector/hr-ccm-belt-04a-sequence.png",
+      filename = "__base__/graphics/entity/transport-belt/connector/ccm-belt-04a-sequence.png",
       frame_count = 4,
       height = 94,
       line_length = 4,
@@ -139,8 +97,7 @@ belt_frame_connector_template =
   {
     sheet =
     {
-      filename = "__base__/graphics/entity/transport-belt/connector/hr-ccm-belt-04a-sequence-back-patch.png",
-      frame_count = 1,
+      filename = "__base__/graphics/entity/transport-belt/connector/ccm-belt-04a-sequence-back-patch.png",
       height = 72,
       line_length = 3,
       priority = "low",
@@ -156,7 +113,7 @@ belt_frame_connector_template =
     sheet =
     {
       draw_as_shadow = true,
-      filename = "__base__/graphics/entity/transport-belt/connector/hr-ccm-belt-04b-sequence-shadow.png",
+      filename = "__base__/graphics/entity/transport-belt/connector/ccm-belt-04b-sequence-shadow.png",
       frame_count = 4,
       height = 112,
       line_length = 4,
@@ -170,7 +127,7 @@ belt_frame_connector_template =
 
   frame_main_scanner = util.draw_as_glow
   {
-    filename = "__base__/graphics/entity/transport-belt/connector/hr-CCM-BELT-SPRITES-SCANNER.png",
+    filename = "__base__/graphics/entity/transport-belt/connector/CCM-BELT-SPRITES-SCANNER.png",
     frame_count = 8,
     height = 64,
     line_length = 8,
@@ -188,7 +145,7 @@ inserter_connector_template =
 {
   connector_main =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-base-sequence.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-base-sequence.png",
     frame_count = 4,
     height = 40,
     line_length = 4,
@@ -202,7 +159,7 @@ inserter_connector_template =
   connector_shadow =
   {
     draw_as_shadow = true,
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-base-shadow.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-base-shadow.png",
     frame_count = 4,
     height = 36,
     line_length = 4,
@@ -215,7 +172,7 @@ inserter_connector_template =
 
   led_blue_off =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-LED-B-off-sequence.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-LED-B-off-sequence.png",
     frame_count = 4,
     height = 26,
     line_length = 4,
@@ -228,7 +185,7 @@ inserter_connector_template =
 
   led_blue =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-LED-B-on-sequence.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-LED-B-on-sequence.png",
     frame_count = 4,
     height = 42,
     line_length = 4,
@@ -242,7 +199,7 @@ inserter_connector_template =
 
   led_green =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-LED-G-sequence.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-LED-G-sequence.png",
     frame_count = 4,
     height = 50,
     line_length = 4,
@@ -256,7 +213,7 @@ inserter_connector_template =
 
   led_red =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-LED-R-sequence.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-LED-R-sequence.png",
     frame_count = 4,
     height = 50,
     line_length = 4,
@@ -270,7 +227,7 @@ inserter_connector_template =
 
   wire_pins =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-wire-sequence.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-wire-sequence.png",
     frame_count = 4,
     height = 46,
     line_length = 4,
@@ -284,7 +241,7 @@ inserter_connector_template =
   wire_pins_shadow =
   {
     draw_as_shadow = true,
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-inserter-01-wire-shadow.png",
+    filename = "__base__/graphics/entity/circuit-connector/ccm-inserter-01-wire-shadow.png",
     frame_count = 4,
     height = 46,
     line_length = 4,
@@ -327,8 +284,8 @@ universal_connector_template =
 {
   connector_main =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04a-base-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04a-base-sequence.png",
+    frame_count = 40,
     height = 50,
     line_length = 8,
     priority = "low",
@@ -340,45 +297,45 @@ universal_connector_template =
   connector_shadow =
   {
     draw_as_shadow = true,
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04b-base-shadow-sequence.png",
-    frame_count = 32,
-    height = 46,
-    line_length = 8,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04b-base-shadow-sequence.png",
+    frame_count = 40,
     priority = "low",
     scale = 0.5,
-    shift = util.by_pixel(2.5, 2.5),
-    width = 62
+    width = 60,
+    height = 46,
+    shift = util.by_pixel( 2.5, 2.5),
+    line_length = 8,
   },
 
   wire_pins =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04c-wire-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04c-wire-sequence.png",
+    frame_count = 40,
     height = 58,
     line_length = 8,
     priority = "low",
     scale = 0.5,
-    shift = util.by_pixel(0, 0),
+    shift = util.by_pixel(0, 1),
     width = 62
   },
 
   wire_pins_shadow =
   {
     draw_as_shadow = true,
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04d-wire-shadow-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04d-wire-shadow-sequence.png",
+    frame_count = 40,
     height = 54,
-    width = 70,
+    width = 68,
     line_length = 8,
     priority = "low",
     scale = 0.5,
-    shift = util.by_pixel(5, 4)
+    shift = util.by_pixel( 5.0, 3.5),
   },
 
   led_blue =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04e-blue-LED-on-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04e-blue-LED-on-sequence.png",
+    frame_count = 40,
     height = 60,
     line_length = 8,
     priority = "low",
@@ -390,8 +347,8 @@ universal_connector_template =
 
   led_blue_off =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04f-blue-LED-off-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04f-blue-LED-off-sequence.png",
+    frame_count = 40,
     height = 44,
     line_length = 8,
     priority = "low",
@@ -402,8 +359,8 @@ universal_connector_template =
 
   led_green =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04h-green-LED-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04h-green-LED-sequence.png",
+    frame_count = 40,
     height = 46,
     line_length = 8,
     priority = "low",
@@ -415,8 +372,8 @@ universal_connector_template =
 
   led_red =
   {
-    filename = "__base__/graphics/entity/circuit-connector/hr-ccm-universal-04i-red-LED-sequence.png",
-    frame_count = 32,
+    filename = "__base__/graphics/entity/circuit-connector/ccm-universal-04i-red-LED-sequence.png",
+    frame_count = 40,
     height = 46,
     line_length = 8,
     priority = "low",
@@ -428,130 +385,153 @@ universal_connector_template =
 
   wire_offsets =
   {
-    { red = util.by_pixel(-0.5, 6.5), green = util.by_pixel(-8, 6.5) },
-    { red = util.by_pixel(6.5, 2.5), green = util.by_pixel(1.5, 6) },
-    { red = util.by_pixel(9, -3.5), green = util.by_pixel(11, 2.5) },
-    { red = util.by_pixel(8, -8), green = util.by_pixel(13.5, -4) },
-    { red = util.by_pixel(1, -11), green = util.by_pixel(9.5, -11) },
-    { red = util.by_pixel(-6.5, -9), green = util.by_pixel(-1, -13) },
-    { red = util.by_pixel(-11, -4), green = util.by_pixel(-8.5, -10.5) },
-    { red = util.by_pixel(-9, 1.5), green = util.by_pixel(-13.5, -2) },
-    { red = util.by_pixel(-3.5, 6), green = util.by_pixel(-9.5, 8.5) },
-    { red = util.by_pixel(5.5, 5), green = util.by_pixel(0.5, 10) },
-    { red = util.by_pixel(10.5, 0), green = util.by_pixel(11.5, 7.5) },
-    { red = util.by_pixel(10, -6.5), green = util.by_pixel(14.5, 0) },
-    { red = util.by_pixel(3, -10), green = util.by_pixel(10, -7.5) },
-    { red = util.by_pixel(-3, -10), green = util.by_pixel(-10, -7) },
-    { red = util.by_pixel(-9.5, 0.5), green = util.by_pixel(-10.5, 7) },
-    { red = util.by_pixel(3, 5.5), green = util.by_pixel(9.5, 7.5) },
-    { red = util.by_pixel(-3, 7), green = util.by_pixel(-8, 10.5) },
-    { red = util.by_pixel(5.5, 6), green = util.by_pixel(1.5, 12.5) },
-    { red = util.by_pixel(9.5, 1.5), green = util.by_pixel(11.5, 9) },
-    { red = util.by_pixel(10, -5.5), green = util.by_pixel(13.5, 1.5) },
-    { red = util.by_pixel(3, -9.5), green = util.by_pixel(8.5, -5) },
-    { red = util.by_pixel(-3, -9), green = util.by_pixel(-8.5, -4.5) },
-    { red = util.by_pixel(-9, 2.5), green = util.by_pixel(-11, 9) },
-    { red = util.by_pixel(3, 6), green = util.by_pixel(8.5, 10) },
-    { red = util.by_pixel(-3, 6.5), green = util.by_pixel(-5.5, 12) },
-    { red = util.by_pixel(4.5, 6.5), green = util.by_pixel(2, 12.5) },
-    { red = util.by_pixel(9.5, 1.5), green = util.by_pixel(11.5, 9) },
-    { red = util.by_pixel(9.5, -3.5), green = util.by_pixel(11.5, 3.5) },
-    { red = util.by_pixel(3.5, -8.5), green = util.by_pixel(7, -2.5) },
-    { red = util.by_pixel(-3.5, -8.5), green = util.by_pixel(-6, -4) },
-    { red = util.by_pixel(-8.5, 3), green = util.by_pixel(-10, 9.5) },
-    { red = util.by_pixel(3.5, 7), green = util.by_pixel(6.5, 12) }
+    {red = util.by_pixel(-1, 5),green = util.by_pixel(-8, 5)},
+    {red = util.by_pixel(4, 2),green = util.by_pixel(-1, 5)},
+    {red = util.by_pixel(8, -3),green = util.by_pixel(10, 2)},
+    {red = util.by_pixel(6, -8),green = util.by_pixel(12, -4)},
+    {red = util.by_pixel(1, -10),green = util.by_pixel(8, -10)},
+    {red = util.by_pixel(-5, -9),green = util.by_pixel(1, -12)},
+    {red = util.by_pixel(-10, -3),green = util.by_pixel(-8, -10)},
+    {red = util.by_pixel(-7, 1),green = util.by_pixel(-13, -1)},
+    {red = util.by_pixel(-3, 5),green = util.by_pixel(-9, 7)},
+    {red = util.by_pixel(4, 4),green = util.by_pixel(0, 10)},
+    {red = util.by_pixel(9, 0),green = util.by_pixel(10, 7)},
+    {red = util.by_pixel(9, -5),green = util.by_pixel(13, 0)},
+    {red = util.by_pixel(2, -9),green = util.by_pixel(9, -6)},
+    {red = util.by_pixel(-3, -9),green = util.by_pixel(-9, -6)},
+    {red = util.by_pixel(-9, 0),green = util.by_pixel(-10, 6)},
+    {red = util.by_pixel(2, 5),green = util.by_pixel(9, 7)},
+    {red = util.by_pixel(-3, 6),green = util.by_pixel(-7, 9)},
+    {red = util.by_pixel(5, 5),green = util.by_pixel(1, 11)},
+    {red = util.by_pixel(8, 1),green = util.by_pixel(10, 8)},
+    {red = util.by_pixel(9, -4),green = util.by_pixel(12, 2)},
+    {red = util.by_pixel(2, -8),green = util.by_pixel(8, -3)},
+    {red = util.by_pixel(-3, -8),green = util.by_pixel(-8, -3)},
+    {red = util.by_pixel(-8, 2),green = util.by_pixel(-10, 8)},
+    {red = util.by_pixel(2, 5),green = util.by_pixel(8, 9)},
+    {red = util.by_pixel(-2, 6),green = util.by_pixel(-5, 11)},
+    {red = util.by_pixel(4, 6),green = util.by_pixel(2, 12)},
+    {red = util.by_pixel(8, 1),green = util.by_pixel(10, 8)},
+    {red = util.by_pixel(8, -3),green = util.by_pixel(10, 3)},
+    {red = util.by_pixel(3, -8),green = util.by_pixel(5, -1)},
+    {red = util.by_pixel(-3, -8),green = util.by_pixel(-5, -3)},
+    {red = util.by_pixel(-8, 2),green = util.by_pixel(-9, 9)},
+    {red = util.by_pixel(3, 6),green = util.by_pixel(5, 11)},
+    {red = util.by_pixel(-5, 4),green = util.by_pixel(-12, 1)},
+    {red = util.by_pixel(2, 4),green = util.by_pixel(-4, 6)},
+    {red = util.by_pixel(7, 0),green = util.by_pixel(2, 5)},
+    {red = util.by_pixel(8, -5),green = util.by_pixel(12, -1)},
+    {red = util.by_pixel(4, -9),green = util.by_pixel(11, -7)},
+    {red = util.by_pixel(-2, -10),green = util.by_pixel(3, -12)},
+    {red = util.by_pixel(-8, -7),green = util.by_pixel(-4, -11)},
+    {red = util.by_pixel(-8, 0),green = util.by_pixel(-12, -4)},
   },
-
   wire_shadow_offsets =
   {
-    { red = util.by_pixel(2, 8), green = util.by_pixel(-5, 8.5) },
-    { red = util.by_pixel(11.5, 6), green = util.by_pixel(6, 9.5) },
-    { red = util.by_pixel(13.5, 0), green = util.by_pixel(16, 6.5) },
-    { red = util.by_pixel(13, -4), green = util.by_pixel(19, 0) },
-    { red = util.by_pixel(7, -7), green = util.by_pixel(15, -6.5) },
-    { red = util.by_pixel(-3, -5), green = util.by_pixel(4.5, -9) },
-    { red = util.by_pixel(-7, -1), green = util.by_pixel(-4, -7) },
-    { red = util.by_pixel(-5, 4.5), green = util.by_pixel(-10.5, 0.5) },
-    { red = util.by_pixel(4.5, 12), green = util.by_pixel(-5, 11.5) },
-    { red = util.by_pixel(13, 11), green = util.by_pixel(5, 14) },
-    { red = util.by_pixel(19, 6), green = util.by_pixel(16.5, 11) },
-    { red = util.by_pixel(18, 0), green = util.by_pixel(19.5, 4) },
-    { red = util.by_pixel(11, -3.5), green = util.by_pixel(15, -3) },
-    { red = util.by_pixel(4.5, -3.5), green = util.by_pixel(-5.5, -3) },
-    { red = util.by_pixel(-3, 6), green = util.by_pixel(-5, 11.5) },
-    { red = util.by_pixel(10.5, 12), green = util.by_pixel(14.5, 11.5) },
-    { red = util.by_pixel(6.5, 14.5), green = util.by_pixel(-4, 14) },
-    { red = util.by_pixel(15.5, 14), green = util.by_pixel(6, 16) },
-    { red = util.by_pixel(20.5, 9.5), green = util.by_pixel(15.5, 12.5) },
-    { red = util.by_pixel(20, 2.5), green = util.by_pixel(18.5, 6) },
-    { red = util.by_pixel(14, -1), green = util.by_pixel(11.5, 0.5) },
-    { red = util.by_pixel(7, -1), green = util.by_pixel(-4, -0.5) },
-    { red = util.by_pixel(-3.5, 9.5), green = util.by_pixel(-6, 13) },
-    { red = util.by_pixel(14, 14), green = util.by_pixel(12.5, 14) },
-    { red = util.by_pixel(8, 15), green = util.by_pixel(-2, 14.5) },
-    { red = util.by_pixel(14.5, 15), green = util.by_pixel(7, 16) },
-    { red = util.by_pixel(21, 10.5), green = util.by_pixel(14, 12) },
-    { red = util.by_pixel(19.5, 4), green = util.by_pixel(14.5, 4.5) },
-    { red = util.by_pixel(15, 0), green = util.by_pixel(10.5, 1) },
-    { red = util.by_pixel(8, 0.5), green = util.by_pixel(-1.5, 0) },
-    { red = util.by_pixel(-3, 11), green = util.by_pixel(-6.5, 12) },
-    { red = util.by_pixel(14, 14.5), green = util.by_pixel(8.5, 14) }
+    {red = util.by_pixel(1, 7),green = util.by_pixel(-5, 7)},
+    {red = util.by_pixel(10, 5),green = util.by_pixel(5, 9)},
+    {red = util.by_pixel(12, 0),green = util.by_pixel(15, 6)},
+    {red = util.by_pixel(12, -3),green = util.by_pixel(18, 0)},
+    {red = util.by_pixel(5, -6),green = util.by_pixel(14, -6)},
+    {red = util.by_pixel(-1, -5),green = util.by_pixel(4, -8)},
+    {red = util.by_pixel(-7, -1),green = util.by_pixel(-3, -6)},
+    {red = util.by_pixel(-4, 4),green = util.by_pixel(-10, 0)},
+    {red = util.by_pixel(4, 10),green = util.by_pixel(-5, 11)},
+    {red = util.by_pixel(12, 10),green = util.by_pixel(4, 13)},
+    {red = util.by_pixel(17, 5),green = util.by_pixel(15, 10)},
+    {red = util.by_pixel(17, 0),green = util.by_pixel(19, 3)},
+    {red = util.by_pixel(10, -3),green = util.by_pixel(14, -3)},
+    {red = util.by_pixel(4, -3),green = util.by_pixel(-5, -3)},
+    {red = util.by_pixel(-2, 5),green = util.by_pixel(-5, 10)},
+    {red = util.by_pixel(10, 11),green = util.by_pixel(14, 10)},
+    {red = util.by_pixel(6, 14),green = util.by_pixel(-4, 13)},
+    {red = util.by_pixel(15, 13),green = util.by_pixel(5, 15)},
+    {red = util.by_pixel(19, 9),green = util.by_pixel(15, 11)},
+    {red = util.by_pixel(19, 2),green = util.by_pixel(17, 5)},
+    {red = util.by_pixel(12, 0),green = util.by_pixel(13, -1)},
+    {red = util.by_pixel(6, -1),green = util.by_pixel(-3, 0)},
+    {red = util.by_pixel(-1, 9),green = util.by_pixel(-6, 12)},
+    {red = util.by_pixel(13, 13),green = util.by_pixel(12, 14)},
+    {red = util.by_pixel(7, 14),green = util.by_pixel(-2, 14)},
+    {red = util.by_pixel(14, 14),green = util.by_pixel(6, 15)},
+    {red = util.by_pixel(20, 10),green = util.by_pixel(14, 10)},
+    {red = util.by_pixel(19, 4),green = util.by_pixel(15, 6)},
+    {red = util.by_pixel(14, 0),green = util.by_pixel(9, 0)},
+    {red = util.by_pixel(7, 0),green = util.by_pixel(-1, 0)},
+    {red = util.by_pixel(2, 11),green = util.by_pixel(-6, 11)},
+    {red = util.by_pixel(13, 14),green = util.by_pixel(9, 14)},
+    {red = util.by_pixel(-1, 6),green = util.by_pixel(-8, 5)},
+    {red = util.by_pixel(6, 7),green = util.by_pixel(-1, 9)},
+    {red = util.by_pixel(13, 3),green = util.by_pixel(10, 9)},
+    {red = util.by_pixel(14, -2),green = util.by_pixel(18, 2)},
+    {red = util.by_pixel(9, -6),green = util.by_pixel(16, -4)},
+    {red = util.by_pixel(2, -6),green = util.by_pixel(9, -8)},
+    {red = util.by_pixel(-4, -4),green = util.by_pixel(0, -7)},
+    {red = util.by_pixel(-6, 3),green = util.by_pixel(-8, -1)},
   },
-
   light_offsets =
   {
-    { rg = util.by_pixel(-2, -3.5), b = util.by_pixel(-7, -3.5) },
-    { rg = util.by_pixel(-1, -2.5), b = util.by_pixel(-4.5, -0.5) },
-    { rg = util.by_pixel(1, -2.5), b = util.by_pixel(1, 1) },
-    { rg = util.by_pixel(2.5, -3.5), b = util.by_pixel(5.5, -1) },
-    { rg = util.by_pixel(2.5, -4.5), b = util.by_pixel(7.5, -4.5) },
-    { rg = util.by_pixel(1.5, -5.5), b = util.by_pixel(5, -8) },
-    { rg = util.by_pixel(-0.5, -5.5), b = util.by_pixel(-0.5, -9.5) },
-    { rg = util.by_pixel(-2, -5), b = util.by_pixel(-5.5, -7.5) },
-    { rg = util.by_pixel(-5, -2.5), b = util.by_pixel(-9, -0.5) },
-    { rg = util.by_pixel(-3, 0), b = util.by_pixel(-6, 4) },
-    { rg = util.by_pixel(1, 1), b = util.by_pixel(1, 5.5) },
-    { rg = util.by_pixel(4, -0.5), b = util.by_pixel(7, 3.5) },
-    { rg = util.by_pixel(5, -3), b = util.by_pixel(9.5, -1.5) },
-    { rg = util.by_pixel(-5, -3), b = util.by_pixel(-9, -1.5) },
-    { rg = util.by_pixel(-0.5, 1), b = util.by_pixel(-0.5, 5.5) },
-    { rg = util.by_pixel(5, -2.5), b = util.by_pixel(9.5, -0.5) },
-    { rg = util.by_pixel(-6.5, -0.5), b = util.by_pixel(-9, 2.5) },
-    { rg = util.by_pixel(-4, 3), b = util.by_pixel(-5.5, 7) },
-    { rg = util.by_pixel(0.5, 3.5), b = util.by_pixel(1, 9) },
-    { rg = util.by_pixel(5, 2), b = util.by_pixel(7, 6.5) },
-    { rg = util.by_pixel(6.5, -1), b = util.by_pixel(9, 2) },
-    { rg = util.by_pixel(-6.5, -1), b = util.by_pixel(-9, 2) },
-    { rg = util.by_pixel(-0.5, 4), b = util.by_pixel(-0.5, 8.5) },
-    { rg = util.by_pixel(6.5, -0.5), b = util.by_pixel(9, 2.5) },
-    { rg = util.by_pixel(-6, 2), b = util.by_pixel(-6.5, 5.5) },
-    { rg = util.by_pixel(-3.5, 5), b = util.by_pixel(-3.5, 8.5) },
-    { rg = util.by_pixel(0.5, 6), b = util.by_pixel(1, 9.5) },
-    { rg = util.by_pixel(5, 4.5), b = util.by_pixel(5, 8) },
-    { rg = util.by_pixel(6.5, 1.5), b = util.by_pixel(6.5, 5) },
-    { rg = util.by_pixel(-6, 2), b = util.by_pixel(-6, 5.5) },
-    { rg = util.by_pixel(1, 6), b = util.by_pixel(1, 9.5) },
-    { rg = util.by_pixel(6.5, 1), b = util.by_pixel(6.5, 5) }
+    {rg = util.by_pixel(-2, -4),b = util.by_pixel(-7, -3)},
+    {rg = util.by_pixel(-1, -3),b = util.by_pixel(-5, 0)},
+    {rg = util.by_pixel(0, -3),b = util.by_pixel(0, 0)},
+    {rg = util.by_pixel(2, -4),b = util.by_pixel(5, -1)},
+    {rg = util.by_pixel(2, -5),b = util.by_pixel(7, -4)},
+    {rg = util.by_pixel(1, -5),b = util.by_pixel(5, -7)},
+    {rg = util.by_pixel(0, -6),b = util.by_pixel(0, -9)},
+    {rg = util.by_pixel(-2, -5),b = util.by_pixel(-5, -7)},
+    {rg = util.by_pixel(-5, -2),b = util.by_pixel(-9, 0)},
+    {rg = util.by_pixel(-3, 0),b = util.by_pixel(-6, 3)},
+    {rg = util.by_pixel(0, 0),b = util.by_pixel(0, 5)},
+    {rg = util.by_pixel(4, -1),b = util.by_pixel(7, 3)},
+    {rg = util.by_pixel(5, -3),b = util.by_pixel(9, -1)},
+    {rg = util.by_pixel(-5, -3),b = util.by_pixel(-9, -1)},
+    {rg = util.by_pixel(0, 0),b = util.by_pixel(0, 5)},
+    {rg = util.by_pixel(5, -2),b = util.by_pixel(9, 0)},
+    {rg = util.by_pixel(-6, 0),b = util.by_pixel(-8, 2)},
+    {rg = util.by_pixel(-4, 2),b = util.by_pixel(-5, 7)},
+    {rg = util.by_pixel(0, 3),b = util.by_pixel(0, 8)},
+    {rg = util.by_pixel(5, 2),b = util.by_pixel(6, 6)},
+    {rg = util.by_pixel(6, -1),b = util.by_pixel(8, 1)},
+    {rg = util.by_pixel(-6, -1),b = util.by_pixel(-8, 1)},
+    {rg = util.by_pixel(0, 3),b = util.by_pixel(0, 8)},
+    {rg = util.by_pixel(6, 0),b = util.by_pixel(8, 2)},
+    {rg = util.by_pixel(-6, 1),b = util.by_pixel(-6, 5)},
+    {rg = util.by_pixel(-4, 5),b = util.by_pixel(-3, 8)},
+    {rg = util.by_pixel(0, 6),b = util.by_pixel(0, 9)},
+    {rg = util.by_pixel(5, 4),b = util.by_pixel(4, 7)},
+    {rg = util.by_pixel(6, 1),b = util.by_pixel(6, 4)},
+    {rg = util.by_pixel(-6, 1),b = util.by_pixel(-6, 5)},
+    {rg = util.by_pixel(0, 6),b = util.by_pixel(0, 9)},
+    {rg = util.by_pixel(6, 1),b = util.by_pixel(6, 4)},
+    {rg = util.by_pixel(-2, -4),b = util.by_pixel(-6, -5)},
+    {rg = util.by_pixel(-1, -3),b = util.by_pixel(-6, -2)},
+    {rg = util.by_pixel(0, -3),b = util.by_pixel(-3, 0)},
+    {rg = util.by_pixel(1, -3),b = util.by_pixel(4, 0)},
+    {rg = util.by_pixel(2, -4),b = util.by_pixel(6, -2)},
+    {rg = util.by_pixel(1, -5),b = util.by_pixel(6, -6)},
+    {rg = util.by_pixel(0, -6),b = util.by_pixel(2, -8)},
+    {rg = util.by_pixel(-1, -5),b = util.by_pixel(-4, -8)},
   }
 }
 
-circuit_connector_definitions["accumulator"] = circuit_connector_definitions.create
+circuit_connector_definitions["accumulator"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 26, main_offset = util.by_pixel(18.5, 19), shadow_offset = util.by_pixel(20.5, 25.5), show_shadow = true }
+)
+
+circuit_connector_definitions["assembling-machine"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 26, main_offset = util.by_pixel(18.5, 19), shadow_offset = util.by_pixel(20.5, 25.5), show_shadow = true }
+    { variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(35, 31), show_shadow = true }
   }
 )
 
-circuit_connector_definitions["assembling-machine"] = circuit_connector_definitions.create
-(
-  universal_connector_template,
-  {
-    { variation = 18, main_offset = util.by_pixel(24, 25), shadow_offset = util.by_pixel(24.5, 27.5), show_shadow = false }
-  }
-)
-
-circuit_connector_definitions["burner-mining-drill"] = circuit_connector_definitions.create
+circuit_connector_definitions["burner-mining-drill"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -562,15 +542,35 @@ circuit_connector_definitions["burner-mining-drill"] = circuit_connector_definit
   }
 )
 
-circuit_connector_definitions["chest"] = circuit_connector_definitions.create
+circuit_connector_definitions["centrifuge"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 26, main_offset = util.by_pixel(3, 5.5), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = true }
+    { variation = 27, main_offset = util.by_pixel(39.5, 31.5), shadow_offset = util.by_pixel(46, 36.5), show_shadow = false },
+    { variation = 27, main_offset = util.by_pixel(39.5, 31.5), shadow_offset = util.by_pixel(46, 36.5), show_shadow = false },
+    { variation = 27, main_offset = util.by_pixel(39.5, 31.5), shadow_offset = util.by_pixel(46, 36.5), show_shadow = false },
+    { variation = 27, main_offset = util.by_pixel(39.5, 31.5), shadow_offset = util.by_pixel(46, 36.5), show_shadow = false }
   }
 )
 
-circuit_connector_definitions["electric-mining-drill"] = circuit_connector_definitions.create
+circuit_connector_definitions["chemical-plant"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation =  2, main_offset = util.by_pixel(16.5, -20), shadow_offset = util.by_pixel(12.5+16.5-3, 18.5-20), show_shadow = true },
+    { variation =  7, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(12.5, 18.5), show_shadow = true },
+    { variation =  6, main_offset = util.by_pixel(-15, -2.5), shadow_offset = util.by_pixel(12.5-15-3, 18.5-2.5), show_shadow = true },
+    { variation = 30, main_offset = util.by_pixel(-12.5, -14.5), shadow_offset = util.by_pixel(12.5-12.5-3, 18.5-14.5), show_shadow = true }
+  }
+)
+
+circuit_connector_definitions["chest"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 26, main_offset = util.by_pixel(3, 5.5), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = true }
+)
+
+circuit_connector_definitions["electric-mining-drill"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -581,15 +581,13 @@ circuit_connector_definitions["electric-mining-drill"] = circuit_connector_defin
   }
 )
 
-circuit_connector_definitions["gate"] = circuit_connector_definitions.create
+circuit_connector_definitions["wall"] = circuit_connector_definitions.create_single
 (
   universal_connector_template,
-  {
-    { variation = 6, main_offset = util.by_pixel(0, -16.5), shadow_offset = util.by_pixel(27, 29), show_shadow = false }
-  }
+  { variation = 6, main_offset = util.by_pixel(0, -16.5), shadow_offset = util.by_pixel(27, 29), show_shadow = false }
 )
 
-circuit_connector_definitions["inserter"] = circuit_connector_definitions.create
+circuit_connector_definitions["inserter"] = circuit_connector_definitions.create_vector
 (
   inserter_connector_template,
   {
@@ -600,15 +598,13 @@ circuit_connector_definitions["inserter"] = circuit_connector_definitions.create
   }
 )
 
-circuit_connector_definitions["lamp"] = circuit_connector_definitions.create
+circuit_connector_definitions["lamp"] = circuit_connector_definitions.create_single
 (
   universal_connector_template,
-  {
-    { variation = 26, main_offset = util.by_pixel(4.5, 7.5), shadow_offset = util.by_pixel(3.5, 7.5), show_shadow = true }
-  }
+  { variation = 26, main_offset = util.by_pixel(4.5, 7.5), shadow_offset = util.by_pixel(3.5, 7.5), show_shadow = true }
 )
 
-circuit_connector_definitions["offshore-pump"] = circuit_connector_definitions.create
+circuit_connector_definitions["offshore-pump"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -619,7 +615,18 @@ circuit_connector_definitions["offshore-pump"] = circuit_connector_definitions.c
   }
 )
 
-circuit_connector_definitions["pump"] = circuit_connector_definitions.create
+circuit_connector_definitions["oil-refinery"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 17, main_offset = util.by_pixel(-45, -29.5), shadow_offset = util.by_pixel(48.5, 11), show_shadow = true },
+    { variation = 19, main_offset = util.by_pixel(29.5, -24), shadow_offset = util.by_pixel(81, 53), show_shadow = true },
+    { variation = 19, main_offset = util.by_pixel(29.5, -24), shadow_offset = util.by_pixel(82.5, 65.5), show_shadow = true },
+    { variation = 17, main_offset = util.by_pixel(-8, -35.5), shadow_offset = util.by_pixel(86.5, 77.5), show_shadow = true }
+  }
+)
+
+circuit_connector_definitions["pump"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -630,7 +637,7 @@ circuit_connector_definitions["pump"] = circuit_connector_definitions.create
   }
 )
 
-circuit_connector_definitions["pumpjack"] = circuit_connector_definitions.create
+circuit_connector_definitions["pumpjack"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -641,61 +648,161 @@ circuit_connector_definitions["pumpjack"] = circuit_connector_definitions.create
   }
 )
 
-circuit_connector_definitions["radar"] = circuit_connector_definitions.create
+circuit_connector_definitions["radar"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 24, main_offset = util.by_pixel(-42.5, -10), shadow_offset = util.by_pixel(-42, -7.5), show_shadow = false }
+)
+
+local function get_variation_with_shifting(variation, offset_x, offset_y)
+  return {
+    variation = variation,
+    main_offset = util.by_pixel(offset_x, offset_y),
+    shadow_offset = util.by_pixel(offset_x, offset_y),
+    show_shadow = true
+  }
+end
+
+local function get_elevated_variation_with_shifting(variation, offset_x, offset_y)
+  return {
+    variation = variation,
+    main_offset = util.by_pixel(offset_x, offset_y),
+    shadow_offset = util.by_pixel(offset_x + 160 - 4, offset_y + 96 + 8),
+    show_shadow = true
+  }
+end
+
+circuit_connector_definitions["rail-chain-signal"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 24, main_offset = util.by_pixel(-42.5, -10), shadow_offset = util.by_pixel(-42, -7.5), show_shadow = false }
+    get_variation_with_shifting( 0,  5, 14),
+    get_variation_with_shifting(32, -8, 12),
+    get_variation_with_shifting( 7, -4, 16),
+    get_variation_with_shifting(39,-11 ,11),
+    get_variation_with_shifting( 6,-14, 11),
+    get_variation_with_shifting(34, 17,  3),
+    get_variation_with_shifting( 1, 12, 10),
+    get_variation_with_shifting(33, 17,  7),
+    get_variation_with_shifting( 0,  5, 12),
+    get_variation_with_shifting(32,  9, 13),
+    get_variation_with_shifting( 7, -1, 12),
+    get_variation_with_shifting(39,  0, 16),
+    get_variation_with_shifting( 2, 16, -6),
+    get_variation_with_shifting(34,  9, 10),
+    get_variation_with_shifting( 1,  9,  7),
+    get_variation_with_shifting(33,  3, 14),
   }
 )
 
-circuit_connector_definitions["rail-chain-signal"] = circuit_connector_definitions.create
+circuit_connector_definitions["rail-signal"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 6, main_offset = util.add_shift(util.by_pixel(-34, 17.5), util.by_pixel(32,0)), shadow_offset = util.add_shift(util.by_pixel(-34, 17.5), util.by_pixel(32,0)), show_shadow = true },
-    { variation = 5, main_offset = util.add_shift(util.by_pixel(-46, -17), util.by_pixel(32,32)), shadow_offset = util.add_shift(util.by_pixel(-46, -17), util.by_pixel(32,32)), show_shadow = true },
-    { variation = 4, main_offset = util.add_shift(util.by_pixel(-21.5, -18), util.by_pixel(0,32)), shadow_offset = util.add_shift(util.by_pixel(-21.5, -18), util.by_pixel(0,32)), show_shadow = true },
-    { variation = 3, main_offset = util.add_shift(util.by_pixel(37.5, -23), util.by_pixel(-32,32)), shadow_offset = util.add_shift(util.by_pixel(37.5, -23), util.by_pixel(-32,32)), show_shadow = true },
-    { variation = 2, main_offset = util.add_shift(util.by_pixel(67.5, 7.5), util.by_pixel(-64,0)), shadow_offset = util.add_shift(util.by_pixel(67.5, 7.5), util.by_pixel(-64,0)), show_shadow = true },
-    { variation = 1, main_offset = util.add_shift(util.by_pixel(30.5, 40), util.by_pixel(-32,-32)), shadow_offset = util.add_shift(util.by_pixel(30.5, 40), util.by_pixel(-32,-32)), show_shadow = true },
-    { variation = 0, main_offset = util.add_shift(util.by_pixel(-8, 71.5), util.by_pixel(0,-64)), shadow_offset = util.add_shift(util.by_pixel(-8, 71.5), util.by_pixel(0,-64)), show_shadow = true },
-    { variation = 7, main_offset = util.add_shift(util.by_pixel(-24, 44.5), util.by_pixel(32,-32)), shadow_offset = util.add_shift(util.by_pixel(-24, 44.5), util.by_pixel(32,-32)), show_shadow = true }
+    get_variation_with_shifting( 0, 19, 11),
+    get_variation_with_shifting(32,  7, 16),
+    get_variation_with_shifting( 7, 10, 24),
+    get_variation_with_shifting(39, -2, 20),
+    get_variation_with_shifting( 6,-14, 27),
+    get_variation_with_shifting(38,-22,  9),
+    get_variation_with_shifting( 5,-24, 10),
+    get_variation_with_shifting(37,-16, -5),
+    get_variation_with_shifting( 4,-19, -9),
+    get_variation_with_shifting(36, -9,-12),
+    get_variation_with_shifting( 3,-13,-18),
+    get_variation_with_shifting(35, -6,-15),
+    get_variation_with_shifting( 2, 12,-21),
+    get_variation_with_shifting(34, 25, -3),
+    get_variation_with_shifting( 1, 27,  2),
+    get_variation_with_shifting(33, 19,  7),
   }
 )
-
-circuit_connector_definitions["rail-signal"] = circuit_connector_definitions.create
+circuit_connector_definitions["elevated-rail-chain-signal"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 4, main_offset = util.by_pixel(13, -7), shadow_offset = util.by_pixel(13, -7), show_shadow = true },
-    { variation = 3, main_offset = util.by_pixel(18.5, 8), shadow_offset = util.by_pixel(18.5, 8), show_shadow = true },
-    { variation = 2, main_offset = util.by_pixel(7, 21.5), shadow_offset = util.by_pixel(7, 21.5), show_shadow = true },
-    { variation = 1, main_offset = util.by_pixel(-6, 19.5), shadow_offset = util.by_pixel(-6, 19.5), show_shadow = true },
-    { variation = 0, main_offset = util.by_pixel(-12.5, 13), shadow_offset = util.by_pixel(-12.5, 13), show_shadow = true },
-    { variation = 7, main_offset = util.by_pixel(-15.5, -4.5), shadow_offset = util.by_pixel(-15.5, -4.5), show_shadow = true },
-    { variation = 6, main_offset = util.by_pixel(-7, -14.5), shadow_offset = util.by_pixel(-7, -14.5), show_shadow = true },
-    { variation = 5, main_offset = util.by_pixel(7.5, -12), shadow_offset = util.by_pixel(7.5, -12), show_shadow = true }
+    -- Follows elevated_rails/rail-chain-signal-elevated.lua's mapping of structure_align_to_animation_index
+    -- Since the definitions are tightly bound to elevated_rails/rail-chain-signal-elevated.lua, consider moving it away from this file
+    get_elevated_variation_with_shifting( 6, -9,  3), -- [ 0] North
+    get_elevated_variation_with_shifting(38,-19, -7), -- [ 1] NorthNorthEast
+    get_elevated_variation_with_shifting(38,-24,-13), -- [ 2] NorthNorthEast (variant 1)
+    get_elevated_variation_with_shifting( 5,-14, -1), -- [ 3] NorthEast
+    get_elevated_variation_with_shifting(37,-17,-13), -- [ 4] EastNorthEast
+    get_elevated_variation_with_shifting(37,-27,-17), -- [ 5] EastNorthEast (variant 1)
+    get_elevated_variation_with_shifting( 4, -5, -6), -- [ 6] East
+    get_elevated_variation_with_shifting(36,  7,-18), -- [ 7] EastSouthEast
+    get_elevated_variation_with_shifting(36, 19,-20), -- [ 8] EastSouthEast (variant 1)
+    get_elevated_variation_with_shifting( 3,  8, -7), -- [ 9] SouthEast
+    get_elevated_variation_with_shifting(35, 21, -9), -- [10] SouthSouthEast
+    get_elevated_variation_with_shifting(35, 20,-20), -- [11] SouthSouthEast (variant 1)
+    get_elevated_variation_with_shifting( 2,  9, -4), -- [12] South
+    get_elevated_variation_with_shifting(34, 15,  3), -- [13] SouthSouthWest
+    get_elevated_variation_with_shifting(34, 23, -3), -- [14] SouthSouthWest (variant 1)
+    get_elevated_variation_with_shifting(34, 21,  5), -- [15] SouthSouthWest (variant 2)
+    get_elevated_variation_with_shifting( 1,  8,  0), -- [16] SouthWest
+    get_elevated_variation_with_shifting(33, 11,  5), -- [17] WestSouthWest
+    get_elevated_variation_with_shifting(33, 20, 10), -- [18] WestSouthWest (variant 1)
+    get_elevated_variation_with_shifting( 0,  5,  2), -- [19] West
+    get_elevated_variation_with_shifting(32, -1,  9), -- [20] WestNorthWest
+    get_elevated_variation_with_shifting(32,-12, 15), -- [21] WestNorthWest (variant 1)
+    get_elevated_variation_with_shifting( 7, -3,  2), -- [22] NorthWest
+    get_elevated_variation_with_shifting(39,-17,  7), -- [23] NorthNorthWest
+    get_elevated_variation_with_shifting(39,-15, 14), -- [24] NorthNorthWest (variant 1)
   }
 )
 
-circuit_connector_definitions["roboport"] = circuit_connector_definitions.create
+circuit_connector_definitions["elevated-rail-signal"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 26, main_offset = util.by_pixel(18.5, 41), shadow_offset = util.by_pixel(20.5, 56.5), show_shadow = false }
+    -- Follows elevated_rails/rail-signal-elevated.lua's mapping of structure_align_to_animation_index
+    -- Since the definitions are tightly bound to elevated_rails/rail-signal-elevated.lua, consider moving it away from this file
+    get_elevated_variation_with_shifting( 6, -6,  5), -- [ 0] North
+    get_elevated_variation_with_shifting(38,-17, -5), -- [ 1] NorthNorthEast
+    get_elevated_variation_with_shifting(38,-22, -10), -- [ 2] NorthNorthEast (variant 1)
+    get_elevated_variation_with_shifting( 5,-12,  2), -- [ 3] NorthEast
+    get_elevated_variation_with_shifting(37,-15, -9), -- [ 4] EastNorthEast
+    get_elevated_variation_with_shifting(37,-25,-13), -- [ 5] EastNorthEast (variant 1)
+    get_elevated_variation_with_shifting( 4, -5, -1), -- [ 6] East
+    get_elevated_variation_with_shifting(36,  6,-14), -- [ 7] EastSouthEast
+    get_elevated_variation_with_shifting(36, 17,-17), -- [ 8] EastSouthEast (variant 1)
+    get_elevated_variation_with_shifting( 3,  6, -4), -- [ 9] SouthEast
+    get_elevated_variation_with_shifting(35, 18, -6), -- [10] SouthSouthEast
+    get_elevated_variation_with_shifting(35, 18,-16), -- [11] SouthSouthEast (variant 1)
+    get_elevated_variation_with_shifting( 2,  6, -2), -- [12] South
+    get_elevated_variation_with_shifting(34, 13,  4), -- [13] SouthSouthWest
+    get_elevated_variation_with_shifting(34, 20, -1), -- [14] SouthSouthWest (variant 1)
+    get_elevated_variation_with_shifting(34, 19,  6), -- [15] SouthSouthWest (variant 2)
+    get_elevated_variation_with_shifting( 1,  6,  1), -- [16] SouthWest
+    get_elevated_variation_with_shifting(33, 10,  6), -- [17] WestSouthWest
+    get_elevated_variation_with_shifting(33, 18, 11), -- [18] WestSouthWest (variant 1)
+    get_elevated_variation_with_shifting( 0,  5,  2), -- [19] West
+    get_elevated_variation_with_shifting(32,  0, 10), -- [20] WestNorthWest
+    get_elevated_variation_with_shifting(32,-10, 16), -- [21] WestNorthWest (variant 1)
+    get_elevated_variation_with_shifting( 7,  0,  3), -- [22] NorthWest
+    get_elevated_variation_with_shifting(39,-15,  8), -- [23] NorthNorthWest
+    get_elevated_variation_with_shifting(39,-12, 15), -- [24] NorthNorthWest (variant 1)
   }
 )
 
-circuit_connector_definitions["rocket-silo"] = circuit_connector_definitions.create
+circuit_connector_definitions["roboport"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 26, main_offset = util.by_pixel(18.5, 31), shadow_offset = util.by_pixel(20.5, 46.5), show_shadow = false }
+)
+
+circuit_connector_definitions["rocket-silo"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
-    { variation = 7, main_offset = util.by_pixel(-115, -9), shadow_offset = util.by_pixel(-115, -9), show_shadow = false }
+    { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true },
+    { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }, -- unused but RocketSilo derives from AssemblingMachine which requires 4 connectors
+    { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }, -- also unused
+    { variation = 25, main_offset = util.by_pixel(48.5, 104), shadow_offset = util.by_pixel(75.5, 129), show_shadow = true }  -- also unused
   }
 )
 
-circuit_connector_definitions["storage-tank"] = circuit_connector_definitions.create
+circuit_connector_definitions["storage-tank"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -706,7 +813,7 @@ circuit_connector_definitions["storage-tank"] = circuit_connector_definitions.cr
   }
 )
 
-circuit_connector_definitions["train-station"] = circuit_connector_definitions.create
+circuit_connector_definitions["train-station"] = circuit_connector_definitions.create_vector
 (
   universal_connector_template,
   {
@@ -716,3 +823,70 @@ circuit_connector_definitions["train-station"] = circuit_connector_definitions.c
     { variation = 13, main_offset = util.by_pixel(10.5, -38), shadow_offset = util.by_pixel(62.5, 28.5), show_shadow = true }
   }
 )
+
+circuit_connector_definitions["nuclear-reactor"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 27, main_offset = util.by_pixel(40, 40), shadow_offset = util.by_pixel(45, 54.5), show_shadow = false }
+)
+
+circuit_connector_definitions["gun-turret"] = circuit_connector_definitions.create_vector -- TurretPrototype takes table
+(
+  universal_connector_template,
+  {
+    { variation = 17, main_offset = util.by_pixel( -21, 1), shadow_offset = util.by_pixel( -12, 10), show_shadow = true },
+  }
+)
+
+circuit_connector_definitions["laser-turret"] = circuit_connector_definitions.create_vector -- TurretPrototype takes table
+(
+  universal_connector_template,
+  {
+    { variation = 17, main_offset = util.by_pixel( -11, -3), shadow_offset = util.by_pixel( -7, 10), show_shadow = true },
+  }
+)
+
+circuit_connector_definitions["artillery-turret"] = circuit_connector_definitions.create_single
+(
+  universal_connector_template,
+  { variation = 25, main_offset = util.by_pixel( -28, 17), shadow_offset = util.by_pixel( -15, 35), show_shadow = false }
+)
+
+circuit_connector_definitions["flamethrower-turret"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 14, main_offset = util.by_pixel(    -7,  24), shadow_offset = util.by_pixel(  15, 38), show_shadow = false },
+    { variation = 21, main_offset = util.by_pixel( -39.5, -12), shadow_offset = util.by_pixel( -21,  7), show_shadow = false },
+    { variation = 2,  main_offset = util.by_pixel(     7, -47), shadow_offset = util.by_pixel(  14, 40), show_shadow = false },
+    { variation = 23, main_offset = util.by_pixel(  39.5,  -8), shadow_offset = util.by_pixel(  45,  7), show_shadow = false }
+  },
+  true
+)
+
+circuit_connector_definitions["loader-1x2"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    -- Variations when loader is an output
+    { variation = 4, main_offset = util.by_pixel(-3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- N
+    { variation = 2, main_offset = util.by_pixel(0, -3), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- E
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- S
+    { variation = 6, main_offset = util.by_pixel(0, 2), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- W
+
+    -- Variations when loader is an input
+    { variation = 0, main_offset = util.by_pixel(3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- N
+    { variation = 6, main_offset = util.by_pixel(0, 2), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- E
+    { variation = 4, main_offset = util.by_pixel(-3, 0), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- S
+    { variation = 2, main_offset = util.by_pixel(0, -3), shadow_offset = util.by_pixel(7.5, 7.5), show_shadow = false }, -- W
+  }
+)
+
+circuit_connector_definitions["cargo-landing-pad"] =
+{
+  points =
+  {
+    wire = { red = {2.559, 1.059}, green = {2.328, 1.223} },
+    shadow = { red = {2.559 + 1.5, 1.059 + 1.5}, green = {2.328 + 1.5, 1.223 + 1.5} } -- TODO: to be adjusted
+  }
+}

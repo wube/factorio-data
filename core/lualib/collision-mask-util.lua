@@ -3,150 +3,9 @@ This is intended for data stage.
 Control stage collision masks have a different format, and there are already provided API functions for collision checking and things.
 ]]
 
+local default_masks = require("collision-mask-defaults")
 local util = require("util")
 local collision_mask_util = {}
-
-local layer_names =
-{
-  "ground-tile",
-  "water-tile",
-  "resource-layer",
-  "doodad-layer",
-  "floor-layer",
-  "item-layer",
-  "ghost-layer",
-  "object-layer",
-  "player-layer",
-  "train-layer",
-  "rail-layer",
-  "transport-belt-layer"
-}
-
-for k = 13, 55 do
-  table.insert(layer_names, "layer-"..k)
-end
-
-local collision_flags =
-{
-  "consider-tile-transitions",
-  "not-colliding-with-itself",
-  "colliding-with-tiles-only"
-}
-
-local default_masks =
-{
-  ["accumulator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["ammo-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["arithmetic-combinator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["arrow"] = {},
-  ["artillery-flare"] = {},
-  ["artillery-projectile"] = {},
-  ["artillery-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["artillery-wagon"] = {"train-layer"},
-  ["assembling-machine"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["beacon"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["beam"] = {},
-  ["boiler"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["burner-generator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["car"] = {"player-layer", "train-layer", "consider-tile-transitions"},
-  ["cargo-wagon"] = {"train-layer"},
-  ["character-corpse"] = {},
-  ["character"] = {"player-layer", "train-layer", "consider-tile-transitions"},
-  ["cliff"] = {"item-layer", "object-layer", "player-layer", "water-tile", "not-colliding-with-itself"},
-  ["combat-robot"] = {},
-  ["constant-combinator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["construction-robot"] = {},
-  ["container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["corpse"] = {},
-  ["curved-rail"] = {"floor-layer", "item-layer", "object-layer", "rail-layer", "water-tile"},
-  ["decider-combinator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["deconstructible-tile-proxy"] = {"ground-tile"},
-  ["electric-energy-interface"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["electric-pole"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["electric-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["entity-ghost"] = {"ghost-layer"},
-  ["explosion"] = {},
-  ["fire"] = {},
-  ["fish"] = {"ground-tile", "colliding-with-tiles-only"},
-  ["flame-thrower-explosion"] = {},
-  ["fluid-turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["fluid-wagon"] = {"train-layer"},
-  ["flying-text"] = {},
-  ["furnace"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["gate"] = {"item-layer", "object-layer", "player-layer", "train-layer", "water-tile"},
-  ["generator"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["heat-interface"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["heat-pipe"] = {"floor-layer", "object-layer", "water-tile"},
-  ["highlight-box"] = {},
-  ["infinity-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["infinity-pipe"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["inserter"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["item-entity"] = {"item-layer"},
-  ["item-request-proxy"] = {},
-  ["lab"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["lamp"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["land-mine"] = {"object-layer", "water-tile", "rail-layer"},
-  ["leaf-particle"] = {},
-  ["linked-belt"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
-  ["linked-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["loader-1x1"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
-  ["loader"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
-  ["locomotive"] = {"train-layer"},
-  ["logistic-container"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["logistic-robot"] = {},
-  ["market"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["mining-drill"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["offshore-pump"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["particle-source"] = {},
-  ["particle"] = {},
-  ["pipe-to-ground"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["pipe"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["player-port"] = {"floor-layer", "object-layer", "water-tile"},
-  ["power-switch"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["programmable-speaker"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["projectile"] = {},
-  ["pump"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["radar"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["rail-chain-signal"] = {"floor-layer", "item-layer", "rail-layer"},
-  ["rail-remnants"] = {},
-  ["rail-signal"] = {"floor-layer", "item-layer", "rail-layer"},
-  ["reactor"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["resource"] = {"resource-layer"},
-  ["roboport"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["rocket-silo-rocket-shadow"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["rocket-silo-rocket"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["rocket-silo"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["simple-entity-with-force"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["simple-entity-with-owner"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["simple-entity"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["smoke-with-trigger"] = {},
-  ["smoke"] = {},
-  ["solar-panel"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["speech-bubble"] = {},
-  ["spider-leg"] = {"player-layer", "rail-layer"},
-  ["spider-vehicle"] = {"player-layer", "train-layer"},
-  ["splitter"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
-  ["sticker"] = {},
-  ["storage-tank"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["straight-rail"] = {"floor-layer", "item-layer", "object-layer", "rail-layer", "water-tile"},
-  ["stream"] = {},
-  ["tile"] = {},  -- Tile prototypes are required to have a collision mask so have no default
-  ["tile-ghost"] = {"ghost-layer"},
-  ["train-stop"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["transport-belt"] = {"floor-layer", "object-layer", "transport-belt-layer", "water-tile"},
-  ["tree"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["turret"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["underground-belt"] = {"item-layer", "object-layer", "transport-belt-layer", "water-tile"},
-  ["unit-spawner"] = {"item-layer", "object-layer", "player-layer", "water-tile"},
-  ["unit"] = {"player-layer", "train-layer", "not-colliding-with-itself"},
-  ["wall"] = {"item-layer", "object-layer", "player-layer", "water-tile"}
-}
-
-local clear_flags = function(map)
-  for k, flag in pairs (collision_flags) do
-    map[flag] = nil
-  end
-end
 
 collision_mask_util.get_default_mask = function(type)
   return util.copy(default_masks[type]) or error("Unknown entity type: "..type)
@@ -156,63 +15,46 @@ collision_mask_util.get_mask = function(entity_prototype)
   return entity_prototype.collision_mask or collision_mask_util.get_default_mask(entity_prototype.type)
 end
 
-collision_mask_util.remove_layer = function(mask, layer)
-  return util.remove_from_list(mask, layer)
-end
+-- collision_mask_util.remove_layer was deleted. Just do `mask.layers[layer] = nil`
+-- collision_mask_util.add_layer was deleted. Just do `mask.layers[layer] = true`
+-- collision_mask_util.mask_contains_layer was deleted. Just do `mask.layers[layer]`: true means it contains (as opposed to nil)
 
-local insert = table.insert
-
-collision_mask_util.add_layer = function(mask, layer)
-  collision_mask_util.remove_layer(mask, layer)
-  insert(mask, layer)
-end
-
-collision_mask_util.mask_contains_layer = function(mask, layer)
-  local map = util.list_to_map(mask)
-  return map[layer]
-end
-
-collision_mask_util.masks_collide = function(mask_1, mask_2)
-
-  local map_1 = util.list_to_map(mask_1)
-  local map_2 = util.list_to_map(mask_2)
-  if map_1["not-colliding-with-itself"] and map_2["not-colliding-with-itself"] and collision_mask_util.masks_are_same(mask_1, mask_2) then
+collision_mask_util.masks_collide = function(mask1, mask2)
+  if mask1.not_colliding_with_itself and mask2.not_colliding_with_itself and collision_mask_util.masks_are_same(mask1, mask2) then
     return false
   end
 
-  clear_flags(map_1)
-  clear_flags(map_2)
-
-  for layer, bool in pairs (map_2) do
-    if map_1[layer] then
-      return true
+  for layer, mask1_layers_layer in pairs(mask1.layers) do
+    if mask1_layers_layer and mask2.layers[layer] then
+      return true;
     end
   end
   return false
 end
 
-collision_mask_util.masks_are_same = function(mask_1, mask_2)
-  local map1 = util.list_to_map(mask_1)
-  local map2 = util.list_to_map(mask_2)
-  clear_flags(map1)
-  clear_flags(map2)
-  for layer, bool in pairs (map2) do
-    if map1[layer] then
-      map1[layer] = nil
-    else
-      return false
+collision_mask_util.masks_are_same = function(mask1, mask2)
+  for layer, mask1_layers_layer in pairs(mask1.layers) do
+    if mask1_layers_layer and not mask2.layers[layer] then
+      return false;
     end
   end
-  return not next(map1)
+  for layer, mask2_layers_layer in pairs(mask2.layers) do
+    if mask2_layers_layer and not mask1.layers[layer] then
+      return false;
+    end
+  end
+  return true
 end
 
 collision_mask_util.collect_prototypes_with_mask = function(mask)
   local prototype_list = {}
   for type, default_mask in pairs (default_masks) do
-    for name, entity in pairs (data.raw[type]) do
-      local entity_mask = entity.collision_mask or default_mask
-      if collision_mask_util.masks_are_same(entity_mask, mask) then
-        table.insert(prototype_list, entity)
+    if data.raw[type] then
+      for name, entity in pairs (data.raw[type]) do
+        local entity_mask = entity.collision_mask or default_mask
+        if collision_mask_util.masks_are_same(entity_mask, mask) then
+          table.insert(prototype_list, entity)
+        end
       end
     end
   end
@@ -222,10 +64,12 @@ end
 collision_mask_util.collect_prototypes_with_layer = function(layer)
   local prototype_list = {}
   for type, default_mask in pairs (default_masks) do
-    for name, entity in pairs (data.raw[type]) do
-      local entity_mask = entity.collision_mask or default_mask
-      if collision_mask_util.mask_contains_layer(entity_mask, layer) then
-        table.insert(prototype_list, entity)
+    if data.raw[type] then
+      for name, entity in pairs (data.raw[type]) do
+        local entity_mask = entity.collision_mask or default_mask
+        if entity_mask.layers[layer] then
+          table.insert(prototype_list, entity)
+        end
       end
     end
   end
@@ -236,15 +80,17 @@ collision_mask_util.collect_prototypes_colliding_with_mask = function(mask)
   local prototype_list = {}
 
   local check_list = default_masks
-  if collision_mask_util.mask_contains_layer(mask, "colliding-with-tiles-only") then
+  if mask.colliding_with_tiles_only then
     check_list = {tile = {}}
   end
 
   for type, default_mask in pairs (check_list) do
-    for name, entity in pairs (data.raw[type]) do
-      local entity_mask = entity.collision_mask or default_mask
-      if collision_mask_util.masks_collide(entity_mask, mask) then
-        table.insert(prototype_list, entity)
+    if data.raw[type] then
+      for name, entity in pairs (data.raw[type]) do
+        local entity_mask = entity.collision_mask or default_mask
+        if collision_mask_util.masks_collide(entity_mask, mask) then
+          table.insert(prototype_list, entity)
+        end
       end
     end
   end
@@ -253,66 +99,37 @@ end
 
 collision_mask_util.replace_layer_in_all_prototypes = function(old_name, new_name)
   for type, default_mask in pairs (default_masks) do
-    for name, entity in pairs (data.raw[type]) do
-      local entity_mask = entity.collision_mask or default_mask
-      if collision_mask_util.remove_layer(entity_mask, old_name) then
-        collision_mask_util.add_layer(entity_mask, new_name)
-        entity.collision_mask = entity_mask
+    if data.raw[type] then
+      for name, entity in pairs (data.raw[type]) do
+        local entity_mask = entity.collision_mask or default_mask
+        if entity_mask.layers[old_name] then
+          entity_mask.layers[old_name] = nil
+          entity_mask.layers[new_name] = true
+          entity.collision_mask = entity_mask
+        end
       end
     end
   end
 end
 
-collision_mask_util.is_layer_used = function(layer)
-  for type, default_mask in pairs (default_masks) do
-    for name, entity in pairs (data.raw[type]) do
-      local entity_mask = entity.collision_mask or default_mask
-      if collision_mask_util.mask_contains_layer(entity_mask, layer) then
-        return true
-      end
-    end
-  end
-  return false
+collision_mask_util.new_mask = function()
+  return {layers={}}
 end
 
-collision_mask_util.get_first_unused_layer = function()
-  for k, layer in pairs (layer_names) do
-    if not collision_mask_util.is_layer_used(layer) then
-      return layer
+collision_mask_util.migrate_from_before_1_2_0 = function(old_mask)
+  local mask = collision_mask_util.new_mask()
+  for _, layer in pairs(old_mask) do
+    if layer == "not-colliding-with-itself" then
+      mask.not_colliding_with_itself = true
+    elseif layer == "consider-tile-transitions" then
+      mask.consider_tile_transitions = true
+    elseif layer == "colliding-with-tiles-only" then
+      mask.colliding_with_tiles_only = true
+    else
+      mask.layers[layer] = true
     end
   end
+  return mask
 end
-
---[[
-  Script for exporting from the game.
-
-  local defaults = {}
-  for name, prototype in pairs (game.entity_prototypes) do
-    local type = prototype.type
-    if not defaults[type] then
-      defaults[type] = prototype.default_collision_mask_with_flags
-    end
-  end
-
-  local string = "local default_masks =\n{"
-
-  for type, mask in pairs (defaults) do
-    string = string.."\n[\""..type.."\"] = {"
-    local comma = false
-    for layer, bool in pairs (mask) do
-      if comma then
-        string = string..", "
-      end
-      string = string.."\""..layer.."\""
-      comma = true
-    end
-    string = string.."},"
-  end
-
-  string = string.."\n}"
-
-  game.write_file("collision_defaults.lua", string)
-
-]]
 
 return collision_mask_util

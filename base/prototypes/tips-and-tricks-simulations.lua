@@ -1,85 +1,614 @@
 local simulations = {}
 
-simulations.introduction =
+simulations.spidertron_control =
 {
   init =
   [[
-    local scenes =
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({0, 2.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_zoom = 1
+    game.surfaces[1].build_checkerboard{{-22, -11}, {22, 11}}
+    game.simulation.camera_player_cursor_position = player.position
+
+    spider = game.surfaces[1].create_entity{name = "spidertron", position = {-8, 1.5}, force = "player"}
+
+    local story_table =
     {
-      "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",
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(1),
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {player.position.x, player.position.y - 2.5}}) end,
+          action = function() game.simulation.control_press{control = "give-spidertron-remote", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              story_jump_to(storage.story, "add-spidertron-mouse-branch")
+            end
+          end
+        },
+        -- controller branch
+        {
+          condition = function() return game.simulation.move_cursor({position = {spider.position.x - 1.5, spider.position.y - 3}}) end,
+          action = function() game.simulation.control_press{control = "select-for-blueprint", notify = true} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {spider.position.x + 1.5, spider.position.y}}) end,
+          action = function() game.simulation.control_press{control = "select-for-blueprint", notify = true} end
+        },
+        {
+          action = function() story_jump_to(storage.story, "add-spidertron-join-branch") end
+        },
+        -- mouse branch
+        { action = function() end },
+        {
+          name = "add-spidertron-mouse-branch",
+          condition = function() return game.simulation.move_cursor({position = {spider.position.x, spider.position.y - 1.5}}) end,
+          action = function() game.simulation.control_press{control = "select-for-blueprint", notify = true} end
+        },
+        -- branch join
+        { action = function() end },
+        {
+          name = "add-spidertron-join-branch",
+          condition = story_elapsed_check(1)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {8, 1.5}}) end,
+          action = function() game.simulation.control_press{control = "use-item", notify = true} end
+        },
+        { condition = story_elapsed_check(2) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {8, -5.5}, speed = 0.35}) end,
+          action = function() game.simulation.control_press{control = "alternative-use-item", notify = true} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-8, -5.5}, speed = 0.35}) end,
+          action = function() game.simulation.control_press{control = "alternative-use-item", notify = true} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-8, 1.5}, speed = 0.35}) end,
+          action = function() game.simulation.control_press{control = "alternative-use-item", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(3.2),
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              story_jump_to(storage.story, "remove-spidertron-mouse-branch")
+            end
+          end
+        },
+        -- controller branch
+        {
+          condition = function() return game.simulation.move_cursor({position = {spider.position.x - 1.5, spider.position.y - 3}}) end,
+          action = function() game.simulation.control_press{control = "deselect", notify = true} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {spider.position.x + 1.5, spider.position.y}}) end,
+          action = function() game.simulation.control_press{control = "select-for-blueprint", notify = true} end
+        },
+        {
+          action = function() story_jump_to(storage.story, "remove-spidertron-join-branch") end
+        },
+        -- mouse branch
+        { action = function() end },
+        {
+          name = "remove-spidertron-mouse-branch",
+          condition = function() return game.simulation.move_cursor({position = {spider.position.x, spider.position.y - 1.5}}) end,
+          action = function() game.simulation.control_press{control = "deselect", notify = true} end
+        },
+        -- branch join
+        { action = function() end },
+        {
+          name = "remove-spidertron-join-branch",
+          condition = story_elapsed_check(1)
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(3),
+          action = function()
+            player.clear_cursor()
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
+
+simulations.limit_chest =
+{
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({-8.5, -1})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+	  game.simulation.camera_player_cursor_position = player.position
+	  storage.character = player.character
+    player.character.direction = defines.direction.south
+
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqdldtuozAQht/F16bCnEJ4lSpCHIbUkrGRbbqbRrx7xyFyu42jhXLHzPD9P/aMfSWtmGHSXFpSXQnvlDSker0Sw8+yES4mmxFIRaxupJmUtlELwpKFEi57+EsqttBAOQjorOZdBBL0+RKhAOih6eDbl8lyogSk5ZbDqnp7udRyHlvQiKb/x1EyKYMEJZ06Ug+UXEgVFajTzsMAujb8Axks9o9z/EMq8VIj9HweI684KRFQOb7kq07+ki8BXvpLXhzGZR5nLICIujcw9pHC4juGhTG5x3A5cImpZ6T8DkoRRH11bcBaLs/GVWkY1TvUM+YE7gb0NbcwYmpohAFK1vC6sXfVrtEo1anZtRvu7qh6F25sJKC52fBNdQr5L+iTdnzsgn/891zj6t+yWQB7+LYsBjS6fgQWz4AsCRDLzUaPe4weN2PLPVgWb+Yy9gxchsBsOzje5TjZ7zjf5DjdD842gbP94GITePtQe/DxF1Nt9QyhmWRfQylU04dmx+uWP36HEnuZVufTjJcK3gd/MO3OjNeE5jSl+QljzgEWfV1VlLzjyXJjJCXLyjQvDmkcF85Li6vbvdW+gC3LJ/CGSNU=",
+      position = {-11, 0},
     }
 
-    local validate = function(entities)
-      for k, v in pairs (entities) do
-        if not v.valid then entities[k] = nil end
-      end
-    end
+    chest = game.surfaces[1].find_entity("steel-chest", {-8.5, 0.5})
+    assert(chest)
 
-    global.stack = game.create_inventory(1)[1]
-    global.last_index = -1
-    local stamp_scene = function()
-      local index = math.random(#scenes)
-      if index == global.last_index then
-        for k, scene in pairs (scenes) do
-          if k ~= index then
-            index = k
-            break
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = function() return game.simulation.move_cursor({position = chest.position}) end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() player.opened = chest end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "inventory-limit-slot-button"})
+            return game.simulation.move_cursor({position = target})
           end
-        end
-      end
-      global.last_index = index
-      local scene = scenes[index]
-      global.stack.import_stack(scene)
-      global.build_entities = global.stack.get_blueprint_entities()
-    end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory = "entity", inventory_index = defines.inventory.character_main, slot_index = 4}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = player.position}) end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            inserter = game.surfaces[1].create_entity{name = "inserter", position = {chest.position.x, chest.position.y + 1}, direction = defines.direction.south, force = player.force, create_build_effect_smoke = false}
+          end
+        },
+        {
+          condition = story_elapsed_check(7),
+          action = function() player.opened = nil end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            inserter.destroy()
+            chest.destroy()
+            chest = game.surfaces[1].create_entity{name = "steel-chest", position = {-8.5, 0.5}, force = player.force, create_build_effect_smoke = false}
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
 
-    local distance = function(p_1, p_2)
-      return (((p_1.x - p_2.x) ^ 2) + ((p_1.y - p_2.y) ^ 2)) ^ 0.5
-    end
+simulations.bulk_crafting =
+{
+  game_view_settings = { default_show_value = false, show_controller_gui = true, show_crafting_queue = true },
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({0, 4.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
 
-    local get_closest = function(entities, position)
-      local index, closest
-      local max_distance = math.huge
-      for k, entity in pairs (entities) do
-        local entity_distance = distance(position, entity.position)
-        if entity_distance < max_distance then
-          max_distance = entity_distance
-          index = k
-          closest = entity
-        end
-      end
-      return index, closest
-    end
+    player.insert{name = "iron-plate", count = 100}
+    player.insert{name = "iron-plate", count = 100}
+    player.insert{name = "iron-gear-wheel", count = 100}
+    player.insert{name = "iron-gear-wheel", count = 100}
+    player.clear_inventory_highlights()
+    player.opened = player
 
-    script.on_nth_tick(2, function()
-      if global.destroy_entities then
-        validate(global.destroy_entities)
-        if not next(global.destroy_entities) then
-          global.destroy_entities = nil
-          stamp_scene()
-          return
-        end
-        local entity = game.surfaces[1].get_closest({-10, -10}, global.destroy_entities)
-        if entity then entity.destroy() end
-      end
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "transport-belt"})
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          init = function() game.simulation.control_down{control = "craft-5", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "craft-5"} end,
+          condition = function() return game.simulation.move_cursor({position = player.position}) end
+        },
+        { condition = story_elapsed_check(3) },
 
-      if global.build_entities then
-        if not next(global.build_entities) then
-          global.build_entities = nil
-          return
-        end
-        local index, closest = get_closest(global.build_entities, {x = -10, y = -10})
-        game.surfaces[1].create_entity(closest)
-        global.build_entities[index] = nil
-      end
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "burner-inserter"})
+            return game.simulation.move_cursor({position = target})
+          end,
+          action = function() player.clear_inventory_highlights() end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          init = function() game.simulation.control_down{control = "craft-5", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "craft-5"} end,
+          condition = function() return game.simulation.move_cursor({position = player.position}) end
+        },
+        { condition = story_elapsed_check(3) },
 
-    end)
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "iron-chest"})
+            return game.simulation.move_cursor({position = target})
+          end,
+          action = function() player.clear_inventory_highlights() end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          init = function() game.simulation.control_down{control = "craft-all", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "craft-all"} end,
+          condition = function() return game.simulation.move_cursor({position = player.position}) end
+        },
 
-    script.on_nth_tick(1500, function()
-      global.destroy_entities = game.surfaces[1].find_entities()
-    end)
+        {
+          condition = story_elapsed_check(15),
+          action = function()
+            player.clear_items_inside()
+            player.insert{name = "iron-plate", count = 100}
+            player.insert{name = "iron-plate", count = 100}
+            player.insert{name = "iron-gear-wheel", count = 100}
+            player.insert{name = "iron-gear-wheel", count = 100}
+            player.clear_inventory_highlights()
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() story_jump_to(storage.story, "start") end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
+
+simulations.e_confirm =
+{
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({-8.5, -1.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+    player.character.direction = defines.direction.south
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNptkd2KwyAQhd9lrk2pSQzBV1mWEt1JV0g0609pGnz3NbZkF6o3cgbPd5jjBmIKuFilPfANlDTaAf/YwKmrHqZ95tcFgYPyOAMBPcy7skaYxVgPkYDSX3gHTuMnAdReeYVPRhbrRYdZoE0P3t0EFuOSweg9KUGquiOwAq9jJG+A+gC4IJwfsq+AaDKiKSGaA4ETSm+VrFCjva5VagDtOEgsEemLSECEcUR7ceqRIPR8nEJW+7cv/gR0iV/J73SXEtiJ5Qx6PrG4N5n75v++h8ANrcueuqdt37Cu61rG+tTVLwHtlQY=",
+      position = {-7, -5},
+    }
+
+    game.forces.player.technologies["logistic-system"].research_recursive()
+    game.forces.player.technologies["logistics"].researched = true -- for splitters to be selectable
+
+    chest = game.surfaces[1].find_entities_filtered{name = "requester-chest"}[1]
+    button = ""
+    slot_data = ""
+
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            button = "0"
+            slot_data = "transport-belt"
+          end,
+          condition = function() return game.simulation.move_cursor({position = chest.position, speed = 0.75}) end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = chest end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          name = "continue",
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "logistics-button", data = button})
+            return game.simulation.move_cursor({position = target, speed = 0.45})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-id-base", data = slot_data})
+            return game.simulation.move_cursor({position = target, speed = 0.45})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.35),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = story_elapsed_check(0.75),
+          action = function()
+            game.simulation.control_press{control = "confirm-gui", notify = true}
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            if button == "5" then button = "6" end
+            if button == "4" then
+              button = "5"
+              slot_data = "storage-chest"
+            end
+            if button == "3" then
+              button = "4"
+              slot_data = "small-electric-pole"
+            end
+            if button == "2" then
+              button = "3"
+              slot_data = "inserter"
+            end
+            if button == "1" then
+              button = "2"
+              slot_data = "splitter"
+            end
+            if button == "0" then
+              button = "1"
+              slot_data = "underground-belt"
+            end
+            if button < "6" then story_jump_to(storage.story, "continue") end
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = player.position, speed = 0.5}) end,
+          action = function() player.opened = nil end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            local position = chest.position
+            chest.destroy()
+            chest = game.surfaces[1].create_entity{name = "requester-chest", position = position, force = player.force, create_build_effect_smoke = false}
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
+
+simulations.electric_network =
+{
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+	  player.teleport({-9, 5.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqtmNFyoyAUht+Fa+wIgjF5lU4mQ5R0mUV0ELub7eTdF0yj7Ra3ObS5MYp+58Dhx19e0FGPsrfKOLR7QaruzIB2jy9oUE9G6HDNnXuJdkg52SKMjGjDmbPCDH1nXXaU2qELRso08jfakcseI2mcckpeSdPJ+WDG9iitv2FmDJ0WNuuFkdqD+27wz3QmhPScjPIHjtEZ7coHfrngDxy6cFqhdSa1rJ1VddZ3WsZ4xStvE+cVM0/U9diOWrjOxjjkSokx2MxQ5qSMb8rqH3JwEUyRv6az9eng+f7DIJ1T5mkI91nZds/yMPo27aSVzSEUwTedhB4kRtfL11G+5d48C1PLJquVrUcVItfdGIpL8xyjtmumu1ympZjyWsoW6xB/06FBWh8tNiLbd11plPWVmNqJL5LvgbWqkYfBifrnYVB/ZAj3MVa5NrkiEau1iCwC3gDAGwi4AoBLCHgLAHMImOQAMgORCYBcgMgUQKYgcgEgExCZAcg5iMzvJ5MtiAwQIAEJkAAUSEAKJAAJEpAECUCDBKQUCtAgAambAjRIQEqhAA0SkLopQIMEpBQK0CABqZsCNAgSCgVIEKRtClAgSCYUIECQsumiP92JJmo81nB49qymH4M5/Wj2coBT+4JRc3aUUbNJgO61uE3QMFOjRJrgPSfYt/Wp+LxioapL3H+c4qdFY1DLf5vKYeGIpswTrGEs+Ri7THCH97IXOZ+8jc/+Z875Z2NQJZjNe/Pc3vX9wN6m+I5aAb4fWIq3vbMjLMXd3sumKewiXk1WpMDoCoylwPgKjKfA2ApsEde8CEgj7dPZa8HPspOoo6tocaVufFmO4+kk7W0+5fMvFm2TvFqvbF6wKmUwVnYu2DYFtpIZB7wZF9j3bmJch7czfoC/aRuD3LUOzd2pvrIOcZo6W+jKEs0L6IuPvyPuMfrl+xLG+JFijv2LlO/xozchHPu5Hf6HA/aZh//hgH1MvvcPTtt+uze7hBj5gRimYLQirCp4WZaM84pcLn8BFfCgsA==",
+      position = {-2, 4},
+    }
+    pole = game.surfaces[1].find_entity("small-electric-pole", {-9.5, 1.5})
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = function() return game.simulation.move_cursor({position = pole.position, speed = 0.1}) end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = pole end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = player.position, speed = 0.1}) end
+        },
+        {
+          condition = story_elapsed_check(60),
+          action = function()
+            player.opened = nil
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
+
+simulations.stack_transfers =
+{
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({-1.5, 4.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+
+    local chest = game.surfaces[1].create_entity{name = "wooden-chest", position = {1.5, 4.5}, force = player.force}
+    player.insert{name = "iron-plate", count = 300}
+    player.insert{name = "copper-plate", count = 300}
+    player.insert{name = "iron-gear-wheel", count = 57}
+    player.insert{name = "electronic-circuit", count = 224}
+    player.clear_inventory_highlights()
+    player.opened = chest
+
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory_index = defines.inventory.character_main, slot_index = 2}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          init = function() game.simulation.control_down{control = "stack-transfer", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "stack-transfer"} end,
+          condition = story_elapsed_check(2.5)
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory_index = defines.inventory.character_main, slot_index = 1}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          init = function() game.simulation.control_down{control = "stack-transfer", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "stack-transfer"} end,
+          condition = story_elapsed_check(2.5)
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory_index = defines.inventory.character_main, slot_index = 1}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          init = function() game.simulation.control_down{control = "inventory-transfer", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "inventory-transfer"} end,
+          condition = story_elapsed_check(2.5)
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory_index = defines.inventory.character_main, slot_index = 15}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          init = function() game.simulation.control_down{control = "inventory-transfer", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "inventory-transfer"} end,
+          condition = story_elapsed_check(2.5)
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory = "entity", inventory_index = defines.inventory.character_main, slot_index = 15}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          init = function() game.simulation.control_down{control = "inventory-transfer", notify = true} end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          init = function() game.simulation.control_up{control = "inventory-transfer"} end,
+          condition = story_elapsed_check(3)
+        },
+        {
+          init = function()
+            player.clear_inventory_highlights()
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
+
+simulations.clear_cursor =
+{
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({0, 4.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+
+    player.insert{name = "iron-plate", count = 300}
+    player.clear_inventory_highlights()
+    player.opened = player
+
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = function()
+            local target = game.simulation.get_slot_position{inventory_index = defines.inventory.character_main, slot_index = 2}
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.control_press{control = "pick-item", notify = false} end
+        },
+        { condition = story_elapsed_check(0.25) },
+        { condition = function() return game.simulation.move_cursor({position = {player.position.x - 2, player.position.y - 0.5}}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.control_press{control = "clear-cursor", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(2),
+          action = function() story_jump_to(storage.story, "start") end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -87,492 +616,238 @@ simulations.entity_transfers =
 {
   init =
   [[
-
-    player = game.create_test_player{name = "big k"}
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
     game.surfaces[1].create_entity{name = "coal", position = {-5.5, -1.5}, amount = 123456}
     game.surfaces[1].create_entity{name = "coal", position = {-4.5, -1.5}, amount = 654321}
     game.surfaces[1].create_entity{name = "iron-ore", position = {-5.5, 1.5}, amount = 314159}
-    local chest_name = "wooden-chest"
-
-    local entities = game.entity_prototypes
-    if not (entities[chest_name]) then
-      for name, entity in pairs (entities) do
-        if entity.type == "container" and entity.get_inventory_size(defines.inventory.chest) > 0 then
-          chest_name = name
-          break
-        end
-      end
-    end
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
       string = "0eNqV0ttuwyAMANB/8TOpFHJh5VemacrF6ywlJgKyLYr495GiTdWWtesTMsgHG7xCO8w4WWIPegXqDDvQjys4OnEzbHt+mRA0kMcRBHAzblE7W0abjcTEp6y3NAwQBBD3+AE6D+Km4LxhzF6i03R4kSvDkwBkT54wlXIOlmeexxZtxK8WIWAyLuYa3m6OXlYLWOISa4KeLHbpTG4l/pDlnXK5K9c7cvFH27/M4ovcQcr/ItUVpLqzx2TJ249Xf8PvxvTIWfeKzu+IxSGZ+aEK21+fx0JfzKGAN7QuXfSQl+ooVV4rdVRFCJ9StORn",
       position = {-1,0},
     }
+    chest = game.surfaces[1].find_entities_filtered{name = "wooden-chest"}[1]
+    drills = game.surfaces[1].find_entities_filtered{type = "mining-drill"}
+    furnaces = game.surfaces[1].find_entities_filtered{type = "furnace"}
+    resting_position = {0, -1}
 
-    local chest = game.surfaces[1].find_entity(chest_name, {-3.5, 1.5}) or game.surfaces[1].create_entity{name = chest_name, position = {-3.5, 1.5}, force = "player"}
-
-    reset_items = function()
-      for k, burnieboy in pairs (game.surfaces[1].find_entities_filtered{type = "mining-drill"}) do
-        burnieboy.clear_items_inside()
-        burnieboy.insert({name = "coal", count = 41})
-      end
-
-      chest.clear_items_inside()
-      chest.insert({name = "iron-ore", count = 80})
-
-      for k, furnaceboy in pairs (game.surfaces[1].find_entities_filtered{type = "furnace"}) do
-        furnaceboy.crafting_progress = 0
-        furnaceboy.clear_items_inside()
-        furnaceboy.get_output_inventory().insert({name = "iron-plate", count = 40})
-      end
-
-      player.clear_items_inside()
-
+    fast_entity_transfer = function()
+      game.simulation.control_press{control = "fast-entity-transfer", notify = false}
+      player.create_local_flying_text
+      {
+        position = {game.simulation.camera_player_cursor_position.x, game.simulation.camera_player_cursor_position.y + 0.25},
+        time_to_live = 150,
+        speed = 60,
+        text = {"tips-and-tricks-item-description.entity-transfer-text"}
+      }
     end
 
-    fake_transfer_to = function(entity)
-      local stack = player.cursor_stack
-      if not (stack.valid and stack.valid_for_read) then return end
-      local name, count = stack.name, stack.count
-      local inserted = entity.insert{name = name, count = count}
-      if inserted == 0 then return end
-
-      player.remove_item{name = name, count = inserted}
-      player.surface.create_entity
+    local story_table =
+    {
       {
-        name = "flying-text",
-        position = {entity.position.x, entity.position.y - 0.5},
-        text =
         {
-          "",
-          "-",
-          inserted,
-          " ",
-          game.item_prototypes[name].localised_name,
-          " (",
-          player.get_item_count(name),
-          ")"
+          name = "start",
+          init = function()
+            for k, drill in pairs (drills) do
+              drill.clear_items_inside()
+              drill.insert({name = "coal", count = 41})
+            end
+            for k, furnace in pairs (furnaces) do
+              furnace.crafting_progress = 0
+              furnace.clear_items_inside()
+              furnace.get_output_inventory().insert({name = "iron-plate", count = 40})
+            end
+            chest.clear_items_inside()
+            chest.insert({name = "iron-ore", count = 80})
+            player.clear_items_inside()
+          end,
+          condition = function() return game.simulation.move_cursor({position = drills[1].position}) end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          condition = function() return game.simulation.move_cursor({position = drills[2].position, speed = 0.075}) end,
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        { condition = function() return game.simulation.move_cursor({position = resting_position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            local stack = player.get_main_inventory().find_item_stack("coal")
+            stack.swap_stack(player.cursor_stack)
+          end
+        },
+        { condition = function() return game.simulation.move_cursor({position = furnaces[1].position, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          condition = function() return game.simulation.move_cursor({position = furnaces[2].position, speed = 0.1}) end,
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        { condition = function() return game.simulation.move_cursor({position = chest.position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        { condition = function() return game.simulation.move_cursor({position = resting_position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            local stack = player.get_main_inventory().find_item_stack("iron-ore")
+            stack.swap_stack(player.cursor_stack)
+          end
+        },
+        { condition = function() return game.simulation.move_cursor({position = furnaces[1].position, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          condition = function() return game.simulation.move_cursor({position = furnaces[2].position, speed = 0.1}) end,
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        { condition = function() return game.simulation.move_cursor({position = resting_position}) end },
+        { condition = story_elapsed_check(0.5) },
+        { condition = function() return game.simulation.move_cursor({position = furnaces[1].position, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        {
+          condition = function() return game.simulation.move_cursor({position = furnaces[2].position, speed = 0.1}) end,
+          action = function() fast_entity_transfer() end
+        },
+        { condition = story_elapsed_check(1) },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(2),
+          action = function() story_jump_to(storage.story, "start") end
         }
       }
-      player.play_sound{path = "utility/inventory_move"}
-    end
-
-
-    fake_transfer_from = function(entity)
-      local contents = entity.get_output_inventory().get_contents()
-      local transferred = {}
-      for name, count in pairs (contents) do
-        local inserted = player.insert{name = name, count = count}
-        if inserted > 0 then
-          entity.remove_item{name = name, count = inserted}
-          transferred[name] = inserted
-        end
-      end
-
-      if not next(transferred) then return end
-
-      local caption = {""}
-      for name, count in pairs (transferred) do
-        table.insert(caption, "+")
-        table.insert(caption, count)
-        table.insert(caption, " ")
-        table.insert(caption, game.item_prototypes[name].localised_name)
-        table.insert(caption, " (")
-        table.insert(caption, player.get_item_count(name))
-        table.insert(caption, ")\n")
-      end
-
-      player.surface.create_entity
-      {
-        name = "flying-text",
-        position = {entity.position.x, entity.position.y - 0.5},
-        text = caption
-      }
-      player.play_sound{path = "utility/inventory_move"}
-    end
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {-6, -1}})
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local count = 30
-      local selected = nil
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = {-4, -1.5}})
-        if player.selected and player.selected ~= selected then
-          selected = player.selected
-          fake_transfer_from(player.selected)
-        end
-        if finished then
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-
-        local finished = game.move_cursor({position = {0, -1.5}})
-
-        if finished then
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      local stack = player.get_main_inventory().find_item_stack("coal")
-      stack.swap_stack(player.cursor_stack)
-      local count = 30
-      local selected = nil
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = {5, -1}})
-        if player.selected and player.selected ~= selected then
-          selected = player.selected
-          fake_transfer_to(player.selected)
-        end
-        if finished then
-          step_5()
-        end
-      end)
-    end
-
-    step_5 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = chest.position})
-        if finished then
-          step_6()
-        end
-      end)
-    end
-
-    step_6 = function()
-      local count = 30
-      player.clear_cursor()
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        fake_transfer_from(player.selected)
-        step_7()
-      end)
-    end
-
-    step_7 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-
-        local finished = game.move_cursor({position = {0, -1}})
-
-        if finished then
-          step_8()
-        end
-
-      end)
-    end
-
-    step_8 = function()
-      local stack = player.get_main_inventory().find_item_stack("iron-ore")
-      stack.swap_stack(player.cursor_stack)
-      local count = 30
-      local selected = nil
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = {5, -1}})
-        if player.selected and player.selected ~= selected then
-          selected = player.selected
-          fake_transfer_to(player.selected)
-        end
-        if finished then
-          step_9()
-        end
-      end)
-    end
-
-    step_9 = function()
-      player.clear_cursor()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = {0, -1}})
-
-        if finished then
-          step_10()
-        end
-      end)
-
-    end
-
-    step_10 = function()
-      local count = 30
-      local selected = nil
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = {5, -1}})
-        if player.selected and player.selected ~= selected then
-          selected = player.selected
-          fake_transfer_from(player.selected)
-        end
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        local finished = game.move_cursor({position = player.position})
-        if finished then
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        reset_items()
-        step_1()
-      end)
-
-    end
-
-    reset_items()
-    start()
-
+    }
+    tip_story_init(story_table)
   ]]
 }
-
 
 simulations.z_drop =
 {
   init =
   [[
-
-    player = game.create_test_player{name = "big k"}
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 1.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqV1O9ugyAQAPB34TM2Bf9VX2VZjNVrR6KHAezWNL77oKZdV7XFb8LBj1O5u5B900OnBBqSX4ioJGqSf1yIFkcsGzdnzh2QnAgDLaEEy9aNtJEIwaFXWFZABkoE1vBDcjbQt3uNKlF3UplgD4152MyHT0oAjTACxiyug3OBfbsHZfWn87/LprFuJ7XdItGdaJmAhZuYkrN9yjbx4DJ6criX85YJl15pQvGbxKxESS0UVGOYz7iRtxuucmNvN1rlJt5uvMpNvd1klbvzdtNVbnZ3G1nWdmbiZUsavZcKdr2riend3951gQeBNhZUX6Bnsmbb/2nf1hcajBF41G6dglaeoOhtrDGgoC5cldqQUT3M3XbGFqp/etuvh/NZhPsi0Qsk9EWSF8hflQklcelbBrcS4/M9gMUre5L7ObNQsq4pjY5tmNfmmj/0cUpOoPR4r3YsSjOesiRNszQahl8Gf/Lk",
-      position = {0,0},
+      string = "0eNqV1NtugzAMANB/8XOoyiWU8ivVhLi4XSRwUBKqVRX/voSql62wkcfEybEfbF+hagfslSAD+RVELUlDfriCFicqW3dnLj1CDsJgBwyo7NxJG0kYHAdFZY0wMhDU4Bfk4cj+/WtUSbqXygQVtublczR+MEAywgi8VTEdLgUNXYXK6ksGg15q+02Sy2qpIEw2nMEF8mzDbYZGKKxv8cSV+AuOPODIB4494NgHTjzgrQ/MPeDQB07Xw5mPu1vv7n3cbL2b+rj79e7Oxw23D7iVZWOv3sEljj0mlfrBjeS7/pw9QUdBNhbUn6jnyv7ZyPfnhUZjBJ20e6awk2csBhtrDSpsCrcjbMioAce5/M8RFUrSYu7o3uxuTmeheGGJzfT3XZp1kvVO/JfD1zvhw7GLclqq+cv+ZnBGpaf3URYmWczTNE043+3H8RtUuPE+",
+      position = {5, 0},
     }
+    item_count = 0
 
-    reset_items = function()
-
-    end
-
-    fake_drop_to = function(entity)
-      local stack = player.cursor_stack
-      if not (stack.valid and stack.valid_for_read) then return end
-      local name, count = stack.name, 1
-      local inserted = entity.insert{name = name, count = count}
-      if inserted == 0 then return end
-
-      player.remove_item{name = name, count = inserted}
-      player.surface.create_entity
+    local story_table =
+    {
       {
-        name = "flying-text",
-        position = {entity.position.x, entity.position.y - 0.5},
-        text =
         {
-          "",
-          "-",
-          inserted,
-          " ",
-          game.item_prototypes[name].localised_name,
-          " (",
-          player.get_item_count(name),
-          ")"
+          name = "start",
+          init = function() item_count = 50 end,
+          condition = story_elapsed_check(0.5),
+          action = function() player.cursor_stack.set_stack({name = "iron-ore", count = 50}) end,
+        },
+        { condition = function() return game.simulation.move_cursor({position = {-3.5, -2.5}}) end },
+        {
+          name = "drop_ground",
+          condition = story_elapsed_check(0.15),
+          action = function()
+            game.simulation.control_press{control = "drop-cursor", notify = false}
+            item_count = item_count - 1
+          end
+        },
+        { action = function() if item_count > 35 then story_jump_to(storage.story, "drop_ground") end end },
+        { condition = function() return game.simulation.move_cursor({position = {-3.5, 2.5}}) end },
+        {
+          name = "drop_chest",
+          condition = story_elapsed_check(0.15),
+          action = function()
+            game.simulation.control_press{control = "drop-cursor", notify = false}
+            item_count = item_count - 1
+          end
+        },
+        { action = function() if item_count > 25 then story_jump_to(storage.story, "drop_chest") end end },
+        { condition = function() return game.simulation.move_cursor({position = {2.5, -1.5}}) end },
+        {
+          name = "drop_belt",
+          condition = story_elapsed_check(0.15),
+          action = function()
+            game.simulation.control_press{control = "drop-cursor", notify = false}
+            item_count = item_count - 1
+          end
+        },
+        { action = function() if item_count > 15 then story_jump_to(storage.story, "drop_belt") end end },
+        { condition = function() return game.simulation.move_cursor({position = {2.0, 2.0}}) end },
+        {
+          action = function()
+            player.selected.insert("coal")
+            game.simulation.control_press{control = "drop-cursor", notify = false}
+          end
+        },
+        { condition = function() return game.simulation.move_cursor({position = {4.0, 2.0}}) end },
+        {
+          action = function()
+            player.selected.insert("coal")
+            game.simulation.control_press{control = "drop-cursor", notify = false}
+          end
+        },
+        { condition = function() return game.simulation.move_cursor({position = {6.0, 2.0}}) end },
+        {
+          action = function()
+            player.selected.insert("coal")
+            game.simulation.control_press{control = "drop-cursor", notify = false}
+          end
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            player.clear_cursor()
+            for k, v in pairs (game.surfaces[1].find_entities()) do
+              if v.type == "item-entity" then
+                v.destroy()
+              else
+                v.clear_items_inside()
+              end
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() story_jump_to(storage.story, "start") end
         }
       }
-      player.play_sound{path = "utility/inventory_move"}
-    end
-
-    fake_drop_at_cursor = function()
-      local stack = player.cursor_stack
-      if not (stack and stack.valid_for_read) then return end
-
-      local drop_stack = {name = stack.name, count = 1}
-      game.surfaces[1].spill_item_stack(game.camera_player_cursor_position, drop_stack)
-      player.remove_item(drop_stack)
-      player.play_sound{path = "utility/drop_item"}
-
-    end
-
-    step_1 = function()
-      player.cursor_stack.set_stack({name = "iron-ore", count = 50})
-      script.on_nth_tick(1, function()
-        if game.move_cursor({position = {-3.5, -2.5}}) then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local repeat_time = 10
-      local count = repeat_time
-      local repeat_count = 15
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        count = repeat_time
-        repeat_count = repeat_count - 1
-        if repeat_count < 0 then
-          step_3()
-          return
-        end
-        fake_drop_at_cursor()
-      end)
-    end
-
-    step_3 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {-3.5, 2.5}})
-        if finished then
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      local repeat_time = 10
-      local count = repeat_time
-      local repeat_count = 10
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        count = repeat_time
-        repeat_count = repeat_count - 1
-        if repeat_count < 0 then
-          step_6()
-          return
-        end
-        fake_drop_to(player.selected)
-      end)
-    end
-
-    step_6 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {2.5, -1.5}})
-        if finished then
-          step_7()
-        end
-      end)
-    end
-
-    step_7 = function()
-      local repeat_time = 10
-      local count = repeat_time
-      local repeat_count = 10
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        count = repeat_time
-        repeat_count = repeat_count - 1
-        if repeat_count < 0 then
-          step_8()
-          return
-        end
-        fake_drop_at_cursor()
-      end)
-    end
-
-    step_8 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {2.0, 2.0}})
-        if finished then
-          step_9()
-        end
-      end)
-    end
-
-    step_9 = function()
-      local last_selected
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {6.0, 2.0}})
-        if player.selected and player.selected ~= last_selected then
-          last_selected = player.selected
-          player.selected.insert("coal")
-          fake_drop_to(player.selected)
-        end
-        if finished then
-          step_10()
-        end
-      end)
-    end
-
-    step_10 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = player.position})
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        player.clear_cursor()
-        for k, v in pairs (game.surfaces[1].find_entities()) do
-          if v.type == "item-entity" then
-            v.destroy()
-          else
-            v.clear_items_inside()
-          end
-        end
-        start()
-      end)
-    end
-
-    start = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        step_1()
-      end)
-    end
-
-    start()
-
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -580,6 +855,7 @@ simulations.show_info =
 {
   init =
   [[
+    game.simulation.camera_position = {0, 0.5}
     local width = 0
 
     function box_width(box)
@@ -590,7 +866,7 @@ simulations.show_info =
       return box.right_bottom.y - box.left_top.y
     end
 
-    local entity_prototypes = game.entity_prototypes
+    local entity_prototypes = prototypes.entity
 
     local assembler_box = entity_prototypes["assembling-machine-1"].selection_box
     local mining_drill_box = entity_prototypes["burner-mining-drill"].selection_box
@@ -640,231 +916,169 @@ simulations.show_info =
   ]],
   update =
   [[
-    game.camera_alt_info = (game.tick % 120) < 60
+    game.simulation.camera_alt_info = (game.tick % 120) < 60
   ]]
 }
 
 simulations.pipette =
 {
+  game_view_settings = { default_show_value = false, show_controller_gui = true, show_quickbar = true, update_entity_selection = true },
   init =
   [[
-    player = game.create_test_player{name = "big K"}
-    player.character.teleport{0, 3}
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    pipette_delay = 40
-    clear_delay = 60
+    require("__core__/lualib/story")
+    game.simulation.active_quickbars = 1
+    player = game.simulation.create_test_player{name = "big K"}
+    player.character.teleport{0, 4}
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+    player.set_quick_bar_slot(1,'burner-inserter')
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqV1F1uhCAQAOC7zDNuFvxBvcqmadSdNiQ6GsCmxnj3ojbNZqstPBHA+RgnMDPU7YiDVmShnEE1PRkobzMY9U5Vu67ZaUAoQVnsgAFV3TqzuiIz9NpGNbYWFgaK7vgJJV/Yv8HG9oTR26ipavAhViwvDJCssgr3LLbJ9EpjV6N2+AnBYOiNi+ppPdNJUcxgcgNf1nSeFOGt8D+U+KwWv5nikm4Qv6TuZ+9KY7NviwM38XfzEDf1d2WIm/m7WYgr/d00xM393STELX7c2t0n1JEig9q6rYPb+Q1fn+HkAOZX/4xFSMac+8NxECwCasGDahHw6vh5yq7NbB2pfOh+DD5Qm/2DnCeyEJJnUhbSvf4v/R2wkg==",
-      position = {-5,0},
+      string = "0eNqV1FFqhDAQBuC7zHNcTDQac5WlFHWnJaBRklgq4t0bXdoui9LOYzTz+Tsks0DTTTg6YwPoBUw7WA/6uoA377butmdhHhE0mIA9MLB1v62Cq60fBxeSBrsAKwNjb/gJmq/sz2IfBovJ2+Rs3eJDrVhfGKANJhi8p9gX86ud+gZdxE8IBuPgY9Vgt29GKREpgxl0tW5xnhTxb4WrcyU768VBmPIid4jzi4y/ezMO2/uG/EDOCXJBkiVBliS5IMg5SS4JckaSFUEWJLn6kZt4ttAlxnp0Ib46OqnfdPpMqwOap4TUnJSacwKd0mhB6AhXtI4QbiKvaLEJV/E39QEd59o+AvXDuGXwgc7vG4TiucpkURS5lGUcN19DUdJu",
+      position = {-6,0},
     }
 
-    step_1 = function()
-      target_position = {-1, -1}
-      script.on_nth_tick(1, function()
-        if game.move_cursor({position = target_position}) then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local count = pipette_delay
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count == math.floor(pipette_delay / 2) then
-          player.pipette_entity(player.selected)
-        end
-
-        if count <= 0 then
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      target_position = {3, -1}
-      script.on_nth_tick(1, function()
-        finished = game.move_cursor({position = target_position})
-        player.build_from_cursor{position = game.camera_player_cursor_position}
-        if finished then
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      local count = clear_delay
-      target_position = {-1.5, 0.5}
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count == math.floor(clear_delay / 2) then
-          player.clear_cursor()
-        end
-        if count > math.floor(clear_delay / 3) then return end
-
-        finished = game.move_cursor({position = target_position})
-        if finished then
-          step_5()
-        end
-      end)
-
-    end
-
-    step_5 = function()
-      local count = pipette_delay
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count == math.floor(pipette_delay / 2) then
-          player.pipette_entity(player.selected)
-          game.camera_player_cursor_direction = player.selected.direction
-        end
-
-        if count <= 0 then
-          step_6()
-        end
-      end)
-    end
-
-    step_6 = function()
-      target_position = {0.5, 0.5}
-      script.on_nth_tick(1, function()
-        finished = game.move_cursor({position = target_position})
-        if finished then
-          player.build_from_cursor{position = game.camera_player_cursor_position, direction = 4}
-          step_7()
-        end
-      end)
-    end
-
-    step_7 = function()
-      target_position = {2.5, 0.5}
-      script.on_nth_tick(1, function()
-
-        finished = game.move_cursor({position = target_position})
-        if finished then
-          player.build_from_cursor{position = game.camera_player_cursor_position, direction = 4}
-          step_8()
-        end
-      end)
-    end
-
-    step_8 = function()
-      local count = clear_delay
-      target_position = {-1.5, 1.5}
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count == math.floor(clear_delay / 2) then
-          player.clear_cursor()
-        end
-
-        if count > math.floor(clear_delay / 3) then return end
-
-        finished = game.move_cursor({position = target_position})
-        if finished then
-          step_9()
-        end
-      end)
-
-    end
-
-    step_9 = function()
-      local count = pipette_delay
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count == math.floor(pipette_delay / 2) then
-          player.pipette_entity(player.selected)
-          game.camera_player_cursor_direction = player.selected.direction
-        end
-
-        if count <= 0 then
-          step_10()
-        end
-      end)
-    end
-
-    step_10 = function()
-      target_position = {2.5, 1.5}
-      script.on_nth_tick(1, function()
-        finished = game.move_cursor({position = target_position})
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = 2}
-        if finished then
-          step_11()
-        end
-      end)
-    end
-
-    step_11 = function()
-      local count = clear_delay
-      target_position = player.position
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count == math.floor(clear_delay / 2) then
-          player.clear_cursor()
-        end
-
-        if count > math.floor(clear_delay / 3) then return end
-
-        finished = game.move_cursor({position = target_position})
-        if finished then
-          reset()
-        end
-      end)
-
-    end
-
-    reset = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count >= 0 then return end
-
-        for k, v in pairs (game.surfaces[1].find_entities_filtered{area = {{0, -2}, {3,  2}}}) do
-          v.destroy()
-        end
-
-        local belt = game.surfaces[1].find_entity("transport-belt", {-0.5, 1.5})
-        belt.destroy()
-
-        start()
-
-      end)
-    end
-
-    start = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count >= 0 then return end
-
-        player.character.clear_items_inside()
-        player.insert("transport-belt")
-        player.insert("stone-furnace")
-        player.insert("burner-inserter")
-
-        step_1()
-
-      end)
-    end
-
-    start()
-
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            player.insert("transport-belt")
+            player.insert("stone-furnace")
+            player.insert("burner-inserter")
+          end,
+          condition = story_elapsed_check(1)
+        },
+        { condition = function() return game.simulation.move_cursor({position = {-1, -1}}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.control_press{control = "pipette", notify = true} end
+        },
+        { condition = story_elapsed_check(0.25) },
+        { condition = function() return game.simulation.move_cursor({position = {1, -1}}) end},
+        {
+          init = function() game.simulation.control_down{control = "build", notify = false} end,
+          condition = function() return game.simulation.move_cursor({position = {3, -1}}) end,
+          action = function() game.simulation.control_up{control = "build"} end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.clear_cursor() end
+        },
+        { condition = story_elapsed_check(0.25),
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              story_jump_to(storage.story, "inserter-mouse-branch")
+            end
+          end
+        },
+        -- controller branch
+        {
+          action = function() player.opened = player end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "burner-inserter"})
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(0.25),
+          action = function()
+            story_jump_to(storage.story, "inserter-pipette")
+          end
+        },
+        -- mouse branch
+        { action = function() end }, --called by story_jump_to(storage.story, "inserter-mouse-branch")
+        {
+          name = "inserter-mouse-branch",
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "quickbar-slot", data = "burner-inserter"})
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        -- branch join
+        {
+          name = "inserter-pipette",
+          action = function()
+            game.simulation.control_press{control = "pipette", notify = true}
+            game.simulation.camera_player_cursor_direction = defines.direction.south
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = nil end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {0.5, 0.5}}) end,
+          action = function() game.simulation.control_press{control = "build", notify = false} end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {2.5, 0.5}}) end,
+          action = function() game.simulation.control_press{control = "build", notify = false} end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.clear_cursor() end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = player end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "recipe-slot", data = "transport-belt"})
+            return game.simulation.move_cursor({position = target})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action =
+            function() game.simulation.control_press{control = "pipette", notify = true}
+            game.simulation.camera_player_cursor_direction = defines.direction.east
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = nil end
+        },
+        { condition = story_elapsed_check(0.25) },
+        { condition = function() return game.simulation.move_cursor({position = {-0.5, 1.5}}) end},
+        {
+          init = function() game.simulation.control_down{control = "build", notify = false} end,
+          condition = function() return game.simulation.move_cursor({position = {2.5, 1.5}}) end,
+          action = function() game.simulation.control_up{control = "build"} end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.clear_cursor() end
+        },
+        { condition = story_elapsed_check(0.25) },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            for k, v in pairs (game.surfaces[1].find_entities_filtered{area = {{0, -2}, {3,  2}}}) do
+              v.destroy()
+            end
+            local belt = game.surfaces[1].find_entity("transport-belt", {-0.5, 1.5})
+            belt.destroy()
+            player.character.clear_items_inside()
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
-}
-
-simulations.transport_belt =
-{
-  init =
-  [[
-    game.surfaces[1].create_entities_from_blueprint_string
-    {
-      string = "0eNq1muuOokoQx9+Fz7Lp+8VX2WwMajuHBIFAs9k5E9/9tLgqu0NpFceZL3OB+XVVdf/rAn5k22oIbVfWMVt/ZOWuqfts/f0j68u3uqjOf4vvbcjWWRnDMVtldXE8/xa7ou7bpov5NlQxO62yst6HX9man36sslDHMpbhQhp/ed/Uw3EbunTDjVHWh7JOl/LdP6GPid02ffq3pj6vmlC5/qZX2Xv6wX7T4wqX+zd9iLGs3/rzfV04Nj/DZkjXqhi6sN+cDU2XYjeE02n1aX1xWz/8arvQ93nVFPt05cH6Jq1+DUPdDmd/P3El3i/+FX4pvF+c4pdG+yW+wi2DdktQvLI37JDObffWNen75Sw/OAdqdOw3uxkiAHeQTB5sxRk9g/JolHhC4oxwQG9myRduJeeEI8qm6+/LLuwul83zveUCH3/3p6PThebIEk+2NLLCkw2NrPFkTSMbPFnRyBZPljSyowj/xhY44fO7XPu2KmOcP9t35lx9YguyhwRYHM9iYBzFHBmvMSIYLzFOAyt6KoXCquko8beNag6MV5QEwXPHXljEwbxpVCCA+BqnaZbiK54hgSVeV5YGxovM08ACsWmOsGkS36PeOwCxoAM4FFUfVtnlz5cp4Lpu19R5WxUxpDV3KffGc2eStubY7M/Xi5hXoRgtug8UcxqUdzkf0v15Wfehm40QZ2DU5/KE1AsqMUeRzQIym09B0i6o6jgr3aLWmE0rJDwk+QUtA8psxRa0DDgyX9Qy4AKiCL2qoJktF/QRfP60qQW1k2MKnlpQSRkKbOj1iWOSsrJ0MKBh5egVCdogT08tAEozTA9rRgTgmOb05ARZI+iyhqySdBRklaKrFnW6tKbkGg6iEbOKNvTZACU9belgVLLQjjxzMFTQPSHo7HnMwWRvMNK6bepzww0nZ09UQIwgc1Gn20jyeIPj4uWoSFxNzvVA7jGGPNXgdsqSSwiOSy9NQKo0njDEIM68ZeRpC+Wx5fTZiL10NNo1bRu6lwxHVpCHI4bpKe1dwP2w7WMx3voZKkekmDVN0R/OouY2q+lg4PmONfTHvDgbLb1NAx4TWkfvsSCUp6OAyDlGr/0SU/vdgieZqEduTpBrBxBGJ8kkKIqTd3lVMr4rd3moU2PynpScZHwodmEuLY1M9akt2Q6HQ+g2fflvGPPJ9WtuZYKIrulVYU6+M5ipwo9ADUTF0gUOvAtzjq5DnJsePzwBbnpGVyP08pDwwu0qmr8l87yr9YLc1aFi6SXmmfXDUNL7QiiSBF3cSqpFeWnoijOAkZaOsgDKYRuIm9QsJtt6T9ewgd5nLxAKyOJofzXFX84E/q07mxj5snfuTGI9UzTH6NoCg79EXA6CmUnAwU30E8pTiXJm8Zvo/iC/eDZouslkoBcMBpy5Ja1Fbkef/InUTHDm6Z/1cq9/3fT/ozb57MyjuSdXv8M0y8APmOpLYnHZ76ZOO74ru91QRtKU+WN1+QjgevKJwVX2My1yEY7jynphubHWO3k6/Qf2REee",
-      position = {2, 2},
-    }
-  ]],
-  init_update_count = 720
 }
 
 simulations.inserters =
@@ -872,25 +1086,27 @@ simulations.inserters =
   init_update_count = 350,
   init =
   [[
+    game.simulation.camera_position = {0, 0.5}
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqdlumOmzAQgN/Fv6HCBgLkVVYrxDGklsBGttk2jXj3DmRzbGOKvfzhMP7m8FwXUvcTjIoLQ44XwhspNDm+XYjmJ1H1yzdzHoEcCTcwkICIaljejKqEHqUyYQ29IXNAuGjhNznSOdjdDD00RvEmBAHqdA5ROKiuauCJw+b3gIAw3HC4arS+nEsxDTUoFHTH6anWpjJcChQxSs3XRxSOmJAF5Iy3bF70+gfBHDR6IUY3YEBarnDbupQEpJ66DlSp+R8k0uh+WQTHW3581Z+yH+lVIj58lcks5MSDTL3I6Z084Qmpk5J432RH2+zgHhRinJbQeRF18BGVOkiSk9kQlbn7K/FyV+4Ojr3AhTvYL3Ro5BE7fuRHrnKhQWFuWZjbIXOwMR/Jq40UEHaTEtaEpZ9UWwWgj0zsKm3CXlatVblHsmCB2w8rmjxZ3HGBa2HzE/R/8zBa7b79X2owhouTXv5TMMgPKCdc69F70JZLRcWlruo1BOT6+Vonb3KVFKFUi0MazB8s7yke8CDbZbFCU6Fa1bnX7Xerg1Kfo4ucTu6R3r8kqiO2PfOEtYEyR1C0w8ldQ+mzm8RWSuHjqdjFU8w9I+kW15aPjDpzIy8uc+bGXlz3fsm8uIlHo0k3yfsNjaXOBiReBvh0ymLfgO2CxjK3Qknp952UO9dM+vWY/UqmURNYp8HCZ6LMbYg4+v5Emb84bHOgxMl4HaiPT8N7QD6wAVy35jTJCpbRQ5YVh8M8/wWWbOjY",
-      position = {0, 0},
+      string = "0eNqll+2OoyAUhu+F3zgREKu9laZprD12SSwYxJntNt77gk5td0a3nl3/GEWe88HhvHIjx7qDxirtyPZGVGl0S7a7G2nVWRd1eOeuDZAtUQ4uhBJdXMKTs4VuG2NddITakZ4SpU/wk2xZT19Obp3REFWd1UUJT3N5v6cEtFNOwejF8HA96O5yBOvhEwJqKJ1VZQQa7Pkaef/BVgFHSWNaTzA62PfUiPtp10Cn5KSsnzeMZZQcu6oCe2jVL49k8XSFEL5Y5g/nL0VdR5P9xtRzNln+Jkerb7Kf4YmlTH5HCfaJ2njUHyEkM+AEAY4xYDmBO79a9myNvy+heb6IplNN6KYLlfPNUoqylLy2ZDq3YGqzPlucY7KVIcACA84RYFThsBhBRlUOY+vJLEeROYKcociPDap0C9Z3lznmZonJ+Bz0sTlrU5xmkdOmzPsV9cvkv/albL4vsXShS8+g0hE0i9k8pa9S2o9F5Q9o/9qGWDxk8T7h0IJzSp/b8KGFi3mHQ+fHar8WcDoESfFDVVG3QMn4ehSNu2FrdGRscL30HcTrm/QlfjGnMFi4qIZi8GcSrv1sJI+d/GH8XL0Yx1RgQxxzqHw1Kn2B4jGqPD8z+6o+OVu/+PkIFrPecZx3Yp13CM18JFCs2e08wW4jeecv6DuXCGcTnLMpAi1xaIQeMo5DIxSRCRwaoYksRqEFQhQZw6EZ5jcnX2a//qESHGMqWWFqWZGEWKFx/xFKsl5YvqwHTlec7aAP55EP71/QlR2nknq9lXu6Czfqm4bc+w+Gs8326RxFybuXosERnrEkEzJN00TKTd73vwFllmBS",
+      position = {0, -3},
     }
 
     local furnaces = game.surfaces[1].find_entities_filtered{name = "stone-furnace"}
-    global.furnace_1 = furnaces[2]
-    global.furnace_2 = furnaces[1]
+    storage.furnace_1 = furnaces[2]
+    storage.furnace_2 = furnaces[1]
     local chests = game.surfaces[1].find_entities_filtered{name = "wooden-chest"}
-    global.chest_1 = chests[1]
-    global.chest_2 = chests[2]
+    storage.chest_1 = chests[1]
+    storage.chest_2 = chests[2]
     script.on_nth_tick(600, function()
-      global.furnace_1.clear_items_inside()
-      global.furnace_1.insert("coal")
-      global.furnace_2.insert("coal")
-      global.furnace_2.insert("iron-ore")
-      global.chest_1.insert("iron-gear-wheel")
-      global.chest_2.clear_items_inside()
+      storage.furnace_1.clear_items_inside()
+      storage.furnace_1.insert("coal")
+      storage.furnace_2.insert("coal")
+      storage.furnace_2.insert("iron-ore")
+      storage.chest_1.insert("iron-gear-wheel")
+      storage.chest_2.clear_items_inside()
     end)
   ]]
 }
@@ -900,28 +1116,30 @@ simulations.long_inserters =
   init_update_count = 350,
   init =
   [[
+    game.simulation.camera_position = {0, 0.5}
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqlVutyoyAUfhd+646QqNFX6XQcoseUGQIOYLvZTN59j9raNNEGWn+pyHc5Fzxnspc9dEYoR8ozEbVWlpRPZ2LFQXE5vHOnDkhJhIMjiYjix+HJGa5sp42L9yAduUREqAb+kpJeooebQULtjKhjUGAOpxjJwbS8hiscdnmOCCgnnIBJ0fhwqlR/3INBohnO9nvruBNaIUWnrRhvkRxhkoicSBlnl0HWDQLzEHQHyD4AI7Lv2xZMZcU/xKDJfC1QbWYqoVqhcCmuX8C6e/yYJn/SiQNvxnhMGyoLzgl1sMOHBo76Faoe1yRKhaYaIoxLLZcWIjK9nuL2TlzrrgMTd5K7wVat+yHlKDsiR90MX3AXS+CjqDmZz0uB285u3jRuVate2LWVBaB0BpJaHeIXjrQNRt+CQfkLgDexaYTBxI3r2QJ85qmTPpCZzzgthieWmjeL6ubU0a/aMF7vfaB71/VDu9xx7D7L2WkF8RuXconig2FZaeGFknwPQpO1Nv/GMrtNCFtCpgHINAj5s5l7LCJzMFjfzRp2sQo9Z0qolUTRjb+HbZCFbYiF9LGF9WKjqb8HFuQh8wfeBAHnYf2xWSnt3U9PHOZz4NAiTCVbVsmSoDZe8cr8my2o1RgLUrfm0b+NggqFbb1xgyqbpQHdmf7ifGH+LRR0vLA8wEDxm9OF7fz+l8Pf4KdBKrwHKvo1zWHjlDM9XIZJdBxgy6thOSKvOGBNend0mxcsp1meFxmOmv8BO++5HA==",
-      position = {0,-2},
+      string = "0eNqll9GOqjAQht+l12VjC0XxVYwxCKPbBFtSyno8hnc/g3rQXcsus3phAi3f/DPTmbZntq1aqJ02ni3PTBfWNGy5OrNG701e9e/8qQa2ZNrDgXFm8kP/5F1umto6H22h8qzjTJsS/rCl6NacgfHaa7iSLg+njWkPW3A4YWA0h7yqIqig8E4XUW0rQAO1bfBba3rTyIvE4k1xdmLL+E11HX/iyYE3kMCA258i9AncLi+C1PTClCh82+524DaN/osQMRt+AVvxYEubnTY4FBXv0PiAgXh2k52hbD7M3zTgvTb7pp/n4GA/YNPiWIVSodz0QcahXV41wNn19TWKN7uFrWtwUV3lvnersG2fOFTN2cGW/YzcRxXkF033lIQCl/w2EYtwItTAO1qUYkZDI7KH0ARA6QCqrNlH7zm6UWI2G3AYjhBw/inWpXboyWVcyAB/Plmo+l7o4kFoXgalDctAiM/K8NtbYdnW121fQk/87J4hbw1ER0zTd4kRIqxTzCaC0p9AYqwBBDwX/2Hya1aSEFoS0DMa+l62LS4lt3dYNeUYXGbj8CFn2oykTCQkW8kEW+PrQ6jpMZOSFrOUgI5p6DkBTVxECwKauIjIxTi2X82oIDkCIhSjyEjOSvnrFvxsINiDZUxtSWPhTKigsXAq6n6ofpJGqCGR0BJEqKG7zmloQg0JWlORGQFNayrxjICmVX5MqTNav4olZbd4aWOKSZvga/tSnEw4GL3gipp+DP+SD9ox3LsWuv4+c0R9/TF8JbjiCVdrvsJ/ji1DrXH4cjVaPtykOPvAc/tFhlyIZBGrNE0TpeZZ1/0D1DZdaw==",
+      position = {0,-3},
     }
 
     local chests = game.surfaces[1].find_entities_filtered{name = "wooden-chest"}
-    global.chest_1 = chests[1]
-    global.chest_2 = chests[2]
+    storage.chest_1 = chests[1]
+    storage.chest_2 = chests[2]
     script.on_nth_tick(600, function()
-      global.chest_1.insert("iron-gear-wheel")
-      global.chest_2.clear_items_inside()
+      storage.chest_1.insert("iron-gear-wheel")
+      storage.chest_2.clear_items_inside()
     end)
   ]]
 }
 
-simulations.boiler =
+simulations.steam_power =
 {
   init_update_count = 100,
   init =
   [[
-
+    game.simulation.camera_position = {0, 0.5}
 
     for x = -8, -7, 1 do
       for y = -3, -1 do
@@ -931,8 +1149,8 @@ simulations.boiler =
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqVlN1ugzAMhd/F11ARfguvMk0VUMMiQYiSsI5VvPsCtJSKVOm4SuzkyzkW9hWKpkcuKFOQXYGWHZOQfVxB0prlzRRTA0fIgCpswQGWt9NOKsxbF1lNGcLoAGVn/IGMjJ8OIFNUUVw482Y4sb4tUOgDG0LH0L3kTaOpvJP6Ssem9zTGJcEhcmDQq/QQjaOz4/hvcayYYMVgg6UStNSeUNSDqwuCospLNKjzF2asfZ+p0PfmXDgdvKA4cdGd+1vQuwd7mdf6HeI9PgeKvqp0TtLf55RBafgw3BdS5TN+J827KzMQopXQVZX86gS6vG+5wV90rxrRVXvyGBu48crllJvKFW5xBkBiAwQWwNEG8C2A9G2AZwYQbyUUHW106NVfsyupb8IRmyDvJuiFIeKbO3UHCjYcu6zAIsumKvxn95NX5Y7+1/4LR4+meYhlm5nnwDcKuTg+kjBJ/YTESZIm4Tj+AWXcon0=",
-      position = {0,0}
+      string = "0eNqV1O9ugyAQAPB3uc/YFBT/vUrTLLa9diQIBLSbMb770DbOGVa3j4fcjzv07OEkWzRWqAbKHsRZKwfloQcnbqqS41rTGYQSRIM1EFBVPUauwaqOUN2EQhgICHXBTyjpQDZTbXWp7CKHDUcCqBrRCHycPQXdm2rrE1qPrlIJGO38bq3GM7wQxTtOoIMy2/FhrGAFsBnQ16t71xYj09YmADH2lHIvEbgIi+fHc8oCcDzDRvhOAx5deAEg2QT2rwG+BdDiCRRhIP0z8EsF2fc3UVdSRij9lVlxjoyWQY++Lij/p5e85oqZO2kh0QY7nICxsJ/vPAl4dL95YdmzogkMEXSTSLcIFp7EABUvqVV7fvA+fDxO3SEjnOSEH/3aNK/l4s9A4I7WTUksp0ke8zRNE86zYhi+AJb1W1w=",
+      position = {4, -1}
     }
     local boiler = game.surfaces[1].find_entities_filtered{name = "boiler"}[1]
     boiler.insert("solid-fuel")
@@ -945,21 +1163,30 @@ simulations.insertion_limits =
   init_update_count = 150,
   init =
   [[
+    game.simulation.camera_position = {0, 0.5}
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNrFmd2yojAMx9+l13CGlhbEV9nZcVCipzNQmFLOrnvGd9+C5/ixWyTxRu8U+CVN+k9C/WTbeoDOauPY+pPpXWt6tv7xyXp9MGU9/uaOHbA10w4aFjFTNuM3Z0vTd6118RZqx04R06aC32zNT9Hiw9tW12BvHhKnnxED47TTcDY/fTluzNBs/Z1rfnkWatg5q3cxGLCHY+wdB7svd+DxXdt7QmtGw56aROzI1jFPvKFKW//cdE1GbDvs92A3vf7jkTy5fEbf/7EsLpa12WvjL8Wd7gLWYvmmzgZXb2pa2vn2TQ/OaXPox/u+UL2DcoxHB3bn7ZUHmLz1QfK/lG6wo1ue1rTVeHvp4qbtfZQD/qVo//hL/JMX//ph27ty8mguVasQQWFX+JoFZlj3XrM/8ot7o1exa+ODbQdTPdrAuXcwgFrhUXwBVaBRSySeoFFL6+NPVZmYizNV3JcZQSozXDyRJzFtpNvSFiKnT6QNR5b0LOLAip5THPgq1gYqPTTxJdFdWweTq74N8JlNcxWYVy3U8e4dvBQfkZIZ0lVfdWsO8Xvpm2Plt14P1u++EDK9Rd6tPgsZKObadwDNZ9GhwIoE34aSe/KjOvir/Fr4TR3kD+tgDeVMIRQcr4OCFFdB0G42SxYhcvrvzPSgGvDgquUygT8mqEXCAiBbBCysAd/DMlri8B2toOWtQM8sL1JDmpCLzXf9mimEKX+iunBMNFPxBBlVttKUQE5IPks8eUUCKzy4IIEzPDgjgXM8OCeBV3iwIoGv8t17AT1ShaRsN5ngHZYUhyVBe4IEJkgvJYFTdIhJipYE3ZEELQm6I1U3mWEjQQsEXnU0d/Gio8UXP5ySNprCa46kDMWxaSOVCIUXHKmkKXynI1UehdcbqbYrvNxIzUjhuxypeyq83EjtXt2+FJZVsCzwGVx0OX013TCe0f5PD8ypM++v/F4dwTnVQtN+wGbw12ovBag247mvv+TsAMGzM0JD5N/7MsXELaNMo4pEpkyjgkSmTKMpiSyfmKBFeM7P1BOs0cvxjH/6H2B9859DxD7A9mfHV1zmhch5ludFlp9OfwHsVwl5",
-      position = {-2,-3}
+      string = "0eNrFmd1yqyAUhd+Fa+0IiDF5lU4nYyJJmfFvENvT08m7H0h7NO1BZeXiNDfx92Nt2Qu2+E4O1SA7rRpDdu9EHdumJ7vHd9Krc1NU7ph56yTZEWVkTSLSFLXbM7po+q7VJj7IypBLRFRTyl9kRy/R6s2HVlVS39zELk8RkY1RRsmP5q87b/tmqA/2yh0d7+1UJ2PTxmfdDk1pmV3b29vaxrVmUTGjDyIib2THH8TFifmGYiNKNSfV2FOxYy6RmCVF4+X7XhqjmnPvrvtE9UYWLsBO6qNtrzjbg0lEbNT2SGEGbfephdVt6S4vTFy3vX1sHn08PFSaL4eaBoc6kv5rqAIIVSyHmoWHKn4i1A0QKlsONQ8Plf1EqNtRn6zk0Wh1jGUj9fkttoOM1Kfi6NPK6VXp1uoslbb3Xc/ZDD4Mp5PU+179dhKS8edpmSZ3DBP59dnctJn7yPQOV4aR2R0mCCPzO3IujDwNLDZvZBUfn6VNBk+n8k8sTfy5TKchoJalGup4zJmurbx58lcppTPIaSio2uYcPxd2jilt7vVS2/Tzpt6tyi/RU+ZrATAzT0B2PjfFelJ4O8v29tr2HjQNQbME7UaWrXQjQ6Z8PvsgUh+awWqTNbWT105Fb5aybRx4Ah9t+r1sWkImXnEiWNw4dgWKy9bFTUi/uA3aGTRd64w8PF6BxbsNiFcsxsuTcHEMEsdpgDi2LA6ZjMCRjXO0o/OVfubh9W36VetSJfRafPbGTSVEFyuhShZztTxQ4QpoDOMZPHGuPc0NPG+OSDaDRCaz/Ba2Hv9dk1kQOk3uQc+9glEAtsF0MgCdYWgOoAWGTgF0iqEFgOYYOgPQDENvADTF0Ij/EgwN+I9i/hOA/yg2agjAjRRzowDcSDE3CsCNFLOMANxIMaMLwI0Us4wA3EgxowvAjRSzjADcSDGjC8CNmGMywIyYzTPAi5hfMsCKmMkzflMjFaW3KprlReNieNMNbsn8X7ynoJ1dWvkq3FvRalm3L3I/2HOVLeFkuXfr8PaU0YP0rqICnp2qvzTo0QGendZ4wtCAZ6e1njA04NlpqScMfVcF69DuY8mrhbsvJY/2VURELInEU/To/iLGPraZ2958bNu/yL5/uW33F9m3B/FkKdfPMrubT0AReZG6v7bMcprmXGRZlgqx2V4ufwCmSngp",
+      position = {-2, -2}
     }
-    global.chest = game.surfaces[1].find_entities_filtered{name = "steel-chest"}[1]
-    script.on_nth_tick(2000, function() global.chest.insert("coal") for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "boiler"}) do v.clear_items_inside() end end)
+    storage.chest = game.surfaces[1].find_entities_filtered{name = "steel-chest"}[1]
+    script.on_nth_tick(2000, function() storage.chest.insert("coal") for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "boiler"}) do v.clear_items_inside() end end)
   ]]
 }
 
 simulations.low_power =
 {
-  init_update_count = 300,
   init =
   [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+	  player.teleport({-9, 5.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+
+    game.forces.player.recipes["iron-stick"].enabled = true
     for x = -5.5, -3.5, 1 do
       for y = 0.5, 2.5, 1 do
         game.surfaces[1].create_entity{name = "iron-ore", amount = 500, position = {x, y}}
@@ -967,9 +1194,37 @@ simulations.low_power =
     end
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqVlu9ugyAUxd+Fz7IU5p/qqyxLg3rbkiEYwGVN47sPambdiit+U9HfPR7vuXhFtRig11xaVF0Rb5Q0qHq7IsNPkgl/zV56QBXiFjqUIMk6f2aUYBr3TIJAY4K4bOELVWRMnj4JAhqreYM7Lrk84VZzsWTQ8T1BIC23HCYpt5PLQQ5dDdoVCYpIUK+Me0ZJX9lxcPqSJejiDshLNnphfzj0UdJx0JI18AjbPWG9ziyrmTS90hbXIOwjKfshUUdKUMu1q31bpgFuGs1NN3GzaG6xiZtHc/NN3GLmCsVad+WBR3ZruGTuQ9kPFgXo+2jV+02qy5nL5dF1u73g5gwmwCXkN/jn/oMBa11KjL9PQ6c+4TC4NWFBQ3vwyXJLVg8Q6krvyWybi9qZuYi1mEsD2oZMnJto9/f10hCePAn1eiZJjH3knlDTMSHwXKVXIhBS792NPqmXwE/nWg3aTxFSvocqxOd2hsdJjw8u3i3AIVS26KK1DzdD4j5cfEwx2fTaRTR4lRsUvI/wgCwsCDHKbd30+k8z0VAz0XvamDHQ1cInoWPNmUvAdD1tU+SdAXwaU1pJbCxvPkKzipLNFkfNKnoP25EZ+8+QoGvY3O/ct82+WvxVJOgTtJnq7klalLQgeVGUeTGO34UiyZk=",
-      position = {3,0}
+      string = "0eNqdltGSoyAQRf+FZ5kKKGr8lampFNHOhFpEC3BmUyn/fSGzMW5CouyjoKcv3X1bzmgvB+i1UBZVZyTqThlUvZ+REZ+KS79mTz2gCgkLLUqQ4q1/Mp3kGvdcgURjgoRq4DeqyJgsfgkSaqtFjVuhhPrEjRZyzqDjR4JAWWEF/Ei5PJx2amj3oF2QCWU1V6bvtMV7kNaF6DvjPuuUD+5QmNA3lqATqoo35iI0QrvYl/3MK70D0wjwJgacRoBJDDhbDy5juGw9dxvDzddzixhusZ6bx3DLiSs73riVR94zWjJ1v+oHiwLw7QQX6uC8YE+4PoIJiU7/EX19fWfAWmch41/T0HZfsBvcnrSgodl527ktqwcYA+HJJmjmx+D02pKuhYIg8ujtw6AVryHU4PkCjc5y7sbDkbux0GChDGgbrMBk8u19EcoQP12YRC8S4M253DTk5krTcinxFKfvZDAlVw/5qRLMSYQfb7B1YiMsSco4dDFr8OfVK+aHXy5fGaG3mOsNwbarFLKF8tBNhCb2NIeh41IS20vpktibvw7c2JfGyq4seq+V0BA6/Z880FW/5punuDHQ7qU3bMvro1CA6aup8DeAw4ufeaw7hY0V9S/kbxrfLrC/Zrw727LE5Zt9uNXLlaWa3Y0S9AXaXPi0JFmZsjzPM8aK7Tj+AesVBKk=",
+      position = {4,0}
     }
+    pole = game.surfaces[1].find_entities_filtered{name = "small-electric-pole"}[1]
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(5)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = pole.position, speed = 0.1}) end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = pole end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = player.position, speed = 0.1}) end
+        },
+        {
+          condition = story_elapsed_check(5),
+          action = function()
+            player.opened = nil
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -977,10 +1232,11 @@ simulations.electric_pole_connections =
 {
   init =
   [[
-    player = game.create_test_player{name = "big K"}
+    player = game.simulation.create_test_player{name = "big K"}
     player.character.teleport{-2, 2.5}
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player = player
+    game.simulation.camera_player_cursor_position = player.position
 
     game.surfaces[1].create_entity{name = "small-electric-pole", position = {-6.5, 0.5}, force = "player"}
     local right_pole = game.surfaces[1].create_entity{name = "small-electric-pole", position = {7.5, 0.5}, force = "player"}
@@ -988,7 +1244,7 @@ simulations.electric_pole_connections =
     step_1 = function()
       player.cursor_stack.set_stack({name = "small-electric-pole", count = 50})
       script.on_nth_tick(1, function()
-        if game.move_cursor({position = {0.5, 0.5}, speed = 0.1}) then
+        if game.simulation.move_cursor({position = {0.5, 0.5}, speed = 0.1}) then
           step_2()
         end
       end)
@@ -999,7 +1255,7 @@ simulations.electric_pole_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        player.build_from_cursor{position = game.camera_player_cursor_position}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position}
         player.clear_cursor()
         step_3()
       end)
@@ -1010,7 +1266,7 @@ simulations.electric_pole_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = player.position}) then
+        if game.simulation.move_cursor({position = player.position}) then
           step_4()
         end
       end)
@@ -1018,11 +1274,11 @@ simulations.electric_pole_connections =
 
     step_4 = function()
       local count = 30
-      player.cursor_stack.set_stack{name = "copper-cable", count = 100}
+      player.cursor_stack.set_stack{name = "copper-wire", count = 100}
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = {0.5, 0.5}}) then
+        if game.simulation.move_cursor({position = {0.5, 0.5}}) then
           player.drag_wire{position = {0.5, 0.5}}
           step_5()
         end
@@ -1031,7 +1287,7 @@ simulations.electric_pole_connections =
 
     step_5 = function()
       script.on_nth_tick(1, function()
-        if game.move_cursor({position = right_pole.position, speed = 0.15}) then
+        if game.simulation.move_cursor({position = right_pole.position, speed = 0.15}) then
           player.drag_wire{position = right_pole.position}
           step_6()
         end
@@ -1043,7 +1299,7 @@ simulations.electric_pole_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = {4, 1}}) then
+        if game.simulation.move_cursor({position = {4, 1}}) then
           step_7()
         end
       end)
@@ -1054,7 +1310,7 @@ simulations.electric_pole_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = {0.5, 0.5}}) then
+        if game.simulation.move_cursor({position = {0.5, 0.5}}) then
           player.drag_wire{position = {0.5, 0.5}}
           step_8()
         end
@@ -1063,7 +1319,7 @@ simulations.electric_pole_connections =
 
     step_8 = function()
       script.on_nth_tick(1, function()
-        if game.move_cursor({position = right_pole.position, speed = 0.15}) then
+        if game.simulation.move_cursor({position = right_pole.position, speed = 0.15}) then
           player.drag_wire{position = right_pole.position}
           step_9()
         end
@@ -1076,7 +1332,7 @@ simulations.electric_pole_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = player.position}) then
+        if game.simulation.move_cursor({position = player.position}) then
           reset()
         end
       end)
@@ -1113,10 +1369,11 @@ simulations.power_switch_connections =
 {
   init =
   [[
-    player = game.create_test_player{name = "big K"}
+    player = game.simulation.create_test_player{name = "big K"}
     player.character.teleport{0, 3.5}
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player = player
+    game.simulation.camera_player_cursor_position = player.position
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
@@ -1126,11 +1383,11 @@ simulations.power_switch_connections =
 
     step_4 = function()
       local count = 30
-      player.cursor_stack.set_stack{name = "copper-cable", count = 100}
+      player.cursor_stack.set_stack{name = "copper-wire", count = 100}
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = {-4.5, 0.5}}) then
+        if game.simulation.move_cursor({position = {-4.5, 0.5}}) then
           player.drag_wire{position = {-4.5, 0.5}}
           step_5()
         end
@@ -1139,7 +1396,7 @@ simulations.power_switch_connections =
 
     step_5 = function()
       script.on_nth_tick(1, function()
-        if game.move_cursor({position = {-0.5, 0.5}, speed = 0.15}) then
+        if game.simulation.move_cursor({position = {-0.5, 0.5}, speed = 0.15}) then
           player.drag_wire{position = {-0.5, 0.5}}
           step_6()
         end
@@ -1151,7 +1408,7 @@ simulations.power_switch_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = {0.5, 0.5}}) then
+        if game.simulation.move_cursor({position = {0.5, 0.5}}) then
           player.drag_wire{position = {0.5, 0.5}}
           step_7()
         end
@@ -1163,7 +1420,7 @@ simulations.power_switch_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = {4.5, 0.5}}) then
+        if game.simulation.move_cursor({position = {4.5, 0.5}}) then
           player.drag_wire{position = {4.5, 0.5}}
           step_9()
         end
@@ -1176,7 +1433,7 @@ simulations.power_switch_connections =
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
-        if game.move_cursor({position = player.position}) then
+        if game.simulation.move_cursor({position = player.position}) then
           reset()
         end
       end)
@@ -1190,8 +1447,9 @@ simulations.power_switch_connections =
         count = count - 1
         if count > 0 then return end
         player.clear_cursor()
-        local pole = game.surfaces[1].find_entity("power-switch", {0, 1})
-        pole.disconnect_neighbour()
+        local switch = game.surfaces[1].find_entity("power-switch", {0, 1})
+        switch.get_wire_connector(defines.wire_connector_id.power_switch_left_copper).disconnect_all()
+        switch.get_wire_connector(defines.wire_connector_id.power_switch_right_copper).disconnect_all()
         start()
       end)
     end
@@ -1214,25 +1472,146 @@ simulations.splitters =
   init_update_count = 800,
   init =
   [[
-    game.surfaces[1].create_entities_from_blueprint_string
-    {
-      string = "0eNqtmdtuozAQht/F11CBsbGdV1lVESFuaokAMqa7VZV3X5NsSNuQ7swkl+HwzYEZz2/ng22a0fbetYGtPpiru3Zgq18fbHC7tmqma+G9t2zFXLB7lrC22k+/gq/aoe98SDe2CeyQMNdu7R+2yg/PCbNtcMHZE+n4433djvuN9fGBmeHaF9fGW2n9aocQ2X03xNe6drIaUWmunmTC3uM7/EkeTZxeWA82BNfuhulBb/fdm12P8V4TrLfb9eRpvBX8aBN2unry5GzXd226s5VPf79a20TDdTdO8edZlrB9t50eqkLa2Oro1iWywyG5iofP8bzEx9Omq7bx8kIw5edQts7b+nQ7Av6luBtDP07JvDJS3Er8gh1xTlpxZWmBLL66j8BfBSIW8HLGjzGLfudjprc32cVt1+ckufZGjkqUqQxg6vb3UPDvYVCfQ8PBGgU2cLBCgfMMTi5x5BxOxhV9zuFkiSNfOnXoGxfC4lrAz0wBIAq4rwXOVwknZzhyiVivcGR45yHB8M5D5sIg1iV+zwLIM4Qlddf6xy+teWvgmTsC4WCN8H0dx0uExZleUESKeKRIsU1MWBQqrk5r5+vRhYtO4SSdIpBCRfy3ML46fjaf/BBCdG3BM0nWIJOPS0TK+iMheoYrAlmAyBpRc7OoKAk191I1w3LR1V3fW5/W1aax95abgZab/hwJVhdn2NKZJYiCLN5FTuaXkI9efNs9/KAZ8lmIaIDfpA2DWu6mQlBgJSi/xP1BSZgqBXGDQCtMyg4BljLKFgFGNgQlryBlLjLC7gPks8gJPoNaU3CCOob5XBBmCIws8OoYBpZ4dQwDlxR1TGl/oSjqmNT8QkPVMSkQQ1DH5QPVscwoSkU/VKkcz/D6pgr2zuM7mSN1iqZUhORkHaGXh7IkTXgD6UlJmvcadBxInPeG0CeSOO8N6QNT5j3sa1DmPYxMORMEkUvKmSCMTJn3GkTmhNNGmM+gM8FZ3hsAEdGhHOerJJw2wsglQU/ByJQ9OYys8XoKBjZ4PQUCq4yipyjLq8opeoq0uCoO1VOkQAqCnjJkPfWcnP5KXX365zVhb1HfnBzWuVCGq7xUyujicPgLq2m7fQ==",
-      position = {-1, 0}
-    }
-  ]]
-}
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({0, 0.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
-simulations.splitter_filters =
-{
-  init_update_count = 800,
-  init =
-  [[
+    local technology = "electronics"
+    local technologies = prototypes.technology
+    for name, prerequisite in pairs (technologies[technology].prerequisites) do
+      game.forces.player.technologies[name].researched = true
+    end
+    game.forces.player.technologies[technology].researched = true
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNrNWttuozAQ/Rc/Q+Url/zKqooocbtIBBCY7lZV/n1N6JZ242Rnxn3oWwLkHM9wZjhj8soe2tkOY9M5tntlTd13E9v9eGVT89RV7XLMvQyW7Vjj7JElrKuOyzc3Vt009KNLH2zr2ClhTXewv9lOnO4TZjvXuMauSOcvL/tuPj7Y0V/wjtF0j03nT6X1Tzs5jz30k/9Z3y2sHioV0tyZhL34j1l+Z84k60/2k3Wu6Z6m5dLRHvtnu5/9udbZ0R72y1r9KTfONmHr0XUtf5nHvkufbDWmv35a23rqup+XDAjOE3bsD8tFlUtbW50XtsV2OiUXEcn3iB795WnbVwd/OBSO/hTMoRltvV7gId7S3M9umJeEXtCozzT/3IEQnXzPXnZBGCDQEQQXEekAgUETiOsRhAgymrb0V2rLtn6FXl9NndbNWM+N2+QlKfLK0fLSFHkVtNyZb527Ep07Q8md4BGloyHKFiKCYYkphPlP45qGtnHuSn74hvb/TiJURKUbSK8SOoJBgxi2bjV7jY1Po9fh4Sq8KG/Av0uo6a4pKMOxZRC2G4LNrz3JQ2QGmbkCA66R4CUGXOHAJceASyS4wIAj1SolBpwjwbdyvtUjeLHBXkhy7fbXevyq1L33of3omf1lrX0MKldqRKC8RAZqMOAZEjzDgOdIcExBc2TNSUxBc2S3kCWq83EV1WcVx7CVRVybVVvJX7UeZR4TjoS7tjLe8IZchFI04yi/70CnNNo2SpI8TISpU5DiUlkEgwzbRpVHWC91BbOg9UYJ8c6qpIErCLjmaK0IilY0cd9EEMrssWqncJ3V/TDYMa2rh9ZGjmZaRkiTg/YzYnZMBOjma8QEtRUBB6wd40Q+DGc8XF86o8EJUJ5z6qQkCI88XVAnJVrdlbRJCZQ5w2mTEgxc0IYZDtrKk7QxDLZyRVs5qGaNpnl82MoN7VEDA89oHh8GntM8Pgy8oHp8SocwJdHjkxpExhEenxJOJkgeX3yhx8/QrzhMScolbZZ4I/sqk3MeJoa2cjZyjsgi3qicYwph0oyBKSB1mtFswuXNDr6codqEwNoBVUO1CbfYbiiXZhNgtyWn2QQguCA9yYHgkvQkB4LTbEKgNYXANWjPc9unNeWFas7ihGxq5oa0ewtME8o2FEjwnLQdCwQvSFYNCE7bFYCBF5xk1YDggmTVgOCSaNVIXbpQNKtGa9KFhls1WjiGYtXeqChW7T5Z/5ez+/A3noQ9e0OzLrkQOi9lLrI8Lwt1Ov0BCV2ymA==",
-      position = {-1, -1}
+      string = "0eNqtme2OqjAQQN+lv2FDv6D4KpuNQey6TRAIlL13s/Hdb9Go11jWmXF/KnjambbT0/rNNs1k+8G1nq2+mau7dmSr1282ul1bNfN3/qu3bMWct3uWsLbaz5/8ULVj3w0+3djGs0PCXLu1f9mKH94SZlvvvLMn0vHD17qd9hs7hBcuDNe+uzY8SusPO/rA7rsx/Kxr51YDKpXyRSfsi63yF31s4fT+erTeu3Y3zu8Ndt992vUUnjXeDna7njsaHvlhsgk7fXvqyLnZoWvTna2G9M+HtU1ot+6mOXyeZQnbd9v5pcqnja2OvboGdjgkd+GIpZREwsluwtm6wdan5yYClhdw01Xb8E0EKOI4lZwHrZt8P83Dc4dXhH4Xdw1FwPoCnkLiht0QkrtdQotyEX2JwbULIeSoltTjlpazVcCzJSQmWwYBFhhwiQBzDJhnCDJq5nAOJ/MSRUasUm5QZIkgFygyYoXyHEXWCLJCkXMEGbVOOGIFctRC4YglyHHzGbEGOWoNigxT+p6psYJjWnqqxgoB2PHogUi4d9yOBV47op6gCN5jftN7bBPSFdzH1Wnthnpy/qo+gqQ+muAQc0gxVg7WHfNwct2Gfw4i+SERIcBIn641Z+wb5320V1yfIwOsW0OovAZii6IkkEuQh2aIiXvOxVwo0TP3vWrG+NStu763Q1pXm8Y+OWnldR68h/fTxzP3vJvMJfrxEEvMgUDcpuvRSECOBGoBCKnAknIoOKYlBqNUh0i/Y+icdMb4KSmL+4YsSKcM4gAYwjkDmLOScNKAoVVGOGsA0Zxw2ACiBeG0cV8DYgtVSQoaVAOUItR5YEI0QbGBaMq5AIguCPoORBuCvwPRJUXgSQVMZxSDp9UvzaEKTwtF4B2eZCJLEq8lxYXEr7rQ8fqybypvn7y51IpiKiK+22sNdxNBmlr5rbf9YOTyMvYCcF1ZUDRFgm5CDQUtINuALmkGJCnXrBnNgCRlmHNOMSDQcOSCYkAwtKQYEAytKAYEQ2uKpsDQOQUtQGjYqdxc+gtAGsIlLjARJeEWF4YuENp9uaQAojnFMmFoQbFMGFpSLBOGVhTLhKE1xTJh6JxkmZRNoihIlknaIwoDtkxSKCXBMiXZMt+S01/rq//+iU/YZ7C+YzvCcGWkzvNcaV2Uh8M/6JlhIQ==",
+      position = {-2, 0}
     }
-    game.camera_alt_info = true
+
+    splitter1 = game.surfaces[1].find_entities_filtered{name = "splitter"}[1]
+    splitter2 = game.surfaces[1].find_entities_filtered{name = "splitter"}[2]
+    first_simulation = true
+    saved_position = player.position
+
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(13),
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          name = "continue",
+          condition = story_elapsed_check(3),
+        },
+        { condition = function() return game.simulation.move_cursor({position = splitter1.position}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = splitter1 end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-splitter.input-priority"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() player.opened = nil end
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        { condition = function() return game.simulation.move_cursor({position = splitter2.position}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = splitter2 end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function()
+            saved_position = game.simulation.get_widget_position({type = "choose-button"})
+            return game.simulation.move_cursor({position = saved_position, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            game.simulation.mouse_click()
+            if first_simulation == false then story_jump_to(storage.story, "setElectronicCircuit") end
+          end
+        },
+
+        { condition = function() return game.simulation.move_cursor({position = {saved_position.x, saved_position.y - 1}}) end },
+
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "item-group-tab", data = "intermediate-products"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_down() end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_up() end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          name = "setElectronicCircuit",
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "simple-item-slot", data = "electronic-circuit"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = story_elapsed_check(0.75),
+          action = function()
+            game.simulation.control_press{control = "confirm-gui", notify = false}
+          end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() player.opened = nil end
+        },
+
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(3),
+          action = function()
+            splitter1.splitter_filter = nil
+            splitter1.splitter_input_priority = "none"
+            splitter2.splitter_filter = nil
+            splitter2.splitter_output_priority = "none"
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            player.clear_cursor()
+            first_simulation = false
+            story_jump_to(storage.story, "continue")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
+
   ]]
 }
 
@@ -1241,23 +1620,12 @@ simulations.belt_lanes =
   init_update_count = 850,
   init =
   [[
-    game.surfaces[1].create_entities_from_blueprint_string
-    {
-      string = "0eNqtl9uOmzAQht/F17ACm1PyKlUVERhSS8RGPqyaRnn3GtgQKuxdm22uAoZv/hnPj+07OvcaBkGZQsc7og1nEh1/3JGkF1b34z11GwAdEVVwRRFi9XW8UqJmcuBCxWfoFXpEiLIWfqNj+vgZIWCKKgozabq4nZi+nkGYBxYGZR1lZihufoFUhj1waV7jbIxqUHH+lkfoZv5Ub/kUYX7+JEEpyi5yfE7Alb/DSZuxXoGA9jQKNUNd3UuI0Hx7VvKMKziLuQATseF6TDxPInTl7ThYq7iHepLzyujxiDZ54CWPntetufOJ/tKob6mAZh7NomdRuVaDHsu3wZMFD715T9AmBgbicovNVIHo6ga2ERNXuLPuOhAnSf8YYposP0vgbAks9VmqemJsIuFnJAshXwjaVFBchClyO/fJJzXKpzm2VokyR5GKXZGwO5J7PkpX628CZe44Fm7lzX0lkPqADzvAiQ84TfzJyVqyjZXuYCUO1suRcuipUlZPph+U5N9EsQ1IVp8qCcIKTJyTUtiQK3cpziDutGBWK38YLLVmmnsII2HCivD+9uuWHcbx6u90h3NcXRjglafITfK2DsJJuEY/cIBvcBAY+4NJEJiEO92rD3AWDvbqXJwH2N/LZLgIcz+27jvKAPP7yaqCLeo3M4dgrtfEkGTPsj+vxl/vu3asSF4LPcEBqjMn+etNESH+O9PKqyTZnnoX63q7xeZfis1WWgMrUewoebFnd0jK8FPN4b8eahpuTmvfOtCQyjuH7BspKKHhMR4SpwPlcXX+jNC7SWpeQao0Kw+4TIuyPBRm0f4LmOvRmQ==",
-      position = {-1, 0}
-    }
-  ]]
-}
+    game.simulation.camera_position = {0, 0.5}
 
-simulations.underground_belt =
-{
-  init_update_count = 800,
-  init =
-  [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqtmt1ymzAQhd9F1ziD/pDwq3QyHmyrKVMMHhBpMxm/e8FuHbdBzZ6N72Ign1ar3dVZ0KvYNmM49nUbxfpV1LuuHcT6y6sY6qe2auZr8eUYxFrUMRxEJtrqMP+KfdUOx66Pq21oojhlom734adYy9NjJkIb61iHC+n842XTjodt6KcHrowhdm1Y/aiaZuIeu2H6l66dR5wwK/1gM/Ey/SEf7OmUvcMoEJMvYzQJYz8wxmCUhC32Sqnbr3U73VrtvoUhLkxL/pnXbFB2fX4zhBjr9mmYn+vDoXsOm3G618TQh/1mXsLpVuzHkInL1csS3Ro/jbbrxjkcbJ6JQ7ef71Rx1YTqbMrbOi/NobjOoemq/XRlwXZ1Y/m+7sPucne6/DvUujEexzmo3uFdKgAXhsn/ctHtQAtgTwd7hFvSuSXClTkdXEBgSQc7CPyWseMUQv1TP0XZPoW2SfQ1Suo2ESRSY7UhkY7SYJhEbZCW7lAoZGWBOFR+7NB02kl63kloCvS0w1xDTzuFcFUOuFx/IoSVhHaU1B6pIEoiD5QGJu0+E2bKkJcNKpaKnoJQcVcFPS2g+FVAvkEJp/yH+/NcPblRW5IVjDSfFDCLYi5nKCh1TwMkWf4oToJoxdA/ihIYWuMCiAY2uAKigS2ugGjgAldANLDjKCDFSETtMemiE81RiWFUojvKcQVEcqiRHAXEyjyjYAVEm4KGFRCNa2AFRONahgLihLApIO2SiGDjIEoqgD1DAfHCrIQVEGnZbA4rIBpX4kKFBla4tKKBNVUBcaLWGlwB3VOAWEsWIObf6RWE6RUMgWXuOT/HMMDe0wBPdrDlOLhkCLz3K7n0Yi5nkC2JLHHpSDNZ4dKRBtY4mOYKg7uCBmaIXZorGGKXBnY4mOYKj7uCBi458vw/ZfQ/r7FzzlCWNRT4vcUuSyAHfm8xCYzGWwFSuDnDaQU4e6CznJE4m4ErcGeRIt3hr3Npi4C/zqVxS5hL8oPPYT/QuJLRJLEKiVdwm0fyuNcwl+YZw/AMq+55C3V+ibLnsS40UfW8Y/SPnNrkOY0qpzR5vE8lxV2J96k0roS5pHguFewHGlfjfTXNEQbvq2lgi4NprihwV9DAjvomgFWaS/KnFlZ9KxnfWszdD4ustn29+/52ZETmjDMj539C53LPpl7moEh2iU/9OaiSixQHO5aUNAc7l5S0xmKz8ikOtpmeMY/Z5eDZ+uacWiaep1i8vJLz0rhSOVk4VxbT878AW2S+Hw==",
-      position = {-1, 0}
+      string = "0eNqtWNGS4iAQ/BeeyVYgIUZ/xbKsGEePqggpQvbOs/z3m8Rd9VaiwK4vmkB6eprpCXgim6aH1khlyeJEZK1VRxbLE+nkXlXNcM8eWyALIi0cCCWqOgxX1lSqa7WxyQYaS86USLWFP2TBzitKQFlpJVyQxovjWvWHDRiccMWQaicVDiX1L+gsYre6w8e0GqIiVML5m6DkiL/SNzGGuDyw7sBaqfbdMNHAQb/DusexxoKB7XpgikO7qumAksvtC5XPwEarRBvAkLXuh8xFSslBb4fByiYNVCOfW0rnM31IhF8TaXS1xTtPEmDIfisN1JfRkn6qqnvb9oN+D/DZFb5HGmZvkOn2ovaTQHwUyhlKqolI+dSqPokze4jjABZRKRTTKUyrVfjnwIJymEWIU/oAlxHAcx/geYAUsztgBxRLI7DKCax743dgrNMxrJjSkHEX6M2EndUKkl1vVFWDC/kjUye3zItbFsYtj6hJr9JhIgLZq3bYzUfQ4EQj6wQUWveY4BsCzM6tbf4h7VfbbvrdDsy6k39hKKbrxxU5xmgs/ZpU7oKOsRpjE2UcYC/OgnjyALfxNAyaBVTMPAz6zoJtI+2Ed8orqAdkFtF2xgV7WeA8j4FOvaBFUIN75OvsIvzmyO5QNU1y9WWrG3efu2ftQpwFNTtfnmVET/Jcs3kMtNeaZWmguvMX4mYsEDB7BcijNlHD8p19dplZTG/kE1yjzMW9FkqEvuixSl04RYic7IucYfvqbBZTt35ylHFVUd5XxTTxeZxIZczOPU8jDoSc/eiBsNZ41P3WYTBnAadBnvpYM+f+wrBvCWNND86kstdJsf+SemaQFSW/cXgQfolvNUGx+YoVXQ5fFPumWOGM8V+Gxd2fEpS842KNiLxkeZmJoihyIWa4kf8Hg2RzNQ==",
+      position = {4, 0}
     }
   ]]
 }
@@ -1267,19 +1635,19 @@ simulations.move_between_labs =
   init_update_count = 800,
   init =
   [[
+    game.simulation.camera_position = {0, 0.5}
+
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNq1VtuOmzAQ/Rc/mwibSyC/Eq0iByapVTDINtumEf/eMXRJqnWWi9o8EIPtc87M2DNzJ+eqg1ZLZcnhTmTRKEMOxzsx8qpE5b7ZWwvkQKSFmlCiRO3eKnEmPSVSlfCTHFj/RgkoK62Ecfvwcjuprj6DxgXTRqkuUuFUUHwDYxGwbQxua5SjQqiAp7uEkhvu2SUDw7j+ZMBaqa7GrdNQN+9w6nCusqChPDl1OHURlQFKxs+jkg/BzVUaK4vAFBJUAUEriu9IXzSdM52HISV1U7qlwgYViEHcw76+p5+s4g93NKLELx5rnm0ppYZinI3ph1+bzradJR74aIK3WijTNtoGZ6i8Tot2L4gyD3C8QDf3wzG+QHiyItrhf4m26GxTC0f0L+OdTnZ1uE5fNWKVsyHhn0IyuVCqFx7cb2Lav2Z6HaxsojK1qKoAKtyt8aK0TQUetoj9YcuQzYOXr8Tj+6/xWLjhGmRLrgFjG5DzRch8rRPCGSdEKwFZNAMYrwRMZ/CStRbP4D3u2oQECm/CLcBSBfoiCh9qPMboU649d5cL6JORv8CdqOnnY95vSbuL8i7LtkCHi6Dzp5xrQNsXWf0lKOO+Ahf+VfC/St+hP46cLdHFspW6+Iwuls7pihbpilfqiud08TldyZYjwpccEb6tfLlMsrp+8W0FjGVbKhjPVvQbU1Xe0nBY3YE3avmCjmpiDmfcib30D5x2Dc0xownNafJGj/ikWFfc0P1RLAnDOHLjeBzHbpzgGCGGfv3w1N5T8o5d0kDJMxZnUZKmaZwk+7zvfwObKeep",
+      position = {0, 1}
+    }
 
     local science_1 = "automation-science-pack"
     local science_2 = "logistic-science-pack"
     local technology = "railway"
-
-    game.surfaces[1].create_entities_from_blueprint_string
-    {
-      string = "0eNq1VduOmzAQ/Rc/wwoTLoFfqSpkzECtgo18WTWN8u8dYJdmG7MhUZcnbM+cmTNzPD6TuncwaiEtKc9EcCUNKb+diRGdZP20Z08jkJIICwMJiGTDtOpZTS4BEbKBX6Skl+8BAWmFFbC4z4tTJd1Qg0aD1VHIVkg8CvkPMBYBR2XQTckpFEKFxUsakBP+ZC/pHGGxrwxYK2RnJjsNg3qFyuFZb0FDU03Z4VHLegMBWbaXTN4TVp0wVvDQcAGSQzgy/hPDc+Um6nEUBWRQzWTKbNgDm5P7y+9yCW5YxSurFs3DXrEGt28pHa8JNUIDX07R/624ytnRWeKJcVhjWM2kGZW2YQ29r3LZx8pdBUo8wMnO5Lcwsx3Jp/vbfviatjNn1cCmQP+z8dnKy7ja2Bnfw4m+MfJB5CsE9FhSjcoECbo7hXgVQbeMwy3i4R3wXxnVrm1BV0b8RkQarZ8n8HEN7JCj7jTWobkrqfRGUmv7hdzofvGEdKM90qXRUxzoNodtCVP6YeZtC3fK3Ocff+4f3XE/fO6e3HFPHu/BvhakjwPTXcDZ1cwwoK1/KG3lmvkg8z2Q9CHI4w7I+CHE4hlNx3evJT7M88tdXj30AXnFMbnMjiNN8iLOaZbnRYYa+gMBb6VK",
-      position = {-2, -2}
-    }
-
-    local items = game.item_prototypes
-    local technologies = game.technology_prototypes
+    local items = prototypes.item
+    local technologies = prototypes.technology
     if not (technologies[technology] and items[science_1] and items[science_2]) then
       technology = nil
       for k, tech in pairs (technologies) do
@@ -1326,137 +1694,93 @@ simulations.drag_building =
 {
   init =
   [[
-    global.player = game.create_test_player{name = "kovarex"}
-    global.character = global.player.character
-    global.character.teleport{0, 0.5}
-    game.camera_player = global.player
-    game.camera_player_cursor_position = {0, 0}
+    require("__core__/lualib/story")
+    storage.player = game.simulation.create_test_player{name = "kovarex"}
+    storage.character = storage.player.character
+    storage.character.teleport{0, 0.5}
+    game.simulation.camera_player = storage.player
+    game.simulation.camera_player_cursor_position = {0, 0}
 
     update_camera = function()
-      game.camera_position = {global.player.position.x, global.player.position.y - 2}
+      game.simulation.camera_position = {storage.player.position.x, storage.player.position.y - 2}
     end
 
-    step_0 = function()
-      target_cursor_position = {global.character.position.x - 2.5, global.character.position.y - 4}
-      update_camera()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = target_cursor_position}
-        if finished then
-          step_1()
-        end
-      end)
+    build_from_cursor = function()
+      if storage.player.can_build_from_cursor{position = game.simulation.camera_player_cursor_position} then
+        storage.player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.west}
+      end
     end
 
-    step_1 = function()
-      global.character.cursor_stack.set_stack{name = "stone-furnace", count = 12}
-      target_cursor_position = {global.character.position.x + 2.5, global.character.position.y - 4}
-      script.on_nth_tick(1, function()
-
-        local finished = game.move_cursor({position = target_cursor_position})
-
-        if global.player.can_build_from_cursor{position = game.camera_player_cursor_position} then
-          global.player.build_from_cursor{position = game.camera_player_cursor_position}
-        end
-
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      global.character.walking_state = {walking = true, direction = defines.direction.east}
-      local offset = {2.5, -4}
-      script.on_nth_tick(1, function()
-
-        game.camera_player_cursor_position = {global.character.position.x + offset[1], global.character.position.y + offset[2]}
-
-        if global.player.can_build_from_cursor{position = game.camera_player_cursor_position} then
-          global.player.build_from_cursor{position = game.camera_player_cursor_position}
-        end
-
-        if game.tick % 60 == 0 then
-          game.surfaces[1].build_checkerboard({{global.character.position.x + 10, global.character.position.y - 10},
-          {global.character.position.x + 25, global.character.position.y + 10}})
-        end
-
-        update_camera()
-
-        if global.player.cursor_stack.count == 0 then
-          step_3()
-        end
-
-      end)
-    end
-
-    step_3 = function()
-      global.character.walking_state = {walking = false}
-      local player_position = global.player.position
-      target_cursor_position = {player_position.x + 3.5, player_position.y - 1}
-      game.camera_player_cursor_direction = defines.direction.west
-      script.on_nth_tick(1, function()
-
-        update_camera()
-
-        if game.move_cursor({position = target_cursor_position}) then
-          step_4()
-        end
-
-      end)
-    end
-
-    step_4 = function()
-      global.character.cursor_stack.set_stack{name = "transport-belt", count = 24}
-
-      local player_position = global.player.position
-      target_cursor_position = {player_position.x - 3.5, player_position.y - 1}
-
-      script.on_nth_tick(1, function()
-
-        local finished = game.move_cursor({position = target_cursor_position})
-
-        if global.player.can_build_from_cursor{position = game.camera_player_cursor_position} then
-          global.player.build_from_cursor{position = game.camera_player_cursor_position, direction = defines.direction.west}
-        end
-
-        update_camera()
-
-        if finished then
-          step_5()
-        end
-
-      end)
-    end
-
-    step_5 = function()
-      global.character.walking_state = {walking = true, direction = defines.direction.west}
-
-      offset = {-3.5, -1}
-      script.on_nth_tick(1, function()
-
-        game.camera_player_cursor_position = {global.character.position.x + offset[1], global.character.position.y + offset[2]}
-
-        if global.player.can_build_from_cursor{position = game.camera_player_cursor_position} then
-          global.player.build_from_cursor{position = game.camera_player_cursor_position, direction = defines.direction.west}
-        end
-
-        update_camera()
-
-        if global.player.cursor_stack.count == 0 then
-          finish()
-        end
-
-      end)
-    end
-
-    finish = function()
-      update_camera()
-      global.character.walking_state = {walking = false}
-      global.character.direction = defines.direction.south
-      script.on_nth_tick(1, nil)
-    end
-
-    step_0()
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function() storage.character.teleport{0, 0.5} end,
+          action = function() update_camera() end
+        },
+        { condition = story_elapsed_check(0.5) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.character.position.x - 2.5, storage.character.position.y - 4}}) end,
+          action = function() storage.character.cursor_stack.set_stack{name = "stone-furnace", count = 12} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.character.position.x + 2.5, storage.character.position.y - 4}}) end,
+          update = function() build_from_cursor() end,
+          action = function() storage.character.walking_state = {walking = true, direction = defines.direction.east} end
+        },
+        {
+          condition = function() return storage.player.cursor_stack.count == 0 end,
+          update = function()
+            game.simulation.camera_player_cursor_position = {storage.character.position.x + 2.5, storage.character.position.y -4}
+            build_from_cursor()
+            if game.tick % 60 == 0 then
+              game.surfaces[1].build_checkerboard({{storage.character.position.x + 10, storage.character.position.y - 10},
+                                                   {storage.character.position.x + 25, storage.character.position.y + 10}})
+            end
+            update_camera()
+          end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.player.position.x + 3.5, storage.player.position.y - 1}}) end,
+          action = function()
+            storage.character.cursor_stack.set_stack{name = "transport-belt", count = 24}
+            game.simulation.camera_player_cursor_direction = defines.direction.west
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.player.position.x - 4, storage.player.position.y - 1}}) end,
+          update = function() build_from_cursor() end,
+          action = function() storage.character.walking_state = {walking = true, direction = defines.direction.west} end
+        },
+        {
+          condition = function() return storage.player.cursor_stack.count == 0 end,
+          update = function()
+            game.simulation.camera_player_cursor_position = {storage.character.position.x - 4, storage.character.position.y - 1}
+            build_from_cursor()
+            update_camera()
+          end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            for k, v in pairs (storage.player.surface.find_entities_filtered{name = "stone-furnace"}) do
+              v.destroy()
+            end
+            for k, v in pairs (storage.player.surface.find_entities_filtered{name = "transport-belt"}) do
+              v.destroy()
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() story_jump_to(storage.story, "start") end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -1464,33 +1788,71 @@ simulations.drag_building_poles =
 {
   init =
   [[
-    global.player = game.create_test_player{name = "kovarex"}
-    global.character = global.player.character
-    global.character.cursor_stack.set_stack{name = "small-electric-pole", count=50}
-    global.character.walking_state = {walking = true, direction = defines.direction.east}
-    game.camera_player = global.player
-  ]],
-  update =
-  [[
-    if global.stop then
-      global.character.walking_state = {walking = false, direction = defines.direction.south}
-      return
+    require("__core__/lualib/story")
+    storage.player = game.simulation.create_test_player{name = "kovarex"}
+    storage.character = storage.player.character
+    game.simulation.camera_player = storage.player
+
+    update_camera = function()
+      game.simulation.camera_position = {storage.player.position.x, storage.player.position.y - 1.5}
     end
-    game.camera_position = {global.character.position.x, global.character.position.y - 1.5}
-    local pole_x = math.floor(global.character.position.x + 2)
-    game.camera_player_cursor_position = {pole_x, global.character.position.y - 3}
-    if global.last_pole_x == nil or pole_x - global.last_pole_x == 7 then
-      global.player.build_from_cursor{position = {pole_x, global.character.position.y - 3}}
-      global.last_pole_x = pole_x
-    end
-    if game.tick % 60 == 0 then
-      game.surfaces[1].build_checkerboard({{global.character.position.x + 10, global.character.position.y - 10},
-                                           {global.character.position.x + 25, global.character.position.y + 10}})
-     end
-     if global.character.cursor_stack.count == 0 then
-       global.character.walking_state = {walking = true, direction = defines.direction.south}
-       global.stop = true
-     end
+
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            storage.character.teleport{0, 0}
+            game.simulation.camera_player_cursor_position = {0, 0}
+          end,
+          action = function() update_camera() end
+        },
+        { condition = story_elapsed_check(0.5) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.character.position.x + 2, storage.character.position.y - 3}}) end,
+          action = function()
+            storage.character.cursor_stack.set_stack{name = "small-electric-pole", count = 50}
+            storage.character.walking_state = {walking = true, direction = defines.direction.east}
+          end
+        },
+        {
+          condition = function() return storage.player.cursor_stack.count == 0 end,
+          update = function()
+            local build_offset = { x = 2, y = -3 }
+            local pole_x = math.floor(storage.character.position.x) + build_offset.x
+            local pole_y = storage.character.position.y + build_offset.y
+            game.simulation.camera_player_cursor_position = {storage.character.position.x + build_offset.x, pole_y}
+            if storage.last_pole_x == nil or pole_x - storage.last_pole_x == 7 then
+              storage.player.build_from_cursor{position = {pole_x, pole_y}}
+              storage.last_pole_x = pole_x
+            end
+            if game.tick % 60 == 0 then
+              game.surfaces[1].build_checkerboard({{storage.character.position.x + 10, storage.character.position.y - 10},
+                                                   {storage.character.position.x + 25, storage.character.position.y + 10}})
+            end
+            update_camera()
+          end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            for k, v in pairs (storage.player.surface.find_entities_filtered{name = "small-electric-pole"}) do
+              v.destroy()
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            story_jump_to(storage.story, "start")
+            storage.last_pole_x = nil
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -1498,13 +1860,12 @@ simulations.pole_dragging_coverage =
 {
   init =
   [[
-    global.player = game.create_test_player{name = "Cable Guy"}
-    global.character = global.player.character
-    global.character.teleport{0, 4}
-    global.character.cursor_stack.set_stack{name = "small-electric-pole", count=48}
-    global.character.walking_state = {walking = true, direction = defines.direction.east}
-    game.camera_player = global.player
-    game.camera_player_cursor_position = {0, 0}
+    require("__core__/lualib/story")
+    storage.player = game.simulation.create_test_player{name = "Cable Guy"}
+    storage.character = storage.player.character
+    game.simulation.camera_player = storage.player
+    game.simulation.camera_player_cursor_position = {0, 0}
+    game.surfaces[1].build_checkerboard({{10, -10}, {320, 10}})
     game.surfaces[1].create_entities_from_blueprint_string
     {
       string = "0eNqVlN1uhCAQhd9lrnGzgLCur7LZNGonWxJEg9jUGN69aC/apPjD5RDOdyYnMzNDrUfsrTIOyhlU05kByscMg3qZSi9vbuoRSlAOWyBgqnaphk5XNusrgxo8AWXe8QtK6p8E0DjlFP5g1mJ6M2Nbow0fogACfTcETWcWv8DJmLgIAlMQ8IvwnvwDsbMgdgDiJ0H0fgDKz4LkAUicBfEDkEwOW8ZBt19QW2mdocbGWdVkfadxN/QFGMSoXh91N9plJopnxKFIdKBix+FG6DVmck8OdiMPek1st9jLg1Aa65bS1Ex2TOKBUJY8IfeNRHjyPm6R8uSF3CKJ5I3cIsnkyVlJ4RiuV7P8c2QJfKIdVg0raF5wIaXMBefM+290Ncet",
@@ -1514,60 +1875,90 @@ simulations.pole_dragging_coverage =
     while lights_count < 8 do
       game.surfaces[1].create_entities_from_blueprint_string
       {
-        string = "0eNrVmN1qwyAUgN/lXGclx8T8wZ5klGBStwmJCWrLSvHdFxs2WpnMW29CjsbjOZ8hfOQGw3TmqxLSQHcDMS5SQ/d2Ay0+JJvcmLmuHDoQhs+QgWSzi/TMpullYvMKNgMhT/wLOrTHDLg0wgi+Z7kH116e54Gr7YG/1mewLnpbski3m0tTHGgG1+2mPtAt+1aTUcvUD/yTXcSi3GOjUONZmH6bO/2ufRdKm/6fyo1iUq+LMi8Dnwzs+bVhDkDugnllihm3DbyC3eclH90m2mVFd1H89Nig2CJis6e4tEdrH8Z+IJA4CCRJCBhouohrmibZdOmdfBWAUMZBKBM9+WcIRQACjYNQJwmh8iA0AQhVHIQqSQiFB4EGINRxENokITQeBMwDFJo4Ck2SFKhHoQ5AaKMgEEzzy5j77wIJYMA8jkOeJIfaw9CGKMRpIklTE9H3RAyJIsaZIknTFFsfQ0gdMc4dSZruiL48YsgeMU4fSaL66PsjhgQS4wySpGmQ4eOPc0aSpjOiL424W+Mx2yvoHv5TZHDhSt/LJg2WTUGrqippURBrvwHLO8AOq",
+        string = "0eNqV1M1OhDAQwPF3mXPdMPQD6KtszKarjWnSFkJBJYR3t6wHD5o4c2wz87v9Z4d7XP00h7yA3SG8jLmAve5Qwlt28fzLLnmwUJKL8Sm6NMEhIORX/wkWj2cBPi9hCf577/HYbnlNdz/XAfHHvoBpLHVlzKd/MoO8aAEbWKkvuvIufrit3M6BZV79IX7BLRHWXFgSYcWFFRHuuLAmwoYLGyI8cOGOCPdcuCfBbYNceCDCDRfGhiizC0Ekyi1bbokyOz6URJldHyqizM4PNVFm94eGKP/TSb3RYfGpMj/HXsC7n8sDaXtUvdSmk8agMsfxBYnu+5k=",
         position = {28 + lights_count * 36, 1},
       }
       lights_count = lights_count + 1
       end
+
     update_camera = function()
-      game.camera_position = {global.player.position.x, global.player.position.y - 3}
+      game.simulation.camera_position = {storage.player.position.x, storage.player.position.y - 2.5}
     end
 
-  ]],
-  update =
-  [[
-    if global.stop then
-      global.character.walking_state = {walking = false, direction = defines.direction.south}
-      return
-    end
-    game.camera_position = {global.character.position.x, global.character.position.y - 3}
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            storage.character.teleport{0, 4}
+            game.simulation.camera_player_cursor_position = {0, 0}
+          end,
+          action = function() update_camera() end
+        },
+        { condition = story_elapsed_check(0.5) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.character.position.x + 2, storage.character.position.y - 4}}) end,
+          action = function()
+            storage.character.cursor_stack.set_stack{name = "small-electric-pole", count = 48}
+            storage.character.walking_state = {walking = true, direction = defines.direction.east}
+          end
+        },
+        {
+          condition = function() return storage.player.cursor_stack.count == 0 end,
+          update = function()
+            local build_offset = { x = 2, y = -4 }
+            local pole_x = math.floor(storage.character.position.x) + build_offset.x
+            local pole_y = storage.character.position.y + build_offset.y
+            if storage.last_pole_x == nil then
+              storage.last_pole_x = pole_x - 3
+              storage.pole_count = 0
+            end
+            game.simulation.camera_player_cursor_position = {storage.character.position.x + build_offset.x, pole_y}
 
-    local pole_x = math.floor(global.character.position.x + 2)
-    local pole_y = global.character.position.y - 4
+            if (storage.pole_count == 0
+                or storage.pole_count == 1
+                or storage.pole_count == 2) and pole_x - storage.last_pole_x  == 7 then
+              storage.player.build_from_cursor{position = {pole_x, pole_y}}
+              storage.last_pole_x = storage.last_pole_x + 7
+              storage.pole_count =  storage.pole_count + 1
+            end
+            if (storage.pole_count == 3
+                or storage.pole_count == 4
+                or storage.pole_count == 5) and pole_x - storage.last_pole_x  == 5 then
+              storage.player.build_from_cursor{position = {pole_x, pole_y}}
+              storage.last_pole_x = storage.last_pole_x + 5
+              if storage.pole_count == 5 then
+                storage.pole_count = 0
+              else
+                storage.pole_count = storage.pole_count + 1
+              end
+            end
 
-    if global.last_pole_x == nil then
-      global.last_pole_x = pole_x - 3
-      global.pole_count = 0
-
-    end
-    game.camera_player_cursor_position = {pole_x, pole_y}
-
-    if (global.pole_count == 0
-        or global.pole_count == 1
-        or global.pole_count == 2) and pole_x - global.last_pole_x  == 7 then
-      global.player.build_from_cursor{position = {pole_x, pole_y}}
-      global.last_pole_x = global.last_pole_x + 7
-      global.pole_count =  global.pole_count + 1
-    end
-    if (global.pole_count == 3
-        or global.pole_count == 4
-        or global.pole_count == 5) and pole_x - global.last_pole_x  == 5 then
-      global.player.build_from_cursor{position = {pole_x, pole_y}}
-      global.last_pole_x = global.last_pole_x + 5
-      if global.pole_count == 5 then
-        global.pole_count = 0
-      else
-        global.pole_count = global.pole_count + 1
-      end
-    end
-    if game.tick % 60 == 0 then
-      game.surfaces[1].build_checkerboard({{global.character.position.x + 10, global.character.position.y - 10},
-                                            {global.character.position.x + 25, global.character.position.y + 10}})
-    end
-    if global.character.cursor_stack.count == 0 then
-      global.character.walking_state = {walking = true, direction = defines.direction.south}
-      global.stop = true
-    end
+            update_camera()
+          end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            for k, v in pairs (storage.player.surface.find_entities_filtered{name = "small-electric-pole"}) do
+              if v.position.x > 0 then
+                v.destroy()
+              end
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            story_jump_to(storage.story, "start")
+            storage.last_pole_x = nil
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -1575,200 +1966,157 @@ simulations.drag_building_underground =
 {
   init =
   [[
-
-    player = game.create_test_player{name = "kovarex"}
-    game.camera_player = player
-    game.camera_player_cursor_direction = defines.direction.east
+    require("__core__/lualib/story")
+    storage.player = game.simulation.create_test_player{name = "kovarex"}
+    storage.character = storage.player.character
+    game.simulation.camera_player = storage.player
+    game.simulation.camera_player_cursor_direction = defines.direction.east
     cursor_position = {0, 0}
 
-    update_camera = function(event)
+    update_camera = function()
+      game.simulation.camera_position = {storage.player.position.x, storage.player.position.y - 1.5}
+    end
 
-      local position = player.position
-      game.camera_position = {position.x, position.y - 1.5}
-      game.camera_player_cursor_position = cursor_position
+    direction = defines.direction.east
+    last_distance = 1
+    last_x = 0
 
-      if event.tick % 60 == 0 then
-        player.surface.build_checkerboard
+    local story_table =
+    {
+      {
         {
-          {position.x + 10, position.y - 10},
-          {position.x + 25, position.y + 10}
-        }
-      end
-    end
-    script.on_event(defines.events.on_tick, update_camera)
-
-    move_cursor = function(speed)
-      if not target_cursor_position then return true end
-
-      local speed = speed or 0.1
-
-      local dx = target_cursor_position[1] - cursor_position[1]
-      dx = math.max(-speed, math.min(speed, dx))
-      local dy = target_cursor_position[2] - cursor_position[2]
-      dy = math.max(-speed, math.min(speed, dy))
-
-      cursor_position[1] = cursor_position[1] + dx
-      cursor_position[2] = cursor_position[2] + dy
-
-      if cursor_position[1] == target_cursor_position[1] and cursor_position[2] == target_cursor_position[2] then
-        target_cursor_position = nil
-        return true
-      end
-
-    end
-
-    build_offset = {3, -3.5}
-
-    prepare = function()
-      player.cursor_stack.set_stack{name = "underground-belt", count = 50}
-      target_cursor_position = {player.position.x + build_offset[1], player.position.y + build_offset[2]}
-      script.on_nth_tick(1, function()
-        if move_cursor(0.2) then
-          build_belts()
-        end
-      end)
-    end
-
-    build_belts = function()
-      player.character.walking_state = {walking = true, direction = defines.direction.east}
-      last_distance = 1
-      last_x = 0
-      direction = defines.direction.east
-      script.on_nth_tick(1, function()
-        cursor_position = {player.position.x + build_offset[1], player.position.y + build_offset[2]}
-
-        if (cursor_position[1] - last_x) > last_distance then
-          if player.can_build_from_cursor{position = cursor_position, direction = direction} then
-            player.build_from_cursor{position = cursor_position, direction = direction}
+          name = "start",
+          init = function()
+            storage.character.teleport{0, 0}
+            game.simulation.camera_player_cursor_position = {0, 0}
+          end,
+          action = function() update_camera() end
+        },
+        { condition = story_elapsed_check(0.5) },
+        {
+          condition = function() return game.simulation.move_cursor({position = {storage.character.position.x + 2, storage.character.position.y - 3}}) end,
+          action = function()
+            storage.player.cursor_stack.set_stack{name = "underground-belt", count = 50}
+            storage.character.walking_state = {walking = true, direction = defines.direction.east}
           end
-          if last_distance == 1 then
-            direction = defines.direction.west
-            game.camera_player_cursor_direction = defines.direction.east
-            last_distance = 5
-          else
+        },
+        {
+          condition = function() return storage.player.cursor_stack.count == 0 end,
+          update = function()
+            local build_offset = {3, -3.5}
+            game.simulation.camera_player_cursor_position = {storage.character.position.x + build_offset[1], storage.character.position.y + build_offset[2]}
+
+            cursor_position = {storage.player.position.x + build_offset[1], storage.player.position.y + build_offset[2]}
+            if (cursor_position[1] - last_x) > last_distance then
+              if storage.player.can_build_from_cursor{position = cursor_position, direction = direction} then
+                storage.player.build_from_cursor{position = cursor_position, direction = direction}
+              end
+              if last_distance == 1 then
+                direction = defines.direction.west
+                last_distance = 5
+              else
+                direction = defines.direction.east
+                last_distance = 1
+              end
+                game.simulation.camera_player_cursor_direction = direction
+              last_x = math.floor(cursor_position[1])
+            end
+
+            if game.tick % 60 == 0 then
+              game.surfaces[1].build_checkerboard({{storage.character.position.x + 10, storage.character.position.y - 10},
+                                                   {storage.character.position.x + 25, storage.character.position.y + 10}})
+            end
+            update_camera()
+          end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            for k, v in pairs (storage.player.surface.find_entities_filtered{name = "underground-belt"}) do
+              v.destroy()
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            story_jump_to(storage.story, "start")
             direction = defines.direction.east
-            game.camera_player_cursor_direction = defines.direction.west
             last_distance = 1
+            last_x = 0
           end
-          last_x = math.floor(cursor_position[1])
-        end
-
-        if player.cursor_stack.count == 0 then
-          finish()
-        end
-
-      end)
-    end
-
-    finish = function()
-      player.character.walking_state = {walking = false}
-      player.character.direction = defines.direction.south
-      script.on_nth_tick(1, nil)
-    end
-
-    prepare()
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
-
 
 simulations.smart_belt_building =
 {
   init =
   [[
-
-    player = game.create_test_player{name = "big k"}
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
-    item_name = "transport-belt"
-    direction = 2
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
 
-    step_1 = function()
-      player.cursor_stack.set_stack{name = item_name, count = 50}
-      game.camera_player_cursor_direction = direction
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-3.5, -1.5}} then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_3()
-      end)
-    end
-
-    step_3 = function()
-      player.drag_start_position = {3.5, -1.5}
-      local target = {3.5, 0.5}
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = target}
-        player.raw_build_from_cursor{created_by_moving = true}
-        if finished then
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        game.camera_player_cursor_direction = 4
-        player.raw_build_from_cursor{position = {3.5, -1.5}}
-        player.raw_build_from_cursor{position = {3.5, -0.5}}
-        player.raw_build_from_cursor{position = {3.5, 0.5}}
-        step_5()
-      end)
-    end
-
-    step_5 = function()
-      local target = {3.5, 2.5}
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = target}
-        player.raw_build_from_cursor{created_by_moving = true}
-        if finished then
-          step_6()
-        end
-      end)
-    end
-
-    step_6 = function()
-      player.drag_start_position = nil
-      local target = player.position
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = target}
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        for k, v in pairs (player.surface.find_entities_filtered{name = "transport-belt"}) do
-          v.destroy()
-        end
-        start()
-      end)
-    end
-
-    start = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_1()
-      end)
-    end
-
-    start()
-
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            player.cursor_stack.set_stack{name = "transport-belt", count = 50}
+            game.simulation.camera_player_cursor_direction = defines.direction.east
+          end,
+          condition = function() return game.simulation.move_cursor({position = {-3.5, -1.5}}) end
+        },
+        { condition = story_elapsed_check(0.5) },
+        {
+          init = function() game.simulation.control_down{control = "build", notify = false} end,
+          condition = function() return game.simulation.move_cursor({position = {3.5, 0.5}}) end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            game.simulation.camera_player_cursor_direction = defines.direction.south
+            game.simulation.control_down{control = "rotate", notify = true}
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {3.5, 2.5}}) end,
+          action = function()
+            game.simulation.control_up{control = "build"}
+            game.simulation.control_up{control = "rotate"}
+          end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            game.simulation.control_down{control = "clear-cursor", notify = false}
+            player.character.clear_items_inside()
+          end
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            for k, v in pairs (player.surface.find_entities_filtered{name = "transport-belt"}) do
+              v.destroy()
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() story_jump_to(storage.story, "start") end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -1776,22 +2124,22 @@ simulations.fast_obstacle_traversing =
 {
   init =
   [[
-    player = game.create_test_player{name = "Arnold J. Rimmer"}
+    player = game.simulation.create_test_player{name = "Arnold J. Rimmer"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
-    game.smart_belt_building = true
-    player.surface.create_entity{name="stone-furnace", position = {1, -1}}
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
+    player.surface.create_entity{name="stone-furnace", position = {0, -1}}
     item_name = "transport-belt"
-    direction = 2
+    direction = defines.direction.east
 
     step_1 = function()
       player.cursor_stack.set_stack{name = item_name, count = 50}
       player.insert{name = "underground-belt", count = 2}
-      game.camera_player_cursor_direction = direction
+      game.simulation.camera_player_cursor_direction = direction
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-3.5, -1.5}} then
+        if game.simulation.move_cursor{position = {-4.5, -1.5}} then
           step_2()
         end
       end)
@@ -1808,8 +2156,11 @@ simulations.fast_obstacle_traversing =
     step_3 = function()
       local target = {4.5, -1.5}
       script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = target}
-        player.raw_build_from_cursor{created_by_moving = true}
+        local finished = game.simulation.move_cursor{position = target}
+        if last_x == nil or last_x ~= math.floor(game.simulation.camera_player_cursor_position.x) then
+          player.raw_build_from_cursor{created_by_moving = true}
+        end
+        last_x = math.floor(game.simulation.camera_player_cursor_position.x)
         if finished then
           step_4()
         end
@@ -1819,7 +2170,7 @@ simulations.fast_obstacle_traversing =
     step_4 = function()
       local target = player.position
       script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = target}
+        local finished = game.simulation.move_cursor{position = target}
         if finished then
           reset()
         end
@@ -1857,11 +2208,11 @@ simulations.trains =
   init_update_count = 300,
   init =
   [[
-    game.camera_position = {0, 0}
-    game.camera_zoom = 1
+    game.simulation.camera_zoom = 1
+    game.surfaces[1].build_checkerboard{{-72, -50}, {72, 50}}
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "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",
+      string = "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",
       position = {0,0}
     }
     local records =
@@ -1897,66 +2248,68 @@ simulations.rail_building =
 {
   init =
   [[
-    global.player = game.create_test_player{name = "kovarex"}
-    global.character = global.player.character
-    game.camera_player = global.player
-    game.camera_zoom = 1
+    storage.player = game.simulation.create_test_player{name = "kovarex"}
+    storage.character = storage.player.character
+    game.simulation.camera_player = storage.player
+    game.simulation.camera_zoom = 1
+    game.surfaces[1].build_checkerboard{{-22, -13}, {22, 13}}
 
     step_1 = function()
       game.surfaces[1].create_entity{name="straight-rail", position = {-9, 7}, direction = defines.direction.east}
-      global.character.cursor_stack.set_stack{name = "rail", count = 50}
+      storage.character.cursor_stack.set_stack{name = "rail", count = 50}
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-8.5, 7}} then
+        if game.simulation.move_cursor{position = {-8.5, 7}} then
+          game.forces.player.chart(game.surfaces[1], {{-16, -9}, {16, 9}})
           step_2()
         end
       end)
     end
 
     step_2 = function()
-      global.wait = 60
+      storage.wait = 60
       script.on_nth_tick(1, function()
-        global.wait = global.wait - 1
-        if global.wait == 0 then
+        storage.wait = storage.wait - 1
+        if storage.wait == 0 then
           step_3()
         end
       end)
     end
 
     step_3 = function()
-      game.activate_rail_planner()
+      game.simulation.activate_rail_planner()
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-0.5, 7}} then
+        if game.simulation.move_cursor{position = {-0.5, 7}} then
           step_4()
         end
       end)
     end
 
     step_4 = function()
-      global.player.raw_build_from_cursor()
+      storage.player.raw_build_from_cursor()
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {9, -5}} then
+        if game.simulation.move_cursor{position = {9, -7}} then
           step_5()
         end
       end)
     end
 
     step_5 = function()
-      global.player.raw_build_from_cursor()
-      global.wait = 60
+      storage.player.raw_build_from_cursor()
+      storage.wait = 60
       script.on_nth_tick(1, function()
-        global.wait = global.wait - 1
-        if global.wait == 0 then
+        storage.wait = storage.wait - 1
+        if storage.wait == 0 then
           step_6()
         end
       end)
     end
 
     step_6 = function()
-      game.deactivate_rail_planner()
-      global.wait = 60
+      game.simulation.deactivate_rail_planner()
+      storage.wait = 60
       script.on_nth_tick(1, function()
-        global.wait = global.wait - 1
-        if global.wait == 0 then
+        storage.wait = storage.wait - 1
+        if storage.wait == 0 then
           step_7()
         end
       end)
@@ -1965,7 +2318,7 @@ simulations.rail_building =
     step_7 = function()
       local rails = game.surfaces[1].find_entities()
       for _, rail in pairs(rails) do
-        if rail.name == "straight-rail" or rail.name == "curved-rail" then
+        if rail.name == "straight-rail" or rail.name == "curved-rail-a" or rail.name == "curved-rail-b" then
           rail.destroy()
         end
       end
@@ -1986,32 +2339,32 @@ simulations.train_stop =
       position = {-8, 5}
     }
 
+    game.simulation.camera_position = {0, 0.5}
     local surface = game.surfaces[1]
     for x = -31, 31, 2 do
-      surface.create_entity{name = "straight-rail", position = {x, -1}, direction = 2}
+      surface.create_entity{name = "straight-rail", position = {x, -1}, direction = defines.direction.east}
     end
 
-    global.train_stop = surface.create_entity{name = "train-stop", position = {7, 1}, direction = 2, force = "player"}
-    global.end_rail = surface.find_entity("straight-rail", {31, -1})
-    game.forces.player.stack_inserter_capacity_bonus = 7
-
+    storage.train_stop = surface.create_entity{name = "train-stop", position = {7, 1}, direction = defines.direction.east, force = "player"}
+    storage.end_rail = surface.find_entity("straight-rail", {31, -1})
+    game.forces.player.bulk_inserter_capacity_bonus = 7
 
     script.on_nth_tick(1000, function()
-      if global.locomotive and global.locomotive.valid then
-        global.locomotive.destroy()
+      if storage.locomotive and storage.locomotive.valid then
+        storage.locomotive.destroy()
       end
-      if global.wagon and global.wagon.valid then
-        global.wagon.destroy()
+      if storage.wagon and storage.wagon.valid then
+        storage.wagon.destroy()
       end
-      global.locomotive = game.surfaces[1].create_entity{name = "locomotive", position = {-20, 1}, orientation = 0.25, force = "player"}
-      global.wagon = game.surfaces[1].create_entity{name = "cargo-wagon", position = {-26, 1}, orientation = 0.25, force = "player"}
-      global.locomotive.train.schedule =
+      storage.locomotive = game.surfaces[1].create_entity{name = "locomotive", position = {-20, 1}, orientation = 0.25, force = "player"}
+      storage.wagon = game.surfaces[1].create_entity{name = "cargo-wagon", position = {-26, 1}, orientation = 0.25, force = "player"}
+      storage.locomotive.train.schedule =
       {
         current = 1,
         records =
         {
           {
-            station = global.train_stop.backer_name,
+            station = storage.train_stop.backer_name,
             wait_conditions =
             {
               {
@@ -2022,7 +2375,7 @@ simulations.train_stop =
             }
           },
           {
-            rail = global.end_rail,
+            rail = storage.end_rail,
             wait_conditions =
             {
               {
@@ -2034,9 +2387,9 @@ simulations.train_stop =
           }
         }
       }
-      global.locomotive.train.manual_mode = false
-      global.locomotive.insert("coal")
-      global.wagon.insert({name = "iron-ore", count = 300})
+      storage.locomotive.train.manual_mode = false
+      storage.locomotive.insert("coal")
+      storage.wagon.insert({name = "iron-ore", count = 300})
     end)
   ]]
 }
@@ -2047,9 +2400,10 @@ simulations.logistic_network =
   init = [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqF0uFqgzAQB/B3uc9JaWzVNa8yxoj26g40yZIoFcm7N1oYA6v9FC7c/5eD3ARV26N1pAPICag22oP8nMBTo1U734XRIkiggB0w0KqbK2cqY40LEBmQvuIdpIhfDFAHCoRPYynGb913FbrUsE4zsMangNHzSwnhOYMR5DFGtspnf/nWNOQD1bz+QR+4D8apBteaODw5fjzkr8TTlmiV9zQgt84MdE2tK/r0hj5v0aoO+3L+Rs63ZIe/fTr3phWvyWKLrPrbbW/GxUvfviyH/LdLDAZ0fglkH+JcXrJSFGV5KYoYHxGi0Yg=",
-      position = {-1,0}
+      string = "0eNqN0+9ugyAQAPB3uc/YzD9Y9VWapkF7OhILDNDNGd99qAldom3kG4T7cQfHCGXbodJcWChG4JUUBorLCIY3grXzmh0UQgHc4gMICPaYZ1qWUkltYSLAxR1/oAinKwEUlluOq7FMhpvoHiVqt8FHGys1azCoPtFYhyppXJQU83FOCkJ6ogQGKPITnSaykSIvKWYM7zFQWvb8jvo1Gb8nY0+yyh4Tw/disr2sLRJFCxF+7An0KeBX57I4Ut+c1h6Weqzs6vpIXa+k8/Mdu9JYtgRvnThelWTPyLyBLVZW8ypAgboZAteJqGtW4R4ZriR1XbdWcTP8F+f782PnsPxYwhH1CbtO/uZ6aePLmVCSE3p1a8sfKP59GQI9arMYURYmWUzTNE0ozaJp+gOOqReq",
+      position = {-6, 2}
     }
+    game.simulation.camera_position = {0, 0.5}
 
     for k, position in pairs ({{-2, -1.5}, {-1.5, -0.5}, {-1, -1.5}}) do
       game.surfaces[1].create_entity{name = "logistic-robot", position = position}
@@ -2059,8 +2413,8 @@ simulations.logistic_network =
       game.surfaces[1].create_entity{name = "construction-robot", position = position}
     end
 
-    local character = game.surfaces[1].create_entity{name = "character", position = {1.5, 2}, direction = 4, force = "player"}
-    character.direction = 4
+    local character = game.surfaces[1].create_entity{name = "character", position = {1.5, 2}, direction = defines.direction.south, force = "player"}
+    character.direction = defines.direction.south
   ]]
 }
 
@@ -2070,29 +2424,30 @@ simulations.personal_logistics =
   init = [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqtld2OozAMhd8l1zBqKD+lr7IaoQCmGwkSlJhqu1XffR3YYashnQU0vWkh6efj48S+s7IdoDdSITvfmay0suz8486svCjRund464GdmUToWMCU6NyT0aXutUH2CJhUNfxiZ/4I/vs3aKFCI6sQFJjLLaSwYBpRwRMnerwHDBRKlDBpGR9uhRq6EgwFmnF2KC0KlFpRiF5bOf6k4IQJaduNvvKH0/UJEa1QtCDOwICVQ9OAKaz8TQx+mD+eUMc5lFSNVLQUVj/Bokdx/JZMIZK3ZPRj2l9YQJTqYt0+A52+QjHQWktKoS6cw7TUiNZCwKbXk28fLiFAG/atQJdUpQdXaxIdsE7XboPAsAUxSppr+e6zLZ5zabWo6c0yh+NzBrU05O64So7/PRF6wH5wB2eBT2Y8GqGsO19hCa3PKv5hVfw5UOwBpzvAyRpwNoMb8o8OjwWDXl9mbkRcD+m0Q+JxjcR8eWeXyAl48Anjh6eiX6RFuivjAQ57Ya28QtgbfZX111lzf9acbzZwVdI8+gbRLyrFj9tLlbxAxdtR8QtUsr3PpN/aZqZOqpWzWppqkPiv20R7ug1P17abdE+34dl289MX5p+2jCTuv2f5/plExC9mEo3TcQqfn2Z9wK5UvsmrE4+zPMp4mmV5Rtr+ANarq/g=",
-      position = {-3,0}
+      string = "0eNqtlm2PoyAQx78Lr3UjVFy3X2XTNGjHLokFA9i7XuN330G7trnincud73j6zX+GGYcrqdoeOiOVI9srkbVWlmzfr8TKoxKtn3OXDsiWSAcnkhAlTn5kdKU7bRwZEiLVAX6SLR2Svx5zRijrz6UVtI+H2bBLCCgnnYRJwDi47FV/qsAgfWZI1UiFS2n9AdYhu9MWj2nlrSIqZfSFJ+SC0Bc+Wpj27y04J9XR+n0GTvoM+x7XWgcGDnsvFJca0VpIyDQ9KbnZtQ6gTbtWOECjte59yGiWJeSkD36DcGkLYpQ0h2Q3+Kj85gtbisezL7S8+bIZfTlIA/W0XgbAmxncanHAmUBwsofQPODy5OvGdO+63t/NEz6P0M3W6OYR4HwNuIgA8zXg1whwsQZczuAGUymVyoJxwZucua/IDZDeZlInrJVnSDujzxLTYrFyZmQZRtLs+QcQSDE2MmgWRNB/kEXZgi72/ajRVRVF7yVl+8o6MW59xm42EzQPyrsXDrRozcg6BQXmeEGlKLMRNYSYdGJ6mVXfNGD2Vv6C8afz9YWs8XWSGf+T5JjKoXzhemKqheYLsDIGtlAj9C0GVoRhLIvoUZ76H5vUlF9aYYbV0tS9dPdexaJ6FV3dU26ufLOpsJhuOJryT4YfaMwH4B0LlSeY+nyHs+OjY/vwtEnIGQM1klhJ83LDi6LIOS/ZMHwC34/0HA==",
+      position = {-9,0}
     }
 
     local roboport = game.surfaces[1].find_entities_filtered{name = "roboport"}[1]
     roboport.insert({name = "logistic-robot", count = 10})
-    game.camera_alt_info = true
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_position = {0, 0.5}
 
     game.forces.player.worker_robots_speed_modifier = 2
     game.forces.player.character_logistic_requests = true
 
     local character = game.surfaces[1].create_entity{name = "character", position = {1.5, 1.25}, force = "player"}
     character.character_running_speed_modifier = -0.5
-    character.direction = 4
-    character.set_personal_logistic_slot(1, {name = "steel-plate", min = 1000, max = 1000})
-    character.set_personal_logistic_slot(2, {name = "electronic-circuit", min = 1000, max = 1000})
+    character.direction = defines.direction.south
+    character.get_logistic_point(defines.logistic_member_index.character_requester).get_section(1).set_slot(2, {value = "steel-plate", min = 1000, max = 1000})
+    character.get_logistic_point(defines.logistic_member_index.character_requester).get_section(1).set_slot(2, {value = "electronic-circuit", min = 1000, max = 1000})
 
     script.on_nth_tick(600, function()
       character.clear_items_inside()
     end)
 
     script.on_nth_tick(1, function()
-      character.walking_state = {walking = true, direction = ((game.tick / 45) % 4) * 2}
+      character.walking_state = {walking = true, direction = ((game.tick / 25) % 8) * 2}
     end)
 
   ]]
@@ -2104,13 +2459,14 @@ simulations.requester_chest =
   init = [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqtmO2OojAUhu+lv2FCPwD1VjbGIBzdJtgybTHrGu59i8ywOJaxZfQPAu3T0/Px0vaK9nULjeLCoM0V8VIKjTa/rkjzoyjq/pm5NIA2iBs4oQiJ4tTfKbmXjVQGdRHiooI/aIO76Gk3owqh+37xHuppZ9JtIwTCcMNhMOB2c9mJ9rQHZekjQ7d7bQrDpbDcRmp++2tHtJjYNrvYy7rrjfmCICMCaiiN4mUMAtTxEtvZgzoUJTwSR2CE9u3hAGqn+V/LwMn4cwxFx6G4OHBhX8Xlb9DGYTF7S4ch0rf05o+h/U6DMVwcdd9OwUmeYdfad7W1FKpd71b76lDUGiI0PB789uklA1DHTV2YflKlbPsAW6MjdJJV36AwcQ3FzaQxgFuX29g4l1oWlX3yOAc6nUHFlfXu7a31+EcayNY0bR/wB3w6lxyO4N67ajIQc4CzBWDmA84XgKkPeDWCDzYwNis1KON0+MgllusgrScxO3JtbKrf8i9W8N7aqwtKp8wIfbTcTXPrM1GiZ1lmM+nRKJx4Oy69t2WaUi4w9nUcm+VmLi7xNjgPM5h6g7MwMPMGr8LA6VMV6MPr5o0qwMWMCODMWzAxvjc8TDCNasFVMDh//LQ9lt0wcOIErOZKrim05meIGyXPvPq+nLG7nPFP6jl5QTlHY+OvH1Epelu4Kltu/vchMxJAwiUg8UlPEqwAiY8AkHAB8DM3vP79uOHl78f1rv5kQfGTBcWfvLD2Se61tsTDUpA4Ea+o/plvOVkHLwu8Vhs0+YGoUH9RWaITFAfrBPVJZEpCdYL66ASlwTrhZy4L1gk/bhqsE37czFcn6AKdoHm4TtAX6gRdhS/8mbum6ToclbpRLFm0rR3ELA3b1jIcvq/NXrqtfSImC3a3xHd7my3Z3TIaHuhsJtAs5AgEO1epLF1+BmKJ3yTLNhqOejaTA6UInW34Bl+tMMvXJMdZnq+zvOv+AWqFHeQ=",
-      position = {2,0}
+      string = "0eNrNmNFyoyAUht+Fa+0IiDGZ2SfpdDLGnHSZUbSI2WY7efcFTUzSYAs0F5u7oHzncOD/cc4H2lQ9tJILhVYfiJeN6NDq+QN1/FUUlRlThxbQCnEFNYqQKGrzT8lCdG0jVbyBSqFjhLjYwjta4WP07WTZbBoz92oaOb5ECITiisOYwPDnsBZ9vQGpudNsLnZc6Edx+Rs6palt0+lpjTDxNCom+IlF6KChT2yIML6/7kApLl47856EutnDutfPKgUStmuTon60K6oOIjQOj5mc4nYKoIrbqlCgg5ZNb0qGkyRCdbM1LxQqrqAYUpqK8XI09fi0FjJXxvu14Py0FjqsZcsllOPz3AKmE7hqiq0esRQnuSrNFS6NznvV9Krtzd7c4dOAvIlL3iwAnLqAswAwcwEvAsCZCzifwDt9lGIuOpDKupMTd6G5FtLyojd467VUQM5KBtMrVnSesJ5UoCU9Jj0q4ny8b3VyGbUq5q0vKp2fHheNrLU9GBHVbSEL1eh00a+LqvQ5rov39fmfVpFVRzhxLxa5WeDVJmBiI2OP/U3m0KmN7CN+7EWm7uTcC+yh+6UX2EP3mRfYQ/cLL/Die4edw00Gy8WMv+Lc/ZK7FazfHadkD1Y9XSyjLbqO7yFuZbPn26+c43yUcrsLkeT+2rfcSmRg4MSKwCFOZmT5H1pZNMEvRgCVzkg2gpdxyWXZc+UXI7uJkc3ZJSH+dnmq4nd+SWiAX96zbZIjaYBhOqKZv2M6kjN/y3QkL/w905Gc+5umI3np6poW3ve2SRN/2zwFeoxvUuz/0YbdPujJDxzZiNiaLg3yU/pIP/2p5Tl+IdI0wPKok+VRFmJ51EUvNAuxPDf0IsDy3Mh5gOW5kZcBludETpMAy3MjY2fLowGWl5IAy6MPtLz04iFdv+lUMUS0BKdj7NQKST/5gXYDECBfD1qoOo1dUYKNiUemWc2m3+1Arjv+F4ZmzPlni8bcUib4q5RDOgqY2Y04Deki4HQGlofAshnYMgQ204hgSUDvzlAf2Lyz3jen24OE9PAYdu61nZbi2WxjIV3CIZRppf7RwUwBnrVQWaSPPnvRo0MbdnXV8o3QXhdqIJEcpzllWZaljOXkePwHW+hE4Q==",
+      position = {-2,0}
     }
 
     local roboport = game.surfaces[1].find_entities_filtered{name = "roboport"}[1]
     roboport.insert({name = "logistic-robot", count = 10})
-    game.camera_alt_info = true
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_position = {0, 0.5}
 
     game.forces.player.worker_robots_speed_modifier = 1
 
@@ -2123,14 +2479,15 @@ simulations.active_provider_chest =
   init = [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqdlFFugzAMhu/i51AV1paVq0wTCmBYpJCgxFTrKu4+BzpWDVpV44nE9vfbsZMLFLrHzilDkF1AldZ4yN4u4FVjpA57dO4QMlCELQgwsg0rZwvbWUcwCFCmwk/I4uFdABpSpHBijItzbvq2QMcOc7QytTJsisoP9MTUznoOsyboMSqKN3sBZ/45bPajwuSfeyRSpvHBz2FrT5j3bNOEDqs8pMimWmqPAqbtKZOrLrYdixbSOdSsWto+lB1vBbS2Cg6SIo1yTOm3qmEQi1qSuRbfF57kmPyiju21iDXCy0xAjSU5VUZo0DXniHuBrpYlLoHJD1BA0dc1utyrLwwlzN+K1G6W0lZWvPPgwMNxV8pxRqOVQ6/9tz11fej3Ar+f8eSk8WEsogL1w74mm79CK+DDP8Avz4DT5RwvkRNwu9a7138kFj+T2PHminh09LhXW0auQMI8z/1ulCcerfGiRZKlTxh1zp7U4zm4h47voT1ZJ5uVkd3dEvmFGN+R7ObZEXDiazoGJK/xLj0maXxI02O6G4Zv7V2Gtw==",
-      position = {-1,-3}
+      string = "0eNqVlNFuqzAMht/F12EqtFDWV6kmFMB0kUKCnNCdnop3Pw7stJOgHe0ddvz5t2v7CqXusSNlPByuoCprHByOV3DqZKQONiNbhAOQLW1nycMgQJka/8AhHj4EoPHKK5yixo9LYfq2ROIH4n+0Mo0y7IqqT3QeBHTWcZg1IQOjsrdUwIUjkrd0TDA9Lxx6r8zJhWeErT1j0bNPeySsC+WxZVcjtUMBk3kS8p22lESoOV1l+1BhvBHQ2jq4pI80ylHLvZxhELMiklsR2sqaLY/F71h6rQiryZkL8JcuRNred31o3Yy+vdE9SeNCh6MS9bMWpWOLfuZZ4O5e52ZruOnr3P0abvY6930Nd/86N1/DzcVsMWbE7chL4qWpev+xGg7JP5urZMOKFhhhmr8hkqWeMerInhXP6G9rlsQPiPeNdd6SPOEjUljU56j73ri+dF6OwTNOlE+UZcZ2FWPzDHFfBNT8h5KqIjRIp0vENw+pkRUuqMomZMaDUPZNg1Q49RdDy2+/cPy+eEjCwTlytalguekHW8NZCsfndlkFnPkwjfgkj3f5Ns2yfbzJGTL8A2GDzz0=",
+      position = {-6, -2}
     }
 
     local roboport = game.surfaces[1].find_entities_filtered{name = "roboport"}[1]
     roboport.insert({name = "logistic-robot", count = 10})
-    storage_chest = game.surfaces[1].find_entities_filtered{name = "logistic-chest-storage"}[1]
-    game.camera_alt_info = false
+    storage_chest = game.surfaces[1].find_entities_filtered{name = "storage-chest"}[1]
+    game.simulation.camera_alt_info = false
+    game.simulation.camera_position = {0, 0.5}
 
     game.forces.player.worker_robots_speed_modifier = 1
 
@@ -2144,18 +2501,17 @@ simulations.buffer_chest =
   init = [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqt0lFvhCAMAOD/0me4qPN0x19Zlot61TVRIIBmnuG/DzVnluDexlMh9GubdIG6H1Ebkg7EAtQoaUF8LGCpk1W/vrlZIwgghwMwkNWw3oyqlVbGgWdA8oHfIFL/yQClI0e4G9tlvstxqNGED0e2HWvrKkdKBlErS1sYagUmYTCD4IX3LBKyQ8AeG2eo4SjRdDMP/aNpqwZjMHuBDOqxbdHcLT2DkSbHOSn1Fo8ayfy60clZq/mR36uOrAutNl9oHdeVtTQh10ZN9AhfYza97PAanNnXv+x9vlh8gcm5V/xDr9lKhwXY1kT82ioGExq7ZWTvaV7esjItyvJW5t7/AL9E090=",
-      position = {-2, -2}
+      string = "0eNqlk9tugzAMht/F12HiFIqQ9iRVVQVqukiQpEnoxirefQZatgk0TRu5QLHsz7/t+AZl06GxUnkobiArrRwU+xs4eVaiGW2+NwgFSI8tMFCiHW9Wl9po62FgINUJ36CIhgMDVF56iTNjuvRH1bUlWnJYoo1wTl4xMFZf5QltUL2g80Q32lG4VmNeQgZR/sQZ9FDQfxjYChmvBa0hcTwhonCLkCyEsqvrn6Twu5QoJC0MLF468jzWsvFo3ejmsBoj5uIfXWGweHyz3rNKq1VgGuGRcl460ZA4MittW2o/g0q3RljhNWmF58nQjbOKwnCs5s777EOljaEq/kg80NloUvqPyUXx9uj4wnRd6byYgtecJJkp6RYjWxjYUO+trAJUaM99QO8ZbS0q3EJGM3Kc4jz0o5PvOHXg8W0k2/1OcMwXwbQPr9JOy7DnjLMd4weyTZtUfFk8Bld6HxMjzqM0T3iWZSnneTwMH+efMFE=",
+      position = {-8, 2}
     }
 
+    game.simulation.camera_position = {0, 0.5}
     local roboport = game.surfaces[1].find_entities_filtered{name = "roboport"}[1]
     roboport.insert({name = "logistic-robot", count = 2})
-    buffer_chest = game.surfaces[1].find_entities_filtered{name = "logistic-chest-buffer"}[1]
-    buffer_chest.set_request_slot({name = "iron-plate", count = 100}, 1)
-    buffer_chest.set_request_slot({name = "copper-plate", count = 100}, 2)
-    provider_chest_1 = game.surfaces[1].find_entities_filtered{name = "logistic-chest-passive-provider"}[1]
-    provider_chest_2 = game.surfaces[1].find_entities_filtered{name = "logistic-chest-passive-provider"}[2]
-    game.camera_alt_info = false
+    buffer_chest = game.surfaces[1].find_entities_filtered{name = "buffer-chest"}[1]
+    provider_chest_1 = game.surfaces[1].find_entities_filtered{name = "passive-provider-chest"}[1]
+    provider_chest_2 = game.surfaces[1].find_entities_filtered{name = "passive-provider-chest"}[2]
+    game.simulation.camera_alt_info = false
 
     game.forces.player.worker_robots_speed_modifier = 1
     game.forces.player.character_logistic_requests = true
@@ -2181,8 +2537,8 @@ simulations.buffer_chest =
       buffer_chest.insert({name = "copper-plate", count = 100})
       provider_chest_1.insert({name = "iron-plate", count = 100})
       provider_chest_2.insert({name = "copper-plate", count = 100})
-      character.set_personal_logistic_slot(1, {name = "iron-plate", min = 2, max = 1000})
-      character.set_personal_logistic_slot(2, {name = "copper-plate", min = 2, max = 1000})
+      character.get_logistic_point(defines.logistic_member_index.character_requester).get_section(1).set_slot(1, {value = "iron-plate", min = 2, max = 1000})
+      character.get_logistic_point(defines.logistic_member_index.character_requester).get_section(1).set_slot(2, {value = "copper-plate", min = 2, max = 1000})
       script.on_nth_tick(1, function()
         if character.get_main_inventory().get_item_count("iron-plate") < 2 then return end
         if character.get_main_inventory().get_item_count("copper-plate") < 2 then return end
@@ -2235,21 +2591,22 @@ simulations.construction_robots =
   [[
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNptkdFuhCAQRf9lnnEjdld3/ZVNswE6WhIFM4xNXeO/L9LWNFFeCIR7Tu4wg+5GHMg6hnoGa7wLUN9nCLZ1qlvveBoQarCMPQhwql9P5LUfPDEsAqz7wG+o5fIuAB1btvjDSIfp4cZeI8UHWxo7NEzWZOiQ2imLdqRGGYyCwYdI8G5VR2omcwFT3Mto0mPTID2CfUaKzLe1iJ2s2GRh1IFVQu7p1z/4AeJt33YPuCRAfpQ/b/nOtzZw7Gs+MXAW2JNqD8uefnmny7KOMw29/vdHAr6QQkoUV3mubkUly6q6lbHBC9Mil0Q=",
-      position = {-6,-3}
+      string = "0eNqN0dFuhSAMANB/6TPeTBBj+JWbmxt11ZEomILbnOHfB7q4JfoweKKhp027QjPMOJE2HtQKurXGgbqv4HRv6iHF/DIhKNAeR2Bg6jG9yDZ2suQhMNDmFT9B5eHBAI3XXuNubI/laeaxQYofztkMJutigjWpUkQyzhks8e9LCOwk8ENw3lLdY9a+obti8uomf6CbvKLELzU3ztdb8tkRYleKK6M4DByw9aTbDA1Sv2RxnEhd3eIVme+kjKNr5q5Dejr9hanV41wUk/9rmMuj4biOD03bLu6CyXQfMbYtUv3ZO4N3JLcZvMqLSsiyLAspKx7CN2VVsKk=",
+      position = {-9, 2}
     }
 
     local roboport = game.surfaces[1].find_entities_filtered{name = "roboport"}[1]
     roboport.insert("construction-robot")
 
-    local chest = game.surfaces[1].find_entities_filtered{name = "logistic-chest-storage"}[1]
+    local chest = game.surfaces[1].find_entities_filtered{name = "storage-chest"}[1]
     chest.insert("stone-wall")
     chest.insert("gun-turret")
-    game.camera_alt_info = true
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_position = {0, 0.5}
     game.forces.player.worker_robots_speed_modifier = 1
 
     script.on_nth_tick(360, function()
-      if not global.ghosts_built then
+      if not storage.ghosts_built then
         local bp_string = "0eNqV1NtqhDAQBuB3meu4mHjImldZSnHbYQnoKCa2Fcm711gKS5uguYww3/wOk6xw72YcJ00W1Ar6bSAD6raC0Q9qO//NLiOCAm2xBwbU9v5k7ECYfbZdB46Bpnf8AsUdOyx8zJTZeZrQPhUK98IAyWqr8af9flheae7vOG1yqDGDcTBbyUC+m2cuFYMFVMYvlfNZ/ijilFIcKEXoX/4ru5GHgPJUjPIgRnVKqX6VPKzUaUoki0wYiQgB16QYkRRNEhIZCM+TVq2IKDxp1WKKSNqUmFIkzSWmlEmK8Mp2qffLr54eGQYfOJm9QFx5KRsheS1lU9fOfQPQI3ms"
         local stack = game.create_inventory(1)[1]
         stack.import_stack(bp_string)
@@ -2257,9 +2614,9 @@ simulations.construction_robots =
         {
           surface = game.surfaces[1],
           force = game.forces.player,
-          position = {4,1},
-          force_build = true,
-          direction = 0,
+          position = {4, 1},
+          build_mode = defines.build_mode.forced,
+          direction = defines.direction.north,
           skip_fog_of_war = false
         }
       else
@@ -2267,7 +2624,7 @@ simulations.construction_robots =
           entity.order_deconstruction("player")
         end
       end
-      global.ghosts_built = not global.ghosts_built
+      storage.ghosts_built = not storage.ghosts_built
     end)
   ]]
 }
@@ -2277,17 +2634,19 @@ simulations.fluid_wagon_connection =
   init_update_count = 300,
   init =
   [[
+    player = game.simulation.create_test_player{name = "kovarex"}
+    player.teleport({0, 2})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {1, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+    game.simulation.camera_player_cursor_direction = defines.direction.south
+    game.surfaces[1].build_checkerboard{{-30, -17}, {30, 37}}
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNrFmNtymzAQht9F15BBB05+lY7Hg0EQTUEwQiR1M373CgPGxnK96kWT3BgQH/9K2pO+0LEeeKeE1Gj3hUTeyh7tfnyhXlQyq8d7+tRxtENC8wZ5SGbNeKUyUaOzh4Qs+C+0w+e9h7jUQgs+vX+5OB3k0By5MgOub/a6ldz/zOra0Lq2N6+0cvyOwfiEvYUeOs2/zmfvAURAoNcceuXkg/rghX+x6FERJhdOYGwthOL59CyyENmNMgOr3vUzZjxJw/dMYmGGV2ZZD6Iw1lZm6CORrsRWCQPJpqfBWxxasBFYagiWGoOZFMxMwEwMZqZXZt3mbdNq8cEfgezphBLbhOIAqhQuFGMoEz6hmECZ8IXHFMqE73vMYO5p905qI4bwvTTZTu+hsQ26OtLIlL6JSd0zu7dme0bIvKsQbzp9QrYvgN3KrhrbmAk09iUXZARArl7ViY77uvUr1Q6ysFHn0EyeBPgAuPSLOBvjLt2orDKKMvnTlnBmMYkR83JXEuJuZbQFMxt4dSEhSyHNM3/8goUbzNz4wl1GH3qutZBVPw6bSZ+ZNmxD4CofA1hlbpq5NWnc3Mn0oPi0aZq2GIdn2m/aXiPrfDK44ezZjFoND8GGL9z0vxp+kymH4+KvD+KCycEDK2L1YF6buVAi97nkqjr5pujiqsxyi7lkIXroOJQlV4de/B51B9c/27ccPRszwBKld0WfPxeGFmY8rxAOIEtP3fx8K9WWhSmGSb1XagMR12SBY4A8x5qTBK8zEGVQB1oCB/63yIH/6kA1z554EAV7OPkmgRFUIPsmgbFTLbTdNbZERhPHqmK7vW0VFoUGimSZxxSSdFkAqrHmpgqnm0bttsoqRV3biiy2xo1uaLq/+E76Oq4x8gJGXGD0BYy5wBhsgRzXJwQ1VP7UURFoi8oix3aaANoKFjs2viBo4tj5gqCpY+sLgYYB7DiBui1ViN2aX5BU4tb8gpjUrfkFMZlb8wtiho6HZc/OuMLI7bBs4uxNyMzfeTHU81He6tbjdeqx8GbIdFh4H2I9k/+EPuStLC7fmTAG0mWKH+bzxHbMj/PvchgD8340YdsTO7PmVno//nvTqeXu5pDTQx9c9dPcJ5jFKYlxFMdpzM7nPyOo6Dg=",
-      position = {0, 0}
+      string = "0eNrFme9yoyoUwN+Fz9oRBdS8SqeTMYopswoOYnuznbz7QjQmTcj20L33bvshkeAPzl+Oxw+06yY+aCEN2nwgUSs5os3zBxrFXladGzOHgaMNEob3KEKy6t2VrkSHjhESsuH/oA0+vkSISyOM4PP9p4vDVk79jms7Yb2znvQbb2IHiCsLHNRo71LSLWVJWRGhg52flZbeCM3r+UecHqM7arpSR2OB+1dz4t5TCfZTiQeagaEZHErAUAqH0hXadpNo4vdqb6feI/MrJJfVruPbTu3FaEQ9bt9fhb3u1ZuQe7Rpq27kEVJa2LWqGZI85dSzOgOLlMNFysHQEg4toFAa4CYlGBrgJjhZqZ2qVa+MeOMeJPlTi6Y+i2IMlinASzE4SmmAo2BwmNIAT8HgOGUBroIpNPsx4qcyH5V5qTtPTl08kGBATsWXEHQakPFo1PDYVrdMK8B4djPE+8EckG+RArp3VvrX8WrkEpM9b8TUx7yz87Wo40F1njgi7GlxZJI90aPvhLkE5CAGHhsV77WaZOOBFSssfQDDUKnTs9T0s9TeQzCFUvNspfo4GdRL08X2NAHsjnyqGeKlrrhnrtqj+OlG6sLHpd+2NU0emId9w9Yn2Ne7vQSVkK2Q9rfYreE71270cJ6/HbkxNqOPbuLCeq+MpVsG17XL7ns7aB3WVmp2pDKT5nPy6VXjplcm7tVokFf4Amr9fJXcyynhSqSrqClEiVkCVuKFnP2fSsyuD1ClLSo2lfzhK4kei+6tSVNYFOXZJ66PFB7lBGCaS5SvYcgl1/tDbJ8suG6r2lfGpFcr7Ka25Xo7ip9O38n651uNBvvqjQzYi2Wh6ZmWANXk309UxQMbFqEZ/3ajfvlLaHy5pDeD2feSFP5tfHW8ehBgBJwCnP//nS1i8BbJ39piGlo5suzGf7zPuBksSRG8yp1Bkh8hoIqUPNprel2StqLrfBUpueSUcdqd5z987LSL+CBXFcTUD78NnOzr1EHyr3BpEK74CkeCcCXM3LQIMzdNQp8NbnfrpQZ3oBgF+DwNbkExiAqCe1AganATCkSloJaFC40V+e81oWhwFwokU3AbCkQN7kOBqCWsC0iz/8QALAntg0GEYsGdKBA1uBMFogZ3okDU4E4UiBrcibqnvtjjtH7lzdQtrf5L2LtrnESUXs1xPHu30s3yYuHzURzZykaYba1kc1p+nmSBQ6X5dnn3oFzls3xvJ3eAvzjhbhtNwaylP/Vi/09iGVX/cLfLWdrzhu3oqdm+q9yXuXZeRl3Ddh6mV6N0newK78uwtX+rlXvVQqlb8N3q1S3yjMuIRimNrOKe3Udknxrcd/cRETduZ5/ewGyuXthE6I3rcW69FJgUGWWMEUrz8nj8BfO0dXY=",
+      position = {0, 12}
     }
-
-    player = game.create_test_player{name = "kovarex"}
-    player.teleport({0, 2})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_player_cursor_direction = defines.direction.south
 
     for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "locomotive"}) do
       v.train.manual_mode = false
@@ -2299,7 +2658,7 @@ simulations.fluid_wagon_connection =
       player.cursor_stack.set_stack({name = "pump", count = 1})
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor({position = {-1.25, 0.75}}) then
+        if game.simulation.move_cursor({position = {-1.25, 0.75}}) then
           step_2()
         end
       end)
@@ -2309,7 +2668,7 @@ simulations.fluid_wagon_connection =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        player.build_from_cursor({position = game.camera_player_cursor_position, direction = 4})
+        player.build_from_cursor({position = game.simulation.camera_player_cursor_position, direction = defines.direction.south})
         player.clear_cursor()
         step_3()
       end)
@@ -2319,14 +2678,14 @@ simulations.fluid_wagon_connection =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor({position = player.position}) then
+        if game.simulation.move_cursor({position = player.position}) then
           step_4()
         end
       end)
     end
 
     step_4 = function()
-      local count = 300
+      local count = 150
       script.on_nth_tick(1, function()
         count = count - 1
         if count > 0 then return end
@@ -2371,16 +2730,18 @@ simulations.gate_over_rail =
   init_update_count = 0,
   init =
   [[
+    player = game.simulation.create_test_player{name = "kovarex"}
+    player.teleport({0, 4.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+    game.surfaces[1].build_checkerboard{{-20, -60}, {20, 48}}
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqVmd1uozAQhd/F1yTyv01eZVVFlKDUWgIRkHSrKu++JtA0JZN6Rr1oKfjjeJgZH8wne61P1bELzcA2nyyUbdOzzZ9P1od9U9Tj/4aPY8U2LAzVgWWsKQ7jUVeEml0yFppd9Y9txOUlY1UzhCFU0/jrwce2OR1eqy5ecBtZnrpztVtdARk7tn0c0zbjjSJnpTP2Mf7ykb0LXVVOJ+0le0BKHPIJUQFEdSP2Q4Tt34ZnMt0MNT+hDoBqLPQJUwBMg4ym4DNTppkWx7xDAhCHjqAQE0c5iONvnLot20M7hHMFaPli6Di9tgsRUkynOcDMsdp+lzYGYOaMmGbVD+0RgKgbJIs3nHXFq5o9g6iCHjkDypPkacIcRRekQJAmC4I5hi5IgCBLFgRz6MkucxD0ne1l0e3b1Xuxj2OfypHuId3HRnyOx20XL2hOdQ3dhlwAsFzJ6fMGK0kKsiCYI1EVufoqSbnosPpHgQa4QCW9HiRYWJJcD0841EVA8sW0IShxFVgyDcR0yPTmay6EE96ZL/ha5EaJ6/P6me9rY02uuRXeCMOFttprNY5Ll4H01FVeOMQkczIVsc4rjgudWc/Tv4L12ua5HOP4GDcrrI8hdc5op432SuXoyClBtDICYY+UpEIdwsgpmt0UoJlRmuQwBcJkKfwiNjcrsOMp9BL2K8VRxYCNSHmiGJiSU8WALkFzohiYIqhiQIegJVEMTLlfedqmik2ghpT49dQAYnMEMRqHcQmMwWFsAmNxGJPAOBxGJzCe+LzhB5XjxIjfxRiOw/AERqAwKYpEUVJTUrRCAMNrcAmceNQGl7+JvDO49E0UgcFlb6IijUdREu3BUPsv2Dgtsf3CEGr3BSdkic0XhiiiFHChtZomBYYYkqdZuhHItFpLMThLIvT+YB3RBi/dHGQRLdWxL30nZBFtTvOdSyYUT8eJTJd2jE7QXvOWb2QgU5Le8iISgiiiMJ9OH6dpwjzimRhi8iiBgFpSLV73JxNJ7hylFpdECRE9LRuXE1fjnn5fvlW7Uz1v6n9vxo7H/u789M3gcRdlsfOZsfciDNuybXZXARM2Qo9FV23nLw1tF6+b/x7CYdz4HUL5tx8Tl/PLy/iTTd8jNnefLzJ2rrp+CocX2uXSCetcHl+DL/8BnQgcKg==",
+      string = "0eNqlme2SojoQhu+F3wyVzjfeyqktC5V1qEWwAJ2dmvLeNwiLrtNOuueUf0STh5fkTadDfySb+lQeu6oZktVHUm3bpk9W/30kfbVvinr8bXg/lskqqYbykKRJUxzGq66o6uSSJlWzK38nK7j8SJOyGaqhKqf+14v3dXM6bMouNFh6bk/dudy9jICXIgCPbR96tc14q0CSINPkPVn5PNB3VVdupz9BXtJPVEmnWpRqEahCoRsEKtwVmgNBqiZTJaBUTKqhS1UT1PwLxZRaulLzF4pgHHluxPTAIERcnCdTpVuoCCdfOP0QEPvX4Ur6Sp3COCDIoEUQDrqtkJHTvPRDe8Qo+UJJwy2L6b/QrNknGFbyHxSdTlD8B8VBmq/IoaCb++t22x7aoTqXX8mxmdAyt96Ni6Bsik1drut2X/VDte3Xb69VuD605yqM5OpnUfdlmrRdFe46D7LARFj+sOBP4/jDkqMgz1eEg/hrBAADSf4aeQICviJ0scm7jaPo9u3LW7EPfb/QozKhcmHld60z7pTncN12Adec6hpTxV9iTx5Pk2IJ5HMsgYddwf8TWSo8skjDnww0IEj+EnoC4m854B+eHMN6qllsFlICoWDeFwHyLAf3fyJOJgxYIXOljDFeg9Yml9IbMHa8CcFTOXvDfBwTwOKeEtzUA6SKj7UCbvLxCYvLJS94mWlhF7bJTO6s+f66zwJDayUCQhrnrHVSWSU90KZP0UOCsLNmS0hx6XuwlDgWS84UIx+dQ49Etx5Fz0HhBorrowcImAOE0qg+ehoKbgHF9dF33EUfmkxo+o676MNBwFeEzqiWfEU4SLEVaTSZ0Jqt6AnI8BWh27a2fEU46D6XbJsyRLsaDRkymwOd1hm6pWpPJKkoKSeSdIxkBJFkoiQgklyUJIkkGyUpIimPkjSR5KOkbzgcB1maJIjayRAtDlGLG6LFIW4nosUhanHLj9/4gFuiwyHqJkt0OETdZIkOlxAlER0uRZRkiKSoMS3R4jJqTEu0uIwa0xItLuPG5GcoGk0s3DccjoP4GYpGEwvHz1CegPgZikETC8fPUJ6ADDvvNZpwqnKWnQY/crFDoHPsY4TJKXI9+1TxyEXl5uwzmpWEN92CfUZ7xGJHPw/sg7slFA28ZB/cLRphvGK/xHGUuoFmvwdxaOHAG74+gue95eujLFHv2NPtCJ73nj3djrJEfc4tvoF/fP+jsXKP4JbfPnFRLLusCd5Q5LILm5+4eqzI9tvXcneq55LsrUoyXoO5azDSQte2283V38+vfx9qTWnyVlTDets2u6ueqV+4wbHoyvVcM2670G7+PlSHsTozVNtf/bjbCnH5ET5XmUO7/TWimkn9Xw3h16nMsynGb1JOOtrpIk1+du1Ytr5r4e9b+KXF2Hhqoe4Z6sYIPYOQa417dVcST5Nz2fVTVPGgvTLWWm1MMPPlDwN7EjE=",
       position = {0,-8}
     }
-
-    player = game.create_test_player{name = "kovarex"}
-    player.teleport({0, 4.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
 
     locomotive = game.surfaces[1].find_entities_filtered{name = "locomotive"}[1]
 
@@ -2389,9 +2750,9 @@ simulations.gate_over_rail =
       locomotive.train.manual_mode = false
       locomotive.train.go_to_station(1)
       player.cursor_stack.set_stack({name = "gate", count = 10})
-      game.camera_player_cursor_direction = defines.direction.east
+      game.simulation.camera_player_cursor_direction = defines.direction.east
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-3.5, 0.5}} then
+        if game.simulation.move_cursor{position = {-3.5, 0.5}} then
           step_2()
         end
       end)
@@ -2401,7 +2762,7 @@ simulations.gate_over_rail =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = 2}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.east}
         step_3()
       end)
     end
@@ -2410,7 +2771,7 @@ simulations.gate_over_rail =
       local count = 0
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor{position = {-2.5, 0.5}} then
+        if game.simulation.move_cursor{position = {-2.5, 0.5}} then
           step_4()
         end
       end)
@@ -2420,7 +2781,7 @@ simulations.gate_over_rail =
       local count = 0
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = 2}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.east}
         step_5()
       end)
     end
@@ -2429,7 +2790,7 @@ simulations.gate_over_rail =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor{position = {2.5, 0.5}} then
+        if game.simulation.move_cursor{position = {2.5, 0.5}} then
           step_6()
         end
       end)
@@ -2439,7 +2800,7 @@ simulations.gate_over_rail =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = 2}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.east}
         step_7()
       end)
     end
@@ -2448,7 +2809,7 @@ simulations.gate_over_rail =
       local count = 0
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor{position = {3.5, 0.5}} then
+        if game.simulation.move_cursor{position = {3.5, 0.5}} then
           step_8()
         end
       end)
@@ -2458,7 +2819,7 @@ simulations.gate_over_rail =
       local count = 0
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = 2}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.east}
         step_9()
       end)
     end
@@ -2467,7 +2828,7 @@ simulations.gate_over_rail =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor{position = player.position} then
+        if game.simulation.move_cursor{position = player.position} then
           reset()
         end
       end)
@@ -2504,12 +2865,13 @@ simulations.rail_signals =
   init_update_count = 0,
   init =
   [[
-    game.camera_position = {0, 0}
-    game.camera_zoom = 1
+    game.simulation.camera_position = {2, 0}
+    game.simulation.camera_zoom = 1
+    game.surfaces[1].build_checkerboard{{-65, -38}, {41, 13}}
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNq1m91O6zoQhd8l1wV5/B9e5QihUiJ2tEtSpYF9EOq7b6dN2hIMXQvOuWur9Mt4MuNZ9jhvxf36udp0ddMXN29FvWqbbXHzz1uxrR+b5Xr4rX/dVMVNUffVU7EomuXT8K1b1utityjq5qH6t7iR3e2iqJq+7uvq8P/9l9e75vnpvurSBe/+eTXSF8Wm3ab/tM1wo8S50vHaLYrX9MmkT+kGD3VXrQ5X6N3iA1cfuX0CN1fbvt3ksGGElu+RflFs++Xhc9HXq9/LInMTAxrvONvtEbt67l6qh6u9Uz9irR+pfmZ8humOzO3gkMdf/adUGanhsqUetNTEvKUmwwywpabELY04NeDUEqc6nCoKxxoCKziWiAHRMFYTD0xOybVuV+1T29cvVY5pz5htVyfMmLfqOrgc2OL2EqEgeIZpJhY8jmViAc8yzcTCKc1Wy+6xvfqzfEzXfoRK+PypDe6pm5f0U9ula5rn9Tp3Kzz3hAg7jeeeENGh8dwTIjq0Rv2tfupvbfAREIGo8WwUIhA1no1McODJyMQGnotMaBAVj6ASWYdTDZx0DBROOWL8Bi52xKMycGoRUWVAFTmUb1SaGUJFTmll3mNDDgvLyMlWDUADJs7lJM7dXJxnfQDn1XEin7lActQSdIGbXKAuQ63iF1caWqAIuboyF1ZX97nVldX08gqzHly2iSW5cCmTT/ySk6vW0VQBQsOT6lpAdW0Dr64F8G3k1TWCLXl1DWCd4tU1ghVWXct31Z7TvLpGRmB4dY1gLa+uEaxj1fX3/e15dY2MIPDqGsFGWl0j1JJW1wDVK1pdI1Sh1TVC1bS6RqiGVdcI1LLqGoE6Vl0jUM+qawQKJxaRAB6XlsyTgtOKmVmCApcXMa9Xszu/cFJ9VnNyiiRolqrLywIqwEk1Vfg5NWurpakBsNWhQvqoeLVPijeHgpNp0ktzA7PDDjTVAcOO5JpKz5aVNgeFs2nSoXNTcw6IiqYCi8oomAP0mKNa5R551PSiX4BQj4bHArEecSloQx6btdahPblxwST28hZF9FheGjWlpfj5QjQXoxHc+kgeOILtHJw1OHIBJRrwbEn3+8QAnTlFN/wgrNAdPwir6Y4fhDV0xw/CWrrjB2HRHJs2JebhldMUpaeX4kD1LwO9PAamxDLSVGBGLOmKFS7PBKLoilVefliihN4fACZvUZrGAvpClAEDVsaAtYhjwX17rbLM/HkCx+orh1hKa8GAhECg93IcEgKR3yJCQqBkBTvQDxH8AMhEBRoXQpz/OK4EAc+enf+4kAWHiFWIAwy48+ZPdn7vFAFxGqTM+iR/0sbRW1kI1dNbWQg10FtZCBU8CSI/foB8Rxo500R3pBEo3ZFGoBrq5MQv/JzFGnYrDrHVsltxCNSxW3EI1NNbcQg10FtxCBVclYnPzb95ZEk3uZETfYre3wPKmkGPEIuZVrsKWeyKQfvPclqfz8E+CzZQ+3yKrPlu7LvmefvJ0WQ5O//xdZdbk8ajTTF3XZZaYjjQ1XWp/H4r7MP0E2zUwYekUpNQd2Z/HTT1G7YeChKkbDmEoFQ1/HYXUQxbDBHjLVkLISZZCiEmUwkFLYSWLISQpWQdhJhkGYSYbBWEoIGZ/cyFyS97ckjOjotgk5/+OPfdplutflUPz+vxzZVTUA3fU4VO2uvsosPbMbOZeVH8Wdb93aptHvb3PZASZ7PsqrvxDZq2S9eNn/v6aYjZ4VDUdtj5VbvbYYDzl1F+yPUDdg9+P6j0wFMafT2o+/9pUPf/0aCS9ftXkm7O3mBaFC9Vtz1EUEwRWOogPoTSx93uL6VzQsw=",
-      position = {-12,-16}
+      string = "0eNq9m9tuqzoQht+F6zTy+ZBXWaoqkrBStAlUQNtdLeXdt0kJTeh05Z/dw12IzIfHM4Pnt82fbF09Fg9tWffZ6k9Wbpq6y1a//mRduavzavivf3koslVW9sU+W2R1vh+u2rysssMiK+tt8W+2kofbRVbUfdmXxev9x4uXu/pxvy7a1ODizpuRvsgemi7d09TDgxInxqVdZC+pvfJLm/jbsi02rw3MYfEOqyZsn7j1Tdc3D++pUsgT9BIp0/1dn79eZH25+SfPiKdorPNSKV7vzcTdPLZPxfbmiM+JYXEjNs77T1DtRO2GQdnd90cuNdg0leqqQ6FvYw1QPU7VODVM1KrZNPumL58KCmmWTtkzbFHn66q4q5pd2aVY6O6e78t0vW+eynqXrX7nVVcssqYt0/PGmBFLb4keRNwui9slBY71DKzEsYyIkW+5ucnbXXPznO9S2/dQKb/GD8PL6Cn91bSJVD9WFdUpDdsqGXEsDY5lBLK0OJYTR3gyS04cedTh4QcdHnBbOcGNZ7hixJHCM1wx4kjhGa4YcaQUjmXEkcJzVDFcpvAc1RyX4TmqOS7Dc1RzXObRkkPqQGMdhQ0kdk3UHOPQaglUMiqiWGk0zaV6qwVYzxl7que0nNdzJJhd5WqN1ImaWeZqfa3MXZNlLr/OBftv0AHnguHkC2M0a3NJpcJOO7guVyPVAtGs4Wo3WhpLDgE8wUXPoEauiECoRrBVBISVbBkBYRWqI86YX6chjGaLCMgqwxYRENayRQSEdbCI+KwTFFRPGs8WEJCdgS0gIGxkCwgEawVbQEBYCQuIn3G2VWzxANmp2eIBwhq2eICwli0eIKxjiwcI69niAcIGtniAsJEtHhCsE2zxAGHxeVYzXObwLNMMlzk8ywzDZQ5etJXG0FhKOjg8y4yjS1kS61AFFU6B4K8XyM7DVE9TyQLZ4UlmTjOAA8aAoSIj3V0K6/EkG+bLIzYA2Lcku8+r3zfbcpgE8+ojXTO+Foy87javYLdxqHie2VEuGQGMg4G9ZsfQNfpAgSwmPv0kys2weUORYF0YxheKccD44UsydswmE8juBVBl2zBZGucqO1DgyLXbiuvUINh2WzV7iwiKK7lRboExCIodjtYjvdXcV6md7wGSW2D4LCXUB1wqWIPFuY7mUske2CsuTiKj4LkbrHMsSQXzLE5p5t6tHkpJgSPr1T8JTAeseUYBxy8LK/G0kPgQR8WeU5y4/qqNGo5eeQoIDcRZNGydOOeSWMvWiRAWXVNR6gz6jTI7erZwhewMbOEKYSNbuCJYKQTqlvgzbjmuwTK1NGapYotpjKvZahrjGracxrgWW2DW7vMOJ5/v2Hoes8uzBT3GDWxFj3HxjDacuJF4hWschyvZytOp67OjPDux83cBIc1U2dh3lY0m0RovPyY0MPNKiW4tSj/12SyR7Tp5dvrmr7uuUwzPV48uNl2bD84WyrPTOFc2RwXbAo+vfPgPjCC5AQ5sdQpAD3kzwqXJUggdxXSOyLllVDL4T+wIOOFCylnjXEIb6aML4Bmj/3FsZz4e9Ak6/rkdjMs/uINxNbeE8d9cwjAO/Vz06aqlll/CQFzHL2EgrueXMBA3MEsY/7UljIr8EgaxSwt+CQNxJV4SKA5XMeeqeGWuIg8ISfiE0NlcFYi56jY9bnNfbB+r8WuBt+AZrsMi1cZnbQZqur1pt+O3CbNpdZE952V/t2nq7bEXr60S8SFvi7vx+4WmTe3G3325H6J0OAnVDefBxOF2MHf+KcAnuW7A3h6Xai/tS65NmQMbuP4mA9dfZWCy5Ph1yOrsY5JF9lS03WuxGaQJ2jrnjDVRHQ7/Adc/fLA=",
+      position = {-10,-16}
     }
 
     for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "locomotive"}) do
@@ -2529,12 +2891,14 @@ simulations.train_stops_same_name =
   init_update_count = 0,
   init =
   [[
-    game.camera_position = {0, 0}
-    game.camera_zoom = 1
+    game.simulation.camera_position = {0, 0}
+    game.simulation.camera_zoom = 1
+    game.surfaces[1].build_checkerboard{{-40, -16}, {24, 44}}
+
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNq1mtuO4kgMht8l1+mo7Dpzt/saqxbKQDQdLSQohJ5ptXj3rZAADTiNLc1qLkahky+/XS6Xq5zP7MfmUO26uumzxWdWr9pmny3++cz29c+m3Ay/9R+7KltkdV9tszxryu1w1ZX1JjvmWd2sq9/ZAo6veVY1fd3X1fj86eJj2Ry2P6ou3XB5cnXo3qv1ywmQZ7t2n55pm+FFifOCKs8+0v8msdd1V63GP7pj/oDEC3LfJ9rPt34OCnaE2lsoElDNh2o21PChwIZaNjSymY7N9GymZzP5oxR40UTHkiaAkS2SP+qg+MPOhzInkmGbDux5JFDJnkYCdxqe5YFvOX8K4aQTbqmeorqbJPkyJVJqrhdTxOvCPk934G+5q7eybubpWgYPwgG7cwRQTPak8mwmsufUOZNyoNc5tWlX7bbt6/eKCgJbKG8Qgh9dqwqrLViHg4Pbrk7YcrxfFSqGYKzyqKJKN3iHUUdjNQw3PypA7vLoTm9GhlGaGYZ4CUO4jxRSKnManoVSCMtDgPqG4ZgM8w3D81x0nkrq3j/U9MfACiZXOGWNO4eSKaarx0hKP4PF6JXy1qWAijGo6dbHl0eeRV5ikVYsi0D9LyZp4Jl0yaY8m5A7O+yEtfdYQ2H55SOOSc9Tgamvc2ygpCzftztS3MTI0+sm72Z/ZxTRsohX3ldDv9L/Sg9ty+ZQbpYn0H65qbd1T+cg7WQrAO0Mz5Ie/7D0IFxoaO2RpX3aSvwx8Ya/Stp58QakwRxJDMqCgIZo4XDQFCP0C02xUr8AkBxmoXjOQDBkNorjZQ6eURN4auIzNVE4UrQcq5hpXz/RY0E45jN6UDzomuRo6cIDmrPyWCMMAlqdlQ4ejXFSn9MYz6zLJ5N8YcBHsuSg6EE8onSACbc5NMVJNzYzGN5W5uz2UKCL06bkvkijijGH0oGlVYrLJCBXKCcNepoiDnoaIw56GuPFviFXKReEvqEp4mxOYry0IJnBiCsSJJO5F1f/CJwk7LXM5zPqjNDnMxgr9PkMxgmPJhzDT150huCen0r4IKulEOlqwUfZ0QRDWlCywmpOWgDZiQdHGgqLrFltmrlSm8LE6wEafrf+hBC0hWC9c4hKRfReG02eEQQjPcjFyPCO5WYJLC722OfHzsHJemEan59nBC/piNwTyRZLkDQaWMQoO2O+HyOyb6MkTQGOygjCHM5RidKMzoFydxJwTnr6YREjHWCYXC3DWl6KAChidCrqKUdo/ZgayCQQnbQffEI/k+2lDWEWNUg7wixqFLaEOVBQStgU5lFB2BbmUVHYx+VRtbCRy6MaWd+VB7WyHPsIfc2z/eqtWh8204cc19k6XCPkGHKt8rQ5T5vNtPBH++WR8dORu7Po21PMX2XdL1dtsz6pGd+R3rAru2o5fWrSdum+82cnTZm0vScrh9/q1b/7Yd+qjq/Dv3z8KmXx5SOWPHuvuv1oTADjU90AzvuYcsbxPxgGVWM=",
-      position = {-8, 14}
+      string = "0eNqtmltvozoQgP8LzxT5Orb7tudvHFURJWyLlkAEtHuqKv/9GBJyKZNmJrvalzUNH56bZ2zPZ/Jcv5XbrmqG5PEzqYq26ZPHfz+Tvnpp8np81uSbMnlMuryqk12aVM26/C95lLunNCmboRqqcv/GNPhYNW+b57KLP0jnN4u37r1cP4yAhzxJk23bx7faZoRHkvZp8hF/71ykr6uuLPZ/lGqXLqjqSO2HCHx5HSbukmokTjUIVJOhmg41ZKilQy0Z6uhQIEMDHeqoUMswlCdDGYYKZCjDUFKQqQxLSXJQWcCpgFHJQWUZDiDJUQUMD5CGqgEQDA1YMtUwqIBSn5ElcHbXQFgC5Sm0Jt5hpV5GK2Szw/rMUsD+Ely85lVzFW8NFx+o6jg6RLitZCXIVMugSjI1MKiKZjmtZtV6uVCtwMCnWKvbot20Q/VeLrnKZw6C1VLNeJ0FM413YzLPn+tyVbcvVT9URb/6/VrF8aZ9r5qX5PFnXvdlmrRdFT+e76kiEx6EcFJorXTQYEAZobTRLn6haLcfq6Kt2271s2s3q3EVaFb90G4PNEwSQ1W8CrMMlwpCqwbLdZJIxTjAdYsrHEflOP0tx9McCo6x6s3CoSwGDkSwZ4K1oIGd4oLJqVEdEq73tx1HEyNWnfQQvk7XY1xawAJkl/Hqs0N03RuvxllrhA7BWqmDBCEtqDtjVdNz8UnlGMeSlOFE5gyIMK0tB21ocNL/iTZCXLKki9TgnFNKQnzi7128NFAV4uS3CnFkjv2WQ66X55gIEuWcVoNJDQ+TGq6uyBGSxg8etJz8k2C7I0FCzsvxhDyPqfMP/IjvbfLmLa/3VupXdbWphnGPinxYksvSb3ViFE2A8NcFINfVs5NdEcCQBJgT0F8UgLyJdfZbAYDt3WgSNY7tETjHsw2DcwJbPyjHCrZ+LMqRxFrAzjkwjCkbIym2pnGOJs4o3JyRYdsM51hiWaNvzgjY1sc5jm19h3I8twIKjlIB2cD2BXR+INgWxDmSrXeco9h6DyhHs/WDc/gejnP4qzbOAdpWdS+UEjIzcH+Fd18dB9zYidNEZfVMG17jBKYNr3CcYNrwGkey9YNmKKfY+sE5mq0fnGNoG5FZOSr7o73YnbsMZ9lWxKUFthXRTOMcM0NEDiVDOH704PPjRw/K8fzowTncekoJwGsFr5h10HWSZtYv10mGeQ6jhL/tC94yjxoWVPTc1HM37EQsd/9OxHpa6gyZ8vORkZIq86CnB/euU0EIECaA1kKBVFqY+49IfGCe7yqpb7tH4F4CLKiowgP3FoCIVczTXyJWM28XlFwcrWK3FsEwr7GU/HqTj167ErdM+rh4ycXGAuUCjXu8v6JyHfP6aqEGlOrZnkuhBrbjku60BbOnQ8lA8AQpJLOrY8HFsYrZ10HEamZnBxFrmL0dRCztcN2ETHp3Pt+7UsW9aUEKbhMKUXpuGwoRy21EIWK5rSg0LLsXhYjlNqMQsdxuFCKW245CxHL7UYhYbkMKgn1Kk754Lddv9aFB7xT/41jpNOZrbVOANG58Y3EZ14qzd0Z+pLXd+tAQ+OVC5/L0/3deDTHom/U0t/0b8WvbvCtXw8d2FKTt4u8O/6+aPM7zPco8PquKX/14iSV2T/HfNPGhLX6NvGYvzzyF+HTsdth/fxroi4E9GwCcDZw5G3h/NohSj1+shnITJ3bqhkyT97Lr9zfDXhqvLQAYC07tdv8DDz5wYg==",
+      position = {-12, 14}
     }
 
     for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "locomotive"}) do
@@ -2560,12 +2924,12 @@ simulations.rail_signals_advanced =
   init_update_count = 1000,
   init =
   [[
-    game.camera_position = {-1, -1}
-    game.camera_zoom = 1
-    game.surfaces[1].build_checkerboard({{-16, -9}, {16, 9}})
+    game.simulation.camera_position = {-1, -1}
+    game.simulation.camera_zoom = 1
+    game.surfaces[1].build_checkerboard({{-62, -44}, {60, 54}})
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "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",
+      string = "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",
       position = {-6, 4}
     }
 
@@ -2584,355 +2948,131 @@ simulations.rail_signals_advanced =
 simulations.copy_entity_settings =
 {
   init =
-    [[
-      local surface = game.surfaces[1]
-      surface.create_entities_from_blueprint_string
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({0, 3.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
+
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqVlOFugyAQx9/lPkNTVKzzVZqmQXe1JIgG7DrX+O47aWa6zLgAyXEQ+P0vueMeUJkb9k7bAcoH6LqzHsrjA7xurDLz2TD2CCXoAVtgYFU775T32FZG24a3qr5qizyBiYG27/gJpZhODNAOetD45IXNeLa3tkJHFxaSb5UxHA3Wg9M17zuDJNN3nt52dg6AeDxNdpLBCGWxk9PE/vCSSF5y2Oalsbz9Ni+L5Il0mycjefk2Lo8Nbxt3WHALCC26ZuRUZ+guql7PcWCKPdVRdbtc0J29/sL5ZBkrYsV2Ua7k6id6QUkjLYe1fpa46yxvUDl+vyIaWBF7ixUTxavYClHso5HyP6SIRia/kPR579qFn3sUTLKEyRM7kmVp8MiyLHhk50nevObk0dvQKsqXzsLgA50PekkhsiKVeZ5nUhbpNH0DtYlyfg==",
+      position = {0, 0}
+    }
+
+    local story_table =
+    {
       {
-        string = "0eNqVkd0OgjAMhd+l15sRRKd7FWPMwAabsEK2+UMI7+6AG4xGw11P037npO0gr27YOOIAugMqavagjx14KtlUQy+0DYIGCmhBABs7KOM92rwiLqU1xZUYZQq9AOILPkEn/UkAcqBAOPFG0Z75ZnN0ceA3SUBT+7hc85AgAmW22gpoY7FebaOPw4KmWK5mWaJx8nFFrGKGD690qVcy9/oC3CwE/uNlC3lvtxguPf5Gz14p4I7OjxvpPsnUIVXJTqmDWvf9C5Gbou0=",
-        position = {0, -1}
-      }
-      surface.create_entity{name = "substation", position = {0, -10}}
-      surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
-
-
-    player = game.create_test_player{name = "big k"}
-    player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
-
-    update_player_selected = function()
-      player.update_selected_entity(game.camera_player_cursor_position)
-      local selected = player.selected
-      if not selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        return
-      end
-
-      if copy_source and copy_source ~= selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-        end
-        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
-      end
-
-    end
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {-4.5, -0.5}})
-        update_player_selected()
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local wait = 30
-      copy_source = player.selected
-      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
-      last_selected = player.selected
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait >= 0 then return end
-        local finished = game.move_cursor{position = {4.5, -0.5}}
-        update_player_selected()
-        local selected = player.selected
-
-        if selected ~= last_selected then
-          last_selected = selected
-          selected.copy_settings(copy_source, player)
-        end
-
-        if finished then
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local wait = 30
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait > 0 then return end
-        local finished = game.move_cursor({position = player.position})
-        update_player_selected()
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local reset_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= reset_tick then
-          for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "assembling-machine-2"}) do
-            if v ~= copy_source then
-              v.set_recipe(nil)
-            end
+        {
+          name = "start",
+          condition = story_elapsed_check(1)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-4.5, 0.5}}) end,
+          action = function()
+            copy_source = player.selected
+            game.simulation.control_down{control = "copy-entity-settings", notify = true}
           end
-          copy_source = nil
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local start_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= start_tick then
-          step_1()
-        end
-      end)
-    end
-
-    start()
-
-  ]]
-}
-
-simulations.copy_entity_settings_controller =
-{
-  init =
-    [[
-      local surface = game.surfaces[1]
-      surface.create_entities_from_blueprint_string
-      {
-        string = "0eNqVkd0OgjAMhd+l15sRRKd7FWPMwAabsEK2+UMI7+6AG4xGw11P037npO0gr27YOOIAugMqavagjx14KtlUQy+0DYIGCmhBABs7KOM92rwiLqU1xZUYZQq9AOILPkEn/UkAcqBAOPFG0Z75ZnN0ceA3SUBT+7hc85AgAmW22gpoY7FebaOPw4KmWK5mWaJx8nFFrGKGD690qVcy9/oC3CwE/uNlC3lvtxguPf5Gz14p4I7OjxvpPsnUIVXJTqmDWvf9C5Gbou0=",
-        position = {0, -1}
-      }
-      surface.create_entity{name = "substation", position = {0, -10}}
-      surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
-
-
-    player = game.create_test_player{name = "big k"}
-    player.teleport({-4.5, 2.5})
-    game.camera_player = player
-    game.camera_alt_info = true
-
-    update_player_selected = function(position)
-      player.update_selected_entity(position)
-      local selected = player.selected
-      if not selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        return
-      end
-
-      if copy_source and copy_source ~= selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-        end
-        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
-      end
-
-    end
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        update_player_selected({-4.5, -0.5})
-        step_2()
-      end)
-    end
-
-    step_2 = function()
-      local wait = 30
-      copy_source = player.selected
-      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
-      last_selected = player.selected
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait >= 0 then return end
-        player.walking_state = {walking = true, direction = defines.direction.east}
-        update_player_selected({player.position.x, -0.5})
-        local selected = player.selected
-
-        if selected ~= last_selected then
-          last_selected = selected
-          selected.copy_settings(copy_source, player)
-        end
-
-        if player.position.x >= 4.5 then
-          player.walking_state = {walking = false}
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local wait = 30      
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait > 0 then return end
-        player.walking_state = {walking = true, direction = defines.direction.west}
-        update_player_selected({player.position.x, player.position.y})
-        if player.position.x <= -4.5 then
-          player.walking_state = {walking = false}
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local reset_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= reset_tick then
-          for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "assembling-machine-2"}) do
-            if v ~= copy_source then
-              v.set_recipe(nil)
+        },
+        {
+          init = function() game.simulation.control_up{control = "copy-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = {-1.5, 0.5}}) end },
+        {
+          init = function() game.simulation.control_down{control = "paste-entity-settings", notify = true} end,
+          condition = function() return game.simulation.move_cursor({position = {4.5, 0.5}}) end,
+          action = function() game.simulation.control_up{control = "paste-entity-settings"} end
+        },
+        { condition = story_elapsed_check(0.5) },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(1),
+          action = function()
+            for k, v in pairs (game.surfaces[1].find_entities_filtered{name = "assembling-machine-2"}) do
+              if v ~= copy_source then
+                v.set_recipe(nil)
+              end
             end
+            copy_source = nil
+            story_jump_to(storage.story, "start")
           end
-          copy_source = nil
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local start_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= start_tick then
-          step_1()
-        end
-      end)
-    end
-
-    start()
-
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
 simulations.copy_paste_trains =
 {
   init =
-    [[
-      game.surfaces[1].create_entities_from_blueprint_string
-      {
-        string = "0eNrFlV1OwzAMx+/i5w7ls0l7AC6BEOq6aER0SWmziWrq3UlaGEh4sDzx0qix/YvzdyyfYdsdTT9YF6A+g229G6F+OMNo967p0l6YegM12GAOUIBrDulvaGwHcwHW7cwb1HR+LMC4YIM1a/zyMz2542FrhuhwiRxDjN0/h82CKKD3Y4zyLh0VSRtewBQXNc/FDwq7lSJ/gfDcVCRGEZmpoBB5gXS+9Qcf7MlczYNEuf1gI6JZjeQuxre+80NyjB9SwD5tV0RqzbjUUlLCJK9IyaLrNtm00oJTripVSaKEKJn+MDfJLCpNeMWojAsVJS8ZJ6LUCk2/zFWSYxR1kwjyqgYIUmcWB82ryr0dxSiUZOaCU3L7B6dk9g8O+eqfxHCbMfgeyWNF8FiwnR1Mu5pi14yfpYP7pntJlf7PJ0xFprDoU6HyJk34n5JMr4ESQgE7o8wrHp6oyrwuLlpmf+GQ3P7CJ0Jme0VInFTLLKu/jb4CTmYYF2emqVAVU7RU8YWxeX4HlPhDmA==",
-        position = {0, -1}
-      }
-
-
-    player = game.create_test_player{name = "big k"}
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({1, 2.5})
-    game.camera_position = {1, 0.5}
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {1, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
-    update_player_selected = function()
-      player.update_selected_entity(game.camera_player_cursor_position)
-      local selected = player.selected
-      if not selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        return
-      end
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNrFld9u2yAUxt/lXJOJ/wY/QF+imiLHZS4ahtTQbFHkdy8kbTZptAq52Y0tOJzf+fyBDyfYuVezX6xP0J/AjsFH6B9PEO3kB1fm0nFvoAebzAwI/DCX0TJYBysC65/Mb+jJ+h2B8ckmay7558Fx61/nnVnygmtmTDl3ek6bMwLBPsScFXwplUkbzhAccwIV64r+4dCbOUx8xWHteroah7frqXJEux5d48h2PVVO16yHkRpHNeupc/SV48IY5pDswXwlhq7lPA47Z7YuTDYmO8btr2ebx3M4WD9B/2Nw0SAIi821hgsFf8sqxuDCUoj5gRFMZVpjoRRlQglBMBVMY0nz0l2JqU5xRlinOy1wx7mk6j08lDDXCjNNicgvwiWTlGEuVVc9lwS3G8+qIHKbY1fb73esVr39P/3kM/78qIXjNzGFfc2MD0pWA092MeMlms9f/JAKD4P7WTz4rxvM2ze4DhK3OcO6G5w5viSCMYFanfaW8ongO3pKtVeSO5pKHaTbFVW7JcXtijIo35nnW7X/6xJGcDBLPCdQRbhiQkrJBdd0Xd8AXHltUg==",
+      position = {0, -1}
+    }
+    locomotive1 = game.surfaces[1].find_entities_filtered{name = "locomotive"}[1]
+    locomotive2 = game.surfaces[1].find_entities_filtered{name = "locomotive"}[2]
+    trainstop = game.surfaces[1].find_entities_filtered{name = "train-stop"}[2]
 
-      if copy_source and copy_source ~= selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-        end
-        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
-      end
-    end
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {-3, -1.5}})
-        update_player_selected()
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local wait = 30
-      copy_source = player.selected
-      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait >= 0 then return end
-        local finished = game.move_cursor{position = {5, -1.5}}
-        local last = last_selected
-        update_player_selected()
-
-        if finished then
-          local selected = player.selected
-          selected.copy_settings(copy_source, player)
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local wait = 20
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait > 0 then return end
-        local finished = game.move_cursor({position = {3, 3}})
-        update_player_selected()
-        if finished then
-          local selected = player.selected
-          selected.copy_settings(copy_source, player)
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      local wait = 30
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait > 0 then return end
-        local finished = game.move_cursor({position = player.position})
-        update_player_selected()
-        if fake_source_box and not player.selected then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local reset_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= reset_tick then
-          for k, v in pairs (game.surfaces[1].find_entities_filtered{area = {{1, 0},{5, 3}}}) do
-            if v.color then
-              v.color = nil
-            end
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(1)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = locomotive1.position}) end,
+          action = function() game.simulation.control_down{control = "copy-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "copy-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = locomotive2.position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_down{control = "paste-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "paste-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = trainstop.position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_down{control = "paste-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "paste-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(3),
+          action = function()
+            locomotive2.color = nil
+            trainstop.color = nil
+            story_jump_to(storage.story, "start")
           end
-          copy_source = nil
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local start_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= start_tick then
-          step_1()
-        end
-      end)
-    end
-
-    start()
-
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -2940,327 +3080,189 @@ simulations.copy_paste_filters =
 {
   init_update_count = 750,
   init =
-    [[
-      game.surfaces[1].create_entities_from_blueprint_string
-      {
-        string = "0eNrVWdtuozAU/Bc/Q4Uv3PIrqygi4KSWiImM6W4U5d/XhCbNNrCcY9qHvoWA58wczxjLnMm27uTRKG3J6kxU2eiWrH6dSav2uqj7/+zpKMmKKCsPJCC6OPRX1hS6PTbGhltZW3IJiNKV/ENW9BLMDq6bopLmYRC7rAMitVVWyaH89eK00d1h655c0ftYpXdKu1th+Spb6zCPTeuGNbqv5qDC9CUOyMn9SF7ia4Xh+U0rrVV63/bPGXlo3uSmc/dqK42sNj1Bd2tX1K0MyPD3wORW1zQ63MvChL9fpaxd4bLp+qbRKArIoan6hwob1rK40rq3Y33pO/JJD/vci2cdyaOKShlZDnfd0PemNp09dn3vn+D51Dw9lxH/tuuhkBgBFvO8+QRcAuAdw6eZfs80y9rxdVOtyrBUpuyU/Zhp5jPTCVhS9BOMm84agC3wbQb2LUfZNp9lHS9wLY3Ac5z8ENdS6rGCCMhUUOaBHIOQOd49MMoCDwxjHHv0goGQEw9kDkJO8c2AUfYIP4xxDu/FPZ8RBJlFHl1+Qk7GkBH5i3HIH/lrj7WydvQlLgZE+tSF2/IztegMq+TGbSgb48r2K67cja6aDLFJ4ZMS2RgyPK+9NTHIiMBSnJXggUUCw/PKcEbyyCsMOAc4dNKgY7theExjlB04PKUCBwx/SeJWLM7xayGsxwIPDGPsETkY4wQPDGOcoqMMI5yhcWF8c7TZQHxFhMYF8RUfqevcJtbsjdvoVnNm4yOvstvhhJ7Y2AuGNzVoryM4RgJdIkHgXQ6TECMkLFKAfzPCBKQIAYtclKFzABOQAw6R3gEzNOs48klZMt2f/5z60Hkh1F8I88manxA+K2SBDuEROD8Z8ayMBb5KPGLnJyOFnybeCuUexzLWdHLsDCXO8KeZX1o/B9f/jvIJ/lTMv/w6GD4xrB4+ZwTkTZp22GNnVKQ5S2mSpnnKL5e/ZEFBiA==",
-        position = {-1, 1}
-      }
-
-    player = game.create_test_player{name = "big k"}
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 1.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
-    update_player_selected = function()
-      player.update_selected_entity(game.camera_player_cursor_position)
-      local selected = player.selected
-      if not selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        return
-      end
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNrVWdtuozAQ/Rc/Q+UxNpf8yiqKKHFTS8RExnQ3ivLva8ImqVpQx5PtQx8B+8yZ4ZzBmZzYczvogzPWs9WJmaazPVv9OrHe7Gzdjvf88aDZihmv9yxhtt6PV97Vtj90zqfPuvXsnDBjt/oPW8E5+XJz29Vb7d5tEud1wrT1xhs9hb9cHDd22D+HlSu47TX2xdjwKG1ede8D5qHrw7bOjtECVCrkk0rYMYA+qUuEaf2m194bu+vHdU7vuze9GcKz1munt5uRYHj0Ure9Tth0e2Jyjes6m+507dLfr1q3IXDTDWPRgPOE7bvtuKj2aavrC61bOdbnsSIf8hEfazGTR/Yui61xupmeyuRa1G7wh2Gs/Sf4bOk9zYSBf+XKPgYqZ4AlAVhggBWiIHweDgSiIjleQFB+i4B0GwgHEZkmbYxrBuPvGhIUDRURKeU/wBPl1xIARfdEhZcuZDGeAE5ARpkCItoe8J+hWkC0vnEN2elAaX4S9Too3U+hkBVBQjjOOQEZx7kgVCNHIZcE5AKFTGkCKM6C0gRQnAVEVOOKXKGQRQSyWEIGMQdNMSES+u7C/tAa7+cPC3CBLD/V4drlxoXLPS5smjrMJhyNOxfij/1Kv8x2HBHhXsGXkpVzyDHuraKQI9x7OxDhVBXhXlBRyDHulVGiyjhGVJAtiGoOEQgNAUk2wrcgYlSRRdgWeMy7yyK+nQBRnBWhP44hEKRzCjRHQVP8h4QuKdC4glQEb+OgJadAowoigaBqJGtBgcaxvntxCCdqt3Ph1L39Wn7ZzCfvOoWxC2dmKSlCR/2GkSomjbseSWnkFOXj0iii0lAPpUH5giLTqKLS4I+koTjFG7hpEdC8USynsfyDUgmagmnBMprOaMEkTQ20YJgR3+1NVfFyyxGDhfIB/AIzn3oAHzP/4g/gVxEz9NuYihOmSd4Nem70k3PKEPa/MogZqKlvYSAoIz06g3Uy/feyevc/T8LetOsvgUQJssxUnudSqaI6n/8CLgGRnw==",
+      position = {-1, 1}
+    }
+    splitter1 = game.surfaces[1].find_entities_filtered{name = "splitter"}[1]
+    splitter2 = game.surfaces[1].find_entities_filtered{name = "splitter"}[2]
 
-      if copy_source and copy_source ~= selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-        end
-        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
-      end
-    end
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {-4, -1.5}})
-        update_player_selected()
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local wait = 30
-      copy_source = player.selected
-      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait >= 0 then return end
-        local finished = game.move_cursor{position = {4, -1.5}}
-        local last = last_selected
-        update_player_selected()
-
-        if finished then
-          local selected = player.selected
-          selected.copy_settings(copy_source, player)
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local wait = 30
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait > 0 then return end
-        local finished = game.move_cursor({position = player.position})
-        update_player_selected()
-        if fake_source_box and not player.selected then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local time = 150
-      script.on_nth_tick(1, function()
-        time = time - 1
-        if time > 0 then return end
-        copy_source = nil
-        local splitter = game.surfaces[1].find_entity("splitter", {4, -1.5})
-        splitter.splitter_filter = nil
-        splitter.splitter_output_priority = "none"
-        start()
-      end)
-    end
-
-    start = function(time)
-
-      local time = time or 150
-      script.on_nth_tick(1, function()
-        time = time - 1
-        if time > 0 then return end
-        step_1()
-      end)
-    end
-
-    start(800)
-
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(14)
+        },
+        {
+          name = "continue",
+          condition = function() return game.simulation.move_cursor({position = splitter1.position}) end,
+          action = function() game.simulation.control_down{control = "copy-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "copy-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = splitter2.position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_down{control = "paste-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "paste-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            splitter2.splitter_filter = nil
+            splitter2.splitter_output_priority = "none"
+          end
+        },
+        {
+          condition = story_elapsed_check(2),
+          action = function() story_jump_to(storage.story, "continue") end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
 simulations.copy_paste_requester_chest =
 {
   init =
-    [[
-      game.surfaces[1].create_entities_from_blueprint_string
-      {
-        string = "0eNqFkt1ugzAMhd/F10kF9IeVV5mmKqSGWoKEJmEaQ3n3GVqhaqVbbqxE9nfOiTxC2fTYOTIBihFIW+OheB/BU21UM72FoUMogAK2IMCodro5W9rOugBRAJkzfkGRRvHvmPIe27IhU8tW6QsZlNkDIosfAtAECoQ3G/NlOJm+LdGxxrMBAZ31PGDNpMoQuRcwQJHEyc+v+exvJ0+s7eYGk8lmzzYdappToUFXD9JfCJuzxGtPXctSsCK5XSQbW5MPpKW+oA/SB+tUjSsB0rsq17UQu1dEx0a4cs/LINk6cr8gsUEdHCPvEXkx0FVKr/hMZmLO/1L2VYXu5OmbEWmynBWlw6Lk+9IHNfNeoI9x2od5g4qHPRXwic7PzdlbusuPWZ4e8vyYb2P8ASSf7zY=",
-        position = {-1, 4}
-      }
-
-    player = game.create_test_player{name = "big k"}
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 3.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
-    roboport = game.surfaces[1].find_entity("roboport", {-5, 0})
-    roboport.insert({name = "logistic-robot", count = 5})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
     game.forces.player.worker_robots_speed_modifier = 1
     game.forces.player.worker_robots_storage_bonus = 8
-    storage_chest = game.surfaces[1].find_entity("logistic-chest-storage", {-1.5, 1.5})
-    requester_chest = game.surfaces[1].find_entity("logistic-chest-requester", {3.5, 2.5})
+    game.forces.player.recipes["energy-shield-equipment"].enabled = true
 
-    update_player_selected = function()
-      player.update_selected_entity(game.camera_player_cursor_position)
-      local selected = player.selected
-      if not selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        return
-      end
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqVlH1vgyAQxr/L/Q1NwZdav0rTNGqvlkTAgW5zjd994KZbNuaiJggk/O557jgfUDY9tkaoDvIHiEorC/npAVbUqmj8Xje0CDmIDiUQUIX0K6NL3WrTwUhAqCu+Qs5G8u+xwlqUZSNUTWVR3YVCyr8h+HgmgKoTncAPGdNiuKhelmhcjIUk8Sp6SbHBqjOioq1u0MVptXWHtfIKHJBG0S4hMECe7ZLRC/wB5FuBPF0HRluB7LAOjNeTFwDOlo8OSMBgJaZKoEJTD9TeBTZXik+9aKWLBYGYyVYT2bqHdHNS1nmH3/cwUCk+Idg+RMgWgu20KWqk1R1tCMNmb4yFxRwX1OLqM9WuqdDciirkMJ7FESj72w3NxYo39DvLE4jF9l/OXQWdYjR/K58vAuNeuWutF2GmvjoxkhBOkjM5uZFE08yN/nUz/03dzJ2Y2jf/9pMg8IzGTlF4xuIsStI0jZPkcBzHd7ecZO4=",
+      position = {0, 0}
+    }
 
-      if copy_source and copy_source ~= selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-        end
-        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
-      end
-    end
+    roboport = game.surfaces[1].find_entities_filtered{name = "roboport"}[1]
+    roboport.insert({name = "logistic-robot", count = 5})
+    assembler = game.surfaces[1].find_entities_filtered{name = "assembling-machine-2"}[1]
+    storage_chest = game.surfaces[1].find_entities_filtered{name = "storage-chest"}[1]
+    requester_chest = game.surfaces[1].find_entities_filtered{name = "requester-chest"}[1]
 
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {3.5, -0.5}})
-        update_player_selected()
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local wait = 30
-      copy_source = player.selected
-      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait >= 0 then return end
-        local finished = game.move_cursor{position = {3.5, 2.5}}
-        local last = last_selected
-        update_player_selected()
-
-        if finished then
-          local selected = player.selected
-          selected.copy_settings(copy_source, player)
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local wait = 30
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait > 0 then return end
-        local finished = game.move_cursor({position = player.position})
-        update_player_selected()
-        if fake_source_box and not player.selected then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local time = 60
-      script.on_nth_tick(1, function()
-        if game.surfaces[1].count_entities_filtered{name = "logistic-robot", limit = 1} > 0 then return end
-        time = time - 1
-        if time > 0 then return end
-        requester_chest.clear_items_inside()
-        requester_chest.clear_request_slot(1)
-        requester_chest.clear_request_slot(2)
-        copy_source = nil
-        start()
-      end)
-    end
-
-    start = function()
-      storage_chest.clear_items_inside()
-      storage_chest.insert("steel-plate")
-      storage_chest.insert("advanced-circuit")
-
-      local start_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= start_tick then
-          step_1()
-        end
-      end)
-    end
-
-    start()
-
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            storage_chest.clear_items_inside()
+            storage_chest.insert("steel-plate")
+            storage_chest.insert("advanced-circuit")
+          end,
+          condition = story_elapsed_check(1)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = assembler.position}) end,
+          action = function() game.simulation.control_down{control = "copy-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "copy-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = requester_chest.position}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_down{control = "paste-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "paste-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(5),
+          action = function()
+            requester_chest.clear_items_inside()
+            requester_chest.get_logistic_point(defines.logistic_member_index.logistic_container).get_section(1).clear_slot(1)
+            requester_chest.get_logistic_point(defines.logistic_member_index.logistic_container).get_section(1).clear_slot(2)
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
 simulations.copy_paste_spidertron =
 {
   init =
-    [[
-
-    player = game.create_test_player{name = "big k"}
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
     source_spider = game.surfaces[1].create_entity{name = "spidertron", position = {-4, 1.5}, force = "player"}
     source_spider.color = {1, 0, 0, 0.5}
-
     paste_spider = game.surfaces[1].create_entity{name = "spidertron", position = {4, 1.5}, force = "player"}
 
-    update_player_selected = function()
-      player.update_selected_entity(game.camera_player_cursor_position)
-      local selected = player.selected
-      if not selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-          fake_source_box = nil
-        end
-        return
-      end
-
-      if copy_source and copy_source ~= selected then
-        if fake_source_box then
-          fake_source_box.destroy()
-        end
-        fake_source_box = game.surfaces[1].create_entity{name = "highlight-box", box_type = "copy", source = copy_source, position = copy_source.position}
-      end
-    end
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor{position = {source_spider.position.x, source_spider.position.y - 1.5}}
-        update_player_selected()
-        if finished then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local wait = 30
-      copy_source = player.selected
-      game.surfaces[1].play_sound{path = "utility/entity_settings_copied"}
-      script.on_nth_tick(1, function()
-        wait = wait - 1
-        if wait >= 0 then return end
-        local finished = game.move_cursor{position = {paste_spider.position.x, paste_spider.position.y - 1.5}}
-        local last = last_selected
-        update_player_selected()
-
-        if finished then
-          local selected = player.selected
-          selected.copy_settings(copy_source, player)
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        local finished = game.move_cursor({position = player.position})
-        update_player_selected()
-        if finished then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        copy_source = nil
-        paste_spider.color = {1, 0.5, 0, 0.5}
-        start()
-      end)
-    end
-
-    start = function()
-      count = 60
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_1()
-      end)
-    end
-
-    start()
-
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(1)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {source_spider.position.x, source_spider.position.y - 1.5}}) end,
+          action = function() game.simulation.control_down{control = "copy-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "copy-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = {paste_spider.position.x, paste_spider.position.y - 1.5}}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_down{control = "paste-entity-settings", notify = true} end
+        },
+        {
+          init = function() game.simulation.control_up{control = "paste-entity-settings"} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            paste_spider.color = {1, 0.5, 0, 0.5}
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -3268,64 +3270,55 @@ simulations.ghost_building =
 {
   init =
   [[
-    player = game.create_test_player{name = "big k"}
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
 
-    step_1 = function()
-      player.cursor_stack.set_stack{name = "stone-furnace"}
-      script.on_nth_tick(1, function()
-        if game.move_cursor({position = {-5, -1}}) then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      script.on_nth_tick(1, function()
-        local finished = game.move_cursor({position = {5, -1}, speed = 0.1})
-        player.build_from_cursor
+    local story_table =
+    {
+      {
         {
-          position = game.camera_player_cursor_position,
-          alt = true
-        }
-        if finished then step_3() end
-      end)
-    end
-
-    step_3 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor({position = player.position}) then
-          reset()
-        end
-      end)
-    end
-
-    reset = function()
-      local reset_tick = game.tick + 60
-      player.cursor_stack.clear()
-      script.on_nth_tick(1, function()
-        if game.tick >= reset_tick then
-          for k, v in pairs (game.surfaces[1].find_entities_filtered{type = "entity-ghost"}) do
-            v.destroy()
+          name = "start",
+          condition = story_elapsed_check(1)
+        },
+        {
+          init = function() player.cursor_stack.set_stack{name = "stone-furnace"} end,
+          condition = function() return game.simulation.move_cursor({position = {-5, -1}}) end,
+          action = function() player.character.cursor_ghost = {name = "stone-furnace"} end
+        },
+        {
+          init = function() game.simulation.control_down{control = "build-ghost", notify = true} end,
+          condition = story_elapsed_check(0.5)
+        },
+        { condition = function() return game.simulation.move_cursor({position = {5, -1}, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_up{control = "build-ghost"} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            player.clear_cursor()
+            player.cursor_stack.clear()
           end
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local start_tick = game.tick + 60
-      script.on_nth_tick(1, function()
-        if game.tick >= start_tick then
-          step_1()
-        end
-      end)
-    end
-
-    start()
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            for k, v in pairs (game.surfaces[1].find_entities_filtered{type = "entity-ghost"}) do
+              v.destroy()
+            end
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -3333,91 +3326,71 @@ simulations.ghost_rail_building =
 {
   init =
   [[
-    player = game.create_test_player{name = "kovarex"}
+    require("__core__/lualib/story")
+
+    player = game.simulation.create_test_player{name = "kovarex"}
     player.teleport{-10, 3.5}
-    game.camera_player = player
-    game.camera_position = {0, 0}
-    game.camera_zoom = 1
-    game.surfaces[1].build_checkerboard({{-16, -9}, {16, 9}})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0}
+    game.simulation.camera_zoom = 1
+	  game.surfaces[1].build_checkerboard{{-26, -13}, {26, 13}}
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqVms1u4kAQhN9lziby9PzzKlG0IomVtQQmAmd3EfK7L6wvkZZSd52IE/joSZfb5Slf3ev+a/g8jdPstlc3vh2ns9s+X915/Jh2+/vv5svn4LZunIeD69y0O9yPzvNxGja/d/u9Wzo3Tu/DH7f1y0vnhmke53FYKf8OLj+mr8PrcLq94dHnO/d5PN8+cpzu33bDbHx+Sp273H/qn9KydP+BxAgqGigYQVEDRSMoaaBkBIkGykZQ0EDFCOo1UDWCvAZqNlDVOL63gZoKMipbFbY3KlsVtjcqWxW2NypbFbY3KlsVtjcqWxW2typbBRmVrZ4h3qZstSCxCVutR2y6Vv/TYpO12nqxqVrVothErZ4cYtO0eraKTdL6ddGmaHWeiU3Q6oAVo55VQQeboPVrULApWr8qBpuk9et0sGladw7BJmrdywSbqnWbFmyyNti0whq+BkCVBVUAauTIBwXFnuSAeqLnJj7CCIdBqwpk41E5keSgehLb9gJAmQVlACpk31FBrPVA9TSu8QCTSOMBVpU82XdUjpAcVE9g254AKLKgCECJ7DsqKJMcVE/hGo8wlcOgVTWy76Cc3JMcUE/+rufTbvz4OW9uL487v5LC0rn38TS8rX+UR1SxU5OdGkhFBLDmSHIEcBInCYTJHAatqpCKQOVUkoPqafRWGNjl6VkQ2i7y7M0w4AjJQfUErvEIE8lbaoBJZN9RObS1BhzWWaN6WGON6iF9NdpqJG01qKZyrhpROFONlkR6alQMaalRNayjBnOwsoYazMFKzmWEIccyWhU7lYH/aOxQBv6jkX4aYUg7jVbFumng7htrpoG7b+RMRhhyJKNVsRMZ3Ds3diKDe+dGeumGshbSS1fEYVNEnP6wMSImsTkiJrFBIiYlMgDEpExmkphUyAgQkyqZSmJS40JAnAH2XCyJQZ4LATFIuFgSgwIXAmJQ5GJJDEpcCIhBmYslMYhMEzGI3NLDIG5PD2fSPZVKYo6nUkDMESqVxJxApYCYE6lUEnMSlQJiTqZSScwpVAqIOZVKJTGncSEgfjai52JJDPJcCIhBwsWSGBS4EBCDIhdLYhCZJmIQ6a9X0Eu3Prq2/fakW+d+DafzugNafSxNis+ltBKX5S8wT2da",
+      string = "0eNqVmt1O20AUhN9lrx3ksz+2N69SoSqARS0FByWmLUJ59wYiIaQyPjNXKEA+TpZv7dlM3sLd/mV8Pk7zErZvYbo/zKew/fEWTtPjvNu/f295fR7DNkzL+BSaMO+e3h+dlsM8bv7s9vtwbsI0P4x/w9bOt00Y52VapvFK+Xjw+nN+ebobj5df+O75TXg+nC5POczvf+2C2cTupjTh9fL7N+V8bv7DRBLTr2MSiSnrmExi8jqmkJi0julITFzH9CTG1jEDiWnXMZXDWF3HWEtyBodDemyOgEaKbM5+MNJkcxQ0UmVzdoSRLpsjoZEym7MnjLTZHA2N1NmcXWGkz46GkdTZ2RWRtNm7KJMyO3siki47KkdSZcfkSJrsCBjZq7KDYT12MKTGzm6InMUOJXESOy8pcQ4765s4hZ1/duIMdgROnMCOv4nz19naidPXi1ucvc5FL3HyOte8xLnr3RAyKa9jb+bs9W6XmdPXu1tmzl8vTGROYC9LZM5gLyJlTmEvseVeu1dGgBk0TAKYqt3kAKa0Gga8qGLaEiNM1DDoRSVtiTPAZA1TAKZoS4ym6TQMmqbXlhhNM2gYNE3VlrgDB99Ww/QAY9oSo2mihkHTJG2J0TRZw6BpirbEA8B0GqYCTK8tMZpm0DBomqotMZimbzUMmKZXz3Qt4ESRg95OSuJxDM2jHuvQPEWMA2geNVageb66fNxNj7+WzeXLt2fEeiWlcxMepuN4f/1h/o468NSep1aeWmjq0PLUxFONpxpPVXcFiDqDmFEMZJ1B3RVoHjGlwHnUXYHmEXMKnEeM2wYCzyAmFQOJp4qBG81TxawC5xEjN5xHTCtwHjF0G4g9VcwrBnJPFWM3nEdMLHAeMXjDecTMguaxVkwtNiCQeIa0ikCi0rFFINHpCLsnMYPHiEBidokJgcTLdMwIJF6nY0EgUezYIZBodkRmm2h2RGab+u4IMpstDT9L9ITUZmvDzx4dk9QOHJOKWMpjktqEY1IvVvOYpPbhmFTFgh6SolqKY5KJNT0mqcU4JiWxqsekLJbsmFTEmh2TOrFox6RerNoxaRDLdkyqYt0OSWTJuHEVJ3vGjWt4Eo+QGJS02h2Dsla8Y5B4isQgsTXHoF5r8TFIbM4xqGpNPgRlrT7HHJPKfMzRKnTMSVKhjzlajY45RSr1MUer0jGnl4p9zNHqdMypUrkPOUVs1DHItIYfg8RWHYOS1vJjkNisY1DRmn4MEk+SGNRrbf8VdNtcP528/fJh5ib8Ho+nj6fE4aJ5Kl3X5VL6ej7/A7VeULA=",
       position = {0, 0}
     }
+    start_rail = game.surfaces[1].find_entities_filtered{name = "straight-rail"}[5]
 
-    start_rail = game.surfaces[1].find_entities_filtered{name = "straight-rail"}[2]
-
-    step_1 = function()
-      player.cursor_stack.set_stack{name = "rail", count = 50}
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {start_rail.position.x + 0.5, start_rail.position.y}} then
-          step_2()
-        end
-      end)
-    end
-
-    step_2 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        game.activate_rail_planner({ghost_mode = true})
-        step_3()
-      end)
-    end
-
-    step_3 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {start_rail.position.x + 26, start_rail.position.y}} then
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {start_rail.position.x + 26, start_rail.position.y + 8}, speed = 0.1} then
-          player.raw_build_from_cursor{ghost_mode = true}
-          step_5()
-        end
-      end)
-    end
-
-    step_5 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        game.deactivate_rail_planner()
-        player.clear_cursor()
-        reset()
-      end)
-    end
-
-    reset = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        if game.move_cursor{position = player.position} then
-          for k, ghost in pairs(game.surfaces[1].find_entities_filtered{name = "entity-ghost"}) do
-            ghost.destroy()
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function()
+            player.cursor_stack.set_stack{name = "rail", count = 50}
+            game.forces.player.chart(game.surfaces[1], {{-16, -9}, {16, 9}})
+          end,
+          condition = function()
+            return game.simulation.move_cursor({position = {start_rail.position.x + 0.5, start_rail.position.y}})
           end
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        step_1()
-      end)
-    end
-
-    start()
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.activate_rail_planner({ghost_mode = true, build_mode = defines.build_mode.forced}) end
+        },
+        {
+          condition = function()
+            return game.simulation.move_cursor({position = {start_rail.position.x + 31, start_rail.position.y}})
+          end
+        },
+        {
+          condition = function()
+            return game.simulation.move_cursor({position = {start_rail.position.x + 31, start_rail.position.y + 8}, speed = 0.1})
+          end,
+          action = function() player.raw_build_from_cursor{ghost_mode = true} end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            game.simulation.deactivate_rail_planner()
+            player.clear_cursor()
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = player.position}) end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            for k, ghost in pairs(game.surfaces[1].find_entities_filtered{name = "entity-ghost"}) do
+              ghost.destroy()
+            end
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -3425,189 +3398,222 @@ simulations.copy_paste =
 {
   init =
   [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "kovarex"}
+    player.teleport{-1.5, 5.5}
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
     game.surfaces[1].create_entities_from_blueprint_string
     {
       string = "0eNqdk90KgzAMhd8l11Xwt9pXGWP4E0ZBo7R1TKTvvqo3gznQ3iUl/c7hkCxQdxOOSpIBsYBsBtIgbgto+aSqW9/MPCIIkAZ7YEBVv3ZGVaTHQZmgxs6AZSCpxTeIyN4ZIBlpJO6krZkfNPU1Kjfwj8FgHLT7NtCq6lBBWoQZg9lVZRlmTqOVCpt9IrbsBx17oV1lD2DJBVh+zWd6Ac2voTOvCPIz6NwLzY/T5V4RnPJZePnMVp9udbc1F19XweCFSu9qRZTyMuZRznlZJNZ+ADm2DbE=",
-      position = {0, 0}
+      position = {-4, 0}
     }
 
-    player = game.create_test_player{name = "kovarex"}
-    player.teleport{-10, 3.5}
-    game.camera_player = player
-    game.camera_position = {0, 0}
-    game.camera_zoom = 1
-    game.surfaces[1].build_checkerboard({{-16, -9}, {16, 9}})
-    player.cursor_stack.set_stack{name = "copy-paste-tool", count = 1}
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function() game.simulation.camera_player_cursor_direction = defines.direction.north end,
+          condition = story_elapsed_check(0.25)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {player.position.x, player.position.y - 2}}) end,
+          action = function() game.simulation.control_press{control = "copy", notify = player.input_method ~= defines.input_method.game_controller} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-4.75, -1.75}}) end,
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              game.simulation.control_down{control = "select-for-blueprint", notify = false}
+            else
+              game.simulation.control_press{control = "select-for-blueprint", notify = false}
+            end
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-2.25, 0.75}}) end,
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              game.simulation.control_up{control = "select-for-blueprint", notify = false}
+            else
+              game.simulation.control_press{control = "select-for-blueprint", notify = false}
+            end
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {0.5, -0.5}}) end,
+          action = function() player.raw_build_from_cursor() end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.clear_cursor() end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.control_press{control = "copy", notify = player.input_method ~= defines.input_method.game_controller} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-4.75, 1.25}}) end,
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              game.simulation.control_down{control = "select-for-blueprint", notify = false}
+            else
+              game.simulation.control_press{control = "select-for-blueprint", notify = false}
+            end
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {-3.25, 2.75}}) end,
+          action = function()
+            if player.input_method ~= defines.input_method.game_controller then
+              game.simulation.control_up{control = "select-for-blueprint", notify = false}
+            else
+              game.simulation.control_press{control = "select-for-blueprint", notify = false}
+            end
+          end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {1, 0}}) end,
+          action = function() player.raw_build_from_cursor() end
+        },
+        { condition = story_elapsed_check(0.25) },
+        { condition = function() return game.simulation.move_cursor({position = {4.5, -0.5}}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.control_press{control = "cycle-clipboard-backwards", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_press{control = "flip-horizontal", notify = false} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() player.build_from_cursor({position = {4.5, -0.5}, direction = defines.direction.east}) end
+        },
+        { condition = function() return game.simulation.move_cursor({position = {4, 0}}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.control_press{control = "cycle-clipboard-forwards", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_press{control = "flip-horizontal", notify = false} end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() player.build_from_cursor({position = {4, 0}, direction = defines.direction.east}) end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() player.clear_cursor() end
+        },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            for k, v in pairs (game.surfaces[1].find_entities_filtered{area = {{-1, -2}, {6,  10}}}) do
+              v.destroy()
+            end
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() story_jump_to(storage.story, "start") end
+        }
+      }
+    }
+    tip_story_init(story_table)
+  ]]
+}
 
-    reset = function()
-      player.cursor_stack.set_stack{name = "copy-paste-tool", count = 1}
-      for k, v in pairs (game.surfaces[1].find_entities_filtered{area = {{3, -2}, {10,  10}}}) do
-        v.destroy()
-      end
-      game.camera_player_cursor_direction = defines.direction.north
-      step_1()
-    end
+simulations.entity_flip =
+{
+  init =
+  [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "kovarex"}
+    player.teleport{0, 3.5}
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.forces.player.technologies["oil-processing"].researched = true
 
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-1, -2}} then
-          game.activate_selection()
-          step_2()
-        end
-      end)
-    end
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqVkdFuhCAQRf9lnnGzrGKNv7LZGKSjmUTBAm5rjf/ekaamSX0pLzADnDtzZ4V2mHHyZCPUK5BxNkB9XyFQb/Ww5+IyIdRAEUcQYPW4R46GzGNHFv0CmwCyr/gBtdweAtBGioTfnBQsjZ3HFj0/OAhhbkPUkZxl6uQCpSPrMSaTLwIW3ottE38Yt4OBA5royWTIdfRLxl2g77TBE+TtmpA5F9vOXYe+CfTJEHk91olWft7xCV5eVBKoLoolPBpKtrU6cH3758k7gyGQ7eHnvnmb9cBy/M46P7LfJyUU/7Ks2vYRvJNP/t+lUKIQ6sG5NMD617wFPNGHhLhVsqhyVZZloVTFrn8BKpywJg==",
+      position = {-3, -7}
+    }
+    refinery1 = game.surfaces[1].find_entities_filtered{name = "oil-refinery"}[1]
+    refinery2 = nil
 
-    step_2 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {2, 1}} then
-          game.finish_selection()
-          step_3()
-        end
-      end)
-    end
-
-    step_3 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {5, -0.5}} then
-          player.raw_build_from_cursor()
-          step_4()
-        end
-      end)
-    end
-
-    step_4 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        player.clear_cursor()
-        step_5()
-      end)
-    end
-
-    step_5 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        player.cursor_stack.set_stack{name = "copy-paste-tool", count = 1}
-        step_6()
-      end)
-    end
-
-    step_6 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-1, 1}} then
-          game.activate_selection()
-          step_7()
-        end
-      end)
-    end
-
-    step_7 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {1, 3}} then
-          game.finish_selection()
-          step_8()
-        end
-      end)
-    end
-
-    step_8 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor{position = {6, 0}} then
-          player.raw_build_from_cursor()
-          step_9()
-        end
-      end)
-    end
-
-    step_9 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        step_10()
-      end)
-    end
-
-    step_10 = function()
-       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {8.5, -0.5}} then
-          step_11()
-        end
-      end)
-    end
-
-    step_11 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        game.scroll_clipboard_backwards()
-        game.camera_player_cursor_direction = defines.direction.east
-        step_12()
-      end)
-    end
-
-    step_12 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        game.camera_player_cursor_direction = defines.direction.east
-        step_13()
-      end)
-    end
-
-    step_13 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        player.raw_build_from_cursor()
-        step_14()
-      end)
-    end
-
-    step_14 = function()
-       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {8, 0}} then
-          step_15()
-        end
-      end)
-    end
-
-    step_15 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        game.scroll_clipboard_forwards()
-        step_16()
-      end)
-    end
-
-    step_16 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        player.raw_build_from_cursor()
-        step_17()
-      end)
-    end
-
-    step_17 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        count = count - 1
-        if count > 0 then return end
-        reset()
-      end)
-    end
-
-    step_1()
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          condition = story_elapsed_check(0.5)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = refinery1.position}) end,
+          action = function() player.update_selected_entity(game.simulation.camera_player_cursor_position) end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_press{control = "flip-horizontal", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_press{control = "flip-horizontal", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() player.cursor_stack.set_stack{name = "oil-refinery", count = 1} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {refinery1.position.x + 9, refinery1.position.y}}) end,
+          action = function() player.update_selected_entity(game.simulation.camera_player_cursor_position) end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_press{control = "flip-vertical", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function() game.simulation.control_press{control = "flip-vertical", notify = true} end
+        },
+        {
+          condition = story_elapsed_check(0.5),
+          action = function()
+            player.build_from_cursor{position = game.simulation.camera_player_cursor_position}
+            player.clear_cursor()
+          end
+        },
+        {
+          condition = story_elapsed_check(1.0),
+          action = function()
+            refinery2 = game.surfaces[1].find_entities_filtered{name = "oil-refinery"}[2]
+            refinery2.set_recipe("basic-oil-processing")
+            player.update_selected_entity(game.simulation.camera_player_cursor_position)
+          end
+        },
+        {
+          condition = story_elapsed_check(0.75),
+          action = function() game.simulation.control_press{control = "flip-vertical", notify = true} end
+        },
+        { condition = story_elapsed_check(0.5) },
+        { condition = function() return game.simulation.move_cursor({position = player.position}) end },
+        {
+          condition = story_elapsed_check(2),
+          action = function()
+            refinery2.destroy()
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -3616,25 +3622,25 @@ simulations.fast_replace =
   init =
   [[
     local surface = game.surfaces[1]
+    game.forces.player.recipes["copper-cable"].enabled = true
     surface.create_entities_from_blueprint_string
     {
-      string = "0eNqVk11ugzAQhO+yz3ZUE4gDV4mqytAtWck/yHaaUsTda4haRQq05c1r7XzjtccD1PqCnScboRqAGmcDVKcBArVW6Wkv9h1CBRTRAAOrzFSpENDUmmzLjWrOZJELGBmQfcUPqMT4zABtpEh4481F/2IvpkafGn5IIbokviqtE71zIUmcnXwThov9rmDQp1W5K8aRPXCyf3H+xOx/H+zxYPk38GkZmG8FinsgA48Nzdf+Rh6VN0nbqs8khgWzYqPZmhd5Z3mb7Pj1jKiXrA4brfIVq8Z1HXreqFovjiQ35kOsvMNxWz5umJTdOe3V3edg8I4+zJLsKHJZZlIcpCxl6v8CsJoP7g==",
+      string = "0eNqVlPFugyAQxt/l/oamqFjrqzRNg+y0JIoG7Lq28d132swtqZ0Bk/Mgfr/vDAcPKOoLds7YHvIHGN1aD/nhAd5UVtXjmlUNQg7Ke2yK2tiKN0qfjUUuYGBg7Ad+QS6GIwO0vekNPgnT5Hayl6ZARx+wH5JvVF1zrFH3zmjetTUCg671pG3taEm8KNpIBjfIudzIYWAvvCiQt1vhxWG8OFnhJWG8RKzwZCAvW+GlYTwZr/B2M28moUVX3Tj1FrpS6aVdiZ/MhBqpuJQlupM3d4KI7TwWvDL2b1e+btZcfLxc/D4UmP4FMnCoTTfKS+NQuYa0lbqTGBbMxDbUbf/GzbjW8ooM+fWMWC+aiUCzJHpjptuuQ8e1Kqg/xtN+pX8dj/pBMMkiJo/sQJHFU0aRJVNGcXwoG98pZaQ1PTbE/L18GHyi81MZUSaSLJZpuhPbXbYfhm+/XX96",
       position = {0, 0}
     }
-    surface.create_entity{name = "substation", position = {0, -10}}
-    surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
 
-    player = game.create_test_player{name = "big k"}
-    player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_position = {0, 0.5}
+    player = game.simulation.create_test_player{name = "big k"}
+    player.teleport({0, 3.5})
+    game.simulation.camera_player = player
+    game.simulation.camera_player_cursor_position = player.position
+    game.simulation.camera_alt_info = true
     item_name = "assembling-machine-1"
 
     step_1 = function()
       player.cursor_stack.set_stack{name = item_name, count = 50}
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {-4.5, -0.5}} then
+        if game.simulation.move_cursor{position = {-4.5, 0.5}} then
           step_2()
         end
       end)
@@ -3644,8 +3650,8 @@ simulations.fast_replace =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        local finished = game.move_cursor{position = {4.5, -0.5}}
-        player.build_from_cursor{position = game.camera_player_cursor_position}
+        local finished = game.simulation.move_cursor{position = {4.5, 0.5}}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position}
         if finished then
           step_3()
         end
@@ -3658,7 +3664,7 @@ simulations.fast_replace =
         if count > 0 then count = count - 1 return end
         player.clear_cursor()
         player.clear_items_inside()
-        local finished = game.move_cursor{position = player.position}
+        local finished = game.simulation.move_cursor{position = player.position}
         if finished then
           start()
         end
@@ -3696,19 +3702,20 @@ simulations.fast_replace_belt_splitter =
       position = {0, 0}
     }
 
-    player = game.create_test_player{name = "big k"}
+    game.simulation.camera_position = {0, 0.5}
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_player_cursor_position = player.position
+    game.simulation.camera_alt_info = true
     item_name = "transport-belt"
-    direction = 2
+    direction = defines.direction.east
 
     step_1 = function()
       player.cursor_stack.set_stack{name = item_name, count = 50}
-      game.camera_player_cursor_direction = direction
+      game.simulation.camera_player_cursor_direction = direction
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = {1.5, -0.49}} then
+        if game.simulation.move_cursor{position = {1.5, -0.49}} then
           step_2()
         end
       end)
@@ -3718,7 +3725,7 @@ simulations.fast_replace_belt_splitter =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = direction}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = direction}
         step_3()
       end)
     end
@@ -3729,7 +3736,7 @@ simulations.fast_replace_belt_splitter =
         if count > 0 then count = count - 1 return end
         player.clear_cursor()
         player.clear_items_inside()
-        local finished = game.move_cursor{position = player.position}
+        local finished = game.simulation.move_cursor{position = player.position}
         if finished then
           start()
         end
@@ -3761,21 +3768,22 @@ simulations.fast_replace_direction =
       position = {0, 0}
     }
 
-    player = game.create_test_player{name = "big k"}
+    game.simulation.camera_position = {0, 0.5}
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_player_cursor_position = player.position
+    game.simulation.camera_alt_info = true
     item_name = "transport-belt"
-    direction = 2
+    direction = defines.direction.east
     start_position = {-7.75, -0.5}
     end_position = {7.75, -0.5}
 
     step_1 = function()
       player.cursor_stack.set_stack{name = item_name, count = 50}
-      game.camera_player_cursor_direction = direction
+      game.simulation.camera_player_cursor_direction = direction
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = start_position} then
+        if game.simulation.move_cursor{position = start_position} then
           step_2()
         end
       end)
@@ -3785,8 +3793,8 @@ simulations.fast_replace_direction =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        local finished = game.move_cursor{position = end_position}
-        player.build_from_cursor{position = game.camera_player_cursor_position, direction = direction}
+        local finished = game.simulation.move_cursor{position = end_position}
+        player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = direction}
         if finished then
           step_3()
         end
@@ -3799,7 +3807,7 @@ simulations.fast_replace_direction =
         if count > 0 then count = count - 1 return end
         player.clear_cursor()
         player.clear_items_inside()
-        local finished = game.move_cursor{position = player.position}
+        local finished = game.simulation.move_cursor{position = player.position}
         if finished then
           start()
         end
@@ -3811,7 +3819,7 @@ simulations.fast_replace_direction =
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
         start_position, end_position = end_position, start_position
-        direction = direction == 2 and 6 or 2
+        direction = direction == defines.direction.east and defines.direction.west or defines.direction.east
         step_1()
       end)
     end
@@ -3820,7 +3828,6 @@ simulations.fast_replace_direction =
 
   ]]
 }
-
 
 simulations.fast_replace_belt_underground =
 {
@@ -3833,21 +3840,22 @@ simulations.fast_replace_belt_underground =
       position = {0, 0}
     }
 
-    player = game.create_test_player{name = "big k"}
+    game.simulation.camera_position = {0, 0.5}
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_player_cursor_position = player.position
+    game.simulation.camera_alt_info = true
     item_name = "transport-belt"
-    direction = 2
+    direction = defines.direction.east
     start_position = {-2.75, -0.5}
     end_position = {2.75, -0.5}
 
     step_1 = function()
       player.cursor_stack.set_stack{name = item_name, count = 50}
-      game.camera_player_cursor_direction = direction
+      game.simulation.camera_player_cursor_direction = direction
       script.on_nth_tick(1, function()
-        if game.move_cursor{position = start_position} then
+        if game.simulation.move_cursor{position = start_position} then
           step_2()
         end
       end)
@@ -3859,25 +3867,27 @@ simulations.fast_replace_belt_underground =
       boppity = nil
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        local finished = game.move_cursor{position = end_position}
+        local finished = game.simulation.move_cursor{position = end_position}
         if item_name == "underground-belt" then
 
           if not bippity then
-            player.build_from_cursor{position = game.camera_player_cursor_position, direction = defines.direction.east}
+            player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.east}
+            game.simulation.camera_player_cursor_direction  = defines.direction.west
             bippity = true
           end
 
           if not boppity then
-            if game.camera_player_cursor_position.x > 2.51 then
-              player.build_from_cursor{position = game.camera_player_cursor_position, direction = defines.direction.west}
+            if game.simulation.camera_player_cursor_position.x > 2.51 then
+              player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.west}
               boppity = true
             end
           end
 
         else
-          player.build_from_cursor{position = game.camera_player_cursor_position, direction = direction}
+          player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = direction}
         end
         if finished then
+          game.simulation.camera_player_cursor_direction  = defines.direction.east
           step_3()
         end
       end)
@@ -3889,7 +3899,7 @@ simulations.fast_replace_belt_underground =
         if count > 0 then count = count - 1 return end
         player.clear_cursor()
         player.clear_items_inside()
-        local finished = game.move_cursor{position = player.position}
+        local finished = game.simulation.move_cursor{position = player.position}
         if finished then
           start()
         end
@@ -3914,69 +3924,53 @@ simulations.rotating_assemblers =
 {
   init =
   [[
-
-    player = game.create_test_player{name = "big k"}
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({0, 2.5})
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    game.simulation.camera_player_cursor_position = player.position
+    game.forces.player.technologies["electric-engine"].researched = true
 
-    local surface = game.surfaces[1]
-
-    surface.create_entity{name = "substation", position = {0, -10}}
-    surface.create_entity{name = "electric-energy-interface", position = {0, -10}}
-
-    local assembler_1 = surface.create_entity{name = "assembling-machine-2", position = {-3.5, -0.5}, force = "player"}
-    local assembler_2 = surface.create_entity{name = "assembling-machine-2", position = {3.5, -0.5}, force = "player"}
-
-    assembler_1.set_recipe("electric-engine-unit")
-    assembler_2.set_recipe("electric-engine-unit")
-
-    step_1 = function()
-      script.on_nth_tick(1, function()
-        if game.move_cursor({position = assembler_2.position}) then
-          step_2()
-        end
-      end)
-    end
-
+    game.surfaces[1].create_entities_from_blueprint_string
+    {
+      string = "0eNqtkt1ugzAMhd/F16EqP2Etr1JVKDDDLIFhSdjGEO8+wzY0rWhSpeXOjvOdcyJPUDQD9pbYQzYBlR07yC4TOKrZNEvPjz1CBuSxBQVs2qUyzmFbNMR10JryiRiDCGYFxI/4Blk4XxUge/KEn7y1GHMe2gKtDGwkbLD0lsoAGW09BuIEbWVKFLG+c0LoeLEh1CA6Khghi0WoGKoKbe7oXSDhcTuzutGKNi03FM6blXgLDx++4DuI+O/ge04PesWdD1rcWiyp/5W2Xt4OTB6+7/PnwTQiK3Pc2Va+f8dKclea814afW+aMP6fNLIUr2TXjbhESqtE6av01tXKfmyighe0bjUQncLkFOs0TROtT8k8fwCdouQj",
+      position = {0, -4}
+    }
+    assembler = game.surfaces[1].find_entities_filtered{name = "assembling-machine-2"}[2]
     global_rotate_count = 1
-    step_2 = function()
-      local count = 30
-      local rotate_count = global_rotate_count
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        assembler_2.rotate({by_player = player})
-        rotate_count = rotate_count - 1
-        if rotate_count > 0 then
-          count = 15
-          return
-        end
-        global_rotate_count = (global_rotate_count % 3) + 1
-        reset()
-      end)
-    end
+    rotate_count = 0
 
-    reset = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        if game.move_cursor({position = player.position}) then
-          start()
-        end
-      end)
-    end
-
-    start = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_1()
-      end)
-    end
-
-    start()
-
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function() rotate_count = global_rotate_count end,
+          condition = story_elapsed_check(0.5)
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = assembler.position}) end,
+          action = function() player.update_selected_entity(game.simulation.camera_player_cursor_position) end
+        },
+        {
+          name = "rotate",
+          condition = story_elapsed_check(0.5),
+          action = function()
+            game.simulation.control_press{control = "rotate", notify = true}
+            rotate_count = rotate_count - 1
+          end
+        },
+        { action = function() if rotate_count > 0 then story_jump_to(storage.story, "rotate") end end },
+        { action = function() global_rotate_count = (global_rotate_count % 3) + 1 end },
+        {
+          condition = function() return game.simulation.move_cursor({position = player.position}) end,
+          action = function() story_jump_to(storage.story, "start") end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -3984,10 +3978,11 @@ simulations.burner_inserter_refueling =
 {
   init =
   [[
+    game.simulation.camera_position = {0, 0.5}
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqVldtugzAMht/F11A1lFN5lWlCULwuEjgoh25VxbsvabeuB1CTy2D7sxP82ydoe4Oj5KShOgHfCVJQvZ1A8T01vfumjyNCBVzjABFQM7iTlg2pUUgdt9hrmCLg1OE3VGyKXgb3oulQ3gQl03sESJprjpf058OxJjO01rNi19gvITqkePeJSlviKJQNEuRyWVDM2CqL4AjVepVNrpQHUPJYxAxifQVE0HGJu4vVhv7eRhg9GnfpJ/xm6YGe05Q3hd7nmeGm/twihJv5c/MQbu7PzUK4xZXbGkkoY04KpZ79j+kSOJ8BlwHgJAS8DQCvQ8CuTX3JLAjM/MGbIHDi3RVBTcH8VZcGcf1VFyQ65q+6INGx/OVwez3bOC2MNlZ4Vx002ti/9Dh9cLK2penO7vv4z71WqDWnvXJuEgdxwNpYW29bFrva7R5r0tLg5PbMeRdVN3svggNKdSmwZGmxTQqWF8W23EzTD1RaWCk=",
+      string = "0eNqV1duOgyAQANB/mWfcFBVvv7LZGK2zXRILBrC7TeO/L7TpXdPOmwhzBgScA7T9iIORykF1ALnWykL1eQArN6rpwzu3HxAqkA63wEA129ByplF20MZFLfYOJgZSdfgHFZ/Yy+BeNx2am6B4+mKAykkn8ZT+2NjXaty2fmTFL7G/WneoovUPWufFQVsfpFXI5aEoWX0IBnsf4R+mMJcHKX6cxbMRl1eBQScNrk/dKTuvR49uGMOyn/xk6RPN5Mlu53qfaUZOCXJOkgVBFiQ5I8gpSc4vcjsahSaSyqJx8xuaLNI8nrELis1pdkmweUmz+YqC50ScU3BBxGMKTtxOnlBw4n5ywrXkK9IR54R7WdBkwr0saXL+vkz7/fHifZn2++Pl65ogXpYEqRYqQny9lVJ9S+X7lsvX/cTP42uLzkm1sWGcwa3eYT36vt6fYezqUF19lzMjTqGSHqttdVPZGezQ2GOeuOBpkYgsy1Ih8nKa/gEgIZvA",
       position = {0, 0}
     }
 
@@ -4007,19 +4002,518 @@ simulations.circuit_network =
 {
   init =
   [[
+    require("__core__/lualib/story")
+    player = game.simulation.create_test_player{name = "cable-guy"}
+    player.teleport({0.5, -7})
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_alt_info = true
+    storage.resting_position = {0.5, 4}
+    game.simulation.camera_player_cursor_position = storage.resting_position
+    storage.character = player.character
+    storage.character.character_running_speed_modifier = -0.5
+
+    local technology = "inserter-capacity-bonus-2"
+    local technologies = prototypes.technology
+    for name, prerequisite in pairs (technologies[technology].prerequisites) do
+      game.forces.player.technologies[name].researched = true
+    end
+    game.forces.player.technologies[technology].researched = true
 
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqlV12TmyAU/S88y07QmK+3/oe+dXYcojeGKYIF3HZnx/9e1ESNQqLty2YJcO7X4dybL3TmFZSKCYNOX4ilUmh0+vGFNMsF5c135rMEdELMQIECJGjRrJQ8y1Iqg+oAMZHBH3QidfDyGnBIjWIpLphgIseZYpyPMML6PUAgDDMMOj/axWciquIMyhrpobSRiuaADRU/rYFSantJisa0BcLxWxygT/sPeYstfsaUtdzuhwGyUYpuqZvzpPmTKwAxNskydDrU73XdxDVxI+zdyKkBh/nwbj6cmXfAReOoBODf1GZlDho9gtoojJI8OcOVfjCpmmMpU2nFTCJLEEnr28moCoJ+QwHNEg1CN+cvlGuo3flQkC3NxnaZ+2TsvgMmnrNrBkJuRV3uNPF5vevNGUWFbuzhM3CH0a23mFsH7v4F22fwOy/87nmRQdAzhyRjuvm8lXNSagVaViptXtOUCN1Gd6yQmQXYrEgrGYXefnH05PnQ56OAjFUF7tNSSg7PeLK503yJQ9HUn9jhYOB+5mR+18Zi/QaWX882TY0WkeO7I7pjH92FaoOZ0KCM3ZiFFT9GNavyoqT7ckw268m8WUJmQtYDzxR3u47GDsG6UpElDYZ1T8+Ift/4RyrvfUkNR7oGwHF6BW2evN9VfA1jn9mhG5SsdD2Qu8GNW0fJoMfyctFXqQCXVVE+6ZKeki2KY+OLY9Bzj/VtH8WSBu1uSMG6xk12r5Ibv0ju/gEAG4lzJSuRPRkC5i/eBTzopF9ENv9fLy/tBiXThW3gr2Q6enBl8VN7FNrjZH2YrMPIIcQHlw6HgwLSNK2KilM7ILqK0nodeeYnWZmyMslsjP1gylSUD5NsdwJ/Q/WKnrn1jZNkkntOXQ/m3hijVToT+YwO8sZlzrSxpW4VDiv4VdnPZwT0jHDhoF2KMo5vefSSJ3o5yKZcaujr4Zpw7ntN26jXtNIJ1aZDgFegw/G8a8PMrzZlNlpHz79xzQUSjxsrE9iOzo6S75+ytb2ZNDdLyJaT9vsa0oazwSrs3qQ2tHMUIVd8u3VJsnSyWt7+WjyNfpMG6AOU7trCgWz3x3BPdvv98WCT+hfBsvYc",
-      position = {0, 0}
+      string = "0eNqd1++OojAQAPB36eeyoS1F4FXMhiCOXnOlkLbcnWt49y3cLeqKypwfCFj49V+mkzmTne6hs8p4UpyJqlvjSLE9E6eOptLjf/7UASmI8tAQSkzVjE/eVsZ1rfXRDrQnAyXK7OEPKdjwTgkYr7yCv9L0cCpN3+zAhhdmwzWV1hFoqL1VddS1GkIHXevCt60Zuw5eJPibpOREivxNDgO98/jszRIYsMdTFOYE9lDVy+pkZmHge2XDd1NbQsmuPxzAlk59BJLF82+hZ3GZiQfQUf0DnF/qiz2fQTI7yjiwYdBLSHyF3Ayaham0v8BatYfS+ar++TX6hb7kox2875Hnj3rMFuAUua1cPl+UDdJj+XMvw3riuZcjFjL7R7H4+0omCzKL/2OPVtIMQW9wNEfQKY4WCFri6ARBJzgaE2oCR6cImuPoDYJmODpD0DGOztccoexxHKLOUI4IUIYLUM5W5hR2E51LEv924Omq6Zag5BUkVkLyFZSshMQrCBFZbD5q+Kr1R0TWZQvW0YjIumzKOhoRWZdtWkcj8hzjKFpgwkjgaESeYzGORuQ5xnA0Is9lOBmR5nKcjIhFXCgKRCjiIlFcIlG31X4xVzz06FwPma4fC597PrtKRgdlQtvj0uB24F/vlw68V+boxvcsNCE1lX1o0yGxwb4cS7HQ5G0Pw1hu/Q7jG2utLaOSplS+02240s10F640C3fhvamEK64qPkpCznPTeHjGkkzINE0TKTf5MHwCYxiRcw==",
+      position = {-1, 0}
     }
+    lamp1 = game.surfaces[1].find_entity("small-lamp", {1.5, 0.5})
+    lamp2 = game.surfaces[1].find_entity("small-lamp", {2.5, 0.5})
+    lamp3 = game.surfaces[1].find_entity("small-lamp", {3.5, 0.5})
+    chest1 = game.surfaces[1].find_entity("steel-chest", {-14.5, -0.5})
+    chest2 = game.surfaces[1].find_entity("steel-chest", {-0.5, 0.5})
+    inserter = nil
 
-    for x = -7, -4 do
-      for y = 2, 3 do
-        game.surfaces[1].set_tiles{{name = "water", position = {x, y}}}
-      end
-    end
+    first_simulation = true
 
+    local story_table =
+    {
+      {
+        {
+          name = "start",
+          init = function() storage.character.walking_state = {walking = true, direction = defines.direction.south} end
+        },
+        {
+          condition = function() return storage.character.position.y > -0.5 end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+
+        -- SETUP LAMP1
+
+        {
+          init = function() player.cursor_stack.set_stack{name = "red-wire", count = 1} end,
+          condition = function() return game.simulation.move_cursor({position = chest2.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = chest2.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = lamp1.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = lamp1.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {lamp1.position.x, lamp1.position.y + 1}, speed = 0.1}) end,
+          action = function() player.cursor_stack.clear() end
+        },
+        { condition = function() return game.simulation.move_cursor({position = lamp1.position, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = lamp1 end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-id"})
+            return game.simulation.move_cursor({position = target, speed = 0.1})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            game.simulation.mouse_click()
+            if first_simulation == false then story_jump_to(storage.story, "setIronPlate") end
+          end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "item-group-tab", data = "intermediate-products"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_down() end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_up() end
+        },
+        {
+          name = "setIronPlate",
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "drop-down"})
+            return game.simulation.move_cursor({position = target, speed = 0.1})
+          end
+        },
+        {
+          init = function() chest1.insert({name = "iron-plate", count = 1}) end,
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            return game.simulation.move_cursor({position = target, speed = 0.1})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = storage.resting_position, speed = 0.2}) end,
+          action = function() player.opened = nil end
+        },
+        { condition = story_elapsed_check(6) },
+
+        -- SETUP LAMP2 & LAMP3
+
+        {
+          init = function() player.cursor_stack.set_stack{name = "red-wire", count = 1} end,
+          condition = function() return game.simulation.move_cursor({position = lamp1.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = lamp1.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = lamp2.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = lamp2.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = lamp3.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = lamp3.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {lamp2.position.x, lamp2.position.y + 1}, speed = 0.1}) end,
+          action = function() player.cursor_stack.clear() end
+        },
+        { condition = function() return game.simulation.move_cursor({position = lamp2.position, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = lamp2 end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-id"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "drop-down"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-or-number"})
+            return game.simulation.move_cursor({position = target, speed = 0.1})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "textfield", data = "0"})
+            return game.simulation.move_cursor({position = target, speed = 0.1})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            game.simulation.mouse_click()
+            game.simulation.write({text = "1"})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.set-constant"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = storage.resting_position, speed = 0.2}) end,
+          action = function() player.opened = nil end
+        },
+        { condition = function() return game.simulation.move_cursor({position = lamp3.position, speed = 0.15}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = lamp3 end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-id"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "drop-down"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-or-number"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "textfield", data = "0"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            game.simulation.mouse_click()
+            game.simulation.write({text = "2"})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          init = function() chest1.insert({name = "iron-plate", count = 2}) end,
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.set-constant"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function() return game.simulation.move_cursor({position = storage.resting_position, speed = 0.2}) end,
+          action = function() player.opened = nil end
+        },
+        { condition = story_elapsed_check(7) },
+
+        -- SETUP INSERTER
+
+        {
+          init = function()
+            player.cursor_stack.set_stack{name = "bulk-inserter", count = 1}
+            action = function() game.simulation.camera_player_cursor_direction = defines.direction.west end
+          end,
+          condition = function() return game.simulation.move_cursor({position = {chest2.position.x, chest2.position.y + 1}, speed = 0.1}) end,
+          action = function()
+            player.build_from_cursor{position = game.simulation.camera_player_cursor_position, direction = defines.direction.west}
+          end
+        },
+        {
+          condition = story_elapsed_check(1),
+          action = function() inserter = game.surfaces[1].find_entity("bulk-inserter", {chest2.position.x, chest2.position.y + 1}) end
+        },
+        { condition = function() return game.simulation.move_cursor({position = {inserter.position.x + 1, inserter.position.y}, speed = 0.1}) end },
+        {
+          init = function() player.cursor_stack.set_stack{name = "red-wire", count = 1} end,
+          condition = function() return game.simulation.move_cursor({position = chest2.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = chest2.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = inserter.position, speed = 0.1}) end,
+          action = function() player.drag_wire{position = inserter.position} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = {inserter.position.x + 1, inserter.position.y}, speed = 0.1}) end,
+          action = function() player.cursor_stack.clear() end
+        },
+        { condition = function() return game.simulation.move_cursor({position = inserter.position, speed = 0.1}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() player.opened = inserter end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "check-box", data = "gui-control-behavior-modes.enable-disable"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-id"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "simple-slot", data = "iron-plate"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "drop-down"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button", data = ">"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "signal-or-number"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "textfield", data = "0"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function()
+            game.simulation.mouse_click()
+            game.simulation.write({text = "3"})
+          end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function()
+            local target = game.simulation.get_widget_position({type = "text-button-localised-substring", data = "gui.set-constant"})
+            return game.simulation.move_cursor({position = target, speed = 0.15})
+          end
+        },
+        {
+          init = function() chest1.insert({name = "iron-plate", count = 7}) end,
+          condition = story_elapsed_check(0.25),
+          action = function() game.simulation.mouse_click() end
+        },
+        { condition = story_elapsed_check(0.25) },
+        {
+          condition = function() return game.simulation.move_cursor({position = storage.resting_position, speed = 0.2}) end,
+          action = function() player.opened = nil end
+        },
+        { condition = story_elapsed_check(0.25) },
+        { condition = function() return game.simulation.move_cursor({position = inserter.position, speed = 0.2}) end },
+        {
+          condition = story_elapsed_check(0.25),
+          action = function() inserter.rotate({by_player = player}) end
+        },
+        { condition = function() return game.simulation.move_cursor({position = storage.resting_position, speed = 0.2}) end },
+
+        -- RESET EVERYTHING
+
+        {
+          condition = story_elapsed_check(17),
+          action = function()
+            player.opened = nil
+            storage.character.walking_state = {walking = true, direction = defines.direction.north}
+          end
+        },
+        {
+          condition = function() return storage.character.position.y < -7 end,
+          action = function() storage.character.walking_state = {walking = false} end
+        },
+        {
+          condition = function() return game.simulation.move_cursor({position = storage.resting_position, speed = 0.2}) end,
+          action = function()
+            lamp1.destroy()
+            lamp1 = game.surfaces[1].create_entity{name = "small-lamp", position = {1.5, 0.5}, force = player.force, create_build_effect_smoke = false}
+            lamp2.destroy()
+            lamp2 = game.surfaces[1].create_entity{name = "small-lamp", position = {2.5, 0.5}, force = player.force, create_build_effect_smoke = false}
+            lamp3.destroy()
+            lamp3 = game.surfaces[1].create_entity{name = "small-lamp", position = {3.5, 0.5}, force = player.force, create_build_effect_smoke = false}
+            inserter.destroy()
+            chest2.clear_items_inside()
+            first_simulation = false
+            story_jump_to(storage.story, "start")
+          end
+        }
+      }
+    }
+    tip_story_init(story_table)
   ]]
 }
 
@@ -4027,18 +4521,17 @@ simulations.shoot_targeting =
 {
   init =
   [[
-
-    player = game.create_test_player{name = "big k"}
+    player = game.simulation.create_test_player{name = "big k"}
     player.teleport({-4, 0.5})
-    player.character.direction = 2
-    game.camera_player = player
-    game.camera_player_cursor_position = player.position
-    game.camera_alt_info = true
+    game.simulation.camera_player = player
+    game.simulation.camera_position = {0, 0.5}
+    game.simulation.camera_player_cursor_position = player.position
+    player.character.direction = defines.direction.east
 
     step_1 = function()
-      biter = game.surfaces[1].create_entity{name = "medium-biter", position = {10 + (math.random() * 2), -4 + (math.random() * 4)}}
+      biter = game.surfaces[1].create_entity{name = "medium-biter", position = {12 + (math.random() * 2), -4 + (math.random() * 4)}}
       biter.speed = 0.05
-      biter.set_command
+      biter.commandable.set_command
       {
         type = defines.command.attack,
         target = player.character
@@ -4067,7 +4560,7 @@ simulations.shoot_targeting =
           step_3()
           return
         end
-        if game.move_cursor({position = position}) then
+        if game.simulation.move_cursor({position = position}) then
           player.shooting_state = {state  = defines.shooting.shooting_enemies, position = position}
         end
       end)
@@ -4079,7 +4572,7 @@ simulations.shoot_targeting =
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
 
-        if game.move_cursor({position = tree.position}) then
+        if game.simulation.move_cursor({position = tree.position}) then
           step_4()
         end
       end)
@@ -4092,7 +4585,7 @@ simulations.shoot_targeting =
         if not tree.valid then
           step_5()
         end
-        player.shooting_state = {state  = defines.shooting.shooting_selected, position = game.camera_player_cursor_position}
+        player.shooting_state = {state  = defines.shooting.shooting_selected, position = game.simulation.camera_player_cursor_position}
       end)
     end
 
@@ -4100,109 +4593,9 @@ simulations.shoot_targeting =
       local count = 30
       script.on_nth_tick(1, function()
         if count > 0 then count = count - 1 return end
-        if game.move_cursor({position = player.position}) then
+        if game.simulation.move_cursor({position = player.position}) then
           reset()
         end
-      end)
-    end
-
-    reset = function()
-
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        start()
-      end)
-    end
-
-    start = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_1()
-      end)
-    end
-
-    start()
-
-  ]]
-}
-
-simulations.shoot_targeting_controller =
-{
-  init =
-  [[
-
-    player = game.create_test_player{name = "big k"}
-    player.teleport({-4, 0.5})
-    player.character.direction = 2
-    game.camera_player = player
-    game.camera_alt_info = true
-
-    step_1 = function()
-      biter = game.surfaces[1].create_entity{name = "medium-biter", position = {10 + (math.random() * 2), -4 + (math.random() * 4)}}
-      biter.speed = 0.05
-      biter.set_command
-      {
-        type = defines.command.attack,
-        target = player.character
-      }
-
-      tree = game.surfaces[1].create_entity{name = "tree-02", position = {4, 2.5}}
-
-      local count = 60
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_2()
-      end)
-    end
-
-    step_2 = function()
-      local rand_x = -1.5
-      local rand_y = -1
-      local position = {0.5 * ((biter.position.x + rand_x) + player.position.x), 0.5 * ((biter.position.y + rand_y) + player.position.y)}
-      player.clear_items_inside()
-      player.insert("pistol")
-      player.insert("piercing-rounds-magazine")
-      player.force.set_ammo_damage_modifier("bullet", 0.5)
-
-      script.on_nth_tick(1, function()
-        if not biter.valid then
-          step_3()
-          return
-        end
-        player.shooting_state = {state  = defines.shooting.shooting_enemies, position = position}
-      end)
-
-    end
-
-    step_3 = function()
-      local count = 60
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        step_4()
-      end)
-    end
-
-    step_4 = function()
-      player.update_selected_entity(tree.position)
-      local position = tree.position
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        if not tree.valid then
-          step_5()
-          return
-        end
-        player.shooting_state = {state  = defines.shooting.shooting_selected, position = position}
-      end)
-    end
-
-    step_5 = function()
-      local count = 30
-      script.on_nth_tick(1, function()
-        if count > 0 then count = count - 1 return end
-        reset()
       end)
     end
 

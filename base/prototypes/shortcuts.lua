@@ -7,33 +7,10 @@ data:extend(
     action = "toggle-alt-mode",
     localised_name = {"shortcut.alt-mode"},
     associated_control_input = "show-info",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/alt-mode-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
@@ -43,337 +20,136 @@ data:extend(
     localised_name = {"shortcut.undo"},
     associated_control_input = "undo",
     technology_to_unlock = "construction-robotics",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/undo-x24.png",
+    small_icon_size = 24
+  },
+  {
+    type = "shortcut",
+    name = "redo",
+    order = "b[blueprints]-b[redo]",
+    action = "redo",
+    localised_name = {"shortcut.redo"},
+    associated_control_input = "redo",
+    technology_to_unlock = "construction-robotics",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/redo-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/redo-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "copy",
-    order = "b[blueprints]-b[copy]",
-    action = "copy",
+    order = "b[blueprints]-c[copy]",
+    action = "spawn-item",
+    item_to_spawn = "copy-paste-tool",
     localised_name = {"shortcut.copy"},
     associated_control_input = "copy",
     technology_to_unlock = "construction-robotics",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/copy-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "cut",
-    order = "b[blueprints]-c[cut]",
-    action = "cut",
+    order = "b[blueprints]-d[cut]",
+    action = "spawn-item",
+    item_to_spawn = "cut-paste-tool",
     localised_name = {"shortcut.cut"},
     associated_control_input = "cut",
     technology_to_unlock = "construction-robotics",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 0.5,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/cut-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "paste",
-    order = "b[blueprints]-c[paste]",
+    order = "b[blueprints]-e[paste]",
     action = "paste",
     localised_name = {"shortcut.paste"},
     associated_control_input = "paste",
     technology_to_unlock = "construction-robotics",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/paste-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "import-string",
-    order = "b[blueprints]-d[import]",
+    order = "b[blueprints]-f[import]",
     action = "import-string",
     localised_name = {"shortcut.import-string"},
     technology_to_unlock = "construction-robotics",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/import-string-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "give-blueprint",
-    order = "b[blueprints]-e[blueprint]",
+    order = "b[blueprints]-g[blueprint]",
     action = "spawn-item",
     localised_name = {"shortcut.make-blueprint"},
     associated_control_input = "give-blueprint",
     technology_to_unlock = "construction-robotics",
     item_to_spawn = "blueprint",
     style = "blue",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "give-blueprint-book",
-    order = "b[blueprints]-f[book]",
+    order = "b[blueprints]-h[book]",
     action = "spawn-item",
     localised_name = {"shortcut.make-blueprint-book"},
     associated_control_input = "give-blueprint-book",
     technology_to_unlock = "construction-robotics",
     item_to_spawn = "blueprint-book",
     style = "blue",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-blueprint-book-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "give-deconstruction-planner",
-    order = "b[blueprints]-g[deconstruction-planner]",
+    order = "b[blueprints]-i[deconstruction-planner]",
     action = "spawn-item",
     localised_name = {"shortcut.make-deconstruction-planner"},
     associated_control_input = "give-deconstruction-planner",
     technology_to_unlock = "construction-robotics",
     item_to_spawn = "deconstruction-planner",
     style = "red",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-deconstruction-planner-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
     name = "give-upgrade-planner",
-    order = "b[blueprints]-h[upgrade-planner]",
+    order = "b[blueprints]-j[upgrade-planner]",
     action = "spawn-item",
     localised_name = {"shortcut.make-upgrade-planner"},
     associated_control_input = "give-upgrade-planner",
     technology_to_unlock = "construction-robotics",
     item_to_spawn = "upgrade-planner",
     style = "green",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-upgrade-planner-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
@@ -383,42 +159,10 @@ data:extend(
     localised_name = {"shortcut.toggle-personal-roboport"},
     associated_control_input = "toggle-personal-roboport",
     technology_to_unlock = "personal-roboport-equipment",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-personal-roboport-x24.png",
+    small_icon_size = 24
   },
   {
     type = "shortcut",
@@ -428,50 +172,96 @@ data:extend(
     localised_name = {"shortcut.toggle-equipment-movement-bonus"},
     associated_control_input = "toggle-equipment-movement-bonus",
     technology_to_unlock = "exoskeleton-equipment",
-    icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x32.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x24.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x32-white.png",
-      priority = "extra-high-no-scale",
-      size = 32,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    },
-    disabled_small_icon =
-    {
-      filename = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x24-white.png",
-      priority = "extra-high-no-scale",
-      size = 24,
-      scale = 0.5,
-      mipmap_count = 2,
-      flags = {"gui-icon"}
-    }
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/toggle-exoskeleton-x24.png",
+    small_icon_size = 24
   },
-
-  -- Custom shortcut can be defined as follows:
-  -- {
-  --   type = "shortcut",
-  --   name = "shortcut-name",
-  --   action = "lua",
-  --   toggleable = true, -- whether or not the shortcut button is a toggle button or not
-  --   order, localised_name, technology_to_unlock, icon, small_icon, disabled_icon, disabled_small_icon as above
-  -- }
+  {
+    type = "shortcut",
+    name = "give-copper-wire",
+    order = "d[wires]-a[copper-wire]",
+    action = "spawn-item",
+    localised_name = {"shortcut.make-copper-wire"},
+    associated_control_input = "give-copper-wire",
+    technology_to_unlock = "electronics",
+    item_to_spawn = "copper-wire",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-copper-wire-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-copper-wire-x24.png",
+    small_icon_size = 24
+  },
+  {
+    type = "shortcut",
+    name = "give-red-wire",
+    order = "d[wires]-b[red-wire]",
+    action = "spawn-item",
+    localised_name = {"shortcut.make-red-wire"},
+    associated_control_input = "give-red-wire",
+    technology_to_unlock = "circuit-network",
+    item_to_spawn = "red-wire",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-red-wire-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-red-wire-x24.png",
+    small_icon_size = 24
+  },
+  {
+    type = "shortcut",
+    name = "give-green-wire",
+    order = "d[wires]-a[green-wire]",
+    action = "spawn-item",
+    localised_name = {"shortcut.make-green-wire"},
+    associated_control_input = "give-green-wire",
+    technology_to_unlock = "circuit-network",
+    item_to_spawn = "green-wire",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-green-wire-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-green-wire-x24.png",
+    small_icon_size = 24
+  },
+  {
+    type = "shortcut",
+    name = "give-spidertron-remote",
+    order = "e[spidertron-remote]",
+    action = "spawn-item",
+    localised_name = {"shortcut.make-spidertron-remote"},
+    associated_control_input = "give-spidertron-remote",
+    technology_to_unlock = "spidertron",
+    unavailable_until_unlocked = true,
+    item_to_spawn = "spidertron-remote",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-rts-tool-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-rts-tool-x24.png",
+    small_icon_size = 24
+  },
+  {
+    type = "shortcut",
+    name = "give-discharge-defense-remote",
+    order = "e[spidertron-remote]",
+    action = "spawn-item",
+    localised_name = {"shortcut.make-discharge-defense-remote"},
+    associated_control_input = "give-discharge-defense-remote",
+    technology_to_unlock = "discharge-defense-equipment",
+    unavailable_until_unlocked = true,
+    item_to_spawn = "discharge-defense-remote",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/discharge-defense-remote-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/discharge-defense-remote-x24.png",
+    small_icon_size = 24
+  },
+  {
+    type = "shortcut",
+    name = "give-artillery-targeting-remote",
+    order = "e[spidertron-remote]",
+    action = "spawn-item",
+    localised_name = {"shortcut.make-artillery-targeting-remote"},
+    associated_control_input = "give-artillery-targeting-remote",
+    technology_to_unlock = "artillery",
+    unavailable_until_unlocked = true,
+    item_to_spawn = "artillery-targeting-remote",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/artillery-targeting-remote-x32.png",
+    icon_size = 32,
+    small_icon = "__base__/graphics/icons/shortcut-toolbar/mip/artillery-targeting-remote-x24.png",
+    small_icon_size = 24
+  }
 })
