@@ -72,12 +72,13 @@
     ["effectivity-module-2", "efficiency-module-2"],
     ["effectivity-module-3", "efficiency-module-3"]
  ],
-  "optimized-decorative":
+  "decorative":
   [
     ["puberty-decal", "cracked-mud-decal"],
     ["sand-rock-medium", "medium-sand-rock"],
     ["sand-rock-small", "small-sand-rock"],
     ["rock-tiny", "tiny-rock"],
-    ["rock-small", "small-rock"]
+    ["rock-small", "small-rock"],
+    ["rock-medium", "medium-rock"]
  ]
 }

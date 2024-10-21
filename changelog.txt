@@ -1,4 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.0.9
+Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.8
+Date: 21. 10. 2024
+  Bugfixes:
+    - Fixed a crash when changing decider combinator conditions or outputs in latency in some cases.
+    - Fixed a crash when sending a platform with no thrust to a planet and then removing the stop. (https://forums.factorio.com/116133)
+    - Fixed a crash when robots try to station in a full roboport because their stack size changed.
+    - Fixed a crash in path finder when migrating 1.0 save files to 2.0.
+    - Fixed orbital drop slots not counting towards Item count wait condition.
+    - Fixed space platforms not respecting peaceful and no enemy modes.
+    - Fixed a crash when downloading multiple mods fails.
+    - Fixed a crash when clicking "play" while the map preview was running. (https://forums.factorio.com/116202)
+    - Fixed a crash when drawing a spider leg with length 0. (https://forums.factorio.com/116034)
+    - Fixed error in loading 1.1 version of blueprint library would prevent starting new map or loading a save. (https://forums.factorio.com/116217)
+    - Fixed crashes around the Explore Mods GUI with intermittent network connectivity.
+    - Fixed a crash when viewing a single-product recipe with no main product in Factoriopedia.
+    - Fixed a crash when pathfinding with a rotated bounding box. (https://forums.factorio.com/115524)
+---------------------------------------------------------------------------------------------------
 Version: 2.0.7
 Date: 20. 10. 2024
   Major Features:
