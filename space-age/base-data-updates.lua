@@ -985,3 +985,5 @@ data.raw.tile["hazard-concrete-right"].landing_steps_sound = tile_sounds.landing
 data.raw.tile["refined-concrete"].landing_steps_sound = tile_sounds.landing.concrete
 data.raw.tile["refined-hazard-concrete-left"].landing_steps_sound = tile_sounds.landing.concrete
 data.raw.tile["refined-hazard-concrete-right"].landing_steps_sound = tile_sounds.landing.concrete
+
+data.raw["dont-build-entity-achievement"]["logistic-network-embargo"].research_with = {"metallurgic-science-pack", "electromagnetic-science-pack", "agricultural-science-pack"}

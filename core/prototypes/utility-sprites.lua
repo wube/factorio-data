@@ -1367,7 +1367,8 @@ data:extend(
       width = 64,
       height = 64,
       scale = 0.5,
-      flags = {"icon"}
+      flags = {"icon"},
+      load_in_minimal_mode = true
     },
     deconstruction_mark =
     {
@@ -2390,7 +2391,8 @@ data:extend(
       priority = "extra-high-no-scale",
       width = 64,
       height = 64,
-      flags = {"icon"}
+      flags = {"icon"},
+      load_in_minimal_mode = true
     },
     tip_icon =
     {

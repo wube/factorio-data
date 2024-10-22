@@ -221,6 +221,7 @@ data:extend({
     {
       {
         property = "pressure",
+        min = 0,
         max = 0
       }
     },
@@ -579,6 +580,7 @@ data:extend({
     {
       {
         property = "pressure",
+        min = 0,
         max = 0
       }
     },
@@ -722,6 +724,7 @@ data:extend({
     {
       {
         property = "gravity",
+        min = 0,
         max = 0
       }
     },
@@ -796,6 +799,7 @@ data:extend({
     {
       {
         property = "pressure",
+        min = 0,
         max = 0
       }
     },

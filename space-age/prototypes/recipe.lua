@@ -1271,7 +1271,8 @@ data:extend(
     {
       {
         property = "pressure",
-        min = 4000
+        min = 4000,
+        max = 4000
       }
     },
     ingredients =
@@ -1376,7 +1377,8 @@ data:extend(
     {
       {
         property = "pressure",
-        min = 4000
+        min = 4000,
+        max = 4000
       }
     },
     enabled = false,

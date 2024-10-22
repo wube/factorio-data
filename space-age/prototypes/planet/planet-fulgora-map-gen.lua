@@ -349,7 +349,12 @@ data:extend
     name = "fulgora_cliffiness",
     --intended_property = "cliffiness",
     expression = "8 * slider_rescale(cliff_richness, 20)\z
-                  * (fulgora_road_pyramids - 0.1 + max(0, 1 - 10 * fulgora_wobble_mask))"
+                  * (fulgora_road_pyramids - 0.1 + max(0, 1 - 10 * fulgora_wobble_mask))\z
+                  - 1000 * safe_start_excluder_h",
+    local_expressions =
+    {
+      safe_start_excluder_h = "min(x < fulgora_grid, x > -fulgora_grid, y < 5, y > -5)"
+    }
   },
   { -- used for tiles and resources
     type = "noise-expression",

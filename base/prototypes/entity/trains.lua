@@ -122,6 +122,7 @@ data:extend(
     type = "legacy-straight-rail",
     name = "legacy-straight-rail",
     order = "c[legacy-rail]-a[legacy-straight-rail]",
+    deconstruction_alternative = "straight-rail",
     icon = "__base__/graphics/icons/legacy-rail.png",
     collision_box = {{-1, -1}, {1, 1}}, -- has custommly generated box, but the prototype needs something that is used to generate building smokes
     hidden = true,
@@ -163,7 +164,7 @@ data:extend(
     type = "legacy-curved-rail",
     name = "legacy-curved-rail",
     order = "c[legacy-rail]-b[legacy-curved-rail]",
-    deconstruction_alternative = "legacy-straight-rail",
+    deconstruction_alternative = "straight-rail",
     icon = "__base__/graphics/icons/legacy-curved-rail.png",
     collision_box = {{-2, -2}, {2, 2}}, -- has custommly generated box, but the prototype needs something that is used to generate building smokes
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},

@@ -88,7 +88,7 @@ function make_heat_pipe_pictures(path, name_prefix, data, draw_as_glow)
   return all_pictures
 end
 
-function make_spidertron_leg(spidertron_name, scale, leg_thickness, movement_speed, number, base_sprite, ending_sprite)
+function make_spidertron_leg(spidertron_name, scale, leg_thickness, movement_speed, number, leg_resistances)
   return
   {
     type = "spider-leg",
@@ -113,6 +113,7 @@ function make_spidertron_leg(spidertron_name, scale, leg_thickness, movement_spe
     initial_movement_speed = 0.06 * movement_speed,
     movement_acceleration = 0.03 * movement_speed,
     max_health = 100,
+    resistances = util.table.deepcopy(leg_resistances),
     base_position_selection_distance = 6 * scale,
     movement_based_position_selection_distance = 4 * scale,
     selectable_in_game = false,
@@ -3282,6 +3283,7 @@ data:extend(
     build_sound = {filename = "__core__/sound/build-ghost-small.ogg", volume = 0.6, aggregation = {max_count = 3, remove = true}},
     medium_build_sound = {filename = "__core__/sound/build-ghost-medium.ogg", volume = 0.7, aggregation = {max_count = 3, remove = true}},
     large_build_sound = {filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
+    huge_build_sound = {filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
     minable = {mining_time = 0, results={}},
     mined_sound = {filename = "__core__/sound/deconstruct-ghost.ogg", volume = 0.4}
   },
@@ -9349,6 +9351,47 @@ function create_spidertron(arguments)
 local scale = arguments.scale
 local leg_scale = scale * arguments.leg_scale
 local body_height = 1.5 * scale * leg_scale
+local spidertron_resistances =
+{
+  {
+    type = "fire",
+    decrease = 15,
+    percent = 60
+  },
+  {
+    type = "physical",
+    decrease = 15,
+    percent = 60
+  },
+  {
+    type = "impact",
+    decrease = 50,
+    percent = 80
+  },
+  {
+    type = "explosion",
+    decrease = 20,
+    percent = 75
+  },
+  {
+    type = "acid",
+    decrease = 0,
+    percent = 70
+  },
+  {
+    type = "laser",
+    decrease = 0,
+    percent = 70
+  },
+  {
+    type = "electric",
+    decrease = 0,
+    percent = 70
+  }
+}
+local spidertron_leg_resistances = util.table.deepcopy(spidertron_resistances)
+spidertron_leg_resistances[4] = { type = "explosion", percent = 100 }
+
 data:extend(
 {
   {
@@ -9382,44 +9425,7 @@ data:extend(
     flags = {"placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = arguments.name},
     max_health = 3000,
-    resistances =
-    {
-      {
-        type = "fire",
-        decrease = 15,
-        percent = 60
-      },
-      {
-        type = "physical",
-        decrease = 15,
-        percent = 60
-      },
-      {
-        type = "impact",
-        decrease = 50,
-        percent = 80
-      },
-      {
-        type = "explosion",
-        decrease = 20,
-        percent = 75
-      },
-      {
-        type = "acid",
-        decrease = 0,
-        percent = 70
-      },
-      {
-        type = "laser",
-        decrease = 0,
-        percent = 70
-      },
-      {
-        type = "electric",
-        decrease = 0,
-        percent = 70
-      }
-    },
+    resistances = util.table.deepcopy(spidertron_resistances),
     minimap_representation =
     {
       filename = "__base__/graphics/entity/spidertron/spidertron-map.png",
@@ -9519,14 +9525,14 @@ data:extend(
     is_military_target = true,
     allow_remote_driving = true,
   },
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 1),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 2),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 3),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 4),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 5),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 6),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 7),
-  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 8),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 1, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 2, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 3, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 4, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 5, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 6, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 7, spidertron_leg_resistances),
+  make_spidertron_leg(arguments.name, leg_scale, arguments.leg_thickness, arguments.leg_movement_speed, 8, spidertron_leg_resistances),
 })
 end
 

@@ -1,6 +1,48 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.9
+Version: 2.0.10
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.9
+Date: 22. 10. 2024
+  Changes:
+    - Achievement logistic-network-embargo updated with different condition for base game and space age.
+  Bugfixes:
+    - Fixed a crash when viewing the production statistics GUI while switching surfaces. (https://forums.factorio.com/116084)
+    - Fixed unstable global grid position when re-assigning blueprint. (https://forums.factorio.com/111005)
+    - Fixed that individual segmented units parts were in the kill statistics.
+    - Fixed a crash when opening the technology GUI focused on disabled technology. (https://forums.factorio.com/116243)
+    - Fixed migration of rails in blueprints in 1.1 version of blueprint library. (https://forums.factorio.com/116106)
+    - Fixed a crash when trying to use unsupported audio depth. (https://forums.factorio.com/116218)
+    - Fixed a crash when loading some blueprint library contents with mods changed. (https://forums.factorio.com/116014)
+    - Fixed a crash when clicking "upgrades" in the wave defense scenario. (https://forums.factorio.com/116320)
+    - Fixed Spidertrons receiving up to 8 times extra damage from explosives. (https://forums.factorio.com/116246)
+    - Fixed that unpowered inserters could grab items.
+    - Fixed that some GUIs could be opened behind the technology GUI. (https://forums.factorio.com/116252)
+    - Fixed crash in multiplayer when mining modded tree with less stump variants than alive tree variants.
+    - Fixed it was not possible to open loader gui for input loader. (https://forums.factorio.com/116297)
+    - Fixed crash in mod manager in minimal mode when some text used space-age icon rich text tag.
+    - Fixed that changing surfaces with ghost equipment would not correctly request robots to deliver the equipment. (https://forums.factorio.com/116146)
+    - Fixed build sound of huge ghost entities not being ghostly enough. (https://forums.factorio.com/116219)
+    - Fixed a crash when item entity marked to be deconstructed is cancel deconstructed while being over belt. (https://forums.factorio.com/116374)
+    - Fixed that the runtime server config GUI did not fit on some screen sizes. (https://forums.factorio.com/116398)
+    - Fixed GUI effects volume set to zero not being applied on start if background simulations were turned off. (https://forums.factorio.com/116461)
+    - Fixed a crash when setting cursor_ghost of a character not assigned to a player. (https://forums.factorio.com/116484)
+    - Fixed a crash when reading opened GUIs of a character not assigned to a player. (https://forums.factorio.com/116516)
+    - Fixed PvP Scenario unlocking all the trigger technologies. (https://forums.factorio.com/116251)
+    - Fixed a crash when changing the force of cargo landing pads.
+    - Fixed tools items and ammo items could be refilled during cursor split interaction. (https://forums.factorio.com/116420)
+    - Fixed that it was not possible to mark legacy rails for deconstruction using deconstruction planner configured for straight-rail. (https://forums.factorio.com/116386)
+    - Fixed that the Fulgora starting island could have no breaks in the cliffs. (https://forums.factorio.com/116574)
+    - Fixed that deconstruction planner would treat entities with deconstruction alternative as being normal quality.
+    - Fixed crash when running out of disk space when saving preview for a save file.
+    - Fixed that passive provider and active provider logistic points could have sections added through the Lua API. (https://forums.factorio.com/116137)
+    - Fixed that space platform schedule changes didn't update last user of the space platform hub. (https://forums.factorio.com/116560)
+    - Fixed a crash when enabling snap-to-grid when a blueprint had no contents. (https://forums.factorio.com/116321)
+    - Fixed that filter inserter was visible in technology icon for fast inserters.
+    - Fixed that a buffered rocket would briefly render lights south of the rocket silo. (https://forums.factorio.com/116132)
+    - Fixed commas and quality icons not allowed in save file names. (https://forums.factorio.com/116236)
+    - Fixed crashes when viewing alerts for entities that then die. (https://forums.factorio.com/116481)
+    - Fixed incorrect surface condition of a space platform hub. (https://forums.factorio.com/116467)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.8
 Date: 21. 10. 2024

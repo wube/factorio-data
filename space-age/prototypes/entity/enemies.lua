@@ -1468,7 +1468,7 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
     type = "segment",
     localised_name = {"entity-name.demolisher-segment", {"entity-name."..base_name}},
     hidden = true,
-    flags = {"not-repairable", "breaths-air"},
+    flags = {"not-repairable", "breaths-air", "not-in-kill-statistics"},
     max_health = health,
     impact_category = "organic",
     resistances = demolisher_body_resistances,
@@ -1850,7 +1850,7 @@ function make_demolisher_tail(base_name, scale, damage_multiplier, health, sound
     type = "segment",
     localised_name = {"entity-name.demolisher-tail", {"entity-name."..base_name}},
     hidden = true,
-    flags = {"not-repairable", "breaths-air"},
+    flags = {"not-repairable", "breaths-air", "not-in-kill-statistics"},
     max_health = health,
     impact_category = "organic",
     resistances = demolisher_body_resistances,
@@ -3145,6 +3145,22 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
   local stomper_stomp_damage_multiplier = 3.5
   local stomper_parts_offset_upper = -0.25
   local stomper_parts_offset_lower = -0.33
+  local stomper_resistances =
+  {
+    {
+      type = "physical",
+      decrease = 2,
+      percent = 50
+    },
+    {
+      type = "laser",
+      percent = 80
+    },
+    {
+      type = "impact",
+      percent = 80
+    }
+  }
 
   local stomper_spit_tint1 = {0.3, 0.2, 0.06, 1}
   local stomper_spit_tint2= {0.7, 0.12, 0.45, 0.75}
@@ -3621,22 +3637,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
       order = "gleba-c-stomper-"..tostring(scale),
       subgroup = "enemies",
       impact_category = "organic",
-      resistances =
-      {
-        {
-          type = "physical",
-          decrease = 2,
-          percent = 50
-        },
-        {
-          type = "laser",
-          percent = 80
-        },
-        {
-          type = "impact",
-          percent = 80
-        }
-      },
+      resistances = util.table.deepcopy(stomper_resistances),
       healing_per_tick = health/500/60,
       distraction_cooldown = 300,
       min_pursue_time = 10 * 60,
@@ -4097,6 +4098,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
       ankle_height = stomper_ankle_height, -- tiles, in screen space, above the ground, the point at which the leg connects to the foot
       upper_leg_dying_trigger_effects = make_pentapod_leg_dying_trigger_effects(prefix .. "stomper-pentapod-leg-die", pentapod_upper_leg_dying_trigger_effect_positions),
       lower_leg_dying_trigger_effects = make_pentapod_leg_dying_trigger_effects(prefix .. "stomper-pentapod-leg-die", pentapod_lower_leg_dying_trigger_effect_positions),
+      resistances = util.table.deepcopy(stomper_resistances)
     }),
     make_particle
     {
@@ -4637,6 +4639,18 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
   local strafer_ankle_height = 0
   local strafer_leg_orientations = {0.15, 0.35, 0.55, 0.75, 0.95}
   local strafer_speed = speed
+  local strafer_resistances =
+  {
+    {
+      type = "physical",
+      decrease = 2,
+      percent = 10
+    },
+    {
+      type = "laser",
+      percent = 50
+    }
+  }
 
   local strafer_graphics_definitions =
   {
@@ -5005,18 +5019,7 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
       order = "gleba-b-strafer-"..tostring(scale),
       subgroup = "enemies",
       impact_category = "organic",
-      resistances =
-      {
-        {
-          type = "physical",
-          decrease = 2,
-          percent = 10
-        },
-        {
-          type = "laser",
-          percent = 50
-        }
-      },
+      resistances = util.table.deepcopy(strafer_resistances),
       healing_per_tick = health/500/60,
       distraction_cooldown = 30,
       min_pursue_time = 10 * 60,
@@ -5213,6 +5216,7 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
       ankle_height = 0, -- tiles, in screen space, above the ground, the point at which the leg connects to the foot
       upper_leg_dying_trigger_effects = make_pentapod_leg_dying_trigger_effects(prefix .. "strafer-pentapod-leg-die", pentapod_upper_leg_dying_trigger_effect_positions),
       lower_leg_dying_trigger_effects = make_pentapod_leg_dying_trigger_effects(prefix .. "strafer-pentapod-leg-die", pentapod_lower_leg_dying_trigger_effect_positions),
+      resistances = util.table.deepcopy(strafer_resistances),
     }),
     make_particle
     {
