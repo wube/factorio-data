@@ -479,7 +479,7 @@ data:extend(
     name = "art-of-siege",
     order = "f[kill]-h[art-of-siege]",
     type_to_kill = "unit-spawner",
-    damage_dealer = "artillery-turret",
+    damage_dealer = {"artillery-turret", "artillery-wagon"},
     amount = 1,
     icon = "__base__/graphics/achievement/art-of-siege.png",
     icon_size = 128

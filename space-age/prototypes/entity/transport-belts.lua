@@ -80,7 +80,7 @@ data:extend
     max_health = 170,
     corpse = "turbo-underground-belt-remnants",
     dying_explosion = "turbo-underground-belt-explosion",
-    factoriopedia_simulation = simulations.factoriopedia_tungsten_underground_belt,
+    factoriopedia_simulation = simulations.factoriopedia_turbo_underground_belt,
     max_distance = 11,
     heating_energy = "200kW",
     underground_sprite =

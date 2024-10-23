@@ -1,5 +1,4 @@
 require ("__base__.prototypes.entity.pipecovers")
-require ("__base__.prototypes.entity.mining-drill")
 --This is a placeholder file, a rescaled version of the old miner graphic.
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")

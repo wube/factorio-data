@@ -1,6 +1,56 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.10
+Version: 2.0.11
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.10
+Date: 23. 10. 2024
+  Features:
+    - Galaxy of fame. Offered when the game is finished. (https://www.factorio.com/galaxy)
+  Changes:
+    - Non-blocking saving setting is no longer synced over the Steam cloud.
+  Minor Features:
+    - Added flying text for more cases of unsuccessful resource mining.
+  Bugfixes:
+    - Fixed that blueprint book tooltips did not look correct when in the quickbar. (https://forums.factorio.com/116593)
+    - Fixed that movement speed bonus equipment would show garbage values when low on energy. (https://forums.factorio.com/116433)
+    - Fixed that some fluid-only recipes would allow quality modules. (https://forums.factorio.com/116424)
+    - Fixed that the "kill with artillery" achievement did not work with artillery wagons. (https://forums.factorio.com/116517)
+    - Fixed invalid package name in sprite path definition would result in OS error message dialog instead of loading into minimal mode. (https://forums.factorio.com/116210)
+    - Fixed that continue host menu option didn't respect the port from the config. (https://forums.factorio.com/111288)
+    - From now on, we wont save blueprint-storage to a file when it was not used yet. This might help preventing cloud storage file by a file representing empty blueprint storage. (https://forums.factorio.com/113198)
+    - Fixed that the blueprint setup GUI would always confirm to discard changes even if nothing changed when the blueprint had a description. (https://forums.factorio.com/116285)
+    - Leaked D3D device and swap chain in attempt to avoid AMD driver crash when closing the game. (https://forums.factorio.com/108367)
+    - Fixed LogisticContainerControlBehavior exclusive mode could get out of sync from the ContainerControlBehavior it derives from. (https://forums.factorio.com/116669)
+    - Fixed that the debug settings GUI could get stuck behind the normal game logic. (https://forums.factorio.com/116413)
+    - Fixed that the elem_tooltip type of "signal" did not work correctly. (https://forums.factorio.com/viewtopic.php?f=7&t=116650)
+    - Instead of aborting when SDL_DXGIGetOutputInfo call fails, the game will try to initialize D3D device using adapter 0. (https://forums.factorio.com/109955)
+    - Fixed crashes when using LuaEntity fluid methods when the entity's fluidboxes were not part of a segment. (https://forums.factorio.com/116093)
+    - Fixed that LuaEntity::insert_fluid would not work on the output FluidBoxes of a crafting machine.
+    - Fixed removal of transport belts under cursor which would be normally fast-replaeable while drag traversing underground gap by belt rebuilding. (https://forums.factorio.com/113128)
+    - Fixed arithmetic combinator's first constant would not be proposed as parameter. (https://forums.factorio.com/116716)
+    - Fixed that on_entity_logistic_slot_changed did not fire for constant combinators. (https://forums.factorio.com/116575)
+    - Fixed a crash in the space platform hub GUI when the inventory size changes at the same time as the limit is changed. (https://forums.factorio.com/116597)
+    - Fixed turbo underground belts simulation in factoriopedia. (https://forums.factorio.com/116695)
+    - Fixed a crash when a segmented unit entity causes the entire segmented unit to die. (https://forums.factorio.com/116551)
+    - Fixed a crash when a platform was traveling to the shattered planet using a temporary stop which expired. (https://forums.factorio.com/116763)
+    - Fixed fluid conditions not showing fluid amounts. (https://forums.factorio.com/116686)
+    - Fixed using a custom surface in PvP was preventing Space Age progression. (https://forums.factorio.com/116513)
+    - Fixed a crash when switching preferred audio output device while a variable music track is playing. (https://forums.factorio.com/116785)
+    - Fixed train stop GUI being too wide at some smaller resolutions. (https://forums.factorio.com/116621)
+    - Fixed driven car being drawn on all surfaces in latency. (https://forums.factorio.com/116587)
+    - Fixed dying enemy would not randomize direction of its dying animation.
+    - Fixed that failed achievement wasn't gettable again without restarting the game. (https://forums.factorio.com/116329)
+    - Fixed a crash when defining planet prototypes that don't contain any resources. (https://forums.factorio.com/116849)
+    - Fixed logistic section active state was not preserved in a blueprint string. (https://forums.factorio.com/116775)
+    - Fixed a crash when showing some modded GUI tables. (https://forums.factorio.com/116735)
+    - Fixed an issue where entity flagged as not mineable could be marked for deconstruction using undo.
+    - Fixed pumpjacks with low yield would show 0 output rate in the tooltip. (https://forums.factorio.com/116179)
+    - Fixed Nauvis elevation dropdown missing in map generator GUI, causing incorrect previews from map exchange strings. (https://forums.factorio.com/116303)
+    - Fixed that it wasn't possible to parametrise virtual signals and space locations contained in text. (https://forums.factorio.com/116292)
+    - Fixed brightness and contrast sliders being reset to 0 when setting the text field to a negative value. (https://forums.factorio.com/116613)
+    - Fixed that it wasn't possible to parametrise entities, virtual signals and space locations contained in text. (https://forums.factorio.com/116292)
+    - Fixed a crash when construction robots attempt to deliver modules in the same tick the target entity is destroyed. (https://forums.factorio.com/116791)
+    - Fixed that biter base menu simulation had more decoratives over the Wube logo than desired. (https://forums.factorio.com/116882) 
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.9
 Date: 22. 10. 2024

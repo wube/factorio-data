@@ -1319,6 +1319,7 @@ data:extend(
     always_show_products = true,
     show_amount_in_title = false,
     allow_decomposition = false,
+    allow_quality = false,
     crafting_machine_tint =
     {
       primary = {r = 0.409, g = 0.694, b = 0.895, a = 1.000}, -- #68b0e4ff
@@ -2434,6 +2435,7 @@ data:extend(
     },
     show_amount_in_title = false,
     always_show_products = true,
+    allow_productivity = false,
     enabled = false,
     crafting_machine_tint =
     {

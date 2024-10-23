@@ -5772,6 +5772,13 @@ data:extend(
       }
     },
 
+    deep_frame_in_shallow_frame_for_description_with_fixed_width =
+    {
+      type = "frame_style",
+      parent = "deep_frame_in_shallow_frame_for_description",
+      width = 500
+    },
+
     tab_deep_frame_in_entity_frame =
     {
       type = "frame_style",

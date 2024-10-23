@@ -130,7 +130,7 @@ data:extend{
   {
     type = "noise-expression",
     name = "elevation",
-    --intended_property = "elevation",
+    intended_property = "elevation",
     expression = "elevation_nauvis",
     localised_name = {"noise-expression.elevation_nauvis"}
   },
@@ -242,7 +242,7 @@ data:extend{
   {
     type = "noise-expression",
     name = "elevation_lakes",
-    --intended_property = "elevation",
+    intended_property = "elevation",
     -- Large lakes similar to those from Factorio 0.12
     expression = "finish_elevation{elevation = make_0_12like_lakes{x = x,\z
                                                                    y = y,\z
@@ -254,7 +254,8 @@ data:extend{
   {
     type = "noise-expression",
     name = "elevation_island",
-    --intended_property = "elevation",
+    intended_property = "elevation",
+    order = "z",
     -- A large island surrounded by an endless ocean
     expression = "finish_elevation{elevation = make_0_12like_lakes{x = x,\z
                                                                    y = y,\z

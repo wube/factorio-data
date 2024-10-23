@@ -3,7 +3,7 @@ local simulations = {}
 
 -----------////////////////////////////////////////////////////////////// LOGISTICS
 
-simulations.factoriopedia_tungsten_underground_belt =
+simulations.factoriopedia_turbo_underground_belt =
 {
   init =
   [[
@@ -11,7 +11,7 @@ simulations.factoriopedia_tungsten_underground_belt =
     game.simulation.camera_zoom = 1.8
     game.surfaces[1].create_entities_from_blueprint_string
     {
-      string = "0eNqdkM8KgzAMh98l5zrwT4vrq4wx1AUJaCptOibiu6/qYYcdhJ1Cf0m/r80C7RBx8sQCdgHqHAewtwUC9dwMW8bNiGBBIvdBkLPIT/S9d6lmLQ4CqwJK2Rtsvt4VIAsJ4YHZD/OD49iiTwPqHKdgciERHG/2RM2qi1Ywgy0vOrme5LE72pUCmacNRzzF7SU/xuIfozkXuii7MX2YBMeUfBep4IU+7BeKOq/qUhtjKm30dV0/cCt8XA==",
+      string = "0eNqVkM8KgzAMxt8l5yr4p8X1VcYYVoMENJXajon47mv1sMMOslPIl+T7JdnAjAFnR+xBb0Cd5QX0fYOFBm7HpHE7IWjwwRmbBe7RDc7GmBkcPewCKGpv0MX+EIDsyROeHkeyPjlMBl1sEBdeAma7xHHLiRstszqXAlbQVS4jqCeH3VmuBfh1Tl7Ec0hr/ODKv3HqmmaDP3DxVPI4ReX7PwEvdMsxUDZF3VRSKVVLJW/7/gFK3nh4",
       position = {0, 0}
     }
   ]]
