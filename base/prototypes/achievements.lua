@@ -54,6 +54,7 @@ data:extend(
     order = "a[progress]-e[energy-production]-c[nuclear]",
     entity = "steam-turbine",
     consumed_condition = "uranium-fuel-cell",
+    required_to_build = "nuclear-reactor",
     icon = "__base__/graphics/achievement/nuclear-power.png",
     icon_size = 128,
   },

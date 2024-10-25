@@ -959,6 +959,14 @@ data:extend(
       height = 64,
       flags = {"icon"}
     },
+    cargo_bay_not_connected_icon =
+    {
+      filename = "__core__/graphics/icons/alerts/danger-icon.png",
+      priority = "extra-high-no-scale",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
     frozen_icon =
     {
       filename = "__core__/graphics/icons/alerts/frozen-icon.png",

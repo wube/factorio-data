@@ -1,3 +1,23 @@
+function create_asteroid_chunk_parameter(number)
+  data:extend(
+  {
+    {
+      type = "asteroid-chunk",
+      name = "parameter-" .. number,
+      icon = "__base__/graphics/icons/parameter/parameter-" .. number .. ".png",
+      localised_name = {"parameter-x", tostring(number)},
+      subgroup = "parameters",
+      order = "a",
+      parameter = true
+    }
+  })
+end
+
+for n = 0, 9 do
+  create_asteroid_chunk_parameter(n)
+end
+
+
 -- damage-type.lua must run first.
 --[[
 small asteroids: use lasers because they are free

@@ -5,3 +5,5 @@ data.raw.recipe["lubricant"].allow_quality = false
 data.raw.recipe["basic-oil-processing"].allow_quality = false
 data.raw.recipe["advanced-oil-processing"].allow_quality = false
 data.raw["mining-drill"]["pumpjack"].allowed_effects = {"consumption", "speed", "productivity", "pollution"}
+data.raw.technology["modules"].icon = "__quality__/graphics/technology/module.png"
+data.raw.technology["modules"].icon_size = 256

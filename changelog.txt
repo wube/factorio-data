@@ -1,15 +1,68 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.11
+Version: 2.0.12
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.11
+Date: 25. 10. 2024
+  Features:
+    - [space-age] Asteroid collector filters can be modified by blueprint parametrisation.
+    - Programmable speaker can be modified by blueprint parametrisation.
+    - When imported blueprint is placed, assembling machines will be configured with the recipe even when recipe is not yet researched.
+  Changes:
+    - [space-age] Fulgora ruins now also drop iron sticks when mined so electric poles could be crafted without recyclers at the start.
+    - [space-age] The "Custom minimum payload" slider for orbital logistics now offers more sensible values.
+    - [space-age] Orbital logistics "Custom minimum payload" is now checked against largest possible payload before setting the filter.
+    - [space-age] Cargo bays will show a warning icon when they are not connected to a Hub or Landing Pad.
+  Optimizations:
+    - Improved performance of technology GUI when viewing only essential technologies. (https://forums.factorio.com/117044)
+  Bugfixes:
+    - Fixed a crash when construction robots attempt to deliver modules in the same tick the target entity is destroyed. (https://forums.factorio.com/116791)
+    - Fixed that biter base menu simulation had more decoratives over the Wube logo than desired. (https://forums.factorio.com/116882)
+    - Tips simulation fixed with minor changes to texts (https://forums.factorio.com/116394 https://forums.factorio.com/116854 https://forums.factorio.com/116442)
+    - Fixed that the map editor couldn't change the spawn point of a force after it was set. (https://forums.factorio.com/116966)
+    - Fixed that the game would hang when closing the load game menu if the number of mods in the mods directory was too large on Linux. (https://forums.factorio.com/116561)
+    - Fixed incorrect pump speed reporting when pumping into a fluid wagon. (https://forums.factorio.com/116492)
+    - Fixed that pumps could not pump into a fluid wagon at full speed. (https://forums.factorio.com/116492)
+    - Fixed that inserters could get stuck if the crafting machine they're interacting with dies and is rebuilt. (https://forums.factorio.com/116972)
+    - Fixed a performance issue with ghost building. (https://forums.factorio.com/117023)
+    - Fixed achievement nucear-power to require building nuclear reactor. (https://forums.factorio.com/116730)
+    - Fixed a possible exploit of using parametrised blueprint to set unlocked recipes in assemblers. (https://forums.factorio.com/117063)
+    - Fixed that players in remote view were unable to open menu when the game was paused. (https://forums.factorio.com/116472)
+    - Fixed turrets sometimes being marked for deconstruction and rebuild if trying to upgrade through overbuilding.
+    - Fixed position of car driven by local player would be delayed on minimap in multiplayer.
+    - Fixed a crash related to rocket silos when adding and removing mods. (https://forums.factorio.com/117067)
+    - Fixed that zooming with buttons(keyboard or controller) would not zoom to pixel-perfect values.
+    - Fixed a crash when reading cursor record of a character not assigned to a player. (https://forums.factorio.com/116926)
+    - Fixed that building with modded items did not work correctly in all cases. (https://forums.factorio.com/116862)
+    - Fixed a crash when merging forces related to chart tags. (https://forums.factorio.com/116931)
+    - Fixed that blueprinted containers would loose their settings when overbuilt over container without those settings (https://forums.factorio.com/116130)
+    - Fixed a crash when setting roboport requests to a negative value. (https://forums.factorio.com/116996)
+    - Fixed RecipePrototype::maximum_productivity was allowed to be negative. (https://forums.factorio.com/117026)
+    - Fixed rail description would suggest toggle rail layer binding when elevated-rails mod was disabled. (https://forums.factorio.com/116885)
+    - Fixed blueprints being able to produce two overlaying ghosts of tiles with the same placing item (like hazard-concrete-left/right)
+    - Fixed technology GUI not updating technology cost label if the technology didn't have any science packs. (https://forums.factorio.com/117237)
+    - Fixed reading LuaTechnologyPrototype::research_trigger could throw an error. (https://forums.factorio.com/117279)
+    - Fixed modules technology icon when quality mod is disabled. (https://forums.factorio.com/117284)
+    - Fixed MapGeneratorGui would not enable reset to defaults button when changing technology price multiplier. (https://forums.factorio.com/116864)
+    - Fixed PVP scenario not having starting area protection enabled when the last player of that force logged out. (https://forums.factorio.com/117028)
+    - Fixed use-item-groups had no effects. (https://forums.factorio.com/117367)
+    - Fixed mini-tutorial scripts crashing or not granting items if player switched to remote view.
+    - Fixed a crash when trying to render a surface which doesn't exist in a simulation. (https://forums.factorio.com/117359)
+    - Fixed crashes caused by calling missing library symbols on older macOS versions. (https://formus.factorio.com/116227)
+    - Fixed a crash when reading owner_location on simple item stacks. (https://forums.factorio.com/117357)
+  Modding:
+    - Added AssemblingMachinePrototype::disabled_when_recipe_not_researched.
+  Scripting:
+    - Added LuaEntity::insert_plan and LuaEntity::removal_plan read/write.
+    - Added removal_plan parameter to LuaSurface::create_entity for item request proxies.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.10
 Date: 23. 10. 2024
   Features:
-    - Galaxy of fame. Offered when the game is finished. (https://www.factorio.com/galaxy)
+    - [space-age] Galaxy of fame. Offered when the game is finished. (https://www.factorio.com/galaxy)
+    - Added flying text for more cases of unsuccessful resource mining.
   Changes:
     - Non-blocking saving setting is no longer synced over the Steam cloud.
-  Minor Features:
-    - Added flying text for more cases of unsuccessful resource mining.
   Bugfixes:
     - Fixed that blueprint book tooltips did not look correct when in the quickbar. (https://forums.factorio.com/116593)
     - Fixed that movement speed bonus equipment would show garbage values when low on energy. (https://forums.factorio.com/116433)
@@ -22,7 +75,7 @@ Date: 23. 10. 2024
     - Leaked D3D device and swap chain in attempt to avoid AMD driver crash when closing the game. (https://forums.factorio.com/108367)
     - Fixed LogisticContainerControlBehavior exclusive mode could get out of sync from the ContainerControlBehavior it derives from. (https://forums.factorio.com/116669)
     - Fixed that the debug settings GUI could get stuck behind the normal game logic. (https://forums.factorio.com/116413)
-    - Fixed that the elem_tooltip type of "signal" did not work correctly. (https://forums.factorio.com/viewtopic.php?f=7&t=116650)
+    - Fixed that the elem_tooltip type of "signal" did not work correctly. (https://forums.factorio.com/116650)
     - Instead of aborting when SDL_DXGIGetOutputInfo call fails, the game will try to initialize D3D device using adapter 0. (https://forums.factorio.com/109955)
     - Fixed crashes when using LuaEntity fluid methods when the entity's fluidboxes were not part of a segment. (https://forums.factorio.com/116093)
     - Fixed that LuaEntity::insert_fluid would not work on the output FluidBoxes of a crafting machine.
@@ -49,8 +102,6 @@ Date: 23. 10. 2024
     - Fixed that it wasn't possible to parametrise virtual signals and space locations contained in text. (https://forums.factorio.com/116292)
     - Fixed brightness and contrast sliders being reset to 0 when setting the text field to a negative value. (https://forums.factorio.com/116613)
     - Fixed that it wasn't possible to parametrise entities, virtual signals and space locations contained in text. (https://forums.factorio.com/116292)
-    - Fixed a crash when construction robots attempt to deliver modules in the same tick the target entity is destroyed. (https://forums.factorio.com/116791)
-    - Fixed that biter base menu simulation had more decoratives over the Wube logo than desired. (https://forums.factorio.com/116882) 
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.9
 Date: 22. 10. 2024
@@ -1146,7 +1197,7 @@ Date: 17. 10. 2023
     - Fixed that closing a headless multiplayer game via ctrl+c would give an exit code of 1 instead of 0. (https://forums.factorio.com/109019)
     - Fixed that all exit codes got coerced into 0 or 1.
     - Fixed that crafting machine fluid outputs could prevent them from sleeping in some cases. (https://forums.factorio.com/108996)
-    - Fixed that the Lua utility function "make_4way_animation_from_spritesheet" didn't handle several values correctly. (https://forums.factorio.com/viewtopic.php?f=7&t=107928)
+    - Fixed that the Lua utility function "make_4way_animation_from_spritesheet" didn't handle several values correctly. (https://forums.factorio.com/107928)
     - Fixed server not showing in LAN server browser if the game is also public and with a different external port because of NAT.
     - Fixed controller vibrations playing in keyboard and mouse mode.
     - Fixed controller buttons simulating clicks and modifiers in keyboard and mouse mode. (https://forums.factorio.com/107888)
@@ -1560,7 +1611,7 @@ Version: 1.1.73
 Date: 01. 12. 2022
   Bugfixes:
     - Fixed items dropped on underground belts could be inserted at a wrong position when transport lines were facing east or south. (https://forums.factorio.com/104104)
-    - Fixed DNS CNAME records confusing the SRV lookup on Windows (https://forums.factorio.com/viewtopic.php?f=7&t=104089)
+    - Fixed DNS CNAME records confusing the SRV lookup on Windows (https://forums.factorio.com/104089)
     - Fixed a crash when hovering over some rich text tags and destroying the object they refer to. (https://forums.factorio.com/104149)
     - Fixed that "request from buffer chests" option wasn't copied between spidertrons. (https://forums.factorio.com/104046)
     - Fixed that "request from buffer chests" option in spidertrons reset to default when prototypes changed. (https://forums.factorio.com/104124)
@@ -6690,7 +6741,7 @@ Date: 27. 02. 2019
     - Fixed that the category dropdown in the install mods GUI would only work the first time it was used. (https://forums.factorio.com/65398)
     - Fixed that mod thumbnails in zipped mods wouldn't show in the mods GUI. (https://forums.factorio.com/65419)
     - Fixed pre-requisites for the first tier of all upgrade technologies so that the required science packs are unlocked first. (https://forums.factorio.com/65379)
-    - Fixed electric inserter technology description in the tutorial. (https://forums.factorio.com/viewtopic.php?f=7&t=65229)
+    - Fixed electric inserter technology description in the tutorial. (https://forums.factorio.com/65229)
     - Fixed that the undo shortcut tooltip didn't reflect latency hiding values and invalid entries filtering.
     - Fixed a desync when deconstructing item request proxies in the latency state. (https://forums.factorio.com/65420)
     - Fixed crash related to the hand logic and switching controllers. (https://forums.factorio.com/65330)

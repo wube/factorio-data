@@ -104,6 +104,7 @@ data:extend({
     is_foundation = true,
     collision_mask = tile_collision_masks.ground,
     layer = gleba_tile_offset + 22,
+    searchable = true,
 
     transitions = data.raw["tile"]["landfill"].transitions,
     transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
@@ -137,6 +138,7 @@ data:extend({
     is_foundation = true,
     collision_mask = tile_collision_masks.ground,
     layer = gleba_tile_offset + 24,
+    searchable = true,
 
     transitions = data.raw["tile"]["landfill"].transitions,
     transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
@@ -170,6 +172,7 @@ data:extend({
     is_foundation = true,
     collision_mask = tile_collision_masks.ground,
     layer = gleba_tile_offset + 23,
+    searchable = true,
 
     transitions = data.raw["tile"]["landfill"].transitions,
     transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
@@ -203,6 +206,7 @@ data:extend({
     is_foundation = true,
     collision_mask = tile_collision_masks.ground,
     layer = gleba_tile_offset + 25,
+    searchable = true,
 
     transitions = data.raw["tile"]["landfill"].transitions,
     transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
@@ -235,6 +239,7 @@ data:extend({
     autoplace = {probability_expression = "gleba_fertile_solid * 50000 - 40000 - gleba_biome_mask_green * 1000000"},
     layer_group = "ground-natural",
     layer = gleba_tile_offset + 20,
+    searchable = true,
 
     transitions = lava_stone_transitions,
     transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,
@@ -266,6 +271,7 @@ data:extend({
     autoplace = {probability_expression = "gleba_fertile_solid * 50000 - 40000 - gleba_biome_mask_red * 1000000"},
     layer_group = "ground-natural",
     layer = gleba_tile_offset + 21,
+    searchable = true,
 
     transitions = lava_stone_transitions,
     transitions_between_transitions = data.raw["tile"]["landfill"].transitions_between_transitions,

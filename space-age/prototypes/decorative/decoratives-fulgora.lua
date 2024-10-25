@@ -24,10 +24,11 @@ local function fulgora_ruin(args)
     results =
     {
       {type = "item", name = "scrap", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area * 4)},
-      {type = "item", name = "iron-gear-wheel", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area)},
       {type = "item", name = "steel-plate", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area)},
-      {type = "item", name = "stone", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area)},
-      {type = "item", name = "copper-cable", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area * 0.1)}
+      {type = "item", name = "iron-gear-wheel", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area)},
+      {type = "item", name = "iron-stick", amount_min = math.ceil(collision_area*0.5), amount_max = math.ceil(collision_area*0.5)},
+      {type = "item", name = "copper-cable", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area)},
+      {type = "item", name = "stone", amount_min = math.ceil(collision_area), amount_max = math.ceil(collision_area)}
     }
   }
   ruin.map_color = args.map_color or {130, 130, 130}
