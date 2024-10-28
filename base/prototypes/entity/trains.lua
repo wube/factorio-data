@@ -250,7 +250,7 @@ data:extend(
     tile_height = 2,
     extra_planner_goal_penalty = -4,
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.2, result = "rail", count = 1},
+    minable = {mining_time = 0.2, result = "rail", count = 2},
     max_health = 200,
     corpse = "half-diagonal-rail-remnants",
     dying_explosion =
@@ -282,7 +282,7 @@ data:extend(
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("half-diagonal"),
-    placeable_by = {item = "rail", count = 1},
+    placeable_by = {item = "rail", count = 2},
     walking_sound = sounds.rails,
     extra_planner_penalty = 0,
     factoriopedia_alternative = "straight-rail"
@@ -295,7 +295,7 @@ data:extend(
     icon = "__base__/graphics/icons/curved-rail.png",
     collision_box = {{-0.75, -2.516}, {0.75, 2.516}}, -- has custommly generated box, but the prototype needs something that is used to generate building smokes
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.2, result = "rail", count = 2},
+    minable = {mining_time = 0.2, result = "rail", count = 3},
     max_health = 200,
     corpse = "curved-rail-a-remnants",
     dying_explosion =
@@ -327,7 +327,7 @@ data:extend(
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("curved-a"),
-    placeable_by = {item = "rail", count = 2},
+    placeable_by = {item = "rail", count = 3},
     walking_sound = sounds.rails,
     extra_planner_penalty = 0.5,
     deconstruction_marker_positions = rail_8shifts_vector(-0.248, -0.533),
@@ -341,7 +341,7 @@ data:extend(
     icon = "__base__/graphics/icons/curved-rail-b.png",
     collision_box = {{-0.75, -2.441}, {0.75, 2.441}}, -- has custommly generated box, but the prototype needs something that is used to generate building smokes
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.2, result = "rail", count = 2},
+    minable = {mining_time = 0.2, result = "rail", count = 3},
     max_health = 200,
     corpse = "curved-rail-b-remnants",
     dying_explosion =
@@ -373,7 +373,7 @@ data:extend(
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("curved-b"),
-    placeable_by = {item = "rail", count = 2},
+    placeable_by = {item = "rail", count = 3},
     walking_sound = sounds.rails,
     extra_planner_penalty = 0.5,
     deconstruction_marker_positions = rail_8shifts_vector(-0.309, -0.155),

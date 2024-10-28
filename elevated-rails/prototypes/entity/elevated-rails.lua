@@ -201,7 +201,7 @@ data:extend(
     icon = "__elevated-rails__/graphics/icons/elevated-curved-rail.png",
     collision_box = {{-0.75, -2.516}, {0.75, 2.516}}, -- has custommly generated box, but the prototype needs something that is used to generate building smokes
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.2, result = "rail", count = 2},
+    minable = {mining_time = 0.2, result = "rail", count = 3},
     max_health = 200,
     corpse = "elevated-rail-remnants",
     dying_explosion =
@@ -234,7 +234,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = elevated_rail_pictures("curved-a"),
     fence_pictures = elevated_rail_fences_pictures("curved-a"),
-    placeable_by = {item = "rail", count = 2},
+    placeable_by = {item = "rail", count = 3},
     extra_planner_penalty = 0.5,
     deconstruction_marker_positions = rail_8shifts_vector(-0.248, -0.533)
   },
@@ -247,7 +247,7 @@ data:extend(
     icon = "__elevated-rails__/graphics/icons/elevated-curved-rail-b.png",
     collision_box = {{-0.75, -2.441}, {0.75, 2.441}}, -- has custommly generated box, but the prototype needs something that is used to generate building smokes
     flags = {"placeable-neutral", "player-creation", "building-direction-8-way"},
-    minable = {mining_time = 0.2, result = "rail", count = 2},
+    minable = {mining_time = 0.2, result = "rail", count = 3},
     max_health = 200,
     corpse = "elevated-rail-remnants",
     dying_explosion =
@@ -280,7 +280,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = elevated_rail_pictures("curved-b"),
     fence_pictures = elevated_rail_fences_pictures("curved-b"),
-    placeable_by = {item = "rail", count = 2},
+    placeable_by = {item = "rail", count = 3},
     extra_planner_penalty = 0.5,
     deconstruction_marker_positions = rail_8shifts_vector(-0.309, -0.155)
   },

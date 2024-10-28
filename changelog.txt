@@ -1,6 +1,73 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.12
+Version: 2.0.13
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.12
+Date: 28. 10. 2024
+  Bugfixes:
+    - Fixed rocket silos requesting more items than necessary. (https://forums.factorio.com/116949)
+    - Fixed a crash when reading owner_location on simple item stacks. (https://forums.factorio.com/117357)
+    - Fixed mini-tutorial scripts crashing or not granting items if player switched to remote view.
+    - Fixed that LuaControl::opened write did not work for several GUI types. (https://forums.factorio.com/117362)
+    - Fixed that elevated rail entities would still work without owning space-age. (https://forums.factorio.com/117225)
+    - Fixed that the admin "other player" GUI would open the other player's remote controller invenory instead of physical inventory. (https://forums.factorio.com/117410)
+    - Fixed a crash related to quickbar interaction with any-quality spawnable items. (https://forums.factorio.com/117206)
+    - Fixed a crash when building (faulty) blueprint with two hazard concrete tiles in one space (https://forums.factorio.com/117108 and https://forums.factorio.com/117071)
+    - Fixed game state GUIs being automatically closed when the game was paused. (https://forums.factorio.com/116851)
+    - Fixed several possible errors related to smart belt building. (https://forums.factorio.com/116660, https://forums.factorio.com/117119)
+    - Fixed that disconnecting and reconnecting while personal robots were working did not preserve their quality. (https://forums.factorio.com/117448)
+    - Fixed that cargo pods dropped players to a random location which could make them stuck. (https://forums.factorio.com/117461 and https://forums.factorio.com/117408)
+    - Fixed that alert icons were rendered into the galaxy of fame.
+    - Fixed a desync related to space platform hubs reading content and repair packs merging due to inventory sorting.
+    - Fixed ribbon world preset having too many cliffs on Nauvis. (https://forums.factorio.com/117544)
+    - Fixed that blueprint parametrisation value formula evaluation didn't work for negative numbers. (https://forums.factorio.com/116342)
+    - Extended blueprint parametrisation to work on fluid recipe parameters.
+    - Fixed lua deconstruct_area crashing when deconstructing a ghost (https://forums.factorio.com/117154)
+    - Fixed inserter status showing "Target full" when swinging towards a belt (https://forums.factorio.com/116626)
+    - Fixed that drag building context was not carried properly between normal view and remote view. (https://forums.factorio.com/116818)
+    - Fixed combat robots bobbing. (https://forums.factorio.com/117364)
+    - Fixed a crash when defining a recipe that does not always produce an item. (https://forums.factorio.com/117476)
+    - Fixed that filters of a ghost turret could get corrupted in latency when upgrading it with upgrade planner. (https://forums.factorio.com/117708)
+    - Fixed that re-bound crafting keys did not work correctly. (https://forums.factorio.com/117454)
+    - Fixed that chat icons didn't include layered icons. (https://forums.factorio.com/117024)
+    - Fixed a crash when super-force-building electric poles in latency state. (https://forums.factorio.com/117620)
+    - Fixed a debug visualization render crash when the given force no longer exists. (https://forums.factorio.com/117800)
+    - Fixed visual noise caused by parameter recipes drawing as not researched. (https://forums.factorio.com/117688)
+    - Fixed selector combinator's constant index was not covered by blueprint parameters. (https://forums.factorio.com/117869)
+    - Fixed arithmetic combinator was not showing red and green inputs separately in tooltips. (https://forums.factorio.com/117819)
+    - Fixed superforced overbuilding logistic and non-losistic chests did not transfer limits (https://forums.factorio.com/117353)
+    - Fixed underground pipe in cursor would sometimes not rotate when rotation key pressed right after placement while playing in latency.
+    - Fixed loading save files with some entities on planets with lighting when those entities were removed.
+    - Fixed a crash in multiplayer if you were wearing armor and the force you were on was deleted.
+    - Fixed some of the quirks of drag building. Whenever there is nothing to build from in the cursor, the drag building logic is interrupted. (https://forums.factorio.com/100393)
+    - Fixed that the mine-entity technology trigger did not work if the resource entity produced multiple or variable results. (https://forums.factorio.com/117500)
+    - Fixed that asteroid collectors could get stuck if the inventory limiter was used. (https://forums.factorio.com/117739)
+    - Fixed a missing value in the prototype explorer. (https://forums.factorio.com/117805)
+    - Fixed that smoke-with-trigger could teleport to 0,0 on a map if it was previously following a specific entity. (https://forums.factorio.com/117807)
+    - Fixed rail ramp health bar position. (https://forums.factorio.com/117921)
+    - Fixed wait condition "station is full" and "station is not full" would report incorrect progress. (https://forums.factorio.com/117949)
+    - Fixed crash related to blueprint parametrisation and drag building button being held and moved after the dialog appeared. (https://forums.factorio.com/117299)
+    - Fixed lamp would keep using color when circuit wire was disconnected. (https://forums.factorio.com/117400)
+    - Fixed copy settings undo could fail to restore control behavior settings if they were originally at default values. (https://forums.factorio.com/117212)
+    - Fixed that the map editor couldn't set filters in some cases. (https://forums.factorio.com/117801)
+    - Fixed that LuaRecord methods did not work correctly. (https://forums.factorio.com/117411)
+    - Fixed crash when building parameterised blueprint with dependent ingridient used in another machine being a fluid. (https://forums.factorio.com/117673)
+    - Fixed missing blueprint parametrisation logic for the loader. (https://forums.factorio.com/117490)
+    - Fixed a crash when migrating blueprint library content in a save that had that blueprint GUI open. (https://forums.factorio.com/115674)
+    - Fixed that items could be put into ghost inventories. (https://forums.factorio.com/117988)
+    - Fixed playing too many sounds at once at the start of certain tips and tricks simulations. (https://forums.factorio.com/116390)
+    - Fixed a crash when setting RoboportPrototype::charging_station_count_affected_by_quality to true. (https://forums.factorio.com/118086)
+    - Fixed generic interrupt false positives with certain interrupt conditions. (https://forums.factorio.com/117799)
+    - Fixed main-menu music mode not working correctly in-game. (https://forums.factorio.com/117613)
+    - Fixed a crash when trying to open Technology GUI from Factoriopedia while the game was being saved. (https://forums.factorio.com/118029)
+    - Fixed clipping that could occur in some variable music tracks. (https://forums.factorio.com/117987)
+    - Fixed that set recipe on assembling machine circuit controls could buffer items indefinitely. (https://forums.factorio.com/117890)
+    - Fixed inconsistency in belt power replace through corner when going backwards and forwards. (https://forums.factorio.com/102843)
+    - Fixed a train consistency issue when interrupt triggers inside of another interrupt in certain cases. (https://forums.factorio.com/116845, https://forums.factorio.com/117585, https://forums.factorio.com/117717)
+    - Fixed space platform losing its paused state when it arrived to a planet drifting backwards. (https://forums.factorio.com/118123)
+    - Fixed Remote View sometimes flickering to the wrong surface when using Next Surface/Previous Surface hotkeys.
+  Modding:
+    - Added LoaderPrototype::frozen_patch_in and frozen_patch_out.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.11
 Date: 25. 10. 2024
@@ -46,10 +113,9 @@ Date: 25. 10. 2024
     - Fixed MapGeneratorGui would not enable reset to defaults button when changing technology price multiplier. (https://forums.factorio.com/116864)
     - Fixed PVP scenario not having starting area protection enabled when the last player of that force logged out. (https://forums.factorio.com/117028)
     - Fixed use-item-groups had no effects. (https://forums.factorio.com/117367)
-    - Fixed mini-tutorial scripts crashing or not granting items if player switched to remote view.
     - Fixed a crash when trying to render a surface which doesn't exist in a simulation. (https://forums.factorio.com/117359)
-    - Fixed crashes caused by calling missing library symbols on older macOS versions. (https://formus.factorio.com/116227)
-    - Fixed a crash when reading owner_location on simple item stacks. (https://forums.factorio.com/117357)
+    - Fixed crashes caused by calling missing library symbols on older macOS versions. (https://forums.factorio.com/116227)
+    - Fixed a crash when deleting chart tags while they're selected in the chart search result. (https://forums.factorio.com/118143)
   Modding:
     - Added AssemblingMachinePrototype::disabled_when_recipe_not_researched.
   Scripting:

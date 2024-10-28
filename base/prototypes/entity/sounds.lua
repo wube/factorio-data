@@ -238,8 +238,18 @@ sounds.pipe =
   sound = { filename = "__base__/sound/pipe.ogg", volume = 0.45 },
   persistent = true,
 }
-sounds.train_brakes =  { filename = "__base__/sound/train-breaks.ogg", volume = 0.3, modifiers = { volume_multiplier("main-menu", 2.8), volume_multiplier("driving", 1.2) } }
-sounds.train_brake_screech = sound_variations("__base__/sound/train-brake-screech", 2, 0.3, volume_multiplier("driving", 1.15))
+sounds.train_brakes =
+{
+  filename = "__base__/sound/train-breaks.ogg",
+  volume = 0.3,
+  aggregation = {max_count = 1, remove = true},
+  modifiers = {volume_multiplier("main-menu", 2.8), volume_multiplier("driving", 1.2)},
+}
+sounds.train_brake_screech =
+{
+  variations = sound_variations("__base__/sound/train-brake-screech", 2, 0.3, volume_multiplier("driving", 1.15)),
+  aggregation = {max_count = 1, remove = true},
+}
 sounds.train_wagon_wheels =
 {
   sound =
@@ -305,7 +315,8 @@ sounds.roboport_door_open =
       filename = "__base__/sound/roboport-door.ogg",
       volume = 0.3,
       min_speed = 1,
-      max_speed = 1.5
+      max_speed = 1.5,
+      aggregation = {max_count = 1, remove = true},
     }
   }
 }
@@ -319,7 +330,8 @@ sounds.roboport_door_close =
       filename = "__base__/sound/roboport-door-close.ogg",
       volume = 0.2,
       min_speed = 1,
-      max_speed = 1.5
+      max_speed = 1.5,
+      aggregation = {max_count = 1, remove = true},
     }
   }
 }
@@ -926,9 +938,22 @@ sounds.spawner_gore =
   aggregation = { max_count = 2, remove = true, count_already_playing = true },
 }
 sounds.manual_repair = sound_variations("__base__/sound/manual-repair-simple", 5, 0.5)
-sounds.logistics_chest_open = sound_variations("__base__/sound/passive-provider-chest-open", 5, 0.3)
-sounds.gate_open = sound_variations("__base__/sound/gate-open", 5, 0.55, volume_multiplier("main-menu", 2.6) )
-sounds.gate_close = sound_variations("__base__/sound/gate-close", 5, 0.55, volume_multiplier("main-menu", 2.6) )
+sounds.logistics_chest_open =
+{
+  variations = sound_variations("__base__/sound/passive-provider-chest-open", 5, 0.3),
+  aggregation = {max_count = 1, remove = true}
+}
+sounds.gate_open =
+{
+  variations = sound_variations("__base__/sound/gate-open", 5, 0.55, volume_multiplier("main-menu", 2.6)),
+  aggregation = {max_count = 3, remove = true}
+}
+sounds.gate_close =
+{
+  variations = sound_variations("__base__/sound/gate-close", 5, 0.55, volume_multiplier("main-menu", 2.6)),
+  aggregation = {max_count = 3, remove = true}
+}
+
 --enemies
 sounds.biter_roars = function(volume)
   return

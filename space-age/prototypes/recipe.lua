@@ -1457,6 +1457,7 @@ data:extend(
       {type = "fluid", name = "molten-iron", amount = 500},
     },
     allow_productivity = true,
+    hide_from_signal_gui = false,
     main_product =  "molten-iron"
   },
   {
@@ -1477,6 +1478,7 @@ data:extend(
     {
       {type = "fluid", name = "molten-copper", amount = 500},
     },
+    hide_from_signal_gui = false,
     allow_productivity = true,
     main_product =  "molten-copper"
   },

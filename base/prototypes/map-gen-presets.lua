@@ -159,6 +159,11 @@ data:extend(
       order = "f",
       basic_settings =
       {
+        property_expression_names =
+        {
+          elevation = "elevation_lakes",
+          trees_forest_path_cutout = 1
+        },
         autoplace_controls =
         {
           coal =
@@ -197,7 +202,8 @@ data:extend(
             size = 0.5,
             richness = 2
           },
-          water = {frequency = 4, size = 0.25}
+          water = {frequency = 4, size = 0.25},
+          nauvis_cliff = {frequency = 0.25, size = 0.75}
         },
         starting_area = 3,
         height = 128 --4 chunks, about 1 screen of height.
