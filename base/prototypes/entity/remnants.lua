@@ -2047,6 +2047,7 @@ local remnants =
     animation = make_rotated_animation_variations_from_sheet(1,
     {
       filename = "__base__/graphics/entity/rocket-silo/15-remnants/rocket-silo-remnants.png",
+      dice = 2,
       line_length = 1,
       width = 634,
       height = 582,
@@ -2570,6 +2571,7 @@ local remnants =
     remove_on_tile_placement = false,
     animation = util.sprite_load("__base__/graphics/entity/cargo-hubs/hubs/planet-hub-remnants",
     {
+      dice = 2,
       direction_count = 1,
       scale = 0.5
     })
@@ -3283,6 +3285,7 @@ local remnants =
       {
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3307,6 +3310,7 @@ local remnants =
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3315,6 +3319,7 @@ local remnants =
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3339,6 +3344,7 @@ local remnants =
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3489,6 +3495,7 @@ local remnants =
       {
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3516,6 +3523,7 @@ local remnants =
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3525,6 +3533,7 @@ local remnants =
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,
@@ -3552,6 +3561,7 @@ local remnants =
         },
         {
           filename = "__base__/graphics/entity/scorchmark/big-scorchmark-tintable.png",
+          dice_y = 2,
           width = 960,
           height = 704,
           line_length = 1,

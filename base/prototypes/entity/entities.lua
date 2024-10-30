@@ -4449,7 +4449,7 @@ data:extend(
       }
     },
     collision_box = {{-0.65, -0.65}, {0.65, 0.65}},
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true}},
+    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true}},
     selection_box = {{-1, -1}, {1, 1}},
     damaged_trigger_effect = hit_effects.entity({{-0.5, -2.5},{0.5, 0.5}}),
     drawing_box_vertical_extension = 3,
@@ -6281,11 +6281,13 @@ data:extend(
       {
         util.sprite_load("__base__/graphics/entity/rocket-silo/rocket-static-pod",
       {
+        dice_y = 4,
         shift = util.by_pixel( 0, 17.0+rocket_shift),
         scale = 0.5
       }),
       util.sprite_load("__base__/graphics/entity/rocket-silo/rocket-static-emission",
       {
+        dice_y = 4,
         shift = util.by_pixel( 0, 17+rocket_shift),
         draw_as_glow = true,
         blend_mode = "additive",
@@ -6584,11 +6586,47 @@ data:extend(
       {
         planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
         planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+        planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3),
+
+        planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+        planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
         planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3)
       },
       giga_hatch_definitions =
       {
-        planet_upper_giga_hatch({0,1,2})
+        planet_upper_giga_hatch({0,1,2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29})
       }
     },
     circuit_wire_max_distance = default_circuit_wire_max_distance,
@@ -7274,7 +7312,7 @@ data:extend(
     close_sound = {filename = "__base__/sound/open-close/beacon-close.ogg", volume = 0.4},
     working_sound =
     {
-      sound = sound_variations("__base__/sound/beacon", 2, 0.2),
+      sound = sound_variations("__base__/sound/beacon", 2, 0.3),
       audible_distance_modifier = 0.33,
       max_sounds_per_type = 3
     },
@@ -7849,7 +7887,7 @@ data:extend(
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions["oil-refinery"],
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true}},
+    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.3,
@@ -8553,7 +8591,7 @@ data:extend(
     close_sound = {filename = "__base__/sound/open-close/nuclear-close.ogg", volume = 0.8},
     working_sound =
     {
-      sound = sound_variations("__base__/sound/nuclear-reactor", 2, 0.55, volume_multiplier("main-menu", 1.44) ),
+      sound = sound_variations("__base__/sound/nuclear-reactor", 2, 0.55, volume_multiplier("main-menu", 1.1) ),
       max_sounds_per_type = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -9937,7 +9975,7 @@ data:extend({
     remains_when_mined = {"cargo-pod-container-explosion"},
     max_health = 250,
     damaged_trigger_effect = hit_effects.entity(),
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true}},
+    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true}},
     collision_box = {{-0.5, 0.0},{0.5, 1.3}},
     selection_box = {{-0.75, -1.25}, {0.75, 1.5}},
     inventory_size = 20,

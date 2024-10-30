@@ -339,7 +339,7 @@ data:extend
         name = "alarms",
         notes =
         {
-         { name="alarm-1",  sound = { filename = "__base__/sound/programmable-speaker/alarm-1.ogg" }},
+         { name="alarm-1",  sound = { filename = "__base__/sound/programmable-speaker/alarm-1.ogg", modifiers = volume_multiplier("main-menu", 0.8)}},
          { name="alarm-2",  sound = { filename = "__base__/sound/programmable-speaker/alarm-2.ogg" }},
          { name="buzzer-1",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-1.ogg" }},
          { name="buzzer-2",  sound = { filename = "__base__/sound/programmable-speaker/buzzer-2.ogg" }},

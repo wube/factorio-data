@@ -211,8 +211,8 @@ local function generate_self_recycling_recipe(item)
       hidden = true,
       enabled = true,
       unlock_results = false,
-      ingredients = {{type = "item", name = item.name, amount = 1}},
-      results = {{type = "item", name = item.name, amount = 1, probability = 0.25}},
+      ingredients = {{type = "item", name = item.name, amount = 1, ignored_by_stats = 1}},
+      results = {{type = "item", name = item.name, amount = 1, probability = 0.25, ignored_by_stats = 1}}, -- Will show as consumed when item is destroyed
       energy_required = (data.raw.recipe[item.name] and data.raw.recipe[item.name].energy_required or 1 )/16,
       crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or {primary = {0.5,0.5,0.5,0.5}, secondary = {0.5,0.5,0.5,0.5}, tertiary = {0.5,0.5,0.5,0.5}, quaternary = {0.5,0.5,0.5,0.5}}
     }

@@ -235,7 +235,7 @@ sounds.electromagnetic_plant =
       audible_distance_modifier = 0.4
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-stop.ogg", volume = 0.9},
+      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-stop.ogg", volume = 0.45},
       play_for_working_visualisation = "cool-down",
       frame = 12,
       audible_distance_modifier = 0.4
@@ -360,7 +360,7 @@ sounds.demolisher =
     roar =
     {
       category = "enemy",
-      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-roar", 10, 0.8),
+      variations = sound_variations("__space-age__/sound/enemies/demolisher/demolisher-roar", 10, 0.8,volume_multiplier("main-menu", 2)),
       advanced_volume_control =
       {
         attenuation = "exponential",
@@ -676,28 +676,28 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 2.9)),
+      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7)),
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_type = 2
     },
     walking_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-walk", 6, 0.2, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-walk", 6, 0.2, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 3, remove = true, count_already_playing = true}
     },
     dying_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     warcry =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     attack_sound =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
   },
@@ -706,28 +706,28 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 2.9)),
+      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7)),
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_type = 2
     },
     walking_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-walk", 6, 0.2, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-walk", 6, 0.2, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 3, remove = true, count_already_playing = true}
     },
     dying_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     warcry =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     attack_sound =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
   },
@@ -736,28 +736,28 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 2.9)),
+      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 1)),
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_type = 2
     },
     walking_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-walk", 6, 0.2, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-walk", 6, 0.2, volume_multiplier("main-menu", 2)),
       aggregation = {max_count = 3, remove = true, count_already_playing = true}
     },
     dying_sound =
     {
-      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-death", 8, 1.0, volume_multiplier("main-menu", 1.5)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     warcry =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-warcry", 6, 0.6, 0.8, volume_multiplier("main-menu", 0.5)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
     attack_sound =
     {
-      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 2.9)),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/enemies/wriggler/wriggler-attack", 9, 0.25, 0.7, volume_multiplier("main-menu", 0.7)),
       aggregation = {max_count = 2, remove = true, count_already_playing = true}
     },
   },

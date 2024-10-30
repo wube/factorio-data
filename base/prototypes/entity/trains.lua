@@ -981,14 +981,14 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/cargo-wagon/cargo-wagon-opening-loop.ogg",
-        volume = 0.5,
-        aggregation = {max_count = 2, remove = true, count_already_playing = true}
+        volume = 0.3,
+        aggregation = {max_count = 1, remove = true, count_already_playing = true}
       },
       stopped_sound =
       {
         filename = "__base__/sound/cargo-wagon/cargo-wagon-opened.ogg",
-        volume = 0.35,
-        aggregation = {max_count = 2, remove = true, count_already_playing = true}
+        volume = 0.25,
+        aggregation = {max_count = 1, remove = true, count_already_playing = true}
       }
     },
     door_closing_sound =
@@ -996,14 +996,14 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/cargo-wagon/cargo-wagon-closing-loop.ogg",
-        volume = 0.5,
-        aggregation = {max_count = 2, remove = true, count_already_playing = true}
+        volume = 0.3,
+        aggregation = {max_count = 1, remove = true, count_already_playing = true}
       },
       stopped_sound =
       {
         filename = "__base__/sound/cargo-wagon/cargo-wagon-closed.ogg",
-        volume = 0.35,
-        aggregation = {max_count = 2, remove = true, count_already_playing = true}
+        volume = 0.3,
+        aggregation = {max_count = 1, remove = true, count_already_playing = true}
       }
     }
   },

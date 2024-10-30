@@ -2,6 +2,8 @@ local procession_style = require("__base__/prototypes/planet/procession-style")
 local procession_graphic_catalogue = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 local procession_audio_catalogue = require("__base__/prototypes/planet/procession-audio-catalogue-types")
 
+local scl = 1.0
+
 local make_pod_overlay = function(name, graphicid, order, t_start, t_end, animated, frameslist)
   return
   {
@@ -119,8 +121,8 @@ data:extend(
     procession_style = procession_style.default,
     timeline =
     {
-      duration = 400,
-      special_action_tick = 100,
+      duration = 400 * scl,
+      special_action_tick = 100 * scl,
       layers =
       {
         {
@@ -129,9 +131,9 @@ data:extend(
           {
             { timestamp = 0   , tilt    = 0.0      , tilt_t   = 0
                               , offset  = {0, -70} , offset_t = {0, 40} },
-            { timestamp = 400 , offset  = {0, 0}   , offset_t = {0, 0} },
+            { timestamp = 400 * scl , offset  = {0, 0}   , offset_t = {0, 0} },
             { timestamp=0, offset_rate = 0, offset_rate_t = 0 },
-            { timestamp=400, offset_rate = 1.8, offset_rate_t = -0.8 }
+            { timestamp=400 * scl, offset_rate = 1.8, offset_rate_t = -0.8 }
           }
         },
         {
@@ -140,7 +142,7 @@ data:extend(
           frames =
           {
             { timestamp = 0, outside_opacity = 0},
-            { timestamp = 50, outside_opacity = 1 },
+            { timestamp = 50 * scl, outside_opacity = 1 },
           }
         },
         {
@@ -151,46 +153,46 @@ data:extend(
           graphic = { type = "pod-catalogue", catalogue_id = procession_graphic_catalogue.pod_anim_opening },
           frames =
           {
-            { timestamp=250, frame = 33 },
-            { timestamp=400, frame = 0 }
+            { timestamp=250 * scl, frame = 33 },
+            { timestamp=400 * scl, frame = 0 }
           }
         },
         -- first burst
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 0, 140, false, {}),
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 140, 150, true,
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 0, 140 * scl, false, {}),
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 140 * scl, 150 * scl, true,
         {
-          { timestamp = 140, frame = 9 },
-          { timestamp = 150, frame = 0 }
+          { timestamp = 140 * scl, frame = 9 },
+          { timestamp = 150 * scl, frame = 0 }
         }),
-        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 0, 150, false,
+        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 0, 150 * scl, false,
         {
-          { timestamp = 140, opacity = 1 },
-          { timestamp = 150, opacity = 0 }
+          { timestamp = 140 * scl, opacity = 1 },
+          { timestamp = 150 * scl, opacity = 0 }
         }),
 
         -- last burst
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 230, 240, true,
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 230 * scl, 240 * scl, true,
         {
-          { timestamp = 230, frame = 0 },
-          { timestamp = 240, frame = 9 }
+          { timestamp = 230 * scl, frame = 0 },
+          { timestamp = 240 * scl, frame = 9 }
         }),
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 240, 390, false, {}),
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 390, 0, true,
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 240 * scl, 390 * scl, false, {}),
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 390 * scl, 0, true,
         {
-          { timestamp = 390, frame = 9 },
-          { timestamp = 400, frame = 0 }
+          { timestamp = 390 * scl, frame = 9 },
+          { timestamp = 400 * scl, frame = 0 }
         }),
-        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 230, 250, false,
+        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 230 * scl, 250 * scl, false,
         {
-          { timestamp = 230, opacity = 0 },
-          { timestamp = 250, opacity = 1 }
+          { timestamp = 230 * scl, opacity = 0 },
+          { timestamp = 250 * scl, opacity = 1 }
         }),
-        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_anim_opening_emission, 1, 250, 0, true,
+        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_anim_opening_emission, 1, 250 * scl, 0, true,
         {
-          { timestamp=250, frame = 33 },
-          { timestamp=400, frame = 0 },
-          { timestamp=390, opacity = 1 },
-          { timestamp=400, opacity = 0 }
+          { timestamp=250 * scl, frame = 33 },
+          { timestamp=400 * scl, frame = 0 },
+          { timestamp=390 * scl, opacity = 1 },
+          { timestamp=400 * scl, opacity = 0 }
         }),
         -- last burst end
         {
@@ -200,25 +202,25 @@ data:extend(
           secondary_draw_order = -1,
           relative_to = "ground-origin",
           graphic = { type = "hatch-location-catalogue-index" },
-          start_time = 250,
+          start_time = 250 * scl,
           frames =
           {
-            { timestamp = 250, opacity = 0.0, opacity_t = 0.0  },
-            { timestamp = 390, opacity = 2.0, opacity_t = -1.0 },
-            { timestamp = 400, opacity = 0.0, opacity_t = 0.0  }
+            { timestamp = 250 * scl, opacity = 0.0, opacity_t = 0.0  },
+            { timestamp = 390 * scl, opacity = 2.0, opacity_t = -1.0 },
+            { timestamp = 400 * scl, opacity = 0.0, opacity_t = 0.0  }
           }
         }
       },
       audio_events =
       {
-        playSound(100, procession_audio_catalogue.pod_thruster_burst_2),
-        playSound(230, procession_audio_catalogue.pod_thruster_burst_3),
+        playSound(100 * scl, procession_audio_catalogue.pod_thruster_burst_2),
+        playSound(230 * scl, procession_audio_catalogue.pod_thruster_burst_3),
       }
     },
     ground_timeline =
     {
-      duration = 400,
-      special_action_tick = 100,
+      duration = 400 * scl,
+      special_action_tick = 100 * scl,
       layers =
       {
         {
@@ -227,9 +229,9 @@ data:extend(
           {
             { timestamp = 0   , tilt    = 0.0      , tilt_t   = 0
                               , offset  = {0, -70} , offset_t = {0, 40} },
-            { timestamp = 400 , offset  = {0, 0}   , offset_t = {0, 0} },
+            { timestamp = 400 * scl , offset  = {0, 0}   , offset_t = {0, 0} },
             { timestamp=0, offset_rate = 0, offset_rate_t = 0 },
-            { timestamp=400, offset_rate = 1.8, offset_rate_t = -0.8 }
+            { timestamp=400 * scl, offset_rate = 1.8, offset_rate_t = -0.8 }
           }
         },
         {
@@ -238,7 +240,7 @@ data:extend(
           frames =
           {
             { timestamp = 0, outside_opacity = 0},
-            { timestamp = 50, outside_opacity = 1 },
+            { timestamp = 50 * scl, outside_opacity = 1 },
           }
         },
         {
@@ -249,53 +251,53 @@ data:extend(
           graphic = { type = "pod-catalogue", catalogue_id = procession_graphic_catalogue.pod_anim_landing },
           frames =
           {
-            { timestamp=250, frame = 0 },
-            { timestamp=400, frame = 11 }
+            { timestamp=250 * scl, frame = 0 },
+            { timestamp=400 * scl, frame = 11 }
           }
         },
         -- first burst
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 0, 140, false, {}),
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 140, 150, true,
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 0, 140 * scl, false, {}),
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 140 * scl, 150 * scl, true,
         {
-          { timestamp = 140, frame = 9 },
-          { timestamp = 150, frame = 0 }
+          { timestamp = 140 * scl, frame = 9 },
+          { timestamp = 150 * scl, frame = 0 }
         }),
-        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 0, 150, false,
+        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 0, 150 * scl, false,
         {
-          { timestamp = 140, opacity = 1 },
-          { timestamp = 150, opacity = 0 }
+          { timestamp = 140 * scl, opacity = 1 },
+          { timestamp = 150 * scl, opacity = 0 }
         }),
 
         -- last burst
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 230, 240, true,
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 230 * scl, 240 * scl, true,
         {
-          { timestamp = 230, frame = 0 },
-          { timestamp = 240, frame = 9 }
+          { timestamp = 230 * scl, frame = 0 },
+          { timestamp = 240 * scl, frame = 9 }
         }),
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 240, 390, false, {}),
-        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 390, 0, true,
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_loop, -1, 240 * scl, 390 * scl, false, {}),
+        make_pod_overlay("podjet", procession_graphic_catalogue.thruster_flames_start, -1, 390 * scl, 0, true,
         {
-          { timestamp = 390, frame = 9 },
-          { timestamp = 400, frame = 0 }
+          { timestamp = 390 * scl, frame = 9 },
+          { timestamp = 400 * scl, frame = 0 }
         }),
-        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 230, 250, false,
+        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_open_emission, 1, 230 * scl, 250 * scl, false,
         {
-          { timestamp = 230, opacity = 0 },
-          { timestamp = 250, opacity = 1 }
+          { timestamp = 230 * scl, opacity = 0 },
+          { timestamp = 250 * scl, opacity = 1 }
         }),
-        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_anim_landing_emission, 1, 250, 0, true,
+        make_pod_overlay("podjet_emission", procession_graphic_catalogue.pod_anim_landing_emission, 1, 250 * scl, 0, true,
         {
-          { timestamp=250, frame = 0 },
-          { timestamp=400, frame = 11 },
-          { timestamp=390, opacity = 1 },
-          { timestamp=400, opacity = 0 }
+          { timestamp=250 * scl, frame = 0 },
+          { timestamp=400 * scl, frame = 11 },
+          { timestamp=390 * scl, opacity = 1 },
+          { timestamp=400 * scl, opacity = 0 }
         }),
         -- last burst end
       },
       audio_events =
       {
-        playSound(100, procession_audio_catalogue.pod_thruster_burst_2),
-        playSound(230, procession_audio_catalogue.pod_thruster_burst_3),
+        playSound(100 * scl, procession_audio_catalogue.pod_thruster_burst_2),
+        playSound(230 * scl, procession_audio_catalogue.pod_thruster_burst_3),
         --playSound(399, procession_audio_catalogue.pod_ground_land),
       }
     }

@@ -516,7 +516,7 @@ data:extend(
       range = 36,
       sound =
       {
-        variations = sound_variations("__space-age__/sound/ammo/rocket-turret-launcher", 7, 0.7),
+        variations = sound_variations("__space-age__/sound/ammo/rocket-turret-launcher", 7, 0.7, volume_multiplier("main-menu", 1.8)),
         aggregation = { max_count = 4, remove = true, count_already_playing = true },
       },
       projectile_creation_offsets =
@@ -558,7 +558,7 @@ data:extend(
     max_health = 1000,
     collision_box = {{-1.7, -1.7 }, {1.7, 1.7}},
     selection_box = {{-2, -2 }, {2, 2}},
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true}},
+    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, is_object=true, is_lower_object=true}},
     damaged_trigger_effect = hit_effects.entity(),
     start_attacking_only_when_can_shoot = true,
     rotation_speed = 0.005,

@@ -1064,7 +1064,7 @@ data:extend({
           sound =
           {
             filename = "__space-age__/sound/entity/platform-thruster/thruster-burner.ogg",
-            volume = 0.4,
+            volume = 0.3,
             speed_smoothing_window_size = 60,
             advanced_volume_control = {attenuation = "exponential"},
           },
@@ -1316,7 +1316,7 @@ data:extend({
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true}},
+    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true}},
     surface_conditions =
     {
       {
@@ -2411,7 +2411,7 @@ data:extend({
       sound = {filename = "__space-age__/sound/entity/fusion/fusion-reactor.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 1.44)},
       use_doppler_shift = false,
       match_volume_to_activity = true,
-      max_sounds_per_type = 3,
+      max_sounds_per_type = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },

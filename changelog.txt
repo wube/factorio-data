@@ -1,6 +1,81 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.13
+Version: 2.0.14
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.13
+Date: 30. 10. 2024
+  Minor Features:
+    - [space-age] Offshore pump speed increases with quality.
+  Changes:
+    - Curved rails cost 3 rail items to build.
+  Bugfixes:
+    - Fixed Remote View sometimes flickering to the wrong surface when using Next Surface/Previous Surface hotkeys.
+    - Fixed that the Surface List would react to the Home and End keys after it was clicked (https://forums.factorio.com/116927)
+    - Improved diagonal character movement which should help slip between things easier. (https://forums.factorio.com/117748)
+    - Fixed a crash when upgrading the inner entity of a ghost while the GUI was open. (https://forums.factorio.com/118164)
+    - Fixed that joining LAN games without a username set would allow any characters for the username. (https://forums.factorio.com/107985)
+    - Fixed that request from buffer chests was not preserved when changing the force of an entity. (https://forums.factorio.com/114099)
+    - Fixed that flamethrower turret could be manually built to mix fluids. (https://forums.factorio.com/118045)
+    - Fixed that half diagonal rails would cost only 1 rail item. (https://forums.factorio.com/117484)
+    - Fixed pipe sound starting and stopping too abruptly. (https://forums.factorio.com/118028)
+    - Fixed turret behaviour when it has more than 4 directions and the collision box is not affected by rotation.
+    - Fixed a crash when switching preferred audio output device while a variable music track is being generated. (https://forums.factorio.com/118250)
+    - Fixed an issue with platform construction requests when copying settings onto the hub. (https://forums.factorio.com/117600)
+    - Fixed a crash when saving related to construction robots and their work targets moving. (https://forums.factorio.com/118226)
+    - Fixed that Continue host option didn't offer mod sync to the save to be hosted. (https://forums.factorio.com/107900)
+    - Fixed Space platform requests would always be checked in the same order, leading to some requests being ignored. (https://forums.factorio.com/117146)
+    - Fixed base game space science getting throughput limited due to limited hatches. (https://forums.factorio.com/118064)
+    - Fixed defines.space_platform_state was missing value for paused. (https://forums.factorio.com/118336)
+    - Fixed solar panel output multiplier flickering in tooltip. (https://forums.factorio.com/117972)
+    - Fixed that deconstruction of a chest with full trash slots didn't dispatch enough robots. (https://forums.factorio.com/117455)
+    - Fixed a crash caused by a player sending a space platform which was waiting for departure (not enough thrust) to a location which wasn't unlocked yet. (https://forums.factorio.com/118254)
+    - Fixed that train interrupts were not checked when passing station without conditions. (https://forums.factorio.com/117530)
+    - Fixed that the browse-games GUI 'dedicated server' and 'favorite' settings would get confused with each other. (https://forums.factorio.com/118358)
+    - Fixed that capture-spawner research trigger reported incorrect type. (https://forums.factorio.com/118279)
+    - Fixed production and electricity statistics would use wrong locale for ranges exceeding 99 hours. (https://forums.factorio.com/117170)
+    - Fixed that exoskeleton legs would incorrectly consume more energy at higher qualities. (https://forums.factorio.com/118370)
+    - Fixed that logistic filter upper count wasn't considered by the blueprint parametrisation. (https://forums.factorio.com/117422)
+    - Fixed technology trigger info showing outside the tooltip. (https://forums.factorio.com/116004)
+    - Fixed that Lua require didn't accept symbolic links. (https://forums.factorio.com/117061)
+    - Fixed that migrating logistic cell charger count would corrupt loading. (https://forums.factorio.com/117868)
+    - Fixed that cars/tanks would not preserve their settings correctly in blueprint strings. (https://forums.factorio.com/118293)
+    - Fixed that fluids would be duplicated when fast-replacing machines. (https://forums.factorio.com/118323)
+    - Fixed that the window could get stuck in an infinite loop of toggling fullscreen when changing displays on Linux. (https://forums.factorio.com/116349)
+    - Fixed that the "make it better" achievement only worked with quality level 1 modules. (https://forums.factorio.com/117497)
+    - Fixed asteroid collectors sometimes not generating navmesh properly around chunk borders and related instabilities. (https://forums.factorio.com/117737, https://forums.factorio.com/117276)
+    - Fixed that opened console was rendered into the galaxy of fame output. (https://forums.factorio.com/117619)
+    - Fixed that the focus search hotkey would not work in choose elem button GUIs if a mod GUI was marked as opened. (https://forums.factorio.com/118073)
+    - Fixed that Intel Macs running macOS Big Sur or later logged the wrong version number.
+    - Fixed issue where entities at position where entities at the point where lightning attractor collection ranges touch were incorrectly considered endangered by lightning (https://forums.factorio.com/118102)
+    - Fixed blue line at the edge of some sprites by clearing sprite atlas background to clear color. (https://forums.factorio.com/117261)
+    - Fixed some cases of upgradeable overbuilds not upgrading (https://forums.factorio.com/117644)
+    - Fixed that using Nauvis map gen settings for other planets made them generate only grass. (https://forums.factorio.com/118374)
+    - Fixed that the select-recipe GUI did not work correctly if you re-bound the crafting hotkeys. (https://forums.factorio.com/118383)
+    - Fixed a crash when editing a pin while the entity was referencing was removed. (https://forums.factorio.com/118406)
+    - Fixed selector combinator could sometimes fail to select correct signal. (https://forums.factorio.com/118412, https://forums.factorio.com/116548)
+    - Fixed that some technology triggers required crafting specific quality items. (https://forums.factorio.com/117848)
+    - Fixed constant combinator activity lamp not updating state in certain cases. (https://forums.factorio.com/117929)
+    - Fixed that custom sprite button's caption would be drawn under the sprite. (https://forums.factorio.com/118327)
+    - Possibly fixed a crash on Intel Macs related to printing floats with 0 precision. (https://forums.factorio.com/116239)
+    - Fixed layered icons in rich text were not scaled and rotated properly. (https://forums.factorio.com/116031)
+    - Fixed that moisture and terrain type weren't migrated properly for 1.1 saves resulting in hard chunk edges.
+    - Fixed occasional crash occurring when super force deconstructing with filtered tiles only planner includes double tile ghosts and an entity ghost on one tile (https://forums.factorio.com/118041)
+    - Fixed a crash when a space platform hub with 'Any request zero' wait condition was destroyed. (https://forums.factorio.com/118505)
+    - Fixed that custom gui elem_tooltip did not work for some new types. (https://forums.factorio.com/118581)
+    - Fixed big electric poles were not colliding with asteroid collectors. (https://forums.factorio.com/118506)
+    - Fixed that LuaGameScript::show_message_dialog() could use the wrong player and freeze the game. (https://forums.factorio.com/115881)
+    - Fixed that it wasn't possible to parametrised item filter to any quality. (https://forums.factorio.com/118272)
+  Scripting:
+    - Added LuaSpacePlatform::name write.
+    - Added player_won to the on_pre_scenario_finished event.
+    - LuaControl uses physical controller for item manipulations (LuaControl::insert, has_items_inside, get_item_count, remove_item, clear_items_inside)
+    - Added LuaPlayer::physical_controller_type read.
+    - Added LuaQualityPrototype::color read.
+  Sounds:
+    - Fulgora lightning sound remixed lower with volume variations.
+    - Fixed some explosions that were using the wrong size of explosion sound.
+    - Numerous sound mixes including new plant mining sounds mixed lower.
+    - Various menu simulation mixes improved.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.12
 Date: 28. 10. 2024
@@ -65,7 +140,6 @@ Date: 28. 10. 2024
     - Fixed inconsistency in belt power replace through corner when going backwards and forwards. (https://forums.factorio.com/102843)
     - Fixed a train consistency issue when interrupt triggers inside of another interrupt in certain cases. (https://forums.factorio.com/116845, https://forums.factorio.com/117585, https://forums.factorio.com/117717)
     - Fixed space platform losing its paused state when it arrived to a planet drifting backwards. (https://forums.factorio.com/118123)
-    - Fixed Remote View sometimes flickering to the wrong surface when using Next Surface/Previous Surface hotkeys.
   Modding:
     - Added LoaderPrototype::frozen_patch_in and frozen_patch_out.
 ---------------------------------------------------------------------------------------------------

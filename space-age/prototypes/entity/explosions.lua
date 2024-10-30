@@ -20,7 +20,7 @@ data:extend
     source_variance = {30, 6},
     sound =
     {
-      variations = sound_variations("__space-age__/sound/explosions/lightning-effect", 5, 1.0),
+      variations = sound_variations_with_volume_variations("__space-age__/sound/explosions/lightning-effect", 5, 0.25, 0.8),
       advanced_volume_control =
       {
         fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 50.0}, to = {2.5, 100.0 }}},
@@ -554,7 +554,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -661,7 +661,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -832,7 +832,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.6, 0.8),
     created_effect =
     {
       type = "direct",
@@ -963,7 +963,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.6, 0.8),
     created_effect =
     {
       type = "direct",
@@ -1058,7 +1058,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -1136,7 +1136,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -1214,7 +1214,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.6, 0.8),
     created_effect =
     {
       type = "direct",
@@ -1292,7 +1292,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.large_explosion(0.7, 1.0),
     created_effect =
     {
       type = "direct",
@@ -1369,7 +1369,7 @@ data:extend
     smoke = "smoke-fast",
     smoke_count = 2,
     smoke_slow_down_factor = 1,
-    sound = sounds.large_explosion(0.8),
+    sound = sounds.medium_explosion,
     created_effect =
     {
       type = "direct",

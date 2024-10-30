@@ -5,6 +5,7 @@ local meld = require("__core__.lualib.meld")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local cargo_pod_catalogue_additions = require("__space-age__/prototypes/entity/cargo-pod-catalogue")
+local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
 data.raw.technology["space-science-pack"].localised_description = {"technology-description.space-science-pack-space-age"}
 data.raw["rocket-silo"]["rocket-silo"].launch_to_space_platforms = true
@@ -148,6 +149,16 @@ data.raw["cargo-landing-pad"]["cargo-landing-pad"].surface_conditions =
     property = "gravity",
     min = 1
   }
+}
+data.raw["cargo-landing-pad"]["cargo-landing-pad"].cargo_station_parameters.hatch_definitions =
+{
+  planet_upper_hatch({0.5, -3.5},  2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_1),
+  planet_upper_hatch({2, -3.5},    2.25, 3, -0.5, procession_graphic_catalogue_types.planet_hatch_emission_in_2),
+  planet_upper_hatch({1.25, -2.5}, 1.25, 3, -1  , procession_graphic_catalogue_types.planet_hatch_emission_in_3)
+}
+data.raw["cargo-landing-pad"]["cargo-landing-pad"].cargo_station_parameters.giga_hatch_definitions =
+{
+  planet_upper_giga_hatch({0,1,2})
 }
 
 local ten_pressure_condition =

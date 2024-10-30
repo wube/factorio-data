@@ -232,11 +232,14 @@ sounds.express_loader =
   audible_distance_modifier = 0.45
 }
 
-sounds.spidertron_leg = sound_variations("__base__/sound/spidertron/spidertron-leg", 5, 0.2, volume_multiplier("main-menu", 7.5))
+sounds.spidertron_leg = sound_variations("__base__/sound/spidertron/spidertron-leg", 5, 0.1, volume_multiplier("main-menu", 7.5))
 sounds.pipe =
 {
   sound = { filename = "__base__/sound/pipe.ogg", volume = 0.45 },
   persistent = true,
+  fade_in_ticks = 10,
+  fade_out_ticks = 20,
+  volume_smoothing_window_size = 20,
 }
 sounds.train_brakes =
 {
@@ -556,7 +559,7 @@ sounds.small_explosion =
     max_count = 1,
     remove = true
   },
-  variations = sound_variations("__base__/sound/small-explosion", 5, 0.5, volume_multiplier("main-menu", 1.2) )
+  variations = sound_variations_with_volume_variations("__base__/sound/small-explosion", 5, 0.25, 0.5, volume_multiplier("main-menu", 1.2))
 }
 
 sounds.medium_explosion =
@@ -572,7 +575,7 @@ sounds.medium_explosion =
     gain = 0.4
   },
   audible_distance_modifier = 0.7,
-  variations = sound_variations("__base__/sound/fight/medium-explosion", 5, 0.4, volume_multiplier("main-menu", 1.2) )
+  variations = sound_variations_with_volume_variations("__base__/sound/fight/medium-explosion", 5, 0.3, 0.4, volume_multiplier("main-menu", 1.2))
 }
 
 sounds.robot_explosion =
@@ -582,7 +585,7 @@ sounds.robot_explosion =
     max_count = 1,
     remove = true
   },
-  variations = sound_variations("__base__/sound/fight/robot-explosion", 5, 0.5)
+  variations = sound_variations_with_volume_variations("__base__/sound/fight/robot-explosion", 5, 0.3, 0.5)
 }
 
 sounds.car_explosion =
@@ -592,7 +595,7 @@ sounds.car_explosion =
     max_count = 1,
     remove = true
   },
-  variations = sound_variations("__base__/sound/fight/car-explosion", 5, 0.5)
+  variations = sound_variations_with_volume_variations("__base__/sound/fight/car-explosion", 5, 0.4, 0.5)
 }
 
 sounds.tank_explosion =
@@ -602,7 +605,7 @@ sounds.tank_explosion =
     max_count = 1,
     remove = true
   },
-  variations = sound_variations("__base__/sound/fight/tank-explosion", 5, 0.8)
+  variations = sound_variations_with_volume_variations("__base__/sound/fight/tank-explosion", 5, 0.5, 0.8)
 }
 
 sounds.spidertron_explosion =
@@ -612,10 +615,10 @@ sounds.spidertron_explosion =
     max_count = 1,
     remove = true
   },
-  variations = sound_variations("__base__/sound/fight/spidertron-explosion", 5, 0.8)
+  variations = sound_variations_with_volume_variations("__base__/sound/fight/spidertron-explosion", 5, 0.5, 0.6)
 }
 
-sounds.large_explosion = function(volume)
+sounds.large_explosion = function(min_volume, max_volume)
   return
   {
     aggregation =
@@ -636,7 +639,7 @@ sounds.large_explosion = function(volume)
       duration = 160,
       play_for = "everything"
     },
-    variations = sound_variations("__base__/sound/fight/large-explosion", 2, volume, volume_multiplier("main-menu", 0.6) )
+    variations = sound_variations_with_volume_variations("__base__/sound/fight/large-explosion", 2, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.6) )
   }
 end
 
@@ -875,10 +878,10 @@ end
 
 --debris
 
-sounds.car_debris = sound_variations("__base__/sound/particles/car-debris", 5, 0.55)
-sounds.tank_debris = sound_variations("__base__/sound/particles/tank-debris", 5, 0.6)
-sounds.spidertron_debris = sound_variations("__base__/sound/particles/spidertron-debris", 5, 0.7)
-sounds.spidertron_die_vox = sound_variations("__base__/sound/spidertron/spidertron-die-vox", 5, 0.8)
+sounds.car_debris = sound_variations_with_volume_variations("__base__/sound/particles/car-debris", 5, 0.35, 0.55)
+sounds.tank_debris = sound_variations_with_volume_variations("__base__/sound/particles/tank-debris", 5, 0.4, 0.6)
+sounds.spidertron_debris = sound_variations_with_volume_variations("__base__/sound/particles/spidertron-debris", 5, 0.5, 0.6)
+sounds.spidertron_die_vox = sound_variations_with_volume_variations("__base__/sound/spidertron/spidertron-die-vox", 5, 0.3, 0.4)
 sounds.small_splash = sound_variations("__base__/sound/particles/small-splash", 5, 0.7)
 sounds.small_gore =
 {
@@ -1004,34 +1007,46 @@ sounds.biter_dying_big = function(volume)
   }
 end
 
-sounds.biter_calls = function(volume)
+sounds.biter_calls = function(min_volume, max_volume)
   return
   {
-    sound = {category = "enemy", variations = sound_variations("__base__/sound/creatures/biter-call", 5, 0.58)},
+    sound =
+    {
+      category = "enemy",
+      variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-call", 5, min_volume, max_volume or min_volume)
+    },
     probability = 1 / (12 * 60), -- average pause between the sound is 12 seconds
     max_sounds_per_type = 2
   }
 end
 
-sounds.biter_calls_big = function(volume)
+sounds.biter_calls_big = function(min_volume, max_volume)
   return
   {
-    sound = {category = "enemy", variations = sound_variations("__base__/sound/creatures/biter-call-big", 6, volume)},
+    sound =
+    {
+      category = "enemy",
+      variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-call-big", 6, min_volume, max_volume or min_volume)
+    },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
     max_sounds_per_type = 2
   }
 end
 
-sounds.biter_calls_behemoth = function(volume)
+sounds.biter_calls_behemoth = function(min_volume, max_volume)
   return
   {
-    sound = {category = "enemy", variations = sound_variations("__base__/sound/creatures/biter-call-behemoth", 6, volume)},
+    sound =
+    {
+      category = "enemy",
+      variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-call-behemoth", 6, min_volume, max_volume or min_volume)
+    },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
     max_sounds_per_type = 2
   }
 end
 
-sounds.biter_walk = function(volume)
+sounds.biter_walk = function(min_volume, max_volume)
   return
   {
     aggregation =
@@ -1040,12 +1055,12 @@ sounds.biter_walk = function(volume)
       remove = true,
       count_already_playing = true
     },
-    variations = sound_variations("__base__/sound/creatures/biter-walk", 7, volume, volume_multiplier("main-menu", 1.8)),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-walk", 7, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 1.8)),
     priority = 192
   }
 end
 
-sounds.biter_walk_big = function(volume)
+sounds.biter_walk_big = function(min_volume, max_volume)
   return
   {
     aggregation =
@@ -1054,12 +1069,12 @@ sounds.biter_walk_big = function(volume)
       remove = true,
       count_already_playing = true
     },
-    variations = sound_variations("__base__/sound/creatures/biter-walk-big", 10, volume, volume_multiplier("main-menu", 0.6)),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-walk-big", 10, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.6)),
     priority = 192
   }
 end
 
-sounds.spitter_walk = function(volume)
+sounds.spitter_walk = function(min_volume, max_volume)
   return
   {
     aggregation =
@@ -1068,12 +1083,12 @@ sounds.spitter_walk = function(volume)
       remove = true,
       count_already_playing = true
     },
-    variations = sound_variations("__base__/sound/creatures/spitter-walk", 10, volume),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-walk", 10, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.6)),
     priority = 192
   }
 end
 
-sounds.spitter_walk_big = function(volume)
+sounds.spitter_walk_big = function(min_volume, max_volume)
   return
   {
     aggregation =
@@ -1082,33 +1097,45 @@ sounds.spitter_walk_big = function(volume)
       remove = true,
       count_already_playing = true
     },
-    variations = sound_variations("__base__/sound/creatures/spitter-walk-big", 10, volume),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-walk-big", 10, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.6)),
     priority = 192
   }
 end
 
-sounds.spitter_calls = function(volume)
+sounds.spitter_calls = function(min_volume, max_volume)
   return
   {
-    sound = {category = "enemy", variations = sound_variations("__base__/sound/creatures/spitter-call-small", 9, volume, volume_multiplier("main-menu", 0.5))},
+    sound =
+    {
+      category = "enemy",
+      variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-call-small", 9, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.5))
+    },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
     max_sounds_per_type = 2
   }
 end
 
-sounds.spitter_calls_med = function(volume)
+sounds.spitter_calls_med = function(min_volume, max_volume)
   return
   {
-    sound = {category = "enemy", variations = sound_variations("__base__/sound/creatures/spitter-call-med", 10, volume)},
+    sound =
+    {
+      category = "enemy",
+      variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-call-med", 10, min_volume, max_volume or min_volume)
+    },
     probability = 1 / (8 * 60), -- average pause between the sound is 8 seconds
     max_sounds_per_type = 2
   }
 end
 
-sounds.spitter_calls_big = function(volume)
+sounds.spitter_calls_big = function(min_volume, max_volume)
   return
   {
-    sound = {category = "enemy", variations = sound_variations("__base__/sound/creatures/spitter-call-big", 5, volume)},
+    sound =
+    {
+      category = "enemy",
+      variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-call-big", 5, min_volume, max_volume or min_volume)
+    },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
     max_sounds_per_type = 2
   }
@@ -1201,61 +1228,61 @@ sounds.spitter_dying_behemoth = function(volume)
     aggregation = { max_count = 2, remove = true, count_already_playing = true }
   } end
 
-sounds.worm_roars = function(volume)
+sounds.worm_roars = function(min_volume, max_volume)
   return
   {
     category = "enemy",
-    variations = sound_variations("__base__/sound/creatures/worm-roar", 4, volume, volume_multiplier("main-menu", 0.9) ),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar", 4, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
     audible_distance_modifier = 1.5,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
 
-sounds.worm_roars_big = function(volume)
+sounds.worm_roars_big = function(min_volume, max_volume)
   return
   {
     category = "enemy",
-    variations = sound_variations("__base__/sound/creatures/worm-roar-big", 5, volume, volume_multiplier("main-menu", 0.9) ),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar-big", 5, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
     audible_distance_modifier = 1.3,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
 
-sounds.worm_roar_alternative = function(volume)
+sounds.worm_roar_alternative = function(min_volume, max_volume)
   return
   {
     category = "enemy",
-    variations = sound_variations("__base__/sound/creatures/worm-roar-alt", 5, volume, volume_multiplier("main-menu", 0.9) ),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar-alt", 5, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
     audible_distance_modifier = 2.0,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
 
-sounds.worm_roar_alternative_big = function(volume)
+sounds.worm_roar_alternative_big = function(min_volume, max_volume)
   return
   {
     category = "enemy",
-    variations = sound_variations("__base__/sound/creatures/worm-roar-alt-big", 5, volume, volume_multiplier("main-menu", 0.9) ),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar-alt-big", 5, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
     audible_distance_modifier = 1.8,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
 
-sounds.worm_breath = function(volume)
+sounds.worm_breath = function(min_volume, max_volume)
   return
   {
     category = "enemy",
-    variations = sound_variations("__base__/sound/creatures/worm-breathe", 8, volume),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-breathe", 8, min_volume, max_volume or min_volume),
     aggregation = { max_count = 2, remove = true, count_already_playing = true },
     audible_distance_modifier = 1.2
   }
 end
 
-sounds.worm_breath_big = function(volume)
+sounds.worm_breath_big = function(min_volume, max_volume)
   return
   {
     category = "enemy",
-    variations = sound_variations("__base__/sound/creatures/worm-breathe-big", 8, volume),
+    variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-breathe-big", 8, min_volume, max_volume or min_volume),
     aggregation = { max_count = 2, remove = true, count_already_playing = true },
     audible_distance_modifier = 1.5
   }

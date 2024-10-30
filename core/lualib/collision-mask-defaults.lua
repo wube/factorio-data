@@ -137,8 +137,8 @@ return
   ["fluid-wagon/elevated"] = elevated_rolling_stock(),
   ["locomotive/elevated"] = elevated_rolling_stock(),
 
-  ["gate"] = {layers={item=true, meltable=true, object=true, player=true, train=true, water_tile=true}},
-  ["gate/opened"] = {layers={object=true, item=true, floor=true, water_tile=true}},
+  ["gate"] = {layers={item=true, meltable=true, object=true, player=true, train=true, water_tile=true, is_object=true, is_lower_object=true}},
+  ["gate/opened"] = {layers={object=true, item=true, floor=true, water_tile=true, is_lower_object=true}},
 
   ["arrow"] = {layers={}},
   ["artillery-flare"] = {layers={}},
@@ -174,9 +174,9 @@ return
   ["deconstructible-tile-proxy"] = {layers={}},
   ["entity-ghost"] = {layers={ghost=true}},
   ["fish"] = {layers={ground_tile=true}, colliding_with_tiles_only=true},
-  ["heat-pipe"] = {layers={floor=true, meltable=true, object=true, water_tile=true}},
+  ["heat-pipe"] = {layers={floor=true, meltable=true, object=true, water_tile=true, is_lower_object=true}},
   ["item-entity"] = {layers={item=true, is_lower_object=true}},
-  ["land-mine"] = {layers={object=true, water_tile=true, rail=true}},
+  ["land-mine"] = {layers={object=true, water_tile=true, rail=true, is_lower_object=true}},
   ["player-port"] = {layers={floor=true, object=true, water_tile=true}},
   ["rail-remnants"] = {layers={doodad=true}, colliding_with_tiles_only=true},
   ["resource"] = {layers={resource=true}},

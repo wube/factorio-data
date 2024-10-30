@@ -295,8 +295,8 @@ data:extend(
         }
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-yumako-tree", 5, 0.9),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-yumako-tree", 6, 0.7),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-yumako-tree", 5, 0.6),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-yumako-tree", 6, 0.3),
     growth_ticks = 5 * minutes,
     harvest_emissions = plant_harvest_emissions,
     emissions_per_second = plant_emissions,
@@ -354,8 +354,8 @@ data:extend(
       mining_time = 0.5,
       results = {{type = "item", name = "jellynut", amount = 50}},
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-jellystem", 5, 0.8),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-jellystem", 6, 0.7),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-jellystem", 5, 0.4),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-jellystem", 6, 0.35),
     growth_ticks = 5 * minutes,
     emissions_per_second = plant_emissions,
     harvest_emissions = plant_harvest_emissions,
@@ -513,8 +513,8 @@ data:extend(
         {type = "item", name = "stone", amount = 4}
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-slipstack", 5, 1.0),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-slipstack", 7, 0.8),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-slipstack", 5, 0.5),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-slipstack", 7, 0.4),
     emissions_per_second = plant_emissions,
     max_health = 100,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
@@ -709,8 +709,8 @@ data:extend(
         }
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-hairyclubnub", 5, 0.65),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-hairyclubnub", 5, 0.65),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-hairyclubnub", 5, 0.32),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-hairyclubnub", 5, 0.32),
     deconstruction_alternative = "tree-01",
     emissions_per_second = plant_emissions,
     max_health = 200,
@@ -798,8 +798,8 @@ data:extend(
         }
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-teflilly", 5, 0.8),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-teflilly", 5, 0.8),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-teflilly", 5, 0.5),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-teflilly", 5, 0.5),
     emissions_per_second = plant_emissions,
     max_health = 50,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
@@ -907,8 +907,8 @@ data:extend(
         }
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-lickmaw", 5, 0.9),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-lickmaw", 5, 0.8),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-lickmaw", 5, 0.45),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-lickmaw", 5, 0.4),
     emissions_per_second = plant_emissions,
     max_health = 50,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
@@ -1005,8 +1005,8 @@ data:extend(
         {type = "item", name = "wood", amount = 2}
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-stingfrond", 5, 1.0),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-stingfrond", 5, 0.8),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-stingfrond", 5, 0.5),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-stingfrond", 5, 0.4),
     emissions_per_second = plant_emissions,
     max_health = 50,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
@@ -1138,7 +1138,7 @@ data:extend(
         }
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-boompuff", 5, 1.0),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-boompuff", 5, 0.6),
     emissions_per_second = plant_emissions,
     max_health = 50,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
@@ -1339,8 +1339,8 @@ data:extend(
         }
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-sunnycomb", 5, 1.0),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-sunnycomb", 5, 0.8),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-sunnycomb", 5, 0.7),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-sunnycomb", 5, 0.6),
     emissions_per_second = plant_emissions,
     max_health = 50,
     collision_box = {{-0.4, -0.8}, {0.4, 0.2}},

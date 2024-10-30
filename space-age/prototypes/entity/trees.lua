@@ -267,8 +267,8 @@ data:extend(
         {type = "item", name = "carbon", amount = 2}
       }
     },
-    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-ashland-lichen-tree", 5, 0.8),
-    mined_sound = sound_variations("__space-age__/sound/mining/mined-ashland-lichen-tree", 5, 0.8),
+    mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-ashland-lichen-tree", 5, 0.4),
+    mined_sound = sound_variations("__space-age__/sound/mining/mined-ashland-lichen-tree", 5, 0.4),
     corpse = "ashland-lichen-tree-stump",
     remains_when_mined = "ashland-lichen-tree-stump",
     max_health = 50,
