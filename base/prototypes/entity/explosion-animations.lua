@@ -285,6 +285,7 @@ explosion_animations.massive_explosion = function()
     shift = util.by_pixel(-45, -91),
     animation_speed = 0.5,
     scale = 0.5,
+    allow_forced_downscale = true,
     draw_as_glow = true,
     stripes =
     {
@@ -316,6 +317,7 @@ explosion_animations.nuke_explosion = function()
     animation_speed = 0.5 * 0.75,
     scale = 1,
     dice_y = 5,
+    allow_forced_downscale = true,
     stripes =
     {
     {

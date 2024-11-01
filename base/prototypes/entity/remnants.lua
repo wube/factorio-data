@@ -2053,7 +2053,8 @@ local remnants =
       height = 582,
       direction_count = 1,
       shift = util.by_pixel(2.5, 0.5),
-      scale = 0.5
+      scale = 0.5,
+      allow_forced_downscale = true,
     })
   },
 
@@ -2573,7 +2574,8 @@ local remnants =
     {
       dice = 2,
       direction_count = 1,
-      scale = 0.5
+      scale = 0.5,
+      allow_forced_downscale = true,
     })
   },
 

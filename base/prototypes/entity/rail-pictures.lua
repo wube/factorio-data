@@ -63,6 +63,7 @@ local function make_legacy_rail_pictures(elems, rail_type)
         filename = string.format("__base__/graphics/entity/%s/%s-%s-%s.png", dashkey, dashkey, key[2], elem[2]),
         priority = elem.priority or "extra-high",
         flags = elem.mipmap and { "trilinear-filtering" } or { "low-object" },
+        allow_forced_downscale = elem.allow_forced_downscale,
         width = key[3]*2,
         height = key[4]*2,
         shift = {key[5], key[6]},
@@ -121,11 +122,11 @@ end
 function legacy_rail_remnants_pictures(rail_type)
   return make_legacy_rail_pictures
   ({
-    {"metals", "metals-remnants", mipmap = true, variations = 3, priority = "high"},
-    {"backplates", "backplates-remnants", mipmap = true, variations = 3, priority = "high"},
-    {"ties", "ties-remnants", variations = 3, priority = "high"},
-    {"stone_path", "stone-path-remnants", variations = 3, priority = "high"},
-    {"stone_path_background", "stone-path-background-remnants", variations = 3, priority = "high"}
+    {"metals", "metals-remnants", mipmap = true, variations = 3, priority = "high", allow_forced_downscale = true},
+    {"backplates", "backplates-remnants", mipmap = true, variations = 3, priority = "high", allow_forced_downscale = true},
+    {"ties", "ties-remnants", variations = 3, priority = "high", allow_forced_downscale = true},
+    {"stone_path", "stone-path-remnants", variations = 3, priority = "high", allow_forced_downscale = true},
+    {"stone_path_background", "stone-path-background-remnants", variations = 3, priority = "high", allow_forced_downscale = true}
   }, rail_type)
 end
 
@@ -137,6 +138,7 @@ local function make_new_rail_pictures(keys, elems, max_variations)
       priority = elem.priority or "extra-high",
       flags = elem.mipmap and { "trilinear-filtering" } or { "low-object" },
       draw_as_shadow = elem.draw_as_shadow,
+      allow_forced_downscale = elem.allow_forced_downscale,
       width = key[3][1],
       height = key[3][2],
       x = key[2][1],
@@ -334,11 +336,11 @@ function new_rail_remnants_pictures(rail_type)
   end
   local elems =
   {
-    { "metals",                "__base__/graphics/entity/rails/rail/remnants/rail-remnants-metals.png",             mipmap = true },
-    { "backplates",            "__base__/graphics/entity/rails/rail/remnants/rail-remnants-backplates.png",         mipmap = true },
-    { "ties",                  "__base__/graphics/entity/rails/rail/remnants/rail-remnants-ties.png"                              },
-    { "stone_path",            "__base__/graphics/entity/rails/rail/remnants/rail-remnants-stone-path-inside.png"                 },
-    { "stone_path_background", "__base__/graphics/entity/rails/rail/remnants/rail-remnants-stone-path.png"                        }
+    { "metals",                "__base__/graphics/entity/rails/rail/remnants/rail-remnants-metals.png",             mipmap = true, allow_forced_downscale = true },
+    { "backplates",            "__base__/graphics/entity/rails/rail/remnants/rail-remnants-backplates.png",         mipmap = true, allow_forced_downscale = true },
+    { "ties",                  "__base__/graphics/entity/rails/rail/remnants/rail-remnants-ties.png"                             , allow_forced_downscale = true },
+    { "stone_path",            "__base__/graphics/entity/rails/rail/remnants/rail-remnants-stone-path-inside.png"                , allow_forced_downscale = true },
+    { "stone_path_background", "__base__/graphics/entity/rails/rail/remnants/rail-remnants-stone-path.png"                       , allow_forced_downscale = true }
   }
 
   local res = make_new_rail_pictures(keys, elems)

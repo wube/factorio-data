@@ -12,6 +12,7 @@ function biterrunanimation(scale, tint1, tint2)
           direction_count = 16,
           scale = scale * 0.5,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -25,6 +26,7 @@ function biterrunanimation(scale, tint1, tint2)
           tint = tint1,
           scale = scale * 0.5,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -39,6 +41,7 @@ function biterrunanimation(scale, tint1, tint2)
           tint_as_overlay = true,
           scale = scale * 0.5,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -51,6 +54,7 @@ function biterrunanimation(scale, tint1, tint2)
           draw_as_shadow = true,
           scale = scale * 0.5,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -72,6 +76,7 @@ function biterattackanimation(scale, tint1, tint2)
           scale = scale * 0.5,
           animation_speed = 0.4,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -85,6 +90,7 @@ function biterattackanimation(scale, tint1, tint2)
           tint = tint1,
           animation_speed = 0.4,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -99,6 +105,7 @@ function biterattackanimation(scale, tint1, tint2)
           tint_as_overlay = true,
           animation_speed = 0.4,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -112,6 +119,7 @@ function biterattackanimation(scale, tint1, tint2)
           draw_as_shadow = true,
           animation_speed = 0.4,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy",
         }
@@ -133,6 +141,7 @@ function biterdieanimation(scale, tint1, tint2)
           scale = scale * 0.5,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -146,6 +155,7 @@ function biterdieanimation(scale, tint1, tint2)
           tint = tint1,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -160,6 +170,7 @@ function biterdieanimation(scale, tint1, tint2)
           tint_as_overlay = true,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -172,6 +183,7 @@ function biterdieanimation(scale, tint1, tint2)
           scale = scale * 0.5,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -193,6 +205,7 @@ function biter_decay_animation(scale, tint1, tint2)
           scale = scale * 0.5,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -206,6 +219,7 @@ function biter_decay_animation(scale, tint1, tint2)
           tint = tint1,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -220,6 +234,7 @@ function biter_decay_animation(scale, tint1, tint2)
           tint_as_overlay = true,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -232,6 +247,7 @@ function biter_decay_animation(scale, tint1, tint2)
           scale = scale * 0.5,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -269,6 +285,7 @@ function add_biter_die_animation(scale, tint1, tint2, corpse)
           scale = scale * 0.5,
           tint = {r = 0.6 * d * a, g = 0.1 * d * a, b = 0.6 * d * a, a = a},
           multiply_shift = scale,
+          allow_forced_downscale = true,
         }
       )
 

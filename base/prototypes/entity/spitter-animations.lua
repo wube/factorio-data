@@ -13,6 +13,7 @@ function spitterattackanimation(scale, tint1, tint2)
           run_mode = "forward-then-backward",
           animation_speed = 0.4,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -27,6 +28,7 @@ function spitterattackanimation(scale, tint1, tint2)
           animation_speed = 0.4,
           tint = tint1,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -42,6 +44,7 @@ function spitterattackanimation(scale, tint1, tint2)
           tint = tint2,
           tint_as_overlay = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -56,6 +59,7 @@ function spitterattackanimation(scale, tint1, tint2)
           animation_speed = 0.4,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -92,6 +96,7 @@ function spitterrunanimation(scale, tint1, tint2)
           direction_count = 16,
           scale = scale * 0.5,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -105,6 +110,7 @@ function spitterrunanimation(scale, tint1, tint2)
           flags = { "mask" },
           tint = tint1,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -119,6 +125,7 @@ function spitterrunanimation(scale, tint1, tint2)
           tint = tint2,
           tint_as_overlay = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -131,6 +138,7 @@ function spitterrunanimation(scale, tint1, tint2)
           scale = scale * 0.5,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -152,6 +160,7 @@ function spitterdyinganimation(scale, tint1, tint2)
           scale = scale * 0.5,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -165,6 +174,7 @@ function spitterdyinganimation(scale, tint1, tint2)
           tint = tint1,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -179,6 +189,7 @@ function spitterdyinganimation(scale, tint1, tint2)
           tint_as_overlay = true,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -191,6 +202,7 @@ function spitterdyinganimation(scale, tint1, tint2)
           scale = scale * 0.5,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -213,6 +225,7 @@ function spitter_decay_animation(scale, tint1, tint2)
           scale = scale * 0.5,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -226,6 +239,7 @@ function spitter_decay_animation(scale, tint1, tint2)
           tint = tint1,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -240,6 +254,7 @@ function spitter_decay_animation(scale, tint1, tint2)
           tint_as_overlay = true,
           multiply_shift = scale,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -252,6 +267,7 @@ function spitter_decay_animation(scale, tint1, tint2)
           scale = scale * 0.5,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "corpse-decay"
         }
@@ -289,6 +305,7 @@ function add_spitter_die_animation(scale, tint1, tint2, corpse)
           scale = scale * 0.5,
           tint = {r = 0.6 * d * a, g = 0.1 * d * a, b = 0.6 * d * a, a = a},
           multiply_shift = scale,
+          allow_forced_downscale = true,
         }
       )
 

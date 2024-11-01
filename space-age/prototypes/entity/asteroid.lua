@@ -490,7 +490,7 @@ for asteroid_size, asteroid_size_name in pairs(asteroid_sizes) do
         icon = "__space-age__/graphics/icons/"..asteroid_name..".png",
         icon_size = 64,
         selection_box = asteroid_size_name ~= "chunk" and {{-selection_radius, -selection_radius}, {selection_radius, selection_radius}} or nil,
-        collision_box = {{-collision_radius, -collision_radius}, {collision_radius, collision_radius}},
+        collision_box = asteroid_size_name ~= "chunk" and {{-collision_radius, -collision_radius}, {collision_radius, collision_radius}} or nil,
         collision_mask = asteroid_size_name ~= "chunk" and {layers={object=true}, not_colliding_with_itself=true} or nil,
         graphics_set = asteroid_graphics_set(0.0003 * (6 - asteroid_size), asteroids_data[asteroid_type].shading_data, variations),
         dying_trigger_effect = dying_trigger_effects,

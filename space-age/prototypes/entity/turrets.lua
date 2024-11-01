@@ -713,13 +713,40 @@ data:extend(
           type = "direct",
           action_delivery =
           {
-            type = "beam",
-            beam = "chain-tesla-turret-beam-start",
-            max_length = 40,
-            duration = 30,
-            add_to_shooter = false,
-            destroy_with_source_or_target = false,
-            source_offset = {0, -2.6}
+            type = "instant",
+            target_effects =
+            {
+              -- Chain effect must go first in case the beam kills the target
+              {
+                type = "nested-result",
+                action =
+                {
+                  type = "direct",
+                  action_delivery =
+                  {
+                    type = "chain",
+                    chain = "chain-tesla-turret-chain",
+                  }
+                }
+              },
+              {
+                type = "nested-result",
+                action =
+                {
+                  type = "direct",
+                  action_delivery =
+                  {
+                    type = "beam",
+                    beam = "chain-tesla-turret-beam-start",
+                    max_length = 40,
+                    duration = 30,
+                    add_to_shooter = false,
+                    destroy_with_source_or_target = false,
+                    source_offset = {0, -2.6}
+                  }
+                }
+              }
+            }
           }
         }
       }

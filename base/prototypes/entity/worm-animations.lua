@@ -18,6 +18,8 @@ function worm_integration_impl(scale, skip_frames, use_frames, skip_animation)
 
   params.surface = "nauvis"
   params.usage = "enemy"
+  params.allow_forced_downscale = true
+
 
   local result = util.sprite_load("__base__/graphics/entity/worm/worm-hole-collapse", params)
   if skip_animation then result.line_length = nil end
@@ -45,6 +47,7 @@ function worm_folded_animation(scale, tint)
           scale = scale * 0.5,
           run_mode = "forward-then-backward",
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -57,6 +60,7 @@ function worm_folded_animation(scale, tint)
           run_mode = "forward-then-backward",
           tint=tint,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -69,6 +73,7 @@ function worm_folded_animation(scale, tint)
           run_mode = "forward-then-backward",
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -89,6 +94,7 @@ function worm_preparing_animation(scale, tint, run_mode)
           scale = scale * 0.5,
           run_mode = run_mode,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -102,6 +108,7 @@ function worm_preparing_animation(scale, tint, run_mode)
           flags = { "mask" },
           tint = tint,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -114,6 +121,7 @@ function worm_preparing_animation(scale, tint, run_mode)
           run_mode = run_mode,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -134,6 +142,7 @@ function worm_prepared_animation(scale, tint)
           scale = scale * 0.5,
           run_mode = "forward-then-backward",
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -146,6 +155,7 @@ function worm_prepared_animation(scale, tint)
           run_mode = "forward-then-backward",
           tint = tint,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -158,6 +168,7 @@ function worm_prepared_animation(scale, tint)
           run_mode = "forward-then-backward",
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -184,6 +195,7 @@ function worm_prepared_alternative_animation(scale, tint)
           frame_count = 17,
           frame_sequence = alternate_frame_sequence,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -197,6 +209,7 @@ function worm_prepared_alternative_animation(scale, tint)
           flags = { "mask" },
           tint = tint,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -209,6 +222,7 @@ function worm_prepared_alternative_animation(scale, tint)
           frame_count = 17,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -232,6 +246,7 @@ function worm_start_attack_animation(scale, tint)
           scale = scale * 0.5,
           frame_sequence = start_attack_frame_sequence,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -245,6 +260,7 @@ function worm_start_attack_animation(scale, tint)
           frame_sequence = start_attack_frame_sequence,
           tint = tint,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -258,6 +274,7 @@ function worm_start_attack_animation(scale, tint)
           frame_sequence = start_attack_frame_sequence,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -281,6 +298,7 @@ function worm_end_attack_animation(scale, tint)
           scale = scale * 0.5,
           frame_sequence = end_attack_frame_sequence,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -294,6 +312,7 @@ function worm_end_attack_animation(scale, tint)
           frame_sequence = end_attack_frame_sequence,
           tint = tint,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -307,6 +326,7 @@ function worm_end_attack_animation(scale, tint)
           frame_sequence = end_attack_frame_sequence,
           draw_as_shadow = true,
           multiply_shift = scale,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -325,6 +345,7 @@ local function dead_worm_animation (path, scale, tint, frame_count, usage)
         scale = scale * 0.5,
         multiply_shift = scale,
         flags = {"corpse-decay"},
+        allow_forced_downscale = true,
         surface = "nauvis",
         usage = usage or "enemy"
       }
@@ -337,6 +358,7 @@ local function dead_worm_animation (path, scale, tint, frame_count, usage)
         tint = tint,
         multiply_shift = scale,
         flags = {"corpse-decay"},
+        allow_forced_downscale = true,
         surface = "nauvis",
         usage = usage or "enemy"
       }
@@ -348,6 +370,7 @@ local function dead_worm_animation (path, scale, tint, frame_count, usage)
         scale = scale * 0.5,
         draw_as_shadow = true,
         multiply_shift = scale,
+        allow_forced_downscale = true,
         surface = "nauvis",
         usage = usage or "enemy"
       }

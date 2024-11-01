@@ -20,10 +20,22 @@ data:extend(
     building_no_tint = {1, 1, 1, 1},
     underground_belt_max_distance_tint = {0, 1, 0, 1},
     underground_pipe_max_distance_tint = {0, 1, 0, 1},
-    ghost_tint = {118, 135, 209, 77},
-    ghost_tint_delivering = {168,214,196,77},
-    tile_ghost_tint = {46, 69, 145, 126},
-    tile_ghost_tint_delivering = {81, 140, 144, 126},
+    ghost_shader_tint =
+    {
+      ghost_tint = {118, 135, 209, 77},
+      ghost_delivery_tint = {168,214,196,77},
+      tile_ghost_tint = {37, 123, 194, 255},
+      tile_ghost_delivery_tint = {174, 221, 242, 255},
+      wire_tint = {118, 135, 209, 77}
+    },
+    ghost_shaderless_tint =
+    {
+      ghost_tint = {15, 133, 255, 112},
+      ghost_delivery_tint = {68, 198, 242, 77},
+      tile_ghost_tint = {4, 115, 255, 112},
+      tile_ghost_delivery_tint = {54, 224, 255, 112},
+      wire_tint = {118, 135, 209, 77}
+    },
     ghost_shimmer_settings =
     {
       tint = {0.225995,0.412745,0.465686,0.629000},

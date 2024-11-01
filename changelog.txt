@@ -1,6 +1,60 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.14
+Version: 2.0.15
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.14
+Date: 01. 11. 2024
+  Changes:
+    - [space-age] Changed self-recycling recipe statistics to be ignored in production graph.
+    - Changed sprites with scale between 0.5 and 1 (exclusive) to apply downscaling to low resolution (affects base game biter sprites).
+    - Changed cargo landing pad mining time to 1.
+    - Moved the mods GUI search to be with the content it is searching.
+    - Added linear interpolation method (used by default now) for audio resampling when playback speed is changed. (https://forums.factorio.com/116936)
+    - Added an option to disable animated ghosts to aid performance on integrated GPUs. (https://forums.factorio.com/116304)
+    - [space-age] Added a confirmation box when deleting space platforms.
+  Bugfixes:
+    - Fixed that having multiple key bindings could cause some keys to get stuck. (https://forums.factorio.com/118498)
+    - Fixed that it wasn't possible to parametrised item filter to any quality. (https://forums.factorio.com/118272)
+    - Fixed a crash when killing segmented units attached to a segmented controller. (https://forums.factorio.com/118639)
+    - Fixed that tank logistic trash slots did not work correctly when using roboports in the tank. (https://forums.factorio.com/118235)
+    - Fixed that shortcuts marked as not toggleable still allowed being toggled. (https://forums.factorio.com/115015)
+    - Fixed that lua shortcuts ignored unavailable_until_unlocked. (https://forums.factorio.com/117464)
+    - Fixed that teleporting certain entities would delete their fluid contents. (https://forums.factorio.com/117719)
+    - Fixed that the reactor GUI temperature would flicker when the temperature was < 100 degrees. (https://forums.factorio.com/118121)
+    - Fixed that some errors related to prototypes would report coming from the wrong prototype. (https://forums.factorio.com/118703)
+    - Fixed that copying spider vehicle settings between spiders of different quality did not work correctly. (https://forums.factorio.com/118711)
+    - Fixed that pumps would pull fluid from internal machine buffers instead of the connected fluid segment. (https://forums.factorio.com/118688)
+    - Fixed that mods were able to create item stacks without quality which crashed the game. (https://forums.factorio.com/118677)
+    - Fixed rocket silo requesting more items even if another rocket wasn't ready yet. (https://forums.factorio.com/118163)
+    - Fixed incorrect lightning protection visualisation in some cases where shorter range attractor is close to longer ranged one (https://forums.factorio.com/117751)
+    - Fixed vehicle sounds not playing in some menu simulations. (https://forums.factorio.com/117674)
+    - Fixed a crash when reading repair state of a character not assigned to a player. (https://forums.factorio.com/118767)
+    - Fixed asteroid collector navigation not generating in time when a straight platform edge is aligned with chunk border, which caused a crash. (https://forums.factorio.com/118050)
+    - Fixed consistency issue when removing a turret that was connected to logistic network. (https://forums.factorio.com/117498)
+    - Fixed a crash when prototype data changes and roboports are requesting specific robots. (https://forums.factorio.com/117618)
+    - Fixed combinators could get stuck after cancelling deconstruction order. (https://forums.factorio.com/118748)
+    - Fixed a crash when fast-replacing not-a-heat-interface entity with a heat interface. (https://forums.factorio.com/118778)
+    - Fixed a crash when trying to recycle blueprint books with contents. (https://forums.factorio.com/118825)
+    - Fixed being able to enter a frozen rocket.
+    - Fixed flames not updating on a frozen or deconstructed rocket silo.
+    - Fixed a crash when viewing players in the players GUI when they disconnect from the server.
+    - Fixed a crash when copy-pasting settings from an assembling machine to a logistic chest that did not support requests. (https://forums.factorio.com/118716)
+    - Fixed that the space map GUI would not show until you had visited at least 1 other planet. (https://forums.factorio.com/118865)
+    - Fixed loader energy source buffer size computation. (https://forums.factorio.com/118529)
+    - Fixed that tesla turret and tesla gun chain lightning sometimes arced to friendly entities. (https://forums.factorio.com/118726)
+    - Fixed that character_mining_speed_modifier was not handled in latency state.
+    - Fixed factoriopedia for space connections would highlight wrong graph series when hovering over slots of spawned asteroids. (https://forums.factorio.com/118057)
+    - Fixed pinning other players did not work correctly. (https://forums.factorio.com/118939)
+    - Fixed demolishers getting disturbed by vehicles and other non-building entities. (https://forums.factorio.com/117092)
+    - Fixed "Get off my lawn" achievement not being awarded when building close to a demolisher. (https://forums.factorio.com/118420)
+    - Fixed a crash when copy-pasting from cars with equipment grids to ghost-cars without equipment grids. (https://forums.factorio.com/118480)
+    - Fixed a crash when showing logistic request tooltip immediately after joining a multiplayer game. (https://forums.factorio.com/116939)
+    - Reverted a fix for train interrupts not being checked when passing a station without conditions (https://forums.factorio.com/117530) because it crashed the game. (https://forums.factorio.com/118822)
+  Modding:
+    - Combined four ghost tint definitions in UtilityConstants into UtilityConstants::ghost_shader_tint and added UtilityConstants::ghost_shaderless_tint.
+    - Added LoaderPrototype::per_lane_filters.
+  Scripting:
+    - Added LuaEntity::loader_filter_mode (read/write).
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.13
 Date: 30. 10. 2024
@@ -64,7 +118,6 @@ Date: 30. 10. 2024
     - Fixed that custom gui elem_tooltip did not work for some new types. (https://forums.factorio.com/118581)
     - Fixed big electric poles were not colliding with asteroid collectors. (https://forums.factorio.com/118506)
     - Fixed that LuaGameScript::show_message_dialog() could use the wrong player and freeze the game. (https://forums.factorio.com/115881)
-    - Fixed that it wasn't possible to parametrised item filter to any quality. (https://forums.factorio.com/118272)
   Scripting:
     - Added LuaSpacePlatform::name write.
     - Added player_won to the on_pre_scenario_finished event.

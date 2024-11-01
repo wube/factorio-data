@@ -6065,6 +6065,7 @@ data:extend(
     base_day_sprite =
     {
       filename = "__base__/graphics/entity/rocket-silo/06-rocket-silo.png",
+      dice_y = 3,
       width = 608,
       height = 596,
       shift = util.by_pixel(3, -1),
@@ -6431,7 +6432,7 @@ data:extend(
     max_health = 1000,
     corpse = "cargo-landing-pad-remnants",
     dying_explosion = "rocket-silo-explosion",
-    minable = {mining_time = 0.2, result = "cargo-landing-pad"},
+    minable = {mining_time = 1, result = "cargo-landing-pad"},
     inventory_size = 80,
     radar_range = 4,
     graphics_set =

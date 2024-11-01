@@ -12,6 +12,7 @@ return
           animation_speed = 0.18,
           run_mode = "forward-then-backward",
           y = variation * 376 * 2,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -25,6 +26,7 @@ return
           tint = tint,
           flags = { "mask" },
           y = variation * 230 * 2,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -37,6 +39,7 @@ return
           run_mode = "forward-then-backward",
           draw_as_shadow = true,
           y = variation * 358 * 2,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -56,6 +59,7 @@ return
           direction_count = 1,
           scale = 0.5,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -67,6 +71,7 @@ return
           scale = 0.5,
           tint = tint,
           flags = {"corpse-decay"},
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
 
@@ -78,6 +83,7 @@ return
           frame_count = 18,
           direction_count = 1,
           scale = 0.5,
+          allow_forced_downscale = true,
           surface = "nauvis",
           usage = "enemy"
         }
@@ -97,6 +103,7 @@ function spawner_decay_animation(variation, tint)
             direction_count = 1,
             scale = 0.5,
             flags = {"corpse-decay"},
+            allow_forced_downscale = true,
             surface = "nauvis",
             usage = "corpse-decay"
           }
@@ -108,6 +115,7 @@ function spawner_decay_animation(variation, tint)
             scale = 0.5,
             tint = tint,
             flags = {"corpse-decay"},
+            allow_forced_downscale = true,
             surface = "nauvis",
             usage = "corpse-decay"
           }
@@ -118,6 +126,7 @@ function spawner_decay_animation(variation, tint)
             frame_count = 24,
             direction_count = 1,
             scale = 0.5,
+            allow_forced_downscale = true,
             surface = "nauvis",
             usage = "corpse-decay"
           }

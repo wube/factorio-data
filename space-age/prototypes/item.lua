@@ -1451,12 +1451,39 @@ data:extend(
         type = "direct",
         action_delivery =
         {
-          type = "beam",
-          beam = "chain-tesla-gun-beam-start",
-          max_length = 30,
-          duration = 30,
-          add_to_shooter = false,
-          destroy_with_source_or_target = false
+          type = "instant",
+          target_effects =
+          {
+            -- Chain effect must go first in case the beam kills the target
+            {
+              type = "nested-result",
+              action =
+              {
+                type = "direct",
+                action_delivery =
+                {
+                  type = "chain",
+                  chain = "chain-tesla-gun-chain",
+                }
+              }
+            },
+            {
+              type = "nested-result",
+              action =
+              {
+                type = "direct",
+                action_delivery =
+                {
+                  type = "beam",
+                  beam = "chain-tesla-gun-beam-start",
+                  max_length = 30,
+                  duration = 30,
+                  add_to_shooter = false,
+                  destroy_with_source_or_target = false
+                }
+              }
+            }
+          }
         }
       }
     },

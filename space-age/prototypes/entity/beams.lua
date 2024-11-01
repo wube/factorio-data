@@ -354,27 +354,13 @@ function make_tesla_beam_chain(name, sound, damage, token)
   }
 end
 
-local function make_chain_tesla_beams(start_name, bounce_name, chain_name, sound, damage)
-  local start_beam = make_tesla_beam(start_name, sound, damage)
-  local bounce_beam = make_tesla_beam_chain(bounce_name, sound, damage)
-
-  -- chain effect has to happen first, else jumping between friendly buildings may not work
-  table.insert(start_beam.action.action_delivery.target_effects, 1,
+local function make_chain_tesla_beams(start_name, bounce_name, sound, damage)
+  data:extend(
   {
-    type = "nested-result",
-    action =
-    {
-      type = "direct",
-      action_delivery =
-      {
-        type = "chain",
-        chain = chain_name,
-      }
-    }
+    make_tesla_beam(start_name, sound, damage),
+    make_tesla_beam_chain(bounce_name, sound, damage)
   })
-
-  data:extend({ start_beam, bounce_beam })
 end
 
-make_chain_tesla_beams("chain-tesla-turret-beam-start", "chain-tesla-turret-beam-bounce", "chain-tesla-turret-chain", true, 120)
-make_chain_tesla_beams("chain-tesla-gun-beam-start", "chain-tesla-gun-beam-bounce", "chain-tesla-gun-chain", true, 30)
+make_chain_tesla_beams("chain-tesla-turret-beam-start", "chain-tesla-turret-beam-bounce", true, 120)
+make_chain_tesla_beams("chain-tesla-gun-beam-start", "chain-tesla-gun-beam-bounce", true, 30)
