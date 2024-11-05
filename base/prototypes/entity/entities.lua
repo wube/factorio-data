@@ -98,7 +98,8 @@ function make_spidertron_leg(spidertron_name, scale, leg_thickness, movement_spe
     collision_box = {{-0.05, -0.05}, {0.05, 0.05}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     icon = "__base__/graphics/icons/spidertron.png",
-    walking_sound_volume_modifier = 0.6,
+    walking_sound_volume_modifier = 0.8,
+    walking_sound_speed_modifier = 0.5,
     target_position_randomisation_distance = 0.25 * scale,
     minimal_step_size = 1 * scale,
     working_sound =
@@ -2904,7 +2905,9 @@ data:extend(
       {type = "virtual", name = "signal-yellow", color = {1, 1, 0}},
       {type = "virtual", name = "signal-pink",   color = {1, 0, 1}},
       {type = "virtual", name = "signal-cyan",   color = {0, 1, 1}},
-      {type = "virtual", name = "signal-white",  color = {1, 1, 1}}
+      {type = "virtual", name = "signal-white",  color = {1, 1, 1}},
+      {type = "virtual", name = "signal-grey",   color = {0.5, 0.5, 0.5}},
+      {type = "virtual", name = "signal-black",  color = {0, 0, 0}}
     },
     default_red_signal = { type = "virtual", name = "signal-red" },
     default_green_signal = { type = "virtual", name = "signal-green" },

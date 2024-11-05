@@ -2488,6 +2488,7 @@ data:extend(
       filename = "__core__/graphics/cross-select-x32.png",
       priority = "extra-high",
       size = 32,
+      shift = {-16, -16},
       flags = {"gui-icon"},
       load_in_minimal_mode = true
     },
@@ -3027,6 +3028,14 @@ data:extend(
       filename = "__core__/graphics/mouse-cursor.png",
       size = {30, 45},
       scale = 0.5,
+      flags = {"gui-icon"}
+    },
+    mouse_cursor_macos =
+    {
+      filename = "__core__/graphics/mouse-cursor-macos.png",
+      size = {30, 44},
+      scale = 0.5,
+      shift = {-2.5, -3},
       flags = {"gui-icon"}
     },
     mod_category =

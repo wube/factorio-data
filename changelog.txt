@@ -1,6 +1,84 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.15
+Version: 2.0.16
 Date: ????
+  Minor Features:
+    - Search is now case and accent insensitive for all official languages.
+  Bugfixes:
+    - Fixed a freeze when setting logistic/construction robots to active=false through script. (https://forums.factorio.com/119911)
+---------------------------------------------------------------------------------------------------
+Version: 2.0.15
+Date: 05. 11. 2024
+  Minor Features:
+    - Cars and tanks will auto-refuel. (https://forums.factorio.com/118247)
+    - Relation between offshore pump and fluid tiles added to Factoriopedia.
+    - Statistic GUI precision is preserved across instances.
+    - [space-age] Space platforms can be built with quality starter packs. (https://forums.factorio.com/118376)
+  Changes:
+    - Increased spidertron walking sound volume.
+    - Using the "craft all" hotkey on free recipes queues 1 stack of the results. (https://forums.factorio.com/118319)
+    - Changed the simulated mouse cursor appearance to match the system default on macOS.
+    - [space-age] Added pollution value to heating tower.
+    - [space-age] Show recycler output arrow in "Alt-mode". (https://forums.factorio.com/119176)
+    - Display panels set to "Show in chart" with no icon now hide the default icon until hovered. (https://forums.factorio.com/116844)
+    - Removed support for 8 bit audio depth.
+    - Added tooltip to "Spoiled priority" inserter setting to clarify behavior and limitations.
+  Bugfixes:
+    - Fixed IME Pad input not working on screens with visible simulations. (https://forums.factorio.com/116118)
+    - Fixed that the browse-games GUI header labels were not clickable. (https://forums.factorio.com/117697)
+    - Fixed that kills with chained effects did not count towards statistics or achievements. (https://forums.factorio.com/118420)
+    - Extended the mute-programmable-speaker command to apply to sounds with both global and surface playback modes. (https://forums.factorio.com/118386)
+    - Fixed a crash when a player got desynced from a multiplayer game while the Technology GUI was open.
+    - Fixed a crash when rendering display panel text after loading a save file. (https://forums.factorio.com/119071)
+    - Fixed a crash when clicking on an orbital request slot with an invalid ghost item in cursor. (https://forums.factorio.com/118847)
+    - Fixed a crash when rendering certain blueprints with pipe-to-grounds which visually connected to neighbours outside of the blueprint. (https://forums.factorio.com/116456)
+    - Fixed cargo pod with satellite not despawning after launching to orbit. (https://forums.factorio.com/118913)
+    - Fixed a crash when teleporting a crafting machine ghost with fluid connections. (https://forums.factorio.com/118607)
+    - Fixed that space platforms would try to build/upgrade/deconstruct/repair other forces entities. (https://forums.factorio.com/119089)
+    - Fixed that the production GUI title wouldn't update when viewing different planets. (https://forums.factorio.com/119174)
+    - Fixed that starting territories on Vulcanus could be merged into one more frequently than expected. (https://forums.factorio.com/117525)
+    - Fixed that platform requests satisfied wait conditions could be stuck when the platform had unfulfilled ghost item requests. (https://forums.factorio.com/119179)
+    - Fixed that space platforms didn't fulfill remote item delivery requests if the target slot was already occupied with the same item. (https://forums.factorio.com/119179)
+    - Fixed that negative movement speed stickers could cause player movement to get stuck in a near infinite loop. (https://forums.factorio.com/118071)
+    - Fixed a crash when drawing spidertrons on the map if selected_minimap_representation wasn't defined. (https://forums.factorio.com/117889)
+    - Fixed shattered planet achievements being incorrectly awarded when traveling backwards in a paused platform. (https://forums.factorio.com/119178)
+    - Fixed that remote view while in the map editor did not ignore fog of war. (https://forums.factorio.com/119152)
+    - Fixed a crash when using LuaEquipmentGrid::take_all() when the grid contained ghosts. (https://forums.factorio.com/118730)
+    - Fixed that belt immunity equipment didn't use less power at higher qualities like it said it did. (https://forums.factorio.com/118722)
+    - Fixed that several specific-item producing entities could not be specifically filtered in the deconstruction planner. (https://forums.factorio.com/118089, https://forums.factorio.com/118297, https://forums.factorio.com/116477)
+    - Fixed LuaEntity::max_health was returning incorrect values for entities with health affected by evolution factor. (https://forums.factorio.com/118626)
+    - Fixed fast replacing loaders would not preserve filter mode. (https://forums.factorio.com/119559)
+    - Fixed that heating towers and nuclear reactors were fast-replaceable with each other. (https://forums.factorio.com/118560)
+    - Fixed rail curves making a blueprint's default snapping grid unnecessarily large. (https://forums.factorio.com/116603)
+    - Removed long delay at start when no audio devices are found. (https://forums.factorio.com/117795)
+    - Fixed that result_is_always_fresh was ignored for hand crafting. (https://forums.factorio.com/119705)
+    - Maybe fixed crashes related to using formatting strings with floating-point numbers on Intel Macs running Sonoma.
+    - Fixed that removing cargo bays while the inventory limit was in place did not work correctly. (https://forums.factorio.com/118132)
+    - Fixed that inserters could get stuck loading cargo wagons in some cases. (https://forums.factorio.com/119636)
+    - Fixed spoiled items in filtered slots of inventory would not get ejected to unfiltered slots when sorting inventory. (https://forums.factorio.com/119743)
+    - Fixed a crash when removing equipment that was in equipment ghosts. (https://forums.factorio.com/119207)
+    - Fixed a crash when migrating a fluid box from one that joins with a fluid segment to one that does not.
+    - Fixed endlessly pending asteroid collector calculation when navigation was not changed (https://forums.factorio.com/119125)
+    - Fixed modded spider vehicles being selectable with Spidertron Remote when selectable_in_game property was false.
+    - Fixed copying settings from inserter to assembler could raise error sound even when circuit conditions were changed. (https://forums.factorio.com/118520)
+    - Fixed that some color signals were not given lamp color. (https://forums.factorio.com/118710)
+    - Fixed that recipe parameter would not allow productivity effect. (https://forums.factorio.com/118790)
+    - Fixed that new filters set by LuaLogisticSection::filters would not propagate to other sections under the same group. (https://forums.factorio.com/118427)
+    - Fixed that sync-mods-with-save did not show load-save as an option. (https://forums.factorio.com/119038)
+    - Fixed captive biter spawner was able to connect to logistic network. (https://forums.factorio.com/119492)
+    - Fixed that clearing assembler recipe would not clear invalid item requests. (https://forums.factorio.com/119347)
+    - Fixed a crash when trying to drag temporary schedule record for a constantly retriggering interrupt. (https://forums.factorio.com/119233)
+    - Fixed asteroid collector description not listing minimum energy consumption. (https://forums.factorio.com/118962)
+    - Fixed recycling time of recipes with default crafting time was twice as long. (https://forums.factorio.com/118900)
+    - Fixed space platforms and cargo landing pads losing items when merging forces. (https://forums.factorio.com/117877)
+    - Fixed that item pickup requests weren't invalidated after making an automatic trash request. (https://forums.factorio.com/118276)
+    - Fixed environmental sounds needlessly reloading when entering/leaving remote view. (https://forums.factorio.com/117910)
+    - Fixed rough ice thawing to volcanic tiles. (https://forums.factorio.com/119177)
+  Modding:
+    - [space-age] Changed territory noise expressions coordinate system from chunk-based to tile-based.
+    - Added option to surface.pollute() for recording the pollution change in statistics.
+    - Fixed on_entity_damaged.source not behaving according to the 2.0 specification.
+  Scripting:
+    - Added connection_type and linked_connection_id to LuaFluidboxPrototype::pipe_connections.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.14
 Date: 01. 11. 2024

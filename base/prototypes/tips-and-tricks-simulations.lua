@@ -2130,6 +2130,7 @@ simulations.fast_obstacle_traversing =
     game.simulation.camera_position = {0, 0.5}
     game.simulation.camera_alt_info = true
     game.simulation.camera_player_cursor_position = player.position
+    game.simulation.smart_belt_building = true
     player.surface.create_entity{name="stone-furnace", position = {0, -1}}
     item_name = "transport-belt"
     direction = defines.direction.east

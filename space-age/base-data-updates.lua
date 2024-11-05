@@ -12,6 +12,8 @@ data.raw["rocket-silo"]["rocket-silo"].launch_to_space_platforms = true
 data.raw["rocket-silo"]["rocket-silo"].to_be_inserted_to_rocket_inventory_size = 20
 data.raw["rocket-silo"]["rocket-silo"].logistic_trash_inventory_size = 20
 data.raw["rocket-silo-rocket"]["rocket-silo-rocket"].inventory_size = 20
+data.raw.item["rocket-silo"].flags = data.raw.item["rocket-silo"].flags or {}
+table.insert(data.raw.item["rocket-silo"].flags, "draw-logistic-overlay")
 data.raw["item"]["satellite"] = nil
 data.raw["recipe"]["satellite"] = nil
 

@@ -893,17 +893,23 @@ data:extend{
   {
     type = "noise-expression",
     name = "demolisher_territory_radius",
-    expression = 400 / 32
+    expression = 384
   },
   {
     type = "noise-expression",
     name = "demolisher_territory_expression",
-    expression = "voronoi_cell_id(x, y, map_seed, 0, demolisher_territory_radius, \"manhattan\", 1) - starting_area",
+    expression = "voronoi_cell_id{x = x + 1000 * demolisher_territory_radius,\z
+                                  y = y + 1000 * demolisher_territory_radius,\z
+                                  seed0 = map_seed,\z
+                                  seed1 = 0,\z
+                                  grid_size = demolisher_territory_radius,\z
+                                  distance_type = 'manhattan',\z
+                                  jitter = 1} - starting_area",
     local_expressions =
     {
       starting_area = "0 < spot_at_angle{angle = vulcanus_mountains_angle - 5 * vulcanus_starting_direction,\z
-                                         distance = 100 * vulcanus_starting_area_radius / 32 + 1,\z
-                                         radius = 7,\z
+                                         distance = 100 * vulcanus_starting_area_radius + 32,\z
+                                         radius = 7 * 32,\z
                                          x_distortion = 0,\z
                                          y_distortion = 0}"
     }
@@ -911,7 +917,7 @@ data:extend{
   {
     type = "noise-expression",
     name = "demolisher_variation_expression",
-    expression = "floor(clamp(distance/18 - 0.25, 0, 4)) + (-99 * no_enemies_mode)" -- negative number means no demolisher
+    expression = "floor(clamp(distance / (18 * 32) - 0.25, 0, 4)) + (-99 * no_enemies_mode)" -- negative number means no demolisher
   }
 }
 

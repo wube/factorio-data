@@ -9,7 +9,8 @@ function create_recipe_parameter(number)
       subgroup = "parameters",
       category = "parameters",
       order = "a",
-      parameter = true
+      parameter = true,
+      allow_productivity = true
     },
   })
 end

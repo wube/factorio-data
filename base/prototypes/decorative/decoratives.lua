@@ -4306,7 +4306,6 @@ data:extend{
     flags = {"placeable-neutral", "placeable-off-grid"},
     icon = "__base__/graphics/icons/huge-rock.png",
     subgroup = "grass",
-    deconstruction_alternative = "big-rock",
     order = "b[decorative]-l[rock]-a[huge]",
     collision_box = {{-1.5, -1.1}, {1.5, 1.1}},
     selection_box = {{-1.7, -1.3}, {1.7, 1.3}},

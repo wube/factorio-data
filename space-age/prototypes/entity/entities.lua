@@ -1539,7 +1539,8 @@ data:extend({
     },
     energy_usage = "100kW",
     module_slots = 0,
-    allowed_effects = {}
+    allowed_effects = {},
+    enable_logistic_control_behavior = false
   },
   {
     type = "lab",
@@ -2021,7 +2022,6 @@ data:extend({
     icon  = "__space-age__/graphics/icons/heating-tower.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.5, result = "heating-tower"},
-    fast_replaceable_group = "reactor",
     max_health = 500,
     corpse = "heating-tower-remnants",
     dying_explosion = "heating-tower-explosion",
@@ -2038,6 +2038,7 @@ data:extend({
     {
       type = "burner",
       fuel_categories = {"chemical"},
+      emissions_per_minute = {pollution = 100},
       effectivity = 2.5,
       fuel_inventory_size = 2,
       burnt_inventory_size = 2,

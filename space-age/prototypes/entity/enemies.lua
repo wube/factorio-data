@@ -1050,10 +1050,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         type = "create-trivial-smoke",
         repeat_count = 3 * effect_multiplier,
         smoke_name = "demolisher-dying-smoke",
-        offset_deviation = 
-        { 
-          { -0.8 * effect_multiplier, -0.8 * effect_multiplier}, 
-          { 0.8 * effect_multiplier, 0.8 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.8 * effect_multiplier, -0.8 * effect_multiplier},
+          { 0.8 * effect_multiplier, 0.8 * effect_multiplier}
         },
         initial_height = 0.6,
         starting_frame = 1,
@@ -1075,10 +1075,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
           { 0, 0.5 },
           { 0, 0.6 }
         },
-        offset_deviation = 
-        { 
-          { -2 * effect_multiplier, -2 * effect_multiplier}, 
-          { 2 * effect_multiplier, 2 * effect_multiplier } 
+        offset_deviation =
+        {
+          { -2 * effect_multiplier, -2 * effect_multiplier},
+          { 2 * effect_multiplier, 2 * effect_multiplier }
         },
         initial_height = 0.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1129,10 +1129,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
           { 0, 0.5 },
           { 0, 0.6 }
         },
-        offset_deviation = 
-        { 
-          { -1.5 * effect_multiplier, -1.5 * effect_multiplier}, 
-          { 1.5 * effect_multiplier, 1.5 * effect_multiplier } 
+        offset_deviation =
+        {
+          { -1.5 * effect_multiplier, -1.5 * effect_multiplier},
+          { 1.5 * effect_multiplier, 1.5 * effect_multiplier }
         },
         initial_height = 0.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1160,10 +1160,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -0.5 * effect_multiplier, -0.5 * effect_multiplier}, 
-          { 0.5 * effect_multiplier, 0.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.5 * effect_multiplier, -0.5 * effect_multiplier},
+          { 0.5 * effect_multiplier, 0.5 * effect_multiplier}
         },
         initial_height = 1.3 * effect_multiplier,
         initial_height_deviation = 0,
@@ -1187,10 +1187,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -0.5 * effect_multiplier, -0.5 * effect_multiplier}, 
-          { 0.5 * effect_multiplier, 0.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.5 * effect_multiplier, -0.5 * effect_multiplier},
+          { 0.5 * effect_multiplier, 0.5 * effect_multiplier}
         },
         initial_height = 1.4 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1214,10 +1214,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -0.5 * effect_multiplier, -0.5 * effect_multiplier}, 
-          { 0.5 * effect_multiplier, 0.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.5 * effect_multiplier, -0.5 * effect_multiplier},
+          { 0.5 * effect_multiplier, 0.5 * effect_multiplier}
         },
         initial_height = 1.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1243,10 +1243,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -1.5 * effect_multiplier, -1.5 * effect_multiplier}, 
-          { 1.5 * effect_multiplier, 1.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -1.5 * effect_multiplier, -1.5 * effect_multiplier},
+          { 1.5 * effect_multiplier, 1.5 * effect_multiplier}
         },
         initial_height = 1.5 * effect_multiplier,
         initial_height_deviation = 0,
@@ -1267,10 +1267,10 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -1.5 * effect_multiplier, -1.5 * effect_multiplier}, 
-          { 1.5 * effect_multiplier, 1.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -1.5 * effect_multiplier, -1.5 * effect_multiplier},
+          { 1.5 * effect_multiplier, 1.5 * effect_multiplier}
         },
         initial_height = 1.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1461,7 +1461,7 @@ end
 
 function make_demolisher_segment(base_name, scale, damage_multiplier, health, sounds)
   local effect_multiplier = 2 * scale
-  
+
   return
   {
     name = make_segment_name(base_name.."-segment", scale),
@@ -1610,10 +1610,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
         type = "create-trivial-smoke",
         repeat_count = 3 * effect_multiplier,
         smoke_name = "demolisher-dying-smoke",
-        offset_deviation = 
-        { 
-          { -0.8 * effect_multiplier, -0.8 * effect_multiplier}, 
-          { 0.8 * effect_multiplier, 0.8 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.8 * effect_multiplier, -0.8 * effect_multiplier},
+          { 0.8 * effect_multiplier, 0.8 * effect_multiplier}
         },
         initial_height = 0.6,
         starting_frame = 1,
@@ -1635,10 +1635,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
           { 0, 0.5 },
           { 0, 0.6 }
         },
-        offset_deviation = 
-        { 
-          { -2 * effect_multiplier, -2 * effect_multiplier}, 
-          { 2 * effect_multiplier, 2 * effect_multiplier } 
+        offset_deviation =
+        {
+          { -2 * effect_multiplier, -2 * effect_multiplier},
+          { 2 * effect_multiplier, 2 * effect_multiplier }
         },
         initial_height = 0.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1689,10 +1689,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
           { 0, 0.5 },
           { 0, 0.6 }
         },
-        offset_deviation = 
-        { 
-          { -1.5 * effect_multiplier, -1.5 * effect_multiplier}, 
-          { 1.5 * effect_multiplier, 1.5 * effect_multiplier } 
+        offset_deviation =
+        {
+          { -1.5 * effect_multiplier, -1.5 * effect_multiplier},
+          { 1.5 * effect_multiplier, 1.5 * effect_multiplier }
         },
         initial_height = 0.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1720,10 +1720,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -0.5 * effect_multiplier, -0.5 * effect_multiplier}, 
-          { 0.5 * effect_multiplier, 0.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.5 * effect_multiplier, -0.5 * effect_multiplier},
+          { 0.5 * effect_multiplier, 0.5 * effect_multiplier}
         },
         initial_height = 1.3 * effect_multiplier,
         initial_height_deviation = 0,
@@ -1747,10 +1747,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -0.5 * effect_multiplier, -0.5 * effect_multiplier}, 
-          { 0.5 * effect_multiplier, 0.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.5 * effect_multiplier, -0.5 * effect_multiplier},
+          { 0.5 * effect_multiplier, 0.5 * effect_multiplier}
         },
         initial_height = 1.4 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1774,10 +1774,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -0.5 * effect_multiplier, -0.5 * effect_multiplier}, 
-          { 0.5 * effect_multiplier, 0.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -0.5 * effect_multiplier, -0.5 * effect_multiplier},
+          { 0.5 * effect_multiplier, 0.5 * effect_multiplier}
         },
         initial_height = 1.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -1803,10 +1803,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -1.5 * effect_multiplier, -1.5 * effect_multiplier}, 
-          { 1.5 * effect_multiplier, 1.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -1.5 * effect_multiplier, -1.5 * effect_multiplier},
+          { 1.5 * effect_multiplier, 1.5 * effect_multiplier}
         },
         initial_height = 1.5 * effect_multiplier,
         initial_height_deviation = 0,
@@ -1827,10 +1827,10 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
         {
           { 0, -0.4 }
         },
-        offset_deviation = 
-        { 
-          { -1.5 * effect_multiplier, -1.5 * effect_multiplier}, 
-          { 1.5 * effect_multiplier, 1.5 * effect_multiplier} 
+        offset_deviation =
+        {
+          { -1.5 * effect_multiplier, -1.5 * effect_multiplier},
+          { 1.5 * effect_multiplier, 1.5 * effect_multiplier}
         },
         initial_height = 1.5 * effect_multiplier,
         initial_height_deviation = 0.1,
@@ -3948,7 +3948,6 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
       icon = stomper_graphics_definitions.icon,
       subgroup = "grass",
       order = "b[decorative]-l[rock]-f[big-volcanic-rock]",
-      deconstruction_alternative = "big-rock",
       collision_mask = {layers = {item=true, object=true, player=true, is_object=true, is_lower_object=true, ghost=true}},
       collision_box = {{-1.8 * stomper_scale, -1.45 * stomper_scale}, {1.8 * stomper_scale, 1.45 * stomper_scale}},
       selection_box = {{-1.85 * stomper_scale, -1.5 * stomper_scale}, {1.85 * stomper_scale, 1.5 * stomper_scale}},
