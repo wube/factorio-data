@@ -1361,6 +1361,16 @@ data:extend({
       working_visualisations =
       {
         {
+          always_draw = true,
+          fog_mask = { rect = {{-30, -30}, {30, -2.75}}, falloff = 1 },
+          animation = util.sprite_load("__space-age__/graphics/entity/agricultural-tower/agricultural-tower-base",
+          {
+            frame_count = 1,
+            scale = 0.5
+          }),
+        },
+
+        {
           --constant_speed = true,
           always_draw = true,
           apply_recipe_tint = "primary",

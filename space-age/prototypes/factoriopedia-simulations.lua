@@ -285,11 +285,11 @@ simulations.factoriopedia_crater_cliff =
   hide_factoriopedia_gradient = true,
   init =
   [[
-    game.simulation.camera_zoom = 1.0
-    game.simulation.camera_position = {-0.5, 2.5}
-    for x = -14, 12, 1 do
-      for y = -5, 7 do
-        game.surfaces[1].set_tiles{{position = {x, y}, name = "volcanic-soil-dark"}}
+    game.simulation.camera_zoom = 0.5
+    game.simulation.camera_position = {-0.5, 1.5}
+    for x = -28, 24, 1 do
+      for y = -10, 14 do
+        game.surfaces[1].set_tiles{{position = {x, y}, name = "volcanic-ash-dark"}}
       end
     end
 

@@ -425,6 +425,7 @@ data:extend{
     },
     collision_box = {{-1.85, -1.25}, {1.85, 1.25}},
     selection_box = {{-1.85, -1.25}, {1.85, 1.25}},
+    drawing_box_vertical_extension = 2,
     damaged_trigger_effect = hit_effects.rock(),
     render_layer = "object",
     max_health = 1500,

@@ -1,3 +1,4 @@
+local item_sounds = require("__base__.prototypes.item_sounds")
 
 local function get_item(name)
   for typeName in pairs(defines.prototypes.item) do

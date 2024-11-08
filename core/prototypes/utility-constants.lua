@@ -224,6 +224,7 @@ data:extend(
       zoom_threshold_to_draw_spider_path = 0,
 
       chart_deconstruct_tint = {0.75, 0.2, 0.2, 1},
+      chart_deconstruct_active_color = {1, 0, 0, 1},
       chart_player_circle_size = 3,
     },
     gui_remark_color = {34, 181, 255},

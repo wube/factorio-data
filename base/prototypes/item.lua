@@ -673,6 +673,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -691,6 +692,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -1377,6 +1379,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -1395,6 +1398,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -1413,6 +1417,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -1431,6 +1436,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -1448,6 +1454,7 @@ data:extend
     weight = 1 * kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -2064,7 +2071,6 @@ data:extend
         },
         {
           draw_as_light = true,
-          flags = {"light"},
           size = 64,
           filename = "__base__/graphics/icons/nuclear-fuel-light.png",
           scale = 0.5
@@ -2293,7 +2299,6 @@ data:extend
         },
         {
           draw_as_light = true,
-          flags = {"light"},
           size = 64,
           filename = "__base__/graphics/icons/uranium-fuel-cell-light.png",
           scale = 0.5
@@ -2703,7 +2708,6 @@ data:extend
         },
         {
           draw_as_light = true,
-          flags = {"light"},
           size = 64,
           filename = "__base__/graphics/icons/uranium-rounds-magazine-light.png",
           scale = 0.5
@@ -2879,7 +2883,6 @@ data:extend
         },
         {
           draw_as_light = true,
-          flags = {"light"},
           size = 64,
           filename = "__base__/graphics/icons/atomic-bomb-light.png",
           scale = 0.5
@@ -3055,7 +3058,6 @@ data:extend
         },
         {
           draw_as_light = true,
-          flags = {"light"},
           size = 64,
           filename = "__base__/graphics/icons/uranium-cannon-shell-light.png",
           scale = 0.5
@@ -3111,7 +3113,6 @@ data:extend
         },
         {
           draw_as_light = true,
-          flags = {"light"},
           size = 64,
           filename = "__base__/graphics/icons/uranium-cannon-shell-light.png",
           scale = 0.5

@@ -61,6 +61,7 @@ data:extend(
     weight = 1*kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -80,6 +81,7 @@ data:extend(
     weight = 1*kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -99,6 +101,7 @@ data:extend(
     weight = 1*kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     spoil_ticks = 1 * hour,
     spoil_result = "spoilage",
@@ -120,6 +123,7 @@ data:extend(
     weight = 1*kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -139,6 +143,7 @@ data:extend(
     weight = 1*kg,
     durability = 1,
     durability_description_key = "description.science-pack-remaining-amount-key",
+    factoriopedia_durability_description_key = "description.factoriopedia-science-pack-remaining-amount-key",
     durability_description_value = "description.science-pack-remaining-amount-value",
     random_tint_color = item_tints.bluish_science
   },
@@ -1681,30 +1686,9 @@ data:extend(
     pick_sound = item_sounds.wood_inventory_pickup,
     drop_sound = item_sounds.wood_inventory_move,
     stack_size = 10,
-    default_import_location = "gleba",
     weight = 10 * kg,
     fuel_category = "chemical",
     fuel_value = "100kJ"
   },
-  --[[
-  -- for testing of multiple possible starter packs
-  {
-    type = "space-platform-starter-pack",
-    name = "space-platform-starter-pack-2",
-    icon = "__space-age__/graphics/icons/concrete.png",
-    subgroup = "space-related",
-    order = "c[space-platform-starter-pack]-b",
-    inventory_move_sound = item_sounds.mechanical_inventory_move,
-    pick_sound = item_sounds.mechanical_inventory_pickup,
-    drop_sound = item_sounds.mechanical_inventory_move,
-    stack_size = 1,
-    tiles =
-    {
-      {
-        tile = "concrete",
-        position = {0, 0}
-      }
-    }
-  }]]--
 }
 )

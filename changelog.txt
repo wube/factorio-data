@@ -1,10 +1,75 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.16
+Version: 2.0.17
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.16
+Date: 08. 11. 2024
   Minor Features:
     - Search is now case and accent insensitive for all official languages.
+  Changes:
+    - [space-age] Changed tree seed default import location to Nauvis. (https://forums.factorio.com/119272)
+    - Fluid mixing will prefer the fluid with more volume and discard the other.
+    - Updated SDL to version 2.30.9.
   Bugfixes:
     - Fixed a freeze when setting logistic/construction robots to active=false through script. (https://forums.factorio.com/119911)
+    - Fixed that LuaEntity::vehicle did not work correctly for characters controlled by a player. (https://forums.factorio.com/119848)
+    - Fixed rendering of glowing items on belts would not be batched properly. (https://forums.factorio.com/118863)
+    - Fixed a crash when reading LuaEntity::robot_order_queue. (https://forums.factorio.com/119764)
+    - Fixed that the permissions GUI could not be opened in multiplayer as not-the-host. (https://forums.factorio.com/119979)
+    - Fixed some decorative entities like craters or chimneys not having a tall enough drawing box. (https://forums.factorio.com/116746)
+    - Fixed that factoriopedia_description would not be used if the prototype didn't also have a regular description. (https://forums.factorio.com/119631)
+    - Fixed a crash when space platforms are destroyed while specific entity GUIs are open. (https://forums.factorio.com/119136)
+    - Fixed undoing a copy-settings could void assembler contents. (https://forums.factorio.com/119554)
+    - Fixed tips not appearing in tutorials. (https://forums.factorio.com/117463)
+    - Fixed wrong times symbol in a logistic request tooltip. (https://forums.factorio.com/120014)
+    - Fixed that using pipette on GUI items did not consistently copy the quality. (https://forums.factorio.com/119201)
+    - Fixed that using pipette on tile items in GUI always selected normal quality. (https://forums.factorio.com/116952)
+    - Fixed that using pipette on entity items in GUI could select the wrong item if multiple items can build the same entity.
+    - Fixed visualisation issue around cursor attractor range enveloping an existing attractor (https://forums.factorio.com/119514)
+    - Fixed tile replacement logic ignoring tile ghosts covered by tile ghosts
+    - Fixed stations getting skipped when using the 'Destination full' condition for interrupts. (https://forums.factorio.com/115988)
+    - Fixed UI jank that widgets would snap to be centered on the cursor when dragged.
+    - Fixed selections using deconstruction planners etc. not getting cancelled when leaving remote view. (https://forums.factorio.com/117145)
+    - Fixed that changing viewed surface would not abort wire drag. (https://forums.factorio.com/119456)
+    - Fixed non-chart sprites sometimes being drawn into chart. (https://forums.factorio.com/118486)
+    - Fixed upgrading cargo bays with incoming pods would leave them permanently reserved. (https://forums.factorio.com/119912)
+    - Fixed a crash when changing tiles causes entities to die. (https://forums.factorio.com/120091)
+    - Fixed that a music track could play on a wrong surface. (https://forums.factorio.com/119409)
+    - Fixed bloom lightmap for fog was being rendered also when fog effect was not used.
+    - Fixed super force overbuilding entity with settings sometimes behaving incorrectly if overbuilt entity was marked for upgrade.
+    - Fixed fluid overextent warning would sometimes show on entities that would not help overcome the overextent. (https://forums.factorio.com/119791)
+    - Fixed cars not having lightning endangerement alerts despite being vulnerable to lightnings (https://forums.factorio.com/119473)
+    - Fixed a performance issue in the manage-mods GUI. (https://forums.factorio.com/120032)
+    - Fixed a memory corruption issue when changing a character's force from one that did not have logistics to one that did. (https://forums.factorio.com/120101)
+    - Fixed the Trash unrequested checkbox in the character logistic GUI expanding the GUI size. (https://forums.factorio.com/118606)
+    - Fixed that LuaEntity::mirroring write did not work for ghosts. (https://forums.factorio.com/117633)
+    - Fixed sounds of items inserted by robots being too loud. (https://forums.factorio.com/117780)
+    - Fixed the Trash unrequested checkbox showing in chests which have no trash slots. (https://forums.factorio.com/116985)
+    - Fixed a crash when switching audio devices when there were none initially.
+    - Fixed pin text rich text icon quality punching through GUIs. (https://forums.factorio.com/117647)
+    - Fixed that LuaSurface::find_tiles_filtered() did not work with rotated bounding boxes. (https://forums.factorio.com/111178)
+    - Fixed interrupt GUI targets list being squashed too much with lots of interrupt conditions. (https://forums.factorio.com/119550)
+    - Fixed that heating towers couldn't consume items fast enough if the fuel value was low. (https://forums.factorio.com/120114)
+    - Fixed a consistency issue when deconstructing the last roboport in a logistic network. (https://forums.factorio.com/119973)
+    - Fixed fog was clipping through agricultural tower. (https://forums.factorio.com/116678)
+    - Fixed that killed and rebuilt power switches would get stuck in the inoperable state. (https://forums.factorio.com/119732)
+    - Fixed a performance issue with large inventory GUIs. (https://forums.factorio.com/120212)
+    - Fixed that infinity chests didn't show hidden items. (https://forums.factorio.com/118813)
+    - Fixed that programmable speaker alert text wasn't included in the blueprint parametrisation logic. (https://forums.factorio.com/118080)
+    - Fixed that science pack descriptions in Factoriopedia didn't make any sense. (https://forums.factorio.com/116958)
+    - Fixed muzzle flash of artillery wagon was offset when the wagon was on elevated rails. (https://forums.factorio.com/118761)
+    - Fixed artillery wagon gun barrel was rendered under elevated rail fence.
+    - Fixed drawing linked fluidbox connections when they should be hidden.
+    - Fixed that manually-built trains were switched to automatic mode when a ghost attached to them was revived. (https://forums.factorio.com/119836)
+    - Fixed that blueprints could be grabbed while having a ghost item in the cursor. (https://forums.factorio.com/118524)
+    - Fixed an assembling machine could be set a fluid-only recipe with quality when set by circuit network. (https://forums.factorio.com/120108)
+    - Fixed maximum request limit (autotrash threshold) not accepting math expressions. (https://forums.factorio.com/117887)
+    - Fixed equipment requests not being cleared when the grid didn't have enough space. (https://forums.factorio.com/117509)
+    - Fixed that asteroid collector control behavior "set filter" would affect status light while wire was disconnected. (https://forums.factorio.com/118456)
+    - Fixed turbo splitter was missing description. (https://forums.factorio.com/120236)
+  Scripting:
+    - Added hide_clouds and hide_fog parameters to LuaGameScript::take_screenshot. (https://forums.factorio.com/120199)
+    - Added LuaEntity::get_logistic_sections(). Added LuaLogisticSections.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.15
 Date: 05. 11. 2024

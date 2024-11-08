@@ -139,6 +139,17 @@ data:extend(
       volume = 0.9,
       aggregation = {max_count = 1, remove = true, count_already_playing = true, priority = "oldest", progress_threshold = 0.1},
     },
+    inventory_click =
+    {
+      filename = "__core__/sound/gui-inventory-slot-button.ogg",
+      volume = 0.6,
+      aggregation = {max_count = 1, remove = true},
+    },
+    inventory_move =
+    {
+      filename = "__core__/sound/inventory-move.ogg",
+      aggregation = {max_count = 1, remove = true}
+    },
     achievement_unlocked = {filename = "__core__/sound/achievement-unlocked.ogg", volume = 0.65},
     picked_up_item =
     {
@@ -192,8 +203,6 @@ add_utility_sound("game_lost", "__core__/sound/game-lost.ogg", 0.8)
 add_utility_sound("game_won", "__core__/sound/game-won.ogg", 0.75)
 add_utility_sound("research_completed", "__core__/sound/research-completed.ogg")
 add_utility_sound("crafting_finished", "__core__/sound/crafting-finished.ogg")
-add_utility_sound("inventory_click", "__core__/sound/gui-inventory-slot-button.ogg", 0.6)
-add_utility_sound("inventory_move", "__core__/sound/inventory-move.ogg")
 add_utility_sound("clear_cursor", "__core__/sound/clear-cursor.ogg")
 add_utility_sound("armor_insert", "__core__/sound/armor-insert.ogg")
 add_utility_sound("armor_remove", "__core__/sound/armor-remove.ogg")
