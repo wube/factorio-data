@@ -586,6 +586,16 @@ data.raw["decider-combinator"]["decider-combinator"].frozen_patch =
     shift = util.by_pixel(0.5, 7.5)
   }
 }
+data.raw["selector-combinator"]["selector-combinator"].frozen_patch =
+{
+  sheet = {
+    scale = 0.5,
+    filename = "__space-age__/graphics/entity/frozen/combinator/selector-combinator-frozen.png",
+    width = 154,
+    height = 160,
+    shift = util.by_pixel( 1.0, -1.0)
+  }
+}
 
 data.raw["power-switch"]["power-switch"].frozen_patch =
 {

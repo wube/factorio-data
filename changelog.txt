@@ -1,6 +1,63 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.17
+Version: 2.0.18
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.17
+Date: 12. 11. 2024
+  Changes:
+    - [space-age] Gleba evolution is smoother and more gradual.
+    - [space-age] Small stomper pentapod moves more slowly (also decreases stomp DPS).
+    - [space-age] Stomper pentapod vision range is reduced from 40 to 30.
+    - [space-age] Medium and big wriggler pentapod health is increased.
+    - [space-age] Streamlined quality selector to use separate buttons for each quality instead of a drop-down.
+    - [space-age] Changed crafting machines to reset quality of the in-progress result when module effects change. (https://forums.factorio.com/120270)
+    - Added inserter stack size override to be parametrised by blueprint. (https://forums.factorio.com/118635)
+    - Added Vulcanus 8 music track.
+  Bugfixes:
+    - Fixed that the game would get into an invalid state if the backers.json file was manually edited in some ways. (https://forums.factorio.com/120176)
+    - Fixed a crash with lightning when setting time to damage to 0 through mods. (https://forums.factorio.com/120474)
+    - Fixed fast replacing a radar could cause radar network to break.
+    - Fixed that blueprint export/import to string did not work correctly for turret priorities with gaps. (https://forums.factorio.com/120162)
+    - Fixed that some asteroids could appear stationary if their velocity was lower than minimum position increment. (https://forums.factorio.com/120297)
+    - Fixed space platform autosaves being overwritten mid-journey when the platform changed its state. (https://forums.factorio.com/119650)
+    - Fixed market offer not working with nothing modifier. (https://forums.factorio.com/120744)
+    - Fixed rocket silo would start closing doors when next rocket was finished while lights blinking animation was already started. (https://forums.factorio.com/120748)
+    - Fixed LuaTechnologyPrototype::essential returning incorrect value. (https://forums.factorio.com/120640)
+    - Fixed that strafer pentapods couldn't attack a retreating target it was behind even when faster than the target. Attack range is increased but strafe distance is unchanged.
+    - Fixed more issues with blueprint reassigning changing the position of the entities or snapping values of the blueprint. (https://forums.factorio.com/117957)
+    - Fixed wrap-around of asteroid rotation animation was not seamless. (https://forums.factorio.com/117915)
+    - Fixed that Galaxy of Fame upload didn't clean its files. (https://forums.factorio.com/118090)
+    - Fixed more crashes related to using formatting strings with floating-point numbers on Intel Macs running Sonoma.
+    - Fixed cancelling deconstruction via deconstruction player was not showing counts for canceled deconstructions. (https://forums.factorio.com/119294)
+    - Fixed that galaxy of fame upload din't clean its files. (https://forums.factorio.com/118090)
+    - Fixed that setting negative value in constant combinator create 2 entries for the number in the blueprint parametrisation, one with underflown value.
+    - Fixed that it wasn't possible to input negative numbers in blueprint parametrisation. (https://forums.factorio.com/117989)
+    - Fixed offshore pump would present itself as water well pump even when it was not pumping water. (https://forums.factorio.com/120877)
+    - Fixed crash when trying to search invalid UTF-8 string (https://forums.factorio.com/120452)
+    - Fixed that hidden space locations would will show in descriptions. (https://forums.factorio.com/120541)
+    - Fixed that fast-transferring modules would put them into the rocket silo rocket inventory. (https://forums.factorio.com/117666)
+    - Fixed that switching surfaces while a platform hub GUI was open would leave the GUI open in some cases where it wasn't supposed to. (https://forums.factorio.com/119720)
+    - Fixed that you could remove your armor and spill items through the quickbar. (https://forums.factorio.com/120586)
+    - Fixed that modded attack_reaction could crash the game. (https://forums.factorio.com/120687)
+    - Fixed a crash when using surface.clear() on vulcanus. (https://forums.factorio.com/121058)
+    - Fixed that orbital request select window wasn't showing proper import from after chaning the group unless the whole window was closed and opened again. (https://forums.factorio.com/118392)
+    - Fixed double set of parameters in factoriopedia. (https://forums.factorio.com/118152)
+    - Fixed stack inserter would not wait for more items if spoil priority was set. (https://forums.factorio.com/120980)
+    - Fixed loaders would freeze or unfreeze partially. (https://forums.factorio.com/119228)
+    - Fixed arithmetic combinator gui would allow changing not relevant checkboxes in some cases. (https://forums.factorio.com/121041)
+    - Fixed surface editor would not set surface properties when creating surfaces planet-alike. (https://forums.factorio.com/120874)
+    - Fixed rail planner would remain active when changing surfaces. (https://forums.factorio.com/121026)
+    - Fixed a crash when reviving power switch with multiple ghost copper cables connected to the same side. (https://forums.factorio.com/121056)
+    - Fixed space platform hub gui would reset position when changing auto requests checkbox. (https://forums.factorio.com/120512)
+    - Fixed that assembler with set recipe enabled would not keep direction if current recipe did not require direction. (https://forums.factorio.com/120686)
+    - Fixed robot repair job assignmend ignoring repair packs stored in roboports when finding the closest source. (https://forums.factorio.com/117937)
+    - Allowed increasing of request count by blueprint parameters to push the max request count. (https://forums.factorio.com/118536)
+    - Fixed that corpses would block tiles from being deconstructed. (https://forums.factorio.com/119202)
+    - Fixed that restarting to reload mods on macOS would leave behind unresponsive zombie windows. (https://forums.factorio.com/117058)
+  Modding:
+    - Input loader supports filters.
+  Scripting:
+    - Added LuaControl::set_driving() (https://forums.factorio.com/121014)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.16
 Date: 08. 11. 2024

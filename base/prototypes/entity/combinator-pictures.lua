@@ -1138,16 +1138,6 @@ function generate_selector_combinator(combinator)
         }
       }
     })
-  combinator.frozen_patch =
-  {
-    sheet = {
-      scale = 0.5,
-      filename = "__base__/graphics/entity/combinator/selector-combinator-frozen.png",
-      width = 154,
-      height = 160,
-      shift = util.by_pixel( 1.0, -1.0)
-    }
-  }
   combinator.activity_led_sprites =
   {
     north = util.draw_as_glow

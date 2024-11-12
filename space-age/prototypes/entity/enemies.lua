@@ -3657,7 +3657,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
         roarvolume = 0.8,
         range_mode = "bounding-box-to-bounding-box"
       }),
-      vision_distance = 40,
+      vision_distance = 30,
       ai_settings = util.merge(
       {
         gleba_ai_settings,
@@ -6132,15 +6132,15 @@ data:extend(
     },
     result_units =
     {
-      {"small-wriggler-pentapod", {{0.0, 0.4}, {0.3, 0.4}, {0.35, 0}}},
-      {"small-strafer-pentapod", {{0.0, 0.4}, {0.3, 0.4}, {0.35, 0}}},
-      {"small-stomper-pentapod", {{0.0, 0.2}, {0.3, 0.2}, {0.35, 0}}},
-      {"medium-wriggler-pentapod", {{0.3, 0}, {0.35, 0.4}, {0.6, 0.4}, {0.65, 0}}},
-      {"medium-strafer-pentapod", {{0.3, 0}, {0.35, 0.4}, {0.6, 0.4}, {0.65, 0}}},
-      {"medium-stomper-pentapod", {{0.3, 0}, {0.35, 0.2}, {0.6, 0.2}, {0.65, 0}}},
-      {"big-wriggler-pentapod", {{0.6, 0}, {0.65, 0.4}, {1, 0.4}}},
-      {"big-strafer-pentapod", {{0.6, 0}, {0.65, 0.4}, {1, 0.4}}},
-      {"big-stomper-pentapod", {{0.6, 0}, {0.65, 0.2}, {1, 0.2}}},
+      {"small-wriggler-pentapod", {{0.0, 0.4}, {0.1, 0.4}, {0.6, 0}}},
+      {"small-strafer-pentapod", {{0.0, 0.4}, {0.1, 0.4}, {0.6, 0}}},
+      {"small-stomper-pentapod", {{0.0, 0.2}, {0.1, 0.2}, {0.6, 0}}},
+      {"medium-wriggler-pentapod", {{0.1, 0}, {0.6, 0.4}, {0.95, 0}}},
+      {"medium-strafer-pentapod", {{0.1, 0}, {0.6, 0.4}, {0.95, 0}}},
+      {"medium-stomper-pentapod", {{0.1, 0}, {0.6, 0.2}, {0.95, 0}}},
+      {"big-wriggler-pentapod", {{0.6, 0}, {0.95, 0.4}, {1, 0.4}}},
+      {"big-strafer-pentapod", {{0.6, 0}, {0.95, 0.4}, {1, 0.4}}},
+      {"big-stomper-pentapod", {{0.6, 0}, {0.95, 0.2}, {1, 0.2}}},
     },
     -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
     spawning_cooldown = {360, 150},
@@ -6319,15 +6319,9 @@ data:extend(
     },
     result_units =
     { -- allowes to spawn close to starting area so prevent strafer and stomper from spawning
-      {"small-wriggler-pentapod", {{0.0, 0.9}, {0.3, 0.9}, {0.35, 0}}},
-      --{"small-strafer-pentapod", {{0.0, 0.06}, {0.3, 0.06}, {0.35, 0}}},
-      --{"small-stomper-pentapod", {{0.0, 0.04}, {0.3, 0.04}, {0.35, 0}}},
-      {"medium-wriggler-pentapod", {{0.3, 0}, {0.35, 0.9}, {0.6, 0.9}, {0.65, 0}}},
-      --{"medium-strafer-pentapod", {{0.3, 0}, {0.35, 0.06}, {0.6, 0.06}, {0.65, 0}}},
-      --{"medium-stomper-pentapod", {{0.3, 0}, {0.35, 0.04}, {0.6, 0.04}, {0.65, 0}}},
-      {"big-wriggler-pentapod", {{0.6, 0}, {0.65, 0.9}, {1, 0.9}}},
-      --{"big-strafer-pentapod", {{0.6, 0}, {0.65, 0.06}, {1, 0.06}}},
-      --{"big-stomper-pentapod", {{0.6, 0}, {0.65, 0.04}, {1, 0.04}}},
+      {"small-wriggler-pentapod", {{0.0, 0.9}, {0.1, 0.9}, {0.6, 0}}},
+      {"medium-wriggler-pentapod", {{0.1, 0}, {0.6, 0.9}, {0.95, 0}}},
+      {"big-wriggler-pentapod", {{0.6, 0}, {0.95, 0.9}, {1, 0.9}}},
     },
     -- With zero evolution the spawn rate is 6 seconds, with max evolution it is 2.5 seconds
     spawning_cooldown = {360, 150},
@@ -6439,7 +6433,7 @@ local gleba_small_mask2_tint = {173, 211, 11, 255} -- thighs
 local gleba_small_body_tint = {125, 124, 111, 255}
 local small_wriggler_mask_tint = fade(lerp_color(gleba_small_mask_tint, {255, 200, 0, 255}, 0.1), 0.2)
 local small_wriggler_body_tint = grey_overlay(lerp_color(gleba_small_body_tint, {255, 0, 0, 255}, 0.1), 0.2)
-make_strafer("small-", 0.9, 800, 0.75, 3.75, 20, 22, 30,
+make_strafer("small-", 0.9, 800, 0.75, 3.75, 20, 25, 30,
   {
     mask = fade(gleba_small_mask_tint, 0.2),
     mask_thigh = fade(gleba_small_mask2_tint, 0.4),
@@ -6447,7 +6441,7 @@ make_strafer("small-", 0.9, 800, 0.75, 3.75, 20, 22, 30,
     projectile_mask = small_wriggler_mask_tint, -- same as wriggler mask tint
     projectile = small_wriggler_body_tint,  -- same as wriggler body tint
   }, simulations.factoriopedia_gleba_enemy_small_strafer, space_age_sounds.strafer_pentapod.small)
-make_stomper("small-", 0.9, 3500, 0.5, 1.9,
+make_stomper("small-", 0.9, 3500, 0.5, 1.8,
   {
     mask = fade(gleba_small_mask_tint, 0.2),
     mask_thigh = fade(gleba_small_mask2_tint, 0.3),
@@ -6467,7 +6461,7 @@ local gleba_medium_mask2_tint = {250,250,0,255}
 local gleba_medium_body_tint = {115,122,114,255}
 local medium_wriggler_mask_tint = fade(gleba_medium_mask_tint, 0.3)
 local medium_wriggler_body_tint = gleba_medium_body_tint
-make_strafer("medium-", 1.2, 1400, 1, 4.5, 23, 25, 33,
+make_strafer("medium-", 1.2, 1400, 1, 4.5, 23, 28, 33,
   {
     mask = fade(lerp_color(gleba_medium_mask_tint, gleba_medium_mask2_tint, 0.5), 0.3),
     mask_thigh = fade(lerp_color(gleba_medium_mask_tint, gleba_medium_mask2_tint, 0.7), 0.2),
@@ -6481,7 +6475,7 @@ make_stomper("medium-", 1.2, 8000, 1, 2.3,
     mask_thigh = fade(gleba_medium_mask2_tint, 0.4),
     body = lerp_color(gleba_medium_body_tint, grey_overlay({127,255,0,255}, 0.5), 0.05) -- more green
   }, simulations.factoriopedia_gleba_enemy_medium_stomper, space_age_sounds.stomper_pentapod.medium)
-make_wriggler("medium-", 0.8, 150, 1,
+make_wriggler("medium-", 0.8, 200, 1.1,
   {
     mask = medium_wriggler_mask_tint,
     body = medium_wriggler_body_tint
@@ -6492,7 +6486,7 @@ local gleba_big_mask2_tint  = {216,100,35,255}
 local gleba_big_body_tint = {117,116,104,255}
 local big_wriggler_mask_tint = fade(gleba_big_mask_tint, 0.4)
 local big_wriggler_body_tint = gleba_big_body_tint
-make_strafer("big-", 1.6, 2400, 1.6, 5.5, 26, 28, 36,
+make_strafer("big-", 1.6, 2400, 1.6, 5.5, 26, 31, 36,
   {
     mask = fade(gleba_big_mask_tint, 0.4),
     mask_thigh = fade(gleba_big_mask2_tint, 0.2),
@@ -6507,7 +6501,7 @@ make_stomper("big-", 1.6, 15000, 1.6, 2.8,
     body = grey_overlay(gleba_big_body_tint, 0.1),
     body_thigh = lerp_color(gleba_big_body_tint, grey_overlay({250,108,0,255}, 0.7), 0.1) -- more orange/yellow
   }, simulations.factoriopedia_gleba_enemy_big_stomper, space_age_sounds.stomper_pentapod.big)
-make_wriggler("big-", 1.0, 250, 1.6,
+make_wriggler("big-", 1.0, 400, 1.8,
   {
     mask = fade(gleba_big_mask_tint, 0.5),
     body = gleba_big_body_tint

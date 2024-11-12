@@ -5937,6 +5937,7 @@ data:extend(
     name = "rocket-silo",
     icon = "__base__/graphics/icons/rocket-silo.png",
     flags = {"placeable-player", "player-creation"},
+    fast_transfer_modules_into_module_slots_only = true,
     crafting_categories = {"rocket-building"},
     fast_replaceable_group = "rocket-silo",
     rocket_parts_required = 100,

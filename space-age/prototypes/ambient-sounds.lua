@@ -66,15 +66,14 @@ data:extend(
     sound = "__space-age__/sound/ambient/vulcanus/vulcanus-7.ogg",
     weight = 8
   },
-  --{
-  --  -- DISCARDED
-  --  type = "ambient-sound",
-  --  name = "vulcanus-08 DEMO",
-  --  track_type = "main-track",
-  --  planet = "vulcanus",
-  --  sound = "__space-age__/sound/ambient/vulcanus/08-vulcanus-08-demo.ogg",
-  --  weight = 10
-  --},
+  {
+    type = "ambient-sound",
+    name = "vulcanus-8",
+    track_type = "main-track",
+    planet = "vulcanus",
+    sound = "__space-age__/sound/ambient/vulcanus/vulcanus-8.ogg",
+    weight = 10
+  },
   require("__space-age__/sound/ambient/vulcanus/vulcanus-9/vulcanus-9"),
   require("__space-age__/sound/ambient/vulcanus/vulcanus-10/vulcanus-10"),
   require("__space-age__/sound/ambient/vulcanus/interlude-1/interlude-1"),
