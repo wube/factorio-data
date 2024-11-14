@@ -918,7 +918,7 @@ data:extend
     type = "tile",
     order = "z[other]-a[out-of-map]",
     subgroup = "special-tiles",
-    collision_mask = tile_collision_masks.out_of_map,
+    collision_mask = tile_collision_masks.out_of_map(),
     layer_group = "zero",
     layer = 0,
     variants =
@@ -942,7 +942,7 @@ data:extend
     order = "a[water]-b[deep-water]",
     subgroup = "nauvis-tiles",
     transition_merges_with_tile = "water",
-    collision_mask = tile_collision_masks.water,
+    collision_mask = tile_collision_masks.water(),
     fluid = "water",
     autoplace = {probability_expression = "water_base(-2, 200)"},
     effect = "water",
@@ -1009,7 +1009,7 @@ data:extend
     order = "a[water]-d[deepwater-green]",
     subgroup = "nauvis-tiles",
     transition_merges_with_tile = "water",
-    collision_mask = tile_collision_masks.water,
+    collision_mask = tile_collision_masks.water(),
     fluid = "water",
     effect = "water",
     effect_color = { 45, 68, 25 },
@@ -1054,7 +1054,7 @@ data:extend
     name = "water",
     type = "tile",
     order = "a[water]-a[water]",
-    collision_mask = tile_collision_masks.water,
+    collision_mask = tile_collision_masks.water(),
     subgroup = "nauvis-tiles",
     fluid = "water",
     autoplace = {probability_expression = "water_base(0, 100)"},
@@ -1121,7 +1121,7 @@ data:extend
     order = "a[water]-c[water-green]",
     subgroup = "nauvis-tiles",
     transition_merges_with_tile = "water",
-    collision_mask = tile_collision_masks.water,
+    collision_mask = tile_collision_masks.water(),
     fluid = "water",
     effect = "water",
     effect_color = { 49, 80, 14 },
@@ -1166,7 +1166,7 @@ data:extend
     type = "tile",
     order = "a[water]-e[water-shallow]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.shallow_water,
+    collision_mask = tile_collision_masks.shallow_water(),
     fluid = "water",
     walking_sound = shallow_water_sound,
     driving_sound = shallow_water_driving_sound,
@@ -1271,7 +1271,7 @@ data:extend
     type = "tile",
     order = "a[water]-g[water-mud]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.shallow_water,
+    collision_mask = tile_collision_masks.shallow_water(),
     fluid = "water",
     -- autoplace = nil, -- set in planet-gleba-mapgen.lua
     walking_sound = shallow_water_sound,
@@ -1359,7 +1359,7 @@ data:extend
     name = "grass-1",
     type = "tile",
     order = "b[natural]-a[grass]-a[grass-1]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.7, 11, 11) + noise_layer_noise(19)'},
     layer = 26,
     variants = tile_variations_template(
@@ -1392,7 +1392,7 @@ data:extend
     type = "tile",
     order = "b[natural]-a[grass]-b[grass-2]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(0.45, 0.45, 11, 0.8) + noise_layer_noise(20)'},
     layer = 28,
     variants = tile_variations_template(
@@ -1426,7 +1426,7 @@ data:extend
     type = "tile",
     order = "b[natural]-a[grass]-c[grass-3]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.6, 0.65, 0.9) + noise_layer_noise(21)'},
     layer = 29,
     variants = tile_variations_template(
@@ -1459,7 +1459,7 @@ data:extend
     type = "tile",
     order = "b[natural]-a[grass]-d[grass-4]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.5, 0.55, 0.7) + noise_layer_noise(22)'},
     layer = 30,
     variants = tile_variations_template(
@@ -1492,7 +1492,7 @@ data:extend
     name = "dry-dirt",
     type = "tile",
     order = "b[natural]-b[dirt]-a[dry-dirt]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(0.45, -10, 0.55, 0.35) + noise_layer_noise(13)'},
     layer = 18,
     variants = tile_variations_template(
@@ -1523,7 +1523,7 @@ data:extend
     name = "dirt-1",
     type = "tile",
     order = "b[natural]-b[dirt]-b[dirt-1]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(-10, 0.25, 0.45, 0.3),\z
                                                expression_in_range_base(0.4, -10, 0.45, 0.25)) + noise_layer_noise(6)'},
     layer = 19,
@@ -1556,7 +1556,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dirt]-c[dirt-2]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.3, 0.45, 0.35) + noise_layer_noise(7)'},
     layer = 20,
     variants = tile_variations_template(
@@ -1588,7 +1588,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dirt]-d[dirt-3]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.35, 0.55, 0.4) + noise_layer_noise(8)'},
     layer = 21,
     variants = tile_variations_template(
@@ -1620,7 +1620,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dirt]-e[dirt-4]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(0.55, -10, 0.6, 0.35),\z
                                                expression_in_range_base(0.6, 0.3, 11, 0.35)) + noise_layer_noise(9)'},
     layer = 22,
@@ -1653,7 +1653,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dirt]-f[dirt-5]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.4, 0.55, 0.45) + noise_layer_noise(10)'},
     layer = 23,
     variants = tile_variations_template(
@@ -1685,7 +1685,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dirt]-g[dirt-6]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.45, 0.55, 0.5) + noise_layer_noise(11)'},
     layer = 24,
     variants = tile_variations_template(
@@ -1717,7 +1717,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dirt]-h[dirt-7]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(-10, 0.5, 0.55, 0.55) + noise_layer_noise(12)'},
     layer = 25,
     variants = tile_variations_template(
@@ -1749,7 +1749,7 @@ data:extend
     type = "tile",
     order = "b[natural]-c[sand]-a[sand-1]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(-10, -10, 0.25, 0.15),\z
                                                expression_in_range(5, inf, elevation, aux, -1.5, 0.5, 1.5, 1)) +\z
                                            noise_layer_noise(36)'},
@@ -1784,7 +1784,7 @@ data:extend
     type = "tile",
     order = "b[natural]-c[sand]-b[sand-2]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(-10, 0.15, 0.3, 0.2),\z
                                                expression_in_range_base(0.25, -10, 0.3, 0.15)) + noise_layer_noise(37)'},
     layer = 9,
@@ -1818,7 +1818,7 @@ data:extend
     type = "tile",
     order = "b[natural]-c[sand]-c[sand-3]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(-10, 0.2, 0.4, 0.25),\z
                                                expression_in_range_base(0.3, -10, 0.4, 0.2)) + noise_layer_noise(38)'},
     layer = 10,
@@ -1852,7 +1852,7 @@ data:extend
     type = "tile",
     order = "b[natural]-d[red-desert]-a[red-desert-0]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(0.55, 0.35, 11, 0.5) + noise_layer_noise(30)'},
     layer = 31,
     variants = tile_variations_template(
@@ -1886,7 +1886,7 @@ data:extend
     type = "tile",
     order = "b[natural]-d[red-desert]-b[red-desert-1]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(0.6, -10, 0.7, 0.3),\z
                                                expression_in_range_base(0.7, 0.25, 11, 0.3)) + noise_layer_noise(31)'},
     layer = 14,
@@ -1920,7 +1920,7 @@ data:extend
     type = "tile",
     order = "b[natural]-d[red-desert]-c[red-desert-2]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'max(expression_in_range_base(0.7, -10, 0.8, 0.25),\z
                                                expression_in_range_base(0.8, 0.2, 11, 0.25)) + noise_layer_noise(32)'},
     layer = 15,
@@ -1954,7 +1954,7 @@ data:extend
     type = "tile",
     order = "b[natural]-d[red-desert]-d[red-desert-3]",
     subgroup = "nauvis-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = 'expression_in_range_base(0.8, -10, 11, 0.2) + noise_layer_noise(33)'},
     layer = 16,
     variants = tile_variations_template(
@@ -1986,7 +1986,7 @@ data:extend
     type = "tile",
     order = "d[destruction]-a[nuclear]-a[nuclear-ground]",
     subgroup = "special-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 33,
     variants =
     {
@@ -2016,7 +2016,7 @@ data:extend
     needs_correction = false,
     minable = {mining_time = 0.1, result = "stone-brick"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.3,
     layer = 11,
     layer_group = "ground-artificial",
@@ -2105,7 +2105,7 @@ data:extend
     order = "z[other]-b[lab]-a[lab-dark-1]",
     subgroup = "special-tiles",
     hidden = true,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 25,
     layer_group = "ground-artificial",
     variants =
@@ -2133,7 +2133,7 @@ data:extend
     order = "z[other]-b[lab]-b[lab-dark-2]",
     subgroup = "special-tiles",
     hidden = true,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 25,
     layer_group = "ground-artificial",
     variants =
@@ -2161,7 +2161,7 @@ data:extend
     order = "z[other]-b[lab]-c[lab-white]",
     subgroup = "special-tiles",
     hidden = true,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 70,
     layer_group = "ground-artificial",
     variants =
@@ -2189,7 +2189,7 @@ data:extend
     order = "z[other]-c[tutorial]-a[tutorial-grid]",
     subgroup = "special-tiles",
     hidden = true,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 5,
     layer_group = "ground-artificial",
     variants =
@@ -2265,7 +2265,7 @@ data:extend
     needs_correction = false,
     minable = {mining_time = 0.1, result = "concrete"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.4,
     layer = 13,
     layer_group = "ground-artificial",
@@ -2373,7 +2373,7 @@ data:extend
     transition_merges_with_tile = "concrete",
     minable = {mining_time = 0.1, result = "hazard-concrete"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.4,
     layer = 15,
     layer_group = "ground-artificial",
@@ -2410,7 +2410,7 @@ data:extend
     transition_merges_with_tile = "concrete",
     minable = {mining_time = 0.1, result = "hazard-concrete"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.4,
     layer = 15,
     layer_group = "ground-artificial",
@@ -2445,7 +2445,7 @@ data:extend
     needs_correction = false,
     minable = {mining_time = 0.1, result = "refined-concrete"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.5,
     layer = 17,
     layer_group = "ground-artificial",
@@ -2554,7 +2554,7 @@ data:extend
     transition_merges_with_tile = "refined-concrete",
     minable = {mining_time = 0.1, result = "refined-hazard-concrete"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.5,
     layer = 19,
     layer_group = "ground-artificial",
@@ -2590,7 +2590,7 @@ data:extend
     transition_merges_with_tile = "refined-concrete",
     minable = {mining_time = 0.1, result = "refined-hazard-concrete"},
     mined_sound = sounds.deconstruct_bricks(0.8),
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     walking_speed_modifier = 1.5,
     layer = 19,
     layer_group = "ground-artificial",
@@ -2624,7 +2624,7 @@ data:extend
     minable = {mining_time = 0.5, result = "landfill"},
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
     is_foundation = true,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 60,
     -- layer_group = "ground-artificial" -- should landfill be in the ground-artifical group?
 

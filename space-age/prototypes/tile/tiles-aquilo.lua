@@ -239,7 +239,7 @@ ammoniacal_ocean.name = "ammoniacal-ocean"
 ammoniacal_ocean.order = "a[aquilo-water]-a[ammoniacal-ocean]"
 ammoniacal_ocean.subgroup = "aquilo-tiles"
 ammoniacal_ocean.fluid = "ammoniacal-solution"
-ammoniacal_ocean.collision_mask = tile_collision_masks.ammoniacal_ocean
+ammoniacal_ocean.collision_mask = tile_collision_masks.ammoniacal_ocean()
 --ammoniacal_ocean.effect_color = {15, 30, 40}
 --ammoniacal_ocean.effect_color_secondary = { 5, 40, 65 }
 --ammoniacal_ocean.map_color={5, 15, 25 }
@@ -254,7 +254,7 @@ ammoniacal_ocean_2.name = "ammoniacal-ocean-2"
 ammoniacal_ocean_2.order = "a[aquilo-water]-b[ammoniacal-ocean-2]"
 ammoniacal_ocean_2.subgroup = "aquilo-tiles"
 ammoniacal_ocean_2.fluid = "ammoniacal-solution"
-ammoniacal_ocean_2.collision_mask = tile_collision_masks.ammoniacal_ocean
+ammoniacal_ocean_2.collision_mask = tile_collision_masks.ammoniacal_ocean()
 --ammoniacal_ocean_2.effect_color = {20, 32, 50}
 --ammoniacal_ocean_2.effect_color_secondary = { 10, 42, 75 }
 --ammoniacal_ocean_2.map_color={10, 17, 35 }
@@ -273,7 +273,7 @@ data:extend({
     type = "tile",
     name = "snow-flat",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_flat"},
     layer = aquilo_tile_offset_frozen + 2,
     variants = tile_variations_template(
@@ -306,7 +306,7 @@ data:extend({
     type = "tile",
     name = "dust-flat",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed,
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-flat.png", "__base__/graphics/terrain/masks/transition-4.png",
@@ -339,7 +339,7 @@ data:extend({
     name = "snow-crests",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_crests"},
     layer = aquilo_tile_offset_frozen + 3,
     variants = tile_variations_template(
@@ -372,7 +372,7 @@ data:extend({
     name = "dust-crests",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed + 1,
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-crests.png", "__base__/graphics/terrain/masks/transition-4.png",
@@ -404,7 +404,7 @@ data:extend({
     name = "snow-lumpy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_lumpy"},
     layer = aquilo_tile_offset_frozen + 4,
     variants = tile_variations_template(
@@ -437,7 +437,7 @@ data:extend({
     name = "dust-lumpy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "10 * aquilo_snow_ice + 10 * aquilo_tile_variant"},
     layer = aquilo_tile_offset_thawed + 2,
     variants = tile_variations_template(
@@ -470,7 +470,7 @@ data:extend({
     name = "snow-patchy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_patchy"},
     layer = aquilo_tile_offset_frozen + 5,
     variants = material_background("__space-age__/graphics/terrain/aquilo/snow-patchy-8x.png", 8),
@@ -494,7 +494,7 @@ data:extend({
     name = "dust-patchy",
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-a[snow]",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed + 3,
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-patchy.png", "__base__/graphics/terrain/masks/transition-4.png",
@@ -525,7 +525,7 @@ data:extend({
     type = "tile",
     name = "ice-rough",
     order = "b[natural]-i[ice]-a[rough]",
-    collision_mask = tile_collision_masks.meltable_tile,
+    collision_mask = tile_collision_masks.meltable_tile(),
     autoplace = {probability_expression = "ice_rough"},
     layer = aquilo_tile_offset_frozen + 1,
     variants = tile_variations_template(
@@ -558,7 +558,7 @@ data:extend({
     subgroup = "aquilo-tiles",
     order = "b[natural]-i[ice]-c[smooth]",
     --minable = {mining_time = 0.1, result = "iceblock"},
-    collision_mask = tile_collision_masks.meltable_tile,
+    collision_mask = tile_collision_masks.meltable_tile(),
     autoplace = {probability_expression = "ice_smooth"},
     layer = aquilo_tile_offset_frozen,
     variants = material_background("__space-age__/graphics/terrain/aquilo/ice-smooth.png", 4),
@@ -590,7 +590,7 @@ data:extend({
     },
     is_foundation = true,
     can_be_part_of_blueprint = true,
-    collision_mask = tile_collision_masks.meltable_tile,
+    collision_mask = tile_collision_masks.meltable_tile(),
     layer = aquilo_tile_offset_frozen - 1,
     variants = material_background("__space-age__/graphics/terrain/aquilo/ice-platform.png", 8),
     transitions = ice_transitions,
@@ -610,7 +610,7 @@ data:extend({
     name = "brash-ice",
     order = "a[deep]",
     subgroup = "aquilo-tiles",
-    collision_mask = tile_collision_masks.ammoniacal_ocean,
+    collision_mask = tile_collision_masks.ammoniacal_ocean(),
     effect = "brash-ice-2",
     effect_color = {26,39,63},
     effect_color_secondary = { 49, 80, 14 },

@@ -255,7 +255,7 @@ data:extend
     type = "tile",
     order = "b[natural]-a[dust]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "fulgora_scrap_medium + max(0, fulgora_natural, 2 * fulgora_mesa * fulgora_pyramids) * 2 - 0.9 + fulgora_rock + fulgora_road_dust * fulgora_sprawl"
     },
@@ -291,7 +291,7 @@ data:extend
     type = "tile",
     order = "b[natural]-b[dunes]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "1 + fulgora_dunes"
     },
@@ -327,7 +327,7 @@ data:extend
     type = "tile",
     order = "b[natural]-c[sand]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "1 - fulgora_dunes"
     },
@@ -363,7 +363,7 @@ data:extend
     type = "tile",
     order = "b[natural]-d[rock]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = {
       probability_expression = "0.8 + fulgora_rock * 2 - max(0, fulgora_mix_oil) * 6"
     },
@@ -398,7 +398,7 @@ data:extend
     type = "tile",
     order = "c[artificial]-b[paving]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = { probability_expression = "fulgora_tile_ruin_paving" },
     layer = 5,
     map_color={120, 94, 67},
@@ -434,7 +434,7 @@ data:extend
     type = "tile",
     order = "c[artificial]-a[walls]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = { probability_expression = "fulgora_tile_ruin_walls" },
     layer = 10,
     map_color={114, 75, 65},
@@ -468,7 +468,7 @@ data:extend
     type = "tile",
     order = "c[artificial]-c[conduit]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = { probability_expression = "fulgora_tile_ruin_conduit" },
     layer = 11,
     map_color={100, 79, 68},
@@ -502,7 +502,7 @@ data:extend
     type = "tile",
     order = "c[artificial]-d[machinery]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace = { probability_expression = "fulgora_tile_ruin_machinery" },
     layer = 12,
     map_color={89, 79, 68},
@@ -538,7 +538,7 @@ data:extend
     type = "tile",
     order = "a[oil]-b[shallow]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.oil_ocean_shallow,
+    collision_mask = tile_collision_masks.oil_ocean_shallow(),
     autoplace = {probability_expression = "50 * fulgora_oil_mask * water_base(fulgora_coastline, 1000)"}, -- target coast at cliff elevation
     layer = 4,
     layer_group = "ground-natural",
@@ -582,7 +582,7 @@ data:extend
     type = "tile",
     order = "a[oil]-b[deep]",
     subgroup = "fulgora-tiles",
-    collision_mask = tile_collision_masks.oil_ocean_deep,
+    collision_mask = tile_collision_masks.oil_ocean_deep(),
     autoplace = {probability_expression = "100 * fulgora_oil_mask * water_base(fulgora_coastline - 50 - fulgora_coastline_drop / 2, 2000)"},
     layer = 3,
     layer_group = "water",

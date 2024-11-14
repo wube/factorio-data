@@ -1606,7 +1606,8 @@ data:extend(
     drop_sound = space_age_item_sounds.agriculture_inventory_move,
     stack_size = 200,
     weight = 0.5 * kg,
-    random_tint_color = item_tints.organic_green
+    random_tint_color = item_tints.organic_green,
+    spoil_level = 1
   },
   {
     type = "item",

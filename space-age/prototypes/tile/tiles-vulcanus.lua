@@ -411,7 +411,7 @@ data:extend
     name = "volcanic-cracks-hot",
     subgroup = "vulcanus-tiles",
     order = "a-c",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_cracks_hot_range"
@@ -443,7 +443,7 @@ data:extend
     name = "volcanic-jagged-ground",
     subgroup = "vulcanus-tiles",
     order = "a-k",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_jagged_ground_range"
@@ -475,7 +475,7 @@ data:extend
     name = "lava",
     subgroup = "vulcanus-tiles",
     order = "a-b",
-    collision_mask = tile_collision_masks.lava,
+    collision_mask = tile_collision_masks.lava(),
     autoplace =
     {
       probability_expression = "max(lava_basalts_range, lava_mountains_range)"
@@ -533,7 +533,7 @@ data:extend
     name = "lava-hot",
     order = "a-a",
     subgroup = "vulcanus-tiles",
-    collision_mask = tile_collision_masks.lava,
+    collision_mask = tile_collision_masks.lava(),
     autoplace =
     {
       probability_expression = "max(lava_hot_basalts_range, lava_hot_mountains_range)"
@@ -591,7 +591,7 @@ data:extend
     name = "volcanic-cracks-hot",
     subgroup = "vulcanus-tiles",
     order = "a-c",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_cracks_hot_range"
@@ -623,7 +623,7 @@ data:extend
     name = "volcanic-cracks-warm",
     subgroup = "vulcanus-tiles",
     order = "a-d",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_cracks_warm_range"
@@ -655,7 +655,7 @@ data:extend
     name = "volcanic-cracks",
     subgroup = "vulcanus-tiles",
     order = "a-e",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_cracks_cold_range"
@@ -687,7 +687,7 @@ data:extend
     name = "volcanic-folds-flat",
     subgroup = "vulcanus-tiles",
     order = "a-j",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_folds_flat_range"
@@ -720,7 +720,7 @@ data:extend
     name = "volcanic-ash-light",
     subgroup = "vulcanus-tiles",
     order = "a-o",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_ash_light_range"
@@ -754,7 +754,7 @@ data:extend
     name = "volcanic-ash-dark",
     subgroup = "vulcanus-tiles",
     order = "a-p",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_ash_dark_range"
@@ -789,7 +789,7 @@ data:extend
     name = "volcanic-ash-flats",
     subgroup = "vulcanus-tiles",
     order = "a-o",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_ash_flats_range"
@@ -824,7 +824,7 @@ data:extend
     name = "volcanic-pumice-stones",
     subgroup = "vulcanus-tiles",
     order = "a-n",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_pumice_stones_range"
@@ -856,7 +856,7 @@ data:extend
     name = "volcanic-smooth-stone",
     subgroup = "vulcanus-tiles",
     order = "a-g",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_smooth_stone_range"
@@ -889,7 +889,7 @@ data:extend
     name = "volcanic-smooth-stone-warm",
     subgroup = "vulcanus-tiles",
     order = "a-f",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_smooth_stone_warm_range"
@@ -923,7 +923,7 @@ data:extend
     name = "volcanic-ash-cracks",
     subgroup = "vulcanus-tiles",
     order = "a-r",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_ash_cracks_range"
@@ -954,7 +954,7 @@ data:extend
     name = "volcanic-folds",
     subgroup = "vulcanus-tiles",
     order = "a-i",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_folds_range"
@@ -985,7 +985,7 @@ data:extend
     name = "volcanic-folds-warm",
     subgroup = "vulcanus-tiles",
     order = "a-h",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_folds_warm_range"
@@ -1017,7 +1017,7 @@ data:extend
     name = "volcanic-soil-dark",
     subgroup = "vulcanus-tiles",
     order = "a-l",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_soil_dark_range",
@@ -1048,7 +1048,7 @@ data:extend
     name = "volcanic-soil-light",
     subgroup = "vulcanus-tiles",
     order = "a-m",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_soil_light_range"
@@ -1079,7 +1079,7 @@ data:extend
     name = "volcanic-ash-soil",
     subgroup = "vulcanus-tiles",
     order = "a-q",
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     autoplace =
     {
       probability_expression = "volcanic_ash_soil_range"

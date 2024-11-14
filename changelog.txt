@@ -1,6 +1,72 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.18
+Version: 2.0.19
 Date: ????
+  Bugfixes:
+    - Fixed mining fulgoran lightning rods would not show yield. (https://forums.factorio.com/118205)
+    - Fixed blueprint external wires were not added when pasting blueprint over existing entities. (https://forums.factorio.com/119281)
+    - Electric weapons damage infinite tiers start more expensive to naturally progress from the non-infinite tiers correctly. (https://forums.factorio.com/120427)
+---------------------------------------------------------------------------------------------------
+Version: 2.0.18
+Date: 14. 11. 2024
+  Changes:
+    - Allowed negative multiplier of logistic (and constant combinator) groups. (https://forums.factorio.com/118684)
+    - Updated shortcut icons and increased their size to 56px.
+    - [space-age] Container sizes increase with quality.
+    - Reviving container ghosts no longer puts colliding items on the ground into the resulting container.
+    - Loading game for hosting now automatically offers the dialog whether the mods should be synced before continuing (as with normal game load).
+    - [space-age] Bulk inserter doesn't default upgrade to Stack inserter as they are not functionally interchangeable. (https://forums.factorio.com/121011)
+    - [space-age] Demolisher health bars will always be visible for at least 1 tick after they take any damage, even if they fully regenerate the damage in the same tick.
+    - [space-age] Default quality cycling shortcut simplified to alt+scroll.
+  Bugfixes:
+    - Fixed confusing blueprint parameter context tooltip for filter of storage chest. (https://forums.factorio.com/119013)
+    - Fixed music not switching correctly when restarting level. (https://forums.factorio.com/121012)
+    - Fixed that the production GUIs showed the graphs in 'All' when opened with saved precision. (https://forums.factorio.com/121152)
+    - Fixed that the "load save after sync" checkbox did not work in the sync mods with save GUI. (https://forums.factorio.com/121091)
+    - Fixed removing heatpipes from a blueprint could leave them visually connected to their neighbours. (https://forums.factorio.com/118750)
+    - Fixed 'Dropping to planet' button being too wide and pushing the 'Cancel' button off the screen. (https://forums.factorio.com/121132)
+    - Fixed 'Always show' label not being accurate to the behavior of only showing in "Alt-mode". (https://forums.factorio.com/116256)
+    - Fixed 'Parameterised build' GUI clipping off screen when too long. (https://forums.factorio.com/120712)
+    - Fixed robots failing to upgrade a container if it was the only source of the requested item. (https://forums.factorio.com/118973)
+    - Fixed that reusing the same sprite for multiple effects crashed instead of showing the error message and an option to disable problematic mods. (https://forums.factorio.com/118973)
+    - Fixed 'Galaxy of Fame' upload GUI clipping off screen on smaller resolutions. (https://forums.factorio.com/118826)
+    - Fixed vertical alignment of Current Research icon. (https://forums.factorio.com/117091)
+    - Fixed asteroid spawning being significantly reduced when a platform moved with paused thrust. (https://forums.factorio.com/121123)
+    - Fixed that fluids could get erased during migrations. (https://forums.factorio.com/119600)
+    - Fixed a crash when removing a roboport while robots in that network are deactivated by script. (https://forums.factorio.com/119993)
+    - Fixed that choose-elem-button wouldn't show the select list GUI if clicked with an item that didn't pass the filters. (https://forums.factorio.com/118537)
+    - Fixed that syncing mod while trying to host game didn't allow to continue the process after reloading the game. (https://forums.factorio.com/119876)
+    - Fixed chunks not being covered by fog of war when remote-viewing an unvisited surface. (https://forums.factorio.com/121029)
+    - Fixed all/any/individual request satisfied wait conditions ignoring maximum count of space platform requests. (https://forums.factorio.com/119265)
+    - Fixed offshorepump tooltip flickering too much when pumping at full capacity. (https://forums.factorio.com/120177)
+    - Disabled "Drive Remotely" button on driveable vehicles ghosts' GUIs. (https://forums.factorio.com/120400)
+    - Fixed Cargo Landing Pad and Space Platform Hub GUI being clipped off screen on smaller resolutions. (https://forums.factorio.com/120670)
+    - Fixed platform deletion and undelete platform buttons being clipped off the surface list. (https://forums.factorio.com/120443)
+    - Fixed that tanks didn't preserve all of their settings when mined and rebuilt. (https://forums.factorio.com/121148)
+    - Fixed that rebuilt tanks didn't have their inventory size bonus from equipment. (https://forums.factorio.com/121219)
+    - Fixed script error in PvP when setting starting item count to 0. (https://forums.factorio.com/117571)
+    - Fixed spectator players of dead teams showing on the map in PvP. (https://forums.factorio.com/114477)
+    - Fixed that inserters could get stuck with specific combinations of spoilage and disabled by control behavior. (https://forums.factorio.com/121167)
+    - Fixed that some pop-up GUIs would get closed when robots built the entity while the ghost GUI was open. (https://forums.factorio.com/118545)
+    - Fixed that robots performing module upgrades left some modules on ground when upgrading mixed modules to one type. (https://forums.factorio.com/119524)
+    - Fixed that space platforms could unload cargo while waiting for departure. (https://forums.factorio.com/120856)
+    - Fixed clouds and smoke were moving in exactly opposite direction. (https://forums.factorio.com/118576)
+    - Fixed that spidertrons would severely confuse demolishers. Demolishers will now retaliate against spidertrons. (https://forums.factorio.com/120027)
+    - Fixed the confirmation button behaving inconsistently in the remote view ghost picker menu. (https://forums.factorio.com/121287)
+    - Fixed Agricultural tower sometimes showing wrong status if its growing plants were destroyed externally.
+    - Fixed a crash when exporting a blueprint with asteroid collectors which had gaps in the filters list. (https://forums.factorio.com/121377)
+    - Fixed Being able to super-force entity through technology gui. (https://forums.factorio.com/120305)
+    - Fixed spoilage was not considered as more spoiled than any spoilable items. (https://forums.factorio.com/121406)
+    - Fixed that highlighted robots in the logistic networks chart view didn't smoothly follow robots. (https://forums.factorio.com/117328)
+  Modding:
+    - Changed base/space-age tile collision mask definitions so that they don't share references to the same tables.
+    - Added ItemPrototype::spoil_level.
+  Scripting:
+    - Fixed/reworked how setting tiles behaves vis-à-vis (double)hidden tiles (concerns LuaSurface::set_tiles, editor and placing of non-mineable tiles in-game) (https://forums.factorio.com/118527)
+    - Added LuaEquipment::inventory_bonus read.
+    - Added LuaEquipmentGrid::inventory_bonus and LuaEquipmentGrid::movement_bonus read.
+    - Added LuaEquipmentPrototype::get_inventory_bonus().
+    - Fixed that LuaEntity::get_priority_target() would give invalid results for empty filters.
+    - Extended LuaEntity::splitter_filter, splitter_input_priority and splitter_output_priority to also work with lane splitters.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.17
 Date: 12. 11. 2024
@@ -29,7 +95,6 @@ Date: 12. 11. 2024
     - Fixed that Galaxy of Fame upload didn't clean its files. (https://forums.factorio.com/118090)
     - Fixed more crashes related to using formatting strings with floating-point numbers on Intel Macs running Sonoma.
     - Fixed cancelling deconstruction via deconstruction player was not showing counts for canceled deconstructions. (https://forums.factorio.com/119294)
-    - Fixed that galaxy of fame upload din't clean its files. (https://forums.factorio.com/118090)
     - Fixed that setting negative value in constant combinator create 2 entries for the number in the blueprint parametrisation, one with underflown value.
     - Fixed that it wasn't possible to input negative numbers in blueprint parametrisation. (https://forums.factorio.com/117989)
     - Fixed offshore pump would present itself as water well pump even when it was not pumping water. (https://forums.factorio.com/120877)

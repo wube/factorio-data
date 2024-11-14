@@ -29,8 +29,6 @@ for k = 1, 7 do
   data.raw.technology["energy-weapons-damage-" .. k] = nil
 end
 
-data.raw["inserter"]["bulk-inserter"].next_upgrade = "stack-inserter"
-
 data.raw.technology["rocket-silo"].effects =
   {
     {
@@ -81,11 +79,6 @@ data.raw.character.character.synced_footstep_particle_triggers[1].tiles = { "wat
 data.raw["assembling-machine"]["assembling-machine-1"].crafting_categories = {"crafting", "basic-crafting", "advanced-crafting", "electronics", "pressing"}
 data.raw["assembling-machine"]["assembling-machine-2"].crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid", "electronics", "electronics-with-fluid", "pressing", "metallurgy-or-assembling", "organic-or-hand-crafting", "organic-or-assembling", "electronics-or-assembling", "cryogenics-or-assembling", "crafting-with-fluid-or-metallurgy"}
 data.raw["assembling-machine"]["assembling-machine-3"].crafting_categories = {"basic-crafting", "crafting", "advanced-crafting", "crafting-with-fluid", "electronics", "electronics-with-fluid", "pressing", "metallurgy-or-assembling", "organic-or-hand-crafting", "organic-or-assembling", "electronics-or-assembling", "cryogenics-or-assembling", "crafting-with-fluid-or-metallurgy"}
-
-local furnace_categories = {"smelting"}
-data.raw["furnace"]["stone-furnace"].crafting_categories = furnace_categories
-data.raw["furnace"]["steel-furnace"].crafting_categories = furnace_categories
-data.raw["furnace"]["electric-furnace"].crafting_categories = furnace_categories
 
 data.raw["assembling-machine"]["chemical-plant"].crafting_categories = {"chemistry", "chemistry-or-cryogenics", "organic-or-chemistry"}
 

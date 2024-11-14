@@ -23,7 +23,8 @@ data:extend(
     icon = "__space-age__/graphics/icons/fluid/simple-coal-liquefaction.png",
     subgroup = "fluid-recipes",
     order = "a[oil-processing]-c[coal-liquefaction]",
-    allow_decomposition = false
+    allow_decomposition = false,
+    show_amount_in_title = false
   },
 
   ----------------------- gleba seeds
@@ -1169,7 +1170,8 @@ data:extend(
       secondary = {r = 0.591, g = 0.856, b = 1.000, a = 1.000}, -- #96daffff
       tertiary = {r = 0.381, g = 0.428, b = 0.436, a = 0.502}, -- #616d6f80
       quaternary = {r = 0.499, g = 0.797, b = 0.793, a = 0.733}, -- #7fcbcabb
-    }
+    },
+    show_amount_in_title = false
   },
 
 -------------------------------------------------------------------------- SECONDARY FUEL / OXIDISER
@@ -2047,7 +2049,8 @@ data:extend(
     {
       primary = {0, 0, 1, 1},
       secondary = {0, 0, 1, 1}
-    }
+    },
+    show_amount_in_title = false
   },
   {
     type = "recipe",

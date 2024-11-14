@@ -170,7 +170,7 @@ data:extend(
     efficiency = 0,
     range_elongation = 20.0,
     icon = "__space-age__/graphics/icons/fulgoran-ruin-attractor.png",
-    flags = {"placeable-neutral", "player-creation", "not-upgradable"},
+    flags = {"placeable-neutral", "not-upgradable"},
     minable = {
       mining_time = 0.2,
       results =

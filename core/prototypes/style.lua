@@ -6798,7 +6798,7 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_sized_button",
-      padding = 8,
+      padding = 2,
       invert_colors_of_picture_when_disabled = true
     },
 
@@ -6806,21 +6806,21 @@ data:extend(
     {
       type = "button_style",
       parent = "slot_sized_button_blue",
-      padding = 8
+      padding = 2
     },
 
     shortcut_bar_button_red =
     {
       type = "button_style",
       parent = "slot_sized_button_red",
-      padding = 8
+      padding = 2
     },
 
     shortcut_bar_button_green =
     {
       type = "button_style",
       parent = "slot_sized_button_green",
-      padding = 8
+      padding = 2
     },
 
     shortcut_bar_button_small =

@@ -207,7 +207,7 @@ data:extend
     allows_being_covered = false,
     max_health = 50,
     weight = 200,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 15,
     -- layer_group = "ground-artificial" -- should space-platform-foundation be in the ground-artifical group?
 
@@ -401,7 +401,7 @@ data:extend
     minable = {mining_time = 0.5, result = "foundation"},
     mined_sound = {filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8},
     is_foundation = true,
-    collision_mask = tile_collision_masks.ground,
+    collision_mask = tile_collision_masks.ground(),
     layer = 9,
     layer_group = "ground-artificial",
     transition_overlay_layer_offset = 2, -- need to render border overlay on top of hazard-concrete

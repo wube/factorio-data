@@ -590,5 +590,7 @@ data:extend(
     starmap_orbit_hovered_color = gui_color.orange,
     starmap_orbit_clicked_color = gui_color.light_orange,
     starmap_orbit_disabled_color = {0.25, 0.25, 0.25},
+
+    time_to_show_full_health_bar = 1,
   }
 })

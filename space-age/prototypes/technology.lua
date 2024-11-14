@@ -175,7 +175,7 @@ data:extend(
     prerequisites = {"electric-weapons-damage-3"},
     unit =
     {
-      count_formula = "2^(L-4)*1000",
+      count_formula = "2^(L-3)*1000",
       ingredients =
       {
         {"automation-science-pack", 1},
