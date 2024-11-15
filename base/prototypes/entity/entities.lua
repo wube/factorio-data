@@ -6406,7 +6406,7 @@ data:extend(
     shadow_fade_out_end_ratio = 0.75,
     rocket_visible_distance_from_center = 2.75,
     rocket_above_wires_slice_offset_from_center = -3,
-    rocket_air_object_slice_offset_from_center = -5.25,
+    rocket_air_object_slice_offset_from_center = -6,
 
     flying_sound =
     {

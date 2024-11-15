@@ -1,10 +1,29 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.19
+Version: 2.0.20
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.19
+Date: 15. 11. 2024
+  Minor Features:
+    - Added debug option 'always-show-lightning-protection'.
+  Changes:
+    - [space-age] Changed captive biter spawner to inherit quality from the wild spawner instead of the capture robot. (https://forums.factorio.com/121358)
+    - Spidertron selections saved into the quickbar will be darkened with a planet icon in the top when the selection leads to a different planet than the current one.
   Bugfixes:
     - Fixed mining fulgoran lightning rods would not show yield. (https://forums.factorio.com/118205)
     - Fixed blueprint external wires were not added when pasting blueprint over existing entities. (https://forums.factorio.com/119281)
     - Electric weapons damage infinite tiers start more expensive to naturally progress from the non-infinite tiers correctly. (https://forums.factorio.com/120427)
+    - Fixed wrong locomotive could turn lights on when train has locomotives both ways and goes back. (https://forums.factorio.com/119397)
+    - Fixed a crash when trying to cycle qualities in 2.0 base game. (https://forums.factorio.com/121486)
+    - Fixed foundry was not able to reach declared speed of crafting holmium plates due to input fluid shortage. (https://forums.factorio.com/120867)
+    - Fixed buildings constructed on space platform by space platform were not tracked by build statistics, research triggers nor achievements.
+    - Fixed pasting blueprint with constant combinator over constant combinator could create unnecesary copy settings undo actions. (https://forums.factorio.com/118426)
+    - Fixed upgrading storage chests would not preserve storage filter. (https://forums.factorio.com/121521)
+    - Fixed a crash when generating multiplayer maps while background simulations were enabled. (https://forums.factorio.com/121315)
+    - Fixed selection tools and some spawnable items did not work correctly when chosen via remote ghost cursor gui. (https://forums.factorio.com/116689)
+    - Fixed a crash when an item request proxy wanted to dispatch robots to insert items into invalid slots. (https://forums.factorio.com/121575)
+    - Fixed tip of the rocket poking through air objects. (https://forums.factorio.com/119441)
+    - Fixed rail planner in ghost mode would ignore existing ghost ramps and ghost supports proposing new supports that were not needed. (https://forums.factorio.com/120490)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.18
 Date: 14. 11. 2024
@@ -27,7 +46,7 @@ Date: 14. 11. 2024
     - Fixed 'Always show' label not being accurate to the behavior of only showing in "Alt-mode". (https://forums.factorio.com/116256)
     - Fixed 'Parameterised build' GUI clipping off screen when too long. (https://forums.factorio.com/120712)
     - Fixed robots failing to upgrade a container if it was the only source of the requested item. (https://forums.factorio.com/118973)
-    - Fixed that reusing the same sprite for multiple effects crashed instead of showing the error message and an option to disable problematic mods. (https://forums.factorio.com/118973)
+    - Fixed that reusing the same sprite for multiple effects crashed instead of showing the error message and an option to disable problematic mods. (https://forums.factorio.com/117208)
     - Fixed 'Galaxy of Fame' upload GUI clipping off screen on smaller resolutions. (https://forums.factorio.com/118826)
     - Fixed vertical alignment of Current Research icon. (https://forums.factorio.com/117091)
     - Fixed asteroid spawning being significantly reduced when a platform moved with paused thrust. (https://forums.factorio.com/121123)

@@ -2191,7 +2191,7 @@ data:extend(
     enabled = false,
     ingredients =
     {
-      {type = "fluid", name = "holmium-solution", amount = 20},
+      {type = "fluid", name = "holmium-solution", amount = 20, fluidbox_multiplier = 10},
     },
     energy_required = 1,
     results = {{type="item", name="holmium-plate", amount=1}},

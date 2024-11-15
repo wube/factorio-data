@@ -5072,8 +5072,8 @@ data:extend(
     {
       type = "textbox_style",
       parent = "textbox",
-      width = 1280,
-      height = 720
+      width = 1280 - 24, --make it fit on Nintendo Switch
+      height = 720 - 96
     },
 
     small_notice_textbox =
