@@ -1305,7 +1305,7 @@ data:extend
     name = "bulk-inserter",
     icon = "__base__/graphics/icons/bulk-inserter.png",
     subgroup = "inserter",
-    color_hint = { text = "S" },
+    color_hint = { text = "B" },
     order = "f[bulk-inserter]",
     inventory_move_sound = item_sounds.inserter_inventory_move,
     pick_sound = item_sounds.inserter_inventory_pickup,

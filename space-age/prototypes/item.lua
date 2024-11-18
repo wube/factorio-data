@@ -1225,7 +1225,7 @@ data:extend(
     name = "stack-inserter",
     icon = "__space-age__/graphics/icons/stack-inserter.png",
     subgroup = "inserter",
-    color_hint = { text = "B" },
+    color_hint = { text = "S" },
     order = "h[stack-inserter]",
     inventory_move_sound = item_sounds.wire_inventory_move,
     pick_sound = item_sounds.wire_inventory_pickup,

@@ -1,6 +1,33 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.20
+Version: 2.0.21
 Date: ????
+  Bugfixes:
+    - Fixed double parameter selection in signal selection list.
+---------------------------------------------------------------------------------------------------
+Version: 2.0.20
+Date: 18. 11. 2024
+  Minor Features:
+    - Added gamepad stick sensitivity setting for map movement.
+    - Selecting a spidertron remote selection in the quickbar which is for a different planet than the current one will center on the planet.
+  Bugfixes:
+    - Fixed that selecting a quality comparison option when "any" quality was set did not work. (https://forums.factorio.com/121590)
+    - Fixed it was possible to set inconsistent signals on a control behavior by using parametrized blueprint with a shared parameter. (https://forums.factorio.com/120441)
+    - Fixed a crash when rotating entity that is destroyed inside of event handler.
+    - Fixed blueprint description label not showing in list view. (https://forums.factorio.com/118739)
+    - Fixed fulgoran attractor marking for deconstruction. (https://forums.factorio.com/121690)
+    - Fixed beacons deactivated by script loaded from a 1.1.x save file were not migrated properly. (https://forums.factorio.com/121248)
+    - Fixed a crash when using modded equipment without items to build it in ghost form. (https://forums.factorio.com/121785)
+    - Fixed inserter would not keep stack size signal through a blueprint string. (https://forums.factorio.com/118961)
+    - Fixed that you could pick up items off the ground while flying in a rocket. (https://forums.factorio.com/121778)
+    - Fixed inserter would not reevaluate enable condition when it was changed by blueprint parameters. (https://forums.factorio.com/121332)
+    - Fixed orbital logistics tips&tricks script crash due to space platform hub gui having different layout. (https://forums.factorio.com/121331)
+    - Fixed that recipe fuel tooltips did not respect the show-all-unlocked-items interface setting. (https://forums.factorio.com/121873)
+    - Fixed asteroid collector set filters from circuit network would set wrong filters for one tick after items were removed and read content is active. (https://forums.factorio.com/120435)
+    - Fixed a crash when lua orders entity deconstruction specifying undo item but not specifying a player. (https://forums.factorio.com/121728)
+    - Fixed that two damaged construction robots trying to repair each other could get stuck in an infinite loop of trying to hug each other and overshooting. (https://forums.factorio.com/117763)
+    - Fixed a crash when running under the Steam Runtime Environment on Linux in certain situations. (https://forums.factorio.com/120128)
+    - Fixed quality increase of self-recycling recipes being reported incorrectly in production statistics. (https://forums.factorio.com/120132)
+    - Improved super force building logic of belt related blueprints over existing belts. (https://forums.factorio.com/118166)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.19
 Date: 15. 11. 2024

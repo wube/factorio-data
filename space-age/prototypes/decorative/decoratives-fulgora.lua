@@ -170,8 +170,9 @@ data:extend(
     efficiency = 0,
     range_elongation = 20.0,
     icon = "__space-age__/graphics/icons/fulgoran-ruin-attractor.png",
-    flags = {"placeable-neutral", "not-upgradable"},
-    minable = {
+    flags = {"placeable-neutral", "player-creation", "not-upgradable"},
+    minable =
+    {
       mining_time = 0.2,
       results =
       {
@@ -179,7 +180,8 @@ data:extend(
         {type = "item", name = "copper-cable", amount = 6},
         {type = "item", name = "steel-plate", amount = 4},
         {type = "item", name = "stone-brick", amount = 2},
-      }
+      },
+      include_in_show_counts = true
     },
     subgroup = "grass",
     order = "b[decorative]-l[rock]-j[ruin]-h[attractor]",
