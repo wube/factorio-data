@@ -434,8 +434,7 @@ data:extend
     map_color = {r = tile_lightening+ 30, g = tile_lightening+ 5, b = tile_lightening+ -5}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = .6,
     vehicle_friction_modifier = 1,
-    pollution_absorption_per_second = tile_pollution.lava,
-    default_cover_tile = "foundation"
+    pollution_absorption_per_second = tile_pollution.lava
   },
   ----------- CLIFF TILE
   {

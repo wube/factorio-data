@@ -581,5 +581,15 @@ data:extend{
     type = "noise-expression",
     name = "segmentation_multiplier",
     expression = "control:water:frequency"
+  },
+  {
+    type = "noise-expression",
+    name = "x_from_start",
+    expression = "distance_from_nearest_point_x(x, y, starting_positions)"
+  },
+  {
+    type = "noise-expression",
+    name = "y_from_start",
+    expression = "distance_from_nearest_point_y(x, y, starting_positions)"
   }
 }

@@ -1491,6 +1491,16 @@ tree_plant.minable =
 tree_plant.variation_weights = { 1, 1, 1, 1, 1, 1, 1, 1, 0.3, 0.3, 0.0, 0.0}
 tree_plant.growth_ticks = 10 * minutes
 tree_plant.surface_conditions = { {property = "pressure", min = 1000, max = 1000}}  -- only Nauvis (doesn't work yet)
-tree_plant.autoplace = nil
+tree_plant.autoplace =
+{
+  probability_expression = 0,
+  -- required to show agricultural tower plots
+  tile_restriction =
+  {
+    "grass-1", "grass-2", "grass-3", "grass-4",
+    "dry-dirt", "dirt-1", "dirt-2", "dirt-3", "dirt-4", "dirt-5", "dirt-6", "dirt-7",
+    "red-desert-0", "red-desert-1", "red-desert-2", "red-desert-3"
+  }
+}
 
 data:extend({tree_plant})

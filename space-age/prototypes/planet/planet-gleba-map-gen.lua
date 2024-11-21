@@ -75,7 +75,7 @@ data:extend{
       starting_radius = "clamp(1 - distance / gleba_starting_area_multiplier / 900, 0, 0.9)",
       starting_aux = "clamp(-starting_rotated_y / gleba_starting_area_multiplier / 200, -2, 2)",
       aux_angle = "gleba_starting_angle - gleba_starting_direction * (distance / 20 / gleba_starting_area_multiplier - 15)",
-      starting_rotated_y = "rotate_y(x, y, aux_angle) + gleba_wobble_x * 10",
+      starting_rotated_y = "rotate_y(x_from_start, y_from_start, aux_angle) + gleba_wobble_x * 10",
       aux_mutator_large = "multioctave_noise{x = x, y = y, persistence = 0.75, octaves = 4, input_scale = 1/30, seed0 = map_seed, seed1 = 8000}",
       aux_mutator_small = "gleba_cover_noise",
       aux_mutator = "aux_mutator_large + 0.1 * aux_mutator_small",
@@ -146,12 +146,12 @@ data:extend{
       starting_main_blend = "min(rockpool_elevation, lerp(terraces_combined, starting_area, clamp(1.7 - (distance / gleba_starting_area_multiplier / 500), 0, 1))) + 3 * (0.5 - abs(high_frequency))",
       starting_area = "max(-30 * clamp(starting_lakes * 2, 0, 1), 5 * min(gleba_starting_lowlands * 2, 1), 130 * min(starting_highlands * 2, 1), 80 * min(starting_midlands * 2, 1), 70 * min((starting_bridges - 0.5) * 3, 1)) + 6 * ridges_small_noise",
       spiral_angle = "gleba_starting_angle - gleba_starting_direction * (distance / gleba_starting_area_multiplier / 16 - 15)",
-      starting_rotated_x = "rotate_x(x, y, spiral_angle) + gleba_wobble_x * 10",
-      starting_rotated_y = "rotate_y(x, y, spiral_angle) + gleba_wobble_y * 10",
+      starting_rotated_x = "rotate_x(x_from_start, y_from_start, spiral_angle) + gleba_wobble_x * 10",
+      starting_rotated_y = "rotate_y(x_from_start, y_from_start, spiral_angle) + gleba_wobble_y * 10",
       starting_bridge = "min(1 - abs(starting_rotated_x / gleba_starting_area_multiplier - gleba_starting_direction * sin(starting_rotated_y / 64 / gleba_starting_area_multiplier) * 64 * gleba_starting_area_multiplier) / 110, 2 - distance / gleba_starting_area_multiplier / 700)",
       spiral_angle_b = "gleba_starting_angle + gleba_starting_direction * (distance / gleba_starting_area_multiplier / 16 - 15)", -- other direction
-      starting_rotated_b_x = "rotate_x(x, y, spiral_angle_b) + gleba_wobble_x * 10",
-      starting_rotated_b_y = "rotate_y(x, y, spiral_angle_b) + gleba_wobble_y * 10",
+      starting_rotated_b_x = "rotate_x(x_from_start, y_from_start, spiral_angle_b) + gleba_wobble_x * 10",
+      starting_rotated_b_y = "rotate_y(x_from_start, y_from_start, spiral_angle_b) + gleba_wobble_y * 10",
       --starting_bridge = "min(1 - abs(starting_rotated_x + sin(starting_rotated_y / 64) * 64) / 96, 1 - starting_rotated_y/32, 2 + starting_rotated_y/512)",
       starting_bridge_b = "min(1 - abs(starting_rotated_b_x / gleba_starting_area_multiplier - gleba_starting_direction * sin(starting_rotated_b_y / 64 / gleba_starting_area_multiplier) * 64 * gleba_starting_area_multiplier) / 110, 2 - distance / gleba_starting_area_multiplier / 700)",
       starting_bridges = "max(starting_bridge, starting_bridge_b)",
@@ -167,48 +167,48 @@ data:extend{
       ridge_terrace = "terrace{value = min(80, 110 + ridges * 500), offset = 40, width = 20, strength = 0.2}",
       terraces_combined = "max(ridge_terrace, peaks_terrace, 25 + 22 * ridges)",
       starting_highlands = "max(starting_highland_main, starting_highland_small)",
-      starting_highland_main = "spot_at_angle{angle = gleba_starting_angle + 95 * gleba_starting_direction,\z
-                                              distance = 100 * gleba_starting_area_multiplier,\z
-                                              radius = 130 * gleba_starting_area_multiplier,\z
-                                              x_distortion = gleba_wobble_x * 15,\z
-                                              y_distortion = gleba_wobble_x * 15}",
-      starting_highland_small = "spot_at_angle{angle = gleba_starting_angle + 40 * gleba_starting_direction,\z
-                                               distance = 130 * gleba_starting_area_multiplier,\z
-                                               radius = 65 * gleba_starting_area_multiplier,\z
-                                               x_distortion = gleba_wobble_x * 15,\z
-                                               y_distortion = gleba_wobble_x * 15}",
+      starting_highland_main = "starting_spot_at_angle{ angle = gleba_starting_angle + 95 * gleba_starting_direction,\z
+                                                        distance = 100 * gleba_starting_area_multiplier,\z
+                                                        radius = 130 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 15,\z
+                                                        y_distortion = gleba_wobble_x * 15}",
+      starting_highland_small = "starting_spot_at_angle{angle = gleba_starting_angle + 40 * gleba_starting_direction,\z
+                                                        distance = 130 * gleba_starting_area_multiplier,\z
+                                                        radius = 65 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 15,\z
+                                                        y_distortion = gleba_wobble_x * 15}",
       starting_midlands = "max(starting_midland_landing, starting_midland_iron, starting_midland_copper)",
-      starting_midland_landing = "spot_at_angle{angle = gleba_starting_angle + 265 * gleba_starting_direction,\z
-                                                distance = 10 * gleba_starting_area_multiplier,\z
-                                                radius = 80 * gleba_starting_area_multiplier,\z
-                                                x_distortion = gleba_wobble_x * 15,\z
-                                                y_distortion = gleba_wobble_x * 15}",
-      starting_midland_iron = "spot_at_angle{angle = gleba_starting_angle + 180 * gleba_starting_direction,\z
-                                             distance = 120 * gleba_starting_area_multiplier,\z
-                                             radius = 130 * gleba_starting_area_multiplier,\z
-                                             x_distortion = gleba_wobble_x * 15,\z
-                                             y_distortion = gleba_wobble_x * 15}",
-      starting_midland_copper = "spot_at_angle{angle = gleba_starting_angle + 340 * gleba_starting_direction,\z
-                                               distance = 100 * gleba_starting_area_multiplier,\z
-                                               radius = 80 * gleba_starting_area_multiplier,\z
-                                               x_distortion = gleba_wobble_x * 15,\z
-                                               y_distortion = gleba_wobble_x * 15}",
+      starting_midland_landing = "starting_spot_at_angle{ angle = gleba_starting_angle + 265 * gleba_starting_direction,\z
+                                                          distance = 10 * gleba_starting_area_multiplier,\z
+                                                          radius = 80 * gleba_starting_area_multiplier,\z
+                                                          x_distortion = gleba_wobble_x * 15,\z
+                                                          y_distortion = gleba_wobble_x * 15}",
+      starting_midland_iron = "starting_spot_at_angle{angle = gleba_starting_angle + 180 * gleba_starting_direction,\z
+                                                      distance = 120 * gleba_starting_area_multiplier,\z
+                                                      radius = 130 * gleba_starting_area_multiplier,\z
+                                                      x_distortion = gleba_wobble_x * 15,\z
+                                                      y_distortion = gleba_wobble_x * 15}",
+      starting_midland_copper = "starting_spot_at_angle{angle = gleba_starting_angle + 340 * gleba_starting_direction,\z
+                                                        distance = 100 * gleba_starting_area_multiplier,\z
+                                                        radius = 80 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 15,\z
+                                                        y_distortion = gleba_wobble_x * 15}",
       starting_lakes = "max(starting_stone_lake, starting_opposite_lake, starting_opposite_small_lake)",
-      starting_stone_lake = "spot_at_angle{angle = gleba_starting_angle + 90 * gleba_starting_direction,\z
-                                  distance = 500 * gleba_starting_area_multiplier,\z
-                                  radius = 350 * gleba_starting_area_multiplier,\z
-                                  x_distortion = gleba_wobble_x * 15,\z
-                                  y_distortion = gleba_wobble_x * 15}",
-      starting_opposite_lake = "spot_at_angle{angle = gleba_starting_angle + 270 * gleba_starting_direction,\z
-                                  distance = 500 * gleba_starting_area_multiplier,\z
-                                  radius = 450 * gleba_starting_area_multiplier,\z
-                                  x_distortion = gleba_wobble_x * 15,\z
-                                  y_distortion = gleba_wobble_x * 15}",
-      starting_opposite_small_lake = "spot_at_angle{angle = gleba_starting_angle + 265 * gleba_starting_direction,\z
-                                                    distance = 50 * gleba_starting_area_multiplier,\z
-                                                    radius = 50 * gleba_starting_area_multiplier,\z
+      starting_stone_lake = "starting_spot_at_angle{angle = gleba_starting_angle + 90 * gleba_starting_direction,\z
+                                                    distance = 500 * gleba_starting_area_multiplier,\z
+                                                    radius = 350 * gleba_starting_area_multiplier,\z
                                                     x_distortion = gleba_wobble_x * 15,\z
-                                                    y_distortion = gleba_wobble_x * 15}"
+                                                    y_distortion = gleba_wobble_x * 15}",
+      starting_opposite_lake = "starting_spot_at_angle{ angle = gleba_starting_angle + 270 * gleba_starting_direction,\z
+                                                        distance = 500 * gleba_starting_area_multiplier,\z
+                                                        radius = 450 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 15,\z
+                                                        y_distortion = gleba_wobble_x * 15}",
+      starting_opposite_small_lake = "starting_spot_at_angle{ angle = gleba_starting_angle + 265 * gleba_starting_direction,\z
+                                                              distance = 50 * gleba_starting_area_multiplier,\z
+                                                              radius = 50 * gleba_starting_area_multiplier,\z
+                                                              x_distortion = gleba_wobble_x * 15,\z
+                                                              y_distortion = gleba_wobble_x * 15}"
     }
   },
   {
@@ -217,16 +217,16 @@ data:extend{
     expression = "max(starting_lowland_yumako, starting_lowland_jellynut)",
     local_expressions =
     {
-      starting_lowland_yumako = "spot_at_angle{angle = gleba_starting_angle + 235 * gleba_starting_direction,\z
-                                               distance = 300 * gleba_starting_area_multiplier,\z
-                                               radius = 140 * gleba_starting_area_multiplier,\z
-                                               x_distortion = gleba_wobble_x * 15,\z
-                                               y_distortion = gleba_wobble_x * 15}",
-      starting_lowland_jellynut = "spot_at_angle{angle = gleba_starting_angle + 65 * gleba_starting_direction,\z
-                                                 distance = 290 * gleba_starting_area_multiplier,\z
-                                                 radius = 100 * gleba_starting_area_multiplier,\z
-                                                 x_distortion = gleba_wobble_x * 15,\z
-                                                 y_distortion = gleba_wobble_x * 15}",
+      starting_lowland_yumako = "starting_spot_at_angle{angle = gleba_starting_angle + 235 * gleba_starting_direction,\z
+                                                        distance = 300 * gleba_starting_area_multiplier,\z
+                                                        radius = 140 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 15,\z
+                                                        y_distortion = gleba_wobble_x * 15}",
+      starting_lowland_jellynut = "starting_spot_at_angle{angle = gleba_starting_angle + 65 * gleba_starting_direction,\z
+                                                          distance = 290 * gleba_starting_area_multiplier,\z
+                                                          radius = 100 * gleba_starting_area_multiplier,\z
+                                                          x_distortion = gleba_wobble_x * 15,\z
+                                                          y_distortion = gleba_wobble_x * 15}",
     }
   },
   {
@@ -235,26 +235,26 @@ data:extend{
     expression = "max(starting_lowland_yumako, starting_lowland_jellynut)",
     local_expressions =
     {
-      starting_lowland_yumako = "spot_at_angle{angle = gleba_starting_angle + 235 * gleba_starting_direction,\z
-                                               distance = 310 * gleba_starting_area_multiplier,\z
-                                               radius = 40 * gleba_starting_area_multiplier,\z
-                                               x_distortion = gleba_wobble_x * 15,\z
-                                               y_distortion = gleba_wobble_x * 15}",
-      starting_lowland_jellynut = "spot_at_angle{angle = gleba_starting_angle + 65 * gleba_starting_direction,\z
-                                                 distance = 310 * gleba_starting_area_multiplier,\z
-                                                 radius = 40 * gleba_starting_area_multiplier,\z
-                                                 x_distortion = gleba_wobble_x * 15,\z
-                                                 y_distortion = gleba_wobble_x * 15}",
+      starting_lowland_yumako = "starting_spot_at_angle{angle = gleba_starting_angle + 235 * gleba_starting_direction,\z
+                                                        distance = 310 * gleba_starting_area_multiplier,\z
+                                                        radius = 40 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 15,\z
+                                                        y_distortion = gleba_wobble_x * 15}",
+      starting_lowland_jellynut = "starting_spot_at_angle{angle = gleba_starting_angle + 65 * gleba_starting_direction,\z
+                                                          distance = 310 * gleba_starting_area_multiplier,\z
+                                                          radius = 40 * gleba_starting_area_multiplier,\z
+                                                          x_distortion = gleba_wobble_x * 15,\z
+                                                          y_distortion = gleba_wobble_x * 15}",
     }
   },
   {
     type = "noise-expression",
     name = "gleba_starting_enemies_safe",
-    expression = "spot_at_angle{angle = gleba_starting_angle + 40 * gleba_starting_direction,\z
-                                distance = 210 * gleba_starting_area_multiplier,\z
-                                radius = 30 * gleba_starting_area_multiplier,\z
-                                x_distortion = gleba_wobble_x * 20,\z
-                                y_distortion = gleba_wobble_x * 20}"
+    expression = "starting_spot_at_angle{ angle = gleba_starting_angle + 40 * gleba_starting_direction,\z
+                                          distance = 210 * gleba_starting_area_multiplier,\z
+                                          radius = 30 * gleba_starting_area_multiplier,\z
+                                          x_distortion = gleba_wobble_x * 20,\z
+                                          y_distortion = gleba_wobble_x * 20}"
   },
   {
     type = "noise-expression",
@@ -262,16 +262,16 @@ data:extend{
     expression = "max(starting_lowland_yumako, starting_lowland_jellynut)",
     local_expressions =
     {
-      starting_lowland_yumako = "spot_at_angle{angle = gleba_starting_angle + 210 * gleba_starting_direction,\z
-                                               distance = 410 * gleba_starting_area_multiplier,\z
-                                               radius = 30 * gleba_starting_area_multiplier,\z
-                                               x_distortion = gleba_wobble_x * 20,\z
-                                               y_distortion = gleba_wobble_x * 20}",
-      starting_lowland_jellynut = "spot_at_angle{angle = gleba_starting_angle + 30 * gleba_starting_direction,\z
-                                                 distance = 410 * gleba_starting_area_multiplier,\z
-                                                 radius = 30 * gleba_starting_area_multiplier,\z
-                                                 x_distortion = gleba_wobble_x * 20,\z
-                                                 y_distortion = gleba_wobble_x * 20}",
+      starting_lowland_yumako = "starting_spot_at_angle{angle = gleba_starting_angle + 210 * gleba_starting_direction,\z
+                                                        distance = 410 * gleba_starting_area_multiplier,\z
+                                                        radius = 30 * gleba_starting_area_multiplier,\z
+                                                        x_distortion = gleba_wobble_x * 20,\z
+                                                        y_distortion = gleba_wobble_x * 20}",
+      starting_lowland_jellynut = "starting_spot_at_angle{angle = gleba_starting_angle + 30 * gleba_starting_direction,\z
+                                                          distance = 410 * gleba_starting_area_multiplier,\z
+                                                          radius = 30 * gleba_starting_area_multiplier,\z
+                                                          x_distortion = gleba_wobble_x * 20,\z
+                                                          y_distortion = gleba_wobble_x * 20}",
     }
   },
   {
@@ -1204,11 +1204,11 @@ data:extend({
       richness = "control:gleba_stone:richness",
       frequency = "control:gleba_stone:frequency",
       size = "control:gleba_stone:size",
-      starting = "spot_at_angle{angle = gleba_starting_angle + 85 * gleba_starting_direction,\z
-                                distance = 80 * gleba_starting_area_multiplier,\z
-                                radius = 7 * size ^ 0.5,\z
-                                x_distortion = gleba_wobble_x * 8,\z
-                                y_distortion = gleba_wobble_x * 8}"
+      starting = "starting_spot_at_angle{ angle = gleba_starting_angle + 85 * gleba_starting_direction,\z
+                                          distance = 80 * gleba_starting_area_multiplier,\z
+                                          radius = 7 * size ^ 0.5,\z
+                                          x_distortion = gleba_wobble_x * 8,\z
+                                          y_distortion = gleba_wobble_x * 8}"
     }
   },
   {
@@ -1225,11 +1225,11 @@ data:extend({
       richness = "var('control:iron-ore:richness')",
       frequency = "var('control:iron-ore:frequency')",
       size = "var('control:iron-ore:size')",
-      starting = "spot_at_angle{angle = gleba_starting_angle + 180 * gleba_starting_direction,\z
-                                distance = 60 * gleba_starting_area_multiplier,\z
-                                radius = 11 * size ^ 0.5,\z
-                                x_distortion = gleba_wobble_x * 10,\z
-                                y_distortion = gleba_wobble_x * 10}"
+      starting = "starting_spot_at_angle{ angle = gleba_starting_angle + 180 * gleba_starting_direction,\z
+                                          distance = 60 * gleba_starting_area_multiplier,\z
+                                          radius = 11 * size ^ 0.5,\z
+                                          x_distortion = gleba_wobble_x * 10,\z
+                                          y_distortion = gleba_wobble_x * 10}"
     }
   },
   {
@@ -1246,11 +1246,11 @@ data:extend({
       richness = "var('control:copper-ore:richness')",
       frequency = "var('control:copper-ore:frequency')",
       size = "var('control:copper-ore:size')",
-      starting = "spot_at_angle{angle = gleba_starting_angle + 340 * gleba_starting_direction,\z
-                                distance = 80 * gleba_starting_area_multiplier,\z
-                                radius = 10 * size ^ 0.5,\z
-                                x_distortion = gleba_wobble_x * 10,\z
-                                y_distortion = gleba_wobble_x * 10}"
+      starting = "starting_spot_at_angle{ angle = gleba_starting_angle + 340 * gleba_starting_direction,\z
+                                          distance = 80 * gleba_starting_area_multiplier,\z
+                                          radius = 10 * size ^ 0.5,\z
+                                          x_distortion = gleba_wobble_x * 10,\z
+                                          y_distortion = gleba_wobble_x * 10}"
     }
   },
   {

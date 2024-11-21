@@ -1,8 +1,70 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.21
+Version: 2.0.22
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.21
+Date: 21. 11. 2024
+  Minor Features:
+    - Added drag-to-reorder to the research queue.
+    - Added "Occlude light sprites" graphics option to allow disabling 2.0 light rendering to improve performance. As a side effect, it disables also lava glow. (https://forums.factorio.com/119530)
+    - [space-age] Added "Additional terrain effects" graphics option to disable puddles and global terrain tint as alternative to increase performance on Gleba to disabling fog, clouds and animated water.
+    - [space-age] Added "Nauvis Rocket Factory" menu simulation.
+  Changes:
+    - Replaced the "move forward" and "move backward" buttons on technologies in the research queue with a draggable handle.
+    - Allowed to set blueprint parameter to be ingredient of other parameter even when it doesn't exist in an assembling machine. (https://forums.factorio.com/117979)
+    - Added a hidden sound setting to base the music selection on the character's physical location. (https://forums.factorio.com/119140)
+    - Agriculutral Tower now respects allied ghosts blocking planting spots. (https://forums.factorio.com/120729)
+    - volcanic-cracks-hot no longer coverable by foundation. (https://forums.factorio.com/120745)
+    - Added consistency check for overlapping blueprint tiles not being both (non)-foundations.
+      Any inconsistent tiles will be removed on load (analogous already happens when importing blueprint via string or setting blueprint tiles via lua).
+    - The slider and input field for the minimum payload in orbital logistic requests now enforce a minimum of 1 instead of 0. (https://forums.factorio.com/120811)
+    - Added a delay before music switches when switching surfaces. (https://forums.factorio.com/119871)
+    - Added hidden sound setting for controlling music transition stage durations.
+    - Improved performance of superforced blueprint preview that is autofilling-in tiles.
   Bugfixes:
     - Fixed double parameter selection in signal selection list.
+    - Fixed additional invalid state of collector navmesh. (https://forums.factorio.com/119125)
+    - Fixed "Make it better" achievement not obtained when dropping modules in. (https://forums.factorio.com/116552)
+    - Fixed dragging sliders with gamepad in free cursor mode.
+    - Fixed a sound instance leak related to sound priority. (https://forums.factorio.com/120086)
+    - Fixed that selection tool highlighting would show incorrectly in chart view for 1 frame. (https://forums.factorio.com/121970)
+    - Fixed a crash when destroying segmented units during the chunk generated event. (https://forums.factorio.com/121998)
+    - Improved logic for choosing which schedule to keep if trains get connected (https://forums.factorio.com/117696)
+    - Fixed a crash after deconstructing cargo bays with editor. (https://forums.factorio.com/121978)
+    - Fixed tutorial missions 4 and 5 missing access to radars and repair packs. (https://forums.factorio.com/117420)
+    - Fixed spidertrons shooting extra capture robot during tick of projectile creation. (https://forums.factorio.com/119590)
+    - Fixed condition highlights in decider combinator GUI not always updating if a condition used the "Each" special signal.
+    - Fixed that energy sources would not update their buffer sizes when the prototype value would change. (https://forums.factorio.com/117669)
+    - Fixed that asteroids would calculate damage to entities with resistances incorrectly. (https://forums.factorio.com/118788)
+    - Fixed use of slow GPU timer query operation on macOS.
+    - Fixed that opening ghost power poles would leave the GUI in a broken state. (https://forums.factorio.com/117823)
+    - Toggle menu (escape) leaves remote driving. (https://forums.factorio.com/118188)
+    - Fixed that equipment ghost tooltips did not show quality. (https://forums.factorio.com/122139)
+    - Fixed incorrect consistency check when trash not requested is used inside of a blueprint and mods are involved. (https://forums.factorio.com/120411)
+    - Fixed that portable solar panels and power armor tooltips did not report the correct amount of power generation for the current surface. (https://forums.factorio.com/118177)
+    - Fixed that changing Vulcanus map gen settings using the editor prevented ashlands trees from spawning. (https://forums.factorio.com/121800)
+    - Fixed that paste-settings could happen when not desired in some situations. (https://forums.factorio.com/121989)
+    - Fixed that mobile logistic networks could generate useless alerts in some situations. (https://forums.factorio.com/122158)
+    - Fixed robots repeatedly failing to cross Aquilo lake due to high energy usage and being stuck in a loop. (https://forums.factorio.com/118933)
+    - Fixed robots looking for a place to charge always picking roboports closer to their target which resulted in overcrowding. (https://forums.factorio.com/117641)
+    - Fixed a crash when attempting (and failing) to connect trains parked at specific positions. (https://forums.factorio.com/117173)
+    - Fixed a crash when removing a station from a train schedule while another train in the same group used the final stop as waypoint. (https://forums.factorio.com/117297)
+    - Fixed that agricultural tower would show all nauvis tiles as unplantable. Nauvis grass, dirt and red desert are now specifically plantable for tree seeds and highlight as green. (https://forums.factorio.com/122065)
+    - Fixed Space age map generation not respecting custom starting locations (apart from Nauvis). (https://forums.factorio.com/121469)
+    - Fixed technology slot showing research progress for finished trigger technologies. (https://forums.factorio.com/119386)
+    - Fixed that reloading specific technologies would leave the dead technology trigger pointer in the trigger processor. (https://forums.factorio.com/viewtopic.php?f=7&t=121043)
+  Modding:
+    - Added distance_from_nearest_point_x and distance_from_nearest_point_y noise expressions.
+    - Moved SpiderVehiclePrototype::chunk_exploration_radius to VehiclePrototype.
+    - Removed limit of 64 unique PipeConnectionDefinitions's connection categories.
+    - Removed music_transition_* utility constants.
+    - Changed CraftItemTechnologyTrigger::item into ItemIDFilter. Removed item_quality.
+    - Changed ProduceAchievementPrototype::item_product into ItemIDFilter. Removed quality.
+    - Changed ProducePerHourAchievementPrototype::item_product into ItemIDFilter.
+  Scripting:
+    - Added optional build_check_type to LuaControl::teleport. (https://forums.factorio.com/122001)
+    - Added LuaEntityPrototype::heating_energy read. (https://forums.factorio.com/121781)
+    - Added LuaForce::circuit_network_enabled, cliff_deconstruction_enabled, mining_with_fluid, rail_support_on_deep_oil_ocean, rail_planner_allow_elevated_rails, vehicle_logistics read. (https://forums.factorio.com/120676)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.20
 Date: 18. 11. 2024

@@ -581,9 +581,6 @@ data:extend(
     walking_sound_count_reduction_rate = 0.3,
     moving_sound_count_reduction_rate = 0.5,
 
-    music_transition_fade_out_ticks = 120,
-    music_transition_pause_ticks = 300,
-    music_transition_fade_in_ticks = 300,
     environment_sounds_transition_fade_in_ticks = 20,
 
     starmap_orbit_default_color = gui_color.grey,

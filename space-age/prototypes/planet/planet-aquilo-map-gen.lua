@@ -24,22 +24,22 @@ data:extend({
   {
     type = "noise-expression",
     name = "aquilo_starting_crude_oil",
-    expression = "spot_at_angle{angle = aquilo_angle, distance = 40, radius = aquilo_spot_size * 0.8, x_distortion = 0, y_distortion = 0}"
+    expression = "starting_spot_at_angle{angle = aquilo_angle, distance = 40, radius = aquilo_spot_size * 0.8, x_distortion = 0, y_distortion = 0}"
   },
   {
     type = "noise-expression",
     name = "aquilo_starting_lithium_brine",
-    expression = "spot_at_angle{angle = aquilo_angle + 120, distance = 80, radius = aquilo_spot_size * 0.6, x_distortion = 0, y_distortion = 0}"
+    expression = "starting_spot_at_angle{angle = aquilo_angle + 120, distance = 80, radius = aquilo_spot_size * 0.6, x_distortion = 0, y_distortion = 0}"
   },
   {
     type = "noise-expression",
     name = "aquilo_starting_flourine_vent",
-    expression = "spot_at_angle{angle = aquilo_angle + 240, distance = 160, radius = aquilo_spot_size * 0.6, x_distortion = 0, y_distortion = 0}"
+    expression = "starting_spot_at_angle{angle = aquilo_angle + 240, distance = 160, radius = aquilo_spot_size * 0.6, x_distortion = 0, y_distortion = 0}"
   },
   {
     type = "noise-expression",
     name = "aquilo_starting_flourine_vent_tiny", -- single vent as a taste
-    expression = "spot_at_angle{angle = aquilo_angle + 240, distance = 80, radius = 1, x_distortion = 0, y_distortion = 0}"
+    expression = "starting_spot_at_angle{angle = aquilo_angle + 240, distance = 80, radius = 1, x_distortion = 0, y_distortion = 0}"
   },
   {
     type = "noise-expression",

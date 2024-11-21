@@ -1652,7 +1652,7 @@ data:extend(
         "water-mud", "water-shallow", -- all shallows
         "wetland-light-green-slime", "wetland-green-slime", "wetland-light-dead-skin", "wetland-dead-skin", "wetland-pink-tentacle", "wetland-red-tentacle", "wetland-yumako", "wetland-jellynut",
         "oil-ocean-shallow", "oil-ocean-deep", -- all oil ocean
-        "volcanic-cracks-hot", "lava", "lava-hot", -- all lava
+        "lava", "lava-hot", -- all lava
         -- not ammoniacal ocean
       }
     }

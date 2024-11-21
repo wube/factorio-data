@@ -582,6 +582,32 @@ function radiobutton_glow(tint_value, scale_value)
 end
 
 function deep_slot_background_tiling(width, height, custom_widths, custom_heights, extra_padding, extra_spacing)
+  -- extra_spacing may be either a number or a table
+  -- if a table, fields are 'horizontal' and 'vertical'
+  -- extra_spacing.horizontal and extra_spacing.vertical may either be numbers or arrays
+  -- if arrays, each entry is the extra spacing to insert after the tiled background at that index
+  local spacing = {}
+  if type(extra_spacing) == "table" then
+    if type(extra_spacing.horizontal) == "table" then
+      spacing.horizontal = {}
+      for k,v in pairs(extra_spacing.horizontal) do
+        spacing.horizontal[k] = 8 + v
+      end
+    else
+      spacing.horizontal = 8 + (extra_spacing.horizontal or 0)
+    end
+    if type(extra_spacing.vertical) == "table" then
+      spacing.vertical = {}
+      for k,v in pairs(extra_spacing.vertical) do
+        spacing.vertical[k] = 8 + v
+      end
+    else
+      spacing.vertical = 8 + (extra_spacing.vertical or 0)
+    end
+  else
+    spacing.horizontal = 8 + (extra_spacing or 0)
+    spacing.vertical = 8 + (extra_spacing or 0)
+  end
   return
   {
     position = {282, 17},
@@ -589,11 +615,13 @@ function deep_slot_background_tiling(width, height, custom_widths, custom_height
     overall_tiling_horizontal_size = width and (width - 8) or nil,
     overall_tiling_vertical_size = height and (height - 8) or nil,
     overall_tiling_horizontal_padding = 4 + (extra_padding or 0),
-    overall_tiling_horizontal_spacing = 8 + (extra_spacing or 0),
+    overall_tiling_horizontal_spacing = type(spacing.horizontal) == "number" and spacing.horizontal or nil,
     overall_tiling_vertical_padding = 4 + (extra_padding or 0),
-    overall_tiling_vertical_spacing = 8 + (extra_spacing or 0),
+    overall_tiling_vertical_spacing = type(spacing.vertical) == "number" and spacing.vertical or nil,
     custom_horizontal_tiling_sizes = custom_widths,
     custom_vertical_tiling_sizes = custom_heights,
+    custom_horizontal_tiling_spacings = type(spacing.horizontal) == "table" and spacing.horizontal or nil,
+    custom_vertical_tiling_spacings = type(spacing.vertical) == "table" and spacing.vertical or nil,
   }
 end
 
@@ -701,6 +729,36 @@ tabbed_pane_graphical_set =
   },
   shadow = top_shadow
 }
+
+function tinted_draggable_space(tint)
+  return
+  {
+    base =
+    {
+      top =
+      {
+        position = {446, 78},
+        size = {8, 8},
+        tint = tint
+      },
+      top_tiling = true,
+      center =
+      {
+        position = {454, 78},
+        size = {8, 8},
+        tint = tint
+      },
+      center_tiling_horizontal = true,
+      bottom =
+      {
+        position = {462, 78},
+        size = {8, 8},
+        tint = tint
+      },
+      bottom_tiling = true,
+    }
+  }
+end
 
 data:extend(
 {
@@ -1960,6 +2018,15 @@ data:extend(
       }
     },
 
+    research_queue_table =
+    {
+      type = "table_style",
+      parent = "slot_table",
+      padding = 4,
+      horizontal_spacing = {{index = 1, spacing = 12}},
+      background_graphical_set = deep_slot_background_tiling(72, 100, nil, nil, 4, {horizontal = {12, 0, 0, 0, 0, 0, 0}})
+    },
+
     research_queue_cancel_button =
     {
       type = "button_style",
@@ -1967,12 +2034,12 @@ data:extend(
       size = {32, 20},
       padding = -4
     },
-    research_queue_move_button =
+
+    research_queue_drag_handle =
     {
-      type = "button_style",
-      size = {20, 20},
-      padding = -4,
-      invert_colors_of_picture_when_disabled = true
+      type = "empty_widget_style",
+      parent = "draggable_space",
+      size = {40, 20}
     },
 
     technology_slot =
@@ -2054,7 +2121,14 @@ data:extend(
         right = {position = {473, 152}, size = {16, 1}}
       },
       progress_bar_height = 4,
-      progress_bar_color = {g = 1}
+      progress_bar_color = {g = 1},
+
+      drag_handle_style =
+      {
+        type = "empty_widget_style",
+        parent = "research_queue_drag_handle",
+        graphical_set = tinted_draggable_space({143, 123, 61})
+      }
     },
 
     clickable_empty_technology_slot =
@@ -2280,6 +2354,12 @@ data:extend(
         left_bottom = {position = {416, 187}, size = {16, 16}},
         bottom = {position = {432, 187}, size = {1, 16}},
         right_bottom = {position = {433, 187}, size = {16, 16}}
+      },
+      drag_handle_style =
+      {
+        type = "empty_widget_style",
+        parent = "research_queue_drag_handle",
+        graphical_set = tinted_draggable_space({170, 230, 151})
       }
     },
 
@@ -2420,6 +2500,12 @@ data:extend(
         left_bottom = {position = {416, 153}, size = {16, 16}},
         bottom = {position = {432, 153}, size = {1, 16}},
         right_bottom = {position = {433, 153}, size = {16, 16}}
+      },
+      drag_handle_style =
+      {
+        type = "empty_widget_style",
+        parent = "research_queue_drag_handle",
+        graphical_set = tinted_draggable_space({143, 123, 61})
       }
     },
 
@@ -2492,6 +2578,12 @@ data:extend(
         left_bottom = {position = {416, 170}, size = {16, 16}},
         bottom = {position = {432, 170}, size = {1, 16}},
         right_bottom = {position = {433, 170}, size = {16, 16}}
+      },
+      drag_handle_style =
+      {
+        type = "empty_widget_style",
+        parent = "research_queue_drag_handle",
+        graphical_set = tinted_draggable_space({157, 89, 88})
       }
     },
 

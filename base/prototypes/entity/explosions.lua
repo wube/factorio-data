@@ -3807,6 +3807,70 @@ local explosions =
       }
     }
   },
+  {
+    type = "explosion",
+    name = "display-panel-explosion",
+    icon = "__base__/graphics/icons/display-panel.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "circuit-network-explosions",
+    order = "g-g-a",
+    height = 0,
+    animations = explosion_animations.small_explosion(),
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.small_explosion,
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 10,
+            particle_name = "display-panel-metal-particle-medium",
+            offset_deviation = { { -0.5, -0.3906 }, { 0.5, 0.3906 } },
+            initial_height = 0.1,
+            initial_height_deviation = 0.44,
+            initial_vertical_speed = 0.039,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            particle_name = "glass-particle-small",
+            offset_deviation = { { -0.5977, -0.8906 }, { 0.5977, 0.8906 } },
+            initial_height = 0.6,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.084,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 13,
+            particle_name = "cable-and-electronics-particle-small-medium",
+            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
+            initial_height = 0.1,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.04,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.02,
+            speed_from_center_deviation = 0.05,
+            frame_speed = 1,
+            frame_speed_deviation = 0.361
+          }
+        }
+      }
+    }
+  },
 
   {
     type = "explosion",

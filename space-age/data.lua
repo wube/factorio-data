@@ -90,6 +90,7 @@ main_menu_simulations.fulgora_nightfall = space_age_menu_simulations.fulgora_nig
 main_menu_simulations.fulgora_race = space_age_menu_simulations.fulgora_race
 main_menu_simulations.aquilo_send_help = space_age_menu_simulations.aquilo_send_help
 main_menu_simulations.aquilo_starter = space_age_menu_simulations.aquilo_starter
+main_menu_simulations.nauvis_rocket_factory = space_age_menu_simulations.nauvis_rocket_factory
 
 -- data.raw["utility-constants"]["default"].main_menu_simulations = {}
 -- local main_menu_simulations = data.raw["utility-constants"]["default"].main_menu_simulations

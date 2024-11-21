@@ -28,25 +28,25 @@ data:extend
   { -- the starting area cone, slightly larger diameter than a grid cell.
     type = "noise-expression",
     name = "fulgora_starting_cone",
-    expression = "max(0, spot_at_angle{ angle = map_seed / 360,\z
-                                        distance = fulgora_grid / 30,\z
-                                        radius = fulgora_grid / 1.8,\z
-                                        x_distortion = 1 * fulgora_wobble_x,\z
-                                        y_distortion = 1 * fulgora_wobble_y},\z
-                         spot_at_angle{ angle = map_seed / 360,\z
-                                        distance = 1,\z
-                                        radius = fulgora_grid / 4,\z
-                                        x_distortion = 0.25 * fulgora_wobble_x,\z
-                                        y_distortion = 0.25 * fulgora_wobble_y})",
+    expression = "max(0, starting_spot_at_angle{angle = map_seed / 360,\z
+                                                distance = fulgora_grid / 30,\z
+                                                radius = fulgora_grid / 1.8,\z
+                                                x_distortion = 1 * fulgora_wobble_x,\z
+                                                y_distortion = 1 * fulgora_wobble_y},\z
+                         starting_spot_at_angle{angle = map_seed / 360,\z
+                                                distance = 1,\z
+                                                radius = fulgora_grid / 4,\z
+                                                x_distortion = 0.25 * fulgora_wobble_x,\z
+                                                y_distortion = 0.25 * fulgora_wobble_y})",
   },
   { -- the starting area cone, slightly larger diameter than a grid cell.
     type = "noise-expression",
     name = "fulgora_starting_vault_cone",
-    expression = "max(0, spot_at_angle{ angle = map_seed / 360 + 180,\z
-                                        distance = fulgora_grid / 1.8,\z
-                                        radius = fulgora_grid / 1.8,\z
-                                        x_distortion = 1 * fulgora_wobble_x,\z
-                                        y_distortion = 1 * fulgora_wobble_y})",
+    expression = "max(0, starting_spot_at_angle{angle = map_seed / 360 + 180,\z
+                                                distance = fulgora_grid / 1.8,\z
+                                                radius = fulgora_grid / 1.8,\z
+                                                x_distortion = 1 * fulgora_wobble_x,\z
+                                                y_distortion = 1 * fulgora_wobble_y})",
   },
   {
     type = "noise-expression",
@@ -353,7 +353,7 @@ data:extend
                   - 1000 * safe_start_excluder_h",
     local_expressions =
     {
-      safe_start_excluder_h = "min(x < fulgora_grid, x > -fulgora_grid, y < 5, y > -5)"
+      safe_start_excluder_h = "min(x_from_start < fulgora_grid, x_from_start > -fulgora_grid, y_from_start < 5, y_from_start > -5)"
     }
   },
   { -- used for tiles and resources

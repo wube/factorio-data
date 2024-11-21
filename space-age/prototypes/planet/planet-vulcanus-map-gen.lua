@@ -188,29 +188,29 @@ data:extend{
     type = "noise-expression",
     name = "vulcanus_ashlands_start",
     -- requires more influence because it is smaller and has no mountain boost
-    expression = "4 * spot_at_angle{angle = vulcanus_ashlands_angle,\z
-                                    distance = 170 * vulcanus_starting_area_radius,\z
-                                    radius = 350 * vulcanus_starting_area_radius,\z
-                                    x_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_x + vulcanus_wobble_large_x + vulcanus_wobble_huge_x),\z
-                                    y_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_y + vulcanus_wobble_large_y + vulcanus_wobble_huge_y)}"
+    expression = "4 * starting_spot_at_angle{ angle = vulcanus_ashlands_angle,\z
+                                              distance = 170 * vulcanus_starting_area_radius,\z
+                                              radius = 350 * vulcanus_starting_area_radius,\z
+                                              x_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_x + vulcanus_wobble_large_x + vulcanus_wobble_huge_x),\z
+                                              y_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_y + vulcanus_wobble_large_y + vulcanus_wobble_huge_y)}"
   },
   {
     type = "noise-expression",
     name = "vulcanus_basalts_start",
-    expression = "2 * spot_at_angle{angle = vulcanus_basalts_angle,\z
-                                    distance = 250,\z
-                                    radius = 550 * vulcanus_starting_area_radius,\z
-                                    x_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_x + vulcanus_wobble_large_x + vulcanus_wobble_huge_x),\z
-                                    y_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_y + vulcanus_wobble_large_y + vulcanus_wobble_huge_y)}"
+    expression = "2 * starting_spot_at_angle{ angle = vulcanus_basalts_angle,\z
+                                              distance = 250,\z
+                                              radius = 550 * vulcanus_starting_area_radius,\z
+                                              x_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_x + vulcanus_wobble_large_x + vulcanus_wobble_huge_x),\z
+                                              y_distortion = 0.1 * vulcanus_starting_area_radius * (vulcanus_wobble_y + vulcanus_wobble_large_y + vulcanus_wobble_huge_y)}"
   },
   {
     type = "noise-expression",
     name = "vulcanus_mountains_start",
-    expression = "2 * spot_at_angle{angle = vulcanus_mountains_angle,\z
-                                    distance = 250 * vulcanus_starting_area_radius,\z
-                                    radius = 500 * vulcanus_starting_area_radius,\z
-                                    x_distortion = 0.05 * vulcanus_starting_area_radius * (vulcanus_wobble_x + vulcanus_wobble_large_x + vulcanus_wobble_huge_x),\z
-                                    y_distortion = 0.05 * vulcanus_starting_area_radius * (vulcanus_wobble_y + vulcanus_wobble_large_y + vulcanus_wobble_huge_y)}"
+    expression = "2 * starting_spot_at_angle{ angle = vulcanus_mountains_angle,\z
+                                              distance = 250 * vulcanus_starting_area_radius,\z
+                                              radius = 500 * vulcanus_starting_area_radius,\z
+                                              x_distortion = 0.05 * vulcanus_starting_area_radius * (vulcanus_wobble_x + vulcanus_wobble_large_x + vulcanus_wobble_huge_x),\z
+                                              y_distortion = 0.05 * vulcanus_starting_area_radius * (vulcanus_wobble_y + vulcanus_wobble_large_y + vulcanus_wobble_huge_y)}"
   },
   {
     type = "noise-expression",
@@ -309,11 +309,11 @@ data:extend{
     expression = "max(vulcanus_starting_volcano_spot, raw_spots - starting_protector)",
     local_expressions =
     {
-      starting_protector = "clamp(spot_at_angle{angle = vulcanus_mountains_angle + 180 * vulcanus_starting_direction,\z
-                                  distance = (400 * vulcanus_starting_area_radius) / 2,\z
-                                  radius = 800 * vulcanus_starting_area_radius,\z
-                                  x_distortion = vulcanus_wobble_x/2 + vulcanus_wobble_large_x/12 + vulcanus_wobble_huge_x/80,\z
-                                  y_distortion = vulcanus_wobble_y/2 + vulcanus_wobble_large_y/12 + vulcanus_wobble_huge_y/80}, 0, 1)",
+      starting_protector = "clamp(starting_spot_at_angle{ angle = vulcanus_mountains_angle + 180 * vulcanus_starting_direction,\z
+                                                          distance = (400 * vulcanus_starting_area_radius) / 2,\z
+                                                          radius = 800 * vulcanus_starting_area_radius,\z
+                                                          x_distortion = vulcanus_wobble_x/2 + vulcanus_wobble_large_x/12 + vulcanus_wobble_huge_x/80,\z
+                                                          y_distortion = vulcanus_wobble_y/2 + vulcanus_wobble_large_y/12 + vulcanus_wobble_huge_y/80}, 0, 1)",
       raw_spots = "spot_noise{x = x + vulcanus_wobble_x/2 + vulcanus_wobble_large_x/12 + vulcanus_wobble_huge_x/80,\z
                               y = y + vulcanus_wobble_y/2 + vulcanus_wobble_large_y/12 + vulcanus_wobble_huge_y/80,\z
                               seed0 = map_seed,\z
@@ -340,11 +340,11 @@ data:extend{
   {
     type = "noise-expression",
     name = "vulcanus_starting_volcano_spot",
-    expression = "clamp(spot_at_angle{angle = vulcanus_mountains_angle,\z
-                                      distance = 400 * vulcanus_starting_area_radius,\z
-                                      radius = 200,\z
-                                      x_distortion = vulcanus_wobble_x/2 + vulcanus_wobble_large_x/12 + vulcanus_wobble_huge_x/80,\z
-                                      y_distortion = vulcanus_wobble_y/2 + vulcanus_wobble_large_y/12 + vulcanus_wobble_huge_y/80}, 0, 1)"
+    expression = "clamp(starting_spot_at_angle{ angle = vulcanus_mountains_angle,\z
+                                                distance = 400 * vulcanus_starting_area_radius,\z
+                                                radius = 200,\z
+                                                x_distortion = vulcanus_wobble_x/2 + vulcanus_wobble_large_x/12 + vulcanus_wobble_huge_x/80,\z
+                                                y_distortion = vulcanus_wobble_y/2 + vulcanus_wobble_large_y/12 + vulcanus_wobble_huge_y/80}, 0, 1)"
   },
 
   {
@@ -579,43 +579,43 @@ data:extend{
   {
     type = "noise-expression",
     name = "vulcanus_starting_tungsten", -- don't use the slider for radius becuase it can make tungsten in the safe area
-    expression = "spot_at_angle{angle = vulcanus_basalts_angle - 10 * vulcanus_starting_direction,\z
-                                distance = 450 * vulcanus_starting_area_radius,\z
-                                radius = 30 / 1.5,\z
-                                x_distortion = 0.5 * vulcanus_resource_wobble_x,\z
-                                y_distortion = 0.5 * vulcanus_resource_wobble_y}"
+    expression = "starting_spot_at_angle{ angle = vulcanus_basalts_angle - 10 * vulcanus_starting_direction,\z
+                                          distance = 450 * vulcanus_starting_area_radius,\z
+                                          radius = 30 / 1.5,\z
+                                          x_distortion = 0.5 * vulcanus_resource_wobble_x,\z
+                                          y_distortion = 0.5 * vulcanus_resource_wobble_y}"
   },
   {
     type = "noise-expression",
     name = "vulcanus_starting_coal",
-    expression = "spot_at_angle{angle = vulcanus_ashlands_angle + 15 * vulcanus_starting_direction,\z
-                                distance = 180 * vulcanus_starting_area_radius,\z
-                                radius = 30 * vulcanus_coal_size,\z
-                                x_distortion = 0.5 * vulcanus_resource_wobble_x,\z
-                                y_distortion = 0.5 * vulcanus_resource_wobble_y}"
+    expression = "starting_spot_at_angle{ angle = vulcanus_ashlands_angle + 15 * vulcanus_starting_direction,\z
+                                          distance = 180 * vulcanus_starting_area_radius,\z
+                                          radius = 30 * vulcanus_coal_size,\z
+                                          x_distortion = 0.5 * vulcanus_resource_wobble_x,\z
+                                          y_distortion = 0.5 * vulcanus_resource_wobble_y}"
   },
   {
     type = "noise-expression",
     name = "vulcanus_starting_calcite",
-    expression = "spot_at_angle{angle = vulcanus_mountains_angle - 20 * vulcanus_starting_direction,\z
-                                distance = 350 * vulcanus_starting_area_radius,\z
-                                radius = 35 / 1.5 * vulcanus_calcite_size,\z
-                                x_distortion = 0.5 * vulcanus_resource_wobble_x,\z
-                                y_distortion = 0.5 * vulcanus_resource_wobble_y}"
+    expression = "starting_spot_at_angle{ angle = vulcanus_mountains_angle - 20 * vulcanus_starting_direction,\z
+                                          distance = 350 * vulcanus_starting_area_radius,\z
+                                          radius = 35 / 1.5 * vulcanus_calcite_size,\z
+                                          x_distortion = 0.5 * vulcanus_resource_wobble_x,\z
+                                          y_distortion = 0.5 * vulcanus_resource_wobble_y}"
   },
   {
     type = "noise-expression",
     name = "vulcanus_starting_sulfur",
-    expression = "max(spot_at_angle{angle = vulcanus_mountains_angle + 10 * vulcanus_starting_direction,\z
-                                    distance = 590 * vulcanus_starting_area_radius,\z
-                                    radius = 30,\z
-                                    x_distortion = 0.75 * vulcanus_resource_wobble_x,\z
-                                    y_distortion = 0.75 * vulcanus_resource_wobble_y},\z
-                      spot_at_angle{angle = vulcanus_mountains_angle + 30 * vulcanus_starting_direction,\z
-                                    distance = 200 * vulcanus_starting_area_radius,\z
-                                    radius = 25 * vulcanus_sulfuric_acid_geyser_size,\z
-                                    x_distortion = 0.75 * vulcanus_resource_wobble_x,\z
-                                    y_distortion = 0.75 * vulcanus_resource_wobble_y})"
+    expression = "max(starting_spot_at_angle{ angle = vulcanus_mountains_angle + 10 * vulcanus_starting_direction,\z
+                                              distance = 590 * vulcanus_starting_area_radius,\z
+                                              radius = 30,\z
+                                              x_distortion = 0.75 * vulcanus_resource_wobble_x,\z
+                                              y_distortion = 0.75 * vulcanus_resource_wobble_y},\z
+                      starting_spot_at_angle{ angle = vulcanus_mountains_angle + 30 * vulcanus_starting_direction,\z
+                                              distance = 200 * vulcanus_starting_area_radius,\z
+                                              radius = 25 * vulcanus_sulfuric_acid_geyser_size,\z
+                                              x_distortion = 0.75 * vulcanus_resource_wobble_x,\z
+                                              y_distortion = 0.75 * vulcanus_resource_wobble_y})"
   },
   {
     type = "noise-function",
@@ -885,8 +885,7 @@ data:extend{
     type = "noise-expression",
     name = "vulcanus_tree",
     expression = "min(10 * (vulcanus_ashlands_biome - 0.9),\z
-                      slider_to_linear(control:trees:size, -1, 1)\z
-                          - 1.5 + 1.5 * moisture + 0.5 * (moisture > 0.9) - 0.5 * aux + 0.5 * vulcanus_decorative_knockout )"
+                      -1.5 + 1.5 * moisture + 0.5 * (moisture > 0.9) - 0.5 * aux + 0.5 * vulcanus_decorative_knockout)"
   },
 
   -- Demolishers
@@ -904,15 +903,16 @@ data:extend{
                                   seed1 = 0,\z
                                   grid_size = demolisher_territory_radius,\z
                                   distance_type = 'manhattan',\z
-                                  jitter = 1} - starting_area",
-    local_expressions =
-    {
-      starting_area = "0 < spot_at_angle{angle = vulcanus_mountains_angle - 5 * vulcanus_starting_direction,\z
-                                         distance = 100 * vulcanus_starting_area_radius + 32,\z
-                                         radius = 7 * 32,\z
-                                         x_distortion = 0,\z
-                                         y_distortion = 0}"
-    }
+                                  jitter = 1} - demolisher_starting_area"
+  },
+  {
+    type = "noise-expression",
+    name = "demolisher_starting_area",
+    expression = "0 < starting_spot_at_angle{angle = vulcanus_mountains_angle - 5 * vulcanus_starting_direction,\z
+                                                  distance = 100 * vulcanus_starting_area_radius + 32,\z
+                                                  radius = 7 * 32,\z
+                                                  x_distortion = 0,\z
+                                                  y_distortion = 0}"
   },
   {
     type = "noise-expression",

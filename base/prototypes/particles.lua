@@ -4889,6 +4889,16 @@ make_particle
 
   make_particle
   {
+    name = "display-panel-metal-particle-medium",
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.509, 0.502, 0.406, 1}}),
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "object"
+  },
+
+  make_particle
+  {
     name = "boiler-metal-particle-small",
     pictures = particle_animations.get_metal_particle_small_pictures({tint = {0.787, 0.723, 0.556, 1}}),
     shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),

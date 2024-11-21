@@ -1814,7 +1814,36 @@ local remnants =
       }
     })
   },
-
+  {
+    type = "corpse",
+    name = "display-panel-remnants",
+    icon = "__base__/graphics/icons/display-panel.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "circuit-network-remnants",
+    order = "a-f-a",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation =
+    {
+      layers =
+      {{
+        filename = "__base__/graphics/entity/display-panel/display-panel-remnants.png",
+        line_length = 1,
+        width = 128,
+        height = 128,
+        direction_count = 1,
+        shift = util.by_pixel(0, 0),
+        scale = 0.5
+      }}
+    }
+  },
   {
     type = "corpse",
     name = "train-stop-remnants",
