@@ -9713,6 +9713,7 @@ infinity_chest.icon = "__base__/graphics/icons/infinity-chest.png"
 infinity_chest.hidden = true
 infinity_chest.gui_mode = "admins" -- all, none, admins
 infinity_chest.erase_contents_when_mined = true
+infinity_chest.preserve_contents_when_created = true
 infinity_chest.animation = nil
 infinity_chest.animation_sound = nil
 infinity_chest.picture =

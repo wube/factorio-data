@@ -1925,6 +1925,7 @@ function make_ash_cloud_trigger_effects(base_name, radius, damage_multiplier)
             type = "area",
             ignore_collision_condition = true,
             radius = radius,
+            target_enemies = true,
             action_delivery =
             {
               type = "instant",
@@ -1945,6 +1946,7 @@ function make_ash_cloud_trigger_effects(base_name, radius, damage_multiplier)
             type = "area",
             trigger_target_mask = {"flying-robot"},
             ignore_collision_condition = true,
+            target_enemies = true,
             radius = radius,
             action_delivery =
             {

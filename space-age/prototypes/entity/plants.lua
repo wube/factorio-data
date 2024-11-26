@@ -509,7 +509,7 @@ data:extend(
       mining_time = 0.5,
       results =
       {
-        {type = "item", name = "jelly", amount = 6},
+        {type = "item", name = "spoilage", amount = 6},
         {type = "item", name = "stone", amount = 4}
       }
     },

@@ -99,7 +99,7 @@ data:extend
         quality = "epic"
       }
     },
-    prerequisites = { "quality-module", "utility-science-pack" },
+    prerequisites = { "quality-module", "utility-science-pack", "production-science-pack" },
     unit =
     {
       count = 5000,
@@ -155,7 +155,7 @@ data:extend
         recipe = "recycler"
       },
     },
-    prerequisites = {"production-science-pack"},
+    prerequisites = {"production-science-pack", "processing-unit", "concrete"},
     unit =
     {
       count = 5000,

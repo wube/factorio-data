@@ -1,6 +1,70 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.22
+Version: 2.0.23
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.22
+Date: 26. 11. 2024
+  Minor Features:
+    - Assemblers circuit allows to choose if items in crafting should be included by read contents.
+    - Asteroid collector circuit allow to choose if items held by hands should be included by read contents.
+  Changes:
+    - Jelly is no longer mined from Slipstack trees so it is less confusing where to get jelly from.
+    - Nightvision is less orange.
+    - Moved the "Any quality" option into the comparison dropdown.
+    - Disabled spoiling for items created in an infinity chest until the first time they are removed from said chest.
+    - Removed "Select previous technology" control which didn't work (replaced with the generic back/forward navigation in 2.0). (https://forums.factorio.com/117255)
+  Bugfixes:
+    - Fixed that undo tooltips could show the wrong surface. (https://forums.factorio.com/122364)
+    - Fixed quality selector not appearing in infinity chest GUI if qualities are not yet unlocked. (https://forums.factorio.com/122379)
+    - Fixed quality selectors in unfocused windows reacting to quality cycling. Fixes quality cycling while selecting upgrade planner entity modules.
+    - Fixed selector combinator using the old quality dropdown UI.
+    - Fixed a desync when holding blueprints with spidertrons. (https://forums.factorio.com/121954)
+    - Fixed "option" key name on macOS. (https://forums.factorio.com/109696)
+    - Fixed modifier key order on macOS.
+    - Fixed that reaching inventory transfer limit didn't cancel additional item requests. (https://forums.factorio.com/121746)
+    - Fixed performance issue when long transport line sequence is remerging while having active belt reader. (https://forums.factorio.com/122454)
+    - Fixed "So Long and Thanks for all the Fish" achievement not triggering with Space Age enabled (https://forums.factorio.com/121106)
+    - Fixed robots cancelling module upgrade requests if they didn't have enough storage for the old modules. (https://forums.factorio.com/122101)
+    - Fixed that upgrading a rocket silo destroyed the second rocket if it was prepared. (https://forums.factorio.com/122416)
+    - Fixed drawing of quality conditions in entity/blueprint preview in GUI. (https://forums.factorio.com/117030)
+    - Fixed screenshot command crash when passing zoom of 0. (https://forums.factorio.com/122591)
+    - Fixed it was not possible to copy settings between artillery wagons. (https://forums.factorio.com/122595)
+    - Fixed another script issue in orbital logistics tips. (https://forums.factorio.com/122042)
+    - Fixed that undoing a module upgrade didn't update the GUI. (https://forums.factorio.com/119343)
+    - Fixed missing technology dependencies in quality technologies when playing base+quality. (https://forums.factorio.com/122588)
+    - Fixed stack inserter would start dropping partial held stack when waking up by control behavior. (https://forums.factorio.com/122439)
+    - Fixed an issue with obtaining achievements after loading a save file in some cases. (https://forums.factorio.com/121934)
+    - Fixed construction robots not delivering items to an entity marked for upgrade. (https://forums.factorio.com/121181)
+    - Fixed rocket silos requesting more items than their inventory size. (https://forums.factorio.com/120671)
+    - Fixed flamethrower sound still playing after a tank is deactivated or destroyed with its ghost created. (https://forums.factorio.com/122330)
+    - Fixed a crash when interacting with ghost tanks in some scenarios. (https://forums.factorio.com/122613)
+    - Fixed persistent working sounds remaining silent after fading out on pause. (https://forums.factorio.com/122809)
+    - Fixed that you could exit the rocket while landing on space platforms. (https://forums.factorio.com/117064)
+    - Fixed a crash when your inventory was full and robots were trying to store items in your inventory. (https://forums.factorio.com/118550)
+    - Fixed that infinite item resources would not produce if the yield went below 100%. (https://forums.factorio.com/118214)
+    - Fixed that the automated insertion limit tooltip for artillery turrets was incorrect. (https://forums.factorio.com/122895)
+    - Fixed cargo pod didn't have transparent background when landing on Fulgora. (https://forums.factorio.com/121059)
+    - Fixed some light sprites rendered incorrectly when Occlude light sprites option was disabled. (https://forums.factorio.com/122625)
+    - Fixed surface list being too tall when loading into a game in remote view. (https://forums.factorio.com/122743)
+    - Fixed generic interrupt logic not replacing station names in wait conditions. (https://forums.factorio.com/122519)
+    - Fixed that modded custom cameras would always show fog of war. (https://forums.factorio.com/122994)
+    - Fixed a crash when pinning resource patch results that had been fully mined. (https://forums.factorio.com/122985)
+  Modding:
+    - Corpses used by entities with health automatically use the collision box of the parent entity. (https://forums.factorio.com/118718)
+    - Added LuaEntityPrototype::auto_setup_collision_box which defaults to true.
+  Scripting:
+    - Added LuaEntityPrototype::auto_setup_collision_box read.
+    - Events::on_cargo_pod_finished_ascending Lua event added.
+    - 'rocket-launched' achievement condition now triggered by cargo pod ascending instead of rocket.
+    - removed property 'player_index' from Events::on_rocket_launched data.
+    - Changed LuaLogisticPoint::targeted_items_deliver and targeted_items_pickup to include quality.
+    - Changed all instances of get_item_count to support quality.
+    - Changed LuaPlayer::get_quick_bar_slot to include quality.
+    - Changed LuaEquipmentGrid::get_contents() to include quality.
+    - Changed LuaEquipmentGrid::count() to support quality.
+    - Changed LuaEntity::storage_filter read to include quality.
+    - Added quality to selected_prototype during custom input events.
+    - Added GameViewSettings::show_surface_list property to control its vibility in the Remote View.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.21
 Date: 21. 11. 2024
