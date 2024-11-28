@@ -164,7 +164,8 @@ data:extend(
           size = 2048
         },
         color1 = {255, 217, 139, 1.0},
-        color2 = {183, 255, 169, 1.0}
+        color2 = {183, 255, 169, 1.0},
+        tick_factor = 0.000001,
       },
        clouds = effects.default_clouds_effect_properties(),
 

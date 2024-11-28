@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.23
+Version: 2.0.24
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.23
+Date: 28. 11. 2024
+  Changes:
+    - Added an error message when manually trying to launch a rocket to a full space platform.
+    - Changed space platforms to not delete items on the ground when deconstructing them. (https://forums.factorio.com/122383)
+    - Added back a simple version of the Sandbox scenario. Improved the behavior of god controller.
+  Optimizations:
+    - Improved asteroid chunk creation and movement performance.
+    - Improved chart overlay performance in several cases.
+  Bugfixes:
+    - Fixed that clicking the "delete blueprint book" button in the same tick auto-save started as a multiplayer host would crash the game. (https://forums.factorio.com/121552)
+    - Fixed that the display panel would lose its settings when fast-replaced. (https://forums.factorio.com/120967)
+    - Fixed that the bonus GUI did not show recyclers benefiting from belt stack size research. (https://forums.factorio.com/123002)
+    - Fixed that space platforms could get stuck waiting for rockets which became frozen. (https://forums.factorio.com/122562)
+    - Fixed spidertron inventory sort interfering with item pickup requests. (https://forums.factorio.com/120760)
+    - Fixed problems with incorrect setting of allowTipActivationFlag. (https://forums.factorio.com/122826)
+    - Fixed robots attempting to enter a roboport which had all slots reserved for robots of a different type. (https://forums.factorio.com/122854)
+    - Fixed trains and logistics map views would not preserve their settings. (https://forums.factorio.com/118972)
+    - Fixed the tips and tricks window on small screens.
+    - Fixed on screen keyboard appearing when some tips and tricks were shown. (https://forums.factorio.com/122243)
+    - Fixed renaming all trains stops wouldn't rename the stops in wait conditions or interrupts. (https://forums.factorio.com/123084)
+    - Fixed that slow-moving asteroid chunks didn't collide with space platform tiles. (https://forums.factorio.com/117668)
+    - Fixed a crash when the game tried to unlock Steam achievements in minimal mode.
+    - Fixed a crash when trying to open tips and tricks from chat. (https://forums.factorio.com/122965)
+    - Fixed that cancelling entity upgrade didn't remove invalid requests. (https://forums.factorio.com/121242)
+    - Fixed choppy fog animation in saves with 300+ hours of play time. (https://forums.factorio.com/122825)
+    - Fixed a consistency issue when script inserts items at the back of a stopped transport belt. (https://forums.factorio.com/123110)
+    - Fixed requested robots failing to cross a gap in the network. (https://forums.factorio.com/119354)
+    - Fixed that space platform included thrusters marked for deconstruction in "can produce enough thrust" calculation. (https://forums.factorio.com/123102)
+    - Fixed death messages for players with no username. (https://forums.factorio.com/123164)
+    - Fixed stack inserters would not drop held items if they became incompatible due to filter change.
+    - Fixed Quick Panel Panels tab missing next/previous page labels. (https://forums.factorio.com/118379)
+    - Fixed a crash when opening assembling machines with a fixed recipe in latency. (https://forums.factorio.com/123098)
+    - [space-age] Fixed that some recipes could not be crafted by god controller. (https://forums.factorio.com/119972)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.22
 Date: 26. 11. 2024

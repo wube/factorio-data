@@ -8313,7 +8313,7 @@ data:extend(
     {
       type = "frame_style",
       parent = "tips_and_tricks_info_frame",
-      natural_size = {768 , 432 + 36 + 180}
+      natural_size = {904 , 452 + 36 + 180}
     },
 
     tabbed_pane =

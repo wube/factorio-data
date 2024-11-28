@@ -2635,6 +2635,7 @@ data:extend({
     name = "wube-logo-space-platform",
     icon =  "__base__/graphics/icons/water-wube.png",
     render_layer = "above-tiles",
+    hidden_in_factoriopedia = true,
     collision_mask = {layers={}} ,
     collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},

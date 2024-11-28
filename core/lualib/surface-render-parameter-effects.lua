@@ -46,7 +46,8 @@ effects.default_clouds_effect_properties =
           size = 2048
         },
         color1 = {1.0, 0.8706, 0.302},
-        color2 = {1.0, 0.8706, 0.2902}
+        color2 = {1.0, 0.8706, 0.2902},
+        tick_factor = 0.000005,
       }
     end
 
