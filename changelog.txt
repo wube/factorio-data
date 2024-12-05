@@ -1,6 +1,79 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.24
+Version: 2.0.25
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.24
+Date: 05. 12. 2024
+  Minor Features:
+    - [space-age] Added "Nauvis Bus" and "Nauvis Power Up" menu simulations.
+    - [space-age] Added camera views to Space platform tooltips.
+    - Added radar minimap visualization for roboports and cargo landing pads. (https://forums.factorio.com/117994)
+  Graphics:
+    - [space-age] Changed the Space crafting category icon to look like a cargo pod instead of rocket silo.
+    - Changed the Rocket part icon to look more like a part of the rocket.
+  Balancing:
+    - [space-age] Land mines on space platforms now damage the space platform tiles in a radius.
+    - [space-age] Changed rocket fuel from ammonia recipe to require the same amount of solid fuel as the main rocket fuel recipes to prevent a recycling loop. (https://forums.factorio.com/122574)
+  Changes:
+    - Tweaked how entities are selected in remote view when using a gamepad. The entity directly under the crosshair is much more likely to be selected.
+  Bugfixes:
+    - Fixed a desync related to building rails with rail planner in latency. (https://forums.factorio.com/123181)
+    - Fixed a crash when opening a planet with empty cliff generation settings in Factoriopedia. (https://forums.factorio.com/121735)
+    - Fixed a crash when the last roboport is disconnected while searching in Logistic networks GUI. (https://forums.factorio.com/121692)
+    - Fixed that items could be inserted into rocket inventory while the silo was in "automatic requests" mode. (https://forums.factorio.com/118442, https://forums.factorio.com/123172)
+    - Fixed that downgrading an entity ghost didn't remove invalid item insertion requests. (https://forums.factorio.com/118959)
+    - Fixed that robots could enter roboports marked for deconstruction. (https://forums.factorio.com/120107)
+    - Fixed pipes and pipe shadow graphics on flipped biochamber. (https://forums.factorio.com/117390)
+    - Fixed recycler showing greater than 300% productivity in the tooltip. (https://forums.factorio.com/122619)
+    - Fixed crash when rendering thruster with ThrusterPrototype::plumes set to nil. (https://forums.factorio.com/123284)
+    - Fixed that higher quality pumpjacks would produce less oil. (https://forums.factorio.com/123234)
+    - Fixed that ghost building electric poles did not always space them correctly. (https://forums.factorio.com/122831)
+    - Fixed rocket turrets not shooting spawners with capture robots. (https://forums.factorio.com/122257)
+    - Fixed a crash when demolishers are killed as a direct result of attacking something. (https://forums.factorio.com/123308)
+    - Fixed a crash when a robot tried to move in the same tick as it was deactivated by script. (https://forums.factorio.com/121718)
+    - Fixed a crash when reordering time-based wait conditions in multiplayer. (https://forums.factorio.com/119933)
+    - Fixed that a thruster deactivated by script still rendered the exhaust flames. (https://forums.factorio.com/121817)
+    - Fixed that reading collision mask from LuaEntityPrototype could give incorrect collision mask when there were no layers. (https://forums.factorio.com/123332)
+    - Fixed that players with open blueprint creation GUI were unable to open menu when the game was paused. (https://forums.factorio.com/120701)
+    - Fixed parametrization of selector combinator would propose variables not relevant due to current mode. (https://forums.factorio.com/123321)
+    - Fixed parametrization was not covering inserter, assembler and reactor signals. (https://forums.factorio.com/123416)
+    - Fixed some recipes would give items of wrong quality when changing quality effect. (https://forums.factorio.com/122685)
+    - Fixed a dying turret could be disabled by control behavior causing it not able to finish dead animation. (https://forums.factorio.com/123501)
+    - Fixed a rare crash in CargoPod code when loading a Space Age save file with Space Age disabled. (https://forums.factorio.com/122504)
+    - Fixed that LuaSurface::force_generate_chunk_requests() would not force all chunks correctly if generate_with_lab_tiles was true. (https://forums.factorio.com/123535)
+    - Fixed a desync when changing force friends/ceasefire. (https://forums.factorio.com/121499)
+    - Fixed that railguns could get stuck switching targets and not fire. (https://forums.factorio.com/123146)
+    - Fixed trying to parametrize inserter stack size would clamp them to max stack size of neutral force. (https://forums.factorio.com/121360)
+    - Fixed construction robots from the personal roboport being stuck in a loop when fulfilling delivery requests for construction robots. (https://forums.factorio.com/123638)
+    - Fixed production-entity-list showing values for space age when only quality mod was enabled. (https://forums.factorio.com/122566)
+    - Fixed a crash when mods cancel deconstruction of a rolling stock while it's being marked for deconstruction. (https://forums.factorio.com/123296)
+    - Fixed that stack inserters could deadlock in some cases. (https://forums.factorio.com/118138)
+    - Fixed that disabling Space Age mod removed Space Age achievements when playing a non-modded game. (https://forums.factorio.com/116020)
+    - Fixed shortcut bar GUI clipping off screen in remote view. (https://forums.factorio.com/123143)
+    - Fixed that Gleba generated cliffs when they were disabled. (https://forums.factorio.com/120536)
+    - Fixed rapidly changing platform schedule would make it impossible to view that platform. (https://forums.factorio.com/120886)
+    - Fixed Space platform tooltip flickering for 1 tick when another platform schedule/location changes. (https://forums.factorio.com/122021)
+    - Fixed Space platform position indicator not updating in some cases. (https://forums.factorio.com/120447)
+    - Fixed long logistic group name pushing delete button out of view. (https://forums.factorio.com/121857)
+    - Fixed rocket silo in "automatic requests" mode not trashing spoiled items. (https://forums.factorio.com/123629)
+    - Fixed assemblers with parameter recipe would not flip correctly. (https://forums.factorio.com/122112)
+    - Fixed building rails in some cases could attempt to build them in wrong order causing a build attempt to be performed before a required support was built. (https://forums.factorio.com/121758)
+    - Fixed bonus from research of character health is now showing in factoriopedia. (https://forums.factorio.com/121607)
+    - Fixed that the pump would lose its filter when fast-replaced. (https://forums.factorio.com/119256)
+    - Fixed setting generate_map in SimulationDefinition would not allow to have map generated in simulations. (https://forums.factorio.com/122338)
+    - Fixed pipette of hazard concrete tiles would not set correct build direction. (https://forums.factorio.com/123406)
+    - Fixed control settings menu sometimes growing in size when interacting with it. (https://forums.factorio.com/123442)
+  Modding:
+    - Added support for Opus audio codec.
+    - Added FluidBox::mirrored_pipe_picture and mirrored_pipe_picture_frozen.
+    - Added CharacterArmorAnimation::mining_with_tool_particles_animation_positions.
+    - Underground fluid box connections with incompatible underground_collision_mask are allowed to connect as long as tiles between do not collide with any of them.
+  Scripting:
+    - Added LuaCustomEventPrototype::event_id read.
+    - Added LuaCustomInputPrototype::event_id read.
+    - Added LuaBootstrap::get_event_id.
+    - Unified parsing of event types into LuaEventType. Made it possible to specify custom events and custom inputs by providing prototype instance.
+    - Custom events and custom inputs defined by prototypes are given constants inside of defines.events.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.23
 Date: 28. 11. 2024

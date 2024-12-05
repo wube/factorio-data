@@ -259,7 +259,7 @@ sounds.train_wagon_wheels =
   {
     filename = "__base__/sound/train-wagon-wheels.ogg",
     volume = 0.3,
-    modifiers = { volume_multiplier("main-menu", 2), volume_multiplier("driving", 2.5), volume_multiplier("elevation", 1,75) }
+    modifiers = {volume_multiplier("main-menu", 2), volume_multiplier("driving", 2.5)}
   },
   match_volume_to_activity = true,
   activity_to_volume_modifiers =

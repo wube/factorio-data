@@ -581,19 +581,6 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "fission-reactor-equipment",
-    enabled = false,
-    energy_required = 10,
-    ingredients =
-    {
-      {type = "item", name = "processing-unit", amount = 200},
-      {type = "item", name = "low-density-structure", amount = 50},
-      {type = "item", name = "uranium-fuel-cell", amount = 4}
-    },
-    results = {{type="item", name="fission-reactor-equipment", amount=1}}
-  },
-  {
-    type = "recipe",
     name = "space-platform-foundation",
     energy_required = 10,
     enabled = false,
@@ -2675,15 +2662,15 @@ data:extend(
     type = "recipe",
     name = "solid-fuel-from-ammonia",
     icon = "__space-age__/graphics/icons/solid-fuel-from-ammonia.png",
-    energy_required = 1,
+    energy_required = 0.5,
     enabled = false,
     category = "chemistry-or-cryogenics",
     subgroup = "aquilo-processes",
     order = "a[ammonia]-b[solid-fuel-from-ammonia]",
     ingredients =
     {
-      {type="fluid", name = "ammonia", amount = 50},
-      {type="fluid", name = "crude-oil", amount = 20}
+      {type="fluid", name = "ammonia", amount = 15},
+      {type="fluid", name = "crude-oil", amount = 6}
     },
     results = {{type="item", name="solid-fuel", amount=1}},
     allow_productivity = true,
@@ -2707,7 +2694,7 @@ data:extend(
     order = "a[ammonia]-c[ammonia-rocket-fuel]",
     ingredients =
     {
-      {type = "item", name = "solid-fuel", amount = 3},
+      {type = "item", name = "solid-fuel", amount = 10},
       {type="fluid", name = "water", amount= 50},
       {type="fluid", name = "ammonia", amount = 500}
     },

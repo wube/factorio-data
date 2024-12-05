@@ -2100,7 +2100,8 @@ data:extend
     inventory_move_sound = item_sounds.mechanical_inventory_move,
     pick_sound = item_sounds.mechanical_inventory_pickup,
     drop_sound = item_sounds.mechanical_inventory_move,
-    stack_size = 5
+    stack_size = 5,
+    weight = (1000/50)*kg
   },
   {
     type = "item",

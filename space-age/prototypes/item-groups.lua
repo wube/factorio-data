@@ -57,7 +57,7 @@ data:extend(
     name = "space",
     order = "d",
     icon = "__space-age__/graphics/item-group/space.png",
-    icon_size = 256,
+    icon_size = 128,
   },
   {
     type = "item-subgroup",

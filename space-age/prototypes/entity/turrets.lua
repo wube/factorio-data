@@ -329,6 +329,7 @@ data:extend(
     starting_attack_speed = 0.02,
     ending_attack_speed = 0.05,
     alert_when_attacking = true,
+    can_retarget_while_starting_attack = true,
     circuit_connector = circuit_connector_definitions["railgun-turret"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     open_sound = {filename = "__base__/sound/open-close/turret-open.ogg", volume = 0.6},

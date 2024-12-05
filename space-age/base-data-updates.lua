@@ -277,6 +277,8 @@ data.raw.lab["lab"].icons_positioning =
   {inventory_index = defines.inventory.lab_input, shift = {0, 0}, max_icons_per_row = 6, separation_multiplier = 1/1.1}
 }
 
+table.insert(data.raw["land-mine"]["land-mine"].action.action_delivery.source_effects, { type = "damage-tile", damage = { amount = 100, type = "explosion"}, radius = 3 })
+
 data.raw.item["rocket-silo"].subgroup = "space-interactors"
 data.raw.item["cargo-landing-pad"].subgroup = "space-interactors"
 data.raw["cargo-pod"]["cargo-pod"].subgroup = "space-interactors"

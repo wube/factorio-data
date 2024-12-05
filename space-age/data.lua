@@ -72,6 +72,8 @@ end
 local main_menu_simulations = data.raw["utility-constants"]["default"].main_menu_simulations
 main_menu_simulations.nauvis_biolab = space_age_menu_simulations.nauvis_biolab
 main_menu_simulations.nauvis_tank_building = space_age_menu_simulations.nauvis_tank_building
+main_menu_simulations.nauvis_power_up = space_age_menu_simulations.nauvis_power_up
+main_menu_simulations.nauvis_bus = space_age_menu_simulations.nauvis_bus
 main_menu_simulations.platform_science = space_age_menu_simulations.platform_science
 main_menu_simulations.platform_moving = space_age_menu_simulations.platform_moving
 main_menu_simulations.platform_messy_nuclear = space_age_menu_simulations.platform_messy_nuclear

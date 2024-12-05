@@ -6439,6 +6439,7 @@ data:extend(
     minable = {mining_time = 1, result = "cargo-landing-pad"},
     inventory_size = 80,
     radar_range = 4,
+    radar_visualisation_color = {0.059, 0.092, 0.235, 0.275},
     graphics_set =
     {
         water_reflection =
@@ -6767,6 +6768,7 @@ data:extend(
     request_to_open_door_timeout = 15,
     spawn_and_station_height = 0.3,
     stationing_render_layer_swap_height = 0.87,
+    radar_visualisation_color = {0.059, 0.092, 0.235, 0.275},
 
     draw_logistic_radius_visualization = true,
     draw_construction_radius_visualization = true,

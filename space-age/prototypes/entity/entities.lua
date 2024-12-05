@@ -11,6 +11,8 @@ local meld = require("meld")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 
+local biochamber_pictures = require("__space-age__.prototypes.entity.biochamber-pictures")
+
 data:extend({
   {
     type = "container",
@@ -122,8 +124,10 @@ data:extend({
     {
       {
         production_type = "input",
-        pipe_picture =  require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_1,
-        pipe_picture_frozen = require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_1_frozen,
+        pipe_picture =                 biochamber_pictures.pipe_pictures_1,
+        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_1_frozen,
+        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_2,
+        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_2_frozen,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections =
@@ -137,8 +141,10 @@ data:extend({
       },
       {
         production_type = "input",
-        pipe_picture =  require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_2,
-        pipe_picture_frozen =  require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_2_frozen,
+        pipe_picture =                 biochamber_pictures.pipe_pictures_2,
+        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_2_frozen,
+        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_1,
+        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_1_frozen,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections =
@@ -152,8 +158,10 @@ data:extend({
       },
       {
         production_type = "output",
-        pipe_picture =  require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_1,
-        pipe_picture_frozen = require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_1_frozen,
+        pipe_picture =                 biochamber_pictures.pipe_pictures_1,
+        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_1_frozen,
+        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_2,
+        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_2_frozen,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections =
@@ -167,8 +175,10 @@ data:extend({
       },
       {
         production_type = "output",
-        pipe_picture =  require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_2,
-        pipe_picture_frozen =  require("__space-age__.prototypes.entity.biochamber-pictures").pipe_pictures_2_frozen,
+        pipe_picture =                 biochamber_pictures.pipe_pictures_2,
+        pipe_picture_frozen =          biochamber_pictures.pipe_pictures_2_frozen,
+        mirrored_pipe_picture =        biochamber_pictures.pipe_pictures_1,
+        mirrored_pipe_picture_frozen = biochamber_pictures.pipe_pictures_1_frozen,
         pipe_covers = pipecoverspictures(),
         volume = 1000,
         pipe_connections =
