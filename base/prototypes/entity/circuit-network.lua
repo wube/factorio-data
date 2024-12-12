@@ -72,7 +72,7 @@ data:extend
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
 
-    circuit_wire_max_distance = 9
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance
   },
 
   generate_decider_combinator
@@ -245,7 +245,7 @@ data:extend
         }
       }
     },
-    circuit_wire_max_distance = 9
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance
   },
 
   generate_constant_combinator
@@ -280,7 +280,7 @@ data:extend
       {-0.21875, -0.46875}
     },
 
-    circuit_wire_max_distance = 9
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance
   },
 
   {
@@ -1114,6 +1114,6 @@ data:extend
     input_connection_bounding_box = {{-0.5, 0}, {0.5, 1}},
     output_connection_bounding_box = {{-0.5, -1}, {0.5, 0}},
 
-    circuit_wire_max_distance = 13
+    circuit_wire_max_distance = combinator_circuit_wire_max_distance
   }
 }

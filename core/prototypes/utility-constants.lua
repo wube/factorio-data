@@ -519,6 +519,8 @@ data:extend(
     default_item_weight = 100,
     rocket_lift_weight = 1000000, -- 1 000 kg
 
+    factoriopedia_recycling_recipe_categories = { "recycling", "recycling-or-hand-crafting" },
+
     max_fluid_flow = 100,
     default_pipeline_extent = 320, -- Can be overridden on a per-fluidbox basis
 

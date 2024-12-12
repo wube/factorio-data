@@ -196,3 +196,4 @@ transport_belt_circuit_wire_max_distance = 9
 
 assembling_machine_circuit_wire_max_distance = 9
 reactor_circuit_wire_max_distance = 9
+combinator_circuit_wire_max_distance = 9

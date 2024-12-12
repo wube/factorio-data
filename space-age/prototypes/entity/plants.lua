@@ -131,6 +131,8 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
     local variation = {
       trunk = {
         filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-trunk.png",
+        flags = { "mipmap" },
+        surface = "gleba",
         width = width,
         height = height,
         x = x,
@@ -141,6 +143,8 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
       },
       leaves = {
         filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-harvest.png",
+        flags = { "mipmap" },
+        surface = "gleba",
         width = width,
         height = height,
         x = x,
@@ -151,6 +155,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
       },
       normal = {
         filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-normal.png",
+        surface = "gleba",
         width = width,
         height = height,
         x = x,
@@ -163,6 +168,8 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         frame_count = 2,
         lines_per_file = 1,
         line_length = 1,
+        flags = { "mipmap", "shadow" },
+        surface = "gleba",
         filenames =
         {
           "__space-age__/graphics/entity/plant/"..name.."/"..name.."-harvest-shadow.png",
@@ -212,6 +219,8 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
           variation.leaves,
           {
             filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-harvest-glow.png",
+            flags = { "mipmap" },
+            surface = "gleba",
             width = width,
             height = height,
             x = x,

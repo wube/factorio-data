@@ -448,7 +448,8 @@ data:extend
   {
     type = "item",
     name = "red-wire",
-    icon = "__base__/graphics/icons/red-wire.png",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-red-wire-x56.png",
+    icon_size = 56,
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
     subgroup = "spawnables",
     color_hint = { text = "R" },
@@ -460,7 +461,8 @@ data:extend
   {
     type = "item",
     name = "green-wire",
-    icon = "__base__/graphics/icons/green-wire.png",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-green-wire-x56.png",
+    icon_size = 56,
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
     subgroup = "spawnables",
     color_hint = { text = "G" },
@@ -472,7 +474,8 @@ data:extend
   {
     type = "item",
     name = "copper-wire",
-    icon = "__base__/graphics/icons/copper-wire.png",
+    icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-copper-wire-x56.png",
+    icon_size = 56,
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
     subgroup = "spawnables",
     color_hint = { text = "C" },

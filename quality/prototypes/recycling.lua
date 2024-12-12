@@ -180,10 +180,23 @@ local generate_recycling_recipe = function(recipe, can_recycle)
   local can_recycle = can_recycle or default_can_recycle
   if not can_recycle(recipe) then return end
 
+  local recipe_subgroup = recipe.subgroup
+  if not recipe_subgroup then
+    for subtype,_ in pairs(defines.prototypes.item) do
+      local subtype = data.raw[subtype]
+      if recipe.main_product and subtype then
+        local original_recipe = subtype[recipe.main_product]
+        if original_recipe then
+          recipe_subgroup = original_recipe.subgroup
+          break
+        end
+      end
+    end
+  end
   local result =
   {
     type = "recipe",
-    subgroup = "other",
+    subgroup = recipe_subgroup,
     category = "recycling"
   }
 
@@ -206,7 +219,7 @@ local function generate_self_recycling_recipe(item)
       localised_name = {"recipe-name.recycling", get_item_localised_name(item.name)},
       icon = nil,
       icons = icons,
-      subgroup = "other",
+      subgroup = item.subgroup,
       category = "recycling",
       hidden = true,
       enabled = true,

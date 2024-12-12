@@ -276,6 +276,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_flat"},
     layer = aquilo_tile_offset_frozen + 2,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/snow-flat.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -308,6 +309,7 @@ data:extend({
     order = "b[natural]-i[ice]-a[snow]",
     collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-flat.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -342,6 +344,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_crests"},
     layer = aquilo_tile_offset_frozen + 3,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/snow-crests.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -374,6 +377,7 @@ data:extend({
     order = "b[natural]-i[ice]-a[snow]",
     collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed + 1,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-crests.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -407,6 +411,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_lumpy"},
     layer = aquilo_tile_offset_frozen + 4,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/snow-lumpy.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -440,6 +445,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "10 * aquilo_snow_ice + 10 * aquilo_tile_variant"},
     layer = aquilo_tile_offset_thawed + 2,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-lumpy.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -473,6 +479,7 @@ data:extend({
     collision_mask = tile_collision_masks.ground(),
     autoplace = {probability_expression = "snow_patchy"},
     layer = aquilo_tile_offset_frozen + 5,
+    sprite_usage_surface = "aquilo",
     variants = material_background("__space-age__/graphics/terrain/aquilo/snow-patchy-8x.png", 8),
 
     transitions = ice_transitions,
@@ -496,6 +503,7 @@ data:extend({
     order = "b[natural]-i[ice]-a[snow]",
     collision_mask = tile_collision_masks.ground(),
     layer = aquilo_tile_offset_thawed + 3,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/dust-patchy.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -528,6 +536,7 @@ data:extend({
     collision_mask = tile_collision_masks.meltable_tile(),
     autoplace = {probability_expression = "ice_rough"},
     layer = aquilo_tile_offset_frozen + 1,
+    sprite_usage_surface = "aquilo",
     variants = tile_variations_template(
       "__space-age__/graphics/terrain/aquilo/ice-rough.png", "__base__/graphics/terrain/masks/transition-4.png",
       {
@@ -561,6 +570,7 @@ data:extend({
     collision_mask = tile_collision_masks.meltable_tile(),
     autoplace = {probability_expression = "ice_smooth"},
     layer = aquilo_tile_offset_frozen,
+    sprite_usage_surface = "aquilo",
     variants = material_background("__space-age__/graphics/terrain/aquilo/ice-smooth.png", 4),
 
     transitions = ice_transitions,
@@ -592,6 +602,7 @@ data:extend({
     can_be_part_of_blueprint = true,
     collision_mask = tile_collision_masks.meltable_tile(),
     layer = aquilo_tile_offset_frozen - 1,
+    sprite_usage_surface = "aquilo",
     variants = material_background("__space-age__/graphics/terrain/aquilo/ice-platform.png", 8),
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
@@ -616,6 +627,7 @@ data:extend({
     effect_color_secondary = { 49, 80, 14 },
     autoplace = {probability_expression = "brash_ice"},
     layer = 0,
+    sprite_usage_surface = "aquilo",
     layer_group = "water-overlay",
     variants =
     {
@@ -696,6 +708,7 @@ local function frozen_concrete(base_name, item_name, transition_merge_tile)
   frozen_concrete.can_be_part_of_blueprint = true
   frozen_concrete.placeable_by = { item = item_name, count = 1}
   frozen_concrete.layer = base_prototype.layer + 1
+  frozen_concrete.sprite_usage_surface = "aquilo"
   frozen_concrete.variants =
   {
     material_background =

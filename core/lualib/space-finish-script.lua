@@ -13,8 +13,9 @@ local on_space_platform_changed_state = function(event)
   local platform = event.platform
   if not (platform and platform.valid) then return end
 
-  if not platform.space_location then return end
-  if platform.space_location.name ~= script_data.victory_location then return end
+  local last_visited_location = platform.last_visited_space_location
+  if not last_visited_location then return end
+  if last_visited_location.name ~= script_data.victory_location then return end
 
   local force = platform.force
   if script_data.finished[force.name] then return end

@@ -258,15 +258,15 @@ sounds.train_wagon_wheels =
   sound =
   {
     filename = "__base__/sound/train-wagon-wheels.ogg",
-    volume = 0.3,
-    modifiers = {volume_multiplier("main-menu", 2), volume_multiplier("driving", 2.5)}
+    volume = 0.6,
+    modifiers = {volume_multiplier("main-menu", 2), volume_multiplier("driving", 0.5)}
   },
   match_volume_to_activity = true,
   activity_to_volume_modifiers =
   {
-    multiplier = 1.1,
+    multiplier = 1.5,
+    minimum = 0.5,
     maximum = 1.0,
-    offset = 0.4,
   },
   match_speed_to_activity = true,
   activity_to_speed_modifiers =
@@ -276,6 +276,9 @@ sounds.train_wagon_wheels =
     maximum = 1.2,
     offset = -0.8,
   },
+  fade_in_ticks = 10,
+  fade_out_ticks = 20,
+  max_sounds_per_type = 2,
 }
 
 --Entities open close

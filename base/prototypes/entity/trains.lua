@@ -780,7 +780,7 @@ data:extend(
           match_volume_to_activity = true,
           activity_to_volume_modifiers =
           {
-            multiplier = 1.7,
+            multiplier = 1.5,
             maximum = 1.0,
             offset = 1.1,
           },

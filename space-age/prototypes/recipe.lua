@@ -396,7 +396,7 @@ data:extend(
     energy_required = 15,
     ingredients =
     {
-      {type = "item", name = "pentapod-egg", amount = 1},
+      {type = "item", name = "pentapod-egg", amount = 1, ignored_by_stats = 1},
       {type = "item", name = "nutrients", amount = 30},
       {type = "fluid", name = "water", amount = 60}
     },
@@ -848,7 +848,7 @@ data:extend(
     {
       {type = "item", name = "ice", amount = 3},
       {type = "item", name = "lithium-plate", amount = 1},
-      {type = "fluid", name = "fluoroketone-cold", amount = 6, ignored_by_stats = 6}
+      {type = "fluid", name = "fluoroketone-cold", amount = 6, ignored_by_stats = 3}
     },
     energy_required = 20,
     results =
@@ -2029,7 +2029,7 @@ data:extend(
       {type = "item", name = "nutrients", amount = 100},
       {type = "fluid", name = "water", amount = 100}
     },
-    results = {{type="item", name="raw-fish", amount=3, ignored_by_stats = 2}},
+    results = {{type="item", name="raw-fish", amount=3, ignored_by_stats = 2, ignored_by_productivity = 2}},
     allow_productivity = false,
     allow_quality = false,
     crafting_machine_tint =
@@ -2488,7 +2488,7 @@ data:extend(
       {type = "item", name = "superconductor", amount = 1},
       {type = "item", name = "carbon-fiber", amount = 1},
       {type = "item", name = "lithium-plate", amount = 2},
-      {type = "fluid", name = "fluoroketone-cold", amount = 10, ignored_by_stats = 10},
+      {type = "fluid", name = "fluoroketone-cold", amount = 10, ignored_by_stats = 5},
     },
     results = {
       {type = "item", name = "quantum-processor", amount = 1},

@@ -27,6 +27,7 @@ data:extend(
     show_character_tab_in_controller_gui = false,
     show_infinity_filters_in_controller_gui = false,
     placed_corpses_never_expire = true,
-    ignore_surface_conditions = true
+    ignore_surface_conditions = true,
+    ignore_tile_conditions = true
   }
 })

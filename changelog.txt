@@ -1,6 +1,88 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.25
+Version: 2.0.26
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.25
+Date: 12. 12. 2024
+  Minor Features:
+    - Dragging and dropping a blueprint file into the game window will import the file contents as a blueprint string.
+    - Dragging and dropping text into the game window on X11 will import the text as a blueprint string.
+    - Factoriopedia now shows recycling recipes for each item.
+    - Cargo pod scheduling reworked to send larger and more spaced out deliveries. This should improve the frequency of trickling space science and material drops.
+  Changes:
+    - Inserters (especially ghost long handed ones) spawn in stretched to an appropriate distance.
+    - Reverted fix for god controller being able to zoom out to map view. (https://forums.factorio.com/123675)
+    - Changed selector combinator circuit wire reach to be the same as wire reach of other combinators.
+  Graphics:
+    - Asteroid collector tentacles have less colourful rainbow effect on them.
+  Bugfixes:
+    - [space-age] Fixed that victory condition didn't trigger when the platform was paused or didn't stop at solar system edge. (https://forums.factorio.com/122446)
+    - Fixed a crash when copying logistic filters into blueprints. (https://forums.factorio.com/123606)
+    - Fixed that Factoriopedia would close if a GUI behind it was changed. (https://forums.factorio.com/117404)
+    - Fixed a crash when fast-replacing the platform hub. (https://forums.factorio.com/123802)
+    - Fixed that the mod manager would not account for mods hidden by search when browsing dependencies. (https://forums.factorio.com/119498)
+    - Fixed a crash on Mac when driving a car in multiplayer when the player has no character. (https://forums.factorio.com/123682)
+    - Fixed a crash when drawing EntityButtons with entities with inverted selection boxes. (https://forums.factorio.com/121455)
+    - Fixed that pumps would run endlessly if the input fluid was incompatible. (https://forums.factorio.com/120461)
+    - Fixed station list could be sometimes sorted incorrectly. (https://forums.factorio.com/123125)
+    - Fixed trashing logic would not run after cancelling deconstruction of entity. (https://forums.factorio.com/123596)
+    - Fixed reverting technologies with recipe unlocks would lock recipe that is still unlocked by other technology. (https://forums.factorio.com/122723)
+    - Fixed railgun turret would not draw out of power when ammo was inserted. (https://forums.factorio.com/122329)
+    - Fixed that logistic network content tooltips didn't show nice numbers. (https://forums.factorio.com/123982)
+    - Fixed blueprint export to string would create malformed blueprint if it contained decider combinator with empty conditions or empty output. (https://forums.factorio.com/122190)
+    - Fixed consistency issue when power switch was destroyed leaving a ghost. (https://forums.factorio.com/122282)
+    - Fixed inserters could in some cases interact with elevated cargo wagons. (https://forums.factorio.com/123544)
+    - Fixed mods could specify an assembling machine with fixed quality without specifying fixed recipe. (https://forums.factorio.com/123072)
+    - Fixed research was not correctly counted in total item production statistics. (https://forums.factorio.com/121799)
+    - Fixed rocket silo control behavior would not update outputs when connecting wire. (https://forums.factorio.com/122053)
+    - Fixed that fast-replacing crafting machines would not preserve the mirrored orientation of the original machine. (https://forums.factorio.com/122481)
+    - Fixed that burner inserters would load too much fuel when fed by inserters. (https://forums.factorio.com/123927)
+    - Fixed nuclear power achievement could be obtained without burning uranium fuel cell if it was consumed for crafting. (https://forums.factorio.com/122753)
+    - Fixed that clicking the sort buttons in the save-map GUI would reset the save name field. (https://forums.factorio.com/123926)
+    - Fixed demolisher in vulcanus crossing menu simulations would sometimes render health bar. (https://forums.factorio.com/121990)
+    - Fixed a crash when opening the console while a platform tooltip was shown. (https://forums.factorio.com/124061)
+    - Fixed that the cursor theme was not being respected when running on GNOME Wayland. (https://forums.factorio.com/113202)
+    - Fixed loader was able to insert items into asteroid collector. (https://forums.factorio.com/124025)
+    - Fixed flamethrower turret sound still playing after being deactivated or destroyed with its ghost created. (https://forums.factorio.com/124142)
+    - Fixed cars and tanks would keep their speed through a ghost when dying. (https://forums.factorio.com/124122)
+    - Fixed fluid parameters were not showing when selecting fluids for wait condition. (https://forums.factorio.com/123748)
+    - Fixed gleba tree sprites still had blue line at their upper edge under some conditions. (https://forums.factorio.com/119943)
+    - Fixed deconstruction planner would not mark rails for deconstruction if they were dependency of a rail support that was instantly removed. (https://forums.factorio.com/123751)
+    - Fixed cargo pods with passenger would select landing spots using incorrect bounding box. (https://forums.factorio.com/123754)
+    - Fixed blueprint parametrization would allow selecting hidden recipe that can be crafted. (https://forums.factorio.com/123759)
+    - Fixed that writing invalid font names to custom GUI elements would crash the game to desktop. (https://forums.factorio.com/124162)
+    - Fixed cryogenic science pack recipe was incorrectly considering entire fluoroketone input as a catalyst. (https://forums.factorio.com/123797)
+    - Fixed fish breeding recipe was applying productivity to catalyst. (https://forums.factorio.com/123819)
+    - Fixed a crash when trying to set infinity chest filter with non zero count but empty name. (https://forums.factorio.com/123824)
+    - Fixed a crash when super force building blueprint with belts and external wires in latency. (https://forums.factorio.com/122211)
+    - Fixed 'import from' option changing when setting requested item quality on platforms. (https://forums.factorio.com/120354)
+    - Fixed that assemblers without fluid boxes were incorrectly considered rotatable. (https://forums.factorio.com/123966)
+    - Fixed burner energy source would not report out of fuel when incompatible items were in the fuel inventory. (https://forums.factorio.com/124016)
+    - Fixed that some damage tooltips were incorrect. (https://forums.factorio.com/124208)
+    - Fixed that any tag being changed would refresh any active tag-edit GUI. (https://forums.factorio.com/124220)
+    - Fixed many smaller GUIs still not supporting non-English search (https://forums.factorio.com/123923)
+    - Fixed a desync related to cargo landing pads trash inventory when playing without Space Age.
+    - Fixed a crash when mods use fixed recipes with surface conditions in machines that don't have surface conditions. (https://forums.factorio.com/124224)
+    - Fixed copying display panel would copy icon and text regardless of control behavior being active. (https://forums.factorio.com/123007)
+    - Fixed nuclear reactor was heating tiles farther than it would heat entities. (https://forums.factorio.com/122005)
+    - Fixed asteroid background rendering black lines when graphics driver forces anisotropic filtering. (https://forums.factorio.com/116707)
+    - Fixed that "auto requests for space platforms" was not preserved in blueprint strings. (https://forums.factorio.com/124121)
+    - Fixed that changing "send to orbit automatically" on rocket silos did not work when in ghost form. (https://forums.factorio.com/123700)
+    - Fixed electric network statistics could show total value that was larger than expected caused by counting incomplete next sample. (https://forums.factorio.com/120351)
+    - Fixed that importing save files in the map editor would crash the game. (https://forums.factorio.com/123402)
+    - Fixed current research tooltip would show incorrect progress values. (https://forums.factorio.com/124133)
+  Modding:
+    - UTF-8 encoding is now checked for all mod text files to ensure proper rendering. Mods with ANSI encoded text files will not load anymore. (Prompted by https://forums.factorio.com/120452)
+    - Added InserterPrototype::starting_distance.
+    - Added minimum collision box restriction to cargo bays, cargo landing pads and space platform hubs. (https://forums.factorio.com/124079)
+    - Burner inserter initial energy amount was changed to be defined on the burner energy source prototype.
+    - Changed UseEntityInEnergyProductionAchievementPrototype::consumed_condition into ItemIDFilter.
+    - ItemProductPrototype and FluidProductPrototype ignored_by_productivity defaults to value of ignored_by_stats.
+    - Added heating_radius to ReactorPrototype and HeatPipePrototype.
+  Scripting:
+    - Added LuaBurnerPrototype::initial_fuel and initial_fuel_percent read.
+    - Added LuaSpacePlatform::last_visited_space_location read.
+    - Added LuaSpacePlatform::paused read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.24
 Date: 05. 12. 2024

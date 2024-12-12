@@ -2478,6 +2478,7 @@ data:extend(
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     damaged_trigger_effect = hit_effects.entity(),
+    starting_distance = 1.7,
     pickup_position = {0, -2},
     insert_position = {0, 2.2},
     energy_per_movement = "5kJ",
@@ -2587,6 +2588,8 @@ data:extend(
     {
       type = "burner",
       fuel_categories = {"chemical"},
+      initial_fuel = "wood",
+      initial_fuel_percent = 0.25,
       effectivity = 1,
       fuel_inventory_size = 1,
       light_flicker = {color = {0,0,0}},
@@ -5454,6 +5457,7 @@ data:extend(
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
     damaged_trigger_effect = hit_effects.entity(),
+    starting_distance = 0.85,
     pickup_position = {0, -1},
     insert_position = {0, 1.2},
     energy_per_movement = "20kJ",
@@ -8480,7 +8484,6 @@ data:extend(
       specific_heat = "10MJ",
       max_transfer = "10GW",
       minimum_glow_temperature = 350,
-      --heat_range = 2,
       connections =
       {
         {
