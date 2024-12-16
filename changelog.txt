@@ -1,6 +1,39 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.26
+Version: 2.0.27
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.26
+Date: 16. 12. 2024
+  Minor Features:
+    - Re-added the sandbox scenario questionnaire.
+  Changes:
+    - Space age mods no longer count as "has mods" in the server browser. (https://forums.factorio.com/117812)
+    - Removed default secondary keybinding for redo action on AZERTY keyboards as it collided with super force building while moving up. (https://forums.factorio.com/124377)
+  Optimizations:
+    - Improved asteroid collector performance - we estimate it should be 5x - 15x faster when there are thousands of asteroid chunks on the map. (https://forums.factorio.com/118736)
+    - Improved asteroid update performance by up to 20%.
+  Bugfixes:
+    - Fixed a crash at startup when mods would define fluid with no fuel value as a fluid energy source fuel. (https://forums.factorio.com/124177)
+    - Fixed that LuaPlayer::opened did not work with equipment grids. (https://forums.factorio.com/123922)
+    - [space-age] Fixed some asteroid graphic variations were defined twice. (https://forums.factorio.com/123453)
+    - Fixed that it was possible to click the update selected mods button while update data was being fetched. (https://forums.factorio.com/124094)
+    - Fixed several edge cases where the mod explore results table selection would get out of sync with the mod info pane. (https://forums.factorio.com/123992)
+    - Changed graphics setting turret-overdraw-scale-threshold to turret-overdraw-estimated-pixel-overdraw-threshold to fix artillery range overdraw performance. (https://forums.factorio.com/123380)
+    - [space-age] Fixed fulgorite pieces icon had empty mipmaps. (https://forums.factorio.com/121347)
+    - Fixed that rocket silos would not launch quickly when there were platform requests that couldn't be satisfied. (https://forums.factorio.com/122321)
+    - Fixed a crash when building terrain in remote view. (https://forums.factorio.com/124420)
+    - Fixed that layered quality icons did not work correctly in recipe overlays. (https://forums.factorio.com/122184)
+    - Fixed that "hidden in factoriopedia" technologies still showed in Factoriopedia. (https://forums.factorio.com/123695)
+    - Fixed a crash when mods set ItemRequestProxy::active to false. (https://forums.factorio.com/124022)
+    - Fixed incorrect space platform bounds and weight when space platform foundations were covered by other tiles.
+    - Fixed a crash when mining closed power switch. (https://forums.factorio.com/124455)
+    - Fixed a performance issue when rendering radar minimap visualization. (https://forums.factorio.com/124400)
+    - Fixed a crash when clicking give-item technology modifiers in the technology GUI. (https://forums.factorio.com/124525)
+    - Fixed a crash when a recipe has a research-progress result. (https://forums.factorio.com/124509)
+  Scripting:
+    - Added LuaEntity::minable_flag read/write. Write to LuaEntity::minable is now deprecated.
+    - Added LuaEntity::is_updatable read, disabled_by_script read/write, disabled_by_control_behavior read and disabled_by_recipe read.
+    - Added LuaEntity::is_freezable read and frozen read.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.25
 Date: 12. 12. 2024
