@@ -3028,7 +3028,8 @@ data:extend(
       filename = "__core__/graphics/mouse-cursor.png",
       size = {30, 45},
       scale = 0.5,
-      flags = {"gui-icon"}
+      flags = {"gui-icon"},
+      load_in_minimal_mode = true
     },
     mouse_cursor_macos =
     {

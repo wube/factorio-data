@@ -1,6 +1,41 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.27
+Version: 2.0.28
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.27
+Date: 18. 12. 2024
+  Changes:
+    - Wrigglers will no longer proactively attack pollen emitters. However, they will still respond to artillery.
+    - Attack groups containing stompers or strafers will now contain fewer units.
+    - Large egg rafts will try to have at least one stomper or strafer spawned at a time.
+    - Small egg rafts no longer absorb pollution because they will never produce stompers or strafers.
+  Graphics:
+    - Aquilo icebergs have longer shadows to integrate with the world better.
+  Bugfixes:
+    - Fixed that the asteroid collectors circuit condition referred to inserters. (https://forums.factorio.com/118721)
+    - Fixed that hidden planets still showed in the map preview GUI. (https://forums.factorio.com/124471)
+    - Fixed a crash when loading new modded tips and tricks with a "dependencies met" trigger but no dependencies.
+    - Fixed a crash when interacting with modded equipment ghosts. (https://forums.factorio.com/123973)
+    - Fixed that a robot wouldn't play a tile mined_sound when deconstructing it.
+    - Fixed that a robot would play a deconstruct sound regardless of whether the deconstruction succeeded or not. (https://forums.factorio.com/124188)
+    - Fixed a consistency issue related to loading script rendered animations when animation is no longer available. (https://forums.factorio.com/124044)
+    - Fixed a desync related to asteroid collectors and distant chunks optimization when asteroid collector is destroyed. (https://forums.factorio.com/124608)
+    - Fixed a crash when opening an audio stream encounters a filesystem error. (https://forums.factorio.com/124578)
+    - Fixed a performance issue when exiting the game while large modded entities exist. (https://forums.factorio.com/121313)
+    - Fixed that the personal logistics area would render incorrectly when the game was paused. (https://forums.factorio.com/123438)
+    - Fixed that quality science packs would show "100%" remaining. (https://forums.factorio.com/123076)
+    - Fixed that the open-factoriopedia hotkey did not work in some cases. (https://forums.factorio.com/121411)
+    - Fixed that fog of war was not rendered while dead. (https://forums.factorio.com/124251)
+    - Fixed that opening the technology GUI while dragging the map would continue to drag the map. (https://forums.factorio.com/117950)
+    - Fixed a crash when deleting a space platform which had cargo bays built in a specific order. (https://forums.factorio.com/124433)
+  Modding:
+    - TipsAndTricksItem requires at least one dependency if it has a `dependencies-met` trigger.
+    - Added UnitAISettings::size_in_group and UnitAISettings::join_attacks.
+    - Added LuaAISettings::size_in_group and LuaAISettings::join_attacks.
+    - Added EnemySpawnerPrototype::max_count_of_owned_defensive_units and EnemySpawnerPrototype::max_defensive_friends_around_to_spawn.
+    - Added LuaEntityPrototype::max_count_of_owned_defensive_units and LuaEntityPrototype::max_defensive_friends_around_to_spawn.
+  Scripting:
+    - Added LuaSurface::ignore_surface_conditions.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.26
 Date: 16. 12. 2024

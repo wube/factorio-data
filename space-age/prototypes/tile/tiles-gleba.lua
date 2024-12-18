@@ -3,6 +3,7 @@ local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-val
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
+local base_sounds = require("__base__/prototypes/entity/sounds")
 
 local semi_wet_sound = sound_variations("__space-age__/sound/walking/semi-wet-rock", 10, 0.7)
 local semi_dry_sound = sound_variations("__space-age__/sound/walking/semi-dry-rock", 10, 0.8)
@@ -100,7 +101,7 @@ data:extend({
     order = "d[yumako]-d[artificial-yumako-soil]",
     subgroup = "gleba-tiles",
     minable = {mining_time = 0.5, result = "artificial-yumako-soil"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 22,
@@ -134,7 +135,7 @@ data:extend({
     order = "d[yumako]-e[overgrowth-yumako-soil]",
     subgroup = "gleba-tiles",
     minable = {mining_time = 0.5, result = "overgrowth-yumako-soil"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 24,
@@ -168,7 +169,7 @@ data:extend({
     order = "e[jellynut]-c[artificial-jellynut-soil]",
     subgroup = "gleba-tiles",
     minable = {mining_time = 0.5, result = "artificial-jellynut-soil"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 23,
@@ -202,7 +203,7 @@ data:extend({
     order = "e[jellynut]-d[overgrowth-jellynut-soil]",
     subgroup = "gleba-tiles",
     minable = {mining_time = 0.5, result = "overgrowth-jellynut-soil"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     collision_mask = tile_collision_masks.ground(),
     layer = gleba_tile_offset + 25,

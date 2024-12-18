@@ -4,6 +4,8 @@ local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-ma
 
 local space_platform_tile_animations = require("prototypes.tile.platform-tile-animations")
 
+local base_sounds = require("__base__/prototypes/entity/sounds")
+
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
@@ -202,7 +204,7 @@ data:extend
     order = "a[artificial]-d[utility]-b[space-platform-foundation]",
     subgroup = "artificial-tiles",
     minable = {mining_time = 0.5, result = "space-platform-foundation"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     allows_being_covered = false,
     max_health = 50,
@@ -399,7 +401,7 @@ data:extend
     subgroup = "artificial-tiles",
     needs_correction = false,
     minable = {mining_time = 0.5, result = "foundation"},
-    mined_sound = {filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8},
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     collision_mask = tile_collision_masks.ground(),
     layer = 9,

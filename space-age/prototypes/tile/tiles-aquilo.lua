@@ -2,6 +2,7 @@ local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
+local base_sounds = require("__base__/prototypes/entity/sounds")
 
 local snow_sounds = sound_variations("__space-age__/sound/walking/snow", 10, 0.8, volume_multiplier("main-menu", 2.9))
 local icy_snow_sounds = sound_variations("__space-age__/sound/walking/icy-snow", 10, 0.8, volume_multiplier("main-menu", 2.9))
@@ -591,7 +592,7 @@ data:extend({
     order = "b[natural]-i[ice]-c[smooth]",
     subgroup = "aquilo-tiles",
     minable = {mining_time = 0.5, result = "ice-platform"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = base_sounds.deconstruct_bricks(0.8),
     build_sound =
     {
       small = sound_variations("__core__/sound/landfill-small", 6, 1),

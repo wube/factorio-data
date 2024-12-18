@@ -2622,7 +2622,7 @@ data:extend
     order = "a[artificial]-d[utility]-a[landfill]",
     subgroup = "artificial-tiles",
     minable = {mining_time = 0.5, result = "landfill"},
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg", volume = 0.8}, -- sound?
+    mined_sound = sounds.deconstruct_bricks(0.8),
     is_foundation = true,
     collision_mask = tile_collision_masks.ground(),
     layer = 60,

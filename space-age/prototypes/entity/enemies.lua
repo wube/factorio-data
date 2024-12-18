@@ -3673,7 +3673,8 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
             ideal_distance_importance = 0.5,
             ideal_distance_importance_variance = 0.1,
             face_target = true
-          }
+          },
+          size_in_group = 10
         }
       }),
       absorptions_to_join_attack = { spores = 25 },
@@ -5063,7 +5064,8 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
             ideal_distance_importance = 0.25,
             ideal_distance_importance_variance = 0.1,
             face_target = true
-          }
+          },
+          size_in_group = 4
         }
       }),
       absorptions_to_join_attack = { spores = 20 },
@@ -5558,7 +5560,8 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
     absorptions_to_join_attack = { spores = 0 },
     ai_settings = {
       allow_try_return_to_spawner = true,
-      destroy_when_commands_fail = true
+      destroy_when_commands_fail = true,
+      join_attacks = false
     },
     attack_parameters = attack_parameters(true),
     corpse = prefix .. "wriggler-pentapod-corpse",
@@ -5921,8 +5924,10 @@ data:extend(
       }
     },
     damaged_trigger_effect = gleba_hit_effects(),
-    max_count_of_owned_units = 1,
-    max_friends_around_to_spawn = 2,
+    max_count_of_owned_units = 2,
+    max_count_of_owned_defensive_units = 1,
+    max_friends_around_to_spawn = 3,
+    max_defensive_friends_around_to_spawn = 2,
     graphics_set =
     {
       animations =
@@ -6205,7 +6210,7 @@ data:extend(
     collision_mask = {layers={player=true, object=true, ground_tile=true, is_object=true, is_lower_object=true}}, -- can go in shallow water
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     hit_visualization_box = {{-0.5, -0.25}, {0.5, 0.25}},
-    absorptions_per_second = { spores = { absolute = 4, proportional = 0.002 } },
+    --absorptions_per_second = { spores = { absolute = 4, proportional = 0.002 } }, -- can't use pollution if all possible units can't join attack groups
     corpse = "gleba-spawner-corpse-small",
     dying_explosion = "spitter-spawner-die",
     dying_trigger_effect =

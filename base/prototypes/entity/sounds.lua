@@ -41,7 +41,8 @@ sounds.deconstruct_bricks = function(volume)
         filename = "__base__/sound/deconstruct-bricks.ogg",
         volume = volume
       }
-    }
+    },
+    aggregation = {max_count = 2, remove = true, count_already_playing = true,},
   }
 end
 

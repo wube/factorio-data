@@ -477,35 +477,35 @@ data:extend{
     {
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-huge/lithium-iceberg-huge-2.png",
-        width = 444,
+        width = 640,
         height = 310,
         scale = 0.5,
         shift = {0.65,-0.75}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-huge/lithium-iceberg-huge-5.png",
-        width = 444,
+        width = 640,
         height = 310,
         scale = 0.5,
         shift = {1.15,-0.75}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-huge/lithium-iceberg-huge-7.png",
-        width = 444,
+        width = 640,
         height = 310,
         scale = 0.5,
         shift = {0.95,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-huge/lithium-iceberg-huge-11.png",
-        width = 444,
+        width = 640,
         height = 310,
         scale = 0.5,
         shift = {0.65,-0.75}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-huge/lithium-iceberg-huge-12.png",
-        width = 444,
+        width = 640,
         height = 310,
         scale = 0.5,
         shift = {0.65,-0.75}
@@ -583,105 +583,105 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-1.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0.1,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-2.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-3.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-4.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-5.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0.75,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-6.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.0}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-7.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0.1,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-8.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,0.05}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-9.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0.2,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-10.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {-0.3,-0.25}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-11.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.35}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-12.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0.4,-0.35}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-13.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.35}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-14.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.35}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-big/lithium-iceberg-big-15.png",
         width = 230,
-        height = 154,
+        height = 156,
         scale = 0.5,
         shift = {0,-0.25}
       },
@@ -700,7 +700,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-1.png",
         priority = base_decorative_sprite_priority,
-        width = 114,
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -708,7 +708,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-1.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -716,7 +716,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-2.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -724,7 +724,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-3.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -732,7 +732,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-4.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -740,7 +740,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-5.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -748,7 +748,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-6.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -756,7 +756,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-7.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -764,7 +764,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-8.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -772,7 +772,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-9.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -780,7 +780,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-10.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -788,7 +788,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-11.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -796,7 +796,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-12.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -804,7 +804,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-13.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -812,7 +812,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-14.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -820,7 +820,7 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-medium/lithium-iceberg-medium-15.png",
         priority = base_decorative_sprite_priority,
-        width = 114,  
+        width = 126,
         height = 88,
         scale = 0.5,
         shift = {0.0, 0.0}
@@ -841,89 +841,88 @@ data:extend{
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-1.png",
         priority = base_decorative_sprite_priority,
-        scale = 0.5,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-2.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-3.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-4.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-5.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-6.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-7.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-8.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-9.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-10.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
       {
         filename = "__space-age__/graphics/decorative/lithium-iceberg-small/lithium-iceberg-small-11.png",
         priority = base_decorative_sprite_priority,
-        width = 90,
-        height = 56,
+        width = 110,
+        height = 68,
         scale = 0.5,
         shift = {0.0390625, 0.0234375}
       },
