@@ -1,6 +1,13 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.28
+Version: 2.0.29
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.28
+Date: 20. 12. 2024
+  Optimizations:
+    - Improved GUI performance when logistics status diode is part of the structure. (https://forums.factorio.com/124660)
+  Bugfixes:
+    - Fixed a crash when units spawned by an enemy spawner are destroyed by script during created effect.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.27
 Date: 18. 12. 2024
@@ -9,6 +16,8 @@ Date: 18. 12. 2024
     - Attack groups containing stompers or strafers will now contain fewer units.
     - Large egg rafts will try to have at least one stomper or strafer spawned at a time.
     - Small egg rafts no longer absorb pollution because they will never produce stompers or strafers.
+    - Gleba water cane no longer blocks landfill or foundation.
+    - Added detailed description to Factoriopedia for Blueprint, Blueprint book, Deconstruction item and Upgrade item. (https://forums.factorio.com/119322)
   Graphics:
     - Aquilo icebergs have longer shadows to integrate with the world better.
   Bugfixes:

@@ -1447,6 +1447,7 @@ data:extend(
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     selection_box = {{-0.3, -1}, {0.3, 0.3}},
     collision_mask = {layers={ground_tile=true, train=true, is_object=true, is_lower_object=true}}, -- not player
+    protected_from_tile_building = false,
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-c[decorative]-a[water-cane]",
