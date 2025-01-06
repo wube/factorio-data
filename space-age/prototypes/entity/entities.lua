@@ -623,6 +623,8 @@ data:extend({
     tile_width = 3,
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     fast_replaceable_group = "asteroid-collector",
+    corpse = "asteroid-collector-remnants",
+    dying_explosion = "asteroid-collector-explosion",
     collection_radius = 7.5,
     collection_box_offset = 5.0,
     deposit_radius = 1.5,

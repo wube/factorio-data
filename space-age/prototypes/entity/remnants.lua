@@ -35,6 +35,29 @@ end
 
 local remnants =
 {
+  {
+    type = "corpse",
+    name = "asteroid-collector-remnants",
+    icon = "__space-age__/graphics/icons/asteroid-collector.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "space-platform-remnants",
+    order = "c",
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+    collision_box = {{-0.45, -0.45}, {0.45, 0.45}},
+    tile_width = 1,
+    tile_height = 1,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = util.sprite_load("__space-age__/graphics/entity/asteroid-collector/asteroid-collector-remnants",{
+      scale = 0.5,
+      direction_count = 4,
+      line_length = 1,
+    }),
+  },
 
   {
     type = "corpse",

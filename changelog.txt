@@ -1,6 +1,74 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.29
+Version: 2.0.30
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.29
+Date: 06. 01. 2025
+  Minor Features:
+    - Added smart pipette for items on the ground.
+  Graphics:
+    - Improved graphics of Recyclers.
+    - Added corpse graphics for Asteroid Collectors.
+  Bugfixes:
+    - Fixed a crash when mods define heat pipes with heating_radius of 0.
+    - Fixed that deleting a surface with global electric network would leak an electric network. (https://forums.factorio.com/124953)
+    - Fixed blueprint could be configured with invalid set of grid size and absolute grid position. (https://forums.factorio.com/124937)
+    - Fixed that the space map would not show when unlocking space-locations. (https://forums.factorio.com/124314)
+    - Fixed map artifacts on space platforms when removing in-progress builds. (https://forums.factorio.com/118405)
+    - Fixed that frozen radars still worked. (https://forums.factorio.com/125006)
+    - Fixed that instant blueprint over-building would not auto fulfill item requests. (https://forums.factorio.com/124805)
+    - Fixed that marking a space platform to be deleted while a starter pack is on the way would break the platform state. (https://forums.factorio.com/124249)
+    - Fixed statistics would not include values from a newest sample that is still being created. (https://forums.factorio.com/125025)
+    - Fixed an issue with memory management in some cases when rotating entities. (https://forums.factorio.com/125108)
+    - Fixed a crash related to modded triggers on spider legs. (https://forums.factorio.com/125102)
+    - Fixed that hidden mining drills would still show in "mined by" in resource tooltips. (https://forums.factorio.com/125126)
+    - Fixed that the artillery wagon auto-targeting checkbox was not shown when the artillery had an equipment grid. (https://forums.factorio.com/121511)
+    - Fixed LuaTransportLine::get_line_item_position would return incorrect positions. (https://forums.factorio.com/125232)
+    - Fixed that writing to LuaPlayer::opened did not update the GUI in multiplayer. (https://forums.factorio.com/121678)
+    - Fixed pumps were setting filter when given negative fluid signals. (https://forums.factorio.com/124825)
+    - Fixed a crash related to merging forces and gui. (https://forums.factorio.com/125317)
+    - Fixed trains could switch to manual when due to interrupts the schedule became empty. (https://forums.factorio.com/119054)
+    - Fixed math expressions were not accepting numbers with positive exponent and + sign. (https://forums.factorio.com/125225)
+    - Fixed a desync related to worker robots charging when force has worker robot battery bonus set.
+    - Fixed a crash when installing mods with almost-cyclic dependencies. (https://forums.factorio.com/125281)
+    - Fixed that changing surface::localised_name did not update the surfaces list in remote view. (https://forums.factorio.com/121352)
+    - Fixed that quality could add a supply area to an electric pole without one. (https://forums.factorio.com/124841)
+    - Fixed that the LAN games browser would not show anything if the public-games filter was set to only show favorites. (https://forums.factorio.com/124594)
+    - Fixed a crash related to cargo pods when loading older save files. (https://forums.factorio.com/124932)
+    - Fixed bad rendering logic for space platform trash slots. (https://forums.factorio.com/124916)
+    - Fixed that flying robots did not render quality indicators correctly. (https://forums.factorio.com/122584)
+    - Fixed arithmetic combinator gui not refreshing circuit network selection when combinator parameters are changed externally. (https://forums.factorio.com/124115)
+    - Fixed solar panels bonus description didn't display correctly. (https://forums.factorio.com/123191)
+    - Fixed copy source was cleared when source entity was built from ghost or destroyed leaving ghost. (https://forums.factorio.com/124328)
+    - Fixed that tesla turret chain bolts could damage protected biter spawners. (https://forums.factorio.com/121679)
+    - Fixed that some actions would still be processed while the game was paused. (https://forums.factorio.com/123309)
+    - Fixed a latency armor related crash. (https://forums.factorio.com/125422)
+    - Fixed that some remote view GUI elements did not align correctly. (https://forums.factorio.com/118564)
+    - Fixed that Factoriopedia would claim some recipes as exclusive to a given planet/location when they weren't. (https://forums.factorio.com/125424)
+    - Fixed that the blueprint GUI didn't render vehicles correctly. (https://forums.factorio.com/125454)
+    - Fixed that you could launch yourself to a platform in flight. (https://forums.factorio.com/124935)
+    - Fixed that changing loader direction through script could cause transport lines to become inconsistent. (https://forums.factorio.com/125377)
+    - Fixed that plants would show the wrong expected amount in deconstruction planner totals. (https://forums.factorio.com/125509)
+    - Fixed that map pipeline rendering would show other forces pipes. (https://forums.factorio.com/124720)
+    - Fixed that pipette over tiles would always override other actions bound to the same hotkey. (https://forums.factorio.com/124692)
+    - Fixed that vehicles would get stuck as 'reserved by remote driver' if they died while being remote driven. (https://forums.factorio.com/125429)
+    - Fixed inserters would keep using filters after migration when new prototypes disallowed usage of filters. (https://forums.factorio.com/125591)
+  Scripting:
+    - Added LuaRecord::get_active_index.
+    - Added LuaEntityPrototype::science_pack_drain_rate_percent read.
+    - Added LuaEntityPrototype::get_fluid_usage_per_tick. LuaEntityPrototype::fluid_usage_per_tick is deprecated and should not be used.
+    - Added LuaEntityPrototype::get_max_power_output. LuaEntityPrototype::max_power_output is deprecated and should not be used.
+    - LuaEntity::combinator_description supports ghosts of combinators.
+    - Added LuaDefines::car_trash read. (https://forums.factorio.com/124950)
+    - Added asteroid collector support to LuaEntity::get_filter, set_filter, and filter_slot_count.
+    - Added LuaPlayer::clear_recipe_notification().
+    - Changed LuaEntity::get_passenger() to give the character in cargo pods. (https://forums.factorio.com/121766)
+    - Added LuaControl::hub read.
+    - Changed LuaEntity::cargo_pod read into LuaControl::cargo_pod read and made it work for players in cargo pods.
+    - Changed LuaEntity::get_logistic_point() and LuaEntity::get_logistic_sections() to work with ghosts.
+  Modding:
+    - Added CargoWagonPrototype::quality_affects_inventory_size.
+    - Added FluidWagonPrototype::quality_affects_capacity.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.28
 Date: 20. 12. 2024

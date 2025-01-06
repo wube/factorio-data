@@ -211,7 +211,8 @@ end
 
 local function generate_self_recycling_recipe(item)
   local icons = generate_recycling_recipe_icons_from_item(item)
-
+  local default_machine_tints = {primary = {0.125,0.125,0.125,0.125}, secondary = {0.125,0.125,0.125,0.125}, tertiary = {0.125,0.125,0.125,0.125}, quaternary = {0.125,0.125,0.125,0.125}}
+  local crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or default_machine_tints
   data:extend({
     {
       type = "recipe",
@@ -227,7 +228,7 @@ local function generate_self_recycling_recipe(item)
       ingredients = {{type = "item", name = item.name, amount = 1, ignored_by_stats = 1}},
       results = {{type = "item", name = item.name, amount = 1, probability = 0.25, ignored_by_stats = 1}}, -- Will show as consumed when item is destroyed
       energy_required = (data.raw.recipe[item.name] and data.raw.recipe[item.name].energy_required or 0.5 )/16,
-      crafting_machine_tint = data.raw.recipe[item.name] and data.raw.recipe[item.name].crafting_machine_tint or {primary = {0.5,0.5,0.5,0.5}, secondary = {0.5,0.5,0.5,0.5}, tertiary = {0.5,0.5,0.5,0.5}, quaternary = {0.5,0.5,0.5,0.5}}
+      crafting_machine_tint = crafting_machine_tint
     }
   })
 end

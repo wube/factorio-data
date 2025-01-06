@@ -2027,6 +2027,93 @@ data:extend
       }
     }
   },
+  {
+    type = "explosion",
+    name = "asteroid-collector-explosion",
+    icon = "__space-age__/graphics/icons/asteroid-collector.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "space-platform-explosions",
+    order = "a",
+    height = 0,
+    animations = explosion_animations.medium_explosion(),
+    smoke = "smoke-fast",
+    smoke_count = 4,
+    smoke_slow_down_factor = 1,
+    sound = sounds.medium_explosion,
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 17,
+            particle_name = "assembling-machine-1-metal-particle-big",
+            offset_deviation = { { -0.6875, -0.6875 }, { 0.6875, 0.6875 } },
+            initial_height = 0.1,
+            initial_height_deviation = 0.49,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 21,
+            particle_name = "assembling-machine-1-metal-particle-medium",
+            offset_deviation = { { -0.8789, -0.8945 }, { 0.8789, 0.8945 } },
+            initial_height = 0.2,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.098,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 5,
+            probability = 1,
+            particle_name = "oil-refinery-metal-particle-big",
+            offset_deviation = { { -1, -1 }, { 1., 1 } },
+            initial_height = 0.4,
+            initial_height_deviation = 0.49,
+            initial_vertical_speed = 0.068,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 7,
+            particle_name = "cable-and-electronics-particle-small-medium",
+            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
+            initial_height = 0.3,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.092,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 25,
+            particle_name = "assembling-machine-mechanical-component-particle-medium",
+            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
+            initial_height = 0.4,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.069,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.05,
+            speed_from_center_deviation = 0.05
+          }
+        }
+      }
+    }
+  },
   -------------------------------------------------------------------------------
   --CARBONIC-asteroid-explosions
   -------------------------------------------------------------------------------

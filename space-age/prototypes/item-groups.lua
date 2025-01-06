@@ -126,6 +126,12 @@ data:extend(
     group = "environment",
     order = "dkb"
   },
+  {
+    type = "item-subgroup",
+    name = "space-platform-remnants",
+    group = "environment",
+    order = "eb"
+  },
   -------------------------------------------------------------------------- EXPLOSIONS
   {
     type = "item-subgroup",
@@ -138,6 +144,12 @@ data:extend(
     name = "environmental-protection-explosions",
     group = "effects",
     order = "bdb"
-  }
+  },
+  {
+    type = "item-subgroup",
+    name = "space-platform-explosions",
+    group = "effects",
+    order = "c"
+  },
 }
 )
