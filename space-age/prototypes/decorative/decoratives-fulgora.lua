@@ -181,7 +181,8 @@ data:extend(
         {type = "item", name = "steel-plate", amount = 4},
         {type = "item", name = "stone-brick", amount = 2},
       },
-      include_in_show_counts = true
+      include_in_show_counts = true,
+      transfer_entity_health_to_products = false
     },
     subgroup = "grass",
     order = "b[decorative]-l[rock]-j[ruin]-h[attractor]",

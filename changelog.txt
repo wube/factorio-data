@@ -1,6 +1,45 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.30
+Version: 2.0.31
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.30
+Date: 10. 01. 2025
+  Changes:
+    - Changed map generated lightning attractors to always produce full-health items when mined. (https://forums.factorio.com/125629)
+    - Reordered results of scrap recycling to make the recycler stack them on belts more efficiently. (https://mods.factorio.com/mod/better-scrap-stacking) (https://forums.factorio.com/125706)
+  Bugfixes:
+    - Fixed that item request proxies would show bad "missing materials for construction" counts. (https://forums.factorio.com/124613)
+    - Fixed a crash when creating a ghost assembling machine with a pre-set recipe through script. (https://forums.factorio.com/125634)
+    - Fixed a multiplayer latency related crash when deleting surfaces. (https://forums.factorio.com/125574)
+    - Fixed crash due to division by zero when line_length of sheet definition of SpriteVariations was 0. (https://forums.factorio.com/125493)
+    - Fixed quality filter comparators did not dim at night. (https://forums.factorio.com/125109)
+    - Fixed ammo turrets with target leading would undershoot ammo with range modifier. (https://forums.factorio.com/124963)
+    - Fixed opening a train stop on another surface from a tag would show the wrong trains. (https://forums.factorio.com/125253)
+    - Fixed only pings from last message in a given tick were being recognized. (https://forums.factorio.com/125672)
+    - Fixed circuit condition signal selection title was "Set the filter" instead of "Select a signal". (https://forums.factorio.com/124589)
+    - Fixed asteroid collector could fail to grab some chunks if there were no other chunks nearby. (https://forums.factorio.com/124971)
+    - Fixed a crash when interacting with ghost assembling machines after migrating recipes. (https://forums.factorio.com/125669)
+    - Fixed crash when using the same sprite as both decal and decorative. (https://forums.factorio.com/125106)
+    - Fixed that cycling quality did not work while the mouse was over scrollable widgets. (https://forums.factorio.com/125424)
+    - Fixed that logistic groups could get broken when mining and un-doing ghost logistic containers. (https://forums.factorio.com/124026)
+    - Fixed long custom ending text would not fit in the victory screen. (https://forums.factorio.com/123818)
+    - Fixed that hidden surfaces would show in the evolution command. (https://forums.factorio.com/124561)
+    - Fixed a crash when hovering some widgets at very small resolutions. (https://forums.factorio.com/125734)
+    - Fixed that orbital request weight tooltips wouldn't show any decimal values. (https://forums.factorio.com/119405)
+    - Fixed a crash when quitting abnormally in multiplayer while the menu was visible. (https://forums.factorio.com/124954)
+    - Fixed that labs would consume power for one tick when not working. (https://forums.factorio.com/125737)
+    - Fixed that the mods GUI did not fit on small screens such as the Steam Deck. (https://forums.factorio.com/118372)
+    - Fixed crash when frame count of animation layer definition using stripes didn't match frame count of previous layer. (https://forums.factorio.com/125728)
+    - Fixed hovering cursor over undo button could change rail planner start location. (https://forums.factorio.com/125739)
+    - Fixed missing Ў character in the game font. (https://forums.factorio.com/119359)
+    - Fixed yet another issue with flow statistics. (https://forums.factorio.com/125742)
+    - Fixed script rendering objects targeting an entity didn't draw at render position of the entity. (https://forums.factorio.com/125393)
+    - Fixed issue of incorrect undo of deconstruction of multiple tile ghost with common dependent entity ghost (https://forums.factorio.com/123389)
+    - Fixed mouse cursor showing up when exiting Steam Big Picture in controller input method. (https://forums.factorio.com/115242)
+    - Fixed macOS Game Mode not activating for the non-Steam version of the game.
+    - Fixed that items would end up in crafing machine trash slots when it wasn't desired. (https://forums.factorio.com/125212)
+  Scripting:
+    - Added LuaEntity::inserter_spoil_priority read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.29
 Date: 06. 01. 2025

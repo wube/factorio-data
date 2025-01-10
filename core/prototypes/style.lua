@@ -3697,6 +3697,13 @@ data:extend(
       }
     },
 
+    deep_scroll_pane_with_padding =
+    {
+      type = "scroll_pane_style",
+      parent = "deep_scroll_pane",
+      padding = 8
+    },
+
     deep_slots_scroll_pane =
     {
       type = "scroll_pane_style",

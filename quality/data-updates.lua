@@ -3,7 +3,6 @@ local recycling = require("prototypes.recycling")
 -- Generating the recycle (reverse) recipes
 for name, recipe in pairs(data.raw.recipe) do
   recycling.generate_recycling_recipe(recipe)
-  recipe.auto_recycle = nil
 end
 
 for type_name in pairs(defines.prototypes.item) do

@@ -579,6 +579,8 @@ data:extend(
 
     remote_view_LPF_min_cutoff_frequency = 4000.0,
     remote_view_LPF_max_cutoff_frequency = 15000.0,
+    space_LPF_min_cutoff_frequency = 200,
+    space_LPF_max_cutoff_frequency = 500,
 
     walking_sound_count_reduction_rate = 0.3,
     moving_sound_count_reduction_rate = 0.5,

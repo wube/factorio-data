@@ -396,8 +396,8 @@ data:extend(
     {
       type = "stream",
       cooldown = 4,
-      range = range_worm_small,--defined in spitter-projectiles.lua
-      damage_modifier = damage_modifier_worm_small,--defined in spitter-projectiles.lua
+      range = range_worm_small,--defined in enemy-constants.lua
+      damage_modifier = damage_modifier_worm_small,--defined in enemy-constants.lua
       min_range = 0,
       projectile_creation_parameters = worm_shoot_shiftings(scale_worm_small, scale_worm_small * scale_worm_stream),
       use_shooter_direction = true,
