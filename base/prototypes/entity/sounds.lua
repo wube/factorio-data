@@ -364,7 +364,6 @@ sounds.flying_robot = function(volume)
       { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
     },
     max_sounds_per_type = 20,
-    audible_distance_modifier = 1,
     fade_in_ticks = 8,
     fade_out_ticks = 10,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
@@ -392,7 +391,6 @@ sounds.construction_robot = function(volume)
       { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
     },
     max_sounds_per_type = 20,
-    audible_distance_modifier = 1,
     fade_in_ticks = 8,
     fade_out_ticks = 8,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
@@ -578,7 +576,7 @@ sounds.medium_explosion =
     filename = "__base__/sound/fight/medium-explosion.bnvib",
     gain = 0.4
   },
-  audible_distance_modifier = 0.7,
+  audible_distance_modifier = 0.5,
   variations = sound_variations_with_volume_variations("__base__/sound/fight/medium-explosion", 5, 0.3, 0.4, volume_multiplier("main-menu", 1.2))
 }
 
@@ -630,7 +628,7 @@ sounds.large_explosion = function(min_volume, max_volume)
       max_count = 1,
       remove = true
     },
-    audible_distance_modifier = 1.95,
+    audible_distance_modifier = 3.8,
     switch_vibration_data =
     {
       filename = "__base__/sound/fight/large-explosion.bnvib",
@@ -892,21 +890,21 @@ sounds.small_gore =
   category = "enemy",
   variations = sound_variations("__base__/sound/particles/small-gore", 6, 0.7, volume_multiplier("main-menu", 0.7) ),
   aggregation = { max_count = 1, remove = true, count_already_playing = true },
-  audible_distance_modifier = 0.5,
+  audible_distance_modifier = 0.25,
 }
 sounds.medium_gore =
 {
   category = "enemy",
   variations = sound_variations("__base__/sound/particles/medium-gore", 5, 0.8, volume_multiplier("main-menu", 0.7) ),
   aggregation = { max_count = 1, remove = true, count_already_playing = true },
-  audible_distance_modifier = 0.5,
+  audible_distance_modifier = 0.25,
 }
 sounds.big_gore =
 {
   category = "enemy",
   variations = sound_variations("__base__/sound/particles/big-gore", 5, 0.6, volume_multiplier("main-menu", 0.7) ),
   aggregation = { max_count = 1, remove = true, count_already_playing = true },
-  audible_distance_modifier = 0.5,
+  audible_distance_modifier = 0.25,
 }
 sounds.behemoth_gore =
 {
@@ -1237,7 +1235,7 @@ sounds.worm_roars = function(min_volume, max_volume)
   {
     category = "enemy",
     variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar", 4, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
-    audible_distance_modifier = 1.5,
+    audible_distance_modifier = 2.25,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
@@ -1247,7 +1245,7 @@ sounds.worm_roars_big = function(min_volume, max_volume)
   {
     category = "enemy",
     variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar-big", 5, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
-    audible_distance_modifier = 1.3,
+    audible_distance_modifier = 1.7,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
@@ -1257,7 +1255,7 @@ sounds.worm_roar_alternative = function(min_volume, max_volume)
   {
     category = "enemy",
     variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar-alt", 5, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
-    audible_distance_modifier = 2.0,
+    audible_distance_modifier = 4.0,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
@@ -1267,7 +1265,7 @@ sounds.worm_roar_alternative_big = function(min_volume, max_volume)
   {
     category = "enemy",
     variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-roar-alt-big", 5, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.9) ),
-    audible_distance_modifier = 1.8,
+    audible_distance_modifier = 3.25,
     aggregation = { max_count = 3, remove = true, count_already_playing = true }
   }
 end
@@ -1278,7 +1276,7 @@ sounds.worm_breath = function(min_volume, max_volume)
     category = "enemy",
     variations = sound_variations_with_volume_variations("__base__/sound/creatures/worm-breathe", 8, min_volume, max_volume or min_volume),
     aggregation = { max_count = 2, remove = true, count_already_playing = true },
-    audible_distance_modifier = 1.2
+    audible_distance_modifier = 1.45
   }
 end
 
@@ -1298,7 +1296,7 @@ sounds.worm_dying_small = function(volume)
     category = "enemy",
     variations = sound_variations("__base__/sound/creatures/worm-death-small", 4, volume, volume_multiplier("main-menu", 0.9) ),
     aggregation = { max_count = 3, remove = true, count_already_playing = true },
-    audible_distance_modifier = 1.5
+    audible_distance_modifier = 2.25
   }
   end
 
@@ -1308,7 +1306,7 @@ sounds.worm_dying = function(volume)
     category = "enemy",
     variations = sound_variations("__base__/sound/creatures/worm-death", 7, volume),
     aggregation = { max_count = 2, remove = true, count_already_playing = true },
-    audible_distance_modifier = 2.5
+    audible_distance_modifier = 6.25
   }
   end
 
@@ -1318,7 +1316,7 @@ sounds.worm_dying_big = function(volume)
     category = "enemy",
     variations = sound_variations("__base__/sound/creatures/worm-death-big", 7, volume),
     aggregation = { max_count = 2, remove = true, count_already_playing = true },
-    audible_distance_modifier = 2
+    audible_distance_modifier = 4
   }
 end
 sounds.worm_dying_behemoth = function(volume)
@@ -1327,7 +1325,7 @@ sounds.worm_dying_behemoth = function(volume)
     category = "enemy",
     variations = sound_variations("__base__/sound/creatures/worm-death-behemoth", 5, volume),
     aggregation = { max_count = 2, remove = true, count_already_playing = true },
-    audible_distance_modifier = 2
+    audible_distance_modifier = 4
   }
 end
 
@@ -1362,12 +1360,14 @@ sounds.upper_giga_hatch_opening_sound =
   {
     filename = "__base__/sound/entity/cargo-hatch/upper-giga-hatch-opening-loop.ogg",
     volume = 0.8,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
   stopped_sound =
   {
     filename = "__base__/sound/entity/cargo-hatch/upper-giga-hatch-opening-stop.ogg",
     volume = 0.4,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
   minimal_sound_duration_for_stopped_sound = 25,
@@ -1378,12 +1378,14 @@ sounds.upper_giga_hatch_closing_sound =
   {
     filename = "__base__/sound/entity/cargo-hatch/upper-giga-hatch-closing-loop.ogg",
     volume = 0.4,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
   stopped_sound =
   {
     filename = "__base__/sound/entity/cargo-hatch/upper-giga-hatch-closing-stop.ogg",
     volume = 0.5,
+    modifiers = volume_multiplier("main-menu", 3.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
 }

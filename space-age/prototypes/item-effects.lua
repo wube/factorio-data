@@ -206,7 +206,8 @@ local make_heal_capsule_effect = function()
               },
               {
                 type = "create-sticker",
-                sticker = "yumako-regen-sticker"
+                sticker = "yumako-regen-sticker",
+                show_in_tooltip = true
               },
               {
                 type = "create-sticker",
@@ -248,7 +249,8 @@ local make_speed_capsule_effect = function()
             {
               {
                 type = "create-sticker",
-                sticker = "jellynut-speed-sticker"
+                sticker = "jellynut-speed-sticker",
+                show_in_tooltip = true
               },
               {
                 type = "create-sticker",
@@ -295,7 +297,8 @@ local make_speed_regen_capsule_effect = function()
               },
               {
                 type = "create-sticker",
-                sticker = "bioflux-speed-regen-sticker"
+                sticker = "bioflux-speed-regen-sticker",
+                show_in_tooltip = true
               },
               {
                 type = "create-sticker",

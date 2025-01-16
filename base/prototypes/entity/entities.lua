@@ -1859,7 +1859,7 @@ data:extend(
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
-    perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
+    perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
     water_reflection =
     {
       pictures =
@@ -1943,11 +1943,11 @@ data:extend(
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
-    perceived_performance = { minimum = 0.5 },
+    perceived_performance = {minimum = 0.5},
     always_draw_fluid = true,
     graphics_set =
     {
-      underwater_layer_offset = 30,
+      underwater_layer_offset = 15,
       base_render_layer = "ground-patch",
       animation =
       {
@@ -2813,7 +2813,7 @@ data:extend(
     impact_category = "metal",
     working_sound =
     {
-      sound = { filename = "__base__/sound/radar.ogg", volume = 0.8 },
+      sound = {filename = "__base__/sound/radar.ogg", volume = 0.8, modifiers = volume_multiplier("main-menu", 2.0)},
       max_sounds_per_type = 3,
       use_doppler_shift = false
     },
@@ -4228,7 +4228,7 @@ data:extend(
       main_sounds =
       {
         {
-          sound = { filename = "__base__/sound/car-engine-driving.ogg", volume = 0.67 },
+          sound = {filename = "__base__/sound/car-engine-driving.ogg", volume = 0.67, modifiers = volume_multiplier("main-menu", 2.2)},
           match_volume_to_activity = true,
           activity_to_volume_modifiers =
           {
@@ -6416,7 +6416,8 @@ data:extend(
     {
       filename = "__base__/sound/silo-rocket.ogg",
       volume = 1.0,
-      audible_distance_modifier = 3,
+      modifiers = volume_multiplier("main-menu", 0.6),
+      audible_distance_modifier = 6,
       aggregation = {max_count = 3, remove = true, count_already_playing = true, priority = "oldest"}
     }
   },
@@ -8601,7 +8602,7 @@ data:extend(
     close_sound = {filename = "__base__/sound/open-close/nuclear-close.ogg", volume = 0.8},
     working_sound =
     {
-      sound = sound_variations("__base__/sound/nuclear-reactor", 2, 0.55, volume_multiplier("main-menu", 1.1) ),
+      sound = sound_variations("__base__/sound/nuclear-reactor", 2, 0.55, volume_multiplier("main-menu", 0.8)),
       max_sounds_per_type = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
@@ -9187,6 +9188,7 @@ data:extend(
       {
         filename = "__base__/sound/steam-turbine.ogg",
         volume = 0.49,
+        modifiers = volume_multiplier("main-menu", 0.7),
         speed_smoothing_window_size = 60,
         advanced_volume_control = {attenuation = "exponential"},
       },
@@ -9196,7 +9198,7 @@ data:extend(
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
-    perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
+    perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
     water_reflection =
     {
       pictures =
@@ -9791,7 +9793,7 @@ data:extend({
     west = util.table.deepcopy(data.raw.generator["steam-engine"].horizontal_animation)
   },
   -- idle_animation can also be specified
-  perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
+  perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
   burner =
   {
     type = "burner",

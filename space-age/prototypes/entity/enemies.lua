@@ -2297,7 +2297,8 @@ function make_demolisher_fissure_attack(base_name, order, scale, damage_multipli
         filename = "__base__/sound/fight/fire-impact-4.ogg",
         volume = 1.0
       },]]
-      sound = {
+      sound =
+      {
         aggregation =
         {
           max_count = 1,
@@ -2308,7 +2309,7 @@ function make_demolisher_fissure_attack(base_name, order, scale, damage_multipli
           filename = "__base__/sound/fight/medium-explosion.bnvib",
           gain = 1.0
         },
-        audible_distance_modifier = 0.7,
+        audible_distance_modifier = 0.5,
         variations = sound_variations("__base__/sound/fight/medium-explosion", 5, 1, volume_multiplier("main-menu", 1.2) )
       },
       created_effect =

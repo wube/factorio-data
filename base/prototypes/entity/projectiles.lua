@@ -1122,7 +1122,8 @@ data:extend(
           {
             {
               type = "create-sticker",
-              sticker = "slowdown-sticker"
+              sticker = "slowdown-sticker",
+              show_in_tooltip = true
             }
           }
         }

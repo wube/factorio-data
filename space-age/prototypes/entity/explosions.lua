@@ -26,7 +26,7 @@ data:extend
         fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 50.0}, to = {2.5, 100.0 }}},
       },
       aggregation = {max_count = 3, remove = true, count_already_playing = true},
-      audible_distance_modifier = 1.5
+      audible_distance_modifier = 2.25
     },
     attracted_volume_modifier = 0.4,
     created_effect =

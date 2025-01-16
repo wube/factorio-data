@@ -113,6 +113,7 @@ data:extend(
       "big-spitter",
       "behemoth-spitter"
     },
+    allowed_without_fight = false,
     icon = "__base__/graphics/achievement/it-stinks-and-they-dont-like-it.png",
     icon_size = 128
   },

@@ -83,6 +83,7 @@ data:extend(
       "medium-wriggler-pentapod",
       "big-wriggler-pentapod"
     },
+    allowed_without_fight = false,
     icon = "__space-age__/graphics/achievement/it-stinks-and-they-do-like-it.png",
     icon_size = 128
   },
@@ -97,6 +98,7 @@ data:extend(
       "medium-demolisher",
       "big-demolisher"
     },
+    allowed_without_fight = false,
     icon = "__space-age__/graphics/achievement/get-off-my-lawn.png",
     icon_size = 128
   },

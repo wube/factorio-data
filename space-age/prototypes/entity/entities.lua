@@ -618,7 +618,7 @@ data:extend({
       {231, 226, 238},
       {223, 223, 224},
       {255, 255, 255}
-    },    
+    },
     tile_height = 3,
     tile_width = 3,
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
@@ -1153,7 +1153,7 @@ data:extend({
       emissions_per_minute = { pollution = 6 }
     },
     energy_usage = "2500kW",
-    perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0, maximum = 20 },
+    perceived_performance = {minimum = 0.25, maximum = 20},
     graphics_set = require("__space-age__.prototypes.entity.foundry-pictures").graphics_set,
     open_sound = sounds.metal_large_open,
     close_sound = sounds.metal_large_close,
@@ -1745,7 +1745,7 @@ data:extend({
     },
     fluid_boxes_off_when_no_fluid_recipe = true,
     forced_symmetry = "horizontal",
-    perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0, maximum = 10},
+    perceived_performance = {minimum = 0.25, maximum = 10},
     graphics_set = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").graphics_set,
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
@@ -2342,7 +2342,7 @@ data:extend({
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
-    perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
+    perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
 
     vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.metal_large_open,
@@ -2435,7 +2435,7 @@ data:extend({
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
-    perceived_performance = { minimum = 0.25, performance_to_activity_rate = 2.0 },
+    perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
 
     vehicle_impact_sound = sounds.generic_impact,
     open_sound = sounds.metal_large_open,

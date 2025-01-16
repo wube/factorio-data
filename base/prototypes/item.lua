@@ -3440,7 +3440,7 @@ data:extend
       {
         filename = "__base__/sound/fight/rocket-launcher.ogg",
         volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.9)
+        modifiers = volume_multiplier("main-menu", 0.7)
       },
     },
     stack_size = 1
@@ -3469,7 +3469,7 @@ data:extend
       {
         filename = "__base__/sound/fight/rocket-launcher.ogg",
         volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.9)
+        modifiers = volume_multiplier("main-menu", 0.7)
       },
     },
     stack_size = 1
@@ -3498,7 +3498,7 @@ data:extend
       {
         filename = "__base__/sound/fight/rocket-launcher.ogg",
         volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.9)
+        modifiers = volume_multiplier("main-menu", 0.7)
       },
     },
     stack_size = 1
@@ -3527,7 +3527,7 @@ data:extend
       {
         filename = "__base__/sound/fight/rocket-launcher.ogg",
         volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.9)
+        modifiers = volume_multiplier("main-menu", 0.7)
       },
     },
     stack_size = 1

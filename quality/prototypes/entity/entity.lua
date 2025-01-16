@@ -56,7 +56,7 @@ data:extend{
       {inventory_index = defines.inventory.furnace_modules, shift = {0, 0.2}}
     },
     allowed_effects = {"consumption", "speed", "pollution", "quality"},
-    perceived_performance = { minimum = 0.0, performance_to_activity_rate = 2.0, maximum = 4 },
+    perceived_performance = {maximum = 4},
     graphics_set          = require("__quality__.prototypes.entity.recycler-pictures").graphics_set,
     graphics_set_flipped  = require("__quality__.prototypes.entity.recycler-pictures").graphics_set_flipped,
     cant_insert_at_source_message_key = "inventory-restriction.cant-be-recycled"

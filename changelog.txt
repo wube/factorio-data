@@ -1,6 +1,54 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.31
+Version: 2.0.32
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.31
+Date: 16. 01. 2025
+  Changes:
+    - Disabled achievements "It stinks and they don't like it", "It stinks and they do like it", and "Get off my lawn" in peaceful mode and no enemies mode. (https://forums.factorio.com/125581)
+    - Adding more effect info to yumako, mash, jellynut, jelly, bioflux and slowdown capsule tooltips.
+  Bugfixes:
+    - Fixed mouse cursor showing up when exiting Steam Big Picture in controller input method. (https://forums.factorio.com/115242)
+    - Fixed belts under elevated rails were not being removed when building a pair of undergrounds. (https://forums.factorio.com/125789)
+    - Fixed that inserters could grab items from belts that crafting machines no longer wanted. (https://forums.factorio.com/125825)
+    - Fixed taking screenshot could crash in some cases. (https://forums.factorio.com/125845)
+    - Fixed that select list background drawing was incorrect for the first row. (https://forums.factorio.com/125864)
+    - Fixed that inventory rendering did not work correctly if part of it was off the left or right side of the screen. (https://forums.factorio.com/125902)
+    - Fixed that reset technology effects would clear in-progress research triggers. (https://forums.factorio.com/125790)
+    - Fixed that writing "nil" to storage_filter did not work correctly. (https://forums.factorio.com/125856)
+    - Fixed that UI sounds would not play when dedicated UI sound resources were exhausted. (https://forums.factorio.com/125831)
+    - Fixed display panel text and player names were not covered by onboard rocket/cargo pod flight cutscene. (https://forums.factorio.com/120496)
+    - Fixed that upgrading pairs of underground belts could transform one end of the belt. (https://forums.factorio.com/125896)
+    - Fixed visualisation of asteroid collector range sometimes being drawn wrong. (https://forums.factorio.com/122048)
+    - Fixed upgrading a blueprint could fail to upgrade preview icons if the upgrade only changed quality. (https://forums.factorio.com/125484)
+    - Fixed clicking space connections in factoriopedia would not update selected items. (https://forums.factorio.com/125394)
+    - Fixed that on_equipment_removed did not fire for robots removing equipment. (https://forums.factorio.com/125919)
+    - Fixed that some hidden items would show in Factoriopedia. (https://forums.factorio.com/124957)
+    - Fixed that Sound::audible_distance_modifier and SoundPrototype::audible_distance_modifier would be effectively applied twice.
+    - Fixed pentapod eggs default import surface. (https://forums.factorio.com/125355)
+    - Fixed that loading old save files created from a freeplay custom scenario would not load because of outdated scripts. (https://forums.factorio.com/119410)
+    - Fixed trunk of a specific tree flickered when moving while zoomed out. (https://forums.factorio.com/125036)
+    - Fixed "Open character logistics/info/crafting" hotkeys sometimes not closing the character gui. (https://forums.factorio.com/118493)
+    - Fixed a desync related to cliffs and deleting multiple chunks in the same tick. (https://forums.factorio.com/125941)
+    - Don't auto-focus blueprint parameter fields when using a controller. (https://forums.factorio.com/123006)
+    - Fixed a crash when interacting with GUIs while auto-save runs. (https://forums.factorio.com/125930)
+    - Fixed that the steam 'low steam remote storage' warning would show even if all steam remote storage options were disabled. (https://forums.factorio.com/125958)
+    - Fixed that player.render_mode didn't report chart_zoomed_in for the remote controller. (https://forums.factorio.com/125942)
+    - Fixed crash when clicking a shortcut rich text link in controller input method.
+    - Fixed BP of storage chest with filters would be incorectly overbuilt over non-storage logistic chests (https://forums.factorio.com/124387)
+    - Fixed quality icon being shown twice in in-world icons for blacklist quality filter (without entity)
+    - Fixed a crash when building entities with linked pipe connections in multiplayer latency. (https://forums.factorio.com/123266)
+    - Fixed that manually launching items to space platforms would wrongly say some combination of items wouldn't fit. (https://forums.factorio.com/125713)
+    - Fixed that map rendering would wrongly show your player as on the map when paused. (https://forums.factorio.com/124338)
+    - Fixed that going back in browse history didn't return to player location if the character was in space platform hub.
+    - Fixed an audible click at certain zoom levels when playing positional sounds with custom zoom attenuation and aggregation.
+    - Fixed offshore pump underwater patch was not rendered under water.
+    - Fixed issue where plants were not being destroyed when (super)force building entities that autofill tiles that collide with them (https://forums.factorio.com/122632)
+    - Fixed loading of scenarios when entities were configured with difficulty settings. (https://forums.factorio.com/125927)
+    - Fixed biters and pentapods getting frozen mid-attack. (https://forums.factorio.com/118055)
+    - Fixed infinity container parametrization could set empty filters causing crash on saving.
+  Scripting:
+    - ItemPrototype::spoil_result and spoil_to_trigger_result can now be used at the same time.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.30
 Date: 10. 01. 2025
@@ -20,7 +68,7 @@ Date: 10. 01. 2025
     - Fixed asteroid collector could fail to grab some chunks if there were no other chunks nearby. (https://forums.factorio.com/124971)
     - Fixed a crash when interacting with ghost assembling machines after migrating recipes. (https://forums.factorio.com/125669)
     - Fixed crash when using the same sprite as both decal and decorative. (https://forums.factorio.com/125106)
-    - Fixed that cycling quality did not work while the mouse was over scrollable widgets. (https://forums.factorio.com/125424)
+    - Fixed that cycling quality did not work while the mouse was over scrollable widgets. (https://forums.factorio.com/121609)
     - Fixed that logistic groups could get broken when mining and un-doing ghost logistic containers. (https://forums.factorio.com/124026)
     - Fixed long custom ending text would not fit in the victory screen. (https://forums.factorio.com/123818)
     - Fixed that hidden surfaces would show in the evolution command. (https://forums.factorio.com/124561)
@@ -35,7 +83,6 @@ Date: 10. 01. 2025
     - Fixed yet another issue with flow statistics. (https://forums.factorio.com/125742)
     - Fixed script rendering objects targeting an entity didn't draw at render position of the entity. (https://forums.factorio.com/125393)
     - Fixed issue of incorrect undo of deconstruction of multiple tile ghost with common dependent entity ghost (https://forums.factorio.com/123389)
-    - Fixed mouse cursor showing up when exiting Steam Big Picture in controller input method. (https://forums.factorio.com/115242)
     - Fixed macOS Game Mode not activating for the non-Steam version of the game.
     - Fixed that items would end up in crafing machine trash slots when it wasn't desired. (https://forums.factorio.com/125212)
   Scripting:

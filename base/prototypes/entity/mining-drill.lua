@@ -1501,7 +1501,7 @@ data:extend(
       }
     },
 
-    perceived_performance = { maximum = 30.0 },
+    perceived_performance = {maximum = 30.0},
 
     integration_patch =
     {

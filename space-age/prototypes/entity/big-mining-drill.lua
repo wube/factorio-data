@@ -597,7 +597,7 @@ data:extend(
       {
         filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-moving-loop.ogg", volume = 0.6,
         aggregation = {max_count = 2, remove = true, count_already_playing = true},
-        audible_distance_modifier = 0.5
+        audible_distance_modifier = 0.25
       },
       stopped_sound = {filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-moving-stop.ogg", volume = 0.4},
       minimal_sound_duration_for_stopped_sound = 33, -- at least third of the movement duration (which is drilling_frames / animation_speed)
@@ -626,7 +626,7 @@ data:extend(
       south = bmd_sprite_load("S-integration", nil),
       west = bmd_sprite_load("W-integration", nil),
     },
-    perceived_performance = { maximum = 30.0 },
+    perceived_performance = {maximum = 30.0},
 
     mining_speed = 2.5,
     energy_source =

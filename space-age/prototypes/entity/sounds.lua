@@ -7,28 +7,28 @@ sounds.asteroid_collision_carbonic_small =
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-collision-carbonic-small", 6, 0.3),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.75
+    audible_distance_modifier = 0.55
   }
 sounds.asteroid_collision_metallic_small =
   {
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-collision-metallic-small", 7, 0.3),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.75
+    audible_distance_modifier = 0.55
   }
   sounds.asteroid_collision_interstellar_small =
   {
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-collision-interstellar-small", 6, 0.3),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.75
+    audible_distance_modifier = 0.55
   }
   sounds.asteroid_collision_oxide_small =
   {
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-collision-oxide-small", 6, 0.25),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.75
+    audible_distance_modifier = 0.55
   }
 -- asteroids take damage
 sounds.asteroid_damage_metallic_small =
@@ -36,7 +36,7 @@ sounds.asteroid_damage_metallic_small =
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-metallic-small", 6, 0.5),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.75
+    audible_distance_modifier = 0.55
   }
   sounds.asteroid_damage_metallic_medium =
   {
@@ -55,7 +55,7 @@ sounds.asteroid_damage_metallic_small =
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-metallic-huge", 3, 0.7),
     aggregation = {max_count = 2, remove = true, count_already_playing = true},
-    audible_distance_modifier = 2
+    audible_distance_modifier = 4
   }
   sounds.asteroid_damage_carbonic_small =
   {
@@ -80,14 +80,14 @@ sounds.asteroid_damage_metallic_small =
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-carbonic-huge", 4, 0.7),
     aggregation = {max_count = 2, remove = true, count_already_playing = true},
-    audible_distance_modifier = 2
+    audible_distance_modifier = 4
   }
   sounds.asteroid_damage_oxide_small =
   {
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-oxide-small", 7, 0.3),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.7
+    audible_distance_modifier = 0.5
   }
   sounds.asteroid_damage_oxide_medium =
   {
@@ -106,14 +106,14 @@ sounds.asteroid_damage_metallic_small =
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-oxide-huge", 4, 0.9),
     aggregation = {max_count = 2, remove = true, count_already_playing = true},
-    audible_distance_modifier = 2
+    audible_distance_modifier = 4
   }
   sounds.asteroid_damage_interstellar_small =
   {
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-interstellar-small", 7, 0.3),
     aggregation = {max_count = 3, remove = true, count_already_playing = true},
-    audible_distance_modifier = 0.7
+    audible_distance_modifier = 0.5
   }
   sounds.asteroid_damage_interstellar_medium =
   {
@@ -132,7 +132,7 @@ sounds.asteroid_damage_metallic_small =
     category = "game-effect",
     variations = sound_variations("__space-age__/sound/entity/asteroid/asteroid-damage-interstellar-huge", 4, 0.9),
     aggregation = {max_count = 2, remove = true, count_already_playing = true},
-    audible_distance_modifier = 2
+    audible_distance_modifier = 4
   }
 
 sounds.electromagnetic_plant =
@@ -366,7 +366,7 @@ sounds.demolisher =
         attenuation = "exponential",
         fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 40.0}, to = {2.0, 100.0 }}},
       },
-      audible_distance_modifier = 2.5,
+      audible_distance_modifier = 6.25,
     },
     roar_probability = 1 / (12 * 60), -- average pause between roars is 12 seconds
     hurt_roar =
@@ -377,7 +377,7 @@ sounds.demolisher =
         attenuation = "exponential",
         fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 40.0}, to = {2.0, 100.0 }}},
       },
-      audible_distance_modifier = 2.5,
+      audible_distance_modifier = 6.25,
     },
     hurt_thresholds = {0.9, 0.75, 0.5, 0.25, 0.1},
 
@@ -426,7 +426,7 @@ sounds.demolisher =
         attenuation = "exponential",
         fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 50.0}, to = {2.0, 100.0 }}},
       },
-      audible_distance_modifier = 2.5,
+      audible_distance_modifier = 6.25,
     },
     roar_probability = 1 / (12 * 60), -- average pause between roars is 12 seconds
     hurt_roar =
@@ -437,7 +437,7 @@ sounds.demolisher =
         attenuation = "exponential",
         fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 50.0}, to = {2.0, 100.0 }}},
       },
-      audible_distance_modifier = 2.5,
+      audible_distance_modifier = 6.25,
     },
     hurt_thresholds = {0.9, 0.75, 0.5, 0.25, 0.1},
 
@@ -486,7 +486,7 @@ sounds.demolisher =
         attenuation = "exponential",
         fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 60.0}, to = {2.0, 100.0 }}},
       },
-      audible_distance_modifier = 2.5,
+      audible_distance_modifier = 6.25,
     },
     roar_probability = 1 / (12 * 60), -- average pause between roars is 12 seconds
     hurt_roar =
@@ -497,7 +497,7 @@ sounds.demolisher =
         attenuation = "exponential",
         fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 60.0}, to = {2.0, 100.0 }}},
       },
-      audible_distance_modifier = 2.5,
+      audible_distance_modifier = 6.25,
     },
     hurt_thresholds = {0.9, 0.75, 0.5, 0.25, 0.1},
 
@@ -769,12 +769,14 @@ sounds.cargo_bay_hatch_opening_sound =
   {
     filename = "__space-age__/sound/entity/cargo-hatch/cargo-bay-hatch-opening-loop.ogg",
     volume = 0.6,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
   stopped_sound =
   {
     filename = "__space-age__/sound/entity/cargo-hatch/cargo-bay-hatch-opening-stop.ogg",
     volume = 0.35,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
   minimal_sound_duration_for_stopped_sound = 25,
@@ -785,12 +787,14 @@ sounds.cargo_bay_hatch_closing_sound =
   {
     filename = "__space-age__/sound/entity/cargo-hatch/cargo-bay-hatch-closing-loop.ogg",
     volume = 0.6,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   },
   stopped_sound =
   {
     filename = "__space-age__/sound/entity/cargo-hatch/cargo-bay-hatch-closing-stop.ogg",
     volume = 0.35,
+    modifiers = volume_multiplier("main-menu", 2.5),
     aggregation = {max_count = 1, remove = true, count_already_playing = true}
   }
 }
