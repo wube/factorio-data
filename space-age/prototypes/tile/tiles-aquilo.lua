@@ -133,7 +133,7 @@ local ice_transitions =
      -- this added the lightmap spritesheet
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-dirt-mask.png",
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-mask.png",
       inner_corner_count = 8,
       outer_corner_count = 8,
       side_count = 8,

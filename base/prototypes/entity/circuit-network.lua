@@ -1078,8 +1078,8 @@ data:extend
       audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.combinator_open,
+    close_sound = sounds.combinator_close,
 
     activity_led_light =
     {

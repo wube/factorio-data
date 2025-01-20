@@ -70,7 +70,7 @@ local lava_stone_transitions =
      -- this added the lightmap spritesheet
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-dirt-mask.png",
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-mask.png",
       inner_corner_count = 8,
       outer_corner_count = 8,
       side_count = 8,
@@ -102,7 +102,7 @@ local lava_stone_transitions_between_transitions =
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-dirt-to-land-mask.png",
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-to-land-mask.png",
       o_transition_count = 0
     },
     water_patch = lava_patch
@@ -133,7 +133,7 @@ local lava_stone_transitions_between_transitions =
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-dirt-to-land-mask.png",
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-to-land-mask.png",
       o_transition_count = 0
     },
     water_patch = lava_patch
@@ -151,7 +151,7 @@ local lava_stone_transitions_between_transitions =
     layout = tile_spritesheet_layout.transition_3_3_3_1_0,
     effect_map_layout =
     {
-      spritesheet = "__base__/graphics/terrain/effect-maps/water-dirt-to-out-of-map-mask.png",
+      spritesheet = "__space-age__/graphics/terrain/effect-maps/lava-dirt-to-out-of-map-mask.png",
       o_transition_count = 0
     }
   },

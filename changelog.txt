@@ -1,6 +1,32 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.32
+Version: 2.0.33
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.32
+Date: 20. 01. 2025
+  Optimizations:
+    - Improved performance when removing roboports in large active networks by 60%. (https://forums.factorio.com/126004)
+  Graphics:
+    - Removed reflections from lava. Tile transitions to lava now use the foam channel instead to keep their appearance. (https://forums.factorio.com/125097)
+  Bugfixes:
+    - Fixed rocket silo GUI not fitting on small screens. (https://forums.factorio.com/119785)
+    - Fixed a crash when writing LuaItem::entity_filters. (https://forums.factorio.com/126017)
+    - Fixed that blueprint preview rendering did not work correctly. (https://forums.factorio.com/103953)
+    - Fixed a crash with positional GuiEffect sounds with aggregation when dedicated UI sound resources were exhausted. (https://forums.factorio.com/126057)
+    - Fixed upgraded blueprint entities would have their flip reverted (https://forums.factorio.com/124584)
+    - Fixed worm shooting at fast moving target sometimes created multiple acid puddles with single spit and even outside of its range. (https://forums.factorio.com/77071)
+    - Fixed that labs could try to research trigger based technologies. (https://forums.factorio.com/120370)
+    - Fixed LuaEntity::get_logistic_sections was not always working with entity ghosts. (https://forums.factorio.com/126097)
+    - Fixed selector combinator was using wrong open and close sounds. (https://forums.factorio.com/123464)
+    - Fixed remote item requests leaving a visual deconstruction/ghost mark when inserters interacted with the slot. (https://forums.factorio.com/121577)
+    - Fixed issue related to rendering items on belts when a belt was also rendered through a camera widget. (https://forums.factorio.com/124058)
+    - Fixed that assembler input slots could exceed stack limits. (https://forums.factorio.com/116644)
+    - Fixed a crash in assembling machine GUI when the output was full and a recipe containing a research progress product was being crafted. (https://forums.factorio.com/126094)
+    - Fixed shooting actions missing vibrations when playing with a controller.
+  Scripting:
+    - Added connection_category to LuaFluidboxPrototype::pipe_connections.
+  Modding:
+    - Added FluidStream::target_initial_position_only. It's used by worm acid spit.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.31
 Date: 16. 01. 2025

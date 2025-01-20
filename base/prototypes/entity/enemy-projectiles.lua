@@ -203,6 +203,7 @@ function acid_stream(data)
     --particle_fade_out_threshold = 0.95,
     particle_fade_out_duration = 2,
     particle_loop_exit_threshold = 0.25,
+    target_initial_position_only = true,
     special_neutral_target_damage = {amount = 1, type = "acid"},
     working_sound =
     {
