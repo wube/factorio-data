@@ -320,7 +320,7 @@ data:extend({
   working_sound =
   {
     sound = {category = "weapon", filename = "__base__/sound/fire-1.ogg"},
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 }})
 

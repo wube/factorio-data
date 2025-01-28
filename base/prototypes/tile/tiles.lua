@@ -2673,7 +2673,7 @@ data:extend(
       animation_scale = { 0.006, 0.006 },
 
       dark_threshold = { 0.307, 0.289 },
-      reflection_threshold = { 1, 1 },
+      reflection_threshold = { 0.27, 0.3 },
       specular_threshold = { 0.35, 0.322 },
       tick_scale = 0.09,
 

@@ -276,13 +276,14 @@ explosion_animations.big_explosion = function()
   }
 end
 
-explosion_animations.massive_explosion = function()
+explosion_animations.massive_explosion = function(shift)
+  shift = shift or {0,0}
   return
   {
     width = 656,
     height = 634,
     frame_count = 57,
-    shift = util.by_pixel(-45, -91),
+    shift = util.add_shift(util.by_pixel(-45, -91), shift),
     animation_speed = 0.5,
     scale = 0.5,
     allow_forced_downscale = true,

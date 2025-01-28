@@ -271,9 +271,8 @@ data:extend
 
     working_sound =
     {
-      sound = { filename = "__base__/sound/underground-belt.ogg", volume = 0.2 },
-      max_sounds_per_type = 2,
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/underground-belt.ogg", volume = 0.2, audible_distance_modifier = 0.5},
+      max_sounds_per_prototype = 2,
       persistent = true,
       use_doppler_shift = false
     },
@@ -397,9 +396,8 @@ data:extend
     close_sound = sounds.machine_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/fast-underground-belt.ogg", volume = 0.27 },
-      max_sounds_per_type = 2,
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/fast-underground-belt.ogg", volume = 0.27, audible_distance_modifier = 0.5},
+      max_sounds_per_prototype = 2,
       persistent = true,
       use_doppler_shift = false
     },
@@ -551,9 +549,8 @@ data:extend
     close_sound = sounds.machine_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/express-underground-belt.ogg", volume = 0.35 },
-      max_sounds_per_type = 2,
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/express-underground-belt.ogg", volume = 0.35, audible_distance_modifier = 0.5},
+      max_sounds_per_prototype = 2,
       persistent = true,
       use_doppler_shift = false
     },

@@ -282,7 +282,7 @@ data:extend(
     working_sound =
     {
       sound = {filename = "__base__/sound/electric-mining-drill.ogg", volume = 1.0, advanced_volume_control = {attenuation = "exponential"}},
-      max_sounds_per_type = 4,
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -1857,9 +1857,8 @@ data:extend(
     close_sound = {filename = "__base__/sound/open-close/pumpjack-close.ogg", volume = 0.5},
     working_sound =
     {
-      sound = {filename = "__base__/sound/pumpjack.ogg", volume = 0.7},
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.6,
+      sound = {filename = "__base__/sound/pumpjack.ogg", volume = 0.7, audible_distance_modifier = 0.6},
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 10
     },

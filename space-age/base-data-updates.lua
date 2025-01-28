@@ -157,52 +157,56 @@ data.raw["cargo-landing-pad"]["cargo-landing-pad"].cargo_station_parameters.giga
   planet_upper_giga_hatch({0,1,2})
 }
 
-local ten_pressure_condition =
-{
+local function ten_pressure_condition()
+  return
   {
-    property = "pressure",
-    min = 10
+    {
+      property = "pressure",
+      min = 10
+    }
   }
-}
+end
 
-local one_gravity_condition =
-{
+local function one_gravity_condition()
+  return
   {
-    property = "gravity",
-    min = 1
+    {
+      property = "gravity",
+      min = 1
+    }
   }
-}
+end
 
-data.raw["fluid-turret"]["flamethrower-turret"].surface_conditions = ten_pressure_condition
-data.raw["furnace"]["stone-furnace"].surface_conditions = ten_pressure_condition
-data.raw["mining-drill"]["burner-mining-drill"].surface_conditions = ten_pressure_condition
-data.raw["furnace"]["steel-furnace"].surface_conditions = ten_pressure_condition
-data.raw["boiler"]["boiler"].surface_conditions = ten_pressure_condition
-data.raw["roboport"]["roboport"].surface_conditions = ten_pressure_condition
-data.raw["inserter"]["burner-inserter"].surface_conditions = ten_pressure_condition
-data.raw["car"]["car"].surface_conditions = one_gravity_condition
-data.raw["car"]["tank"].surface_conditions = one_gravity_condition
-data.raw["spider-vehicle"]["spidertron"].surface_conditions = one_gravity_condition
-data.raw["legacy-curved-rail"]["legacy-curved-rail"].surface_conditions = one_gravity_condition
-data.raw["legacy-straight-rail"]["legacy-straight-rail"].surface_conditions = one_gravity_condition
-data.raw["locomotive"]["locomotive"].surface_conditions = one_gravity_condition
-data.raw["cargo-wagon"]["cargo-wagon"].surface_conditions = one_gravity_condition
-data.raw["fluid-wagon"]["fluid-wagon"].surface_conditions = one_gravity_condition
-data.raw["artillery-wagon"]["artillery-wagon"].surface_conditions = one_gravity_condition
-data.raw["train-stop"]["train-stop"].surface_conditions = one_gravity_condition
-data.raw["rail-signal"]["rail-signal"].surface_conditions = one_gravity_condition
-data.raw["rail-chain-signal"]["rail-chain-signal"].surface_conditions = one_gravity_condition
-data.raw["curved-rail-b"]["curved-rail-b"].surface_conditions = one_gravity_condition
-data.raw["curved-rail-a"]["curved-rail-a"].surface_conditions = one_gravity_condition
-data.raw["half-diagonal-rail"]["half-diagonal-rail"].surface_conditions = one_gravity_condition
-data.raw["straight-rail"]["straight-rail"].surface_conditions = one_gravity_condition
+data.raw["fluid-turret"]["flamethrower-turret"].surface_conditions = ten_pressure_condition()
+data.raw["furnace"]["stone-furnace"].surface_conditions = ten_pressure_condition()
+data.raw["mining-drill"]["burner-mining-drill"].surface_conditions = ten_pressure_condition()
+data.raw["furnace"]["steel-furnace"].surface_conditions = ten_pressure_condition()
+data.raw["boiler"]["boiler"].surface_conditions = ten_pressure_condition()
+data.raw["roboport"]["roboport"].surface_conditions = ten_pressure_condition()
+data.raw["inserter"]["burner-inserter"].surface_conditions = ten_pressure_condition()
+data.raw["car"]["car"].surface_conditions = one_gravity_condition()
+data.raw["car"]["tank"].surface_conditions = one_gravity_condition()
+data.raw["spider-vehicle"]["spidertron"].surface_conditions = one_gravity_condition()
+data.raw["legacy-curved-rail"]["legacy-curved-rail"].surface_conditions = one_gravity_condition()
+data.raw["legacy-straight-rail"]["legacy-straight-rail"].surface_conditions = one_gravity_condition()
+data.raw["locomotive"]["locomotive"].surface_conditions = one_gravity_condition()
+data.raw["cargo-wagon"]["cargo-wagon"].surface_conditions = one_gravity_condition()
+data.raw["fluid-wagon"]["fluid-wagon"].surface_conditions = one_gravity_condition()
+data.raw["artillery-wagon"]["artillery-wagon"].surface_conditions = one_gravity_condition()
+data.raw["train-stop"]["train-stop"].surface_conditions = one_gravity_condition()
+data.raw["rail-signal"]["rail-signal"].surface_conditions = one_gravity_condition()
+data.raw["rail-chain-signal"]["rail-chain-signal"].surface_conditions = one_gravity_condition()
+data.raw["curved-rail-b"]["curved-rail-b"].surface_conditions = one_gravity_condition()
+data.raw["curved-rail-a"]["curved-rail-a"].surface_conditions = one_gravity_condition()
+data.raw["half-diagonal-rail"]["half-diagonal-rail"].surface_conditions = one_gravity_condition()
+data.raw["straight-rail"]["straight-rail"].surface_conditions = one_gravity_condition()
 
-data.raw["rail-ramp"]["rail-ramp"].surface_conditions = one_gravity_condition
-data.raw["elevated-straight-rail"]["elevated-straight-rail"].surface_conditions = one_gravity_condition
-data.raw["elevated-half-diagonal-rail"]["elevated-half-diagonal-rail"].surface_conditions = one_gravity_condition
-data.raw["elevated-curved-rail-a"]["elevated-curved-rail-a"].surface_conditions = one_gravity_condition
-data.raw["elevated-curved-rail-b"]["elevated-curved-rail-b"].surface_conditions = one_gravity_condition
-data.raw["rail-support"]["rail-support"].surface_conditions = one_gravity_condition
+data.raw["rail-ramp"]["rail-ramp"].surface_conditions = one_gravity_condition()
+data.raw["elevated-straight-rail"]["elevated-straight-rail"].surface_conditions = one_gravity_condition()
+data.raw["elevated-half-diagonal-rail"]["elevated-half-diagonal-rail"].surface_conditions = one_gravity_condition()
+data.raw["elevated-curved-rail-a"]["elevated-curved-rail-a"].surface_conditions = one_gravity_condition()
+data.raw["elevated-curved-rail-b"]["elevated-curved-rail-b"].surface_conditions = one_gravity_condition()
+data.raw["rail-support"]["rail-support"].surface_conditions = one_gravity_condition()
 
 -- TODO: AssemblingMachinePrototype demands 4 directions, circuit_connector_definitions provides only 1 so far
 data.raw["rocket-silo"]["rocket-silo"].circuit_connector = circuit_connector_definitions["rocket-silo"]

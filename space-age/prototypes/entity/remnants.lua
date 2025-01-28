@@ -58,7 +58,30 @@ local remnants =
       line_length = 1,
     }),
   },
-
+  {
+    type = "corpse",
+    name = "thruster-remnants",
+    icon = "__space-age__/graphics/icons/thruster.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "space-platform-remnants",
+    order = "d",
+    selection_box = {{-2, -2.5}, {2, 5.5}},
+    collision_box = {{-1.7, -2.2}, {1.7, 2.2}},
+    tile_width = 4,
+    tile_height = 5,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = util.sprite_load("__space-age__/graphics/entity/thruster/thruster-remnants",{
+      scale = 0.5,
+      direction_count = 1,
+      line_length = 1,
+      shift = {0, 3}
+    }),
+  },
   {
     type = "corpse",
     name = "stack-inserter-remnants",
@@ -260,6 +283,29 @@ local remnants =
           direction_count = 1,
           scale = 0.5
         }))
+  },
+  {
+    type = "corpse",
+    name = "crusher-remnants",
+    icon = "__space-age__/graphics/icons/crusher.png",
+    flags = {"placeable-neutral", "not-on-map"},
+    hidden_in_factoriopedia = true,
+    subgroup = "environmental-protection-remnants",
+    order = "a-l-a",
+    selection_box = {{-1, -1.5}, {1, 1.5}},
+    collision_box = {{-0.7, -1.2}, {0.7, 1.2}},
+    tile_width = 3,
+    tile_height = 2,
+    selectable_in_game = false,
+    time_before_removed = 60 * 60 * 15, -- 15 minutes
+    expires = false,
+    final_render_layer = "remnants",
+    remove_on_tile_placement = false,
+    animation = util.sprite_load("__space-age__/graphics/entity/crusher/remnants/crusher-remnants",
+        {
+          direction_count = 4,
+          scale = 0.5
+        })
   },
   {
     type = "corpse",

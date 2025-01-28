@@ -258,20 +258,7 @@ function spitter_decay_animation(scale, tint1, tint2)
           surface = "nauvis",
           usage = "corpse-decay"
         }
-      ),
-      util.sprite_load("__base__/graphics/entity/spitter/spitter-decay-shadow",
-        {
-          slice = 6,
-          frame_count = 24,
-          direction_count = 16,
-          scale = scale * 0.5,
-          draw_as_shadow = true,
-          multiply_shift = scale,
-          allow_forced_downscale = true,
-          surface = "nauvis",
-          usage = "corpse-decay"
-        }
-      ),
+      )
     }
   }
 end

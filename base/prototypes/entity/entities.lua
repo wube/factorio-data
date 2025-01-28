@@ -106,7 +106,6 @@ function make_spidertron_leg(spidertron_name, scale, leg_thickness, movement_spe
     {
       match_progress_to_activity = true,
       sound = sounds.spidertron_leg,
-      audible_distance_modifier = 0.5
     },
     stretch_force_scalar = 2.5 / (3.5 * scale), -- longer legs, weaker stretch force
     knee_height = 2.5 * scale,
@@ -1021,10 +1020,15 @@ data:extend(
     icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
     working_sound =
     {
-      sound = { filename = "__base__/sound/furnace.ogg", volume = 0.6, modifiers = { volume_multiplier("main-menu", 1.5), volume_multiplier("tips-and-tricks", 1.4) } },
+      sound =
+      {
+        filename = "__base__/sound/furnace.ogg",
+        volume = 0.6,
+        modifiers = {volume_multiplier("main-menu", 1.5), volume_multiplier("tips-and-tricks", 1.4)},
+        audible_distance_modifier = 0.4
+      },
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      audible_distance_modifier = 0.4
     },
     resistances =
     {
@@ -1282,8 +1286,7 @@ data:extend(
     },
     working_sound =
     {
-      sound = { filename = "__base__/sound/boiler.ogg", volume = 0.7 },
-      audible_distance_modifier = 0.3,
+      sound = {filename = "__base__/sound/boiler.ogg", volume = 0.7, audible_distance_modifier = 0.3},
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -1851,11 +1854,11 @@ data:extend(
         filename = "__base__/sound/steam-engine-90bpm.ogg",
         volume = 0.55,
         speed_smoothing_window_size = 60,
-        modifiers = volume_multiplier("tips-and-tricks", 1.1)
+        modifiers = volume_multiplier("tips-and-tricks", 1.1),
+        audible_distance_modifier = 0.8,
       },
       match_speed_to_activity = true,
-      audible_distance_modifier = 0.8,
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -1936,10 +1939,15 @@ data:extend(
     close_sound = sounds.machine_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/offshore-pump.ogg", volume = 0.5, modifiers = volume_multiplier("tips-and-tricks", 1.1) },
+      sound =
+      {
+        filename = "__base__/sound/offshore-pump.ogg",
+        volume = 0.5,
+        modifiers = volume_multiplier("tips-and-tricks", 1.1),
+        audible_distance_modifier = 0.7,
+      },
       match_volume_to_activity = true,
-      audible_distance_modifier = 0.7,
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -2814,7 +2822,7 @@ data:extend(
     working_sound =
     {
       sound = {filename = "__base__/sound/radar.ogg", volume = 0.8, modifiers = volume_multiplier("main-menu", 2.0)},
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
       use_doppler_shift = false
     },
     radius_minimap_visualisation_color = {0.059, 0.092, 0.235, 0.275},
@@ -3176,8 +3184,7 @@ data:extend(
     impact_category = "metal",
     working_sound =
     {
-      sound = { filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.5 },
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/assembling-machine-t1-1.ogg", volume = 0.5, audible_distance_modifier = 0.5},
       fade_in_ticks = 4,
       fade_out_ticks = 20
     }
@@ -3262,8 +3269,7 @@ data:extend(
     impact_category = "metal",
     working_sound =
     {
-      sound = { filename = "__base__/sound/assembling-machine-t2-1.ogg", volume = 0.45 },
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/assembling-machine-t2-1.ogg", volume = 0.45, audible_distance_modifier = 0.5},
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -3884,8 +3890,13 @@ data:extend(
     },
     working_sound =
     {
-      sound = { filename = "__base__/sound/lab.ogg", volume = 0.7, modifiers = { volume_multiplier("main-menu", 2.2), volume_multiplier("tips-and-tricks", 0.8) } },
-      audible_distance_modifier = 0.7,
+      sound =
+      {
+        filename = "__base__/sound/lab.ogg",
+        volume = 0.7,
+        modifiers = {volume_multiplier("main-menu", 2.2), volume_multiplier("tips-and-tricks", 0.8)},
+        audible_distance_modifier = 0.7,
+      },
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -4316,10 +4327,10 @@ data:extend(
         filename = "__base__/sound/electric-furnace.ogg",
         volume = 0.85,
         modifiers = volume_multiplier("main-menu", 4.2),
-        advanced_volume_control = {attenuation = "exponential"}
+        advanced_volume_control = {attenuation = "exponential"},
+        audible_distance_modifier = 0.7,
       },
-      max_sounds_per_type = 4,
-      audible_distance_modifier = 0.7,
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -4724,9 +4735,14 @@ data:extend(
     icon_draw_specification = {scale = 0.66, shift = {0, -0.1}},
     working_sound =
     {
-      sound = {filename = "__base__/sound/steel-furnace.ogg", volume = 0.32, advanced_volume_control = {attenuation = "exponential"}},
-      max_sounds_per_type = 4,
-      audible_distance_modifier = 0.5,
+      sound =
+      {
+        filename = "__base__/sound/steel-furnace.ogg",
+        volume = 0.32,
+        advanced_volume_control = {attenuation = "exponential"},
+        audible_distance_modifier = 0.5,
+      },
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -5279,23 +5295,34 @@ data:extend(
       main_sounds =
       {
         {
-          sound = {filename = "__base__/sound/accumulator-working.ogg", volume = 0.4, modifiers = volume_multiplier("main-menu", 1.44)},
+          sound =
+          {
+            filename = "__base__/sound/accumulator-working.ogg",
+            volume = 0.4,
+            modifiers = volume_multiplier("main-menu", 1.44),
+            audible_distance_modifier = 0.5
+          },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 2, inverted = true},
           fade_in_ticks = 4,
           fade_out_ticks = 20
         },
         {
-          sound = {filename = "__base__/sound/accumulator-discharging.ogg", volume = 0.4, modifiers = volume_multiplier("main-menu", 1.44)},
+          sound =
+          {
+            filename = "__base__/sound/accumulator-discharging.ogg",
+            volume = 0.4,
+            modifiers = volume_multiplier("main-menu", 1.44),
+            audible_distance_modifier = 0.5
+          },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 1},
           fade_in_ticks = 4,
           fade_out_ticks = 20
         }
       },
-      idle_sound = {filename = "__base__/sound/accumulator-idle.ogg", volume = 0.35},
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5
+      idle_sound = {filename = "__base__/sound/accumulator-idle.ogg", volume = 0.35, audible_distance_modifier = 0.5},
+      max_sounds_per_prototype = 3,
     },
 
     circuit_connector = circuit_connector_definitions["accumulator"],
@@ -5383,8 +5410,7 @@ data:extend(
     impact_category = "metal",
     working_sound =
     {
-      sound = { filename = "__base__/sound/assembling-machine-t3-1.ogg", volume = 0.45 },
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/assembling-machine-t3-1.ogg", volume = 0.45, audible_distance_modifier = 0.5},
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -6765,9 +6791,8 @@ data:extend(
     close_sound = {filename = "__base__/sound/open-close/roboport-close.ogg", volume = 0.4},
     working_sound =
     {
-      sound = { filename = "__base__/sound/roboport-working.ogg", volume = 0.4 },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.75
+      sound = {filename = "__base__/sound/roboport-working.ogg", volume = 0.4, audible_distance_modifier = 0.75},
+      max_sounds_per_prototype = 3,
     },
     recharging_light = {intensity = 0.2, size = 3, color = {0.5, 0.5, 1}},
     request_to_open_door_timeout = 15,
@@ -6903,10 +6928,9 @@ data:extend(
     close_sound = sounds.metal_large_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/storage-tank.ogg", volume = 0.6 },
+      sound = {filename = "__base__/sound/storage-tank.ogg", volume = 0.6, audible_distance_modifier = 0.5},
       match_volume_to_activity = true,
-      audible_distance_modifier = 0.5,
-      max_sounds_per_type = 3
+      max_sounds_per_prototype = 3
     },
 
     circuit_connector = circuit_connector_definitions["storage-tank"],
@@ -6943,9 +6967,8 @@ data:extend(
     icon_draw_specification = {scale = 0.5},
     working_sound =
     {
-      sound = { filename = "__base__/sound/pump.ogg", volume = 0.3 },
-      audible_distance_modifier = 0.5,
-      max_sounds_per_type = 2
+      sound = {filename = "__base__/sound/pump.ogg", volume = 0.3, audible_distance_modifier = 0.5},
+      max_sounds_per_prototype = 2
     },
     damaged_trigger_effect = hit_effects.entity(),
     resistances =
@@ -7200,10 +7223,10 @@ data:extend(
       sound =
       {
         filename = "__base__/sound/substation.ogg",
-        volume = 0.4
+        volume = 0.4,
+        audible_distance_modifier = 0.32,
       },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.32,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 30,
       fade_out_ticks = 40,
       use_doppler_shift = false
@@ -7324,9 +7347,12 @@ data:extend(
     close_sound = {filename = "__base__/sound/open-close/beacon-close.ogg", volume = 0.4},
     working_sound =
     {
-      sound = sound_variations("__base__/sound/beacon", 2, 0.3),
-      audible_distance_modifier = 0.33,
-      max_sounds_per_type = 3
+      sound =
+      {
+        variations = sound_variations("__base__/sound/beacon", 2, 0.3),
+        audible_distance_modifier = 0.33,
+      },
+      max_sounds_per_prototype = 3
     },
     energy_usage = "480kW",
     distribution_effectivity = 1.5,
@@ -7344,8 +7370,8 @@ data:extend(
       {
         filename = "__base__/graphics/entity/beacon/beacon-reflection.png",
         priority = "extra-high",
-        width = 24,
-        height = 28,
+        width = 18,
+        height = 29,
         shift = util.by_pixel(0, 55),
         variation_count = 1,
         scale = 5
@@ -7842,9 +7868,8 @@ data:extend(
     },
     working_sound =
     {
-      sound = { filename = "__base__/sound/fight/poison-cloud.ogg", volume = 0.5 },
-      max_sounds_per_type = 1,
-      audible_distance_modifier = 0.8,
+      sound = {filename = "__base__/sound/fight/poison-cloud.ogg", volume = 0.5, audible_distance_modifier = 0.8},
+      max_sounds_per_prototype = 1,
       match_volume_to_activity = true
     }
   },
@@ -8284,7 +8309,6 @@ data:extend(
     working_sound =
     {
       sound = sound_variations("__base__/sound/chemical-plant", 3, 0.5),
-      apparent_volume = 1.5,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -8603,7 +8627,7 @@ data:extend(
     working_sound =
     {
       sound = sound_variations("__base__/sound/nuclear-reactor", 2, 0.55, volume_multiplier("main-menu", 0.8)),
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -8953,8 +8977,13 @@ data:extend(
     },
     working_sound =
     {
-      sound = { filename = "__base__/sound/heat-exchanger.ogg", volume = 0.65, modifiers = volume_multiplier("main-menu", 0.7) },
-      audible_distance_modifier = 0.5,
+      sound =
+      {
+        filename = "__base__/sound/heat-exchanger.ogg",
+        volume = 0.65,
+        modifiers = volume_multiplier("main-menu", 0.7),
+        audible_distance_modifier = 0.5,
+      },
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -9191,10 +9220,10 @@ data:extend(
         modifiers = volume_multiplier("main-menu", 0.7),
         speed_smoothing_window_size = 60,
         advanced_volume_control = {attenuation = "exponential"},
+        audible_distance_modifier = 0.8,
       },
       match_speed_to_activity = true,
-      audible_distance_modifier = 0.8,
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -9231,7 +9260,7 @@ data:extend(
     {
       sound = { filename = "__base__/sound/heat-pipe.ogg", volume = 0.4 },
       match_volume_to_activity = true,
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -9978,7 +10007,7 @@ data:extend({
   {
     type = "temporary-container",
     name = "cargo-pod-container",
-    icon = "__base__/graphics/icons/cargo-pod.png",
+    icon = "__base__/graphics/icons/landed-cargo-pod.png",
     order = "d[cargo-pod-container]",
     minable = {mining_time = 0.5},
     fast_replaceable_group = "container",

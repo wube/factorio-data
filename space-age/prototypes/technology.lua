@@ -1790,7 +1790,7 @@ data:extend(
         recipe = "quantum-processor",
       },
     },
-    prerequisites = {"biter-egg-handling", "cryogenic-science-pack"},
+    prerequisites = {"cryogenic-science-pack"},
     unit =
     {
       count = 500,
@@ -1961,7 +1961,7 @@ data:extend(
         recipe = "promethium-science-pack",
       },
     },
-    prerequisites = {"fusion-reactor"},
+    prerequisites = {"biter-egg-handling", "fusion-reactor"},
     unit =
     {
       count_formula = "2000",

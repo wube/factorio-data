@@ -140,121 +140,184 @@ sounds.electromagnetic_plant =
   main_sounds =
   {
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/electromagnetic-plant-warmup.ogg", volume = 0.6},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/electromagnetic-plant-warmup.ogg",
+        volume = 0.6,
+        audible_distance_modifier = 0.6,
+      },
       play_for_working_visualisations = {"warm-up"},
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/electromagnetic-plant-loop.ogg", volume = 0.6},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/electromagnetic-plant-loop.ogg",
+        volume = 0.6,
+        audible_distance_modifier = 0.6,
+      },
       play_for_working_visualisations = {"rotation", "rotation-continue"},
       fade_in_ticks = 4,
       fade_out_ticks = 20,
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/electromagnetic-plant-cooldown.ogg", volume = 0.8},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/electromagnetic-plant-cooldown.ogg",
+        volume = 0.8,
+        audible_distance_modifier = 0.6,
+      },
       play_for_working_visualisations = {"cool-down"},
     },
   },
   sound_accents =
   {
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-retract.ogg", volume = 0.35},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-retract.ogg",
+        volume = 0.35,
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "warm-up",
       frame = 11,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-coil", 2, 0.6),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-coil", 2, 0.6),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 1,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-coil", 2, 0.6),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-coil", 2, 0.6),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 40,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-coil", 2, 0.4),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-coil", 2, 0.4),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 102,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-riser-stop", 2, 0.6),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-riser-stop", 2, 0.6),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 93,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-bridge-close.ogg", volume = 0.4},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/emp-bridge-close.ogg", volume = 0.4,
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 33,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-bridge-open.ogg", volume = 0.4},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/emp-bridge-open.ogg", volume = 0.4,
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 50,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-electric", 5, 0.4),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-electric", 5, 0.4),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 35, --electric sparks to match bridge section close
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-electric", 5, 0.5),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-electric", 5, 0.5),
+        audible_distance_modifier = 0.5,
+      },
       play_for_working_visualisation = "rotation",
       frame = 58,
-      audible_distance_modifier = 0.5
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-slide-stop", 2, 0.4),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-slide-stop", 2, 0.4),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation",
       frame = 102,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-riser-stop", 2, 0.4),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-riser-stop", 2, 0.4),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation-continue",
       frame = 14,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-slide-stop", 2, 0.4),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-slide-stop", 2, 0.4),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "rotation-continue",
       frame = 3,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-riser-stop", 2, 0.2),
+      sound =
+      {
+        variations = sound_variations("__space-age__/sound/entity/electromagnetic-plant/emp-riser-stop", 2, 0.2),
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "cool-down",
       frame = 31,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-stop.ogg", volume = 0.45},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-stop.ogg", volume = 0.45,
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "cool-down",
       frame = 12,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-extend.ogg", volume = 0.5},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-extend.ogg", volume = 0.5,
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "cool-down",
       frame = 1,
-      audible_distance_modifier = 0.4
     },
     {
-      sound = {filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-weld.ogg", volume = 0.9},
+      sound =
+      {
+        filename = "__space-age__/sound/entity/electromagnetic-plant/emp-arm-weld.ogg", volume = 0.9,
+        audible_distance_modifier = 0.4,
+      },
       play_for_working_visualisation = "cool-down-lights",
       frame = 12,
-      audible_distance_modifier = 0.4
     },
   },
-  audible_distance_modifier = 0.6,
-  max_sounds_per_type = 2
+  max_sounds_per_prototype = 2
 }
 sounds.railgun_gunshot = sound_variations("__space-age__/sound/entity/railgun/railgun-gunshot", 5, 0.8, volume_multiplier("main-menu", 0.9))
 
@@ -390,7 +453,7 @@ sounds.demolisher =
         volume = 0.25,
         advanced_volume_control = {attenuation = "exponential"},
       },
-      max_sounds_per_type = 4,
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -407,7 +470,7 @@ sounds.demolisher =
           fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 20.0}, to = {2.0, 100.0 }}},
         },
       },
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -450,7 +513,7 @@ sounds.demolisher =
         volume = 0.4,
         advanced_volume_control = {attenuation = "exponential"},
       },
-      max_sounds_per_type = 4,
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -467,7 +530,7 @@ sounds.demolisher =
           fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 20.0}, to = {2.0, 100.0 }}},
         },
       },
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -510,7 +573,7 @@ sounds.demolisher =
         volume = 0.5,
         advanced_volume_control = {attenuation = "exponential"},
       },
-      max_sounds_per_type = 4,
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -527,7 +590,7 @@ sounds.demolisher =
           fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 20.0}, to = {2.0, 100.0 }}},
         },
       },
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -678,7 +741,7 @@ sounds.wriggler_pentapod =
     {
       sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7)),
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
-      max_sounds_per_type = 2
+      max_sounds_per_prototype = 2
     },
     walking_sound =
     {
@@ -708,7 +771,7 @@ sounds.wriggler_pentapod =
     {
       sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7)),
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
-      max_sounds_per_type = 2
+      max_sounds_per_prototype = 2
     },
     walking_sound =
     {
@@ -738,7 +801,7 @@ sounds.wriggler_pentapod =
     {
       sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 1)),
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
-      max_sounds_per_type = 2
+      max_sounds_per_prototype = 2
     },
     walking_sound =
     {

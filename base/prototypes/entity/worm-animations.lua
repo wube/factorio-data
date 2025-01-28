@@ -336,6 +336,21 @@ function worm_end_attack_animation(scale, tint)
 end
 
 local function dead_worm_animation (path, scale, tint, frame_count, usage)
+  local shadow = nil
+  if string.find(path, "decay") == false then
+    shadow = util.sprite_load(path .. "-shadow",
+    {
+      frame_count = frame_count,
+      direction_count = 1,
+      scale = scale * 0.5,
+      draw_as_shadow = true,
+      multiply_shift = scale,
+      surface = "nauvis",
+      usage = usage or "enemy"
+    }
+  )
+  end
+
   return
   {
     util.sprite_load( path ,
@@ -363,18 +378,7 @@ local function dead_worm_animation (path, scale, tint, frame_count, usage)
         usage = usage or "enemy"
       }
     ),
-    util.sprite_load( path .. "-shadow",
-      {
-        frame_count = frame_count,
-        direction_count = 1,
-        scale = scale * 0.5,
-        draw_as_shadow = true,
-        multiply_shift = scale,
-        allow_forced_downscale = true,
-        surface = "nauvis",
-        usage = usage or "enemy"
-      }
-    ),
+    shadow
   }
 end
 

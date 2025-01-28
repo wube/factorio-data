@@ -406,36 +406,6 @@ data:extend
     name = "volcanic_soil_dark_range",
     expression = "max(volcanic_soil_dark_range_mountains, volcanic_soil_dark_range_ashlands)"
   },
-  {
-    type = "tile",
-    name = "volcanic-cracks-hot",
-    subgroup = "vulcanus-tiles",
-    order = "a-c",
-    collision_mask = tile_collision_masks.ground(),
-    autoplace =
-    {
-      probability_expression = "volcanic_cracks_hot_range"
-    },
-    layer = vulcanus_tile_offset + 2,
-    sprite_usage_surface = "vulcanus",
-    variants = tile_variations_template_with_transitions_and_light(
-      "__space-age__/graphics/terrain/vulcanus/volcanic-cracks-hot.png",
-      "__space-age__/graphics/terrain/vulcanus/volcanic-cracks-hot-lightmap.png",
-      {
-        max_size = 4,
-        [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
-        [2] = { probability = 1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-        [4] = { probability = 0.1, weights = {0.018, 0.020, 0.015, 0.025, 0.015, 0.020, 0.025, 0.015, 0.025, 0.025, 0.010, 0.025, 0.020, 0.025, 0.025, 0.010 }, },
-      }
-    ),
-
-    transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = data.raw.tile["dirt-1"].walking_sound,
-    map_color = {r = tile_lightening+ 30, g = tile_lightening+ 5, b = tile_lightening+ -5}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
-    walking_speed_modifier = .6,
-    vehicle_friction_modifier = 1,
-    pollution_absorption_per_second = tile_pollution.lava
-  },
   ----------- CLIFF TILE
   {
     type = "tile",
@@ -615,7 +585,6 @@ data:extend
     walking_speed_modifier = .6,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
-    default_cover_tile = "foundation"
   },
   {
     type = "tile",

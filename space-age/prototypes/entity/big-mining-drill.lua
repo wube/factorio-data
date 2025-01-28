@@ -583,13 +583,12 @@ data:extend(
       sound_accents =
       {
         {
-          sound = {filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-start.ogg", volume = 0.75},
+          sound = {filename = "__space-age__/sound/entity/big-mining-drill/big-mining-drill-start.ogg", volume = 0.75, audible_distance_modifier = 0.3},
           play_for_working_visualisation = "drill-animation",
           frame = 8,
-          audible_distance_modifier = 0.3
         }
       },
-      max_sounds_per_type = 1
+      max_sounds_per_prototype = 1
     },
     moving_sound =
     {

@@ -540,9 +540,8 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
     hurt_thresholds = sounds.hurt_thresholds,
     working_sound =
     {
-      sound = { filename = "__space-age__/sound/world/semi-persistent/distant-rumble-2.ogg", volume = 1 },
-      max_sounds_per_type = 1,
-      audible_distance_modifier = 0.8,
+      sound = {filename = "__space-age__/sound/world/semi-persistent/distant-rumble-2.ogg", volume = 1, audible_distance_modifier = 0.8},
+      max_sounds_per_prototype = 1,
       match_volume_to_activity = true
     },
     animation =
@@ -594,6 +593,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = math.max(1, effect_multiplier),
             smoke_name = "demolisher-mining-smoke-front",
+            only_when_visible = true,
             initial_height = 0,
             speed = {-0.04 * effect_multiplier, 0},
             speed_multiplier = 0.75,
@@ -608,6 +608,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = math.max(1, effect_multiplier),
             smoke_name = "demolisher-mining-smoke-front",
+            only_when_visible = true,
             initial_height = 0,
             speed = {0.04 * effect_multiplier, 0},
             speed_multiplier = 0.75,
@@ -629,6 +630,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = math.max(1, effect_multiplier),
             smoke_name = "demolisher-mining-smoke-small-top",
+            only_when_visible = true,
             initial_height = 0,
             speed = {-0.03, 0},
             speed_multiplier = 0.75,
@@ -642,6 +644,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = math.max(1, effect_multiplier),
             smoke_name = "demolisher-mining-smoke-small-top",
+            only_when_visible = true,
             initial_height = 0,
             speed = {0.03, 0},
             speed_multiplier = 0.75,
@@ -662,6 +665,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = 4 * effect_multiplier,
             smoke_name = "demolisher-mining-smoke-small-bottom",
+            only_when_visible = true,
             initial_height = 0,
             speed = {-0.01, 0},
             speed_multiplier = 0.75,
@@ -675,6 +679,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = 4 * effect_multiplier,
             smoke_name = "demolisher-mining-smoke-small-bottom",
+            only_when_visible = true,
             initial_height = 0,
             speed = {-0.01, 0},
             speed_multiplier = 0.75,
@@ -688,6 +693,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = 4 * effect_multiplier,
             smoke_name = "demolisher-mining-smoke-small-bottom",
+            only_when_visible = true,
             initial_height = 0,
             speed = {-0.03, 0},
             speed_multiplier = 0.75,
@@ -701,6 +707,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = 4 * effect_multiplier,
             smoke_name = "demolisher-mining-smoke-small-bottom",
+            only_when_visible = true,
             initial_height = 0,
             speed = {0.03, 0},
             speed_multiplier = 0.75,
@@ -721,6 +728,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = 2 * effect_multiplier,
             smoke_name = "demolisher-mining-smoke-big",
+            only_when_visible = true,
             initial_height = 0,
             speed = {-0.03, 0},
             speed_multiplier = 0.75,
@@ -736,6 +744,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "create-trivial-smoke",
             repeat_count = 2 * effect_multiplier,
             smoke_name = "demolisher-mining-smoke-big",
+            only_when_visible = true,
             initial_height = 0,
             speed = {0.03, 0},
             speed_multiplier = 0.75,
@@ -2958,12 +2967,12 @@ data:extend(
               }
             }
           }
-        }
+        },
+        audible_distance_modifier = 0.6,
       },
-      audible_distance_modifier = 0.6,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      max_sounds_per_type = 3
+      max_sounds_per_prototype = 3
     },
     update_effects =
     {
@@ -3057,9 +3066,8 @@ data:extend(
     },
     working_sound =
     {
-      sound = {filename = "__space-age__/sound/smoke/ash-cloud.ogg", volume = 0.7},
-      max_sounds_per_type = 1,
-      audible_distance_modifier = 0.8,
+      sound = {filename = "__space-age__/sound/smoke/ash-cloud.ogg", volume = 0.7, audible_distance_modifier = 0.8},
+      max_sounds_per_prototype = 1,
       match_volume_to_activity = true
     }
   },
@@ -3103,6 +3111,8 @@ end
 function wriggler_spritesheet(name, frames, speed, scale, tint, flag)
   speed = speed or 1.0
   local is_shadow = string.sub(name, -string.len("-shadow")) == "-shadow"
+  local is_decay = string.find(name, "decay")
+  if is_decay and is_shadow then return nil end
   return util.sprite_load("__space-age__/graphics/entity/wriggler/wriggler-" .. name,
     {
       slice = 5,
@@ -5858,7 +5868,7 @@ data:extend(
     working_sound =
     {
       sound = { filename = "__base__/sound/creatures/spawner-spitter.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 0.7) },
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
     },
     dying_sound = sound_variations("__base__/sound/creatures/spawner-death", 5, 0.7, volume_multiplier("main-menu", 1.21) ),
     impact_category = "organic",
@@ -6183,7 +6193,7 @@ data:extend(
     working_sound =
     {
       sound = { filename = "__base__/sound/creatures/spawner-spitter.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 0.7) },
-      max_sounds_per_type = 3,
+      max_sounds_per_prototype = 3,
     },
     dying_sound = sound_variations("__base__/sound/creatures/spawner-death", 5, 0.7, volume_multiplier("main-menu", 1.21) ),
     impact_category = "organic",

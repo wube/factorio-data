@@ -30,10 +30,9 @@ data:extend
 
     working_sound =
     {
-      sound = { filename = "__base__/sound/combinator.ogg", volume = 0.45 },
+      sound = {filename = "__base__/sound/combinator.ogg", volume = 0.45, audible_distance_modifier = 0.2},
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
     open_sound = sounds.combinator_open,
@@ -100,10 +99,9 @@ data:extend
 
     working_sound =
     {
-      sound = { filename = "__base__/sound/combinator.ogg", volume = 0.45 },
+      sound = {filename = "__base__/sound/combinator.ogg", volume = 0.45, audible_distance_modifier = 0.2},
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
     open_sound = sounds.combinator_open,
@@ -852,16 +850,14 @@ data:extend
       main_sounds =
       {
         {
-          sound = {filename = "__base__/sound/power-switch.ogg", volume = 0.35},
+          sound = {filename = "__base__/sound/power-switch.ogg", volume = 0.35, audible_distance_modifier = 0.4},
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 1},
-          audible_distance_modifier = 0.4
         },
       },
-      activate_sound = sound_variations("__base__/sound/power-switch-activate", 3, 0.3),
-      deactivate_sound = {filename = "__base__/sound/power-switch-deactivate.ogg", volume = 0.15},
-      audible_distance_modifier = 0.4,
-      max_sounds_per_type = 2
+      activate_sound = {variations = sound_variations("__base__/sound/power-switch-activate", 3, 0.3), audible_distance_modifier = 0.4},
+      deactivate_sound = {filename = "__base__/sound/power-switch-deactivate.ogg", volume = 0.15, audible_distance_modifier = 0.4},
+      max_sounds_per_prototype = 2
     },
 
     overlay_start_delay = 3, --power on animation overlay is only 2 frames we play at the end
@@ -1072,10 +1068,9 @@ data:extend
 
     working_sound =
     {
-      sound = { filename = "__base__/sound/combinator.ogg", volume = 0.45 },
+      sound = {filename = "__base__/sound/combinator.ogg", volume = 0.45, audible_distance_modifier = 0.2},
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      audible_distance_modifier = 0.2,
       match_speed_to_activity = true
     },
     open_sound = sounds.combinator_open,

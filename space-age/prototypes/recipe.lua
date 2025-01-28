@@ -176,8 +176,8 @@ data:extend(
     },
     crafting_machine_tint =
     {
-      primary = {r = 0.000, g = 0.500, b = 1.000, a = 1.000}, -- #007fffff
-      secondary = {r = 0.095, g = 0.412, b = 0.822, a = 1.000}, -- #1868d1ff
+      primary = {r = 0.000, g = 0.500, b = 1.000, a = 1.000},
+      secondary = {r = 0.095, g = 0.412, b = 0.822, a = 1.000},
     }
   },
 
@@ -369,7 +369,7 @@ data:extend(
     crafting_machine_tint =
     {
       primary = {r = 0.8, g = 0.9, b = 1, a = 1.000},
-      secondary = {r = 0.900, g = 0.137, b = 0.000, a = 1.000}, -- #e52200ff
+      secondary = {r = 0.900, g = 0.137, b = 0.000, a = 1.000},
     }
   },
 
@@ -406,8 +406,8 @@ data:extend(
     },
     crafting_machine_tint =
     {
-      primary = {r = 0.5, g = 0.9, b = 0.5, a = 1.000},
-      secondary = {r = 0.0, g = 0.5, b = 0.0, a = 1.000},
+      primary = {r = 45, g = 129, b = 86, a = 1.000},
+      secondary = {r = 122, g = 75, b = 156, a = 1.000},
     }
   },
 
@@ -431,7 +431,7 @@ data:extend(
     results = {{type="item", name="rocket-fuel", amount=1}},
     crafting_machine_tint =
     {
-      primary = {r = 0.728, g = 0.116, b = 0.116, a = 1.000}, -- #b91d1dff
+      primary = {r = 151, g = 66, b = 0, a = 1.000},
       secondary = {r = 0.3, g = 0.9, b = 0.3, a = 1.000},
     }
   },
@@ -479,8 +479,8 @@ data:extend(
     results = {{type="item", name="plastic-bar", amount=3}},
     crafting_machine_tint =
     {
-      primary = {r = 0.722, g = 0.621, b = 0.655, a = 1.000},
-      secondary = {r = 0.693, g = 0.449, b = 0.449, a = 1.000},
+      primary = {r = 189, g = 31, b = 50, a = 1.000},
+      secondary = {r = 235, g = 83, b = 0, a = 1.000},
     }
   },
   {
@@ -502,7 +502,7 @@ data:extend(
     results = {{type="item", name="sulfur", amount=2}},
     crafting_machine_tint =
     {
-      primary = {r = 1, g = 1, b = 0, a = 1.000},
+      primary = {r = 193, g = 164, b = 0, a = 1.000},
       secondary = {r = 0.693, g = 0.449, b = 0.0, a = 1.000},
     }
   },
@@ -550,8 +550,8 @@ data:extend(
     allow_productivity = true,
     crafting_machine_tint =
     {
-      primary = {r = 0.306, g = 0.643, b = 0.684, a = 1.000},
-      secondary = {r = 0.684, g = 0.684, b = 0.684, a = 1.000},
+      primary = {r = 9, g = 0, b = 220, a = 1.000},
+      secondary = {r = 0, g = 0, b = 0, a = 1.000},
     },
   },
 
@@ -803,8 +803,8 @@ data:extend(
     allow_productivity = true,
     crafting_machine_tint =
     {
-      primary = {0.1, 0.2, 0.0, 1},
-      secondary = {0.639, 0.764, 1, 1}
+      primary = {0.95, 1, 0, 1},
+      secondary = {255, 233, 163, 1}
     }
   },
   {
@@ -1910,8 +1910,8 @@ data:extend(
     enabled = false,
     crafting_machine_tint =
     {
-      primary = {r = 0.134, g = 0.009, b = 0.009, a = 1.000}, -- #220202ff
-      secondary = {r = 0.377, g = 0.255, b = 0.255, a = 1.000}, -- #604141ff
+      primary = {r = 0.134, g = 0.009, b = 0.009, a = 1.000},
+      secondary = {r = 0.377, g = 0.255, b = 0.255, a = 1.000},
     }
   },
 
@@ -1936,10 +1936,10 @@ data:extend(
     allow_decomposition = false,
     crafting_machine_tint =
     {
-      primary = {r = 0.207, g = 0.177, b = 0.177, a = 1.000}, -- #342d2dff
-      secondary = {r = 0.301, g = 0.276, b = 0.196, a = 1.000}, -- #4c4632ff
-      tertiary = {r = 0.790, g = 0.722, b = 0.478, a = 1.000}, -- #c9b879ff
-      quaternary = {r = 0.554, g = 0.540, b = 0.540, a = 1.000}, -- #8d8989ff
+      primary = {r = 0.207, g = 0.177, b = 0.177, a = 1.000},
+      secondary = {r = 0.301, g = 0.276, b = 0.196, a = 1.000},
+      tertiary = {r = 0.790, g = 0.722, b = 0.478, a = 1.000},
+      quaternary = {r = 0.554, g = 0.540, b = 0.540, a = 1.000},
     }
   },
   {
@@ -2055,8 +2055,8 @@ data:extend(
     allow_quality = false,
     crafting_machine_tint =
     {
-      primary = {1, 0, 0, 1},
-      secondary = {1, 0, 0, 1}
+      primary = {166, 182, 181, 1},
+      secondary = {1, 0, 0, 0.3}
     }
   },
   {
@@ -2075,8 +2075,8 @@ data:extend(
     allow_quality = false,
     crafting_machine_tint =
     {
-      primary = {r = 1, g = 0, b = 0.25, a = 1},
-      secondary = {r = 1, g = 0, b = 0.25, a = 1},
+      primary = {r = 130, g = 130, b = 120, a = 1},
+      secondary = {r = 194, g = 162, b = 117, a = 1},
     },
   },
   -------------------------------------------------------------------------- Fulgora

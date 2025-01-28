@@ -1155,6 +1155,16 @@ data:extend(
       scale = 0.4,
       flags = {"icon"}
     },
+    rail_planner_allow_elevated_rails_modifier_icon =
+    {
+      filename = "__core__/graphics/icons/technology/effect/rail-planner-upgrade.png",
+      generate_sdf = true,
+      priority = "medium",
+      width = 64,
+      height = 64,
+      flags = {"icon"}
+    },
+
     default_ammo_damage_modifier_icon                                     = make_default_modifier_icon("default-ammo-damage-modifier.png"),
     default_gun_speed_modifier_icon                                       = make_default_modifier_icon("default-gun-speed-modifier.png"),
     default_turret_attack_modifier_icon                                   = make_default_modifier_icon("default-turret-attack-modifier.png"),
@@ -1179,7 +1189,6 @@ data:extend(
     cliff_deconstruction_enabled_modifier_icon                            = make_technology_modifier_icon("effect-cliff-deconstruction.png"),
     mining_with_fluid_modifier_icon                                       = make_technology_modifier_icon("effect-mining-with-fluid.png"),
     rail_support_on_deep_oil_ocean_modifier_icon                          = make_technology_modifier_icon("effect-rail-support-on-deep-oil-ocean.png"),
-    rail_planner_allow_elevated_rails_modifier_icon                       = make_default_modifier_icon("rail-planner-allow-elevated-rails.png"),
     unlock_quality_modifier_icon                                          = make_default_modifier_icon("unlock-quality-modifier.png"),
     change_recipe_productivity_modifier_icon                              = make_default_modifier_icon("unlock-quality-modifier.png"),
     character_crafting_speed_modifier_icon                                = default_character_modifier_icon,

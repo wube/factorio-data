@@ -1434,10 +1434,10 @@ data:extend{
         advanced_volume_control =
         {
           fades = {fade_in = {curve_type = "S-curve", from = {control = 0.4, volume_percentage = 0}, to = {1.2, 100.0}}}
-        }
+        },
+        audible_distance_modifier = 0.7,
       },
-      max_sounds_per_type = 2,
-      audible_distance_modifier = 0.7,
+      max_sounds_per_prototype = 2,
     },
     impact_category = "stone",
     render_layer = "object",

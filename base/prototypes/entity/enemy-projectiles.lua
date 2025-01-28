@@ -208,7 +208,7 @@ function acid_stream(data)
     working_sound =
     {
       sound = {category = "enemy", filename = "__base__/sound/fight/projectile-acid-burn-loop.ogg", volume = 0.4},
-      max_sounds_per_type = 3
+      max_sounds_per_prototype = 3
     },
     initial_action =
     {

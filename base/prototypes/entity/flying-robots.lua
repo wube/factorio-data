@@ -548,7 +548,6 @@ local robots =
     working_sound =
     {
       sound = { filename = "__base__/sound/fight/defender-robot-loop.ogg", volume = 0.7 },
-      apparent_volume = 1,
       persistent = true
     },
     destroy_action =

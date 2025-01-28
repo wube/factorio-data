@@ -296,7 +296,7 @@ function make_tesla_beam(name, sound, damage, token)
     working_sound =
     sound and {
       sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-beam.ogg", volume = 1.0},
-      max_sounds_per_type = 4
+      max_sounds_per_prototype = 4
     } or nil,
   }
 end
@@ -349,7 +349,7 @@ function make_tesla_beam_chain(name, sound, damage, token)
     working_sound =
     sound and {
       sound = {category = "weapon", filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-chain-beam.ogg", volume = 0.8},
-      max_sounds_per_type = 4
+      max_sounds_per_prototype = 4
     } or nil,
   }
 end

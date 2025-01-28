@@ -120,9 +120,8 @@ data:extend
     close_sound = sounds.machine_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/express-underground-belt.ogg", volume = 0.35 },
-      max_sounds_per_type = 2,
-      audible_distance_modifier = 0.5,
+      sound = {filename = "__base__/sound/express-underground-belt.ogg", volume = 0.35, audible_distance_modifier = 0.5},
+      max_sounds_per_prototype = 2,
       persistent = true,
       use_doppler_shift = false
     },
@@ -256,7 +255,7 @@ data:extend
     related_transport_belt = "turbo-transport-belt",
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
-    heating_energy = "30kW",
+    heating_energy = "40kW",
     structure =
     {
       north =

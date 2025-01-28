@@ -1,6 +1,87 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.33
+Version: 2.0.34
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.33
+Date: 28. 01. 2025
+  Minor Features:
+    - Show a warning in the blueprint library if it's using a lot of RAM.
+    - Show a warning in blueprint and blueprint book tooltips if they are using a lot of RAM.
+    - Added fluid contents to the pumpjack tooltip. (https://forums.factorio.com/117211)
+  Changes:
+    - Added hatch count info to platform hub, landing pad and rocket silo.
+    - Reduced how much you can zoom out in god controller.
+    - Multiplayer selection rectangles will only show the player name if the player's character is not visible on-screen.
+    - Moved biter egg handling to be required by promethium science pack instead of quantum processors because that's when they are really needed.
+  Graphics:
+    - Fixed reflections on water being broken. (https://forums.factorio.com/124269)
+    - Baked in shadows of decaying enemies to have them draw better when on transport belts, and also to save on VRAM. (https://forums.factorio.com/116164)
+    - Tweaked some colours of recipes in biochambers so they're a bit easier to tell apart.
+    - Added destroyed graphics for crushers, and improved their graphics a little bit.
+    - Added destroyed graphics for space platform thrusters.
+    - Improved icons of cargo pod.
+    - Added icon for the technology effect of elevated rails.
+    - Removed unused spritesheets from the game data folder.
+  Optimizations:
+    - Demolishers are now no longer simulated when they are irrelevant to gameplay, and off-screen demolishers are now only partially simulated. (https://forums.factorio.com/120275)
+  Bugfixes:
+    - Fixed that modded rocket silo ingredients that could spoil would not be inserted into the rocket silo crafting inventory. (https://forums.factorio.com/123081)
+    - Fixed that some startup errors would cause the mod list to be set to "enable all". (https://forums.factorio.com/126164)
+    - Fixed that a demolisher dying to a nuclear reactor meltdown didn't count as a player kill for statistics or achievements. (https://forums.factorio.com/124442)
+    - Fixed scaled rich text was not rendered properly. (https://forums.factorio.com/126092)
+    - Removed duplicated frame in the fusion generator animation. (https://forums.factorio.com/123796)
+    - Fixed that the rail planner did not work on the edges of larger screens. (https://forums.factorio.com/126120)
+    - Fixed that LuaPlayer::set_controller would erroneously toggle double-remote view, causing corrupted remote driving states. (https://forums.factorio.com/121791)
+    - Fixed "Any planet import zero" wait condition not ignoring requests with zero amount. (https://forums.factorio.com/119181)
+    - Fixed request satisfied item selection list showing all qualities. (https://forums.factorio.com/125577)
+    - Fixed large amounts of unfulfilled requests blocking delivery of available items. (https://forums.factorio.com/124909)
+    - Fixed that turbo splitters used slightly less energy than other splitters to not freeze. (https://forums.factorio.com/126163)
+    - Fixed rocket silo tooltip was not aggregating similar items from rocket inventory. (https://forums.factorio.com/123590)
+    - Fixed that you couldn't re-select the same item when opening the remote view ghost picker. (https://forums.factorio.com/125403)
+    - Fixed that calling LuaGuiElement::remove_tab would not remove the tab content in some cases. (https://forums.factorio.com/115901)
+    - Fixed that LuaGuiElement::selected_tab_index would not update when a tab was removed. (https://forums.factorio.com/115901)
+    - Fixed that hovering asteroids in a space route in Factoriopedia with a controller didn't highlight the relevant line in the graph.
+    - Fixed lamps with 'always_on' set in the prototype would still show the checkbox in the lamp GUI. (https://forums.factorio.com/126104)
+    - Fixed train stop GUI recentering when trains count goes to 0. (https://forums.factorio.com/125861)
+    - Fixed surface list not updating platform position icons when passing a space location without stopping. (https://forums.factorio.com/123977)
+    - Fixed assembling machine recipe tooltip not showing ingredients with quality. (https://forums.factorio.com/125089)
+    - Fixed edit pin GUI clipping out of the screen at large GUI scales. (https://forums.factorio.com/118040)
+    - Fixed mod info panes retaining scroll distance between selection. (https://forums.factorio.com/108172)
+    - Fixed map generator GUI scrollpane clipping the resource richness sliders. (https://forums.factorio.com/116539)
+    - Fixed spidertron preview zooming in and out in the spidertron UI while walking. (https://forums.factorio.com/125602)
+    - Fixed that the cheat mode crafting GUI didn't show quality options at all times. (https://forums.factorio.com/126049)
+    - Fixed that CLI arguments would not be preserved when restarting due to a mod load error. (https://forums.factorio.com/109458)
+    - Fixed tight spot script crashing when in remote controller. (https://forums.factorio.com/126242)
+    - Fixed LuaSimulation API crashing the game when used incorrectly. (https://forums.factorio.com/125402)
+    - Fixed that space locations marked as hidden were visible in space platform schedule and platform creation GUI. (https://forums.factorio.com/125418)
+    - Fixed that the game would close if a filename-related error was raised in the save game dialog with async saving enabled. (https://forums.factorio.com/114794)
+    - Fixed that quitting from the server console while an async save was running would deadlock the server. (https://forums.factorio.com/102240)
+    - Fixed that clicking "yes" in the crash dialog would not correctly terminate the Factorio process on Linux. (https://forums.factorio.com/117480)
+    - Fixed that roboports marked for deconstruction still wanted to fulfill robot requests. (https://forums.factorio.com/121024)
+    - Fixed that attacking biter bases directly or with artillery could award the "It stinks and they don't like it" achievement. (https://forums.factorio.com/121625)
+    - Fixed that attacking pentapod bases directly or with artillery could award the "It stinks and they do like it" achievement. (https://forums.factorio.com/121625)
+    - Fixed spitters could get stuck attacking trees and rocks blocking their path without dealing any damage to them. (https://forums.factorio.com/126283)
+    - Fixed that module replacement logic on space platforms didn't keep the old module if the new module wasn't available. (https://forums.factorio.com/124042)
+    - Fixed an issue with asteroid collectors reading content when qualities have level changed. (https://forums.factorio.com/126282)
+    - Fixed that rocket turrets and railgun turrets had the wrong fast-replace groups. (https://forums.factorio.com/125205)
+    - Fixed that players in cargo pods would activate gates. (https://forums.factorio.com/126329)
+    - Fixed util.combine_icons calculated scale from icon_size incorrectly. (https://forums.factorio.com/119797)
+    - Fixed that flying text was shown on all surfaces in some cases. (https://forums.factorio.com/118096)
+    - Fixed 'speed' parameter of LuaPlayer::create_local_flying_text() not behaving as documented. (https://forums.factorio.com/118866)
+    - Fixed quality of held tile item not being visible when showing placement preview. (https://forums.factorio.com/121665)
+    - Fixed that technology GUI allowed opening console in multiplayer. (https://forums.factorio.com/119709)
+    - Removed several unused sprites. (https://forums.factorio.com/123454)
+    - Fixed that prototype defined lamp colors didn't work. (https://forums.factorio.com/124548)
+    - Fixed that hidden surface properties would still show in tooltips. (https://forums.factorio.com/117432)
+    - Fixed that changing the force of a segment did not in fact change the force of the entire segmented unit. (https://forums.factorio.com/126385)
+  Modding:
+    - Renamed WorkingSound::max_sounds_per_type to WorkingSound::max_sounds_per_prototype. The limit is now applied per prototype.
+    - Removed WorkingSound::apparent_volume.
+    - Removed WorkingSound::audible_distance_modifier, MainSound::audible_distance_modifier and SoundAccent::audible_distance_modifier. Sound::audible_distance_modifier is used instead.
+    - Removed PlaySoundTriggerEffectItem::volume_modifier and PlaySoundTriggerEffectItem::audible_distance_modifier.
+  Scripting:
+    - Added LuaEntityPrototype::get_pumping_speed. LuaEntityPrototype::pumping_speed is deprecated and should not be used.
+    - Added optional 'surface' parameter to LuaPlayer::create_local_flying_text().
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.32
 Date: 20. 01. 2025

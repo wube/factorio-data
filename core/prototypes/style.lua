@@ -8033,6 +8033,11 @@ data:extend(
       type = "scroll_pane_style",
       parent = "deep_scroll_pane",
       vertically_stretchable = "stretch_and_expand",
+      vertical_flow_style =
+      {
+        type = "vertical_flow_style",
+        vertical_spacing = 0
+      },
       padding = 0,
       background_graphical_set = deep_slot_background_tiling(12 + train_gui_minimap_size + 12, 12 + train_gui_minimap_size + 12 + 28 + 12)
     },
@@ -8086,7 +8091,8 @@ data:extend(
       type = "scroll_pane_style",
       graphical_set = inner_frame_tab_pane(),
       extra_left_margin_when_activated = 8,
-      extra_right_margin_when_activated = -4
+      extra_right_margin_when_activated = 8,
+      scrollbars_go_outside = true
     },
 
     map_preview_scroll_pane = -- does not paint top edge

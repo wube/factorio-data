@@ -172,10 +172,10 @@ data:extend({
         advanced_volume_control =
         {
           fades = {fade_in = {curve_type = "S-curve", from = {control = 0.3, volume_percentage = 0.0}, to = {2.0, 100.0}}}
-        }
+        },
+        audible_distance_modifier = 0.3,
       },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.3,
+      max_sounds_per_prototype = 3,
     },
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},

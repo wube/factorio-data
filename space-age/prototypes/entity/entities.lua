@@ -100,8 +100,8 @@ data:extend({
     close_sound = {filename = "__base__/sound/open-close/fluid-close.ogg", volume = 0.54},
     working_sound =
     {
-      sound = {filename = "__space-age__/sound/entity/biochamber/biochamber-loop.ogg", volume = 0.7},
-      max_sounds_per_type = 3,
+      sound = {filename = "__space-age__/sound/entity/biochamber/biochamber-loop.ogg", volume = 0.4},
+      max_sounds_per_prototype = 3,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -718,7 +718,7 @@ data:extend({
     minable = {mining_time = 0.2, result = "crusher"},
     fast_replaceable_group = "crusher",
     max_health = 350,
-    corpse = "electric-furnace-remnants",
+    corpse = "crusher-remnants",
     dying_explosion = "electric-furnace-explosion",
     circuit_wire_max_distance = 9,
     circuit_connector = circuit_connector_definitions["crusher"],
@@ -764,12 +764,12 @@ data:extend({
       sound =
       {
         filename = "__space-age__/sound/entity/crusher/crusher-loop.ogg",
-        volume = 0.8
+        volume = 0.8,
+        audible_distance_modifier = 0.6,
       },
-      audible_distance_modifier = 0.6,
       fade_in_ticks = 4,
       fade_out_ticks = 20,
-      max_sounds_per_type = 3
+      max_sounds_per_prototype = 3
     },
     graphics_set = require("__space-age__.prototypes.entity.crusher-pictures"),
     water_reflection =
@@ -849,7 +849,8 @@ data:extend({
       scale = 0.5,
       x = 3 * 64
     },
-
+    corpse = "thruster-remnants",
+    dying_explosion = "thruster-explosion",
     graphics_set =
     {
       animation = util.sprite_load("__space-age__/graphics/entity/thruster/thruster",
@@ -1077,12 +1078,12 @@ data:extend({
             volume = 0.3,
             speed_smoothing_window_size = 60,
             advanced_volume_control = {attenuation = "exponential"},
+            audible_distance_modifier = 0.8
           },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {multiplier = 2.0},
           match_speed_to_activity = true,
           activity_to_speed_modifiers = {multiplier = 1.2},
-          audible_distance_modifier = 0.8
         },
       },
       sound_accents =
@@ -1094,10 +1095,10 @@ data:extend({
             advanced_volume_control =
             {
               fades = { fade_in = { curve_type = "S-curve", from = { control = 0.5, volume_percentage = 0.0 }, to = { 3, 100.0 } } },
-            }
+            },
+            audible_distance_modifier = 0.3,
           },
           frame = 25,
-          audible_distance_modifier = 0.3,
         },
         {
           sound =
@@ -1106,13 +1107,13 @@ data:extend({
             advanced_volume_control =
             {
               fades = { fade_in = { curve_type = "S-curve", from = { control = 0.5, volume_percentage = 0.0 }, to = { 3, 100.0 } } },
-            }
+            },
+            audible_distance_modifier = 0.3,
           },
           frame = 52,
-          audible_distance_modifier = 0.3,
         },
       },
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       use_doppler_shift = false,
       extra_sounds_ignore_limit = true,
       activate_sound = { variations = sound_variations("__space-age__/sound/entity/platform-thruster/thruster-engine-activate", 3, 0.3) },
@@ -1161,28 +1162,28 @@ data:extend({
     {
       sound =
       {
-        filename = "__space-age__/sound/entity/foundry/foundry.ogg", volume = 0.5
+        filename = "__space-age__/sound/entity/foundry/foundry.ogg",
+        volume = 0.5,
+        audible_distance_modifier = 0.6
       },
-      --idle_sound = { filename = "__base__/sound/idle1.ogg", volume = 0.3 },
       fade_in_ticks = 4,
       fade_out_ticks = 20,
       sound_accents =
       {
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-pipe-out.ogg", volume = 0.9 }, frame = 2, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-slide-close.ogg", volume = 0.65 }, frame = 18, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-clamp.ogg", volume = 0.45 }, frame = 39, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-slide-stop.ogg", volume = 0.7 }, frame = 43, audible_distance_modifier = 0.4 },
-        { sound = { variations = sound_variations("__space-age__/sound/entity/foundry/foundry-fire-whoosh", 3, 0.8 )}, frame = 64, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-metal-clunk.ogg", volume = 0.65 }, frame = 64, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-slide-open.ogg", volume = 0.65 }, frame = 74, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-pipe-in.ogg", volume = 0.75 }, frame = 106, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-smoke-puff.ogg", volume = 0.8 }, frame = 106, audible_distance_modifier = 0.3 },
-        { sound = { variations = sound_variations("__space-age__/sound/entity/foundry/foundry-pour", 2, 0.7 )}, frame = 110 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-rocks.ogg", volume = 0.65 }, frame = 120, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/foundry/foundry-blade.ogg", volume = 0.7 }, frame = 126 },
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-pipe-out.ogg", volume = 0.9, audible_distance_modifier = 0.4}, frame = 2},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-slide-close.ogg", volume = 0.65, audible_distance_modifier = 0.3}, frame = 18},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-clamp.ogg", volume = 0.45, audible_distance_modifier = 0.3}, frame = 39},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-slide-stop.ogg", volume = 0.7, audible_distance_modifier = 0.4}, frame = 43},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/foundry/foundry-fire-whoosh", 3, 0.8), audible_distance_modifier = 0.3}, frame = 64},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-metal-clunk.ogg", volume = 0.65, audible_distance_modifier = 0.4}, frame = 64},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-slide-open.ogg", volume = 0.65, audible_distance_modifier = 0.3}, frame = 74},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-pipe-in.ogg", volume = 0.75, audible_distance_modifier = 0.4}, frame = 106},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-smoke-puff.ogg", volume = 0.8, audible_distance_modifier = 0.3}, frame = 106},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/foundry/foundry-pour", 2, 0.7)}, frame = 110},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-rocks.ogg", volume = 0.65, audible_distance_modifier = 0.3}, frame = 120},
+        {sound = {filename = "__space-age__/sound/entity/foundry/foundry-blade.ogg", volume = 0.7}, frame = 126},
       },
-      audible_distance_modifier = 0.6,
-      max_sounds_per_type = 2
+      max_sounds_per_prototype = 2
     },
     fluid_boxes =
     {
@@ -1285,9 +1286,13 @@ data:extend({
     crane_energy_usage = "100kW",
     working_sound =
     {
-      sound = {filename = "__space-age__/sound/entity/agricultural-tower/agricultural-tower-hub-loop.ogg", volume = 0.7},
-      max_sounds_per_type = 4,
-      audible_distance_modifier = 0.7,
+      sound =
+      {
+        filename = "__space-age__/sound/entity/agricultural-tower/agricultural-tower-hub-loop.ogg",
+        volume = 0.7,
+        audible_distance_modifier = 0.7,
+      },
+      max_sounds_per_prototype = 4,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -1530,8 +1535,8 @@ data:extend({
       sound = { filename = "__base__/sound/creatures/spawner.ogg", volume = 0.6 },
       sound_accents =
       {
-        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-push", 3, 0.3)}, frame = 1, audible_distance_modifier = 0.6},
-        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-pull", 3, 0.3)}, frame = 17, audible_distance_modifier = 0.6},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-push", 3, 0.3), audible_distance_modifier = 0.6}, frame = 1},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-pull", 3, 0.3), audible_distance_modifier = 0.6}, frame = 17},
       },
     },
     crafting_categories = {"captive-spawner-process"},
@@ -1638,12 +1643,12 @@ data:extend({
       sound = {filename = "__space-age__/sound/entity/biolab/biolab-loop.ogg", volume = 0.7},
       sound_accents =
       {
-        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-push", 3, 0.3)}, frame = 1, audible_distance_modifier = 0.6},
-        {sound = {variations = sound_variations("__space-age__/sound/entity/biolab/biolab-beaker", 7, 0.8)}, frame = 1, audible_distance_modifier = 0.4},
-        {sound = {variations = sound_variations("__space-age__/sound/entity/biolab/biolab-centrifuge", 4, 0.7)}, frame = 14, audible_distance_modifier = 0.3},
-        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-pull", 3, 0.3)}, frame = 17, audible_distance_modifier = 0.6},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-push", 3, 0.3), audible_distance_modifier = 0.6}, frame = 1},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/biolab/biolab-beaker", 7, 0.8), audible_distance_modifier = 0.4}, frame = 1},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/biolab/biolab-centrifuge", 4, 0.7), audible_distance_modifier = 0.3}, frame = 14},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-pull", 3, 0.3), audible_distance_modifier = 0.6}, frame = 17},
       },
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
     },
     researching_speed = 2,
     inputs =
@@ -1811,29 +1816,38 @@ data:extend({
       main_sounds =
       {
         {
-          sound = {filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-charge.ogg", volume = 0.5},
+          sound =
+          {
+            filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-charge.ogg",
+            volume = 0.5,
+            audible_distance_modifier = 0.5,
+          },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 2, inverted = true},
         },
         {
-          sound = {filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-discharge.ogg", volume = 0.5},
+          sound =
+          {
+            filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-discharge.ogg",
+            volume = 0.5,
+            audible_distance_modifier = 0.5,
+          },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 1},
         }
       },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5,
+      max_sounds_per_prototype = 3,
     },
     chargable_graphics = require("__space-age__.prototypes.entity.lightning-rod-graphics"),
     water_reflection =
     {
       pictures =
       {
-        filename = "__space-age__/graphics/entity/lightning-rod/lightning-rod.png",
+        filename = "__space-age__/graphics/entity/lightning-rod/lightning-rod-reflection.png",
         priority = "extra-high",
-        width = 12,
-        height = 28,
-        shift = util.by_pixel(0, 55),
+        width = 11,
+        height = 30,
+        shift = util.by_pixel(0, 50),
         variation_count = 1,
         scale = 5
       },
@@ -1889,8 +1903,8 @@ data:extend({
         filename = "__space-age__/graphics/entity/lightning-collector/lightning-collector-reflection.png",
         priority = "extra-high",
         width = 20,
-        height = 28,
-        shift = util.by_pixel(0, 55),
+        height = 36,
+        shift = util.by_pixel(0, 85),
         variation_count = 1,
         scale = 5
       },
@@ -1903,18 +1917,27 @@ data:extend({
       main_sounds =
       {
         {
-          sound = {filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-charge.ogg", volume = 0.7},
+          sound =
+          {
+            filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-charge.ogg",
+            volume = 0.7,
+            audible_distance_modifier = 0.5,
+          },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 2, inverted = true},
         },
         {
-          sound = {filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-discharge.ogg", volume = 0.8},
+          sound =
+          {
+            filename = "__space-age__/sound/entity/lightning-attractor/lightning-attractor-discharge.ogg",
+            volume = 0.8,
+            audible_distance_modifier = 0.5,
+          },
           match_volume_to_activity = true,
           activity_to_volume_modifiers = {offset = 1},
         }
       },
-      max_sounds_per_type = 3,
-      audible_distance_modifier = 0.5,
+      max_sounds_per_prototype = 3,
     },
   },
   {
@@ -1964,21 +1987,21 @@ data:extend({
       fade_out_ticks = 30,
       sound_accents =
       {
-        { sound = { variations = sound_variations("__space-age__/sound/entity/cryogenic-plant/cp-smoke-mask-puff", 2, 0.35 )}, frame = 11, audible_distance_modifier = 0.8 },
-        { sound = { variations = sound_variations("__space-age__/sound/entity/cryogenic-plant/cp-smoke-mask-puff", 2, 0.3 )}, frame = 130, audible_distance_modifier = 0.8 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-rise.ogg", volume = 0.9 }, frame = 14, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-fall.ogg", volume = 0.7 }, frame = 62, audible_distance_modifier = 0.3},
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-rise.ogg", volume = 0.9 }, frame = 110, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-fall.ogg", volume = 0.7 }, frame = 158, audible_distance_modifier = 0.3 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim5-gears.ogg", volume = 0.25 }, frame = 51, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim5-gears.ogg", volume = 0.2 }, frame = 151, audible_distance_modifier = 0.4 },
-        { sound = { variations = sound_variations("__space-age__/sound/entity/cryogenic-plant/cp-anim6-open", 2, 0.6 )}, frame = 3, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-close.ogg", volume = 0.7 }, frame = 33, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-slide-down.ogg", volume = 0.55 }, frame = 42, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-slide-up.ogg", volume = 0.6 }, frame = 126, audible_distance_modifier = 0.4 },
-        { sound = { filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-slide-stop.ogg", volume = 0.4 }, frame = 146, audible_distance_modifier = 0.4 },
+        {sound = {variations = sound_variations("__space-age__/sound/entity/cryogenic-plant/cp-smoke-mask-puff", 2, 0.35), audible_distance_modifier = 0.8}, frame = 11},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/cryogenic-plant/cp-smoke-mask-puff", 2, 0.3), audible_distance_modifier = 0.8}, frame = 130},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-rise.ogg", volume = 0.9, audible_distance_modifier = 0.3}, frame = 14},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-fall.ogg", volume = 0.7, audible_distance_modifier = 0.3}, frame = 62},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-rise.ogg", volume = 0.9, audible_distance_modifier = 0.3}, frame = 110},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim3-bubbles-fall.ogg", volume = 0.7, audible_distance_modifier = 0.3}, frame = 158},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim5-gears.ogg", volume = 0.25, audible_distance_modifier = 0.4}, frame = 51},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim5-gears.ogg", volume = 0.2, audible_distance_modifier = 0.4}, frame = 151},
+        {sound = {variations = sound_variations("__space-age__/sound/entity/cryogenic-plant/cp-anim6-open", 2, 0.6), audible_distance_modifier = 0.4}, frame = 3},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-close.ogg", volume = 0.7, audible_distance_modifier = 0.4}, frame = 33},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-slide-down.ogg", volume = 0.55, audible_distance_modifier = 0.4}, frame = 42},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-slide-up.ogg", volume = 0.6, audible_distance_modifier = 0.4}, frame = 126},
+        {sound = {filename = "__space-age__/sound/entity/cryogenic-plant/cp-anim6-slide-stop.ogg", volume = 0.4, audible_distance_modifier = 0.4}, frame = 146},
       },
-      max_sounds_per_type = 2
+      max_sounds_per_prototype = 2
     },
     fluid_boxes =
     {
@@ -2180,7 +2203,7 @@ data:extend({
     working_sound =
     {
       sound = {filename = "__space-age__/sound/entity//heating-tower/heating-tower-loop.ogg", volume = 0.5},
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -2331,14 +2354,14 @@ data:extend({
         filename = "__space-age__/sound/entity/fusion/fusion-generator.ogg",
         volume = 0.15,
         speed_smoothing_window_size = 60,
-        advanced_volume_control = {attenuation = "exponential"}
+        advanced_volume_control = {attenuation = "exponential"},
+        audible_distance_modifier = 0.8,
       },
       use_doppler_shift = false,
       match_speed_to_activity = true,
       activity_to_speed_modifiers = {multiplier = 1.2},
       match_volume_to_activity = true,
-      audible_distance_modifier = 0.8,
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
@@ -2431,7 +2454,7 @@ data:extend({
       sound = {filename = "__space-age__/sound/entity/fusion/fusion-reactor.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 1.44)},
       use_doppler_shift = false,
       match_volume_to_activity = true,
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },

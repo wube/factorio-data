@@ -794,7 +794,7 @@ data:extend(
           },
         },
       },
-      max_sounds_per_type = 2,
+      max_sounds_per_prototype = 2,
       activate_sound = { filename = "__base__/sound/train-engine-start.ogg", volume = 0.35 },
       deactivate_sound = { filename = "__base__/sound/train-engine-stop.ogg", volume = 0.35 },
     },
@@ -1600,11 +1600,7 @@ data:extend(
     color={0.95, 0, 0, 1},
     open_sound = {filename = "__base__/sound/open-close/train-stop-open.ogg", volume = 0.6},
     close_sound = {filename = "__base__/sound/open-close/train-stop-close.ogg", volume = 0.5},
-    working_sound =
-    {
-      sound = { filename = "__base__/sound/train-stop.ogg", volume = 0.7 },
-      audible_distance_modifier = 0.2
-    },
+    working_sound = {filename = "__base__/sound/train-stop.ogg", volume = 0.7, audible_distance_modifier = 0.2},
 
     circuit_connector = circuit_connector_definitions["train-station"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,

@@ -354,7 +354,7 @@ function util.combine_icons(icons1, icons2, inputs, default_icon_size)
     local icon = {}
     icon.icon = icon_to_add.icon
     icon.icon_size = icon_to_add.icon_size or default_icon_size or error("No icon size defined for icon \n"..serpent.block(icon))
-    icon.scale = scale * ((icon_to_add.scale or 32.0) / icon.icon_size)
+    icon.scale = scale * (icon_to_add.scale or (0.5 * defines.default_icon_size / icon.icon_size))
     if icon_to_add.shift then
       icon.shift = {icon_to_add.shift[1] * scale + shift[1], icon_to_add.shift[2] * scale + shift[2]}
     else

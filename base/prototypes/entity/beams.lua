@@ -176,7 +176,7 @@ function make_laser_beam(sound)
         volume = 0.75,
         modifiers = volume_multiplier("main-menu", 2.5)
       },
-      max_sounds_per_type = 1
+      max_sounds_per_prototype = 1
     }
     result.name = "laser-beam"
   else
@@ -399,7 +399,7 @@ function make_electric_beam(name, sound, damage)
     working_sound =
     sound and {
       sound = { filename = "__base__/sound/fight/electric-beam.ogg", volume = 0.7 },
-      max_sounds_per_type = 4
+      max_sounds_per_prototype = 4
     } or nil,
   }
 
@@ -452,7 +452,7 @@ function make_lightning_beam(name, sound, damage)
     working_sound =
     sound and {
       sound = {category = "weapon", filename = "__base__/sound/fight/electric-beam.ogg", volume = 0.7},
-      max_sounds_per_type = 4
+      max_sounds_per_prototype = 4
     } or nil,
   }
 

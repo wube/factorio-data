@@ -103,22 +103,31 @@ end
 sounds.inserter_basic =
 {
   match_progress_to_activity = true,
-  sound = sound_variations("__base__/sound/inserter-basic", 5, 0.5, { volume_multiplier("main-menu", 2), volume_multiplier("tips-and-tricks", 1.8) } ),
-  audible_distance_modifier = 0.3
+  sound =
+  {
+    variations = sound_variations("__base__/sound/inserter-basic", 5, 0.5, {volume_multiplier("main-menu", 2), volume_multiplier("tips-and-tricks", 1.8)}),
+    audible_distance_modifier = 0.3
+  }
 }
 
 sounds.inserter_fast =
 {
   match_progress_to_activity = true,
-  sound = sound_variations("__base__/sound/inserter-fast", 5, 0.5, { volume_multiplier("main-menu", 1.6), volume_multiplier("tips-and-tricks", 2) } ),
-  audible_distance_modifier = 0.3
+  sound =
+  {
+    variations = sound_variations("__base__/sound/inserter-fast", 5, 0.5, {volume_multiplier("main-menu", 1.6), volume_multiplier("tips-and-tricks", 2)}),
+    audible_distance_modifier = 0.3
+  }
 }
 
 sounds.inserter_long_handed =
 {
   match_progress_to_activity = true,
-  sound = sound_variations("__base__/sound/inserter-long-handed", 5, 0.3, volume_multiplier("tips-and-tricks", 1.8)),
-  audible_distance_modifier = 0.5
+  sound =
+  {
+    variations = sound_variations("__base__/sound/inserter-long-handed", 5, 0.3, volume_multiplier("tips-and-tricks", 1.8)),
+    audible_distance_modifier = 0.5
+  }
 }
 
 sounds.tree_mined = sound_variations("__base__/sound/particles/tree-mined", 5, 0.4)
@@ -193,47 +202,50 @@ sounds.tree_ambient_leaves =
 
 sounds.splitter =
 {
-  sound = sound_variations("__base__/sound/splitters/splitter", 6, 0.2, volume_multiplier("tips-and-tricks", 1.44)),
-  max_sounds_per_type = 3,
-  audible_distance_modifier = 0.45
+  sound =
+  {
+    variations = sound_variations("__base__/sound/splitters/splitter", 6, 0.2, volume_multiplier("tips-and-tricks", 1.44)),
+    audible_distance_modifier = 0.45
+  },
+  max_sounds_per_prototype = 3,
 }
 
 sounds.fast_splitter =
 {
-  sound = sound_variations("__base__/sound/splitters/fast-splitter", 5, 0.2),
-  max_sounds_per_type = 3,
-  audible_distance_modifier = 0.45
+  sound = {variations = sound_variations("__base__/sound/splitters/fast-splitter", 5, 0.2), audible_distance_modifier = 0.45},
+  max_sounds_per_prototype = 3,
 }
 
 sounds.express_splitter =
 {
-  sound = sound_variations("__base__/sound/splitters/express-splitter", 5, 0.2),
-  max_sounds_per_type = 3,
-  audible_distance_modifier = 0.45
+  sound = {variations = sound_variations("__base__/sound/splitters/express-splitter", 5, 0.2), audible_distance_modifier = 0.45},
+  max_sounds_per_prototype = 3,
 }
 
 sounds.loader =
 {
-  sound = { filename = "__base__/sound/transport-belt.ogg", volume = 0.3 },
-  max_sounds_per_type = 3,
-  audible_distance_modifier = 0.45
+  sound = {filename = "__base__/sound/transport-belt.ogg", volume = 0.3, audible_distance_modifier = 0.45},
+  max_sounds_per_prototype = 3,
 }
 
 sounds.fast_loader =
 {
-  sound = { filename = "__base__/sound/fast-transport-belt.ogg", volume = 0.3 },
-  max_sounds_per_type = 3,
-  audible_distance_modifier = 0.45
+  sound = {filename = "__base__/sound/fast-transport-belt.ogg", volume = 0.3, audible_distance_modifier = 0.45},
+  max_sounds_per_prototype = 3,
 }
 
 sounds.express_loader =
 {
-  sound = { filename = "__base__/sound/express-transport-belt.ogg", volume = 0.3 },
-  max_sounds_per_type = 3,
-  audible_distance_modifier = 0.45
+  sound = {filename = "__base__/sound/express-transport-belt.ogg", volume = 0.3, audible_distance_modifier = 0.45},
+  max_sounds_per_prototype = 3,
 }
 
-sounds.spidertron_leg = sound_variations("__base__/sound/spidertron/spidertron-leg", 5, 0.1, volume_multiplier("main-menu", 7.5))
+sounds.spidertron_leg =
+{
+  variations = sound_variations("__base__/sound/spidertron/spidertron-leg", 5, 0.1, volume_multiplier("main-menu", 7.5)),
+  audible_distance_modifier = 0.5
+}
+
 sounds.pipe =
 {
   sound = { filename = "__base__/sound/pipe.ogg", volume = 0.45 },
@@ -279,7 +291,7 @@ sounds.train_wagon_wheels =
   },
   fade_in_ticks = 10,
   fade_out_ticks = 20,
-  max_sounds_per_type = 2,
+  max_sounds_per_prototype = 2,
 }
 
 --Entities open close
@@ -363,7 +375,7 @@ sounds.flying_robot = function(volume)
       { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
       { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
     },
-    max_sounds_per_type = 20,
+    max_sounds_per_prototype = 20,
     fade_in_ticks = 8,
     fade_out_ticks = 10,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
@@ -390,7 +402,7 @@ sounds.construction_robot = function(volume)
       { filename = "__base__/sound/flying-robot-4.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
       { filename = "__base__/sound/flying-robot-5.ogg", volume = 0.43, modifiers = volume_multiplier("main-menu", 1.3) },
     },
-    max_sounds_per_type = 20,
+    max_sounds_per_prototype = 20,
     fade_in_ticks = 8,
     fade_out_ticks = 8,
     probability = 1 / (10 * 60) -- average pause between the sound is 10 seconds
@@ -665,7 +677,8 @@ sounds.nuclear_explosion = function(volume)
       duration = 800,
       play_for = "everything"
     },
-    variations = sound_variations("__base__/sound/fight/nuclear-explosion", 3, volume)
+    variations = sound_variations("__base__/sound/fight/nuclear-explosion", 3, volume),
+    audible_distance_modifier = 3,
   }
 end
 
@@ -678,7 +691,9 @@ sounds.nuclear_explosion_aftershock = function(volume)
       max_count = 1,
       remove = true
     },
-    variations = {{ filename = "__base__/sound/fight/nuclear-explosion-aftershock.ogg", volume = volume }}
+    filename = "__base__/sound/fight/nuclear-explosion-aftershock.ogg",
+    volume = volume,
+    audible_distance_modifier = 3,
   }
 end
 
@@ -1018,7 +1033,7 @@ sounds.biter_calls = function(min_volume, max_volume)
       variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-call", 5, min_volume, max_volume or min_volume)
     },
     probability = 1 / (12 * 60), -- average pause between the sound is 12 seconds
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 end
 
@@ -1031,7 +1046,7 @@ sounds.biter_calls_big = function(min_volume, max_volume)
       variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-call-big", 6, min_volume, max_volume or min_volume)
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 end
 
@@ -1044,7 +1059,7 @@ sounds.biter_calls_behemoth = function(min_volume, max_volume)
       variations = sound_variations_with_volume_variations("__base__/sound/creatures/biter-call-behemoth", 6, min_volume, max_volume or min_volume)
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 end
 
@@ -1113,7 +1128,7 @@ sounds.spitter_calls = function(min_volume, max_volume)
       variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-call-small", 9, min_volume, max_volume or min_volume, volume_multiplier("main-menu", 0.5))
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 end
 
@@ -1126,7 +1141,7 @@ sounds.spitter_calls_med = function(min_volume, max_volume)
       variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-call-med", 10, min_volume, max_volume or min_volume)
     },
     probability = 1 / (8 * 60), -- average pause between the sound is 8 seconds
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 end
 
@@ -1139,7 +1154,7 @@ sounds.spitter_calls_big = function(min_volume, max_volume)
       variations = sound_variations_with_volume_variations("__base__/sound/creatures/spitter-call-big", 5, min_volume, max_volume or min_volume)
     },
     probability = 1 / (4 * 60), -- average pause between the sound is 4 seconds
-    max_sounds_per_type = 2
+    max_sounds_per_prototype = 2
   }
 end
 

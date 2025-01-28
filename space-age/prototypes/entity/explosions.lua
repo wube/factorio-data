@@ -2114,6 +2114,98 @@ data:extend
       }
     }
   },
+  {
+    type = "explosion",
+    name = "thruster-explosion",
+    icon = "__space-age__/graphics/icons/thruster.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "space-platform-explosions",
+    order = "b",
+    height = 0,
+    animations = explosion_animations.massive_explosion({0,1}),
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.large_explosion(0.7, 1.0),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-particle",
+            repeat_count = 10,
+            probability = 1,
+            particle_name = "oil-refinery-metal-particle-big",
+            offsets =
+            {
+              { 0.7734, 0.6484 },
+              { -0.7266, 1.5859 }
+            },
+            offset_deviation = { { -0.6875, -0.6875 }, { 0.6875, 0.6875 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.2,
+            initial_vertical_speed = 0.088,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.03,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 38,
+            probability = 1,
+            particle_name = "oil-refinery-metal-particle-medium",
+            offsets = { { 0, 1 }  },
+            offset_deviation = { { -0.9805, -0.8867 }, { 0.9805, 0.8867 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.2,
+            initial_vertical_speed = 0.098,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.07,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 20,
+            probability = 1,
+            particle_name = "oil-refinery-metal-particle-small",
+            offsets =
+            {
+              { -1.492, -0.453 },
+              { 1.555, -0.469 },
+              { 1.477, 2.469 },
+              { -0.6172, 1.3281 }
+            },
+            offset_deviation = { { -0.9961, -0.5938 }, { 0.9961, 0.5938 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.2,
+            initial_vertical_speed = 0.075,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.04,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 9,
+            probability = 1,
+            particle_name = "oil-refinery-metal-particle-big-tint",
+            offsets = { { 0, 1 }  },
+            offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.082,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.06,
+            speed_from_center_deviation = 0.05
+          }
+        }
+      }
+    }
+  },
   -------------------------------------------------------------------------------
   --CARBONIC-asteroid-explosions
   -------------------------------------------------------------------------------
@@ -4275,6 +4367,7 @@ data:extend
             type = "create-particle",
             repeat_count = 20,
             particle_name = "vulcanus-stone-particle-big",
+            only_when_visible = true,
             initial_height = 0.5,
             speed_from_center = 0.08,
             speed_from_center_deviation = 0.15,
@@ -4286,6 +4379,7 @@ data:extend
             type = "create-particle",
             repeat_count = 20,
             particle_name = "vulcanus-stone-particle-medium",
+            only_when_visible = true,
             initial_height = 0.5,
             speed_from_center = 0.08,
             speed_from_center_deviation = 0.15,
@@ -4297,6 +4391,7 @@ data:extend
             type = "create-particle",
             repeat_count = 25,
             particle_name = "vulcanus-stone-particle-small",
+            only_when_visible = true,
             offset_deviation = { { -1.5, -1.5 }, { 1.5, 1.5 } },
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -4309,6 +4404,7 @@ data:extend
             type = "create-particle",
             repeat_count = 50,
             particle_name = "big-rock-stone-particle-tiny",
+            only_when_visible = true,
             offset_deviation = { { -1.5, -1.5 }, { 1.5, 1.5 } },
             initial_height = 1,
             initial_height_deviation = 0.5,
@@ -4321,6 +4417,7 @@ data:extend
             type = "create-trivial-smoke",
             repeat_count = 20,
             smoke_name = "demolisher-mining-smoke",
+            only_when_visible = true,
             initial_height = 0,
             speed_from_center = 0.03,
             offset_deviation = {{-1.75, -1.7}, {1.75, 1.75}},
