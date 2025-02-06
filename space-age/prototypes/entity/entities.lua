@@ -952,6 +952,7 @@ data:extend({
 
     plumes =
     {
+      render_box = {{-15, -10}, {15, 100}},
       min_probability = 0.08,
       max_probability = 1,
       min_y_offset = -4,

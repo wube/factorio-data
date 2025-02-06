@@ -20,32 +20,8 @@ data:extend(
     },
     skip_trigger =
     {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "change-surface",
-          surface = "fulgora"
-        },
-        {
-          type = "sequence",
-          triggers =
-          {
-            {
-              type = "research",
-              technology = "planet-discovery-fulgora"
-            },
-            {
-              type = "time-elapsed",
-              ticks = 15 * minute
-            },
-            {
-              type = "time-since-last-tip-activation",
-              ticks = 15 * minute
-            }
-          }
-        }
-      }
+      type = "change-surface",
+      surface = "fulgora"
     },
     simulation = simulations.fulgora_briefing
   },
@@ -84,32 +60,8 @@ data:extend(
     },
     skip_trigger =
     {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "change-surface",
-          surface = "gleba"
-        },
-        {
-          type = "sequence",
-          triggers =
-          {
-            {
-              type = "research",
-              technology = "planet-discovery-gleba"
-            },
-            {
-              type = "time-elapsed",
-              ticks = 15 * minute
-            },
-            {
-              type = "time-since-last-tip-activation",
-              ticks = 15 * minute
-            }
-          }
-        }
-      }
+      type = "change-surface",
+      surface = "gleba"
     },
     simulation = simulations.gleba_briefing
   },
@@ -147,32 +99,8 @@ data:extend(
     },
     skip_trigger =
     {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "change-surface",
-          surface = "vulcanus"
-        },
-        {
-          type = "sequence",
-          triggers =
-          {
-            {
-              type = "research",
-              technology = "planet-discovery-vulcanus"
-            },
-            {
-              type = "time-elapsed",
-              ticks = 15 * minute
-            },
-            {
-              type = "time-since-last-tip-activation",
-              ticks = 15 * minute
-            }
-          }
-        }
-      }
+      type = "change-surface",
+      surface = "vulcanus"
     },
     simulation = simulations.vulcanus_briefing
   },
@@ -209,32 +137,8 @@ data:extend(
     },
     skip_trigger =
     {
-      type = "or",
-      triggers =
-      {
-        {
-          type = "change-surface",
-          surface = "aquilo"
-        },
-        {
-          type = "sequence",
-          triggers =
-          {
-            {
-              type = "research",
-              technology = "planet-discovery-aquilo"
-            },
-            {
-              type = "time-elapsed",
-              ticks = 15 * minute
-            },
-            {
-              type = "time-since-last-tip-activation",
-              ticks = 15 * minute
-            }
-          }
-        }
-      }
+      type = "change-surface",
+      surface = "aquilo"
     },
     simulation = simulations.aquilo_briefing
   },

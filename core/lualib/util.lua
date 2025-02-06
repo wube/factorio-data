@@ -395,7 +395,8 @@ function util.technology_icon_constant_damage(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-damage.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -411,7 +412,8 @@ function util.technology_icon_constant_speed(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-speed.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -427,7 +429,8 @@ function util.technology_icon_constant_movement_speed(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-movement-speed.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -443,7 +446,8 @@ function util.technology_icon_constant_range(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-range.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -459,7 +463,8 @@ function util.technology_icon_constant_planet(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-planet.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -475,7 +480,8 @@ function util.technology_icon_constant_equipment(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-equipment.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -491,7 +497,8 @@ function util.technology_icon_constant_followers(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-count.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -507,7 +514,8 @@ function util.technology_icon_constant_capacity(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -523,7 +531,8 @@ function util.technology_icon_constant_stack_size(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -539,7 +548,8 @@ function util.technology_icon_constant_productivity(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-mining-productivity.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -555,7 +565,8 @@ function util.technology_icon_constant_recipe_productivity(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-recipe-productivity.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -571,7 +582,8 @@ function util.technology_icon_constant_braking_force(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-braking-force.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons
@@ -587,7 +599,8 @@ function util.technology_icon_constant_mining(technology_icon)
       icon = "__core__/graphics/icons/technology/constants/constant-mining.png",
       icon_size = 128,
       scale = 0.5,
-      shift = {50, 50}
+      shift = {50, 50},
+      floating = true
     }
   }
   return icons

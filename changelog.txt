@@ -1,6 +1,79 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.34
+Version: 2.0.35
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.34
+Date: 06. 02. 2025
+  Minor Features:
+    - Extended the virtual signals, and unified/changed graphics of some of the existing ones.
+    - Added an ability to pin the selected resource patch directly from map view.
+  Balancing:
+    - [space-age] Oil Refinery now collides with ice platform (https://forums.factorio.com/124163)
+    - water-mud and water-shallow are now landfillable in vanilla (already landfillable in space age) (https://forums.factorio.com/123169)
+  Changes:
+    - Added speed values to the description of demolishers. (https://forums.factorio.com/119588)
+    - Drag building produces one merge undo action per the whole drag, instead of the individual undo actions for every entity built.
+  Optimizations:
+    - Cargo pod performance when launching from platforms to planets is roughly 687 times faster. (https://forums.factorio.com/126455)
+    - Cargo pod performance when landing in cargo bays attached to landing pads is roughly 187 times faster.
+    - Improved cargo pod and rocket silo rocket performance when waiting in rocket silos by 100%.
+    - Improved inserter performance when removing items from space platform hubs.
+  Bugfixes:
+    - Fixed wrong behaviour in smart belt building over an obstacle with belts soon after the obstacle.
+    - Fixed smart belt building over an obstacle when there is perpendicular underground belt in the way.
+    - Fixed a crash when wrapping a rich text image in color tags and pressing backspace. (https://forums.factorio.com/120837)
+    - Fixed that changing the force of a segment did not in fact change the force of the entire segmented unit. (https://forums.factorio.com/126385)
+    - Fixed demolisher simulation in Factoriopedia.
+    - Fixed that roboport read-requests could output signals when they weren't actually being requested. (https://forums.factorio.com/118396)
+    - Fixed missing link between vehicles and guns in Factoriopedia. (https://forums.factorio.com/120410)
+    - Fixed that async saving would freeze the game. (https://forums.factorio.com/126407)
+    - Fixed a crash when changing GUI scale with the production statistics open. (https://forums.factorio.com/126341)
+    - Fixed textboxes not clearing mouse drag selection when something is typed. (https://forums.factorio.com/126355)
+    - Fixed that issuing valid navigation commands to UnitGroups would sometimes fail or succeed immediately. (https://forums.factorio.com/118082)
+    - Fixed that attack area commands issued to UnitGroups were not finding valid targets in the attack area. (https://forums.factorio.com/118082)
+    - Fixed that super-forced building over belts ignored planned upgrade when adding underground belts. (https://forums.factorio.com/119986)
+    - Fixed modifier icon in technology icons would cause the technology icons to draw smaller and off center. (https://forums.factorio.com/126414)
+    - Fixed stack inserter not dropping held item that does not match filters when filters were enabled. (https://forums.factorio.com/126468)
+    - Fixed yellow tinted rectangles around rail tracks and other sprites on Mac. (https://forums.factorio.com/116387)
+    - Fixed Galaxy Of Fame upload timeout errors for bigger saves
+    - Fixed a crash with a working sound containing an empty main sound. (https://forums.factorio.com/126563)
+    - Fixed the research completed sound being played multiple times when multiple researches finish on the same tick. (https://forums.factorio.com/124424)
+    - Fixed "Send to orbit automatically" tooltip being incorrect when playing Space Age with mods. (https://forums.factorio.com/126570)
+    - Fixed a space platform destination inconsistency when pasting space platform hub settings. (https://forums.factorio.com/125892)
+    - Fixed Schedule interrupts not reading any-signal signal counts sent to train correctly. (https://forums.factorio.com/126480)
+    - Fixed car orientation being lost when exporting and reimporting blueprint string. (https://forums.factorio.com/125221)
+    - Fixed being able to remotely drive enemy vehicles (https://forums.factorio.com/122610)
+    - Fixed unrotatable furnaces being rotated when overbuilt with a blueprint (https://forums.factorio.com/126373)
+    - Fixed including any filter into deconstruction planner would make it ignore vehicle ghosts (https://forums.factorio.com/119793)
+    - Fixed removing tile ghost would sometimes not remove supported entity ghost in the margins (https://forums.factorio.com/126504)
+    - Fixed that deconstructing cargo bays connected to cargo landing pads could delete items. (https://forums.factorio.com/126593)
+    - Fixed a desync when upgrading underground belts in some cases.
+    - Fixed a roboport network becoming overfilled with robots when a stationing robot went to a roboport which was being refilled by inserters and the network was full.
+    - Fixed that a robot didn't resume bobbing after unsuccessful stationing attempt.
+    - Fixed space platform's asteroid nav mesh could use wrong max tether value when after mods were changed. (https://forums.factorio.com/126590)
+    - Fixed a consistency crash related to super force building and underground belts. (https://forums.factorio.com/126394)
+    - Fixed that tile prototype's placeable_by.count was ignored when building manually (https://forums.factorio.com/123322)
+    - Modified Railgun Turret projectile spawning location such that it would no longer unexpectedly destroy nearby friendly entities (https://forums.factorio.com/121660)
+    - Fixed that character light rendering would be wrong when paused while in remote view. (https://forums.factorio.com/126542)
+    - Fixed issue which allowed player to get tile ghost over tile of same type (leading to stuck robots) (https://forums.factorio.com/122905)
+    - Fixed entities with protected_from_tile_building = false would block tile ghost revival (https://forums.factorio.com/125189 and https://forums.factorio.com/126504)
+    - Fixed overbuilding of storage chests with blueprint of different quality storage chest with filter set would result in unneeded deconstruction (https://forums.factorio.com/124388)
+    - Fixed that space connections on the starmap would not use the shortest route if the route passed above the star. (https://forums.factorio.com/123035)
+    - Fixed autofilled tile ghosts not raising on_built_entity triggers (https://forums.factorio.com/126116)
+  Scripting:
+    - Added LuaRecord::preview_icons read/write.
+    - Added record to on_player_setup_blueprint and on_player_deconstructed_area. (https://forums.factorio.com/88100)
+    - Added LuaEntity::create_cargo_pod().
+    - Added LuaEntity::cargo_hatches read.
+    - Added LuaEntity::cargo_pod_state read.
+    - Added LuaEntity::cargo_pod_destination read/write.
+    - Added LuaCargoHatch.
+    - Added Luaentity::attached_cargo_pod read.
+    - Added LuaEntity::rocket read.
+    - Added LuaSpacePlatform::can_leave_current_location().
+    - Added LuaSpacePlatform::distance read/write.
+    - Added LuaSpacePlatform::space_connection read/write.
+    - Changed LuaSpacePlatform::space_location to read/write.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.33
 Date: 28. 01. 2025
@@ -73,7 +146,6 @@ Date: 28. 01. 2025
     - Removed several unused sprites. (https://forums.factorio.com/123454)
     - Fixed that prototype defined lamp colors didn't work. (https://forums.factorio.com/124548)
     - Fixed that hidden surface properties would still show in tooltips. (https://forums.factorio.com/117432)
-    - Fixed that changing the force of a segment did not in fact change the force of the entire segmented unit. (https://forums.factorio.com/126385)
   Modding:
     - Renamed WorkingSound::max_sounds_per_type to WorkingSound::max_sounds_per_prototype. The limit is now applied per prototype.
     - Removed WorkingSound::apparent_volume.
@@ -162,6 +234,7 @@ Date: 10. 01. 2025
   Changes:
     - Changed map generated lightning attractors to always produce full-health items when mined. (https://forums.factorio.com/125629)
     - Reordered results of scrap recycling to make the recycler stack them on belts more efficiently. (https://mods.factorio.com/mod/better-scrap-stacking) (https://forums.factorio.com/125706)
+    - Agricultural Tower now clears preexisting trees from its entire range, not just around planting spots. (https://forums.factorio.com/125189)
   Bugfixes:
     - Fixed that item request proxies would show bad "missing materials for construction" counts. (https://forums.factorio.com/124613)
     - Fixed a crash when creating a ghost assembling machine with a pre-set recipe through script. (https://forums.factorio.com/125634)

@@ -7924,7 +7924,7 @@ data:extend(
     circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
     circuit_connector = circuit_connector_definitions["oil-refinery"],
     collision_box = {{-2.4, -2.4}, {2.4, 2.4}},
-    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true}},
+    collision_mask = {layers={item=true, object=true, player=true, water_tile=true, elevated_rail=true, is_object=true, is_lower_object=true, meltable=true}},
     selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
     damaged_trigger_effect = hit_effects.entity(),
     drawing_box_vertical_extension = 0.3,

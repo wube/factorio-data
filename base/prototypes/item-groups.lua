@@ -297,6 +297,18 @@ data:extend(
   },
   {
     type = "item-subgroup",
+    name = "virtual-signal-punctuation",
+    group = "signals",
+    order = "cb"
+  },
+  {
+    type = "item-subgroup",
+    name = "virtual-signal-math",
+    group = "signals",
+    order = "cd"
+  },
+  {
+    type = "item-subgroup",
     name = "virtual-signal-color",
     group = "signals",
     order = "d"
@@ -321,9 +333,21 @@ data:extend(
   },
   {
     type = "item-subgroup",
-    name = "additions",
+    name = "arrows-misc",
     group = "signals",
     order = "h"
+  },
+  {
+    type = "item-subgroup",
+    name = "pictographs",
+    group = "signals",
+    order = "i"
+  },
+  {
+    type = "item-subgroup",
+    name = "bullets",
+    group = "signals",
+    order = "j"
   },
 -------------------------------------------------------------------------- ENEMIES
   {

@@ -829,8 +829,6 @@ data.raw.technology.spidertron.unit.ingredients =
 }
 data.raw.technology.spidertron.order = "d-e-h"
 
-table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "water-mud")
-table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "water-shallow")
 table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "wetland-light-green-slime")
 table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "wetland-green-slime")
 table.insert(data.raw.item.landfill.place_as_tile.tile_condition, "wetland-light-dead-skin")

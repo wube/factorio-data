@@ -2440,6 +2440,7 @@ data:extend
     energy_required = 3,
     enabled = false,
     hide_from_player_crafting = true,
+    auto_recycle = false,
     category = "rocket-building",
     ingredients =
     {

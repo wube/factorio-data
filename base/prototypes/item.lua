@@ -1099,7 +1099,7 @@ data:extend
       result = "landfill",
       condition_size = 1,
       condition = {layers={ground_tile=true}},
-      tile_condition = {"water", "deepwater", "water-green", "deepwater-green"}
+      tile_condition = {"water", "deepwater", "water-green", "deepwater-green", "water-shallow", "water-mud"}
     },
     random_tint_color = item_tints.organic_green
   },
@@ -2098,6 +2098,7 @@ data:extend
     name = "rocket-part",
     icon = "__base__/graphics/icons/rocket-part.png",
     hidden = true,
+    auto_recycle = false,
     subgroup = "intermediate-product",
     order = "d[rocket-parts]-d[rocket-part]",
     inventory_move_sound = item_sounds.mechanical_inventory_move,
@@ -3222,6 +3223,7 @@ data:extend
     name = "tank-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
     hidden = true,
+    auto_recycle = false,
     subgroup = "gun",
     order = "a[basic-clips]-b[tank-machine-gun]",
     attack_parameters =
@@ -3253,6 +3255,7 @@ data:extend
     name = "tank-flamethrower",
     icon = "__base__/graphics/icons/flamethrower.png",
     hidden = true,
+    auto_recycle = false,
     subgroup = "gun",
     order = "b[flamethrower]-b[tank-flamethrower]",
     attack_parameters =
@@ -3339,6 +3342,7 @@ data:extend
     name = "tank-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
     hidden = true,
+    auto_recycle = false,
     subgroup = "gun",
     order = "z[tank]-a[cannon]",
     inventory_move_sound = item_sounds.ammo_large_inventory_move,
@@ -3362,6 +3366,7 @@ data:extend
     name = "artillery-wagon-cannon",
     icon = "__base__/graphics/icons/tank-cannon.png",
     hidden = true,
+    auto_recycle = false,
     subgroup = "gun",
     order = "z[artillery]-a[cannon]",
     inventory_move_sound = item_sounds.artillery_large_inventory_move,
@@ -3423,6 +3428,7 @@ data:extend
     icon = "__base__/graphics/icons/rocket-launcher.png",
     subgroup = "gun",
     hidden = true,
+    auto_recycle = false,
     order = "z[spider]-a[rocket-launcher]",
     inventory_move_sound = item_sounds.ammo_large_inventory_move,
     pick_sound = item_sounds.ammo_large_inventory_pickup,
@@ -3436,12 +3442,7 @@ data:extend
       projectile_creation_distance = -0.5,
       projectile_center = {0, 0.3},
       projectile_orientation_offset = -0.0625,
-      sound =
-      {
-        filename = "__base__/sound/fight/rocket-launcher.ogg",
-        volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.7)
-      },
+      sound = sounds.spidertron_rocket_launcher,
     },
     stack_size = 1
   },
@@ -3452,6 +3453,7 @@ data:extend
     icon = "__base__/graphics/icons/rocket-launcher.png",
     subgroup = "gun",
     hidden = true,
+    auto_recycle = false,
     order = "z[spider]-a[rocket-launcher]",
     inventory_move_sound = item_sounds.ammo_large_inventory_move,
     pick_sound = item_sounds.ammo_large_inventory_pickup,
@@ -3465,12 +3467,7 @@ data:extend
       projectile_creation_distance = -0.5,
       projectile_orientation_offset = -0.03125,
       projectile_center = {0, 0.3},
-      sound =
-      {
-        filename = "__base__/sound/fight/rocket-launcher.ogg",
-        volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.7)
-      },
+      sound = sounds.spidertron_rocket_launcher,
     },
     stack_size = 1
   },
@@ -3481,6 +3478,7 @@ data:extend
     icon = "__base__/graphics/icons/rocket-launcher.png",
     subgroup = "gun",
     hidden = true,
+    auto_recycle = false,
     order = "z[spider]-a[rocket-launcher]",
     inventory_move_sound = item_sounds.ammo_large_inventory_move,
     pick_sound = item_sounds.ammo_large_inventory_pickup,
@@ -3494,12 +3492,7 @@ data:extend
       projectile_creation_distance = -0.5,
       projectile_center = {0, 0.3},
       projectile_orientation_offset = 0.03125,
-      sound =
-      {
-        filename = "__base__/sound/fight/rocket-launcher.ogg",
-        volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.7)
-      },
+      sound = sounds.spidertron_rocket_launcher,
     },
     stack_size = 1
   },
@@ -3510,6 +3503,7 @@ data:extend
     icon = "__base__/graphics/icons/rocket-launcher.png",
     subgroup = "gun",
     hidden = true,
+    auto_recycle = false,
     order = "z[spider]-a[rocket-launcher]",
     inventory_move_sound = item_sounds.ammo_large_inventory_move,
     pick_sound = item_sounds.ammo_large_inventory_pickup,
@@ -3523,12 +3517,7 @@ data:extend
       projectile_creation_distance = -0.5,
       projectile_center = {0, 0.3},
       projectile_orientation_offset = 0.0625,
-      sound =
-      {
-        filename = "__base__/sound/fight/rocket-launcher.ogg",
-        volume = 0.7,
-        modifiers = volume_multiplier("main-menu", 0.7)
-      },
+      sound = sounds.spidertron_rocket_launcher,
     },
     stack_size = 1
   },
@@ -4264,6 +4253,7 @@ data:extend
     name = "vehicle-machine-gun",
     icon = "__base__/graphics/icons/submachine-gun.png",
     hidden = true,
+    auto_recycle = false,
     subgroup = "gun",
     order = "a[basic-clips]-b[vehicle-machine-gun]",
     inventory_move_sound = item_sounds.weapon_large_inventory_move,

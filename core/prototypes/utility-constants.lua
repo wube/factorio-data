@@ -253,6 +253,7 @@ data:extend(
     small_area_size = 1.5, -- less than this plays the 'small' sound variants
     medium_area_size = 6.5, -- less than this plays the 'medium' sound variants
     large_area_size = 15, -- less than this plays the 'large' sound variants, otherwise plays the 'huge' sound variants.
+    huge_platform_animation_sound_area = 81, -- 9x9 area - anything larger than this, the engine will speed up the animation so it ends as if it was this size
 
     small_blueprint_area_size = 50, -- less than this plays the 'small' sound variants
     medium_blueprint_area_size = 200, -- less than this plays the 'medium' sound variants

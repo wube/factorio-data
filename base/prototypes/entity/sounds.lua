@@ -536,7 +536,17 @@ sounds.throw_grenade =
   variations = sound_variations("__base__/sound/fight/throw-grenade", 5, 0.4),
   priority = 64
 }
-
+sounds.spidertron_rocket_launcher =
+{
+  variations = make_sound_variations({
+    number_of_variations = 3,
+    filename = "__base__/sound/spidertron/spidertron-rocket-launcher",
+    volume = 0.7,
+    modifiers = volume_multiplier("main-menu", 0.7),
+    min_speed = 1.0,
+    max_speed = 1.1,
+  }),
+}
 sounds.poison_capsule_explosion =
 {
   category = "weapon",

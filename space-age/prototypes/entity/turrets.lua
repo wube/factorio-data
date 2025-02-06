@@ -394,7 +394,8 @@ data:extend(
       min_range = 3.5,
       range = 40,
       turn_range = 0.20,
-      sound = space_age_sounds.railgun_turret_gunshot
+      sound = space_age_sounds.railgun_turret_gunshot,
+      true_collinear_ejection = true
     },
 
     call_for_help_radius = 40,
