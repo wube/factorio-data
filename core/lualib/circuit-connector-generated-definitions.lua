@@ -890,3 +890,54 @@ circuit_connector_definitions["cargo-landing-pad"] =
     shadow = { red = {2.559 + 1.5, 1.059 + 1.5}, green = {2.328 + 1.5, 1.223 + 1.5} } -- TODO: to be adjusted
   }
 }
+
+circuit_connector_definitions["stone-furnace"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 18, main_offset = util.by_pixel(0, -7), shadow_offset = util.by_pixel(27.5, 13), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(0, -7), shadow_offset = util.by_pixel(27.5, 13), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(0, -7), shadow_offset = util.by_pixel(27.5, 13), show_shadow = true },
+    { variation = 18, main_offset = util.by_pixel(0, -7), shadow_offset = util.by_pixel(27.5, 13), show_shadow = true }
+  }
+)
+circuit_connector_definitions["steel-furnace"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 19, main_offset = util.by_pixel(20, 15), shadow_offset = util.by_pixel(20.5, 20), show_shadow = true },
+    { variation = 19, main_offset = util.by_pixel(20, 15), shadow_offset = util.by_pixel(20.5, 20), show_shadow = true },
+    { variation = 19, main_offset = util.by_pixel(20, 15), shadow_offset = util.by_pixel(20.5, 20), show_shadow = true },
+    { variation = 19, main_offset = util.by_pixel(20, 15), shadow_offset = util.by_pixel(20.5, 20), show_shadow = true }
+  }
+)
+circuit_connector_definitions["electric-furnace"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 4, main_offset = util.by_pixel(-1.5, 3), shadow_offset = util.by_pixel(25.5, 30), show_shadow = false },
+    { variation = 4, main_offset = util.by_pixel(-1.5, 3), shadow_offset = util.by_pixel(25.5, 30), show_shadow = false },
+    { variation = 4, main_offset = util.by_pixel(-1.5, 3), shadow_offset = util.by_pixel(25.5, 30), show_shadow = false },
+    { variation = 4, main_offset = util.by_pixel(-1.5, 3), shadow_offset = util.by_pixel(25.5, 30), show_shadow = false }
+  }
+)
+circuit_connector_definitions["recycler"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 31, main_offset = util.by_pixel(26, -16), shadow_offset = util.by_pixel(48, 0), show_shadow = true },
+    { variation = 26, main_offset = util.by_pixel(0, 20), shadow_offset = util.by_pixel(2, 24), show_shadow = true },
+    { variation = 31, main_offset = util.by_pixel(25, -26), shadow_offset = util.by_pixel(48, -10), show_shadow = true },
+    { variation = 30, main_offset = util.by_pixel(25, 20), shadow_offset = util.by_pixel(27, 24), show_shadow = true },
+  }
+)
+circuit_connector_definitions["recycler-flipped"] = circuit_connector_definitions.create_vector
+(
+  universal_connector_template,
+  {
+    { variation = 24, main_offset = util.by_pixel(-26, -16), shadow_offset = util.by_pixel(0, 0), show_shadow = false },
+    { variation = 26, main_offset = util.by_pixel(-25, 20), shadow_offset = util.by_pixel(-23, 24), show_shadow = true },
+    { variation = 24, main_offset = util.by_pixel(-25, -26), shadow_offset = util.by_pixel(4, -10), show_shadow = false },
+    { variation = 30, main_offset = util.by_pixel(0, 20), shadow_offset = util.by_pixel(2, 24), show_shadow = true },
+  }
+)

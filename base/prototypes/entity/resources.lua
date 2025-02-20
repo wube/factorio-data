@@ -1,5 +1,5 @@
 local resource_autoplace = require("resource-autoplace")
-local sounds = require("prototypes.entity.sounds")
+local tile_sounds = require("prototypes.tile.tile-sounds")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 -- Initialize the core patch sets in a predictable order
@@ -9,36 +9,6 @@ resource_autoplace.initialize_patch_set("coal", true)
 resource_autoplace.initialize_patch_set("stone", true)
 resource_autoplace.initialize_patch_set("crude-oil", false)
 resource_autoplace.initialize_patch_set("uranium-ore", false)
-
-local stone_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-stone.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-
-local shallow_water_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-water-shallow.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-
-local oil_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-oil.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
 
 local function resource(resource_parameters, autoplace_parameters)
   return
@@ -108,8 +78,8 @@ data:extend({
       order = "b",
       map_color = {0.415, 0.525, 0.580},
       mining_time = 1,
-      walking_sound = sounds.ore,
-      driving_sound = stone_driving_sound,
+      walking_sound = tile_sounds.walking.ore,
+      driving_sound = tile_sounds.driving.stone,
       mining_visualisation_tint = {r = 0.895, g = 0.965, b = 1.000, a = 1.000}, -- #e4f6ffff
       factoriopedia_simulation = simulations.factoriopedia_iron_ore,
     },
@@ -126,8 +96,8 @@ data:extend({
       order = "b",
       map_color = {0.803, 0.388, 0.215},
       mining_time = 1,
-      walking_sound = sounds.ore,
-      driving_sound = stone_driving_sound,
+      walking_sound = tile_sounds.walking.ore,
+      driving_sound = tile_sounds.driving.stone,
       mining_visualisation_tint = {r = 1.000, g = 0.675, b = 0.541, a = 1.000}, -- #ffac89ff
       factoriopedia_simulation = simulations.factoriopedia_copper_ore,
     },
@@ -144,8 +114,8 @@ data:extend({
       order = "b",
       map_color = {0, 0, 0},
       mining_time = 1,
-      walking_sound = sounds.ore,
-      driving_sound = stone_driving_sound,
+      walking_sound = tile_sounds.walking.ore,
+      driving_sound = tile_sounds.driving.stone,
       mining_visualisation_tint = {r = 0.465, g = 0.465, b = 0.465, a = 1.000}, -- #767676ff
       factoriopedia_simulation = simulations.factoriopedia_coal,
     },
@@ -161,8 +131,8 @@ data:extend({
       order = "b",
       map_color = {0.690, 0.611, 0.427},
       mining_time = 1,
-      walking_sound = sounds.ore,
-      driving_sound = stone_driving_sound,
+      walking_sound = tile_sounds.walking.ore,
+      driving_sound = tile_sounds.driving.stone,
       mining_visualisation_tint = {r = 0.984, g = 0.883, b = 0.646, a = 1.000}, -- #fae1a4ff
       factoriopedia_simulation = simulations.factoriopedia_stone,
     },
@@ -182,8 +152,8 @@ data:extend({
     order = "a-b-e",
     tree_removal_probability = 0.7,
     tree_removal_max_distance = 32 * 32,
-    walking_sound = sounds.ore,
-    driving_sound = stone_driving_sound,
+    walking_sound = tile_sounds.walking.ore,
+    driving_sound = tile_sounds.driving.stone,
     minable =
     {
       mining_particle = "stone-particle",
@@ -272,8 +242,8 @@ data:extend({
         }
       }
     },
-    walking_sound = sounds.oil,
-    driving_sound = oil_driving_sound,
+    walking_sound = tile_sounds.walking.oil({}),
+    driving_sound = tile_sounds.driving.oil,
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     autoplace = resource_autoplace.resource_autoplace_settings

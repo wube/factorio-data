@@ -104,6 +104,10 @@ function add_recipe_values(structure, input, result)
   local result_crafting_tint = {primary = {0.5,0.5,0.5,0.5}, secondary = {0.5,0.5,0.5,0.5}, tertiary = {0.5,0.5,0.5,0.5}, quaternary = {0.5,0.5,0.5,0.5}}
 
   for k, ingredient in pairs(input.ingredients) do
+    if type(ingredient) ~= "table" then
+      error("Recipe "..input.name.." has malformed ingredients: it should only contain tables (one per ingredient) but "..type(ingredient).." was found")
+    end
+
     if ingredient.type ~= "fluid" then
       local final_name = ingredient[1] or ingredient.name
       local final_amount = ingredient[2] or ingredient.amount

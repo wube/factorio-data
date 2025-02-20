@@ -1123,7 +1123,7 @@ local particles =
     render_layer_when_on_ground = "lower-object-above-shadow",
     render_layer = "object",
   },
-  
+
   make_particle
   {
     name = "vulcanus-lava-particle-long-life-small",
@@ -1152,7 +1152,7 @@ local particles =
 
   make_particle
   {
-      name = "demolisher-skin-particle-small", 
+      name = "demolisher-skin-particle-small",
       life_time = 300,
       pictures = particle_animations.get_demolisher_skin_particles_small(),
       shadows = particle_animations.get_demolisher_skin_particles_small({ tint = shadowtint(), shift = util.by_pixel(1, 0)}),
@@ -1161,7 +1161,7 @@ local particles =
   },
   make_particle
   {
-      name = "demolisher-skin-particle-medium", 
+      name = "demolisher-skin-particle-medium",
       life_time = 250,
       pictures = particle_animations.get_demolisher_skin_particles_medium(),
       shadows = particle_animations.get_demolisher_skin_particles_medium({ tint = shadowtint(), shift = util.by_pixel(1, 0)}),
@@ -1170,7 +1170,7 @@ local particles =
   },
   make_particle
   {
-      name = "demolisher-skin-particle-big",  
+      name = "demolisher-skin-particle-big",
       life_time = 200,
       pictures = particle_animations.get_demolisher_skin_particles_big(),
       shadows = particle_animations.get_demolisher_skin_particles_big({ tint = shadowtint(), shift = util.by_pixel(1, 0)}),
@@ -1179,7 +1179,7 @@ local particles =
   },
   make_particle
   {
-      name = "demolisher-shell-particle-small", 
+      name = "demolisher-shell-particle-small",
       life_time = 70,
       pictures = particle_animations.get_demolisher_shell_particles_small(),
       shadows = particle_animations.get_demolisher_shell_particles_small({ tint = shadowtint(), shift = util.by_pixel(1, 0)}),
@@ -1188,7 +1188,7 @@ local particles =
   },
   make_particle
   {
-      name = "demolisher-shell-particle-big",  
+      name = "demolisher-shell-particle-big",
       life_time = 60,
       pictures = particle_animations.get_demolisher_shell_particles_big(),
       shadows = particle_animations.get_demolisher_shell_particles_big({ tint = shadowtint(), shift = util.by_pixel(1, 0)}),

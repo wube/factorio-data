@@ -151,7 +151,7 @@ return
     blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(10.24, 48)   --32 x ({-0.32, -1.5})
-   }) 
+   })
 },
 {
   index = procession_graphic_catalogue.hatch_emission_out_1,
@@ -192,7 +192,7 @@ return
   {
     priority = "medium",
     draw_as_glow = true,
-    blend_mode = "additive",     
+    blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(-16, 96) --32 x ({0.5, -3.5} + {0, 0.5})
   })
@@ -203,7 +203,7 @@ return
   {
     priority = "medium",
     draw_as_glow = true,
-    blend_mode = "additive",     
+    blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(-64, 96) --32 x ({2, -3.5} + {0, 0.5})
   })
@@ -214,7 +214,7 @@ return
   {
     priority = "medium",
     draw_as_glow = true,
-    blend_mode = "additive",     
+    blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(-40, 64) --32 x ({1.25, -2.5} + {0, 0.5})
   })
@@ -225,7 +225,7 @@ return
   {
     priority = "medium",
     draw_as_glow = true,
-    blend_mode = "additive",     
+    blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(-16, 96) --32 x ({0.5, -3.5} + {0, 0.5})
   })
@@ -236,7 +236,7 @@ return
   {
     priority = "medium",
     draw_as_glow = true,
-    blend_mode = "additive",     
+    blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(-64, 96) --32 x ({2, -3.5} + {0, 0.5})
   })
@@ -247,7 +247,7 @@ return
   {
     priority = "medium",
     draw_as_glow = true,
-    blend_mode = "additive",     
+    blend_mode = "additive",
     scale = 0.5,
     shift = util.by_pixel(-40, 64) --32 x ({1.25, -2.5} + {0, 0.5})
   })

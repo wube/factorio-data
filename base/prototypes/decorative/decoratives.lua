@@ -2,7 +2,8 @@ local autoplace_utils = require("autoplace_utils")
 
 local hit_effects = require ("prototypes.entity.hit-effects")
 
-local sounds = require ("prototypes.entity.sounds")
+local sounds = require("prototypes.entity.sounds")
+local tile_sounds = require("__base__/prototypes/tile/tile-sounds")
 
 local decorative_trigger_effects = require("prototypes.decorative.decorative-trigger-effects")
 
@@ -28,6 +29,7 @@ function shroom_decal(name, tint)
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     collision_box = {{-3.5, -1.8}, {3.5, 1.8}},
+    walking_sound = tile_sounds.walking.carpet_grass,
     pictures =
     {
       {
@@ -186,6 +188,7 @@ function lichen(name, tint)
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     trigger_effect = decorative_trigger_effects.lichen(),
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
+    walking_sound = tile_sounds.walking.carpet_grass,
     collision_box = {{-2.1, -1.7}, {2.1, 1.7}},
     pictures =
     {
@@ -399,7 +402,7 @@ data:extend{
     order = "b[decorative]-b[asterisk]-a[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.brown_asterisk(),
     autoplace =
     {
@@ -583,7 +586,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-b[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.green_asterisk(),
     autoplace =
     {
@@ -766,6 +769,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-c[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = tile_sounds.walking.grass,
     trigger_effect = decorative_trigger_effects.green_asterisk_mini(),
     autoplace =
     {
@@ -885,6 +889,7 @@ data:extend{
     order = "b[decorative]-b[asterisk-mini]-c[brown]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
+    walking_sound = tile_sounds.walking.grass,
     trigger_effect = decorative_trigger_effects.brown_asterisk_mini(),
     autoplace =
     {
@@ -1003,7 +1008,7 @@ data:extend{
     order = "b[decorative]-b[asterisk]-c[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.grass,
     trigger_effect = decorative_trigger_effects.red_asterisk(),
     autoplace =
     {
@@ -1188,7 +1193,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     collision_mask = decorative_object_cliff_collision(),
     render_layer = "object",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.green_pita(),
     autoplace =
     {
@@ -1334,7 +1339,7 @@ data:extend{
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     collision_mask = decorative_object_cliff_collision(),
     render_layer = "object",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.red_pita(),
     autoplace =
     {
@@ -1481,7 +1486,7 @@ data:extend{
     order = "b[decorative]-d[croton]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.green_croton(),
     autoplace =
     {
@@ -1667,7 +1672,7 @@ data:extend{
     order = "b[decorative]-d[croton]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.red_croton(),
     autoplace =
     {
@@ -1853,7 +1858,7 @@ data:extend{
     order = "b[decorative]-d[pita-mini]-a[green]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "decorative",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.green_pita_mini(),
     autoplace =
     {
@@ -1998,7 +2003,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-a[normal]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = sounds.big_bush,
+    walking_sound = tile_sounds.walking.big_bush,
     trigger_effect = decorative_trigger_effects.brown_fluff(),
     autoplace =
     {
@@ -2180,7 +2185,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[fluff]-b[dry]-a[brown]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = sounds.big_bush,
+    walking_sound = tile_sounds.walking.big_bush,
     trigger_effect = decorative_trigger_effects.brown_fluff_dry(),
     autoplace =
     {
@@ -2364,7 +2369,7 @@ data:extend{
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = decorative_object_cliff_collision(),
     render_layer = "object",
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.garballo(),
     autoplace =
     {
@@ -2552,6 +2557,7 @@ data:extend{
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = decorative_object_cliff_collision(),
     render_layer = "object",
+    walking_sound = tile_sounds.walking.small_bush,
     trigger_effect = decorative_trigger_effects.garballo_mini_dry(),
     autoplace =
     {
@@ -2873,7 +2879,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-j[bush]-a[mini]-a[green]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = sounds.plant,
+    walking_sound = tile_sounds.walking.plant,
     trigger_effect = decorative_trigger_effects.green_bush_mini(),
     autoplace =
     {
@@ -2993,7 +2999,7 @@ data:extend{
     order = "b[decorative]-a[grass]-a[hairy]",
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
-    walking_sound = sounds.hairy_grass,
+    walking_sound = tile_sounds.walking.hairy_grass,
     trigger_effect = decorative_trigger_effects.green_hairy_grass(),
     autoplace =
     {
@@ -3268,7 +3274,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
-    walking_sound = sounds.carpet_grass,
+    walking_sound = tile_sounds.walking.carpet_grass,
     trigger_effect = decorative_trigger_effects.green_carpet_grass(),
     autoplace =
     {
@@ -3386,7 +3392,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = sounds.big_bush,
+    walking_sound = tile_sounds.walking.big_bush,
     trigger_effect = decorative_trigger_effects.white_desert_bush(),
     autoplace =
     {
@@ -3573,7 +3579,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = sounds.small_bush,
+    walking_sound = tile_sounds.walking.small_bush,
     trigger_effect = decorative_trigger_effects.green_desert_bush(),
     autoplace =
     {
@@ -3696,7 +3702,7 @@ data:extend{
     type = "optimized-decorative",
     order = "b[decorative]-g[red-desert-bush]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    walking_sound = sounds.small_bush,
+    walking_sound = tile_sounds.walking.small_bush,
     trigger_effect = decorative_trigger_effects.red_desert_bush(),
     autoplace =
     {
@@ -3880,7 +3886,7 @@ data:extend{
     order = "b[decorative]-a[grass]-c[small]",
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     grows_through_rail_path = true,
-    walking_sound = sounds.carpet_grass,
+    walking_sound = tile_sounds.walking.carpet_grass,
     trigger_effect = decorative_trigger_effects.green_small_grass(),
     autoplace =
     {
@@ -4001,7 +4007,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[carpet]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
-    walking_sound = sounds.carpet_grass,
+    walking_sound = tile_sounds.walking.carpet_grass,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace =
     {
@@ -4120,7 +4126,7 @@ data:extend{
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
     render_layer = "decorative",
-    walking_sound = sounds.hairy_grass,
+    walking_sound = tile_sounds.walking.hairy_grass,
     trigger_effect = decorative_trigger_effects.brown_hairy_grass(),
     autoplace =
     {
@@ -4778,7 +4784,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = tile_sounds.walking.pebble,
     autoplace =
     {
       control = "rocks",
@@ -4931,7 +4937,7 @@ data:extend{
     order = "b[decorative]-l[rock]-e[tiny]",
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = tile_sounds.walking.pebble,
     autoplace =
     {
       control = "rocks",
@@ -5419,7 +5425,7 @@ data:extend{
         control = "control:rocks:size"
       }
     },
-    walking_sound = sounds.pebble,
+    walking_sound = tile_sounds.walking.pebble,
     trigger_effect = decorative_trigger_effects.small_rock(),
     pictures =
     {
@@ -5559,6 +5565,7 @@ data:extend{
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-4.40625, -5.6875}, {4.375, 5.625}},
     collision_mask = {layers={doodad=true, water_tile=true}, not_colliding_with_itself=true},
+    walking_sound = tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = 255,
     autoplace =
@@ -5652,6 +5659,7 @@ data:extend{
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-4.625, -3.25}, {4.6875, 3.125}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
+    walking_sound = tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = 255,
     autoplace =
@@ -5879,6 +5887,7 @@ data:extend{
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-3.75, -2.5625}, {3.75, 2.5625}},
     collision_mask = {layers={doodad=true, water_tile=true}, not_colliding_with_itself=true},
+    walking_sound = tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = 255,
     autoplace =
@@ -6108,6 +6117,7 @@ data:extend{
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-3.375, -2.3125}, {3.25, 2.3125}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
+    walking_sound = tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = 255,
     autoplace =
@@ -6338,6 +6348,7 @@ data:extend{
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-7.21875, -5.9375}, {7.3125, 5.71875}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
+    walking_sound = tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = 255, -- despite the name, this is not a sand exclusive decal
     autoplace =
@@ -6768,6 +6779,7 @@ data:extend{
     order = "b[decorative]-b[enemy-decal]",
     collision_box = {{-6, -4}, {6, 4}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
+    walking_sound = tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = 254,
     decal_overdraw_priority = 500,

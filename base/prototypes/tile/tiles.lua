@@ -1,4 +1,5 @@
 local sounds = require("prototypes.entity.sounds")
+local tile_sounds = require("__base__/prototypes/tile/tile-sounds")
 local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__base__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
@@ -39,121 +40,6 @@ table.insert(water_tile_type_names, "water-shallow")
 table.insert(water_tile_type_names, "water-mud")
 table.insert(water_tile_type_names, "water-wube")
 table.insert(out_of_map_tile_type_names, "out-of-map")
-
-local landfill_build_sounds =
-{
-  small =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.25,
-      filename = "__core__/sound/landfill-small.bnvib"
-    },
-    variations = sound_variations("__core__/sound/landfill-small", 6, 1)
-  },
-  medium =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.25,
-      filename = "__core__/sound/landfill-medium.bnvib"
-    },
-    variations = sound_variations("__core__/sound/landfill-medium", 6,  0.8)
-  },
-  large =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.25,
-      filename = "__core__/sound/landfill-large.bnvib"
-    },
-    variations = sound_variations("__core__/sound/landfill-large", 6, 0.5)
-  }
-}
-
-local concrete_tile_build_sounds =
-{
-  small =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.25,
-      filename = "__core__/sound/build-concrete-small.bnvib"
-    },
-    variations = sound_variations("__core__/sound/build-concrete-small", 6, 0.4)
-  },
-  medium =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.15,
-      filename = "__core__/sound/build-concrete-medium.bnvib"
-    },
-    variations = sound_variations("__core__/sound/build-concrete-medium", 6, 0.5)
-  },
-  large =
-  {
-    switch_vibration_data =
-    {
-      gain = 0.15,
-      filename = "__core__/sound/build-concrete-large.bnvib"
-    },
-    variations = sound_variations("__core__/sound/build-concrete-large", 6, 0.5)
-  }
-}
-
-local grass_sounds = sound_variations("__base__/sound/walking/grass", 10, 0.8, volume_multiplier("main-menu", 2.9))
-local sand_sounds = sound_variations("__base__/sound/walking/sand", 9, 0.8, volume_multiplier("main-menu", 2.9))
-local concrete_sounds = sound_variations("__base__/sound/walking/concrete", 11, 0.5)
-local refined_concrete_sounds = sound_variations("__base__/sound/walking/refined-concrete", 11, 0.5)
-local shallow_water_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1)
-local dirt_sounds = sound_variations("__base__/sound/walking/dirt-1", 10, 0.8, volume_multiplier("main-menu", 2.9))
-local tile_sounds = require("__base__/prototypes/tile/tile-sounds")
-local stone_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-stone.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-local grass_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-grass.ogg", volume = 0.5,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-local sand_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-sand.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-local concrete_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-concrete.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-local shallow_water_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-water-shallow.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
 
 function tile_variations_template(high_res_picture, high_res_transition_mask, options)
   local function main_variation(size_)
@@ -986,22 +872,7 @@ data:extend
 
     default_cover_tile = "landfill",
 
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__base__/sound/world/water/waterlap", 10, 0.4 ),
-        advanced_volume_control =
-        {
-          fades = { fade_in = { curve_type = "S-curve", from = { control = 0.5, volume_percentage = 0.0 }, to = { 1.5, 100.0 } } }
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    }
+    ambient_sounds = tile_sounds.ambient.water({}),
   },
   {
     name = "deepwater-green",
@@ -1097,22 +968,7 @@ data:extend
 
     default_cover_tile = "landfill",
 
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__base__/sound/world/water/waterlap", 10, 0.6 ),
-        advanced_volume_control =
-        {
-          fades = { fade_in = { curve_type = "S-curve", from = { control = 0.5, volume_percentage = 0.0 }, to = { 1.5, 100.0 } } }
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    }
+    ambient_sounds = tile_sounds.ambient.water({volume = 0.6}),
   },
 
   {
@@ -1168,8 +1024,8 @@ data:extend
     subgroup = "nauvis-tiles",
     collision_mask = tile_collision_masks.shallow_water(),
     fluid = "water",
-    walking_sound = shallow_water_sound,
-    driving_sound = shallow_water_driving_sound,
+    walking_sound = tile_sounds.walking.shallow_water,
+    driving_sound = tile_sounds.driving.shallow_water,
     layer_group = "water",
     layer = 6,
     walking_speed_modifier = 0.8,
@@ -1249,22 +1105,7 @@ data:extend
 
     default_cover_tile = "landfill",
 
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__base__/sound/world/water/waterlap", 10, 0.4 ),
-        advanced_volume_control =
-        {
-          fades = { fade_in = { curve_type = "S-curve", from = { control = 0.5, volume_percentage = 0.0 }, to = { 1.5, 100.0 } } }
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 6
-    }
+    ambient_sounds = tile_sounds.ambient.water({average_pause_seconds = 6})
   },
   {
     name = "water-mud",
@@ -1274,7 +1115,7 @@ data:extend
     collision_mask = tile_collision_masks.shallow_water(),
     fluid = "water",
     -- autoplace = nil, -- set in planet-gleba-mapgen.lua
-    walking_sound = shallow_water_sound,
+    walking_sound = tile_sounds.walking.shallow_water,
     layer_group = "water",
     layer = 7,
     walking_speed_modifier = 0.7,
@@ -1377,8 +1218,8 @@ data:extend
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound = grass_sounds,
-    driving_sound = grass_driving_sound,
+    walking_sound = tile_sounds.walking.grass,
+    driving_sound = tile_sounds.driving.grass,
     map_color={55, 53, 11},
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.grass,
@@ -1410,8 +1251,8 @@ data:extend
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound = grass_sounds,
-    driving_sound = grass_driving_sound,
+    walking_sound = tile_sounds.walking.grass,
+    driving_sound = tile_sounds.driving.grass,
     map_color={66, 57, 15},
     scorch_mark_color = {r = 0.361, g = 0.251, b = 0.170, a = 1.000},
     absorptions_per_second = tile_pollution.grass,
@@ -1444,8 +1285,8 @@ data:extend
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound = grass_sounds,
-    driving_sound = grass_driving_sound,
+    walking_sound = tile_sounds.walking.grass,
+    driving_sound = tile_sounds.driving.grass,
     map_color={65, 52, 28},
     scorch_mark_color = {r = 0.353, g = 0.244, b = 0.155, a = 1.000},
     absorptions_per_second = tile_pollution.grass,
@@ -1477,8 +1318,8 @@ data:extend
     transitions = grass_transitions,
     transitions_between_transitions = grass_transitions_between_transitions,
 
-    walking_sound = grass_sounds,
-    driving_sound = grass_driving_sound,
+    walking_sound = tile_sounds.walking.grass,
+    driving_sound = tile_sounds.driving.grass,
     map_color={59, 40, 18},
     scorch_mark_color = {r = 0.325, g = 0.242, b = 0.133, a = 1.000},
     absorptions_per_second = tile_pollution.grass,
@@ -1510,7 +1351,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = dirt_sounds,
+    walking_sound = tile_sounds.walking.dirt,
     map_color={94, 66, 37},
     scorch_mark_color = {r = 0.357, g = 0.249, b = 0.153, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1542,7 +1383,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={141, 104, 60},
     scorch_mark_color = {r = 0.541, g = 0.407, b = 0.248, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1574,7 +1415,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={136, 96, 59},
     scorch_mark_color = {r = 0.522, g = 0.391, b = 0.237, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1606,7 +1447,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={133, 92, 53},
     scorch_mark_color = {r = 0.486, g = 0.346, b = 0.210, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1639,7 +1480,7 @@ data:extend
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound = dirt_sounds,
+    walking_sound = tile_sounds.walking.dirt,
     map_color={103, 72, 43},
     scorch_mark_color = {r = 0.420, g = 0.304, b = 0.191, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1671,7 +1512,7 @@ data:extend
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound = dirt_sounds,
+    walking_sound = tile_sounds.walking.dirt,
     map_color={91, 63, 38},
     scorch_mark_color = {r = 0.412, g = 0.298, b = 0.197, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1703,7 +1544,7 @@ data:extend
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound = dirt_sounds,
+    walking_sound = tile_sounds.walking.dirt,
     map_color={80, 55, 31},
     scorch_mark_color = {r = 0.435, g = 0.310, b = 0.188, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1735,7 +1576,7 @@ data:extend
     transitions = dark_dirt_transitions,
     transitions_between_transitions = dark_dirt_transitions_between_transitions,
 
-    walking_sound = dirt_sounds,
+    walking_sound = tile_sounds.walking.dirt,
     map_color={80, 54, 28},
     scorch_mark_color = {r = 0.380, g = 0.269, b = 0.161, a = 1.000},
     absorptions_per_second = tile_pollution.dirt,
@@ -1768,8 +1609,8 @@ data:extend
     transitions = sand_transitions,
     transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
-    driving_sound = sand_driving_sound,
+    walking_sound = tile_sounds.walking.sand,
+    driving_sound = tile_sounds.driving.sand,
     map_color={138, 103, 58},
     scorch_mark_color = {r = 0.588, g = 0.451, b = 0.272, a = 1.000},
     absorptions_per_second = tile_pollution.sand,
@@ -1803,8 +1644,8 @@ data:extend
     transitions = sand_transitions,
     transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
-    driving_sound = sand_driving_sound,
+    walking_sound = tile_sounds.walking.sand,
+    driving_sound = tile_sounds.driving.sand,
     map_color={128, 93, 52},
     scorch_mark_color = {r = 0.600, g = 0.440, b = 0.252, a = 1.000},
     absorptions_per_second = tile_pollution.sand,
@@ -1837,8 +1678,8 @@ data:extend
     transitions = sand_transitions,
     transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
-    driving_sound = sand_driving_sound,
+    walking_sound = tile_sounds.walking.sand,
+    driving_sound = tile_sounds.driving.sand,
     map_color={115, 83, 47},
     scorch_mark_color = {r = 0.620, g = 0.472, b = 0.279, a = 1.000},
     absorptions_per_second = tile_pollution.sand,
@@ -1871,7 +1712,7 @@ data:extend
     --transitions = sand_transitions,
     --transitions_between_transitions = sand_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={103, 70, 32},
     scorch_mark_color = {r = 0.447, g = 0.309, b = 0.174, a = 1.000},
     absorptions_per_second = tile_pollution.red_desert,
@@ -1905,7 +1746,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={116, 81, 39},
     scorch_mark_color = {r = 0.514, g = 0.371, b = 0.203, a = 1.000},
     absorptions_per_second = tile_pollution.red_desert,
@@ -1939,7 +1780,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={116, 84, 43},
     scorch_mark_color = {r = 0.553, g = 0.403, b = 0.243, a = 1.000},
     absorptions_per_second = tile_pollution.red_desert,
@@ -1972,7 +1813,7 @@ data:extend
     transitions = dry_dirt_transitions,
     transitions_between_transitions = dry_dirt_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={128, 93, 52},
     scorch_mark_color = {r = 0.604, g = 0.447, b = 0.263, a = 1.000},
     absorptions_per_second = tile_pollution.red_desert,
@@ -2002,7 +1843,7 @@ data:extend
     transitions = nuclear_ground_transitions,
     transitions_between_transitions = nuclear_ground_transitions_between_transitions,
 
-    walking_sound = sand_sounds,
+    walking_sound = tile_sounds.walking.sand,
     map_color={48, 40, 35},
     absorptions_per_second = nuclear_ground_absorptions_per_second,
     vehicle_friction_modifier = grass_vehicle_speed_modifier
@@ -2090,9 +1931,9 @@ data:extend
     transitions = stone_path_transitions,
     transitions_between_transitions = stone_path_transitions_between_transitions,
 
-    walking_sound = concrete_sounds,
-    driving_sound = stone_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.stone,
+    build_sound = tile_sounds.building.concrete,
     map_color={86, 82, 74},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     vehicle_friction_modifier = stone_path_vehicle_speed_modifier,
@@ -2120,8 +1961,8 @@ data:extend
       },
       empty_transitions = true
     },
-    walking_sound = concrete_sounds,
-    driving_sound = concrete_driving_sound,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.concrete,
     map_color={49, 49, 49},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 
@@ -2148,8 +1989,8 @@ data:extend
       },
       empty_transitions = true
     },
-    walking_sound = concrete_sounds,
-    driving_sound = concrete_driving_sound,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.concrete,
     map_color={0, 0, 0},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 
@@ -2176,8 +2017,8 @@ data:extend
       },
       empty_transitions = true
     },
-    walking_sound = concrete_sounds,
-    driving_sound = concrete_driving_sound,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.concrete,
     map_color={1, 1, 1},
     scorch_mark_color = {r = 1.000, g = 1.000, b = 1.000, a = 1.000},
 
@@ -2250,7 +2091,7 @@ data:extend
         }
       }
     },
-    walking_sound = concrete_sounds,
+    walking_sound = tile_sounds.walking.concrete,
     map_color={122, 122, 122},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
 
@@ -2354,9 +2195,9 @@ data:extend
     transitions = concrete_transitions,
     transitions_between_transitions = concrete_transitions_between_transitions,
 
-    walking_sound = concrete_sounds,
-    driving_sound = concrete_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.concrete,
+    build_sound = tile_sounds.building.concrete,
     map_color={63, 61, 59},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
@@ -2390,9 +2231,9 @@ data:extend
         scale = 0.5
       }
     },
-    walking_sound = concrete_sounds,
-    driving_sound = concrete_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.concrete,
+    build_sound = tile_sounds.building.concrete,
     map_color={176, 142, 39},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
@@ -2427,9 +2268,9 @@ data:extend
         scale = 0.5
       }
     },
-    walking_sound = concrete_sounds,
-    driving_sound = concrete_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.concrete,
+    driving_sound = tile_sounds.driving.concrete,
+    build_sound = tile_sounds.building.concrete,
     map_color={176, 142, 39},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
@@ -2534,9 +2375,9 @@ data:extend
     transitions = concrete_transitions,
     transitions_between_transitions = concrete_transitions_between_transitions,
 
-    walking_sound = refined_concrete_sounds,
-    driving_sound = concrete_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.refined_concrete,
+    driving_sound = tile_sounds.driving.concrete,
+    build_sound = tile_sounds.building.concrete,
 
     map_color={49, 48, 45},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
@@ -2571,9 +2412,9 @@ data:extend
         scale = 0.5
       }
     },
-    walking_sound = refined_concrete_sounds,
-    driving_sound = concrete_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.refined_concrete,
+    driving_sound = tile_sounds.driving.concrete,
+    build_sound = tile_sounds.building.concrete,
     map_color={116, 94, 26},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
@@ -2607,9 +2448,9 @@ data:extend
         scale = 0.5
       }
     },
-    walking_sound = refined_concrete_sounds,
-    driving_sound = concrete_driving_sound,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = tile_sounds.walking.refined_concrete,
+    driving_sound = tile_sounds.driving.concrete,
+    build_sound = tile_sounds.building.concrete,
     map_color={116, 94, 26},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000},
     vehicle_friction_modifier = concrete_vehicle_speed_modifier,
@@ -2644,8 +2485,8 @@ data:extend
       }
     },
 
-    walking_sound = dirt_sounds,
-    build_sound = landfill_build_sounds,
+    walking_sound = tile_sounds.walking.dirt,
+    build_sound = tile_sounds.building.landfill,
     map_color={57, 39, 26},
     scorch_mark_color = {r = 0.329, g = 0.242, b = 0.177, a = 1.000}
   },

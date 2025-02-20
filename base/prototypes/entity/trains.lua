@@ -2,6 +2,7 @@ require ("prototypes.entity.rail-pictures")
 
 local hit_effects = require ("prototypes.entity.hit-effects")
 local sounds = require("prototypes.entity.sounds")
+local tile_sounds = require("prototypes.tile.tile-sounds")
 local simulations = require("__base__.prototypes.factoriopedia-simulations")
 
 local drive_over_tie = function()
@@ -149,7 +150,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = legacy_rail_pictures("legacy_straight_rail"),
     placeable_by = {item = "rail", count = 1},
-    walking_sound = sounds.rails,
+    walking_sound = tile_sounds.walking.rail,
     deconstruction_marker_positions =
     {
       { 0.0, 0.0 }, -- North
@@ -204,7 +205,7 @@ data:extend(
     pictures = legacy_rail_pictures("legacy_curved_rail"),
     ending_shifts = curved_rail_ending_shifts(),
     placeable_by = {item = "rail", count = 4},
-    walking_sound = sounds.rails
+    walking_sound = tile_sounds.walking.rail
   },
   {
     type = "straight-rail",
@@ -236,7 +237,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("straight"),
     placeable_by = {item = "rail", count = 1},
-    walking_sound = sounds.rails,
+    walking_sound = tile_sounds.walking.rail,
     extra_planner_goal_penalty = -4,
     factoriopedia_alternative = "straight-rail"
   },
@@ -283,7 +284,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("half-diagonal"),
     placeable_by = {item = "rail", count = 2},
-    walking_sound = sounds.rails,
+    walking_sound = tile_sounds.walking.rail,
     extra_planner_penalty = 0,
     factoriopedia_alternative = "straight-rail"
   },
@@ -328,7 +329,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("curved-a"),
     placeable_by = {item = "rail", count = 3},
-    walking_sound = sounds.rails,
+    walking_sound = tile_sounds.walking.rail,
     extra_planner_penalty = 0.5,
     deconstruction_marker_positions = rail_8shifts_vector(-0.248, -0.533),
     factoriopedia_alternative = "straight-rail"
@@ -374,7 +375,7 @@ data:extend(
     damaged_trigger_effect = hit_effects.wall(),
     pictures = new_rail_pictures("curved-b"),
     placeable_by = {item = "rail", count = 3},
-    walking_sound = sounds.rails,
+    walking_sound = tile_sounds.walking.rail,
     extra_planner_penalty = 0.5,
     deconstruction_marker_positions = rail_8shifts_vector(-0.309, -0.155),
     factoriopedia_alternative = "straight-rail"
@@ -393,7 +394,7 @@ data:extend(
     selection_box = {{-1.7, -0.8}, {1.7, 0.8}},
     pictures = dummy_rails_ramp_pictures(),
     forced_fence_segment_count = 2,
-    walking_sound = sounds.rails,
+    walking_sound = tile_sounds.walking.rail,
     extra_planner_penalty = 0.5,
     support_range = 9
   },

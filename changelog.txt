@@ -1,6 +1,77 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.35
+Version: 2.0.36
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.35
+Date: 20. 02. 2025
+  Minor Features:
+    - GUIs can now also be navigated with D-pad in controller input method.
+    - Added drag-to-reorder to pins.
+    - Added drag-to-reorder turret priorities.
+    - Added drag-to-reorder to infinity chest filters.
+    - Added drag-to-reorder to editor infinity filters.
+    - Added drag-to-reorder to deconstruction planner filters.
+    - Added drag-to-reorder to upgrade planner filters.
+    - Added drag-to-reorder to module upgrade settings inside upgrade planner destination UI.
+    - Added drag-to-reorder to inserter, loader, and asteroid collector filters.
+    - Furnaces can be connected to circuit network.
+    - Added fluid temperatures to Factoriopedia ingredients and products where relevant. (https://forums.factorio.com/119927)
+    - Make drop item hotkey work the same way in GUI as it does in the game world.
+  Changes:
+    - Adjusted how walking and driving sounds attenuate with zoom level.
+    - Added missing walking sounds and fixed incorrect walking sounds for various decoratives.
+    - Linked fluidbox connections will no longer show a fluid icon.
+  Bugfixes:
+    - Fixed that reading localised strings through some methods did not work correctly. (https://forums.factorio.com/126626)
+    - Fixed that unpowered inserters could pick up fish. (https://forums.factorio.com/126522)
+    - Fixed that spoiled items in modded rocket silos couldn't be removed by inserters. (https://forums.factorio.com/126403)
+    - Fixed that virtual items like green-wire or spidertron-remote are no longer showing recycling recipe. (https://forums.factorio.com/124333)
+    - Fixed that deleting a surface with off-chunk segmented units could cause consistency checks to fail. (https://forums.factorio.com/126642)
+    - Fixed a desync when deleting chart tags pinned by other players. (https://forums.factorio.com/126681)
+    - Fixed consistency issues in deconstruction planner UI when toggling "Trees/rocks only" checkbox and tile mode dropdown.
+    - Fixed space platforms not updating last activity time when advancing schedule to the same planet. (https://forums.factorio.com/126640)
+    - Fixed missing frames in fusion generator animation. (https://forums.factorio.com/126526)
+    - Fixed a consistency issue when a mod adds fluid to a frozen fluid box. (https://forums.factorio.com/126685)
+    - Fixed that LuaFluidBox functions would not work correctly with a frozen fluid box.
+    - Fixed that frozen fluid boxes would not show the fluid they contained.
+    - Fixed schedule GUI not updating temporary station status when interrupt triggers from a temporary station which is last in schedule. (https://forums.factorio.com/120355)
+    - Fixed furnaces could report as being able to craft certain recipes when they had not enough item ingredient slots. (https://forums.factorio.com/116147)
+    - Fixed assemblers could report as being able to craft certain recipes with custom fluidbox indexes when assembler had not enough fluidboxes.
+    - Fixed furnaces were able to craft recipes with more item products than size of furnace's products inventory.
+    - Added more detailed healing values for entities healing < 10/s. (https://forums.factorio.com/125223)
+    - Fixed a crash when migrating assembler with control behavior into different entity type.
+    - Fixed that crafting machines with high speeds would not scale input fluid amounts. (https://forums.factorio.com/126722)
+    - Fixed a crash in latency when character with exoskeletons moves onto ungenerated chunks.
+    - Fixed that items spoiling in cargo pods would not run spoil triggers. (https://forums.factorio.com/126796)
+    - Fixed that entities upgraded on platforms would not fire the on_space_platform_built_entity event. (https://forums.factorio.com/126800)
+    - Fixed that equipment in map editor armor did not work. (https://forums.factorio.com/126814)
+    - Fixed consistency issue related to setting signals with with quality only. (https://forums.factorio.com/126855)
+    - Fixed a consistency issue when underground belts with items are cloned. (https://forums.factorio.com/126843)
+    - Fixed a consistency issue when robots deconstruct heat pipes keeping roboports from freezing. (https://forums.factorio.com/122880)
+    - Fixed a crash when flipping an entity with linked fluidbox connections. (https://forums.factorio.com/121887)
+    - Fixed a scaling performance issue related to blueprints with asteroid collector and thruster count on space platforms. (https://forums.factorio.com/126903)
+    - Fixed that LuaRecord::contents did not accurately reflect the positions of the children.
+    - Fixed that canceling mod updates would not re-enable the "Update selected" button. (https://forums.factorio.com/126192)
+    - Fixed a crash when placing ghost rail signal on top of existing rail signals that is marked to be upgraded. (https://forums.factorio.com/126921)
+    - Fixed that copy-settings undo/redo action descriptions would use the wrong surface. (https://forums.factorio.com/126957)
+    - Fixed that the map editor tile paint bucket tool did not highlight tiles correctly. (https://forums.factorio.com/126959)
+    - Fixed that platform inactivity was not updated when sending cargo to planets. (https://forums.factorio.com/126891)
+  Modding:
+    - Added FurnacePrototype::circuit_connector, circuit_connector_flipped, circuit_wire_max_distance, default_recipe_finished_signal, default_working_signal.
+    - Added AssemblingMachinePrototype::circuit_connector_flipped.
+    - Added AssemblingMachinePrototype::max_item_product_count.
+    - Added LoaderPrototype::adjustable_belt_stack_size.
+  Scripting:
+    - Added LuaFurnaceControlBehavior.
+    - Added LuaTransportLine::force_insert_at.
+    - Added LuaEntity::loader_belt_stack_size_override read/write.
+    - Added LuaEntityPrototype::loader_max_belt_stack_size read.
+    - Added LuaEntityPrototype::loader_adjustable_belt_stack_size read.
+    - Added on_cargo_pod_finished_descending and on_cargo_pod_delivered_cargo events.
+    - Added LuaRecord::contents_size read.
+    - Added CustomInputEvent::cursor_direction.
+    - Added on_singleplayer_init and on_multiplayer_init.
+    - Added defines.inventory.assembling_machine_trash and defines.inventory.furnace_trash.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.34
 Date: 06. 02. 2025

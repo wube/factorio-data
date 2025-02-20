@@ -195,5 +195,6 @@ belt_ccm.frame_main_scanner_sw_se =
 transport_belt_circuit_wire_max_distance = 9
 
 assembling_machine_circuit_wire_max_distance = 9
+furnace_circuit_wire_max_distance = 9
 reactor_circuit_wire_max_distance = 9
 combinator_circuit_wire_max_distance = 9

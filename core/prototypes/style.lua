@@ -900,6 +900,14 @@ data:extend(
       ignored_by_search = true
     },
 
+    slot_column_header_label =
+    {
+      type = "label_style",
+      parent = "caption_label",
+      width = 40,
+      horizontal_align = "center"
+    },
+
     semibold_caption_label =
     {
       type = "label_style",
@@ -4664,6 +4672,26 @@ data:extend(
       column_widths = { minimal_width = slot_size }
     },
 
+    mappers_table =
+    {
+      type = "table_style",
+      vertical_spacing = 0,
+      column_widths = { width = 80 }, -- 2x slot_button.width
+      horizontal_spacing = -- must sum to 80 (400 - num_columns * column_widths)
+      {
+        { index = 1, spacing = 27 },
+        { index = 2, spacing = 26 },
+        { index = 3, spacing = 27 }
+      },
+      column_alignments =
+      {
+        { column = 1, alignment = "top-center" },
+        { column = 2, alignment = "top-center" },
+        { column = 3, alignment = "top-center" },
+        { column = 4, alignment = "top-center" }
+      }
+    },
+
     browse_games_table =
     {
       type = "table_style",
@@ -5683,6 +5711,20 @@ data:extend(
       horizontally_stretchable = "on"
     },
 
+    logistic_section_subheader_frame =
+    {
+      type = "frame_style",
+      parent = "subheader_frame",
+      height = 40 -- to match slot_button
+    },
+
+    logistic_section_repeated_subheader_frame =
+    {
+      type = "frame_style",
+      parent = "repeated_subheader_frame",
+      height = 40 -- to match slot_button
+    },
+
     shallow_frame =
     {
       type = "frame_style",
@@ -6175,6 +6217,13 @@ data:extend(
         position = {472, 25},
         size = 1
       }
+    },
+
+    mappers_scroll_pane =
+    {
+      type = "scroll_pane_style",
+      parent = "deep_scroll_pane",
+      top_margin = 4
     },
 
     player_input_horizontal_flow =
@@ -9496,6 +9545,12 @@ data:extend(
           draw_type = "outer"
         }
       }
+    },
+
+    add_logistic_section_button =
+    {
+      type = "button_style",
+      height = 40 -- matching slot_button height
     }
   }
 })

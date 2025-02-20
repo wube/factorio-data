@@ -1068,5 +1068,5 @@ data:extend(
     icon = "__base__/graphics/icons/signal/signal-weapon.png",
     subgroup = "pictographs",
     order = "sjc[weapon]"
-  }, 
+  },
 })

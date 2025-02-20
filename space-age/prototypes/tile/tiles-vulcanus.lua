@@ -1,6 +1,7 @@
 local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
+local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
@@ -9,29 +10,6 @@ local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 local tile_lightening = 28
 vulcanus_tile_offset = 40
 --- max tile layer on nauvis is 33(nuclear_ground), this should generally be above that. Conctrete starts at 100, which this should not be above
-
-local rugged_stone_sound = sound_variations("__space-age__/sound/walking/rugged-stone", 10, 0.8)
-local rocky_stone_sound = sound_variations("__space-age__/sound/walking/rocky-stone", 10, 0.8)
-local soft_sand_sound = sound_variations("__space-age__/sound/walking/soft-sand", 10, 1)
-local warm_stone_sound = sound_variations("__space-age__/sound/walking/warm-stone", 10, 1)
-local stone_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-stone.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-local sand_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-sand.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
 
 local lava_patch =
 {
@@ -430,9 +408,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rocky_stone_sound,
+    walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 30, g = tile_lightening+ 30, b = tile_lightening+ 20},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 2,
@@ -472,29 +450,13 @@ data:extend
     allowed_neighbors={"lava-hot"},
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = data.raw.tile["water"].walking_sound,
     map_color = {r = 150, g = 49, b = 30},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
     absorptions_per_second = tile_pollution.lava,
     trigger_effect = tile_trigger_effects.hot_lava_trigger_effect(),
     default_cover_tile = "foundation",
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/lava", 10, 0.5 ),
-        advanced_volume_control =
-        {
-          fades = { fade_in = { curve_type = "cosine", from = { control = 0.5, volume_percentage = 0.0 }, to = { 1.5, 100.0 } } }
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    }
+    ambient_sounds = tile_sounds.ambient.lava,
   },
   ----------- "DEEP" LAVA
   {
@@ -533,26 +495,11 @@ data:extend
     allowed_neighbors={"lava"},
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = data.raw.tile["water"].walking_sound,
     map_color = {r = 255, g = 138, b = 57},
     absorptions_per_second = tile_pollution.lava,
     default_cover_tile = "foundation",
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/magma", 10, 0.7 ),
-        advanced_volume_control =
-        {
-          fades = { fade_in = { curve_type = "cosine", from = { control = 0.5, volume_percentage = 0.0 }, to = { 1.5, 100.0 } } }
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    }
+    ambient_sounds = tile_sounds.ambient.magma,
+
   },
   ----------- WARM CRACKS
   {
@@ -579,8 +526,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = warm_stone_sound,
+    walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 30, g = tile_lightening+ 5, b = tile_lightening+ -5}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = .6,
     vehicle_friction_modifier = 1,
@@ -610,8 +558,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = warm_stone_sound,
+    walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 30, g = tile_lightening+ 10, b = tile_lightening+ 5},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -641,9 +590,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rocky_stone_sound,
+    walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 15, g = tile_lightening+ 14, b = tile_lightening+ 15},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -673,9 +622,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rugged_stone_sound,
+    walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r =tile_lightening+ 16, g = tile_lightening+ 15, b = tile_lightening+ 16}, -- changed from (8 7 8) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 2,
@@ -706,9 +655,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = soft_sand_sound,
+    walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
+    driving_sound = base_tile_sounds.driving.sand,
     map_color = {r = tile_lightening+ 25, g = tile_lightening+ 25, b = tile_lightening+ 25}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -740,9 +689,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = soft_sand_sound,
+    walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
+    driving_sound = base_tile_sounds.driving.sand,
     map_color = {r = tile_lightening+ 25, g = tile_lightening+ 25, b = tile_lightening+ 25}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -775,9 +724,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = soft_sand_sound,
+    walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
+    driving_sound = base_tile_sounds.driving.sand,
     map_color = {r = tile_lightening+ 25, g = tile_lightening+ 25, b = tile_lightening+ 25}, -- changed from (30 30 30) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -810,9 +759,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rocky_stone_sound,
+    walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 18, g = tile_lightening+ 18, b = tile_lightening+ 18}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -842,9 +791,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rocky_stone_sound,
+    walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 22, g = tile_lightening+ 22, b = tile_lightening+ 30}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -877,9 +826,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = warm_stone_sound,
+    walking_sound = tile_sounds.walking.warm_stone,
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 26, g = tile_lightening+ 22, b = tile_lightening+ 22}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -909,9 +858,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rugged_stone_sound,
+    walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 39, g = tile_lightening+ 39, b = tile_lightening+ 39}, -- changed from (32 32 32) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -940,9 +889,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rugged_stone_sound,
+    walking_sound = tile_sounds.walking.rugged_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 15, g = tile_lightening+ 15, b = tile_lightening+ 15}, -- changed from (2 2 2) to satisfy TerrainColorsVersusResourceColors test
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 2,
@@ -972,9 +921,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = rocky_stone_sound,
+    walking_sound = tile_sounds.walking.rocky_stone({}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     map_color = {r = tile_lightening+ 37, g = tile_lightening+ 17, b = tile_lightening+ 17},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -1004,8 +953,9 @@ data:extend
     -- tint={0.8, 0.75, 0.8},
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = soft_sand_sound,
+    walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
+    driving_sound = base_tile_sounds.driving.sand,
     map_color = {r = tile_lightening+ 20, g = tile_lightening+ 23, b = tile_lightening+ 15},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -1035,8 +985,9 @@ data:extend
     -- tint={0.6, 0.55, 0.55},
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = soft_sand_sound,
+    walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
+    driving_sound = base_tile_sounds.driving.sand,
     map_color = {r = tile_lightening+ 30, g = tile_lightening+ 20, b = tile_lightening+ 15},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -1065,9 +1016,9 @@ data:extend
     ),
     transitions = lava_stone_transitions,
     transitions_between_transitions = lava_stone_transitions_between_transitions,
-    walking_sound = soft_sand_sound,
+    walking_sound = tile_sounds.walking.soft_sand({}),
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
+    driving_sound = base_tile_sounds.driving.sand,
     map_color = {r = tile_lightening+ 20, g = tile_lightening+ 20, b = tile_lightening+ 15},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,

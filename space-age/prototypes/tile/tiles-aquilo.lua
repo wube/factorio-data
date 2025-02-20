@@ -1,32 +1,9 @@
 local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
-local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local base_sounds = require("__base__/prototypes/entity/sounds")
-
-local snow_sounds = sound_variations("__space-age__/sound/walking/snow", 10, 0.8, volume_multiplier("main-menu", 2.9))
-local icy_snow_sounds = sound_variations("__space-age__/sound/walking/icy-snow", 10, 0.8, volume_multiplier("main-menu", 2.9))
-local ice_sounds = sound_variations("__space-age__/sound/walking/ice", 10, 0.8, volume_multiplier("main-menu", 2.9))
-local smooth_ice_sounds = sound_variations("__space-age__/sound/walking/smooth-ice", 9, 0.8)
-local frozen_concrete_sounds = sound_variations("__space-age__/sound/walking/frozen-concrete", 11, 0.8)
-local snow_driving_sound =
-{
-  sound =
-    {
-      filename = "__space-age__/sound/driving/vehicle-surface-snow.ogg", volume = 0.8,
-      advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}}
-    },
-    fade_ticks = 6,
-}
-local ice_driving_sound =
-{
-  sound =
-    {
-      filename = "__space-age__/sound/driving/vehicle-surface-ice.ogg", volume = 0.5,
-      advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}}
-    },
-    fade_ticks = 6
-}
+local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
+local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
@@ -293,9 +270,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = icy_snow_sounds,
+    walking_sound = tile_sounds.walking.icy_snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_high,
     scorch_mark_color = {0.318, 0.222, 0.152},
     absorptions_per_second = tile_pollution.ice,
@@ -326,9 +303,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = icy_snow_sounds,
+    walking_sound = tile_sounds.walking.icy_snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_high,
     scorch_mark_color = {0.318, 0.222, 0.152},
     absorptions_per_second = tile_pollution.ice,
@@ -360,9 +337,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = snow_sounds,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = lerp_color_no_alpha(snow_map_color_high, snow_map_color_low, 0.3),
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -393,9 +370,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = snow_sounds,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = lerp_color_no_alpha(snow_map_color_high, snow_map_color_low, 0.3),
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -427,9 +404,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = snow_sounds,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = lerp_color_no_alpha(snow_map_color_high, snow_map_color_low, 0.7),
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -461,9 +438,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = snow_sounds,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = lerp_color_no_alpha(snow_map_color_high, snow_map_color_low, 0.7),
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -486,9 +463,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = snow_sounds,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_low,
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -519,9 +496,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = snow_sounds,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
-    driving_sound = snow_driving_sound,
+    driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_low,
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -553,9 +530,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = ice_sounds,
+    walking_sound = tile_sounds.walking.ice,
     landing_steps_sound = tile_sounds.landing.ice,
-    driving_sound = ice_driving_sound,
+    driving_sound = tile_sounds.driving.ice,
     map_color = {100, 135, 177},
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -577,9 +554,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = smooth_ice_sounds,
+    walking_sound = tile_sounds.walking.smooth_ice,
     landing_steps_sound = tile_sounds.landing.ice,
-    driving_sound = ice_driving_sound,
+    driving_sound = tile_sounds.driving.ice,
     map_color = {100, 135, 177},
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -593,12 +570,7 @@ data:extend({
     subgroup = "aquilo-tiles",
     minable = {mining_time = 0.5, result = "ice-platform"},
     mined_sound = base_sounds.deconstruct_bricks(0.8),
-    build_sound =
-    {
-      small = sound_variations("__core__/sound/landfill-small", 6, 1),
-      medium = sound_variations("__core__/sound/landfill-medium", 6,  0.8),
-      large = sound_variations("__core__/sound/landfill-large", 6, 0.5)
-    },
+    build_sound = base_tile_sounds.building.landfill,
     is_foundation = true,
     can_be_part_of_blueprint = true,
     collision_mask = tile_collision_masks.meltable_tile(),
@@ -608,9 +580,9 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = smooth_ice_sounds,
+    walking_sound = tile_sounds.walking.smooth_ice,
     landing_steps_sound = tile_sounds.landing.ice,
-    driving_sound = ice_driving_sound,
+    driving_sound = tile_sounds.driving.ice,
     map_color = {95, 122, 156},
     scorch_mark_color = {r = 0.318, g = 0.222, b = 0.152, a = 1.000},
     absorptions_per_second = tile_pollution.ice,
@@ -645,7 +617,6 @@ data:extend({
     },
     transitions = { space_age_tiles_util.lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1),
     map_color = {21,42,56},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -725,7 +696,7 @@ local function frozen_concrete(base_name, item_name, transition_merge_tile)
   frozen_concrete.transitions_between_transitions = nil
   frozen_concrete.thawed_variant = base_name
   frozen_concrete.frozen_variant = nil
-  frozen_concrete.walking_sound = frozen_concrete_sounds
+  frozen_concrete.walking_sound = tile_sounds.walking.frozen_concrete
   data:extend({ frozen_concrete })
 end
 

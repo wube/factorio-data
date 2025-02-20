@@ -1,5 +1,5 @@
 local resource_autoplace = require("resource-autoplace")
-local sounds = require("__base__.prototypes.entity.sounds")
+local base_tile_sounds = require("__base__.prototypes.tile.tile-sounds")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 
 -- Initialize the core patch sets in a predictable order
@@ -107,7 +107,7 @@ data:extend({
       order = "b",
       map_color = {r = 98/256, g = 86/256, b = 150/256, a = 1.000},
       mining_time = 5,
-      walking_sound = sounds.ore,
+      walking_sound = base_tile_sounds.walking.ore,
       mining_visualisation_tint = {r = 150/256, g = 150/256, b = 180/256, a = 1.000},
       category = "hard-solid",
       factoriopedia_simulation = simulations.factoriopedia_tungsten_ore,
@@ -123,7 +123,7 @@ data:extend({
       order = "b",
       map_color = {0.8, 0.7, 0.7},
       mining_time = 1,
-      walking_sound = sounds.ore,
+      walking_sound = base_tile_sounds.walking.ore,
       mining_visualisation_tint = {r = 0.99, g = 1.0, b = 0.92, a = 1.000},
       factoriopedia_simulation = simulations.factoriopedia_calcite,
     },
@@ -163,7 +163,7 @@ data:extend({
         }
       }
     },
-    walking_sound = sounds.oil,
+    walking_sound = base_tile_sounds.walking.oil({}),
     working_sound =
     {
       sound =
@@ -243,7 +243,7 @@ data:extend({
       order = "c",
       map_color = {0.9, 0.9, 0.9},
       mining_time = 0.5,
-      walking_sound = sounds.ore,
+      walking_sound = base_tile_sounds.walking.ore,
       resource_patch_search_radius = 12,
       mining_visualisation_tint = {r = 0.77, g = 0.77, b = 0.9, a = 1.000}, -- #fae1a4ff
       factoriopedia_simulation = simulations.factoriopedia_scrap,
@@ -280,7 +280,7 @@ data:extend({
         }
       }
     },
-    walking_sound = sounds.oil,
+    walking_sound = base_tile_sounds.walking.oil({}),
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     autoplace = {
@@ -399,7 +399,7 @@ data:extend({
         }
       }
     },
-    walking_sound = sounds.oil,
+    walking_sound = base_tile_sounds.walking.oil({}),
     collision_box = {{-1.4, -1.4}, {1.4, 1.4}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
     autoplace = {

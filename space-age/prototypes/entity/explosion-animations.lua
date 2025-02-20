@@ -19,7 +19,7 @@ explosion_animations.asteroid_explosion_chunk = function(options)
     }
   }
 end
-  
+
 explosion_animations.asteroid_explosion_small = function(options)
   return
   {
@@ -38,7 +38,7 @@ explosion_animations.asteroid_explosion_small = function(options)
     }
   }
 end
-  
+
 explosion_animations.asteroid_explosion_medium = function(options)
   return
   {
@@ -57,7 +57,7 @@ explosion_animations.asteroid_explosion_medium = function(options)
     }
   }
 end
-  
+
 explosion_animations.asteroid_explosion_big = function(options)
   return
   {
@@ -76,7 +76,7 @@ explosion_animations.asteroid_explosion_big = function(options)
     }
   }
 end
-  
+
 explosion_animations.asteroid_explosion_huge = function(options)
   return
   {
@@ -120,7 +120,7 @@ explosion_animations.magma_eruption = function()
       animation_speed = 0.5,
       shift = util.by_pixel( 8.5, 9.5),
       scale = 0.5
-    }, 
+    },
     {
       filename = "__space-age__/graphics/entity/demolisher/magma-eruption/magma-eruption-3.png",
       draw_as_glow = true,
@@ -131,7 +131,7 @@ explosion_animations.magma_eruption = function()
       animation_speed = 0.5,
       shift = util.by_pixel( 7.5, 0.5),
       scale = 0.5
-    }, 
+    },
     {
       filename = "__space-age__/graphics/entity/demolisher/magma-eruption/magma-eruption-4.png",
       draw_as_glow = true,
@@ -142,7 +142,7 @@ explosion_animations.magma_eruption = function()
       animation_speed = 0.5,
       shift = util.by_pixel(-16.0, -13.5),
       scale = 0.5
-    }, 
+    },
   }
 end
 

@@ -1,81 +1,14 @@
 local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
+local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
 local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
 
-local stone_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-stone.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-
-local oil_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-oil.ogg", volume = 0.6,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-
-local sand_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-sand.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-
-local uneven_stone_driving_sound =
-{
-  sound =
-  {
-    filename = "__space-age__/sound/driving/vehicle-surface-uneven-stone.ogg", volume = 0.8,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-
-local metal_rock_driving_sound =
-{
-  sound =
-    {
-      filename = "__space-age__/sound/driving/vehicle-surface-metal-rock.ogg", volume = 0.6,
-      advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}}
-    },
-    fade_ticks = 6,
-}
-
-local sand_ambient_sound =
-{
-  sound =
-  {
-    variations = sound_variations("__space-age__/sound/world/semi-persistent/sand-wind-gust", 5, 0.8),
-    advanced_volume_control =
-    {
-      fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-    }
-  },
-  radius = 7.5,
-  min_entity_count = 10,
-  max_entity_count = 30,
-  entity_to_sound_ratio = 0.1,
-  average_pause_seconds = 15
-}
-
 table.insert(water_tile_type_names, "oil-ocean-shallow")
 table.insert(water_tile_type_names, "oil-ocean-deep")
-
 
 --[[
 local fulgora_sand_transitions =
@@ -279,10 +212,10 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__space-age__/sound/walking/soft-sand", 9, 0.6, volume_multiplier("main-menu", 2.9)),
+    walking_sound = tile_sounds.walking.soft_sand({volume = 0.6, modifiers = volume_multiplier("main-menu", 2.9)}),
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
-    ambient_sounds = sand_ambient_sound,
+    driving_sound = base_tile_sounds.driving.sand,
+    ambient_sounds = tile_sounds.ambient.sand,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -315,10 +248,10 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__base__/sound/walking/sand", 9, 0.8, volume_multiplier("main-menu", 2.9)),
+    walking_sound = base_tile_sounds.walking.sand,
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
-    ambient_sounds = sand_ambient_sound,
+    driving_sound = base_tile_sounds.driving.sand,
+    ambient_sounds = tile_sounds.ambient.sand,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -351,10 +284,10 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__base__/sound/walking/sand", 9, 0.8, volume_multiplier("main-menu", 2.9)),
+    walking_sound = base_tile_sounds.walking.sand,
     landing_steps_sound = tile_sounds.landing.sand,
-    driving_sound = sand_driving_sound,
-    ambient_sounds = sand_ambient_sound,
+    driving_sound = base_tile_sounds.driving.sand,
+    ambient_sounds = tile_sounds.ambient.sand,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -387,9 +320,9 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__space-age__/sound/walking/rocky-stone", 10, 0.8, volume_multiplier("main-menu", 2.9)),
+    walking_sound = tile_sounds.walking.rocky_stone({modifiers = volume_multiplier("main-menu", 2.9)}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = stone_driving_sound,
+    driving_sound = base_tile_sounds.driving.stone,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -423,9 +356,9 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__space-age__/sound/walking/rugged-stone", 10, 0.8, volume_multiplier("main-menu", 1.5)),
+    walking_sound = tile_sounds.walking.rugged_stone({modifiers = volume_multiplier("main-menu", 1.5)}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = uneven_stone_driving_sound,
+    driving_sound = tile_sounds.driving.uneven_stone,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -457,9 +390,9 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__space-age__/sound/walking/rocky-stone", 10, 0.8, volume_multiplier("main-menu", 1.5)),
+    walking_sound = tile_sounds.walking.rocky_stone({modifiers = volume_multiplier("main-menu", 1.5)}),
     landing_steps_sound = tile_sounds.landing.rock,
-    driving_sound = uneven_stone_driving_sound,
+    driving_sound = tile_sounds.driving.uneven_stone,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -491,9 +424,9 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__space-age__/sound/walking/scraps", 7, 0.4, volume_multiplier("main-menu", 1.5)),
-    landing_steps_sound = sound_variations("__space-age__/sound/walking/scraps", 7, 1.0, volume_multiplier("main-menu", 2.9)),
-    driving_sound = metal_rock_driving_sound,
+    walking_sound = tile_sounds.walking.scraps,
+    landing_steps_sound = tile_sounds.landing.scraps,
+    driving_sound = tile_sounds.driving.metal_rock,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -525,9 +458,9 @@ data:extend
     },
     transitions = fulgora_rock_sand_transitions,
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__space-age__/sound/walking/scraps", 7, 0.4, volume_multiplier("main-menu", 1.5)),
-    landing_steps_sound = sound_variations("__space-age__/sound/walking/scraps", 7, 1.0, volume_multiplier("main-menu", 2.9)),
-    driving_sound = metal_rock_driving_sound,
+    walking_sound = tile_sounds.walking.scraps,
+    landing_steps_sound = tile_sounds.landing.scraps,
+    driving_sound = tile_sounds.driving.metal_rock,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -569,9 +502,9 @@ data:extend
     transitions = fulgora_oil_sand_transitions,
     --transitions_between_transitions = table.deepcopy(data.raw.tile["sand-1"].transitions_between_transitions),
     transitions_between_transitions = fulgora_sand_transitions_between_transitions,
-    walking_sound = sound_variations("__base__/sound/walking/resources/oil", 7, 1, volume_multiplier("main-menu", 1.5)),
-    landing_steps_sound = sound_variations("__base__/sound/walking/resources/oil", 7, 1, volume_multiplier("main-menu", 2.9)),
-    driving_sound = oil_driving_sound,
+    walking_sound = base_tile_sounds.walking.oil({volume = 1.0, modifiers = volume_multiplier("main-menu", 1.5)}),
+    landing_steps_sound = tile_sounds.landing.oil,
+    driving_sound = base_tile_sounds.driving.oil,
     scorch_mark_color = {r = 0.3, g = 0.3, b = 0.3, a = 1.000},
     trigger_effect = tile_trigger_effects.sand_trigger_effect()
   },
@@ -608,24 +541,9 @@ data:extend
     ),
     transitions = table.deepcopy(data.raw.tile["water-shallow"].transitions),
     transitions_between_transitions = table.deepcopy(data.raw.tile["water-shallow"].transitions_between_transitions),
-    walking_sound = sound_variations("__space-age__/sound/walking/oil-deep", 10, 0.35, volume_multiplier("main-menu", 2.9)),
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/oil-gloop", 10, 0.15),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "S-curve", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 15
-    },
-    landing_steps_sound = sound_variations("__base__/sound/walking/resources/oil", 7, 1, volume_multiplier("main-menu", 2.9)),
+    walking_sound = tile_sounds.walking.oil_deep,
+    landing_steps_sound = tile_sounds.landing.oil,
+    ambient_sounds = tile_sounds.ambient.oil_deep,
     trigger_effect = tile_trigger_effects.water_trigger_effect(),
   },
   ----- Deep oil effect

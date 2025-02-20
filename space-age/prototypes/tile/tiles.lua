@@ -5,6 +5,8 @@ local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-ma
 local space_platform_tile_animations = require("prototypes.tile.platform-tile-animations")
 
 local base_sounds = require("__base__/prototypes/entity/sounds")
+local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
+local space_age_tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
 local tile_spritesheet_layout = tile_graphics.tile_spritesheet_layout
@@ -17,28 +19,6 @@ table.insert(water_tile_type_names, "oil-ocean-deep")
 lava_tile_type_names = lava_tile_type_names or {}
 
 space_age_tiles_util = space_age_tiles_util or {}
-
-local space_platform_tile_build_sounds =
-{
-  small = sound_variations("__core__/sound/build-concrete-small", 6, 0.4), -- used in editor
-  medium = sound_variations("__core__/sound/build-concrete-medium", 6, 0.5), -- used in editor
-  large =  sound_variations("__core__/sound/build-concrete-large", 6, 0.5), -- used in editor
-  animated =
-  {
-    variations = sound_variations("__space-age__/sound/terrain/space-platform-tile-build", 7, 0.5),
-    aggregation = {max_count = 3, remove = true, count_already_playing = true, priority = "oldest", progress_threshold = 0.6},
-  },
-}
-
-local concrete_tile_build_sounds =
-{
-  small = sound_variations("__core__/sound/build-concrete-small", 6, 0.4),
-  medium = sound_variations("__core__/sound/build-concrete-medium", 6, 0.5),
-  large =  sound_variations("__core__/sound/build-concrete-large", 6, 0.5),
-}
-
-local concrete_sounds = sound_variations("__base__/sound/walking/concrete", 11, 0.5)
-local dirt_sounds = sound_variations("__base__/sound/walking/dirt-1", 10, 0.8, volume_multiplier("main-menu", 2.9))
 
 default_transition_group_id = default_transition_group_id or 0
 water_transition_group_id = water_transition_group_id or 1
@@ -389,8 +369,8 @@ data:extend
       -- }
     },
 
-    walking_sound = concrete_sounds,
-    build_sound = space_platform_tile_build_sounds,
+    walking_sound = base_tile_sounds.walking.concrete,
+    build_sound = space_age_tile_sounds.building.space_platform,
     map_color = {63, 61, 59},
     scorch_mark_color = {r = 0.373, g = 0.307, b = 0.243, a = 1.000}
   },
@@ -511,8 +491,8 @@ data:extend
     transitions = foundation_transitions,
     transitions_between_transitions = foundation_transitions_between_transitions,
 
-    walking_sound = dirt_sounds,
-    build_sound = concrete_tile_build_sounds,
+    walking_sound = base_tile_sounds.walking.dirt,
+    build_sound = base_tile_sounds.building.concrete,
     map_color={57, 39, 26},
     scorch_mark_color = {r = 0.329, g = 0.242, b = 0.177, a = 1.000},
     vehicle_friction_modifier = 1.1,

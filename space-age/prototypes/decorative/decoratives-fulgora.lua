@@ -1,5 +1,6 @@
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
-local sounds = require ("__base__.prototypes.entity.sounds")
+local base_sounds = require ("__base__.prototypes.entity.sounds")
+local base_tile_sounds = require ("__base__.prototypes.tile.tile-sounds")
 local decorative_trigger_effects = require("__base__.prototypes.decorative.decorative-trigger-effects")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 
@@ -58,7 +59,7 @@ data:extend(
     order = "a[fulgora]-b[decorative]",
     collision_box = {{-0.45, -0.45}, {0.45, 0.45}},
     collision_mask = {layers={object=true}, colliding_with_tiles_only=true},
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/fulgoran-ruin/fulgoran-ruin-tiny", frame_count = 35,     scale = 0.3}}),
     autoplace = {
       order = "a[ruin]-i[tiny]",
@@ -212,8 +213,8 @@ data:extend(
     lightning_strike_offset = {0.5, -4.0},
     damaged_trigger_effect = hit_effects.entity({{-0.2, -2.2},{0.2, 0.2}}),
     drawing_box_vertical_extension = 4,
-    open_sound = sounds.electric_network_open,
-    close_sound = sounds.electric_network_close,
+    open_sound = base_sounds.electric_network_open,
+    close_sound = base_sounds.electric_network_close,
     stateless_visualisation =
     {
       period = 0,
@@ -261,7 +262,7 @@ data:extend(
     order = "a[fulgora]-b[decorative]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
-    walking_sound = sounds.grass,
+    walking_sound = base_tile_sounds.walking.grass,
     autoplace = {
       probability_expression = "min(0.1, fulgora_natural_mask * max(0, fulgora_scrap_medium + fulgora_rock - fulgora_basis_oil - 2.5))",
     },
@@ -273,7 +274,7 @@ data:extend(
     order = "a[fulgora]-b[decorative]",
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
-    walking_sound = sounds.grass,
+    walking_sound = base_tile_sounds.walking.big_bush,
     autoplace = {
       placement_density = 2,
       probability_expression = "min(0.1, fulgora_natural_mask * max(0, fulgora_scrap_medium - fulgora_rock - 0.75))",
@@ -304,7 +305,7 @@ data:extend(
     },
     map_color = {194, 41, 116, 64},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = base_sounds.deconstruct_bricks(1.0),
     impact_category = "stone",
     render_layer = "object",
     max_health = 70,
@@ -343,7 +344,7 @@ data:extend(
     },
     map_color = {194, 41, 116, 64},
     count_as_rock_for_filtered_deconstruction = true,
-    mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
+    mined_sound = base_sounds.deconstruct_bricks(1.0),
     impact_category = "stone",
     render_layer = "object",
     max_health = 200,

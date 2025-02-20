@@ -1,5 +1,6 @@
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
-local sounds = require ("__base__.prototypes.entity.sounds")
+local base_tile_sounds = require("__base__.prototypes.tile.tile-sounds")
+local space_age_tile_sounds = require ("__space-age__.prototypes.tile.tile-sounds")
 local decorative_trigger_effects = require("__base__.prototypes.decorative.decorative-trigger-effects")
 local simulations = require("__space-age__.prototypes.factoriopedia-simulations")
 
@@ -381,7 +382,7 @@ data:extend{
     order = "b[decorative]-a[grass]-b[hairy]-a[green]",
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
-    walking_sound = sounds.hairy_grass,
+    walking_sound = base_tile_sounds.walking.hairy_grass,
     trigger_effect = decorative_trigger_effects.green_hairy_grass(),
     autoplace =
     {
@@ -581,7 +582,7 @@ data:extend{
     collision_box = {{-1, -1}, {1, 1}},
     grows_through_rail_path = true,
     render_layer = "decorative",
-    walking_sound = sounds.hairy_grass,
+    walking_sound = base_tile_sounds.walking.hairy_grass,
     trigger_effect = decorative_trigger_effects.brown_hairy_grass(),
     autoplace = {
       order = "e[vegetation]-b[grass]-b[hairy]-b[brown]",
@@ -779,7 +780,7 @@ data:extend{
     order = "b[decorative]-a[grass]-a[carpet]-b[brown]",
     collision_box = {{-2, -2}, {2, 2}},
     grows_through_rail_path = true,
-    walking_sound = sounds.carpet_grass,
+    walking_sound = base_tile_sounds.walking.carpet_grass,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace = {
       order = "e[vegetation]-b[grass]-a[carpet]",
@@ -905,7 +906,7 @@ data:extend{
     order = "b[decorative]-c[pita]-a[red]",
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     render_layer = "object",
-    walking_sound = sounds.plant,
+    walking_sound = base_tile_sounds.walking.big_bush,
     trigger_effect = decorative_trigger_effects.red_pita(),
     autoplace = {
       order = "e[vegetation]-a[shrub]-a[pita]",
@@ -1060,7 +1061,6 @@ data:extend{
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -1,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-f[cracked-rock]-b[cold]",
       probability_expression = "vulcanus_rock_decal_large"
@@ -1076,7 +1076,7 @@ data:extend{
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = decal_tile_layer -5,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {
       order = "d[ground-surface]-g[cracks]-b[cold]-b[small]",
       probability_expression = "vulcanus_crack_decal"
@@ -1092,7 +1092,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -4,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {
       order = "d[ground-surface]-g[cracks]-b[cold]-a[large]",
       probability_expression = "vulcanus_crack_decal_large"
@@ -1108,7 +1108,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -3,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-g[cracks]-a[warm]-a[large]",
@@ -1125,7 +1125,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -3,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-g[cracks]-a[warm]-b[small]",
@@ -1142,7 +1142,6 @@ data:extend{
     collision_mask = {layers={doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -6,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-c[stain]-c[calcite-large]",
       probability_expression = "vulcanus_calcite_stain"
@@ -1158,7 +1157,6 @@ data:extend{
     collision_mask = {layers={doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -6,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-c[stain]-b[calcite]-b[small]",
       probability_expression = "vulcanus_calcite_stain_small"
@@ -1174,7 +1172,6 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -6,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-c[stain]-b[calcite]-a[large]",
       probability_expression = "vulcanus_sulfuric_acid_stain"
@@ -1190,7 +1187,6 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer -6,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-c[stain]-a[sulfur]-b[small]",
       probability_expression = "vulcanus_sulfuric_acid_stain_small"
@@ -1206,7 +1202,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 254,
-    walking_sound = sounds.oil,
+    walking_sound = base_tile_sounds.walking.oil({}),
     autoplace =
     {
       order = "d[ground-surface]-a[puddle]-a[large]",
@@ -1224,7 +1220,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 254,
-    walking_sound = sounds.oil,
+    walking_sound = base_tile_sounds.walking.oil({}),
     autoplace =
     {
       order = "d[ground-surface]-a[puddle]-b[small]",
@@ -1242,7 +1238,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {
       order = "d[ground-surface]-e[crater]-a[small]",
       probability_expression = "crater_small"
@@ -1258,7 +1254,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer =  decal_tile_layer,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {
       order = "d[ground-surface]-e[crater]-a[large]",
       probability_expression = "crater_large"
@@ -1274,7 +1270,7 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 220,
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {
       order = "d[ground-surface]-d[relief]-b[rocky]",
       probability_expression = "pumice_relief_decal"
@@ -1290,7 +1286,6 @@ data:extend{
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = decal_tile_layer,
-    walking_sound = sounds.sand,
     autoplace = {
       order = "d[ground-surface]-h[dune]-b[patch]",
       probability_expression = "vulcanus_sand_decal"
@@ -1305,7 +1300,6 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 220,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-h[dune]-a[relief]",
       probability_expression = "vulcanus_dune_decal"
@@ -1321,7 +1315,6 @@ data:extend{
     collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 220,
-    walking_sound = sounds.pebble,
     autoplace = {
       order = "d[ground-surface]-d[relief]-a[waves]",
       probability_expression = "waves_decal"
@@ -2066,6 +2059,7 @@ data:extend{
     order = "b[decorative]-l[rock]-c[medium]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     render_layer = "decorative",
+    walking_sound = space_age_tile_sounds.walking.rocky_stone({modifiers = volume_multiplier("main-menu", 1.5)}),
     autoplace = {
       order = "d[ground-surface]-i[rock]-a[medium]",
       probability_expression = "vulcanus_rock_medium"
@@ -2202,7 +2196,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-i[rock]-b[small]",
@@ -2380,7 +2374,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-i[rock]-d[tiny]",
@@ -2560,7 +2554,7 @@ data:extend{
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decorative",
-    walking_sound = sounds.sand,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-i[rock]-c[cluster]",
@@ -2577,7 +2571,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.3, -0.3}, {0.3, 0.3}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-b[sulfur-rock]-a[small]",
@@ -2756,7 +2750,7 @@ data:extend{
     order = "b[decorative]-l[rock]-d[small]",
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-b[sulfur-rock]-c[tiny]",
@@ -2936,7 +2930,7 @@ data:extend{
     collision_box = {{-1, -1}, {1, 1}},
     collision_mask = {layers={water_tile=true, doodad=true}, colliding_with_tiles_only=true},
     render_layer = "decorative",
-    walking_sound = sounds.sand,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace =
     {
       order = "d[ground-surface]-b[sulfur-rock]-b[cluster]",

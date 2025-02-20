@@ -1,5 +1,6 @@
 local hit_effects = require ("__base__.prototypes.entity.hit-effects")
-local sounds = require ("__base__.prototypes.entity.sounds")
+local base_tile_sounds = require ("__base__.prototypes.tile.tile-sounds")
+local space_age_tile_sounds = require ("__space-age__.prototypes.tile.tile-sounds")
 local decorative_trigger_effects = require("__base__.prototypes.decorative.decorative-trigger-effects")
 
 --lithium
@@ -16,7 +17,7 @@ data:extend{
     --collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 220,
-    --walking_sound = sounds.pebble,
+    walking_sound = space_age_tile_sounds.walking.ice,
     autoplace = {
       order = "d[decal]-a",
       probability_expression = "min(1, random_penalty{x = x, y = y, seed = 1, source = 1, amplitude = 1/0.1} + aquilo_high_frequency_peaks / 2 )",
@@ -151,7 +152,6 @@ data:extend{
     --collision_mask = {layers={water_tile=true}, colliding_with_tiles_only=true},
     render_layer = "decals",
     tile_layer = 220,
-    --walking_sound = sounds.pebble,
     autoplace = {
       order = "d[decal]-b",
       probability_expression = "min(1, random_penalty{x = x, y = y, seed = 1, source = 1, amplitude = 1/0.1} + 0.3 -aquilo_high_frequency_peaks / 2)",
@@ -320,7 +320,6 @@ data:extend{
     collision_box = {{-2, -2}, {2, 2}},
     collision_mask = {layers={ground_tile=true}, colliding_with_tiles_only=true},
     render_layer = "object",
-    --walking_sound = sounds.pebble,
     autoplace = {
       order = "a[rock]-a[huge]",
       probability_expression = "icebergs * 0.015",
@@ -369,7 +368,6 @@ data:extend{
     collision_box = {{-1.5, -1.5}, {1.5, 1.5}},
     collision_mask = {layers={ground_tile=true}, colliding_with_tiles_only=true},
     render_layer = "object",
-    --walking_sound = sounds.pebble,
     autoplace = {
       order = "a[rock]-c[medium]",
       probability_expression = "icebergs * 0.02",
@@ -693,6 +691,7 @@ data:extend{
     order = "b[decorative]-l[rock]-k[lithium-iceberg]-c[medium]",
     collision_box = {{-1.1, -1.1}, {1.1, 1.1}},
     render_layer = "decorative",
+    walking_sound = space_age_tile_sounds.walking.ice,
     autoplace = {probability_expression = "(aquilo_high_frequency_peaks - 0.6) * 0.9"},
     trigger_effect = decorative_trigger_effects.medium_rock(),
     pictures =
@@ -833,7 +832,7 @@ data:extend{
     order = "b[decorative]-l[rock]-k[lithium-iceberg]-b[small]",
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = space_age_tile_sounds.walking.ice,
     autoplace = {probability_expression = "(aquilo_high_frequency_peaks - 0.35) * 0.7"},
     trigger_effect = decorative_trigger_effects.small_rock(),
     pictures =
@@ -934,7 +933,7 @@ data:extend{
     order = "b[decorative]-l[rock]-k[lithium-iceberg]-a[tiny]",
     collision_box = {{-0.1, -0.1}, {0.1, 0.1}},
     render_layer = "decorative",
-    walking_sound = sounds.pebble,
+    walking_sound = base_tile_sounds.walking.pebble,
     autoplace = {probability_expression = "(aquilo_high_frequency_peaks - 0.2) * 0.5"},
     trigger_effect = decorative_trigger_effects.tiny_rock(),
     pictures =

@@ -14,16 +14,6 @@ return
   }
 end
 
-sounds.plant = sound_variations("__base__/sound/walking/plant/plant", 5, 0.4)
-sounds.big_bush = sound_variations("__base__/sound/walking/plant/bush-big", 7, 0.3)
-sounds.small_bush = sound_variations("__base__/sound/walking/plant/bush-small", 7, 0.6)
-sounds.pebble = sound_variations("__base__/sound/walking/pebble/stones", 9, 0.6)
-sounds.hairy_grass = sound_variations("__base__/sound/walking/decorative-grass", 10, 0.3)
-sounds.carpet_grass = sound_variations("__base__/sound/walking/decorative-grass", 10, 0.2)
-sounds.mud = sound_variations("__base__/sound/walking/decorative-mud", 10, 0.3)
-sounds.ore = sound_variations("__base__/sound/walking/resources/ore", 10, 0.7)
-sounds.oil = sound_variations("__base__/sound/walking/resources/oil", 7, 0.7)
-sounds.rails = sound_variations("__base__/sound/walking/rails/rails", 12, 0.6)
 sounds.tree_leaves = sound_variations("__base__/sound/particles/tree-leaves", 5, 0.35)
 sounds.mine_fish = sound_variations("__core__/sound/mine-fish", 5, 0.8)
 sounds.eat_fish = sound_variations("__base__/sound/eat", 5, 0.6)

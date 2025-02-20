@@ -451,6 +451,7 @@ data:extend
     icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-red-wire-x56.png",
     icon_size = 56,
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    auto_recycle = false,
     subgroup = "spawnables",
     color_hint = { text = "R" },
     inventory_move_sound = item_sounds.wire_inventory_move,
@@ -464,6 +465,7 @@ data:extend
     icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-green-wire-x56.png",
     icon_size = 56,
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    auto_recycle = false,
     subgroup = "spawnables",
     color_hint = { text = "G" },
     inventory_move_sound = item_sounds.wire_inventory_move,
@@ -477,6 +479,7 @@ data:extend
     icon = "__base__/graphics/icons/shortcut-toolbar/mip/new-copper-wire-x56.png",
     icon_size = 56,
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    auto_recycle = false,
     subgroup = "spawnables",
     color_hint = { text = "C" },
     inventory_move_sound = item_sounds.wire_inventory_move,
@@ -2141,6 +2144,7 @@ data:extend
     name = "spidertron-remote",
     icon = "__base__/graphics/icons/spidertron-remote.png",
     flags = {"not-stackable", "only-in-cursor", "spawnable"},
+    auto_recycle = false,
     subgroup = "spawnables",
     inventory_move_sound = item_sounds.spidertron_inventory_move,
     pick_sound = item_sounds.spidertron_inventory_pickup,
@@ -4472,6 +4476,7 @@ data:extend
     name = "discharge-defense-remote",
     icon = "__base__/graphics/icons/discharge-defense-equipment-controller.png",
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    auto_recycle = false,
     capsule_action =
     {
       type = "equipment-remote",
@@ -4540,6 +4545,7 @@ data:extend
     name = "artillery-targeting-remote",
     icon = "__base__/graphics/icons/artillery-targeting-remote.png",
     flags = {"only-in-cursor", "not-stackable", "spawnable"},
+    auto_recycle = false,
     capsule_action =
     {
       type = "artillery-remote",

@@ -99,7 +99,7 @@ local function generator_pictures(direction)
       util.sprite_load("__space-age__/graphics/entity/fusion-generator/".. direction .. "/fusion-generator-" .. direction,
       {
         priority = "high",
-        frame_count = 5,
+        frame_count = 6,
         scale = 0.5,
       }),
       util.sprite_load("__space-age__/graphics/entity/fusion-generator/".. direction .. "/fusion-generator-" .. direction .. "-shadow",
@@ -107,7 +107,7 @@ local function generator_pictures(direction)
         priority = "high",
         draw_as_shadow = true,
         frame_count = 1,
-        repeat_count = 5,
+        repeat_count = 6,
         scale = 0.5
       })
     }
@@ -152,7 +152,7 @@ local function generator_working_light(direction, fluid_input)
     scale = 0.5
   })
   if fluid_input == 0 then
-    sprite.frame_count = 5
+    sprite.frame_count = 6
   end
   return
   {

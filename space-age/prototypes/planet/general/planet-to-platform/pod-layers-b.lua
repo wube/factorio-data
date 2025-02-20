@@ -16,12 +16,11 @@ local jets_emission =
     { timestamp = 110+10, opacity = 1 },
     { timestamp = 110+10+60, opacity = 1 },
     { timestamp = 110+20+60, opacity = 0 },
-    
+
     { timestamp = 215, opacity = 0 },
     { timestamp = 215+10, opacity = 1 },
     { timestamp = 215+10+140, opacity = 1 },
     { timestamp = 215+20+140, opacity = 0 }
-    
   }),
 }
 

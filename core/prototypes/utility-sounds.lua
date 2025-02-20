@@ -114,26 +114,22 @@ data:extend(
     },
     build_animated_small =
     {
-      filename = "__core__/sound/build-animated-small.ogg",
-      volume = 0.9,
+      variations = sound_variations("__core__/sound/build-animated-small", 3, 0.6),
       aggregation = {max_count = 1, remove = true, count_already_playing = true, priority = "oldest", progress_threshold = 0.3},
     },
     build_animated_medium =
     {
-      filename = "__core__/sound/build-animated-medium.ogg",
-      volume = 0.9,
+      variations = sound_variations("__core__/sound/build-animated-medium", 3, 0.7),
       aggregation = {max_count = 1, remove = true, count_already_playing = true, priority = "oldest", progress_threshold = 0.3},
     },
     build_animated_large =
     {
-      filename = "__core__/sound/build-animated-large.ogg",
-      volume = 0.9,
+      variations = sound_variations("__core__/sound/build-animated-large", 3, 0.8),
       aggregation = {max_count = 1, remove = true, count_already_playing = true, priority = "oldest", progress_threshold = 0.2},
     },
     build_animated_huge =
     {
-      filename = "__core__/sound/build-animated-huge.ogg",
-      volume = 0.9,
+      variations = sound_variations("__core__/sound/build-animated-huge", 3, 0.9),
       aggregation = {max_count = 1, remove = true, count_already_playing = true, priority = "oldest", progress_threshold = 0.1},
     },
     inventory_click =

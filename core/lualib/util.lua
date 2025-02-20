@@ -818,6 +818,10 @@ util.normalize_recipe_products = function(recipe)
   local products = {}
 
   for _,raw_product in pairs(recipe.results) do
+    if type(raw_product) ~= "table" then
+      error("Recipe "..recipe.name.." has malformed results: it should only contain tables (one per product) but "..type(raw_product).." was found")
+    end
+
     table.insert(products, util.normalize_recipe_product(raw_product))
   end
 

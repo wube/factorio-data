@@ -2,71 +2,17 @@ local tile_trigger_effects = require("prototypes.tile.tile-trigger-effects")
 local tile_pollution = require("__space-age__/prototypes/tile/tile-pollution-values")
 local tile_collision_masks = require("__base__/prototypes/tile/tile-collision-masks")
 local tile_graphics = require("__base__/prototypes/tile/tile-graphics")
-local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 local base_sounds = require("__base__/prototypes/entity/sounds")
+local base_tile_sounds = require("__base__/prototypes/tile/tile-sounds")
+local tile_sounds = require("__space-age__/prototypes/tile/tile-sounds")
 
-local semi_wet_sound = sound_variations("__space-age__/sound/walking/semi-wet-rock", 10, 0.7)
-local semi_dry_sound = sound_variations("__space-age__/sound/walking/semi-dry-rock", 10, 0.8)
-local soft_bark_sound = sound_variations("__space-age__/sound/walking/soft-bark", 10, 0.8)
-local dry_rock_sound = sound_variations("__space-age__/sound/walking/dry-rock", 10, 0.8)
-local slime_sound = sound_variations("__space-age__/sound/walking/slime", 10, 0.8)
-local wetland_sound = sound_variations("__space-age__/sound/walking/wetland", 10, 0.6)
 local tile_lightening = 28
-
-local wetland_driving_sound =
-{
-  sound =
-  {
-    filename = "__base__/sound/driving/vehicle-surface-water-shallow.ogg", volume = 0.6,
-    advanced_volume_control = {fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0 }}}}
-  },
-  fade_ticks = 6
-}
-local lake_ambience =
-{
-  {
-    sound =
-    {
-      variations = sound_variations("__base__/sound/world/water/waterlap", 10, 0.4),
-      advanced_volume_control =
-      {
-        fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-      }
-    },
-    radius = 7.5,
-    min_entity_count = 10,
-    max_entity_count = 30,
-    entity_to_sound_ratio = 0.1,
-    average_pause_seconds = 8
-  },
-  {
-    sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/rain-on-water", 10, 0.2),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}},
-        }
-      },
-      min_entity_count = 10,
-      max_entity_count = 25,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 5,
-  }
-}
 
 gleba_tile_offset = 65
 gleba_lowland_tile_offset = 32
 
 local lava_to_out_of_map_transition = space_age_tiles_util.lava_to_out_of_map_transition
 local lava_stone_transitions_between_transitions = space_age_tiles_util.lava_stone_transitions_between_transitions
-
-local function water_sound() return sound_variations("__base__/sound/walking/shallow-water", 7, 1, volume_multiplier("main-menu", 2.9)) end
-local function mud_sound() return sound_variations("__base__/sound/walking/decorative-mud", 10, 0.3, volume_multiplier("main-menu", 2.9)) end
-local function carpet_sound() return sound_variations("__base__/sound/walking/grass", 10, 0.8, volume_multiplier("main-menu", 2.9)) end
-local function bark_sound() return sound_variations("__base__/sound/walking/dirt-1", 10, 0.8, volume_multiplier("main-menu", 2.9)) end
-local function rock_sound() return sound_variations("__base__/sound/walking/concrete", 11, 0.5) end
-
 
 local function lowland_tile_variations_template_with_transitions_and_puddle_transitions(high_res_picture, options)
   local result = tile_variations_template_with_transitions(high_res_picture, options)
@@ -122,10 +68,10 @@ data:extend({
       }
     ),
 
-    walking_sound = semi_wet_sound,
+    walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
-    build_sound = data.raw["tile"]["landfill"].build_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    build_sound = base_tile_sounds.building.landfill,
     map_color={204, 183, 6},
     scorch_mark_color = {r = 0.329, g = 0.242*2, b = 0.177, a = 1.000}
   },
@@ -156,10 +102,10 @@ data:extend({
       }
     ),
 
-    walking_sound = semi_wet_sound,
+    walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
-    build_sound = data.raw["tile"]["landfill"].build_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    build_sound = base_tile_sounds.building.landfill,
     map_color={204, 183, 6},
     scorch_mark_color = {r = 0.329, g = 0.242*2, b = 0.177, a = 1.000}
   },
@@ -190,10 +136,10 @@ data:extend({
       }
     ),
 
-    walking_sound = semi_wet_sound,
+    walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
-    build_sound = data.raw["tile"]["landfill"].build_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    build_sound = base_tile_sounds.building.landfill,
     map_color={204, 6, 183},
     scorch_mark_color = {r = 0.329, g = 0.242*2, b = 0.177, a = 1.000}
   },
@@ -224,10 +170,10 @@ data:extend({
       }
     ),
 
-    walking_sound = semi_wet_sound,
+    walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
-    build_sound = data.raw["tile"]["landfill"].build_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    build_sound = base_tile_sounds.building.landfill,
     map_color={204, 6, 183},
     scorch_mark_color = {r = 0.329, g = 0.242*2, b = 0.177, a = 1.000}
   },
@@ -257,9 +203,9 @@ data:extend({
       }
     ),
 
-    walking_sound = semi_wet_sound,
+    walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    build_sound = data.raw["tile"]["landfill"].build_sound,
+    build_sound = base_tile_sounds.building.landfill,
     map_color={185, 166, 5},
     scorch_mark_color = {r = 0.329, g = 0.242*2, b = 0.177, a = 1.000}
   },
@@ -300,9 +246,9 @@ data:extend({
       }
     ),
 
-    walking_sound = semi_wet_sound,
+    walking_sound = tile_sounds.walking.semi_wet,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    build_sound = data.raw["tile"]["landfill"].build_sound,
+    build_sound = base_tile_sounds.building.landfill,
     map_color={185, 5, 166},
     scorch_mark_color = {r = 0.329, g = 0.242*2, b = 0.177, a = 1.000}
   }
@@ -339,7 +285,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0.3, 0.8, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
@@ -374,7 +320,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.2, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0, 0.4, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
@@ -409,7 +355,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0.8, 1, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
@@ -444,7 +390,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0, 0.4, 0.005, 0, 1) + 0.1 * (gleba_plants_noise_b - 0.8)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
@@ -479,7 +425,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.2, 0.4, 0.005, 0, 1) + 0.1 * gleba_select(gleba_temperature_normalised, 0, 0.3, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
@@ -515,13 +461,13 @@ data:extend({
         ),
         transitions = {lava_to_out_of_map_transition},
         transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-            walking_sound = semi_wet_sound,
-            landing_steps_sound = tile_sounds.landing.semi_wet,
-            map_color={95, 93, 88},
-            walking_speed_modifier = 1,
-            vehicle_friction_modifier = 1,
-            absorptions_per_second = tile_pollution.gleba,
-            trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
+        walking_sound = tile_sounds.walking.semi_wet,
+        landing_steps_sound = tile_sounds.landing.semi_wet,
+        map_color={95, 93, 88},
+        walking_speed_modifier = 1,
+        vehicle_friction_modifier = 1,
+        absorptions_per_second = tile_pollution.gleba,
+        trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
         type = "tile",
@@ -550,7 +496,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
@@ -585,7 +531,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
@@ -620,7 +566,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
@@ -655,7 +601,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={95, 83, 78},
         walking_speed_modifier = 1,
@@ -691,7 +637,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.75, 1, 0.005, 0, 1) + 0.1 * (gleba_plants_noise_b - 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
@@ -726,7 +672,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.45, 0.75, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
@@ -760,7 +706,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.25, 0.45, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
@@ -793,7 +739,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0.75, 1, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
@@ -827,7 +773,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.6, 1, 0.005, 0, 1) * gleba_select(gleba_temperature_normalised, 0, 0.25, 0.005, 0, 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         landing_steps_sound = tile_sounds.landing.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
@@ -861,7 +807,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_lowland * gleba_select(gleba_aux, 0.7, 1, 0.05, 0, 1) + 0.1 * (gleba_plants_noise - 1)"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = semi_wet_sound,
+        walking_sound = tile_sounds.walking.semi_wet,
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
@@ -892,7 +838,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = bark_sound(),
+        walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={81, 77, 44},
         walking_speed_modifier = 1,
@@ -922,7 +868,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = bark_sound(),
+        walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={71, 67, 40},
         walking_speed_modifier = 1,
@@ -952,7 +898,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = bark_sound(),
+        walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={61, 57, 30},
         walking_speed_modifier = 1,
@@ -982,7 +928,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.05, 0.4, 0.2, 0, 1) - 0.2 * gleba_temperature_normalised"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = soft_bark_sound,
+        walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={46, 68, 48},
         walking_speed_modifier = 1,
@@ -1011,7 +957,7 @@ data:extend({
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0, 0.35, 0.2, 0, 1) + 0.2 * gleba_temperature_normalised"},
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = soft_bark_sound,
+        walking_sound = tile_sounds.walking.soft_bark,
         landing_steps_sound = tile_sounds.landing.bark,
         map_color={46, 68, 48},
         walking_speed_modifier = 1,
@@ -1042,7 +988,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = dry_rock_sound,
+        walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
         walking_speed_modifier = 1,
@@ -1072,7 +1018,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = dry_rock_sound,
+        walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
         walking_speed_modifier = 1,
@@ -1102,7 +1048,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = dry_rock_sound,
+        walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
         walking_speed_modifier = 1,
@@ -1132,7 +1078,7 @@ data:extend({
         ),
         transitions = lava_stone_transitions,
         transitions_between_transitions = lava_stone_transitions_between_transitions,
-        walking_sound = dry_rock_sound,
+        walking_sound = tile_sounds.walking.dry_rock,
         landing_steps_sound = tile_sounds.landing.rock,
         map_color={114, 86, 40},
         walking_speed_modifier = 1,
@@ -1165,7 +1111,7 @@ data:extend({
       autoplace = {probability_expression = "gleba_highland * max(0, 1.05 + 0.1 * (1 - gleba_aux) + 0.2 * gleba_temperature_normalised)"},
       transitions = lava_stone_transitions,
       transitions_between_transitions = lava_stone_transitions_between_transitions,
-      walking_sound = dry_rock_sound,
+      walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color={52, 55, 48},
       walking_speed_modifier = 1,
@@ -1194,7 +1140,7 @@ data:extend({
       autoplace = {probability_expression = "gleba_highland * max(0, 1.13 + 0.1 * (min(gleba_aux + 0.1, 1-gleba_aux)))"},
       transitions = lava_stone_transitions,
       transitions_between_transitions = lava_stone_transitions_between_transitions,
-      walking_sound = dry_rock_sound,
+      walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color={52, 55, 48},
       walking_speed_modifier = 1,
@@ -1223,7 +1169,7 @@ data:extend({
       autoplace = {probability_expression = "gleba_highland * max(0, 1 + 0.1 * gleba_aux - 0.2 * gleba_temperature_normalised)"},
       transitions = lava_stone_transitions,
       transitions_between_transitions = lava_stone_transitions_between_transitions,
-      walking_sound = dry_rock_sound,
+      walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color={52, 55, 48},
       walking_speed_modifier = 1,
@@ -1255,7 +1201,7 @@ data:extend({
       },
       transitions = lava_stone_transitions,
       transitions_between_transitions = lava_stone_transitions_between_transitions,
-      walking_sound = dry_rock_sound,
+      walking_sound = tile_sounds.walking.dry_rock,
       landing_steps_sound = tile_sounds.landing.rock,
       map_color = {r = tile_lightening+22, g = tile_lightening+22, b = tile_lightening+30},
       walking_speed_modifier = 1,
@@ -1319,26 +1265,12 @@ data:extend({
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
 
-    walking_sound = water_sound(),
+    walking_sound = base_tile_sounds.walking.shallow_water,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds = tile_sounds.ambient.insects_deep_mud({max_entity_count = 30, average_pause_seconds = 8}),
+
     trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 8
-    }
   },
   {
     type = "tile",
@@ -1382,43 +1314,16 @@ data:extend({
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
 
-    walking_sound = water_sound(),
+    walking_sound = base_tile_sounds.walking.shallow_water,
     landing_steps_sound = tile_sounds.landing.wet,
-    driving_sound = wetland_driving_sound,
-    trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
+    driving_sound = tile_sounds.driving.wetland,
     ambient_sounds =
     {
-      {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4 ),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 30,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 8
-      },
-      {
-        sound =
-          {
-            variations = sound_variations("__space-age__/sound/world/tiles/night-frogs", 10, 0.3),
-            advanced_volume_control =
-            {
-              fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}},
-              darkness_threshold = 0.85
-            }
-          },
-          min_entity_count = 20,
-          max_entity_count = 25,
-          entity_to_sound_ratio = 0.1,
-          average_pause_seconds = 8,
-      }
-    }
+      tile_sounds.ambient.insects_deep_mud({max_entity_count = 30, average_pause_seconds = 8}),
+      tile_sounds.ambient.night_frogs,
+    },
+
+    trigger_effect = tile_trigger_effects.water_mud_trigger_effect(),
   },
   {
     type = "tile",
@@ -1453,47 +1358,19 @@ data:extend({
     },
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = wetland_sound,
+    walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds =
+    {
+      tile_sounds.ambient.insects_deep_mud({}),
+      tile_sounds.ambient.night_insects,
+    },
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    ambient_sounds =
-    {
-      {
-      sound =
-        {
-          variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-          advanced_volume_control =
-          {
-            fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-          }
-        },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    },
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/night-insects", 10, 0.3),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}},
-          darkness_threshold = 0.85
-        }
-      },
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 5,
-      }
-    },
   },
   {
     type = "tile",
@@ -1526,47 +1403,19 @@ data:extend({
     },
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = wetland_sound,
+    walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds =
+    {
+      tile_sounds.ambient.insects_deep_mud({}),
+      tile_sounds.ambient.night_insects,
+    },
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    ambient_sounds =
-    {
-      {
-      sound =
-        {
-          variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-          advanced_volume_control =
-          {
-            fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-          }
-        },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    },
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/night-insects", 10, 0.3),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}},
-          darkness_threshold = 0.85
-        }
-      },
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 5,
-      }
-    },
   },
   {
     type = "tile",
@@ -1601,47 +1450,19 @@ data:extend({
     },
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = slime_sound,
+    walking_sound = tile_sounds.walking.slime,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds =
+    {
+      tile_sounds.ambient.insects_deep_mud({}),
+      tile_sounds.ambient.night_frogs,
+    },
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    ambient_sounds =
-    {
-      {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3,
-    },
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/night-frogs", 10, 0.3),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}},
-          darkness_threshold = 0.85
-        }
-      },
-      min_entity_count = 20,
-      max_entity_count = 25,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 8,
-    }
-    }
   },
   {
     type = "tile",
@@ -1674,47 +1495,19 @@ data:extend({
     },
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = slime_sound,
+    walking_sound = tile_sounds.walking.slime,
     landing_steps_sound = tile_sounds.landing.semi_wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds =
+    {
+      tile_sounds.ambient.insects_deep_mud({}),
+      tile_sounds.ambient.night_frogs,
+    },
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    ambient_sounds =
-    {
-      {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3,
-    },
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/night-frogs", 10, 0.3),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}},
-          darkness_threshold = 0.85
-        }
-      },
-      min_entity_count = 20,
-      max_entity_count = 25,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 8,
-    }
-    }
   },
   {
     type = "tile",
@@ -1749,30 +1542,15 @@ data:extend({
     },
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = wetland_sound,
+    walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds = tile_sounds.ambient.insects_deep_mud({}),
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    }
   },
   {
     type = "tile",
@@ -1805,30 +1583,15 @@ data:extend({
     },
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
-    walking_sound = wetland_sound,
+    walking_sound = tile_sounds.walking.wetland,
     landing_steps_sound = tile_sounds.landing.wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds = tile_sounds.ambient.insects_deep_mud({}),
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    ambient_sounds =
-    {
-      sound =
-      {
-        variations = sound_variations("__space-age__/sound/world/tiles/insects-deep-mud", 8, 0.4),
-        advanced_volume_control =
-        {
-          fades = {fade_in = {curve_type = "cosine", from = {control = 0.5, volume_percentage = 0.0}, to = {1.5, 100.0}}}
-        }
-      },
-      radius = 7.5,
-      min_entity_count = 10,
-      max_entity_count = 15,
-      entity_to_sound_ratio = 0.1,
-      average_pause_seconds = 3
-    }
   },
   {
     type = "tile",
@@ -1862,7 +1625,12 @@ data:extend({
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1),
     landing_steps_sound = tile_sounds.landing.wet,
-    driving_sound = wetland_driving_sound,
+    driving_sound = tile_sounds.driving.wetland,
+    ambient_sounds =
+    {
+      tile_sounds.ambient.waterlap,
+      tile_sounds.ambient.rain_on_water,
+    },
     map_color = {25,49,58},
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
@@ -1870,7 +1638,6 @@ data:extend({
     default_cover_tile = "landfill",
     fluid = "water",
     absorptions_per_second = tile_pollution.gleba,
-    ambient_sounds = lake_ambience
   },
   {
     type = "tile",
@@ -1904,6 +1671,11 @@ data:extend({
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     walking_sound = sound_variations("__base__/sound/walking/shallow-water", 7, 1),
     landing_steps_sound = tile_sounds.landing.wet,
+    ambient_sounds =
+    {
+      tile_sounds.ambient.waterlap,
+      tile_sounds.ambient.rain_on_water,
+    },
     map_color = {18,37,51},
     walking_speed_modifier = 1,
     vehicle_friction_modifier = 1,
@@ -1911,7 +1683,6 @@ data:extend({
     default_cover_tile = "landfill",
     fluid = "water",
     absorptions_per_second = tile_pollution.gleba,
-    ambient_sounds = lake_ambience
   }
 })
 
