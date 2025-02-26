@@ -116,7 +116,7 @@ data:extend(
     },
     working_sound =
     {
-      sound = { filename = "__base__/sound/creatures/spawner.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 0.7) },
+      sound = {category = "enemy", filename = "__base__/sound/creatures/spawner.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 0.7) },
       max_sounds_per_prototype = 3
     },
     dying_sound =
@@ -755,7 +755,7 @@ data:extend(
     subgroup="enemies",
     working_sound =
     {
-      sound = { filename = "__base__/sound/creatures/spawner-spitter.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 0.7) },
+      sound = {category = "enemy", filename = "__base__/sound/creatures/spawner-spitter.ogg", volume = 0.6, modifiers = volume_multiplier("main-menu", 0.7) },
       max_sounds_per_prototype = 3
     },
     dying_sound =

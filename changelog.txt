@@ -1,6 +1,51 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.36
+Version: 2.0.37
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.36
+Date: 26. 02. 2025
+  Minor Features:
+    - Added an option to mute sound categories in sound settings. (https://forums.factorio.com/126735)
+    - Added an option to control the volume of Programmable speaker sounds via circuit network. (https://forums.factorio.com/112852)
+    - Added an option to stop playing sounds of Programmable speaker when input signal changes instead of waiting for the sounds to finish playing. (https://forums.factorio.com/112852)
+    - Added an option for Programmable speaker to use Cyclic sounds. (https://forums.factorio.com/112852)
+    - Decider combinator output constant can be changed.
+  Changes:
+    - Added missing open/close GUI sounds and fixed incorrect open/close GUI sounds for various entities. (https://forums.factorio.com/126967)
+    - Changed the "Train stop names" checkbox in the blueprint ui to be always on by default.
+  Graphics:
+    - Updated space platform related icon like the hub, starter pack, icon for the surface and the tech icon.
+    - Used the new virtual signal icon for research also for the research icon in the production graphs.
+  Optimizations:
+    - Improved belt reader performance.
+  Bugfixes:
+    - Fixed that a small empty UI box was visible on the main menu. (https://forums.factorio.com/126989)
+    - Fixed a crash when generating a variable track would encounter a filesystem error.
+    - Fixed sound accents could play when they shouldn't on switching between machine GUIs. (https://forums.factorio.com/122518)
+    - Fixed a crash when changing some modded assembling machine recipes. (https://forums.factorio.com/126995)
+    - Fixed a failing SegmentedUnit-related consistency check when loading some saves. (https://forums.factorio.com/126642)
+    - Fixed that the building preview and actual build position could differ at some resolutions and zooms. (https://forums.factorio.com/118896)
+    - Fixed a crash when trying to drop items onto game's title bar.
+    - Fixed LuaWireConnector was returning wrong values of the electric network index. (https://forums.factorio.com/127085)
+    - Fixed that clicking on a station in train GUI created unexpected browse history entries. (https://forums.factorio.com/119527)
+    - Fixed that traversing train GUI browse history entries didn't preserve centered locomotive.
+    - Fixed that going back in history to remote driving didn't change player surface. (https://forums.factorio.com/118006)
+    - Fixed LuaSurface::calculate_tile_properties() not ignoring unknown variables. (https://forums.factorio.com/126849)
+    - Restored signal-ghost virtual signal. (https://forums.factorio.com/126713)
+    - Fixed decider combinator gui could show old input or output signals when fps < ups and last signals change happened at skipped frame.
+    - Fixed construction robots storing incorrect items in a filtered storage chest if their upgrade job was cancelled. (https://forums.factorio.com/125750)
+    - Fixed that changing the volume of a Programmable speaker wouldn't update the volume of a playing sound with Surface playback mode.
+    - Fixed that changing playback mode of a Programmable speaker wouldn't affect currently playing sounds.
+    - Fixed that trivial smokes for player effect could cause new chunks to be generated when looking at the map. (https://forums.factorio.com/127011)
+    - Fixed missing walking sounds for rails. (https://forums.factorio.com/127117)
+    - Fixed that undo removal of tile ghosts did not set the last user. (https://forums.factorio.com/127084)
+  Modding:
+    - Added optional ProgrammableSpeakerNote::cyclic_sound. (https://forums.factorio.com/112852)
+  Scripting:
+    - Added optional 'stop_playing_sounds' parameter to LuaEntity::play_note().
+    - Added LuaSchedule.
+    - Added LuaSpacePlatform::get_schedule().
+    - Added LuaTrain::get_schedule().
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.35
 Date: 20. 02. 2025

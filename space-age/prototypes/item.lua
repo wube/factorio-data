@@ -252,8 +252,8 @@ data:extend(
     moving_sound = sound_variations("__space-age__/sound/entity/mech-armor/mech-armor-moves", 10, 0.4),
     collision_box = {{-0.25, -0.25}, {0.25, 0.25}},
     drawing_box = {{-0.4, -2}, {0.4, 0}},
-    open_sound = {filename =  "__base__/sound/armor-open.ogg", volume = 1},
-    close_sound = {filename = "__base__/sound/armor-close.ogg", volume = 1},
+    open_sound = sounds.armor_open,
+    close_sound = sounds.armor_close,
     weight = 1*tons
   },
   {
@@ -300,7 +300,7 @@ data:extend(
   {
     type = "space-platform-starter-pack",
     name = "space-platform-starter-pack",
-    icon = "__space-age__/graphics/icons/space-platform-hub.png",
+    icon = "__space-age__/graphics/icons/space-platform-starter-pack.png",
     subgroup = "space-rocket",
     order = "b[space-platform-starter-pack]",
     inventory_move_sound = item_sounds.mechanical_large_inventory_move,

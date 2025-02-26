@@ -739,7 +739,7 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7)),
+      sound = {category = "enemy", variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7))},
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_prototype = 2
     },
@@ -769,7 +769,7 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7)),
+      sound = {category = "enemy", variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 0.7))},
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_prototype = 2
     },
@@ -799,7 +799,7 @@ sounds.wriggler_pentapod =
   {
     working_sound =
     {
-      sound = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 1)),
+      sound = {category = "enemy", variations = sound_variations("__space-age__/sound/enemies/wriggler/wriggler-idle", 9, 0.5, volume_multiplier("main-menu", 1.0))},
       probability = 1 / (10 * 60), -- average pause between the sound is 10 seconds
       max_sounds_per_prototype = 2
     },

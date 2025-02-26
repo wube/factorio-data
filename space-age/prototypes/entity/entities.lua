@@ -227,6 +227,8 @@ data:extend({
     default_speed_signal = {type = "virtual", name = "signal-V"},
     default_damage_taken_signal = {type = "virtual", name = "signal-D"},
     platform_repair_speed_modifier = 0.1,
+    open_sound = sounds.metal_large_open,
+    close_sound = sounds.metal_large_close,
     surface_conditions =
     {
       {
@@ -630,8 +632,8 @@ data:extend({
     deposit_radius = 1.5,
     minimal_arm_swing_segment_retraction = 6,
     impact_category = "metal",
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.mech_small_open,
+    close_sound = sounds.mech_small_close,
     munch_sound =
     {
       variations = sound_variations("__space-age__/sound/entity/asteroid-collector/asteroid-munch", 7, 0.8),
@@ -757,8 +759,8 @@ data:extend({
       usage_priority = "secondary-input",
       emissions_per_minute = { pollution = 1 }
     },
-    open_sound = sounds.electric_large_open,
-    close_sound = sounds.electric_large_close,
+    open_sound = sounds.mech_small_open,
+    close_sound = sounds.mech_small_close,
     working_sound =
     {
       sound =
@@ -1157,8 +1159,8 @@ data:extend({
     energy_usage = "2500kW",
     perceived_performance = {minimum = 0.25, maximum = 20},
     graphics_set = require("__space-age__.prototypes.entity.foundry-pictures").graphics_set,
-    open_sound = sounds.metal_large_open,
-    close_sound = sounds.metal_large_close,
+    open_sound = sounds.steam_open,
+    close_sound = sounds.steam_close,
     working_sound =
     {
       sound =
@@ -1250,8 +1252,8 @@ data:extend({
     max_health = 500,
     corpse = "agricultural-tower-remnants",
     dying_explosion = "agricultural-tower-explosion",
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.mech_large_open,
+    close_sound = sounds.mech_large_close,
     input_inventory_size = 3,
     radius_visualisation_picture =
     {
@@ -1529,11 +1531,11 @@ data:extend({
         },
       }
     },
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.mech_small_open,
+    close_sound = sounds.mech_small_close,
     working_sound =
     {
-      sound = { filename = "__base__/sound/creatures/spawner.ogg", volume = 0.6 },
+      sound = {category = "enemy", filename = "__base__/sound/creatures/spawner.ogg", volume = 0.6 },
       sound_accents =
       {
         {sound = {variations = sound_variations("__space-age__/sound/entity/spawner/spawner-respirator-push", 3, 0.3), audible_distance_modifier = 0.6}, frame = 1},
@@ -1637,8 +1639,8 @@ data:extend({
         })
       }
     },
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.lab_open,
+    close_sound = sounds.lab_close,
     working_sound =
     {
       sound = {filename = "__space-age__/sound/entity/biolab/biolab-loop.ogg", volume = 0.7},
@@ -1753,8 +1755,8 @@ data:extend({
     forced_symmetry = "horizontal",
     perceived_performance = {minimum = 0.25, maximum = 10},
     graphics_set = require("__space-age__.prototypes.entity.electromagnetic-plant-pictures").graphics_set,
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    open_sound = sounds.electric_large_open,
+    close_sound = sounds.electric_large_close,
     working_sound = space_age_sounds.electromagnetic_plant,
     crafting_speed = 2,
     crafting_categories = {"electromagnetics", "electronics", "electronics-with-fluid", "electronics-or-assembling"},
@@ -2199,8 +2201,8 @@ data:extend({
       }))
     },
 
-    open_sound = {filename = "__base__/sound/open-close/nuclear-open.ogg", volume = 0.8},
-    close_sound = {filename = "__base__/sound/open-close/nuclear-close.ogg", volume = 0.8},
+    open_sound = sounds.steam_open,
+    close_sound = sounds.steam_close,
     working_sound =
     {
       sound = {filename = "__space-age__/sound/entity//heating-tower/heating-tower-loop.ogg", volume = 0.5},
@@ -2369,8 +2371,6 @@ data:extend({
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
 
     vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.metal_large_open,
-    close_sound = sounds.metal_large_close,
 
     energy_source =
     {
@@ -2462,8 +2462,8 @@ data:extend({
     perceived_performance = {minimum = 0.25, performance_to_activity_rate = 2.0},
 
     vehicle_impact_sound = sounds.generic_impact,
-    open_sound = sounds.metal_large_open,
-    close_sound = sounds.metal_large_close,
+    open_sound = sounds.reactor_open,
+    close_sound = sounds.reactor_close,
 
     energy_source =
     {

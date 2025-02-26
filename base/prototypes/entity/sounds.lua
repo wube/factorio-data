@@ -246,6 +246,7 @@ sounds.pipe =
 }
 sounds.train_brakes =
 {
+  category = "environment",
   filename = "__base__/sound/train-breaks.ogg",
   volume = 0.3,
   aggregation = {max_count = 1, remove = true},
@@ -253,6 +254,7 @@ sounds.train_brakes =
 }
 sounds.train_brake_screech =
 {
+  category = "environment",
   variations = sound_variations("__base__/sound/train-brake-screech", 2, 0.3, volume_multiplier("driving", 1.15)),
   aggregation = {max_count = 1, remove = true},
 }
@@ -288,32 +290,46 @@ sounds.train_wagon_wheels =
 
 sounds.ammo_open = { filename = "__base__/sound/open-close/ammo-large-open.ogg", volume = 0.57 }
 sounds.ammo_close = { filename = "__base__/sound/open-close/ammo-large-close.ogg", volume = 0.6 }
+sounds.armor_open = { filename = "__base__/sound/armor-open.ogg", volume = 0.8 }
+sounds.armor_close = { filename = "__base__/sound/armor-close.ogg", volume = 0.8 }
 sounds.artillery_open = { filename = "__base__/sound/artillery-open.ogg", volume = 0.57 }
 sounds.artillery_close = { filename = "__base__/sound/artillery-close.ogg", volume = 0.6 }
 sounds.cargo_wagon_open = { filename = "__base__/sound/cargo-wagon-open.ogg", volume = 0.55 }
 sounds.cargo_wagon_close = { filename = "__base__/sound/cargo-wagon-close.ogg", volume = 0.54 }
 sounds.combinator_open = { filename = "__base__/sound/open-close/combinator-open.ogg", volume = 0.55 }
 sounds.combinator_close = { filename = "__base__/sound/open-close/combinator-close.ogg", volume = 0.54 }
-sounds.drill_open = { filename = "__base__/sound/open-close/drill-open.ogg", volume = 0.6 }
-sounds.drill_close = { filename = "__base__/sound/open-close/drill-close.ogg", volume = 0.6 }
+sounds.drill_open = { filename = "__base__/sound/open-close/drill-open.ogg", volume = 0.9 }
+sounds.drill_close = { filename = "__base__/sound/open-close/drill-close.ogg", volume = 0.9 }
 sounds.electric_network_open = { filename = "__base__/sound/electric-network-open.ogg", volume = 0.6 }
 sounds.electric_network_close = { filename = "__base__/sound/electric-network-close.ogg", volume = 0.6 }
 sounds.electric_large_open = { filename = "__base__/sound/open-close/electric-large-open.ogg", volume = 0.6 }
 sounds.electric_large_close = { filename = "__base__/sound/open-close/electric-large-close.ogg", volume = 0.6 }
 sounds.inserter_open = { filename = "__base__/sound/open-close/inserter-open.ogg", volume = 0.6 }
 sounds.inserter_close = { filename = "__base__/sound/open-close/inserter-close.ogg", volume = 0.5 }
+sounds.lab_open = { filename = "__base__/sound/open-close/lab-open.ogg", volume = 0.8 }
+sounds.lab_close = { filename = "__base__/sound/open-close/lab-close.ogg", volume = 0.8 }
 sounds.machine_open = { filename = "__base__/sound/machine-open.ogg", volume = 0.5 }
-sounds.machine_close = { filename = "__base__/sound/machine-close.ogg", volume = 0.5 }
+sounds.machine_close = { filename = "__base__/sound/machine-close.ogg", volume = 0.29 }
+sounds.mech_small_open = {filename =  "__base__/sound/open-close/mechanical-inventory-move.ogg", volume = 1.0}
+sounds.mech_small_close = {filename = "__base__/sound/open-close/mechanical-inventory-pickup.ogg", volume = 1.0}
+sounds.mech_large_open = {filename =  "__base__/sound/open-close/mechanical-large-open.ogg", volume = 0.5}
+sounds.mech_large_close = {filename = "__base__/sound/open-close/mechanical-large-close.ogg", volume = 0.5}
+sounds.metallic_chest_open = { filename = "__base__/sound/metallic-chest-open.ogg", volume = 0.43 }
+sounds.metallic_chest_close = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.3 }
 sounds.metal_small_open = { filename = "__base__/sound/open-close/metal-small-open.ogg", volume = 0.8 }
 sounds.metal_small_close = { filename = "__base__/sound/open-close/metal-small-close.ogg", volume = 0.8 }
 sounds.metal_large_open = { filename = "__base__/sound/open-close/metal-large-open.ogg", volume = 0.8 }
 sounds.metal_large_close = { filename = "__base__/sound/open-close/metal-large-close.ogg", volume = 0.7 }
 sounds.rail_signal_open = { filename = "__base__/sound/open-close/rail-signal-open.ogg", volume = 0.6 }
 sounds.rail_signal_close = { filename = "__base__/sound/open-close/rail-signal-close.ogg", volume = 0.6 }
-sounds.steam_open = { filename = "__base__/sound/open-close/steam-open.ogg", volume = 0.57 }
-sounds.steam_close = { filename = "__base__/sound/open-close/steam-close.ogg", volume = 0.5 }
+sounds.steam_open = { filename = "__base__/sound/open-close/steam-open.ogg", volume = 0.4 }
+sounds.steam_close = { filename = "__base__/sound/open-close/steam-close.ogg", volume = 0.4 }
 sounds.transport_belt_open = { filename = "__base__/sound/open-close/transport-belt-open.ogg", volume = 0.7 }
 sounds.transport_belt_close = { filename = "__base__/sound/open-close/transport-belt-close.ogg", volume = 0.6 }
+sounds.turret_open = { filename = "__base__/sound/open-close/turret-open.ogg", volume = 0.8 }
+sounds.turret_close = { filename = "__base__/sound/open-close/turret-close.ogg", volume = 0.8 }
+sounds.reactor_open = { filename = "__base__/sound/open-close/reactor-open.ogg", volume = 1.0 }
+sounds.reactor_close = { filename = "__base__/sound/open-close/reactor-close.ogg", volume = 1.0 }
 
 sounds.roboport_door_open =
 {
@@ -321,6 +337,7 @@ sounds.roboport_door_open =
     type = "play-sound",
     sound =
     {
+      category = "environment",
       filename = "__base__/sound/roboport-door.ogg",
       volume = 0.3,
       min_speed = 1,
@@ -336,6 +353,7 @@ sounds.roboport_door_close =
     type = "play-sound",
     sound =
     {
+      category = "environment",
       filename = "__base__/sound/roboport-door-close.ogg",
       volume = 0.2,
       min_speed = 1,

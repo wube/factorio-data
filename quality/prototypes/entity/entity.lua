@@ -1,3 +1,5 @@
+local sounds = require("__base__.prototypes.entity.sounds")
+
 data:extend{
   {
     type = "furnace",
@@ -31,6 +33,8 @@ data:extend{
       fade_in_ticks = 4,
       fade_out_ticks = 20
     },
+    open_sound = sounds.metal_large_open,
+    close_sound = sounds.metal_large_close,
     resistances =
     {
       {

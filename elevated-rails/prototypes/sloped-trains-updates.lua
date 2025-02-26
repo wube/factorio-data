@@ -3,7 +3,8 @@ local meld = require("__core__.lualib.meld")
 local drive_over_elevated_tie =
 {
   type = "play-sound",
-  sound = sound_variations("__elevated-rails__/sound/elevated-train-tie", 6, 0.8, {volume_multiplier("main-menu", 1.2), volume_multiplier("driving", 0.65)})
+  sound = {category = "environment", variations = sound_variations("__elevated-rails__/sound/elevated-train-tie", 6, 0.8,
+  {volume_multiplier("main-menu", 1.2), volume_multiplier("driving", 0.65)})}
 }
 
 local updates = {}

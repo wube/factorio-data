@@ -955,6 +955,8 @@ data:extend
     factoriopedia_simulation = simulations.factoriopedia_display_panel,
     collision_box = {{-0.29, -0.29}, {0.29, 0.29}},
     selection_box = {{-0.5, -0.65}, {0.5, 0.5}},
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
     sprites = make_4way_animation_from_spritesheet({
       layers =
       {

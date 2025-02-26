@@ -3,7 +3,7 @@ data:extend(
   {
     type = "surface",
     name = "space-platform",
-    icon = "__space-age__/graphics/icons/space-platform-hub.png",
+    icon = "__space-age__/graphics/icons/space-platform-surface.png",
     subgroup = "planets",
     order = "a[space-platform]",
     surface_properties =

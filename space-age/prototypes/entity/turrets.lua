@@ -331,8 +331,8 @@ data:extend(
     can_retarget_while_starting_attack = true,
     circuit_connector = circuit_connector_definitions["railgun-turret"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    open_sound = {filename = "__base__/sound/open-close/turret-open.ogg", volume = 0.6},
-    close_sound = {filename = "__base__/sound/open-close/turret-close.ogg", volume = 0.6},
+    open_sound = sounds.turret_open,
+    close_sound = sounds.turret_close,
     graphics_set =
     {
       base_visualisation =
@@ -462,8 +462,8 @@ data:extend(
     alert_when_attacking = true,
     circuit_connector = circuit_connector_definitions["rocket-turret"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    open_sound = {filename = "__base__/sound/open-close/turret-open.ogg", volume = 0.6},
-    close_sound = {filename = "__base__/sound/open-close/turret-close.ogg", volume = 0.6},
+    open_sound = sounds.turret_open,
+    close_sound = sounds.turret_close,
     folded_animation = rocket_turret_rising({}),
     preparing_animation = rocket_turret_rising({}),
     prepared_animation = rocket_turret_attack({}),
@@ -567,6 +567,8 @@ data:extend(
     ending_attack_speed = 1 / (30 + 1), -- Must be clocked to the beam duration so the face light turns off at the right time
     circuit_connector = circuit_connector_definitions["tesla-turret"], -- TODO: generate points for tesla-turret
     circuit_wire_max_distance = default_circuit_wire_max_distance,
+    open_sound = sounds.turret_open,
+    close_sound = sounds.turret_close,
     working_sound =
     {
       sound = {filename = "__space-age__/sound/entity/tesla-turret/tesla-turret-base.ogg", volume = 0.3},

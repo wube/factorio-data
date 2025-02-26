@@ -3562,8 +3562,8 @@ data:extend
     infinite = true,
     equipment_grid = "small-equipment-grid",
     inventory_size_bonus = 10,
-    open_sound = "__base__/sound/armor-open.ogg",
-    close_sound = "__base__/sound/armor-close.ogg"
+    open_sound = sounds.armor_open,
+    close_sound = sounds.armor_close
   },
   {
     type = "armor",
@@ -3602,8 +3602,8 @@ data:extend
     infinite = true,
     equipment_grid = "medium-equipment-grid",
     inventory_size_bonus = 20,
-    open_sound = "__base__/sound/armor-open.ogg",
-    close_sound = "__base__/sound/armor-close.ogg"
+    open_sound = sounds.armor_open,
+    close_sound = sounds.armor_close
   },
   {
     type = "armor",
@@ -3642,8 +3642,8 @@ data:extend
     infinite = true,
     equipment_grid = "large-equipment-grid",
     inventory_size_bonus = 30,
-    open_sound = "__base__/sound/armor-open.ogg",
-    close_sound = "__base__/sound/armor-close.ogg",
+    open_sound = sounds.armor_open,
+    close_sound = sounds.armor_close,
     weight = 1*tons
   },
   {

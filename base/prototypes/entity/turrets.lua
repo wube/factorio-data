@@ -479,8 +479,8 @@ data:extend(
     alert_when_attacking = true,
     circuit_connector = circuit_connector_definitions["gun-turret"],
     circuit_wire_max_distance = default_circuit_wire_max_distance,
-    open_sound = {filename = "__base__/sound/open-close/turret-open.ogg", volume = 0.6},
-    close_sound = {filename = "__base__/sound/open-close/turret-close.ogg", volume = 0.6},
+    open_sound = sounds.turret_open,
+    close_sound = sounds.turret_close,
     icon_draw_specification = {scale = 0.7},
     folded_animation =
     {
@@ -600,8 +600,8 @@ data:extend(
     circuit_wire_max_distance = default_circuit_wire_max_distance,
     rotation_speed = 0.01,
     preparing_speed = 0.05,
-    open_sound = {filename = "__base__/sound/open-close/turret-open.ogg", volume = 0.6},
-    close_sound = {filename = "__base__/sound/open-close/turret-close.ogg", volume = 0.6},
+    open_sound = sounds.turret_open,
+    close_sound = sounds.turret_close,
     preparing_sound = sounds.laser_turret_activate,
     folding_sound = sounds.laser_turret_deactivate,
     corpse = "laser-turret-remnants",

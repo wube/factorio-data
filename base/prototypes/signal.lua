@@ -1069,4 +1069,11 @@ data:extend(
     subgroup = "pictographs",
     order = "sjc[weapon]"
   },
+  {
+    type = "virtual-signal",
+    name = "signal-ghost",
+    icon = "__base__/graphics/icons/signal/signal-ghost.png",
+    subgroup = "pictographs",
+    order = "sjd[ghost]"
+  },
 })

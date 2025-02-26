@@ -14,8 +14,8 @@ data:extend(
     max_health = 350,
     minable = { mining_time = 1 },
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.5 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.5 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     resistances =
     {
       {
@@ -76,8 +76,8 @@ data:extend(
     hidden = true,
     max_health = 350,
     corpse = "small-remnants",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     resistances =
     {
       {
@@ -154,6 +154,8 @@ data:extend(
     alert_when_damaged = false,
     allow_copy_paste = false,
     default_status = "broken",
+    open_sound = sounds.metal_large_open,
+    close_sound = sounds.metal_large_close,
     resistances =
     {
       {type = "fire", percent = 100}
@@ -214,6 +216,8 @@ data:extend(
     localised_name = {"entity-name.crash-site-spaceship-wreck-big"},
     icon = "__base__/graphics/icons/crash-site-spaceship-wreck-big-1.png",
     default_status = "broken",
+    open_sound = sounds.metal_large_open,
+    close_sound = sounds.metal_large_close,
     flags = wreck_flags,
     hidden = true,
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
@@ -273,6 +277,8 @@ data:extend(
     localised_name = {"entity-name.crash-site-spaceship-wreck-big"},
     icon = "__base__/graphics/icons/crash-site-spaceship-wreck-big-2.png",
     default_status = "broken",
+    open_sound = sounds.metal_large_open,
+    close_sound = sounds.metal_large_close,
     flags = wreck_flags,
     hidden = true,
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
@@ -332,6 +338,8 @@ data:extend(
     localised_name = {"entity-name.crash-site-spaceship-wreck-medium"},
     icon = "__base__/graphics/icons/crash-site-spaceship-wreck-medium-1.png",
     default_status = "broken",
+    open_sound = sounds.metal_small_open,
+    close_sound = sounds.metal_small_close,
     flags = wreck_flags,
     hidden = true,
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
@@ -390,6 +398,8 @@ data:extend(
     localised_name = {"entity-name.crash-site-spaceship-wreck-medium"},
     icon = "__base__/graphics/icons/crash-site-spaceship-wreck-medium-2.png",
     default_status = "broken",
+    open_sound = sounds.metal_small_open,
+    close_sound = sounds.metal_small_close,
     flags = wreck_flags,
     hidden = true,
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},
@@ -448,6 +458,8 @@ data:extend(
     localised_name = {"entity-name.crash-site-spaceship-wreck-medium"},
     icon = "__base__/graphics/icons/crash-site-spaceship-wreck-medium-3.png",
     default_status = "broken",
+    open_sound = sounds.metal_small_open,
+    close_sound = sounds.metal_small_close,
     flags = wreck_flags,
     hidden = true,
     map_color = {r = 0, g = 0.365, b = 0.58, a = 1},

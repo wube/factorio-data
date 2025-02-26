@@ -1566,8 +1566,8 @@ data:extend(
     max_health = 200,
     corpse = "iron-chest-remnants",
     dying_explosion = "iron-chest-explosion",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     resistances =
     {
       {
@@ -3294,12 +3294,12 @@ data:extend(
     name = "entity-ghost",
     icon =  "__core__/graphics/icons/mip/ghost-entity.png",
     factoriopedia_simulation = simulations.factoriopedia_entity_ghost,
-    build_sound = {filename = "__core__/sound/build-ghost-small.ogg", volume = 0.6, aggregation = {max_count = 3, remove = true}},
-    medium_build_sound = {filename = "__core__/sound/build-ghost-medium.ogg", volume = 0.7, aggregation = {max_count = 3, remove = true}},
-    large_build_sound = {filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
-    huge_build_sound = {filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
+    build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-small.ogg", volume = 0.6, aggregation = {max_count = 3, remove = true}},
+    medium_build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-medium.ogg", volume = 0.7, aggregation = {max_count = 3, remove = true}},
+    large_build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
+    huge_build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-large.ogg",  volume = 0.7, aggregation = {max_count = 3, remove = true}},
     minable = {mining_time = 0, results={}},
-    mined_sound = {filename = "__core__/sound/deconstruct-ghost.ogg", volume = 0.4}
+    mined_sound = {category = "gui-effect", filename = "__core__/sound/deconstruct-ghost.ogg", volume = 0.4}
   },
 
   {
@@ -3309,8 +3309,8 @@ data:extend(
     factoriopedia_simulation = simulations.factoriopedia_tile_ghost,
     minable = {mining_time = 0, results={}},
     collision_box = {{-0.5, -0.5}, {0.5, 0.5}},
-    build_sound = {filename = "__core__/sound/build-ghost-tile.ogg", volume = 0.9},
-    mined_sound = {filename = "__core__/sound/deconstruct-ghost-tile.ogg", volume = 0.7},
+    build_sound = {category = "gui-effect", filename = "__core__/sound/build-ghost-tile.ogg", volume = 0.9},
+    mined_sound = {category = "gui-effect", filename = "__core__/sound/deconstruct-ghost-tile.ogg", volume = 0.7},
     selection_priority = 30
   },
 
@@ -3903,8 +3903,8 @@ data:extend(
       fade_out_ticks = 20
     },
     impact_category = "glass",
-    open_sound = { filename = "__base__/sound/open-close/lab-open.ogg", volume = 0.6 },
-    close_sound = { filename = "__base__/sound/open-close/lab-close.ogg", volume = 0.6 },
+    open_sound = sounds.lab_open,
+    close_sound = sounds.lab_close,
     energy_source =
     {
       type = "electric",
@@ -5156,8 +5156,8 @@ data:extend(
     max_health = 350,
     corpse = "steel-chest-remnants",
     dying_explosion = "steel-chest-explosion",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     resistances =
     {
       {
@@ -5692,8 +5692,8 @@ data:extend(
     inventory_size = 48,
     icon_draw_specification = {scale = 0.7},
     logistic_mode = "passive-provider",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
     opened_duration = logistic_chest_opened_duration,
@@ -5752,8 +5752,8 @@ data:extend(
     inventory_size = 48,
     icon_draw_specification = {scale = 0.7},
     logistic_mode = "active-provider",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
     opened_duration = logistic_chest_opened_duration,
@@ -5813,8 +5813,8 @@ data:extend(
     inventory_size = 48,
     icon_draw_specification = {scale = 0.7},
     logistic_mode = "storage",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
     opened_duration = logistic_chest_opened_duration,
@@ -5874,8 +5874,8 @@ data:extend(
     icon_draw_specification = {scale = 0.7},
     trash_inventory_size = 20,
     logistic_mode = "buffer",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
     opened_duration = logistic_chest_opened_duration,
@@ -5935,8 +5935,8 @@ data:extend(
     icon_draw_specification = {scale = 0.7},
     trash_inventory_size = 20,
     logistic_mode = "requester",
-    open_sound = { filename = "__base__/sound/metallic-chest-open.ogg", volume=0.43 },
-    close_sound = { filename = "__base__/sound/metallic-chest-close.ogg", volume = 0.43 },
+    open_sound = sounds.metallic_chest_open,
+    close_sound = sounds.metallic_chest_close,
     animation_sound = sounds.logistics_chest_open,
     impact_category = "metal",
     opened_duration = logistic_chest_opened_duration,
@@ -6477,6 +6477,8 @@ data:extend(
     inventory_size = 80,
     radar_range = 4,
     radar_visualisation_color = {0.059, 0.092, 0.235, 0.275},
+    open_sound = sounds.mech_large_open,
+    close_sound = sounds.mech_large_close,
     graphics_set =
     {
         water_reflection =
