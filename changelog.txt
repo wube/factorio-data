@@ -1,6 +1,12 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.37
+Version: 2.0.38
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.37
+Date: 26. 02. 2025
+  Bugfixes:
+    - Fixed that inserters could get stuck when interacting with trains if the train arrived at a station without physically moving. (https://forums.factorio.com/127134)
+    - Fixed that LuaSchedule::add_wait_condition, remove_wait_condition, and change_wait_condition expected a table of arguments instead of direct arguments.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.36
 Date: 26. 02. 2025
