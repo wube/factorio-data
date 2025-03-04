@@ -1672,3 +1672,13 @@ data:extend(
   }
 }
 )
+
+local infinity_cargo_wagon = table.deepcopy(data.raw["cargo-wagon"]["cargo-wagon"])
+infinity_cargo_wagon.type = "infinity-cargo-wagon"
+infinity_cargo_wagon.name = "infinity-cargo-wagon"
+infinity_cargo_wagon.icon = nil
+infinity_cargo_wagon.icons = {{icon = "__base__/graphics/icons/cargo-wagon.png", tint = {r = 0.5, g = 0.5, b = 1}}}
+infinity_cargo_wagon.gui_mode = "admins"
+infinity_cargo_wagon.minable = {mining_time = 0.1, result = "infinity-cargo-wagon"}
+util.recursive_tint(infinity_cargo_wagon, {r = 0.5, g = 0.5, b = 1})
+data:extend({infinity_cargo_wagon})

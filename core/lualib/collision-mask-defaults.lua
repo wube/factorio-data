@@ -87,6 +87,7 @@ return
   ["container"] = containers(),
   ["infinity-container"] = containers(),
   ["linked-container"] = containers(),
+  ["proxy-container"] = containers(),
   ["logistic-container"] = containers(),
   ["temporary-container"] = containers(),
 
@@ -123,16 +124,19 @@ return
   ["rail-signal/elevated"] = elevated_signal(),
 
   ["artillery-wagon"] = ground_rolling_stock(),
+  ["infinity-cargo-wagon"] = ground_rolling_stock(),
   ["cargo-wagon"] = ground_rolling_stock(),
   ["fluid-wagon"] = ground_rolling_stock(),
   ["locomotive"] = ground_rolling_stock(),
 
   ["artillery-wagon/transition"] = transition_rolling_stock(),
+  ["infinity-cargo-wagon/transition"] = transition_rolling_stock(),
   ["cargo-wagon/transition"] = transition_rolling_stock(),
   ["fluid-wagon/transition"] = transition_rolling_stock(),
   ["locomotive/transition"] = transition_rolling_stock(),
 
   ["artillery-wagon/elevated"] = elevated_rolling_stock(),
+  ["infinity-cargo-wagon/elevated"] = elevated_rolling_stock(),
   ["cargo-wagon/elevated"] = elevated_rolling_stock(),
   ["fluid-wagon/elevated"] = elevated_rolling_stock(),
   ["locomotive/elevated"] = elevated_rolling_stock(),

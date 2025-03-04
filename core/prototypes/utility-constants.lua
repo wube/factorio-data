@@ -386,13 +386,17 @@ data:extend(
     -- with decoratives being most demanding on that, using them as heuristic
     entity_renderer_search_box_limits =
     {
-      left = 6, -- to compensate for shadows
-      top = 3,
-      right = 3,
-      bottom = 4 -- to compensate for tall entities like electric poles
+      -- In 1.1 it was left = 6 to compensate for shadows, bottom = 4 to compensate for tall entities like trees and electric poles and top and right 3.
+      -- In 2.0 they all are set to 6 because of robot optimization which makes them move only once per 20 ticks,
+      -- so they "teleport" into the view if they are fast enough (https://forums.factorio.com/124268). This doesn't fix the issue fully,
+      -- it will start to appear if bots have high enough speed.
+      left = 6,
+      top = 6,
+      right = 6,
+      bottom = 6
     },
 
-    light_renderer_search_distance_limit = 22,
+    light_renderer_search_distance_limit = 20,
 
     tree_leaf_distortion_strength_far = { 0.46, 0.47 },
     tree_leaf_distortion_distortion_far = { 7.6, 9.1 },

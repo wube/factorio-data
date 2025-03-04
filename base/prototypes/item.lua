@@ -2418,6 +2418,19 @@ data:extend
   },
   {
     type = "item",
+    name = "infinity-cargo-wagon",
+    icons = {{icon = "__base__/graphics/icons/cargo-wagon.png", tint = {r = 0.5, g = 0.5, b = 1}}},
+    hidden = true,
+    subgroup = "other",
+    order = "c[item]-o[infinity-cargo-wagon]",
+    inventory_move_sound = item_sounds.metal_large_inventory_move,
+    pick_sound = item_sounds.locomotive_inventory_pickup,
+    drop_sound = item_sounds.metal_large_inventory_move,
+    stack_size = 5,
+    place_result = "infinity-cargo-wagon"
+  },
+  {
+    type = "item",
     name = "infinity-pipe",
     icons =
     {{
@@ -2458,6 +2471,19 @@ data:extend
     pick_sound = item_sounds.metal_chest_inventory_pickup,
     drop_sound = item_sounds.metal_chest_inventory_move,
     place_result = "linked-chest",
+    stack_size = 10
+  },
+  {
+    type = "item",
+    name = "proxy-container",
+    icons = {{icon = "__base__/graphics/icons/linked-chest-icon.png", tint = {0.8, 0.1, 0.3}}},
+    hidden = true,
+    subgroup = "other",
+    order = "a[items]-a[proxy-container]",
+    inventory_move_sound = item_sounds.metal_chest_inventory_move,
+    pick_sound = item_sounds.metal_chest_inventory_pickup,
+    drop_sound = item_sounds.metal_chest_inventory_move,
+    place_result = "proxy-container",
     stack_size = 10
   },
   {

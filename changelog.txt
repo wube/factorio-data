@@ -1,6 +1,50 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.38
+Version: 2.0.39
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.38
+Date: 04. 03. 2025
+  Changes:
+    - Space platform "request missing materials for construction" will no longer request items for entity ghosts which can't yet be built. (https://forums.factorio.com/122185)
+      This should help to prevent over filling of hubs while larger platforms are being built.
+    - Increased minimum sprite atlas size to 4096 even when sprite resolution is set to medium. (https://forums.factorio.com/127086)
+  Bugfixes:
+    - Fixed a lua doc error with LuaSchedule::add_wait_condition(). (https://forums.factorio.com/127153)
+    - Fixed a crash when changing the station in some wait conditions. (https://forums.factorio.com/127123)
+    - Fixed that the mining dril status would be incorrect when out of resources and pointing at an entity to be deconstructed. (https://forums.factorio.com/125167)
+    - Fixed that inserters would not show target full for space platform hubs. (https://forums.factorio.com/121920)
+    - Fixed a crash when opening the changelog while trying to connect to a multiplayer game. (https://forums.factorio.com/118795)
+    - Fixed that LuaSchedule::add_record() did not support rail_direction. (https://forums.factorio.com/127171)
+    - Fixed that vehicle weapon tooltips did not show bonuses. (https://forums.factorio.com/122386)
+    - Fixed achievement steamrolled can be earned while driving remotely. (https://forums.factorio.com/120247)
+    - Fixed lab was not creating trash inventory of proper size when LabPrototype::trash_inventory_size was given. (https://forums.factorio.com/127218)
+    - Fixed that the side menu buttons did not update when a player would change forces. (https://forums.factorio.com/122088)
+    - Fixed that the filter selection GUI would get closed when a ghost buffer chest was built. (https://forums.factorio.com/122514)
+    - Improved issue with fast moving bots sometime appearing on screen instead of flying in from off screen. (https://forums.factorio.com/124268)
+    - Fixed issue which sometimes resulted in incorrect lightning protection visualisation for marginal setups (https://forums.factorio.com/126780)
+    - Fixed cutting tiles marked for deconstruction could produce superfluous deconstructible tile proxies (https://forums.factorio.com/124155)
+    - Fixed Steam achievements synchronisation issues. (https://forums.factorio.com/118242)
+    - Fixed that having a camera widget on screen would cause issues with the rail plan finder. (https://forums.factorio.com/122679)
+    - Fixed that resources with no minable products would not show a name when hovering in the map view.
+    - Fixed some almost transparent pixels in the car and production group icons. (https://forums.factorio.com/127227)
+    - Fixed that researching a technology would cause the input fields in constant combinators and requester chests to lose focus. (https://forums.factorio.com/123241)
+  Modding:
+    - Added the "infinity-cargo-wagon" entity type.
+    - Added the "proxy-container" entity type.
+    - Added SpiderVehicleGraphicsSet::default_color.
+    - Unified entity_renderer_search_box_limits to 6 from all sides due to reduced update rate optimization of robots.
+    - Reduced light_renderer_search_distance_limit to 20 to compensate for entity_renderer_search_box_limits change.
+  Scripting:
+    - Added LuaSchedule::get_records(), set_records(), clear_records(), get_interrupts(), set_interrupts(), clear_interrupts().
+    - Changed LuaSchedule::add_record() to purely add without any extra behavior.
+    - Changed LuaSchedule::add_record() to accept index saying where the record is added.
+    - Added LuaProxyContainerControlBehavior.
+    - Added defines.inventory.proxy_main.
+    - Added LuaEntity::proxy_target_entity and proxy_target_inventory.
+    - Added LuaEntity::get_cargo_bays().
+    - Added LuaPlayer::add_pin().
+    - Added LuaPrototypeBase::factoriopedia_description read.
+    - Added factoriopedia_alternative reads to all LuaPrototypes that support it.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.37
 Date: 26. 02. 2025

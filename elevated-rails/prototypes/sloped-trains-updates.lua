@@ -289,6 +289,8 @@ updates.artillery_wagon =
 updates.apply_all_base = function()
   meld(data.raw["locomotive"]["locomotive"], updates.locomotive)
   meld(data.raw["cargo-wagon"]["cargo-wagon"], updates.cargo_wagon)
+  meld(data.raw["infinity-cargo-wagon"]["infinity-cargo-wagon"], updates.cargo_wagon)
+  util.recursive_tint(data.raw["infinity-cargo-wagon"]["infinity-cargo-wagon"], {r = 0.5, g = 0.5, b = 1})
   meld(data.raw["fluid-wagon"]["fluid-wagon"], updates.fluid_wagon)
   meld(data.raw["artillery-wagon"]["artillery-wagon"], updates.artillery_wagon)
 end

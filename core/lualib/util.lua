@@ -850,6 +850,27 @@ util.get_recipe_main_product = function(recipe, normalized_products)
   return normalized_products[main_product_index]
 end
 
+local function is_sprite_def(array)
+  return array.icon or array.width and array.height and (array.filename or array.stripes or array.filenames)
+end
+--- Recursively tint all sprite definitions in the given table.
+--- If `tint` is `false`, all tinting will be removed.
+function util.recursive_tint(array, tint)
+  for _, v in pairs(array) do
+    if type(v) == "table" then
+      if is_sprite_def(v) then
+        if tint == false then
+          v.tint = nil
+        else
+          v.tint = tint
+        end
+      end
+      v = util.recursive_tint(v, tint)
+    end
+  end
+  return array
+end
+
 gram = 1
 grams = gram
 kg = 1000*grams

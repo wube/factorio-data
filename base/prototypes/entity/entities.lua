@@ -9945,6 +9945,55 @@ linked_chest.picture =
 }
 data:extend({linked_chest})
 
+data:extend{
+  {
+    type = "proxy-container",
+    name = "proxy-container",
+    hidden = true,
+    icons = {{icon = "__base__/graphics/icons/linked-chest-icon.png", tint = {0.8, 0.1, 0.3}}},
+    flags = {"placeable-neutral", "player-creation"},
+    minable = {mining_time = 0.1, result = "proxy-container"},
+    max_health = 100,
+    corpse = "wooden-chest-remnants",
+    dying_explosion = "wooden-chest-explosion",
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    fast_replaceable_group = "container",
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+    damaged_trigger_effect = hit_effects.entity(),
+    open_sound = { filename = "__base__/sound/wooden-chest-open.ogg", volume = 0.6 },
+    close_sound = { filename = "__base__/sound/wooden-chest-close.ogg", volume = 0.6 },
+    impact_category = "wood",
+    icon_draw_specification = {scale = 0.7},
+    circuit_connector = circuit_connector_definitions["chest"],
+    circuit_wire_max_distance = default_circuit_wire_max_distance,
+    picture =
+    {
+      layers =
+      {
+        {
+          filename = "__base__/graphics/entity/linked-chest/linked-chest.png",
+          priority = "extra-high",
+          width = 66,
+          height = 74,
+          shift = util.by_pixel(0, -2),
+          scale = 0.5,
+          tint = {0.8, 0.1, 0.3}
+        },
+        {
+          filename = "__base__/graphics/entity/linked-chest/linked-chest-shadow.png",
+          priority = "extra-high",
+          width = 112,
+          height = 46,
+          shift = util.by_pixel(12, 4.5),
+          draw_as_shadow = true,
+          scale = 0.5,
+          tint = {0.8, 0.1, 0.3}
+        }
+      }
+    }
+  }
+}
+
 data:extend({
   {
     type = "cargo-pod",
