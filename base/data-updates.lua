@@ -191,7 +191,8 @@ local function create_empty_barrel_recipe(item, fluid)
     allow_decomposition = false,
     hide_from_player_crafting = true,
     factoriopedia_alternative = "barrel",
-    hide_from_signal_gui = false
+    hide_from_signal_gui = false,
+    unlock_results = false
   }
 
   data:extend({recipe})

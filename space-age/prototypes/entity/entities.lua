@@ -1678,7 +1678,6 @@ data:extend({
     },
     energy_usage = "300kW",
     module_slots = 4,
-    allowed_effects = {"consumption", "speed", "productivity", "pollution", "quality"},
     icons_positioning =
     {
       {inventory_index = defines.inventory.lab_modules, shift = {0, 1.6}},

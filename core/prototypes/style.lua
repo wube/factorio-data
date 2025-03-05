@@ -2668,19 +2668,25 @@ data:extend(
       }
     },
 
-    transparent_slot =
+    transparent_button =
     {
       type = "button_style",
       parent = "button",
-      size = 32,
       padding = 0,
       default_graphical_set = {},
       clicked_graphical_set = {},
       hovered_graphical_set = {},
       clicked_vertical_offset = 0,
-      draw_shadow_under_picture = true,
       pie_progress_color = {0.98, 0.66, 0.22, 0.5},
       left_click_sound = {}
+    },
+
+    transparent_slot =
+    {
+      type = "button_style",
+      parent = "transparent_button",
+      size = 32,
+      draw_shadow_under_picture = true
     },
 
     universe_frame =

@@ -1,6 +1,28 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.39
+Version: 2.0.40
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.39
+Date: 05. 03. 2025
+  Changes:
+    - Added extra info about the evaluation order and dependencies into the blueprint parametrisation UI.
+  Bugfixes:
+    - Fixed not being able to interact with GUI elements behind transparent parts of other windows. (https://forums.factorio.com/119608)
+    - Fixed display panels not drawing text correctly at larger GUI scales. (https://forums.factorio.com/122533)
+    - Fixed a crash related to placing cargo landing pads on space platforms. (https://forums.factorio.com/127260)
+    - Fixed a crash when rendering thrusters without fire plumes defined. (https://forums.factorio.com/127265)
+    - Fixed that fast-transfer of ghost modules did not work for out of reach entities. (https://forums.factorio.com/122150)
+    - Fixed that trains with the same top in their schedule would not move between stops even if the one it is waiting at is disabled. (https://forums.factorio.com/118475)
+    - Fixed decider combinator GUI signals tables getting squashed too much when there are a lot of conditions/outputs. (https://forums.factorio.com/126808)
+    - Fixed intro sound not respecting music-muted and master-muted settings. (https://forums.factorio.com/127154)
+    - Fixed graphical issue happening when lightning attractor's collection range boundary was touching larger range attractor's collection range boundary from the inside. (https://forums.factorio.com/122739)
+    - Fixed incorrect lightning protection visualisation when surface lightning search range was larger than attractor's protection range.
+    - Fixed overbuilding ghost with module requests with physical entity of different quality would not retain the module requests. (https://forums.factorio.com/125374)
+    - Fixed normal building underground belts and pipes in remote view would deconstruct rocks, trees and cliffs. (https://forums.factorio.com/123925)
+    - Fixed normal building underground belts and pipes in remote view would have missing tiles autofilled. (https://forums.factorio.com/123817)
+    - Fixed crash in latency when upgrading ghost of elevated rails to different quality (https://forums.factorio.com/120345, https://forums.factorio.com/124222)
+    - Fixed crash when car would collide with 0 health entity in latency (https://forums.factorio.com/126295)
+    - Fixed splash screen progress bar size not scaling with the UI.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.38
 Date: 04. 03. 2025
