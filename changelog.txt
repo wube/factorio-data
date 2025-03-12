@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.41
+Version: 2.0.42
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.41
+Date: 12. 03. 2025
+  Bugfixes:
+    - Fixed extra spidertron ghost being created when ghost-building spidertron snapped to existing spidertron ghost (https://forums.factorio.com/119776)
+    - Fixed deconstruction planner would not respect deconstruction alternatives when they were inside of entity ghost. (https://forums.factorio.com/127414)
+    - Fixed a desync when cancelling deconstruction of frozen underground belts or frozen splitters.
+    - Fixed a crash when trying to create a blueprint out of space platform hub which has wait condition with empty item field.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.40
 Date: 12. 03. 2025
