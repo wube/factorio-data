@@ -1,6 +1,35 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.40
+Version: 2.0.41
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.40
+Date: 12. 03. 2025
+  Bugfixes:
+    - Fixed splash screen progress bar size not scaling with the UI.
+    - Fixed that the can't-reach wire sprite would get drawn under some entities. (https://forums.factorio.com/124590)
+    - Fixed that the chart drag hotkey did not work. (https://forums.factorio.com/127287)
+    - Fixed that pre-2.0 map exchange strings were able to disable cliffs on all planets. (https://forums.factorio.com/127071)
+    - Fixed a crash when a tile cannot be placed due to a missing foundation with default not given. (https://forums.factorio.com/127087)
+    - Fixed rail signal selection box when selection box is off-center. (https://forums.factorio.com/119778)
+    - Fixed that beacon fast-replace would allow modules the beacon did not accept. (https://forums.factorio.com/125352)
+    - Fixed that water cane had the wrong icon. (https://forums.factorio.com/123473)
+    - Fixed that building vehicles with pre-configured equipment grids did not always work correctly. (https://forums.factorio.com/123758)
+    - Fixed another bug related to smart underground belt building.
+    - [space-age] Fixed some recipes would recycle to wrong items when playing with quality only. (https://forums.factorio.com/127370)
+    - Fixed parametrisation into requests which would lead into duplicate requests wasn't handled. (https://forums.factorio.com/119628)
+    - Fixed that personal lasers would be offset incorrectly while having a tesla gun equipped. (https://forums.factorio.com/122006)
+    - Fixed a crash related to modded enemy behavior. (https://forums.factorio.com/127314)
+    - Fixed ghosts of non-blueprintable entities being ghost-buildable in normal mode (e.g. in remote view). (https://forums.factorio.com/127375)
+    - Fixed missing blueprint parametrisation number context for ticks waiting in station schedule condition. (https://forums.factorio.com/119806)
+    - Fixed GPU-accelerated compressed mipmaps on Apple Silicon Macs. (https://forums.factorio.com/127316)
+    - Fixed that the infinity cargo wagon showed in Factoriopedia. (https://forums.factorio.com/127394)
+    - Fixed a graphics artifact when drawing ghost rocket silos. (https://forums.factorio.com/126888)
+    - Fixed nauvis_uranium_processing menu simulation not loading properly in the demo. (https://forums.factorio.com/124048)
+    - Fixed that some frozen rocket silos could get stuck. (https://forums.factorio.com/126779)
+    - Fixed a crash when upgrading underground belts manually through remote view. (https://forums.factorio.com/127385)
+  Modding:
+    - Added ElectricPolePrototype::rewire_neighbours_when_destroying.
+    - Moved the agricultural tower growth area radius to the prototype as growth_area_radius. (https://forums.factorio.com/127340)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.39
 Date: 05. 03. 2025
@@ -12,7 +41,7 @@ Date: 05. 03. 2025
     - Fixed a crash related to placing cargo landing pads on space platforms. (https://forums.factorio.com/127260)
     - Fixed a crash when rendering thrusters without fire plumes defined. (https://forums.factorio.com/127265)
     - Fixed that fast-transfer of ghost modules did not work for out of reach entities. (https://forums.factorio.com/122150)
-    - Fixed that trains with the same top in their schedule would not move between stops even if the one it is waiting at is disabled. (https://forums.factorio.com/118475)
+    - Fixed that trains with the same stop in their schedule would not move between stops even if the one it is waiting at is disabled. (https://forums.factorio.com/118475)
     - Fixed decider combinator GUI signals tables getting squashed too much when there are a lot of conditions/outputs. (https://forums.factorio.com/126808)
     - Fixed intro sound not respecting music-muted and master-muted settings. (https://forums.factorio.com/127154)
     - Fixed graphical issue happening when lightning attractor's collection range boundary was touching larger range attractor's collection range boundary from the inside. (https://forums.factorio.com/122739)
@@ -22,7 +51,7 @@ Date: 05. 03. 2025
     - Fixed normal building underground belts and pipes in remote view would have missing tiles autofilled. (https://forums.factorio.com/123817)
     - Fixed crash in latency when upgrading ghost of elevated rails to different quality (https://forums.factorio.com/120345, https://forums.factorio.com/124222)
     - Fixed crash when car would collide with 0 health entity in latency (https://forums.factorio.com/126295)
-    - Fixed splash screen progress bar size not scaling with the UI.
+    - Fixed finish game achievements showing as obtainable on saves that has already finished the game (https://forums.factorio.com/122592)
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.38
 Date: 04. 03. 2025
@@ -38,7 +67,7 @@ Date: 04. 03. 2025
     - Fixed a crash when opening the changelog while trying to connect to a multiplayer game. (https://forums.factorio.com/118795)
     - Fixed that LuaSchedule::add_record() did not support rail_direction. (https://forums.factorio.com/127171)
     - Fixed that vehicle weapon tooltips did not show bonuses. (https://forums.factorio.com/122386)
-    - Fixed achievement steamrolled can be earned while driving remotely. (https://forums.factorio.com/120247)
+    - Fixed that steamrolled achievement couldn't be earned while driving remotely. (https://forums.factorio.com/120247)
     - Fixed lab was not creating trash inventory of proper size when LabPrototype::trash_inventory_size was given. (https://forums.factorio.com/127218)
     - Fixed that the side menu buttons did not update when a player would change forces. (https://forums.factorio.com/122088)
     - Fixed that the filter selection GUI would get closed when a ghost buffer chest was built. (https://forums.factorio.com/122514)
@@ -142,7 +171,7 @@ Date: 20. 02. 2025
     - Fixed that reading localised strings through some methods did not work correctly. (https://forums.factorio.com/126626)
     - Fixed that unpowered inserters could pick up fish. (https://forums.factorio.com/126522)
     - Fixed that spoiled items in modded rocket silos couldn't be removed by inserters. (https://forums.factorio.com/126403)
-    - Fixed that virtual items like green-wire or spidertron-remote are no longer showing recycling recipe. (https://forums.factorio.com/124333)
+    - Fixed that virtual items like green-wire or spidertron-remote had recycling recipes. (https://forums.factorio.com/124333)
     - Fixed that deleting a surface with off-chunk segmented units could cause consistency checks to fail. (https://forums.factorio.com/126642)
     - Fixed a desync when deleting chart tags pinned by other players. (https://forums.factorio.com/126681)
     - Fixed consistency issues in deconstruction planner UI when toggling "Trees/rocks only" checkbox and tile mode dropdown.

@@ -302,7 +302,6 @@ data.raw["item-subgroup"]["space-related"].order = "e"
 data.raw.recipe["coal-liquefaction"].order = "a[oil-processing]-d[coal-liquefaction]"
 
 data.raw.recipe.sulfur.category = "chemistry-or-cryogenics"
-data.raw.recipe.sulfur.auto_recycle = false
 
 data.raw.recipe["accumulator"].category = "electronics"
 data.raw.recipe["discharge-defense-equipment"].category = "electronics"
@@ -317,22 +316,6 @@ data.raw.recipe.substation.category = "electronics"
 data.raw.recipe["plastic-bar"].category = "chemistry-or-cryogenics"
 data.raw.recipe.explosives.category = "chemistry-or-cryogenics"
 data.raw.recipe.battery.category = "chemistry-or-cryogenics"
-
-data.raw.recipe.landfill.auto_recycle = false
-
-data.raw.recipe["copper-plate"].auto_recycle = false
-
-data.raw.recipe["iron-plate"].auto_recycle = false
-
-data.raw.recipe["uranium-processing"].auto_recycle = false
-
-data.raw.recipe["kovarex-enrichment-process"].auto_recycle = false
-
-data.raw.recipe["nuclear-fuel-reprocessing"].auto_recycle = false
-
-data.raw.recipe["uranium-fuel-cell"].auto_recycle = false
-
-data.raw.recipe["plastic-bar"].auto_recycle = false
 
 data.raw.recipe["personal-roboport-mk2-equipment"].ingredients =
 {

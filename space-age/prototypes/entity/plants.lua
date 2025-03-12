@@ -1418,7 +1418,7 @@ data:extend(
   {
     type = "tree",
     name = "water-cane", -- wood
-    icon = "__space-age__/graphics/icons/sunnycomb.png",
+    icon = "__space-age__/graphics/icons/water-cane.png",
     flags = plant_flags,
     minable =
     {

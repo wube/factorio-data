@@ -1482,6 +1482,7 @@ data:extend(
                 {
                   type = "beam",
                   beam = "chain-tesla-gun-beam-start",
+                  source_offset = {0, -1.31439 },
                   max_length = 30,
                   duration = 30,
                   add_to_shooter = false,
