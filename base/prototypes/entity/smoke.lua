@@ -189,6 +189,58 @@ data:extend
     end_scale = 0.1
   },
 
+  -- {
+  --   type = "trivial-smoke",
+  --   name = "smoke-explosion-particle-metal-small",
+  --   animation = smoke_fast_animation
+  --   {
+  --     animation_speed = 0.5,
+  --     scale = 0.25,
+  --     tint = {r = 0.52/1.2, g = 0.50/1.2, b = 0.48/1.2, a = 0.8}
+  --   },
+  --   render_layer = "smoke",
+  --   affected_by_wind = false,
+  --   movement_slow_down_factor = 0.96,
+  --   duration = 30,
+  --   fade_away_duration = 10,
+  --   show_when_smoke_off = true,
+  --   start_scale = 0.4,
+  --   end_scale = 0.005
+  -- },
+
+  trivial_smoke
+  {
+    name = "small-dusty-explosion-smoke",
+    color = {0.4206/2, 0.3725/2, 0.3353/2, 0.4},
+    affected_by_wind = false,
+    render_layer = "elevated-object",
+    duration = 130,
+    fade_away_duration = 90,
+    start_scale = 0.3,
+    end_scale = 0.8,
+    spread_duration = 20,
+    movement_slow_down_factor = 1,
+  },
+
+  {
+    type = "trivial-smoke",
+    name = "small-dust-particle-smoke",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {r = 0.58/1.5, g = 0.52/1.5, b = 0.46/1.5, a = 0.6}
+    },
+    render_layer = "smoke",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 90,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.005,
+    end_scale = 0.4
+  },
+
   {
     type = "trivial-smoke",
     name = "artillery-smoke",

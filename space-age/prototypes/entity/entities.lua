@@ -2385,6 +2385,7 @@ data:extend({
       --pipe_covers = pipecoverspictures(),
       volume = 10,
       filter = "fusion-plasma",
+      volume_reservation_fraction = 0.5,
       pipe_connections =
       {
         { flow_direction="input",  direction = defines.direction.south, position = {-1,  2}, connection_category = {"fusion-plasma"} },

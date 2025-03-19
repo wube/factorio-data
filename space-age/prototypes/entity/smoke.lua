@@ -8,6 +8,39 @@ data:extend
 {
   {
     type = "trivial-smoke",
+    name = "space-platform-explosion-particle-smoke",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {r = 0.52/1.2, g = 0.50/1.2, b = 0.48/1.2, a = 0.8}
+    },
+    render_layer = "smoke",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 90,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.005,
+    end_scale = 0.4
+  },
+
+  trivial_smoke
+  {
+    name = "space-platform-foundation-smoke",
+    color = {0.2049, 0.1982, 0.2074, 0.4},
+    affected_by_wind = false,
+    render_layer = "elevated-object",
+    duration = 130,
+    fade_away_duration = 90,
+    start_scale = 0.3,
+    end_scale = 0.8,
+    spread_duration = 20,
+    movement_slow_down_factor = 1,
+  },
+  
+  {
+    type = "trivial-smoke",
     name = "vulcanus-smoke-explosion-particle-small",
     animation = smoke_fast_animation
     {

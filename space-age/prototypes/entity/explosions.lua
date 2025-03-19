@@ -213,20 +213,141 @@ data:extend
       light = {intensity = 5.0, size = 50, color = {0.1, 0.15, 1}}
     }
   },
-
+  -----------------------------------------------------------------------------
+  {
+    type = "explosion",
+    name = "foundation-tile-explosion",
+    hidden = true,
+    animations = explosion_animations.space_platform_foundation_explosion(),
+    sound =
+    {
+      variations = sound_variations("__space-age__/sound/explosions/space-platform-explosion", 7, 0.45, volume_multiplier("main-menu", 0.55)),
+      aggregation = {max_count = 3, remove = true, count_already_playing = true}
+    },
+    scale = 1,
+    scale_deviation = 0.3,
+    explosion_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "space-platform-foundation-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.01,
+            speed_from_center_deviation = 0.04
+          },
+          {
+            type = "create-particle",
+            repeat_count = 15,
+            particle_name = "space-platform-foundation-particle-small",
+            offsets = {{0,0.33}},
+            offset_deviation = { { -0.45, -0.45 }, { 0.45, 0.45 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.04,
+            initial_vertical_speed_deviation = 0.035,
+            speed_from_center = 0.045,
+            speed_from_center_deviation = 0.1
+          },
+          {
+            type = "create-particle",
+            repeat_count = 10,
+            particle_name = "space-platform-foundation-particle-medium",
+            offsets = {{0,0.33}},
+            offset_deviation = { { -0.45, -0.45 }, { 0.45, 0.45 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.08,
+            initial_vertical_speed_deviation = 0.055,
+            speed_from_center = 0.035,
+            speed_from_center_deviation = 0.1
+          },
+          {
+            type = "create-particle",
+            repeat_count = 6,
+            particle_name = "space-platform-foundation-particle-big",
+            offsets = {{0,0.33}},
+            offset_deviation = { { -0.45, -0.45 }, { 0.45, 0.45 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.49,
+            initial_vertical_speed = 0.035,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.035,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 15,
+            particle_name = "assembling-machine-mechanical-component-particle-medium",
+            offsets = {{0,0.33}},
+            offset_deviation = { { -0.35, -0.35 }, { 0.35, 0.35 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.07,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.025,
+            speed_from_center_deviation = 0.05
+          },
+          {
+            type = "create-particle",
+            repeat_count = 15,
+            particle_name = "cable-and-electronics-particle-small-medium",
+            offsets = {{0,0.33}},
+            offset_deviation = { { -0.35, -0.35 }, { 0.35, 0.35 } },
+            initial_height = 0.0,
+            initial_height_deviation = 0.5,
+            initial_vertical_speed = 0.06,
+            initial_vertical_speed_deviation = 0.05,
+            speed_from_center = 0.015,
+            speed_from_center_deviation = 0.05
+          },
+        }
+      }
+    }
+  },
   {
     type = "explosion",
     name = "space-platform-foundation-explosion",
     icon = "__space-age__/graphics/icons/space-platform-foundation.png",
     flags = {"not-on-map"},
     hidden = true,
-    animations = explosion_animations.small_explosion(),
-    sound =
+    subgroup = "space-platform-explosions",
+    order = "c-h-a",
+    animations = util.empty_sprite(),
+    delay = 0,
+    delay_deviation = 16,--should be the interval in ticks between tile destruction from an asteroid whan at a "normal" speed
+    explosion_effect =
     {
-      variations = sound_variations("__space-age__/sound/explosions/space-platform-explosion", 7, 0.45, volume_multiplier("main-menu", 0.55)),
-      aggregation = {max_count = 3, remove = true, count_already_playing = true}
-    },
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "foundation-tile-explosion",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.5, -0.5 }, { 0.5, 0.9 }},
+          },
+          -- {
+          --   type = "create-explosion",
+          --   entity_name = "foundation-tile-explosion",
+          --   offsets = {{0,0.3}},
+          --   offset_deviation = {{ -0.6, -0.6 }, { 0.6, 0.15 }},
+          -- },
+        }
+      }
+    }
   },
+  -----------------------------------------------------------------------------
   {
     type = "explosion",
     name = "stack-inserter-explosion",
@@ -292,17 +413,12 @@ data:extend
 
   {
     type = "explosion",
-    name = "turbo-transport-belt-explosion",
+    name = "turbo-transport-belt-explosion-base",
     icon = "__space-age__/graphics/icons/turbo-transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
-    subgroup = "belt-explosions",
-    order = "b-c-a",
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -312,6 +428,15 @@ data:extend
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 1,
@@ -364,20 +489,42 @@ data:extend
       }
     }
   },
-
   {
     type = "explosion",
-    name = "turbo-underground-belt-explosion",
-    icon = "__space-age__/graphics/icons/turbo-underground-belt.png",
+    name = "turbo-transport-belt-explosion",
+    icon = "__space-age__/graphics/icons/turbo-transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
     subgroup = "belt-explosions",
-    order = "b-f-a",
+    order = "b-c-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "turbo-transport-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          },
+        }
+      }
+    }
+  },
+
+  {
+    type = "explosion",
+    name = "turbo-underground-belt-explosion-base",
+    icon = "__space-age__/graphics/icons/turbo-underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -387,6 +534,15 @@ data:extend
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 10,
@@ -423,6 +579,33 @@ data:extend
             speed_from_center = 0.02,
             speed_from_center_deviation = 0.05
           }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "turbo-underground-belt-explosion",
+    icon = "__space-age__/graphics/icons/turbo-underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "belt-explosions",
+    order = "b-f-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "turbo-underground-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          },
         }
       }
     }

@@ -1720,8 +1720,7 @@ data:extend
         {"logistic-science-pack", 1}
       },
       time = 30
-    },
-    upgrade = true
+    }
   },
   {
     type = "technology",

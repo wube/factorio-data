@@ -58,6 +58,18 @@ local small_dust_smoke_trigger_effect = function()
   }
 end
 
+local small_grey_dust_smoke_trigger_effect = function()
+  return
+  {
+    type = "create-trivial-smoke",
+    smoke_name = "small-dust-particle-smoke",
+    starting_frame_deviation = 0.5,
+    offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
+    speed_from_center = 0.01,
+    speed_from_center_deviation = 0.02
+  }
+end
+
 local default_ended_in_water_trigger_effect = function()
   return
   {
@@ -802,7 +814,7 @@ local particles =
     name = "transport-belt-wooden-splinter-particle-medium",
     pictures = particle_animations.get_wooden_splinter_particle_medium_pictures ({tint = {0.416, 0.378, 0.341, 1}}),
     shadows = particle_animations.get_wooden_splinter_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel(1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -820,7 +832,7 @@ local particles =
     name = "transport-belt-mechanical-component-particle-medium",
     pictures = particle_animations.get_mechanical_component_particle_medium_pictures ({tint = {0.715, 0.715, 0.715, 1}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -838,7 +850,7 @@ local particles =
     name = "fast-transport-belt-mechanical-component-particle-medium",
     pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {0.859, 0.766, 0.680, 1}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -856,7 +868,7 @@ local particles =
     name = "express-transport-belt-mechanical-component-particle-medium",
     pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {0.859, 0.766, 0.680, 1}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -865,7 +877,7 @@ local particles =
     name = "transport-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.898, 0.659, 0.031, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -874,7 +886,7 @@ local particles =
     name = "fast-transport-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.886, 0.090, 0.024, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -883,7 +895,7 @@ local particles =
     name = "express-transport-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.024, 0.596, 0.816, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -3873,7 +3885,7 @@ make_particle
     name = "underground-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {0.844, 0.844, 0.844, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -3882,7 +3894,7 @@ make_particle
     name = "underground-belt-metal-particle-medium-yellow",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.855, 0.710, 0.362, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -3891,7 +3903,7 @@ make_particle
     name = "fast-underground-belt-metal-particle-medium-red",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.890, 0.275, 0.282, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -3900,7 +3912,7 @@ make_particle
     name = "express-underground-belt-metal-particle-medium-blue",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.310, 0.682, 0.827, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -3919,7 +3931,7 @@ make_particle
     name = "fast-underground-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {0.625, 0.598, 0.557, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -3937,7 +3949,7 @@ make_particle
     name = "express-underground-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {0.676, 0.602, 0.531, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -4294,7 +4306,7 @@ make_particle
     name = "pipe-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {0.648, 0.555, 0.447, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object"
   },
@@ -4313,7 +4325,7 @@ make_particle
     name = "pipe-to-ground-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures({tint = {0.648, 0.555, 0.447, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
     render_layer = "object"
   },

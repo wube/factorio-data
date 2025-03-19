@@ -656,17 +656,12 @@ local explosions =
 
   {
     type = "explosion",
-    name = "transport-belt-explosion",
+    name = "transport-belt-explosion-base",
     icon = "__base__/graphics/icons/transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
-    subgroup = "belt-explosions",
-    order = "b-a-a",
     height = 0,
-    animations = util.empty_sprite (),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -676,6 +671,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 1,
@@ -728,20 +732,41 @@ local explosions =
       }
     }
   },
-
   {
     type = "explosion",
-    name = "underground-belt-explosion",
-    icon = "__base__/graphics/icons/underground-belt.png",
+    name = "transport-belt-explosion",
+    icon = "__base__/graphics/icons/transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
     subgroup = "belt-explosions",
-    order = "b-d-a",
+    order = "b-a-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "transport-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          },
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "underground-belt-explosion-base",
+    icon = "__base__/graphics/icons/underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -751,6 +776,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 10,
@@ -791,7 +825,33 @@ local explosions =
       }
     }
   },
-
+  {
+    type = "explosion",
+    name = "underground-belt-explosion",
+    icon = "__base__/graphics/icons/underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "belt-explosions",
+    order = "b-d-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "underground-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          }
+        }
+      }
+    }
+  },
   {
     type = "explosion",
     name = "splitter-explosion",
@@ -1322,17 +1382,12 @@ local explosions =
 
   {
     type = "explosion",
-    name = "pipe-explosion",
+    name = "pipe-explosion-base",
     icon = "__base__/graphics/icons/pipe.png",
     flags = {"not-on-map"},
     hidden = true,
-    subgroup = "energy-pipe-distribution-explosions",
-    order = "d-f-a",
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -1342,6 +1397,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.005,
+            speed_from_center_deviation = 0.02
+          },
           {
             type = "create-particle",
             repeat_count = 10,
@@ -1384,20 +1448,42 @@ local explosions =
       }
     }
   },
-
   {
     type = "explosion",
-    name = "pipe-to-ground-explosion",
-    icon = "__base__/graphics/icons/pipe-to-ground.png",
+    name = "pipe-explosion",
+    icon = "__base__/graphics/icons/pipe.png",
     flags = {"not-on-map"},
     hidden = true,
     subgroup = "energy-pipe-distribution-explosions",
-    order = "d-g-a",
+    order = "d-f-a",
+    animations =  util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "pipe-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.15, -0.15 }, { 0.15, 0.15 }},
+          }
+        }
+      }
+    }
+  },
+
+  {
+    type = "explosion",
+    name = "pipe-to-ground-explosion-base",
+    icon = "__base__/graphics/icons/pipe-to-ground.png",
+    flags = {"not-on-map"},
+    hidden = true,
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -1407,6 +1493,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 14,
@@ -1430,6 +1525,33 @@ local explosions =
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.03,
             speed_from_center_deviation = 0.05
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "pipe-to-ground-explosion",
+    icon = "__base__/graphics/icons/pipe-to-ground.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "energy-pipe-distribution-explosions",
+    order = "d-g-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "pipe-to-ground-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
           }
         }
       }
@@ -2759,17 +2881,12 @@ local explosions =
 
   {
     type = "explosion",
-    name = "fast-transport-belt-explosion",
+    name = "fast-transport-belt-explosion-base",
     icon = "__base__/graphics/icons/fast-transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
-    subgroup = "belt-explosions",
-    order = "b-b-a",
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -2779,6 +2896,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 1,
@@ -2827,6 +2953,38 @@ local explosions =
             speed_from_center = 0.01,
             speed_from_center_deviation = 0.05
           }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "fast-transport-belt-explosion",
+    icon = "__base__/graphics/icons/fast-transport-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "belt-explosions",
+    order = "b-b-a",
+    height = 0,
+    animations = util.empty_sprite(),
+    smoke = "smoke-fast",
+    smoke_count = 2,
+    smoke_slow_down_factor = 1,
+    sound = sounds.small_explosion,
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "fast-transport-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          },
         }
       }
     }
@@ -2883,17 +3041,12 @@ local explosions =
   },
   {
     type = "explosion",
-    name = "fast-underground-belt-explosion",
+    name = "fast-underground-belt-explosion-base",
     icon = "__base__/graphics/icons/fast-underground-belt.png",
     flags = {"not-on-map"},
     hidden = true,
-    subgroup = "belt-explosions",
-    order = "b-e-a",
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -2903,6 +3056,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 10,
@@ -2939,6 +3101,33 @@ local explosions =
             speed_from_center = 0.02,
             speed_from_center_deviation = 0.05
           }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "fast-underground-belt-explosion",
+    icon = "__base__/graphics/icons/fast-underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "belt-explosions",
+    order = "b-e-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "fast-underground-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          },
         }
       }
     }
@@ -4574,17 +4763,12 @@ local explosions =
 
   {
     type = "explosion",
-    name = "express-transport-belt-explosion",
+    name = "express-transport-belt-explosion-base",
     icon = "__base__/graphics/icons/express-transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
-    subgroup = "belt-explosions",
-    order = "b-c-a",
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -4594,6 +4778,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 1,
@@ -4646,20 +4839,42 @@ local explosions =
       }
     }
   },
-
   {
     type = "explosion",
-    name = "express-underground-belt-explosion",
-    icon = "__base__/graphics/icons/express-underground-belt.png",
+    name = "express-transport-belt-explosion",
+    icon = "__base__/graphics/icons/express-transport-belt.png",
     flags = {"not-on-map"},
     hidden = true,
     subgroup = "belt-explosions",
-    order = "b-f-a",
+    order = "b-c-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "express-transport-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
+          }
+        }
+      }
+    }
+  },
+
+  {
+    type = "explosion",
+    name = "express-underground-belt-explosion-base",
+    icon = "__base__/graphics/icons/express-underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
     height = 0,
-    animations = explosion_animations.small_explosion(),
-    smoke = "smoke-fast",
-    smoke_count = 2,
-    smoke_slow_down_factor = 1,
+    animations = explosion_animations.small_dust_explosion(),
     sound = sounds.small_explosion,
     created_effect =
     {
@@ -4669,6 +4884,15 @@ local explosions =
         type = "instant",
         target_effects =
         {
+          {
+            type = "create-trivial-smoke",
+            repeat_count = 10,
+            smoke_name = "small-dusty-explosion-smoke",
+            offset_deviation = { { -0.4, -0.4 }, { 0.4, 0.4 } },
+            initial_height = 0,
+            speed_from_center = 0.008,
+            speed_from_center_deviation = 0.03
+          },
           {
             type = "create-particle",
             repeat_count = 10,
@@ -4704,6 +4928,33 @@ local explosions =
             initial_vertical_speed_deviation = 0.05,
             speed_from_center = 0.02,
             speed_from_center_deviation = 0.05
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "express-underground-belt-explosion",
+    icon = "__base__/graphics/icons/express-underground-belt.png",
+    flags = {"not-on-map"},
+    hidden = true,
+    subgroup = "belt-explosions",
+    order = "b-f-a",
+    animations = util.empty_sprite(),
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "create-explosion",
+            entity_name = "express-underground-belt-explosion-base",
+            offsets = {{0,0.3}},
+            offset_deviation = {{ -0.25, -0.25 }, { 0.25, 0.25 }},
           }
         }
       }

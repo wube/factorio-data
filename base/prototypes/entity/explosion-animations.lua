@@ -176,10 +176,178 @@ explosion_animations.small_explosion = function()
       shift = util.by_pixel(2,-7.5),
       scale = 0.5,
       usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-explosion-3.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 154,
+      height = 222,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel( 1.5, -23.0),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-explosion-4.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 146,
+      height = 134,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(2.5, -25.5),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-explosion-5.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 144,
+      height = 222,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(4.5, -25.5),
+      scale = 0.5,
+      usage = "explosion"
     }
   }
 end
 
+explosion_animations.small_dust_explosion = function()
+  return
+  {
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-dust-explosion-1.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 160,
+      height = 140,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(-4.0, -34.5),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-dust-explosion-2.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 196,
+      height = 186,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(0.0, -36.0),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-dust-explosion-3.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 228,
+      height = 216,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(-5.5, -35.0),
+      scale = 0.5,
+      usage = "explosion"
+    }
+  }
+end  
+------
+explosion_animations.space_platform_foundation_explosion = function()
+  return
+  {
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-dust-explosion-1.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 160,
+      height = 140,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(-4.0, 5.0),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-dust-explosion-2.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 196,
+      height = 186,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(0.0, 1.5),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-dust-explosion-3.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 228,
+      height = 216,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(-5.5, 10.0),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    -- {
+    --   filename = "__base__/graphics/entity/small-explosion/small-explosion-3.png",
+    --   draw_as_glow = true,
+    --   priority = "high",
+    --   line_length = 6,
+    --   width = 152,
+    --   height = 222,
+    --   frame_count = 24,
+    --   animation_speed = 0.3,
+    --   shift = util.by_pixel( 2.5, -3.0),
+    --   scale = 0.5,
+    --   usage = "explosion"
+    -- },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-explosion-4.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 146,
+      height = 134,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(2.5, 6.0),
+      scale = 0.5,
+      usage = "explosion"
+    },
+    {
+      filename = "__base__/graphics/entity/small-explosion/small-explosion-5.png",
+      draw_as_glow = true,
+      priority = "high",
+      line_length = 6,
+      width = 144,
+      height = 222,
+      frame_count = 24,
+      animation_speed = 0.3,
+      shift = util.by_pixel(4.5, 6.0),
+      scale = 0.5,
+      usage = "explosion"
+    }
+  }
+end  
+------
 explosion_animations.nuke_shockwave = function()
   return
   {

@@ -1015,7 +1015,7 @@ function make_demolisher_head(base_name, order, scale, damage_multiplier, health
             type = "area",
             radius = 5 * scale,
             force = "not-same",
-            collision_mask = {layers={player=true, train=true, rail=true, transport_belt=true, is_object=true}},
+            collision_mask = {layers={player=true, train=true, rail=true, transport_belt=true, is_object=true, is_lower_object=true}},
             action_delivery =
             {
               type = "instant",
@@ -1592,7 +1592,7 @@ function make_demolisher_segment(base_name, scale, damage_multiplier, health, so
             type = "area",
             radius = 5 * scale,
             force = "not-same",
-            collision_mask = {layers={player=true, train=true, rail=true, transport_belt=true, is_object=true}},
+            collision_mask = {layers={player=true, train=true, rail=true, transport_belt=true, is_object=true, is_lower_object=true}},
             action_delivery =
             {
               type = "instant",
@@ -3566,7 +3566,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
     },
 
     joint_render_layer = stomper_head_render_layer,
--- these have some nuts function for a defenition which makes it very hard to add extra layers or change the rendering behaviour - I will leave as is for now
+    -- these have some nuts function for a defenition which makes it very hard to add extra layers or change the rendering behaviour - I will leave as is for now
     leg_joint =
     util.sprite_load("__space-age__/graphics/entity/stomper/legs/leg-knee",
     {

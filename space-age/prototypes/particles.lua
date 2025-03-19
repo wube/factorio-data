@@ -189,6 +189,30 @@ local eruption_smoke_trigger_effect = function()
   }
 end
 
+local small_grey_smoke_trigger_effect = function()
+  return
+  {
+    type = "create-trivial-smoke",
+    smoke_name = "space-platform-explosion-particle-smoke",
+    starting_frame_deviation = 0.5,
+    offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
+    speed_from_center = 0.01,
+    speed_from_center_deviation = 0.02
+  }
+end
+
+local small_grey_dust_smoke_trigger_effect = function()
+  return
+  {
+    type = "create-trivial-smoke",
+    smoke_name = "small-dust-particle-smoke",
+    starting_frame_deviation = 0.5,
+    offset_deviation = {{-0.03, -0.03}, {0.03, 0.03}},
+    speed_from_center = 0.01,
+    speed_from_center_deviation = 0.02
+  }
+end
+
 local particle_counter = 0
 
 local default_ended_in_lava_trigger_effect = function()
@@ -419,7 +443,7 @@ local particles =
     name = "turbo-underground-belt-metal-particle-medium-green",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.4235, 0.827, 0.310, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
   make_particle
@@ -436,7 +460,7 @@ local particles =
     name = "turbo-transport-belt-mechanical-component-particle-medium",
     pictures = particle_animations.get_mechanical_component_particle_medium_pictures({tint = {0.859, 0.766, 0.680, 1}}),
     shadows = particle_animations.get_mechanical_component_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
   make_particle
@@ -444,7 +468,7 @@ local particles =
     name = "turbo-transport-belt-metal-particle-medium",
     pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.2, 0.816, 0.24, 1}}),
     shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
-    regular_trigger_effect = small_smoke_trigger_effect(),
+    regular_trigger_effect = small_grey_dust_smoke_trigger_effect(),
     ended_in_water_trigger_effect = default_ended_in_water_trigger_effect()
   },
 
@@ -1194,8 +1218,40 @@ local particles =
       shadows = particle_animations.get_demolisher_shell_particles_big({ tint = shadowtint(), shift = util.by_pixel(1, 0)}),
       ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
       render_layer_when_on_ground = "lower-object-above-shadow"
-  }
+  },
+  ------------------------------------------------
 
+  make_particle
+  {
+    name = "space-platform-foundation-particle-small",
+    life_time = 150,
+    pictures = particle_animations.get_metal_particle_small_pictures({tint = {0.859, 0.766, 0.680, 1}}),
+    shadows = particle_animations.get_metal_particle_small_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = nil,
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
+
+  make_particle
+  {
+    name = "space-platform-foundation-particle-medium",
+    life_time = 180,
+    pictures = particle_animations.get_metal_particle_medium_pictures ({tint = {0.350, 0.369, 0.332, 1}}),
+    shadows = particle_animations.get_metal_particle_medium_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_grey_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
+  make_particle
+  {
+    name = "space-platform-foundation-particle-big",
+    life_time = 200,
+    pictures = particle_animations.get_metal_particle_big_pictures ({tint = {0.349, 0.369, 0.333, 1}}),
+    shadows = particle_animations.get_metal_particle_big_pictures({ tint = shadowtint(), shift = util.by_pixel (1,0)}),
+    regular_trigger_effect = small_grey_smoke_trigger_effect(),
+    ended_in_water_trigger_effect = default_ended_in_water_trigger_effect(),
+    render_layer = "lower-object-above-shadow"
+  },
 }
 
 data:extend(particles)

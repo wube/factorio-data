@@ -1,6 +1,65 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.42
+Version: 2.0.43
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.42
+Date: 19. 03. 2025
+  Minor Features:
+    - Added additional information to Landing pad, Platform Hub and Cargo bay in factoriopedia. (https://forums.factorio.com/126753)
+  Graphics:
+    - Added more variations to small explosion to improve the visuals when many small entities explode at the same time (happens a lot when a space platform is hit by a larger asteroid).
+  Bugfixes:
+    - Fixed equipment grid ghost interaction for entities that move in some cases. (https://forums.factorio.com/122313)
+    - Fixed a crash when named logistic sections are removed when entities are removed due to mod removal. (https://forums.factorio.com/127444)
+    - Fixed that finite infinite levels would show wrong in the technology GUI in some cases. (https://forums.factorio.com/125586)
+    - Fixed that display panel text wasn't parametrisable by blueprint parametrisation. (https://forums.factorio.com/119866)
+    - Fixed that switching to remote view while shooting would keep shooting. (https://forums.factorio.com/125299)
+    - Fixed consistency issue related to downgrading blueprints that contain assemblers that when downgraded can no longer craft the recipe. (https://forums.factorio.com/127413)
+    - Fixed trains station tutorial would crash when adding a schedule record. (https://forums.factorio.com/127447)
+    - Fixed that space platform hubs would not auto-trash items correctly. (https://forums.factorio.com/127244)
+    - Fixed a crash when asteroid collector tried to mine an unminable asteroid chunk.
+    - Fixed migrating logistic containers into storage chest could leave them inconsistent. (https://forums.factorio.com/127490)
+    - Fixed that fusion generators were highly sensitive to entity update order. (https://forums.factorio.com/122346)
+    - Fixed that rockets might not launch if there were manual filled rockets and multiple platforms wanting the same items with at least 1 being full. (https://forums.factorio.com/127474)
+    - Fixed a crash related to drag building ghost belts and script reviving entities. (https://forums.factorio.com/127015)
+    - Fixed a crash when upgrade-reviving ghost entities that have gui open. (https://forums.factorio.com/127507)
+    - Fixed a proxy container attached to mining drill module inventory would not wake up inserters when modules are inserted or removed. (https://forums.factorio.com/127550)
+    - Fixed display panel text was not showing up on screenshots. (https://forums.factorio.com/127545)
+    - Fixed selector combinator gui was showing input value in the output count signal slot. (https://forums.factorio.com/127556)
+    - Fixed following robots lifetime modifier was not working with fractions. (https://forums.factorio.com/127558)
+    - Fixed demolishers were unable to destroy open gates. (https://forums.factorio.com/127517)
+    - Fixed spoil to trigger was not spawning correct amount of entities.
+    - Agricultural Tower soil fertility visualisations now renders "growable with different soil" even when acceptable tile is covered by deconstructible tile (https://forums.factorio.com/127291)
+    - When placing growable tile, Agricultural tower growing spot is highlighted even in a case where tile is placeable as replacement of non-growable tile (e.g. overgrowth soil on landfilled apt wetland tile)
+    - Fixed a crash and some other zoom-related problems if the window size is exceptionally large. (https://forums.factorio.com/127535)
+    - Fixed items on splitters were changing sides when rotating. (https://forums.factorio.com/119271)
+    - Fixed decider combinator gui conditions highlighting. (https://forums.factorio.com/120624)
+    - Fixed blueprints being able to rotate entites that are not rotatable based on their prototypes (https://forums.factorio.com/127223)
+    - Fixed that blueprint building parametrisation gui didn't accept unit postfixes and formulas. (https://forums.factorio.com/126397)
+    - Fixed that blueprint parametrisation number value edit didn't accept unit postfixes and formulas.
+    - Fixed wire distance checks when entity uses rotated selection boxes. (https://forums.factorio.com/121546)
+    - Fixed deconstruction planner with quality entities selected would not show quality on the icon. (https://forums.factorio.com/126313)
+    - Fixed modded technologies with finite amount of levels could fail to show levels info. (https://forums.factorio.com/125350)
+    - Fixed that blueprint parametrisation was able to change number in a storage chest filter. (https://forums.factorio.com/126347)
+    - Added more context to blueprint parameters in trains. (https://forums.factorio.com/120227)
+    - Fixed changing space platform hub's inventory bar was not waking up input inserters. (https://forums.factorio.com/127594)
+    - Fixed pipe connection sprites of some machines not working together with storage tanks and pumps. (https://forums.factorio.com/121463)
+    - Fixed tooltip for recipe parameters to not show "made in". (https://forums.factorio.com/127580)
+    - Fixed lamps with color set by control behavior would not use color for one tick after loading a save. (https://forums.factorio.com/127449)
+    - Fixed cutscenes would reset player zoom level when finishing. (https://forums.factorio.com/117862)
+    - Fixed some tooltip lines would clip outside the tooltip frame. (https://forums.factorio.com/125053)
+    - Fixed that the character would keep mining when entering remote view. (https://forums.factorio.com/126904)
+  Modding:
+    - Changed working_visualisations to enforce that the provided array is contiguous.
+    - Added FluidBoxPrototype::volume_reservation_fraction.
+    - Added ExplosionPrototype::delay and ExplosionPrototype::delay_deviation for adding an artificial delay to an explosion effect.
+    - Added ExplosionPrototype::explosion_effect which triggers after the delay has passed instead of when the explosion entity is created as with EntityPrototype::created_effect.
+    - Added TechnologyPrototype::show_levels_info.
+  Scripting:
+    - LuaEntity::infinity_inventory_filters and remove_unfiltered_items now support infinity-cargo-wagon.
+    - LuaControl::walking_state now reads and writes spider-vehicle walking state if the player is driving one.
+    - Added LuaEntity::cargo_pod_origin which stores which station entity the pod departed from. (Migrated existing pods from before this version do NOT retroactively gain this information)
+    - Added 'spoil-result' and 'plant-result' filter to ItemPrototypeFilters.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.41
 Date: 12. 03. 2025
