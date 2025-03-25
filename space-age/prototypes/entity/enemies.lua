@@ -5632,7 +5632,7 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
   wriggler_stable.absorptions_to_join_attack = { spores = 2 }
   wriggler_stable.attack_parameters = attack_parameters(false)
 
-  local wriggler_coprse =
+  local wriggler_corpse =
   {
     type = "corpse",
     name = prefix .. "wriggler-pentapod-corpse",
@@ -5822,7 +5822,7 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
   data:extend{
     wriggler,
     wriggler_stable,
-    wriggler_coprse,
+    wriggler_corpse,
     wrigger_explosion,
     make_particle
     {
