@@ -279,7 +279,7 @@ data:extend(
       placement_density = 2,
       probability_expression = "min(0.1, fulgora_natural_mask * max(0, fulgora_scrap_medium - fulgora_rock - 0.75))",
     },
-    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/urchin-cactus/urchin-cactus", frame_count = 3}})
+    pictures = util.spritesheets_to_pictures({{path = "__space-age__/graphics/decorative/urchin-cactus/urchin-cactus", frame_count = 10}})
   },
   {
     type = "simple-entity",

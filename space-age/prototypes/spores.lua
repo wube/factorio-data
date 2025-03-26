@@ -15,5 +15,6 @@ data:extend(
     },
     affects_evolution = true,
     affects_water_tint = false,
+    damages_trees = false,
   }
 })

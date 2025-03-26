@@ -3152,7 +3152,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
   local stomper_knee_distance_factor = 0.55
   local stomper_knee_height = 0.5 -- tiles, in screen space, above the straight line between the leg's mount point and leg position
   local stomper_ankle_height = 0.65
-  local stomper_leg_orientations = {0.10, 0.30, 0.50, 0.70, 0.90}
+  local stomper_leg_orientations = {0.90, 0.70, 0.50, 0.30, 0.10}
   local stomper_speed = speed
   local stomper_stomp_radius = 4.5 * scale
   local stomper_stomp_damage_multiplier = 3.5
@@ -4650,7 +4650,7 @@ function make_strafer(prefix, scale, health, damage, speed, ideal_strafe_distanc
   local strafer_knee_distance_factor = 0.5
   local strafer_knee_height = 1
   local strafer_ankle_height = 0
-  local strafer_leg_orientations = {0.15, 0.35, 0.55, 0.75, 0.95}
+  local strafer_leg_orientations = {0.85, 0.65, 0.45, 0.25, 0.05}
   local strafer_speed = speed
   local strafer_resistances =
   {
@@ -5632,7 +5632,7 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
   wriggler_stable.absorptions_to_join_attack = { spores = 2 }
   wriggler_stable.attack_parameters = attack_parameters(false)
 
-  local wriggler_coprse =
+  local wriggler_corpse =
   {
     type = "corpse",
     name = prefix .. "wriggler-pentapod-corpse",
@@ -5822,7 +5822,7 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
   data:extend{
     wriggler,
     wriggler_stable,
-    wriggler_coprse,
+    wriggler_corpse,
     wrigger_explosion,
     make_particle
     {

@@ -312,7 +312,7 @@ data:extend(
     max_health = 50,
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     --collision_mask = {layers={player=true, ground_tile=true, train=true}},
-    selection_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -3}, {1, 0.8}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-a[seedable]-a[yumako-tree]",
@@ -326,7 +326,7 @@ data:extend(
       richness_expression = "random_penalty_at(3, 1)",
       tile_restriction = {"natural-yumako-soil", "artificial-yumako-soil", "overgrowth-yumako-soil"}
     },
-    variations = gleba_tree_variations("yumako-tree", 8, 4, 1.3),
+    variations = gleba_tree_variations("yumako-tree", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73)),
     colors = minor_tints(),
     agricultural_tower_tint =
     {
@@ -371,7 +371,7 @@ data:extend(
     max_health = 50,
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
     --collision_mask = {layers={player=true, ground_tile=true, train=true}},
-    selection_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -3}, {1, 0.8}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-a[seedable]-b[jellystem]",
@@ -385,7 +385,7 @@ data:extend(
       richness_expression = "random_penalty_at(3, 1)",
       tile_restriction = {"natural-jellynut-soil", "artificial-jellynut-soil", "overgrowth-jellynut-soil"}
     },
-    variations = gleba_tree_variations("jellystem", 8, 4, 1.3),
+    variations = gleba_tree_variations("jellystem", 8, 4, 1.3, 640, 560, util.by_pixel(52, -73)),
     colors = {
       {r = 255, g = 255, b =  255},
       {r = 233, g = 218, b =  225},
@@ -442,9 +442,9 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-cuttlepop", 5, 0.7),
     emissions_per_second = plant_emissions,
     max_health = 50,
-    collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    collision_box = {{-0.6, -0.8}, {0.6, 0.8}},
     collision_mask = {layers={player=true, ground_tile=true, train=true, is_object=true, is_lower_object=true}},
-    selection_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-0.8, -2.5}, {0.8, 1}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-i[cuttlepop]",
@@ -526,9 +526,9 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-slipstack", 7, 0.4),
     emissions_per_second = plant_emissions,
     max_health = 100,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
+    collision_box = {{-0.8, -0.6}, {0.8, 0.6}},
     collision_mask = {layers={player=true, ground_tile=true, train=true, is_object=true, is_lower_object=true}},
-    selection_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -2.7}, {1, 0.6}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-a[slipstack]",
@@ -545,7 +545,7 @@ data:extend(
         main_probability = "min(0.02, gleba_water_plant_ramp * 0.2 * (main_box + gleba_plants_noise - 0.2) * control:gleba_plants:size)"
       }
     },
-    variations = gleba_tree_variations("slipstack", 8, 5),
+    variations = gleba_tree_variations("slipstack", 8, 5, nil, 640, 560, util.by_pixel(52, -65)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -630,8 +630,8 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-funneltrunk", 5, 0.7),
     emissions_per_second = plant_emissions,
     max_health = 200,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.6, -0.5}, {0.6, 0.5}},
+    selection_box = {{-1, -3}, {1, 0.5}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-b[funneltrunk]",
@@ -644,7 +644,7 @@ data:extend(
       probability_expression = "gleba_funnel_trunk_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("funneltrunk", 5, 4),
+    variations = gleba_tree_variations("funneltrunk", 5, 4, nil, 640, 560, util.by_pixel(52, -65)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -721,9 +721,9 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-hairyclubnub", 5, 0.32),
     emissions_per_second = plant_emissions,
     max_health = 200,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
+    collision_box = {{-0.9, -0.6}, {0.9, 0.6}},
     collision_mask = {layers={player=true, ground_tile=true, train=true, is_object=true, is_lower_object=true}},
-    selection_box = {{-1, -1}, {1, 1}},
+    selection_box = {{-1, -3}, {1, 0.6}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-c[hairyclubnub]",
@@ -740,7 +740,7 @@ data:extend(
         main_probability = "min(0.02, gleba_water_plant_ramp * 0.2 * (main_box + gleba_plants_noise - 0.2) * control:gleba_plants:size)"
       }
     },
-    variations = gleba_tree_variations("hairyclubnub", 10, 5),
+    variations = gleba_tree_variations("hairyclubnub", 10, 5, nil, 640, 560, util.by_pixel(52, -65)),
     colors = minor_tints(),
     created_effect = {
       type = "direct",
@@ -809,8 +809,8 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-teflilly", 5, 0.5),
     emissions_per_second = plant_emissions,
     max_health = 50,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.4, -0.4}, {0.4, 0.4}},
+    selection_box = {{-1, -3}, {1, 0.5}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-d[teflilly]",
@@ -823,7 +823,7 @@ data:extend(
       probability_expression = "gleba_teflilly_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("teflilly"),
+    variations = gleba_tree_variations("teflilly", 10, 5, nil, 640, 560, util.by_pixel(52, -60)),
     colors = {
       {r = 255, g = 255, b =  255},
       {r = 220, g = 255, b =  255},
@@ -918,8 +918,8 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-lickmaw", 5, 0.4),
     emissions_per_second = plant_emissions,
     max_health = 50,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.7, -0.6}, {0.7, 0.6}},
+    selection_box = {{-1, -3}, {1, 0.6}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-e[lickmaw]",
@@ -936,7 +936,7 @@ data:extend(
         main_probability = "min(0.02, 0.1 * (main_box + gleba_plants_noise - 0.2) * control:gleba_plants:size)"
       }
     },
-    variations = gleba_tree_variations("lickmaw", nil, nil, nil, nil, nil, util.by_pixel(52, -50)),
+    variations = gleba_tree_variations("lickmaw", nil, nil, nil, nil, nil, util.by_pixel(52, -60)),
     colors = minor_tints(),
     ambient_sounds =
     {
@@ -1016,8 +1016,8 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-stingfrond", 5, 0.4),
     emissions_per_second = plant_emissions,
     max_health = 50,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.6, -0.4}, {0.6, 0.6}},
+    selection_box = {{-1, -3}, {1, 0.6}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-f[stingfrond]",
@@ -1148,8 +1148,8 @@ data:extend(
     mining_sound = sound_variations("__space-age__/sound/mining/axe-mining-boompuff", 5, 0.6),
     emissions_per_second = plant_emissions,
     max_health = 50,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.9, -0.4}, {0.9, 0.8}},
+    selection_box = {{-1, -2.5}, {1, 0.8}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-g[boompuff]",
@@ -1164,7 +1164,7 @@ data:extend(
       probability_expression = "gleba_boompuff_region",
       richness_expression = "random_penalty_at(3, 1)"
     },
-    variations = gleba_tree_variations("boompuff", 14, 5, 0.9),
+    variations = gleba_tree_variations("boompuff", 14, 5, 0.9, nil, nil, util.by_pixel(49, -40)),
     colors = lerp_colors({
       {r = 255, g = 255, b =  255},
       {r = 220, g = 255, b =  255},
@@ -1350,8 +1350,8 @@ data:extend(
     mined_sound = sound_variations("__space-age__/sound/mining/mined-sunnycomb", 5, 0.6),
     emissions_per_second = plant_emissions,
     max_health = 50,
-    collision_box = {{-0.4, -0.8}, {0.4, 0.2}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-0.7, -0.5}, {0.7, 0.5}},
+    selection_box = {{-0.8, -3}, {0.8, 0.5}},
     drawing_box_vertical_extension = 0.8,
     subgroup = "trees",
     order = "a[tree]-c[gleba]-b[normal]-h[sunnycomb]",
@@ -1370,7 +1370,7 @@ data:extend(
         invasion_tall_probability = "min(0.05, 0.15 * (invasion_tall_box + gleba_plants_noise_b - 0.4) * control:gleba_plants:size)", -- smaller patches, sparser
       }
     },
-    variations = gleba_tree_variations("sunnycomb", 10, 5, nil, 3200/5, 1120/2),
+    variations = gleba_tree_variations("sunnycomb", 10, 5, nil, 3200/5, 1120/2, util.by_pixel(52, -60)),
     colors = minor_tints(),
     ambient_sounds =
     {

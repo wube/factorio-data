@@ -238,11 +238,27 @@ sounds.spidertron_leg =
 
 sounds.pipe =
 {
-  sound = { filename = "__base__/sound/pipe.ogg", volume = 0.45 },
+  sound = {filename = "__base__/sound/pipe.ogg", volume = 0.7, audible_distance_modifier = 0.5,},
   persistent = true,
   fade_in_ticks = 10,
   fade_out_ticks = 20,
   volume_smoothing_window_size = 20,
+  match_volume_to_activity = true,
+  activity_to_volume_modifiers =
+  {
+    multiplier = 1.0,
+    minimum = 0.5,
+    maximum = 1.0,
+    offset = 0,
+  },
+  match_speed_to_activity = true,
+  activity_to_speed_modifiers =
+  {
+    multiplier = 0.4,
+    minimum = 1.0,
+    maximum = 1.2,
+    offset = -2.3,
+  },
 }
 sounds.train_brakes =
 {

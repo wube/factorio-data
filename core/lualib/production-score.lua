@@ -46,17 +46,19 @@ local function get_product_list()
       local ingredients = recipe_prototype.ingredients
       local products = recipe_prototype.products
       for k, product in pairs (products) do
-        if not product_list[product.name] then
-          product_list[product.name] = {}
-        end
-        local recipe_ingredients = {}
-        local product_amount = util.product_amount(product)
-        if product_amount > 0 then
-          for j, ingredient in pairs (ingredients) do
-            recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
+        if product.type ~= "research-progress" then
+          if not product_list[product.name] then
+            product_list[product.name] = {}
           end
-          recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
-          table.insert(product_list[product.name], recipe_ingredients)
+          local recipe_ingredients = {}
+          local product_amount = util.product_amount(product)
+          if product_amount > 0 then
+            for j, ingredient in pairs (ingredients) do
+              recipe_ingredients[ingredient.name] = ((ingredient.amount)/#products) / product_amount
+            end
+            recipe_ingredients.energy = (recipe_prototype.energy / #products) / product_amount
+            table.insert(product_list[product.name], recipe_ingredients)
+          end
         end
       end
     end
@@ -69,21 +71,25 @@ local function get_product_list()
   for k, entity in pairs (entities) do
     if entity.type == "rocket-silo" and entity.fixed_recipe then
       local recipe = recipes[entity.fixed_recipe]
-      if not recipe then return end
-      local required_parts = entity.rocket_parts_required
-      local list = {}
-      for k, product in pairs (recipe.products) do
-        local product_amount = util.product_amount(product)
-        if product_amount > 0 then
-          product_amount = product_amount * required_parts
-          list[product.name] = product_amount
+      if recipe then
+        local required_parts = entity.rocket_parts_required
+        local list = {}
+        for k, product in pairs (recipe.products) do
+          if product.type ~= "research-progress" then
+            local product_amount = util.product_amount(product)
+            if product_amount > 0 then
+              product_amount = product_amount * required_parts
+              list[product.name] = product_amount
+            end
+          end
         end
+        list["energy"] = recipe.energy
+        table.insert(rocket_silos, list)
       end
-      list["energy"] = recipe.energy
-      table.insert(rocket_silos, list)
     end
   end
-  -- todo use the lua entity protoype to get this if/when its added
+
+  -- todo use the lua entity prototype to get this if/when its added
   local launch_products = {{type = "item", name = "space-science-pack", amount = 1000, probability = 1}}
   if launch_products then
     for k, launch_product in pairs (launch_products) do
@@ -101,6 +107,7 @@ local function get_product_list()
       end
     end
   end
+
   return product_list
 end
 
@@ -198,24 +205,25 @@ local deduce_nil_prices = function(price_list, param)
         if not ingredient_value then break end
         local product_value = 0
         for k, product in pairs (recipe.products) do
-          local amount = util.product_amount(product)
-          local product_price = price_list[product.name]
-          if product_price then
-            product_value = product_value + product_price * amount
-          else
-            product_value = nil
-            break
+          if product.type ~= "research-progress" then
+            local amount = util.product_amount(product)
+            local product_price = price_list[product.name]
+            if product_price then
+              product_value = product_value + product_price * amount
+            else
+              product_value = nil
+              break
+            end
           end
         end
-        if not product_value then
-          break
-        end
-        local reverse_price = (product_value - param.energy_addition(recipe, product_value)) / ingredient_multiplier(recipe.ingredients, param) -- Not perfect, but close enough
-        local this_cost = (reverse_price - ingredient_value) / ingredient_amount
-        if recipe_cost then
-          recipe_cost = math.min(recipe_cost, this_cost)
-        else
-          recipe_cost = this_cost
+        if product_value then
+          local reverse_price = (product_value - param.energy_addition(recipe, product_value)) / ingredient_multiplier(recipe.ingredients, param) -- Not perfect, but close enough
+          local this_cost = (reverse_price - ingredient_value) / ingredient_amount
+          if recipe_cost then
+            recipe_cost = math.min(recipe_cost, this_cost)
+          else
+            recipe_cost = this_cost
+          end
         end
       end
       if recipe_cost then

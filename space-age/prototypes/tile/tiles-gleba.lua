@@ -290,7 +290,7 @@ data:extend({
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -325,7 +325,7 @@ data:extend({
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -360,7 +360,7 @@ data:extend({
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -395,7 +395,7 @@ data:extend({
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -430,7 +430,7 @@ data:extend({
         map_color={66, 82, 11},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       ----------- Cauliflower
@@ -466,7 +466,7 @@ data:extend({
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -501,7 +501,7 @@ data:extend({
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -536,7 +536,7 @@ data:extend({
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -571,7 +571,7 @@ data:extend({
         map_color={95, 93, 88},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -606,7 +606,7 @@ data:extend({
         map_color={95, 83, 78},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       ----------- Red vein
@@ -642,7 +642,7 @@ data:extend({
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -677,7 +677,7 @@ data:extend({
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -710,7 +710,7 @@ data:extend({
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -743,7 +743,7 @@ data:extend({
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -778,7 +778,7 @@ data:extend({
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
       {
@@ -811,7 +811,7 @@ data:extend({
         map_color={115, 53, 66},
         walking_speed_modifier = 1,
         vehicle_friction_modifier = 1,
-        absorptions_per_second = tile_pollution.gleba,
+        absorptions_per_second = tile_pollution.gleba_water,
         trigger_effect = tile_trigger_effects.dirt_2_trigger_effect()
       },
     ---- MidLand
@@ -1260,7 +1260,7 @@ data:extend({
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color={132, 119, 7},
-    absorptions_per_second = tile_pollution.gleba,
+    absorptions_per_second = tile_pollution.gleba_water,
 
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
@@ -1309,7 +1309,7 @@ data:extend({
     transitions = {lava_to_out_of_map_transition},
     transitions_between_transitions = data.raw.tile["water"].transitions_between_transitions,
     map_color={132, 7, 119},
-    absorptions_per_second = tile_pollution.gleba,
+    absorptions_per_second = tile_pollution.gleba_water,
 
     walking_speed_modifier = 0.8,
     vehicle_friction_modifier = 8.0,
@@ -1371,6 +1371,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1416,6 +1417,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1463,6 +1465,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1508,6 +1511,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1551,6 +1555,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1592,6 +1597,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1637,7 +1643,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    absorptions_per_second = tile_pollution.gleba,
+    absorptions_per_second = tile_pollution.gleba_water,
   },
   {
     type = "tile",
@@ -1682,7 +1688,7 @@ data:extend({
     trigger_effect = tile_trigger_effects.shallow_water_trigger_effect(),
     default_cover_tile = "landfill",
     fluid = "water",
-    absorptions_per_second = tile_pollution.gleba,
+    absorptions_per_second = tile_pollution.gleba_water,
   }
 })
 

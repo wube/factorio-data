@@ -1,6 +1,78 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.43
+Version: 2.0.44
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.43
+Date: 26. 03. 2025
+  Minor Features:
+    - Added support for volume and speed activity matching for persistent working sounds.
+    - The swap-players command can now handle basic remote view and players in space platform hubs.
+  Graphics:
+    - Changed items to stop drawing health and spoilage bars when the player is zoomed too far out. (https://forums.factorio.com/125880)
+  Balancing:
+    - Trees no longer take damage from spores nor absorb spores as a result of taking pollution damage.
+    - Gleba wetlands, lowlands, and water tiles now absorb 3 times as many spores as other tiles.
+  Bugfixes:
+    - Fixed a desync related to demolishers. (https://forums.factorio.com/127560)
+    - Fixed total raw item icons clipping out of the recipe tooltip. (https://forums.factorio.com/120059)
+    - Fixed unlimited building reach when train GUI was open from character view. (https://forums.factorio.com/121493)
+    - Fixed vehicles with portable roboports not being able to insert/remove equipment from themselves. (https://forums.factorio.com/127228)
+    - Fixed a potential stutter when stopping a variable music track. (https://forums.factorio.com/127454)
+    - Fixed variable music track intermezzo not being played correctly for subsequent tracks.
+    - Fixed the collision and selection boxes for many of the Gleba tree/fungi.
+    - Fixed a performance issue with lightning on explored planets. (https://forums.factorio.com/127611)
+    - Fixed tile auto-filling logic would sometimes ignore listed entities' (e.g. Asteroid collector's) buildability rules. (https://forums.factorio.com/127249)
+    - Fixed that picking rocket parts signal by pipette picked the item version of the signal, which wasn't compatible with the recipe version of the signal.
+    - Fixed that inserters could get stuck inserting items if the item spoiled into one of the crafting machines current recipe ingredients. (https://forums.factorio.com/127583)
+    - Fixed ghost (non-superforced) rotated fast replace of some fast replaceable entities that have rotation constrains after placement. (https://forums.factorio.com/100956)
+    - Fixed cutting both tile ghosts and non-(tile ghost) entities would remove the tile ghosts, despite not include them in resulting BP. (https://forums.factorio.com/127588)
+    - Fixed that remote equipment removal couldn't be cancelled. (https://forums.factorio.com/123069)
+    - Fixed that Ctrl+Click on empty equipment grid slot in remote view behaved unexpectedly. (https://forums.factorio.com/127251)
+    - Fixed production score script error when encountering recipe products of type "research-progress". (https://forums.factorio.com/125973)
+    - Fixed that trees on Gleba were taking damage from and absorbing spores. (https://forums.factorio.com/123472)
+    - Fixed that some tile types on Gleba were not absorbing spores.
+    - Fixed that the train control hint window was showing in remote view of other surfaces. (https://forums.factorio.com/118902)
+    - Fixed that undoing a fast replace would not restore wires. (https://forums.factorio.com/117356)
+    - Fixed a crash with rocket flying sound after a failed audio device switch.
+    - Fixed that it was possible to rotate blueprint with thrusters. (https://forums.factorio.com/125242)
+    - Fixed custom minimap widget would not restore zoom after save-load, would ignore zoom given during creation and would change zoom incorrectly when writing to zoom. (https://forums.factorio.com/127590)
+    - Fixed that canceling cliff deconstruction could break cliff deconstruction. (https://forums.factorio.com/127640)
+    - Fixed that manually placing a real entity on a ghost didn't set item requests properly. (https://forums.factorio.com/127575)
+    - Fixed a crash when drawing combinator with activity_led_sprites missing. (https://forums.factorio.com/127661)
+    - Fixed rocket target GUI was showing platforms unsorted. (https://forums.factorio.com/127668)
+    - Fixed platforms list not updating after platform was renamed. (https://forums.factorio.com/127666)
+    - Fixed crash related to boilers when configured to output fluid with lower temperature than default temperature of output fluid. (https://forums.factorio.com/124071)
+    - Fixed recipe raw for some gleba recipes would use some unexpected recipes to obtain spoilage. (https://forums.factorio.com/123147)
+    - Fixed decider's output constant was not covered by parametrisation. (https://forums.factorio.com/127695)
+    - Fixed display panel not updating rendered text after parametrisation. (https://forums.factorio.com/127694)
+    - Fixed consistency issue related to importing blueprint strings where assembler is given a recipe it cannot craft. (https://forums.factorio.com/127707)
+    - Fixed a crash when script tries to set deconstruction planner's entity filter to contain only quality condition. (https://forums.factorio.com/127716)
+    - Fixed a crash on saving when blueprint was made out of a train that contains a non temporary rail target. (https://forums.factorio.com/119656)
+    - Fixed util.rotate_position was working incorrectly. (https://forums.factorio.com/127725)
+    - Fixed changing deconstruction planner entity and tile filters by script would not replace all filters. (https://forums.factorio.com/127720)
+    - Fixed unit groups getting stuck while following a path, causing the units in the group to give up on their goal. (https://forums.factorio.com/127187)
+    - Changed asteroid spawning to be consistent regardless of what other game things are happening. (https://forums.factorio.com/127656)
+    - Fixed locomotive stop trigger being triggered repeatedly when hitting a disabled gate. (https://forums.factorio.com/126778)
+    - Fixed a crash when trying to open the logistics GUI while dead. (https://forums.factorio.com/127693)
+    - Fixed that galaxy of fame wasn't available when player died after winning the game. (https://forums.factorio.com/122394)
+    - Fixed that changing enemy expansion settings didn't update the enemy expansion map. (https://forums.factorio.com/113349)
+    - Fixed that choose elem button filters did not handle migrations at all. (https://forums.factorio.com/127652)
+    - Fixed that turrets could get stuck shooting at the wrong location when target-leading fast targets. (https://forums.factorio.com/127650)
+    - Fixed that entity quality conditions when rendering blueprints would render behind the entity. (https://forums.factorio.com/127724)
+    - Fixed importing upgrade planner string would not preserve fuel mappers. (https://forums.factorio.com/127742)
+    - Fixed potential crash when drawing an entity in the GUI at scale 0. (https://forums.factorio.com/127734)
+    - Fixed module slots configured in upgrade planner would not preserve positions when exported to a string. (https://forums.factorio.com/127742)
+    - Fixed various issues related to upgrade planner and Lua API. (https://forums.factorio.com/127745)
+    - Fixed programmable speaker alert quality wasn't shown in the alert slot. (https://forums.factorio.com/117363)
+    - Fixed it was not possible to use more than 6 recipe ingredients in blueprint parametrisation formulas. (https://forums.factorio.com/127748)
+    - Fixed it was not possible to configure infinity cargo wagon infinity filters in some cases. (https://forums.factorio.com/127743)
+    - Fixed that setting fluids on a FluidBox via Lua would give fluids to ghost entities, which would cause a consistency check failure. (https://forums.factorio.com/127733)
+    - Fixed space platform schedule was not updating logical operator when changed by other players. (https://forums.factorio.com/126828)
+    - Fixed manually changing upgrade target of entity was not covered by undo. (https://forums.factorio.com/126895)
+    - Fixed freeplay description was changing to space age freeplay even if space-age mod was not enabled. (https://forums.factorio.com/127215)
+    - Fixed some icons were not collected for galaxy of fame uploads. (https://forums.factorio.com/125306)
+  Modding:
+    - Added AirbornePollutantPrototype::damages_trees.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.42
 Date: 19. 03. 2025

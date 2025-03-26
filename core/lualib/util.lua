@@ -142,7 +142,9 @@ function util.moveposition(position, direction, distance)
   local direction_vector = util.direction_vectors[direction]
   if not direction_vector then error(direction .. " is not a valid or supported direction") end
 
-  return {position[1] + direction_vector[1] * distance, position[2] + direction_vector[2] * distance}
+  local x = position[1] or position.x
+  local y = position[2] or position.y
+  return {x + direction_vector[1] * distance, y + direction_vector[2] * distance}
 end
 
 -- orientation of 1 = 360 degrees
@@ -150,7 +152,8 @@ function util.rotate_position(position, orientation)
   local x = position[1] or position.x
   local y = position[2] or position.y
   local radians = orientation * 2 * math.pi
-  return {x = y * math.sin(radians) + x * math.cos(radians), y = y * math.cos(radians) + x * math.sin(radians)}
+  return {x = x * math.cos(radians) - y * math.sin(radians),
+          y = x * math.sin(radians) + y * math.cos(radians)}
 end
 
 function util.oppositedirection(direction)

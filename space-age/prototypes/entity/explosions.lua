@@ -114,7 +114,8 @@ data:extend
             speed = {0, -0.5},
             initial_height = 0.5,
             speed_from_center = 0.008,
-            speed_from_center_deviation = 0.015
+            speed_from_center_deviation = 0.015,
+            only_when_visible = true
           }
         }
       }

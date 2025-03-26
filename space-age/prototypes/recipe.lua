@@ -104,6 +104,7 @@ data:extend(
       {type = "item", name = "copper-bacteria", amount = 1, probability = 0.1 },
       {type = "item", name = "spoilage", amount = 1}
     },
+    main_product = "copper-bacteria",
     crafting_machine_tint =
     {
       primary = {r = 1.000, g = 0.457, b = 0.000, a = 1.000}, -- #ff7400ff
@@ -174,6 +175,7 @@ data:extend(
       {type = "item", name = "iron-bacteria", amount = 1, probability = 0.1 },
       {type = "item", name = "spoilage", amount = 4}
     },
+    main_product = "iron-bacteria",
     crafting_machine_tint =
     {
       primary = {r = 0.000, g = 0.500, b = 1.000, a = 1.000},

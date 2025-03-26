@@ -22,6 +22,7 @@ local on_space_platform_changed_state = function(event)
   script_data.finished[force.name] = true
 
   game.reset_game_state()
+  game.enable_galaxy_of_fame_button = true
   game.set_game_state
   {
     game_finished = true,
@@ -53,6 +54,10 @@ space_finish_script.events =
 
 space_finish_script.on_configuration_changed = function()
   storage.space_finish_script = storage.space_finish_script or script_data
+
+  if script_data.finished["player"] then
+    game.enable_galaxy_of_fame_button = true
+  end
 end
 
 space_finish_script.on_init = function()

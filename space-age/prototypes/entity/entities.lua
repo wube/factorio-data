@@ -793,7 +793,7 @@ data:extend({
   {
     type = "thruster",
     name = "thruster",
-    flags = {"placeable-neutral", "placeable-player", "player-creation"},
+    flags = {"placeable-neutral", "placeable-player", "player-creation", "not-rotatable"},
     icon = "__space-age__/graphics/icons/thruster.png",
     collision_box = {{-1.7, -2.2}, {1.7, 2.2}},
     collision_mask = {layers={item=true, object=true, train=true, is_lower_object = true, is_object = true}},
