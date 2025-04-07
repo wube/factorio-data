@@ -520,6 +520,7 @@ data:extend(
     space_platform_starfield_movement_vector = { 0, -0.02 },
     space_platform_max_size = {{-1000000, -200}, {1000000, 1000000}},
     space_platform_dump_cooldown = 30 * second,
+    space_platform_manual_dump_cooldown = 2 * second,
 
     default_item_weight = 100,
     rocket_lift_weight = 1000000, -- 1 000 kg
@@ -598,5 +599,9 @@ data:extend(
     starmap_orbit_disabled_color = {0.25, 0.25, 0.25},
 
     time_to_show_full_health_bar = 5,
+
+    capture_water_mask_at_layer = 200 -- need to capture water close to layer in which decals that need to be masked are rendered,
+                                      -- otherwise we risk that some tiles that are supposed to be under the decals and not mask them
+                                      -- would not be rendered yet and therefore would have value 0 in water mask
   }
 })

@@ -117,14 +117,16 @@ local gleba_tree_underwater_things =
 gleba_tree_underwater_things["yumako-tree"] = gleba_tree_underwater_things["hairyclubnub"]
 --]]
 
-local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift)
+local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift, reflection_shift)
   variation_count = variation_count or 5
   per_row = per_row or 5
   scale_multiplier = scale_multiplier or 1
   local width = width or 640
   local height = height or 560
   local variations = {}
+  local reflection_shift = reflection_shift or util.by_pixel(52, 80)
   local shift = shift or util.by_pixel(52, -40)
+ -- local reflection_shift = {shift[0], shift[1]} --or util.by_pixel(52, 40)
   for i = 1, variation_count do
     local x = ((i - 1) % per_row) * width
     local y = math.floor((i-1)/per_row) * height
@@ -184,8 +186,21 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
       },
 
       underwater       = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].underwater or nil,
-      water_reflection = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].water_reflection or nil,
-
+      --water_reflection = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].water_reflection or nil,
+      water_reflection = {
+        pictures = {
+        filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-effect-map.png",
+        --flags = { "mipmap" },
+        surface = "gleba",
+        width = width,
+        height = height,
+        x = x,
+        y = y,
+        --frame_count = 1,
+        shift = reflection_shift,
+        scale = 0.33 * scale_multiplier
+        }
+      } or nil,
       leaf_generation =
       {
         type = "create-particle",
@@ -1459,7 +1474,7 @@ data:extend(
       probability_expression = "min(0.8, (min(1, 1.5 * gleba_water_plant_ramp) + 0.5 * gleba_decal_noise - gleba_plants_noise - 0.5 * gleba_select(gleba_aux, 0.45, 0.55, 0.2, 0, 1) - 0.7) * control:gleba_plants:size)",
       richness_expression = 1,
     },
-    variations = gleba_tree_variations("water-cane", 16, 3, 1, 340, 290, util.by_pixel(30, -28)),
+    variations = gleba_tree_variations("water-cane", 16, 3, 1, 340, 290, util.by_pixel(30, -28), util.by_pixel(30, -20)),
     colors = minor_tints(),
     ambient_sounds =
     {

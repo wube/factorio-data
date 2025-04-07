@@ -2,6 +2,16 @@ character_animations =
 {
   level1 =
   {
+    dead_reflection = 
+    {
+      filename = "__base__/graphics/entity/character/level1_dead_effect_map.png",
+      width = 120,
+      height = 63,
+      shift = util.by_pixel(-7.0,-5.5),
+      frame_count = 2,
+      scale = 1,
+      usage = "player"
+    },
     dead =
     {
       filename = "__base__/graphics/entity/character/level1_dead.png",

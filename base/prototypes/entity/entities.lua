@@ -616,6 +616,21 @@ data:extend(
     hidden = true,
     open_sound = { filename = "__base__/sound/character-corpse-open.ogg", volume = 0.5 },
     close_sound = { filename = "__base__/sound/character-corpse-close.ogg", volume = 0.5 },
+    water_reflection =
+    {
+        pictures =
+        {
+          {
+            filename = "__base__/graphics/entity/character/level1_dead_effect_map.png",
+            width = 120,
+            height = 63,
+            --shift = util.by_pixel(-7.0,-5.5),
+            --frame_count = 2,
+            scale = 1,
+            usage = "player"
+          },
+        }
+      },
     pictures =
     {
       {
@@ -7351,8 +7366,8 @@ data:extend(
       usage_priority = "secondary-input"
     },
     impact_category = "metal",
-    open_sound = {filename = "__base__/sound/open-close/beacon-open.ogg", volume = 0.4},
-    close_sound = {filename = "__base__/sound/open-close/beacon-close.ogg", volume = 0.4},
+    open_sound = {filename = "__base__/sound/open-close/beacon-open.ogg", volume = 0.25},
+    close_sound = {filename = "__base__/sound/open-close/beacon-close.ogg", volume = 0.25},
     working_sound =
     {
       sound =

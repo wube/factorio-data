@@ -1431,11 +1431,15 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "molten-iron",
+    name = "molten-iron", -- TODO: to be renamed into "iron-ore-melting" in 2.1
+    localised_name = {"recipe-name.iron-ore-melting"},
+    icon = "__space-age__/graphics/icons/iron-ore-melting.png",
     category = "metallurgy",
     subgroup = "vulcanus-processes",
     order = "a[melting]-b[molten-iron]",
     auto_recycle = false,
+    show_amount_in_title = false,
+    always_show_products = true,
     enabled = false,
     ingredients =
     {
@@ -1453,11 +1457,15 @@ data:extend(
   },
   {
     type = "recipe",
-    name = "molten-copper",
+    name = "molten-copper", -- TODO: to be renamed into "copper-ore-melting" in 2.1
+    localised_name = {"recipe-name.copper-ore-melting"},
+    icon = "__space-age__/graphics/icons/copper-ore-melting.png",
     category = "metallurgy",
     subgroup = "vulcanus-processes",
     order = "a[melting]-c[molten-copper]",
     auto_recycle = false,
+    show_amount_in_title = false,
+    always_show_products = true,
     enabled = false,
     ingredients =
     {

@@ -367,7 +367,8 @@ data:extend(
                                               {
                                                 direction_count = 8,
                                                 back_equals_front = true,
-                                                scale = 0.5
+                                                scale = 0.5,
+                                                occludes_light = false
                                               }),
 
       water_reflection =

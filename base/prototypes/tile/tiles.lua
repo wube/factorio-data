@@ -130,6 +130,35 @@ function tile_variations_template_with_transitions(high_res_picture, options)
   return result
 end
 
+function tile_variations_template_with_transitions_and_effect_map(spritesheet, effect_map_spritesheet, options)
+  --effect_map_spritesheet = effect_map_spritesheet or "__base__/graphics/terrain/masks/transition-1.png"
+    local result = tile_variations_template_with_transitions(spritesheet, options)
+  
+    if result.transition then
+      result.transition.effect_map_layout =
+      {
+        spritesheet = effect_map_spritesheet,
+        scale = 0.5,
+        x = 0,
+        inner_corner_count = 8,
+        outer_corner_count = 8,
+        side_count         = 8,
+        u_transition_count = 1,
+        o_transition_count = 1,
+        inner_corner_y = 0,
+        outer_corner_y = 576,
+        side_y = 1152,
+        u_transition_y = 1728,
+        o_transition_y = 2304,
+        inner_corner_tile_height = 2,
+        outer_corner_tile_height = 2,
+        side_tile_height = 2,
+        u_transition_tile_height = 2,
+      }
+    end
+    return result
+  end
+
 function tile_variations_template_with_transitions_and_light(spritesheet, lightmap_spritesheet, options)
   local result = tile_variations_template_with_transitions(spritesheet, options)
 

@@ -303,7 +303,7 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = tile_sounds.walking.icy_snow,
+    walking_sound = tile_sounds.walking.snow,
     landing_steps_sound = tile_sounds.landing.snow,
     driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_high,
@@ -438,7 +438,7 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = tile_sounds.walking.snow,
+    walking_sound = tile_sounds.walking.icy_snow,
     landing_steps_sound = tile_sounds.landing.snow,
     driving_sound = tile_sounds.driving.snow,
     map_color = lerp_color_no_alpha(snow_map_color_high, snow_map_color_low, 0.7),
@@ -463,7 +463,7 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = tile_sounds.walking.snow,
+    walking_sound = tile_sounds.walking.icy_snow,
     landing_steps_sound = tile_sounds.landing.snow,
     driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_low,
@@ -496,7 +496,7 @@ data:extend({
     transitions = ice_transitions,
     transitions_between_transitions = ice_transitions_between_transitions,
 
-    walking_sound = tile_sounds.walking.snow,
+    walking_sound = tile_sounds.walking.icy_snow,
     landing_steps_sound = tile_sounds.landing.snow,
     driving_sound = tile_sounds.driving.snow,
     map_color = snow_map_color_low,

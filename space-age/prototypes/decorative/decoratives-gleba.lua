@@ -17,6 +17,8 @@ local decorative_trigger_effects = require("__base__.prototypes.decorative.decor
 ]]
 
 local decal_tile_layer = 255
+local decal_opacity_over_water = 0.4
+local water_decal_opacity_over_water = 0.7
 
 -- All gleba tiles must be in the land or water lists. (Shallow water is water)
 -- they must be global scope for a later test.
@@ -297,6 +299,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     { -- process: survival_chance + subtype_selection_band_of: (region_box - small_scale_knockout)
       order = "d[decorative]-c[trivial]-c[cover]-c[outer]",
@@ -314,6 +317,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-b[mid-ring]",
@@ -331,6 +335,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-a[inner]",
@@ -347,6 +352,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-d[cups]-c[outer]",
@@ -363,6 +369,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-d[cups]-b[mid-ring]",
@@ -379,6 +386,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-d[cups]-a[inner]",
@@ -440,6 +448,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     { -- process: survival_chance + subtype_selection_band_of: (region_box - small_scale_knockout)
       tile_restriction = gleba_land_tiles,
@@ -457,6 +466,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       tile_restriction = gleba_land_tiles,
@@ -474,6 +484,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       tile_restriction = gleba_land_tiles,
@@ -491,6 +502,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = water_decal_opacity_over_water,
     autoplace =
     { -- process: survival_chance + subtype_selection_band_of: (region_box - small_scale_knockout)
       order = "d[decorative]-c[trivial]-c[cover]-c[outer]",
@@ -508,6 +520,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = water_decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-b[mid-ring]",
@@ -525,6 +538,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = water_decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-a[inner]",
@@ -1035,6 +1049,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace = {
       probability_expression = "grpi(0.5) + gleba_select(gleba_mycelium - clamp(gleba_decorative_knockout, 0, 1), 0.1, 2, 0.2, 0, 1)"
@@ -1052,6 +1067,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace = {
       probability_expression = "grpi(0.5) + gleba_select(gleba_veins - clamp(gleba_decorative_knockout, 0, 1), -0.1, 0.3, 0.1, 0, 1)"
@@ -1066,6 +1082,7 @@ data:extend{
     collision_mask = dec_default_collision(),
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace = {
       probability_expression = "grpi(0.5) + gleba_select(gleba_veins - clamp(gleba_decorative_knockout, 0, 1), 0.3, 2, 0.1, 0, 1)"
@@ -1174,6 +1191,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
       probability_expression = "grpi(0.08) + gleba_select(gleba_grey_cracked_mud - clamp(gleba_decorative_knockout, 0, 1), 0.1, 2, 0.1, 0, 1)"
     },
@@ -1717,6 +1735,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water / 2,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace = {
       tile_restriction = gleba_land_tiles,
@@ -1735,6 +1754,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     autoplace = {
       probability_expression = 0
@@ -1753,6 +1773,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-d[cups]-c[outer]",
@@ -1772,6 +1793,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-d[cups]-b[mid-ring]",
@@ -1790,6 +1812,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-d[cups]-a[inner]",
@@ -1808,6 +1831,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     { -- process: survival_chance + subtype_selection_band_of: (region_box - small_scale_knockout)
       order = "d[decorative]-c[trivial]-c[cover]-c[outer]",
@@ -1827,6 +1851,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-b[mid-ring]",
@@ -1846,6 +1871,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-a[inner]",
@@ -1865,6 +1891,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = water_decal_opacity_over_water,
     autoplace =
     { -- process: survival_chance + subtype_selection_band_of: (region_box - small_scale_knockout)
       order = "d[decorative]-c[trivial]-c[cover]-c[outer]",
@@ -1883,6 +1910,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = water_decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-b[mid-ring]",
@@ -1901,6 +1929,7 @@ data:extend{
     trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer,
+    opacity_over_water = water_decal_opacity_over_water,
     autoplace =
     {
       order = "d[decorative]-c[trivial]-c[cover]-a[inner]",
@@ -2290,35 +2319,36 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
       probability_expression = 0
     },
     pictures =
     {
-      --NERV-dense
+      --NERVE-dense
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-dense-01.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-dense-01.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-dense-02.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-dense-02.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-dense-03.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-dense-03.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-dense-04.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-dense-04.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
@@ -2337,35 +2367,36 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
       probability_expression = 0
     },
     pictures =
     {
-      --NERV-light
+      --NERVE-light
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-light-01.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-light-01.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-light-02.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-light-02.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-light-03.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-light-03.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots/nerv-root-light-04.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots/nerve-root-light-04.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
@@ -2374,9 +2405,9 @@ data:extend{
 
     }
   },
- -- NERVE ROOTS VEINS DENSE
+ -- RED NERVE ROOTS VEINS DENSE
   {
-    name = "nerve-roots-veins-dense",
+    name = "red-nerve-roots-veins-dense",
     type = "optimized-decorative",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
@@ -2384,36 +2415,37 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
-      tile_restriction = gleba_land_tiles,
+      tile_restriction = {"lowland-red-vein-2", "lowland-red-vein-3", "lowland-red-vein-4"},
       probability_expression = "grpi(0.2) + gleba_select(gleba_nerve_veins + gleba_temperature_normalised  - clamp(gleba_decorative_knockout, 0, 1), 0.6, 2, 0.1, 0, 1)",
     },
     pictures =
     {
-      --NERV-dense
+      --NERVE-dense
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-dense-01.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-dense-01.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-dense-02.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-dense-02.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-dense-03.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-dense-03.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-dense-04.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-dense-04.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
@@ -2422,9 +2454,9 @@ data:extend{
 
     }
   },
- -- NERVE ROOTS VEINS SPARSE
+ -- RED NERVE ROOTS VEINS SPARSE
   {
-    name = "nerve-roots-veins-sparse",
+    name = "red-nerve-roots-veins-sparse",
     type = "optimized-decorative",
     order = "b[decorative]-b[red-desert-decal]",
     collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
@@ -2432,42 +2464,232 @@ data:extend{
     walking_sound = base_tile_sounds.walking.plant,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
-      tile_restriction = gleba_land_tiles,
+      tile_restriction = {"lowland-red-vein-2", "lowland-red-vein-3", "lowland-red-vein-4"},
       probability_expression = "grpi(0.2) + gleba_select(gleba_nerve_veins + gleba_temperature_normalised  - clamp(gleba_decorative_knockout, 0, 1), 0.2, 0.6, 0.2, 0, 1)",
     },
     pictures =
     {
-      --NERV-sparse
+      --NERVE-sparse
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-light-01.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-light-01.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-light-02.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-light-02.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-light-03.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-light-03.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
       {
-        filename = "__space-age__/graphics/decorative/nerv-roots-veins/nerv-root-veins-light-04.png",
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/red-nerve-root-veins-light-04.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+    }
+  },
+  -- PURPLE NERVE ROOTS VEINS DENSE
+  {
+    name = "purple-nerve-roots-veins-dense",
+    type = "optimized-decorative",
+    order = "b[decorative]-b[red-desert-decal]",
+    collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    collision_mask = dec_default_collision(),
+    render_layer = "decals",
+    tile_layer = decal_tile_layer - 1,
+    opacity_over_water = 1 - ((1 - decal_opacity_over_water) / 2),
+    autoplace = {
+      tile_restriction = {"wetland-jellynut"},
+      probability_expression = "grpi(0.1) + gleba_select(gleba_nerve_veins + gleba_temperature_normalised  - clamp(gleba_decorative_knockout, 0, 1), 0.2, 0.6, 0.2, 0, 0.8)",
+    },
+    pictures =
+    {
+      --NERVE-dense
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-dense-01.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-dense-02.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-dense-03.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-dense-04.png",
         width = 1536,
         height = 990,
         shift = util.by_pixel(0, -0.25),
         scale = 0.5
       },
 
+    }
+  },
+ -- PURPLE NERVE ROOTS VEINS SPARSE
+  {
+    name = "purple-nerve-roots-veins-sparse",
+    type = "optimized-decorative",
+    order = "b[decorative]-b[red-desert-decal]",
+    collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    collision_mask = dec_default_collision(),
+    render_layer = "decals",
+    tile_layer = decal_tile_layer - 1,
+    opacity_over_water = 1 - ((1 - decal_opacity_over_water) / 2),
+    autoplace = {
+      tile_restriction = {"wetland-jellynut", "lowland-red-vein-dead", "wetland-red-tentacle"},
+      probability_expression = "grpi(0.1) + gleba_select(gleba_nerve_veins + gleba_temperature_normalised  - clamp(gleba_decorative_knockout, 0, 1), 0.2, 0.6, 0.2, 0, 1)",
+    },
+    pictures =
+    {
+      --NERVE-sparse
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-light-01.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-light-02.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-light-03.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/purple-nerve-root-veins-light-04.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+    }
+  },
+  -- CREAM NERVE ROOTS VEINS DENSE
+  {
+    name = "cream-nerve-roots-veins-dense",
+    type = "optimized-decorative",
+    order = "b[decorative]-b[red-desert-decal]",
+    collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    collision_mask = dec_default_collision(),
+    render_layer = "decals",
+    tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
+    autoplace = {
+      tile_restriction = {"lowland-cream-red", "lowland-red-vein", "lowland-red-infection"},
+      probability_expression = "grpi(0.2) + gleba_select(gleba_nerve_veins + gleba_temperature_normalised  - clamp(gleba_decorative_knockout, 0, 1), 0.6, 2, 0.1, 0, 1)",
+    },
+    pictures =
+    {
+      --NERVE-dense
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-dense-01.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-dense-02.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-dense-03.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-dense-04.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+
+    }
+  },
+ -- CREAM NERVE ROOTS VEINS SPARSE
+  {
+    name = "cream-nerve-roots-veins-sparse",
+    type = "optimized-decorative",
+    order = "b[decorative]-b[red-desert-decal]",
+    collision_box = {{-2.5, -2.5}, {2.5, 2.5}},
+    collision_mask = dec_default_collision(),
+    render_layer = "decals",
+    tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
+    autoplace = {
+      tile_restriction = {"lowland-cream-cauliflower", "lowland-dead-skin", "lowland-cream-red", "lowland-red-vein", "lowland-red-infection"},
+      probability_expression = "grpi(0.2) + gleba_select(gleba_nerve_veins + gleba_temperature_normalised  - clamp(gleba_decorative_knockout, 0, 1), 0.2, 0.6, 0.2, 0, 1)",
+    },
+    pictures =
+    {
+      --NERVE-sparse
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-light-01.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-light-02.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-light-03.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
+      {
+        filename = "__space-age__/graphics/decorative/nerve-roots-veins/cream-nerve-root-veins-light-04.png",
+        width = 1536,
+        height = 990,
+        shift = util.by_pixel(0, -0.25),
+        scale = 0.5
+      },
     }
   },
  -- WHITE CARPET GRASS
@@ -2596,6 +2818,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
       tile_restriction = gleba_land_tiles,
       probability_expression = "grpi(0.2) + gleba_select(gleba_barnacles - clamp(gleba_decorative_knockout, 0, 1), 0.2, 2, 0.1, 0, 1)"
@@ -2828,6 +3051,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
       tile_restriction = gleba_land_tiles,
       probability_expression = "gleba_coral_stunted_grey"
@@ -3060,6 +3284,7 @@ data:extend{
     walking_sound = base_tile_sounds.walking.mud,
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = {
       tile_restriction = gleba_land_tiles,
       probability_expression = "min(0.2, gleba_coral_stunted)"
@@ -3162,6 +3387,7 @@ data:extend{
     collision_box = {{-0.2, -0.2}, {0.2, 0.2}},
     render_layer = "decals",
     tile_layer = 10, -- above water tiles, blow land tiles
+    -- opacity_over_water = decal_opacity_over_water,
     pictures =
     {
       {
@@ -3226,6 +3452,7 @@ data:extend{
     -- trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = { -- based on funnel trunk
       probability_expression = "2 * gleba_funnel_trunk_region"
     },
@@ -3242,6 +3469,7 @@ data:extend{
     -- trigger_effect = decorative_trigger_effects.brown_carpet_grass(),
     render_layer = "decals",
     tile_layer = decal_tile_layer - 1,
+    opacity_over_water = decal_opacity_over_water,
     autoplace = { -- based on boom puff
       probability_expression = "2 * gleba_boompuff_region"
     },
@@ -3313,7 +3541,7 @@ data:extend{
         filename = "__space-age__/graphics/entity/stromatolite/iron/stromatolite-04.png",
         width = 216,
         height = 110,
-        shift = {0.390625, 0.0},
+        shift = {0.30625, 0.0},
         scale = 0.4
       },
       {
@@ -3400,6 +3628,124 @@ data:extend{
         shift = {0.351562, -0.1},
         scale = 0.4
       }
+    },
+    water_reflection =
+    {
+      pictures =
+        {
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-01-effect-map.png",
+            width = 96,
+            height = 92,
+            shift = {0.304688, -0.3},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-02-effect-map.png",
+            width = 78,
+            height = 92,
+            shift = {0.0, 0.3},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-03-effect-map.png",
+            width = 70,
+            height = 91,
+            shift = {0.151562, 0.1},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-04-effect-map.png",
+            width = 88,
+            height = 94,
+            shift = {0.390625, 0.3},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-05-effect-map.png",
+            width = 77,
+            height = 92,
+            shift = {0.328125, 0.0703125},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-06-effect-map.png",
+            width = 77,
+            height = 92,
+            shift = {0.16875, 0.1},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-07-effect-map.png",
+            width = 94,
+            height = 93,
+            shift = {0.3, 0.0},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-08-effect-map.png",
+            width = 63,
+            height = 93,
+            shift = {0.0, 0.2},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-09-effect-map.png",
+            width = 79,
+            height = 93,
+            shift = {0.1, 0.2},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-10-effect-map.png",
+            width = 93,
+            height = 93,
+            shift = {0.325, -0.1},
+            scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-11-effect-map.png",
+            width = 95,
+            height = 93,
+            shift = {0.453125, 0.2},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-12-effect-map.png",
+            width = 92,
+            height = 92,
+            shift = {0.3, 0.1},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-13-effect-map.png",
+            width = 76,
+            height = 93,
+            shift = {0.0703125, 0.3},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-14-effect-map.png",
+            width = 63,
+            height = 93,
+            shift = {0.160938, 0.2},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-15-effect-map.png",
+            width = 101,
+            height = 92,
+            shift = {0.242188, -0.1},
+          scale = 0.8
+          },
+          {
+            filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-16-effect-map.png",
+            width = 88,
+            height = 92,
+            shift = {0.1, -0.1},
+          scale = 0.8
+          }
+        }
     }
   },
  -- COPPER STROMATOLITE
@@ -3555,6 +3901,124 @@ data:extend{
         shift = {0.351562, -0.1},
         scale = 0.4
       }
-    }
+    },
+    water_reflection =
+      {
+        pictures =
+          {
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-01-effect-map.png",
+              width = 96,
+              height = 92,
+              shift = {0.304688, -0.3},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-02-effect-map.png",
+              width = 78,
+              height = 92,
+              shift = {0.0, 0.3},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-03-effect-map.png",
+              width = 70,
+              height = 91,
+              shift = {0.151562, 0.1},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-04-effect-map.png",
+              width = 88,
+              height = 94,
+              shift = {0.30625, 0.3},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-05-effect-map.png",
+              width = 77,
+              height = 92,
+              shift = {0.328125, 0.0703125},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-06-effect-map.png",
+              width = 77,
+              height = 92,
+              shift = {0.16875, 0.1},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-07-effect-map.png",
+              width = 94,
+              height = 93,
+              shift = {0.3, 0.0},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-08-effect-map.png",
+              width = 63,
+              height = 93,
+              shift = {0.0, 0.2},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-09-effect-map.png",
+              width = 79,
+              height = 93,
+              shift = {0.1, 0.2},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-10-effect-map.png",
+              width = 93,
+              height = 93,
+              shift = {0.325, -0.1},
+              scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-11-effect-map.png",
+              width = 95,
+              height = 93,
+              shift = {0.453125, 0.2},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-12-effect-map.png",
+              width = 92,
+              height = 92,
+              shift = {0.3, 0.1},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-13-effect-map.png",
+              width = 76,
+              height = 93,
+              shift = {0.0703125, 0.3},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-14-effect-map.png",
+              width = 63,
+              height = 93,
+              shift = {0.160938, 0.2},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-15-effect-map.png",
+              width = 101,
+              height = 92,
+              shift = {0.242188, -0.1},
+            scale = 0.8
+            },
+            {
+              filename = "__space-age__/graphics/entity/stromatolite/copper/stromatolite-16-effect-map.png",
+              width = 88,
+              height = 92,
+              shift = {0.1, -0.1},
+            scale = 0.8
+            }
+          }
+      }
   }
 }

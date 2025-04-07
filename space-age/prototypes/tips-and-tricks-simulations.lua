@@ -1110,9 +1110,9 @@ simulations.gleba_briefing =
       table.insert(create_list, { name = "pale-lettuce-lichen-cups-6x6", position = position, amount = 1})
     end
 
-    table.insert(create_list, { name = "nerve-roots-veins-dense", position = {3, -9}, amount = 1 })
+    table.insert(create_list, { name = "cream-nerve-roots-veins-dense", position = {3, -9}, amount = 1 })
 
-    table.insert(create_list, { name = "nerve-roots-veins-sparse", position = {-12, 6}, amount = 1 })
+    table.insert(create_list, { name = "cream-nerve-roots-veins-sparse", position = {-12, 6}, amount = 1 })
 
     for k, position in pairs ({{-11, -6}, {-8, -6}, {-12, -4}, {-11, -5}, {-10, -5}, {-11, -4}, {-10, -4}, {-6, -5}, {-12, -2},
                                {-10, -3}, {-10, -2}, {-8, -3}, {-9, -2}, {-7, -3}, {-10, -1}}) do

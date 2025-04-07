@@ -35,10 +35,32 @@ local function lowland_tile_variations_template_with_transitions_and_puddle_tran
       u_transition_x = 1728,
       o_transition_x = 2304
     }
+    result.transition.effect_map_layout =
+    {
+      spritesheet =  "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
+      scale = 0.5,
+      x = 0,
+      inner_corner_count = 8,
+      outer_corner_count = 8,
+      side_count         = 8,
+      u_transition_count = 1,
+      o_transition_count = 1,
+      inner_corner_y = 0,
+      outer_corner_y = 576,
+      side_y = 1152,
+      u_transition_y = 1728,
+      o_transition_y = 2304,
+      inner_corner_tile_height = 2,
+      outer_corner_tile_height = 2,
+      side_tile_height = 2,
+      u_transition_tile_height = 2,
+    }
   end
 
   return result
 end
+
+
 
 data:extend({
   {
@@ -58,8 +80,9 @@ data:extend({
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
-    variants = tile_variations_template_with_transitions(
+    variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/artificial-yumako-soil.png",
+      "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
       {
         max_size = 4,
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -92,8 +115,9 @@ data:extend({
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
-    variants = tile_variations_template_with_transitions(
+    variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/overgrowth-yumako-soil.png",
+      "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
       {
         max_size = 4,
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -193,8 +217,9 @@ data:extend({
     trigger_effect = tile_trigger_effects.landfill_trigger_effect(),
 
     sprite_usage_surface = "gleba",
-    variants = tile_variations_template_with_transitions(
+    variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/natural-yumako-soil.png",
+      "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
       {
         max_size = 4,
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -236,8 +261,9 @@ data:extend({
       }
     },]]
     sprite_usage_surface = "gleba",
-    variants = tile_variations_template_with_transitions(
+    variants = tile_variations_template_with_transitions_and_effect_map(
       "__space-age__/graphics/terrain/natural-jellynut-soil.png",
+      "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
       {
         max_size = 4,
         [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -826,8 +852,9 @@ data:extend({
         layer = gleba_tile_offset + 8,
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.55, 0.65, 0.15, 0, 1) - 0.2 * gleba_temperature_normalised"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/cracked-lichen.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -856,8 +883,9 @@ data:extend({
         layer = gleba_tile_offset + 9,
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.45, 0.55, 0.15, 0, 1) + 0.2 * gleba_temperature_normalised"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/cracked-lichen-dull.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -886,8 +914,9 @@ data:extend({
         layer = gleba_tile_offset,
         autoplace = {probability_expression = "max(1.08 * gleba_midland * gleba_select(gleba_aux, 0, 0.55, 0.1, 0, 1), 1.15 * gleba_highland) + 0.3 * (gleba_plants_noise_b - 0.7)"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/cracked-lichen-dark.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -915,8 +944,9 @@ data:extend({
         collision_mask = tile_collision_masks.ground(),
         layer = gleba_tile_offset + 10,
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/midland-turquoise-bark-2.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -944,8 +974,9 @@ data:extend({
         collision_mask = tile_collision_masks.ground(),
         layer = gleba_tile_offset + 11,
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/midland-turquoise-bark.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -976,8 +1007,9 @@ data:extend({
         layer = gleba_tile_offset + 12,
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.65, 1, 0.1, 0, 1)"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/starburst-lichen-3.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1006,8 +1038,9 @@ data:extend({
         layer = gleba_tile_offset + 13,
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.8, 1, 0.15, 0, 1) * (0.93 + 0.1 * gleba_select(gleba_moisture, 0.5, 0.5, 0.25, 0, 1) - 0.1 * gleba_temperature_normalised)"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/starburst-lichen-2.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1036,8 +1069,9 @@ data:extend({
         layer = gleba_tile_offset + 14,
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.7, 1, 0.1, 0, 1) * (1 + 0.1 * (gleba_aux - 0.75) + 0.05 * gleba_plants_noise_b)"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/starburst-lichen.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1066,8 +1100,9 @@ data:extend({
         layer = gleba_tile_offset + 15,
         autoplace = {probability_expression = "gleba_midland * gleba_select(gleba_aux, 0.8, 1, 0.15, 0, 1) * (0.9 + 0.1 * gleba_select(gleba_moisture, 0.25, 0.25, 0.25, 0, 1) + 0.1 * gleba_temperature_normalised)"},
         sprite_usage_surface = "gleba",
-        variants = tile_variations_template_with_transitions(
+        variants = tile_variations_template_with_transitions_and_effect_map(
           "__space-age__/graphics/terrain/gleba/starburst-lichen-4.png",
+          "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
           {
             max_size = 4,
             [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1098,8 +1133,9 @@ data:extend({
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset + 16,
       sprite_usage_surface = "gleba",
-      variants = tile_variations_template_with_transitions(
+      variants = tile_variations_template_with_transitions_and_effect_map(
         "__space-age__/graphics/terrain/gleba/highland-dark-rock.png",
+        "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
         {
           max_size = 4,
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1127,8 +1163,9 @@ data:extend({
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset + 17,
       sprite_usage_surface = "gleba",
-      variants = tile_variations_template_with_transitions(
+      variants = tile_variations_template_with_transitions_and_effect_map(
         "__space-age__/graphics/terrain/gleba/highland-dark-rock-2.png",
+        "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
         {
           max_size = 4,
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1156,8 +1193,9 @@ data:extend({
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset + 18,
       sprite_usage_surface = "gleba",
-      variants = tile_variations_template_with_transitions(
+      variants = tile_variations_template_with_transitions_and_effect_map(
         "__space-age__/graphics/terrain/gleba/highland-yellow-rock.png",
+        "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
         {
           max_size = 4,
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1185,8 +1223,9 @@ data:extend({
       collision_mask = tile_collision_masks.ground(),
       layer = gleba_tile_offset - 1,
       sprite_usage_surface = "gleba",
-      variants = tile_variations_template_with_transitions(
+      variants = tile_variations_template_with_transitions_and_effect_map(
         "__space-age__/graphics/terrain/gleba/pit-rock.png",
+        "__space-age__/graphics/terrain/effect-maps/water-gleba-mask.png",
         {
           max_size = 4,
           [1] = { weights = {0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },
@@ -1236,10 +1275,8 @@ data:extend({
     lowland_fog = true,
     effect = "wetland-green",
     fluid = "water",
-    effect_color = { 126, 118, 37 },
+    effect_color = { 74, 67, 38 },
     effect_color_secondary = { 117, 110, 38 },
-    --    effect_color = { 40*2, 38*2, 25 },
-    -- effect_color_secondary = {77*2, 72*2, 52},
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
     layer_group = "water-overlay",
     layer = 3,
@@ -1284,10 +1321,8 @@ data:extend({
     fluid = "water",
     lowland_fog = true,
     effect = "wetland-purple",
-    effect_color = { 58, 25, 61 },
+    effect_color = { 83, 42, 56 },
     effect_color_secondary = { 91, 45, 88 },
-    --effect_color = { 40*1.5, 38, 25*2 },
-    --effect_color_secondary = {77*1.5, 72, 52*2},
     layer_group = "water-overlay",
     particle_tints = tile_graphics.gleba_mud_water_particle_tints,
     layer_group = "water",
@@ -1522,9 +1557,7 @@ data:extend({
     autoplace = {probability_expression = "gleba_shallows_aux_3 + 2 * min(gleba_select(gleba_aux, 0.7, 2, 0.005, 0, 1), gleba_rockpools_shallow)"},
     lowland_fog = true,
     effect = "wetland-pink",
-    --effect_color = { 92, 54, 64 },
-    --effect_color_secondary = { 49, 80, 14 },
-    effect_color = { 72, 45, 62 },
+    effect_color = { 69, 53, 78 },
     effect_color_secondary = { 49, 80, 14 },
     map_color = { 54, 15, 24 },
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
@@ -1566,7 +1599,7 @@ data:extend({
     autoplace = {probability_expression = "gleba_shallows_edge_aux_3"},
     lowland_fog = true,
     effect = "wetland-pink",
-    effect_color = { 98, 58, 72 },
+    effect_color = { 85, 64, 88 },
     effect_color_secondary = { 60, 60, 40 },
     map_color = { 64, 19, 34 },
     particle_tints = tile_graphics.gleba_shallow_water_particle_tints,
@@ -1700,6 +1733,7 @@ data:extend({
     water =
     {
       shader_variation = "wetland-water",
+      lightmap_alpha = 0, -- needed for water mask
       textures =
       {
         {
@@ -1729,7 +1763,7 @@ data:extend({
 
       dark_threshold = { 0.3, 0.3 },
       reflection_threshold = { 1, 1 },
-      specular_threshold = { 0.1, 0.25 },
+      specular_threshold = { 0.19, 0.25 },
 
       near_zoom = 1 / 16,
       far_zoom = 1 / 16,
@@ -1742,6 +1776,7 @@ data:extend({
     water =
     {
       shader_variation = "wetland-water",
+      lightmap_alpha = 0, -- needed for water mask
       textures =
       {
         {
@@ -1771,7 +1806,7 @@ data:extend({
 
       dark_threshold = { 0.1, 0.1 },
       reflection_threshold = { 1, 1 },
-      specular_threshold = { 0.1, 0.25 },
+      specular_threshold = { 0.19, 0.25 },
 
       near_zoom = 1 / 16,
       far_zoom = 1 / 16,
@@ -1784,6 +1819,7 @@ data:extend({
     water =
     {
       shader_variation = "wetland-water",
+      lightmap_alpha = 0, -- needed for water mask
       textures =
       {
         {
@@ -1813,7 +1849,7 @@ data:extend({
 
       dark_threshold = { 0.1, 0.1 },
       reflection_threshold = { 1, 1 },
-      specular_threshold = { 0.1, 0.25 },
+      specular_threshold = { 0.19, 0.25 },
 
       near_zoom = 1 / 16,
       far_zoom = 1 / 16,
@@ -1826,6 +1862,7 @@ data:extend({
     water =
     {
       shader_variation = "wetland-water",
+      lightmap_alpha = 0, -- needed for water mask
       textures =
       {
         {
@@ -1855,7 +1892,7 @@ data:extend({
 
       dark_threshold = { 0.1, 0.1 },
       reflection_threshold = { 1, 1 },
-      specular_threshold = { 0.1, 0.25 },
+      specular_threshold = { 0.19, 0.25 },
 
       near_zoom = 1 / 16,
       far_zoom = 1 / 16,
@@ -1868,6 +1905,7 @@ data:extend({
     water =
     {
       shader_variation = "wetland-water",
+      lightmap_alpha = 0, -- needed for water mask
       textures =
       {
         {
@@ -1886,7 +1924,6 @@ data:extend({
       secondary_texture_variations_columns = 4,
       secondary_texture_variations_rows = 2,
 
-
       animation_speed = 1.5,
       animation_scale = { 1.5, 1.5 },
       tick_scale = 6,
@@ -1897,7 +1934,7 @@ data:extend({
 
       dark_threshold = { 0.6, 0.6 },
       reflection_threshold = { 1, 1 },
-      specular_threshold = { 0.1, 0.25 },
+      specular_threshold = { 0.19, 0.25 },
 
       near_zoom = 1 / 16,
       far_zoom = 1 / 16,

@@ -310,8 +310,8 @@ sounds.armor_open = { filename = "__base__/sound/armor-open.ogg", volume = 0.8 }
 sounds.armor_close = { filename = "__base__/sound/armor-close.ogg", volume = 0.8 }
 sounds.artillery_open = { filename = "__base__/sound/artillery-open.ogg", volume = 0.57 }
 sounds.artillery_close = { filename = "__base__/sound/artillery-close.ogg", volume = 0.6 }
-sounds.cargo_wagon_open = { filename = "__base__/sound/cargo-wagon-open.ogg", volume = 0.55 }
-sounds.cargo_wagon_close = { filename = "__base__/sound/cargo-wagon-close.ogg", volume = 0.54 }
+sounds.cargo_wagon_open = { filename = "__base__/sound/cargo-wagon-open.ogg", volume = 0.27 }
+sounds.cargo_wagon_close = { filename = "__base__/sound/cargo-wagon-close.ogg", volume = 0.27 }
 sounds.combinator_open = { filename = "__base__/sound/open-close/combinator-open.ogg", volume = 0.55 }
 sounds.combinator_close = { filename = "__base__/sound/open-close/combinator-close.ogg", volume = 0.54 }
 sounds.drill_open = { filename = "__base__/sound/open-close/drill-open.ogg", volume = 0.9 }

@@ -6091,6 +6091,40 @@ local explosions =
     }
     --]]
   },
+  {
+    type = "explosion",
+    name = "nuke-effects-nauvis",
+    flags = {"not-on-map"},
+    hidden = true,
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/atomic-bomb.png"}
+    },
+    order = "a-d-a-a",
+    subgroup = "explosions",
+    height = 0,
+    animations = util.empty_sprite(),
+    -- Add surface conditions here to restrict the normal tile effects
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "set-tile",
+            tile_name = "nuclear-ground",
+            radius = 12,
+            apply_projection = true,
+            tile_collision_mask = { layers={water_tile=true} }
+          }
+        }
+      }
+    }
+  },
 
   {
     type = "explosion",

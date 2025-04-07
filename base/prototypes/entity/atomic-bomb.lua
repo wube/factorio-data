@@ -368,17 +368,17 @@ data:extend({
         type = "instant",
         target_effects =
         {
-          {
-            type = "set-tile",
-            tile_name = "nuclear-ground",
-            radius = 12,
-            apply_projection = true,
-            tile_collision_mask = { layers={water_tile=true} }
-          },
-          {
+          { -- Destroy cliffs before changing tiles (so the cliff achievement works)
             type = "destroy-cliffs",
             radius = 9,
             explosion_at_trigger = "explosion"
+          },
+          -- Explosion entities for other surface-specific effects are added here
+          {
+            type = "create-entity",
+            check_buildability = true,
+            -- This entity can have surface conditions
+            entity_name = "nuke-effects-nauvis"
           },
           {
             type = "create-entity",

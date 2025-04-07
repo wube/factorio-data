@@ -2779,6 +2779,16 @@ data:extend(
       flags = {"icon"},
       invert_colors = true
     },
+    equipment_grid_small =
+    {
+      filename = "__core__/graphics/icons/mip/equipment-grid-white-small.png",
+      priority = "extra-high-no-scale",
+      mipmap_count = 1,
+      size = 56,
+      scale = 1,
+      flags = {"icon"},
+      invert_colors = true
+    },
     expand_dots =
     {
       filename = "__core__/graphics/icons/mip/open-panel-options-8x16-white.png",

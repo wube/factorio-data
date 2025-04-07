@@ -55,7 +55,8 @@ local remnants =
                                         {
                                           direction_count = 2,
                                           back_equals_front = true,
-                                          scale = 0.5
+                                          scale = 0.5,
+                                          occludes_light = false
                                         }),
 
     water_reflection =
@@ -106,7 +107,8 @@ local remnants =
                                           dice_y = 2,
                                           direction_count = 4,
                                           counterclockwise = true,
-                                          scale = 0.5
+                                          scale = 0.5,
+                                          occludes_light = false
                                         }),
 
     water_reflection =

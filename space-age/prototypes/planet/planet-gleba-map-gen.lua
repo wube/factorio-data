@@ -711,12 +711,12 @@ data:extend{
   {
     type = "noise-expression",
     name = "gleba_coral_stunted_grey",
-    expression = "gleba_select(gleba_aux, 0.45, 0.65, 0.1, -10, 1) - (gleba_elevation - 2) / 5 + 0.25 * gleba_decorative_knockout - 0.8",
+    expression = "min(0.15, gleba_select(gleba_aux, 0.45, 0.65, 0.1, -10, 1) - (gleba_elevation - 2) / 5 + 0.25 * gleba_decorative_knockout - 0.8)",
   },
   {
     type = "noise-expression",
     name = "gleba_coral_stunted",
-    expression = "gleba_select(gleba_aux, 0.65, 1, 0.1, -10, 1) - (gleba_elevation - 2) / 5 + 0.25 * gleba_decorative_knockout - 0.8",
+    expression = "min(0.15, gleba_select(gleba_aux, 0.65, 1, 0.1, -10, 1) - (gleba_elevation - 2) / 5 + 0.25 * gleba_decorative_knockout - 0.8)",
   },
 
   -- cover groups

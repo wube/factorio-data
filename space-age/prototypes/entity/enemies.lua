@@ -3804,10 +3804,36 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
       tile_width = 3,
       tile_height = 3,
       selectable_in_game = false,
-      time_before_removed = 60 * 60 * 1, -- 3 minutes
+      time_before_removed = 60 * 60,
       remove_on_tile_placement = true,
       decay_frame_transition_duration = 50,
       use_decay_layer = true,
+      water_reflection =
+      {
+        pictures =
+        --for some reason these load only the 2nd variant of corpses, so that variant is prioritised for water reflections
+        {
+          {
+            filename = "__space-age__/graphics/entity/stomper/stomper-corpse-effect-map-2.png",
+            width = 189,
+            height = 134,
+            shift = util.by_pixel(-5,0),
+            --frame_count = 1,
+            scale = 0.4 * 4 * stomper_scale,
+            usage = "player"
+          },
+          {
+            filename = "__space-age__/graphics/entity/stomper/stomper-corpse-effect-map-1.png",
+            width = 189,
+            height = 134,
+            shift = util.by_pixel(0,0),
+            --frame_count = 1,
+            scale = 0.4 * 4 * stomper_scale,
+            usage = "player"
+          },
+
+        }
+      },
     animation = {
       layers = {
         util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
@@ -3883,7 +3909,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
         layers ={
           util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1",
           {
-            frame_count = 16,
+            frame_count = 15,
                         scale = 0.4 * stomper_scale,
             shift = util.by_pixel(0, 0),
             direction_count = 1,
@@ -3893,7 +3919,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
           }),
           util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-1-mask",
           {
-            frame_count = 16,
+            frame_count = 15,
                         scale = 0.4 * stomper_scale,
             shift = util.by_pixel(0, 0),
             direction_count = 1,
@@ -3907,7 +3933,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
         layers ={
           util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2",
           {
-            frame_count = 16,
+            frame_count = 15,
                         scale = 0.4 * stomper_scale,
             shift = util.by_pixel(0, 0),
             direction_count = 1,
@@ -3917,7 +3943,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
           }),
           util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-2-mask",
           {
-            frame_count = 16,
+            frame_count = 15,
                         scale = 0.4 * stomper_scale,
             shift = util.by_pixel(0, 0),
             direction_count = 1,
@@ -3931,7 +3957,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
         layers ={
           util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3",
           {
-            frame_count = 16,
+            frame_count = 15,
                         scale = 0.4 * stomper_scale,
             shift = util.by_pixel(0, 0),
             direction_count = 1,
@@ -3941,7 +3967,7 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
           }),
           util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-3-mask",
           {
-            frame_count = 16,
+            frame_count = 15,
                         scale = 0.4 * stomper_scale,
             shift = util.by_pixel(0, 0),
             direction_count = 1,
@@ -4101,7 +4127,84 @@ function make_stomper(prefix, scale, health, damage, speed, tints, factoriopedia
             })
           }
         },
+      },
+      water_reflection =
+      {
+        pictures = {
+        {
+          filename = "__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map-1.png",
+          width = 78,
+          height = 63,
+          shift = util.by_pixel(-4,10),
+          scale = 2  * stomper_scale
+        },
+        {
+          filename = "__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map-2.png",
+          width = 79,
+          height = 59,
+          shift = util.by_pixel(3,10),
+          scale = 2  * stomper_scale
+        },
+        {
+          filename = "__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map-3.png",
+          width = 86,
+          height = 68,
+          shift = util.by_pixel(0,15),
+          scale = 2  * stomper_scale
+        },
+        {
+          filename = "__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map-4.png",
+          width = 82,
+          height = 77,
+          shift = util.by_pixel(-4,10),
+          scale = 2  * stomper_scale
+        }
       }
+        --[[
+        pictures =
+          {
+            {
+                util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map",
+                {
+                  scale = 0.5 * stomper_scale,
+                  shift = util.by_pixel(0,0),
+                  surface = "gleba",
+                  usage = "enemy"
+                }),
+            },
+            {
+                util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map",
+                {
+                  scale = 0.5 * stomper_scale,
+                  shift = util.by_pixel(0,0),
+                  y = 332,
+                  surface = "gleba",
+                  usage = "enemy"
+                }),
+            },
+            {
+                util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map",
+                {
+                  scale = 0.5 * stomper_scale,
+                  shift = util.by_pixel(0,0),
+                  y = 332 * 2,
+                  surface = "gleba",
+                  usage = "enemy"
+                }),
+            },
+            {
+                util.sprite_load("__space-age__/graphics/entity/stomper/stomper-corpse-head-effect-map",
+                {
+                  scale = 0.5 * stomper_scale,
+                  shift = util.by_pixel(0,0),
+                  y = 332 * 3,
+                  surface = "gleba",
+                  usage = "enemy"
+                }),
+            }
+          },
+          ]]
+      },
     },
     make_leg(prefix .. "stomper-pentapod-leg", stomper_scale, stomper_leg_thickness, stomper_speed, stomper_graphics_definitions, sounds,
     {
@@ -5607,17 +5710,13 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
     vision_distance = 20,
     water_reflection =
     {
-      orientation_to_variation = false,
-      rotate = true,
       pictures =
       {
-        filename = "__base__/graphics/entity/biter/biter-reflection.png",
-        height = 28,
-        priority = "extra-high",
+        filename = "__space-age__/graphics/entity/wriggler/wriggler-effect-map.png",
+        height = 21,
+        width= 32,
         scale = 2.5 * scale,
-        shift = {0.15625, 0.46875},
         variation_count = 1,
-        width = 20
       }
     },
     walking_sound = sounds.walking_sound,
@@ -5658,6 +5757,18 @@ function make_wriggler(prefix, scale, health, damage, tints, factoriopedia_simul
         wriggler_corpse_spritesheet("decay", 9, nil, scale, tint_body),
         wriggler_corpse_spritesheet("decay-tint", 9, nil, scale, tint_mask),
         wriggler_corpse_spritesheet("decay-shadow", 9, nil, scale),
+      }
+    },
+    water_reflection =
+    {
+      pictures =
+      {
+        filename = "__space-age__/graphics/entity/wriggler/wriggler-effect-map.png",
+        height = 21,
+        width= 32,
+        shift = util.by_pixel(5,-3),
+        scale = 2.5 * scale,
+        variation_count = 1,
       }
     },
     dying_speed = 0.015 / scale,

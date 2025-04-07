@@ -4747,3 +4747,158 @@ data:extend{
     }
   }
 }
+
+data:extend{
+  {
+    type = "explosion",
+    name = "nuke-effects-space",
+    flags = {"not-on-map"},
+    hidden = true,
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/atomic-bomb.png"}
+    },
+    order = "a-d-a-b",
+    subgroup = "explosions",
+    height = 0,
+    animations = util.empty_sprite(),
+    surface_conditions =
+    {
+      {
+        property = "pressure",
+        min = 0,
+        max = 0
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "damage-tile",
+            damage = { amount = 1000, type = "explosion"},
+            radius = 8
+          },
+          {
+            type = "damage-tile",
+            damage = { amount = 50, type = "explosion"},
+            radius = 12
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "nuke-effects-aquilo",
+    flags = {"not-on-map"},
+    hidden = true,
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/atomic-bomb.png"}
+    },
+    order = "a-d-a-b",
+    subgroup = "explosions",
+    height = 0,
+    animations = util.empty_sprite(),
+    surface_conditions =
+    {
+      {
+        property = "pressure",
+        min = 100,
+        max = 600
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "set-tile",
+            tile_name = "ammoniacal-ocean",
+            radius = 8,
+            apply_projection = true,
+            tile_collision_mask = { layers={out_of_map=true} }
+          },
+          {
+            type = "set-tile",
+            tile_name = "brash-ice",
+            radius = 12,
+            apply_projection = true,
+            tile_collision_mask = { layers={water_tile=true} }
+          }
+        }
+      }
+    }
+  },
+  {
+    type = "explosion",
+    name = "nuke-effects-vulcanus",
+    flags = {"not-on-map"},
+    hidden = true,
+    icons =
+    {
+      {icon = "__base__/graphics/icons/explosion.png"},
+      {icon = "__base__/graphics/icons/atomic-bomb.png"}
+    },
+    order = "a-d-a-b",
+    subgroup = "explosions",
+    height = 0,
+    animations = util.empty_sprite(),
+    surface_conditions =
+    {
+      {
+        property = "pressure",
+        min = 4000,
+        max = 4000
+      }
+    },
+    created_effect =
+    {
+      type = "direct",
+      action_delivery =
+      {
+        type = "instant",
+        target_effects =
+        {
+          {
+            type = "set-tile",
+            tile_name = "lava-hot",
+            radius = 8,
+            apply_projection = true,
+            tile_collision_mask = { layers={out_of_map=true} }
+          },
+          {
+            type = "set-tile",
+            tile_name = "lava",
+            radius = 12,
+            apply_projection = true,
+            tile_collision_mask = { layers={water_tile=true} }
+          }
+        }
+      }
+    }
+  }
+}
+
+local function atomic_rocket_surface_explosion(explosion_name)
+  -- target index 2, otherwise the lava tiles can remove cliffs first and you'd not get the achievement for cliff destruction.
+  table.insert(data.raw.projectile["atomic-rocket"].action.action_delivery.target_effects, 2, {
+    type = "create-entity",
+    check_buildability = true,
+    entity_name = explosion_name
+  })
+end
+atomic_rocket_surface_explosion("nuke-effects-aquilo")
+atomic_rocket_surface_explosion("nuke-effects-vulcanus")
+atomic_rocket_surface_explosion("nuke-effects-space")

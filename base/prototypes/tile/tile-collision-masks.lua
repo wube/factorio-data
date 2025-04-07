@@ -10,7 +10,8 @@ tile_collision_masks.out_of_map = function()
     item=true,
     object=true,
     player=true,
-    doodad=true
+    doodad=true,
+    out_of_map=true
   }}
 end
 

@@ -1,6 +1,88 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.44
+Version: 2.0.45
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.44
+Date: 07. 04. 2025
+  Minor Features:
+    - Items manually inserted or removed from space platform dump inventory will always reset drop cooldown to two seconds. This should make manual interactions more responsive and intuitive. (https://forums.factorio.com/127709)
+    - Added filter support to burner fuel inventories.
+    - Tall tooltips when attached to the right side of the screen can be scrolled (by default shift + scroll).
+  Changes:
+    - Atomic bomb now blasts planet-appropriate holes into the terrain of the planet if the terrain is floating on a fluid: Ammoniacal ocean for Aquilo, Lava for Vulcanus. It also destroys space platform tiles.
+    - The "Tags" map overlay setting now also toggles display panel tags. (https://forums.factorio.com/127174)
+    - Decider combinator condition which contains parameter evaluated to nothing (non-existent ingredient) when building blueprint is deleted instead of kept empty. (https://forums.factorio.com/118455)
+    - Lowered volume of cargo wagon and beacon open/close GUI sounds. (https://forums.factorio.com/127908)
+    - Cargo landing pad does not draw inventory contents in alt mode.
+  Gui:
+    - Added equipment grid button to locomotive GUI and removed the popup window. (https://forums.factorio.com/119335)
+  Graphics:
+    - Added some new Gleba decorative variants for Nerve roots.
+    - Improved water/land visibility on Gleba by masking decals over water, changing terrain and water colors, and adding a water edge foam effect.
+    - Added new recipe icons for molten metals from ore and reworked existing icons related to molten metals and lava. (https://forums.factorio.com/118474)
+  Bugfixes:
+    - Fixed that modded miniature spidertrons could get stuck when something is built underneath their legs. (https://forums.factorio.com/119004)
+    - Fixed locomotive GUI formatting for trains with many fuel slots. (https://forums.factorio.com/104682)
+    - Fixed edit interrupt GUI closing the wait conditions and choose station windows spuriously. (https://forums.factorio.com/118361)
+    - Fixed schedule GUI station buttons not updating correctly. (https://forums.factorio.com/116283)
+    - Fixed a crash when removing modded cargo pods through mod removal. (https://forums.factorio.com/127757)
+    - Fixed blueprint library small slots view had extra empty space. (https://forums.factorio.com/127392)
+    - Fixed renaming all logistic points in a logistic group would delete the old group if the new group already existed. (https://forums.factorio.com/127190)
+    - Fixed pretty print for LuaPlayer was showing wrong index. (https://forums.factorio.com/127786)
+    - Fixed expected resources were rounded down in some cases. (https://forums.factorio.com/127787)
+    - Fixed that the last-shown mod thumbnail would remain when the mod info pane was cleared. (https://forums.factorio.com/126193)
+    - Fixed a crash when migrating some mods with assembling machines that have control behaviors. (https://forums.factorio.com/127793)
+    - Fixed that pushing fluid away into a double-buffered fluidbox would push fluid into the internal buffer instead of the segment. (https://forums.factorio.com/127305)
+    - Fixed display panel chart tags having different sprite layering than regular map tags. (https://forums.factorio.com/127174)
+    - Fixed that the map editor extra-settings GUI did not work correctly for ghosts. (https://forums.factorio.com/127809)
+    - Fixed that building underground belts and underground pipes would not show an error flying text. (https://forums.factorio.com/121145)
+    - Fixed inserters would detach from valid pickup targets if they have no inventory. (https://forums.factorio.com/127774)
+    - Fixed count of trains in group was not updating when adding other trains to group by copy settings. (https://forums.factorio.com/122645)
+    - Fixed programmable speaker alerts would not update to show on map when alert was active. (https://forums.factorio.com/121470)
+    - Fixed building preview of blueprint with locomotives could show them in wrong orientation when blueprint is rotated in some cases. (https://forums.factorio.com/122643)
+    - Fixed that overbuilding train with parametrised blueprint didn't apply the parametrisation on the schedule of the existing train. (https://forums.factorio.com/126136)
+    - Fixed in some cases a locomotive could be fueled even if the train was already on the way but not yet moving. (https://forums.factorio.com/123930)
+    - Fixed that selecting parameter when only the base value is possible to change (the blueprint contains the item in other than normal quality),
+      the select list actually offered quality selection and discarded it, instead of not even offering the quality selection. (https://forums.factorio.com/121844)
+    - Fixed that blueprint parametrisation of combination of recipe + item didn't apply the recipe limitation based on crafting machine it appears in. (https://forums.factorio.com/121013)
+    - Fixed that blueprint parameter item which was named but not configured to be parametrised became parametrised after export/import through blueprint string. (https://forums.factorio.com/121238)
+    - Fixed that self-recycling recipes were generated for parameters.
+    - Fixed that pipetting parameter in cheat mode generated parameter item.
+    - Allowed setting blueprint parametetrisation ingredient of by pepetted parameter. (https://forums.factorio.com/121422)
+    - Fixed that confirming icon selection in the save game dialog name editing confirmed the save dialog instead of the icon selection. (https://forums.factorio.com/122917)
+    - Added info about not being able to set recipe based on surface condition when parametrising blueprint. (https://forums.factorio.com/123512)
+    - Fixed assembler insertion margins were not correctly accounting for max inserter hand in some cases. (https://forums.factorio.com/127884)
+    - Fixed that when number parameter had formula but disabled, it still counted that value as not needed to be filled when deciding what parametrisation window to show. (https://forums.factorio.com/122761)
+    - Fixed wall corpses used wrong orientation when part of a thick wall. (https://forums.factorio.com/127893)
+    - Fixed mods adding many planets would cause the map generator GUI to not layout nicely. (https://forums.factorio.com/123043)
+    - Fixed that searching in inventories did not search quality names. (https://forums.factorio.com/127826)
+    - Fixed a crash when setting resource_patch_search_radius to 0. (https://forums.factorio.com/127907)
+    - Fixed GUI layout issues with relative GUIs when nesting widgets. (https://forums.factorio.com/127900)
+    - Fixed the loading of inputs from config file when using a combination of controller triggers and the ALT keyboard modifier. (https://forums.factorio.com/127783)
+    - Fixed latency hiding when dragging remote remote view with the cursor while the server is running more slowly than clients. (https://forums.factorio.com/122891)
+    - Fixed Beacon transmission strength graph duplicate number on some scales. (https://forums.factorio.com/118259)
+    - Fixed a crash when corpse animations aren't defined correctly. (https://forums.factorio.com/127916)
+    - Fixed that the confirm hotkey did not confirm-resume when in the map editor. (https://forums.factorio.com/122737)
+    - Fixed that combining negative logistic filters with positive ones did not work correctly. (https://forums.factorio.com/127246)
+    - Fixed that LuaDefines::logistic_member_index was missing some values. (https://forums.factorio.com/127259)
+    - Fixed that recipe hover highlights didn't work correctly when driving vehicles. (https://forums.factorio.com/124215)
+    - Fixed that logistic section multipliers rounded differently in some places. (https://forums.factorio.com/125226)
+    - Fixed that frozen rocket silos could block non-frozen silos from launching. (https://forums.factorio.com/128006)
+    - Fixed that highlighting robots in the logistic networks GUI excluded requested robots. (https://forums.factorio.com/126621)
+    - Fixed that remote view could not order removal of items from the assembling machine dump inventory. (https://forums.factorio.com/126802)
+    - Fixed that smart belt dragging would not revive ghost underground belts at the end of a gap. (https://forums.factorio.com/118408)
+  Modding:
+    - Added collision-layer out_of_map for out-of-map tiles.
+    - Decals now support draw_as_light and draw_as_glow.
+    - [space-age] Decals can now be masked by water if their layer is above UtilityConstants::capture_water_mask_at_layer, the tile effect has a lightmap_alpha of less than 1, and the decal has opacity_over_water less than 1. This is currently requires Space Age as the effect is not supported on Switch.
+    - Added FusionReactorPrototype::target_temperature.
+    - Added RocketSiloPrototype::can_launch_without_landing_pads.
+  Scripting:
+    - Added support for fusion reactors to LuaEntityPrototype::target_temperature.
+    - Added label, preview_distance and always_visible fields to LuaPlayer::add_pin.
+    - The remote view controller now supports enabling and disabling flashlight.
+    - Added LuaControl::open_factoriopedia_gui(...).
+    - Added LuaControl::close_factoriopedia_gui().
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.43
 Date: 26. 03. 2025

@@ -25,4 +25,5 @@ data:extend(
 
   { type = "collision-layer", name = "is_lower_object" },
   { type = "collision-layer", name = "is_object" },
+  { type = "collision-layer", name = "out_of_map" }
 })

@@ -7,6 +7,7 @@ end
 
 local generate_self_recycling_recipe = function(item)
   if item.auto_recycle == false then return end
+  if item.parameter then return end
 
   if not data.raw.recipe[item.name .. "-recycling"] then
     if not string.find(item.name, "-barrel") then

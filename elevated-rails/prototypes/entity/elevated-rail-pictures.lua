@@ -549,7 +549,7 @@ function rails_ramp_pictures()
   local rail_ramp_base_def    = util.sprite_load("__elevated-rails__/graphics/entity/elevated-rail-ramp/elevated-rail-ramp-base", { priority = "extra-high", scale = 0.5 })
   local rail_ramp_shadow_def  = util.sprite_load("__elevated-rails__/graphics/entity/elevated-rail-ramp/elevated-rail-ramp-shadow", { priority = "extra-high", flags = { "low-object" }, scale = 0.5, draw_as_shadow = true })
   local rail_ramp_reflection  = util.sprite_load("__elevated-rails__/graphics/entity/elevated-rail-ramp/elevated-rail-ramp-reflection", { priority = "extra-high", scale = 0.5 })
-  local rail_ramp_underwater  = util.sprite_load("__elevated-rails__/graphics/entity/elevated-rail-ramp/elevated-rail-ramp-underwater", { priority = "extra-high", scale = 0.5 })
+  local rail_ramp_underwater  = util.sprite_load("__elevated-rails__/graphics/entity/elevated-rail-ramp/elevated-rail-ramp-underwater", { priority = "extra-high", scale = 0.5, occludes_light = false })
 
   local function rail_ramp_pictures(x_frame, y_frame, dice_y)
     local function make_simple_image(def)
