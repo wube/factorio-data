@@ -117,6 +117,46 @@ local gleba_tree_underwater_things =
 gleba_tree_underwater_things["yumako-tree"] = gleba_tree_underwater_things["hairyclubnub"]
 --]]
 
+local gleba_tree_particle_effects = 
+{
+  ["yumako-tree"] =   { crop_2 = "yumako-leaf-particle", 
+                        trunk_2 = "yumako-branch-particle"
+                      },
+  ["jellystem"] =     { sap = "jellystem-leaf-particle", 
+                        jellystem = "jellystem-branch-particle" 
+                      },
+  ["cuttlepop"] =     { crop_4 = "cuttlepop-leaf-particle", 
+                        spongy = "cuttlepop-branch-particle"
+                      },
+  ["slipstack"] =     { slime = "slipstack-leaf-particle", 
+                        spongy = "slipstack-branch-particle"
+                      },
+  ["funneltrunk"] =   { crop_1 = "funneltrunk-leaf-particle", 
+                        spongy = "funneltrunk-branch-particle"
+                      },
+  ["hairyclubnub"] =  { leaf_3 = "hairyclubnub-leaf-particle", 
+                        trunk_2 = "hairyclubnub-branch-particle"
+                      },
+  ["teflilly"] =      { leaf_1 = "teflilly-leaf-particle", 
+                        trunk_1 = "teflilly-branch-particle"
+                      },
+  ["lickmaw"] =       { crop_1 = "lickmaw-leaf-particle", 
+                        spongy = "lickmaw-branch-particle"
+                      },
+  ["stingfrond"] =    { leaf_2 = "stingfrond-leaf-particle",
+                        trunk_1 = "stingfrond-branch-particle"
+                      },
+  ["boompuff"] =      { crop_3 = "boompuff-leaf-particle", 
+                        trunk_3 = "boompuff-branch-particle"
+                      },
+  ["sunnycomb"] =     { crop_1 = "sunnycomb-leaf-particle", 
+                        spongy = "sunnycomb-branch-particle"
+                      },
+  ["water-cane"] =    { water_cane_top = "water-cane-branch-particle", 
+                        water_cane = "water-cane-branch-particle" 
+                      }
+}
+
 local function gleba_tree_variations(name, variation_count, per_row, scale_multiplier, width, height, shift, reflection_shift)
   variation_count = variation_count or 5
   per_row = per_row or 5
@@ -127,6 +167,24 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
   local reflection_shift = reflection_shift or util.by_pixel(52, 80)
   local shift = shift or util.by_pixel(52, -40)
  -- local reflection_shift = {shift[0], shift[1]} --or util.by_pixel(52, 40)
+
+  local sap_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].sap
+  local leaf_particle_1 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].leaf_1
+  local leaf_particle_2 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].leaf_2
+  local leaf_particle_3 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].leaf_3
+  local crop_particle_1 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].crop_1
+  local crop_particle_2 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].crop_2
+  local crop_particle_3 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].crop_3
+  local crop_particle_4 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].crop_4
+  local slime_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].slime
+  local trunk_particle_1 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].trunk_1
+  local trunk_particle_2 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].trunk_2
+  local trunk_particle_3 = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].trunk_3
+  local spongy_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].spongy
+  local water_cane_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].water_cane
+  local water_cane_top_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].water_cane_top
+  local jellystem_particle = gleba_tree_particle_effects[name] and gleba_tree_particle_effects[name].jellystem
+
   for i = 1, variation_count do
     local x = ((i - 1) % per_row) * width
     local y = math.floor((i-1)/per_row) * height
@@ -187,6 +245,7 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
 
       underwater       = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].underwater or nil,
       --water_reflection = gleba_tree_underwater_things[name] and gleba_tree_underwater_things[name].water_reflection or nil,
+      
       water_reflection = {
         pictures = {
         filename = "__space-age__/graphics/entity/plant/"..name.."/"..name.."-effect-map.png",
@@ -201,31 +260,260 @@ local function gleba_tree_variations(name, variation_count, per_row, scale_multi
         scale = 0.33 * scale_multiplier
         }
       } or nil,
-      leaf_generation =
-      {
+
+      leaf_generation = {},
+      branch_generation = {}
+    }
+
+    if sap_particle then
+      variation.leaf_generation = {  
         type = "create-particle",
-        particle_name = "leaf-particle",
-        offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
-        initial_height = 2,
-        initial_vertical_speed = 0.01,
+        particle_name = sap_particle,
+        offset_deviation =
+        {
+          {-0.8, -1.2},
+          {0.8, 1.2}
+        },
+        initial_height = 1.5,
+        initial_height_deviation = 0.5,
+        initial_vertical_speed = 0.06 ,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.025 ,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 1,
+        frame_speed_deviation = 0.5,
+        tail_length = 46,
+        tail_length_deviation = 25,
+        tail_width = 10,
+        rotate_offsets = false
+      }
+    end 
+
+    if slime_particle then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = slime_particle,
+        offset_deviation =
+        {
+          {-0.6, -0.6},
+          {0.6, 0.6}
+        },
+        initial_height = 2.3,
         initial_height_deviation = 0.05,
-        speed_from_center = 0.01,
-        speed_from_center_deviation = 0.01
-      },
-      branch_generation =
-      {
+        initial_vertical_speed = 0.14 ,
+        initial_vertical_speed_deviation = 0.05,
+        speed_from_center = 0.013 ,
+        speed_from_center_deviation = 0.02,
+        frame_speed = 1,
+        frame_speed_deviation = 0,
+      }
+    end 
+
+    if leaf_particle_1 then
+      variation.leaf_generation = {
         type = "create-particle",
-        particle_name = "branch-particle",
-        offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
+        particle_name = leaf_particle_1,
+        offset_deviation = {{-1, -0.8}, {1, 0.8}},
+        initial_height = 2.8,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.13,
+        speed_from_center = 0.015,
+        speed_from_center_deviation = 0.025,
+        frame_speed = 0.6
+      }
+    end
+
+    if leaf_particle_2 then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = leaf_particle_2,
+        offset_deviation = {{-0.8, -0.6}, {0.8, 0.6}},
         initial_height = 2,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.13,
+        speed_from_center = 0.015,
+        speed_from_center_deviation = 0.025,
+        frame_speed = 0.6
+      }
+    end
+
+    if leaf_particle_3 then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = leaf_particle_3,
+        offset_deviation = {{-1.2, -1}, {1.2, 1}},
+        initial_height = 2.7,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.13,
+        speed_from_center = 0.005,
+        speed_from_center_deviation = 0.025,
+        frame_speed = 0.6
+      }
+    end
+
+    if crop_particle_1 then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = crop_particle_1,
+        repeat_count = 16,
+        offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
+        initial_height = 3,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.045
+      }
+    end
+
+    if crop_particle_2 then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = crop_particle_2,
+        offset_deviation = {{-1, -1}, {1, 1}},
+        initial_height = 2.5,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.03,
+        speed_from_center_deviation = 0.045
+      }
+    end
+
+    if crop_particle_3 then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = crop_particle_3,
+        offset_deviation = {{-0.8, -0.8}, {0.8, 0.8}},
+        initial_height = 2,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.05,
+        speed_from_center_deviation = 0.065
+      }
+    end
+
+    if crop_particle_4 then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = crop_particle_4,
+        offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}},
+        initial_height = 2.2,
+        initial_height_deviation = 0.035,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.02,
+        speed_from_center_deviation = 0.045
+      }
+    end
+    
+    if trunk_particle_1 then
+      variation.branch_generation = {
+        type = "create-particle",
+        particle_name = trunk_particle_1,
+        repeat_count = 40,
+        offset_deviation = {{-0.4, -0.8}, {0.4, 0.8}},
+        initial_height = 1.5,
+        initial_height_deviation = 1.5,
+        initial_vertical_speed = 0.01,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.035,
+        speed_from_center_deviation = 0.015,
+        frame_speed = 0.8
+      }
+    end
+
+    if trunk_particle_2 then
+      variation.branch_generation = {
+        type = "create-particle",
+        particle_name = trunk_particle_2,
+        repeat_count = 50,
+        offset_deviation = {{-0.8, -1.4}, {0.8, 1.4}},
+        initial_height = 1.7,
+        initial_height_deviation = 1.5,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.035,
+        speed_from_center_deviation = 0.02,
+      }
+    end
+
+    if trunk_particle_3 then
+      variation.branch_generation = {
+        type = "create-particle",
+        particle_name = trunk_particle_3,
+        repeat_count = 30,
+        offset_deviation = {{-0.8, -0.8}, {0.8, 0.8}},
+        initial_height = 1.3,
         initial_height_deviation = 2,
         initial_vertical_speed = 0.01,
-        speed_from_center = 0.03,
-        speed_from_center_deviation = 0.01,
-        frame_speed = 0.4,
-        repeat_count = 15
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.045,
+        speed_from_center_deviation = 0.02,
       }
-    }
+    end
+
+    if jellystem_particle then
+      variation.branch_generation = {
+        type = "create-particle",
+        particle_name = jellystem_particle,
+        repeat_count = 40,
+        offset_deviation = {{-0.65, -1}, {0.65, 1}},
+        initial_height = 1.7,
+        initial_height_deviation = 0.8,
+        initial_vertical_speed = 0.025,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.035,
+        speed_from_center_deviation = 0.02,
+        frame_speed = 0.8
+      }
+    end
+
+    if spongy_particle then
+      variation.branch_generation = {
+        type = "create-particle",
+        particle_name = spongy_particle,
+        repeat_count = 40,
+        offset_deviation = {{-0.8, -1.5}, {0.8, 1.5}},
+        initial_height = 1.7,
+        initial_height_deviation = 0.6,
+        initial_vertical_speed = 0.02,
+        initial_vertical_speed_deviation = 0.15,
+        speed_from_center = 0.03,
+        speed_from_center_deviation = 0.04,
+        frame_speed = 0.8
+      }
+    end
+
+    if water_cane_top_particle then
+      variation.leaf_generation = {
+        type = "create-particle",
+        particle_name = water_cane_top_particle,
+        initial_height = 0.6,
+        probability = 0.01,
+        offset_deviation = {{-0.15, -0.4}, {0.15, 0.4}},
+        initial_height = 1,
+        initial_height_deviation = 0.01,
+        initial_vertical_speed = 0.015,
+        initial_vertical_speed_deviation = 0.055,
+        speed_from_center = 0.025,
+        speed_from_center_deviation = 0.05,
+        frame_speed = 0.8
+      }
+    end
+
+    if water_cane_particle then
+      variation.branch_generation = {
+        type = "create-particle",
+        particle_name = water_cane_particle,
+        initial_height = 0.6,
+      }
+    end
+
     if(name == "stingfrond") then
       variation.leaves =
       {
@@ -302,7 +590,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "yumako-mining-particle",
       mining_time = 0.5,
       results = {{type = "item", name = "yumako", amount = 50}},
       mining_trigger =
@@ -374,7 +662,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "jellystem-mining-particle",
       mining_time = 0.5,
       results = {{type = "item", name = "jellynut", amount = 50}},
     },
@@ -445,7 +733,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "cuttlepop-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -529,7 +817,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "stone-particle",
+      mining_particle = "slipstack-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -620,7 +908,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "funneltrunk-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -711,7 +999,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "hairyclubnub-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -799,7 +1087,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "teflilly-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -909,7 +1197,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "lickmaw-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -1019,7 +1307,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "stingfrond-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -1139,7 +1427,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "boompuff-mining-particle",
       mining_time = 0.5,
       results =
       {
@@ -1341,7 +1629,7 @@ data:extend(
     flags = plant_flags,
     minable =
     {
-      mining_particle = "wooden-particle",
+      mining_particle = "sunnycomb-mining-particle",
       mining_time = 0.5,
       results =
       {

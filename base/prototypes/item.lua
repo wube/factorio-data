@@ -1746,7 +1746,7 @@ data:extend
     name = "cargo-landing-pad",
     icon = "__base__/graphics/icons/cargo-landing-pad.png",
     subgroup = "space-related",
-    order = "b[cargo-landing-pad]",
+    order = "c[cargo-landing-pad]",
     inventory_move_sound = item_sounds.mechanical_large_inventory_move,
     pick_sound = item_sounds.mechanical_large_inventory_pickup,
     drop_sound = item_sounds.mechanical_large_inventory_move,

@@ -1,6 +1,60 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.45
+Version: 2.0.46
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.45
+Date: 14. 04. 2025
+  Minor Features:
+    - Equipment grid GUIs have improved click-and-drag support. In addition to installing equipment, you can now click and drag to pick up, transfer, and fast-replace equipment.
+  Changes:
+    - Improve relative vehicle driving with gamepad in multiplayer, especially when shooting.
+    - Included priority and train limit of train stop into blueprint parametrisation.
+    - Changed pipette to always select normal quality items when pipetting a tile. (https://forums.factorio.com/126506)
+    - Changed the blueprint parametrisation logic related to quality.
+      Before, whenever anything other than normal quality was used with parameters, the quality was always taken from the blueprint,
+        and only the core id was parametrised.
+      Now, this only happens when more than 1 quality with the same id is present instead.
+    - All parameters can potentially generate the stack size, crafting time, rocket capacity and ingredient count as long as they are mapped to id which is a recipe.
+    - When the blueprint is being parametrised and "Show all items in selection list" interface option is selected, all (even locked) recipes are presented. (https://forums.factorio.com/122496)
+    - [space-age] Changed rocket part recipe position in the signal selection to be next to the rocket silo instead of intermediates.
+    - Reduced volume and pitch of recycler loop and railgun turret shot sounds. (https://forums.factorio.com/128024)
+  Graphics:
+    - Added Metal graphics backend for Apple devices.
+    - Added new particle effects for mining or destroying Gleba plants and fungi.
+  Bugfixes:
+    - Fixed that Factoriopedia would not fully respect the relative ordering between different object types. (https://forums.factorio.com/127979)
+    - Fixed Spoilage from section is included in merged recipe/item entries of factoriopedia. (https://forums.factorio.com/125996)
+    - Fixed that the achievements checks of map startup difficulty settings didn't check for pollution, expansion settings, starting area and trees.
+    - Fixed that module upgrades could not be cancelled with an upgrade planner. (https://forums.factorio.com/122766)
+    - Fixed that installing modules with an upgrade planner or manually via fast-transfer wouldn't work if modules or module requests already existed in the entity. (https://forums.factorio.com/117838)
+    - Fixed that module upgrades, installations, and removals via upgrade planner didn't work if the entity already had existing delivery or removal requests in another inventory.
+    - Fixed that upgrading or manually fast-replacing any entity would clear any pending item delivery or removal requests. (https://forums.factorio.com/122943)
+    - Fixed that module upgrades used the original entity's "allowed effects" restrictions instead of the upgrade target's. (https://forums.factorio.com/119941)
+    - Fixed that module upgrade requests could get cut short depending on the module inventory size of the original entity. (https://forums.factorio.com/119941)
+    - Fixed copying from space platforms did not count and preview platform tiles. (https://forums.factorio.com/124874)
+    - Fixed that pipette on resource entities would put the burner drill circuit signal in the cursor. (https://forums.factorio.com/127988)
+    - Fixed that LuaSchedule::add_record() ignored created_by_interrupt. (https://forums.factorio.com/128066)
+    - Fixed a crash when hovering blueprints pasted into chat. (https://forums.factorio.com/128059)
+    - Fixed a crash when on_player_setup_blueprint errors. (https://forums.factorio.com/127064)
+    - Fixed that the mod manager update table styling would break when mods were updating. (https://forums.factorio.com/117713)
+    - Fixed inconsistent display of rich text icons in tooltips. (https://forums.factorio.com/125254)
+    - Fixed rail variants can now be accessed with alt click in factoriopedia. (https://forums.factorio.com/127867)
+    - Fixed that pressing alt while selecting blueprint contents confirmed the selection. (https://forums.factorio.com/119511)
+    - Fixed that recipe item order changes would cause items to be removed in some cases. (https://forums.factorio.com/128105)
+    - Fixed that building walls would remove unrelated ghosts in some cases. (https://forums.factorio.com/121124)
+    - Fixed that CustomGuiSlider did not respect the discrete slider value when changing the minimum and maximum values. (https://forums.factorio.com/125815)
+    - Fixed that the burner generator prototype type did not report its max consumption correctly. (https://forums.factorio.com/127140)
+    - Fixed labs with drain multiplier taking too long to drain final fraction of science packs. (https://forums.factorio.com/128097)
+    - Fixed that the invalidation of the achievement "Keeping your hands clean" wasn't properly saved on a headless server. (https://forums.factorio.com/118168)
+    - Fixed issue with merging fluid/recipe where there are more result products. (https://forums.factorio.com/128120)
+    - Fixed fluid box compound was not respecting max pipeline extent value of the original fluid boxes. (https://forums.factorio.com/128123)
+    - Fixed that selecting rocket part during blueprint parametrisation created incompatibile station name. (https://forums.factorio.com/121079)
+    - Fixed that it was possible to start another blueprint build while parametrisation was in progress. (https://forums.factorio.com/120531)
+    - Fixed generator equipment item tooltip ignoring fuel consumption efficiency. (https://forums.factorio.com/127280)
+    - Fixed constant combinators were clamping total values from logistic sections when they should wrap around. (https://forums.factorio.com/128129)
+  Modding:
+    - Added MiningDrillPrototype::uses_force_mining_productivity_bonus.
+    - Added PumpPrototype::flow_scaling.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.44
 Date: 07. 04. 2025

@@ -8,6 +8,82 @@ data:extend
 {
   {
     type = "trivial-smoke",
+    name = "gleba-tree-particle-smoke-red",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {0.5961, 0.3961, 0.349, 1.0}
+    },
+    render_layer = "smoke",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.3,
+    end_scale = 0.1
+  },
+
+  {
+    type = "trivial-smoke",
+    name = "gleba-tree-particle-smoke-pink",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {0.3686, 0.4, 0.4196, 0.7}
+    },
+    render_layer = "higher-object-under",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.3,
+    end_scale = 0.1
+  },
+
+  {
+    type = "trivial-smoke",
+    name = "gleba-tree-particle-smoke-blue",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {0.2471, 0.4706, 0.4471, 0.7}
+    },
+    render_layer = "higher-object-under",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.3,
+    end_scale = 0.1
+  },
+
+  {
+    type = "trivial-smoke",
+    name = "gleba-tree-particle-smoke-orange",
+    animation = smoke_fast_animation
+    {
+      animation_speed = 0.5,
+      scale = 0.25,
+      tint = {0.7922, 0.5333, 0.2784, 0.7}
+    },
+    render_layer = "higher-object-under",
+    affected_by_wind = false,
+    movement_slow_down_factor = 0.96,
+    duration = 150,
+    fade_away_duration = 60,
+    show_when_smoke_off = true,
+    start_scale = 0.3,
+    end_scale = 0.1
+  },
+  
+  {
+    type = "trivial-smoke",
     name = "space-platform-explosion-particle-smoke",
     animation = smoke_fast_animation
     {
