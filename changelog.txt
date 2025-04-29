@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------
-Version: 2.0.47
+Version: 2.0.48
 Date: ????
+---------------------------------------------------------------------------------------------------
+Version: 2.0.47
+Date: 29. 04. 2025
+  Bugfixes:
+    - Fixed alert icons could persist after changing surfaces. (https://forums.factorio.com/121200)
+    - Fixed upgrade planner slot tooltips not showing with the correct quality. (https://forums.factorio.com/117051)
+    - Fixed that manually filed rocket silos wouldn't launch correctly when multiple platforms requested the same item. (https://forums.factorio.com/128447)
+    - Fixed logistic group multiplier was not visible with long group names. (https://forums.factorio.com/124233)
+    - Fixed asteroids not getting destroyed when they collided with the platform and had zero relative velocity while the platform was moving.
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.46
 Date: 29. 04. 2025
